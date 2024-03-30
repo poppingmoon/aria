@@ -26,6 +26,9 @@ class MiAuthNotifier extends _$MiAuthNotifier {
   }
 
   Future<bool> check() async {
+    if (state == null) {
+      return true;
+    }
     final result = await ref.read(miAuthRepositoryProvider).check(
           state!.host,
           state!.sessionId,
