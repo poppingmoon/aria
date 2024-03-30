@@ -1,9 +1,10 @@
-name: Release
+name: Build
 
 on:
   push:
     tags:
       - "v*"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -63,6 +64,16 @@ jobs:
           mv app-x86_64-release.apk aria-${{ github.ref_name }}-x86_64.apk
 
       - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: APK
+          path: |
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
+
+      - name: Release APK
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: |
@@ -112,6 +123,13 @@ jobs:
         run: zip -r aria-${{ github.ref_name }}.ipa Payload
 
       - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: IPA
+          path: aria-${{ github.ref_name }}.ipa
+
+      - name: Release IPA
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: aria-${{ github.ref_name }}.ipa
@@ -142,6 +160,13 @@ jobs:
           -DestinationPath aria-${{ github.ref_name }}-windows-x64.zip
 
       - name: Upload ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows ZIP
+          path: aria-${{ github.ref_name }}-windows-x64.zip
+
+      - name: Release ZIP
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: aria-${{ github.ref_name }}-windows-x64.zip
@@ -160,6 +185,13 @@ jobs:
         run: iscc windows/setup.iss
 
       - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: Windows Installer
+          path: windows/Output/aria-${{ github.ref_name }}-windows-x64.exe
+
+      - name: Release installer
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: windows/Output/aria-${{ github.ref_name }}-windows-x64.exe
@@ -197,6 +229,13 @@ jobs:
           build/macos/Build/Products/Release/aria.app
 
       - name: Upload DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: DMG
+          path: aria-${{ github.ref_name }}.dmg
+
+      - name: Release DMG
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: aria-${{ github.ref_name }}.dmg
@@ -232,6 +271,13 @@ jobs:
         run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-arm64.tar.gz *
 
       - name: Upload TAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux arm64 TAR
+          path: aria-${{ github.ref_name }}-linux-arm64.tar.gz
+
+      - name: Release TAR
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: aria-${{ github.ref_name }}-linux-arm64.tar.gz
@@ -267,6 +313,13 @@ jobs:
         run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-x64.tar.gz *
 
       - name: Upload TAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: Linux x64 TAR
+          path: aria-${{ github.ref_name }}-linux-x64.tar.gz
+
+      - name: Release TAR
+        if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: aria-${{ github.ref_name }}-linux-x64.tar.gz
