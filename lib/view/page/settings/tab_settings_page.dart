@@ -1,5 +1,5 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide ImageIcon;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -163,8 +163,6 @@ class TabSettingsPage extends HookConsumerWidget {
           if (confirmed) {
             context.pop();
           }
-        } else {
-          context.pop();
         }
       },
       child: Scaffold(
@@ -219,6 +217,7 @@ class TabSettingsPage extends HookConsumerWidget {
                     initialAccount: account.value,
                   ),
                 );
+                if (!context.mounted) return;
                 if (result != null) {
                   if (account.value != result) {
                     tabSettings.value = tabSettings.value.copyWith(
@@ -232,7 +231,8 @@ class TabSettingsPage extends HookConsumerWidget {
                         userId: null,
                       );
                     }
-                    if ((account.value?.isGuest ?? true) && result.isGuest) {
+                    account.value = result;
+                    if (result.isGuest) {
                       if (tabType
                           case TabType.homeTimeline ||
                               TabType.hybridTimeline ||
@@ -244,8 +244,18 @@ class TabSettingsPage extends HookConsumerWidget {
                         tabSettings.value = tabSettings.value
                             .copyWith(tabType: TabType.localTimeline);
                       }
+                      if (tabSettings.value.icon == null) {
+                        final meta = await futureWithDialog(
+                          context,
+                          ref.read(metaProvider(result).future),
+                        );
+                        if (meta case MetaResponse(:final iconUrl?)) {
+                          tabSettings.value = tabSettings.value.copyWith(
+                            icon: ImageIcon(url: iconUrl.toString()),
+                          );
+                        }
+                      }
                     }
-                    account.value = result;
                   }
                 }
               },
