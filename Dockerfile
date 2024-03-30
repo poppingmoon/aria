@@ -15,7 +15,7 @@ RUN apt-get update -y \
     && apt-get install -y \
     curl git unzip xz-utils zip libglu1-mesa \
     clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev libstdc++-12-dev \
-    libsecret-1-dev libjsoncpp-dev libsecret-1-0
+    libsecret-1-dev libsecret-1-0
 
 RUN ARCH=$(case $TARGETARCH in \
     x86_64)         echo 'x64' ;; \
