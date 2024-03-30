@@ -1,0 +1,7 @@
+followConfirm(rich): "¿Desea seguir a {name}?"
+i18nInfo(rich): "Aria está siendo traducido a varios idiomas gracias a voluntarios. Se puede colaborar traduciendo en {link}"
+onlineUsersCount(rich): "{n} usuarios en línea"
+renotedBy(rich): "Renotado por {user}"
+unfollowConfirm(rich): "¿Desea dejar de seguir a {name}?"
+userSaysSomething(rich): "La publicación de {name} contiene material sensible"
+userSaysSomethingSensitive(rich): "La publicación de {name} contiene material sensible"

@@ -1,0 +1,273 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+env:
+  APK_BUILD_DIR: /tmp/build
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy files to env.APK_BUILD_DIR
+        run: |
+          mkdir -p $APK_BUILD_DIR
+          cp -r . $APK_BUILD_DIR
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        working-directory: ${{ env.APK_BUILD_DIR }}
+        run: flutter pub get
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: zulu
+          java-version: 17
+          cache: gradle
+
+      - name: Dump keystore
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: upload.keystore
+          fileDir: ${{ env.APK_BUILD_DIR }}/android/app/
+          encodedString: ${{ secrets.UPLOAD_KEYSTORE }}
+
+      - name: Build APK
+        working-directory: ${{ env.APK_BUILD_DIR }}
+        env:
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+        run: flutter build apk --split-per-abi
+
+      - name: Rename APK
+        working-directory: ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release
+        run: |
+          mv app-armeabi-v7a-release.apk aria-${{ github.ref_name }}-armeabi-v7a.apk
+          mv app-arm64-v8a-release.apk aria-${{ github.ref_name }}-arm64-v8a.apk
+          mv app-x86_64-release.apk aria-${{ github.ref_name }}-x86_64.apk
+
+      - name: Upload APK
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-armeabi-v7a.apk
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-arm64-v8a.apk
+            ${{ env.APK_BUILD_DIR }}/build/app/outputs/apk/release/aria-${{ github.ref_name }}-x86_64.apk
+          draft: true
+
+      - name: Build App Bundle
+        working-directory: ${{ env.APK_BUILD_DIR }}
+        env:
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+        run: flutter build appbundle
+
+      - name: Upload App Bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: App Bundle
+          path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/bundle/release/app-release.aab
+
+  build-ios:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build for iOS
+        run: flutter build ios --no-codesign
+
+      - name: Move Runner.app
+        run: |
+          mkdir Payload
+          mv build/ios/iphoneos/Runner.app Payload
+
+      - name: Create IPA
+        run: zip -r aria-${{ github.ref_name }}.ipa Payload
+
+      - name: Upload IPA
+        uses: softprops/action-gh-release@v2
+        with:
+          files: aria-${{ github.ref_name }}.ipa
+          draft: true
+
+  build-windows-x64:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build for Windows
+        run: flutter build windows
+
+      - name: Create ZIP
+        run: >
+          Compress-Archive
+          -Path build/windows/x64/runner/Release/*
+          -DestinationPath aria-${{ github.ref_name }}-windows-x64.zip
+
+      - name: Upload ZIP
+        uses: softprops/action-gh-release@v2
+        with:
+          files: aria-${{ github.ref_name }}-windows-x64.zip
+          draft: true
+
+      - name: Trim version
+        id: trim-version
+        shell: bash
+        run: >
+          echo version=$(echo ${{ github.ref_name }} | cut -c 2-)
+          >> $GITHUB_OUTPUT
+
+      - name: Compile Installer
+        env:
+          VERSION: ${{ steps.trim-version.outputs.version }}
+        run: iscc windows/setup.iss
+
+      - name: Upload installer
+        uses: softprops/action-gh-release@v2
+        with:
+          files: windows/Output/aria-${{ github.ref_name }}-windows-x64.exe
+          draft: true
+
+  build-macos:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build for macOS
+        run: flutter build macos
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Create DMG
+        run: >
+          create-dmg
+          --window-pos 200 120
+          --window-size 800 400
+          --icon aria.app 200 185
+          --app-drop-link 600 185
+          aria-${{ github.ref_name }}.dmg
+          build/macos/Build/Products/Release/aria.app
+
+      - name: Upload DMG
+        uses: softprops/action-gh-release@v2
+        with:
+          files: aria-${{ github.ref_name }}.dmg
+          draft: true
+
+  build-linux-arm64:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+        with:
+            platforms: linux/arm64
+
+      - name: Build Docker image
+        run: docker build --platform linux/arm64 -t flutter .
+
+      - name: Build for Linux
+        run: >
+          docker run
+          -v $PWD:$PWD
+          -w $PWD
+          flutter
+          bash -c
+          "fvm install
+          && fvm flutter pub get
+          && fvm flutter build linux"
+
+      - name: Create TAR
+        working-directory: build/linux/arm64/release/bundle
+        run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-arm64.tar.gz *
+
+      - name: Upload TAR
+        uses: softprops/action-gh-release@v2
+        with:
+          files: aria-${{ github.ref_name }}-linux-arm64.tar.gz
+          draft: true
+
+  build-linux-x64:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Install packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+          ninja-build libgtk-3-dev liblzma-dev libstdc++-12-dev \
+          libsecret-1-dev libjsoncpp-dev
+
+      - name: Build for Linux
+        run: flutter build linux
+
+      - name: Create TAR
+        working-directory: build/linux/x64/release/bundle
+        run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-x64.tar.gz *
+
+      - name: Upload TAR
+        uses: softprops/action-gh-release@v2
+        with:
+          files: aria-${{ github.ref_name }}-linux-x64.tar.gz
+          draft: true

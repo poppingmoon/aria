@@ -1,0 +1,7 @@
+followConfirm(rich): "Apakah kamu yakin ingin mengikuti {name}?"
+i18nInfo(rich): "Aria diterjemahkan ke dalam banyak bahasa oleh sukarelawan. Kamu juga dapat ikut membantu menerjemahkannya di {link}."
+onlineUsersCount(rich): "{n} orang sedang daring"
+renotedBy(rich): "direnote oleh {user}"
+unfollowConfirm(rich): "Berhenti mengikuti {name}?"
+userSaysSomething(rich): "Postingan oleh {name} mengandung konten sensitif"
+userSaysSomethingSensitive(rich): "Postingan oleh {name} mengandung konten sensitif"

@@ -2,37 +2,38 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 part 'antenna_settings.freezed.dart';
+part 'antenna_settings.g.dart';
 
 @freezed
 class AntennaSettings with _$AntennaSettings {
   const factory AntennaSettings({
-    @Default("") String name,
-    @Default(AntennaSource.all) AntennaSource src,
+    String? name,
+    AntennaSource? src,
     String? userListId,
-    @Default([]) List<List<String>> keywords,
-    @Default([]) List<List<String>> excludeKeywords,
-    @Default([]) List<String> users,
-    @Default(false) bool caseSensitive,
-    @Default(false) bool withReplies,
-    @Default(false) bool withFile,
-    @Default(false) bool notify,
-    @Default(false) bool localOnly,
+    List<String>? users,
+    bool? withReplies,
+    List<List<String>>? keywords,
+    List<List<String>>? excludeKeywords,
+    bool? localOnly,
+    bool? caseSensitive,
+    bool? withFile,
   }) = _AntennaSettings;
-  const AntennaSettings._();
+
+  factory AntennaSettings.fromJson(Map<String, dynamic> json) =>
+      _$AntennaSettingsFromJson(json);
 
   factory AntennaSettings.fromAntenna(Antenna antenna) {
     return AntennaSettings(
       name: antenna.name,
       src: antenna.src,
       userListId: antenna.userListId,
+      users: antenna.users,
+      withReplies: antenna.withReplies,
       keywords: antenna.keywords,
       excludeKeywords: antenna.excludeKeywords,
-      users: antenna.users,
+      localOnly: antenna.localOnly,
       caseSensitive: antenna.caseSensitive,
-      withReplies: antenna.withReplies,
       withFile: antenna.withFile,
-      notify: antenna.notify,
-      localOnly: antenna.localOnly ?? false,
     );
   }
 }

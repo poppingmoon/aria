@@ -1,0 +1,6 @@
+followConfirm(rich): "{name} ga obuna bo'lmoqchimisiz?"
+i18nInfo(rich): "Aria bir qancha volontyorlar yordamida bir qancha tillarga tarjima qilingan. Ushbu {link} orqali ularga yordam berishingiz mumkin."
+onlineUsersCount(rich): "Faol userlar {n}"
+renotedBy(rich): "{user} tomonidan qayta qayd etildi"
+unfollowConfirm(rich): "{name}ga obunani bekor qilmoqchimisiz?"
+userSaysSomething(rich): "{name} nimadir dedi"

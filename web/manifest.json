@@ -1,11 +1,11 @@
 {
-    "name": "miria",
-    "short_name": "miria",
+    "name": "aria",
+    "short_name": "aria",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A client app for Misskey, federated social media platform.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

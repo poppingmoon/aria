@@ -1,0 +1,6 @@
+followConfirm(rich): "Naozaj chcete sledovať {name}?"
+i18nInfo(rich): "Aria je prekladaný do rôznych jazykov dobrovoľníkmi. Pomôcť môžete na {link}."
+onlineUsersCount(rich): "{n} používateľov je online"
+renotedBy(rich): "{user} preposlal/a"
+unfollowConfirm(rich): "Naozaj už nechcete sledovať {name}?"
+userSaysSomething(rich): "{name} niečo povedal/a"

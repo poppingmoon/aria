@@ -1,0 +1,5 @@
+followConfirm(rich): "Är du säker att du vill följa {name}?"
+i18nInfo(rich): "Aria översätts till många olika språk av volontärer. Du kan hjälpa till med översättningen på {link}."
+onlineUsersCount(rich): "{n} användare är online"
+renotedBy(rich): "Omnoterad av {user}"
+unfollowConfirm(rich): "Är du säker att du vill avfölja {name}?"

@@ -12,7 +12,7 @@ part of 'account_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 AccountSettings _$AccountSettingsFromJson(Map<String, dynamic> json) {
   return _AccountSettings.fromJson(json);
@@ -20,21 +20,27 @@ AccountSettings _$AccountSettingsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AccountSettings {
-  String get userId => throw _privateConstructorUsedError;
-  String get host => throw _privateConstructorUsedError;
-  List<String> get reactions => throw _privateConstructorUsedError;
+// Privacy
+  bool get keepCw => throw _privateConstructorUsedError;
+  bool get rememberNoteVisibility => throw _privateConstructorUsedError;
   NoteVisibility get defaultNoteVisibility =>
       throw _privateConstructorUsedError;
-  bool get defaultIsLocalOnly => throw _privateConstructorUsedError;
-  ReactionAcceptance? get defaultReactionAcceptance =>
+  bool get defaultNoteLocalOnly => throw _privateConstructorUsedError;
+  ReactionAcceptance? get reactionAcceptance =>
       throw _privateConstructorUsedError;
-  CacheStrategy get iCacheStrategy => throw _privateConstructorUsedError;
-  DateTime? get latestICached => throw _privateConstructorUsedError;
-  CacheStrategy get emojiCacheStrategy => throw _privateConstructorUsedError;
-  DateTime? get latestEmojiCached => throw _privateConstructorUsedError;
-  CacheStrategy get metaChacheStrategy => throw _privateConstructorUsedError;
-  DateTime? get latestMetaCached => throw _privateConstructorUsedError;
-  bool get forceShowAd => throw _privateConstructorUsedError;
+  NoteVisibility get visibility => throw _privateConstructorUsedError;
+  bool get localOnly => throw _privateConstructorUsedError; // EmojiPicker
+  List<String> get pinnedEmojisForReaction =>
+      throw _privateConstructorUsedError;
+  List<String> get pinnedEmojis => throw _privateConstructorUsedError;
+  List<String> get recentlyUsedEmojis =>
+      throw _privateConstructorUsedError; // Drive
+  String? get uploadFolder => throw _privateConstructorUsedError;
+  bool get keepOriginalUploading =>
+      throw _privateConstructorUsedError; // UserSelectDialog
+  List<String> get recentlyUsedUsers =>
+      throw _privateConstructorUsedError; // PostForm
+  List<String> get hashtags => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,19 +55,20 @@ abstract class $AccountSettingsCopyWith<$Res> {
       _$AccountSettingsCopyWithImpl<$Res, AccountSettings>;
   @useResult
   $Res call(
-      {String userId,
-      String host,
-      List<String> reactions,
+      {bool keepCw,
+      bool rememberNoteVisibility,
       NoteVisibility defaultNoteVisibility,
-      bool defaultIsLocalOnly,
-      ReactionAcceptance? defaultReactionAcceptance,
-      CacheStrategy iCacheStrategy,
-      DateTime? latestICached,
-      CacheStrategy emojiCacheStrategy,
-      DateTime? latestEmojiCached,
-      CacheStrategy metaChacheStrategy,
-      DateTime? latestMetaCached,
-      bool forceShowAd});
+      bool defaultNoteLocalOnly,
+      ReactionAcceptance? reactionAcceptance,
+      NoteVisibility visibility,
+      bool localOnly,
+      List<String> pinnedEmojisForReaction,
+      List<String> pinnedEmojis,
+      List<String> recentlyUsedEmojis,
+      String? uploadFolder,
+      bool keepOriginalUploading,
+      List<String> recentlyUsedUsers,
+      List<String> hashtags});
 }
 
 /// @nodoc
@@ -77,73 +84,78 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? host = null,
-    Object? reactions = null,
+    Object? keepCw = null,
+    Object? rememberNoteVisibility = null,
     Object? defaultNoteVisibility = null,
-    Object? defaultIsLocalOnly = null,
-    Object? defaultReactionAcceptance = freezed,
-    Object? iCacheStrategy = null,
-    Object? latestICached = freezed,
-    Object? emojiCacheStrategy = null,
-    Object? latestEmojiCached = freezed,
-    Object? metaChacheStrategy = null,
-    Object? latestMetaCached = freezed,
-    Object? forceShowAd = null,
+    Object? defaultNoteLocalOnly = null,
+    Object? reactionAcceptance = freezed,
+    Object? visibility = null,
+    Object? localOnly = null,
+    Object? pinnedEmojisForReaction = null,
+    Object? pinnedEmojis = null,
+    Object? recentlyUsedEmojis = null,
+    Object? uploadFolder = freezed,
+    Object? keepOriginalUploading = null,
+    Object? recentlyUsedUsers = null,
+    Object? hashtags = null,
   }) {
     return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
-      reactions: null == reactions
-          ? _value.reactions
-          : reactions // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      keepCw: null == keepCw
+          ? _value.keepCw
+          : keepCw // ignore: cast_nullable_to_non_nullable
+              as bool,
+      rememberNoteVisibility: null == rememberNoteVisibility
+          ? _value.rememberNoteVisibility
+          : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
+              as bool,
       defaultNoteVisibility: null == defaultNoteVisibility
           ? _value.defaultNoteVisibility
           : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
               as NoteVisibility,
-      defaultIsLocalOnly: null == defaultIsLocalOnly
-          ? _value.defaultIsLocalOnly
-          : defaultIsLocalOnly // ignore: cast_nullable_to_non_nullable
+      defaultNoteLocalOnly: null == defaultNoteLocalOnly
+          ? _value.defaultNoteLocalOnly
+          : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
               as bool,
-      defaultReactionAcceptance: freezed == defaultReactionAcceptance
-          ? _value.defaultReactionAcceptance
-          : defaultReactionAcceptance // ignore: cast_nullable_to_non_nullable
+      reactionAcceptance: freezed == reactionAcceptance
+          ? _value.reactionAcceptance
+          : reactionAcceptance // ignore: cast_nullable_to_non_nullable
               as ReactionAcceptance?,
-      iCacheStrategy: null == iCacheStrategy
-          ? _value.iCacheStrategy
-          : iCacheStrategy // ignore: cast_nullable_to_non_nullable
-              as CacheStrategy,
-      latestICached: freezed == latestICached
-          ? _value.latestICached
-          : latestICached // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      emojiCacheStrategy: null == emojiCacheStrategy
-          ? _value.emojiCacheStrategy
-          : emojiCacheStrategy // ignore: cast_nullable_to_non_nullable
-              as CacheStrategy,
-      latestEmojiCached: freezed == latestEmojiCached
-          ? _value.latestEmojiCached
-          : latestEmojiCached // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      metaChacheStrategy: null == metaChacheStrategy
-          ? _value.metaChacheStrategy
-          : metaChacheStrategy // ignore: cast_nullable_to_non_nullable
-              as CacheStrategy,
-      latestMetaCached: freezed == latestMetaCached
-          ? _value.latestMetaCached
-          : latestMetaCached // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      forceShowAd: null == forceShowAd
-          ? _value.forceShowAd
-          : forceShowAd // ignore: cast_nullable_to_non_nullable
+      visibility: null == visibility
+          ? _value.visibility
+          : visibility // ignore: cast_nullable_to_non_nullable
+              as NoteVisibility,
+      localOnly: null == localOnly
+          ? _value.localOnly
+          : localOnly // ignore: cast_nullable_to_non_nullable
               as bool,
+      pinnedEmojisForReaction: null == pinnedEmojisForReaction
+          ? _value.pinnedEmojisForReaction
+          : pinnedEmojisForReaction // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      pinnedEmojis: null == pinnedEmojis
+          ? _value.pinnedEmojis
+          : pinnedEmojis // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      recentlyUsedEmojis: null == recentlyUsedEmojis
+          ? _value.recentlyUsedEmojis
+          : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      uploadFolder: freezed == uploadFolder
+          ? _value.uploadFolder
+          : uploadFolder // ignore: cast_nullable_to_non_nullable
+              as String?,
+      keepOriginalUploading: null == keepOriginalUploading
+          ? _value.keepOriginalUploading
+          : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      recentlyUsedUsers: null == recentlyUsedUsers
+          ? _value.recentlyUsedUsers
+          : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      hashtags: null == hashtags
+          ? _value.hashtags
+          : hashtags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -157,19 +169,20 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String userId,
-      String host,
-      List<String> reactions,
+      {bool keepCw,
+      bool rememberNoteVisibility,
       NoteVisibility defaultNoteVisibility,
-      bool defaultIsLocalOnly,
-      ReactionAcceptance? defaultReactionAcceptance,
-      CacheStrategy iCacheStrategy,
-      DateTime? latestICached,
-      CacheStrategy emojiCacheStrategy,
-      DateTime? latestEmojiCached,
-      CacheStrategy metaChacheStrategy,
-      DateTime? latestMetaCached,
-      bool forceShowAd});
+      bool defaultNoteLocalOnly,
+      ReactionAcceptance? reactionAcceptance,
+      NoteVisibility visibility,
+      bool localOnly,
+      List<String> pinnedEmojisForReaction,
+      List<String> pinnedEmojis,
+      List<String> recentlyUsedEmojis,
+      String? uploadFolder,
+      bool keepOriginalUploading,
+      List<String> recentlyUsedUsers,
+      List<String> hashtags});
 }
 
 /// @nodoc
@@ -183,144 +196,193 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
-    Object? host = null,
-    Object? reactions = null,
+    Object? keepCw = null,
+    Object? rememberNoteVisibility = null,
     Object? defaultNoteVisibility = null,
-    Object? defaultIsLocalOnly = null,
-    Object? defaultReactionAcceptance = freezed,
-    Object? iCacheStrategy = null,
-    Object? latestICached = freezed,
-    Object? emojiCacheStrategy = null,
-    Object? latestEmojiCached = freezed,
-    Object? metaChacheStrategy = null,
-    Object? latestMetaCached = freezed,
-    Object? forceShowAd = null,
+    Object? defaultNoteLocalOnly = null,
+    Object? reactionAcceptance = freezed,
+    Object? visibility = null,
+    Object? localOnly = null,
+    Object? pinnedEmojisForReaction = null,
+    Object? pinnedEmojis = null,
+    Object? recentlyUsedEmojis = null,
+    Object? uploadFolder = freezed,
+    Object? keepOriginalUploading = null,
+    Object? recentlyUsedUsers = null,
+    Object? hashtags = null,
   }) {
     return _then(_$AccountSettingsImpl(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
-      reactions: null == reactions
-          ? _value._reactions
-          : reactions // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      keepCw: null == keepCw
+          ? _value.keepCw
+          : keepCw // ignore: cast_nullable_to_non_nullable
+              as bool,
+      rememberNoteVisibility: null == rememberNoteVisibility
+          ? _value.rememberNoteVisibility
+          : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
+              as bool,
       defaultNoteVisibility: null == defaultNoteVisibility
           ? _value.defaultNoteVisibility
           : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
               as NoteVisibility,
-      defaultIsLocalOnly: null == defaultIsLocalOnly
-          ? _value.defaultIsLocalOnly
-          : defaultIsLocalOnly // ignore: cast_nullable_to_non_nullable
+      defaultNoteLocalOnly: null == defaultNoteLocalOnly
+          ? _value.defaultNoteLocalOnly
+          : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
               as bool,
-      defaultReactionAcceptance: freezed == defaultReactionAcceptance
-          ? _value.defaultReactionAcceptance
-          : defaultReactionAcceptance // ignore: cast_nullable_to_non_nullable
+      reactionAcceptance: freezed == reactionAcceptance
+          ? _value.reactionAcceptance
+          : reactionAcceptance // ignore: cast_nullable_to_non_nullable
               as ReactionAcceptance?,
-      iCacheStrategy: null == iCacheStrategy
-          ? _value.iCacheStrategy
-          : iCacheStrategy // ignore: cast_nullable_to_non_nullable
-              as CacheStrategy,
-      latestICached: freezed == latestICached
-          ? _value.latestICached
-          : latestICached // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      emojiCacheStrategy: null == emojiCacheStrategy
-          ? _value.emojiCacheStrategy
-          : emojiCacheStrategy // ignore: cast_nullable_to_non_nullable
-              as CacheStrategy,
-      latestEmojiCached: freezed == latestEmojiCached
-          ? _value.latestEmojiCached
-          : latestEmojiCached // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      metaChacheStrategy: null == metaChacheStrategy
-          ? _value.metaChacheStrategy
-          : metaChacheStrategy // ignore: cast_nullable_to_non_nullable
-              as CacheStrategy,
-      latestMetaCached: freezed == latestMetaCached
-          ? _value.latestMetaCached
-          : latestMetaCached // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      forceShowAd: null == forceShowAd
-          ? _value.forceShowAd
-          : forceShowAd // ignore: cast_nullable_to_non_nullable
+      visibility: null == visibility
+          ? _value.visibility
+          : visibility // ignore: cast_nullable_to_non_nullable
+              as NoteVisibility,
+      localOnly: null == localOnly
+          ? _value.localOnly
+          : localOnly // ignore: cast_nullable_to_non_nullable
               as bool,
+      pinnedEmojisForReaction: null == pinnedEmojisForReaction
+          ? _value._pinnedEmojisForReaction
+          : pinnedEmojisForReaction // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      pinnedEmojis: null == pinnedEmojis
+          ? _value._pinnedEmojis
+          : pinnedEmojis // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      recentlyUsedEmojis: null == recentlyUsedEmojis
+          ? _value._recentlyUsedEmojis
+          : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      uploadFolder: freezed == uploadFolder
+          ? _value.uploadFolder
+          : uploadFolder // ignore: cast_nullable_to_non_nullable
+              as String?,
+      keepOriginalUploading: null == keepOriginalUploading
+          ? _value.keepOriginalUploading
+          : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      recentlyUsedUsers: null == recentlyUsedUsers
+          ? _value._recentlyUsedUsers
+          : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      hashtags: null == hashtags
+          ? _value._hashtags
+          : hashtags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$AccountSettingsImpl extends _AccountSettings {
+class _$AccountSettingsImpl implements _AccountSettings {
   const _$AccountSettingsImpl(
-      {required this.userId,
-      required this.host,
-      final List<String> reactions = const [],
+      {this.keepCw = true,
+      this.rememberNoteVisibility = false,
       this.defaultNoteVisibility = NoteVisibility.public,
-      this.defaultIsLocalOnly = false,
-      this.defaultReactionAcceptance = null,
-      this.iCacheStrategy = CacheStrategy.whenTabChange,
-      this.latestICached,
-      this.emojiCacheStrategy = CacheStrategy.whenLaunch,
-      this.latestEmojiCached,
-      this.metaChacheStrategy = CacheStrategy.whenOneDay,
-      this.latestMetaCached,
-      this.forceShowAd = false})
-      : _reactions = reactions,
-        super._();
+      this.defaultNoteLocalOnly = false,
+      this.reactionAcceptance,
+      this.visibility = NoteVisibility.public,
+      this.localOnly = false,
+      final List<String> pinnedEmojisForReaction = defaultPinnedEmojis,
+      final List<String> pinnedEmojis = defaultPinnedEmojis,
+      final List<String> recentlyUsedEmojis = const [],
+      this.uploadFolder,
+      this.keepOriginalUploading = false,
+      final List<String> recentlyUsedUsers = const [],
+      final List<String> hashtags = const []})
+      : _pinnedEmojisForReaction = pinnedEmojisForReaction,
+        _pinnedEmojis = pinnedEmojis,
+        _recentlyUsedEmojis = recentlyUsedEmojis,
+        _recentlyUsedUsers = recentlyUsedUsers,
+        _hashtags = hashtags;
 
   factory _$AccountSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountSettingsImplFromJson(json);
 
-  @override
-  final String userId;
-  @override
-  final String host;
-  final List<String> _reactions;
+// Privacy
   @override
   @JsonKey()
-  List<String> get reactions {
-    if (_reactions is EqualUnmodifiableListView) return _reactions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_reactions);
-  }
-
+  final bool keepCw;
+  @override
+  @JsonKey()
+  final bool rememberNoteVisibility;
   @override
   @JsonKey()
   final NoteVisibility defaultNoteVisibility;
   @override
   @JsonKey()
-  final bool defaultIsLocalOnly;
+  final bool defaultNoteLocalOnly;
+  @override
+  final ReactionAcceptance? reactionAcceptance;
   @override
   @JsonKey()
-  final ReactionAcceptance? defaultReactionAcceptance;
+  final NoteVisibility visibility;
   @override
   @JsonKey()
-  final CacheStrategy iCacheStrategy;
-  @override
-  final DateTime? latestICached;
-  @override
-  @JsonKey()
-  final CacheStrategy emojiCacheStrategy;
-  @override
-  final DateTime? latestEmojiCached;
+  final bool localOnly;
+// EmojiPicker
+  final List<String> _pinnedEmojisForReaction;
+// EmojiPicker
   @override
   @JsonKey()
-  final CacheStrategy metaChacheStrategy;
-  @override
-  final DateTime? latestMetaCached;
+  List<String> get pinnedEmojisForReaction {
+    if (_pinnedEmojisForReaction is EqualUnmodifiableListView)
+      return _pinnedEmojisForReaction;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pinnedEmojisForReaction);
+  }
+
+  final List<String> _pinnedEmojis;
   @override
   @JsonKey()
-  final bool forceShowAd;
+  List<String> get pinnedEmojis {
+    if (_pinnedEmojis is EqualUnmodifiableListView) return _pinnedEmojis;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pinnedEmojis);
+  }
+
+  final List<String> _recentlyUsedEmojis;
+  @override
+  @JsonKey()
+  List<String> get recentlyUsedEmojis {
+    if (_recentlyUsedEmojis is EqualUnmodifiableListView)
+      return _recentlyUsedEmojis;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recentlyUsedEmojis);
+  }
+
+// Drive
+  @override
+  final String? uploadFolder;
+  @override
+  @JsonKey()
+  final bool keepOriginalUploading;
+// UserSelectDialog
+  final List<String> _recentlyUsedUsers;
+// UserSelectDialog
+  @override
+  @JsonKey()
+  List<String> get recentlyUsedUsers {
+    if (_recentlyUsedUsers is EqualUnmodifiableListView)
+      return _recentlyUsedUsers;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_recentlyUsedUsers);
+  }
+
+// PostForm
+  final List<String> _hashtags;
+// PostForm
+  @override
+  @JsonKey()
+  List<String> get hashtags {
+    if (_hashtags is EqualUnmodifiableListView) return _hashtags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_hashtags);
+  }
 
   @override
   String toString() {
-    return 'AccountSettings(userId: $userId, host: $host, reactions: $reactions, defaultNoteVisibility: $defaultNoteVisibility, defaultIsLocalOnly: $defaultIsLocalOnly, defaultReactionAcceptance: $defaultReactionAcceptance, iCacheStrategy: $iCacheStrategy, latestICached: $latestICached, emojiCacheStrategy: $emojiCacheStrategy, latestEmojiCached: $latestEmojiCached, metaChacheStrategy: $metaChacheStrategy, latestMetaCached: $latestMetaCached, forceShowAd: $forceShowAd)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
   }
 
   @override
@@ -328,50 +390,52 @@ class _$AccountSettingsImpl extends _AccountSettings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AccountSettingsImpl &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.host, host) || other.host == host) &&
-            const DeepCollectionEquality()
-                .equals(other._reactions, _reactions) &&
+            (identical(other.keepCw, keepCw) || other.keepCw == keepCw) &&
+            (identical(other.rememberNoteVisibility, rememberNoteVisibility) ||
+                other.rememberNoteVisibility == rememberNoteVisibility) &&
             (identical(other.defaultNoteVisibility, defaultNoteVisibility) ||
                 other.defaultNoteVisibility == defaultNoteVisibility) &&
-            (identical(other.defaultIsLocalOnly, defaultIsLocalOnly) ||
-                other.defaultIsLocalOnly == defaultIsLocalOnly) &&
-            (identical(other.defaultReactionAcceptance,
-                    defaultReactionAcceptance) ||
-                other.defaultReactionAcceptance == defaultReactionAcceptance) &&
-            (identical(other.iCacheStrategy, iCacheStrategy) ||
-                other.iCacheStrategy == iCacheStrategy) &&
-            (identical(other.latestICached, latestICached) ||
-                other.latestICached == latestICached) &&
-            (identical(other.emojiCacheStrategy, emojiCacheStrategy) ||
-                other.emojiCacheStrategy == emojiCacheStrategy) &&
-            (identical(other.latestEmojiCached, latestEmojiCached) ||
-                other.latestEmojiCached == latestEmojiCached) &&
-            (identical(other.metaChacheStrategy, metaChacheStrategy) ||
-                other.metaChacheStrategy == metaChacheStrategy) &&
-            (identical(other.latestMetaCached, latestMetaCached) ||
-                other.latestMetaCached == latestMetaCached) &&
-            (identical(other.forceShowAd, forceShowAd) ||
-                other.forceShowAd == forceShowAd));
+            (identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) ||
+                other.defaultNoteLocalOnly == defaultNoteLocalOnly) &&
+            (identical(other.reactionAcceptance, reactionAcceptance) ||
+                other.reactionAcceptance == reactionAcceptance) &&
+            (identical(other.visibility, visibility) ||
+                other.visibility == visibility) &&
+            (identical(other.localOnly, localOnly) ||
+                other.localOnly == localOnly) &&
+            const DeepCollectionEquality().equals(
+                other._pinnedEmojisForReaction, _pinnedEmojisForReaction) &&
+            const DeepCollectionEquality()
+                .equals(other._pinnedEmojis, _pinnedEmojis) &&
+            const DeepCollectionEquality()
+                .equals(other._recentlyUsedEmojis, _recentlyUsedEmojis) &&
+            (identical(other.uploadFolder, uploadFolder) ||
+                other.uploadFolder == uploadFolder) &&
+            (identical(other.keepOriginalUploading, keepOriginalUploading) ||
+                other.keepOriginalUploading == keepOriginalUploading) &&
+            const DeepCollectionEquality()
+                .equals(other._recentlyUsedUsers, _recentlyUsedUsers) &&
+            const DeepCollectionEquality().equals(other._hashtags, _hashtags));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      userId,
-      host,
-      const DeepCollectionEquality().hash(_reactions),
+      keepCw,
+      rememberNoteVisibility,
       defaultNoteVisibility,
-      defaultIsLocalOnly,
-      defaultReactionAcceptance,
-      iCacheStrategy,
-      latestICached,
-      emojiCacheStrategy,
-      latestEmojiCached,
-      metaChacheStrategy,
-      latestMetaCached,
-      forceShowAd);
+      defaultNoteLocalOnly,
+      reactionAcceptance,
+      visibility,
+      localOnly,
+      const DeepCollectionEquality().hash(_pinnedEmojisForReaction),
+      const DeepCollectionEquality().hash(_pinnedEmojis),
+      const DeepCollectionEquality().hash(_recentlyUsedEmojis),
+      uploadFolder,
+      keepOriginalUploading,
+      const DeepCollectionEquality().hash(_recentlyUsedUsers),
+      const DeepCollectionEquality().hash(_hashtags));
 
   @JsonKey(ignore: true)
   @override
@@ -388,52 +452,54 @@ class _$AccountSettingsImpl extends _AccountSettings {
   }
 }
 
-abstract class _AccountSettings extends AccountSettings {
+abstract class _AccountSettings implements AccountSettings {
   const factory _AccountSettings(
-      {required final String userId,
-      required final String host,
-      final List<String> reactions,
+      {final bool keepCw,
+      final bool rememberNoteVisibility,
       final NoteVisibility defaultNoteVisibility,
-      final bool defaultIsLocalOnly,
-      final ReactionAcceptance? defaultReactionAcceptance,
-      final CacheStrategy iCacheStrategy,
-      final DateTime? latestICached,
-      final CacheStrategy emojiCacheStrategy,
-      final DateTime? latestEmojiCached,
-      final CacheStrategy metaChacheStrategy,
-      final DateTime? latestMetaCached,
-      final bool forceShowAd}) = _$AccountSettingsImpl;
-  const _AccountSettings._() : super._();
+      final bool defaultNoteLocalOnly,
+      final ReactionAcceptance? reactionAcceptance,
+      final NoteVisibility visibility,
+      final bool localOnly,
+      final List<String> pinnedEmojisForReaction,
+      final List<String> pinnedEmojis,
+      final List<String> recentlyUsedEmojis,
+      final String? uploadFolder,
+      final bool keepOriginalUploading,
+      final List<String> recentlyUsedUsers,
+      final List<String> hashtags}) = _$AccountSettingsImpl;
 
   factory _AccountSettings.fromJson(Map<String, dynamic> json) =
       _$AccountSettingsImpl.fromJson;
 
+  @override // Privacy
+  bool get keepCw;
   @override
-  String get userId;
-  @override
-  String get host;
-  @override
-  List<String> get reactions;
+  bool get rememberNoteVisibility;
   @override
   NoteVisibility get defaultNoteVisibility;
   @override
-  bool get defaultIsLocalOnly;
+  bool get defaultNoteLocalOnly;
   @override
-  ReactionAcceptance? get defaultReactionAcceptance;
+  ReactionAcceptance? get reactionAcceptance;
   @override
-  CacheStrategy get iCacheStrategy;
+  NoteVisibility get visibility;
   @override
-  DateTime? get latestICached;
+  bool get localOnly;
+  @override // EmojiPicker
+  List<String> get pinnedEmojisForReaction;
   @override
-  CacheStrategy get emojiCacheStrategy;
+  List<String> get pinnedEmojis;
   @override
-  DateTime? get latestEmojiCached;
+  List<String> get recentlyUsedEmojis;
+  @override // Drive
+  String? get uploadFolder;
   @override
-  CacheStrategy get metaChacheStrategy;
-  @override
-  DateTime? get latestMetaCached;
-  @override
-  bool get forceShowAd;
+  bool get keepOriginalUploading;
+  @override // UserSelectDialog
+  List<String> get recentlyUsedUsers;
+  @override // PostForm
+  List<String> get hashtags;
   @override
   @JsonKey(ignore: true)
   _$$AccountSettingsImplCopyWith<_$AccountSettingsImpl> get copyWith =>

@@ -1,106 +1,35 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:miria/model/acct.dart';
-import 'package:misskey_dart/misskey_dart.dart';
 
 part 'account.freezed.dart';
 part 'account.g.dart';
 
-@Freezed(equal: false)
+@freezed
 class Account with _$Account {
-  const Account._();
-
   const factory Account({
     required String host,
-    required String userId,
-    String? token,
-    required MeDetailed i,
-    MetaResponse? meta,
+    String? username,
   }) = _Account;
+
+  const Account._();
 
   factory Account.fromJson(Map<String, Object?> json) =>
       _$AccountFromJson(json);
 
-  @override
-  bool operator ==(Object other) {
-    return other is Account &&
-        other.runtimeType == runtimeType &&
-        other.host == host &&
-        other.userId == userId;
+  factory Account.fromString(String input) {
+    final l = input.substring(1).split('@');
+    if (l.length == 2) {
+      return Account(host: l[1], username: l[0]);
+    } else {
+      return Account(host: input);
+    }
   }
 
-  @override
-  int get hashCode => Object.hash(runtimeType, host, userId);
+  factory Account.dummy() => const Account(host: '');
 
-  Acct get acct {
-    return Acct(
-      host: host,
-      username: userId,
-    );
+  @override
+  String toString() {
+    return username != null ? '@$username@$host' : host;
   }
 
-  factory Account.demoAccount(String host, MetaResponse? meta) => Account(
-      host: host,
-      userId: "",
-      token: null,
-      meta: meta,
-      i: MeDetailed(
-          id: "",
-          username: "",
-          createdAt: DateTime.now(),
-          avatarUrl: Uri.parse("https://example.com/"),
-          isBot: false,
-          isCat: false,
-          badgeRoles: [],
-          isLocked: false,
-          isSuspended: false,
-          isSilenced: false,
-          followingCount: 0,
-          followersCount: 0,
-          notesCount: 0,
-          publicReactions: false,
-          twoFactorEnabled: false,
-          usePasswordLessLogin: false,
-          securityKeys: false,
-          isModerator: false,
-          isAdmin: false,
-          injectFeaturedNote: false,
-          receiveAnnouncementEmail: false,
-          alwaysMarkNsfw: false,
-          autoSensitive: false,
-          carefulBot: false,
-          autoAcceptFollowed: false,
-          noCrawle: false,
-          isExplorable: false,
-          isDeleted: false,
-          hideOnlineStatus: false,
-          hasUnreadAnnouncement: false,
-          hasPendingReceivedFollowRequest: false,
-          hasUnreadAntenna: false,
-          hasUnreadChannel: false,
-          hasUnreadMentions: false,
-          hasUnreadNotification: false,
-          hasUnreadSpecifiedNotes: false,
-          mutedWords: [],
-          mutedInstances: [],
-          mutingNotificationTypes: [],
-          emailNotificationTypes: [],
-          achievements: [],
-          loggedInDays: 0,
-          policies: const UserPolicies(
-              gtlAvailable: false,
-              ltlAvailable: false,
-              canPublicNote: false,
-              canInvite: false,
-              canManageCustomEmojis: false,
-              canHideAds: false,
-              driveCapacityMb: 0,
-              pinLimit: 0,
-              antennaLimit: 0,
-              wordMuteLimit: 0,
-              webhookLimit: 0,
-              clipLimit: 0,
-              noteEachClipsLimit: 0,
-              userListLimit: 0,
-              userEachUserListsLimit: 0,
-              rateLimitFactor: 0)));
+  bool get isGuest => username == null;
 }

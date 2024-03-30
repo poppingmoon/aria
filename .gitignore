@@ -9,7 +9,6 @@
 .history
 .svn/
 migrate_working_dir/
-/coverage/
 
 # IntelliJ related
 *.iml
@@ -28,7 +27,6 @@ migrate_working_dir/
 .dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-.packages
 .pub-cache/
 .pub/
 /build/
@@ -44,9 +42,5 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-# builder
-**/node_modules/
-**/build/
-
-# Release
-/private_keys/
+# FVM Version Cache
+.fvm/

@@ -1,0 +1,3089 @@
+///
+/// Generated file. Do not edit.
+///
+// coverage:ignore-file
+// ignore_for_file: type=lint
+
+part of 'strings.g.dart';
+
+// Path: <root>
+class _StringsViVn extends Translations {
+	/// You can call this constructor and build your own translation instance of this locale.
+	/// Constructing via the enum [AppLocale.build] is preferred.
+	_StringsViVn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
+		  $meta = TranslationMetadata(
+		    locale: AppLocale.viVn,
+		    overrides: overrides ?? {},
+		    cardinalResolver: cardinalResolver,
+		    ordinalResolver: ordinalResolver,
+		  ),
+		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver) {
+		super.$meta.setFlatMapFunction($meta.getTranslation); // copy base translations to super.$meta
+		$meta.setFlatMapFunction(_flatMapFunction);
+	}
+
+	/// Metadata for the translations of <vi-VN>.
+	@override final TranslationMetadata<AppLocale, Translations> $meta;
+
+	/// Access flat map
+	@override dynamic operator[](String key) => $meta.getTranslation(key) ?? super.$meta.getTranslation(key);
+
+	@override late final _StringsViVn _root = this; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsAriaViVn aria = _StringsAriaViVn._(_root);
+	@override late final _StringsMisskeyViVn misskey = _StringsMisskeyViVn._(_root);
+}
+
+// Path: aria
+class _StringsAriaViVn extends _StringsAriaEnUs {
+	_StringsAriaViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Bạn theo dõi '),
+		name,
+		const TextSpan(text: '？'),
+	]);
+	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
+		const TextSpan(text: 'Aria đang được các tình nguyện viên dịch sang nhiều thứ tiếng khác nhau. Bạn có thể hỗ trợ tại '),
+		link,
+		const TextSpan(text: '.'),
+	]);
+	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
+		n,
+		const TextSpan(text: ' người đang online'),
+	]);
+	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Chia sẻ bởi '),
+		user,
+	]);
+	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Bạn ngừng theo dõi '),
+		name,
+		const TextSpan(text: '?'),
+	]);
+	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
+		name,
+		const TextSpan(text: ' nói gì đó'),
+	]);
+}
+
+// Path: misskey
+class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
+	_StringsMisskeyViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get lang__ => 'Tiếng Nhật';
+	@override String get headlineMisskey => 'Mạng xã hội liên hợp';
+	@override String get introMisskey => 'Xin chào! Misskey là một nền tảng tiểu blog phi tập trung mã nguồn mở.\nViết "tút" để chia sẻ những suy nghĩ của bạn 📡\nBằng "biểu cảm", bạn có thể bày tỏ nhanh chóng cảm xúc của bạn với các tút 👍\nHãy khám phá một thế giới mới! 🚀';
+	@override String poweredByMisskeyDescription({required Object name}) => '${name} là một trong những chủ máy của <b>Misskey</b> là nền tảng mã nguồn mở';
+	@override String monthAndDay({required Object day, required Object month}) => '${day} tháng ${month}';
+	@override String get search => 'Tìm kiếm';
+	@override String get notifications => 'Thông báo';
+	@override String get username => 'Tên người dùng';
+	@override String get password => 'Mật khẩu';
+	@override String get forgotPassword => 'Quên mật khẩu';
+	@override String get fetchingAsApObject => 'Đang nạp dữ liệu từ Fediverse...';
+	@override String get ok => 'Đồng ý';
+	@override String get gotIt => 'Hiểu rồi!';
+	@override String get cancel => 'Hủy';
+	@override String get noThankYou => 'Không, cảm ơn';
+	@override String get enterUsername => 'Nhập tên người dùng';
+	@override String renotedBy({required Object user}) => 'Chia sẻ bởi ${user}';
+	@override String get noNotes => 'Chưa có bài viết nào.';
+	@override String get noNotifications => 'Chưa có thông báo';
+	@override String get instance => 'Máy chủ';
+	@override String get settings => 'Cài đặt';
+	@override String get notificationSettings => 'Cài đặt thông báo';
+	@override String get basicSettings => 'Thiết lập chung';
+	@override String get otherSettings => 'Thiết lập khác';
+	@override String get openInWindow => 'Mở trong cửa sổ mới';
+	@override String get profile => 'Trang cá nhân';
+	@override String get timeline => 'Bảng tin';
+	@override String get noAccountDescription => 'Người này chưa viết mô tả.';
+	@override String get login => 'Đăng nhập';
+	@override String get loggingIn => 'Đang đăng nhập...';
+	@override String get logout => 'Đăng xuất';
+	@override String get signup => 'Đăng ký';
+	@override String get uploading => 'Đang tải lên…';
+	@override String get save => 'Lưu';
+	@override String get users => 'Người dùng';
+	@override String get addUser => 'Thêm người dùng';
+	@override String get favorite => 'Thêm vào yêu thích';
+	@override String get favorites => 'Lượt thích';
+	@override String get unfavorite => 'Bỏ thích';
+	@override String get favorited => 'Đã thêm vào yêu thích.';
+	@override String get alreadyFavorited => 'Đã thêm vào yêu thích rồi.';
+	@override String get cantFavorite => 'Không thể thêm vào yêu thích.';
+	@override String get pin => 'Ghim';
+	@override String get unpin => 'Bỏ ghim';
+	@override String get copyContent => 'Chép nội dung';
+	@override String get copyLink => 'Chép liên kết';
+	@override String get copyLinkRenote => 'Sao chép liên kết ghi chú';
+	@override String get delete => 'Xóa';
+	@override String get deleteAndEdit => 'Sửa';
+	@override String get deleteAndEditConfirm => 'Bạn có chắc muốn sửa tút này? Những biểu cảm, lượt trả lời và đăng lại sẽ bị mất.';
+	@override String get addToList => 'Thêm vào danh sách';
+	@override String get addToAntenna => 'Thêm vào Ăngten';
+	@override String get sendMessage => 'Gửi tin nhắn';
+	@override String get copyRSS => 'Sao chép RSS';
+	@override String get copyUsername => 'Chép tên người dùng';
+	@override String get copyUserId => 'Sao chép ID người dùng';
+	@override String get copyNoteId => 'Sao chép ID ghi chú';
+	@override String get copyFileId => 'Sao chép ID tập tin';
+	@override String get copyFolderId => 'Sao chép ID thư mục';
+	@override String get copyProfileUrl => 'Sao chép URL hồ sơ';
+	@override String get searchUser => 'Tìm kiếm người dùng';
+	@override String get reply => 'Trả lời';
+	@override String get loadMore => 'Tải thêm';
+	@override String get showMore => 'Xem thêm';
+	@override String get showLess => 'Đóng';
+	@override String get youGotNewFollower => 'đã theo dõi bạn';
+	@override String get receiveFollowRequest => 'Đã yêu cầu theo dõi';
+	@override String get followRequestAccepted => 'Đã chấp nhận yêu cầu theo dõi';
+	@override String get mention => 'Nhắc đến';
+	@override String get mentions => 'Lượt nhắc';
+	@override String get directNotes => 'Nhắn riêng';
+	@override String get importAndExport => 'Nhập và xuất dữ liệu';
+	@override String get import => 'Nhập dữ liệu';
+	@override String get export => 'Xuất dữ liệu';
+	@override String get files => 'Tập tin';
+	@override String get download => 'Tải xuống';
+	@override String driveFileDeleteConfirm({required Object name}) => 'Bạn có chắc muốn xóa tập tin "${name}"? Tút liên quan cũng sẽ bị xóa theo.';
+	@override String unfollowConfirm({required Object name}) => 'Bạn ngừng theo dõi ${name}?';
+	@override String get exportRequested => 'Đang chuẩn bị xuất tập tin. Quá trình này có thể mất ít phút. Nó sẽ được tự động thêm vào Drive sau khi hoàn thành.';
+	@override String get importRequested => 'Bạn vừa yêu cầu nhập dữ liệu. Quá trình này có thể mất ít phút.';
+	@override String get lists => 'Danh sách';
+	@override String get noLists => 'Bạn chưa có danh sách nào';
+	@override String get note => 'Bài viết';
+	@override String get notes => 'Bài Viết';
+	@override String get following => 'Đang theo dõi';
+	@override String get followers => 'Người theo dõi';
+	@override String get followsYou => 'Theo dõi bạn';
+	@override String get createList => 'Tạo danh sách';
+	@override String get manageLists => 'Quản lý danh sách';
+	@override String get error => 'Lỗi';
+	@override String get somethingHappened => 'Xảy ra lỗi';
+	@override String get retry => 'Thử lại';
+	@override String get pageLoadError => 'Xảy ra lỗi khi tải trang.';
+	@override String get pageLoadErrorDescription => 'Có thể là do bộ nhớ đệm của trình duyệt. Hãy thử xóa bộ nhớ đệm và thử lại sau ít phút.';
+	@override String get serverIsDead => 'Máy chủ không phản hồi. Vui lòng thử lại sau giây lát.';
+	@override String get youShouldUpgradeClient => 'Để xem trang này, hãy làm tươi để cập nhật ứng dụng.';
+	@override String get enterListName => 'Đặt tên cho danh sách';
+	@override String get privacy => 'Bảo mật';
+	@override String get makeFollowManuallyApprove => 'Yêu cầu theo dõi cần được duyệt';
+	@override String get defaultNoteVisibility => 'Kiểu tút mặc định';
+	@override String get follow => 'Theo dõi';
+	@override String get followRequest => 'Gửi yêu cầu theo dõi';
+	@override String get followRequests => 'Yêu cầu theo dõi';
+	@override String get unfollow => 'Ngưng theo dõi';
+	@override String get followRequestPending => 'Yêu cầu theo dõi đang chờ';
+	@override String get enterEmoji => 'Chèn emoji';
+	@override String get renote => 'Đăng lại';
+	@override String get unrenote => 'Hủy đăng lại';
+	@override String get renoted => 'Đã đăng lại.';
+	@override String get cantRenote => 'Không thể đăng lại tút này.';
+	@override String get cantReRenote => 'Không thể đăng lại một tút đăng lại.';
+	@override String get quote => 'Trích dẫn';
+	@override String get inChannelRenote => 'Chia sẻ trong kênh này';
+	@override String get inChannelQuote => 'Trích dẫn trong kênh này';
+	@override String get pinnedNote => 'Bài viết đã ghim';
+	@override String get pinned => 'Ghim';
+	@override String get you => 'Bạn';
+	@override String get clickToShow => 'Nhấn để xem';
+	@override String get sensitive => 'Nhạy cảm';
+	@override String get add => 'Thêm';
+	@override String get reaction => 'Biểu cảm';
+	@override String get reactions => 'Biểu cảm';
+	@override String get reactionSettingDescription2 => 'Kéo để sắp xếp, nhấn để xóa, nhấn "+" để thêm.';
+	@override String get rememberNoteVisibility => 'Lưu kiểu tút mặc định';
+	@override String get attachCancel => 'Gỡ tập tin đính kèm';
+	@override String get markAsSensitive => 'Đánh dấu là nhạy cảm';
+	@override String get unmarkAsSensitive => 'Bỏ đánh dấu nhạy cảm';
+	@override String get enterFileName => 'Nhập tên tập tin';
+	@override String get mute => 'Ẩn';
+	@override String get unmute => 'Bỏ ẩn';
+	@override String get renoteMute => 'Mute Renotes';
+	@override String get renoteUnmute => 'Unmute Renotes';
+	@override String get block => 'Chặn';
+	@override String get unblock => 'Bỏ chặn';
+	@override String get suspend => 'Vô hiệu hóa';
+	@override String get unsuspend => 'Bỏ vô hiệu hóa';
+	@override String get blockConfirm => 'Bạn có chắc muốn chặn người này?';
+	@override String get unblockConfirm => 'Bạn có chắc muốn bỏ chặn người này?';
+	@override String get suspendConfirm => 'Bạn có chắc muốn vô hiệu hóa người này?';
+	@override String get unsuspendConfirm => 'Bạn có chắc muốn bỏ vô hiệu hóa người này?';
+	@override String get selectList => 'Chọn danh sách';
+	@override String get editList => 'Chỉnh sửa danh sách';
+	@override String get selectChannel => 'Lựa chọn kênh';
+	@override String get selectAntenna => 'Chọn một antenna';
+	@override String get editAntenna => 'Chỉnh sửa Ăngten';
+	@override String get selectWidget => 'Chọn tiện ích';
+	@override String get editWidgets => 'Sửa tiện ích';
+	@override String get editWidgetsExit => 'Xong';
+	@override String get customEmojis => 'Tùy chỉnh emoji';
+	@override String get emoji => 'Emoji';
+	@override String get emojis => 'Emoji';
+	@override String get emojiName => 'Tên emoji';
+	@override String get emojiUrl => 'URL Emoji';
+	@override String get addEmoji => 'Thêm emoji';
+	@override String get settingGuide => 'Cài đặt đề xuất';
+	@override String get cacheRemoteFiles => 'Tập tin cache từ xa';
+	@override String get cacheRemoteFilesDescription => 'Khi tùy chọn này bị tắt, các tập tin từ xa sẽ được tải trực tiếp từ máy chủ khác. Điều này sẽ giúp giảm dung lượng lưu trữ nhưng lại tăng lưu lượng truy cập, vì hình thu nhỏ sẽ không được tạo.';
+	@override String get youCanCleanRemoteFilesCache => 'Bạn có thể xoá bộ nhớ đệm bằng cách nhấn vào nút🗑️ở trong phần quản lý tệp.';
+	@override String get cacheRemoteSensitiveFiles => 'Lưu các tập tin nhạy cảm vào bộ nhớ tạm từ xa';
+	@override String get cacheRemoteSensitiveFilesDescription => 'Khi bạn tắt tính năng này, các tệp nhạy cảm sẽ được tải trực tiếp từ máy chủ và không được lưu vào bộ nhớ tạm';
+	@override String get flagAsBot => 'Đánh dấu đây là tài khoản bot';
+	@override String get flagAsBotDescription => 'Bật tùy chọn này nếu tài khoản này được kiểm soát bởi một chương trình. Nếu được bật, nó sẽ được đánh dấu để các nhà phát triển khác ngăn chặn chuỗi tương tác vô tận với các bot khác và điều chỉnh hệ thống nội bộ của Misskey để coi tài khoản này như một bot.';
+	@override String get flagAsCat => 'Chế độ Mèeeeeeeeeeo!!';
+	@override String get flagAsCatDescription => 'Nếu mà em là một con mèo thì cứ bật nó kiu mèo mèo mèeeeeeeo!! ';
+	@override String get flagShowTimelineReplies => 'Hiện lượt trả lời trong bảng tin';
+	@override String get flagShowTimelineRepliesDescription => 'Hiện lượt trả lời của người bạn theo dõi trên tút của những người khác.';
+	@override String get autoAcceptFollowed => 'Tự động phê duyệt theo dõi từ những người mà bạn đang theo dõi';
+	@override String get addAccount => 'Thêm tài khoản';
+	@override String get reloadAccountsList => 'Cập nhật danh sách tài khoản';
+	@override String get loginFailed => 'Đăng nhập không thành công';
+	@override String get showOnRemote => 'Truy cập trang của người này';
+	@override String get general => 'Tổng quan';
+	@override String get wallpaper => 'Ảnh bìa';
+	@override String get setWallpaper => 'Đặt ảnh bìa';
+	@override String get removeWallpaper => 'Xóa ảnh bìa';
+	@override String searchWith({required Object q}) => 'Tìm kiếm: ${q}';
+	@override String get youHaveNoLists => 'Bạn chưa có danh sách nào';
+	@override String followConfirm({required Object name}) => 'Bạn theo dõi ${name}？';
+	@override String get proxyAccount => 'Tài khoản proxy';
+	@override String get proxyAccountDescription => 'Tài khoản proxy là tài khoản hoạt động như một người theo dõi từ xa cho người dùng trong những điều kiện nhất định. Ví dụ: khi người dùng thêm người dùng từ xa vào danh sách, hoạt động của người dùng từ xa sẽ không được chuyển đến phiên bản nếu không có người dùng cục bộ nào theo dõi người dùng đó, vì vậy tài khoản proxy sẽ theo dõi.';
+	@override String get host => 'Host';
+	@override String get selectUser => 'Chọn người dùng';
+	@override String get recipient => 'Người nhận';
+	@override String get annotation => 'Bình luận';
+	@override String get federation => 'Liên hợp';
+	@override String get instances => 'Máy chủ';
+	@override String get registeredAt => 'Đăng ký vào';
+	@override String get latestRequestReceivedAt => 'Yêu cầu cuối nhận lúc';
+	@override String get latestStatus => 'Trạng thái cuối cùng';
+	@override String get storageUsage => 'Dung lượng lưu trữ';
+	@override String get charts => 'Đồ thị';
+	@override String get perHour => 'Mỗi Giờ';
+	@override String get perDay => 'Mỗi Ngày';
+	@override String get stopActivityDelivery => 'Ngưng gửi hoạt động';
+	@override String get blockThisInstance => 'Chặn máy chủ này';
+	@override String get operations => 'Vận hành';
+	@override String get software => 'Phần mềm';
+	@override String get version => 'Phiên bản';
+	@override String get metadata => 'Metadata';
+	@override String withNFiles({required Object n}) => '${n} tập tin';
+	@override String get monitor => 'Giám sát';
+	@override String get jobQueue => 'Công việc chờ xử lý';
+	@override String get cpuAndMemory => 'CPU và Dung lượng';
+	@override String get network => 'Mạng';
+	@override String get disk => 'Ổ đĩa';
+	@override String get instanceInfo => 'Thông tin máy chủ';
+	@override String get statistics => 'Thống kê';
+	@override String get clearQueue => 'Xóa hàng đợi';
+	@override String get clearQueueConfirmTitle => 'Bạn có chắc muốn xóa hàng đợi?';
+	@override String get clearQueueConfirmText => 'Mọi tút chưa được gửi còn lại trong hàng đợi sẽ không được liên hợp. Thông thường thao tác này không cần thiết.';
+	@override String get clearCachedFiles => 'Xóa bộ nhớ đệm';
+	@override String get clearCachedFilesConfirm => 'Bạn có chắc muốn xóa sạch bộ nhớ đệm?';
+	@override String get blockedInstances => 'Máy chủ đã chặn';
+	@override String get blockedInstancesDescription => 'Danh sách những máy chủ bạn muốn chặn. Chúng sẽ không thể giao tiếp với máy chủy này nữa.';
+	@override String get muteAndBlock => 'Ẩn và Chặn';
+	@override String get mutedUsers => 'Người đã ẩn';
+	@override String get blockedUsers => 'Người đã chặn';
+	@override String get noUsers => 'Chưa có ai';
+	@override String get editProfile => 'Sửa hồ sơ';
+	@override String get noteDeleteConfirm => 'Bạn có chắc muốn xóa tút này?';
+	@override String get pinLimitExceeded => 'Bạn không thể ghim bài viết nữa';
+	@override String get intro => 'Đã cài đặt Misskey! Xin hãy tạo tài khoản admin.';
+	@override String get done => 'Xong';
+	@override String get processing => 'Đang xử lý';
+	@override String get preview => 'Xem trước';
+	@override String get default_ => 'Mặc định';
+	@override String defaultValueIs({required Object value}) => 'Mặc định: ${value}';
+	@override String get noCustomEmojis => 'Không có emoji';
+	@override String get noJobs => 'Không có công việc';
+	@override String get federating => 'Đang liên hợp';
+	@override String get blocked => 'Đã chặn';
+	@override String get suspended => 'Đã vô hiệu hóa';
+	@override String get all => 'Tất cả';
+	@override String get subscribing => 'Đang đăng ký';
+	@override String get publishing => 'Đang đăng';
+	@override String get notResponding => 'Không có phản hồi';
+	@override String get instanceFollowing => 'Đang theo dõi máy chủ';
+	@override String get instanceFollowers => 'Người theo dõi của máy chủ';
+	@override String get instanceUsers => 'Người dùng trên máy chủ này';
+	@override String get changePassword => 'Đổi mật khẩu';
+	@override String get security => 'Bảo mật';
+	@override String get retypedNotMatch => 'Mật khẩu không trùng khớp.';
+	@override String get currentPassword => 'Mật khẩu hiện tại';
+	@override String get newPassword => 'Mật khẩu mới';
+	@override String get newPasswordRetype => 'Nhập lại mật khẩu mới';
+	@override String get attachFile => 'Đính kèm tập tin';
+	@override String get more => 'Thêm nữa!';
+	@override String get featured => 'Nổi bật';
+	@override String get usernameOrUserId => 'Tên người dùng hoặc ID';
+	@override String get noSuchUser => 'Không tìm thấy người dùng';
+	@override String get lookup => 'Tìm kiếm';
+	@override String get announcements => 'Thông báo';
+	@override String get imageUrl => 'URL ảnh';
+	@override String get remove => 'Xóa';
+	@override String get removed => 'Đã xóa';
+	@override String removeAreYouSure({required Object x}) => 'Bạn có chắc muốn gỡ "${x}"?';
+	@override String deleteAreYouSure({required Object x}) => 'Bạn có chắc muốn xóa "${x}"?';
+	@override String get resetAreYouSure => 'Bạn có chắc muốn đặt lại?';
+	@override String get saved => 'Đã lưu';
+	@override String get messaging => 'Trò chuyện';
+	@override String get upload => 'Tải lên';
+	@override String get keepOriginalUploading => 'Giữ hình ảnh gốc';
+	@override String get keepOriginalUploadingDescription => 'Giữ nguyên như hình ảnh được tải lên ban đầu. Nếu tắt, một phiên bản để hiển thị trên web sẽ được tạo khi tải lên.';
+	@override String get fromDrive => 'Từ ổ đĩa';
+	@override String get fromUrl => 'Từ URL';
+	@override String get uploadFromUrl => 'Tải lên bằng một URL';
+	@override String get uploadFromUrlDescription => 'URL của tập tin bạn muốn tải lên';
+	@override String get uploadFromUrlRequested => 'Đã yêu cầu tải lên';
+	@override String get uploadFromUrlMayTakeTime => 'Sẽ mất một khoảng thời gian để tải lên xong.';
+	@override String get explore => 'Khám phá';
+	@override String get messageRead => 'Đã đọc';
+	@override String get noMoreHistory => 'Không còn gì để đọc';
+	@override String get startMessaging => 'Bắt đầu trò chuyện';
+	@override String nUsersRead({required Object n}) => 'đọc bởi ${n}';
+	@override String agreeTo({required Object x0}) => 'Tôi đồng ý ${x0}';
+	@override String get agree => 'Đồng ý';
+	@override String get agreeBelow => 'Đồng ý với nội dung dưới đây';
+	@override String get basicNotesBeforeCreateAccount => 'Những điều cơ bản cần chú ý ';
+	@override String get termsOfService => 'Điều khoản và Điều kiện';
+	@override String get start => 'Bắt đầu';
+	@override String get home => 'Trang chính';
+	@override String get remoteUserCaution => 'Vì người dùng này ở máy chủ khác, thông tin hiển thị có thể không đầy đủ.';
+	@override String get activity => 'Hoạt động';
+	@override String get images => 'Hình ảnh';
+	@override String get image => 'Hình ảnh';
+	@override String get birthday => 'Sinh nhật';
+	@override String yearsOld({required Object age}) => '${age} tuổi';
+	@override String get registeredDate => 'Tham gia';
+	@override String get location => 'Đến từ';
+	@override String get theme => 'Chủ đề';
+	@override String get themeForLightMode => 'Chủ đề dùng trong trong chế độ Sáng';
+	@override String get themeForDarkMode => 'Chủ đề dùng trong chế độ Tối';
+	@override String get light => 'Sáng';
+	@override String get dark => 'Tối';
+	@override String get lightThemes => 'Những chủ đề sáng';
+	@override String get darkThemes => 'Những chủ đề tối';
+	@override String get syncDeviceDarkMode => 'Đồng bộ với thiết bị';
+	@override String get drive => 'Ổ đĩa';
+	@override String get fileName => 'Tên tập tin';
+	@override String get selectFile => 'Chọn tập tin';
+	@override String get selectFiles => 'Chọn nhiều tập tin';
+	@override String get selectFolder => 'Chọn thư mục';
+	@override String get selectFolders => 'Chọn nhiều thư mục';
+	@override String get renameFile => 'Đổi tên tập tin';
+	@override String get folderName => 'Tên thư mục';
+	@override String get createFolder => 'Tạo thư mục';
+	@override String get renameFolder => 'Đổi tên thư mục';
+	@override String get deleteFolder => 'Xóa thư mục';
+	@override String get addFile => 'Thêm tập tin';
+	@override String get emptyDrive => 'Ổ đĩa của bạn trống trơn';
+	@override String get emptyFolder => 'Thư mục trống';
+	@override String get unableToDelete => 'Không thể xóa';
+	@override String get inputNewFileName => 'Nhập tên mới cho tập tin';
+	@override String get inputNewDescription => 'Nhập mô tả mới';
+	@override String get inputNewFolderName => 'Nhập tên mới cho thư mục';
+	@override String get circularReferenceFolder => 'Thư mục đích là một thư mục con của thư mục bạn muốn di chuyển.';
+	@override String get hasChildFilesOrFolders => 'Không thể xóa cho đến khi không còn gì trong thư mục.';
+	@override String get copyUrl => 'Sao chép URL';
+	@override String get rename => 'Đổi tên';
+	@override String get avatar => 'Ảnh đại diện';
+	@override String get banner => 'Ảnh bìa';
+	@override String get displayOfSensitiveMedia => 'Hiển thị nội dung nhạy cảm (NSFW)';
+	@override String get whenServerDisconnected => 'Khi mất kết nối tới máy chủ';
+	@override String get disconnectedFromServer => 'Mất kết nối tới máy chủ';
+	@override String get reload => 'Tải lại';
+	@override String get doNothing => 'Bỏ qua';
+	@override String get reloadConfirm => 'Bạn có muốn thử tải lại bảng tin?';
+	@override String get watch => 'Xem';
+	@override String get unwatch => 'Ngừng xem';
+	@override String get accept => 'Đồng ý';
+	@override String get reject => 'Từ chối';
+	@override String get normal => 'Bình thường';
+	@override String get instanceName => 'Tên máy chủ';
+	@override String get instanceDescription => 'Mô tả máy chủ';
+	@override String get maintainerName => 'Đội ngũ vận hành';
+	@override String get maintainerEmail => 'Email đội ngũ';
+	@override String get tosUrl => 'URL Điều khoản dịch vụ';
+	@override String get thisYear => 'Năm';
+	@override String get thisMonth => 'Tháng';
+	@override String get today => 'Hôm nay';
+	@override String dayX({required Object day}) => '${day}';
+	@override String monthX({required Object month}) => '${month}';
+	@override String yearX({required Object year}) => '${year}';
+	@override String get pages => 'Trang';
+	@override String get integration => 'Tương tác';
+	@override String get connectService => 'Kết nối';
+	@override String get disconnectService => 'Ngắt kết nối';
+	@override String get enableLocalTimeline => 'Bật bảng tin máy chủ';
+	@override String get enableGlobalTimeline => 'Bật bảng tin liên hợp';
+	@override String get disablingTimelinesInfo => 'Quản trị viên và Kiểm duyệt viên luôn có quyền truy cập mọi bảng tin, kể cả khi chúng không được bật.';
+	@override String get registration => 'Đăng ký';
+	@override String get enableRegistration => 'Cho phép đăng ký mới';
+	@override String get invite => 'Mời';
+	@override String get driveCapacityPerLocalAccount => 'Dung lượng ổ đĩa tối đa cho mỗi người dùng';
+	@override String get driveCapacityPerRemoteAccount => 'Dung lượng ổ đĩa tối đa cho mỗi người dùng từ xa';
+	@override String get inMb => 'Tính bằng MB';
+	@override String get bannerUrl => 'URL Ảnh bìa';
+	@override String get backgroundImageUrl => 'URL Ảnh nền';
+	@override String get basicInfo => 'Thông tin cơ bản';
+	@override String get pinnedUsers => 'Những người thú vị';
+	@override String get pinnedUsersDescription => 'Liệt kê mỗi hàng một tên người dùng xuống dòng để ghim trên tab "Khám phá".';
+	@override String get pinnedPages => 'Trang đã ghim';
+	@override String get pinnedPagesDescription => 'Liệt kê các trang thú vị để ghim trên máy chủ.';
+	@override String get pinnedClipId => 'ID của clip muốn ghim';
+	@override String get pinnedNotes => 'Bài viết đã ghim';
+	@override String get hcaptcha => 'hCaptcha';
+	@override String get enableHcaptcha => 'Bật hCaptcha';
+	@override String get hcaptchaSiteKey => 'Khóa của trang';
+	@override String get hcaptchaSecretKey => 'Khóa bí mật';
+	@override String get mcaptchaSiteKey => 'Khóa của trang';
+	@override String get mcaptchaSecretKey => 'Khóa bí mật';
+	@override String get recaptcha => 'reCAPTCHA';
+	@override String get enableRecaptcha => 'Bật reCAPTCHA';
+	@override String get recaptchaSiteKey => 'Khóa của trang';
+	@override String get recaptchaSecretKey => 'Khóa bí mật';
+	@override String get turnstile => 'Turnstile';
+	@override String get enableTurnstile => 'Áp dụng Turnstile';
+	@override String get turnstileSiteKey => 'Khóa của trang';
+	@override String get turnstileSecretKey => 'Khóa bí mật';
+	@override String get avoidMultiCaptchaConfirm => 'Dùng nhiều hệ thống Captcha có thể gây nhiễu giữa chúng. Bạn có muốn tắt các hệ thống Captcha khác hiện đang hoạt động không? Nếu bạn muốn chúng tiếp tục được bật, hãy nhấn hủy.';
+	@override String get antennas => 'Trạm phát sóng';
+	@override String get manageAntennas => 'Quản lý trạm phát sóng';
+	@override String get name => 'Tên';
+	@override String get antennaSource => 'Nguồn trạm phát sóng';
+	@override String get antennaKeywords => 'Từ khóa để nghe';
+	@override String get antennaExcludeKeywords => 'Từ khóa để lọc ra';
+	@override String get antennaKeywordsDescription => 'Phân cách bằng dấu cách cho điều kiện AND hoặc bằng xuống dòng cho điều kiện OR.';
+	@override String get notifyAntenna => 'Thông báo có tút mới';
+	@override String get withFileAntenna => 'Chỉ những tút có media';
+	@override String get enableServiceworker => 'Bật ServiceWorker';
+	@override String get antennaUsersDescription => 'Liệt kê mỗi hàng một tên người dùng';
+	@override String get caseSensitive => 'Trường hợp nhạy cảm';
+	@override String get withReplies => 'Bao gồm lượt trả lời';
+	@override String get connectedTo => 'Những tài khoản sau đã kết nối';
+	@override String get notesAndReplies => 'Tút kèm trả lời';
+	@override String get withFiles => 'Media';
+	@override String get silence => 'Ẩn';
+	@override String get silenceConfirm => 'Bạn có chắc muốn ẩn người này?';
+	@override String get unsilence => 'Bỏ ẩn';
+	@override String get unsilenceConfirm => 'Bạn có chắc muốn bỏ ẩn người này?';
+	@override String get popularUsers => 'Những người nổi tiếng';
+	@override String get recentlyUpdatedUsers => 'Hoạt động gần đây';
+	@override String get recentlyRegisteredUsers => 'Mới tham gia';
+	@override String get recentlyDiscoveredUsers => 'Mới khám phá';
+	@override String exploreUsersCount({required Object count}) => 'Có ${count} người';
+	@override String get exploreFediverse => 'Khám phá Fediverse';
+	@override String get popularTags => 'Hashtag thông dụng';
+	@override String get userList => 'Danh sách';
+	@override String get about => 'Giới thiệu';
+	@override String get aboutMisskey => 'Về Misskey';
+	@override String get administrator => 'Quản trị viên';
+	@override String get token => 'Token';
+	@override String get x2fa => 'Xác thực 2 yếu tố';
+	@override String get setupOf2fa => 'Thiết lập xác thực 2 yếu tố';
+	@override String get totp => 'Ứng dụng xác thực';
+	@override String get totpDescription => 'Nhắn mã OTP bằng ứng dụng xác thực';
+	@override String get moderator => 'Kiểm duyệt viên';
+	@override String get moderation => 'Kiểm duyệt';
+	@override String get moderationNote => 'Ghi chú kiểm duyệt';
+	@override String get addModerationNote => 'Thêm ghi chú kiểm duyệt';
+	@override String nUsersMentioned({required Object n}) => 'Dùng bởi ${n} người';
+	@override String get securityKeyAndPasskey => 'Mã bảo mật・Passkey';
+	@override String get securityKey => 'Khóa bảo mật';
+	@override String get lastUsed => 'Dùng lần cuối';
+	@override String lastUsedAt({required Object t}) => 'Lần cuối sử dụng: ${t}';
+	@override String get unregister => 'Hủy đăng ký';
+	@override String get passwordLessLogin => 'Đăng nhập không mật khẩu';
+	@override String get passwordLessLoginDescription => 'Đăng nhập bằng chỉ mã bảo mật hoặc passkey, không sử dụng mật khẩu.';
+	@override String get resetPassword => 'Đặt lại mật khẩu';
+	@override String newPasswordIs({required Object password}) => 'Mật khẩu mới là "${password}"';
+	@override String get reduceUiAnimation => 'Giảm chuyển động UI';
+	@override String get share => 'Chia sẻ';
+	@override String get notFound => 'Không tìm thấy';
+	@override String get notFoundDescription => 'Không tìm thấy trang nào tương ứng với URL này.';
+	@override String get uploadFolder => 'Thư mục tải lên mặc định';
+	@override String get markAsReadAllNotifications => 'Đánh dấu tất cả các thông báo là đã đọc';
+	@override String get markAsReadAllUnreadNotes => 'Đánh dấu tất cả các tút là đã đọc';
+	@override String get markAsReadAllTalkMessages => 'Đánh dấu tất cả các tin nhắn là đã đọc';
+	@override String get help => 'Trợ giúp';
+	@override String get inputMessageHere => 'Nhập nội dung tin nhắn';
+	@override String get close => 'Đóng';
+	@override String get invites => 'Mời';
+	@override String get members => 'Thành viên';
+	@override String get transfer => 'Chuyển giao';
+	@override String get title => 'Tựa đề';
+	@override String get text => 'Nội dung';
+	@override String get enable => 'Bật';
+	@override String get next => 'Kế tiếp';
+	@override String get retype => 'Nhập lại';
+	@override String noteOf({required Object user}) => 'Tút của ${user}';
+	@override String get quoteAttached => 'Trích dẫn';
+	@override String get quoteQuestion => 'Trích dẫn lại?';
+	@override String get noMessagesYet => 'Chưa có tin nhắn';
+	@override String get newMessageExists => 'Bạn có tin nhắn mới';
+	@override String get onlyOneFileCanBeAttached => 'Bạn chỉ có thể đính kèm một tập tin';
+	@override String get signinRequired => 'Vui lòng đăng nhập';
+	@override String get invitations => 'Mời';
+	@override String get invitationCode => 'Mã mời';
+	@override String get checking => 'Đang kiểm tra...';
+	@override String get available => 'Khả dụng';
+	@override String get unavailable => 'Không sử dụng được';
+	@override String get usernameInvalidFormat => 'Bạn có thể dùng viết hoa/viết thường, chữ số, và dấu gạch dưới.';
+	@override String get tooShort => 'Quá ngắn';
+	@override String get tooLong => 'Quá dài';
+	@override String get weakPassword => 'Mật khẩu yếu';
+	@override String get normalPassword => 'Mật khẩu tạm được';
+	@override String get strongPassword => 'Mật khẩu mạnh';
+	@override String get passwordMatched => 'Trùng khớp';
+	@override String get passwordNotMatched => 'Không trùng khớp';
+	@override String signinWith({required Object x}) => 'Đăng nhập bằng ${x}';
+	@override String get signinFailed => 'Không thể đăng nhập. Vui lòng kiểm tra tên người dùng và mật khẩu của bạn.';
+	@override String get or => 'Hoặc';
+	@override String get language => 'Ngôn ngữ';
+	@override String get uiLanguage => 'Ngôn ngữ giao diện';
+	@override String aboutX({required Object x}) => 'Giới thiệu ${x}';
+	@override String get emojiStyle => 'Kiểu cách Emoji';
+	@override String get native => 'Bản xứ';
+	@override String get disableDrawer => 'Không dùng menu thanh bên';
+	@override String get showNoteActionsOnlyHover => 'Chỉ hiển thị các hành động ghi chú khi di chuột';
+	@override String get noHistory => 'Không có dữ liệu';
+	@override String get signinHistory => 'Lịch sử đăng nhập';
+	@override String get enableAdvancedMfm => 'Xem bài MFM chất lượng cao.';
+	@override String get enableAnimatedMfm => 'Xem bài MFM có chuyển động';
+	@override String get doing => 'Đang xử lý...';
+	@override String get category => 'Phân loại';
+	@override String get tags => 'Thẻ';
+	@override String get docSource => 'Nguồn tài liệu';
+	@override String get createAccount => 'Tạo tài khoản';
+	@override String get existingAccount => 'Tài khoản hiện có';
+	@override String get regenerate => 'Tạo lại';
+	@override String get fontSize => 'Cỡ chữ';
+	@override String limitTo({required Object x}) => 'Giới hạn tỷ lệ ${x}';
+	@override String get noFollowRequests => 'Bạn không có yêu cầu theo dõi nào';
+	@override String get openImageInNewTab => 'Mở ảnh trong tab mới';
+	@override String get dashboard => 'Trang chính';
+	@override String get local => 'Máy chủ này';
+	@override String get remote => 'Máy chủ khác';
+	@override String get total => 'Tổng cộng';
+	@override String get weekOverWeekChanges => 'Thay đổi tuần rồi';
+	@override String get dayOverDayChanges => 'Thay đổi hôm qua';
+	@override String get appearance => 'Giao diện';
+	@override String get clientSettings => 'Cài đặt Client';
+	@override String get accountSettings => 'Cài đặt tài khoản';
+	@override String get promotion => 'Quảng cáo';
+	@override String get promote => 'Quảng cáo';
+	@override String get numberOfDays => 'Số ngày';
+	@override String get hideThisNote => 'Ẩn tút này';
+	@override String get showFeaturedNotesInTimeline => 'Hiện tút nổi bật trong bảng tin';
+	@override String get objectStorage => 'Đối tượng lưu trữ';
+	@override String get useObjectStorage => 'Dùng đối tượng lưu trữ';
+	@override String get objectStorageBaseUrl => 'Base URL';
+	@override String get objectStorageBaseUrlDesc => 'URL được sử dụng làm tham khảo. Chỉ định URL của CDN hoặc Proxy của bạn nếu bạn đang sử dụng. Với S3 dùng \'https://<bucket>.s3.amazonaws.com\', còn GCS hoặc dịch vụ tương tự dùng \'https://storage.googleapis.com/<bucket>\', etc.';
+	@override String get objectStorageBucket => 'Bucket';
+	@override String get objectStorageBucketDesc => 'Nhập tên bucket dùng ở nhà cung cấp của bạn.';
+	@override String get objectStoragePrefix => 'Tiền tố';
+	@override String get objectStoragePrefixDesc => 'Các tập tin sẽ được lưu trữ trong các thư mục có tiền tố này.';
+	@override String get objectStorageEndpoint => 'Đầu cuối';
+	@override String get objectStorageEndpointDesc => 'Để trống nếu bạn đang dùng AWS S3, nếu không thì chỉ định đầu cuối là \'<host>\' hoặc \'<host>:<port>\', tùy thuộc vào nhà cung cấp dịch vụ.';
+	@override String get objectStorageRegion => 'Khu vực';
+	@override String get objectStorageRegionDesc => 'Nhập một khu vực cụ thể như \'xx-east-1\'. Nếu nhà cung cấp dịch vụ của bạn không phân biệt giữa các khu vực, hãy để trống hoặc nhập \'us-east-1\'.';
+	@override String get objectStorageUseSSL => 'Dùng SSL';
+	@override String get objectStorageUseSSLDesc => 'Tắt nếu bạn không dùng HTTPS để kết nối API';
+	@override String get objectStorageUseProxy => 'Kết nối thông qua Proxy';
+	@override String get objectStorageUseProxyDesc => 'Tắt nếu bạn không dùng Proxy để kết nối API';
+	@override String get objectStorageSetPublicRead => 'Đặt "public-read" khi tải lên';
+	@override String get serverLogs => 'Nhật ký máy chủ';
+	@override String get deleteAll => 'Xóa tất cả';
+	@override String get showFixedPostForm => 'Hiện khung soạn tút ở phía trên bảng tin';
+	@override String get showFixedPostFormInChannel => 'Hiển thị mẫu bài đăng ở phía trên bản tin';
+	@override String get newNoteRecived => 'Đã nhận tút mới';
+	@override String get sounds => 'Âm thanh';
+	@override String get sound => 'Âm thanh';
+	@override String get listen => 'Nghe';
+	@override String get none => 'Không';
+	@override String get showInPage => 'Hiện trong trang';
+	@override String get popout => 'Pop-out';
+	@override String get volume => 'Âm lượng';
+	@override String get masterVolume => 'Âm thanh chung';
+	@override String get details => 'Chi tiết';
+	@override String get chooseEmoji => 'Chọn emoji';
+	@override String get unableToProcess => 'Không thể hoàn tất hành động';
+	@override String get recentUsed => 'Sử dụng gần đây';
+	@override String get install => 'Cài đặt';
+	@override String get uninstall => 'Gỡ bỏ';
+	@override String get installedApps => 'Ứng dụng đã cài đặt';
+	@override String get nothing => 'Không có gì ở đây';
+	@override String get installedDate => 'Cho phép vào';
+	@override String get lastUsedDate => 'Dùng gần nhất';
+	@override String get state => 'Trạng thái';
+	@override String get sort => 'Sắp xếp';
+	@override String get ascendingOrder => 'Tăng dần';
+	@override String get descendingOrder => 'Giảm dần';
+	@override String get scratchpad => 'Scratchpad';
+	@override String get scratchpadDescription => 'Scratchpad cung cấp môi trường cho các thử nghiệm AiScript. Bạn có thể viết, thực thi và kiểm tra kết quả tương tác với Misskey trong đó.';
+	@override String get output => 'Nguồn ra';
+	@override String get script => 'Kịch bản';
+	@override String get disablePagesScript => 'Tắt AiScript trên Trang';
+	@override String get updateRemoteUser => 'Cập nhật thông tin người dùng ở máy chủ khác';
+	@override String get deleteAllFiles => 'Xóa toàn bộ tập tin';
+	@override String get deleteAllFilesConfirm => 'Bạn có chắc xóa toàn bộ tập tin?';
+	@override String get removeAllFollowing => 'Ngưng theo dõi tất cả mọi người';
+	@override String removeAllFollowingDescription({required Object host}) => 'Thực hiện điều này sẽ ngưng theo dõi tất cả các tài khoản khỏi ${host}. Chỉ thực hiện điều này nếu máy chủ không còn tồn tại.';
+	@override String get userSuspended => 'Người này đã bị vô hiệu hóa.';
+	@override String get userSilenced => 'Người này đã bị ẩn';
+	@override String get yourAccountSuspendedTitle => 'Tài khoản bị vô hiệu hóa';
+	@override String get yourAccountSuspendedDescription => 'Tài khoản này đã bị vô hiệu hóa do vi phạm quy tắc máy chủ hoặc điều tương tự. Liên hệ với quản trị viên nếu bạn muốn biết lý do chi tiết hơn. Vui lòng không tạo tài khoản mới.';
+	@override String get tokenRevoked => 'Token đã bị từ chối';
+	@override String get tokenRevokedDescription => 'Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.';
+	@override String get accountDeleted => 'Tài khoản đã bị xóa';
+	@override String get accountDeletedDescription => 'Tài khoản này đã bị xóa.';
+	@override String get menu => 'Menu';
+	@override String get divider => 'Phân chia';
+	@override String get addItem => 'Thêm mục';
+	@override String get rearrange => 'Sắp xếp lại';
+	@override String get relays => 'Chuyển tiếp';
+	@override String get addRelay => 'Thêm chuyển tiếp';
+	@override String get inboxUrl => 'URL Hộp thư đến';
+	@override String get addedRelays => 'Đã thêm các chuyển tiếp';
+	@override String get serviceworkerInfo => 'Phải được bật cho thông báo đẩy.';
+	@override String get deletedNote => 'Tút đã bị xóa';
+	@override String get invisibleNote => 'Tút ẩn';
+	@override String get enableInfiniteScroll => 'Tự động tải tút mới';
+	@override String get visibility => 'Hiển thị';
+	@override String get poll => 'Bình chọn';
+	@override String get useCw => 'Ẩn nội dung';
+	@override String get enablePlayer => 'Mở trình phát video';
+	@override String get disablePlayer => 'Đóng trình phát video';
+	@override String get expandTweet => 'Mở rộng tweet';
+	@override String get themeEditor => 'Công cụ thiết kế theme';
+	@override String get description => 'Mô tả';
+	@override String get describeFile => 'Thêm mô tả';
+	@override String get enterFileDescription => 'Nhập mô tả';
+	@override String get author => 'Tác giả';
+	@override String get leaveConfirm => 'Có những thay đổi chưa được lưu. Bạn có muốn bỏ chúng không?';
+	@override String get manage => 'Quản lý';
+	@override String get plugins => 'Plugin';
+	@override String get preferencesBackups => 'Sao lưu thiết lập';
+	@override String get deck => 'Deck';
+	@override String get undeck => 'Bỏ Deck';
+	@override String get useBlurEffectForModal => 'Sử dụng hiệu ứng mờ cho các hộp thoại';
+	@override String get useFullReactionPicker => 'Dùng bộ chọn biểu cảm cỡ lớn';
+	@override String get width => 'Chiều rộng';
+	@override String get height => 'Chiều cao';
+	@override String get large => 'Lớn';
+	@override String get medium => 'Vừa';
+	@override String get small => 'Nhỏ';
+	@override String get generateAccessToken => 'Tạo mã truy cập';
+	@override String get permission => 'Cho phép ';
+	@override String get enableAll => 'Bật toàn bộ';
+	@override String get disableAll => 'Tắt toàn bộ';
+	@override String get tokenRequested => 'Cấp quyền truy cập vào tài khoản';
+	@override String get pluginTokenRequestedDescription => 'Plugin này sẽ có thể sử dụng các quyền được đặt ở đây.';
+	@override String get notificationType => 'Loại thông báo';
+	@override String get edit => 'Sửa';
+	@override String get emailServer => 'Email máy chủ';
+	@override String get enableEmail => 'Bật phân phối email';
+	@override String get emailConfigInfo => 'Được dùng để xác minh email của bạn lúc đăng ký hoặc nếu bạn quên mật khẩu của mình';
+	@override String get email => 'Email';
+	@override String get emailAddress => 'Địa chỉ email';
+	@override String get smtpConfig => 'Cấu hình máy chủ SMTP';
+	@override String get smtpHost => 'Host';
+	@override String get smtpPort => 'Cổng';
+	@override String get smtpUser => 'Tên người dùng';
+	@override String get smtpPass => 'Mật khẩu';
+	@override String get emptyToDisableSmtpAuth => 'Để trống tên người dùng và mật khẩu để tắt xác thực SMTP';
+	@override String get smtpSecure => 'Dùng SSL/TLS ngầm định cho các kết nối SMTP';
+	@override String get smtpSecureInfo => 'Tắt cái này nếu dùng STARTTLS';
+	@override String get testEmail => 'Kiểm tra vận chuyển email';
+	@override String get wordMute => 'Ẩn chữ';
+	@override String get regexpError => 'Lỗi biểu thức';
+	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Xảy ra lỗi biểu thức ở dòng ${line} của ${tab} chữ ẩn:';
+	@override String get instanceMute => 'Những máy chủ ẩn';
+	@override String userSaysSomething({required Object name}) => '${name} nói gì đó';
+	@override String get makeActive => 'Kích hoạt';
+	@override String get display => 'Hiển thị';
+	@override String get copy => 'Sao chép';
+	@override String get metrics => 'Số liệu';
+	@override String get overview => 'Tổng quan';
+	@override String get logs => 'Nhật ký';
+	@override String get delayed => 'Độ trễ';
+	@override String get database => 'Cơ sở dữ liệu';
+	@override String get channel => 'Kênh';
+	@override String get create => 'Tạo';
+	@override String get notificationSetting => 'Cài đặt thông báo';
+	@override String get notificationSettingDesc => 'Chọn loại thông báo bạn muốn hiển thị.';
+	@override String get useGlobalSetting => 'Dùng thiết lập chung';
+	@override String get useGlobalSettingDesc => 'Nếu được bật, cài đặt thông báo của bạn sẽ được áp dụng. Nếu bị tắt, có thể thực hiện các thiết lập riêng lẻ.';
+	@override String get other => 'Khác';
+	@override String get regenerateLoginToken => 'Tạo lại mã đăng nhập';
+	@override String get regenerateLoginTokenDescription => 'Tạo lại mã nội bộ có thể dùng để đăng nhập. Thông thường hành động này là không cần thiết. Nếu được tạo lại, tất cả các thiết bị sẽ bị đăng xuất.';
+	@override String get setMultipleBySeparatingWithSpace => 'Tách nhiều mục nhập bằng dấu cách.';
+	@override String get fileIdOrUrl => 'ID tập tin hoặc URL';
+	@override String get behavior => 'Thao tác';
+	@override String get sample => 'Ví dụ';
+	@override String get abuseReports => 'Lượt báo cáo';
+	@override String get reportAbuse => 'Báo cáo';
+	@override String reportAbuseOf({required Object name}) => 'Báo cáo ${name}';
+	@override String get fillAbuseReportDescription => 'Vui lòng điền thông tin chi tiết về báo cáo này. Nếu đó là về một tút cụ thể, hãy kèm theo URL của tút.';
+	@override String get abuseReported => 'Báo cáo đã được gửi. Cảm ơn bạn nhiều.';
+	@override String get reporter => 'Người báo cáo';
+	@override String get reporteeOrigin => 'Bị báo cáo';
+	@override String get reporterOrigin => 'Máy chủ người báo cáo';
+	@override String get forwardReport => 'Chuyển tiếp báo cáo cho máy chủ từ xa';
+	@override String get forwardReportIsAnonymous => 'Thay vì tài khoản của bạn, một tài khoản hệ thống ẩn danh sẽ được hiển thị dưới dạng người báo cáo ở máy chủ từ xa.';
+	@override String get send => 'Gửi';
+	@override String get abuseMarkAsResolved => 'Đánh dấu đã xử lý';
+	@override String get openInNewTab => 'Mở trong tab mới';
+	@override String get openInSideView => 'Mở trong thanh bên';
+	@override String get defaultNavigationBehaviour => 'Thao tác điều hướng mặc định';
+	@override String get editTheseSettingsMayBreakAccount => 'Việc chỉnh sửa các cài đặt này có thể làm hỏng tài khoản của bạn.';
+	@override String get instanceTicker => 'Thông tin máy chủ của tút';
+	@override String waitingFor({required Object x}) => 'Đang đợi ${x}';
+	@override String get random => 'Ngẫu nhiên';
+	@override String get system => 'Hệ thống';
+	@override String get switchUi => 'Chuyển đổi giao diện người dùng';
+	@override String get desktop => 'Desktop';
+	@override String get clip => 'Lưu bài viết';
+	@override String get createNew => 'Tạo mới';
+	@override String get optional => 'Không bắt buộc';
+	@override String get createNewClip => 'Tạo một ghim mới';
+	@override String get unclip => 'Bỏ ghim';
+	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => 'Bài đăng này là một phần của "${name}" ghim. Bạn có muốn bỏ khỏi ghim?';
+	@override String get public => 'Công khai';
+	@override String get private => 'Riêng tư';
+	@override String i18nInfo({required Object link}) => 'Misskey đang được các tình nguyện viên dịch sang nhiều thứ tiếng khác nhau. Bạn có thể hỗ trợ tại ${link}.';
+	@override String get manageAccessTokens => 'Tạo mã truy cập';
+	@override String get accountInfo => 'Thông tin tài khoản';
+	@override String get notesCount => 'Số lượng tút';
+	@override String get repliesCount => 'Số lượt trả lời đã gửi';
+	@override String get renotesCount => 'Số lượt đăng lại đã gửi';
+	@override String get repliedCount => 'Số lượt trả lời đã nhận';
+	@override String get renotedCount => 'Lượt chia sẻ';
+	@override String get followingCount => 'Số lượng người tôi theo dõi';
+	@override String get followersCount => 'Số lượng người theo dõi tôi';
+	@override String get sentReactionsCount => 'Số lượng biểu cảm đã gửi';
+	@override String get receivedReactionsCount => 'Số lượng biểu cảm đã nhận';
+	@override String get pollVotesCount => 'Số lượng bình chọn đã gửi';
+	@override String get pollVotedCount => 'Số lượng bình chọn đã nhận';
+	@override String get yes => 'Đồng ý';
+	@override String get no => 'Từ chối';
+	@override String get driveFilesCount => 'Số tập tin trong Ổ đĩa';
+	@override String get driveUsage => 'Dung lượng ổ đĩa';
+	@override String get noCrawle => 'Từ chối lập chỉ mục';
+	@override String get noCrawleDescription => 'Không cho công cụ tìm kiếm lập chỉ mục trang hồ sơ, tút, Trang, etc.';
+	@override String get lockedAccountInfo => 'Ghi chú của bạn sẽ hiển thị với bất kỳ ai, trừ khi bạn đặt chế độ hiển thị tút của mình thành "Chỉ người theo dõi".';
+	@override String get alwaysMarkSensitive => 'Luôn đánh dấu NSFW';
+	@override String get loadRawImages => 'Tải ảnh gốc thay vì ảnh thu nhỏ';
+	@override String get disableShowingAnimatedImages => 'Không phát ảnh động';
+	@override String get verificationEmailSent => 'Một email xác minh đã được gửi. Vui lòng nhấn vào liên kết đính kèm để hoàn tất xác minh.';
+	@override String get notSet => 'Chưa đặt';
+	@override String get emailVerified => 'Email đã được xác minh';
+	@override String get noteFavoritesCount => 'Số lượng tút yêu thích';
+	@override String get pageLikesCount => 'Số lượng trang đã thích';
+	@override String get pageLikedCount => 'Số lượng thích trang đã nhận';
+	@override String get contact => 'Liên hệ';
+	@override String get useSystemFont => 'Dùng phông chữ mặc định của hệ thống';
+	@override String get clips => 'Lưu bài viết';
+	@override String get experimentalFeatures => 'Tính năng thử nghiệm';
+	@override String get experimental => 'Thử nghiệm';
+	@override String get thisIsExperimentalFeature => 'Tính năng này đang trong quá trình thử nghiệm. Tính năng có thể không hoạt động, hoặc đặc tính kỹ thuật có thể bị thay đổi sau này.';
+	@override String get developer => 'Nhà phát triển';
+	@override String get makeExplorable => 'Không hiện tôi trong "Khám phá"';
+	@override String get makeExplorableDescription => 'Nếu bạn tắt, tài khoản của bạn sẽ không hiện trong mục "Khám phá".';
+	@override String get showGapBetweenNotesInTimeline => 'Hiện dải phân cách giữa các tút trên bảng tin';
+	@override String get duplicate => 'Tạo bản sao';
+	@override String get left => 'Bên trái';
+	@override String get center => 'Giữa';
+	@override String get wide => 'Rộng';
+	@override String get narrow => 'Thu hẹp';
+	@override String get reloadToApplySetting => 'Cài đặt này sẽ chỉ áp dụng sau khi tải lại trang. Tải lại ngay bây giờ?';
+	@override String get needReloadToApply => 'Cần tải lại để điều này được áp dụng.';
+	@override String get showTitlebar => 'Hiện thanh tựa đề';
+	@override String get clearCache => 'Xóa bộ nhớ đệm';
+	@override String onlineUsersCount({required Object n}) => '${n} người đang online';
+	@override String nUsers({required Object n}) => '${n} Người';
+	@override String nNotes({required Object n}) => '${n} Tút';
+	@override String get sendErrorReports => 'Báo lỗi';
+	@override String get sendErrorReportsDescription => 'Khi được bật, thông tin chi tiết về lỗi sẽ được chia sẻ với Misskey khi xảy ra sự cố, giúp nâng cao chất lượng của Misskey.\nBao gồm thông tin như phiên bản hệ điều hành của bạn, trình duyệt bạn đang sử dụng, hoạt động của bạn trong Misskey, v.v.';
+	@override String get myTheme => 'Theme của tôi';
+	@override String get backgroundColor => 'Màu nền';
+	@override String get accentColor => 'Màu phụ';
+	@override String get textColor => 'Màu chữ';
+	@override String get saveAs => 'Lưu thành';
+	@override String get advanced => 'Nâng cao';
+	@override String get advancedSettings => 'Cài đặt nâng cao';
+	@override String get value => 'Giá trị';
+	@override String get createdAt => 'Ngày tạo';
+	@override String get updatedAt => 'Cập nhật lúc';
+	@override String get saveConfirm => 'Lưu thay đổi?';
+	@override String get deleteConfirm => 'Bạn có muốn xóa không?';
+	@override String get invalidValue => 'Giá trị không hợp lệ.';
+	@override String get registry => 'Registry';
+	@override String get closeAccount => 'Đóng tài khoản';
+	@override String get currentVersion => 'Phiên bản hiện tại';
+	@override String get latestVersion => 'Phiên bản mới nhất';
+	@override String get youAreRunningUpToDateClient => 'Bạn đang sử dụng phiên bản mới nhất.';
+	@override String get newVersionOfClientAvailable => 'Có phiên bản mới cho bạn cập nhật.';
+	@override String get usageAmount => 'Sử dụng';
+	@override String get capacity => 'Sức chứa';
+	@override String get inUse => 'Đã dùng';
+	@override String get editCode => 'Chỉnh sửa mã';
+	@override String get apply => 'Áp dụng';
+	@override String get receiveAnnouncementFromInstance => 'Nhận thông báo từ máy chủ này';
+	@override String get emailNotification => 'Thông báo email';
+	@override String get publish => 'Đăng';
+	@override String get inChannelSearch => 'Tìm trong kênh';
+	@override String get useReactionPickerForContextMenu => 'Nhấn chuột phải để mở bộ chọn biểu cảm';
+	@override String typingUsers({required Object users}) => '${users} đang nhập…';
+	@override String get jumpToSpecifiedDate => 'Đến một ngày cụ thể';
+	@override String get showingPastTimeline => 'Hiện đang hiển thị dòng thời gian cũ';
+	@override String get clear => 'Hoàn lại';
+	@override String get markAllAsRead => 'Đánh dấu tất cả đã đọc';
+	@override String get goBack => 'Quay lại';
+	@override String get unlikeConfirm => 'Bạn có chắc muốn bỏ thích ?';
+	@override String get fullView => 'Kích thước đầy đủ';
+	@override String get quitFullView => 'Thoát toàn màn hình';
+	@override String get addDescription => 'Thêm mô tả';
+	@override String get userPagePinTip => 'Bạn có thể hiển thị các tút ở đây bằng cách chọn "Ghim vào hồ sơ" từ menu của mỗi tút.';
+	@override String get notSpecifiedMentionWarning => 'Tút này có đề cập đến những người không mong muốn';
+	@override String get info => 'Giới thiệu';
+	@override String get userInfo => 'Thông tin người dùng';
+	@override String get unknown => 'Chưa biết';
+	@override String get onlineStatus => 'Trạng thái';
+	@override String get hideOnlineStatus => 'Ẩn trạng thái online';
+	@override String get hideOnlineStatusDescription => 'Ẩn trạng thái online của bạn làm giảm sự tiện lợi của một số tính năng như tìm kiếm.';
+	@override String get online => 'Online';
+	@override String get active => 'Hoạt động';
+	@override String get offline => 'Offline';
+	@override String get notRecommended => 'Không đề xuất';
+	@override String get botProtection => 'Bảo vệ Bot';
+	@override String get instanceBlocking => 'Máy chủ đã chặn';
+	@override String get selectAccount => 'Chọn một tài khoản';
+	@override String get switchAccount => 'Chuyển tài khoản';
+	@override String get enabled => 'Đã bật';
+	@override String get disabled => 'Đã tắt';
+	@override String get quickAction => 'Thao tác nhanh';
+	@override String get user => 'Người dùng';
+	@override String get administration => 'Quản lý';
+	@override String get accounts => 'Tài khoản của bạn';
+	@override String get switch_ => 'Chuyển đổi';
+	@override String get noMaintainerInformationWarning => 'Chưa thiết lập thông tin vận hành.';
+	@override String get noBotProtectionWarning => 'Bảo vệ Bot chưa thiết lập.';
+	@override String get configure => 'Thiết lập';
+	@override String get postToGallery => 'Tạo tút có ảnh';
+	@override String get postToHashtag => 'Đăng bài với hashtag này';
+	@override String get gallery => 'Thư viện ảnh';
+	@override String get recentPosts => 'Tút gần đây';
+	@override String get popularPosts => 'Tút được xem nhiều nhất';
+	@override String get shareWithNote => 'Chia sẻ kèm với tút';
+	@override String get ads => 'Quảng cáo';
+	@override String get expiration => 'Thời hạn';
+	@override String get startingperiod => 'Thời gian bắt đầu\n';
+	@override String get memo => 'Lưu ý';
+	@override String get priority => 'Ưu tiên';
+	@override String get high => 'Cao';
+	@override String get middle => 'Vừa';
+	@override String get low => 'Thấp';
+	@override String get emailNotConfiguredWarning => 'Chưa đặt địa chỉ email.';
+	@override String get ratio => 'Tỷ lệ';
+	@override String get previewNoteText => 'Hiện xem trước';
+	@override String get customCss => 'Tùy chỉnh CSS';
+	@override String get customCssWarn => 'Chỉ sử dụng những cài đặt này nếu bạn biết rõ về nó. Việc nhập các giá trị không đúng có thể khiến máy chủ hoạt động không bình thường.';
+	@override String get global => 'Toàn cầu';
+	@override String get squareAvatars => 'Ảnh đại diện vuông';
+	@override String get sent => 'Gửi';
+	@override String get received => 'Đã nhận';
+	@override String get searchResult => 'Kết quả tìm kiếm';
+	@override String get hashtags => 'Hashtag';
+	@override String get troubleshooting => 'Khắc phục sự cố';
+	@override String get useBlurEffect => 'Dùng hiệu ứng làm mờ trong giao diện';
+	@override String get learnMore => 'Tìm hiểu thêm';
+	@override String get misskeyUpdated => 'Misskey vừa được cập nhật!';
+	@override String get whatIsNew => 'Hiện những thay đổi';
+	@override String get translate => 'Dịch';
+	@override String translatedFrom({required Object x}) => 'Dịch từ ${x}';
+	@override String get accountDeletionInProgress => 'Đang xử lý việc xóa tài khoản';
+	@override String get usernameInfo => 'Bạn có thể sử dụng chữ cái (a ~ z, A ~ Z), chữ số (0 ~ 9) hoặc dấu gạch dưới (_). Tên người dùng không thể thay đổi sau này.';
+	@override String get aiChanMode => 'Chế độ Ai';
+	@override String get devMode => 'Chế độ dành cho nhà phát triển';
+	@override String get keepCw => 'Giữ cảnh báo nội dung';
+	@override String get pubSub => 'Tài khoản Chính/Phụ';
+	@override String get lastCommunication => 'Lần giao tiếp cuối';
+	@override String get resolved => 'Đã xử lý';
+	@override String get unresolved => 'Chờ xử lý';
+	@override String get breakFollow => 'Xóa người theo dõi';
+	@override String get breakFollowConfirm => 'Bạn bỏ theo dõi tài khoản này không?';
+	@override String get itsOn => 'Đã bật';
+	@override String get itsOff => 'Đã tắt';
+	@override String get on => 'Bật';
+	@override String get off => 'Tắt';
+	@override String get emailRequiredForSignup => 'Yêu cầu địa chỉ email khi đăng ký';
+	@override String get unread => 'Chưa đọc';
+	@override String get filter => 'Bộ lọc';
+	@override String get controlPanel => 'Bảng điều khiển';
+	@override String get manageAccounts => 'Quản lý tài khoản';
+	@override String get makeReactionsPublic => 'Đặt lịch sử biểu cảm công khai';
+	@override String get makeReactionsPublicDescription => 'Điều này sẽ hiển thị công khai danh sách tất cả các biểu cảm trước đây của bạn.';
+	@override String get classic => 'Cổ điển';
+	@override String get muteThread => 'Không quan tâm nữa';
+	@override String get unmuteThread => 'Quan tâm tút này';
+	@override String get continueThread => 'Tiếp tục xem chuỗi tút';
+	@override String get deleteAccountConfirm => 'Điều này sẽ khiến tài khoản bị xóa vĩnh viễn. Vẫn tiếp tục?';
+	@override String get incorrectPassword => 'Sai mật khẩu.';
+	@override String voteConfirm({required Object choice}) => 'Xác nhận bình chọn "${choice}"?';
+	@override String get hide => 'Ẩn';
+	@override String get useDrawerReactionPickerForMobile => 'Hiện bộ chọn biểu cảm dạng xổ ra trên điện thoại';
+	@override String welcomeBackWithName({required Object name}) => 'Chào mừng trở lại, ${name}';
+	@override String clickToFinishEmailVerification({required Object ok}) => 'Vui lòng nhấn [${ok}] để hoàn tất việc đăng ký.';
+	@override String get overridedDeviceKind => 'Loại thiết bị';
+	@override String get smartphone => 'Điện thoại';
+	@override String get tablet => 'Máy tính bảng';
+	@override String get auto => 'Tự động';
+	@override String get themeColor => 'Màu theme';
+	@override String get size => 'Kích thước';
+	@override String get numberOfColumn => 'Số lượng cột';
+	@override String get searchByGoogle => 'Google';
+	@override String get instanceDefaultLightTheme => 'Theme máy chủ Sáng-Rộng';
+	@override String get instanceDefaultDarkTheme => 'Theme máy chủ Tối-Rộng';
+	@override String get instanceDefaultThemeDescription => 'Nhập mã theme trong định dạng đối tượng.';
+	@override String get mutePeriod => 'Thời hạn ẩn';
+	@override String get period => 'Thời hạn';
+	@override String get indefinitely => 'Vĩnh viễn';
+	@override String get tenMinutes => '10 phút';
+	@override String get oneHour => '1 giờ';
+	@override String get oneDay => '1 ngày';
+	@override String get oneWeek => '1 tuần';
+	@override String get oneMonth => '1 tháng';
+	@override String get reflectMayTakeTime => 'Có thể mất một thời gian để điều này được áp dụng.';
+	@override String get failedToFetchAccountInformation => 'Không thể lấy thông tin tài khoản';
+	@override String get rateLimitExceeded => 'Giới hạn quá mức';
+	@override String get cropImage => 'Cắt hình ảnh';
+	@override String get cropImageAsk => 'Bạn có muốn cắt ảnh này?';
+	@override String get cropYes => 'Cắt';
+	@override String get cropNo => 'Để nguyên';
+	@override String get file => 'Tập tin';
+	@override String recentNHours({required Object n}) => '${n}h trước';
+	@override String recentNDays({required Object n}) => '${n} ngày trước';
+	@override String get noEmailServerWarning => 'Chưa đặt máy chủ email.';
+	@override String get thereIsUnresolvedAbuseReportWarning => 'Có báo cáo chưa xử lí.';
+	@override String get recommended => 'Được đề xuất';
+	@override String get check => 'Kiểm tra';
+	@override String get driveCapOverrideLabel => 'Thay đổi dung lượng drive cho người này';
+	@override String get driveCapOverrideCaption => 'Đặt dung lượng drive về mặc định bằng cách nhập 0 hoặc số âm.';
+	@override String get requireAdminForView => 'Bạn phải đăng nhập như là quản trị viên mới xem được.';
+	@override String get isSystemAccount => 'Đã tạo một tài khoản và tự động vận hành bởi hệ thống.';
+	@override String typeToConfirm({required Object x}) => 'Nhấn ${x} để xác nhận';
+	@override String get deleteAccount => 'Xóa tài khoản';
+	@override String get document => 'Tài liệu';
+	@override String get numberOfPageCache => 'Số lượng trang bộ nhớ đệm';
+	@override String get numberOfPageCacheDescription => 'Việc tăng con số này sẽ cải thiện sự thuận tiện cho người dùng nhưng gây ra nhiều áp lực hơn cho máy chủ cũng như sử dụng nhiều bộ nhớ hơn.';
+	@override String get logoutConfirm => 'Bạn có chắc muốn đăng xuất?';
+	@override String get lastActiveDate => 'Lần cuối vào';
+	@override String get statusbar => 'Thanh trạng thái';
+	@override String get pleaseSelect => 'Chọn một lựa chọn';
+	@override String get reverse => 'Lật';
+	@override String get colored => 'Với màu';
+	@override String get refreshInterval => 'Cập nhật nội bộ';
+	@override String get label => 'Nhãn';
+	@override String get type => 'Loại';
+	@override String get speed => 'Tốc độ';
+	@override String get slow => 'Chậm';
+	@override String get fast => 'Nhanh';
+	@override String get sensitiveMediaDetection => 'Tự động phát hiện NSFW';
+	@override String get localOnly => 'Chỉ trên máy chủ';
+	@override String get remoteOnly => 'Chỉ máy chủ từ xa';
+	@override String get failedToUpload => 'Tải lên thất bại';
+	@override String get cannotUploadBecauseInappropriate => 'Không thể tải lên tập tin này vì các phần của tập tin đã được phát hiện có khả năng là NSFW.';
+	@override String get cannotUploadBecauseNoFreeSpace => 'Tải lên không thành công do thiếu dung lượng Drive.';
+	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Không thể tải lên tập tin vì kích thước quá lớn.';
+	@override String get beta => 'Beta';
+	@override String get enableAutoSensitive => 'Tự động đánh dấu NSFW';
+	@override String get enableAutoSensitiveDescription => 'Cho phép tự động phát hiện và đánh dấu media NSFW thông qua học máy, nếu có thể. Ngay cả khi tùy chọn này bị tắt, nó vẫn có thể được bật trên toàn máy chủ.';
+	@override String get activeEmailValidationDescription => 'Cho phép xác minh địa chỉ email chặt chẽ hơn, bao gồm việc kiểm tra các địa chỉ dùng một lần và xem nó có thực sự được giao tiếp hay không. Khi bỏ chọn, chỉ định dạng của email được xác minh.';
+	@override String get navbar => 'Thanh điều hướng';
+	@override String get shuffle => 'Xáo trộn';
+	@override String get account => 'Tài khoản của bạn';
+	@override String get move => 'Di chuyển';
+	@override String get pushNotification => 'Thông báo đẩy';
+	@override String get subscribePushNotification => 'Bật thông báo đẩy';
+	@override String get unsubscribePushNotification => 'Tắt thông báo đẩy';
+	@override String get pushNotificationAlreadySubscribed => 'Đang bật thông báo đẩy';
+	@override String get pushNotificationNotSupported => 'Trình duyệt của bạn không hỗ trợ thông báo đẩy.';
+	@override String get sendPushNotificationReadMessage => 'Xóa thông báo đẩy sau khi đọc thông báo hay tin nhắn';
+	@override String get sendPushNotificationReadMessageCaption => 'Thông báo như  sẽ hiển thị trong giây phút. Tiêu tốn pin của máy bạn có thể tăng lên hơn nữa.';
+	@override String get windowMaximize => 'Phóng to';
+	@override String get windowMinimize => 'Thu nhỏ tối đa';
+	@override String get windowRestore => 'Khôi phục';
+	@override String get caption => 'Mô tả';
+	@override String get loggedInAsBot => 'Đang đăng nhập bằng tài khoản Bot';
+	@override String get tools => 'Công Cụ';
+	@override String get cannotLoad => 'Không tải được';
+	@override String get numberOfProfileView => 'Số lần mở hồ sơ';
+	@override String get like => 'Thích';
+	@override String get unlike => 'Bỏ lượt thích';
+	@override String get numberOfLikes => 'Lượt thích';
+	@override String get show => 'Hiển thị';
+	@override String get neverShow => 'Không hiển thị nữa';
+	@override String get remindMeLater => 'Để sau';
+	@override String get didYouLikeMisskey => 'Bạn có ưa thích Mískey không?';
+	@override String pleaseDonate({required Object host}) => 'Misskey là phần mềm miễn phí mà ${host} đang sử dụng. Xin mong bạn quyên góp cho chúng tôi để chúng tôi có thể tiếp tục phát triển dịch vụ này. Xin cảm ơn!!';
+	@override String get roles => 'Vai trò';
+	@override String get role => 'Vai trò';
+	@override String get noRole => 'Bạn chưa được cấp quyền.';
+	@override String get normalUser => 'Người dùng bình thường';
+	@override String get undefined => 'Chưa xác định';
+	@override String get assign => 'Phân công';
+	@override String get unassign => 'Hủy phân công';
+	@override String get color => 'Màu sắc';
+	@override String get manageCustomEmojis => 'Quản lý CustomEmoji';
+	@override String get youCannotCreateAnymore => 'Bạn đã tới giới hạn tạo.';
+	@override String get cannotPerformTemporary => 'Tạm thời không sử dụng được';
+	@override String get cannotPerformTemporaryDescription => 'Tạm thời không sử dụng được vì lần số điều kiện quá giới hạn. Thử lại sau mọt lát nữa.';
+	@override String get invalidParamError => 'Lỗi tham số';
+	@override String get invalidParamErrorDescription => 'Có vấn đề với các tham số được request. Thông thường, đây là do bug, nhưng cũng có thể do bạn đã nhập vào quá nhiều ký tự.';
+	@override String get permissionDeniedError => 'Thao tác bị từ chối';
+	@override String get permissionDeniedErrorDescription => 'Tài khoản này không có đủ quyền hạn để thực hiện thao tác này.';
+	@override String get preset => 'Mẫu thiết lập';
+	@override String get selectFromPresets => 'Chọn từ mẫu';
+	@override String get achievements => 'Thành tích';
+	@override String get gotInvalidResponseError => 'Không nhận được trả lời chủ máy';
+	@override String get gotInvalidResponseErrorDescription => 'Chủ máy có lẻ ngừng hoạt động hoặc bảo trí. Thử lại sau một lát nữa. ';
+	@override String get thisPostMayBeAnnoying => 'Bạn đăng bài này có thể làm phiền cho người ta.';
+	@override String get thisPostMayBeAnnoyingHome => 'Đăng trên trang chính';
+	@override String get thisPostMayBeAnnoyingCancel => 'Từ chối';
+	@override String get thisPostMayBeAnnoyingIgnore => 'Đăng bài để nguyên';
+	@override String get collapseRenotes => 'Không hiển thị bài viết đã từng xem';
+	@override String get internalServerError => 'Lỗi trong chủ máy';
+	@override String get internalServerErrorDescription => 'Trong chủ máy lỗi bất ngờ xảy ra';
+	@override String get copyErrorInfo => 'Sao chép thông tin lỗi';
+	@override String get joinThisServer => 'Đăng ký trên chủ máy này';
+	@override String get exploreOtherServers => 'Tìm chủ máy khác';
+	@override String get letsLookAtTimeline => 'Thử xem Timeline';
+	@override String get emailNotSupported => 'Máy chủ này không hỗ trợ gửi email';
+	@override String get postToTheChannel => 'Đăng lên kênh';
+	@override String get cannotBeChangedLater => 'Không thể thay đổi sau này.';
+	@override String get rolesAssignedToMe => 'Vai trò được giao cho tôi';
+	@override String get resetPasswordConfirm => 'Bạn thực sự muốn đặt lại mật khẩu?';
+	@override String get sensitiveWords => 'Các từ nhạy cảm';
+	@override String get license => 'Giấy phép';
+	@override String get unfavoriteConfirm => 'Bạn thực sự muốn xoá khỏi mục yêu thích?';
+	@override String get retryAllQueuesConfirmText => 'Điều này sẽ tạm thời làm tăng mức độ tải của máy chủ.';
+	@override String get enableChartsForRemoteUser => 'Tạo biểu đồ người dùng từ xa';
+	@override String get video => 'Video';
+	@override String get videos => 'Các video';
+	@override String get dataSaver => 'Tiết kiệm dung lượng';
+	@override String get accountMigration => 'Chuyển tài khoản';
+	@override String get accountMoved => 'Người dùng này đã chuyển sang một tài khoản mới:';
+	@override String get accountMovedShort => 'Tài khoản này đã được chuyển';
+	@override String get operationForbidden => 'Thao tác này không thể thực hiện';
+	@override String get forceShowAds => 'Luôn hiện quảng cáo';
+	@override String get notificationDisplay => 'Thông báo';
+	@override String get leftTop => 'Phía trên bên tráí';
+	@override String get rightTop => 'Phía trên bên phải';
+	@override String get leftBottom => 'Phía dưới bên trái';
+	@override String get rightBottom => 'Phía dưới bên phải';
+	@override String get stackAxis => 'Hướng chồng';
+	@override String get vertical => 'Dọc';
+	@override String get horizontal => 'Thanh bên';
+	@override String get position => 'Vị trí';
+	@override String get serverRules => 'Luật của máy chủ';
+	@override String get youFollowing => 'Đang theo dõi';
+	@override String get later => 'Để sau';
+	@override String get goToMisskey => 'Tới Misskey';
+	@override String get installed => 'Đã tải xuống';
+	@override String get branding => 'Thương hiệu';
+	@override String get turnOffToImprovePerformance => 'Tắt mục này có thể cải thiện hiệu năng.';
+	@override String get expirationDate => 'Ngày hết hạn';
+	@override String get noExpirationDate => 'Vô thời hạn';
+	@override String get waitingForMailAuth => 'Đang chờ xác nhận email';
+	@override String get unused => 'Chưa được sử dụng';
+	@override String get used => 'Đã được sử dụng';
+	@override String get expired => 'Đã hết hạn';
+	@override String get doYouAgree => 'Đồng ý?';
+	@override String iHaveReadXCarefullyAndAgree({required Object x}) => 'Tôi đã đọc và đồng ý với "x". ${x}';
+	@override String get dialog => 'Hộp thoại';
+	@override String get icon => 'Ảnh đại diện';
+	@override String get forYou => 'Dành cho bạn';
+	@override String get currentAnnouncements => 'Thông báo hiện tại';
+	@override String get pastAnnouncements => 'Thông báo trước đó';
+	@override String get youHaveUnreadAnnouncements => 'Có thông báo chưa đọc.';
+	@override String get replies => 'Trả lời';
+	@override String get renotes => 'Đăng lại';
+	@override String get loadReplies => 'Hiển thị các trả lời';
+	@override String get pinnedList => 'Các mục đã được ghim';
+	@override String get keepScreenOn => 'Giữ màn hình luôn bật';
+	@override String get verifiedLink => 'Chúng tôi đã xác nhận bạn là chủ sở hữu của đường dẫn này';
+	@override String get sourceCode => 'Mã nguồn';
+	@override String get flip => 'Lật';
+	@override String lastNDays({required Object n}) => '${n} ngày trước';
+	@override String get surrender => 'Từ chối';
+	@override late final _StringsMisskeyAnnouncementViVn announcement_ = _StringsMisskeyAnnouncementViVn._(_root);
+	@override late final _StringsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _StringsMisskeyInitialAccountSettingViVn._(_root);
+	@override late final _StringsMisskeyServerSettingsViVn serverSettings_ = _StringsMisskeyServerSettingsViVn._(_root);
+	@override late final _StringsMisskeyAccountMigrationViVn accountMigration_ = _StringsMisskeyAccountMigrationViVn._(_root);
+	@override late final _StringsMisskeyAchievementsViVn achievements_ = _StringsMisskeyAchievementsViVn._(_root);
+	@override late final _StringsMisskeyRoleViVn role_ = _StringsMisskeyRoleViVn._(_root);
+	@override late final _StringsMisskeySensitiveMediaDetectionViVn sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionViVn._(_root);
+	@override late final _StringsMisskeyEmailUnavailableViVn emailUnavailable_ = _StringsMisskeyEmailUnavailableViVn._(_root);
+	@override late final _StringsMisskeyFfVisibilityViVn ffVisibility_ = _StringsMisskeyFfVisibilityViVn._(_root);
+	@override late final _StringsMisskeySignupViVn signup_ = _StringsMisskeySignupViVn._(_root);
+	@override late final _StringsMisskeyAccountDeleteViVn accountDelete_ = _StringsMisskeyAccountDeleteViVn._(_root);
+	@override late final _StringsMisskeyAdViVn ad_ = _StringsMisskeyAdViVn._(_root);
+	@override late final _StringsMisskeyForgotPasswordViVn forgotPassword_ = _StringsMisskeyForgotPasswordViVn._(_root);
+	@override late final _StringsMisskeyGalleryViVn gallery_ = _StringsMisskeyGalleryViVn._(_root);
+	@override late final _StringsMisskeyEmailViVn email_ = _StringsMisskeyEmailViVn._(_root);
+	@override late final _StringsMisskeyPluginViVn plugin_ = _StringsMisskeyPluginViVn._(_root);
+	@override late final _StringsMisskeyPreferencesBackupsViVn preferencesBackups_ = _StringsMisskeyPreferencesBackupsViVn._(_root);
+	@override late final _StringsMisskeyRegistryViVn registry_ = _StringsMisskeyRegistryViVn._(_root);
+	@override late final _StringsMisskeyAboutMisskeyViVn aboutMisskey_ = _StringsMisskeyAboutMisskeyViVn._(_root);
+	@override late final _StringsMisskeyInstanceTickerViVn instanceTicker_ = _StringsMisskeyInstanceTickerViVn._(_root);
+	@override late final _StringsMisskeyServerDisconnectedBehaviorViVn serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorViVn._(_root);
+	@override late final _StringsMisskeyChannelViVn channel_ = _StringsMisskeyChannelViVn._(_root);
+	@override late final _StringsMisskeyMenuDisplayViVn menuDisplay_ = _StringsMisskeyMenuDisplayViVn._(_root);
+	@override late final _StringsMisskeyWordMuteViVn wordMute_ = _StringsMisskeyWordMuteViVn._(_root);
+	@override late final _StringsMisskeyInstanceMuteViVn instanceMute_ = _StringsMisskeyInstanceMuteViVn._(_root);
+	@override late final _StringsMisskeyThemeViVn theme_ = _StringsMisskeyThemeViVn._(_root);
+	@override late final _StringsMisskeySfxViVn sfx_ = _StringsMisskeySfxViVn._(_root);
+	@override late final _StringsMisskeyAgoViVn ago_ = _StringsMisskeyAgoViVn._(_root);
+	@override late final _StringsMisskeyTimeViVn time_ = _StringsMisskeyTimeViVn._(_root);
+	@override late final _StringsMisskeyX2faViVn x2fa_ = _StringsMisskeyX2faViVn._(_root);
+	@override late final _StringsMisskeyPermissionsViVn permissions_ = _StringsMisskeyPermissionsViVn._(_root);
+	@override late final _StringsMisskeyAuthViVn auth_ = _StringsMisskeyAuthViVn._(_root);
+	@override late final _StringsMisskeyAntennaSourcesViVn antennaSources_ = _StringsMisskeyAntennaSourcesViVn._(_root);
+	@override late final _StringsMisskeyWeekdayViVn weekday_ = _StringsMisskeyWeekdayViVn._(_root);
+	@override late final _StringsMisskeyWidgetsViVn widgets_ = _StringsMisskeyWidgetsViVn._(_root);
+	@override late final _StringsMisskeyCwViVn cw_ = _StringsMisskeyCwViVn._(_root);
+	@override late final _StringsMisskeyPollViVn poll_ = _StringsMisskeyPollViVn._(_root);
+	@override late final _StringsMisskeyVisibilityViVn visibility_ = _StringsMisskeyVisibilityViVn._(_root);
+	@override late final _StringsMisskeyPostFormViVn postForm_ = _StringsMisskeyPostFormViVn._(_root);
+	@override late final _StringsMisskeyProfileViVn profile_ = _StringsMisskeyProfileViVn._(_root);
+	@override late final _StringsMisskeyExportOrImportViVn exportOrImport_ = _StringsMisskeyExportOrImportViVn._(_root);
+	@override late final _StringsMisskeyChartsViVn charts_ = _StringsMisskeyChartsViVn._(_root);
+	@override late final _StringsMisskeyInstanceChartsViVn instanceCharts_ = _StringsMisskeyInstanceChartsViVn._(_root);
+	@override late final _StringsMisskeyTimelinesViVn timelines_ = _StringsMisskeyTimelinesViVn._(_root);
+	@override late final _StringsMisskeyPlayViVn play_ = _StringsMisskeyPlayViVn._(_root);
+	@override late final _StringsMisskeyPagesViVn pages_ = _StringsMisskeyPagesViVn._(_root);
+	@override late final _StringsMisskeyRelayStatusViVn relayStatus_ = _StringsMisskeyRelayStatusViVn._(_root);
+	@override late final _StringsMisskeyNotificationViVn notification_ = _StringsMisskeyNotificationViVn._(_root);
+	@override late final _StringsMisskeyDeckViVn deck_ = _StringsMisskeyDeckViVn._(_root);
+	@override late final _StringsMisskeyDialogViVn dialog_ = _StringsMisskeyDialogViVn._(_root);
+	@override late final _StringsMisskeyWebhookSettingsViVn webhookSettings_ = _StringsMisskeyWebhookSettingsViVn._(_root);
+	@override late final _StringsMisskeyModerationLogTypesViVn moderationLogTypes_ = _StringsMisskeyModerationLogTypesViVn._(_root);
+	@override late final _StringsMisskeyReversiViVn reversi_ = _StringsMisskeyReversiViVn._(_root);
+}
+
+// Path: misskey.announcement_
+class _StringsMisskeyAnnouncementViVn extends _StringsMisskeyAnnouncementEnUs {
+	_StringsMisskeyAnnouncementViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get forExistingUsers => 'Chỉ những người dùng đã tồn tại';
+	@override String get forExistingUsersDescription => 'Nếu được bật, thông báo này sẽ chỉ hiển thị với những người dùng đã tồn tại vào lúc thông báo được tạo. Nếu tắt đi, những tài khoản mới đăng ký sau khi thông báo được đăng lên cũng sẽ thấy nó.';
+	@override String get end => 'Lưu trữ thông báo';
+	@override String get tooManyActiveAnnouncementDescription => 'Có quá nhiều thông báo sẽ làm trải nghiệm của người dùng tệ đi. Vui lòng lưu trữ những thông báo đã hết hiệu lực.';
+	@override String get readConfirmTitle => 'Đánh dấu là đã đọc?';
+	@override String readConfirmText({required Object title}) => 'Điều này sẽ đánh dấu nội dung của "${title}" là đã đọc.';
+}
+
+// Path: misskey.initialAccountSetting_
+class _StringsMisskeyInitialAccountSettingViVn extends _StringsMisskeyInitialAccountSettingEnUs {
+	_StringsMisskeyInitialAccountSettingViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get accountCreated => 'Tài khoản của bạn đã được tạo thành công!';
+	@override String get letsStartAccountSetup => 'Để bắt đầu, hãy cùng thiết lập tài khoản nhé.';
+	@override String get letsFillYourProfile => 'Đầu tiên, hãy thiết lập hồ sơ của bạn.';
+	@override String get profileSetting => 'Thiết lập hồ sơ';
+	@override String get privacySetting => 'Cài đặt quyền riêng tư';
+	@override String get theseSettingsCanEditLater => 'Bạn vẫn có thể thay đổi những cài đặt này.';
+	@override String get youCanEditMoreSettingsInSettingsPageLater => 'Còn rất nhiều những cài đặt khác bạn có thể thay đổi ở trang "Cài đặt". Hãy nhớ ghé thăm trong lần sau nhé.';
+	@override String get followUsers => 'Thử theo dõi một vài người mà bạn có thể thích để xây dựng dòng thời gian của mình.';
+	@override String pushNotificationDescription({required Object name}) => 'Bật thông báo đẩy sẽ cho phép bạn nhận thông báo từ ${name} trực tiếp từ thiết bị của bạn.';
+	@override String get initialAccountSettingCompleted => 'Thiết lập tài khoản thành công!';
+	@override String haveFun({required Object name}) => 'Hãy tận hưởng ${name} nhé!';
+	@override String get skipAreYouSure => 'Bạn thực sự muốn bỏ qua mục thiết lập tài khoản?';
+	@override String get laterAreYouSure => 'Bạn thực sự muốn thiết lập tài khoản vào lúc khác?';
+}
+
+// Path: misskey.serverSettings_
+class _StringsMisskeyServerSettingsViVn extends _StringsMisskeyServerSettingsEnUs {
+	_StringsMisskeyServerSettingsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get iconUrl => 'Biểu tượng URL';
+	@override String appIconResolutionMustBe({required Object resolution}) => 'Độ phân giải tối thiểu là ${resolution}.';
+	@override String get manifestJsonOverride => 'Ghi đè manifest.json';
+}
+
+// Path: misskey.accountMigration_
+class _StringsMisskeyAccountMigrationViVn extends _StringsMisskeyAccountMigrationEnUs {
+	_StringsMisskeyAccountMigrationViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get moveFrom => 'Chuyển một tài khoản khác vào tài khoản này';
+	@override String moveFromLabel({required Object n}) => 'Tài khoản gốc #${n}';
+	@override String get moveTo => 'Chuyển tài khoản này vào một tài khoản khác';
+	@override String get moveCannotBeUndone => 'Việc chuyển tài khoản không thể huỷ.';
+	@override String get moveAccountDescription => 'Điều này sẽ chuyển tài khoản này sang một tài khoản khác.\n　・Những người theo dõi sẽ tự động được chuyển sang tài khoản mới\n　・Tài khoản này sẽ tự bỏ theo dõi những người mà bạn đã theo dõi trước đây\n　・Bạn sẽ không thể đăng tút mới, v.v trên tài khoản này\n\nDù việc chuyển người theo dõi được diễn ra tự động, bạn vẫn phải tự chuẩn bị một vài bước để chuyển danh sách những người dùng bạn đang theo dõi. Để làm vậy, vui lòng thực hiện việc xuất dữ liệu những người dùng đã theo dõi mà sau này bạn sẽ dùng để nhập vào tài khoản mới ở menu Cài đặt. Hành động tương tự áp dụng với danh sách những người dùng bị chặn hoặc tắt tiếng.\n\n(Điều này áp dụng cho phiên bản Misskey v13.12.0 và sau này. Các phần mềm ActivityPub khác , ví dụ như Mastodon, sẽ có thể hoạt động khác đi.)';
+	@override String get startMigration => 'Chuyển';
+	@override String get movedAndCannotBeUndone => '\nTài khoản này đã được chuyển đi.\nViệc di chuyển tài khoản không thể bị huỷ bỏ.';
+	@override String get movedTo => 'Tài khoản mới:';
+}
+
+// Path: misskey.achievements_
+class _StringsMisskeyAchievementsViVn extends _StringsMisskeyAchievementsEnUs {
+	_StringsMisskeyAchievementsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get earnedAt => 'Ngày thu nhận';
+	@override late final _StringsMisskeyAchievementsTypesViVn types_ = _StringsMisskeyAchievementsTypesViVn._(_root);
+}
+
+// Path: misskey.role_
+class _StringsMisskeyRoleViVn extends _StringsMisskeyRoleEnUs {
+	_StringsMisskeyRoleViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get assignTarget => 'Phân công';
+	@override String get priority => 'Ưu tiên';
+	@override late final _StringsMisskeyRolePriorityViVn priority_ = _StringsMisskeyRolePriorityViVn._(_root);
+	@override late final _StringsMisskeyRoleOptionsViVn options_ = _StringsMisskeyRoleOptionsViVn._(_root);
+	@override late final _StringsMisskeyRoleConditionViVn condition_ = _StringsMisskeyRoleConditionViVn._(_root);
+}
+
+// Path: misskey.sensitiveMediaDetection_
+class _StringsMisskeySensitiveMediaDetectionViVn extends _StringsMisskeySensitiveMediaDetectionEnUs {
+	_StringsMisskeySensitiveMediaDetectionViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => 'Giảm nỗ lực kiểm duyệt máy chủ thông qua việc tự động nhận dạng media NSFW thông qua học máy. Điều này sẽ làm tăng một chút áp lực trên máy chủ.';
+	@override String get sensitivity => 'Phát hiện nhạy cảm';
+	@override String get sensitivityDescription => 'Giảm độ nhạy sẽ dẫn đến ít phát hiện sai hơn (dương tính giả), tăng nó sẽ dẫn đến ít phát hiện sai hơn (âm tính giả).';
+	@override String get setSensitiveFlagAutomatically => 'Đánh dấu là NSFW';
+	@override String get setSensitiveFlagAutomaticallyDescription => 'Kết quả của phát hiện nội bộ sẽ được giữ lại ngay cả khi tùy chọn này bị tắt.';
+	@override String get analyzeVideos => 'Bật chuẩn đoán video';
+	@override String get analyzeVideosDescription => 'Phân tích video bên cạnh hình ảnh. Điều này sẽ làm tăng một chút áp lực trên máy chủ.';
+}
+
+// Path: misskey.emailUnavailable_
+class _StringsMisskeyEmailUnavailableViVn extends _StringsMisskeyEmailUnavailableEnUs {
+	_StringsMisskeyEmailUnavailableViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get used => 'Địa chỉ email đã được sử dụng';
+	@override String get format => 'Địa chỉ email không hợp lệ';
+	@override String get disposable => 'Cấm sử dụng địa chỉ email dùng một lần';
+	@override String get mx => 'Máy chủ email không hợp lệ';
+	@override String get smtp => 'Máy chủ email không phản hồi';
+}
+
+// Path: misskey.ffVisibility_
+class _StringsMisskeyFfVisibilityViVn extends _StringsMisskeyFfVisibilityEnUs {
+	_StringsMisskeyFfVisibilityViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get public => 'Đăng';
+	@override String get followers => 'Chỉ người theo dõi mới xem được';
+	@override String get private => 'Riêng tư';
+}
+
+// Path: misskey.signup_
+class _StringsMisskeySignupViVn extends _StringsMisskeySignupEnUs {
+	_StringsMisskeySignupViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get almostThere => 'Gần xong rồi';
+	@override String get emailAddressInfo => 'Hãy điền địa chỉ email của bạn. Nó sẽ không được công khai.';
+	@override String emailSent({required Object email}) => 'Một email xác minh đã được gửi đến địa chỉ email (${email}) của bạn. Vui lòng nhấn vào liên kết trong đó để hoàn tất việc tạo tài khoản.';
+}
+
+// Path: misskey.accountDelete_
+class _StringsMisskeyAccountDeleteViVn extends _StringsMisskeyAccountDeleteEnUs {
+	_StringsMisskeyAccountDeleteViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get accountDelete => 'Xóa tài khoản';
+	@override String get mayTakeTime => 'Vì xóa tài khoản là một quá trình tốn nhiều tài nguyên nên có thể mất một khoảng thời gian để hoàn thành, tùy thuộc vào lượng nội dung bạn đã tạo và số lượng tập tin bạn đã tải lên.';
+	@override String get sendEmail => 'Sau khi hoàn tất việc xóa tài khoản, một email sẽ được gửi đến địa chỉ email đã đăng ký tài khoản này.';
+	@override String get requestAccountDelete => 'Yêu cầu xóa tài khoản';
+	@override String get started => 'Đang bắt đầu xóa tài khoản.';
+	@override String get inProgress => 'Đang xóa dần tài khoản.';
+}
+
+// Path: misskey.ad_
+class _StringsMisskeyAdViVn extends _StringsMisskeyAdEnUs {
+	_StringsMisskeyAdViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get back => 'Quay lại';
+	@override String get reduceFrequencyOfThisAd => 'Hiện ít lại';
+	@override String get hide => 'Không hiển thị';
+}
+
+// Path: misskey.forgotPassword_
+class _StringsMisskeyForgotPasswordViVn extends _StringsMisskeyForgotPasswordEnUs {
+	_StringsMisskeyForgotPasswordViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get enterEmail => 'Nhập địa chỉ email bạn đã sử dụng để đăng ký. Một liên kết mà bạn có thể đặt lại mật khẩu của mình sau đó sẽ được gửi đến nó.';
+	@override String get ifNoEmail => 'Nếu bạn không sử dụng email lúc đăng ký, vui lòng liên hệ với quản trị viên.';
+	@override String get contactAdmin => 'Máy chủ này không hỗ trợ sử dụng địa chỉ email, vui lòng liên hệ với quản trị viên để đặt lại mật khẩu của bạn.';
+}
+
+// Path: misskey.gallery_
+class _StringsMisskeyGalleryViVn extends _StringsMisskeyGalleryEnUs {
+	_StringsMisskeyGalleryViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get my => 'Kho Ảnh';
+	@override String get liked => 'Tút Đã Thích';
+	@override String get like => 'Thích';
+	@override String get unlike => 'Bỏ thích';
+}
+
+// Path: misskey.email_
+class _StringsMisskeyEmailViVn extends _StringsMisskeyEmailEnUs {
+	_StringsMisskeyEmailViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyEmailFollowViVn follow_ = _StringsMisskeyEmailFollowViVn._(_root);
+	@override late final _StringsMisskeyEmailReceiveFollowRequestViVn receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestViVn._(_root);
+}
+
+// Path: misskey.plugin_
+class _StringsMisskeyPluginViVn extends _StringsMisskeyPluginEnUs {
+	_StringsMisskeyPluginViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get install => 'Cài đặt tiện ích';
+	@override String get installWarn => 'Vui lòng không cài đặt những tiện ích đáng ngờ.';
+	@override String get manage => 'Quản lý plugin';
+	@override String get viewSource => 'Xem mã nguồn';
+}
+
+// Path: misskey.preferencesBackups_
+class _StringsMisskeyPreferencesBackupsViVn extends _StringsMisskeyPreferencesBackupsEnUs {
+	_StringsMisskeyPreferencesBackupsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get list => 'Tạo sao lưu';
+	@override String get saveNew => 'Lưu bản sao lưu';
+	@override String get loadFile => 'Nhập tập tin';
+	@override String get apply => 'Áp dụng lên thiết bị này';
+	@override String get save => 'Lưu thay đổi';
+	@override String get inputName => 'Nhập tên bản sao lưu';
+	@override String get cannotSave => 'Không thể lưu';
+	@override String nameAlreadyExists({required Object name}) => 'Bản sao lưu "${name}" đã tồn tại. Xin nhập tên khác.';
+	@override String applyConfirm({required Object name}) => 'Bạn có chắc muốn áp dụng bản sao lưu "${name}" cho thiết bị này? Thiết lập hiện tại sẽ bị ghi đè.';
+	@override String saveConfirm({required Object name}) => 'Lưu bản sao lưu ${name}?';
+	@override String deleteConfirm({required Object name}) => 'Xóa bản sao lưu ${name}?';
+	@override String renameConfirm({required Object old, required Object new_}) => 'Đổi tên bản sao lưu "${old}" thành "${new_}"?';
+	@override String get noBackups => 'Chưa có bản sao lưu. Bạn có thể sao lưu thiết lập trên máy chủ này bằng cách sử dụng "Tạo sao lưu".';
+	@override String createdAt({required Object time, required Object date}) => 'Tạo vào: ${time} ${date}';
+	@override String updatedAt({required Object time, required Object date}) => 'Cập nhật: ${time} ${date}';
+	@override String get cannotLoad => 'Tải thất bại';
+	@override String get invalidFile => 'Sai định dạng tập tin';
+}
+
+// Path: misskey.registry_
+class _StringsMisskeyRegistryViVn extends _StringsMisskeyRegistryEnUs {
+	_StringsMisskeyRegistryViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get scope => 'Phạm vi';
+	@override String get key => 'Mã';
+	@override String get keys => 'Các mã';
+	@override String get domain => 'Tên miền';
+	@override String get createKey => 'Tạo mã';
+}
+
+// Path: misskey.aboutMisskey_
+class _StringsMisskeyAboutMisskeyViVn extends _StringsMisskeyAboutMisskeyEnUs {
+	_StringsMisskeyAboutMisskeyViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get about => 'Misskey là phần mềm mã nguồn mở được phát triển bởi syuilo từ năm 2014.';
+	@override String get contributors => 'Những người đóng góp nổi bật';
+	@override String get allContributors => 'Toàn bộ người đóng góp';
+	@override String get source => 'Mã nguồn';
+	@override String get translation => 'Dịch Misskey';
+	@override String get donate => 'Ủng hộ Misskey';
+	@override String get morePatrons => 'Chúng tôi cũng trân trọng sự hỗ trợ của nhiều người đóng góp khác không được liệt kê ở đây. Cảm ơn! 🥰';
+	@override String get patrons => 'Người ủng hộ';
+}
+
+// Path: misskey.instanceTicker_
+class _StringsMisskeyInstanceTickerViVn extends _StringsMisskeyInstanceTickerEnUs {
+	_StringsMisskeyInstanceTickerViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Không hiển thị';
+	@override String get remote => 'Hiện cho người dùng từ máy chủ khác';
+	@override String get always => 'Luôn hiện';
+}
+
+// Path: misskey.serverDisconnectedBehavior_
+class _StringsMisskeyServerDisconnectedBehaviorViVn extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
+	_StringsMisskeyServerDisconnectedBehaviorViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get reload => 'Tự động tải lại';
+	@override String get dialog => 'Hiện hộp thoại cảnh báo';
+	@override String get quiet => 'Hiển thị cảnh báo không phô trương';
+}
+
+// Path: misskey.channel_
+class _StringsMisskeyChannelViVn extends _StringsMisskeyChannelEnUs {
+	_StringsMisskeyChannelViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get create => 'Tạo kênh';
+	@override String get edit => 'Chỉnh sửa kênh';
+	@override String get setBanner => 'Đặt ảnh bìa';
+	@override String get removeBanner => 'Xóa ảnh bìa';
+	@override String get featured => 'Xu hướng';
+	@override String get owned => 'Do tôi quản lý';
+	@override String get following => 'Đang theo dõi';
+	@override String usersCount({required Object n}) => '${n} Thành viên';
+	@override String notesCount({required Object n}) => '${n} Tút';
+}
+
+// Path: misskey.menuDisplay_
+class _StringsMisskeyMenuDisplayViVn extends _StringsMisskeyMenuDisplayEnUs {
+	_StringsMisskeyMenuDisplayViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get sideFull => 'Thanh bên';
+	@override String get sideIcon => 'Thanh bên (Biểu tượng)';
+	@override String get top => 'Trên cùng';
+	@override String get hide => 'Ẩn';
+}
+
+// Path: misskey.wordMute_
+class _StringsMisskeyWordMuteViVn extends _StringsMisskeyWordMuteEnUs {
+	_StringsMisskeyWordMuteViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get muteWords => 'Ẩn từ ngữ';
+	@override String get muteWordsDescription => 'Separate with spaces for an AND condition or with line breaks for an OR condition.';
+	@override String get muteWordsDescription2 => 'Bao quanh các từ khóa bằng dấu gạch chéo để sử dụng cụm từ thông dụng.';
+}
+
+// Path: misskey.instanceMute_
+class _StringsMisskeyInstanceMuteViVn extends _StringsMisskeyInstanceMuteEnUs {
+	_StringsMisskeyInstanceMuteViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get instanceMuteDescription => 'Thao tác này sẽ ẩn mọi tút/lượt đăng lại từ các máy chủ được liệt kê, bao gồm cả những tút  dạng trả lời từ máy chủ bị ẩn.';
+	@override String get instanceMuteDescription2 => 'Tách bằng cách xuống dòng';
+	@override String get title => 'Ẩn tút từ những máy chủ đã liệt kê.';
+	@override String get heading => 'Danh sách những máy chủ bị ẩn';
+}
+
+// Path: misskey.theme_
+class _StringsMisskeyThemeViVn extends _StringsMisskeyThemeEnUs {
+	_StringsMisskeyThemeViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get explore => 'Khám phá theme';
+	@override String get install => 'Cài đặt theme';
+	@override String get manage => 'Quản lý theme';
+	@override String get code => 'Mã theme';
+	@override String get description => 'Mô tả';
+	@override String installed({required Object name}) => '${name} đã được cài đặt';
+	@override String get installedThemes => 'Theme đã cài đặt';
+	@override String get builtinThemes => 'Theme tích hợp sẵn';
+	@override String get alreadyInstalled => 'Theme này đã được cài đặt';
+	@override String get invalid => 'Định dạng của theme này không hợp lệ';
+	@override String get make => 'Tạo theme';
+	@override String get base => 'Dựa trên có sẵn';
+	@override String get addConstant => 'Thêm hằng số';
+	@override String get constant => 'Hằng số';
+	@override String get defaultValue => 'Giá trị mặc định';
+	@override String get color => 'Màu sắc';
+	@override String get refProp => 'Tham chiếu một thuộc tính';
+	@override String get refConst => 'Tham chiếu một hằng số';
+	@override String get key => 'Khóa';
+	@override String get func => 'Hàm';
+	@override String get funcKind => 'Loại hàm';
+	@override String get argument => 'Tham số';
+	@override String get basedProp => 'Thuộc tính tham chiếu';
+	@override String get alpha => 'Độ trong suốt';
+	@override String get darken => 'Độ tối';
+	@override String get lighten => 'Độ sáng';
+	@override String get inputConstantName => 'Nhập tên cho hằng số này';
+	@override String get importInfo => 'Nếu bạn nhập mã theme ở đây, bạn có thể nhập mã đó vào trình chỉnh sửa theme';
+	@override String deleteConstantConfirm({required Object const_}) => 'Bạn có chắc muốn xóa hằng số ${const_} không?';
+	@override late final _StringsMisskeyThemeKeysViVn keys = _StringsMisskeyThemeKeysViVn._(_root);
+}
+
+// Path: misskey.sfx_
+class _StringsMisskeySfxViVn extends _StringsMisskeySfxEnUs {
+	_StringsMisskeySfxViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get note => 'Tút';
+	@override String get noteMy => 'Tút của tôi';
+	@override String get notification => 'Thông báo';
+	@override String get antenna => 'Trạm phát sóng';
+	@override String get channel => 'Kênh';
+}
+
+// Path: misskey.ago_
+class _StringsMisskeyAgoViVn extends _StringsMisskeyAgoEnUs {
+	_StringsMisskeyAgoViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get future => 'Tương lai';
+	@override String get justNow => 'Vừa xong';
+	@override String secondsAgo({required Object n}) => '${n}s trước';
+	@override String minutesAgo({required Object n}) => '${n} phút trước';
+	@override String hoursAgo({required Object n}) => '${n} giờ trước';
+	@override String daysAgo({required Object n}) => '${n} ngày trước';
+	@override String weeksAgo({required Object n}) => '${n} tuần trước';
+	@override String monthsAgo({required Object n}) => '${n} tháng trước';
+	@override String yearsAgo({required Object n}) => '${n} năm trước';
+	@override String get invalid => 'Không có gì ở đây';
+}
+
+// Path: misskey.time_
+class _StringsMisskeyTimeViVn extends _StringsMisskeyTimeEnUs {
+	_StringsMisskeyTimeViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get second => 's';
+	@override String get minute => 'phút';
+	@override String get hour => 'giờ';
+	@override String get day => 'ngày';
+}
+
+// Path: misskey.x2fa_
+class _StringsMisskeyX2faViVn extends _StringsMisskeyX2faEnUs {
+	_StringsMisskeyX2faViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get alreadyRegistered => 'Bạn đã đăng ký thiết bị xác minh 2 bước.';
+	@override String get registerTOTP => 'Đăng ký ứng dụng xác thực';
+	@override String step1({required Object a, required Object b}) => 'Trước tiên, hãy cài đặt một ứng dụng xác minh (chẳng hạn như ${a} hoặc ${b}) trên thiết bị của bạn.';
+	@override String get step2 => 'Sau đó, quét mã QR hiển thị trên màn hình này.';
+	@override String get step2Click => 'Quét mã QR trên ứng dụng xác thực (Authy, Google authenticator, v.v.)';
+	@override String get step3Title => 'Nhập mã xác thực';
+	@override String get step3 => 'Nhập mã token do ứng dụng của bạn cung cấp để hoàn tất thiết lập.';
+	@override String get step4 => 'Kể từ bây giờ, những lần đăng nhập trong tương lai sẽ yêu cầu mã token đăng nhập đó.';
+	@override String get securityKeyNotSupported => 'Trình duyệt của bạn không hỗ trợ khóa bảo mật';
+	@override String get registerTOTPBeforeKey => 'Vui lòng thiết lập một ứng dụng xác thực để đăng ký khóa bảo mật hoặc mật khẩu.';
+	@override String get securityKeyInfo => 'Bên cạnh xác minh bằng vân tay hoặc mã PIN, bạn cũng có thể thiết lập xác minh thông qua khóa bảo mật phần cứng hỗ trợ FIDO2 để bảo mật hơn nữa cho tài khoản của mình.';
+	@override String get registerSecurityKey => 'Tạo khóa bảo mật hoặc mã bảo mật';
+	@override String get securityKeyName => 'Nhập tên khóa bảo mật';
+	@override String get tapSecurityKey => 'Vui lòng làm theo hướng dẫn của trình duyệt để đăng ký mã bảo mật hoặc mã khóa';
+	@override String get removeKey => 'Xóa mã bảo mật';
+	@override String removeKeyConfirm({required Object name}) => 'Xóa bản sao lưu ${name}?';
+	@override String get renewTOTP => 'Cài đặt lại ứng dụng xác thực';
+	@override String get renewTOTPConfirm => 'Mã xác nhận cũ của ứng dụng xác thực không thể sử dụng được nữa';
+	@override String get renewTOTPOk => 'Cài đặt lại';
+	@override String get renewTOTPCancel => 'Không, cảm ơn';
+}
+
+// Path: misskey.permissions_
+class _StringsMisskeyPermissionsViVn extends _StringsMisskeyPermissionsEnUs {
+	_StringsMisskeyPermissionsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get readAccount => 'Xem thông tin tài khoản của bạn';
+	@override String get writeAccount => 'Sửa thông tin tài khoản của bạn';
+	@override String get readBlocks => 'Xem danh sách người bạn chặn';
+	@override String get writeBlocks => 'Sửa danh sách người bạn chặn';
+	@override String get readDrive => 'Truy cập tập tin, thư mục trong Ổ đĩa';
+	@override String get writeDrive => 'Sửa và xóa tập tin, thư mục trong Ổ đĩa';
+	@override String get readFavorites => 'Xem lượt thích của tôi';
+	@override String get writeFavorites => 'Sửa lượt thích của tôi';
+	@override String get readFollowing => 'Xem những người bạn theo dõi';
+	@override String get writeFollowing => 'Theo dõi hoặc ngưng theo dõi ai đó';
+	@override String get readMessaging => 'Xem lịch sử chat';
+	@override String get writeMessaging => 'Soạn hoặc xóa tin nhắn';
+	@override String get readMutes => 'Xem những người bạn ẩn';
+	@override String get writeMutes => 'Sửa những người bạn ẩn';
+	@override String get writeNotes => 'Soạn hoặc xóa tút';
+	@override String get readNotifications => 'Xem thông báo của tôi';
+	@override String get writeNotifications => 'Quản lý thông báo của tôi';
+	@override String get readReactions => 'Xem lượt biểu cảm của tôi';
+	@override String get writeReactions => 'Sửa lượt biểu cảm của tôi';
+	@override String get writeVotes => 'Bình chọn';
+	@override String get readPages => 'Xem trang của tôi';
+	@override String get writePages => 'Sửa hoặc xóa trang của tôi';
+	@override String get readPageLikes => 'Xem lượt thích trên trang của tôi';
+	@override String get writePageLikes => 'Sửa lượt thích của tôi trên trang';
+	@override String get readUserGroups => 'Xem nhóm của tôi';
+	@override String get writeUserGroups => 'Sửa hoặc xóa nhóm của tôi';
+	@override String get readChannels => 'Xem kênh của tôi';
+	@override String get writeChannels => 'Sửa kênh của tôi';
+	@override String get readGallery => 'Xem kho ảnh của tôi';
+	@override String get writeGallery => 'Sửa kho ảnh của tôi';
+	@override String get readGalleryLikes => 'Xem danh sách các tút đã thích trong thư viện của tôi';
+	@override String get writeGalleryLikes => 'Sửa danh sách các tút đã thích trong thư viện của tôi';
+}
+
+// Path: misskey.auth_
+class _StringsMisskeyAuthViVn extends _StringsMisskeyAuthEnUs {
+	_StringsMisskeyAuthViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get shareAccessTitle => 'Cho phép truy cập app';
+	@override String shareAccess({required Object name}) => 'Bạn có muốn cho phép "${name}" truy cập vào tài khoản này không?';
+	@override String get shareAccessAsk => 'Bạn có chắc muốn cho phép ứng dụng này truy cập vào tài khoản của mình không?';
+	@override String permission({required Object name}) => '${name} đang yêu cầu quyền hạn dưới đây';
+	@override String get permissionAsk => 'Ứng dụng này yêu cầu các quyền sau';
+	@override String get pleaseGoBack => 'Vui lòng quay lại ứng dụng';
+	@override String get callback => 'Quay lại ứng dụng';
+	@override String get denied => 'Truy cập bị từ chối';
+	@override String get pleaseLogin => 'Bạn phải đăng nhập để cho ứng dụng phép truy cập';
+}
+
+// Path: misskey.antennaSources_
+class _StringsMisskeyAntennaSourcesViVn extends _StringsMisskeyAntennaSourcesEnUs {
+	_StringsMisskeyAntennaSourcesViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get all => 'Toàn bộ tút';
+	@override String get homeTimeline => 'Tút từ những người đã theo dõi';
+	@override String get users => 'Tút từ những người cụ thể';
+	@override String get userList => 'Tút từ danh sách người dùng cụ thể';
+}
+
+// Path: misskey.weekday_
+class _StringsMisskeyWeekdayViVn extends _StringsMisskeyWeekdayEnUs {
+	_StringsMisskeyWeekdayViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get sunday => 'Chủ Nhật';
+	@override String get monday => 'Thứ Hai';
+	@override String get tuesday => 'Thứ Ba';
+	@override String get wednesday => 'Thứ Tư';
+	@override String get thursday => 'Thứ Năm';
+	@override String get friday => 'Thứ Sáu';
+	@override String get saturday => 'Thứ Bảy';
+}
+
+// Path: misskey.widgets_
+class _StringsMisskeyWidgetsViVn extends _StringsMisskeyWidgetsEnUs {
+	_StringsMisskeyWidgetsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get profile => 'Trang cá nhân';
+	@override String get instanceInfo => 'Thông tin máy chủ';
+	@override String get memo => 'Tút đã ghim';
+	@override String get notifications => 'Thông báo';
+	@override String get timeline => 'Bảng tin';
+	@override String get calendar => 'Lịch';
+	@override String get trends => 'Xu hướng';
+	@override String get clock => 'Đồng hồ';
+	@override String get rss => 'Trình đọc RSS';
+	@override String get rssTicker => 'RSS-Ticker';
+	@override String get activity => 'Hoạt động';
+	@override String get photos => 'Kho ảnh';
+	@override String get digitalClock => 'Đồng hồ số';
+	@override String get unixClock => 'Đồng hồ UNIX';
+	@override String get federation => 'Liên hợp';
+	@override String get instanceCloud => 'Instance cloud';
+	@override String get postForm => 'Mẫu đăng';
+	@override String get slideshow => 'Trình chiếu';
+	@override String get button => 'Nút';
+	@override String get onlineUsers => 'Ai đang online';
+	@override String get jobQueue => 'Công việc chờ xử lý';
+	@override String get serverMetric => 'Thống kê máy chủ';
+	@override String get aiscript => 'AiScript console';
+	@override String get aiscriptApp => 'AiScript App';
+	@override String get aichan => 'Ai';
+	@override String get userList => 'Danh sách người dùng';
+	@override late final _StringsMisskeyWidgetsUserListViVn userList_ = _StringsMisskeyWidgetsUserListViVn._(_root);
+	@override String get clicker => 'clicker';
+}
+
+// Path: misskey.cw_
+class _StringsMisskeyCwViVn extends _StringsMisskeyCwEnUs {
+	_StringsMisskeyCwViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get hide => 'Ẩn';
+	@override String get show => 'Tải thêm';
+	@override String chars({required Object count}) => '${count} ký tự';
+	@override String files({required Object count}) => '${count} tập tin';
+}
+
+// Path: misskey.poll_
+class _StringsMisskeyPollViVn extends _StringsMisskeyPollEnUs {
+	_StringsMisskeyPollViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get noOnlyOneChoice => 'Cần ít nhất hai lựa chọn.';
+	@override String choiceN({required Object n}) => 'Lựa chọn ${n}';
+	@override String get noMore => 'Bạn không thể thêm lựa chọn';
+	@override String get canMultipleVote => 'Cho phép chọn nhiều lựa chọn';
+	@override String get expiration => 'Thời hạn';
+	@override String get infinite => 'Vĩnh viễn';
+	@override String get at => 'Kết thúc vào...';
+	@override String get after => 'Kết thúc sau...';
+	@override String get deadlineDate => 'Ngày kết thúc';
+	@override String get deadlineTime => 'giờ';
+	@override String get duration => 'Thời hạn';
+	@override String votesCount({required Object n}) => '${n} bình chọn';
+	@override String totalVotes({required Object n}) => '${n} tổng bình chọn';
+	@override String get vote => 'Bình chọn';
+	@override String get showResult => 'Xem kết quả';
+	@override String get voted => 'Đã bình chọn';
+	@override String get closed => 'Đã kết thúc';
+	@override String remainingDays({required Object d, required Object h}) => '${d} ngày ${h} giờ còn lại';
+	@override String remainingHours({required Object h, required Object m}) => '${h} giờ ${m} phút còn lại';
+	@override String remainingMinutes({required Object m, required Object s}) => '${m} phút ${s}s còn lại';
+	@override String remainingSeconds({required Object s}) => '${s}s còn lại';
+}
+
+// Path: misskey.visibility_
+class _StringsMisskeyVisibilityViVn extends _StringsMisskeyVisibilityEnUs {
+	_StringsMisskeyVisibilityViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get public => 'Công khai';
+	@override String get publicDescription => 'Mọi người đều có thể đọc tút của bạn';
+	@override String get home => 'Trang chính';
+	@override String get homeDescription => 'Chỉ đăng lên bảng tin nhà';
+	@override String get followers => 'Người theo dõi';
+	@override String get followersDescription => 'Dành riêng cho người theo dõi';
+	@override String get specified => 'Nhắn riêng';
+	@override String get specifiedDescription => 'Chỉ người được nhắc đến mới thấy';
+	@override String get disableFederation => 'Không liên hợp';
+	@override String get disableFederationDescription => 'Không đưa tin cho chủ máy khác';
+}
+
+// Path: misskey.postForm_
+class _StringsMisskeyPostFormViVn extends _StringsMisskeyPostFormEnUs {
+	_StringsMisskeyPostFormViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get replyPlaceholder => 'Trả lời tút này';
+	@override String get quotePlaceholder => 'Trích dẫn tút này';
+	@override String get channelPlaceholder => 'Đăng lên một kênh';
+	@override late final _StringsMisskeyPostFormPlaceholdersViVn placeholders_ = _StringsMisskeyPostFormPlaceholdersViVn._(_root);
+}
+
+// Path: misskey.profile_
+class _StringsMisskeyProfileViVn extends _StringsMisskeyProfileEnUs {
+	_StringsMisskeyProfileViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get name => 'Tên';
+	@override String get username => 'Tên người dùng';
+	@override String get description => 'Tiểu sử';
+	@override String get youCanIncludeHashtags => 'Bạn có thể dùng hashtag trong tiểu sử.';
+	@override String get metadata => 'Thông tin bổ sung';
+	@override String get metadataEdit => 'Sửa thông tin bổ sung';
+	@override String get metadataDescription => 'Sử dụng phần này, bạn có thể hiển thị các mục thông tin bổ sung trong hồ sơ của mình.';
+	@override String get metadataLabel => 'Nhãn';
+	@override String get metadataContent => 'Nội dung';
+	@override String get changeAvatar => 'Đổi ảnh đại diện';
+	@override String get changeBanner => 'Đổi ảnh bìa';
+}
+
+// Path: misskey.exportOrImport_
+class _StringsMisskeyExportOrImportViVn extends _StringsMisskeyExportOrImportEnUs {
+	_StringsMisskeyExportOrImportViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get allNotes => 'Toàn bộ tút';
+	@override String get favoritedNotes => 'Bài viết đã thích';
+	@override String get clips => 'Lưu bài viết';
+	@override String get followingList => 'Đang theo dõi';
+	@override String get muteList => 'Ẩn';
+	@override String get blockingList => 'Chặn';
+	@override String get userLists => 'Danh sách';
+	@override String get excludeMutingUsers => 'Loại trừ những người dùng bị ẩn';
+	@override String get excludeInactiveUsers => 'Loại trừ những người dùng không hoạt động';
+}
+
+// Path: misskey.charts_
+class _StringsMisskeyChartsViVn extends _StringsMisskeyChartsEnUs {
+	_StringsMisskeyChartsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get federation => 'Liên hợp';
+	@override String get apRequest => 'Yêu cầu';
+	@override String get usersIncDec => 'Sự khác biệt về số lượng người dùng';
+	@override String get usersTotal => 'Tổng số người dùng';
+	@override String get activeUsers => 'Số người đang hoạt động';
+	@override String get notesIncDec => 'Sự khác biệt về số lượng tút';
+	@override String get localNotesIncDec => 'Sự khác biệt về số lượng tút máy chủ này';
+	@override String get remoteNotesIncDec => 'Sự khác biệt về số lượng tút từ máy chủ khác';
+	@override String get notesTotal => 'Tổng số sút';
+	@override String get filesIncDec => 'Sự khác biệt về số lượng tập tin';
+	@override String get filesTotal => 'Tổng số tập tin';
+	@override String get storageUsageIncDec => 'Sự khác biệt về dung lượng lưu trữ';
+	@override String get storageUsageTotal => 'Tổng dung lượng lưu trữ';
+}
+
+// Path: misskey.instanceCharts_
+class _StringsMisskeyInstanceChartsViVn extends _StringsMisskeyInstanceChartsEnUs {
+	_StringsMisskeyInstanceChartsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get requests => 'Lượt yêu cầu';
+	@override String get users => 'Sự khác biệt về số lượng người dùng';
+	@override String get usersTotal => 'Số lượng người dùng tích lũy';
+	@override String get notes => 'Sự khác biệt về số lượng tút';
+	@override String get notesTotal => 'Số lượng tút tích lũy';
+	@override String get ff => 'Sự khác biệt về số lượng người dùng được theo dõi/người theo dõi';
+	@override String get ffTotal => 'Số lượng người dùng được theo dõi/người theo dõi tích lũy';
+	@override String get cacheSize => 'Sự khác biệt về dung lượng bộ nhớ đệm';
+	@override String get cacheSizeTotal => 'Dung lượng bộ nhớ đệm tích lũy';
+	@override String get files => 'Sự khác biệt về số lượng tập tin';
+	@override String get filesTotal => 'Số lượng tập tin tích lũy';
+}
+
+// Path: misskey.timelines_
+class _StringsMisskeyTimelinesViVn extends _StringsMisskeyTimelinesEnUs {
+	_StringsMisskeyTimelinesViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Trang chính';
+	@override String get local => 'Máy chủ này';
+	@override String get social => 'Xã hội';
+	@override String get global => 'Liên hợp';
+}
+
+// Path: misskey.play_
+class _StringsMisskeyPlayViVn extends _StringsMisskeyPlayEnUs {
+	_StringsMisskeyPlayViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get new_ => 'Tạo Play mới';
+	@override String get edit => 'Edit play';
+	@override String get created => 'Bạn vừa tạo play rồi';
+	@override String get updated => 'Bạn vừa cập nhật play rồi';
+	@override String get deleted => 'Bạn vừa xóa play rồi';
+	@override String get pageSetting => 'Cài đặt play';
+	@override String get editThisPage => 'Edit play này';
+	@override String get viewSource => 'Xem mã nguồn';
+	@override String get my => 'Play của mình';
+	@override String get liked => 'Play đã thích';
+	@override String get featured => 'Nổi tiếng';
+	@override String get title => 'Tựa đề';
+	@override String get script => 'Kịch bản';
+	@override String get summary => 'Mô tả';
+}
+
+// Path: misskey.pages_
+class _StringsMisskeyPagesViVn extends _StringsMisskeyPagesEnUs {
+	_StringsMisskeyPagesViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get newPage => 'Tạo Trang mới';
+	@override String get editPage => 'Sửa Trang này';
+	@override String get readPage => 'Xem mã nguồn Trang này';
+	@override String get created => 'Trang đã được tạo thành công';
+	@override String get updated => 'Trang đã được cập nhật thành công';
+	@override String get deleted => 'Trang đã được xóa thành công';
+	@override String get pageSetting => 'Cài đặt trang';
+	@override String get nameAlreadyExists => 'URL Trang đã tồn tại';
+	@override String get invalidNameTitle => 'URL Trang không hợp lệ';
+	@override String get invalidNameText => 'Không được để trống tựa đề Trang';
+	@override String get editThisPage => 'Sửa Trang này';
+	@override String get viewSource => 'Xem mã nguồn';
+	@override String get viewPage => 'Xem trang của tôi';
+	@override String get like => 'Thích';
+	@override String get unlike => 'Bỏ thích';
+	@override String get my => 'Trang của tôi';
+	@override String get liked => 'Trang đã thích';
+	@override String get featured => 'Nổi tiếng';
+	@override String get inspector => 'Thanh tra';
+	@override String get contents => 'Nội dung';
+	@override String get content => 'Chặn Trang';
+	@override String get variables => 'Biến thể';
+	@override String get title => 'Tựa đề';
+	@override String get url => 'URL Trang';
+	@override String get summary => 'Mô tả Trang';
+	@override String get alignCenter => 'Căn giữa';
+	@override String get hideTitleWhenPinned => 'Ẩn tựa đề Trang khi ghim lên hồ sơ';
+	@override String get font => 'Phông chữ';
+	@override String get fontSerif => 'Serif';
+	@override String get fontSansSerif => 'Sans Serif';
+	@override String get eyeCatchingImageSet => 'Đặt ảnh thu nhỏ';
+	@override String get eyeCatchingImageRemove => 'Xóa ảnh thu nhỏ';
+	@override String get chooseBlock => 'Thêm khối';
+	@override String get selectType => 'Chọn kiểu';
+	@override String get contentBlocks => 'Nội dung';
+	@override String get inputBlocks => 'Nhập';
+	@override String get specialBlocks => 'Đặc biệt';
+	@override late final _StringsMisskeyPagesBlocksViVn blocks = _StringsMisskeyPagesBlocksViVn._(_root);
+}
+
+// Path: misskey.relayStatus_
+class _StringsMisskeyRelayStatusViVn extends _StringsMisskeyRelayStatusEnUs {
+	_StringsMisskeyRelayStatusViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get requesting => 'Đang chờ';
+	@override String get accepted => 'Đã duyệt';
+	@override String get rejected => 'Đã từ chối';
+}
+
+// Path: misskey.notification_
+class _StringsMisskeyNotificationViVn extends _StringsMisskeyNotificationEnUs {
+	_StringsMisskeyNotificationViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get fileUploaded => 'Đã tải lên tập tin';
+	@override String youGotMention({required Object name}) => '${name} nhắc đến bạn';
+	@override String youGotReply({required Object name}) => '${name} trả lời bạn';
+	@override String youGotQuote({required Object name}) => '${name} trích dẫn tút của bạn';
+	@override String youRenoted({required Object name}) => '${name} đăng lại tút của bạn';
+	@override String get youWereFollowed => 'đã theo dõi bạn';
+	@override String get youReceivedFollowRequest => 'Bạn vừa có một yêu cầu theo dõi';
+	@override String get yourFollowRequestAccepted => 'Yêu cầu theo dõi của bạn đã được chấp nhận';
+	@override String get pollEnded => 'Cuộc bình chọn đã kết thúc';
+	@override String unreadAntennaNote({required Object name}) => 'Ăng ten ${name}';
+	@override String get emptyPushNotificationMessage => 'Đã cập nhật thông báo đẩy';
+	@override String get achievementEarned => 'Hoàn thành Achievement';
+	@override late final _StringsMisskeyNotificationTypesViVn types_ = _StringsMisskeyNotificationTypesViVn._(_root);
+	@override late final _StringsMisskeyNotificationActionsViVn actions_ = _StringsMisskeyNotificationActionsViVn._(_root);
+}
+
+// Path: misskey.deck_
+class _StringsMisskeyDeckViVn extends _StringsMisskeyDeckEnUs {
+	_StringsMisskeyDeckViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get alwaysShowMainColumn => 'Luôn hiện cột chính';
+	@override String get columnAlign => 'Căn cột';
+	@override String get addColumn => 'Thêm cột';
+	@override String get configureColumn => 'Cài đặt cột';
+	@override String get swapLeft => 'Hoán đổi với cột bên trái';
+	@override String get swapRight => 'Hoán đổi với cột bên phải';
+	@override String get swapUp => 'Hoán đổi với cột trên';
+	@override String get swapDown => 'Hoán đổi với cột dưới';
+	@override String get stackLeft => 'Xếp chồng với cột bên trái';
+	@override String get popRight => 'Xếp chồng với cột bên trái';
+	@override String get profile => 'Hồ sơ';
+	@override String get newProfile => 'Hồ sơ mới';
+	@override String get deleteProfile => 'Xóa hồ sơ';
+	@override String get introduction => 'Kết hợp các cột để tạo giao diện của riêng bạn!';
+	@override String get introduction2 => 'Bạn có thể thêm cột bất kỳ lúc nào bằng cách nhấn + ở bên phải màn hình.';
+	@override String get widgetsIntroduction => 'Chọn "Sửa widget" trong menu cột và thêm một widget.';
+	@override late final _StringsMisskeyDeckColumnsViVn columns_ = _StringsMisskeyDeckColumnsViVn._(_root);
+}
+
+// Path: misskey.dialog_
+class _StringsMisskeyDialogViVn extends _StringsMisskeyDialogEnUs {
+	_StringsMisskeyDialogViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String charactersExceeded({required Object current, required Object max}) => 'Bạn nhắn quá giới hạn ký tự!! Hiện nay ${current} / giới hạn ${max}';
+	@override String charactersBelow({required Object current, required Object min}) => 'Bạn nhắn quá ít tối thiểu ký tự!! Hiện nay ${current} / Tối thiểu ${min}';
+}
+
+// Path: misskey.webhookSettings_
+class _StringsMisskeyWebhookSettingsViVn extends _StringsMisskeyWebhookSettingsEnUs {
+	_StringsMisskeyWebhookSettingsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get createWebhook => 'Tạo Webhook';
+	@override String get name => 'Tên';
+	@override String get secret => 'Mã bí mật';
+	@override String get events => 'Sự kiện Webhook';
+	@override String get active => 'Đã bật';
+	@override late final _StringsMisskeyWebhookSettingsEventsViVn events_ = _StringsMisskeyWebhookSettingsEventsViVn._(_root);
+}
+
+// Path: misskey.moderationLogTypes_
+class _StringsMisskeyModerationLogTypesViVn extends _StringsMisskeyModerationLogTypesEnUs {
+	_StringsMisskeyModerationLogTypesViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get suspend => 'Vô hiệu hóa';
+	@override String get resetPassword => 'Đặt lại mật khẩu';
+}
+
+// Path: misskey.reversi_
+class _StringsMisskeyReversiViVn extends _StringsMisskeyReversiEnUs {
+	_StringsMisskeyReversiViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get total => 'Tổng cộng';
+}
+
+// Path: misskey.achievements_.types_
+class _StringsMisskeyAchievementsTypesViVn extends _StringsMisskeyAchievementsTypesEnUs {
+	_StringsMisskeyAchievementsTypesViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAchievementsTypesNotes1ViVn notes1_ = _StringsMisskeyAchievementsTypesNotes1ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes10ViVn notes10_ = _StringsMisskeyAchievementsTypesNotes10ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes100ViVn notes100_ = _StringsMisskeyAchievementsTypesNotes100ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes500ViVn notes500_ = _StringsMisskeyAchievementsTypesNotes500ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes1000ViVn notes1000_ = _StringsMisskeyAchievementsTypesNotes1000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes5000ViVn notes5000_ = _StringsMisskeyAchievementsTypesNotes5000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes10000ViVn notes10000_ = _StringsMisskeyAchievementsTypesNotes10000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes20000ViVn notes20000_ = _StringsMisskeyAchievementsTypesNotes20000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes30000ViVn notes30000_ = _StringsMisskeyAchievementsTypesNotes30000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes40000ViVn notes40000_ = _StringsMisskeyAchievementsTypesNotes40000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes50000ViVn notes50000_ = _StringsMisskeyAchievementsTypesNotes50000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNotes100000ViVn notes100000_ = _StringsMisskeyAchievementsTypesNotes100000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin3ViVn login3_ = _StringsMisskeyAchievementsTypesLogin3ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin7ViVn login7_ = _StringsMisskeyAchievementsTypesLogin7ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin15ViVn login15_ = _StringsMisskeyAchievementsTypesLogin15ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin30ViVn login30_ = _StringsMisskeyAchievementsTypesLogin30ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin60ViVn login60_ = _StringsMisskeyAchievementsTypesLogin60ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin100ViVn login100_ = _StringsMisskeyAchievementsTypesLogin100ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin200ViVn login200_ = _StringsMisskeyAchievementsTypesLogin200ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin300ViVn login300_ = _StringsMisskeyAchievementsTypesLogin300ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin400ViVn login400_ = _StringsMisskeyAchievementsTypesLogin400ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLogin1000ViVn login1000_ = _StringsMisskeyAchievementsTypesLogin1000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1ViVn noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesProfileFilledViVn profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatViVn markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowing1ViVn following1_ = _StringsMisskeyAchievementsTypesFollowing1ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowing10ViVn following10_ = _StringsMisskeyAchievementsTypesFollowing10ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowing50ViVn following50_ = _StringsMisskeyAchievementsTypesFollowing50ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowing100ViVn following100_ = _StringsMisskeyAchievementsTypesFollowing100ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowing300ViVn following300_ = _StringsMisskeyAchievementsTypesFollowing300ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers1ViVn followers1_ = _StringsMisskeyAchievementsTypesFollowers1ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers10ViVn followers10_ = _StringsMisskeyAchievementsTypesFollowers10ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers50ViVn followers50_ = _StringsMisskeyAchievementsTypesFollowers50ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers100ViVn followers100_ = _StringsMisskeyAchievementsTypesFollowers100ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers300ViVn followers300_ = _StringsMisskeyAchievementsTypesFollowers300ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers500ViVn followers500_ = _StringsMisskeyAchievementsTypesFollowers500ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFollowers1000ViVn followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30ViVn collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minViVn viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyViVn iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesFoundTreasureViVn foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesClient30minViVn client30min_ = _StringsMisskeyAchievementsTypesClient30minViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesClient60minViVn client60min_ = _StringsMisskeyAchievementsTypesClient60minViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightViVn postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secViVn postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesSelfQuoteViVn selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesHtl20npmViVn htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartViVn viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesOpen3windowsViVn open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadViVn reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesClickedClickHereViVn clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyViVn justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(_root);
+	@override late final _StringsMisskeyAchievementsTypesCookieClickedViVn cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedViVn._(_root);
+}
+
+// Path: misskey.role_.priority_
+class _StringsMisskeyRolePriorityViVn extends _StringsMisskeyRolePriorityEnUs {
+	_StringsMisskeyRolePriorityViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get low => 'Thấp';
+	@override String get middle => 'Vừa';
+	@override String get high => 'Cao';
+}
+
+// Path: misskey.role_.options_
+class _StringsMisskeyRoleOptionsViVn extends _StringsMisskeyRoleOptionsEnUs {
+	_StringsMisskeyRoleOptionsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get gtlAvailable => 'Xem Timeline xã hội';
+	@override String get ltlAvailable => 'Xem Timeline trong máy chủ này';
+	@override String get canPublicNote => 'Cho phép đăng bài công khai';
+	@override String get canManageCustomEmojis => 'Quản lý CustomEmoji';
+	@override String get driveCapacity => 'Dữ liệu Drive';
+	@override String get pinMax => 'Giới hạn ghim bài viết';
+	@override String get antennaMax => 'Giới hạn tạo ăng ten';
+	@override String get canHideAds => 'Tắt quảng cáo';
+}
+
+// Path: misskey.role_.condition_
+class _StringsMisskeyRoleConditionViVn extends _StringsMisskeyRoleConditionEnUs {
+	_StringsMisskeyRoleConditionViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get createdMoreThan => 'Trôi qua ～ sau khi lập tài khoản';
+	@override String get followersLessThanOrEq => 'Người theo dõi ít hơn ～';
+	@override String get followersMoreThanOrEq => 'Người theo dõi có ～ trở lên';
+	@override String get followingLessThanOrEq => 'Theo dõi ít hơn ～';
+	@override String get followingMoreThanOrEq => 'Theo dõi có ～ trở lên';
+	@override String get and => '～ mà ～';
+	@override String get or => '～ hay là ～';
+	@override String get not => 'Không phải ～';
+}
+
+// Path: misskey.email_.follow_
+class _StringsMisskeyEmailFollowViVn extends _StringsMisskeyEmailFollowEnUs {
+	_StringsMisskeyEmailFollowViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'đã theo dõi bạn';
+}
+
+// Path: misskey.email_.receiveFollowRequest_
+class _StringsMisskeyEmailReceiveFollowRequestViVn extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
+	_StringsMisskeyEmailReceiveFollowRequestViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Chấp nhận yêu cầu theo dõi';
+}
+
+// Path: misskey.theme_.keys
+class _StringsMisskeyThemeKeysViVn extends _StringsMisskeyThemeKeysEnUs {
+	_StringsMisskeyThemeKeysViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get accent => 'Màu phụ';
+	@override String get bg => 'Màu nền';
+	@override String get fg => 'Màu chữ';
+	@override String get focus => 'Trọng tâm';
+	@override String get indicator => 'Chỉ báo';
+	@override String get panel => 'Thanh bên';
+	@override String get shadow => 'Bóng mờ';
+	@override String get header => 'Ảnh bìa';
+	@override String get navBg => 'Nền thanh bên';
+	@override String get navFg => 'Chữ thanh bên';
+	@override String get navHoverFg => 'Chữ thanh bên (Khi chạm)';
+	@override String get navActive => 'Chữ thanh bên (Khi chọn)';
+	@override String get navIndicator => 'Chỉ báo thanh bên';
+	@override String get link => 'Đường dẫn';
+	@override String get hashtag => 'Hashtag';
+	@override String get mention => 'Nhắc đến';
+	@override String get mentionMe => 'Lượt nhắc (Tôi)';
+	@override String get renote => 'Đăng lại';
+	@override String get modalBg => 'Nền phương thức';
+	@override String get divider => 'Phân chia';
+	@override String get scrollbarHandle => 'Thanh cuộn khi giữ';
+	@override String get scrollbarHandleHover => 'Thanh cuộn khi chạm';
+	@override String get dateLabelFg => 'Màu ngày tháng năm';
+	@override String get infoBg => 'Nền thông tin';
+	@override String get infoFg => 'Chữ thông tin';
+	@override String get infoWarnBg => 'Nền cảnh báo';
+	@override String get infoWarnFg => 'Chữ cảnh báo';
+	@override String get toastBg => 'Nền thông báo';
+	@override String get toastFg => 'Chữ thông báo';
+	@override String get buttonBg => 'Nền nút';
+	@override String get buttonHoverBg => 'Nền nút (Chạm)';
+	@override String get inputBorder => 'Đường viền khung soạn thảo';
+	@override String get listItemHoverBg => 'Nền mục liệt kê (Chạm)';
+	@override String get driveFolderBg => 'Nền thư mục Ổ đĩa';
+	@override String get wallpaperOverlay => 'Lớp phủ hình nền';
+	@override String get badge => 'Huy hiệu';
+	@override String get messageBg => 'Nền chat';
+	@override String get accentDarken => 'Màu phụ (Tối)';
+	@override String get accentLighten => 'Màu phụ (Sáng)';
+	@override String get fgHighlighted => 'Chữ nổi bật';
+}
+
+// Path: misskey.widgets_.userList_
+class _StringsMisskeyWidgetsUserListViVn extends _StringsMisskeyWidgetsUserListEnUs {
+	_StringsMisskeyWidgetsUserListViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get chooseList => 'Chọn danh sách';
+}
+
+// Path: misskey.postForm_.placeholders_
+class _StringsMisskeyPostFormPlaceholdersViVn extends _StringsMisskeyPostFormPlaceholdersEnUs {
+	_StringsMisskeyPostFormPlaceholdersViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get a => 'Bạn đang định làm gì?';
+	@override String get b => 'Hôm nay bạn có gì vui?';
+	@override String get c => 'Bạn đang nghĩ gì?';
+	@override String get d => 'Bạn muốn nói gì?';
+	@override String get e => 'Cứ viết trên đây';
+	@override String get f => 'Đang chờ bạn viết...';
+}
+
+// Path: misskey.pages_.blocks
+class _StringsMisskeyPagesBlocksViVn extends _StringsMisskeyPagesBlocksEnUs {
+	_StringsMisskeyPagesBlocksViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get text => 'Văn bản';
+	@override String get textarea => 'Khu vực văn bản';
+	@override String get section => 'Mục ';
+	@override String get image => 'Hình ảnh';
+	@override String get button => 'Nút';
+	@override String get note => 'Tút đã nhúng';
+	@override late final _StringsMisskeyPagesBlocksNoteViVn note_ = _StringsMisskeyPagesBlocksNoteViVn._(_root);
+}
+
+// Path: misskey.notification_.types_
+class _StringsMisskeyNotificationTypesViVn extends _StringsMisskeyNotificationTypesEnUs {
+	_StringsMisskeyNotificationTypesViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get all => 'Toàn bộ';
+	@override String get follow => 'Đang theo dõi';
+	@override String get mention => 'Nhắc đến';
+	@override String get reply => 'Lượt trả lời';
+	@override String get renote => 'Đăng lại';
+	@override String get quote => 'Trích dẫn';
+	@override String get reaction => 'Biểu cảm';
+	@override String get pollEnded => 'Bình chọn kết thúc';
+	@override String get receiveFollowRequest => 'Yêu cầu theo dõi';
+	@override String get followRequestAccepted => 'Yêu cầu theo dõi được chấp nhận';
+	@override String get achievementEarned => 'Hoàn thành Achievement';
+	@override String get app => 'Từ app liên kết';
+}
+
+// Path: misskey.notification_.actions_
+class _StringsMisskeyNotificationActionsViVn extends _StringsMisskeyNotificationActionsEnUs {
+	_StringsMisskeyNotificationActionsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get followBack => 'đã theo dõi lại bạn';
+	@override String get reply => 'Trả lời';
+	@override String get renote => 'Đăng lại';
+}
+
+// Path: misskey.deck_.columns_
+class _StringsMisskeyDeckColumnsViVn extends _StringsMisskeyDeckColumnsEnUs {
+	_StringsMisskeyDeckColumnsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get main => 'Chính';
+	@override String get widgets => 'Tiện ích';
+	@override String get notifications => 'Thông báo';
+	@override String get tl => 'Bảng tin';
+	@override String get antenna => 'Trạm phát sóng';
+	@override String get list => 'Danh sách';
+	@override String get channel => 'Kênh';
+	@override String get mentions => 'Lượt nhắc';
+	@override String get direct => 'Nhắn riêng';
+}
+
+// Path: misskey.webhookSettings_.events_
+class _StringsMisskeyWebhookSettingsEventsViVn extends _StringsMisskeyWebhookSettingsEventsEnUs {
+	_StringsMisskeyWebhookSettingsEventsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get reaction => 'Khi nhận được sự kiện';
+	@override String get mention => 'Khi có người nhắc tới bạn';
+}
+
+// Path: misskey.achievements_.types_.notes1_
+class _StringsMisskeyAchievementsTypesNotes1ViVn extends _StringsMisskeyAchievementsTypesNotes1EnUs {
+	_StringsMisskeyAchievementsTypesNotes1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'just setting up my msky';
+	@override String get description => 'Lần đầu tiên đăng bài';
+	@override String get flavor => 'Chúc bạn trên Miskey vui vẻ nha!!';
+}
+
+// Path: misskey.achievements_.types_.notes10_
+class _StringsMisskeyAchievementsTypesNotes10ViVn extends _StringsMisskeyAchievementsTypesNotes10EnUs {
+	_StringsMisskeyAchievementsTypesNotes10ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Một số bài viết';
+	@override String get description => 'Đăng bài 10 lần';
+}
+
+// Path: misskey.achievements_.types_.notes100_
+class _StringsMisskeyAchievementsTypesNotes100ViVn extends _StringsMisskeyAchievementsTypesNotes100EnUs {
+	_StringsMisskeyAchievementsTypesNotes100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Rất nhiều bài biết';
+	@override String get description => 'Đăng bài 100 lần';
+}
+
+// Path: misskey.achievements_.types_.notes500_
+class _StringsMisskeyAchievementsTypesNotes500ViVn extends _StringsMisskeyAchievementsTypesNotes500EnUs {
+	_StringsMisskeyAchievementsTypesNotes500ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Như đầy bài viết';
+	@override String get description => 'Đăng bài 500 lần';
+}
+
+// Path: misskey.achievements_.types_.notes1000_
+class _StringsMisskeyAchievementsTypesNotes1000ViVn extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
+	_StringsMisskeyAchievementsTypesNotes1000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ngọn núi bài viết';
+	@override String get description => 'Đăng bài 1000 lần';
+}
+
+// Path: misskey.achievements_.types_.notes5000_
+class _StringsMisskeyAchievementsTypesNotes5000ViVn extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
+	_StringsMisskeyAchievementsTypesNotes5000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bài viết chảy như suối';
+	@override String get description => 'Đăng bài 5000 lần';
+}
+
+// Path: misskey.achievements_.types_.notes10000_
+class _StringsMisskeyAchievementsTypesNotes10000ViVn extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
+	_StringsMisskeyAchievementsTypesNotes10000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bài Viết siu nhìu';
+	@override String get description => 'Đăng bài 10000 lần';
+}
+
+// Path: misskey.achievements_.types_.notes20000_
+class _StringsMisskeyAchievementsTypesNotes20000ViVn extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
+	_StringsMisskeyAchievementsTypesNotes20000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Need more note';
+	@override String get description => 'Đã đăng bài 20,000 lần rồi';
+}
+
+// Path: misskey.achievements_.types_.notes30000_
+class _StringsMisskeyAchievementsTypesNotes30000ViVn extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
+	_StringsMisskeyAchievementsTypesNotes30000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ĐĂNG VỚI BÀI';
+	@override String get description => 'Đã đăng bài 30,000 lần rồi';
+}
+
+// Path: misskey.achievements_.types_.notes40000_
+class _StringsMisskeyAchievementsTypesNotes40000ViVn extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
+	_StringsMisskeyAchievementsTypesNotes40000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nhà xưởng dăng bài';
+	@override String get description => 'Đã đăng bài 40,000 lần rồi';
+}
+
+// Path: misskey.achievements_.types_.notes50000_
+class _StringsMisskeyAchievementsTypesNotes50000ViVn extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
+	_StringsMisskeyAchievementsTypesNotes50000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Hàng tinh đăng bài';
+	@override String get description => 'Đã đăng bài 50,000 lần rồi';
+}
+
+// Path: misskey.achievements_.types_.notes100000_
+class _StringsMisskeyAchievementsTypesNotes100000ViVn extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
+	_StringsMisskeyAchievementsTypesNotes100000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
+	@override String get description => 'Đăng 100,000 tút';
+	@override String get flavor => 'Liệu viết bài gì tầm này vậy? ';
+}
+
+// Path: misskey.achievements_.types_.login3_
+class _StringsMisskeyAchievementsTypesLogin3ViVn extends _StringsMisskeyAchievementsTypesLogin3EnUs {
+	_StringsMisskeyAchievementsTypesLogin3ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Sơ cấp I';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 3 ngày';
+	@override String get flavor => 'Từ nay các bạn cứ xem như mình là một Misskist đó';
+}
+
+// Path: misskey.achievements_.types_.login7_
+class _StringsMisskeyAchievementsTypesLogin7ViVn extends _StringsMisskeyAchievementsTypesLogin7EnUs {
+	_StringsMisskeyAchievementsTypesLogin7ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Sơ cấp II';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 7 ngày';
+	@override String get flavor => 'Bạn dần quen chưa? ';
+}
+
+// Path: misskey.achievements_.types_.login15_
+class _StringsMisskeyAchievementsTypesLogin15ViVn extends _StringsMisskeyAchievementsTypesLogin15EnUs {
+	_StringsMisskeyAchievementsTypesLogin15ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Sơ cấp III';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 7 ngày';
+}
+
+// Path: misskey.achievements_.types_.login30_
+class _StringsMisskeyAchievementsTypesLogin30ViVn extends _StringsMisskeyAchievementsTypesLogin30EnUs {
+	_StringsMisskeyAchievementsTypesLogin30ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Misskist cấp I';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 30 ngày';
+}
+
+// Path: misskey.achievements_.types_.login60_
+class _StringsMisskeyAchievementsTypesLogin60ViVn extends _StringsMisskeyAchievementsTypesLogin60EnUs {
+	_StringsMisskeyAchievementsTypesLogin60ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Misskist cấp II';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 60 ngày';
+}
+
+// Path: misskey.achievements_.types_.login100_
+class _StringsMisskeyAchievementsTypesLogin100ViVn extends _StringsMisskeyAchievementsTypesLogin100EnUs {
+	_StringsMisskeyAchievementsTypesLogin100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Misskist cấp III';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 100 ngày';
+	@override String get flavor => 'Người dùng này, chính vì đó là một Misskist';
+}
+
+// Path: misskey.achievements_.types_.login200_
+class _StringsMisskeyAchievementsTypesLogin200ViVn extends _StringsMisskeyAchievementsTypesLogin200EnUs {
+	_StringsMisskeyAchievementsTypesLogin200ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Khách hàng thường xuyên cấp I';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 200 ngày';
+}
+
+// Path: misskey.achievements_.types_.login300_
+class _StringsMisskeyAchievementsTypesLogin300ViVn extends _StringsMisskeyAchievementsTypesLogin300EnUs {
+	_StringsMisskeyAchievementsTypesLogin300ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Khách hàng thường xuyên cấp II';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 300 ngày';
+}
+
+// Path: misskey.achievements_.types_.login400_
+class _StringsMisskeyAchievementsTypesLogin400ViVn extends _StringsMisskeyAchievementsTypesLogin400EnUs {
+	_StringsMisskeyAchievementsTypesLogin400ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Khách hàng thường xuyên cấp III';
+	@override String get description => 'Tổng số ngày đăng nhập đạt 400 ngày';
+}
+
+// Path: misskey.achievements_.types_.login1000_
+class _StringsMisskeyAchievementsTypesLogin1000ViVn extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
+	_StringsMisskeyAchievementsTypesLogin1000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get flavor => 'Cảm ơn bạn đã sử dụng Misskey!';
+}
+
+// Path: misskey.achievements_.types_.noteFavorited1_
+class _StringsMisskeyAchievementsTypesNoteFavorited1ViVn extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_StringsMisskeyAchievementsTypesNoteFavorited1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nhà thiên văn học';
+}
+
+// Path: misskey.achievements_.types_.myNoteFavorited1_
+class _StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Đi tìm những ngôi sao';
+}
+
+// Path: misskey.achievements_.types_.profileFilled_
+class _StringsMisskeyAchievementsTypesProfileFilledViVn extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
+	_StringsMisskeyAchievementsTypesProfileFilledViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Luôn sẵn sàng';
+	@override String get description => 'Thiết lập tài khoản của bạn';
+}
+
+// Path: misskey.achievements_.types_.markedAsCat_
+class _StringsMisskeyAchievementsTypesMarkedAsCatViVn extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_StringsMisskeyAchievementsTypesMarkedAsCatViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Tôi là một con mèo';
+	@override String get description => 'Bật chế độ mèo';
+	@override String get flavor => 'Mà tên chưa có';
+}
+
+// Path: misskey.achievements_.types_.following1_
+class _StringsMisskeyAchievementsTypesFollowing1ViVn extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
+	_StringsMisskeyAchievementsTypesFollowing1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Theo dõi đầu tiên';
+	@override String get description => 'Lần đầu tiên theo dõi ';
+}
+
+// Path: misskey.achievements_.types_.following10_
+class _StringsMisskeyAchievementsTypesFollowing10ViVn extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
+	_StringsMisskeyAchievementsTypesFollowing10ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Cứ theo dõi và theo dõi';
+	@override String get description => 'Vừa theo dõi hơn 10 người';
+}
+
+// Path: misskey.achievements_.types_.following50_
+class _StringsMisskeyAchievementsTypesFollowing50ViVn extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
+	_StringsMisskeyAchievementsTypesFollowing50ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bạn bè nhiều quá';
+	@override String get description => 'Vừa theo dõi hơn 50 người';
+}
+
+// Path: misskey.achievements_.types_.following100_
+class _StringsMisskeyAchievementsTypesFollowing100ViVn extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
+	_StringsMisskeyAchievementsTypesFollowing100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Trăm bạn bè';
+	@override String get description => 'Vừa theo dõi vượt lên 100 người';
+}
+
+// Path: misskey.achievements_.types_.following300_
+class _StringsMisskeyAchievementsTypesFollowing300ViVn extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
+	_StringsMisskeyAchievementsTypesFollowing300ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Quá nhiều bạn bè';
+	@override String get description => 'Vừa theo dõi vượt lên 300 người';
+}
+
+// Path: misskey.achievements_.types_.followers1_
+class _StringsMisskeyAchievementsTypesFollowers1ViVn extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
+	_StringsMisskeyAchievementsTypesFollowers1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ai đầu tiên theo dõi bạn';
+	@override String get description => 'Lần đầu tiên được theo dõi';
+}
+
+// Path: misskey.achievements_.types_.followers10_
+class _StringsMisskeyAchievementsTypesFollowers10ViVn extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
+	_StringsMisskeyAchievementsTypesFollowers10ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'FOLLOW ME!!';
+	@override String get description => 'Người theo dõi bạn vượt lên 10 người';
+}
+
+// Path: misskey.achievements_.types_.followers50_
+class _StringsMisskeyAchievementsTypesFollowers50ViVn extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
+	_StringsMisskeyAchievementsTypesFollowers50ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Từng chút một';
+	@override String get description => 'Đạt được 50 lượt theo dõi';
+}
+
+// Path: misskey.achievements_.types_.followers100_
+class _StringsMisskeyAchievementsTypesFollowers100ViVn extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
+	_StringsMisskeyAchievementsTypesFollowers100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Người nổi tiếng';
+	@override String get description => 'Đạt được 100 lượt theo dõi';
+}
+
+// Path: misskey.achievements_.types_.followers300_
+class _StringsMisskeyAchievementsTypesFollowers300ViVn extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
+	_StringsMisskeyAchievementsTypesFollowers300ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Vui lòng xếp thành hàng nào';
+	@override String get description => 'Đạt được 300 lượt theo dõi';
+}
+
+// Path: misskey.achievements_.types_.followers500_
+class _StringsMisskeyAchievementsTypesFollowers500ViVn extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
+	_StringsMisskeyAchievementsTypesFollowers500ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Trạm phát sóng';
+	@override String get description => 'Đạt được 500 lượt theo dõi';
+}
+
+// Path: misskey.achievements_.types_.followers1000_
+class _StringsMisskeyAchievementsTypesFollowers1000ViVn extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
+	_StringsMisskeyAchievementsTypesFollowers1000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Người có tầm ảnh hưởng';
+	@override String get description => 'Người theo dõi bạn vượt lên 1000 người';
+}
+
+// Path: misskey.achievements_.types_.collectAchievements30_
+class _StringsMisskeyAchievementsTypesCollectAchievements30ViVn extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_StringsMisskeyAchievementsTypesCollectAchievements30ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Người sưu tập thành tích';
+	@override String get description => 'Vừa lấy thành tích hơn 30 cái';
+}
+
+// Path: misskey.achievements_.types_.viewAchievements3min_
+class _StringsMisskeyAchievementsTypesViewAchievements3minViVn extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_StringsMisskeyAchievementsTypesViewAchievements3minViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Yêu Thành tích';
+	@override String get description => 'Ngắm danh sách thành tích đến tận hơn 3 phút';
+}
+
+// Path: misskey.achievements_.types_.iLoveMisskey_
+class _StringsMisskeyAchievementsTypesILoveMisskeyViVn extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_StringsMisskeyAchievementsTypesILoveMisskeyViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Tôi Yêu Misskey';
+	@override String get description => 'Đăng lời nói "I ❤ #Misskey"';
+	@override String get flavor => 'Xin chân thành cảm ơn bạn đã sử dụng Misskey!!  by Đội ngũ phát triển';
+}
+
+// Path: misskey.achievements_.types_.foundTreasure_
+class _StringsMisskeyAchievementsTypesFoundTreasureViVn extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_StringsMisskeyAchievementsTypesFoundTreasureViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Tìm kiếm kho báu';
+	@override String get description => 'Tìm thấy được những kho báu cất giấu';
+}
+
+// Path: misskey.achievements_.types_.client30min_
+class _StringsMisskeyAchievementsTypesClient30minViVn extends _StringsMisskeyAchievementsTypesClient30minEnUs {
+	_StringsMisskeyAchievementsTypesClient30minViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Giải lao xỉu';
+	@override String get description => 'Giữ Misskey mở trong ít nhất 30 phút';
+}
+
+// Path: misskey.achievements_.types_.client60min_
+class _StringsMisskeyAchievementsTypesClient60minViVn extends _StringsMisskeyAchievementsTypesClient60minEnUs {
+	_StringsMisskeyAchievementsTypesClient60minViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => 'Giữ Misskey mở trong ít nhất 60 phút';
+}
+
+// Path: misskey.achievements_.types_.noteDeletedWithin1min_
+class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Xem như không có gì đâu nha';
+}
+
+// Path: misskey.achievements_.types_.postedAtLateNight_
+class _StringsMisskeyAchievementsTypesPostedAtLateNightViVn extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_StringsMisskeyAchievementsTypesPostedAtLateNightViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Loài ăn đêm';
+	@override String get description => 'Đăng bài trong đêm khuya ';
+	@override String get flavor => 'Đến giờ đi ngủ rồi.';
+}
+
+// Path: misskey.achievements_.types_.postedAt0min0sec_
+class _StringsMisskeyAchievementsTypesPostedAt0min0secViVn extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_StringsMisskeyAchievementsTypesPostedAt0min0secViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Tín hiệu báo giờ';
+	@override String get description => 'Đăng bài vào 0 phút 0 giây';
+	@override String get flavor => 'Piiiiiii ĐÂY LÀ TIẾNG NÓI VIỆT NAM';
+}
+
+// Path: misskey.achievements_.types_.selfQuote_
+class _StringsMisskeyAchievementsTypesSelfQuoteViVn extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_StringsMisskeyAchievementsTypesSelfQuoteViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nói đến bản thân';
+	@override String get description => 'Trích dẫn bài viết của mình';
+}
+
+// Path: misskey.achievements_.types_.htl20npm_
+class _StringsMisskeyAchievementsTypesHtl20npmViVn extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
+	_StringsMisskeyAchievementsTypesHtl20npmViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Timeline trôi như con sông';
+	@override String get description => 'Timeline trang chính tốc độ vượt lên 20npm';
+}
+
+// Path: misskey.achievements_.types_.viewInstanceChart_
+class _StringsMisskeyAchievementsTypesViewInstanceChartViVn extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_StringsMisskeyAchievementsTypesViewInstanceChartViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nhà phân tích';
+	@override String get description => 'Xem biểu đồ của chủ máy';
+}
+
+// Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
+class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Chào thế giới!';
+}
+
+// Path: misskey.achievements_.types_.open3windows_
+class _StringsMisskeyAchievementsTypesOpen3windowsViVn extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_StringsMisskeyAchievementsTypesOpen3windowsViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nhiều cửa sổ';
+	@override String get description => 'Mở cửa sổ hơn 3 cửa sổ';
+}
+
+// Path: misskey.achievements_.types_.reactWithoutRead_
+class _StringsMisskeyAchievementsTypesReactWithoutReadViVn extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_StringsMisskeyAchievementsTypesReactWithoutReadViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bài này bạn đọc kỹ chứ? ';
+	@override String get description => 'Phản hồi trong vọng 3 giây sau bài viết có hơn 100 ký tự mới được đăng lên';
+}
+
+// Path: misskey.achievements_.types_.clickedClickHere_
+class _StringsMisskeyAchievementsTypesClickedClickHereViVn extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_StringsMisskeyAchievementsTypesClickedClickHereViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Bấm đây';
+	@override String get description => 'Bấm chỗ này';
+}
+
+// Path: misskey.achievements_.types_.justPlainLucky_
+class _StringsMisskeyAchievementsTypesJustPlainLuckyViVn extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_StringsMisskeyAchievementsTypesJustPlainLuckyViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Chỉ là một cuộc máy mắn';
+	@override String get description => 'Mỗi 10 giây thu nhận được với tỷ lệ  0.005%';
+}
+
+// Path: misskey.achievements_.types_.setNameToSyuilo_
+class _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_StringsMisskeyAchievementsTypesSetNameToSyuiloViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ngưỡng mộ với vị thần';
+	@override String get description => 'Đạt tên là syuilo';
+}
+
+// Path: misskey.achievements_.types_.passedSinceAccountCreated1_
+class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Kỷ niệm một năm';
+}
+
+// Path: misskey.achievements_.types_.loggedInOnBirthday_
+class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Sinh nhật vủi vẻ';
+	@override String get description => 'Đăng nhập vào ngày sinh';
+}
+
+// Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
+class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Chức mừng năm mới';
+	@override String get description => 'Đăng nhập vào Tết Nguyên đàn dương lịch';
+	@override String get flavor => 'Chúc bạn năm mới AN KHANG THỊNH VƯỢNG, VẠN SỰ NHƯ Ý!!';
+}
+
+// Path: misskey.achievements_.types_.cookieClicked_
+class _StringsMisskeyAchievementsTypesCookieClickedViVn extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
+	_StringsMisskeyAchievementsTypesCookieClickedViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get flavor => 'Bạn nhầm phầm mềm chứ?';
+}
+
+// Path: misskey.pages_.blocks.note_
+class _StringsMisskeyPagesBlocksNoteViVn extends _StringsMisskeyPagesBlocksNoteEnUs {
+	_StringsMisskeyPagesBlocksNoteViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get id => 'ID tút';
+	@override String get idDescription => 'Ngoài ra, bạn có thể dán URL tút vào đây.';
+	@override String get detailed => 'Xem chi tiết';
+}

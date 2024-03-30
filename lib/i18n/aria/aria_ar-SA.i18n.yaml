@@ -1,0 +1,5 @@
+followConfirm(rich): "أتريد متابعة {name}؟"
+onlineUsersCount(rich): "{n} مستخدم متصل"
+renotedBy(rich): "أعاد نشرها {user}"
+unfollowConfirm(rich): "أمتأكد من إلغاء متابعة {name}؟"
+userSaysSomething(rich): "كتب {name} شيءً"

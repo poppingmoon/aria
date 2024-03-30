@@ -1,0 +1,4 @@
+followConfirm(rich): "{name} takip edilsin mi?"
+onlineUsersCount(rich): "{n} kullanıcı çevrim içi"
+renotedBy(rich): "{user} tarafından Renotelandı"
+unfollowConfirm(rich): "{name} takipten çıkarılsın mı?"

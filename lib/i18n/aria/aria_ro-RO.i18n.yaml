@@ -1,0 +1,4 @@
+followConfirm(rich): "Ești sigur ca vrei să urmărești pe {name}?"
+renotedBy(rich): "Re-notat de {user}"
+unfollowConfirm(rich): "Ești sigur ca vrei să nu mai urmărești pe {name}?"
+userSaysSomething(rich): "{name} a spus ceva"

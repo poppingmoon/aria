@@ -12,22 +12,26 @@ part of 'antenna_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+AntennaSettings _$AntennaSettingsFromJson(Map<String, dynamic> json) {
+  return _AntennaSettings.fromJson(json);
+}
 
 /// @nodoc
 mixin _$AntennaSettings {
-  String get name => throw _privateConstructorUsedError;
-  AntennaSource get src => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  AntennaSource? get src => throw _privateConstructorUsedError;
   String? get userListId => throw _privateConstructorUsedError;
-  List<List<String>> get keywords => throw _privateConstructorUsedError;
-  List<List<String>> get excludeKeywords => throw _privateConstructorUsedError;
-  List<String> get users => throw _privateConstructorUsedError;
-  bool get caseSensitive => throw _privateConstructorUsedError;
-  bool get withReplies => throw _privateConstructorUsedError;
-  bool get withFile => throw _privateConstructorUsedError;
-  bool get notify => throw _privateConstructorUsedError;
-  bool get localOnly => throw _privateConstructorUsedError;
+  List<String>? get users => throw _privateConstructorUsedError;
+  bool? get withReplies => throw _privateConstructorUsedError;
+  List<List<String>>? get keywords => throw _privateConstructorUsedError;
+  List<List<String>>? get excludeKeywords => throw _privateConstructorUsedError;
+  bool? get localOnly => throw _privateConstructorUsedError;
+  bool? get caseSensitive => throw _privateConstructorUsedError;
+  bool? get withFile => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $AntennaSettingsCopyWith<AntennaSettings> get copyWith =>
       throw _privateConstructorUsedError;
@@ -40,17 +44,16 @@ abstract class $AntennaSettingsCopyWith<$Res> {
       _$AntennaSettingsCopyWithImpl<$Res, AntennaSettings>;
   @useResult
   $Res call(
-      {String name,
-      AntennaSource src,
+      {String? name,
+      AntennaSource? src,
       String? userListId,
-      List<List<String>> keywords,
-      List<List<String>> excludeKeywords,
-      List<String> users,
-      bool caseSensitive,
-      bool withReplies,
-      bool withFile,
-      bool notify,
-      bool localOnly});
+      List<String>? users,
+      bool? withReplies,
+      List<List<String>>? keywords,
+      List<List<String>>? excludeKeywords,
+      bool? localOnly,
+      bool? caseSensitive,
+      bool? withFile});
 }
 
 /// @nodoc
@@ -66,63 +69,58 @@ class _$AntennaSettingsCopyWithImpl<$Res, $Val extends AntennaSettings>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? src = null,
+    Object? name = freezed,
+    Object? src = freezed,
     Object? userListId = freezed,
-    Object? keywords = null,
-    Object? excludeKeywords = null,
-    Object? users = null,
-    Object? caseSensitive = null,
-    Object? withReplies = null,
-    Object? withFile = null,
-    Object? notify = null,
-    Object? localOnly = null,
+    Object? users = freezed,
+    Object? withReplies = freezed,
+    Object? keywords = freezed,
+    Object? excludeKeywords = freezed,
+    Object? localOnly = freezed,
+    Object? caseSensitive = freezed,
+    Object? withFile = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      src: null == src
+              as String?,
+      src: freezed == src
           ? _value.src
           : src // ignore: cast_nullable_to_non_nullable
-              as AntennaSource,
+              as AntennaSource?,
       userListId: freezed == userListId
           ? _value.userListId
           : userListId // ignore: cast_nullable_to_non_nullable
               as String?,
-      keywords: null == keywords
-          ? _value.keywords
-          : keywords // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
-      excludeKeywords: null == excludeKeywords
-          ? _value.excludeKeywords
-          : excludeKeywords // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
-      users: null == users
+      users: freezed == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      caseSensitive: null == caseSensitive
-          ? _value.caseSensitive
-          : caseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withReplies: null == withReplies
+              as List<String>?,
+      withReplies: freezed == withReplies
           ? _value.withReplies
           : withReplies // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withFile: null == withFile
-          ? _value.withFile
-          : withFile // ignore: cast_nullable_to_non_nullable
-              as bool,
-      notify: null == notify
-          ? _value.notify
-          : notify // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localOnly: null == localOnly
+              as bool?,
+      keywords: freezed == keywords
+          ? _value.keywords
+          : keywords // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>?,
+      excludeKeywords: freezed == excludeKeywords
+          ? _value.excludeKeywords
+          : excludeKeywords // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>?,
+      localOnly: freezed == localOnly
           ? _value.localOnly
           : localOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
+      caseSensitive: freezed == caseSensitive
+          ? _value.caseSensitive
+          : caseSensitive // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      withFile: freezed == withFile
+          ? _value.withFile
+          : withFile // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -136,17 +134,16 @@ abstract class _$$AntennaSettingsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
-      AntennaSource src,
+      {String? name,
+      AntennaSource? src,
       String? userListId,
-      List<List<String>> keywords,
-      List<List<String>> excludeKeywords,
-      List<String> users,
-      bool caseSensitive,
-      bool withReplies,
-      bool withFile,
-      bool notify,
-      bool localOnly});
+      List<String>? users,
+      bool? withReplies,
+      List<List<String>>? keywords,
+      List<List<String>>? excludeKeywords,
+      bool? localOnly,
+      bool? caseSensitive,
+      bool? withFile});
 }
 
 /// @nodoc
@@ -160,141 +157,131 @@ class __$$AntennaSettingsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? src = null,
+    Object? name = freezed,
+    Object? src = freezed,
     Object? userListId = freezed,
-    Object? keywords = null,
-    Object? excludeKeywords = null,
-    Object? users = null,
-    Object? caseSensitive = null,
-    Object? withReplies = null,
-    Object? withFile = null,
-    Object? notify = null,
-    Object? localOnly = null,
+    Object? users = freezed,
+    Object? withReplies = freezed,
+    Object? keywords = freezed,
+    Object? excludeKeywords = freezed,
+    Object? localOnly = freezed,
+    Object? caseSensitive = freezed,
+    Object? withFile = freezed,
   }) {
     return _then(_$AntennaSettingsImpl(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      src: null == src
+              as String?,
+      src: freezed == src
           ? _value.src
           : src // ignore: cast_nullable_to_non_nullable
-              as AntennaSource,
+              as AntennaSource?,
       userListId: freezed == userListId
           ? _value.userListId
           : userListId // ignore: cast_nullable_to_non_nullable
               as String?,
-      keywords: null == keywords
-          ? _value._keywords
-          : keywords // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
-      excludeKeywords: null == excludeKeywords
-          ? _value._excludeKeywords
-          : excludeKeywords // ignore: cast_nullable_to_non_nullable
-              as List<List<String>>,
-      users: null == users
+      users: freezed == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      caseSensitive: null == caseSensitive
-          ? _value.caseSensitive
-          : caseSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withReplies: null == withReplies
+              as List<String>?,
+      withReplies: freezed == withReplies
           ? _value.withReplies
           : withReplies // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withFile: null == withFile
-          ? _value.withFile
-          : withFile // ignore: cast_nullable_to_non_nullable
-              as bool,
-      notify: null == notify
-          ? _value.notify
-          : notify // ignore: cast_nullable_to_non_nullable
-              as bool,
-      localOnly: null == localOnly
+              as bool?,
+      keywords: freezed == keywords
+          ? _value._keywords
+          : keywords // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>?,
+      excludeKeywords: freezed == excludeKeywords
+          ? _value._excludeKeywords
+          : excludeKeywords // ignore: cast_nullable_to_non_nullable
+              as List<List<String>>?,
+      localOnly: freezed == localOnly
           ? _value.localOnly
           : localOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
+      caseSensitive: freezed == caseSensitive
+          ? _value.caseSensitive
+          : caseSensitive // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      withFile: freezed == withFile
+          ? _value.withFile
+          : withFile // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
-
-class _$AntennaSettingsImpl extends _AntennaSettings {
+@JsonSerializable()
+class _$AntennaSettingsImpl implements _AntennaSettings {
   const _$AntennaSettingsImpl(
-      {this.name = "",
-      this.src = AntennaSource.all,
+      {this.name,
+      this.src,
       this.userListId,
-      final List<List<String>> keywords = const [],
-      final List<List<String>> excludeKeywords = const [],
-      final List<String> users = const [],
-      this.caseSensitive = false,
-      this.withReplies = false,
-      this.withFile = false,
-      this.notify = false,
-      this.localOnly = false})
-      : _keywords = keywords,
-        _excludeKeywords = excludeKeywords,
-        _users = users,
-        super._();
+      final List<String>? users,
+      this.withReplies,
+      final List<List<String>>? keywords,
+      final List<List<String>>? excludeKeywords,
+      this.localOnly,
+      this.caseSensitive,
+      this.withFile})
+      : _users = users,
+        _keywords = keywords,
+        _excludeKeywords = excludeKeywords;
+
+  factory _$AntennaSettingsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$AntennaSettingsImplFromJson(json);
 
   @override
-  @JsonKey()
-  final String name;
+  final String? name;
   @override
-  @JsonKey()
-  final AntennaSource src;
+  final AntennaSource? src;
   @override
   final String? userListId;
-  final List<List<String>> _keywords;
+  final List<String>? _users;
   @override
-  @JsonKey()
-  List<List<String>> get keywords {
-    if (_keywords is EqualUnmodifiableListView) return _keywords;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_keywords);
-  }
-
-  final List<List<String>> _excludeKeywords;
-  @override
-  @JsonKey()
-  List<List<String>> get excludeKeywords {
-    if (_excludeKeywords is EqualUnmodifiableListView) return _excludeKeywords;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_excludeKeywords);
-  }
-
-  final List<String> _users;
-  @override
-  @JsonKey()
-  List<String> get users {
+  List<String>? get users {
+    final value = _users;
+    if (value == null) return null;
     if (_users is EqualUnmodifiableListView) return _users;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_users);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  @JsonKey()
-  final bool caseSensitive;
+  final bool? withReplies;
+  final List<List<String>>? _keywords;
   @override
-  @JsonKey()
-  final bool withReplies;
+  List<List<String>>? get keywords {
+    final value = _keywords;
+    if (value == null) return null;
+    if (_keywords is EqualUnmodifiableListView) return _keywords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<List<String>>? _excludeKeywords;
   @override
-  @JsonKey()
-  final bool withFile;
+  List<List<String>>? get excludeKeywords {
+    final value = _excludeKeywords;
+    if (value == null) return null;
+    if (_excludeKeywords is EqualUnmodifiableListView) return _excludeKeywords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
-  @JsonKey()
-  final bool notify;
+  final bool? localOnly;
   @override
-  @JsonKey()
-  final bool localOnly;
+  final bool? caseSensitive;
+  @override
+  final bool? withFile;
 
   @override
   String toString() {
-    return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, keywords: $keywords, excludeKeywords: $excludeKeywords, users: $users, caseSensitive: $caseSensitive, withReplies: $withReplies, withFile: $withFile, notify: $notify, localOnly: $localOnly)';
+    return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, users: $users, withReplies: $withReplies, keywords: $keywords, excludeKeywords: $excludeKeywords, localOnly: $localOnly, caseSensitive: $caseSensitive, withFile: $withFile)';
   }
 
   @override
@@ -306,35 +293,34 @@ class _$AntennaSettingsImpl extends _AntennaSettings {
             (identical(other.src, src) || other.src == src) &&
             (identical(other.userListId, userListId) ||
                 other.userListId == userListId) &&
+            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.withReplies, withReplies) ||
+                other.withReplies == withReplies) &&
             const DeepCollectionEquality().equals(other._keywords, _keywords) &&
             const DeepCollectionEquality()
                 .equals(other._excludeKeywords, _excludeKeywords) &&
-            const DeepCollectionEquality().equals(other._users, _users) &&
+            (identical(other.localOnly, localOnly) ||
+                other.localOnly == localOnly) &&
             (identical(other.caseSensitive, caseSensitive) ||
                 other.caseSensitive == caseSensitive) &&
-            (identical(other.withReplies, withReplies) ||
-                other.withReplies == withReplies) &&
             (identical(other.withFile, withFile) ||
-                other.withFile == withFile) &&
-            (identical(other.notify, notify) || other.notify == notify) &&
-            (identical(other.localOnly, localOnly) ||
-                other.localOnly == localOnly));
+                other.withFile == withFile));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       name,
       src,
       userListId,
+      const DeepCollectionEquality().hash(_users),
+      withReplies,
       const DeepCollectionEquality().hash(_keywords),
       const DeepCollectionEquality().hash(_excludeKeywords),
-      const DeepCollectionEquality().hash(_users),
+      localOnly,
       caseSensitive,
-      withReplies,
-      withFile,
-      notify,
-      localOnly);
+      withFile);
 
   @JsonKey(ignore: true)
   @override
@@ -342,45 +328,51 @@ class _$AntennaSettingsImpl extends _AntennaSettings {
   _$$AntennaSettingsImplCopyWith<_$AntennaSettingsImpl> get copyWith =>
       __$$AntennaSettingsImplCopyWithImpl<_$AntennaSettingsImpl>(
           this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$AntennaSettingsImplToJson(
+      this,
+    );
+  }
 }
 
-abstract class _AntennaSettings extends AntennaSettings {
+abstract class _AntennaSettings implements AntennaSettings {
   const factory _AntennaSettings(
-      {final String name,
-      final AntennaSource src,
+      {final String? name,
+      final AntennaSource? src,
       final String? userListId,
-      final List<List<String>> keywords,
-      final List<List<String>> excludeKeywords,
-      final List<String> users,
-      final bool caseSensitive,
-      final bool withReplies,
-      final bool withFile,
-      final bool notify,
-      final bool localOnly}) = _$AntennaSettingsImpl;
-  const _AntennaSettings._() : super._();
+      final List<String>? users,
+      final bool? withReplies,
+      final List<List<String>>? keywords,
+      final List<List<String>>? excludeKeywords,
+      final bool? localOnly,
+      final bool? caseSensitive,
+      final bool? withFile}) = _$AntennaSettingsImpl;
+
+  factory _AntennaSettings.fromJson(Map<String, dynamic> json) =
+      _$AntennaSettingsImpl.fromJson;
 
   @override
-  String get name;
+  String? get name;
   @override
-  AntennaSource get src;
+  AntennaSource? get src;
   @override
   String? get userListId;
   @override
-  List<List<String>> get keywords;
+  List<String>? get users;
   @override
-  List<List<String>> get excludeKeywords;
+  bool? get withReplies;
   @override
-  List<String> get users;
+  List<List<String>>? get keywords;
   @override
-  bool get caseSensitive;
+  List<List<String>>? get excludeKeywords;
   @override
-  bool get withReplies;
+  bool? get localOnly;
   @override
-  bool get withFile;
+  bool? get caseSensitive;
   @override
-  bool get notify;
-  @override
-  bool get localOnly;
+  bool? get withFile;
   @override
   @JsonKey(ignore: true)
   _$$AntennaSettingsImplCopyWith<_$AntennaSettingsImpl> get copyWith =>

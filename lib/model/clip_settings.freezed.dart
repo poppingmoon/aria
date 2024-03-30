@@ -12,14 +12,19 @@ part of 'clip_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+
+ClipSettings _$ClipSettingsFromJson(Map<String, dynamic> json) {
+  return _ClipSettings.fromJson(json);
+}
 
 /// @nodoc
 mixin _$ClipSettings {
-  String get name => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
-  bool get isPublic => throw _privateConstructorUsedError;
+  bool? get isPublic => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $ClipSettingsCopyWith<ClipSettings> get copyWith =>
       throw _privateConstructorUsedError;
@@ -31,7 +36,7 @@ abstract class $ClipSettingsCopyWith<$Res> {
           ClipSettings value, $Res Function(ClipSettings) then) =
       _$ClipSettingsCopyWithImpl<$Res, ClipSettings>;
   @useResult
-  $Res call({String name, String? description, bool isPublic});
+  $Res call({String? name, String? description, bool? isPublic});
 }
 
 /// @nodoc
@@ -47,23 +52,23 @@ class _$ClipSettingsCopyWithImpl<$Res, $Val extends ClipSettings>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? name = freezed,
     Object? description = freezed,
-    Object? isPublic = null,
+    Object? isPublic = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPublic: null == isPublic
+      isPublic: freezed == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ) as $Val);
   }
 }
@@ -76,7 +81,7 @@ abstract class _$$ClipSettingsImplCopyWith<$Res>
       __$$ClipSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String? description, bool isPublic});
+  $Res call({String? name, String? description, bool? isPublic});
 }
 
 /// @nodoc
@@ -90,42 +95,41 @@ class __$$ClipSettingsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? name = freezed,
     Object? description = freezed,
-    Object? isPublic = null,
+    Object? isPublic = freezed,
   }) {
     return _then(_$ClipSettingsImpl(
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       description: freezed == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPublic: null == isPublic
+      isPublic: freezed == isPublic
           ? _value.isPublic
           : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool,
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
+@JsonSerializable()
+class _$ClipSettingsImpl implements _ClipSettings {
+  const _$ClipSettingsImpl({this.name, this.description, this.isPublic});
 
-class _$ClipSettingsImpl extends _ClipSettings {
-  const _$ClipSettingsImpl(
-      {this.name = "", this.description, this.isPublic = false})
-      : super._();
+  factory _$ClipSettingsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ClipSettingsImplFromJson(json);
 
   @override
-  @JsonKey()
-  final String name;
+  final String? name;
   @override
   final String? description;
   @override
-  @JsonKey()
-  final bool isPublic;
+  final bool? isPublic;
 
   @override
   String toString() {
@@ -144,6 +148,7 @@ class _$ClipSettingsImpl extends _ClipSettings {
                 other.isPublic == isPublic));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, description, isPublic);
 
@@ -152,21 +157,30 @@ class _$ClipSettingsImpl extends _ClipSettings {
   @pragma('vm:prefer-inline')
   _$$ClipSettingsImplCopyWith<_$ClipSettingsImpl> get copyWith =>
       __$$ClipSettingsImplCopyWithImpl<_$ClipSettingsImpl>(this, _$identity);
-}
-
-abstract class _ClipSettings extends ClipSettings {
-  const factory _ClipSettings(
-      {final String name,
-      final String? description,
-      final bool isPublic}) = _$ClipSettingsImpl;
-  const _ClipSettings._() : super._();
 
   @override
-  String get name;
+  Map<String, dynamic> toJson() {
+    return _$$ClipSettingsImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _ClipSettings implements ClipSettings {
+  const factory _ClipSettings(
+      {final String? name,
+      final String? description,
+      final bool? isPublic}) = _$ClipSettingsImpl;
+
+  factory _ClipSettings.fromJson(Map<String, dynamic> json) =
+      _$ClipSettingsImpl.fromJson;
+
+  @override
+  String? get name;
   @override
   String? get description;
   @override
-  bool get isPublic;
+  bool? get isPublic;
   @override
   @JsonKey(ignore: true)
   _$$ClipSettingsImplCopyWith<_$ClipSettingsImpl> get copyWith =>

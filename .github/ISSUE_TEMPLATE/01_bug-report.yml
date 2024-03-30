@@ -1,0 +1,64 @@
+name: 🐛 Bug Report
+description: Create a report to help us improve
+labels: ["bug"]
+
+body:
+  - type: textarea
+    attributes:
+      label: 💡 Summary
+      description: Tell us what the bug is
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 🥰 Expected Behavior
+      description: Tell us what should happen
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 🤬 Actual Behavior
+      description: |
+        Tell us what happens instead of the expected behavior.
+        Please include errors from the developer console and/or server log files if you have access to them.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: 📝 Steps to Reproduce
+      placeholder: |
+        1.
+        2.
+        3.
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: 💻 Environment
+      description: |
+        Tell us where on the platform it happens
+        DO NOT WRITE "latest". Please provide the specific version.
+
+        Examples:
+          * Model and OS of the device(s): Pixel 7a, Android 14
+          * Aria: 1.x.x+x
+          * Server URL: misskey.io
+          * Misskey: 2024.x.x
+      value: |
+        * Model and OS of the device(s):
+        * Aria:
+        * Server URL:
+        * Misskey:
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    attributes:
+      label: Do you want to address this bug yourself?
+      options:
+        - label: Yes, I will patch the bug myself and send a pull request

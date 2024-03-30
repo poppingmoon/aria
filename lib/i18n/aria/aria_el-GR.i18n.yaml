@@ -1,0 +1,3 @@
+followConfirm(rich): "Θέλετε σίγουρα να ακολουθήσετε τον λογαριασμό {name};"
+renotedBy(rich): "Κοινοποιήθηκε από {user}"
+unfollowConfirm(rich): "Θέλετε σίγουρα να σταματήσετε να ακολουθείτε το μέλος {name};"

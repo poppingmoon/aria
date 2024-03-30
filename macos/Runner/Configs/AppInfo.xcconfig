@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = miria
+PRODUCT_NAME = aria
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = info.shiosyakeyakini.miria
+PRODUCT_BUNDLE_IDENTIFIER = com.poppingmoon.aria
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 info.shiosyakeyakini. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2024 com.poppingmoon. All rights reserved.

@@ -1,0 +1,7 @@
+followConfirm(rich): "你确定要关注 {name} 吗？"
+i18nInfo(rich): "Aria 已经被志愿者们翻译成了各种语言。如果你也有兴趣，可以通过 {link} 帮助翻译。"
+onlineUsersCount(rich): "{n} 人在线"
+renotedBy(rich): "{user} 转发了"
+unfollowConfirm(rich): "要取消对 {name} 的关注吗？"
+userSaysSomething(rich): "含 {name} 敏感文件的帖子"
+userSaysSomethingSensitive(rich): "含 {name} 敏感文件的帖子"

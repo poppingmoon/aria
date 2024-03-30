@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "info.shiosyakeyakini" "\0"
-            VALUE "FileDescription", "miria" "\0"
+            VALUE "CompanyName", "com.poppingmoon" "\0"
+            VALUE "FileDescription", "aria" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "miria" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 info.shiosyakeyakini. All rights reserved." "\0"
-            VALUE "OriginalFilename", "miria.exe" "\0"
-            VALUE "ProductName", "miria" "\0"
+            VALUE "InternalName", "aria" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 com.poppingmoon. All rights reserved." "\0"
+            VALUE "OriginalFilename", "aria.exe" "\0"
+            VALUE "ProductName", "aria" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

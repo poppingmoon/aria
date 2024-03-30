@@ -1,0 +1,6 @@
+followConfirm(rich): "Подписаться на {name}?"
+i18nInfo(rich): "Aria переводят на разные языки добровольцы со всего света. Ваша помощь тоже пригодится здесь: {link}."
+onlineUsersCount(rich): "Пользователей сейчас в сети: {n}"
+renotedBy(rich): "{user} делится"
+unfollowConfirm(rich): "Удалить из подписок пользователя {name}?"
+userSaysSomething(rich): "{name} что-то сообщает"

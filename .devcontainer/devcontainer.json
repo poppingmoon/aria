@@ -1,0 +1,24 @@
+{
+  "name": "Flutter",
+  "dockerFile": "../Dockerfile",
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+  "runArgs": [
+    "--net=host",
+    "--privileged"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dart-code.dart-code",
+        "dart-code.flutter"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "postCreateCommand": "fvm install -s && fvm flutter pub get",
+  "remoteUser": "vscode"
+}

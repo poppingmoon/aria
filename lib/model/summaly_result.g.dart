@@ -18,17 +18,25 @@ _$SummalyResultImpl _$$SummalyResultImplFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$SummalyResultImplToJson(_$SummalyResultImpl instance) =>
-    <String, dynamic>{
-      'title': instance.title,
-      'icon': instance.icon,
-      'description': instance.description,
-      'thumbnail': instance.thumbnail,
-      'player': instance.player.toJson(),
-      'sitename': instance.sitename,
-      'sensitive': instance.sensitive,
-      'url': instance.url,
-    };
+Map<String, dynamic> _$$SummalyResultImplToJson(_$SummalyResultImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('title', instance.title);
+  writeNotNull('icon', instance.icon);
+  writeNotNull('description', instance.description);
+  writeNotNull('thumbnail', instance.thumbnail);
+  val['player'] = instance.player.toJson();
+  writeNotNull('sitename', instance.sitename);
+  writeNotNull('sensitive', instance.sensitive);
+  writeNotNull('url', instance.url);
+  return val;
+}
 
 _$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
       url: json['url'] as String?,
@@ -38,10 +46,18 @@ _$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
           (json['allow'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) =>
-    <String, dynamic>{
-      'url': instance.url,
-      'width': instance.width,
-      'height': instance.height,
-      'allow': instance.allow,
-    };
+Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('url', instance.url);
+  writeNotNull('width', instance.width);
+  writeNotNull('height', instance.height);
+  writeNotNull('allow', instance.allow);
+  return val;
+}

@@ -1,141 +1,89 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../i18n/strings.g.dart';
 
 part 'general_settings.freezed.dart';
 part 'general_settings.g.dart';
 
-enum ThemeColorSystem {
-  forceLight,
-  forceDark,
-  system;
-
-  String displayName(BuildContext context) {
-    return switch (this) {
-      ThemeColorSystem.forceLight => S.of(context).lightMode,
-      ThemeColorSystem.forceDark => S.of(context).darkMode,
-      ThemeColorSystem.system => S.of(context).syncWithSystem,
-    };
-  }
-}
-
-enum NSFWInherit {
-  inherit,
-  ignore,
-  allHidden,
-  removeNsfw;
-
-  String displayName(BuildContext context) {
-    return switch (this) {
-      NSFWInherit.inherit => S.of(context).hideSensitiveMedia,
-      NSFWInherit.ignore => S.of(context).showSensitiveMedia,
-      NSFWInherit.allHidden => S.of(context).hideAllMedia,
-      NSFWInherit.removeNsfw => S.of(context).removeSensitiveNotes,
-    };
-  }
-}
-
-enum AutomaticPush {
-  automatic,
-  none;
-
-  String displayName(BuildContext context) {
-    return switch (this) {
-      AutomaticPush.automatic => S.of(context).enableInfiniteScroll,
-      AutomaticPush.none => S.of(context).disableInfiniteScroll,
-    };
-  }
-}
-
-enum TabPosition {
-  top,
-  bottom;
-
-  String displayName(BuildContext context) {
-    return switch (this) {
-      TabPosition.top => S.of(context).top,
-      TabPosition.bottom => S.of(context).bottom,
-    };
-  }
-}
-
-enum EmojiType {
-  twemoji,
-  system;
-
-  String displayName(BuildContext context) {
-    return switch (this) {
-      EmojiType.twemoji => "Twemoji",
-      EmojiType.system => S.of(context).systemEmoji,
-    };
-  }
-}
-
-enum Languages {
-  jaJP("日本語", "ja", "JP"),
-  jaOJ("日本語（お嬢様）", "ja", "OJ"),
-  zhCN("简体中文", "zh", "CN");
-
-  final String displayName;
-  final String countryCode;
-  final String languageCode;
-
-  const Languages(this.displayName, this.countryCode, this.languageCode);
-}
+const minFontSize = 8.0;
+const defaultFontSize = 14.0;
+const maxFontSize = 24.0;
+const minReactionsDisplayScale = 0.1;
+const maxReactionsDisplayScale = 3.0;
+const minEmojiPickerScale = 0.1;
+const maxEmojiPickerScale = 3.0;
 
 @freezed
 class GeneralSettings with _$GeneralSettings {
   const factory GeneralSettings({
-    @Default("") String lightColorThemeId,
-    @Default("") String darkColorThemeId,
-    @Default(ThemeColorSystem.system) ThemeColorSystem themeColorSystem,
+    // Locale
+    // ignore: invalid_annotation_target
+    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+    AppLocale? locale,
 
-    /// NSFW設定を継承する
-    @Default(NSFWInherit.inherit) NSFWInherit nsfwInherit,
+    // Appearance
+    @Default(true) bool collapseRenotes,
+    @Default(SensitiveMediaDisplay.respect) SensitiveMediaDisplay sensitive,
+    @Default(false) bool highlightSensitiveMedia,
+    @Default(false) bool animatedMfm,
+    @Default(true) bool advancedMfm,
+    @Default(false) bool showReactionsCount,
+    @Default(false) bool loadRawImages,
+    @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
+    @Default(false) bool emojiPickerUseDialog,
+    @Default(1.0) double emojiPickerScale,
+    @Default(true) bool emojiPickerAutofocus,
+    @Default(false) bool squareAvatars,
+    @Default(true) bool showAvatarDecorations,
+    @Default(false) bool showClipButtonInNoteFooter,
+    @Default(1.0) double reactionsDisplayScale,
+    @Default(true) bool limitWidthOfReaction,
+    @Default(false) bool forceShowAds,
+    @Default(false) bool useGroupedNotifications,
+    @Default(false) bool dataSaverMedia,
+    @Default(false) bool dataSaverUrlPreview,
+    @Default(false) bool showTranslateButtonInNoteFooter,
+    @Default(defaultFontSize) double fontSize,
+    String? fontFamily,
+    @Default(true) bool showNoteFooter,
+    @Default(true) bool showNoteReactionsViewer,
+    @Default(false) bool showSubNoteFooter,
+    @Default(false) bool showSubNoteReactionsViewer,
+    @Default(false) bool vibrateNote,
+    @Default(false) bool vibrateNotification,
+    @Default(false) bool showTimelineTabBarOnBottom,
+    @Default(true) bool showAvatarsInNote,
+    @Default(1.0) double noteFooterScale,
 
-    /// ノートのカスタム絵文字直接タップでのリアクションを有効にする
-    @Default(false) bool enableDirectReaction,
+    // Behavior
+    @Default(true) bool enableInfiniteScroll,
+    @Default(false) bool keepScreenOn,
+    @Default(true) bool enableHorizontalSwipe,
+    @Default(false) bool openSensitiveMediaOnDoubleTap,
+    @Default(true) bool expandNoteOnTap,
+    @Default(false) bool expandNoteOnDoubleTap,
+    @Default(false) bool confirmBeforePost,
+    @Default(false) bool confirmBeforeReact,
+    @Default(false) bool confirmBeforeFollow,
 
-    /// TLの自動更新を有効にする
-    @Default(AutomaticPush.none) AutomaticPush automaticPush,
-
-    /// 動きのあるMFMを有効にする
-    @Default(true) bool enableAnimatedMFM,
-
-    /// 長いノートを省略する
-    @Default(false) bool enableLongTextElipsed,
-
-    /// リアクション済みノートを短くする
-    @Default(true) bool enableFavoritedRenoteElipsed,
-
-    /// タブの位置
-    @Default(TabPosition.top) TabPosition tabPosition,
-
-    /// 文字の大きさの倍率
-    @Default(1.0) double textScaleFactor,
-
-    /// 使用するUnicodeの絵文字種別
-    @Default(EmojiType.twemoji) EmojiType emojiType,
-
-    /// デフォルトのフォント名
-    @Default("") String defaultFontName,
-
-    /// `$[font.serif のフォント名
-    @Default("") String serifFontName,
-
-    /// `$[font.monospace およびコードブロックのフォント名
-    @Default("") String monospaceFontName,
-
-    /// `$[font.cursive のフォント名
-    @Default("") String cursiveFontName,
-
-    /// `$[font.fantasy のフォント名
-    @Default("") String fantasyFontName,
-
-    /// 言語設定
-    @Default(Languages.jaJP) Languages languages,
+    // Theme
+    @Default(ThemeMode.system) ThemeMode themeMode,
+    @Default('a58a0abb-ff8c-476a-8dec-0ad7837e7e96') String lightThemeId,
+    @Default('66e7e5a9-cd43-42cd-837d-12f47841fa34') String darkThemeId,
   }) = _GeneralSettings;
 
   factory GeneralSettings.fromJson(Map<String, dynamic> json) =>
       _$GeneralSettingsFromJson(json);
+}
+
+enum SensitiveMediaDisplay {
+  respect,
+  ignore,
+  force,
+}
+
+enum EmojiStyle {
+  native,
+  twemoji,
 }

@@ -7,17 +7,49 @@
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>ja</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Miria</string>
+	<string>Aria</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>ar</string>
+		<string>bn</string>
+		<string>ca</string>
+		<string>cs</string>
+		<string>de</string>
+		<string>el</string>
+		<string>en</string>
+		<string>es</string>
+		<string>fr</string>
+		<string>id</string>
+		<string>it</string>
+		<string>ja</string>
+		<string>ko</string>
+		<string>lo</string>
+		<string>nl</string>
+		<string>no</string>
+		<string>pl</string>
+		<string>pt</string>
+		<string>ro</string>
+		<string>ru</string>
+		<string>sk</string>
+		<string>sv</string>
+		<string>th</string>
+		<string>tr</string>
+		<string>uk</string>
+		<string>uz</string>
+		<string>vi</string>
+		<string>zh_CN</string>
+		<string>zh_TW</string>
+	</array>
 	<key>CFBundleName</key>
-	<string>miria</string>
+	<string>aria</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -31,27 +63,26 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>ShareMedia</string>
+				<string>aria</string>
+				<string>ShareMedia-$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			</array>
 		</dict>
-		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
-	<key>ITSAppUsesNonExemptEncryption</key>
-	<false/>
+	<key>FlutterDeepLinkingEnabled</key>
+	<true/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>画像をアップロードするために、アルバムへの権限を許可してください。</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>画像を保存するために、アルバムへの権限を許可してください。</string>
+	<string>To download files, please allow permission to access your photo library.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To upload files, please allow permission to access your photo library.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
 	<array>
-		<string>fetch</string>
-		<string>remote-notification</string>
+		<string>audio</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -70,7 +101,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
 </dict>
 </plist>

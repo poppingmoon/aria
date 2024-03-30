@@ -9,19 +9,20 @@ part of 'account.dart';
 _$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
     _$AccountImpl(
       host: json['host'] as String,
-      userId: json['userId'] as String,
-      token: json['token'] as String?,
-      i: MeDetailed.fromJson(json['i'] as Map<String, dynamic>),
-      meta: json['meta'] == null
-          ? null
-          : MetaResponse.fromJson(json['meta'] as Map<String, dynamic>),
+      username: json['username'] as String?,
     );
 
-Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
-    <String, dynamic>{
-      'host': instance.host,
-      'userId': instance.userId,
-      'token': instance.token,
-      'i': instance.i.toJson(),
-      'meta': instance.meta?.toJson(),
-    };
+Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) {
+  final val = <String, dynamic>{
+    'host': instance.host,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('username', instance.username);
+  return val;
+}

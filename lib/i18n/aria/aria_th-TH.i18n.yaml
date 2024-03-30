@@ -1,0 +1,7 @@
+followConfirm(rich): "ต้องการติดตาม {name} ใช่ไหม?"
+i18nInfo(rich): "Aria กำลังได้รับการแปลเป็นภาษาต่างๆ โดยอาสาสมัคร คุณสามารถช่วยเหลือได้ที่ {link}"
+onlineUsersCount(rich): "{n} ผู้ใช้คนนี้กำลังออนไลน์"
+renotedBy(rich): "รีโน้ตโดย {user}"
+unfollowConfirm(rich): "ต้องการเลิกติดตาม {name} ใช่ไหม?"
+userSaysSomething(rich): "โพสต์ที่มีไฟล์เนื้อหาละเอียดอ่อนของ {name}"
+userSaysSomethingSensitive(rich): "โพสต์ที่มีไฟล์เนื้อหาละเอียดอ่อนของ {name}"

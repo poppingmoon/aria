@@ -1,3 +1,3 @@
-[submodule "assets_builder/misskey"]
-	path = assets_builder/misskey
-	url = https://github.com/misskey-dev/misskey
+[submodule "misskey"]
+	path = misskey
+	url = https://github.com/misskey-dev/misskey.git

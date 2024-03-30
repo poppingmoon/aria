@@ -1,0 +1,7 @@
+followConfirm(rich): "{name}님얼 팔로잉합니꺼?"
+i18nInfo(rich): "Aria는 자원봉사자들에 의해 다양한 언어로 번역되고 있습니다. {link}에서 번역에 참가할 수 있습니다."
+onlineUsersCount(rich): "{n}명이 접속 중"
+renotedBy(rich): "{user}님이 리노트햇어예"
+unfollowConfirm(rich): "{name}님얼 고마 팔로잉합니꺼?"
+userSaysSomething(rich): "{name}의 민감한 파일이 포함된 게시물"
+userSaysSomethingSensitive(rich): "{name}의 민감한 파일이 포함된 게시물"

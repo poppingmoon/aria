@@ -1,2 +1,0 @@
-#import "ShareExtensionPluginRegistrant.h"
-

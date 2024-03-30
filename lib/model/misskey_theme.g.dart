@@ -16,12 +16,21 @@ _$MisskeyThemeImpl _$$MisskeyThemeImplFromJson(Map<String, dynamic> json) =>
       props: Map<String, String>.from(json['props'] as Map),
     );
 
-Map<String, dynamic> _$$MisskeyThemeImplToJson(_$MisskeyThemeImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'author': instance.author,
-      'desc': instance.desc,
-      'base': instance.base,
-      'props': instance.props,
-    };
+Map<String, dynamic> _$$MisskeyThemeImplToJson(_$MisskeyThemeImpl instance) {
+  final val = <String, dynamic>{
+    'id': instance.id,
+    'name': instance.name,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('author', instance.author);
+  writeNotNull('desc', instance.desc);
+  writeNotNull('base', instance.base);
+  val['props'] = instance.props;
+  return val;
+}

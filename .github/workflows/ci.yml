@@ -1,0 +1,116 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Dart
+        uses: dart-lang/setup-dart@v1
+
+      - name: Format
+        run: dart format --output=none --set-exit-if-changed \
+          $(find . -name '*.dart' -not -name '*.g.dart' -and -not -name '*.freezed.dart')
+
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        uses: invertase/github-action-dart-analyzer@v3
+        with:
+          fatal-infos: true
+          custom-lint: true
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Test
+        run: flutter test
+
+  integration-test-ios:
+    runs-on: macos-14
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Start simulator
+        uses: futureware-tech/simulator-action@v3
+        with:
+          model: 'iPhone 14'
+
+      - name: Integration test
+        run: flutter test integration_test
+
+  check-i18n-sorting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get changed i18n files
+        id: changed-i18n-files
+        uses: tj-actions/changed-files@v44
+        with:
+          files: lib/i18n/aria/*.i18n.yaml
+
+      - name: Install Flutter
+        if: steps.changed-i18n-files.outputs.any_changed == 'true'
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Get dependencies
+        if: steps.changed-i18n-files.outputs.any_changed == 'true'
+        run: flutter pub get
+
+      - name: Compare i18n files
+        if: steps.changed-i18n-files.outputs.any_changed == 'true'
+        env:
+          ALL_CHANGED_FILES: ${{ steps.changed-i18n-files.outputs.all_changed_files }}
+        run: |
+          for file in $ALL_CHANGED_FILES; do
+            cp $file $file.copy
+            dart run script/sort_yaml.dart $file
+            cmp $file $file.copy
+          done

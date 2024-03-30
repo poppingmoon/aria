@@ -9,61 +9,72 @@ part of 'account_settings.dart';
 _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
         Map<String, dynamic> json) =>
     _$AccountSettingsImpl(
-      userId: json['userId'] as String,
-      host: json['host'] as String,
-      reactions: (json['reactions'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
+      keepCw: json['keepCw'] as bool? ?? true,
+      rememberNoteVisibility: json['rememberNoteVisibility'] as bool? ?? false,
       defaultNoteVisibility: $enumDecodeNullable(
               _$NoteVisibilityEnumMap, json['defaultNoteVisibility']) ??
           NoteVisibility.public,
-      defaultIsLocalOnly: json['defaultIsLocalOnly'] as bool? ?? false,
-      defaultReactionAcceptance: $enumDecodeNullable(
-              _$ReactionAcceptanceEnumMap, json['defaultReactionAcceptance']) ??
-          null,
-      iCacheStrategy:
-          $enumDecodeNullable(_$CacheStrategyEnumMap, json['iCacheStrategy']) ??
-              CacheStrategy.whenTabChange,
-      latestICached: json['latestICached'] == null
-          ? null
-          : DateTime.parse(json['latestICached'] as String),
-      emojiCacheStrategy: $enumDecodeNullable(
-              _$CacheStrategyEnumMap, json['emojiCacheStrategy']) ??
-          CacheStrategy.whenLaunch,
-      latestEmojiCached: json['latestEmojiCached'] == null
-          ? null
-          : DateTime.parse(json['latestEmojiCached'] as String),
-      metaChacheStrategy: $enumDecodeNullable(
-              _$CacheStrategyEnumMap, json['metaChacheStrategy']) ??
-          CacheStrategy.whenOneDay,
-      latestMetaCached: json['latestMetaCached'] == null
-          ? null
-          : DateTime.parse(json['latestMetaCached'] as String),
-      forceShowAd: json['forceShowAd'] as bool? ?? false,
+      defaultNoteLocalOnly: json['defaultNoteLocalOnly'] as bool? ?? false,
+      reactionAcceptance: $enumDecodeNullable(
+          _$ReactionAcceptanceEnumMap, json['reactionAcceptance']),
+      visibility:
+          $enumDecodeNullable(_$NoteVisibilityEnumMap, json['visibility']) ??
+              NoteVisibility.public,
+      localOnly: json['localOnly'] as bool? ?? false,
+      pinnedEmojisForReaction:
+          (json['pinnedEmojisForReaction'] as List<dynamic>?)
+                  ?.map((e) => e as String)
+                  .toList() ??
+              defaultPinnedEmojis,
+      pinnedEmojis: (json['pinnedEmojis'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          defaultPinnedEmojis,
+      recentlyUsedEmojis: (json['recentlyUsedEmojis'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      uploadFolder: json['uploadFolder'] as String?,
+      keepOriginalUploading: json['keepOriginalUploading'] as bool? ?? false,
+      recentlyUsedUsers: (json['recentlyUsedUsers'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      hashtags: (json['hashtags'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$AccountSettingsImplToJson(
-        _$AccountSettingsImpl instance) =>
-    <String, dynamic>{
-      'userId': instance.userId,
-      'host': instance.host,
-      'reactions': instance.reactions,
-      'defaultNoteVisibility':
-          _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
-      'defaultIsLocalOnly': instance.defaultIsLocalOnly,
-      'defaultReactionAcceptance':
-          _$ReactionAcceptanceEnumMap[instance.defaultReactionAcceptance],
-      'iCacheStrategy': _$CacheStrategyEnumMap[instance.iCacheStrategy]!,
-      'latestICached': instance.latestICached?.toIso8601String(),
-      'emojiCacheStrategy':
-          _$CacheStrategyEnumMap[instance.emojiCacheStrategy]!,
-      'latestEmojiCached': instance.latestEmojiCached?.toIso8601String(),
-      'metaChacheStrategy':
-          _$CacheStrategyEnumMap[instance.metaChacheStrategy]!,
-      'latestMetaCached': instance.latestMetaCached?.toIso8601String(),
-      'forceShowAd': instance.forceShowAd,
-    };
+    _$AccountSettingsImpl instance) {
+  final val = <String, dynamic>{
+    'keepCw': instance.keepCw,
+    'rememberNoteVisibility': instance.rememberNoteVisibility,
+    'defaultNoteVisibility':
+        _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
+    'defaultNoteLocalOnly': instance.defaultNoteLocalOnly,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('reactionAcceptance',
+      _$ReactionAcceptanceEnumMap[instance.reactionAcceptance]);
+  val['visibility'] = _$NoteVisibilityEnumMap[instance.visibility]!;
+  val['localOnly'] = instance.localOnly;
+  val['pinnedEmojisForReaction'] = instance.pinnedEmojisForReaction;
+  val['pinnedEmojis'] = instance.pinnedEmojis;
+  val['recentlyUsedEmojis'] = instance.recentlyUsedEmojis;
+  writeNotNull('uploadFolder', instance.uploadFolder);
+  val['keepOriginalUploading'] = instance.keepOriginalUploading;
+  val['recentlyUsedUsers'] = instance.recentlyUsedUsers;
+  val['hashtags'] = instance.hashtags;
+  return val;
+}
 
 const _$NoteVisibilityEnumMap = {
   NoteVisibility.public: 'public',
@@ -78,10 +89,4 @@ const _$ReactionAcceptanceEnumMap = {
   ReactionAcceptance.nonSensitiveOnlyForLocalLikeOnlyForRemote:
       'nonSensitiveOnlyForLocalLikeOnlyForRemote',
   ReactionAcceptance.likeOnly: 'likeOnly',
-};
-
-const _$CacheStrategyEnumMap = {
-  CacheStrategy.whenTabChange: 'whenTabChange',
-  CacheStrategy.whenLaunch: 'whenLaunch',
-  CacheStrategy.whenOneDay: 'whenOneDay',
 };

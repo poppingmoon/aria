@@ -1,6 +1,21 @@
 targets:
   $default:
     builders:
+      slang_build_runner:
+        options:
+          base_locale: en-US
+          fallback_strategy: base_locale
+          input_directory: lib/i18n
+          input_file_pattern: .i18n.yaml
+          output_directory: lib/i18n
+          output_format: multiple_files
+          namespaces: true
+          string_interpolation: braces
+          timestamp: false
       json_serializable:
+        generate_for:
+          include:
+            - lib/**/*.dart
         options:
           explicit_to_json: true
+          include_if_null: false

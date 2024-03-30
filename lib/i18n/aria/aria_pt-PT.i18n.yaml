@@ -1,0 +1,6 @@
+followConfirm(rich): "Tem certeza que quer deixar de seguir {name}?"
+i18nInfo(rich): "Aria é traduzido para várias línguas por voluntários. Você pode ajudar com as traduções em {link}."
+onlineUsersCount(rich): "Pessoas Online {n}"
+renotedBy(rich): "Repostado por {user}"
+unfollowConfirm(rich): "Gostaria de deixar de seguir {name}?"
+userSaysSomething(rich): "{name} disse algo"

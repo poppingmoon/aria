@@ -1,14 +1,15 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,12 +22,9 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
-    compileSdkVersion flutter.compileSdkVersion
+    namespace "com.poppingmoon.aria"
+    compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -43,22 +41,20 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "info.shiosyakeyakini.miria"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-build-configuration.
+        applicationId "com.poppingmoon.aria"
         minSdkVersion 21
-        targetSdkVersion 33
+        multiDexEnabled true
+        targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
 
     signingConfigs {
         release {
-            storeFile rootProject.file('release.keystore')
-            storePassword System.getenv('ANDROID_KEYSTORE_PASSWORD')
-            keyAlias System.getenv('ANDROID_KEY_ALIAS')
-            keyPassword System.getenv('ANDROID_KEY_PASSWORD')
+            keyAlias System.getenv('KEY_ALIAS')
+            keyPassword System.getenv('KEY_PASSWORD')
+            storeFile file('upload.keystore')
+            storePassword System.getenv('STORE_PASSWORD')
         }
     }
 
@@ -67,13 +63,21 @@ android {
             signingConfig signingConfigs.release
         }
     }
-
 }
 
 flutter {
     source '../..'
 }
 
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+dependencies {}
+
+ext.abiCodes = ["x86_64": 1, "armeabi-v7a": 2, "arm64-v8a": 3]
+import com.android.build.OutputFile
+android.applicationVariants.all { variant ->
+  variant.outputs.each { output ->
+    def abiVersionCode = project.ext.abiCodes.get(output.getFilter(OutputFile.ABI))
+    if (abiVersionCode != null) {
+      output.versionCodeOverride = variant.versionCode * 10 + abiVersionCode
+    }
+  }
 }

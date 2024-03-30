@@ -1,0 +1,6 @@
+followConfirm(rich): "{name} কে ফলোও করার ব্যাপারে নিশ্চিত?"
+i18nInfo(rich): "Aria স্বেচ্ছাসেবকদের দ্বারা বিভিন্ন ভাষায় অনুবাদ করা হচ্ছে। আপনি {link} এ গিয়ে অনুবাদে সহযোগিতা করতে পারেন।"
+onlineUsersCount(rich): "{n} জন ব্যাবহারকারী অনলাইন"
+renotedBy(rich): "{user} রিনোট করেছেন"
+unfollowConfirm(rich): "{name} কে আনফলোও করার ব্যাপারে নিশ্চিত?"
+userSaysSomething(rich): "{name} কিছু বলেছে"

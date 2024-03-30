@@ -1,17 +1,7 @@
-Miria is Misskey Client App for iOS, Android and many targets which made by Flutter.
+Aria is a client for Misskey, federated social media platform.
 
-Miria includes these features.
+Features:
 
-- Login, Logout, Management multiple servers and accounts
-- Show home, local, hybrid(social), global timelines, list, antenna and channel
-- Show note with MFM (Completely Supported).
-- Note, Renote, Quoted renote, renote to any channel
-- Reaction
-- Show Notifications
-- Edit antenna and list
-- Explore
-- Announcements
-- Favorite
-- Search notes and users
-- Page (show only)
-- Show Server Information (online users, job queue, ads, custom emojis)
+- Swipe to switch multiple accounts (of multiple servers)
+- Based on design of official Misskey web client
+- Highly customizable
