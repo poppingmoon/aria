@@ -188,13 +188,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: Windows Installer
-          path: windows/Output/aria-${{ github.ref_name }}-windows-x64.exe
+          path: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
 
       - name: Release installer
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: windows/Output/aria-${{ github.ref_name }}-windows-x64.exe
+          files: windows/Output/aria-v${{ steps.trim-version.outputs.version }}-windows-x64.exe
           draft: true
 
   build-macos:
