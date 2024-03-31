@@ -32,7 +32,7 @@ class NotificationsListView extends HookConsumerWidget {
         controller.addListener(() {
           if (controller.position.extentBefore == 0) {
             hasNewNotification.value = false;
-            if (i != null && i.hasUnreadAnnouncement) {
+            if (i != null && i.hasUnreadNotification) {
               ref.read(iNotifierProvider(account).notifier).readNotifications();
             }
           }
@@ -54,50 +54,53 @@ class NotificationsListView extends HookConsumerWidget {
     });
     final centerKey = useMemoized(() => GlobalKey(), []);
 
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        CustomScrollView(
-          controller: controller,
-          center: centerKey,
-          slivers: [
-            SliverList.separated(
-              itemBuilder: (context, index) => NotificationWidget(
-                account: account,
-                notification: nextNotifications.value[index],
+    return RefreshIndicator(
+      onRefresh: () => ref.read(iNotifierProvider(account).future),
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          CustomScrollView(
+            controller: controller,
+            center: centerKey,
+            slivers: [
+              SliverList.separated(
+                itemBuilder: (context, index) => NotificationWidget(
+                  account: account,
+                  notification: nextNotifications.value[index],
+                ),
+                separatorBuilder: (_, __) => const Divider(height: 0),
+                itemCount: nextNotifications.value.length,
               ),
-              separatorBuilder: (_, __) => const Divider(height: 0),
-              itemCount: nextNotifications.value.length,
-            ),
-            SliverList.separated(
-              key: centerKey,
-              itemBuilder: (context, index) => NotificationWidget(
-                account: account,
-                notification: notifications.value!.items[index],
+              SliverList.separated(
+                key: centerKey,
+                itemBuilder: (context, index) => NotificationWidget(
+                  account: account,
+                  notification: notifications.value!.items[index],
+                ),
+                separatorBuilder: (_, __) => const Divider(height: 0),
+                itemCount: notifications.valueOrNull?.items.length ?? 0,
               ),
-              separatorBuilder: (_, __) => const Divider(height: 0),
-              itemCount: notifications.valueOrNull?.items.length ?? 0,
-            ),
-            SliverToBoxAdapter(
-              child: PaginationBottomWidget(
-                paginationState: notifications,
-                noItemsLabel: t.misskey.noNotes,
-                loadMore: () => ref
-                    .read(notificationsNotifierProvider(account).notifier)
-                    .loadMore(skipError: true),
+              SliverToBoxAdapter(
+                child: PaginationBottomWidget(
+                  paginationState: notifications,
+                  noItemsLabel: t.misskey.noNotes,
+                  loadMore: () => ref
+                      .read(notificationsNotifierProvider(account).notifier)
+                      .loadMore(skipError: true),
+                ),
               ),
-            ),
-          ],
-        ),
-        if (hasNewNotification.value)
-          Positioned(
-            top: 16.0,
-            child: ElevatedButton(
-              onPressed: () => controller.scrollToTop(),
-              child: Text(t.aria.newNotificationReceived),
-            ),
+            ],
           ),
-      ],
+          if (hasNewNotification.value)
+            Positioned(
+              top: 16.0,
+              child: ElevatedButton(
+                onPressed: () => controller.scrollToTop(),
+                child: Text(t.aria.newNotificationReceived),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

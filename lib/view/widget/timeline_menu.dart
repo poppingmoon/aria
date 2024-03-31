@@ -42,7 +42,12 @@ class TimelineMenu extends ConsumerWidget {
                 Card(
                   clipBehavior: Clip.hardEdge,
                   child: InkWell(
-                    onTap: () => context.push('/$account/notifications'),
+                    onTap: () {
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .readNotifications();
+                      context.push('/$account/notifications');
+                    },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -136,7 +141,7 @@ class TimelineMenu extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const Icon(Icons.list),
-                        FittedBox(child: Text(t.misskey.announcements)),
+                        FittedBox(child: Text(t.misskey.userList)),
                       ],
                     ),
                   ),

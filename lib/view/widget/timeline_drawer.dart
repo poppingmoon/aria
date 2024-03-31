@@ -79,9 +79,29 @@ class TimelineDrawer extends ConsumerWidget {
                 initiallyExpanded: account == currentAccount,
                 children: [
                   ListTile(
-                    leading: const Icon(Icons.notifications),
+                    leading: Stack(
+                      children: [
+                        const Icon(Icons.notifications),
+                        if (i?.hasUnreadNotification ?? false)
+                          DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                            child: const SizedBox(
+                              height: 12.0,
+                              width: 12.0,
+                            ),
+                          ),
+                      ],
+                    ),
                     title: Text(t.misskey.notifications),
-                    onTap: () => context.push('/$account/notifications'),
+                    onTap: () {
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .readNotifications();
+                      context.push('/$account/notifications');
+                    },
                   ),
                   ListTile(
                     leading: const Icon(Icons.attach_file),
@@ -99,7 +119,22 @@ class TimelineDrawer extends ConsumerWidget {
                     onTap: () => context.push('/$account/explore'),
                   ),
                   ListTile(
-                    leading: const Icon(Icons.campaign),
+                    leading: Stack(
+                      children: [
+                        const Icon(Icons.campaign),
+                        if (i?.hasUnreadAnnouncement ?? false)
+                          DecoratedBox(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Theme.of(context).colorScheme.primary,
+                            ),
+                            child: const SizedBox(
+                              height: 12.0,
+                              width: 12.0,
+                            ),
+                          ),
+                      ],
+                    ),
                     title: Text(t.misskey.announcements),
                     onTap: () => context.push('/$account/announcements'),
                   ),
