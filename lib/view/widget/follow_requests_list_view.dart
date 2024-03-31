@@ -54,53 +54,57 @@ class FollowRequestsListView extends HookConsumerWidget {
     });
     final centerKey = useMemoized(() => GlobalKey(), []);
 
-    return Stack(
-      alignment: Alignment.topCenter,
-      children: [
-        CustomScrollView(
-          controller: controller,
-          center: centerKey,
-          slivers: [
-            SliverList.separated(
-              itemBuilder: (context, index) => FollowRequestTile(
-                account: account,
-                user: nextRequests.value[index],
-                onDismissed: () => nextRequests.value = nextRequests.value
-                    .whereIndexed((i, _) => i != index)
-                    .toList(),
+    return RefreshIndicator(
+      onRefresh: () =>
+          ref.refresh(followRequestsNotifierProvider(account).future),
+      child: Stack(
+        alignment: Alignment.topCenter,
+        children: [
+          CustomScrollView(
+            controller: controller,
+            center: centerKey,
+            slivers: [
+              SliverList.separated(
+                itemBuilder: (context, index) => FollowRequestTile(
+                  account: account,
+                  user: nextRequests.value[index],
+                  onDismissed: () => nextRequests.value = nextRequests.value
+                      .whereIndexed((i, _) => i != index)
+                      .toList(),
+                ),
+                separatorBuilder: (_, __) => const Divider(height: 0),
+                itemCount: nextRequests.value.length,
               ),
-              separatorBuilder: (_, __) => const Divider(height: 0),
-              itemCount: nextRequests.value.length,
-            ),
-            SliverList.separated(
-              key: centerKey,
-              itemBuilder: (context, index) => FollowRequestTile(
-                account: account,
-                user: requests.value!.items[index].follower,
+              SliverList.separated(
+                key: centerKey,
+                itemBuilder: (context, index) => FollowRequestTile(
+                  account: account,
+                  user: requests.value!.items[index].follower,
+                ),
+                separatorBuilder: (_, __) => const Divider(height: 0),
+                itemCount: requests.valueOrNull?.items.length ?? 0,
               ),
-              separatorBuilder: (_, __) => const Divider(height: 0),
-              itemCount: requests.valueOrNull?.items.length ?? 0,
-            ),
-            SliverToBoxAdapter(
-              child: PaginationBottomWidget(
-                paginationState: requests,
-                noItemsLabel: t.misskey.noFollowRequests,
-                loadMore: () => ref
-                    .read(followRequestsNotifierProvider(account).notifier)
-                    .loadMore(skipError: true),
+              SliverToBoxAdapter(
+                child: PaginationBottomWidget(
+                  paginationState: requests,
+                  noItemsLabel: t.misskey.noFollowRequests,
+                  loadMore: () => ref
+                      .read(followRequestsNotifierProvider(account).notifier)
+                      .loadMore(skipError: true),
+                ),
               ),
-            ),
-          ],
-        ),
-        if (hasNewRequest.value)
-          Positioned(
-            top: 16.0,
-            child: ElevatedButton(
-              onPressed: () => controller.scrollToTop(),
-              child: Text(t.aria.newFollowRequestReceived),
-            ),
+            ],
           ),
-      ],
+          if (hasNewRequest.value)
+            Positioned(
+              top: 16.0,
+              child: ElevatedButton(
+                onPressed: () => controller.scrollToTop(),
+                child: Text(t.aria.newFollowRequestReceived),
+              ),
+            ),
+        ],
+      ),
     );
   }
 }
