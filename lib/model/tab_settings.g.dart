@@ -69,4 +69,5 @@ const _$TabTypeEnumMap = {
   TabType.mention: 'mention',
   TabType.direct: 'direct',
   TabType.user: 'user',
+  TabType.notifications: 'notifications',
 };

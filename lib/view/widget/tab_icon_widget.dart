@@ -49,6 +49,7 @@ class TabIconWidget extends StatelessWidget {
             TabType.mention => Icons.alternate_email,
             TabType.direct => Icons.mail,
             TabType.user => Icons.person,
+            TabType.notifications => Icons.notifications,
           },
           size: size,
         ),

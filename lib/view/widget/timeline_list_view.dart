@@ -7,12 +7,14 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
+import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
+import 'notifications_list_view.dart';
 import 'pagination_bottom_widget.dart';
 import 'timeline_note.dart';
 
@@ -28,6 +30,9 @@ class TimelineListView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (tabSettings.tabType == TabType.notifications) {
+      return NotificationsListView(account: tabSettings.account);
+    }
     final controller = ref.watch(timelineScrollControllerProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
