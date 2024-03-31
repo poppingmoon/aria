@@ -1002,10 +1002,11 @@ packages:
   image_size_getter:
     dependency: "direct main"
     description:
-      name: image_size_getter
-      sha256: "75befb508dd28845d4b276654a8420be3d7458b8424e943ee84bbfe7c2c052e0"
-      url: "https://pub.dev"
-    source: hosted
+      path: library
+      ref: f38b87b187f165a7edcf4f7174bcd867e3cdc700
+      resolved-ref: f38b87b187f165a7edcf4f7174bcd867e3cdc700
+      url: "https://github.com/poppingmoon/dart_image_size_getter"
+    source: git
     version: "2.1.2"
   integration_test:
     dependency: "direct dev"
