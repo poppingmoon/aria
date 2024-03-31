@@ -1,0 +1,17 @@
+# Source: https://github.com/MisskeyIO/misskey/blob/io/locales/en-US.yml
+
+skebStatus_:
+  genres_:
+    art: "Artwork"
+    comic: "Comic"
+    voice: "Voice"
+    novel: "Text"
+    video: "Movie"
+    music: "Music"
+    correction: "Advice"
+  seeking: "Seeking"
+  stopped: "Stopped"
+  client: "Client"
+  yenX: "JPY {x}"
+  nWorks: "Delivered {n} works"
+  nRequests: "Requested {n} times"

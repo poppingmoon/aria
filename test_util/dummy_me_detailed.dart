@@ -19,7 +19,4 @@ final dummyMeDetailed = MeDetailed(
   alwaysMarkNsfw: false,
   carefulBot: false,
   autoAcceptFollowed: false,
-  hasUnreadSpecifiedNotes: false,
-  hasUnreadMentions: false,
-  hasUnreadNotification: false,
 );
