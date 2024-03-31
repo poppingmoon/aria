@@ -107,6 +107,9 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
             allowPartial: true,
           ),
         ),
+      TabType.notifications => throw UnsupportedError(
+          '_fetchNote() for TabType.notifications is not supported',
+        ),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);
     return notes;

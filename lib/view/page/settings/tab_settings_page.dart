@@ -289,7 +289,8 @@ class TabSettingsPage extends HookConsumerWidget {
                       TabType.userList ||
                       TabType.antenna ||
                       TabType.mention ||
-                      TabType.direct =>
+                      TabType.direct ||
+                      TabType.notifications =>
                         !(account.value?.isGuest ?? true),
                       TabType.localTimeline => account.value?.isGuest ?? true
                           ? meta?.policies?.ltlAvailable ?? true
@@ -543,50 +544,52 @@ class TabSettingsPage extends HookConsumerWidget {
                 }
               },
             ),
-            if (tabType != TabType.user)
+            if (tabType != TabType.notifications) ...[
+              if (tabType != TabType.user)
+                SwitchListTile(
+                  title: Text(t.misskey.disableStreamingTimeline),
+                  value: tabSettings.value.disableStreaming,
+                  onChanged: (value) => tabSettings.value =
+                      tabSettings.value.copyWith(disableStreaming: value),
+                ),
               SwitchListTile(
-                title: Text(t.misskey.disableStreamingTimeline),
-                value: tabSettings.value.disableStreaming,
+                title: Text(t.aria.disableSubscribingNotes),
+                value: tabSettings.value.disableSubscribing,
                 onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(disableStreaming: value),
+                    tabSettings.value.copyWith(disableSubscribing: value),
               ),
-            SwitchListTile(
-              title: Text(t.aria.disableSubscribingNotes),
-              value: tabSettings.value.disableSubscribing,
-              onChanged: (value) => tabSettings.value =
-                  tabSettings.value.copyWith(disableSubscribing: value),
-            ),
-            if (tabType case TabType.localTimeline || TabType.hybridTimeline)
+              if (tabType case TabType.localTimeline || TabType.hybridTimeline)
+                SwitchListTile(
+                  title: Text(t.misskey.showRepliesToOthersInTimeline),
+                  value: tabSettings.value.withReplies,
+                  onChanged: (value) => tabSettings.value =
+                      tabSettings.value.copyWith(withReplies: value),
+                ),
               SwitchListTile(
-                title: Text(t.misskey.showRepliesToOthersInTimeline),
-                value: tabSettings.value.withReplies,
+                title: Text(t.misskey.showRenotes),
+                value: tabSettings.value.withRenotes,
                 onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(withReplies: value),
+                    tabSettings.value.copyWith(withRenotes: value),
               ),
-            SwitchListTile(
-              title: Text(t.misskey.showRenotes),
-              value: tabSettings.value.withRenotes,
-              onChanged: (value) => tabSettings.value =
-                  tabSettings.value.copyWith(withRenotes: value),
-            ),
-            SwitchListTile(
-              title: Text(t.aria.showSelfRenotes),
-              value: tabSettings.value.withSelfRenotes,
-              onChanged: (value) => tabSettings.value =
-                  tabSettings.value.copyWith(withSelfRenotes: value),
-            ),
-            SwitchListTile(
-              title: Text(t.misskey.fileAttachedOnly),
-              value: tabSettings.value.withFiles,
-              onChanged: (value) => tabSettings.value =
-                  tabSettings.value.copyWith(withFiles: value),
-            ),
-            SwitchListTile(
-              title: Text(t.misskey.withSensitive),
-              value: tabSettings.value.withSensitive,
-              onChanged: (value) => tabSettings.value =
-                  tabSettings.value.copyWith(withSensitive: value),
-            ),
+              SwitchListTile(
+                title: Text(t.aria.showSelfRenotes),
+                value: tabSettings.value.withSelfRenotes,
+                onChanged: (value) => tabSettings.value =
+                    tabSettings.value.copyWith(withSelfRenotes: value),
+              ),
+              SwitchListTile(
+                title: Text(t.misskey.fileAttachedOnly),
+                value: tabSettings.value.withFiles,
+                onChanged: (value) => tabSettings.value =
+                    tabSettings.value.copyWith(withFiles: value),
+              ),
+              SwitchListTile(
+                title: Text(t.misskey.withSensitive),
+                value: tabSettings.value.withSensitive,
+                onChanged: (value) => tabSettings.value =
+                    tabSettings.value.copyWith(withSensitive: value),
+              ),
+            ],
           ],
         ),
         floatingActionButton: FloatingActionButton.extended(

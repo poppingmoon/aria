@@ -10,4 +10,5 @@ enum TabType {
   mention,
   direct,
   user,
+  notifications,
 }

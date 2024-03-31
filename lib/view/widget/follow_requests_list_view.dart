@@ -10,6 +10,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/streaming/main_event.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'acct_widget.dart';
@@ -28,7 +29,9 @@ class FollowRequestsListView extends HookConsumerWidget {
     final nextRequests = useState(<User>[]);
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final controller = useScrollController();
+    final centerKey = useMemoized(() => GlobalKey(), []);
     final hasNewRequest = useState(false);
+    final isAtBottom = useState(false);
     useEffect(
       () {
         notifier.connect();
@@ -52,7 +55,25 @@ class FollowRequestsListView extends HookConsumerWidget {
         }
       }
     });
-    final centerKey = useMemoized(() => GlobalKey(), []);
+    useEffect(
+      () {
+        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+          controller.addListener(() {
+            if (controller.position.extentAfter < 100) {
+              if (!isAtBottom.value) {
+                ref
+                    .read(followRequestsNotifierProvider(account).notifier)
+                    .loadMore();
+              }
+            } else if (isAtBottom.value) {
+              isAtBottom.value = false;
+            }
+          });
+        }
+        return;
+      },
+      [],
+    );
 
     return RefreshIndicator(
       onRefresh: () =>

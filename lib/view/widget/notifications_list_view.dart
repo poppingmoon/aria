@@ -9,6 +9,7 @@ import '../../model/account.dart';
 import '../../model/streaming/main_event.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import 'notification_widget.dart';
 import 'pagination_bottom_widget.dart';
@@ -23,9 +24,11 @@ class NotificationsListView extends HookConsumerWidget {
     final notifications = ref.watch(notificationsNotifierProvider(account));
     final nextNotifications = useState(<INotificationsResponse>[]);
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
-    final controller = useScrollController();
-    final hasNewNotification = useState(false);
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final controller = useScrollController();
+    final centerKey = useMemoized(() => GlobalKey(), []);
+    final hasNewNotification = useState(false);
+    final isAtBottom = useState(false);
     useEffect(
       () {
         notifier.connect();
@@ -52,7 +55,25 @@ class NotificationsListView extends HookConsumerWidget {
         }
       }
     });
-    final centerKey = useMemoized(() => GlobalKey(), []);
+    useEffect(
+      () {
+        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+          controller.addListener(() {
+            if (controller.position.extentAfter < 100) {
+              if (!isAtBottom.value) {
+                ref
+                    .read(notificationsNotifierProvider(account).notifier)
+                    .loadMore();
+              }
+            } else if (isAtBottom.value) {
+              isAtBottom.value = false;
+            }
+          });
+        }
+        return;
+      },
+      [],
+    );
 
     return RefreshIndicator(
       onRefresh: () => ref.read(iNotifierProvider(account).future),
