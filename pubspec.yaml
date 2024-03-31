@@ -46,7 +46,11 @@ dependencies:
   image: ^4.1.7
   image_compression: ^1.0.5
   image_editor: ^1.4.0
-  image_size_getter: ^2.1.2
+  image_size_getter:
+    git:
+      url: https://github.com/poppingmoon/dart_image_size_getter
+      ref: f38b87b187f165a7edcf4f7174bcd867e3cdc700
+      path: library
   intl: ^0.18.1
   json5: ^0.8.2
   json_annotation: ^4.8.1
