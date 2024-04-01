@@ -11,9 +11,14 @@ import '../../widget/paginated_list_view.dart';
 import '../../widget/user_info.dart';
 
 class SearchUsers extends HookConsumerWidget {
-  const SearchUsers({super.key, required this.account});
+  const SearchUsers({
+    super.key,
+    required this.account,
+    this.focusNode,
+  });
 
   final Account account;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -39,6 +44,7 @@ class SearchUsers extends HookConsumerWidget {
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: controller,
+                focusNode: focusNode,
                 decoration:
                     const InputDecoration(prefixIcon: Icon(Icons.search)),
                 autofocus: true,
