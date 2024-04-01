@@ -294,11 +294,20 @@ class PostNotifier extends _$PostNotifier {
         if (reply.userId != i?.id) reply.userId,
       }.toList();
       final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
-      final mentions =
-          extractMentions(const MfmParser().parse(reply.text ?? ''));
+      final replyMentions =
+          extractMentions(const MfmParser().parse(reply.text ?? ''))
+              .map((mention) => mention.acct);
+      final textMentions =
+          extractMentions(const MfmParser().parse(state.text ?? ''))
+              .map((mention) => mention.acct);
       final text = [
-        ...{...mentions.map((mention) => mention.acct), reply.user.acct}
-            .where((acct) => acct != '@${account.username}'),
+        ...{...replyMentions, reply.user.acct}.where(
+          (acct) => ![
+            ...textMentions,
+            '@${account.username}',
+            account.toString(),
+          ].contains(acct),
+        ),
         state.text ?? '',
       ].join(' ');
       state = state.copyWith(
