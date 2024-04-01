@@ -57,6 +57,7 @@ class MfmBuilder {
     required this.mentionBuilder,
     this.onTapEmoji,
     this.onLinkTap,
+    this.onLinkLongPress,
     this.onHashtagTap,
     this.shouldNyaize = false,
     this.useAdvanced = true,
@@ -84,7 +85,8 @@ class MfmBuilder {
     double opacity,
   ) mentionBuilder;
   final void Function(String emoji)? onTapEmoji;
-  final void Function(String link)? onLinkTap;
+  final void Function(String url)? onLinkTap;
+  final void Function(String url)? onLinkLongPress;
   final void Function(String hashtag)? onHashtagTap;
   final bool shouldNyaize;
   final bool useAdvanced;
@@ -174,6 +176,7 @@ class MfmBuilder {
                 baseline: TextBaseline.alphabetic,
                 child: InkWell(
                   onTap: () => onLinkTap?.call(url),
+                  onLongPress: () => onLinkLongPress?.call(url),
                   child: Text.rich(
                     TextSpan(
                       children: [

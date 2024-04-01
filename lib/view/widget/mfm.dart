@@ -14,6 +14,7 @@ import '../../util/navigate.dart';
 import 'custom_emoji.dart';
 import 'mention_widget.dart';
 import 'mfm/mfm_builder.dart';
+import 'url_sheet.dart';
 
 List<InlineSpan> buildMfm(
   WidgetRef ref, {
@@ -88,6 +89,10 @@ List<InlineSpan> buildMfm(
     },
     onTapEmoji: onTapEmoji,
     onLinkTap: onLinkTap,
+    onLinkLongPress: (url) => showModalBottomSheet<void>(
+      context: ref.context,
+      builder: (context) => UrlSheet(url: url),
+    ),
     onHashtagTap: (hashtag) => ref.context.push('/$account/tags/$hashtag'),
     shouldNyaize: author?.isCat ?? false,
     useAdvanced: useAdvanced,
