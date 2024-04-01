@@ -25,11 +25,13 @@ class SearchNotes extends HookConsumerWidget {
     required this.account,
     this.userId,
     this.channelId,
+    this.focusNode,
   });
 
   final Account account;
   final String? userId;
   final String? channelId;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -71,6 +73,7 @@ class SearchNotes extends HookConsumerWidget {
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: controller,
+                focusNode: focusNode,
                 decoration:
                     const InputDecoration(prefixIcon: Icon(Icons.search)),
                 autofocus: true,
