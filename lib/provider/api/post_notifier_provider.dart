@@ -120,6 +120,18 @@ class PostNotifier extends _$PostNotifier {
 
   Future<void> fromRequest(NotesCreateRequest request, Account origin) async {
     if (account.host == origin.host) {
+      if (request case NotesCreateRequest(:final replyId?)) {
+        final reply = ref.read(noteProvider(origin, replyId));
+        if (reply != null) {
+          ref.read(notesNotifierProvider(account).notifier).add(reply);
+        }
+      }
+      if (request case NotesCreateRequest(:final renoteId?)) {
+        final renote = ref.read(noteProvider(origin, renoteId));
+        if (renote != null) {
+          ref.read(notesNotifierProvider(account).notifier).add(renote);
+        }
+      }
       state = request;
     } else {
       final reply = request.replyId != null
