@@ -111,9 +111,13 @@ class EmojiPage extends ConsumerWidget {
                   child: KeyValueWidget(
                     label: t.misskey.license,
                     child: emoji.license != null
-                        ? Mfm(
-                            account: account,
-                            text: emoji.license,
+                        ? InkWell(
+                            onLongPress: () =>
+                                copyToClipboard(context, emoji.license!),
+                            child: Mfm(
+                              account: account,
+                              text: emoji.license,
+                            ),
                           )
                         : null,
                   ),

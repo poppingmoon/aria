@@ -33,6 +33,7 @@ class ServerEmojis extends HookConsumerWidget {
     );
     final customEmojis =
         ref.watch(searchCustomEmojisProvider(host, query.value));
+    final style = DefaultTextStyle.of(context).style;
 
     return RefreshIndicator(
       onRefresh: () =>
@@ -40,7 +41,6 @@ class ServerEmojis extends HookConsumerWidget {
       child: groups.isNotEmpty
           ? ListView.builder(
               itemBuilder: (context, index) {
-                final style = DefaultTextStyle.of(context).style;
                 if (index == 0) {
                   return Column(
                     children: [
@@ -66,21 +66,25 @@ class ServerEmojis extends HookConsumerWidget {
                       if (customEmojis.isNotEmpty) ...[
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Wrap(
-                            spacing: 4.0,
-                            runSpacing: 4.0,
-                            children: [
-                              ...customEmojis.map(
-                                (emoji) => CustomEmoji(
-                                  account: Account(host: host),
-                                  emoji: emoji.emoji,
-                                  onTap: () => context.pop(emoji.emoji),
-                                  height: style.lineHeight * 2.0,
-                                  fallbackTextStyle:
-                                      style.apply(fontSizeFactor: 2.0),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Wrap(
+                              spacing: 4.0,
+                              runSpacing: 4.0,
+                              children: [
+                                ...customEmojis.map(
+                                  (emoji) => CustomEmoji(
+                                    account: Account(host: host),
+                                    emoji: emoji.emoji,
+                                    onTap: () => context
+                                        .push('/$host/emojis/${emoji.name}'),
+                                    height: style.lineHeight * 2.0,
+                                    fallbackTextStyle:
+                                        style.apply(fontSizeFactor: 2.0),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                         const Divider(),
