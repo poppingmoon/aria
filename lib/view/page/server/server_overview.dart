@@ -14,6 +14,7 @@ import '../../../provider/api/federation_instance_provider.dart';
 import '../../../provider/api/meta_provider.dart';
 import '../../../provider/api/stats_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
+import '../../../provider/node_info_provider.dart';
 import '../../widget/error_message.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/key_value_widget.dart';
@@ -34,6 +35,9 @@ class ServerOverview extends ConsumerWidget {
     final instance = account.host != host
         ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
         : null;
+    final nodeInfo = ref.watch(nodeInfoProvider(host)).valueOrNull;
+    final softwareName =
+        (nodeInfo?['software'] as Map<String, dynamic>?)?['name'] as String?;
     final stats =
         meta != null ? ref.watch(statsProvider(Account(host: host))) : null;
     final colors =
@@ -130,20 +134,21 @@ class ServerOverview extends ConsumerWidget {
             padding:
                 const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
             child: KeyValueWidget(
-              label: instance?.softwareName ?? 'Misskey',
+              label: instance?.softwareName ?? softwareName ?? 'Misskey',
               text: meta?.version ?? instance?.softwareVersion,
             ),
           ),
           if (meta != null) ...[
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-              child: Text(
-                t.misskey
-                    .poweredByMisskeyDescription(name: meta.name ?? host)
-                    .replaceAll(RegExp('</?b>'), ''),
+            if (softwareName == null || softwareName == 'misskey')
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: Text(
+                  t.misskey
+                      .poweredByMisskeyDescription(name: meta.name ?? host)
+                      .replaceAll(RegExp('</?b>'), ''),
+                ),
               ),
-            ),
             ListTile(
               leading: const Icon(Icons.info_outline),
               title: Text(t.misskey.aboutMisskey),
