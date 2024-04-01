@@ -282,10 +282,12 @@ class PostNotifier extends _$PostNotifier {
     if (reply == null) {
       state = state.copyWith(replyId: null);
     } else {
-      final visibility = NoteVisibility.min(
-        state.visibility ?? NoteVisibility.public,
-        reply.visibility ?? NoteVisibility.public,
-      );
+      final visibility = reply.channelId != null
+          ? NoteVisibility.public
+          : NoteVisibility.min(
+              state.visibility ?? NoteVisibility.public,
+              reply.visibility ?? NoteVisibility.public,
+            );
       final i = ref.read(iNotifierProvider(account)).valueOrNull;
       final visibleUserIds = {
         ...?state.visibleUserIds,
