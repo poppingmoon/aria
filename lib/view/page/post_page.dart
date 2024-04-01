@@ -901,13 +901,24 @@ class PostPage extends HookConsumerWidget {
               ),
             ),
             Visibility(
-              visible: isCwFocused.value || isFocused.value,
+              visible: isCwFocused.value,
               maintainState: true,
               child: TextFieldTapRegion(
                 onTapOutside: (_) => primaryFocus?.unfocus(),
                 child: MfmKeyboard(
                   account: account.value,
-                  controller: isCwFocused.value ? cwController : controller,
+                  controller: cwController,
+                ),
+              ),
+            ),
+            Visibility(
+              visible: isFocused.value,
+              maintainState: true,
+              child: TextFieldTapRegion(
+                onTapOutside: (_) => primaryFocus?.unfocus(),
+                child: MfmKeyboard(
+                  account: account.value,
+                  controller: controller,
                 ),
               ),
             ),
