@@ -38,6 +38,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	// Translations
 	late final _StringsAriaEnUs aria = _StringsAriaEnUs._(_root);
 	late final _StringsMisskeyEnUs misskey = _StringsMisskeyEnUs._(_root);
+	late final _StringsMisskeyIOEnUs misskeyIO = _StringsMisskeyIOEnUs._(_root);
 }
 
 // Path: aria
@@ -1481,6 +1482,16 @@ class _StringsMisskeyEnUs {
 	late final _StringsMisskeyOfflineScreenEnUs offlineScreen_ = _StringsMisskeyOfflineScreenEnUs._(_root);
 }
 
+// Path: misskeyIO
+class _StringsMisskeyIOEnUs {
+	_StringsMisskeyIOEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsMisskeyIOSkebStatusEnUs skebStatus_ = _StringsMisskeyIOSkebStatusEnUs._(_root);
+}
+
 // Path: misskey.bubbleGame_
 class _StringsMisskeyBubbleGameEnUs {
 	_StringsMisskeyBubbleGameEnUs._(this._root);
@@ -2832,6 +2843,22 @@ class _StringsMisskeyOfflineScreenEnUs {
 	String get header => 'Unable to connect to the server';
 }
 
+// Path: misskeyIO.skebStatus_
+class _StringsMisskeyIOSkebStatusEnUs {
+	_StringsMisskeyIOSkebStatusEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsMisskeyIOSkebStatusGenresEnUs genres_ = _StringsMisskeyIOSkebStatusGenresEnUs._(_root);
+	String get seeking => 'Seeking';
+	String get stopped => 'Stopped';
+	String get client => 'Client';
+	String yenX({required Object x}) => 'JPY ${x}';
+	String nWorks({required Object n}) => 'Delivered ${n} works';
+	String nRequests({required Object n}) => 'Requested ${n} times';
+}
+
 // Path: misskey.bubbleGame_.score_
 class _StringsMisskeyBubbleGameScoreEnUs {
 	_StringsMisskeyBubbleGameScoreEnUs._(this._root);
@@ -3398,6 +3425,22 @@ class _StringsMisskeyDataSaverCodeEnUs {
 	// Translations
 	String get title => 'Code highlighting';
 	String get description => 'If code highlighting notations are used in MFM, etc., they will not load until tapped. Syntax highlighting requires downloading the highlight definition files for each programming language. Therefore, disabling the automatic loading of these files is expected to reduce the amount of communication data.';
+}
+
+// Path: misskeyIO.skebStatus_.genres_
+class _StringsMisskeyIOSkebStatusGenresEnUs {
+	_StringsMisskeyIOSkebStatusGenresEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get art => 'Artwork';
+	String get comic => 'Comic';
+	String get voice => 'Voice';
+	String get novel => 'Text';
+	String get video => 'Movie';
+	String get music => 'Music';
+	String get correction => 'Advice';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

@@ -34,6 +34,7 @@ class _StringsJaKs extends Translations {
 	// Translations
 	@override late final _StringsAriaJaKs aria = _StringsAriaJaKs._(_root);
 	@override late final _StringsMisskeyJaKs misskey = _StringsMisskeyJaKs._(_root);
+	@override late final _StringsMisskeyIOJaKs misskeyIO = _StringsMisskeyIOJaKs._(_root);
 }
 
 // Path: aria
@@ -1468,6 +1469,16 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenJaKs offlineScreen_ = _StringsMisskeyOfflineScreenJaKs._(_root);
 }
 
+// Path: misskeyIO
+class _StringsMisskeyIOJaKs extends _StringsMisskeyIOEnUs {
+	_StringsMisskeyIOJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyIOSkebStatusJaKs skebStatus_ = _StringsMisskeyIOSkebStatusJaKs._(_root);
+}
+
 // Path: misskey.bubbleGame_
 class _StringsMisskeyBubbleGameJaKs extends _StringsMisskeyBubbleGameEnUs {
 	_StringsMisskeyBubbleGameJaKs._(_StringsJaKs root) : this._root = root, super._(root);
@@ -2819,6 +2830,22 @@ class _StringsMisskeyOfflineScreenJaKs extends _StringsMisskeyOfflineScreenEnUs 
 	@override String get header => 'サーバーに接続できへんわ';
 }
 
+// Path: misskeyIO.skebStatus_
+class _StringsMisskeyIOSkebStatusJaKs extends _StringsMisskeyIOSkebStatusEnUs {
+	_StringsMisskeyIOSkebStatusJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyIOSkebStatusGenresJaKs genres_ = _StringsMisskeyIOSkebStatusGenresJaKs._(_root);
+	@override String get seeking => '募集中';
+	@override String get stopped => '停止中';
+	@override String get client => 'クライアント';
+	@override String yenX({required Object x}) => '${x}円';
+	@override String nWorks({required Object n}) => '納品実績 ${n}件';
+	@override String nRequests({required Object n}) => '取引実績 ${n}件';
+}
+
 // Path: misskey.bubbleGame_.score_
 class _StringsMisskeyBubbleGameScoreJaKs extends _StringsMisskeyBubbleGameScoreEnUs {
 	_StringsMisskeyBubbleGameScoreJaKs._(_StringsJaKs root) : this._root = root, super._(root);
@@ -3385,6 +3412,22 @@ class _StringsMisskeyDataSaverCodeJaKs extends _StringsMisskeyDataSaverCodeEnUs 
 	// Translations
 	@override String get title => 'コードハイライト';
 	@override String get description => 'MFMとかでコードハイライト記法が使われてるとき、タップするまで読み込まれへんくなるで。コードハイライトではハイライトする言語ごとにその決めてるファイルを読む必要はあんねんな。けどな、それは自動で読み込まれなくなるから、通信量を少なくできることができるねん。';
+}
+
+// Path: misskeyIO.skebStatus_.genres_
+class _StringsMisskeyIOSkebStatusGenresJaKs extends _StringsMisskeyIOSkebStatusGenresEnUs {
+	_StringsMisskeyIOSkebStatusGenresJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get art => 'イラスト';
+	@override String get comic => 'コミック';
+	@override String get voice => 'ボイス';
+	@override String get novel => 'テキスト';
+	@override String get video => 'ムービー';
+	@override String get music => 'ミュージック';
+	@override String get correction => 'アドバイス';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

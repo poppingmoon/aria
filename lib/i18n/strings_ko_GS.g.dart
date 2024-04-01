@@ -34,6 +34,7 @@ class _StringsKoGs extends Translations {
 	// Translations
 	@override late final _StringsAriaKoGs aria = _StringsAriaKoGs._(_root);
 	@override late final _StringsMisskeyKoGs misskey = _StringsMisskeyKoGs._(_root);
+	@override late final _StringsMisskeyIOKoGs misskeyIO = _StringsMisskeyIOKoGs._(_root);
 }
 
 // Path: aria
@@ -1367,6 +1368,16 @@ class _StringsMisskeyKoGs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyHemisphereKoGs hemisphere_ = _StringsMisskeyHemisphereKoGs._(_root);
 	@override late final _StringsMisskeyReversiKoGs reversi_ = _StringsMisskeyReversiKoGs._(_root);
 	@override late final _StringsMisskeyOfflineScreenKoGs offlineScreen_ = _StringsMisskeyOfflineScreenKoGs._(_root);
+}
+
+// Path: misskeyIO
+class _StringsMisskeyIOKoGs extends _StringsMisskeyIOEnUs {
+	_StringsMisskeyIOKoGs._(_StringsKoGs root) : this._root = root, super._(root);
+
+	@override final _StringsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyIOSkebStatusKoGs skebStatus_ = _StringsMisskeyIOSkebStatusKoGs._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2715,6 +2726,22 @@ class _StringsMisskeyOfflineScreenKoGs extends _StringsMisskeyOfflineScreenEnUs 
 	@override String get header => '서버에 접속할 수 없습니다';
 }
 
+// Path: misskeyIO.skebStatus_
+class _StringsMisskeyIOSkebStatusKoGs extends _StringsMisskeyIOSkebStatusEnUs {
+	_StringsMisskeyIOSkebStatusKoGs._(_StringsKoGs root) : this._root = root, super._(root);
+
+	@override final _StringsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyIOSkebStatusGenresKoGs genres_ = _StringsMisskeyIOSkebStatusGenresKoGs._(_root);
+	@override String get seeking => '모집 중';
+	@override String get stopped => '정지 중';
+	@override String get client => '클라이언트';
+	@override String yenX({required Object x}) => 'JPY ${x}';
+	@override String nWorks({required Object n}) => '납품 실적 ${n}건';
+	@override String nRequests({required Object n}) => '거래 실적 ${n}건';
+}
+
 // Path: misskey.bubbleGame_.howToPlay_
 class _StringsMisskeyBubbleGameHowToPlayKoGs extends _StringsMisskeyBubbleGameHowToPlayEnUs {
 	_StringsMisskeyBubbleGameHowToPlayKoGs._(_StringsKoGs root) : this._root = root, super._(root);
@@ -3263,6 +3290,22 @@ class _StringsMisskeyDataSaverCodeKoGs extends _StringsMisskeyDataSaverCodeEnUs 
 	// Translations
 	@override String get title => '문자열 강조';
 	@override String get description => 'MFM 등으로 문자열 강조 기법을 사용할 때 누르기 전에는 불러오지 않습니다. 문자열 강조에서는 강조할 언어마다 그 정의 파일을 불러와야 하지만 이를 자동으로 불러오지 않으므로 데이터 사용량을 줄일 수 있습니다.';
+}
+
+// Path: misskeyIO.skebStatus_.genres_
+class _StringsMisskeyIOSkebStatusGenresKoGs extends _StringsMisskeyIOSkebStatusGenresEnUs {
+	_StringsMisskeyIOSkebStatusGenresKoGs._(_StringsKoGs root) : this._root = root, super._(root);
+
+	@override final _StringsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get art => '작품';
+	@override String get comic => '만화';
+	@override String get voice => '음성';
+	@override String get novel => '텍스트';
+	@override String get video => '동영상';
+	@override String get music => '음악';
+	@override String get correction => '조언';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

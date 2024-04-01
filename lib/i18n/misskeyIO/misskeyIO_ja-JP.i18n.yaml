@@ -1,0 +1,17 @@
+# Source: https://github.com/MisskeyIO/misskey/blob/io/locales/ja-JP.yml
+
+skebStatus_:
+  genres_:
+    art: "イラスト"
+    comic: "コミック"
+    voice: "ボイス"
+    novel: "テキスト"
+    video: "ムービー"
+    music: "ミュージック"
+    correction: "アドバイス"
+  seeking: "募集中"
+  stopped: "停止中"
+  client: "クライアント"
+  yenX: "{x}円"
+  nWorks: "納品実績 {n}件"
+  nRequests: "取引実績 {n}件"
