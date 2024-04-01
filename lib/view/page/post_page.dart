@@ -167,6 +167,26 @@ class PostPage extends HookConsumerWidget {
             user.username == mention.username && user.host == mention.host,
       ),
     );
+    final canChangeLocalOnly = request.channelId == null &&
+        request.visibility != NoteVisibility.specified &&
+        !(reply?.localOnly ?? false) &&
+        !(renote?.localOnly ?? false);
+    final canChangeVisibility = request.channelId == null &&
+        reply?.visibility != NoteVisibility.specified;
+    final canChangeChannel = (renote?.channel?.allowRenoteToExternal ?? true) &&
+        reply?.channel == null;
+    final canPost = request.isRenote || request.canPost || attaches.isNotEmpty;
+    final needsUpload = attaches.any((file) => file is LocalPostFile);
+    final (buttonText, buttonIcon) = needsUpload
+        ? (t.misskey.upload, Icons.upload)
+        : request.isRenote
+            ? (t.misskey.renote, Icons.repeat_rounded)
+            : request.replyId != null
+                ? (t.misskey.reply, Icons.reply)
+                : (
+                    request.renoteId != null ? t.misskey.quote : t.misskey.note,
+                    Icons.send
+                  );
     final useCw =
         useState(useMemoized(() => request.cw?.isNotEmpty ?? false, []));
     final cwController =
@@ -245,18 +265,6 @@ class PostPage extends HookConsumerWidget {
     }}';
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
-    final canPost = request.isRenote || request.canPost || attaches.isNotEmpty;
-    final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final (buttonText, buttonIcon) = needsUpload
-        ? (t.misskey.upload, Icons.upload)
-        : request.isRenote
-            ? (t.misskey.renote, Icons.repeat_rounded)
-            : request.replyId != null
-                ? (t.misskey.reply, Icons.reply)
-                : (
-                    request.renoteId != null ? t.misskey.quote : t.misskey.note,
-                    Icons.send
-                  );
 
     return PopScope(
       onPopInvoked: (_) =>
@@ -309,7 +317,7 @@ class PostPage extends HookConsumerWidget {
                           ),
                           const Spacer(),
                           IconButton(
-                            onPressed: request.channelId == null
+                            onPressed: canChangeVisibility
                                 ? () async {
                                     final candidates =
                                         NoteVisibility.values.where(
@@ -391,11 +399,7 @@ class PostPage extends HookConsumerWidget {
                             tooltip: request.localOnly ?? false
                                 ? t.misskey.visibility_.disableFederation
                                 : null,
-                            onPressed: request.channelId == null &&
-                                    request.visibility !=
-                                        NoteVisibility.specified &&
-                                    !(reply?.localOnly ?? false) &&
-                                    !(renote?.localOnly ?? false)
+                            onPressed: canChangeLocalOnly
                                 ? () => ref
                                     .read(
                                       postNotifierProvider(account.value)
@@ -550,9 +554,7 @@ class PostPage extends HookConsumerWidget {
                           child: Row(
                             children: [
                               IconButton(
-                                onPressed: renote
-                                            ?.channel?.allowRenoteToExternal ??
-                                        true
+                                onPressed: canChangeChannel
                                     ? () => ref
                                         .read(
                                           postNotifierProvider(account.value)
@@ -839,26 +841,29 @@ class PostPage extends HookConsumerWidget {
                           ),
                           IconButton(
                             tooltip: t.misskey.channel,
-                            onPressed: () async {
-                              final result = await showDialog<CommunityChannel>(
-                                context: context,
-                                builder: (context) => ChannelsPage(
-                                  account: account.value,
-                                  onChannelTap: (channel) =>
-                                      context.pop(channel),
-                                  initialIndex: 2,
-                                ),
-                              );
-                              if (!context.mounted) return;
-                              if (result != null) {
-                                ref
-                                    .read(
-                                      postNotifierProvider(account.value)
-                                          .notifier,
-                                    )
-                                    .setChannel(result.id);
-                              }
-                            },
+                            onPressed: canChangeChannel
+                                ? () async {
+                                    final result =
+                                        await showDialog<CommunityChannel>(
+                                      context: context,
+                                      builder: (context) => ChannelsPage(
+                                        account: account.value,
+                                        onChannelTap: (channel) =>
+                                            context.pop(channel),
+                                        initialIndex: 2,
+                                      ),
+                                    );
+                                    if (!context.mounted) return;
+                                    if (result != null) {
+                                      ref
+                                          .read(
+                                            postNotifierProvider(account.value)
+                                                .notifier,
+                                          )
+                                          .setChannel(result.id);
+                                    }
+                                  }
+                                : null,
                             icon: const Icon(Icons.tv),
                           ),
                         ],
