@@ -162,7 +162,7 @@ class UserSheet extends ConsumerWidget {
                     userNotifierProvider(
                       destination,
                       username: user.username,
-                      host: user.host,
+                      host: user.host ?? account.host,
                     ).future,
                   );
                   if (!context.mounted) return;
