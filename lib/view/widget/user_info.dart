@@ -80,7 +80,11 @@ class UserInfo extends ConsumerWidget {
                   borderRadius:
                       BorderRadius.circular(squareAvatars ? 15.0 : 75.0),
                 ),
-                child: UserAvatar(user: user, size: 75.0),
+                child: UserAvatar(
+                  user: user,
+                  size: 75.0,
+                  onTap: () => context.push('/$account/users/${user.id}'),
+                ),
               ),
             ),
           ],
@@ -92,6 +96,8 @@ class UserInfo extends ConsumerWidget {
             child: Mfm(
               account: account,
               text: description,
+              emojis: user.emojis,
+              author: user,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
             ),
