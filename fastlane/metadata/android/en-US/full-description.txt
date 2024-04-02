@@ -1,7 +1,7 @@
-Aria is a client for Misskey, federated social media platform.
+Aria is a client for Misskey, a federated social media platform.
 
 Features:
 
 - Swipe to switch multiple accounts (of multiple servers)
-- Based on design of official Misskey web client
+- Based on the design of the official Misskey Web client
 - Highly customizable
