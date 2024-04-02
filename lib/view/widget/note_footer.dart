@@ -19,8 +19,8 @@ import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/clip_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/reaction_confirmation_dialog.dart';
 import 'emoji_picker.dart';
-import 'emoji_widget.dart';
 import 'note_sheet.dart';
 import 'reaction_users_sheet.dart';
 import 'renote_users_sheet.dart';
@@ -209,21 +209,11 @@ class NoteFooter extends ConsumerWidget {
                           if (ref
                               .read(generalSettingsNotifierProvider)
                               .confirmBeforeReact) {
-                            final confirmed = await confirm(
+                            final confirmed = await confirmReaction(
                               context,
-                              content: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Text(t.aria.reactionConfirm),
-                                  EmojiWidget(
-                                    account: account,
-                                    emoji: emoji,
-                                    style: DefaultTextStyle.of(context)
-                                        .style
-                                        .apply(fontSizeFactor: 2.0),
-                                  ),
-                                ],
-                              ),
+                              account: account,
+                              emoji: emoji,
+                              note: appearNote,
                             );
                             if (!confirmed) return;
                           }

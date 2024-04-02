@@ -14,6 +14,7 @@ import '../../util/copy_text.dart';
 import '../../util/decode_custom_emoji.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/reaction_confirmation_dialog.dart';
 import 'custom_emoji.dart';
 import 'emoji_widget.dart';
 
@@ -80,21 +81,11 @@ class EmojiSheet extends ConsumerWidget {
                         .read(generalSettingsNotifierProvider)
                         .confirmBeforeReact ||
                     (isCustomEmoji && host != null)) {
-                  final confirmed = await confirm(
+                  final confirmed = await confirmReaction(
                     context,
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(t.aria.reactionConfirm),
-                        EmojiWidget(
-                          account: account,
-                          emoji: ':$name@.:',
-                          style: DefaultTextStyle.of(context)
-                              .style
-                              .apply(fontSizeFactor: 2.0),
-                        ),
-                      ],
-                    ),
+                    account: account,
+                    emoji: ':$name@.:',
+                    note: targetNote!,
                   );
                   if (!confirmed) return;
                 }
