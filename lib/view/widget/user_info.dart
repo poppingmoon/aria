@@ -96,6 +96,8 @@ class UserInfo extends ConsumerWidget {
             child: Mfm(
               account: account,
               text: description,
+              emojis: user.emojis,
+              author: user,
               overflow: TextOverflow.ellipsis,
               maxLines: 3,
             ),
