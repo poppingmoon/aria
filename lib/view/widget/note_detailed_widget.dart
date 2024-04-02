@@ -128,7 +128,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
         padding: const EdgeInsets.all(4.0),
         child: Column(
           children: [
-            if (conversation != null)
+            if (conversation case AsyncData(valueOrNull: final conversation?))
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),
                 child: DefaultTextStyle.merge(
@@ -137,15 +137,12 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     fontSizeFactor: 0.9,
                   ),
                   child: Column(
-                    children: conversation.valueOrNull?.reversed
-                            .map(
-                              (note) => NoteSubWidget(
-                                account: account,
-                                noteId: note.id,
-                              ),
-                            )
-                            .toList() ??
-                        [],
+                    children: [
+                      for (final note in conversation.reversed) ...[
+                        NoteSubWidget(account: account, noteId: note.id),
+                        const Divider(height: 0.0),
+                      ],
+                    ],
                   ),
                 ),
               ),
