@@ -324,7 +324,7 @@ class NoteSheet extends ConsumerWidget {
                 context.push('/$account/notes/${appearNote.id}/after-renotes'),
           ),
           if (i != null) ...[
-            if (appearNote.id == i.id)
+            if (appearNote.userId == i.id)
               ListTile(
                 leading: const Icon(Icons.push_pin),
                 title: Text(
@@ -334,13 +334,17 @@ class NoteSheet extends ConsumerWidget {
                 ),
                 onTap: () async {
                   if (i.pinnedNoteIds?.contains(appearNote.id) ?? false) {
-                    await ref
-                        .read(iNotifierProvider(account).notifier)
-                        .unpin(noteId);
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .unpin(noteId),
+                    );
                   } else {
-                    await ref
-                        .read(iNotifierProvider(account).notifier)
-                        .pin(noteId);
+                    await futureWithDialog(
+                      context,
+                      ref.read(iNotifierProvider(account).notifier).pin(noteId),
+                    );
                   }
                 },
               ),
