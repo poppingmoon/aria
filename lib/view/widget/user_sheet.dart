@@ -115,6 +115,13 @@ class UserSheet extends ConsumerWidget {
                   futureWithDialog(context, openUserAsGuest(ref, user)),
             ),
           ],
+          if (user case User(:final host?))
+            ListTile(
+              leading: const Icon(Icons.dns),
+              title: Text(t.misskey.instanceInfo),
+              trailing: const Icon(Icons.navigate_next),
+              onTap: () => context.push('/$account/servers/$host'),
+            ),
           ListTile(
             leading: const Icon(Icons.mail),
             title: Text(t.misskey.sendMessage),
