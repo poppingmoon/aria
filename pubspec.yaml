@@ -1,5 +1,5 @@
 name: aria
-description: "A client app for Misskey, federated social media platform."
+description: "A client app for Misskey, a federated social media platform."
 publish_to: 'none'
 version: 0.3.1+5
 
