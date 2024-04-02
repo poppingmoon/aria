@@ -76,7 +76,7 @@ class NotificationsListView extends HookConsumerWidget {
     );
 
     return RefreshIndicator(
-      onRefresh: () => ref.read(iNotifierProvider(account).future),
+      onRefresh: () => ref.refresh(iNotifierProvider(account).future),
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
