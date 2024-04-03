@@ -172,7 +172,7 @@ class _ServerPreview extends ConsumerWidget {
                     ),
                   ],
                 ),
-                if (server case JoinMisskeyInstanceInfo(:final description))
+                if (server case JoinMisskeyInstanceInfo(:final description?))
                   Html(
                     data: description,
                     onLinkTap: (url, _, __) =>
