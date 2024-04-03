@@ -107,6 +107,13 @@ dev_dependencies:
   slang_build_runner: ^3.30.0
   yaml: ^3.1.2
 
+dependency_overrides:
+  slang:
+    git:
+      url: https://github.com/poppingmoon/slang
+      ref: 0a7d041dab66e22b7349ef4a89e3156cbf203910
+      path: slang
+
 flutter:
   uses-material-design: true
   assets:

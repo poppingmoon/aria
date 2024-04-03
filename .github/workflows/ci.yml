@@ -114,3 +114,21 @@ jobs:
             dart run script/sort_yaml.dart $file
             cmp $file $file.copy
           done
+
+  check-build-diff:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Run build_runner
+        run: dart run build_runner build -d
+
+      - name: Check diff
+        run: git diff --exit-code

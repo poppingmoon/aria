@@ -16,6 +16,8 @@ targets:
         generate_for:
           include:
             - lib/**/*.dart
+          exclude:
+            - lib/**/*.g.dart
         options:
           explicit_to_json: true
           include_if_null: false
