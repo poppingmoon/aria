@@ -11,6 +11,7 @@ import 'package:photo_view/photo_view_gallery.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/cache_manager_provider.dart';
+import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import 'message_dialog.dart';
 
@@ -151,26 +152,32 @@ class ImageGalleryDialog extends HookConsumerWidget {
           alignment: Alignment.bottomCenter,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Colors.white38,
-                borderRadius: BorderRadius.circular(8.0),
+            child: GestureDetector(
+              onLongPress: () => copyToClipboard(
+                context,
+                files[index.value].comment ?? files[index.value].name,
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  files[index.value].comment ?? files[index.value].name,
-                  style: TextStyle(
-                    shadows: [
-                      Shadow(
-                        blurRadius: 2.0,
-                        color: Theme.of(context).colorScheme.background,
-                      ),
-                      Shadow(
-                        blurRadius: 2.0,
-                        color: Theme.of(context).colorScheme.background,
-                      ),
-                    ],
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  color: Colors.white38,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    files[index.value].comment ?? files[index.value].name,
+                    style: TextStyle(
+                      shadows: [
+                        Shadow(
+                          blurRadius: 2.0,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                        Shadow(
+                          blurRadius: 2.0,
+                          color: Theme.of(context).colorScheme.background,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
