@@ -1599,10 +1599,11 @@ packages:
   slang:
     dependency: "direct main"
     description:
-      name: slang
-      sha256: ad2a3974fa705017d40e59f9fce5ba738ce78a40c13247bf655d1760d3af018f
-      url: "https://pub.dev"
-    source: hosted
+      path: slang
+      ref: "0a7d041dab66e22b7349ef4a89e3156cbf203910"
+      resolved-ref: "0a7d041dab66e22b7349ef4a89e3156cbf203910"
+      url: "https://github.com/poppingmoon/slang"
+    source: git
     version: "3.30.2"
   slang_build_runner:
     dependency: "direct dev"
