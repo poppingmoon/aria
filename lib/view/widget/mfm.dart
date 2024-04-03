@@ -97,6 +97,7 @@ List<InlineSpan> buildMfm(
     shouldNyaize: author?.isCat ?? false,
     useAdvanced: useAdvanced,
     useAnimation: useAnimation,
+    opacity: DefaultTextStyle.of(ref.context).style.color?.opacity ?? 1.0,
     align: textAlign,
     overflow: overflow,
     maxLines: maxLines,
