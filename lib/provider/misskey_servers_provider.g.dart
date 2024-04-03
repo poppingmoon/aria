@@ -6,7 +6,7 @@ part of 'misskey_servers_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyServersHash() => r'3cc20539f6a028ec8426572829c96ece5027633c';
+String _$misskeyServersHash() => r'c5aaefbdbe6d7a96ed9666cc41369003e974aecd';
 
 /// See also [misskeyServers].
 @ProviderFor(misskeyServers)
