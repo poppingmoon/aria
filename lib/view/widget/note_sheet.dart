@@ -54,6 +54,8 @@ class NoteSheet extends ConsumerWidget {
     final url = Uri.https(account.host, '/notes/${appearNote.id}');
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final canUseTranslator = (i?.policies?.canUseTranslator ?? false) &&
+        (meta?.translatorAvailable ?? false);
     final noteState = i != null
         ? ref
             .watch(noteStateNotifierProvider(account, appearNote.id))
@@ -222,9 +224,10 @@ class NoteSheet extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.translate),
               title: Text(t.misskey.translate),
+              trailing:
+                  !canUseTranslator ? const Icon(Icons.open_in_browser) : null,
               onTap: () {
-                if ((i?.policies?.canUseTranslator ?? false) &&
-                    (meta?.translatorAvailable ?? false)) {
+                if (canUseTranslator) {
                   showModalBottomSheet<void>(
                     context: context,
                     builder: (context) => TranslatedNoteSheet(
