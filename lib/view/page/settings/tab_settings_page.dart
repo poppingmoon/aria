@@ -366,6 +366,12 @@ class TabSettingsPage extends HookConsumerWidget {
                           tabSettings.value = tabSettings.value.copyWith(
                             userId: result.id,
                             name: tabSettings.value.name ?? result.acct,
+                            icon: tabSettings.value.icon ??
+                                (result.avatarUrl != null
+                                    ? ImageIcon(
+                                        url: result.avatarUrl.toString(),
+                                      )
+                                    : null),
                           );
                         }
                       default:
@@ -500,6 +506,10 @@ class TabSettingsPage extends HookConsumerWidget {
                       tabSettings.value = tabSettings.value.copyWith(
                         userId: result.id,
                         name: tabSettings.value.name ?? result.acct,
+                        icon: tabSettings.value.icon ??
+                            (result.avatarUrl != null
+                                ? ImageIcon(url: result.avatarUrl.toString())
+                                : null),
                       );
                     }
                   }
