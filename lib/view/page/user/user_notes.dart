@@ -30,7 +30,7 @@ class UserNotes extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final type = useState(_NoteType.notes);
+    final type = useState(_NoteType.all);
     final tabSettings = TabSettings(
       tabType: TabType.user,
       account: account,
