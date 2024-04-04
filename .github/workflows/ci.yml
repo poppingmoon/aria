@@ -78,6 +78,9 @@ jobs:
         with:
           model: 'iPhone 14'
 
+      - name: Pre-build the app
+        run: flutter build ios --simulator --target=integration_test/timeline_test.dart
+
       - name: Integration test
         run: flutter test integration_test
 
