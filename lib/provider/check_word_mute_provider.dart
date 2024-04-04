@@ -7,7 +7,7 @@ import 'note_provider.dart';
 
 part 'check_word_mute_provider.g.dart';
 
-@Riverpod(dependencies: [note])
+@riverpod
 bool checkWordMute(
   CheckWordMuteRef ref,
   Account account,

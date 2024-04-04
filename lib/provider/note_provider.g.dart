@@ -6,7 +6,7 @@ part of 'note_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteHash() => r'e0a1aa1e27ce0b297b3c28e4a0f2d39c8c9d2d18';
+String _$noteHash() => r'666c9eb443f8e131df24df830324eb745db24c43';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -59,14 +59,12 @@ class NoteFamily extends Family<Note?> {
     );
   }
 
-  static final Iterable<ProviderOrFamily> _dependencies =
-      const <ProviderOrFamily>[];
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
   Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
-      const <ProviderOrFamily>{};
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
   Iterable<ProviderOrFamily>? get allTransitiveDependencies =>

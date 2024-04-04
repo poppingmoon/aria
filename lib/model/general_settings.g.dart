@@ -59,11 +59,18 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       enableHorizontalSwipe: json['enableHorizontalSwipe'] as bool? ?? true,
       openSensitiveMediaOnDoubleTap:
           json['openSensitiveMediaOnDoubleTap'] as bool? ?? false,
-      expandNoteOnTap: json['expandNoteOnTap'] as bool? ?? true,
-      expandNoteOnDoubleTap: json['expandNoteOnDoubleTap'] as bool? ?? false,
-      confirmBeforePost: json['confirmBeforePost'] as bool? ?? false,
-      confirmBeforeReact: json['confirmBeforeReact'] as bool? ?? false,
-      confirmBeforeFollow: json['confirmBeforeFollow'] as bool? ?? false,
+      noteTapAction:
+          $enumDecodeNullable(_$NoteActionTypeEnumMap, json['noteTapAction']) ??
+              NoteActionType.expand,
+      noteDoubleTapAction: $enumDecodeNullable(
+              _$NoteActionTypeEnumMap, json['noteDoubleTapAction']) ??
+          NoteActionType.menu,
+      noteLongPressAction: $enumDecodeNullable(
+              _$NoteActionTypeEnumMap, json['noteLongPressAction']) ??
+          NoteActionType.reaction,
+      confirmBeforePost: json['confirmBeforePost'] as bool? ?? true,
+      confirmBeforeReact: json['confirmBeforeReact'] as bool? ?? true,
+      confirmBeforeFollow: json['confirmBeforeFollow'] as bool? ?? true,
       themeMode: $enumDecodeNullable(_$ThemeModeEnumMap, json['themeMode']) ??
           ThemeMode.system,
       lightThemeId: json['lightThemeId'] as String? ??
@@ -120,8 +127,11 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['keepScreenOn'] = instance.keepScreenOn;
   val['enableHorizontalSwipe'] = instance.enableHorizontalSwipe;
   val['openSensitiveMediaOnDoubleTap'] = instance.openSensitiveMediaOnDoubleTap;
-  val['expandNoteOnTap'] = instance.expandNoteOnTap;
-  val['expandNoteOnDoubleTap'] = instance.expandNoteOnDoubleTap;
+  val['noteTapAction'] = _$NoteActionTypeEnumMap[instance.noteTapAction]!;
+  val['noteDoubleTapAction'] =
+      _$NoteActionTypeEnumMap[instance.noteDoubleTapAction]!;
+  val['noteLongPressAction'] =
+      _$NoteActionTypeEnumMap[instance.noteLongPressAction]!;
   val['confirmBeforePost'] = instance.confirmBeforePost;
   val['confirmBeforeReact'] = instance.confirmBeforeReact;
   val['confirmBeforeFollow'] = instance.confirmBeforeFollow;
@@ -174,6 +184,13 @@ const _$SensitiveMediaDisplayEnumMap = {
 const _$EmojiStyleEnumMap = {
   EmojiStyle.native: 'native',
   EmojiStyle.twemoji: 'twemoji',
+};
+
+const _$NoteActionTypeEnumMap = {
+  NoteActionType.none: 'none',
+  NoteActionType.expand: 'expand',
+  NoteActionType.menu: 'menu',
+  NoteActionType.reaction: 'reaction',
 };
 
 const _$ThemeModeEnumMap = {

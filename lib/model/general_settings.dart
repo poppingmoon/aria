@@ -61,11 +61,12 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool keepScreenOn,
     @Default(true) bool enableHorizontalSwipe,
     @Default(false) bool openSensitiveMediaOnDoubleTap,
-    @Default(true) bool expandNoteOnTap,
-    @Default(false) bool expandNoteOnDoubleTap,
-    @Default(false) bool confirmBeforePost,
-    @Default(false) bool confirmBeforeReact,
-    @Default(false) bool confirmBeforeFollow,
+    @Default(NoteActionType.expand) NoteActionType noteTapAction,
+    @Default(NoteActionType.menu) NoteActionType noteDoubleTapAction,
+    @Default(NoteActionType.reaction) NoteActionType noteLongPressAction,
+    @Default(true) bool confirmBeforePost,
+    @Default(true) bool confirmBeforeReact,
+    @Default(true) bool confirmBeforeFollow,
 
     // Theme
     @Default(ThemeMode.system) ThemeMode themeMode,
@@ -86,4 +87,11 @@ enum SensitiveMediaDisplay {
 enum EmojiStyle {
   native,
   twemoji,
+}
+
+enum NoteActionType {
+  none,
+  expand,
+  menu,
+  reaction,
 }

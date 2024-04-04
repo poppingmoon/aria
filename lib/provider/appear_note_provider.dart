@@ -7,7 +7,7 @@ import 'note_provider.dart';
 
 part 'appear_note_provider.g.dart';
 
-@Riverpod(dependencies: [note])
+@riverpod
 Note? appearNote(AppearNoteRef ref, Account account, String noteId) {
   final note = ref.watch(noteProvider(account, noteId));
   if (note != null) {

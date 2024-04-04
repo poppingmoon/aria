@@ -231,11 +231,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setExpandNoteOnTap(bool expandNoteOnTap) async {
-    state = state.copyWith(expandNoteOnTap: expandNoteOnTap);
-    await _save();
-  }
-
   Future<void> setOpenSensitiveMediaOnDoubleTap(
     bool openSensitiveMediaOnDoubleTap,
   ) async {
@@ -245,8 +240,22 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setExpandNoteOnDoubleTap(bool expandNoteOnDoubleTap) async {
-    state = state.copyWith(expandNoteOnDoubleTap: expandNoteOnDoubleTap);
+  Future<void> setNoteTapAction(NoteActionType noteTapAction) async {
+    state = state.copyWith(noteTapAction: noteTapAction);
+    await _save();
+  }
+
+  Future<void> setNoteLongPressAction(
+    NoteActionType noteLongPressAction,
+  ) async {
+    state = state.copyWith(noteLongPressAction: noteLongPressAction);
+    await _save();
+  }
+
+  Future<void> setNoteDoubleTapAction(
+    NoteActionType noteDoubleTapAction,
+  ) async {
+    state = state.copyWith(noteDoubleTapAction: noteDoubleTapAction);
     await _save();
   }
 

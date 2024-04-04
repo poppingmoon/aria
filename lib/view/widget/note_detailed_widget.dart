@@ -9,15 +9,18 @@ import '../../extension/note_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/general_settings.dart';
 import '../../model/pagination_state.dart';
 import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/api/conversation_notes_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
+import '../../util/get_note_action.dart';
 import '../../util/navigate.dart';
 import 'acct_widget.dart';
 import 'bot_badge.dart';
@@ -28,7 +31,6 @@ import 'instance_ticker.dart';
 import 'media_list.dart';
 import 'mfm.dart';
 import 'note_footer.dart';
-import 'note_sheet.dart';
 import 'note_simple_widget.dart';
 import 'note_sub_widget.dart';
 import 'note_visibility_icon.dart';
@@ -93,6 +95,18 @@ class NoteDetailedWidget extends HookConsumerWidget {
       );
     }
 
+    final tapAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteTapAction),
+    );
+    final doubleTapAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteTapAction),
+    );
+    final longPressAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteTapAction),
+    );
     final conversation = appearNote.replyId != null
         ? ref.watch(conversationNotesProvider(account, noteId))
         : null;
@@ -114,16 +128,33 @@ class NoteDetailedWidget extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return InkWell(
-      onLongPress: () => showModalBottomSheet<void>(
-        context: context,
-        builder: (context) => NoteSheet(
-          account: account,
-          noteId: noteId,
-          hideDetails: true,
-        ),
-        clipBehavior: Clip.hardEdge,
-        isScrollControlled: true,
-      ),
+      onTap: tapAction != NoteActionType.expand
+          ? getNoteAction(
+              ref,
+              account: account,
+              type: tapAction,
+              note: note,
+              appearNote: appearNote,
+            )
+          : null,
+      onDoubleTap: doubleTapAction != NoteActionType.expand
+          ? getNoteAction(
+              ref,
+              account: account,
+              type: doubleTapAction,
+              note: note,
+              appearNote: appearNote,
+            )
+          : null,
+      onLongPress: longPressAction != NoteActionType.expand
+          ? getNoteAction(
+              ref,
+              account: account,
+              type: longPressAction,
+              note: note,
+              appearNote: appearNote,
+            )
+          : null,
       child: Padding(
         padding: const EdgeInsets.all(4.0),
         child: Column(

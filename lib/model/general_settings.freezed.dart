@@ -61,8 +61,9 @@ mixin _$GeneralSettings {
   bool get keepScreenOn => throw _privateConstructorUsedError;
   bool get enableHorizontalSwipe => throw _privateConstructorUsedError;
   bool get openSensitiveMediaOnDoubleTap => throw _privateConstructorUsedError;
-  bool get expandNoteOnTap => throw _privateConstructorUsedError;
-  bool get expandNoteOnDoubleTap => throw _privateConstructorUsedError;
+  NoteActionType get noteTapAction => throw _privateConstructorUsedError;
+  NoteActionType get noteDoubleTapAction => throw _privateConstructorUsedError;
+  NoteActionType get noteLongPressAction => throw _privateConstructorUsedError;
   bool get confirmBeforePost => throw _privateConstructorUsedError;
   bool get confirmBeforeReact => throw _privateConstructorUsedError;
   bool get confirmBeforeFollow => throw _privateConstructorUsedError; // Theme
@@ -121,8 +122,9 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool keepScreenOn,
       bool enableHorizontalSwipe,
       bool openSensitiveMediaOnDoubleTap,
-      bool expandNoteOnTap,
-      bool expandNoteOnDoubleTap,
+      NoteActionType noteTapAction,
+      NoteActionType noteDoubleTapAction,
+      NoteActionType noteLongPressAction,
       bool confirmBeforePost,
       bool confirmBeforeReact,
       bool confirmBeforeFollow,
@@ -181,8 +183,9 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? keepScreenOn = null,
     Object? enableHorizontalSwipe = null,
     Object? openSensitiveMediaOnDoubleTap = null,
-    Object? expandNoteOnTap = null,
-    Object? expandNoteOnDoubleTap = null,
+    Object? noteTapAction = null,
+    Object? noteDoubleTapAction = null,
+    Object? noteLongPressAction = null,
     Object? confirmBeforePost = null,
     Object? confirmBeforeReact = null,
     Object? confirmBeforeFollow = null,
@@ -339,14 +342,18 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.openSensitiveMediaOnDoubleTap
           : openSensitiveMediaOnDoubleTap // ignore: cast_nullable_to_non_nullable
               as bool,
-      expandNoteOnTap: null == expandNoteOnTap
-          ? _value.expandNoteOnTap
-          : expandNoteOnTap // ignore: cast_nullable_to_non_nullable
-              as bool,
-      expandNoteOnDoubleTap: null == expandNoteOnDoubleTap
-          ? _value.expandNoteOnDoubleTap
-          : expandNoteOnDoubleTap // ignore: cast_nullable_to_non_nullable
-              as bool,
+      noteTapAction: null == noteTapAction
+          ? _value.noteTapAction
+          : noteTapAction // ignore: cast_nullable_to_non_nullable
+              as NoteActionType,
+      noteDoubleTapAction: null == noteDoubleTapAction
+          ? _value.noteDoubleTapAction
+          : noteDoubleTapAction // ignore: cast_nullable_to_non_nullable
+              as NoteActionType,
+      noteLongPressAction: null == noteLongPressAction
+          ? _value.noteLongPressAction
+          : noteLongPressAction // ignore: cast_nullable_to_non_nullable
+              as NoteActionType,
       confirmBeforePost: null == confirmBeforePost
           ? _value.confirmBeforePost
           : confirmBeforePost // ignore: cast_nullable_to_non_nullable
@@ -422,8 +429,9 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool keepScreenOn,
       bool enableHorizontalSwipe,
       bool openSensitiveMediaOnDoubleTap,
-      bool expandNoteOnTap,
-      bool expandNoteOnDoubleTap,
+      NoteActionType noteTapAction,
+      NoteActionType noteDoubleTapAction,
+      NoteActionType noteLongPressAction,
       bool confirmBeforePost,
       bool confirmBeforeReact,
       bool confirmBeforeFollow,
@@ -480,8 +488,9 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? keepScreenOn = null,
     Object? enableHorizontalSwipe = null,
     Object? openSensitiveMediaOnDoubleTap = null,
-    Object? expandNoteOnTap = null,
-    Object? expandNoteOnDoubleTap = null,
+    Object? noteTapAction = null,
+    Object? noteDoubleTapAction = null,
+    Object? noteLongPressAction = null,
     Object? confirmBeforePost = null,
     Object? confirmBeforeReact = null,
     Object? confirmBeforeFollow = null,
@@ -638,14 +647,18 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.openSensitiveMediaOnDoubleTap
           : openSensitiveMediaOnDoubleTap // ignore: cast_nullable_to_non_nullable
               as bool,
-      expandNoteOnTap: null == expandNoteOnTap
-          ? _value.expandNoteOnTap
-          : expandNoteOnTap // ignore: cast_nullable_to_non_nullable
-              as bool,
-      expandNoteOnDoubleTap: null == expandNoteOnDoubleTap
-          ? _value.expandNoteOnDoubleTap
-          : expandNoteOnDoubleTap // ignore: cast_nullable_to_non_nullable
-              as bool,
+      noteTapAction: null == noteTapAction
+          ? _value.noteTapAction
+          : noteTapAction // ignore: cast_nullable_to_non_nullable
+              as NoteActionType,
+      noteDoubleTapAction: null == noteDoubleTapAction
+          ? _value.noteDoubleTapAction
+          : noteDoubleTapAction // ignore: cast_nullable_to_non_nullable
+              as NoteActionType,
+      noteLongPressAction: null == noteLongPressAction
+          ? _value.noteLongPressAction
+          : noteLongPressAction // ignore: cast_nullable_to_non_nullable
+              as NoteActionType,
       confirmBeforePost: null == confirmBeforePost
           ? _value.confirmBeforePost
           : confirmBeforePost // ignore: cast_nullable_to_non_nullable
@@ -716,11 +729,12 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.keepScreenOn = false,
       this.enableHorizontalSwipe = true,
       this.openSensitiveMediaOnDoubleTap = false,
-      this.expandNoteOnTap = true,
-      this.expandNoteOnDoubleTap = false,
-      this.confirmBeforePost = false,
-      this.confirmBeforeReact = false,
-      this.confirmBeforeFollow = false,
+      this.noteTapAction = NoteActionType.expand,
+      this.noteDoubleTapAction = NoteActionType.menu,
+      this.noteLongPressAction = NoteActionType.reaction,
+      this.confirmBeforePost = true,
+      this.confirmBeforeReact = true,
+      this.confirmBeforeFollow = true,
       this.themeMode = ThemeMode.system,
       this.lightThemeId = 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
       this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34'});
@@ -844,10 +858,13 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool openSensitiveMediaOnDoubleTap;
   @override
   @JsonKey()
-  final bool expandNoteOnTap;
+  final NoteActionType noteTapAction;
   @override
   @JsonKey()
-  final bool expandNoteOnDoubleTap;
+  final NoteActionType noteDoubleTapAction;
+  @override
+  @JsonKey()
+  final NoteActionType noteLongPressAction;
   @override
   @JsonKey()
   final bool confirmBeforePost;
@@ -870,7 +887,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showNoteFooter: $showNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showAvatarsInNote: $showAvatarsInNote, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, expandNoteOnTap: $expandNoteOnTap, expandNoteOnDoubleTap: $expandNoteOnDoubleTap, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showNoteFooter: $showNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showAvatarsInNote: $showAvatarsInNote, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -945,8 +962,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.keepScreenOn, keepScreenOn) || other.keepScreenOn == keepScreenOn) &&
             (identical(other.enableHorizontalSwipe, enableHorizontalSwipe) || other.enableHorizontalSwipe == enableHorizontalSwipe) &&
             (identical(other.openSensitiveMediaOnDoubleTap, openSensitiveMediaOnDoubleTap) || other.openSensitiveMediaOnDoubleTap == openSensitiveMediaOnDoubleTap) &&
-            (identical(other.expandNoteOnTap, expandNoteOnTap) || other.expandNoteOnTap == expandNoteOnTap) &&
-            (identical(other.expandNoteOnDoubleTap, expandNoteOnDoubleTap) || other.expandNoteOnDoubleTap == expandNoteOnDoubleTap) &&
+            (identical(other.noteTapAction, noteTapAction) || other.noteTapAction == noteTapAction) &&
+            (identical(other.noteDoubleTapAction, noteDoubleTapAction) || other.noteDoubleTapAction == noteDoubleTapAction) &&
+            (identical(other.noteLongPressAction, noteLongPressAction) || other.noteLongPressAction == noteLongPressAction) &&
             (identical(other.confirmBeforePost, confirmBeforePost) || other.confirmBeforePost == confirmBeforePost) &&
             (identical(other.confirmBeforeReact, confirmBeforeReact) || other.confirmBeforeReact == confirmBeforeReact) &&
             (identical(other.confirmBeforeFollow, confirmBeforeFollow) || other.confirmBeforeFollow == confirmBeforeFollow) &&
@@ -996,8 +1014,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         keepScreenOn,
         enableHorizontalSwipe,
         openSensitiveMediaOnDoubleTap,
-        expandNoteOnTap,
-        expandNoteOnDoubleTap,
+        noteTapAction,
+        noteDoubleTapAction,
+        noteLongPressAction,
         confirmBeforePost,
         confirmBeforeReact,
         confirmBeforeFollow,
@@ -1061,8 +1080,9 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool keepScreenOn,
       final bool enableHorizontalSwipe,
       final bool openSensitiveMediaOnDoubleTap,
-      final bool expandNoteOnTap,
-      final bool expandNoteOnDoubleTap,
+      final NoteActionType noteTapAction,
+      final NoteActionType noteDoubleTapAction,
+      final NoteActionType noteLongPressAction,
       final bool confirmBeforePost,
       final bool confirmBeforeReact,
       final bool confirmBeforeFollow,
@@ -1150,9 +1170,11 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get openSensitiveMediaOnDoubleTap;
   @override
-  bool get expandNoteOnTap;
+  NoteActionType get noteTapAction;
   @override
-  bool get expandNoteOnDoubleTap;
+  NoteActionType get noteDoubleTapAction;
+  @override
+  NoteActionType get noteLongPressAction;
   @override
   bool get confirmBeforePost;
   @override
