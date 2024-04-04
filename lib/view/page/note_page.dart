@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
@@ -9,12 +10,15 @@ import '../../model/account.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_provider.dart';
+import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
+import '../../provider/notes_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../widget/note_detailed_widget.dart';
 import '../widget/note_fallback_widget.dart';
 import '../widget/note_widget.dart';
@@ -133,7 +137,26 @@ class NotePage extends HookConsumerWidget {
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
-      appBar: AppBar(title: Text(t.misskey.note)),
+      appBar: AppBar(
+        title: Text(t.misskey.note),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              final note = await futureWithDialog(
+                context,
+                ref
+                    .read(misskeyProvider(account))
+                    .notes
+                    .show(NotesShowRequest(noteId: noteId)),
+              );
+              if (note != null) {
+                ref.read(notesNotifierProvider(account).notifier).add(note);
+              }
+            },
+            icon: const Icon(Icons.refresh),
+          ),
+        ],
+      ),
       body: CustomScrollView(
         controller: controller,
         center: centerKey,
