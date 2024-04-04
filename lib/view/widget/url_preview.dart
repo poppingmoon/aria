@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/summaly_result.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
@@ -53,18 +55,15 @@ class UrlPreview extends HookConsumerWidget {
           ),
         )
         .valueOrNull;
-    if (summalyResult == null) {
-      return const SizedBox.shrink();
-    }
     final isPlayerOpen = useState(false);
-    final thumbnail = summalyResult.thumbnail;
-    final hideThumbnail = (summalyResult.sensitive ?? false) ||
+    final thumbnail = summalyResult?.thumbnail;
+    final hideThumbnail = (summalyResult?.sensitive ?? false) ||
         ref.watch(
           generalSettingsNotifierProvider
               .select((settings) => settings.dataSaverUrlPreview),
         );
-    final icon = summalyResult.icon;
-    final playerUrl = summalyResult.player.url;
+    final icon = summalyResult?.icon;
+    final playerUrl = summalyResult?.player.url;
     final tweetId = _extractTweetId(link);
     final style = DefaultTextStyle.of(context).style;
     final titleStyle =
@@ -118,13 +117,13 @@ class UrlPreview extends HookConsumerWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      summalyResult.title ?? link,
+                                      summalyResult?.title ?? link,
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       style: titleStyle,
                                     ),
                                     Text(
-                                      summalyResult.description ?? '',
+                                      summalyResult?.description ?? '',
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       style: descriptionStyle,
@@ -141,7 +140,7 @@ class UrlPreview extends HookConsumerWidget {
                                         ],
                                         Expanded(
                                           child: Text(
-                                            summalyResult.sitename ?? '',
+                                            summalyResult?.sitename ?? '',
                                             overflow: TextOverflow.ellipsis,
                                             maxLines: 1,
                                             style: linkStyle,
@@ -168,7 +167,8 @@ class UrlPreview extends HookConsumerWidget {
                 TargetPlatform.macOS)
           if (playerUrl != null || tweetId != null) ...[
             if (isPlayerOpen.value) ...[
-              if (playerUrl != null) PlayerEmbed(player: summalyResult.player),
+              if (summalyResult case SummalyResult(player: Player(url: _?)))
+                PlayerEmbed(player: summalyResult.player),
               if (tweetId != null)
                 TwitterEmbed(
                   tweetId: tweetId,
@@ -185,6 +185,7 @@ class UrlPreview extends HookConsumerWidget {
                     DefaultTextStyle.of(context).style.fontSize! * 2.0,
                   ),
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  textStyle: style.apply(fontSizeFactor: 0.85),
                 ),
                 onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
                 icon: Icon(
@@ -193,6 +194,7 @@ class UrlPreview extends HookConsumerWidget {
                       : playerUrl != null
                           ? Icons.play_arrow
                           : Icons.open_in_full,
+                  size: style.apply(fontSizeFactor: 0.85).lineHeight,
                 ),
                 label: Text(
                   isPlayerOpen.value
