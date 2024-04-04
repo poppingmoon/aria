@@ -76,8 +76,7 @@ class _StringsAriaEnUs {
 	String get emojiPickerScale => 'Emoji picker scale';
 	String get emojiPickerUseDialog => 'Display emoji picker as dialog';
 	String get enableFederation => 'Enable federation';
-	String get expandNoteOnDoubleTap => 'Expand note on double tap';
-	String get expandNoteOnTap => 'Expand note on tap';
+	String get expandNote => 'Expand note';
 	String get fileNotFound => 'File not found';
 	String get findServer => 'Find a Misskey server';
 	TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -108,6 +107,9 @@ class _StringsAriaEnUs {
 	String get newNotificationReceived => 'There are new notifications';
 	String get noAccounts => 'No accounts';
 	String get noTabs => 'No tabs';
+	String get noteDoubleTapAction => 'Note double tap action';
+	String get noteLongPressAction => 'Note long press action';
+	String get noteTapAction => 'Note tap action';
 	String get notesAfterRenotes => 'Notes after renotes';
 	TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
@@ -119,6 +121,7 @@ class _StringsAriaEnUs {
 	String get openInBrowser => 'Open in browser';
 	String get openInExternalBrowser => 'Open in external browser';
 	String get openInInternalBrowser => 'Open in internal browser';
+	String get openMenu => 'Open menu';
 	String get openSensitiveMediaOnDoubleTap => 'Open sensitive media on double tap';
 	String get paste => 'Paste';
 	TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [

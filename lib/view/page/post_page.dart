@@ -17,6 +17,7 @@ import '../../extension/text_editing_controller_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/general_settings.dart';
 import '../../model/post_file.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/accounts_notifier_provider.dart';
@@ -37,7 +38,6 @@ import '../widget/emoji_picker.dart';
 import '../widget/file_picker_sheet.dart';
 import '../widget/mention_widget.dart';
 import '../widget/mfm_keyboard.dart';
-import '../widget/note_preview.dart';
 import '../widget/note_summary.dart';
 import '../widget/note_visibility_icon.dart';
 import '../widget/note_visibility_widget.dart';
@@ -900,7 +900,15 @@ class PostPage extends HookConsumerWidget {
                         noteId: request.renoteId!,
                       )
                     else
-                      NotePreview(account: account.value, note: note),
+                      NoteWidget(
+                        account: account.value,
+                        noteId: '',
+                        note: note,
+                        showFooter: false,
+                        tapAction: NoteActionType.none,
+                        doubleTapAction: NoteActionType.none,
+                        longPressAction: NoteActionType.none,
+                      ),
                   ],
                 ),
               ),

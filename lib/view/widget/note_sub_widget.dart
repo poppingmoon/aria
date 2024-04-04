@@ -9,12 +9,12 @@ import '../../model/account.dart';
 import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
+import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
 import 'emoji_sheet.dart';
 import 'mfm.dart';
 import 'note_header.dart';
-import 'note_sheet.dart';
 import 'sub_note_content.dart';
 import 'user_avatar.dart';
 
@@ -40,13 +40,17 @@ class NoteSubWidget extends HookConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final expandOnTap = ref.watch(
+    final tapAction = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.expandNoteOnTap),
+          .select((settings) => settings.noteTapAction),
     );
-    final expandOnDoubleTap = ref.watch(
+    final doubleTapAction = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.expandNoteOnDoubleTap),
+          .select((settings) => settings.noteDoubleTapAction),
+    );
+    final longPressAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteLongPressAction),
     );
     final showAvatars = ref.watch(
       generalSettingsNotifierProvider
@@ -58,18 +62,26 @@ class NoteSubWidget extends HookConsumerWidget {
     final showContent = useState(false);
 
     return InkWell(
-      onTap: expandOnTap ? () => context.push('/$account/notes/$noteId') : null,
-      onDoubleTap: expandOnDoubleTap
-          ? () => context.push('/$account/notes/$noteId')
-          : null,
-      onLongPress: () => showModalBottomSheet<void>(
-        context: context,
-        builder: (context) => NoteSheet(
-          account: account,
-          noteId: noteId,
-          postFormFocusNode: postFormFocusNode,
-        ),
-        isScrollControlled: true,
+      onTap: getNoteAction(
+        ref,
+        account: account,
+        type: tapAction,
+        note: note,
+        appearNote: note,
+      ),
+      onDoubleTap: getNoteAction(
+        ref,
+        account: account,
+        type: doubleTapAction,
+        note: note,
+        appearNote: note,
+      ),
+      onLongPress: getNoteAction(
+        ref,
+        account: account,
+        type: longPressAction,
+        note: note,
+        appearNote: note,
       ),
       child: Column(
         children: [

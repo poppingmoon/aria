@@ -5,11 +5,11 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../extension/notes_create_request_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/general_settings.dart';
 import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
-import '../widget/note_preview.dart';
 import '../widget/note_widget.dart';
 
 Future<bool> confirmPost(BuildContext context, Account account) async {
@@ -58,9 +58,14 @@ class PostConfirmationDialog extends ConsumerWidget {
               if (request.isRenote)
                 NoteWidget(account: account, noteId: request.renoteId!)
               else
-                NotePreview(
+                NoteWidget(
                   account: account,
+                  noteId: '',
                   note: note.copyWith(files: files),
+                  showFooter: false,
+                  tapAction: NoteActionType.none,
+                  doubleTapAction: NoteActionType.none,
+                  longPressAction: NoteActionType.none,
                 ),
               Align(
                 alignment: Alignment.centerRight,

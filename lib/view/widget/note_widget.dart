@@ -9,6 +9,7 @@ import '../../extension/note_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/general_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
@@ -18,6 +19,7 @@ import '../../provider/note_is_long_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
+import '../../util/get_note_action.dart';
 import '../../util/navigate.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
@@ -27,7 +29,6 @@ import 'media_list.dart';
 import 'mfm.dart';
 import 'note_footer.dart';
 import 'note_header.dart';
-import 'note_sheet.dart';
 import 'note_simple_widget.dart';
 import 'note_sub_widget.dart';
 import 'note_summary.dart';
@@ -44,44 +45,38 @@ class NoteWidget extends HookConsumerWidget {
     required this.account,
     required this.noteId,
     this.showDate = true,
-    this.showFooter,
-    this.onExpand = _pushNotePage,
-    this.onLongPress = _showNoteSheet,
-    this.postFormFocusNode,
     this.withHardMute = true,
+    this.postFormFocusNode,
+    this.note,
+    this.showAvatars,
+    this.showReactionsViewer,
+    this.showFooter,
+    this.tapAction,
+    this.doubleTapAction,
+    this.longPressAction,
   });
 
   final Account account;
   final String noteId;
   final bool showDate;
-  final bool? showFooter;
-  final void Function(BuildContext context, Account account, Note note)?
-      onExpand;
-  final void Function(BuildContext context, Account account, Note note)?
-      onLongPress;
-  final FocusNode? postFormFocusNode;
   final bool withHardMute;
-
-  static void _pushNotePage(BuildContext context, Account account, Note note) {
-    context.push('/$account/notes/${note.id}');
-  }
-
-  static void _showNoteSheet(BuildContext context, Account account, Note note) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (context) => NoteSheet(account: account, noteId: note.id),
-      clipBehavior: Clip.hardEdge,
-      isScrollControlled: true,
-    );
-  }
+  final FocusNode? postFormFocusNode;
+  final Note? note;
+  final bool? showAvatars;
+  final bool? showReactionsViewer;
+  final bool? showFooter;
+  final NoteActionType? tapAction;
+  final NoteActionType? doubleTapAction;
+  final NoteActionType? longPressAction;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final appearNote = ref.watch(appearNoteProvider(account, noteId));
+    final appearNote =
+        this.note ?? ref.watch(appearNoteProvider(account, noteId));
     if (appearNote == null) {
       return const SizedBox.shrink();
     }
@@ -124,26 +119,35 @@ class NoteWidget extends HookConsumerWidget {
       );
     }
 
-    final expandOnTap = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.expandNoteOnTap),
-    );
-    final expandOnDoubleTap = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.expandNoteOnDoubleTap),
-    );
-    final showAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarsInNote),
-    );
-    final showReactionsViewer = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showNoteReactionsViewer),
-    );
+    final bool showAvatars = this.showAvatars ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.showAvatarsInNote),
+        );
+    final bool showReactionsViewer = this.showReactionsViewer ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.showNoteReactionsViewer),
+        );
     final bool showFooter = this.showFooter ??
         ref.watch(
           generalSettingsNotifierProvider
               .select((settings) => settings.showNoteFooter),
+        );
+    final NoteActionType tapAction = this.tapAction ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.noteTapAction),
+        );
+    final NoteActionType doubleTapAction = this.doubleTapAction ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.noteDoubleTapAction),
+        );
+    final NoteActionType longPressAction = this.longPressAction ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.noteLongPressAction),
         );
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final isRenote = note.isRenote;
@@ -177,15 +181,27 @@ class NoteWidget extends HookConsumerWidget {
 
     return ClipRect(
       child: InkWell(
-        onTap: expandOnTap && onExpand != null
-            ? () => onExpand?.call(context, account, appearNote)
-            : null,
-        onDoubleTap: expandOnDoubleTap && onExpand != null
-            ? () => onExpand?.call(context, account, appearNote)
-            : null,
-        onLongPress: onLongPress != null
-            ? () => onLongPress?.call(context, account, note)
-            : null,
+        onTap: getNoteAction(
+          ref,
+          account: account,
+          type: tapAction,
+          note: note,
+          appearNote: appearNote,
+        ),
+        onDoubleTap: getNoteAction(
+          ref,
+          account: account,
+          type: doubleTapAction,
+          note: note,
+          appearNote: appearNote,
+        ),
+        onLongPress: getNoteAction(
+          ref,
+          account: account,
+          type: longPressAction,
+          note: note,
+          appearNote: appearNote,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(4.0),
           child: Column(

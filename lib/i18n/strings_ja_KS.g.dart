@@ -69,8 +69,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get emojiPickerScale => '絵文字ピッカーのでかさ';
 	@override String get emojiPickerUseDialog => '絵文字ピッカーをダイアログで表示するで';
 	@override String get enableFederation => '連合ありにするで';
-	@override String get expandNoteOnDoubleTap => 'ダブルタップしてノートを開くで';
-	@override String get expandNoteOnTap => 'タップしてノートを開くで';
+	@override String get expandNote => 'ノートを開くで';
 	@override String get fileNotFound => 'ファイルがあらへん';
 	@override String get findServer => 'Misskeyサーバーを探す';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -97,6 +96,9 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get newNotificationReceived => '新しい通知があるで';
 	@override String get noAccounts => 'アカウントはあらへん';
 	@override String get noTabs => 'タブはあらへん';
+	@override String get noteDoubleTapAction => 'ノートを二度押ししたときの動作';
+	@override String get noteLongPressAction => 'ノートを長押ししたときの動作';
+	@override String get noteTapAction => 'ノートをいらったときの動作';
 	@override String get notesAfterRenotes => 'リノート直後のノート';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
@@ -108,6 +110,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get openInBrowser => 'ブラウザで開くで';
 	@override String get openInExternalBrowser => '外部ブラウザで開くで';
 	@override String get openInInternalBrowser => '内部ブラウザで開くで';
+	@override String get openMenu => 'メニューを開くで';
 	@override String get openSensitiveMediaOnDoubleTap => '二度押ししてきわどいメディアを開くで';
 	@override String get paste => '貼り付け';
 	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [

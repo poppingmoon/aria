@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
+import '../../util/get_note_action.dart';
 import 'cw_button.dart';
 import 'emoji_sheet.dart';
 import 'mfm.dart';
 import 'note_header.dart';
-import 'note_sheet.dart';
 import 'sub_note_content.dart';
 import 'user_avatar.dart';
 
@@ -37,13 +36,17 @@ class NoteSimpleWidget extends HookConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final expandOnTap = ref.watch(
+    final tapAction = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.expandNoteOnTap),
+          .select((settings) => settings.noteTapAction),
     );
-    final expandOnDoubleTap = ref.watch(
+    final doubleTapAction = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.expandNoteOnDoubleTap),
+          .select((settings) => settings.noteDoubleTapAction),
+    );
+    final longPressAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteLongPressAction),
     );
     final showAvatars = ref.watch(
       generalSettingsNotifierProvider
@@ -52,19 +55,26 @@ class NoteSimpleWidget extends HookConsumerWidget {
     final showContent = useState(false);
 
     return InkWell(
-      onTap: expandOnTap ? () => context.push('/$account/notes/$noteId') : null,
-      onDoubleTap: expandOnDoubleTap
-          ? () => context.push('/$account/notes/$noteId')
-          : null,
-      onLongPress: () => showModalBottomSheet<void>(
-        context: context,
-        builder: (context) => NoteSheet(
-          account: account,
-          noteId: noteId,
-          postFormFocusNode: postFormFocusNode,
-        ),
-        clipBehavior: Clip.hardEdge,
-        isScrollControlled: true,
+      onTap: getNoteAction(
+        ref,
+        account: account,
+        type: tapAction,
+        note: note,
+        appearNote: note,
+      ),
+      onDoubleTap: getNoteAction(
+        ref,
+        account: account,
+        type: doubleTapAction,
+        note: note,
+        appearNote: note,
+      ),
+      onLongPress: getNoteAction(
+        ref,
+        account: account,
+        type: longPressAction,
+        note: note,
+        appearNote: note,
       ),
       borderRadius: borderRadius,
       child: Padding(

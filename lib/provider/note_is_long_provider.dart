@@ -35,7 +35,7 @@ int _countNewLines(List<MfmNode> nodes) {
   });
 }
 
-@Riverpod(dependencies: [note])
+@riverpod
 bool noteIsLong(NoteIsLongRef ref, Account account, String noteId) {
   final text =
       ref.watch(noteProvider(account, noteId).select((note) => note?.text));

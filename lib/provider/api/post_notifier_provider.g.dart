@@ -6,7 +6,7 @@ part of 'post_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postNotifierHash() => r'46534b94099a549062c7595b4f38ab6344d9575a';
+String _$postNotifierHash() => r'62e6d2aeae7cdbc806620684241af9a559eb404f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -64,18 +64,12 @@ class PostNotifierFamily extends Family<NotesCreateRequest> {
     );
   }
 
-  static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
-    noteProvider
-  ];
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
   Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
-      <ProviderOrFamily>{
-    noteProvider,
-    ...?noteProvider.allTransitiveDependencies
-  };
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
   Iterable<ProviderOrFamily>? get allTransitiveDependencies =>

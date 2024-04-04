@@ -17,7 +17,7 @@ import 'misskey_provider.dart';
 
 part 'post_notifier_provider.g.dart';
 
-@Riverpod(keepAlive: true, dependencies: [note])
+@Riverpod(keepAlive: true)
 class PostNotifier extends _$PostNotifier {
   @override
   NotesCreateRequest build(Account account) {

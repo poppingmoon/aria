@@ -6,7 +6,7 @@ part of 'check_word_mute_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkWordMuteHash() => r'c8febd3e62a1021774f602f2e80fae2e96a7f93c';
+String _$checkWordMuteHash() => r'b34fc476578ceafa6debf53bf406f5138282af74';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -62,18 +62,12 @@ class CheckWordMuteFamily extends Family<bool> {
     );
   }
 
-  static final Iterable<ProviderOrFamily> _dependencies = <ProviderOrFamily>[
-    noteProvider
-  ];
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
 
   @override
   Iterable<ProviderOrFamily>? get dependencies => _dependencies;
 
-  static final Iterable<ProviderOrFamily> _allTransitiveDependencies =
-      <ProviderOrFamily>{
-    noteProvider,
-    ...?noteProvider.allTransitiveDependencies
-  };
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
   Iterable<ProviderOrFamily>? get allTransitiveDependencies =>

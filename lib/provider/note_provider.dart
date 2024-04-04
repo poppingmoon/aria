@@ -6,7 +6,7 @@ import 'notes_notifier_provider.dart';
 
 part 'note_provider.g.dart';
 
-@Riverpod(keepAlive: true, dependencies: [])
+@Riverpod(keepAlive: true)
 Note? note(NoteRef ref, Account account, String noteId) {
   return ref.watch(
     notesNotifierProvider(account).select((notes) => notes[noteId]),
