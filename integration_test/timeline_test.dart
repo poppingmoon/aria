@@ -1,6 +1,3 @@
-@Timeout(Duration(hours: 1))
-library;
-
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/main.dart';
 import 'package:aria/provider/shared_preferences_provider.dart';
