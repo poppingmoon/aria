@@ -7,6 +7,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/pinned_users_provider.dart';
 import '../../../provider/api/users_notifier_provider.dart';
+import '../../../util/punycode.dart';
 import '../../widget/error_message.dart';
 import '../../widget/misskey_server_autocomplete.dart';
 import '../../widget/paginated_list_view.dart';
@@ -154,7 +155,13 @@ class ExploreUsers extends HookConsumerWidget {
                   controller: controller,
                   focusNode: focusNode,
                   onSubmitted: (value) {
-                    final text = value.trim();
+                    final text = toAscii(
+                      value
+                          .trim()
+                          .replaceFirst('https://', '')
+                          .split('/')
+                          .first,
+                    ).toLowerCase();
                     host.value = text.isNotEmpty ? text : null;
                   },
                 ),

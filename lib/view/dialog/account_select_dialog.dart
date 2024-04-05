@@ -24,8 +24,15 @@ class AccountSelectDialog extends HookConsumerWidget {
     useEffect(
       () {
         controller.addListener(
-          () => account.value =
-              Account(host: toAscii(controller.text).toLowerCase()),
+          () => account.value = Account(
+            host: toAscii(
+              controller.text
+                  .trim()
+                  .replaceFirst('https://', '')
+                  .split('/')
+                  .first,
+            ).toLowerCase(),
+          ),
         );
         return;
       },

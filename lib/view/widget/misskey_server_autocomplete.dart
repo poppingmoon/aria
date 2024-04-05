@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/search_misskey_servers_provider.dart';
+import '../../util/punycode.dart';
 
 class MisskeyServerAutocomplete extends ConsumerWidget {
   const MisskeyServerAutocomplete({
@@ -50,6 +52,56 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
           onSubmitted: onSubmitted,
           keyboardType: TextInputType.url,
           textInputAction: TextInputAction.done,
+          contextMenuBuilder: (context, editableTextState) =>
+              AdaptiveTextSelectionToolbar.editable(
+            clipboardStatus: ClipboardStatus.pasteable,
+            onCopy: editableTextState.copyEnabled
+                ? () => editableTextState
+                    .copySelection(SelectionChangedCause.toolbar)
+                : null,
+            onCut: editableTextState.cutEnabled
+                ? () => editableTextState
+                    .cutSelection(SelectionChangedCause.toolbar)
+                : null,
+            onPaste: editableTextState.pasteEnabled
+                ? () async {
+                    final data = await Clipboard.getData(Clipboard.kTextPlain);
+                    if (data case ClipboardData(:final text?)) {
+                      await Clipboard.setData(
+                        ClipboardData(
+                          text: toAscii(
+                            text
+                                .trim()
+                                .replaceFirst('https://', '')
+                                .split('/')
+                                .first,
+                          ).toLowerCase(),
+                        ),
+                      );
+                      await editableTextState
+                          .pasteText(SelectionChangedCause.toolbar);
+                    }
+                  }
+                : null,
+            onSelectAll: editableTextState.selectAllEnabled
+                ? () =>
+                    editableTextState.selectAll(SelectionChangedCause.toolbar)
+                : null,
+            onLookUp: editableTextState.lookUpEnabled
+                ? () => editableTextState
+                    .lookUpSelection(SelectionChangedCause.toolbar)
+                : null,
+            onSearchWeb: editableTextState.searchWebEnabled
+                ? () => editableTextState
+                    .searchWebForSelection(SelectionChangedCause.toolbar)
+                : null,
+            onShare: editableTextState.shareEnabled
+                ? () => editableTextState
+                    .shareSelection(SelectionChangedCause.toolbar)
+                : null,
+            onLiveTextInput: null,
+            anchors: editableTextState.contextMenuAnchors,
+          ),
         ),
         optionsViewBuilder: (context, onSelected, options) => Align(
           alignment: Alignment.topLeft,
