@@ -34,6 +34,7 @@ i18nInfo(rich): "Ariaは有志によって様々な言語に翻訳されてい�
 importCompleted: "インポートが完了しました"
 importConfirm: "設定をインポートしますか？現在の設定は上書きされます。"
 invalidListFormat: "リストの形式が正しくありません"
+keepOpen: "開いたままにする"
 loginWithAccessToken: "アクセストークンでログイン"
 mentionToRemoteWarning: "リモートユーザーへのメンションが含まれています"
 moved: "移動しました"

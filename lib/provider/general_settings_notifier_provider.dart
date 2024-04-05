@@ -293,4 +293,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     state = state.copyWith(darkThemeId: darkThemeId);
     await _save();
   }
+
+  Future<void> setEmojiPickerKeepOpen(bool emojiPickerKeepOpen) async {
+    state = state.copyWith(emojiPickerKeepOpen: emojiPickerKeepOpen);
+    await _save();
+  }
 }

@@ -829,13 +829,13 @@ class PostPage extends HookConsumerWidget {
                           // ),
                           IconButton(
                             tooltip: t.misskey.emoji,
-                            onPressed: () async {
-                              final emoji = await pickEmoji(ref, account.value);
-                              if (!context.mounted) return;
-                              if (emoji != null) {
-                                controller.insert(emoji.replaceFirst('@.', ''));
-                              }
-                            },
+                            onPressed: () => pickEmoji(
+                              ref,
+                              account.value,
+                              post: true,
+                              onTapEmoji: (emoji) => controller
+                                  .insert(emoji.replaceFirst('@.', '')),
+                            ),
                             icon: const Icon(Icons.mood),
                           ),
                           IconButton(

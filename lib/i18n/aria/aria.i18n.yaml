@@ -36,6 +36,7 @@ i18nInfo(rich): "Aria is being translated into various languages by volunteers. 
 importCompleted: "Import completed"
 importConfirm: "Are you sure you want to import settings? Existing settings will be overwritten."
 invalidListFormat: "List format is invalid"
+keepOpen: "Keep open"
 loginWithAccessToken: "Sign in with an access token"
 mentionToRemoteWarning: "This note contains mentions to remote users"
 moved: "Moved"

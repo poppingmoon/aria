@@ -70,7 +70,8 @@ mixin _$GeneralSettings {
   bool get confirmBeforeFollow => throw _privateConstructorUsedError; // Theme
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   String get lightThemeId => throw _privateConstructorUsedError;
-  String get darkThemeId => throw _privateConstructorUsedError;
+  String get darkThemeId => throw _privateConstructorUsedError; // EmojiPicker
+  bool get emojiPickerKeepOpen => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -132,7 +133,8 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool confirmBeforeFollow,
       ThemeMode themeMode,
       String lightThemeId,
-      String darkThemeId});
+      String darkThemeId,
+      bool emojiPickerKeepOpen});
 }
 
 /// @nodoc
@@ -195,6 +197,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? themeMode = null,
     Object? lightThemeId = null,
     Object? darkThemeId = null,
+    Object? emojiPickerKeepOpen = null,
   }) {
     return _then(_value.copyWith(
       locale: freezed == locale
@@ -385,6 +388,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.darkThemeId
           : darkThemeId // ignore: cast_nullable_to_non_nullable
               as String,
+      emojiPickerKeepOpen: null == emojiPickerKeepOpen
+          ? _value.emojiPickerKeepOpen
+          : emojiPickerKeepOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -445,7 +452,8 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool confirmBeforeFollow,
       ThemeMode themeMode,
       String lightThemeId,
-      String darkThemeId});
+      String darkThemeId,
+      bool emojiPickerKeepOpen});
 }
 
 /// @nodoc
@@ -506,6 +514,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? themeMode = null,
     Object? lightThemeId = null,
     Object? darkThemeId = null,
+    Object? emojiPickerKeepOpen = null,
   }) {
     return _then(_$GeneralSettingsImpl(
       locale: freezed == locale
@@ -696,6 +705,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.darkThemeId
           : darkThemeId // ignore: cast_nullable_to_non_nullable
               as String,
+      emojiPickerKeepOpen: null == emojiPickerKeepOpen
+          ? _value.emojiPickerKeepOpen
+          : emojiPickerKeepOpen // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -751,7 +764,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.confirmBeforeFollow = true,
       this.themeMode = ThemeMode.system,
       this.lightThemeId = 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
-      this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34'});
+      this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34',
+      this.emojiPickerKeepOpen = false});
 
   factory _$GeneralSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeneralSettingsImplFromJson(json);
@@ -901,10 +915,14 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final String darkThemeId;
+// EmojiPicker
+  @override
+  @JsonKey()
+  final bool emojiPickerKeepOpen;
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, showNoteReactionsViewer: $showNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, showNoteReactionsViewer: $showNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId, emojiPickerKeepOpen: $emojiPickerKeepOpen)';
   }
 
   @override
@@ -988,7 +1006,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.confirmBeforeFollow, confirmBeforeFollow) || other.confirmBeforeFollow == confirmBeforeFollow) &&
             (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
             (identical(other.lightThemeId, lightThemeId) || other.lightThemeId == lightThemeId) &&
-            (identical(other.darkThemeId, darkThemeId) || other.darkThemeId == darkThemeId));
+            (identical(other.darkThemeId, darkThemeId) || other.darkThemeId == darkThemeId) &&
+            (identical(other.emojiPickerKeepOpen, emojiPickerKeepOpen) || other.emojiPickerKeepOpen == emojiPickerKeepOpen));
   }
 
   @JsonKey(ignore: true)
@@ -1041,7 +1060,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         confirmBeforeFollow,
         themeMode,
         lightThemeId,
-        darkThemeId
+        darkThemeId,
+        emojiPickerKeepOpen
       ]);
 
   @JsonKey(ignore: true)
@@ -1108,7 +1128,8 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool confirmBeforeFollow,
       final ThemeMode themeMode,
       final String lightThemeId,
-      final String darkThemeId}) = _$GeneralSettingsImpl;
+      final String darkThemeId,
+      final bool emojiPickerKeepOpen}) = _$GeneralSettingsImpl;
 
   factory _GeneralSettings.fromJson(Map<String, dynamic> json) =
       _$GeneralSettingsImpl.fromJson;
@@ -1209,6 +1230,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   String get lightThemeId;
   @override
   String get darkThemeId;
+  @override // EmojiPicker
+  bool get emojiPickerKeepOpen;
   @override
   @JsonKey(ignore: true)
   _$$GeneralSettingsImplCopyWith<_$GeneralSettingsImpl> get copyWith =>

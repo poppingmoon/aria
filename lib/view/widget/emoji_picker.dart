@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/categorized_unicode_emojis.g.dart';
 import '../../constant/shortcuts.dart';
@@ -31,8 +31,10 @@ Future<String?> pickEmoji(
   bool saveHistory = true,
   bool confirmBeforePop = false,
   Note? targetNote,
+  bool post = false,
+  void Function(String emoji)? onTapEmoji,
 }) async {
-  Future<void> onTapEmoji(BuildContext context, String emoji) async {
+  Future<void> onTap(BuildContext context, String emoji, bool keepOpen) async {
     if (confirmBeforePop && emoji.startsWith(':')) {
       final confirmed = await showDialog<bool>(
         context: context,
@@ -54,8 +56,11 @@ Future<String?> pickEmoji(
             .add(emoji);
       }
     }
+    onTapEmoji?.call(emoji);
     if (!context.mounted) return;
-    context.pop(emoji);
+    if (!keepOpen) {
+      context.pop(emoji);
+    }
   }
 
   final useDialog =
@@ -66,9 +71,10 @@ Future<String?> pickEmoji(
       builder: (context) => Dialog(
         child: EmojiPicker(
           account: account,
-          onTapEmoji: (emoji) => onTapEmoji(context, emoji),
+          onTapEmoji: (emoji, keepOpen) => onTap(context, emoji, keepOpen),
           reaction: reaction,
           targetNote: targetNote,
+          post: post,
         ),
       ),
     );
@@ -81,13 +87,15 @@ Future<String?> pickEmoji(
         expand: false,
         builder: (context, scrollController) => EmojiPicker(
           account: account,
-          onTapEmoji: (emoji) => onTapEmoji(context, emoji),
+          onTapEmoji: (emoji, keepOpen) => onTap(context, emoji, keepOpen),
           scrollController: scrollController,
           reaction: reaction,
           targetNote: targetNote,
+          post: post,
         ),
       ),
       isScrollControlled: true,
+      clipBehavior: Clip.hardEdge,
     );
   }
 }
@@ -100,13 +108,15 @@ class EmojiPicker extends HookConsumerWidget {
     this.scrollController,
     this.reaction = false,
     this.targetNote,
+    this.post = false,
   });
 
   final Account account;
-  final void Function(String emoji) onTapEmoji;
+  final void Function(String emoji, bool popEmoji) onTapEmoji;
   final ScrollController? scrollController;
   final bool reaction;
   final Note? targetNote;
+  final bool post;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -133,10 +143,23 @@ class EmojiPicker extends HookConsumerWidget {
         ref.watch(pinnedEmojisNotifierProvider(account, reaction: reaction));
     final recentlyUsedEmojis =
         ref.watch(recentlyUsedEmojisNotifierProvider(account));
+    final keepOpen = post &&
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.emojiPickerKeepOpen),
+        );
 
     return ListView(
       controller: scrollController,
       children: [
+        if (post)
+          SwitchListTile(
+            title: Text(t.aria.keepOpen),
+            value: keepOpen,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setEmojiPickerKeepOpen(value),
+          ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Shortcuts(
@@ -170,7 +193,9 @@ class EmojiPicker extends HookConsumerWidget {
                   return CustomEmoji(
                     account: account,
                     emoji: emoji.emoji,
-                    onTap: enabled ? () => onTapEmoji(emoji.emoji) : null,
+                    onTap: enabled
+                        ? () => onTapEmoji(emoji.emoji, keepOpen)
+                        : null,
                     height: style.lineHeight * fontScaleFactor,
                     opacity: enabled ? 1.0 : 0.1,
                     fallbackTextStyle:
@@ -181,7 +206,7 @@ class EmojiPicker extends HookConsumerWidget {
                   (emoji) => UnicodeEmoji(
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
-                    onTap: () => onTapEmoji(emoji),
+                    onTap: () => onTapEmoji(emoji, keepOpen),
                   ),
                 ),
               ],
@@ -205,7 +230,7 @@ class EmojiPicker extends HookConsumerWidget {
                 return EmojiWidget(
                   account: account,
                   emoji: emoji,
-                  onTap: enabled ? () => onTapEmoji(emoji) : null,
+                  onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
                   style: style.apply(
                     fontSizeFactor: fontScaleFactor,
                     color: style.color?.withOpacity(enabled ? 1.0 : 0.1),
@@ -236,7 +261,7 @@ class EmojiPicker extends HookConsumerWidget {
                 return EmojiWidget(
                   account: account,
                   emoji: emoji,
-                  onTap: enabled ? () => onTapEmoji(emoji) : null,
+                  onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
                   style: style.apply(
                     fontSizeFactor: fontScaleFactor,
                     color: style.color?.withOpacity(enabled ? 1.0 : 0.1),
@@ -279,7 +304,9 @@ class EmojiPicker extends HookConsumerWidget {
                         return CustomEmoji(
                           account: account,
                           emoji: emoji.emoji,
-                          onTap: enabled ? () => onTapEmoji(emoji.emoji) : null,
+                          onTap: enabled
+                              ? () => onTapEmoji(emoji.emoji, keepOpen)
+                              : null,
                           height: style.lineHeight * fontScaleFactor,
                           opacity: enabled ? 1.0 : 0.1,
                           fallbackTextStyle:
@@ -316,7 +343,7 @@ class EmojiPicker extends HookConsumerWidget {
                           (emoji) => UnicodeEmoji(
                             emoji: emoji,
                             style: style.apply(fontSizeFactor: fontScaleFactor),
-                            onTap: () => onTapEmoji(emoji),
+                            onTap: () => onTapEmoji(emoji, keepOpen),
                           ),
                         )
                         .toList(),
