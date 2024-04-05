@@ -44,6 +44,7 @@ mixin _$GeneralSettings {
   bool get useGroupedNotifications => throw _privateConstructorUsedError;
   bool get dataSaverMedia => throw _privateConstructorUsedError;
   bool get dataSaverUrlPreview => throw _privateConstructorUsedError;
+  bool get showLikeButtonInNoteFooter => throw _privateConstructorUsedError;
   bool get showTranslateButtonInNoteFooter =>
       throw _privateConstructorUsedError;
   double get fontSize => throw _privateConstructorUsedError;
@@ -108,6 +109,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool useGroupedNotifications,
       bool dataSaverMedia,
       bool dataSaverUrlPreview,
+      bool showLikeButtonInNoteFooter,
       bool showTranslateButtonInNoteFooter,
       double fontSize,
       String? fontFamily,
@@ -171,6 +173,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? useGroupedNotifications = null,
     Object? dataSaverMedia = null,
     Object? dataSaverUrlPreview = null,
+    Object? showLikeButtonInNoteFooter = null,
     Object? showTranslateButtonInNoteFooter = null,
     Object? fontSize = null,
     Object? fontFamily = freezed,
@@ -283,6 +286,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
       dataSaverUrlPreview: null == dataSaverUrlPreview
           ? _value.dataSaverUrlPreview
           : dataSaverUrlPreview // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
+          ? _value.showLikeButtonInNoteFooter
+          : showLikeButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       showTranslateButtonInNoteFooter: null == showTranslateButtonInNoteFooter
           ? _value.showTranslateButtonInNoteFooter
@@ -427,6 +434,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool useGroupedNotifications,
       bool dataSaverMedia,
       bool dataSaverUrlPreview,
+      bool showLikeButtonInNoteFooter,
       bool showTranslateButtonInNoteFooter,
       double fontSize,
       String? fontFamily,
@@ -488,6 +496,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? useGroupedNotifications = null,
     Object? dataSaverMedia = null,
     Object? dataSaverUrlPreview = null,
+    Object? showLikeButtonInNoteFooter = null,
     Object? showTranslateButtonInNoteFooter = null,
     Object? fontSize = null,
     Object? fontFamily = freezed,
@@ -600,6 +609,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       dataSaverUrlPreview: null == dataSaverUrlPreview
           ? _value.dataSaverUrlPreview
           : dataSaverUrlPreview // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
+          ? _value.showLikeButtonInNoteFooter
+          : showLikeButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       showTranslateButtonInNoteFooter: null == showTranslateButtonInNoteFooter
           ? _value.showTranslateButtonInNoteFooter
@@ -739,6 +752,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.useGroupedNotifications = false,
       this.dataSaverMedia = false,
       this.dataSaverUrlPreview = false,
+      this.showLikeButtonInNoteFooter = false,
       this.showTranslateButtonInNoteFooter = false,
       this.fontSize = defaultFontSize,
       this.fontFamily,
@@ -838,6 +852,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool dataSaverUrlPreview;
   @override
   @JsonKey()
+  final bool showLikeButtonInNoteFooter;
+  @override
+  @JsonKey()
   final bool showTranslateButtonInNoteFooter;
   @override
   @JsonKey()
@@ -922,7 +939,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, showNoteReactionsViewer: $showNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId, emojiPickerKeepOpen: $emojiPickerKeepOpen)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, showNoteReactionsViewer: $showNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId, emojiPickerKeepOpen: $emojiPickerKeepOpen)';
   }
 
   @override
@@ -972,6 +989,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.dataSaverMedia == dataSaverMedia) &&
             (identical(other.dataSaverUrlPreview, dataSaverUrlPreview) ||
                 other.dataSaverUrlPreview == dataSaverUrlPreview) &&
+            (identical(other.showLikeButtonInNoteFooter, showLikeButtonInNoteFooter) ||
+                other.showLikeButtonInNoteFooter ==
+                    showLikeButtonInNoteFooter) &&
             (identical(other.showTranslateButtonInNoteFooter, showTranslateButtonInNoteFooter) ||
                 other.showTranslateButtonInNoteFooter ==
                     showTranslateButtonInNoteFooter) &&
@@ -985,10 +1005,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.showAvatarsInSubNote == showAvatarsInSubNote) &&
             (identical(other.showNoteReactionsViewer, showNoteReactionsViewer) ||
                 other.showNoteReactionsViewer == showNoteReactionsViewer) &&
-            (identical(other.showNoteFooter, showNoteFooter) ||
-                other.showNoteFooter == showNoteFooter) &&
-            (identical(other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) ||
-                other.showSubNoteReactionsViewer == showSubNoteReactionsViewer) &&
+            (identical(other.showNoteFooter, showNoteFooter) || other.showNoteFooter == showNoteFooter) &&
+            (identical(other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) || other.showSubNoteReactionsViewer == showSubNoteReactionsViewer) &&
             (identical(other.showSubNoteFooter, showSubNoteFooter) || other.showSubNoteFooter == showSubNoteFooter) &&
             (identical(other.vibrateNote, vibrateNote) || other.vibrateNote == vibrateNote) &&
             (identical(other.vibrateNotification, vibrateNotification) || other.vibrateNotification == vibrateNotification) &&
@@ -1035,6 +1053,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         useGroupedNotifications,
         dataSaverMedia,
         dataSaverUrlPreview,
+        showLikeButtonInNoteFooter,
         showTranslateButtonInNoteFooter,
         fontSize,
         fontFamily,
@@ -1103,6 +1122,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool useGroupedNotifications,
       final bool dataSaverMedia,
       final bool dataSaverUrlPreview,
+      final bool showLikeButtonInNoteFooter,
       final bool showTranslateButtonInNoteFooter,
       final double fontSize,
       final String? fontFamily,
@@ -1178,6 +1198,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get dataSaverMedia;
   @override
   bool get dataSaverUrlPreview;
+  @override
+  bool get showLikeButtonInNoteFooter;
   @override
   bool get showTranslateButtonInNoteFooter;
   @override

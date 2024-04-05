@@ -154,6 +154,14 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowLikeButtonInNoteFooter(
+    bool showLikeButtonInNoteFooter,
+  ) async {
+    state =
+        state.copyWith(showLikeButtonInNoteFooter: showLikeButtonInNoteFooter);
+    await _save();
+  }
+
   Future<void> setShowTranslateButtonInNoteFooter(
     bool showTranslateButtonInNoteFooter,
   ) async {
