@@ -78,6 +78,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
       darkThemeId: json['darkThemeId'] as String? ??
           '66e7e5a9-cd43-42cd-837d-12f47841fa34',
+      emojiPickerKeepOpen: json['emojiPickerKeepOpen'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$GeneralSettingsImplToJson(
@@ -140,6 +141,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['themeMode'] = _$ThemeModeEnumMap[instance.themeMode]!;
   val['lightThemeId'] = instance.lightThemeId;
   val['darkThemeId'] = instance.darkThemeId;
+  val['emojiPickerKeepOpen'] = instance.emojiPickerKeepOpen;
   return val;
 }
 
