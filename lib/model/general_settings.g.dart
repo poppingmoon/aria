@@ -17,7 +17,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           SensitiveMediaDisplay.respect,
       highlightSensitiveMedia:
           json['highlightSensitiveMedia'] as bool? ?? false,
-      animatedMfm: json['animatedMfm'] as bool? ?? false,
+      animatedMfm: json['animatedMfm'] as bool? ?? true,
       advancedMfm: json['advancedMfm'] as bool? ?? true,
       showReactionsCount: json['showReactionsCount'] as bool? ?? false,
       loadRawImages: json['loadRawImages'] as bool? ?? false,
@@ -43,16 +43,17 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['showTranslateButtonInNoteFooter'] as bool? ?? false,
       fontSize: (json['fontSize'] as num?)?.toDouble() ?? defaultFontSize,
       fontFamily: json['fontFamily'] as String?,
-      showNoteFooter: json['showNoteFooter'] as bool? ?? true,
+      showAvatarsInNote: json['showAvatarsInNote'] as bool? ?? true,
+      showAvatarsInSubNote: json['showAvatarsInSubNote'] as bool? ?? true,
       showNoteReactionsViewer: json['showNoteReactionsViewer'] as bool? ?? true,
-      showSubNoteFooter: json['showSubNoteFooter'] as bool? ?? false,
+      showNoteFooter: json['showNoteFooter'] as bool? ?? true,
       showSubNoteReactionsViewer:
           json['showSubNoteReactionsViewer'] as bool? ?? false,
+      showSubNoteFooter: json['showSubNoteFooter'] as bool? ?? false,
       vibrateNote: json['vibrateNote'] as bool? ?? false,
       vibrateNotification: json['vibrateNotification'] as bool? ?? false,
       showTimelineTabBarOnBottom:
           json['showTimelineTabBarOnBottom'] as bool? ?? false,
-      showAvatarsInNote: json['showAvatarsInNote'] as bool? ?? true,
       noteFooterScale: (json['noteFooterScale'] as num?)?.toDouble() ?? 1.0,
       enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
       keepScreenOn: json['keepScreenOn'] as bool? ?? false,
@@ -114,14 +115,15 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
       instance.showTranslateButtonInNoteFooter;
   val['fontSize'] = instance.fontSize;
   writeNotNull('fontFamily', instance.fontFamily);
-  val['showNoteFooter'] = instance.showNoteFooter;
+  val['showAvatarsInNote'] = instance.showAvatarsInNote;
+  val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
   val['showNoteReactionsViewer'] = instance.showNoteReactionsViewer;
-  val['showSubNoteFooter'] = instance.showSubNoteFooter;
+  val['showNoteFooter'] = instance.showNoteFooter;
   val['showSubNoteReactionsViewer'] = instance.showSubNoteReactionsViewer;
+  val['showSubNoteFooter'] = instance.showSubNoteFooter;
   val['vibrateNote'] = instance.vibrateNote;
   val['vibrateNotification'] = instance.vibrateNotification;
   val['showTimelineTabBarOnBottom'] = instance.showTimelineTabBarOnBottom;
-  val['showAvatarsInNote'] = instance.showAvatarsInNote;
   val['noteFooterScale'] = instance.noteFooterScale;
   val['enableInfiniteScroll'] = instance.enableInfiniteScroll;
   val['keepScreenOn'] = instance.keepScreenOn;

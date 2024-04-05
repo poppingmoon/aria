@@ -19,6 +19,9 @@ void Function()? getNoteAction(
   required Note note,
   required Note appearNote,
 }) {
+  if (note.id.isEmpty) {
+    return null;
+  }
   return switch (type) {
     NoteActionType.none => null,
     NoteActionType.expand => () =>

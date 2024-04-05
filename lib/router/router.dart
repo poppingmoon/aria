@@ -54,6 +54,7 @@ import '../view/page/settings/import_export_page.dart';
 import '../view/page/settings/languages_page.dart';
 import '../view/page/settings/mute_block_page.dart';
 import '../view/page/settings/muted_users_page.dart';
+import '../view/page/settings/note_display_page.dart';
 import '../view/page/settings/privacy_page.dart';
 import '../view/page/settings/profile_page.dart';
 import '../view/page/settings/renote_muted_users_page.dart';
@@ -217,6 +218,10 @@ GoRouter router(RouterRef ref) {
           GoRoute(
             path: 'language',
             builder: (_, __) => const LanguagesPage(),
+          ),
+          GoRoute(
+            path: 'note-display',
+            builder: (_, __) => const NoteDisplayPage(),
           ),
           GoRoute(
             path: 'tab',

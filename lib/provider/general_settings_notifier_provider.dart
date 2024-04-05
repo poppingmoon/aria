@@ -101,6 +101,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowAvatarsInSubNote(bool showAvatarsInSubNote) async {
+    state = state.copyWith(showAvatarsInSubNote: showAvatarsInSubNote);
+    await _save();
+  }
+
   Future<void> setSquareAvatars(bool squareAvatars) async {
     state = state.copyWith(squareAvatars: squareAvatars);
     await _save();

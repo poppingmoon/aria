@@ -11,6 +11,8 @@ const defaultFontSize = 14.0;
 const maxFontSize = 24.0;
 const minReactionsDisplayScale = 0.1;
 const maxReactionsDisplayScale = 3.0;
+const minNoteFooterScale = 0.5;
+const maxNoteFooterScale = 2.0;
 const minEmojiPickerScale = 0.1;
 const maxEmojiPickerScale = 3.0;
 
@@ -26,7 +28,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool collapseRenotes,
     @Default(SensitiveMediaDisplay.respect) SensitiveMediaDisplay sensitive,
     @Default(false) bool highlightSensitiveMedia,
-    @Default(false) bool animatedMfm,
+    @Default(true) bool animatedMfm,
     @Default(true) bool advancedMfm,
     @Default(false) bool showReactionsCount,
     @Default(false) bool loadRawImages,
@@ -46,14 +48,15 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool showTranslateButtonInNoteFooter,
     @Default(defaultFontSize) double fontSize,
     String? fontFamily,
-    @Default(true) bool showNoteFooter,
+    @Default(true) bool showAvatarsInNote,
+    @Default(true) bool showAvatarsInSubNote,
     @Default(true) bool showNoteReactionsViewer,
-    @Default(false) bool showSubNoteFooter,
+    @Default(true) bool showNoteFooter,
     @Default(false) bool showSubNoteReactionsViewer,
+    @Default(false) bool showSubNoteFooter,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
     @Default(false) bool showTimelineTabBarOnBottom,
-    @Default(true) bool showAvatarsInNote,
     @Default(1.0) double noteFooterScale,
 
     // Behavior

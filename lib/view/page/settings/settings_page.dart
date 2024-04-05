@@ -75,6 +75,11 @@ class SettingsPage extends HookConsumerWidget {
             onTap: () => context.push('/settings/language'),
           ),
           ListTile(
+            leading: const Icon(Icons.article),
+            title: Text(t.misskey.displayOfNote),
+            onTap: () => context.push('/settings/note-display'),
+          ),
+          ListTile(
             leading: const Icon(Icons.brush),
             title: Text(t.misskey.appearance),
             onTap: () => context.push('/settings/appearance'),

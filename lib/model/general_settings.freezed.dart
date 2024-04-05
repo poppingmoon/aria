@@ -48,14 +48,15 @@ mixin _$GeneralSettings {
       throw _privateConstructorUsedError;
   double get fontSize => throw _privateConstructorUsedError;
   String? get fontFamily => throw _privateConstructorUsedError;
-  bool get showNoteFooter => throw _privateConstructorUsedError;
+  bool get showAvatarsInNote => throw _privateConstructorUsedError;
+  bool get showAvatarsInSubNote => throw _privateConstructorUsedError;
   bool get showNoteReactionsViewer => throw _privateConstructorUsedError;
-  bool get showSubNoteFooter => throw _privateConstructorUsedError;
+  bool get showNoteFooter => throw _privateConstructorUsedError;
   bool get showSubNoteReactionsViewer => throw _privateConstructorUsedError;
+  bool get showSubNoteFooter => throw _privateConstructorUsedError;
   bool get vibrateNote => throw _privateConstructorUsedError;
   bool get vibrateNotification => throw _privateConstructorUsedError;
   bool get showTimelineTabBarOnBottom => throw _privateConstructorUsedError;
-  bool get showAvatarsInNote => throw _privateConstructorUsedError;
   double get noteFooterScale => throw _privateConstructorUsedError; // Behavior
   bool get enableInfiniteScroll => throw _privateConstructorUsedError;
   bool get keepScreenOn => throw _privateConstructorUsedError;
@@ -109,14 +110,15 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showTranslateButtonInNoteFooter,
       double fontSize,
       String? fontFamily,
-      bool showNoteFooter,
+      bool showAvatarsInNote,
+      bool showAvatarsInSubNote,
       bool showNoteReactionsViewer,
-      bool showSubNoteFooter,
+      bool showNoteFooter,
       bool showSubNoteReactionsViewer,
+      bool showSubNoteFooter,
       bool vibrateNote,
       bool vibrateNotification,
       bool showTimelineTabBarOnBottom,
-      bool showAvatarsInNote,
       double noteFooterScale,
       bool enableInfiniteScroll,
       bool keepScreenOn,
@@ -170,14 +172,15 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showTranslateButtonInNoteFooter = null,
     Object? fontSize = null,
     Object? fontFamily = freezed,
-    Object? showNoteFooter = null,
+    Object? showAvatarsInNote = null,
+    Object? showAvatarsInSubNote = null,
     Object? showNoteReactionsViewer = null,
-    Object? showSubNoteFooter = null,
+    Object? showNoteFooter = null,
     Object? showSubNoteReactionsViewer = null,
+    Object? showSubNoteFooter = null,
     Object? vibrateNote = null,
     Object? vibrateNotification = null,
     Object? showTimelineTabBarOnBottom = null,
-    Object? showAvatarsInNote = null,
     Object? noteFooterScale = null,
     Object? enableInfiniteScroll = null,
     Object? keepScreenOn = null,
@@ -290,21 +293,29 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.fontFamily
           : fontFamily // ignore: cast_nullable_to_non_nullable
               as String?,
-      showNoteFooter: null == showNoteFooter
-          ? _value.showNoteFooter
-          : showNoteFooter // ignore: cast_nullable_to_non_nullable
+      showAvatarsInNote: null == showAvatarsInNote
+          ? _value.showAvatarsInNote
+          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showAvatarsInSubNote: null == showAvatarsInSubNote
+          ? _value.showAvatarsInSubNote
+          : showAvatarsInSubNote // ignore: cast_nullable_to_non_nullable
               as bool,
       showNoteReactionsViewer: null == showNoteReactionsViewer
           ? _value.showNoteReactionsViewer
           : showNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
               as bool,
-      showSubNoteFooter: null == showSubNoteFooter
-          ? _value.showSubNoteFooter
-          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+      showNoteFooter: null == showNoteFooter
+          ? _value.showNoteFooter
+          : showNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       showSubNoteReactionsViewer: null == showSubNoteReactionsViewer
           ? _value.showSubNoteReactionsViewer
           : showSubNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSubNoteFooter: null == showSubNoteFooter
+          ? _value.showSubNoteFooter
+          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       vibrateNote: null == vibrateNote
           ? _value.vibrateNote
@@ -317,10 +328,6 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
       showTimelineTabBarOnBottom: null == showTimelineTabBarOnBottom
           ? _value.showTimelineTabBarOnBottom
           : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showAvatarsInNote: null == showAvatarsInNote
-          ? _value.showAvatarsInNote
-          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
               as bool,
       noteFooterScale: null == noteFooterScale
           ? _value.noteFooterScale
@@ -416,14 +423,15 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showTranslateButtonInNoteFooter,
       double fontSize,
       String? fontFamily,
-      bool showNoteFooter,
+      bool showAvatarsInNote,
+      bool showAvatarsInSubNote,
       bool showNoteReactionsViewer,
-      bool showSubNoteFooter,
+      bool showNoteFooter,
       bool showSubNoteReactionsViewer,
+      bool showSubNoteFooter,
       bool vibrateNote,
       bool vibrateNotification,
       bool showTimelineTabBarOnBottom,
-      bool showAvatarsInNote,
       double noteFooterScale,
       bool enableInfiniteScroll,
       bool keepScreenOn,
@@ -475,14 +483,15 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showTranslateButtonInNoteFooter = null,
     Object? fontSize = null,
     Object? fontFamily = freezed,
-    Object? showNoteFooter = null,
+    Object? showAvatarsInNote = null,
+    Object? showAvatarsInSubNote = null,
     Object? showNoteReactionsViewer = null,
-    Object? showSubNoteFooter = null,
+    Object? showNoteFooter = null,
     Object? showSubNoteReactionsViewer = null,
+    Object? showSubNoteFooter = null,
     Object? vibrateNote = null,
     Object? vibrateNotification = null,
     Object? showTimelineTabBarOnBottom = null,
-    Object? showAvatarsInNote = null,
     Object? noteFooterScale = null,
     Object? enableInfiniteScroll = null,
     Object? keepScreenOn = null,
@@ -595,21 +604,29 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.fontFamily
           : fontFamily // ignore: cast_nullable_to_non_nullable
               as String?,
-      showNoteFooter: null == showNoteFooter
-          ? _value.showNoteFooter
-          : showNoteFooter // ignore: cast_nullable_to_non_nullable
+      showAvatarsInNote: null == showAvatarsInNote
+          ? _value.showAvatarsInNote
+          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showAvatarsInSubNote: null == showAvatarsInSubNote
+          ? _value.showAvatarsInSubNote
+          : showAvatarsInSubNote // ignore: cast_nullable_to_non_nullable
               as bool,
       showNoteReactionsViewer: null == showNoteReactionsViewer
           ? _value.showNoteReactionsViewer
           : showNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
               as bool,
-      showSubNoteFooter: null == showSubNoteFooter
-          ? _value.showSubNoteFooter
-          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+      showNoteFooter: null == showNoteFooter
+          ? _value.showNoteFooter
+          : showNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       showSubNoteReactionsViewer: null == showSubNoteReactionsViewer
           ? _value.showSubNoteReactionsViewer
           : showSubNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSubNoteFooter: null == showSubNoteFooter
+          ? _value.showSubNoteFooter
+          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       vibrateNote: null == vibrateNote
           ? _value.vibrateNote
@@ -622,10 +639,6 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       showTimelineTabBarOnBottom: null == showTimelineTabBarOnBottom
           ? _value.showTimelineTabBarOnBottom
           : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showAvatarsInNote: null == showAvatarsInNote
-          ? _value.showAvatarsInNote
-          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
               as bool,
       noteFooterScale: null == noteFooterScale
           ? _value.noteFooterScale
@@ -696,7 +709,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.collapseRenotes = true,
       this.sensitive = SensitiveMediaDisplay.respect,
       this.highlightSensitiveMedia = false,
-      this.animatedMfm = false,
+      this.animatedMfm = true,
       this.advancedMfm = true,
       this.showReactionsCount = false,
       this.loadRawImages = false,
@@ -716,14 +729,15 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showTranslateButtonInNoteFooter = false,
       this.fontSize = defaultFontSize,
       this.fontFamily,
-      this.showNoteFooter = true,
+      this.showAvatarsInNote = true,
+      this.showAvatarsInSubNote = true,
       this.showNoteReactionsViewer = true,
-      this.showSubNoteFooter = false,
+      this.showNoteFooter = true,
       this.showSubNoteReactionsViewer = false,
+      this.showSubNoteFooter = false,
       this.vibrateNote = false,
       this.vibrateNotification = false,
       this.showTimelineTabBarOnBottom = false,
-      this.showAvatarsInNote = true,
       this.noteFooterScale = 1.0,
       this.enableInfiniteScroll = true,
       this.keepScreenOn = false,
@@ -818,16 +832,22 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final String? fontFamily;
   @override
   @JsonKey()
-  final bool showNoteFooter;
+  final bool showAvatarsInNote;
+  @override
+  @JsonKey()
+  final bool showAvatarsInSubNote;
   @override
   @JsonKey()
   final bool showNoteReactionsViewer;
   @override
   @JsonKey()
-  final bool showSubNoteFooter;
+  final bool showNoteFooter;
   @override
   @JsonKey()
   final bool showSubNoteReactionsViewer;
+  @override
+  @JsonKey()
+  final bool showSubNoteFooter;
   @override
   @JsonKey()
   final bool vibrateNote;
@@ -837,9 +857,6 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final bool showTimelineTabBarOnBottom;
-  @override
-  @JsonKey()
-  final bool showAvatarsInNote;
   @override
   @JsonKey()
   final double noteFooterScale;
@@ -887,7 +904,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showNoteFooter: $showNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showAvatarsInNote: $showAvatarsInNote, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, showNoteReactionsViewer: $showNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -944,19 +961,20 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.fontSize == fontSize) &&
             (identical(other.fontFamily, fontFamily) ||
                 other.fontFamily == fontFamily) &&
-            (identical(other.showNoteFooter, showNoteFooter) ||
-                other.showNoteFooter == showNoteFooter) &&
+            (identical(other.showAvatarsInNote, showAvatarsInNote) ||
+                other.showAvatarsInNote == showAvatarsInNote) &&
+            (identical(other.showAvatarsInSubNote, showAvatarsInSubNote) ||
+                other.showAvatarsInSubNote == showAvatarsInSubNote) &&
             (identical(other.showNoteReactionsViewer, showNoteReactionsViewer) ||
                 other.showNoteReactionsViewer == showNoteReactionsViewer) &&
-            (identical(other.showSubNoteFooter, showSubNoteFooter) ||
-                other.showSubNoteFooter == showSubNoteFooter) &&
+            (identical(other.showNoteFooter, showNoteFooter) ||
+                other.showNoteFooter == showNoteFooter) &&
             (identical(other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) ||
-                other.showSubNoteReactionsViewer ==
-                    showSubNoteReactionsViewer) &&
+                other.showSubNoteReactionsViewer == showSubNoteReactionsViewer) &&
+            (identical(other.showSubNoteFooter, showSubNoteFooter) || other.showSubNoteFooter == showSubNoteFooter) &&
             (identical(other.vibrateNote, vibrateNote) || other.vibrateNote == vibrateNote) &&
             (identical(other.vibrateNotification, vibrateNotification) || other.vibrateNotification == vibrateNotification) &&
             (identical(other.showTimelineTabBarOnBottom, showTimelineTabBarOnBottom) || other.showTimelineTabBarOnBottom == showTimelineTabBarOnBottom) &&
-            (identical(other.showAvatarsInNote, showAvatarsInNote) || other.showAvatarsInNote == showAvatarsInNote) &&
             (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
             (identical(other.enableInfiniteScroll, enableInfiniteScroll) || other.enableInfiniteScroll == enableInfiniteScroll) &&
             (identical(other.keepScreenOn, keepScreenOn) || other.keepScreenOn == keepScreenOn) &&
@@ -1001,14 +1019,15 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showTranslateButtonInNoteFooter,
         fontSize,
         fontFamily,
-        showNoteFooter,
+        showAvatarsInNote,
+        showAvatarsInSubNote,
         showNoteReactionsViewer,
-        showSubNoteFooter,
+        showNoteFooter,
         showSubNoteReactionsViewer,
+        showSubNoteFooter,
         vibrateNote,
         vibrateNotification,
         showTimelineTabBarOnBottom,
-        showAvatarsInNote,
         noteFooterScale,
         enableInfiniteScroll,
         keepScreenOn,
@@ -1067,14 +1086,15 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showTranslateButtonInNoteFooter,
       final double fontSize,
       final String? fontFamily,
-      final bool showNoteFooter,
+      final bool showAvatarsInNote,
+      final bool showAvatarsInSubNote,
       final bool showNoteReactionsViewer,
-      final bool showSubNoteFooter,
+      final bool showNoteFooter,
       final bool showSubNoteReactionsViewer,
+      final bool showSubNoteFooter,
       final bool vibrateNote,
       final bool vibrateNotification,
       final bool showTimelineTabBarOnBottom,
-      final bool showAvatarsInNote,
       final double noteFooterScale,
       final bool enableInfiniteScroll,
       final bool keepScreenOn,
@@ -1144,21 +1164,23 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   String? get fontFamily;
   @override
-  bool get showNoteFooter;
+  bool get showAvatarsInNote;
+  @override
+  bool get showAvatarsInSubNote;
   @override
   bool get showNoteReactionsViewer;
   @override
-  bool get showSubNoteFooter;
+  bool get showNoteFooter;
   @override
   bool get showSubNoteReactionsViewer;
+  @override
+  bool get showSubNoteFooter;
   @override
   bool get vibrateNote;
   @override
   bool get vibrateNotification;
   @override
   bool get showTimelineTabBarOnBottom;
-  @override
-  bool get showAvatarsInNote;
   @override
   double get noteFooterScale;
   @override // Behavior

@@ -143,9 +143,6 @@ class Mfm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final emojiStyle = ref.watch(
-      generalSettingsNotifierProvider.select((settings) => settings.emojiStyle),
-    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final span = useMemoized(
@@ -165,7 +162,7 @@ class Mfm extends HookConsumerWidget {
           maxLines: maxLines,
         ),
       ),
-      [account, text, nodes, simple, style, author, colors, emojis, emojiStyle],
+      [account, text, nodes, simple, style, author, colors, emojis],
     );
 
     if (selectable) {

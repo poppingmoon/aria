@@ -108,6 +108,7 @@ class _StringsAriaEnUs {
 	String get noAccounts => 'No accounts';
 	String get noTabs => 'No tabs';
 	String get noteDoubleTapAction => 'Note double tap action';
+	String get noteFooterSize => 'Note action buttons size';
 	String get noteLongPressAction => 'Note long press action';
 	String get noteTapAction => 'Note tap action';
 	String get notesAfterRenotes => 'Notes after renotes';
@@ -150,8 +151,9 @@ class _StringsAriaEnUs {
 		user,
 	]);
 	String get showAvatarsInNote => 'Show avatars in notes';
+	String get showAvatarsInSubNote => 'Show avatars in sub notes';
 	String get showNoteFooter => 'Show action buttons in notes';
-	String get showNoteReactionsViewer => 'Show reactions viewer in notes';
+	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
 	String get showSelfRenotes => 'Show self-renotes';
 	String get showStackTrace => 'Show stack trace';
 	String get showSubNoteFooter => 'Show action buttons in subnotes';

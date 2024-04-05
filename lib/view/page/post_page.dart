@@ -17,7 +17,6 @@ import '../../extension/text_editing_controller_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../model/general_settings.dart';
 import '../../model/post_file.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/accounts_notifier_provider.dart';
@@ -905,9 +904,6 @@ class PostPage extends HookConsumerWidget {
                         noteId: '',
                         note: note,
                         showFooter: false,
-                        tapAction: NoteActionType.none,
-                        doubleTapAction: NoteActionType.none,
-                        longPressAction: NoteActionType.none,
                       ),
                   ],
                 ),
