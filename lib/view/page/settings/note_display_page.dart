@@ -201,6 +201,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                       .setShowAvatarDecorations(value),
                 ),
                 SwitchListTile(
+                  title: Text(t.aria.showLikeButtonInNoteFooter),
+                  value: settings.showLikeButtonInNoteFooter,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setShowLikeButtonInNoteFooter(value),
+                ),
+                SwitchListTile(
                   title: Text(t.misskey.showClipButtonInNoteFooter),
                   value: settings.showClipButtonInNoteFooter,
                   onChanged: (value) => ref
