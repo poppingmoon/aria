@@ -186,6 +186,14 @@ class MediaCard extends HookConsumerWidget {
           dataSaver ||
           (file.isSensitive && sensitive != SensitiveMediaDisplay.ignore),
     );
+    ref.listen(
+      generalSettingsNotifierProvider.select((settings) => settings.sensitive),
+      (_, sensitive) {
+        hide.value = sensitive == SensitiveMediaDisplay.force ||
+            dataSaver ||
+            (file.isSensitive && sensitive != SensitiveMediaDisplay.ignore);
+      },
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;

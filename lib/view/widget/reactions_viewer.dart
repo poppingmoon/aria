@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -15,15 +16,17 @@ class ReactionsViewer extends HookConsumerWidget {
     required this.account,
     required this.noteId,
     this.showAllReactions = false,
+    this.note,
   });
 
   final Account account;
   final String noteId;
   final bool showAllReactions;
+  final Note? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }

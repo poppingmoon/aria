@@ -97,6 +97,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get noAccounts => 'アカウントがありません';
 	@override String get noTabs => 'タブがありません';
 	@override String get noteDoubleTapAction => 'ノートをダブルタップしたときの動作';
+	@override String get noteFooterSize => 'アクションボタンのサイズ';
 	@override String get noteLongPressAction => 'ノートを長押ししたときの動作';
 	@override String get noteTapAction => 'ノートをタップしたときの動作';
 	@override String get notesAfterRenotes => 'リノート直後のノート';
@@ -139,6 +140,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 		const TextSpan(text: 'の設定'),
 	]);
 	@override String get showAvatarsInNote => 'ノートにユーザーのアイコンを表示する';
+	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示する';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示する';
 	@override String get showNoteReactionsViewer => 'ノートにリアクションを表示する';
 	@override String get showSelfRenotes => 'セルフリノートを表示する';

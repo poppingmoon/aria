@@ -26,16 +26,18 @@ class SubNoteContent extends HookConsumerWidget {
     required this.noteId,
     this.showFooter,
     this.postFormFocusNode,
+    this.note,
   });
 
   final Account account;
   final String noteId;
   final bool? showFooter;
   final FocusNode? postFormFocusNode;
+  final Note? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
@@ -172,12 +174,17 @@ class SubNoteContent extends HookConsumerWidget {
           ),
         if (showReactionsViewer &&
             note.reactionAcceptance != ReactionAcceptance.likeOnly)
-          ReactionsViewer(account: account, noteId: noteId),
+          ReactionsViewer(
+            account: account,
+            noteId: noteId,
+            note: this.note,
+          ),
         if (showFooter)
           NoteFooter(
             account: account,
             noteId: noteId,
             postFormFocusNode: postFormFocusNode,
+            note: this.note,
           ),
       ],
     );

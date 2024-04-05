@@ -54,7 +54,7 @@ class NoteSubWidget extends HookConsumerWidget {
     );
     final showAvatars = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarsInNote),
+          .select((settings) => settings.showAvatarsInSubNote),
     );
     final children = showReplies && depth < 5
         ? ref.watch(childrenNotesNotifierProvider(account, noteId))

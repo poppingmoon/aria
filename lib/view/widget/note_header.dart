@@ -39,7 +39,9 @@ class NoteHeader extends HookConsumerWidget {
           child: Align(
             alignment: Alignment.centerLeft,
             child: InkWell(
-              onTap: () => context.push('/$account/users/${note.userId}'),
+              onTap: note.userId.isNotEmpty
+                  ? () => context.push('/$account/users/${note.userId}')
+                  : null,
               child: Text.rich(
                 TextSpan(
                   children: [
@@ -107,7 +109,9 @@ class NoteHeader extends HookConsumerWidget {
             style: style.apply(fontSizeFactor: 0.9),
             child: TimeWidget(
               time: note.createdAt,
-              onTap: () => context.push('/$account/notes/${note.id}'),
+              onTap: note.id.isNotEmpty
+                  ? () => context.push('/$account/notes/${note.id}')
+                  : null,
             ),
           ),
         IconTheme.merge(

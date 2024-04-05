@@ -149,6 +149,11 @@ class NoteWidget extends HookConsumerWidget {
           generalSettingsNotifierProvider
               .select((settings) => settings.noteLongPressAction),
         );
+    final mfmSettings = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => (settings.advancedMfm, settings.animatedMfm),
+      ),
+    );
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final isRenote = note.isRenote;
     final isMyRenote = i != null && note.user.id == i.id;
@@ -239,8 +244,11 @@ class NoteWidget extends HookConsumerWidget {
                           child: UserAvatar(
                             user: appearNote.user,
                             size: style.lineHeight,
-                            onTap: () => context
-                                .push('/$account/users/${appearNote.userId}'),
+                            onTap: appearNote.userId.isNotEmpty
+                                ? () => context.push(
+                                      '/$account/users/${appearNote.userId}',
+                                    )
+                                : null,
                           ),
                         )
                       else
@@ -273,8 +281,11 @@ class NoteWidget extends HookConsumerWidget {
                           child: UserAvatar(
                             user: appearNote.user,
                             size: style.lineHeight * 2.5,
-                            onTap: () => context
-                                .push('/$account/users/${appearNote.userId}'),
+                            onTap: appearNote.userId.isNotEmpty
+                                ? () => context.push(
+                                      '/$account/users/${appearNote.userId}',
+                                    )
+                                : null,
                           ),
                         )
                       else
@@ -384,6 +395,7 @@ class NoteWidget extends HookConsumerWidget {
                                             appearNote.user,
                                             appearNote.emojis,
                                             isCollapsed.value,
+                                            mfmSettings,
                                           ],
                                         ),
                                     ],
@@ -427,6 +439,7 @@ class NoteWidget extends HookConsumerWidget {
                                               BorderRadius.circular(4.0),
                                           showFooter: this.showFooter,
                                           postFormFocusNode: postFormFocusNode,
+                                          note: this.note?.renote,
                                         ),
                                       ),
                                     ),
@@ -484,12 +497,14 @@ class NoteWidget extends HookConsumerWidget {
                               ReactionsViewer(
                                 account: account,
                                 noteId: appearNote.id,
+                                note: this.note,
                               ),
                             if (showFooter)
                               NoteFooter(
                                 account: account,
-                                noteId: noteId,
+                                noteId: appearNote.id,
                                 postFormFocusNode: postFormFocusNode,
+                                note: this.note,
                               ),
                           ],
                         ),

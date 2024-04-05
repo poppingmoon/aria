@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../model/account.dart';
@@ -22,6 +23,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
     this.borderRadius,
     this.showFooter,
     this.postFormFocusNode,
+    this.note,
   });
 
   final Account account;
@@ -29,10 +31,11 @@ class NoteSimpleWidget extends HookConsumerWidget {
   final BorderRadius? borderRadius;
   final bool? showFooter;
   final FocusNode? postFormFocusNode;
+  final Note? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = ref.watch(noteProvider(account, noteId));
+    final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
       return const SizedBox.shrink();
     }
@@ -50,7 +53,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
     );
     final showAvatars = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarsInNote),
+          .select((settings) => settings.showAvatarsInSubNote),
     );
     final showContent = useState(false);
 
@@ -122,6 +125,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
                       noteId: noteId,
                       showFooter: showFooter,
                       postFormFocusNode: postFormFocusNode,
+                      note: this.note,
                     ),
                 ],
               ),

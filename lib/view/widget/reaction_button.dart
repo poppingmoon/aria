@@ -22,14 +22,14 @@ class ReactionButton extends ConsumerWidget {
   const ReactionButton({
     super.key,
     required this.account,
-    this.note,
+    required this.note,
     required this.emoji,
     required this.count,
     this.scale,
   });
 
   final Account account;
-  final Note? note;
+  final Note note;
   final String emoji;
   final int count;
   final double? scale;
@@ -46,12 +46,11 @@ class ReactionButton extends ConsumerWidget {
           )
         : null;
     final canReact = !account.isGuest &&
-        note != null &&
         (!isCustomEmoji ||
-            data != null && checkReactionPermissions(i, note!, data));
-    final isMyReaction = emoji == note?.myReaction;
+            data != null && checkReactionPermissions(i, note, data));
+    final isMyReaction = emoji == note.myReaction;
     // In v12, `note.emojis` contains emoji urls for both text and reactions.
-    final emojis = {...?note?.emojis, ...?note?.reactionEmojis};
+    final emojis = {...note.emojis, ...note.reactionEmojis};
     final double scale = this.scale ??
         ref.watch(
           generalSettingsNotifierProvider
@@ -65,7 +64,8 @@ class ReactionButton extends ConsumerWidget {
     return ElevatedButton(
       onPressed: canReact
           ? () async {
-              if (note!.myReaction == null) {
+              if (note.id.isEmpty) return;
+              if (note.myReaction == null) {
                 if (ref
                         .read(generalSettingsNotifierProvider)
                         .confirmBeforeReact ||
@@ -74,7 +74,7 @@ class ReactionButton extends ConsumerWidget {
                     context,
                     account: account,
                     emoji: emoji,
-                    note: note!,
+                    note: note,
                   );
                   if (!confirmed) return;
                 }
@@ -83,7 +83,7 @@ class ReactionButton extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .react(note!.id, emoji),
+                      .react(note.id, emoji),
                 );
               } else if (isMyReaction) {
                 final confirmed = await confirm(
@@ -96,7 +96,7 @@ class ReactionButton extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .unreact(note!.id),
+                      .unreact(note.id),
                 );
               } else {
                 final confirmed = await confirm(
@@ -121,17 +121,17 @@ class ReactionButton extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .changeReaction(note!.id, emoji),
+                      .changeReaction(note.id, emoji),
                 );
               }
             }
           : null,
-      onLongPress: note != null
+      onLongPress: note.id.isNotEmpty
           ? () => showModalBottomSheet<void>(
                 context: context,
                 builder: (context) => ReactionUsersSheet(
                   account: account,
-                  noteId: note!.id,
+                  noteId: note.id,
                   reaction: emoji,
                 ),
                 isScrollControlled: true,
