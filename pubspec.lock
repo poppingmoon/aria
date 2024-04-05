@@ -213,10 +213,10 @@ packages:
     dependency: "direct main"
     description:
       name: chewie
-      sha256: "8bc4ac4cf3f316e50a25958c0f5eb9bb12cf7e8308bb1d74a43b230da2cfc144"
+      sha256: "1fc84d88d3b1dc26b1fe799500e2ebcc8916af30ce62595ad802cfd965b60bc3"
       url: "https://pub.dev"
     source: hosted
-    version: "1.7.5"
+    version: "1.8.0"
   ci:
     dependency: transitive
     description:
@@ -1443,10 +1443,10 @@ packages:
     dependency: "direct main"
     description:
       name: receive_sharing_intent
-      sha256: "8fdf5927934041264becf65199ef8057b8b176e879d95ffa0420cd2a6219c0fd"
+      sha256: fcf167ad5aed85937c42d985dc31c7e50dbb3cf97dc5063a2bcfd26147023b34
       url: "https://pub.dev"
     source: hosted
-    version: "1.6.7"
+    version: "1.6.8"
   reorderable_grid:
     dependency: "direct main"
     description:
@@ -1608,9 +1608,9 @@ packages:
     dependency: "direct main"
     description:
       path: slang
-      ref: "0a7d041dab66e22b7349ef4a89e3156cbf203910"
-      resolved-ref: "0a7d041dab66e22b7349ef4a89e3156cbf203910"
-      url: "https://github.com/poppingmoon/slang"
+      ref: b2a4e17d8c8f15c8e4c33e92d79cdb5a4228a93d
+      resolved-ref: b2a4e17d8c8f15c8e4c33e92d79cdb5a4228a93d
+      url: "https://github.com/slang-i18n/slang"
     source: git
     version: "3.30.2"
   slang_build_runner:
@@ -1906,10 +1906,10 @@ packages:
     dependency: "direct main"
     description:
       name: video_player
-      sha256: afc65f4b8bcb2c188f64a591f84fb471f4f2e19fc607c65fd8d2f8fedb3dec23
+      sha256: efa2e24042166906ddf836dd131258d0371d0009cdf0476f6a83fd992a17f5d0
       url: "https://pub.dev"
     source: hosted
-    version: "2.8.3"
+    version: "2.8.5"
   video_player_android:
     dependency: transitive
     description:
@@ -1954,18 +1954,18 @@ packages:
     dependency: "direct main"
     description:
       name: wakelock_plus
-      sha256: f268ca2116db22e57577fb99d52515a24bdc1d570f12ac18bb762361d43b043d
+      sha256: "104d94837bb28c735894dcd592877e990149c380e6358b00c04398ca1426eed4"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.4"
+    version: "1.2.1"
   wakelock_plus_platform_interface:
     dependency: transitive
     description:
       name: wakelock_plus_platform_interface
-      sha256: "40fabed5da06caff0796dc638e1f07ee395fb18801fbff3255a2372db2d80385"
+      sha256: "422d1cdbb448079a8a62a5a770b69baa489f8f7ca21aef47800c726d404f9d16"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.0"
+    version: "1.2.1"
   watcher:
     dependency: transitive
     description:
