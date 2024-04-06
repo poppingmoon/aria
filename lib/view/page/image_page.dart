@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:file_picker/file_picker.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart' hide Image;
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -409,7 +410,10 @@ class ImagePage extends HookConsumerWidget {
               case _Modes.image:
                 final file = await showModalBottomSheet<PostFile>(
                   context: context,
-                  builder: (context) => FilePickerSheet(account: account),
+                  builder: (context) => FilePickerSheet(
+                    account: account,
+                    type: FileType.image,
+                  ),
                   clipBehavior: Clip.hardEdge,
                 );
                 if (file == null) return;

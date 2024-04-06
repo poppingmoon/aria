@@ -1,3 +1,4 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -45,7 +46,10 @@ class ProfilePage extends HookConsumerWidget {
   }) async {
     final result = await showModalBottomSheet<PostFile>(
       context: ref.context,
-      builder: (context) => FilePickerSheet(account: account),
+      builder: (context) => FilePickerSheet(
+        account: account,
+        type: FileType.image,
+      ),
       clipBehavior: Clip.hardEdge,
     );
     if (result == null) return null;

@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -27,12 +28,14 @@ class DrivePage extends HookConsumerWidget {
     this.selectFile = false,
     this.selectFiles = false,
     this.selectFolder = false,
+    this.type = FileType.any,
   });
 
   final Account account;
   final bool selectFile;
   final bool selectFiles;
   final bool selectFolder;
+  final FileType type;
 
   static const itemMaxCrossAxisExtent = 400.0;
 
@@ -301,45 +304,62 @@ class DrivePage extends HookConsumerWidget {
                   case AsyncValue(
                     valueOrNull: PaginationState(items: final files)
                   ))
-                SliverGrid.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: itemMaxCrossAxisExtent,
-                  ),
-                  itemCount: files.length,
-                  itemBuilder: (context, index) {
-                    final file = files[index];
-                    final isSelected =
-                        selectedFiles.any((e) => e.id == file.id);
-                    return DriveFileWidget(
-                      account: account,
-                      file: file,
-                      isSelected: isSelected,
-                      onTap: () {
-                        if (selectFile) {
-                          context.pop(file);
-                        } else if (isSelecting) {
-                          if (isSelected) {
-                            ref
-                                .read(
-                                  selectedDriveFilesNotifierProvider.notifier,
-                                )
-                                .remove(file.id);
-                          } else {
-                            ref
-                                .read(
-                                  selectedDriveFilesNotifierProvider.notifier,
-                                )
-                                .add(file);
-                          }
-                        } else {
-                          context.push(
-                            '/$account/drive/file/${folderId != null ? '$folderId/' : ''}${file.id}',
-                          );
-                        }
+                Builder(
+                  builder: (context) {
+                    final filtered = files.where(
+                      (file) => switch (type) {
+                        FileType.media =>
+                          file.type.startsWith(RegExp('image|video')),
+                        FileType.image => file.type.startsWith('image'),
+                        FileType.video => file.type.startsWith('video'),
+                        FileType.audio => file.type.startsWith('audio'),
+                        FileType.any || FileType.custom => true,
                       },
-                      onLongPress: () => ref
-                          .read(selectedDriveFilesNotifierProvider.notifier)
-                          .add(file),
+                    );
+                    return SliverGrid.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: itemMaxCrossAxisExtent,
+                      ),
+                      itemCount: filtered.length,
+                      itemBuilder: (context, index) {
+                        final file = filtered.elementAt(index);
+                        final isSelected =
+                            selectedFiles.any((e) => e.id == file.id);
+                        return DriveFileWidget(
+                          account: account,
+                          file: file,
+                          isSelected: isSelected,
+                          onTap: () {
+                            if (selectFile) {
+                              context.pop(file);
+                            } else if (isSelecting) {
+                              if (isSelected) {
+                                ref
+                                    .read(
+                                      selectedDriveFilesNotifierProvider
+                                          .notifier,
+                                    )
+                                    .remove(file.id);
+                              } else {
+                                ref
+                                    .read(
+                                      selectedDriveFilesNotifierProvider
+                                          .notifier,
+                                    )
+                                    .add(file);
+                              }
+                            } else {
+                              context.push(
+                                '/$account/drive/file/${folderId != null ? '$folderId/' : ''}${file.id}',
+                              );
+                            }
+                          },
+                          onLongPress: () => ref
+                              .read(selectedDriveFilesNotifierProvider.notifier)
+                              .add(file),
+                        );
+                      },
                     );
                   },
                 ),

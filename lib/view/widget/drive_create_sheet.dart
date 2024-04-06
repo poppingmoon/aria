@@ -1,4 +1,5 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -28,6 +29,9 @@ class DriveCreateSheet extends HookConsumerWidget {
 
   Future<void> _upload(WidgetRef ref, bool keepOriginal) async {
     final result = await FilePicker.platform.pickFiles(
+      type: defaultTargetPlatform == TargetPlatform.iOS
+          ? FileType.media
+          : FileType.any,
       allowMultiple: true,
     );
     if (result == null || result.files.isEmpty) return;
