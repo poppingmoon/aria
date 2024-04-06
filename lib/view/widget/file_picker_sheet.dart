@@ -1,4 +1,5 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -14,10 +15,12 @@ class FilePickerSheet extends ConsumerWidget {
   const FilePickerSheet({
     super.key,
     required this.account,
+    this.type,
     this.allowMultiple = false,
   });
 
   final Account account;
+  final FileType? type;
   final bool allowMultiple;
 
   @override
@@ -29,8 +32,12 @@ class FilePickerSheet extends ConsumerWidget {
           leading: const Icon(Icons.upload),
           title: Text(t.aria.fromDevice),
           onTap: () async {
-            final result = await FilePicker.platform
-                .pickFiles(allowMultiple: allowMultiple);
+            final result = await FilePicker.platform.pickFiles(
+              type: defaultTargetPlatform == TargetPlatform.iOS && type == null
+                  ? FileType.media
+                  : type ?? FileType.any,
+              allowMultiple: allowMultiple,
+            );
             if (!context.mounted) return;
             if (result case FilePickerResult(:final files)) {
               if (allowMultiple) {
@@ -63,6 +70,7 @@ class FilePickerSheet extends ConsumerWidget {
                 builder: (context) => DrivePage(
                   account: account,
                   selectFiles: true,
+                  type: type ?? FileType.any,
                 ),
               );
               if (!context.mounted) return;
@@ -79,6 +87,7 @@ class FilePickerSheet extends ConsumerWidget {
                 builder: (context) => DrivePage(
                   account: account,
                   selectFile: true,
+                  type: type ?? FileType.any,
                 ),
               );
               if (!context.mounted) return;
