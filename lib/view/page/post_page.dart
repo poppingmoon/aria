@@ -463,7 +463,8 @@ class PostPage extends HookConsumerWidget {
                     ),
                     if (request case NotesCreateRequest(:final replyId?))
                       InkWell(
-                        onTap: () => context.push('/$account/notes/$replyId'),
+                        onTap: () =>
+                            context.push('/${account.value}/notes/$replyId'),
                         child: Row(
                           children: [
                             IconButton(
@@ -501,7 +502,8 @@ class PostPage extends HookConsumerWidget {
                       ),
                     if (request case NotesCreateRequest(:final renoteId?))
                       InkWell(
-                        onTap: () => context.push('/$account/notes/$renoteId'),
+                        onTap: () =>
+                            context.push('/${account.value}/notes/$renoteId'),
                         child: Row(
                           children: [
                             IconButton(
@@ -539,8 +541,8 @@ class PostPage extends HookConsumerWidget {
                       ),
                     if (request case NotesCreateRequest(:final channelId?))
                       InkWell(
-                        onTap: () =>
-                            context.push('/$account/channels/$channelId'),
+                        onTap: () => context
+                            .push('/${account.value}/channels/$channelId'),
                         child: DecoratedBox(
                           decoration: BoxDecoration(
                             border: Border(
