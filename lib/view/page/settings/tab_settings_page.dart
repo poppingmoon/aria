@@ -361,7 +361,11 @@ class TabSettingsPage extends HookConsumerWidget {
                           );
                         }
                       case TabType.user:
-                        final result = await selectUser(context, account);
+                        final result = await selectUser(
+                          context,
+                          account,
+                          includeSelf: true,
+                        );
                         if (result != null) {
                           tabSettings.value = tabSettings.value.copyWith(
                             userId: result.id,
