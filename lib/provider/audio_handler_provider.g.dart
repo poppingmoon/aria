@@ -6,11 +6,11 @@ part of 'audio_handler_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$audioHandlerHash() => r'5328f87d476b522218a646bb16a298358278c695';
+String _$audioHandlerHash() => r'094da1b238c0ae0b0342e3c0454e165ed1fdec73';
 
 /// See also [audioHandler].
 @ProviderFor(audioHandler)
-final audioHandlerProvider = Provider<AudioHandler>.internal(
+final audioHandlerProvider = FutureProvider<AudioHandler>.internal(
   audioHandler,
   name: r'audioHandlerProvider',
   debugGetCreateSourceHash:
@@ -19,8 +19,8 @@ final audioHandlerProvider = Provider<AudioHandler>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef AudioHandlerRef = ProviderRef<AudioHandler>;
-String _$mediaItemHash() => r'0088fc81e2aed5bbac8caa728a852cf8b45c0c13';
+typedef AudioHandlerRef = FutureProviderRef<AudioHandler>;
+String _$mediaItemHash() => r'1c17a5fbde67766fb9727bf628c013b1caf189a4';
 
 /// See also [mediaItem].
 @ProviderFor(mediaItem)
@@ -34,7 +34,7 @@ final mediaItemProvider = AutoDisposeStreamProvider<MediaItem?>.internal(
 );
 
 typedef MediaItemRef = AutoDisposeStreamProviderRef<MediaItem?>;
-String _$playbackStateHash() => r'ad9879cad39de56a754ed692e090ed1d29edcc1f';
+String _$playbackStateHash() => r'd5f6138c11c77919fb8a44d6d1e9d9825c4ccf43';
 
 /// See also [playbackState].
 @ProviderFor(playbackState)
@@ -49,7 +49,7 @@ final playbackStateProvider = AutoDisposeStreamProvider<PlaybackState>.internal(
 );
 
 typedef PlaybackStateRef = AutoDisposeStreamProviderRef<PlaybackState>;
-String _$positionHash() => r'f4e864f2fafa455ca0c7c67c45360189af139902';
+String _$positionHash() => r'0825ac909ee5c910d2dc9784b640b3fd67e56ec3';
 
 /// See also [position].
 @ProviderFor(position)

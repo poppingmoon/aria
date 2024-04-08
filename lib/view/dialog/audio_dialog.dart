@@ -32,6 +32,7 @@ class AudioDialog extends HookConsumerWidget {
     useEffect(
       () {
         Future(() async {
+          final audioHandler = await ref.read(audioHandlerProvider.future);
           await audioHandler.updateMediaItem(
             MediaItem(
               id: file.url,
@@ -42,7 +43,7 @@ class AudioDialog extends HookConsumerWidget {
           );
           await audioHandler.play();
         });
-        return audioHandler.stop;
+        return audioHandler.valueOrNull?.stop;
       },
       [],
     );
@@ -73,21 +74,21 @@ class AudioDialog extends HookConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: audioHandler.rewind,
+                  onPressed: audioHandler.valueOrNull?.rewind,
                   icon: const Icon(Icons.fast_rewind),
                 ),
                 if (playbackState.valueOrNull?.playing ?? false)
                   IconButton(
-                    onPressed: audioHandler.pause,
+                    onPressed: audioHandler.valueOrNull?.pause,
                     icon: const Icon(Icons.pause),
                   )
                 else
                   IconButton(
-                    onPressed: audioHandler.play,
+                    onPressed: audioHandler.valueOrNull?.play,
                     icon: const Icon(Icons.play_arrow),
                   ),
                 IconButton(
-                  onPressed: audioHandler.fastForward,
+                  onPressed: audioHandler.valueOrNull?.fastForward,
                   icon: const Icon(Icons.fast_forward),
                 ),
               ],
@@ -95,7 +96,7 @@ class AudioDialog extends HookConsumerWidget {
             ProgressBar(
               progress: position.valueOrNull ?? Duration.zero,
               total: mediaItem.valueOrNull?.duration ?? Duration.zero,
-              onSeek: audioHandler.seek,
+              onSeek: audioHandler.valueOrNull?.seek,
             ),
           ],
         ),

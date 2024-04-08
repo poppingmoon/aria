@@ -1,29 +1,44 @@
 import 'package:audio_service/audio_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'audio_handler_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-AudioHandler audioHandler(AudioHandlerRef ref) {
-  throw UnsupportedError('not overrided');
+FutureOr<AudioHandler> audioHandler(AudioHandlerRef ref) {
+  return switch (defaultTargetPlatform) {
+    TargetPlatform.android ||
+    TargetPlatform.iOS ||
+    TargetPlatform.macOS =>
+      AudioService.init(
+        builder: () => AudioPlayerHandler(),
+        config: const AudioServiceConfig(
+          androidNotificationChannelId: 'com.poppingmoon.aria.channel.audio',
+          androidNotificationChannelName: 'Audio playback',
+          androidNotificationOngoing: true,
+        ),
+      ),
+    final platform => throw UnsupportedError('unsupported platform: $platform'),
+  };
 }
 
 @riverpod
 Stream<MediaItem?> mediaItem(MediaItemRef ref) {
-  return ref.watch(audioHandlerProvider).mediaItem.distinct();
+  return ref.watch(audioHandlerProvider).valueOrNull?.mediaItem ??
+      const Stream.empty();
 }
 
 @riverpod
 Stream<PlaybackState> playbackState(PlaybackStateRef ref) {
-  return ref.watch(audioHandlerProvider).playbackState.distinct();
+  return ref.watch(audioHandlerProvider).valueOrNull?.playbackState ??
+      const Stream.empty();
 }
 
 @riverpod
 Stream<Duration> position(PositionRef ref) {
-  return AudioService.position.distinct().map((event) {
-    return event;
-  });
+  ref.listen(audioHandlerProvider, (_, __) => ref.invalidateSelf());
+  return AudioService.position;
 }
 
 class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
