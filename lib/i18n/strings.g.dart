@@ -45,7 +45,6 @@ part 'strings_uz_UZ.g.dart';
 part 'strings_vi_VN.g.dart';
 part 'strings_zh_CN.g.dart';
 part 'strings_zh_TW.g.dart';
-part 'strings_map.g.dart';
 
 const AppLocale _baseLocale = AppLocale.enUs;
 
@@ -107,7 +106,6 @@ enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 ///
 /// Usage:
 /// String a = t.someKey.anotherKey;
-/// String b = t['someKey.anotherKey']; // Only for edge cases!
 Translations get t => LocaleSettings.instance.currentTranslations;
 
 /// Method B: Advanced
@@ -124,7 +122,6 @@ Translations get t => LocaleSettings.instance.currentTranslations;
 /// Step 2:
 /// final t = Translations.of(context); // Get t variable.
 /// String a = t.someKey.anotherKey; // Use t variable.
-/// String b = t['someKey.anotherKey']; // Only for edge cases!
 class TranslationProvider extends BaseTranslationProvider<AppLocale, Translations> {
 	TranslationProvider({required super.child}) : super(settings: LocaleSettings.instance);
 
