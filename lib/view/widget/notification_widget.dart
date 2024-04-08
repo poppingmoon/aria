@@ -65,7 +65,7 @@ class NotificationWidget extends ConsumerWidget {
           );
         }
       case NotificationType.renote:
-        if (notification.note case Note(:final renoteId?)) {
+        if (notification.note case Note(:final id, :final renoteId?)) {
           return _NotificationTile(
             account: account,
             user: notification.user,
@@ -73,7 +73,7 @@ class NotificationWidget extends ConsumerWidget {
             iconBackgroundColor: eventRenote,
             subtitle: NoteSummary(account: account, noteId: renoteId),
             createdAt: notification.createdAt,
-            onTap: () => context.push('/$account/notes/$renoteId'),
+            onTap: () => context.push('/$account/notes/$id'),
           );
         }
       case NotificationType.reaction:
@@ -331,7 +331,7 @@ class NotificationWidget extends ConsumerWidget {
           );
         }
       case NotificationType.renoteGrouped:
-        if (notification.note case Note(:final renoteId?)) {
+        if (notification.note case Note(:final id, :final renoteId?)) {
           return _NotificationTile(
             account: account,
             leading: const Padding(
@@ -392,7 +392,7 @@ class NotificationWidget extends ConsumerWidget {
                 )
                 .toList(),
             createdAt: notification.createdAt,
-            onTap: () => context.push('/$account/notes/$renoteId'),
+            onTap: () => context.push('/$account/notes/$id'),
           );
         }
       // obsolete
@@ -403,6 +403,13 @@ class NotificationWidget extends ConsumerWidget {
       user: notification.user,
       subtitle: Text(notification.type.toString()),
       createdAt: notification.createdAt,
+      onTap: switch (notification) {
+        INotificationsResponse(:final noteId?) => () =>
+            context.push('/$account/notes/$noteId'),
+        INotificationsResponse(:final userId?) => () =>
+            context.push('/$account/users/$userId'),
+        _ => null,
+      },
     );
   }
 }
