@@ -11,6 +11,7 @@ targets:
           output_format: multiple_files
           namespaces: true
           string_interpolation: braces
+          flat_map: false
           timestamp: false
       json_serializable:
         generate_for:
