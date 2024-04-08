@@ -1,6 +1,5 @@
 import 'dart:ui';
 
-import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'constant/shortcuts.dart';
 import 'gen/assets.gen.dart';
 import 'i18n/strings.g.dart';
-import 'provider/audio_handler_provider.dart';
 import 'provider/general_settings_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
@@ -70,27 +68,9 @@ void main() async {
     );
   });
   final prefs = await SharedPreferences.getInstance();
-  final audioHandler = switch (defaultTargetPlatform) {
-    TargetPlatform.android ||
-    TargetPlatform.iOS ||
-    TargetPlatform.macOS =>
-      await AudioService.init(
-        builder: () => AudioPlayerHandler(),
-        config: const AudioServiceConfig(
-          androidNotificationChannelId: 'com.poppingmoon.aria.channel.audio',
-          androidNotificationChannelName: 'Audio playback',
-          androidNotificationOngoing: true,
-        ),
-      ),
-    _ => null,
-  };
   runApp(
     ProviderScope(
-      overrides: [
-        sharedPreferencesProvider.overrideWithValue(prefs),
-        if (audioHandler != null)
-          audioHandlerProvider.overrideWithValue(audioHandler),
-      ],
+      overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
       child: TranslationProvider(child: const Aria()),
     ),
   );
