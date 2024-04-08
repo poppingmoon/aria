@@ -133,6 +133,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                       final result = await selectUser(
                         context,
                         account,
+                        includeSelf: true,
                         localOnly: settings.value.localOnly ?? false,
                       );
                       if (result != null) {
