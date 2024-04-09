@@ -9,7 +9,13 @@ Future<void> navigate(WidgetRef ref, Account account, String link) async {
   final url = Uri.tryParse(link);
   if (url == null) return;
   if (url.pathSegments.firstOrNull
-      case 'channels' || 'clips' || 'notes' || 'pages' || 'tags' || 'users') {
+      case 'channels' ||
+          'clips' ||
+          'gallery' ||
+          'notes' ||
+          'pages' ||
+          'tags' ||
+          'users') {
     if (url.host != account.host) {
       try {
         await ref

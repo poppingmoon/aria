@@ -92,6 +92,11 @@ class ServerPage extends HookConsumerWidget {
                   onTap: () => context.push('/$host/play'),
                 ),
                 ListTile(
+                  leading: const Icon(Icons.collections),
+                  title: Text(t.misskey.gallery),
+                  onTap: () => context.push('/$host/gallery'),
+                ),
+                ListTile(
                   leading: const Icon(Icons.tv),
                   title: Text(t.misskey.channel),
                   onTap: () => context.push('/$host/channels'),
