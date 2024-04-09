@@ -22,6 +22,7 @@ import '../../../provider/file_system_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/timeline_tabs_notifier_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/format_datetime.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/message_dialog.dart';
@@ -206,12 +207,16 @@ class ImportExportPage extends ConsumerWidget {
                         ),
                       );
                       if (files == null) return;
-                      if (files.flattened.firstOrNull
-                          case DriveFile(:final url)) {
+                      final latest = files.flattened
+                          .sortedBy((file) => file.createdAt)
+                          .lastOrNull;
+                      if (latest != null) {
                         if (!context.mounted) return;
                         final file = await futureWithDialog(
                           context,
-                          ref.read(cacheManagerProvider).getSingleFile(url),
+                          ref
+                              .read(cacheManagerProvider)
+                              .getSingleFile(latest.url),
                         );
                         try {
                           final json = json5Decode(await file!.readAsString())
@@ -219,7 +224,15 @@ class ImportExportPage extends ConsumerWidget {
                           if (!context.mounted) return;
                           final confirmed = await confirm(
                             context,
-                            message: t.aria.importConfirm,
+                            content: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(t.aria.importConfirm),
+                                Text(
+                                  '${t.misskey.createdAt}: ${absoluteTime(latest.createdAt)}',
+                                ),
+                              ],
+                            ),
                           );
                           if (!context.mounted) return;
                           if (confirmed) {
