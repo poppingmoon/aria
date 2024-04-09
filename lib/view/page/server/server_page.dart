@@ -7,6 +7,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/federation_instance_provider.dart';
 import '../../../provider/api/meta_provider.dart';
+import '../../../util/copy_text.dart';
 import 'server_ads.dart';
 import 'server_emojis.dart';
 import 'server_overview.dart';
@@ -108,6 +109,11 @@ class ServerPage extends HookConsumerWidget {
                   onTap: () =>
                       context.push('/$account/explore/users?host=$host'),
                 ),
+              ListTile(
+                leading: const Icon(Icons.copy),
+                title: Text(t.misskey.copyLink),
+                onTap: () => copyToClipboard(context, host),
+              ),
               ListTile(
                 leading: const Icon(Icons.open_in_browser),
                 title: Text(t.aria.openInBrowser),
