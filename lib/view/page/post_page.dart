@@ -57,7 +57,11 @@ class PostPage extends HookConsumerWidget {
 
   final Account initialAccount;
 
-  Future<void> _post(WidgetRef ref, Account account) async {
+  Future<void> _post(
+    WidgetRef ref,
+    Account account, {
+    bool? confirmBeforePost,
+  }) async {
     final text = ref.read(postNotifierProvider(account)).text;
     final hasFiles = ref.read(attachesNotifierProvider(account)).isNotEmpty;
     final files = hasFiles
@@ -68,7 +72,8 @@ class PostPage extends HookConsumerWidget {
         : null;
     if (hasFiles && files == null) return;
     if (!ref.context.mounted) return;
-    if (ref.read(generalSettingsNotifierProvider).confirmBeforePost) {
+    if (confirmBeforePost ??
+        ref.read(generalSettingsNotifierProvider).confirmBeforePost) {
       final confirmed = await confirmPost(ref.context, account);
       if (!confirmed) return;
       if (!ref.context.mounted) return;
@@ -938,7 +943,8 @@ class PostPage extends HookConsumerWidget {
         floatingActionButton: !isCwFocused.value && !isFocused.value
             ? FloatingActionButton.extended(
                 onPressed: needsUpload
-                    ? () => futureWithDialog(
+                    ? () async {
+                        final result = await futureWithDialog(
                           context,
                           ref
                               .read(
@@ -946,7 +952,15 @@ class PostPage extends HookConsumerWidget {
                                     .notifier,
                               )
                               .uploadAll(),
-                        )
+                        );
+                        if (result != null) {
+                          await _post(
+                            ref,
+                            account.value,
+                            confirmBeforePost: true,
+                          );
+                        }
+                      }
                     : canPost
                         ? () => _post(ref, account.value)
                         : null,
