@@ -7,6 +7,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
+import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../widget/note_widget.dart';
@@ -33,7 +34,12 @@ class PostConfirmationDialog extends ConsumerWidget {
         .nonNulls
         .toList();
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final note = request.toNote(i: i);
+    final channel = request.channelId != null
+        ? ref
+            .watch(channelNotifierProvider(account, request.channelId!))
+            .valueOrNull
+        : null;
+    final note = request.toNote(i: i, channel: channel);
 
     return Dialog(
       child: Padding(
