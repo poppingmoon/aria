@@ -4,8 +4,8 @@ import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
+import 'package:pretty_bytes/pretty_bytes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../extension/text_style_extension.dart';
@@ -283,8 +283,12 @@ class MediaCard extends HookConsumerWidget {
                                     ),
                                   if (file.size > 0)
                                     TextSpan(
-                                      text:
-                                          '${NumberFormat.compact().format(file.size)}B',
+                                      text: prettyBytes(
+                                        file.size.toDouble(),
+                                        locale: Localizations.localeOf(context)
+                                            .toLanguageTag(),
+                                        binary: true,
+                                      ),
                                     ),
                                   const TextSpan(text: ')'),
                                 ],
@@ -304,8 +308,12 @@ class MediaCard extends HookConsumerWidget {
                               children: [
                                 if (dataSaver && file.size > 0)
                                   TextSpan(
-                                    text:
-                                        ' ${NumberFormat.compact().format(file.size)}B',
+                                    text: prettyBytes(
+                                      file.size.toDouble(),
+                                      locale: Localizations.localeOf(context)
+                                          .toLanguageTag(),
+                                      binary: true,
+                                    ),
                                   ),
                               ],
                             ),

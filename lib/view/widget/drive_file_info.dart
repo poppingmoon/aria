@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+import 'package:pretty_bytes/pretty_bytes.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -220,12 +220,22 @@ class DriveFileInfo extends ConsumerWidget {
                     InkWell(
                       onLongPress: () => copyToClipboard(
                         context,
-                        '${NumberFormat.compact().format(file.size)}B',
+                        prettyBytes(
+                          file.size.toDouble(),
+                          locale:
+                              Localizations.localeOf(context).toLanguageTag(),
+                          binary: true,
+                        ),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                          '${NumberFormat.compact().format(file.size)}B',
+                          prettyBytes(
+                            file.size.toDouble(),
+                            locale:
+                                Localizations.localeOf(context).toLanguageTag(),
+                            binary: true,
+                          ),
                         ),
                       ),
                     ),

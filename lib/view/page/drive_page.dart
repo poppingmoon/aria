@@ -5,12 +5,14 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
+import 'package:pretty_bytes/pretty_bytes.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/pagination_state.dart';
 import '../../provider/api/drive_files_notifier_provider.dart';
 import '../../provider/api/drive_folders_notifier_provider.dart';
+import '../../provider/api/drive_stats_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/selected_drive_files_notifier_provider.dart';
@@ -54,6 +56,9 @@ class DrivePage extends HookConsumerWidget {
     final folders = ref.watch(driveFoldersNotifierProvider(account, folderId));
     final files = ref.watch(driveFilesNotifierProvider(account, folderId));
     final selectedFiles = ref.watch(selectedDriveFilesNotifierProvider);
+    final stats = !selectFiles && !selectFolder
+        ? ref.watch(driveStatsProvider(account)).valueOrNull
+        : null;
     final isSelecting = selectFiles || selectedFiles.isNotEmpty;
     final controller = useScrollController();
     final isAtBottom = useState(false);
@@ -118,6 +123,23 @@ class DrivePage extends HookConsumerWidget {
                   ? Text(t.misskey.selectFolder)
                   : Text(t.misskey.drive),
           actions: [
+            if (selectedFiles.isEmpty && folderId == null && stats != null)
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.onSurface,
+                ),
+                onPressed: () =>
+                    context.push('/settings/accounts/$account/drive'),
+                child: Text('${t.misskey.inUse}: ${prettyBytes(
+                  stats.usage.toDouble(),
+                  locale: Localizations.localeOf(context).toLanguageTag(),
+                  binary: true,
+                )} / ${prettyBytes(
+                  stats.capacity.toDouble(),
+                  locale: Localizations.localeOf(context).toLanguageTag(),
+                  binary: true,
+                )}'),
+              ),
             if (!selectFiles && !selectFolder)
               IconButton(
                 onPressed: () => showModalBottomSheet<void>(
