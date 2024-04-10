@@ -9,12 +9,12 @@ part 'receive_sharing_intent_provider.g.dart';
 Stream<List<SharedMediaFile>> receiveSharingIntent(
   ReceiveSharingIntentRef ref,
 ) async* {
-  final files = await ReceiveSharingIntent.getInitialMedia();
+  final files = await ReceiveSharingIntent.instance.getInitialMedia();
   if (files.isNotEmpty) {
     ref.read(shareNotifierProvider.notifier).markNeedRedirect();
     yield files;
   }
-  await for (final files in ReceiveSharingIntent.getMediaStream()) {
+  await for (final files in ReceiveSharingIntent.instance.getMediaStream()) {
     if (files.isNotEmpty) {
       ref.read(shareNotifierProvider.notifier).markNeedRedirect();
       yield files;
