@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../constant/default_misskey_colors.g.dart';
+import '../../../constant/builtin_misskey_colors.g.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../provider/installed_misskey_colors_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/theme_mode_widget.dart';
@@ -16,6 +18,7 @@ class ThemePage extends ConsumerWidget {
     final generalSettings = ref.watch(generalSettingsNotifierProvider);
     final lightColors = ref.watch(misskeyColorsProvider(Brightness.light));
     final darkColors = ref.watch(misskeyColorsProvider(Brightness.dark));
+    final installedColors = ref.watch(installedMisskeyColorsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -57,7 +60,7 @@ class ThemePage extends ConsumerWidget {
               final result = await showRadioDialog(
                 context,
                 title: Text(t.misskey.themeForLightMode),
-                values: defaultMisskeyColors
+                values: [...builtinMisskeyColors, ...installedColors]
                     .where((colors) => !colors.isDark)
                     .toList(),
                 initialValue: lightColors,
@@ -78,7 +81,7 @@ class ThemePage extends ConsumerWidget {
               final result = await showRadioDialog(
                 context,
                 title: Text(t.misskey.themeForDarkMode),
-                values: defaultMisskeyColors
+                values: [...builtinMisskeyColors, ...installedColors]
                     .where((colors) => colors.isDark)
                     .toList(),
                 initialValue: darkColors,
@@ -90,6 +93,14 @@ class ThemePage extends ConsumerWidget {
                     .setDarkThemeId(result.id);
               }
             },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: Text(t.misskey.theme_.manage),
+            subtitle: Text(
+              '${t.misskey.theme_.installedThemes}: ${installedColors.length}',
+            ),
+            onTap: () => context.push('/settings/theme/manage'),
           ),
         ],
       ),

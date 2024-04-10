@@ -6,7 +6,7 @@ part of 'misskey_colors_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyColorsHash() => r'a78b3d8c7e3723e762fb12fb1714b3a1325828ae';
+String _$misskeyColorsHash() => r'98bde57c26c24ee191aa8cbad050e5036fb629b3';
 
 /// Copied from Dart SDK
 class _SystemHash {

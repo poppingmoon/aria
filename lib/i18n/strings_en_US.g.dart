@@ -103,6 +103,7 @@ class _StringsAriaEnUs {
 	String get newNotificationReceived => 'There are new notifications';
 	String get noAccounts => 'No accounts';
 	String get noTabs => 'No tabs';
+	String get noThemes => 'No themes';
 	String get noteDoubleTapAction => 'Note double tap action';
 	String get noteFooterSize => 'Note action buttons size';
 	String get noteLongPressAction => 'Note long press action';
