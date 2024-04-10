@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../model/misskey_colors.dart';
 
-const defaultMisskeyColors = [
+const builtinMisskeyColors = [
   MisskeyColors(
     id: '4eea646f-7afa-4645-83e9-83af0333cd37',
     name: 'Mi Light',

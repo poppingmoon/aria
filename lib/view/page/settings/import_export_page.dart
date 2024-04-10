@@ -10,9 +10,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
-import '../../../model/account_settings.dart';
-import '../../../model/general_settings.dart';
-import '../../../model/tab_settings.dart';
+import '../../../model/aria_backup.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/drive_files_notifier_provider.dart';
@@ -20,6 +18,7 @@ import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/file_system_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../provider/misskey_theme_codes_notifier_provider.dart';
 import '../../../provider/timeline_tabs_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/format_datetime.dart';
@@ -33,57 +32,46 @@ import '../drive_page.dart';
 class ImportExportPage extends ConsumerWidget {
   const ImportExportPage({super.key});
 
-  Future<Map<String, dynamic>> _export(WidgetRef ref) async {
+  Future<AriaBackup> _export(WidgetRef ref) async {
     final accounts = ref.read(accountsNotifierProvider);
     final packageInfo = await PackageInfo.fromPlatform();
-    return {
-      'metadata': {
+    return AriaBackup(
+      metadata: {
         'createdAt': DateTime.now().toUtc().toIso8601String(),
         'packageInfo': packageInfo.data,
         'platform': defaultTargetPlatform.name,
       },
-      'timelineTabs': ref.read(timelineTabsNotifierProvider),
-      'accountSettings': {
+      timelineTabs: ref.read(timelineTabsNotifierProvider),
+      accountSettings: {
         for (final account in accounts)
           '$account': ref.read(accountSettingsNotifierProvider(account)),
       },
-      'generalSettings': ref.read(generalSettingsNotifierProvider),
-    };
+      generalSettings: ref.read(generalSettingsNotifierProvider),
+      themes: ref.read(misskeyThemeCodesNotifierProvider),
+    );
   }
 
-  Future<void> _import(WidgetRef ref, Map<String, dynamic> json) async {
-    if (json case {'timelineTabs': final List<dynamic> json}) {
-      final tabs = json
-          .map((json) {
-            try {
-              return TabSettings.fromJson(json as Map<String, dynamic>);
-            } catch (_) {
-              return null;
-            }
-          })
-          .nonNulls
-          .toList();
-      await ref.read(timelineTabsNotifierProvider.notifier).import(tabs);
+  Future<void> _import(WidgetRef ref, AriaBackup backup) async {
+    if (backup case AriaBackup(:final timelineTabs?)) {
+      await ref
+          .read(timelineTabsNotifierProvider.notifier)
+          .import(timelineTabs);
     }
-    if (json case {'accountSettings': final Map<String, dynamic> json}) {
-      for (final e in json.entries) {
-        try {
-          final account = Account.fromString(e.key);
-          final accountSettings =
-              AccountSettings.fromJson(e.value as Map<String, dynamic>);
-          await ref
-              .read(accountSettingsNotifierProvider(account).notifier)
-              .import(accountSettings);
-        } catch (_) {}
+    if (backup case AriaBackup(:final accountSettings?)) {
+      for (final e in accountSettings.entries) {
+        final account = Account.fromString(e.key);
+        await ref
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .import(e.value);
       }
     }
-    if (json case {'generalSettings': final Map<String, dynamic> json}) {
-      try {
-        final generalSettings = GeneralSettings.fromJson(json);
-        await ref
-            .read(generalSettingsNotifierProvider.notifier)
-            .import(generalSettings);
-      } catch (_) {}
+    if (backup case AriaBackup(:final generalSettings?)) {
+      await ref
+          .read(generalSettingsNotifierProvider.notifier)
+          .import(generalSettings);
+    }
+    if (backup case AriaBackup(:final themes?)) {
+      await ref.read(misskeyThemeCodesNotifierProvider.notifier).import(themes);
     }
   }
 
@@ -221,6 +209,7 @@ class ImportExportPage extends ConsumerWidget {
                         try {
                           final json = json5Decode(await file!.readAsString())
                               as Map<String, dynamic>;
+                          final backup = AriaBackup.fromJson(json);
                           if (!context.mounted) return;
                           final confirmed = await confirm(
                             context,
@@ -236,7 +225,7 @@ class ImportExportPage extends ConsumerWidget {
                           );
                           if (!context.mounted) return;
                           if (confirmed) {
-                            await _import(ref, json);
+                            await _import(ref, backup);
                             if (!context.mounted) return;
                             await showMessageDialog(
                               context,
@@ -270,6 +259,7 @@ class ImportExportPage extends ConsumerWidget {
                   if (result != null) {
                     try {
                       final json = json5Decode(result) as Map<String, dynamic>;
+                      final backup = AriaBackup.fromJson(json);
                       if (!context.mounted) return;
                       final confirmed = await confirm(
                         context,
@@ -277,7 +267,7 @@ class ImportExportPage extends ConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (confirmed) {
-                        await _import(ref, json);
+                        await _import(ref, backup);
                         if (!context.mounted) return;
                         await showMessageDialog(
                           context,

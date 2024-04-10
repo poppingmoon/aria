@@ -83,11 +83,11 @@ import 'package:flutter/material.dart';
 
 import '../model/misskey_colors.dart';
 
-const defaultMisskeyColors = [
+const builtinMisskeyColors = [
 $colorsString
 ];
 """;
-  final file = File('lib/constant/default_misskey_colors.g.dart');
+  final file = File('lib/constant/builtin_misskey_colors.g.dart');
   file.writeAsStringSync(contents);
   // ignore: avoid_print
   print('Successfully generated ${file.path}');

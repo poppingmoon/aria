@@ -64,6 +64,7 @@ import '../view/page/settings/renote_muted_users_page.dart';
 import '../view/page/settings/settings_page.dart';
 import '../view/page/settings/tab_settings_page.dart';
 import '../view/page/settings/tabs_page.dart';
+import '../view/page/settings/theme_manage_page.dart';
 import '../view/page/settings/theme_page.dart';
 import '../view/page/share_page.dart';
 import '../view/page/splash_page.dart';
@@ -241,6 +242,12 @@ GoRouter router(RouterRef ref) {
           GoRoute(
             path: 'theme',
             builder: (_, __) => const ThemePage(),
+            routes: [
+              GoRoute(
+                path: 'manage',
+                builder: (_, __) => const ThemeManagePage(),
+              ),
+            ],
           ),
         ],
       ),

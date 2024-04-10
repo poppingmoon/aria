@@ -91,6 +91,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get newNotificationReceived => '新しい通知があるで';
 	@override String get noAccounts => 'アカウントはあらへん';
 	@override String get noTabs => 'タブはあらへん';
+	@override String get noThemes => 'テーマはあらへん';
 	@override String get noteDoubleTapAction => 'ノートを二度押ししたときの動作';
 	@override String get noteFooterSize => 'アクションボタンのでかさ';
 	@override String get noteLongPressAction => 'ノートを長押ししたときの動作';

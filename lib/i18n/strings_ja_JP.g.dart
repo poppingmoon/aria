@@ -91,6 +91,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get newNotificationReceived => '新しい通知があります';
 	@override String get noAccounts => 'アカウントがありません';
 	@override String get noTabs => 'タブがありません';
+	@override String get noThemes => 'テーマがありません';
 	@override String get noteDoubleTapAction => 'ノートをダブルタップしたときの動作';
 	@override String get noteFooterSize => 'アクションボタンのサイズ';
 	@override String get noteLongPressAction => 'ノートを長押ししたときの動作';
