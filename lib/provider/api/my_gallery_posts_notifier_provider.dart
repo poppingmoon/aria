@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,16 +13,26 @@ part 'my_gallery_posts_notifier_provider.g.dart';
 class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
   @override
   FutureOr<PaginationState<GalleryPost>> build(Account account) async {
-    final response = await _fetchPosts();
-    return PaginationState.fromIterable(response);
+    final link = ref.keepAlive();
+    Timer? timer;
+    ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
+    ref.onResume(() => timer?.cancel());
+    ref.onDispose(() => timer?.cancel());
+    try {
+      final response = await _fetchPosts();
+      return PaginationState.fromIterable(response);
+    } catch (_) {
+      timer?.cancel();
+      link.close();
+      rethrow;
+    }
   }
 
+  Misskey get _misskey => ref.read(misskeyProvider(account));
+
   Future<Iterable<GalleryPost>> _fetchPosts({String? untilId}) async {
-    final posts = await ref
-        .read(misskeyProvider(account))
-        .i
-        .gallery
-        .posts(IGalleryPostsRequest(untilId: untilId));
+    final posts = await _misskey.i.gallery
+        .posts(IGalleryPostsRequest(limit: 100, untilId: untilId));
     return posts;
   }
 
@@ -40,5 +52,49 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
         isLastLoaded: response.isEmpty,
       );
     });
+  }
+
+  Future<void> create({
+    required String title,
+    String? description,
+    required List<String> fileIds,
+    bool? isSensitive,
+  }) async {
+    final post = await _misskey.gallery.posts.create(
+      GalleryPostsCreateRequest(
+        title: title,
+        description: description,
+        fileIds: fileIds,
+        isSensitive: isSensitive,
+      ),
+    );
+    final value = state.valueOrNull ?? const PaginationState();
+    state = AsyncValue.data(value.copyWith(items: [...value.items, post]));
+  }
+
+  Future<void> updatePost({
+    required String postId,
+    required String title,
+    String? description,
+    required List<String> fileIds,
+    bool? isSensitive,
+  }) async {
+    final updated = await _misskey.gallery.posts.update(
+      GalleryPostsUpdateRequest(
+        postId: postId,
+        title: title,
+        description: description,
+        fileIds: fileIds,
+        isSensitive: isSensitive,
+      ),
+    );
+    final value = state.valueOrNull ?? const PaginationState();
+    state = AsyncValue.data(
+      value.copyWith(
+        items: value.items
+            .map((post) => post.id == postId ? updated : post)
+            .toList(),
+      ),
+    );
   }
 }

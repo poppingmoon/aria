@@ -7,7 +7,7 @@ part of 'popular_gallery_posts_provider.dart';
 // **************************************************************************
 
 String _$popularGalleryPostsHash() =>
-    r'dc7f75a89e84cfb3852fb1444d96c643c2789d1b';
+    r'3b307ac1e5e58ec5354e5ae9cf561566dcad2da2';
 
 /// Copied from Dart SDK
 class _SystemHash {

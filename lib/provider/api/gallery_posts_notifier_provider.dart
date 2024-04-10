@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,8 +13,19 @@ part 'gallery_posts_notifier_provider.g.dart';
 class GalleryPostsNotifier extends _$GalleryPostsNotifier {
   @override
   FutureOr<PaginationState<GalleryPost>> build(Account account) async {
-    final response = await _fetchPosts();
-    return PaginationState.fromIterable(response);
+    final link = ref.keepAlive();
+    Timer? timer;
+    ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
+    ref.onResume(() => timer?.cancel());
+    ref.onDispose(() => timer?.cancel());
+    try {
+      final response = await _fetchPosts();
+      return PaginationState.fromIterable(response);
+    } catch (_) {
+      timer?.cancel();
+      link.close();
+      rethrow;
+    }
   }
 
   Future<Iterable<GalleryPost>> _fetchPosts({String? untilId}) async {

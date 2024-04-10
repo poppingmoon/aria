@@ -7,7 +7,7 @@ part of 'liked_gallery_posts_notifier_provider.dart';
 // **************************************************************************
 
 String _$likedGalleryPostsNotifierHash() =>
-    r'67ecd1675eab5ba7f9540af79622e18eee877d96';
+    r'68d321907cbf36ba3fa2e3ac9a60f372c45f232a';
 
 /// Copied from Dart SDK
 class _SystemHash {

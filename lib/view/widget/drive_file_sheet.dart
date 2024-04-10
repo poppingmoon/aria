@@ -17,6 +17,7 @@ import '../../provider/selected_drive_files_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/gallery_dialog.dart';
 import '../dialog/message_dialog.dart';
 import '../dialog/post_file_editor_dialog.dart';
 import '../page/drive_page.dart';
@@ -212,6 +213,16 @@ class DriveFileSheet extends ConsumerWidget {
           leading: const Icon(Icons.download),
           title: Text(t.misskey.download),
           onTap: () => _download(ref),
+        ),
+        ListTile(
+          leading: const Icon(Icons.collections),
+          title: Text(t.misskey.gallery),
+          trailing: const Icon(Icons.navigate_next),
+          onTap: () => showDialog<void>(
+            context: context,
+            builder: (context) =>
+                GalleryDialog(account: account, files: [file]),
+          ),
         ),
         ListTile(
           leading: const Icon(Icons.drive_file_move),

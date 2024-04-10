@@ -11,6 +11,7 @@ import '../../provider/api/drive_files_notifier_provider.dart';
 import '../../provider/selected_drive_files_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/gallery_dialog.dart';
 import '../page/drive_page.dart';
 
 class DriveFilesSheet extends ConsumerWidget {
@@ -93,6 +94,15 @@ class DriveFilesSheet extends ConsumerWidget {
                 .addAll(files.map((file) => DrivePostFile.fromDriveFile(file)));
             context.push('/$account/post');
           },
+        ),
+        ListTile(
+          leading: const Icon(Icons.collections),
+          title: Text(t.misskey.gallery),
+          trailing: const Icon(Icons.navigate_next),
+          onTap: () => showDialog<void>(
+            context: context,
+            builder: (context) => GalleryDialog(account: account, files: files),
+          ),
         ),
         ListTile(
           leading: const Icon(Icons.drive_file_move),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -13,8 +15,19 @@ class LikedGalleryPostsNotifier extends _$LikedGalleryPostsNotifier {
   FutureOr<PaginationState<IGalleryLikesResponse>> build(
     Account account,
   ) async {
-    final response = await _fetchPosts();
-    return PaginationState.fromIterable(response);
+    final link = ref.keepAlive();
+    Timer? timer;
+    ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
+    ref.onResume(() => timer?.cancel());
+    ref.onDispose(() => timer?.cancel());
+    try {
+      final response = await _fetchPosts();
+      return PaginationState.fromIterable(response);
+    } catch (_) {
+      timer?.cancel();
+      link.close();
+      rethrow;
+    }
   }
 
   Future<Iterable<IGalleryLikesResponse>> _fetchPosts({String? untilId}) async {

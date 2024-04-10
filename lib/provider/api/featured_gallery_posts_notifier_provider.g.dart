@@ -7,7 +7,7 @@ part of 'featured_gallery_posts_notifier_provider.dart';
 // **************************************************************************
 
 String _$featuredGalleryPostsNotifierHash() =>
-    r'fb2f5c4157b9a8879d2d8ed86639a246b6b63a96';
+    r'da56acba3ede00fdd352fb54f5dd49469396f6d5';
 
 /// Copied from Dart SDK
 class _SystemHash {
