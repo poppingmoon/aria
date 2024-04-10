@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
@@ -46,6 +47,13 @@ class GalleryPage extends ConsumerWidget {
             ],
           ],
         ),
+        floatingActionButton: !account.isGuest
+            ? FloatingActionButton(
+                tooltip: t.misskey.postToGallery,
+                onPressed: () => context.push('/$account/gallery/new'),
+                child: const Icon(Icons.add),
+              )
+            : null,
       ),
     );
   }

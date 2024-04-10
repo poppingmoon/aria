@@ -100,6 +100,13 @@ class GalleryPostPage extends ConsumerWidget {
                                 .like(),
                       ),
                       const Spacer(),
+                      if (post.user.username == account.username)
+                        IconButton(
+                          tooltip: t.misskey.edit,
+                          onPressed: () =>
+                              context.push('/$account/gallery/$postId/edit'),
+                          icon: const Icon(Icons.edit),
+                        ),
                       if (!account.isGuest)
                         IconButton(
                           tooltip: t.misskey.shareWithNote,
@@ -232,6 +239,14 @@ class GalleryPostPage extends ConsumerWidget {
           _ => const Center(child: CircularProgressIndicator()),
         },
       ),
+      floatingActionButton: !account.isGuest &&
+              post.valueOrNull?.user.username == account.username
+          ? FloatingActionButton(
+              tooltip: t.misskey.edit,
+              onPressed: () => context.push('/$account/gallery/$postId/edit'),
+              child: const Icon(Icons.edit),
+            )
+          : null,
     );
   }
 }
