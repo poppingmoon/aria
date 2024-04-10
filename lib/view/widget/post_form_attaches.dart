@@ -18,12 +18,18 @@ import '../dialog/post_file_editor_dialog.dart';
 import 'post_file_thumbnail.dart';
 
 class PostFormAttaches extends ConsumerWidget {
-  const PostFormAttaches({super.key, required this.account});
+  const PostFormAttaches({
+    super.key,
+    required this.account,
+    this.gallery = false,
+  });
 
   final Account account;
+  final bool gallery;
 
   Future<void> _editFile(WidgetRef ref, int index) async {
-    final file = ref.read(attachesNotifierProvider(account))[index];
+    final file =
+        ref.read(attachesNotifierProvider(account, gallery: gallery))[index];
     final result = await showDialog<PostFile>(
       context: ref.context,
       builder: (context) => PostFileEditorDialog(file: file),
@@ -44,19 +50,22 @@ class PostFormAttaches extends ConsumerWidget {
         );
         if (driveFile != null) {
           ref
-              .read(attachesNotifierProvider(account).notifier)
+              .read(
+                attachesNotifierProvider(account, gallery: gallery).notifier,
+              )
               .replace(index, DrivePostFile.fromDriveFile(driveFile));
         }
       } else {
         ref
-            .read(attachesNotifierProvider(account).notifier)
+            .read(attachesNotifierProvider(account, gallery: gallery).notifier)
             .replace(index, result);
       }
     }
   }
 
   Future<void> _editImage(WidgetRef ref, int index) async {
-    final file = ref.read(attachesNotifierProvider(account))[index];
+    final file =
+        ref.read(attachesNotifierProvider(account, gallery: gallery))[index];
     final data = await switch (file) {
       LocalPostFile(:final file) => file,
       DrivePostFile(:final file) =>
@@ -74,7 +83,9 @@ class PostFormAttaches extends ConsumerWidget {
           await ref.read(fileSystemProvider).systemTempDirectory.createTemp();
       final tempFile = tempDirectory.childFile(file.name);
       await tempFile.writeAsBytes(result);
-      ref.read(attachesNotifierProvider(account).notifier).replace(
+      ref
+          .read(attachesNotifierProvider(account, gallery: gallery).notifier)
+          .replace(
             index,
             LocalPostFile.fromFile(
               tempFile,
@@ -88,7 +99,8 @@ class PostFormAttaches extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final files = ref.watch(attachesNotifierProvider(account));
+    final files =
+        ref.watch(attachesNotifierProvider(account, gallery: gallery));
     final uploading =
         files.any((file) => file is LocalPostFile && file.uploading);
 
@@ -97,7 +109,7 @@ class PostFormAttaches extends ConsumerWidget {
       maxCrossAxisExtent: 200,
       physics: const NeverScrollableScrollPhysics(),
       onReorder: (oldIndex, newIndex) => ref
-          .read(attachesNotifierProvider(account).notifier)
+          .read(attachesNotifierProvider(account, gallery: gallery).notifier)
           .reorder(oldIndex, newIndex),
       itemDragEnable: (_) => !uploading,
       children: List.generate(
@@ -106,6 +118,7 @@ class PostFormAttaches extends ConsumerWidget {
           key: ValueKey(index),
           account: account,
           index: index,
+          gallery: gallery,
           onTap: !uploading
               ? () => showModalBottomSheet<void>(
                     context: context,
@@ -129,7 +142,10 @@ class PostFormAttaches extends ConsumerWidget {
                           onTap: () {
                             ref
                                 .read(
-                                  attachesNotifierProvider(account).notifier,
+                                  attachesNotifierProvider(
+                                    account,
+                                    gallery: gallery,
+                                  ).notifier,
                                 )
                                 .remove(index);
                             context.pop();
@@ -151,17 +167,20 @@ class _PostFormAttach extends ConsumerWidget {
     super.key,
     required this.account,
     required this.index,
+    required this.gallery,
     this.onTap,
   });
 
   final Account account;
   final int index;
+  final bool gallery;
   final void Function()? onTap;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final file = ref.watch(
-      attachesNotifierProvider(account).select((files) => files[index]),
+      attachesNotifierProvider(account, gallery: gallery)
+          .select((files) => files[index]),
     );
 
     return Card(
@@ -181,7 +200,12 @@ class _PostFormAttach extends ConsumerWidget {
                     IconButton.filled(
                       color: Theme.of(context).colorScheme.onPrimary,
                       onPressed: () => ref
-                          .read(attachesNotifierProvider(account).notifier)
+                          .read(
+                            attachesNotifierProvider(
+                              account,
+                              gallery: gallery,
+                            ).notifier,
+                          )
                           .upload(index),
                       icon: const Icon(Icons.upload),
                     ),

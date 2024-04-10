@@ -41,10 +41,8 @@ class SettingsPage extends HookConsumerWidget {
                                   ref,
                                   account: account,
                                   user: i,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.copyWith(color: colors.fg),
+                                  style:
+                                      Theme.of(context).textTheme.titleMedium,
                                 ),
                                 [i, colors],
                               ),

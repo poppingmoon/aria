@@ -6,7 +6,7 @@ part of 'attaches_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$attachesNotifierHash() => r'dfb98b7184e42d7810eb66a89984edb3fb571e85';
+String _$attachesNotifierHash() => r'7d2583a20c60af1f2b8d3aa77ea375228fe05272';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,12 +29,15 @@ class _SystemHash {
   }
 }
 
-abstract class _$AttachesNotifier extends BuildlessNotifier<List<PostFile>> {
+abstract class _$AttachesNotifier
+    extends BuildlessAutoDisposeNotifier<List<PostFile>> {
   late final Account account;
+  late final bool gallery;
 
   List<PostFile> build(
-    Account account,
-  );
+    Account account, {
+    bool gallery = false,
+  });
 }
 
 /// See also [AttachesNotifier].
@@ -48,10 +51,12 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
 
   /// See also [AttachesNotifier].
   AttachesNotifierProvider call(
-    Account account,
-  ) {
+    Account account, {
+    bool gallery = false,
+  }) {
     return AttachesNotifierProvider(
       account,
+      gallery: gallery,
     );
   }
 
@@ -61,6 +66,7 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
   ) {
     return call(
       provider.account,
+      gallery: provider.gallery,
     );
   }
 
@@ -81,12 +87,15 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
 
 /// See also [AttachesNotifier].
 class AttachesNotifierProvider
-    extends NotifierProviderImpl<AttachesNotifier, List<PostFile>> {
+    extends AutoDisposeNotifierProviderImpl<AttachesNotifier, List<PostFile>> {
   /// See also [AttachesNotifier].
   AttachesNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => AttachesNotifier()..account = account,
+    Account account, {
+    bool gallery = false,
+  }) : this._internal(
+          () => AttachesNotifier()
+            ..account = account
+            ..gallery = gallery,
           from: attachesNotifierProvider,
           name: r'attachesNotifierProvider',
           debugGetCreateSourceHash:
@@ -97,6 +106,7 @@ class AttachesNotifierProvider
           allTransitiveDependencies:
               AttachesNotifierFamily._allTransitiveDependencies,
           account: account,
+          gallery: gallery,
         );
 
   AttachesNotifierProvider._internal(
@@ -107,9 +117,11 @@ class AttachesNotifierProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.account,
+    required this.gallery,
   }) : super.internal();
 
   final Account account;
+  final bool gallery;
 
   @override
   List<PostFile> runNotifierBuild(
@@ -117,6 +129,7 @@ class AttachesNotifierProvider
   ) {
     return notifier.build(
       account,
+      gallery: gallery,
     );
   }
 
@@ -125,48 +138,60 @@ class AttachesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AttachesNotifierProvider._internal(
-        () => create()..account = account,
+        () => create()
+          ..account = account
+          ..gallery = gallery,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         account: account,
+        gallery: gallery,
       ),
     );
   }
 
   @override
-  NotifierProviderElement<AttachesNotifier, List<PostFile>> createElement() {
+  AutoDisposeNotifierProviderElement<AttachesNotifier, List<PostFile>>
+      createElement() {
     return _AttachesNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AttachesNotifierProvider && other.account == account;
+    return other is AttachesNotifierProvider &&
+        other.account == account &&
+        other.gallery == gallery;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
+    hash = _SystemHash.combine(hash, gallery.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin AttachesNotifierRef on NotifierProviderRef<List<PostFile>> {
+mixin AttachesNotifierRef on AutoDisposeNotifierProviderRef<List<PostFile>> {
   /// The parameter `account` of this provider.
   Account get account;
+
+  /// The parameter `gallery` of this provider.
+  bool get gallery;
 }
 
 class _AttachesNotifierProviderElement
-    extends NotifierProviderElement<AttachesNotifier, List<PostFile>>
+    extends AutoDisposeNotifierProviderElement<AttachesNotifier, List<PostFile>>
     with AttachesNotifierRef {
   _AttachesNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as AttachesNotifierProvider).account;
+  @override
+  bool get gallery => (origin as AttachesNotifierProvider).gallery;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

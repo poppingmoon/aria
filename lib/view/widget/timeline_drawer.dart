@@ -181,6 +181,13 @@ class TimelineDrawer extends ConsumerWidget {
                         ),
                       ),
                       PopupMenuItem(
+                        onTap: () => context.push('/$account/gallery'),
+                        child: ListTile(
+                          leading: const Icon(Icons.collections),
+                          title: Text(t.misskey.gallery),
+                        ),
+                      ),
+                      PopupMenuItem(
                         onTap: () => context.push('/$account/channels'),
                         child: ListTile(
                           leading: const Icon(Icons.tv),

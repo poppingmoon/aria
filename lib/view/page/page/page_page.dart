@@ -267,25 +267,28 @@ class PagePage extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: AdWidget(account: account),
                     ),
-                    ExpansionTile(
-                      leading: const Icon(Icons.schedule),
-                      title: Text(t.misskey.recentPosts),
-                      children: [
-                        ...?ref
-                            .watch(
-                              userPagesNotifierProvider(account, page.userId),
-                            )
-                            .valueOrNull
-                            ?.items
-                            .map(
-                              (page) => PagePreview(
-                                account: account,
-                                page: page,
-                                onTap: () =>
-                                    context.push('/$account/pages/${page.id}'),
+                    Builder(
+                      builder: (context) => ExpansionTile(
+                        leading: const Icon(Icons.schedule),
+                        title: Text(t.misskey.recentPosts),
+                        initiallyExpanded: true,
+                        children: [
+                          ...?ref
+                              .watch(
+                                userPagesNotifierProvider(account, page.userId),
+                              )
+                              .valueOrNull
+                              ?.items
+                              .map(
+                                (page) => PagePreview(
+                                  account: account,
+                                  page: page,
+                                  onTap: () => context
+                                      .push('/$account/pages/${page.id}'),
+                                ),
                               ),
-                            ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 );

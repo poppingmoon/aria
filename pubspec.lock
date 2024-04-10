@@ -1217,8 +1217,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: e430aec5a1a2774811a608d98bcc19edaf1b1eb4
-      resolved-ref: e430aec5a1a2774811a608d98bcc19edaf1b1eb4
+      ref: "801fccd472589e3916b58a7cbf17bc1f40d35434"
+      resolved-ref: "801fccd472589e3916b58a7cbf17bc1f40d35434"
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"

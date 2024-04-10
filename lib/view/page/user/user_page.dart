@@ -11,6 +11,7 @@ import '../../../provider/api/user_notifier_provider.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 import 'user_clips.dart';
+import 'user_gallery.dart';
 import 'user_home.dart';
 import 'user_lists.dart';
 import 'user_notes.dart';
@@ -54,7 +55,7 @@ class UserPage extends HookConsumerWidget {
                 user.host == null));
 
     return DefaultTabController(
-      length: 2 + (isLocal ? 4 : 0) + (isReactionsVisibile ? 1 : 0),
+      length: 2 + (isLocal ? 5 : 0) + (isReactionsVisibile ? 1 : 0),
       child: Scaffold(
         appBar: AppBar(
           title: user != null
@@ -71,6 +72,7 @@ class UserPage extends HookConsumerWidget {
                       Tab(text: t.misskey.lists),
                       Tab(text: t.misskey.pages),
                       const Tab(text: 'Play'),
+                      Tab(text: t.misskey.gallery),
                     ],
                   ],
                   isScrollable: isLocal,
@@ -113,6 +115,7 @@ class UserPage extends HookConsumerWidget {
                     UserLists(account: account, userId: userId),
                     UserPages(account: account, userId: userId),
                     UserPlays(account: account, userId: userId),
+                    UserGallery(account: account, userId: userId),
                   ],
                 ],
               ],

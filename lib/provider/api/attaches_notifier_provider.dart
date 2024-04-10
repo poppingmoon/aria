@@ -9,10 +9,13 @@ import 'misskey_provider.dart';
 
 part 'attaches_notifier_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 class AttachesNotifier extends _$AttachesNotifier {
   @override
-  List<PostFile> build(Account account) {
+  List<PostFile> build(Account account, {bool gallery = false}) {
+    if (!gallery) {
+      ref.keepAlive();
+    }
     return [];
   }
 

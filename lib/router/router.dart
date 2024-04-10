@@ -28,6 +28,9 @@ import '../view/page/emoji_page.dart';
 import '../view/page/explore/explore_page.dart';
 import '../view/page/explore/explore_users_page.dart';
 import '../view/page/favorites_page.dart';
+import '../view/page/gallery/gallery_edit_page.dart';
+import '../view/page/gallery/gallery_page.dart';
+import '../view/page/gallery/gallery_post_page.dart';
 import '../view/page/image_page.dart';
 import '../view/page/list_page.dart';
 import '../view/page/lists_page.dart';
@@ -395,6 +398,37 @@ GoRouter router(RouterRef ref) {
             builder: (_, state) => MisskeyGamesPage(
               account: Account.fromString(state.pathParameters['acct']!),
             ),
+          ),
+          GoRoute(
+            path: 'gallery',
+            builder: (_, state) => GalleryPage(
+              account: Account.fromString(state.pathParameters['acct']!),
+            ),
+            routes: [
+              GoRoute(
+                path: 'new',
+                builder: (_, state) => GalleryEditPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                ),
+              ),
+              GoRoute(
+                path: ':postId',
+                builder: (_, state) => GalleryPostPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                  postId: state.pathParameters['postId']!,
+                ),
+                routes: [
+                  GoRoute(
+                    path: 'edit',
+                    builder: (_, state) => GalleryEditPage(
+                      account:
+                          Account.fromString(state.pathParameters['acct']!),
+                      postId: state.pathParameters['postId'],
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
           GoRoute(
             path: 'image',
