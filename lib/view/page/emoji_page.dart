@@ -36,107 +36,120 @@ class EmojiPage extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(title: Text(name)),
       body: switch (emoji) {
-        AsyncValue(valueOrNull: final emoji?) => SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: InkWell(
-                    onTap: () => showDialog<void>(
-                      context: context,
-                      builder: (context) =>
-                          ImageDialog(url: emoji.url.toString()),
-                    ),
-                    child: ImageWidget(url: emoji.url.toString()),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.name,
-                    text: name,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.tags,
-                    child: emoji.aliases.isNotEmpty
-                        ? Wrap(
-                            spacing: 4.0,
-                            runSpacing: 4.0,
-                            children: emoji.aliases
-                                .map(
-                                  (alias) => ActionChip(
-                                    label: Text(alias),
-                                    onPressed: () =>
-                                        copyToClipboard(context, alias),
-                                    shape: StadiumBorder(
-                                      side: BorderSide(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .outlineVariant,
-                                      ),
-                                    ),
+        AsyncValue(valueOrNull: final emoji?) => Center(
+            heightFactor: 1.0,
+            child: SizedBox(
+              width: 800.0,
+              child: Card(
+                color: colors.panel,
+                elevation: 0.0,
+                margin: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap: () => showDialog<void>(
+                            context: context,
+                            builder: (context) =>
+                                ImageDialog(url: emoji.url.toString()),
+                          ),
+                          child: ImageWidget(url: emoji.url.toString()),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.name,
+                          text: name,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.tags,
+                          child: emoji.aliases.isNotEmpty
+                              ? Wrap(
+                                  spacing: 4.0,
+                                  runSpacing: 4.0,
+                                  children: emoji.aliases
+                                      .map(
+                                        (alias) => ActionChip(
+                                          label: Text(alias),
+                                          onPressed: () =>
+                                              copyToClipboard(context, alias),
+                                          shape: StadiumBorder(
+                                            side: BorderSide(
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .outlineVariant,
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                      .toList(),
+                                )
+                              : Text(t.misskey.none),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.category,
+                          text: emoji.category,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.sensitive,
+                          text:
+                              emoji.isSensitive ? t.misskey.yes : t.misskey.no,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.localOnly,
+                          text:
+                              emoji.isSensitive ? t.misskey.yes : t.misskey.no,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.license,
+                          child: emoji.license != null
+                              ? InkWell(
+                                  onLongPress: () =>
+                                      copyToClipboard(context, emoji.license!),
+                                  child: Mfm(
+                                    account: account,
+                                    text: emoji.license,
                                   ),
                                 )
-                                .toList(),
-                          )
-                        : Text(t.misskey.none),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.category,
-                    text: emoji.category,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.sensitive,
-                    text: emoji.isSensitive ? t.misskey.yes : t.misskey.no,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.localOnly,
-                    text: emoji.isSensitive ? t.misskey.yes : t.misskey.no,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.license,
-                    child: emoji.license != null
-                        ? InkWell(
-                            onLongPress: () =>
-                                copyToClipboard(context, emoji.license!),
-                            child: Mfm(
-                              account: account,
-                              text: emoji.license,
-                            ),
-                          )
-                        : null,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: KeyValueWidget(
-                    label: t.misskey.emojiUrl,
-                    child: UrlWidget(
-                      url: emoji.url.toString(),
-                      onTap: () => launchUrl(
-                        emoji.url!,
-                        mode: LaunchMode.externalApplication,
+                              : null,
+                        ),
                       ),
-                      style: TextStyle(color: colors.link),
-                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.emojiUrl,
+                          child: UrlWidget(
+                            url: emoji.url.toString(),
+                            onTap: () => launchUrl(
+                              emoji.url!,
+                              mode: LaunchMode.externalApplication,
+                            ),
+                            style: TextStyle(color: colors.link),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         AsyncValue(:final error?, :final stackTrace) =>

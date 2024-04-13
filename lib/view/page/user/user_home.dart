@@ -123,47 +123,73 @@ class _UserHome extends ConsumerWidget {
 
     return CustomScrollView(
       slivers: [
-        SliverList.list(
-          children: [
-            Stack(
-              alignment: Alignment.bottomCenter,
-              children: [
-                Column(
-                  children: [
-                    UserBanner(
-                      account: account,
-                      user: user,
-                      expandOnTap: true,
+        SliverToBoxAdapter(
+          child: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              Column(
+                children: [
+                  UserBanner(
+                    account: account,
+                    user: user,
+                    expandOnTap: true,
+                  ),
+                  Container(
+                    width: 800.0,
+                    height: 50.0,
+                    margin: const EdgeInsets.only(
+                      top: 8.0,
+                      left: 8.0,
+                      right: 8.0,
                     ),
-                    const SizedBox(height: 50.0),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0),
+                      ),
+                      color: colors.panel,
+                    ),
+                  ),
+                ],
+              ),
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius:
+                      BorderRadius.circular(squareAvatars ? 20.0 : 100.0),
+                  boxShadow: const [
+                    BoxShadow(
+                      blurRadius: 4.0,
+                      color: Colors.black54,
+                      blurStyle: BlurStyle.outer,
+                    ),
                   ],
                 ),
-                DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.circular(squareAvatars ? 20.0 : 100.0),
-                    boxShadow: const [
-                      BoxShadow(
-                        blurRadius: 4.0,
-                        color: Colors.black54,
-                        blurStyle: BlurStyle.outer,
-                      ),
-                    ],
-                  ),
-                  child: UserAvatar(
-                    user: user,
-                    size: 100.0,
-                    onTap: () => showDialog<void>(
-                      context: context,
-                      builder: (context) =>
-                          ImageDialog(url: user.avatarUrl.toString()),
-                    ),
+                child: UserAvatar(
+                  user: user,
+                  size: 100.0,
+                  onTap: () => showDialog<void>(
+                    context: context,
+                    builder: (context) =>
+                        ImageDialog(url: user.avatarUrl.toString()),
                   ),
                 ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              ),
+            ],
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Center(
+            child: Container(
+              width: 800.0,
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(8.0),
+                  bottomRight: Radius.circular(8.0),
+                ),
+                color: colors.panel,
+              ),
+              padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
                   DefaultTextStyle.merge(
@@ -206,444 +232,535 @@ class _UserHome extends ConsumerWidget {
                 ],
               ),
             ),
-            if (remoteUrl != null)
-              Card(
-                margin: const EdgeInsets.all(8.0),
-                color: colors.infoWarnBg,
-                elevation: 0.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              WidgetSpan(
-                                alignment: PlaceholderAlignment.middle,
-                                child: Icon(
-                                  Icons.warning,
-                                  color: colors.infoWarnFg,
-                                ),
-                              ),
-                              TextSpan(
-                                text: t.misskey.remoteUserCaution,
-                                style: TextStyle(
-                                  color: colors.infoWarnFg,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          TextButton(
-                            onPressed: () => launchUrl(
-                              remoteUrl,
-                              mode: LaunchMode.externalApplication,
-                            ),
-                            child: Text(t.misskey.showOnRemote),
-                          ),
-                          TextButton(
-                            onPressed: () => futureWithDialog(
-                              context,
-                              openUserAsGuest(ref, user),
-                            ),
-                            child: Text(t.aria.openAsGuest),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            const Divider(),
-            if (user.roles?.isNotEmpty ?? false)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 4.0,
-                  runSpacing: 4.0,
-                  children: [
-                    ...?user.roles?.map(
-                      (role) => RoleChip(
-                        account: account,
-                        role: role,
-                        onTap: () => context.push('/$account/roles/${role.id}'),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            if (user case UserDetailed(:final memo?))
-              Card(
-                margin: const EdgeInsets.all(8.0),
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  onTap: () async {
-                    final memo = await showTextFieldDialog(
-                      context,
-                      title: Text(t.misskey.editMemo),
-                      initialText: user.memo,
-                      maxLines: null,
-                    );
-                    if (!context.mounted) return;
-                    if (memo != null) {
-                      await ref
-                          .read(
-                            userNotifierProvider(account, userId: user.id)
-                                .notifier,
-                          )
-                          .updateMemo(memo);
-                    }
-                  },
-                  onLongPress: () => copyToClipboard(context, memo),
+          ),
+        ),
+        if (remoteUrl != null)
+          SliverToBoxAdapter(
+            child: Center(
+              child: Container(
+                width: 800.0,
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Card(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  color: colors.infoWarnBg,
+                  elevation: 0.0,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        Text(
-                          t.misskey.memo,
-                          style: Theme.of(context).textTheme.labelSmall,
-                        ),
-                        Text(memo),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: user.description != null
-                  ? Mfm(
-                      account: account,
-                      text: user.description,
-                      emojis: user.emojis,
-                      author: user,
-                      textAlign: TextAlign.center,
-                    )
-                  : Text(
-                      t.misskey.noAccountDescription,
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withOpacity(0.8),
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-            ),
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconTheme.merge(
-                data: IconThemeData(size: style.fontSize),
-                child: Table(
-                  columnWidths: const {
-                    0: FlexColumnWidth(3.0),
-                    1: FlexColumnWidth(7.0),
-                  },
-                  children: [
-                    if (user case UserDetailed(:final location?))
-                      TableRow(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(right: 2.0),
-                                    child: Icon(Icons.place),
-                                  ),
-                                  Text(
-                                    t.misskey.location,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(location),
-                          ),
-                        ],
-                      ),
-                    if (user case UserDetailed(birthday: final date?))
-                      TableRow(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Center(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Padding(
-                                    padding: EdgeInsets.only(right: 2.0),
-                                    child: Icon(Icons.cake),
-                                  ),
-                                  Text(
-                                    t.misskey.birthday,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(
-                              '$birthday (${t.misskey.yearsOld(age: _calcAge(date))})',
-                            ),
-                          ),
-                        ],
-                      ),
-                    TableRow(
-                      children: [
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Center(
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text.rich(
+                            TextSpan(
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(right: 2.0),
-                                  child: Icon(Icons.calendar_today),
+                                WidgetSpan(
+                                  alignment: PlaceholderAlignment.middle,
+                                  child: Icon(
+                                    Icons.warning,
+                                    color: colors.infoWarnFg,
+                                  ),
                                 ),
-                                Text(
-                                  t.misskey.registeredDate,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
+                                TextSpan(
+                                  text: t.misskey.remoteUserCaution,
+                                  style: TextStyle(
+                                    color: colors.infoWarnFg,
                                   ),
                                 ),
                               ],
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: TimeWidget(
-                            time: user.createdAt,
-                            detailed: true,
-                          ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            TextButton(
+                              onPressed: () => launchUrl(
+                                remoteUrl,
+                                mode: LaunchMode.externalApplication,
+                              ),
+                              child: Text(t.misskey.showOnRemote),
+                            ),
+                            TextButton(
+                              onPressed: () => futureWithDialog(
+                                context,
+                                openUserAsGuest(ref, user),
+                              ),
+                              child: Text(t.aria.openAsGuest),
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),
-            if (user.fields?.isNotEmpty ?? skebStatus != null) ...[
-              const Divider(),
-              Table(
-                columnWidths: const {
-                  0: FlexColumnWidth(3.0),
-                  1: FlexColumnWidth(7.0),
-                },
-                defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          ),
+        SliverToBoxAdapter(
+          child: Center(
+            child: Container(
+              width: 800.0,
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Column(
                 children: [
-                  ...?user.fields?.map(
-                    (field) => TableRow(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Center(
-                            child: DefaultTextStyle.merge(
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                              child: Mfm(
-                                account: account,
-                                text: field.name,
-                                simple: true,
-                                emojis: user.emojis,
-                              ),
+                  Container(
+                    height: 8.0,
+                    margin: const EdgeInsets.only(top: 8.0),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(8.0),
+                        topRight: Radius.circular(8.0),
+                      ),
+                      color: colors.panel,
+                    ),
+                  ),
+                  Material(
+                    color: colors.panel,
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        spacing: 4.0,
+                        runSpacing: 4.0,
+                        children: [
+                          ...?user.roles?.map(
+                            (role) => RoleChip(
+                              account: account,
+                              role: role,
+                              onTap: () =>
+                                  context.push('/$account/roles/${role.id}'),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  if (user case UserDetailed(:final memo?))
+                    Container(
+                      width: double.infinity,
+                      color: colors.panel,
+                      child: Card(
+                        margin: const EdgeInsets.all(8.0),
+                        clipBehavior: Clip.hardEdge,
+                        child: InkWell(
+                          onTap: () async {
+                            final memo = await showTextFieldDialog(
+                              context,
+                              title: Text(t.misskey.editMemo),
+                              initialText: user.memo,
+                              maxLines: null,
+                            );
+                            if (!context.mounted) return;
+                            if (memo != null) {
+                              await ref
+                                  .read(
+                                    userNotifierProvider(
+                                      account,
+                                      userId: user.id,
+                                    ).notifier,
+                                  )
+                                  .updateMemo(memo);
+                            }
+                          },
+                          onLongPress: () => copyToClipboard(context, memo),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  t.misskey.memo,
+                                  style: Theme.of(context).textTheme.labelSmall,
+                                ),
+                                Text(memo),
+                              ],
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: user.verifiedLinks.contains(field.value)
-                              ? Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      WidgetSpan(
-                                        child: UrlWidget(
-                                          url: field.value,
-                                          onTap: () => navigate(
-                                            ref,
-                                            account,
-                                            field.value,
+                      ),
+                    ),
+                  Material(
+                    color: colors.panel,
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(8.0),
+                      child: user.description != null
+                          ? Mfm(
+                              account: account,
+                              text: user.description,
+                              emojis: user.emojis,
+                              author: user,
+                              textAlign: TextAlign.center,
+                            )
+                          : Text(
+                              t.misskey.noAccountDescription,
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onSurface
+                                    .withOpacity(0.8),
+                              ),
+                              textAlign: TextAlign.center,
+                            ),
+                    ),
+                  ),
+                  ColoredBox(
+                    color: colors.panel,
+                    child: const Divider(),
+                  ),
+                  Material(
+                    color: colors.panel,
+                    child: IconTheme.merge(
+                      data: IconThemeData(size: style.fontSize),
+                      child: Table(
+                        columnWidths: const {
+                          0: FlexColumnWidth(3.0),
+                          1: FlexColumnWidth(7.0),
+                        },
+                        children: [
+                          if (user case UserDetailed(:final location?))
+                            TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(right: 2.0),
+                                          child: Icon(Icons.place),
+                                        ),
+                                        Text(
+                                          t.misskey.location,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
                                           ),
-                                          style: TextStyle(color: colors.link),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Text(location),
+                                ),
+                              ],
+                            ),
+                          if (user case UserDetailed(birthday: final date?))
+                            TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Padding(
+                                          padding: EdgeInsets.only(right: 2.0),
+                                          child: Icon(Icons.cake),
+                                        ),
+                                        Text(
+                                          t.misskey.birthday,
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Text(
+                                    '$birthday (${t.misskey.yearsOld(age: _calcAge(date))})',
+                                  ),
+                                ),
+                              ],
+                            ),
+                          TableRow(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Center(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Padding(
+                                        padding: EdgeInsets.only(right: 2.0),
+                                        child: Icon(Icons.calendar_today),
+                                      ),
+                                      Text(
+                                        t.misskey.registeredDate,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ],
                                   ),
-                                )
-                              : Mfm(
-                                  account: account,
-                                  text: field.value,
-                                  emojis: user.emojis,
-                                  author: user,
                                 ),
-                        ),
-                      ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: TimeWidget(
+                                  time: user.createdAt,
+                                  detailed: true,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                  if (skebStatus != null)
-                    TableRow(
+                  if (user.fields?.isNotEmpty ?? skebStatus != null) ...[
+                    ColoredBox(
+                      color: colors.panel,
+                      child: const Divider(),
+                    ),
+                    Material(
+                      color: colors.panel,
+                      child: Table(
+                        columnWidths: const {
+                          0: FlexColumnWidth(3.0),
+                          1: FlexColumnWidth(7.0),
+                        },
+                        defaultVerticalAlignment:
+                            TableCellVerticalAlignment.middle,
+                        children: [
+                          ...?user.fields?.map(
+                            (field) => TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Center(
+                                    child: DefaultTextStyle.merge(
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      child: Mfm(
+                                        account: account,
+                                        text: field.name,
+                                        simple: true,
+                                        emojis: user.emojis,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child:
+                                      user.verifiedLinks.contains(field.value)
+                                          ? Text.rich(
+                                              TextSpan(
+                                                children: [
+                                                  WidgetSpan(
+                                                    child: UrlWidget(
+                                                      url: field.value,
+                                                      onTap: () => navigate(
+                                                        ref,
+                                                        account,
+                                                        field.value,
+                                                      ),
+                                                      style: TextStyle(
+                                                        color: colors.link,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            )
+                                          : Mfm(
+                                              account: account,
+                                              text: field.value,
+                                              emojis: user.emojis,
+                                              author: user,
+                                            ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          if (skebStatus != null)
+                            TableRow(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Align(
+                                    child: InkWell(
+                                      onTap: () => launchUrl(
+                                        Uri.https('skeb.jp'),
+                                        mode: LaunchMode.externalApplication,
+                                      ),
+                                      child: DefaultTextStyle.merge(
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                        child: Mfm(
+                                          account: account,
+                                          text: ':skeb: Skeb',
+                                          simple: true,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: SkebStatusWidget(
+                                      account: account,
+                                      skebStatus: skebStatus,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                        ],
+                      ),
+                    ),
+                  ],
+                  ColoredBox(
+                    color: colors.panel,
+                    child: const Divider(),
+                  ),
+                  Material(
+                    color: colors.panel,
+                    child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Align(
-                            child: InkWell(
-                              onTap: () => launchUrl(
-                                Uri.https('skeb.jp'),
-                                mode: LaunchMode.externalApplication,
-                              ),
-                              child: DefaultTextStyle.merge(
+                        Expanded(
+                          child: Column(
+                            children: [
+                              Text(
+                                NumberFormat().format(user.notesCount),
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
-                                child: Mfm(
-                                  account: account,
-                                  text: ':skeb: Skeb',
-                                  simple: true,
+                              ),
+                              Text(
+                                t.misskey.notes,
+                                style: TextStyle(
+                                  fontSize: style.fontSize! * 0.85,
                                 ),
                               ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          child: InkWell(
+                            onTap: user.isFollowingVisibleForMe
+                                ? () => context.push(
+                                      '/$account/users/${user.id}/following',
+                                    )
+                                : null,
+                            child: Column(
+                              children: [
+                                if (user.isFollowingVisibleForMe)
+                                  Text(
+                                    NumberFormat().format(user.followingCount),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                else
+                                  const ShakeWidget(child: Icon(Icons.lock)),
+                                Text(
+                                  t.misskey.following,
+                                  style: TextStyle(
+                                    fontSize: style.fontSize! * 0.85,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: SkebStatusWidget(
-                              account: account,
-                              skebStatus: skebStatus,
+                        Expanded(
+                          child: InkWell(
+                            onTap: user.isFollowersVisibleForMe
+                                ? () => context.push(
+                                      '/$account/users/${user.id}/followers',
+                                    )
+                                : null,
+                            child: Column(
+                              children: [
+                                if (user.isFollowersVisibleForMe)
+                                  Text(
+                                    NumberFormat().format(user.followersCount),
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  )
+                                else
+                                  const ShakeWidget(child: Icon(Icons.lock)),
+                                Text(
+                                  t.misskey.followers,
+                                  style: TextStyle(
+                                    fontSize: style.fontSize! * 0.85,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
                       ],
                     ),
-                ],
-              ),
-            ],
-            const Divider(),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          NumberFormat().format(user.notesCount),
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          t.misskey.notes,
-                          style: TextStyle(fontSize: style.fontSize! * 0.85),
-                        ),
-                      ],
-                    ),
                   ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: user.isFollowingVisibleForMe
-                          ? () => context
-                              .push('/$account/users/${user.id}/following')
-                          : null,
-                      child: Column(
-                        children: [
-                          if (user.isFollowingVisibleForMe)
-                            Text(
-                              NumberFormat().format(user.followingCount),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          else
-                            const ShakeWidget(child: Icon(Icons.lock)),
-                          Text(
-                            t.misskey.following,
-                            style: TextStyle(
-                              fontSize: style.fontSize! * 0.85,
-                            ),
-                          ),
-                        ],
+                  Container(
+                    height: 8.0,
+                    margin: const EdgeInsets.only(bottom: 8.0),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft: Radius.circular(8.0),
+                        bottomRight: Radius.circular(8.0),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    child: InkWell(
-                      onTap: user.isFollowersVisibleForMe
-                          ? () => context
-                              .push('/$account/users/${user.id}/followers')
-                          : null,
-                      child: Column(
-                        children: [
-                          if (user.isFollowersVisibleForMe)
-                            Text(
-                              NumberFormat().format(user.followersCount),
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )
-                          else
-                            const ShakeWidget(child: Icon(Icons.lock)),
-                          Text(
-                            t.misskey.followers,
-                            style: TextStyle(
-                              fontSize: style.fontSize! * 0.85,
-                            ),
-                          ),
-                        ],
-                      ),
+                      color: colors.panel,
                     ),
                   ),
                 ],
               ),
             ),
-          ],
+          ),
         ),
         if (user case UserDetailed(:final pinnedNoteIds?))
           SliverList.builder(
-            itemBuilder: (context, index) => Column(
-              children: [
-                const Divider(),
-                Row(
-                  children: [
-                    const SizedBox(width: 8.0),
-                    Icon(
-                      Icons.push_pin,
-                      size: style.fontSize,
-                      color: pinColor,
-                    ),
-                    const SizedBox(width: 2.0),
-                    Text(
-                      t.misskey.pinnedNote,
-                      style: const TextStyle(color: pinColor),
-                    ),
-                  ],
+            itemBuilder: (context, index) => Center(
+              child: Container(
+                width: 800.0,
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Card(
+                  margin: const EdgeInsets.symmetric(vertical: 4.0),
+                  color: colors.panel,
+                  elevation: 0.0,
+                  clipBehavior: Clip.hardEdge,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.push_pin,
+                              size: style.fontSize,
+                              color: pinColor,
+                            ),
+                            const SizedBox(width: 2.0),
+                            Expanded(
+                              child: Text(
+                                t.misskey.pinnedNote,
+                                style: const TextStyle(color: pinColor),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      NoteWidget(
+                        account: account,
+                        noteId: pinnedNoteIds[index],
+                        withHardMute: false,
+                      ),
+                    ],
+                  ),
                 ),
-                NoteWidget(
-                  account: account,
-                  noteId: pinnedNoteIds[index],
-                  withHardMute: false,
-                ),
-              ],
+              ),
             ),
             itemCount: pinnedNoteIds.length,
           ),

@@ -58,6 +58,7 @@ class RolePage extends ConsumerWidget {
                 loadMore: (skipError) => ref
                     .read(roleUsersNotifierProvider(account, roleId).notifier)
                     .loadMore(skipError: skipError),
+                panel: false,
                 noItemsLabel: t.misskey.noUsers,
               )
             else

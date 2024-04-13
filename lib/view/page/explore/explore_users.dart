@@ -211,6 +211,7 @@ class ExploreUsers extends HookConsumerWidget {
             )
             .loadMore(skipError: skipError),
       },
+      panel: false,
       noItemsLabel: t.misskey.noUsers,
     );
   }

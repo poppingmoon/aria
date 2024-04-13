@@ -29,7 +29,7 @@ class GalleryLiked extends ConsumerWidget {
       loadMore: (skipError) => ref
           .read(likedGalleryPostsNotifierProvider(account).notifier)
           .loadMore(skipError: skipError),
-      showDivider: false,
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

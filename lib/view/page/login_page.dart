@@ -76,60 +76,63 @@ class LoginPage extends HookConsumerWidget {
             ),
             Expanded(
               child: Center(
-                child: Card(
-                  margin: const EdgeInsets.all(16.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        DecoratedBox(
-                          decoration: const BoxDecoration(
-                            color: Color(0xffdddddd),
-                            shape: BoxShape.circle,
+                child: SizedBox(
+                  width: 800.0,
+                  child: Card(
+                    margin: const EdgeInsets.all(16.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          DecoratedBox(
+                            decoration: const BoxDecoration(
+                              color: Color(0xffdddddd),
+                              shape: BoxShape.circle,
+                            ),
+                            child: iconUrl != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    child: ImageWidget(
+                                      url: iconUrl,
+                                      width: 50.0,
+                                      height: 50.0,
+                                    ),
+                                  )
+                                : const SizedBox(width: 50.0, height: 50.0),
                           ),
-                          child: iconUrl != null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  child: ImageWidget(
-                                    url: iconUrl,
-                                    width: 50.0,
-                                    height: 50.0,
-                                  ),
-                                )
-                              : const SizedBox(width: 50.0, height: 50.0),
-                        ),
-                        MisskeyServerAutocomplete(
-                          controller: controller,
-                          focusNode: focusNode,
-                          autofocus: true,
-                          onSubmitted: (host) => _launchMiAuth(ref, host),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextButton(
-                            onPressed: () async {
-                              final server = await showDialog<String>(
-                                context: context,
-                                builder: (context) =>
-                                    const MisskeyServerListDialog(),
-                              );
-                              if (server != null) {
-                                controller.text = server;
-                              }
-                            },
-                            child: Text(t.aria.findServer),
+                          MisskeyServerAutocomplete(
+                            controller: controller,
+                            focusNode: focusNode,
+                            autofocus: true,
+                            onSubmitted: (host) => _launchMiAuth(ref, host),
                           ),
-                        ),
-                        const SizedBox(height: 16.0),
-                        ElevatedButton.icon(
-                          onPressed: host.value.isNotEmpty
-                              ? () => _launchMiAuth(ref, host.value)
-                              : null,
-                          icon: const Icon(Icons.open_in_browser),
-                          label: Text(t.aria.authenticate),
-                        ),
-                      ],
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              onPressed: () async {
+                                final server = await showDialog<String>(
+                                  context: context,
+                                  builder: (context) =>
+                                      const MisskeyServerListDialog(),
+                                );
+                                if (server != null) {
+                                  controller.text = server;
+                                }
+                              },
+                              child: Text(t.aria.findServer),
+                            ),
+                          ),
+                          const SizedBox(height: 16.0),
+                          ElevatedButton.icon(
+                            onPressed: host.value.isNotEmpty
+                                ? () => _launchMiAuth(ref, host.value)
+                                : null,
+                            icon: const Icon(Icons.open_in_browser),
+                            label: Text(t.aria.authenticate),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

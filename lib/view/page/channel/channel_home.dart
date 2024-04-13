@@ -5,6 +5,7 @@ import '../../../constant/colors.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/image_dialog.dart';
 import '../../widget/image_widget.dart';
@@ -30,6 +31,9 @@ class ChannelHome extends ConsumerWidget {
     }
     final bannerUrl = channel.bannerUrl?.toString();
     final description = channel.description;
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
     return RefreshIndicator(
       onRefresh: () =>
           ref.refresh(channelNotifierProvider(account, channelId).future),
@@ -181,36 +185,64 @@ class ChannelHome extends ConsumerWidget {
                 ),
               ),
               if (description != null)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Mfm(account: account, text: description),
+                Center(
+                  child: Container(
+                    width: 800.0,
+                    margin: const EdgeInsets.all(8.0),
+                    child: Card(
+                      color: colors.panel,
+                      elevation: 0.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Mfm(account: account, text: description),
+                      ),
+                    ),
+                  ),
                 ),
               if (channel.pinnedNoteIds.isNotEmpty) ...[
-                const Divider(),
-                Row(
-                  children: [
-                    const SizedBox(width: 8.0),
-                    const Icon(
-                      Icons.push_pin,
-                      color: pinColor,
+                Center(
+                  child: Container(
+                    width: 800.0,
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.push_pin,
+                          size: DefaultTextStyle.of(context).style.fontSize,
+                          color: pinColor,
+                        ),
+                        const SizedBox(width: 2.0),
+                        Expanded(
+                          child: Text(
+                            t.misskey.pinnedNote,
+                            style: const TextStyle(color: pinColor),
+                          ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: 2.0),
-                    Text(
-                      t.misskey.pinnedNote,
-                      style: const TextStyle(color: pinColor),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ],
           ),
-          SliverList.separated(
-            itemBuilder: (context, index) => NoteWidget(
-              account: account,
-              noteId: channel.pinnedNoteIds[index],
-              withHardMute: false,
+          SliverList.builder(
+            itemBuilder: (context, index) => Center(
+              child: Container(
+                width: 800.0,
+                margin: const EdgeInsets.all(8.0),
+                child: Card(
+                  color: colors.panel,
+                  elevation: 0.0,
+                  clipBehavior: Clip.hardEdge,
+                  child: NoteWidget(
+                    account: account,
+                    noteId: channel.pinnedNoteIds[index],
+                    withHardMute: false,
+                  ),
+                ),
+              ),
             ),
-            separatorBuilder: (context, index) => const Divider(),
             itemCount: channel.pinnedNoteIds.length,
           ),
         ],

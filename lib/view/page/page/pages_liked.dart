@@ -28,6 +28,7 @@ class PagesLiked extends ConsumerWidget {
       loadMore: (skipError) => ref
           .read(likedPagesNotifierProvider(account).notifier)
           .loadMore(skipError: skipError),
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

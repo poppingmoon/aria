@@ -37,6 +37,7 @@ class UserGallery extends ConsumerWidget {
             userGalleryPostsNotifierProvider(account, userId).notifier,
           )
           .loadMore(skipError: skipError),
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

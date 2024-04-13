@@ -31,7 +31,7 @@ class ExploreRoles extends ConsumerWidget {
                         account: account,
                         role: manualRoles[index],
                         onTap: () => context
-                            .push('$account/roles/${manualRoles[index].id}'),
+                            .push('/$account/roles/${manualRoles[index].id}'),
                       ),
                       separatorBuilder: (_, __) => const Divider(height: 0.0),
                       itemCount: manualRoles.length,

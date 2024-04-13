@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_provider.dart';
@@ -79,8 +80,6 @@ class NotePage extends HookConsumerWidget {
             ),
           )
         : null;
-    final nextNotes =
-        nextNotesState?.valueOrNull?.items.reversed.toList() ?? [];
     final showUserPreviousNotes = useState(false);
     final showTimelinePreviousNotes = useState(false);
     final showPreviousNotes =
@@ -95,7 +94,6 @@ class NotePage extends HookConsumerWidget {
             ),
           )
         : null;
-    final previousNotes = previousNotesState?.valueOrNull?.items ?? [];
     final controller = useScrollController();
     useEffect(
       () {
@@ -157,195 +155,275 @@ class NotePage extends HookConsumerWidget {
           ),
         ],
       ),
-      body: CustomScrollView(
-        controller: controller,
-        center: centerKey,
-        slivers: [
-          if (nextNotesState != null) ...[
-            SliverToBoxAdapter(
-              child: PaginationBottomWidget(
-                paginationState: nextNotesState,
-                loadMore: () => ref
-                    .read(
-                      timelineNotesAfterNoteNotifierProvider(
-                        showTimelineNextNotes.value && tabSettings != null
-                            ? tabSettings
-                            : TabSettings.user(account, note.userId),
-                        sinceId: noteId,
-                      ).notifier,
-                    )
-                    .loadMore(skipError: true),
-                reversed: true,
-              ),
-            ),
-            SliverList.separated(
-              itemBuilder: (context, index) => NoteWidget(
-                account: account,
-                noteId: nextNotes[index].id,
-              ),
-              separatorBuilder: (context, index) => const Divider(height: 0),
-              itemCount: nextNotes.length,
-            ),
-            const SliverToBoxAdapter(child: Divider()),
-          ] else
-            SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (tabSettings != null)
-                    IconButton(
-                      onPressed: () => showTimelineNextNotes.value = true,
-                      icon: Row(
-                        children: [
-                          const Icon(Icons.keyboard_arrow_up),
-                          if (isChannelNote)
-                            const Icon(Icons.tv)
-                          else
-                            const Icon(Icons.timeline),
-                        ],
+      body: Center(
+        child: Container(
+          width: 800.0,
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: CustomScrollView(
+            controller: controller,
+            center: centerKey,
+            slivers: [
+              if (nextNotesState != null) ...[
+                SliverToBoxAdapter(
+                  child: PaginationBottomWidget(
+                    paginationState: nextNotesState,
+                    loadMore: () => ref
+                        .read(
+                          timelineNotesAfterNoteNotifierProvider(
+                            showTimelineNextNotes.value && tabSettings != null
+                                ? tabSettings
+                                : TabSettings.user(account, note.userId),
+                            sinceId: noteId,
+                          ).notifier,
+                        )
+                        .loadMore(skipError: true),
+                    reversed: true,
+                  ),
+                ),
+                if (nextNotesState.valueOrNull
+                    case PaginationState(items: final notes))
+                  if (notes.isNotEmpty) ...[
+                    SliverToBoxAdapter(
+                      child: Container(
+                        height: 8.0,
+                        margin: const EdgeInsets.only(top: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
                       ),
                     ),
-                  IconButton(
-                    onPressed: () => showUserNextNotes.value = true,
-                    icon: const Row(
-                      children: [
-                        Icon(Icons.keyboard_arrow_up),
-                        Icon(Icons.person),
-                      ],
+                    SliverList.separated(
+                      itemBuilder: (context, index) => Material(
+                        color: colors.panel,
+                        child: NoteWidget(
+                          account: account,
+                          noteId: notes[notes.length - index - 1].id,
+                        ),
+                      ),
+                      separatorBuilder: (context, index) =>
+                          const Divider(height: 1.0),
+                      itemCount: notes.length,
                     ),
-                  ),
-                ],
-              ),
-            ),
-          SliverToBoxAdapter(
-            key: centerKey,
-            child: remoteUrl != null
-                ? Card(
-                    margin: const EdgeInsets.all(8.0),
-                    color: colors.infoWarnBg,
-                    elevation: 0.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Text.rich(
-                              TextSpan(
-                                children: [
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    child: Icon(
-                                      Icons.warning,
-                                      color: colors.infoWarnFg,
-                                    ),
-                                  ),
-                                  TextSpan(
-                                    text: t.misskey.remoteUserCaution,
-                                    style: TextStyle(
-                                      color: colors.infoWarnFg,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
+                    SliverToBoxAdapter(
+                      child: Container(
+                        height: 8.0,
+                        margin: const EdgeInsets.only(bottom: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(8.0),
+                            bottomRight: Radius.circular(8.0),
                           ),
-                          Row(
-                            mainAxisSize: MainAxisSize.min,
+                          color: colors.panel,
+                        ),
+                      ),
+                    ),
+                  ],
+              ] else
+                SliverToBoxAdapter(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (tabSettings != null)
+                        IconButton(
+                          onPressed: () => showTimelineNextNotes.value = true,
+                          icon: Row(
                             children: [
-                              TextButton(
-                                onPressed: () => launchUrl(
-                                  remoteUrl,
-                                  mode: LaunchMode.externalApplication,
-                                ),
-                                child: Text(t.misskey.showOnRemote),
-                              ),
-                              if (remoteNoteId != null)
-                                TextButton(
-                                  onPressed: () {
-                                    ref
-                                        .read(
-                                          emojisNotifierProvider(
-                                            remoteUrl.host,
-                                          ).notifier,
-                                        )
-                                        .fetchIfNeeded();
-                                    context.push(
-                                      '/${remoteUrl.host}/notes/$remoteNoteId',
-                                    );
-                                  },
-                                  child: Text(t.aria.openAsGuest),
-                                ),
+                              const Icon(Icons.keyboard_arrow_up),
+                              if (isChannelNote)
+                                const Icon(Icons.tv)
+                              else
+                                const Icon(Icons.timeline),
                             ],
                           ),
-                        ],
+                        ),
+                      IconButton(
+                        onPressed: () => showUserNextNotes.value = true,
+                        icon: const Row(
+                          children: [
+                            Icon(Icons.keyboard_arrow_up),
+                            Icon(Icons.person),
+                          ],
+                        ),
                       ),
-                    ),
-                  )
-                : const SizedBox.shrink(),
-          ),
-          SliverToBoxAdapter(
-            child: NoteDetailedWidget(
-              account: account,
-              noteId: noteId,
-            ),
-          ),
-          if (previousNotesState != null) ...[
-            const SliverToBoxAdapter(child: Divider()),
-            SliverList.separated(
-              itemBuilder: (context, index) => NoteWidget(
-                account: account,
-                noteId: previousNotes[index].id,
-              ),
-              separatorBuilder: (context, index) => const Divider(height: 0),
-              itemCount: previousNotes.length,
-            ),
-            SliverToBoxAdapter(
-              child: PaginationBottomWidget(
-                paginationState: previousNotesState,
-                loadMore: () => ref
-                    .read(
-                      timelineNotesNotifierProvider(
-                        showTimelinePreviousNotes.value && tabSettings != null
-                            ? tabSettings
-                            : TabSettings.user(account, note.userId),
-                        untilId: noteId,
-                      ).notifier,
-                    )
-                    .loadMore(skipError: true),
-              ),
-            ),
-          ] else
-            SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (tabSettings != null)
-                    IconButton(
-                      onPressed: () => showTimelinePreviousNotes.value = true,
-                      icon: Row(
-                        children: [
-                          const Icon(Icons.keyboard_arrow_down),
-                          if (isChannelNote)
-                            const Icon(Icons.tv)
-                          else
-                            const Icon(Icons.timeline),
-                        ],
-                      ),
-                    ),
-                  IconButton(
-                    onPressed: () => showUserPreviousNotes.value = true,
-                    icon: const Row(
-                      children: [
-                        Icon(Icons.keyboard_arrow_down),
-                        Icon(Icons.person),
-                      ],
-                    ),
+                    ],
                   ),
-                ],
+                ),
+              SliverToBoxAdapter(
+                key: centerKey,
+                child: remoteUrl != null
+                    ? Card(
+                        margin: const EdgeInsets.symmetric(vertical: 8.0),
+                        color: colors.infoWarnBg,
+                        elevation: 0.0,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text.rich(
+                                  TextSpan(
+                                    children: [
+                                      WidgetSpan(
+                                        alignment: PlaceholderAlignment.middle,
+                                        child: Icon(
+                                          Icons.warning,
+                                          color: colors.infoWarnFg,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: t.misskey.remoteUserCaution,
+                                        style: TextStyle(
+                                          color: colors.infoWarnFg,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  TextButton(
+                                    onPressed: () => launchUrl(
+                                      remoteUrl,
+                                      mode: LaunchMode.externalApplication,
+                                    ),
+                                    child: Text(t.misskey.showOnRemote),
+                                  ),
+                                  if (remoteNoteId != null)
+                                    TextButton(
+                                      onPressed: () {
+                                        ref
+                                            .read(
+                                              emojisNotifierProvider(
+                                                remoteUrl.host,
+                                              ).notifier,
+                                            )
+                                            .fetchIfNeeded();
+                                        context.push(
+                                          '/${remoteUrl.host}/notes/$remoteNoteId',
+                                        );
+                                      },
+                                      child: Text(t.aria.openAsGuest),
+                                    ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
-            ),
-        ],
+              SliverToBoxAdapter(
+                child: Card(
+                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  color: colors.panel,
+                  elevation: 0.0,
+                  clipBehavior: Clip.hardEdge,
+                  child: NoteDetailedWidget(
+                    account: account,
+                    noteId: noteId,
+                  ),
+                ),
+              ),
+              if (previousNotesState != null) ...[
+                if (previousNotesState.valueOrNull
+                    case PaginationState(items: final notes))
+                  if (notes.isNotEmpty) ...[
+                    SliverToBoxAdapter(
+                      child: Container(
+                        height: 8.0,
+                        margin: const EdgeInsets.only(top: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
+                      ),
+                    ),
+                    SliverList.separated(
+                      itemBuilder: (context, index) => Material(
+                        color: colors.panel,
+                        child: NoteWidget(
+                          account: account,
+                          noteId: notes[index].id,
+                        ),
+                      ),
+                      separatorBuilder: (context, index) =>
+                          const Divider(height: 0.0),
+                      itemCount: notes.length,
+                    ),
+                    SliverToBoxAdapter(
+                      child: Container(
+                        height: 8.0,
+                        margin: const EdgeInsets.only(bottom: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(8.0),
+                            bottomRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
+                      ),
+                    ),
+                  ],
+                SliverToBoxAdapter(
+                  child: PaginationBottomWidget(
+                    paginationState: previousNotesState,
+                    loadMore: () => ref
+                        .read(
+                          timelineNotesNotifierProvider(
+                            showTimelinePreviousNotes.value &&
+                                    tabSettings != null
+                                ? tabSettings
+                                : TabSettings.user(account, note.userId),
+                            untilId: noteId,
+                          ).notifier,
+                        )
+                        .loadMore(skipError: true),
+                  ),
+                ),
+              ] else
+                SliverToBoxAdapter(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (tabSettings != null)
+                        IconButton(
+                          onPressed: () =>
+                              showTimelinePreviousNotes.value = true,
+                          icon: Row(
+                            children: [
+                              const Icon(Icons.keyboard_arrow_down),
+                              if (isChannelNote)
+                                const Icon(Icons.tv)
+                              else
+                                const Icon(Icons.timeline),
+                            ],
+                          ),
+                        ),
+                      IconButton(
+                        onPressed: () => showUserPreviousNotes.value = true,
+                        icon: const Row(
+                          children: [
+                            Icon(Icons.keyboard_arrow_down),
+                            Icon(Icons.person),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -6,6 +6,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
 import '../../provider/api/antennas_notifier_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../dialog/antenna_settings_dialog.dart';
 import '../widget/error_message.dart';
 
@@ -17,28 +18,72 @@ class AntennasPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final antennas = ref.watch(antennasNotifierProvider(account));
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.antennas)),
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(antennasNotifierProvider(account).future),
-        child: switch (antennas) {
-          AsyncValue(valueOrNull: final antennas?) => antennas.isEmpty
-              ? Center(child: Text(t.misskey.nothing))
-              : ListView.separated(
-                  itemBuilder: (context, index) => ListTile(
-                    title: Text(antennas[index].name),
-                    trailing: const Icon(Icons.navigate_next),
-                    onTap: () => context
-                        .push('/$account/antennas/${antennas[index].id}'),
+        child: Center(
+          child: switch (antennas) {
+            AsyncValue(valueOrNull: final antennas?) => antennas.isEmpty
+                ? Text(t.misskey.nothing)
+                : Container(
+                    width: 800.0,
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ListTileTheme(
+                      tileColor: colors.panel,
+                      child: ListView(
+                        children: [
+                          Container(
+                            height: 8.0,
+                            margin: const EdgeInsets.only(top: 8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(8.0),
+                                topRight: Radius.circular(8.0),
+                              ),
+                              color: colors.panel,
+                            ),
+                          ),
+                          ...ListTile.divideTiles(
+                            context: context,
+                            tiles: antennas.map(
+                              (antenna) => ListTile(
+                                title: Text(antenna.name),
+                                subtitle: Text(
+                                  antenna.keywords
+                                      .map((line) => line.join(' '))
+                                      .join(' | '),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                                onTap: () => context
+                                    .push('/$account/antennas/${antenna.id}'),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: 8.0,
+                            margin: const EdgeInsets.only(bottom: 8.0),
+                            decoration: BoxDecoration(
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(8.0),
+                                bottomRight: Radius.circular(8.0),
+                              ),
+                              color: colors.panel,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  separatorBuilder: (_, __) => const Divider(height: 0.0),
-                  itemCount: antennas.length,
-                ),
-          AsyncValue(:final error?, :final stackTrace) =>
-            ErrorMessage(error: error, stackTrace: stackTrace),
-          _ => const Center(child: CircularProgressIndicator()),
-        },
+            AsyncValue(:final error?, :final stackTrace) =>
+              ErrorMessage(error: error, stackTrace: stackTrace),
+            _ => const CircularProgressIndicator(),
+          },
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

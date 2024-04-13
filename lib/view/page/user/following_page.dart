@@ -34,6 +34,8 @@ class FollowingPage extends ConsumerWidget {
         loadMore: (skipError) => ref
             .read(userFollowingNotifierProvider(account, userId).notifier)
             .loadMore(skipError: skipError),
+        panel: false,
+        noItemsLabel: t.misskey.noUsers,
       ),
     );
   }

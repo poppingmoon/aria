@@ -2,7 +2,7 @@ import 'package:flutter/material.dart' hide Page;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -11,11 +11,14 @@ import '../../../model/account.dart';
 import '../../../provider/api/page_provider.dart';
 import '../../../provider/api/post_notifier_provider.dart';
 import '../../../provider/api/user_pages_notifier_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/extract_url.dart';
+import '../../dialog/image_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
+import '../../widget/image_widget.dart';
 import '../../widget/like_button.dart';
 import '../../widget/media_list.dart';
 import '../../widget/mfm.dart';
@@ -24,7 +27,9 @@ import '../../widget/note_widget.dart';
 import '../../widget/page_preview.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/url_preview.dart';
+import '../../widget/user_avatar.dart';
 import '../../widget/user_tile.dart';
+import '../../widget/username_widget.dart';
 
 class PagePage extends ConsumerWidget {
   const PagePage({
@@ -102,9 +107,50 @@ class PagePage extends ConsumerWidget {
         username: username,
       ),
     );
+    final url = Uri.https(
+      account.host,
+      '@${page.valueOrNull?.user.username}/pages/${page.valueOrNull?.name}',
+    );
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
-      appBar: AppBar(title: Text(page.valueOrNull?.title ?? '')),
+      appBar: AppBar(
+        title: Text(page.valueOrNull?.title ?? ''),
+        actions: [
+          PopupMenuButton<void>(
+            itemBuilder: (context) => [
+              if (!account.isGuest)
+                PopupMenuItem(
+                  onTap: () {
+                    ref
+                        .read(
+                          postNotifierProvider(account).notifier,
+                        )
+                        .setText('${page.valueOrNull?.title} $url');
+                    context.push('/$account/post');
+                  },
+                  child: Text(t.misskey.shareWithNote),
+                ),
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+              PopupMenuItem(
+                onTap: () => launchUrl(
+                  url,
+                  mode: LaunchMode.externalApplication,
+                ),
+                child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => Share.share('${page.valueOrNull?.title} $url'),
+                child: Text(t.misskey.share),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(
           pageNotifierProvider(
@@ -114,30 +160,88 @@ class PagePage extends ConsumerWidget {
             username: username,
           ).future,
         ),
-        child: switch (page) {
-          AsyncValue(valueOrNull: final page?) => Builder(
-              builder: (context) {
-                final url = Uri.https(
-                  account.host,
-                  '@${page.user.username}/pages/${page.name}',
-                );
-                return ListView(
+        child: Center(
+          child: switch (page) {
+            AsyncValue(valueOrNull: final page?) => Container(
+                width: 800.0,
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ListView(
                   children: [
                     if (page case Page(:final eyeCatchingImage?))
-                      MediaList(
-                        account: account,
-                        files: [eyeCatchingImage],
-                        user: page.user,
+                      Container(
+                        margin: const EdgeInsets.only(top: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
+                        clipBehavior: Clip.antiAlias,
+                        child: InkWell(
+                          onTap: () => showDialog<void>(
+                            context: context,
+                            builder: (context) =>
+                                ImageDialog(url: eyeCatchingImage.url),
+                          ),
+                          child: ImageWidget(
+                            url: eyeCatchingImage.url,
+                            blurHash: eyeCatchingImage.blurhash,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    else
+                      Container(
+                        height: 8.0,
+                        margin: const EdgeInsets.only(top: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
+                        clipBehavior: Clip.antiAlias,
                       ),
+                    ListTile(
+                      title: Text(page.title),
+                      subtitle: Row(
+                        children: [
+                          UserAvatar(
+                            user: page.user,
+                            onTap: () =>
+                                context.push('/$account/users/${page.userId}'),
+                          ),
+                          const SizedBox(width: 2.0),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: UsernameWidget(
+                                account: account,
+                                user: page.user,
+                                onTap: () => context
+                                    .push('/$account/users/${page.userId}'),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      tileColor: colors.panel,
+                    ),
                     ...page.content.map(
-                      (block) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: _buildBlock(context, page, block),
+                      (block) => Material(
+                        color: colors.panel,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: _buildBlock(context, page, block),
+                        ),
                       ),
                     ),
-                    const Divider(),
-                    Padding(
+                    ColoredBox(color: colors.panel, child: const Divider()),
+                    Container(
                       padding: const EdgeInsets.all(8.0),
+                      color: colors.panel,
                       child: Row(
                         children: [
                           LikeButton(
@@ -201,19 +305,23 @@ class PagePage extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    const Divider(),
-                    UserTile(
-                      account: account,
-                      user: page.user,
-                      avatarSize: 50.0,
-                      trailing:
-                          FollowButton(account: account, userId: page.userId),
-                      onTap: () =>
-                          context.push('/$account/users/${page.user.id}'),
+                    ColoredBox(color: colors.panel, child: const Divider()),
+                    Material(
+                      color: colors.panel,
+                      child: UserTile(
+                        account: account,
+                        user: page.user,
+                        avatarSize: 50.0,
+                        trailing:
+                            FollowButton(account: account, userId: page.userId),
+                        onTap: () =>
+                            context.push('/$account/users/${page.user.id}'),
+                      ),
                     ),
-                    const Divider(),
-                    Padding(
+                    ColoredBox(color: colors.panel, child: const Divider()),
+                    Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      color: colors.panel,
                       child: DefaultTextStyle.merge(
                         style: TextStyle(
                           color: Theme.of(context)
@@ -238,8 +346,9 @@ class PagePage extends ConsumerWidget {
                       ),
                     ),
                     if (page.updatedAt != page.createdAt)
-                      Padding(
+                      Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        color: colors.panel,
                         child: DefaultTextStyle.merge(
                           style: TextStyle(
                             color: Theme.of(context)
@@ -263,10 +372,18 @@ class PagePage extends ConsumerWidget {
                           ),
                         ),
                       ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: AdWidget(account: account),
+                    Container(
+                      height: 8.0,
+                      margin: const EdgeInsets.only(bottom: 8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(8.0),
+                          bottomRight: Radius.circular(8.0),
+                        ),
+                        color: colors.panel,
+                      ),
                     ),
+                    AdWidget(account: account),
                     Builder(
                       builder: (context) => ExpansionTile(
                         leading: const Icon(Icons.schedule),
@@ -291,13 +408,13 @@ class PagePage extends ConsumerWidget {
                       ),
                     ),
                   ],
-                );
-              },
-            ),
-          AsyncValue(:final error?, :final stackTrace) =>
-            ErrorMessage(error: error, stackTrace: stackTrace),
-          _ => const Center(child: CircularProgressIndicator()),
-        },
+                ),
+              ),
+            AsyncValue(:final error?, :final stackTrace) =>
+              ErrorMessage(error: error, stackTrace: stackTrace),
+            _ => const CircularProgressIndicator(),
+          },
+        ),
       ),
     );
   }

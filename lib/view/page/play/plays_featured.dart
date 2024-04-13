@@ -6,6 +6,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/featured_pages_provider.dart';
 import '../../../provider/api/featured_plays_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../widget/error_message.dart';
 import '../../widget/play_preview.dart';
 
@@ -17,28 +18,66 @@ class PlaysFeatured extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final plays = ref.watch(featuredPlaysProvider(account));
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(featuredPagesProvider(account).future),
-      child: switch (plays) {
-        AsyncValue(valueOrNull: final plays?) => plays.isEmpty
-            ? Center(child: Text(t.misskey.nothing))
-            : ListView.separated(
-                itemBuilder: (context, index) => PlayPreview(
-                  account: account,
-                  play: plays[index],
-                  onTap: () => launchUrl(
-                    Uri.https(account.host, 'play/${plays[index].id}'),
-                    mode: LaunchMode.externalApplication,
+      child: Center(
+        child: switch (plays) {
+          AsyncValue(valueOrNull: final plays?) => plays.isEmpty
+              ? Text(t.misskey.nothing)
+              : Container(
+                  width: 800.0,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListTileTheme(
+                    tileColor: colors.panel,
+                    child: ListView(
+                      children: [
+                        Container(
+                          height: 8.0,
+                          margin: const EdgeInsets.only(top: 8.0),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              topRight: Radius.circular(8.0),
+                            ),
+                            color: colors.panel,
+                          ),
+                        ),
+                        ...ListTile.divideTiles(
+                          context: context,
+                          tiles: plays.map(
+                            (play) => PlayPreview(
+                              account: account,
+                              play: play,
+                              onTap: () => launchUrl(
+                                Uri.https(account.host, 'play/${play.id}'),
+                                mode: LaunchMode.externalApplication,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 8.0,
+                          margin: const EdgeInsets.only(bottom: 8.0),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                            ),
+                            color: colors.panel,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                separatorBuilder: (_, __) => const Divider(height: 0.0),
-                itemCount: plays.length,
-              ),
-        AsyncValue(:final error?, :final stackTrace) =>
-          ErrorMessage(error: error, stackTrace: stackTrace),
-        _ => const Center(child: CircularProgressIndicator()),
-      },
+          AsyncValue(:final error?, :final stackTrace) =>
+            ErrorMessage(error: error, stackTrace: stackTrace),
+          _ => const CircularProgressIndicator(),
+        },
+      ),
     );
   }
 }

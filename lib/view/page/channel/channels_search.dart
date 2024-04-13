@@ -97,7 +97,7 @@ class ChannelsSearch extends HookConsumerWidget {
             ).notifier,
           )
           .loadMore(skipError: skipError),
-      showDivider: false,
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

@@ -23,24 +23,29 @@ class ChannelsFeatured extends ConsumerWidget {
     final channels = ref.watch(featuredChannelsProvider(account));
     return RefreshIndicator(
       onRefresh: () => ref.refresh(featuredChannelsProvider(account).future),
-      child: switch (channels) {
-        AsyncValue(valueOrNull: final channels?) => channels.isEmpty
-            ? Center(child: Text(t.misskey.nothing))
-            : ListView.separated(
-                itemBuilder: (context, index) => ChannelPreview(
-                  account: account,
-                  channel: channels[index],
-                  onTap: onChannelTap != null
-                      ? () => onChannelTap?.call(channels[index])
-                      : null,
+      child: Center(
+        child: switch (channels) {
+          AsyncValue(valueOrNull: final channels?) => channels.isEmpty
+              ? Text(t.misskey.nothing)
+              : Container(
+                  width: 800.0,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => ChannelPreview(
+                      account: account,
+                      channel: channels[index],
+                      onTap: onChannelTap != null
+                          ? () => onChannelTap?.call(channels[index])
+                          : null,
+                    ),
+                    itemCount: channels.length,
+                  ),
                 ),
-                separatorBuilder: (_, __) => const Divider(height: 0.0),
-                itemCount: channels.length,
-              ),
-        AsyncValue(:final error?, :final stackTrace) =>
-          ErrorMessage(error: error, stackTrace: stackTrace),
-        _ => const Center(child: CircularProgressIndicator()),
-      },
+          AsyncValue(:final error?, :final stackTrace) =>
+            ErrorMessage(error: error, stackTrace: stackTrace),
+          _ => const CircularProgressIndicator(),
+        },
+      ),
     );
   }
 }

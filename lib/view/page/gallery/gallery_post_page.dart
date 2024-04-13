@@ -39,7 +39,48 @@ class GalleryPostPage extends ConsumerWidget {
     final url = Uri.https(account.host, 'gallery/$postId');
 
     return Scaffold(
-      appBar: AppBar(title: Text(post.valueOrNull?.title ?? '')),
+      appBar: AppBar(
+        title: Text(post.valueOrNull?.title ?? ''),
+        actions: [
+          PopupMenuButton<void>(
+            itemBuilder: (context) => [
+              if (!account.isGuest) ...[
+                if (post.valueOrNull?.user.username == account.username)
+                  PopupMenuItem(
+                    onTap: () => context.push('/$account/gallery/$postId/edit'),
+                    child: Text(t.misskey.edit),
+                  ),
+                PopupMenuItem(
+                  onTap: () {
+                    ref
+                        .read(
+                          postNotifierProvider(account).notifier,
+                        )
+                        .setText('${post.valueOrNull?.title} $url');
+                    context.push('/$account/post');
+                  },
+                  child: Text(t.misskey.shareWithNote),
+                ),
+              ],
+              PopupMenuItem(
+                onTap: () => copyToClipboard(context, url.toString()),
+                child: Text(t.misskey.copyLink),
+              ),
+              PopupMenuItem(
+                onTap: () => launchUrl(
+                  url,
+                  mode: LaunchMode.externalApplication,
+                ),
+                child: Text(t.aria.openInBrowser),
+              ),
+              PopupMenuItem(
+                onTap: () => Share.share('${post.valueOrNull?.title} $url'),
+                child: Text(t.misskey.share),
+              ),
+            ],
+          ),
+        ],
+      ),
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(
           galleryPostNotifierProvider(account, postId).future,

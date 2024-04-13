@@ -75,96 +75,99 @@ class TokenLoginPage extends HookConsumerWidget {
             ),
             Expanded(
               child: Center(
-                child: Card(
-                  margin: const EdgeInsets.all(16.0),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        DecoratedBox(
-                          decoration: const BoxDecoration(
-                            color: Color(0xffdddddd),
-                            shape: BoxShape.circle,
-                          ),
-                          child: iconUrl != null
-                              ? ClipRRect(
-                                  borderRadius: BorderRadius.circular(50.0),
-                                  child: ImageWidget(
-                                    url: iconUrl,
-                                    width: 50.0,
-                                    height: 50.0,
-                                  ),
-                                )
-                              : const SizedBox(width: 50.0, height: 50.0),
-                        ),
-                        MisskeyServerAutocomplete(
-                          controller: hostController,
-                          focusNode: hostFocusNode,
-                          autofocus: true,
-                          onSubmitted: (_) => tokenFocusNode.requestFocus(),
-                        ),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: TextButton(
-                            onPressed: () async {
-                              final host = await showDialog<String>(
-                                context: context,
-                                builder: (context) =>
-                                    const MisskeyServerListDialog(),
-                              );
-                              if (host != null) {
-                                hostController.text = host;
-                                if (!context.mounted) return;
-                                tokenFocusNode.requestFocus();
-                              }
-                            },
-                            child: Text(t.aria.findServer),
-                          ),
-                        ),
-                        Shortcuts(
-                          shortcuts: {
-                            ...disablingTextShortcuts,
-                            submitActivator: VoidCallbackIntent(
-                              () => hostController.text.isNotEmpty &&
-                                      tokenController.text.isNotEmpty
-                                  ? _login(
-                                      ref,
-                                      hostController.text,
-                                      tokenController.text,
-                                    )
-                                  : null,
+                child: SizedBox(
+                  width: 800.0,
+                  child: Card(
+                    margin: const EdgeInsets.all(16.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          DecoratedBox(
+                            decoration: const BoxDecoration(
+                              color: Color(0xffdddddd),
+                              shape: BoxShape.circle,
                             ),
-                          },
-                          child: TextField(
-                            controller: tokenController,
-                            focusNode: tokenFocusNode,
-                            decoration: InputDecoration(
-                              labelText: t.aria.accessToken,
-                              prefixIcon: const Icon(Icons.key),
-                              suffixIcon: IconButton(
-                                onPressed: () => tokenController.clear(),
-                                icon: const Icon(Icons.close),
-                              ),
-                            ),
-                            keyboardType: TextInputType.visiblePassword,
-                            textInputAction: TextInputAction.done,
+                            child: iconUrl != null
+                                ? ClipRRect(
+                                    borderRadius: BorderRadius.circular(50.0),
+                                    child: ImageWidget(
+                                      url: iconUrl,
+                                      width: 50.0,
+                                      height: 50.0,
+                                    ),
+                                  )
+                                : const SizedBox(width: 50.0, height: 50.0),
                           ),
-                        ),
-                        const SizedBox(height: 16.0),
-                        ElevatedButton.icon(
-                          onPressed:
-                              host.value.isNotEmpty && token.value.isNotEmpty
-                                  ? () => _login(
+                          MisskeyServerAutocomplete(
+                            controller: hostController,
+                            focusNode: hostFocusNode,
+                            autofocus: true,
+                            onSubmitted: (_) => tokenFocusNode.requestFocus(),
+                          ),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              onPressed: () async {
+                                final host = await showDialog<String>(
+                                  context: context,
+                                  builder: (context) =>
+                                      const MisskeyServerListDialog(),
+                                );
+                                if (host != null) {
+                                  hostController.text = host;
+                                  if (!context.mounted) return;
+                                  tokenFocusNode.requestFocus();
+                                }
+                              },
+                              child: Text(t.aria.findServer),
+                            ),
+                          ),
+                          Shortcuts(
+                            shortcuts: {
+                              ...disablingTextShortcuts,
+                              submitActivator: VoidCallbackIntent(
+                                () => hostController.text.isNotEmpty &&
+                                        tokenController.text.isNotEmpty
+                                    ? _login(
                                         ref,
                                         hostController.text,
                                         tokenController.text,
                                       )
-                                  : null,
-                          icon: const Icon(Icons.key),
-                          label: Text(t.misskey.login),
-                        ),
-                      ],
+                                    : null,
+                              ),
+                            },
+                            child: TextField(
+                              controller: tokenController,
+                              focusNode: tokenFocusNode,
+                              decoration: InputDecoration(
+                                labelText: t.aria.accessToken,
+                                prefixIcon: const Icon(Icons.key),
+                                suffixIcon: IconButton(
+                                  onPressed: () => tokenController.clear(),
+                                  icon: const Icon(Icons.close),
+                                ),
+                              ),
+                              keyboardType: TextInputType.visiblePassword,
+                              textInputAction: TextInputAction.done,
+                            ),
+                          ),
+                          const SizedBox(height: 16.0),
+                          ElevatedButton.icon(
+                            onPressed:
+                                host.value.isNotEmpty && token.value.isNotEmpty
+                                    ? () => _login(
+                                          ref,
+                                          hostController.text,
+                                          tokenController.text,
+                                        )
+                                    : null,
+                            icon: const Icon(Icons.key),
+                            label: Text(t.misskey.login),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),

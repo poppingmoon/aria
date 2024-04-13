@@ -19,23 +19,28 @@ class PagesFeatured extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(featuredPagesProvider(account).future),
-      child: switch (pages) {
-        AsyncValue(valueOrNull: final pages?) => pages.isEmpty
-            ? Center(child: Text(t.misskey.nothing))
-            : ListView.separated(
-                itemBuilder: (context, index) => PagePreview(
-                  account: account,
-                  page: pages[index],
-                  onTap: () =>
-                      context.push('/$account/pages/${pages[index].id}'),
+      child: Center(
+        child: switch (pages) {
+          AsyncValue(valueOrNull: final pages?) => pages.isEmpty
+              ? Text(t.misskey.nothing)
+              : Container(
+                  width: 800.0,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => PagePreview(
+                      account: account,
+                      page: pages[index],
+                      onTap: () =>
+                          context.push('/$account/pages/${pages[index].id}'),
+                    ),
+                    itemCount: pages.length,
+                  ),
                 ),
-                separatorBuilder: (_, __) => const Divider(height: 0.0),
-                itemCount: pages.length,
-              ),
-        AsyncValue(:final error?, :final stackTrace) =>
-          ErrorMessage(error: error, stackTrace: stackTrace),
-        _ => const Center(child: CircularProgressIndicator()),
-      },
+          AsyncValue(:final error?, :final stackTrace) =>
+            ErrorMessage(error: error, stackTrace: stackTrace),
+          _ => const CircularProgressIndicator(),
+        },
+      ),
     );
   }
 }

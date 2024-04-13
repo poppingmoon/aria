@@ -6,7 +6,8 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/reactions_notifier_provider.dart';
 import '../../provider/note_provider.dart';
-import 'custom_emoji.dart';
+import 'emoji_sheet.dart';
+import 'emoji_widget.dart';
 import 'paginated_list_view.dart';
 import 'user_tile.dart';
 
@@ -31,45 +32,54 @@ class ReactionUsersSheet extends ConsumerWidget {
       minChildSize: 0.5,
       maxChildSize: 0.8,
       expand: false,
-      builder: (context, scrollController) => PaginatedListView(
-        header: SliverList.list(
-          children: [
-            if (reaction.startsWith(':'))
-              ListTile(
-                title: Align(
-                  alignment: Alignment.centerLeft,
-                  child: CustomEmoji(
+      builder: (context, scrollController) => Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: EmojiWidget(
+                account: account,
+                emoji: reaction,
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .apply(fontSizeFactor: 1.5),
+                emojis: {...?note?.emojis, ...?note?.reactionEmojis},
+                onTap: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) => EmojiSheet(
                     account: account,
                     emoji: reaction,
-                    height: 32.0,
-                    url: note?.reactionEmojis[
-                        reaction.substring(1, reaction.length - 1)],
+                    targetNote: note,
                   ),
                 ),
-                subtitle: Text(reaction),
-              )
-            else
-              ListTile(title: Text(reaction)),
-            const Divider(height: 0.0),
-          ],
-        ),
-        controller: scrollController,
-        paginationState: reactions,
-        itemBuilder: (context, reaction) => UserTile(
-          account: account,
-          user: reaction.user,
-          avatarSize: 50.0,
-          onTap: () => context.push('/$account/users/${reaction.user.id}'),
-        ),
-        onRefresh: () => ref.refresh(
-          reactionsNotifierProvider(account, noteId, reaction).future,
-        ),
-        loadMore: (skipError) => ref
-            .read(
-              reactionsNotifierProvider(account, noteId, reaction).notifier,
-            )
-            .loadMore(skipError: skipError),
-        noItemsLabel: t.misskey.noUsers,
+              ),
+            ),
+          ),
+          Expanded(
+            child: PaginatedListView(
+              controller: scrollController,
+              paginationState: reactions,
+              itemBuilder: (context, reaction) => UserTile(
+                account: account,
+                user: reaction.user,
+                avatarSize: 50.0,
+                onTap: () =>
+                    context.push('/$account/users/${reaction.user.id}'),
+              ),
+              onRefresh: () => ref.refresh(
+                reactionsNotifierProvider(account, noteId, reaction).future,
+              ),
+              loadMore: (skipError) => ref
+                  .read(
+                    reactionsNotifierProvider(account, noteId, reaction)
+                        .notifier,
+                  )
+                  .loadMore(skipError: skipError),
+              noItemsLabel: t.misskey.noUsers,
+            ),
+          ),
+        ],
       ),
     );
   }

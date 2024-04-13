@@ -7,6 +7,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/streaming/note_update_event.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/appear_note_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
@@ -51,31 +52,37 @@ class TimelineNote extends HookConsumerWidget {
     }
     if (!tabSettings.withSensitive) {
       final muted = useState(appearNote.containsSensitiveFile);
+      final colors =
+          ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
       if (muted.value) {
-        return InkWell(
-          onTap: () => muted.value = false,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text.rich(
-              t.aria.userSaysSomethingSensitive(
-                name: TextSpan(
-                  children: buildUsername(
-                    ref,
-                    account: account,
-                    user: appearNote.user,
-                    style: TextStyle(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.7),
+        return Material(
+          color: colors.panel,
+          child: InkWell(
+            onTap: () => muted.value = false,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text.rich(
+                t.aria.userSaysSomethingSensitive(
+                  name: TextSpan(
+                    children: buildUsername(
+                      ref,
+                      account: account,
+                      user: appearNote.user,
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withOpacity(0.7),
+                      ),
                     ),
                   ),
                 ),
+                style: TextStyle(
+                  color:
+                      Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                ),
+                textAlign: TextAlign.center,
               ),
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
-              ),
-              textAlign: TextAlign.center,
             ),
           ),
         );
