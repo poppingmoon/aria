@@ -4,6 +4,7 @@ extension NoteExtension on Note {
   bool get isRenote =>
       renoteId != null &&
       text == null &&
+      replyId == null &&
       cw == null &&
       files.isEmpty &&
       poll == null;

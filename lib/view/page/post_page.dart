@@ -179,7 +179,7 @@ class PostPage extends HookConsumerWidget {
         reply?.visibility != NoteVisibility.specified;
     final canChangeChannel = (renote?.channel?.allowRenoteToExternal ?? true) &&
         reply?.channel == null;
-    final canPost = request.isRenote || request.canPost || attaches.isNotEmpty;
+    final canPost = request.canPost || attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = needsUpload
         ? (t.misskey.upload, Icons.upload)

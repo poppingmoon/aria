@@ -342,7 +342,7 @@ class PostForm extends HookConsumerWidget {
                             tooltip: request.isRenote
                                 ? t.misskey.renote
                                 : t.misskey.send,
-                            onPressed: request.isRenote || request.canPost
+                            onPressed: request.canPost || attaches.isNotEmpty
                                 ? () => _post(ref, focusNode)
                                 : null,
                             icon: Icon(

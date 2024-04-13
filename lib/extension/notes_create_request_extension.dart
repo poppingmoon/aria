@@ -4,12 +4,13 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
   bool get isRenote =>
       renoteId != null &&
       (text?.isEmpty ?? true) &&
+      replyId == null &&
       (cw?.isEmpty ?? true) &&
       (fileIds?.isEmpty ?? true) &&
       poll == null;
 
   bool get canPost =>
-      ((text?.isNotEmpty ?? false) || poll != null) &&
+      ((text?.isNotEmpty ?? false) || poll != null || renoteId != null) &&
       (poll == null ||
           (poll!.choices.length >= 2 &&
               poll!.choices.every((choice) => choice.isNotEmpty)));
