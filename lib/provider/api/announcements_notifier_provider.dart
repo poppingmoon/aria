@@ -21,10 +21,15 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<Iterable<AnnouncementsResponse>> _fetchAnnouncements({
+    String? untilId,
     int? offset,
   }) async {
     return _misskey.announcements(
-      AnnouncementsRequest(isActive: isActive, offset: offset),
+      AnnouncementsRequest(
+        isActive: isActive,
+        untilId: untilId,
+        offset: offset,
+      ),
     );
   }
 
@@ -38,7 +43,10 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response = await _fetchAnnouncements(offset: value.items.length);
+      final response = await _fetchAnnouncements(
+        untilId: value.items.lastOrNull?.id,
+        offset: value.items.length,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
