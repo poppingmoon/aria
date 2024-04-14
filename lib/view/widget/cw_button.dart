@@ -38,7 +38,7 @@ class CwButton extends StatelessWidget {
                     text: [
                       if (note case Note(:final text?))
                         t.misskey.cw_.chars(count: text.length),
-                      if (note.renote != null) t.misskey.quote,
+                      if (note.renoteId != null) t.misskey.quote,
                       if (note.files.isNotEmpty)
                         t.misskey.cw_.files(count: note.files.length),
                       if (note.poll != null) t.misskey.poll,
