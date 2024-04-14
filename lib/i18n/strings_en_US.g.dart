@@ -127,6 +127,7 @@ class _StringsAriaEnUs {
 		url,
 		const TextSpan(text: '.'),
 	]);
+	String get pinToEmojiPicker => 'Pin to emoji picker';
 	String get postConfirm => 'Are you sure you want to post this note?';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
