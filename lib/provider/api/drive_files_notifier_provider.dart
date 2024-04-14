@@ -82,7 +82,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
-  Future<void> uploadAsBinary(
+  Future<void> uploadBinary(
     Uint8List data, {
     String? name,
     String? comment,

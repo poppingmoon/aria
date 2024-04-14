@@ -123,6 +123,16 @@ class DriveSettingsPage extends ConsumerWidget {
                 .read(accountSettingsNotifierProvider(account).notifier)
                 .setKeepOriginalUploading(value),
           ),
+          SwitchListTile(
+            // TODO: Update localizations
+            title: const Text('Keep original filename'),
+            // title: Text(t.misskey.keepOriginalFilename),
+            // subtitle: Text(t.misskey.keepOriginalFilenameDescription),
+            value: settings.keepOriginalFilename,
+            onChanged: (value) => ref
+                .read(accountSettingsNotifierProvider(account).notifier)
+                .setKeepOriginalFilename(value),
+          ),
           if (i != null) ...[
             SwitchListTile(
               title: Text(t.misskey.alwaysMarkSensitive),

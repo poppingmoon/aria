@@ -15,6 +15,7 @@ import '../../provider/api/drive_folders_notifier_provider.dart';
 import '../../provider/file_system_provider.dart';
 import '../../util/compress_image.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/randomize_filename.dart';
 import '../dialog/text_field_dialog.dart';
 
 class DriveCreateSheet extends HookConsumerWidget {
@@ -27,7 +28,11 @@ class DriveCreateSheet extends HookConsumerWidget {
   final Account account;
   final DriveFolder? folder;
 
-  Future<void> _upload(WidgetRef ref, bool keepOriginal) async {
+  Future<void> _upload(
+    WidgetRef ref,
+    bool keepOriginalUploading,
+    bool keepOriginalFilename,
+  ) async {
     final result = await FilePicker.platform.pickFiles(
       type: defaultTargetPlatform == TargetPlatform.iOS
           ? FileType.media
@@ -45,12 +50,14 @@ class DriveCreateSheet extends HookConsumerWidget {
                 await ref.read(fileSystemProvider).file(path).readAsBytes();
             final type = lookupMimeType(path);
             final resized =
-                keepOriginal ? null : await compressImage(data, type);
+                keepOriginalUploading ? null : await compressImage(data, type);
             await ref
                 .read(driveFilesNotifierProvider(account, folder?.id).notifier)
-                .uploadAsBinary(
+                .uploadBinary(
                   resized ?? data,
-                  name: file.name,
+                  name: keepOriginalFilename
+                      ? file.name
+                      : randomizeFilename(file.name),
                 );
           }
         }),
@@ -82,10 +89,16 @@ class DriveCreateSheet extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final keepOriginal = useState(
+    final keepOriginalUploading = useState(
       ref.watch(
         accountSettingsNotifierProvider(account)
             .select((settings) => settings.keepOriginalUploading),
+      ),
+    );
+    final keepOriginalFilename = useState(
+      ref.watch(
+        accountSettingsNotifierProvider(account)
+            .select((settings) => settings.keepOriginalFilename),
       ),
     );
 
@@ -94,13 +107,24 @@ class DriveCreateSheet extends HookConsumerWidget {
       children: [
         SwitchListTile(
           title: Text(t.misskey.keepOriginalUploading),
-          value: keepOriginal.value,
-          onChanged: (value) => keepOriginal.value = value,
+          value: keepOriginalUploading.value,
+          onChanged: (value) => keepOriginalUploading.value = value,
+        ),
+        SwitchListTile(
+          // TODO: Update localizations
+          title: const Text('Keep original filename'),
+          // title: Text(t.misskey.keepOriginalFilename),
+          value: keepOriginalFilename.value,
+          onChanged: (value) => keepOriginalFilename.value = value,
         ),
         ListTile(
           leading: const Icon(Icons.upload),
           title: Text(t.misskey.upload),
-          onTap: () => _upload(ref, keepOriginal.value),
+          onTap: () => _upload(
+            ref,
+            keepOriginalUploading.value,
+            keepOriginalFilename.value,
+          ),
         ),
         ListTile(
           leading: const Icon(Icons.folder),

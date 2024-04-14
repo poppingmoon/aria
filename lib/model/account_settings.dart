@@ -26,6 +26,7 @@ class AccountSettings with _$AccountSettings {
     // Drive
     String? uploadFolder,
     @Default(false) bool keepOriginalUploading,
+    @Default(true) bool keepOriginalFilename,
 
     // UserSelectDialog
     @Default([]) List<String> recentlyUsedUsers,

@@ -4,6 +4,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../util/compress_image.dart';
+import '../../util/randomize_filename.dart';
 import '../account_settings_notifier_provider.dart';
 import 'misskey_provider.dart';
 
@@ -77,13 +78,18 @@ class AttachesNotifier extends _$AttachesNotifier {
                 .keepOriginalUploading
             ? null
             : await compressImage(data, file.type);
+        final filename = ref
+                .read(accountSettingsNotifierProvider(account))
+                .keepOriginalFilename
+            ? file.name
+            : randomizeFilename(file.name);
         final driveFile =
             await ref.read(misskeyProvider(account)).drive.files.createAsBinary(
                   DriveFilesCreateRequest(
                     folderId: ref
                         .read(accountSettingsNotifierProvider(account))
                         .uploadFolder,
-                    name: file.name,
+                    name: filename,
                     isSensitive: file.isSensitive,
                     comment: file.comment,
                     force: true,
