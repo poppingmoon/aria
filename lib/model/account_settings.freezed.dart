@@ -36,7 +36,8 @@ mixin _$AccountSettings {
   List<String> get recentlyUsedEmojis =>
       throw _privateConstructorUsedError; // Drive
   String? get uploadFolder => throw _privateConstructorUsedError;
-  bool get keepOriginalUploading =>
+  bool get keepOriginalUploading => throw _privateConstructorUsedError;
+  bool get keepOriginalFilename =>
       throw _privateConstructorUsedError; // UserSelectDialog
   List<String> get recentlyUsedUsers =>
       throw _privateConstructorUsedError; // PostForm
@@ -67,6 +68,7 @@ abstract class $AccountSettingsCopyWith<$Res> {
       List<String> recentlyUsedEmojis,
       String? uploadFolder,
       bool keepOriginalUploading,
+      bool keepOriginalFilename,
       List<String> recentlyUsedUsers,
       List<String> hashtags});
 }
@@ -96,6 +98,7 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? recentlyUsedEmojis = null,
     Object? uploadFolder = freezed,
     Object? keepOriginalUploading = null,
+    Object? keepOriginalFilename = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
   }) {
@@ -148,6 +151,10 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
           ? _value.keepOriginalUploading
           : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
               as bool,
+      keepOriginalFilename: null == keepOriginalFilename
+          ? _value.keepOriginalFilename
+          : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
+              as bool,
       recentlyUsedUsers: null == recentlyUsedUsers
           ? _value.recentlyUsedUsers
           : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
@@ -181,6 +188,7 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
       List<String> recentlyUsedEmojis,
       String? uploadFolder,
       bool keepOriginalUploading,
+      bool keepOriginalFilename,
       List<String> recentlyUsedUsers,
       List<String> hashtags});
 }
@@ -208,6 +216,7 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? recentlyUsedEmojis = null,
     Object? uploadFolder = freezed,
     Object? keepOriginalUploading = null,
+    Object? keepOriginalFilename = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
   }) {
@@ -260,6 +269,10 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
           ? _value.keepOriginalUploading
           : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
               as bool,
+      keepOriginalFilename: null == keepOriginalFilename
+          ? _value.keepOriginalFilename
+          : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
+              as bool,
       recentlyUsedUsers: null == recentlyUsedUsers
           ? _value._recentlyUsedUsers
           : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
@@ -288,6 +301,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
       final List<String> recentlyUsedEmojis = const [],
       this.uploadFolder,
       this.keepOriginalUploading = false,
+      this.keepOriginalFilename = true,
       final List<String> recentlyUsedUsers = const [],
       final List<String> hashtags = const []})
       : _pinnedEmojisForReaction = pinnedEmojisForReaction,
@@ -357,6 +371,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @override
   @JsonKey()
   final bool keepOriginalUploading;
+  @override
+  @JsonKey()
+  final bool keepOriginalFilename;
 // UserSelectDialog
   final List<String> _recentlyUsedUsers;
 // UserSelectDialog
@@ -382,7 +399,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @override
   String toString() {
-    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
   }
 
   @override
@@ -413,6 +430,8 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 other.uploadFolder == uploadFolder) &&
             (identical(other.keepOriginalUploading, keepOriginalUploading) ||
                 other.keepOriginalUploading == keepOriginalUploading) &&
+            (identical(other.keepOriginalFilename, keepOriginalFilename) ||
+                other.keepOriginalFilename == keepOriginalFilename) &&
             const DeepCollectionEquality()
                 .equals(other._recentlyUsedUsers, _recentlyUsedUsers) &&
             const DeepCollectionEquality().equals(other._hashtags, _hashtags));
@@ -434,6 +453,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
       const DeepCollectionEquality().hash(_recentlyUsedEmojis),
       uploadFolder,
       keepOriginalUploading,
+      keepOriginalFilename,
       const DeepCollectionEquality().hash(_recentlyUsedUsers),
       const DeepCollectionEquality().hash(_hashtags));
 
@@ -466,6 +486,7 @@ abstract class _AccountSettings implements AccountSettings {
       final List<String> recentlyUsedEmojis,
       final String? uploadFolder,
       final bool keepOriginalUploading,
+      final bool keepOriginalFilename,
       final List<String> recentlyUsedUsers,
       final List<String> hashtags}) = _$AccountSettingsImpl;
 
@@ -496,6 +517,8 @@ abstract class _AccountSettings implements AccountSettings {
   String? get uploadFolder;
   @override
   bool get keepOriginalUploading;
+  @override
+  bool get keepOriginalFilename;
   @override // UserSelectDialog
   List<String> get recentlyUsedUsers;
   @override // PostForm

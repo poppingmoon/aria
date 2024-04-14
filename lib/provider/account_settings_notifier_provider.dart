@@ -107,6 +107,11 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
     await _save();
   }
 
+  Future<void> setKeepOriginalFilename(bool keepOriginalFilename) async {
+    state = state.copyWith(keepOriginalFilename: keepOriginalFilename);
+    await _save();
+  }
+
   Future<void> setHashtags(List<String> hashtags) async {
     state = state.copyWith(hashtags: hashtags);
     await _save();

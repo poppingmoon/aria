@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/post_file.dart';
+import '../../util/randomize_filename.dart';
 
 class PostFileEditorDialog extends HookWidget {
   const PostFileEditorDialog({super.key, required this.file});
@@ -34,8 +34,8 @@ class PostFileEditorDialog extends HookWidget {
                   labelText: t.misskey.fileName,
                   hintText: t.misskey.inputNewFileName,
                   suffixIcon: IconButton(
-                    onPressed: () => nameController.text =
-                        '${const Uuid().v4()}.${file.name.split('.').last}',
+                    onPressed: () =>
+                        nameController.text = randomizeFilename(file.name),
                     icon: const Icon(Icons.casino),
                   ),
                 ),

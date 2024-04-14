@@ -80,7 +80,7 @@ class DriveFileSheet extends ConsumerWidget {
             .read(
               driveFilesNotifierProvider(account, file.folderId).notifier,
             )
-            .uploadAsBinary(
+            .uploadBinary(
               result,
               name: file.name,
               comment: file.comment,

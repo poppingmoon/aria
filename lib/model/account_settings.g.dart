@@ -36,6 +36,7 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
           const [],
       uploadFolder: json['uploadFolder'] as String?,
       keepOriginalUploading: json['keepOriginalUploading'] as bool? ?? false,
+      keepOriginalFilename: json['keepOriginalFilename'] as bool? ?? true,
       recentlyUsedUsers: (json['recentlyUsedUsers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -71,6 +72,7 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
   val['recentlyUsedEmojis'] = instance.recentlyUsedEmojis;
   writeNotNull('uploadFolder', instance.uploadFolder);
   val['keepOriginalUploading'] = instance.keepOriginalUploading;
+  val['keepOriginalFilename'] = instance.keepOriginalFilename;
   val['recentlyUsedUsers'] = instance.recentlyUsedUsers;
   val['hashtags'] = instance.hashtags;
   return val;
