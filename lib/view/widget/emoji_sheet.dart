@@ -9,6 +9,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
+import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../util/check_reaction_permissions.dart';
 import '../../util/copy_text.dart';
 import '../../util/decode_custom_emoji.dart';
@@ -45,6 +46,14 @@ class EmojiSheet extends ConsumerWidget {
         targetNote != null &&
         (!isCustomEmoji ||
             data != null && checkReactionPermissions(i, targetNote!, data));
+    final isPinnedForReaction = ref.watch(
+      pinnedEmojisNotifierProvider(account, reaction: true)
+          .select((emojis) => emojis.contains(emoji)),
+    );
+    final isPinned = ref.watch(
+      pinnedEmojisNotifierProvider(account)
+          .select((emojis) => emojis.contains(emoji)),
+    );
 
     return ListView(
       shrinkWrap: true,
@@ -123,6 +132,33 @@ class EmojiSheet extends ConsumerWidget {
               context.pop();
             },
           ),
+        if (!account.isGuest) ...[
+          if (!isPinnedForReaction)
+            ListTile(
+              leading: const Icon(Icons.push_pin),
+              title: Text('${t.aria.pinToEmojiPicker} (${t.misskey.reaction})'),
+              onTap: () {
+                ref
+                    .read(
+                      pinnedEmojisNotifierProvider(account, reaction: true)
+                          .notifier,
+                    )
+                    .add(emoji);
+                context.pop();
+              },
+            ),
+          if (!isPinned)
+            ListTile(
+              leading: const Icon(Icons.push_pin_outlined),
+              title: Text('${t.aria.pinToEmojiPicker} (${t.misskey.general})'),
+              onTap: () {
+                ref
+                    .read(pinnedEmojisNotifierProvider(account).notifier)
+                    .add(emoji);
+                context.pop();
+              },
+            ),
+        ],
         if (isCustomEmoji)
           ListTile(
             leading: const Icon(Icons.info_outline),

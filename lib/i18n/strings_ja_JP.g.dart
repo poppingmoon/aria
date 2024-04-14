@@ -115,6 +115,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 		url,
 		const TextSpan(text: 'からコピーすることができます。'),
 	]);
+	@override String get pinToEmojiPicker => '絵文字ピッカーにピン留め';
 	@override String get postConfirm => 'このノートを投稿しますか？';
 	@override String get reactionConfirm => 'リアクションしますか？';
 	@override String get renoteConfirm => 'このノートをリノートしますか？';
