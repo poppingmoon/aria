@@ -89,7 +89,7 @@ class ClipPage extends HookConsumerWidget {
               if (myClip != null) ...[
                 PopupMenuItem(
                   onTap: () => _edit(ref, myClip),
-                  child: Text(t.misskey.editList),
+                  child: Text(t.misskey.edit),
                 ),
                 PopupMenuItem(
                   onTap: () async {

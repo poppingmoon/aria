@@ -102,6 +102,7 @@ class SearchUsers extends HookConsumerWidget {
             ).notifier,
           )
           .loadMore(skipError: skipError),
+      panel: false,
       noItemsLabel: t.misskey.noUsers,
     );
   }

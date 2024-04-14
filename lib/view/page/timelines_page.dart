@@ -78,59 +78,79 @@ class TimelinesPage extends HookConsumerWidget {
       },
       [],
     );
+    final isLargeScreen = MediaQuery.sizeOf(context).width > 1200.0;
+    final hideDrawer = useState(false);
 
-    return Scaffold(
-      appBar: showTimelineTabBarOnBottom
-          ? null
-          : AppBar(title: TimelineTabBar(controller: controller)),
-      body: SafeArea(
-        child: numTabs == 0
-            ? Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(t.aria.noTabs),
-                    ),
-                    ElevatedButton(
-                      onPressed: () => context.push('/settings/tab'),
-                      child: Text(t.aria.addTab),
-                    ),
-                  ],
-                ),
-              )
-            : TabBarView(
-                controller: controller,
-                physics: enableHorizontalSwipe
-                    ? null
-                    : const NeverScrollableScrollPhysics(),
-                children: List.generate(
-                  numTabs,
-                  (index) => TimelineWidget(tabIndex: index),
-                ),
-              ),
-      ),
-      drawer: TimelineDrawer(controller: controller),
-      bottomNavigationBar: showTimelineTabBarOnBottom
-          ? BottomAppBar(
-              padding: EdgeInsets.zero,
-              height: 56.0,
-              color: Theme.of(context).colorScheme.surface,
+    return Row(
+      children: [
+        if (isLargeScreen && !hideDrawer.value)
+          DrawerTheme(
+            data: const DrawerThemeData(
               elevation: 0.0,
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: DrawerButton(),
+              shape: RoundedRectangleBorder(),
+            ),
+            child: TimelineDrawer(controller: controller),
+          ),
+        Expanded(
+          child: Scaffold(
+            appBar: showTimelineTabBarOnBottom
+                ? null
+                : AppBar(
+                    title: TimelineTabBar(controller: controller),
+                    centerTitle: true,
                   ),
-                  Expanded(
-                    child: TimelineTabBar(controller: controller),
-                  ),
-                ],
-              ),
-            )
-          : null,
+            body: SafeArea(
+              child: numTabs == 0
+                  ? Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(t.aria.noTabs),
+                          ),
+                          ElevatedButton(
+                            onPressed: () => context.push('/settings/tab'),
+                            child: Text(t.aria.addTab),
+                          ),
+                        ],
+                      ),
+                    )
+                  : TabBarView(
+                      controller: controller,
+                      physics: enableHorizontalSwipe
+                          ? null
+                          : const NeverScrollableScrollPhysics(),
+                      children: List.generate(
+                        numTabs,
+                        (index) => TimelineWidget(tabIndex: index),
+                      ),
+                    ),
+            ),
+            drawer:
+                isLargeScreen ? null : TimelineDrawer(controller: controller),
+            bottomNavigationBar: showTimelineTabBarOnBottom
+                ? BottomAppBar(
+                    padding: EdgeInsets.zero,
+                    height: 56.0,
+                    color: Theme.of(context).colorScheme.surface,
+                    elevation: 0.0,
+                    child: Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: DrawerButton(),
+                        ),
+                        Expanded(
+                          child: TimelineTabBar(controller: controller),
+                        ),
+                      ],
+                    ),
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 }

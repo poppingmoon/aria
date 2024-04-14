@@ -13,6 +13,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/note_widget.dart';
 
@@ -43,6 +44,8 @@ class NoteDisplayPage extends HookConsumerWidget {
         maxNoteFooterScale,
       ),
     );
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.displayOfNote)),
@@ -359,111 +362,108 @@ class NoteDisplayPage extends HookConsumerWidget {
                 ),
               ],
             ),
-            DecoratedBox(
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 4.0,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withOpacity(0.1),
-                  ),
-                ],
-              ),
-              child: SingleChildScrollView(
-                child: NoteWidget(
-                  account: const Account(host: '', username: ''),
-                  noteId: '',
-                  note: Note(
-                    id: '',
-                    createdAt: DateTime.now(),
-                    text: r'$[jelly.speed=2s $[x4 🍮]]',
-                    user: UserLite(
-                      id: '',
-                      username: 'user',
-                      avatarUrl: Uri.https(
-                        'raw.githubusercontent.com',
-                        'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('🍮')}.png',
-                      ),
-                      avatarDecorations: [
-                        const UserAvatarDecoration(
+            SingleChildScrollView(
+              child: Center(
+                child: Card(
+                  margin: const EdgeInsets.all(8.0),
+                  color: colors.panel,
+                  elevation: 0.0,
+                  child: SizedBox(
+                    width: 800.0,
+                    child: NoteWidget(
+                      account: const Account(host: '', username: ''),
+                      noteId: '',
+                      note: Note(
+                        id: '',
+                        createdAt: DateTime.now(),
+                        text: r'$[jelly.speed=2s $[x4 🍮]]',
+                        user: UserLite(
                           id: '',
-                          url:
-                              'https://media.misskeyusercontent.jp/io/7f797e40-9ab0-4f3b-b4c6-9d1103d637f2.png',
+                          username: 'user',
+                          avatarUrl: Uri.https(
+                            'raw.githubusercontent.com',
+                            'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('🍮')}.png',
+                          ),
+                          avatarDecorations: [
+                            const UserAvatarDecoration(
+                              id: '',
+                              url:
+                                  'https://media.misskeyusercontent.jp/io/7f797e40-9ab0-4f3b-b4c6-9d1103d637f2.png',
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                    userId: '',
-                    visibility: NoteVisibility.public,
-                    renoteCount: 0,
-                    repliesCount: 0,
-                    reactionCount: 55,
-                    reactions: defaultPinnedEmojis
-                        .asMap()
-                        .map((key, value) => MapEntry(value, key + 1)),
-                    fileIds: [],
-                    files: [
-                      DriveFile(
-                        id: '',
-                        createdAt: DateTime.now(),
-                        name: '',
-                        type: 'image/png',
-                        md5: '',
-                        size: 0,
-                        isSensitive: false,
-                        properties: const DriveFileProperties(),
-                        thumbnailUrl: Uri.https(
-                          'raw.githubusercontent.com',
-                          'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('👍')}.png',
-                        ).toString(),
-                        url: Uri.https(
-                          'raw.githubusercontent.com',
-                          'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('👍')}.png',
-                        ).toString(),
-                      ),
-                      DriveFile(
-                        id: '',
-                        createdAt: DateTime.now(),
-                        name: '',
-                        type: 'image/png',
-                        md5: '',
-                        size: 0,
-                        isSensitive: true,
-                        properties: const DriveFileProperties(),
-                        thumbnailUrl: Uri.https(
-                          'raw.githubusercontent.com',
-                          'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('❤️')}.png',
-                        ).toString(),
-                        url: Uri.https(
-                          'raw.githubusercontent.com',
-                          'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('❤️')}.png',
-                        ).toString(),
-                      ),
-                    ],
-                    renoteId: '',
-                    renote: Note(
-                      id: '',
-                      createdAt: DateTime.now(),
-                      text: 'just setting up my msky',
-                      user: UserLite(
-                        id: '',
-                        username: 'admin',
-                        avatarUrl: Uri.https(
-                          'raw.githubusercontent.com',
-                          'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('1️⃣')}.png',
+                        userId: '',
+                        visibility: NoteVisibility.public,
+                        renoteCount: 0,
+                        repliesCount: 0,
+                        reactionCount: 55,
+                        reactions: defaultPinnedEmojis
+                            .asMap()
+                            .map((key, value) => MapEntry(value, key + 1)),
+                        fileIds: [],
+                        files: [
+                          DriveFile(
+                            id: '',
+                            createdAt: DateTime.now(),
+                            name: '',
+                            type: 'image/png',
+                            md5: '',
+                            size: 0,
+                            isSensitive: false,
+                            properties: const DriveFileProperties(),
+                            thumbnailUrl: Uri.https(
+                              'raw.githubusercontent.com',
+                              'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('👍')}.png',
+                            ).toString(),
+                            url: Uri.https(
+                              'raw.githubusercontent.com',
+                              'jdecked/twemoji/main/assets/svg/${TwemojiUtils.toUnicode('👍')}.svg',
+                            ).toString(),
+                          ),
+                          DriveFile(
+                            id: '',
+                            createdAt: DateTime.now(),
+                            name: '',
+                            type: 'image/png',
+                            md5: '',
+                            size: 0,
+                            isSensitive: true,
+                            properties: const DriveFileProperties(),
+                            thumbnailUrl: Uri.https(
+                              'raw.githubusercontent.com',
+                              'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('❤️')}.png',
+                            ).toString(),
+                            url: Uri.https(
+                              'raw.githubusercontent.com',
+                              'jdecked/twemoji/main/assets/svg/${TwemojiUtils.toUnicode('❤️')}.svg',
+                            ).toString(),
+                          ),
+                        ],
+                        renoteId: '',
+                        renote: Note(
+                          id: '',
+                          createdAt: DateTime.now(),
+                          text: 'just setting up my msky',
+                          user: UserLite(
+                            id: '',
+                            username: 'admin',
+                            avatarUrl: Uri.https(
+                              'raw.githubusercontent.com',
+                              'jdecked/twemoji/main/assets/72x72/${TwemojiUtils.toUnicode('1️⃣')}.png',
+                            ),
+                          ),
+                          userId: '',
+                          visibility: NoteVisibility.public,
+                          renoteCount: 1,
+                          repliesCount: 0,
+                          reactionCount: 55,
+                          reactions: defaultPinnedEmojis
+                              .asMap()
+                              .map((key, value) => MapEntry(value, key + 1)),
+                          fileIds: [],
+                          files: [],
                         ),
                       ),
-                      userId: '',
-                      visibility: NoteVisibility.public,
-                      renoteCount: 1,
-                      repliesCount: 0,
-                      reactionCount: 55,
-                      reactions: defaultPinnedEmojis
-                          .asMap()
-                          .map((key, value) => MapEntry(value, key + 1)),
-                      fileIds: [],
-                      files: [],
                     ),
                   ),
                 ),

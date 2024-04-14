@@ -24,7 +24,7 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
       onPrimary: colors.fgOnAccent,
       onSurface: colors.fg,
       onSurfaceVariant: colors.fg,
-      background: colors.panel,
+      background: colors.bg,
       error: colors.error,
       outlineVariant: colors.divider,
     ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -24,102 +23,149 @@ class SettingsPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.settings)),
-      body: ListView(
-        children: [
-          if (accounts.isNotEmpty) ...[
-            ...accounts.map(
-              (account) {
-                final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-                return ListTile(
-                  leading: i != null ? UserAvatar(user: i, size: 24) : null,
-                  title: Text.rich(
-                    t.aria.settingsForUser(
-                      user: i != null
-                          ? TextSpan(
-                              children: useMemoized(
-                                () => buildUsername(
-                                  ref,
-                                  account: account,
-                                  user: i,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                                [i, colors],
-                              ),
-                            )
-                          : TextSpan(text: account.username),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: ListTileTheme(
+          tileColor: colors.panel,
+          child: ListView(
+            children: [
+              if (accounts.isNotEmpty) ...[
+                Container(
+                  height: 8.0,
+                  margin: const EdgeInsets.only(top: 8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                    ),
+                    color: colors.panel,
+                  ),
+                ),
+                ...ListTile.divideTiles(
+                  context: context,
+                  tiles: accounts.map((account) {
+                    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+                    return ListTile(
+                      leading: i != null ? UserAvatar(user: i, size: 24) : null,
+                      title: Consumer(
+                        builder: (context, ref, _) => Text.rich(
+                          t.aria.settingsForUser(
+                            user: i != null
+                                ? TextSpan(
+                                    children: buildUsername(
+                                      ref,
+                                      account: account,
+                                      user: i,
+                                    ),
+                                  )
+                                : TextSpan(text: account.username),
+                          ),
+                        ),
+                      ),
+                      subtitle: Text(account.toString()),
+                      onTap: () => context.push('/settings/accounts/$account'),
+                    );
+                  }),
+                ),
+                Container(
+                  height: 8.0,
+                  margin: const EdgeInsets.only(bottom: 8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
+                      bottomLeft: Radius.circular(8.0),
+                      bottomRight: Radius.circular(8.0),
+                    ),
+                    color: colors.panel,
+                  ),
+                ),
+              ],
+              Container(
+                height: 8.0,
+                margin: const EdgeInsets.only(top: 8.0),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(8.0),
+                    topRight: Radius.circular(8.0),
+                  ),
+                  color: colors.panel,
+                ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.bookmark),
+                title: Text(t.aria.tabs),
+                onTap: () => context.push('/settings/tab'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.person),
+                title: Text(t.misskey.accounts),
+                onTap: () => context.push('/settings/accounts'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.translate),
+                title: Text(t.misskey.uiLanguage),
+                onTap: () => context.push('/settings/language'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.article),
+                title: Text(t.misskey.displayOfNote),
+                onTap: () => context.push('/settings/note-display'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.brush),
+                title: Text(t.misskey.appearance),
+                onTap: () => context.push('/settings/appearance'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.gesture),
+                title: Text(t.misskey.behavior),
+                onTap: () => context.push('/settings/behavior'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.palette),
+                title: Text(t.misskey.theme),
+                onTap: () => context.push('/settings/theme'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.import_export),
+                title: Text(t.misskey.importAndExport),
+                onTap: () => context.push('/settings/import-export'),
+              ),
+              AboutListTile(
+                icon: const Icon(Icons.info_outline),
+                applicationIcon: Assets.a.image(),
+                applicationLegalese: 'Licensed under AGPL v3',
+                aboutBoxChildren: [
+                  SizedBox(
+                    width: double.maxFinite,
+                    height: 300,
+                    child: Mfm(
+                      account: const Account(host: 'misskey.io'),
+                      text: t.aria.aboutAria(
+                        miria:
+                            '[:miria: Miria](https://github.com/shiosyakeyakini-info/miria)',
+                        misskey:
+                            '[:misskey: Misskey](https://github.com/misskey-dev/misskey)',
+                        repository: 'https://github.com/poppingmoon/aria',
+                        contact: '@aria_app@misskey.io',
+                      ),
                     ),
                   ),
-                  subtitle: Text(account.toString()),
-                  onTap: () => context.push('/settings/accounts/$account'),
-                );
-              },
-            ),
-            const Divider(),
-          ],
-          ListTile(
-            leading: const Icon(Icons.bookmark),
-            title: Text(t.aria.tabs),
-            onTap: () => context.push('/settings/tab'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.person),
-            title: Text(t.misskey.accounts),
-            onTap: () => context.push('/settings/accounts'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.translate),
-            title: Text(t.misskey.uiLanguage),
-            onTap: () => context.push('/settings/language'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.article),
-            title: Text(t.misskey.displayOfNote),
-            onTap: () => context.push('/settings/note-display'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.brush),
-            title: Text(t.misskey.appearance),
-            onTap: () => context.push('/settings/appearance'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.gesture),
-            title: Text(t.misskey.behavior),
-            onTap: () => context.push('/settings/behavior'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.palette),
-            title: Text(t.misskey.theme),
-            onTap: () => context.push('/settings/theme'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.import_export),
-            title: Text(t.misskey.importAndExport),
-            onTap: () => context.push('/settings/import-export'),
-          ),
-          AboutListTile(
-            icon: const Icon(Icons.info_outline),
-            applicationIcon: Assets.a.image(),
-            applicationLegalese: 'Licensed under AGPL v3',
-            aboutBoxChildren: [
-              SizedBox(
-                width: double.maxFinite,
-                height: 300,
-                child: Mfm(
-                  account: const Account(host: 'misskey.io'),
-                  text: t.aria.aboutAria(
-                    miria:
-                        '[:miria: Miria](https://github.com/shiosyakeyakini-info/miria)',
-                    misskey:
-                        '[:misskey: Misskey](https://github.com/misskey-dev/misskey)',
-                    repository: 'https://github.com/poppingmoon/aria',
-                    contact: '@aria_app@misskey.io',
+                ],
+              ),
+              Container(
+                height: 8.0,
+                margin: const EdgeInsets.only(bottom: 8.0),
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(8.0),
+                    bottomRight: Radius.circular(8.0),
                   ),
+                  color: colors.panel,
                 ),
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

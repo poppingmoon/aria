@@ -45,39 +45,30 @@ class UserNotes extends HookConsumerWidget {
 
     return PaginatedListView(
       header: SliverPadding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.all(8.0),
         sliver: SliverToBoxAdapter(
-          child: SizedBox(
-            height: 48.0,
-            child: FittedBox(
-              child: SizedBox(
-                width: MediaQuery.sizeOf(context).width,
-                child: SegmentedButton(
-                  segments: [
-                    ButtonSegment(
-                      value: _NoteType.featured,
-                      label: Text(t.misskey.featured),
-                    ),
-                    ButtonSegment(
-                      value: _NoteType.notes,
-                      label: Text(t.misskey.notes),
-                    ),
-                    ButtonSegment(
-                      value: _NoteType.all,
-                      label: Text(t.misskey.all),
-                    ),
-                    ButtonSegment(
-                      value: _NoteType.files,
-                      label: Text(t.misskey.withFiles),
-                    ),
-                  ],
-                  selected: {type.value},
-                  onSelectionChanged: (selection) =>
-                      type.value = selection.single,
-                  showSelectedIcon: false,
-                ),
+          child: SegmentedButton(
+            segments: [
+              ButtonSegment(
+                value: _NoteType.featured,
+                label: Text(t.misskey.featured),
               ),
-            ),
+              ButtonSegment(
+                value: _NoteType.notes,
+                label: Text(t.misskey.notes),
+              ),
+              ButtonSegment(
+                value: _NoteType.all,
+                label: Text(t.misskey.all),
+              ),
+              ButtonSegment(
+                value: _NoteType.files,
+                label: Text(t.misskey.withFiles),
+              ),
+            ],
+            selected: {type.value},
+            onSelectionChanged: (selection) => type.value = selection.single,
+            showSelectedIcon: false,
           ),
         ),
       ),

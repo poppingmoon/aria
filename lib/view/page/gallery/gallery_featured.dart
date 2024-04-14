@@ -29,7 +29,7 @@ class GalleryFeatured extends ConsumerWidget {
       loadMore: (skipError) => ref
           .read(featuredGalleryPostsNotifierProvider(account).notifier)
           .loadMore(skipError: skipError),
-      showDivider: false,
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

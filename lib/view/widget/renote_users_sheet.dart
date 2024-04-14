@@ -35,7 +35,6 @@ class RenoteUsersSheet extends ConsumerWidget {
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
-          const Divider(height: 0),
           Expanded(
             child: PaginatedListView(
               controller: scrollController,

@@ -19,22 +19,28 @@ class GalleryPopular extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(popularGalleryPostsProvider(account).future),
-      child: switch (pages) {
-        AsyncValue(valueOrNull: final posts?) => posts.isEmpty
-            ? Center(child: Text(t.misskey.nothing))
-            : ListView.builder(
-                itemBuilder: (context, index) => GalleryPostPreview(
-                  account: account,
-                  post: posts[index],
-                  onTap: () =>
-                      context.push('/$account/gallery/${posts[index].id}'),
+      child: Center(
+        child: switch (pages) {
+          AsyncValue(valueOrNull: final posts?) => posts.isEmpty
+              ? Text(t.misskey.nothing)
+              : Container(
+                  width: 800.0,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ListView.builder(
+                    itemBuilder: (context, index) => GalleryPostPreview(
+                      account: account,
+                      post: posts[index],
+                      onTap: () =>
+                          context.push('/$account/gallery/${posts[index].id}'),
+                    ),
+                    itemCount: posts.length,
+                  ),
                 ),
-                itemCount: posts.length,
-              ),
-        AsyncValue(:final error?, :final stackTrace) =>
-          ErrorMessage(error: error, stackTrace: stackTrace),
-        _ => const Center(child: CircularProgressIndicator()),
-      },
+          AsyncValue(:final error?, :final stackTrace) =>
+            ErrorMessage(error: error, stackTrace: stackTrace),
+          _ => const CircularProgressIndicator(),
+        },
+      ),
     );
   }
 }

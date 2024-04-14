@@ -8,6 +8,7 @@ import '../../../model/account.dart';
 import '../../../provider/api/list_provider.dart';
 import '../../../provider/api/list_users_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
@@ -32,97 +33,137 @@ class UserListPage extends HookConsumerWidget {
         ref.watch(listUsersProvider(account, listId, forPublic: true));
     final isLiked = list?.isLiked ?? false;
     final likedCount = list?.likedCount ?? 0;
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(list?.name ?? '')),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0),
-            child: Text(t.misskey.members),
-          ),
-          ...switch (users) {
-            AsyncValue(valueOrNull: final users?) => users.map(
-                (user) => UserTile(
-                  account: account,
-                  user: user,
-                  onTap: () => context.push('$account/users/${user.id}'),
-                ),
-              ),
-            AsyncValue(:final error?, :final stackTrace) => [
-                ErrorMessage(error: error, stackTrace: stackTrace),
-              ],
-            _ => [const Center(child: CircularProgressIndicator())],
-          },
-          if (!account.isGuest)
-            Row(
+      body: Center(
+        child: Container(
+          width: 800.0,
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: ListTileTheme(
+            tileColor: colors.panel,
+            child: ListView(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: LikeButton(
-                    isLiked: isLiked,
-                    likedCount: likedCount,
-                    onTap: () async {
-                      if (isLiked) {
-                        await futureWithDialog(
-                          context,
-                          ref
-                              .read(misskeyProvider(account))
-                              .users
-                              .list
-                              .unfavorite(
-                                UsersListsUnfavoriteRequest(listId: listId),
-                              ),
-                        );
-                      } else {
-                        await futureWithDialog(
-                          context,
-                          ref
-                              .read(misskeyProvider(account))
-                              .users
-                              .list
-                              .favorite(
-                                UsersListsFavoriteRequest(listId: listId),
-                              ),
-                        );
-                      }
-                      ref.invalidate(
-                        listProvider(account, listId, forPublic: true),
-                      );
-                    },
-                  ),
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(t.misskey.members),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: OutlinedButton.icon(
-                    onPressed: () async {
-                      final name = await showTextFieldDialog(
-                        context,
-                        title: Text(t.misskey.enterListName),
-                      );
-                      if (!context.mounted) return;
-                      if (name == null || name.isEmpty) return;
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(misskeyProvider(account))
-                            .users
-                            .list
-                            .createFromPublic(
-                              UsersListsCreateFromPublicRequest(
-                                name: name,
-                                listId: listId,
-                              ),
-                            ),
-                      );
-                    },
-                    icon: const Icon(Icons.download),
-                    label: Text(t.misskey.import),
+                ...switch (users) {
+                  AsyncValue(valueOrNull: final users?) => [
+                      Container(
+                        height: 8.0,
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(8.0),
+                            topRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
+                      ),
+                      ...ListTile.divideTiles(
+                        context: context,
+                        tiles: users.map(
+                          (user) => UserTile(
+                            account: account,
+                            user: user,
+                            onTap: () =>
+                                context.push('/$account/users/${user.id}'),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: 8.0,
+                        margin: const EdgeInsets.only(bottom: 8.0),
+                        decoration: BoxDecoration(
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(8.0),
+                            bottomRight: Radius.circular(8.0),
+                          ),
+                          color: colors.panel,
+                        ),
+                      ),
+                    ],
+                  AsyncValue(:final error?, :final stackTrace) => [
+                      ErrorMessage(error: error, stackTrace: stackTrace),
+                    ],
+                  _ => [const Center(child: CircularProgressIndicator())],
+                },
+                if (!account.isGuest)
+                  Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: LikeButton(
+                          isLiked: isLiked,
+                          likedCount: likedCount,
+                          onTap: () async {
+                            if (isLiked) {
+                              await futureWithDialog(
+                                context,
+                                ref
+                                    .read(misskeyProvider(account))
+                                    .users
+                                    .list
+                                    .unfavorite(
+                                      UsersListsUnfavoriteRequest(
+                                        listId: listId,
+                                      ),
+                                    ),
+                              );
+                            } else {
+                              await futureWithDialog(
+                                context,
+                                ref
+                                    .read(misskeyProvider(account))
+                                    .users
+                                    .list
+                                    .favorite(
+                                      UsersListsFavoriteRequest(listId: listId),
+                                    ),
+                              );
+                            }
+                            ref.invalidate(
+                              listProvider(account, listId, forPublic: true),
+                            );
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: OutlinedButton.icon(
+                          onPressed: () async {
+                            final name = await showTextFieldDialog(
+                              context,
+                              title: Text(t.misskey.enterListName),
+                            );
+                            if (!context.mounted) return;
+                            if (name == null || name.isEmpty) return;
+                            await futureWithDialog(
+                              context,
+                              ref
+                                  .read(misskeyProvider(account))
+                                  .users
+                                  .list
+                                  .createFromPublic(
+                                    UsersListsCreateFromPublicRequest(
+                                      name: name,
+                                      listId: listId,
+                                    ),
+                                  ),
+                            );
+                          },
+                          icon: const Icon(Icons.download),
+                          label: Text(t.misskey.import),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
               ],
             ),
-        ],
+          ),
+        ),
       ),
     );
   }

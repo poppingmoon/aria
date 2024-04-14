@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/pagination_state.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import 'pagination_bottom_widget.dart';
 
 class PaginatedListView<T> extends HookConsumerWidget {
@@ -15,7 +16,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
     required this.itemBuilder,
     this.onRefresh,
     this.loadMore,
-    this.showDivider = true,
+    this.panel = true,
     this.noItemsLabel,
   });
 
@@ -25,7 +26,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
   final Widget Function(BuildContext context, T item) itemBuilder;
   final Future<void> Function()? onRefresh;
   final void Function(bool skipError)? loadMore;
-  final bool showDivider;
+  final bool panel;
   final String? noItemsLabel;
 
   @override
@@ -50,35 +51,73 @@ class PaginatedListView<T> extends HookConsumerWidget {
       },
       [],
     );
-    final items = paginationState?.valueOrNull?.items;
-    final length = items?.length ?? 0;
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: onRefresh ?? () async {},
-      child: CustomScrollView(
-        controller: controller,
-        slivers: [
-          if (header != null) header!,
-          if (paginationState != null)
-            SliverList.separated(
-              itemBuilder: (context, index) {
-                if (items != null && index < length) {
-                  return itemBuilder(context, items[index]);
-                } else {
-                  return PaginationBottomWidget(
+      child: Center(
+        child: Container(
+          width: 800.0,
+          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: CustomScrollView(
+            controller: controller,
+            slivers: [
+              if (header != null) header!,
+              if (paginationState != null) ...[
+                if (paginationState?.valueOrNull
+                    case PaginationState(:final items))
+                  if (items.isNotEmpty) ...[
+                    if (panel)
+                      SliverToBoxAdapter(
+                        child: Container(
+                          height: 8.0,
+                          margin: const EdgeInsets.only(top: 8.0),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              topRight: Radius.circular(8.0),
+                            ),
+                            color: colors.panel,
+                          ),
+                        ),
+                      ),
+                    SliverList.separated(
+                      itemBuilder: (context, index) => Material(
+                        color: panel ? colors.panel : null,
+                        child: itemBuilder(context, items[index]),
+                      ),
+                      separatorBuilder: (context, index) => panel
+                          ? const Divider(height: 0)
+                          : const SizedBox.shrink(),
+                      itemCount: items.length,
+                    ),
+                    if (panel)
+                      SliverToBoxAdapter(
+                        child: Container(
+                          height: 8.0,
+                          margin: const EdgeInsets.only(bottom: 8.0),
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(8.0),
+                              bottomRight: Radius.circular(8.0),
+                            ),
+                            color: colors.panel,
+                          ),
+                        ),
+                      ),
+                  ],
+                SliverToBoxAdapter(
+                  child: PaginationBottomWidget(
                     paginationState: paginationState!,
                     noItemsLabel: noItemsLabel,
                     loadMore: loadMore != null ? () => loadMore!(true) : null,
-                  );
-                }
-              },
-              separatorBuilder: (context, index) =>
-                  showDivider && index < length - 1
-                      ? const Divider(height: 0)
-                      : const SizedBox.shrink(),
-              itemCount: length + 1,
-            ),
-        ],
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,10 +1,12 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
+import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/timeline_tabs_notifier_provider.dart';
 import '../../widget/reorderable_drag_start_listener_wrapper.dart';
 import '../../widget/tab_icon_widget.dart';
@@ -16,6 +18,8 @@ class TabsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabs = ref.watch(timelineTabsNotifierProvider);
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(t.aria.tabs)),
@@ -28,14 +32,18 @@ class TabsPage extends HookConsumerWidget {
                   return ReorderableDragStartListenerWrapper(
                     key: ValueKey(index),
                     index: index,
-                    child: ListTile(
-                      leading: TabIconWidget(tabSettings: tabSettings),
-                      title: tabSettings.name != null
-                          ? Text(tabSettings.name ?? '')
-                          : TabTypeWidget(tabType: tabSettings.tabType),
-                      subtitle: Text(tabSettings.account.toString()),
-                      trailing: const Icon(Icons.drag_handle),
-                      onTap: () => context.push('/settings/tab/$index'),
+                    child: Card(
+                      color: colors.panel,
+                      elevation: 0.0,
+                      child: ListTile(
+                        leading: TabIconWidget(tabSettings: tabSettings),
+                        title: tabSettings.name != null
+                            ? Text(tabSettings.name ?? '')
+                            : TabTypeWidget(tabType: tabSettings.tabType),
+                        subtitle: Text(tabSettings.account.toString()),
+                        trailing: const Icon(Icons.drag_handle),
+                        onTap: () => context.push('/settings/tab/$index'),
+                      ),
                     ),
                   );
                 } else {
@@ -51,6 +59,20 @@ class TabsPage extends HookConsumerWidget {
               onReorder: (oldIndex, newIndex) => ref
                   .read(timelineTabsNotifierProvider.notifier)
                   .reorder(oldIndex, min(newIndex, tabs.length)),
+              proxyDecorator: (child, _, animation) => AnimatedBuilder(
+                animation: animation,
+                builder: (context, child) {
+                  final animValue = Curves.easeInOut.transform(animation.value);
+                  final elevation = lerpDouble(0, 6, animValue)!;
+                  return Material(
+                    elevation: elevation,
+                    borderRadius: BorderRadius.circular(12.0),
+                    color: Colors.transparent,
+                    child: child,
+                  );
+                },
+                child: child,
+              ),
               buildDefaultDragHandles: false,
             ),
       floatingActionButton: FloatingActionButton.extended(

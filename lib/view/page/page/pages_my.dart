@@ -28,6 +28,7 @@ class PagesMy extends ConsumerWidget {
       loadMore: (skipError) => ref
           .read(pagesNotifierProvider(account).notifier)
           .loadMore(skipError: skipError),
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

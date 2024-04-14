@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -110,7 +112,7 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
             child: ConstrainedBox(
               constraints: BoxConstraints(
                 maxHeight: 200.0,
-                maxWidth: MediaQuery.sizeOf(context).width - 88.0,
+                maxWidth: min(MediaQuery.sizeOf(context).width, 800.0) - 64.0,
               ),
               child: ListView.builder(
                 shrinkWrap: true,

@@ -101,11 +101,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
     );
     final doubleTapAction = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.noteTapAction),
+          .select((settings) => settings.noteDoubleTapAction),
     );
     final longPressAction = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.noteTapAction),
+          .select((settings) => settings.noteLongPressAction),
     );
     final conversation = appearNote.replyId != null
         ? ref.watch(conversationNotesProvider(account, noteId))
