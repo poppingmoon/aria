@@ -73,7 +73,7 @@ class ReactionButton extends ConsumerWidget {
                   final confirmed = await confirmReaction(
                     context,
                     account: account,
-                    emoji: emoji,
+                    emoji: isCustomEmoji ? ':$name:' : emoji,
                     note: note,
                   );
                   if (!confirmed) return;
@@ -142,8 +142,11 @@ class ReactionButton extends ConsumerWidget {
         minimumSize: Size.zero,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: RoundedRectangleBorder(
-          side:
-              isMyReaction ? BorderSide(color: colors.accent) : BorderSide.none,
+          side: isMyReaction
+              ? BorderSide(color: colors.accent)
+              : canReact && host != null
+                  ? BorderSide(color: colors.divider)
+                  : BorderSide.none,
           borderRadius: BorderRadius.circular(4.0 * scale),
         ),
         foregroundColor: isMyReaction ? colors.accent : colors.fg,
