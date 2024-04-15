@@ -66,6 +66,7 @@ class ReactionButton extends ConsumerWidget {
           ? () async {
               if (note.id.isEmpty) return;
               if (note.myReaction == null) {
+                final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
                 if (ref
                         .read(generalSettingsNotifierProvider)
                         .confirmBeforeReact ||
@@ -73,7 +74,7 @@ class ReactionButton extends ConsumerWidget {
                   final confirmed = await confirmReaction(
                     context,
                     account: account,
-                    emoji: isCustomEmoji ? ':$name:' : emoji,
+                    emoji: localEmoji,
                     note: note,
                   );
                   if (!confirmed) return;
@@ -83,7 +84,7 @@ class ReactionButton extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .react(note.id, emoji),
+                      .react(note.id, localEmoji),
                 );
               } else if (isMyReaction) {
                 final confirmed = await confirm(
@@ -99,6 +100,7 @@ class ReactionButton extends ConsumerWidget {
                       .unreact(note.id),
                 );
               } else {
+                final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
                 final confirmed = await confirm(
                   context,
                   content: Column(
@@ -107,7 +109,7 @@ class ReactionButton extends ConsumerWidget {
                       Text(t.misskey.changeReactionConfirm),
                       EmojiWidget(
                         account: account,
-                        emoji: emoji,
+                        emoji: localEmoji,
                         style: DefaultTextStyle.of(context)
                             .style
                             .apply(fontSizeFactor: 2.0),
@@ -121,7 +123,7 @@ class ReactionButton extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .changeReaction(note.id, emoji),
+                      .changeReaction(note.id, localEmoji),
                 );
               }
             }

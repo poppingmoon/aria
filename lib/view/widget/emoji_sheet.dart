@@ -86,6 +86,7 @@ class EmojiSheet extends ConsumerWidget {
             title: Text(t.misskey.doReaction),
             onTap: () async {
               if (targetNote?.myReaction == null) {
+                final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
                 if (ref
                         .read(generalSettingsNotifierProvider)
                         .confirmBeforeReact ||
@@ -93,7 +94,7 @@ class EmojiSheet extends ConsumerWidget {
                   final confirmed = await confirmReaction(
                     context,
                     account: account,
-                    emoji: ':$name@.:',
+                    emoji: localEmoji,
                     note: targetNote!,
                   );
                   if (!confirmed) return;
@@ -103,9 +104,10 @@ class EmojiSheet extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .react(targetNote!.id, emoji),
+                      .react(targetNote!.id, localEmoji),
                 );
               } else {
+                final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
                 final confirmed = await confirm(
                   context,
                   content: Column(
@@ -114,7 +116,7 @@ class EmojiSheet extends ConsumerWidget {
                       Text(t.misskey.changeReactionConfirm),
                       EmojiWidget(
                         account: account,
-                        emoji: ':$name@.:',
+                        emoji: localEmoji,
                         style: DefaultTextStyle.of(context)
                             .style
                             .apply(fontSizeFactor: 2.0),
@@ -126,13 +128,13 @@ class EmojiSheet extends ConsumerWidget {
                 if (!context.mounted) return;
                 await ref
                     .read(notesNotifierProvider(account).notifier)
-                    .changeReaction(targetNote!.id, emoji);
+                    .changeReaction(targetNote!.id, localEmoji);
               }
               if (!context.mounted) return;
               context.pop();
             },
           ),
-        if (!account.isGuest) ...[
+        if (!account.isGuest && host == null) ...[
           if (!isPinnedForReaction)
             ListTile(
               leading: const Icon(Icons.push_pin),
