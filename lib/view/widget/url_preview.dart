@@ -26,7 +26,10 @@ class UrlPreview extends HookConsumerWidget {
   final String link;
 
   String? _extractTweetId(String link) {
-    final url = Uri.parse(link);
+    final url = Uri.tryParse(link);
+    if (url == null) {
+      return null;
+    }
     if (url.host
         case 'twitter.com' ||
             'mobile.twitter.com' ||
