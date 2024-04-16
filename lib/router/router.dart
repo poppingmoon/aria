@@ -11,6 +11,7 @@ import '../provider/miauth_notifier_provider.dart';
 import '../provider/receive_sharing_intent_provider.dart';
 import '../provider/share_notifier_provider.dart';
 import '../util/safe_parse_double.dart';
+import '../view/page/about_aria_page.dart';
 import '../view/page/about_misskey_page.dart';
 import '../view/page/announcements_page.dart';
 import '../view/page/antenna_page.dart';
@@ -100,6 +101,10 @@ GoRouter router(RouterRef ref) {
             return '/timelines';
           }
         },
+      ),
+      GoRoute(
+        path: '/about-aria',
+        builder: (_, __) => const AboutAriaPage(),
       ),
       GoRoute(
         path: '/about-misskey',

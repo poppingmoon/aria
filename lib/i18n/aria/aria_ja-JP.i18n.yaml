@@ -1,5 +1,6 @@
-aboutAria: "Ariaは{miria}のフォークです。\nAriaのローカライゼーションは{misskey}のローカライゼーションファイルを基にしています。\n両プロジェクトのコントリビューターの皆様に感謝いたします。\n\nレポジトリ: {repository}\n連絡先: {contact}"
+aboutAria: "Ariaについて"
 accessToken: "アクセストークン"
+acknowledgements(rich): "Ariaは{miria}のフォークです。\nAriaのローカライゼーションは{misskey}のローカライゼーションファイルを基にしています。\n両プロジェクトのコントリビューターの皆様に感謝いたします。"
 addTab: "タブを追加"
 authenticate: "認証"
 authenticated: "認証してきた"

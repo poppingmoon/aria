@@ -38,8 +38,15 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override final _StringsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override String aboutAria({required Object miria, required Object misskey, required Object repository, required Object contact}) => 'Ariaは${miria}のフォークです。\nAriaのローカライゼーションは${misskey}のローカライゼーションファイルを基にしています。\n両プロジェクトのコントリビューターの皆様に感謝いたします。\n\nレポジトリ: ${repository}\n連絡先: ${contact}';
+	@override String get aboutAria => 'Ariaについて';
 	@override String get accessToken => 'アクセストークン';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Ariaは'),
+		miria,
+		const TextSpan(text: 'のフォークです。\nAriaのローカライゼーションは'),
+		misskey,
+		const TextSpan(text: 'のローカライゼーションファイルを基にしています。\n両プロジェクトのコントリビューターの皆様に感謝いたします。'),
+	]);
 	@override String get addTab => 'タブを追加';
 	@override String get authenticate => '認証';
 	@override String get authenticated => '認証してきた';
