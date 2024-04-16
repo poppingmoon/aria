@@ -44,14 +44,35 @@ class UrlWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final url = Uri.parse(this.url);
+    final url = Uri.tryParse(this.url);
+    final style = DefaultTextStyle.of(context).style.merge(this.style);
+    if (url == null) {
+      return InkWell(
+        onTap: onTap,
+        onLongPress: () => showModalBottomSheet<void>(
+          context: context,
+          builder: (context) => UrlSheet(url: this.url),
+        ),
+        child: Text(
+          this.url,
+          style: style.apply(
+            fontSizeFactor: scale,
+            color: style.color?.withOpacity(opacity),
+          ),
+          textAlign: align,
+          overflow: overflow,
+          maxLines: maxLines,
+          semanticsLabel: this.url,
+        ),
+      );
+    }
+
     final scheme = url.scheme;
     final host = toUnicode(url.host);
     final port = url.port;
     final path = _decodeComponent(url.path);
     final query = _decodeQueryComponent(url.query);
     final fragment = _decodeComponent(url.fragment);
-    final style = DefaultTextStyle.of(context).style.merge(this.style);
 
     return InkWell(
       onTap: onTap,
