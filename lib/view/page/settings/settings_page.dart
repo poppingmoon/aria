@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../../gen/assets.gen.dart';
 import '../../../i18n/strings.g.dart';
-import '../../../model/account.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
-import '../../widget/mfm.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
 
@@ -130,27 +127,10 @@ class SettingsPage extends HookConsumerWidget {
                 title: Text(t.misskey.importAndExport),
                 onTap: () => context.push('/settings/import-export'),
               ),
-              AboutListTile(
-                icon: const Icon(Icons.info_outline),
-                applicationIcon: Assets.a.image(),
-                applicationLegalese: 'Licensed under AGPL v3',
-                aboutBoxChildren: [
-                  SizedBox(
-                    width: double.maxFinite,
-                    height: 300,
-                    child: Mfm(
-                      account: const Account(host: 'misskey.io'),
-                      text: t.aria.aboutAria(
-                        miria:
-                            '[:miria: Miria](https://github.com/shiosyakeyakini-info/miria)',
-                        misskey:
-                            '[:misskey: Misskey](https://github.com/misskey-dev/misskey)',
-                        repository: 'https://github.com/poppingmoon/aria',
-                        contact: '@aria_app@misskey.io',
-                      ),
-                    ),
-                  ),
-                ],
+              ListTile(
+                leading: const Icon(Icons.info_outline),
+                title: Text(t.aria.aboutAria),
+                onTap: () => context.push('/about-aria'),
               ),
               Container(
                 height: 8.0,

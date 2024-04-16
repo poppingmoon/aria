@@ -38,8 +38,15 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override final _StringsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String aboutAria({required Object miria, required Object misskey, required Object repository, required Object contact}) => 'Ariaは${miria}のフォークやで。\nAriaのローカライゼーションは${misskey}のローカライゼーションファイルを基にしとるで。\n両プロジェクトのコントリビューターの皆様、ほんまにおおきに！\n\nレポジトリ: ${repository}\n連絡先: ${contact}';
+	@override String get aboutAria => 'Ariaってなんや？';
 	@override String get accessToken => 'アクセストークン';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Ariaは'),
+		miria,
+		const TextSpan(text: 'のフォークやで。\nAriaのローカライゼーションは'),
+		misskey,
+		const TextSpan(text: 'のローカライゼーションファイルを基にしとるで。\n両プロジェクトのコントリビューターの皆様、ほんまにおおきに！'),
+	]);
 	@override String get addTab => 'タブを追加';
 	@override String get authenticate => '認証';
 	@override String get authenticated => '認証してった';

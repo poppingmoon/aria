@@ -43,8 +43,15 @@ class _StringsAriaEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String aboutAria({required Object miria, required Object misskey, required Object repository, required Object contact}) => 'Aria is a fork of ${miria}.\nLocalization of Aria is based on localization files of ${misskey}.\nWe would like to show our appreciation to all contributers of these projects.\n\nrepository: ${repository}\ncontact: ${contact}\naccessToken: Access token';
+	String get aboutAria => 'About Aria';
 	String get accessToken => 'Access token';
+	TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Aria is a fork of '),
+		miria,
+		const TextSpan(text: '.\nLocalization of Aria is based on localization files of '),
+		misskey,
+		const TextSpan(text: '.\nWe would like to show our appreciation to all contributers of these projects.'),
+	]);
 	String get addTab => 'Add tab';
 	String get authenticate => 'Authenticate';
 	String get authenticated => 'Authenticated';
