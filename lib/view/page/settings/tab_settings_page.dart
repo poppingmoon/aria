@@ -36,9 +36,9 @@ import '../../widget/username_widget.dart';
 import '../channel/channels_page.dart';
 
 class TabSettingsPage extends HookConsumerWidget {
-  const TabSettingsPage({super.key, required this.tabIndex});
+  const TabSettingsPage({super.key, this.tabId});
 
-  final int tabIndex;
+  final String? tabId;
 
   Future<RolesListResponse?> _selectRole(
     WidgetRef ref,
@@ -105,10 +105,13 @@ class TabSettingsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final initialTabSettings = ref.watch(
-      timelineTabsNotifierProvider
-          .select((tabs) => tabs.elementAtOrNull(tabIndex)),
-    );
+    final initialTabSettings = tabId != null
+        ? ref.watch(
+            timelineTabsNotifierProvider.select(
+              (tabs) => tabs.firstWhereOrNull((tab) => tab.id == tabId),
+            ),
+          )
+        : null;
     final tabSettings = useState(initialTabSettings ?? TabSettings.dummy());
     final account = useState(
       initialTabSettings?.account ??
@@ -181,7 +184,7 @@ class TabSettingsPage extends HookConsumerWidget {
                       if (confirmed) {
                         await ref
                             .read(timelineTabsNotifierProvider.notifier)
-                            .delete(tabIndex);
+                            .delete(initialTabSettings.id!);
                         if (!context.mounted) return;
                         context.pop();
                       }
@@ -623,7 +626,7 @@ class TabSettingsPage extends HookConsumerWidget {
                       await ref
                           .read(timelineTabsNotifierProvider.notifier)
                           .replace(
-                            tabIndex,
+                            initialTabSettings.id!,
                             tabSettings.value.copyWith(account: account),
                           );
                     }

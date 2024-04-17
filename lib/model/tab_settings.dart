@@ -10,6 +10,7 @@ part 'tab_settings.g.dart';
 @freezed
 class TabSettings with _$TabSettings {
   const factory TabSettings({
+    String? id,
     required TabType tabType,
     String? name,
     required Account account,
