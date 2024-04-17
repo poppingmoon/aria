@@ -8,6 +8,7 @@ part of 'tab_settings.dart';
 
 _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
     _$TabSettingsImpl(
+      id: json['id'] as String?,
       tabType: $enumDecode(_$TabTypeEnumMap, json['tabType']),
       name: json['name'] as String?,
       account: Account.fromJson(json['account'] as Map<String, dynamic>),
@@ -29,9 +30,7 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
-  final val = <String, dynamic>{
-    'tabType': _$TabTypeEnumMap[instance.tabType]!,
-  };
+  final val = <String, dynamic>{};
 
   void writeNotNull(String key, dynamic value) {
     if (value != null) {
@@ -39,6 +38,8 @@ Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
     }
   }
 
+  writeNotNull('id', instance.id);
+  val['tabType'] = _$TabTypeEnumMap[instance.tabType]!;
   writeNotNull('name', instance.name);
   val['account'] = instance.account.toJson();
   writeNotNull('icon', instance.icon?.toJson());

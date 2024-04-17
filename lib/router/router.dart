@@ -237,10 +237,13 @@ GoRouter router(RouterRef ref) {
             builder: (_, __) => const TabsPage(),
             routes: [
               GoRoute(
-                path: ':tabIndex',
-                builder: (_, state) => TabSettingsPage(
-                  tabIndex: int.parse(state.pathParameters['tabIndex']!),
-                ),
+                path: 'new',
+                builder: (_, __) => const TabSettingsPage(),
+              ),
+              GoRoute(
+                path: ':tabId',
+                builder: (_, state) =>
+                    TabSettingsPage(tabId: state.pathParameters['tabId']),
               ),
             ],
           ),

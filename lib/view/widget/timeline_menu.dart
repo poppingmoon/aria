@@ -4,12 +4,15 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/id.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
-import '../../provider/streaming/incoming_message_provider.dart';
+import '../../provider/streaming/web_socket_channel_provider.dart';
+import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
+import '../../util/pick_date_time.dart';
 
 class TimelineMenu extends ConsumerWidget {
   const TimelineMenu({super.key, required this.tabIndex});
@@ -181,7 +184,7 @@ class TimelineMenu extends ConsumerWidget {
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  onTap: () => context.push('/settings/tab/$tabIndex'),
+                  onTap: () => context.push('/settings/tab/${tabSettings.id}'),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -191,25 +194,42 @@ class TimelineMenu extends ConsumerWidget {
                   ),
                 ),
               ),
-              // TODO: Time machine
-              // Card(
-              //   clipBehavior: Clip.hardEdge,
-              //   child: InkWell(
-              //     onTap: () {},
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         const Icon(Icons.history),
-              //         FittedBox(child: Text(t.aria.timeMachine)),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              if (tabSettings.tabType != TabType.notifications)
+                Card(
+                  clipBehavior: Clip.hardEdge,
+                  child: InkWell(
+                    onTap: () async {
+                      final centerId =
+                          ref.read(timelineCenterNotifierProvider(tabSettings));
+                      final date = await pickDateTime(
+                        context,
+                        initialDate:
+                            centerId != null ? Id.parse(centerId).date : null,
+                        lastDate: DateTime.now(),
+                      );
+                      if (date != null) {
+                        await ref
+                            .read(
+                              timelineCenterNotifierProvider(tabSettings)
+                                  .notifier,
+                            )
+                            .setCenterFromDate(date);
+                      }
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(Icons.history),
+                        FittedBox(child: Text(t.aria.timeMachine)),
+                      ],
+                    ),
+                  ),
+                ),
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
                   onTap: () {
-                    ref.invalidate(incomingMessageProvider(account));
+                    ref.invalidate(webSocketChannelProvider(account));
                     ref.invalidate(
                       timelineNotesAfterNoteNotifierProvider(tabSettings),
                     );

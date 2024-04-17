@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'timeline_stream_notifier.dart';
+part of 'timeline_center_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$timelineStreamNotifierHash() =>
-    r'ff1c8e10471b6c6ae202faa23eba6ab8f7034d4a';
+String _$timelineCenterNotifierHash() =>
+    r'6220276b45917962c425d67f1cab2ad0cef2a63b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,36 +30,36 @@ class _SystemHash {
   }
 }
 
-abstract class _$TimelineStreamNotifier
-    extends BuildlessAutoDisposeStreamNotifier<Note> {
+abstract class _$TimelineCenterNotifier
+    extends BuildlessAutoDisposeNotifier<String?> {
   late final TabSettings tabSettings;
 
-  Stream<Note> build(
+  String? build(
     TabSettings tabSettings,
   );
 }
 
-/// See also [TimelineStreamNotifier].
-@ProviderFor(TimelineStreamNotifier)
-const timelineStreamNotifierProvider = TimelineStreamNotifierFamily();
+/// See also [TimelineCenterNotifier].
+@ProviderFor(TimelineCenterNotifier)
+const timelineCenterNotifierProvider = TimelineCenterNotifierFamily();
 
-/// See also [TimelineStreamNotifier].
-class TimelineStreamNotifierFamily extends Family<AsyncValue<Note>> {
-  /// See also [TimelineStreamNotifier].
-  const TimelineStreamNotifierFamily();
+/// See also [TimelineCenterNotifier].
+class TimelineCenterNotifierFamily extends Family<String?> {
+  /// See also [TimelineCenterNotifier].
+  const TimelineCenterNotifierFamily();
 
-  /// See also [TimelineStreamNotifier].
-  TimelineStreamNotifierProvider call(
+  /// See also [TimelineCenterNotifier].
+  TimelineCenterNotifierProvider call(
     TabSettings tabSettings,
   ) {
-    return TimelineStreamNotifierProvider(
+    return TimelineCenterNotifierProvider(
       tabSettings,
     );
   }
 
   @override
-  TimelineStreamNotifierProvider getProviderOverride(
-    covariant TimelineStreamNotifierProvider provider,
+  TimelineCenterNotifierProvider getProviderOverride(
+    covariant TimelineCenterNotifierProvider provider,
   ) {
     return call(
       provider.tabSettings,
@@ -78,31 +78,30 @@ class TimelineStreamNotifierFamily extends Family<AsyncValue<Note>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'timelineStreamNotifierProvider';
+  String? get name => r'timelineCenterNotifierProvider';
 }
 
-/// See also [TimelineStreamNotifier].
-class TimelineStreamNotifierProvider
-    extends AutoDisposeStreamNotifierProviderImpl<TimelineStreamNotifier,
-        Note> {
-  /// See also [TimelineStreamNotifier].
-  TimelineStreamNotifierProvider(
+/// See also [TimelineCenterNotifier].
+class TimelineCenterNotifierProvider
+    extends AutoDisposeNotifierProviderImpl<TimelineCenterNotifier, String?> {
+  /// See also [TimelineCenterNotifier].
+  TimelineCenterNotifierProvider(
     TabSettings tabSettings,
   ) : this._internal(
-          () => TimelineStreamNotifier()..tabSettings = tabSettings,
-          from: timelineStreamNotifierProvider,
-          name: r'timelineStreamNotifierProvider',
+          () => TimelineCenterNotifier()..tabSettings = tabSettings,
+          from: timelineCenterNotifierProvider,
+          name: r'timelineCenterNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$timelineStreamNotifierHash,
-          dependencies: TimelineStreamNotifierFamily._dependencies,
+                  : _$timelineCenterNotifierHash,
+          dependencies: TimelineCenterNotifierFamily._dependencies,
           allTransitiveDependencies:
-              TimelineStreamNotifierFamily._allTransitiveDependencies,
+              TimelineCenterNotifierFamily._allTransitiveDependencies,
           tabSettings: tabSettings,
         );
 
-  TimelineStreamNotifierProvider._internal(
+  TimelineCenterNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -115,8 +114,8 @@ class TimelineStreamNotifierProvider
   final TabSettings tabSettings;
 
   @override
-  Stream<Note> runNotifierBuild(
-    covariant TimelineStreamNotifier notifier,
+  String? runNotifierBuild(
+    covariant TimelineCenterNotifier notifier,
   ) {
     return notifier.build(
       tabSettings,
@@ -124,10 +123,10 @@ class TimelineStreamNotifierProvider
   }
 
   @override
-  Override overrideWith(TimelineStreamNotifier Function() create) {
+  Override overrideWith(TimelineCenterNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: TimelineStreamNotifierProvider._internal(
+      override: TimelineCenterNotifierProvider._internal(
         () => create()..tabSettings = tabSettings,
         from: from,
         name: null,
@@ -140,14 +139,14 @@ class TimelineStreamNotifierProvider
   }
 
   @override
-  AutoDisposeStreamNotifierProviderElement<TimelineStreamNotifier, Note>
+  AutoDisposeNotifierProviderElement<TimelineCenterNotifier, String?>
       createElement() {
-    return _TimelineStreamNotifierProviderElement(this);
+    return _TimelineCenterNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is TimelineStreamNotifierProvider &&
+    return other is TimelineCenterNotifierProvider &&
         other.tabSettings == tabSettings;
   }
 
@@ -160,19 +159,19 @@ class TimelineStreamNotifierProvider
   }
 }
 
-mixin TimelineStreamNotifierRef on AutoDisposeStreamNotifierProviderRef<Note> {
+mixin TimelineCenterNotifierRef on AutoDisposeNotifierProviderRef<String?> {
   /// The parameter `tabSettings` of this provider.
   TabSettings get tabSettings;
 }
 
-class _TimelineStreamNotifierProviderElement
-    extends AutoDisposeStreamNotifierProviderElement<TimelineStreamNotifier,
-        Note> with TimelineStreamNotifierRef {
-  _TimelineStreamNotifierProviderElement(super.provider);
+class _TimelineCenterNotifierProviderElement
+    extends AutoDisposeNotifierProviderElement<TimelineCenterNotifier, String?>
+    with TimelineCenterNotifierRef {
+  _TimelineCenterNotifierProviderElement(super.provider);
 
   @override
   TabSettings get tabSettings =>
-      (origin as TimelineStreamNotifierProvider).tabSettings;
+      (origin as TimelineCenterNotifierProvider).tabSettings;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

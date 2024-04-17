@@ -20,6 +20,7 @@ TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TabSettings {
+  String? get id => throw _privateConstructorUsedError;
   TabType get tabType => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   Account get account => throw _privateConstructorUsedError;
@@ -50,7 +51,8 @@ abstract class $TabSettingsCopyWith<$Res> {
       _$TabSettingsCopyWithImpl<$Res, TabSettings>;
   @useResult
   $Res call(
-      {TabType tabType,
+      {String? id,
+      TabType tabType,
       String? name,
       Account account,
       TabIcon? icon,
@@ -83,6 +85,7 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? tabType = null,
     Object? name = freezed,
     Object? account = null,
@@ -101,6 +104,10 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
     Object? userId = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       tabType: null == tabType
           ? _value.tabType
           : tabType // ignore: cast_nullable_to_non_nullable
@@ -186,7 +193,8 @@ abstract class _$$TabSettingsImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {TabType tabType,
+      {String? id,
+      TabType tabType,
       String? name,
       Account account,
       TabIcon? icon,
@@ -218,6 +226,7 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? tabType = null,
     Object? name = freezed,
     Object? account = null,
@@ -236,6 +245,10 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
     Object? userId = freezed,
   }) {
     return _then(_$TabSettingsImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
       tabType: null == tabType
           ? _value.tabType
           : tabType // ignore: cast_nullable_to_non_nullable
@@ -308,7 +321,8 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TabSettingsImpl extends _TabSettings {
   const _$TabSettingsImpl(
-      {required this.tabType,
+      {this.id,
+      required this.tabType,
       this.name,
       required this.account,
       this.icon,
@@ -329,6 +343,8 @@ class _$TabSettingsImpl extends _TabSettings {
   factory _$TabSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$TabSettingsImplFromJson(json);
 
+  @override
+  final String? id;
   @override
   final TabType tabType;
   @override
@@ -371,7 +387,7 @@ class _$TabSettingsImpl extends _TabSettings {
 
   @override
   String toString() {
-    return 'TabSettings(tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId)';
+    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId)';
   }
 
   @override
@@ -379,6 +395,7 @@ class _$TabSettingsImpl extends _TabSettings {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TabSettingsImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.tabType, tabType) || other.tabType == tabType) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.account, account) || other.account == account) &&
@@ -410,6 +427,7 @@ class _$TabSettingsImpl extends _TabSettings {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      id,
       tabType,
       name,
       account,
@@ -443,7 +461,8 @@ class _$TabSettingsImpl extends _TabSettings {
 
 abstract class _TabSettings extends TabSettings {
   const factory _TabSettings(
-      {required final TabType tabType,
+      {final String? id,
+      required final TabType tabType,
       final String? name,
       required final Account account,
       final TabIcon? icon,
@@ -464,6 +483,8 @@ abstract class _TabSettings extends TabSettings {
   factory _TabSettings.fromJson(Map<String, dynamic> json) =
       _$TabSettingsImpl.fromJson;
 
+  @override
+  String? get id;
   @override
   TabType get tabType;
   @override

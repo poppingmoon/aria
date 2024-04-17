@@ -42,7 +42,8 @@ class TabsPage extends HookConsumerWidget {
                             : TabTypeWidget(tabType: tabSettings.tabType),
                         subtitle: Text(tabSettings.account.toString()),
                         trailing: const Icon(Icons.drag_handle),
-                        onTap: () => context.push('/settings/tab/$index'),
+                        onTap: () =>
+                            context.push('/settings/tab/${tabSettings.id}'),
                       ),
                     ),
                   );
@@ -76,7 +77,7 @@ class TabsPage extends HookConsumerWidget {
               buildDefaultDragHandles: false,
             ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.push('/settings/tab/${tabs.length}'),
+        onPressed: () => context.push('/settings/tab/new'),
         icon: const Icon(Icons.add),
         label: Text(t.aria.addTab),
       ),

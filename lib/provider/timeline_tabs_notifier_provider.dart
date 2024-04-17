@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import '../model/account.dart';
 import '../model/tab_settings.dart';
@@ -15,11 +16,15 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
   List<TabSettings> build() {
     final value = ref.watch(sharedPreferencesProvider).getStringList(_key);
     if (value != null) {
-      return value
-          .map(
-            (e) => TabSettings.fromJson(jsonDecode(e) as Map<String, dynamic>),
-          )
-          .toList();
+      final tabs = <TabSettings>[];
+      for (final e in value) {
+        try {
+          final json = jsonDecode(e) as Map<String, dynamic>;
+          json.putIfAbsent('id', () => const Uuid().v4());
+          tabs.add(TabSettings.fromJson(json));
+        } catch (_) {}
+      }
+      return tabs;
     } else {
       return [];
     }
@@ -49,24 +54,22 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
   }
 
   Future<void> add(TabSettings tabSettings) async {
-    state = [...state, _removeUnusedValues(tabSettings)];
-    await _save();
-  }
-
-  Future<void> replace(int index, TabSettings tabSettings) async {
     state = [
-      ...state.sublist(0, index),
-      _removeUnusedValues(tabSettings),
-      ...state.sublist(index + 1),
+      ...state,
+      _removeUnusedValues(tabSettings).copyWith(id: const Uuid().v4()),
     ];
     await _save();
   }
 
-  Future<void> delete(int index) async {
-    state = [
-      ...state.sublist(0, index),
-      ...state.sublist(index + 1),
-    ];
+  Future<void> replace(String tabId, TabSettings tabSettings) async {
+    state = state
+        .map((tab) => tab.id == tabId ? _removeUnusedValues(tabSettings) : tab)
+        .toList();
+    await _save();
+  }
+
+  Future<void> delete(String tabId) async {
+    state = state.where((tab) => tab.id != tabId).toList();
     await _save();
   }
 
