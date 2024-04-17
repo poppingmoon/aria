@@ -108,6 +108,11 @@ class SettingsPage extends HookConsumerWidget {
                 onTap: () => context.push('/settings/note-display'),
               ),
               ListTile(
+                leading: const Icon(Icons.emoji_symbols),
+                title: Text(t.misskey.emojiPicker),
+                onTap: () => context.push('/settings/emoji-picker'),
+              ),
+              ListTile(
                 leading: const Icon(Icons.brush),
                 title: Text(t.misskey.appearance),
                 onTap: () => context.push('/settings/appearance'),

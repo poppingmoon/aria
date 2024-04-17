@@ -59,6 +59,7 @@ import '../view/page/settings/languages_page.dart';
 import '../view/page/settings/mute_block_page.dart';
 import '../view/page/settings/muted_users_page.dart';
 import '../view/page/settings/note_display_page.dart';
+import '../view/page/settings/pinned_emojis_editor_page.dart';
 import '../view/page/settings/privacy_page.dart';
 import '../view/page/settings/profile_page.dart';
 import '../view/page/settings/renote_muted_users_page.dart';
@@ -159,7 +160,7 @@ GoRouter router(RouterRef ref) {
                   ),
                   GoRoute(
                     path: 'emoji-picker',
-                    builder: (_, state) => EmojiPickerPage(
+                    builder: (_, state) => PinnedEmojisEditorPage(
                       account:
                           Account.fromString(state.pathParameters['acct']!),
                     ),
@@ -219,6 +220,10 @@ GoRouter router(RouterRef ref) {
           GoRoute(
             path: 'behavior',
             builder: (_, __) => const BehaviorPage(),
+          ),
+          GoRoute(
+            path: 'emoji-picker',
+            builder: (_, __) => const EmojiPickerPage(),
           ),
           GoRoute(
             path: 'import-export',
