@@ -49,6 +49,8 @@ class AboutAriaPage extends HookConsumerWidget {
               child: Text.rich(
                 t.aria.acknowledgements(
                   miria: WidgetSpan(
+                    alignment: PlaceholderAlignment.baseline,
+                    baseline: TextBaseline.alphabetic,
                     child: InkWell(
                       onTap: () => launchUrl(
                         Uri.https('github.com', 'shiosyakeyakini-info/miria'),
@@ -66,6 +68,8 @@ class AboutAriaPage extends HookConsumerWidget {
                     ),
                   ),
                   misskey: WidgetSpan(
+                    alignment: PlaceholderAlignment.baseline,
+                    baseline: TextBaseline.alphabetic,
                     child: InkWell(
                       onTap: () => launchUrl(
                         Uri.https('github.com', 'misskey-dev/misskey'),
