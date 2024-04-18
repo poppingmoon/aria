@@ -240,7 +240,11 @@ class NoteSheet extends ConsumerWidget {
                     Uri.https(
                       'translate.google.com',
                       '',
-                      {'text': appearNote.text},
+                      {
+                        'text': [appearNote.cw, appearNote.text]
+                            .nonNulls
+                            .join('\n'),
+                      },
                     ),
                   );
                 }

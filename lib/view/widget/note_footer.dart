@@ -388,7 +388,9 @@ class NoteFooter extends ConsumerWidget {
                     Uri.https(
                       'translate.google.com',
                       '',
-                      {'text': note.text},
+                      {
+                        'text': [note.cw, note.text].nonNulls.join('\n'),
+                      },
                     ),
                   );
                 }
