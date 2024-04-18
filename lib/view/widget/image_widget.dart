@@ -30,7 +30,7 @@ class ImageWidget extends ConsumerWidget {
   final Widget Function(BuildContext, Object, Object?)? errorBuilder;
   final String? semanticLabel;
 
-  Widget buildPlaceholder() {
+  Widget _buildPlaceholder() {
     if (blurHash != null) {
       return BlurHash(hash: blurHash!);
     } else {
@@ -41,30 +41,56 @@ class ImageWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (url.startsWith('data')) {
-      return Image.memory(
-        UriData.fromString(url).contentAsBytes(),
-        width: width,
-        height: height,
-        fit: fit,
-        alignment: alignment,
-        opacity: AlwaysStoppedAnimation(opacity),
-        errorBuilder: errorBuilder ?? (_, __, ___) => buildPlaceholder(),
-        semanticLabel: semanticLabel,
-      );
+      final data = UriData.fromString(url);
+      if (data.isMimeType('image/svg+xml')) {
+        return SvgPicture.string(
+          data.contentText,
+          width: width,
+          height: height,
+          fit: fit ?? BoxFit.contain,
+          alignment: alignment,
+          placeholderBuilder: (_) => _buildPlaceholder(),
+          colorFilter: ColorFilter.mode(
+            Color.fromRGBO(255, 255, 255, opacity),
+            BlendMode.modulate,
+          ),
+          semanticsLabel: semanticLabel,
+        );
+      } else {
+        return Image.memory(
+          data.contentAsBytes(),
+          width: width,
+          height: height,
+          fit: fit,
+          alignment: alignment,
+          opacity: AlwaysStoppedAnimation(opacity),
+          errorBuilder: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
+          semanticLabel: semanticLabel,
+        );
+      }
     }
     if (url.endsWith('.svg')) {
-      return SvgPicture.network(
-        url,
-        width: width,
-        height: height,
-        fit: fit ?? BoxFit.contain,
-        alignment: alignment,
-        placeholderBuilder: (_) => buildPlaceholder(),
-        colorFilter: ColorFilter.mode(
-          Color.fromRGBO(255, 255, 255, opacity),
-          BlendMode.modulate,
-        ),
-        semanticsLabel: semanticLabel,
+      return FutureBuilder(
+        future: ref.read(cacheManagerProvider).getSingleFile(url),
+        builder: (context, snapshot) {
+          if (snapshot case AsyncSnapshot(:final data?)) {
+            return SvgPicture.file(
+              data,
+              width: width,
+              height: height,
+              fit: fit ?? BoxFit.contain,
+              alignment: alignment,
+              placeholderBuilder: (_) => _buildPlaceholder(),
+              colorFilter: ColorFilter.mode(
+                Color.fromRGBO(255, 255, 255, opacity),
+                BlendMode.modulate,
+              ),
+              semanticsLabel: semanticLabel,
+            );
+          } else {
+            return _buildPlaceholder();
+          }
+        },
       );
     } else {
       return Semantics(
@@ -76,8 +102,8 @@ class ImageWidget extends ConsumerWidget {
           fit: fit,
           alignment: alignment,
           cacheManager: ref.watch(cacheManagerProvider),
-          placeholder: (_, __) => buildPlaceholder(),
-          errorWidget: errorBuilder ?? (_, __, ___) => buildPlaceholder(),
+          placeholder: (_, __) => _buildPlaceholder(),
+          errorWidget: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
           color: Color.fromRGBO(255, 255, 255, opacity),
           colorBlendMode: BlendMode.modulate,
         ),
