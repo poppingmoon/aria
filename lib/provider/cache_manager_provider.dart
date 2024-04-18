@@ -3,7 +3,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cache_manager_provider.g.dart';
 
-@Riverpod(keepAlive: true)
-CacheManager cacheManager(CacheManagerRef ref) {
+@Riverpod(keepAlive: true, dependencies: [])
+ImageCacheManager cacheManager(CacheManagerRef ref) {
   return DefaultCacheManager();
 }
