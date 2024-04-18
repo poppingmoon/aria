@@ -1,4 +1,5 @@
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -112,6 +113,20 @@ class PostFormAttaches extends ConsumerWidget {
           .read(attachesNotifierProvider(account, gallery: gallery).notifier)
           .reorder(oldIndex, newIndex),
       itemDragEnable: (_) => !uploading,
+      proxyDecorator: (child, _, animation) => AnimatedBuilder(
+        animation: animation,
+        builder: (context, child) {
+          final animValue = Curves.easeInOut.transform(animation.value);
+          final elevation = lerpDouble(0.0, 6.0, animValue)!;
+          return Material(
+            elevation: elevation,
+            borderRadius: BorderRadius.circular(12.0),
+            color: Colors.transparent,
+            child: child,
+          );
+        },
+        child: child,
+      ),
       children: List.generate(
         files.length,
         (index) => _PostFormAttach(
