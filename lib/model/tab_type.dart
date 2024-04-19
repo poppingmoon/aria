@@ -11,4 +11,5 @@ enum TabType {
   direct,
   user,
   notifications,
+  custom,
 }

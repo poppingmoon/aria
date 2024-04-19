@@ -24,6 +24,7 @@ class TabTypeWidget extends StatelessWidget {
         TabType.direct => t.misskey.directNotes,
         TabType.user => t.misskey.user,
         TabType.notifications => t.misskey.notifications,
+        TabType.custom => t.aria.custom,
       },
     );
   }

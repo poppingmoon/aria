@@ -9,6 +9,7 @@ Future<String?> showTextFieldDialog(
   BuildContext context, {
   Widget? title,
   String? initialText,
+  InputDecoration? decoration,
   int? maxLines = 1,
 }) async {
   return showDialog(
@@ -16,6 +17,7 @@ Future<String?> showTextFieldDialog(
     builder: (context) => TextFieldDialog(
       title: title,
       initialText: initialText,
+      decoration: decoration,
       maxLines: maxLines,
     ),
   );
@@ -26,11 +28,13 @@ class TextFieldDialog extends HookWidget {
     super.key,
     this.title,
     this.initialText,
+    this.decoration,
     this.maxLines = 1,
   });
 
   final Widget? title;
   final String? initialText;
+  final InputDecoration? decoration;
   final int? maxLines;
 
   @override
@@ -45,14 +49,15 @@ class TextFieldDialog extends HookWidget {
         title: title,
         content: TextField(
           controller: controller,
-          decoration: InputDecoration(
-            suffixIcon: maxLines == 1
-                ? IconButton(
-                    onPressed: () => controller.clear(),
-                    icon: const Icon(Icons.close),
-                  )
-                : null,
-          ),
+          decoration: decoration ??
+              InputDecoration(
+                suffixIcon: maxLines == 1
+                    ? IconButton(
+                        onPressed: () => controller.clear(),
+                        icon: const Icon(Icons.close),
+                      )
+                    : null,
+              ),
           onSubmitted: (value) => context.pop(value),
           maxLines: maxLines,
           autofocus: true,

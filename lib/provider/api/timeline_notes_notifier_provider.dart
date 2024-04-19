@@ -24,6 +24,25 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(tabSettings.account));
 
+  Future<Iterable<Note>> _fetchNotesFromCustomTimeline({
+    String? untilId,
+  }) async {
+    final endpoint = tabSettings.endpoint;
+    if (endpoint == null) {
+      return [];
+    }
+    final response = await _misskey.apiService.post<List<dynamic>>(
+      endpoint,
+      {
+        'untilId': untilId,
+        'withRenotes': tabSettings.withRenotes,
+        'withReplies': tabSettings.withReplies,
+        'withFiles': tabSettings.withFiles,
+      },
+    );
+    return response.map((e) => Note.fromJson(e as Map<String, dynamic>));
+  }
+
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
     final notes = await switch (tabSettings.tabType) {
       TabType.homeTimeline => _misskey.notes.homeTimeline(
@@ -110,6 +129,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
       TabType.notifications => throw UnsupportedError(
           '_fetchNote() for TabType.notifications is not supported',
         ),
+      TabType.custom => _fetchNotesFromCustomTimeline(untilId: untilId),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);
     return notes;

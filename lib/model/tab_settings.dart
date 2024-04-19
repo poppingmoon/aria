@@ -27,6 +27,8 @@ class TabSettings with _$TabSettings {
     String? listId,
     String? antennaId,
     String? userId,
+    String? endpoint,
+    String? streamingChannel,
   }) = _TabSettings;
 
   const TabSettings._();
