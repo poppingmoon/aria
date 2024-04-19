@@ -20,18 +20,15 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
   @override
   Stream<Note> build(TabSettings tabSettings) async* {
     switch (tabSettings.tabType) {
-      case TabType.mention || TabType.direct:
-        final event = await ref
-            .watch(mainStreamNotifierProvider(tabSettings.account).future);
-        if (event case Mention(:final note)) {
-          if (tabSettings.tabType == TabType.mention ||
-              note.visibility == NoteVisibility.specified) {
-            yield note;
-          }
-        }
-      case TabType.user:
-        return;
-      default:
+      case TabType.homeTimeline ||
+            TabType.localTimeline ||
+            TabType.hybridTimeline ||
+            TabType.globalTimeline ||
+            TabType.roleTimeline ||
+            TabType.userList ||
+            TabType.antenna ||
+            TabType.channel ||
+            TabType.custom:
         ref.listen(
           webSocketChannelProvider(tabSettings.account),
           (_, __) => connect(),
@@ -50,6 +47,17 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
             yield note;
           }
         }
+      case TabType.mention || TabType.direct:
+        final event = await ref
+            .watch(mainStreamNotifierProvider(tabSettings.account).future);
+        if (event case Mention(:final note)) {
+          if (tabSettings.tabType == TabType.mention ||
+              note.visibility == NoteVisibility.specified) {
+            yield note;
+          }
+        }
+      case TabType.user || TabType.notifications:
+        return;
     }
   }
 
@@ -60,13 +68,14 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
 
   Future<void> connect() async {
     switch (tabSettings.tabType) {
-      case TabType.mention || TabType.direct:
-        return ref
-            .read(mainStreamNotifierProvider(tabSettings.account).notifier)
-            .connect();
-      case TabType.user:
-        return;
-      default:
+      case TabType.homeTimeline ||
+            TabType.localTimeline ||
+            TabType.hybridTimeline ||
+            TabType.globalTimeline ||
+            TabType.roleTimeline ||
+            TabType.userList ||
+            TabType.antenna ||
+            TabType.channel:
         await _webSocketChannel.ready;
         _webSocketChannel.sink.add(
           jsonEncode(
@@ -90,6 +99,33 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
             },
           ),
         );
+      case TabType.mention || TabType.direct:
+        return ref
+            .read(mainStreamNotifierProvider(tabSettings.account).notifier)
+            .connect();
+      case TabType.user || TabType.notifications:
+        return;
+      case TabType.custom:
+        if (tabSettings case TabSettings(:final streamingChannel?)) {
+          await _webSocketChannel.ready;
+          _webSocketChannel.sink.add(
+            jsonEncode(
+              {
+                'type': 'connect',
+                'body': {
+                  'channel': streamingChannel,
+                  'id': _id,
+                  'params': {
+                    if (!tabSettings.withRenotes) 'withRenotes': false,
+                    if (tabSettings.withReplies) 'withRenotes': true,
+                    if (tabSettings.withFiles) 'withFiles': true,
+                  },
+                },
+              },
+            ),
+          );
+        }
+        return;
     }
   }
 

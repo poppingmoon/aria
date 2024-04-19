@@ -57,6 +57,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get copied => 'クリップボードにコピーしたで';
 	@override String get copyName => '名前をコピー';
 	@override String get crop => 'クロップ';
+	@override String get custom => 'カスタム';
 	@override String deleteFilesConfirm({required Object n}) => 'ファイルが${n}個あるけどほかしてええか？';
 	@override String get deleteTabConfirm => 'このタブほかしてええか？';
 	@override String get disableSubscribingNotes => 'ツッコミをいちいち更新せんようにする';
@@ -70,6 +71,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get emojiPickerScale => '絵文字ピッカーのでかさ';
 	@override String get emojiPickerUseDialog => '絵文字ピッカーをダイアログで表示するで';
 	@override String get enableFederation => '連合ありにするで';
+	@override String get endpoint => 'エンドポイント';
 	@override String get expandNote => 'ノートを開くで';
 	@override String get fileNotFound => 'ファイルがあらへん';
 	@override String get findServer => 'Misskeyサーバーを探す';
@@ -155,6 +157,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showTimelineTabBarOnBottom => 'タイムラインのタブを下に表示するで';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
 	@override String get stackTrace => 'スタックトレース';
+	@override String get streamingChannel => 'ストリーミングチャンネル';
 	@override String get tabName => 'タブの名前';
 	@override String get tabType => 'タブの種類';
 	@override String get tabs => 'タブ';

@@ -62,6 +62,7 @@ class _StringsAriaEnUs {
 	String get copied => 'Copied to clipboard';
 	String get copyName => 'Copy name';
 	String get crop => 'Crop';
+	String get custom => 'Custom';
 	String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
 		one: 'Are you sure you want to delete ${n} file?',
 		other: 'Are you sure you want to delete ${n} files?',
@@ -78,6 +79,7 @@ class _StringsAriaEnUs {
 	String get emojiPickerScale => 'Emoji picker scale';
 	String get emojiPickerUseDialog => 'Display emoji picker as dialog';
 	String get enableFederation => 'Enable federation';
+	String get endpoint => 'Endpoint';
 	String get expandNote => 'Expand note';
 	String get fileNotFound => 'File not found';
 	String get findServer => 'Find a Misskey server';
@@ -167,6 +169,7 @@ class _StringsAriaEnUs {
 	String get showTimelineTabBarOnBottom => 'Show timeline tab bar on bottom';
 	String get showTranslateButtonInNoteFooter => 'Add "Translate" to note action menu';
 	String get stackTrace => 'Stack trace';
+	String get streamingChannel => 'Streaming channel';
 	String get tabName => 'Tab name';
 	String get tabType => 'Tab type';
 	String get tabs => 'Tabs';

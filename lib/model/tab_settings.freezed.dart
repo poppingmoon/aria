@@ -37,6 +37,8 @@ mixin _$TabSettings {
   String? get listId => throw _privateConstructorUsedError;
   String? get antennaId => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
+  String? get endpoint => throw _privateConstructorUsedError;
+  String? get streamingChannel => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,7 +69,9 @@ abstract class $TabSettingsCopyWith<$Res> {
       String? channelId,
       String? listId,
       String? antennaId,
-      String? userId});
+      String? userId,
+      String? endpoint,
+      String? streamingChannel});
 
   $AccountCopyWith<$Res> get account;
 }
@@ -102,6 +106,8 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
     Object? listId = freezed,
     Object? antennaId = freezed,
     Object? userId = freezed,
+    Object? endpoint = freezed,
+    Object? streamingChannel = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -172,6 +178,14 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      endpoint: freezed == endpoint
+          ? _value.endpoint
+          : endpoint // ignore: cast_nullable_to_non_nullable
+              as String?,
+      streamingChannel: freezed == streamingChannel
+          ? _value.streamingChannel
+          : streamingChannel // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -209,7 +223,9 @@ abstract class _$$TabSettingsImplCopyWith<$Res>
       String? channelId,
       String? listId,
       String? antennaId,
-      String? userId});
+      String? userId,
+      String? endpoint,
+      String? streamingChannel});
 
   @override
   $AccountCopyWith<$Res> get account;
@@ -243,6 +259,8 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
     Object? listId = freezed,
     Object? antennaId = freezed,
     Object? userId = freezed,
+    Object? endpoint = freezed,
+    Object? streamingChannel = freezed,
   }) {
     return _then(_$TabSettingsImpl(
       id: freezed == id
@@ -313,6 +331,14 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String?,
+      endpoint: freezed == endpoint
+          ? _value.endpoint
+          : endpoint // ignore: cast_nullable_to_non_nullable
+              as String?,
+      streamingChannel: freezed == streamingChannel
+          ? _value.streamingChannel
+          : streamingChannel // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -337,7 +363,9 @@ class _$TabSettingsImpl extends _TabSettings {
       this.channelId,
       this.listId,
       this.antennaId,
-      this.userId})
+      this.userId,
+      this.endpoint,
+      this.streamingChannel})
       : super._();
 
   factory _$TabSettingsImpl.fromJson(Map<String, dynamic> json) =>
@@ -384,10 +412,14 @@ class _$TabSettingsImpl extends _TabSettings {
   final String? antennaId;
   @override
   final String? userId;
+  @override
+  final String? endpoint;
+  @override
+  final String? streamingChannel;
 
   @override
   String toString() {
-    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId)';
+    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel)';
   }
 
   @override
@@ -420,30 +452,37 @@ class _$TabSettingsImpl extends _TabSettings {
             (identical(other.listId, listId) || other.listId == listId) &&
             (identical(other.antennaId, antennaId) ||
                 other.antennaId == antennaId) &&
-            (identical(other.userId, userId) || other.userId == userId));
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.endpoint, endpoint) ||
+                other.endpoint == endpoint) &&
+            (identical(other.streamingChannel, streamingChannel) ||
+                other.streamingChannel == streamingChannel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      tabType,
-      name,
-      account,
-      icon,
-      disableStreaming,
-      disableSubscribing,
-      withReplies,
-      withRenotes,
-      withSelfRenotes,
-      withFiles,
-      withSensitive,
-      roleId,
-      channelId,
-      listId,
-      antennaId,
-      userId);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        id,
+        tabType,
+        name,
+        account,
+        icon,
+        disableStreaming,
+        disableSubscribing,
+        withReplies,
+        withRenotes,
+        withSelfRenotes,
+        withFiles,
+        withSensitive,
+        roleId,
+        channelId,
+        listId,
+        antennaId,
+        userId,
+        endpoint,
+        streamingChannel
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -477,7 +516,9 @@ abstract class _TabSettings extends TabSettings {
       final String? channelId,
       final String? listId,
       final String? antennaId,
-      final String? userId}) = _$TabSettingsImpl;
+      final String? userId,
+      final String? endpoint,
+      final String? streamingChannel}) = _$TabSettingsImpl;
   const _TabSettings._() : super._();
 
   factory _TabSettings.fromJson(Map<String, dynamic> json) =
@@ -517,6 +558,10 @@ abstract class _TabSettings extends TabSettings {
   String? get antennaId;
   @override
   String? get userId;
+  @override
+  String? get endpoint;
+  @override
+  String? get streamingChannel;
   @override
   @JsonKey(ignore: true)
   _$$TabSettingsImplCopyWith<_$TabSettingsImpl> get copyWith =>

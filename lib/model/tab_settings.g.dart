@@ -27,6 +27,8 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
       listId: json['listId'] as String?,
       antennaId: json['antennaId'] as String?,
       userId: json['userId'] as String?,
+      endpoint: json['endpoint'] as String?,
+      streamingChannel: json['streamingChannel'] as String?,
     );
 
 Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
@@ -55,6 +57,8 @@ Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
   writeNotNull('listId', instance.listId);
   writeNotNull('antennaId', instance.antennaId);
   writeNotNull('userId', instance.userId);
+  writeNotNull('endpoint', instance.endpoint);
+  writeNotNull('streamingChannel', instance.streamingChannel);
   return val;
 }
 
@@ -71,4 +75,5 @@ const _$TabTypeEnumMap = {
   TabType.direct: 'direct',
   TabType.user: 'user',
   TabType.notifications: 'notifications',
+  TabType.custom: 'custom',
 };

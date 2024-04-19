@@ -27,6 +27,7 @@ import '../../../util/future_with_dialog.dart';
 import '../../dialog/account_select_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/icon_select_dialog.dart';
+import '../../dialog/message_dialog.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../dialog/user_select_dialog.dart';
@@ -304,7 +305,7 @@ class TabSettingsPage extends HookConsumerWidget {
                       TabType.globalTimeline => account.value?.isGuest ?? true
                           ? meta?.policies?.gtlAvailable ?? true
                           : i?.policies?.gtlAvailable ?? true,
-                      TabType.channel || TabType.user => true,
+                      TabType.channel || TabType.user || TabType.custom => true,
                     },
                   ),
                   initialValue: tabType,
@@ -521,7 +522,64 @@ class TabSettingsPage extends HookConsumerWidget {
                     }
                   }
                 },
+              )
+            else if (tabType == TabType.custom) ...[
+              ListTile(
+                title: Text(t.aria.endpoint),
+                subtitle: Text(
+                  tabSettings.value.endpoint != null
+                      ? tabSettings.value.endpoint!
+                      : t.misskey.notSet,
+                ),
+                trailing: const Icon(Icons.navigate_next),
+                onTap: () async {
+                  final result = await showTextFieldDialog(
+                    context,
+                    title: Text(t.aria.endpoint),
+                    initialText: tabSettings.value.endpoint,
+                    decoration:
+                        const InputDecoration(hintText: 'notes/timeline'),
+                  );
+                  if (result != null) {
+                    if (!context.mounted) return;
+                    if (RegExp(r'^[\w\/\-]{0,50}$').hasMatch(result)) {
+                      tabSettings.value = tabSettings.value.copyWith(
+                        endpoint: result.isNotEmpty ? result : null,
+                      );
+                    } else {
+                      await showMessageDialog(context, t.misskey.invalidValue);
+                    }
+                  }
+                },
               ),
+              ListTile(
+                title: Text(t.aria.streamingChannel),
+                subtitle: Text(
+                  tabSettings.value.streamingChannel != null
+                      ? tabSettings.value.streamingChannel!
+                      : t.misskey.notSet,
+                ),
+                trailing: const Icon(Icons.navigate_next),
+                onTap: () async {
+                  final result = await showTextFieldDialog(
+                    context,
+                    title: Text(t.aria.streamingChannel),
+                    initialText: tabSettings.value.streamingChannel,
+                    decoration: const InputDecoration(hintText: 'homeTimeline'),
+                  );
+                  if (result != null) {
+                    if (!context.mounted) return;
+                    if (RegExp(r'^\w{0,50}$').hasMatch(result)) {
+                      tabSettings.value = tabSettings.value.copyWith(
+                        streamingChannel: result.isNotEmpty ? result : null,
+                      );
+                    } else {
+                      await showMessageDialog(context, t.misskey.invalidValue);
+                    }
+                  }
+                },
+              ),
+            ],
             ListTile(
               title: Text(t.aria.tabName),
               subtitle: Text(
