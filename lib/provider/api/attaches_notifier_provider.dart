@@ -83,21 +83,29 @@ class AttachesNotifier extends _$AttachesNotifier {
                 .keepOriginalFilename
             ? file.name
             : randomizeFilename(file.name);
-        final driveFile =
-            await ref.read(misskeyProvider(account)).drive.files.createAsBinary(
-                  DriveFilesCreateRequest(
-                    folderId: ref
-                        .read(accountSettingsNotifierProvider(account))
-                        .uploadFolder,
-                    name: filename,
-                    isSensitive: file.isSensitive,
-                    comment: file.comment,
-                    force: true,
-                  ),
-                  resized ?? data,
-                );
-        replace(index, DrivePostFile.fromDriveFile(driveFile));
-        return driveFile;
+        try {
+          final driveFile = await ref
+              .read(misskeyProvider(account))
+              .drive
+              .files
+              .createAsBinary(
+                DriveFilesCreateRequest(
+                  folderId: ref
+                      .read(accountSettingsNotifierProvider(account))
+                      .uploadFolder,
+                  name: filename,
+                  isSensitive: file.isSensitive,
+                  comment: file.comment,
+                  force: true,
+                ),
+                resized ?? data,
+              );
+          replace(index, DrivePostFile.fromDriveFile(driveFile));
+          return driveFile;
+        } catch (_) {
+          replace(index, file.copyWith(uploading: false));
+          rethrow;
+        }
       case DrivePostFile():
         return file.file;
     }
