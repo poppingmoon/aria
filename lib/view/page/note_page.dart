@@ -49,7 +49,9 @@ class NotePage extends HookConsumerWidget {
       );
     }
     final remoteUrl = note.uri ?? note.url;
-    final remoteNoteId = remoteUrl?.pathSegments.lastOrNull;
+    final remoteNoteId = remoteUrl?.pathSegments
+        .where((segment) => segment != 'activity')
+        .lastOrNull;
     final isChannelNote = note.channelId != null;
     final showUserNextNotes = useState(false);
     final showTimelineNextNotes = useState(false);
