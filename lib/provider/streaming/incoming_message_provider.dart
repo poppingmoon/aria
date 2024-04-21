@@ -9,7 +9,7 @@ import 'web_socket_channel_provider.dart';
 
 part 'incoming_message_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 Stream<IncomingMessage> incomingMessage(
   IncomingMessageRef ref,
   Account account,

@@ -6,7 +6,7 @@ part of 'incoming_message_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$incomingMessageHash() => r'9187a73139f172381927f6ce452661d7ade1cd43';
+String _$incomingMessageHash() => r'd9325542a866d93f281640eee17294aaf4c1771b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,7 +72,8 @@ class IncomingMessageFamily extends Family<AsyncValue<IncomingMessage>> {
 }
 
 /// See also [incomingMessage].
-class IncomingMessageProvider extends StreamProvider<IncomingMessage> {
+class IncomingMessageProvider
+    extends AutoDisposeStreamProvider<IncomingMessage> {
   /// See also [incomingMessage].
   IncomingMessageProvider(
     Account account,
@@ -124,7 +125,7 @@ class IncomingMessageProvider extends StreamProvider<IncomingMessage> {
   }
 
   @override
-  StreamProviderElement<IncomingMessage> createElement() {
+  AutoDisposeStreamProviderElement<IncomingMessage> createElement() {
     return _IncomingMessageProviderElement(this);
   }
 
@@ -142,13 +143,14 @@ class IncomingMessageProvider extends StreamProvider<IncomingMessage> {
   }
 }
 
-mixin IncomingMessageRef on StreamProviderRef<IncomingMessage> {
+mixin IncomingMessageRef on AutoDisposeStreamProviderRef<IncomingMessage> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _IncomingMessageProviderElement
-    extends StreamProviderElement<IncomingMessage> with IncomingMessageRef {
+    extends AutoDisposeStreamProviderElement<IncomingMessage>
+    with IncomingMessageRef {
   _IncomingMessageProviderElement(super.provider);
 
   @override

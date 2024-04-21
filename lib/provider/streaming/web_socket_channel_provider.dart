@@ -8,7 +8,7 @@ import '../token_provider.dart';
 
 part 'web_socket_channel_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 WebSocketChannel webSocketChannel(
   WebSocketChannelRef ref,
   Account account,
