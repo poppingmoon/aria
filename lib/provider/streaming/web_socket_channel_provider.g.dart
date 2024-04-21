@@ -6,7 +6,7 @@ part of 'web_socket_channel_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webSocketChannelHash() => r'f11dec9037e8296e318877d7f9e8ea9397f0340d';
+String _$webSocketChannelHash() => r'40506ba9cb1958506a80e9afbae5bad505e2bcae';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,7 +72,7 @@ class WebSocketChannelFamily extends Family<WebSocketChannel> {
 }
 
 /// See also [webSocketChannel].
-class WebSocketChannelProvider extends Provider<WebSocketChannel> {
+class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
   /// See also [webSocketChannel].
   WebSocketChannelProvider(
     Account account,
@@ -124,7 +124,7 @@ class WebSocketChannelProvider extends Provider<WebSocketChannel> {
   }
 
   @override
-  ProviderElement<WebSocketChannel> createElement() {
+  AutoDisposeProviderElement<WebSocketChannel> createElement() {
     return _WebSocketChannelProviderElement(this);
   }
 
@@ -142,12 +142,13 @@ class WebSocketChannelProvider extends Provider<WebSocketChannel> {
   }
 }
 
-mixin WebSocketChannelRef on ProviderRef<WebSocketChannel> {
+mixin WebSocketChannelRef on AutoDisposeProviderRef<WebSocketChannel> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
-class _WebSocketChannelProviderElement extends ProviderElement<WebSocketChannel>
+class _WebSocketChannelProviderElement
+    extends AutoDisposeProviderElement<WebSocketChannel>
     with WebSocketChannelRef {
   _WebSocketChannelProviderElement(super.provider);
 
