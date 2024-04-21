@@ -60,6 +60,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get custom => 'カスタム';
 	@override String deleteFilesConfirm({required Object n}) => 'ファイルが${n}個あるけどほかしてええか？';
 	@override String get deleteTabConfirm => 'このタブほかしてええか？';
+	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを止めとく';
 	@override String get disableSubscribingNotes => 'ツッコミをいちいち更新せんようにする';
 	@override String get discardChangesConfirm => '変えんと戻ってええか？';
 	@override String get doubleTapToShow => '二度押ししたら見えるで';

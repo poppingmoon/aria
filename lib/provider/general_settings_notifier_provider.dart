@@ -154,6 +154,14 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setDisableDataSaverWhenOnWifi(
+    bool disableDataSaverWhenOnWifi,
+  ) async {
+    state =
+        state.copyWith(disableDataSaverWhenOnWifi: disableDataSaverWhenOnWifi);
+    await _save();
+  }
+
   Future<void> setShowLikeButtonInNoteFooter(
     bool showLikeButtonInNoteFooter,
   ) async {

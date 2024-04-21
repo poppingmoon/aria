@@ -40,6 +40,13 @@ class AppearancePage extends HookConsumerWidget {
                 .read(generalSettingsNotifierProvider.notifier)
                 .setDataSaverUrlPreview(value),
           ),
+          SwitchListTile(
+            title: Text(t.aria.disableDataSaverWhenOnWifi),
+            value: settings.disableDataSaverWhenOnWifi,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setDisableDataSaverWhenOnWifi(value),
+          ),
           const Divider(),
           SwitchListTile(
             title: Text(t.misskey.forceShowAds),

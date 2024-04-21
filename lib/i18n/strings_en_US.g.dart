@@ -68,6 +68,7 @@ class _StringsAriaEnUs {
 		other: 'Are you sure you want to delete ${n} files?',
 	);
 	String get deleteTabConfirm => 'Are you sure you want to delete this tab?';
+	String get disableDataSaverWhenOnWifi => 'Disable data saver when on Wi-Fi';
 	String get disableSubscribingNotes => 'Disable real-time reaction updates';
 	String get discardChangesConfirm => 'Are you sure you want to discard changes and back?';
 	String get doubleTapToShow => 'Double tap to show';
