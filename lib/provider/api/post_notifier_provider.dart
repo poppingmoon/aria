@@ -220,6 +220,7 @@ class PostNotifier extends _$PostNotifier {
     } else if (visibility == NoteVisibility.specified) {
       state = state.copyWith(
         visibility: NoteVisibility.specified,
+        channelId: null,
         localOnly: false,
       );
     } else {
