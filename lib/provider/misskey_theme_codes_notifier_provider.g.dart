@@ -7,7 +7,7 @@ part of 'misskey_theme_codes_notifier_provider.dart';
 // **************************************************************************
 
 String _$misskeyThemeCodesNotifierHash() =>
-    r'691a57330f43ea502b9eecafe0f6e8d895d5b2dc';
+    r'caa89102b765a907e6a114239fac86339e6827e2';
 
 /// See also [MisskeyThemeCodesNotifier].
 @ProviderFor(MisskeyThemeCodesNotifier)
