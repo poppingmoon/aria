@@ -122,19 +122,20 @@ class UserSheet extends ConsumerWidget {
               trailing: const Icon(Icons.navigate_next),
               onTap: () => context.push('/$account/servers/$host'),
             ),
-          ListTile(
-            leading: const Icon(Icons.mail),
-            title: Text(t.misskey.sendMessage),
-            onTap: () {
-              ref
-                  .read(postNotifierProvider(account).notifier)
-                  .addVisibleUser(user);
-              ref
-                  .read(postNotifierProvider(account).notifier)
-                  .setVisibility(NoteVisibility.specified);
-              context.push('/$account/post');
-            },
-          ),
+          if (!account.isGuest)
+            ListTile(
+              leading: const Icon(Icons.mail),
+              title: Text(t.misskey.sendMessage),
+              onTap: () {
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .addVisibleUser(user);
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setVisibility(NoteVisibility.specified);
+                context.push('/$account/post');
+              },
+            ),
           if (switchCandidateAccounts.isNotEmpty)
             ListTile(
               leading: const Icon(Icons.switch_account),
