@@ -33,5 +33,6 @@ class MisskeyThemeCodesNotifier extends _$MisskeyThemeCodesNotifier {
 
   Future<void> import(List<String> codes) async {
     state = codes;
+    await _save();
   }
 }
