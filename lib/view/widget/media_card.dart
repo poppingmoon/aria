@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
@@ -12,6 +13,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
+import '../../provider/connectivity_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../dialog/audio_dialog.dart';
@@ -174,9 +176,18 @@ class MediaCard extends HookConsumerWidget {
       generalSettingsNotifierProvider.select((settings) => settings.sensitive),
     );
     final dataSaver = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.dataSaverMedia),
-    );
+          generalSettingsNotifierProvider
+              .select((settings) => settings.dataSaverMedia),
+        ) &&
+        !(ref.watch(
+              generalSettingsNotifierProvider
+                  .select((settings) => settings.disableDataSaverWhenOnWifi),
+            ) &&
+            (ref
+                    .watch(connectivityProvider)
+                    .valueOrNull
+                    ?.contains(ConnectivityResult.wifi) ??
+                false));
     final openMediaOnDoubleTap = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.openSensitiveMediaOnDoubleTap),
@@ -306,7 +317,8 @@ class MediaCard extends HookConsumerWidget {
                               style:
                                   const TextStyle(fontWeight: FontWeight.bold),
                               children: [
-                                if (dataSaver && file.size > 0)
+                                if (dataSaver && file.size > 0) ...[
+                                  const TextSpan(text: ' '),
                                   TextSpan(
                                     text: prettyBytes(
                                       file.size.toDouble(),
@@ -315,6 +327,7 @@ class MediaCard extends HookConsumerWidget {
                                       binary: true,
                                     ),
                                   ),
+                                ],
                               ],
                             ),
                           TextSpan(

@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -7,6 +8,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/summaly_result.dart';
+import '../../provider/connectivity_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
@@ -61,10 +63,20 @@ class UrlPreview extends HookConsumerWidget {
     final isPlayerOpen = useState(false);
     final thumbnail = summalyResult?.thumbnail;
     final hideThumbnail = (summalyResult?.sensitive ?? false) ||
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.dataSaverUrlPreview),
-        );
+        (ref.watch(
+              generalSettingsNotifierProvider
+                  .select((settings) => settings.dataSaverUrlPreview),
+            ) &&
+            !(ref.watch(
+                  generalSettingsNotifierProvider.select(
+                    (settings) => settings.disableDataSaverWhenOnWifi,
+                  ),
+                ) &&
+                (ref
+                        .watch(connectivityProvider)
+                        .valueOrNull
+                        ?.contains(ConnectivityResult.wifi) ??
+                    false)));
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
     final tweetId = _extractTweetId(link);

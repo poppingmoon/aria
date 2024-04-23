@@ -39,6 +39,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['useGroupedNotifications'] as bool? ?? false,
       dataSaverMedia: json['dataSaverMedia'] as bool? ?? false,
       dataSaverUrlPreview: json['dataSaverUrlPreview'] as bool? ?? false,
+      disableDataSaverWhenOnWifi:
+          json['disableDataSaverWhenOnWifi'] as bool? ?? false,
       showLikeButtonInNoteFooter:
           json['showLikeButtonInNoteFooter'] as bool? ?? false,
       showTranslateButtonInNoteFooter:
@@ -114,6 +116,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
   val['dataSaverMedia'] = instance.dataSaverMedia;
   val['dataSaverUrlPreview'] = instance.dataSaverUrlPreview;
+  val['disableDataSaverWhenOnWifi'] = instance.disableDataSaverWhenOnWifi;
   val['showLikeButtonInNoteFooter'] = instance.showLikeButtonInNoteFooter;
   val['showTranslateButtonInNoteFooter'] =
       instance.showTranslateButtonInNoteFooter;

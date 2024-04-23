@@ -45,6 +45,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool useGroupedNotifications,
     @Default(false) bool dataSaverMedia,
     @Default(false) bool dataSaverUrlPreview,
+    @Default(false) bool disableDataSaverWhenOnWifi,
     @Default(false) bool showLikeButtonInNoteFooter,
     @Default(false) bool showTranslateButtonInNoteFooter,
     @Default(defaultFontSize) double fontSize,

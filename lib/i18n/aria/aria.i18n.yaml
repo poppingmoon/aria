@@ -16,6 +16,7 @@ deleteFilesConfirm:
   one: "Are you sure you want to delete {n} file?"
   other: "Are you sure you want to delete {n} files?"
 deleteTabConfirm: "Are you sure you want to delete this tab?"
+disableDataSaverWhenOnWifi: "Disable data saver when on Wi-Fi"
 disableSubscribingNotes: "Disable real-time reaction updates"
 discardChangesConfirm: "Are you sure you want to discard changes and back?"
 doubleTapToShow: "Double tap to show"

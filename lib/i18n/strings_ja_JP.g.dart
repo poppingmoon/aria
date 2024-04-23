@@ -60,6 +60,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get custom => 'カスタム';
 	@override String deleteFilesConfirm({required Object n}) => '${n}個のファイルを削除しますか？';
 	@override String get deleteTabConfirm => 'このタブを削除しますか？';
+	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを無効にする';
 	@override String get disableSubscribingNotes => 'リアクションのリアルタイム更新を無効にする';
 	@override String get discardChangesConfirm => '変更せずに戻りますか？';
 	@override String get doubleTapToShow => 'ダブルタップして表示';
