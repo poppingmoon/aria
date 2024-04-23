@@ -56,7 +56,7 @@ class UserPage extends HookConsumerWidget {
                 user.host == null));
 
     return DefaultTabController(
-      length: 2 + (isLocal ? 5 : 0) + (isReactionsVisibile ? 1 : 0),
+      length: 2 + (isLocal ? 6 : 0) + (isReactionsVisibile ? 1 : 0),
       child: Scaffold(
         appBar: AppBar(
           title: user != null
@@ -67,7 +67,7 @@ class UserPage extends HookConsumerWidget {
                   tabs: [
                     Tab(text: t.misskey.overview),
                     Tab(text: t.misskey.notes),
-                    Tab(text: t.misskey.featured),
+                    if (isLocal) Tab(text: t.misskey.featured),
                     if (isReactionsVisibile) Tab(text: t.misskey.reactions),
                     if (isLocal) ...[
                       Tab(text: t.misskey.clips),
@@ -110,7 +110,7 @@ class UserPage extends HookConsumerWidget {
                 ),
                 if (userId != null) ...[
                   UserNotes(account: account, userId: userId),
-                  UserFeatured(account: account, userId: userId),
+                  if (isLocal) UserFeatured(account: account, userId: userId),
                   if (isReactionsVisibile)
                     UserReactions(account: account, userId: userId),
                   if (isLocal) ...[
