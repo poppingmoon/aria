@@ -11,6 +11,7 @@ import '../../../provider/api/user_notifier_provider.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 import 'user_clips.dart';
+import 'user_featured.dart';
 import 'user_gallery.dart';
 import 'user_home.dart';
 import 'user_lists.dart';
@@ -66,6 +67,7 @@ class UserPage extends HookConsumerWidget {
                   tabs: [
                     Tab(text: t.misskey.overview),
                     Tab(text: t.misskey.notes),
+                    Tab(text: t.misskey.featured),
                     if (isReactionsVisibile) Tab(text: t.misskey.reactions),
                     if (isLocal) ...[
                       Tab(text: t.misskey.clips),
@@ -108,6 +110,7 @@ class UserPage extends HookConsumerWidget {
                 ),
                 if (userId != null) ...[
                   UserNotes(account: account, userId: userId),
+                  UserFeatured(account: account, userId: userId),
                   if (isReactionsVisibile)
                     UserReactions(account: account, userId: userId),
                   if (isLocal) ...[
