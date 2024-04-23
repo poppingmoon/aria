@@ -85,6 +85,7 @@ class NotificationsListView extends HookConsumerWidget {
         nextNotifications.value = [];
         await Future.wait([
           ref.refresh(iNotifierProvider(account).future),
+          ref.refresh(notificationsNotifierProvider(account).future),
           ref.read(mainStreamNotifierProvider(account).notifier).connect(),
         ]);
       },
