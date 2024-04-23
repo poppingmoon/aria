@@ -5,7 +5,7 @@ extension ScrollControllerExtension on ScrollController {
     if (position.extentBefore < 1000) {
       animateTo(
         position.minScrollExtent,
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 125),
         curve: Curves.ease,
       );
     } else {
