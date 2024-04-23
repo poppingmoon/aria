@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -55,10 +55,8 @@ class ClipDialog extends HookConsumerWidget {
                             noteClipsNotifierProvider(account, noteId).notifier,
                           )
                           .addClip(clip);
-                    } on DioException catch (e) {
-                      if (((e.response?.data as Map?)?['error']
-                              as Map?)?['code'] ==
-                          'ALREADY_CLIPPED') {
+                    } on MisskeyException catch (e) {
+                      if (e.code == 'ALREADY_CLIPPED') {
                         if (!context.mounted) return;
                         final confirmed = await confirm(
                           context,
