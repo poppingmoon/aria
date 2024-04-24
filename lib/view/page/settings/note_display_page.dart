@@ -180,6 +180,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                   },
                 ),
                 SwitchListTile(
+                  title: Text(t.aria.showNoteCreatedAt),
+                  value: settings.showNoteCreatedAt,
+                  onChanged: (value) => ref
+                      .read(generalSettingsNotifierProvider.notifier)
+                      .setShowNoteCreatedAt(value),
+                ),
+                SwitchListTile(
                   title: Text(t.aria.showAvatarsInNote),
                   value: settings.showAvatarsInNote,
                   onChanged: (value) => ref
@@ -438,7 +445,8 @@ class NoteDisplayPage extends HookConsumerWidget {
                           renoteId: '',
                           renote: Note(
                             id: '',
-                            createdAt: DateTime.now(),
+                            createdAt: DateTime.now()
+                                .subtract(const Duration(hours: 1)),
                             text: 'just setting up my msky',
                             user: UserLite(
                               id: '',

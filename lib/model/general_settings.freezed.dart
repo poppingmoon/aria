@@ -32,6 +32,7 @@ mixin _$GeneralSettings {
   bool get showReactionsCount => throw _privateConstructorUsedError;
   bool get loadRawImages => throw _privateConstructorUsedError;
   EmojiStyle get emojiStyle => throw _privateConstructorUsedError;
+  bool get showNoteCreatedAt => throw _privateConstructorUsedError;
   bool get showAvatarsInNote => throw _privateConstructorUsedError;
   bool get showAvatarsInSubNote => throw _privateConstructorUsedError;
   bool get squareAvatars => throw _privateConstructorUsedError;
@@ -101,6 +102,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showReactionsCount,
       bool loadRawImages,
       EmojiStyle emojiStyle,
+      bool showNoteCreatedAt,
       bool showAvatarsInNote,
       bool showAvatarsInSubNote,
       bool squareAvatars,
@@ -166,6 +168,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showReactionsCount = null,
     Object? loadRawImages = null,
     Object? emojiStyle = null,
+    Object? showNoteCreatedAt = null,
     Object? showAvatarsInNote = null,
     Object? showAvatarsInSubNote = null,
     Object? squareAvatars = null,
@@ -245,6 +248,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.emojiStyle
           : emojiStyle // ignore: cast_nullable_to_non_nullable
               as EmojiStyle,
+      showNoteCreatedAt: null == showNoteCreatedAt
+          ? _value.showNoteCreatedAt
+          : showNoteCreatedAt // ignore: cast_nullable_to_non_nullable
+              as bool,
       showAvatarsInNote: null == showAvatarsInNote
           ? _value.showAvatarsInNote
           : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
@@ -432,6 +439,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showReactionsCount,
       bool loadRawImages,
       EmojiStyle emojiStyle,
+      bool showNoteCreatedAt,
       bool showAvatarsInNote,
       bool showAvatarsInSubNote,
       bool squareAvatars,
@@ -495,6 +503,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showReactionsCount = null,
     Object? loadRawImages = null,
     Object? emojiStyle = null,
+    Object? showNoteCreatedAt = null,
     Object? showAvatarsInNote = null,
     Object? showAvatarsInSubNote = null,
     Object? squareAvatars = null,
@@ -574,6 +583,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.emojiStyle
           : emojiStyle // ignore: cast_nullable_to_non_nullable
               as EmojiStyle,
+      showNoteCreatedAt: null == showNoteCreatedAt
+          ? _value.showNoteCreatedAt
+          : showNoteCreatedAt // ignore: cast_nullable_to_non_nullable
+              as bool,
       showAvatarsInNote: null == showAvatarsInNote
           ? _value.showAvatarsInNote
           : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
@@ -756,6 +769,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showReactionsCount = false,
       this.loadRawImages = false,
       this.emojiStyle = EmojiStyle.twemoji,
+      this.showNoteCreatedAt = false,
       this.showAvatarsInNote = true,
       this.showAvatarsInSubNote = true,
       this.squareAvatars = false,
@@ -831,6 +845,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final EmojiStyle emojiStyle;
+  @override
+  @JsonKey()
+  final bool showNoteCreatedAt;
   @override
   @JsonKey()
   final bool showAvatarsInNote;
@@ -960,7 +977,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -985,6 +1002,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.loadRawImages == loadRawImages) &&
             (identical(other.emojiStyle, emojiStyle) ||
                 other.emojiStyle == emojiStyle) &&
+            (identical(other.showNoteCreatedAt, showNoteCreatedAt) ||
+                other.showNoteCreatedAt == showNoteCreatedAt) &&
             (identical(other.showAvatarsInNote, showAvatarsInNote) ||
                 other.showAvatarsInNote == showAvatarsInNote) &&
             (identical(other.showAvatarsInSubNote, showAvatarsInSubNote) ||
@@ -1062,6 +1081,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showReactionsCount,
         loadRawImages,
         emojiStyle,
+        showNoteCreatedAt,
         showAvatarsInNote,
         showAvatarsInSubNote,
         squareAvatars,
@@ -1132,6 +1152,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showReactionsCount,
       final bool loadRawImages,
       final EmojiStyle emojiStyle,
+      final bool showNoteCreatedAt,
       final bool showAvatarsInNote,
       final bool showAvatarsInSubNote,
       final bool squareAvatars,
@@ -1197,6 +1218,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get loadRawImages;
   @override
   EmojiStyle get emojiStyle;
+  @override
+  bool get showNoteCreatedAt;
   @override
   bool get showAvatarsInNote;
   @override

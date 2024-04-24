@@ -7,6 +7,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/punycode.dart';
 import 'bot_badge.dart';
@@ -29,6 +30,10 @@ class NoteHeader extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final showCreatedAt = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showNoteCreatedAt),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
@@ -112,6 +117,7 @@ class NoteHeader extends HookConsumerWidget {
               onTap: note.id.isNotEmpty
                   ? () => context.push('/$account/notes/${note.id}')
                   : null,
+              absolute: showCreatedAt,
             ),
           ),
         IconTheme.merge(

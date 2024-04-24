@@ -24,6 +24,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       emojiStyle:
           $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
               EmojiStyle.twemoji,
+      showNoteCreatedAt: json['showNoteCreatedAt'] as bool? ?? false,
       showAvatarsInNote: json['showAvatarsInNote'] as bool? ?? true,
       showAvatarsInSubNote: json['showAvatarsInSubNote'] as bool? ?? true,
       squareAvatars: json['squareAvatars'] as bool? ?? false,
@@ -104,6 +105,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showReactionsCount'] = instance.showReactionsCount;
   val['loadRawImages'] = instance.loadRawImages;
   val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
+  val['showNoteCreatedAt'] = instance.showNoteCreatedAt;
   val['showAvatarsInNote'] = instance.showAvatarsInNote;
   val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
   val['squareAvatars'] = instance.squareAvatars;

@@ -161,6 +161,7 @@ class _StringsAriaEnUs {
 	String get showAvatarsInNote => 'Show avatars in notes';
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
+	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
 	String get showSelfRenotes => 'Show self-renotes';

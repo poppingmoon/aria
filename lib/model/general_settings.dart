@@ -33,6 +33,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool showReactionsCount,
     @Default(false) bool loadRawImages,
     @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
+    @Default(false) bool showNoteCreatedAt,
     @Default(true) bool showAvatarsInNote,
     @Default(true) bool showAvatarsInSubNote,
     @Default(false) bool squareAvatars,

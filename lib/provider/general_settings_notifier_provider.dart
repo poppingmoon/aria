@@ -81,6 +81,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowNoteCreatedAt(bool showNoteCreatedAt) async {
+    state = state.copyWith(showNoteCreatedAt: showNoteCreatedAt);
+    await _save();
+  }
+
   Future<void> setShowAvatarsInNote(bool showAvatarsInNote) async {
     state = state.copyWith(showAvatarsInNote: showAvatarsInNote);
     await _save();

@@ -37,6 +37,10 @@ class RenoteHeader extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showAvatarsInNote),
     );
+    final showCreatedAt = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showNoteCreatedAt),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style =
@@ -98,7 +102,10 @@ class RenoteHeader extends HookConsumerWidget {
                 ),
                 DefaultTextStyle.merge(
                   style: style.apply(fontSizeFactor: 0.9),
-                  child: TimeWidget(time: note.createdAt),
+                  child: TimeWidget(
+                    time: note.createdAt,
+                    absolute: showCreatedAt,
+                  ),
                 ),
                 IconTheme.merge(
                   data: IconThemeData(size: style.lineHeight * 0.9),
