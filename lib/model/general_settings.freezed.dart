@@ -23,7 +23,7 @@ mixin _$GeneralSettings {
 // Locale
 // ignore: invalid_annotation_target
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  AppLocale? get locale => throw _privateConstructorUsedError; // Appearance
+  AppLocale? get locale => throw _privateConstructorUsedError; // Note display
   bool get collapseRenotes => throw _privateConstructorUsedError;
   SensitiveMediaDisplay get sensitive => throw _privateConstructorUsedError;
   bool get highlightSensitiveMedia => throw _privateConstructorUsedError;
@@ -32,34 +32,38 @@ mixin _$GeneralSettings {
   bool get showReactionsCount => throw _privateConstructorUsedError;
   bool get loadRawImages => throw _privateConstructorUsedError;
   EmojiStyle get emojiStyle => throw _privateConstructorUsedError;
+  bool get showAvatarsInNote => throw _privateConstructorUsedError;
+  bool get showAvatarsInSubNote => throw _privateConstructorUsedError;
+  bool get squareAvatars => throw _privateConstructorUsedError;
+  bool get showAvatarDecorations => throw _privateConstructorUsedError;
+  bool get showLikeButtonInNoteFooter => throw _privateConstructorUsedError;
+  bool get showClipButtonInNoteFooter => throw _privateConstructorUsedError;
+  bool get showTranslateButtonInNoteFooter =>
+      throw _privateConstructorUsedError;
+  bool get showNoteReactionsViewer => throw _privateConstructorUsedError;
+  bool get showSubNoteReactionsViewer => throw _privateConstructorUsedError;
+  bool get showNoteFooter => throw _privateConstructorUsedError;
+  bool get showSubNoteFooter => throw _privateConstructorUsedError;
+  String? get fontFamily => throw _privateConstructorUsedError;
+  double get fontSize => throw _privateConstructorUsedError;
+  double get reactionsDisplayScale => throw _privateConstructorUsedError;
+  bool get limitWidthOfReaction => throw _privateConstructorUsedError;
+  double get noteFooterScale =>
+      throw _privateConstructorUsedError; // Emoji picker
   bool get emojiPickerUseDialog => throw _privateConstructorUsedError;
   double get emojiPickerScale => throw _privateConstructorUsedError;
   bool get emojiPickerAutofocus => throw _privateConstructorUsedError;
-  bool get squareAvatars => throw _privateConstructorUsedError;
-  bool get showAvatarDecorations => throw _privateConstructorUsedError;
-  bool get showClipButtonInNoteFooter => throw _privateConstructorUsedError;
-  double get reactionsDisplayScale => throw _privateConstructorUsedError;
-  bool get limitWidthOfReaction => throw _privateConstructorUsedError;
-  bool get forceShowAds => throw _privateConstructorUsedError;
-  bool get useGroupedNotifications => throw _privateConstructorUsedError;
+  bool get emojiPickerKeepOpen =>
+      throw _privateConstructorUsedError; // Appearance
   bool get dataSaverMedia => throw _privateConstructorUsedError;
   bool get dataSaverUrlPreview => throw _privateConstructorUsedError;
   bool get disableDataSaverWhenOnWifi => throw _privateConstructorUsedError;
-  bool get showLikeButtonInNoteFooter => throw _privateConstructorUsedError;
-  bool get showTranslateButtonInNoteFooter =>
-      throw _privateConstructorUsedError;
-  double get fontSize => throw _privateConstructorUsedError;
-  String? get fontFamily => throw _privateConstructorUsedError;
-  bool get showAvatarsInNote => throw _privateConstructorUsedError;
-  bool get showAvatarsInSubNote => throw _privateConstructorUsedError;
-  bool get showNoteReactionsViewer => throw _privateConstructorUsedError;
-  bool get showNoteFooter => throw _privateConstructorUsedError;
-  bool get showSubNoteReactionsViewer => throw _privateConstructorUsedError;
-  bool get showSubNoteFooter => throw _privateConstructorUsedError;
-  bool get vibrateNote => throw _privateConstructorUsedError;
-  bool get vibrateNotification => throw _privateConstructorUsedError;
+  bool get forceShowAds => throw _privateConstructorUsedError;
+  bool get useGroupedNotifications => throw _privateConstructorUsedError;
   bool get showTimelineTabBarOnBottom => throw _privateConstructorUsedError;
-  double get noteFooterScale => throw _privateConstructorUsedError; // Behavior
+  bool get vibrateNote => throw _privateConstructorUsedError;
+  bool get vibrateNotification =>
+      throw _privateConstructorUsedError; // Behavior
   bool get enableInfiniteScroll => throw _privateConstructorUsedError;
   bool get keepScreenOn => throw _privateConstructorUsedError;
   bool get enableHorizontalSwipe => throw _privateConstructorUsedError;
@@ -72,8 +76,7 @@ mixin _$GeneralSettings {
   bool get confirmBeforeFollow => throw _privateConstructorUsedError; // Theme
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   String get lightThemeId => throw _privateConstructorUsedError;
-  String get darkThemeId => throw _privateConstructorUsedError; // EmojiPicker
-  bool get emojiPickerKeepOpen => throw _privateConstructorUsedError;
+  String get darkThemeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -98,33 +101,34 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showReactionsCount,
       bool loadRawImages,
       EmojiStyle emojiStyle,
+      bool showAvatarsInNote,
+      bool showAvatarsInSubNote,
+      bool squareAvatars,
+      bool showAvatarDecorations,
+      bool showLikeButtonInNoteFooter,
+      bool showClipButtonInNoteFooter,
+      bool showTranslateButtonInNoteFooter,
+      bool showNoteReactionsViewer,
+      bool showSubNoteReactionsViewer,
+      bool showNoteFooter,
+      bool showSubNoteFooter,
+      String? fontFamily,
+      double fontSize,
+      double reactionsDisplayScale,
+      bool limitWidthOfReaction,
+      double noteFooterScale,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
-      bool squareAvatars,
-      bool showAvatarDecorations,
-      bool showClipButtonInNoteFooter,
-      double reactionsDisplayScale,
-      bool limitWidthOfReaction,
-      bool forceShowAds,
-      bool useGroupedNotifications,
+      bool emojiPickerKeepOpen,
       bool dataSaverMedia,
       bool dataSaverUrlPreview,
       bool disableDataSaverWhenOnWifi,
-      bool showLikeButtonInNoteFooter,
-      bool showTranslateButtonInNoteFooter,
-      double fontSize,
-      String? fontFamily,
-      bool showAvatarsInNote,
-      bool showAvatarsInSubNote,
-      bool showNoteReactionsViewer,
-      bool showNoteFooter,
-      bool showSubNoteReactionsViewer,
-      bool showSubNoteFooter,
+      bool forceShowAds,
+      bool useGroupedNotifications,
+      bool showTimelineTabBarOnBottom,
       bool vibrateNote,
       bool vibrateNotification,
-      bool showTimelineTabBarOnBottom,
-      double noteFooterScale,
       bool enableInfiniteScroll,
       bool keepScreenOn,
       bool enableHorizontalSwipe,
@@ -137,8 +141,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool confirmBeforeFollow,
       ThemeMode themeMode,
       String lightThemeId,
-      String darkThemeId,
-      bool emojiPickerKeepOpen});
+      String darkThemeId});
 }
 
 /// @nodoc
@@ -163,33 +166,34 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showReactionsCount = null,
     Object? loadRawImages = null,
     Object? emojiStyle = null,
+    Object? showAvatarsInNote = null,
+    Object? showAvatarsInSubNote = null,
+    Object? squareAvatars = null,
+    Object? showAvatarDecorations = null,
+    Object? showLikeButtonInNoteFooter = null,
+    Object? showClipButtonInNoteFooter = null,
+    Object? showTranslateButtonInNoteFooter = null,
+    Object? showNoteReactionsViewer = null,
+    Object? showSubNoteReactionsViewer = null,
+    Object? showNoteFooter = null,
+    Object? showSubNoteFooter = null,
+    Object? fontFamily = freezed,
+    Object? fontSize = null,
+    Object? reactionsDisplayScale = null,
+    Object? limitWidthOfReaction = null,
+    Object? noteFooterScale = null,
     Object? emojiPickerUseDialog = null,
     Object? emojiPickerScale = null,
     Object? emojiPickerAutofocus = null,
-    Object? squareAvatars = null,
-    Object? showAvatarDecorations = null,
-    Object? showClipButtonInNoteFooter = null,
-    Object? reactionsDisplayScale = null,
-    Object? limitWidthOfReaction = null,
-    Object? forceShowAds = null,
-    Object? useGroupedNotifications = null,
+    Object? emojiPickerKeepOpen = null,
     Object? dataSaverMedia = null,
     Object? dataSaverUrlPreview = null,
     Object? disableDataSaverWhenOnWifi = null,
-    Object? showLikeButtonInNoteFooter = null,
-    Object? showTranslateButtonInNoteFooter = null,
-    Object? fontSize = null,
-    Object? fontFamily = freezed,
-    Object? showAvatarsInNote = null,
-    Object? showAvatarsInSubNote = null,
-    Object? showNoteReactionsViewer = null,
-    Object? showNoteFooter = null,
-    Object? showSubNoteReactionsViewer = null,
-    Object? showSubNoteFooter = null,
+    Object? forceShowAds = null,
+    Object? useGroupedNotifications = null,
+    Object? showTimelineTabBarOnBottom = null,
     Object? vibrateNote = null,
     Object? vibrateNotification = null,
-    Object? showTimelineTabBarOnBottom = null,
-    Object? noteFooterScale = null,
     Object? enableInfiniteScroll = null,
     Object? keepScreenOn = null,
     Object? enableHorizontalSwipe = null,
@@ -203,7 +207,6 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? themeMode = null,
     Object? lightThemeId = null,
     Object? darkThemeId = null,
-    Object? emojiPickerKeepOpen = null,
   }) {
     return _then(_value.copyWith(
       locale: freezed == locale
@@ -242,6 +245,70 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.emojiStyle
           : emojiStyle // ignore: cast_nullable_to_non_nullable
               as EmojiStyle,
+      showAvatarsInNote: null == showAvatarsInNote
+          ? _value.showAvatarsInNote
+          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showAvatarsInSubNote: null == showAvatarsInSubNote
+          ? _value.showAvatarsInSubNote
+          : showAvatarsInSubNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      squareAvatars: null == squareAvatars
+          ? _value.squareAvatars
+          : squareAvatars // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showAvatarDecorations: null == showAvatarDecorations
+          ? _value.showAvatarDecorations
+          : showAvatarDecorations // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
+          ? _value.showLikeButtonInNoteFooter
+          : showLikeButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showClipButtonInNoteFooter: null == showClipButtonInNoteFooter
+          ? _value.showClipButtonInNoteFooter
+          : showClipButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showTranslateButtonInNoteFooter: null == showTranslateButtonInNoteFooter
+          ? _value.showTranslateButtonInNoteFooter
+          : showTranslateButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showNoteReactionsViewer: null == showNoteReactionsViewer
+          ? _value.showNoteReactionsViewer
+          : showNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSubNoteReactionsViewer: null == showSubNoteReactionsViewer
+          ? _value.showSubNoteReactionsViewer
+          : showSubNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showNoteFooter: null == showNoteFooter
+          ? _value.showNoteFooter
+          : showNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSubNoteFooter: null == showSubNoteFooter
+          ? _value.showSubNoteFooter
+          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fontFamily: freezed == fontFamily
+          ? _value.fontFamily
+          : fontFamily // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
+      reactionsDisplayScale: null == reactionsDisplayScale
+          ? _value.reactionsDisplayScale
+          : reactionsDisplayScale // ignore: cast_nullable_to_non_nullable
+              as double,
+      limitWidthOfReaction: null == limitWidthOfReaction
+          ? _value.limitWidthOfReaction
+          : limitWidthOfReaction // ignore: cast_nullable_to_non_nullable
+              as bool,
+      noteFooterScale: null == noteFooterScale
+          ? _value.noteFooterScale
+          : noteFooterScale // ignore: cast_nullable_to_non_nullable
+              as double,
       emojiPickerUseDialog: null == emojiPickerUseDialog
           ? _value.emojiPickerUseDialog
           : emojiPickerUseDialog // ignore: cast_nullable_to_non_nullable
@@ -254,33 +321,9 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.emojiPickerAutofocus
           : emojiPickerAutofocus // ignore: cast_nullable_to_non_nullable
               as bool,
-      squareAvatars: null == squareAvatars
-          ? _value.squareAvatars
-          : squareAvatars // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showAvatarDecorations: null == showAvatarDecorations
-          ? _value.showAvatarDecorations
-          : showAvatarDecorations // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showClipButtonInNoteFooter: null == showClipButtonInNoteFooter
-          ? _value.showClipButtonInNoteFooter
-          : showClipButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reactionsDisplayScale: null == reactionsDisplayScale
-          ? _value.reactionsDisplayScale
-          : reactionsDisplayScale // ignore: cast_nullable_to_non_nullable
-              as double,
-      limitWidthOfReaction: null == limitWidthOfReaction
-          ? _value.limitWidthOfReaction
-          : limitWidthOfReaction // ignore: cast_nullable_to_non_nullable
-              as bool,
-      forceShowAds: null == forceShowAds
-          ? _value.forceShowAds
-          : forceShowAds // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useGroupedNotifications: null == useGroupedNotifications
-          ? _value.useGroupedNotifications
-          : useGroupedNotifications // ignore: cast_nullable_to_non_nullable
+      emojiPickerKeepOpen: null == emojiPickerKeepOpen
+          ? _value.emojiPickerKeepOpen
+          : emojiPickerKeepOpen // ignore: cast_nullable_to_non_nullable
               as bool,
       dataSaverMedia: null == dataSaverMedia
           ? _value.dataSaverMedia
@@ -294,45 +337,17 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.disableDataSaverWhenOnWifi
           : disableDataSaverWhenOnWifi // ignore: cast_nullable_to_non_nullable
               as bool,
-      showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
-          ? _value.showLikeButtonInNoteFooter
-          : showLikeButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+      forceShowAds: null == forceShowAds
+          ? _value.forceShowAds
+          : forceShowAds // ignore: cast_nullable_to_non_nullable
               as bool,
-      showTranslateButtonInNoteFooter: null == showTranslateButtonInNoteFooter
-          ? _value.showTranslateButtonInNoteFooter
-          : showTranslateButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+      useGroupedNotifications: null == useGroupedNotifications
+          ? _value.useGroupedNotifications
+          : useGroupedNotifications // ignore: cast_nullable_to_non_nullable
               as bool,
-      fontSize: null == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
-              as double,
-      fontFamily: freezed == fontFamily
-          ? _value.fontFamily
-          : fontFamily // ignore: cast_nullable_to_non_nullable
-              as String?,
-      showAvatarsInNote: null == showAvatarsInNote
-          ? _value.showAvatarsInNote
-          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showAvatarsInSubNote: null == showAvatarsInSubNote
-          ? _value.showAvatarsInSubNote
-          : showAvatarsInSubNote // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showNoteReactionsViewer: null == showNoteReactionsViewer
-          ? _value.showNoteReactionsViewer
-          : showNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showNoteFooter: null == showNoteFooter
-          ? _value.showNoteFooter
-          : showNoteFooter // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showSubNoteReactionsViewer: null == showSubNoteReactionsViewer
-          ? _value.showSubNoteReactionsViewer
-          : showSubNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showSubNoteFooter: null == showSubNoteFooter
-          ? _value.showSubNoteFooter
-          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+      showTimelineTabBarOnBottom: null == showTimelineTabBarOnBottom
+          ? _value.showTimelineTabBarOnBottom
+          : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
               as bool,
       vibrateNote: null == vibrateNote
           ? _value.vibrateNote
@@ -342,14 +357,6 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.vibrateNotification
           : vibrateNotification // ignore: cast_nullable_to_non_nullable
               as bool,
-      showTimelineTabBarOnBottom: null == showTimelineTabBarOnBottom
-          ? _value.showTimelineTabBarOnBottom
-          : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
-              as bool,
-      noteFooterScale: null == noteFooterScale
-          ? _value.noteFooterScale
-          : noteFooterScale // ignore: cast_nullable_to_non_nullable
-              as double,
       enableInfiniteScroll: null == enableInfiniteScroll
           ? _value.enableInfiniteScroll
           : enableInfiniteScroll // ignore: cast_nullable_to_non_nullable
@@ -402,10 +409,6 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.darkThemeId
           : darkThemeId // ignore: cast_nullable_to_non_nullable
               as String,
-      emojiPickerKeepOpen: null == emojiPickerKeepOpen
-          ? _value.emojiPickerKeepOpen
-          : emojiPickerKeepOpen // ignore: cast_nullable_to_non_nullable
-              as bool,
     ) as $Val);
   }
 }
@@ -429,33 +432,34 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showReactionsCount,
       bool loadRawImages,
       EmojiStyle emojiStyle,
+      bool showAvatarsInNote,
+      bool showAvatarsInSubNote,
+      bool squareAvatars,
+      bool showAvatarDecorations,
+      bool showLikeButtonInNoteFooter,
+      bool showClipButtonInNoteFooter,
+      bool showTranslateButtonInNoteFooter,
+      bool showNoteReactionsViewer,
+      bool showSubNoteReactionsViewer,
+      bool showNoteFooter,
+      bool showSubNoteFooter,
+      String? fontFamily,
+      double fontSize,
+      double reactionsDisplayScale,
+      bool limitWidthOfReaction,
+      double noteFooterScale,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
-      bool squareAvatars,
-      bool showAvatarDecorations,
-      bool showClipButtonInNoteFooter,
-      double reactionsDisplayScale,
-      bool limitWidthOfReaction,
-      bool forceShowAds,
-      bool useGroupedNotifications,
+      bool emojiPickerKeepOpen,
       bool dataSaverMedia,
       bool dataSaverUrlPreview,
       bool disableDataSaverWhenOnWifi,
-      bool showLikeButtonInNoteFooter,
-      bool showTranslateButtonInNoteFooter,
-      double fontSize,
-      String? fontFamily,
-      bool showAvatarsInNote,
-      bool showAvatarsInSubNote,
-      bool showNoteReactionsViewer,
-      bool showNoteFooter,
-      bool showSubNoteReactionsViewer,
-      bool showSubNoteFooter,
+      bool forceShowAds,
+      bool useGroupedNotifications,
+      bool showTimelineTabBarOnBottom,
       bool vibrateNote,
       bool vibrateNotification,
-      bool showTimelineTabBarOnBottom,
-      double noteFooterScale,
       bool enableInfiniteScroll,
       bool keepScreenOn,
       bool enableHorizontalSwipe,
@@ -468,8 +472,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool confirmBeforeFollow,
       ThemeMode themeMode,
       String lightThemeId,
-      String darkThemeId,
-      bool emojiPickerKeepOpen});
+      String darkThemeId});
 }
 
 /// @nodoc
@@ -492,33 +495,34 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showReactionsCount = null,
     Object? loadRawImages = null,
     Object? emojiStyle = null,
+    Object? showAvatarsInNote = null,
+    Object? showAvatarsInSubNote = null,
+    Object? squareAvatars = null,
+    Object? showAvatarDecorations = null,
+    Object? showLikeButtonInNoteFooter = null,
+    Object? showClipButtonInNoteFooter = null,
+    Object? showTranslateButtonInNoteFooter = null,
+    Object? showNoteReactionsViewer = null,
+    Object? showSubNoteReactionsViewer = null,
+    Object? showNoteFooter = null,
+    Object? showSubNoteFooter = null,
+    Object? fontFamily = freezed,
+    Object? fontSize = null,
+    Object? reactionsDisplayScale = null,
+    Object? limitWidthOfReaction = null,
+    Object? noteFooterScale = null,
     Object? emojiPickerUseDialog = null,
     Object? emojiPickerScale = null,
     Object? emojiPickerAutofocus = null,
-    Object? squareAvatars = null,
-    Object? showAvatarDecorations = null,
-    Object? showClipButtonInNoteFooter = null,
-    Object? reactionsDisplayScale = null,
-    Object? limitWidthOfReaction = null,
-    Object? forceShowAds = null,
-    Object? useGroupedNotifications = null,
+    Object? emojiPickerKeepOpen = null,
     Object? dataSaverMedia = null,
     Object? dataSaverUrlPreview = null,
     Object? disableDataSaverWhenOnWifi = null,
-    Object? showLikeButtonInNoteFooter = null,
-    Object? showTranslateButtonInNoteFooter = null,
-    Object? fontSize = null,
-    Object? fontFamily = freezed,
-    Object? showAvatarsInNote = null,
-    Object? showAvatarsInSubNote = null,
-    Object? showNoteReactionsViewer = null,
-    Object? showNoteFooter = null,
-    Object? showSubNoteReactionsViewer = null,
-    Object? showSubNoteFooter = null,
+    Object? forceShowAds = null,
+    Object? useGroupedNotifications = null,
+    Object? showTimelineTabBarOnBottom = null,
     Object? vibrateNote = null,
     Object? vibrateNotification = null,
-    Object? showTimelineTabBarOnBottom = null,
-    Object? noteFooterScale = null,
     Object? enableInfiniteScroll = null,
     Object? keepScreenOn = null,
     Object? enableHorizontalSwipe = null,
@@ -532,7 +536,6 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? themeMode = null,
     Object? lightThemeId = null,
     Object? darkThemeId = null,
-    Object? emojiPickerKeepOpen = null,
   }) {
     return _then(_$GeneralSettingsImpl(
       locale: freezed == locale
@@ -571,6 +574,70 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.emojiStyle
           : emojiStyle // ignore: cast_nullable_to_non_nullable
               as EmojiStyle,
+      showAvatarsInNote: null == showAvatarsInNote
+          ? _value.showAvatarsInNote
+          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showAvatarsInSubNote: null == showAvatarsInSubNote
+          ? _value.showAvatarsInSubNote
+          : showAvatarsInSubNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      squareAvatars: null == squareAvatars
+          ? _value.squareAvatars
+          : squareAvatars // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showAvatarDecorations: null == showAvatarDecorations
+          ? _value.showAvatarDecorations
+          : showAvatarDecorations // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
+          ? _value.showLikeButtonInNoteFooter
+          : showLikeButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showClipButtonInNoteFooter: null == showClipButtonInNoteFooter
+          ? _value.showClipButtonInNoteFooter
+          : showClipButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showTranslateButtonInNoteFooter: null == showTranslateButtonInNoteFooter
+          ? _value.showTranslateButtonInNoteFooter
+          : showTranslateButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showNoteReactionsViewer: null == showNoteReactionsViewer
+          ? _value.showNoteReactionsViewer
+          : showNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSubNoteReactionsViewer: null == showSubNoteReactionsViewer
+          ? _value.showSubNoteReactionsViewer
+          : showSubNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showNoteFooter: null == showNoteFooter
+          ? _value.showNoteFooter
+          : showNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showSubNoteFooter: null == showSubNoteFooter
+          ? _value.showSubNoteFooter
+          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fontFamily: freezed == fontFamily
+          ? _value.fontFamily
+          : fontFamily // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fontSize: null == fontSize
+          ? _value.fontSize
+          : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
+      reactionsDisplayScale: null == reactionsDisplayScale
+          ? _value.reactionsDisplayScale
+          : reactionsDisplayScale // ignore: cast_nullable_to_non_nullable
+              as double,
+      limitWidthOfReaction: null == limitWidthOfReaction
+          ? _value.limitWidthOfReaction
+          : limitWidthOfReaction // ignore: cast_nullable_to_non_nullable
+              as bool,
+      noteFooterScale: null == noteFooterScale
+          ? _value.noteFooterScale
+          : noteFooterScale // ignore: cast_nullable_to_non_nullable
+              as double,
       emojiPickerUseDialog: null == emojiPickerUseDialog
           ? _value.emojiPickerUseDialog
           : emojiPickerUseDialog // ignore: cast_nullable_to_non_nullable
@@ -583,33 +650,9 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.emojiPickerAutofocus
           : emojiPickerAutofocus // ignore: cast_nullable_to_non_nullable
               as bool,
-      squareAvatars: null == squareAvatars
-          ? _value.squareAvatars
-          : squareAvatars // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showAvatarDecorations: null == showAvatarDecorations
-          ? _value.showAvatarDecorations
-          : showAvatarDecorations // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showClipButtonInNoteFooter: null == showClipButtonInNoteFooter
-          ? _value.showClipButtonInNoteFooter
-          : showClipButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reactionsDisplayScale: null == reactionsDisplayScale
-          ? _value.reactionsDisplayScale
-          : reactionsDisplayScale // ignore: cast_nullable_to_non_nullable
-              as double,
-      limitWidthOfReaction: null == limitWidthOfReaction
-          ? _value.limitWidthOfReaction
-          : limitWidthOfReaction // ignore: cast_nullable_to_non_nullable
-              as bool,
-      forceShowAds: null == forceShowAds
-          ? _value.forceShowAds
-          : forceShowAds // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useGroupedNotifications: null == useGroupedNotifications
-          ? _value.useGroupedNotifications
-          : useGroupedNotifications // ignore: cast_nullable_to_non_nullable
+      emojiPickerKeepOpen: null == emojiPickerKeepOpen
+          ? _value.emojiPickerKeepOpen
+          : emojiPickerKeepOpen // ignore: cast_nullable_to_non_nullable
               as bool,
       dataSaverMedia: null == dataSaverMedia
           ? _value.dataSaverMedia
@@ -623,45 +666,17 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.disableDataSaverWhenOnWifi
           : disableDataSaverWhenOnWifi // ignore: cast_nullable_to_non_nullable
               as bool,
-      showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
-          ? _value.showLikeButtonInNoteFooter
-          : showLikeButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+      forceShowAds: null == forceShowAds
+          ? _value.forceShowAds
+          : forceShowAds // ignore: cast_nullable_to_non_nullable
               as bool,
-      showTranslateButtonInNoteFooter: null == showTranslateButtonInNoteFooter
-          ? _value.showTranslateButtonInNoteFooter
-          : showTranslateButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
+      useGroupedNotifications: null == useGroupedNotifications
+          ? _value.useGroupedNotifications
+          : useGroupedNotifications // ignore: cast_nullable_to_non_nullable
               as bool,
-      fontSize: null == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
-              as double,
-      fontFamily: freezed == fontFamily
-          ? _value.fontFamily
-          : fontFamily // ignore: cast_nullable_to_non_nullable
-              as String?,
-      showAvatarsInNote: null == showAvatarsInNote
-          ? _value.showAvatarsInNote
-          : showAvatarsInNote // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showAvatarsInSubNote: null == showAvatarsInSubNote
-          ? _value.showAvatarsInSubNote
-          : showAvatarsInSubNote // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showNoteReactionsViewer: null == showNoteReactionsViewer
-          ? _value.showNoteReactionsViewer
-          : showNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showNoteFooter: null == showNoteFooter
-          ? _value.showNoteFooter
-          : showNoteFooter // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showSubNoteReactionsViewer: null == showSubNoteReactionsViewer
-          ? _value.showSubNoteReactionsViewer
-          : showSubNoteReactionsViewer // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showSubNoteFooter: null == showSubNoteFooter
-          ? _value.showSubNoteFooter
-          : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+      showTimelineTabBarOnBottom: null == showTimelineTabBarOnBottom
+          ? _value.showTimelineTabBarOnBottom
+          : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
               as bool,
       vibrateNote: null == vibrateNote
           ? _value.vibrateNote
@@ -671,14 +686,6 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.vibrateNotification
           : vibrateNotification // ignore: cast_nullable_to_non_nullable
               as bool,
-      showTimelineTabBarOnBottom: null == showTimelineTabBarOnBottom
-          ? _value.showTimelineTabBarOnBottom
-          : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
-              as bool,
-      noteFooterScale: null == noteFooterScale
-          ? _value.noteFooterScale
-          : noteFooterScale // ignore: cast_nullable_to_non_nullable
-              as double,
       enableInfiniteScroll: null == enableInfiniteScroll
           ? _value.enableInfiniteScroll
           : enableInfiniteScroll // ignore: cast_nullable_to_non_nullable
@@ -731,10 +738,6 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.darkThemeId
           : darkThemeId // ignore: cast_nullable_to_non_nullable
               as String,
-      emojiPickerKeepOpen: null == emojiPickerKeepOpen
-          ? _value.emojiPickerKeepOpen
-          : emojiPickerKeepOpen // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -753,33 +756,34 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showReactionsCount = false,
       this.loadRawImages = false,
       this.emojiStyle = EmojiStyle.twemoji,
+      this.showAvatarsInNote = true,
+      this.showAvatarsInSubNote = true,
+      this.squareAvatars = false,
+      this.showAvatarDecorations = true,
+      this.showLikeButtonInNoteFooter = false,
+      this.showClipButtonInNoteFooter = false,
+      this.showTranslateButtonInNoteFooter = false,
+      this.showNoteReactionsViewer = true,
+      this.showSubNoteReactionsViewer = false,
+      this.showNoteFooter = true,
+      this.showSubNoteFooter = false,
+      this.fontFamily,
+      this.fontSize = defaultFontSize,
+      this.reactionsDisplayScale = 1.0,
+      this.limitWidthOfReaction = true,
+      this.noteFooterScale = 1.0,
       this.emojiPickerUseDialog = false,
       this.emojiPickerScale = 1.0,
       this.emojiPickerAutofocus = true,
-      this.squareAvatars = false,
-      this.showAvatarDecorations = true,
-      this.showClipButtonInNoteFooter = false,
-      this.reactionsDisplayScale = 1.0,
-      this.limitWidthOfReaction = true,
-      this.forceShowAds = false,
-      this.useGroupedNotifications = false,
+      this.emojiPickerKeepOpen = false,
       this.dataSaverMedia = false,
       this.dataSaverUrlPreview = false,
       this.disableDataSaverWhenOnWifi = false,
-      this.showLikeButtonInNoteFooter = false,
-      this.showTranslateButtonInNoteFooter = false,
-      this.fontSize = defaultFontSize,
-      this.fontFamily,
-      this.showAvatarsInNote = true,
-      this.showAvatarsInSubNote = true,
-      this.showNoteReactionsViewer = true,
-      this.showNoteFooter = true,
-      this.showSubNoteReactionsViewer = false,
-      this.showSubNoteFooter = false,
+      this.forceShowAds = false,
+      this.useGroupedNotifications = false,
+      this.showTimelineTabBarOnBottom = false,
       this.vibrateNote = false,
       this.vibrateNotification = false,
-      this.showTimelineTabBarOnBottom = false,
-      this.noteFooterScale = 1.0,
       this.enableInfiniteScroll = true,
       this.keepScreenOn = false,
       this.enableHorizontalSwipe = true,
@@ -792,8 +796,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.confirmBeforeFollow = true,
       this.themeMode = ThemeMode.system,
       this.lightThemeId = 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
-      this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34',
-      this.emojiPickerKeepOpen = false});
+      this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34'});
 
   factory _$GeneralSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeneralSettingsImplFromJson(json);
@@ -803,7 +806,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final AppLocale? locale;
-// Appearance
+// Note display
   @override
   @JsonKey()
   final bool collapseRenotes;
@@ -830,6 +833,54 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final EmojiStyle emojiStyle;
   @override
   @JsonKey()
+  final bool showAvatarsInNote;
+  @override
+  @JsonKey()
+  final bool showAvatarsInSubNote;
+  @override
+  @JsonKey()
+  final bool squareAvatars;
+  @override
+  @JsonKey()
+  final bool showAvatarDecorations;
+  @override
+  @JsonKey()
+  final bool showLikeButtonInNoteFooter;
+  @override
+  @JsonKey()
+  final bool showClipButtonInNoteFooter;
+  @override
+  @JsonKey()
+  final bool showTranslateButtonInNoteFooter;
+  @override
+  @JsonKey()
+  final bool showNoteReactionsViewer;
+  @override
+  @JsonKey()
+  final bool showSubNoteReactionsViewer;
+  @override
+  @JsonKey()
+  final bool showNoteFooter;
+  @override
+  @JsonKey()
+  final bool showSubNoteFooter;
+  @override
+  final String? fontFamily;
+  @override
+  @JsonKey()
+  final double fontSize;
+  @override
+  @JsonKey()
+  final double reactionsDisplayScale;
+  @override
+  @JsonKey()
+  final bool limitWidthOfReaction;
+  @override
+  @JsonKey()
+  final double noteFooterScale;
+// Emoji picker
+  @override
+  @JsonKey()
   final bool emojiPickerUseDialog;
   @override
   @JsonKey()
@@ -839,25 +890,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool emojiPickerAutofocus;
   @override
   @JsonKey()
-  final bool squareAvatars;
-  @override
-  @JsonKey()
-  final bool showAvatarDecorations;
-  @override
-  @JsonKey()
-  final bool showClipButtonInNoteFooter;
-  @override
-  @JsonKey()
-  final double reactionsDisplayScale;
-  @override
-  @JsonKey()
-  final bool limitWidthOfReaction;
-  @override
-  @JsonKey()
-  final bool forceShowAds;
-  @override
-  @JsonKey()
-  final bool useGroupedNotifications;
+  final bool emojiPickerKeepOpen;
+// Appearance
   @override
   @JsonKey()
   final bool dataSaverMedia;
@@ -869,45 +903,19 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool disableDataSaverWhenOnWifi;
   @override
   @JsonKey()
-  final bool showLikeButtonInNoteFooter;
+  final bool forceShowAds;
   @override
   @JsonKey()
-  final bool showTranslateButtonInNoteFooter;
+  final bool useGroupedNotifications;
   @override
   @JsonKey()
-  final double fontSize;
-  @override
-  final String? fontFamily;
-  @override
-  @JsonKey()
-  final bool showAvatarsInNote;
-  @override
-  @JsonKey()
-  final bool showAvatarsInSubNote;
-  @override
-  @JsonKey()
-  final bool showNoteReactionsViewer;
-  @override
-  @JsonKey()
-  final bool showNoteFooter;
-  @override
-  @JsonKey()
-  final bool showSubNoteReactionsViewer;
-  @override
-  @JsonKey()
-  final bool showSubNoteFooter;
+  final bool showTimelineTabBarOnBottom;
   @override
   @JsonKey()
   final bool vibrateNote;
   @override
   @JsonKey()
   final bool vibrateNotification;
-  @override
-  @JsonKey()
-  final bool showTimelineTabBarOnBottom;
-  @override
-  @JsonKey()
-  final double noteFooterScale;
 // Behavior
   @override
   @JsonKey()
@@ -949,14 +957,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final String darkThemeId;
-// EmojiPicker
-  @override
-  @JsonKey()
-  final bool emojiPickerKeepOpen;
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, fontSize: $fontSize, fontFamily: $fontFamily, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, showNoteReactionsViewer: $showNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showSubNoteFooter: $showSubNoteFooter, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, noteFooterScale: $noteFooterScale, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId, emojiPickerKeepOpen: $emojiPickerKeepOpen)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -981,55 +985,55 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.loadRawImages == loadRawImages) &&
             (identical(other.emojiStyle, emojiStyle) ||
                 other.emojiStyle == emojiStyle) &&
-            (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) ||
-                other.emojiPickerUseDialog == emojiPickerUseDialog) &&
-            (identical(other.emojiPickerScale, emojiPickerScale) ||
-                other.emojiPickerScale == emojiPickerScale) &&
-            (identical(other.emojiPickerAutofocus, emojiPickerAutofocus) ||
-                other.emojiPickerAutofocus == emojiPickerAutofocus) &&
+            (identical(other.showAvatarsInNote, showAvatarsInNote) ||
+                other.showAvatarsInNote == showAvatarsInNote) &&
+            (identical(other.showAvatarsInSubNote, showAvatarsInSubNote) ||
+                other.showAvatarsInSubNote == showAvatarsInSubNote) &&
             (identical(other.squareAvatars, squareAvatars) ||
                 other.squareAvatars == squareAvatars) &&
             (identical(other.showAvatarDecorations, showAvatarDecorations) ||
                 other.showAvatarDecorations == showAvatarDecorations) &&
+            (identical(other.showLikeButtonInNoteFooter, showLikeButtonInNoteFooter) ||
+                other.showLikeButtonInNoteFooter ==
+                    showLikeButtonInNoteFooter) &&
             (identical(other.showClipButtonInNoteFooter, showClipButtonInNoteFooter) ||
                 other.showClipButtonInNoteFooter ==
                     showClipButtonInNoteFooter) &&
+            (identical(other.showTranslateButtonInNoteFooter, showTranslateButtonInNoteFooter) ||
+                other.showTranslateButtonInNoteFooter ==
+                    showTranslateButtonInNoteFooter) &&
+            (identical(other.showNoteReactionsViewer, showNoteReactionsViewer) ||
+                other.showNoteReactionsViewer == showNoteReactionsViewer) &&
+            (identical(other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) ||
+                other.showSubNoteReactionsViewer ==
+                    showSubNoteReactionsViewer) &&
+            (identical(other.showNoteFooter, showNoteFooter) ||
+                other.showNoteFooter == showNoteFooter) &&
+            (identical(other.showSubNoteFooter, showSubNoteFooter) ||
+                other.showSubNoteFooter == showSubNoteFooter) &&
+            (identical(other.fontFamily, fontFamily) ||
+                other.fontFamily == fontFamily) &&
+            (identical(other.fontSize, fontSize) ||
+                other.fontSize == fontSize) &&
             (identical(other.reactionsDisplayScale, reactionsDisplayScale) ||
                 other.reactionsDisplayScale == reactionsDisplayScale) &&
             (identical(other.limitWidthOfReaction, limitWidthOfReaction) ||
                 other.limitWidthOfReaction == limitWidthOfReaction) &&
-            (identical(other.forceShowAds, forceShowAds) ||
-                other.forceShowAds == forceShowAds) &&
-            (identical(other.useGroupedNotifications, useGroupedNotifications) ||
-                other.useGroupedNotifications == useGroupedNotifications) &&
-            (identical(other.dataSaverMedia, dataSaverMedia) ||
-                other.dataSaverMedia == dataSaverMedia) &&
-            (identical(other.dataSaverUrlPreview, dataSaverUrlPreview) ||
-                other.dataSaverUrlPreview == dataSaverUrlPreview) &&
-            (identical(other.disableDataSaverWhenOnWifi, disableDataSaverWhenOnWifi) ||
-                other.disableDataSaverWhenOnWifi ==
-                    disableDataSaverWhenOnWifi) &&
-            (identical(other.showLikeButtonInNoteFooter, showLikeButtonInNoteFooter) ||
-                other.showLikeButtonInNoteFooter ==
-                    showLikeButtonInNoteFooter) &&
-            (identical(other.showTranslateButtonInNoteFooter, showTranslateButtonInNoteFooter) ||
-                other.showTranslateButtonInNoteFooter ==
-                    showTranslateButtonInNoteFooter) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
-            (identical(other.fontFamily, fontFamily) ||
-                other.fontFamily == fontFamily) &&
-            (identical(other.showAvatarsInNote, showAvatarsInNote) ||
-                other.showAvatarsInNote == showAvatarsInNote) &&
-            (identical(other.showAvatarsInSubNote, showAvatarsInSubNote) || other.showAvatarsInSubNote == showAvatarsInSubNote) &&
-            (identical(other.showNoteReactionsViewer, showNoteReactionsViewer) || other.showNoteReactionsViewer == showNoteReactionsViewer) &&
-            (identical(other.showNoteFooter, showNoteFooter) || other.showNoteFooter == showNoteFooter) &&
-            (identical(other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) || other.showSubNoteReactionsViewer == showSubNoteReactionsViewer) &&
-            (identical(other.showSubNoteFooter, showSubNoteFooter) || other.showSubNoteFooter == showSubNoteFooter) &&
+            (identical(other.noteFooterScale, noteFooterScale) ||
+                other.noteFooterScale == noteFooterScale) &&
+            (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) ||
+                other.emojiPickerUseDialog == emojiPickerUseDialog) &&
+            (identical(other.emojiPickerScale, emojiPickerScale) || other.emojiPickerScale == emojiPickerScale) &&
+            (identical(other.emojiPickerAutofocus, emojiPickerAutofocus) || other.emojiPickerAutofocus == emojiPickerAutofocus) &&
+            (identical(other.emojiPickerKeepOpen, emojiPickerKeepOpen) || other.emojiPickerKeepOpen == emojiPickerKeepOpen) &&
+            (identical(other.dataSaverMedia, dataSaverMedia) || other.dataSaverMedia == dataSaverMedia) &&
+            (identical(other.dataSaverUrlPreview, dataSaverUrlPreview) || other.dataSaverUrlPreview == dataSaverUrlPreview) &&
+            (identical(other.disableDataSaverWhenOnWifi, disableDataSaverWhenOnWifi) || other.disableDataSaverWhenOnWifi == disableDataSaverWhenOnWifi) &&
+            (identical(other.forceShowAds, forceShowAds) || other.forceShowAds == forceShowAds) &&
+            (identical(other.useGroupedNotifications, useGroupedNotifications) || other.useGroupedNotifications == useGroupedNotifications) &&
+            (identical(other.showTimelineTabBarOnBottom, showTimelineTabBarOnBottom) || other.showTimelineTabBarOnBottom == showTimelineTabBarOnBottom) &&
             (identical(other.vibrateNote, vibrateNote) || other.vibrateNote == vibrateNote) &&
             (identical(other.vibrateNotification, vibrateNotification) || other.vibrateNotification == vibrateNotification) &&
-            (identical(other.showTimelineTabBarOnBottom, showTimelineTabBarOnBottom) || other.showTimelineTabBarOnBottom == showTimelineTabBarOnBottom) &&
-            (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
             (identical(other.enableInfiniteScroll, enableInfiniteScroll) || other.enableInfiniteScroll == enableInfiniteScroll) &&
             (identical(other.keepScreenOn, keepScreenOn) || other.keepScreenOn == keepScreenOn) &&
             (identical(other.enableHorizontalSwipe, enableHorizontalSwipe) || other.enableHorizontalSwipe == enableHorizontalSwipe) &&
@@ -1042,8 +1046,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.confirmBeforeFollow, confirmBeforeFollow) || other.confirmBeforeFollow == confirmBeforeFollow) &&
             (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
             (identical(other.lightThemeId, lightThemeId) || other.lightThemeId == lightThemeId) &&
-            (identical(other.darkThemeId, darkThemeId) || other.darkThemeId == darkThemeId) &&
-            (identical(other.emojiPickerKeepOpen, emojiPickerKeepOpen) || other.emojiPickerKeepOpen == emojiPickerKeepOpen));
+            (identical(other.darkThemeId, darkThemeId) || other.darkThemeId == darkThemeId));
   }
 
   @JsonKey(ignore: true)
@@ -1059,33 +1062,34 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showReactionsCount,
         loadRawImages,
         emojiStyle,
+        showAvatarsInNote,
+        showAvatarsInSubNote,
+        squareAvatars,
+        showAvatarDecorations,
+        showLikeButtonInNoteFooter,
+        showClipButtonInNoteFooter,
+        showTranslateButtonInNoteFooter,
+        showNoteReactionsViewer,
+        showSubNoteReactionsViewer,
+        showNoteFooter,
+        showSubNoteFooter,
+        fontFamily,
+        fontSize,
+        reactionsDisplayScale,
+        limitWidthOfReaction,
+        noteFooterScale,
         emojiPickerUseDialog,
         emojiPickerScale,
         emojiPickerAutofocus,
-        squareAvatars,
-        showAvatarDecorations,
-        showClipButtonInNoteFooter,
-        reactionsDisplayScale,
-        limitWidthOfReaction,
-        forceShowAds,
-        useGroupedNotifications,
+        emojiPickerKeepOpen,
         dataSaverMedia,
         dataSaverUrlPreview,
         disableDataSaverWhenOnWifi,
-        showLikeButtonInNoteFooter,
-        showTranslateButtonInNoteFooter,
-        fontSize,
-        fontFamily,
-        showAvatarsInNote,
-        showAvatarsInSubNote,
-        showNoteReactionsViewer,
-        showNoteFooter,
-        showSubNoteReactionsViewer,
-        showSubNoteFooter,
+        forceShowAds,
+        useGroupedNotifications,
+        showTimelineTabBarOnBottom,
         vibrateNote,
         vibrateNotification,
-        showTimelineTabBarOnBottom,
-        noteFooterScale,
         enableInfiniteScroll,
         keepScreenOn,
         enableHorizontalSwipe,
@@ -1098,8 +1102,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         confirmBeforeFollow,
         themeMode,
         lightThemeId,
-        darkThemeId,
-        emojiPickerKeepOpen
+        darkThemeId
       ]);
 
   @JsonKey(ignore: true)
@@ -1129,33 +1132,34 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showReactionsCount,
       final bool loadRawImages,
       final EmojiStyle emojiStyle,
+      final bool showAvatarsInNote,
+      final bool showAvatarsInSubNote,
+      final bool squareAvatars,
+      final bool showAvatarDecorations,
+      final bool showLikeButtonInNoteFooter,
+      final bool showClipButtonInNoteFooter,
+      final bool showTranslateButtonInNoteFooter,
+      final bool showNoteReactionsViewer,
+      final bool showSubNoteReactionsViewer,
+      final bool showNoteFooter,
+      final bool showSubNoteFooter,
+      final String? fontFamily,
+      final double fontSize,
+      final double reactionsDisplayScale,
+      final bool limitWidthOfReaction,
+      final double noteFooterScale,
       final bool emojiPickerUseDialog,
       final double emojiPickerScale,
       final bool emojiPickerAutofocus,
-      final bool squareAvatars,
-      final bool showAvatarDecorations,
-      final bool showClipButtonInNoteFooter,
-      final double reactionsDisplayScale,
-      final bool limitWidthOfReaction,
-      final bool forceShowAds,
-      final bool useGroupedNotifications,
+      final bool emojiPickerKeepOpen,
       final bool dataSaverMedia,
       final bool dataSaverUrlPreview,
       final bool disableDataSaverWhenOnWifi,
-      final bool showLikeButtonInNoteFooter,
-      final bool showTranslateButtonInNoteFooter,
-      final double fontSize,
-      final String? fontFamily,
-      final bool showAvatarsInNote,
-      final bool showAvatarsInSubNote,
-      final bool showNoteReactionsViewer,
-      final bool showNoteFooter,
-      final bool showSubNoteReactionsViewer,
-      final bool showSubNoteFooter,
+      final bool forceShowAds,
+      final bool useGroupedNotifications,
+      final bool showTimelineTabBarOnBottom,
       final bool vibrateNote,
       final bool vibrateNotification,
-      final bool showTimelineTabBarOnBottom,
-      final double noteFooterScale,
       final bool enableInfiniteScroll,
       final bool keepScreenOn,
       final bool enableHorizontalSwipe,
@@ -1168,8 +1172,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool confirmBeforeFollow,
       final ThemeMode themeMode,
       final String lightThemeId,
-      final String darkThemeId,
-      final bool emojiPickerKeepOpen}) = _$GeneralSettingsImpl;
+      final String darkThemeId}) = _$GeneralSettingsImpl;
 
   factory _GeneralSettings.fromJson(Map<String, dynamic> json) =
       _$GeneralSettingsImpl.fromJson;
@@ -1178,7 +1181,7 @@ abstract class _GeneralSettings implements GeneralSettings {
 // ignore: invalid_annotation_target
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   AppLocale? get locale;
-  @override // Appearance
+  @override // Note display
   bool get collapseRenotes;
   @override
   SensitiveMediaDisplay get sensitive;
@@ -1195,59 +1198,61 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   EmojiStyle get emojiStyle;
   @override
+  bool get showAvatarsInNote;
+  @override
+  bool get showAvatarsInSubNote;
+  @override
+  bool get squareAvatars;
+  @override
+  bool get showAvatarDecorations;
+  @override
+  bool get showLikeButtonInNoteFooter;
+  @override
+  bool get showClipButtonInNoteFooter;
+  @override
+  bool get showTranslateButtonInNoteFooter;
+  @override
+  bool get showNoteReactionsViewer;
+  @override
+  bool get showSubNoteReactionsViewer;
+  @override
+  bool get showNoteFooter;
+  @override
+  bool get showSubNoteFooter;
+  @override
+  String? get fontFamily;
+  @override
+  double get fontSize;
+  @override
+  double get reactionsDisplayScale;
+  @override
+  bool get limitWidthOfReaction;
+  @override
+  double get noteFooterScale;
+  @override // Emoji picker
   bool get emojiPickerUseDialog;
   @override
   double get emojiPickerScale;
   @override
   bool get emojiPickerAutofocus;
   @override
-  bool get squareAvatars;
-  @override
-  bool get showAvatarDecorations;
-  @override
-  bool get showClipButtonInNoteFooter;
-  @override
-  double get reactionsDisplayScale;
-  @override
-  bool get limitWidthOfReaction;
-  @override
-  bool get forceShowAds;
-  @override
-  bool get useGroupedNotifications;
-  @override
+  bool get emojiPickerKeepOpen;
+  @override // Appearance
   bool get dataSaverMedia;
   @override
   bool get dataSaverUrlPreview;
   @override
   bool get disableDataSaverWhenOnWifi;
   @override
-  bool get showLikeButtonInNoteFooter;
+  bool get forceShowAds;
   @override
-  bool get showTranslateButtonInNoteFooter;
+  bool get useGroupedNotifications;
   @override
-  double get fontSize;
-  @override
-  String? get fontFamily;
-  @override
-  bool get showAvatarsInNote;
-  @override
-  bool get showAvatarsInSubNote;
-  @override
-  bool get showNoteReactionsViewer;
-  @override
-  bool get showNoteFooter;
-  @override
-  bool get showSubNoteReactionsViewer;
-  @override
-  bool get showSubNoteFooter;
+  bool get showTimelineTabBarOnBottom;
   @override
   bool get vibrateNote;
   @override
   bool get vibrateNotification;
-  @override
-  bool get showTimelineTabBarOnBottom;
-  @override
-  double get noteFooterScale;
   @override // Behavior
   bool get enableInfiniteScroll;
   @override
@@ -1274,8 +1279,6 @@ abstract class _GeneralSettings implements GeneralSettings {
   String get lightThemeId;
   @override
   String get darkThemeId;
-  @override // EmojiPicker
-  bool get emojiPickerKeepOpen;
   @override
   @JsonKey(ignore: true)
   _$$GeneralSettingsImplCopyWith<_$GeneralSettingsImpl> get copyWith =>

@@ -81,21 +81,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setEmojiPickerUseDialog(bool emojiPickerUseDialog) async {
-    state = state.copyWith(emojiPickerUseDialog: emojiPickerUseDialog);
-    await _save();
-  }
-
-  Future<void> setEmojiPickerScale(double emojiPickerScale) async {
-    state = state.copyWith(emojiPickerScale: emojiPickerScale);
-    await _save();
-  }
-
-  Future<void> setEmojiPickerAutofocus(bool emojiPickerAutofocus) async {
-    state = state.copyWith(emojiPickerAutofocus: emojiPickerAutofocus);
-    await _save();
-  }
-
   Future<void> setShowAvatarsInNote(bool showAvatarsInNote) async {
     state = state.copyWith(showAvatarsInNote: showAvatarsInNote);
     await _save();
@@ -116,11 +101,63 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowLikeButtonInNoteFooter(
+    bool showLikeButtonInNoteFooter,
+  ) async {
+    state =
+        state.copyWith(showLikeButtonInNoteFooter: showLikeButtonInNoteFooter);
+    await _save();
+  }
+
   Future<void> setShowClipButtonInNoteFooter(
     bool showClipButtonInNoteFooter,
   ) async {
     state =
         state.copyWith(showClipButtonInNoteFooter: showClipButtonInNoteFooter);
+    await _save();
+  }
+
+  Future<void> setShowTranslateButtonInNoteFooter(
+    bool showTranslateButtonInNoteFooter,
+  ) async {
+    state = state.copyWith(
+      showTranslateButtonInNoteFooter: showTranslateButtonInNoteFooter,
+    );
+    await _save();
+  }
+
+  Future<void> setShowNoteReactionsViewer(
+    bool showNoteReactionsViewer,
+  ) async {
+    state = state.copyWith(showNoteReactionsViewer: showNoteReactionsViewer);
+    await _save();
+  }
+
+  Future<void> setShowSubNoteReactionsViewer(
+    bool showSubNoteReactionsViewer,
+  ) async {
+    state =
+        state.copyWith(showSubNoteReactionsViewer: showSubNoteReactionsViewer);
+    await _save();
+  }
+
+  Future<void> setShowNoteFooter(bool showNoteFooter) async {
+    state = state.copyWith(showNoteFooter: showNoteFooter);
+    await _save();
+  }
+
+  Future<void> setShowSubNoteFooter(bool showSubNoteFooter) async {
+    state = state.copyWith(showSubNoteFooter: showSubNoteFooter);
+    await _save();
+  }
+
+  Future<void> setFontFamily(String? fontFamily) async {
+    state = state.copyWith(fontFamily: fontFamily);
+    await _save();
+  }
+
+  Future<void> setFontSize(double fontSize) async {
+    state = state.copyWith(fontSize: fontSize);
     await _save();
   }
 
@@ -134,13 +171,28 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setForceShowAds(bool forceShowAds) async {
-    state = state.copyWith(forceShowAds: forceShowAds);
+  Future<void> setNoteFooterScale(double noteFooterScale) async {
+    state = state.copyWith(noteFooterScale: noteFooterScale);
     await _save();
   }
 
-  Future<void> setUseGroupedNotifications(bool useGroupedNotifications) async {
-    state = state.copyWith(useGroupedNotifications: useGroupedNotifications);
+  Future<void> setEmojiPickerUseDialog(bool emojiPickerUseDialog) async {
+    state = state.copyWith(emojiPickerUseDialog: emojiPickerUseDialog);
+    await _save();
+  }
+
+  Future<void> setEmojiPickerScale(double emojiPickerScale) async {
+    state = state.copyWith(emojiPickerScale: emojiPickerScale);
+    await _save();
+  }
+
+  Future<void> setEmojiPickerAutofocus(bool emojiPickerAutofocus) async {
+    state = state.copyWith(emojiPickerAutofocus: emojiPickerAutofocus);
+    await _save();
+  }
+
+  Future<void> setEmojiPickerKeepOpen(bool emojiPickerKeepOpen) async {
+    state = state.copyWith(emojiPickerKeepOpen: emojiPickerKeepOpen);
     await _save();
   }
 
@@ -162,65 +214,13 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setShowLikeButtonInNoteFooter(
-    bool showLikeButtonInNoteFooter,
-  ) async {
-    state =
-        state.copyWith(showLikeButtonInNoteFooter: showLikeButtonInNoteFooter);
+  Future<void> setForceShowAds(bool forceShowAds) async {
+    state = state.copyWith(forceShowAds: forceShowAds);
     await _save();
   }
 
-  Future<void> setShowTranslateButtonInNoteFooter(
-    bool showTranslateButtonInNoteFooter,
-  ) async {
-    state = state.copyWith(
-      showTranslateButtonInNoteFooter: showTranslateButtonInNoteFooter,
-    );
-    await _save();
-  }
-
-  Future<void> setFontFamily(String? fontFamily) async {
-    state = state.copyWith(fontFamily: fontFamily);
-    await _save();
-  }
-
-  Future<void> setFontSize(double fontSize) async {
-    state = state.copyWith(fontSize: fontSize);
-    await _save();
-  }
-
-  Future<void> setShowNoteFooter(bool showNoteFooter) async {
-    state = state.copyWith(showNoteFooter: showNoteFooter);
-    await _save();
-  }
-
-  Future<void> setShowNoteReactionsViewer(
-    bool showNoteReactionsViewer,
-  ) async {
-    state = state.copyWith(showNoteReactionsViewer: showNoteReactionsViewer);
-    await _save();
-  }
-
-  Future<void> setShowSubNoteFooter(bool showSubNoteFooter) async {
-    state = state.copyWith(showSubNoteFooter: showSubNoteFooter);
-    await _save();
-  }
-
-  Future<void> setShowSubNoteReactionsViewer(
-    bool showSubNoteReactionsViewer,
-  ) async {
-    state =
-        state.copyWith(showSubNoteReactionsViewer: showSubNoteReactionsViewer);
-    await _save();
-  }
-
-  Future<void> setVibrateNote(bool vibrateNote) async {
-    state = state.copyWith(vibrateNote: vibrateNote);
-    await _save();
-  }
-
-  Future<void> setVibrateNotification(bool vibrateNotification) async {
-    state = state.copyWith(vibrateNotification: vibrateNotification);
+  Future<void> setUseGroupedNotifications(bool useGroupedNotifications) async {
+    state = state.copyWith(useGroupedNotifications: useGroupedNotifications);
     await _save();
   }
 
@@ -232,8 +232,13 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setNoteFooterScale(double noteFooterScale) async {
-    state = state.copyWith(noteFooterScale: noteFooterScale);
+  Future<void> setVibrateNote(bool vibrateNote) async {
+    state = state.copyWith(vibrateNote: vibrateNote);
+    await _save();
+  }
+
+  Future<void> setVibrateNotification(bool vibrateNotification) async {
+    state = state.copyWith(vibrateNotification: vibrateNotification);
     await _save();
   }
 
@@ -307,11 +312,6 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setDarkThemeId(String darkThemeId) async {
     state = state.copyWith(darkThemeId: darkThemeId);
-    await _save();
-  }
-
-  Future<void> setEmojiPickerKeepOpen(bool emojiPickerKeepOpen) async {
-    state = state.copyWith(emojiPickerKeepOpen: emojiPickerKeepOpen);
     await _save();
   }
 }
