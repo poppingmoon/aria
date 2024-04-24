@@ -24,7 +24,7 @@ class GeneralSettings with _$GeneralSettings {
     @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
     AppLocale? locale,
 
-    // Appearance
+    // Note display
     @Default(true) bool collapseRenotes,
     @Default(SensitiveMediaDisplay.respect) SensitiveMediaDisplay sensitive,
     @Default(false) bool highlightSensitiveMedia,
@@ -33,33 +33,39 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool showReactionsCount,
     @Default(false) bool loadRawImages,
     @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
+    @Default(false) bool showNoteCreatedAt,
+    @Default(true) bool showAvatarsInNote,
+    @Default(true) bool showAvatarsInSubNote,
+    @Default(false) bool squareAvatars,
+    @Default(true) bool showAvatarDecorations,
+    @Default(false) bool showLikeButtonInNoteFooter,
+    @Default(false) bool showClipButtonInNoteFooter,
+    @Default(false) bool showTranslateButtonInNoteFooter,
+    @Default(true) bool showNoteReactionsViewer,
+    @Default(false) bool showSubNoteReactionsViewer,
+    @Default(true) bool showNoteFooter,
+    @Default(false) bool showSubNoteFooter,
+    String? fontFamily,
+    @Default(defaultFontSize) double fontSize,
+    @Default(1.0) double reactionsDisplayScale,
+    @Default(true) bool limitWidthOfReaction,
+    @Default(1.0) double noteFooterScale,
+
+    // Emoji picker
     @Default(false) bool emojiPickerUseDialog,
     @Default(1.0) double emojiPickerScale,
     @Default(true) bool emojiPickerAutofocus,
-    @Default(false) bool squareAvatars,
-    @Default(true) bool showAvatarDecorations,
-    @Default(false) bool showClipButtonInNoteFooter,
-    @Default(1.0) double reactionsDisplayScale,
-    @Default(true) bool limitWidthOfReaction,
-    @Default(false) bool forceShowAds,
-    @Default(false) bool useGroupedNotifications,
+    @Default(false) bool emojiPickerKeepOpen,
+
+    // Appearance
     @Default(false) bool dataSaverMedia,
     @Default(false) bool dataSaverUrlPreview,
     @Default(false) bool disableDataSaverWhenOnWifi,
-    @Default(false) bool showLikeButtonInNoteFooter,
-    @Default(false) bool showTranslateButtonInNoteFooter,
-    @Default(defaultFontSize) double fontSize,
-    String? fontFamily,
-    @Default(true) bool showAvatarsInNote,
-    @Default(true) bool showAvatarsInSubNote,
-    @Default(true) bool showNoteReactionsViewer,
-    @Default(true) bool showNoteFooter,
-    @Default(false) bool showSubNoteReactionsViewer,
-    @Default(false) bool showSubNoteFooter,
+    @Default(false) bool forceShowAds,
+    @Default(false) bool useGroupedNotifications,
+    @Default(false) bool showTimelineTabBarOnBottom,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
-    @Default(false) bool showTimelineTabBarOnBottom,
-    @Default(1.0) double noteFooterScale,
 
     // Behavior
     @Default(true) bool enableInfiniteScroll,
@@ -77,9 +83,6 @@ class GeneralSettings with _$GeneralSettings {
     @Default(ThemeMode.system) ThemeMode themeMode,
     @Default('a58a0abb-ff8c-476a-8dec-0ad7837e7e96') String lightThemeId,
     @Default('66e7e5a9-cd43-42cd-837d-12f47841fa34') String darkThemeId,
-
-    // EmojiPicker
-    @Default(false) bool emojiPickerKeepOpen,
   }) = _GeneralSettings;
 
   factory GeneralSettings.fromJson(Map<String, dynamic> json) =>

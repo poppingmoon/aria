@@ -24,41 +24,43 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       emojiStyle:
           $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
               EmojiStyle.twemoji,
-      emojiPickerUseDialog: json['emojiPickerUseDialog'] as bool? ?? false,
-      emojiPickerScale: (json['emojiPickerScale'] as num?)?.toDouble() ?? 1.0,
-      emojiPickerAutofocus: json['emojiPickerAutofocus'] as bool? ?? true,
+      showNoteCreatedAt: json['showNoteCreatedAt'] as bool? ?? false,
+      showAvatarsInNote: json['showAvatarsInNote'] as bool? ?? true,
+      showAvatarsInSubNote: json['showAvatarsInSubNote'] as bool? ?? true,
       squareAvatars: json['squareAvatars'] as bool? ?? false,
       showAvatarDecorations: json['showAvatarDecorations'] as bool? ?? true,
+      showLikeButtonInNoteFooter:
+          json['showLikeButtonInNoteFooter'] as bool? ?? false,
       showClipButtonInNoteFooter:
           json['showClipButtonInNoteFooter'] as bool? ?? false,
+      showTranslateButtonInNoteFooter:
+          json['showTranslateButtonInNoteFooter'] as bool? ?? false,
+      showNoteReactionsViewer: json['showNoteReactionsViewer'] as bool? ?? true,
+      showSubNoteReactionsViewer:
+          json['showSubNoteReactionsViewer'] as bool? ?? false,
+      showNoteFooter: json['showNoteFooter'] as bool? ?? true,
+      showSubNoteFooter: json['showSubNoteFooter'] as bool? ?? false,
+      fontFamily: json['fontFamily'] as String?,
+      fontSize: (json['fontSize'] as num?)?.toDouble() ?? defaultFontSize,
       reactionsDisplayScale:
           (json['reactionsDisplayScale'] as num?)?.toDouble() ?? 1.0,
       limitWidthOfReaction: json['limitWidthOfReaction'] as bool? ?? true,
-      forceShowAds: json['forceShowAds'] as bool? ?? false,
-      useGroupedNotifications:
-          json['useGroupedNotifications'] as bool? ?? false,
+      noteFooterScale: (json['noteFooterScale'] as num?)?.toDouble() ?? 1.0,
+      emojiPickerUseDialog: json['emojiPickerUseDialog'] as bool? ?? false,
+      emojiPickerScale: (json['emojiPickerScale'] as num?)?.toDouble() ?? 1.0,
+      emojiPickerAutofocus: json['emojiPickerAutofocus'] as bool? ?? true,
+      emojiPickerKeepOpen: json['emojiPickerKeepOpen'] as bool? ?? false,
       dataSaverMedia: json['dataSaverMedia'] as bool? ?? false,
       dataSaverUrlPreview: json['dataSaverUrlPreview'] as bool? ?? false,
       disableDataSaverWhenOnWifi:
           json['disableDataSaverWhenOnWifi'] as bool? ?? false,
-      showLikeButtonInNoteFooter:
-          json['showLikeButtonInNoteFooter'] as bool? ?? false,
-      showTranslateButtonInNoteFooter:
-          json['showTranslateButtonInNoteFooter'] as bool? ?? false,
-      fontSize: (json['fontSize'] as num?)?.toDouble() ?? defaultFontSize,
-      fontFamily: json['fontFamily'] as String?,
-      showAvatarsInNote: json['showAvatarsInNote'] as bool? ?? true,
-      showAvatarsInSubNote: json['showAvatarsInSubNote'] as bool? ?? true,
-      showNoteReactionsViewer: json['showNoteReactionsViewer'] as bool? ?? true,
-      showNoteFooter: json['showNoteFooter'] as bool? ?? true,
-      showSubNoteReactionsViewer:
-          json['showSubNoteReactionsViewer'] as bool? ?? false,
-      showSubNoteFooter: json['showSubNoteFooter'] as bool? ?? false,
-      vibrateNote: json['vibrateNote'] as bool? ?? false,
-      vibrateNotification: json['vibrateNotification'] as bool? ?? false,
+      forceShowAds: json['forceShowAds'] as bool? ?? false,
+      useGroupedNotifications:
+          json['useGroupedNotifications'] as bool? ?? false,
       showTimelineTabBarOnBottom:
           json['showTimelineTabBarOnBottom'] as bool? ?? false,
-      noteFooterScale: (json['noteFooterScale'] as num?)?.toDouble() ?? 1.0,
+      vibrateNote: json['vibrateNote'] as bool? ?? false,
+      vibrateNotification: json['vibrateNotification'] as bool? ?? false,
       enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
       keepScreenOn: json['keepScreenOn'] as bool? ?? false,
       enableHorizontalSwipe: json['enableHorizontalSwipe'] as bool? ?? true,
@@ -82,7 +84,6 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
       darkThemeId: json['darkThemeId'] as String? ??
           '66e7e5a9-cd43-42cd-837d-12f47841fa34',
-      emojiPickerKeepOpen: json['emojiPickerKeepOpen'] as bool? ?? false,
     );
 
 Map<String, dynamic> _$$GeneralSettingsImplToJson(
@@ -104,34 +105,36 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showReactionsCount'] = instance.showReactionsCount;
   val['loadRawImages'] = instance.loadRawImages;
   val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
+  val['showNoteCreatedAt'] = instance.showNoteCreatedAt;
+  val['showAvatarsInNote'] = instance.showAvatarsInNote;
+  val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
+  val['squareAvatars'] = instance.squareAvatars;
+  val['showAvatarDecorations'] = instance.showAvatarDecorations;
+  val['showLikeButtonInNoteFooter'] = instance.showLikeButtonInNoteFooter;
+  val['showClipButtonInNoteFooter'] = instance.showClipButtonInNoteFooter;
+  val['showTranslateButtonInNoteFooter'] =
+      instance.showTranslateButtonInNoteFooter;
+  val['showNoteReactionsViewer'] = instance.showNoteReactionsViewer;
+  val['showSubNoteReactionsViewer'] = instance.showSubNoteReactionsViewer;
+  val['showNoteFooter'] = instance.showNoteFooter;
+  val['showSubNoteFooter'] = instance.showSubNoteFooter;
+  writeNotNull('fontFamily', instance.fontFamily);
+  val['fontSize'] = instance.fontSize;
+  val['reactionsDisplayScale'] = instance.reactionsDisplayScale;
+  val['limitWidthOfReaction'] = instance.limitWidthOfReaction;
+  val['noteFooterScale'] = instance.noteFooterScale;
   val['emojiPickerUseDialog'] = instance.emojiPickerUseDialog;
   val['emojiPickerScale'] = instance.emojiPickerScale;
   val['emojiPickerAutofocus'] = instance.emojiPickerAutofocus;
-  val['squareAvatars'] = instance.squareAvatars;
-  val['showAvatarDecorations'] = instance.showAvatarDecorations;
-  val['showClipButtonInNoteFooter'] = instance.showClipButtonInNoteFooter;
-  val['reactionsDisplayScale'] = instance.reactionsDisplayScale;
-  val['limitWidthOfReaction'] = instance.limitWidthOfReaction;
-  val['forceShowAds'] = instance.forceShowAds;
-  val['useGroupedNotifications'] = instance.useGroupedNotifications;
+  val['emojiPickerKeepOpen'] = instance.emojiPickerKeepOpen;
   val['dataSaverMedia'] = instance.dataSaverMedia;
   val['dataSaverUrlPreview'] = instance.dataSaverUrlPreview;
   val['disableDataSaverWhenOnWifi'] = instance.disableDataSaverWhenOnWifi;
-  val['showLikeButtonInNoteFooter'] = instance.showLikeButtonInNoteFooter;
-  val['showTranslateButtonInNoteFooter'] =
-      instance.showTranslateButtonInNoteFooter;
-  val['fontSize'] = instance.fontSize;
-  writeNotNull('fontFamily', instance.fontFamily);
-  val['showAvatarsInNote'] = instance.showAvatarsInNote;
-  val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
-  val['showNoteReactionsViewer'] = instance.showNoteReactionsViewer;
-  val['showNoteFooter'] = instance.showNoteFooter;
-  val['showSubNoteReactionsViewer'] = instance.showSubNoteReactionsViewer;
-  val['showSubNoteFooter'] = instance.showSubNoteFooter;
+  val['forceShowAds'] = instance.forceShowAds;
+  val['useGroupedNotifications'] = instance.useGroupedNotifications;
+  val['showTimelineTabBarOnBottom'] = instance.showTimelineTabBarOnBottom;
   val['vibrateNote'] = instance.vibrateNote;
   val['vibrateNotification'] = instance.vibrateNotification;
-  val['showTimelineTabBarOnBottom'] = instance.showTimelineTabBarOnBottom;
-  val['noteFooterScale'] = instance.noteFooterScale;
   val['enableInfiniteScroll'] = instance.enableInfiniteScroll;
   val['keepScreenOn'] = instance.keepScreenOn;
   val['enableHorizontalSwipe'] = instance.enableHorizontalSwipe;
@@ -147,7 +150,6 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['themeMode'] = _$ThemeModeEnumMap[instance.themeMode]!;
   val['lightThemeId'] = instance.lightThemeId;
   val['darkThemeId'] = instance.darkThemeId;
-  val['emojiPickerKeepOpen'] = instance.emojiPickerKeepOpen;
   return val;
 }
 

@@ -9,26 +9,32 @@ class TimeWidget extends StatelessWidget {
     required this.time,
     this.onTap,
     this.detailed = false,
+    this.absolute = false,
   });
 
   final DateTime? time;
   final void Function()? onTap;
   final bool detailed;
+  final bool absolute;
 
   @override
   Widget build(BuildContext context) {
     final time = this.time;
+    final absolute = time != null ? absoluteTime(time) : null;
+    final relative = time != null ? relativeTime(time) : null;
 
     return InkWell(
       onTap: onTap,
-      child: time != null
+      child: time != null && absolute != null && relative != null
           ? Tooltip(
               message:
-                  '${absoluteTime(time)}.${time.millisecond.toString().padLeft(3, '0')}',
+                  '$absolute.${time.millisecond.toString().padLeft(3, '0')} ($relative)',
               child: Text(
                 detailed
-                    ? '${absoluteTime(time)} (${relativeTime(time)})'
-                    : relativeTime(time),
+                    ? '$absolute ($relative)'
+                    : this.absolute
+                        ? absolute
+                        : relative,
               ),
             )
           : Text(t.misskey.ago_.invalid),

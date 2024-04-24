@@ -149,6 +149,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showAvatarsInNote => 'ノートにユーザーのアイコンを表示するで';
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示するで';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
+	@override String get showNoteCreatedAt => 'ノートの作成日時を表示するで';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示するで';
 	@override String get showNoteReactionsViewer => 'ノートにツッコミを表示するで';
 	@override String get showSelfRenotes => 'セルフリノートを表示するで';
