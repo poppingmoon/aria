@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'id_notifier_provider.dart';
+part of 'note_is_deleted_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$idNotifierHash() => r'59836ed737b6ca6901c6bd851d439cec02eadc19';
+String _$noteIsDeletedHash() => r'3a3589cbe9e6b2310a2d17abd67c60f654229744';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,38 +29,33 @@ class _SystemHash {
   }
 }
 
-abstract class _$IdNotifier extends BuildlessNotifier<IdGenMethod> {
-  late final Account account;
+/// See also [noteIsDeleted].
+@ProviderFor(noteIsDeleted)
+const noteIsDeletedProvider = NoteIsDeletedFamily();
 
-  IdGenMethod build(
+/// See also [noteIsDeleted].
+class NoteIsDeletedFamily extends Family<bool> {
+  /// See also [noteIsDeleted].
+  const NoteIsDeletedFamily();
+
+  /// See also [noteIsDeleted].
+  NoteIsDeletedProvider call(
     Account account,
-  );
-}
-
-/// See also [IdNotifier].
-@ProviderFor(IdNotifier)
-const idNotifierProvider = IdNotifierFamily();
-
-/// See also [IdNotifier].
-class IdNotifierFamily extends Family<IdGenMethod> {
-  /// See also [IdNotifier].
-  const IdNotifierFamily();
-
-  /// See also [IdNotifier].
-  IdNotifierProvider call(
-    Account account,
+    String noteId,
   ) {
-    return IdNotifierProvider(
+    return NoteIsDeletedProvider(
       account,
+      noteId,
     );
   }
 
   @override
-  IdNotifierProvider getProviderOverride(
-    covariant IdNotifierProvider provider,
+  NoteIsDeletedProvider getProviderOverride(
+    covariant NoteIsDeletedProvider provider,
   ) {
     return call(
       provider.account,
+      provider.noteId,
     );
   }
 
@@ -76,29 +71,35 @@ class IdNotifierFamily extends Family<IdGenMethod> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'idNotifierProvider';
+  String? get name => r'noteIsDeletedProvider';
 }
 
-/// See also [IdNotifier].
-class IdNotifierProvider extends NotifierProviderImpl<IdNotifier, IdGenMethod> {
-  /// See also [IdNotifier].
-  IdNotifierProvider(
+/// See also [noteIsDeleted].
+class NoteIsDeletedProvider extends AutoDisposeProvider<bool> {
+  /// See also [noteIsDeleted].
+  NoteIsDeletedProvider(
     Account account,
+    String noteId,
   ) : this._internal(
-          () => IdNotifier()..account = account,
-          from: idNotifierProvider,
-          name: r'idNotifierProvider',
+          (ref) => noteIsDeleted(
+            ref as NoteIsDeletedRef,
+            account,
+            noteId,
+          ),
+          from: noteIsDeletedProvider,
+          name: r'noteIsDeletedProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$idNotifierHash,
-          dependencies: IdNotifierFamily._dependencies,
+                  : _$noteIsDeletedHash,
+          dependencies: NoteIsDeletedFamily._dependencies,
           allTransitiveDependencies:
-              IdNotifierFamily._allTransitiveDependencies,
+              NoteIsDeletedFamily._allTransitiveDependencies,
           account: account,
+          noteId: noteId,
         );
 
-  IdNotifierProvider._internal(
+  NoteIsDeletedProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -106,66 +107,69 @@ class IdNotifierProvider extends NotifierProviderImpl<IdNotifier, IdGenMethod> {
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.account,
+    required this.noteId,
   }) : super.internal();
 
   final Account account;
+  final String noteId;
 
   @override
-  IdGenMethod runNotifierBuild(
-    covariant IdNotifier notifier,
+  Override overrideWith(
+    bool Function(NoteIsDeletedRef provider) create,
   ) {
-    return notifier.build(
-      account,
-    );
-  }
-
-  @override
-  Override overrideWith(IdNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: IdNotifierProvider._internal(
-        () => create()..account = account,
+      override: NoteIsDeletedProvider._internal(
+        (ref) => create(ref as NoteIsDeletedRef),
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         account: account,
+        noteId: noteId,
       ),
     );
   }
 
   @override
-  NotifierProviderElement<IdNotifier, IdGenMethod> createElement() {
-    return _IdNotifierProviderElement(this);
+  AutoDisposeProviderElement<bool> createElement() {
+    return _NoteIsDeletedProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is IdNotifierProvider && other.account == account;
+    return other is NoteIsDeletedProvider &&
+        other.account == account &&
+        other.noteId == noteId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
+    hash = _SystemHash.combine(hash, noteId.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin IdNotifierRef on NotifierProviderRef<IdGenMethod> {
+mixin NoteIsDeletedRef on AutoDisposeProviderRef<bool> {
   /// The parameter `account` of this provider.
   Account get account;
+
+  /// The parameter `noteId` of this provider.
+  String get noteId;
 }
 
-class _IdNotifierProviderElement
-    extends NotifierProviderElement<IdNotifier, IdGenMethod>
-    with IdNotifierRef {
-  _IdNotifierProviderElement(super.provider);
+class _NoteIsDeletedProviderElement extends AutoDisposeProviderElement<bool>
+    with NoteIsDeletedRef {
+  _NoteIsDeletedProviderElement(super.provider);
 
   @override
-  Account get account => (origin as IdNotifierProvider).account;
+  Account get account => (origin as NoteIsDeletedProvider).account;
+  @override
+  String get noteId => (origin as NoteIsDeletedProvider).noteId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
