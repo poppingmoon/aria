@@ -141,7 +141,12 @@ class TimelineWidget extends HookConsumerWidget {
     );
     final rootFocusNode = useFocusNode();
     final postFormFocusNode = useFocusNode();
-    final showLastViewedAt = useState(true);
+    final showLastViewedAt = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.showTimelineLastViewedAt),
+      ),
+    );
 
     return FocusableActionDetector(
       focusNode: rootFocusNode,

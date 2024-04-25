@@ -159,6 +159,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get showStackTrace => 'スタックトレースを表示';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示する';
 	@override String get showSubNoteReactionsViewer => 'サブノートにリアクションを表示する';
+	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示する';
 	@override String get showTimelineTabBarOnBottom => 'タイムラインのタブを下に表示する';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
 	@override String get stackTrace => 'スタックトレース';

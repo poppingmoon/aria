@@ -171,6 +171,7 @@ class _StringsAriaEnUs {
 	String get showStackTrace => 'Show stack trace';
 	String get showSubNoteFooter => 'Show action buttons in subnotes';
 	String get showSubNoteReactionsViewer => 'Show reactions viewers in subnotes';
+	String get showTimelineLastViewedAt => 'Show last viewed date of timelines';
 	String get showTimelineTabBarOnBottom => 'Show timeline tab bar on bottom';
 	String get showTranslateButtonInNoteFooter => 'Add "Translate" to note action menu';
 	String get stackTrace => 'Stack trace';

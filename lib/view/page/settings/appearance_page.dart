@@ -69,6 +69,13 @@ class AppearancePage extends HookConsumerWidget {
                 .read(generalSettingsNotifierProvider.notifier)
                 .setShowTimelineTabBarOnBottom(value),
           ),
+          SwitchListTile(
+            title: Text(t.aria.showTimelineLastViewedAt),
+            value: settings.showTimelineLastViewedAt,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowTimelineLastViewedAt(value),
+          ),
           const Divider(),
           SwitchListTile(
             title: Text(t.aria.vibrateNote),

@@ -62,6 +62,7 @@ mixin _$GeneralSettings {
   bool get forceShowAds => throw _privateConstructorUsedError;
   bool get useGroupedNotifications => throw _privateConstructorUsedError;
   bool get showTimelineTabBarOnBottom => throw _privateConstructorUsedError;
+  bool get showTimelineLastViewedAt => throw _privateConstructorUsedError;
   bool get vibrateNote => throw _privateConstructorUsedError;
   bool get vibrateNotification =>
       throw _privateConstructorUsedError; // Behavior
@@ -129,6 +130,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool forceShowAds,
       bool useGroupedNotifications,
       bool showTimelineTabBarOnBottom,
+      bool showTimelineLastViewedAt,
       bool vibrateNote,
       bool vibrateNotification,
       bool enableInfiniteScroll,
@@ -195,6 +197,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? forceShowAds = null,
     Object? useGroupedNotifications = null,
     Object? showTimelineTabBarOnBottom = null,
+    Object? showTimelineLastViewedAt = null,
     Object? vibrateNote = null,
     Object? vibrateNotification = null,
     Object? enableInfiniteScroll = null,
@@ -356,6 +359,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.showTimelineTabBarOnBottom
           : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
               as bool,
+      showTimelineLastViewedAt: null == showTimelineLastViewedAt
+          ? _value.showTimelineLastViewedAt
+          : showTimelineLastViewedAt // ignore: cast_nullable_to_non_nullable
+              as bool,
       vibrateNote: null == vibrateNote
           ? _value.vibrateNote
           : vibrateNote // ignore: cast_nullable_to_non_nullable
@@ -466,6 +473,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool forceShowAds,
       bool useGroupedNotifications,
       bool showTimelineTabBarOnBottom,
+      bool showTimelineLastViewedAt,
       bool vibrateNote,
       bool vibrateNotification,
       bool enableInfiniteScroll,
@@ -530,6 +538,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? forceShowAds = null,
     Object? useGroupedNotifications = null,
     Object? showTimelineTabBarOnBottom = null,
+    Object? showTimelineLastViewedAt = null,
     Object? vibrateNote = null,
     Object? vibrateNotification = null,
     Object? enableInfiniteScroll = null,
@@ -691,6 +700,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.showTimelineTabBarOnBottom
           : showTimelineTabBarOnBottom // ignore: cast_nullable_to_non_nullable
               as bool,
+      showTimelineLastViewedAt: null == showTimelineLastViewedAt
+          ? _value.showTimelineLastViewedAt
+          : showTimelineLastViewedAt // ignore: cast_nullable_to_non_nullable
+              as bool,
       vibrateNote: null == vibrateNote
           ? _value.vibrateNote
           : vibrateNote // ignore: cast_nullable_to_non_nullable
@@ -796,6 +809,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.forceShowAds = false,
       this.useGroupedNotifications = false,
       this.showTimelineTabBarOnBottom = false,
+      this.showTimelineLastViewedAt = true,
       this.vibrateNote = false,
       this.vibrateNotification = false,
       this.enableInfiniteScroll = true,
@@ -929,6 +943,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool showTimelineTabBarOnBottom;
   @override
   @JsonKey()
+  final bool showTimelineLastViewedAt;
+  @override
+  @JsonKey()
   final bool vibrateNote;
   @override
   @JsonKey()
@@ -977,7 +994,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1051,6 +1068,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.forceShowAds, forceShowAds) || other.forceShowAds == forceShowAds) &&
             (identical(other.useGroupedNotifications, useGroupedNotifications) || other.useGroupedNotifications == useGroupedNotifications) &&
             (identical(other.showTimelineTabBarOnBottom, showTimelineTabBarOnBottom) || other.showTimelineTabBarOnBottom == showTimelineTabBarOnBottom) &&
+            (identical(other.showTimelineLastViewedAt, showTimelineLastViewedAt) || other.showTimelineLastViewedAt == showTimelineLastViewedAt) &&
             (identical(other.vibrateNote, vibrateNote) || other.vibrateNote == vibrateNote) &&
             (identical(other.vibrateNotification, vibrateNotification) || other.vibrateNotification == vibrateNotification) &&
             (identical(other.enableInfiniteScroll, enableInfiniteScroll) || other.enableInfiniteScroll == enableInfiniteScroll) &&
@@ -1108,6 +1126,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         forceShowAds,
         useGroupedNotifications,
         showTimelineTabBarOnBottom,
+        showTimelineLastViewedAt,
         vibrateNote,
         vibrateNotification,
         enableInfiniteScroll,
@@ -1179,6 +1198,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool forceShowAds,
       final bool useGroupedNotifications,
       final bool showTimelineTabBarOnBottom,
+      final bool showTimelineLastViewedAt,
       final bool vibrateNote,
       final bool vibrateNotification,
       final bool enableInfiniteScroll,
@@ -1272,6 +1292,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get useGroupedNotifications;
   @override
   bool get showTimelineTabBarOnBottom;
+  @override
+  bool get showTimelineLastViewedAt;
   @override
   bool get vibrateNote;
   @override
