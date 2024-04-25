@@ -8,6 +8,7 @@ import '../../model/streaming/note_update_event.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/note_is_deleted_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
@@ -31,6 +32,10 @@ class TimelineNote extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;
+    final isDeleted = ref.watch(noteIsDeletedProvider(account, noteId));
+    if (isDeleted) {
+      return const SizedBox.shrink();
+    }
     final note = ref.watch(noteProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
     final notifier =

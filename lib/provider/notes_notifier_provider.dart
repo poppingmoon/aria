@@ -13,7 +13,7 @@ part 'notes_notifier_provider.g.dart';
 @Riverpod(keepAlive: true)
 class NotesNotifier extends _$NotesNotifier {
   @override
-  Map<String, Note> build(Account account) {
+  Map<String, Note?> build(Account account) {
     return {};
   }
 
@@ -49,9 +49,10 @@ class NotesNotifier extends _$NotesNotifier {
   }
 
   void remove(String noteId) {
-    final temp = Map.of(state);
-    temp.remove(noteId);
-    state = temp;
+    state = {
+      ...state,
+      noteId: null,
+    };
   }
 
   void addReaction(String noteId, Reacted reacted) {

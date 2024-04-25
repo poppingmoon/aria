@@ -6,7 +6,7 @@ part of 'notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$notesNotifierHash() => r'a5a400ae72e3d7b7d72148018900485a9efbd483';
+String _$notesNotifierHash() => r'cdb0332d358ae9a03edd16336293f5763f89c305';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,10 +29,10 @@ class _SystemHash {
   }
 }
 
-abstract class _$NotesNotifier extends BuildlessNotifier<Map<String, Note>> {
+abstract class _$NotesNotifier extends BuildlessNotifier<Map<String, Note?>> {
   late final Account account;
 
-  Map<String, Note> build(
+  Map<String, Note?> build(
     Account account,
   );
 }
@@ -42,7 +42,7 @@ abstract class _$NotesNotifier extends BuildlessNotifier<Map<String, Note>> {
 const notesNotifierProvider = NotesNotifierFamily();
 
 /// See also [NotesNotifier].
-class NotesNotifierFamily extends Family<Map<String, Note>> {
+class NotesNotifierFamily extends Family<Map<String, Note?>> {
   /// See also [NotesNotifier].
   const NotesNotifierFamily();
 
@@ -81,7 +81,7 @@ class NotesNotifierFamily extends Family<Map<String, Note>> {
 
 /// See also [NotesNotifier].
 class NotesNotifierProvider
-    extends NotifierProviderImpl<NotesNotifier, Map<String, Note>> {
+    extends NotifierProviderImpl<NotesNotifier, Map<String, Note?>> {
   /// See also [NotesNotifier].
   NotesNotifierProvider(
     Account account,
@@ -112,7 +112,7 @@ class NotesNotifierProvider
   final Account account;
 
   @override
-  Map<String, Note> runNotifierBuild(
+  Map<String, Note?> runNotifierBuild(
     covariant NotesNotifier notifier,
   ) {
     return notifier.build(
@@ -137,7 +137,7 @@ class NotesNotifierProvider
   }
 
   @override
-  NotifierProviderElement<NotesNotifier, Map<String, Note>> createElement() {
+  NotifierProviderElement<NotesNotifier, Map<String, Note?>> createElement() {
     return _NotesNotifierProviderElement(this);
   }
 
@@ -155,13 +155,13 @@ class NotesNotifierProvider
   }
 }
 
-mixin NotesNotifierRef on NotifierProviderRef<Map<String, Note>> {
+mixin NotesNotifierRef on NotifierProviderRef<Map<String, Note?>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _NotesNotifierProviderElement
-    extends NotifierProviderElement<NotesNotifier, Map<String, Note>>
+    extends NotifierProviderElement<NotesNotifier, Map<String, Note?>>
     with NotesNotifierRef {
   _NotesNotifierProviderElement(super.provider);
 
