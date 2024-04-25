@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../extension/date_time_extension.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
@@ -372,14 +373,5 @@ class _NewNotesDivider extends ConsumerWidget {
         ],
       ),
     );
-  }
-}
-
-extension on DateTime {
-  bool isBetween(DateTime? first, DateTime? second) {
-    if (first == null || second == null) {
-      return false;
-    }
-    return !isBefore(first) && isBefore(second);
   }
 }

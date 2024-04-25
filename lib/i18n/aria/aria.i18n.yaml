@@ -52,6 +52,7 @@ nFiles:
 newFollowRequestReceived: "There are new follow requests"
 newNotes: "New notes"
 newNotificationReceived: "There are new notifications"
+newNotifications: "新しい通知"
 noAccounts: "No accounts"
 noTabs: "No tabs"
 noThemes: "No themes"

@@ -2,15 +2,16 @@ import 'dart:async';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../model/tab_settings.dart';
+import '../model/account.dart';
 import 'shared_preferences_provider.dart';
 
-part 'timeline_last_viewed_at_notifier_provider.g.dart';
+part 'notifications_last_viewed_at_notifier_provider.g.dart';
 
 @riverpod
-class TimelineLastViewedAtNotifier extends _$TimelineLastViewedAtNotifier {
+class NotificationsLastViewedAtNotifier
+    extends _$NotificationsLastViewedAtNotifier {
   @override
-  DateTime? build(TabSettings tabSettings) {
+  DateTime? build(Account account) {
     final value = ref.watch(sharedPreferencesProvider).getString(_key);
     ref.onDispose(() => _timer?.cancel());
     if (value != null) {
@@ -19,7 +20,7 @@ class TimelineLastViewedAtNotifier extends _$TimelineLastViewedAtNotifier {
     return null;
   }
 
-  String get _key => 'timelineTabs/$tabSettings.id/lastViewed';
+  String get _key => '$account/notifications/lastViewed';
 
   Timer? _timer;
 

@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../extension/date_time_extension.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -11,6 +12,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import 'notification_widget.dart';
@@ -25,6 +27,8 @@ class NotificationsListView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifications = ref.watch(notificationsNotifierProvider(account));
     final nextNotifications = useState(<INotificationsResponse>[]);
+    final lastViewedAt =
+        ref.watch(notificationsLastViewedAtNotifierProvider(account));
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final controller = useScrollController();
@@ -34,6 +38,9 @@ class NotificationsListView extends HookConsumerWidget {
     useEffect(
       () {
         notifier.connect();
+        ref
+            .read(notificationsLastViewedAtNotifierProvider(account).notifier)
+            .save(DateTime.now());
         controller.addListener(() {
           if (controller.position.extentBefore == 0) {
             hasNewNotification.value = false;
@@ -42,23 +49,6 @@ class NotificationsListView extends HookConsumerWidget {
             }
           }
         });
-        return;
-      },
-      [],
-    );
-    ref.listen(mainStreamNotifierProvider(account), (_, next) async {
-      if (next case AsyncData(value: Notification(:final notification))) {
-        nextNotifications.value = [...nextNotifications.value, notification];
-        if (controller.position.extentBefore == 0) {
-          await Future<void>.delayed(const Duration(milliseconds: 100));
-          controller.scrollToTop();
-        } else {
-          hasNewNotification.value = true;
-        }
-      }
-    });
-    useEffect(
-      () {
         if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
           controller.addListener(() {
             if (controller.position.extentAfter < 100) {
@@ -76,6 +66,17 @@ class NotificationsListView extends HookConsumerWidget {
       },
       [],
     );
+    ref.listen(mainStreamNotifierProvider(account), (_, next) async {
+      if (next case AsyncData(value: Notification(:final notification))) {
+        nextNotifications.value = [...nextNotifications.value, notification];
+        if (controller.position.extentBefore == 0) {
+          await Future<void>.delayed(const Duration(milliseconds: 100));
+          controller.scrollToTop();
+        } else {
+          hasNewNotification.value = true;
+        }
+      }
+    });
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
@@ -128,7 +129,16 @@ class NotificationsListView extends HookConsumerWidget {
                   ),
                   if (nextNotifications.value.isNotEmpty &&
                       (notifications.valueOrNull?.items.isNotEmpty ?? false))
-                    const SliverToBoxAdapter(child: Divider(height: 0.0)),
+                    SliverToBoxAdapter(
+                      child: lastViewedAt?.isBetween(
+                                notifications
+                                    .valueOrNull?.items.firstOrNull?.createdAt,
+                                nextNotifications.value.lastOrNull?.createdAt,
+                              ) ??
+                              false
+                          ? const _NewNotificationsDivider()
+                          : const Divider(height: 1.0),
+                    ),
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) => Material(
@@ -138,7 +148,18 @@ class NotificationsListView extends HookConsumerWidget {
                         notification: notifications.value!.items[index],
                       ),
                     ),
-                    separatorBuilder: (_, __) => const Divider(height: 0),
+                    separatorBuilder: (context, index) =>
+                        lastViewedAt?.isBetween(
+                                  notifications.valueOrNull?.items
+                                      .elementAtOrNull(index + 1)
+                                      ?.createdAt,
+                                  notifications.valueOrNull?.items
+                                      .elementAtOrNull(index)
+                                      ?.createdAt,
+                                ) ??
+                                false
+                            ? const _NewNotificationsDivider()
+                            : const Divider(height: 0.0),
                     itemCount: notifications.valueOrNull?.items.length ?? 0,
                   ),
                   if ((notifications.valueOrNull?.items.isNotEmpty ?? false) ||
@@ -178,6 +199,35 @@ class NotificationsListView extends HookConsumerWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _NewNotificationsDivider extends ConsumerWidget {
+  const _NewNotificationsDivider();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
+    return ColoredBox(
+      color: colors.panel,
+      child: Row(
+        children: [
+          Expanded(child: Divider(color: colors.accent)),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+            ),
+            child: Text(
+              t.aria.newNotifications,
+              style: TextStyle(color: colors.accent),
+            ),
+          ),
+          Expanded(child: Divider(color: colors.accent)),
+        ],
       ),
     );
   }

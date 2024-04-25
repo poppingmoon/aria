@@ -11,6 +11,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/streaming/broadcast.dart' as broadcast;
 import '../../model/streaming/main_event.dart';
+import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/online_users_count_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
@@ -54,13 +55,17 @@ class TimelineWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.vibrateNotification),
     );
-    final lastViewedAt =
-        ref.watch(timelineLastViewedAtNotifierProvider(tabSettings));
-    final nextNotes = ref
-        .watch(timelineNotesAfterNoteNotifierProvider(tabSettings))
-        .valueOrNull;
-    final previousNotes =
-        ref.watch(timelineNotesNotifierProvider(tabSettings)).valueOrNull;
+    final lastViewedAt = tabSettings.tabType != TabType.notifications
+        ? ref.watch(timelineLastViewedAtNotifierProvider(tabSettings))
+        : null;
+    final nextNotes = tabSettings.tabType != TabType.notifications
+        ? ref
+            .watch(timelineNotesAfterNoteNotifierProvider(tabSettings))
+            .valueOrNull
+        : null;
+    final previousNotes = tabSettings.tabType != TabType.notifications
+        ? ref.watch(timelineNotesNotifierProvider(tabSettings)).valueOrNull
+        : null;
     useEffect(
       () {
         ref

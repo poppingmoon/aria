@@ -113,6 +113,7 @@ class _StringsAriaEnUs {
 	String get newFollowRequestReceived => 'There are new follow requests';
 	String get newNotes => 'New notes';
 	String get newNotificationReceived => 'There are new notifications';
+	String get newNotifications => '新しい通知';
 	String get noAccounts => 'No accounts';
 	String get noTabs => 'No tabs';
 	String get noThemes => 'No themes';

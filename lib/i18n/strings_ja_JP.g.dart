@@ -101,6 +101,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get newFollowRequestReceived => '新しいフォロー申請があります';
 	@override String get newNotes => '新しいノート';
 	@override String get newNotificationReceived => '新しい通知があります';
+	@override String get newNotifications => '新しい通知';
 	@override String get noAccounts => 'アカウントがありません';
 	@override String get noTabs => 'タブがありません';
 	@override String get noThemes => 'テーマがありません';
