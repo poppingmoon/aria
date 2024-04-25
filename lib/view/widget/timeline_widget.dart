@@ -18,6 +18,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/broadcast_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import 'ad_widget.dart';
 import 'announcement_widget.dart';
@@ -54,6 +55,9 @@ class TimelineWidget extends HookConsumerWidget {
         ref
             .read(emojisNotifierProvider(account.host).notifier)
             .fetchAndSaveIfNeeded();
+        ref
+            .read(timelineLastViewedAtNotifierProvider(tabSettings).notifier)
+            .save(DateTime.now());
         if (!tabSettings.disableSubscribing) {
           final notifier =
               ref.read(noteSubscriptionNotifierProvider(account).notifier);
