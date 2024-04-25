@@ -7,7 +7,7 @@ part of 'timeline_last_viewed_at_notifier_provider.dart';
 // **************************************************************************
 
 String _$timelineLastViewedAtNotifierHash() =>
-    r'5e0083b939c36f78d4bccedceb23497b80e0b9cf';
+    r'83f11026962d860646a21ca546d78c35de3ef7d9';
 
 /// Copied from Dart SDK
 class _SystemHash {
