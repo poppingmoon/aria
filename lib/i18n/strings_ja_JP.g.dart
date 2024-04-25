@@ -91,6 +91,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get importCompleted => 'インポートが完了しました';
 	@override String get importConfirm => '設定をインポートしますか？現在の設定は上書きされます。';
 	@override String get invalidListFormat => 'リストの形式が正しくありません';
+	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開いたままにする';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';

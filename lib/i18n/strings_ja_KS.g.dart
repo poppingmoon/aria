@@ -91,6 +91,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get importCompleted => 'インポートが終わったで';
 	@override String get importConfirm => '設定をインポートしてええか？今の設定は上書きされてまうで？';
 	@override String get invalidListFormat => 'リストの形式が間違ってるみたいや';
+	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開けたまんまにする';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションがあるで';

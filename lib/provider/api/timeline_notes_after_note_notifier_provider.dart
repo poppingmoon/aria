@@ -21,7 +21,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       final response = await _fetchNotes(sinceId);
       return PaginationState.fromIterable(response);
     } else {
-      return PaginationState.fromIterable([]);
+      return const PaginationState(items: []);
     }
   }
 
@@ -198,7 +198,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
     state = AsyncValue.data(
       PaginationState(
         items: [note, ...?value?.items],
-        isLastLoaded: true,
+        isLastLoaded: value?.isLastLoaded ?? false,
       ),
     );
   }

@@ -113,19 +113,21 @@ class TimelineListView extends HookConsumerWidget {
     useEffect(
       () {
         void callback() {
-          if (controller.position.extentBefore < 100) {
-            if (!isAtTop.value) {
-              ref
-                  .read(
-                    timelineNotesAfterNoteNotifierProvider(
-                      tabSettings,
-                      sinceId: centerId,
-                    ).notifier,
-                  )
-                  .loadMore();
+          if (centerId != null) {
+            if (controller.position.extentBefore < 100) {
+              if (!isAtTop.value) {
+                ref
+                    .read(
+                      timelineNotesAfterNoteNotifierProvider(
+                        tabSettings,
+                        sinceId: centerId,
+                      ).notifier,
+                    )
+                    .loadMore();
+              }
+            } else if (isAtTop.value) {
+              isAtTop.value = false;
             }
-          } else if (isAtTop.value) {
-            isAtTop.value = false;
           }
           if (controller.position.extentAfter < 100) {
             if (!isAtBottom.value) {
@@ -181,20 +183,21 @@ class TimelineListView extends HookConsumerWidget {
                 center: centerKey,
                 controller: controller,
                 slivers: [
-                  SliverToBoxAdapter(
-                    child: PaginationBottomWidget(
-                      paginationState: nextNotes,
-                      loadMore: () => ref
-                          .read(
-                            timelineNotesAfterNoteNotifierProvider(
-                              tabSettings,
-                              sinceId: centerId,
-                            ).notifier,
-                          )
-                          .loadMore(skipError: true),
-                      reversed: true,
+                  if (centerId != null)
+                    SliverToBoxAdapter(
+                      child: PaginationBottomWidget(
+                        paginationState: nextNotes,
+                        loadMore: () => ref
+                            .read(
+                              timelineNotesAfterNoteNotifierProvider(
+                                tabSettings,
+                                sinceId: centerId,
+                              ).notifier,
+                            )
+                            .loadMore(skipError: true),
+                        reversed: true,
+                      ),
                     ),
-                  ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) ||
                       (previousNotes.valueOrNull?.items.isNotEmpty ?? false))
                     SliverToBoxAdapter(
