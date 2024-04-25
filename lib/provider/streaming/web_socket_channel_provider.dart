@@ -30,6 +30,9 @@ WebSocketChannel webSocketChannel(
     pingInterval: const Duration(minutes: 1),
     connectTimeout: const Duration(seconds: 20),
   );
-  ref.onDispose(() => webSocketChannel.sink.close());
+  ref.onDispose(() async {
+    await webSocketChannel.sink.done;
+    await webSocketChannel.sink.close();
+  });
   return webSocketChannel;
 }

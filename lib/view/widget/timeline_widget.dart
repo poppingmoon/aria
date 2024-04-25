@@ -170,7 +170,7 @@ class TimelineWidget extends HookConsumerWidget {
                 ),
                 title: Row(
                   children: [
-                    TabNameWidget(tabSettings: tabSettings),
+                    Expanded(child: TabNameWidget(tabSettings: tabSettings)),
                     StreamingErrorIcon(tabSettings: tabSettings),
                   ],
                 ),
