@@ -98,6 +98,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get muted => 'ミュート中';
 	@override String nFiles({required Object n}) => '${n}個のファイル';
 	@override String get newFollowRequestReceived => '新しいフォロー申請があります';
+	@override String get newNotes => '新しいノート';
 	@override String get newNotificationReceived => '新しい通知があります';
 	@override String get noAccounts => 'アカウントがありません';
 	@override String get noTabs => 'タブがありません';

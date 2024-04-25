@@ -98,6 +98,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get muted => 'ミュート中';
 	@override String nFiles({required Object n}) => '${n}個のファイル';
 	@override String get newFollowRequestReceived => '新しいフォロー申請があるで';
+	@override String get newNotes => '新しいノート';
 	@override String get newNotificationReceived => '新しい通知があるで';
 	@override String get noAccounts => 'アカウントはあらへん';
 	@override String get noTabs => 'タブはあらへん';

@@ -110,6 +110,7 @@ class _StringsAriaEnUs {
 		other: '${n} files',
 	);
 	String get newFollowRequestReceived => 'There are new follow requests';
+	String get newNotes => 'New notes';
 	String get newNotificationReceived => 'There are new notifications';
 	String get noAccounts => 'No accounts';
 	String get noTabs => 'No tabs';

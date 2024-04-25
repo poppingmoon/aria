@@ -15,6 +15,7 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import 'notifications_list_view.dart';
 import 'pagination_bottom_widget.dart';
@@ -42,6 +43,8 @@ class TimelineListView extends HookConsumerWidget {
     final nextNotes = ref.watch(
       timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
     );
+    final lastViewedAt =
+        ref.watch(timelineLastViewedAtNotifierProvider(tabSettings));
     final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
     final previousNotes = ref
         .watch(timelineNotesNotifierProvider(tabSettings, untilId: centerId));
@@ -215,12 +218,33 @@ class TimelineListView extends HookConsumerWidget {
                         postFormFocusNode: postFormFocusNode,
                       ),
                     ),
-                    separatorBuilder: (_, __) => const Divider(height: 1.0),
+                    separatorBuilder: (context, index) =>
+                        lastViewedAt?.isBetween(
+                                  nextNotes.valueOrNull?.items
+                                      .elementAtOrNull(index + 1)
+                                      ?.createdAt,
+                                  nextNotes.valueOrNull?.items
+                                      .elementAtOrNull(index)
+                                      ?.createdAt,
+                                ) ??
+                                false
+                            ? const _NewNotesDivider()
+                            : const Divider(height: 1.0),
                     itemCount: nextNotes.valueOrNull?.items.length ?? 0,
                   ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) &&
                       (previousNotes.valueOrNull?.items.isNotEmpty ?? false))
-                    const SliverToBoxAdapter(child: Divider(height: 1.0)),
+                    SliverToBoxAdapter(
+                      child: lastViewedAt?.isBetween(
+                                previousNotes
+                                    .valueOrNull?.items.firstOrNull?.createdAt,
+                                nextNotes
+                                    .valueOrNull?.items.lastOrNull?.createdAt,
+                              ) ??
+                              false
+                          ? const _NewNotesDivider()
+                          : const Divider(height: 1.0),
+                    ),
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) => Material(
@@ -231,7 +255,18 @@ class TimelineListView extends HookConsumerWidget {
                         postFormFocusNode: postFormFocusNode,
                       ),
                     ),
-                    separatorBuilder: (_, __) => const Divider(height: 0.0),
+                    separatorBuilder: (context, index) =>
+                        lastViewedAt?.isBetween(
+                                  previousNotes.valueOrNull?.items
+                                      .elementAtOrNull(index + 1)
+                                      ?.createdAt,
+                                  previousNotes.valueOrNull?.items
+                                      .elementAtOrNull(index)
+                                      ?.createdAt,
+                                ) ??
+                                false
+                            ? const _NewNotesDivider()
+                            : const Divider(height: 0.0),
                     itemCount: previousNotes.valueOrNull?.items.length ?? 0,
                   ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) ||
@@ -298,5 +333,43 @@ class TimelineListView extends HookConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+class _NewNotesDivider extends ConsumerWidget {
+  const _NewNotesDivider();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
+    return ColoredBox(
+      color: colors.panel,
+      child: Row(
+        children: [
+          Expanded(child: Divider(color: colors.accent)),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+            ),
+            child: Text(
+              t.aria.newNotes,
+              style: TextStyle(color: colors.accent),
+            ),
+          ),
+          Expanded(child: Divider(color: colors.accent)),
+        ],
+      ),
+    );
+  }
+}
+
+extension on DateTime {
+  bool isBetween(DateTime? first, DateTime? second) {
+    if (first == null || second == null) {
+      return false;
+    }
+    return !isBefore(first) && isBefore(second);
   }
 }

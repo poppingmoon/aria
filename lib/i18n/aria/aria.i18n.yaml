@@ -49,6 +49,7 @@ nFiles:
   one: "{n} file"
   other: "{n} files"
 newFollowRequestReceived: "There are new follow requests"
+newNotes: "New notes"
 newNotificationReceived: "There are new notifications"
 noAccounts: "No accounts"
 noTabs: "No tabs"
