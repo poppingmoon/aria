@@ -237,6 +237,13 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowTimelineLastViewedAt(
+    bool showTimelineLastViewedAt,
+  ) async {
+    state = state.copyWith(showTimelineLastViewedAt: showTimelineLastViewedAt);
+    await _save();
+  }
+
   Future<void> setVibrateNote(bool vibrateNote) async {
     state = state.copyWith(vibrateNote: vibrateNote);
     await _save();

@@ -11,6 +11,7 @@ import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
 
@@ -201,10 +202,14 @@ class TimelineMenu extends ConsumerWidget {
                     onTap: () async {
                       final centerId =
                           ref.read(timelineCenterNotifierProvider(tabSettings));
+                      final lastViewedAt = ref.read(
+                        timelineLastViewedAtNotifierProvider(tabSettings),
+                      );
                       final date = await pickDateTime(
                         context,
-                        initialDate:
-                            centerId != null ? Id.parse(centerId).date : null,
+                        initialDate: centerId != null
+                            ? Id.parse(centerId).date
+                            : lastViewedAt,
                         lastDate: DateTime.now(),
                       );
                       if (date != null) {

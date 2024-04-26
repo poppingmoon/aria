@@ -100,6 +100,7 @@ class _StringsAriaEnUs {
 	String get importCompleted => 'Import completed';
 	String get importConfirm => 'Are you sure you want to import settings? Existing settings will be overwritten.';
 	String get invalidListFormat => 'List format is invalid';
+	String jumpTo({required Object x}) => 'Jump to ${x}';
 	String get keepOpen => 'Keep open';
 	String get loginWithAccessToken => 'Sign in with an access token';
 	String get mentionToRemoteWarning => 'This note contains mentions to remote users';
@@ -110,7 +111,9 @@ class _StringsAriaEnUs {
 		other: '${n} files',
 	);
 	String get newFollowRequestReceived => 'There are new follow requests';
+	String get newNotes => 'New notes';
 	String get newNotificationReceived => 'There are new notifications';
+	String get newNotifications => '新しい通知';
 	String get noAccounts => 'No accounts';
 	String get noTabs => 'No tabs';
 	String get noThemes => 'No themes';
@@ -168,6 +171,7 @@ class _StringsAriaEnUs {
 	String get showStackTrace => 'Show stack trace';
 	String get showSubNoteFooter => 'Show action buttons in subnotes';
 	String get showSubNoteReactionsViewer => 'Show reactions viewers in subnotes';
+	String get showTimelineLastViewedAt => 'Show last viewed date of timelines';
 	String get showTimelineTabBarOnBottom => 'Show timeline tab bar on bottom';
 	String get showTranslateButtonInNoteFooter => 'Add "Translate" to note action menu';
 	String get stackTrace => 'Stack trace';

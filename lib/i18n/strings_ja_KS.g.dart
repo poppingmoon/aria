@@ -91,6 +91,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get importCompleted => 'インポートが終わったで';
 	@override String get importConfirm => '設定をインポートしてええか？今の設定は上書きされてまうで？';
 	@override String get invalidListFormat => 'リストの形式が間違ってるみたいや';
+	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開けたまんまにする';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションがあるで';
@@ -98,7 +99,9 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get muted => 'ミュート中';
 	@override String nFiles({required Object n}) => '${n}個のファイル';
 	@override String get newFollowRequestReceived => '新しいフォロー申請があるで';
+	@override String get newNotes => '新しいノート';
 	@override String get newNotificationReceived => '新しい通知があるで';
+	@override String get newNotifications => '新しい通知';
 	@override String get noAccounts => 'アカウントはあらへん';
 	@override String get noTabs => 'タブはあらへん';
 	@override String get noThemes => 'テーマはあらへん';
@@ -156,6 +159,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showStackTrace => 'スタックトレース見して';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示するで';
 	@override String get showSubNoteReactionsViewer => 'サブノートにツッコミを表示するで';
+	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示するで';
 	@override String get showTimelineTabBarOnBottom => 'タイムラインのタブを下に表示するで';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
 	@override String get stackTrace => 'スタックトレース';

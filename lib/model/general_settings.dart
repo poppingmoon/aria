@@ -64,6 +64,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool forceShowAds,
     @Default(false) bool useGroupedNotifications,
     @Default(false) bool showTimelineTabBarOnBottom,
+    @Default(true) bool showTimelineLastViewedAt,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
 

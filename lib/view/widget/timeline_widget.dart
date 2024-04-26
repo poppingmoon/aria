@@ -11,14 +11,20 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/streaming/broadcast.dart' as broadcast;
 import '../../model/streaming/main_event.dart';
+import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/online_users_count_provider.dart';
+import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
+import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/broadcast_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
+import '../../provider/timeline_center_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
+import '../../util/format_datetime.dart';
 import 'ad_widget.dart';
 import 'announcement_widget.dart';
 import 'post_form.dart';
@@ -49,11 +55,25 @@ class TimelineWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.vibrateNotification),
     );
+    final lastViewedAt = tabSettings.tabType != TabType.notifications
+        ? ref.watch(timelineLastViewedAtNotifierProvider(tabSettings))
+        : null;
+    final nextNotes = tabSettings.tabType != TabType.notifications
+        ? ref
+            .watch(timelineNotesAfterNoteNotifierProvider(tabSettings))
+            .valueOrNull
+        : null;
+    final previousNotes = tabSettings.tabType != TabType.notifications
+        ? ref.watch(timelineNotesNotifierProvider(tabSettings)).valueOrNull
+        : null;
     useEffect(
       () {
         ref
             .read(emojisNotifierProvider(account.host).notifier)
             .fetchAndSaveIfNeeded();
+        ref
+            .read(timelineLastViewedAtNotifierProvider(tabSettings).notifier)
+            .save(DateTime.now());
         if (!tabSettings.disableSubscribing) {
           final notifier =
               ref.read(noteSubscriptionNotifierProvider(account).notifier);
@@ -121,6 +141,12 @@ class TimelineWidget extends HookConsumerWidget {
     );
     final rootFocusNode = useFocusNode();
     final postFormFocusNode = useFocusNode();
+    final showLastViewedAt = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.showTimelineLastViewedAt),
+      ),
+    );
 
     return FocusableActionDetector(
       focusNode: rootFocusNode,
@@ -154,7 +180,7 @@ class TimelineWidget extends HookConsumerWidget {
                 ),
                 title: Row(
                   children: [
-                    TabNameWidget(tabSettings: tabSettings),
+                    Expanded(child: TabNameWidget(tabSettings: tabSettings)),
                     StreamingErrorIcon(tabSettings: tabSettings),
                   ],
                 ),
@@ -235,6 +261,44 @@ class TimelineWidget extends HookConsumerWidget {
                   ),
                 ),
               ),
+              if (lastViewedAt != null &&
+                  showLastViewedAt.value &&
+                  !(nextNotes?.isLastLoaded ?? true) &&
+                  (previousNotes?.items.firstOrNull?.createdAt
+                          .isAfter(lastViewedAt) ??
+                      false))
+                Container(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: InkWell(
+                    onTap: () {
+                      ref
+                          .read(
+                            timelineCenterNotifierProvider(tabSettings)
+                                .notifier,
+                          )
+                          .setCenterFromDate(lastViewedAt);
+                      showLastViewedAt.value = false;
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.history),
+                        const SizedBox(width: 8.0),
+                        Expanded(
+                          child: Text(
+                            t.aria.jumpTo(
+                              x: '${absoluteTime(lastViewedAt)} (${relativeTime(lastViewedAt)})',
+                            ),
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () => showLastViewedAt.value = false,
+                          icon: const Icon(Icons.close),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               Expanded(
                 child: TimelineListView(
                   tabSettings: tabSettings,

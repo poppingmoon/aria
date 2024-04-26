@@ -59,6 +59,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['useGroupedNotifications'] as bool? ?? false,
       showTimelineTabBarOnBottom:
           json['showTimelineTabBarOnBottom'] as bool? ?? false,
+      showTimelineLastViewedAt:
+          json['showTimelineLastViewedAt'] as bool? ?? true,
       vibrateNote: json['vibrateNote'] as bool? ?? false,
       vibrateNotification: json['vibrateNotification'] as bool? ?? false,
       enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
@@ -133,6 +135,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['forceShowAds'] = instance.forceShowAds;
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
   val['showTimelineTabBarOnBottom'] = instance.showTimelineTabBarOnBottom;
+  val['showTimelineLastViewedAt'] = instance.showTimelineLastViewedAt;
   val['vibrateNote'] = instance.vibrateNote;
   val['vibrateNotification'] = instance.vibrateNotification;
   val['enableInfiniteScroll'] = instance.enableInfiniteScroll;

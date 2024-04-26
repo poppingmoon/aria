@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../extension/date_time_extension.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
@@ -15,6 +16,7 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import 'notifications_list_view.dart';
 import 'pagination_bottom_widget.dart';
@@ -42,6 +44,8 @@ class TimelineListView extends HookConsumerWidget {
     final nextNotes = ref.watch(
       timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
     );
+    final lastViewedAt =
+        ref.watch(timelineLastViewedAtNotifierProvider(tabSettings));
     final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
     final previousNotes = ref
         .watch(timelineNotesNotifierProvider(tabSettings, untilId: centerId));
@@ -92,6 +96,13 @@ class TimelineListView extends HookConsumerWidget {
             HapticFeedback.lightImpact();
           }
           if (keepAnimation.value) {
+            if (tabSettings.id != null) {
+              ref
+                  .read(
+                    timelineLastViewedAtNotifierProvider(tabSettings).notifier,
+                  )
+                  .save(note.createdAt);
+            }
             Future<void>.delayed(
               const Duration(milliseconds: 100),
               controller.scrollToTop,
@@ -105,19 +116,21 @@ class TimelineListView extends HookConsumerWidget {
     useEffect(
       () {
         void callback() {
-          if (controller.position.extentBefore < 100) {
-            if (!isAtTop.value) {
-              ref
-                  .read(
-                    timelineNotesAfterNoteNotifierProvider(
-                      tabSettings,
-                      sinceId: centerId,
-                    ).notifier,
-                  )
-                  .loadMore();
+          if (centerId != null) {
+            if (controller.position.extentBefore < 100) {
+              if (!isAtTop.value) {
+                ref
+                    .read(
+                      timelineNotesAfterNoteNotifierProvider(
+                        tabSettings,
+                        sinceId: centerId,
+                      ).notifier,
+                    )
+                    .loadMore();
+              }
+            } else if (isAtTop.value) {
+              isAtTop.value = false;
             }
-          } else if (isAtTop.value) {
-            isAtTop.value = false;
           }
           if (controller.position.extentAfter < 100) {
             if (!isAtBottom.value) {
@@ -173,20 +186,21 @@ class TimelineListView extends HookConsumerWidget {
                 center: centerKey,
                 controller: controller,
                 slivers: [
-                  SliverToBoxAdapter(
-                    child: PaginationBottomWidget(
-                      paginationState: nextNotes,
-                      loadMore: () => ref
-                          .read(
-                            timelineNotesAfterNoteNotifierProvider(
-                              tabSettings,
-                              sinceId: centerId,
-                            ).notifier,
-                          )
-                          .loadMore(skipError: true),
-                      reversed: true,
+                  if (centerId != null)
+                    SliverToBoxAdapter(
+                      child: PaginationBottomWidget(
+                        paginationState: nextNotes,
+                        loadMore: () => ref
+                            .read(
+                              timelineNotesAfterNoteNotifierProvider(
+                                tabSettings,
+                                sinceId: centerId,
+                              ).notifier,
+                            )
+                            .loadMore(skipError: true),
+                        reversed: true,
+                      ),
                     ),
-                  ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) ||
                       (previousNotes.valueOrNull?.items.isNotEmpty ?? false))
                     SliverToBoxAdapter(
@@ -215,12 +229,33 @@ class TimelineListView extends HookConsumerWidget {
                         postFormFocusNode: postFormFocusNode,
                       ),
                     ),
-                    separatorBuilder: (_, __) => const Divider(height: 1.0),
+                    separatorBuilder: (context, index) =>
+                        lastViewedAt?.isBetween(
+                                  nextNotes.valueOrNull?.items
+                                      .elementAtOrNull(index + 1)
+                                      ?.createdAt,
+                                  nextNotes.valueOrNull?.items
+                                      .elementAtOrNull(index)
+                                      ?.createdAt,
+                                ) ??
+                                false
+                            ? const _NewNotesDivider()
+                            : const Divider(height: 1.0),
                     itemCount: nextNotes.valueOrNull?.items.length ?? 0,
                   ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) &&
                       (previousNotes.valueOrNull?.items.isNotEmpty ?? false))
-                    const SliverToBoxAdapter(child: Divider(height: 1.0)),
+                    SliverToBoxAdapter(
+                      child: lastViewedAt?.isBetween(
+                                previousNotes
+                                    .valueOrNull?.items.firstOrNull?.createdAt,
+                                nextNotes
+                                    .valueOrNull?.items.lastOrNull?.createdAt,
+                              ) ??
+                              false
+                          ? const _NewNotesDivider()
+                          : const Divider(height: 1.0),
+                    ),
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) => Material(
@@ -231,7 +266,18 @@ class TimelineListView extends HookConsumerWidget {
                         postFormFocusNode: postFormFocusNode,
                       ),
                     ),
-                    separatorBuilder: (_, __) => const Divider(height: 0.0),
+                    separatorBuilder: (context, index) =>
+                        lastViewedAt?.isBetween(
+                                  previousNotes.valueOrNull?.items
+                                      .elementAtOrNull(index + 1)
+                                      ?.createdAt,
+                                  previousNotes.valueOrNull?.items
+                                      .elementAtOrNull(index)
+                                      ?.createdAt,
+                                ) ??
+                                false
+                            ? const _NewNotesDivider()
+                            : const Divider(height: 0.0),
                     itemCount: previousNotes.valueOrNull?.items.length ?? 0,
                   ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) ||
@@ -296,6 +342,35 @@ class TimelineListView extends HookConsumerWidget {
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _NewNotesDivider extends ConsumerWidget {
+  const _NewNotesDivider();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
+    return ColoredBox(
+      color: colors.panel,
+      child: Row(
+        children: [
+          Expanded(child: Divider(color: colors.accent)),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 8.0,
+            ),
+            child: Text(
+              t.aria.newNotes,
+              style: TextStyle(color: colors.accent),
+            ),
+          ),
+          Expanded(child: Divider(color: colors.accent)),
+        ],
       ),
     );
   }

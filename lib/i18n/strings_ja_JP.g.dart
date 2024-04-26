@@ -91,6 +91,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get importCompleted => 'インポートが完了しました';
 	@override String get importConfirm => '設定をインポートしますか？現在の設定は上書きされます。';
 	@override String get invalidListFormat => 'リストの形式が正しくありません';
+	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開いたままにする';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
@@ -98,7 +99,9 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get muted => 'ミュート中';
 	@override String nFiles({required Object n}) => '${n}個のファイル';
 	@override String get newFollowRequestReceived => '新しいフォロー申請があります';
+	@override String get newNotes => '新しいノート';
 	@override String get newNotificationReceived => '新しい通知があります';
+	@override String get newNotifications => '新しい通知';
 	@override String get noAccounts => 'アカウントがありません';
 	@override String get noTabs => 'タブがありません';
 	@override String get noThemes => 'テーマがありません';
@@ -156,6 +159,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get showStackTrace => 'スタックトレースを表示';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示する';
 	@override String get showSubNoteReactionsViewer => 'サブノートにリアクションを表示する';
+	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示する';
 	@override String get showTimelineTabBarOnBottom => 'タイムラインのタブを下に表示する';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
 	@override String get stackTrace => 'スタックトレース';

@@ -10,6 +10,7 @@ import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../widget/timeline_drawer.dart';
 import '../widget/timeline_tab_bar.dart';
@@ -22,6 +23,22 @@ class TimelinesPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final tabs = ref.watch(timelineTabsNotifierProvider);
     final numTabs = tabs.length;
+    final initialIndex = useMemoized(
+      () {
+        int latestIndex = 0;
+        DateTime latestDate = DateTime(0);
+        for (final (index, tabSettings) in tabs.indexed) {
+          final lastViewedAt =
+              ref.read(timelineLastViewedAtNotifierProvider(tabSettings));
+          if (lastViewedAt != null && lastViewedAt.isAfter(latestDate)) {
+            latestIndex = index;
+            latestDate = lastViewedAt;
+          }
+        }
+        return latestIndex;
+      },
+      [],
+    );
     final showTimelineTabBarOnBottom = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.showTimelineTabBarOnBottom),
@@ -30,15 +47,21 @@ class TimelinesPage extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.enableHorizontalSwipe),
     );
-    final controller =
-        useTabController(initialLength: numTabs, keys: [numTabs]);
+    final controller = useTabController(
+      initialLength: numTabs,
+      initialIndex: initialIndex,
+      keys: [numTabs],
+    );
     final currentIndex = useState(controller.index);
     useEffect(
       () {
         controller.addListener(() {
           final previousIndex = currentIndex.value;
-          final previousAccount = tabs[previousIndex].account;
           final nextIndex = controller.index;
+          if (previousIndex == nextIndex) {
+            return;
+          }
+          final previousAccount = tabs[previousIndex].account;
           final nextTab = tabs[nextIndex];
           final nextAccount = nextTab.account;
           if (previousAccount != nextAccount) {
