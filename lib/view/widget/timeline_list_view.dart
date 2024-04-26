@@ -27,10 +27,12 @@ class TimelineListView extends HookConsumerWidget {
     super.key,
     required this.tabSettings,
     this.postFormFocusNode,
+    this.lastViewedAtKey,
   });
 
   final TabSettings tabSettings;
   final FocusNode? postFormFocusNode;
+  final Key? lastViewedAtKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -239,7 +241,7 @@ class TimelineListView extends HookConsumerWidget {
                                       ?.createdAt,
                                 ) ??
                                 false
-                            ? const _NewNotesDivider()
+                            ? _NewNotesDivider(key: lastViewedAtKey)
                             : const Divider(height: 1.0),
                     itemCount: nextNotes.valueOrNull?.items.length ?? 0,
                   ),
@@ -253,7 +255,7 @@ class TimelineListView extends HookConsumerWidget {
                                     .valueOrNull?.items.lastOrNull?.createdAt,
                               ) ??
                               false
-                          ? const _NewNotesDivider()
+                          ? _NewNotesDivider(key: lastViewedAtKey)
                           : const Divider(height: 1.0),
                     ),
                   SliverList.separated(
@@ -276,7 +278,7 @@ class TimelineListView extends HookConsumerWidget {
                                       ?.createdAt,
                                 ) ??
                                 false
-                            ? const _NewNotesDivider()
+                            ? _NewNotesDivider(key: lastViewedAtKey)
                             : const Divider(height: 0.0),
                     itemCount: previousNotes.valueOrNull?.items.length ?? 0,
                   ),
@@ -348,7 +350,7 @@ class TimelineListView extends HookConsumerWidget {
 }
 
 class _NewNotesDivider extends ConsumerWidget {
-  const _NewNotesDivider();
+  const _NewNotesDivider({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -359,7 +361,7 @@ class _NewNotesDivider extends ConsumerWidget {
       color: colors.panel,
       child: Row(
         children: [
-          Expanded(child: Divider(color: colors.accent)),
+          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 8.0,
@@ -369,7 +371,7 @@ class _NewNotesDivider extends ConsumerWidget {
               style: TextStyle(color: colors.accent),
             ),
           ),
-          Expanded(child: Divider(color: colors.accent)),
+          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
         ],
       ),
     );

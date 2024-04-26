@@ -216,7 +216,7 @@ class _NewNotificationsDivider extends ConsumerWidget {
       color: colors.panel,
       child: Row(
         children: [
-          Expanded(child: Divider(color: colors.accent)),
+          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 8.0,
@@ -226,7 +226,7 @@ class _NewNotificationsDivider extends ConsumerWidget {
               style: TextStyle(color: colors.accent),
             ),
           ),
-          Expanded(child: Divider(color: colors.accent)),
+          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
         ],
       ),
     );
