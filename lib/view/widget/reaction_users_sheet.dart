@@ -38,21 +38,27 @@ class ReactionUsersSheet extends ConsumerWidget {
             padding: const EdgeInsets.all(12.0),
             child: Align(
               alignment: Alignment.centerLeft,
-              child: EmojiWidget(
-                account: account,
-                emoji: reaction,
-                style: DefaultTextStyle.of(context)
-                    .style
-                    .apply(fontSizeFactor: 1.5),
-                emojis: {...?note?.emojis, ...?note?.reactionEmojis},
-                onTap: () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) => EmojiSheet(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  EmojiWidget(
                     account: account,
                     emoji: reaction,
-                    targetNote: note,
+                    style: DefaultTextStyle.of(context)
+                        .style
+                        .apply(fontSizeFactor: 1.5),
+                    emojis: {...?note?.emojis, ...?note?.reactionEmojis},
+                    onTap: () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) => EmojiSheet(
+                        account: account,
+                        emoji: reaction,
+                        targetNote: note,
+                      ),
+                    ),
                   ),
-                ),
+                  if (reaction.startsWith(':')) Text(reaction),
+                ],
               ),
             ),
           ),
