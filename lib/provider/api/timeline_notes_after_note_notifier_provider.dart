@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -100,9 +101,6 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         _ => throw Error(),
       };
       if (notes.isNotEmpty) {
-        ref
-            .read(notesNotifierProvider(tabSettings.account).notifier)
-            .addAll(notes);
         return notes;
       } else {
         minutes *= 2;
@@ -172,7 +170,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       TabType.custom => _fetchNotesFromCustomTimeline(sinceId),
     };
     ref.read(notesNotifierProvider(tabSettings.account).notifier).addAll(notes);
-    return notes;
+    return notes.sortedBy((note) => note.id).reversed;
   }
 
   Future<void> loadMore({bool skipError = false}) async {
