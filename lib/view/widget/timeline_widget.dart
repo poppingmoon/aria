@@ -66,6 +66,7 @@ class TimelineWidget extends HookConsumerWidget {
     final previousNotes = tabSettings.tabType != TabType.notifications
         ? ref.watch(timelineNotesNotifierProvider(tabSettings)).valueOrNull
         : null;
+    final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
     useEffect(
       () {
         ref
@@ -272,12 +273,20 @@ class TimelineWidget extends HookConsumerWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: InkWell(
                     onTap: () {
-                      ref
-                          .read(
-                            timelineCenterNotifierProvider(tabSettings)
-                                .notifier,
-                          )
-                          .setCenterFromDate(lastViewedAt);
+                      final currentContext = lastViewedAtKey.currentContext;
+                      if (currentContext != null) {
+                        Scrollable.ensureVisible(
+                          currentContext,
+                          duration: const Duration(milliseconds: 125),
+                        );
+                      } else {
+                        ref
+                            .read(
+                              timelineCenterNotifierProvider(tabSettings)
+                                  .notifier,
+                            )
+                            .setCenterFromDate(lastViewedAt);
+                      }
                       showLastViewedAt.value = false;
                     },
                     child: Row(
@@ -303,6 +312,7 @@ class TimelineWidget extends HookConsumerWidget {
                 child: TimelineListView(
                   tabSettings: tabSettings,
                   postFormFocusNode: postFormFocusNode,
+                  lastViewedAtKey: lastViewedAtKey,
                 ),
               ),
               if (!account.isGuest)
