@@ -504,7 +504,7 @@ class NoteWidget extends HookConsumerWidget {
                             if (showFooter)
                               NoteFooter(
                                 account: account,
-                                noteId: appearNote.id,
+                                noteId: noteId,
                                 postFormFocusNode: postFormFocusNode,
                                 note: this.note,
                               ),

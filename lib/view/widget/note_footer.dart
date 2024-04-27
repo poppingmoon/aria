@@ -48,6 +48,10 @@ class NoteFooter extends ConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
+    final appearNote = this.note ?? ref.watch(noteProvider(account, noteId));
+    if (appearNote == null) {
+      return const SizedBox.shrink();
+    }
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final meta = ref.watch(metaProvider(account)).valueOrNull;
     final showLikeButton = ref.watch(
@@ -70,8 +74,8 @@ class NoteFooter extends ConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showReactionsCount),
     );
-    final isMyNote = i != null && note.user.id == i.id;
-    final canRenote = switch (note.visibility) {
+    final isMyNote = i != null && appearNote.user.id == i.id;
+    final canRenote = switch (appearNote.visibility) {
       NoteVisibility.public || NoteVisibility.home => true,
       NoteVisibility.followers => isMyNote,
       _ => false,
@@ -97,10 +101,10 @@ class NoteFooter extends ConsumerWidget {
             tooltip: t.misskey.reply,
             onPressed: !account.isGuest
                 ? () {
-                    if (note.id.isEmpty) return;
+                    if (appearNote.id.isEmpty) return;
                     ref
                         .read(postNotifierProvider(account).notifier)
-                        .setReply(note);
+                        .setReply(appearNote);
                     if (postFormFocusNode != null) {
                       postFormFocusNode?.requestFocus();
                     } else {
@@ -112,13 +116,13 @@ class NoteFooter extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Icon(Icons.reply),
-                if (note.repliesCount > 0)
+                if (appearNote.repliesCount > 0)
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 2.0,
                     ),
                     child: Text(
-                      NumberFormat().format(note.repliesCount),
+                      NumberFormat().format(appearNote.repliesCount),
                       style: style,
                     ),
                   ),
@@ -127,28 +131,28 @@ class NoteFooter extends ConsumerWidget {
           ),
           if (canRenote)
             GestureDetector(
-              onLongPress: note.renoteCount > 0
+              onLongPress: appearNote.renoteCount > 0
                   ? () {
-                      if (note.id.isEmpty) return;
+                      if (appearNote.id.isEmpty) return;
                       HapticFeedback.lightImpact();
                       showModalBottomSheet<void>(
                         context: context,
                         builder: (context) => RenoteUsersSheet(
                           account: account,
-                          noteId: note.id,
+                          noteId: appearNote.id,
                         ),
                         isScrollControlled: true,
                       );
                     }
                   : null,
               child: IconButton(
-                tooltip: note.renoteCount <= 0 ? t.misskey.renote : null,
+                tooltip: appearNote.renoteCount <= 0 ? t.misskey.renote : null,
                 onPressed: !account.isGuest
                     ? () {
-                        if (note.id.isEmpty) return;
+                        if (appearNote.id.isEmpty) return;
                         ref
                             .read(postNotifierProvider(account).notifier)
-                            .setRenote(note);
+                            .setRenote(appearNote);
                         if (postFormFocusNode != null) {
                           postFormFocusNode?.requestFocus();
                         } else {
@@ -160,13 +164,13 @@ class NoteFooter extends ConsumerWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     const Icon(Icons.repeat_rounded),
-                    if (note.renoteCount > 0)
+                    if (appearNote.renoteCount > 0)
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 2.0,
                         ),
                         child: Text(
-                          NumberFormat().format(note.renoteCount),
+                          NumberFormat().format(appearNote.renoteCount),
                           style: style,
                         ),
                       ),
@@ -181,13 +185,13 @@ class NoteFooter extends ConsumerWidget {
               icon: const Icon(Icons.block),
             ),
           if (showLikeButton &&
-              note.reactionAcceptance != ReactionAcceptance.likeOnly &&
-              note.myReaction == null)
+              appearNote.reactionAcceptance != ReactionAcceptance.likeOnly &&
+              appearNote.myReaction == null)
             IconButton(
               tooltip: t.misskey.like,
               onPressed: !account.isGuest
                   ? () async {
-                      if (note.id.isEmpty) return;
+                      if (appearNote.id.isEmpty) return;
                       if (ref
                           .read(generalSettingsNotifierProvider)
                           .confirmBeforeReact) {
@@ -195,7 +199,7 @@ class NoteFooter extends ConsumerWidget {
                           context,
                           account: account,
                           emoji: '❤️',
-                          note: note,
+                          note: appearNote,
                         );
                         if (!confirmed) return;
                       }
@@ -204,44 +208,45 @@ class NoteFooter extends ConsumerWidget {
                         context,
                         ref
                             .read(notesNotifierProvider(account).notifier)
-                            .react(note.id, '❤️'),
+                            .react(appearNote.id, '❤️'),
                       );
                     }
                   : null,
               icon: const Icon(Icons.favorite_border),
             ),
-          if (note.myReaction == null)
+          if (appearNote.myReaction == null)
             GestureDetector(
-              onLongPress:
-                  note.reactionAcceptance == ReactionAcceptance.likeOnly &&
-                          (note.reactionCount ?? 0) > 0
-                      ? () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => ReactionUsersSheet(
-                              account: account,
-                              noteId: noteId,
-                              reaction: '❤️',
-                            ),
-                            isScrollControlled: true,
-                          )
-                      : null,
+              onLongPress: appearNote.reactionAcceptance ==
+                          ReactionAcceptance.likeOnly &&
+                      (appearNote.reactionCount ?? 0) > 0
+                  ? () => showModalBottomSheet<void>(
+                        context: context,
+                        builder: (context) => ReactionUsersSheet(
+                          account: account,
+                          noteId: appearNote.id,
+                          reaction: '❤️',
+                        ),
+                        isScrollControlled: true,
+                      )
+                  : null,
               child: IconButton(
-                tooltip: note.reactionAcceptance != ReactionAcceptance.likeOnly
-                    ? t.misskey.reaction
-                    : (note.reactionCount ?? 0) <= 0
-                        ? t.misskey.like
-                        : null,
+                tooltip:
+                    appearNote.reactionAcceptance != ReactionAcceptance.likeOnly
+                        ? t.misskey.reaction
+                        : (appearNote.reactionCount ?? 0) <= 0
+                            ? t.misskey.like
+                            : null,
                 onPressed: !account.isGuest
                     ? () async {
-                        if (note.id.isEmpty) return;
-                        final emoji = note.reactionAcceptance ==
+                        if (appearNote.id.isEmpty) return;
+                        final emoji = appearNote.reactionAcceptance ==
                                 ReactionAcceptance.likeOnly
                             ? '❤️'
                             : await pickEmoji(
                                 ref,
                                 account,
                                 reaction: true,
-                                targetNote: note,
+                                targetNote: appearNote,
                               );
                         if (!context.mounted) return;
                         if (emoji != null) {
@@ -252,7 +257,7 @@ class NoteFooter extends ConsumerWidget {
                               context,
                               account: account,
                               emoji: emoji,
-                              note: note,
+                              note: appearNote,
                             );
                             if (!confirmed) return;
                           }
@@ -261,7 +266,7 @@ class NoteFooter extends ConsumerWidget {
                             context,
                             ref
                                 .read(notesNotifierProvider(account).notifier)
-                                .react(note.id, emoji),
+                                .react(appearNote.id, emoji),
                           );
                         }
                       }
@@ -269,17 +274,19 @@ class NoteFooter extends ConsumerWidget {
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    if (note.reactionAcceptance == ReactionAcceptance.likeOnly)
+                    if (appearNote.reactionAcceptance ==
+                        ReactionAcceptance.likeOnly)
                       const Icon(Icons.favorite_border)
                     else
                       const Icon(Icons.add),
-                    if (showReactionsCount && (note.reactionCount ?? 0) > 0)
+                    if (showReactionsCount &&
+                        (appearNote.reactionCount ?? 0) > 0)
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 2.0,
                         ),
                         child: Text(
-                          NumberFormat().format(note.reactionCount),
+                          NumberFormat().format(appearNote.reactionCount),
                           style: style,
                         ),
                       ),
@@ -290,14 +297,14 @@ class NoteFooter extends ConsumerWidget {
           else
             GestureDetector(
               onLongPress:
-                  note.reactionAcceptance == ReactionAcceptance.likeOnly
+                  appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
                       ? () {
-                          if (note.id.isEmpty) return;
+                          if (appearNote.id.isEmpty) return;
                           showModalBottomSheet<void>(
                             context: context,
                             builder: (context) => ReactionUsersSheet(
                               account: account,
-                              noteId: noteId,
+                              noteId: appearNote.id,
                               reaction: '❤️',
                             ),
                             isScrollControlled: true,
@@ -305,11 +312,12 @@ class NoteFooter extends ConsumerWidget {
                         }
                       : null,
               child: IconButton(
-                tooltip: note.reactionAcceptance != ReactionAcceptance.likeOnly
-                    ? t.misskey.reaction
-                    : null,
+                tooltip:
+                    appearNote.reactionAcceptance != ReactionAcceptance.likeOnly
+                        ? t.misskey.reaction
+                        : null,
                 onPressed: () async {
-                  if (note.id.isEmpty) return;
+                  if (appearNote.id.isEmpty) return;
                   final confirmed = await confirm(
                     context,
                     message: t.misskey.cancelReactionConfirm,
@@ -320,13 +328,14 @@ class NoteFooter extends ConsumerWidget {
                     context,
                     ref
                         .read(notesNotifierProvider(account).notifier)
-                        .unreact(note.id),
+                        .unreact(appearNote.id),
                   );
                 },
                 icon: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    if (note.reactionAcceptance == ReactionAcceptance.likeOnly)
+                    if (appearNote.reactionAcceptance ==
+                        ReactionAcceptance.likeOnly)
                       const Icon(
                         Icons.favorite,
                         color: eventReactionHeart,
@@ -336,16 +345,16 @@ class NoteFooter extends ConsumerWidget {
                         Icons.remove,
                         color: Theme.of(context).colorScheme.primary,
                       ),
-                    if ((note.reactionAcceptance ==
+                    if ((appearNote.reactionAcceptance ==
                                 ReactionAcceptance.likeOnly ||
                             showReactionsCount) &&
-                        (note.reactionCount ?? 0) > 0)
+                        (appearNote.reactionCount ?? 0) > 0)
                       Padding(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 2.0,
                         ),
                         child: Text(
-                          NumberFormat().format(note.reactionCount),
+                          NumberFormat().format(appearNote.reactionCount),
                           style: style,
                         ),
                       ),
@@ -358,12 +367,12 @@ class NoteFooter extends ConsumerWidget {
               tooltip: t.misskey.clip,
               onPressed: !account.isGuest
                   ? () {
-                      if (note.id.isEmpty) return;
+                      if (appearNote.id.isEmpty) return;
                       showDialog<void>(
                         context: context,
                         builder: (context) => ClipDialog(
                           account: account,
-                          noteId: noteId,
+                          noteId: appearNote.id,
                         ),
                       );
                     }
@@ -380,7 +389,7 @@ class NoteFooter extends ConsumerWidget {
                     context: context,
                     builder: (context) => TranslatedNoteSheet(
                       account: account,
-                      note: note,
+                      note: appearNote,
                     ),
                   );
                 } else {
@@ -389,7 +398,9 @@ class NoteFooter extends ConsumerWidget {
                       'translate.google.com',
                       '',
                       {
-                        'text': [note.cw, note.text].nonNulls.join('\n'),
+                        'text': [appearNote.cw, appearNote.text]
+                            .nonNulls
+                            .join('\n'),
                       },
                     ),
                   );
