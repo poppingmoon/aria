@@ -209,6 +209,7 @@ class PagePage extends ConsumerWidget {
                       subtitle: Row(
                         children: [
                           UserAvatar(
+                            account: account,
                             user: page.user,
                             onTap: () =>
                                 context.push('/$account/users/${page.userId}'),

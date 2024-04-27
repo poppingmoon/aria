@@ -188,6 +188,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     Row(
                       children: [
                         UserAvatar(
+                          account: account,
                           user: appearNote.user,
                           size: style.lineHeight * 2.5,
                           onTap: () => context

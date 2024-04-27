@@ -96,6 +96,7 @@ class NoteSubWidget extends HookConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: UserAvatar(
+                        account: account,
                         user: note.user,
                         size:
                             DefaultTextStyle.of(context).style.lineHeight * 2.5,

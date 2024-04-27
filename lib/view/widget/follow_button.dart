@@ -90,6 +90,7 @@ class FollowButton extends HookConsumerWidget {
                 children: [
                   if (i != null)
                     UserAvatar(
+                      account: account,
                       user: i,
                       size: 48.0,
                       onTap: () => context.push('/$account/users/${i.id}'),
@@ -99,6 +100,7 @@ class FollowButton extends HookConsumerWidget {
                     child: Icon(Icons.arrow_forward, size: 36.0),
                   ),
                   UserAvatar(
+                    account: account,
                     user: user,
                     size: 48.0,
                     onTap: () => context.push('/$account/users/$userId'),

@@ -198,7 +198,7 @@ class ProfilePage extends HookConsumerWidget {
                         ),
                       ],
                     ),
-                    child: UserAvatar(user: i, size: 100.0),
+                    child: UserAvatar(account: account, user: i, size: 100.0),
                   ),
                   Positioned(
                     top: 16.0,

@@ -59,8 +59,10 @@ class GeneralSettings with _$GeneralSettings {
 
     // Appearance
     @Default(false) bool dataSaverMedia,
+    @Default(false) bool dataSaverAvatar,
     @Default(false) bool dataSaverUrlPreview,
     @Default(false) bool disableDataSaverWhenOnWifi,
+    @Default(false) bool disableShowingAnimatedImages,
     @Default(false) bool forceShowAds,
     @Default(false) bool useGroupedNotifications,
     @Default(false) bool showTimelineTabBarOnBottom,

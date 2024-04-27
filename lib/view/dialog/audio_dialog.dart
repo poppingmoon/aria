@@ -62,6 +62,7 @@ class AudioDialog extends HookConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.only(right: 8.0),
                     child: UserAvatar(
+                      account: account,
                       user: user,
                       size: 30,
                       onTap: () => context.push('/$account/users/${user.id}'),

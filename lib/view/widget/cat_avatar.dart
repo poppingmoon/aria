@@ -6,8 +6,10 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../model/account.dart';
 import '../../provider/average_color_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/static_image_url_provider.dart';
 import 'avatar_decorations.dart';
 import 'cat_ear.dart';
 import 'image_widget.dart';
@@ -34,6 +36,7 @@ final _catEarWiggleTween = TweenSequence([
 class CatAvatar extends HookConsumerWidget {
   const CatAvatar({
     super.key,
+    required this.account,
     required this.user,
     required this.size,
     this.decorations,
@@ -41,6 +44,7 @@ class CatAvatar extends HookConsumerWidget {
     this.onTap,
   });
 
+  final Account account;
   final User user;
   final double size;
   final List<UserAvatarDecoration>? decorations;
@@ -56,6 +60,12 @@ class CatAvatar extends HookConsumerWidget {
     final squareAvatars = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.squareAvatars),
+    );
+    final disableShowingAnimatedImages = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
+      ),
     );
     final borderRadius =
         BorderRadius.circular(squareAvatars ? size * 0.2 : size);
@@ -131,7 +141,16 @@ class CatAvatar extends HookConsumerWidget {
             ClipRRect(
               borderRadius: borderRadius,
               child: ImageWidget(
-                url: user.avatarUrl.toString(),
+                url: disableShowingAnimatedImages
+                    ? ref
+                        .watch(
+                          staticImageUrlProvider(
+                            account.host,
+                            user.avatarUrl.toString(),
+                          ),
+                        )
+                        .toString()
+                    : user.avatarUrl.toString(),
                 blurHash: user.avatarBlurhash,
                 height: size,
                 width: size,
@@ -140,6 +159,7 @@ class CatAvatar extends HookConsumerWidget {
             ),
             if (forceShowDecoration || showAvatarDecorations)
               AvatarDecorations(
+                account: account,
                 decorations: decorations ?? user.avatarDecorations,
                 size: size,
               ),

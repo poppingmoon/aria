@@ -165,6 +165,7 @@ class _UserHome extends ConsumerWidget {
                   ],
                 ),
                 child: UserAvatar(
+                  account: account,
                   user: user,
                   size: 100.0,
                   onTap: () => showDialog<void>(

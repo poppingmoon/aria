@@ -176,6 +176,7 @@ class PostForm extends HookConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       child: reply != null
                           ? UserAvatar(
+                              account: account,
                               user: reply.user,
                               onTap: () => context
                                   .push('/$account/users/${reply.userId}'),
@@ -206,6 +207,7 @@ class PostForm extends HookConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       child: renote != null
                           ? UserAvatar(
+                              account: account,
                               user: renote.user,
                               onTap: () => context
                                   .push('/$account/users/${renote.userId}'),
@@ -323,7 +325,7 @@ class PostForm extends HookConsumerWidget {
                 prefixIcon: isFocused.value && i != null
                     ? Padding(
                         padding: const EdgeInsets.all(4.0),
-                        child: UserAvatar(user: i, size: 28),
+                        child: UserAvatar(account: account, user: i, size: 28),
                       )
                     : null,
                 prefix: isFocused.value && i != null

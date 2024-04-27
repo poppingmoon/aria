@@ -59,6 +59,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
                   sliver: SliverToBoxAdapter(
                     child: Center(
                       child: UserAvatar(
+                        account: account,
                         user: i,
                         size: 60.0,
                         forceShowDecoration: true,
@@ -127,6 +128,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: UserAvatar(
+                              account: account,
                               user: i,
                               size: 60.0,
                               decorations: [i.avatarDecorations[index]],
@@ -219,6 +221,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
                                 padding: const EdgeInsets.all(8.0),
                                 child: i != null
                                     ? UserAvatar(
+                                        account: account,
                                         user: i,
                                         size: 60.0,
                                         decorations: [

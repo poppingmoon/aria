@@ -242,6 +242,7 @@ class NoteWidget extends HookConsumerWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: UserAvatar(
+                            account: account,
                             user: appearNote.user,
                             size: style.lineHeight,
                             onTap: appearNote.userId.isNotEmpty
@@ -279,6 +280,7 @@ class NoteWidget extends HookConsumerWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: UserAvatar(
+                            account: account,
                             user: appearNote.user,
                             size: style.lineHeight * 2.5,
                             onTap: appearNote.userId.isNotEmpty

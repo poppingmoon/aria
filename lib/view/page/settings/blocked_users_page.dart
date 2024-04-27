@@ -27,7 +27,8 @@ class BlockedUsersPage extends ConsumerWidget {
       body: PaginatedListView(
         paginationState: blockings,
         itemBuilder: (context, blocking) => ListTile(
-          leading: UserAvatar(user: blocking.blockee, size: 32.0),
+          leading:
+              UserAvatar(account: account, user: blocking.blockee, size: 32.0),
           title: UsernameWidget(account: account, user: blocking.blockee),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

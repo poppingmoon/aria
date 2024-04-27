@@ -114,7 +114,9 @@ class PostPage extends HookConsumerWidget {
           final user =
               ref.watch(iNotifierProvider(accounts[index])).valueOrNull;
           return ListTile(
-            leading: user != null ? UserAvatar(user: user, size: 50.0) : null,
+            leading: user != null
+                ? UserAvatar(account: accounts[index], user: user, size: 50.0)
+                : null,
             title: user != null
                 ? UsernameWidget(account: accounts[index], user: user)
                 : null,
@@ -324,7 +326,10 @@ class PostPage extends HookConsumerWidget {
                                     }
                                   },
                                   icon: i != null
-                                      ? UserAvatar(user: i)
+                                      ? UserAvatar(
+                                          account: account.value,
+                                          user: i,
+                                        )
                                       : const Icon(Icons.person),
                                 ),
                                 const Spacer(),
@@ -509,6 +514,7 @@ class PostPage extends HookConsumerWidget {
                                     ),
                                     child: reply != null
                                         ? UserAvatar(
+                                            account: account.value,
                                             user: reply.user,
                                             onTap: () => context.push(
                                               '/$account/users/${reply.userId}',
@@ -549,6 +555,7 @@ class PostPage extends HookConsumerWidget {
                                     ),
                                     child: renote != null
                                         ? UserAvatar(
+                                            account: account.value,
                                             user: renote.user,
                                             onTap: () => context.push(
                                               '/$account/users/${renote.userId}',

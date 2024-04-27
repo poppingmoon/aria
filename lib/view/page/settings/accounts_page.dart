@@ -36,8 +36,9 @@ class AccountsPage extends HookConsumerWidget {
                     color: colors.panel,
                     elevation: 0.0,
                     child: ListTile(
-                      leading:
-                          i != null ? UserAvatar(user: i, size: 40.0) : null,
+                      leading: i != null
+                          ? UserAvatar(account: account, user: i, size: 40.0)
+                          : null,
                       title: i != null
                           ? UsernameWidget(account: account, user: i)
                           : null,

@@ -1,22 +1,35 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/static_image_url_provider.dart';
 import 'image_widget.dart';
 
-class AvatarDecorations extends StatelessWidget {
+class AvatarDecorations extends ConsumerWidget {
   const AvatarDecorations({
     super.key,
+    required this.account,
     required this.decorations,
     required this.size,
   });
 
+  final Account account;
   final List<UserAvatarDecoration> decorations;
   final double size;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final disableShowingAnimatedImages = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
+      ),
+    );
+
     return SizedBox(
       width: size,
       height: size,
@@ -37,7 +50,16 @@ class AvatarDecorations extends StatelessWidget {
                       flipX: decoration.flipH,
                       child: SizedBox(
                         child: ImageWidget(
-                          url: decoration.url,
+                          url: disableShowingAnimatedImages
+                              ? ref
+                                  .watch(
+                                    staticImageUrlProvider(
+                                      account.host,
+                                      decoration.url,
+                                    ),
+                                  )
+                                  .toString()
+                              : decoration.url,
                           height: size,
                           width: size,
                         ),

@@ -149,8 +149,13 @@ class UserSheet extends ConsumerWidget {
                       final i =
                           ref.watch(iNotifierProvider(account)).valueOrNull;
                       return ListTile(
-                        leading:
-                            i != null ? UserAvatar(user: i, size: 50.0) : null,
+                        leading: i != null
+                            ? UserAvatar(
+                                account: account,
+                                user: i,
+                                size: 50.0,
+                              )
+                            : null,
                         title: i != null
                             ? UsernameWidget(account: account, user: i)
                             : null,
