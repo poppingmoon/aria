@@ -49,7 +49,7 @@ class ClipPreview extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 2.0),
             child: Row(
               children: [
-                UserAvatar(user: clip.user),
+                UserAvatar(account: account, user: clip.user),
                 const SizedBox(width: 2.0),
                 Expanded(
                   child: UsernameWidget(account: account, user: clip.user),

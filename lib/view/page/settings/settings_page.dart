@@ -43,7 +43,9 @@ class SettingsPage extends HookConsumerWidget {
                   tiles: accounts.map((account) {
                     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
                     return ListTile(
-                      leading: i != null ? UserAvatar(user: i, size: 24) : null,
+                      leading: i != null
+                          ? UserAvatar(account: account, user: i, size: 24)
+                          : null,
                       title: Consumer(
                         builder: (context, ref, _) => Text.rich(
                           t.aria.settingsForUser(

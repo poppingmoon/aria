@@ -5,6 +5,8 @@ import '../../extension/text_style_extension.dart';
 import '../../gen/assets.gen.dart';
 import '../../model/account.dart';
 import '../../provider/emoji_url_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/static_image_url_provider.dart';
 import 'image_widget.dart';
 
 class CustomEmoji extends ConsumerWidget {
@@ -50,6 +52,11 @@ class CustomEmoji extends ConsumerWidget {
         useOriginalSize: useOriginalSize,
       ),
     );
+    final disableShowingAnimatedImages = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.disableShowingAnimatedImages,
+      ),
+    );
 
     return InkWell(
       onTap: onTap,
@@ -58,7 +65,11 @@ class CustomEmoji extends ConsumerWidget {
         child: Tooltip(
           message: emoji,
           child: ImageWidget(
-            url: proxiedUrl,
+            url: disableShowingAnimatedImages
+                ? ref
+                    .watch(staticImageUrlProvider(account.host, proxiedUrl))
+                    .toString()
+                : proxiedUrl,
             height: height,
             opacity: opacity,
             fit: BoxFit.contain,

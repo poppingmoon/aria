@@ -145,6 +145,7 @@ class GalleryPostPreview extends HookConsumerWidget {
               child: Row(
                 children: [
                   UserAvatar(
+                    account: account,
                     user: post.user,
                     onTap: () => context.push('/$account/users/${post.userId}'),
                   ),

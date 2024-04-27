@@ -3,7 +3,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
+import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/static_image_url_provider.dart';
 import 'avatar_decorations.dart';
 import 'cat_avatar.dart';
 import 'image_widget.dart';
@@ -11,6 +13,7 @@ import 'image_widget.dart';
 class UserAvatar extends ConsumerWidget {
   const UserAvatar({
     super.key,
+    required this.account,
     required this.user,
     this.size,
     this.decorations,
@@ -18,6 +21,7 @@ class UserAvatar extends ConsumerWidget {
     this.onTap,
   });
 
+  final Account account;
   final User user;
   final double? size;
   final List<UserAvatarDecoration>? decorations;
@@ -29,6 +33,7 @@ class UserAvatar extends ConsumerWidget {
     final size = this.size ?? DefaultTextStyle.of(context).style.lineHeight;
     if (user.isCat) {
       return CatAvatar(
+        account: account,
         user: user,
         size: size,
         decorations: decorations,
@@ -44,6 +49,12 @@ class UserAvatar extends ConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.squareAvatars),
     );
+    final disableShowingAnimatedImages = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
+      ),
+    );
     final borderRadius =
         BorderRadius.circular(squareAvatars ? size * 0.2 : size);
 
@@ -55,7 +66,16 @@ class UserAvatar extends ConsumerWidget {
           ClipRRect(
             borderRadius: borderRadius,
             child: ImageWidget(
-              url: user.avatarUrl.toString(),
+              url: disableShowingAnimatedImages
+                  ? ref
+                      .watch(
+                        staticImageUrlProvider(
+                          account.host,
+                          user.avatarUrl.toString(),
+                        ),
+                      )
+                      .toString()
+                  : user.avatarUrl.toString(),
               blurHash: user.avatarBlurhash,
               height: size,
               width: size,
@@ -64,6 +84,7 @@ class UserAvatar extends ConsumerWidget {
           ),
           if (forceShowDecoration || showAvatarDecorations)
             AvatarDecorations(
+              account: account,
               decorations: decorations ?? user.avatarDecorations,
               size: size,
             ),

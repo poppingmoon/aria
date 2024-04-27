@@ -80,6 +80,7 @@ class AvatarDecorationDialog extends HookConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: i != null
                   ? UserAvatar(
+                      account: account,
                       user: i,
                       size: 60.0,
                       decorations: index != null

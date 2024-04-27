@@ -209,6 +209,7 @@ class FollowRequestTile extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: UserAvatar(
+              account: account,
               user: user,
               size: 50.0,
               onTap: () => context.push('/$account/users/${user.id}'),

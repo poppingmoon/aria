@@ -33,6 +33,14 @@ class AppearancePage extends HookConsumerWidget {
                 .setDataSaverMedia(value),
           ),
           SwitchListTile(
+            title: Text(t.misskey.dataSaver_.avatar_.title),
+            subtitle: Text(t.misskey.dataSaver_.avatar_.description),
+            value: settings.dataSaverAvatar,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setDataSaverAvatar(value),
+          ),
+          SwitchListTile(
             title: Text(t.misskey.dataSaver_.urlPreview_.title),
             subtitle: Text(t.misskey.dataSaver_.urlPreview_.description),
             value: settings.dataSaverUrlPreview,
@@ -48,6 +56,13 @@ class AppearancePage extends HookConsumerWidget {
                 .setDisableDataSaverWhenOnWifi(value),
           ),
           const Divider(),
+          SwitchListTile(
+            title: Text(t.misskey.disableShowingAnimatedImages),
+            value: settings.disableShowingAnimatedImages,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setDisableShowingAnimatedImages(value),
+          ),
           SwitchListTile(
             title: Text(t.misskey.forceShowAds),
             value: settings.forceShowAds,

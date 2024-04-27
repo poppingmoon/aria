@@ -39,7 +39,7 @@ class PlayPreview extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 2.0),
             child: Row(
               children: [
-                UserAvatar(user: play.user),
+                UserAvatar(account: account, user: play.user),
                 const SizedBox(width: 2.0),
                 Expanded(
                   child: UsernameWidget(account: account, user: play.user),

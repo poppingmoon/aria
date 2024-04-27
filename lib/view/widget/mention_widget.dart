@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/static_image_url_provider.dart';
 import '../../util/punycode.dart';
 import 'image_widget.dart';
 
@@ -24,6 +26,13 @@ class MentionWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final disableShowingAnimatedImages = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
+      ),
+    );
+    final url = 'https://${account.host}/avatar/@$username@$host';
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final isLocal = account.host == host.toLowerCase();
@@ -40,7 +49,11 @@ class MentionWidget extends ConsumerWidget {
         avatar: CircleAvatar(
           child: ClipOval(
             child: ImageWidget(
-              url: 'https://${account.host}/avatar/@$username@$host',
+              url: disableShowingAnimatedImages
+                  ? ref
+                      .watch(staticImageUrlProvider(account.host, url))
+                      .toString()
+                  : url,
             ),
           ),
         ),

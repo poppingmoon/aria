@@ -25,7 +25,7 @@ class UserTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: UserAvatar(user: user, size: avatarSize),
+      leading: UserAvatar(account: account, user: user, size: avatarSize),
       title: UsernameWidget(account: account, user: user),
       subtitle: AcctWidget(account: account, user: user),
       trailing: trailing,

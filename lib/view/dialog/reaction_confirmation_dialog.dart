@@ -48,6 +48,7 @@ class ReactionConfirmationDialog extends ConsumerWidget {
         children: [
           if (i != null)
             UserAvatar(
+              account: account,
               user: i,
               size: 48.0,
               onTap: () => context.push('/$account/users/${i.id}'),
@@ -57,6 +58,7 @@ class ReactionConfirmationDialog extends ConsumerWidget {
             child: Icon(Icons.arrow_forward, size: 36.0),
           ),
           UserAvatar(
+            account: account,
             user: note.user,
             size: 48.0,
             onTap: () => context.push('/$account/users/${note.userId}'),

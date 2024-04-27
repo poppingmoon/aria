@@ -99,7 +99,9 @@ class SearchNotes extends HookConsumerWidget {
                     ? Text.rich(
                         TextSpan(
                           children: [
-                            WidgetSpan(child: UserAvatar(user: user)),
+                            WidgetSpan(
+                              child: UserAvatar(account: account, user: user),
+                            ),
                             const TextSpan(text: ' '),
                             ...useMemoized(
                               () => buildUsername(

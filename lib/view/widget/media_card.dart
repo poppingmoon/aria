@@ -16,6 +16,7 @@ import '../../model/general_settings.dart';
 import '../../provider/connectivity_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/static_image_url_provider.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
@@ -43,7 +44,17 @@ class MediaCard extends HookConsumerWidget {
         generalSettingsNotifierProvider
             .select((settings) => settings.loadRawImages),
       );
-      final url = loadRawImage ? file.url : file.thumbnailUrl;
+      final disableShowingAnimatedImages = ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.disableShowingAnimatedImages),
+      );
+      final url = loadRawImage
+          ? file.url
+          : disableShowingAnimatedImages
+              ? ref
+                  .watch(staticImageUrlProvider(account.host, file.url))
+                  ?.toString()
+              : file.thumbnailUrl;
       final blurHash = file.blurhash;
       return InkWell(
         onTap: () => showDialog<void>(

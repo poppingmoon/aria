@@ -27,7 +27,7 @@ class MutedUsersPage extends ConsumerWidget {
       body: PaginatedListView(
         paginationState: mutings,
         itemBuilder: (context, muting) => ListTile(
-          leading: UserAvatar(user: muting.mutee, size: 32.0),
+          leading: UserAvatar(account: account, user: muting.mutee, size: 32.0),
           title: UsernameWidget(account: account, user: muting.mutee),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

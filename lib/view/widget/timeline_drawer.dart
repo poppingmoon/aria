@@ -87,6 +87,7 @@ class TimelineDrawer extends HookConsumerWidget {
           return ExpansionTile(
             leading: i != null
                 ? UserAvatar(
+                    account: account,
                     user: i,
                     size: 40,
                     onTap: () => context.push('/$account/users/${i.id}'),

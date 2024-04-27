@@ -51,9 +51,12 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       emojiPickerAutofocus: json['emojiPickerAutofocus'] as bool? ?? true,
       emojiPickerKeepOpen: json['emojiPickerKeepOpen'] as bool? ?? false,
       dataSaverMedia: json['dataSaverMedia'] as bool? ?? false,
+      dataSaverAvatar: json['dataSaverAvatar'] as bool? ?? false,
       dataSaverUrlPreview: json['dataSaverUrlPreview'] as bool? ?? false,
       disableDataSaverWhenOnWifi:
           json['disableDataSaverWhenOnWifi'] as bool? ?? false,
+      disableShowingAnimatedImages:
+          json['disableShowingAnimatedImages'] as bool? ?? false,
       forceShowAds: json['forceShowAds'] as bool? ?? false,
       useGroupedNotifications:
           json['useGroupedNotifications'] as bool? ?? false,
@@ -130,8 +133,10 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['emojiPickerAutofocus'] = instance.emojiPickerAutofocus;
   val['emojiPickerKeepOpen'] = instance.emojiPickerKeepOpen;
   val['dataSaverMedia'] = instance.dataSaverMedia;
+  val['dataSaverAvatar'] = instance.dataSaverAvatar;
   val['dataSaverUrlPreview'] = instance.dataSaverUrlPreview;
   val['disableDataSaverWhenOnWifi'] = instance.disableDataSaverWhenOnWifi;
+  val['disableShowingAnimatedImages'] = instance.disableShowingAnimatedImages;
   val['forceShowAds'] = instance.forceShowAds;
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
   val['showTimelineTabBarOnBottom'] = instance.showTimelineTabBarOnBottom;

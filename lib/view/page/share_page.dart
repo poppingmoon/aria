@@ -26,7 +26,9 @@ class SharePage extends ConsumerWidget {
           final account = accounts[index];
           final i = ref.watch(iNotifierProvider(account)).valueOrNull;
           return ListTile(
-            leading: i != null ? UserAvatar(user: i, size: 40.0) : null,
+            leading: i != null
+                ? UserAvatar(account: account, user: i, size: 40.0)
+                : null,
             title: i != null ? UsernameWidget(account: account, user: i) : null,
             subtitle: Text(account.toString()),
             trailing: const Icon(Icons.navigate_next),

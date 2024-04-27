@@ -60,6 +60,7 @@ class RenoteHeader extends HookConsumerWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: UserAvatar(
+                      account: account,
                       user: note.user,
                       onTap: () =>
                           context.push('/$account/users/${note.userId}'),

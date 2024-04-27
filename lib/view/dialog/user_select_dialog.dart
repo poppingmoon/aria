@@ -10,11 +10,8 @@ import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/search_users_by_username_provider.dart';
 import '../../provider/recently_used_users_notifier_provider.dart';
-import '../widget/acct_widget.dart';
 import '../widget/error_message.dart';
-import '../widget/user_avatar.dart';
 import '../widget/user_tile.dart';
-import '../widget/username_widget.dart';
 
 Future<UserDetailed?> selectUser(
   BuildContext context,
@@ -123,31 +120,23 @@ class UserSelectDialog extends HookConsumerWidget {
                 AsyncValue(valueOrNull: final users?) => users.isEmpty
                     ? Center(child: Text(t.misskey.nothing))
                     : ListView.separated(
-                        itemBuilder: (context, index) => includeSelf ||
-                                users[index].id != i?.id
-                            ? ListTile(
-                                leading:
-                                    UserAvatar(user: users[index], size: 32),
-                                title: UsernameWidget(
-                                  account: account,
-                                  user: users[index],
-                                ),
-                                subtitle: AcctWidget(
-                                  account: account,
-                                  user: users[index],
-                                ),
-                                onTap: () {
-                                  ref
-                                      .read(
-                                        recentlyUsedUsersNotifierProvider(
-                                          account,
-                                        ).notifier,
-                                      )
-                                      .add(users[index]);
-                                  context.pop(users[index]);
-                                },
-                              )
-                            : const SizedBox.shrink(),
+                        itemBuilder: (context, index) =>
+                            includeSelf || users[index].id != i?.id
+                                ? UserTile(
+                                    account: account,
+                                    user: users[index],
+                                    onTap: () {
+                                      ref
+                                          .read(
+                                            recentlyUsedUsersNotifierProvider(
+                                              account,
+                                            ).notifier,
+                                          )
+                                          .add(users[index]);
+                                      context.pop(users[index]);
+                                    },
+                                  )
+                                : const SizedBox.shrink(),
                         separatorBuilder: (_, __) => const Divider(height: 0.0),
                         itemCount: users.length,
                       ),

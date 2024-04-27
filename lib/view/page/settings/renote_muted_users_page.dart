@@ -28,7 +28,11 @@ class RenoteMutedUsersPage extends ConsumerWidget {
       body: PaginatedListView(
         paginationState: renoteMutings,
         itemBuilder: (context, renoteMuting) => ListTile(
-          leading: UserAvatar(user: renoteMuting.mutee, size: 32.0),
+          leading: UserAvatar(
+            account: account,
+            user: renoteMuting.mutee,
+            size: 32.0,
+          ),
           title: UsernameWidget(account: account, user: renoteMuting.mutee),
           subtitle: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

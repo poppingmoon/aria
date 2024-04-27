@@ -206,6 +206,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setDataSaverAvatar(bool dataSaverAvatar) async {
+    state = state.copyWith(dataSaverAvatar: dataSaverAvatar);
+    await _save();
+  }
+
   Future<void> setDataSaverUrlPreview(bool dataSaverUrlPreview) async {
     state = state.copyWith(dataSaverUrlPreview: dataSaverUrlPreview);
     await _save();
@@ -216,6 +221,15 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   ) async {
     state =
         state.copyWith(disableDataSaverWhenOnWifi: disableDataSaverWhenOnWifi);
+    await _save();
+  }
+
+  Future<void> setDisableShowingAnimatedImages(
+    bool disableShowingAnimatedImages,
+  ) async {
+    state = state.copyWith(
+      disableShowingAnimatedImages: disableShowingAnimatedImages,
+    );
     await _save();
   }
 
