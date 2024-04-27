@@ -132,6 +132,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get postConfirm => 'このノートを投稿してええか？';
 	@override String get reactionConfirm => 'ツッコミしてええか？';
 	@override String get renoteConfirm => 'このノートをリノートしてええか？';
+	@override String get renoteToChannel => 'チャンネルにリノート';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
 		const TextSpan(text: 'がリノートしたで'),
@@ -155,6 +156,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示するで';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示するで';
 	@override String get showNoteReactionsViewer => 'ノートにツッコミを表示するで';
+	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
 	@override String get showSelfRenotes => 'セルフリノートを表示するで';
 	@override String get showStackTrace => 'スタックトレース見して';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示するで';

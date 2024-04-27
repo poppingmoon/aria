@@ -39,7 +39,7 @@ import '../widget/mention_widget.dart';
 import '../widget/mfm_keyboard.dart';
 import '../widget/note_summary.dart';
 import '../widget/note_visibility_icon.dart';
-import '../widget/note_visibility_widget.dart';
+import '../widget/note_visibility_sheet.dart';
 import '../widget/note_widget.dart';
 import '../widget/poll_editor.dart';
 import '../widget/post_form_attaches.dart';
@@ -355,48 +355,9 @@ class PostPage extends HookConsumerWidget {
                                               await showModalBottomSheet<
                                                   NoteVisibility>(
                                             context: context,
-                                            builder: (context) => ListView(
-                                              shrinkWrap: true,
-                                              children: [
-                                                ListTile(
-                                                  title: Text(
-                                                    t.misskey.visibility,
-                                                  ),
-                                                ),
-                                                const Divider(height: 0.0),
-                                                ...candidates.map(
-                                                  (visibility) => ListTile(
-                                                    leading: NoteVisibilityIcon(
-                                                      visibility: visibility,
-                                                      showPublic: true,
-                                                    ),
-                                                    title: NoteVisibilityWidget(
-                                                      visibility: visibility,
-                                                    ),
-                                                    subtitle: Text(
-                                                      switch (visibility) {
-                                                        NoteVisibility.public =>
-                                                          t.misskey.visibility_
-                                                              .publicDescription,
-                                                        NoteVisibility.home => t
-                                                            .misskey
-                                                            .visibility_
-                                                            .homeDescription,
-                                                        NoteVisibility
-                                                              .followers =>
-                                                          t.misskey.visibility_
-                                                              .followersDescription,
-                                                        NoteVisibility
-                                                              .specified =>
-                                                          t.misskey.visibility_
-                                                              .specifiedDescription,
-                                                      },
-                                                    ),
-                                                    onTap: () =>
-                                                        context.pop(visibility),
-                                                  ),
-                                                ),
-                                              ],
+                                            builder: (context) =>
+                                                NoteVisibilitySheet(
+                                              visibilities: candidates,
                                             ),
                                           );
                                           if (result != null) {

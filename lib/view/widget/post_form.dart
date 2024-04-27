@@ -52,13 +52,11 @@ class PostForm extends HookConsumerWidget {
       if (!confirmed) return;
       if (!ref.context.mounted) return;
     }
+    final isRenote = ref.read(postNotifierProvider(account)).isRenote;
     final result = await futureWithDialog(
       ref.context,
-      ref
-          .read(
-            postNotifierProvider(account).notifier,
-          )
-          .post(),
+      ref.read(postNotifierProvider(account).notifier).post(),
+      message: isRenote ? t.misskey.renoted : null,
     );
     if (!ref.context.mounted) return;
     if (result != null) {
