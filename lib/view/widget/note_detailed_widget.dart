@@ -447,7 +447,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                       ),
                     NoteFooter(
                       account: account,
-                      noteId: appearNote.id,
+                      noteId: noteId,
                       hideDetails: true,
                     ),
                     if (children

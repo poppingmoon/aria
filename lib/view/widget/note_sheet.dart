@@ -19,6 +19,7 @@ import '../../provider/api/note_state_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
+import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
@@ -47,8 +48,9 @@ class NoteSheet extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final note = ref.watch(noteProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
-    if (appearNote == null) {
+    if (note == null || appearNote == null) {
       return NoteFallbackWidget(account: account, noteId: noteId);
     }
     final url = Uri.https(account.host, '/notes/${appearNote.id}');
@@ -366,95 +368,93 @@ class NoteSheet extends ConsumerWidget {
             ),
             if (appearNote.user.host == null &&
                 appearNote.user.username == account.username)
-              if (!appearNote.isRenote) ...[
-                // TODO: Edit note
-                // if (i.policies?.canEditNote ?? false)
-                //   ListTile(
-                //     leading: const Icon(Icons.edit),
-                //     title: Text(t.misskey.edit),
-                //     onTap: () async {
-                //       context.pop();
-                //     },
-                //   ),
-                ListTile(
-                  leading: const Icon(Icons.edit_outlined),
-                  title: Text(t.misskey.deleteAndEdit),
-                  onTap: () async {
-                    final confirmed = await confirm(
-                      context,
-                      message: t.misskey.deleteAndEditConfirm,
-                    );
-                    if (confirmed) {
-                      ref
-                          .read(postNotifierProvider(account).notifier)
-                          .fromNote(appearNote);
-                      ref
-                          .read(attachesNotifierProvider(account).notifier)
-                          .addAll(
-                            appearNote.files.map(
-                              (file) => DrivePostFile.fromDriveFile(file),
-                            ),
-                          );
-                      await ref
-                          .read(misskeyProvider(account))
-                          .notes
-                          .delete(NotesDeleteRequest(noteId: appearNote.id));
-                      ref
-                          .read(notesNotifierProvider(account).notifier)
-                          .remove(appearNote.id);
-                      if (!context.mounted) return;
-                      context.pop();
-                      await context.push('/$account/post');
-                      if (!context.mounted) return;
-                    }
-                  },
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.delete,
-                    color: Theme.of(context).colorScheme.error,
-                  ),
-                  title: Text(
-                    t.misskey.delete,
-                    style:
-                        TextStyle(color: Theme.of(context).colorScheme.error),
-                  ),
-                  onTap: () async {
-                    final confirmed = await confirm(
-                      context,
-                      message: t.misskey.noteDeleteConfirm,
-                    );
-                    if (confirmed) {
-                      await ref
-                          .read(misskeyProvider(account))
-                          .notes
-                          .delete(NotesDeleteRequest(noteId: appearNote.id));
-                      ref
-                          .read(notesNotifierProvider(account).notifier)
-                          .remove(appearNote.id);
-                      if (!context.mounted) return;
-                      context.pop();
-                    }
-                  },
-                ),
-              ] else
-                ListTile(
-                  leading: const Icon(Icons.delete),
-                  title: Text(t.misskey.unrenote),
-                  onTap: () async {
+              // TODO: Edit note
+              // if (i.policies?.canEditNote ?? false)
+              //   ListTile(
+              //     leading: const Icon(Icons.edit),
+              //     title: Text(t.misskey.edit),
+              //     onTap: () async {
+              //       context.pop();
+              //     },
+              //   ),
+              ListTile(
+                leading: const Icon(Icons.edit_outlined),
+                title: Text(t.misskey.deleteAndEdit),
+                onTap: () async {
+                  final confirmed = await confirm(
+                    context,
+                    message: t.misskey.deleteAndEditConfirm,
+                  );
+                  if (confirmed) {
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .fromNote(appearNote);
+                    ref.read(attachesNotifierProvider(account).notifier).addAll(
+                          appearNote.files.map(
+                            (file) => DrivePostFile.fromDriveFile(file),
+                          ),
+                        );
                     await ref
                         .read(misskeyProvider(account))
                         .notes
-                        .delete(NotesDeleteRequest(noteId: noteId));
+                        .delete(NotesDeleteRequest(noteId: appearNote.id));
                     ref
                         .read(notesNotifierProvider(account).notifier)
-                        .remove(noteId);
+                        .remove(appearNote.id);
                     if (!context.mounted) return;
                     context.pop();
-                  },
-                  iconColor: Theme.of(context).colorScheme.error,
-                  textColor: Theme.of(context).colorScheme.error,
-                ),
+                    await context.push('/$account/post');
+                    if (!context.mounted) return;
+                  }
+                },
+              ),
+            ListTile(
+              leading: Icon(
+                Icons.delete,
+                color: Theme.of(context).colorScheme.error,
+              ),
+              title: Text(
+                t.misskey.delete,
+                style: TextStyle(color: Theme.of(context).colorScheme.error),
+              ),
+              onTap: () async {
+                final confirmed = await confirm(
+                  context,
+                  message: t.misskey.noteDeleteConfirm,
+                );
+                if (confirmed) {
+                  await ref
+                      .read(misskeyProvider(account))
+                      .notes
+                      .delete(NotesDeleteRequest(noteId: appearNote.id));
+                  ref
+                      .read(notesNotifierProvider(account).notifier)
+                      .remove(appearNote.id);
+                  if (!context.mounted) return;
+                  context.pop();
+                }
+              },
+            ),
+            if (note.user.host == null &&
+                note.user.username == account.username &&
+                note.isRenote)
+              ListTile(
+                leading: const Icon(Icons.delete),
+                title: Text(t.misskey.unrenote),
+                onTap: () async {
+                  await ref
+                      .read(misskeyProvider(account))
+                      .notes
+                      .delete(NotesDeleteRequest(noteId: noteId));
+                  ref
+                      .read(notesNotifierProvider(account).notifier)
+                      .remove(noteId);
+                  if (!context.mounted) return;
+                  context.pop();
+                },
+                iconColor: Theme.of(context).colorScheme.error,
+                textColor: Theme.of(context).colorScheme.error,
+              ),
             ListTile(
               leading: const Icon(Icons.report),
               title: Text(t.misskey.reportAbuse),
