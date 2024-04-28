@@ -8,7 +8,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/tab_icon.dart';
 import '../../provider/emoji_url_provider.dart';
-import '../../provider/emojis_notifier_provider.dart';
 import '../widget/emoji_picker.dart';
 
 class IconSelectDialog extends HookConsumerWidget {
@@ -33,12 +32,7 @@ class IconSelectDialog extends HookConsumerWidget {
             IconButton(
               onPressed: showEmojiPicker.value
                   ? null
-                  : () {
-                      showEmojiPicker.value = true;
-                      ref
-                          .read(emojisNotifierProvider(account!.host).notifier)
-                          .fetchAndSaveIfNeeded();
-                    },
+                  : () => showEmojiPicker.value = true,
               icon: const Icon(Icons.navigate_next),
             ),
           ],

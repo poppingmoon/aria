@@ -6,7 +6,7 @@ part of 'custom_emoji_index_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$customEmojiIndexHash() => r'6f508fafa0832fef539fed6e38243bf7a75d1d55';
+String _$customEmojiIndexHash() => r'e16fd665bbbc3cb564aaa440c2345d18ee61482f';
 
 /// Copied from Dart SDK
 class _SystemHash {

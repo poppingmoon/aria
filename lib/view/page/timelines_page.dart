@@ -70,7 +70,7 @@ class TimelinesPage extends HookConsumerWidget {
                   .read(
                     emojisNotifierProvider(nextAccount.host).notifier,
                   )
-                  .fetchAndSaveIfNeeded();
+                  .reloadEmojis();
             }
             if (!previousAccount.isGuest) {
               ref

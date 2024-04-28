@@ -6,7 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/emojis_notifier_provider.dart';
+import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
@@ -37,10 +37,7 @@ class EmojiSheet extends ConsumerWidget {
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
     final data = isCustomEmoji
-        ? ref.watch(
-            emojisNotifierProvider(account.host)
-                .select((emojis) => emojis[name]),
-          )
+        ? ref.watch(emojiProvider(account.host, ':$name:'))
         : null;
     final canReact = !account.isGuest &&
         targetNote != null &&

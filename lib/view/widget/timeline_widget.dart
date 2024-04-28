@@ -71,9 +71,6 @@ class TimelineWidget extends HookConsumerWidget {
     useEffect(
       () {
         ref
-            .read(emojisNotifierProvider(account.host).notifier)
-            .fetchAndSaveIfNeeded();
-        ref
             .read(timelineLastViewedAtNotifierProvider(tabSettings).notifier)
             .save(DateTime.now());
         if (!tabSettings.disableSubscribing) {

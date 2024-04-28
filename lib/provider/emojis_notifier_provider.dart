@@ -7,25 +7,41 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../model/account.dart';
 import 'api/endpoints_provider.dart';
 import 'api/misskey_provider.dart';
-import 'shared_preferences_provider.dart';
+import 'cache_manager_provider.dart';
 
 part 'emojis_notifier_provider.g.dart';
 
+// ignore: provider_dependencies
 @Riverpod(keepAlive: true)
 class EmojisNotifier extends _$EmojisNotifier {
   @override
-  Map<String, Emoji> build(String host) {
+  Future<Map<String, Emoji>> build(String host) async {
     ref.onDispose(() => _timer?.cancel());
-    final value = ref.watch(sharedPreferencesProvider).getStringList(_key);
-    if (value != null) {
-      return {
-        for (final emoji in value
-            .map((e) => Emoji.fromJson(jsonDecode(e) as Map<String, dynamic>)))
-          emoji.name: emoji,
-      };
-    } else {
-      return {};
+    final file = await ref.watch(cacheManagerProvider).getFileFromCache(_key);
+    if (file != null) {
+      try {
+        final s = await file.file.readAsString();
+        final emojis = (jsonDecode(s) as List).map(
+          (e) => Emoji.fromJson(e as Map<String, dynamic>),
+        );
+        final lastModified = await file.file.lastModified();
+        _recentlyFetched = DateTime.now().difference(lastModified) <
+            const Duration(minutes: 10);
+        if (_recentlyFetched) {
+          _timer = Timer(const Duration(minutes: 10), () {
+            _recentlyFetched = false;
+          });
+        }
+        return {for (final emoji in emojis) emoji.name: emoji};
+      } catch (_) {}
     }
+    final response = await _fetchEmojis();
+    unawaited(_save(response));
+    _recentlyFetched = true;
+    _timer = Timer(const Duration(minutes: 10), () {
+      _recentlyFetched = false;
+    });
+    return {for (final emoji in response) emoji.name: emoji};
   }
 
   String get _key => '$host/emojis';
@@ -34,18 +50,18 @@ class EmojisNotifier extends _$EmojisNotifier {
 
   bool _recentlyFetched = false;
 
-  Future<void> _save() async {
+  Future<void> _save(List<Emoji> emojis) async {
     await ref
-        .read(sharedPreferencesProvider)
-        .setStringList(_key, state.values.map((e) => jsonEncode(e)).toList());
+        .read(cacheManagerProvider)
+        .putFile(_key, utf8.encode(jsonEncode(emojis)));
   }
 
-  Future<void> _fetch() async {
+  Future<List<Emoji>> _fetchEmojis() async {
     final endpoints = await ref.read(endpointsProvider(host).future);
     if (endpoints.contains('emojis')) {
       final emojis =
           await ref.read(misskeyProvider(Account(host: host))).emojis();
-      state = {for (final emoji in emojis.emojis) emoji.name: emoji};
+      return emojis.emojis;
     } else {
       final meta = await ref
           .read(misskeyProvider(Account(host: host)))
@@ -53,10 +69,10 @@ class EmojisNotifier extends _$EmojisNotifier {
           .post<Map<String, dynamic>>('meta', {});
       final emojis = meta['emojis'];
       if (emojis is List) {
-        state = {
+        return [
           for (final emoji in emojis)
             if (emoji is Map<String, dynamic>)
-              emoji['name'] as String: Emoji(
+              Emoji(
                 aliases: ((emoji['aliases'] ?? <String>[]) as List)
                     .whereType<String>()
                     .toList(),
@@ -64,29 +80,17 @@ class EmojisNotifier extends _$EmojisNotifier {
                 category: emoji['category'] as String?,
                 url: Uri.parse((emoji['url'] as String).trim()),
               ),
-        };
+        ];
       }
+      return [];
     }
   }
 
-  Future<void> fetchIfNeeded() async {
-    if (state.isEmpty || !_recentlyFetched) {
-      await _fetch();
-      _recentlyFetched = true;
-      _timer = Timer(const Duration(minutes: 10), () {
-        _recentlyFetched = false;
-      });
-    }
-  }
-
-  Future<void> fetchAndSave() async {
-    await _fetch();
-    await _save();
-  }
-
-  Future<void> fetchAndSaveIfNeeded() async {
-    if (state.isEmpty || !_recentlyFetched) {
-      await fetchAndSave();
+  Future<void> reloadEmojis() async {
+    if ((state.valueOrNull?.isEmpty ?? true) || !_recentlyFetched) {
+      final emojis = await _fetchEmojis();
+      state = AsyncData({for (final emoji in emojis) emoji.name: emoji});
+      await _save(emojis);
       _recentlyFetched = true;
       _timer = Timer(const Duration(minutes: 10), () {
         _recentlyFetched = false;
@@ -95,19 +99,21 @@ class EmojisNotifier extends _$EmojisNotifier {
   }
 
   void add(Emoji emoji) {
-    state = {...state, emoji.name: emoji};
+    state = AsyncData({...?state.valueOrNull, emoji.name: emoji});
   }
 
   void addAll(Iterable<Emoji> emojis) {
-    state = {
-      ...state,
+    state = AsyncData({
+      ...?state.valueOrNull,
       for (final emoji in emojis) emoji.name: emoji,
-    };
+    });
   }
 
   void deleteAll(Iterable<String> names) {
-    final emojis = Map.of(state);
+    final value = state.valueOrNull;
+    if (value == null) return;
+    final emojis = Map.of(value);
     emojis.removeWhere((key, _) => names.contains(key));
-    state = emojis;
+    state = AsyncData(emojis);
   }
 }

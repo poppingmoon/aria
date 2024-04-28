@@ -20,7 +20,7 @@ Future<void> navigate(WidgetRef ref, Account account, String link) async {
       try {
         await ref
             .read(emojisNotifierProvider(url.host).notifier)
-            .fetchAndSaveIfNeeded();
+            .reloadEmojis();
         if (!ref.context.mounted) return;
         await ref.context.push('/${url.host}${url.path}');
       } catch (_) {
@@ -35,7 +35,7 @@ Future<void> navigate(WidgetRef ref, Account account, String link) async {
         try {
           await ref
               .read(emojisNotifierProvider(url.host).notifier)
-              .fetchAndSaveIfNeeded();
+              .reloadEmojis();
           if (!ref.context.mounted) return;
           await ref.context.push('/${url.host}${url.path}');
         } catch (_) {
