@@ -18,7 +18,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
     TabSettings tabSettings, {
     String? untilId,
   }) async {
-    final response = await _fetchNotes(untilId: untilId);
+    final response = await _fetchNotes(untilId: untilId, limit: 30);
     return PaginationState.fromIterable(response);
   }
 
@@ -26,6 +26,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
 
   Future<Iterable<Note>> _fetchNotesFromCustomTimeline({
     String? untilId,
+    int? limit,
   }) async {
     final endpoint = tabSettings.endpoint;
     if (endpoint == null) {
@@ -34,7 +35,8 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
     final response = await _misskey.apiService.post<List<dynamic>>(
       endpoint,
       {
-        'untilId': untilId,
+        if (untilId != null) 'untilId': untilId,
+        if (limit != null) 'limit': limit,
         'withRenotes': tabSettings.withRenotes,
         'withReplies': tabSettings.withReplies,
         'withFiles': tabSettings.withFiles,
@@ -43,11 +45,12 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
     return response.map((e) => Note.fromJson(e as Map<String, dynamic>));
   }
 
-  Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
+  Future<Iterable<Note>> _fetchNotes({String? untilId, int? limit}) async {
     final notes = await switch (tabSettings.tabType) {
       TabType.homeTimeline => _misskey.notes.homeTimeline(
           NotesTimelineRequest(
             untilId: untilId,
+            limit: limit,
             withRenotes: tabSettings.withRenotes,
             withFiles: tabSettings.withFiles,
             allowPartial: true,
@@ -56,6 +59,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
       TabType.localTimeline => _misskey.notes.localTimeline(
           NotesLocalTimelineRequest(
             untilId: untilId,
+            limit: limit,
             withRenotes: tabSettings.withRenotes,
             withReplies: tabSettings.withReplies,
             withFiles: tabSettings.withFiles,
@@ -65,6 +69,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
       TabType.hybridTimeline => _misskey.notes.hybridTimeline(
           NotesHybridTimelineRequest(
             untilId: untilId,
+            limit: limit,
             withRenotes: tabSettings.withRenotes,
             withReplies: tabSettings.withReplies,
             withFiles: tabSettings.withFiles,
@@ -74,6 +79,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
       TabType.globalTimeline => _misskey.notes.globalTimeline(
           NotesGlobalTimelineRequest(
             untilId: untilId,
+            limit: limit,
             withRenotes: tabSettings.withRenotes,
             withFiles: tabSettings.withFiles,
           ),
@@ -82,12 +88,14 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
           RolesNotesRequest(
             roleId: tabSettings.roleId!,
             untilId: untilId,
+            limit: limit,
           ),
         ),
       TabType.userList => _misskey.notes.userListTimeline(
           UserListTimelineRequest(
             listId: tabSettings.listId!,
             untilId: untilId,
+            limit: limit,
             withRenotes: tabSettings.withRenotes,
             withFiles: tabSettings.withFiles,
             allowPartial: true,
@@ -97,21 +105,27 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
           AntennasNotesRequest(
             antennaId: tabSettings.antennaId!,
             untilId: untilId,
+            limit: limit,
           ),
         ),
       TabType.channel => _misskey.channels.timeline(
           ChannelsTimelineRequest(
             channelId: tabSettings.channelId!,
             untilId: untilId,
+            limit: limit,
             allowPartial: true,
           ),
         ),
       TabType.mention => _misskey.notes.mentions(
-          NotesMentionsRequest(untilId: untilId),
+          NotesMentionsRequest(
+            untilId: untilId,
+            limit: limit,
+          ),
         ),
       TabType.direct => _misskey.notes.mentions(
           NotesMentionsRequest(
             untilId: untilId,
+            limit: limit,
             visibility: NoteVisibility.specified,
           ),
         ),
@@ -119,6 +133,7 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
           UsersNotesRequest(
             userId: tabSettings.userId!,
             untilId: untilId,
+            limit: limit,
             withRenotes: tabSettings.withRenotes,
             withReplies: tabSettings.withReplies,
             withFiles: tabSettings.withFiles,

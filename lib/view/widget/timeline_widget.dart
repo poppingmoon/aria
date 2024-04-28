@@ -23,6 +23,7 @@ import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
+import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/format_datetime.dart';
 import 'ad_widget.dart';
@@ -272,20 +273,51 @@ class TimelineWidget extends HookConsumerWidget {
                   color: Theme.of(context).colorScheme.secondaryContainer,
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: InkWell(
-                    onTap: () {
+                    onTap: () async {
                       final currentContext = lastViewedAtKey.currentContext;
                       if (currentContext != null) {
-                        Scrollable.ensureVisible(
-                          currentContext,
-                          duration: const Duration(milliseconds: 125),
-                        );
+                        await Scrollable.ensureVisible(currentContext);
                       } else {
-                        ref
-                            .read(
-                              timelineCenterNotifierProvider(tabSettings)
-                                  .notifier,
-                            )
-                            .setCenterFromDate(lastViewedAt);
+                        final centerId = ref
+                            .read(timelineCenterNotifierProvider(tabSettings));
+                        final scrollController = ref.read(
+                          timelineScrollControllerProvider(tabSettings),
+                        );
+                        final maxScrollExtent =
+                            scrollController.position.maxScrollExtent;
+                        final notes = ref
+                            .watch(timelineNotesNotifierProvider(tabSettings))
+                            .valueOrNull;
+                        final oldestNote = notes?.items.lastOrNull;
+                        if (centerId == null &&
+                            !(oldestNote?.createdAt.isAfter(lastViewedAt) ??
+                                true) &&
+                            maxScrollExtent < 40000.0) {
+                          double position = 0.0;
+                          scrollController.jumpTo(position);
+                          while (position < maxScrollExtent) {
+                            final currentContext =
+                                lastViewedAtKey.currentContext;
+                            if (currentContext != null &&
+                                currentContext.mounted) {
+                              await Scrollable.ensureVisible(currentContext);
+                              break;
+                            }
+                            position += 400.0;
+                            await scrollController.animateTo(
+                              position,
+                              duration: const Duration(milliseconds: 30),
+                              curve: Curves.linear,
+                            );
+                          }
+                        } else {
+                          await ref
+                              .read(
+                                timelineCenterNotifierProvider(tabSettings)
+                                    .notifier,
+                              )
+                              .setCenterFromDate(lastViewedAt);
+                        }
                       }
                       showLastViewedAt.value = false;
                     },
