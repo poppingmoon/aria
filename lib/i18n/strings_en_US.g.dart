@@ -144,6 +144,7 @@ class _StringsAriaEnUs {
 	String get postConfirm => 'Are you sure you want to post this note?';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
+	String get renoteToChannel => 'Renote to a channel';
 	TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Renoted by '),
 		user,
@@ -167,6 +168,7 @@ class _StringsAriaEnUs {
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
+	String get showQuoteButtonInNoteFooter => 'Add "Quote" to note action menu';
 	String get showSelfRenotes => 'Show self-renotes';
 	String get showStackTrace => 'Show stack trace';
 	String get showSubNoteFooter => 'Show action buttons in subnotes';

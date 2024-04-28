@@ -13,6 +13,7 @@ import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
+import '../../provider/appear_note_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
@@ -23,6 +24,7 @@ import '../dialog/reaction_confirmation_dialog.dart';
 import 'emoji_picker.dart';
 import 'note_sheet.dart';
 import 'reaction_users_sheet.dart';
+import 'renote_sheet.dart';
 import 'renote_users_sheet.dart';
 import 'translated_note_sheet.dart';
 
@@ -48,12 +50,17 @@ class NoteFooter extends ConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final appearNote = this.note ?? ref.watch(noteProvider(account, noteId));
+    final appearNote =
+        this.note ?? ref.watch(appearNoteProvider(account, noteId));
     if (appearNote == null) {
       return const SizedBox.shrink();
     }
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final showQuoteButton = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showQuoteButtonInNoteFooter),
+    );
     final showLikeButton = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.showLikeButtonInNoteFooter),
@@ -129,7 +136,7 @@ class NoteFooter extends ConsumerWidget {
               ],
             ),
           ),
-          if (canRenote)
+          if (canRenote) ...[
             GestureDetector(
               onLongPress: appearNote.renoteCount > 0
                   ? () {
@@ -150,13 +157,22 @@ class NoteFooter extends ConsumerWidget {
                 onPressed: !account.isGuest
                     ? () {
                         if (appearNote.id.isEmpty) return;
-                        ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setRenote(appearNote);
-                        if (postFormFocusNode != null) {
-                          postFormFocusNode?.requestFocus();
+                        if (showQuoteButton) {
+                          showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) =>
+                                RenoteSheet(account: account, note: appearNote),
+                            clipBehavior: Clip.hardEdge,
+                          );
                         } else {
-                          context.push('/$account/post');
+                          ref
+                              .read(postNotifierProvider(account).notifier)
+                              .setRenote(appearNote);
+                          if (postFormFocusNode != null) {
+                            postFormFocusNode?.requestFocus();
+                          } else {
+                            context.push('/$account/post');
+                          }
                         }
                       }
                     : null,
@@ -177,8 +193,26 @@ class NoteFooter extends ConsumerWidget {
                   ],
                 ),
               ),
-            )
-          else
+            ),
+            if (showQuoteButton)
+              IconButton(
+                tooltip: t.misskey.quote,
+                onPressed: !account.isGuest
+                    ? () {
+                        if (appearNote.id.isEmpty) return;
+                        ref
+                            .read(postNotifierProvider(account).notifier)
+                            .setRenote(appearNote);
+                        if (postFormFocusNode != null) {
+                          postFormFocusNode?.requestFocus();
+                        } else {
+                          context.push('/$account/post');
+                        }
+                      }
+                    : null,
+                icon: const Icon(Icons.format_quote_outlined),
+              ),
+          ] else
             IconButton(
               tooltip: t.misskey.cantRenote,
               onPressed: null,

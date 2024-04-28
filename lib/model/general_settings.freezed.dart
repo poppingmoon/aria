@@ -37,6 +37,7 @@ mixin _$GeneralSettings {
   bool get showAvatarsInSubNote => throw _privateConstructorUsedError;
   bool get squareAvatars => throw _privateConstructorUsedError;
   bool get showAvatarDecorations => throw _privateConstructorUsedError;
+  bool get showQuoteButtonInNoteFooter => throw _privateConstructorUsedError;
   bool get showLikeButtonInNoteFooter => throw _privateConstructorUsedError;
   bool get showClipButtonInNoteFooter => throw _privateConstructorUsedError;
   bool get showTranslateButtonInNoteFooter =>
@@ -110,6 +111,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showAvatarsInSubNote,
       bool squareAvatars,
       bool showAvatarDecorations,
+      bool showQuoteButtonInNoteFooter,
       bool showLikeButtonInNoteFooter,
       bool showClipButtonInNoteFooter,
       bool showTranslateButtonInNoteFooter,
@@ -179,6 +181,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showAvatarsInSubNote = null,
     Object? squareAvatars = null,
     Object? showAvatarDecorations = null,
+    Object? showQuoteButtonInNoteFooter = null,
     Object? showLikeButtonInNoteFooter = null,
     Object? showClipButtonInNoteFooter = null,
     Object? showTranslateButtonInNoteFooter = null,
@@ -276,6 +279,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
       showAvatarDecorations: null == showAvatarDecorations
           ? _value.showAvatarDecorations
           : showAvatarDecorations // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showQuoteButtonInNoteFooter: null == showQuoteButtonInNoteFooter
+          ? _value.showQuoteButtonInNoteFooter
+          : showQuoteButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
           ? _value.showLikeButtonInNoteFooter
@@ -465,6 +472,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showAvatarsInSubNote,
       bool squareAvatars,
       bool showAvatarDecorations,
+      bool showQuoteButtonInNoteFooter,
       bool showLikeButtonInNoteFooter,
       bool showClipButtonInNoteFooter,
       bool showTranslateButtonInNoteFooter,
@@ -532,6 +540,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showAvatarsInSubNote = null,
     Object? squareAvatars = null,
     Object? showAvatarDecorations = null,
+    Object? showQuoteButtonInNoteFooter = null,
     Object? showLikeButtonInNoteFooter = null,
     Object? showClipButtonInNoteFooter = null,
     Object? showTranslateButtonInNoteFooter = null,
@@ -629,6 +638,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       showAvatarDecorations: null == showAvatarDecorations
           ? _value.showAvatarDecorations
           : showAvatarDecorations // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showQuoteButtonInNoteFooter: null == showQuoteButtonInNoteFooter
+          ? _value.showQuoteButtonInNoteFooter
+          : showQuoteButtonInNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
       showLikeButtonInNoteFooter: null == showLikeButtonInNoteFooter
           ? _value.showLikeButtonInNoteFooter
@@ -813,6 +826,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showAvatarsInSubNote = true,
       this.squareAvatars = false,
       this.showAvatarDecorations = true,
+      this.showQuoteButtonInNoteFooter = true,
       this.showLikeButtonInNoteFooter = false,
       this.showClipButtonInNoteFooter = false,
       this.showTranslateButtonInNoteFooter = false,
@@ -902,6 +916,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final bool showAvatarDecorations;
+  @override
+  @JsonKey()
+  final bool showQuoteButtonInNoteFooter;
   @override
   @JsonKey()
   final bool showLikeButtonInNoteFooter;
@@ -1028,7 +1045,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1063,6 +1080,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.squareAvatars == squareAvatars) &&
             (identical(other.showAvatarDecorations, showAvatarDecorations) ||
                 other.showAvatarDecorations == showAvatarDecorations) &&
+            (identical(other.showQuoteButtonInNoteFooter, showQuoteButtonInNoteFooter) ||
+                other.showQuoteButtonInNoteFooter ==
+                    showQuoteButtonInNoteFooter) &&
             (identical(other.showLikeButtonInNoteFooter, showLikeButtonInNoteFooter) ||
                 other.showLikeButtonInNoteFooter ==
                     showLikeButtonInNoteFooter) &&
@@ -1089,10 +1109,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.reactionsDisplayScale == reactionsDisplayScale) &&
             (identical(other.limitWidthOfReaction, limitWidthOfReaction) ||
                 other.limitWidthOfReaction == limitWidthOfReaction) &&
-            (identical(other.noteFooterScale, noteFooterScale) ||
-                other.noteFooterScale == noteFooterScale) &&
-            (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) ||
-                other.emojiPickerUseDialog == emojiPickerUseDialog) &&
+            (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
+            (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) || other.emojiPickerUseDialog == emojiPickerUseDialog) &&
             (identical(other.emojiPickerScale, emojiPickerScale) || other.emojiPickerScale == emojiPickerScale) &&
             (identical(other.emojiPickerAutofocus, emojiPickerAutofocus) || other.emojiPickerAutofocus == emojiPickerAutofocus) &&
             (identical(other.emojiPickerKeepOpen, emojiPickerKeepOpen) || other.emojiPickerKeepOpen == emojiPickerKeepOpen) &&
@@ -1140,6 +1158,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showAvatarsInSubNote,
         squareAvatars,
         showAvatarDecorations,
+        showQuoteButtonInNoteFooter,
         showLikeButtonInNoteFooter,
         showClipButtonInNoteFooter,
         showTranslateButtonInNoteFooter,
@@ -1214,6 +1233,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showAvatarsInSubNote,
       final bool squareAvatars,
       final bool showAvatarDecorations,
+      final bool showQuoteButtonInNoteFooter,
       final bool showLikeButtonInNoteFooter,
       final bool showClipButtonInNoteFooter,
       final bool showTranslateButtonInNoteFooter,
@@ -1288,6 +1308,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get squareAvatars;
   @override
   bool get showAvatarDecorations;
+  @override
+  bool get showQuoteButtonInNoteFooter;
   @override
   bool get showLikeButtonInNoteFooter;
   @override

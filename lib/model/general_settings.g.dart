@@ -29,6 +29,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       showAvatarsInSubNote: json['showAvatarsInSubNote'] as bool? ?? true,
       squareAvatars: json['squareAvatars'] as bool? ?? false,
       showAvatarDecorations: json['showAvatarDecorations'] as bool? ?? true,
+      showQuoteButtonInNoteFooter:
+          json['showQuoteButtonInNoteFooter'] as bool? ?? true,
       showLikeButtonInNoteFooter:
           json['showLikeButtonInNoteFooter'] as bool? ?? false,
       showClipButtonInNoteFooter:
@@ -115,6 +117,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
   val['squareAvatars'] = instance.squareAvatars;
   val['showAvatarDecorations'] = instance.showAvatarDecorations;
+  val['showQuoteButtonInNoteFooter'] = instance.showQuoteButtonInNoteFooter;
   val['showLikeButtonInNoteFooter'] = instance.showLikeButtonInNoteFooter;
   val['showClipButtonInNoteFooter'] = instance.showClipButtonInNoteFooter;
   val['showTranslateButtonInNoteFooter'] =

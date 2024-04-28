@@ -38,6 +38,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool showAvatarsInSubNote,
     @Default(false) bool squareAvatars,
     @Default(true) bool showAvatarDecorations,
+    @Default(true) bool showQuoteButtonInNoteFooter,
     @Default(false) bool showLikeButtonInNoteFooter,
     @Default(false) bool showClipButtonInNoteFooter,
     @Default(false) bool showTranslateButtonInNoteFooter,
