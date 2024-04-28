@@ -11,7 +11,7 @@ Emoji? emoji(EmojiRef ref, String host, String code) {
   final name = code.substring(1, code.length - 1).replaceAll('@.', '');
   return ref.watch(
     emojisNotifierProvider(host).select(
-      (emojis) => emojis[name],
+      (emojis) => emojis.valueOrNull?[name],
     ),
   );
 }

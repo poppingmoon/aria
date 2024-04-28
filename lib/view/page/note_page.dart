@@ -14,7 +14,6 @@ import '../../provider/api/meta_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
-import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
@@ -299,18 +298,9 @@ class NotePage extends HookConsumerWidget {
                                   ),
                                   if (remoteNoteId != null)
                                     TextButton(
-                                      onPressed: () {
-                                        ref
-                                            .read(
-                                              emojisNotifierProvider(
-                                                remoteUrl.host,
-                                              ).notifier,
-                                            )
-                                            .fetchIfNeeded();
-                                        context.push(
-                                          '/${remoteUrl.host}/notes/$remoteNoteId',
-                                        );
-                                      },
+                                      onPressed: () => context.push(
+                                        '/${remoteUrl.host}/notes/$remoteNoteId',
+                                      ),
                                       child: Text(t.aria.openAsGuest),
                                     ),
                                 ],

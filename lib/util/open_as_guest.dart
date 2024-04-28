@@ -6,20 +6,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../model/account.dart';
 import '../provider/api/user_notifier_provider.dart';
-import '../provider/emojis_notifier_provider.dart';
 
 Future<void> openUserAsGuest(WidgetRef ref, UserDetailed user) async {
   final remoteUrl = user.uri ?? user.url;
-  if (remoteUrl == null) {
-    return;
-  }
-  unawaited(
-    ref
-        .read(
-          emojisNotifierProvider(remoteUrl.host).notifier,
-        )
-        .fetchIfNeeded(),
-  );
+  if (remoteUrl == null) return;
   final guest = Account(host: remoteUrl.host);
   final userAsLocal = await ref.read(
     userNotifierProvider(guest, username: user.username).future,

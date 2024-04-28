@@ -31,7 +31,7 @@ Future<Map<String, Set<Emoji>>> customEmojiIndex(
   CustomEmojiIndexRef ref,
   String host,
 ) async {
-  final emojis = ref.watch(emojisNotifierProvider(host));
+  final emojis = await ref.watch(emojisNotifierProvider(host).future);
   final index = await compute(_buildCustomEmojiIndex, emojis.values);
   return index;
 }

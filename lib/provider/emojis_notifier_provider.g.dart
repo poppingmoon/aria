@@ -6,7 +6,7 @@ part of 'emojis_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojisNotifierHash() => r'48cc24da1651cac682dab822bf816f38bc2bbc6f';
+String _$emojisNotifierHash() => r'a1d2a05a63f138d4aadf35ff6ee3ce5ea13ef1c4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,10 +29,11 @@ class _SystemHash {
   }
 }
 
-abstract class _$EmojisNotifier extends BuildlessNotifier<Map<String, Emoji>> {
+abstract class _$EmojisNotifier
+    extends BuildlessAsyncNotifier<Map<String, Emoji>> {
   late final String host;
 
-  Map<String, Emoji> build(
+  FutureOr<Map<String, Emoji>> build(
     String host,
   );
 }
@@ -42,7 +43,7 @@ abstract class _$EmojisNotifier extends BuildlessNotifier<Map<String, Emoji>> {
 const emojisNotifierProvider = EmojisNotifierFamily();
 
 /// See also [EmojisNotifier].
-class EmojisNotifierFamily extends Family<Map<String, Emoji>> {
+class EmojisNotifierFamily extends Family<AsyncValue<Map<String, Emoji>>> {
   /// See also [EmojisNotifier].
   const EmojisNotifierFamily();
 
@@ -81,7 +82,7 @@ class EmojisNotifierFamily extends Family<Map<String, Emoji>> {
 
 /// See also [EmojisNotifier].
 class EmojisNotifierProvider
-    extends NotifierProviderImpl<EmojisNotifier, Map<String, Emoji>> {
+    extends AsyncNotifierProviderImpl<EmojisNotifier, Map<String, Emoji>> {
   /// See also [EmojisNotifier].
   EmojisNotifierProvider(
     String host,
@@ -112,7 +113,7 @@ class EmojisNotifierProvider
   final String host;
 
   @override
-  Map<String, Emoji> runNotifierBuild(
+  FutureOr<Map<String, Emoji>> runNotifierBuild(
     covariant EmojisNotifier notifier,
   ) {
     return notifier.build(
@@ -137,7 +138,8 @@ class EmojisNotifierProvider
   }
 
   @override
-  NotifierProviderElement<EmojisNotifier, Map<String, Emoji>> createElement() {
+  AsyncNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
+      createElement() {
     return _EmojisNotifierProviderElement(this);
   }
 
@@ -155,13 +157,13 @@ class EmojisNotifierProvider
   }
 }
 
-mixin EmojisNotifierRef on NotifierProviderRef<Map<String, Emoji>> {
+mixin EmojisNotifierRef on AsyncNotifierProviderRef<Map<String, Emoji>> {
   /// The parameter `host` of this provider.
   String get host;
 }
 
 class _EmojisNotifierProviderElement
-    extends NotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
+    extends AsyncNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
     with EmojisNotifierRef {
   _EmojisNotifierProviderElement(super.provider);
 

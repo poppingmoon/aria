@@ -25,7 +25,6 @@ class ServerEmojis extends HookConsumerWidget {
     final query = useState('');
     useEffect(
       () {
-        ref.read(emojisNotifierProvider(host).notifier).fetchAndSave();
         controller.addListener(() => query.value = controller.text);
         return;
       },
@@ -36,8 +35,7 @@ class ServerEmojis extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return RefreshIndicator(
-      onRefresh: () =>
-          ref.read(emojisNotifierProvider(host).notifier).fetchAndSave(),
+      onRefresh: () => ref.refresh(emojisNotifierProvider(host).future),
       child: groups.isNotEmpty
           ? ListView.builder(
               itemBuilder: (context, index) {

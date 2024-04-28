@@ -6,7 +6,7 @@ part of 'categorized_emojis_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$categorizedEmojisHash() => r'f84d18361fa3097651f118b629aa1e1e3f70ac30';
+String _$categorizedEmojisHash() => r'970f03f49d3b6f9e0789f672ecbed0b295216fe1';
 
 /// Copied from Dart SDK
 class _SystemHash {

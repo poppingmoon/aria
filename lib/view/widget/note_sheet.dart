@@ -18,7 +18,6 @@ import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/note_state_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/appear_note_provider.dart';
-import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/copy_text.dart';
@@ -126,9 +125,6 @@ class NoteSheet extends ConsumerWidget {
                 title: Text(t.aria.openAsGuest),
                 onTap: () {
                   context.pop();
-                  ref
-                      .read(emojisNotifierProvider(remoteUrl.host).notifier)
-                      .fetchIfNeeded();
                   context.push('/${remoteUrl.host}/notes/$remoteNoteId');
                 },
               ),

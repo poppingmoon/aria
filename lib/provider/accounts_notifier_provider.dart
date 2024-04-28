@@ -45,7 +45,7 @@ class AccountsNotifier extends _$AccountsNotifier {
     ]);
     await ref
         .read(emojisNotifierProvider(account.host).notifier)
-        .fetchAndSaveIfNeeded();
+        .reloadEmojis();
   }
 
   Future<bool> loginWithToken(String host, String token) async {

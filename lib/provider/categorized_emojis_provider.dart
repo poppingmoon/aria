@@ -12,5 +12,6 @@ Map<String?, List<Emoji>> categorizedEmojis(
   String host,
 ) {
   final emojis = ref.watch(emojisNotifierProvider(host));
-  return emojis.values.groupListsBy((emoji) => emoji.category);
+  return emojis.valueOrNull?.values.groupListsBy((emoji) => emoji.category) ??
+      {};
 }
