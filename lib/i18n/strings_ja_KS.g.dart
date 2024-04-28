@@ -129,6 +129,8 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 		const TextSpan(text: 'からコピーしてや。'),
 	]);
 	@override String get pinToEmojiPicker => '絵文字ピッカーにピン留めしとく';
+	@override String get playAudio => '音声を再生';
+	@override String get playVideo => '動画を再生';
 	@override String get postConfirm => 'このノートを投稿してええか？';
 	@override String get reactionConfirm => 'ツッコミしてええか？';
 	@override String get renoteConfirm => 'このノートをリノートしてええか？';
@@ -152,6 +154,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	]);
 	@override String get showAvatarsInNote => 'ノートにユーザーのアイコンを表示するで';
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示するで';
+	@override String get showImage => '画像を表示';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示するで';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示するで';

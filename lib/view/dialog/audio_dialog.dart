@@ -68,7 +68,7 @@ class AudioDialog extends HookConsumerWidget {
                       onTap: () => context.push('/$account/users/${user.id}'),
                     ),
                   ),
-                Text(mediaItem.valueOrNull?.title ?? ''),
+                Expanded(child: Text(mediaItem.valueOrNull?.title ?? '')),
               ],
             ),
             Row(

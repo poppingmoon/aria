@@ -82,7 +82,7 @@ class MediaCard extends HookConsumerWidget {
         return InkWell(
           onTap: () => showDialog<void>(
             context: ref.context,
-            builder: (context) => VideoDialog(file: file),
+            builder: (context) => VideoDialog(url: file.url),
           ),
           child: Stack(
             alignment: Alignment.center,

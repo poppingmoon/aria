@@ -141,6 +141,8 @@ class _StringsAriaEnUs {
 		const TextSpan(text: '.'),
 	]);
 	String get pinToEmojiPicker => 'Pin to emoji picker';
+	String get playAudio => 'Play audio';
+	String get playVideo => 'Play video';
 	String get postConfirm => 'Are you sure you want to post this note?';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
@@ -164,6 +166,7 @@ class _StringsAriaEnUs {
 	]);
 	String get showAvatarsInNote => 'Show avatars in notes';
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
+	String get showImage => 'Show image';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';

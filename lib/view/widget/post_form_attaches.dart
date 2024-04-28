@@ -17,7 +17,10 @@ import '../../provider/cache_manager_provider.dart';
 import '../../provider/file_system_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
+import '../dialog/audio_dialog.dart';
+import '../dialog/image_dialog.dart';
 import '../dialog/post_file_editor_dialog.dart';
+import '../dialog/video_dialog.dart';
 import 'post_file_thumbnail.dart';
 
 class PostFormAttaches extends ConsumerWidget {
@@ -142,8 +145,59 @@ class PostFormAttaches extends ConsumerWidget {
                     builder: (context) => ListView(
                       shrinkWrap: true,
                       children: [
+                        ListTile(title: Text(files[index].name)),
+                        const Divider(height: 0.0),
+                        if (files[index].type?.startsWith('image/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.visibility),
+                            title: Text(t.aria.showImage),
+                            onTap: () => showDialog<void>(
+                              context: context,
+                              builder: (context) => ImageDialog(
+                                url: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.url,
+                                  _ => null,
+                                },
+                                file: switch (files[index]) {
+                                  LocalPostFile(:final file) => file,
+                                  _ => null,
+                                },
+                              ),
+                            ),
+                          ),
+                        if (files[index].type?.startsWith('video/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.play_arrow),
+                            title: Text(t.aria.playVideo),
+                            onTap: () => showDialog<void>(
+                              context: context,
+                              builder: (context) => VideoDialog(
+                                url: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.url,
+                                  _ => null,
+                                },
+                                file: switch (files[index]) {
+                                  LocalPostFile(:final file) => file,
+                                  _ => null,
+                                },
+                              ),
+                            ),
+                          ),
+                        if (files[index].type?.startsWith('audio/') ?? false)
+                          if (files[index] case DrivePostFile(:final file))
+                            ListTile(
+                              leading: const Icon(Icons.play_arrow),
+                              title: Text(t.aria.playAudio),
+                              onTap: () => showDialog<void>(
+                                context: context,
+                                builder: (context) => AudioDialog(
+                                  account: account,
+                                  file: file,
+                                ),
+                              ),
+                            ),
                         ListTile(
-                          leading: const Icon(Icons.settings),
+                          leading: const Icon(Icons.edit),
                           title: Text(t.aria.editFile),
                           onTap: () => _editFile(ref, index),
                         ),
