@@ -98,17 +98,22 @@ class TimelineListView extends HookConsumerWidget {
             HapticFeedback.lightImpact();
           }
           if (keepAnimation.value) {
-            if (tabSettings.id != null) {
-              ref
-                  .read(
-                    timelineLastViewedAtNotifierProvider(tabSettings).notifier,
-                  )
-                  .save(note.createdAt);
+            if (controller.offset < 400.0) {
+              if (tabSettings.id != null) {
+                ref
+                    .read(
+                      timelineLastViewedAtNotifierProvider(tabSettings)
+                          .notifier,
+                    )
+                    .save(note.createdAt);
+              }
+              Future<void>.delayed(
+                const Duration(milliseconds: 100),
+                controller.scrollToTop,
+              );
+            } else {
+              keepAnimation.value = false;
             }
-            Future<void>.delayed(
-              const Duration(milliseconds: 100),
-              controller.scrollToTop,
-            );
           } else {
             hasUnread.value = true;
           }
