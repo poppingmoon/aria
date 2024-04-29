@@ -16,17 +16,17 @@ dependencies:
   collection: ^1.18.0
   colorfilter_generator: ^0.0.8
   confetti: ^0.7.0
-  connectivity_plus: ^6.0.2
+  connectivity_plus: ^6.0.3
   dio: ^5.4.3+1
   dotted_border: ^2.1.0
   extended_image: ^8.2.0
   file: ^7.0.0
-  file_picker: ^8.0.1
+  file_picker: ^8.0.3
   flex_color_picker: ^3.4.1
   flutter:
     sdk: flutter
   flutter_blurhash: ^0.8.2
-  flutter_cache_manager: ^3.3.1
+  flutter_cache_manager: ^3.3.2
   flutter_highlighting: ^0.9.0+11.8.0
   flutter_hooks: ^0.20.5
   flutter_html: ^3.0.0-beta.2
@@ -41,16 +41,16 @@ dependencies:
   fluttertoast: ^8.2.5
   freezed_annotation: ^2.4.1
   gal: ^2.3.0
-  go_router: ^13.2.4
+  go_router: ^14.0.1
   highlighting: ^0.9.0+11.8.0
   hooks_riverpod: ^2.5.1
   image: ^4.1.7
   image_compression: ^1.0.5
-  image_editor: ^1.4.0
+  image_editor: ^1.5.0
   image_size_getter: ^2.1.3
   intl: ^0.18.1
   json5: ^0.8.2
-  json_annotation: ^4.8.1
+  json_annotation: ^4.9.0
   just_audio: ^0.9.37
   kana_kit: ^2.0.0
   keyboard_attachable: ^2.2.0
@@ -62,7 +62,7 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 403f958388276be6850dc2901d2eeaac0148bb1f
+      ref: 6a3fa9334004764b136b5ec5c9329ca25e639b4f
   multi_split_view: ^2.4.0
   package_info_plus: ^7.0.0
   photo_view: ^0.15.0
@@ -72,7 +72,7 @@ dependencies:
   reorderable_grid: ^1.0.10
   reorderables: ^0.6.0
   riverpod_annotation: ^2.3.5
-  share_plus: ^8.0.3
+  share_plus: ^9.0.0
   shared_preferences: ^2.2.3
   slang: ^3.30.2
   slang_flutter: ^3.30.0
@@ -99,7 +99,7 @@ dev_dependencies:
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter
-  json_serializable: ^6.7.1
+  json_serializable: ^6.8.0
   lint: ^2.3.0
   riverpod_generator: ^2.4.0
   riverpod_lint: ^2.3.10

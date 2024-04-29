@@ -55,7 +55,7 @@ Map<String, dynamic> _$$DeletedImplToJson(_$DeletedImpl instance) =>
 
 _$PollVotedImpl _$$PollVotedImplFromJson(Map<String, dynamic> json) =>
     _$PollVotedImpl(
-      choice: json['choice'] as int,
+      choice: (json['choice'] as num).toInt(),
       userId: json['userId'] as String,
     );
 

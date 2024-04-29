@@ -8,7 +8,7 @@ part of 'tab_icon.dart';
 
 _$MaterialIconImpl _$$MaterialIconImplFromJson(Map<String, dynamic> json) =>
     _$MaterialIconImpl(
-      codePoint: json['codePoint'] as int,
+      codePoint: (json['codePoint'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$MaterialIconImplToJson(_$MaterialIconImpl instance) =>
