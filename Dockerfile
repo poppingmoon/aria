@@ -1,14 +1,8 @@
 FROM ubuntu:latest
 
-ARG USERNAME=vscode
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
 ARG TARGETARCH
 
 ENV FVM_DIR=/opt/.fvm_flutter
-
-RUN groupadd -o --gid $USER_GID $USERNAME \
-    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
 RUN apt-get update -y \
     && apt-get upgrade -y \

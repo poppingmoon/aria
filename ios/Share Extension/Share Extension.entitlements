@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.com.poppingmoon.aria.ShareExtension</string>
+		<string>group.com.poppingmoon.aria.Share-Extension</string>
 	</array>
 </dict>
 </plist>

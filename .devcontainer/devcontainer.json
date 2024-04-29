@@ -20,5 +20,5 @@
     }
   },
   "postCreateCommand": "fvm install -s && fvm flutter pub get",
-  "remoteUser": "vscode"
+  "remoteUser": "ubuntu"
 }

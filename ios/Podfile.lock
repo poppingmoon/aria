@@ -3,6 +3,9 @@ PODS:
     - Flutter
   - audio_session (0.0.1):
     - Flutter
+  - connectivity_plus (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - DKImagePickerController/Core (4.3.4):
     - DKImagePickerController/ImageDataManager
     - DKImagePickerController/Resource
@@ -87,7 +90,7 @@ PODS:
   - path_provider_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - receive_sharing_intent (1.6.7):
+  - receive_sharing_intent (1.6.8):
     - Flutter
   - SDWebImage (5.19.0):
     - SDWebImage/Core (= 5.19.0)
@@ -116,6 +119,7 @@ PODS:
 DEPENDENCIES:
   - audio_service (from `.symlinks/plugins/audio_service/ios`)
   - audio_session (from `.symlinks/plugins/audio_session/ios`)
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
   - file_picker (from `.symlinks/plugins/file_picker/ios`)
   - Flutter (from `Flutter`)
   - flutter_image_compress_common (from `.symlinks/plugins/flutter_image_compress_common/ios`)
@@ -154,6 +158,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/audio_service/ios"
   audio_session:
     :path: ".symlinks/plugins/audio_session/ios"
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/darwin"
   file_picker:
     :path: ".symlinks/plugins/file_picker/ios"
   Flutter:
@@ -197,7 +203,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   audio_service: f509d65da41b9521a61f1c404dd58651f265a567
-  audio_session: 4f3e461722055d21515cf3261b64c973c062f345
+  audio_session: 088d2483ebd1dc43f51d253d4a1c517d9a2e7207
+  connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
   DKImagePickerController: b512c28220a2b8ac7419f21c491fc8534b7601ac
   DKPhotoGallery: fdfad5125a9fdda9cc57df834d49df790dbb4179
   file_picker: 09aa5ec1ab24135ccd7a1621c46c84134bfd6655
@@ -206,7 +213,7 @@ SPEC CHECKSUMS:
   flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
   flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
   flutter_secure_storage: 23fc622d89d073675f2eaa109381aefbcf5a49be
-  fluttertoast: 31b00dabfa7fb7bacd9e7dbee580d7a2ff4bf265
+  fluttertoast: 9f2f8e81bb5ce18facb9748d7855bf5a756fe3db
   gal: 61e868295d28fe67ffa297fae6dacebf56fd53e1
   image_editor_common: d6f6644ae4a6de80481e89fe6d0a8c49e30b4b43
   integration_test: 13825b8a9334a850581300559b8839134b124670
@@ -214,9 +221,9 @@ SPEC CHECKSUMS:
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   Mantle: c5aa8794a29a022dfbbfc9799af95f477a69b62d
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
-  package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
+  package_info_plus: 58f0028419748fad15bf008b270aaa8e54380b1c
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
-  receive_sharing_intent: 9ca20ae908f83c36ddaaaa8c9bd30ce4700495e8
+  receive_sharing_intent: 6837b01768e567fe8562182397bf43d63d8c6437
   SDWebImage: 981fd7e860af070920f249fd092420006014c3eb
   SDWebImageWebPCoder: c94f09adbca681822edad9e532ac752db713eabf
   share_plus: 8875f4f2500512ea181eef553c3e27dba5135aad
@@ -225,8 +232,8 @@ SPEC CHECKSUMS:
   SwiftyGif: 93a1cc87bf3a51916001cf8f3d63835fb64c819f
   Toast: ec33c32b8688982cecc6348adeae667c1b9938da
   url_launcher_ios: 6116280ddcfe98ab8820085d8d76ae7449447586
-  video_player_avfoundation: 02011213dab73ae3687df27ce441fbbcc82b5579
-  wakelock_plus: 8b09852c8876491e4b6d179e17dfe2a0b5f60d47
+  video_player_avfoundation: 2b4384f3b157206b5e150a0083cdc0c905d260d3
+  wakelock_plus: 78ec7c5b202cab7761af8e2b2b3d0671be6c4ae1
 
 PODFILE CHECKSUM: b4f6a2524c570f4064b4baab0c402e22ad4981d6
 
