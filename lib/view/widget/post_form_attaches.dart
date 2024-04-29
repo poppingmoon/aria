@@ -7,6 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:reorderable_grid/reorderable_grid.dart';
 
+import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
@@ -14,8 +15,12 @@ import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../provider/file_system_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
+import '../dialog/audio_dialog.dart';
+import '../dialog/image_dialog.dart';
 import '../dialog/post_file_editor_dialog.dart';
+import '../dialog/video_dialog.dart';
 import 'post_file_thumbnail.dart';
 
 class PostFormAttaches extends ConsumerWidget {
@@ -140,8 +145,59 @@ class PostFormAttaches extends ConsumerWidget {
                     builder: (context) => ListView(
                       shrinkWrap: true,
                       children: [
+                        ListTile(title: Text(files[index].name)),
+                        const Divider(height: 0.0),
+                        if (files[index].type?.startsWith('image/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.visibility),
+                            title: Text(t.aria.showImage),
+                            onTap: () => showDialog<void>(
+                              context: context,
+                              builder: (context) => ImageDialog(
+                                url: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.url,
+                                  _ => null,
+                                },
+                                file: switch (files[index]) {
+                                  LocalPostFile(:final file) => file,
+                                  _ => null,
+                                },
+                              ),
+                            ),
+                          ),
+                        if (files[index].type?.startsWith('video/') ?? false)
+                          ListTile(
+                            leading: const Icon(Icons.play_arrow),
+                            title: Text(t.aria.playVideo),
+                            onTap: () => showDialog<void>(
+                              context: context,
+                              builder: (context) => VideoDialog(
+                                url: switch (files[index]) {
+                                  DrivePostFile(:final file) => file.url,
+                                  _ => null,
+                                },
+                                file: switch (files[index]) {
+                                  LocalPostFile(:final file) => file,
+                                  _ => null,
+                                },
+                              ),
+                            ),
+                          ),
+                        if (files[index].type?.startsWith('audio/') ?? false)
+                          if (files[index] case DrivePostFile(:final file))
+                            ListTile(
+                              leading: const Icon(Icons.play_arrow),
+                              title: Text(t.aria.playAudio),
+                              onTap: () => showDialog<void>(
+                                context: context,
+                                builder: (context) => AudioDialog(
+                                  account: account,
+                                  file: file,
+                                ),
+                              ),
+                            ),
                         ListTile(
-                          leading: const Icon(Icons.settings),
+                          leading: const Icon(Icons.edit),
                           title: Text(t.aria.editFile),
                           onTap: () => _editFile(ref, index),
                         ),
@@ -197,55 +253,142 @@ class _PostFormAttach extends ConsumerWidget {
       attachesNotifierProvider(account, gallery: gallery)
           .select((files) => files[index]),
     );
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final style = DefaultTextStyle.of(context).style;
 
     return Card(
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: onTap,
-        child: Column(
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            Expanded(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  PostFileThumbnail(file: file, fit: BoxFit.contain),
-                  if (file case LocalPostFile(uploading: true))
-                    const CircularProgressIndicator()
-                  else if (file case LocalPostFile(uploading: false))
-                    IconButton.filled(
-                      color: Theme.of(context).colorScheme.onPrimary,
-                      onPressed: () => ref
-                          .read(
-                            attachesNotifierProvider(
-                              account,
-                              gallery: gallery,
-                            ).notifier,
-                          )
-                          .upload(index),
-                      icon: const Icon(Icons.upload),
-                    ),
-                ],
+            SizedBox.expand(
+              child: PostFileThumbnail(file: file, fit: BoxFit.contain),
+            ),
+            if (file case LocalPostFile(uploading: true))
+              const CircularProgressIndicator()
+            else if (file case LocalPostFile(uploading: false))
+              IconButton.filled(
+                color: Theme.of(context).colorScheme.onPrimary,
+                onPressed: () => ref
+                    .read(
+                      attachesNotifierProvider(
+                        account,
+                        gallery: gallery,
+                      ).notifier,
+                    )
+                    .upload(index),
+                icon: const Icon(Icons.upload),
+              ),
+            Positioned(
+              left: 8.0,
+              top: 8.0,
+              child: DefaultTextStyle.merge(
+                style: style.apply(
+                  color: colors.accentLighten,
+                  fontSizeFactor: 0.8,
+                ),
+                child: Column(
+                  children: [
+                    if (file.type?.startsWith('video/') ?? false)
+                      if (file
+                          case DrivePostFile(file: DriveFile(thumbnailUrl: _?)))
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Colors.black45,
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Tooltip(
+                                message: t.misskey.video,
+                                child: Icon(
+                                  Icons.movie,
+                                  color: colors.accentLighten,
+                                  size: style.lineHeight * 0.8,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    if (file.type case 'image/gif' || 'image/apng')
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.black45,
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
+                          child: const Padding(
+                            padding: EdgeInsets.all(4.0),
+                            child: Text('GIF'),
+                          ),
+                        ),
+                      ),
+                    if (file case PostFile(:final comment?))
+                      if (comment.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: Colors.black45,
+                              borderRadius: BorderRadius.circular(6.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Tooltip(
+                                message: comment,
+                                child: const Text('ALT'),
+                              ),
+                            ),
+                          ),
+                        ),
+                    if (file.isSensitive)
+                      Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.black45,
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Tooltip(
+                              message: t.misskey.sensitive,
+                              child: Icon(
+                                Icons.warning_amber,
+                                color: colors.warn,
+                                size: style.lineHeight * 0.8,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
             ),
-            Row(
-              children: [
-                if (file.isSensitive)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Tooltip(
-                      message: t.misskey.sensitive,
-                      child: const Icon(Icons.warning_amber),
-                    ),
+            Positioned(
+              right: 8.0,
+              bottom: 8.0,
+              child: Opacity(
+                opacity: 0.8,
+                child: IconButton(
+                  style: IconButton.styleFrom(
+                    iconSize: 18.0,
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    foregroundColor: colors.bg,
+                    backgroundColor: colors.fg,
                   ),
-                Expanded(
-                  child: Text(
-                    file.name,
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  onPressed: onTap,
+                  icon: const Icon(Icons.more_horiz),
                 ),
-              ],
+              ),
             ),
           ],
         ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gal/gal.dart';
@@ -11,9 +13,14 @@ import '../../util/future_with_dialog.dart';
 import 'message_dialog.dart';
 
 class ImageDialog extends HookConsumerWidget {
-  const ImageDialog({super.key, required this.url});
+  const ImageDialog({
+    super.key,
+    this.url,
+    this.file,
+  });
 
-  final String url;
+  final String? url;
+  final File? file;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,10 +31,14 @@ class ImageDialog extends HookConsumerWidget {
           direction: DismissDirection.vertical,
           onDismissed: (_) => context.pop(),
           child: PhotoView(
-            imageProvider: CachedNetworkImageProvider(
-              url,
-              cacheManager: ref.watch(cacheManagerProvider),
-            ),
+            imageProvider: file != null
+                ? FileImage(file!) as ImageProvider
+                : url != null
+                    ? CachedNetworkImageProvider(
+                        url!,
+                        cacheManager: ref.watch(cacheManagerProvider),
+                      )
+                    : null,
             backgroundDecoration:
                 const BoxDecoration(color: Colors.transparent),
           ),
@@ -43,36 +54,38 @@ class ImageDialog extends HookConsumerWidget {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: IconButton(
-              style: IconButton.styleFrom(backgroundColor: Colors.white54),
-              onPressed: () async {
-                if (!await Gal.requestAccess()) {
+        if (url != null)
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: IconButton(
+                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+                onPressed: () async {
+                  if (!await Gal.requestAccess()) {
+                    if (!context.mounted) return;
+                    await showMessageDialog(
+                      context,
+                      t.misskey.permissionDeniedError,
+                    );
+                    return;
+                  }
                   if (!context.mounted) return;
-                  await showMessageDialog(
+                  await futureWithDialog(
                     context,
-                    t.misskey.permissionDeniedError,
+                    Future(() async {
+                      final file = await ref
+                          .read(cacheManagerProvider)
+                          .getSingleFile(url!);
+                      await Gal.putImage(file.path);
+                    }),
+                    message: t.aria.downloaded,
                   );
-                  return;
-                }
-                if (!context.mounted) return;
-                await futureWithDialog(
-                  context,
-                  Future(() async {
-                    final file =
-                        await ref.read(cacheManagerProvider).getSingleFile(url);
-                    await Gal.putImage(file.path);
-                  }),
-                  message: t.aria.downloaded,
-                );
-              },
-              icon: const Icon(Icons.save),
+                },
+                icon: const Icon(Icons.save),
+              ),
             ),
           ),
-        ),
       ],
     );
   }

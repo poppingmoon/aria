@@ -1,9 +1,10 @@
+import 'dart:io';
+
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../i18n/strings.g.dart';
@@ -12,9 +13,14 @@ import '../../util/future_with_dialog.dart';
 import 'message_dialog.dart';
 
 class VideoDialog extends ConsumerWidget {
-  const VideoDialog({super.key, required this.file});
+  const VideoDialog({
+    super.key,
+    this.url,
+    this.file,
+  });
 
-  final DriveFile file;
+  final String? url;
+  final File? file;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,7 +30,7 @@ class VideoDialog extends ConsumerWidget {
           key: const ValueKey(0),
           onDismissed: (_) => context.pop(),
           direction: DismissDirection.vertical,
-          child: Center(child: _VideoWidget(url: file.url)),
+          child: Center(child: _VideoWidget(url: url, file: file)),
         ),
         Align(
           alignment: Alignment.topLeft,
@@ -37,46 +43,51 @@ class VideoDialog extends ConsumerWidget {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.topRight,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: IconButton(
-              style: IconButton.styleFrom(backgroundColor: Colors.white54),
-              onPressed: () async {
-                if (!await Gal.requestAccess()) {
+        if (url != null)
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: IconButton(
+                style: IconButton.styleFrom(backgroundColor: Colors.white54),
+                onPressed: () async {
+                  if (!await Gal.requestAccess()) {
+                    if (!context.mounted) return;
+                    await showMessageDialog(
+                      context,
+                      t.misskey.permissionDeniedError,
+                    );
+                    return;
+                  }
                   if (!context.mounted) return;
-                  await showMessageDialog(
+                  await futureWithDialog(
                     context,
-                    t.misskey.permissionDeniedError,
+                    Future(() async {
+                      final file = await ref
+                          .read(cacheManagerProvider)
+                          .getSingleFile(url!);
+                      await Gal.putVideo(file.path);
+                    }),
+                    message: t.aria.downloaded,
                   );
-                  return;
-                }
-                if (!context.mounted) return;
-                await futureWithDialog(
-                  context,
-                  Future(() async {
-                    final file = await ref
-                        .read(cacheManagerProvider)
-                        .getSingleFile(this.file.url);
-                    await Gal.putVideo(file.path);
-                  }),
-                  message: t.aria.downloaded,
-                );
-              },
-              icon: const Icon(Icons.save),
+                },
+                icon: const Icon(Icons.save),
+              ),
             ),
           ),
-        ),
       ],
     );
   }
 }
 
 class _VideoWidget extends StatefulWidget {
-  const _VideoWidget({required this.url});
+  const _VideoWidget({
+    this.url,
+    this.file,
+  });
 
-  final String url;
+  final String? url;
+  final File? file;
 
   @override
   State<_VideoWidget> createState() => _VideoWidgetState();
@@ -101,8 +112,9 @@ class _VideoWidgetState extends State<_VideoWidget> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController =
-        VideoPlayerController.networkUrl(Uri.parse(widget.url));
+    _videoPlayerController = widget.url != null
+        ? VideoPlayerController.networkUrl(Uri.parse(widget.url!))
+        : VideoPlayerController.file(widget.file!);
     await _videoPlayerController.initialize();
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
