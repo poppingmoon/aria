@@ -12,10 +12,11 @@ A [Misskey](https://github.com/misskey-dev/misskey) client app forked from [Miri
 
 ## Download
 
-[release]: https://github.com/poppingmoon/aria/releases/latest
 [fdroid]: https://f-droid.org/packages/com.poppingmoon.aria
+[release]: https://github.com/poppingmoon/aria/releases/latest
+[testflight]: https://testflight.apple.com/join/mfGCrziz
 
-| Android           | iOS            | Windows                  | macOS                    | Linux          |
-| ----------------- | -------------- | ------------------------ | ------------------------ | -------------- |
-| [F-Droid][fdroid] | [IPA][release] | [EXE installer][release] | [DMG Installer][release] | [TAR][release] |
-| [APK][release]    |                | [ZIP][release]           |                          |                |
+| Android           | iOS                      | Windows                  | macOS                    | Linux          |
+| ----------------- | ------------------------ | ------------------------ | ------------------------ | -------------- |
+| [F-Droid][fdroid] | [TestFlight][testflight] | [EXE installer][release] | [DMG Installer][release] | [TAR][release] |
+| [APK][release]    | [IPA][release]           | [ZIP][release]           |                          |                |
