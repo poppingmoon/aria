@@ -7,7 +7,6 @@ import '../../model/account.dart';
 import '../../model/clip_settings.dart';
 import '../../provider/api/clips_notifier_provider.dart';
 import '../../provider/api/favorite_clips_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/clip_settings_dialog.dart';
 import '../widget/clip_preview.dart';
@@ -22,8 +21,6 @@ class ClipsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(clipsNotifierProvider(account));
     final favoriteClips = ref.watch(favoriteClipsNotifierProvider(account));
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return DefaultTabController(
       length: 2,
@@ -50,7 +47,7 @@ class ClipsPage extends ConsumerWidget {
                           width: 800.0,
                           margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: ListTileTheme(
-                            tileColor: colors.panel,
+                            tileColor: Theme.of(context).colorScheme.surface,
                             child: ListView(
                               children: [
                                 Container(
@@ -61,7 +58,8 @@ class ClipsPage extends ConsumerWidget {
                                       topLeft: Radius.circular(8.0),
                                       topRight: Radius.circular(8.0),
                                     ),
-                                    color: colors.panel,
+                                    color:
+                                        Theme.of(context).colorScheme.surface,
                                   ),
                                 ),
                                 ...ListTile.divideTiles(
@@ -83,7 +81,8 @@ class ClipsPage extends ConsumerWidget {
                                       bottomLeft: Radius.circular(8.0),
                                       bottomRight: Radius.circular(8.0),
                                     ),
-                                    color: colors.panel,
+                                    color:
+                                        Theme.of(context).colorScheme.surface,
                                   ),
                                 ),
                               ],
@@ -107,7 +106,7 @@ class ClipsPage extends ConsumerWidget {
                           width: 800.0,
                           margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: ListTileTheme(
-                            tileColor: colors.panel,
+                            tileColor: Theme.of(context).colorScheme.surface,
                             child: ListView(
                               children: [
                                 Container(
@@ -118,7 +117,8 @@ class ClipsPage extends ConsumerWidget {
                                       topLeft: Radius.circular(8.0),
                                       topRight: Radius.circular(8.0),
                                     ),
-                                    color: colors.panel,
+                                    color:
+                                        Theme.of(context).colorScheme.surface,
                                   ),
                                 ),
                                 ...ListTile.divideTiles(
@@ -140,7 +140,8 @@ class ClipsPage extends ConsumerWidget {
                                       bottomLeft: Radius.circular(8.0),
                                       bottomRight: Radius.circular(8.0),
                                     ),
-                                    color: colors.panel,
+                                    color:
+                                        Theme.of(context).colorScheme.surface,
                                   ),
                                 ),
                               ],

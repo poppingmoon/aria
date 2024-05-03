@@ -5,7 +5,6 @@ import '../../../constant/colors.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/image_dialog.dart';
 import '../../widget/image_widget.dart';
@@ -31,8 +30,6 @@ class ChannelHome extends ConsumerWidget {
     }
     final bannerUrl = channel.bannerUrl?.toString();
     final description = channel.description;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: () =>
@@ -190,7 +187,7 @@ class ChannelHome extends ConsumerWidget {
                     width: 800.0,
                     margin: const EdgeInsets.all(8.0),
                     child: Card(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       elevation: 0.0,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -232,7 +229,7 @@ class ChannelHome extends ConsumerWidget {
                 width: 800.0,
                 margin: const EdgeInsets.all(8.0),
                 child: Card(
-                  color: colors.panel,
+                  color: Theme.of(context).colorScheme.surface,
                   elevation: 0.0,
                   clipBehavior: Clip.hardEdge,
                   child: NoteWidget(

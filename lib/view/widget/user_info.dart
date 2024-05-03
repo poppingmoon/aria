@@ -8,7 +8,6 @@ import '../../extension/user_detailed_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import 'acct_widget.dart';
 import 'mfm.dart';
 import 'shake_widget.dart';
@@ -32,12 +31,10 @@ class UserInfo extends ConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.squareAvatars),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
 
     return Card(
-      color: colors.panel,
+      color: Theme.of(context).colorScheme.surface,
       elevation: 0.0,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
@@ -77,7 +74,7 @@ class UserInfo extends ConsumerWidget {
                     decoration: BoxDecoration(
                       border: Border.all(
                         width: 4.0,
-                        color: colors.panel,
+                        color: Theme.of(context).colorScheme.surface,
                         strokeAlign: BorderSide.strokeAlignOutside,
                       ),
                       borderRadius:
@@ -133,7 +130,7 @@ class UserInfo extends ConsumerWidget {
                         Text(
                           NumberFormat().format(user.notesCount),
                           style: TextStyle(
-                            color: colors.accent,
+                            color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -158,13 +155,16 @@ class UserInfo extends ConsumerWidget {
                             Text(
                               NumberFormat().format(user.followingCount),
                               style: TextStyle(
-                                color: colors.accent,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
                               ),
                             )
                           else
                             ShakeWidget(
-                              child: Icon(Icons.lock, color: colors.accent),
+                              child: Icon(
+                                Icons.lock,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                         ],
                       ),
@@ -188,13 +188,16 @@ class UserInfo extends ConsumerWidget {
                             Text(
                               NumberFormat().format(user.followersCount),
                               style: TextStyle(
-                                color: colors.accent,
+                                color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.bold,
                               ),
                             )
                           else
                             ShakeWidget(
-                              child: Icon(Icons.lock, color: colors.accent),
+                              child: Icon(
+                                Icons.lock,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
                             ),
                         ],
                       ),

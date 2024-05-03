@@ -16,7 +16,6 @@ import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
@@ -131,8 +130,6 @@ class PostForm extends HookConsumerWidget {
           [],
         )
     }}';
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Shortcuts(
       shortcuts: {
@@ -141,7 +138,7 @@ class PostForm extends HookConsumerWidget {
       },
       child: DecoratedBox(
         decoration: BoxDecoration(
-          color: colors.panel,
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
               color: switch (Theme.of(context).brightness) {

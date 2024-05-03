@@ -11,7 +11,6 @@ import '../../model/account.dart';
 import '../../model/streaming/main_event.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -76,8 +75,6 @@ class FollowRequestsListView extends HookConsumerWidget {
       },
       [],
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -110,13 +107,13 @@ class FollowRequestsListView extends HookConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ),
                   SliverList.separated(
                     itemBuilder: (context, index) => Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: FollowRequestTile(
                         account: account,
                         user: nextRequests.value[index],
@@ -135,7 +132,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) => Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: FollowRequestTile(
                         account: account,
                         user: requests.value!.items[index].follower,
@@ -155,7 +152,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                             bottomLeft: Radius.circular(8.0),
                             bottomRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ),

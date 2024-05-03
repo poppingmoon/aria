@@ -77,8 +77,6 @@ class NotificationsListView extends HookConsumerWidget {
         }
       }
     });
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -112,13 +110,13 @@ class NotificationsListView extends HookConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ),
                   SliverList.separated(
                     itemBuilder: (context, index) => Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: NotificationWidget(
                         account: account,
                         notification: nextNotifications.value[index],
@@ -142,7 +140,7 @@ class NotificationsListView extends HookConsumerWidget {
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) => Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: NotificationWidget(
                         account: account,
                         notification: notifications.value!.items[index],
@@ -173,7 +171,7 @@ class NotificationsListView extends HookConsumerWidget {
                             bottomLeft: Radius.circular(8.0),
                             bottomRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ),
@@ -213,7 +211,7 @@ class _NewNotificationsDivider extends ConsumerWidget {
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return ColoredBox(
-      color: colors.panel,
+      color: Theme.of(context).colorScheme.surface,
       child: Row(
         children: [
           Expanded(child: Divider(color: colors.accent, thickness: 2.0)),

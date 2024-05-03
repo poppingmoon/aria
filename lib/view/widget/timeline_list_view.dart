@@ -12,7 +12,6 @@ import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
@@ -162,8 +161,6 @@ class TimelineListView extends HookConsumerWidget {
       },
       [centerId],
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -218,14 +215,14 @@ class TimelineListView extends HookConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                         child: const SizedBox(height: 8.0),
                       ),
                     ),
                   SliverList.separated(
                     itemBuilder: (context, index) => Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: TimelineNote(
                         tabSettings: tabSettings,
                         noteId: nextNotes
@@ -266,7 +263,7 @@ class TimelineListView extends HookConsumerWidget {
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) => Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: TimelineNote(
                         tabSettings: tabSettings,
                         noteId: previousNotes.valueOrNull!.items[index].id,
@@ -298,7 +295,7 @@ class TimelineListView extends HookConsumerWidget {
                             bottomLeft: Radius.circular(8.0),
                             bottomRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ),
@@ -359,24 +356,31 @@ class _NewNotesDivider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
-
     return ColoredBox(
-      color: colors.panel,
+      color: Theme.of(context).colorScheme.surface,
       child: Row(
         children: [
-          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
+          Expanded(
+            child: Divider(
+              color: Theme.of(context).colorScheme.primary,
+              thickness: 2.0,
+            ),
+          ),
           Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 8.0,
             ),
             child: Text(
               t.aria.newNotes,
-              style: TextStyle(color: colors.accent),
+              style: TextStyle(color: Theme.of(context).colorScheme.primary),
             ),
           ),
-          Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
+          Expanded(
+            child: Divider(
+              color: Theme.of(context).colorScheme.primary,
+              thickness: 2.0,
+            ),
+          ),
         ],
       ),
     );

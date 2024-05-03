@@ -6,7 +6,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/lists_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import '../widget/error_message.dart';
@@ -20,8 +19,6 @@ class ListsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account));
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.lists)),
@@ -35,7 +32,7 @@ class ListsPage extends ConsumerWidget {
                     width: 800.0,
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ListTileTheme(
-                      tileColor: colors.panel,
+                      tileColor: Theme.of(context).colorScheme.surface,
                       child: ListView(
                         children: [
                           Container(
@@ -46,7 +43,7 @@ class ListsPage extends ConsumerWidget {
                                 topLeft: Radius.circular(8.0),
                                 topRight: Radius.circular(8.0),
                               ),
-                              color: colors.panel,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                           ),
                           ...ListTile.divideTiles(
@@ -72,7 +69,7 @@ class ListsPage extends ConsumerWidget {
                                 bottomLeft: Radius.circular(8.0),
                                 bottomRight: Radius.circular(8.0),
                               ),
-                              color: colors.panel,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                           ),
                         ],

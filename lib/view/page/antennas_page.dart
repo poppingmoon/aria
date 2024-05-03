@@ -6,7 +6,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
 import '../../provider/api/antennas_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../dialog/antenna_settings_dialog.dart';
 import '../widget/error_message.dart';
 
@@ -18,8 +17,6 @@ class AntennasPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final antennas = ref.watch(antennasNotifierProvider(account));
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.antennas)),
@@ -33,7 +30,7 @@ class AntennasPage extends ConsumerWidget {
                     width: 800.0,
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: ListTileTheme(
-                      tileColor: colors.panel,
+                      tileColor: Theme.of(context).colorScheme.surface,
                       child: ListView(
                         children: [
                           Container(
@@ -44,7 +41,7 @@ class AntennasPage extends ConsumerWidget {
                                 topLeft: Radius.circular(8.0),
                                 topRight: Radius.circular(8.0),
                               ),
-                              color: colors.panel,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                           ),
                           ...ListTile.divideTiles(
@@ -72,7 +69,7 @@ class AntennasPage extends ConsumerWidget {
                                 bottomLeft: Radius.circular(8.0),
                                 bottomRight: Radius.circular(8.0),
                               ),
-                              color: colors.panel,
+                              color: Theme.of(context).colorScheme.surface,
                             ),
                           ),
                         ],

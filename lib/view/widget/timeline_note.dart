@@ -7,7 +7,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/streaming/note_update_event.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/appear_note_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_is_deleted_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
@@ -57,11 +56,9 @@ class TimelineNote extends HookConsumerWidget {
     }
     if (!tabSettings.withSensitive) {
       final muted = useState(appearNote.containsSensitiveFile);
-      final colors =
-          ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
       if (muted.value) {
         return Material(
-          color: colors.panel,
+          color: Theme.of(context).colorScheme.surface,
           child: InkWell(
             onTap: () => muted.value = false,
             child: Padding(

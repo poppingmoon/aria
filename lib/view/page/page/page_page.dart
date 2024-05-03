@@ -11,7 +11,6 @@ import '../../../model/account.dart';
 import '../../../provider/api/page_provider.dart';
 import '../../../provider/api/post_notifier_provider.dart';
 import '../../../provider/api/user_pages_notifier_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/extract_url.dart';
 import '../../dialog/image_dialog.dart';
@@ -111,8 +110,6 @@ class PagePage extends ConsumerWidget {
       account.host,
       '@${page.valueOrNull?.user.username}/pages/${page.valueOrNull?.name}',
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(
@@ -175,7 +172,7 @@ class PagePage extends ConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: InkWell(
@@ -200,7 +197,7 @@ class PagePage extends ConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                         clipBehavior: Clip.antiAlias,
                       ),
@@ -228,21 +225,24 @@ class PagePage extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      tileColor: colors.panel,
+                      tileColor: Theme.of(context).colorScheme.surface,
                     ),
                     ...page.content.map(
                       (block) => Material(
-                        color: colors.panel,
+                        color: Theme.of(context).colorScheme.surface,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: _buildBlock(context, page, block),
                         ),
                       ),
                     ),
-                    ColoredBox(color: colors.panel, child: const Divider()),
+                    ColoredBox(
+                      color: Theme.of(context).colorScheme.surface,
+                      child: const Divider(),
+                    ),
                     Container(
                       padding: const EdgeInsets.all(8.0),
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: Row(
                         children: [
                           LikeButton(
@@ -306,9 +306,12 @@ class PagePage extends ConsumerWidget {
                         ],
                       ),
                     ),
-                    ColoredBox(color: colors.panel, child: const Divider()),
+                    ColoredBox(
+                      color: Theme.of(context).colorScheme.surface,
+                      child: const Divider(),
+                    ),
                     Material(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: UserTile(
                         account: account,
                         user: page.user,
@@ -319,10 +322,13 @@ class PagePage extends ConsumerWidget {
                             context.push('/$account/users/${page.user.id}'),
                       ),
                     ),
-                    ColoredBox(color: colors.panel, child: const Divider()),
+                    ColoredBox(
+                      color: Theme.of(context).colorScheme.surface,
+                      child: const Divider(),
+                    ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       child: DefaultTextStyle.merge(
                         style: TextStyle(
                           color: Theme.of(context)
@@ -349,7 +355,7 @@ class PagePage extends ConsumerWidget {
                     if (page.updatedAt != page.createdAt)
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        color: colors.panel,
+                        color: Theme.of(context).colorScheme.surface,
                         child: DefaultTextStyle.merge(
                           style: TextStyle(
                             color: Theme.of(context)
@@ -381,7 +387,7 @@ class PagePage extends ConsumerWidget {
                           bottomLeft: Radius.circular(8.0),
                           bottomRight: Radius.circular(8.0),
                         ),
-                        color: colors.panel,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                     AdWidget(account: account),
