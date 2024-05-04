@@ -37,10 +37,7 @@ part 'emoji_url_provider.g.dart';
         ],
       );
   final meta = ref.watch(metaProvider(account)).valueOrNull;
-  if (meta == null) {
-    return (rawUrl.toString(), rawUrl.toString());
-  }
-  final mediaProxy = meta.mediaProxy;
+  final mediaProxy = meta?.mediaProxy;
   final proxyUrl = (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
       Uri.https(account.host, 'proxy');
   final proxied = proxyUrl.replace(

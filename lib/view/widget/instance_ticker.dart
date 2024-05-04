@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
+import '../../provider/api/meta_provider.dart';
 import '../../util/safe_parse_color.dart';
 import 'image_widget.dart';
 
-class InstanceTicker extends StatelessWidget {
+class InstanceTicker extends ConsumerWidget {
   const InstanceTicker({
     super.key,
     required this.account,
@@ -19,11 +21,21 @@ class InstanceTicker extends StatelessWidget {
   final String host;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final color =
         safeParseColor(instance.themeColor) ?? const Color(0xff777777);
     final style = DefaultTextStyle.of(context).style;
     final faviconUrl = instance.faviconUrl;
+    final mediaProxy = ref.watch(metaProvider(account)).valueOrNull?.mediaProxy;
+    final mediaProxyUrl =
+        (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
+            Uri.https(account.host, 'proxy');
+    final proxiedUrl = faviconUrl != null
+        ? mediaProxyUrl.replace(
+            pathSegments: [...mediaProxyUrl.pathSegments, 'preview.webp'],
+            queryParameters: {'url': faviconUrl.toString()},
+          )
+        : null;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -47,10 +59,10 @@ class InstanceTicker extends StatelessWidget {
             width: double.infinity,
             child: Row(
               children: [
-                if (faviconUrl != null) ...[
+                if (proxiedUrl != null) ...[
                   ImageWidget(
                     height: style.fontSize! + 2.0,
-                    url: faviconUrl.toString(),
+                    url: proxiedUrl.toString(),
                   ),
                   const SizedBox(width: 4.0),
                 ],
