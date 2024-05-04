@@ -3,7 +3,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../model/account.dart';
-import '../../provider/misskey_colors_provider.dart';
 import 'image_widget.dart';
 import 'mfm.dart';
 import 'user_avatar.dart';
@@ -23,11 +22,8 @@ class PagePreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
-
     return Card(
-      color: colors.panel,
+      color: Theme.of(context).colorScheme.surface,
       elevation: 0.0,
       clipBehavior: Clip.antiAlias,
       child: InkWell(

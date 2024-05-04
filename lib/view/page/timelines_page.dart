@@ -102,11 +102,10 @@ class TimelinesPage extends HookConsumerWidget {
       [],
     );
     final isLargeScreen = MediaQuery.sizeOf(context).width > 1200.0;
-    final hideDrawer = useState(false);
 
     return Row(
       children: [
-        if (isLargeScreen && !hideDrawer.value)
+        if (isLargeScreen)
           DrawerTheme(
             data: const DrawerThemeData(
               elevation: 0.0,

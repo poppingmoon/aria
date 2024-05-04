@@ -8,6 +8,7 @@ import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/installed_misskey_colors_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../dialog/radio_dialog.dart';
+import '../../widget/general_settings_scaffold.dart';
 import '../../widget/theme_mode_widget.dart';
 
 class ThemePage extends ConsumerWidget {
@@ -20,10 +21,8 @@ class ThemePage extends ConsumerWidget {
     final darkColors = ref.watch(misskeyColorsProvider(Brightness.dark));
     final installedColors = ref.watch(installedMisskeyColorsProvider);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(t.misskey.theme),
-      ),
+    return GeneralSettingsScaffold(
+      appBar: AppBar(title: Text(t.misskey.theme)),
       body: ListView(
         children: [
           ListTile(
@@ -104,6 +103,7 @@ class ThemePage extends ConsumerWidget {
           ),
         ],
       ),
+      selectedDestination: GeneralSettingsDestination.theme,
     );
   }
 }

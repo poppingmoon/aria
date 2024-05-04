@@ -22,6 +22,7 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
       brightness: colors.isDark ? Brightness.dark : Brightness.light,
       primary: colors.accent,
       onPrimary: colors.fgOnAccent,
+      surface: colors.panel,
       onSurface: colors.fg,
       onSurfaceVariant: colors.fg,
       background: colors.bg,

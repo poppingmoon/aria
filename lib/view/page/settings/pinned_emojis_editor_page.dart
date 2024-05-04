@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
+import '../../widget/account_settings_scaffold.dart';
 import '../../widget/pinned_emojis_editor.dart';
 
 class PinnedEmojisEditorPage extends ConsumerWidget {
@@ -12,7 +13,8 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return AccountSettingsScaffold(
+      account: account,
       appBar: AppBar(title: Text(t.misskey.emojiPicker)),
       body: ListView(
         children: [
@@ -20,6 +22,7 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
           PinnedEmojisEditor(account: account),
         ],
       ),
+      selectedDestination: AccountSettingsDestination.emojiPicker,
     );
   }
 }

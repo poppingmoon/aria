@@ -5,7 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/user_lists_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../widget/error_message.dart';
 
 class UserLists extends ConsumerWidget {
@@ -21,8 +20,6 @@ class UserLists extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(userListsProvider(account, userId));
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(userListsProvider(account, userId).future),
@@ -36,7 +33,7 @@ class UserLists extends ConsumerWidget {
                 width: 800.0,
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: ListTileTheme(
-                  tileColor: colors.panel,
+                  tileColor: Theme.of(context).colorScheme.surface,
                   child: ListView(
                     children: [
                       Container(
@@ -47,7 +44,7 @@ class UserLists extends ConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       ...ListTile.divideTiles(
@@ -71,7 +68,7 @@ class UserLists extends ConsumerWidget {
                             bottomLeft: Radius.circular(8.0),
                             bottomRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ],

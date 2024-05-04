@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/pagination_state.dart';
 import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/misskey_colors_provider.dart';
 import 'pagination_bottom_widget.dart';
 
 class PaginatedListView<T> extends HookConsumerWidget {
@@ -51,8 +50,6 @@ class PaginatedListView<T> extends HookConsumerWidget {
       },
       [],
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return RefreshIndicator(
       onRefresh: onRefresh ?? () async {},
@@ -78,13 +75,15 @@ class PaginatedListView<T> extends HookConsumerWidget {
                               topLeft: Radius.circular(8.0),
                               topRight: Radius.circular(8.0),
                             ),
-                            color: colors.panel,
+                            color: Theme.of(context).colorScheme.surface,
                           ),
                         ),
                       ),
                     SliverList.separated(
                       itemBuilder: (context, index) => Material(
-                        color: panel ? colors.panel : null,
+                        color: panel
+                            ? Theme.of(context).colorScheme.surface
+                            : null,
                         child: itemBuilder(context, items[index]),
                       ),
                       separatorBuilder: (context, index) => panel
@@ -102,7 +101,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
                               bottomLeft: Radius.circular(8.0),
                               bottomRight: Radius.circular(8.0),
                             ),
-                            color: colors.panel,
+                            color: Theme.of(context).colorScheme.surface,
                           ),
                         ),
                       ),

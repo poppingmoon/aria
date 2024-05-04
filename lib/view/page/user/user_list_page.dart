@@ -8,7 +8,6 @@ import '../../../model/account.dart';
 import '../../../provider/api/list_provider.dart';
 import '../../../provider/api/list_users_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
@@ -33,8 +32,6 @@ class UserListPage extends HookConsumerWidget {
         ref.watch(listUsersProvider(account, listId, forPublic: true));
     final isLiked = list?.isLiked ?? false;
     final likedCount = list?.likedCount ?? 0;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(title: Text(list?.name ?? '')),
@@ -43,7 +40,7 @@ class UserListPage extends HookConsumerWidget {
           width: 800.0,
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           child: ListTileTheme(
-            tileColor: colors.panel,
+            tileColor: Theme.of(context).colorScheme.surface,
             child: ListView(
               children: [
                 Padding(
@@ -59,7 +56,7 @@ class UserListPage extends HookConsumerWidget {
                             topLeft: Radius.circular(8.0),
                             topRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                       ...ListTile.divideTiles(
@@ -81,7 +78,7 @@ class UserListPage extends HookConsumerWidget {
                             bottomLeft: Radius.circular(8.0),
                             bottomRight: Radius.circular(8.0),
                           ),
-                          color: colors.panel,
+                          color: Theme.of(context).colorScheme.surface,
                         ),
                       ),
                     ],

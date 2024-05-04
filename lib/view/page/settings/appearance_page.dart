@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../widget/general_settings_scaffold.dart';
 
 class AppearancePage extends HookConsumerWidget {
   const AppearancePage({super.key});
@@ -11,7 +12,7 @@ class AppearancePage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
 
-    return Scaffold(
+    return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.appearance)),
       body: ListView(
         children: [
@@ -108,6 +109,7 @@ class AppearancePage extends HookConsumerWidget {
           ),
         ],
       ),
+      selectedDestination: GeneralSettingsDestination.appearance,
     );
   }
 }

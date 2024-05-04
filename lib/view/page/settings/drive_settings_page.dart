@@ -12,6 +12,7 @@ import '../../../provider/api/drive_folder_provider.dart';
 import '../../../provider/api/drive_stats_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
+import '../../widget/account_settings_scaffold.dart';
 import '../../widget/key_value_widget.dart';
 import '../drive_page.dart';
 
@@ -36,7 +37,8 @@ class DriveSettingsPage extends ConsumerWidget {
             .valueOrNull
         : null;
 
-    return Scaffold(
+    return AccountSettingsScaffold(
+      account: account,
       appBar: AppBar(title: Text(t.misskey.drive)),
       body: ListView(
         children: [
@@ -158,6 +160,7 @@ class DriveSettingsPage extends ConsumerWidget {
           ],
         ],
       ),
+      selectedDestination: AccountSettingsDestination.drive,
     );
   }
 }

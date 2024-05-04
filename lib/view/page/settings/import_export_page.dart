@@ -27,6 +27,7 @@ import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/message_dialog.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
+import '../../widget/general_settings_scaffold.dart';
 import '../drive_page.dart';
 
 class ImportExportPage extends ConsumerWidget {
@@ -91,7 +92,7 @@ class ImportExportPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
 
-    return Scaffold(
+    return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.importAndExport)),
       body: ListView(
         children: [
@@ -285,6 +286,7 @@ class ImportExportPage extends ConsumerWidget {
           ),
         ],
       ),
+      selectedDestination: GeneralSettingsDestination.importExport,
     );
   }
 }

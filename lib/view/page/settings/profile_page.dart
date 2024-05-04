@@ -25,6 +25,7 @@ import '../../../util/navigate.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/field_dialog.dart';
 import '../../dialog/radio_dialog.dart';
+import '../../widget/account_settings_scaffold.dart';
 import '../../widget/error_message.dart';
 import '../../widget/file_picker_sheet.dart';
 import '../../widget/key_value_widget.dart';
@@ -158,7 +159,8 @@ class ProfilePage extends HookConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Scaffold(
+    return AccountSettingsScaffold(
+      account: account,
       appBar: AppBar(
         title: Text(t.misskey.profile),
         actions: [
@@ -656,6 +658,7 @@ class ProfilePage extends HookConsumerWidget {
           ErrorMessage(error: error, stackTrace: stackTrace),
         _ => const Center(child: CircularProgressIndicator()),
       },
+      selectedDestination: AccountSettingsDestination.profile,
     );
   }
 }
