@@ -12,6 +12,7 @@ import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/message_dialog.dart';
+import '../../widget/account_settings_scaffold.dart';
 
 class MuteBlockPage extends HookConsumerWidget {
   const MuteBlockPage({super.key, required this.account});
@@ -107,7 +108,8 @@ class MuteBlockPage extends HookConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Scaffold(
+    return AccountSettingsScaffold(
+      account: account,
       appBar: AppBar(title: Text(t.misskey.muteAndBlock)),
       body: ListView(
         children: [
@@ -285,6 +287,7 @@ class MuteBlockPage extends HookConsumerWidget {
           ),
         ],
       ),
+      selectedDestination: AccountSettingsDestination.muteBlock,
     );
   }
 }

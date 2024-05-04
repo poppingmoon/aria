@@ -15,9 +15,9 @@ import '../../../model/account.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/cache_manager_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/asset_cache_manager.dart';
 import '../../dialog/radio_dialog.dart';
+import '../../widget/general_settings_scaffold.dart';
 import '../../widget/note_widget.dart';
 
 class NoteDisplayPage extends HookConsumerWidget {
@@ -47,10 +47,8 @@ class NoteDisplayPage extends HookConsumerWidget {
         maxNoteFooterScale,
       ),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Scaffold(
+    return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.displayOfNote)),
       body: MultiSplitViewTheme(
         data: MultiSplitViewThemeData(
@@ -365,7 +363,9 @@ class NoteDisplayPage extends HookConsumerWidget {
                     onPressed: () {
                       noteFooterScale.value = 1.0;
                       ref
-                          .read(generalSettingsNotifierProvider.notifier)
+                          .read(
+                            generalSettingsNotifierProvider.notifier,
+                          )
                           .setNoteFooterScale(1.0);
                     },
                     icon: const Icon(Icons.refresh),
@@ -374,99 +374,96 @@ class NoteDisplayPage extends HookConsumerWidget {
               ],
             ),
             SingleChildScrollView(
-              child: Center(
-                child: Card(
-                  margin: const EdgeInsets.all(8.0),
-                  color: colors.panel,
-                  elevation: 0.0,
-                  child: ProviderScope(
-                    overrides: [
-                      cacheManagerProvider
-                          .overrideWithValue(AssetCacheManager()),
-                    ],
-                    child: SizedBox(
-                      width: 800.0,
-                      child: NoteWidget(
-                        account: const Account(host: '', username: ''),
-                        noteId: '',
-                        note: Note(
+              child: Card(
+                margin: const EdgeInsets.all(8.0),
+                color: Theme.of(context).colorScheme.surface,
+                elevation: 0.0,
+                child: ProviderScope(
+                  overrides: [
+                    cacheManagerProvider.overrideWithValue(AssetCacheManager()),
+                  ],
+                  child: SizedBox(
+                    width: 800.0,
+                    child: NoteWidget(
+                      account: const Account(host: '', username: ''),
+                      noteId: '',
+                      note: Note(
+                        id: '',
+                        createdAt: DateTime.now(),
+                        text: r'$[jelly.speed=2s $[x4 🍮]]',
+                        user: UserLite(
                           id: '',
-                          createdAt: DateTime.now(),
-                          text: r'$[jelly.speed=2s $[x4 🍮]]',
+                          username: 'user',
+                          avatarUrl: Uri(
+                            path:
+                                'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🫠')}.svg',
+                          ),
+                          avatarDecorations: [
+                            const UserAvatarDecoration(
+                              id: '',
+                              url: Assets.flower,
+                            ),
+                          ],
+                        ),
+                        userId: '',
+                        visibility: NoteVisibility.public,
+                        renoteCount: 0,
+                        repliesCount: 0,
+                        reactionCount: 55,
+                        reactions: defaultPinnedEmojis.asMap().map(
+                              (key, value) => MapEntry(value, key + 1),
+                            ),
+                        fileIds: [],
+                        files: [
+                          DriveFile(
+                            id: '',
+                            createdAt: DateTime.now(),
+                            name: '',
+                            type: 'image/webp',
+                            md5: '',
+                            size: 0,
+                            isSensitive: false,
+                            properties: const DriveFileProperties(),
+                            thumbnailUrl: Assets.bird.path,
+                            url: Assets.bird.path,
+                          ),
+                          DriveFile(
+                            id: '',
+                            createdAt: DateTime.now(),
+                            name: '',
+                            type: 'image/webp',
+                            md5: '',
+                            size: 0,
+                            isSensitive: true,
+                            properties: const DriveFileProperties(),
+                            thumbnailUrl: Assets.cat.path,
+                            url: Assets.cat.path,
+                          ),
+                        ],
+                        renoteId: '',
+                        renote: Note(
+                          id: '',
+                          createdAt:
+                              DateTime.now().subtract(const Duration(hours: 1)),
+                          text: 'just setting up my msky',
                           user: UserLite(
                             id: '',
-                            username: 'user',
+                            username: 'admin',
                             avatarUrl: Uri(
                               path:
-                                  'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🫠')}.svg',
+                                  'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🌆')}.svg',
                             ),
-                            avatarDecorations: [
-                              const UserAvatarDecoration(
-                                id: '',
-                                url: Assets.flower,
-                              ),
-                            ],
                           ),
                           userId: '',
                           visibility: NoteVisibility.public,
-                          renoteCount: 0,
+                          renoteCount: 1,
                           repliesCount: 0,
                           reactionCount: 55,
-                          reactions: defaultPinnedEmojis
-                              .asMap()
-                              .map((key, value) => MapEntry(value, key + 1)),
-                          fileIds: [],
-                          files: [
-                            DriveFile(
-                              id: '',
-                              createdAt: DateTime.now(),
-                              name: '',
-                              type: 'image/webp',
-                              md5: '',
-                              size: 0,
-                              isSensitive: false,
-                              properties: const DriveFileProperties(),
-                              thumbnailUrl: Assets.bird.path,
-                              url: Assets.bird.path,
-                            ),
-                            DriveFile(
-                              id: '',
-                              createdAt: DateTime.now(),
-                              name: '',
-                              type: 'image/webp',
-                              md5: '',
-                              size: 0,
-                              isSensitive: true,
-                              properties: const DriveFileProperties(),
-                              thumbnailUrl: Assets.cat.path,
-                              url: Assets.cat.path,
-                            ),
-                          ],
-                          renoteId: '',
-                          renote: Note(
-                            id: '',
-                            createdAt: DateTime.now()
-                                .subtract(const Duration(hours: 1)),
-                            text: 'just setting up my msky',
-                            user: UserLite(
-                              id: '',
-                              username: 'admin',
-                              avatarUrl: Uri(
-                                path:
-                                    'packages/twemoji_v2/assets/svg/${TwemojiUtils.toUnicode('🌆')}.svg',
+                          reactions: defaultPinnedEmojis.asMap().map(
+                                (key, value) => MapEntry(value, key + 1),
                               ),
-                            ),
-                            userId: '',
-                            visibility: NoteVisibility.public,
-                            renoteCount: 1,
-                            repliesCount: 0,
-                            reactionCount: 55,
-                            reactions: defaultPinnedEmojis
-                                .asMap()
-                                .map((key, value) => MapEntry(value, key + 1)),
-                            fileIds: [],
-                            files: [],
-                          ),
+                          fileIds: [],
+                          files: [],
                         ),
                       ),
                     ),
@@ -477,6 +474,7 @@ class NoteDisplayPage extends HookConsumerWidget {
           ],
         ),
       ),
+      selectedDestination: GeneralSettingsDestination.noteDisplay,
     );
   }
 }

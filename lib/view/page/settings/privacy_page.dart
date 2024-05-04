@@ -8,6 +8,7 @@ import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/radio_dialog.dart';
+import '../../widget/account_settings_scaffold.dart';
 import '../../widget/ff_visibility_widget.dart';
 import '../../widget/note_visibility_widget.dart';
 import '../../widget/reaction_acceptance_widget.dart';
@@ -22,7 +23,8 @@ class PrivacyPage extends ConsumerWidget {
     final settings = ref.watch(accountSettingsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
 
-    return Scaffold(
+    return AccountSettingsScaffold(
+      account: account,
       appBar: AppBar(title: Text(t.misskey.privacy)),
       body: ListView(
         children: [
@@ -244,6 +246,7 @@ class PrivacyPage extends ConsumerWidget {
           ),
         ],
       ),
+      selectedDestination: AccountSettingsDestination.privacy,
     );
   }
 }

@@ -6,8 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/timeline_tabs_notifier_provider.dart';
+import '../../widget/general_settings_scaffold.dart';
 import '../../widget/reorderable_drag_start_listener_wrapper.dart';
 import '../../widget/tab_icon_widget.dart';
 import '../../widget/tab_type_widget.dart';
@@ -18,10 +18,9 @@ class TabsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tabs = ref.watch(timelineTabsNotifierProvider);
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Scaffold(
+    return GeneralSettingsScaffold(
+      selectedDestination: GeneralSettingsDestination.tabs,
       appBar: AppBar(title: Text(t.aria.tabs)),
       body: tabs.isEmpty
           ? Center(child: Text(t.aria.noTabs))
@@ -33,13 +32,16 @@ class TabsPage extends HookConsumerWidget {
                     key: ValueKey(index),
                     index: index,
                     child: Card(
-                      color: colors.panel,
+                      color: Theme.of(context).colorScheme.surface,
                       elevation: 0.0,
+                      clipBehavior: Clip.hardEdge,
                       child: ListTile(
                         leading: TabIconWidget(tabSettings: tabSettings),
                         title: tabSettings.name != null
                             ? Text(tabSettings.name ?? '')
-                            : TabTypeWidget(tabType: tabSettings.tabType),
+                            : TabTypeWidget(
+                                tabType: tabSettings.tabType,
+                              ),
                         subtitle: Text(tabSettings.account.toString()),
                         trailing: const Icon(Icons.drag_handle),
                         onTap: () =>
@@ -81,6 +83,7 @@ class TabsPage extends HookConsumerWidget {
         icon: const Icon(Icons.add),
         label: Text(t.aria.addTab),
       ),
+      bodyMargin: const EdgeInsets.symmetric(horizontal: 8.0),
     );
   }
 }

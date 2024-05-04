@@ -19,109 +19,118 @@ class AboutAriaPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.aria.aboutAria)),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(16.0),
-                  child: Assets.a.image(width: 80.0, height: 80.0),
-                ),
-                const Text('Aria'),
-                FutureBuilder(
-                  future: PackageInfo.fromPlatform(),
-                  builder: (context, snapshot) {
-                    if (snapshot case AsyncSnapshot(:final data?)) {
-                      return Text(data.version);
-                    } else {
-                      return const SizedBox.shrink();
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(
-              child: Text.rich(
-                t.aria.acknowledgements(
-                  miria: WidgetSpan(
-                    alignment: PlaceholderAlignment.baseline,
-                    baseline: TextBaseline.alphabetic,
-                    child: InkWell(
-                      onTap: () => launchUrl(
-                        Uri.https('github.com', 'shiosyakeyakini-info/miria'),
-                      ),
-                      onLongPress: () => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => const UrlSheet(
-                          url: 'https://github.com/shiosyakeyakini-info/miria',
-                        ),
-                      ),
-                      child: Text(
-                        'Miria',
-                        style: TextStyle(color: colors.link),
-                      ),
+      body: Center(
+        child: SizedBox(
+          width: 800.0,
+          child: ListView(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Assets.a.image(width: 80.0, height: 80.0),
                     ),
-                  ),
-                  misskey: WidgetSpan(
-                    alignment: PlaceholderAlignment.baseline,
-                    baseline: TextBaseline.alphabetic,
-                    child: InkWell(
-                      onTap: () => launchUrl(
-                        Uri.https('github.com', 'misskey-dev/misskey'),
-                      ),
-                      onLongPress: () => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => const UrlSheet(
-                          url: 'https://github.com/misskey-dev/misskey',
+                    const Text('Aria'),
+                    FutureBuilder(
+                      future: PackageInfo.fromPlatform(),
+                      builder: (context, snapshot) {
+                        if (snapshot case AsyncSnapshot(:final data?)) {
+                          return Text(data.version);
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Text.rich(
+                    t.aria.acknowledgements(
+                      miria: WidgetSpan(
+                        alignment: PlaceholderAlignment.baseline,
+                        baseline: TextBaseline.alphabetic,
+                        child: InkWell(
+                          onTap: () => launchUrl(
+                            Uri.https(
+                              'github.com',
+                              'shiosyakeyakini-info/miria',
+                            ),
+                          ),
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const UrlSheet(
+                              url:
+                                  'https://github.com/shiosyakeyakini-info/miria',
+                            ),
+                          ),
+                          child: Text(
+                            'Miria',
+                            style: TextStyle(color: colors.link),
+                          ),
                         ),
                       ),
-                      child: Text(
-                        'Misskey',
-                        style: TextStyle(color: colors.link),
+                      misskey: WidgetSpan(
+                        alignment: PlaceholderAlignment.baseline,
+                        baseline: TextBaseline.alphabetic,
+                        child: InkWell(
+                          onTap: () => launchUrl(
+                            Uri.https('github.com', 'misskey-dev/misskey'),
+                          ),
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => const UrlSheet(
+                              url: 'https://github.com/misskey-dev/misskey',
+                            ),
+                          ),
+                          child: Text(
+                            'Misskey',
+                            style: TextStyle(color: colors.link),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.code),
-            title: Text(t.misskey.aboutMisskey_.source),
-            onTap: () => launchUrl(
-              Uri.https('github.com', 'poppingmoon/aria'),
-              mode: LaunchMode.externalApplication,
-            ),
-          ),
-          ListTile(
-            leading: const Icon(Icons.alternate_email),
-            title: Text(t.misskey.contact),
-            onTap: () => context.push('/misskey.io/users/9qaqpdbgn1nk03sc'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.list),
-            title: Text(t.misskey.license),
-            onTap: () async {
-              final packageInfo = await PackageInfo.fromPlatform();
-              if (!context.mounted) return;
-              showLicensePage(
-                context: context,
-                applicationVersion: packageInfo.version,
-                applicationIcon: ClipRRect(
-                  borderRadius: BorderRadius.circular(16.0),
-                  child: Assets.a.image(width: 80.0, height: 80.0),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.code),
+                title: Text(t.misskey.aboutMisskey_.source),
+                onTap: () => launchUrl(
+                  Uri.https('github.com', 'poppingmoon/aria'),
+                  mode: LaunchMode.externalApplication,
                 ),
-                applicationLegalese: 'Licensed under AGPL v3',
-              );
-            },
+              ),
+              ListTile(
+                leading: const Icon(Icons.alternate_email),
+                title: Text(t.misskey.contact),
+                onTap: () => context.push('/misskey.io/users/9qaqpdbgn1nk03sc'),
+              ),
+              ListTile(
+                leading: const Icon(Icons.list),
+                title: Text(t.misskey.license),
+                onTap: () async {
+                  final packageInfo = await PackageInfo.fromPlatform();
+                  if (!context.mounted) return;
+                  showLicensePage(
+                    context: context,
+                    applicationVersion: packageInfo.version,
+                    applicationIcon: ClipRRect(
+                      borderRadius: BorderRadius.circular(16.0),
+                      child: Assets.a.image(width: 80.0, height: 80.0),
+                    ),
+                    applicationLegalese: 'Licensed under AGPL v3',
+                  );
+                },
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -7,7 +7,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
+import '../../widget/general_settings_scaffold.dart';
 import '../../widget/reorderable_drag_start_listener_wrapper.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/username_widget.dart';
@@ -18,10 +18,8 @@ class AccountsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsNotifierProvider);
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Scaffold(
+    return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.accounts)),
       body: accounts.isEmpty
           ? Center(child: Text(t.aria.noAccounts))
@@ -33,8 +31,9 @@ class AccountsPage extends HookConsumerWidget {
                   key: ValueKey(index),
                   index: index,
                   child: Card(
-                    color: colors.panel,
+                    color: Theme.of(context).colorScheme.surface,
                     elevation: 0.0,
+                    clipBehavior: Clip.hardEdge,
                     child: ListTile(
                       leading: i != null
                           ? UserAvatar(account: account, user: i, size: 40.0)
@@ -74,6 +73,8 @@ class AccountsPage extends HookConsumerWidget {
         icon: const Icon(Icons.add),
         label: Text(t.misskey.addAccount),
       ),
+      bodyMargin: const EdgeInsets.symmetric(horizontal: 8.0),
+      selectedDestination: GeneralSettingsDestination.accounts,
     );
   }
 }

@@ -6,6 +6,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../dialog/radio_dialog.dart';
+import '../../widget/general_settings_scaffold.dart';
 
 class BehaviorPage extends ConsumerWidget {
   const BehaviorPage({super.key});
@@ -14,7 +15,7 @@ class BehaviorPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
 
-    return Scaffold(
+    return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.behavior)),
       body: ListView(
         children: [
@@ -171,6 +172,7 @@ class BehaviorPage extends ConsumerWidget {
           ),
         ],
       ),
+      selectedDestination: GeneralSettingsDestination.behavior,
     );
   }
 }

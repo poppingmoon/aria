@@ -201,124 +201,216 @@ class TabSettingsPage extends HookConsumerWidget {
               ),
           ],
         ),
-        body: ListView(
-          children: [
-            ListTile(
-              title: Text(t.misskey.account),
-              subtitle: account.value != null
-                  ? Text(account.value.toString())
-                  : Text(
-                      t.misskey.pleaseSelect,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.error,
+        body: Center(
+          child: SizedBox(
+            width: 800.0,
+            child: ListView(
+              children: [
+                ListTile(
+                  title: Text(t.misskey.account),
+                  subtitle: account.value != null
+                      ? Text(account.value.toString())
+                      : Text(
+                          t.misskey.pleaseSelect,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.error,
+                          ),
+                        ),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showDialog<Account>(
+                      context: context,
+                      builder: (context) => AccountSelectDialog(
+                        initialAccount: account.value,
                       ),
-                    ),
-              trailing: const Icon(Icons.navigate_next),
-              onTap: () async {
-                final result = await showDialog<Account>(
-                  context: context,
-                  builder: (context) => AccountSelectDialog(
-                    initialAccount: account.value,
-                  ),
-                );
-                if (!context.mounted) return;
-                if (result != null) {
-                  if (account.value != result) {
-                    tabSettings.value = tabSettings.value.copyWith(
-                      listId: null,
-                      antennaId: null,
                     );
-                    if (account.value?.host != result.host) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        roleId: null,
-                        channelId: null,
-                        userId: null,
-                      );
-                    }
-                    account.value = result;
-                    if (result.isGuest) {
-                      if (tabType
-                          case TabType.homeTimeline ||
-                              TabType.hybridTimeline ||
-                              TabType.roleTimeline ||
-                              TabType.userList ||
-                              TabType.antenna ||
-                              TabType.mention ||
-                              TabType.direct) {
-                        tabSettings.value = tabSettings.value
-                            .copyWith(tabType: TabType.localTimeline);
-                      }
-                      if (tabSettings.value.icon == null) {
-                        final meta = await futureWithDialog(
-                          context,
-                          ref.read(metaProvider(result).future),
+                    if (!context.mounted) return;
+                    if (result != null) {
+                      if (account.value != result) {
+                        tabSettings.value = tabSettings.value.copyWith(
+                          listId: null,
+                          antennaId: null,
                         );
-                        if (meta case MetaResponse(:final iconUrl?)) {
+                        if (account.value?.host != result.host) {
                           tabSettings.value = tabSettings.value.copyWith(
-                            icon: ImageIcon(url: iconUrl.toString()),
+                            roleId: null,
+                            channelId: null,
+                            userId: null,
                           );
+                        }
+                        account.value = result;
+                        if (result.isGuest) {
+                          if (tabType
+                              case TabType.homeTimeline ||
+                                  TabType.hybridTimeline ||
+                                  TabType.roleTimeline ||
+                                  TabType.userList ||
+                                  TabType.antenna ||
+                                  TabType.mention ||
+                                  TabType.direct) {
+                            tabSettings.value = tabSettings.value
+                                .copyWith(tabType: TabType.localTimeline);
+                          }
+                          if (tabSettings.value.icon == null) {
+                            final meta = await futureWithDialog(
+                              context,
+                              ref.read(metaProvider(result).future),
+                            );
+                            if (meta case MetaResponse(:final iconUrl?)) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                icon: ImageIcon(url: iconUrl.toString()),
+                              );
+                            }
+                          }
                         }
                       }
                     }
-                  }
-                }
-              },
-            ),
-            ListTile(
-              title: Text(t.aria.tabType),
-              subtitle: TabTypeWidget(tabType: tabType),
-              trailing: const Icon(Icons.navigate_next),
-              onTap: () async {
-                final i = account.value != null
-                    ? await futureWithDialog(
-                        context,
-                        ref.read(iNotifierProvider(account.value!).future),
-                      )
-                    : null;
-                if (!context.mounted) return;
-                final meta = account.value != null
-                    ? await futureWithDialog(
-                        context,
-                        ref.read(metaProvider(account.value!).future),
-                      )
-                    : null;
-                if (!context.mounted) return;
-                final result = await showRadioDialog(
-                  context,
+                  },
+                ),
+                ListTile(
                   title: Text(t.aria.tabType),
-                  values: TabType.values.where(
-                    (tabType) => switch (tabType) {
-                      TabType.homeTimeline ||
-                      TabType.roleTimeline ||
-                      TabType.userList ||
-                      TabType.antenna ||
-                      TabType.mention ||
-                      TabType.direct ||
-                      TabType.notifications =>
-                        !(account.value?.isGuest ?? true),
-                      TabType.localTimeline => account.value?.isGuest ?? true
-                          ? meta?.policies?.ltlAvailable ?? true
-                          : i?.policies?.ltlAvailable ?? true,
-                      TabType.hybridTimeline =>
-                        !(account.value?.isGuest ?? true) &&
-                            (i?.policies?.ltlAvailable ?? true),
-                      TabType.globalTimeline => account.value?.isGuest ?? true
-                          ? meta?.policies?.gtlAvailable ?? true
-                          : i?.policies?.gtlAvailable ?? true,
-                      TabType.channel || TabType.user || TabType.custom => true,
-                    },
-                  ),
-                  initialValue: tabType,
-                  itemBuilder: (context, value) =>
-                      TabTypeWidget(tabType: value),
-                );
-                if (!ref.context.mounted) return;
-                if (result != null) {
-                  tabSettings.value =
-                      tabSettings.value.copyWith(tabType: result);
-                  if (account case ValueNotifier(value: final account?)) {
-                    switch (result) {
-                      case TabType.roleTimeline:
+                  subtitle: TabTypeWidget(tabType: tabType),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final i = account.value != null
+                        ? await futureWithDialog(
+                            context,
+                            ref.read(iNotifierProvider(account.value!).future),
+                          )
+                        : null;
+                    if (!context.mounted) return;
+                    final meta = account.value != null
+                        ? await futureWithDialog(
+                            context,
+                            ref.read(metaProvider(account.value!).future),
+                          )
+                        : null;
+                    if (!context.mounted) return;
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.aria.tabType),
+                      values: TabType.values.where(
+                        (tabType) => switch (tabType) {
+                          TabType.homeTimeline ||
+                          TabType.roleTimeline ||
+                          TabType.userList ||
+                          TabType.antenna ||
+                          TabType.mention ||
+                          TabType.direct ||
+                          TabType.notifications =>
+                            !(account.value?.isGuest ?? true),
+                          TabType.localTimeline =>
+                            account.value?.isGuest ?? true
+                                ? meta?.policies?.ltlAvailable ?? true
+                                : i?.policies?.ltlAvailable ?? true,
+                          TabType.hybridTimeline =>
+                            !(account.value?.isGuest ?? true) &&
+                                (i?.policies?.ltlAvailable ?? true),
+                          TabType.globalTimeline =>
+                            account.value?.isGuest ?? true
+                                ? meta?.policies?.gtlAvailable ?? true
+                                : i?.policies?.gtlAvailable ?? true,
+                          TabType.channel ||
+                          TabType.user ||
+                          TabType.custom =>
+                            true,
+                        },
+                      ),
+                      initialValue: tabType,
+                      itemBuilder: (context, value) =>
+                          TabTypeWidget(tabType: value),
+                    );
+                    if (!ref.context.mounted) return;
+                    if (result != null) {
+                      tabSettings.value =
+                          tabSettings.value.copyWith(tabType: result);
+                      if (account case ValueNotifier(value: final account?)) {
+                        switch (result) {
+                          case TabType.roleTimeline:
+                            final result =
+                                await _selectRole(ref, account, role);
+                            if (result != null) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                roleId: result.id,
+                                name: tabSettings.value.name ?? result.name,
+                              );
+                            }
+                          case TabType.userList:
+                            final result = await _selectList(
+                              ref,
+                              account,
+                              list != null
+                                  ? UsersList.fromJson(list.toJson())
+                                  : null,
+                            );
+                            if (result != null) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                listId: result.id,
+                                name: tabSettings.value.name ?? result.name,
+                              );
+                            }
+                          case TabType.antenna:
+                            final result =
+                                await _selectAntenna(ref, account, antenna);
+                            if (result != null) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                antennaId: result.id,
+                                name: tabSettings.value.name ?? result.name,
+                              );
+                            }
+                          case TabType.channel:
+                            final result = await showDialog<CommunityChannel>(
+                              context: context,
+                              builder: (context) => ChannelsPage(
+                                account: account,
+                                onChannelTap: (channel) => context.pop(channel),
+                                initialIndex: account.isGuest ? 1 : 2,
+                              ),
+                            );
+                            if (result != null) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                channelId: result.id,
+                                name: tabSettings.value.name ?? result.name,
+                              );
+                            }
+                          case TabType.user:
+                            final result = await selectUser(
+                              context,
+                              account,
+                              includeSelf: true,
+                            );
+                            if (result != null) {
+                              tabSettings.value = tabSettings.value.copyWith(
+                                userId: result.id,
+                                name: tabSettings.value.name ?? result.acct,
+                                icon: tabSettings.value.icon ??
+                                    (result.avatarUrl != null
+                                        ? ImageIcon(
+                                            url: result.avatarUrl.toString(),
+                                          )
+                                        : null),
+                              );
+                            }
+                          default:
+                        }
+                      }
+                    }
+                  },
+                ),
+                if (tabType == TabType.roleTimeline)
+                  ListTile(
+                    title: Text(t.misskey.role),
+                    subtitle: roleId != null
+                        ? Text(role?.name ?? '')
+                        : Text(
+                            t.misskey.pleaseSelect,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      if (account case ValueNotifier(value: final account?)) {
                         final result = await _selectRole(ref, account, role);
                         if (result != null) {
                           tabSettings.value = tabSettings.value.copyWith(
@@ -326,7 +418,23 @@ class TabSettingsPage extends HookConsumerWidget {
                             name: tabSettings.value.name ?? result.name,
                           );
                         }
-                      case TabType.userList:
+                      }
+                    },
+                  )
+                else if (tabType == TabType.userList)
+                  ListTile(
+                    title: Text(t.misskey.userList),
+                    subtitle: listId != null
+                        ? Text(list?.name ?? '')
+                        : Text(
+                            t.misskey.pleaseSelect,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      if (account case ValueNotifier(value: final account?)) {
                         final result = await _selectList(
                           ref,
                           account,
@@ -340,7 +448,23 @@ class TabSettingsPage extends HookConsumerWidget {
                             name: tabSettings.value.name ?? result.name,
                           );
                         }
-                      case TabType.antenna:
+                      }
+                    },
+                  )
+                else if (tabType == TabType.antenna)
+                  ListTile(
+                    title: Text(t.misskey.antennas),
+                    subtitle: antennaId != null
+                        ? Text(antenna?.name ?? '')
+                        : Text(
+                            t.misskey.pleaseSelect,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      if (account case ValueNotifier(value: final account?)) {
                         final result =
                             await _selectAntenna(ref, account, antenna);
                         if (result != null) {
@@ -349,7 +473,23 @@ class TabSettingsPage extends HookConsumerWidget {
                             name: tabSettings.value.name ?? result.name,
                           );
                         }
-                      case TabType.channel:
+                      }
+                    },
+                  )
+                else if (tabType == TabType.channel)
+                  ListTile(
+                    title: Text(t.misskey.channel),
+                    subtitle: tabSettings.value.channelId != null
+                        ? Text(channel?.name ?? '')
+                        : Text(
+                            t.misskey.pleaseSelect,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      if (account case ValueNotifier(value: final account?)) {
                         final result = await showDialog<CommunityChannel>(
                           context: context,
                           builder: (context) => ChannelsPage(
@@ -364,12 +504,24 @@ class TabSettingsPage extends HookConsumerWidget {
                             name: tabSettings.value.name ?? result.name,
                           );
                         }
-                      case TabType.user:
-                        final result = await selectUser(
-                          context,
-                          account,
-                          includeSelf: true,
-                        );
+                      }
+                    },
+                  )
+                else if (tabType == TabType.user)
+                  ListTile(
+                    title: Text(t.misskey.user),
+                    subtitle: user != null && account.value != null
+                        ? UsernameWidget(account: account.value!, user: user)
+                        : Text(
+                            userId != null ? '' : t.misskey.pleaseSelect,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.error,
+                            ),
+                          ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      if (account case ValueNotifier(value: final account?)) {
+                        final result = await selectUser(context, account);
                         if (result != null) {
                           tabSettings.value = tabSettings.value.copyWith(
                             userId: result.id,
@@ -382,290 +534,163 @@ class TabSettingsPage extends HookConsumerWidget {
                                     : null),
                           );
                         }
-                      default:
-                    }
-                  }
-                }
-              },
-            ),
-            if (tabType == TabType.roleTimeline)
-              ListTile(
-                title: Text(t.misskey.role),
-                subtitle: roleId != null
-                    ? Text(role?.name ?? '')
-                    : Text(
-                        t.misskey.pleaseSelect,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  if (account case ValueNotifier(value: final account?)) {
-                    final result = await _selectRole(ref, account, role);
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        roleId: result.id,
-                        name: tabSettings.value.name ?? result.name,
-                      );
-                    }
-                  }
-                },
-              )
-            else if (tabType == TabType.userList)
-              ListTile(
-                title: Text(t.misskey.userList),
-                subtitle: listId != null
-                    ? Text(list?.name ?? '')
-                    : Text(
-                        t.misskey.pleaseSelect,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  if (account case ValueNotifier(value: final account?)) {
-                    final result = await _selectList(
-                      ref,
-                      account,
-                      list != null ? UsersList.fromJson(list.toJson()) : null,
-                    );
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        listId: result.id,
-                        name: tabSettings.value.name ?? result.name,
-                      );
-                    }
-                  }
-                },
-              )
-            else if (tabType == TabType.antenna)
-              ListTile(
-                title: Text(t.misskey.antennas),
-                subtitle: antennaId != null
-                    ? Text(antenna?.name ?? '')
-                    : Text(
-                        t.misskey.pleaseSelect,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  if (account case ValueNotifier(value: final account?)) {
-                    final result = await _selectAntenna(ref, account, antenna);
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        antennaId: result.id,
-                        name: tabSettings.value.name ?? result.name,
-                      );
-                    }
-                  }
-                },
-              )
-            else if (tabType == TabType.channel)
-              ListTile(
-                title: Text(t.misskey.channel),
-                subtitle: tabSettings.value.channelId != null
-                    ? Text(channel?.name ?? '')
-                    : Text(
-                        t.misskey.pleaseSelect,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  if (account case ValueNotifier(value: final account?)) {
-                    final result = await showDialog<CommunityChannel>(
-                      context: context,
-                      builder: (context) => ChannelsPage(
-                        account: account,
-                        onChannelTap: (channel) => context.pop(channel),
-                        initialIndex: account.isGuest ? 1 : 2,
-                      ),
-                    );
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        channelId: result.id,
-                        name: tabSettings.value.name ?? result.name,
-                      );
-                    }
-                  }
-                },
-              )
-            else if (tabType == TabType.user)
-              ListTile(
-                title: Text(t.misskey.user),
-                subtitle: user != null && account.value != null
-                    ? UsernameWidget(account: account.value!, user: user)
-                    : Text(
-                        userId != null ? '' : t.misskey.pleaseSelect,
-                        style: TextStyle(
-                          color: Theme.of(context).colorScheme.error,
-                        ),
-                      ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  if (account case ValueNotifier(value: final account?)) {
-                    final result = await selectUser(context, account);
-                    if (result != null) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        userId: result.id,
-                        name: tabSettings.value.name ?? result.acct,
-                        icon: tabSettings.value.icon ??
-                            (result.avatarUrl != null
-                                ? ImageIcon(url: result.avatarUrl.toString())
-                                : null),
-                      );
-                    }
-                  }
-                },
-              )
-            else if (tabType == TabType.custom) ...[
-              ListTile(
-                title: Text(t.aria.endpoint),
-                subtitle: Text(
-                  tabSettings.value.endpoint != null
-                      ? tabSettings.value.endpoint!
-                      : t.misskey.notSet,
-                ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await showTextFieldDialog(
-                    context,
+                      }
+                    },
+                  )
+                else if (tabType == TabType.custom) ...[
+                  ListTile(
                     title: Text(t.aria.endpoint),
-                    initialText: tabSettings.value.endpoint,
-                    decoration:
-                        const InputDecoration(hintText: 'notes/timeline'),
-                  );
-                  if (result != null) {
-                    if (!context.mounted) return;
-                    if (RegExp(r'^[\w\/\-]{0,50}$').hasMatch(result)) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        endpoint: result.isNotEmpty ? result : null,
+                    subtitle: Text(
+                      tabSettings.value.endpoint != null
+                          ? tabSettings.value.endpoint!
+                          : t.misskey.notSet,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showTextFieldDialog(
+                        context,
+                        title: Text(t.aria.endpoint),
+                        initialText: tabSettings.value.endpoint,
+                        decoration:
+                            const InputDecoration(hintText: 'notes/timeline'),
                       );
-                    } else {
-                      await showMessageDialog(context, t.misskey.invalidValue);
-                    }
-                  }
-                },
-              ),
-              ListTile(
-                title: Text(t.aria.streamingChannel),
-                subtitle: Text(
-                  tabSettings.value.streamingChannel != null
-                      ? tabSettings.value.streamingChannel!
-                      : t.misskey.notSet,
-                ),
-                trailing: const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await showTextFieldDialog(
-                    context,
+                      if (result != null) {
+                        if (!context.mounted) return;
+                        if (RegExp(r'^[\w\/\-]{0,50}$').hasMatch(result)) {
+                          tabSettings.value = tabSettings.value.copyWith(
+                            endpoint: result.isNotEmpty ? result : null,
+                          );
+                        } else {
+                          await showMessageDialog(
+                            context,
+                            t.misskey.invalidValue,
+                          );
+                        }
+                      }
+                    },
+                  ),
+                  ListTile(
                     title: Text(t.aria.streamingChannel),
-                    initialText: tabSettings.value.streamingChannel,
-                    decoration: const InputDecoration(hintText: 'homeTimeline'),
-                  );
-                  if (result != null) {
-                    if (!context.mounted) return;
-                    if (RegExp(r'^\w{0,50}$').hasMatch(result)) {
-                      tabSettings.value = tabSettings.value.copyWith(
-                        streamingChannel: result.isNotEmpty ? result : null,
+                    subtitle: Text(
+                      tabSettings.value.streamingChannel != null
+                          ? tabSettings.value.streamingChannel!
+                          : t.misskey.notSet,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showTextFieldDialog(
+                        context,
+                        title: Text(t.aria.streamingChannel),
+                        initialText: tabSettings.value.streamingChannel,
+                        decoration:
+                            const InputDecoration(hintText: 'homeTimeline'),
                       );
-                    } else {
-                      await showMessageDialog(context, t.misskey.invalidValue);
-                    }
-                  }
-                },
-              ),
-            ],
-            ListTile(
-              title: Text(t.aria.tabName),
-              subtitle: Text(
-                tabSettings.value.name != null
-                    ? tabSettings.value.name!
-                    : t.misskey.notSet,
-              ),
-              trailing: const Icon(Icons.navigate_next),
-              onTap: () async {
-                final result = await showTextFieldDialog(
-                  context,
+                      if (result != null) {
+                        if (!context.mounted) return;
+                        if (RegExp(r'^\w{0,50}$').hasMatch(result)) {
+                          tabSettings.value = tabSettings.value.copyWith(
+                            streamingChannel: result.isNotEmpty ? result : null,
+                          );
+                        } else {
+                          await showMessageDialog(
+                            context,
+                            t.misskey.invalidValue,
+                          );
+                        }
+                      }
+                    },
+                  ),
+                ],
+                ListTile(
                   title: Text(t.aria.tabName),
-                  initialText: tabSettings.value.name,
-                );
-                if (result != null) {
-                  tabSettings.value = tabSettings.value
-                      .copyWith(name: result.isNotEmpty ? result : null);
-                }
-              },
-            ),
-            ListTile(
-              title: Text(t.misskey.icon),
-              subtitle: tabSettings.value.icon != null
-                  ? null
-                  : Text(t.misskey.notSet),
-              trailing: tabSettings.value.icon != null
-                  ? TabIconWidget(tabSettings: tabSettings.value)
-                  : const Icon(Icons.navigate_next),
-              onTap: () async {
-                final result = await showDialog<TabIcon>(
-                  context: context,
-                  builder: (context) =>
-                      IconSelectDialog(account: account.value),
-                );
-                if (result != null) {
-                  tabSettings.value = tabSettings.value.copyWith(icon: result);
-                }
-              },
-            ),
-            if (tabType != TabType.notifications) ...[
-              if (tabType != TabType.user)
-                SwitchListTile(
-                  title: Text(t.misskey.disableStreamingTimeline),
-                  value: tabSettings.value.disableStreaming,
-                  onChanged: (value) => tabSettings.value =
-                      tabSettings.value.copyWith(disableStreaming: value),
+                  subtitle: Text(
+                    tabSettings.value.name != null
+                        ? tabSettings.value.name!
+                        : t.misskey.notSet,
+                  ),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showTextFieldDialog(
+                      context,
+                      title: Text(t.aria.tabName),
+                      initialText: tabSettings.value.name,
+                    );
+                    if (result != null) {
+                      tabSettings.value = tabSettings.value
+                          .copyWith(name: result.isNotEmpty ? result : null);
+                    }
+                  },
                 ),
-              SwitchListTile(
-                title: Text(t.aria.disableSubscribingNotes),
-                value: tabSettings.value.disableSubscribing,
-                onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(disableSubscribing: value),
-              ),
-              if (tabType case TabType.localTimeline || TabType.hybridTimeline)
-                SwitchListTile(
-                  title: Text(t.misskey.showRepliesToOthersInTimeline),
-                  value: tabSettings.value.withReplies,
-                  onChanged: (value) => tabSettings.value =
-                      tabSettings.value.copyWith(withReplies: value),
+                ListTile(
+                  title: Text(t.misskey.icon),
+                  subtitle: tabSettings.value.icon != null
+                      ? null
+                      : Text(t.misskey.notSet),
+                  trailing: tabSettings.value.icon != null
+                      ? TabIconWidget(tabSettings: tabSettings.value)
+                      : const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showDialog<TabIcon>(
+                      context: context,
+                      builder: (context) =>
+                          IconSelectDialog(account: account.value),
+                    );
+                    if (result != null) {
+                      tabSettings.value =
+                          tabSettings.value.copyWith(icon: result);
+                    }
+                  },
                 ),
-              SwitchListTile(
-                title: Text(t.misskey.showRenotes),
-                value: tabSettings.value.withRenotes,
-                onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(withRenotes: value),
-              ),
-              SwitchListTile(
-                title: Text(t.aria.showSelfRenotes),
-                value: tabSettings.value.withSelfRenotes,
-                onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(withSelfRenotes: value),
-              ),
-              SwitchListTile(
-                title: Text(t.misskey.fileAttachedOnly),
-                value: tabSettings.value.withFiles,
-                onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(withFiles: value),
-              ),
-              SwitchListTile(
-                title: Text(t.misskey.withSensitive),
-                value: tabSettings.value.withSensitive,
-                onChanged: (value) => tabSettings.value =
-                    tabSettings.value.copyWith(withSensitive: value),
-              ),
-            ],
-          ],
+                if (tabType != TabType.notifications) ...[
+                  if (tabType != TabType.user)
+                    SwitchListTile(
+                      title: Text(t.misskey.disableStreamingTimeline),
+                      value: tabSettings.value.disableStreaming,
+                      onChanged: (value) => tabSettings.value =
+                          tabSettings.value.copyWith(disableStreaming: value),
+                    ),
+                  SwitchListTile(
+                    title: Text(t.aria.disableSubscribingNotes),
+                    value: tabSettings.value.disableSubscribing,
+                    onChanged: (value) => tabSettings.value =
+                        tabSettings.value.copyWith(disableSubscribing: value),
+                  ),
+                  if (tabType
+                      case TabType.localTimeline || TabType.hybridTimeline)
+                    SwitchListTile(
+                      title: Text(t.misskey.showRepliesToOthersInTimeline),
+                      value: tabSettings.value.withReplies,
+                      onChanged: (value) => tabSettings.value =
+                          tabSettings.value.copyWith(withReplies: value),
+                    ),
+                  SwitchListTile(
+                    title: Text(t.misskey.showRenotes),
+                    value: tabSettings.value.withRenotes,
+                    onChanged: (value) => tabSettings.value =
+                        tabSettings.value.copyWith(withRenotes: value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.aria.showSelfRenotes),
+                    value: tabSettings.value.withSelfRenotes,
+                    onChanged: (value) => tabSettings.value =
+                        tabSettings.value.copyWith(withSelfRenotes: value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.misskey.fileAttachedOnly),
+                    value: tabSettings.value.withFiles,
+                    onChanged: (value) => tabSettings.value =
+                        tabSettings.value.copyWith(withFiles: value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.misskey.withSensitive),
+                    value: tabSettings.value.withSensitive,
+                    onChanged: (value) => tabSettings.value =
+                        tabSettings.value.copyWith(withSensitive: value),
+                  ),
+                ],
+              ],
+            ),
+          ),
         ),
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Theme.of(context)
