@@ -21,9 +21,9 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       advancedMfm: json['advancedMfm'] as bool? ?? true,
       showReactionsCount: json['showReactionsCount'] as bool? ?? false,
       loadRawImages: json['loadRawImages'] as bool? ?? false,
-      emojiStyle:
-          $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
-              EmojiStyle.twemoji,
+      instanceTicker: $enumDecodeNullable(
+              _$InstanceTickerEnumMap, json['instanceTicker']) ??
+          InstanceTicker.remote,
       showNoteCreatedAt: json['showNoteCreatedAt'] as bool? ?? false,
       showAvatarsInNote: json['showAvatarsInNote'] as bool? ?? true,
       showAvatarsInSubNote: json['showAvatarsInSubNote'] as bool? ?? true,
@@ -42,6 +42,9 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['showSubNoteReactionsViewer'] as bool? ?? false,
       showNoteFooter: json['showNoteFooter'] as bool? ?? true,
       showSubNoteFooter: json['showSubNoteFooter'] as bool? ?? false,
+      emojiStyle:
+          $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
+              EmojiStyle.twemoji,
       fontFamily: json['fontFamily'] as String?,
       fontSize: (json['fontSize'] as num?)?.toDouble() ?? defaultFontSize,
       reactionsDisplayScale:
@@ -111,7 +114,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['advancedMfm'] = instance.advancedMfm;
   val['showReactionsCount'] = instance.showReactionsCount;
   val['loadRawImages'] = instance.loadRawImages;
-  val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
+  val['instanceTicker'] = _$InstanceTickerEnumMap[instance.instanceTicker]!;
   val['showNoteCreatedAt'] = instance.showNoteCreatedAt;
   val['showAvatarsInNote'] = instance.showAvatarsInNote;
   val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
@@ -126,6 +129,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showSubNoteReactionsViewer'] = instance.showSubNoteReactionsViewer;
   val['showNoteFooter'] = instance.showNoteFooter;
   val['showSubNoteFooter'] = instance.showSubNoteFooter;
+  val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
   writeNotNull('fontFamily', instance.fontFamily);
   val['fontSize'] = instance.fontSize;
   val['reactionsDisplayScale'] = instance.reactionsDisplayScale;
@@ -202,6 +206,12 @@ const _$SensitiveMediaDisplayEnumMap = {
   SensitiveMediaDisplay.respect: 'respect',
   SensitiveMediaDisplay.ignore: 'ignore',
   SensitiveMediaDisplay.force: 'force',
+};
+
+const _$InstanceTickerEnumMap = {
+  InstanceTicker.none: 'none',
+  InstanceTicker.remote: 'remote',
+  InstanceTicker.always: 'always',
 };
 
 const _$EmojiStyleEnumMap = {

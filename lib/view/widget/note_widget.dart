@@ -24,7 +24,7 @@ import '../../util/navigate.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
 import 'emoji_sheet.dart';
-import 'instance_ticker.dart';
+import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
 import 'note_footer.dart';
@@ -172,6 +172,16 @@ class NoteWidget extends HookConsumerWidget {
     final isLong =
         note.cw == null && ref.watch(noteIsLongProvider(account, noteId));
     final isCollapsed = useState(appearNote.cw == null && isLong);
+    final showTicker = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => switch (settings.instanceTicker) {
+          InstanceTicker.none => false,
+          InstanceTicker.remote =>
+            appearNote.user.instance != null && appearNote.user.host != null,
+          InstanceTicker.always => true,
+        },
+      ),
+    );
     final renoteCollapsed = useState(
       ref.watch(
             generalSettingsNotifierProvider
@@ -302,14 +312,13 @@ class NoteWidget extends HookConsumerWidget {
                               note: appearNote,
                               showDate: showDate,
                             ),
-                            if (appearNote.user
-                                case User(:final instance?, :final host?))
+                            if (showTicker)
                               DefaultTextStyle.merge(
                                 style: style.apply(fontSizeFactor: 0.9),
-                                child: InstanceTicker(
+                                child: InstanceTickerWidget(
                                   account: account,
-                                  instance: instance,
-                                  host: host,
+                                  instance: appearNote.user.instance,
+                                  host: appearNote.user.host,
                                 ),
                               ),
                             if (appearNote case Note(:final cw?)) ...[

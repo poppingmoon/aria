@@ -148,32 +148,37 @@ class NoteDisplayPage extends HookConsumerWidget {
                       .read(generalSettingsNotifierProvider.notifier)
                       .setLoadRawImages(value),
                 ),
+
                 ListTile(
-                  title: Text(t.misskey.emojiStyle),
+                  title: Text(t.misskey.instanceTicker),
                   subtitle: Text(
-                    switch (settings.emojiStyle) {
-                      EmojiStyle.native => t.misskey.native,
-                      EmojiStyle.twemoji => 'Twemoji',
+                    switch (settings.instanceTicker) {
+                      InstanceTicker.none => t.misskey.instanceTicker_.none,
+                      InstanceTicker.remote => t.misskey.instanceTicker_.remote,
+                      InstanceTicker.always => t.misskey.instanceTicker_.always,
                     },
                   ),
                   trailing: const Icon(Icons.navigate_next),
                   onTap: () async {
                     final result = await showRadioDialog(
                       context,
-                      title: Text(t.misskey.emojiStyle),
-                      values: EmojiStyle.values,
-                      initialValue: settings.emojiStyle,
+                      title: Text(t.misskey.instanceTicker),
+                      values: InstanceTicker.values,
+                      initialValue: settings.instanceTicker,
                       itemBuilder: (context, value) => Text(
                         switch (value) {
-                          EmojiStyle.native => t.misskey.native,
-                          EmojiStyle.twemoji => 'Twemoji',
+                          InstanceTicker.none => t.misskey.instanceTicker_.none,
+                          InstanceTicker.remote =>
+                            t.misskey.instanceTicker_.remote,
+                          InstanceTicker.always =>
+                            t.misskey.instanceTicker_.always,
                         },
                       ),
                     );
                     if (result != null) {
                       await ref
                           .read(generalSettingsNotifierProvider.notifier)
-                          .setEmojiStyle(result);
+                          .setInstanceTicker(result);
                     }
                   },
                 ),
@@ -260,6 +265,35 @@ class NoteDisplayPage extends HookConsumerWidget {
                   onChanged: (value) => ref
                       .read(generalSettingsNotifierProvider.notifier)
                       .setShowSubNoteFooter(value),
+                ),
+                ListTile(
+                  title: Text(t.misskey.emojiStyle),
+                  subtitle: Text(
+                    switch (settings.emojiStyle) {
+                      EmojiStyle.native => t.misskey.native,
+                      EmojiStyle.twemoji => 'Twemoji',
+                    },
+                  ),
+                  trailing: const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await showRadioDialog(
+                      context,
+                      title: Text(t.misskey.emojiStyle),
+                      values: EmojiStyle.values,
+                      initialValue: settings.emojiStyle,
+                      itemBuilder: (context, value) => Text(
+                        switch (value) {
+                          EmojiStyle.native => t.misskey.native,
+                          EmojiStyle.twemoji => 'Twemoji',
+                        },
+                      ),
+                    );
+                    if (result != null) {
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setEmojiStyle(result);
+                    }
+                  },
                 ),
                 ListTile(
                   title: Text(t.aria.font),
@@ -404,6 +438,14 @@ class NoteDisplayPage extends HookConsumerWidget {
                               url: Assets.flower,
                             ),
                           ],
+                          instance: UserInstanceInfo(
+                            name: 'example.tld',
+                            faviconUrl: Uri(
+                              path: Assets.misskey.packages.frontend.assets
+                                  .aboutIcon.path,
+                            ),
+                            themeColor: '86b300',
+                          ),
                         ),
                         userId: '',
                         visibility: NoteVisibility.public,

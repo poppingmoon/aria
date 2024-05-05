@@ -7,6 +7,9 @@ part 'static_image_url_provider.g.dart';
 
 @riverpod
 Uri? staticImageUrl(StaticImageUrlRef ref, String host, String baseUrl) {
+  if (host.isEmpty) {
+    return Uri.tryParse(baseUrl);
+  }
   final url = baseUrl.startsWith('http')
       ? Uri.tryParse(baseUrl)
       : Uri.tryParse(
