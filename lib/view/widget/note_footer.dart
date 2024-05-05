@@ -87,381 +87,407 @@ class NoteFooter extends ConsumerWidget {
       NoteVisibility.followers => isMyNote,
       _ => false,
     };
-    final style = DefaultTextStyle.of(context).style.apply(
-          color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
-          fontSizeFactor: scale,
-        );
 
-    return IconButtonTheme(
-      data: IconButtonThemeData(
-        style: IconButton.styleFrom(
-          foregroundColor:
-              Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
-          iconSize: style.lineHeight,
-          minimumSize: Size.fromRadius(style.fontSize!),
-        ),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          IconButton(
-            tooltip: t.misskey.reply,
-            onPressed: !account.isGuest
-                ? () {
-                    if (appearNote.id.isEmpty) return;
-                    ref
-                        .read(postNotifierProvider(account).notifier)
-                        .setReply(appearNote);
-                    if (postFormFocusNode != null) {
-                      postFormFocusNode?.requestFocus();
-                    } else {
-                      context.push('/$account/post');
-                    }
-                  }
-                : null,
-            icon: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(Icons.reply),
-                if (appearNote.repliesCount > 0)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 2.0,
-                    ),
-                    child: Text(
-                      NumberFormat().format(appearNote.repliesCount),
-                      style: style,
-                    ),
-                  ),
-              ],
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final style = DefaultTextStyle.of(context).style.apply(
+              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              fontSizeFactor: scale * 800.0 / constraints.maxWidth,
+            );
+        return IconButtonTheme(
+          data: IconButtonThemeData(
+            style: IconButton.styleFrom(
+              foregroundColor:
+                  Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+              iconSize: style.lineHeight,
+              minimumSize: Size.fromRadius(style.fontSize!),
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
           ),
-          if (canRenote) ...[
-            GestureDetector(
-              onLongPress: appearNote.renoteCount > 0
-                  ? () {
-                      if (appearNote.id.isEmpty) return;
-                      HapticFeedback.lightImpact();
-                      showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => RenoteUsersSheet(
-                          account: account,
-                          noteId: appearNote.id,
-                        ),
-                        isScrollControlled: true,
-                      );
-                    }
-                  : null,
-              child: IconButton(
-                tooltip: appearNote.renoteCount <= 0 ? t.misskey.renote : null,
-                onPressed: !account.isGuest
-                    ? () {
-                        if (appearNote.id.isEmpty) return;
-                        if (showQuoteButton) {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) =>
-                                RenoteSheet(account: account, note: appearNote),
-                            clipBehavior: Clip.hardEdge,
-                          );
-                        } else {
-                          ref
-                              .read(postNotifierProvider(account).notifier)
-                              .setRenote(appearNote);
-                          if (postFormFocusNode != null) {
-                            postFormFocusNode?.requestFocus();
-                          } else {
-                            context.push('/$account/post');
+          child: FittedBox(
+            child: SizedBox(
+              width: 800.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    tooltip: t.misskey.reply,
+                    onPressed: !account.isGuest
+                        ? () {
+                            if (appearNote.id.isEmpty) return;
+                            ref
+                                .read(postNotifierProvider(account).notifier)
+                                .setReply(appearNote);
+                            if (postFormFocusNode != null) {
+                              postFormFocusNode?.requestFocus();
+                            } else {
+                              context.push('/$account/post');
+                            }
                           }
-                        }
-                      }
-                    : null,
-                icon: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    const Icon(Icons.repeat_rounded),
-                    if (appearNote.renoteCount > 0)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 2.0,
-                        ),
-                        child: Text(
-                          NumberFormat().format(appearNote.renoteCount),
-                          style: style,
+                        : null,
+                    icon: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.reply),
+                        if (appearNote.repliesCount > 0)
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 2.0,
+                            ),
+                            child: Text(
+                              NumberFormat().format(appearNote.repliesCount),
+                              style: style,
+                            ),
+                          ),
+                      ],
+                    ),
+                  ),
+                  if (canRenote) ...[
+                    GestureDetector(
+                      onLongPress: appearNote.renoteCount > 0
+                          ? () {
+                              if (appearNote.id.isEmpty) return;
+                              HapticFeedback.lightImpact();
+                              showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => RenoteUsersSheet(
+                                  account: account,
+                                  noteId: appearNote.id,
+                                ),
+                                isScrollControlled: true,
+                              );
+                            }
+                          : null,
+                      child: IconButton(
+                        tooltip: appearNote.renoteCount <= 0
+                            ? t.misskey.renote
+                            : null,
+                        onPressed: !account.isGuest
+                            ? () {
+                                if (appearNote.id.isEmpty) return;
+                                if (showQuoteButton) {
+                                  showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (context) => RenoteSheet(
+                                      account: account,
+                                      note: appearNote,
+                                    ),
+                                    clipBehavior: Clip.hardEdge,
+                                  );
+                                } else {
+                                  ref
+                                      .read(
+                                        postNotifierProvider(account).notifier,
+                                      )
+                                      .setRenote(appearNote);
+                                  if (postFormFocusNode != null) {
+                                    postFormFocusNode?.requestFocus();
+                                  } else {
+                                    context.push('/$account/post');
+                                  }
+                                }
+                              }
+                            : null,
+                        icon: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.repeat_rounded),
+                            if (appearNote.renoteCount > 0)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 2.0,
+                                ),
+                                child: Text(
+                                  NumberFormat().format(appearNote.renoteCount),
+                                  style: style,
+                                ),
+                              ),
+                          ],
                         ),
                       ),
-                  ],
-                ),
-              ),
-            ),
-            if (showQuoteButton)
-              IconButton(
-                tooltip: t.misskey.quote,
-                onPressed: !account.isGuest
-                    ? () {
-                        if (appearNote.id.isEmpty) return;
-                        ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setRenote(appearNote);
-                        if (postFormFocusNode != null) {
-                          postFormFocusNode?.requestFocus();
-                        } else {
-                          context.push('/$account/post');
-                        }
-                      }
-                    : null,
-                icon: const Icon(Icons.format_quote_outlined),
-              ),
-          ] else
-            IconButton(
-              tooltip: t.misskey.cantRenote,
-              onPressed: null,
-              icon: const Icon(Icons.block),
-            ),
-          if (showLikeButton &&
-              appearNote.reactionAcceptance != ReactionAcceptance.likeOnly &&
-              appearNote.myReaction == null)
-            IconButton(
-              tooltip: t.misskey.like,
-              onPressed: !account.isGuest
-                  ? () async {
-                      if (appearNote.id.isEmpty) return;
-                      if (ref
-                          .read(generalSettingsNotifierProvider)
-                          .confirmBeforeReact) {
-                        final confirmed = await confirmReaction(
-                          context,
-                          account: account,
-                          emoji: '❤️',
-                          note: appearNote,
-                        );
-                        if (!confirmed) return;
-                      }
-                      if (!context.mounted) return;
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(notesNotifierProvider(account).notifier)
-                            .react(appearNote.id, '❤️'),
-                      );
-                    }
-                  : null,
-              icon: const Icon(Icons.favorite_border),
-            ),
-          if (appearNote.myReaction == null)
-            GestureDetector(
-              onLongPress: appearNote.reactionAcceptance ==
-                          ReactionAcceptance.likeOnly &&
-                      (appearNote.reactionCount ?? 0) > 0
-                  ? () => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => ReactionUsersSheet(
-                          account: account,
-                          noteId: appearNote.id,
-                          reaction: '❤️',
-                        ),
-                        isScrollControlled: true,
-                      )
-                  : null,
-              child: IconButton(
-                tooltip:
-                    appearNote.reactionAcceptance != ReactionAcceptance.likeOnly
-                        ? t.misskey.reaction
-                        : (appearNote.reactionCount ?? 0) <= 0
-                            ? t.misskey.like
+                    ),
+                    if (showQuoteButton)
+                      IconButton(
+                        tooltip: t.misskey.quote,
+                        onPressed: !account.isGuest
+                            ? () {
+                                if (appearNote.id.isEmpty) return;
+                                ref
+                                    .read(
+                                      postNotifierProvider(account).notifier,
+                                    )
+                                    .setRenote(appearNote);
+                                if (postFormFocusNode != null) {
+                                  postFormFocusNode?.requestFocus();
+                                } else {
+                                  context.push('/$account/post');
+                                }
+                              }
                             : null,
-                onPressed: !account.isGuest
-                    ? () async {
-                        if (appearNote.id.isEmpty) return;
-                        final emoji = appearNote.reactionAcceptance ==
-                                ReactionAcceptance.likeOnly
-                            ? '❤️'
-                            : await pickEmoji(
-                                ref,
-                                account,
-                                reaction: true,
-                                targetNote: appearNote,
+                        icon: const Icon(Icons.format_quote_outlined),
+                      ),
+                  ] else
+                    IconButton(
+                      tooltip: t.misskey.cantRenote,
+                      onPressed: null,
+                      icon: const Icon(Icons.block),
+                    ),
+                  if (showLikeButton &&
+                      appearNote.reactionAcceptance !=
+                          ReactionAcceptance.likeOnly &&
+                      appearNote.myReaction == null)
+                    IconButton(
+                      tooltip: t.misskey.like,
+                      onPressed: !account.isGuest
+                          ? () async {
+                              if (appearNote.id.isEmpty) return;
+                              if (ref
+                                  .read(generalSettingsNotifierProvider)
+                                  .confirmBeforeReact) {
+                                final confirmed = await confirmReaction(
+                                  context,
+                                  account: account,
+                                  emoji: '❤️',
+                                  note: appearNote,
+                                );
+                                if (!confirmed) return;
+                              }
+                              if (!context.mounted) return;
+                              await futureWithDialog(
+                                context,
+                                ref
+                                    .read(
+                                      notesNotifierProvider(account).notifier,
+                                    )
+                                    .react(appearNote.id, '❤️'),
                               );
-                        if (!context.mounted) return;
-                        if (emoji != null) {
-                          if (ref
-                              .read(generalSettingsNotifierProvider)
-                              .confirmBeforeReact) {
-                            final confirmed = await confirmReaction(
-                              context,
-                              account: account,
-                              emoji: emoji,
-                              note: appearNote,
-                            );
-                            if (!confirmed) return;
-                          }
+                            }
+                          : null,
+                      icon: const Icon(Icons.favorite_border),
+                    ),
+                  if (appearNote.myReaction == null)
+                    GestureDetector(
+                      onLongPress: appearNote.reactionAcceptance ==
+                                  ReactionAcceptance.likeOnly &&
+                              (appearNote.reactionCount ?? 0) > 0
+                          ? () => showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => ReactionUsersSheet(
+                                  account: account,
+                                  noteId: appearNote.id,
+                                  reaction: '❤️',
+                                ),
+                                isScrollControlled: true,
+                              )
+                          : null,
+                      child: IconButton(
+                        tooltip: appearNote.reactionAcceptance !=
+                                ReactionAcceptance.likeOnly
+                            ? t.misskey.reaction
+                            : (appearNote.reactionCount ?? 0) <= 0
+                                ? t.misskey.like
+                                : null,
+                        onPressed: !account.isGuest
+                            ? () async {
+                                if (appearNote.id.isEmpty) return;
+                                final emoji = appearNote.reactionAcceptance ==
+                                        ReactionAcceptance.likeOnly
+                                    ? '❤️'
+                                    : await pickEmoji(
+                                        ref,
+                                        account,
+                                        reaction: true,
+                                        targetNote: appearNote,
+                                      );
+                                if (!context.mounted) return;
+                                if (emoji != null) {
+                                  if (ref
+                                      .read(generalSettingsNotifierProvider)
+                                      .confirmBeforeReact) {
+                                    final confirmed = await confirmReaction(
+                                      context,
+                                      account: account,
+                                      emoji: emoji,
+                                      note: appearNote,
+                                    );
+                                    if (!confirmed) return;
+                                  }
+                                  if (!context.mounted) return;
+                                  await futureWithDialog(
+                                    context,
+                                    ref
+                                        .read(
+                                          notesNotifierProvider(account)
+                                              .notifier,
+                                        )
+                                        .react(appearNote.id, emoji),
+                                  );
+                                }
+                              }
+                            : null,
+                        icon: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (appearNote.reactionAcceptance ==
+                                ReactionAcceptance.likeOnly)
+                              const Icon(Icons.favorite_border)
+                            else
+                              const Icon(Icons.add),
+                            if (showReactionsCount &&
+                                (appearNote.reactionCount ?? 0) > 0)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 2.0,
+                                ),
+                                child: Text(
+                                  NumberFormat()
+                                      .format(appearNote.reactionCount),
+                                  style: style,
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                    )
+                  else
+                    GestureDetector(
+                      onLongPress: appearNote.reactionAcceptance ==
+                              ReactionAcceptance.likeOnly
+                          ? () {
+                              if (appearNote.id.isEmpty) return;
+                              showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => ReactionUsersSheet(
+                                  account: account,
+                                  noteId: appearNote.id,
+                                  reaction: '❤️',
+                                ),
+                                isScrollControlled: true,
+                              );
+                            }
+                          : null,
+                      child: IconButton(
+                        tooltip: appearNote.reactionAcceptance !=
+                                ReactionAcceptance.likeOnly
+                            ? t.misskey.reaction
+                            : null,
+                        onPressed: () async {
+                          if (appearNote.id.isEmpty) return;
+                          final confirmed = await confirm(
+                            context,
+                            message: t.misskey.cancelReactionConfirm,
+                          );
+                          if (!confirmed) return;
                           if (!context.mounted) return;
                           await futureWithDialog(
                             context,
                             ref
                                 .read(notesNotifierProvider(account).notifier)
-                                .react(appearNote.id, emoji),
+                                .unreact(appearNote.id),
                           );
-                        }
-                      }
-                    : null,
-                icon: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (appearNote.reactionAcceptance ==
-                        ReactionAcceptance.likeOnly)
-                      const Icon(Icons.favorite_border)
-                    else
-                      const Icon(Icons.add),
-                    if (showReactionsCount &&
-                        (appearNote.reactionCount ?? 0) > 0)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 2.0,
-                        ),
-                        child: Text(
-                          NumberFormat().format(appearNote.reactionCount),
-                          style: style,
+                        },
+                        icon: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (appearNote.reactionAcceptance ==
+                                ReactionAcceptance.likeOnly)
+                              const Icon(
+                                Icons.favorite,
+                                color: eventReactionHeart,
+                              )
+                            else
+                              Icon(
+                                Icons.remove,
+                                color: Theme.of(context).colorScheme.primary,
+                              ),
+                            if ((appearNote.reactionAcceptance ==
+                                        ReactionAcceptance.likeOnly ||
+                                    showReactionsCount) &&
+                                (appearNote.reactionCount ?? 0) > 0)
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 2.0,
+                                ),
+                                child: Text(
+                                  NumberFormat()
+                                      .format(appearNote.reactionCount),
+                                  style: style,
+                                ),
+                              ),
+                          ],
                         ),
                       ),
-                  ],
-                ),
-              ),
-            )
-          else
-            GestureDetector(
-              onLongPress:
-                  appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
-                      ? () {
-                          if (appearNote.id.isEmpty) return;
+                    ),
+                  if (showClipButton)
+                    IconButton(
+                      tooltip: t.misskey.clip,
+                      onPressed: !account.isGuest
+                          ? () {
+                              if (appearNote.id.isEmpty) return;
+                              showDialog<void>(
+                                context: context,
+                                builder: (context) => ClipDialog(
+                                  account: account,
+                                  noteId: appearNote.id,
+                                ),
+                              );
+                            }
+                          : null,
+                      icon: const Icon(Icons.attach_file),
+                    ),
+                  if (showTranslateButton)
+                    IconButton(
+                      tooltip: t.misskey.translate,
+                      onPressed: () {
+                        if ((i?.policies?.canUseTranslator ?? false) &&
+                            (meta?.translatorAvailable ?? false)) {
                           showModalBottomSheet<void>(
                             context: context,
-                            builder: (context) => ReactionUsersSheet(
+                            builder: (context) => TranslatedNoteSheet(
                               account: account,
-                              noteId: appearNote.id,
-                              reaction: '❤️',
+                              note: appearNote,
                             ),
-                            isScrollControlled: true,
+                          );
+                        } else {
+                          launchUrl(
+                            Uri.https(
+                              'translate.google.com',
+                              '',
+                              {
+                                'text': [appearNote.cw, appearNote.text]
+                                    .nonNulls
+                                    .join('\n'),
+                              },
+                            ),
                           );
                         }
-                      : null,
-              child: IconButton(
-                tooltip:
-                    appearNote.reactionAcceptance != ReactionAcceptance.likeOnly
-                        ? t.misskey.reaction
-                        : null,
-                onPressed: () async {
-                  if (appearNote.id.isEmpty) return;
-                  final confirmed = await confirm(
-                    context,
-                    message: t.misskey.cancelReactionConfirm,
-                  );
-                  if (!confirmed) return;
-                  if (!context.mounted) return;
-                  await futureWithDialog(
-                    context,
-                    ref
-                        .read(notesNotifierProvider(account).notifier)
-                        .unreact(appearNote.id),
-                  );
-                },
-                icon: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    if (appearNote.reactionAcceptance ==
-                        ReactionAcceptance.likeOnly)
-                      const Icon(
-                        Icons.favorite,
-                        color: eventReactionHeart,
-                      )
-                    else
-                      Icon(
-                        Icons.remove,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                    if ((appearNote.reactionAcceptance ==
-                                ReactionAcceptance.likeOnly ||
-                            showReactionsCount) &&
-                        (appearNote.reactionCount ?? 0) > 0)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 2.0,
+                      },
+                      icon: const Icon(Icons.translate),
+                    ),
+                  IconButton(
+                    tooltip: t.misskey.menu,
+                    onPressed: () {
+                      if (note.id.isEmpty) return;
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (context) => NoteSheet(
+                          account: account,
+                          noteId: noteId,
+                          hideDetails: hideDetails,
+                          postFormFocusNode: postFormFocusNode,
                         ),
-                        child: Text(
-                          NumberFormat().format(appearNote.reactionCount),
-                          style: style,
-                        ),
-                      ),
-                  ],
-                ),
+                        clipBehavior: Clip.hardEdge,
+                        isScrollControlled: true,
+                      );
+                    },
+                    icon: const Icon(Icons.more_horiz),
+                  ),
+                ],
               ),
             ),
-          if (showClipButton)
-            IconButton(
-              tooltip: t.misskey.clip,
-              onPressed: !account.isGuest
-                  ? () {
-                      if (appearNote.id.isEmpty) return;
-                      showDialog<void>(
-                        context: context,
-                        builder: (context) => ClipDialog(
-                          account: account,
-                          noteId: appearNote.id,
-                        ),
-                      );
-                    }
-                  : null,
-              icon: const Icon(Icons.attach_file),
-            ),
-          if (showTranslateButton)
-            IconButton(
-              tooltip: t.misskey.translate,
-              onPressed: () {
-                if ((i?.policies?.canUseTranslator ?? false) &&
-                    (meta?.translatorAvailable ?? false)) {
-                  showModalBottomSheet<void>(
-                    context: context,
-                    builder: (context) => TranslatedNoteSheet(
-                      account: account,
-                      note: appearNote,
-                    ),
-                  );
-                } else {
-                  launchUrl(
-                    Uri.https(
-                      'translate.google.com',
-                      '',
-                      {
-                        'text': [appearNote.cw, appearNote.text]
-                            .nonNulls
-                            .join('\n'),
-                      },
-                    ),
-                  );
-                }
-              },
-              icon: const Icon(Icons.translate),
-            ),
-          IconButton(
-            tooltip: t.misskey.menu,
-            onPressed: () {
-              if (note.id.isEmpty) return;
-              showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => NoteSheet(
-                  account: account,
-                  noteId: noteId,
-                  hideDetails: hideDetails,
-                  postFormFocusNode: postFormFocusNode,
-                ),
-                clipBehavior: Clip.hardEdge,
-                isScrollControlled: true,
-              );
-            },
-            icon: const Icon(Icons.more_horiz),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
