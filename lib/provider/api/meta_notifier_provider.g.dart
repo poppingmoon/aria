@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'emojis_notifier_provider.dart';
+part of 'meta_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojisNotifierHash() => r'0ee2db90ebd565db19275f88a17cdf4e0387d056';
+String _$metaNotifierHash() => r'a90252a824d09b651867cacc1e470f55cb0c287f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,36 +29,36 @@ class _SystemHash {
   }
 }
 
-abstract class _$EmojisNotifier
-    extends BuildlessStreamNotifier<Map<String, Emoji>> {
+abstract class _$MetaNotifier
+    extends BuildlessAutoDisposeStreamNotifier<MetaResponse> {
   late final String host;
 
-  Stream<Map<String, Emoji>> build(
+  Stream<MetaResponse> build(
     String host,
   );
 }
 
-/// See also [EmojisNotifier].
-@ProviderFor(EmojisNotifier)
-const emojisNotifierProvider = EmojisNotifierFamily();
+/// See also [MetaNotifier].
+@ProviderFor(MetaNotifier)
+const metaNotifierProvider = MetaNotifierFamily();
 
-/// See also [EmojisNotifier].
-class EmojisNotifierFamily extends Family<AsyncValue<Map<String, Emoji>>> {
-  /// See also [EmojisNotifier].
-  const EmojisNotifierFamily();
+/// See also [MetaNotifier].
+class MetaNotifierFamily extends Family<AsyncValue<MetaResponse>> {
+  /// See also [MetaNotifier].
+  const MetaNotifierFamily();
 
-  /// See also [EmojisNotifier].
-  EmojisNotifierProvider call(
+  /// See also [MetaNotifier].
+  MetaNotifierProvider call(
     String host,
   ) {
-    return EmojisNotifierProvider(
+    return MetaNotifierProvider(
       host,
     );
   }
 
   @override
-  EmojisNotifierProvider getProviderOverride(
-    covariant EmojisNotifierProvider provider,
+  MetaNotifierProvider getProviderOverride(
+    covariant MetaNotifierProvider provider,
   ) {
     return call(
       provider.host,
@@ -77,30 +77,30 @@ class EmojisNotifierFamily extends Family<AsyncValue<Map<String, Emoji>>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'emojisNotifierProvider';
+  String? get name => r'metaNotifierProvider';
 }
 
-/// See also [EmojisNotifier].
-class EmojisNotifierProvider
-    extends StreamNotifierProviderImpl<EmojisNotifier, Map<String, Emoji>> {
-  /// See also [EmojisNotifier].
-  EmojisNotifierProvider(
+/// See also [MetaNotifier].
+class MetaNotifierProvider
+    extends AutoDisposeStreamNotifierProviderImpl<MetaNotifier, MetaResponse> {
+  /// See also [MetaNotifier].
+  MetaNotifierProvider(
     String host,
   ) : this._internal(
-          () => EmojisNotifier()..host = host,
-          from: emojisNotifierProvider,
-          name: r'emojisNotifierProvider',
+          () => MetaNotifier()..host = host,
+          from: metaNotifierProvider,
+          name: r'metaNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$emojisNotifierHash,
-          dependencies: EmojisNotifierFamily._dependencies,
+                  : _$metaNotifierHash,
+          dependencies: MetaNotifierFamily._dependencies,
           allTransitiveDependencies:
-              EmojisNotifierFamily._allTransitiveDependencies,
+              MetaNotifierFamily._allTransitiveDependencies,
           host: host,
         );
 
-  EmojisNotifierProvider._internal(
+  MetaNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -113,8 +113,8 @@ class EmojisNotifierProvider
   final String host;
 
   @override
-  Stream<Map<String, Emoji>> runNotifierBuild(
-    covariant EmojisNotifier notifier,
+  Stream<MetaResponse> runNotifierBuild(
+    covariant MetaNotifier notifier,
   ) {
     return notifier.build(
       host,
@@ -122,10 +122,10 @@ class EmojisNotifierProvider
   }
 
   @override
-  Override overrideWith(EmojisNotifier Function() create) {
+  Override overrideWith(MetaNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: EmojisNotifierProvider._internal(
+      override: MetaNotifierProvider._internal(
         () => create()..host = host,
         from: from,
         name: null,
@@ -138,14 +138,14 @@ class EmojisNotifierProvider
   }
 
   @override
-  StreamNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
+  AutoDisposeStreamNotifierProviderElement<MetaNotifier, MetaResponse>
       createElement() {
-    return _EmojisNotifierProviderElement(this);
+    return _MetaNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is EmojisNotifierProvider && other.host == host;
+    return other is MetaNotifierProvider && other.host == host;
   }
 
   @override
@@ -157,18 +157,18 @@ class EmojisNotifierProvider
   }
 }
 
-mixin EmojisNotifierRef on StreamNotifierProviderRef<Map<String, Emoji>> {
+mixin MetaNotifierRef on AutoDisposeStreamNotifierProviderRef<MetaResponse> {
   /// The parameter `host` of this provider.
   String get host;
 }
 
-class _EmojisNotifierProviderElement
-    extends StreamNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
-    with EmojisNotifierRef {
-  _EmojisNotifierProviderElement(super.provider);
+class _MetaNotifierProviderElement
+    extends AutoDisposeStreamNotifierProviderElement<MetaNotifier, MetaResponse>
+    with MetaNotifierRef {
+  _MetaNotifierProviderElement(super.provider);
 
   @override
-  String get host => (origin as EmojisNotifierProvider).host;
+  String get host => (origin as MetaNotifierProvider).host;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

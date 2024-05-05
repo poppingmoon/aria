@@ -13,7 +13,7 @@ import '../../model/post_file.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/meta_provider.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/note_state_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
@@ -54,7 +54,7 @@ class NoteSheet extends ConsumerWidget {
     }
     final url = Uri.https(account.host, '/notes/${appearNote.id}');
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final canUseTranslator = (i?.policies?.canUseTranslator ?? false) &&
         (meta?.translatorAvailable ?? false);
     final noteState = i != null

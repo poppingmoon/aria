@@ -9,7 +9,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/meta_provider.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
@@ -43,7 +43,7 @@ class UserSheet extends ConsumerWidget {
       return const Center(child: CircularProgressIndicator());
     }
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final profileUrl = Uri.https(account.host, user.acct);
     final remoteUrl = user.uri ?? user.url;
     final switchCandidateAccounts = ref

@@ -7,7 +7,7 @@ import '../../../constant/builtin_misskey_colors.g.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/misskey_theme.dart';
-import '../../../provider/api/meta_provider.dart';
+import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/misskey_theme_codes_notifier_provider.dart';
 import '../../../provider/misskey_themes_provider.dart';
 import '../../../util/compile_theme.dart';
@@ -224,7 +224,7 @@ class ThemeManagePage extends ConsumerWidget {
                     if (!context.mounted) return;
                     final meta = await futureWithDialog(
                       context,
-                      ref.read(metaProvider(account).future),
+                      ref.read(metaNotifierProvider(account.host).future),
                     );
                     if (meta == null) return;
                     if (!context.mounted) return;

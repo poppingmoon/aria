@@ -1,7 +1,7 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
-import 'api/meta_provider.dart';
+import 'api/meta_notifier_provider.dart';
 import 'emoji_provider.dart';
 
 part 'emoji_url_provider.g.dart';
@@ -36,7 +36,7 @@ part 'emoji_url_provider.g.dart';
             '$customEmojiName.webp',
         ],
       );
-  final meta = ref.watch(metaProvider(account)).valueOrNull;
+  final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
   final mediaProxy = meta?.mediaProxy;
   final proxyUrl = (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
       Uri.https(account.host, 'proxy');

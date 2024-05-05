@@ -18,7 +18,7 @@ import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/list_provider.dart';
 import '../../../provider/api/lists_notifier_provider.dart';
-import '../../../provider/api/meta_provider.dart';
+import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/api/role_provider.dart';
 import '../../../provider/api/roles_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
@@ -254,7 +254,9 @@ class TabSettingsPage extends HookConsumerWidget {
                           if (tabSettings.value.icon == null) {
                             final meta = await futureWithDialog(
                               context,
-                              ref.read(metaProvider(result).future),
+                              ref.read(
+                                metaNotifierProvider(result.host).future,
+                              ),
                             );
                             if (meta case MetaResponse(:final iconUrl?)) {
                               tabSettings.value = tabSettings.value.copyWith(
@@ -282,7 +284,9 @@ class TabSettingsPage extends HookConsumerWidget {
                     final meta = account.value != null
                         ? await futureWithDialog(
                             context,
-                            ref.read(metaProvider(account.value!).future),
+                            ref.read(
+                              metaNotifierProvider(account.value!.host).future,
+                            ),
                           )
                         : null;
                     if (!context.mounted) return;

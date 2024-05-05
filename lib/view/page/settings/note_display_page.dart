@@ -414,6 +414,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                 elevation: 0.0,
                 child: ProviderScope(
                   overrides: [
+                    // ignore: scoped_providers_should_specify_dependencies
                     cacheManagerProvider.overrideWithValue(AssetCacheManager()),
                   ],
                   child: SizedBox(
