@@ -32,7 +32,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool advancedMfm,
     @Default(false) bool showReactionsCount,
     @Default(false) bool loadRawImages,
-    @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
+    @Default(InstanceTicker.remote) InstanceTicker instanceTicker,
     @Default(false) bool showNoteCreatedAt,
     @Default(true) bool showAvatarsInNote,
     @Default(true) bool showAvatarsInSubNote,
@@ -46,6 +46,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool showSubNoteReactionsViewer,
     @Default(true) bool showNoteFooter,
     @Default(false) bool showSubNoteFooter,
+    @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
     String? fontFamily,
     @Default(defaultFontSize) double fontSize,
     @Default(1.0) double reactionsDisplayScale,
@@ -97,6 +98,12 @@ enum SensitiveMediaDisplay {
   respect,
   ignore,
   force,
+}
+
+enum InstanceTicker {
+  none,
+  remote,
+  always,
 }
 
 enum EmojiStyle {

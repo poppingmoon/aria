@@ -76,8 +76,8 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setEmojiStyle(EmojiStyle emojiStyle) async {
-    state = state.copyWith(emojiStyle: emojiStyle);
+  Future<void> setInstanceTicker(InstanceTicker instanceTicker) async {
+    state = state.copyWith(instanceTicker: instanceTicker);
     await _save();
   }
 
@@ -162,6 +162,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setShowSubNoteFooter(bool showSubNoteFooter) async {
     state = state.copyWith(showSubNoteFooter: showSubNoteFooter);
+    await _save();
+  }
+
+  Future<void> setEmojiStyle(EmojiStyle emojiStyle) async {
+    state = state.copyWith(emojiStyle: emojiStyle);
     await _save();
   }
 

@@ -31,7 +31,7 @@ mixin _$GeneralSettings {
   bool get advancedMfm => throw _privateConstructorUsedError;
   bool get showReactionsCount => throw _privateConstructorUsedError;
   bool get loadRawImages => throw _privateConstructorUsedError;
-  EmojiStyle get emojiStyle => throw _privateConstructorUsedError;
+  InstanceTicker get instanceTicker => throw _privateConstructorUsedError;
   bool get showNoteCreatedAt => throw _privateConstructorUsedError;
   bool get showAvatarsInNote => throw _privateConstructorUsedError;
   bool get showAvatarsInSubNote => throw _privateConstructorUsedError;
@@ -46,6 +46,7 @@ mixin _$GeneralSettings {
   bool get showSubNoteReactionsViewer => throw _privateConstructorUsedError;
   bool get showNoteFooter => throw _privateConstructorUsedError;
   bool get showSubNoteFooter => throw _privateConstructorUsedError;
+  EmojiStyle get emojiStyle => throw _privateConstructorUsedError;
   String? get fontFamily => throw _privateConstructorUsedError;
   double get fontSize => throw _privateConstructorUsedError;
   double get reactionsDisplayScale => throw _privateConstructorUsedError;
@@ -105,7 +106,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool advancedMfm,
       bool showReactionsCount,
       bool loadRawImages,
-      EmojiStyle emojiStyle,
+      InstanceTicker instanceTicker,
       bool showNoteCreatedAt,
       bool showAvatarsInNote,
       bool showAvatarsInSubNote,
@@ -119,6 +120,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showSubNoteReactionsViewer,
       bool showNoteFooter,
       bool showSubNoteFooter,
+      EmojiStyle emojiStyle,
       String? fontFamily,
       double fontSize,
       double reactionsDisplayScale,
@@ -175,7 +177,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? advancedMfm = null,
     Object? showReactionsCount = null,
     Object? loadRawImages = null,
-    Object? emojiStyle = null,
+    Object? instanceTicker = null,
     Object? showNoteCreatedAt = null,
     Object? showAvatarsInNote = null,
     Object? showAvatarsInSubNote = null,
@@ -189,6 +191,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showSubNoteReactionsViewer = null,
     Object? showNoteFooter = null,
     Object? showSubNoteFooter = null,
+    Object? emojiStyle = null,
     Object? fontFamily = freezed,
     Object? fontSize = null,
     Object? reactionsDisplayScale = null,
@@ -256,10 +259,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.loadRawImages
           : loadRawImages // ignore: cast_nullable_to_non_nullable
               as bool,
-      emojiStyle: null == emojiStyle
-          ? _value.emojiStyle
-          : emojiStyle // ignore: cast_nullable_to_non_nullable
-              as EmojiStyle,
+      instanceTicker: null == instanceTicker
+          ? _value.instanceTicker
+          : instanceTicker // ignore: cast_nullable_to_non_nullable
+              as InstanceTicker,
       showNoteCreatedAt: null == showNoteCreatedAt
           ? _value.showNoteCreatedAt
           : showNoteCreatedAt // ignore: cast_nullable_to_non_nullable
@@ -312,6 +315,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.showSubNoteFooter
           : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
+      emojiStyle: null == emojiStyle
+          ? _value.emojiStyle
+          : emojiStyle // ignore: cast_nullable_to_non_nullable
+              as EmojiStyle,
       fontFamily: freezed == fontFamily
           ? _value.fontFamily
           : fontFamily // ignore: cast_nullable_to_non_nullable
@@ -466,7 +473,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool advancedMfm,
       bool showReactionsCount,
       bool loadRawImages,
-      EmojiStyle emojiStyle,
+      InstanceTicker instanceTicker,
       bool showNoteCreatedAt,
       bool showAvatarsInNote,
       bool showAvatarsInSubNote,
@@ -480,6 +487,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showSubNoteReactionsViewer,
       bool showNoteFooter,
       bool showSubNoteFooter,
+      EmojiStyle emojiStyle,
       String? fontFamily,
       double fontSize,
       double reactionsDisplayScale,
@@ -534,7 +542,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? advancedMfm = null,
     Object? showReactionsCount = null,
     Object? loadRawImages = null,
-    Object? emojiStyle = null,
+    Object? instanceTicker = null,
     Object? showNoteCreatedAt = null,
     Object? showAvatarsInNote = null,
     Object? showAvatarsInSubNote = null,
@@ -548,6 +556,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showSubNoteReactionsViewer = null,
     Object? showNoteFooter = null,
     Object? showSubNoteFooter = null,
+    Object? emojiStyle = null,
     Object? fontFamily = freezed,
     Object? fontSize = null,
     Object? reactionsDisplayScale = null,
@@ -615,10 +624,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.loadRawImages
           : loadRawImages // ignore: cast_nullable_to_non_nullable
               as bool,
-      emojiStyle: null == emojiStyle
-          ? _value.emojiStyle
-          : emojiStyle // ignore: cast_nullable_to_non_nullable
-              as EmojiStyle,
+      instanceTicker: null == instanceTicker
+          ? _value.instanceTicker
+          : instanceTicker // ignore: cast_nullable_to_non_nullable
+              as InstanceTicker,
       showNoteCreatedAt: null == showNoteCreatedAt
           ? _value.showNoteCreatedAt
           : showNoteCreatedAt // ignore: cast_nullable_to_non_nullable
@@ -671,6 +680,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.showSubNoteFooter
           : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
               as bool,
+      emojiStyle: null == emojiStyle
+          ? _value.emojiStyle
+          : emojiStyle // ignore: cast_nullable_to_non_nullable
+              as EmojiStyle,
       fontFamily: freezed == fontFamily
           ? _value.fontFamily
           : fontFamily // ignore: cast_nullable_to_non_nullable
@@ -820,7 +833,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.advancedMfm = true,
       this.showReactionsCount = false,
       this.loadRawImages = false,
-      this.emojiStyle = EmojiStyle.twemoji,
+      this.instanceTicker = InstanceTicker.remote,
       this.showNoteCreatedAt = false,
       this.showAvatarsInNote = true,
       this.showAvatarsInSubNote = true,
@@ -834,6 +847,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showSubNoteReactionsViewer = false,
       this.showNoteFooter = true,
       this.showSubNoteFooter = false,
+      this.emojiStyle = EmojiStyle.twemoji,
       this.fontFamily,
       this.fontSize = defaultFontSize,
       this.reactionsDisplayScale = 1.0,
@@ -900,7 +914,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool loadRawImages;
   @override
   @JsonKey()
-  final EmojiStyle emojiStyle;
+  final InstanceTicker instanceTicker;
   @override
   @JsonKey()
   final bool showNoteCreatedAt;
@@ -940,6 +954,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final bool showSubNoteFooter;
+  @override
+  @JsonKey()
+  final EmojiStyle emojiStyle;
   @override
   final String? fontFamily;
   @override
@@ -1045,7 +1062,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, emojiStyle: $emojiStyle, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1068,8 +1085,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.showReactionsCount == showReactionsCount) &&
             (identical(other.loadRawImages, loadRawImages) ||
                 other.loadRawImages == loadRawImages) &&
-            (identical(other.emojiStyle, emojiStyle) ||
-                other.emojiStyle == emojiStyle) &&
+            (identical(other.instanceTicker, instanceTicker) ||
+                other.instanceTicker == instanceTicker) &&
             (identical(other.showNoteCreatedAt, showNoteCreatedAt) ||
                 other.showNoteCreatedAt == showNoteCreatedAt) &&
             (identical(other.showAvatarsInNote, showAvatarsInNote) ||
@@ -1101,14 +1118,15 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.showNoteFooter == showNoteFooter) &&
             (identical(other.showSubNoteFooter, showSubNoteFooter) ||
                 other.showSubNoteFooter == showSubNoteFooter) &&
+            (identical(other.emojiStyle, emojiStyle) ||
+                other.emojiStyle == emojiStyle) &&
             (identical(other.fontFamily, fontFamily) ||
                 other.fontFamily == fontFamily) &&
             (identical(other.fontSize, fontSize) ||
                 other.fontSize == fontSize) &&
             (identical(other.reactionsDisplayScale, reactionsDisplayScale) ||
                 other.reactionsDisplayScale == reactionsDisplayScale) &&
-            (identical(other.limitWidthOfReaction, limitWidthOfReaction) ||
-                other.limitWidthOfReaction == limitWidthOfReaction) &&
+            (identical(other.limitWidthOfReaction, limitWidthOfReaction) || other.limitWidthOfReaction == limitWidthOfReaction) &&
             (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
             (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) || other.emojiPickerUseDialog == emojiPickerUseDialog) &&
             (identical(other.emojiPickerScale, emojiPickerScale) || other.emojiPickerScale == emojiPickerScale) &&
@@ -1152,7 +1170,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         advancedMfm,
         showReactionsCount,
         loadRawImages,
-        emojiStyle,
+        instanceTicker,
         showNoteCreatedAt,
         showAvatarsInNote,
         showAvatarsInSubNote,
@@ -1166,6 +1184,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showSubNoteReactionsViewer,
         showNoteFooter,
         showSubNoteFooter,
+        emojiStyle,
         fontFamily,
         fontSize,
         reactionsDisplayScale,
@@ -1227,7 +1246,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool advancedMfm,
       final bool showReactionsCount,
       final bool loadRawImages,
-      final EmojiStyle emojiStyle,
+      final InstanceTicker instanceTicker,
       final bool showNoteCreatedAt,
       final bool showAvatarsInNote,
       final bool showAvatarsInSubNote,
@@ -1241,6 +1260,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showSubNoteReactionsViewer,
       final bool showNoteFooter,
       final bool showSubNoteFooter,
+      final EmojiStyle emojiStyle,
       final String? fontFamily,
       final double fontSize,
       final double reactionsDisplayScale,
@@ -1297,7 +1317,7 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get loadRawImages;
   @override
-  EmojiStyle get emojiStyle;
+  InstanceTicker get instanceTicker;
   @override
   bool get showNoteCreatedAt;
   @override
@@ -1324,6 +1344,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get showNoteFooter;
   @override
   bool get showSubNoteFooter;
+  @override
+  EmojiStyle get emojiStyle;
   @override
   String? get fontFamily;
   @override

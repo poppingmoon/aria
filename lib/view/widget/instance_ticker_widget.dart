@@ -8,34 +8,38 @@ import '../../provider/api/meta_provider.dart';
 import '../../util/safe_parse_color.dart';
 import 'image_widget.dart';
 
-class InstanceTicker extends ConsumerWidget {
-  const InstanceTicker({
+class InstanceTickerWidget extends ConsumerWidget {
+  const InstanceTickerWidget({
     super.key,
     required this.account,
-    required this.instance,
-    required this.host,
+    this.instance,
+    this.host,
   });
 
   final Account account;
-  final UserInstanceInfo instance;
-  final String host;
+  final UserInstanceInfo? instance;
+  final String? host;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final color =
-        safeParseColor(instance.themeColor) ?? const Color(0xff777777);
-    final style = DefaultTextStyle.of(context).style;
-    final faviconUrl = instance.faviconUrl;
-    final mediaProxy = ref.watch(metaProvider(account)).valueOrNull?.mediaProxy;
+    final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final color = safeParseColor(
+          instance != null ? instance?.themeColor : meta?.themeColor,
+        ) ??
+        const Color(0xff777777);
+    final faviconUrl = instance?.faviconUrl;
+    final mediaProxy = meta?.mediaProxy;
     final mediaProxyUrl =
         (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
             Uri.https(account.host, 'proxy');
-    final proxiedUrl = faviconUrl != null
-        ? mediaProxyUrl.replace(
-            pathSegments: [...mediaProxyUrl.pathSegments, 'preview.webp'],
-            queryParameters: {'url': faviconUrl.toString()},
-          )
-        : null;
+    final proxiedUrl =
+        instance != null && faviconUrl != null && account.host.isNotEmpty
+            ? mediaProxyUrl.replace(
+                pathSegments: [...mediaProxyUrl.pathSegments, 'preview.webp'],
+                queryParameters: {'url': faviconUrl.toString()},
+              )
+            : faviconUrl;
+    final style = DefaultTextStyle.of(context).style;
 
     return DecoratedBox(
       decoration: BoxDecoration(
@@ -54,15 +58,19 @@ class InstanceTicker extends ConsumerWidget {
           bottomLeft: Radius.circular(4.0),
         ),
         child: InkWell(
-          onTap: () => context.push('/$account/servers/$host'),
+          onTap: account.host.isNotEmpty
+              ? () => context.push('/$account/servers/${host ?? account.host}')
+              : null,
           child: SizedBox(
             width: double.infinity,
             child: Row(
               children: [
-                if (proxiedUrl != null) ...[
+                if (proxiedUrl != null || host == null) ...[
                   ImageWidget(
                     height: style.fontSize! + 2.0,
-                    url: proxiedUrl.toString(),
+                    url: proxiedUrl != null
+                        ? proxiedUrl.toString()
+                        : 'https://${account.host}/favicon.ico',
                   ),
                   const SizedBox(width: 4.0),
                 ],
@@ -70,7 +78,7 @@ class InstanceTicker extends ConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Text(
-                      instance.name ?? '',
+                      (instance != null ? instance?.name : meta?.name) ?? '',
                       style: style.copyWith(
                         color: Colors.white,
                         height: 1.0,
