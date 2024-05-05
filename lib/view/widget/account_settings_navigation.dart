@@ -22,11 +22,13 @@ class AccountSettingsNavigation extends ConsumerWidget {
     required this.account,
     this.rail = false,
     this.selectedDestination,
+    this.physics,
   });
 
   final Account account;
   final bool rail;
   final AccountSettingsDestination? selectedDestination;
+  final ScrollPhysics? physics;
 
   Widget _buildIcon(AccountSettingsDestination destination) {
     return switch (destination) {
@@ -93,6 +95,7 @@ class AccountSettingsNavigation extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return ListView(
       shrinkWrap: true,
+      physics: physics,
       children: AccountSettingsDestination.values
           .map(
             (destination) => rail

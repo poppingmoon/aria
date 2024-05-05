@@ -61,7 +61,10 @@ class AccountSettingsPage extends HookConsumerWidget {
                 ),
                 ListTileTheme(
                   tileColor: Theme.of(context).colorScheme.surface,
-                  child: AccountSettingsNavigation(account: account),
+                  child: AccountSettingsNavigation(
+                    account: account,
+                    physics: const NeverScrollableScrollPhysics(),
+                  ),
                 ),
                 Container(
                   height: 8.0,

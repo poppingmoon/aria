@@ -28,70 +28,64 @@ class SettingsPage extends HookConsumerWidget {
               tileColor: Theme.of(context).colorScheme.surface,
               child: Column(
                 children: [
-                  ListView(
-                    shrinkWrap: true,
-                    children: [
-                      if (accounts.isNotEmpty) ...[
-                        Container(
-                          height: 8.0,
-                          margin: const EdgeInsets.only(top: 8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(8.0),
-                              topRight: Radius.circular(8.0),
-                            ),
-                            color: Theme.of(context).colorScheme.surface,
-                          ),
+                  if (accounts.isNotEmpty) ...[
+                    Container(
+                      height: 8.0,
+                      margin: const EdgeInsets.only(top: 8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(8.0),
+                          topRight: Radius.circular(8.0),
                         ),
-                        ...ListTile.divideTiles(
-                          context: context,
-                          tiles: accounts.map((account) {
-                            final i = ref
-                                .watch(iNotifierProvider(account))
-                                .valueOrNull;
-                            return ListTile(
-                              leading: i != null
-                                  ? UserAvatar(
-                                      account: account,
-                                      user: i,
-                                      size: 32.0,
-                                    )
-                                  : null,
-                              title: Consumer(
-                                builder: (context, ref, _) => Text.rich(
-                                  t.aria.settingsForUser(
-                                    user: i != null
-                                        ? TextSpan(
-                                            children: buildUsername(
-                                              ref,
-                                              account: account,
-                                              user: i,
-                                            ),
-                                          )
-                                        : TextSpan(text: account.username),
-                                  ),
-                                ),
+                        color: Theme.of(context).colorScheme.surface,
+                      ),
+                    ),
+                    ...ListTile.divideTiles(
+                      context: context,
+                      tiles: accounts.map((account) {
+                        final i =
+                            ref.watch(iNotifierProvider(account)).valueOrNull;
+                        return ListTile(
+                          leading: i != null
+                              ? UserAvatar(
+                                  account: account,
+                                  user: i,
+                                  size: 32.0,
+                                )
+                              : null,
+                          title: Consumer(
+                            builder: (context, ref, _) => Text.rich(
+                              t.aria.settingsForUser(
+                                user: i != null
+                                    ? TextSpan(
+                                        children: buildUsername(
+                                          ref,
+                                          account: account,
+                                          user: i,
+                                        ),
+                                      )
+                                    : TextSpan(text: account.username),
                               ),
-                              subtitle: Text(account.toString()),
-                              onTap: () =>
-                                  context.push('/settings/accounts/$account'),
-                            );
-                          }),
-                        ),
-                        Container(
-                          height: 8.0,
-                          margin: const EdgeInsets.only(bottom: 8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(8.0),
-                              bottomRight: Radius.circular(8.0),
                             ),
-                            color: Theme.of(context).colorScheme.surface,
                           ),
+                          subtitle: Text(account.toString()),
+                          onTap: () =>
+                              context.push('/settings/accounts/$account'),
+                        );
+                      }),
+                    ),
+                    Container(
+                      height: 8.0,
+                      margin: const EdgeInsets.only(bottom: 8.0),
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(8.0),
+                          bottomRight: Radius.circular(8.0),
                         ),
-                      ],
-                    ],
-                  ),
+                        color: Theme.of(context).colorScheme.surface,
+                      ),
+                    ),
+                  ],
                   Container(
                     height: 8.0,
                     margin: const EdgeInsets.only(top: 8.0),
@@ -103,7 +97,9 @@ class SettingsPage extends HookConsumerWidget {
                       color: Theme.of(context).colorScheme.surface,
                     ),
                   ),
-                  const GeneralSettingsNavigation(),
+                  const GeneralSettingsNavigation(
+                    physics: NeverScrollableScrollPhysics(),
+                  ),
                   Container(
                     height: 8.0,
                     margin: const EdgeInsets.only(bottom: 8.0),

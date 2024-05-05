@@ -21,10 +21,12 @@ class GeneralSettingsNavigation extends StatelessWidget {
     super.key,
     this.rail = false,
     this.selectedDestination,
+    this.physics,
   });
 
   final bool rail;
   final GeneralSettingsDestination? selectedDestination;
+  final ScrollPhysics? physics;
 
   Widget _buildIcon(GeneralSettingsDestination destination) {
     return switch (destination) {
@@ -81,6 +83,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       shrinkWrap: true,
+      physics: physics,
       children: GeneralSettingsDestination.values
           .map(
             (destination) => rail
