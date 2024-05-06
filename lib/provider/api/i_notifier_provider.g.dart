@@ -6,7 +6,7 @@ part of 'i_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$iNotifierHash() => r'f73c1a8510fe9a0cf2b641ddaa25c3f9e11b5578';
+String _$iNotifierHash() => r'f16854ee95e47a6a7c7a15c38fa54bc0fb0002a9';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,10 +30,10 @@ class _SystemHash {
 }
 
 abstract class _$INotifier
-    extends BuildlessAutoDisposeAsyncNotifier<MeDetailed?> {
+    extends BuildlessAutoDisposeStreamNotifier<MeDetailed?> {
   late final Account account;
 
-  FutureOr<MeDetailed?> build(
+  Stream<MeDetailed?> build(
     Account account,
   );
 }
@@ -82,7 +82,7 @@ class INotifierFamily extends Family<AsyncValue<MeDetailed?>> {
 
 /// See also [INotifier].
 class INotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<INotifier, MeDetailed?> {
+    extends AutoDisposeStreamNotifierProviderImpl<INotifier, MeDetailed?> {
   /// See also [INotifier].
   INotifierProvider(
     Account account,
@@ -112,7 +112,7 @@ class INotifierProvider
   final Account account;
 
   @override
-  FutureOr<MeDetailed?> runNotifierBuild(
+  Stream<MeDetailed?> runNotifierBuild(
     covariant INotifier notifier,
   ) {
     return notifier.build(
@@ -137,7 +137,7 @@ class INotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<INotifier, MeDetailed?>
+  AutoDisposeStreamNotifierProviderElement<INotifier, MeDetailed?>
       createElement() {
     return _INotifierProviderElement(this);
   }
@@ -156,13 +156,13 @@ class INotifierProvider
   }
 }
 
-mixin INotifierRef on AutoDisposeAsyncNotifierProviderRef<MeDetailed?> {
+mixin INotifierRef on AutoDisposeStreamNotifierProviderRef<MeDetailed?> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _INotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<INotifier, MeDetailed?>
+    extends AutoDisposeStreamNotifierProviderElement<INotifier, MeDetailed?>
     with INotifierRef {
   _INotifierProviderElement(super.provider);
 
