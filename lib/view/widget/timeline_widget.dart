@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/shortcuts.dart';
@@ -13,7 +12,6 @@ import '../../model/streaming/broadcast.dart' as broadcast;
 import '../../model/streaming/main_event.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/online_users_count_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
@@ -26,14 +24,10 @@ import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/format_datetime.dart';
-import 'ad_widget.dart';
 import 'announcement_widget.dart';
 import 'post_form.dart';
-import 'streaming_error_icon.dart';
-import 'tab_icon_widget.dart';
-import 'tab_name_widget.dart';
+import 'timeline_header.dart';
 import 'timeline_list_view.dart';
-import 'timeline_menu.dart';
 
 class TimelineWidget extends HookConsumerWidget {
   const TimelineWidget({super.key, required this.tabIndex});
@@ -45,13 +39,7 @@ class TimelineWidget extends HookConsumerWidget {
     final tabSettings = ref
         .watch(timelineTabsNotifierProvider.select((tabs) => tabs[tabIndex]));
     final account = tabSettings.account;
-    final i = !account.isGuest
-        ? ref.watch(iNotifierProvider(account)).valueOrNull
-        : null;
-    final hasUnreadNotification = i?.hasUnreadNotification ?? false;
-    final hasUnreadAnnouncement = i?.hasUnreadAnnouncement ?? false;
-    final onlineUsersCount =
-        ref.watch(onlineUsersCountProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final vibrateOnNotification = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.vibrateNotification),
@@ -68,6 +56,8 @@ class TimelineWidget extends HookConsumerWidget {
         ? ref.watch(timelineNotesNotifierProvider(tabSettings)).valueOrNull
         : null;
     final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
+    final scrollController =
+        ref.watch(timelineScrollControllerProvider(tabSettings));
     useEffect(
       () {
         ref
@@ -163,46 +153,7 @@ class TimelineWidget extends HookConsumerWidget {
         children: [
           Column(
             children: [
-              ExpansionTile(
-                leading: Stack(
-                  children: [
-                    TabIconWidget(tabSettings: tabSettings),
-                    if (hasUnreadNotification || hasUnreadAnnouncement)
-                      DecoratedBox(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
-                        child: const SizedBox(height: 12.0, width: 12.0),
-                      ),
-                  ],
-                ),
-                title: Row(
-                  children: [
-                    Expanded(child: TabNameWidget(tabSettings: tabSettings)),
-                    StreamingErrorIcon(tabSettings: tabSettings),
-                  ],
-                ),
-                subtitle: Text(account.toString()),
-                backgroundColor: Theme.of(context).colorScheme.surface,
-                collapsedBackgroundColor: Theme.of(context).colorScheme.surface,
-                children: [
-                  if (onlineUsersCount != null)
-                    Text.rich(
-                      t.aria.onlineUsersCount(
-                        n: TextSpan(
-                          text: NumberFormat().format(onlineUsersCount),
-                          style: const TextStyle(
-                            color: Color(0xff41b781),
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ),
-                  TimelineMenu(tabIndex: tabIndex),
-                  Center(child: AdWidget(account: account)),
-                ],
-              ),
+              TimelineHeader(tabSettings: tabSettings),
               ...?bannerAnnouncements?.map(
                 (announcement) => Container(
                   width: double.infinity,
@@ -277,9 +228,6 @@ class TimelineWidget extends HookConsumerWidget {
                       } else {
                         final centerId = ref
                             .read(timelineCenterNotifierProvider(tabSettings));
-                        final scrollController = ref.read(
-                          timelineScrollControllerProvider(tabSettings),
-                        );
                         final maxScrollExtent =
                             scrollController.position.maxScrollExtent;
                         final notes = ref
@@ -330,6 +278,9 @@ class TimelineWidget extends HookConsumerWidget {
                           ),
                         ),
                         IconButton(
+                          style: IconButton.styleFrom(
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
                           onPressed: () => showLastViewedAt.value = false,
                           icon: const Icon(Icons.close),
                         ),

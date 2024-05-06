@@ -19,9 +19,14 @@ import 'notification_widget.dart';
 import 'pagination_bottom_widget.dart';
 
 class NotificationsListView extends HookConsumerWidget {
-  const NotificationsListView({super.key, required this.account});
+  const NotificationsListView({
+    super.key,
+    required this.account,
+    this.controller,
+  });
 
   final Account account;
+  final ScrollController? controller;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -31,7 +36,7 @@ class NotificationsListView extends HookConsumerWidget {
         ref.watch(notificationsLastViewedAtNotifierProvider(account));
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final controller = useScrollController();
+    final controller = this.controller ?? useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasNewNotification = useState(false);
     final isAtBottom = useState(false);
