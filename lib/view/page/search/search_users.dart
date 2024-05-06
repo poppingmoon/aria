@@ -50,6 +50,7 @@ class SearchUsers extends HookConsumerWidget {
                 autofocus: true,
                 onSubmitted: (value) => query.value = value.trim(),
                 textInputAction: TextInputAction.search,
+                onTapOutside: (_) => focusNode?.unfocus(),
               ),
             ),
           ),
