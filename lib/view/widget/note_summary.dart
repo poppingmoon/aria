@@ -37,6 +37,8 @@ class NoteSummary extends ConsumerWidget {
         ].join(' '),
         simple: true,
         emojis: note.emojis,
+        author: note.user,
+        nyaize: true,
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
