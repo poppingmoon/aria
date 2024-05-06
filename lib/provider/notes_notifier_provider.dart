@@ -69,7 +69,9 @@ class NotesNotifier extends _$NotesNotifier {
     reactions[reacted.reaction] = (reactions[reacted.reaction] ?? 0) + 1;
     final emoji = reacted.emoji;
     final reactionEmojis = Map.of(note.reactionEmojis);
-    if (emoji != null && !reacted.reaction.endsWith('@.:')) {
+    if (emoji != null &&
+        reacted.reaction.startsWith(':') &&
+        !reacted.reaction.endsWith('@.:')) {
       reactionEmojis[emoji.name] = emoji.url;
     }
     state = {
@@ -156,14 +158,17 @@ class NotesNotifier extends _$NotesNotifier {
     );
     final note = await _misskey.notes.show(NotesShowRequest(noteId: noteId));
     if (note.myReaction == null) {
+      final emoji = reaction.startsWith(':') && !reaction.endsWith('@.:')
+          ? '${reaction.substring(0, reaction.length - 1)}@.:'
+          : reaction;
       add(
         note.copyWith(
           reactionCount: (note.reactionCount ?? 0) + 1,
           reactions: {
             ...note.reactions,
-            reaction: (note.reactions[reaction] ?? 0) + 1,
+            reaction: (note.reactions[emoji] ?? 0) + 1,
           },
-          myReaction: reaction,
+          myReaction: emoji,
         ),
       );
     } else {
