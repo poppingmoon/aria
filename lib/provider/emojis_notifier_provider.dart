@@ -87,8 +87,8 @@ class EmojisNotifier extends _$EmojisNotifier {
         .putFile(_key, utf8.encode(jsonEncode(emojis)));
   }
 
-  Future<void> reloadEmojis() async {
-    if ((state.valueOrNull?.isEmpty ?? true) || !_recentlyFetched) {
+  Future<void> reloadEmojis({bool force = false}) async {
+    if (force || (state.valueOrNull?.isEmpty ?? true) || !_recentlyFetched) {
       final emojis = await _fetchEmojis();
       state = AsyncData({for (final emoji in emojis) emoji.name: emoji});
       await _save(emojis);
