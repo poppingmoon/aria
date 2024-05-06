@@ -53,6 +53,7 @@ class TranslatedNoteSheet extends ConsumerWidget {
                     text: translatedNote.text,
                     emojis: note.emojis,
                     author: note.user,
+                    nyaize: true,
                   ),
                 ),
               ),

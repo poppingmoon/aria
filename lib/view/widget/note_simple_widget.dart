@@ -105,6 +105,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
                       text: note.cw,
                       emojis: note.emojis,
                       author: note.user,
+                      nyaize: true,
                       onTapEmoji: (emoji) => showModalBottomSheet<void>(
                         context: context,
                         builder: (context) => EmojiSheet(

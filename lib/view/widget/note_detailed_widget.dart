@@ -276,6 +276,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                         text: cw,
                         emojis: appearNote.emojis,
                         author: appearNote.user,
+                        nyaize: true,
                         selectable: true,
                         onTapEmoji: (emoji) => showModalBottomSheet<void>(
                           context: context,
@@ -328,8 +329,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                     ref,
                                     account: account,
                                     nodes: parsed,
-                                    author: appearNote.user,
                                     emojis: appearNote.emojis,
+                                    author: appearNote.user,
+                                    nyaize: true,
                                     onTapEmoji: (emoji) =>
                                         showModalBottomSheet<void>(
                                       context: context,

@@ -91,8 +91,9 @@ class SubNoteContent extends HookConsumerWidget {
                       ref,
                       account: account,
                       nodes: parsed,
-                      author: note.user,
                       emojis: note.emojis,
+                      author: note.user,
+                      nyaize: true,
                       onTapEmoji: (emoji) => showModalBottomSheet<void>(
                         context: context,
                         builder: (context) => EmojiSheet(
