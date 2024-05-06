@@ -63,7 +63,7 @@ class AttachesNotifier extends _$AttachesNotifier {
   void reorder(int oldIndex, int newIndex) {
     final items = state.toList();
     final item = items.removeAt(oldIndex);
-    items.insert(oldIndex < newIndex ? newIndex - 1 : newIndex, item);
+    items.insert(newIndex, item);
     state = items;
   }
 
