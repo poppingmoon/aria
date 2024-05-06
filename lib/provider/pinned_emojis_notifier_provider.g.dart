@@ -7,7 +7,7 @@ part of 'pinned_emojis_notifier_provider.dart';
 // **************************************************************************
 
 String _$pinnedEmojisNotifierHash() =>
-    r'5a3b81a43c5af6dc2cd0ac087e3f94563600e251';
+    r'23a174ac8e1421ed1ae4511e437853546bc1f3f5';
 
 /// Copied from Dart SDK
 class _SystemHash {

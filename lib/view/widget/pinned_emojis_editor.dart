@@ -73,6 +73,7 @@ class PinnedEmojisEditor extends HookConsumerWidget {
                         style: DefaultTextStyle.of(context)
                             .style
                             .apply(fontSizeFactor: 2.0),
+                        disableTooltip: true,
                       ),
                     )
                     .toList(),
