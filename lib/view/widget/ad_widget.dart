@@ -9,7 +9,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/meta_provider.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/muted_ads_notifier_provider.dart';
 import '../../util/navigate.dart';
@@ -59,7 +59,8 @@ class AdWidget extends HookConsumerWidget {
         }
       }
     }
-    final allAds = ref.watch(metaProvider(account)).valueOrNull?.ads;
+    final allAds =
+        ref.watch(metaNotifierProvider(account.host)).valueOrNull?.ads;
     if (allAds == null || allAds.isEmpty) {
       return const SizedBox.shrink();
     }

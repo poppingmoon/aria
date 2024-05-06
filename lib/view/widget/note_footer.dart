@@ -11,7 +11,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/meta_provider.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -56,7 +56,7 @@ class NoteFooter extends ConsumerWidget {
       return const SizedBox.shrink();
     }
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final showQuoteButton = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.showQuoteButtonInNoteFooter),

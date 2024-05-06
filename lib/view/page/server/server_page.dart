@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/federation_instance_provider.dart';
-import '../../../provider/api/meta_provider.dart';
+import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import 'server_ads.dart';
 import 'server_emojis.dart';
@@ -24,7 +24,7 @@ class ServerPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaProvider(Account(host: host))).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(host)).valueOrNull;
     final instance = account.host != host
         ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
         : null;

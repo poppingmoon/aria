@@ -4,7 +4,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
-import '../../../provider/api/meta_provider.dart';
+import '../../../provider/api/meta_notifier_provider.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 
@@ -15,10 +15,11 @@ class ServerAds extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaProvider(Account(host: host)));
+    final meta = ref.watch(metaNotifierProvider(host));
 
     return RefreshIndicator(
-      onRefresh: () => ref.refresh(metaProvider(Account(host: host)).future),
+      onRefresh: () =>
+          ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
       child: switch (meta) {
         AsyncValue(valueOrNull: MetaResponse(:final ads)) => ads.isNotEmpty
             ? ListView.builder(

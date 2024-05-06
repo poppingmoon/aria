@@ -11,7 +11,7 @@ import '../../../constant/colors.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/federation_instance_provider.dart';
-import '../../../provider/api/meta_provider.dart';
+import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/api/stats_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/node_info_provider.dart';
@@ -31,7 +31,7 @@ class ServerOverview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaProvider(Account(host: host))).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(host)).valueOrNull;
     final instance = account.host != host
         ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
         : null;
@@ -45,7 +45,7 @@ class ServerOverview extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () => Future.wait([
-        ref.refresh(metaProvider(Account(host: host)).future),
+        ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
         if (account.host != host)
           ref.refresh(federationInstanceProvider(account, host).future),
       ]),

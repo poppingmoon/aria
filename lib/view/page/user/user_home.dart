@@ -10,7 +10,7 @@ import '../../../constant/colors.dart';
 import '../../../extension/user_detailed_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
-import '../../../provider/api/meta_provider.dart';
+import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/api/skeb_status_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
@@ -103,7 +103,7 @@ class _UserHome extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final skebStatus = meta?.enableSkebStatus ?? false
         ? ref.watch(skebStatusProvider(account, user.id)).valueOrNull
         : null;

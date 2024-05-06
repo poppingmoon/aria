@@ -10,7 +10,7 @@ import '../../model/account.dart';
 import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/meta_provider.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
@@ -57,7 +57,7 @@ class NotePage extends HookConsumerWidget {
     final showNextNotes =
         showTimelineNextNotes.value || showUserNextNotes.value;
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaProvider(account)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final ltlAvailable =
         i?.policies?.ltlAvailable ?? meta?.policies?.ltlAvailable ?? true;
     final gtlAvailable =

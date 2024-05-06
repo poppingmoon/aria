@@ -35,7 +35,9 @@ class ServerEmojis extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return RefreshIndicator(
-      onRefresh: () => ref.refresh(emojisNotifierProvider(host).future),
+      onRefresh: () => ref
+          .read(emojisNotifierProvider(host).notifier)
+          .reloadEmojis(force: true),
       child: groups.isNotEmpty
           ? ListView.builder(
               itemBuilder: (context, index) {

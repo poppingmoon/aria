@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../model/account.dart';
-import 'api/meta_provider.dart';
+import 'api/meta_notifier_provider.dart';
 
 part 'static_image_url_provider.g.dart';
 
@@ -24,7 +23,7 @@ Uri? staticImageUrl(StaticImageUrlRef ref, String host, String baseUrl) {
         .replace(queryParameters: {...url.queryParameters, 'static': '1'});
   }
   final mediaProxy =
-      ref.watch(metaProvider(Account(host: host))).valueOrNull?.mediaProxy ??
+      ref.watch(metaNotifierProvider(host)).valueOrNull?.mediaProxy ??
           'https://$host/proxy';
   if (urlString.startsWith('$mediaProxy/')) {
     return url

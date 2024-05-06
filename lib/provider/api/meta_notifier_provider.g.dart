@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'static_image_url_provider.dart';
+part of 'meta_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staticImageUrlHash() => r'f6fea069577d0bc52f4511d31f66cdec8a54a04b';
+String _$metaNotifierHash() => r'a90252a824d09b651867cacc1e470f55cb0c287f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,33 +29,39 @@ class _SystemHash {
   }
 }
 
-/// See also [staticImageUrl].
-@ProviderFor(staticImageUrl)
-const staticImageUrlProvider = StaticImageUrlFamily();
+abstract class _$MetaNotifier
+    extends BuildlessAutoDisposeStreamNotifier<MetaResponse> {
+  late final String host;
 
-/// See also [staticImageUrl].
-class StaticImageUrlFamily extends Family<Uri?> {
-  /// See also [staticImageUrl].
-  const StaticImageUrlFamily();
-
-  /// See also [staticImageUrl].
-  StaticImageUrlProvider call(
+  Stream<MetaResponse> build(
     String host,
-    String baseUrl,
+  );
+}
+
+/// See also [MetaNotifier].
+@ProviderFor(MetaNotifier)
+const metaNotifierProvider = MetaNotifierFamily();
+
+/// See also [MetaNotifier].
+class MetaNotifierFamily extends Family<AsyncValue<MetaResponse>> {
+  /// See also [MetaNotifier].
+  const MetaNotifierFamily();
+
+  /// See also [MetaNotifier].
+  MetaNotifierProvider call(
+    String host,
   ) {
-    return StaticImageUrlProvider(
+    return MetaNotifierProvider(
       host,
-      baseUrl,
     );
   }
 
   @override
-  StaticImageUrlProvider getProviderOverride(
-    covariant StaticImageUrlProvider provider,
+  MetaNotifierProvider getProviderOverride(
+    covariant MetaNotifierProvider provider,
   ) {
     return call(
       provider.host,
-      provider.baseUrl,
     );
   }
 
@@ -71,35 +77,30 @@ class StaticImageUrlFamily extends Family<Uri?> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'staticImageUrlProvider';
+  String? get name => r'metaNotifierProvider';
 }
 
-/// See also [staticImageUrl].
-class StaticImageUrlProvider extends AutoDisposeProvider<Uri?> {
-  /// See also [staticImageUrl].
-  StaticImageUrlProvider(
+/// See also [MetaNotifier].
+class MetaNotifierProvider
+    extends AutoDisposeStreamNotifierProviderImpl<MetaNotifier, MetaResponse> {
+  /// See also [MetaNotifier].
+  MetaNotifierProvider(
     String host,
-    String baseUrl,
   ) : this._internal(
-          (ref) => staticImageUrl(
-            ref as StaticImageUrlRef,
-            host,
-            baseUrl,
-          ),
-          from: staticImageUrlProvider,
-          name: r'staticImageUrlProvider',
+          () => MetaNotifier()..host = host,
+          from: metaNotifierProvider,
+          name: r'metaNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$staticImageUrlHash,
-          dependencies: StaticImageUrlFamily._dependencies,
+                  : _$metaNotifierHash,
+          dependencies: MetaNotifierFamily._dependencies,
           allTransitiveDependencies:
-              StaticImageUrlFamily._allTransitiveDependencies,
+              MetaNotifierFamily._allTransitiveDependencies,
           host: host,
-          baseUrl: baseUrl,
         );
 
-  StaticImageUrlProvider._internal(
+  MetaNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -107,69 +108,67 @@ class StaticImageUrlProvider extends AutoDisposeProvider<Uri?> {
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.host,
-    required this.baseUrl,
   }) : super.internal();
 
   final String host;
-  final String baseUrl;
 
   @override
-  Override overrideWith(
-    Uri? Function(StaticImageUrlRef provider) create,
+  Stream<MetaResponse> runNotifierBuild(
+    covariant MetaNotifier notifier,
   ) {
+    return notifier.build(
+      host,
+    );
+  }
+
+  @override
+  Override overrideWith(MetaNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: StaticImageUrlProvider._internal(
-        (ref) => create(ref as StaticImageUrlRef),
+      override: MetaNotifierProvider._internal(
+        () => create()..host = host,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         host: host,
-        baseUrl: baseUrl,
       ),
     );
   }
 
   @override
-  AutoDisposeProviderElement<Uri?> createElement() {
-    return _StaticImageUrlProviderElement(this);
+  AutoDisposeStreamNotifierProviderElement<MetaNotifier, MetaResponse>
+      createElement() {
+    return _MetaNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is StaticImageUrlProvider &&
-        other.host == host &&
-        other.baseUrl == baseUrl;
+    return other is MetaNotifierProvider && other.host == host;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, host.hashCode);
-    hash = _SystemHash.combine(hash, baseUrl.hashCode);
 
     return _SystemHash.finish(hash);
   }
 }
 
-mixin StaticImageUrlRef on AutoDisposeProviderRef<Uri?> {
+mixin MetaNotifierRef on AutoDisposeStreamNotifierProviderRef<MetaResponse> {
   /// The parameter `host` of this provider.
   String get host;
-
-  /// The parameter `baseUrl` of this provider.
-  String get baseUrl;
 }
 
-class _StaticImageUrlProviderElement extends AutoDisposeProviderElement<Uri?>
-    with StaticImageUrlRef {
-  _StaticImageUrlProviderElement(super.provider);
+class _MetaNotifierProviderElement
+    extends AutoDisposeStreamNotifierProviderElement<MetaNotifier, MetaResponse>
+    with MetaNotifierRef {
+  _MetaNotifierProviderElement(super.provider);
 
   @override
-  String get host => (origin as StaticImageUrlProvider).host;
-  @override
-  String get baseUrl => (origin as StaticImageUrlProvider).baseUrl;
+  String get host => (origin as MetaNotifierProvider).host;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
