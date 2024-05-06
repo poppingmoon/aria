@@ -8,6 +8,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/online_users_count_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import 'ad_widget.dart';
 import 'streaming_error_icon.dart';
@@ -29,6 +30,10 @@ class TimelineHeader extends HookConsumerWidget {
         ref.watch(onlineUsersCountProvider(tabSettings.account)).valueOrNull;
     final scrollController =
         ref.watch(timelineScrollControllerProvider(tabSettings));
+    final alwaysShowHeader = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysShowTabHeader),
+    );
     final isMenuExpanded = useState(false);
     final offset = useState<double?>(null);
     final sizeFactor = useState(1.0);
@@ -45,10 +50,13 @@ class TimelineHeader extends HookConsumerWidget {
           offset.value = next;
         }
 
-        scrollController.addListener(callback);
+        sizeFactor.value = 1.0;
+        if (!alwaysShowHeader) {
+          scrollController.addListener(callback);
+        }
         return () => scrollController.removeListener(callback);
       },
-      [],
+      [alwaysShowHeader],
     );
 
     return SizeTransition(

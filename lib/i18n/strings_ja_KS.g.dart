@@ -48,6 +48,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 		const TextSpan(text: 'のローカライゼーションファイルを基にしとるで。\n両プロジェクトのコントリビューターの皆様、ほんまにおおきに！'),
 	]);
 	@override String get addTab => 'タブを追加';
+	@override String get alwaysShowTabHeader => 'タブの情報をいつでも表示する';
 	@override String get authenticate => '認証';
 	@override String get authenticated => '認証してった';
 	@override String get background => '背景';
