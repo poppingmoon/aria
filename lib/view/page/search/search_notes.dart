@@ -57,6 +57,7 @@ class SearchNotes extends HookConsumerWidget {
               query.value,
               userId: userId.value,
               channelId: channelId.value,
+              localOnly: localOnly.value,
             ),
           )
         : null;
@@ -192,6 +193,7 @@ class SearchNotes extends HookConsumerWidget {
           query.value,
           userId: userId.value,
           channelId: channelId.value,
+          localOnly: localOnly.value,
         ).future,
       ),
       loadMore: (skipError) => ref
@@ -201,6 +203,7 @@ class SearchNotes extends HookConsumerWidget {
               query.value,
               userId: userId.value,
               channelId: channelId.value,
+              localOnly: localOnly.value,
             ).notifier,
           )
           .loadMore(skipError: skipError),
