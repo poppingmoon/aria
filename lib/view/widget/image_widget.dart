@@ -69,7 +69,7 @@ class ImageWidget extends ConsumerWidget {
         );
       }
     }
-    if (url.endsWith('.svg')) {
+    if (url.split('?').first.endsWith('.svg')) {
       return FutureBuilder(
         future: ref.read(cacheManagerProvider).getSingleFile(url),
         builder: (context, snapshot) {
