@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'clip_provider.dart';
+part of 'clip_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$clipHash() => r'e5bf692e56cf197dab905abd366f40871ceee782';
+String _$clipNotifierHash() => r'76f8132b92b5f862f65377420c2e208e8ad84953';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,29 +29,39 @@ class _SystemHash {
   }
 }
 
-/// See also [clip].
-@ProviderFor(clip)
-const clipProvider = ClipFamily();
+abstract class _$ClipNotifier extends BuildlessAutoDisposeAsyncNotifier<Clip> {
+  late final Account account;
+  late final String clipId;
 
-/// See also [clip].
-class ClipFamily extends Family<AsyncValue<Clip>> {
-  /// See also [clip].
-  const ClipFamily();
+  FutureOr<Clip> build(
+    Account account,
+    String clipId,
+  );
+}
 
-  /// See also [clip].
-  ClipProvider call(
+/// See also [ClipNotifier].
+@ProviderFor(ClipNotifier)
+const clipNotifierProvider = ClipNotifierFamily();
+
+/// See also [ClipNotifier].
+class ClipNotifierFamily extends Family<AsyncValue<Clip>> {
+  /// See also [ClipNotifier].
+  const ClipNotifierFamily();
+
+  /// See also [ClipNotifier].
+  ClipNotifierProvider call(
     Account account,
     String clipId,
   ) {
-    return ClipProvider(
+    return ClipNotifierProvider(
       account,
       clipId,
     );
   }
 
   @override
-  ClipProvider getProviderOverride(
-    covariant ClipProvider provider,
+  ClipNotifierProvider getProviderOverride(
+    covariant ClipNotifierProvider provider,
   ) {
     return call(
       provider.account,
@@ -71,32 +81,34 @@ class ClipFamily extends Family<AsyncValue<Clip>> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'clipProvider';
+  String? get name => r'clipNotifierProvider';
 }
 
-/// See also [clip].
-class ClipProvider extends AutoDisposeFutureProvider<Clip> {
-  /// See also [clip].
-  ClipProvider(
+/// See also [ClipNotifier].
+class ClipNotifierProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<ClipNotifier, Clip> {
+  /// See also [ClipNotifier].
+  ClipNotifierProvider(
     Account account,
     String clipId,
   ) : this._internal(
-          (ref) => clip(
-            ref as ClipRef,
-            account,
-            clipId,
-          ),
-          from: clipProvider,
-          name: r'clipProvider',
+          () => ClipNotifier()
+            ..account = account
+            ..clipId = clipId,
+          from: clipNotifierProvider,
+          name: r'clipNotifierProvider',
           debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product') ? null : _$clipHash,
-          dependencies: ClipFamily._dependencies,
-          allTransitiveDependencies: ClipFamily._allTransitiveDependencies,
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$clipNotifierHash,
+          dependencies: ClipNotifierFamily._dependencies,
+          allTransitiveDependencies:
+              ClipNotifierFamily._allTransitiveDependencies,
           account: account,
           clipId: clipId,
         );
 
-  ClipProvider._internal(
+  ClipNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -111,13 +123,23 @@ class ClipProvider extends AutoDisposeFutureProvider<Clip> {
   final String clipId;
 
   @override
-  Override overrideWith(
-    FutureOr<Clip> Function(ClipRef provider) create,
+  FutureOr<Clip> runNotifierBuild(
+    covariant ClipNotifier notifier,
   ) {
+    return notifier.build(
+      account,
+      clipId,
+    );
+  }
+
+  @override
+  Override overrideWith(ClipNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: ClipProvider._internal(
-        (ref) => create(ref as ClipRef),
+      override: ClipNotifierProvider._internal(
+        () => create()
+          ..account = account
+          ..clipId = clipId,
         from: from,
         name: null,
         dependencies: null,
@@ -130,13 +152,13 @@ class ClipProvider extends AutoDisposeFutureProvider<Clip> {
   }
 
   @override
-  AutoDisposeFutureProviderElement<Clip> createElement() {
-    return _ClipProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<ClipNotifier, Clip> createElement() {
+    return _ClipNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is ClipProvider &&
+    return other is ClipNotifierProvider &&
         other.account == account &&
         other.clipId == clipId;
   }
@@ -151,7 +173,7 @@ class ClipProvider extends AutoDisposeFutureProvider<Clip> {
   }
 }
 
-mixin ClipRef on AutoDisposeFutureProviderRef<Clip> {
+mixin ClipNotifierRef on AutoDisposeAsyncNotifierProviderRef<Clip> {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -159,14 +181,15 @@ mixin ClipRef on AutoDisposeFutureProviderRef<Clip> {
   String get clipId;
 }
 
-class _ClipProviderElement extends AutoDisposeFutureProviderElement<Clip>
-    with ClipRef {
-  _ClipProviderElement(super.provider);
+class _ClipNotifierProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<ClipNotifier, Clip>
+    with ClipNotifierRef {
+  _ClipNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as ClipProvider).account;
+  Account get account => (origin as ClipNotifierProvider).account;
   @override
-  String get clipId => (origin as ClipProvider).clipId;
+  String get clipId => (origin as ClipNotifierProvider).clipId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

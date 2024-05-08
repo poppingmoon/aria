@@ -12,6 +12,7 @@ import '../../../provider/api/gallery_post_notifier_provider.dart';
 import '../../../provider/api/post_notifier_provider.dart';
 import '../../../provider/api/user_gallery_posts_notifier_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/future_with_dialog.dart';
 import '../../dialog/image_gallery_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
@@ -126,19 +127,28 @@ class GalleryPostPage extends ConsumerWidget {
                       LikeButton(
                         isLiked: post.isLiked ?? false,
                         likedCount: post.likedCount,
-                        onTap: () => post.isLiked ?? false
-                            ? ref
-                                .read(
-                                  galleryPostNotifierProvider(account, postId)
-                                      .notifier,
+                        onTap: !account.isGuest
+                            ? () => futureWithDialog(
+                                  context,
+                                  post.isLiked ?? false
+                                      ? ref
+                                          .read(
+                                            galleryPostNotifierProvider(
+                                              account,
+                                              postId,
+                                            ).notifier,
+                                          )
+                                          .unlike()
+                                      : ref
+                                          .read(
+                                            galleryPostNotifierProvider(
+                                              account,
+                                              postId,
+                                            ).notifier,
+                                          )
+                                          .like(),
                                 )
-                                .unlike()
-                            : ref
-                                .read(
-                                  galleryPostNotifierProvider(account, postId)
-                                      .notifier,
-                                )
-                                .like(),
+                            : null,
                       ),
                       const Spacer(),
                       if (post.user.username == account.username)

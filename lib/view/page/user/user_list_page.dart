@@ -95,36 +95,44 @@ class UserListPage extends HookConsumerWidget {
                         child: LikeButton(
                           isLiked: isLiked,
                           likedCount: likedCount,
-                          onTap: () async {
-                            if (isLiked) {
-                              await futureWithDialog(
-                                context,
-                                ref
-                                    .read(misskeyProvider(account))
-                                    .users
-                                    .list
-                                    .unfavorite(
-                                      UsersListsUnfavoriteRequest(
-                                        listId: listId,
-                                      ),
+                          onTap: !account.isGuest
+                              ? () async {
+                                  if (isLiked) {
+                                    await futureWithDialog(
+                                      context,
+                                      ref
+                                          .read(misskeyProvider(account))
+                                          .users
+                                          .list
+                                          .unfavorite(
+                                            UsersListsUnfavoriteRequest(
+                                              listId: listId,
+                                            ),
+                                          ),
+                                    );
+                                  } else {
+                                    await futureWithDialog(
+                                      context,
+                                      ref
+                                          .read(misskeyProvider(account))
+                                          .users
+                                          .list
+                                          .favorite(
+                                            UsersListsFavoriteRequest(
+                                              listId: listId,
+                                            ),
+                                          ),
+                                    );
+                                  }
+                                  ref.invalidate(
+                                    listProvider(
+                                      account,
+                                      listId,
+                                      forPublic: true,
                                     ),
-                              );
-                            } else {
-                              await futureWithDialog(
-                                context,
-                                ref
-                                    .read(misskeyProvider(account))
-                                    .users
-                                    .list
-                                    .favorite(
-                                      UsersListsFavoriteRequest(listId: listId),
-                                    ),
-                              );
-                            }
-                            ref.invalidate(
-                              listProvider(account, listId, forPublic: true),
-                            );
-                          },
+                                  );
+                                }
+                              : null,
                         ),
                       ),
                       Padding(
