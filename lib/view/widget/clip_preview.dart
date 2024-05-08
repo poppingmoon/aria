@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart' hide Clip;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/api/i_notifier_provider.dart';
 import '../../util/format_datetime.dart';
 import 'mfm.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class ClipPreview extends StatelessWidget {
+class ClipPreview extends ConsumerWidget {
   const ClipPreview({
     super.key,
     required this.account,
@@ -21,7 +24,9 @@ class ClipPreview extends StatelessWidget {
   final void Function()? onTap;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+
     return ListTile(
       title: Text(clip.name ?? ''),
       subtitle: Column(
@@ -43,6 +48,25 @@ class ClipPreview extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 2.0),
               child: Text(
                 '${t.misskey.updatedAt}: ${absoluteTime(lastClippedAt)} (${relativeTime(lastClippedAt)})',
+              ),
+            ),
+          if (clip case Clip(:final notesCount?))
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Text(
+                [
+                  '${t.misskey.notesCount}: ',
+                  NumberFormat().format(notesCount),
+                  if (i?.policies
+                      case UserPolicies(:final noteEachClipsLimit)) ...[
+                    ' / ',
+                    NumberFormat().format(noteEachClipsLimit.toInt()),
+                    ' (',
+                    t.misskey
+                        .remainingN(n: noteEachClipsLimit.toInt() - notesCount),
+                    ')',
+                  ],
+                ].join(),
               ),
             ),
           Padding(
