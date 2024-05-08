@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -18,7 +20,7 @@ class ListsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account));
-    final i = ref.watch(iNotifierProvider(account));
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.lists)),
@@ -53,7 +55,17 @@ class ListsPage extends ConsumerWidget {
                                 title: Text(list.name ?? ''),
                                 subtitle: Text(
                                   t.misskey.nUsers(
-                                    n: '${list.userIds.length} / ${i.valueOrNull?.policies?.userEachUserListsLimit.toInt()}',
+                                    n: [
+                                      NumberFormat()
+                                          .format(list.userIds.length),
+                                      if (i?.policies
+                                          case UserPolicies(
+                                            :final userEachUserListsLimit,
+                                          ))
+                                        ' / ${NumberFormat().format(
+                                          userEachUserListsLimit.toInt(),
+                                        )}',
+                                    ].join(),
                                   ),
                                 ),
                                 onTap: () =>
