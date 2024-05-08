@@ -253,10 +253,18 @@ class NotificationWidget extends ConsumerWidget {
               note.reactionAcceptance == ReactionAcceptance.likeOnly
                   // TODO: Update localization to likedBySomeUsers
                   ? t.misskey.notification_.reactedBySomeUsers(
-                      n: notification.reactions?.length ?? 0,
+                      n: notification.reactions
+                              ?.map((reaction) => reaction.user.id)
+                              .toSet()
+                              .length ??
+                          0,
                     )
                   : t.misskey.notification_.reactedBySomeUsers(
-                      n: notification.reactions?.length ?? 0,
+                      n: notification.reactions
+                              ?.map((reaction) => reaction.user.id)
+                              .toSet()
+                              .length ??
+                          0,
                     ),
             ),
             subtitle: NoteSummary(account: account, noteId: note.id),
@@ -353,8 +361,10 @@ class NotificationWidget extends ConsumerWidget {
               ),
             ),
             title: Text(
-              t.misskey.notification_
-                  .renotedBySomeUsers(n: notification.users?.length ?? 0),
+              t.misskey.notification_.renotedBySomeUsers(
+                n: notification.users?.map((user) => user.id).toSet().length ??
+                    0,
+              ),
             ),
             subtitle: NoteSummary(account: account, noteId: renoteId),
             actions: notification.users
