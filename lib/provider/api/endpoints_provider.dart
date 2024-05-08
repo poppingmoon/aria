@@ -5,7 +5,13 @@ import 'misskey_provider.dart';
 
 part 'endpoints_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 FutureOr<List<String>> endpoints(EndpointsRef ref, String host) {
-  return ref.watch(misskeyProvider(Account(host: host))).endpoints();
+  final link = ref.keepAlive();
+  try {
+    return ref.watch(misskeyProvider(Account(host: host))).endpoints();
+  } catch (_) {
+    link.close();
+    rethrow;
+  }
 }

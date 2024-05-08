@@ -6,7 +6,7 @@ part of 'endpoints_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$endpointsHash() => r'b8f5b5d555addca90ac246440a517480ea478095';
+String _$endpointsHash() => r'5502a21f7e93fe1b9a6c684f7038707069b6decb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,7 +72,7 @@ class EndpointsFamily extends Family<AsyncValue<List<String>>> {
 }
 
 /// See also [endpoints].
-class EndpointsProvider extends FutureProvider<List<String>> {
+class EndpointsProvider extends AutoDisposeFutureProvider<List<String>> {
   /// See also [endpoints].
   EndpointsProvider(
     String host,
@@ -123,7 +123,7 @@ class EndpointsProvider extends FutureProvider<List<String>> {
   }
 
   @override
-  FutureProviderElement<List<String>> createElement() {
+  AutoDisposeFutureProviderElement<List<String>> createElement() {
     return _EndpointsProviderElement(this);
   }
 
@@ -141,13 +141,13 @@ class EndpointsProvider extends FutureProvider<List<String>> {
   }
 }
 
-mixin EndpointsRef on FutureProviderRef<List<String>> {
+mixin EndpointsRef on AutoDisposeFutureProviderRef<List<String>> {
   /// The parameter `host` of this provider.
   String get host;
 }
 
-class _EndpointsProviderElement extends FutureProviderElement<List<String>>
-    with EndpointsRef {
+class _EndpointsProviderElement
+    extends AutoDisposeFutureProviderElement<List<String>> with EndpointsRef {
   _EndpointsProviderElement(super.provider);
 
   @override
