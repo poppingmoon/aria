@@ -13,6 +13,7 @@ import '../../../provider/api/post_notifier_provider.dart';
 import '../../../provider/api/user_pages_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/extract_url.dart';
+import '../../../util/future_with_dialog.dart';
 import '../../dialog/image_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
@@ -248,27 +249,32 @@ class PagePage extends ConsumerWidget {
                           LikeButton(
                             isLiked: page.isLiked ?? false,
                             likedCount: page.likedCount,
-                            onTap: () => page.isLiked ?? false
-                                ? ref
-                                    .read(
-                                      pageNotifierProvider(
-                                        account,
-                                        pageId: pageId,
-                                        pageName: pageName,
-                                        username: username,
-                                      ).notifier,
+                            onTap: !account.isGuest
+                                ? () => futureWithDialog(
+                                      context,
+                                      page.isLiked ?? false
+                                          ? ref
+                                              .read(
+                                                pageNotifierProvider(
+                                                  account,
+                                                  pageId: pageId,
+                                                  pageName: pageName,
+                                                  username: username,
+                                                ).notifier,
+                                              )
+                                              .unlike()
+                                          : ref
+                                              .read(
+                                                pageNotifierProvider(
+                                                  account,
+                                                  pageId: pageId,
+                                                  pageName: pageName,
+                                                  username: username,
+                                                ).notifier,
+                                              )
+                                              .like(),
                                     )
-                                    .unlike()
-                                : ref
-                                    .read(
-                                      pageNotifierProvider(
-                                        account,
-                                        pageId: pageId,
-                                        pageName: pageName,
-                                        username: username,
-                                      ).notifier,
-                                    )
-                                    .like(),
+                                : null,
                           ),
                           const Spacer(),
                           if (!account.isGuest)
