@@ -1,12 +1,14 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/clip_settings.dart';
 import '../../provider/api/clips_notifier_provider.dart';
+import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/note_clips_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'clip_settings_dialog.dart';
@@ -27,6 +29,7 @@ class ClipDialog extends HookConsumerWidget {
     final clips = ref.watch(clipsNotifierProvider(account)).valueOrNull;
     final noteClips =
         ref.watch(noteClipsNotifierProvider(account, noteId)).valueOrNull ?? [];
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
 
     return SimpleDialog(
       title: Text(t.misskey.clip),
@@ -38,6 +41,24 @@ class ClipDialog extends HookConsumerWidget {
                 ? const Icon(Icons.check)
                 : SizedBox(width: Theme.of(context).iconTheme.size),
             title: Text(clip.name ?? ''),
+            subtitle: clip.notesCount != null
+                ? Text(
+                    [
+                      '${t.misskey.notesCount}: ',
+                      NumberFormat().format(clip.notesCount),
+                      if (i?.policies
+                          case UserPolicies(:final noteEachClipsLimit)) ...[
+                        ' / ',
+                        NumberFormat().format(noteEachClipsLimit.toInt()),
+                        ' (',
+                        t.misskey.remainingN(
+                          n: noteEachClipsLimit.toInt() - clip.notesCount!,
+                        ),
+                        ')',
+                      ],
+                    ].join(),
+                  )
+                : null,
             onTap: () async {
               await futureWithDialog(
                 context,
@@ -72,6 +93,8 @@ class ClipDialog extends HookConsumerWidget {
                               )
                               .removeClip(clip.id);
                         }
+                      } else {
+                        rethrow;
                       }
                     }
                   }
