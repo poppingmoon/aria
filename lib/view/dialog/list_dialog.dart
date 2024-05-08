@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:intl/intl.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/lists_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'text_field_dialog.dart';
@@ -20,6 +23,8 @@ class ListDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account)).valueOrNull;
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+
     return SimpleDialog(
       title: Text(t.misskey.addToList),
       children: [
@@ -27,10 +32,32 @@ class ListDialog extends HookConsumerWidget {
           (list) => CheckboxListTile(
             value: list.userIds.contains(userId),
             title: Text(list.name ?? ''),
+            subtitle: Text(
+              [
+                t.misskey.nUsers(
+                  n: [
+                    NumberFormat().format(list.userIds.length),
+                    if (i?.policies
+                        case UserPolicies(:final userEachUserListsLimit)) ...[
+                      ' / ',
+                      NumberFormat().format(userEachUserListsLimit.toInt()),
+                    ],
+                  ].join(),
+                ),
+                if (i?.policies
+                    case UserPolicies(:final userEachUserListsLimit)) ...[
+                  ' (',
+                  t.misskey.remainingN(
+                    n: NumberFormat().format(
+                      userEachUserListsLimit.toInt() - list.userIds.length,
+                    ),
+                  ),
+                  ')',
+                ],
+              ].join(),
+            ),
             onChanged: (value) async {
-              if (value == null) {
-                return;
-              }
+              if (value == null) return;
               if (value) {
                 await futureWithDialog(
                   context,
