@@ -1,4 +1,3 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
@@ -13,7 +12,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
-import '../../provider/connectivity_provider.dart';
+import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
@@ -186,19 +185,8 @@ class MediaCard extends HookConsumerWidget {
     final sensitive = ref.watch(
       generalSettingsNotifierProvider.select((settings) => settings.sensitive),
     );
-    final dataSaver = ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.dataSaverMedia),
-        ) &&
-        !(ref.watch(
-              generalSettingsNotifierProvider
-                  .select((settings) => settings.disableDataSaverWhenOnWifi),
-            ) &&
-            (ref
-                    .watch(connectivityProvider)
-                    .valueOrNull
-                    ?.contains(ConnectivityResult.wifi) ??
-                false));
+    final dataSaver =
+        ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.media));
     final openMediaOnDoubleTap = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.openSensitiveMediaOnDoubleTap),

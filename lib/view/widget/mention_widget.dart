@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/account.dart';
+import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
@@ -27,11 +28,10 @@ class MentionWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final disableShowingAnimatedImages = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) =>
-            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
-      ),
-    );
+          generalSettingsNotifierProvider
+              .select((settings) => settings.disableShowingAnimatedImages),
+        ) ||
+        ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
     final url = 'https://${account.host}/avatar/@$username@$host';
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));

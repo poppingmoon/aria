@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
+import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import 'image_widget.dart';
@@ -24,11 +25,10 @@ class AvatarDecorations extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final disableShowingAnimatedImages = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) =>
-            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
-      ),
-    );
+          generalSettingsNotifierProvider
+              .select((settings) => settings.disableShowingAnimatedImages),
+        ) ||
+        ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
 
     return SizedBox(
       width: size,
