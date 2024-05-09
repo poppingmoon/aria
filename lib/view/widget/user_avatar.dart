@@ -4,6 +4,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../model/account.dart';
+import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import 'avatar_decorations.dart';
@@ -50,11 +51,10 @@ class UserAvatar extends ConsumerWidget {
           .select((settings) => settings.squareAvatars),
     );
     final disableShowingAnimatedImages = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) =>
-            settings.disableShowingAnimatedImages || settings.dataSaverAvatar,
-      ),
-    );
+          generalSettingsNotifierProvider
+              .select((settings) => settings.disableShowingAnimatedImages),
+        ) ||
+        ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
     final borderRadius =
         BorderRadius.circular(squareAvatars ? size * 0.2 : size);
 
