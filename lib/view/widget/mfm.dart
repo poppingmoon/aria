@@ -6,10 +6,8 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
-import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../util/future_with_dialog.dart';
 import '../../util/navigate.dart';
 import 'custom_emoji.dart';
 import 'mention_widget.dart';
@@ -71,19 +69,10 @@ List<InlineSpan> buildMfm(
             account: account,
             username: username,
             host: absoluteHost,
-            onTap: () async {
-              final user = await futureWithDialog(
-                ref.context,
-                ref.read(
-                  userNotifierProvider(account, username: username, host: host)
-                      .future,
-                ),
-              );
-              if (!ref.context.mounted) return;
-              if (user != null) {
-                await ref.context.push('/$account/users/${user.id}');
-              }
-            },
+            onTap: () =>
+                account.host.toLowerCase() == absoluteHost.toLowerCase()
+                    ? ref.context.push('/$account/@$username')
+                    : ref.context.push('/$account/@$username@$absoluteHost'),
           ),
         ),
       );
