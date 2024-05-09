@@ -35,7 +35,7 @@ class MentionWidget extends ConsumerWidget {
     final url = 'https://${account.host}/avatar/@$username@$host';
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
-    final isLocal = account.host == host.toLowerCase();
+    final isLocal = account.host.toLowerCase() == host.toLowerCase();
     final isMe = isLocal && account.username == username.toLowerCase();
     final color = isMe ? colors.mentionMe : colors.mention;
 
