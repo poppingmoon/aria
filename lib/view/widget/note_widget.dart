@@ -169,8 +169,8 @@ class NoteWidget extends HookConsumerWidget {
           : null,
       [parsed],
     );
-    final isLong =
-        note.cw == null && ref.watch(noteIsLongProvider(account, noteId));
+    final isLong = appearNote.cw == null &&
+        ref.watch(noteIsLongProvider(account, appearNote.id));
     final isCollapsed = useState(appearNote.cw == null && isLong);
     final showTicker = ref.watch(
       generalSettingsNotifierProvider.select(
