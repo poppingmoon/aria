@@ -323,7 +323,7 @@ class TimelineListView extends HookConsumerWidget {
             ),
             if (hasUnread.value)
               Positioned(
-                top: 16.0,
+                top: 8.0,
                 child: ElevatedButton(
                   onPressed: () {
                     if (controller.position.extentBefore < 10000) {

@@ -13,6 +13,7 @@ import '../../provider/api/notifications_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/notifications_last_viewed_at_notifier_provider.dart';
+import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import 'notification_widget.dart';
@@ -40,6 +41,7 @@ class NotificationsListView extends HookConsumerWidget {
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasNewNotification = useState(false);
     final isAtBottom = useState(false);
+    ref.listen(incomingMessageProvider(account), (_, __) {});
     useEffect(
       () {
         notifier.connect();
@@ -194,7 +196,7 @@ class NotificationsListView extends HookConsumerWidget {
             ),
             if (hasNewNotification.value)
               Positioned(
-                top: 16.0,
+                top: 8.0,
                 child: ElevatedButton(
                   onPressed: () => controller.scrollToTop(),
                   child: Text(t.aria.newNotificationReceived),
