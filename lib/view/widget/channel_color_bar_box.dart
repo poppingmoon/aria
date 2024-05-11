@@ -10,12 +10,12 @@ class ChannelColorBarBox extends StatelessWidget {
     required this.child,
   });
 
-  final Note note;
+  final Note? note;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    final color = note.channel?.toColor();
+    final color = note?.channel?.toColor();
 
     return DecoratedBox(
       decoration: BoxDecoration(

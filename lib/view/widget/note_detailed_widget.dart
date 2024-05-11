@@ -177,17 +177,33 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     color: style.color?.withOpacity(0.7),
                     fontSizeFactor: 0.9,
                   ),
-                  child: Column(
-                    children: [
-                      for (final note in conversation.reversed) ...[
-                        NoteSubWidget(account: account, noteId: note.id),
-                        const Divider(height: 0.0),
+                  child: IconTheme.merge(
+                    data: IconThemeData(color: style.color?.withOpacity(0.7)),
+                    child: Column(
+                      children: [
+                        for (final note in conversation.reversed) ...[
+                          ChannelColorBarBox(
+                            note: appearNote.reply,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: NoteSubWidget(
+                                account: account,
+                                noteId: note.id,
+                              ),
+                            ),
+                          ),
+                          const Divider(height: 0.0),
+                        ],
                       ],
-                    ],
+                    ),
                   ),
                 ),
               ),
-            if (isRenote) RenoteHeader(account: account, noteId: noteId),
+            if (isRenote)
+              ChannelColorBarBox(
+                note: note,
+                child: RenoteHeader(account: account, noteId: noteId),
+              ),
             ChannelColorBarBox(
               note: appearNote,
               child: Padding(
@@ -477,13 +493,18 @@ class NoteDetailedWidget extends HookConsumerWidget {
                             ),
                           ),
                         ),
-                        padding: const EdgeInsets.only(left: 8.0),
                         child: ListView.separated(
                           itemBuilder: (context, index) => index < notes.length
-                              ? NoteSubWidget(
-                                  account: account,
-                                  noteId: notes[index].id,
-                                  showReplies: true,
+                              ? ChannelColorBarBox(
+                                  note: notes[index],
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: NoteSubWidget(
+                                      account: account,
+                                      noteId: notes[index].id,
+                                      showReplies: true,
+                                    ),
+                                  ),
                                 )
                               : PaginationBottomWidget(
                                   paginationState: children,
