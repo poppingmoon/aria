@@ -87,13 +87,22 @@ class NoteWidget extends HookConsumerWidget {
     if (hardMuted) {
       return const SizedBox.shrink();
     }
+    final (verticalPadding, horizontalPadding) = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+      ),
+    );
     final muted =
         useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
     if (muted.value) {
       return InkWell(
         onTap: () => muted.value = false,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding,
+            horizontal: horizontalPadding,
+          ),
           child: Text.rich(
             t.aria.userSaysSomething(
               name: TextSpan(
@@ -218,52 +227,71 @@ class NoteWidget extends HookConsumerWidget {
           appearNote: appearNote,
         ),
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: EdgeInsets.only(
+            left: 4.0,
+            top: verticalPadding,
+            right: horizontalPadding,
+            bottom: verticalPadding,
+          ),
           child: Column(
             children: [
-              if (appearNote case Note(:final replyId?))
-                if (!renoteCollapsed.value)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: DefaultTextStyle.merge(
-                      style: style.apply(
-                        color: style.color?.withOpacity(0.7),
-                        fontSizeFactor: 0.9,
-                      ),
-                      child: NoteSubWidget(
-                        account: account,
-                        noteId: replyId,
-                        postFormFocusNode: postFormFocusNode,
+              if (appearNote case Note(:final replyId?)
+                  when !renoteCollapsed.value) ...[
+                DefaultTextStyle.merge(
+                  style: style.apply(
+                    color: style.color?.withOpacity(0.7),
+                    fontSizeFactor: 0.9,
+                  ),
+                  child: IconTheme.merge(
+                    data: IconThemeData(color: style.color?.withOpacity(0.7)),
+                    child: ChannelColorBarBox(
+                      note: appearNote.reply,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                        child: NoteSubWidget(
+                          account: account,
+                          noteId: replyId,
+                          postFormFocusNode: postFormFocusNode,
+                        ),
                       ),
                     ),
                   ),
-              if (isRenote)
-                RenoteHeader(
-                  account: account,
-                  noteId: noteId,
-                  onTap: () => context.push('/$account/notes/$noteId'),
                 ),
-              if (renoteCollapsed.value)
+                const SizedBox(height: 4.0),
+              ],
+              if (isRenote) ...[
+                ChannelColorBarBox(
+                  note: note,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                    child: RenoteHeader(
+                      account: account,
+                      noteId: noteId,
+                      onTap: () => context.push('/$account/notes/$noteId'),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 4.0),
+              ],
+              if (renoteCollapsed.value) ...[
                 ChannelColorBarBox(
                   note: appearNote,
                   child: Row(
                     children: [
-                      if (showAvatars)
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: UserAvatar(
-                            account: account,
-                            user: appearNote.user,
-                            size: style.lineHeight,
-                            onTap: appearNote.userId.isNotEmpty
-                                ? () => context.push(
-                                      '/$account/users/${appearNote.userId}',
-                                    )
-                                : null,
-                          ),
-                        )
-                      else
+                      SizedBox(width: horizontalPadding - 4.0),
+                      if (showAvatars) ...[
+                        UserAvatar(
+                          account: account,
+                          user: appearNote.user,
+                          size: style.lineHeight,
+                          onTap: appearNote.userId.isNotEmpty
+                              ? () => context.push(
+                                    '/$account/users/${appearNote.userId}',
+                                  )
+                              : null,
+                        ),
                         const SizedBox(width: 8.0),
+                      ],
                       Expanded(
                         child: DefaultTextStyle.merge(
                           style: style.apply(
@@ -279,16 +307,17 @@ class NoteWidget extends HookConsumerWidget {
                       ),
                     ],
                   ),
-                )
-              else
+                ),
+              ] else
                 ChannelColorBarBox(
                   note: appearNote,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(width: horizontalPadding - 4.0),
                       if (showAvatars)
                         Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.only(top: 4.0, right: 10.0),
                           child: UserAvatar(
                             account: account,
                             user: appearNote.user,
@@ -299,14 +328,11 @@ class NoteWidget extends HookConsumerWidget {
                                     )
                                 : null,
                           ),
-                        )
-                      else
-                        const SizedBox(width: 8.0),
+                        ),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(height: 4.0),
                             NoteHeader(
                               account: account,
                               note: appearNote,
@@ -368,9 +394,7 @@ class NoteWidget extends HookConsumerWidget {
                                             ),
                                             child: Icon(
                                               Icons.reply,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
+                                              color: colors.accent,
                                             ),
                                           ),
                                         ),

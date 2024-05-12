@@ -51,7 +51,9 @@ mixin _$GeneralSettings {
   double get fontSize => throw _privateConstructorUsedError;
   double get reactionsDisplayScale => throw _privateConstructorUsedError;
   bool get limitWidthOfReaction => throw _privateConstructorUsedError;
-  double get noteFooterScale =>
+  double get noteFooterScale => throw _privateConstructorUsedError;
+  double get noteVerticalPadding => throw _privateConstructorUsedError;
+  double get noteHorizontalPadding =>
       throw _privateConstructorUsedError; // Emoji picker
   bool get emojiPickerUseDialog => throw _privateConstructorUsedError;
   double get emojiPickerScale => throw _privateConstructorUsedError;
@@ -126,6 +128,8 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       double reactionsDisplayScale,
       bool limitWidthOfReaction,
       double noteFooterScale,
+      double noteVerticalPadding,
+      double noteHorizontalPadding,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
@@ -197,6 +201,8 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? reactionsDisplayScale = null,
     Object? limitWidthOfReaction = null,
     Object? noteFooterScale = null,
+    Object? noteVerticalPadding = null,
+    Object? noteHorizontalPadding = null,
     Object? emojiPickerUseDialog = null,
     Object? emojiPickerScale = null,
     Object? emojiPickerAutofocus = null,
@@ -338,6 +344,14 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
       noteFooterScale: null == noteFooterScale
           ? _value.noteFooterScale
           : noteFooterScale // ignore: cast_nullable_to_non_nullable
+              as double,
+      noteVerticalPadding: null == noteVerticalPadding
+          ? _value.noteVerticalPadding
+          : noteVerticalPadding // ignore: cast_nullable_to_non_nullable
+              as double,
+      noteHorizontalPadding: null == noteHorizontalPadding
+          ? _value.noteHorizontalPadding
+          : noteHorizontalPadding // ignore: cast_nullable_to_non_nullable
               as double,
       emojiPickerUseDialog: null == emojiPickerUseDialog
           ? _value.emojiPickerUseDialog
@@ -493,6 +507,8 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       double reactionsDisplayScale,
       bool limitWidthOfReaction,
       double noteFooterScale,
+      double noteVerticalPadding,
+      double noteHorizontalPadding,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
@@ -562,6 +578,8 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? reactionsDisplayScale = null,
     Object? limitWidthOfReaction = null,
     Object? noteFooterScale = null,
+    Object? noteVerticalPadding = null,
+    Object? noteHorizontalPadding = null,
     Object? emojiPickerUseDialog = null,
     Object? emojiPickerScale = null,
     Object? emojiPickerAutofocus = null,
@@ -703,6 +721,14 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       noteFooterScale: null == noteFooterScale
           ? _value.noteFooterScale
           : noteFooterScale // ignore: cast_nullable_to_non_nullable
+              as double,
+      noteVerticalPadding: null == noteVerticalPadding
+          ? _value.noteVerticalPadding
+          : noteVerticalPadding // ignore: cast_nullable_to_non_nullable
+              as double,
+      noteHorizontalPadding: null == noteHorizontalPadding
+          ? _value.noteHorizontalPadding
+          : noteHorizontalPadding // ignore: cast_nullable_to_non_nullable
               as double,
       emojiPickerUseDialog: null == emojiPickerUseDialog
           ? _value.emojiPickerUseDialog
@@ -853,6 +879,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.reactionsDisplayScale = 1.0,
       this.limitWidthOfReaction = true,
       this.noteFooterScale = 1.0,
+      this.noteVerticalPadding = defaultNoteVerticalPadding,
+      this.noteHorizontalPadding = defaultNoteHorizontalPadding,
       this.emojiPickerUseDialog = false,
       this.emojiPickerScale = 1.0,
       this.emojiPickerAutofocus = true,
@@ -971,6 +999,12 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final double noteFooterScale;
+  @override
+  @JsonKey()
+  final double noteVerticalPadding;
+  @override
+  @JsonKey()
+  final double noteHorizontalPadding;
 // Emoji picker
   @override
   @JsonKey()
@@ -1062,7 +1096,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1128,6 +1162,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.reactionsDisplayScale == reactionsDisplayScale) &&
             (identical(other.limitWidthOfReaction, limitWidthOfReaction) || other.limitWidthOfReaction == limitWidthOfReaction) &&
             (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
+            (identical(other.noteVerticalPadding, noteVerticalPadding) || other.noteVerticalPadding == noteVerticalPadding) &&
+            (identical(other.noteHorizontalPadding, noteHorizontalPadding) || other.noteHorizontalPadding == noteHorizontalPadding) &&
             (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) || other.emojiPickerUseDialog == emojiPickerUseDialog) &&
             (identical(other.emojiPickerScale, emojiPickerScale) || other.emojiPickerScale == emojiPickerScale) &&
             (identical(other.emojiPickerAutofocus, emojiPickerAutofocus) || other.emojiPickerAutofocus == emojiPickerAutofocus) &&
@@ -1190,6 +1226,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         reactionsDisplayScale,
         limitWidthOfReaction,
         noteFooterScale,
+        noteVerticalPadding,
+        noteHorizontalPadding,
         emojiPickerUseDialog,
         emojiPickerScale,
         emojiPickerAutofocus,
@@ -1266,6 +1304,8 @@ abstract class _GeneralSettings implements GeneralSettings {
       final double reactionsDisplayScale,
       final bool limitWidthOfReaction,
       final double noteFooterScale,
+      final double noteVerticalPadding,
+      final double noteHorizontalPadding,
       final bool emojiPickerUseDialog,
       final double emojiPickerScale,
       final bool emojiPickerAutofocus,
@@ -1356,6 +1396,10 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get limitWidthOfReaction;
   @override
   double get noteFooterScale;
+  @override
+  double get noteVerticalPadding;
+  @override
+  double get noteHorizontalPadding;
   @override // Emoji picker
   bool get emojiPickerUseDialog;
   @override

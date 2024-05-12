@@ -47,6 +47,20 @@ class NoteDisplayPage extends HookConsumerWidget {
         maxNoteFooterScale,
       ),
     );
+    final noteVerticalPadding = useState(
+      clampDouble(
+        settings.noteVerticalPadding,
+        0.0,
+        maxNoteVerticalPadding,
+      ),
+    );
+    final noteHorizontalPadding = useState(
+      clampDouble(
+        settings.noteHorizontalPadding,
+        minNoteHorizontalPadding,
+        maxNoteHorizontalPadding,
+      ),
+    );
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.displayOfNote)),
@@ -408,6 +422,68 @@ class NoteDisplayPage extends HookConsumerWidget {
                             generalSettingsNotifierProvider.notifier,
                           )
                           .setNoteFooterScale(1.0);
+                    },
+                    icon: const Icon(Icons.refresh),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 16.0),
+                  child: Text(
+                    t.aria.margin,
+                    style: TextStyle(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withOpacity(0.8),
+                    ),
+                  ),
+                ),
+                ListTile(
+                  title: Text(t.misskey.vertical),
+                  subtitle: Slider(
+                    value: noteVerticalPadding.value,
+                    max: maxNoteVerticalPadding,
+                    label: noteVerticalPadding.value.toStringAsFixed(1),
+                    onChanged: (value) => noteVerticalPadding.value = value,
+                    onChangeEnd: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setNoteVerticalPadding(value),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      noteVerticalPadding.value = defaultNoteVerticalPadding;
+                      ref
+                          .read(
+                            generalSettingsNotifierProvider.notifier,
+                          )
+                          .setNoteVerticalPadding(defaultNoteVerticalPadding);
+                    },
+                    icon: const Icon(Icons.refresh),
+                  ),
+                ),
+                ListTile(
+                  title: Text(t.misskey.horizontal),
+                  subtitle: Slider(
+                    value: noteHorizontalPadding.value,
+                    min: minNoteHorizontalPadding,
+                    max: maxNoteHorizontalPadding,
+                    label: noteHorizontalPadding.value.toStringAsFixed(1),
+                    onChanged: (value) => noteHorizontalPadding.value = value,
+                    onChangeEnd: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setNoteHorizontalPadding(value),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      noteHorizontalPadding.value =
+                          defaultNoteHorizontalPadding;
+                      ref
+                          .read(
+                            generalSettingsNotifierProvider.notifier,
+                          )
+                          .setNoteHorizontalPadding(
+                            defaultNoteHorizontalPadding,
+                          );
                     },
                     icon: const Icon(Icons.refresh),
                   ),

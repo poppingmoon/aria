@@ -9,7 +9,6 @@ import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
-import 'channel_color_bar_box.dart';
 import 'note_visibility_icon.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
@@ -48,87 +47,79 @@ class RenoteHeader extends HookConsumerWidget {
 
     return InkWell(
       onTap: onTap,
-      child: ChannelColorBarBox(
-        note: note,
-        child: DefaultTextStyle.merge(
-          style: style,
-          child: IconTheme.merge(
-            data: IconThemeData(color: colors.renote),
-            child: Row(
-              children: [
-                if (showAvatars)
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
-                    child: UserAvatar(
-                      account: account,
-                      user: note.user,
-                      onTap: () =>
-                          context.push('/$account/users/${note.userId}'),
-                    ),
-                  ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                  child: Icon(Icons.repeat_rounded, color: colors.renote),
+      child: DefaultTextStyle.merge(
+        style: style,
+        child: IconTheme.merge(
+          data: IconThemeData(color: colors.renote),
+          child: Row(
+            children: [
+              if (showAvatars)
+                UserAvatar(
+                  account: account,
+                  user: note.user,
+                  onTap: () => context.push('/$account/users/${note.userId}'),
                 ),
-                Expanded(
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: InkWell(
-                      onTap: () =>
-                          context.push('/$account/users/${note.userId}'),
-                      child: Text.rich(
-                        (note.userId == note.renote?.userId
-                            ? t.aria.selfRenotedBy
-                            : t.aria.renotedBy)(
-                          user: TextSpan(
-                            children: useMemoized(
-                              () => buildUsername(
-                                ref,
-                                account: account,
-                                user: note.user,
-                                style: TextStyle(
-                                  color: colors.renote,
-                                  fontWeight: FontWeight.bold,
-                                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: Icon(Icons.repeat_rounded, color: colors.renote),
+              ),
+              Expanded(
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: InkWell(
+                    onTap: () => context.push('/$account/users/${note.userId}'),
+                    child: Text.rich(
+                      (note.userId == note.renote?.userId
+                          ? t.aria.selfRenotedBy
+                          : t.aria.renotedBy)(
+                        user: TextSpan(
+                          children: useMemoized(
+                            () => buildUsername(
+                              ref,
+                              account: account,
+                              user: note.user,
+                              style: TextStyle(
+                                color: colors.renote,
+                                fontWeight: FontWeight.bold,
                               ),
-                              [note.user, colors],
                             ),
+                            [note.user, colors],
                           ),
                         ),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                       ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
                   ),
                 ),
-                DefaultTextStyle.merge(
-                  style: style.apply(fontSizeFactor: 0.9),
-                  child: TimeWidget(
-                    time: note.createdAt,
-                    absolute: showCreatedAt,
-                  ),
+              ),
+              DefaultTextStyle.merge(
+                style: style.apply(fontSizeFactor: 0.9),
+                child: TimeWidget(
+                  time: note.createdAt,
+                  absolute: showCreatedAt,
                 ),
-                IconTheme.merge(
-                  data: IconThemeData(size: style.lineHeight * 0.9),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      NoteVisibilityIcon(visibility: note.visibility),
-                      if (note.localOnly)
-                        Tooltip(
-                          message: t.misskey.visibility_.disableFederation,
-                          child: const Icon(Icons.rocket_outlined),
-                        ),
-                      if (note.channel != null)
-                        Tooltip(
-                          message: t.misskey.channel,
-                          child: const Icon(Icons.tv),
-                        ),
-                    ],
-                  ),
+              ),
+              IconTheme.merge(
+                data: IconThemeData(size: style.lineHeight * 0.9),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    NoteVisibilityIcon(visibility: note.visibility),
+                    if (note.localOnly)
+                      Tooltip(
+                        message: t.misskey.visibility_.disableFederation,
+                        child: const Icon(Icons.rocket_outlined),
+                      ),
+                    if (note.channel != null)
+                      Tooltip(
+                        message: t.misskey.channel,
+                        child: const Icon(Icons.tv),
+                      ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

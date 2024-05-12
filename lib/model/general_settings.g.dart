@@ -51,6 +51,11 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           (json['reactionsDisplayScale'] as num?)?.toDouble() ?? 1.0,
       limitWidthOfReaction: json['limitWidthOfReaction'] as bool? ?? true,
       noteFooterScale: (json['noteFooterScale'] as num?)?.toDouble() ?? 1.0,
+      noteVerticalPadding: (json['noteVerticalPadding'] as num?)?.toDouble() ??
+          defaultNoteVerticalPadding,
+      noteHorizontalPadding:
+          (json['noteHorizontalPadding'] as num?)?.toDouble() ??
+              defaultNoteHorizontalPadding,
       emojiPickerUseDialog: json['emojiPickerUseDialog'] as bool? ?? false,
       emojiPickerScale: (json['emojiPickerScale'] as num?)?.toDouble() ?? 1.0,
       emojiPickerAutofocus: json['emojiPickerAutofocus'] as bool? ?? true,
@@ -135,6 +140,8 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['reactionsDisplayScale'] = instance.reactionsDisplayScale;
   val['limitWidthOfReaction'] = instance.limitWidthOfReaction;
   val['noteFooterScale'] = instance.noteFooterScale;
+  val['noteVerticalPadding'] = instance.noteVerticalPadding;
+  val['noteHorizontalPadding'] = instance.noteHorizontalPadding;
   val['emojiPickerUseDialog'] = instance.emojiPickerUseDialog;
   val['emojiPickerScale'] = instance.emojiPickerScale;
   val['emojiPickerAutofocus'] = instance.emojiPickerAutofocus;

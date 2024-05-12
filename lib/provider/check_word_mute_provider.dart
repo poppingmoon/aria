@@ -14,7 +14,6 @@ bool checkWordMute(
   String noteId, {
   bool hardMute = false,
 }) {
-  ref.keepAlive();
   final note = ref.watch(noteProvider(account, noteId));
   final i = ref.watch(iNotifierProvider(account)).valueOrNull;
   if (note == null || i == null || note.userId == i.id) {

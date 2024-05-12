@@ -87,7 +87,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
           children: [
             if (showAvatars)
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 8.0, right: 8.0),
                 child: UserAvatar(
                   account: account,
                   user: note.user,

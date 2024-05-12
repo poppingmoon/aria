@@ -195,6 +195,16 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setNoteVerticalPadding(double noteVerticalPadding) async {
+    state = state.copyWith(noteVerticalPadding: noteVerticalPadding);
+    await _save();
+  }
+
+  Future<void> setNoteHorizontalPadding(double noteHorizontalPadding) async {
+    state = state.copyWith(noteHorizontalPadding: noteHorizontalPadding);
+    await _save();
+  }
+
   Future<void> setEmojiPickerUseDialog(bool emojiPickerUseDialog) async {
     state = state.copyWith(emojiPickerUseDialog: emojiPickerUseDialog);
     await _save();

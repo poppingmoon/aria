@@ -94,6 +94,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開けたまんまにする';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
+	@override String get margin => '余白';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションがあるで';
 	@override String get moved => '移したで';
 	@override String get muted => 'ミュート中';

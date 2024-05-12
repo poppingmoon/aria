@@ -6,7 +6,7 @@ part of 'check_word_mute_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$checkWordMuteHash() => r'b34fc476578ceafa6debf53bf406f5138282af74';
+String _$checkWordMuteHash() => r'4b239cd072aae841918870a9024fd05e17797e80';
 
 /// Copied from Dart SDK
 class _SystemHash {
