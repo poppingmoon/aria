@@ -387,6 +387,7 @@ class NoteSheet extends ConsumerWidget {
                     context,
                     message: t.misskey.deleteAndEditConfirm,
                   );
+                  if (!context.mounted) return;
                   if (confirmed) {
                     ref
                         .read(postNotifierProvider(account).notifier)
@@ -396,10 +397,15 @@ class NoteSheet extends ConsumerWidget {
                             (file) => DrivePostFile.fromDriveFile(file),
                           ),
                         );
-                    await ref
-                        .read(misskeyProvider(account))
-                        .notes
-                        .delete(NotesDeleteRequest(noteId: appearNote.id));
+                    final deleted = await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .notes
+                          .delete(NotesDeleteRequest(noteId: appearNote.id))
+                          .then((_) => true),
+                    );
+                    if (!(deleted ?? false)) return;
                     ref
                         .read(notesNotifierProvider(account).notifier)
                         .remove(appearNote.id);
@@ -424,14 +430,20 @@ class NoteSheet extends ConsumerWidget {
                     context,
                     message: t.misskey.noteDeleteConfirm,
                   );
+                  if (!context.mounted) return;
                   if (confirmed) {
-                    await ref
-                        .read(misskeyProvider(account))
-                        .notes
-                        .delete(NotesDeleteRequest(noteId: appearNote.id));
-                    ref
-                        .read(notesNotifierProvider(account).notifier)
-                        .remove(appearNote.id);
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .notes
+                          .delete(NotesDeleteRequest(noteId: appearNote.id))
+                          .then(
+                            (_) => ref
+                                .read(notesNotifierProvider(account).notifier)
+                                .remove(appearNote.id),
+                          ),
+                    );
                     if (!context.mounted) return;
                     context.pop();
                   }
@@ -442,13 +454,19 @@ class NoteSheet extends ConsumerWidget {
                   leading: const Icon(Icons.delete),
                   title: Text(t.misskey.unrenote),
                   onTap: () async {
-                    await ref
-                        .read(misskeyProvider(account))
-                        .notes
-                        .delete(NotesDeleteRequest(noteId: noteId));
-                    ref
-                        .read(notesNotifierProvider(account).notifier)
-                        .remove(noteId);
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .notes
+                          .delete(NotesDeleteRequest(noteId: noteId))
+                          .then(
+                            (_) => ref
+                                .read(notesNotifierProvider(account).notifier)
+                                .remove(noteId),
+                          ),
+                    );
+
                     if (!context.mounted) return;
                     context.pop();
                   },

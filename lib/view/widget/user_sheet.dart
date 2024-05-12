@@ -171,14 +171,17 @@ class UserSheet extends ConsumerWidget {
                 if (destination.host == account.host) {
                   await context.push('/$destination/users/$userId');
                 } else {
-                  final userAsLocal = await ref.read(
-                    userNotifierProvider(
-                      destination,
-                      username: user.username,
-                      host: user.host ?? account.host,
-                    ).future,
+                  final userAsLocal = await futureWithDialog(
+                    context,
+                    ref.read(
+                      userNotifierProvider(
+                        destination,
+                        username: user.username,
+                        host: user.host ?? account.host,
+                      ).future,
+                    ),
                   );
-                  if (!context.mounted) return;
+                  if (!context.mounted || userAsLocal == null) return;
                   await context.push('/$destination/users/${userAsLocal.id}');
                 }
               },
@@ -205,11 +208,15 @@ class UserSheet extends ConsumerWidget {
                 );
                 if (!context.mounted) return;
                 if (memo != null) {
-                  await ref
-                      .read(
-                        userNotifierProvider(account, userId: userId).notifier,
-                      )
-                      .updateMemo(memo);
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(
+                          userNotifierProvider(account, userId: userId)
+                              .notifier,
+                        )
+                        .updateMemo(memo),
+                  );
                 }
               },
             ),
