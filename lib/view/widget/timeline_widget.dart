@@ -72,7 +72,7 @@ class TimelineWidget extends HookConsumerWidget {
       },
       [],
     );
-    if (i != null) {
+    if (!account.isGuest) {
       ref.listen(
         mainStreamNotifierProvider(account),
         (_, next) => next.whenData(

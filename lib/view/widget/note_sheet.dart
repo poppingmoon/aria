@@ -333,17 +333,18 @@ class NoteSheet extends ConsumerWidget {
             onTap: () =>
                 context.push('/$account/notes/${appearNote.id}/after-renotes'),
           ),
-          if (i != null) ...[
-            if (appearNote.userId == i.id)
+          if (!account.isGuest) ...[
+            if (appearNote.user.host == null &&
+                appearNote.user.username == account.username)
               ListTile(
                 leading: const Icon(Icons.push_pin),
                 title: Text(
-                  i.pinnedNoteIds?.contains(appearNote.id) ?? false
+                  i?.pinnedNoteIds?.contains(appearNote.id) ?? false
                       ? t.misskey.unpin
                       : t.misskey.pin,
                 ),
                 onTap: () async {
-                  if (i.pinnedNoteIds?.contains(appearNote.id) ?? false) {
+                  if (i?.pinnedNoteIds?.contains(appearNote.id) ?? false) {
                     await futureWithDialog(
                       context,
                       ref
@@ -368,7 +369,7 @@ class NoteSheet extends ConsumerWidget {
               ),
             ),
             if (appearNote.user.host == null &&
-                appearNote.user.username == account.username)
+                appearNote.user.username == account.username) ...[
               // TODO: Edit note
               // if (i.policies?.canEditNote ?? false)
               //   ListTile(
@@ -409,93 +410,94 @@ class NoteSheet extends ConsumerWidget {
                   }
                 },
               ),
-            ListTile(
-              leading: Icon(
-                Icons.delete,
-                color: Theme.of(context).colorScheme.error,
-              ),
-              title: Text(
-                t.misskey.delete,
-                style: TextStyle(color: Theme.of(context).colorScheme.error),
-              ),
-              onTap: () async {
-                final confirmed = await confirm(
-                  context,
-                  message: t.misskey.noteDeleteConfirm,
-                );
-                if (confirmed) {
-                  await ref
-                      .read(misskeyProvider(account))
-                      .notes
-                      .delete(NotesDeleteRequest(noteId: appearNote.id));
-                  ref
-                      .read(notesNotifierProvider(account).notifier)
-                      .remove(appearNote.id);
-                  if (!context.mounted) return;
-                  context.pop();
-                }
-              },
-            ),
-            if (note.user.host == null &&
-                note.user.username == account.username &&
-                note.isRenote)
               ListTile(
-                leading: const Icon(Icons.delete),
-                title: Text(t.misskey.unrenote),
+                leading: Icon(
+                  Icons.delete,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                title: Text(
+                  t.misskey.delete,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                ),
                 onTap: () async {
-                  await ref
-                      .read(misskeyProvider(account))
-                      .notes
-                      .delete(NotesDeleteRequest(noteId: noteId));
-                  ref
-                      .read(notesNotifierProvider(account).notifier)
-                      .remove(noteId);
-                  if (!context.mounted) return;
-                  context.pop();
-                },
-                iconColor: Theme.of(context).colorScheme.error,
-                textColor: Theme.of(context).colorScheme.error,
-              ),
-            ListTile(
-              leading: const Icon(Icons.report),
-              title: Text(t.misskey.reportAbuse),
-              onTap: () async {
-                final comment = await showTextFieldDialog(
-                  context,
-                  title:
-                      Text(t.misskey.reportAbuseOf(name: appearNote.user.acct)),
-                  initialText: [
-                    if ((appearNote.url ?? appearNote.uri) != null)
-                      'Note: ${appearNote.url ?? appearNote.uri}',
-                    'Local Note: https://${account.host}/${appearNote.id}',
-                    '-----',
-                    '',
-                  ].join('\n'),
-                  maxLines: null,
-                );
-                if (!context.mounted) return;
-                if (comment == null) return;
-                final confirmed = await confirm(
-                  context,
-                  title:
-                      Text(t.misskey.reportAbuseOf(name: appearNote.user.acct)),
-                  message: comment,
-                  okText: t.misskey.reportAbuse,
-                );
-                if (!context.mounted) return;
-                if (confirmed) {
-                  await futureWithDialog(
+                  final confirmed = await confirm(
                     context,
-                    ref.read(misskeyProvider(account)).users.reportAbuse(
-                          UsersReportAbuseRequest(
-                            userId: appearNote.userId,
-                            comment: comment,
-                          ),
-                        ),
+                    message: t.misskey.noteDeleteConfirm,
                   );
-                }
-              },
-            ),
+                  if (confirmed) {
+                    await ref
+                        .read(misskeyProvider(account))
+                        .notes
+                        .delete(NotesDeleteRequest(noteId: appearNote.id));
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .remove(appearNote.id);
+                    if (!context.mounted) return;
+                    context.pop();
+                  }
+                },
+              ),
+              if (note.isRenote)
+                ListTile(
+                  leading: const Icon(Icons.delete),
+                  title: Text(t.misskey.unrenote),
+                  onTap: () async {
+                    await ref
+                        .read(misskeyProvider(account))
+                        .notes
+                        .delete(NotesDeleteRequest(noteId: noteId));
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .remove(noteId);
+                    if (!context.mounted) return;
+                    context.pop();
+                  },
+                  iconColor: Theme.of(context).colorScheme.error,
+                  textColor: Theme.of(context).colorScheme.error,
+                ),
+            ] else
+              ListTile(
+                leading: const Icon(Icons.report),
+                title: Text(t.misskey.reportAbuse),
+                onTap: () async {
+                  final comment = await showTextFieldDialog(
+                    context,
+                    title: Text(
+                      t.misskey.reportAbuseOf(name: appearNote.user.acct),
+                    ),
+                    initialText: [
+                      if ((appearNote.url ?? appearNote.uri) != null)
+                        'Note: ${appearNote.url ?? appearNote.uri}',
+                      'Local Note: https://${account.host}/${appearNote.id}',
+                      '-----',
+                      '',
+                    ].join('\n'),
+                    maxLines: null,
+                  );
+                  if (!context.mounted) return;
+                  if (comment == null) return;
+                  final confirmed = await confirm(
+                    context,
+                    title: Text(
+                      t.misskey.reportAbuseOf(name: appearNote.user.acct),
+                    ),
+                    message: comment,
+                    okText: t.misskey.reportAbuse,
+                  );
+                  if (!context.mounted) return;
+                  if (confirmed) {
+                    await futureWithDialog(
+                      context,
+                      ref.read(misskeyProvider(account)).users.reportAbuse(
+                            UsersReportAbuseRequest(
+                              userId: appearNote.userId,
+                              comment: comment,
+                            ),
+                          ),
+                    );
+                  }
+                },
+              ),
           ],
         ],
       ),
