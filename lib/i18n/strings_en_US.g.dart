@@ -53,6 +53,7 @@ class _StringsAriaEnUs {
 		const TextSpan(text: '.\nWe would like to show our appreciation to all contributers of these projects.'),
 	]);
 	String get addTab => 'Add tab';
+	String get alwaysShowTabHeader => 'Always show tab info';
 	String get authenticate => 'Authenticate';
 	String get authenticated => 'Authenticated';
 	String get background => 'Background';

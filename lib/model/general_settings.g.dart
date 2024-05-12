@@ -72,6 +72,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['useGroupedNotifications'] as bool? ?? false,
       showTimelineTabBarOnBottom:
           json['showTimelineTabBarOnBottom'] as bool? ?? false,
+      alwaysShowTabHeader: json['alwaysShowTabHeader'] as bool? ?? false,
       showTimelineLastViewedAt:
           json['showTimelineLastViewedAt'] as bool? ?? true,
       vibrateNote: json['vibrateNote'] as bool? ?? false,
@@ -154,6 +155,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['forceShowAds'] = instance.forceShowAds;
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
   val['showTimelineTabBarOnBottom'] = instance.showTimelineTabBarOnBottom;
+  val['alwaysShowTabHeader'] = instance.alwaysShowTabHeader;
   val['showTimelineLastViewedAt'] = instance.showTimelineLastViewedAt;
   val['vibrateNote'] = instance.vibrateNote;
   val['vibrateNotification'] = instance.vibrateNotification;

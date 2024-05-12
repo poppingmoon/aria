@@ -12,6 +12,7 @@ import '../../model/tab_type.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
@@ -35,10 +36,13 @@ class TimelineListView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    if (tabSettings.tabType == TabType.notifications) {
-      return NotificationsListView(account: tabSettings.account);
-    }
     final controller = ref.watch(timelineScrollControllerProvider(tabSettings));
+    if (tabSettings.tabType == TabType.notifications) {
+      return NotificationsListView(
+        account: tabSettings.account,
+        controller: controller,
+      );
+    }
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
@@ -58,6 +62,7 @@ class TimelineListView extends HookConsumerWidget {
     final isAtTop = useState(false);
     final isAtBottom = useState(false);
     if (!tabSettings.disableStreaming) {
+      ref.listen(incomingMessageProvider(tabSettings.account), (_, __) {});
       final notifier =
           ref.watch(timelineStreamNotifierProvider(tabSettings).notifier);
       useEffect(
@@ -318,7 +323,7 @@ class TimelineListView extends HookConsumerWidget {
             ),
             if (hasUnread.value)
               Positioned(
-                top: 16.0,
+                top: 8.0,
                 child: ElevatedButton(
                   onPressed: () {
                     if (controller.position.extentBefore < 10000) {

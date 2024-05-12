@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/id.dart';
+import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
@@ -12,22 +13,17 @@ import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
-import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
 
 class TimelineMenu extends ConsumerWidget {
-  const TimelineMenu({super.key, required this.tabIndex});
+  const TimelineMenu({super.key, required this.tabSettings});
 
-  final int tabIndex;
+  final TabSettings tabSettings;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabSettings = ref
-        .watch(timelineTabsNotifierProvider.select((tabs) => tabs[tabIndex]));
     final account = tabSettings.account;
-    final i = !account.isGuest
-        ? ref.watch(iNotifierProvider(account)).valueOrNull
-        : null;
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
 
     return IconTheme.merge(
       data: const IconThemeData(size: 32.0),

@@ -86,6 +86,13 @@ class AppearancePage extends HookConsumerWidget {
                 .setShowTimelineTabBarOnBottom(value),
           ),
           SwitchListTile(
+            title: Text(t.aria.alwaysShowTabHeader),
+            value: settings.alwaysShowTabHeader,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setAlwaysShowTabHeader(value),
+          ),
+          SwitchListTile(
             title: Text(t.aria.showTimelineLastViewedAt),
             value: settings.showTimelineLastViewedAt,
             onChanged: (value) => ref
