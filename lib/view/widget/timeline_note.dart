@@ -7,6 +7,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/streaming/note_update_event.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/appear_note_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_is_deleted_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
@@ -57,12 +58,21 @@ class TimelineNote extends HookConsumerWidget {
     if (!tabSettings.withSensitive) {
       final muted = useState(appearNote.containsSensitiveFile);
       if (muted.value) {
+        final (verticalPadding, horizontalPadding) = ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) =>
+                (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+          ),
+        );
         return Material(
           color: Theme.of(context).colorScheme.surface,
           child: InkWell(
             onTap: () => muted.value = false,
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.symmetric(
+                vertical: verticalPadding,
+                horizontal: horizontalPadding,
+              ),
               child: Text.rich(
                 t.aria.userSaysSomethingSensitive(
                   name: TextSpan(

@@ -87,13 +87,22 @@ class NoteWidget extends HookConsumerWidget {
     if (hardMuted) {
       return const SizedBox.shrink();
     }
+    final (verticalPadding, horizontalPadding) = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+      ),
+    );
     final muted =
         useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
     if (muted.value) {
       return InkWell(
         onTap: () => muted.value = false,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding,
+            horizontal: horizontalPadding,
+          ),
           child: Text.rich(
             t.aria.userSaysSomething(
               name: TextSpan(
@@ -193,8 +202,6 @@ class NoteWidget extends HookConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
-    final verticalPadding = 12.0;
-    final horizontalPadding = 12.0;
 
     return ClipRect(
       child: InkWell(

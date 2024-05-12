@@ -63,13 +63,26 @@ class NoteDetailedWidget extends HookConsumerWidget {
     if (appearNote == null) {
       return const SizedBox.shrink();
     }
-    final muted =
-        useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
+    final (verticalPadding, horizontalPadding) = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+      ),
+    );
+    final muted = useState(
+      ref.watch(checkWordMuteProvider(account, appearNote.id)) ||
+          ref.watch(
+            checkWordMuteProvider(account, appearNote.id, hardMute: true),
+          ),
+    );
     if (muted.value) {
       return InkWell(
         onTap: () => muted.value = false,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding,
+            horizontal: horizontalPadding,
+          ),
           child: Text.rich(
             t.aria.userSaysSomething(
               name: TextSpan(
@@ -166,7 +179,12 @@ class NoteDetailedWidget extends HookConsumerWidget {
             )
           : null,
       child: Padding(
-        padding: const EdgeInsets.all(4.0),
+        padding: EdgeInsets.only(
+          left: 4.0,
+          top: verticalPadding,
+          right: horizontalPadding,
+          bottom: verticalPadding,
+        ),
         child: Column(
           children: [
             if (conversation case AsyncData(valueOrNull: final conversation?))
@@ -185,7 +203,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
                           ChannelColorBarBox(
                             note: appearNote.reply,
                             child: Padding(
-                              padding: const EdgeInsets.only(left: 8.0),
+                              padding: EdgeInsets.only(
+                                left: horizontalPadding - 4.0,
+                              ),
                               child: NoteSubWidget(
                                 account: account,
                                 noteId: note.id,
@@ -202,12 +222,15 @@ class NoteDetailedWidget extends HookConsumerWidget {
             if (isRenote)
               ChannelColorBarBox(
                 note: note,
-                child: RenoteHeader(account: account, noteId: noteId),
+                child: Padding(
+                  padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                  child: RenoteHeader(account: account, noteId: noteId),
+                ),
               ),
             ChannelColorBarBox(
               note: appearNote,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(left: horizontalPadding - 4.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

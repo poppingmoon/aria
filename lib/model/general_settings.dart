@@ -13,6 +13,11 @@ const minReactionsDisplayScale = 0.1;
 const maxReactionsDisplayScale = 3.0;
 const minNoteFooterScale = 0.5;
 const maxNoteFooterScale = 2.0;
+const defaultNoteVerticalPadding = 12.0;
+const maxNoteVerticalPadding = 36.0;
+const minNoteHorizontalPadding = 8.0;
+const defaultNoteHorizontalPadding = 12.0;
+const maxNoteHorizontalPadding = 36.0;
 const minEmojiPickerScale = 0.1;
 const maxEmojiPickerScale = 3.0;
 
@@ -52,6 +57,8 @@ class GeneralSettings with _$GeneralSettings {
     @Default(1.0) double reactionsDisplayScale,
     @Default(true) bool limitWidthOfReaction,
     @Default(1.0) double noteFooterScale,
+    @Default(defaultNoteVerticalPadding) double noteVerticalPadding,
+    @Default(defaultNoteHorizontalPadding) double noteHorizontalPadding,
 
     // Emoji picker
     @Default(false) bool emojiPickerUseDialog,
