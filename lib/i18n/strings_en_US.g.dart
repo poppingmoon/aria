@@ -104,6 +104,7 @@ class _StringsAriaEnUs {
 	String get invalidListFormat => 'List format is invalid';
 	String jumpTo({required Object x}) => 'Jump to ${x}';
 	String get keepOpen => 'Keep open';
+	String get lineHeight => 'Line height';
 	String get loginWithAccessToken => 'Sign in with an access token';
 	String get margin => 'Margin';
 	String get mentionToRemoteWarning => 'This note contains mentions to remote users';

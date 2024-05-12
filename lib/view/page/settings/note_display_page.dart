@@ -33,6 +33,13 @@ class NoteDisplayPage extends HookConsumerWidget {
         maxFontSize,
       ),
     );
+    final lineHeight = useState(
+      clampDouble(
+        settings.lineHeight,
+        minLineHeight,
+        maxLineHeight,
+      ),
+    );
     final avatarScale = useState(
       clampDouble(
         settings.avatarScale,
@@ -376,6 +383,28 @@ class NoteDisplayPage extends HookConsumerWidget {
                       ref
                           .read(generalSettingsNotifierProvider.notifier)
                           .setFontSize(defaultFontSize);
+                    },
+                    icon: const Icon(Icons.refresh),
+                  ),
+                ),
+                ListTile(
+                  title: Text(t.aria.lineHeight),
+                  subtitle: Slider(
+                    value: lineHeight.value,
+                    min: minLineHeight,
+                    max: maxLineHeight,
+                    label: lineHeight.value.toStringAsFixed(1),
+                    onChanged: (value) => lineHeight.value = value,
+                    onChangeEnd: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setLineHeight(value),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      lineHeight.value = defaultLineHeight;
+                      ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setLineHeight(defaultLineHeight);
                     },
                     icon: const Icon(Icons.refresh),
                   ),
