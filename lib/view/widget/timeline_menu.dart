@@ -38,7 +38,7 @@ class TimelineMenu extends ConsumerWidget {
           ),
           childrenDelegate: SliverChildListDelegate.fixed(
             [
-              if (i != null)
+              if (!account.isGuest)
                 Card(
                   clipBehavior: Clip.hardEdge,
                   child: InkWell(
@@ -54,7 +54,7 @@ class TimelineMenu extends ConsumerWidget {
                         Stack(
                           children: [
                             const Icon(Icons.notifications),
-                            if (i.hasUnreadNotification)
+                            if (i?.hasUnreadNotification ?? false)
                               DecoratedBox(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
