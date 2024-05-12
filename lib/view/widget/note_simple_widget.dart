@@ -55,6 +55,10 @@ class NoteSimpleWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showAvatarsInSubNote),
     );
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
     final showContent = useState(false);
 
     return InkWell(
@@ -91,7 +95,9 @@ class NoteSimpleWidget extends HookConsumerWidget {
                 child: UserAvatar(
                   account: account,
                   user: note.user,
-                  size: DefaultTextStyle.of(context).style.lineHeight * 2.5,
+                  size: DefaultTextStyle.of(context).style.lineHeight *
+                      avatarScale *
+                      0.9,
                 ),
               ),
             Expanded(

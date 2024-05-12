@@ -51,6 +51,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get alwaysShowTabHeader => 'タブの情報をいつでも表示する';
 	@override String get authenticate => '認証';
 	@override String get authenticated => '認証してった';
+	@override String get avatarSize => 'アイコンのサイズ';
 	@override String get background => '背景';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
