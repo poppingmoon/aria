@@ -10,6 +10,7 @@ import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../util/get_note_action.dart';
+import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
 import 'emoji_sheet.dart';
 import 'mfm.dart';
@@ -55,6 +56,10 @@ class NoteSubWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showAvatarsInSubNote),
     );
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
     final children = showReplies && depth < 5
         ? ref.watch(childrenNotesNotifierProvider(account, noteId))
         : null;
@@ -95,7 +100,9 @@ class NoteSubWidget extends HookConsumerWidget {
                     child: UserAvatar(
                       account: account,
                       user: note.user,
-                      size: DefaultTextStyle.of(context).style.lineHeight * 2.0,
+                      size: DefaultTextStyle.of(context).style.lineHeight *
+                          avatarScale *
+                          0.9,
                       onTap: () =>
                           context.push('/$account/users/${note.userId}'),
                     ),
@@ -149,15 +156,20 @@ class NoteSubWidget extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                padding: const EdgeInsets.only(left: 8.0),
                 child: Column(
                   children: (children.valueOrNull?.items ?? [])
                       .map(
-                        (reply) => NoteSubWidget(
-                          account: account,
-                          noteId: reply.id,
-                          showReplies: true,
-                          depth: depth + 1,
+                        (reply) => ChannelColorBarBox(
+                          note: reply,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: NoteSubWidget(
+                              account: account,
+                              noteId: reply.id,
+                              showReplies: true,
+                              depth: depth + 1,
+                            ),
+                          ),
                         ),
                       )
                       .toList(),

@@ -178,6 +178,10 @@ class NoteWidget extends HookConsumerWidget {
           : null,
       [parsed],
     );
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
     final isLong = appearNote.cw == null &&
         ref.watch(noteIsLongProvider(account, appearNote.id));
     final isCollapsed = useState(appearNote.cw == null && isLong);
@@ -321,7 +325,7 @@ class NoteWidget extends HookConsumerWidget {
                           child: UserAvatar(
                             account: account,
                             user: appearNote.user,
-                            size: style.lineHeight * 2.5,
+                            size: style.lineHeight * avatarScale,
                             onTap: appearNote.userId.isNotEmpty
                                 ? () => context.push(
                                       '/$account/users/${appearNote.userId}',

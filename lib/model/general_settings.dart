@@ -9,6 +9,9 @@ part 'general_settings.g.dart';
 const minFontSize = 8.0;
 const defaultFontSize = 14.0;
 const maxFontSize = 24.0;
+const minAvatarScale = 1.0;
+const defaultAvatarScale = 2.5;
+const maxAvatarScale = 4.0;
 const minReactionsDisplayScale = 0.1;
 const maxReactionsDisplayScale = 3.0;
 const minNoteFooterScale = 0.5;
@@ -54,6 +57,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
     String? fontFamily,
     @Default(defaultFontSize) double fontSize,
+    @Default(defaultAvatarScale) double avatarScale,
     @Default(1.0) double reactionsDisplayScale,
     @Default(true) bool limitWidthOfReaction,
     @Default(1.0) double noteFooterScale,

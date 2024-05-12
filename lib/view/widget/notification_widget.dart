@@ -4,11 +4,13 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/colors.dart';
+import '../../extension/text_style_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'achievement_widget.dart';
@@ -228,24 +230,21 @@ class NotificationWidget extends ConsumerWidget {
         if (notification case INotificationsResponse(:final note?)) {
           return _NotificationTile(
             account: account,
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: note.reactionAcceptance == ReactionAcceptance.likeOnly
-                      ? eventReactionHeart
-                      : eventReaction,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    note.reactionAcceptance == ReactionAcceptance.likeOnly
-                        ? Icons.favorite
-                        : Icons.add,
-                    size: 34.0,
-                    color: Colors.white,
-                  ),
+            leading: DecoratedBox(
+              decoration: BoxDecoration(
+                color: note.reactionAcceptance == ReactionAcceptance.likeOnly
+                    ? eventReactionHeart
+                    : eventReaction,
+                shape: BoxShape.circle,
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Icon(
+                  note.reactionAcceptance == ReactionAcceptance.likeOnly
+                      ? Icons.favorite
+                      : Icons.add,
+                  size: 34.0,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -343,20 +342,17 @@ class NotificationWidget extends ConsumerWidget {
         if (notification.note case Note(:final id, :final renoteId?)) {
           return _NotificationTile(
             account: account,
-            leading: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: eventRenote,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.repeat_rounded,
-                    size: 34.0,
-                    color: Colors.white,
-                  ),
+            leading: const DecoratedBox(
+              decoration: BoxDecoration(
+                color: eventRenote,
+                shape: BoxShape.circle,
+              ),
+              child: Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Icon(
+                  Icons.repeat_rounded,
+                  size: 34.0,
+                  color: Colors.white,
                 ),
               ),
             ),
@@ -453,6 +449,18 @@ class _NotificationTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final (verticalPadding, horizontalPadding) = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+      ),
+    );
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
+    final leadingSize =
+        DefaultTextStyle.of(context).style.lineHeight * avatarScale;
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
@@ -462,109 +470,118 @@ class _NotificationTile extends ConsumerWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (leading != null)
-            leading!
+          SizedBox(width: horizontalPadding),
+          if (leading case final leading?)
+            Padding(
+              padding: EdgeInsets.only(top: verticalPadding, right: 10.0),
+              child: SizedBox(
+                width: leadingSize,
+                height: leadingSize,
+                child: FittedBox(
+                  child: leading,
+                ),
+              ),
+            )
           else if (user != null)
-            Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: UserAvatar(
+            Padding(
+              padding: EdgeInsets.only(
+                top: verticalPadding,
+                right: 10.0,
+                bottom: verticalPadding,
+              ),
+              child: Stack(
+                children: [
+                  UserAvatar(
                     account: account,
                     user: user!,
-                    size: 50.0,
+                    size: leadingSize,
                     onTap: () => context.push('/$account/users/${user!.id}'),
                   ),
-                ),
-                if (icon != null)
-                  Positioned(
-                    right: 10,
-                    bottom: 10,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: colors.bg,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(2.0),
-                        child: DecoratedBox(
-                          decoration: BoxDecoration(
-                            color: iconBackgroundColor ?? colors.bg,
-                            shape: BoxShape.circle,
-                          ),
-                          child: IconTheme.merge(
-                            data: const IconThemeData(
-                              size: 20.0,
-                              color: Colors.white,
+                  if (icon != null)
+                    Positioned(
+                      right: 0.0,
+                      bottom: 0.0,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: colors.bg,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: DecoratedBox(
+                            decoration: BoxDecoration(
+                              color: iconBackgroundColor ?? colors.bg,
+                              shape: BoxShape.circle,
                             ),
-                            child: SizedBox(
-                              width: 20,
-                              child: icon,
+                            child: IconTheme.merge(
+                              data: const IconThemeData(
+                                size: 20.0,
+                                color: Colors.white,
+                              ),
+                              child: SizedBox(
+                                width: 20.0,
+                                child: icon,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-              ],
-            )
-          else
-            const SizedBox(width: 8.0),
+                ],
+              ),
+            ),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: title ??
-                              (user != null
-                                  ? UsernameWidget(
-                                      account: account,
-                                      user: user!,
-                                      onTap: () => context
-                                          .push('/$account/users/${user!.id}'),
-                                    )
-                                  : const SizedBox.shrink()),
-                        ),
+                SizedBox(height: verticalPadding),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: title ??
+                            (user != null
+                                ? UsernameWidget(
+                                    account: account,
+                                    user: user!,
+                                    onTap: () => context
+                                        .push('/$account/users/${user!.id}'),
+                                  )
+                                : const SizedBox.shrink()),
                       ),
-                      if (createdAt != null)
-                        DefaultTextStyle.merge(
-                          style: TextStyle(
-                            fontSize: style.fontSize! * 0.85,
-                            color: style.color?.withOpacity(0.8),
-                          ),
-                          child: TimeWidget(time: createdAt),
+                    ),
+                    if (createdAt != null)
+                      DefaultTextStyle.merge(
+                        style: TextStyle(
+                          fontSize: style.fontSize! * 0.85,
+                          color: style.color?.withOpacity(0.8),
                         ),
-                    ],
-                  ),
+                        child: TimeWidget(time: createdAt),
+                      ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: DefaultTextStyle.merge(
-                    style: TextStyle(
-                      fontSize: style.fontSize! * 0.85,
-                      color: style.color?.withOpacity(0.8),
-                    ),
-                    child: subtitle ?? const SizedBox.shrink(),
+                const SizedBox(height: 4.0),
+                DefaultTextStyle.merge(
+                  style: TextStyle(
+                    fontSize: style.fontSize! * 0.85,
+                    color: style.color?.withOpacity(0.8),
                   ),
+                  child: subtitle ?? const SizedBox.shrink(),
                 ),
-                if (actions != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Wrap(
-                      spacing: 8.0,
-                      runSpacing: 8.0,
-                      children: actions!,
-                    ),
+                if (actions != null) ...[
+                  const SizedBox(height: 4.0),
+                  Wrap(
+                    spacing: 8.0,
+                    runSpacing: 8.0,
+                    children: actions!,
                   ),
+                ],
+                SizedBox(height: verticalPadding),
               ],
             ),
           ),
+          SizedBox(width: horizontalPadding),
         ],
       ),
     );

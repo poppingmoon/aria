@@ -33,6 +33,13 @@ class NoteDisplayPage extends HookConsumerWidget {
         maxFontSize,
       ),
     );
+    final avatarScale = useState(
+      clampDouble(
+        settings.avatarScale,
+        minAvatarScale,
+        maxAvatarScale,
+      ),
+    );
     final reactionsDisplayScale = useState(
       clampDouble(
         settings.reactionsDisplayScale,
@@ -369,6 +376,28 @@ class NoteDisplayPage extends HookConsumerWidget {
                       ref
                           .read(generalSettingsNotifierProvider.notifier)
                           .setFontSize(defaultFontSize);
+                    },
+                    icon: const Icon(Icons.refresh),
+                  ),
+                ),
+                ListTile(
+                  title: Text(t.aria.avatarSize),
+                  subtitle: Slider(
+                    value: avatarScale.value,
+                    min: minAvatarScale,
+                    max: maxAvatarScale,
+                    label: avatarScale.value.toStringAsFixed(1),
+                    onChanged: (value) => avatarScale.value = value,
+                    onChangeEnd: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setAvatarScale(value),
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {
+                      avatarScale.value = defaultAvatarScale;
+                      ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setAvatarScale(defaultAvatarScale);
                     },
                     icon: const Icon(Icons.refresh),
                   ),

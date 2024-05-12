@@ -56,6 +56,7 @@ class _StringsAriaEnUs {
 	String get alwaysShowTabHeader => 'Always show tab info';
 	String get authenticate => 'Authenticate';
 	String get authenticated => 'Authenticated';
+	String get avatarSize => 'Avatar size';
 	String get background => 'Background';
 	String get confirmBeforeFollow => 'Confirm before follow';
 	String get confirmBeforePost => 'Confirm before post';

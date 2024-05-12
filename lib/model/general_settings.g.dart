@@ -47,6 +47,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
               EmojiStyle.twemoji,
       fontFamily: json['fontFamily'] as String?,
       fontSize: (json['fontSize'] as num?)?.toDouble() ?? defaultFontSize,
+      avatarScale:
+          (json['avatarScale'] as num?)?.toDouble() ?? defaultAvatarScale,
       reactionsDisplayScale:
           (json['reactionsDisplayScale'] as num?)?.toDouble() ?? 1.0,
       limitWidthOfReaction: json['limitWidthOfReaction'] as bool? ?? true,
@@ -138,6 +140,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
   writeNotNull('fontFamily', instance.fontFamily);
   val['fontSize'] = instance.fontSize;
+  val['avatarScale'] = instance.avatarScale;
   val['reactionsDisplayScale'] = instance.reactionsDisplayScale;
   val['limitWidthOfReaction'] = instance.limitWidthOfReaction;
   val['noteFooterScale'] = instance.noteFooterScale;

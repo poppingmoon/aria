@@ -136,6 +136,10 @@ class NoteDetailedWidget extends HookConsumerWidget {
           : null,
       [parsed],
     );
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
     final showTicker = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => switch (settings.instanceTicker) {
@@ -239,7 +243,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                         UserAvatar(
                           account: account,
                           user: appearNote.user,
-                          size: style.lineHeight * 2.5,
+                          size: style.lineHeight * avatarScale,
                           onTap: () => context
                               .push('/$account/users/${appearNote.userId}'),
                         ),
