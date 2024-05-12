@@ -229,6 +229,9 @@ class TimelineListView extends HookConsumerWidget {
                     itemBuilder: (context, index) => Material(
                       color: Theme.of(context).colorScheme.surface,
                       child: TimelineNote(
+                        key: ValueKey(
+                          previousNotes.valueOrNull!.items[index].id,
+                        ),
                         tabSettings: tabSettings,
                         noteId: nextNotes
                             .valueOrNull!
@@ -270,6 +273,9 @@ class TimelineListView extends HookConsumerWidget {
                     itemBuilder: (context, index) => Material(
                       color: Theme.of(context).colorScheme.surface,
                       child: TimelineNote(
+                        key: ValueKey(
+                          previousNotes.valueOrNull!.items[index].id,
+                        ),
                         tabSettings: tabSettings,
                         noteId: previousNotes.valueOrNull!.items[index].id,
                         postFormFocusNode: postFormFocusNode,
