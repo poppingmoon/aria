@@ -49,6 +49,7 @@ mixin _$GeneralSettings {
   EmojiStyle get emojiStyle => throw _privateConstructorUsedError;
   String? get fontFamily => throw _privateConstructorUsedError;
   double get fontSize => throw _privateConstructorUsedError;
+  double get lineHeight => throw _privateConstructorUsedError;
   double get avatarScale => throw _privateConstructorUsedError;
   double get reactionsDisplayScale => throw _privateConstructorUsedError;
   bool get limitWidthOfReaction => throw _privateConstructorUsedError;
@@ -127,6 +128,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       EmojiStyle emojiStyle,
       String? fontFamily,
       double fontSize,
+      double lineHeight,
       double avatarScale,
       double reactionsDisplayScale,
       bool limitWidthOfReaction,
@@ -202,6 +204,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? emojiStyle = null,
     Object? fontFamily = freezed,
     Object? fontSize = null,
+    Object? lineHeight = null,
     Object? avatarScale = null,
     Object? reactionsDisplayScale = null,
     Object? limitWidthOfReaction = null,
@@ -338,6 +341,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
       fontSize: null == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
+      lineHeight: null == lineHeight
+          ? _value.lineHeight
+          : lineHeight // ignore: cast_nullable_to_non_nullable
               as double,
       avatarScale: null == avatarScale
           ? _value.avatarScale
@@ -518,6 +525,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       EmojiStyle emojiStyle,
       String? fontFamily,
       double fontSize,
+      double lineHeight,
       double avatarScale,
       double reactionsDisplayScale,
       bool limitWidthOfReaction,
@@ -591,6 +599,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? emojiStyle = null,
     Object? fontFamily = freezed,
     Object? fontSize = null,
+    Object? lineHeight = null,
     Object? avatarScale = null,
     Object? reactionsDisplayScale = null,
     Object? limitWidthOfReaction = null,
@@ -727,6 +736,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       fontSize: null == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
+              as double,
+      lineHeight: null == lineHeight
+          ? _value.lineHeight
+          : lineHeight // ignore: cast_nullable_to_non_nullable
               as double,
       avatarScale: null == avatarScale
           ? _value.avatarScale
@@ -902,6 +915,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.emojiStyle = EmojiStyle.twemoji,
       this.fontFamily,
       this.fontSize = defaultFontSize,
+      this.lineHeight = defaultLineHeight,
       this.avatarScale = defaultAvatarScale,
       this.reactionsDisplayScale = 1.0,
       this.limitWidthOfReaction = true,
@@ -1020,6 +1034,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final double fontSize;
   @override
   @JsonKey()
+  final double lineHeight;
+  @override
+  @JsonKey()
   final double avatarScale;
   @override
   @JsonKey()
@@ -1130,7 +1147,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1192,8 +1209,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.fontFamily == fontFamily) &&
             (identical(other.fontSize, fontSize) ||
                 other.fontSize == fontSize) &&
-            (identical(other.avatarScale, avatarScale) ||
-                other.avatarScale == avatarScale) &&
+            (identical(other.lineHeight, lineHeight) ||
+                other.lineHeight == lineHeight) &&
+            (identical(other.avatarScale, avatarScale) || other.avatarScale == avatarScale) &&
             (identical(other.reactionsDisplayScale, reactionsDisplayScale) || other.reactionsDisplayScale == reactionsDisplayScale) &&
             (identical(other.limitWidthOfReaction, limitWidthOfReaction) || other.limitWidthOfReaction == limitWidthOfReaction) &&
             (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
@@ -1259,6 +1277,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         emojiStyle,
         fontFamily,
         fontSize,
+        lineHeight,
         avatarScale,
         reactionsDisplayScale,
         limitWidthOfReaction,
@@ -1339,6 +1358,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final EmojiStyle emojiStyle,
       final String? fontFamily,
       final double fontSize,
+      final double lineHeight,
       final double avatarScale,
       final double reactionsDisplayScale,
       final bool limitWidthOfReaction,
@@ -1430,6 +1450,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   String? get fontFamily;
   @override
   double get fontSize;
+  @override
+  double get lineHeight;
   @override
   double get avatarScale;
   @override

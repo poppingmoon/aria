@@ -44,6 +44,7 @@ importConfirm: "Are you sure you want to import settings? Existing settings will
 invalidListFormat: "List format is invalid"
 jumpTo: "Jump to {x}"
 keepOpen: "Keep open"
+lineHeight: "Line height"
 loginWithAccessToken: "Sign in with an access token"
 margin: "Margin"
 mentionToRemoteWarning: "This note contains mentions to remote users"

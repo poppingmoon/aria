@@ -180,6 +180,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setLineHeight(double lineHeight) async {
+    state = state.copyWith(lineHeight: lineHeight);
+    await _save();
+  }
+
   Future<void> setAvatarScale(double avatarScale) async {
     state = state.copyWith(avatarScale: avatarScale);
     await _save();

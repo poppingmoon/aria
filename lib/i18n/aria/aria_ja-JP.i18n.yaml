@@ -42,6 +42,7 @@ importConfirm: "設定をインポートしますか？現在の設定は上書�
 invalidListFormat: "リストの形式が正しくありません"
 jumpTo: "{x}にジャンプ"
 keepOpen: "開いたままにする"
+lineHeight: "行間"
 loginWithAccessToken: "アクセストークンでログイン"
 margin: "余白"
 mentionToRemoteWarning: "リモートユーザーへのメンションが含まれています"

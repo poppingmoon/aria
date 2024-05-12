@@ -16,6 +16,9 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
   final fontFamily = ref.watch(
     generalSettingsNotifierProvider.select((settings) => settings.fontFamily),
   );
+  final height = ref.watch(
+    generalSettingsNotifierProvider.select((settings) => settings.lineHeight),
+  );
   return ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: colors.accent,
@@ -37,7 +40,7 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
           TextTheme(
             titleMedium: TextStyle(fontSize: fontSize + 2.0),
             bodyLarge: TextStyle(fontSize: fontSize + 2.0),
-            bodyMedium: TextStyle(fontSize: fontSize),
+            bodyMedium: TextStyle(fontSize: fontSize, height: height),
           ),
         )
         .apply(
