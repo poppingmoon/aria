@@ -226,21 +226,19 @@ class TimelineListView extends HookConsumerWidget {
                       ),
                     ),
                   SliverList.separated(
-                    itemBuilder: (context, index) => Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: TimelineNote(
-                        key: ValueKey(
-                          previousNotes.valueOrNull!.items[index].id,
+                    itemBuilder: (context, index) {
+                      final note = nextNotes.valueOrNull!.items[
+                          nextNotes.valueOrNull!.items.length - index - 1];
+                      return Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        child: TimelineNote(
+                          key: ValueKey(note.id),
+                          tabSettings: tabSettings,
+                          noteId: note.id,
+                          postFormFocusNode: postFormFocusNode,
                         ),
-                        tabSettings: tabSettings,
-                        noteId: nextNotes
-                            .valueOrNull!
-                            .items[
-                                nextNotes.valueOrNull!.items.length - index - 1]
-                            .id,
-                        postFormFocusNode: postFormFocusNode,
-                      ),
-                    ),
+                      );
+                    },
                     separatorBuilder: (context, index) =>
                         lastViewedAt?.isBetween(
                                   nextNotes.valueOrNull?.items
@@ -270,17 +268,18 @@ class TimelineListView extends HookConsumerWidget {
                     ),
                   SliverList.separated(
                     key: centerKey,
-                    itemBuilder: (context, index) => Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: TimelineNote(
-                        key: ValueKey(
-                          previousNotes.valueOrNull!.items[index].id,
+                    itemBuilder: (context, index) {
+                      final note = previousNotes.valueOrNull!.items[index];
+                      return Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        child: TimelineNote(
+                          key: ValueKey(note.id),
+                          tabSettings: tabSettings,
+                          noteId: note.id,
+                          postFormFocusNode: postFormFocusNode,
                         ),
-                        tabSettings: tabSettings,
-                        noteId: previousNotes.valueOrNull!.items[index].id,
-                        postFormFocusNode: postFormFocusNode,
-                      ),
-                    ),
+                      );
+                    },
                     separatorBuilder: (context, index) =>
                         lastViewedAt?.isBetween(
                                   previousNotes.valueOrNull?.items
