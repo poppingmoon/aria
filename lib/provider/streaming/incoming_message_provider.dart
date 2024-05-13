@@ -13,11 +13,11 @@ part 'incoming_message_provider.g.dart';
 Stream<IncomingMessage> incomingMessage(
   IncomingMessageRef ref,
   Account account,
-) async* {
+) {
   final webSocketChannel = ref.watch(webSocketChannelProvider(account));
-  await for (final msg in webSocketChannel.stream) {
+  return webSocketChannel.stream.map((msg) {
     final message = jsonDecode(msg as String);
     debugPrint('webSocketChannel: $msg');
-    yield IncomingMessage.fromJson(message as Map<String, dynamic>);
-  }
+    return IncomingMessage.fromJson(message as Map<String, dynamic>);
+  });
 }

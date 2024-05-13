@@ -33,10 +33,9 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
           webSocketChannelProvider(tabSettings.account),
           (_, __) => connect(),
         );
-        final message =
-            ref.watch(incomingMessageProvider(tabSettings.account)).valueOrNull;
-        if (message != null &&
-            message.type == IncomingMessageType.channel &&
+        final message = await ref
+            .watch(incomingMessageProvider(tabSettings.account).future);
+        if (message.type == IncomingMessageType.channel &&
             message.body['id'] == _id) {
           final event = message.body;
           if (event['type'] == 'note') {

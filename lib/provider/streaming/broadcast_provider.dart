@@ -9,18 +9,16 @@ part 'broadcast_provider.g.dart';
 
 @riverpod
 Stream<Broadcast> broadcast(BroadcastRef ref, Account account) async* {
-  final message = ref.watch(incomingMessageProvider(account)).valueOrNull;
-  if (message != null) {
-    switch (message.type) {
-      case IncomingMessageType.emojiAdded:
-        yield EmojiAdded.fromJson(message.body);
-      case IncomingMessageType.emojiUpdated:
-        yield EmojiUpdated.fromJson(message.body);
-      case IncomingMessageType.emojiDeleted:
-        yield EmojiDeleted.fromJson(message.body);
-      case IncomingMessageType.announcementCreated:
-        yield AnnouncementCreated.fromJson(message.body);
-      default:
-    }
+  final message = await ref.watch(incomingMessageProvider(account).future);
+  switch (message.type) {
+    case IncomingMessageType.emojiAdded:
+      yield EmojiAdded.fromJson(message.body);
+    case IncomingMessageType.emojiUpdated:
+      yield EmojiUpdated.fromJson(message.body);
+    case IncomingMessageType.emojiDeleted:
+      yield EmojiDeleted.fromJson(message.body);
+    case IncomingMessageType.announcementCreated:
+      yield AnnouncementCreated.fromJson(message.body);
+    default:
   }
 }
