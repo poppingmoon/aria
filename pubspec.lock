@@ -1242,10 +1242,10 @@ packages:
     dependency: "direct main"
     description:
       name: multi_split_view
-      sha256: d68e129bff71fc9e6b66de59e1b79deaf4b91f30940130bfbd2d704c1c713499
+      sha256: "596d71fd30f006a1b8878a2308e794f52bd0ea750f05bbaa0b18cb50c0f79325"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "3.1.0"
   nested:
     dependency: transitive
     description:
