@@ -13,9 +13,8 @@ Stream<NoteUpdateEvent> noteUpdateEvent(
   Account account,
   String noteId,
 ) async* {
-  final message = ref.watch(incomingMessageProvider(account)).valueOrNull;
-  if (message != null &&
-      message.type == IncomingMessageType.noteUpdated &&
+  final message = await ref.watch(incomingMessageProvider(account).future);
+  if (message.type == IncomingMessageType.noteUpdated &&
       message.body['id'] == noteId) {
     switch (message.body['type']) {
       case 'reacted':

@@ -7,7 +7,7 @@ part of 'timeline_stream_notifier.dart';
 // **************************************************************************
 
 String _$timelineStreamNotifierHash() =>
-    r'1d2173f7fb350f9df33949dfb3b4fca5a9be12ef';
+    r'5e07d109037456c16812941128bd4ac7cb6172e6';
 
 /// Copied from Dart SDK
 class _SystemHash {
