@@ -6,6 +6,21 @@ on:
   workflow_dispatch:
 
 jobs:
+  get-flutter-version:
+    runs-on: ubuntu-latest
+
+    outputs:
+      flutter-version: ${{ steps.get-flutter-version.outputs.version }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get Flutter version from .fvmrc
+        id: get-flutter-version
+        run: >
+          echo version=$(grep flutter .fvmrc | cut -d ":" -f2|cut -d "\"" -f2)
+          >> $GITHUB_OUTPUT
+
   format:
     runs-on: ubuntu-latest
 
@@ -22,6 +37,8 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
 
+    needs: get-flutter-version
+
     steps:
       - uses: actions/checkout@v4
 
@@ -29,6 +46,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
       - name: Get dependencies
@@ -43,6 +61,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    needs: get-flutter-version
+
     steps:
       - uses: actions/checkout@v4
 
@@ -50,6 +70,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
       - name: Get dependencies
@@ -61,6 +82,8 @@ jobs:
   integration-test-ios:
     runs-on: macos-14
 
+    needs: get-flutter-version
+
     steps:
       - uses: actions/checkout@v4
 
@@ -68,6 +91,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
       - name: Get dependencies
@@ -81,17 +105,23 @@ jobs:
       - name: Pre-build the app
         uses: nick-fields/retry@v3
         with:
-          timeout_minutes: 60
-          max_attempts: 3
+          timeout_minutes: 30
+          max_attempts: 5
           command: >
             flutter build ios --simulator
             --target=integration_test/timeline_test.dart
 
       - name: Integration test
-        run: flutter test integration_test
+        uses: nick-fields/retry@v3
+        with:
+          timeout_minutes: 30
+          max_attempts: 3
+          command: flutter test integration_test
 
   check-i18n-sorting:
     runs-on: ubuntu-latest
+
+    needs: get-flutter-version
 
     steps:
       - uses: actions/checkout@v4
@@ -107,6 +137,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
       - name: Get dependencies
@@ -127,6 +158,8 @@ jobs:
   check-build-diff:
     runs-on: ubuntu-latest
 
+    needs: get-flutter-version
+
     steps:
       - uses: actions/checkout@v4
 
@@ -134,6 +167,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
+          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
       - name: Run build_runner
