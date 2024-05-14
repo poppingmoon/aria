@@ -62,26 +62,31 @@ class TimelineHeader extends HookConsumerWidget {
     return SizeTransition(
       sizeFactor: Animation.fromValueListenable(sizeFactor),
       child: ExpansionTile(
-        leading: Stack(
+        leading: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            TabIconWidget(tabSettings: tabSettings),
-            if (hasUnreadNotification || hasUnreadAnnouncement)
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-                child: const SizedBox(height: 12.0, width: 12.0),
-              ),
-          ],
-        ),
-        title: Row(
-          children: [
-            Expanded(child: TabNameWidget(tabSettings: tabSettings)),
             StreamingErrorIcon(tabSettings: tabSettings),
+            Stack(
+              children: [
+                TabIconWidget(tabSettings: tabSettings),
+                if (hasUnreadNotification || hasUnreadAnnouncement)
+                  DecoratedBox(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    child: const SizedBox(height: 12.0, width: 12.0),
+                  ),
+              ],
+            ),
           ],
         ),
-        subtitle: Text(tabSettings.account.toString()),
+        title: TabNameWidget(tabSettings: tabSettings),
+        subtitle: Text(
+          tabSettings.account.toString(),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
         onExpansionChanged: (value) {
           isMenuExpanded.value = value;
           if (value) {
