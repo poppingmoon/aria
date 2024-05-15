@@ -170,11 +170,11 @@ class ImageGalleryDialog extends HookConsumerWidget {
                       shadows: [
                         Shadow(
                           blurRadius: 2.0,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).canvasColor,
                         ),
                         Shadow(
                           blurRadius: 2.0,
-                          color: Theme.of(context).colorScheme.background,
+                          color: Theme.of(context).canvasColor,
                         ),
                       ],
                     ),

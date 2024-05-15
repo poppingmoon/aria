@@ -107,9 +107,10 @@ class TimelinesPage extends HookConsumerWidget {
       children: [
         if (isLargeScreen)
           DrawerTheme(
-            data: const DrawerThemeData(
+            data: DrawerThemeData(
+              backgroundColor: Theme.of(context).colorScheme.surface,
               elevation: 0.0,
-              shape: RoundedRectangleBorder(),
+              shape: const RoundedRectangleBorder(),
             ),
             child: TimelineDrawer(controller: controller),
           ),
