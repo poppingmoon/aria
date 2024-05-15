@@ -115,7 +115,7 @@ jobs:
           path: ${{ env.APK_BUILD_DIR }}/build/app/outputs/bundle/release/app-release.aab
 
   build-ios:
-    runs-on: macos-14
+    runs-on: macos-latest
 
     needs: get-flutter-version
 
@@ -135,26 +135,65 @@ jobs:
       - name: Build for iOS
         run: flutter build ios --no-codesign
 
-      - name: Move Runner.app
+      - name: Copy Runner.app
         run: |
           mkdir Payload
-          mv build/ios/iphoneos/Runner.app Payload
+          cp -R build/ios/iphoneos/Runner.app Payload
 
-      - name: Create IPA
+      - name: Create IPA (Unsigned)
         run: zip -r aria-${{ github.ref_name }}.ipa Payload
 
-      - name: Upload IPA
+      - name: Upload IPA (Unsigned)
         uses: actions/upload-artifact@v4
         with:
           name: IPA
           path: aria-${{ github.ref_name }}.ipa
 
-      - name: Release IPA
+      - name: Release IPA (Unsigned)
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
           files: aria-${{ github.ref_name }}.ipa
           draft: true
+
+      - name: Create xcarchive
+        if: startsWith(github.ref, 'refs/tags/')
+        working-directory: ios
+        run: >
+          xcodebuild archive
+          CODE_SIGNING_ALLOWED=NO
+          -workspace Runner.xcworkspace
+          -scheme Runner
+          -configuration Release
+          -archivePath Runner.xcarchive
+
+      - name: Dump AuthKey
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: timheuer/base64-to-file@v1
+        with:
+          fileName: AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}.p8
+          fileDir: private_keys
+          encodedString: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY_BASE64 }}
+
+      - name: Create IPA
+        if: startsWith(github.ref, 'refs/tags/')
+        run: >
+          xcodebuild
+          -exportArchive
+          -archivePath ios/Runner.xcarchive
+          -exportOptionsPlist ios/ExportOptions.plist
+          -allowProvisioningUpdates
+          -authenticationKeyIssuerID ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          -authenticationKeyID ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+          -authenticationKeyPath $(pwd)/private_keys/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}.p8
+
+      - name: Publish IPA
+        if: startsWith(github.ref, 'refs/tags/')
+        run: >
+          app-store-connect publish
+          --testflight
+          --issuer-id ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          --key-id ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
 
   build-windows-x64:
     runs-on: windows-latest
@@ -222,7 +261,7 @@ jobs:
           draft: true
 
   build-macos:
-    runs-on: macos-14
+    runs-on: macos-latest
 
     needs: get-flutter-version
 
