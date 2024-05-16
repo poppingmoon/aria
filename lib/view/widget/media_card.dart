@@ -5,7 +5,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
-import 'package:pretty_bytes/pretty_bytes.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../extension/text_style_extension.dart';
@@ -16,6 +15,7 @@ import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
+import '../../util/pretty_bytes.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
@@ -293,12 +293,7 @@ class MediaCard extends HookConsumerWidget {
                                     ),
                                   if (file.size > 0)
                                     TextSpan(
-                                      text: prettyBytes(
-                                        file.size.toDouble(),
-                                        locale: Localizations.localeOf(context)
-                                            .toLanguageTag(),
-                                        binary: true,
-                                      ),
+                                      text: prettyBytes(file.size),
                                     ),
                                   const TextSpan(text: ')'),
                                 ],
@@ -318,14 +313,7 @@ class MediaCard extends HookConsumerWidget {
                               children: [
                                 if (dataSaver && file.size > 0) ...[
                                   const TextSpan(text: ' '),
-                                  TextSpan(
-                                    text: prettyBytes(
-                                      file.size.toDouble(),
-                                      locale: Localizations.localeOf(context)
-                                          .toLanguageTag(),
-                                      binary: true,
-                                    ),
-                                  ),
+                                  TextSpan(text: prettyBytes(file.size)),
                                 ],
                               ],
                             ),
