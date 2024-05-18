@@ -28,9 +28,12 @@ class AboutAriaPage extends HookConsumerWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(16.0),
-                      child: Assets.a.image(width: 80.0, height: 80.0),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(16.0),
+                        child: Assets.aria.image(width: 80.0, height: 80.0),
+                      ),
                     ),
                     const Text('Aria'),
                     FutureBuilder(
@@ -50,49 +53,98 @@ class AboutAriaPage extends HookConsumerWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                   child: Text.rich(
-                    t.aria.acknowledgements(
-                      miria: WidgetSpan(
-                        alignment: PlaceholderAlignment.baseline,
-                        baseline: TextBaseline.alphabetic,
-                        child: InkWell(
-                          onTap: () => launchUrl(
-                            Uri.https(
-                              'github.com',
-                              'shiosyakeyakini-info/miria',
+                    TextSpan(
+                      children: [
+                        t.aria.acknowledgements(
+                          miria: WidgetSpan(
+                            alignment: PlaceholderAlignment.baseline,
+                            baseline: TextBaseline.alphabetic,
+                            child: InkWell(
+                              onTap: () => launchUrl(
+                                Uri.https(
+                                  'github.com',
+                                  'shiosyakeyakini-info/miria',
+                                ),
+                              ),
+                              onLongPress: () => showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => const UrlSheet(
+                                  url:
+                                      'https://github.com/shiosyakeyakini-info/miria',
+                                ),
+                              ),
+                              child: Text(
+                                'Miria',
+                                style: TextStyle(color: colors.link),
+                              ),
                             ),
                           ),
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => const UrlSheet(
-                              url:
-                                  'https://github.com/shiosyakeyakini-info/miria',
+                          misskey: WidgetSpan(
+                            alignment: PlaceholderAlignment.baseline,
+                            baseline: TextBaseline.alphabetic,
+                            child: InkWell(
+                              onTap: () => launchUrl(
+                                Uri.https('github.com', 'misskey-dev/misskey'),
+                              ),
+                              onLongPress: () => showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => const UrlSheet(
+                                  url: 'https://github.com/misskey-dev/misskey',
+                                ),
+                              ),
+                              child: Text(
+                                'Misskey',
+                                style: TextStyle(color: colors.link),
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            'Miria',
-                            style: TextStyle(color: colors.link),
                           ),
                         ),
-                      ),
-                      misskey: WidgetSpan(
-                        alignment: PlaceholderAlignment.baseline,
-                        baseline: TextBaseline.alphabetic,
-                        child: InkWell(
-                          onTap: () => launchUrl(
-                            Uri.https('github.com', 'misskey-dev/misskey'),
-                          ),
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => const UrlSheet(
-                              url: 'https://github.com/misskey-dev/misskey',
+                        const TextSpan(text: '\n\n'),
+                        t.aria.iconAttribution(
+                          sevenc_nanashi: WidgetSpan(
+                            alignment: PlaceholderAlignment.baseline,
+                            baseline: TextBaseline.alphabetic,
+                            child: InkWell(
+                              onTap: () => context
+                                  .push('/voskey.icalo.net/users/9d8sfcv0qj'),
+                              onLongPress: () => showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => const UrlSheet(
+                                  url:
+                                      'https://voskey.icalo.net/@sevenc_nanashi',
+                                ),
+                              ),
+                              child: Text(
+                                '@sevenc_nanashi@voskey.icalo.net',
+                                style: TextStyle(color: colors.mention),
+                              ),
                             ),
                           ),
-                          child: Text(
-                            'Misskey',
-                            style: TextStyle(color: colors.link),
+                          cc_by: WidgetSpan(
+                            alignment: PlaceholderAlignment.baseline,
+                            baseline: TextBaseline.alphabetic,
+                            child: InkWell(
+                              onTap: () => launchUrl(
+                                Uri.https(
+                                  'creativecommons.org',
+                                  'licenses/by/4.0',
+                                ),
+                              ),
+                              onLongPress: () => showModalBottomSheet<void>(
+                                context: context,
+                                builder: (context) => const UrlSheet(
+                                  url:
+                                      'https://creativecommons.org/licenses/by/4.0',
+                                ),
+                              ),
+                              child: Text(
+                                'CC-BY 4.0',
+                                style: TextStyle(color: colors.link),
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -122,7 +174,7 @@ class AboutAriaPage extends HookConsumerWidget {
                     applicationVersion: packageInfo.version,
                     applicationIcon: ClipRRect(
                       borderRadius: BorderRadius.circular(16.0),
-                      child: Assets.a.image(width: 80.0, height: 80.0),
+                      child: Assets.aria.image(width: 80.0, height: 80.0),
                     ),
                     applicationLegalese: 'Licensed under AGPL v3',
                   );
