@@ -125,12 +125,7 @@ class TimelineDrawer extends HookConsumerWidget {
                   ],
                 ),
                 title: Text(t.misskey.notifications),
-                onTap: () {
-                  ref
-                      .read(iNotifierProvider(account).notifier)
-                      .readNotifications();
-                  context.push('/$account/notifications');
-                },
+                onTap: () => context.push('/$account/notifications'),
               ),
               ListTile(
                 leading: const Icon(Icons.attach_file),
