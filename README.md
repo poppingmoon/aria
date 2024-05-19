@@ -20,3 +20,10 @@ A [Misskey](https://github.com/misskey-dev/misskey) client app forked from [Miri
 | ----------------- | ------------------------ | ------------------------ | ------------------------ | -------------- |
 | [F-Droid][fdroid] | [TestFlight][testflight] | [EXE installer][release] | [DMG Installer][release] | [TAR][release] |
 | [APK][release]    | [IPA][release]           | [ZIP][release]           |                          |                |
+
+
+## Icon
+
+![aria.png](https://raw.githubusercontent.com/poppingmoon/aria/main/assets/aria.png)
+
+The icon of Aria was created by [@sevenc_nanashi@voskey.icalo.net](https://voskey.icalo.net/@sevenc_nanashi) and is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0).

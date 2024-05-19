@@ -90,6 +90,13 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 		link,
 		const TextSpan(text: 'で翻訳に協力したってやー。'),
 	]);
+	@override TextSpan iconAttribution({required InlineSpan sevenc_nanashi, required InlineSpan cc_by}) => TextSpan(children: [
+		const TextSpan(text: 'Ariaのアイコンは'),
+		sevenc_nanashi,
+		const TextSpan(text: 'によって作成され、'),
+		cc_by,
+		const TextSpan(text: 'の下で提供されとるで。'),
+	]);
 	@override String get importCompleted => 'インポートが終わったで';
 	@override String get importConfirm => '設定をインポートしてええか？今の設定は上書きされてまうで？';
 	@override String get invalidListFormat => 'リストの形式が間違ってるみたいや';

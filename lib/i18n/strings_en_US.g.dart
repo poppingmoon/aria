@@ -99,6 +99,13 @@ class _StringsAriaEnUs {
 		link,
 		const TextSpan(text: '.'),
 	]);
+	TextSpan iconAttribution({required InlineSpan sevenc_nanashi, required InlineSpan cc_by}) => TextSpan(children: [
+		const TextSpan(text: 'The icon of Aria was created by '),
+		sevenc_nanashi,
+		const TextSpan(text: ' and is licensed under '),
+		cc_by,
+		const TextSpan(text: '.'),
+	]);
 	String get importCompleted => 'Import completed';
 	String get importConfirm => 'Are you sure you want to import settings? Existing settings will be overwritten.';
 	String get invalidListFormat => 'List format is invalid';

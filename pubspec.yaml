@@ -199,17 +199,13 @@ flutter:
           weight: 700
 
 flutter_launcher_icons:
+  image_path: "assets/aria.png"
   android: true
-  ios: true
-  image_path: "assets/a.png"
-  adaptive_icon_foreground: "assets/a.png"
+  adaptive_icon_foreground: "assets/aria_android.png"
   adaptive_icon_background: "#ffffff"
+  ios: true
+  remove_alpha_ios: true
   windows:
     generate: true
-    image_path: "assets/a.png"
   macos:
     generate: true
-    image_path: "assets/a.png"
-  linux:
-    generate: true
-    image_path: "assets/a.png"

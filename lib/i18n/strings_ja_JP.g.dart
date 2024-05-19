@@ -90,6 +90,13 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 		link,
 		const TextSpan(text: 'で翻訳に協力できます。'),
 	]);
+	@override TextSpan iconAttribution({required InlineSpan sevenc_nanashi, required InlineSpan cc_by}) => TextSpan(children: [
+		const TextSpan(text: 'Ariaのアイコンは'),
+		sevenc_nanashi,
+		const TextSpan(text: 'によって作成され、'),
+		cc_by,
+		const TextSpan(text: 'の下で提供されています。'),
+	]);
 	@override String get importCompleted => 'インポートが完了しました';
 	@override String get importConfirm => '設定をインポートしますか？現在の設定は上書きされます。';
 	@override String get invalidListFormat => 'リストの形式が正しくありません';
