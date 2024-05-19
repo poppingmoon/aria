@@ -189,7 +189,7 @@ jobs:
 
       - name: Install codemagic-cli-tools
         if: startsWith(github.ref, 'refs/tags/')
-        run: pip3 install codemagic-cli-tools
+        run: pip install codemagic-cli-tools
 
       - name: Publish IPA
         if: startsWith(github.ref, 'refs/tags/')
