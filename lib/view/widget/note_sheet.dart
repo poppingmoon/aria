@@ -449,31 +449,34 @@ class NoteSheet extends ConsumerWidget {
                   }
                 },
               ),
-              if (note.isRenote)
-                ListTile(
-                  leading: const Icon(Icons.delete),
-                  title: Text(t.misskey.unrenote),
-                  onTap: () async {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(misskeyProvider(account))
-                          .notes
-                          .delete(NotesDeleteRequest(noteId: noteId))
-                          .then(
-                            (_) => ref
-                                .read(notesNotifierProvider(account).notifier)
-                                .remove(noteId),
-                          ),
-                    );
-
-                    if (!context.mounted) return;
-                    context.pop();
-                  },
-                  iconColor: Theme.of(context).colorScheme.error,
-                  textColor: Theme.of(context).colorScheme.error,
-                ),
-            ] else
+            ],
+            if (note.isRenote &&
+                note.user.host == null &&
+                note.user.username == account.username)
+              ListTile(
+                leading: const Icon(Icons.delete),
+                title: Text(t.misskey.unrenote),
+                onTap: () async {
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(misskeyProvider(account))
+                        .notes
+                        .delete(NotesDeleteRequest(noteId: noteId))
+                        .then(
+                          (_) => ref
+                              .read(notesNotifierProvider(account).notifier)
+                              .remove(noteId),
+                        ),
+                  );
+                  if (!context.mounted) return;
+                  context.pop();
+                },
+                iconColor: Theme.of(context).colorScheme.error,
+                textColor: Theme.of(context).colorScheme.error,
+              ),
+            if (appearNote.user.host != null ||
+                appearNote.user.username != account.username)
               ListTile(
                 leading: const Icon(Icons.report),
                 title: Text(t.misskey.reportAbuse),
