@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+import 'package:pretty_bytes/pretty_bytes.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -11,7 +12,6 @@ import '../../../provider/api/drive_folder_provider.dart';
 import '../../../provider/api/drive_stats_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
-import '../../../util/pretty_bytes.dart';
 import '../../widget/account_settings_scaffold.dart';
 import '../../widget/key_value_widget.dart';
 import '../drive_page.dart';
@@ -75,13 +75,21 @@ class DriveSettingsPage extends ConsumerWidget {
                   Expanded(
                     child: KeyValueWidget(
                       label: t.misskey.inUse,
-                      text: prettyBytes(stats.usage),
+                      text: prettyBytes(
+                        stats.usage.toDouble(),
+                        locale: Localizations.localeOf(context).toLanguageTag(),
+                        binary: true,
+                      ),
                     ),
                   ),
                   Expanded(
                     child: KeyValueWidget(
                       label: t.misskey.capacity,
-                      text: prettyBytes(stats.capacity),
+                      text: prettyBytes(
+                        stats.capacity.toDouble(),
+                        locale: Localizations.localeOf(context).toLanguageTag(),
+                        binary: true,
+                      ),
                     ),
                   ),
                 ],

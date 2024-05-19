@@ -69,9 +69,8 @@ class LoginPage extends HookConsumerWidget {
                       ],
                     ),
                   ],
-                  backgroundColor: Theme.of(context)
-                      .scaffoldBackgroundColor
-                      .withOpacity(0.5),
+                  backgroundColor:
+                      Theme.of(context).colorScheme.background.withOpacity(0.5),
                 ),
               ),
             ),
