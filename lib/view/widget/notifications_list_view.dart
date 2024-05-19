@@ -48,6 +48,7 @@ class NotificationsListView extends HookConsumerWidget {
         ref
             .read(notificationsLastViewedAtNotifierProvider(account).notifier)
             .save(DateTime.now());
+        ref.read(iNotifierProvider(account).notifier).readNotifications();
         controller.addListener(() {
           if (controller.position.extentBefore == 0) {
             hasNewNotification.value = false;
