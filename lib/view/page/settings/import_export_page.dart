@@ -165,84 +165,80 @@ class ImportExportPage extends ConsumerWidget {
                   title: Text(t.misskey.drive),
                   onTap: () async {
                     final account = await _selectAccount(context, accounts);
+                    if (!context.mounted || account == null) return;
+                    final result = await showDialog<(DriveFolder?,)>(
+                      context: ref.context,
+                      builder: (context) => DrivePage(
+                        account: account,
+                        selectFolder: true,
+                      ),
+                    );
                     if (!context.mounted) return;
-                    if (account != null) {
-                      final result = await showDialog<(DriveFolder?,)>(
-                        context: ref.context,
-                        builder: (context) => DrivePage(
-                          account: account,
-                          selectFolder: true,
-                        ),
-                      );
-                      if (!context.mounted) return;
-                      if (result == null) return;
-                      final folderId = result.$1?.id;
-                      if (!context.mounted) return;
-                      final files = await futureWithDialog(
-                        context,
-                        Future.wait(
-                          ['aria.json', 'aria.json.unknown'].map(
-                            (name) => ref
-                                .read(misskeyProvider(account))
-                                .drive
-                                .files
-                                .find(
-                                  DriveFilesFindRequest(
-                                    name: name,
-                                    folderId: folderId,
-                                  ),
+                    if (result == null) return;
+                    final folderId = result.$1?.id;
+                    if (!context.mounted) return;
+                    final files = await futureWithDialog(
+                      context,
+                      Future.wait(
+                        ['aria.json', 'aria.json.unknown'].map(
+                          (name) => ref
+                              .read(misskeyProvider(account))
+                              .drive
+                              .files
+                              .find(
+                                DriveFilesFindRequest(
+                                  name: name,
+                                  folderId: folderId,
                                 ),
-                          ),
+                              ),
                         ),
-                      );
-                      if (files == null) return;
-                      final latest = files.flattened
-                          .sortedBy((file) => file.createdAt)
-                          .lastOrNull;
-                      if (latest != null) {
-                        if (!context.mounted) return;
-                        final file = await futureWithDialog(
-                          context,
-                          ref
-                              .read(cacheManagerProvider)
-                              .getSingleFile(latest.url),
-                        );
-                        try {
-                          final json = json5Decode(await file!.readAsString())
-                              as Map<String, dynamic>;
-                          final backup = AriaBackup.fromJson(json);
-                          if (!context.mounted) return;
-                          final confirmed = await confirm(
-                            context,
-                            content: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(t.aria.importConfirm),
-                                Text(
-                                  '${t.misskey.createdAt}: ${absoluteTime(latest.createdAt)}',
-                                ),
-                              ],
-                            ),
-                          );
-                          if (!context.mounted) return;
-                          if (confirmed) {
-                            await _import(ref, backup);
-                            if (!context.mounted) return;
-                            await showMessageDialog(
-                              context,
-                              t.aria.importCompleted,
-                            );
-                          }
-                        } catch (_) {
-                          if (!context.mounted) return;
-                          await showMessageDialog(
-                            context,
-                            t.misskey.invalidValue,
-                          );
-                        }
-                      }
-                    } else {
+                      ),
+                    );
+                    if (files == null) return;
+                    final latest = files.flattened
+                        .sortedBy((file) => file.createdAt)
+                        .lastOrNull;
+                    if (!context.mounted) return;
+                    if (latest == null) {
                       await showMessageDialog(context, t.aria.fileNotFound);
+                      return;
+                    }
+                    final file = await futureWithDialog(
+                      context,
+                      ref.read(cacheManagerProvider).getSingleFile(latest.url),
+                    );
+                    try {
+                      final json = json5Decode(await file!.readAsString())
+                          as Map<String, dynamic>;
+                      final backup = AriaBackup.fromJson(json);
+                      if (!context.mounted) return;
+                      final confirmed = await confirm(
+                        context,
+                        content: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(t.aria.importConfirm),
+                            Text(
+                              '${t.misskey.createdAt}: ${absoluteTime(latest.createdAt)}',
+                            ),
+                          ],
+                        ),
+                      );
+                      if (!context.mounted) return;
+                      if (confirmed) {
+                        await _import(ref, backup);
+                        if (!context.mounted) return;
+                        await showMessageDialog(
+                          context,
+                          t.aria.importCompleted,
+                        );
+                      }
+                    } catch (_) {
+                      if (!context.mounted) return;
+                      await showMessageDialog(
+                        context,
+                        t.misskey.invalidValue,
+                      );
                     }
                   },
                 ),
