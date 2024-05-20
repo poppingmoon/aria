@@ -176,7 +176,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: |
           mkdir private_keys
-          echo $APP_STORE_CONNECT_PRIVATE_KEY > AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8
+          echo "$APP_STORE_CONNECT_PRIVATE_KEY" > AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8
 
       - name: Create IPA
         if: startsWith(github.ref, 'refs/tags/')
