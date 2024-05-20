@@ -510,7 +510,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                           valueOrNull: PaginationState(items: final notes),
                         ))
                       Container(
-                        margin: const EdgeInsets.only(left: 8.0),
+                        margin: const EdgeInsets.only(left: 8.0, top: 8.0),
                         decoration: BoxDecoration(
                           border: Border(
                             left: BorderSide(
