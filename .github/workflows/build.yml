@@ -9,9 +9,6 @@ on:
 permissions:
   contents: write
 
-env:
-  APK_BUILD_DIR: /tmp/build
-
 jobs:
   get-flutter-version:
     runs-on: ubuntu-latest
@@ -32,6 +29,9 @@ jobs:
     runs-on: ubuntu-latest
 
     needs: get-flutter-version
+
+    env:
+      APK_BUILD_DIR: /tmp/build
 
     steps:
       - uses: actions/checkout@v4
@@ -119,6 +119,11 @@ jobs:
 
     needs: get-flutter-version
 
+    env:
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+      APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+
     steps:
       - uses: actions/checkout@v4
 
@@ -169,11 +174,9 @@ jobs:
 
       - name: Dump AuthKey
         if: startsWith(github.ref, 'refs/tags/')
-        uses: timheuer/base64-to-file@v1
-        with:
-          fileName: AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}.p8
-          fileDir: private_keys
-          encodedString: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY_BASE64 }}
+        run: |
+          mkdir private_keys
+          echo $APP_STORE_CONNECT_PRIVATE_KEY > AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8
 
       - name: Create IPA
         if: startsWith(github.ref, 'refs/tags/')
@@ -183,21 +186,9 @@ jobs:
           -archivePath ios/Runner.xcarchive
           -exportOptionsPlist ios/ExportOptions.plist
           -allowProvisioningUpdates
-          -authenticationKeyIssuerID ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          -authenticationKeyID ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-          -authenticationKeyPath $(pwd)/private_keys/AuthKey_${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}.p8
-
-      - name: Install codemagic-cli-tools
-        if: startsWith(github.ref, 'refs/tags/')
-        run: pip install codemagic-cli-tools
-
-      - name: Publish IPA
-        if: startsWith(github.ref, 'refs/tags/')
-        run: >
-          app-store-connect publish
-          --testflight
-          --issuer-id ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          --key-id ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+          -authenticationKeyIssuerID $APP_STORE_CONNECT_ISSUER_ID
+          -authenticationKeyID $APP_STORE_CONNECT_KEY_IDENTIFIER
+          -authenticationKeyPath $(pwd)/private_keys/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8
 
   build-windows-x64:
     runs-on: windows-latest
@@ -269,8 +260,43 @@ jobs:
 
     needs: get-flutter-version
 
+    env:
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+      APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Dump cert_key
+        run: echo "${{ secrets.CERT_KEY }}" > cert_key
+
+      - name: Install codemagic-cli-tools
+        run: pip install codemagic-cli-tools
+
+      - name: Fetch signing files
+        run: >
+          app-store-connect fetch-signing-files com.poppingmoon.aria
+          --platform MAC_OS
+          --type MAC_APP_STORE
+          --certificate-key=@file:cert_key
+          --create
+
+      - name: Fetch certificates
+        run: >
+          app-store-connect certificates list
+          --type MAC_INSTALLER_DISTRIBUTION
+          --certificate-key=@file:cert_key
+          --save
+
+      - name: Set up keychain
+        run: keychain initialize
+
+      - name: Add certificates
+        run: keychain add-certificates
+
+      - name: Update Xcode project settings
+        run: xcode-project use-profiles
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
@@ -310,6 +336,26 @@ jobs:
         with:
           files: aria-${{ github.ref_name }}.dmg
           draft: true
+
+      - name: Create package
+        run: |
+          xcrun productbuild \
+            --component build/macos/Build/Products/Release/aria.app \
+            /Applications/ unsigned.pkg
+          INSTALLER_CERT_NAME=$(keychain list-certificates \
+            | jq '[.[]
+              | select(.common_name
+              | contains("Mac Developer Installer"))
+              | .common_name][0]' \
+            | xargs)
+          xcrun productsign \
+            --sign "$INSTALLER_CERT_NAME" \
+            unsigned.pkg \
+            aria-${{ github.ref_name }}.app.pkg
+
+      - name: Publish package
+        if: startsWith(github.ref, 'refs/tags/')
+        run: app-store-connect publish --path aria-${{ github.ref_name }}.app.pkg
 
   build-linux-arm64:
     runs-on: ubuntu-latest
