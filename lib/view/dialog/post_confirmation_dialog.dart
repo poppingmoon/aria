@@ -61,8 +61,9 @@ class PostConfirmationDialog extends ConsumerWidget {
     final note = request.toNote(i: i, channel: channel);
 
     return Dialog(
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: Container(
+        width: 800.0,
+        margin: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -96,6 +97,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ElevatedButton(
+                        autofocus: true,
                         onPressed: () => context.pop(true),
                         child: Text(t.misskey.ok),
                       ),
