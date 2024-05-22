@@ -49,6 +49,7 @@ class ConfirmationDialog extends StatelessWidget {
       content: content ?? Text(message ?? ''),
       actions: [
         ElevatedButton(
+          autofocus: true,
           onPressed: () => context.pop(true),
           child: Text(okText ?? t.misskey.ok),
         ),

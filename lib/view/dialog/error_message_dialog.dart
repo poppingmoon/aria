@@ -25,6 +25,7 @@ class ErrorMessageDialog extends StatelessWidget {
       ),
       actions: [
         TextButton(
+          autofocus: true,
           onPressed: () => context.pop(),
           child: Text(t.misskey.gotIt),
         ),

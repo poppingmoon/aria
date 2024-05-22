@@ -79,6 +79,7 @@ class ReactionConfirmationDialog extends ConsumerWidget {
       ),
       actions: [
         ElevatedButton(
+          autofocus: true,
           onPressed: () => context.pop(true),
           child: Text(t.misskey.ok),
         ),

@@ -24,6 +24,7 @@ class MessageDialog extends StatelessWidget {
       content: Text(message),
       actions: [
         ElevatedButton(
+          autofocus: true,
           onPressed: () => context.pop(),
           child: Text(t.misskey.gotIt),
         ),
