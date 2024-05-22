@@ -5,6 +5,9 @@ on:
   push:
   workflow_dispatch:
 
+permissions:
+  pull-requests: write
+
 jobs:
   get-flutter-version:
     runs-on: ubuntu-latest
@@ -31,8 +34,19 @@ jobs:
         uses: dart-lang/setup-dart@v1
 
       - name: Format
-        run: dart format --output=none --set-exit-if-changed \
+        run: >
+          dart format
           $(find . -name '*.dart' -not -name '*.g.dart' -and -not -name '*.freezed.dart')
+
+      - name: Suggest changes
+        if: github.event_name == 'pull_request'
+        uses: reviewdog/action-suggester@v1
+        with:
+          fail_on_error: true
+
+      - name: Check diff
+        if: github.event_name != 'pull_request'
+        run: git diff --exit-code
 
   analyze:
     runs-on: ubuntu-latest
@@ -144,16 +158,24 @@ jobs:
         if: steps.changed-i18n-files.outputs.any_changed == 'true'
         run: flutter pub get
 
-      - name: Compare i18n files
+      - name: Sort i18n files
         if: steps.changed-i18n-files.outputs.any_changed == 'true'
         env:
           ALL_CHANGED_FILES: ${{ steps.changed-i18n-files.outputs.all_changed_files }}
         run: |
           for file in $ALL_CHANGED_FILES; do
-            cp $file $file.copy
             dart run script/sort_yaml.dart $file
-            cmp $file $file.copy
           done
+
+      - name: Suggest changes
+        if: github.event_name == 'pull_request'
+        uses: reviewdog/action-suggester@v1
+        with:
+          fail_on_error: true
+
+      - name: Check diff
+        if: github.event_name != 'pull_request'
+        run: git diff --exit-code
 
   check-build-diff:
     runs-on: ubuntu-latest
@@ -173,5 +195,12 @@ jobs:
       - name: Run build_runner
         run: dart run build_runner build -d
 
+      - name: Suggest changes
+        if: github.event_name == 'pull_request'
+        uses: reviewdog/action-suggester@v1
+        with:
+          fail_on_error: true
+
       - name: Check diff
+        if: github.event_name != 'pull_request'
         run: git diff --exit-code
