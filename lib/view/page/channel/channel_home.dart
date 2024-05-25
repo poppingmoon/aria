@@ -242,6 +242,7 @@ class ChannelHome extends ConsumerWidget {
             ),
             itemCount: channel.pinnedNoteIds.length,
           ),
+          const SliverToBoxAdapter(child: SizedBox(height: 80.0)),
         ],
       ),
     );

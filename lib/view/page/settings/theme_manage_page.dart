@@ -81,10 +81,9 @@ class ThemeManagePage extends ConsumerWidget {
         child: SizedBox(
           width: 800.0,
           child: codes.isNotEmpty
-              ? ListView(
-                  children: List.generate(
-                    codes.length,
-                    (index) {
+              ? ListView.builder(
+                  itemBuilder: (context, index) {
+                    if (index < codes.length) {
                       final theme = themes[index];
                       return ExpansionTile(
                         leading: Icon(
@@ -185,8 +184,11 @@ class ThemeManagePage extends ConsumerWidget {
                           ),
                         ],
                       );
-                    },
-                  ),
+                    } else {
+                      return const SizedBox(height: 80.0);
+                    }
+                  },
+                  itemCount: codes.length + 1,
                 )
               : Center(child: Text(t.aria.noThemes)),
         ),

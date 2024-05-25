@@ -25,30 +25,40 @@ class AccountsPage extends HookConsumerWidget {
           ? Center(child: Text(t.aria.noAccounts))
           : ReorderableListView.builder(
               itemBuilder: (context, index) {
-                final account = accounts[index];
-                final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-                return ReorderableDragStartListenerWrapper(
-                  key: ValueKey(index),
-                  index: index,
-                  child: Card(
-                    color: Theme.of(context).colorScheme.surface,
-                    elevation: 0.0,
-                    clipBehavior: Clip.hardEdge,
-                    child: ListTile(
-                      leading: i != null
-                          ? UserAvatar(account: account, user: i, size: 40.0)
-                          : null,
-                      title: i != null
-                          ? UsernameWidget(account: account, user: i)
-                          : null,
-                      subtitle: Text(account.toString()),
-                      trailing: const Icon(Icons.drag_handle),
-                      onTap: () => context.push('/settings/accounts/$account'),
+                if (index < accounts.length) {
+                  final account = accounts[index];
+                  final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+                  return ReorderableDragStartListenerWrapper(
+                    key: ValueKey(index),
+                    index: index,
+                    child: Card(
+                      color: Theme.of(context).colorScheme.surface,
+                      elevation: 0.0,
+                      clipBehavior: Clip.hardEdge,
+                      child: ListTile(
+                        leading: i != null
+                            ? UserAvatar(account: account, user: i, size: 40.0)
+                            : null,
+                        title: i != null
+                            ? UsernameWidget(account: account, user: i)
+                            : null,
+                        subtitle: Text(account.toString()),
+                        trailing: const Icon(Icons.drag_handle),
+                        onTap: () =>
+                            context.push('/settings/accounts/$account'),
+                      ),
                     ),
-                  ),
-                );
+                  );
+                } else {
+                  return ReorderableDragStartListener(
+                    key: ValueKey(index),
+                    index: index,
+                    enabled: false,
+                    child: const SizedBox(height: 80.0),
+                  );
+                }
               },
-              itemCount: accounts.length,
+              itemCount: accounts.length + 1,
               onReorder: (oldIndex, newIndex) => ref
                   .read(accountsNotifierProvider.notifier)
                   .reorder(oldIndex, newIndex),

@@ -692,6 +692,7 @@ class TabSettingsPage extends HookConsumerWidget {
                         tabSettings.value.copyWith(withSensitive: value),
                   ),
                 ],
+                const SizedBox(height: 80.0),
               ],
             ),
           ),
