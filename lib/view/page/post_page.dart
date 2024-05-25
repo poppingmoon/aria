@@ -978,6 +978,7 @@ class PostPage extends HookConsumerWidget {
                                   showFooter: false,
                                 ),
                         ),
+                        const SizedBox(height: 80.0),
                       ],
                     ),
                   ),
