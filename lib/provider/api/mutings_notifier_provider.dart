@@ -40,7 +40,7 @@ class MutingsNotifier extends _$MutingsNotifier {
   }
 
   Future<void> delete(String userId) async {
-    await _misskey.blocking.delete(BlockDeleteRequest(userId: userId));
+    await _misskey.mute.delete(MuteDeleteRequest(userId: userId));
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(
