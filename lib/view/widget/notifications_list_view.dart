@@ -24,10 +24,12 @@ class NotificationsListView extends HookConsumerWidget {
     super.key,
     required this.account,
     this.controller,
+    this.physics,
   });
 
   final Account account;
   final ScrollController? controller;
+  final ScrollPhysics? physics;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -105,6 +107,7 @@ class NotificationsListView extends HookConsumerWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: CustomScrollView(
                 controller: controller,
+                physics: physics,
                 center: centerKey,
                 slivers: [
                   if ((notifications.valueOrNull?.items.isNotEmpty ?? false) ||
