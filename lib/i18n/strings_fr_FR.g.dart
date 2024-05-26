@@ -203,7 +203,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get overwriteFromPinnedEmojis => 'Remplacer par les émojis épinglés globalement';
 	@override String get reactionSettingDescription2 => 'Déplacer pour réorganiser, cliquer pour effacer, utiliser « + » pour ajouter.';
 	@override String get rememberNoteVisibility => 'Se souvenir de la visibilité des notes';
-	@override String get attachCancel => 'Supprimer le fichier attaché';
+	@override String get attachCancel => 'Supprimer le fichier joint';
 	@override String get deleteFile => 'Fichier supprimé';
 	@override String get markAsSensitive => 'Marquer comme sensible';
 	@override String get unmarkAsSensitive => 'Supprimer le marquage comme sensible';
@@ -474,6 +474,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get antennaSource => 'Source de l’antenne';
 	@override String get antennaKeywords => 'Mots clés à recevoir';
 	@override String get antennaExcludeKeywords => 'Mots clés à exclure';
+	@override String get antennaExcludeBots => 'Exclure les comptes robot';
 	@override String get antennaKeywordsDescription => 'Séparer avec des espaces pour la condition AND. Séparer avec un saut de ligne pour une condition OR.';
 	@override String get notifyAntenna => 'Me notifier pour les nouvelles notes';
 	@override String get withFileAntenna => 'Notes ayant des fichiers joints uniquement';
@@ -568,6 +569,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get native => 'Natif';
 	@override String get disableDrawer => 'Les menus ne s\'affichent pas dans le tiroir';
 	@override String get showNoteActionsOnlyHover => 'Afficher les actions de note uniquement au survol';
+	@override String get showReactionsCount => 'Afficher le nombre de réactions des notes';
 	@override String get noHistory => 'Pas d\'historique';
 	@override String get signinHistory => 'Historique de connexion';
 	@override String get enableAdvancedMfm => 'Activer la MFM avancée';
@@ -615,6 +617,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get objectStorageUseProxy => 'Se connecter via proxy';
 	@override String get objectStorageUseProxyDesc => 'Désactivez cette option si vous n\'utilisez pas de proxy pour la connexion API';
 	@override String get objectStorageSetPublicRead => 'Régler sur « public » lors de l\'envoi';
+	@override String get s3ForcePathStyleDesc => 'Si s3ForcePathStyle est activé, le nom du compartiment doit être spécifié comme une partie du chemin de l\'URL plutôt que le nom d\'hôte. Il faudra peut-être l\'activer lors de l\'utilisation d\'une instance de Minio autohébergée, etc.';
 	@override String get serverLogs => 'Journal du serveur';
 	@override String get deleteAll => 'Supprimer tout';
 	@override String get showFixedPostForm => 'Afficher le formulaire de publication en haut du fil d\'actualité';
@@ -749,6 +752,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get other => 'Autre';
 	@override String get regenerateLoginToken => 'Régénérer le jeton de connexion';
 	@override String get regenerateLoginTokenDescription => 'Générer un nouveau jeton d\'authentification. Cette opération ne devrait pas être nécessaire ; lors de la génération d\'un nouveau jeton, tous les appareils seront déconnectés. ';
+	@override String get theKeywordWhenSearchingForCustomEmoji => 'Ce mot-clé est utilisé lors de la recherche des émojis personnalisés.';
 	@override String get setMultipleBySeparatingWithSpace => 'Vous pouvez en définir plusieurs, en les séparant par des espaces.';
 	@override String get fileIdOrUrl => 'ID du fichier ou URL';
 	@override String get behavior => 'Comportement';
@@ -1063,6 +1067,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get remindMeLater => 'Peut-être plus tard';
 	@override String get didYouLikeMisskey => 'Avez-vous aimé Misskey ?';
 	@override String pleaseDonate({required Object host}) => 'Misskey est le logiciel libre utilisé par ${host}. Merci de faire un don pour que nous puissions continuer à le développer !';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'Le code source correspondant est disponible à ${anchor}';
 	@override String get roles => 'Rôles';
 	@override String get role => 'Rôles';
 	@override String get noRole => 'Aucun rôle';
@@ -1077,6 +1082,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get cannotPerformTemporary => 'Temporairement indisponible';
 	@override String get cannotPerformTemporaryDescription => 'Temporairement indisponible puisque le nombre d\'opérations dépasse la limite. Veuillez patienter un peu, puis réessayer.';
 	@override String get invalidParamError => 'Paramètres invalides';
+	@override String get invalidParamErrorDescription => 'Les paramètres de la requête sont invalides. Il s\'agit généralement d\'un bogue, mais cela peut aussi être causé par un excès de caractères ou quelque chose de similaire.';
 	@override String get permissionDeniedError => 'Opération refusée';
 	@override String get permissionDeniedErrorDescription => 'Ce compte n\'a pas la permission d\'effectuer cette opération.';
 	@override String get preset => 'Préréglage';
@@ -1090,6 +1096,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingIgnore => 'Publier quand-même';
 	@override String get collapseRenotes => 'Réduire les renotes déjà vues';
 	@override String get internalServerError => 'Erreur interne du serveur';
+	@override String get internalServerErrorDescription => 'Une erreur inattendue s\'est produite sur le serveur.';
 	@override String get copyErrorInfo => 'Copier les détails de l’erreur';
 	@override String get joinThisServer => 'S\'inscrire à cette instance';
 	@override String get exploreOtherServers => 'Trouver une autre instance';
@@ -1109,8 +1116,10 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get rolesAssignedToMe => 'Rôles attribués à moi';
 	@override String get resetPasswordConfirm => 'Souhaitez-vous réinitialiser votre mot de passe ?';
 	@override String get sensitiveWords => 'Mots sensibles';
+	@override String get sensitiveWordsDescription => 'Définir la visibilité des notes contenant un mot défini ici au fil principal automatiquement. Vous pouvez définir plusieurs valeurs en les séparant par des sauts de ligne.';
 	@override String get sensitiveWordsDescription2 => 'Séparer par une espace pour créer une expression AND ; entourer de barres obliques pour créer une expression régulière.';
 	@override String get prohibitedWords => 'Mots interdits';
+	@override String get prohibitedWordsDescription => 'Publier une note contenant un mot défini ici produira une erreur. Vous pouvez définir plusieurs valeurs en les séparant par des sauts de ligne.';
 	@override String get prohibitedWordsDescription2 => 'Séparer par une espace pour créer une expression AND ; entourer de barres obliques pour créer une expression régulière.';
 	@override String get hiddenTags => 'Hashtags cachés';
 	@override String get hiddenTagsDescription => 'Les hashtags définis ne s\'afficheront pas dans les tendances. Vous pouvez définir plusieurs hashtags en faisant un saut de ligne.';
@@ -1156,9 +1165,11 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get pleaseAgreeAllToContinue => 'Pour continuer, veuillez accepter tous les champs ci-dessus.';
 	@override String get continue_ => 'Continuer';
 	@override String get preservedUsernames => 'Noms d\'utilisateur·rice réservés';
+	@override String get preservedUsernamesDescription => 'Énumérez les noms d\'utilisateur à réserver, séparés par des nouvelles lignes. Les noms d\'utilisateur spécifiés ici ne seront plus utilisables lors de la création d\'un compte, sauf la création manuelle par un administrateur. De plus, les comptes existants ne seront pas affectés.';
 	@override String get createNoteFromTheFile => 'Rédiger une note de ce fichier';
 	@override String get archive => 'Archive';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Voulez-vous vraiment archiver ${name} ?';
+	@override String get channelArchiveConfirmDescription => 'Une fois archivé, le canal n\'apparaîtra plus dans la liste des canaux ni dans les résultats de recherche, et la publication des nouvelles notes sera impossible.';
 	@override String get thisChannelArchived => 'Ce canal a été archivé.';
 	@override String get displayOfNote => 'Affichage de la note';
 	@override String get initialAccountSetting => 'Configuration initiale du profil';
@@ -1187,6 +1198,8 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get createCount => 'Quantité à créer';
 	@override String get inviteCodeCreated => 'Code d\'invitation créé';
 	@override String get inviteLimitExceeded => 'Vous avez atteint la limite de codes d\'invitation que vous pouvez générer.';
+	@override String createLimitRemaining({required Object limit}) => 'Codes d\'invitation pouvant être créés : ${limit} restants';
+	@override String inviteLimitResetCycle({required Object limit, required Object time}) => 'Vous pouvez créer jusqu\'à ${limit} codes d\'invitation en ${time}.';
 	@override String get expirationDate => 'Date d’expiration';
 	@override String get noExpirationDate => 'Ne pas expirer';
 	@override String get inviteCodeUsedAt => 'Code d\'invitation utilisé à';
@@ -1206,11 +1219,14 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get currentAnnouncements => 'Annonces actuelles';
 	@override String get pastAnnouncements => 'Annonces passées';
 	@override String get youHaveUnreadAnnouncements => 'Il y a des annonces non lues.';
+	@override String get useSecurityKey => 'Suivez les instructions de votre navigateur ou de votre appareil pour utiliser une clé de sécurité ou une clé d\'accès.';
 	@override String get replies => 'Réponses';
 	@override String get renotes => 'Renotes';
 	@override String get loadReplies => 'Inclure les réponses';
 	@override String get loadConversation => 'Afficher la conversation';
 	@override String get pinnedList => 'Liste épinglée';
+	@override String get keepScreenOn => 'Garder l\'écran toujours allumé';
+	@override String get verifiedLink => 'Votre propriété de ce lien a été vérifiée';
 	@override String get notifyNotes => 'Notifier à propos des nouvelles notes';
 	@override String get unnotifyNotes => 'Ne pas notifier pour la publication des notes';
 	@override String get authentication => 'Authentification';
@@ -1220,6 +1236,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get edited => 'Modifié';
 	@override String get notificationRecieveConfig => 'Paramètres des notifications';
 	@override String get mutualFollow => 'Abonnement mutuel';
+	@override String get followingOrFollower => 'Abonnement ou abonné';
 	@override String get fileAttachedOnly => 'Avec fichiers joints seulement';
 	@override String get showRepliesToOthersInTimeline => 'Afficher les réponses aux autres dans le fil';
 	@override String get hideRepliesToOthersInTimeline => 'Masquer les réponses aux autres dans le fil';
@@ -1275,6 +1292,8 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'Derniers ${n} jours';
 	@override String get backToTitle => 'Retourner au titre';
 	@override String get hemisphere => 'Votre région';
+	@override String get withSensitive => 'Afficher les notes contenant des fichiers joints sensibles';
+	@override String userSaysSomethingSensitive({required Object name}) => 'Note de ${name} contenant des fichiers joints sensibles';
 	@override String get enableHorizontalSwipe => 'Glisser pour changer d\'onglet';
 	@override String get loading => 'Chargement en cours';
 	@override String get surrender => 'Annuler';
@@ -1363,7 +1382,12 @@ class _StringsMisskeyAnnouncementFrFr extends _StringsMisskeyAnnouncementEnUs {
 
 	// Translations
 	@override String get forExistingUsers => 'Pour les utilisateurs existants seulement';
+	@override String get needConfirmationToRead => 'Exiger la confirmation de la lecture';
+	@override String get needConfirmationToReadDescription => 'Si activé, afficher un dialogue de confirmation quand l\'annonce est marquée comme lue. Aussi, elle sera exclue de « marquer tout comme lu » .';
+	@override String get end => 'Archiver l\'annonce';
+	@override String get tooManyActiveAnnouncementDescription => 'Un grand nombre d\'annonces actives peut baisser l\'expérience utilisateur. Considérez d\'archiver les annonces obsolètes.';
 	@override String get readConfirmTitle => 'Marquer comme lu ?';
+	@override String readConfirmText({required Object title}) => 'Cela marquera le contenu de  « ${title} » comme lu.';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Puisque cela pourrait nuire considérablement à l\'expérience utilisateur pour les nouveaux utilisateurs, il est recommandé d\'utiliser les annonces pour afficher des informations temporaires plutôt que des informations persistantes.';
 	@override String get dialogAnnouncementUxWarn => 'Avoir deux ou plus annonces de style dialogue en même temps pourrait nuire considérablement à l\'expérience utilisateur. Veuillez les utiliser avec caution.';
 	@override String get silence => 'Ne pas me notifier';
@@ -1377,6 +1401,9 @@ class _StringsMisskeyInitialAccountSettingFrFr extends _StringsMisskeyInitialAcc
 	@override final _StringsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get accountCreated => 'Votre compte a été créé avec succès !';
+	@override String get letsStartAccountSetup => 'Procédons au réglage initial du compte.';
+	@override String get letsFillYourProfile => 'Commençons par configurer votre profil !';
 	@override String get profileSetting => 'Paramètres du profil';
 	@override String get privacySetting => 'Paramètres de confidentialité';
 	@override String get initialAccountSettingCompleted => 'Configuration du profil terminée avec succès !';
@@ -1470,7 +1497,7 @@ class _StringsMisskeyRoleFrFr extends _StringsMisskeyRoleEnUs {
 	@override String get edit => 'Modifier le rôle';
 	@override String get name => 'Nom du rôle';
 	@override String get description => 'Description du rôle';
-	@override String get permission => 'Rôle et autorisations';
+	@override String get permission => 'Autorisations du rôle';
 	@override String get assignTarget => 'Attribuer';
 	@override String get manual => 'Manuel';
 	@override String get manualRoles => 'Rôles manuels';
@@ -2297,7 +2324,7 @@ class _StringsMisskeyNotificationFrFr extends _StringsMisskeyNotificationEnUs {
 	@override String unreadAntennaNote({required Object name}) => 'Antenne ${name}';
 	@override String get roleAssigned => 'Rôle attribué';
 	@override String get emptyPushNotificationMessage => 'Les notifications push ont été mises à jour';
-	@override String get achievementEarned => 'Accomplissement';
+	@override String get achievementEarned => 'Accomplissement déverrouillé';
 	@override String get testNotification => 'Tester la notification';
 	@override String reactedBySomeUsers({required Object n}) => '${n} utilisateur·rice·s ont réagi';
 	@override String renotedBySomeUsers({required Object n}) => '${n} utilisateur·rice·s ont renoté';
@@ -2450,6 +2477,7 @@ class _StringsMisskeyReversiFrFr extends _StringsMisskeyReversiEnUs {
 	@override final _StringsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get waitingBoth => 'Préparez-vous';
 	@override String get total => 'Total';
 }
 
@@ -2463,7 +2491,9 @@ class _StringsMisskeyBubbleGameScoreFrFr extends _StringsMisskeyBubbleGameScoreE
 	@override String get score => 'Score';
 	@override String get scoreYen => 'Montant gagné';
 	@override String get highScore => 'Meilleur score';
+	@override String get maxChain => 'Nombre maximum de chaînes';
 	@override String yen({required Object yen}) => '${yen} yens';
+	@override String estimatedQty({required Object qty}) => '${qty} pièces';
 }
 
 // Path: misskey.initialTutorial_.landing_
@@ -2779,7 +2809,7 @@ class _StringsMisskeyNotificationTypesFrFr extends _StringsMisskeyNotificationTy
 	@override String get receiveFollowRequest => 'Demande d\'abonnement reçue';
 	@override String get followRequestAccepted => 'Demande d\'abonnement acceptée';
 	@override String get roleAssigned => 'Rôle reçu';
-	@override String get achievementEarned => 'Accomplissement';
+	@override String get achievementEarned => 'Déverrouillage d\'accomplissement';
 	@override String get app => 'Notifications provenant des apps';
 }
 

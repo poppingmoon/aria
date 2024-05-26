@@ -480,6 +480,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get antennaSource => 'Font de l\'antena';
 	@override String get antennaKeywords => 'Paraules clau a seguir';
 	@override String get antennaExcludeKeywords => 'Paraules clau a excloure';
+	@override String get antennaExcludeBots => 'Exclou els bots';
 	@override String get antennaKeywordsDescription => 'Separar amb espais per la condició AND o amb salts de línia per la condició OR.';
 	@override String get notifyAntenna => 'Notifica\'m les publicacions noves';
 	@override String get withFileAntenna => 'Només les publicacions amb fitxers';
@@ -574,6 +575,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get native => 'Nadiu';
 	@override String get disableDrawer => 'No mostrar els menús en calaixos';
 	@override String get showNoteActionsOnlyHover => 'Només mostra accions de la nota en passar amb el cursor';
+	@override String get showReactionsCount => 'Mostra el nombre de reaccions a les publicacions';
 	@override String get noHistory => 'No hi ha un registre previ';
 	@override String get signinHistory => 'Historial d\'autenticacions';
 	@override String get enableAdvancedMfm => 'Habilitar l\'MFM avançat';
@@ -623,7 +625,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get objectStorageSetPublicRead => 'Configurar les pujades com públiques ';
 	@override String get s3ForcePathStyleDesc => 'Si s3ForcePathStyle es troba activat el nom del dipòsit s\'ha d\'incloure a l\'adreça URL en comtes del nom del host. Potser que necessitis activar-ho quan facis servir, per exemple, Minio a un servidor propi.';
 	@override String get serverLogs => 'Registres del servidor';
-	@override String get deleteAll => 'Esborrar tot';
+	@override String get deleteAll => 'Elimina-ho tot';
 	@override String get showFixedPostForm => 'Mostrar el formulari per escriure a l\'inici de la línia de temps';
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulari d\'escriptura al principi de la línia de temps (Canals)';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Inclou les respostes d\'usuaris nous seguits a la línia de temps per defecte.';
@@ -771,9 +773,9 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get reporteeOrigin => 'Origen de la denúncia ';
 	@override String get reporterOrigin => 'Origen del denunciant';
 	@override String get forwardReport => 'Transferir la denúncia a una instància remota';
-	@override String get forwardReportIsAnonymous => 'En comptes del teu compte, es farà servir un compte anònim com a denunciat a la instància remota.';
-	@override String get send => 'Enviar';
-	@override String get abuseMarkAsResolved => 'Marcar la denúncia com a resolta';
+	@override String get forwardReportIsAnonymous => 'En lloc del teu compte, es farà servir un compte anònim com a denunciant al servidor remot.';
+	@override String get send => 'Envia';
+	@override String get abuseMarkAsResolved => 'Marca la denúncia com a resolta';
 	@override String get openInNewTab => 'Obre a una pestanya nova';
 	@override String get openInSideView => 'Obre a una vista lateral';
 	@override String get defaultNavigationBehaviour => 'Navegació per defecte';
@@ -933,7 +935,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get customCssWarn => 'Aquesta configuració només hauries de configurar-la si saps que fas. Si poses valors inadequats pots fer que el client deixi de funcionar correctament.';
 	@override String get global => 'Global';
 	@override String get squareAvatars => 'Mostrar avatars quadrats';
-	@override String get sent => 'Enviar';
+	@override String get sent => 'Envia';
 	@override String get received => 'Rebut';
 	@override String get searchResult => 'Resultats de la cerca';
 	@override String get hashtags => 'Etiquetes';
@@ -1071,6 +1073,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get remindMeLater => 'Recorda-m\'ho més tard';
 	@override String get didYouLikeMisskey => 'T\'està agradant Misskey?';
 	@override String pleaseDonate({required Object host}) => 'A ${host} fem servir el software lliure Misskey. Considera fer un donatiu a Misskey perquè pugui continuar el seu desenvolupament!';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'El codi font corresponent està disponible a ${anchor}.';
 	@override String get roles => 'Rols';
 	@override String get role => 'Rols';
 	@override String get noRole => 'No s\'han trobat rols';
@@ -1239,6 +1242,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get edited => 'Editat';
 	@override String get notificationRecieveConfig => 'Paràmetres de notificacions';
 	@override String get mutualFollow => 'Seguidor mutu';
+	@override String get followingOrFollower => 'Seguit o seguidor';
 	@override String get fileAttachedOnly => 'Només notes amb adjunts';
 	@override String get showRepliesToOthersInTimeline => 'Mostrar les respostes a altres a la línia de temps';
 	@override String get hideRepliesToOthersInTimeline => 'Amagar les respostes a altres a la línia de temps';
@@ -1248,6 +1252,9 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get confirmHideRepliesAll => 'Aquesta opció no té marxa enrere. Vols ocultar les teves respostes a tots els usuaris que segueixes a la línia de temps?';
 	@override String get externalServices => 'Serveis externs';
 	@override String get sourceCode => 'Codi font';
+	@override String get repositoryUrl => 'URL del repositori';
+	@override String get feedback => 'Opinió';
+	@override String get feedbackUrl => 'URL per a opinar';
 	@override String get impressum => 'Impressum';
 	@override String get impressumUrl => 'Adreça URL impressum';
 	@override String get impressumDescription => 'A països, com Alemanya, la inclusió de la informació de contacte de l\'operador (un Impressum) és requereix de manera legal per llocs comercials.';
@@ -1283,6 +1290,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get showReplay => 'Veure reproducció';
 	@override String get replay => 'Reproduir';
 	@override String get replaying => 'Reproduint';
+	@override String get endReplay => 'Tanca la redifusió';
 	@override String get ranking => 'Classificació';
 	@override String lastNDays({required Object n}) => 'Últims ${n} dies';
 	@override String get backToTitle => 'Torna al títol';
@@ -1290,7 +1298,12 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get withSensitive => 'Incloure notes amb fitxers sensibles';
 	@override String userSaysSomethingSensitive({required Object name}) => 'La publicació de ${name} conte material sensible';
 	@override String get enableHorizontalSwipe => 'Lliscar per canviar de pestanya';
+	@override String get loading => 'S’està carregant';
 	@override String get surrender => 'Cancel·lar ';
+	@override String get gameRetry => 'Torna a provar';
+	@override String get notUsePleaseLeaveBlank => 'Si no voleu usar-ho, deixeu-ho en blanc';
+	@override String get useTotp => 'Usa una contrasenya d\'un sol ús';
+	@override String get useBackupCode => 'Usa un codi de recuperació';
 	@override late final _StringsMisskeyBubbleGameCaEs bubbleGame_ = _StringsMisskeyBubbleGameCaEs._(_root);
 	@override late final _StringsMisskeyAnnouncementCaEs announcement_ = _StringsMisskeyAnnouncementCaEs._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingCaEs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingCaEs._(_root);
@@ -1964,7 +1977,6 @@ class _StringsMisskeyX2faCaEs extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Registrar una aplicació autenticadora';
 	@override String step1({required Object a, required Object b}) => 'Primer instal·la una aplicació autenticadora (com ${a} o ${b}) al teu dispositiu.';
 	@override String get step2 => 'Després escaneja el codi QR que es mostra en aquesta pantalla.';
-	@override String get step2Click => 'Fent clic en aquest codi QR et permetrà registrar l\'autenticació de doble factor a la teva clau de seguretat o en l\'aplicació d\'autenticació del teu dispositiu.';
 	@override String get step2Uri => 'Escriu la següent URI si estàs fent servir una aplicació d\'escriptori ';
 	@override String get step3Title => 'Escriu un codi d\'autenticació';
 	@override String get step3 => 'Escriu el codi d\'autenticació (token) que es mostra a la teva aplicació per finalitzar la configuració.';

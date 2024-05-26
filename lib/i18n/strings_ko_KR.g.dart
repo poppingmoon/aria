@@ -115,9 +115,9 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get favorite => '즐겨찾기';
 	@override String get favorites => '즐겨찾기';
 	@override String get unfavorite => '즐겨찾기에서 제거';
-	@override String get favorited => '즐겨찾기에 등록했습니다';
-	@override String get alreadyFavorited => '이미 즐겨찾기에 등록되어 있습니다';
-	@override String get cantFavorite => '즐겨찾기에 등록하지 못했습니다';
+	@override String get favorited => '즐겨찾기에 등록했습니다.';
+	@override String get alreadyFavorited => '이미 즐겨찾기에 등록했습니다.';
+	@override String get cantFavorite => '즐겨찾기에 등록하지 못했습니다.';
 	@override String get pin => '프로필에 고정';
 	@override String get unpin => '프로필에서 고정 해제';
 	@override String get copyContent => '내용 복사';
@@ -170,7 +170,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get retry => '다시 시도';
 	@override String get pageLoadError => '페이지를 불러오지 못했습니다.';
 	@override String get pageLoadErrorDescription => '네트워크 연결 또는 브라우저 캐시로 인해 발생했을 가능성이 높습니다. 캐시를 삭제하거나, 잠시 후 다시 시도해 주세요.';
-	@override String get serverIsDead => '서버로부터 응답이 없습니다. 잠시 후 다시 시도해주세요.';
+	@override String get serverIsDead => '서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.';
 	@override String get youShouldUpgradeClient => '이 페이지를 표시하려면 새로고침하여 새로운 버전의 클라이언트를 이용해 주십시오.';
 	@override String get enterListName => '리스트 이름을 입력';
 	@override String get privacy => '프라이버시';
@@ -196,8 +196,8 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get clickToShow => '클릭하여 보기';
 	@override String get sensitive => '열람 주의';
 	@override String get add => '추가';
-	@override String get reaction => '리액션';
-	@override String get reactions => '리액션';
+	@override String get reaction => '반응';
+	@override String get reactions => '반응';
 	@override String get emojiPicker => '이모지 선택기';
 	@override String get pinnedEmojisForReactionSettingDescription => '리액션을 할 때 프로필에 고정하여 표시할 이모지를 설정할 수 있습니다';
 	@override String get pinnedEmojisSettingDescription => '이모지를 입력할 때 프로필에 고정하여 표시할 이모지를 설정할 수 있습니다';
@@ -246,7 +246,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get flagAsBot => '나는 봇입니다';
 	@override String get flagAsBotDescription => '이 계정을 자동화된 수단으로 운용할 경우에 활성화해 주세요. 이 플래그를 활성화하면, 다른 봇이 이를 참고하여 봇 끼리의 무한 연쇄 반응을 회피하거나, 이 계정의 시스템 상에서의 취급이 Bot 운영에 최적화되는 등의 변화가 생깁니다.';
 	@override String get flagAsCat => '미야아아아오오오오오오오오오옹!!!!!!!';
-	@override String get flagAsCatDescription => '야옹?';
+	@override String get flagAsCatDescription => '야옹?(이 계정이 고양이라면 눌러 주세요.)';
 	@override String get flagShowTimelineReplies => '타임라인에 노트의 답글을 표시하기';
 	@override String get flagShowTimelineRepliesDescription => '이 설정을 활성화하면 타임라인에 다른 유저 간의 답글을 표시합니다.';
 	@override String get autoAcceptFollowed => '팔로우 중인 유저로부터의 팔로우 요청을 자동 수락';
@@ -264,7 +264,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get proxyAccount => '프록시 계정';
 	@override String get proxyAccountDescription => '프록시 계정은 특정 조건 하에서 유저의 리모트 팔로우를 대행하는 계정입니다. 예를 들면, 유저가 리모트 유저를 리스트에 넣었을 때, 리스트에 들어간 유저를 아무도 팔로우한 적이 없다면 액티비티가 서버로 배달되지 않기 때문에, 대신 프록시 계정이 해당 유저를 팔로우하도록 합니다.';
 	@override String get host => '호스트';
-	@override String get selectUser => '유저 선택';
+	@override String get selectUser => '사용자 선택';
 	@override String get recipient => '수신인';
 	@override String get annotation => '내용에 대한 주석';
 	@override String get federation => '연합';
@@ -307,7 +307,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get editProfile => '프로필 수정';
 	@override String get noteDeleteConfirm => '이 노트를 삭제하시겠습니까?';
 	@override String get pinLimitExceeded => '더 이상 고정할 수 없습니다.';
-	@override String get intro => 'Misskey의 설치가 완료되었습니다! 관리자 계정을 생성해주세요.';
+	@override String get intro => 'Misskey의 설치를 완료했습니다! 관리자 계정을 만들어 주세요.';
 	@override String get done => '완료';
 	@override String get processing => '처리중';
 	@override String get preview => '미리보기';
@@ -373,7 +373,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get images => '이미지';
 	@override String get image => '이미지';
 	@override String get birthday => '생일';
-	@override String yearsOld({required Object age}) => '${age}세';
+	@override String yearsOld({required Object age}) => '만 ${age} 세';
 	@override String get registeredDate => '등록일';
 	@override String get location => '장소';
 	@override String get theme => '테마';
@@ -477,6 +477,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get antennaSource => '받을 소스';
 	@override String get antennaKeywords => '받을 검색어';
 	@override String get antennaExcludeKeywords => '제외할 검색어';
+	@override String get antennaExcludeBots => '봇 계정 제외';
 	@override String get antennaKeywordsDescription => '공백으로 구분하는 경우 AND, 줄바꿈으로 구분하는 경우 OR로 지정됩니다';
 	@override String get notifyAntenna => '새로운 노트를 알림';
 	@override String get withFileAntenna => '파일이 첨부된 노트만';
@@ -491,11 +492,11 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get silenceConfirm => '이 계정을 사일런스로 설정하시겠습니까?';
 	@override String get unsilence => '사일런스 해제';
 	@override String get unsilenceConfirm => '이 계정의 사일런스를 해제하시겠습니까?';
-	@override String get popularUsers => '인기 유저';
-	@override String get recentlyUpdatedUsers => '최근 활동한 유저';
-	@override String get recentlyRegisteredUsers => '최근 가입한 유저';
-	@override String get recentlyDiscoveredUsers => '최근 발견한 유저';
-	@override String exploreUsersCount({required Object count}) => '${count}명의 유저가 있습니다';
+	@override String get popularUsers => '인기 사용자';
+	@override String get recentlyUpdatedUsers => '최근에 활동한 사용자';
+	@override String get recentlyRegisteredUsers => '최근에 가입한 사용자';
+	@override String get recentlyDiscoveredUsers => '최근에 발견한 사용자';
+	@override String exploreUsersCount({required Object count}) => '${count}명의 사용자가 있습니다';
 	@override String get exploreFediverse => '연합우주를 탐색';
 	@override String get popularTags => '인기 태그';
 	@override String get userList => '리스트';
@@ -547,7 +548,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get noMessagesYet => '아직 대화가 없습니다';
 	@override String get newMessageExists => '새 메시지가 있습니다';
 	@override String get onlyOneFileCanBeAttached => '메시지에 첨부할 수 있는 파일은 하나까지입니다';
-	@override String get signinRequired => '로그인 해주세요';
+	@override String get signinRequired => '진행하기 전에 로그인을 해 주세요';
 	@override String get invitations => '초대';
 	@override String get invitationCode => '초대 코드';
 	@override String get checking => '확인하는 중입니다';
@@ -571,6 +572,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get native => '기본';
 	@override String get disableDrawer => '드로어 메뉴를 사용하지 않기';
 	@override String get showNoteActionsOnlyHover => '노트 액션 버튼을 마우스를 올렸을 때에만 표시';
+	@override String get showReactionsCount => '노트의 반응 수를 표시하기';
 	@override String get noHistory => '기록이 없습니다';
 	@override String get signinHistory => '로그인 기록';
 	@override String get enableAdvancedMfm => '고급 MFM을 활성화';
@@ -606,13 +608,13 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get objectStorageBaseUrl => 'Base URL';
 	@override String get objectStorageBaseUrlDesc => '오브젝트 (미디어) 참조 URL 을 만들 때 사용되는 URL입니다. CDN 또는 프록시를 사용하는 경우 그 URL을 지정하고, 그 외의 경우 사용할 서비스의 가이드에 따라 공개적으로 액세스 할 수 있는 주소를 지정해 주세요. 예를 들어, AWS S3의 경우 \'https://<bucket>.s3.amazonaws.com\', GCS등의 경우 \'https://storage.googleapis.com/<bucket>\' 와 같이 지정합니다.';
 	@override String get objectStorageBucket => 'Bucket';
-	@override String get objectStorageBucketDesc => '사용 서비스의 bucket명을 지정해주세요.';
+	@override String get objectStorageBucketDesc => '사용하는 서비스의 bucket 이름을 지정해 주세요.';
 	@override String get objectStoragePrefix => 'Prefix';
 	@override String get objectStoragePrefixDesc => '이 Prefix 의 디렉토리 아래에 파일이 저장됩니다.';
 	@override String get objectStorageEndpoint => 'Endpoint';
-	@override String get objectStorageEndpointDesc => 'AWS S3의 경우 공란, 다른 서비스의 경우 각 서비스의 가이드에 맞게 endpoint를 설정해주세요. \'<host>\' 혹은 \'<host>:<port>\' 와 같이 지정합니다.';
+	@override String get objectStorageEndpointDesc => 'AWS S3는 비워 두고 다른 서비스는 각 서비스의 endpoint를 설정해 주세요. ‘<host>’ 혹은 ‘<host>:<port>’처럼 지정합니다.';
 	@override String get objectStorageRegion => 'Region';
-	@override String get objectStorageRegionDesc => '\'xx-east-1\'와 같이 region을 지정해 주세요. 사용하는 서비스에 region 개념이 없는 경우 \'us-east-1\'으로 설정해 주세요. AWS 설정 파일 또는 환경 변수를 참조할 경우에는 비워주세요.';
+	@override String get objectStorageRegionDesc => '‘xx-east-1’처럼 region을 지정해 주세요. 사용하는 서비스에 region 개념이 없으면 ‘us-east-1’처럼 설정해 주세요. AWS 설정 파일이나 환경 변수가 있으면 비워 주세요.';
 	@override String get objectStorageUseSSL => 'SSL 사용';
 	@override String get objectStorageUseSSLDesc => 'API 호출시 HTTPS 를 사용하지 않는 경우 OFF 로 설정해 주세요';
 	@override String get objectStorageUseProxy => '연결에 프록시를 사용';
@@ -654,7 +656,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get output => '출력';
 	@override String get script => '스크립트';
 	@override String get disablePagesScript => 'Pages 에서 AiScript 를 사용하지 않음';
-	@override String get updateRemoteUser => '리모트 유저 정보 갱신';
+	@override String get updateRemoteUser => '원격 사용자 정보 갱신';
 	@override String get unsetUserAvatar => '아바타 제거';
 	@override String get unsetUserAvatarConfirm => '아바타를 제거할까요?';
 	@override String get unsetUserBanner => '배너 제거';
@@ -737,7 +739,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get instanceMute => '서버 뮤트';
 	@override String userSaysSomething({required Object name}) => '${name}님이 무언가를 말했습니다';
 	@override String get makeActive => '활성화';
-	@override String get display => '표시';
+	@override String get display => '보기';
 	@override String get copy => '복사';
 	@override String get metrics => '통계';
 	@override String get overview => '요약';
@@ -761,7 +763,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get abuseReports => '신고';
 	@override String get reportAbuse => '신고';
 	@override String get reportAbuseRenote => '리노트 신고하기';
-	@override String reportAbuseOf({required Object name}) => '${name}을 신고하기';
+	@override String reportAbuseOf({required Object name}) => '${name} 신고하기';
 	@override String get fillAbuseReportDescription => '신고하려는 이유를 자세히 알려주세요. 특정 게시물을 신고할 때에는 게시물의 URL도 포함해 주세요.';
 	@override String get abuseReported => '신고를 보냈습니다. 신고해 주셔서 감사합니다.';
 	@override String get reporter => '신고자';
@@ -786,7 +788,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get optional => '옵션';
 	@override String get createNewClip => '새 클립 만들기';
 	@override String get unclip => '클립 해제';
-	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => '이 노트는 이미 "${name}" 클립에 포함되어 있습니다. 클립을 해제하시겠습니까?';
+	@override String confirmToUnclipAlreadyClippedNote({required Object name}) => '이 노트는 ‘${name}’ 클립을 이미 포함합니다. 클립에서 제외하시겠습니까?';
 	@override String get public => '공개';
 	@override String get private => '비공개';
 	@override String i18nInfo({required Object link}) => 'Misskey는 자원봉사자들에 의해 다양한 언어로 번역되고 있습니다. ${link}에서 번역에 참가할 수 있습니다.';
@@ -799,13 +801,13 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get renotedCount => '받은 리노트 수';
 	@override String get followingCount => '팔로우 수';
 	@override String get followersCount => '팔로워 수';
-	@override String get sentReactionsCount => '보낸 리액션 수';
-	@override String get receivedReactionsCount => '받은 리액션 수';
-	@override String get pollVotesCount => '투표한 횟수';
-	@override String get pollVotedCount => '투표받은 횟수';
+	@override String get sentReactionsCount => '반응 수';
+	@override String get receivedReactionsCount => '받은 반응 수';
+	@override String get pollVotesCount => '투표 수';
+	@override String get pollVotedCount => '받은 투표 수';
 	@override String get yes => '예';
 	@override String get no => '아니오';
-	@override String get driveFilesCount => '드라이브 파일 개수';
+	@override String get driveFilesCount => '드라이브에 있는 파일 수';
 	@override String get driveUsage => '드라이브 사용량';
 	@override String get noCrawle => '검색엔진의 인덱싱 거부';
 	@override String get noCrawleDescription => '검색엔진에 사용자 페이지, 노트, 페이지 등의 콘텐츠를 인덱싱되지 않게 합니다.';
@@ -840,7 +842,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get showTitlebar => '타이틀 바를 표시하기';
 	@override String get clearCache => '캐시 비우기';
 	@override String onlineUsersCount({required Object n}) => '${n}명이 접속 중';
-	@override String nUsers({required Object n}) => '${n} 유저';
+	@override String nUsers({required Object n}) => '${n} 사용자';
 	@override String nNotes({required Object n}) => '${n} 노트';
 	@override String get sendErrorReports => '오류 보고서 보내기';
 	@override String get sendErrorReportsDescription => '이 설정을 활성화하면, 문제가 발생했을 때 오류에 대한 상세 정보를 Misskey에 보내어 더 나은 소프트웨어를 만드는 데에 도움을 줄 수 있습니다.';
@@ -886,7 +888,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get userPagePinTip => '각 노트의 메뉴에서 「프로필에 고정」을 선택하는 것으로, 여기에 노트를 표시해 둘 수 있어요.';
 	@override String get notSpecifiedMentionWarning => '수신자가 선택되지 않은 멘션이 있어요';
 	@override String get info => '정보';
-	@override String get userInfo => '유저 정보';
+	@override String get userInfo => '사용자 정보';
 	@override String get unknown => '알 수 없음';
 	@override String get onlineStatus => '온라인 상태';
 	@override String get hideOnlineStatus => '온라인 상태 숨기기';
@@ -974,7 +976,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String voteConfirm({required Object choice}) => '"${choice}"에 투표하시겠습니까?';
 	@override String get hide => '숨기기';
 	@override String get useDrawerReactionPickerForMobile => '모바일에서 드로어 메뉴로 표시';
-	@override String welcomeBackWithName({required Object name}) => '환영합니다, ${name}님';
+	@override String welcomeBackWithName({required Object name}) => '${name}님, 환영합니다.';
 	@override String clickToFinishEmailVerification({required Object ok}) => '[${ok}]를 눌러 이메일 인증을 완료하세요.';
 	@override String get overridedDeviceKind => '장치 유형';
 	@override String get smartphone => '스마트폰';
@@ -1169,9 +1171,9 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => '예약할 사용자명을 한 줄에 하나씩 입력합니다. 여기에서 지정한 사용자명으로는 계정을 생성할 수 없게 됩니다. 단, 관리자 권한으로 계정을 생성할 때에는 해당되지 않으며, 이미 존재하는 계정도 영향을 받지 않습니다.';
 	@override String get createNoteFromTheFile => '이 파일로 노트를 작성';
 	@override String get archive => '아카이브';
-	@override String channelArchiveConfirmTitle({required Object name}) => '${name} 을(를) 아카이브하시겠습니까?';
-	@override String get channelArchiveConfirmDescription => '아카이브한 채널은 채널 목록과 검색 결과에 표시되지 않으며, 채널에 새로운 노트를 작성할 수 없게 됩니다.';
-	@override String get thisChannelArchived => '이 채널은 아카이브되었습니다.';
+	@override String channelArchiveConfirmTitle({required Object name}) => '${name} 채널을 보존하시겠습니까?';
+	@override String get channelArchiveConfirmDescription => '보존한 채널은 채널 목록과 검색 결과에 표시되지 않으며 새로운 노트도 작성할 수 없습니다.';
+	@override String get thisChannelArchived => '이 채널은 보존되었습니다.';
 	@override String get displayOfNote => '노트 표시';
 	@override String get initialAccountSetting => '초기 설정';
 	@override String get youFollowing => '팔로잉';
@@ -1233,10 +1235,11 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get authentication => '인증';
 	@override String get authenticationRequiredToContinue => '계속하려면 인증하십시오';
 	@override String get dateAndTime => '일시';
-	@override String get showRenotes => '리노트 표시';
+	@override String get showRenotes => '리노트 보기';
 	@override String get edited => '수정됨';
 	@override String get notificationRecieveConfig => '알림 설정';
 	@override String get mutualFollow => '맞팔로우';
+	@override String get followingOrFollower => '팔로 중이거나 팔로워';
 	@override String get fileAttachedOnly => '미디어를 포함한 노트만';
 	@override String get showRepliesToOthersInTimeline => '타임라인에 다른 사람에게 보내는 답글을 포함';
 	@override String get hideRepliesToOthersInTimeline => '타임라인에 다른 사람에게 보내는 답글을 포함하지 않음';
@@ -1287,14 +1290,23 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get showReplay => '리플레이 보기';
 	@override String get replay => '리플레이';
 	@override String get replaying => '리플레이 중';
+	@override String get endReplay => '리플레이 종료';
+	@override String get copyReplayData => '리플레이 데이터를 복사';
 	@override String get ranking => '랭킹';
 	@override String lastNDays({required Object n}) => '최근 ${n}일';
 	@override String get backToTitle => '타이틀로 가기';
 	@override String get hemisphere => '거주 지역';
 	@override String get withSensitive => '민감한 파일이 포함된 노트 보기';
-	@override String userSaysSomethingSensitive({required Object name}) => '${name}의 민감한 파일이 포함된 게시물';
+	@override String userSaysSomethingSensitive({required Object name}) => '${name} 같은 민감한 파일이 포함된 글';
 	@override String get enableHorizontalSwipe => '스와이프하여 탭 전환';
+	@override String get loading => '불러오는 중';
 	@override String get surrender => '그만두기';
+	@override String get gameRetry => '다시 시도';
+	@override String get notUsePleaseLeaveBlank => '사용하지 않는 경우 비워두세요.';
+	@override String get useTotp => '일회용 비밀번호 사용';
+	@override String get useBackupCode => '백업 코드 사용';
+	@override String get launchApp => '앱 실행';
+	@override String get useNativeUIForVideoAudioPlayer => '브라우저 UI에서 미디어 재생';
 	@override late final _StringsMisskeyBubbleGameKoKr bubbleGame_ = _StringsMisskeyBubbleGameKoKr._(_root);
 	@override late final _StringsMisskeyAnnouncementKoKr announcement_ = _StringsMisskeyAnnouncementKoKr._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingKoKr initialAccountSetting_ = _StringsMisskeyInitialAccountSettingKoKr._(_root);
@@ -1362,6 +1374,8 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyHemisphereKoKr hemisphere_ = _StringsMisskeyHemisphereKoKr._(_root);
 	@override late final _StringsMisskeyReversiKoKr reversi_ = _StringsMisskeyReversiKoKr._(_root);
 	@override late final _StringsMisskeyOfflineScreenKoKr offlineScreen_ = _StringsMisskeyOfflineScreenKoKr._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingKoKr urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingKoKr._(_root);
+	@override late final _StringsMisskeyMediaControlsKoKr mediaControls_ = _StringsMisskeyMediaControlsKoKr._(_root);
 }
 
 // Path: misskeyIO
@@ -1382,6 +1396,8 @@ class _StringsMisskeyBubbleGameKoKr extends _StringsMisskeyBubbleGameEnUs {
 
 	// Translations
 	@override String get howToPlay => '설명';
+	@override String get hold => '홀드';
+	@override late final _StringsMisskeyBubbleGameScoreKoKr score_ = _StringsMisskeyBubbleGameScoreKoKr._(_root);
 	@override late final _StringsMisskeyBubbleGameHowToPlayKoKr howToPlay_ = _StringsMisskeyBubbleGameHowToPlayKoKr._(_root);
 }
 
@@ -1399,7 +1415,7 @@ class _StringsMisskeyAnnouncementKoKr extends _StringsMisskeyAnnouncementEnUs {
 	@override String get end => '공지에서 내리기';
 	@override String get tooManyActiveAnnouncementDescription => '공지사항이 너무 많을 경우, 사용자 경험에 영향을 끼칠 가능성이 있습니다. 오래된 공지사항은 아카이브하시는 것을 권장드립니다.';
 	@override String get readConfirmTitle => '읽음으로 표시합니까?';
-	@override String readConfirmText({required Object title}) => '"${title}"을(를) 읽음으로 표시합니다.';
+	@override String readConfirmText({required Object title}) => '〈${title}〉의 내용을 읽음으로 표시합니다.';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => '신규 유저의 이용 경험에 악영향을 끼칠 수 있으므로, 일시적인 알림 수단으로만 사용하고 고정된 정보에는 사용을 지양하는 것을 추천합니다.';
 	@override String get dialogAnnouncementUxWarn => '다이얼로그 형태의 알림이 동시에 2개 이상 존재하는 경우, 사용자 경험에 악영향을 끼칠 수 있으므로 신중히 결정하십시오.';
 	@override String get silence => '조용히 알림';
@@ -1704,6 +1720,7 @@ class _StringsMisskeyPluginKoKr extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => '신뢰할 수 없는 플러그인은 설치하지 않는 것이 좋습니다.';
 	@override String get manage => '플러그인 관리';
 	@override String get viewSource => '소스 보기';
+	@override String get viewLog => '로그 보기';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1722,12 +1739,12 @@ class _StringsMisskeyPreferencesBackupsKoKr extends _StringsMisskeyPreferencesBa
 	@override String get cannotSave => '저장하지 못했습니다';
 	@override String nameAlreadyExists({required Object name}) => '"${name}" 백업이 이미 존재합니다. 다른 이름을 설정하여 주십시오.';
 	@override String applyConfirm({required Object name}) => '"${name}" 백업을 현재 기기에 적용하시겠습니까? 현재 설정은 덮어 씌워집니다.';
-	@override String saveConfirm({required Object name}) => '${name} 을 덮어쓰시겠습니까?';
-	@override String deleteConfirm({required Object name}) => '${name} 을(를) 삭제하시겠습니까?';
-	@override String renameConfirm({required Object old, required Object new_}) => '"${old}" 백업을 "${new_}"(으)로 바꾸시겠습니까?';
+	@override String saveConfirm({required Object name}) => '${name} 백업을 덮어쓰시겠습니까?';
+	@override String deleteConfirm({required Object name}) => '${name} 백업을 삭제하시겠습니까?';
+	@override String renameConfirm({required Object old, required Object new_}) => '‘${old}’ 백업을 ‘${new_}’ 백업으로 바꾸시겠습니까?';
 	@override String get noBackups => '저장된 백업이 없습니다. "새 백업 만들기"를 눌러 현재 클라이언트 설정을 서버에 백업할 수 있습니다.';
-	@override String createdAt({required Object date, required Object time}) => '생성 날짜: ${date} ${time}';
-	@override String updatedAt({required Object date, required Object time}) => '갱신 날짜: ${date} ${time}';
+	@override String createdAt({required Object date, required Object time}) => '만든 날짜: ${date} ${time}';
+	@override String updatedAt({required Object date, required Object time}) => '고친 날짜: ${date} ${time}';
 	@override String get cannotLoad => '가져오기에 실패했습니다';
 	@override String get invalidFile => '파일 형식이 올바르지 않습니다.';
 }
@@ -1989,7 +2006,6 @@ class _StringsMisskeyX2faKoKr extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => '인증 앱 설정 시작';
 	@override String step1({required Object a, required Object b}) => '먼저, ${a}나 ${b}등의 인증 앱을 사용 중인 디바이스에 설치합니다.';
 	@override String get step2 => '그 후, 표시되어 있는 QR코드를 앱으로 스캔합니다.';
-	@override String get step2Click => 'QR 코드를 클릭하면 기기에 설치된 인증 앱에 등록할 수 있습니다.';
 	@override String get step2Uri => '데스크톱 앱을 사용하려면 다음 URI를 입력하십시오';
 	@override String get step3Title => '인증 코드 입력';
 	@override String get step3 => '앱에 표시된 토큰을 입력하시면 완료됩니다.';
@@ -2002,7 +2018,7 @@ class _StringsMisskeyX2faKoKr extends _StringsMisskeyX2faEnUs {
 	@override String get securityKeyName => '키 이름 입력';
 	@override String get tapSecurityKey => '브라우저의 지시에 따라 보안 키 또는 패스키를 등록하여 주십시오';
 	@override String get removeKey => '보안 키를 삭제';
-	@override String removeKeyConfirm({required Object name}) => '${name} 을(를) 삭제하시겠습니까?';
+	@override String removeKeyConfirm({required Object name}) => '${name} 앱을 삭제하시겠습니까?';
 	@override String get whyTOTPOnlyRenew => '보안 키가 등록되어 있는 경우 인증 앱을 해제할 수 없습니다.';
 	@override String get renewTOTP => '인증 앱 재설정';
 	@override String get renewTOTPConfirm => '기존에 등록되어 있던 인증 키는 사용하지 못하게 됩니다.';
@@ -2183,7 +2199,7 @@ class _StringsMisskeyWidgetsKoKr extends _StringsMisskeyWidgetsEnUs {
 	@override String get postForm => '글 입력란';
 	@override String get slideshow => '슬라이드 쇼';
 	@override String get button => '버튼';
-	@override String get onlineUsers => '온라인 유저';
+	@override String get onlineUsers => '온라인 사용자';
 	@override String get jobQueue => '작업 대기열';
 	@override String get serverMetric => '서버 통계';
 	@override String get aiscript => 'AiScript 콘솔';
@@ -2278,7 +2294,7 @@ class _StringsMisskeyProfileKoKr extends _StringsMisskeyProfileEnUs {
 
 	// Translations
 	@override String get name => '이름';
-	@override String get username => '유저명';
+	@override String get username => '사용자 이름';
 	@override String get description => '자기소개';
 	@override String get youCanIncludeHashtags => '해시 태그를 포함할 수 있습니다.';
 	@override String get metadata => '추가 정보';
@@ -2322,7 +2338,7 @@ class _StringsMisskeyChartsKoKr extends _StringsMisskeyChartsEnUs {
 	@override String get apRequest => '요청';
 	@override String get usersIncDec => '유저 수 증감';
 	@override String get usersTotal => '유저 수 합계';
-	@override String get activeUsers => '활성 유저 수';
+	@override String get activeUsers => '활동 사용자 수';
 	@override String get notesIncDec => '노트 수 증감';
 	@override String get localNotesIncDec => '로컬 노트 수 증감';
 	@override String get remoteNotesIncDec => '리모트 노트 수 증감';
@@ -2341,8 +2357,8 @@ class _StringsMisskeyInstanceChartsKoKr extends _StringsMisskeyInstanceChartsEnU
 
 	// Translations
 	@override String get requests => '요청';
-	@override String get users => '유저 수 증감';
-	@override String get usersTotal => '누적 유저 수';
+	@override String get users => '사용자 수 차이';
+	@override String get usersTotal => '누적 사용자 수';
 	@override String get notes => '노트 수 증감';
 	@override String get notesTotal => '누적 노트 수';
 	@override String get ff => '팔로잉/팔로워 증감';
@@ -2387,6 +2403,7 @@ class _StringsMisskeyPlayKoKr extends _StringsMisskeyPlayEnUs {
 	@override String get title => '제목';
 	@override String get script => '스크립트';
 	@override String get summary => '설명';
+	@override String get visibilityDescription => '비공개로 설정하면 프로필에 표시하지 않지만 URL을 아는 사람은 계속해서 접속할 수 있습니다.';
 }
 
 // Path: misskey.pages_
@@ -2405,7 +2422,7 @@ class _StringsMisskeyPagesKoKr extends _StringsMisskeyPagesEnUs {
 	@override String get pageSetting => '페이지 설정';
 	@override String get nameAlreadyExists => '지정한 페이지 URL이 이미 존재합니다';
 	@override String get invalidNameTitle => '유효하지 않은 페이지 URL입니다';
-	@override String get invalidNameText => '비어있지 않은지 확인해주세요';
+	@override String get invalidNameText => '비어있는지 확인해 주세요';
 	@override String get editThisPage => '이 페이지를 편집';
 	@override String get viewSource => '소스 보기';
 	@override String get viewPage => '페이지 보기';
@@ -2474,8 +2491,10 @@ class _StringsMisskeyNotificationKoKr extends _StringsMisskeyNotificationEnUs {
 	@override String get sendTestNotification => '테스트 알림 보내기';
 	@override String get notificationWillBeDisplayedLikeThis => '알림이 이렇게 표시됩니다';
 	@override String reactedBySomeUsers({required Object n}) => '${n}명이 반응했습니다';
+	@override String likedBySomeUsers({required Object n}) => '${n}명이 좋아요를 했습니다';
 	@override String renotedBySomeUsers({required Object n}) => '${n}명이 리노트했습니다';
 	@override String followedBySomeUsers({required Object n}) => '${n}명에게 팔로우됨';
+	@override String get flushNotification => '알림 이력을 초기화';
 	@override late final _StringsMisskeyNotificationTypesKoKr types_ = _StringsMisskeyNotificationTypesKoKr._(_root);
 	@override late final _StringsMisskeyNotificationActionsKoKr actions_ = _StringsMisskeyNotificationActionsKoKr._(_root);
 }
@@ -2656,7 +2675,7 @@ class _StringsMisskeyHemisphereKoKr extends _StringsMisskeyHemisphereEnUs {
 	// Translations
 	@override String get N => '북반구';
 	@override String get S => '남반구';
-	@override String get caption => '일부 클라이언트 설정에서 계절을 판단하기 위해 사용합니다.';
+	@override String get caption => '일부 클라이언트 설정에서 계절을 판단하려고 사용합니다.';
 }
 
 // Path: misskey.reversi_
@@ -2672,41 +2691,43 @@ class _StringsMisskeyReversiKoKr extends _StringsMisskeyReversiEnUs {
 	@override String get blackOrWhite => '선공/후공';
 	@override String blackIs({required Object name}) => '${name}님이 흑(선공)';
 	@override String get rules => '규칙';
-	@override String get thisGameIsStartedSoon => '대국이 곧 시작됩니다';
-	@override String get waitingForOther => '상대방의 준비가 완료되기를 기다리고 있습니다.';
-	@override String get waitingForMe => '당신의 준비가 완료되기를 기다리고 있습니다.';
+	@override String get thisGameIsStartedSoon => '대국을 곧 시작합니다';
+	@override String get waitingForOther => '상대의 준비가 끝나기를 기다리고 있습니다.';
+	@override String get waitingForMe => '나의 준비가 끝나기를 기다리고 있습니다.';
 	@override String get waitingBoth => '준비하세요';
 	@override String get ready => '준비 완료';
-	@override String get cancelReady => '준비 다시 시작';
+	@override String get cancelReady => '준비되지 않음';
 	@override String get opponentTurn => '상대의 차례입니다';
-	@override String get myTurn => '당신의 차례입니다';
-	@override String turnOf({required Object name}) => '${name}의 차례입니다';
-	@override String pastTurnOf({required Object name}) => '${name}의 차례';
+	@override String get myTurn => '나의 차례입니다';
+	@override String turnOf({required Object name}) => '${name}님의 차례입니다';
+	@override String pastTurnOf({required Object name}) => '${name}님의 차례';
 	@override String get surrender => '기권';
-	@override String get surrendered => '기권에 의해';
+	@override String get surrendered => '상대의 기권';
 	@override String get timeout => '시간 초과';
 	@override String get drawn => '무승부';
-	@override String won({required Object name}) => '${name}의 승리';
+	@override String won({required Object name}) => '${name}님의 승리';
 	@override String get black => '흑';
 	@override String get white => '백';
 	@override String get total => '합계';
-	@override String turnCount({required Object count}) => '${count}턴 째';
+	@override String turnCount({required Object count}) => '${count}번째 수';
 	@override String get myGames => '내 대국';
-	@override String get allGames => '모두의 대국';
+	@override String get allGames => '모든 대국';
 	@override String get ended => '종료';
 	@override String get playing => '대국 중';
-	@override String get isLlotheo => '돌이 적은 사람이 승리 (로세오)';
-	@override String get loopedMap => '루프 지도';
-	@override String get canPutEverywhere => '어디에도 둘 수 있는 모드';
-	@override String get timeLimitForEachTurn => '1턴의 시간 제한';
-	@override String get freeMatch => '프리매치';
-	@override String get lookingForPlayer => '상대를 찾고 있습니다';
+	@override String get isLlotheo => '돌이 적은 쪽이 승리(로세오)';
+	@override String get loopedMap => '순환 지도';
+	@override String get canPutEverywhere => '어디든 둘 수 있는 모드';
+	@override String get timeLimitForEachTurn => '각 수의 시간 제한';
+	@override String get freeMatch => '자유 대국';
+	@override String get lookingForPlayer => '대국 상대를 찾고 있습니다';
 	@override String get gameCanceled => '대국이 취소되었습니다';
-	@override String get shareToTlTheGameWhenStart => '대국 시작 시 타임라인에 대국을 게시';
-	@override String get iStartedAGame => '대국이 시작되었습니다! #MisskeyReversi';
-	@override String get opponentHasSettingsChanged => '상대방이 설정을 변경했습니다';
-	@override String get allowIrregularRules => '규칙변경 허가 (완전 자유)';
-	@override String get disallowIrregularRules => '규칙변경 없음';
+	@override String get shareToTlTheGameWhenStart => '대국이 시작할 때 타임라인에 공유';
+	@override String get iStartedAGame => '대국을 시작하였습니다! #MisskeyReversi';
+	@override String get opponentHasSettingsChanged => '상대가 설정을 변경했습니다';
+	@override String get allowIrregularRules => '규칙 변경 허용(완전 자유)';
+	@override String get disallowIrregularRules => '규칙 변경 없음';
+	@override String get showBoardLabels => '판에 행·열 번호 표시';
+	@override String get useAvatarAsStone => '돌을 아이콘으로 표시';
 }
 
 // Path: misskey.offlineScreen_
@@ -2718,6 +2739,40 @@ class _StringsMisskeyOfflineScreenKoKr extends _StringsMisskeyOfflineScreenEnUs 
 	// Translations
 	@override String get title => '오프라인 - 서버에 접속할 수 없습니다';
 	@override String get header => '서버에 접속할 수 없습니다';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingKoKr extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+
+	@override final _StringsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URL 미리보기 설정';
+	@override String get enable => 'URL 미리보기 활성화';
+	@override String get timeout => '미리보기를 불러올 때의 타임아웃 (ms)';
+	@override String get timeoutDescription => '미리보기를 로딩하는데 걸리는 시간이 정한 시간보다 오래 걸리는 경우, 미리보기를 생성하지 않습니다.';
+	@override String get maximumContentLength => 'Content-Length의 최대치 (byte)';
+	@override String get maximumContentLengthDescription => 'Content-Length가 이 값을 넘어서면 미리보기를 생성하지 않습니다.';
+	@override String get requireContentLength => 'Content-Length를 얻었을 때만 미리보기 만들기';
+	@override String get requireContentLengthDescription => '상대 서버가 Content-Length를 되돌려주지 않는다면 미리보기를 만들지 않습니다.';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => '미리보기를 얻을 때 사용한 User-Agent를 설정합니다. 비어 있다면 기본값의 User-Agent를 사용합니다.';
+	@override String get summaryProxy => '미리보기를 만든 프록시의 엔드포인트';
+	@override String get summaryProxyDescription => 'Misskey 본체를 사용하지 않고 서머리 프록시로 미리보기를 만듭니다.';
+	@override String get summaryProxyDescription2 => '프록시는 아래의 파라미터를 쿼리 문자열로 연동합니다. 프록시 측이 이를 지원하지 않으면 설정값을 무시합니다.';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsKoKr extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+
+	@override final _StringsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => '화면 속 화면';
+	@override String get playbackRate => '재생 속도';
+	@override String get loop => '반복 재생';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -2734,6 +2789,22 @@ class _StringsMisskeyIOSkebStatusKoKr extends _StringsMisskeyIOSkebStatusEnUs {
 	@override String yenX({required Object x}) => 'JPY ${x}';
 	@override String nWorks({required Object n}) => '납품 실적 ${n}건';
 	@override String nRequests({required Object n}) => '거래 실적 ${n}건';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _StringsMisskeyBubbleGameScoreKoKr extends _StringsMisskeyBubbleGameScoreEnUs {
+	_StringsMisskeyBubbleGameScoreKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+
+	@override final _StringsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => '점수';
+	@override String get scoreYen => '번 돈';
+	@override String get highScore => '최고 점수';
+	@override String get maxChain => '최대 콤보 수';
+	@override String yen({required Object yen}) => '${yen}엔';
+	@override String estimatedQty({required Object qty}) => '${qty}개';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '오니기리 ${onigiriQtyWithUnit}';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -2955,6 +3026,7 @@ class _StringsMisskeyRoleOptionsKoKr extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get gtlAvailable => '글로벌 타임라인 보이기';
 	@override String get ltlAvailable => '로컬 타임라인 보이기';
 	@override String get canPublicNote => '공개 노트 허용';
+	@override String get mentionMax => '노트에 넣을 수 있는 멘션 수';
 	@override String get canInvite => '서버 초대 코드 발행';
 	@override String get inviteLimit => '초대 한도';
 	@override String get inviteLimitCycle => '초대 발급 간격';
@@ -2964,13 +3036,13 @@ class _StringsMisskeyRoleOptionsKoKr extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get driveCapacity => '드라이브 용량';
 	@override String get alwaysMarkNsfw => '파일을 항상 NSFW로 지정';
 	@override String get pinMax => '고정할 수 있는 노트 수';
-	@override String get antennaMax => '최대 안테나 생성 허용 수';
+	@override String get antennaMax => '만들 수 있는 안테나 수';
 	@override String get wordMuteMax => '단어 뮤트할 수 있는 문자 수';
-	@override String get webhookMax => '생성할 수 있는 웹훅 수';
-	@override String get clipMax => '생성할 수 있는 클립 수';
-	@override String get noteEachClipsMax => '각 클립에 추가할 수 있는 노트 수';
-	@override String get userListMax => '생성할 수 있는 유저 리스트 수';
-	@override String get userEachUserListsMax => '유저 리스트당 최대 사용자 수';
+	@override String get webhookMax => '만들 수 있는 웹후크 수';
+	@override String get clipMax => '만들 수 있는 클립 수';
+	@override String get noteEachClipsMax => '클립에 넣을 수 있는 노트 수';
+	@override String get userListMax => '만들 수 있는 사용자 리스트 수';
+	@override String get userEachUserListsMax => '사용자 리스트에 넣을 수 있는 사용자 수';
 	@override String get rateLimitFactor => '요청 빈도 제한';
 	@override String get descriptionOfRateLimitFactor => '작을수록 제한이 완화되고, 클수록 제한이 강화됩니다.';
 	@override String get canHideAds => '광고 숨기기';
@@ -2986,16 +3058,17 @@ class _StringsMisskeyRoleConditionKoKr extends _StringsMisskeyRoleConditionEnUs 
 	@override final _StringsKoKr _root; // ignore: unused_field
 
 	// Translations
+	@override String get roleAssignedTo => '수동 역할에 이미 할당됨';
 	@override String get isLocal => '로컬 사용자';
 	@override String get isRemote => '리모트 사용자';
 	@override String get createdLessThan => '가입한 지 다음 일수 이내인 유저';
 	@override String get createdMoreThan => '가입한 지 다음 일수 이상인 유저';
 	@override String get followersLessThanOrEq => '팔로워 수가 다음 이하인 유저';
-	@override String get followersMoreThanOrEq => '팔로워 수가 다음 이상인 유저';
+	@override String get followersMoreThanOrEq => '팔로워 수가 다음보다 많은 사용자';
 	@override String get followingLessThanOrEq => '팔로잉 수가 다음 이하인 유저';
-	@override String get followingMoreThanOrEq => '팔로잉 수가 다음 이상인 유저';
+	@override String get followingMoreThanOrEq => '팔로잉 수가 다음보다 많은 사용자';
 	@override String get notesLessThanOrEq => '노트 수가 다음 이하인 유저';
-	@override String get notesMoreThanOrEq => '노트 수가 다음 이상인 유저';
+	@override String get notesMoreThanOrEq => '노트 수가 다음보다 많은 사용자';
 	@override String get and => '다음을 모두 만족';
 	@override String get or => '다음을 하나라도 만족';
 	@override String get not => '다음을 만족하지 않음';
@@ -3092,7 +3165,7 @@ class _StringsMisskeyPostFormPlaceholdersKoKr extends _StringsMisskeyPostFormPla
 	@override String get c => '무엇을 생각하고 있나요?';
 	@override String get d => '말하고 싶은 게 있나요?';
 	@override String get e => '여기에 적어 주세요';
-	@override String get f => '작성해주시길 기다리고 있어요...';
+	@override String get f => '글 쓰기를 기다려요…';
 }
 
 // Path: misskey.pages_.blocks
@@ -3107,6 +3180,8 @@ class _StringsMisskeyPagesBlocksKoKr extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => '섹션';
 	@override String get image => '이미지';
 	@override String get button => '버튼';
+	@override String get dynamic => '동적 블록';
+	@override String dynamicDescription({required Object play}) => '이 블록은 폐지되었습니다. 이제부터 ${play}에서 이용해 주세요.';
 	@override String get note => '노트필기';
 	@override late final _StringsMisskeyPagesBlocksNoteKoKr note_ = _StringsMisskeyPagesBlocksNoteKoKr._(_root);
 }
@@ -3119,13 +3194,13 @@ class _StringsMisskeyNotificationTypesKoKr extends _StringsMisskeyNotificationTy
 
 	// Translations
 	@override String get all => '전부';
-	@override String get note => '유저의 새 게시물';
+	@override String get note => '사용자의 새 글';
 	@override String get follow => '팔로잉';
 	@override String get mention => '멘션';
 	@override String get reply => '답글';
 	@override String get renote => '리노트';
 	@override String get quote => '인용';
-	@override String get reaction => '리액션';
+	@override String get reaction => '반응';
 	@override String get pollEnded => '투표가 종료됨';
 	@override String get receiveFollowRequest => '팔로우 요청을 받았을 때';
 	@override String get followRequestAccepted => '팔로우 요청이 승인되었을 때';
@@ -3909,7 +3984,7 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyKoKr extends _StringsMisskeyAc
 	// Translations
 	@override String get title => 'I Love Misskey';
 	@override String get description => '"I ❤ #Misskey"를 포스트했습니다';
-	@override String get flavor => 'Misskey를 이용해주셔서 감사합니다! - 개발팀 일동';
+	@override String get flavor => 'Misskey를 이용해 주셔서 감사합니다! ― 개발 팀';
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
@@ -4043,7 +4118,7 @@ class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr extends _
 
 	// Translations
 	@override String get title => '순환 참조';
-	@override String get description => '드라이브 폴더를 자신을 가리키도록 만드려 시도했습니다';
+	@override String get description => '드라이브 폴더에 스스로를 넣게 했습니다';
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
@@ -4054,7 +4129,7 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadKoKr extends _StringsMissk
 
 	// Translations
 	@override String get title => '읽고 답하긴 하시는 건가요?';
-	@override String get description => '100자가 넘는 노트가 작성되고 3초 안에 반응했습니다';
+	@override String get description => '100자가 넘는 노트를 작성한 지 3초 안에 반응했어요';
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_

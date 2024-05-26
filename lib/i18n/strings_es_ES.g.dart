@@ -314,7 +314,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get processing => 'Procesando';
 	@override String get preview => 'Vista previa';
 	@override String get default_ => 'Predeterminado';
-	@override String defaultValueIs({required Object value}) => 'Predeterminado ${value}';
+	@override String defaultValueIs({required Object value}) => 'Por defecto: ${value}';
 	@override String get noCustomEmojis => 'No hay emojis personalizados';
 	@override String get noJobs => 'No hay trabajos';
 	@override String get federating => 'Federando';
@@ -479,6 +479,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get antennaSource => 'Origen de la antena';
 	@override String get antennaKeywords => 'Palabras clave para recibir';
 	@override String get antennaExcludeKeywords => 'Palabras clave para excluir';
+	@override String get antennaExcludeBots => 'Excluir bots';
 	@override String get antennaKeywordsDescription => 'Separar con espacios es una declaración AND, separar con una linea nueva es una declaración OR';
 	@override String get notifyAntenna => 'Notificar nueva nota';
 	@override String get withFileAntenna => 'Sólo notas con archivos adjuntados';
@@ -573,6 +574,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get native => 'Nativo';
 	@override String get disableDrawer => 'No mostrar los menús en cajones';
 	@override String get showNoteActionsOnlyHover => 'Mostrar acciones de la nota sólo al pasar el cursor';
+	@override String get showReactionsCount => 'Mostrar el número de reacciones en las notas';
 	@override String get noHistory => 'No hay datos en el historial';
 	@override String get signinHistory => 'Historial de ingresos';
 	@override String get enableAdvancedMfm => 'Habilitar MFM avanzado';
@@ -1070,6 +1072,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get remindMeLater => 'Recordar después';
 	@override String get didYouLikeMisskey => '¿Te gusta Misskey?';
 	@override String pleaseDonate({required Object host}) => '${host} usa el software gratuito Misskey. Por favor ¡Considera donar al proyecto principal para que podamos continuar!';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'El código fuente correspondiente se encuentra disponible en ${anchor}';
 	@override String get roles => 'Roles';
 	@override String get role => 'Rol';
 	@override String get noRole => 'Rol no encontrado';
@@ -1121,6 +1124,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get sensitiveWordsDescription => 'La visibilidad de todas las notas que contienen cualquiera de las palabras configuradas serán puestas en "Inicio" automáticamente. Puedes enumerás varias separándolas con saltos de línea';
 	@override String get sensitiveWordsDescription2 => 'Si se usan espacios se crearán expresiones AND y las palabras subsecuentes con barras inclinadas se convertirán en expresiones regulares.';
 	@override String get prohibitedWords => 'Palabras explícitas';
+	@override String get prohibitedWordsDescription => 'Activa un error cuando se intenta publicar una nota que contiene una o varias palabras prohibidas. Se pueden establecer varias palabras, una por línea.';
 	@override String get prohibitedWordsDescription2 => 'Si se usan espacios se crearán expresiones AND y las palabras subsecuentes con barras inclinadas se convertirán en expresiones regulares.';
 	@override String get hiddenTags => 'Hashtags ocultos';
 	@override String get hiddenTagsDescription => 'Selecciona las etiquetas que no se mostrarán en tendencias. Una etiqueta por línea.';
@@ -1237,6 +1241,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get edited => 'Editado';
 	@override String get notificationRecieveConfig => 'Ajustes de Notificaciones';
 	@override String get mutualFollow => 'Os seguís mutuamente';
+	@override String get followingOrFollower => 'Siguiendo o seguidor';
 	@override String get fileAttachedOnly => 'Solo notas con archivos';
 	@override String get showRepliesToOthersInTimeline => 'Mostrar respuestas a otros en la línea de tiempo';
 	@override String get hideRepliesToOthersInTimeline => 'Ocultar respuestas a otros en la línea de tiempo';
@@ -1246,6 +1251,12 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get confirmHideRepliesAll => 'Esta operación es irreversible. ¿Confirmas que quieres ocultar tus respuestas a otros usuarios que sigues en tu línea de tiempo?';
 	@override String get externalServices => 'Servicios Externos';
 	@override String get sourceCode => 'Código fuente';
+	@override String get sourceCodeIsNotYetProvided => 'El código fuente aún no está disponible. Contacta con el administrador para solucionarlo.';
+	@override String get repositoryUrl => 'URL del repositorio';
+	@override String get repositoryUrlDescription => 'Si estás usando Misskey tal cual (sin cambios en el código fuente), entra en https://github.com/misskey-dev/misskey';
+	@override String get repositoryUrlOrTarballRequired => 'Si no has publicado un repositorio aún, deberás publicar un tarball en su lugar. Mira el archivo .config/example.yml para más información.';
+	@override String get feedback => 'Comentarios';
+	@override String get feedbackUrl => 'URL de comentarios';
 	@override String get impressum => 'Impressum';
 	@override String get impressumUrl => 'Impressum URL';
 	@override String get impressumDescription => 'En algunos países, como Alemania, la inclusión del operador de datos (el Impressum) es requerido legalmente para sitios web comerciales.';
@@ -1281,6 +1292,8 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get showReplay => 'Ver reproducción';
 	@override String get replay => 'Reproducir';
 	@override String get replaying => 'Reproduciendo';
+	@override String get endReplay => 'Terminar reproducción';
+	@override String get copyReplayData => 'Copiar datos de reproducción';
 	@override String get ranking => 'Clasificación';
 	@override String lastNDays({required Object n}) => 'Últimos ${n} días';
 	@override String get backToTitle => 'Regresar al inicio';
@@ -1288,7 +1301,17 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get withSensitive => 'Mostrar notas que contengan material sensible';
 	@override String userSaysSomethingSensitive({required Object name}) => 'La publicación de ${name} contiene material sensible';
 	@override String get enableHorizontalSwipe => 'Deslice para cambiar de pestaña';
+	@override String get loading => 'Cargando';
 	@override String get surrender => 'detener';
+	@override String get gameRetry => 'Reintentar';
+	@override String get notUsePleaseLeaveBlank => 'Dejar en blanco si no se usa';
+	@override String get useTotp => 'Introduce la contraseña de un solo uso';
+	@override String get useBackupCode => 'Usar códigos de respaldo';
+	@override String get launchApp => 'Ejecutar la app';
+	@override String get useNativeUIForVideoAudioPlayer => 'Usar la interfaz del navegador cuando se reproduce audio y vídeo';
+	@override String get keepOriginalFilename => 'Mantener el nombre original del archivo';
+	@override String get noDescription => 'No hay descripción';
+	@override String get alwaysConfirmFollow => 'Confirmar siempre cuando se sigue a alguien';
 	@override late final _StringsMisskeyBubbleGameEsEs bubbleGame_ = _StringsMisskeyBubbleGameEsEs._(_root);
 	@override late final _StringsMisskeyAnnouncementEsEs announcement_ = _StringsMisskeyAnnouncementEsEs._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingEsEs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingEsEs._(_root);
@@ -1355,6 +1378,8 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDataSaverEsEs dataSaver_ = _StringsMisskeyDataSaverEsEs._(_root);
 	@override late final _StringsMisskeyHemisphereEsEs hemisphere_ = _StringsMisskeyHemisphereEsEs._(_root);
 	@override late final _StringsMisskeyReversiEsEs reversi_ = _StringsMisskeyReversiEsEs._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingEsEs urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingEsEs._(_root);
+	@override late final _StringsMisskeyMediaControlsEsEs mediaControls_ = _StringsMisskeyMediaControlsEsEs._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -1365,6 +1390,8 @@ class _StringsMisskeyBubbleGameEsEs extends _StringsMisskeyBubbleGameEnUs {
 
 	// Translations
 	@override String get howToPlay => 'Cómo jugar';
+	@override String get hold => 'Mantener';
+	@override late final _StringsMisskeyBubbleGameScoreEsEs score_ = _StringsMisskeyBubbleGameScoreEsEs._(_root);
 	@override late final _StringsMisskeyBubbleGameHowToPlayEsEs howToPlay_ = _StringsMisskeyBubbleGameHowToPlayEsEs._(_root);
 }
 
@@ -1485,7 +1512,7 @@ class _StringsMisskeyAccountMigrationEsEs extends _StringsMisskeyAccountMigratio
 	// Translations
 	@override String get moveFrom => 'Trasladar de otra cuenta a ésta';
 	@override String get moveFromSub => 'Crear un alias para otra cuenta.';
-	@override String moveFromLabel({required Object n}) => 'Cuenta desde la que se realiza el traslado: ${n}';
+	@override String moveFromLabel({required Object n}) => 'Cuenta desde la que se realiza el traslado #${n}';
 	@override String get moveFromDescription => 'Si quieres transferir seguidores de otra cuenta a esta cuenta y trasladarlos, tendrás que crear un alias aquí. Asegúrate de crearlo antes de realizar el traslado. Introduce la cuenta desde la que estás moviendo los seguidores así: @person@instance.com';
 	@override String get moveTo => 'Mover esta cuenta a una nueva';
 	@override String get moveToLabel => 'Cuenta destino:';
@@ -1687,6 +1714,7 @@ class _StringsMisskeyPluginEsEs extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => 'Por favor no instale plugins que no son de confianza';
 	@override String get manage => 'Gestionar plugins';
 	@override String get viewSource => 'Ver la fuente';
+	@override String get viewLog => 'Ver log';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1740,6 +1768,8 @@ class _StringsMisskeyAboutMisskeyEsEs extends _StringsMisskeyAboutMisskeyEnUs {
 	@override String get contributors => 'Principales colaboradores';
 	@override String get allContributors => 'Todos los colaboradores';
 	@override String get source => 'Código fuente';
+	@override String get original => 'Original';
+	@override String thisIsModifiedVersion({required Object name}) => '${name} usa una versión modificada de Misskey.';
 	@override String get translation => 'Traducir Misskey';
 	@override String get donate => 'Donar a Misskey';
 	@override String get morePatrons => 'Muchas más personas nos apoyan. Muchas gracias🥰';
@@ -1970,7 +2000,6 @@ class _StringsMisskeyX2faEsEs extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Registrar aplicación autenticadora';
 	@override String step1({required Object a, required Object b}) => 'Primero, instale en su dispositivo la aplicación de autenticación ${a} o ${b} u otra.';
 	@override String get step2 => 'Luego, escanee con la aplicación el código QR mostrado en pantalla.';
-	@override String get step2Click => 'Clicking on this QR code will allow you to register 2FA to your security key or phone authenticator app.\nTocar este código QR te permitirá registrar la autenticación 2FA a tu llave de seguridad o aplicación autenticadora.';
 	@override String get step2Uri => 'Si usas una aplicación de escritorio, introduce en ella la siguiente URL.';
 	@override String get step3Title => 'Ingresa un código de autenticación';
 	@override String get step3 => 'Para terminar, ingrese el token mostrado en la aplicación.';
@@ -1994,6 +2023,7 @@ class _StringsMisskeyX2faEsEs extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => 'En caso de que no puedas usar tu aplicación de autenticación, podrás usar los códigos de respaldo que figuran abajo para acceder a tu cuenta. Asegúrate de guardar en lugar seguro los códigos de respaldo. Cada uno de los códigos de respaldo es de un solo uso.';
 	@override String get backupCodeUsedWarning => 'Has usado todos los códigos de respaldo. Si dejas de tener acceso a tu aplicación de autenticación, no podrás volver a iniciar sesión en tu cuenta. Por favor, reconfigura tu aplicación de autenticación lo antes posible.';
 	@override String get backupCodesExhaustedWarning => 'Has usado todos los códigos de respaldo. Si dejas de tener acceso a tu aplicación de autenticación, no podrás volver a iniciar sesión en la cuenta que figura arriba. Por favor, reconfigura tu aplicación de autenticación lo antes posible.';
+	@override String get moreDetailedGuideHere => 'Guía detallada';
 }
 
 // Path: misskey.permissions_
@@ -2043,6 +2073,7 @@ class _StringsMisskeyPermissionsEsEs extends _StringsMisskeyPermissionsEnUs {
 	@override String get writeAdminDeleteAccount => 'Eliminar cuentas de usuario';
 	@override String get writeAdminDeleteAllFilesOfAUser => 'Eliminar todos los archivos de un usuario';
 	@override String get readAdminIndexStats => 'Ver datos indexados';
+	@override String get readAdminTableStats => 'Ver estadísticas de las tablas de la base de datos';
 	@override String get readAdminUserIps => 'Ver dirección IP de usuario';
 	@override String get readAdminMeta => 'Ver metadatos de la instancia';
 	@override String get writeAdminResetPassword => 'Restablecer contraseñas de usuario';
@@ -2367,6 +2398,7 @@ class _StringsMisskeyPlayEsEs extends _StringsMisskeyPlayEnUs {
 	@override String get title => 'Título';
 	@override String get script => 'Script';
 	@override String get summary => 'Descripción';
+	@override String get visibilityDescription => 'Poniéndola como privada significa que no será visible en tu perfil, pero cualquiera que tenga la URL aún podrá acceder a ella.';
 }
 
 // Path: misskey.pages_
@@ -2649,6 +2681,46 @@ class _StringsMisskeyReversiEsEs extends _StringsMisskeyReversiEnUs {
 	@override String get total => 'Total';
 }
 
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingEsEs extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingEsEs._(_StringsEsEs root) : this._root = root, super._(root);
+
+	@override final _StringsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get timeout => 'Timeout de la carga de vista previa de las URLs (ms)';
+	@override String get maximumContentLength => 'Content-Length Máximo (bytes)';
+	@override String get userAgent => 'User-Agent';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsEsEs extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsEsEs._(_StringsEsEs root) : this._root = root, super._(root);
+
+	@override final _StringsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => 'Picture in Picture';
+	@override String get playbackRate => 'Velocidad de reproducción';
+	@override String get loop => 'Reproducción en bucle';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _StringsMisskeyBubbleGameScoreEsEs extends _StringsMisskeyBubbleGameScoreEnUs {
+	_StringsMisskeyBubbleGameScoreEsEs._(_StringsEsEs root) : this._root = root, super._(root);
+
+	@override final _StringsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Puntos';
+	@override String get scoreYen => 'Cantidad de dinero ganada';
+	@override String get highScore => 'Puntuación más alta';
+	@override String get maxChain => 'Número máximo de cadenas';
+	@override String yen({required Object yen}) => '${yen} Yenes';
+	@override String estimatedQty({required Object qty}) => '${qty} Piezas';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} Onigiris';
+}
+
 // Path: misskey.bubbleGame_.howToPlay_
 class _StringsMisskeyBubbleGameHowToPlayEsEs extends _StringsMisskeyBubbleGameHowToPlayEnUs {
 	_StringsMisskeyBubbleGameHowToPlayEsEs._(_StringsEsEs root) : this._root = root, super._(root);
@@ -2868,6 +2940,7 @@ class _StringsMisskeyRoleOptionsEsEs extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get gtlAvailable => 'Explorar la línea de tiempo global';
 	@override String get ltlAvailable => 'Explorar la línea de tiempo local';
 	@override String get canPublicNote => 'Permitir la publicación';
+	@override String get mentionMax => 'Número máximo de menciones en una nota';
 	@override String get canInvite => 'Puede crear códigos de invitación';
 	@override String get inviteLimit => 'Límite de invitaciones';
 	@override String get inviteLimitCycle => 'Enfriamiento del límite de invitaciones';
@@ -2899,8 +2972,13 @@ class _StringsMisskeyRoleConditionEsEs extends _StringsMisskeyRoleConditionEnUs 
 	@override final _StringsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get roleAssignedTo => 'Asignado a roles manuales';
 	@override String get isLocal => 'Usuario local';
 	@override String get isRemote => 'Usuario remoto';
+	@override String get isCat => 'Usuarios Gato';
+	@override String get isBot => 'Usuarios Bot';
+	@override String get isSuspended => 'Usuario suspendido';
+	@override String get isLocked => 'Cuentas privadas';
 	@override String get createdLessThan => 'Menos de X han pasado desde la creación de la cuenta';
 	@override String get createdMoreThan => 'Más de X han pasado desde la creación de la cuenta';
 	@override String get followersLessThanOrEq => 'Tiene X o menos seguidores';
@@ -3020,6 +3098,8 @@ class _StringsMisskeyPagesBlocksEsEs extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => 'Sección';
 	@override String get image => 'Imagen';
 	@override String get button => 'Botón';
+	@override String get dynamic => 'Bloques Dinámicos';
+	@override String dynamicDescription({required Object play}) => 'Los bloques dinámicos están obsoletos. A partir de ahora, utiliza ${play} por favor.';
 	@override String get note => 'Nota embebida';
 	@override late final _StringsMisskeyPagesBlocksNoteEsEs note_ = _StringsMisskeyPagesBlocksNoteEsEs._(_root);
 }
@@ -4097,6 +4177,7 @@ class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEsEs extends _Strin
 
 	// Translations
 	@override String get title => '🤯';
+	@override String get description => 'El objeto más grande en el juego de burbujas';
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
@@ -4107,6 +4188,8 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEsEs extends 
 
 	// Translations
 	@override String get title => 'Doble 🤯';
+	@override String get description => 'Dos de los objetos más grandes en el juego de burbujas al mismo tiempo';
+	@override String get flavor => 'Puedes llenar el bento un poco de esta forma 🤯 🤯.';
 }
 
 // Path: misskey.pages_.blocks.note_

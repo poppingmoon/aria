@@ -612,6 +612,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get antennaSource => '受信ソース(このソースは食われへん)';
 	@override String get antennaKeywords => '受信キーワード';
 	@override String get antennaExcludeKeywords => '除外キーワード';
+	@override String get antennaExcludeBots => 'Botアカウントを除外';
 	@override String get antennaKeywordsDescription => 'スペースで区切ったるとAND指定で、改行で区切ったるとOR指定や';
 	@override String get notifyAntenna => '新しいノートを通知すんで';
 	@override String get withFileAntenna => 'なんか添付されたノートだけ';
@@ -706,6 +707,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get native => 'ネイティブ';
 	@override String get disableDrawer => 'メニューをドロワーで表示せえへん';
 	@override String get showNoteActionsOnlyHover => 'ノートの操作部をホバー時のみ表示するで';
+	@override String get showReactionsCount => 'ノートのリアクション数を表示する';
 	@override String get noHistory => '履歴はないわ。';
 	@override String get signinHistory => 'ログイン履歴';
 	@override String get enableAdvancedMfm => 'ややこしいMFMもありにする';
@@ -1255,7 +1257,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get sensitiveWordsDescription => '設定した単語が入っとるノートの公開範囲をホームにしたるわ。改行で区切ったら複数設定できるで。';
 	@override String get sensitiveWordsDescription2 => 'スペースで区切るとAND指定、キーワードをスラッシュで囲んだら正規表現や。';
 	@override String get prohibitedWords => '禁止ワード';
-	@override String get prohibitedWordsDescription => '設定したワードが含まれるノートを投稿しようとした際、エラーとなるようにします。改行で区切って複数設定できます。';
+	@override String get prohibitedWordsDescription => '設定した言葉が含まれるノートを投稿しようとしたら、エラーが出るようにするで。改行で区切って複数設定できるで。';
 	@override String get prohibitedWordsDescription2 => 'スペースで区切るとAND指定、キーワードをスラッシュで囲んだら正規表現や。';
 	@override String get hiddenTags => '見えてへんハッシュタグ';
 	@override String get hiddenTagsDescription => '設定したタグを最近流行りのとこに見えんようにすんで。複数設定するときは改行で区切ってな。';
@@ -1382,10 +1384,10 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get confirmHideRepliesAll => 'これは元に戻せへんから慎重に決めてや。本当にタイムラインに今フォローしとる全員の返信を入れへんのか？';
 	@override String get externalServices => '他のサイトのサービス';
 	@override String get sourceCode => 'ソースコード';
-	@override String get sourceCodeIsNotYetProvided => 'ソースコードはまだ提供されていません。この問題の修正について管理者に問い合わせてください。';
+	@override String get sourceCodeIsNotYetProvided => 'ソースコードはまだ提供されてへんで。問題の修正について管理者に問い合わせてみ。';
 	@override String get repositoryUrl => 'リポジトリURL';
-	@override String get repositoryUrlDescription => 'ソースコードが公開されているリポジトリがある場合、そのURLを記入します。Misskeyを現状のまま（ソースコードにいかなる変更も加えずに）使用している場合は https://github.com/misskey-dev/misskey と記入します。';
-	@override String get repositoryUrlOrTarballRequired => 'リポジトリを公開していない場合、代わりにtarballを提供する必要があります。詳細は.config/example.ymlを参照してください。';
+	@override String get repositoryUrlDescription => 'ソースコードが公開されているリポジトリがある場合、そのURLを記入するで。Misskeyをそのまんま（ソースコードにいかなる変更も加えずに）使っとる場合は https://github.com/misskey-dev/misskey と記入するで。';
+	@override String get repositoryUrlOrTarballRequired => 'リポジトリを公開してへんなら、代わりにtarballを提供する必要があるで。詳細は.config/example.ymlを参照してな。';
 	@override String get feedback => 'フィードバック';
 	@override String get feedbackUrl => 'フィードバックURL';
 	@override String get impressum => '運営者の情報';
@@ -1434,7 +1436,17 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get enableHorizontalSwipe => 'スワイプしてタブを切り替える';
 	@override String get loading => '読み込み中';
 	@override String get surrender => 'やめとく';
-	@override String get gameRetry => 'リトライ';
+	@override String get gameRetry => 'もういっちょ';
+	@override String get notUsePleaseLeaveBlank => '使用せえへん場合は空欄にしてや';
+	@override String get useTotp => 'ワンタイムパスワードを使う';
+	@override String get useBackupCode => 'バックアップコードを使う';
+	@override String get launchApp => 'アプリを起動';
+	@override String get useNativeUIForVideoAudioPlayer => '動画・音声の再生にブラウザのUIを使用する';
+	@override String get keepOriginalFilename => 'オリジナルのファイル名を保持';
+	@override String get keepOriginalFilenameDescription => 'この設定をオフにすると、アップロード時にファイル名が自動でランダム文字列に置き換えられるで。';
+	@override String get noDescription => '説明文はあらへんで';
+	@override String get alwaysConfirmFollow => 'フォローの際常に確認する';
+	@override String get inquiry => '問い合わせ';
 	@override late final _StringsMisskeyBubbleGameJaKs bubbleGame_ = _StringsMisskeyBubbleGameJaKs._(_root);
 	@override late final _StringsMisskeyAnnouncementJaKs announcement_ = _StringsMisskeyAnnouncementJaKs._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingJaKs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingJaKs._(_root);
@@ -1502,6 +1514,8 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyHemisphereJaKs hemisphere_ = _StringsMisskeyHemisphereJaKs._(_root);
 	@override late final _StringsMisskeyReversiJaKs reversi_ = _StringsMisskeyReversiJaKs._(_root);
 	@override late final _StringsMisskeyOfflineScreenJaKs offlineScreen_ = _StringsMisskeyOfflineScreenJaKs._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingJaKs urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingJaKs._(_root);
+	@override late final _StringsMisskeyMediaControlsJaKs mediaControls_ = _StringsMisskeyMediaControlsJaKs._(_root);
 }
 
 // Path: misskeyIO
@@ -1846,6 +1860,7 @@ class _StringsMisskeyPluginJaKs extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => '信頼できへんプラグインはインストールせんとってな';
 	@override String get manage => 'プラグインの管理';
 	@override String get viewSource => 'ソース見る';
+	@override String get viewLog => 'ログを表示';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1868,8 +1883,8 @@ class _StringsMisskeyPreferencesBackupsJaKs extends _StringsMisskeyPreferencesBa
 	@override String deleteConfirm({required Object name}) => '${name}を消すん？';
 	@override String renameConfirm({required Object old, required Object new_}) => '「${old}」を「${new_}」に変えるん？';
 	@override String get noBackups => 'バックアップはないで。「新しく保存」ってとこでこのクライアント設定を鯖に保存できるで。';
-	@override String createdAt({required Object date, required Object time}) => '作った日時:${date}${time}';
-	@override String updatedAt({required Object date, required Object time}) => '更新日時:${date}${time}';
+	@override String createdAt({required Object date, required Object time}) => '作った日時: ${date} ${time}';
+	@override String updatedAt({required Object date, required Object time}) => '更新日時: ${date} ${time}';
 	@override String get cannotLoad => '読み込みできへん...';
 	@override String get invalidFile => 'ファイル形式が違うで？';
 }
@@ -1900,7 +1915,7 @@ class _StringsMisskeyAboutMisskeyJaKs extends _StringsMisskeyAboutMisskeyEnUs {
 	@override String get allContributors => '全ての貢献者';
 	@override String get source => 'ソースコード';
 	@override String get original => 'オリジナル';
-	@override String thisIsModifiedVersion({required Object name}) => '${name}はオリジナルのMisskeyを改変したバージョンを使用しています。';
+	@override String thisIsModifiedVersion({required Object name}) => '${name}はオリジナルのMisskeyをいじったバージョンをつこうてるで。';
 	@override String get translation => 'Misskeyを翻訳';
 	@override String get donate => 'Misskeyに寄付';
 	@override String get morePatrons => '他にもぎょうさんの人からサポートしてもろてんねん。ほんまおおきに🥰';
@@ -2131,7 +2146,6 @@ class _StringsMisskeyX2faJaKs extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => '認証アプリの設定はじめる';
 	@override String step1({required Object a, required Object b}) => 'ほんなら、${a}や${b}とかの認証アプリを使っとるデバイスにインストールしてな。';
 	@override String get step2 => '次に、ここにあるQRコードをアプリでスキャンしてな～。';
-	@override String get step2Click => 'QRコード押したら、今使とる端末に入っとる認証アプリとかキーリングに登録できるで。';
 	@override String get step2Uri => 'デスクトップアプリを使う時は次のURIを入れるで';
 	@override String get step3Title => '確認コードを入れてーや';
 	@override String get step3 => 'アプリに映っとる確認コード（トークン）を入れて終わりや。';
@@ -2155,6 +2169,7 @@ class _StringsMisskeyX2faJaKs extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => '認証アプリが使用できんなった場合、以下のバックアップコードを使ってアカウントにアクセスできるで。これらのコードは必ず安全な場所に置いときや。各コードは一回だけ使用できるで。';
 	@override String get backupCodeUsedWarning => 'バックアップコードが使用されたで。認証アプリが使えなくなってるん場合、なるべく早く認証アプリを再設定しや。';
 	@override String get backupCodesExhaustedWarning => 'バックアップコードが全て使用されたで。認証アプリを利用できん場合、これ以上アカウントにアクセスできなくなるで。認証アプリを再登録しや。';
+	@override String get moreDetailedGuideHere => '詳細なガイドはこちら';
 }
 
 // Path: misskey.permissions_
@@ -2213,7 +2228,6 @@ class _StringsMisskeyPermissionsJaKs extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => 'サーバーの情報見る';
 	@override String get readAdminShowModerationLog => 'モデレーションログ見る';
 	@override String get readAdminShowUser => 'ユーザーのプライベートな情報見る';
-	@override String get readAdminShowUsers => 'ユーザーのプライベートな情報見る';
 	@override String get writeAdminSuspendUser => 'ユーザーを凍結';
 	@override String get writeAdminUnsetUserAvatar => 'ユーザーのアバターを削除';
 	@override String get writeAdminUnsetUserBanner => 'ユーザーのバナーを削除';
@@ -2529,6 +2543,7 @@ class _StringsMisskeyPlayJaKs extends _StringsMisskeyPlayEnUs {
 	@override String get title => 'タイトル';
 	@override String get script => 'スクリプト';
 	@override String get summary => '説明';
+	@override String get visibilityDescription => '非公開に設定するとプロフィールに表示されへんくなるけど、URLを知っとる人は引き続きアクセスできるで。';
 }
 
 // Path: misskey.pages_
@@ -2616,6 +2631,7 @@ class _StringsMisskeyNotificationJaKs extends _StringsMisskeyNotificationEnUs {
 	@override String get sendTestNotification => 'テスト通知を送信するで';
 	@override String get notificationWillBeDisplayedLikeThis => '通知はこのように表示されるで';
 	@override String reactedBySomeUsers({required Object n}) => '${n}人がツッコんだで';
+	@override String likedBySomeUsers({required Object n}) => '${n}人がいいねしたで';
 	@override String renotedBySomeUsers({required Object n}) => '${n}人がリノートしたで';
 	@override String followedBySomeUsers({required Object n}) => '${n}人にフォローされたで';
 	@override String get flushNotification => '通知の履歴をリセットする';
@@ -2863,6 +2879,40 @@ class _StringsMisskeyOfflineScreenJaKs extends _StringsMisskeyOfflineScreenEnUs 
 	// Translations
 	@override String get title => 'オフライン - サーバーに接続できひんで';
 	@override String get header => 'サーバーに接続できへんわ';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingJaKs extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URLプレビューの設定';
+	@override String get enable => 'URLプレビューを有効にする';
+	@override String get timeout => 'プレビュー取得時のタイムアウト(ms)';
+	@override String get timeoutDescription => 'プレビュー取得の所要時間がこの値を超えた場合、プレビューは生成されへんで。';
+	@override String get maximumContentLength => 'Content-Lengthの最大値(byte)';
+	@override String get maximumContentLengthDescription => 'Content-Lengthがこの値を超えた場合、プレビューは生成されへんで。';
+	@override String get requireContentLength => 'Content-Lengthが取得できた場合のみプレビューを生成';
+	@override String get requireContentLengthDescription => '相手サーバがContent-Lengthを返さない場合、プレビューは生成されへんで。';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => 'プレビュー取得時に使用されるUser-Agentを設定するで。空欄の場合、デフォルトのUser-Agentが使用されるで。';
+	@override String get summaryProxy => 'プレビューを生成するプロキシのエンドポイント';
+	@override String get summaryProxyDescription => 'Misskey本体やなく、サマリープロキシを使用してプレビューを生成するで。';
+	@override String get summaryProxyDescription2 => 'プロキシには下記パラメータがクエリ文字列として連携されるで。プロキシ側がこれらをサポートせえへんときは、設定値は無視されるで。';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsJaKs extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => 'ピクチャインピクチャ';
+	@override String get playbackRate => '再生速度';
+	@override String get loop => 'ループ再生';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3151,6 +3201,11 @@ class _StringsMisskeyRoleConditionJaKs extends _StringsMisskeyRoleConditionEnUs 
 	@override String get roleAssignedTo => 'マニュアルロールにアサイン済み';
 	@override String get isLocal => 'ローカルユーザー';
 	@override String get isRemote => 'リモートユーザー';
+	@override String get isCat => '猫ユーザー';
+	@override String get isBot => 'botユーザー';
+	@override String get isSuspended => 'サスペンド済みユーザー';
+	@override String get isLocked => '鍵アカウントユーザー';
+	@override String get isExplorable => '「アカウントを見つけやすくする」が有効なユーザー';
 	@override String get createdLessThan => 'アカウント作ってから～以内';
 	@override String get createdMoreThan => 'アカウント作ってから～経過';
 	@override String get followersLessThanOrEq => 'フォロワー数が～以下';
@@ -3270,6 +3325,8 @@ class _StringsMisskeyPagesBlocksJaKs extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => 'セクション';
 	@override String get image => '画像';
 	@override String get button => 'ボタン';
+	@override String get dynamic => '動的ブロック';
+	@override String dynamicDescription({required Object play}) => 'このブロックは廃止されとるで。今後は${play}を利用してや。';
 	@override String get note => 'ノート埋め込み';
 	@override late final _StringsMisskeyPagesBlocksNoteJaKs note_ = _StringsMisskeyPagesBlocksNoteJaKs._(_root);
 }

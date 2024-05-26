@@ -166,10 +166,8 @@ class NoteDisplayPage extends HookConsumerWidget {
                         .read(generalSettingsNotifierProvider.notifier)
                         .setAdvancedMfm(value),
                   ),
-                  // TODO: Update localization
                   SwitchListTile(
-                    title: const Text('Show reactions count'),
-                    // title: Text(t.misskey.showReactionsCount),
+                    title: Text(t.misskey.showReactionsCount),
                     value: settings.showReactionsCount,
                     onChanged: (value) => ref
                         .read(generalSettingsNotifierProvider.notifier)

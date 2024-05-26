@@ -807,9 +807,9 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get needReloadToApply => 'É necessário recarregar a página para refletir as alterações.';
 	@override String get showTitlebar => 'Exibir barra de título';
 	@override String get clearCache => 'Limpar o cache';
-	@override String onlineUsersCount({required Object n}) => 'Pessoas Online ${n}';
-	@override String nUsers({required Object n}) => 'Usuários ${n}';
-	@override String nNotes({required Object n}) => 'Notas ${n}';
+	@override String onlineUsersCount({required Object n}) => '${n} Pessoas Online';
+	@override String nUsers({required Object n}) => '${n} Usuários';
+	@override String nNotes({required Object n}) => '${n} Notas';
 	@override String get sendErrorReports => 'Enviar relatórios de erro';
 	@override String get sendErrorReportsDescription => 'Ao ativar essa opção, informações detalhadas de erro serão compartilhadas com o Misskey em caso de problemas, o que pode ajudar a melhorar a qualidade do software. As informações de erro podem incluir a versão do sistema operacional, o tipo de navegador e o sua atividade no Misskey.';
 	@override String get myTheme => 'Meu tema';
@@ -841,7 +841,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get publish => 'Publicar';
 	@override String get inChannelSearch => 'Pesquisar no canal';
 	@override String get useReactionPickerForContextMenu => 'Clique com o botão direito do mouse para abrir o seletor de reações.';
-	@override String typingUsers({required Object users}) => 'digitando ${users}';
+	@override String typingUsers({required Object users}) => '${users} pessoas digitando';
 	@override String get jumpToSpecifiedDate => 'Pular para uma data específica';
 	@override String get showingPastTimeline => 'Visualizar linha de tempo anterior';
 	@override String get clear => 'Limpar';
@@ -1346,8 +1346,8 @@ class _StringsMisskeyChannelPtPt extends _StringsMisskeyChannelEnUs {
 	// Translations
 	@override String get featured => 'Destaques';
 	@override String get following => 'Seguindo';
-	@override String usersCount({required Object n}) => 'usuários ativos ${n}';
-	@override String notesCount({required Object n}) => 'notas ${n}';
+	@override String usersCount({required Object n}) => '${n} usuários ativos';
+	@override String notesCount({required Object n}) => '${n} notas';
 	@override String get nameAndDescription => 'Nome e descrição';
 }
 

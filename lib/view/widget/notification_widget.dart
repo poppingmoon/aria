@@ -250,8 +250,7 @@ class NotificationWidget extends ConsumerWidget {
             ),
             title: Text(
               note.reactionAcceptance == ReactionAcceptance.likeOnly
-                  // TODO: Update localization to likedBySomeUsers
-                  ? t.misskey.notification_.reactedBySomeUsers(
+                  ? t.misskey.notification_.likedBySomeUsers(
                       n: notification.reactions
                               ?.map((reaction) => reaction.user.id)
                               .toSet()

@@ -91,7 +91,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get enterUsername => 'Введите имя пользователя';
 	@override String renotedBy({required Object user}) => '${user} делится';
 	@override String get noNotes => 'Нет ни одной заметки';
-	@override String get noNotifications => 'Нет ни одного уведомления';
+	@override String get noNotifications => 'Нет уведомлений';
 	@override String get instance => 'Инстанс';
 	@override String get settings => 'Настройки';
 	@override String get notificationSettings => 'Настройки уведомлений';
@@ -203,6 +203,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get reactionSettingDescription2 => 'Расставляйте перетаскиванием, удаляйте нажатием, добавляйте кнопкой «+».';
 	@override String get rememberNoteVisibility => 'Запоминать видимость заметок';
 	@override String get attachCancel => 'Удалить вложение';
+	@override String get deleteFile => 'Удалить файл';
 	@override String get markAsSensitive => 'Отметить как «не для всех»';
 	@override String get unmarkAsSensitive => 'Снять отметку «не для всех»';
 	@override String get enterFileName => 'Введите имя файла';
@@ -386,6 +387,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get createFolder => 'Создать папку';
 	@override String get renameFolder => 'Переименовать папку';
 	@override String get deleteFolder => 'Удалить папку';
+	@override String get folder => 'Папка';
 	@override String get addFile => 'Добавить файл';
 	@override String get emptyDrive => 'Диск пуст';
 	@override String get emptyFolder => 'Папка пуста';
@@ -447,6 +449,8 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get enableHcaptcha => 'Включить hCaptcha';
 	@override String get hcaptchaSiteKey => 'Ключ сайта';
 	@override String get hcaptchaSecretKey => 'Секретный ключ';
+	@override String get mcaptcha => 'mCaptcha';
+	@override String get enableMcaptcha => 'Включить mCaptcha';
 	@override String get mcaptchaSiteKey => 'Ключ сайта';
 	@override String get mcaptchaSecretKey => 'Секретный ключ';
 	@override String get recaptcha => 'reCAPTCHA';
@@ -616,6 +620,8 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get popout => 'Развернуть';
 	@override String get volume => 'Громкость';
 	@override String get masterVolume => 'Основная регулировка громкости';
+	@override String get notUseSound => 'Выключить звук';
+	@override String get useSoundOnlyWhenActive => 'Использовать звук, когда Misskey активен.';
 	@override String get details => 'Подробнее';
 	@override String get chooseEmoji => 'Выберите эмодзи';
 	@override String get unableToProcess => 'Не удаётся завершить операцию';
@@ -636,6 +642,10 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get script => 'Скрипт';
 	@override String get disablePagesScript => 'Отключить скрипты на «Страницах»';
 	@override String get updateRemoteUser => 'Обновить данные пользователя с его сервера';
+	@override String get unsetUserAvatar => 'Убрать аватар';
+	@override String get unsetUserAvatarConfirm => 'Вы точно хотите убрать аватар?';
+	@override String get unsetUserBanner => 'Убрать баннер';
+	@override String get unsetUserBannerConfirm => 'Вы точно хотите убрать баннер?';
 	@override String get deleteAllFiles => 'Удалить все файлы';
 	@override String get deleteAllFilesConfirm => 'Вы хотите удалить все файлы?';
 	@override String get removeAllFollowing => 'Удалить всех подписчиков';
@@ -686,6 +696,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get small => 'Мелко';
 	@override String get generateAccessToken => 'Создать токен доступа';
 	@override String get permission => 'Разрешения';
+	@override String get adminPermission => 'Доступ администратора';
 	@override String get enableAll => 'Включить все';
 	@override String get disableAll => 'Выключить всё';
 	@override String get tokenRequested => 'Открыть доступ к учётной записи';
@@ -707,6 +718,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'Выключите при использовании STARTTLS.';
 	@override String get testEmail => 'Проверка доставки электронной почты';
 	@override String get wordMute => 'Скрытие слов';
+	@override String get hardWordMute => '';
 	@override String get regexpError => 'Ошибка в регулярном выражении';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => 'В списке ${tab} скрытых слов, в строке ${line} обнаружена синтаксическая ошибка:';
 	@override String get instanceMute => 'Глушение инстансов';
@@ -1158,6 +1170,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get loadReplies => 'Показать ответы';
 	@override String get sourceCode => 'Исходный код';
 	@override String get flip => 'Переворот';
+	@override String get code => 'Код';
 	@override String lastNDays({required Object n}) => 'Последние ${n} сут';
 	@override String get surrender => 'Этот пост не может быть отменен.';
 	@override late final _StringsMisskeyInitialAccountSettingRuRu initialAccountSetting_ = _StringsMisskeyInitialAccountSettingRuRu._(_root);
@@ -1692,7 +1705,6 @@ class _StringsMisskeyX2faRuRu extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Начните настраивать приложение-аутентификатор';
 	@override String step1({required Object a, required Object b}) => 'Прежде всего, установите на устройство приложение для аутентификации, например, ${a} или ${b}.';
 	@override String get step2 => 'Далее отсканируйте отображаемый QR-код при помощи приложения.';
-	@override String get step2Click => 'Нажав на QR-код, вы можете зарегистрироваться с помощью приложения для аутентификации или брелка для ключей, установленного на вашем устройстве.';
 	@override String get step3Title => 'Введите проверочный код';
 	@override String get step3 => 'И наконец, введите код, который покажет приложение.';
 	@override String get step4 => 'Теперь при каждом входе на сайт вам нужно будет вводить код из приложения аналогичным образом.';

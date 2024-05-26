@@ -94,6 +94,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get noNotifications => 'Brak powiadomień';
 	@override String get instance => 'Instancja';
 	@override String get settings => 'Ustawienia';
+	@override String get notificationSettings => 'Powiadomienia';
 	@override String get basicSettings => 'Podstawowe ustawienia';
 	@override String get otherSettings => 'Pozostałe ustawienia';
 	@override String get openInWindow => 'Otwórz w oknie';
@@ -118,13 +119,20 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get unpin => 'Odepnij z profilu';
 	@override String get copyContent => 'Skopiuj zawartość';
 	@override String get copyLink => 'Skopiuj odnośnik';
+	@override String get copyLinkRenote => 'Skopiuj link renote\'a';
 	@override String get delete => 'Usuń';
 	@override String get deleteAndEdit => 'Usuń i edytuj';
 	@override String get deleteAndEditConfirm => 'Czy na pewno chcesz usunąć ten wpis i zedytować go? Utracisz wszystkie reakcje, udostępnienia i odpowiedzi do tego wpisu.';
 	@override String get addToList => 'Dodaj do listy';
+	@override String get addToAntenna => 'Dodaj do anteny';
 	@override String get sendMessage => 'Wyślij wiadomość';
 	@override String get copyRSS => 'Kopiuj RSS';
 	@override String get copyUsername => 'Kopiuj nazwę użytkownika';
+	@override String get copyUserId => 'Kopiuj ID użytkownika';
+	@override String get copyNoteId => 'Kopiuj ID notatki';
+	@override String get copyFileId => 'Kopiuj ID pliku';
+	@override String get copyFolderId => 'Kopiuj ID folderu';
+	@override String get copyProfileUrl => 'Kopiuj URL profilu';
 	@override String get searchUser => 'Wyszukiwanie użytkowników';
 	@override String get reply => 'Odpowiedz';
 	@override String get loadMore => 'Załaduj więcej';
@@ -177,6 +185,8 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get cantRenote => 'Ten wpis nie może zostać udostępniony.';
 	@override String get cantReRenote => 'Udostępnienie nie może zostać udostępnione.';
 	@override String get quote => 'Cytuj';
+	@override String get inChannelRenote => 'Renote tylko na kanale';
+	@override String get inChannelQuote => 'Cytat tylko na kanale';
 	@override String get pinnedNote => 'Przypięty wpis';
 	@override String get pinned => 'Przypnij do profilu';
 	@override String get you => 'Ty';
@@ -185,14 +195,23 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get add => 'Dodaj';
 	@override String get reaction => 'Reakcja';
 	@override String get reactions => 'Reakcja';
+	@override String get emojiPicker => 'Selektor Emoji';
+	@override String get pinnedEmojisForReactionSettingDescription => 'Ustaw emotikony które powinny być przypięte i od razu wyświetlone podczas reagowania.';
+	@override String get pinnedEmojisSettingDescription => 'Ustaw emotikony które powinny być przypięte i wyświetlone podczas przeglądania selektora Emoji';
+	@override String get emojiPickerDisplay => 'Wyświetlanie selektora Emoji';
+	@override String get overwriteFromPinnedEmojisForReaction => 'Zastąp z ustawień reakcji';
+	@override String get overwriteFromPinnedEmojis => 'Zastąp z ogólnych ustawień';
 	@override String get reactionSettingDescription2 => 'Przeciągnij aby zmienić kolejność, naciśnij aby usunąć, naciśnij „+” aby dodać';
 	@override String get rememberNoteVisibility => 'Zapamiętuj ustawienia widoczności wpisu';
 	@override String get attachCancel => 'Usuń załącznik';
+	@override String get deleteFile => 'Usuń plik';
 	@override String get markAsSensitive => 'Oznacz jako NSFW';
 	@override String get unmarkAsSensitive => 'Cofnij NSFW';
 	@override String get enterFileName => 'Wprowadź nazwę pliku';
 	@override String get mute => 'Wycisz';
 	@override String get unmute => 'Cofnij wyciszenie';
+	@override String get renoteMute => 'Wycisz renote\'y';
+	@override String get renoteUnmute => 'Wyłącz wyciszenie renote\'ów';
 	@override String get block => 'Zablokuj';
 	@override String get unblock => 'Odblokuj';
 	@override String get suspend => 'Zawieś';
@@ -202,8 +221,10 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get suspendConfirm => 'Czy na pewno chcesz zawiesić to konto?';
 	@override String get unsuspendConfirm => 'Czy na pewno chcesz cofnąć zawieszenie tego konta?';
 	@override String get selectList => 'Wybierz listę';
+	@override String get editList => 'Edytuj listę';
 	@override String get selectChannel => 'Wybierz kanał';
 	@override String get selectAntenna => 'Wybierz Antennę';
+	@override String get editAntenna => 'Edytuj antenę';
 	@override String get selectWidget => 'Wybierz widżet';
 	@override String get editWidgets => 'Edytuj widżety';
 	@override String get editWidgetsExit => 'Gotowe';
@@ -216,11 +237,15 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get settingGuide => 'Proponowana konfiguracja';
 	@override String get cacheRemoteFiles => 'Przechowuj zdalne pliki w pamięci podręcznej';
 	@override String get cacheRemoteFilesDescription => 'Gdy ta opcja jest wyłączona, zdalne pliki są ładowane bezpośrednio ze zdalnych instancji. Wyłączenie the opcji zmniejszy użycie powierzchni dyskowej, ale zwiększy transfer, ponieważ miniaturki nie będą generowane.';
+	@override String get youCanCleanRemoteFilesCache => 'Możesz wyczyścić cache poprzez kliknięcie przycisku 🗑️ w widoku menedżera plików.';
+	@override String get cacheRemoteSensitiveFiles => 'Przechowuj wrażliwe zdalne pliki w pamięci podręcznej';
+	@override String get cacheRemoteSensitiveFilesDescription => 'Gdy ta opcja jest wyłączona, wrażliwe pliki zdalne są wczytywane bezpośrednio ze zdalnej instancji bez cacheowania.';
 	@override String get flagAsBot => 'To konto jest botem';
 	@override String get flagAsBotDescription => 'Jeżeli ten kanał jest kontrolowany przez jakiś program, ustaw tę opcję. Jeżeli włączona, będzie działać jako flaga informująca innych programistów, aby zapobiegać nieskończonej interakcji z różnymi botami i dostosowywać wewnętrzne systemy Misskey, traktując konto jako bota.';
 	@override String get flagAsCat => 'To konto jest kotem';
 	@override String get flagAsCatDescription => 'Przełącz tę opcję, aby konto było oznaczone jako kot.';
 	@override String get flagShowTimelineReplies => 'Pokazuj odpowiedzi na osi czasu';
+	@override String get flagShowTimelineRepliesDescription => 'Gdy włączone, pokazuje odpowiedzi użytkowników na notatki innych użytkowników w osi czasu.';
 	@override String get autoAcceptFollowed => 'Automatycznie przyjmuj prośby o możliwość obserwacji od użytkowników, których obserwujesz';
 	@override String get addAccount => 'Dodaj konto';
 	@override String get reloadAccountsList => 'Odśwież listę kont';
@@ -250,6 +275,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get perDay => 'co dzień';
 	@override String get stopActivityDelivery => 'Przestań przesyłać aktywności';
 	@override String get blockThisInstance => 'Zablokuj tę instancję';
+	@override String get silenceThisInstance => 'Wycisz tę instancję';
 	@override String get operations => 'Działania';
 	@override String get software => 'Oprogramowanie';
 	@override String get version => 'Wersja';
@@ -269,6 +295,8 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get clearCachedFilesConfirm => 'Czy na pewno chcesz usunąć wszystkie zdalne pliki z pamięci podręcznej?';
 	@override String get blockedInstances => 'Zablokowane instancje';
 	@override String get blockedInstancesDescription => 'Wypisz nazwy hostów instancji, które powinny zostać zablokowane. Wypisane instancje nie będą mogły dłużej komunikować się z tą instancją.';
+	@override String get silencedInstances => 'Wyciszone instancje';
+	@override String get silencedInstancesDescription => 'Wypisz nazwy hostów instancji, które chcesz wyciszyć. Wszystkie konta wymienionych instancji będą traktowane jako wyciszone, będą mogły jedynie wysyłać prośby o obserwację i nie będą mogły wspominać kont lokalnych, jeśli nie będą obserwowane. Nie będzie to miało wpływu na zablokowane instancje.';
 	@override String get muteAndBlock => 'Wycisz / Zablokuj';
 	@override String get mutedUsers => 'Wyciszeni użytkownicy';
 	@override String get blockedUsers => 'Zablokowani użytkownicy';
@@ -313,10 +341,12 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String removeAreYouSure({required Object x}) => 'Czy na pewno chcesz usunąć „${x}”?';
 	@override String deleteAreYouSure({required Object x}) => 'Czy na pewno chcesz usunąć „${x}”?';
 	@override String get resetAreYouSure => 'Czy na pewno chcesz zresetować?';
+	@override String get areYouSure => 'Na pewno?';
 	@override String get saved => 'Zapisano';
 	@override String get messaging => 'Wiadomości';
 	@override String get upload => 'Wyślij';
 	@override String get keepOriginalUploading => 'Zachowaj oryginalny obraz';
+	@override String get keepOriginalUploadingDescription => 'Zapisuje oryginalnie przesłany obraz w niezmienionej postaci. Jeśli ta opcja jest wyłączona, po przesłaniu zostanie wygenerowana wersja do wyświetlenia w Internecie.';
 	@override String get fromDrive => 'Z dysku';
 	@override String get fromUrl => 'Z adresu URL';
 	@override String get uploadFromUrl => 'Wyślij z adresu URL';
@@ -329,7 +359,10 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get startMessaging => 'Rozpocznij czat';
 	@override String nUsersRead({required Object n}) => 'przeczytano przez ${n}';
 	@override String agreeTo({required Object x0}) => 'Wyrażam zgodę na ${x0}';
+	@override String get agree => 'Zatwierdź';
 	@override String get agreeBelow => 'Zaakceptuj poniżej';
+	@override String get basicNotesBeforeCreateAccount => 'Ważne notatki';
+	@override String get termsOfService => 'Warunki usługi';
 	@override String get start => 'Rozpocznij';
 	@override String get home => 'Strona główna';
 	@override String get remoteUserCaution => 'Te informacje mogą nie być aktualne, ponieważ użytkownik pochodzi ze zdalnej instancji.';
@@ -359,6 +392,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get createFolder => 'Utwórz katalog';
 	@override String get renameFolder => 'Zmień nazwę katalogu';
 	@override String get deleteFolder => 'Usuń ten katalog';
+	@override String get folder => 'Folder';
 	@override String get addFile => 'Dodaj plik';
 	@override String get emptyDrive => 'Dysk jest pusty';
 	@override String get emptyFolder => 'Ten katalog jest pusty';
@@ -372,6 +406,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get rename => 'Zmień nazwę';
 	@override String get avatar => 'Awatar';
 	@override String get banner => 'Baner';
+	@override String get displayOfSensitiveMedia => 'Wyświetlanie wrażliwej zawartości';
 	@override String get whenServerDisconnected => 'Po utracie połączenia z serwerem';
 	@override String get disconnectedFromServer => 'Utracono połączenie z serwerem.';
 	@override String get reload => 'Odśwież';
@@ -419,8 +454,11 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get enableHcaptcha => 'Włącz hCaptcha';
 	@override String get hcaptchaSiteKey => 'Klucz strony';
 	@override String get hcaptchaSecretKey => 'Tajny klucz';
+	@override String get mcaptcha => 'mCaptcha';
+	@override String get enableMcaptcha => 'Włącz mCaptcha';
 	@override String get mcaptchaSiteKey => 'Klucz strony';
 	@override String get mcaptchaSecretKey => 'Tajny klucz';
+	@override String get mcaptchaInstanceUrl => 'URL instancji mCaptcha';
 	@override String get recaptcha => 'reCAPTCHA';
 	@override String get enableRecaptcha => 'Włącz reCAPTCHA';
 	@override String get recaptchaSiteKey => 'Klucz strony';
@@ -463,15 +501,19 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get administrator => 'Admin';
 	@override String get token => 'Token';
 	@override String get x2fa => 'Klucz 2FA ';
+	@override String get setupOf2fa => 'Skonfiguruj dwuetapową autentykację';
 	@override String get totp => 'Klucz aplikacji uwierzytelniającej (totp)';
 	@override String get totpDescription => 'Opis klucza czasowego';
 	@override String get moderator => 'Moderator';
 	@override String get moderation => 'Moderacja';
+	@override String get moderationNote => 'Notka moderacyjna';
+	@override String get addModerationNote => 'Dodaj notkę moderacyjną';
+	@override String get moderationLogs => 'Logi moderacyjne';
 	@override String nUsersMentioned({required Object n}) => '${n} wspomnianych użytkowników';
 	@override String get securityKeyAndPasskey => 'Klucz bezpieczeństwa i klucze Passkey';
 	@override String get securityKey => 'Klucz bezpieczeństwa';
 	@override String get lastUsed => 'Ostatnio używane';
-	@override String lastUsedAt({required Object t}) => 'Ostatnio używane w ${t}';
+	@override String lastUsedAt({required Object t}) => 'Ostatnio używane: ${t}';
 	@override String get unregister => 'Cofnij rejestrację';
 	@override String get passwordLessLogin => 'Skonfiguruj logowanie bez użycia hasła';
 	@override String get passwordLessLoginDescription => 'Opis logowania bez użycia hasła';
@@ -525,8 +567,12 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get emojiStyle => 'Styl emoji';
 	@override String get native => 'Natywny';
 	@override String get disableDrawer => 'Nie używaj menu w stylu szuflady';
+	@override String get showNoteActionsOnlyHover => 'Pokazuj akcje notatek tylko po najechaniu myszką';
+	@override String get showReactionsCount => 'Wyświetl liczbę reakcji na notatkę';
 	@override String get noHistory => 'Brak historii';
 	@override String get signinHistory => 'Historia logowania';
+	@override String get enableAdvancedMfm => 'Włącz zaawansowane MFM';
+	@override String get enableAnimatedMfm => 'Włącz animowane MFM';
 	@override String get doing => 'Przetwarzanie...';
 	@override String get category => 'Kategoria';
 	@override String get tags => 'Tagi';
@@ -535,6 +581,8 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get existingAccount => 'Istniejące konto';
 	@override String get regenerate => 'Wygeneruj ponownie';
 	@override String get fontSize => 'Rozmiar czcionki';
+	@override String get mediaListWithOneImageAppearance => 'Wysokość list multimediów z tylko jednym obrazem';
+	@override String limitTo({required Object x}) => 'Limituj do ${x}';
 	@override String get noFollowRequests => 'Nie masz żadnych oczekujących próśb o możliwość obserwacji';
 	@override String get openImageInNewTab => 'Otwórz obraz w nowej karcie';
 	@override String get dashboard => 'Kokpit';
@@ -554,6 +602,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get objectStorage => 'Pamięć obiektowa';
 	@override String get useObjectStorage => 'Używaj pamięci obiektowej';
 	@override String get objectStorageBaseUrl => 'Podstawowy URL';
+	@override String get objectStorageBaseUrlDesc => 'Adres URL używany jako odniesienie. Podaj adres URL swojego CDN lub Proxy, gdy używasz któregokolwiek z nich.\nDla S3 użyj \'https://<bucket>.s3.amazonaws.com\' a dla GCS lub równej usługi użyj \'https://storage.googleapis.com/<bucket>\', itd.';
 	@override String get objectStorageBucket => 'Bucket';
 	@override String get objectStorageBucketDesc => 'Podaj nazwę „wiadra” używaną przez konfigurowaną usługę.';
 	@override String get objectStoragePrefix => 'Prefiks';
@@ -566,9 +615,13 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get objectStorageUseSSLDesc => 'Wyłącz, jeżeli nie zamierzasz używać HTTPS dla połączenia z API';
 	@override String get objectStorageUseProxy => 'Połącz przez proxy';
 	@override String get objectStorageUseProxyDesc => 'Wyłącz, jeżeli nie zamierzasz używać proxy dla połączenia z pamięcią blokową';
+	@override String get objectStorageSetPublicRead => 'Ustaw opcję "public-read" przy przesyłaniu';
+	@override String get s3ForcePathStyleDesc => 'Jeśli opcja s3ForcePathStyle jest włączona, nazwa Bucket\'u musi być zawarta w ścieżce adresu URL, a nie w nazwie hosta adresu URL. Włączenie tego ustawienia może być konieczne w przypadku użycia usług takich jak self-hosted instancja Minio.';
 	@override String get serverLogs => 'Dziennik zdarzeń';
 	@override String get deleteAll => 'Usuń wszystkie';
 	@override String get showFixedPostForm => 'Wyświetlaj formularz tworzenia wpisu w górnej części osi czasu';
+	@override String get showFixedPostFormInChannel => 'Wyświetl formularz postowania w górnej części osi czasu (Kanały)';
+	@override String get withRepliesByDefaultForNewlyFollowed => 'Domyślnie uwzględnij odpowiedzi nowo obserwowanych użytkowników w osi czasu';
 	@override String get newNoteRecived => 'Masz nowy wpis';
 	@override String get sounds => 'Dźwięk';
 	@override String get sound => 'Dźwięki';
@@ -578,6 +631,8 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get popout => 'Popout';
 	@override String get volume => 'Głośność';
 	@override String get masterVolume => 'Głośność główna';
+	@override String get notUseSound => 'Wyłącz dźwięk';
+	@override String get useSoundOnlyWhenActive => 'Puszczaj dźwięki tylko, gdy Misskey jest aktywne.';
 	@override String get details => 'Szczegóły';
 	@override String get chooseEmoji => 'Wybierz emoji';
 	@override String get unableToProcess => 'Nie udało się dokończyć działania.';
@@ -598,6 +653,10 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get script => 'Skrypt';
 	@override String get disablePagesScript => 'Wyłącz AiScript na Stronach';
 	@override String get updateRemoteUser => 'Aktualizuj zdalne dane o użytkowniku';
+	@override String get unsetUserAvatar => 'Usuń awatar';
+	@override String get unsetUserAvatarConfirm => 'Czy na pewno chcesz usunąć awatar tego użytkownika?';
+	@override String get unsetUserBanner => 'Usuń baner';
+	@override String get unsetUserBannerConfirm => 'Czy na pewno chcesz usunąć baner?';
 	@override String get deleteAllFiles => 'Usuń wszystkie pliki';
 	@override String get deleteAllFilesConfirm => 'Czy na pewno chcesz usunąć wszystkie pliki?';
 	@override String get removeAllFollowing => 'Przestań obserwować';
@@ -613,6 +672,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get menu => 'Menu';
 	@override String get divider => 'Rozdzielacz';
 	@override String get addItem => 'Dodaj element';
+	@override String get rearrange => 'Posortuj';
 	@override String get relays => 'Przekaźniki';
 	@override String get addRelay => 'Dodaj przekaźnik';
 	@override String get inboxUrl => 'Adres URL skrzynki nadawczej';
@@ -647,6 +707,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get small => 'Małe';
 	@override String get generateAccessToken => 'Generuj token dostępu';
 	@override String get permission => 'Uprawnienia';
+	@override String get adminPermission => 'Uprawnienia administracyjne';
 	@override String get enableAll => 'Włącz wszystko';
 	@override String get disableAll => 'Wyłącz wszystko';
 	@override String get tokenRequested => 'Przydziel dostęp do konta';
@@ -664,9 +725,12 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get smtpUser => 'Nazwa użytkownika';
 	@override String get smtpPass => 'Hasło';
 	@override String get emptyToDisableSmtpAuth => 'Pozostaw adres e-mail i hasło puste, aby wyłączyć weryfikację SMTP';
+	@override String get smtpSecure => 'Użyj niejawnego SSL/TLS dla połączeń SMTP';
 	@override String get smtpSecureInfo => 'Wyłącz, jeżeli używasz STARTTLS';
 	@override String get testEmail => 'Przetestuj dostarczanie wiadomości e-mail';
 	@override String get wordMute => 'Wyciszenie słowa';
+	@override String get regexpError => 'Błąd wyrażenia regularnego';
+	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Wystąpił błąd w wyrażeniu regularnym w linii ${line} twoich ${tab} wyciszeń:';
 	@override String get instanceMute => 'Wyciszone instancje';
 	@override String userSaysSomething({required Object name}) => '${name} powiedział(-a) coś';
 	@override String get makeActive => 'Aktywuj';
@@ -686,18 +750,22 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get other => 'Inne';
 	@override String get regenerateLoginToken => 'Generuj token logowania ponownie';
 	@override String get regenerateLoginTokenDescription => 'Regeneruje token używany wewnętrznie podczas logowania. Zazwyczaj nie jest to konieczne. Po regeneracji wszystkie urządzenia zostaną wylogowane.';
+	@override String get theKeywordWhenSearchingForCustomEmoji => 'To jest słowo kluczowe używane podczas wyszukiwania customowych Emoji.';
 	@override String get setMultipleBySeparatingWithSpace => 'Możesz ustawić wiele, oddzielając je spacjami.';
 	@override String get fileIdOrUrl => 'ID pliku albo URL';
 	@override String get behavior => 'Zachowanie';
 	@override String get sample => 'Przykład';
 	@override String get abuseReports => 'Zgłoszenia';
 	@override String get reportAbuse => 'Zgłoś';
+	@override String get reportAbuseRenote => 'Zgłoś renote';
 	@override String reportAbuseOf({required Object name}) => 'Zgłoś ${name}';
 	@override String get fillAbuseReportDescription => 'Wypełnij szczegóły zgłoszenia. Jeżeli dotyczy ono określonego wpisu, uwzględnij jego adres URL.';
 	@override String get abuseReported => 'Twoje zgłoszenie zostało wysłane. Dziękujemy.';
+	@override String get reporter => 'Zgłaszający';
 	@override String get reporteeOrigin => 'Pochodzenie zgłoszonego';
 	@override String get reporterOrigin => 'Pochodzenie zgłaszającego';
 	@override String get forwardReport => 'Przekaż zgłoszenie do innej instancji';
+	@override String get forwardReportIsAnonymous => 'Zamiast twojego konta, anonimowe konto systemowe będzie wyświetlone jako zgłaszający na instancji zdalnej.';
 	@override String get send => 'Wyślij';
 	@override String get abuseMarkAsResolved => 'Oznacz zgłoszenie jako rozwiązane';
 	@override String get openInNewTab => 'Otwórz w nowej karcie';
@@ -742,6 +810,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get alwaysMarkSensitive => 'Oznacz domyślnie jako NSFW';
 	@override String get loadRawImages => 'Wyświetlaj zdjęcia w załącznikach w całości zamiast miniatur';
 	@override String get disableShowingAnimatedImages => 'Nie odtwarzaj animowanych obrazów';
+	@override String get highlightSensitiveMedia => 'Podkreśl wrażliwą zawartość';
 	@override String get verificationEmailSent => 'Wiadomość weryfikacyjna została wysłana. Odwiedź uwzględniony odnośnik, aby ukończyć weryfikację.';
 	@override String get notSet => 'Nie ustawiono';
 	@override String get emailVerified => 'Adres e-mail został potwierdzony';
@@ -752,6 +821,8 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get useSystemFont => 'Używaj domyślnej czcionki systemu';
 	@override String get clips => 'Klipy';
 	@override String get experimentalFeatures => 'Eksperymentalne funkcje';
+	@override String get experimental => 'Eksperymentalne';
+	@override String get thisIsExperimentalFeature => 'Ta funkcja jest eksperymentalna. Jej funkcjonalność może ulec zmianie, i może ona nie funkcjonować tak, jak zamierzono.';
 	@override String get developer => 'Programista';
 	@override String get makeExplorable => 'Pokazuj konto na stronie „Eksploruj”';
 	@override String get makeExplorableDescription => 'Jeżeli wyłączysz tę opcję, Twoje konto nie będzie wyświetlać się w sekcji „Eksploruj”.';
@@ -769,12 +840,14 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String nUsers({required Object n}) => '${n} użytkowników';
 	@override String nNotes({required Object n}) => '${n} wpisów';
 	@override String get sendErrorReports => 'Wyślij raporty o błędach';
+	@override String get sendErrorReportsDescription => 'Gdy włączone, jeśli wystąpi problem, szczegółowe informacje o błędach będą udostępniane Misskey, pomagając ulepszyć jakość Misskey.\nBędzie to zawierało informacje takie jak wersja twojego systemu operacyjnego, jakiej przeglądarki używasz, twoja aktywność w Misskey, itd.';
 	@override String get myTheme => 'Mój motyw';
 	@override String get backgroundColor => 'Tło';
 	@override String get accentColor => 'Akcent';
 	@override String get textColor => 'Tekst';
 	@override String get saveAs => 'Zapisz jako…';
 	@override String get advanced => 'Zaawansowane';
+	@override String get advancedSettings => 'Zaawansowane ustawienia';
 	@override String get value => 'Wartość';
 	@override String get createdAt => 'Utworzono';
 	@override String get updatedAt => 'Zaktualizowano';
@@ -834,12 +907,14 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get noBotProtectionWarning => 'Zabezpieczenie przed botami nie jest skonfigurowane.';
 	@override String get configure => 'Skonfiguruj';
 	@override String get postToGallery => 'Opublikuj w galerii';
+	@override String get postToHashtag => 'Postuj do tego hashtagu';
 	@override String get gallery => 'Galeria';
 	@override String get recentPosts => 'Ostatnie wpisy';
 	@override String get popularPosts => 'Popularne wpisy';
 	@override String get shareWithNote => 'Udostępnij z wpisem';
 	@override String get ads => 'Reklamy';
 	@override String get expiration => 'Ankieta kończy się';
+	@override String get startingperiod => 'Początek';
 	@override String get memo => 'Notatki';
 	@override String get priority => 'Priorytet';
 	@override String get high => 'Wysoki';
@@ -866,13 +941,19 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get accountDeletionInProgress => 'Trwa usuwanie konta';
 	@override String get usernameInfo => 'Nazwa, która identyfikuje Twoje konto spośród innych na tym serwerze.  Możesz użyć alfabetu (a~z, A~Z), cyfr (0~9) lub podkreślników (_). Nazwy użytkownika nie mogą być później zmieniane.';
 	@override String get aiChanMode => 'Tryb Ai';
+	@override String get devMode => 'Tryb programisty';
 	@override String get keepCw => 'Zostaw ostrzeżenia o zawartości';
 	@override String get pubSub => 'Konta Pub/Sub';
+	@override String get lastCommunication => 'Ostatnia komunikacja';
 	@override String get resolved => 'Rozwiązane';
 	@override String get unresolved => 'Nierozwiązane';
 	@override String get breakFollow => 'Usuń obserwującego';
+	@override String get breakFollowConfirm => 'Czy na pewno usunąć tego obserwującego?';
 	@override String get itsOn => 'Włączone';
 	@override String get itsOff => 'Wyłączone';
+	@override String get on => 'Włączone';
+	@override String get off => 'Wyłączone';
+	@override String get emailRequiredForSignup => 'Wymagaj adresu e-mail do rejestracji';
 	@override String get unread => 'Nieodczytane';
 	@override String get filter => 'Filtr';
 	@override String get controlPanel => 'Panel sterowania';
@@ -882,6 +963,8 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get classic => 'Klasyczny';
 	@override String get muteThread => 'Wycisz wątek';
 	@override String get unmuteThread => 'Wyłącz wyciszenie wątku';
+	@override String get followingVisibility => 'Widoczność obserwacji';
+	@override String get followersVisibility => 'Widoczność obserwujących';
 	@override String get continueThread => 'Pokaż kontynuację wątku';
 	@override String get deleteAccountConfirm => 'Spowoduje to nieodwracalne usunięcie Twojego konta. Kontynuować?';
 	@override String get incorrectPassword => 'Nieprawidłowe hasło.';
@@ -894,9 +977,14 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get smartphone => 'Smartfon';
 	@override String get tablet => 'Tablet';
 	@override String get auto => 'Automatycznie';
+	@override String get themeColor => 'Motyw kolorystyczny';
 	@override String get size => 'Rozmiar';
 	@override String get numberOfColumn => 'Liczba kolumn';
 	@override String get searchByGoogle => 'Szukaj';
+	@override String get instanceDefaultLightTheme => 'Domyślny motyw dla trybu jasnego';
+	@override String get instanceDefaultDarkTheme => 'Domyślny motyw dla trybu ciemnego';
+	@override String get instanceDefaultThemeDescription => 'Opis domyślnego motywu instancji';
+	@override String get mutePeriod => 'Okres wyciszenia';
 	@override String get period => 'Ankieta kończy się';
 	@override String get indefinitely => 'Nigdy';
 	@override String get tenMinutes => '10 minut';
@@ -905,29 +993,50 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get oneWeek => '1 tydzień';
 	@override String get oneMonth => 'jeden miesiąc';
 	@override String get failedToFetchAccountInformation => 'Nie udało się uzyskać informacji o koncie';
+	@override String get rateLimitExceeded => 'Limit szybkości przekroczony';
+	@override String get cropImage => 'Przytnij obraz';
+	@override String get cropImageAsk => 'Czy chcesz przyciąć obrazek?';
+	@override String get cropYes => 'Tak, przytnij';
+	@override String get cropNo => 'Nie chce przycinać';
 	@override String get file => 'Pliki';
+	@override String recentNHours({required Object n}) => 'W ciągu ostatnich ${n} godzin';
+	@override String recentNDays({required Object n}) => 'W ciągu ostatnich ${n} dni';
+	@override String get noEmailServerWarning => 'Serwer Email nie jest skonfigurowany';
 	@override String get recommended => 'Zalecane';
 	@override String get check => 'Zweryfikuj';
+	@override String get driveCapOverrideLabel => 'Zmień limit pojemności dysku użytkownika';
+	@override String get requireAdminForView => 'Aby to zobaczyć, musisz być administratorem';
+	@override String get isSystemAccount => 'To jest konto stworzone i zarządzane przez system';
+	@override String typeToConfirm({required Object x}) => 'Wprowadź ${x}, aby potwierdzić';
 	@override String get deleteAccount => 'Usuń konto';
 	@override String get document => 'Dokumentacja';
 	@override String get numberOfPageCache => 'Ilość stron w cache';
+	@override String get numberOfPageCacheDescription => 'Zwiększenie tej liczby polepszy wygodę, ale spowoduje większe obciążenie jako użycie pamięci na urządzeniu użytkownika.';
 	@override String get logoutConfirm => 'Czy na pewno chcesz się wylogować?';
 	@override String get lastActiveDate => 'Ostatnio użyte w';
 	@override String get statusbar => 'Pasek stanu';
 	@override String get pleaseSelect => 'Wybierz opcję';
 	@override String get reverse => 'Odwróć';
 	@override String get colored => 'Kolorowe';
+	@override String get refreshInterval => 'Okres aktualizacji';
 	@override String get label => 'Etykieta';
 	@override String get type => 'Typ';
 	@override String get speed => 'Prędkość';
+	@override String get slow => 'Wolny';
+	@override String get fast => 'Szybki';
+	@override String get sensitiveMediaDetection => 'Detekcja wrażliwej zawartości';
 	@override String get localOnly => 'Lokalne tylko';
+	@override String get remoteOnly => 'Tylko zdalne instancje';
 	@override String get failedToUpload => 'Przesyłanie nie powiodło się';
 	@override String get cannotUploadBecauseInappropriate => 'Nie można przesłać tego pliku, ponieważ jego części zostały wykryte jako potencjalnie nieodpowiednie.';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Przesyłanie nie powiodło się z powodu braku miejsca na dysku.';
+	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Nie można przesłać pliku, ponieważ wykracza on poza limit wielkości pliku.';
 	@override String get beta => 'Beta';
 	@override String get enableAutoSensitive => 'Automatyczne oznaczanie NSFW';
 	@override String get enableAutoSensitiveDescription => 'Umożliwia automatyczne wykrywanie i oznaczanie zawartości NSFW za pomocą uczenia maszynowego. Nawet jeśli ta opcja jest wyłączona, może być włączona w całej instancji.';
+	@override String get activeEmailValidationDescription => 'Włącza bardziej restrykcyjną walidację adresów e-mail, co obejmuje sprawdzanie adresów jednorazowych i czy komunikacja z tym adresem jest możliwa. Gdy wyłączone, tylko format adresu e-mail jest sprawdzany.';
 	@override String get navbar => 'Pasek nawigacyjny';
+	@override String get shuffle => 'Mieszaj';
 	@override String get account => 'Konta';
 	@override String get move => 'Przenieś';
 	@override String get pushNotification => 'Powiadomienia';
@@ -937,16 +1046,58 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get pushNotificationNotSupported => 'Przeglądarka lub instancja nie obsługuje powiadomień push';
 	@override String get sendPushNotificationReadMessage => 'Usuń powiadomienia push po przeczytaniu powiadomień i wiadomości.';
 	@override String get sendPushNotificationReadMessageCaption => 'Chwilowo pojawi się powiadomienie "". Może wzrosnąć zużycie baterii urządzenia.';
+	@override String get windowMaximize => 'Maksymalizuj';
+	@override String get windowMinimize => 'Minimalizuj';
+	@override String get windowRestore => 'Przywróć';
+	@override String get caption => 'Legenda';
 	@override String get loggedInAsBot => 'Jesteś obecnie zalogowany/a jako bot';
+	@override String get tools => 'Narzędzia';
+	@override String get cannotLoad => 'Nie można wczytać';
+	@override String get numberOfProfileView => 'Wyświetlenia profilu';
 	@override String get like => 'Polub';
+	@override String get unlike => 'Usuń polubienie';
+	@override String get numberOfLikes => 'Liczba polubień';
 	@override String get show => 'Wyświetlanie';
+	@override String get neverShow => 'Nie pokazuj ponownie';
+	@override String get remindMeLater => 'Przypomnij później';
+	@override String get didYouLikeMisskey => 'Czy Misskey się tobie spodobało?';
+	@override String pleaseDonate({required Object host}) => '${host} używa darmowego oprogramowania — Misskey. Bylibyśmy bardzo wdzięczni za datki, które pozwolą na kontynuację rozwoju Misskey!';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'Odpowiedni kod źródłowy jest dostępny pod ${anchor}.';
+	@override String get roles => 'Role';
+	@override String get role => 'Rola';
+	@override String get noRole => 'Rola nie znaleziona';
+	@override String get normalUser => 'Normalny użytkownik';
+	@override String get undefined => 'Niezdefiniowane';
+	@override String get assign => 'Przydziel';
+	@override String get unassign => 'Cofnij przydzielenie';
 	@override String get color => 'Kolor';
+	@override String get manageCustomEmojis => 'Zarządzaj niestandardowymi Emoji';
+	@override String get manageAvatarDecorations => 'Zarządzaj dekoracjami awatara';
+	@override String get invalidParamError => 'Błąd parametrów';
+	@override String get permissionDeniedError => 'Odrzucono operacje';
+	@override String get permissionDeniedErrorDescription => 'Konto nie posiada uprawnień';
+	@override String get preset => 'Konfiguracja';
+	@override String get selectFromPresets => 'Wybierz konfiguracje';
+	@override String get achievements => 'Osiągnięcia';
+	@override String get thisPostMayBeAnnoyingCancel => 'Odrzuć';
+	@override String get internalServerError => 'Wewnętrzny błąd serwera';
+	@override String get internalServerErrorDescription => 'Niespodziewany błąd po stronie serwera';
+	@override String get copyErrorInfo => 'Kopiuj informacje o błędzie';
+	@override String get joinThisServer => 'Dołącz do chaty';
+	@override String get disableFederationOk => 'Wyłącz federacje';
+	@override String get invitationRequiredToRegister => 'Ten serwer wymaga zaproszenia. Tylko osoby z zaproszeniem mogą się zarejestrować';
+	@override String get emailNotSupported => 'Wysyłanie wiadomości E-mail nie jest obsługiwane na tym serwerze';
+	@override String get postToTheChannel => 'Publikuj na kanale';
 	@override String get youFollowing => 'Śledzeni';
 	@override String get icon => 'Awatar';
 	@override String get replies => 'Odpowiedz';
 	@override String get renotes => 'Udostępnij';
 	@override String get sourceCode => 'Kod źródłowy';
 	@override String get flip => 'Odwróć';
+	@override String lastNDays({required Object n}) => 'W ciągu ostatnich ${n} dni';
+	@override String get surrender => 'Odrzuć';
+	@override String get gameRetry => 'Spróbuj ponownie';
+	@override late final _StringsMisskeyBubbleGamePlPl bubbleGame_ = _StringsMisskeyBubbleGamePlPl._(_root);
 	@override late final _StringsMisskeyRolePlPl role_ = _StringsMisskeyRolePlPl._(_root);
 	@override late final _StringsMisskeySensitiveMediaDetectionPlPl sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionPlPl._(_root);
 	@override late final _StringsMisskeyEmailUnavailablePlPl emailUnavailable_ = _StringsMisskeyEmailUnavailablePlPl._(_root);
@@ -996,6 +1147,16 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyReversiPlPl reversi_ = _StringsMisskeyReversiPlPl._(_root);
 }
 
+// Path: misskey.bubbleGame_
+class _StringsMisskeyBubbleGamePlPl extends _StringsMisskeyBubbleGameEnUs {
+	_StringsMisskeyBubbleGamePlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyBubbleGameScorePlPl score_ = _StringsMisskeyBubbleGameScorePlPl._(_root);
+}
+
 // Path: misskey.role_
 class _StringsMisskeyRolePlPl extends _StringsMisskeyRoleEnUs {
 	_StringsMisskeyRolePlPl._(_StringsPlPl root) : this._root = root, super._(root);
@@ -1003,8 +1164,10 @@ class _StringsMisskeyRolePlPl extends _StringsMisskeyRoleEnUs {
 	@override final _StringsPlPl _root; // ignore: unused_field
 
 	// Translations
+	@override String get assignTarget => 'Przydziel';
 	@override String get priority => 'Priorytet';
 	@override late final _StringsMisskeyRolePriorityPlPl priority_ = _StringsMisskeyRolePriorityPlPl._(_root);
+	@override late final _StringsMisskeyRoleOptionsPlPl options_ = _StringsMisskeyRoleOptionsPlPl._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
@@ -1808,6 +1971,16 @@ class _StringsMisskeyReversiPlPl extends _StringsMisskeyReversiEnUs {
 	@override String get total => 'Łącznie';
 }
 
+// Path: misskey.bubbleGame_.score_
+class _StringsMisskeyBubbleGameScorePlPl extends _StringsMisskeyBubbleGameScoreEnUs {
+	_StringsMisskeyBubbleGameScorePlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Wynik';
+}
+
 // Path: misskey.role_.priority_
 class _StringsMisskeyRolePriorityPlPl extends _StringsMisskeyRolePriorityEnUs {
 	_StringsMisskeyRolePriorityPlPl._(_StringsPlPl root) : this._root = root, super._(root);
@@ -1818,6 +1991,17 @@ class _StringsMisskeyRolePriorityPlPl extends _StringsMisskeyRolePriorityEnUs {
 	@override String get low => 'Niski';
 	@override String get middle => 'Średnie';
 	@override String get high => 'Wysoki';
+}
+
+// Path: misskey.role_.options_
+class _StringsMisskeyRoleOptionsPlPl extends _StringsMisskeyRoleOptionsEnUs {
+	_StringsMisskeyRoleOptionsPlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get canManageCustomEmojis => 'Zarządzaj niestandardowymi Emoji';
+	@override String get canManageAvatarDecorations => 'Zarządzaj dekoracjami awatara';
 }
 
 // Path: misskey.email_.follow_

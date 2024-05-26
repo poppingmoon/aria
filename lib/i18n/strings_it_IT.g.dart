@@ -165,7 +165,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get notes => 'Note';
 	@override String get following => 'Follow';
 	@override String get followers => 'Follower';
-	@override String get followsYou => 'Segue';
+	@override String get followsYou => 'Follower';
 	@override String get createList => 'Aggiungi una nuova lista';
 	@override String get manageLists => 'Gestisci liste';
 	@override String get error => 'Errore';
@@ -214,12 +214,12 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get markAsSensitive => 'Segna come esplicito';
 	@override String get unmarkAsSensitive => 'Non segnare come esplicito ';
 	@override String get enterFileName => 'Nome del file';
-	@override String get mute => 'Silenzia';
+	@override String get mute => 'Silenziare';
 	@override String get unmute => 'Riattiva l\'audio';
-	@override String get renoteMute => 'Silenzia le Rinota';
+	@override String get renoteMute => 'Silenziare le Rinota';
 	@override String get renoteUnmute => 'Non silenziare le Rinota';
-	@override String get block => 'Blocca';
-	@override String get unblock => 'Sblocca';
+	@override String get block => 'Bloccare';
+	@override String get unblock => 'Sbloccare';
 	@override String get suspend => 'Sospensione';
 	@override String get unsuspend => 'Revoca la sospensione';
 	@override String get blockConfirm => 'Vuoi davvero bloccare il profilo?';
@@ -280,8 +280,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get perHour => 'orario';
 	@override String get perDay => 'giornaliero';
 	@override String get stopActivityDelivery => 'Interrompi la distribuzione di attività';
-	@override String get blockThisInstance => 'Blocca questa istanza';
-	@override String get silenceThisInstance => 'Silenzia l\'istanza';
+	@override String get blockThisInstance => 'Bloccare l\'istanza';
+	@override String get silenceThisInstance => 'Silenziare l\'istanza';
 	@override String get operations => 'Operazioni';
 	@override String get software => 'Software';
 	@override String get version => 'Versione';
@@ -303,7 +303,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Elenca le istanze che vuoi bloccare, una per riga. Esse non potranno più interagire con la tua istanza.';
 	@override String get silencedInstances => 'Istanze silenziate';
 	@override String get silencedInstancesDescription => 'Elenca i nomi host delle istanze che vuoi silenziare. Tutti i profili nelle istanze silenziate vengono trattati come tali. Possono solo inviare richieste di follow e menzionare soltanto i profili locali che seguono. Le istanze bloccate non sono interessate.';
-	@override String get muteAndBlock => 'Silenziati / Bloccati';
+	@override String get muteAndBlock => 'Silenziare e bloccare';
 	@override String get mutedUsers => 'Profili silenziati';
 	@override String get blockedUsers => 'Profili bloccati';
 	@override String get noUsers => 'Non ci sono profili';
@@ -480,6 +480,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get antennaSource => 'Fonte dell\'antenna';
 	@override String get antennaKeywords => 'Parole chiavi da ricevere';
 	@override String get antennaExcludeKeywords => 'Parole chiavi da escludere';
+	@override String get antennaExcludeBots => 'Escludere i Bot';
 	@override String get antennaKeywordsDescription => 'Sparando con uno spazio indichi la condizione E (and). Separando con un a capo, indichi la condizione O (or).';
 	@override String get notifyAntenna => 'Invia notifiche delle nuove note';
 	@override String get withFileAntenna => 'Solo note con file in allegato';
@@ -490,7 +491,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get connectedTo => 'Connessione ai seguenti profili:';
 	@override String get notesAndReplies => 'Note e risposte';
 	@override String get withFiles => 'Con allegati';
-	@override String get silence => 'Silenzia';
+	@override String get silence => 'Silenziare';
 	@override String get silenceConfirm => 'Vuoi davvero silenziare questo profilo?';
 	@override String get unsilence => 'Riattiva';
 	@override String get unsilenceConfirm => 'Vuoi davvero riattivare questo profilo?';
@@ -530,7 +531,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get notFound => 'Non trovato';
 	@override String get notFoundDescription => 'Nessuna pagina corrisponde all\'URL indicata.';
 	@override String get uploadFolder => 'Destinazione caricamento predefinita';
-	@override String get markAsReadAllNotifications => 'Segna tutte le notifiche come lette';
+	@override String get markAsReadAllNotifications => 'Segnare tutte le notifiche come lette';
 	@override String get markAsReadAllUnreadNotes => 'Segna tutte le note come lette';
 	@override String get markAsReadAllTalkMessages => 'Segna tutte le chat come lette';
 	@override String get help => 'Guida';
@@ -574,6 +575,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get native => 'Nativo';
 	@override String get disableDrawer => 'Non mostrare il menù sul drawer';
 	@override String get showNoteActionsOnlyHover => 'Mostra le azioni delle Note solo al passaggio del mouse';
+	@override String get showReactionsCount => 'Visualizza il numero di reazioni su una nota';
 	@override String get noHistory => 'Nessuna cronologia';
 	@override String get signinHistory => 'Storico degli accessi al profilo';
 	@override String get enableAdvancedMfm => 'Attiva MFM avanzati';
@@ -657,7 +659,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get output => 'Uscita';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Disabilita AiScript nelle pagine';
-	@override String get updateRemoteUser => 'Aggiorna le informazioni dal profilo remoto';
+	@override String get updateRemoteUser => 'Aggiorna dati dal profilo remoto';
 	@override String get unsetUserAvatar => 'Rimozione foto profilo';
 	@override String get unsetUserAvatarConfirm => 'Vuoi davvero rimuovere la foto profilo?';
 	@override String get unsetUserBanner => 'Rimuovi intestazione profilo';
@@ -667,7 +669,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get removeAllFollowing => 'Annulla tutti i follow';
 	@override String removeAllFollowingDescription({required Object host}) => 'Cancella tutti i follows del server ${host}. Per favore, esegui se, ad esempio, l\'istanza non esiste più.';
 	@override String get userSuspended => 'L\'utente è in sospensione';
-	@override String get userSilenced => 'Profilo silente.';
+	@override String get userSilenced => 'Profilo silenziato';
 	@override String get yourAccountSuspendedTitle => 'Questo profilo è sospeso';
 	@override String get yourAccountSuspendedDescription => 'Questo profilo è stato sospeso a causa di una violazione del regolamento. Per informazioni, contattare l\'amministrazione. Si prega di non creare un nuovo account.';
 	@override String get tokenRevoked => 'Il token non è valido';
@@ -737,7 +739,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get hardWordMute => 'Filtro parole forte';
 	@override String get regexpError => 'errore regex';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Si è verificato un errore nell\'espressione regolare alla riga ${line} della parola muta ${tab}:';
-	@override String get instanceMute => 'Silenzia l\'istanza';
+	@override String get instanceMute => 'Silenziare l\'istanza';
 	@override String userSaysSomething({required Object name}) => '${name} ha parlato';
 	@override String get makeActive => 'Attiva';
 	@override String get display => 'Visualizza';
@@ -762,14 +764,14 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get behavior => 'Comportamento';
 	@override String get sample => 'Esempio';
 	@override String get abuseReports => 'Segnalazioni';
-	@override String get reportAbuse => 'Segnala';
-	@override String get reportAbuseRenote => 'Segnala la Rinota';
-	@override String reportAbuseOf({required Object name}) => 'Segnala ${name}';
+	@override String get reportAbuse => 'Segnalare';
+	@override String get reportAbuseRenote => 'Segnalare la Rinota';
+	@override String reportAbuseOf({required Object name}) => 'Segnalare ${name}';
 	@override String get fillAbuseReportDescription => 'Per favore, spiegaci il motivo della segnalazione. Se riguarda una Nota precisa, indica anche l\'indirizzo URL.';
 	@override String get abuseReported => 'La segnalazione è stata inviata. Grazie.';
 	@override String get reporter => 'il corrispondente';
-	@override String get reporteeOrigin => 'Origine del segnalato';
-	@override String get reporterOrigin => 'Origine del segnalatore';
+	@override String get reporteeOrigin => 'Segnalazione a';
+	@override String get reporterOrigin => 'Segnalazione da';
 	@override String get forwardReport => 'Inoltro di un report a un\'istanza remota.';
 	@override String get forwardReportIsAnonymous => 'L\'istanza remota non vedrà le tue informazioni, apparirai come profilo di sistema, anonimo.';
 	@override String get send => 'Inviare';
@@ -941,7 +943,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get useBlurEffect => 'Utilizza effetto sfocatura';
 	@override String get learnMore => 'Più dettagli';
 	@override String get misskeyUpdated => 'Misskey è stato aggiornato!';
-	@override String get whatIsNew => 'Visualizza le informazioni sull\'aggiornamento';
+	@override String get whatIsNew => 'Informazioni sull\'aggiornamento';
 	@override String get translate => 'Traduci';
 	@override String translatedFrom({required Object x}) => 'Traduzione da ${x}';
 	@override String get accountDeletionInProgress => 'È in corso l\'eliminazione del profilo';
@@ -967,7 +969,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get makeReactionsPublic => 'Pubblicare la lista delle reazioni.';
 	@override String get makeReactionsPublicDescription => 'La lista delle reazioni che avete fatto è a disposizione di tutti.';
 	@override String get classic => 'Classico';
-	@override String get muteThread => 'Silenzia conversazione';
+	@override String get muteThread => 'Silenziare conversazione';
 	@override String get unmuteThread => 'Riattiva la conversazione';
 	@override String get followingVisibility => 'Visibilità dei profili seguiti';
 	@override String get followersVisibility => 'Visibilità dei profili che ti seguono';
@@ -1049,11 +1051,11 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get account => 'Account';
 	@override String get move => 'Sposta';
 	@override String get pushNotification => 'Notifiche Push';
-	@override String get subscribePushNotification => 'Attiva le notifiche push';
-	@override String get unsubscribePushNotification => 'Disattiva le notifiche push';
+	@override String get subscribePushNotification => 'Attivare le notifiche push';
+	@override String get unsubscribePushNotification => 'Disattivare le notifiche push';
 	@override String get pushNotificationAlreadySubscribed => 'Le notifiche push sono già attivate';
 	@override String get pushNotificationNotSupported => 'Il client o il server non supporta le notifiche push';
-	@override String get sendPushNotificationReadMessage => 'Elimina le notifiche push dopo la relativa lettura';
+	@override String get sendPushNotificationReadMessage => 'Eliminare le notifiche push dopo la relativa lettura';
 	@override String get sendPushNotificationReadMessageCaption => 'Se possibile, verrà mostrata brevemente una notifica con il testo "". Potrebbe influire negativamente sulla durata della batteria.';
 	@override String get windowMaximize => 'Ingrandisci';
 	@override String get windowMinimize => 'Contrai finestra';
@@ -1240,6 +1242,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get edited => 'Modificato';
 	@override String get notificationRecieveConfig => 'Preferenze di notifica';
 	@override String get mutualFollow => 'Follow reciproco';
+	@override String get followingOrFollower => 'Following o Follower';
 	@override String get fileAttachedOnly => 'Solo con allegati';
 	@override String get showRepliesToOthersInTimeline => 'Risposte altrui nella TL';
 	@override String get hideRepliesToOthersInTimeline => 'Nascondi Riposte altrui nella TL';
@@ -1290,6 +1293,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get showReplay => 'Vedi i replay';
 	@override String get replay => 'Replay';
 	@override String get replaying => 'Replay in corso';
+	@override String get endReplay => 'Termina replay';
+	@override String get copyReplayData => 'Copia replay';
 	@override String get ranking => 'Classifica';
 	@override String lastNDays({required Object n}) => 'Ultimi ${n} giorni';
 	@override String get backToTitle => 'Torna al titolo';
@@ -1297,7 +1302,17 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get withSensitive => 'Mostra le Note con allegati espliciti';
 	@override String userSaysSomethingSensitive({required Object name}) => 'Note da ${name} con allegati espliciti';
 	@override String get enableHorizontalSwipe => 'Trascina per invertire i tab';
+	@override String get loading => 'Caricamento';
 	@override String get surrender => 'Annulla';
+	@override String get gameRetry => 'Riprova';
+	@override String get notUsePleaseLeaveBlank => 'Lasciare vuoto, se non in uso';
+	@override String get useTotp => 'Usare il codice OTP';
+	@override String get useBackupCode => 'Usare il codice usa-e-getta';
+	@override String get launchApp => 'Esegui l\'App';
+	@override String get useNativeUIForVideoAudioPlayer => 'Riprodurre audio/video usando le funzionalità del browser';
+	@override String get keepOriginalFilename => 'Mantieni il nome file originale';
+	@override String get keepOriginalFilenameDescription => 'Disattivandola, i file verranno caricati usando nomi casuali.';
+	@override String get noDescription => 'Manca la descrizione';
 	@override late final _StringsMisskeyBubbleGameItIt bubbleGame_ = _StringsMisskeyBubbleGameItIt._(_root);
 	@override late final _StringsMisskeyAnnouncementItIt announcement_ = _StringsMisskeyAnnouncementItIt._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingItIt initialAccountSetting_ = _StringsMisskeyInitialAccountSettingItIt._(_root);
@@ -1365,6 +1380,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyHemisphereItIt hemisphere_ = _StringsMisskeyHemisphereItIt._(_root);
 	@override late final _StringsMisskeyReversiItIt reversi_ = _StringsMisskeyReversiItIt._(_root);
 	@override late final _StringsMisskeyOfflineScreenItIt offlineScreen_ = _StringsMisskeyOfflineScreenItIt._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingItIt urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingItIt._(_root);
+	@override late final _StringsMisskeyMediaControlsItIt mediaControls_ = _StringsMisskeyMediaControlsItIt._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -1375,6 +1392,8 @@ class _StringsMisskeyBubbleGameItIt extends _StringsMisskeyBubbleGameEnUs {
 
 	// Translations
 	@override String get howToPlay => 'Come giocare';
+	@override String get hold => 'Tieni';
+	@override late final _StringsMisskeyBubbleGameScoreItIt score_ = _StringsMisskeyBubbleGameScoreItIt._(_root);
 	@override late final _StringsMisskeyBubbleGameHowToPlayItIt howToPlay_ = _StringsMisskeyBubbleGameHowToPlayItIt._(_root);
 }
 
@@ -1395,7 +1414,7 @@ class _StringsMisskeyAnnouncementItIt extends _StringsMisskeyAnnouncementEnUs {
 	@override String readConfirmText({required Object title}) => 'Hai già letto "${title}˝?';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Ti consigliamo di utilizzare gli annunci per pubblicare informazioni tempestive e limitate nel tempo, anziché informazioni importanti a lungo andare nel tempo, poiché potrebbero risultare difficili da ritrovare e peggiorare la fruibilità del servizio, specialmente alle nuove persone iscritte.';
 	@override String get dialogAnnouncementUxWarn => 'Ti consigliamo di usarli con cautela, poiché è molto probabile che avere più di un annuncio in stile "finestra di dialogo" peggiori sensibilmente la fruibilità del servizio, specialmente alle nuove persone iscritte.';
-	@override String get silence => 'Silenzia gli annunci';
+	@override String get silence => 'Silenziare gli annunci';
 	@override String get silenceDescription => 'Se attivi questa opzione, non riceverai notifiche sugli annunci, evitando di contrassegnarle come già lette.';
 }
 
@@ -1495,7 +1514,7 @@ class _StringsMisskeyAccountMigrationItIt extends _StringsMisskeyAccountMigratio
 	// Translations
 	@override String get moveFrom => 'Migra un altro profilo dentro a questo';
 	@override String get moveFromSub => 'Crea un alias verso un altro profilo remoto';
-	@override String moveFromLabel({required Object n}) => 'Profilo da cui migrare: ${n}';
+	@override String moveFromLabel({required Object n}) => 'Profilo da cui migrare #${n}';
 	@override String get moveFromDescription => 'Se desideri spostare i profili follower da un altro profilo a questo, devi prima creare un alias qui. Assicurati averlo creato PRIMA di eseguire l\'attività! Inserisci l\'indirizzo del profilo mittente in questo modo: @persona@istanza.it';
 	@override String get moveTo => 'Migrare questo profilo verso un un altro';
 	@override String get moveToLabel => 'Profilo verso cui migrare';
@@ -1697,6 +1716,7 @@ class _StringsMisskeyPluginItIt extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => 'Si prega di installare soltanto estensioni che provengono da fonti affidabili.';
 	@override String get manage => 'Gestisci estensioni';
 	@override String get viewSource => 'Visualizza sorgente';
+	@override String get viewLog => 'Mostra log';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1851,7 +1871,7 @@ class _StringsMisskeyInstanceMuteItIt extends _StringsMisskeyInstanceMuteEnUs {
 	@override String get instanceMuteDescription => 'Disattiva tutte le note, le note di rinvio (condivisione) dell\'istanza configurata, comprese le risposte agli utenti dell\'istanza.';
 	@override String get instanceMuteDescription2 => 'Impostazione separata da una nuova riga';
 	@override String get title => 'Nasconde le note dell\'istanza configurata.';
-	@override String get heading => 'Istanze da silenziare.';
+	@override String get heading => 'Istanze da silenziare';
 }
 
 // Path: misskey.theme_
@@ -1982,7 +2002,6 @@ class _StringsMisskeyX2faItIt extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Registra una App di autenticazione a due fattori (2FA/MFA)';
 	@override String step1({required Object a, required Object b}) => 'Innanzitutto, installa sul dispositivo un\'App di autenticazione come ${a} o ${b}.';
 	@override String get step2 => 'Quindi, tramite la App installata, scansiona questo codice QR.';
-	@override String get step2Click => 'Cliccando sul codice QR, puoi registrarlo con l\'app di autenticazione o il portachiavi installato sul tuo dispositivo.';
 	@override String get step2Uri => 'Inserisci il seguente URL se desideri utilizzare una App per PC';
 	@override String get step3Title => 'Inserisci il codice di verifica';
 	@override String get step3 => 'Inserite il token visualizzato nell\'app e il gioco è fatto.';
@@ -2006,6 +2025,7 @@ class _StringsMisskeyX2faItIt extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => 'Puoi usare questi codici usa-e-getta per ottenere l\'accesso al tuo profilo in caso sia impossibile usare l\'App col codice OTP. Salvali in un posto sicuro.';
 	@override String get backupCodeUsedWarning => 'È stato usato un codice usa-e-getta. Per favore, riconfigura l\'autenticazione a due fattori il prima possibile, nel caso la configurazione precedente abbia smesso di funzionare.';
 	@override String get backupCodesExhaustedWarning => 'Hai esaurito i codici usa-e-getta. Se l\'App che genera il codice OTP non è più disponibile, non potrai più accedere al tuo profilo. Ripeti la configurazione per l\'autenticazione a due fattori.';
+	@override String get moreDetailedGuideHere => 'Informazioni dettagliate sull\'autenticazione multi fattore (2FA/MFA)';
 }
 
 // Path: misskey.permissions_
@@ -2030,8 +2050,8 @@ class _StringsMisskeyPermissionsItIt extends _StringsMisskeyPermissionsEnUs {
 	@override String get readMutes => 'Vedi i profili silenziati';
 	@override String get writeMutes => 'Gestisci i profili silenziati';
 	@override String get writeNotes => 'Creare / Eliminare note';
-	@override String get readNotifications => 'Visualizza notifiche';
-	@override String get writeNotifications => 'Gerisci notifiche';
+	@override String get readNotifications => 'Visualizzare notifiche';
+	@override String get writeNotifications => 'Gestire notifiche';
 	@override String get readReactions => 'Vedi reazioni';
 	@override String get writeReactions => 'Gerisci reazioni';
 	@override String get writeVotes => 'Votare';
@@ -2380,6 +2400,7 @@ class _StringsMisskeyPlayItIt extends _StringsMisskeyPlayEnUs {
 	@override String get title => 'Titolo';
 	@override String get script => 'Script';
 	@override String get summary => 'Descrizione';
+	@override String get visibilityDescription => 'Impostarlo su privato significa che non verrà visualizzato sul tuo profilo, ma chiunque ha l\'URL potrà comunque accedervi.';
 }
 
 // Path: misskey.pages_
@@ -2462,13 +2483,15 @@ class _StringsMisskeyNotificationItIt extends _StringsMisskeyNotificationEnUs {
 	@override String get roleAssigned => 'Ruolo assegnato';
 	@override String get emptyPushNotificationMessage => 'Le notifiche push sono state aggiornate.';
 	@override String get achievementEarned => 'Obiettivo raggiunto';
-	@override String get testNotification => 'Prova la notifica';
-	@override String get checkNotificationBehavior => 'Prova il comportamento della notifica';
+	@override String get testNotification => 'Provare la notifica';
+	@override String get checkNotificationBehavior => 'Provare il comportamento della notifica';
 	@override String get sendTestNotification => 'Spedisci una notifica di prova';
 	@override String get notificationWillBeDisplayedLikeThis => 'La notifica apparirà così';
 	@override String reactedBySomeUsers({required Object n}) => '${n} reazioni';
+	@override String likedBySomeUsers({required Object n}) => '${n} apprezzamenti';
 	@override String renotedBySomeUsers({required Object n}) => '${n} Rinota';
-	@override String followedBySomeUsers({required Object n}) => '${n} nuovi follower';
+	@override String followedBySomeUsers({required Object n}) => '${n} follower';
+	@override String get flushNotification => 'Azzera le notifiche';
 	@override late final _StringsMisskeyNotificationTypesItIt types_ = _StringsMisskeyNotificationTypesItIt._(_root);
 	@override late final _StringsMisskeyNotificationActionsItIt actions_ = _StringsMisskeyNotificationActionsItIt._(_root);
 }
@@ -2580,6 +2603,7 @@ class _StringsMisskeyModerationLogTypesItIt extends _StringsMisskeyModerationLog
 	@override String get resetPassword => 'Password azzerata';
 	@override String get suspendRemoteInstance => 'Istanza remota sospesa';
 	@override String get unsuspendRemoteInstance => 'Istanza remota riattivata';
+	@override String get updateRemoteInstanceNote => 'Aggiornamento del promemoria di moderazione per il server remoto';
 	@override String get markSensitiveDriveFile => 'File nel Drive segnato come esplicito';
 	@override String get unmarkSensitiveDriveFile => 'File nel Drive segnato come non esplicito';
 	@override String get resolveAbuseReport => 'Segnalazione risolta';
@@ -2699,6 +2723,8 @@ class _StringsMisskeyReversiItIt extends _StringsMisskeyReversiEnUs {
 	@override String get opponentHasSettingsChanged => 'L\'avversario ha cambiato configurazione';
 	@override String get allowIrregularRules => 'Regole inconsuete (completamente libere)';
 	@override String get disallowIrregularRules => 'Impedire le regole inconsuete';
+	@override String get showBoardLabels => 'Mostra le coordinate del gioco';
+	@override String get useAvatarAsStone => 'Immagini profilo come pedine';
 }
 
 // Path: misskey.offlineScreen_
@@ -2710,6 +2736,54 @@ class _StringsMisskeyOfflineScreenItIt extends _StringsMisskeyOfflineScreenEnUs 
 	// Translations
 	@override String get title => 'Scollegato. Impossibile connettersi al server';
 	@override String get header => 'Impossibile connettersi al server';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingItIt extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Impostazioni per l\'anteprima delle URL';
+	@override String get enable => 'Attiva l\'anteprima delle URL';
+	@override String get timeout => 'Timeout dell\'anteprima in millisecondi';
+	@override String get timeoutDescription => 'Impegna al massimo il tempo indicato, altrimenti ignora l\'anteprima';
+	@override String get maximumContentLength => 'Grandezza del contenuto (Content-Length in byte)';
+	@override String get maximumContentLengthDescription => 'Se la grandezza supera il valore, l\'anteprima verrà ignorata.';
+	@override String get requireContentLength => 'Genenerare l\'anteprima solo quando è definito Content-Length';
+	@override String get requireContentLengthDescription => 'In assenza di questo parametro dal server remoto, l\'anteprima verrà ignorata.';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => 'Definire con quale User-Agent si intende identificarsi durante l\'acquisizione di un\'anteprima. Se è vuoto, useremo il valore predefinito.';
+	@override String get summaryProxy => 'Endpoint proxy che genera l\'anteprima';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsItIt extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => 'Sovraimpressione';
+	@override String get playbackRate => 'Velocità di riproduzione';
+	@override String get loop => 'Ripetizione infinita';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _StringsMisskeyBubbleGameScoreItIt extends _StringsMisskeyBubbleGameScoreEnUs {
+	_StringsMisskeyBubbleGameScoreItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Punteggio';
+	@override String get scoreYen => 'Capitale';
+	@override String get highScore => 'Punteggio migliore';
+	@override String get maxChain => 'Miglior combo';
+	@override String yen({required Object yen}) => '${yen}￥';
+	@override String estimatedQty({required Object qty}) => '${qty} punti';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => 'Onigiri ${onigiriQtyWithUnit}';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -2762,7 +2836,7 @@ class _StringsMisskeyInitialTutorialReactionItIt extends _StringsMisskeyInitialT
 	@override String get letsTryReacting => 'Puoi aggiungere una Reazione cliccando il bottone "+" (più) della relativa Nota. Prova ad aggiungerne una a questa Nota di esempio!';
 	@override String get reactToContinue => 'Aggiungere la Reazione ti consentirà di procedere col tutorial.';
 	@override String get reactNotification => 'Quando qualcuno reagisce alle tue Note, ricevi una notifica in tempo reale.';
-	@override String get reactDone => 'Puoi annullare la tua Reazione premendo il bottone "ー" (meno)';
+	@override String get reactDone => 'Annulla la tua Reazione premendo il bottone "ー" (meno)';
 }
 
 // Path: misskey.initialTutorial_.timeline_
@@ -2774,10 +2848,10 @@ class _StringsMisskeyInitialTutorialTimelineItIt extends _StringsMisskeyInitialT
 	// Translations
 	@override String get title => 'Come funziona la Timeline';
 	@override String get description1 => 'Misskey fornisce alcune Timeline (sequenze cronologiche di Note). Una di queste potrebbe essere stata disattivata dagli amministratori.';
-	@override String get home => 'Puoi vedere le Note provenienti dai profili che segui (follow).';
-	@override String get local => 'Puoi vedere tutte le Note pubblicate dai profili di questa istanza.';
-	@override String get social => 'Puoi vedere sia le Note della Timeline Home che quelle della Timeline Locale, insieme!';
-	@override String get global => 'Puoi vedere le Note da pubblicate da tutte le altre istanze federate con la nostra.';
+	@override String get home => 'le Note provenienti dai profili che segui (follow).';
+	@override String get local => 'tutte le Note pubblicate dai profili di questa istanza.';
+	@override String get social => 'sia le Note della Timeline Home che quelle della Timeline Locale, insieme!';
+	@override String get global => 'le Note da pubblicate da tutte le altre istanze federate con la nostra.';
 	@override String get description2 => 'Nella parte superiore dello schermo, puoi scegliere una Timeline o l\'altra in qualsiasi momento.';
 	@override String description3({required Object link}) => 'Ci sono anche sequenze temporali di elenchi, sequenze temporali di canali, ecc. Per ulteriori dettagli, consultare il ${link}.\nPuoi vedere anche Timeline delle liste di profili (se ne hai create), canali, ecc... Per i dettagli, visita ${link}.';
 }
@@ -2803,12 +2877,12 @@ class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveItIt extends _S
 
 	// Translations
 	@override String get title => 'Come indicare che gli allegati sono espliciti?';
-	@override String get description => 'Contrassegnare gli allegati come espliciti, va fatto quando è richiesto dal regolamento del server o quando gli allegati non devono essere immediatamente visibili.';
+	@override String get description => 'Si fa quando è richiesto dal regolamento del server o quando non devono essere visibili immediatamente.';
 	@override String get tryThisFile => 'Prova a rendere esplicite le immagini allegate a questo modulo!';
 	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteItIt exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteItIt._(_root);
-	@override String get method => 'Per indicare che un allegato è esplicito, tocca il file per aprirne il menu e scegliere la voce "Segna come esplicito".';
-	@override String get sensitiveSucceeded => 'Quando alleghi file, assicurati di indicare se è materiale esplicito, in modo appropriato, in base al regolamento del tuo server.';
-	@override String get doItToContinue => 'Impostando l\'immagine come esplicita, potrai procedere col tutorial.';
+	@override String get method => 'Tocca il file, si aprirà il menu, scegli la voce "Segna come esplicito"';
+	@override String get sensitiveSucceeded => 'Quando alleghi file, assicurati di indicare se è materiale esplicito in modo appropriato, decidi in base al regolamento dell\'istanza.';
+	@override String get doItToContinue => 'Imposta l\'immagine come esplicita per procedere col tutorial.';
 }
 
 // Path: misskey.initialTutorial_.done_
@@ -2931,6 +3005,7 @@ class _StringsMisskeyRoleOptionsItIt extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get gtlAvailable => 'Disponibilità della Timeline Federata';
 	@override String get ltlAvailable => 'Disponibilità della Timeline Locale';
 	@override String get canPublicNote => 'Scrivere Note con Visibilità Pubblica';
+	@override String get mentionMax => 'Numero massimo di menzioni in una nota';
 	@override String get canInvite => 'Generare codici di invito all\'istanza';
 	@override String get inviteLimit => 'Limite di codici invito';
 	@override String get inviteLimitCycle => 'Intervallo di emissione del codice di invito';
@@ -2962,6 +3037,7 @@ class _StringsMisskeyRoleConditionItIt extends _StringsMisskeyRoleConditionEnUs 
 	@override final _StringsItIt _root; // ignore: unused_field
 
 	// Translations
+	@override String get roleAssignedTo => 'Assegnato a ruoli manualmente';
 	@override String get isLocal => 'Profilo locale';
 	@override String get isRemote => 'Profilo remoto';
 	@override String get createdLessThan => 'Profilo creato da meno di N';
@@ -3083,6 +3159,8 @@ class _StringsMisskeyPagesBlocksItIt extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => 'Sezione';
 	@override String get image => 'Immagini';
 	@override String get button => 'Pulsante';
+	@override String get dynamic => 'Riquadri dinamici';
+	@override String dynamicDescription({required Object play}) => 'Questo riquadro è obsoleto. Utilizza ${play} da ora in poi.';
 	@override String get note => 'Nota integrata';
 	@override late final _StringsMisskeyPagesBlocksNoteItIt note_ = _StringsMisskeyPagesBlocksNoteItIt._(_root);
 }
@@ -3299,7 +3377,7 @@ class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteItIt
 	@override final _StringsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get note => 'Ho fatto un errore aprendo il coperchio del natto... (fagioli di soia fermentati, particolarmente appiccicosi)';
+	@override String get note => 'AAA! Ho rotto il coperchio del natto... (fagioli di soia fermentati)';
 }
 
 // Path: misskey.achievements_.types_.notes1_
