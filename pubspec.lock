@@ -93,10 +93,10 @@ packages:
     dependency: "direct main"
     description:
       name: audio_video_progress_bar
-      sha256: ccc7d7b83d2a16c52d4a7fb332faabd1baa053fb0e4c16815aefd3945ab33b81
+      sha256: "552b1f73c56c4c88407999e0a8507176f60c56de3e6d63bc20a0eab48467d4c9"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.3"
   boolean_selector:
     dependency: transitive
     description:
@@ -519,18 +519,18 @@ packages:
     dependency: transitive
     description:
       name: flutter_gen_core
-      sha256: "3a6c3dbc1c0e260088e9c7ed1ba905436844e8c01a44799f6281edada9e45308"
+      sha256: b9894396b2a790cc2d6eb3ed86e5e113aaed993765b21d4b981c9da4476e0f52
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.0"
+    version: "5.5.0+1"
   flutter_gen_runner:
     dependency: "direct dev"
     description:
       name: flutter_gen_runner
-      sha256: "24889d5140b03997f7148066a9c5fab8b606dff36093434c782d7a7fb22c6fb6"
+      sha256: b4c4c54e4dd89022f5e405fe96f16781be2dfbeabe8a70ccdf73b7af1302c655
       url: "https://pub.dev"
     source: hosted
-    version: "5.4.0"
+    version: "5.5.0+1"
   flutter_highlighting:
     dependency: "direct main"
     description:
@@ -559,10 +559,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_image_compress
-      sha256: "4edadb0ca2f957b85190e9c3aa728569b91b64b6e06e0eec5b622d47a8692ab2"
+      sha256: "45a3071868092a61b11044c70422b04d39d4d9f2ef536f3c5b11fb65a1e7dd90"
       url: "https://pub.dev"
     source: hosted
-    version: "2.2.0"
+    version: "2.3.0"
   flutter_image_compress_common:
     dependency: transitive
     description:
@@ -583,10 +583,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_image_compress_ohos
-      sha256: "70360371698be994786e5dd2e364a6525b1c5a4f843bff8af9b8a2fbe808d8d8"
+      sha256: e76b92bbc830ee08f5b05962fc78a532011fcd2041f620b5400a593e96da3f51
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   flutter_image_compress_platform_interface:
     dependency: transitive
     description:
@@ -756,10 +756,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_secure_storage
-      sha256: "8496a89eea74e23f92581885f876455d9d460e71201405dffe5f55dfe1155864"
+      sha256: "165164745e6afb5c0e3e3fcc72a012fb9e58496fb26ffb92cf22e16a821e85d0"
       url: "https://pub.dev"
     source: hosted
-    version: "9.2.1"
+    version: "9.2.2"
   flutter_secure_storage_linux:
     dependency: transitive
     description:
@@ -772,10 +772,10 @@ packages:
     dependency: transitive
     description:
       name: flutter_secure_storage_macos
-      sha256: b768a7dab26d6186b68e2831b3104f8968154f0f4fdbf66e7c2dd7bdf299daaf
+      sha256: "1693ab11121a5f925bbea0be725abfcfbbcf36c1e29e571f84a0c0f436147a81"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.1"
+    version: "3.1.2"
   flutter_secure_storage_platform_interface:
     dependency: transitive
     description:
@@ -875,10 +875,10 @@ packages:
     dependency: "direct main"
     description:
       name: go_router
-      sha256: "81f94e16d7063b60f0da3a79f872e140d6518f306749303bf981abd7d6b46734"
+      sha256: "6ad5662b014c06c20fa46ab78715c96b2222a7fe4f87bf77e0289592c2539e86"
       url: "https://pub.dev"
     source: hosted
-    version: "14.1.0"
+    version: "14.1.3"
   graphs:
     dependency: transitive
     description:
@@ -971,10 +971,10 @@ packages:
     dependency: "direct main"
     description:
       name: image
-      sha256: "4c68bfd5ae83e700b5204c1e74451e7bf3cf750e6843c6e158289cf56bda018e"
+      sha256: "2237616a36c0d69aef7549ab439b833fb7f9fb9fc861af2cc9ac3eedddd69ca8"
       url: "https://pub.dev"
     source: hosted
-    version: "4.1.7"
+    version: "4.2.0"
   image_compression:
     dependency: "direct main"
     description:
@@ -987,26 +987,26 @@ packages:
     dependency: "direct main"
     description:
       name: image_editor
-      sha256: "81e4c6ccfd4ff242a89695347113bb90b62b89bab70e97cdd5625c85887a86e3"
+      sha256: "0fe70befea0dbaf24a7cacc32c28311a65118f66637997ad072e9063f59efdd8"
       url: "https://pub.dev"
     source: hosted
-    version: "1.5.0"
+    version: "1.5.1"
   image_editor_common:
     dependency: transitive
     description:
       name: image_editor_common
-      sha256: "03a6a85608ffe4e7de5b1f042ac09859110b5b5ddc74a91e206d3084db27fe9b"
+      sha256: d141c0847148a7da573a5be5ca02e70d381e61cb6484ebef52a230ca1d6c56ab
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.1"
+    version: "1.1.2"
   image_editor_ohos:
     dependency: transitive
     description:
       name: image_editor_ohos
-      sha256: aee8fa1490fedbb98583dfaebb4162c295abeb0044e94f2eb2ad52ae419e6f6e
+      sha256: "06756859586d5acefec6e3b4f356f9b1ce05ef09213bcb9a0ce1680ecea2d054"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.7"
+    version: "0.0.9"
   image_editor_platform_interface:
     dependency: transitive
     description:
@@ -1630,28 +1630,27 @@ packages:
   slang:
     dependency: "direct main"
     description:
-      path: slang
-      ref: b2a4e17d8c8f15c8e4c33e92d79cdb5a4228a93d
-      resolved-ref: b2a4e17d8c8f15c8e4c33e92d79cdb5a4228a93d
-      url: "https://github.com/slang-i18n/slang"
-    source: git
-    version: "3.30.2"
+      name: slang
+      sha256: "0d8a8cbfd7858ed2bd9164a79bfb664ea83f1e124740b28acd0618757fc87ecc"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.31.0"
   slang_build_runner:
     dependency: "direct dev"
     description:
       name: slang_build_runner
-      sha256: "2daff2deb2ab8d557a2e7de5405c0ee1376afba5d0231570c2d2c3c56da8a692"
+      sha256: "6e60160e8000b91824c47221b20d9642e7408287a5a21837ecefc75270197586"
       url: "https://pub.dev"
     source: hosted
-    version: "3.30.0"
+    version: "3.31.0"
   slang_flutter:
     dependency: "direct main"
     description:
       name: slang_flutter
-      sha256: "9ee040b0d364d3a4d692e4af536acff6ef513870689403494ebc6d59b0dccea6"
+      sha256: f8400292be49c11697d94af58d7f7d054c91af759f41ffe71e4e5413871ffc62
       url: "https://pub.dev"
     source: hosted
-    version: "3.30.0"
+    version: "3.31.0"
   source_gen:
     dependency: transitive
     description:
