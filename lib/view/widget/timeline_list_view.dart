@@ -26,11 +26,13 @@ class TimelineListView extends HookConsumerWidget {
   const TimelineListView({
     super.key,
     required this.tabSettings,
+    this.physics,
     this.postFormFocusNode,
     this.lastViewedAtKey,
   });
 
   final TabSettings tabSettings;
+  final ScrollPhysics? physics;
   final FocusNode? postFormFocusNode;
   final Key? lastViewedAtKey;
 
@@ -41,6 +43,7 @@ class TimelineListView extends HookConsumerWidget {
       return NotificationsListView(
         account: tabSettings.account,
         controller: controller,
+        physics: physics,
       );
     }
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
@@ -192,8 +195,9 @@ class TimelineListView extends HookConsumerWidget {
               width: 800.0,
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: CustomScrollView(
-                center: centerKey,
                 controller: controller,
+                physics: physics,
+                center: centerKey,
                 slivers: [
                   if (centerId != null)
                     SliverToBoxAdapter(
