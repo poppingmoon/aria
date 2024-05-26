@@ -40,10 +40,12 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
           final event = message.body;
           if (event['type'] == 'note') {
             final note = Note.fromJson(event['body'] as Map<String, dynamic>);
-            ref
+            final cachedNote = ref
                 .read(notesNotifierProvider(tabSettings.account).notifier)
                 .add(note);
-            yield note;
+            if (cachedNote == null) {
+              yield note;
+            }
           }
         }
       case TabType.mention || TabType.direct:
