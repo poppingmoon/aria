@@ -19,7 +19,7 @@ class NotesNotifier extends _$NotesNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  void add(Note note) {
+  Note? add(Note note) {
     final renote = note.renote;
     if (renote != null) {
       add(renote);
@@ -40,6 +40,7 @@ class NotesNotifier extends _$NotesNotifier {
         poll: note.poll ?? cachedNote?.poll,
       ),
     };
+    return cachedNote;
   }
 
   void addAll(Iterable<Note> notes) {
