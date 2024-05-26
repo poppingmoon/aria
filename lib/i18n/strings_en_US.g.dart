@@ -356,7 +356,7 @@ class _StringsMisskeyEnUs {
 	String get reactionSettingDescription2 => 'Drag to reorder, click to delete, press "+" to add.';
 	String get rememberNoteVisibility => 'Remember note visibility settings';
 	String get attachCancel => 'Remove attachment';
-	String get deleteFile => 'File deleted';
+	String get deleteFile => 'Delete file';
 	String get markAsSensitive => 'Mark as sensitive';
 	String get unmarkAsSensitive => 'Unmark as sensitive';
 	String get enterFileName => 'Enter filename';
@@ -626,6 +626,7 @@ class _StringsMisskeyEnUs {
 	String get antennaSource => 'Antenna source';
 	String get antennaKeywords => 'Keywords to listen to';
 	String get antennaExcludeKeywords => 'Keywords to exclude';
+	String get antennaExcludeBots => 'Exclude bot accounts';
 	String get antennaKeywordsDescription => 'Separate with spaces for an AND condition or with line breaks for an OR condition.';
 	String get notifyAntenna => 'Notify about new notes';
 	String get withFileAntenna => 'Only notes with files';
@@ -720,6 +721,7 @@ class _StringsMisskeyEnUs {
 	String get native => 'Native';
 	String get disableDrawer => 'Don\'t use drawer-style menus';
 	String get showNoteActionsOnlyHover => 'Only show note actions on hover';
+	String get showReactionsCount => 'See the number of reactions in notes';
 	String get noHistory => 'No history available';
 	String get signinHistory => 'Login history';
 	String get enableAdvancedMfm => 'Enable advanced MFM';
@@ -1449,6 +1451,16 @@ class _StringsMisskeyEnUs {
 	String get loading => 'Loading';
 	String get surrender => 'Cancel';
 	String get gameRetry => 'Retry';
+	String get notUsePleaseLeaveBlank => 'Leave blank if not used';
+	String get useTotp => 'Enter the One-Time Password';
+	String get useBackupCode => 'Use the backup codes';
+	String get launchApp => 'Launch the app';
+	String get useNativeUIForVideoAudioPlayer => 'Use UI of browser when play video and audio';
+	String get keepOriginalFilename => 'Keep original file name';
+	String get keepOriginalFilenameDescription => 'If you turn off this setting, files names will be replaced with random string automatically when you upload files.';
+	String get noDescription => 'There is not the explanation';
+	String get alwaysConfirmFollow => 'Always confirm when following';
+	String get inquiry => 'Contact';
 	late final _StringsMisskeyBubbleGameEnUs bubbleGame_ = _StringsMisskeyBubbleGameEnUs._(_root);
 	late final _StringsMisskeyAnnouncementEnUs announcement_ = _StringsMisskeyAnnouncementEnUs._(_root);
 	late final _StringsMisskeyInitialAccountSettingEnUs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingEnUs._(_root);
@@ -1516,6 +1528,8 @@ class _StringsMisskeyEnUs {
 	late final _StringsMisskeyHemisphereEnUs hemisphere_ = _StringsMisskeyHemisphereEnUs._(_root);
 	late final _StringsMisskeyReversiEnUs reversi_ = _StringsMisskeyReversiEnUs._(_root);
 	late final _StringsMisskeyOfflineScreenEnUs offlineScreen_ = _StringsMisskeyOfflineScreenEnUs._(_root);
+	late final _StringsMisskeyUrlPreviewSettingEnUs urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingEnUs._(_root);
+	late final _StringsMisskeyMediaControlsEnUs mediaControls_ = _StringsMisskeyMediaControlsEnUs._(_root);
 }
 
 // Path: misskeyIO
@@ -1860,6 +1874,7 @@ class _StringsMisskeyPluginEnUs {
 	String get installWarn => 'Please do not install untrustworthy plugins.';
 	String get manage => 'Manage plugins';
 	String get viewSource => 'View source';
+	String get viewLog => 'Show log';
 }
 
 // Path: misskey.preferencesBackups_
@@ -2145,7 +2160,6 @@ class _StringsMisskeyX2faEnUs {
 	String get registerTOTP => 'Register authenticator app';
 	String step1({required Object a, required Object b}) => 'First, install an authentication app (such as ${a} or ${b}) on your device.';
 	String get step2 => 'Then, scan the QR code displayed on this screen.';
-	String get step2Click => 'Clicking on this QR code will allow you to register 2FA to your security key or phone authenticator app.';
 	String get step2Uri => 'Enter the following URI if you are using a desktop program';
 	String get step3Title => 'Enter an authentication code';
 	String get step3 => 'Enter the authentication code (token) provided by your app to finish setup.';
@@ -2169,6 +2183,7 @@ class _StringsMisskeyX2faEnUs {
 	String get backupCodesDescription => 'You can use these codes to gain access to your account in case of becoming unable to use your two-factor authentificator app. Each can only be used once. Please keep them in a safe place.';
 	String get backupCodeUsedWarning => 'A backup code has been used. Please reconfigure two-factor authentification as soon as possible if you are no longer able to use it.';
 	String get backupCodesExhaustedWarning => 'All backup codes have been used. Should you lose access to your two-factor authentification app, you will be unable to access this account. Please reconfigure two-factor authentification.';
+	String get moreDetailedGuideHere => 'Here is detailed guide';
 }
 
 // Path: misskey.permissions_
@@ -2543,6 +2558,7 @@ class _StringsMisskeyPlayEnUs {
 	String get title => 'Title';
 	String get script => 'Script';
 	String get summary => 'Description';
+	String get visibilityDescription => 'Putting it private means it won\'t be visible on your profile, but anyone that has the URL can still access it.';
 }
 
 // Path: misskey.pages_
@@ -2630,6 +2646,7 @@ class _StringsMisskeyNotificationEnUs {
 	String get sendTestNotification => 'Send test notification';
 	String get notificationWillBeDisplayedLikeThis => 'Notifications look like this';
 	String reactedBySomeUsers({required Object n}) => '${n} users reacted';
+	String likedBySomeUsers({required Object n}) => '${n} users liked your note';
 	String renotedBySomeUsers({required Object n}) => 'Renote from ${n} users';
 	String followedBySomeUsers({required Object n}) => 'Followed by ${n} users';
 	String get flushNotification => 'Clear notifications';
@@ -2877,6 +2894,40 @@ class _StringsMisskeyOfflineScreenEnUs {
 	// Translations
 	String get title => 'Offline - cannot connect to the server';
 	String get header => 'Unable to connect to the server';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'URL preview settings';
+	String get enable => 'Enable URL preview';
+	String get timeout => 'Time out when getting preview (ms)';
+	String get timeoutDescription => 'If it takes longer than this value to get the preview, the preview won’t be generated.';
+	String get maximumContentLength => 'Maximum Content-Length (bytes)';
+	String get maximumContentLengthDescription => 'If Content-Length is higher than this value, the preview won\'t be generated.';
+	String get requireContentLength => 'Generate the preview only if you could get Content-Length';
+	String get requireContentLengthDescription => 'If other server doesn\'t return Content-Length, the preview won\'t be generated.';
+	String get userAgent => 'User-Agent';
+	String get userAgentDescription => 'Sets the User-Agent to be used when retrieving previews. If left blank, the default User-Agent will be used.';
+	String get summaryProxy => 'Proxy endpoints that generate previews';
+	String get summaryProxyDescription => 'Not Misskey itself, but generate previews using Summaly Proxy.';
+	String get summaryProxyDescription2 => 'The following parameters are linked to the proxy as a query string. If the proxy does not support them, the values are ignored.';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get pip => 'Picture in Picture';
+	String get playbackRate => 'Playback Speed';
+	String get loop => 'Loop playback';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3165,6 +3216,11 @@ class _StringsMisskeyRoleConditionEnUs {
 	String get roleAssignedTo => 'Assigned to manual roles';
 	String get isLocal => 'Local user';
 	String get isRemote => 'Remote user';
+	String get isCat => 'Cat Users';
+	String get isBot => 'Bot Users';
+	String get isSuspended => 'Suspended user';
+	String get isLocked => 'Private accounts';
+	String get isExplorable => 'Effective user of "make an account discoverable"';
 	String get createdLessThan => 'Less than X has passed since account creation';
 	String get createdMoreThan => 'More than X has passed since account creation';
 	String get followersLessThanOrEq => 'Has X or fewer followers';
@@ -3284,6 +3340,8 @@ class _StringsMisskeyPagesBlocksEnUs {
 	String get section => 'Section';
 	String get image => 'Images';
 	String get button => 'Button';
+	String get dynamic => 'Dynamic Blocks';
+	String dynamicDescription({required Object play}) => 'This block has been abolished. Please use ${play} from now on.';
 	String get note => 'Embedded note';
 	late final _StringsMisskeyPagesBlocksNoteEnUs note_ = _StringsMisskeyPagesBlocksNoteEnUs._(_root);
 }

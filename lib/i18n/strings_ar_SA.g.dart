@@ -193,6 +193,7 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override String get reactionSettingDescription2 => 'اسحب لترتيب ، انقر للحذف ، استخدم "+" للإضافة.';
 	@override String get rememberNoteVisibility => 'تذكر إعدادت مدى رؤية الملاحظات';
 	@override String get attachCancel => 'أزل المرفق';
+	@override String get deleteFile => 'حُذف الملف';
 	@override String get markAsSensitive => 'علّمه كمحتوى حساس';
 	@override String get unmarkAsSensitive => 'ألغ تعيينه كمحتوى حساس';
 	@override String get enterFileName => 'ادخل اسم الملف';
@@ -1135,6 +1136,7 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsArSa webhookSettings_ = _StringsMisskeyWebhookSettingsArSa._(_root);
 	@override late final _StringsMisskeyModerationLogTypesArSa moderationLogTypes_ = _StringsMisskeyModerationLogTypesArSa._(_root);
 	@override late final _StringsMisskeyReversiArSa reversi_ = _StringsMisskeyReversiArSa._(_root);
+	@override late final _StringsMisskeyOfflineScreenArSa offlineScreen_ = _StringsMisskeyOfflineScreenArSa._(_root);
 }
 
 // Path: misskey.initialAccountSetting_
@@ -1944,6 +1946,12 @@ class _StringsMisskeyModerationLogTypesArSa extends _StringsMisskeyModerationLog
 
 	// Translations
 	@override String get suspend => 'علِق';
+	@override String get deleteDriveFile => 'حُذف الملف';
+	@override String get deleteNote => 'حُذفت الملاحظة';
+	@override String get createGlobalAnnouncement => 'أُنشئ إعلان عام';
+	@override String get createUserAnnouncement => 'أُنشئ إعلان مستخدم';
+	@override String get updateGlobalAnnouncement => 'حُدث إعلان عام';
+	@override String get updateUserAnnouncement => 'حُدث إعلان مستخدم';
 	@override String get resetPassword => 'أعد تعيين كلمتك السرية';
 	@override String get createInvitation => 'ولِّد دعوة';
 }
@@ -1956,6 +1964,22 @@ class _StringsMisskeyReversiArSa extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'المجموع';
+	@override String get lookingForPlayer => 'يبحث عن خصم...';
+	@override String get gameCanceled => 'أُلغيت اللعبة.';
+	@override String get opponentHasSettingsChanged => 'غيَر الخصم إعدادته.';
+	@override String get showBoardLabels => 'اعرض ترقيم الصفوف والأعمدة على اللوح';
+	@override String get useAvatarAsStone => 'حوَل الحجارة إلى صور مستخدمين';
+}
+
+// Path: misskey.offlineScreen_
+class _StringsMisskeyOfflineScreenArSa extends _StringsMisskeyOfflineScreenEnUs {
+	_StringsMisskeyOfflineScreenArSa._(_StringsArSa root) : this._root = root, super._(root);
+
+	@override final _StringsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'غير متصل - يتعذر الاتصال بالخادم';
+	@override String get header => 'يتعذر الاتصال بالخادم';
 }
 
 // Path: misskey.achievements_.types_

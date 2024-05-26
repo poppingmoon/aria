@@ -110,7 +110,7 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get signup => 'สร้างบัญชีผู้ใช้';
 	@override String get uploading => 'กำลังอัปโหลด';
 	@override String get save => 'บันทึก';
-	@override String get users => 'ผู้ใช้งาน';
+	@override String get users => 'ผู้ใช้';
 	@override String get addUser => 'เพิ่มผู้ใช้';
 	@override String get favorite => 'รายการโปรด';
 	@override String get favorites => 'รายการโปรด';
@@ -477,6 +477,7 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get antennaSource => 'แหล่งเสาอากาศ';
 	@override String get antennaKeywords => 'คีย์เวิร์ดที่ควรฟัง';
 	@override String get antennaExcludeKeywords => 'คีย์เวิร์ดที่จะยกเว้น';
+	@override String get antennaExcludeBots => 'ยกเว้นบัญชีบอต';
 	@override String get antennaKeywordsDescription => 'คั่นด้วยช่องว่างสำหรับเงื่อนไข AND หรือด้วยการขึ้นบรรทัดใหม่สำหรับเงื่อนไข OR';
 	@override String get notifyAntenna => 'แจ้งเตือนเกี่ยวกับโน้ตใหม่';
 	@override String get withFileAntenna => 'เฉพาะโน้ตที่มีไฟล์';
@@ -571,6 +572,7 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get native => 'ภาษาแม่';
 	@override String get disableDrawer => 'อย่าใช้ลิ้นชักสไตล์เมนู';
 	@override String get showNoteActionsOnlyHover => 'แสดงการดำเนินการเฉพาะโน้ตเมื่อโฮเวอร์';
+	@override String get showReactionsCount => 'แสดงจำนวนรีแอกชั่นในโน้ต';
 	@override String get noHistory => 'ไม่มีประวัติ';
 	@override String get signinHistory => 'ประวัติการเข้าสู่ระบบ';
 	@override String get enableAdvancedMfm => 'เปิดใช้งาน MFM ขั้นสูง';
@@ -902,7 +904,7 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get enabled => 'เปิดใช้งาน';
 	@override String get disabled => 'ปิดการใช้งาน';
 	@override String get quickAction => 'ปุ่มลัด';
-	@override String get user => 'ผู้ใช้งาน';
+	@override String get user => 'ผู้ใช้';
 	@override String get administration => 'การจัดการ';
 	@override String get accounts => 'บัญชีผู้ใช้';
 	@override String get switch_ => 'สลับ';
@@ -1300,6 +1302,16 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get loading => 'กำลังโหลด';
 	@override String get surrender => 'ยอมแพ้';
 	@override String get gameRetry => 'เริ่มเกมใหม่';
+	@override String get notUsePleaseLeaveBlank => 'หากไม่ได้ใช้กรุณาเว้นว่างไว้';
+	@override String get useTotp => 'ใช้รหัสผ่านแบบใช้ครั้งเดียว (TOTP)';
+	@override String get useBackupCode => 'ใช้รหัสสำรอง';
+	@override String get launchApp => 'เริ่มแอป';
+	@override String get useNativeUIForVideoAudioPlayer => 'ใช้ UI ของเบราว์เซอร์เพื่อเล่นวิดีโอ/เสียง';
+	@override String get keepOriginalFilename => 'คงชื่อไฟล์เดิมไว้';
+	@override String get keepOriginalFilenameDescription => 'หากปิดการตั้งค่านี้ ในระหว่างการอัปโหลดชื่อไฟล์จะถูกแทนที่ด้วยสตริงแบบสุ่มโดยอัตโนมัติ';
+	@override String get noDescription => 'ไม่มีข้อความอธิบาย';
+	@override String get alwaysConfirmFollow => 'แสดงข้อความยืนยันเมื่อกดติดตาม';
+	@override String get inquiry => 'ติดต่อเรา';
 	@override late final _StringsMisskeyBubbleGameThTh bubbleGame_ = _StringsMisskeyBubbleGameThTh._(_root);
 	@override late final _StringsMisskeyAnnouncementThTh announcement_ = _StringsMisskeyAnnouncementThTh._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingThTh initialAccountSetting_ = _StringsMisskeyInitialAccountSettingThTh._(_root);
@@ -1367,6 +1379,8 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyHemisphereThTh hemisphere_ = _StringsMisskeyHemisphereThTh._(_root);
 	@override late final _StringsMisskeyReversiThTh reversi_ = _StringsMisskeyReversiThTh._(_root);
 	@override late final _StringsMisskeyOfflineScreenThTh offlineScreen_ = _StringsMisskeyOfflineScreenThTh._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingThTh urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingThTh._(_root);
+	@override late final _StringsMisskeyMediaControlsThTh mediaControls_ = _StringsMisskeyMediaControlsThTh._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -1499,7 +1513,7 @@ class _StringsMisskeyAccountMigrationThTh extends _StringsMisskeyAccountMigratio
 	// Translations
 	@override String get moveFrom => 'ย้ายข้อมูลบัญชีอื่นไปยังอีกบัญชีนี้หนึ่ง';
 	@override String get moveFromSub => 'สร้างนามแฝงไปยังบัญชีอื่น';
-	@override String moveFromLabel({required Object n}) => 'บัญชีที่จะย้ายจาก: ${n}';
+	@override String moveFromLabel({required Object n}) => 'บัญชีที่จะย้ายจาก #${n}';
 	@override String get moveFromDescription => 'ถ้าหากคุณต้องการโอนข้อมูล คุณจำเป็นต้องสร้างบัญชีสำรองสำหรับการย้ายบัญชี  หลังจากนั้นป้อนบัญชีที่จะย้ายไปในรูปแบบต่อไปนี้: @person@instance.com';
 	@override String get moveTo => 'ย้ายข้อมูลบัญชีนี้ไปยังบัญชีอีกหนึ่ง';
 	@override String get moveToLabel => 'บัญชีที่จะย้ายไปที่:';
@@ -1701,6 +1715,7 @@ class _StringsMisskeyPluginThTh extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => 'กรุณาอย่าติดตั้งปลั๊กอินที่ไม่น่าเชื่อถือนะคะ';
 	@override String get manage => 'จัดการปลั๊กอิน';
 	@override String get viewSource => 'ดูต้นฉบับ';
+	@override String get viewLog => 'แสดงปูม';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1986,7 +2001,6 @@ class _StringsMisskeyX2faThTh extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'ลงทะเบียนแอพตัวตรวจสอบสิทธิ์';
 	@override String step1({required Object a, required Object b}) => 'ขั้นตอนแรก ติดตั้งแอปยืนยันตัวตน (เช่น ${a} หรือ ${b}) บนอุปกรณ์ของคุณ';
 	@override String get step2 => 'จากนั้นสแกนรหัส QR ที่แสดงบนหน้าจอนี้';
-	@override String get step2Click => 'การคลิกที่รหัส QR นี้จะช่วยให้คุณนั้นสามารถลงทะเบียน 2FA กับคีย์ความปลอดภัยหรือแอปตรวจสอบความถูกต้องของโทรศัพท์ได้';
 	@override String get step2Uri => 'ป้อนใส่ URL ดังต่อไปนี้ถ้าหากคุณใช้โปรแกรมเดสก์ท็อป';
 	@override String get step3Title => 'ป้อนรหัสยืนยัน';
 	@override String get step3 => 'ป้อนโทเค็นที่แอปของคุณให้มาเพื่อเสร็จสิ้นการตั้งค่า';
@@ -2010,6 +2024,7 @@ class _StringsMisskeyX2faThTh extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => 'หากแอปยืนยันตัวตนของคุณไม่พร้อมใช้งาน คุณสามารถใช้รหัสสำรองด้านล่างเพื่อเข้าถึงบัญชีของคุณได้ อย่าลืมเก็บรหัสเหล่านี้ไว้ในที่ปลอดภัย แต่ละรหัสสามารถใช้ได้เพียงครั้งเดียวเท่านั้น';
 	@override String get backupCodeUsedWarning => 'มีการใช้รหัสสำรองแล้ว โปรดกรุณากำหนดค่าการตรวจสอบสิทธิ์แบบสองปัจจัยโดยเร็วที่สุดถ้าหากคุณยังไม่สามารถใช้งานได้อีก';
 	@override String get backupCodesExhaustedWarning => 'รหัสสำรองทั้งหมดถูกใช้แล้ว ถ้าหากคุณยังสูญเสียการเข้าถึงแอปการตรวจสอบสิทธิ์แบบสองปัจจัยคุณจะยังไม่สามารถเข้าถึงบัญชีนี้ได้ กรุณากำหนดค่าการรับรองความถูกต้องด้วยการยืนยันสองชั้น';
+	@override String get moreDetailedGuideHere => 'คลิกที่นี่เพื่อดูคำแนะนำโดยละเอียด';
 }
 
 // Path: misskey.permissions_
@@ -2384,6 +2399,7 @@ class _StringsMisskeyPlayThTh extends _StringsMisskeyPlayEnUs {
 	@override String get title => 'หัวข้อ';
 	@override String get script => 'สคริปต์';
 	@override String get summary => 'รายละเอียด';
+	@override String get visibilityDescription => 'หากตั้งค่าเป็นส่วนตัว มันจะไม่ปรากฏในโปรไฟล์อีกต่อไป แต่ผู้ที่ทราบ URL ของมันจะยังสามารถเข้าถึงได้';
 }
 
 // Path: misskey.pages_
@@ -2471,6 +2487,7 @@ class _StringsMisskeyNotificationThTh extends _StringsMisskeyNotificationEnUs {
 	@override String get sendTestNotification => 'ส่งทดสอบการแจ้งเตือน';
 	@override String get notificationWillBeDisplayedLikeThis => 'การแจ้งเตือนมีลักษณะแบบนี้';
 	@override String reactedBySomeUsers({required Object n}) => 'ถูกรีแอคชั่นโดยผู้ใช้ ${n} ราย';
+	@override String likedBySomeUsers({required Object n}) => '${n} คนถูกใจ';
 	@override String renotedBySomeUsers({required Object n}) => 'รีโน้ตจากผู้ใช้ ${n} ราย';
 	@override String followedBySomeUsers({required Object n}) => 'มีผู้ติดตาม ${n} ราย';
 	@override String get flushNotification => 'ล้างประวัติการแจ้งเตือน';
@@ -2718,6 +2735,40 @@ class _StringsMisskeyOfflineScreenThTh extends _StringsMisskeyOfflineScreenEnUs 
 	// Translations
 	@override String get title => 'ออฟไลน์ - ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้';
 	@override String get header => 'ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingThTh extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingThTh._(_StringsThTh root) : this._root = root, super._(root);
+
+	@override final _StringsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'การตั้งค่าการแสดงตัวอย่าง URL';
+	@override String get enable => 'เปิดใช้งานการแสดงตัวอย่าง URL';
+	@override String get timeout => 'เวลาจำกัดในการโหลดตัวอย่าง URL (ms)';
+	@override String get timeoutDescription => 'หากเวลาที่ใช้ในการโหลดเกินค่านี้ จะไม่มีการสร้างการแสดงตัวอย่าง';
+	@override String get maximumContentLength => 'ค่าสูงสุดของ Content-Length (byte)';
+	@override String get maximumContentLengthDescription => 'หาก Content-Length เกินค่านี้ จะไม่มีการสร้างการแสดงตัวอย่าง';
+	@override String get requireContentLength => 'สร้างการแสดงตัวอย่างเฉพาะในกรณีที่รับ Content-Length ไหว';
+	@override String get requireContentLengthDescription => 'หากเซิร์ฟเวอร์อื่นไม่ส่งคืน Content-Length จะไม่มีการสร้างการแสดงตัวอย่าง';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => 'ตั้งค่า User-Agent ที่ใช้ในการรับการแสดงตัวอย่าง หากเว้นว่างไว้ ระบบจะใช้ User-Agent เริ่มต้น';
+	@override String get summaryProxy => 'endpoint ของพร็อกซีที่สร้างการแสดงตัวอย่าง';
+	@override String get summaryProxyDescription => 'สร้างการแสดงตัวอย่างด้วย summary Proxy แทนที่จะใช้เนื้อหา Misskey';
+	@override String get summaryProxyDescription2 => 'พารามิเตอร์ต่อไปนี้จะถูกใช้เป็นสตริงการสืบค้นเพื่อเชื่อมต่อกับพร็อกซี หากฝั่งพร็อกซีไม่รองรับการตั้งค่าเหล่านี้จะถูกละเว้น';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsThTh extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsThTh._(_StringsThTh root) : this._root = root, super._(root);
+
+	@override final _StringsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => 'รูปภาพในรูปภาม';
+	@override String get playbackRate => 'ความเร็วในการเล่น';
+	@override String get loop => 'เล่นวนซ้ำ';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -2990,6 +3041,11 @@ class _StringsMisskeyRoleConditionThTh extends _StringsMisskeyRoleConditionEnUs 
 	@override String get roleAssignedTo => 'มอบหมายให้มีบทบาทแบบทำมือ';
 	@override String get isLocal => 'ผู้ใช้ในพื้นที่';
 	@override String get isRemote => 'ผู้ใช้ระยะไกล';
+	@override String get isCat => 'ผู้ใช้ที่เป็นแมว';
+	@override String get isBot => 'ผู้ใช้ที่เป็นบอต';
+	@override String get isSuspended => 'ผู้ใช้ที่ถูกระงับ';
+	@override String get isLocked => 'ผู้ใช้บัญชีไม่เปิดเผยสาธารณะ';
+	@override String get isExplorable => 'ผู้ใช้ที่เปิดใช้งาน “ทำให้บัญชีของฉันค้นหาได้ง่ายขึ้น”';
 	@override String get createdLessThan => 'สร้างน้อยกว่า';
 	@override String get createdMoreThan => 'สร้างมากกว่า';
 	@override String get followersLessThanOrEq => 'จำนวนผู้ติดตามน้อยกว่าหรือเท่ากับ\n';
@@ -3109,6 +3165,8 @@ class _StringsMisskeyPagesBlocksThTh extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => 'ประเภท';
 	@override String get image => 'รูปภาพ';
 	@override String get button => 'ปุ่ม';
+	@override String get dynamic => 'บล็อกแบบไดนามิก';
+	@override String dynamicDescription({required Object play}) => 'บล็อกนี้ล้าสมัยแล้ว โปรดใช้ ${play} แทน นับจากนี้เป็นต้นไป';
 	@override String get note => 'โน้ตที่ฝังตัว';
 	@override late final _StringsMisskeyPagesBlocksNoteThTh note_ = _StringsMisskeyPagesBlocksNoteThTh._(_root);
 }

@@ -12,19 +12,40 @@ import 'package:flutter/widgets.dart';
 class $AssetsFontsGen {
   const $AssetsFontsGen();
 
+  /// Directory path: assets/fonts/BIZ_UDGothic
   $AssetsFontsBIZUDGothicGen get bIZUDGothic =>
       const $AssetsFontsBIZUDGothicGen();
+
+  /// Directory path: assets/fonts/BIZ_UDMincho
   $AssetsFontsBIZUDMinchoGen get bIZUDMincho =>
       const $AssetsFontsBIZUDMinchoGen();
+
+  /// Directory path: assets/fonts/Mplus1
   $AssetsFontsMplus1Gen get mplus1 => const $AssetsFontsMplus1Gen();
+
+  /// Directory path: assets/fonts/Mplus2
   $AssetsFontsMplus2Gen get mplus2 => const $AssetsFontsMplus2Gen();
+
+  /// Directory path: assets/fonts/Noto_Sans_JP
   $AssetsFontsNotoSansJPGen get notoSansJP => const $AssetsFontsNotoSansJPGen();
+
+  /// Directory path: assets/fonts/Noto_Sans_KR
   $AssetsFontsNotoSansKRGen get notoSansKR => const $AssetsFontsNotoSansKRGen();
+
+  /// Directory path: assets/fonts/Noto_Sans_SC
   $AssetsFontsNotoSansSCGen get notoSansSC => const $AssetsFontsNotoSansSCGen();
+
+  /// Directory path: assets/fonts/Noto_Sans_TC
   $AssetsFontsNotoSansTCGen get notoSansTC => const $AssetsFontsNotoSansTCGen();
+
+  /// Directory path: assets/fonts/Noto_Serif_JP
   $AssetsFontsNotoSerifJPGen get notoSerifJP =>
       const $AssetsFontsNotoSerifJPGen();
+
+  /// Directory path: assets/fonts/Nunito
   $AssetsFontsNunitoGen get nunito => const $AssetsFontsNunitoGen();
+
+  /// Directory path: assets/fonts/Pretendard
   $AssetsFontsPretendardGen get pretendard => const $AssetsFontsPretendardGen();
 }
 
@@ -37,6 +58,7 @@ class $AssetsMisskeyGen {
   /// File path: assets/misskey/LICENSE
   String get license => 'assets/misskey/LICENSE';
 
+  /// Directory path: assets/misskey/packages
   $AssetsMisskeyPackagesGen get packages => const $AssetsMisskeyPackagesGen();
 
   /// List of all assets
@@ -233,6 +255,7 @@ class $AssetsFontsPretendardGen {
 class $AssetsMisskeyPackagesGen {
   const $AssetsMisskeyPackagesGen();
 
+  /// Directory path: assets/misskey/packages/frontend
   $AssetsMisskeyPackagesFrontendGen get frontend =>
       const $AssetsMisskeyPackagesFrontendGen();
 }
@@ -240,6 +263,7 @@ class $AssetsMisskeyPackagesGen {
 class $AssetsMisskeyPackagesFrontendGen {
   const $AssetsMisskeyPackagesFrontendGen();
 
+  /// Directory path: assets/misskey/packages/frontend/assets
   $AssetsMisskeyPackagesFrontendAssetsGen get assets =>
       const $AssetsMisskeyPackagesFrontendAssetsGen();
 }
@@ -276,9 +300,11 @@ class Assets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

@@ -1726,7 +1726,6 @@ class _StringsMisskeyX2faCsCz extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Registrovat aplikaci autentizátoru';
 	@override String step1({required Object a, required Object b}) => 'Nejprve si do zařízení nainstalujte aplikaci pro ověřování (například ${a} nebo ${b}).';
 	@override String get step2 => 'Poté naskenujte QR kód zobrazený na této obrazovce.';
-	@override String get step2Click => 'Kliknutím na tento QR kód můžete zaregistrovat 2FA do bezpečnostního klíče nebo aplikace autentizace telefonu.';
 	@override String get step3Title => 'Zadejte ověřovací kód';
 	@override String get step3 => 'Pro dokončení nastavení zadejte token poskytnutý vaší aplikací.';
 	@override String get step4 => 'Od této chvíle budou všechny budoucí pokusy o přihlášení vyžadovat tento přihlašovací token.';

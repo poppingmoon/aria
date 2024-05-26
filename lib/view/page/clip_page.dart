@@ -146,11 +146,9 @@ class ClipPage extends HookConsumerWidget {
                       ),
                     )
                   else
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 2.0),
-                      // TODO: Update localizations.
-                      child: Text('(No description)'),
-                      // child: Text('(${t.misskey.noDescription})'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2.0),
+                      child: Text('(${t.misskey.noDescription})'),
                     ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),

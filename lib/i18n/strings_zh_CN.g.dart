@@ -138,7 +138,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get copyNoteId => '复制帖子 ID';
 	@override String get copyFileId => '复制文件ID';
 	@override String get copyFolderId => '复制文件夹ID';
-	@override String get copyProfileUrl => '复制配置文件URL';
+	@override String get copyProfileUrl => '复制个人资料URL';
 	@override String get searchUser => '搜索用户';
 	@override String get reply => '回复';
 	@override String get loadMore => '查看更多';
@@ -480,6 +480,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get antennaSource => '接收来源';
 	@override String get antennaKeywords => '包含关键字';
 	@override String get antennaExcludeKeywords => '排除关键字';
+	@override String get antennaExcludeBots => '排除机器人账户';
 	@override String get antennaKeywordsDescription => 'AND 条件用空格分隔，OR 条件用换行符分隔。';
 	@override String get notifyAntenna => '开启通知';
 	@override String get withFileAntenna => '仅带有附件的帖子';
@@ -574,6 +575,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get native => '原生';
 	@override String get disableDrawer => '不显示抽屉菜单';
 	@override String get showNoteActionsOnlyHover => '仅在悬停时显示帖子操作';
+	@override String get showReactionsCount => '显示帖子的回应数';
 	@override String get noHistory => '没有历史记录';
 	@override String get signinHistory => '登录历史';
 	@override String get enableAdvancedMfm => '启用扩展 MFM';
@@ -694,7 +696,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get expandTweet => '展开帖子';
 	@override String get themeEditor => '主题编辑器';
 	@override String get description => '描述';
-	@override String get describeFile => '添加标题';
+	@override String get describeFile => '添加描述';
 	@override String get enterFileDescription => '输入标题';
 	@override String get author => '作者';
 	@override String get leaveConfirm => '存在未保存的更改。要放弃更改吗？';
@@ -1281,7 +1283,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get reloadRequiredToApplySettings => '需要重新载入来使设置生效';
 	@override String remainingN({required Object n}) => '剩余：${n}';
 	@override String get overwriteContentConfirm => '将覆盖现有内容。确定吗？';
-	@override String get seasonalScreenEffect => '应景的画面效果';
+	@override String get seasonalScreenEffect => '符合当前季节的画面效果';
 	@override String get decorate => '装饰';
 	@override String get addMfmFunction => '添加装饰';
 	@override String get enableQuickAddMfmFunction => '显示高级 MFM 选择器';
@@ -1303,6 +1305,16 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get loading => '读取中';
 	@override String get surrender => '取消';
 	@override String get gameRetry => '重试';
+	@override String get notUsePleaseLeaveBlank => '如不使用请留空';
+	@override String get useTotp => '使用一次性代码';
+	@override String get useBackupCode => '使用备用代码';
+	@override String get launchApp => '启动应用';
+	@override String get useNativeUIForVideoAudioPlayer => '使用浏览器的 UI 播放动画及音频';
+	@override String get keepOriginalFilename => '保持原文件名';
+	@override String get keepOriginalFilenameDescription => '若关闭此设置，上传文件时文件名将被替换为随机字符。';
+	@override String get noDescription => '没有描述';
+	@override String get alwaysConfirmFollow => '总是确认关注';
+	@override String get inquiry => '联系我们';
 	@override late final _StringsMisskeyBubbleGameZhCn bubbleGame_ = _StringsMisskeyBubbleGameZhCn._(_root);
 	@override late final _StringsMisskeyAnnouncementZhCn announcement_ = _StringsMisskeyAnnouncementZhCn._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingZhCn initialAccountSetting_ = _StringsMisskeyInitialAccountSettingZhCn._(_root);
@@ -1370,6 +1382,8 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyHemisphereZhCn hemisphere_ = _StringsMisskeyHemisphereZhCn._(_root);
 	@override late final _StringsMisskeyReversiZhCn reversi_ = _StringsMisskeyReversiZhCn._(_root);
 	@override late final _StringsMisskeyOfflineScreenZhCn offlineScreen_ = _StringsMisskeyOfflineScreenZhCn._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingZhCn urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingZhCn._(_root);
+	@override late final _StringsMisskeyMediaControlsZhCn mediaControls_ = _StringsMisskeyMediaControlsZhCn._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -1502,7 +1516,7 @@ class _StringsMisskeyAccountMigrationZhCn extends _StringsMisskeyAccountMigratio
 	// Translations
 	@override String get moveFrom => '从别的账号迁移到此账户';
 	@override String get moveFromSub => '为另一个账户建立别名';
-	@override String moveFromLabel({required Object n}) => '迁移前的账户 ${n}';
+	@override String moveFromLabel({required Object n}) => '迁移前的账户 #${n}';
 	@override String get moveFromDescription => '如果迁移时需要继承其他账户的关注者，你需要创建一个别名。此操作需要在迁移前完成！\n请像这样输入要迁移的账户：@username@server.example.com\n如果要删除，请将输入字段留空，并保存（不推荐）。';
 	@override String get moveTo => '把这个账户迁移到新的账户';
 	@override String get moveToLabel => '迁移后的账户';
@@ -1704,6 +1718,7 @@ class _StringsMisskeyPluginZhCn extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => '请不要安装不可信的插件。';
 	@override String get manage => '管理插件...';
 	@override String get viewSource => '查看源代码';
+	@override String get viewLog => '显示日志';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1989,7 +2004,6 @@ class _StringsMisskeyX2faZhCn extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => '开始设置认证应用';
 	@override String step1({required Object a, required Object b}) => '首先，在您的设备上安装验证应用，例如 ${a} 或 ${b}。';
 	@override String get step2 => '然后，扫描屏幕上显示的二维码。';
-	@override String get step2Click => '通过点击二维码，您可以使用设备上安装的身份验证器应用程序或密钥环进行注册';
 	@override String get step2Uri => '如果使用桌面应用程序的话，请输入下面的 URI';
 	@override String get step3Title => '输入验证码';
 	@override String get step3 => '输入您的应用提供的动态口令以完成设置。';
@@ -2013,6 +2027,7 @@ class _StringsMisskeyX2faZhCn extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => '如果无法使用认证应用，可以使用以下的备用代码来访问账户。请务必将这些代码保存在安全的地方。每个代码仅可使用一次。';
 	@override String get backupCodeUsedWarning => '已使用备用代码。如果无法使用认证应用，请尽快重新设定。';
 	@override String get backupCodesExhaustedWarning => '已使用完所有的备用代码。如果无法使用认证应用，将无法再访问您的账户。请再次设定认证应用。';
+	@override String get moreDetailedGuideHere => '此处为详细指南';
 }
 
 // Path: misskey.permissions_
@@ -2387,6 +2402,7 @@ class _StringsMisskeyPlayZhCn extends _StringsMisskeyPlayEnUs {
 	@override String get title => '标题';
 	@override String get script => '脚本';
 	@override String get summary => '描述';
+	@override String get visibilityDescription => '设置为不公开后资料将不再显示，但知道 URL 的人仍可继续访问。';
 }
 
 // Path: misskey.pages_
@@ -2474,6 +2490,7 @@ class _StringsMisskeyNotificationZhCn extends _StringsMisskeyNotificationEnUs {
 	@override String get sendTestNotification => '发送测试通知';
 	@override String get notificationWillBeDisplayedLikeThis => '通知将会这样表示';
 	@override String reactedBySomeUsers({required Object n}) => '${n} 人回应了';
+	@override String likedBySomeUsers({required Object n}) => '${n}人赞了你的帖子';
 	@override String renotedBySomeUsers({required Object n}) => '${n} 人转发了';
 	@override String followedBySomeUsers({required Object n}) => '被 ${n} 人关注';
 	@override String get flushNotification => '重置通知历史';
@@ -2669,6 +2686,7 @@ class _StringsMisskeyReversiZhCn extends _StringsMisskeyReversiEnUs {
 	// Translations
 	@override String get reversi => '黑白棋';
 	@override String get gameSettings => '对局设置';
+	@override String get chooseBoard => '选择棋盘';
 	@override String get blackOrWhite => '先手/后手';
 	@override String blackIs({required Object name}) => '${name}执黑(先手)';
 	@override String get rules => '规则';
@@ -2695,6 +2713,8 @@ class _StringsMisskeyReversiZhCn extends _StringsMisskeyReversiEnUs {
 	@override String get allGames => '所有对局';
 	@override String get ended => '结束';
 	@override String get playing => '对局中';
+	@override String get isLlotheo => '落子少的一方获胜（又名奥赛罗）';
+	@override String get loopedMap => '循环棋盘';
 	@override String get canPutEverywhere => '无限制放置模式';
 	@override String get timeLimitForEachTurn => '1回合的时间限制';
 	@override String get freeMatch => '自由匹配';
@@ -2720,6 +2740,40 @@ class _StringsMisskeyOfflineScreenZhCn extends _StringsMisskeyOfflineScreenEnUs 
 	@override String get header => '无法连接到服务器';
 }
 
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingZhCn extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '设置 URL 预览';
+	@override String get enable => '启用 URL 预览';
+	@override String get timeout => '超时阈值（ms）';
+	@override String get timeoutDescription => '如果获取预览所用时间超过这个值，则不生成预览。';
+	@override String get maximumContentLength => 'Content-Length 的最大值（byte）';
+	@override String get maximumContentLengthDescription => '如果 Content-Length 超过这个值，则不生成预览。';
+	@override String get requireContentLength => '仅在能取得 Content-Length 时生成预览';
+	@override String get requireContentLengthDescription => '如果目标服务器不返回 Content-Length，则不生成预览。';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => '设定获取预览时使用的 User-Agent。留空时将使用默认的 User-Agent。';
+	@override String get summaryProxy => '用来生成预览的代理的 endpoint。';
+	@override String get summaryProxyDescription => '不使用 Misskey 本体，而是通过 Summaly Proxy 生成预览。';
+	@override String get summaryProxyDescription2 => '下面的参数将作为查询字符串发送至代理。代理侧如果不支持此设置，则忽略设定值。';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsZhCn extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => '画中画';
+	@override String get playbackRate => '播放速度';
+	@override String get loop => '循环播放';
+}
+
 // Path: misskey.bubbleGame_.score_
 class _StringsMisskeyBubbleGameScoreZhCn extends _StringsMisskeyBubbleGameScoreEnUs {
 	_StringsMisskeyBubbleGameScoreZhCn._(_StringsZhCn root) : this._root = root, super._(root);
@@ -2733,6 +2787,7 @@ class _StringsMisskeyBubbleGameScoreZhCn extends _StringsMisskeyBubbleGameScoreE
 	@override String get maxChain => '最高连击数';
 	@override String yen({required Object yen}) => '${yen} 日元';
 	@override String estimatedQty({required Object qty}) => '约 ${qty} 个';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '相当于 ${onigiriQtyWithUnit} 饭团';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -2989,6 +3044,9 @@ class _StringsMisskeyRoleConditionZhCn extends _StringsMisskeyRoleConditionEnUs 
 	@override String get roleAssignedTo => '已分配给手动角色';
 	@override String get isLocal => '是本地用户';
 	@override String get isRemote => '是远程用户';
+	@override String get isBot => '机器人用户';
+	@override String get isSuspended => '停用的用户';
+	@override String get isExplorable => '启用“使账号可见”的用户';
 	@override String get createdLessThan => '账户创建时间少于';
 	@override String get createdMoreThan => '账户创建时间超过';
 	@override String get followersLessThanOrEq => '关注者不多于';
@@ -3108,6 +3166,8 @@ class _StringsMisskeyPagesBlocksZhCn extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => '章节';
 	@override String get image => '图片';
 	@override String get button => '按钮';
+	@override String get dynamic => '动态区块';
+	@override String dynamicDescription({required Object play}) => '这个区块已经废弃。以后请使用${play}。';
 	@override String get note => '嵌入的帖子';
 	@override late final _StringsMisskeyPagesBlocksNoteZhCn note_ = _StringsMisskeyPagesBlocksNoteZhCn._(_root);
 }

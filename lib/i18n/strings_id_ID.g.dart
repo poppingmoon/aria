@@ -480,6 +480,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get antennaSource => 'Sumber Antenna';
 	@override String get antennaKeywords => 'Kata kunci yang diterima';
 	@override String get antennaExcludeKeywords => 'Kata kunci yang dikecualikan';
+	@override String get antennaExcludeBots => 'Kecualikan akun bot';
 	@override String get antennaKeywordsDescription => 'Pisahkan dengan spasi untuk kondisi AND. Pisahkan dengan baris baru untuk kondisi OR.';
 	@override String get notifyAntenna => 'Beritahu untuk catatan baru';
 	@override String get withFileAntenna => 'Hanya tampilkan catatan dengan berkas yang dilampirkan';
@@ -574,6 +575,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get native => 'Native';
 	@override String get disableDrawer => 'Jangan gunakan menu bergaya laci';
 	@override String get showNoteActionsOnlyHover => 'Hanya tampilkan aksi catatan saat ditunjuk';
+	@override String get showReactionsCount => 'Lihat jumlah reaksi dalam catatan';
 	@override String get noHistory => 'Tidak ada riwayat';
 	@override String get signinHistory => 'Riwayat masuk';
 	@override String get enableAdvancedMfm => 'Nyalakan MFM tingkat lanjut';
@@ -1071,6 +1073,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get remindMeLater => 'Mungkin nanti';
 	@override String get didYouLikeMisskey => 'Apakah kamu mulai menyukai Misskey?';
 	@override String pleaseDonate({required Object host}) => '${host} menggunakan perangkat lunak bebas yaitu Misskey. Kami sangat mengapresiasi sekali donasi dari kamu agar pengembangan Misskey tetap dapat berlanjut!';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'Sumber kode terkait tersedia di ${anchor}';
 	@override String get roles => 'Peran';
 	@override String get role => 'Peran';
 	@override String get noRole => 'Peran tidak temukan';
@@ -1122,6 +1125,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get sensitiveWordsDescription => 'Visibilitas dari semua catatan mengandung kata yang telah diatur akan dijadikan "Beranda" secara otomatis. Kamu dapat mendaftarkan kata tersebut lebih dari satu dengan menuliskannya di baris baru.';
 	@override String get sensitiveWordsDescription2 => 'Menggunakan spasi akan membuat ekspresi AND dan kata kunci disekitarnya dengan garis miring akan mengubahnya menjadi ekspresi reguler.';
 	@override String get prohibitedWords => 'Kata yang dilarang';
+	@override String get prohibitedWordsDescription => 'Menyalakan kesalahan ketika mencoba untuk memposting catatan dengan set kata-kata yang termasuk. Beberapa kata dapat diatur dan dipisahkan dengan baris baru.';
 	@override String get prohibitedWordsDescription2 => 'Menggunakan spasi akan membuat ekspresi AND dan kata kunci disekitarnya dengan garis miring akan mengubahnya menjadi ekspresi reguler.';
 	@override String get hiddenTags => 'Tagar tersembunyi';
 	@override String get hiddenTagsDescription => 'Pilih tanda yang mana akan tidak diperlihatkan dalam daftar tren.\nTanda lebih dari satu dapat didaftarkan dengan tiap baris.';
@@ -1238,6 +1242,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get edited => 'Telah disunting';
 	@override String get notificationRecieveConfig => 'Pengaturan notifikasi';
 	@override String get mutualFollow => 'Saling mengikuti';
+	@override String get followingOrFollower => 'Mengikuti atau pengikut';
 	@override String get fileAttachedOnly => 'Hanya catatan dengan berkas';
 	@override String get showRepliesToOthersInTimeline => 'Tampilkan balasan ke pengguna lain dalam lini masa';
 	@override String get hideRepliesToOthersInTimeline => 'Sembunyikan balasan ke orang lain dari lini masa';
@@ -1247,6 +1252,12 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get confirmHideRepliesAll => 'Operasi ini tidak dapat diubah. Apakah kamu yakin untuk menyembunyikan balasan ke lainnya dari semua orang yang kamu ikuti di lini masa?';
 	@override String get externalServices => 'Layanan eksternal';
 	@override String get sourceCode => 'Sumber kode';
+	@override String get sourceCodeIsNotYetProvided => 'Sumber kode belum tersedia. Hubungi admin untuk memperbaiki masalah ini.';
+	@override String get repositoryUrl => 'URL Repositori';
+	@override String get repositoryUrlDescription => 'Jika kamu menggunakan Misskey begitu saja (tanpa ada perubahan dalam kode sumber), masukkan https://github.com/misskey-dev/misskey';
+	@override String get repositoryUrlOrTarballRequired => 'Apabila kamu masih mempublikasikan repositori, kamu setidaknya harus menyediakan berkas tarball. Lihat .config/example.yml untuk informasi lebih lanjut.';
+	@override String get feedback => 'Umpan balik';
+	@override String get feedbackUrl => 'URL Umpan balik';
 	@override String get impressum => 'Impressum';
 	@override String get impressumUrl => 'Tautan Impressum';
 	@override String get impressumDescription => 'Pada beberapa negara seperti Jerman, inklusi dari informasi kontak operator (sebuah Impressum) diperlukan secara legal untuk situs web komersil.';
@@ -1282,6 +1293,8 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get showReplay => 'Lihat tayangan ulang';
 	@override String get replay => 'Tayangan ulang';
 	@override String get replaying => 'Menayangkan Ulang';
+	@override String get endReplay => 'Keluat dari tayangan ulang';
+	@override String get copyReplayData => 'Salin data tayangan ulang';
 	@override String get ranking => 'Peringkat';
 	@override String lastNDays({required Object n}) => '${n} hari terakhir';
 	@override String get backToTitle => 'Ke Judul';
@@ -1289,11 +1302,24 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get withSensitive => 'Lampirkan catatan dengan berkas sensitif';
 	@override String userSaysSomethingSensitive({required Object name}) => 'Postingan oleh ${name} mengandung konten sensitif';
 	@override String get enableHorizontalSwipe => 'Geser untuk mengganti tab';
+	@override String get loading => 'Memuat...';
 	@override String get surrender => 'Batalkan';
+	@override String get gameRetry => 'Coba lagi';
+	@override String get notUsePleaseLeaveBlank => 'Kosongi bila tidak digunakan';
+	@override String get useTotp => 'Gunakan TOTP';
+	@override String get useBackupCode => 'Gunakan kode cadangan';
+	@override String get launchApp => 'Luncurkan Aplikasi';
+	@override String get useNativeUIForVideoAudioPlayer => 'Gunakan antarmuka peramban ketika memainkan video dan audio';
+	@override String get keepOriginalFilename => 'Simpan nama berkas asli';
+	@override String get keepOriginalFilenameDescription => 'Apabila pengaturan ini dimatikan, nama berkas akan diganti dengan string acak secara otomatis ketika kamu mengunggah berkas.';
+	@override String get noDescription => 'Tidak ada deskripsi';
+	@override String get alwaysConfirmFollow => 'Selalu konfirmasi ketika mengikuti';
+	@override String get inquiry => 'Hubungi kami';
 	@override late final _StringsMisskeyBubbleGameIdId bubbleGame_ = _StringsMisskeyBubbleGameIdId._(_root);
 	@override late final _StringsMisskeyAnnouncementIdId announcement_ = _StringsMisskeyAnnouncementIdId._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingIdId initialAccountSetting_ = _StringsMisskeyInitialAccountSettingIdId._(_root);
 	@override late final _StringsMisskeyInitialTutorialIdId initialTutorial_ = _StringsMisskeyInitialTutorialIdId._(_root);
+	@override late final _StringsMisskeyTimelineDescriptionIdId timelineDescription_ = _StringsMisskeyTimelineDescriptionIdId._(_root);
 	@override late final _StringsMisskeyServerRulesIdId serverRules_ = _StringsMisskeyServerRulesIdId._(_root);
 	@override late final _StringsMisskeyServerSettingsIdId serverSettings_ = _StringsMisskeyServerSettingsIdId._(_root);
 	@override late final _StringsMisskeyAccountMigrationIdId accountMigration_ = _StringsMisskeyAccountMigrationIdId._(_root);
@@ -1355,6 +1381,9 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDataSaverIdId dataSaver_ = _StringsMisskeyDataSaverIdId._(_root);
 	@override late final _StringsMisskeyHemisphereIdId hemisphere_ = _StringsMisskeyHemisphereIdId._(_root);
 	@override late final _StringsMisskeyReversiIdId reversi_ = _StringsMisskeyReversiIdId._(_root);
+	@override late final _StringsMisskeyOfflineScreenIdId offlineScreen_ = _StringsMisskeyOfflineScreenIdId._(_root);
+	@override late final _StringsMisskeyUrlPreviewSettingIdId urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingIdId._(_root);
+	@override late final _StringsMisskeyMediaControlsIdId mediaControls_ = _StringsMisskeyMediaControlsIdId._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -1365,6 +1394,8 @@ class _StringsMisskeyBubbleGameIdId extends _StringsMisskeyBubbleGameEnUs {
 
 	// Translations
 	@override String get howToPlay => 'Cara bermain';
+	@override String get hold => 'Tahan';
+	@override late final _StringsMisskeyBubbleGameScoreIdId score_ = _StringsMisskeyBubbleGameScoreIdId._(_root);
 	@override late final _StringsMisskeyBubbleGameHowToPlayIdId howToPlay_ = _StringsMisskeyBubbleGameHowToPlayIdId._(_root);
 }
 
@@ -1433,6 +1464,19 @@ class _StringsMisskeyInitialTutorialIdId extends _StringsMisskeyInitialTutorialE
 	@override late final _StringsMisskeyInitialTutorialDoneIdId done_ = _StringsMisskeyInitialTutorialDoneIdId._(_root);
 }
 
+// Path: misskey.timelineDescription_
+class _StringsMisskeyTimelineDescriptionIdId extends _StringsMisskeyTimelineDescriptionEnUs {
+	_StringsMisskeyTimelineDescriptionIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get home => 'Pada linimasa Beranda, kamu dapat melihat catatan dari akun yang kamu ikuti.';
+	@override String get local => 'Pada linimasa Lokal, kamu dapat melihat catatan dari semua pengguna yang ada pada peladen ini.';
+	@override String get social => 'Linimasa sosial menampilkan catatan dari kedua linimasa Beranda dan Lokal.';
+	@override String get global => 'Pada linimasa Global, kamu dapat melihat catatan dari semua peladen yang terhubung.';
+}
+
 // Path: misskey.serverRules_
 class _StringsMisskeyServerRulesIdId extends _StringsMisskeyServerRulesEnUs {
 	_StringsMisskeyServerRulesIdId._(_StringsIdId root) : this._root = root, super._(root);
@@ -1458,6 +1502,9 @@ class _StringsMisskeyServerSettingsIdId extends _StringsMisskeyServerSettingsEnU
 	@override String get manifestJsonOverride => 'Ambil alih manifest.json';
 	@override String get shortName => 'Nama pendek';
 	@override String get shortNameDescription => 'Inisial untuk nama instansi yang dapat ditampilkan apabila nama lengkap resmi terlalu panjang.';
+	@override String get fanoutTimelineDescription => 'Dapat meningkatkan performa dalam pengambilan data linimasa dan mengurangi beban pada database ketika dinyalakan. Sebagai gantinya, penggunaan memory pada Redis akan meningkan. Pertimbangkan untuk menonaktifkan fitur ini jika mengalami kekurangan memori pada server atau menyebabkan server tidak stabil.';
+	@override String get fanoutTimelineDbFallback => 'Fallback ke database';
+	@override String get fanoutTimelineDbFallbackDescription => 'Ketika diaktifkan, lini masa akan fallback ke database untuk melakukan kueri tambahan apabila linimasa tidak disimpan dalam cache. Menonaktifkan ini dapat mengurangi beban server dengan mengeliminasi proses fallback, namun dapat berakibat membatasi jarak data dari lini masa yang dapat diambil.';
 }
 
 // Path: misskey.accountMigration_
@@ -1510,7 +1557,9 @@ class _StringsMisskeyRoleIdId extends _StringsMisskeyRoleEnUs {
 	@override String get assignTarget => 'Tipe tugas';
 	@override String get descriptionOfAssignTarget => '<b>Manual</b> untuk mengganti secara manual siapa yang mendapatkan peran ini dan siapa yang tidak.\n<b>Kondisional</b> untuk pengguna secara otomatis dimasukkan atau dihapus dari peran berdasarkan kondisi yang ditentukan.';
 	@override String get manual => 'Manual';
+	@override String get manualRoles => 'Peran manual';
 	@override String get conditional => 'Kondisional';
+	@override String get conditionalRoles => 'Peran kondisional';
 	@override String get condition => 'Kondisi';
 	@override String get isConditionalRole => 'Ini adalah peran kondisional';
 	@override String get isPublic => 'Publikkan Peran';
@@ -1563,6 +1612,7 @@ class _StringsMisskeyEmailUnavailableIdId extends _StringsMisskeyEmailUnavailabl
 	@override String get disposable => 'Alamat surel temporer tidak dapat digunakan';
 	@override String get mx => 'Peladen alamat surel ini tidak valid';
 	@override String get smtp => 'Peladen alamat surel ini tidak merespon';
+	@override String get banned => 'Kamu tidak dapat mendaftar dengan alamat surel ini';
 }
 
 // Path: misskey.ffVisibility_
@@ -1668,6 +1718,7 @@ class _StringsMisskeyPluginIdId extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => 'Mohon jangan memasang plugin yang tidak dapat dipercayai.';
 	@override String get manage => 'Manajemen plugin';
 	@override String get viewSource => 'Lihat sumber';
+	@override String get viewLog => 'Tampilkan log';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1721,10 +1772,13 @@ class _StringsMisskeyAboutMisskeyIdId extends _StringsMisskeyAboutMisskeyEnUs {
 	@override String get contributors => 'Kontributor utama';
 	@override String get allContributors => 'Seluruh kontributor';
 	@override String get source => 'Sumber kode';
+	@override String get original => 'Asli';
+	@override String thisIsModifiedVersion({required Object name}) => '${name} menggunakan versi modifikasi dari Misskey yang asli.';
 	@override String get translation => 'Terjemahkan Misskey';
 	@override String get donate => 'Donasi ke Misskey';
 	@override String get morePatrons => 'Kami sangat mengapresiasi dukungan dari banyak penolong lain yang tidak tercantum disini. Terima kasih! 🥰';
 	@override String get patrons => 'Pendukung';
+	@override String get projectMembers => 'Anggota proyek';
 }
 
 // Path: misskey.displayOfSensitiveMedia_
@@ -1781,6 +1835,7 @@ class _StringsMisskeyChannelIdId extends _StringsMisskeyChannelEnUs {
 	@override String notesCount({required Object n}) => 'terdapat ${n} catatan';
 	@override String get nameAndDescription => 'Nama dan deskripsi';
 	@override String get nameOnly => 'Hanya nama';
+	@override String get allowRenoteToExternal => 'Perbolehkan catat ulang dan kutipan di luar dari kanal';
 }
 
 // Path: misskey.menuDisplay_
@@ -1949,7 +2004,6 @@ class _StringsMisskeyX2faIdId extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Daftarkan aplikasi autentikator';
 	@override String step1({required Object a, required Object b}) => 'Pertama, pasang aplikasi autentikasi (seperti ${a} atau ${b}) di perangkat kamu.';
 	@override String get step2 => 'Lalu, pindai kode QR yang ada di layar.';
-	@override String get step2Click => 'Mengeklik kode QR ini akan membolehkanmu untuk mendaftarkan 2FA ke security-key atau aplikasi autentikator ponsel.';
 	@override String get step2Uri => 'Masukkan URI berikut jika kamu menggunakan program desktop';
 	@override String get step3Title => 'Masukkan kode autentikasi';
 	@override String get step3 => 'Masukkan token yang telah disediakan oleh aplikasimu untuk menyelesaikan pemasangan.';
@@ -1973,6 +2027,7 @@ class _StringsMisskeyX2faIdId extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => 'Kamu dapat menggunakan kode ini untuk mendapatkan akses ke akun kamu apabila berada dalam situasi tidak dapat menggunakan aplikasi autentikasi 2-faktor yang kamu miliki. Setiap kode hanya dapat digunakan satu kali. Mohon simpan kode ini di tempat yang aman.';
 	@override String get backupCodeUsedWarning => 'Kode cadangan telah digunakan. Mohon mengatur ulang autentikasi 2-faktor secepatnya apabila kamu sudah tidak dapat menggunakannya lagi.';
 	@override String get backupCodesExhaustedWarning => 'Semua kode cadangan telah digunakan. Apabila kamu kehilangan akses pada aplikasi autentikasi 2-faktor milikmu, kamu tidak dapat mengakses akun ini lagi. Mohon atur ulang autentikasi 2-faktor kamu.';
+	@override String get moreDetailedGuideHere => 'Berikut panduan detilnya';
 }
 
 // Path: misskey.permissions_
@@ -2347,6 +2402,7 @@ class _StringsMisskeyPlayIdId extends _StringsMisskeyPlayEnUs {
 	@override String get title => 'Judul';
 	@override String get script => 'Script';
 	@override String get summary => 'Deskripsi';
+	@override String get visibilityDescription => 'Membuat catatan ini privat berarti tidak akan terlihat pada profil kamu, namun siapapun yang memiliki URL dari catatan ini akan dapat mengaksesnya.';
 }
 
 // Path: misskey.pages_
@@ -2434,8 +2490,10 @@ class _StringsMisskeyNotificationIdId extends _StringsMisskeyNotificationEnUs {
 	@override String get sendTestNotification => 'Kirim tes notifikasi';
 	@override String get notificationWillBeDisplayedLikeThis => 'Notifikasi akan terlihat seperti ini';
 	@override String reactedBySomeUsers({required Object n}) => '${n} orang memberikan reaksi';
+	@override String likedBySomeUsers({required Object n}) => '${n} pengguna menyukai catatan kamu';
 	@override String renotedBySomeUsers({required Object n}) => '${n} orang telah merenote';
 	@override String followedBySomeUsers({required Object n}) => '${n} orang telah mengikuti';
+	@override String get flushNotification => 'Bersihkan notifikasi';
 	@override late final _StringsMisskeyNotificationTypesIdId types_ = _StringsMisskeyNotificationTypesIdId._(_root);
 	@override late final _StringsMisskeyNotificationActionsIdId actions_ = _StringsMisskeyNotificationActionsIdId._(_root);
 }
@@ -2547,6 +2605,7 @@ class _StringsMisskeyModerationLogTypesIdId extends _StringsMisskeyModerationLog
 	@override String get resetPassword => 'Atur ulang kata sandi';
 	@override String get suspendRemoteInstance => 'Instansi luar telah ditangguhkan';
 	@override String get unsuspendRemoteInstance => 'Instansi luar batal ditangguhkan';
+	@override String get updateRemoteInstanceNote => 'Catatan moderasi telah diperbaharui untuk peladen luar.';
 	@override String get markSensitiveDriveFile => 'Berkas ditandai sensitif';
 	@override String get unmarkSensitiveDriveFile => 'Berkas batal ditandai sensitif';
 	@override String get resolveAbuseReport => 'Laporan terselesaikan';
@@ -2657,6 +2716,78 @@ class _StringsMisskeyReversiIdId extends _StringsMisskeyReversiEnUs {
 	@override String get isLlotheo => 'Pemain dengan batu yang sedikit menang (Llotheo)';
 	@override String get loopedMap => 'Peta melingkar';
 	@override String get canPutEverywhere => 'Keping dapat ditaruh dimana saja';
+	@override String get timeLimitForEachTurn => 'Batas waktu untuk gantian';
+	@override String get freeMatch => 'Pertandingan bebas';
+	@override String get lookingForPlayer => 'Mencari lawan...';
+	@override String get gameCanceled => 'Permainan ini telah dibatalkan.';
+	@override String get shareToTlTheGameWhenStart => 'Bagikan permainan ke lini masa ketika dimulai';
+	@override String get iStartedAGame => 'Permainan telah dimulai! #MisskeyReversi';
+	@override String get opponentHasSettingsChanged => 'Lawan telah mengganti pengaturan mereka.';
+	@override String get allowIrregularRules => 'Aturan non-reguler (bebas sepenuhnya)';
+	@override String get disallowIrregularRules => 'Tanpa aturan non-reguler';
+	@override String get showBoardLabels => 'Tampilkan penomoran baris dan kolom pada papan';
+	@override String get useAvatarAsStone => 'Ubah batu menjadi avatar pengguna';
+}
+
+// Path: misskey.offlineScreen_
+class _StringsMisskeyOfflineScreenIdId extends _StringsMisskeyOfflineScreenEnUs {
+	_StringsMisskeyOfflineScreenIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Luring - tidak dapat terhubung ke peladen';
+	@override String get header => 'Tidak dapat tersambung ke server';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _StringsMisskeyUrlPreviewSettingIdId extends _StringsMisskeyUrlPreviewSettingEnUs {
+	_StringsMisskeyUrlPreviewSettingIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Pengaturan pratinjau URL';
+	@override String get enable => 'Aktifkan pratinjau URL';
+	@override String get timeout => 'Waktu timeout pratinjau URL (ms)';
+	@override String get timeoutDescription => 'Apabila ini memakan waktu lama dari nilai yang ditentukan untuk mendapatkan pratinjau, pratinjau tidak akan dibuat.';
+	@override String get maximumContentLength => 'Content-Length Maksimum (bytes)';
+	@override String get maximumContentLengthDescription => 'Apabila Content-Length lebih besar dari nilai ini, pratinjau tidak akan dibuat.';
+	@override String get requireContentLength => 'Buat pratinjau hanya ketika Content-Length dapat didapatkan';
+	@override String get requireContentLengthDescription => 'Apabila peladen lain tidak memberika Content-Length, pratinjau tidak akan dibuat.';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => 'Atur User-Agent yang digunakan untuk mengambil pratinjau. Apabila dibiarkan kosong, User-Agent bawaan akan digunakan.';
+	@override String get summaryProxy => 'Titik akhir proksi yang membuat pratinjau';
+	@override String get summaryProxyDescription => 'Bukan untuk Misskey, namun untuk menghasilkan pratinjau menggunakan Summaly Proxy.';
+	@override String get summaryProxyDescription2 => 'Parameter berikut tertautkan dengan proksi sebagai string kueri. Apabila proksi tidak mendukung tersebut, nilai di dalamnya diabaikan.';
+}
+
+// Path: misskey.mediaControls_
+class _StringsMisskeyMediaControlsIdId extends _StringsMisskeyMediaControlsEnUs {
+	_StringsMisskeyMediaControlsIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => 'Gambar dalam Gambar';
+	@override String get playbackRate => 'Kecepatan Pemutaran';
+	@override String get loop => 'Ulangi Pemutaran';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _StringsMisskeyBubbleGameScoreIdId extends _StringsMisskeyBubbleGameScoreEnUs {
+	_StringsMisskeyBubbleGameScoreIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Skor';
+	@override String get scoreYen => 'Jumlah uang didapat';
+	@override String get highScore => 'Skor tertinggi';
+	@override String get maxChain => 'Jumlah skor berantai';
+	@override String yen({required Object yen}) => '${yen} Yen';
+	@override String estimatedQty({required Object qty}) => '${qty} buah';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} onigiri';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -2667,6 +2798,8 @@ class _StringsMisskeyBubbleGameHowToPlayIdId extends _StringsMisskeyBubbleGameHo
 
 	// Translations
 	@override String get section1 => 'Atur posisi dan jatuhkan obyek ke dalam kotak.';
+	@override String get section2 => 'Ketika dua obyek menyentuh tipe yang sama satu sama lain, obyek tersebut akan berganti dan kamu mendapatkan poin skor.';
+	@override String get section3 => 'Permainan berakhir jika obyek memenuhi kotak. Capai skor tertinggi dengan menggabungkan obyek bersama sambil menghindari obyek tersebut memenuhi kotak permainan!';
 }
 
 // Path: misskey.initialTutorial_.landing_
@@ -2692,6 +2825,7 @@ class _StringsMisskeyInitialTutorialNoteIdId extends _StringsMisskeyInitialTutor
 	@override String get reply => 'Klik pada tombol ini untuk membalas ke sebuah pesan. Bisa juga untuk membalas ke sebuah balasan dan melanjutkannya seperti percakapan selayaknya utas.';
 	@override String get renote => 'Kamu dapat membagikan catatan ke lini masa milikmu. Kamu juga dapat mengutipnya dengan komentarmu.';
 	@override String get reaction => 'Kamu dapat menambahkan reaksi ke Catatan. Detil lebih lanjut akan dijelaskan di halaman berikutnya.';
+	@override String get menu => 'Kamu dapat melihat detil catatan, menyalin tautan, dan melakukan aksi lainnya.';
 }
 
 // Path: misskey.initialTutorial_.reaction_
@@ -2702,6 +2836,11 @@ class _StringsMisskeyInitialTutorialReactionIdId extends _StringsMisskeyInitialT
 
 	// Translations
 	@override String get title => 'Apa itu Reaksi?';
+	@override String get description => 'Catatan dapat direaksi dengan berbagai emoji. Reaksi memperbolehkan kamu untuk mengekspresikan nuansa yang tidak dapat disampaikan hanya dengan sebuah "suka".';
+	@override String get letsTryReacting => 'Reaksi dapat ditambahkan dengan mengklik tombol \'+\' pada catatan. Coba lakukan mereaksi contoh catatan ini!';
+	@override String get reactToContinue => 'Tambahkan reaksi untuk melanjutkan.';
+	@override String get reactNotification => 'Kamu akan menerima notifikasi real0time ketika seseorang mereaksi catatan kamu.';
+	@override String get reactDone => 'Kamu dapat mengurungkan reaksi dengan menekan tombol \'-\'.';
 }
 
 // Path: misskey.initialTutorial_.timeline_
@@ -2712,6 +2851,13 @@ class _StringsMisskeyInitialTutorialTimelineIdId extends _StringsMisskeyInitialT
 
 	// Translations
 	@override String get title => 'Konsep Lini Masa';
+	@override String get description1 => 'Misskey menyediakan berbagai lini masa sesuai dengan penggunaan (beberapa mungkin tidak tersedia karena bergantung dengan kebijakan peladen).';
+	@override String get home => 'Kamu dapat melihat catatan dari akun yang kamu ikuti.';
+	@override String get local => 'Kamu dapat melihat catatan dari semua pengguna yang ada pada peladen ini.';
+	@override String get social => 'Catatan dari linimasa Beranda dan Lokal akan ditampilkan.';
+	@override String get global => 'Kamu dapat melihat catatan dari semua peladen yang terhubung.';
+	@override String get description2 => 'Kamu dapat mengganti linimasa di bagian atas layar kamu kapan saja.';
+	@override String description3({required Object link}) => 'Sebagai tambahan, terdapat juga linimasa daftar dan linimasa kanal. Untuk detil lebih lanjut, silahkan melihat ke tautan berikut: ${link}.';
 }
 
 // Path: misskey.initialTutorial_.postNote_
@@ -2722,6 +2868,7 @@ class _StringsMisskeyInitialTutorialPostNoteIdId extends _StringsMisskeyInitialT
 
 	// Translations
 	@override String get title => 'Pengaturan posting Catatan';
+	@override String get description1 => 'Ketika memposting catatan ke Misskey, terdapat beberapa opsi yang tersedia. Form posting terlihat seperti ini.';
 	@override late final _StringsMisskeyInitialTutorialPostNoteVisibilityIdId visibility_ = _StringsMisskeyInitialTutorialPostNoteVisibilityIdId._(_root);
 	@override late final _StringsMisskeyInitialTutorialPostNoteCwIdId cw_ = _StringsMisskeyInitialTutorialPostNoteCwIdId._(_root);
 }
@@ -2734,6 +2881,12 @@ class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveIdId extends _S
 
 	// Translations
 	@override String get title => 'Bagaimana menandai lampiran sebagai sensitif?';
+	@override String get description => 'Fungsi ini digunakan untuk lampiran yang dibutuhkan oleh panduan peladen atau sesuatu yang seharusnya tidak boleh dibiarkan begitu saja dengan cara menambahkan penanda "sensitif".';
+	@override String get tryThisFile => 'Coba tandai gambar yang dilampirkan pada form ini sebagai sensitif!';
+	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteIdId exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteIdId._(_root);
+	@override String get method => 'Untuk menandai lampiran sebagai sensitif, klik gambar pada berkas, buka menu, lalu klik "Tandai sebagai sensitif".';
+	@override String get sensitiveSucceeded => 'Ketika melampirkan berkas, mohon atur sensitifitas sesuai dengan panduan peladen.';
+	@override String get doItToContinue => 'Tandai berkas terlampir sebagai sensitif untuk melanjutkan.';
 }
 
 // Path: misskey.initialTutorial_.done_
@@ -2744,6 +2897,7 @@ class _StringsMisskeyInitialTutorialDoneIdId extends _StringsMisskeyInitialTutor
 
 	// Translations
 	@override String get title => 'Kamu telah menyelesaikan tutorial! 🎉';
+	@override String description({required Object link}) => 'Fungsi yang diperkenalkan di sini merupakan sebagian kecil dari fitur yang ada. Untuk pemahaman lebih detil dalam menggunakan Misskey, kamu dapat merujuk ke ${link}.';
 }
 
 // Path: misskey.achievements_.types_
@@ -2828,6 +2982,9 @@ class _StringsMisskeyAchievementsTypesIdId extends _StringsMisskeyAchievementsTy
 	@override late final _StringsMisskeyAchievementsTypesCookieClickedIdId cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedIdId._(_root);
 	@override late final _StringsMisskeyAchievementsTypesBrainDiverIdId brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverIdId._(_root);
 	@override late final _StringsMisskeyAchievementsTypesSmashTestNotificationButtonIdId smashTestNotificationButton_ = _StringsMisskeyAchievementsTypesSmashTestNotificationButtonIdId._(_root);
+	@override late final _StringsMisskeyAchievementsTypesTutorialCompletedIdId tutorialCompleted_ = _StringsMisskeyAchievementsTypesTutorialCompletedIdId._(_root);
+	@override late final _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadIdId bubbleGameExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadIdId._(_root);
+	@override late final _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadIdId bubbleGameDoubleExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadIdId._(_root);
 }
 
 // Path: misskey.role_.priority_
@@ -2852,6 +3009,7 @@ class _StringsMisskeyRoleOptionsIdId extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get gtlAvailable => 'Dapat melihat lini masa global';
 	@override String get ltlAvailable => 'Dapat melihat lini masa lokal';
 	@override String get canPublicNote => 'Dapat mengirim catatan publik';
+	@override String get mentionMax => 'Jumlah maksimum sebutan dalam sebuah catatan';
 	@override String get canInvite => 'Dapat membuat kode undangan instansi';
 	@override String get inviteLimit => 'Batas jumlah undangan';
 	@override String get inviteLimitCycle => 'Interval Penerbitan Kode Undangan';
@@ -2873,6 +3031,7 @@ class _StringsMisskeyRoleOptionsIdId extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canHideAds => 'Dapat menyembunyikan iklan';
 	@override String get canSearchNotes => 'Penggunaan pencarian catatan';
 	@override String get canUseTranslator => 'Penggunaan penerjemah';
+	@override String get avatarDecorationLimit => 'Jumlah maksimum dekorasi avatar yang dapat diterapkan';
 }
 
 // Path: misskey.role_.condition_
@@ -2882,8 +3041,14 @@ class _StringsMisskeyRoleConditionIdId extends _StringsMisskeyRoleConditionEnUs 
 	@override final _StringsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get roleAssignedTo => 'Ditugaskan ke peran manual';
 	@override String get isLocal => 'Pengguna lokal';
 	@override String get isRemote => 'Pengguna remote';
+	@override String get isCat => 'Pengguna Kucing';
+	@override String get isBot => 'Pengguna Bot';
+	@override String get isSuspended => 'Pengguna yang ditangguhkan';
+	@override String get isLocked => 'Akun privat';
+	@override String get isExplorable => 'Pengguna efektif yang akunnya dapat dicari';
 	@override String get createdLessThan => 'Telah berlalu kurang dari X sejak pembuatan akun';
 	@override String get createdMoreThan => 'Telah berlalu lebih dari X sejak pembuatan akun';
 	@override String get followersLessThanOrEq => 'Memiliki pengikut X atau kurang dari tersebut';
@@ -3003,6 +3168,8 @@ class _StringsMisskeyPagesBlocksIdId extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => 'Bagian';
 	@override String get image => 'Gambar';
 	@override String get button => 'Tombol';
+	@override String get dynamic => 'Blok Dinamis';
+	@override String dynamicDescription({required Object play}) => 'Blok ini telah dihapus. Mohon gunakan ${play} dari sekarang.';
 	@override String get note => 'Catatan yang ditanam';
 	@override late final _StringsMisskeyPagesBlocksNoteIdId note_ = _StringsMisskeyPagesBlocksNoteIdId._(_root);
 }
@@ -3189,10 +3356,14 @@ class _StringsMisskeyInitialTutorialPostNoteVisibilityIdId extends _StringsMissk
 	@override final _StringsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get description => 'Kamu dapat membatasi siapa yang dapat melihat catatan kamu.';
 	@override String get public => 'Perlihatkan catatan ke semua pengguna.';
 	@override String get home => 'Hanya publik ke lini masa Beranda. Pengguna yang mengunjungi profilmu melalui pengikut dan renote dapat melihatnya.';
 	@override String get followers => 'Perlihatkan ke pengikut saja. Hanya pengikut yang dapat melihat postinganmu dan tidak dapat direnote oleh siapapun.';
 	@override String get direct => 'Hanya perlihatkan ke pengguna spesifik dan penerima akan diberi tahu. Dapat juga digunakan sebagai alternatif dari pesan langsung.';
+	@override String get doNotSendConfidencialOnDirect1 => 'Hati-hati ketika mengirim informasi yang sensitif!';
+	@override String get doNotSendConfidencialOnDirect2 => 'Admin dari peladen dapat melihat apa yang kamu tulis. Hati-hati dengan informasi sensitif ketika mengirimkan catatan langsung kepada pengguna pada peladen yang tidak dipercaya.';
+	@override String get localOnly => 'Memposting dengan opsi ini tidak akan memfederasi catatan ke peladen lain. Pengguna pada peladen lain tidak akan dapat melihat catatan ini secara langsung, meskipun dengan pengaturan visibilitas yang sudah diatur di atas.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
@@ -3203,7 +3374,19 @@ class _StringsMisskeyInitialTutorialPostNoteCwIdId extends _StringsMisskeyInitia
 
 	// Translations
 	@override String get title => 'Peringatan Konten (CW)';
+	@override String get description => 'Alih-alih isinya, konten yang ditulis dalam kolom \'komentar\' akan ditampilkan. Menekan \'Selebihnya\' akan menampilkan isi konten.';
 	@override late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteIdId exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteIdId._(_root);
+	@override String get useCases => 'Fungsi ini digunakan ketika mengikutik panduan peladen untuk catatan yang dibutuhkan atau untuk membatasi diri dari teks sensitif atau spoiler.';
+}
+
+// Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
+class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteIdId extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get note => 'Ups, kesalahan banget buka penutup wadah natto...';
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -4043,6 +4226,40 @@ class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonIdId extends _S
 	// Translations
 	@override String get title => 'Tes overflow';
 	@override String get description => 'Picu tes notifikasi secara berulang dalam waktu yang sangat pendek';
+}
+
+// Path: misskey.achievements_.types_.tutorialCompleted_
+class _StringsMisskeyAchievementsTypesTutorialCompletedIdId extends _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
+	_StringsMisskeyAchievementsTypesTutorialCompletedIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ijazah Sekolah Dasar Misskey';
+	@override String get description => 'Tutorial selesai';
+}
+
+// Path: misskey.achievements_.types_.bubbleGameExplodingHead_
+class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadIdId extends _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_StringsMisskeyAchievementsTypesBubbleGameExplodingHeadIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '🤯';
+	@override String get description => 'Obyek paling terbesar di permainan gelembung';
+}
+
+// Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
+class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadIdId extends _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ganda 🤯';
+	@override String get description => 'Dua dari obyek paling terbesar pada permainan gelembung di waktu yang sama';
+	@override String get flavor => 'Kamu dapat mengisi kotak makan siang seperti ini 🤯 🤯.';
 }
 
 // Path: misskey.pages_.blocks.note_

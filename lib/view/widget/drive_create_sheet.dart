@@ -111,9 +111,7 @@ class DriveCreateSheet extends HookConsumerWidget {
           onChanged: (value) => keepOriginalUploading.value = value,
         ),
         SwitchListTile(
-          // TODO: Update localizations
-          title: const Text('Keep original filename'),
-          // title: Text(t.misskey.keepOriginalFilename),
+          title: Text(t.misskey.keepOriginalFilename),
           value: keepOriginalFilename.value,
           onChanged: (value) => keepOriginalFilename.value = value,
         ),

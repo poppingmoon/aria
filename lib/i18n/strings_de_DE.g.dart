@@ -728,7 +728,7 @@ class _StringsMisskeyDeDe extends _StringsMisskeyEnUs {
 	@override String get testEmail => 'Emailversand testen';
 	@override String get wordMute => 'Wortstummschaltung';
 	@override String get regexpError => 'Fehler in einem regulären Ausdruck';
-	@override String regexpErrorDescription({required Object tab, required Object line}) => 'Im regulären Ausdruck deiner ${tab}en Wortstummschaltungen ist ein Fehler aufgetreten: ${line}';
+	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Im regulären Ausdruck deiner in Zeile ${line} von ${tab}en Wortstummschaltungen ist ein Fehler aufgetreten:';
 	@override String get instanceMute => 'Instanzstummschaltungen';
 	@override String userSaysSomething({required Object name}) => '${name} hat etwas gesagt';
 	@override String get makeActive => 'Aktivieren';
@@ -1887,7 +1887,6 @@ class _StringsMisskeyX2faDeDe extends _StringsMisskeyX2faEnUs {
 	@override String get registerTOTP => 'Authentifizierungs-App registrieren';
 	@override String step1({required Object a, required Object b}) => 'Installiere zuerst eine Authentifizierungsapp (z.B. ${a} oder ${b}) auf deinem Gerät.';
 	@override String get step2 => 'Dann, scanne den angezeigten QR-Code mit deinem Gerät.';
-	@override String get step2Click => 'Durch Klicken dieses QR-Codes kannst du Verifikation mit deinem Security-Token oder einer App registrieren.';
 	@override String get step2Uri => 'Nutzt du ein Desktopprogramm, gib folgende URI eingeben';
 	@override String get step3Title => 'Authentifizierungsscode eingeben';
 	@override String get step3 => 'Gib zum Abschluss den Code (Token) ein, der von deiner App angezeigt wird.';
