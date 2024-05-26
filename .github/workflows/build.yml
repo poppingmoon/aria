@@ -119,11 +119,6 @@ jobs:
 
     needs: get-flutter-version
 
-    env:
-      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-      APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
-
     steps:
       - uses: actions/checkout@v4
 
@@ -174,9 +169,7 @@ jobs:
 
       - name: Dump AuthKey
         if: startsWith(github.ref, 'refs/tags/')
-        run: |
-          mkdir private_keys
-          echo "$APP_STORE_CONNECT_PRIVATE_KEY" > AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8
+        run: echo "${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}" > AuthKey.p8
 
       - name: Create IPA
         if: startsWith(github.ref, 'refs/tags/')
@@ -186,9 +179,9 @@ jobs:
           -archivePath ios/Runner.xcarchive
           -exportOptionsPlist ios/ExportOptions.plist
           -allowProvisioningUpdates
-          -authenticationKeyIssuerID $APP_STORE_CONNECT_ISSUER_ID
-          -authenticationKeyID $APP_STORE_CONNECT_KEY_IDENTIFIER
-          -authenticationKeyPath $(pwd)/private_keys/AuthKey_$APP_STORE_CONNECT_KEY_IDENTIFIER.p8
+          -authenticationKeyIssuerID ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+          -authenticationKeyID ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+          -authenticationKeyPath $(pwd)/AuthKey.p8
 
   build-windows-x64:
     runs-on: windows-latest
