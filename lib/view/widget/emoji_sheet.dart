@@ -75,7 +75,7 @@ class EmojiSheet extends ConsumerWidget {
         ListTile(
           leading: const Icon(Icons.copy),
           title: Text(t.misskey.copy),
-          onTap: () => copyToClipboard(context, emoji),
+          onTap: () => copyToClipboard(context, emoji.replaceAll('@.', '')),
         ),
         if (canReact)
           ListTile(
