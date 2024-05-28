@@ -83,7 +83,7 @@ class ProfilePage extends HookConsumerWidget {
                   folderId: folderId,
                   force: true,
                 ),
-                data,
+                cropped,
               ),
         );
         return file;
