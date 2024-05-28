@@ -64,10 +64,10 @@ class AntennasNotifier extends _$AntennasNotifier {
         keywords: keywords ?? antenna.keywords,
         excludeKeywords: excludeKeywords ?? antenna.excludeKeywords,
         users: users ?? antenna.users,
-        caseSensitive: caseSensitive ?? antenna.caseSensitive,
-        withReplies: withReplies ?? antenna.withReplies,
-        withFile: withFile ?? antenna.withFile,
-        notify: antenna.notify,
+        caseSensitive: caseSensitive ?? antenna.caseSensitive ?? false,
+        withReplies: withReplies ?? antenna.withReplies ?? false,
+        withFile: withFile ?? antenna.withFile ?? false,
+        notify: antenna.notify ?? false,
       ),
     );
     state = AsyncValue.data([
@@ -106,10 +106,10 @@ class AntennasNotifier extends _$AntennasNotifier {
         keywords: antenna.keywords,
         excludeKeywords: antenna.excludeKeywords,
         users: users,
-        caseSensitive: antenna.caseSensitive,
-        withReplies: antenna.withReplies,
-        withFile: antenna.withFile,
-        notify: antenna.notify,
+        caseSensitive: antenna.caseSensitive ?? false,
+        withReplies: antenna.withReplies ?? false,
+        withFile: antenna.withFile ?? false,
+        notify: antenna.notify ?? false,
       ),
     );
     state = AsyncValue.data([
@@ -131,10 +131,10 @@ class AntennasNotifier extends _$AntennasNotifier {
         keywords: antenna.keywords,
         excludeKeywords: antenna.excludeKeywords,
         users: users,
-        caseSensitive: antenna.caseSensitive,
-        withReplies: antenna.withReplies,
-        withFile: antenna.withFile,
-        notify: antenna.notify,
+        caseSensitive: antenna.caseSensitive ?? false,
+        withReplies: antenna.withReplies ?? false,
+        withFile: antenna.withFile ?? false,
+        notify: antenna.notify ?? false,
       ),
     );
     state = AsyncValue.data([
