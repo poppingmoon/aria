@@ -53,7 +53,7 @@ class FilePickerSheet extends ConsumerWidget {
               } else if (files.length == 1) {
                 context.pop(
                   LocalPostFile.fromFile(
-                    ref.read(fileSystemProvider).file(files.single),
+                    ref.read(fileSystemProvider).file(files.single.path),
                   ),
                 );
               }
