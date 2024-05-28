@@ -18,8 +18,8 @@ A [Misskey](https://github.com/misskey-dev/misskey) client app forked from [Miri
 
 | Android           | iOS                      | Windows                  | macOS                    | Linux          |
 | ----------------- | ------------------------ | ------------------------ | ------------------------ | -------------- |
-| [F-Droid][fdroid] | [TestFlight][testflight] | [EXE installer][release] | [DMG Installer][release] | [TAR][release] |
-| [APK][release]    | [IPA][release]           | [ZIP][release]           |                          |                |
+| [F-Droid][fdroid] | [TestFlight][testflight] | [EXE installer][release] | [TestFlight][testflight] | [TAR][release] |
+| [APK][release]    | [IPA][release]           | [ZIP][release]           | [DMG Installer][release] |                |
 
 
 ## Icon
