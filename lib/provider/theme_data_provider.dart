@@ -89,5 +89,12 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
     ),
     sliderTheme:
         const SliderThemeData(showValueIndicator: ShowValueIndicator.always),
+    pageTransitionsTheme: const PageTransitionsTheme(
+      builders: {
+        TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
+        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+      },
+    ),
   );
 }
