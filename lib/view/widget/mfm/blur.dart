@@ -18,7 +18,7 @@ class Blur extends HookWidget {
       onLongPress: () => blurred.value = !blurred.value,
       onHover: (value) => blurred.value = !value,
       splashFactory: NoSplash.splashFactory,
-      overlayColor: const MaterialStatePropertyAll(Colors.transparent),
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       child: blurred.value
           ? ImageFiltered(
               imageFilter: ImageFilter.blur(

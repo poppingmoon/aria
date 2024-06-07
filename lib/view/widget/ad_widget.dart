@@ -110,8 +110,7 @@ class AdWidget extends HookConsumerWidget {
             alignment: Alignment.topRight,
             child: IconButton(
               style: IconButton.styleFrom(
-                backgroundColor:
-                    Theme.of(context).colorScheme.background.withOpacity(0.8),
+                backgroundColor: Theme.of(context).canvasColor.withOpacity(0.8),
               ),
               onPressed: () => showMenu.value = true,
               icon: const Icon(Icons.info_outline),
