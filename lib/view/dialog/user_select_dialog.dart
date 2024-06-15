@@ -11,7 +11,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/search_users_by_username_provider.dart';
 import '../../provider/recently_used_users_notifier_provider.dart';
 import '../widget/error_message.dart';
-import '../widget/user_tile.dart';
+import '../widget/user_preview.dart';
 
 Future<UserDetailed?> selectUser(
   BuildContext context,
@@ -108,7 +108,7 @@ class UserSelectDialog extends HookConsumerWidget {
               child: switch (users) {
                 null => recentlyUsedUsers.isNotEmpty
                     ? ListView.separated(
-                        itemBuilder: (context, index) => UserTile(
+                        itemBuilder: (context, index) => UserPreview(
                           account: account,
                           user: recentlyUsedUsers[index],
                           onTap: () => context.pop(recentlyUsedUsers[index]),
@@ -122,7 +122,7 @@ class UserSelectDialog extends HookConsumerWidget {
                     : ListView.separated(
                         itemBuilder: (context, index) =>
                             includeSelf || users[index].id != i?.id
-                                ? UserTile(
+                                ? UserPreview(
                                     account: account,
                                     user: users[index],
                                     onTap: () {

@@ -13,7 +13,7 @@ import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/unicode_emoji.dart';
-import '../../widget/user_tile.dart';
+import '../../widget/user_preview.dart';
 
 class EmojiPickerPage extends HookConsumerWidget {
   const EmojiPickerPage({super.key});
@@ -53,7 +53,7 @@ class EmojiPickerPage extends HookConsumerWidget {
                 tiles: accounts.map((account) {
                   final i = ref.watch(iNotifierProvider(account)).valueOrNull;
                   if (i != null) {
-                    return UserTile(
+                    return UserPreview(
                       account: account,
                       user: i,
                       onTap: () => context.push(

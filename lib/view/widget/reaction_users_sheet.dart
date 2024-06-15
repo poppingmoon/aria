@@ -9,7 +9,7 @@ import '../../provider/note_provider.dart';
 import 'emoji_sheet.dart';
 import 'emoji_widget.dart';
 import 'paginated_list_view.dart';
-import 'user_tile.dart';
+import 'user_preview.dart';
 
 class ReactionUsersSheet extends ConsumerWidget {
   const ReactionUsersSheet({
@@ -66,7 +66,7 @@ class ReactionUsersSheet extends ConsumerWidget {
             child: PaginatedListView(
               controller: scrollController,
               paginationState: reactions,
-              itemBuilder: (context, reaction) => UserTile(
+              itemBuilder: (context, reaction) => UserPreview(
                 account: account,
                 user: reaction.user,
                 avatarSize: 50.0,

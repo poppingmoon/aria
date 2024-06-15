@@ -28,7 +28,7 @@ import '../../widget/page_preview.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/url_preview.dart';
 import '../../widget/user_avatar.dart';
-import '../../widget/user_tile.dart';
+import '../../widget/user_preview.dart';
 import '../../widget/username_widget.dart';
 
 class PagePage extends ConsumerWidget {
@@ -349,7 +349,7 @@ class PagePage extends ConsumerWidget {
                     ),
                     Material(
                       color: Theme.of(context).colorScheme.surface,
-                      child: UserTile(
+                      child: UserPreview(
                         account: account,
                         user: page.user,
                         avatarSize: 50.0,

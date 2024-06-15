@@ -12,7 +12,7 @@ import '../../../util/future_with_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
 import '../../widget/like_button.dart';
-import '../../widget/user_tile.dart';
+import '../../widget/user_preview.dart';
 
 class UserListPage extends HookConsumerWidget {
   const UserListPage({
@@ -62,7 +62,7 @@ class UserListPage extends HookConsumerWidget {
                       ...ListTile.divideTiles(
                         context: context,
                         tiles: users.map(
-                          (user) => UserTile(
+                          (user) => UserPreview(
                             account: account,
                             user: user,
                             onTap: () =>

@@ -6,7 +6,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/renotes_notifier_provider.dart';
 import 'paginated_list_view.dart';
-import 'user_tile.dart';
+import 'user_preview.dart';
 
 class RenoteUsersSheet extends ConsumerWidget {
   const RenoteUsersSheet({
@@ -39,7 +39,7 @@ class RenoteUsersSheet extends ConsumerWidget {
             child: PaginatedListView(
               controller: scrollController,
               paginationState: renotes,
-              itemBuilder: (context, note) => UserTile(
+              itemBuilder: (context, note) => UserPreview(
                 account: account,
                 user: note.user,
                 onTap: () => context.push('/$account/users/${note.userId}'),
