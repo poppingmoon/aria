@@ -46,7 +46,7 @@ class NoteWidget extends HookConsumerWidget {
     required this.noteId,
     this.showDate = true,
     this.withHardMute = true,
-    this.postFormFocusNode,
+    this.focusPostForm,
     this.note,
     this.showAvatars,
     this.showReactionsViewer,
@@ -60,7 +60,7 @@ class NoteWidget extends HookConsumerWidget {
   final String noteId;
   final bool showDate;
   final bool withHardMute;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
   final Note? note;
   final bool? showAvatars;
   final bool? showReactionsViewer;
@@ -255,7 +255,7 @@ class NoteWidget extends HookConsumerWidget {
                         child: NoteSubWidget(
                           account: account,
                           noteId: replyId,
-                          postFormFocusNode: postFormFocusNode,
+                          focusPostForm: focusPostForm,
                         ),
                       ),
                     ),
@@ -479,7 +479,7 @@ class NoteWidget extends HookConsumerWidget {
                                           borderRadius:
                                               BorderRadius.circular(4.0),
                                           showFooter: this.showFooter,
-                                          postFormFocusNode: postFormFocusNode,
+                                          focusPostForm: focusPostForm,
                                           note: this.note?.renote,
                                         ),
                                       ),
@@ -544,7 +544,7 @@ class NoteWidget extends HookConsumerWidget {
                               NoteFooter(
                                 account: account,
                                 noteId: noteId,
-                                postFormFocusNode: postFormFocusNode,
+                                focusPostForm: focusPostForm,
                                 note: this.note,
                               ),
                           ],

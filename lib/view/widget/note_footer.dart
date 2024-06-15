@@ -34,14 +34,14 @@ class NoteFooter extends ConsumerWidget {
     required this.account,
     required this.noteId,
     this.hideDetails = false,
-    this.postFormFocusNode,
+    this.focusPostForm,
     this.note,
   });
 
   final Account account;
   final String noteId;
   final bool hideDetails;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
   final Note? note;
 
   @override
@@ -118,8 +118,8 @@ class NoteFooter extends ConsumerWidget {
                             ref
                                 .read(postNotifierProvider(account).notifier)
                                 .setReply(appearNote);
-                            if (postFormFocusNode != null) {
-                              postFormFocusNode?.requestFocus();
+                            if (focusPostForm case final focusPostForm?) {
+                              focusPostForm();
                             } else {
                               context.push('/$account/post');
                             }
@@ -180,8 +180,8 @@ class NoteFooter extends ConsumerWidget {
                                         postNotifierProvider(account).notifier,
                                       )
                                       .setRenote(appearNote);
-                                  if (postFormFocusNode != null) {
-                                    postFormFocusNode?.requestFocus();
+                                  if (focusPostForm case final focusPostForm?) {
+                                    focusPostForm();
                                   } else {
                                     context.push('/$account/post');
                                   }
@@ -217,8 +217,8 @@ class NoteFooter extends ConsumerWidget {
                                       postNotifierProvider(account).notifier,
                                     )
                                     .setRenote(appearNote);
-                                if (postFormFocusNode != null) {
-                                  postFormFocusNode?.requestFocus();
+                                if (focusPostForm case final focusPostForm?) {
+                                  focusPostForm();
                                 } else {
                                   context.push('/$account/post');
                                 }
@@ -474,7 +474,7 @@ class NoteFooter extends ConsumerWidget {
                           account: account,
                           noteId: noteId,
                           hideDetails: hideDetails,
-                          postFormFocusNode: postFormFocusNode,
+                          focusPostForm: focusPostForm,
                         ),
                         clipBehavior: Clip.hardEdge,
                         isScrollControlled: true,

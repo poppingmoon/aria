@@ -27,13 +27,13 @@ class TimelineListView extends HookConsumerWidget {
     super.key,
     required this.tabSettings,
     this.physics,
-    this.postFormFocusNode,
+    this.focusPostForm,
     this.lastViewedAtKey,
   });
 
   final TabSettings tabSettings;
   final ScrollPhysics? physics;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
   final Key? lastViewedAtKey;
 
   @override
@@ -239,7 +239,7 @@ class TimelineListView extends HookConsumerWidget {
                           key: ValueKey(note.id),
                           tabSettings: tabSettings,
                           noteId: note.id,
-                          postFormFocusNode: postFormFocusNode,
+                          focusPostForm: focusPostForm,
                         ),
                       );
                     },
@@ -280,7 +280,7 @@ class TimelineListView extends HookConsumerWidget {
                           key: ValueKey(note.id),
                           tabSettings: tabSettings,
                           noteId: note.id,
-                          postFormFocusNode: postFormFocusNode,
+                          focusPostForm: focusPostForm,
                         ),
                       );
                     },
@@ -327,6 +327,7 @@ class TimelineListView extends HookConsumerWidget {
                           .loadMore(skipError: true),
                     ),
                   ),
+                  const SliverToBoxAdapter(child: SizedBox(height: 160.0)),
                 ],
               ),
             ),
