@@ -9,11 +9,10 @@ import '../../../constant/default_pinned_emojis.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/general_settings.dart';
 import '../../../provider/accounts_notifier_provider.dart';
-import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/unicode_emoji.dart';
-import '../../widget/user_preview.dart';
 
 class EmojiPickerPage extends HookConsumerWidget {
   const EmojiPickerPage({super.key});
@@ -50,25 +49,14 @@ class EmojiPickerPage extends HookConsumerWidget {
               ),
               ...ListTile.divideTiles(
                 context: context,
-                tiles: accounts.map((account) {
-                  final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-                  if (i != null) {
-                    return UserPreview(
-                      account: account,
-                      user: i,
-                      onTap: () => context.push(
-                        '/settings/accounts/$account/emoji-picker',
-                      ),
-                    );
-                  } else {
-                    return ListTile(
-                      subtitle: Text(account.toString()),
-                      onTap: () => context.push(
-                        '/settings/accounts/$account/emoji-picker',
-                      ),
-                    );
-                  }
-                }),
+                tiles: accounts.map(
+                  (account) => AccountPreview(
+                    account: account,
+                    onTap: () => context.push(
+                      '/settings/accounts/$account/emoji-picker',
+                    ),
+                  ),
+                ),
               ),
               Container(
                 height: 8.0,

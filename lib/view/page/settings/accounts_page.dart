@@ -6,11 +6,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../provider/accounts_notifier_provider.dart';
-import '../../../provider/api/i_notifier_provider.dart';
+import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/reorderable_drag_start_listener_wrapper.dart';
-import '../../widget/user_avatar.dart';
-import '../../widget/username_widget.dart';
 
 class AccountsPage extends HookConsumerWidget {
   const AccountsPage({super.key});
@@ -27,7 +25,6 @@ class AccountsPage extends HookConsumerWidget {
               itemBuilder: (context, index) {
                 if (index < accounts.length) {
                   final account = accounts[index];
-                  final i = ref.watch(iNotifierProvider(account)).valueOrNull;
                   return ReorderableDragStartListenerWrapper(
                     key: ValueKey(index),
                     index: index,
@@ -35,15 +32,10 @@ class AccountsPage extends HookConsumerWidget {
                       color: Theme.of(context).colorScheme.surface,
                       elevation: 0.0,
                       clipBehavior: Clip.hardEdge,
-                      child: ListTile(
-                        leading: i != null
-                            ? UserAvatar(account: account, user: i, size: 40.0)
-                            : null,
-                        title: i != null
-                            ? UsernameWidget(account: account, user: i)
-                            : null,
-                        subtitle: Text(account.toString()),
+                      child: AccountPreview(
+                        account: account,
                         trailing: const Icon(Icons.drag_handle),
+                        avatarSize: 40.0,
                         onTap: () =>
                             context.push('/settings/accounts/$account'),
                       ),

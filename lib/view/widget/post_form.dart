@@ -34,6 +34,7 @@ import '../../util/future_with_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
 import '../page/channel/channels_page.dart';
+import 'account_preview.dart';
 import 'emoji_picker.dart';
 import 'file_picker_sheet.dart';
 import 'mention_widget.dart';
@@ -46,7 +47,6 @@ import 'post_form_attaches.dart';
 import 'reaction_acceptance_icon.dart';
 import 'reaction_acceptance_widget.dart';
 import 'user_avatar.dart';
-import 'username_widget.dart';
 
 class PostForm extends HookConsumerWidget {
   const PostForm({
@@ -131,17 +131,11 @@ class PostForm extends HookConsumerWidget {
       context: ref.context,
       builder: (context) => ListView.separated(
         itemBuilder: (context, index) {
-          final user =
-              ref.watch(iNotifierProvider(accounts[index])).valueOrNull;
-          return ListTile(
-            leading: user != null
-                ? UserAvatar(account: accounts[index], user: user, size: 50.0)
-                : null,
-            title: user != null
-                ? UsernameWidget(account: accounts[index], user: user)
-                : null,
-            subtitle: Text(accounts[index].toString()),
+          final account = accounts[index];
+          return AccountPreview(
+            account: account,
             trailing: const Icon(Icons.navigate_next),
+            avatarSize: 40.0,
             onTap: () => context.pop(accounts[index]),
           );
         },

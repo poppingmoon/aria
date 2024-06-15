@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:json5/json5.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -25,8 +26,8 @@ import '../../../util/format_datetime.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/message_dialog.dart';
-import '../../dialog/radio_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
+import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../drive_page.dart';
 
@@ -80,11 +81,19 @@ class ImportExportPage extends ConsumerWidget {
     BuildContext context,
     List<Account> accounts,
   ) async {
-    return showRadioDialog(
-      context,
-      title: Text(t.misskey.selectAccount),
-      values: accounts,
-      itemBuilder: (context, account) => Text(account.toString()),
+    return showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text(t.misskey.selectAccount),
+        children: accounts
+            .map(
+              (account) => AccountPreview(
+                account: account,
+                onTap: () => context.pop(account),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 

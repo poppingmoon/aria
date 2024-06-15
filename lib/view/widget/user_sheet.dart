@@ -20,8 +20,7 @@ import '../dialog/antenna_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/list_dialog.dart';
 import '../dialog/text_field_dialog.dart';
-import 'user_avatar.dart';
-import 'username_widget.dart';
+import 'account_preview.dart';
 
 class UserSheet extends ConsumerWidget {
   const UserSheet({
@@ -145,25 +144,16 @@ class UserSheet extends ConsumerWidget {
                   context: context,
                   builder: (context) => SimpleDialog(
                     title: Text(t.aria.openInAnotherAccount),
-                    children: switchCandidateAccounts.map((account) {
-                      final i =
-                          ref.watch(iNotifierProvider(account)).valueOrNull;
-                      return ListTile(
-                        leading: i != null
-                            ? UserAvatar(
-                                account: account,
-                                user: i,
-                                size: 50.0,
-                              )
-                            : null,
-                        title: i != null
-                            ? UsernameWidget(account: account, user: i)
-                            : null,
-                        subtitle: Text(account.toString()),
-                        trailing: const Icon(Icons.navigate_next),
-                        onTap: () => context.pop(account),
-                      );
-                    }).toList(),
+                    children: switchCandidateAccounts
+                        .map(
+                          (account) => AccountPreview(
+                            account: account,
+                            trailing: const Icon(Icons.navigate_next),
+                            avatarSize: 40.0,
+                            onTap: () => context.pop(account),
+                          ),
+                        )
+                        .toList(),
                   ),
                 );
                 if (destination == null) return;
