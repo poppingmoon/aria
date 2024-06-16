@@ -59,6 +59,7 @@ class MfmBuilder {
     this.onLinkTap,
     this.onLinkLongPress,
     this.onHashtagTap,
+    this.onClickEv,
     this.shouldNyaize = false,
     this.useAdvanced = true,
     this.useAnimation = false,
@@ -88,6 +89,7 @@ class MfmBuilder {
   final void Function(String url)? onLinkTap;
   final void Function(String url)? onLinkLongPress;
   final void Function(String hashtag)? onHashtagTap;
+  final void Function(String clickEv)? onClickEv;
   final bool shouldNyaize;
   final bool useAdvanced;
   final bool useAnimation;
@@ -798,6 +800,26 @@ class MfmBuilder {
                   ),
                 ],
               ),
+            ),
+          ),
+        );
+      case 'clickable':
+        final span = TextSpan(children: build(children));
+        final clickEv = args['ev'] as String?;
+        return WidgetSpan(
+          alignment: children.any(_containsNewLine)
+              ? PlaceholderAlignment.bottom
+              : PlaceholderAlignment.baseline,
+          baseline: TextBaseline.alphabetic,
+          child: InkWell(
+            onTap: clickEv != null && onClickEv != null
+                ? () => onClickEv?.call(clickEv)
+                : null,
+            child: Text.rich(
+              span,
+              textAlign: align,
+              overflow: overflow,
+              maxLines: maxLines,
             ),
           ),
         );
