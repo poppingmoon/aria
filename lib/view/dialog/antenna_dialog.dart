@@ -25,7 +25,7 @@ class AntennaDialog extends HookConsumerWidget {
         antennas?.where((antenna) => antenna.src == AntennaSource.users);
 
     return SimpleDialog(
-      title: Text(t.misskey.addToList),
+      title: Text(t.misskey.addToAntenna),
       children: [
         ...?userAntennas?.map(
           (antenna) => CheckboxListTile(
