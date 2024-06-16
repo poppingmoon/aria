@@ -74,9 +74,11 @@ class PostNotifier extends _$PostNotifier {
   void save() {
     _saveScheduled = false;
     _timer?.cancel();
-    ref
-        .read(sharedPreferencesProvider)
-        .setString(_key, jsonEncode(state.toJson()));
+    if (!account.isGuest) {
+      ref
+          .read(sharedPreferencesProvider)
+          .setString(_key, jsonEncode(state.toJson()));
+    }
   }
 
   void _scheduleSave() {
