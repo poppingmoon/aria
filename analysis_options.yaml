@@ -4,6 +4,8 @@ analyzer:
   exclude:
     - "**/*.freezed.dart"
     - "**/*.g.dart"
+    - "lib/rust/**"
+    - "rust_builder/**"
   language:
     strict-casts: true
     strict-inference: true

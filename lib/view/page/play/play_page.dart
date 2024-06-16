@@ -15,6 +15,7 @@ import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
 import '../../widget/mfm/code.dart';
+import '../../widget/play_widget.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_preview.dart';
 
@@ -88,6 +89,19 @@ class PlayPage extends HookConsumerWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: ListView(
                 children: [
+                  PlayWidget(
+                    account: account.value,
+                    host: this.account.host,
+                    play: play,
+                    onAccountChanged: (acct) {
+                      if (acct.host == this.account.host &&
+                          acct.username != this.account.username) {
+                        context.push('/$acct/play/$playId');
+                      } else {
+                        account.value = acct;
+                      }
+                    },
+                  ),
                   Card(
                     margin: const EdgeInsets.symmetric(vertical: 8.0),
                     elevation: 0.0,
