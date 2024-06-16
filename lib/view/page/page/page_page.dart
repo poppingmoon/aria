@@ -92,6 +92,37 @@ class PagePage extends ConsumerWidget {
         } else {
           return NoteWidget(account: account, noteId: noteId);
         }
+      case AbstractPageContent(
+          type: PageContentType.button || // ignore: deprecated_member_use
+              PageContentType.condition || // ignore: deprecated_member_use
+              PageContentType.textarea || // ignore: deprecated_member_use
+              PageContentType.post || // ignore: deprecated_member_use
+              PageContentType.canvas || // ignore: deprecated_member_use
+              PageContentType.numberInput || // ignore: deprecated_member_use
+              PageContentType.textInput || // ignore: deprecated_member_use
+              PageContentType.switcher || // ignore: deprecated_member_use
+              PageContentType.radioButton || // ignore: deprecated_member_use
+              PageContentType.counter || // ignore: deprecated_member_use
+              PageContentType.textareaInput // ignore: deprecated_member_use
+        ):
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Theme.of(context).colorScheme.outlineVariant,
+            ),
+            borderRadius: BorderRadius.circular(8.0),
+          ),
+          child: ListTile(
+            title: Text(
+              t.misskey.pages_.blocks.dynamic,
+              textAlign: TextAlign.center,
+            ),
+            subtitle: Text(
+              t.misskey.pages_.blocks.dynamicDescription(play: 'Play'),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
       default:
         return const SizedBox.shrink();
     }
