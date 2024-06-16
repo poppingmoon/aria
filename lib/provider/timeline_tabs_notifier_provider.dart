@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-import '../model/account.dart';
 import '../model/tab_settings.dart';
 import '../model/tab_type.dart';
 import 'shared_preferences_provider.dart';
@@ -70,11 +69,6 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
 
   Future<void> delete(String tabId) async {
     state = state.where((tab) => tab.id != tabId).toList();
-    await _save();
-  }
-
-  Future<void> deleteTabsOfAccount(Account account) async {
-    state = state.where((tabSetting) => tabSetting.account != account).toList();
     await _save();
   }
 
