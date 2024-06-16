@@ -23,7 +23,10 @@ class Search extends HookWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SelectableText(query),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SelectableText(query),
+              ),
             ),
           ),
           Material(
