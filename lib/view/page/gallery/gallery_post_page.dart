@@ -255,7 +255,10 @@ class GalleryPostPage extends ConsumerWidget {
                   ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: AdWidget(account: account),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: AdWidget(account: account),
+                  ),
                 ),
                 Builder(
                   builder: (context) => ExpansionTile(

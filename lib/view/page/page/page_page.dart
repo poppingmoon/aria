@@ -427,7 +427,10 @@ class PagePage extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
-                    AdWidget(account: account),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: AdWidget(account: account),
+                    ),
                     Builder(
                       builder: (context) => ExpansionTile(
                         leading: const Icon(Icons.schedule),
