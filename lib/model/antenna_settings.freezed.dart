@@ -30,6 +30,7 @@ mixin _$AntennaSettings {
   bool? get localOnly => throw _privateConstructorUsedError;
   bool? get caseSensitive => throw _privateConstructorUsedError;
   bool? get withFile => throw _privateConstructorUsedError;
+  bool? get excludeBots => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +54,8 @@ abstract class $AntennaSettingsCopyWith<$Res> {
       List<List<String>>? excludeKeywords,
       bool? localOnly,
       bool? caseSensitive,
-      bool? withFile});
+      bool? withFile,
+      bool? excludeBots});
 }
 
 /// @nodoc
@@ -79,6 +81,7 @@ class _$AntennaSettingsCopyWithImpl<$Res, $Val extends AntennaSettings>
     Object? localOnly = freezed,
     Object? caseSensitive = freezed,
     Object? withFile = freezed,
+    Object? excludeBots = freezed,
   }) {
     return _then(_value.copyWith(
       name: freezed == name
@@ -121,6 +124,10 @@ class _$AntennaSettingsCopyWithImpl<$Res, $Val extends AntennaSettings>
           ? _value.withFile
           : withFile // ignore: cast_nullable_to_non_nullable
               as bool?,
+      excludeBots: freezed == excludeBots
+          ? _value.excludeBots
+          : excludeBots // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -143,7 +150,8 @@ abstract class _$$AntennaSettingsImplCopyWith<$Res>
       List<List<String>>? excludeKeywords,
       bool? localOnly,
       bool? caseSensitive,
-      bool? withFile});
+      bool? withFile,
+      bool? excludeBots});
 }
 
 /// @nodoc
@@ -167,6 +175,7 @@ class __$$AntennaSettingsImplCopyWithImpl<$Res>
     Object? localOnly = freezed,
     Object? caseSensitive = freezed,
     Object? withFile = freezed,
+    Object? excludeBots = freezed,
   }) {
     return _then(_$AntennaSettingsImpl(
       name: freezed == name
@@ -209,6 +218,10 @@ class __$$AntennaSettingsImplCopyWithImpl<$Res>
           ? _value.withFile
           : withFile // ignore: cast_nullable_to_non_nullable
               as bool?,
+      excludeBots: freezed == excludeBots
+          ? _value.excludeBots
+          : excludeBots // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -226,7 +239,8 @@ class _$AntennaSettingsImpl implements _AntennaSettings {
       final List<List<String>>? excludeKeywords,
       this.localOnly,
       this.caseSensitive,
-      this.withFile})
+      this.withFile,
+      this.excludeBots})
       : _users = users,
         _keywords = keywords,
         _excludeKeywords = excludeKeywords;
@@ -278,10 +292,12 @@ class _$AntennaSettingsImpl implements _AntennaSettings {
   final bool? caseSensitive;
   @override
   final bool? withFile;
+  @override
+  final bool? excludeBots;
 
   @override
   String toString() {
-    return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, users: $users, withReplies: $withReplies, keywords: $keywords, excludeKeywords: $excludeKeywords, localOnly: $localOnly, caseSensitive: $caseSensitive, withFile: $withFile)';
+    return 'AntennaSettings(name: $name, src: $src, userListId: $userListId, users: $users, withReplies: $withReplies, keywords: $keywords, excludeKeywords: $excludeKeywords, localOnly: $localOnly, caseSensitive: $caseSensitive, withFile: $withFile, excludeBots: $excludeBots)';
   }
 
   @override
@@ -304,7 +320,9 @@ class _$AntennaSettingsImpl implements _AntennaSettings {
             (identical(other.caseSensitive, caseSensitive) ||
                 other.caseSensitive == caseSensitive) &&
             (identical(other.withFile, withFile) ||
-                other.withFile == withFile));
+                other.withFile == withFile) &&
+            (identical(other.excludeBots, excludeBots) ||
+                other.excludeBots == excludeBots));
   }
 
   @JsonKey(ignore: true)
@@ -320,7 +338,8 @@ class _$AntennaSettingsImpl implements _AntennaSettings {
       const DeepCollectionEquality().hash(_excludeKeywords),
       localOnly,
       caseSensitive,
-      withFile);
+      withFile,
+      excludeBots);
 
   @JsonKey(ignore: true)
   @override
@@ -348,7 +367,8 @@ abstract class _AntennaSettings implements AntennaSettings {
       final List<List<String>>? excludeKeywords,
       final bool? localOnly,
       final bool? caseSensitive,
-      final bool? withFile}) = _$AntennaSettingsImpl;
+      final bool? withFile,
+      final bool? excludeBots}) = _$AntennaSettingsImpl;
 
   factory _AntennaSettings.fromJson(Map<String, dynamic> json) =
       _$AntennaSettingsImpl.fromJson;
@@ -373,6 +393,8 @@ abstract class _AntennaSettings implements AntennaSettings {
   bool? get caseSensitive;
   @override
   bool? get withFile;
+  @override
+  bool? get excludeBots;
   @override
   @JsonKey(ignore: true)
   _$$AntennaSettingsImplCopyWith<_$AntennaSettingsImpl> get copyWith =>
