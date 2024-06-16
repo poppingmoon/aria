@@ -6,6 +6,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
 import '../../provider/api/antennas_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../dialog/antenna_settings_dialog.dart';
 import '../widget/error_message.dart';
 
@@ -88,17 +89,21 @@ class AntennasPage extends ConsumerWidget {
             context: context,
             builder: (context) => AntennaSettingsDialog(account: account),
           );
+          if (!context.mounted) return;
           if (result != null) {
-            await ref.read(antennasNotifierProvider(account).notifier).create(
-                  name: result.name ?? '',
-                  src: result.src,
-                  keywords: result.keywords,
-                  excludeKeywords: result.excludeKeywords,
-                  users: result.users,
-                  caseSensitive: result.caseSensitive,
-                  withReplies: result.withReplies,
-                  withFile: result.withFile,
-                );
+            await futureWithDialog(
+              context,
+              ref.read(antennasNotifierProvider(account).notifier).create(
+                    name: result.name ?? '',
+                    src: result.src,
+                    keywords: result.keywords,
+                    excludeKeywords: result.excludeKeywords,
+                    users: result.users,
+                    caseSensitive: result.caseSensitive,
+                    withReplies: result.withReplies,
+                    withFile: result.withFile,
+                  ),
+            );
           }
         },
         child: const Icon(Icons.add),
