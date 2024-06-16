@@ -23,3 +23,5 @@ RUN ARCH=$(case $TARGETARCH in \
     && tar xzf fvm.tar.gz -C $FVM_DIR \
     && rm -f fvm.tar.gz \
     && ln -sf $FVM_DIR/fvm/fvm /usr/local/bin/fvm
+
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
