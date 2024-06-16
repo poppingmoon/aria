@@ -13,6 +13,7 @@ Future<void> navigate(WidgetRef ref, Account account, String link) async {
           'clips' ||
           'gallery' ||
           'notes' ||
+          'play' ||
           'pages' ||
           'tags' ||
           'users') {

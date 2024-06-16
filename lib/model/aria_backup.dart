@@ -15,6 +15,7 @@ class AriaBackup with _$AriaBackup {
     Map<String, AccountSettings>? accountSettings,
     GeneralSettings? generalSettings,
     List<String>? themes,
+    Map<String, Map<String, String>>? aiscriptStorage,
   }) = _AriaBackup;
 
   factory AriaBackup.fromJson(Map<String, dynamic> json) =>

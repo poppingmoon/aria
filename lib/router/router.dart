@@ -42,6 +42,8 @@ import '../view/page/notes_after_renotes_page.dart';
 import '../view/page/notifications_page.dart';
 import '../view/page/page/page_page.dart';
 import '../view/page/page/pages_page.dart';
+import '../view/page/play/play_edit_page.dart';
+import '../view/page/play/play_page.dart';
 import '../view/page/play/plays_page.dart';
 import '../view/page/post_page.dart';
 import '../view/page/role_page.dart';
@@ -524,6 +526,31 @@ GoRouter router(RouterRef ref) {
             builder: (_, state) => PlaysPage(
               account: Account.fromString(state.pathParameters['acct']!),
             ),
+            routes: [
+              GoRoute(
+                path: 'new',
+                builder: (_, state) => PlayEditPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                ),
+              ),
+              GoRoute(
+                path: ':playId',
+                builder: (_, state) => PlayPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                  playId: state.pathParameters['playId']!,
+                ),
+                routes: [
+                  GoRoute(
+                    path: 'edit',
+                    builder: (_, state) => PlayEditPage(
+                      account:
+                          Account.fromString(state.pathParameters['acct']!),
+                      playId: state.pathParameters['playId'],
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
           GoRoute(
             path: 'post',

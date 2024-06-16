@@ -6,8 +6,8 @@ import 'acct_widget.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
 
-class UserTile extends StatelessWidget {
-  const UserTile({
+class UserPreview extends StatelessWidget {
+  const UserPreview({
     super.key,
     required this.account,
     required this.user,

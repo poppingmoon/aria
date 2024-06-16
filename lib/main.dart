@@ -14,6 +14,7 @@ import 'provider/general_settings_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
 import 'router/router.dart';
+import 'rust/frb_generated.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -68,6 +69,7 @@ void main() async {
     );
   });
   final prefs = await SharedPreferences.getInstance();
+  await RustLib.init();
   runApp(
     ProviderScope(
       overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],

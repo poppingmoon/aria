@@ -4,10 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../provider/accounts_notifier_provider.dart';
-import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/share_notifier_provider.dart';
-import '../widget/user_avatar.dart';
-import '../widget/username_widget.dart';
+import '../widget/account_preview.dart';
 
 class SharePage extends ConsumerWidget {
   const SharePage({super.key});
@@ -24,14 +22,10 @@ class SharePage extends ConsumerWidget {
       body: ListView.builder(
         itemBuilder: (context, index) {
           final account = accounts[index];
-          final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-          return ListTile(
-            leading: i != null
-                ? UserAvatar(account: account, user: i, size: 40.0)
-                : null,
-            title: i != null ? UsernameWidget(account: account, user: i) : null,
-            subtitle: Text(account.toString()),
+          return AccountPreview(
+            account: account,
             trailing: const Icon(Icons.navigate_next),
+            avatarSize: 40.0,
             onTap: () async {
               await ref.read(shareNotifierProvider.notifier).share(account);
               if (!context.mounted) return;

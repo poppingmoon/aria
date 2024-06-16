@@ -22,6 +22,9 @@ _$AriaBackupImpl _$$AriaBackupImplFromJson(Map<String, dynamic> json) =>
               json['generalSettings'] as Map<String, dynamic>),
       themes:
           (json['themes'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      aiscriptStorage: (json['aiscriptStorage'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, Map<String, String>.from(e as Map)),
+      ),
     );
 
 Map<String, dynamic> _$$AriaBackupImplToJson(_$AriaBackupImpl instance) {
@@ -40,5 +43,6 @@ Map<String, dynamic> _$$AriaBackupImplToJson(_$AriaBackupImpl instance) {
       instance.accountSettings?.map((k, e) => MapEntry(k, e.toJson())));
   writeNotNull('generalSettings', instance.generalSettings?.toJson());
   writeNotNull('themes', instance.themes);
+  writeNotNull('aiscriptStorage', instance.aiscriptStorage);
   return val;
 }

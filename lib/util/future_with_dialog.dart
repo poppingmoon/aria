@@ -44,12 +44,10 @@ Future<T?> futureWithDialog<T>(
   } catch (e, st) {
     if (!context.mounted) return null;
     context.pop();
-    await showDialog<void>(
-      context: context,
-      builder: (context) => ErrorMessageDialog(
-        error: e,
-        stackTrace: st,
-      ),
+    await showErrorMessageDialog(
+      context,
+      error: e,
+      stackTrace: st,
     );
     return null;
   }

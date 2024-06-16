@@ -22,7 +22,7 @@ import '../../widget/image_widget.dart';
 import '../../widget/like_button.dart';
 import '../../widget/mfm.dart';
 import '../../widget/time_widget.dart';
-import '../../widget/user_tile.dart';
+import '../../widget/user_preview.dart';
 
 class GalleryPostPage extends ConsumerWidget {
   const GalleryPostPage({
@@ -194,7 +194,7 @@ class GalleryPostPage extends ConsumerWidget {
                   ),
                 ),
                 const Divider(),
-                UserTile(
+                UserPreview(
                   account: account,
                   user: post.user,
                   avatarSize: 50.0,
@@ -255,7 +255,10 @@ class GalleryPostPage extends ConsumerWidget {
                   ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  child: AdWidget(account: account),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(8.0),
+                    child: AdWidget(account: account),
+                  ),
                 ),
                 Builder(
                   builder: (context) => ExpansionTile(

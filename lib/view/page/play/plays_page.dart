@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
@@ -38,6 +39,13 @@ class PlaysPage extends ConsumerWidget {
             ],
           ],
         ),
+        floatingActionButton: !account.isGuest
+            ? FloatingActionButton(
+                tooltip: t.misskey.play_.new_,
+                onPressed: () => context.push('/$account/play/new'),
+                child: const Icon(Icons.add),
+              )
+            : null,
       ),
     );
   }

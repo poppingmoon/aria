@@ -25,11 +25,10 @@ import '../../util/future_with_dialog.dart';
 import '../dialog/clip_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/text_field_dialog.dart';
+import 'account_preview.dart';
 import 'note_fallback_widget.dart';
 import 'translated_note_sheet.dart';
-import 'user_avatar.dart';
 import 'user_sheet.dart';
-import 'username_widget.dart';
 
 class NoteSheet extends ConsumerWidget {
   const NoteSheet({
@@ -138,25 +137,16 @@ class NoteSheet extends ConsumerWidget {
                   context: context,
                   builder: (context) => SimpleDialog(
                     title: Text(t.aria.openInAnotherAccount),
-                    children: switchCandidateAccounts.map((account) {
-                      final i =
-                          ref.watch(iNotifierProvider(account)).valueOrNull;
-                      return ListTile(
-                        leading: i != null
-                            ? UserAvatar(
-                                account: account,
-                                user: i,
-                                size: 50.0,
-                              )
-                            : null,
-                        title: i != null
-                            ? UsernameWidget(account: account, user: i)
-                            : null,
-                        subtitle: Text(account.toString()),
-                        trailing: const Icon(Icons.navigate_next),
-                        onTap: () => context.pop(account),
-                      );
-                    }).toList(),
+                    children: switchCandidateAccounts
+                        .map(
+                          (account) => AccountPreview(
+                            account: account,
+                            trailing: const Icon(Icons.navigate_next),
+                            avatarSize: 40.0,
+                            onTap: () => context.pop(account),
+                          ),
+                        )
+                        .toList(),
                   ),
                 );
                 if (destination == null) {

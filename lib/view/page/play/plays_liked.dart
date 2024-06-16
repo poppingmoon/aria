@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -22,10 +22,7 @@ class PlaysLiked extends ConsumerWidget {
       itemBuilder: (context, like) => PlayPreview(
         account: account,
         play: like.flash,
-        onTap: () => launchUrl(
-          Uri.https(account.host, 'play/${like.flash.id}'),
-          mode: LaunchMode.externalApplication,
-        ),
+        onTap: () => context.push('/$account/play/${like.flash.id}'),
       ),
       onRefresh: () => ref.refresh(likedPlaysNotifierProvider(account).future),
       loadMore: (skipError) => ref

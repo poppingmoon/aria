@@ -1,0 +1,15 @@
+[package]
+name = "rust_lib_aria"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "staticlib"]
+
+[dependencies]
+aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "2fcca58c795077e7f161bdb4aeeab7803e28477d" }
+flutter_rust_bridge = "=2.0.0-dev.39"
+futures = "0.3"
+indexmap = "2.2"
+serde_json = { version = "1.0", features = ["preserve_order"] }
+uuid = { version = "1.8", features = ["v4"] }

@@ -26,6 +26,7 @@ List<InlineSpan> buildMfm(
   bool nyaize = false,
   void Function(String emoji)? onTapEmoji,
   void Function(String link)? onLinkTap,
+  void Function(String clickEv)? onClickEv,
   TextAlign? textAlign,
   TextOverflow? overflow,
   int? maxLines,
@@ -84,6 +85,7 @@ List<InlineSpan> buildMfm(
       builder: (context) => UrlSheet(url: url),
     ),
     onHashtagTap: (hashtag) => ref.context.push('/$account/tags/$hashtag'),
+    onClickEv: onClickEv,
     shouldNyaize: nyaize && (author?.isCat ?? false),
     useAdvanced: useAdvanced,
     useAnimation: useAnimation,
@@ -114,6 +116,7 @@ class Mfm extends HookConsumerWidget {
     this.nyaize = false,
     this.selectable = false,
     this.onTapEmoji,
+    this.onClickEv,
     this.textAlign,
     this.overflow,
     this.maxLines,
@@ -129,6 +132,7 @@ class Mfm extends HookConsumerWidget {
   final bool nyaize;
   final bool selectable;
   final void Function(String emoji)? onTapEmoji;
+  final void Function(String clickEv)? onClickEv;
   final TextAlign? textAlign;
   final TextOverflow? overflow;
   final int? maxLines;
@@ -149,6 +153,7 @@ class Mfm extends HookConsumerWidget {
           emojis: emojis,
           author: author,
           onLinkTap: (link) => navigate(ref, account, link),
+          onClickEv: onClickEv,
           textAlign: textAlign,
           overflow: overflow,
           maxLines: maxLines,

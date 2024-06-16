@@ -7,7 +7,6 @@ import '../model/account.dart';
 import 'dio_provider.dart';
 import 'emojis_notifier_provider.dart';
 import 'shared_preferences_provider.dart';
-import 'timeline_tabs_notifier_provider.dart';
 import 'tokens_notifier_provider.dart';
 
 part 'accounts_notifier_provider.g.dart';
@@ -80,9 +79,6 @@ class AccountsNotifier extends _$AccountsNotifier {
   }
 
   Future<void> remove(Account account) async {
-    await ref
-        .read(timelineTabsNotifierProvider.notifier)
-        .deleteTabsOfAccount(account);
     state = state.where((acct) => acct != account).toList();
     await ref.read(tokensNotifierProvider.notifier).remove(account);
   }

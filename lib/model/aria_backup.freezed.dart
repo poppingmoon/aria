@@ -26,6 +26,8 @@ mixin _$AriaBackup {
       throw _privateConstructorUsedError;
   GeneralSettings? get generalSettings => throw _privateConstructorUsedError;
   List<String>? get themes => throw _privateConstructorUsedError;
+  Map<String, Map<String, String>>? get aiscriptStorage =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +46,8 @@ abstract class $AriaBackupCopyWith<$Res> {
       List<TabSettings>? timelineTabs,
       Map<String, AccountSettings>? accountSettings,
       GeneralSettings? generalSettings,
-      List<String>? themes});
+      List<String>? themes,
+      Map<String, Map<String, String>>? aiscriptStorage});
 
   $GeneralSettingsCopyWith<$Res>? get generalSettings;
 }
@@ -67,6 +70,7 @@ class _$AriaBackupCopyWithImpl<$Res, $Val extends AriaBackup>
     Object? accountSettings = freezed,
     Object? generalSettings = freezed,
     Object? themes = freezed,
+    Object? aiscriptStorage = freezed,
   }) {
     return _then(_value.copyWith(
       metadata: freezed == metadata
@@ -89,6 +93,10 @@ class _$AriaBackupCopyWithImpl<$Res, $Val extends AriaBackup>
           ? _value.themes
           : themes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      aiscriptStorage: freezed == aiscriptStorage
+          ? _value.aiscriptStorage
+          : aiscriptStorage // ignore: cast_nullable_to_non_nullable
+              as Map<String, Map<String, String>>?,
     ) as $Val);
   }
 
@@ -118,7 +126,8 @@ abstract class _$$AriaBackupImplCopyWith<$Res>
       List<TabSettings>? timelineTabs,
       Map<String, AccountSettings>? accountSettings,
       GeneralSettings? generalSettings,
-      List<String>? themes});
+      List<String>? themes,
+      Map<String, Map<String, String>>? aiscriptStorage});
 
   @override
   $GeneralSettingsCopyWith<$Res>? get generalSettings;
@@ -140,6 +149,7 @@ class __$$AriaBackupImplCopyWithImpl<$Res>
     Object? accountSettings = freezed,
     Object? generalSettings = freezed,
     Object? themes = freezed,
+    Object? aiscriptStorage = freezed,
   }) {
     return _then(_$AriaBackupImpl(
       metadata: freezed == metadata
@@ -162,6 +172,10 @@ class __$$AriaBackupImplCopyWithImpl<$Res>
           ? _value._themes
           : themes // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      aiscriptStorage: freezed == aiscriptStorage
+          ? _value._aiscriptStorage
+          : aiscriptStorage // ignore: cast_nullable_to_non_nullable
+              as Map<String, Map<String, String>>?,
     ));
   }
 }
@@ -174,11 +188,13 @@ class _$AriaBackupImpl implements _AriaBackup {
       final List<TabSettings>? timelineTabs,
       final Map<String, AccountSettings>? accountSettings,
       this.generalSettings,
-      final List<String>? themes})
+      final List<String>? themes,
+      final Map<String, Map<String, String>>? aiscriptStorage})
       : _metadata = metadata,
         _timelineTabs = timelineTabs,
         _accountSettings = accountSettings,
-        _themes = themes;
+        _themes = themes,
+        _aiscriptStorage = aiscriptStorage;
 
   factory _$AriaBackupImpl.fromJson(Map<String, dynamic> json) =>
       _$$AriaBackupImplFromJson(json);
@@ -225,9 +241,19 @@ class _$AriaBackupImpl implements _AriaBackup {
     return EqualUnmodifiableListView(value);
   }
 
+  final Map<String, Map<String, String>>? _aiscriptStorage;
+  @override
+  Map<String, Map<String, String>>? get aiscriptStorage {
+    final value = _aiscriptStorage;
+    if (value == null) return null;
+    if (_aiscriptStorage is EqualUnmodifiableMapView) return _aiscriptStorage;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   String toString() {
-    return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes)';
+    return 'AriaBackup(metadata: $metadata, timelineTabs: $timelineTabs, accountSettings: $accountSettings, generalSettings: $generalSettings, themes: $themes, aiscriptStorage: $aiscriptStorage)';
   }
 
   @override
@@ -242,7 +268,9 @@ class _$AriaBackupImpl implements _AriaBackup {
                 .equals(other._accountSettings, _accountSettings) &&
             (identical(other.generalSettings, generalSettings) ||
                 other.generalSettings == generalSettings) &&
-            const DeepCollectionEquality().equals(other._themes, _themes));
+            const DeepCollectionEquality().equals(other._themes, _themes) &&
+            const DeepCollectionEquality()
+                .equals(other._aiscriptStorage, _aiscriptStorage));
   }
 
   @JsonKey(ignore: true)
@@ -253,7 +281,8 @@ class _$AriaBackupImpl implements _AriaBackup {
       const DeepCollectionEquality().hash(_timelineTabs),
       const DeepCollectionEquality().hash(_accountSettings),
       generalSettings,
-      const DeepCollectionEquality().hash(_themes));
+      const DeepCollectionEquality().hash(_themes),
+      const DeepCollectionEquality().hash(_aiscriptStorage));
 
   @JsonKey(ignore: true)
   @override
@@ -271,11 +300,13 @@ class _$AriaBackupImpl implements _AriaBackup {
 
 abstract class _AriaBackup implements AriaBackup {
   const factory _AriaBackup(
-      {final Map<String, dynamic>? metadata,
-      final List<TabSettings>? timelineTabs,
-      final Map<String, AccountSettings>? accountSettings,
-      final GeneralSettings? generalSettings,
-      final List<String>? themes}) = _$AriaBackupImpl;
+          {final Map<String, dynamic>? metadata,
+          final List<TabSettings>? timelineTabs,
+          final Map<String, AccountSettings>? accountSettings,
+          final GeneralSettings? generalSettings,
+          final List<String>? themes,
+          final Map<String, Map<String, String>>? aiscriptStorage}) =
+      _$AriaBackupImpl;
 
   factory _AriaBackup.fromJson(Map<String, dynamic> json) =
       _$AriaBackupImpl.fromJson;
@@ -290,6 +321,8 @@ abstract class _AriaBackup implements AriaBackup {
   GeneralSettings? get generalSettings;
   @override
   List<String>? get themes;
+  @override
+  Map<String, Map<String, String>>? get aiscriptStorage;
   @override
   @JsonKey(ignore: true)
   _$$AriaBackupImplCopyWith<_$AriaBackupImpl> get copyWith =>

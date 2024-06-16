@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:json5/json5.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -13,6 +14,7 @@ import '../../../model/account.dart';
 import '../../../model/aria_backup.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/accounts_notifier_provider.dart';
+import '../../../provider/aiscript_storage_notifier_provider.dart';
 import '../../../provider/api/drive_files_notifier_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/cache_manager_provider.dart';
@@ -25,8 +27,8 @@ import '../../../util/format_datetime.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/message_dialog.dart';
-import '../../dialog/radio_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
+import '../../widget/account_preview.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../drive_page.dart';
 
@@ -49,10 +51,14 @@ class ImportExportPage extends ConsumerWidget {
       },
       generalSettings: ref.read(generalSettingsNotifierProvider),
       themes: ref.read(misskeyThemeCodesNotifierProvider),
+      aiscriptStorage: {
+        for (final account in accounts)
+          '$account': ref.read(aiscriptStorageNotifierProvider(account)),
+      },
     );
   }
 
-  Future<void> _import(WidgetRef ref, AriaBackup backup) async {
+  Future<bool> _import(WidgetRef ref, AriaBackup backup) async {
     if (backup case AriaBackup(:final timelineTabs?)) {
       await ref
           .read(timelineTabsNotifierProvider.notifier)
@@ -74,17 +80,34 @@ class ImportExportPage extends ConsumerWidget {
     if (backup case AriaBackup(:final themes?)) {
       await ref.read(misskeyThemeCodesNotifierProvider.notifier).import(themes);
     }
+    if (backup case AriaBackup(:final aiscriptStorage?)) {
+      for (final e in aiscriptStorage.entries) {
+        final account = Account.fromString(e.key);
+        await ref
+            .read(aiscriptStorageNotifierProvider(account).notifier)
+            .import(e.value);
+      }
+    }
+    return true;
   }
 
   Future<Account?> _selectAccount(
     BuildContext context,
     List<Account> accounts,
   ) async {
-    return showRadioDialog(
-      context,
-      title: Text(t.misskey.selectAccount),
-      values: accounts,
-      itemBuilder: (context, account) => Text(account.toString()),
+    return showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text(t.misskey.selectAccount),
+        children: accounts
+            .map(
+              (account) => AccountPreview(
+                account: account,
+                onTap: () => context.pop(account),
+              ),
+            )
+            .toList(),
+      ),
     );
   }
 
@@ -124,8 +147,15 @@ class ImportExportPage extends ConsumerWidget {
                           .systemTempDirectory
                           .createTemp();
                       final tempFile = tempDirectory.childFile('aria.json');
-                      await tempFile
-                          .writeAsString(jsonEncode(await _export(ref)));
+                      if (!context.mounted) return;
+                      final data =
+                          await futureWithDialog(context, _export(ref));
+                      if (data == null) return;
+                      if (!context.mounted) return;
+                      await futureWithDialog(
+                        context,
+                        tempFile.writeAsString(jsonEncode(data)),
+                      );
                       if (!context.mounted) return;
                       await futureWithDialog(
                         context,
@@ -147,7 +177,7 @@ class ImportExportPage extends ConsumerWidget {
                 leading: const Icon(Icons.copy),
                 title: Text(t.misskey.copy),
                 onTap: () async {
-                  final data = await _export(ref);
+                  final data = await futureWithDialog(context, _export(ref));
                   if (!context.mounted) return;
                   copyToClipboard(context, jsonEncode(data));
                 },
@@ -226,7 +256,11 @@ class ImportExportPage extends ConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (confirmed) {
-                        await _import(ref, backup);
+                        final result = await futureWithDialog(
+                          context,
+                          _import(ref, backup),
+                        );
+                        if (result == null) return;
                         if (!context.mounted) return;
                         await showMessageDialog(
                           context,
@@ -264,7 +298,11 @@ class ImportExportPage extends ConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (confirmed) {
-                        await _import(ref, backup);
+                        final result = await futureWithDialog(
+                          context,
+                          _import(ref, backup),
+                        );
+                        if (result == null) return;
                         if (!context.mounted) return;
                         await showMessageDialog(
                           context,

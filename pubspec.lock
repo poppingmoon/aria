@@ -113,6 +113,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  build_cli_annotations:
+    dependency: transitive
+    description:
+      name: build_cli_annotations
+      sha256: b59d2769769efd6c9ff6d4c4cede0be115a566afc591705c2040b707534b1172
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   build_config:
     dependency: transitive
     description:
@@ -752,6 +760,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.1"
+  flutter_rust_bridge:
+    dependency: "direct main"
+    description:
+      name: flutter_rust_bridge
+      sha256: ee0d9798156ba523ca24bfb690efd15614f823685df270447c480dd5923d9a0b
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0-dev.39"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -1233,8 +1249,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: a335adc75d10583727f90601c62533f35c15f654
-      resolved-ref: a335adc75d10583727f90601c62533f35c15f654
+      ref: e8e6658212d878ce384c479c8e5a98f00cd584af
+      resolved-ref: e8e6658212d878ce384c479c8e5a98f00cd584af
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"
@@ -1518,6 +1534,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.10"
+  rust_lib_aria:
+    dependency: "direct main"
+    description:
+      path: rust_builder
+      relative: true
+    source: path
+    version: "0.0.1"
   rxdart:
     dependency: transitive
     description:
