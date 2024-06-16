@@ -5,8 +5,10 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/antenna_settings.dart';
 import '../../provider/api/antennas_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
+import 'antenna_settings_dialog.dart';
 
 class AntennaDialog extends HookConsumerWidget {
   const AntennaDialog({
@@ -25,7 +27,7 @@ class AntennaDialog extends HookConsumerWidget {
         antennas?.where((antenna) => antenna.src == AntennaSource.users);
 
     return SimpleDialog(
-      title: Text(t.misskey.addToList),
+      title: Text(t.misskey.addToAntenna),
       children: [
         ...?userAntennas?.map(
           (antenna) => CheckboxListTile(
@@ -56,7 +58,31 @@ class AntennaDialog extends HookConsumerWidget {
         ListTile(
           leading: const Icon(Icons.add),
           title: Text(t.misskey.create),
-          onTap: () async {},
+          onTap: () async {
+            final result = await showDialog<AntennaSettings>(
+              context: context,
+              builder: (context) => AntennaSettingsDialog(
+                account: account,
+                settings: const AntennaSettings(src: AntennaSource.users),
+              ),
+            );
+            if (!ref.context.mounted) return;
+            if (result != null) {
+              await futureWithDialog(
+                ref.context,
+                ref.read(antennasNotifierProvider(account).notifier).create(
+                      name: result.name ?? '',
+                      src: result.src,
+                      keywords: result.keywords,
+                      excludeKeywords: result.excludeKeywords,
+                      users: result.users,
+                      caseSensitive: result.caseSensitive,
+                      withReplies: result.withReplies,
+                      withFile: result.withFile,
+                    ),
+              );
+            }
+          },
         ),
       ],
     );
