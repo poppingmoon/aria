@@ -79,6 +79,8 @@ class AntennaDialog extends HookConsumerWidget {
                       caseSensitive: result.caseSensitive,
                       withReplies: result.withReplies,
                       withFile: result.withFile,
+                      localOnly: result.localOnly,
+                      excludeBots: result.excludeBots,
                     ),
               );
             }

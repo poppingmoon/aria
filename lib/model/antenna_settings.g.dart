@@ -24,6 +24,7 @@ _$AntennaSettingsImpl _$$AntennaSettingsImplFromJson(
       localOnly: json['localOnly'] as bool?,
       caseSensitive: json['caseSensitive'] as bool?,
       withFile: json['withFile'] as bool?,
+      excludeBots: json['excludeBots'] as bool?,
     );
 
 Map<String, dynamic> _$$AntennaSettingsImplToJson(
@@ -46,6 +47,7 @@ Map<String, dynamic> _$$AntennaSettingsImplToJson(
   writeNotNull('localOnly', instance.localOnly);
   writeNotNull('caseSensitive', instance.caseSensitive);
   writeNotNull('withFile', instance.withFile);
+  writeNotNull('excludeBots', instance.excludeBots);
   return val;
 }
 

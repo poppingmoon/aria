@@ -25,6 +25,8 @@ class AntennasNotifier extends _$AntennasNotifier {
     bool? caseSensitive,
     bool? withReplies,
     bool? withFile,
+    bool? localOnly,
+    bool? excludeBots,
   }) async {
     final antenna = await _misskey.antennas.create(
       AntennasCreateRequest(
@@ -37,6 +39,8 @@ class AntennasNotifier extends _$AntennasNotifier {
         withReplies: withReplies ?? false,
         withFile: withFile ?? false,
         notify: false,
+        localOnly: localOnly,
+        excludeBots: excludeBots,
       ),
     );
     state = AsyncValue.data([
@@ -55,6 +59,8 @@ class AntennasNotifier extends _$AntennasNotifier {
     bool? caseSensitive,
     bool? withReplies,
     bool? withFile,
+    bool? localOnly,
+    bool? excludeBots,
   }) async {
     await _misskey.antennas.update(
       AntennasUpdateRequest(
@@ -68,6 +74,8 @@ class AntennasNotifier extends _$AntennasNotifier {
         withReplies: withReplies ?? antenna.withReplies ?? false,
         withFile: withFile ?? antenna.withFile ?? false,
         notify: antenna.notify ?? false,
+        localOnly: localOnly ?? antenna.localOnly ?? false,
+        excludeBots: excludeBots ?? antenna.excludeBots ?? false,
       ),
     );
     state = AsyncValue.data([
@@ -82,6 +90,8 @@ class AntennasNotifier extends _$AntennasNotifier {
                 caseSensitive: caseSensitive ?? antenna.caseSensitive,
                 withReplies: withReplies ?? antenna.withReplies,
                 withFile: withFile ?? antenna.withFile,
+                localOnly: localOnly ?? antenna.localOnly,
+                excludeBots: excludeBots ?? antenna.excludeBots,
               )
             : e,
       ),
@@ -110,6 +120,8 @@ class AntennasNotifier extends _$AntennasNotifier {
         withReplies: antenna.withReplies ?? false,
         withFile: antenna.withFile ?? false,
         notify: antenna.notify ?? false,
+        localOnly: antenna.localOnly ?? false,
+        excludeBots: antenna.excludeBots ?? false,
       ),
     );
     state = AsyncValue.data([
@@ -135,6 +147,8 @@ class AntennasNotifier extends _$AntennasNotifier {
         withReplies: antenna.withReplies ?? false,
         withFile: antenna.withFile ?? false,
         notify: antenna.notify ?? false,
+        localOnly: antenna.localOnly ?? false,
+        excludeBots: antenna.excludeBots ?? false,
       ),
     );
     state = AsyncValue.data([

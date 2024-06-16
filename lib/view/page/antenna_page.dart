@@ -50,6 +50,8 @@ class AntennaPage extends ConsumerWidget {
               caseSensitive: result.caseSensitive,
               withReplies: result.withReplies,
               withFile: result.withFile,
+              localOnly: result.localOnly,
+              excludeBots: result.excludeBots,
             ),
       );
     }

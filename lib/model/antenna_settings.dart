@@ -17,6 +17,7 @@ class AntennaSettings with _$AntennaSettings {
     bool? localOnly,
     bool? caseSensitive,
     bool? withFile,
+    bool? excludeBots,
   }) = _AntennaSettings;
 
   factory AntennaSettings.fromJson(Map<String, dynamic> json) =>
@@ -34,6 +35,7 @@ class AntennaSettings with _$AntennaSettings {
       localOnly: antenna.localOnly,
       caseSensitive: antenna.caseSensitive,
       withFile: antenna.withFile,
+      excludeBots: antenna.excludeBots,
     );
   }
 }

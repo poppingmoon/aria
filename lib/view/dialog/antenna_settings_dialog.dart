@@ -150,6 +150,12 @@ class AntennaSettingsDialog extends HookConsumerWidget {
               ),
             ),
           SwitchListTile(
+            title: Text(t.misskey.antennaExcludeBots),
+            value: settings.value.excludeBots ?? false,
+            onChanged: (value) =>
+                settings.value = settings.value.copyWith(excludeBots: value),
+          ),
+          SwitchListTile(
             title: Text(t.misskey.withReplies),
             value: settings.value.withReplies ?? false,
             onChanged: (value) =>
