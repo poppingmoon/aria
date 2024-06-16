@@ -36,4 +36,11 @@ class AiscriptStorageNotifier extends _$AiscriptStorageNotifier {
   String? load(String key) {
     return state[key];
   }
+
+  Future<void> import(Map<String, String> storage) async {
+    state = storage;
+    await ref
+        .read(sharedPreferencesProvider)
+        .setString(_key, jsonEncode(state));
+  }
 }

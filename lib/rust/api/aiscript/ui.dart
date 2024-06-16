@@ -17,9 +17,7 @@ abstract class AsUiButtonCallback implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AsUiLib>>
 abstract class AsUiLib implements RustOpaqueInterface {
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  ///frb_marker: #[frb(sync)]
-  static Future<AsUiLib> newInstance(
+  factory AsUiLib(
           {required FutureOr<void> Function(String, AsUiComponent) onUpdate}) =>
       RustLib.instance.api.crateApiAiscriptUiAsUiLibNew(onUpdate: onUpdate);
 }

@@ -10,9 +10,7 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AsApiLib>>
 abstract class AsApiLib implements RustOpaqueInterface {
-  // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  ///frb_marker: #[frb(sync)]
-  static Future<AsApiLib> newInstance(
+  factory AsApiLib(
           {String? userId,
           String? userName,
           String? userUsername,

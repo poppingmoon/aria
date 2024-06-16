@@ -81,7 +81,7 @@ abstract class RustLibApi extends BaseApi {
       AsUiLib? ui,
       AsPlayLib? play});
 
-  Future<AsApiLib> crateApiAiscriptApiAsApiLibNew(
+  AsApiLib crateApiAiscriptApiAsApiLibNew(
       {String? userId,
       String? userName,
       String? userUsername,
@@ -101,7 +101,7 @@ abstract class RustLibApi extends BaseApi {
   Future<void> crateApiAiscriptUiAsUiButtonCallbackCall(
       {required AsUiButtonCallback that});
 
-  Future<AsUiLib> crateApiAiscriptUiAsUiLibNew(
+  AsUiLib crateApiAiscriptUiAsUiLibNew(
       {required FutureOr<void> Function(String, AsUiComponent) onUpdate});
 
   Future<void> crateApiAiscriptUiAsUiMfmCallbackCall(
@@ -310,7 +310,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<AsApiLib> crateApiAiscriptApiAsApiLibNew(
+  AsApiLib crateApiAiscriptApiAsApiLibNew(
       {String? userId,
       String? userName,
       String? userUsername,
@@ -326,8 +326,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       required FutureOr<String> Function(String) load,
       required String url,
       required FutureOr<String> Function(String) nyaize}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_opt_String(userId, serializer);
         sse_encode_opt_String(userName, serializer);
@@ -349,8 +349,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         sse_encode_String(url, serializer);
         sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
             nyaize, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 4, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
       },
       codec: SseCodec(
         decodeSuccessData:
@@ -427,15 +426,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<AsUiLib> crateApiAiscriptUiAsUiLibNew(
+  AsUiLib crateApiAiscriptUiAsUiLibNew(
       {required FutureOr<void> Function(String, AsUiComponent) onUpdate}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
+    return handler.executeSync(SyncTask(
+      callFfi: () {
         final serializer = SseSerializer(generalizedFrbRustBinding);
         sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
             onUpdate, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 6, port: port_);
+        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
       },
       codec: SseCodec(
         decodeSuccessData:

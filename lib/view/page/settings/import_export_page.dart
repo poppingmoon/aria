@@ -14,6 +14,7 @@ import '../../../model/account.dart';
 import '../../../model/aria_backup.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
 import '../../../provider/accounts_notifier_provider.dart';
+import '../../../provider/aiscript_storage_notifier_provider.dart';
 import '../../../provider/api/drive_files_notifier_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/cache_manager_provider.dart';
@@ -50,10 +51,14 @@ class ImportExportPage extends ConsumerWidget {
       },
       generalSettings: ref.read(generalSettingsNotifierProvider),
       themes: ref.read(misskeyThemeCodesNotifierProvider),
+      aiscriptStorage: {
+        for (final account in accounts)
+          '$account': ref.read(aiscriptStorageNotifierProvider(account)),
+      },
     );
   }
 
-  Future<void> _import(WidgetRef ref, AriaBackup backup) async {
+  Future<bool> _import(WidgetRef ref, AriaBackup backup) async {
     if (backup case AriaBackup(:final timelineTabs?)) {
       await ref
           .read(timelineTabsNotifierProvider.notifier)
@@ -75,6 +80,15 @@ class ImportExportPage extends ConsumerWidget {
     if (backup case AriaBackup(:final themes?)) {
       await ref.read(misskeyThemeCodesNotifierProvider.notifier).import(themes);
     }
+    if (backup case AriaBackup(:final aiscriptStorage?)) {
+      for (final e in aiscriptStorage.entries) {
+        final account = Account.fromString(e.key);
+        await ref
+            .read(aiscriptStorageNotifierProvider(account).notifier)
+            .import(e.value);
+      }
+    }
+    return true;
   }
 
   Future<Account?> _selectAccount(
@@ -133,8 +147,15 @@ class ImportExportPage extends ConsumerWidget {
                           .systemTempDirectory
                           .createTemp();
                       final tempFile = tempDirectory.childFile('aria.json');
-                      await tempFile
-                          .writeAsString(jsonEncode(await _export(ref)));
+                      if (!context.mounted) return;
+                      final data =
+                          await futureWithDialog(context, _export(ref));
+                      if (data == null) return;
+                      if (!context.mounted) return;
+                      await futureWithDialog(
+                        context,
+                        tempFile.writeAsString(jsonEncode(data)),
+                      );
                       if (!context.mounted) return;
                       await futureWithDialog(
                         context,
@@ -156,7 +177,7 @@ class ImportExportPage extends ConsumerWidget {
                 leading: const Icon(Icons.copy),
                 title: Text(t.misskey.copy),
                 onTap: () async {
-                  final data = await _export(ref);
+                  final data = await futureWithDialog(context, _export(ref));
                   if (!context.mounted) return;
                   copyToClipboard(context, jsonEncode(data));
                 },
@@ -235,7 +256,11 @@ class ImportExportPage extends ConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (confirmed) {
-                        await _import(ref, backup);
+                        final result = await futureWithDialog(
+                          context,
+                          _import(ref, backup),
+                        );
+                        if (result == null) return;
                         if (!context.mounted) return;
                         await showMessageDialog(
                           context,
@@ -273,7 +298,11 @@ class ImportExportPage extends ConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (confirmed) {
-                        await _import(ref, backup);
+                        final result = await futureWithDialog(
+                          context,
+                          _import(ref, backup),
+                        );
+                        if (result == null) return;
                         if (!context.mounted) return;
                         await showMessageDialog(
                           context,

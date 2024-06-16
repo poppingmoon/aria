@@ -199,12 +199,11 @@ fn wire__crate__api__aiscript__AiScript_new_impl(
     )
 }
 fn wire__crate__api__aiscript__api__AsApiLib_new_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec,_,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "AsApiLib_new", port: Some(port_), mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal }, move || { 
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec,_>(flutter_rust_bridge::for_generated::TaskInfo{ debug_name: "AsApiLib_new", port: None, mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync }, move || { 
             let message = unsafe { flutter_rust_bridge::for_generated::Dart2RustMessageSse::from_wire(ptr_, rust_vec_len_, data_len_) };
             let mut deserializer = flutter_rust_bridge::for_generated::SseDeserializer::new(message);
             let api_user_id = <Option<String>>::sse_decode(&mut deserializer);
@@ -220,11 +219,10 @@ let api_api = decode_DartFn_Inputs_String_String_opt_String_Output_record_string
 let api_save = decode_DartFn_Inputs_String_String_Output_unit_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_load = decode_DartFn_Inputs_String_Output_String_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));
 let api_url = <String>::sse_decode(&mut deserializer);
-let api_nyaize = decode_DartFn_Inputs_String_Output_String_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end(); move |context|  {
-                    transform_result_sse((move ||  {
-                         Result::<_,()>::Ok(crate::api::aiscript::api::AsApiLib::new(api_user_id, api_user_name, api_user_username, api_custom_emojis, api_locale, api_server_url, api_dialog, api_confirm, api_token, api_api, api_save, api_load, api_url, api_nyaize))
-                    })())
-                } })
+let api_nyaize = decode_DartFn_Inputs_String_Output_String_AnyhowException(<flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer));deserializer.end();
+                transform_result_sse((move || {
+                     Result::<_,()>::Ok(crate::api::aiscript::api::AsApiLib::new(api_user_id, api_user_name, api_user_username, api_custom_emojis, api_locale, api_server_url, api_dialog, api_confirm, api_token, api_api, api_save, api_load, api_url, api_nyaize))
+                })()) })
 }
 fn wire__crate__api__aiscript__ui__AsUiButtonCallback_call_impl(
     port_: flutter_rust_bridge::for_generated::MessagePort,
@@ -281,16 +279,15 @@ fn wire__crate__api__aiscript__ui__AsUiButtonCallback_call_impl(
     )
 }
 fn wire__crate__api__aiscript__ui__AsUiLib_new_impl(
-    port_: flutter_rust_bridge::for_generated::MessagePort,
     ptr_: flutter_rust_bridge::for_generated::PlatformGeneralizedUint8ListPtr,
     rust_vec_len_: i32,
     data_len_: i32,
-) {
-    FLUTTER_RUST_BRIDGE_HANDLER.wrap_normal::<flutter_rust_bridge::for_generated::SseCodec, _, _>(
+) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap_sync::<flutter_rust_bridge::for_generated::SseCodec, _>(
         flutter_rust_bridge::for_generated::TaskInfo {
             debug_name: "AsUiLib_new",
-            port: Some(port_),
-            mode: flutter_rust_bridge::for_generated::FfiCallMode::Normal,
+            port: None,
+            mode: flutter_rust_bridge::for_generated::FfiCallMode::Sync,
         },
         move || {
             let message = unsafe {
@@ -307,11 +304,9 @@ fn wire__crate__api__aiscript__ui__AsUiLib_new_impl(
                     <flutter_rust_bridge::DartOpaque>::sse_decode(&mut deserializer),
                 );
             deserializer.end();
-            move |context| {
-                transform_result_sse((move || {
-                    Result::<_, ()>::Ok(crate::api::aiscript::ui::AsUiLib::new(api_on_update))
-                })())
-            }
+            transform_result_sse((move || {
+                Result::<_, ()>::Ok(crate::api::aiscript::ui::AsUiLib::new(api_on_update))
+            })())
         },
     )
 }
@@ -1828,14 +1823,12 @@ fn pde_ffi_dispatcher_primary_impl(
         1 => wire__crate__api__aiscript__AiScript_abort_impl(port, ptr, rust_vec_len, data_len),
         2 => wire__crate__api__aiscript__AiScript_exec_impl(port, ptr, rust_vec_len, data_len),
         3 => wire__crate__api__aiscript__AiScript_new_impl(port, ptr, rust_vec_len, data_len),
-        4 => wire__crate__api__aiscript__api__AsApiLib_new_impl(port, ptr, rust_vec_len, data_len),
         5 => wire__crate__api__aiscript__ui__AsUiButtonCallback_call_impl(
             port,
             ptr,
             rust_vec_len,
             data_len,
         ),
-        6 => wire__crate__api__aiscript__ui__AsUiLib_new_impl(port, ptr, rust_vec_len, data_len),
         7 => wire__crate__api__aiscript__ui__AsUiMfmCallback_call_impl(
             port,
             ptr,
@@ -1884,6 +1877,8 @@ fn pde_ffi_dispatcher_sync_impl(
 ) -> flutter_rust_bridge::for_generated::WireSyncRust2DartSse {
     // Codec=Pde (Serialization + dispatch), see doc to use other codecs
     match func_id {
+        4 => wire__crate__api__aiscript__api__AsApiLib_new_impl(ptr, rust_vec_len, data_len),
+        6 => wire__crate__api__aiscript__ui__AsUiLib_new_impl(ptr, rust_vec_len, data_len),
         _ => unreachable!(),
     }
 }
