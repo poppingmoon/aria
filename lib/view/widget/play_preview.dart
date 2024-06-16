@@ -25,16 +25,17 @@ class PlayPreview extends StatelessWidget {
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: Mfm(
-              account: account,
-              text: play.summary,
-              simple: true,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
+          if (play.summary.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Mfm(
+                account: account,
+                text: play.summary,
+                simple: true,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              ),
             ),
-          ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 2.0),
             child: Row(
