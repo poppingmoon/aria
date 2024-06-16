@@ -22,12 +22,12 @@ class TimelineNote extends HookConsumerWidget {
     super.key,
     required this.tabSettings,
     required this.noteId,
-    this.postFormFocusNode,
+    this.focusPostForm,
   });
 
   final TabSettings tabSettings;
   final String noteId;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -139,7 +139,7 @@ class TimelineNote extends HookConsumerWidget {
     return NoteWidget(
       account: account,
       noteId: noteId,
-      postFormFocusNode: postFormFocusNode,
+      focusPostForm: focusPostForm,
     );
   }
 }

@@ -170,6 +170,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示する';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示する';
 	@override String get showNoteReactionsViewer => 'ノートにリアクションを表示する';
+	@override String get showPostForm => '投稿フォームを表示';
 	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
 	@override String get showSelfRenotes => 'セルフリノートを表示する';
 	@override String get showStackTrace => 'スタックトレースを表示';

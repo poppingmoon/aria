@@ -22,7 +22,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
     required this.noteId,
     this.borderRadius,
     this.showFooter,
-    this.postFormFocusNode,
+    this.focusPostForm,
     this.note,
   });
 
@@ -30,7 +30,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
   final String noteId;
   final BorderRadius? borderRadius;
   final bool? showFooter;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
   final Note? note;
 
   @override
@@ -132,7 +132,7 @@ class NoteSimpleWidget extends HookConsumerWidget {
                       account: account,
                       noteId: noteId,
                       showFooter: showFooter,
-                      postFormFocusNode: postFormFocusNode,
+                      focusPostForm: focusPostForm,
                       note: this.note,
                     ),
                 ],

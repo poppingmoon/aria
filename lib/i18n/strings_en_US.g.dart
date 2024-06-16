@@ -182,6 +182,7 @@ class _StringsAriaEnUs {
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
+	String get showPostForm => 'Show post form';
 	String get showQuoteButtonInNoteFooter => 'Add "Quote" to note action menu';
 	String get showSelfRenotes => 'Show self-renotes';
 	String get showStackTrace => 'Show stack trace';

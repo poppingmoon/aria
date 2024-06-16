@@ -528,7 +528,7 @@ GoRouter router(RouterRef ref) {
           GoRoute(
             path: 'post',
             builder: (_, state) => PostPage(
-              initialAccount: Account.fromString(state.pathParameters['acct']!),
+              account: Account.fromString(state.pathParameters['acct']!),
             ),
           ),
           GoRoute(

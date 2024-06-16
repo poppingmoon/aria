@@ -25,14 +25,14 @@ class NoteSubWidget extends HookConsumerWidget {
     required this.noteId,
     this.depth = 0,
     this.showReplies = false,
-    this.postFormFocusNode,
+    this.focusPostForm,
   });
 
   final Account account;
   final String noteId;
   final int depth;
   final bool showReplies;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -138,7 +138,7 @@ class NoteSubWidget extends HookConsumerWidget {
                         SubNoteContent(
                           account: account,
                           noteId: noteId,
-                          postFormFocusNode: postFormFocusNode,
+                          focusPostForm: focusPostForm,
                         ),
                     ],
                   ),

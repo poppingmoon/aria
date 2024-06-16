@@ -37,13 +37,13 @@ class NoteSheet extends ConsumerWidget {
     required this.account,
     required this.noteId,
     this.hideDetails = false,
-    this.postFormFocusNode,
+    this.focusPostForm,
   });
 
   final Account account;
   final String noteId;
   final bool hideDetails;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

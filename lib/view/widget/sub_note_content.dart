@@ -25,14 +25,14 @@ class SubNoteContent extends HookConsumerWidget {
     required this.account,
     required this.noteId,
     this.showFooter,
-    this.postFormFocusNode,
+    this.focusPostForm,
     this.note,
   });
 
   final Account account;
   final String noteId;
   final bool? showFooter;
-  final FocusNode? postFormFocusNode;
+  final void Function()? focusPostForm;
   final Note? note;
 
   @override
@@ -184,7 +184,7 @@ class SubNoteContent extends HookConsumerWidget {
           NoteFooter(
             account: account,
             noteId: noteId,
-            postFormFocusNode: postFormFocusNode,
+            focusPostForm: focusPostForm,
             note: this.note,
           ),
       ],
