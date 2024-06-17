@@ -246,19 +246,38 @@ class PostForm extends HookConsumerWidget {
         } else {
           visibleUsers.value = [];
         }
-        cwController.addListener(
-          () => ref
+
+        void cwControllerCallback() {
+          ref
               .read(postNotifierProvider(account.value).notifier)
-              .setCw(cwController.text),
-        );
-        controller.addListener(
-          () => ref
+              .setCw(cwController.text);
+        }
+
+        void controllerCallback() {
+          ref
               .read(postNotifierProvider(account.value).notifier)
-              .setText(controller.text),
-        );
-        cwFocusNode.addListener(() => isCwFocused.value = cwFocusNode.hasFocus);
-        focusNode.addListener(() => isFocused.value = focusNode.hasFocus);
-        return;
+              .setText(controller.text);
+        }
+
+        void cwFocusNodeCallback() {
+          isCwFocused.value = cwFocusNode.hasFocus;
+        }
+
+        void focusNodeCallback() {
+          isFocused.value = focusNode.hasFocus;
+        }
+
+        cwController.addListener(cwControllerCallback);
+        controller.addListener(controllerCallback);
+        cwFocusNode.addListener(cwFocusNodeCallback);
+        focusNode.addListener(focusNodeCallback);
+
+        return () {
+          cwController.removeListener(cwControllerCallback);
+          controller.removeListener(controllerCallback);
+          cwFocusNode.removeListener(cwFocusNodeCallback);
+          focusNode.removeListener(focusNodeCallback);
+        };
       },
       [account.value],
     );

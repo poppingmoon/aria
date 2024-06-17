@@ -228,6 +228,7 @@ class TimelinesPage extends HookConsumerWidget {
                       children: [
                         if (!isLargeScreen)
                           FloatingActionButton(
+                            heroTag: const ValueKey(0),
                             tooltip: t.misskey.menu,
                             foregroundColor: colors.fg,
                             backgroundColor: colors.panel,
@@ -237,6 +238,7 @@ class TimelinesPage extends HookConsumerWidget {
                             child: const Icon(Icons.menu),
                           ),
                         FloatingActionButton(
+                          heroTag: const ValueKey(1),
                           tooltip: t.misskey.home,
                           foregroundColor: colors.fg,
                           backgroundColor: colors.panel,
@@ -253,6 +255,7 @@ class TimelinesPage extends HookConsumerWidget {
                           child: const Icon(Icons.home),
                         ),
                         FloatingActionButton(
+                          heroTag: const ValueKey(2),
                           tooltip: t.misskey.notifications,
                           foregroundColor: colors.fg.withOpacity(
                             tabSettings != null && !tabSettings.account.isGuest
@@ -289,6 +292,7 @@ class TimelinesPage extends HookConsumerWidget {
                           ),
                         ),
                         FloatingActionButton(
+                          heroTag: const ValueKey(3),
                           tooltip: t.aria.showPostForm,
                           foregroundColor: colors.fg.withOpacity(
                             tabSettings != null && !tabSettings.account.isGuest
@@ -309,6 +313,7 @@ class TimelinesPage extends HookConsumerWidget {
                           child: const Icon(Icons.keyboard),
                         ),
                         FloatingActionButton(
+                          heroTag: const ValueKey(4),
                           tooltip: t.misskey.note,
                           onPressed: tabSettings != null &&
                                   !tabSettings.account.isGuest
