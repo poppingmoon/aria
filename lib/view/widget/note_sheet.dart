@@ -379,6 +379,7 @@ class NoteSheet extends ConsumerWidget {
                   );
                   if (!context.mounted) return;
                   if (confirmed) {
+                    context.pop();
                     ref
                         .read(postNotifierProvider(account).notifier)
                         .fromNote(appearNote);
@@ -400,7 +401,6 @@ class NoteSheet extends ConsumerWidget {
                         .read(notesNotifierProvider(account).notifier)
                         .remove(appearNote.id);
                     if (!context.mounted) return;
-                    context.pop();
                     await context.push('/$account/post');
                     if (!context.mounted) return;
                   }
@@ -422,6 +422,7 @@ class NoteSheet extends ConsumerWidget {
                   );
                   if (!context.mounted) return;
                   if (confirmed) {
+                    context.pop();
                     await futureWithDialog(
                       context,
                       ref
@@ -435,7 +436,6 @@ class NoteSheet extends ConsumerWidget {
                           ),
                     );
                     if (!context.mounted) return;
-                    context.pop();
                   }
                 },
               ),
