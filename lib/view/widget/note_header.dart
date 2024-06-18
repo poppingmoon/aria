@@ -9,6 +9,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../util/format_datetime.dart';
 import '../../util/punycode.dart';
 import 'bot_badge.dart';
 import 'image_widget.dart';
@@ -125,7 +126,16 @@ class NoteHeader extends HookConsumerWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              NoteVisibilityIcon(visibility: note.visibility),
+              if (note.updatedAt case final updatedAt?)
+                Tooltip(
+                  message: '${t.misskey.edited}: '
+                      '${absoluteTime(updatedAt)}'
+                      '.${updatedAt.millisecond.toString().padLeft(3, '0')} '
+                      '(${relativeTime(updatedAt)})',
+                  child: const Icon(Icons.edit),
+                ),
+              if (note.visibility != NoteVisibility.public)
+                NoteVisibilityIcon(visibility: note.visibility),
               if (note.localOnly)
                 Tooltip(
                   message: t.misskey.visibility_.disableFederation,

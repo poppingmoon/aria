@@ -378,10 +378,7 @@ class PostForm extends HookConsumerWidget {
                           }
                         }
                       : null,
-                  icon: NoteVisibilityIcon(
-                    visibility: request.visibility,
-                    showPublic: true,
-                  ),
+                  icon: NoteVisibilityIcon(visibility: request.visibility),
                 ),
                 IconButton(
                   tooltip: request.localOnly ?? false
