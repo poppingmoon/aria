@@ -44,7 +44,7 @@ class MetaNotifier extends _$MetaNotifier {
   Future<void> _save(MetaResponse meta) async {
     await ref
         .read(cacheManagerProvider)
-        .putFile(_key, utf8.encode(jsonEncode(meta)));
+        .putFile(_key, utf8.encode(jsonEncode(meta)), eTag: _key);
   }
 
   Future<void> reloadMeta() async {
