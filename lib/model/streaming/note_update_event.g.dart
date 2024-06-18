@@ -68,7 +68,10 @@ Map<String, dynamic> _$$PollVotedImplToJson(_$PollVotedImpl instance) =>
 _$UpdatedImpl _$$UpdatedImplFromJson(Map<String, dynamic> json) =>
     _$UpdatedImpl(
       cw: json['cw'] as String?,
-      text: json['text'] as String,
+      text: json['text'] as String?,
+      note: json['note'] == null
+          ? null
+          : Note.fromJson(json['note'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UpdatedImplToJson(_$UpdatedImpl instance) {
@@ -81,7 +84,8 @@ Map<String, dynamic> _$$UpdatedImplToJson(_$UpdatedImpl instance) {
   }
 
   writeNotNull('cw', instance.cw);
-  val['text'] = instance.text;
+  writeNotNull('text', instance.text);
+  writeNotNull('note', instance.note?.toJson());
   return val;
 }
 

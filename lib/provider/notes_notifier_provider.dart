@@ -139,15 +139,19 @@ class NotesNotifier extends _$NotesNotifier {
   }
 
   void updateNote(String noteId, Updated updated) {
-    final note = state[noteId];
-    if (note == null) return;
-    final notes = Map.of(state);
-    notes[noteId] = note.copyWith(
-      text: note.text,
-      cw: note.cw,
-      updatedAt: DateTime.now(),
-    );
-    state = notes;
+    if (updated.note case final note?) {
+      state = {...state, noteId: note};
+    } else {
+      final note = state[noteId];
+      if (note == null) return;
+      final notes = Map.of(state);
+      notes[noteId] = note.copyWith(
+        text: updated.text,
+        cw: updated.cw,
+        updatedAt: DateTime.now(),
+      );
+      state = notes;
+    }
   }
 
   Future<void> react(String noteId, String reaction) async {

@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 part 'note_update_event.freezed.dart';
 part 'note_update_event.g.dart';
@@ -53,7 +54,8 @@ class PollVoted with _$PollVoted implements NoteUpdateEvent {
 class Updated with _$Updated implements NoteUpdateEvent {
   const factory Updated({
     String? cw,
-    required String text,
+    String? text,
+    Note? note,
   }) = _Updated;
 
   factory Updated.fromJson(Map<String, Object?> json) =>

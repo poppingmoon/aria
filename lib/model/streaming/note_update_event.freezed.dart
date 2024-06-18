@@ -647,7 +647,8 @@ Updated _$UpdatedFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Updated {
   String? get cw => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
+  String? get text => throw _privateConstructorUsedError;
+  Note? get note => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -659,7 +660,9 @@ abstract class $UpdatedCopyWith<$Res> {
   factory $UpdatedCopyWith(Updated value, $Res Function(Updated) then) =
       _$UpdatedCopyWithImpl<$Res, Updated>;
   @useResult
-  $Res call({String? cw, String text});
+  $Res call({String? cw, String? text, Note? note});
+
+  $NoteCopyWith<$Res>? get note;
 }
 
 /// @nodoc
@@ -676,18 +679,35 @@ class _$UpdatedCopyWithImpl<$Res, $Val extends Updated>
   @override
   $Res call({
     Object? cw = freezed,
-    Object? text = null,
+    Object? text = freezed,
+    Object? note = freezed,
   }) {
     return _then(_value.copyWith(
       cw: freezed == cw
           ? _value.cw
           : cw // ignore: cast_nullable_to_non_nullable
               as String?,
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as Note?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $NoteCopyWith<$Res>? get note {
+    if (_value.note == null) {
+      return null;
+    }
+
+    return $NoteCopyWith<$Res>(_value.note!, (value) {
+      return _then(_value.copyWith(note: value) as $Val);
+    });
   }
 }
 
@@ -698,7 +718,10 @@ abstract class _$$UpdatedImplCopyWith<$Res> implements $UpdatedCopyWith<$Res> {
       __$$UpdatedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? cw, String text});
+  $Res call({String? cw, String? text, Note? note});
+
+  @override
+  $NoteCopyWith<$Res>? get note;
 }
 
 /// @nodoc
@@ -713,17 +736,22 @@ class __$$UpdatedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? cw = freezed,
-    Object? text = null,
+    Object? text = freezed,
+    Object? note = freezed,
   }) {
     return _then(_$UpdatedImpl(
       cw: freezed == cw
           ? _value.cw
           : cw // ignore: cast_nullable_to_non_nullable
               as String?,
-      text: null == text
+      text: freezed == text
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
+      note: freezed == note
+          ? _value.note
+          : note // ignore: cast_nullable_to_non_nullable
+              as Note?,
     ));
   }
 }
@@ -731,7 +759,7 @@ class __$$UpdatedImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UpdatedImpl implements _Updated {
-  const _$UpdatedImpl({this.cw, required this.text});
+  const _$UpdatedImpl({this.cw, this.text, this.note});
 
   factory _$UpdatedImpl.fromJson(Map<String, dynamic> json) =>
       _$$UpdatedImplFromJson(json);
@@ -739,11 +767,13 @@ class _$UpdatedImpl implements _Updated {
   @override
   final String? cw;
   @override
-  final String text;
+  final String? text;
+  @override
+  final Note? note;
 
   @override
   String toString() {
-    return 'Updated(cw: $cw, text: $text)';
+    return 'Updated(cw: $cw, text: $text, note: $note)';
   }
 
   @override
@@ -752,12 +782,13 @@ class _$UpdatedImpl implements _Updated {
         (other.runtimeType == runtimeType &&
             other is _$UpdatedImpl &&
             (identical(other.cw, cw) || other.cw == cw) &&
-            (identical(other.text, text) || other.text == text));
+            (identical(other.text, text) || other.text == text) &&
+            (identical(other.note, note) || other.note == note));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, cw, text);
+  int get hashCode => Object.hash(runtimeType, cw, text, note);
 
   @JsonKey(ignore: true)
   @override
@@ -774,15 +805,17 @@ class _$UpdatedImpl implements _Updated {
 }
 
 abstract class _Updated implements Updated {
-  const factory _Updated({final String? cw, required final String text}) =
-      _$UpdatedImpl;
+  const factory _Updated(
+      {final String? cw, final String? text, final Note? note}) = _$UpdatedImpl;
 
   factory _Updated.fromJson(Map<String, dynamic> json) = _$UpdatedImpl.fromJson;
 
   @override
   String? get cw;
   @override
-  String get text;
+  String? get text;
+  @override
+  Note? get note;
   @override
   @JsonKey(ignore: true)
   _$$UpdatedImplCopyWith<_$UpdatedImpl> get copyWith =>
