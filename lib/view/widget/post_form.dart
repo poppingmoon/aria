@@ -52,6 +52,7 @@ class PostForm extends HookConsumerWidget {
   const PostForm({
     super.key,
     required this.account,
+    this.noteId,
     this.controller,
     this.cwController,
     this.focusNode,
@@ -65,6 +66,7 @@ class PostForm extends HookConsumerWidget {
   });
 
   final Account account;
+  final String? noteId;
   final TextEditingController? controller;
   final TextEditingController? cwController;
   final FocusNode? focusNode;
@@ -80,28 +82,38 @@ class PostForm extends HookConsumerWidget {
     WidgetRef ref,
     Account account,
   ) async {
-    final text = ref.read(postNotifierProvider(account)).text;
-    final attaches = ref.read(attachesNotifierProvider(account));
+    final text = ref.read(postNotifierProvider(account, noteId: noteId)).text;
+    final attaches =
+        ref.read(attachesNotifierProvider(account, noteId: noteId));
     final hasFiles = attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final files = hasFiles
         ? await futureWithDialog(
             ref.context,
-            ref.read(attachesNotifierProvider(account).notifier).uploadAll(),
+            ref
+                .read(
+                  attachesNotifierProvider(account, noteId: noteId).notifier,
+                )
+                .uploadAll(),
           )
         : null;
     if (hasFiles && files == null) return;
     if (!ref.context.mounted) return;
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
-      final confirmed = await confirmPost(ref.context, account);
+      final request = ref.read(postNotifierProvider(account, noteId: noteId));
+      final confirmed = await confirmPost(
+        ref.context,
+        account,
+        request: request,
+      );
       if (!confirmed) return;
       if (!ref.context.mounted) return;
     }
     final result = await futureWithDialog(
       ref.context,
       ref
-          .read(postNotifierProvider(account).notifier)
+          .read(postNotifierProvider(account, noteId: noteId).notifier)
           .post(fileIds: files?.map((file) => file.id).toList()),
     );
     if (!ref.context.mounted) return;
@@ -120,7 +132,7 @@ class PostForm extends HookConsumerWidget {
               .setHashtags({...hashtags, ...history}.toList()),
         );
       }
-      ref.invalidate(attachesNotifierProvider(account));
+      ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
       ref.context.pop();
     }
   }
@@ -168,8 +180,10 @@ class PostForm extends HookConsumerWidget {
       [this.account],
     );
     final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
-    final request = ref.watch(postNotifierProvider(account.value));
-    final attaches = ref.watch(attachesNotifierProvider(account.value));
+    final request =
+        ref.watch(postNotifierProvider(account.value, noteId: noteId));
+    final attaches =
+        ref.watch(attachesNotifierProvider(account.value, noteId: noteId));
     final reply = request.replyId != null
         ? ref.watch(noteProvider(account.value, request.replyId!))
         : null;
@@ -193,26 +207,27 @@ class PostForm extends HookConsumerWidget {
             user.username == mention.username && user.host == mention.host,
       ),
     );
-    final canChangeLocalOnly = request.channelId == null &&
+    final canChangeLocalOnly = noteId == null &&
+        request.channelId == null &&
         request.visibility != NoteVisibility.specified &&
         !(reply?.localOnly ?? false) &&
         !(renote?.localOnly ?? false);
-    final canChangeVisibility = request.channelId == null &&
+    final canChangeVisibility = noteId == null &&
+        request.channelId == null &&
         reply?.visibility != NoteVisibility.specified;
-    final canChangeChannel = (renote?.channel?.allowRenoteToExternal ?? true) &&
+    final canChangeChannel = noteId == null &&
+        (renote?.channel?.allowRenoteToExternal ?? true) &&
         reply?.channel == null;
     final canPost = request.canPost || attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final (buttonText, buttonIcon) = needsUpload
-        ? (t.misskey.upload, Icons.upload)
-        : request.isRenote
-            ? (t.misskey.renote, Icons.repeat_rounded)
-            : request.replyId != null
-                ? (t.misskey.reply, Icons.reply)
-                : (
-                    request.renoteId != null ? t.misskey.quote : t.misskey.note,
-                    Icons.send
-                  );
+    final (buttonText, buttonIcon) = switch (request) {
+      _ when needsUpload => (t.misskey.upload, Icons.upload),
+      _ when noteId != null => (t.misskey.edit, Icons.edit),
+      _ when request.isRenote => (t.misskey.renote, Icons.repeat_rounded),
+      _ when request.replyId != null => (t.misskey.reply, Icons.reply),
+      _ when request.renoteId != null => (t.misskey.quote, Icons.send),
+      _ => (t.misskey.note, Icons.send),
+    };
     final useCw =
         useState(useMemoized(() => request.cw?.isNotEmpty ?? false, []));
     final cwController = this.cwController ??
@@ -224,7 +239,8 @@ class PostForm extends HookConsumerWidget {
     final isCwFocused = useState(false);
     final isFocused = useState(false);
     ref.listen(
-      postNotifierProvider(account.value).select((request) => request.text),
+      postNotifierProvider(account.value, noteId: noteId)
+          .select((request) => request.text),
       (_, text) {
         final s = text ?? '';
         if (s != controller.text) {
@@ -249,13 +265,17 @@ class PostForm extends HookConsumerWidget {
 
         void cwControllerCallback() {
           ref
-              .read(postNotifierProvider(account.value).notifier)
+              .read(
+                postNotifierProvider(account.value, noteId: noteId).notifier,
+              )
               .setCw(cwController.text);
         }
 
         void controllerCallback() {
           ref
-              .read(postNotifierProvider(account.value).notifier)
+              .read(
+                postNotifierProvider(account.value, noteId: noteId).notifier,
+              )
               .setText(controller.text);
         }
 
@@ -330,18 +350,21 @@ class PostForm extends HookConsumerWidget {
               children: [
                 IconButton(
                   tooltip: t.misskey.switchAccount,
-                  onPressed: () async {
-                    final destination =
-                        await _switchAccount(ref, account.value);
-                    if (destination != null) {
-                      account.value = destination;
-                      onAccountChanged?.call(destination);
-                    }
-                  },
+                  onPressed: noteId == null
+                      ? () async {
+                          final destination =
+                              await _switchAccount(ref, account.value);
+                          if (destination != null) {
+                            account.value = destination;
+                            onAccountChanged?.call(destination);
+                          }
+                        }
+                      : null,
                   icon: i != null
                       ? UserAvatar(
                           account: account.value,
                           user: i,
+                          size: 32.0,
                         )
                       : const Icon(Icons.person),
                 ),
@@ -400,42 +423,46 @@ class PostForm extends HookConsumerWidget {
                       : const Icon(Icons.rocket),
                 ),
                 IconButton(
-                  onPressed: () async {
-                    final result =
-                        await showModalBottomSheet<(ReactionAcceptance?,)>(
-                      context: context,
-                      builder: (context) => ListView(
-                        shrinkWrap: true,
-                        children: [
-                          ListTile(
-                            title: Text(
-                              t.misskey.reactionAcceptance,
+                  onPressed: noteId == null
+                      ? () async {
+                          final result = await showModalBottomSheet<
+                              (ReactionAcceptance?,)>(
+                            context: context,
+                            builder: (context) => ListView(
+                              shrinkWrap: true,
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    t.misskey.reactionAcceptance,
+                                  ),
+                                ),
+                                const Divider(height: 0.0),
+                                ...[
+                                  null,
+                                  ...ReactionAcceptance.values,
+                                ].map(
+                                  (acceptance) => ListTile(
+                                    leading: ReactionAcceptanceIcon(
+                                      acceptance: acceptance,
+                                    ),
+                                    title: ReactionAcceptanceWidget(
+                                      acceptance: acceptance,
+                                    ),
+                                    onTap: () => context.pop((acceptance,)),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          const Divider(height: 0.0),
-                          ...[
-                            null,
-                            ...ReactionAcceptance.values,
-                          ].map(
-                            (acceptance) => ListTile(
-                              leading: ReactionAcceptanceIcon(
-                                acceptance: acceptance,
-                              ),
-                              title: ReactionAcceptanceWidget(
-                                acceptance: acceptance,
-                              ),
-                              onTap: () => context.pop((acceptance,)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
-                    if (result != null) {
-                      ref
-                          .read(postNotifierProvider(account.value).notifier)
-                          .setReactionAcceptance(result.$1);
-                    }
-                  },
+                          );
+                          if (result != null) {
+                            ref
+                                .read(
+                                  postNotifierProvider(account.value).notifier,
+                                )
+                                .setReactionAcceptance(result.$1);
+                          }
+                        }
+                      : null,
                   icon: ReactionAcceptanceIcon(
                     acceptance: request.reactionAcceptance,
                   ),
@@ -490,9 +517,11 @@ class PostForm extends HookConsumerWidget {
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () => ref
-                        .read(postNotifierProvider(account.value).notifier)
-                        .setReply(null),
+                    onPressed: noteId == null
+                        ? () => ref
+                            .read(postNotifierProvider(account.value).notifier)
+                            .setReply(null)
+                        : null,
                     icon: const Icon(Icons.close),
                   ),
                   const Icon(Icons.reply),
@@ -523,24 +552,22 @@ class PostForm extends HookConsumerWidget {
             ),
           if (request case NotesCreateRequest(:final renoteId?))
             InkWell(
-              onTap: () => context.push(
-                '/${account.value}/notes/$renoteId',
-              ),
+              onTap: () => context.push('/${account.value}/notes/$renoteId'),
               child: Row(
                 children: [
                   IconButton(
-                    onPressed: () => ref
-                        .read(postNotifierProvider(account.value).notifier)
-                        .setRenote(null),
+                    onPressed: noteId == null
+                        ? () => ref
+                            .read(postNotifierProvider(account.value).notifier)
+                            .setRenote(null)
+                        : null,
                     icon: const Icon(Icons.close),
                   ),
                   const Icon(Icons.repeat_rounded),
                   const SizedBox(width: 4.0),
                   Text('${t.misskey.renote}: '),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 4.0,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: renote != null
                         ? UserAvatar(
                             account: account.value,
@@ -562,9 +589,8 @@ class PostForm extends HookConsumerWidget {
             ),
           if (request case NotesCreateRequest(:final channelId?))
             InkWell(
-              onTap: () => context.push(
-                '/${account.value}/channels/$channelId',
-              ),
+              onTap: () =>
+                  context.push('/${account.value}/channels/$channelId'),
               child: DecoratedBox(
                 decoration: BoxDecoration(
                   border: Border(
@@ -596,9 +622,7 @@ class PostForm extends HookConsumerWidget {
             ),
           if (request.visibility == NoteVisibility.specified) ...[
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Wrap(
                 spacing: 4.0,
                 runSpacing: 4.0,
@@ -612,37 +636,38 @@ class PostForm extends HookConsumerWidget {
                       account: account.value,
                       username: user.username,
                       host: user.host ?? account.value.host,
-                      onDeleted: () {
-                        ref
-                            .read(
-                              postNotifierProvider(account.value).notifier,
-                            )
-                            .removeVisibleUser(user.id);
-                        visibleUsers.value = visibleUsers.value
-                            .where((e) => e.id != user.id)
-                            .toList();
-                      },
+                      onDeleted: noteId == null
+                          ? () {
+                              ref
+                                  .read(
+                                    postNotifierProvider(account.value)
+                                        .notifier,
+                                  )
+                                  .removeVisibleUser(user.id);
+                              visibleUsers.value = visibleUsers.value
+                                  .where((e) => e.id != user.id)
+                                  .toList();
+                            }
+                          : null,
                     ),
                   ),
-                  IconButton(
-                    onPressed: () async {
-                      final user = await selectUser(
-                        context,
-                        account.value,
-                      );
-                      if (user != null &&
-                          !(request.visibleUserIds?.contains(user.id) ??
-                              false)) {
-                        visibleUsers.value = [...visibleUsers.value, user];
-                        ref
-                            .read(
-                              postNotifierProvider(account.value).notifier,
-                            )
-                            .addVisibleUser(user);
-                      }
-                    },
-                    icon: const Icon(Icons.add),
-                  ),
+                  if (noteId == null)
+                    IconButton(
+                      onPressed: () async {
+                        final user = await selectUser(context, account.value);
+                        if (user != null &&
+                            !(request.visibleUserIds?.contains(user.id) ??
+                                false)) {
+                          visibleUsers.value = [...visibleUsers.value, user];
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .addVisibleUser(user);
+                        }
+                      },
+                      icon: const Icon(Icons.add),
+                    ),
                 ],
               ),
             ),
@@ -653,40 +678,40 @@ class PostForm extends HookConsumerWidget {
                   child: Row(
                     children: [
                       Expanded(
-                        child: Text(
-                          t.misskey.notSpecifiedMentionWarning,
-                        ),
+                        child: Text(t.misskey.notSpecifiedMentionWarning),
                       ),
-                      TextButton(
-                        onPressed: () async {
-                          final users = await futureWithDialog(
-                            context,
-                            Future.wait(
-                              notSpecifiedMentions.map(
-                                (node) => ref.read(
-                                  userNotifierProvider(
-                                    account.value,
-                                    username: node.username,
-                                    host: node.host,
-                                  ).future,
+                      if (noteId == null)
+                        TextButton(
+                          onPressed: () async {
+                            final users = await futureWithDialog(
+                              context,
+                              Future.wait(
+                                notSpecifiedMentions.map(
+                                  (node) => ref.read(
+                                    userNotifierProvider(
+                                      account.value,
+                                      username: node.username,
+                                      host: node.host,
+                                    ).future,
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                          if (users != null) {
-                            visibleUsers.value = [
-                              ...visibleUsers.value,
-                              ...users,
-                            ];
-                            ref
-                                .read(
-                                  postNotifierProvider(account.value).notifier,
-                                )
-                                .addVisibleUsers(users);
-                          }
-                        },
-                        child: Text(t.misskey.add),
-                      ),
+                            );
+                            if (users != null) {
+                              visibleUsers.value = [
+                                ...visibleUsers.value,
+                                ...users,
+                              ];
+                              ref
+                                  .read(
+                                    postNotifierProvider(account.value)
+                                        .notifier,
+                                  )
+                                  .addVisibleUsers(users);
+                            }
+                          },
+                          child: Text(t.misskey.add),
+                        ),
                     ],
                   ),
                 ),
@@ -699,19 +724,19 @@ class PostForm extends HookConsumerWidget {
                 child: Row(
                   children: [
                     Expanded(
-                      child: Text(
-                        t.aria.mentionToRemoteWarning,
-                      ),
+                      child: Text(t.aria.mentionToRemoteWarning),
                     ),
                     if (request.channelId == null &&
                         !(reply?.localOnly ?? false) &&
                         !(renote?.localOnly ?? false))
                       TextButton(
-                        onPressed: () => ref
-                            .read(
-                              postNotifierProvider(account.value).notifier,
-                            )
-                            .setLocalOnly(false),
+                        onPressed: noteId == null
+                            ? () => ref
+                                .read(
+                                  postNotifierProvider(account.value).notifier,
+                                )
+                                .setLocalOnly(false)
+                            : null,
                         child: Text(t.aria.enableFederation),
                       ),
                   ],
@@ -720,9 +745,7 @@ class PostForm extends HookConsumerWidget {
             ),
           if (useCw.value)
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Shortcuts(
                 shortcuts: disablingTextShortcuts,
                 child: TextField(
@@ -775,8 +798,10 @@ class PostForm extends HookConsumerWidget {
                             if (files != null) {
                               ref
                                   .read(
-                                    attachesNotifierProvider(account.value)
-                                        .notifier,
+                                    attachesNotifierProvider(
+                                      account.value,
+                                      noteId: noteId,
+                                    ).notifier,
                                   )
                                   .addAll(files);
                             }
@@ -787,7 +812,10 @@ class PostForm extends HookConsumerWidget {
                           tooltip: t.misskey.poll,
                           onPressed: () => ref
                               .read(
-                                postNotifierProvider(account.value).notifier,
+                                postNotifierProvider(
+                                  account.value,
+                                  noteId: noteId,
+                                ).notifier,
                               )
                               .togglePoll(),
                           icon: Icon(
@@ -803,16 +831,20 @@ class PostForm extends HookConsumerWidget {
                             if (useCw.value) {
                               ref
                                   .read(
-                                    postNotifierProvider(account.value)
-                                        .notifier,
+                                    postNotifierProvider(
+                                      account.value,
+                                      noteId: noteId,
+                                    ).notifier,
                                   )
                                   .setCw(null);
                               useCw.value = false;
                             } else {
                               ref
                                   .read(
-                                    postNotifierProvider(account.value)
-                                        .notifier,
+                                    postNotifierProvider(
+                                      account.value,
+                                      noteId: noteId,
+                                    ).notifier,
                                   )
                                   .setCw(cwController.text);
                               useCw.value = true;
@@ -903,9 +935,7 @@ class PostForm extends HookConsumerWidget {
           ),
           if (attaches.isNotEmpty) ...[
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
-              ),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Align(
                 alignment: Alignment.centerRight,
                 child: Text(
@@ -919,16 +949,17 @@ class PostForm extends HookConsumerWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 8.0,
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: PostFormAttaches(
+                account: account.value,
+                noteId: noteId,
               ),
-              child: PostFormAttaches(account: account.value),
             ),
           ],
           if (request.poll != null)
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: PollEditor(account: account.value),
+              child: PollEditor(account: account.value, noteId: noteId),
             ),
           if (showKeyboard) ...[
             Visibility(

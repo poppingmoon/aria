@@ -5,6 +5,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../extension/note_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../model/account.dart';
 import '../../util/extract_mentions.dart';
@@ -12,6 +13,7 @@ import '../account_settings_notifier_provider.dart';
 import '../note_provider.dart';
 import '../notes_notifier_provider.dart';
 import '../shared_preferences_provider.dart';
+import 'endpoints_provider.dart';
 import 'i_notifier_provider.dart';
 import 'misskey_provider.dart';
 
@@ -20,8 +22,12 @@ part 'post_notifier_provider.g.dart';
 @Riverpod(keepAlive: true)
 class PostNotifier extends _$PostNotifier {
   @override
-  NotesCreateRequest build(Account account) {
+  NotesCreateRequest build(Account account, {String? noteId}) {
     ref.onDispose(() => _timer?.cancel());
+    if (noteId != null) {
+      final note = ref.read(noteProvider(account, noteId));
+      return note?.toNotesCreateRequest() ?? _defaultRequest;
+    }
     final draft = ref.watch(sharedPreferencesProvider).getString(_key);
     if (draft != null) {
       try {
@@ -74,7 +80,7 @@ class PostNotifier extends _$PostNotifier {
   void save() {
     _saveScheduled = false;
     _timer?.cancel();
-    if (!account.isGuest) {
+    if (!account.isGuest && noteId == null) {
       ref
           .read(sharedPreferencesProvider)
           .setString(_key, jsonEncode(state.toJson()));
@@ -172,27 +178,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void fromNote(Note note) {
-    final poll = note.poll;
-    state = NotesCreateRequest(
-      visibility: note.visibility,
-      visibleUserIds: note.visibleUserIds,
-      cw: note.cw,
-      localOnly: note.localOnly,
-      reactionAcceptance: note.reactionAcceptance,
-      replyId: note.replyId,
-      renoteId: note.renoteId,
-      channelId: note.channelId,
-      text: note.text,
-      poll: poll != null
-          ? NotesCreatePollRequest(
-              choices: poll.choices.map((choice) => choice.text).toList(),
-              multiple: poll.multiple,
-              expiresAt: poll.expiresAt?.isAfter(DateTime.now()) ?? false
-                  ? poll.expiresAt
-                  : null,
-            )
-          : null,
-    );
+    state = note.toNotesCreateRequest();
     _scheduleSave();
   }
 
@@ -208,11 +194,38 @@ class PostNotifier extends _$PostNotifier {
   }
 
   Future<bool> post({List<String>? fileIds}) async {
-    await ref
-        .read(misskeyProvider(account))
-        .notes
-        .create(state.copyWith(fileIds: fileIds));
-    reset();
+    if (noteId == null) {
+      final response = await ref
+          .read(misskeyProvider(account))
+          .notes
+          .create(state.copyWith(fileIds: fileIds));
+      ref.read(notesNotifierProvider(account).notifier).add(response);
+      reset();
+    } else {
+      final endpoints = await ref.read(endpointsProvider(account.host).future);
+      if (endpoints.contains('notes/update')) {
+        await ref.read(misskeyProvider(account)).notes.update(
+              NotesUpdateRequest(
+                noteId: noteId!,
+                text: state.text,
+                cw: state.cw,
+                fileIds: fileIds,
+                poll: state.poll,
+              ),
+            );
+      } else {
+        final response = await ref.read(misskeyProvider(account)).notes.edit(
+              NotesEditRequest(
+                editId: noteId!,
+                text: state.text,
+                cw: state.cw,
+                fileIds: fileIds,
+                poll: state.poll,
+              ),
+            );
+        ref.read(notesNotifierProvider(account).notifier).add(response);
+      }
+    }
     return true;
   }
 

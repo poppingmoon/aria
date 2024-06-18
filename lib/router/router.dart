@@ -498,6 +498,13 @@ GoRouter router(RouterRef ref) {
                   noteId: state.pathParameters['noteId']!,
                 ),
               ),
+              GoRoute(
+                path: 'edit',
+                builder: (_, state) => PostPage(
+                  account: Account.fromString(state.pathParameters['acct']!),
+                  noteId: state.pathParameters['noteId'],
+                ),
+              ),
             ],
           ),
           GoRoute(

@@ -6,7 +6,7 @@ part of 'post_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postNotifierHash() => r'0ad470215a7835d3745c38ea455560fef9ce6f6c';
+String _$postNotifierHash() => r'd3b9fa7474049def66005a38ed5b7c221e643ced';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -31,10 +31,12 @@ class _SystemHash {
 
 abstract class _$PostNotifier extends BuildlessNotifier<NotesCreateRequest> {
   late final Account account;
+  late final String? noteId;
 
   NotesCreateRequest build(
-    Account account,
-  );
+    Account account, {
+    String? noteId,
+  });
 }
 
 /// See also [PostNotifier].
@@ -48,10 +50,12 @@ class PostNotifierFamily extends Family<NotesCreateRequest> {
 
   /// See also [PostNotifier].
   PostNotifierProvider call(
-    Account account,
-  ) {
+    Account account, {
+    String? noteId,
+  }) {
     return PostNotifierProvider(
       account,
+      noteId: noteId,
     );
   }
 
@@ -61,6 +65,7 @@ class PostNotifierFamily extends Family<NotesCreateRequest> {
   ) {
     return call(
       provider.account,
+      noteId: provider.noteId,
     );
   }
 
@@ -84,9 +89,12 @@ class PostNotifierProvider
     extends NotifierProviderImpl<PostNotifier, NotesCreateRequest> {
   /// See also [PostNotifier].
   PostNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => PostNotifier()..account = account,
+    Account account, {
+    String? noteId,
+  }) : this._internal(
+          () => PostNotifier()
+            ..account = account
+            ..noteId = noteId,
           from: postNotifierProvider,
           name: r'postNotifierProvider',
           debugGetCreateSourceHash:
@@ -97,6 +105,7 @@ class PostNotifierProvider
           allTransitiveDependencies:
               PostNotifierFamily._allTransitiveDependencies,
           account: account,
+          noteId: noteId,
         );
 
   PostNotifierProvider._internal(
@@ -107,9 +116,11 @@ class PostNotifierProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.account,
+    required this.noteId,
   }) : super.internal();
 
   final Account account;
+  final String? noteId;
 
   @override
   NotesCreateRequest runNotifierBuild(
@@ -117,6 +128,7 @@ class PostNotifierProvider
   ) {
     return notifier.build(
       account,
+      noteId: noteId,
     );
   }
 
@@ -125,13 +137,16 @@ class PostNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PostNotifierProvider._internal(
-        () => create()..account = account,
+        () => create()
+          ..account = account
+          ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         account: account,
+        noteId: noteId,
       ),
     );
   }
@@ -143,13 +158,16 @@ class PostNotifierProvider
 
   @override
   bool operator ==(Object other) {
-    return other is PostNotifierProvider && other.account == account;
+    return other is PostNotifierProvider &&
+        other.account == account &&
+        other.noteId == noteId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
+    hash = _SystemHash.combine(hash, noteId.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -158,6 +176,9 @@ class PostNotifierProvider
 mixin PostNotifierRef on NotifierProviderRef<NotesCreateRequest> {
   /// The parameter `account` of this provider.
   Account get account;
+
+  /// The parameter `noteId` of this provider.
+  String? get noteId;
 }
 
 class _PostNotifierProviderElement
@@ -167,6 +188,8 @@ class _PostNotifierProviderElement
 
   @override
   Account get account => (origin as PostNotifierProvider).account;
+  @override
+  String? get noteId => (origin as PostNotifierProvider).noteId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
