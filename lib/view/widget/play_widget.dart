@@ -233,7 +233,9 @@ class PlayWidget extends HookConsumerWidget {
                         ),
                         const SizedBox(height: 16.0),
                         Mfm(
-                          account: account,
+                          account: account.host == host
+                              ? account
+                              : Account(host: host),
                           text: play.summary,
                           style: DefaultTextStyle.of(context)
                               .style
@@ -277,7 +279,9 @@ class PlayWidget extends HookConsumerWidget {
                                   dialog: (title, text, type) => showDialog(
                                     context: context,
                                     builder: (context) => _Dialog(
-                                      account: account,
+                                      account: account.host == host
+                                          ? account
+                                          : Account(host: host),
                                       title: title,
                                       text: text,
                                       type: type,
@@ -287,7 +291,9 @@ class PlayWidget extends HookConsumerWidget {
                                     final result = await showDialog<bool>(
                                       context: context,
                                       builder: (context) => _Dialog(
-                                        account: account,
+                                        account: account.host == host
+                                            ? account
+                                            : Account(host: host),
                                         title: title,
                                         text: text,
                                         type: type,
@@ -488,7 +494,13 @@ class _Dialog extends ConsumerWidget {
         bottom: 4.0,
         right: 32.0,
       ),
-      title: title != null ? Text(title ?? '') : null,
+      title: title != null
+          ? Mfm(
+              account: account,
+              text: title,
+              textAlign: TextAlign.center,
+            )
+          : null,
       titlePadding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 32.0),
       titleTextStyle: DefaultTextStyle.of(context)
           .style
