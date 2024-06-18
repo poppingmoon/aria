@@ -28,36 +28,47 @@ class PostPage extends HookConsumerWidget {
   const PostPage({
     super.key,
     required this.account,
+    this.noteId,
   });
 
   final Account account;
+  final String? noteId;
 
   Future<void> _post(
     WidgetRef ref,
     Account account,
   ) async {
-    final text = ref.read(postNotifierProvider(account)).text;
-    final attaches = ref.read(attachesNotifierProvider(account));
+    final text = ref.read(postNotifierProvider(account, noteId: noteId)).text;
+    final attaches =
+        ref.read(attachesNotifierProvider(account, noteId: noteId));
     final hasFiles = attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final files = hasFiles
         ? await futureWithDialog(
             ref.context,
-            ref.read(attachesNotifierProvider(account).notifier).uploadAll(),
+            ref
+                .read(
+                  attachesNotifierProvider(account, noteId: noteId).notifier,
+                )
+                .uploadAll(),
           )
         : null;
     if (hasFiles && files == null) return;
     if (!ref.context.mounted) return;
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
-      final confirmed = await confirmPost(ref.context, account);
+      final confirmed = await confirmPost(
+        ref.context,
+        account,
+        noteId: noteId,
+      );
       if (!confirmed) return;
       if (!ref.context.mounted) return;
     }
     final result = await futureWithDialog(
       ref.context,
       ref
-          .read(postNotifierProvider(account).notifier)
+          .read(postNotifierProvider(account, noteId: noteId).notifier)
           .post(fileIds: files?.map((file) => file.id).toList()),
     );
     if (!ref.context.mounted) return;
@@ -76,7 +87,7 @@ class PostPage extends HookConsumerWidget {
               .setHashtags({...hashtags, ...history}.toList()),
         );
       }
-      ref.invalidate(attachesNotifierProvider(account));
+      ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
       ref.context.pop();
     }
   }
@@ -85,8 +96,10 @@ class PostPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
     final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
-    final request = ref.watch(postNotifierProvider(account.value));
-    final attaches = ref.watch(attachesNotifierProvider(account.value));
+    final request =
+        ref.watch(postNotifierProvider(account.value, noteId: noteId));
+    final attaches =
+        ref.watch(attachesNotifierProvider(account.value, noteId: noteId));
     final channel = request.channelId != null
         ? ref
             .watch(channelNotifierProvider(account.value, request.channelId!))
@@ -95,16 +108,14 @@ class PostPage extends HookConsumerWidget {
     final note = request.toNote(i: i, channel: channel);
     final canPost = request.canPost || attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final (buttonText, buttonIcon) = needsUpload
-        ? (t.misskey.upload, Icons.upload)
-        : request.isRenote
-            ? (t.misskey.renote, Icons.repeat_rounded)
-            : request.replyId != null
-                ? (t.misskey.reply, Icons.reply)
-                : (
-                    request.renoteId != null ? t.misskey.quote : t.misskey.note,
-                    Icons.send
-                  );
+    final (buttonText, buttonIcon) = switch (request) {
+      _ when needsUpload => (t.misskey.upload, Icons.upload),
+      _ when noteId != null => (t.misskey.edit, Icons.edit),
+      _ when request.isRenote => (t.misskey.renote, Icons.repeat_rounded),
+      _ when request.replyId != null => (t.misskey.reply, Icons.reply),
+      _ when request.renoteId != null => (t.misskey.quote, Icons.send),
+      _ => (t.misskey.note, Icons.send),
+    };
     final cwController =
         useTextEditingController(text: request.cw, keys: [account.value]);
     final controller =
@@ -125,8 +136,9 @@ class PostPage extends HookConsumerWidget {
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return PopScope(
-      onPopInvoked: (_) =>
-          ref.read(postNotifierProvider(account.value).notifier).save(),
+      onPopInvoked: (_) => ref
+          .read(postNotifierProvider(account.value, noteId: noteId).notifier)
+          .save(),
       child: Scaffold(
         appBar: AppBar(
           title: Text(t.misskey.note),
@@ -138,7 +150,10 @@ class PostPage extends HookConsumerWidget {
                         context,
                         ref
                             .read(
-                              attachesNotifierProvider(account.value).notifier,
+                              attachesNotifierProvider(
+                                account.value,
+                                noteId: noteId,
+                              ).notifier,
                             )
                             .uploadAll(),
                       )
@@ -165,6 +180,7 @@ class PostPage extends HookConsumerWidget {
                           margin: const EdgeInsets.all(8.0),
                           child: PostForm(
                             account: this.account,
+                            noteId: noteId,
                             controller: controller,
                             cwController: cwController,
                             focusNode: focusNode,

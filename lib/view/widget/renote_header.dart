@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -105,7 +106,8 @@ class RenoteHeader extends HookConsumerWidget {
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    NoteVisibilityIcon(visibility: note.visibility),
+                    if (note.visibility != NoteVisibility.public)
+                      NoteVisibilityIcon(visibility: note.visibility),
                     if (note.localOnly)
                       Tooltip(
                         message: t.misskey.visibility_.disableFederation,

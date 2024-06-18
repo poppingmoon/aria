@@ -25,10 +25,7 @@ class NoteVisibilitySheet extends StatelessWidget {
         const Divider(height: 0.0),
         ...visibilities.map(
           (visibility) => ListTile(
-            leading: NoteVisibilityIcon(
-              visibility: visibility,
-              showPublic: true,
-            ),
+            leading: NoteVisibilityIcon(visibility: visibility),
             title: NoteVisibilityWidget(visibility: visibility),
             subtitle: Text(
               switch (visibility) {

@@ -16,6 +16,7 @@ import '../widget/note_widget.dart';
 Future<bool> confirmPost(
   BuildContext context,
   Account account, {
+  String? noteId,
   NotesCreateRequest? request,
   List<DriveFile>? files,
 }) async {
@@ -23,6 +24,7 @@ Future<bool> confirmPost(
     context: context,
     builder: (context) => PostConfirmationDialog(
       account: account,
+      noteId: noteId,
       request: request,
       files: files,
     ),
@@ -34,21 +36,23 @@ class PostConfirmationDialog extends ConsumerWidget {
   const PostConfirmationDialog({
     super.key,
     required this.account,
+    this.noteId,
     this.request,
     this.files,
   });
 
   final Account account;
+  final String? noteId;
   final NotesCreateRequest? request;
   final List<DriveFile>? files;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final NotesCreateRequest request =
-        this.request ?? ref.watch(postNotifierProvider(account));
+    final NotesCreateRequest request = this.request ??
+        ref.watch(postNotifierProvider(account, noteId: noteId));
     final files = this.files ??
         ref
-            .watch(attachesNotifierProvider(account))
+            .watch(attachesNotifierProvider(account, noteId: noteId))
             .map((file) => file is DrivePostFile ? file.file : null)
             .nonNulls
             .toList();

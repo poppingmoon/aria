@@ -12,14 +12,21 @@ import '../dialog/text_field_dialog.dart';
 import 'time_widget.dart';
 
 class PollEditor extends ConsumerWidget {
-  const PollEditor({super.key, required this.account});
+  const PollEditor({
+    super.key,
+    required this.account,
+    this.noteId,
+  });
 
   final Account account;
+  final String? noteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final poll = ref
-        .watch(postNotifierProvider(account).select((request) => request.poll));
+    final poll = ref.watch(
+      postNotifierProvider(account, noteId: noteId)
+          .select((request) => request.poll),
+    );
     if (poll == null) {
       return const SizedBox.shrink();
     }
@@ -45,7 +52,9 @@ class PollEditor extends ConsumerWidget {
                 );
                 if (result != null) {
                   ref
-                      .read(postNotifierProvider(account).notifier)
+                      .read(
+                        postNotifierProvider(account, noteId: noteId).notifier,
+                      )
                       .setChoice(index, result);
                 }
               },
@@ -67,7 +76,9 @@ class PollEditor extends ConsumerWidget {
               ),
               trailing: IconButton(
                 onPressed: () => ref
-                    .read(postNotifierProvider(account).notifier)
+                    .read(
+                      postNotifierProvider(account, noteId: noteId).notifier,
+                    )
                     .removeChoice(index),
                 icon: const Icon(Icons.close),
               ),
@@ -76,7 +87,9 @@ class PollEditor extends ConsumerWidget {
           ElevatedButton(
             onPressed: poll.choices.length <= 10
                 ? () => ref
-                    .read(postNotifierProvider(account).notifier)
+                    .read(
+                      postNotifierProvider(account, noteId: noteId).notifier,
+                    )
                     .addChoice('')
                 : null,
             child: Text(t.misskey.add),
@@ -86,7 +99,7 @@ class PollEditor extends ConsumerWidget {
             title: Text(t.misskey.poll_.canMultipleVote),
             value: poll.multiple ?? false,
             onChanged: (value) => ref
-                .read(postNotifierProvider(account).notifier)
+                .read(postNotifierProvider(account, noteId: noteId).notifier)
                 .setMultiple(value),
           ),
           ListTile(
@@ -108,7 +121,8 @@ class PollEditor extends ConsumerWidget {
                     onTap: () {
                       ref
                           .read(
-                            postNotifierProvider(account).notifier,
+                            postNotifierProvider(account, noteId: noteId)
+                                .notifier,
                           )
                           .clearExpiration();
                       context.pop();
@@ -119,7 +133,8 @@ class PollEditor extends ConsumerWidget {
                     onTap: () {
                       ref
                           .read(
-                            postNotifierProvider(account).notifier,
+                            postNotifierProvider(account, noteId: noteId)
+                                .notifier,
                           )
                           .setExpiresAt(
                             DateTime.now()
@@ -139,7 +154,8 @@ class PollEditor extends ConsumerWidget {
                     onTap: () {
                       ref
                           .read(
-                            postNotifierProvider(account).notifier,
+                            postNotifierProvider(account, noteId: noteId)
+                                .notifier,
                           )
                           .setExpiredAfter(const Duration(hours: 1));
                       context.pop();
@@ -162,7 +178,9 @@ class PollEditor extends ConsumerWidget {
                 );
                 if (expiresAt != null) {
                   ref
-                      .read(postNotifierProvider(account).notifier)
+                      .read(
+                        postNotifierProvider(account, noteId: noteId).notifier,
+                      )
                       .setExpiresAt(expiresAt);
                 }
               },
@@ -190,7 +208,9 @@ class PollEditor extends ConsumerWidget {
                 );
                 if (result != null) {
                   ref
-                      .read(postNotifierProvider(account).notifier)
+                      .read(
+                        postNotifierProvider(account, noteId: noteId).notifier,
+                      )
                       .setExpiredAfter(result);
                 }
               },

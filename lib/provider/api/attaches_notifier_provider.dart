@@ -6,6 +6,7 @@ import '../../model/post_file.dart';
 import '../../util/compress_image.dart';
 import '../../util/randomize_filename.dart';
 import '../account_settings_notifier_provider.dart';
+import '../note_provider.dart';
 import 'misskey_provider.dart';
 
 part 'attaches_notifier_provider.g.dart';
@@ -13,7 +14,18 @@ part 'attaches_notifier_provider.g.dart';
 @riverpod
 class AttachesNotifier extends _$AttachesNotifier {
   @override
-  List<PostFile> build(Account account, {bool gallery = false}) {
+  List<PostFile> build(
+    Account account, {
+    String? noteId,
+    bool gallery = false,
+  }) {
+    if (noteId != null) {
+      final note = ref.read(noteProvider(account, noteId));
+      return note?.files
+              .map((file) => DrivePostFile.fromDriveFile(file))
+              .toList() ??
+          [];
+    }
     if (!gallery) {
       ref.keepAlive();
     }

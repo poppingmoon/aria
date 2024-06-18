@@ -19,14 +19,14 @@ class NotesNotifier extends _$NotesNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Note? add(Note note) {
+  Note? add(Note note, {bool detail = true}) {
     final renote = note.renote;
     if (renote != null) {
-      add(renote);
+      add(renote, detail: false);
     }
     final reply = note.reply;
     if (reply != null) {
-      add(reply);
+      add(reply, detail: false);
     }
     final cachedNote = state[note.id];
     state = {
@@ -37,7 +37,7 @@ class NotesNotifier extends _$NotesNotifier {
                 .fold<int>(0, (acc, reaction) => acc + reaction),
         renote: renote ?? state[note.renoteId],
         reply: reply ?? state[note.replyId],
-        poll: note.poll ?? cachedNote?.poll,
+        poll: detail ? note.poll : cachedNote?.poll,
       ),
     };
     return cachedNote;
@@ -139,15 +139,19 @@ class NotesNotifier extends _$NotesNotifier {
   }
 
   void updateNote(String noteId, Updated updated) {
-    final note = state[noteId];
-    if (note == null) return;
-    final notes = Map.of(state);
-    notes[noteId] = note.copyWith(
-      text: note.text,
-      cw: note.cw,
-      updatedAt: DateTime.now(),
-    );
-    state = notes;
+    if (updated.note case final note?) {
+      state = {...state, noteId: note};
+    } else {
+      final note = state[noteId];
+      if (note == null) return;
+      final notes = Map.of(state);
+      notes[noteId] = note.copyWith(
+        text: updated.text,
+        cw: updated.cw,
+        updatedAt: DateTime.now(),
+      );
+      state = notes;
+    }
   }
 
   Future<void> react(String noteId, String reaction) async {

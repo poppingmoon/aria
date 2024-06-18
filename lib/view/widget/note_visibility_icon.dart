@@ -4,24 +4,17 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 
 class NoteVisibilityIcon extends StatelessWidget {
-  const NoteVisibilityIcon({
-    super.key,
-    required this.visibility,
-    this.showPublic = false,
-  });
+  const NoteVisibilityIcon({super.key, required this.visibility});
 
   final NoteVisibility? visibility;
-  final bool showPublic;
 
   @override
   Widget build(BuildContext context) {
     return switch (visibility) {
-      NoteVisibility.public => showPublic
-          ? Tooltip(
-              message: t.misskey.visibility_.public,
-              child: const Icon(Icons.public),
-            )
-          : const SizedBox.shrink(),
+      NoteVisibility.public => Tooltip(
+          message: t.misskey.visibility_.public,
+          child: const Icon(Icons.public),
+        ),
       NoteVisibility.home => Tooltip(
           message: t.misskey.visibility_.home,
           child: const Icon(Icons.home),

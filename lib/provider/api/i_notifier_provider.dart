@@ -50,7 +50,7 @@ class INotifier extends _$INotifier {
   Future<void> _save(Object i) async {
     await ref
         .read(cacheManagerProvider)
-        .putFile(_key, utf8.encode(jsonEncode(i)));
+        .putFile(_key, utf8.encode(jsonEncode(i)), eTag: _key);
   }
 
   Future<void> setName(String? name) async {

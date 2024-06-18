@@ -12,6 +12,7 @@ import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
+import '../../provider/api/endpoints_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
@@ -56,6 +57,16 @@ class NoteSheet extends ConsumerWidget {
     final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final canUseTranslator = (i?.policies?.canUseTranslator ?? false) &&
         (meta?.translatorAvailable ?? false);
+    final canEditNote = i != null &&
+        (i.policies?.canEditNote ??
+            ref.watch(
+              endpointsProvider(account.host).select(
+                (value) => value.maybeWhen(
+                  data: (endpoints) => endpoints.contains('notes/edit'),
+                  orElse: () => false,
+                ),
+              ),
+            ));
     final noteState = i != null
         ? ref
             .watch(noteStateNotifierProvider(account, appearNote.id))
@@ -360,15 +371,12 @@ class NoteSheet extends ConsumerWidget {
             ),
             if (appearNote.user.host == null &&
                 appearNote.user.username == account.username) ...[
-              // TODO: Edit note
-              // if (i.policies?.canEditNote ?? false)
-              //   ListTile(
-              //     leading: const Icon(Icons.edit),
-              //     title: Text(t.misskey.edit),
-              //     onTap: () async {
-              //       context.pop();
-              //     },
-              //   ),
+              if (canEditNote)
+                ListTile(
+                  leading: const Icon(Icons.edit),
+                  title: Text(t.misskey.edit),
+                  onTap: () => context.push('/$account/notes/$noteId/edit'),
+                ),
               ListTile(
                 leading: const Icon(Icons.edit_outlined),
                 title: Text(t.misskey.deleteAndEdit),

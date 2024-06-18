@@ -98,10 +98,7 @@ class RenoteSheet extends HookConsumerWidget {
           )
         else ...[
           ListTile(
-            leading: NoteVisibilityIcon(
-              visibility: visibility.value,
-              showPublic: true,
-            ),
+            leading: NoteVisibilityIcon(visibility: visibility.value),
             title: Text(t.misskey.visibility),
             subtitle: NoteVisibilityWidget(visibility: visibility.value),
             trailing: const Icon(Icons.navigate_next),

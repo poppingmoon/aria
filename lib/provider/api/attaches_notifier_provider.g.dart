@@ -6,7 +6,7 @@ part of 'attaches_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$attachesNotifierHash() => r'3c654fc3915d1abca2a9b11199ac0664acdfb862';
+String _$attachesNotifierHash() => r'eaad5ef85272b9b0153be9e851d47a11688e6303';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,10 +32,12 @@ class _SystemHash {
 abstract class _$AttachesNotifier
     extends BuildlessAutoDisposeNotifier<List<PostFile>> {
   late final Account account;
+  late final String? noteId;
   late final bool gallery;
 
   List<PostFile> build(
     Account account, {
+    String? noteId,
     bool gallery = false,
   });
 }
@@ -52,10 +54,12 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
   /// See also [AttachesNotifier].
   AttachesNotifierProvider call(
     Account account, {
+    String? noteId,
     bool gallery = false,
   }) {
     return AttachesNotifierProvider(
       account,
+      noteId: noteId,
       gallery: gallery,
     );
   }
@@ -66,6 +70,7 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
   ) {
     return call(
       provider.account,
+      noteId: provider.noteId,
       gallery: provider.gallery,
     );
   }
@@ -91,10 +96,12 @@ class AttachesNotifierProvider
   /// See also [AttachesNotifier].
   AttachesNotifierProvider(
     Account account, {
+    String? noteId,
     bool gallery = false,
   }) : this._internal(
           () => AttachesNotifier()
             ..account = account
+            ..noteId = noteId
             ..gallery = gallery,
           from: attachesNotifierProvider,
           name: r'attachesNotifierProvider',
@@ -106,6 +113,7 @@ class AttachesNotifierProvider
           allTransitiveDependencies:
               AttachesNotifierFamily._allTransitiveDependencies,
           account: account,
+          noteId: noteId,
           gallery: gallery,
         );
 
@@ -117,10 +125,12 @@ class AttachesNotifierProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.account,
+    required this.noteId,
     required this.gallery,
   }) : super.internal();
 
   final Account account;
+  final String? noteId;
   final bool gallery;
 
   @override
@@ -129,6 +139,7 @@ class AttachesNotifierProvider
   ) {
     return notifier.build(
       account,
+      noteId: noteId,
       gallery: gallery,
     );
   }
@@ -140,6 +151,7 @@ class AttachesNotifierProvider
       override: AttachesNotifierProvider._internal(
         () => create()
           ..account = account
+          ..noteId = noteId
           ..gallery = gallery,
         from: from,
         name: null,
@@ -147,6 +159,7 @@ class AttachesNotifierProvider
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         account: account,
+        noteId: noteId,
         gallery: gallery,
       ),
     );
@@ -162,6 +175,7 @@ class AttachesNotifierProvider
   bool operator ==(Object other) {
     return other is AttachesNotifierProvider &&
         other.account == account &&
+        other.noteId == noteId &&
         other.gallery == gallery;
   }
 
@@ -169,6 +183,7 @@ class AttachesNotifierProvider
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
+    hash = _SystemHash.combine(hash, noteId.hashCode);
     hash = _SystemHash.combine(hash, gallery.hashCode);
 
     return _SystemHash.finish(hash);
@@ -178,6 +193,9 @@ class AttachesNotifierProvider
 mixin AttachesNotifierRef on AutoDisposeNotifierProviderRef<List<PostFile>> {
   /// The parameter `account` of this provider.
   Account get account;
+
+  /// The parameter `noteId` of this provider.
+  String? get noteId;
 
   /// The parameter `gallery` of this provider.
   bool get gallery;
@@ -190,6 +208,8 @@ class _AttachesNotifierProviderElement
 
   @override
   Account get account => (origin as AttachesNotifierProvider).account;
+  @override
+  String? get noteId => (origin as AttachesNotifierProvider).noteId;
   @override
   bool get gallery => (origin as AttachesNotifierProvider).gallery;
 }

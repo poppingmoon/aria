@@ -84,7 +84,7 @@ class EmojisNotifier extends _$EmojisNotifier {
   Future<void> _save(List<Emoji> emojis) async {
     await ref
         .read(cacheManagerProvider)
-        .putFile(_key, utf8.encode(jsonEncode(emojis)));
+        .putFile(_key, utf8.encode(jsonEncode(emojis)), eTag: _key);
   }
 
   Future<void> reloadEmojis({bool force = false}) async {
