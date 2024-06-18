@@ -74,7 +74,7 @@ class PlayEditPage extends HookConsumerWidget {
                                 .delete(FlashDeleteRequest(flashId: playId!)),
                           );
                           if (!context.mounted) return;
-                          await context.push('/$account/play');
+                          context.go('/$account/play');
                         }
                       },
                       child: Text(
