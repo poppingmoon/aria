@@ -168,10 +168,11 @@ class MfmKeyboard extends HookConsumerWidget {
                     .watch(recentlyUsedEmojisNotifierProvider(account))
                     .map((emoji) => emoji.replaceAll('@.', ''))
               else ...[
-                ...ref
+                ...?ref
                     .watch(searchCustomEmojisProvider(account.host, query))
-                    .map((emoji) => ':${emoji.name}:'),
-                ...ref.watch(searchUnicodeEmojisProvider(query)),
+                    .valueOrNull
+                    ?.map((emoji) => ':${emoji.name}:'),
+                ...?ref.watch(searchUnicodeEmojisProvider(query)).valueOrNull,
               ],
             ];
             if (emojis.isNotEmpty) {

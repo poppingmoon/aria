@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -6,20 +7,10 @@ import 'custom_emoji_index_provider.dart';
 
 part 'search_custom_emojis_provider.g.dart';
 
-@Riverpod(keepAlive: true)
-Set<Emoji> searchCustomEmojis(
-  SearchCustomEmojisRef ref,
-  String host,
+Set<Emoji> _searchCustomEmojis(
+  Map<String, Set<Emoji>> customEmojiIndex,
   String query,
 ) {
-  if (query.isEmpty) {
-    return {};
-  }
-  final customEmojiIndex =
-      ref.watch(customEmojiIndexProvider(host)).valueOrNull;
-  if (customEmojiIndex == null) {
-    return {};
-  }
   const maxEmojis = 50;
   final hankakuQuery = query.replaceAllMapped(
     RegExp('[Ａ-Ｚａ-ｚ０-９]'),
@@ -64,4 +55,24 @@ Set<Emoji> searchCustomEmojis(
   }
 
   return result;
+}
+
+@Riverpod(keepAlive: true)
+FutureOr<Set<Emoji>> searchCustomEmojis(
+  SearchCustomEmojisRef ref,
+  String host,
+  String query,
+) {
+  if (query.isEmpty) {
+    return {};
+  }
+  final customEmojiIndex =
+      ref.watch(customEmojiIndexProvider(host)).valueOrNull;
+  if (customEmojiIndex == null) {
+    return {};
+  }
+  return compute(
+    (args) => _searchCustomEmojis(args.$1, args.$2),
+    (customEmojiIndex, query),
+  );
 }

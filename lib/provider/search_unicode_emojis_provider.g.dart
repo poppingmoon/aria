@@ -7,7 +7,7 @@ part of 'search_unicode_emojis_provider.dart';
 // **************************************************************************
 
 String _$searchUnicodeEmojisHash() =>
-    r'955c5db14c6703cca645636d3166834adbc72d4a';
+    r'3fefff2af4f2e13236c85b11d9977219d72c035b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -35,7 +35,7 @@ class _SystemHash {
 const searchUnicodeEmojisProvider = SearchUnicodeEmojisFamily();
 
 /// See also [searchUnicodeEmojis].
-class SearchUnicodeEmojisFamily extends Family<Set<String>> {
+class SearchUnicodeEmojisFamily extends Family<AsyncValue<Set<String>>> {
   /// See also [searchUnicodeEmojis].
   const SearchUnicodeEmojisFamily();
 
@@ -73,7 +73,8 @@ class SearchUnicodeEmojisFamily extends Family<Set<String>> {
 }
 
 /// See also [searchUnicodeEmojis].
-class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
+class SearchUnicodeEmojisProvider
+    extends AutoDisposeFutureProvider<Set<String>> {
   /// See also [searchUnicodeEmojis].
   SearchUnicodeEmojisProvider(
     String query,
@@ -108,7 +109,7 @@ class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
 
   @override
   Override overrideWith(
-    Set<String> Function(SearchUnicodeEmojisRef provider) create,
+    FutureOr<Set<String>> Function(SearchUnicodeEmojisRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -125,7 +126,7 @@ class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
   }
 
   @override
-  AutoDisposeProviderElement<Set<String>> createElement() {
+  AutoDisposeFutureProviderElement<Set<String>> createElement() {
     return _SearchUnicodeEmojisProviderElement(this);
   }
 
@@ -143,13 +144,13 @@ class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
   }
 }
 
-mixin SearchUnicodeEmojisRef on AutoDisposeProviderRef<Set<String>> {
+mixin SearchUnicodeEmojisRef on AutoDisposeFutureProviderRef<Set<String>> {
   /// The parameter `query` of this provider.
   String get query;
 }
 
 class _SearchUnicodeEmojisProviderElement
-    extends AutoDisposeProviderElement<Set<String>>
+    extends AutoDisposeFutureProviderElement<Set<String>>
     with SearchUnicodeEmojisRef {
   _SearchUnicodeEmojisProviderElement(super.provider);
 

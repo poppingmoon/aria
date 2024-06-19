@@ -31,7 +31,8 @@ class ServerEmojis extends HookConsumerWidget {
       [],
     );
     final customEmojis =
-        ref.watch(searchCustomEmojisProvider(host, query.value));
+        ref.watch(searchCustomEmojisProvider(host, query.value)).valueOrNull ??
+            {};
     final style = DefaultTextStyle.of(context).style;
 
     return RefreshIndicator(

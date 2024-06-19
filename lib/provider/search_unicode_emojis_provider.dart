@@ -1,14 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constant/unicode_emoji_index.g.dart';
 
 part 'search_unicode_emojis_provider.g.dart';
 
-@riverpod
-Set<String> searchUnicodeEmojis(SearchUnicodeEmojisRef ref, String query) {
-  if (query.isEmpty) {
-    return {};
-  }
+Set<String> _searchUnicodeEmojis(String query) {
   const maxEmojis = 50;
   final result = {...?unicodeEmojiIndex[query]};
   if (result.length >= maxEmojis) {
@@ -34,4 +31,15 @@ Set<String> searchUnicodeEmojis(SearchUnicodeEmojisRef ref, String query) {
     }
   }
   return result;
+}
+
+@riverpod
+FutureOr<Set<String>> searchUnicodeEmojis(
+  SearchUnicodeEmojisRef ref,
+  String query,
+) {
+  if (query.isEmpty) {
+    return {};
+  }
+  return compute(_searchUnicodeEmojis, query);
 }

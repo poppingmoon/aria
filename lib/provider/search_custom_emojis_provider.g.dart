@@ -7,7 +7,7 @@ part of 'search_custom_emojis_provider.dart';
 // **************************************************************************
 
 String _$searchCustomEmojisHash() =>
-    r'2af3337d4793d4c18e7014c7b4699988dd831b9d';
+    r'469712ef5fad309b04f437720c8fcbda7136f4a2';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -35,7 +35,7 @@ class _SystemHash {
 const searchCustomEmojisProvider = SearchCustomEmojisFamily();
 
 /// See also [searchCustomEmojis].
-class SearchCustomEmojisFamily extends Family<Set<Emoji>> {
+class SearchCustomEmojisFamily extends Family<AsyncValue<Set<Emoji>>> {
   /// See also [searchCustomEmojis].
   const SearchCustomEmojisFamily();
 
@@ -76,7 +76,7 @@ class SearchCustomEmojisFamily extends Family<Set<Emoji>> {
 }
 
 /// See also [searchCustomEmojis].
-class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
+class SearchCustomEmojisProvider extends FutureProvider<Set<Emoji>> {
   /// See also [searchCustomEmojis].
   SearchCustomEmojisProvider(
     String host,
@@ -116,7 +116,7 @@ class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
 
   @override
   Override overrideWith(
-    Set<Emoji> Function(SearchCustomEmojisRef provider) create,
+    FutureOr<Set<Emoji>> Function(SearchCustomEmojisRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -134,7 +134,7 @@ class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
   }
 
   @override
-  ProviderElement<Set<Emoji>> createElement() {
+  FutureProviderElement<Set<Emoji>> createElement() {
     return _SearchCustomEmojisProviderElement(this);
   }
 
@@ -155,7 +155,7 @@ class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
   }
 }
 
-mixin SearchCustomEmojisRef on ProviderRef<Set<Emoji>> {
+mixin SearchCustomEmojisRef on FutureProviderRef<Set<Emoji>> {
   /// The parameter `host` of this provider.
   String get host;
 
@@ -163,8 +163,8 @@ mixin SearchCustomEmojisRef on ProviderRef<Set<Emoji>> {
   String get query;
 }
 
-class _SearchCustomEmojisProviderElement extends ProviderElement<Set<Emoji>>
-    with SearchCustomEmojisRef {
+class _SearchCustomEmojisProviderElement
+    extends FutureProviderElement<Set<Emoji>> with SearchCustomEmojisRef {
   _SearchCustomEmojisProviderElement(super.provider);
 
   @override

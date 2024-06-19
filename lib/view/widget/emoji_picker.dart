@@ -136,9 +136,12 @@ class EmojiPicker extends HookConsumerWidget {
     final emojiPickerAutofocus = generalSettings.emojiPickerAutofocus;
     final emojiPickerScale = generalSettings.emojiPickerScale;
     final fontScaleFactor = 2.0 * emojiPickerScale;
-    final customEmojis =
-        ref.watch(searchCustomEmojisProvider(account.host, query.value));
-    final unicodeEmojis = ref.watch(searchUnicodeEmojisProvider(query.value));
+    final customEmojis = ref
+            .watch(searchCustomEmojisProvider(account.host, query.value))
+            .valueOrNull ??
+        {};
+    final unicodeEmojis =
+        ref.watch(searchUnicodeEmojisProvider(query.value)).valueOrNull ?? {};
     final pinnedEmojis =
         ref.watch(pinnedEmojisNotifierProvider(account, reaction: reaction));
     final recentlyUsedEmojis =
