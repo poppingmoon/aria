@@ -39,7 +39,7 @@ class DrivePage extends HookConsumerWidget {
   final bool selectFolder;
   final FileType type;
 
-  static const itemMaxCrossAxisExtent = 400.0;
+  static const itemMaxCrossAxisExtent = 300.0;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
