@@ -114,12 +114,16 @@ class TimelineListView extends HookConsumerWidget {
                     )
                     .save(note.createdAt);
               }
-              Future<void>.delayed(
-                const Duration(milliseconds: 100),
-                controller.scrollToTop,
-              );
+              Future<void>.delayed(const Duration(milliseconds: 100), () async {
+                await controller.scrollToTop();
+                await Future<void>.delayed(
+                  const Duration(milliseconds: 100),
+                  controller.scrollToTop,
+                );
+              });
             } else {
               keepAnimation.value = false;
+              hasUnread.value = true;
             }
           } else {
             hasUnread.value = true;
@@ -243,18 +247,7 @@ class TimelineListView extends HookConsumerWidget {
                         ),
                       );
                     },
-                    separatorBuilder: (context, index) =>
-                        lastViewedAt?.isBetween(
-                                  nextNotes.valueOrNull?.items
-                                      .elementAtOrNull(index + 1)
-                                      ?.createdAt,
-                                  nextNotes.valueOrNull?.items
-                                      .elementAtOrNull(index)
-                                      ?.createdAt,
-                                ) ??
-                                false
-                            ? _NewNotesDivider(key: lastViewedAtKey)
-                            : const Divider(height: 1.0),
+                    separatorBuilder: (_, __) => const Divider(height: 1.0),
                     itemCount: nextNotes.valueOrNull?.items.length ?? 0,
                   ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) &&

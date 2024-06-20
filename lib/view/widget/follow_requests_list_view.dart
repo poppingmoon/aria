@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -32,15 +33,20 @@ class FollowRequestsListView extends HookConsumerWidget {
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final controller = useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
-    final hasNewRequest = useState(false);
+    final hasUnread = useState(false);
+    final keepAnimation = useState(true);
     final isAtBottom = useState(false);
     ref.listen(incomingMessageProvider(account), (_, __) {});
     useEffect(
       () {
         notifier.connect();
         controller.addListener(() {
-          if (controller.position.extentBefore == 0) {
-            hasNewRequest.value = false;
+          if (controller.position.userScrollDirection ==
+              ScrollDirection.reverse) {
+            keepAnimation.value = false;
+          } else if (controller.position.extentBefore == 0) {
+            keepAnimation.value = true;
+            hasUnread.value = false;
           }
         });
         return;
@@ -50,11 +56,21 @@ class FollowRequestsListView extends HookConsumerWidget {
     ref.listen(mainStreamNotifierProvider(account), (_, next) async {
       if (next case AsyncData(value: ReceiveFollowRequest(:final user))) {
         nextRequests.value = [...nextRequests.value, user];
-        if (controller.position.extentBefore == 0) {
-          await Future<void>.delayed(const Duration(milliseconds: 100));
-          controller.scrollToTop();
+        if (keepAnimation.value) {
+          if (controller.offset < 400.0) {
+            Future<void>.delayed(const Duration(milliseconds: 100), () async {
+              await controller.scrollToTop();
+              await Future<void>.delayed(
+                const Duration(milliseconds: 100),
+                controller.scrollToTop,
+              );
+            });
+          } else {
+            keepAnimation.value = false;
+            hasUnread.value = true;
+          }
         } else {
-          hasNewRequest.value = true;
+          hasUnread.value = true;
         }
       }
     });
@@ -172,11 +188,14 @@ class FollowRequestsListView extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (hasNewRequest.value)
+            if (hasUnread.value)
               Positioned(
                 top: 8.0,
                 child: ElevatedButton(
-                  onPressed: () => controller.scrollToTop(),
+                  onPressed: () {
+                    controller.scrollToTop();
+                    keepAnimation.value = true;
+                  },
                   child: Text(t.aria.newFollowRequestReceived),
                 ),
               ),

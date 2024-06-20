@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart' hide Notification;
+import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -41,7 +42,8 @@ class NotificationsListView extends HookConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final controller = this.controller ?? useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
-    final hasNewNotification = useState(false);
+    final hasUnread = useState(false);
+    final keepAnimation = useState(true);
     final isAtBottom = useState(false);
     ref.listen(incomingMessageProvider(account), (_, __) {});
     useEffect(
@@ -52,8 +54,12 @@ class NotificationsListView extends HookConsumerWidget {
             .save(DateTime.now());
         ref.read(iNotifierProvider(account).notifier).readNotifications();
         controller.addListener(() {
-          if (controller.position.extentBefore == 0) {
-            hasNewNotification.value = false;
+          if (controller.position.userScrollDirection ==
+              ScrollDirection.reverse) {
+            keepAnimation.value = false;
+          } else if (controller.position.extentBefore == 0) {
+            keepAnimation.value = true;
+            hasUnread.value = false;
             if (i != null && i.hasUnreadNotification) {
               ref.read(iNotifierProvider(account).notifier).readNotifications();
             }
@@ -79,11 +85,21 @@ class NotificationsListView extends HookConsumerWidget {
     ref.listen(mainStreamNotifierProvider(account), (_, next) async {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
-        if (controller.position.extentBefore == 0) {
-          await Future<void>.delayed(const Duration(milliseconds: 100));
-          controller.scrollToTop();
+        if (keepAnimation.value) {
+          if (controller.offset < 400.0) {
+            Future<void>.delayed(const Duration(milliseconds: 100), () async {
+              await controller.scrollToTop();
+              await Future<void>.delayed(
+                const Duration(milliseconds: 100),
+                controller.scrollToTop,
+              );
+            });
+          } else {
+            keepAnimation.value = false;
+            hasUnread.value = true;
+          }
         } else {
-          hasNewNotification.value = true;
+          hasUnread.value = true;
         }
       }
     });
@@ -198,11 +214,14 @@ class NotificationsListView extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (hasNewNotification.value)
+            if (hasUnread.value)
               Positioned(
                 top: 8.0,
                 child: ElevatedButton(
-                  onPressed: () => controller.scrollToTop(),
+                  onPressed: () {
+                    controller.scrollToTop();
+                    keepAnimation.value = true;
+                  },
                   child: Text(t.aria.newNotificationReceived),
                 ),
               ),
