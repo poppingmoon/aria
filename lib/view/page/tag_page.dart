@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/api/tag_notes_notifier_provider.dart';
 import '../widget/note_widget.dart';
 import '../widget/paginated_list_view.dart';
@@ -34,6 +36,18 @@ class TagPage extends ConsumerWidget {
             .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noNotes,
       ),
+      floatingActionButton: account.isGuest
+          ? null
+          : FloatingActionButton.extended(
+              onPressed: () {
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setText('#$tag ');
+                context.push('/$account/post');
+              },
+              label: Text(t.misskey.postToHashtag),
+              icon: const Icon(Icons.edit),
+            ),
     );
   }
 }
