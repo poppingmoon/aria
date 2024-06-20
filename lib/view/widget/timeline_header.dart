@@ -35,19 +35,30 @@ class TimelineHeader extends HookConsumerWidget {
           .select((settings) => settings.alwaysShowTabHeader),
     );
     final isMenuExpanded = useState(false);
-    final offset = useState<double?>(null);
     final sizeFactor = useState(1.0);
     useEffect(
       () {
+        double? offset;
+        bool isScrollingUp = false;
+        bool scrollDirectionChanged = false;
+
         void callback() {
-          final next = scrollController.offset;
-          if (offset.value case final offset?) {
-            final d = next - offset;
-            if (!isMenuExpanded.value) {
-              sizeFactor.value = clamp01(sizeFactor.value - d * 0.01);
+          final nextOffset = scrollController.position.extentBefore;
+          if (offset case final offset?) {
+            final diff = nextOffset - offset;
+            if (diff != 0) {
+              final isNegative = diff.isNegative;
+              final changed = isScrollingUp ^ isNegative;
+              if (!(scrollDirectionChanged || changed)) {
+                if (!isMenuExpanded.value) {
+                  sizeFactor.value = clamp01(sizeFactor.value - diff * 0.01);
+                }
+              }
+              isScrollingUp = isNegative;
+              scrollDirectionChanged = changed;
             }
           }
-          offset.value = next;
+          offset = nextOffset;
         }
 
         sizeFactor.value = 1.0;
