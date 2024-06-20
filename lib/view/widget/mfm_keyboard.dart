@@ -474,6 +474,7 @@ class MfmKeyboard extends HookConsumerWidget {
 
     return Container(
       width: double.maxFinite,
+      height: 40.0,
       color: Theme.of(context).colorScheme.primaryContainer,
       child: TextButtonTheme(
         data: TextButtonThemeData(
@@ -483,16 +484,13 @@ class MfmKeyboard extends HookConsumerWidget {
             foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
         ),
-        child: SingleChildScrollView(
+        child: ListView(
           scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: _buildButtons(
-              ref,
-              controller,
-              tagType.value,
-              tagIndex.value,
-            ),
+          children: _buildButtons(
+            ref,
+            controller,
+            tagType.value,
+            tagIndex.value,
           ),
         ),
       ),
