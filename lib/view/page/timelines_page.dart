@@ -381,7 +381,7 @@ class TimelinesPage extends HookConsumerWidget {
                         ),
                       ],
                     )
-                  : null,
+                  : const SizedBox.shrink(),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
             ),
