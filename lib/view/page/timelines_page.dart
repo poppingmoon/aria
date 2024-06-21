@@ -226,6 +226,7 @@ class TimelinesPage extends HookConsumerWidget {
                                       showPostButton: true,
                                       showKeyboard: true,
                                       maxLines: 6,
+                                      thumbnailSize: 100.0,
                                     ),
                                   ),
                                 ),

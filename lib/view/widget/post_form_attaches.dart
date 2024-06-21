@@ -29,11 +29,13 @@ class PostFormAttaches extends ConsumerWidget {
     required this.account,
     this.noteId,
     this.gallery = false,
+    this.maxCrossAxisExtent = 200.0,
   });
 
   final Account account;
   final String? noteId;
   final bool gallery;
+  final double maxCrossAxisExtent;
 
   Future<void> _editFile(WidgetRef ref, int index) async {
     final file = ref.read(
@@ -145,7 +147,7 @@ class PostFormAttaches extends ConsumerWidget {
 
     return ReorderableGridView.extent(
       shrinkWrap: true,
-      maxCrossAxisExtent: 200,
+      maxCrossAxisExtent: maxCrossAxisExtent,
       physics: const NeverScrollableScrollPhysics(),
       onReorder: (oldIndex, newIndex) => ref
           .read(

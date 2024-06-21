@@ -953,6 +953,7 @@ class PostForm extends HookConsumerWidget {
               child: PostFormAttaches(
                 account: account.value,
                 noteId: noteId,
+                maxCrossAxisExtent: thumbnailSize,
               ),
             ),
           ],
