@@ -463,7 +463,7 @@ class MfmKeyboard extends HookConsumerWidget {
         });
         return;
       },
-      [],
+      [account, controller],
     );
 
     return Container(

@@ -67,7 +67,7 @@ class TimelinesPage extends HookConsumerWidget {
     final showPostForm = useState(false);
     useEffect(
       () {
-        controller.addListener(() {
+        void callback() {
           final previousIndex = tabIndex.value;
           final nextIndex = controller.index;
           if (previousIndex == nextIndex) {
@@ -110,10 +110,12 @@ class TimelinesPage extends HookConsumerWidget {
             }
           }
           tabIndex.value = nextIndex;
-        });
-        return;
+        }
+
+        controller.addListener(callback);
+        return () => controller.removeListener(callback);
       },
-      [],
+      [tabs],
     );
     final isLargeScreen = MediaQuery.sizeOf(context).width > 1200.0;
     final scaffoldKey = useMemoized(() => GlobalKey<ScaffoldState>());
