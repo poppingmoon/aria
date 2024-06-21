@@ -504,7 +504,8 @@ class NoteWidget extends HookConsumerWidget {
                                   ),
                                 ),
                             ],
-                            if (appearNote case Note(:final channel?))
+                            if (appearNote case Note(:final channel?)) ...[
+                              const SizedBox(height: 4.0),
                               InkWell(
                                 onTap: () => context
                                     .push('/$account/channels/${channel.id}'),
@@ -531,6 +532,7 @@ class NoteWidget extends HookConsumerWidget {
                                   ],
                                 ),
                               ),
+                            ],
                             const SizedBox(height: 4.0),
                             if (appearNote.reactionAcceptance !=
                                     ReactionAcceptance.likeOnly &&
