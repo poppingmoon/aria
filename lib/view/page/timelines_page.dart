@@ -179,21 +179,59 @@ class TimelinesPage extends HookConsumerWidget {
                           ],
                         ),
                       )
-                    : TabBarView(
-                        controller: controller,
-                        physics: enableHorizontalSwipe
-                            ? null
-                            : const NeverScrollableScrollPhysics(),
-                        children: List.generate(
-                          numTabs,
-                          (index) => TimelineWidget(
-                            tabIndex: index,
-                            focusPostForm: () {
-                              showPostForm.value = true;
-                              postFormFocusNode.requestFocus();
-                            },
+                    : Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          TabBarView(
+                            controller: controller,
+                            physics: enableHorizontalSwipe
+                                ? null
+                                : const NeverScrollableScrollPhysics(),
+                            children: List.generate(
+                              numTabs,
+                              (index) => TimelineWidget(
+                                tabIndex: index,
+                                focusPostForm: () {
+                                  showPostForm.value = true;
+                                  postFormFocusNode.requestFocus();
+                                },
+                              ),
+                            ),
                           ),
-                        ),
+                          if (tabSettings != null && showPostForm.value)
+                            Material(
+                              clipBehavior: Clip.hardEdge,
+                              color: colors.panel.withOpacity(0.5),
+                              child: BackdropFilter(
+                                filter: ImageFilter.blur(
+                                  sigmaX: 16.0,
+                                  sigmaY: 16.0,
+                                ),
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(
+                                        color: colors.divider.withOpacity(0.1),
+                                        width: 2.0,
+                                      ),
+                                    ),
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: PostForm(
+                                      account: tabSettings.account,
+                                      focusNode: postFormFocusNode,
+                                      onHide: () => showPostForm.value = false,
+                                      onExpand: (account) =>
+                                          context.push('/$account/post'),
+                                      showPostButton: true,
+                                      showKeyboard: true,
+                                      maxLines: 6,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
               ),
               drawer: TimelineDrawer(controller: controller),
@@ -206,24 +244,8 @@ class TimelinesPage extends HookConsumerWidget {
                       child: TimelineTabBar(controller: controller),
                     )
                   : null,
-              floatingActionButton: tabSettings != null && showPostForm.value
-                  ? Material(
-                      clipBehavior: Clip.hardEdge,
-                      color: colors.panel.withOpacity(0.5),
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 16.0, sigmaY: 16.0),
-                        child: PostForm(
-                          account: tabSettings.account,
-                          focusNode: postFormFocusNode,
-                          onHide: () => showPostForm.value = false,
-                          onExpand: (account) => context.push('/$account/post'),
-                          showPostButton: true,
-                          showKeyboard: true,
-                          maxLines: 6,
-                        ),
-                      ),
-                    )
-                  : Row(
+              floatingActionButton: tabSettings == null || !showPostForm.value
+                  ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         if (!isLargeScreen)
@@ -355,10 +377,10 @@ class TimelinesPage extends HookConsumerWidget {
                           ),
                         ),
                       ],
-                    ),
-              floatingActionButtonLocation: showPostForm.value
-                  ? FloatingActionButtonLocation.centerDocked
-                  : FloatingActionButtonLocation.centerFloat,
+                    )
+                  : null,
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
             ),
           ),
         ],
