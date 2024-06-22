@@ -1,6 +1,6 @@
-import 'dart:typed_data';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -208,23 +208,27 @@ class PostFormAttaches extends ConsumerWidget {
                             ),
                           ),
                         if (files[index].type?.startsWith('video/') ?? false)
-                          ListTile(
-                            leading: const Icon(Icons.play_arrow),
-                            title: Text(t.aria.playVideo),
-                            onTap: () => showDialog<void>(
-                              context: context,
-                              builder: (context) => VideoDialog(
-                                url: switch (files[index]) {
-                                  DrivePostFile(:final file) => file.url,
-                                  _ => null,
-                                },
-                                file: switch (files[index]) {
-                                  LocalPostFile(:final file) => file,
-                                  _ => null,
-                                },
+                          if (defaultTargetPlatform
+                              case TargetPlatform.android ||
+                                  TargetPlatform.iOS ||
+                                  TargetPlatform.macOS)
+                            ListTile(
+                              leading: const Icon(Icons.play_arrow),
+                              title: Text(t.aria.playVideo),
+                              onTap: () => showDialog<void>(
+                                context: context,
+                                builder: (context) => VideoDialog(
+                                  url: switch (files[index]) {
+                                    DrivePostFile(:final file) => file.url,
+                                    _ => null,
+                                  },
+                                  file: switch (files[index]) {
+                                    LocalPostFile(:final file) => file,
+                                    _ => null,
+                                  },
+                                ),
                               ),
                             ),
-                          ),
                         if (files[index].type?.startsWith('audio/') ?? false)
                           if (files[index] case DrivePostFile(:final file))
                             ListTile(
