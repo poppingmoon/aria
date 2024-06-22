@@ -68,23 +68,22 @@ class TimelinesPage extends HookConsumerWidget {
     useEffect(
       () {
         void callback() {
+          if (tabs.isEmpty) return;
           final previousIndex = tabIndex.value;
           final nextIndex = controller.index;
-          if (previousIndex == nextIndex) {
-            return;
-          }
-          final previousAccount = tabSettings?.account;
+          if (previousIndex == nextIndex) return;
+          final previousAccount = tabs[previousIndex].account;
           final nextTab = tabs[nextIndex];
           final nextAccount = nextTab.account;
           if (previousAccount != nextAccount) {
-            if (previousAccount?.host != nextAccount.host) {
+            if (previousAccount.host != nextAccount.host) {
               ref
                   .read(
                     emojisNotifierProvider(nextAccount.host).notifier,
                   )
                   .reloadEmojis();
             }
-            if (previousAccount != null && !previousAccount.isGuest) {
+            if (!previousAccount.isGuest) {
               ref
                   .read(mainStreamNotifierProvider(previousAccount).notifier)
                   .disconnect();
@@ -112,6 +111,15 @@ class TimelinesPage extends HookConsumerWidget {
           tabIndex.value = nextIndex;
         }
 
+        if (tabSettings != null) {
+          final account = tabSettings.account;
+          ref
+              .read(emojisNotifierProvider(account.host).notifier)
+              .reloadEmojis();
+          if (!account.isGuest) {
+            ref.read(mainStreamNotifierProvider(account).notifier).connect();
+          }
+        }
         controller.addListener(callback);
         return () => controller.removeListener(callback);
       },

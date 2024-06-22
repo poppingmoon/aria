@@ -16,6 +16,7 @@ import '../../provider/file_system_provider.dart';
 import '../../util/compress_image.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/randomize_filename.dart';
+import '../dialog/message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 
 class DriveCreateSheet extends HookConsumerWidget {
@@ -62,6 +63,29 @@ class DriveCreateSheet extends HookConsumerWidget {
           }
         }),
       ),
+    );
+    if (!ref.context.mounted) return;
+    ref.context.pop();
+  }
+
+  Future<void> _uploadFromUrl(WidgetRef ref) async {
+    final result = await showTextFieldDialog(
+      ref.context,
+      title: Text(t.misskey.uploadFromUrl),
+    );
+    if (!ref.context.mounted) return;
+    if (result == null) return;
+    final url = Uri.tryParse(result.trim());
+    if (url == null) {
+      await showMessageDialog(ref.context, t.misskey.invalidValue);
+      return;
+    }
+    await futureWithDialog(
+      ref.context,
+      ref
+          .read(driveFilesNotifierProvider(account, folder?.id).notifier)
+          .uploadFromUrl(url.toString()),
+      message: t.misskey.uploadFromUrlRequested,
     );
     if (!ref.context.mounted) return;
     ref.context.pop();
@@ -123,6 +147,11 @@ class DriveCreateSheet extends HookConsumerWidget {
             keepOriginalUploading.value,
             keepOriginalFilename.value,
           ),
+        ),
+        ListTile(
+          leading: const Icon(Icons.link),
+          title: Text(t.misskey.fromUrl),
+          onTap: () => _uploadFromUrl(ref),
         ),
         ListTile(
           leading: const Icon(Icons.folder),

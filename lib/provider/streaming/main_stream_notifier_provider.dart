@@ -57,6 +57,8 @@ class MainStreamNotifier extends _$MainStreamNotifier {
             body!['announcement'] as Map<String, dynamic>,
           );
           yield AnnouncementCreated(announcement);
+        case 'urlUploadFinished':
+          yield UrlUploadFinished.fromJson(body!);
       }
     }
   }
