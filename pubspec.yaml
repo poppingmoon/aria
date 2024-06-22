@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: 'none'
-version: 0.10.0-beta.2+23
+version: 0.10.0-beta.3+24
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -36,7 +36,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.2
-  flutter_rust_bridge: ^2.0.0-dev.40
+  flutter_rust_bridge: ^2.0.0
   flutter_secure_storage: ^9.2.2
   flutter_svg: ^2.0.10+1
   fluttertoast: ^8.2.6
