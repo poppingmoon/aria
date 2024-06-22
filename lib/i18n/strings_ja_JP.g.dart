@@ -105,6 +105,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get lineHeight => '行間';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get margin => '余白';
+	@override String get media => 'メディア';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
 	@override String get moved => '移動しました';
 	@override String get muted => 'ミュート中';

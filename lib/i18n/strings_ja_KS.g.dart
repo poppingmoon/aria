@@ -105,6 +105,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get lineHeight => '行間';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get margin => '余白';
+	@override String get media => 'メディア';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションがあるで';
 	@override String get moved => '移したで';
 	@override String get muted => 'ミュート中';

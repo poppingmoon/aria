@@ -28,14 +28,47 @@ class FilePickerSheet extends ConsumerWidget {
     return ListView(
       shrinkWrap: true,
       children: [
+        if (defaultTargetPlatform == TargetPlatform.iOS && type == null)
+          ListTile(
+            leading: const Icon(Icons.upload_file),
+            title: Text('${t.aria.fromDevice} (${t.aria.media})'),
+            onTap: () async {
+              final result = await FilePicker.platform.pickFiles(
+                type: FileType.media,
+                allowMultiple: allowMultiple,
+              );
+              if (!context.mounted) return;
+              if (result case FilePickerResult(:final files)) {
+                if (allowMultiple) {
+                  context.pop(
+                    files
+                        .map(
+                          (file) => LocalPostFile.fromFile(
+                            ref.read(fileSystemProvider).file(file.path),
+                          ),
+                        )
+                        .toList(),
+                  );
+                } else if (files.length == 1) {
+                  context.pop(
+                    LocalPostFile.fromFile(
+                      ref.read(fileSystemProvider).file(files.single.path),
+                    ),
+                  );
+                }
+              }
+            },
+          ),
         ListTile(
           leading: const Icon(Icons.upload),
-          title: Text(t.aria.fromDevice),
+          title: Text(
+            defaultTargetPlatform == TargetPlatform.iOS && type == null
+                ? '${t.aria.fromDevice} (${t.misskey.file})'
+                : t.aria.fromDevice,
+          ),
           onTap: () async {
             final result = await FilePicker.platform.pickFiles(
-              type: defaultTargetPlatform == TargetPlatform.iOS && type == null
-                  ? FileType.media
-                  : type ?? FileType.any,
+              type: type ?? FileType.any,
               allowMultiple: allowMultiple,
             );
             if (!context.mounted) return;

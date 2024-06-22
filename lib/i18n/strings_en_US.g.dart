@@ -114,6 +114,7 @@ class _StringsAriaEnUs {
 	String get lineHeight => 'Line height';
 	String get loginWithAccessToken => 'Sign in with an access token';
 	String get margin => 'Margin';
+	String get media => 'Media';
 	String get mentionToRemoteWarning => 'This note contains mentions to remote users';
 	String get moved => 'Moved';
 	String get muted => 'Muted';
