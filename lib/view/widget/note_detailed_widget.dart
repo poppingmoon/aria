@@ -465,7 +465,8 @@ class NoteDetailedWidget extends HookConsumerWidget {
                           ),
                         ),
                     ],
-                    if (appearNote case Note(:final channel?))
+                    if (appearNote case Note(:final channel?)) ...[
+                      const SizedBox(height: 4.0),
                       InkWell(
                         onTap: () =>
                             context.push('/$account/channels/${channel.id}'),
@@ -492,6 +493,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                           ],
                         ),
                       ),
+                    ],
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: DefaultTextStyle.merge(
