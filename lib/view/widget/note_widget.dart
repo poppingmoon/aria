@@ -203,11 +203,24 @@ class NoteWidget extends HookConsumerWidget {
           isRenote &&
           (isMyRenote || isMyNote || appearNote.myReaction != null),
     );
+    final backgroundColor = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => switch (note.visibility) {
+          NoteVisibility.public => settings.publicNoteBackgroundColor,
+          NoteVisibility.home => settings.homeNoteBackgroundColor,
+          NoteVisibility.followers => settings.followersNoteBackgroundColor,
+          NoteVisibility.specified => settings.specifiedNoteBackgroundColor,
+          null => null,
+        },
+      ),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
 
-    return ClipRect(
+    return Material(
+      color: backgroundColor,
+      clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: getNoteAction(
           ref,

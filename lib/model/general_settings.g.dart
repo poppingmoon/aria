@@ -59,6 +59,16 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       noteHorizontalPadding:
           (json['noteHorizontalPadding'] as num?)?.toDouble() ??
               defaultNoteHorizontalPadding,
+      publicNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
+          json['publicNoteBackgroundColor'], const ColorConverter().fromJson),
+      homeNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
+          json['homeNoteBackgroundColor'], const ColorConverter().fromJson),
+      followersNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
+          json['followersNoteBackgroundColor'],
+          const ColorConverter().fromJson),
+      specifiedNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
+          json['specifiedNoteBackgroundColor'],
+          const ColorConverter().fromJson),
       emojiPickerUseDialog: json['emojiPickerUseDialog'] as bool? ?? false,
       emojiPickerScale: (json['emojiPickerScale'] as num?)?.toDouble() ?? 1.0,
       emojiPickerAutofocus: json['emojiPickerAutofocus'] as bool? ?? true,
@@ -148,6 +158,22 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['noteFooterScale'] = instance.noteFooterScale;
   val['noteVerticalPadding'] = instance.noteVerticalPadding;
   val['noteHorizontalPadding'] = instance.noteHorizontalPadding;
+  writeNotNull(
+      'publicNoteBackgroundColor',
+      _$JsonConverterToJson<int, Color>(
+          instance.publicNoteBackgroundColor, const ColorConverter().toJson));
+  writeNotNull(
+      'homeNoteBackgroundColor',
+      _$JsonConverterToJson<int, Color>(
+          instance.homeNoteBackgroundColor, const ColorConverter().toJson));
+  writeNotNull(
+      'followersNoteBackgroundColor',
+      _$JsonConverterToJson<int, Color>(instance.followersNoteBackgroundColor,
+          const ColorConverter().toJson));
+  writeNotNull(
+      'specifiedNoteBackgroundColor',
+      _$JsonConverterToJson<int, Color>(instance.specifiedNoteBackgroundColor,
+          const ColorConverter().toJson));
   val['emojiPickerUseDialog'] = instance.emojiPickerUseDialog;
   val['emojiPickerScale'] = instance.emojiPickerScale;
   val['emojiPickerAutofocus'] = instance.emojiPickerAutofocus;
@@ -233,6 +259,12 @@ const _$EmojiStyleEnumMap = {
   EmojiStyle.twemoji: 'twemoji',
 };
 
+Value? _$JsonConverterFromJson<Json, Value>(
+  Object? json,
+  Value? Function(Json json) fromJson,
+) =>
+    json == null ? null : fromJson(json as Json);
+
 const _$NoteActionTypeEnumMap = {
   NoteActionType.none: 'none',
   NoteActionType.expand: 'expand',
@@ -245,3 +277,9 @@ const _$ThemeModeEnumMap = {
   ThemeMode.light: 'light',
   ThemeMode.dark: 'dark',
 };
+
+Json? _$JsonConverterToJson<Json, Value>(
+  Value? value,
+  Json? Function(Value value) toJson,
+) =>
+    value == null ? null : toJson(value);

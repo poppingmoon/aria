@@ -215,6 +215,39 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setPublicNoteBackgroundColor(
+    Color? publicNoteBackgroundColor,
+  ) async {
+    state =
+        state.copyWith(publicNoteBackgroundColor: publicNoteBackgroundColor);
+    await _save();
+  }
+
+  Future<void> setHomeNoteBackgroundColor(
+    Color? homeNoteBackgroundColor,
+  ) async {
+    state = state.copyWith(homeNoteBackgroundColor: homeNoteBackgroundColor);
+    await _save();
+  }
+
+  Future<void> setFollowersNoteBackgroundColor(
+    Color? followersNoteBackgroundColor,
+  ) async {
+    state = state.copyWith(
+      followersNoteBackgroundColor: followersNoteBackgroundColor,
+    );
+    await _save();
+  }
+
+  Future<void> setSpecifiedNoteBackgroundColor(
+    Color? specifiedNoteBackgroundColor,
+  ) async {
+    state = state.copyWith(
+      specifiedNoteBackgroundColor: specifiedNoteBackgroundColor,
+    );
+    await _save();
+  }
+
   Future<void> setEmojiPickerUseDialog(bool emojiPickerUseDialog) async {
     state = state.copyWith(emojiPickerUseDialog: emojiPickerUseDialog);
     await _save();

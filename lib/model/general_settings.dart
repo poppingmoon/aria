@@ -67,6 +67,10 @@ class GeneralSettings with _$GeneralSettings {
     @Default(1.0) double noteFooterScale,
     @Default(defaultNoteVerticalPadding) double noteVerticalPadding,
     @Default(defaultNoteHorizontalPadding) double noteHorizontalPadding,
+    @ColorConverter() Color? publicNoteBackgroundColor,
+    @ColorConverter() Color? homeNoteBackgroundColor,
+    @ColorConverter() Color? followersNoteBackgroundColor,
+    @ColorConverter() Color? specifiedNoteBackgroundColor,
 
     // Emoji picker
     @Default(false) bool emojiPickerUseDialog,
@@ -132,4 +136,18 @@ enum NoteActionType {
   expand,
   menu,
   reaction,
+}
+
+class ColorConverter extends JsonConverter<Color, int> {
+  const ColorConverter();
+
+  @override
+  Color fromJson(int json) {
+    return Color(json);
+  }
+
+  @override
+  int toJson(Color color) {
+    return color.value;
+  }
 }
