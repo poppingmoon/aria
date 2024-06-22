@@ -102,6 +102,22 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
+  Future<void> uploadFromUrl(
+    String url, {
+    String? comment,
+    bool? isSensitive,
+  }) async {
+    await _misskey.drive.files.uploadFromUrl(
+      DriveFilesUploadFromUrlRequest(
+        url: url,
+        folderId: folderId,
+        comment: comment,
+        isSensitive: isSensitive,
+        force: true,
+      ),
+    );
+  }
+
   Future<void> delete(String fileId) async {
     await _misskey.drive.files.delete(DriveFilesDeleteRequest(fileId: fileId));
     final value = state.valueOrNull ?? const PaginationState();

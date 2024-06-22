@@ -1,4 +1,8 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+
+part 'main_event.freezed.dart';
+part 'main_event.g.dart';
 
 sealed class MainEvent {}
 
@@ -36,4 +40,15 @@ class AnnouncementCreated implements MainEvent {
   const AnnouncementCreated(this.announcement);
 
   final AnnouncementsResponse announcement;
+}
+
+@freezed
+class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
+  const factory UrlUploadFinished({
+    String? marker,
+    required DriveFile file,
+  }) = _UrlUploadFinished;
+
+  factory UrlUploadFinished.fromJson(Map<String, Object?> json) =>
+      _$UrlUploadFinishedFromJson(json);
 }
