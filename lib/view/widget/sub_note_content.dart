@@ -133,6 +133,15 @@ class SubNoteContent extends HookConsumerWidget {
         if (!isCollapsed.value) ...[
           if (note.files.isNotEmpty) ...[
             TextButton.icon(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                  top: 4.0,
+                  right: 8.0,
+                  bottom: 4.0,
+                ),
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
               onPressed: () => isFilesCollapsed.value = !isFilesCollapsed.value,
               icon: Icon(
                 isFilesCollapsed.value
@@ -150,6 +159,15 @@ class SubNoteContent extends HookConsumerWidget {
           ],
           if (note case Note(:final poll?)) ...[
             TextButton.icon(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                  top: 4.0,
+                  right: 8.0,
+                  bottom: 4.0,
+                ),
+                minimumSize: Size.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
               onPressed: () => isPollCollapsed.value = !isPollCollapsed.value,
               icon: Icon(
                 isPollCollapsed.value
