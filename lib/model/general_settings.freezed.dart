@@ -55,7 +55,15 @@ mixin _$GeneralSettings {
   bool get limitWidthOfReaction => throw _privateConstructorUsedError;
   double get noteFooterScale => throw _privateConstructorUsedError;
   double get noteVerticalPadding => throw _privateConstructorUsedError;
-  double get noteHorizontalPadding =>
+  double get noteHorizontalPadding => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color? get publicNoteBackgroundColor => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color? get homeNoteBackgroundColor => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color? get followersNoteBackgroundColor => throw _privateConstructorUsedError;
+  @ColorConverter()
+  Color? get specifiedNoteBackgroundColor =>
       throw _privateConstructorUsedError; // Emoji picker
   bool get emojiPickerUseDialog => throw _privateConstructorUsedError;
   double get emojiPickerScale => throw _privateConstructorUsedError;
@@ -135,6 +143,10 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       double noteFooterScale,
       double noteVerticalPadding,
       double noteHorizontalPadding,
+      @ColorConverter() Color? publicNoteBackgroundColor,
+      @ColorConverter() Color? homeNoteBackgroundColor,
+      @ColorConverter() Color? followersNoteBackgroundColor,
+      @ColorConverter() Color? specifiedNoteBackgroundColor,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
@@ -211,6 +223,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? noteFooterScale = null,
     Object? noteVerticalPadding = null,
     Object? noteHorizontalPadding = null,
+    Object? publicNoteBackgroundColor = freezed,
+    Object? homeNoteBackgroundColor = freezed,
+    Object? followersNoteBackgroundColor = freezed,
+    Object? specifiedNoteBackgroundColor = freezed,
     Object? emojiPickerUseDialog = null,
     Object? emojiPickerScale = null,
     Object? emojiPickerAutofocus = null,
@@ -370,6 +386,22 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.noteHorizontalPadding
           : noteHorizontalPadding // ignore: cast_nullable_to_non_nullable
               as double,
+      publicNoteBackgroundColor: freezed == publicNoteBackgroundColor
+          ? _value.publicNoteBackgroundColor
+          : publicNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      homeNoteBackgroundColor: freezed == homeNoteBackgroundColor
+          ? _value.homeNoteBackgroundColor
+          : homeNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      followersNoteBackgroundColor: freezed == followersNoteBackgroundColor
+          ? _value.followersNoteBackgroundColor
+          : followersNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      specifiedNoteBackgroundColor: freezed == specifiedNoteBackgroundColor
+          ? _value.specifiedNoteBackgroundColor
+          : specifiedNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       emojiPickerUseDialog: null == emojiPickerUseDialog
           ? _value.emojiPickerUseDialog
           : emojiPickerUseDialog // ignore: cast_nullable_to_non_nullable
@@ -532,6 +564,10 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       double noteFooterScale,
       double noteVerticalPadding,
       double noteHorizontalPadding,
+      @ColorConverter() Color? publicNoteBackgroundColor,
+      @ColorConverter() Color? homeNoteBackgroundColor,
+      @ColorConverter() Color? followersNoteBackgroundColor,
+      @ColorConverter() Color? specifiedNoteBackgroundColor,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
@@ -606,6 +642,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? noteFooterScale = null,
     Object? noteVerticalPadding = null,
     Object? noteHorizontalPadding = null,
+    Object? publicNoteBackgroundColor = freezed,
+    Object? homeNoteBackgroundColor = freezed,
+    Object? followersNoteBackgroundColor = freezed,
+    Object? specifiedNoteBackgroundColor = freezed,
     Object? emojiPickerUseDialog = null,
     Object? emojiPickerScale = null,
     Object? emojiPickerAutofocus = null,
@@ -765,6 +805,22 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.noteHorizontalPadding
           : noteHorizontalPadding // ignore: cast_nullable_to_non_nullable
               as double,
+      publicNoteBackgroundColor: freezed == publicNoteBackgroundColor
+          ? _value.publicNoteBackgroundColor
+          : publicNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      homeNoteBackgroundColor: freezed == homeNoteBackgroundColor
+          ? _value.homeNoteBackgroundColor
+          : homeNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      followersNoteBackgroundColor: freezed == followersNoteBackgroundColor
+          ? _value.followersNoteBackgroundColor
+          : followersNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
+      specifiedNoteBackgroundColor: freezed == specifiedNoteBackgroundColor
+          ? _value.specifiedNoteBackgroundColor
+          : specifiedNoteBackgroundColor // ignore: cast_nullable_to_non_nullable
+              as Color?,
       emojiPickerUseDialog: null == emojiPickerUseDialog
           ? _value.emojiPickerUseDialog
           : emojiPickerUseDialog // ignore: cast_nullable_to_non_nullable
@@ -922,6 +978,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.noteFooterScale = 1.0,
       this.noteVerticalPadding = defaultNoteVerticalPadding,
       this.noteHorizontalPadding = defaultNoteHorizontalPadding,
+      @ColorConverter() this.publicNoteBackgroundColor,
+      @ColorConverter() this.homeNoteBackgroundColor,
+      @ColorConverter() this.followersNoteBackgroundColor,
+      @ColorConverter() this.specifiedNoteBackgroundColor,
       this.emojiPickerUseDialog = false,
       this.emojiPickerScale = 1.0,
       this.emojiPickerAutofocus = true,
@@ -1053,6 +1113,18 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final double noteHorizontalPadding;
+  @override
+  @ColorConverter()
+  final Color? publicNoteBackgroundColor;
+  @override
+  @ColorConverter()
+  final Color? homeNoteBackgroundColor;
+  @override
+  @ColorConverter()
+  final Color? followersNoteBackgroundColor;
+  @override
+  @ColorConverter()
+  final Color? specifiedNoteBackgroundColor;
 // Emoji picker
   @override
   @JsonKey()
@@ -1147,7 +1219,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarOnBottom: $showTimelineTabBarOnBottom, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1217,6 +1289,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.noteFooterScale, noteFooterScale) || other.noteFooterScale == noteFooterScale) &&
             (identical(other.noteVerticalPadding, noteVerticalPadding) || other.noteVerticalPadding == noteVerticalPadding) &&
             (identical(other.noteHorizontalPadding, noteHorizontalPadding) || other.noteHorizontalPadding == noteHorizontalPadding) &&
+            (identical(other.publicNoteBackgroundColor, publicNoteBackgroundColor) || other.publicNoteBackgroundColor == publicNoteBackgroundColor) &&
+            (identical(other.homeNoteBackgroundColor, homeNoteBackgroundColor) || other.homeNoteBackgroundColor == homeNoteBackgroundColor) &&
+            (identical(other.followersNoteBackgroundColor, followersNoteBackgroundColor) || other.followersNoteBackgroundColor == followersNoteBackgroundColor) &&
+            (identical(other.specifiedNoteBackgroundColor, specifiedNoteBackgroundColor) || other.specifiedNoteBackgroundColor == specifiedNoteBackgroundColor) &&
             (identical(other.emojiPickerUseDialog, emojiPickerUseDialog) || other.emojiPickerUseDialog == emojiPickerUseDialog) &&
             (identical(other.emojiPickerScale, emojiPickerScale) || other.emojiPickerScale == emojiPickerScale) &&
             (identical(other.emojiPickerAutofocus, emojiPickerAutofocus) || other.emojiPickerAutofocus == emojiPickerAutofocus) &&
@@ -1284,6 +1360,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         noteFooterScale,
         noteVerticalPadding,
         noteHorizontalPadding,
+        publicNoteBackgroundColor,
+        homeNoteBackgroundColor,
+        followersNoteBackgroundColor,
+        specifiedNoteBackgroundColor,
         emojiPickerUseDialog,
         emojiPickerScale,
         emojiPickerAutofocus,
@@ -1365,6 +1445,10 @@ abstract class _GeneralSettings implements GeneralSettings {
       final double noteFooterScale,
       final double noteVerticalPadding,
       final double noteHorizontalPadding,
+      @ColorConverter() final Color? publicNoteBackgroundColor,
+      @ColorConverter() final Color? homeNoteBackgroundColor,
+      @ColorConverter() final Color? followersNoteBackgroundColor,
+      @ColorConverter() final Color? specifiedNoteBackgroundColor,
       final bool emojiPickerUseDialog,
       final double emojiPickerScale,
       final bool emojiPickerAutofocus,
@@ -1464,6 +1548,18 @@ abstract class _GeneralSettings implements GeneralSettings {
   double get noteVerticalPadding;
   @override
   double get noteHorizontalPadding;
+  @override
+  @ColorConverter()
+  Color? get publicNoteBackgroundColor;
+  @override
+  @ColorConverter()
+  Color? get homeNoteBackgroundColor;
+  @override
+  @ColorConverter()
+  Color? get followersNoteBackgroundColor;
+  @override
+  @ColorConverter()
+  Color? get specifiedNoteBackgroundColor;
   @override // Emoji picker
   bool get emojiPickerUseDialog;
   @override

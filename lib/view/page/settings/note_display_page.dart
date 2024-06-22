@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -552,6 +553,141 @@ class NoteDisplayPage extends HookConsumerWidget {
                       },
                       icon: const Icon(Icons.refresh),
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16.0),
+                    child: Text(
+                      t.misskey.backgroundColor,
+                      style: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withOpacity(0.8),
+                      ),
+                    ),
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.visibility_.public),
+                    trailing: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: settings.publicNoteBackgroundColor,
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const SizedBox(width: 28.0, height: 28.0),
+                    ),
+                    onTap: () async {
+                      final result = await showColorPickerDialog(
+                        context,
+                        settings.publicNoteBackgroundColor ??
+                            Colors.transparent,
+                        pickersEnabled: {
+                          ColorPickerType.primary: false,
+                          ColorPickerType.accent: false,
+                          ColorPickerType.wheel: true,
+                        },
+                        enableOpacity: true,
+                      );
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setPublicNoteBackgroundColor(
+                            result != Colors.transparent ? result : null,
+                          );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.visibility_.home),
+                    trailing: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: settings.homeNoteBackgroundColor,
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const SizedBox(width: 28.0, height: 28.0),
+                    ),
+                    onTap: () async {
+                      final result = await showColorPickerDialog(
+                        context,
+                        settings.homeNoteBackgroundColor ?? Colors.transparent,
+                        pickersEnabled: {
+                          ColorPickerType.primary: false,
+                          ColorPickerType.accent: false,
+                          ColorPickerType.wheel: true,
+                        },
+                        enableOpacity: true,
+                      );
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setHomeNoteBackgroundColor(
+                            result != Colors.transparent ? result : null,
+                          );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.visibility_.followers),
+                    trailing: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: settings.followersNoteBackgroundColor,
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const SizedBox(width: 28.0, height: 28.0),
+                    ),
+                    onTap: () async {
+                      final result = await showColorPickerDialog(
+                        context,
+                        settings.followersNoteBackgroundColor ??
+                            Colors.transparent,
+                        pickersEnabled: {
+                          ColorPickerType.primary: false,
+                          ColorPickerType.accent: false,
+                          ColorPickerType.wheel: true,
+                        },
+                        enableOpacity: true,
+                      );
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setFollowersNoteBackgroundColor(
+                            result != Colors.transparent ? result : null,
+                          );
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.visibility_.specified),
+                    trailing: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: settings.specifiedNoteBackgroundColor,
+                        border: Border.all(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const SizedBox(width: 28.0, height: 28.0),
+                    ),
+                    onTap: () async {
+                      final result = await showColorPickerDialog(
+                        context,
+                        settings.specifiedNoteBackgroundColor ??
+                            Colors.transparent,
+                        pickersEnabled: {
+                          ColorPickerType.primary: false,
+                          ColorPickerType.accent: false,
+                          ColorPickerType.wheel: true,
+                        },
+                        enableOpacity: true,
+                      );
+                      await ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setSpecifiedNoteBackgroundColor(
+                            result != Colors.transparent ? result : null,
+                          );
+                    },
                   ),
                 ],
               ),
