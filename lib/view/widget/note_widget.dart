@@ -219,7 +219,7 @@ class NoteWidget extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return Material(
-      color: backgroundColor,
+      color: backgroundColor ?? colors.panel,
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: getNoteAction(
