@@ -54,6 +54,7 @@ class NoteWidget extends HookConsumerWidget {
     this.tapAction,
     this.doubleTapAction,
     this.longPressAction,
+    this.backgroundColor,
   });
 
   final Account account;
@@ -68,6 +69,7 @@ class NoteWidget extends HookConsumerWidget {
   final NoteActionType? tapAction;
   final NoteActionType? doubleTapAction;
   final NoteActionType? longPressAction;
+  final Color? backgroundColor;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -203,17 +205,18 @@ class NoteWidget extends HookConsumerWidget {
           isRenote &&
           (isMyRenote || isMyNote || appearNote.myReaction != null),
     );
-    final backgroundColor = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => switch (note.visibility) {
-          NoteVisibility.public => settings.publicNoteBackgroundColor,
-          NoteVisibility.home => settings.homeNoteBackgroundColor,
-          NoteVisibility.followers => settings.followersNoteBackgroundColor,
-          NoteVisibility.specified => settings.specifiedNoteBackgroundColor,
-          null => null,
-        },
-      ),
-    );
+    final backgroundColor = this.backgroundColor ??
+        ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => switch (note.visibility) {
+              NoteVisibility.public => settings.publicNoteBackgroundColor,
+              NoteVisibility.home => settings.homeNoteBackgroundColor,
+              NoteVisibility.followers => settings.followersNoteBackgroundColor,
+              NoteVisibility.specified => settings.specifiedNoteBackgroundColor,
+              null => null,
+            },
+          ),
+        );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;

@@ -85,13 +85,19 @@ class PostConfirmationDialog extends ConsumerWidget {
                 ),
               ),
               if (request.isRenote)
-                NoteWidget(account: account, noteId: request.renoteId!)
+                NoteWidget(
+                  account: account,
+                  noteId: request.renoteId!,
+                  showFooter: false,
+                  backgroundColor: Colors.transparent,
+                )
               else
                 NoteWidget(
                   account: account,
                   noteId: '',
                   note: note.copyWith(files: files),
                   showFooter: false,
+                  backgroundColor: Colors.transparent,
                 ),
               Align(
                 alignment: Alignment.centerRight,
