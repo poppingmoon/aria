@@ -23,31 +23,39 @@ class Code extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final languageId = allLanguages[language]?.id ?? 'javascript';
+    final theme = switch (Theme.of(context).brightness) {
+      Brightness.light => atelierCaveLightTheme,
+      Brightness.dark => atomOneDarkTheme,
+    };
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(4.0),
       child: InkWell(
         borderRadius: BorderRadius.circular(4.0),
         onLongPress: () => copyToClipboard(context, code),
-        child: HighlightView(
-          code,
-          languageId: languageId,
-          theme: switch (Theme.of(context).brightness) {
-            Brightness.light => atelierCaveLightTheme,
-            Brightness.dark => atomOneDarkTheme,
-          },
-          padding: inline
-              ? const EdgeInsets.symmetric(horizontal: 2.0)
-              : const EdgeInsets.all(8.0),
-          textStyle: TextStyle(
-            fontSize: fontSize,
-            fontFamilyFallback: const [
-              'Consolas',
-              'Monaco',
-              'Andale Mono',
-              'Ubuntu Mono',
-              'monospace',
-            ],
+        child: Container(
+          width: double.infinity,
+          color: theme['root']?.backgroundColor,
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: HighlightView(
+              code,
+              languageId: languageId,
+              theme: theme,
+              padding: inline
+                  ? const EdgeInsets.symmetric(horizontal: 2.0)
+                  : const EdgeInsets.all(8.0),
+              textStyle: TextStyle(
+                fontSize: fontSize,
+                fontFamilyFallback: const [
+                  'Consolas',
+                  'Monaco',
+                  'Andale Mono',
+                  'Ubuntu Mono',
+                  'monospace',
+                ],
+              ),
+            ),
           ),
         ),
       ),
