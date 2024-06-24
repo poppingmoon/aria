@@ -66,9 +66,13 @@ jobs:
           fileDir: ${{ env.APK_BUILD_DIR }}/android/app/
           encodedString: ${{ secrets.UPLOAD_KEYSTORE }}
 
+      - name: Move Rust toolchain to /tmp
+        run: mv $HOME/.cargo /tmp
+
       - name: Build APK
         working-directory: ${{ env.APK_BUILD_DIR }}
         env:
+          HOME: /tmp
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
@@ -103,6 +107,7 @@ jobs:
       - name: Build App Bundle
         working-directory: ${{ env.APK_BUILD_DIR }}
         env:
+          HOME: /tmp
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
           STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
