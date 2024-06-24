@@ -1232,8 +1232,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "715ca1a72564d66c0f1860683be122e92edd8580"
-      resolved-ref: "715ca1a72564d66c0f1860683be122e92edd8580"
+      ref: "8b0fb47a3de30fbb23f95282969ed1a653b112e9"
+      resolved-ref: "8b0fb47a3de30fbb23f95282969ed1a653b112e9"
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -1646,10 +1646,10 @@ packages:
     dependency: "direct main"
     description:
       name: slang
-      sha256: "0d8a8cbfd7858ed2bd9164a79bfb664ea83f1e124740b28acd0618757fc87ecc"
+      sha256: f68f6d6709890f85efabfb0318e9d694be2ebdd333e57fe5cb50eee449e4e3ab
       url: "https://pub.dev"
     source: hosted
-    version: "3.31.0"
+    version: "3.31.1"
   slang_build_runner:
     dependency: "direct dev"
     description:
@@ -1805,10 +1805,11 @@ packages:
   tinycolor2:
     dependency: "direct main"
     description:
-      name: tinycolor2
-      sha256: "81850c32ac8d4dcff37299bf3e52bcad4f4db6bc73d4b06727c9922de3766390"
-      url: "https://pub.dev"
-    source: hosted
+      path: "."
+      ref: "030e8d5f6167071016ebc9fe7359003a4f78dcc3"
+      resolved-ref: "030e8d5f6167071016ebc9fe7359003a4f78dcc3"
+      url: "https://github.com/poppingmoon/tinycolor2"
+    source: git
     version: "3.0.1"
   tuple:
     dependency: transitive

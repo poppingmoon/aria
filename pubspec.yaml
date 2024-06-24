@@ -58,7 +58,7 @@ dependencies:
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: 715ca1a72564d66c0f1860683be122e92edd8580
+      ref: 8b0fb47a3de30fbb23f95282969ed1a653b112e9
   mime: ^1.0.5
   misskey_dart:
     git:
@@ -76,9 +76,12 @@ dependencies:
     path: rust_builder
   share_plus: ^9.0.0
   shared_preferences: ^2.2.3
-  slang: ^3.31.0
+  slang: ^3.31.1
   slang_flutter: ^3.31.0
-  tinycolor2: ^3.0.1
+  tinycolor2:
+    git:
+      url: https://github.com/poppingmoon/tinycolor2
+      ref: 030e8d5f6167071016ebc9fe7359003a4f78dcc3
   twemoji_v2:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
