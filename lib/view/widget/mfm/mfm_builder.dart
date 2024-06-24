@@ -723,6 +723,8 @@ class MfmBuilder {
                 .build([MfmText(l.first.replaceAll('\n', ' '))]),
           );
           return WidgetSpan(
+            alignment: PlaceholderAlignment.aboveBaseline,
+            baseline: TextBaseline.ideographic,
             child: Ruby(
               style: rubyStyle,
               ruby: ruby,
@@ -751,6 +753,8 @@ class MfmBuilder {
             ),
           );
           return WidgetSpan(
+            alignment: PlaceholderAlignment.aboveBaseline,
+            baseline: TextBaseline.ideographic,
             child: Ruby(
               style: rubyStyle,
               ruby: ruby,
