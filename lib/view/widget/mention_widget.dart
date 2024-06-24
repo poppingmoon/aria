@@ -74,6 +74,7 @@ class MentionWidget extends ConsumerWidget {
         onDeleted: onDeleted,
         side: BorderSide.none,
         shape: const StadiumBorder(),
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );
   }
