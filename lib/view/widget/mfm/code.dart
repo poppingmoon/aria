@@ -34,7 +34,7 @@ class Code extends StatelessWidget {
         borderRadius: BorderRadius.circular(4.0),
         onLongPress: () => copyToClipboard(context, code),
         child: Container(
-          width: double.infinity,
+          width: inline ? null : double.infinity,
           color: theme['root']?.backgroundColor,
           child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
