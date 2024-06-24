@@ -179,6 +179,9 @@ class MfmKeyboard extends HookConsumerWidget {
                 ...emojis.map(
                   (emoji) => TextButton(
                     key: ValueKey(emoji),
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    ),
                     onPressed: () =>
                         controller.replace(query.length + 1, emoji),
                     child: EmojiWidget(account: account, emoji: emoji),
@@ -344,7 +347,7 @@ class MfmKeyboard extends HookConsumerWidget {
             return users
                 .map(
                   (user) => Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: MentionWidget(
                       account: account,
                       username: user.username,
