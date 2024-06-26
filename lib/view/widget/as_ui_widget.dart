@@ -59,6 +59,7 @@ class AsUiWidget extends HookConsumerWidget {
             helperStyle: TextStyle(
               color: Theme.of(context).colorScheme.onSurface.withOpacity(0.75),
             ),
+            helperMaxLines: 100,
             isDense: true,
           ),
         ),
