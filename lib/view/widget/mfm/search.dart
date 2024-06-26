@@ -6,9 +6,14 @@ import '../../../i18n/strings.g.dart';
 import '../url_sheet.dart';
 
 class Search extends HookWidget {
-  const Search({super.key, required this.query});
+  const Search({
+    super.key,
+    required this.query,
+    this.textScaler,
+  });
 
   final String query;
+  final TextScaler? textScaler;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,10 @@ class Search extends HookWidget {
               padding: const EdgeInsets.all(8.0),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: SelectableText(query),
+                child: SelectableText(
+                  query,
+                  textScaler: textScaler,
+                ),
               ),
             ),
           ),
@@ -52,7 +60,10 @@ class Search extends HookWidget {
                 child: Row(
                   children: [
                     const Icon(Icons.search),
-                    Text(t.misskey.searchByGoogle),
+                    Text(
+                      t.misskey.searchByGoogle,
+                      textScaler: textScaler,
+                    ),
                   ],
                 ),
               ),

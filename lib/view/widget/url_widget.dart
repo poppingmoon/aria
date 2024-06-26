@@ -14,6 +14,7 @@ class UrlWidget extends StatelessWidget {
     this.align,
     this.overflow,
     this.maxLines,
+    this.textScaler,
   });
 
   final String url;
@@ -23,6 +24,7 @@ class UrlWidget extends StatelessWidget {
   final double opacity;
   final TextAlign? align;
   final TextOverflow? overflow;
+  final TextScaler? textScaler;
   final int? maxLines;
 
   String _decodeComponent(String encodedComponent) {
@@ -61,6 +63,7 @@ class UrlWidget extends StatelessWidget {
           ),
           textAlign: align,
           overflow: overflow,
+          textScaler: textScaler,
           maxLines: maxLines,
           semanticsLabel: this.url,
         ),
@@ -124,6 +127,7 @@ class UrlWidget extends StatelessWidget {
         ),
         textAlign: align,
         overflow: overflow,
+        textScaler: textScaler,
         maxLines: maxLines,
         semanticsLabel: url.toString(),
       ),
