@@ -10,12 +10,14 @@ class TimeWidget extends StatelessWidget {
     this.onTap,
     this.detailed = false,
     this.absolute = false,
+    this.textScaler,
   });
 
   final DateTime? time;
   final void Function()? onTap;
   final bool detailed;
   final bool absolute;
+  final TextScaler? textScaler;
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +37,7 @@ class TimeWidget extends StatelessWidget {
                     : this.absolute
                         ? absolute
                         : relative,
+                textScaler: textScaler,
               ),
             )
           : Text(t.misskey.ago_.invalid),

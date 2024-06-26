@@ -74,6 +74,7 @@ List<InlineSpan> buildMfm(
                 account.host.toLowerCase() == absoluteHost.toLowerCase()
                     ? ref.context.push('/$account/@$username')
                     : ref.context.push('/$account/@$username@$absoluteHost'),
+            textScaler: TextScaler.noScaling,
           ),
         ),
       );

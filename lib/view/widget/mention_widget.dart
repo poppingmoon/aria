@@ -1,13 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/account.dart';
+import '../../provider/cache_manager_provider.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import '../../util/punycode.dart';
-import 'image_widget.dart';
 
 class MentionWidget extends ConsumerWidget {
   const MentionWidget({
@@ -17,6 +18,7 @@ class MentionWidget extends ConsumerWidget {
     required this.host,
     this.onTap,
     this.onDeleted,
+    this.textScaler,
   });
 
   final Account account;
@@ -24,6 +26,7 @@ class MentionWidget extends ConsumerWidget {
   final String host;
   final void Function()? onTap;
   final void Function()? onDeleted;
+  final TextScaler? textScaler;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -47,14 +50,13 @@ class MentionWidget extends ConsumerWidget {
       ),
       child: InputChip(
         avatar: CircleAvatar(
-          child: ClipOval(
-            child: ImageWidget(
-              url: disableShowingAnimatedImages
-                  ? ref
-                      .watch(staticImageUrlProvider(account.host, url))
-                      .toString()
-                  : url,
-            ),
+          foregroundImage: CachedNetworkImageProvider(
+            disableShowingAnimatedImages
+                ? ref
+                    .watch(staticImageUrlProvider(account.host, url))
+                    .toString()
+                : url,
+            cacheManager: ref.watch(cacheManagerProvider),
           ),
         ),
         label: Text.rich(
@@ -69,6 +71,7 @@ class MentionWidget extends ConsumerWidget {
             ],
           ),
           textDirection: TextDirection.ltr,
+          textScaler: textScaler,
         ),
         onPressed: onTap,
         onDeleted: onDeleted,
