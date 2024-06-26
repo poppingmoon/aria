@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
+import 'package:pretty_bytes/pretty_bytes.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -15,7 +16,6 @@ import '../../provider/api/drive_stats_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/selected_drive_files_notifier_provider.dart';
-import '../../util/pretty_bytes.dart';
 import '../widget/drive_create_sheet.dart';
 import '../widget/drive_file_widget.dart';
 import '../widget/drive_files_sheet.dart';
@@ -130,10 +130,15 @@ class DrivePage extends HookConsumerWidget {
                 ),
                 onPressed: () =>
                     context.push('/settings/accounts/$account/drive'),
-                child: Text(
-                  '${t.misskey.inUse}: '
-                  '${prettyBytes(stats.usage)} / ${prettyBytes(stats.capacity)}',
-                ),
+                child: Text('${t.misskey.inUse}: ${prettyBytes(
+                  stats.usage.toDouble(),
+                  locale: Localizations.localeOf(context).toLanguageTag(),
+                  binary: true,
+                )} / ${prettyBytes(
+                  stats.capacity.toDouble(),
+                  locale: Localizations.localeOf(context).toLanguageTag(),
+                  binary: true,
+                )}'),
               ),
             if (!selectFiles && !selectFolder)
               IconButton(

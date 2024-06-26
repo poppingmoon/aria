@@ -28,13 +28,12 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
       surface: colors.panel,
       onSurface: colors.fg,
       onSurfaceVariant: colors.fg,
+      background: colors.bg,
       error: colors.error,
       outlineVariant: colors.divider,
     ),
     primaryColor: colors.accent,
     dividerColor: colors.divider,
-    canvasColor: colors.bg,
-    scaffoldBackgroundColor: colors.bg,
     textTheme: ThemeData.light()
         .textTheme
         .merge(
@@ -89,12 +88,5 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
     ),
     sliderTheme:
         const SliderThemeData(showValueIndicator: ShowValueIndicator.always),
-    pageTransitionsTheme: const PageTransitionsTheme(
-      builders: {
-        TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-        TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
-      },
-    ),
   );
 }
