@@ -39,12 +39,15 @@ class ImageGalleryDialog extends HookConsumerWidget {
       [],
     );
     final comment = files[index.value].comment;
+    final isZoomed = useState(false);
 
     return Stack(
       children: [
         Dismissible(
           key: const ValueKey(0),
-          direction: DismissDirection.vertical,
+          direction: !isZoomed.value
+              ? DismissDirection.vertical
+              : DismissDirection.none,
           onDismissed: (_) => context.pop(),
           child: FocusableActionDetector(
             autofocus: true,
@@ -75,6 +78,15 @@ class ImageGalleryDialog extends HookConsumerWidget {
               itemCount: files.length,
               backgroundDecoration:
                   const BoxDecoration(color: Colors.transparent),
+              scaleStateChangedCallback: (state) => switch (state) {
+                PhotoViewScaleState.initial ||
+                PhotoViewScaleState.zoomedOut =>
+                  isZoomed.value = false,
+                PhotoViewScaleState.covering ||
+                PhotoViewScaleState.originalSize ||
+                PhotoViewScaleState.zoomedIn =>
+                  isZoomed.value = true,
+              },
             ),
           ),
         ),
@@ -168,8 +180,8 @@ class ImageGalleryDialog extends HookConsumerWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: 100.0,
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxHeight: 100.0),
                     child: SingleChildScrollView(
                       child: Text(
                         comment != null && comment.isNotEmpty
