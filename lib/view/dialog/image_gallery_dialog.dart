@@ -38,6 +38,8 @@ class ImageGalleryDialog extends HookConsumerWidget {
       },
       [],
     );
+    final comment = files[index.value].comment;
+
     return Stack(
       children: [
         Dismissible(
@@ -155,7 +157,9 @@ class ImageGalleryDialog extends HookConsumerWidget {
             child: GestureDetector(
               onLongPress: () => copyToClipboard(
                 context,
-                files[index.value].comment ?? files[index.value].name,
+                comment != null && comment.isNotEmpty
+                    ? comment
+                    : files[index.value].name,
               ),
               child: DecoratedBox(
                 decoration: BoxDecoration(
@@ -164,19 +168,26 @@ class ImageGalleryDialog extends HookConsumerWidget {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    files[index.value].comment ?? files[index.value].name,
-                    style: TextStyle(
-                      shadows: [
-                        Shadow(
-                          blurRadius: 2.0,
-                          color: Theme.of(context).colorScheme.background,
+                  child: SizedBox(
+                    height: 100.0,
+                    child: SingleChildScrollView(
+                      child: Text(
+                        comment != null && comment.isNotEmpty
+                            ? comment
+                            : files[index.value].name,
+                        style: TextStyle(
+                          shadows: [
+                            Shadow(
+                              blurRadius: 2.0,
+                              color: Theme.of(context).canvasColor,
+                            ),
+                            Shadow(
+                              blurRadius: 2.0,
+                              color: Theme.of(context).canvasColor,
+                            ),
+                          ],
                         ),
-                        Shadow(
-                          blurRadius: 2.0,
-                          color: Theme.of(context).colorScheme.background,
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
