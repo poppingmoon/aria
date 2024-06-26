@@ -217,9 +217,15 @@ class PostNotifier extends _$PostNotifier {
         final response = await ref.read(misskeyProvider(account)).notes.edit(
               NotesEditRequest(
                 editId: noteId!,
+                visibility: state.visibility,
+                visibleUserIds: state.visibleUserIds,
                 text: state.text,
                 cw: state.cw,
+                localOnly: state.localOnly,
                 fileIds: fileIds,
+                replyId: state.replyId,
+                renoteId: state.renoteId,
+                channelId: state.channelId,
                 poll: state.poll,
               ),
             );
