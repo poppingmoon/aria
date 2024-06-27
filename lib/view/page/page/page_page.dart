@@ -382,6 +382,7 @@ class PagePage extends ConsumerWidget {
                                 child: TimeWidget(
                                   time: page.createdAt,
                                   detailed: true,
+                                  textScaler: TextScaler.noScaling,
                                 ),
                               ),
                             ],
@@ -409,6 +410,7 @@ class PagePage extends ConsumerWidget {
                                   child: TimeWidget(
                                     time: page.updatedAt,
                                     detailed: true,
+                                    textScaler: TextScaler.noScaling,
                                   ),
                                 ),
                               ],

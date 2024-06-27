@@ -451,22 +451,24 @@ class _UserHome extends ConsumerWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: Center(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                  child: Text.rich(
+                                    TextSpan(
                                       children: [
-                                        const Padding(
-                                          padding: EdgeInsets.only(right: 2.0),
+                                        const WidgetSpan(
                                           child: Icon(Icons.cake),
                                         ),
-                                        Text(
-                                          t.misskey.birthday,
+                                        const WidgetSpan(
+                                          child: SizedBox(width: 2.0),
+                                        ),
+                                        TextSpan(
+                                          text: t.misskey.birthday,
                                           style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ],
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                                 Padding(
@@ -481,22 +483,24 @@ class _UserHome extends ConsumerWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Center(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
+                                child: Text.rich(
+                                  TextSpan(
                                     children: [
-                                      const Padding(
-                                        padding: EdgeInsets.only(right: 2.0),
+                                      const WidgetSpan(
                                         child: Icon(Icons.calendar_today),
                                       ),
-                                      Text(
-                                        t.misskey.registeredDate,
+                                      const WidgetSpan(
+                                        child: SizedBox(width: 2.0),
+                                      ),
+                                      TextSpan(
+                                        text: t.misskey.registeredDate,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
                                         ),
                                       ),
                                     ],
                                   ),
+                                  textAlign: TextAlign.center,
                                 ),
                               ),
                               Padding(

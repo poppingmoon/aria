@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class BotBadge extends StatelessWidget {
-  const BotBadge({super.key});
+  const BotBadge({super.key, this.textScaler});
+
+  final TextScaler? textScaler;
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,9 @@ class BotBadge extends StatelessWidget {
               Border.all(color: Theme.of(context).colorScheme.outlineVariant),
           borderRadius: BorderRadius.circular(4.0),
         ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4.0),
-          child: Text('bot'),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
+          child: Text('bot', textScaler: textScaler),
         ),
       ),
     );

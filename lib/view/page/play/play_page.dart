@@ -164,6 +164,7 @@ class PlayPage extends HookConsumerWidget {
                                     child: TimeWidget(
                                       time: play.createdAt,
                                       detailed: true,
+                                      textScaler: TextScaler.noScaling,
                                     ),
                                   ),
                                 ],
@@ -187,6 +188,7 @@ class PlayPage extends HookConsumerWidget {
                                       child: TimeWidget(
                                         time: play.updatedAt,
                                         detailed: true,
+                                        textScaler: TextScaler.noScaling,
                                       ),
                                     ),
                                   ],
