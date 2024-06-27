@@ -271,8 +271,7 @@ class _UserHome extends ConsumerWidget {
                             ),
                           ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
+                        Wrap(
                           children: [
                             TextButton(
                               onPressed: () => launchUrl(
