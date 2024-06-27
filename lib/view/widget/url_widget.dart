@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../extension/string_extension.dart';
+import '../../i18n/strings.g.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../util/punycode.dart';
 import 'url_sheet.dart';
 
 class UrlWidget extends StatelessWidget {
   const UrlWidget({
     required this.url,
+    this.verified = false,
     this.onTap,
     this.style,
     this.scale = 1.0,
@@ -18,6 +22,7 @@ class UrlWidget extends StatelessWidget {
   });
 
   final String url;
+  final bool verified;
   final void Function()? onTap;
   final TextStyle? style;
   final double scale;
@@ -119,6 +124,10 @@ class UrlWidget extends StatelessWidget {
                 size: style.fontSize! * scale,
               ),
             ),
+            if (verified) ...[
+              const WidgetSpan(child: SizedBox(width: 2.0)),
+              const WidgetSpan(child: _VerifiedIcon()),
+            ],
           ],
         ),
         style: style.apply(
@@ -130,6 +139,25 @@ class UrlWidget extends StatelessWidget {
         textScaler: textScaler,
         maxLines: maxLines,
         semanticsLabel: url.toString(),
+      ),
+    );
+  }
+}
+
+class _VerifiedIcon extends ConsumerWidget {
+  const _VerifiedIcon();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Tooltip(
+      message: t.misskey.verifiedLink,
+      child: Icon(
+        Icons.check_circle_outline,
+        color: ref.watch(
+          misskeyColorsProvider(Theme.of(context).brightness)
+              .select((colors) => colors.success),
+        ),
+        size: DefaultTextStyle.of(context).style.fontSize,
       ),
     );
   }

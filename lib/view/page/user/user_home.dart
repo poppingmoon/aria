@@ -549,33 +549,23 @@ class _UserHome extends ConsumerWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child:
-                                      user.verifiedLinks.contains(field.value)
-                                          ? Text.rich(
-                                              TextSpan(
-                                                children: [
-                                                  WidgetSpan(
-                                                    child: UrlWidget(
-                                                      url: field.value,
-                                                      onTap: () => navigate(
-                                                        ref,
-                                                        account,
-                                                        field.value,
-                                                      ),
-                                                      style: TextStyle(
-                                                        color: colors.link,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            )
-                                          : Mfm(
-                                              account: account,
-                                              text: field.value,
-                                              emojis: user.emojis,
-                                              author: user,
-                                            ),
+                                  child: user.verifiedLinks
+                                          .contains(field.value)
+                                      ? UrlWidget(
+                                          url: field.value,
+                                          onTap: () => navigate(
+                                            ref,
+                                            account,
+                                            field.value,
+                                          ),
+                                          style: TextStyle(color: colors.link),
+                                        )
+                                      : Mfm(
+                                          account: account,
+                                          text: field.value,
+                                          emojis: user.emojis,
+                                          author: user,
+                                        ),
                                 ),
                               ],
                             ),
