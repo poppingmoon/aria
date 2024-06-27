@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: 'none'
-version: 0.10.1+26
+version: 0.10.2+27
 
 environment:
   sdk: '>=3.3.2 <4.0.0'
@@ -63,7 +63,7 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 484fb1e4efda35b32380eb7b025429709e724850
+      ref: 4a66437fa2e2562666ce9c052112cbd343d32dc2
   multi_split_view: ^3.2.1
   package_info_plus: ^8.0.0
   photo_view: ^0.15.0
