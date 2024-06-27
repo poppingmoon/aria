@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' as material show Border;
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 
+import '../../../constant/fonts.dart';
 import '../../../extension/text_style_extension.dart';
 import '../../../gen/fonts.gen.dart';
 import '../../../model/misskey_colors.dart';
@@ -547,6 +548,7 @@ class MfmBuilder {
               },
               fontFamilyFallback: switch (args.keys.firstOrNull) {
                 'serif' => [FontFamily.notoSerifJP],
+                'monospace' => monospaceFallback,
                 _ => null,
               },
             ),

@@ -4,6 +4,7 @@ import 'package:flutter_highlighting/themes/atelier-cave-light.dart';
 import 'package:flutter_highlighting/themes/atom-one-dark.dart';
 import 'package:highlighting/languages/all.dart';
 
+import '../../../constant/fonts.dart';
 import '../../../util/copy_text.dart';
 
 class Code extends StatelessWidget {
@@ -47,13 +48,7 @@ class Code extends StatelessWidget {
                   : const EdgeInsets.all(8.0),
               textStyle: TextStyle(
                 fontSize: fontSize,
-                fontFamilyFallback: const [
-                  'Consolas',
-                  'Monaco',
-                  'Andale Mono',
-                  'Ubuntu Mono',
-                  'monospace',
-                ],
+                fontFamilyFallback: monospaceFallback,
               ),
             ),
           ),
