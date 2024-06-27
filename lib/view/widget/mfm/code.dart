@@ -50,6 +50,7 @@ class Code extends StatelessWidget {
                 fontFamilyFallback: const [
                   'Consolas',
                   'Monaco',
+                  'Menlo',
                   'Andale Mono',
                   'Ubuntu Mono',
                   'monospace',
