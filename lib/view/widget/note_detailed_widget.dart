@@ -522,7 +522,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     if (children
                         case AsyncValue(
                           valueOrNull: PaginationState(items: final notes),
-                        ))
+                        ) when notes.isNotEmpty)
                       Container(
                         margin: const EdgeInsets.only(left: 8.0, top: 8.0),
                         decoration: BoxDecoration(
