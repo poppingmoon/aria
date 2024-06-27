@@ -76,6 +76,7 @@ class AboutAriaPage extends HookConsumerWidget {
                               child: Text(
                                 'Miria',
                                 style: TextStyle(color: colors.link),
+                                textScaler: TextScaler.noScaling,
                               ),
                             ),
                           ),
@@ -95,6 +96,7 @@ class AboutAriaPage extends HookConsumerWidget {
                               child: Text(
                                 'Misskey',
                                 style: TextStyle(color: colors.link),
+                                textScaler: TextScaler.noScaling,
                               ),
                             ),
                           ),
@@ -117,6 +119,7 @@ class AboutAriaPage extends HookConsumerWidget {
                               child: Text(
                                 '@sevenc_nanashi@voskey.icalo.net',
                                 style: TextStyle(color: colors.mention),
+                                textScaler: TextScaler.noScaling,
                               ),
                             ),
                           ),
@@ -140,6 +143,7 @@ class AboutAriaPage extends HookConsumerWidget {
                               child: Text(
                                 'CC-BY 4.0',
                                 style: TextStyle(color: colors.link),
+                                textScaler: TextScaler.noScaling,
                               ),
                             ),
                           ),

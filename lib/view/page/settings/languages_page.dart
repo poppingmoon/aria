@@ -71,6 +71,7 @@ class LanguagesPage extends ConsumerWidget {
                             ],
                           ),
                           textAlign: TextAlign.center,
+                          textScaler: TextScaler.noScaling,
                         ),
                       ),
                     ),

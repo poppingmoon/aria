@@ -220,6 +220,7 @@ class GalleryPostPage extends ConsumerWidget {
                             child: TimeWidget(
                               time: post.createdAt,
                               detailed: true,
+                              textScaler: TextScaler.noScaling,
                             ),
                           ),
                         ],
@@ -246,6 +247,7 @@ class GalleryPostPage extends ConsumerWidget {
                               child: TimeWidget(
                                 time: post.updatedAt,
                                 detailed: true,
+                                textScaler: TextScaler.noScaling,
                               ),
                             ),
                           ],

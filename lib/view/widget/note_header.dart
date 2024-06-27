@@ -70,7 +70,9 @@ class NoteHeader extends HookConsumerWidget {
                               color: style.color?.withOpacity(0.8),
                               fontSizeFactor: 0.8,
                             ),
-                            child: const BotBadge(),
+                            child: const BotBadge(
+                              textScaler: TextScaler.noScaling,
+                            ),
                           ),
                         ),
                       ),

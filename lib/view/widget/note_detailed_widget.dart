@@ -423,6 +423,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                           color: colors.renote,
                                           fontStyle: FontStyle.italic,
                                         ),
+                                        textScaler: TextScaler.noScaling,
                                       ),
                                     ),
                                   ),
