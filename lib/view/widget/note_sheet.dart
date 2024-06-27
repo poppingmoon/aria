@@ -9,15 +9,12 @@ import '../../extension/note_extension.dart';
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../model/post_file.dart';
 import '../../provider/accounts_notifier_provider.dart';
-import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/endpoints_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/note_state_provider.dart';
-import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
@@ -25,6 +22,7 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/clip_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/delete_and_edit_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import 'account_preview.dart';
 import 'note_fallback_widget.dart';
@@ -380,38 +378,15 @@ class NoteSheet extends ConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.edit_outlined),
                 title: Text(t.misskey.deleteAndEdit),
-                onTap: () async {
-                  final confirmed = await confirm(
-                    context,
-                    message: t.misskey.deleteAndEditConfirm,
+                onTap: () {
+                  context.pop();
+                  showDialog<void>(
+                    context: context,
+                    builder: (context) => DeleteAndEditDialog(
+                      account: account,
+                      note: appearNote,
+                    ),
                   );
-                  if (!context.mounted) return;
-                  if (confirmed) {
-                    context.pop();
-                    ref
-                        .read(postNotifierProvider(account).notifier)
-                        .fromNote(appearNote);
-                    ref.read(attachesNotifierProvider(account).notifier).addAll(
-                          appearNote.files.map(
-                            (file) => DrivePostFile.fromDriveFile(file),
-                          ),
-                        );
-                    final deleted = await futureWithDialog(
-                      context,
-                      ref
-                          .read(misskeyProvider(account))
-                          .notes
-                          .delete(NotesDeleteRequest(noteId: appearNote.id))
-                          .then((_) => true),
-                    );
-                    if (!(deleted ?? false)) return;
-                    ref
-                        .read(notesNotifierProvider(account).notifier)
-                        .remove(appearNote.id);
-                    if (!context.mounted) return;
-                    await context.push('/$account/post');
-                    if (!context.mounted) return;
-                  }
                 },
               ),
               ListTile(
