@@ -515,6 +515,7 @@ class ProfilePage extends HookConsumerWidget {
                             color: colors.error,
                           ),
                           title: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Expanded(
                                 flex: 3,
@@ -532,43 +533,15 @@ class ProfilePage extends HookConsumerWidget {
                                 child: KeyValueWidget(
                                   label: t.misskey.profile_.metadataContent,
                                   child: i.verifiedLinks.contains(value)
-                                      ? Text.rich(
-                                          TextSpan(
-                                            children: [
-                                              WidgetSpan(
-                                                child: UrlWidget(
-                                                  url: value,
-                                                  onTap: () => navigate(
-                                                    ref,
-                                                    account,
-                                                    value,
-                                                  ),
-                                                  style: TextStyle(
-                                                    color: colors.link,
-                                                  ),
-                                                ),
-                                              ),
-                                              const WidgetSpan(
-                                                child: SizedBox(width: 2.0),
-                                              ),
-                                              WidgetSpan(
-                                                child: Tooltip(
-                                                  message:
-                                                      t.misskey.verifiedLink,
-                                                  child: Builder(
-                                                    builder: (context) => Icon(
-                                                      Icons
-                                                          .check_circle_outline,
-                                                      color: colors.success,
-                                                      size: DefaultTextStyle.of(
-                                                        context,
-                                                      ).style.fontSize,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
+                                      ? UrlWidget(
+                                          url: value,
+                                          verified: true,
+                                          onTap: () => navigate(
+                                            ref,
+                                            account,
+                                            value,
                                           ),
+                                          style: TextStyle(color: colors.link),
                                         )
                                       : Mfm(
                                           account: account,
