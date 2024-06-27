@@ -553,6 +553,7 @@ class _UserHome extends ConsumerWidget {
                                           .contains(field.value)
                                       ? UrlWidget(
                                           url: field.value,
+                                          verified: true,
                                           onTap: () => navigate(
                                             ref,
                                             account,
