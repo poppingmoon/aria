@@ -8,11 +8,12 @@ import 'package:mfm_parser/mfm_parser.dart';
 import '../../../constant/fonts.dart';
 import '../../../extension/text_style_extension.dart';
 import '../../../gen/fonts.gen.dart';
+import '../../../i18n/strings.g.dart';
 import '../../../model/misskey_colors.dart';
+import '../../../util/format_datetime.dart';
 import '../../../util/nyaize.dart';
 import '../../../util/safe_parse_color.dart';
 import '../../../util/safe_parse_double.dart';
-import '../time_widget.dart';
 import '../unicode_emoji.dart';
 import '../url_widget.dart';
 import 'blur.dart';
@@ -825,29 +826,30 @@ class MfmBuilder {
                 vertical: 4.0 * scale,
                 horizontal: 8.0 * scale,
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Icon(
-                    Icons.access_time,
-                    color: style.color?.withOpacity(opacity),
-                    size: style.lineHeight * scale * 0.9,
-                  ),
-                  SizedBox(width: 2.0 * scale),
-                  Expanded(
-                    child: DefaultTextStyle(
-                      style: style.apply(
-                        fontSizeFactor: scale * 0.9,
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Icon(
+                        Icons.access_time,
                         color: style.color?.withOpacity(opacity),
-                      ),
-                      child: TimeWidget(
-                        time: time,
-                        detailed: true,
-                        textScaler: TextScaler.noScaling,
+                        size: style.lineHeight * scale * 0.9,
                       ),
                     ),
-                  ),
-                ],
+                    WidgetSpan(child: SizedBox(width: 2.0 * scale)),
+                    if (time != null)
+                      TextSpan(
+                        text: '${absoluteTime(time)} (${relativeTime(time)})',
+                        style: style.apply(
+                          fontSizeFactor: scale * 0.9,
+                          color: style.color?.withOpacity(opacity),
+                        ),
+                      )
+                    else
+                      TextSpan(text: t.misskey.ago_.invalid),
+                  ],
+                ),
               ),
             ),
           ),
@@ -864,12 +866,14 @@ class MfmBuilder {
             onTap: clickEv != null && onClickEv != null
                 ? () => onClickEv?.call(clickEv)
                 : null,
-            child: Text.rich(
-              span,
-              textAlign: align,
-              overflow: overflow,
-              textScaler: TextScaler.noScaling,
-              maxLines: maxLines,
+            child: AbsorbPointer(
+              child: Text.rich(
+                span,
+                textAlign: align,
+                overflow: overflow,
+                textScaler: TextScaler.noScaling,
+                maxLines: maxLines,
+              ),
             ),
           ),
         );

@@ -26,7 +26,7 @@ class Blur extends HookWidget {
                 sigmaY: 6.0,
                 tileMode: TileMode.decal,
               ),
-              child: child,
+              child: AbsorbPointer(child: child),
             )
           : child,
     );
