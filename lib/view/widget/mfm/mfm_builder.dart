@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart' hide Border;
 import 'package:flutter/material.dart' as material show Border;
+import 'package:flutter/material.dart' hide Border;
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 
@@ -9,7 +9,7 @@ import '../../../constant/fonts.dart';
 import '../../../extension/text_style_extension.dart';
 import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
-import '../../../model/misskey_colors.dart';
+import '../../../model/mfm_config.dart';
 import '../../../util/format_datetime.dart';
 import '../../../util/nyaize.dart';
 import '../../../util/safe_parse_color.dart';
@@ -50,57 +50,7 @@ const _richTextFn = [
   'border',
 ];
 
-class MfmBuilder {
-  const MfmBuilder({
-    required this.colors,
-    this.simple = false,
-    required this.style,
-    required this.emojiBuilder,
-    required this.mentionBuilder,
-    this.onTapEmoji,
-    this.onLinkTap,
-    this.onLinkLongPress,
-    this.onHashtagTap,
-    this.onClickEv,
-    this.shouldNyaize = false,
-    this.useAdvanced = true,
-    this.useAnimation = false,
-    this.scale = 1.0,
-    this.opacity = 1.0,
-    this.align,
-    this.overflow,
-    this.maxLines,
-  });
-
-  final MisskeyColors colors;
-  final bool simple;
-  final TextStyle style;
-  final Widget Function(
-    String name,
-    double scale,
-    double opacity,
-    TextStyle fallbackTextStyle,
-  ) emojiBuilder;
-  final Widget Function(
-    String username,
-    String? host,
-    double scale,
-    double opacity,
-  ) mentionBuilder;
-  final void Function(String emoji)? onTapEmoji;
-  final void Function(String url)? onLinkTap;
-  final void Function(String url)? onLinkLongPress;
-  final void Function(String hashtag)? onHashtagTap;
-  final void Function(String clickEv)? onClickEv;
-  final bool shouldNyaize;
-  final bool useAdvanced;
-  final bool useAnimation;
-  final double scale;
-  final double opacity;
-  final TextAlign? align;
-  final TextOverflow? overflow;
-  final int? maxLines;
-
+extension MfmBuilder on MfmConfig {
   List<InlineSpan> build(
     List<MfmNode> nodes, {
     bool disableNyaize = false,
@@ -137,7 +87,7 @@ class MfmBuilder {
                 style: style.apply(fontStyle: FontStyle.italic),
                 children: build(children),
               ),
-            MfmFn(:final name, :final args, :final children?) => buildMfmFn(
+            MfmFn(:final name, :final args, :final children?) => _buildMfmFn(
                 name: name,
                 args: args,
                 children: children,
@@ -368,7 +318,7 @@ class MfmBuilder {
         .toList();
   }
 
-  InlineSpan buildMfmFn({
+  InlineSpan _buildMfmFn({
     required String name,
     required Map<String, dynamic> args,
     required List<MfmNode> children,
@@ -889,57 +839,39 @@ class MfmBuilder {
     return TextSpan(children: build(children));
   }
 
-  MfmBuilder copyWith({
-    TextStyle? style,
-    double? scale,
-    double? opacity,
-    TextAlign? align,
-  }) =>
-      MfmBuilder(
-        colors: colors,
-        simple: simple,
-        style: style ?? this.style,
-        emojiBuilder: emojiBuilder,
-        mentionBuilder: mentionBuilder,
-        onLinkTap: onLinkTap,
-        onHashtagTap: onHashtagTap,
-        shouldNyaize: shouldNyaize,
-        useAdvanced: useAdvanced,
-        useAnimation: useAnimation,
-        scale: scale ?? this.scale,
-        opacity: opacity ?? this.opacity,
-        align: align ?? this.align,
-      );
+  bool _containsNewLine(MfmNode node) {
+    return switch (node) {
+      MfmText(:final text) || MfmPlain(:final text) => text.contains('\n'),
+      MfmFn(:final name, :final children?) =>
+        !_richTextFn.contains(name) && children.any(_containsNewLine),
+      MfmNode(:final children?) => children.any(_containsNewLine),
+      _ => false,
+    };
+  }
 
-  bool _containsNewLine(MfmNode node) => switch (node) {
-        MfmText(:final text) || MfmPlain(:final text) => text.contains('\n'),
-        MfmFn(:final name, :final children?) =>
-          !_richTextFn.contains(name) && children.any(_containsNewLine),
-        MfmNode(:final children?) => children.any(_containsNewLine),
-        _ => false,
-      };
-
-  MfmInline _removeNewLines(MfmInline node) => switch (node) {
-        MfmText(:final text) => MfmText(text.replaceAll('\n', '')),
-        MfmPlain(:final text) => MfmPlain(text.replaceAll('\n', '')),
-        MfmBold(:final children?) => MfmBold(
-            children.whereType<MfmInline>().map(_removeNewLines).toList(),
-          ),
-        MfmSmall(:final children?) => MfmSmall(
-            children.whereType<MfmInline>().map(_removeNewLines).toList(),
-          ),
-        MfmItalic(:final children?) => MfmItalic(
-            children.whereType<MfmInline>().map(_removeNewLines).toList(),
-          ),
-        MfmStrike(:final children?) => MfmStrike(
-            children.whereType<MfmInline>().map(_removeNewLines).toList(),
-          ),
-        MfmFn(:final name, :final args, :final children?) => MfmFn(
-            name: name,
-            args: args,
-            children:
-                children.whereType<MfmInline>().map(_removeNewLines).toList(),
-          ),
-        _ => node,
-      };
+  MfmInline _removeNewLines(MfmInline node) {
+    return switch (node) {
+      MfmText(:final text) => MfmText(text.replaceAll('\n', '')),
+      MfmPlain(:final text) => MfmPlain(text.replaceAll('\n', '')),
+      MfmBold(:final children?) => MfmBold(
+          children.whereType<MfmInline>().map(_removeNewLines).toList(),
+        ),
+      MfmSmall(:final children?) => MfmSmall(
+          children.whereType<MfmInline>().map(_removeNewLines).toList(),
+        ),
+      MfmItalic(:final children?) => MfmItalic(
+          children.whereType<MfmInline>().map(_removeNewLines).toList(),
+        ),
+      MfmStrike(:final children?) => MfmStrike(
+          children.whereType<MfmInline>().map(_removeNewLines).toList(),
+        ),
+      MfmFn(:final name, :final args, :final children?) => MfmFn(
+          name: name,
+          args: args,
+          children:
+              children.whereType<MfmInline>().map(_removeNewLines).toList(),
+        ),
+      _ => node,
+    };
+  }
 }
