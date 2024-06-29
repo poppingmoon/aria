@@ -46,9 +46,13 @@ class TimelinesPage extends HookConsumerWidget {
       },
       [],
     );
-    final showTimelineTabBarOnBottom = ref.watch(
+    final showTimelineTabBarAtBottom = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.showTimelineTabBarOnBottom),
+          .select((settings) => settings.showTimelineTabBarAtBottom),
+    );
+    final showMenuButtonInTabBar = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showMenuButtonInTabBar),
     );
     final enableHorizontalSwipe = ref.watch(
       generalSettingsNotifierProvider
@@ -165,10 +169,10 @@ class TimelinesPage extends HookConsumerWidget {
           Expanded(
             child: Scaffold(
               key: scaffoldKey,
-              appBar: showTimelineTabBarOnBottom
+              appBar: showTimelineTabBarAtBottom
                   ? null
                   : AppBar(
-                      automaticallyImplyLeading: false,
+                      automaticallyImplyLeading: showMenuButtonInTabBar,
                       title: TimelineTabBar(controller: controller),
                       centerTitle: true,
                     ),
@@ -246,13 +250,24 @@ class TimelinesPage extends HookConsumerWidget {
                       ),
               ),
               drawer: TimelineDrawer(controller: controller),
-              bottomNavigationBar: showTimelineTabBarOnBottom
+              bottomNavigationBar: showTimelineTabBarAtBottom
                   ? BottomAppBar(
                       padding: EdgeInsets.zero,
                       height: 56.0,
                       color: colors.panel,
                       elevation: 0.0,
-                      child: TimelineTabBar(controller: controller),
+                      child: Row(
+                        children: [
+                          if (showMenuButtonInTabBar)
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: DrawerButton(),
+                            ),
+                          Expanded(
+                            child: TimelineTabBar(controller: controller),
+                          ),
+                        ],
+                      ),
                     )
                   : null,
               floatingActionButton: tabSettings == null || !showPostForm.value

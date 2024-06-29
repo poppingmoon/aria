@@ -180,6 +180,7 @@ class _StringsAriaEnUs {
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
 	String get showImage => 'Show image';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
+	String get showMenuButtonInTabBar => 'Show menu button in tab bar';
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
@@ -190,7 +191,7 @@ class _StringsAriaEnUs {
 	String get showSubNoteFooter => 'Show action buttons in subnotes';
 	String get showSubNoteReactionsViewer => 'Show reactions viewers in subnotes';
 	String get showTimelineLastViewedAt => 'Show last viewed date of timelines';
-	String get showTimelineTabBarOnBottom => 'Show timeline tab bar on bottom';
+	String get showTimelineTabBarAtBottom => 'Show timeline tab bar at the bottom';
 	String get showTranslateButtonInNoteFooter => 'Add "Translate" to note action menu';
 	String get stackTrace => 'Stack trace';
 	String get streamingChannel => 'Streaming channel';
