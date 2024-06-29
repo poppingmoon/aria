@@ -93,7 +93,7 @@ class _UserHome extends ConsumerWidget {
   int _calcAge(DateTime birthday) {
     final now = DateTime.now();
     final yearDiff = now.year - birthday.year;
-    final monthDiff = now.month - now.month;
+    final monthDiff = now.month - birthday.month;
     if (monthDiff < 0 || (monthDiff == 0 && now.day < birthday.day)) {
       return yearDiff - 1;
     } else {
