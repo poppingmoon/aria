@@ -79,11 +79,18 @@ class AppearancePage extends HookConsumerWidget {
                 .setUseGroupedNotifications(value),
           ),
           SwitchListTile(
-            title: Text(t.aria.showTimelineTabBarOnBottom),
-            value: settings.showTimelineTabBarOnBottom,
+            title: Text(t.aria.showTimelineTabBarAtBottom),
+            value: settings.showTimelineTabBarAtBottom,
             onChanged: (value) => ref
                 .read(generalSettingsNotifierProvider.notifier)
-                .setShowTimelineTabBarOnBottom(value),
+                .setShowTimelineTabBarAtBottom(value),
+          ),
+          SwitchListTile(
+            title: Text(t.aria.showMenuButtonInTabBar),
+            value: settings.showMenuButtonInTabBar,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowMenuButtonInTabBar(value),
           ),
           SwitchListTile(
             title: Text(t.aria.alwaysShowTabHeader),

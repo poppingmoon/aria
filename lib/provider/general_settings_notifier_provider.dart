@@ -310,11 +310,16 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setShowTimelineTabBarOnBottom(
-    bool showTimelineTabBarOnBottom,
+  Future<void> setShowTimelineTabBarAtBottom(
+    bool showTimelineTabBarAtBottom,
   ) async {
     state =
-        state.copyWith(showTimelineTabBarOnBottom: showTimelineTabBarOnBottom);
+        state.copyWith(showTimelineTabBarAtBottom: showTimelineTabBarAtBottom);
+    await _save();
+  }
+
+  Future<void> setShowMenuButtonInTabBar(bool showMenuButtonInTabBar) async {
+    state = state.copyWith(showMenuButtonInTabBar: showMenuButtonInTabBar);
     await _save();
   }
 

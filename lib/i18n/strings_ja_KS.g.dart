@@ -168,6 +168,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示するで';
 	@override String get showImage => '画像を表示';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
+	@override String get showMenuButtonInTabBar => 'タイムラインのタブバーにメニューボタンを追加';
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示するで';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示するで';
 	@override String get showNoteReactionsViewer => 'ノートにツッコミを表示するで';
@@ -178,7 +179,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示するで';
 	@override String get showSubNoteReactionsViewer => 'サブノートにツッコミを表示するで';
 	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示するで';
-	@override String get showTimelineTabBarOnBottom => 'タイムラインのタブを下に表示するで';
+	@override String get showTimelineTabBarAtBottom => 'タイムラインのタブバーを下に表示するで';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
 	@override String get stackTrace => 'スタックトレース';
 	@override String get streamingChannel => 'ストリーミングチャンネル';
