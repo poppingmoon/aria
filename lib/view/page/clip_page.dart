@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -14,6 +13,7 @@ import '../../provider/api/clip_notifier_provider.dart';
 import '../../provider/api/clips_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../dialog/clip_settings_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../widget/like_button.dart';
@@ -72,8 +72,8 @@ class ClipPage extends HookConsumerWidget {
             itemBuilder: (context) => [
               PopupMenuItem(
                 onTap: () => launchUrl(
+                  ref,
                   Uri.https(account.host, 'clips/$clipId'),
-                  mode: LaunchMode.externalApplication,
                 ),
                 child: Text(t.aria.openInBrowser),
               ),

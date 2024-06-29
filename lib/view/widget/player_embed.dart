@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../model/summaly_result.dart';
+import '../../util/launch_url.dart';
 
-class PlayerEmbed extends StatelessWidget {
+class PlayerEmbed extends ConsumerWidget {
   const PlayerEmbed({super.key, required this.player});
 
   final Player player;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final width = player.width;
     final height = player.height;
     final url = player.url != null ? Uri.tryParse(player.url!) : null;
@@ -33,8 +34,8 @@ class PlayerEmbed extends StatelessWidget {
       shouldOverrideUrlLoading: (controller, navigationAction) async {
         if (navigationAction.hasGesture ?? false) {
           final url = navigationAction.request.url;
-          if (url != null && await canLaunchUrl(url)) {
-            await launchUrl(url, mode: LaunchMode.externalApplication);
+          if (url != null) {
+            await launchUrl(ref, url);
             return NavigationActionPolicy.CANCEL;
           }
         }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -9,6 +8,7 @@ import '../../../model/tab_settings.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../provider/api/post_notifier_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/launch_url.dart';
 import '../../widget/timeline_list_view.dart';
 import 'channel_featured.dart';
 import 'channel_home.dart';
@@ -49,8 +49,8 @@ class ChannelPage extends ConsumerWidget {
                 ),
                 PopupMenuItem(
                   onTap: () => launchUrl(
+                    ref,
                     Uri.https(account.host, 'channels/$channelId'),
-                    mode: LaunchMode.externalApplication,
                   ),
                   child: Text(t.aria.openInBrowser),
                 ),

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../i18n/strings.g.dart';
 import '../model/general_settings.dart';
@@ -400,6 +401,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
 
   Future<void> setConfirmBeforeFollow(bool confirmBeforeFollow) async {
     state = state.copyWith(confirmBeforeFollow: confirmBeforeFollow);
+    await _save();
+  }
+
+  Future<void> setLaunchMode(LaunchMode launchMode) async {
+    state = state.copyWith(launchMode: launchMode);
     await _save();
   }
 

@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant/colors.dart';
 import '../../../extension/user_detailed_extension.dart';
@@ -17,6 +16,7 @@ import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
+import '../../../util/launch_url.dart';
 import '../../../util/navigate.dart';
 import '../../../util/open_as_guest.dart';
 import '../../../util/punycode.dart';
@@ -274,10 +274,7 @@ class _UserHome extends ConsumerWidget {
                         Wrap(
                           children: [
                             TextButton(
-                              onPressed: () => launchUrl(
-                                remoteUrl,
-                                mode: LaunchMode.externalApplication,
-                              ),
+                              onPressed: () => launchUrl(ref, remoteUrl),
                               child: Text(t.misskey.showOnRemote),
                             ),
                             TextButton(
@@ -581,10 +578,8 @@ class _UserHome extends ConsumerWidget {
                                   padding: const EdgeInsets.all(4.0),
                                   child: Align(
                                     child: InkWell(
-                                      onTap: () => launchUrl(
-                                        Uri.https('skeb.jp'),
-                                        mode: LaunchMode.externalApplication,
-                                      ),
+                                      onTap: () =>
+                                          launchUrl(ref, Uri.https('skeb.jp')),
                                       child: DefaultTextStyle.merge(
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,

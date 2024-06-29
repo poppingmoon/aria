@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -19,6 +18,7 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../widget/note_detailed_widget.dart';
 import '../widget/note_fallback_widget.dart';
 import '../widget/note_widget.dart';
@@ -289,10 +289,7 @@ class NotePage extends HookConsumerWidget {
                               Wrap(
                                 children: [
                                   TextButton(
-                                    onPressed: () => launchUrl(
-                                      remoteUrl,
-                                      mode: LaunchMode.externalApplication,
-                                    ),
+                                    onPressed: () => launchUrl(ref, remoteUrl),
                                     child: Text(t.misskey.showOnRemote),
                                   ),
                                   if (remoteNoteId != null)

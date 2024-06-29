@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/reversi_invitations_provider.dart';
+import '../../util/launch_url.dart';
 
 class MisskeyGamesPage extends ConsumerWidget {
   const MisskeyGamesPage({super.key, required this.account});
@@ -24,12 +24,12 @@ class MisskeyGamesPage extends ConsumerWidget {
           ListTile(
             title: const Text('🍪👈'),
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => launchUrl(Uri.https(account.host, 'clicker')),
+            onTap: () => launchUrl(ref, Uri.https(account.host, 'clicker')),
           ),
           ListTile(
             title: Text(t.misskey.bubbleGame),
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => launchUrl(Uri.https(account.host, 'bubble-game')),
+            onTap: () => launchUrl(ref, Uri.https(account.host, 'bubble-game')),
           ),
           ListTile(
             title: Text(t.misskey.reversi_.reversi),
@@ -39,7 +39,7 @@ class MisskeyGamesPage extends ConsumerWidget {
                   )
                 : null,
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => launchUrl(Uri.https(account.host, 'reversi')),
+            onTap: () => launchUrl(ref, Uri.https(account.host, 'reversi')),
           ),
         ],
       ),

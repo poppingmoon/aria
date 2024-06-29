@@ -205,6 +205,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	]);
 	@override String get vibrateNote => 'ノートを受信したときに振動する';
 	@override String get vibrateNotification => '通知を受信したときに振動する';
+	@override String get webBrowser => 'ウェブブラウザ';
 }
 
 // Path: misskey

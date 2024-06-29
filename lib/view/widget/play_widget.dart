@@ -7,7 +7,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -26,6 +25,7 @@ import '../../rust/api/aiscript/play.dart';
 import '../../rust/api/aiscript/ui.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../../util/nyaize.dart';
 import '../dialog/error_message_dialog.dart';
 import '../dialog/text_field_dialog.dart';
@@ -148,10 +148,7 @@ class PlayWidget extends HookConsumerWidget {
                             ),
                             IconButton(
                               tooltip: t.aria.openInBrowser,
-                              onPressed: () => launchUrl(
-                                url,
-                                mode: LaunchMode.externalApplication,
-                              ),
+                              onPressed: () => launchUrl(ref, url),
                               icon: const Icon(Icons.open_in_browser),
                             ),
                             IconButton(

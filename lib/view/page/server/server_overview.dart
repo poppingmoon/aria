@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../constant/colors.dart';
 import '../../../i18n/strings.g.dart';
@@ -15,6 +14,7 @@ import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/api/stats_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/node_info_provider.dart';
+import '../../../util/launch_url.dart';
 import '../../widget/error_message.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/key_value_widget.dart';
@@ -118,7 +118,7 @@ class ServerOverview extends ConsumerWidget {
               child: Html(
                 data: meta?.description ?? instance?.description ?? '',
                 onLinkTap: (url, _, __) =>
-                    url != null ? launchUrl(Uri.parse(url)) : null,
+                    url != null ? launchUrl(ref, Uri.parse(url)) : null,
                 style: {
                   'body': Style(margin: Margins.all(0)),
                   'a': Style(
@@ -159,12 +159,12 @@ class ServerOverview extends ConsumerWidget {
                 leading: const Icon(Icons.code),
                 title: Text(t.misskey.sourceCode),
                 onTap: () => launchUrl(
+                  ref,
                   meta.repositoryUrl ??
                       Uri.https(
                         host,
                         'tarball/misskey-${meta.version}.tar.gz',
                       ),
-                  mode: LaunchMode.externalApplication,
                 ),
               ),
           ],
@@ -194,8 +194,8 @@ class ServerOverview extends ConsumerWidget {
               leading: const Icon(Icons.shield),
               title: Text(t.misskey.impressum),
               onTap: () => launchUrl(
+                ref,
                 impressumUrl,
-                mode: LaunchMode.externalApplication,
               ),
             ),
           if (meta != null && meta.serverRules.isNotEmpty)
@@ -225,7 +225,7 @@ class ServerOverview extends ConsumerWidget {
                       title: Html(
                         data: rule,
                         onLinkTap: (url, _, __) =>
-                            url != null ? launchUrl(Uri.parse(url)) : null,
+                            url != null ? launchUrl(ref, Uri.parse(url)) : null,
                         style: {
                           'body': Style(margin: Margins.all(0)),
                           'a': Style(
@@ -243,8 +243,8 @@ class ServerOverview extends ConsumerWidget {
               leading: const Icon(Icons.verified),
               title: Text(t.misskey.termsOfService),
               onTap: () => launchUrl(
+                ref,
                 tosUrl,
-                mode: LaunchMode.externalApplication,
               ),
             ),
           if (meta case MetaResponse(:final privacyPolicyUrl?))
@@ -252,8 +252,8 @@ class ServerOverview extends ConsumerWidget {
               leading: const Icon(Icons.policy),
               title: Text(t.misskey.privacyPolicy),
               onTap: () => launchUrl(
+                ref,
                 privacyPolicyUrl,
-                mode: LaunchMode.externalApplication,
               ),
             ),
           if (meta case MetaResponse(:final feedbackUrl?))
@@ -261,8 +261,8 @@ class ServerOverview extends ConsumerWidget {
               leading: const Icon(Icons.message),
               title: Text(t.misskey.feedback),
               onTap: () => launchUrl(
+                ref,
                 Uri.parse(feedbackUrl),
-                mode: LaunchMode.externalApplication,
               ),
             ),
           if (stats != null) ...[

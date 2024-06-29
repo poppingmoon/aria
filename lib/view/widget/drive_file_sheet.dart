@@ -5,7 +5,6 @@ import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -16,6 +15,7 @@ import '../../provider/cache_manager_provider.dart';
 import '../../provider/selected_drive_files_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/gallery_dialog.dart';
 import '../dialog/message_dialog.dart';
@@ -97,7 +97,7 @@ class DriveFileSheet extends ConsumerWidget {
     final isImage = file.type.startsWith('image/');
     final isVideo = file.type.startsWith('image/');
     if (!isImage && !isVideo) {
-      await launchUrl(Uri.parse(file.url));
+      await launchUrl(ref, Uri.parse(file.url));
       return;
     }
     if (!await Gal.requestAccess()) {

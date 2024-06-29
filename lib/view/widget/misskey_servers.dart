@@ -4,7 +4,6 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../constant/colors.dart';
 import '../../constant/shortcuts.dart';
@@ -12,6 +11,7 @@ import '../../i18n/strings.g.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/misskey_servers_provider.dart';
 import '../../provider/search_misskey_servers_provider.dart';
+import '../../util/launch_url.dart';
 import 'error_message.dart';
 import 'image_widget.dart';
 
@@ -176,7 +176,7 @@ class _ServerPreview extends ConsumerWidget {
                   Html(
                     data: description,
                     onLinkTap: (url, _, __) =>
-                        url != null ? launchUrl(Uri.parse(url)) : null,
+                        url != null ? launchUrl(ref, Uri.parse(url)) : null,
                     style: {
                       'a': Style(
                         color: colors.link,

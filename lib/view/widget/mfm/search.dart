@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
+import '../../../util/launch_url.dart';
 import '../url_sheet.dart';
 
-class Search extends HookWidget {
+class Search extends HookConsumerWidget {
   const Search({
     super.key,
     required this.query,
@@ -16,7 +16,7 @@ class Search extends HookWidget {
   final TextScaler? textScaler;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
@@ -46,6 +46,7 @@ class Search extends HookWidget {
             clipBehavior: Clip.hardEdge,
             child: InkWell(
               onTap: () => launchUrl(
+                ref,
                 Uri.https('google.com', 'search', {'q': query}),
               ),
               onLongPress: () => showModalBottomSheet<void>(

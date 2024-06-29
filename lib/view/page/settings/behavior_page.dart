@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../../i18n/strings.g.dart';
@@ -169,6 +170,41 @@ class BehaviorPage extends ConsumerWidget {
             onChanged: (value) => ref
                 .read(generalSettingsNotifierProvider.notifier)
                 .setConfirmBeforeFollow(value),
+          ),
+          ListTile(
+            title: Text(t.aria.webBrowser),
+            subtitle: Text(
+              switch (settings.launchMode) {
+                LaunchMode.inAppBrowserView => t.aria.openInInternalBrowser,
+                LaunchMode.externalApplication => t.aria.openInExternalBrowser,
+                _ => '',
+              },
+            ),
+            trailing: const Icon(Icons.navigate_next),
+            onTap: () async {
+              final result = await showRadioDialog(
+                context,
+                title: Text(t.aria.webBrowser),
+                values: [
+                  LaunchMode.inAppBrowserView,
+                  LaunchMode.externalApplication,
+                ],
+                initialValue: settings.launchMode,
+                itemBuilder: (context, value) => Text(
+                  switch (value) {
+                    LaunchMode.inAppBrowserView => t.aria.openInInternalBrowser,
+                    LaunchMode.externalApplication =>
+                      t.aria.openInExternalBrowser,
+                    _ => '',
+                  },
+                ),
+              );
+              if (result != null) {
+                await ref
+                    .read(generalSettingsNotifierProvider.notifier)
+                    .setLaunchMode(result);
+              }
+            },
           ),
         ],
       ),

@@ -1,12 +1,12 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
+import '../../../util/launch_url.dart';
 import '../../widget/general_settings_scaffold.dart';
 import '../../widget/mfm.dart';
 
@@ -48,6 +48,7 @@ class LanguagesPage extends ConsumerWidget {
                       baseline: TextBaseline.alphabetic,
                       child: InkWell(
                         onTap: () => launchUrl(
+                          ref,
                           Uri.https('github.com', 'poppingmoon/aria'),
                         ),
                         child: Text.rich(

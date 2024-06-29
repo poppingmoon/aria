@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:json5/json5.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../extension/string_extension.dart';
@@ -12,6 +11,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/endpoints_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
 const _sampleEmojis = """
@@ -64,10 +64,7 @@ class PasteEmojisDialog extends HookConsumerWidget {
                 text: registryUrl.toString().breakAll,
                 style: TextStyle(color: colors.link),
                 recognizer: recognizer
-                  ..onTap = () => launchUrl(
-                        registryUrl,
-                        mode: LaunchMode.externalApplication,
-                      ),
+                  ..onTap = () => launchUrl(ref, registryUrl),
               ),
             ),
           ),

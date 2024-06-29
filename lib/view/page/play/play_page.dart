@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -11,6 +10,7 @@ import '../../../provider/api/play_notifier_provider.dart';
 import '../../../provider/api/post_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/launch_url.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
@@ -60,10 +60,7 @@ class PlayPage extends HookConsumerWidget {
                 child: Text(t.misskey.copyLink),
               ),
               PopupMenuItem(
-                onTap: () => launchUrl(
-                  url,
-                  mode: LaunchMode.externalApplication,
-                ),
+                onTap: () => launchUrl(ref, url),
                 child: Text(t.aria.openInBrowser),
               ),
               PopupMenuItem(

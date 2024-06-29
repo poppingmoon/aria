@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../constant/colors.dart';
 import '../../extension/text_style_extension.dart';
@@ -18,6 +17,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../dialog/clip_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/reaction_confirmation_dialog.dart';
@@ -450,6 +450,7 @@ class NoteFooter extends ConsumerWidget {
                           );
                         } else {
                           launchUrl(
+                            ref,
                             Uri.https(
                               'translate.google.com',
                               '',
