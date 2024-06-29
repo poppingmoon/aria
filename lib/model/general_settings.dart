@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../i18n/strings.g.dart';
 
@@ -104,6 +105,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool confirmBeforePost,
     @Default(true) bool confirmBeforeReact,
     @Default(true) bool confirmBeforeFollow,
+    @Default(LaunchMode.externalApplication) LaunchMode launchMode,
 
     // Theme
     @Default(ThemeMode.system) ThemeMode themeMode,

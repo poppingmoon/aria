@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -15,6 +14,7 @@ import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../../util/open_as_guest.dart';
 import '../dialog/antenna_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
@@ -94,7 +94,7 @@ class UserSheet extends ConsumerWidget {
             leading: const Icon(Icons.open_in_browser),
             title: Text(t.aria.openInBrowser),
             onTap: () {
-              launchUrl(profileUrl, mode: LaunchMode.externalApplication);
+              launchUrl(ref, profileUrl);
               context.pop();
             },
           ),
@@ -103,7 +103,7 @@ class UserSheet extends ConsumerWidget {
               leading: const Icon(Icons.rocket_launch),
               title: Text(t.misskey.showOnRemote),
               onTap: () {
-                launchUrl(remoteUrl, mode: LaunchMode.externalApplication);
+                launchUrl(ref, remoteUrl);
                 context.pop();
               },
             ),

@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:pretty_bytes/pretty_bytes.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -16,6 +15,7 @@ import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
+import '../../util/launch_url.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
@@ -144,7 +144,7 @@ class MediaCard extends HookConsumerWidget {
       }
     }
     return InkWell(
-      onTap: () => launchUrl(Uri.parse(file.url)),
+      onTap: () => launchUrl(ref, Uri.parse(file.url)),
       child: Stack(
         alignment: Alignment.center,
         children: [

@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../extension/note_extension.dart';
 import '../../extension/user_extension.dart';
@@ -20,6 +19,7 @@ import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../dialog/clip_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/delete_and_edit_dialog.dart';
@@ -114,7 +114,7 @@ class NoteSheet extends ConsumerWidget {
             leading: const Icon(Icons.open_in_browser),
             title: Text(t.aria.openInBrowser),
             onTap: () {
-              launchUrl(url, mode: LaunchMode.externalApplication);
+              launchUrl(ref, url);
               context.pop();
             },
           ),
@@ -123,7 +123,7 @@ class NoteSheet extends ConsumerWidget {
               leading: const Icon(Icons.rocket_launch),
               title: Text(t.misskey.showOnRemote),
               onTap: () {
-                launchUrl(remoteUrl, mode: LaunchMode.externalApplication);
+                launchUrl(ref, remoteUrl);
                 context.pop();
               },
             ),
@@ -239,6 +239,7 @@ class NoteSheet extends ConsumerWidget {
                   );
                 } else {
                   launchUrl(
+                    ref,
                     Uri.https(
                       'translate.google.com',
                       '',

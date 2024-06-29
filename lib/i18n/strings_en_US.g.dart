@@ -219,6 +219,7 @@ class _StringsAriaEnUs {
 	]);
 	String get vibrateNote => 'Vibrate on new note';
 	String get vibrateNotification => 'Vibrate on new notification';
+	String get webBrowser => 'Web browser';
 }
 
 // Path: misskey

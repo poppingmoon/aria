@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -13,6 +12,7 @@ import '../../provider/api/antennas_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import '../dialog/antenna_settings_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../widget/note_widget.dart';
@@ -74,8 +74,8 @@ class AntennaPage extends ConsumerWidget {
             itemBuilder: (context) => [
               PopupMenuItem(
                 onTap: () => launchUrl(
+                  ref,
                   Uri.https(account.host, 'my/antennas/$antennaId'),
-                  mode: LaunchMode.externalApplication,
                 ),
                 child: Text(t.aria.openInBrowser),
               ),

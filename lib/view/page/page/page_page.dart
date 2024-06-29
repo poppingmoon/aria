@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -14,6 +13,7 @@ import '../../../provider/api/user_pages_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/extract_url.dart';
 import '../../../util/future_with_dialog.dart';
+import '../../../util/launch_url.dart';
 import '../../dialog/image_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
@@ -166,10 +166,7 @@ class PagePage extends ConsumerWidget {
                 child: Text(t.misskey.copyLink),
               ),
               PopupMenuItem(
-                onTap: () => launchUrl(
-                  url,
-                  mode: LaunchMode.externalApplication,
-                ),
+                onTap: () => launchUrl(ref, url),
                 child: Text(t.aria.openInBrowser),
               ),
               PopupMenuItem(
@@ -329,10 +326,7 @@ class PagePage extends ConsumerWidget {
                           ),
                           IconButton(
                             tooltip: t.aria.openInBrowser,
-                            onPressed: () => launchUrl(
-                              url,
-                              mode: LaunchMode.externalApplication,
-                            ),
+                            onPressed: () => launchUrl(ref, url),
                             icon: const Icon(Icons.open_in_browser),
                           ),
                           IconButton(

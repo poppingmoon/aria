@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../util/launch_url.dart';
 import 'mfm.dart';
 
 class SkebStatusWidget extends ConsumerWidget {
@@ -50,11 +50,11 @@ class SkebStatusWidget extends ConsumerWidget {
           .join(' | '),
       child: InkWell(
         onTap: () => launchUrl(
+          ref,
           Uri.https(
             'skeb.jp',
             '@${skebStatus.screenName}',
           ),
-          mode: LaunchMode.externalApplication,
         ),
         child: Text.rich(
           TextSpan(

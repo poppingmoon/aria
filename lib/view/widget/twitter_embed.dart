@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class TwitterEmbed extends HookWidget {
+import '../../util/launch_url.dart';
+
+class TwitterEmbed extends HookConsumerWidget {
   const TwitterEmbed({
     super.key,
     required this.tweetId,
@@ -17,7 +19,7 @@ class TwitterEmbed extends HookWidget {
   final String lang;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final height = useState(200.0);
     // https://developer.twitter.com/en/docs/twitter-for-websites/embedded-tweets/guides/embedded-tweet-javascript-factory-function
     final content = """
@@ -82,8 +84,8 @@ class TwitterEmbed extends HookWidget {
         shouldOverrideUrlLoading: (controller, navigationAction) async {
           if (navigationAction.hasGesture ?? false) {
             final url = navigationAction.request.url;
-            if (url != null && await canLaunchUrl(url)) {
-              await launchUrl(url, mode: LaunchMode.externalApplication);
+            if (url != null) {
+              await launchUrl(ref, url);
               return NavigationActionPolicy.CANCEL;
             }
           }

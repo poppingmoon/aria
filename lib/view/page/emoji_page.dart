@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/emoji_response_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/copy_text.dart';
+import '../../util/launch_url.dart';
 import '../dialog/image_dialog.dart';
 import '../widget/error_message.dart';
 import '../widget/image_widget.dart';
@@ -138,10 +138,7 @@ class EmojiPage extends ConsumerWidget {
                           label: t.misskey.emojiUrl,
                           child: UrlWidget(
                             url: emoji.url.toString(),
-                            onTap: () => launchUrl(
-                              emoji.url!,
-                              mode: LaunchMode.externalApplication,
-                            ),
+                            onTap: () => launchUrl(ref, emoji.url!),
                             style: TextStyle(color: colors.link),
                           ),
                         ),

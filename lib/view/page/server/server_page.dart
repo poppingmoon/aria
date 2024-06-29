@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/federation_instance_provider.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/launch_url.dart';
 import 'server_ads.dart';
 import 'server_emojis.dart';
 import 'server_overview.dart';
@@ -122,10 +122,7 @@ class ServerPage extends HookConsumerWidget {
               ListTile(
                 leading: const Icon(Icons.open_in_browser),
                 title: Text(t.aria.openInBrowser),
-                onTap: () => launchUrl(
-                  Uri.https(host),
-                  mode: LaunchMode.externalApplication,
-                ),
+                onTap: () => launchUrl(ref, Uri.https(host)),
               ),
             ],
           ),

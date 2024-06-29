@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../util/launch_url.dart';
 import '../widget/url_sheet.dart';
 
 class AboutAriaPage extends HookConsumerWidget {
@@ -61,6 +61,7 @@ class AboutAriaPage extends HookConsumerWidget {
                             baseline: TextBaseline.alphabetic,
                             child: InkWell(
                               onTap: () => launchUrl(
+                                ref,
                                 Uri.https(
                                   'github.com',
                                   'shiosyakeyakini-info/miria',
@@ -85,6 +86,7 @@ class AboutAriaPage extends HookConsumerWidget {
                             baseline: TextBaseline.alphabetic,
                             child: InkWell(
                               onTap: () => launchUrl(
+                                ref,
                                 Uri.https('github.com', 'misskey-dev/misskey'),
                               ),
                               onLongPress: () => showModalBottomSheet<void>(
@@ -128,6 +130,7 @@ class AboutAriaPage extends HookConsumerWidget {
                             baseline: TextBaseline.alphabetic,
                             child: InkWell(
                               onTap: () => launchUrl(
+                                ref,
                                 Uri.https(
                                   'creativecommons.org',
                                   'licenses/by/4.0',
@@ -158,8 +161,8 @@ class AboutAriaPage extends HookConsumerWidget {
                 leading: const Icon(Icons.code),
                 title: Text(t.misskey.aboutMisskey_.source),
                 onTap: () => launchUrl(
+                  ref,
                   Uri.https('github.com', 'poppingmoon/aria'),
-                  mode: LaunchMode.externalApplication,
                 ),
               ),
               ListTile(

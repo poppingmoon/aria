@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../provider/miauth_notifier_provider.dart';
 import '../../provider/misskey_servers_provider.dart';
+import '../../util/launch_url.dart';
 import '../../util/punycode.dart';
 import '../dialog/misskey_server_list_dialog.dart';
 import '../widget/image_widget.dart';
@@ -25,7 +25,7 @@ class LoginPage extends HookConsumerWidget {
             .toLowerCase();
     final url =
         ref.read(miAuthNotifierProvider.notifier).buildMiAuthUrl(trimmed);
-    launchUrl(url, mode: LaunchMode.externalApplication);
+    launchUrl(ref, url);
     ref.context.push('/login/authenticate');
   }
 
