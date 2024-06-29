@@ -6,6 +6,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
+import '../../model/mfm_config.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/navigate.dart';
@@ -41,7 +42,7 @@ List<InlineSpan> buildMfm(
   final useAdvanced = generalSettings.advancedMfm;
   final useAnimation = useAdvanced && generalSettings.animatedMfm;
 
-  return MfmBuilder(
+  return MfmConfig(
     colors: colors,
     simple: simple,
     style: textStyle,
