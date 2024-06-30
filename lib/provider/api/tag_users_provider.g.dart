@@ -6,7 +6,7 @@ part of 'tag_users_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagUsersHash() => r'55e6e7821a3b59551f880d82d7bb34871351223f';
+String _$tagUsersHash() => r'8094b6f83a25a81af2b85e62117100f53fc23c00';
 
 /// Copied from Dart SDK
 class _SystemHash {

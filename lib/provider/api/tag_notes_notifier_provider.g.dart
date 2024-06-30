@@ -6,7 +6,7 @@ part of 'tag_notes_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagNotesNotifierHash() => r'99950dfca3dde3da64366a434bd36bca81e5307a';
+String _$tagNotesNotifierHash() => r'6ce3571990427b008bd2f168af102093bc91f68f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -33,11 +33,15 @@ abstract class _$TagNotesNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
   late final Account account;
   late final String tag;
+  late final String? sinceId;
+  late final String? untilId;
 
   FutureOr<PaginationState<Note>> build(
     Account account,
-    String tag,
-  );
+    String tag, {
+    String? sinceId,
+    String? untilId,
+  });
 }
 
 /// See also [TagNotesNotifier].
@@ -52,11 +56,15 @@ class TagNotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
   /// See also [TagNotesNotifier].
   TagNotesNotifierProvider call(
     Account account,
-    String tag,
-  ) {
+    String tag, {
+    String? sinceId,
+    String? untilId,
+  }) {
     return TagNotesNotifierProvider(
       account,
       tag,
+      sinceId: sinceId,
+      untilId: untilId,
     );
   }
 
@@ -67,6 +75,8 @@ class TagNotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
     return call(
       provider.account,
       provider.tag,
+      sinceId: provider.sinceId,
+      untilId: provider.untilId,
     );
   }
 
@@ -91,11 +101,15 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   /// See also [TagNotesNotifier].
   TagNotesNotifierProvider(
     Account account,
-    String tag,
-  ) : this._internal(
+    String tag, {
+    String? sinceId,
+    String? untilId,
+  }) : this._internal(
           () => TagNotesNotifier()
             ..account = account
-            ..tag = tag,
+            ..tag = tag
+            ..sinceId = sinceId
+            ..untilId = untilId,
           from: tagNotesNotifierProvider,
           name: r'tagNotesNotifierProvider',
           debugGetCreateSourceHash:
@@ -107,6 +121,8 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
               TagNotesNotifierFamily._allTransitiveDependencies,
           account: account,
           tag: tag,
+          sinceId: sinceId,
+          untilId: untilId,
         );
 
   TagNotesNotifierProvider._internal(
@@ -118,10 +134,14 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     required super.from,
     required this.account,
     required this.tag,
+    required this.sinceId,
+    required this.untilId,
   }) : super.internal();
 
   final Account account;
   final String tag;
+  final String? sinceId;
+  final String? untilId;
 
   @override
   FutureOr<PaginationState<Note>> runNotifierBuild(
@@ -130,6 +150,8 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return notifier.build(
       account,
       tag,
+      sinceId: sinceId,
+      untilId: untilId,
     );
   }
 
@@ -140,7 +162,9 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
       override: TagNotesNotifierProvider._internal(
         () => create()
           ..account = account
-          ..tag = tag,
+          ..tag = tag
+          ..sinceId = sinceId
+          ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,
@@ -148,6 +172,8 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
         debugGetCreateSourceHash: null,
         account: account,
         tag: tag,
+        sinceId: sinceId,
+        untilId: untilId,
       ),
     );
   }
@@ -162,7 +188,9 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   bool operator ==(Object other) {
     return other is TagNotesNotifierProvider &&
         other.account == account &&
-        other.tag == tag;
+        other.tag == tag &&
+        other.sinceId == sinceId &&
+        other.untilId == untilId;
   }
 
   @override
@@ -170,6 +198,8 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
     hash = _SystemHash.combine(hash, tag.hashCode);
+    hash = _SystemHash.combine(hash, sinceId.hashCode);
+    hash = _SystemHash.combine(hash, untilId.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -182,6 +212,12 @@ mixin TagNotesNotifierRef
 
   /// The parameter `tag` of this provider.
   String get tag;
+
+  /// The parameter `sinceId` of this provider.
+  String? get sinceId;
+
+  /// The parameter `untilId` of this provider.
+  String? get untilId;
 }
 
 class _TagNotesNotifierProviderElement
@@ -193,6 +229,10 @@ class _TagNotesNotifierProviderElement
   Account get account => (origin as TagNotesNotifierProvider).account;
   @override
   String get tag => (origin as TagNotesNotifierProvider).tag;
+  @override
+  String? get sinceId => (origin as TagNotesNotifierProvider).sinceId;
+  @override
+  String? get untilId => (origin as TagNotesNotifierProvider).untilId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

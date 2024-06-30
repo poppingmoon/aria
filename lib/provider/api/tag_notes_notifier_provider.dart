@@ -11,14 +11,23 @@ part 'tag_notes_notifier_provider.g.dart';
 @riverpod
 class TagNotesNotifier extends _$TagNotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(Account account, String tag) async {
-    final response = await _fetchNotes();
+  FutureOr<PaginationState<Note>> build(
+    Account account,
+    String tag, {
+    String? sinceId,
+    String? untilId,
+  }) async {
+    final response = await _fetchNotes(untilId: untilId);
     return PaginationState.fromIterable(response);
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
     final notes = await ref.read(misskeyProvider(account)).notes.searchByTag(
-          NotesSearchByTagRequest(tag: tag, untilId: untilId),
+          NotesSearchByTagRequest(
+            tag: tag,
+            sinceId: sinceId,
+            untilId: untilId,
+          ),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;
