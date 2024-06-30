@@ -12,6 +12,7 @@ import '../../widget/error_message.dart';
 import '../../widget/misskey_server_autocomplete.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/user_info.dart';
+import '../../widget/users_sort_type_widget.dart';
 
 enum _UserType { pinned, local, remote }
 
@@ -99,44 +100,14 @@ class ExploreUsers extends HookConsumerWidget {
                     flex: 3,
                     child: DropdownButton(
                       isExpanded: true,
-                      items: [
-                        DropdownMenuItem(
-                          value: UsersSortType.followerAscendant,
-                          child: Text(
-                            '${t.misskey.followersCount} (${t.misskey.ascendingOrder})',
-                          ),
-                        ),
-                        DropdownMenuItem(
-                          value: UsersSortType.followerDescendant,
-                          child: Text(
-                            '${t.misskey.followersCount} (${t.misskey.descendingOrder})',
-                          ),
-                        ),
-                        DropdownMenuItem(
-                          value: UsersSortType.createdAtAscendant,
-                          child: Text(
-                            '${t.misskey.createdAt} (${t.misskey.ascendingOrder})',
-                          ),
-                        ),
-                        DropdownMenuItem(
-                          value: UsersSortType.createdAtDescendant,
-                          child: Text(
-                            '${t.misskey.createdAt} (${t.misskey.descendingOrder})',
-                          ),
-                        ),
-                        DropdownMenuItem(
-                          value: UsersSortType.updateAtAscendant,
-                          child: Text(
-                            '${t.misskey.updatedAt} (${t.misskey.ascendingOrder})',
-                          ),
-                        ),
-                        DropdownMenuItem(
-                          value: UsersSortType.updateAtDescendant,
-                          child: Text(
-                            '${t.misskey.updatedAt} (${t.misskey.descendingOrder})',
-                          ),
-                        ),
-                      ],
+                      items: UsersSortType.values
+                          .map(
+                            (sort) => DropdownMenuItem(
+                              value: sort,
+                              child: UsersSortTypeWidget(sort: sort),
+                            ),
+                          )
+                          .toList(),
                       value: sort.value,
                       onChanged: (value) {
                         if (value != null) {
