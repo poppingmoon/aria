@@ -11,7 +11,6 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_is_long_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
-import '../../util/navigate.dart';
 import 'emoji_sheet.dart';
 import 'media_list.dart';
 import 'mfm.dart';
@@ -102,7 +101,6 @@ class SubNoteContent extends HookConsumerWidget {
                           targetNote: note,
                         ),
                       ),
-                      onLinkTap: (link) => navigate(ref, account, link),
                       maxLines: isCollapsed.value ? 10 : null,
                     ),
                     [account, parsed, colors, note.user, note.emojis],

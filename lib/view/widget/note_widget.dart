@@ -20,7 +20,6 @@ import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
 import '../../util/get_note_action.dart';
-import '../../util/navigate.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
 import 'emoji_sheet.dart';
@@ -440,8 +439,6 @@ class NoteWidget extends HookConsumerWidget {
                                                 targetNote: appearNote,
                                               ),
                                             ),
-                                            onLinkTap: (link) =>
-                                                navigate(ref, account, link),
                                             maxLines:
                                                 isCollapsed.value ? 10 : null,
                                           ),

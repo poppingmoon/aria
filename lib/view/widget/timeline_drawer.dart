@@ -185,7 +185,8 @@ class TimelineDrawer extends HookConsumerWidget {
                       if (query.startsWith('@') && !query.contains(' ')) {
                         await context.push('/$account/$query');
                       } else if (query.startsWith('#')) {
-                        await context.push('/$account/tags/$query');
+                        await context
+                            .push('/$account/tags/${query.substring(1)}');
                       } else if (query.startsWith('https://')) {
                         final url = Uri.tryParse(query);
                         if (url == null) return;
