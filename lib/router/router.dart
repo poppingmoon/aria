@@ -72,7 +72,7 @@ import '../view/page/settings/theme_manage_page.dart';
 import '../view/page/settings/theme_page.dart';
 import '../view/page/share_page.dart';
 import '../view/page/splash_page.dart';
-import '../view/page/tag_page.dart';
+import '../view/page/tag/tag_page.dart';
 import '../view/page/timeline_page.dart';
 import '../view/page/timelines_page.dart';
 import '../view/page/token_login_page.dart';
