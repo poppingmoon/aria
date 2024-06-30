@@ -98,6 +98,7 @@ class UserInfo extends ConsumerWidget {
                   text: description,
                   emojis: user.emojis,
                   author: user,
+                  isUserDescription: true,
                   overflow: TextOverflow.ellipsis,
                   maxLines: 3,
                 ),

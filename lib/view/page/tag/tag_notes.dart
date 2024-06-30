@@ -25,6 +25,7 @@ class TagNotes extends ConsumerWidget {
       paginationState: notes,
       itemBuilder: (context, note) =>
           NoteWidget(account: account, noteId: note.id),
+      footer: const SliverToBoxAdapter(child: SizedBox(height: 80.0)),
       onRefresh: () =>
           ref.refresh(tagNotesNotifierProvider(account, tag).future),
       loadMore: (skipError) => ref

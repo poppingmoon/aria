@@ -592,6 +592,7 @@ GoRouter router(RouterRef ref) {
             builder: (_, state) => TagPage(
               account: Account.fromString(state.pathParameters['acct']!),
               tag: state.pathParameters['tag']!,
+              initialIndex: state.uri.fragment == 'users' ? 1 : 0,
             ),
           ),
           GoRoute(

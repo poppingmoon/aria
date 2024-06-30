@@ -13,6 +13,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
     this.header,
     required this.paginationState,
     required this.itemBuilder,
+    this.footer,
     this.onRefresh,
     this.loadMore,
     this.panel = true,
@@ -23,6 +24,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
   final Widget? header;
   final AsyncValue<PaginationState<T>>? paginationState;
   final Widget Function(BuildContext context, T item) itemBuilder;
+  final Widget? footer;
   final Future<void> Function()? onRefresh;
   final void Function(bool skipError)? loadMore;
   final bool panel;
@@ -60,7 +62,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
           child: CustomScrollView(
             controller: controller,
             slivers: [
-              if (header != null) header!,
+              if (header case final header?) header,
               if (paginationState != null) ...[
                 if (paginationState?.valueOrNull
                     case PaginationState(:final items))
@@ -114,6 +116,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
                   ),
                 ),
               ],
+              if (footer case final footer?) footer,
             ],
           ),
         ),

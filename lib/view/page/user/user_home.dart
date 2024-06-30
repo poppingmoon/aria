@@ -386,6 +386,7 @@ class _UserHome extends ConsumerWidget {
                               text: user.description,
                               emojis: user.emojis,
                               author: user,
+                              isUserDescription: true,
                               textAlign: TextAlign.center,
                             )
                           : Text(
