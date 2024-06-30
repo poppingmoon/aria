@@ -193,6 +193,7 @@ class PostPage extends HookConsumerWidget {
                           color: colors.panel,
                           elevation: 0.0,
                           margin: const EdgeInsets.all(8.0),
+                          clipBehavior: Clip.antiAlias,
                           child: request.isRenote
                               ? NoteWidget(
                                   account: account.value,
