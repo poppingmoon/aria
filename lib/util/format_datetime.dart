@@ -42,5 +42,5 @@ String relativeTime(DateTime time) {
 String absoluteTime(DateTime time) {
   final lang = t.$meta.locale.languageTag;
   final prefix = time.year.isNegative ? '-' : '';
-  return '$prefix${DateFormat.yMd(lang).add_jms().format(time.toUtc().toLocal())}';
+  return '$prefix${DateFormat.yMd(lang).add_jms().format(time.toLocal())}';
 }

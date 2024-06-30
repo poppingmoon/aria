@@ -19,6 +19,7 @@ FutureOr<List<UserDetailed>> tagUsers(
           tag: tag,
           sort: sort,
           origin: userOrigin,
+          limit: 30,
         ),
       );
   return response.toList();

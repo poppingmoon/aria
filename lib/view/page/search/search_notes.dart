@@ -7,10 +7,14 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
+import '../../../model/id.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
+import '../../../provider/api/id_gen_method_provider.dart';
 import '../../../provider/api/search_notes_notifier_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
+import '../../../util/format_datetime.dart';
+import '../../../util/pick_date_time.dart';
 import '../../../util/punycode.dart';
 import '../../dialog/user_select_dialog.dart';
 import '../../widget/note_widget.dart';
@@ -50,6 +54,15 @@ class SearchNotes extends HookConsumerWidget {
             .valueOrNull
         : null;
     final localOnly = useState(this.channelId != null);
+    final sinceDate = useState<DateTime?>(null);
+    final untilDate = useState<DateTime?>(null);
+    final method = ref.watch(idGenMethodProvider(account)).valueOrNull;
+    final sinceId = method != null && sinceDate.value != null
+        ? Id(method: method, date: sinceDate.value!).toString()
+        : null;
+    final untilId = method != null && untilDate.value != null
+        ? Id(method: method, date: untilDate.value!).toString()
+        : null;
     final notes = query.value.isNotEmpty
         ? ref.watch(
             searchNotesNotifierProvider(
@@ -58,6 +71,8 @@ class SearchNotes extends HookConsumerWidget {
               userId: userId.value,
               channelId: channelId.value,
               localOnly: localOnly.value,
+              sinceId: sinceId,
+              untilId: untilId,
             ),
           )
         : null;
@@ -173,6 +188,52 @@ class SearchNotes extends HookConsumerWidget {
                   }
                 },
               ),
+              ListTile(
+                title: Text(t.aria.sinceDate),
+                subtitle: Text(
+                  sinceDate.value != null
+                      ? absoluteTime(sinceDate.value!)
+                      : t.misskey.notSet,
+                ),
+                trailing: sinceDate.value != null
+                    ? IconButton(
+                        onPressed: () => sinceDate.value = null,
+                        icon: const Icon(Icons.close),
+                      )
+                    : const Icon(Icons.navigate_next),
+                onTap: () async {
+                  final result = await pickDateTime(
+                    context,
+                    initialDate: sinceDate.value,
+                  );
+                  if (result != null) {
+                    sinceDate.value = result;
+                  }
+                },
+              ),
+              ListTile(
+                title: Text(t.aria.untilDate),
+                subtitle: Text(
+                  untilDate.value != null
+                      ? absoluteTime(untilDate.value!)
+                      : t.misskey.notSet,
+                ),
+                trailing: untilDate.value != null
+                    ? IconButton(
+                        onPressed: () => untilDate.value = null,
+                        icon: const Icon(Icons.close),
+                      )
+                    : const Icon(Icons.navigate_next),
+                onTap: () async {
+                  final result = await pickDateTime(
+                    context,
+                    initialDate: untilDate.value,
+                  );
+                  if (result != null) {
+                    untilDate.value = result;
+                  }
+                },
+              ),
             ],
           ),
           Padding(
@@ -194,6 +255,8 @@ class SearchNotes extends HookConsumerWidget {
           userId: userId.value,
           channelId: channelId.value,
           localOnly: localOnly.value,
+          sinceId: sinceId,
+          untilId: untilId,
         ).future,
       ),
       loadMore: (skipError) => ref
@@ -204,6 +267,8 @@ class SearchNotes extends HookConsumerWidget {
               userId: userId.value,
               channelId: channelId.value,
               localOnly: localOnly.value,
+              sinceId: sinceId,
+              untilId: untilId,
             ).notifier,
           )
           .loadMore(skipError: skipError),

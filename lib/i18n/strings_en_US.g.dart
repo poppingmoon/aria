@@ -193,6 +193,7 @@ class _StringsAriaEnUs {
 	String get showTimelineLastViewedAt => 'Show last viewed date of timelines';
 	String get showTimelineTabBarAtBottom => 'Show timeline tab bar at the bottom';
 	String get showTranslateButtonInNoteFooter => 'Add "Translate" to note action menu';
+	String get sinceDate => 'Since';
 	String get stackTrace => 'Stack trace';
 	String get streamingChannel => 'Streaming channel';
 	String get tabName => 'Tab name';
@@ -206,6 +207,7 @@ class _StringsAriaEnUs {
 		name,
 		const TextSpan(text: '?'),
 	]);
+	String get untilDate => 'Until';
 	String get uploaded => 'Uploaded';
 	String get useThisEmoji => 'Use this emoji';
 	TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [

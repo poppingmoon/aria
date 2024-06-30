@@ -7,7 +7,7 @@ part of 'search_notes_notifier_provider.dart';
 // **************************************************************************
 
 String _$searchNotesNotifierHash() =>
-    r'ddd7266f5de1fd8f5945f36018c18cb9fc87de32';
+    r'7f82a2bde5cdd3e637c1a79575c0340a81302c64';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -37,6 +37,7 @@ abstract class _$SearchNotesNotifier
   late final String? userId;
   late final String? channelId;
   late final bool? localOnly;
+  late final String? sinceId;
   late final String? untilId;
 
   FutureOr<PaginationState<Note>> build(
@@ -45,6 +46,7 @@ abstract class _$SearchNotesNotifier
     String? userId,
     String? channelId,
     bool? localOnly,
+    String? sinceId,
     String? untilId,
   });
 }
@@ -66,6 +68,7 @@ class SearchNotesNotifierFamily
     String? userId,
     String? channelId,
     bool? localOnly,
+    String? sinceId,
     String? untilId,
   }) {
     return SearchNotesNotifierProvider(
@@ -74,6 +77,7 @@ class SearchNotesNotifierFamily
       userId: userId,
       channelId: channelId,
       localOnly: localOnly,
+      sinceId: sinceId,
       untilId: untilId,
     );
   }
@@ -88,6 +92,7 @@ class SearchNotesNotifierFamily
       userId: provider.userId,
       channelId: provider.channelId,
       localOnly: provider.localOnly,
+      sinceId: provider.sinceId,
       untilId: provider.untilId,
     );
   }
@@ -117,6 +122,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     String? userId,
     String? channelId,
     bool? localOnly,
+    String? sinceId,
     String? untilId,
   }) : this._internal(
           () => SearchNotesNotifier()
@@ -125,6 +131,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
             ..userId = userId
             ..channelId = channelId
             ..localOnly = localOnly
+            ..sinceId = sinceId
             ..untilId = untilId,
           from: searchNotesNotifierProvider,
           name: r'searchNotesNotifierProvider',
@@ -140,6 +147,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
           userId: userId,
           channelId: channelId,
           localOnly: localOnly,
+          sinceId: sinceId,
           untilId: untilId,
         );
 
@@ -155,6 +163,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     required this.userId,
     required this.channelId,
     required this.localOnly,
+    required this.sinceId,
     required this.untilId,
   }) : super.internal();
 
@@ -163,6 +172,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   final String? userId;
   final String? channelId;
   final bool? localOnly;
+  final String? sinceId;
   final String? untilId;
 
   @override
@@ -175,6 +185,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
       userId: userId,
       channelId: channelId,
       localOnly: localOnly,
+      sinceId: sinceId,
       untilId: untilId,
     );
   }
@@ -190,6 +201,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
           ..userId = userId
           ..channelId = channelId
           ..localOnly = localOnly
+          ..sinceId = sinceId
           ..untilId = untilId,
         from: from,
         name: null,
@@ -201,6 +213,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
         userId: userId,
         channelId: channelId,
         localOnly: localOnly,
+        sinceId: sinceId,
         untilId: untilId,
       ),
     );
@@ -220,6 +233,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
         other.userId == userId &&
         other.channelId == channelId &&
         other.localOnly == localOnly &&
+        other.sinceId == sinceId &&
         other.untilId == untilId;
   }
 
@@ -231,6 +245,7 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     hash = _SystemHash.combine(hash, userId.hashCode);
     hash = _SystemHash.combine(hash, channelId.hashCode);
     hash = _SystemHash.combine(hash, localOnly.hashCode);
+    hash = _SystemHash.combine(hash, sinceId.hashCode);
     hash = _SystemHash.combine(hash, untilId.hashCode);
 
     return _SystemHash.finish(hash);
@@ -254,6 +269,9 @@ mixin SearchNotesNotifierRef
   /// The parameter `localOnly` of this provider.
   bool? get localOnly;
 
+  /// The parameter `sinceId` of this provider.
+  String? get sinceId;
+
   /// The parameter `untilId` of this provider.
   String? get untilId;
 }
@@ -273,6 +291,8 @@ class _SearchNotesNotifierProviderElement
   String? get channelId => (origin as SearchNotesNotifierProvider).channelId;
   @override
   bool? get localOnly => (origin as SearchNotesNotifierProvider).localOnly;
+  @override
+  String? get sinceId => (origin as SearchNotesNotifierProvider).sinceId;
   @override
   String? get untilId => (origin as SearchNotesNotifierProvider).untilId;
 }

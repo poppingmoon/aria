@@ -181,6 +181,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示するで';
 	@override String get showTimelineTabBarAtBottom => 'タイムラインのタブバーを下に表示するで';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
+	@override String get sinceDate => 'この日から';
 	@override String get stackTrace => 'スタックトレース';
 	@override String get streamingChannel => 'ストリーミングチャンネル';
 	@override String get tabName => 'タブの名前';
@@ -193,6 +194,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 		name,
 		const TextSpan(text: 'のフォローを解除してもええんか？'),
 	]);
+	@override String get untilDate => 'この日まで';
 	@override String get uploaded => 'アップロードしたで';
 	@override String get useThisEmoji => 'この絵文字を使う';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
