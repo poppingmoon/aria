@@ -19,6 +19,7 @@ class SearchNotesNotifier extends _$SearchNotesNotifier {
     String? userId,
     String? channelId,
     bool? localOnly,
+    String? sinceId,
     String? untilId,
   }) async {
     final response = await _fetchNotes(untilId: untilId);
@@ -32,6 +33,7 @@ class SearchNotesNotifier extends _$SearchNotesNotifier {
             userId: userId,
             channelId: channelId,
             host: (localOnly ?? false) ? '.' : null,
+            sinceId: sinceId,
             untilId: untilId,
           ),
         );
