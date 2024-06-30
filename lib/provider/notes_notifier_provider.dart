@@ -22,7 +22,7 @@ class NotesNotifier extends _$NotesNotifier {
   Note? add(Note note, {bool detail = true}) {
     final renote = note.renote;
     if (renote != null) {
-      add(renote, detail: false);
+      add(renote);
     }
     final reply = note.reply;
     if (reply != null) {
@@ -38,6 +38,7 @@ class NotesNotifier extends _$NotesNotifier {
         renote: renote ?? state[note.renoteId],
         reply: reply ?? state[note.replyId],
         poll: detail ? note.poll : cachedNote?.poll,
+        myReaction: detail ? note.myReaction : cachedNote?.myReaction,
       ),
     };
     return cachedNote;
