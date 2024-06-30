@@ -36,21 +36,23 @@ class PaginatedListView<T> extends HookConsumerWidget {
     final isAtBottom = useState(false);
     useEffect(
       () {
-        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
-          controller.addListener(() {
-            if (controller.position.extentAfter < 100) {
-              if (!isAtBottom.value) {
-                loadMore?.call(false);
-                isAtBottom.value = true;
-              }
-            } else if (isAtBottom.value) {
-              isAtBottom.value = false;
+        void callback() {
+          if (controller.position.extentAfter < 100) {
+            if (!isAtBottom.value) {
+              loadMore?.call(false);
+              isAtBottom.value = true;
             }
-          });
+          } else if (isAtBottom.value) {
+            isAtBottom.value = false;
+          }
         }
-        return;
+
+        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+          controller.addListener(callback);
+        }
+        return () => controller.removeListener(callback);
       },
-      [],
+      [loadMore],
     );
 
     return RefreshIndicator(
