@@ -198,7 +198,7 @@ class TimelineDrawer extends HookConsumerWidget {
                           if (!context.mounted) return;
                           if (response.type == 'User') {
                             await context.push(
-                              '/$account/users/${response.object}',
+                              '/$account/users/${response.object['id']}',
                             );
                           } else if (response.type == 'Note') {
                             await context.push(
