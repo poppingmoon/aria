@@ -278,7 +278,6 @@ class TimelineWidget extends HookConsumerWidget {
             Expanded(
               child: TimelineListView(
                 tabSettings: tabSettings,
-                physics: const ClampingScrollPhysics(),
                 focusPostForm: focusPostForm,
                 lastViewedAtKey: lastViewedAtKey,
               ),
