@@ -22,7 +22,6 @@ import '../../provider/parsed_mfm_provider.dart';
 import '../../util/extract_url.dart';
 import '../../util/format_datetime.dart';
 import '../../util/get_note_action.dart';
-import '../../util/navigate.dart';
 import 'acct_widget.dart';
 import 'bot_badge.dart';
 import 'channel_color_bar_box.dart';
@@ -395,8 +394,6 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                         targetNote: appearNote,
                                       ),
                                     ),
-                                    onLinkTap: (link) =>
-                                        navigate(ref, account, link),
                                   ),
                                   [
                                     account,

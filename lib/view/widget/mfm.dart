@@ -26,7 +26,6 @@ List<InlineSpan> buildMfm(
   User? author,
   bool nyaize = false,
   void Function(String emoji)? onTapEmoji,
-  void Function(String link)? onLinkTap,
   void Function(String clickEv)? onClickEv,
   TextAlign? textAlign,
   TextOverflow? overflow,
@@ -81,7 +80,7 @@ List<InlineSpan> buildMfm(
       );
     },
     onTapEmoji: onTapEmoji,
-    onLinkTap: onLinkTap,
+    onLinkTap: (link) => navigate(ref, account, link),
     onLinkLongPress: (url) => showModalBottomSheet<void>(
       context: ref.context,
       builder: (context) => UrlSheet(url: url),
@@ -154,7 +153,6 @@ class Mfm extends HookConsumerWidget {
           style: style,
           emojis: emojis,
           author: author,
-          onLinkTap: (link) => navigate(ref, account, link),
           onClickEv: onClickEv,
           textAlign: textAlign,
           overflow: overflow,
