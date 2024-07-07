@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../constant/shortcuts.dart';
 import '../../model/account.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
@@ -289,16 +290,19 @@ class AsUiWidget extends HookConsumerWidget {
           :caption,
         ) = component;
         final controller = useTextEditingController(text: defaultValue);
-        return TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            labelText: label,
-            helperText: caption,
+        return Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              labelText: label,
+              helperText: caption,
+            ),
+            onChanged:
+                onInput != null ? (value) => onInput.call(value: value) : null,
+            minLines: 6,
+            maxLines: 6,
           ),
-          onChanged:
-              onInput != null ? (value) => onInput.call(value: value) : null,
-          minLines: 6,
-          maxLines: 6,
         );
       },
       textInput: (component) {
@@ -309,14 +313,17 @@ class AsUiWidget extends HookConsumerWidget {
           :caption,
         ) = component;
         final controller = useTextEditingController(text: defaultValue);
-        return TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            labelText: label,
-            helperText: caption,
+        return Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              labelText: label,
+              helperText: caption,
+            ),
+            onChanged:
+                onInput != null ? (value) => onInput.call(value: value) : null,
           ),
-          onChanged:
-              onInput != null ? (value) => onInput.call(value: value) : null,
         );
       },
       numberInput: (component) {
@@ -333,88 +340,91 @@ class AsUiWidget extends HookConsumerWidget {
                   : defaultValue.toString()
               : null,
         );
-        return TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            labelText: label,
-            helperText: caption,
-            isDense: true,
-            suffix: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  style: IconButton.styleFrom(
-                    minimumSize: Size.zero,
-                    padding: const EdgeInsets.all(2.0),
-                    iconSize: 16.0,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        return Shortcuts(
+          shortcuts: disablingTextShortcuts,
+          child: TextField(
+            controller: controller,
+            decoration: InputDecoration(
+              labelText: label,
+              helperText: caption,
+              isDense: true,
+              suffix: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.all(2.0),
+                      iconSize: 16.0,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () {
+                      if (controller.text.isEmpty) {
+                        controller.text = '-1';
+                        if (onInput != null) {
+                          onInput.call(value: -1);
+                        }
+                        return;
+                      }
+                      final i = int.tryParse(controller.text);
+                      if (i != null) {
+                        controller.text = (i - 1).toString();
+                        if (onInput != null) {
+                          onInput.call(value: i - 1);
+                        }
+                      }
+                    },
+                    icon: const Icon(Icons.remove),
                   ),
-                  onPressed: () {
-                    if (controller.text.isEmpty) {
-                      controller.text = '-1';
-                      if (onInput != null) {
-                        onInput.call(value: -1);
+                  const SizedBox(width: 4.0),
+                  IconButton(
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero,
+                      padding: const EdgeInsets.all(2.0),
+                      iconSize: 16.0,
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    ),
+                    onPressed: () {
+                      if (controller.text.isEmpty) {
+                        controller.text = '1';
+                        if (onInput != null) {
+                          onInput.call(value: 1);
+                        }
+                        return;
                       }
-                      return;
-                    }
-                    final i = int.tryParse(controller.text);
-                    if (i != null) {
-                      controller.text = (i - 1).toString();
-                      if (onInput != null) {
-                        onInput.call(value: i - 1);
+                      final i = int.tryParse(controller.text);
+                      if (i != null) {
+                        controller.text = (i + 1).toString();
+                        if (onInput != null) {
+                          onInput.call(value: i + 1);
+                        }
                       }
-                    }
-                  },
-                  icon: const Icon(Icons.remove),
-                ),
-                const SizedBox(width: 4.0),
-                IconButton(
-                  style: IconButton.styleFrom(
-                    minimumSize: Size.zero,
-                    padding: const EdgeInsets.all(2.0),
-                    iconSize: 16.0,
-                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    },
+                    icon: const Icon(Icons.add),
                   ),
-                  onPressed: () {
-                    if (controller.text.isEmpty) {
-                      controller.text = '1';
-                      if (onInput != null) {
-                        onInput.call(value: 1);
-                      }
-                      return;
-                    }
-                    final i = int.tryParse(controller.text);
-                    if (i != null) {
-                      controller.text = (i + 1).toString();
-                      if (onInput != null) {
-                        onInput.call(value: i + 1);
-                      }
-                    }
-                  },
-                  icon: const Icon(Icons.add),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          keyboardType: TextInputType.number,
-          inputFormatters: [
-            TextInputFormatter.withFunction((oldValue, newValue) {
-              if (newValue.text.isEmpty ||
-                  double.tryParse(newValue.text) != null) {
-                return newValue;
-              } else {
-                return oldValue;
-              }
-            }),
-          ],
-          onChanged: onInput != null
-              ? (value) async {
-                  final v = double.tryParse(value);
-                  if (v != null) {
-                    await onInput.call(value: v);
-                  }
+            keyboardType: TextInputType.number,
+            inputFormatters: [
+              TextInputFormatter.withFunction((oldValue, newValue) {
+                if (newValue.text.isEmpty ||
+                    double.tryParse(newValue.text) != null) {
+                  return newValue;
+                } else {
+                  return oldValue;
                 }
-              : null,
+              }),
+            ],
+            onChanged: onInput != null
+                ? (value) async {
+                    final v = double.tryParse(value);
+                    if (v != null) {
+                      await onInput.call(value: v);
+                    }
+                  }
+                : null,
+          ),
         );
       },
       select: (component) {
