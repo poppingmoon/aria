@@ -18,7 +18,9 @@ import '../widget/misskey_server_autocomplete.dart';
 import '../widget/misskey_server_background.dart';
 
 class TokenLoginPage extends HookConsumerWidget {
-  const TokenLoginPage({super.key});
+  const TokenLoginPage({super.key, this.host});
+
+  final String? host;
 
   Future<void> _login(WidgetRef ref, String host, String token) async {
     final trimmed =
@@ -37,8 +39,8 @@ class TokenLoginPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
-    final hostController = useTextEditingController();
-    final host = useState('');
+    final hostController = useTextEditingController(text: this.host);
+    final host = useState(this.host ?? '');
     final hostFocusNode = useFocusNode();
     final server =
         servers.firstWhereOrNull((server) => server.url == host.value);

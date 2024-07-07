@@ -63,7 +63,8 @@ class LoginPage extends HookConsumerWidget {
                     PopupMenuButton<void>(
                       itemBuilder: (context) => [
                         PopupMenuItem(
-                          onTap: () => context.push('/login/token'),
+                          onTap: () =>
+                              context.push('/login/token?host=${host.value}'),
                           child: Text(t.aria.loginWithAccessToken),
                         ),
                       ],
