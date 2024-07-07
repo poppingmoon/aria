@@ -18,7 +18,6 @@ import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/dio_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/token_provider.dart';
 import '../../rust/api/aiscript.dart';
 import '../../rust/api/aiscript/api.dart';
 import '../../rust/api/aiscript/play.dart';
@@ -299,7 +298,6 @@ class PlayWidget extends HookConsumerWidget {
                                     );
                                     return result ?? false;
                                   },
-                                  token: ref.read(tokenProvider(account)),
                                   api: (ep, param, token) async {
                                     final json = jsonDecode(param);
                                     final dio = ref.read(dioProvider);
