@@ -191,12 +191,14 @@ class SubNoteContent extends HookConsumerWidget {
             ),
           ),
         if (showReactionsViewer &&
-            note.reactionAcceptance != ReactionAcceptance.likeOnly)
+            note.reactionAcceptance != ReactionAcceptance.likeOnly) ...[
+          const SizedBox(height: 4.0),
           ReactionsViewer(
             account: account,
             noteId: noteId,
             note: this.note,
           ),
+        ],
         if (showFooter)
           NoteFooter(
             account: account,
