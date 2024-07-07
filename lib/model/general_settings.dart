@@ -91,6 +91,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool showMenuButtonInTabBar,
     @Default(false) bool alwaysShowTabHeader,
     @Default(true) bool showTimelineLastViewedAt,
+    @Default(true) bool showPopupOnNewNote,
     @Default(false) bool vibrateNote,
     @Default(false) bool vibrateNotification,
 

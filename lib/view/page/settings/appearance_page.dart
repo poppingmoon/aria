@@ -106,6 +106,13 @@ class AppearancePage extends HookConsumerWidget {
                 .read(generalSettingsNotifierProvider.notifier)
                 .setShowTimelineLastViewedAt(value),
           ),
+          SwitchListTile(
+            title: Text(t.aria.showPopupOnNewNote),
+            value: settings.showPopupOnNewNote,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowPopupOnNewNote(value),
+          ),
           const Divider(),
           SwitchListTile(
             title: Text(t.aria.vibrateNote),

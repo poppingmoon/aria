@@ -36,6 +36,10 @@ class NotificationsListView extends HookConsumerWidget {
     final nextNotifications = useState(<INotificationsResponse>[]);
     final lastViewedAt =
         ref.watch(notificationsLastViewedAtNotifierProvider(account));
+    final showPopup = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showPopupOnNewNote),
+    );
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final controller = this.controller ?? useScrollController();
@@ -211,7 +215,7 @@ class NotificationsListView extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (hasUnread.value)
+            if (hasUnread.value && showPopup)
               Positioned(
                 top: 8.0,
                 child: ElevatedButton(

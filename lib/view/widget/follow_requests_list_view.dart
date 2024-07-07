@@ -30,6 +30,10 @@ class FollowRequestsListView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final requests = ref.watch(followRequestsNotifierProvider(account));
     final nextRequests = useState(<User>[]);
+    final showPopup = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showPopupOnNewNote),
+    );
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final controller = useScrollController();
     final centerKey = useMemoized(() => GlobalKey(), []);
@@ -188,7 +192,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (hasUnread.value)
+            if (hasUnread.value && showPopup)
               Positioned(
                 top: 8.0,
                 child: ElevatedButton(

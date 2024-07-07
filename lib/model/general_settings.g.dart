@@ -89,6 +89,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       alwaysShowTabHeader: json['alwaysShowTabHeader'] as bool? ?? false,
       showTimelineLastViewedAt:
           json['showTimelineLastViewedAt'] as bool? ?? true,
+      showPopupOnNewNote: json['showPopupOnNewNote'] as bool? ?? true,
       vibrateNote: json['vibrateNote'] as bool? ?? false,
       vibrateNotification: json['vibrateNotification'] as bool? ?? false,
       enableInfiniteScroll: json['enableInfiniteScroll'] as bool? ?? true,
@@ -193,6 +194,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showMenuButtonInTabBar'] = instance.showMenuButtonInTabBar;
   val['alwaysShowTabHeader'] = instance.alwaysShowTabHeader;
   val['showTimelineLastViewedAt'] = instance.showTimelineLastViewedAt;
+  val['showPopupOnNewNote'] = instance.showPopupOnNewNote;
   val['vibrateNote'] = instance.vibrateNote;
   val['vibrateNotification'] = instance.vibrateNotification;
   val['enableInfiniteScroll'] = instance.enableInfiniteScroll;
