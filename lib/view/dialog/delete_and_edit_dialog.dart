@@ -30,7 +30,6 @@ class DeleteAndEditDialog extends ConsumerWidget {
         ElevatedButton(
           autofocus: true,
           onPressed: () async {
-            context.pop();
             ref.read(postNotifierProvider(account).notifier).fromNote(note);
             ref.read(attachesNotifierProvider(account).notifier).addAll(
                   note.files.map(
@@ -48,6 +47,7 @@ class DeleteAndEditDialog extends ConsumerWidget {
             if (!(deleted ?? false)) return;
             if (!context.mounted) return;
             ref.read(notesNotifierProvider(account).notifier).remove(note.id);
+            context.pop();
             await context.push('/$account/post');
           },
           child: Text(t.misskey.ok),
