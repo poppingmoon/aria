@@ -172,6 +172,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示するで';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示するで';
 	@override String get showNoteReactionsViewer => 'ノートにツッコミを表示するで';
+	@override String get showPopupOnNewNote => 'ノートを受信したときにポップアップを表示するで';
 	@override String get showPostForm => '投稿フォームを表示';
 	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
 	@override String get showSelfRenotes => 'セルフリノートを表示するで';
@@ -205,8 +206,8 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 		name,
 		const TextSpan(text: 'のセンシティブなファイルを含む投稿'),
 	]);
-	@override String get vibrateNote => 'ノートを受信したときに振動する';
-	@override String get vibrateNotification => '通知を受信したときに振動する';
+	@override String get vibrateNote => 'ノートを受信したときに振動するで';
+	@override String get vibrateNotification => '通知を受信したときに振動するで';
 	@override String get webBrowser => 'ウェブブラウザ';
 }
 

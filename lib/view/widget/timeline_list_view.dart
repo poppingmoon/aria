@@ -54,6 +54,10 @@ class TimelineListView extends HookConsumerWidget {
     final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
     final previousNotes = ref
         .watch(timelineNotesNotifierProvider(tabSettings, untilId: centerId));
+    final showPopup = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showPopupOnNewNote),
+    );
     final vibrateOnNote = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.vibrateNote),
@@ -320,7 +324,7 @@ class TimelineListView extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (hasUnread.value)
+            if (hasUnread.value && showPopup)
               Positioned(
                 top: 8.0,
                 child: ElevatedButton(
