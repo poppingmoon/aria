@@ -9,6 +9,7 @@ import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
 import 'reaction_button.dart';
+import 'reaction_effect.dart';
 
 class ReactionsViewer extends HookConsumerWidget {
   const ReactionsViewer({
@@ -24,6 +25,38 @@ class ReactionsViewer extends HookConsumerWidget {
   final bool showAllReactions;
   final Note? note;
 
+  void _showEmojiEffect(
+    BuildContext context,
+    GlobalKey key,
+    String emoji,
+    Map<String, String> emojis,
+  ) {
+    Future.delayed(const Duration(milliseconds: 50), () {
+      if (key.currentContext?.findRenderObject()
+          case final RenderBox renderBox) {
+        final offset = renderBox.localToGlobal(Offset.zero);
+        final entry = OverlayEntry(
+          builder: (context) => Positioned(
+            left: offset.dx,
+            top: offset.dy,
+            child: Material(
+              color: Colors.transparent,
+              child: ReactionEffect(
+                account: account,
+                emoji: emoji,
+                emojis: emojis,
+              ),
+            ),
+          ),
+        );
+        Overlay.of(context).insert(entry);
+        Future.delayed(const Duration(milliseconds: 1100), () {
+          entry.remove();
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteProvider(account, noteId));
@@ -34,7 +67,55 @@ class ReactionsViewer extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.reactionsDisplayScale),
     );
-    final reactions = note.reactions.entries.sortedBy<num>((e) => -e.value);
+    final reduceAnimation = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.reduceAnimation),
+    );
+    final reactions = useState(
+      Map.fromEntries(note.reactions.entries.sortedBy<num>((e) => -e.value)),
+    );
+    final keys = useState(
+      note.reactions.map((key, value) => MapEntry(key, GlobalKey())),
+    );
+    useEffect(
+      () {
+        final newSource = Map.of(note.reactions);
+        final newReactions = <String, int>{};
+        final emojis = {...note.emojis, ...note.reactionEmojis};
+        for (final reaction in reactions.value.entries) {
+          if (newSource.remove(reaction.key) case final count? when count > 0) {
+            newReactions[reaction.key] = count;
+            if (!reduceAnimation && reaction.value < count) {
+              _showEmojiEffect(
+                context,
+                keys.value[reaction.key]!,
+                reaction.key,
+                emojis,
+              );
+            }
+          }
+        }
+        for (final newReaction in newSource.entries) {
+          newReactions[newReaction.key] = newReaction.value;
+          final key = GlobalKey();
+          keys.value = {
+            ...keys.value,
+            newReaction.key: key,
+          };
+          if (!reduceAnimation) {
+            _showEmojiEffect(
+              context,
+              key,
+              newReaction.key,
+              emojis,
+            );
+          }
+        }
+        reactions.value = newReactions;
+        return;
+      },
+      [note.reactions],
+    );
     const maxReactions = 20;
     final showAllReactions = useState(this.showAllReactions);
 
@@ -43,17 +124,20 @@ class ReactionsViewer extends HookConsumerWidget {
       runSpacing: 4.0,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        ...reactions
-            .take(showAllReactions.value ? reactions.length : maxReactions)
+        ...reactions.value.entries
+            .take(
+              showAllReactions.value ? reactions.value.length : maxReactions,
+            )
             .map(
               (reaction) => ReactionButton(
                 account: account,
                 note: note,
                 emoji: reaction.key,
                 count: reaction.value,
+                emojiKey: keys.value[reaction.key],
               ),
             ),
-        if (!showAllReactions.value && reactions.length > maxReactions)
+        if (!showAllReactions.value && reactions.value.length > maxReactions)
           TextButton(
             style: TextButton.styleFrom(
               padding: EdgeInsets.all(2.0 * scale),

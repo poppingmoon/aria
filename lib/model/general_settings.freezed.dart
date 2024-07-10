@@ -74,6 +74,7 @@ mixin _$GeneralSettings {
   bool get dataSaverAvatar => throw _privateConstructorUsedError;
   bool get dataSaverUrlPreview => throw _privateConstructorUsedError;
   bool get disableDataSaverWhenOnWifi => throw _privateConstructorUsedError;
+  bool get reduceAnimation => throw _privateConstructorUsedError;
   bool get disableShowingAnimatedImages => throw _privateConstructorUsedError;
   bool get forceShowAds => throw _privateConstructorUsedError;
   bool get useGroupedNotifications => throw _privateConstructorUsedError;
@@ -158,6 +159,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool dataSaverAvatar,
       bool dataSaverUrlPreview,
       bool disableDataSaverWhenOnWifi,
+      bool reduceAnimation,
       bool disableShowingAnimatedImages,
       bool forceShowAds,
       bool useGroupedNotifications,
@@ -241,6 +243,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? dataSaverAvatar = null,
     Object? dataSaverUrlPreview = null,
     Object? disableDataSaverWhenOnWifi = null,
+    Object? reduceAnimation = null,
     Object? disableShowingAnimatedImages = null,
     Object? forceShowAds = null,
     Object? useGroupedNotifications = null,
@@ -443,6 +446,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.disableDataSaverWhenOnWifi
           : disableDataSaverWhenOnWifi // ignore: cast_nullable_to_non_nullable
               as bool,
+      reduceAnimation: null == reduceAnimation
+          ? _value.reduceAnimation
+          : reduceAnimation // ignore: cast_nullable_to_non_nullable
+              as bool,
       disableShowingAnimatedImages: null == disableShowingAnimatedImages
           ? _value.disableShowingAnimatedImages
           : disableShowingAnimatedImages // ignore: cast_nullable_to_non_nullable
@@ -597,6 +604,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool dataSaverAvatar,
       bool dataSaverUrlPreview,
       bool disableDataSaverWhenOnWifi,
+      bool reduceAnimation,
       bool disableShowingAnimatedImages,
       bool forceShowAds,
       bool useGroupedNotifications,
@@ -678,6 +686,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? dataSaverAvatar = null,
     Object? dataSaverUrlPreview = null,
     Object? disableDataSaverWhenOnWifi = null,
+    Object? reduceAnimation = null,
     Object? disableShowingAnimatedImages = null,
     Object? forceShowAds = null,
     Object? useGroupedNotifications = null,
@@ -880,6 +889,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.disableDataSaverWhenOnWifi
           : disableDataSaverWhenOnWifi // ignore: cast_nullable_to_non_nullable
               as bool,
+      reduceAnimation: null == reduceAnimation
+          ? _value.reduceAnimation
+          : reduceAnimation // ignore: cast_nullable_to_non_nullable
+              as bool,
       disableShowingAnimatedImages: null == disableShowingAnimatedImages
           ? _value.disableShowingAnimatedImages
           : disableShowingAnimatedImages // ignore: cast_nullable_to_non_nullable
@@ -1029,6 +1042,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.dataSaverAvatar = false,
       this.dataSaverUrlPreview = false,
       this.disableDataSaverWhenOnWifi = false,
+      this.reduceAnimation = false,
       this.disableShowingAnimatedImages = false,
       this.forceShowAds = false,
       this.useGroupedNotifications = false,
@@ -1195,6 +1209,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool disableDataSaverWhenOnWifi;
   @override
   @JsonKey()
+  final bool reduceAnimation;
+  @override
+  @JsonKey()
   final bool disableShowingAnimatedImages;
   @override
   @JsonKey()
@@ -1270,7 +1287,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1352,6 +1369,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.dataSaverAvatar, dataSaverAvatar) || other.dataSaverAvatar == dataSaverAvatar) &&
             (identical(other.dataSaverUrlPreview, dataSaverUrlPreview) || other.dataSaverUrlPreview == dataSaverUrlPreview) &&
             (identical(other.disableDataSaverWhenOnWifi, disableDataSaverWhenOnWifi) || other.disableDataSaverWhenOnWifi == disableDataSaverWhenOnWifi) &&
+            (identical(other.reduceAnimation, reduceAnimation) || other.reduceAnimation == reduceAnimation) &&
             (identical(other.disableShowingAnimatedImages, disableShowingAnimatedImages) || other.disableShowingAnimatedImages == disableShowingAnimatedImages) &&
             (identical(other.forceShowAds, forceShowAds) || other.forceShowAds == forceShowAds) &&
             (identical(other.useGroupedNotifications, useGroupedNotifications) || other.useGroupedNotifications == useGroupedNotifications) &&
@@ -1426,6 +1444,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         dataSaverAvatar,
         dataSaverUrlPreview,
         disableDataSaverWhenOnWifi,
+        reduceAnimation,
         disableShowingAnimatedImages,
         forceShowAds,
         useGroupedNotifications,
@@ -1514,6 +1533,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool dataSaverAvatar,
       final bool dataSaverUrlPreview,
       final bool disableDataSaverWhenOnWifi,
+      final bool reduceAnimation,
       final bool disableShowingAnimatedImages,
       final bool forceShowAds,
       final bool useGroupedNotifications,
@@ -1636,6 +1656,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get dataSaverUrlPreview;
   @override
   bool get disableDataSaverWhenOnWifi;
+  @override
+  bool get reduceAnimation;
   @override
   bool get disableShowingAnimatedImages;
   @override

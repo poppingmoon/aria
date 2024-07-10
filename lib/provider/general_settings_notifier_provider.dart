@@ -292,6 +292,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setReduceAnimation(bool reduceAnimation) async {
+    state = state.copyWith(reduceAnimation: reduceAnimation);
+    await _save();
+  }
+
   Future<void> setDisableShowingAnimatedImages(
     bool disableShowingAnimatedImages,
   ) async {
