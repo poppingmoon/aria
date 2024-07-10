@@ -81,6 +81,7 @@ class PollWidget extends HookConsumerWidget {
                               ref
                                   .read(notesNotifierProvider(account).notifier)
                                   .vote(noteId, index),
+                              overlay: false,
                             );
                             showResult.value = !poll.multiple;
                           }

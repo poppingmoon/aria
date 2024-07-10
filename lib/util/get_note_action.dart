@@ -64,6 +64,7 @@ void Function()? getNoteAction(
                 ref
                     .read(notesNotifierProvider(account).notifier)
                     .react(appearNote.id, emoji),
+                overlay: false,
               );
             }
           }

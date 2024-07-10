@@ -102,6 +102,7 @@ class EmojiSheet extends ConsumerWidget {
                   ref
                       .read(notesNotifierProvider(account).notifier)
                       .react(targetNote!.id, localEmoji),
+                  overlay: false,
                 );
               } else {
                 final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;

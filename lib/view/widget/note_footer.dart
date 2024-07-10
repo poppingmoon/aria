@@ -260,6 +260,7 @@ class NoteFooter extends ConsumerWidget {
                                       notesNotifierProvider(account).notifier,
                                     )
                                     .react(appearNote.id, '❤️'),
+                                overlay: false,
                               );
                             }
                           : null,
@@ -321,6 +322,7 @@ class NoteFooter extends ConsumerWidget {
                                               .notifier,
                                         )
                                         .react(appearNote.id, emoji),
+                                    overlay: false,
                                   );
                                 }
                               }
@@ -384,6 +386,7 @@ class NoteFooter extends ConsumerWidget {
                             ref
                                 .read(notesNotifierProvider(account).notifier)
                                 .unreact(appearNote.id),
+                            overlay: false,
                           );
                         },
                         icon: Row(
