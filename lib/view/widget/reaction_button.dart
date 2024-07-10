@@ -26,6 +26,7 @@ class ReactionButton extends ConsumerWidget {
     required this.emoji,
     required this.count,
     this.scale,
+    this.emojiKey,
   });
 
   final Account account;
@@ -33,6 +34,7 @@ class ReactionButton extends ConsumerWidget {
   final String emoji;
   final int count;
   final double? scale;
+  final Key? emojiKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -168,6 +170,7 @@ class ReactionButton extends ConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 EmojiWidget(
+                  key: emojiKey,
                   account: account,
                   emoji: emoji,
                   emojis: emojis,

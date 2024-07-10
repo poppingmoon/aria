@@ -58,6 +58,13 @@ class AppearancePage extends HookConsumerWidget {
           ),
           const Divider(),
           SwitchListTile(
+            title: Text(t.misskey.reduceUiAnimation),
+            value: settings.reduceAnimation,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setReduceAnimation(value),
+          ),
+          SwitchListTile(
             title: Text(t.misskey.disableShowingAnimatedImages),
             value: settings.disableShowingAnimatedImages,
             onChanged: (value) => ref

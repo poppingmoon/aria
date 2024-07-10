@@ -78,6 +78,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       dataSaverUrlPreview: json['dataSaverUrlPreview'] as bool? ?? false,
       disableDataSaverWhenOnWifi:
           json['disableDataSaverWhenOnWifi'] as bool? ?? false,
+      reduceAnimation: json['reduceAnimation'] as bool? ?? false,
       disableShowingAnimatedImages:
           json['disableShowingAnimatedImages'] as bool? ?? false,
       forceShowAds: json['forceShowAds'] as bool? ?? false,
@@ -187,6 +188,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['dataSaverAvatar'] = instance.dataSaverAvatar;
   val['dataSaverUrlPreview'] = instance.dataSaverUrlPreview;
   val['disableDataSaverWhenOnWifi'] = instance.disableDataSaverWhenOnWifi;
+  val['reduceAnimation'] = instance.reduceAnimation;
   val['disableShowingAnimatedImages'] = instance.disableShowingAnimatedImages;
   val['forceShowAds'] = instance.forceShowAds;
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
