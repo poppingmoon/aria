@@ -8,6 +8,9 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/note_provider.dart';
+import '../../provider/notes_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../widget/note_widget.dart';
 
 Future<bool> confirmPost(
@@ -16,6 +19,34 @@ Future<bool> confirmPost(
   NotesCreateRequest request, {
   List<DriveFile>? files,
 }) async {
+  if (request.replyId case final replyId?) {
+    final reply = ref.read(noteProvider(account, replyId));
+    if (reply == null) {
+      final reply = await futureWithDialog(
+        ref.context,
+        ref.read(notesNotifierProvider(account).notifier).show(replyId),
+      );
+      if (reply == null) {
+        return false;
+      }
+    }
+  }
+  if (request.renoteId case final renoteId?) {
+    final renote = ref.read(noteProvider(account, renoteId));
+    if (renote == null) {
+      if (!ref.context.mounted) return false;
+      final renote = await futureWithDialog(
+        ref.context,
+        ref.read(notesNotifierProvider(account).notifier).show(renoteId),
+      );
+      if (renote == null) {
+        return false;
+      }
+    }
+  }
+  if (!ref.context.mounted) {
+    return false;
+  }
   final result = await showDialog<bool>(
     context: ref.context,
     builder: (context) => PostConfirmationDialog(
