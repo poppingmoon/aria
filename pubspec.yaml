@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   aho_corasick: ^2.0.0
-  audio_service: ^0.18.13
+  audio_service: ^0.18.14
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.3.1
   characters: ^1.3.0
@@ -17,7 +17,7 @@ dependencies:
   colorfilter_generator: ^0.0.8
   confetti: ^0.7.0
   connectivity_plus: ^6.0.3
-  dio: ^5.4.3+1
+  dio: ^5.5.0+1
   dotted_border: ^2.1.0
   extended_image: ^8.2.1
   file: ^7.0.0
@@ -40,7 +40,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   flutter_svg: ^2.0.10+1
   fluttertoast: ^8.2.6
-  freezed_annotation: ^2.4.1
+  freezed_annotation: ^2.4.3
   gal: ^2.3.0
   go_router: ^14.2.0
   highlighting: ^0.9.0+11.8.0
@@ -52,7 +52,7 @@ dependencies:
   intl: ^0.18.1
   json5: ^0.8.2
   json_annotation: ^4.9.0
-  just_audio: ^0.9.38
+  just_audio: ^0.9.39
   kana_kit: ^2.0.0
   keyboard_attachable: ^2.2.0
   mfm_parser:
@@ -64,7 +64,7 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/misskey_dart
       ref: 4a66437fa2e2562666ce9c052112cbd343d32dc2
-  multi_split_view: ^3.2.1
+  multi_split_view: ^3.2.2
   package_info_plus: ^8.0.0
   photo_view: ^0.15.0
   pretty_bytes: ^6.1.0

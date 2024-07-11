@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "2fcca58c795077e7f161bdb4aeeab7803e28477d" }
+aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "4e732fca075178cb50d116326c1cc572a5aa513f" }
 flutter_rust_bridge = "=2.0.0-dev.38"
 futures = "0.3"
 indexmap = "2.2"
