@@ -8,16 +8,13 @@ import 'package:share_plus/share_plus.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/list_settings.dart';
-import '../../../model/tab_settings.dart';
 import '../../../provider/api/lists_notifier_provider.dart';
-import '../../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/list_settings_dialog.dart';
-import '../../widget/note_widget.dart';
-import '../../widget/paginated_list_view.dart';
+import 'list_notes.dart';
 
 class ListPage extends HookConsumerWidget {
   const ListPage({
@@ -55,8 +52,6 @@ class ListPage extends HookConsumerWidget {
         .watch(listsNotifierProvider(account))
         .valueOrNull
         ?.firstWhereOrNull((list) => list.id == listId);
-    final tabSettings = TabSettings.userList(account, listId);
-    final notes = ref.watch(timelineNotesNotifierProvider(tabSettings));
 
     return Scaffold(
       appBar: AppBar(
@@ -123,17 +118,7 @@ class ListPage extends HookConsumerWidget {
           ),
         ],
       ),
-      body: PaginatedListView(
-        paginationState: notes,
-        itemBuilder: (context, note) =>
-            NoteWidget(account: account, noteId: note.id),
-        onRefresh: () =>
-            ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
-        loadMore: (skipError) => ref
-            .read(timelineNotesNotifierProvider(tabSettings).notifier)
-            .loadMore(skipError: skipError),
-        noItemsLabel: t.misskey.noNotes,
-      ),
+      body: ListNotes(account: account, listId: listId),
       floatingActionButton: FloatingActionButton(
         onPressed: list != null ? () => _edit(ref, list) : null,
         child: const Icon(Icons.edit),
