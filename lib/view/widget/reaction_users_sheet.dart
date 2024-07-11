@@ -10,6 +10,7 @@ import 'emoji_sheet.dart';
 import 'emoji_widget.dart';
 import 'paginated_list_view.dart';
 import 'user_preview.dart';
+import 'user_sheet.dart';
 
 class ReactionUsersSheet extends ConsumerWidget {
   const ReactionUsersSheet({
@@ -72,6 +73,11 @@ class ReactionUsersSheet extends ConsumerWidget {
                 avatarSize: 50.0,
                 onTap: () =>
                     context.push('/$account/users/${reaction.user.id}'),
+                onLongPress: () => showUserSheet(
+                  context: context,
+                  account: account,
+                  userId: reaction.user.id,
+                ),
               ),
               onRefresh: () => ref.refresh(
                 reactionsNotifierProvider(account, noteId, reaction).future,

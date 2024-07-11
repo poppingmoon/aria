@@ -18,6 +18,7 @@ import '../../widget/mfm/code.dart';
 import '../../widget/play_widget.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_preview.dart';
+import '../../widget/user_sheet.dart';
 
 class PlayPage extends HookConsumerWidget {
   const PlayPage({
@@ -143,6 +144,13 @@ class PlayPage extends HookConsumerWidget {
                                   ? '/${this.account}/users/${play.userId}'
                                   : '/${account.value}/@${play.user.username}@${this.account.host}',
                             ),
+                            onLongPress: this.account == account.value
+                                ? () => showUserSheet(
+                                      context: context,
+                                      account: this.account,
+                                      userId: play.userId,
+                                    )
+                                : null,
                           ),
                           const Divider(),
                           DefaultTextStyle.merge(

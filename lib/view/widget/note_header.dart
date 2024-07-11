@@ -15,6 +15,7 @@ import 'bot_badge.dart';
 import 'image_widget.dart';
 import 'note_visibility_icon.dart';
 import 'time_widget.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class NoteHeader extends HookConsumerWidget {
@@ -48,6 +49,11 @@ class NoteHeader extends HookConsumerWidget {
               onTap: note.userId.isNotEmpty
                   ? () => context.push('/$account/users/${note.userId}')
                   : null,
+              onLongPress: () => showUserSheet(
+                context: context,
+                account: account,
+                userId: note.userId,
+              ),
               child: Text.rich(
                 TextSpan(
                   children: [

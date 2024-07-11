@@ -358,12 +358,16 @@ class NoteWidget extends HookConsumerWidget {
                               showDate: showDate,
                             ),
                             if (showTicker)
-                              DefaultTextStyle.merge(
-                                style: style.apply(fontSizeFactor: 0.9),
-                                child: InstanceTickerWidget(
-                                  account: account,
-                                  instance: appearNote.user.instance,
-                                  host: appearNote.user.host,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 2.0),
+                                child: DefaultTextStyle.merge(
+                                  style: style.apply(fontSizeFactor: 0.9),
+                                  child: InstanceTickerWidget(
+                                    account: account,
+                                    instance: appearNote.user.instance,
+                                    host: appearNote.user.host,
+                                  ),
                                 ),
                               ),
                             if (appearNote case Note(:final cw?)) ...[

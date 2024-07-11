@@ -23,6 +23,7 @@ import '../../widget/like_button.dart';
 import '../../widget/mfm.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_preview.dart';
+import '../../widget/user_sheet.dart';
 
 class GalleryPostPage extends ConsumerWidget {
   const GalleryPostPage({
@@ -197,6 +198,11 @@ class GalleryPostPage extends ConsumerWidget {
                   avatarSize: 50.0,
                   trailing: FollowButton(account: account, userId: post.userId),
                   onTap: () => context.push('/$account/users/${post.user.id}'),
+                  onLongPress: () => showUserSheet(
+                    context: context,
+                    account: account,
+                    userId: post.user.id,
+                  ),
                 ),
                 const Divider(),
                 Padding(

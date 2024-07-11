@@ -14,6 +14,7 @@ class UserPreview extends StatelessWidget {
     this.trailing,
     this.avatarSize = 32.0,
     this.onTap,
+    this.onLongPress,
   });
 
   final Account account;
@@ -21,6 +22,7 @@ class UserPreview extends StatelessWidget {
   final Widget? trailing;
   final double avatarSize;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class UserPreview extends StatelessWidget {
       subtitle: AcctWidget(account: account, user: user),
       trailing: trailing,
       onTap: onTap,
+      onLongPress: onLongPress,
     );
   }
 }

@@ -11,6 +11,7 @@ import '../../widget/acct_widget.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
+import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 
 class RenoteMutedUsersPage extends ConsumerWidget {
@@ -61,6 +62,11 @@ class RenoteMutedUsersPage extends ConsumerWidget {
             color: Theme.of(context).colorScheme.error,
           ),
           onTap: () => context.push('/$account/users/${renoteMuting.muteeId}'),
+          onLongPress: () => showUserSheet(
+            context: context,
+            account: account,
+            userId: renoteMuting.muteeId,
+          ),
         ),
         onRefresh: () =>
             ref.refresh(renoteMutingsNotifierProvider(account).future),

@@ -13,6 +13,7 @@ import 'mfm.dart';
 import 'shake_widget.dart';
 import 'user_avatar.dart';
 import 'user_banner.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class UserInfo extends ConsumerWidget {
@@ -39,6 +40,11 @@ class UserInfo extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('/$account/users/${user.id}'),
+        onLongPress: () => showUserSheet(
+          context: context,
+          account: account,
+          userId: user.id,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

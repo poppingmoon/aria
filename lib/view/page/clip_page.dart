@@ -21,6 +21,7 @@ import '../widget/mfm.dart';
 import '../widget/note_widget.dart';
 import '../widget/paginated_list_view.dart';
 import '../widget/user_avatar.dart';
+import '../widget/user_sheet.dart';
 import '../widget/username_widget.dart';
 
 class ClipPage extends HookConsumerWidget {
@@ -219,7 +220,7 @@ class ClipPage extends HookConsumerWidget {
                             onTap: () =>
                                 context.push('/$account/users/${user.id}'),
                           ),
-                          const SizedBox(width: 2.0),
+                          const SizedBox(width: 4.0),
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerLeft,
@@ -228,6 +229,11 @@ class ClipPage extends HookConsumerWidget {
                                 user: user,
                                 onTap: () =>
                                     context.push('/$account/users/${user.id}'),
+                                onLongPress: () => showUserSheet(
+                                  context: context,
+                                  account: account,
+                                  userId: user.id,
+                                ),
                               ),
                             ),
                           ),

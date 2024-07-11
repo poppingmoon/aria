@@ -22,6 +22,7 @@ import 'note_summary.dart';
 import 'note_widget.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class NotificationWidget extends ConsumerWidget {
@@ -65,6 +66,11 @@ class NotificationWidget extends ConsumerWidget {
             actions: [FollowButton(account: account, userId: user.id)],
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
+            onLongPress: () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
           );
         }
       case NotificationType.renote:
@@ -164,6 +170,11 @@ class NotificationWidget extends ConsumerWidget {
                 : null,
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
+            onLongPress: () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
           );
         }
       case NotificationType.followRequestAccepted:
@@ -176,6 +187,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: Text(t.misskey.followRequestAccepted),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
+            onLongPress: () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
           );
         }
       case NotificationType.app:
@@ -448,6 +464,14 @@ class NotificationWidget extends ConsumerWidget {
             context.push('/$account/users/$userId'),
         _ => null,
       },
+      onLongPress: switch (notification) {
+        INotificationsResponse(:final userId?) => () => showUserSheet(
+              context: context,
+              account: account,
+              userId: userId,
+            ),
+        _ => null,
+      },
     );
   }
 }
@@ -499,6 +523,7 @@ class _NotificationTile extends ConsumerWidget {
 
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -579,6 +604,11 @@ class _NotificationTile extends ConsumerWidget {
                                     user: user!,
                                     onTap: () => context
                                         .push('/$account/users/${user!.id}'),
+                                    onLongPress: () => showUserSheet(
+                                      context: context,
+                                      account: account,
+                                      userId: user!.id,
+                                    ),
                                   )
                                 : const SizedBox.shrink()),
                       ),

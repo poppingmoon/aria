@@ -11,6 +11,7 @@ import '../../widget/acct_widget.dart';
 import '../../widget/paginated_list_view.dart';
 import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
+import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 
 class BlockedUsersPage extends ConsumerWidget {
@@ -57,6 +58,11 @@ class BlockedUsersPage extends ConsumerWidget {
             color: Theme.of(context).colorScheme.error,
           ),
           onTap: () => context.push('/$account/users/${blocking.blockeeId}'),
+          onLongPress: () => showUserSheet(
+            context: context,
+            account: account,
+            userId: blocking.blockeeId,
+          ),
         ),
         onRefresh: () => ref.refresh(blockingsNotifierProvider(account).future),
         loadMore: (skipError) => ref
