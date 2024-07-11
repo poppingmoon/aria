@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
-import '../../provider/api/misskey_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import 'error_message.dart';
 
@@ -20,13 +18,7 @@ class NoteFallbackWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return FutureBuilder(
-      future: Future(() async {
-        final note = await ref
-            .read(misskeyProvider(account))
-            .notes
-            .show(NotesShowRequest(noteId: noteId));
-        ref.read(notesNotifierProvider(account).notifier).add(note);
-      }),
+      future: ref.read(notesNotifierProvider(account).notifier).show(noteId),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
           return ErrorMessage(

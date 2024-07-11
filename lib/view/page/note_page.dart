@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -10,7 +9,6 @@ import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
-import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -140,17 +138,12 @@ class NotePage extends HookConsumerWidget {
         title: Text(t.misskey.note),
         actions: [
           IconButton(
+            tooltip: t.misskey.reload,
             onPressed: () async {
-              final note = await futureWithDialog(
+              await futureWithDialog(
                 context,
-                ref
-                    .read(misskeyProvider(account))
-                    .notes
-                    .show(NotesShowRequest(noteId: noteId)),
+                ref.read(notesNotifierProvider(account).notifier).show(noteId),
               );
-              if (note != null) {
-                ref.read(notesNotifierProvider(account).notifier).add(note);
-              }
             },
             icon: const Icon(Icons.refresh),
           ),

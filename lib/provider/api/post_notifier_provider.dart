@@ -106,11 +106,9 @@ class PostNotifier extends _$PostNotifier {
         return remoteNoteId;
       }
       try {
-        final note = await ref
-            .read(misskeyProvider(account))
-            .notes
-            .show(NotesShowRequest(noteId: remoteNoteId));
-        ref.read(notesNotifierProvider(account).notifier).add(note);
+        await ref
+            .read(notesNotifierProvider(account).notifier)
+            .show(remoteNoteId);
       } catch (_) {}
       return remoteNoteId;
     }
