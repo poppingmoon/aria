@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/note_provider.dart';
+import '../../provider/notes_notifier_provider.dart';
 import 'mfm.dart';
 
 class NoteSummary extends ConsumerWidget {
@@ -22,7 +23,10 @@ class NoteSummary extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final note = ref.watch(noteProvider(account, noteId));
     if (note == null) {
-      return const SizedBox.shrink();
+      return FutureBuilder(
+        future: ref.read(notesNotifierProvider(account).notifier).show(noteId),
+        builder: (context, snapshot) => const SizedBox.shrink(),
+      );
     }
     return InkWell(
       onTap: onTap,
