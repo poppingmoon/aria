@@ -249,14 +249,10 @@ class NoteSheet extends ConsumerWidget {
             leading: const Icon(Icons.person),
             title: Text(t.misskey.user),
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => showModalBottomSheet<void>(
+            onTap: () => showUserSheet(
               context: context,
-              builder: (context) => UserSheet(
-                account: account,
-                userId: appearNote.userId,
-              ),
-              clipBehavior: Clip.hardEdge,
-              isScrollControlled: true,
+              account: account,
+              userId: appearNote.userId,
             ),
           ),
           if (appearNote.text != null)
