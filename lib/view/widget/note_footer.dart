@@ -33,14 +33,14 @@ class NoteFooter extends ConsumerWidget {
     super.key,
     required this.account,
     required this.noteId,
-    this.hideDetails = false,
+    this.disableHeader = false,
     this.focusPostForm,
     this.note,
   });
 
   final Account account;
   final String noteId;
-  final bool hideDetails;
+  final bool disableHeader;
   final void Function()? focusPostForm;
   final Note? note;
 
@@ -472,16 +472,12 @@ class NoteFooter extends ConsumerWidget {
                     tooltip: t.misskey.menu,
                     onPressed: () {
                       if (note.id.isEmpty) return;
-                      showModalBottomSheet<void>(
+                      showNoteSheet(
                         context: context,
-                        builder: (context) => NoteSheet(
-                          account: account,
-                          noteId: noteId,
-                          hideDetails: hideDetails,
-                          focusPostForm: focusPostForm,
-                        ),
-                        clipBehavior: Clip.hardEdge,
-                        isScrollControlled: true,
+                        account: account,
+                        noteId: noteId,
+                        disableHeader: disableHeader,
+                        focusPostForm: focusPostForm,
                       );
                     },
                     icon: const Icon(Icons.more_horiz),

@@ -514,7 +514,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     NoteFooter(
                       account: account,
                       noteId: noteId,
-                      hideDetails: true,
+                      disableHeader: true,
                     ),
                     if (children
                         case AsyncValue(
