@@ -25,13 +25,16 @@ class ReactionsViewer extends HookConsumerWidget {
   final bool showAllReactions;
   final Note? note;
 
-  void _showEmojiEffect(
+  void _showReactionEffect(
     BuildContext context,
     GlobalKey key,
     String emoji,
     Map<String, String> emojis,
   ) {
     Future.delayed(const Duration(milliseconds: 50), () {
+      if (!(ModalRoute.of(context)?.isCurrent ?? false)) {
+        return;
+      }
       if (key.currentContext?.findRenderObject()
           case final RenderBox renderBox) {
         final offset = renderBox.localToGlobal(Offset.zero);
@@ -86,7 +89,7 @@ class ReactionsViewer extends HookConsumerWidget {
           if (newSource.remove(reaction.key) case final count? when count > 0) {
             newReactions[reaction.key] = count;
             if (!reduceAnimation && reaction.value < count) {
-              _showEmojiEffect(
+              _showReactionEffect(
                 context,
                 keys.value[reaction.key]!,
                 reaction.key,
@@ -103,7 +106,7 @@ class ReactionsViewer extends HookConsumerWidget {
             newReaction.key: key,
           };
           if (!reduceAnimation) {
-            _showEmojiEffect(
+            _showReactionEffect(
               context,
               key,
               newReaction.key,
