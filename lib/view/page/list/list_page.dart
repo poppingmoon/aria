@@ -15,6 +15,7 @@ import '../../../util/launch_url.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/list_settings_dialog.dart';
 import 'list_notes.dart';
+import 'list_users.dart';
 
 class ListPage extends HookConsumerWidget {
   const ListPage({
@@ -53,75 +54,90 @@ class ListPage extends HookConsumerWidget {
         .valueOrNull
         ?.firstWhereOrNull((list) => list.id == listId);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(list?.name ?? ''),
-        actions: [
-          PopupMenuButton<void>(
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                onTap: () => launchUrl(
-                  ref,
-                  Uri.https(
-                    account.host,
-                    list?.isPublic ?? false
-                        ? 'lists/$listId'
-                        : 'my/lists/$listId',
-                  ),
-                ),
-                child: Text(t.aria.openInBrowser),
-              ),
-              PopupMenuItem(
-                onTap: () => copyToClipboard(
-                  context,
-                  list?.isPublic ?? false
-                      ? 'https://${account.host}/lists/$listId'
-                      : 'https://${account.host}/my/lists/$listId',
-                ),
-                child: Text(t.misskey.copyLink),
-              ),
-              if (list?.isPublic ?? false)
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(list?.name ?? ''),
+          actions: [
+            PopupMenuButton<void>(
+              itemBuilder: (context) => [
                 PopupMenuItem(
-                  onTap: () => Share.shareUri(
-                    Uri.https(account.host, 'list/$listId'),
+                  onTap: () => launchUrl(
+                    ref,
+                    Uri.https(
+                      account.host,
+                      list?.isPublic ?? false
+                          ? 'lists/$listId'
+                          : 'my/lists/$listId',
+                    ),
                   ),
-                  child: Text(t.misskey.share),
+                  child: Text(t.aria.openInBrowser),
                 ),
-              PopupMenuItem(
-                onTap: list != null ? () => _edit(ref, list) : null,
-                child: Text(t.misskey.editList),
-              ),
-              PopupMenuItem(
-                onTap: () async {
-                  final confirmed = await confirm(
+                PopupMenuItem(
+                  onTap: () => copyToClipboard(
                     context,
-                    message: t.misskey.deleteAreYouSure(x: list?.name ?? ''),
-                  );
-                  if (!context.mounted) return;
-                  if (confirmed) {
-                    await futureWithDialog(
+                    list?.isPublic ?? false
+                        ? 'https://${account.host}/lists/$listId'
+                        : 'https://${account.host}/my/lists/$listId',
+                  ),
+                  child: Text(t.misskey.copyLink),
+                ),
+                if (list?.isPublic ?? false)
+                  PopupMenuItem(
+                    onTap: () => Share.shareUri(
+                      Uri.https(account.host, 'list/$listId'),
+                    ),
+                    child: Text(t.misskey.share),
+                  ),
+                PopupMenuItem(
+                  onTap: list != null ? () => _edit(ref, list) : null,
+                  child: Text(t.misskey.editList),
+                ),
+                PopupMenuItem(
+                  onTap: () async {
+                    final confirmed = await confirm(
                       context,
-                      ref
-                          .read(listsNotifierProvider(account).notifier)
-                          .delete(listId),
+                      message: t.misskey.deleteAreYouSure(x: list?.name ?? ''),
                     );
                     if (!context.mounted) return;
-                    context.pop();
-                  }
-                },
-                child: Text(
-                  t.misskey.delete,
-                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(listsNotifierProvider(account).notifier)
+                            .delete(listId),
+                      );
+                      if (!context.mounted) return;
+                      context.pop();
+                    }
+                  },
+                  child: Text(
+                    t.misskey.delete,
+                    style:
+                        TextStyle(color: Theme.of(context).colorScheme.error),
+                  ),
                 ),
-              ),
+              ],
+            ),
+          ],
+          bottom: TabBar(
+            tabs: [
+              Tab(text: t.misskey.notes),
+              Tab(text: t.misskey.users),
             ],
           ),
-        ],
-      ),
-      body: ListNotes(account: account, listId: listId),
-      floatingActionButton: FloatingActionButton(
-        onPressed: list != null ? () => _edit(ref, list) : null,
-        child: const Icon(Icons.edit),
+        ),
+        body: TabBarView(
+          children: [
+            ListNotes(account: account, listId: listId),
+            ListUsers(account: account, listId: listId),
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: list != null ? () => _edit(ref, list) : null,
+          child: const Icon(Icons.edit),
+        ),
       ),
     );
   }

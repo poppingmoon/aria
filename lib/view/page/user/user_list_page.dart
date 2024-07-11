@@ -6,7 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/list_provider.dart';
-import '../../../provider/api/list_users_provider.dart';
+import '../../../provider/api/list_users_notifier_provider.dart';
 import '../../../provider/api/misskey_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
@@ -30,7 +30,7 @@ class UserListPage extends HookConsumerWidget {
     final list =
         ref.watch(listProvider(account, listId, forPublic: true)).valueOrNull;
     final users =
-        ref.watch(listUsersProvider(account, listId, forPublic: true));
+        ref.watch(listUsersNotifierProvider(account, listId, forPublic: true));
     final isLiked = list?.isLiked ?? false;
     final likedCount = list?.likedCount ?? 0;
 
