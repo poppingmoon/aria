@@ -199,10 +199,9 @@ class RenoteSheet extends HookConsumerWidget {
                         .read(generalSettingsNotifierProvider)
                         .confirmBeforePost) {
                       final confirmed = await confirmPost(
-                        context,
+                        ref,
                         account,
-                        request: request,
-                        files: [],
+                        request,
                       );
                       if (!confirmed) return;
                     }

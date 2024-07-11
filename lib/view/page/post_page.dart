@@ -38,7 +38,7 @@ class PostPage extends HookConsumerWidget {
     WidgetRef ref,
     Account account,
   ) async {
-    final text = ref.read(postNotifierProvider(account, noteId: noteId)).text;
+    final request = ref.read(postNotifierProvider(account, noteId: noteId));
     final attaches =
         ref.read(attachesNotifierProvider(account, noteId: noteId));
     final hasFiles = attaches.isNotEmpty;
@@ -58,9 +58,10 @@ class PostPage extends HookConsumerWidget {
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
       final confirmed = await confirmPost(
-        ref.context,
+        ref,
         account,
-        noteId: noteId,
+        request,
+        files: files,
       );
       if (!confirmed) return;
       if (!ref.context.mounted) return;
@@ -73,7 +74,7 @@ class PostPage extends HookConsumerWidget {
     );
     if (!ref.context.mounted) return;
     if (result != null) {
-      if (text != null) {
+      if (request.text case final text?) {
         final nodes = const MfmParser().parse(text);
         final hashtags = nodes
             .extract((node) => node is MfmHashTag)
