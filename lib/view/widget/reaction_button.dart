@@ -84,6 +84,7 @@ class ReactionButton extends ConsumerWidget {
                   ref
                       .read(notesNotifierProvider(account).notifier)
                       .react(note.id, localEmoji),
+                  overlay: false,
                 );
               } else if (isMyReaction) {
                 final confirmed = await confirm(
@@ -97,6 +98,7 @@ class ReactionButton extends ConsumerWidget {
                   ref
                       .read(notesNotifierProvider(account).notifier)
                       .unreact(note.id),
+                  overlay: false,
                 );
               } else {
                 final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
@@ -123,6 +125,7 @@ class ReactionButton extends ConsumerWidget {
                   ref
                       .read(notesNotifierProvider(account).notifier)
                       .changeReaction(note.id, localEmoji),
+                  overlay: false,
                 );
               }
             }

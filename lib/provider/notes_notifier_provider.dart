@@ -141,17 +141,17 @@ class NotesNotifier extends _$NotesNotifier {
 
   void updateNote(String noteId, Updated updated) {
     if (updated.note case final note?) {
-      state = {...state, noteId: note};
+      add(note);
     } else {
       final note = state[noteId];
       if (note == null) return;
-      final notes = Map.of(state);
-      notes[noteId] = note.copyWith(
-        text: updated.text,
-        cw: updated.cw,
-        updatedAt: DateTime.now(),
+      add(
+        note.copyWith(
+          text: updated.text,
+          cw: updated.cw,
+          updatedAt: DateTime.now(),
+        ),
       );
-      state = notes;
     }
   }
 
@@ -162,11 +162,24 @@ class NotesNotifier extends _$NotesNotifier {
         reaction: reaction,
       ),
     );
+    final emoji = reaction.startsWith(':') && !reaction.endsWith('@.:')
+        ? '${reaction.substring(0, reaction.length - 1)}@.:'
+        : reaction;
+    final cachedNote = state[noteId];
+    if (cachedNote != null) {
+      add(
+        cachedNote.copyWith(
+          reactionCount: (cachedNote.reactionCount ?? 0) + 1,
+          reactions: {
+            ...cachedNote.reactions,
+            reaction: (cachedNote.reactions[emoji] ?? 0) + 1,
+          },
+          myReaction: emoji,
+        ),
+      );
+    }
     final note = await _misskey.notes.show(NotesShowRequest(noteId: noteId));
     if (note.myReaction == null) {
-      final emoji = reaction.startsWith(':') && !reaction.endsWith('@.:')
-          ? '${reaction.substring(0, reaction.length - 1)}@.:'
-          : reaction;
       add(
         note.copyWith(
           reactionCount: (note.reactionCount ?? 0) + 1,
@@ -186,6 +199,23 @@ class NotesNotifier extends _$NotesNotifier {
     await _misskey.notes.reactions.delete(
       NotesReactionsDeleteRequest(noteId: noteId),
     );
+    final cachedNote = state[noteId];
+    if (cachedNote case Note(:final myReaction?)) {
+      final reactions = Map.of(cachedNote.reactions);
+      final count = reactions[myReaction] ?? 0;
+      if (count <= 1) {
+        reactions.remove(myReaction);
+      } else {
+        reactions[myReaction] = count - 1;
+      }
+      add(
+        cachedNote.copyWith(
+          reactionCount: max(0, (cachedNote.reactionCount ?? 0) - 1),
+          reactions: reactions,
+          myReaction: null,
+        ),
+      );
+    }
     final note = await _misskey.notes.show(NotesShowRequest(noteId: noteId));
     if (note case Note(:final myReaction?)) {
       final reactions = Map.of(note.reactions);

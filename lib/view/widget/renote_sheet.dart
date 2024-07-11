@@ -10,6 +10,7 @@ import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
@@ -216,6 +217,9 @@ class RenoteSheet extends HookConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (result != null) {
+                        ref
+                            .read(notesNotifierProvider(account).notifier)
+                            .add(result);
                         context.pop();
                       }
                     } else {
@@ -231,6 +235,9 @@ class RenoteSheet extends HookConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (result != null) {
+                        ref
+                            .read(notesNotifierProvider(account).notifier)
+                            .add(result);
                         context.pop();
                       }
                     }
