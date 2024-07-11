@@ -82,6 +82,7 @@ class DriveFileWidget extends ConsumerWidget {
                           account: account,
                           file: file,
                         ),
+                        clipBehavior: Clip.antiAlias,
                       ),
                       icon: const Icon(Icons.more_vert),
                     ),
