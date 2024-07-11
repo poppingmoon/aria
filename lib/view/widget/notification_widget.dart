@@ -17,6 +17,7 @@ import 'achievement_widget.dart';
 import 'emoji_widget.dart';
 import 'follow_button.dart';
 import 'image_widget.dart';
+import 'note_sheet.dart';
 import 'note_summary.dart';
 import 'note_widget.dart';
 import 'time_widget.dart';
@@ -76,6 +77,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: renoteId),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/$id'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: id,
+            ),
           );
         }
       case NotificationType.reaction:
@@ -92,6 +98,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.pollEnded:
@@ -105,6 +116,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.receiveFollowRequest:
@@ -214,6 +230,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.roleAssigned:
@@ -335,6 +356,11 @@ class NotificationWidget extends ConsumerWidget {
                 .toList(),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.renoteGrouped:
@@ -400,6 +426,11 @@ class NotificationWidget extends ConsumerWidget {
                 .toList(),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/$id'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: id,
+            ),
           );
         }
       // obsolete
@@ -433,6 +464,7 @@ class _NotificationTile extends ConsumerWidget {
     this.actions,
     this.createdAt,
     this.onTap,
+    this.onLongPress,
   });
 
   final Account account;
@@ -445,6 +477,7 @@ class _NotificationTile extends ConsumerWidget {
   final List<Widget>? actions;
   final DateTime? createdAt;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
