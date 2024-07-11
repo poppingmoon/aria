@@ -19,6 +19,7 @@ import '../../util/future_with_dialog.dart';
 import 'acct_widget.dart';
 import 'pagination_bottom_widget.dart';
 import 'user_avatar.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class FollowRequestsListView extends HookConsumerWidget {
@@ -226,6 +227,11 @@ class FollowRequestTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () => context.push('/$account/users/${user.id}'),
+      onLongPress: () => showUserSheet(
+        context: context,
+        account: account,
+        userId: user.id,
+      ),
       child: Row(
         children: [
           Padding(
@@ -245,11 +251,7 @@ class FollowRequestTile extends ConsumerWidget {
                 children: [
                   DefaultTextStyle.merge(
                     style: const TextStyle(fontWeight: FontWeight.bold),
-                    child: UsernameWidget(
-                      account: account,
-                      user: user,
-                      onTap: () => context.push('/$account/users/${user.id}'),
-                    ),
+                    child: UsernameWidget(account: account, user: user),
                   ),
                   AcctWidget(account: account, user: user),
                 ],

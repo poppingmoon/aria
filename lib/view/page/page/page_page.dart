@@ -29,6 +29,7 @@ import '../../widget/time_widget.dart';
 import '../../widget/url_preview.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_preview.dart';
+import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
 
 class PagePage extends ConsumerWidget {
@@ -249,6 +250,11 @@ class PagePage extends ConsumerWidget {
                                 user: page.user,
                                 onTap: () => context
                                     .push('/$account/users/${page.userId}'),
+                                onLongPress: () => showUserSheet(
+                                  context: context,
+                                  account: account,
+                                  userId: page.userId,
+                                ),
                               ),
                             ),
                           ),
@@ -351,6 +357,11 @@ class PagePage extends ConsumerWidget {
                             FollowButton(account: account, userId: page.userId),
                         onTap: () =>
                             context.push('/$account/users/${page.user.id}'),
+                        onLongPress: () => showUserSheet(
+                          context: context,
+                          account: account,
+                          userId: page.user.id,
+                        ),
                       ),
                     ),
                     ColoredBox(

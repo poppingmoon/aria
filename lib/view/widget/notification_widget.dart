@@ -17,10 +17,12 @@ import 'achievement_widget.dart';
 import 'emoji_widget.dart';
 import 'follow_button.dart';
 import 'image_widget.dart';
+import 'note_sheet.dart';
 import 'note_summary.dart';
 import 'note_widget.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class NotificationWidget extends ConsumerWidget {
@@ -64,6 +66,11 @@ class NotificationWidget extends ConsumerWidget {
             actions: [FollowButton(account: account, userId: user.id)],
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
+            onLongPress: () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
           );
         }
       case NotificationType.renote:
@@ -76,6 +83,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: renoteId),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/$id'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: id,
+            ),
           );
         }
       case NotificationType.reaction:
@@ -92,6 +104,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.pollEnded:
@@ -105,6 +122,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.receiveFollowRequest:
@@ -148,6 +170,11 @@ class NotificationWidget extends ConsumerWidget {
                 : null,
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
+            onLongPress: () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
           );
         }
       case NotificationType.followRequestAccepted:
@@ -160,6 +187,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: Text(t.misskey.followRequestAccepted),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
+            onLongPress: () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
           );
         }
       case NotificationType.app:
@@ -214,6 +246,11 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.roleAssigned:
@@ -335,6 +372,11 @@ class NotificationWidget extends ConsumerWidget {
                 .toList(),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
           );
         }
       case NotificationType.renoteGrouped:
@@ -400,6 +442,11 @@ class NotificationWidget extends ConsumerWidget {
                 .toList(),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/$id'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: id,
+            ),
           );
         }
       // obsolete
@@ -415,6 +462,14 @@ class NotificationWidget extends ConsumerWidget {
             context.push('/$account/notes/$noteId'),
         INotificationsResponse(:final userId?) => () =>
             context.push('/$account/users/$userId'),
+        _ => null,
+      },
+      onLongPress: switch (notification) {
+        INotificationsResponse(:final userId?) => () => showUserSheet(
+              context: context,
+              account: account,
+              userId: userId,
+            ),
         _ => null,
       },
     );
@@ -433,6 +488,7 @@ class _NotificationTile extends ConsumerWidget {
     this.actions,
     this.createdAt,
     this.onTap,
+    this.onLongPress,
   });
 
   final Account account;
@@ -445,6 +501,7 @@ class _NotificationTile extends ConsumerWidget {
   final List<Widget>? actions;
   final DateTime? createdAt;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -466,6 +523,7 @@ class _NotificationTile extends ConsumerWidget {
 
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -546,6 +604,11 @@ class _NotificationTile extends ConsumerWidget {
                                     user: user!,
                                     onTap: () => context
                                         .push('/$account/users/${user!.id}'),
+                                    onLongPress: () => showUserSheet(
+                                      context: context,
+                                      account: account,
+                                      userId: user!.id,
+                                    ),
                                   )
                                 : const SizedBox.shrink()),
                       ),

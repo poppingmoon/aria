@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
@@ -26,11 +25,10 @@ void Function()? getNoteAction(
     NoteActionType.none => null,
     NoteActionType.expand => () =>
         ref.context.push('/$account/notes/${appearNote.id}'),
-    NoteActionType.menu => () => showModalBottomSheet<void>(
+    NoteActionType.menu => () => showNoteSheet(
           context: ref.context,
-          builder: (context) => NoteSheet(account: account, noteId: note.id),
-          clipBehavior: Clip.hardEdge,
-          isScrollControlled: true,
+          account: account,
+          noteId: note.id,
         ),
     NoteActionType.reaction => !account.isGuest
         ? () async {

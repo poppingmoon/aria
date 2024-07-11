@@ -26,21 +26,44 @@ import '../dialog/delete_and_edit_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import 'account_preview.dart';
 import 'note_fallback_widget.dart';
+import 'note_summary.dart';
+import 'time_widget.dart';
 import 'translated_note_sheet.dart';
+import 'user_avatar.dart';
 import 'user_sheet.dart';
+
+Future<void> showNoteSheet({
+  required BuildContext context,
+  required Account account,
+  required String noteId,
+  bool disableHeader = false,
+  void Function()? focusPostForm,
+}) {
+  return showModalBottomSheet(
+    context: context,
+    builder: (context) => NoteSheet(
+      account: account,
+      noteId: noteId,
+      disableHeader: disableHeader,
+      focusPostForm: focusPostForm,
+    ),
+    clipBehavior: Clip.antiAlias,
+    isScrollControlled: true,
+  );
+}
 
 class NoteSheet extends ConsumerWidget {
   const NoteSheet({
     super.key,
     required this.account,
     required this.noteId,
-    this.hideDetails = false,
+    this.disableHeader = false,
     this.focusPostForm,
   });
 
   final Account account;
   final String noteId;
-  final bool hideDetails;
+  final bool disableHeader;
   final void Function()? focusPostForm;
 
   @override
@@ -88,12 +111,26 @@ class NoteSheet extends ConsumerWidget {
       builder: (context, scrollController) => ListView(
         controller: scrollController,
         children: [
-          if (!hideDetails)
-            ListTile(
-              leading: const Icon(Icons.info_outline),
-              title: Text(t.misskey.details),
-              onTap: () => context.push('/$account/notes/$noteId'),
+          ListTile(
+            leading: UserAvatar(
+              account: account,
+              user: appearNote.user,
+              size: 32.0,
+              onTap: () => context.push('/$account/users/${appearNote.userId}'),
             ),
+            title: NoteSummary(
+              account: account,
+              noteId: appearNote.id,
+            ),
+            subtitle: TimeWidget(
+              time: appearNote.createdAt,
+              detailed: true,
+            ),
+            onTap: !disableHeader
+                ? () => context.push('/$account/notes/$noteId')
+                : null,
+          ),
+          const Divider(height: 0.0),
           ListTile(
             leading: const Icon(Icons.copy),
             title: Text(t.misskey.copyContent),
@@ -212,14 +249,10 @@ class NoteSheet extends ConsumerWidget {
             leading: const Icon(Icons.person),
             title: Text(t.misskey.user),
             trailing: const Icon(Icons.navigate_next),
-            onTap: () => showModalBottomSheet<void>(
+            onTap: () => showUserSheet(
               context: context,
-              builder: (context) => UserSheet(
-                account: account,
-                userId: appearNote.userId,
-              ),
-              clipBehavior: Clip.hardEdge,
-              isScrollControlled: true,
+              account: account,
+              userId: appearNote.userId,
             ),
           ),
           if (appearNote.text != null)

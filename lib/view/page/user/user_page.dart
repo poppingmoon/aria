@@ -84,15 +84,11 @@ class UserPage extends HookConsumerWidget {
           actions: [
             if (userId != null)
               IconButton(
-                onPressed: () => showModalBottomSheet<void>(
+                onPressed: () => showUserSheet(
                   context: context,
-                  builder: (context) => UserSheet(
-                    account: account,
-                    userId: userId,
-                    hideDetails: true,
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                  isScrollControlled: true,
+                  account: account,
+                  userId: userId,
+                  disableHeader: true,
                 ),
                 icon: const Icon(Icons.more_vert),
               ),

@@ -12,6 +12,7 @@ import '../../provider/api/search_users_by_username_provider.dart';
 import '../../provider/recently_used_users_notifier_provider.dart';
 import '../widget/error_message.dart';
 import '../widget/user_preview.dart';
+import '../widget/user_sheet.dart';
 
 Future<UserDetailed?> selectUser(
   BuildContext context,
@@ -112,6 +113,11 @@ class UserSelectDialog extends HookConsumerWidget {
                           account: account,
                           user: recentlyUsedUsers[index],
                           onTap: () => context.pop(recentlyUsedUsers[index]),
+                          onLongPress: () => showUserSheet(
+                            context: context,
+                            account: account,
+                            userId: recentlyUsedUsers[index].id,
+                          ),
                         ),
                         separatorBuilder: (_, __) => const Divider(height: 0.0),
                         itemCount: recentlyUsedUsers.length,
@@ -135,6 +141,11 @@ class UserSelectDialog extends HookConsumerWidget {
                                           .add(users[index]);
                                       context.pop(users[index]);
                                     },
+                                    onLongPress: () => showUserSheet(
+                                      context: context,
+                                      account: account,
+                                      userId: users[index].id,
+                                    ),
                                   )
                                 : const SizedBox.shrink(),
                         separatorBuilder: (_, __) => const Divider(height: 0.0),

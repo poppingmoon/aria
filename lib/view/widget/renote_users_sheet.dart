@@ -7,6 +7,7 @@ import '../../model/account.dart';
 import '../../provider/api/renotes_notifier_provider.dart';
 import 'paginated_list_view.dart';
 import 'user_preview.dart';
+import 'user_sheet.dart';
 
 class RenoteUsersSheet extends ConsumerWidget {
   const RenoteUsersSheet({
@@ -43,6 +44,11 @@ class RenoteUsersSheet extends ConsumerWidget {
                 account: account,
                 user: note.user,
                 onTap: () => context.push('/$account/users/${note.userId}'),
+                onLongPress: () => showUserSheet(
+                  context: context,
+                  account: account,
+                  userId: note.userId,
+                ),
               ),
               onRefresh: () =>
                   ref.refresh(renotesNotifierProvider(account, noteId).future),

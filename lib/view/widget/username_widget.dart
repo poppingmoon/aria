@@ -28,17 +28,20 @@ class UsernameWidget extends StatelessWidget {
     required this.user,
     this.style,
     this.onTap,
+    this.onLongPress,
   });
 
   final Account account;
   final User user;
   final TextStyle? style;
   final void Function()? onTap;
+  final void Function()? onLongPress;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      onLongPress: onLongPress,
       child: Mfm(
         account: account,
         text: user.name ?? user.username,

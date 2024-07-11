@@ -39,6 +39,7 @@ import 'emoji_picker.dart';
 import 'file_picker_sheet.dart';
 import 'mention_widget.dart';
 import 'mfm_keyboard.dart';
+import 'note_sheet.dart';
 import 'note_summary.dart';
 import 'note_visibility_icon.dart';
 import 'note_visibility_sheet.dart';
@@ -528,6 +529,11 @@ class PostForm extends HookConsumerWidget {
             if (request case NotesCreateRequest(:final replyId?))
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$replyId'),
+                onLongPress: () => showNoteSheet(
+                  context: context,
+                  account: account.value,
+                  noteId: replyId,
+                ),
                 child: Row(
                   children: [
                     IconButton(
@@ -569,6 +575,11 @@ class PostForm extends HookConsumerWidget {
             if (request case NotesCreateRequest(:final renoteId?))
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$renoteId'),
+                onLongPress: () => showNoteSheet(
+                  context: context,
+                  account: account.value,
+                  noteId: renoteId,
+                ),
                 child: Row(
                   children: [
                     IconButton(

@@ -46,6 +46,7 @@ class DriveFilePage extends ConsumerWidget {
                       account: account,
                       file: file,
                     ),
+                    clipBehavior: Clip.antiAlias,
                   );
                   final siblings = await ref.read(
                     driveFilesNotifierProvider(account, file.folderId).future,

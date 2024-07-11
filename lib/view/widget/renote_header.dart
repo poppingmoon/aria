@@ -13,6 +13,7 @@ import '../../provider/note_provider.dart';
 import 'note_visibility_icon.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class RenoteHeader extends HookConsumerWidget {
@@ -69,6 +70,11 @@ class RenoteHeader extends HookConsumerWidget {
                   alignment: Alignment.centerLeft,
                   child: InkWell(
                     onTap: () => context.push('/$account/users/${note.userId}'),
+                    onLongPress: () => showUserSheet(
+                      context: context,
+                      account: account,
+                      userId: note.userId,
+                    ),
                     child: Text.rich(
                       (note.userId == note.renote?.userId
                           ? t.aria.selfRenotedBy

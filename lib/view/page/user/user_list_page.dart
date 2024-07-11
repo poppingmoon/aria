@@ -13,6 +13,7 @@ import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
 import '../../widget/like_button.dart';
 import '../../widget/user_preview.dart';
+import '../../widget/user_sheet.dart';
 
 class UserListPage extends HookConsumerWidget {
   const UserListPage({
@@ -67,6 +68,11 @@ class UserListPage extends HookConsumerWidget {
                             user: user,
                             onTap: () =>
                                 context.push('/$account/users/${user.id}'),
+                            onLongPress: () => showUserSheet(
+                              context: context,
+                              account: account,
+                              userId: user.id,
+                            ),
                           ),
                         ),
                       ),

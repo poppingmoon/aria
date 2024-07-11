@@ -41,6 +41,7 @@ import 'renote_header.dart';
 import 'time_widget.dart';
 import 'url_preview.dart';
 import 'user_avatar.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class NoteDetailedWidget extends HookConsumerWidget {
@@ -269,6 +270,11 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                             onTap: () => context.push(
                                               '/$account/users/${appearNote.userId}',
                                             ),
+                                            onLongPress: () => showUserSheet(
+                                              context: context,
+                                              account: account,
+                                              userId: appearNote.userId,
+                                            ),
                                           ),
                                         ),
                                         if (appearNote.user.isBot)
@@ -309,12 +315,16 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                 user: appearNote.user,
                               ),
                               if (showTicker)
-                                DefaultTextStyle.merge(
-                                  style: style.apply(fontSizeFactor: 0.9),
-                                  child: InstanceTickerWidget(
-                                    account: account,
-                                    instance: appearNote.user.instance,
-                                    host: appearNote.user.host,
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 2.0),
+                                  child: DefaultTextStyle.merge(
+                                    style: style.apply(fontSizeFactor: 0.9),
+                                    child: InstanceTickerWidget(
+                                      account: account,
+                                      instance: appearNote.user.instance,
+                                      host: appearNote.user.host,
+                                    ),
                                   ),
                                 ),
                             ],
@@ -514,7 +524,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     NoteFooter(
                       account: account,
                       noteId: noteId,
-                      hideDetails: true,
+                      disableHeader: true,
                     ),
                     if (children
                         case AsyncValue(

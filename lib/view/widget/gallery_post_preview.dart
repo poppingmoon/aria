@@ -15,6 +15,7 @@ import 'image_widget.dart';
 import 'mfm.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
+import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class GalleryPostPreview extends HookConsumerWidget {
@@ -149,10 +150,16 @@ class GalleryPostPreview extends HookConsumerWidget {
                     user: post.user,
                     onTap: () => context.push('/$account/users/${post.userId}'),
                   ),
+                  const SizedBox(width: 2.0),
                   UsernameWidget(
                     account: account,
                     user: post.user,
                     onTap: () => context.push('/$account/users/${post.userId}'),
+                    onLongPress: () => showUserSheet(
+                      context: context,
+                      account: account,
+                      userId: post.userId,
+                    ),
                   ),
                 ],
               ),
