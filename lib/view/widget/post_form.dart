@@ -105,9 +105,10 @@ class PostForm extends HookConsumerWidget {
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
       final request = ref.read(postNotifierProvider(account, noteId: noteId));
       final confirmed = await confirmPost(
-        ref.context,
+        ref,
         account,
-        request: request,
+        request,
+        files: files,
       );
       if (!confirmed) return;
       if (!ref.context.mounted) return;

@@ -33,11 +33,8 @@ class PageNotifier extends _$PageNotifier {
     unawaited(
       Future.wait(
         noteIds.map(
-          (noteId) async {
-            final note =
-                await _misskey.notes.show(NotesShowRequest(noteId: noteId));
-            ref.read(notesNotifierProvider(account).notifier).add(note);
-          },
+          (noteId) =>
+              ref.read(notesNotifierProvider(account).notifier).show(noteId),
         ),
       ),
     );

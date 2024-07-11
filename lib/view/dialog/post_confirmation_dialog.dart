@@ -6,27 +6,53 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../extension/notes_create_request_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../model/post_file.dart';
-import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/post_notifier_provider.dart';
+import '../../provider/note_provider.dart';
+import '../../provider/notes_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../widget/note_widget.dart';
 
 Future<bool> confirmPost(
-  BuildContext context,
-  Account account, {
-  String? noteId,
-  NotesCreateRequest? request,
+  WidgetRef ref,
+  Account account,
+  NotesCreateRequest request, {
   List<DriveFile>? files,
 }) async {
+  if (request.replyId case final replyId?) {
+    final reply = ref.read(noteProvider(account, replyId));
+    if (reply == null) {
+      final reply = await futureWithDialog(
+        ref.context,
+        ref.read(notesNotifierProvider(account).notifier).show(replyId),
+      );
+      if (reply == null) {
+        return false;
+      }
+    }
+  }
+  if (request.renoteId case final renoteId?) {
+    final renote = ref.read(noteProvider(account, renoteId));
+    if (renote == null) {
+      if (!ref.context.mounted) return false;
+      final renote = await futureWithDialog(
+        ref.context,
+        ref.read(notesNotifierProvider(account).notifier).show(renoteId),
+      );
+      if (renote == null) {
+        return false;
+      }
+    }
+  }
+  if (!ref.context.mounted) {
+    return false;
+  }
   final result = await showDialog<bool>(
-    context: context,
+    context: ref.context,
     builder: (context) => PostConfirmationDialog(
       account: account,
-      noteId: noteId,
       request: request,
-      files: files,
+      files: files ?? [],
     ),
   );
   return result ?? false;
@@ -36,26 +62,16 @@ class PostConfirmationDialog extends ConsumerWidget {
   const PostConfirmationDialog({
     super.key,
     required this.account,
-    this.noteId,
-    this.request,
-    this.files,
+    required this.request,
+    required this.files,
   });
 
   final Account account;
-  final String? noteId;
-  final NotesCreateRequest? request;
-  final List<DriveFile>? files;
+  final NotesCreateRequest request;
+  final List<DriveFile> files;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final NotesCreateRequest request = this.request ??
-        ref.watch(postNotifierProvider(account, noteId: noteId));
-    final files = this.files ??
-        ref
-            .watch(attachesNotifierProvider(account, noteId: noteId))
-            .map((file) => file is DrivePostFile ? file.file : null)
-            .nonNulls
-            .toList();
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final channel = request.channelId != null
         ? ref

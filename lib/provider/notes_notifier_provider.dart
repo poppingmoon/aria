@@ -50,6 +50,12 @@ class NotesNotifier extends _$NotesNotifier {
     }
   }
 
+  Future<Note> show(String noteId) async {
+    final note = await _misskey.notes.show(NotesShowRequest(noteId: noteId));
+    add(note);
+    return note;
+  }
+
   void remove(String noteId) {
     state = {
       ...state,
