@@ -327,11 +327,14 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get renote => 'リノート';
 	@override String get unrenote => 'リノートやめる';
 	@override String get renoted => 'リノートしたで。';
+	@override String renotedToX({required Object name}) => '${name} にリノートしました。';
 	@override String get cantRenote => 'この投稿はリノートできへんっぽい。';
 	@override String get cantReRenote => 'リノート自体はリノートできへんで。';
 	@override String get quote => '引用';
 	@override String get inChannelRenote => 'チャンネルの中でリノート';
 	@override String get inChannelQuote => 'チャンネル内引用';
+	@override String get renoteToChannel => 'チャンネルにリノート';
+	@override String get renoteToOtherChannel => '他のチャンネルにリノート';
 	@override String get pinnedNote => 'ピン留めされとるノート';
 	@override String get pinned => 'ピン留めしとく';
 	@override String get you => 'あんた';
@@ -687,6 +690,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String noteOf({required Object user}) => '${user}はんのノート';
 	@override String get quoteAttached => '引用付いとるで';
 	@override String get quoteQuestion => '引用として添付してもええか？';
+	@override String get attachAsFileQuestion => 'クリップボードのテキストが長いです。テキストファイルとして添付しますか？';
 	@override String get noMessagesYet => 'まだチャットはあらへんで';
 	@override String get newMessageExists => '新しいメッセージがきたで';
 	@override String get onlyOneFileCanBeAttached => 'ごめんな、メッセージに添付できるファイルはひとつだけなんよ。';
@@ -1454,6 +1458,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get noDescription => '説明文はあらへんで';
 	@override String get alwaysConfirmFollow => 'フォローの際常に確認する';
 	@override String get inquiry => '問い合わせ';
+	@override late final _StringsMisskeyDeliveryJaKs delivery_ = _StringsMisskeyDeliveryJaKs._(_root);
 	@override late final _StringsMisskeyBubbleGameJaKs bubbleGame_ = _StringsMisskeyBubbleGameJaKs._(_root);
 	@override late final _StringsMisskeyAnnouncementJaKs announcement_ = _StringsMisskeyAnnouncementJaKs._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingJaKs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingJaKs._(_root);
@@ -1533,6 +1538,19 @@ class _StringsMisskeyIOJaKs extends _StringsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _StringsMisskeyIOSkebStatusJaKs skebStatus_ = _StringsMisskeyIOSkebStatusJaKs._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryJaKs extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get status => '配信状態';
+	@override String get stop => '配信せぇへん';
+	@override String get resume => '配信再開';
+	@override late final _StringsMisskeyDeliveryTypeJaKs type_ = _StringsMisskeyDeliveryTypeJaKs._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2074,8 +2092,6 @@ class _StringsMisskeySfxJaKs extends _StringsMisskeySfxEnUs {
 	@override String get note => 'ノート';
 	@override String get noteMy => 'ノート(自分)';
 	@override String get notification => '通知';
-	@override String get antenna => 'アンテナ受信';
-	@override String get channel => 'チャンネル通知';
 	@override String get reaction => 'ツッコミ選んどるとき';
 }
 
@@ -2936,6 +2952,19 @@ class _StringsMisskeyIOSkebStatusJaKs extends _StringsMisskeyIOSkebStatusEnUs {
 	@override String yenX({required Object x}) => '${x}円';
 	@override String nWorks({required Object n}) => '納品実績 ${n}件';
 	@override String nRequests({required Object n}) => '取引実績 ${n}件';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeJaKs extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => '配信しとる';
+	@override String get manuallySuspended => '手動停止中';
+	@override String get goneSuspended => 'サーバー削除のため停止中';
+	@override String get autoSuspendedForNotResponding => 'サーバー応答なしのため停止中';
 }
 
 // Path: misskey.bubbleGame_.score_

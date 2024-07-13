@@ -1086,6 +1086,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get flip => 'Inversão';
 	@override String lastNDays({required Object n}) => 'Últimos ${n} dias';
 	@override String get surrender => 'Cancelar';
+	@override late final _StringsMisskeyDeliveryPtPt delivery_ = _StringsMisskeyDeliveryPtPt._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingPtPt initialAccountSetting_ = _StringsMisskeyInitialAccountSettingPtPt._(_root);
 	@override late final _StringsMisskeyServerSettingsPtPt serverSettings_ = _StringsMisskeyServerSettingsPtPt._(_root);
 	@override late final _StringsMisskeyAccountMigrationPtPt accountMigration_ = _StringsMisskeyAccountMigrationPtPt._(_root);
@@ -1126,6 +1127,17 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsPtPt webhookSettings_ = _StringsMisskeyWebhookSettingsPtPt._(_root);
 	@override late final _StringsMisskeyModerationLogTypesPtPt moderationLogTypes_ = _StringsMisskeyModerationLogTypesPtPt._(_root);
 	@override late final _StringsMisskeyReversiPtPt reversi_ = _StringsMisskeyReversiPtPt._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryPtPt extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryPtPt._(_StringsPtPt root) : this._root = root, super._(root);
+
+	@override final _StringsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspenso';
+	@override late final _StringsMisskeyDeliveryTypePtPt type_ = _StringsMisskeyDeliveryTypePtPt._(_root);
 }
 
 // Path: misskey.initialAccountSetting_
@@ -1706,6 +1718,16 @@ class _StringsMisskeyReversiPtPt extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Total';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypePtPt extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypePtPt._(_StringsPtPt root) : this._root = root, super._(root);
+
+	@override final _StringsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publicando';
 }
 
 // Path: misskey.achievements_.types_

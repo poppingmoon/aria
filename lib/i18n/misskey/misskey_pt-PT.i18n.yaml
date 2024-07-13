@@ -1016,6 +1016,10 @@ keepScreenOn: "Manter a tela do dispositivo sempre ligada"
 flip: "Inversão"
 lastNDays: "Últimos {n} dias"
 surrender: "Cancelar"
+delivery_:
+  stop: "Suspenso"
+  type_:
+    none: "Publicando"
 initialAccountSetting_:
   followUsers: "Siga usuários que lhe interessam para criar a sua linha do tempo."
 serverSettings_:

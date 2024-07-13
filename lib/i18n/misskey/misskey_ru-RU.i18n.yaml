@@ -1103,6 +1103,10 @@ flip: "Переворот"
 code: "Код"
 lastNDays: "Последние {n} сут"
 surrender: "Этот пост не может быть отменен."
+delivery_:
+  stop: "Заморожено"
+  type_:
+    none: "Публикация"
 initialAccountSetting_:
   accountCreated: "Аккаунт успешно создан!"
   letsStartAccountSetup: "Давайте настроим вашу учётную запись."

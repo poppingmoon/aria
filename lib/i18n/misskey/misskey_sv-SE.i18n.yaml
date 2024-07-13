@@ -492,6 +492,10 @@ dataSaver: "Databesparing"
 icon: "Profilbild"
 replies: "Svara"
 renotes: "Omnotera"
+delivery_:
+  stop: "Suspenderad"
+  type_:
+    none: "Publiceras"
 achievements_:
   types_:
     open3windows_:

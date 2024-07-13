@@ -918,6 +918,7 @@ class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
 	@override String get replies => 'Javob berish';
 	@override String get renotes => 'Qayta qayd etish';
 	@override String get flip => 'Teskari';
+	@override late final _StringsMisskeyDeliveryUzUz delivery_ = _StringsMisskeyDeliveryUzUz._(_root);
 	@override late final _StringsMisskeyAchievementsUzUz achievements_ = _StringsMisskeyAchievementsUzUz._(_root);
 	@override late final _StringsMisskeyRoleUzUz role_ = _StringsMisskeyRoleUzUz._(_root);
 	@override late final _StringsMisskeyFfVisibilityUzUz ffVisibility_ = _StringsMisskeyFfVisibilityUzUz._(_root);
@@ -948,6 +949,17 @@ class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsUzUz webhookSettings_ = _StringsMisskeyWebhookSettingsUzUz._(_root);
 	@override late final _StringsMisskeyModerationLogTypesUzUz moderationLogTypes_ = _StringsMisskeyModerationLogTypesUzUz._(_root);
 	@override late final _StringsMisskeyReversiUzUz reversi_ = _StringsMisskeyReversiUzUz._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryUzUz extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+
+	@override final _StringsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'To\'xtatilgan';
+	@override late final _StringsMisskeyDeliveryTypeUzUz type_ = _StringsMisskeyDeliveryTypeUzUz._(_root);
 }
 
 // Path: misskey.achievements_
@@ -1381,6 +1393,16 @@ class _StringsMisskeyReversiUzUz extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Jami';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeUzUz extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+
+	@override final _StringsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Yuborilmoqda';
 }
 
 // Path: misskey.achievements_.types_

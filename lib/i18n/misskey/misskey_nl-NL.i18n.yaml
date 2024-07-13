@@ -433,6 +433,10 @@ loggedInAsBot: "Momenteel als bot ingelogd"
 icon: "Avatar"
 replies: "Antwoord"
 renotes: "Herdelen"
+delivery_:
+  stop: "Opgeschort"
+  type_:
+    none: "Publiceren"
 email_:
   follow_:
     title: "volgde jou"

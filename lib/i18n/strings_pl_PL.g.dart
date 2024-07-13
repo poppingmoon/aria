@@ -1097,6 +1097,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String lastNDays({required Object n}) => 'W ciągu ostatnich ${n} dni';
 	@override String get surrender => 'Odrzuć';
 	@override String get gameRetry => 'Spróbuj ponownie';
+	@override late final _StringsMisskeyDeliveryPlPl delivery_ = _StringsMisskeyDeliveryPlPl._(_root);
 	@override late final _StringsMisskeyBubbleGamePlPl bubbleGame_ = _StringsMisskeyBubbleGamePlPl._(_root);
 	@override late final _StringsMisskeyRolePlPl role_ = _StringsMisskeyRolePlPl._(_root);
 	@override late final _StringsMisskeySensitiveMediaDetectionPlPl sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionPlPl._(_root);
@@ -1145,6 +1146,17 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsPlPl webhookSettings_ = _StringsMisskeyWebhookSettingsPlPl._(_root);
 	@override late final _StringsMisskeyModerationLogTypesPlPl moderationLogTypes_ = _StringsMisskeyModerationLogTypesPlPl._(_root);
 	@override late final _StringsMisskeyReversiPlPl reversi_ = _StringsMisskeyReversiPlPl._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryPlPl extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryPlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Zawieszono';
+	@override late final _StringsMisskeyDeliveryTypePlPl type_ = _StringsMisskeyDeliveryTypePlPl._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -1969,6 +1981,16 @@ class _StringsMisskeyReversiPlPl extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Łącznie';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypePlPl extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypePlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publikowanie';
 }
 
 // Path: misskey.bubbleGame_.score_

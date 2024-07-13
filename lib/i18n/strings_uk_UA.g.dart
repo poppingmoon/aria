@@ -987,6 +987,7 @@ class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
 	@override String get sourceCode => 'Вихідний код';
 	@override String get flip => 'Перевернути';
 	@override String lastNDays({required Object n}) => 'Останні ${n} днів';
+	@override late final _StringsMisskeyDeliveryUkUa delivery_ = _StringsMisskeyDeliveryUkUa._(_root);
 	@override late final _StringsMisskeyAchievementsUkUa achievements_ = _StringsMisskeyAchievementsUkUa._(_root);
 	@override late final _StringsMisskeyRoleUkUa role_ = _StringsMisskeyRoleUkUa._(_root);
 	@override late final _StringsMisskeySensitiveMediaDetectionUkUa sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionUkUa._(_root);
@@ -1034,6 +1035,17 @@ class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsUkUa webhookSettings_ = _StringsMisskeyWebhookSettingsUkUa._(_root);
 	@override late final _StringsMisskeyModerationLogTypesUkUa moderationLogTypes_ = _StringsMisskeyModerationLogTypesUkUa._(_root);
 	@override late final _StringsMisskeyReversiUkUa reversi_ = _StringsMisskeyReversiUkUa._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryUkUa extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+
+	@override final _StringsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Призупинено';
+	@override late final _StringsMisskeyDeliveryTypeUkUa type_ = _StringsMisskeyDeliveryTypeUkUa._(_root);
 }
 
 // Path: misskey.achievements_
@@ -1819,6 +1831,16 @@ class _StringsMisskeyReversiUkUa extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Всього';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeUkUa extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+
+	@override final _StringsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Публікація';
 }
 
 // Path: misskey.achievements_.types_

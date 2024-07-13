@@ -399,6 +399,10 @@ searchByGoogle: "ຄົ້ນຫາ"
 file: "ໄຟລ໌"
 replies: "ຕອບ​ໄປ​ທີ"
 renotes: "Renote"
+delivery_:
+  stop: "ໂຈະ"
+  type_:
+    none: "ການ​ພິມ​ເຜີຍ​ແຜ່"
 role_:
   priority_:
     middle: "ປານກາງ"

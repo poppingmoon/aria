@@ -716,6 +716,7 @@ class _StringsMisskeyRoRo extends _StringsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'Răspunde';
 	@override String get renotes => 'Re-notează';
+	@override late final _StringsMisskeyDeliveryRoRo delivery_ = _StringsMisskeyDeliveryRoRo._(_root);
 	@override late final _StringsMisskeyRoleRoRo role_ = _StringsMisskeyRoleRoRo._(_root);
 	@override late final _StringsMisskeyEmailRoRo email_ = _StringsMisskeyEmailRoRo._(_root);
 	@override late final _StringsMisskeyThemeRoRo theme_ = _StringsMisskeyThemeRoRo._(_root);
@@ -736,6 +737,17 @@ class _StringsMisskeyRoRo extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsRoRo webhookSettings_ = _StringsMisskeyWebhookSettingsRoRo._(_root);
 	@override late final _StringsMisskeyModerationLogTypesRoRo moderationLogTypes_ = _StringsMisskeyModerationLogTypesRoRo._(_root);
 	@override late final _StringsMisskeyReversiRoRo reversi_ = _StringsMisskeyReversiRoRo._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryRoRo extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryRoRo._(_StringsRoRo root) : this._root = root, super._(root);
+
+	@override final _StringsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspendat';
+	@override late final _StringsMisskeyDeliveryTypeRoRo type_ = _StringsMisskeyDeliveryTypeRoRo._(_root);
 }
 
 // Path: misskey.role_
@@ -954,6 +966,16 @@ class _StringsMisskeyReversiRoRo extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Total';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeRoRo extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeRoRo._(_StringsRoRo root) : this._root = root, super._(root);
+
+	@override final _StringsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publicare';
 }
 
 // Path: misskey.role_.priority_

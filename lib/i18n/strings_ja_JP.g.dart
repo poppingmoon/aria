@@ -327,11 +327,14 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get renote => 'リノート';
 	@override String get unrenote => 'リノート解除';
 	@override String get renoted => 'リノートしました。';
+	@override String renotedToX({required Object name}) => '${name} にリノートしました。';
 	@override String get cantRenote => 'この投稿はリノートできません。';
 	@override String get cantReRenote => 'リノートをリノートすることはできません。';
 	@override String get quote => '引用';
 	@override String get inChannelRenote => 'チャンネル内リノート';
 	@override String get inChannelQuote => 'チャンネル内引用';
+	@override String get renoteToChannel => 'チャンネルにリノート';
+	@override String get renoteToOtherChannel => '他のチャンネルにリノート';
 	@override String get pinnedNote => 'ピン留めされたノート';
 	@override String get pinned => 'ピン留め';
 	@override String get you => 'あなた';
@@ -687,6 +690,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String noteOf({required Object user}) => '${user}のノート';
 	@override String get quoteAttached => '引用付き';
 	@override String get quoteQuestion => '引用として添付しますか？';
+	@override String get attachAsFileQuestion => 'クリップボードのテキストが長いです。テキストファイルとして添付しますか？';
 	@override String get noMessagesYet => 'まだチャットはありません';
 	@override String get newMessageExists => '新しいメッセージがあります';
 	@override String get onlyOneFileCanBeAttached => 'メッセージに添付できるファイルはひとつです';
@@ -1239,7 +1243,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingHome => 'ホームに投稿';
 	@override String get thisPostMayBeAnnoyingCancel => 'やめる';
 	@override String get thisPostMayBeAnnoyingIgnore => 'このまま投稿';
-	@override String get collapseRenotes => '見たことのあるリノートを省略して表示';
+	@override String get collapseRenotes => 'リノートのスマート省略';
 	@override String get internalServerError => 'サーバー内部エラー';
 	@override String get internalServerErrorDescription => 'サーバー内部で予期しないエラーが発生しました。';
 	@override String get copyErrorInfo => 'エラー情報をコピー';
@@ -1454,6 +1458,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get noDescription => '説明文はありません';
 	@override String get alwaysConfirmFollow => 'フォローの際常に確認する';
 	@override String get inquiry => 'お問い合わせ';
+	@override late final _StringsMisskeyDeliveryJaJp delivery_ = _StringsMisskeyDeliveryJaJp._(_root);
 	@override late final _StringsMisskeyBubbleGameJaJp bubbleGame_ = _StringsMisskeyBubbleGameJaJp._(_root);
 	@override late final _StringsMisskeyAnnouncementJaJp announcement_ = _StringsMisskeyAnnouncementJaJp._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingJaJp initialAccountSetting_ = _StringsMisskeyInitialAccountSettingJaJp._(_root);
@@ -1533,6 +1538,19 @@ class _StringsMisskeyIOJaJp extends _StringsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _StringsMisskeyIOSkebStatusJaJp skebStatus_ = _StringsMisskeyIOSkebStatusJaJp._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryJaJp extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get status => '配信状態';
+	@override String get stop => '配信停止';
+	@override String get resume => '配信再開';
+	@override late final _StringsMisskeyDeliveryTypeJaJp type_ = _StringsMisskeyDeliveryTypeJaJp._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2074,8 +2092,6 @@ class _StringsMisskeySfxJaJp extends _StringsMisskeySfxEnUs {
 	@override String get note => 'ノート';
 	@override String get noteMy => 'ノート(自分)';
 	@override String get notification => '通知';
-	@override String get antenna => 'アンテナ受信';
-	@override String get channel => 'チャンネル通知';
 	@override String get reaction => 'リアクション選択時';
 }
 
@@ -2938,6 +2954,19 @@ class _StringsMisskeyIOSkebStatusJaJp extends _StringsMisskeyIOSkebStatusEnUs {
 	@override String nRequests({required Object n}) => '取引実績 ${n}件';
 }
 
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeJaJp extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => '配信中';
+	@override String get manuallySuspended => '手動停止中';
+	@override String get goneSuspended => 'サーバー削除のため停止中';
+	@override String get autoSuspendedForNotResponding => 'サーバー応答なしのため停止中';
+}
+
 // Path: misskey.bubbleGame_.score_
 class _StringsMisskeyBubbleGameScoreJaJp extends _StringsMisskeyBubbleGameScoreEnUs {
 	_StringsMisskeyBubbleGameScoreJaJp._(_StringsJaJp root) : this._root = root, super._(root);
@@ -3476,7 +3505,7 @@ class _StringsMisskeyDataSaverMediaJaJp extends _StringsMisskeyDataSaverMediaEnU
 	@override final _StringsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'メディアの読み込み';
+	@override String get title => 'メディアの読み込みを無効化';
 	@override String get description => '画像・動画が自動で読み込まれるのを防止します。隠れている画像・動画はタップすると読み込まれます。';
 }
 
@@ -3487,7 +3516,7 @@ class _StringsMisskeyDataSaverAvatarJaJp extends _StringsMisskeyDataSaverAvatarE
 	@override final _StringsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'アイコン画像';
+	@override String get title => 'アイコン画像のアニメーションを無効化';
 	@override String get description => 'アイコン画像のアニメーションが停止します。アニメーション画像は通常の画像よりファイルサイズが大きいことがあるので、データ通信量をさらに削減できます。';
 }
 
@@ -3498,7 +3527,7 @@ class _StringsMisskeyDataSaverUrlPreviewJaJp extends _StringsMisskeyDataSaverUrl
 	@override final _StringsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'URLプレビューのサムネイル';
+	@override String get title => 'URLプレビューのサムネイルを非表示';
 	@override String get description => 'URLプレビューのサムネイル画像が読み込まれなくなります。';
 }
 
@@ -3509,7 +3538,7 @@ class _StringsMisskeyDataSaverCodeJaJp extends _StringsMisskeyDataSaverCodeEnUs 
 	@override final _StringsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'コードハイライト';
+	@override String get title => 'コードハイライトを非表示';
 	@override String get description => 'MFMなどでコードハイライト記法が使われている場合、タップするまで読み込まれなくなります。コードハイライトではハイライトする言語ごとにその定義ファイルを読み込む必要がありますが、それらが自動で読み込まれなくなるため、通信量の削減が見込めます。';
 }
 

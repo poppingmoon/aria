@@ -1304,6 +1304,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get notUsePleaseLeaveBlank => 'Si no voleu usar-ho, deixeu-ho en blanc';
 	@override String get useTotp => 'Usa una contrasenya d\'un sol ús';
 	@override String get useBackupCode => 'Usa un codi de recuperació';
+	@override late final _StringsMisskeyDeliveryCaEs delivery_ = _StringsMisskeyDeliveryCaEs._(_root);
 	@override late final _StringsMisskeyBubbleGameCaEs bubbleGame_ = _StringsMisskeyBubbleGameCaEs._(_root);
 	@override late final _StringsMisskeyAnnouncementCaEs announcement_ = _StringsMisskeyAnnouncementCaEs._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingCaEs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingCaEs._(_root);
@@ -1362,6 +1363,17 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyFileViewerCaEs fileViewer_ = _StringsMisskeyFileViewerCaEs._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerCaEs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerCaEs._(_root);
 	@override late final _StringsMisskeyReversiCaEs reversi_ = _StringsMisskeyReversiCaEs._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryCaEs extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspés';
+	@override late final _StringsMisskeyDeliveryTypeCaEs type_ = _StringsMisskeyDeliveryTypeCaEs._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2058,7 +2070,6 @@ class _StringsMisskeyPermissionsCaEs extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => 'Veure informació del servidor';
 	@override String get readAdminShowModerationLog => 'Veure registre de moderació ';
 	@override String get readAdminShowUser => 'Veure informació privada de l\'usuari ';
-	@override String get readAdminShowUsers => 'Veure informació privada de l\'usuari ';
 	@override String get writeAdminSuspendUser => 'Suspendre usuari';
 	@override String get writeAdminUnsetUserAvatar => 'Esborrar avatar d\'usuari ';
 	@override String get writeAdminUnsetUserBanner => 'Esborrar bàner de l\'usuari ';
@@ -2439,6 +2450,16 @@ class _StringsMisskeyReversiCaEs extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Total';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeCaEs extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'S\'està publicant';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_

@@ -188,11 +188,14 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get renote => 'Renote';
 	@override String get unrenote => 'Hapus renote';
 	@override String get renoted => 'Telah direnote';
+	@override String renotedToX({required Object name}) => '${name} telah merenote';
 	@override String get cantRenote => 'Postingan ini tidak dapat direnote';
 	@override String get cantReRenote => 'Renote tidak dapat direnote';
 	@override String get quote => 'Kutip';
 	@override String get inChannelRenote => 'Hanya renote dalam kanal';
 	@override String get inChannelQuote => 'Hanya kutip dalam kanal';
+	@override String get renoteToChannel => 'Renote ke kanal';
+	@override String get renoteToOtherChannel => 'Renote ke kanal lainnya';
 	@override String get pinnedNote => 'Catatan yang disematkan';
 	@override String get pinned => 'Sematkan ke profil';
 	@override String get you => 'Kamu';
@@ -548,6 +551,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Catatan milik ${user}';
 	@override String get quoteAttached => 'Dikutip';
 	@override String get quoteQuestion => 'Apakah kamu ingin menambahkan kutipan?';
+	@override String get attachAsFileQuestion => 'Teks dalam papan klip terlalu panjang. Apakah kamu ingin melampirkannya sebagai berkas teks?';
 	@override String get noMessagesYet => 'Tidak ada pesan';
 	@override String get newMessageExists => 'Kamu mendapatkan pesan baru';
 	@override String get onlyOneFileCanBeAttached => 'Kamu hanya dapat melampirkan satu berkas ke dalam pesan';
@@ -1315,6 +1319,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get noDescription => 'Tidak ada deskripsi';
 	@override String get alwaysConfirmFollow => 'Selalu konfirmasi ketika mengikuti';
 	@override String get inquiry => 'Hubungi kami';
+	@override late final _StringsMisskeyDeliveryIdId delivery_ = _StringsMisskeyDeliveryIdId._(_root);
 	@override late final _StringsMisskeyBubbleGameIdId bubbleGame_ = _StringsMisskeyBubbleGameIdId._(_root);
 	@override late final _StringsMisskeyAnnouncementIdId announcement_ = _StringsMisskeyAnnouncementIdId._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingIdId initialAccountSetting_ = _StringsMisskeyInitialAccountSettingIdId._(_root);
@@ -1384,6 +1389,19 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenIdId offlineScreen_ = _StringsMisskeyOfflineScreenIdId._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingIdId urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingIdId._(_root);
 	@override late final _StringsMisskeyMediaControlsIdId mediaControls_ = _StringsMisskeyMediaControlsIdId._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryIdId extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get status => 'Status pengiriman';
+	@override String get stop => 'Ditangguhkan';
+	@override String get resume => 'Lanjutkan pengiriman';
+	@override late final _StringsMisskeyDeliveryTypeIdId type_ = _StringsMisskeyDeliveryTypeIdId._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2086,7 +2104,6 @@ class _StringsMisskeyPermissionsIdId extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => 'Lihat informasi peladen';
 	@override String get readAdminShowModerationLog => 'Lihat log moderasi';
 	@override String get readAdminShowUser => 'Lihat informasi pengguna privat';
-	@override String get readAdminShowUsers => 'Lihat informasi pengguna privat';
 	@override String get writeAdminSuspendUser => 'Tangguhkan pengguna';
 	@override String get writeAdminUnsetUserAvatar => 'Hapus avatar pengguna';
 	@override String get writeAdminUnsetUserBanner => 'Hapus banner pengguna';
@@ -2772,6 +2789,19 @@ class _StringsMisskeyMediaControlsIdId extends _StringsMisskeyMediaControlsEnUs 
 	@override String get pip => 'Gambar dalam Gambar';
 	@override String get playbackRate => 'Kecepatan Pemutaran';
 	@override String get loop => 'Ulangi Pemutaran';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeIdId extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Sedang menyiarkan langsung';
+	@override String get manuallySuspended => 'Ditangguhkan manual';
+	@override String get goneSuspended => 'Sedang ditangguhkan untuk penghapusan peladen';
+	@override String get autoSuspendedForNotResponding => 'Sedang ditangguhkan karena peladen tidak menjawab';
 }
 
 // Path: misskey.bubbleGame_.score_

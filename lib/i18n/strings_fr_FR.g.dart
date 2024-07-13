@@ -1298,6 +1298,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get loading => 'Chargement en cours';
 	@override String get surrender => 'Annuler';
 	@override String get gameRetry => 'Réessayer';
+	@override late final _StringsMisskeyDeliveryFrFr delivery_ = _StringsMisskeyDeliveryFrFr._(_root);
 	@override late final _StringsMisskeyBubbleGameFrFr bubbleGame_ = _StringsMisskeyBubbleGameFrFr._(_root);
 	@override late final _StringsMisskeyAnnouncementFrFr announcement_ = _StringsMisskeyAnnouncementFrFr._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingFrFr initialAccountSetting_ = _StringsMisskeyInitialAccountSettingFrFr._(_root);
@@ -1360,6 +1361,17 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyExternalResourceInstallerFrFr externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerFrFr._(_root);
 	@override late final _StringsMisskeyDataSaverFrFr dataSaver_ = _StringsMisskeyDataSaverFrFr._(_root);
 	@override late final _StringsMisskeyReversiFrFr reversi_ = _StringsMisskeyReversiFrFr._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryFrFr extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryFrFr._(_StringsFrFr root) : this._root = root, super._(root);
+
+	@override final _StringsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspendu·e';
+	@override late final _StringsMisskeyDeliveryTypeFrFr type_ = _StringsMisskeyDeliveryTypeFrFr._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2479,6 +2491,16 @@ class _StringsMisskeyReversiFrFr extends _StringsMisskeyReversiEnUs {
 	// Translations
 	@override String get waitingBoth => 'Préparez-vous';
 	@override String get total => 'Total';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeFrFr extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeFrFr._(_StringsFrFr root) : this._root = root, super._(root);
+
+	@override final _StringsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publié';
 }
 
 // Path: misskey.bubbleGame_.score_

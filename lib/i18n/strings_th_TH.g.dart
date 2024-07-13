@@ -1312,6 +1312,7 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get noDescription => 'ไม่มีข้อความอธิบาย';
 	@override String get alwaysConfirmFollow => 'แสดงข้อความยืนยันเมื่อกดติดตาม';
 	@override String get inquiry => 'ติดต่อเรา';
+	@override late final _StringsMisskeyDeliveryThTh delivery_ = _StringsMisskeyDeliveryThTh._(_root);
 	@override late final _StringsMisskeyBubbleGameThTh bubbleGame_ = _StringsMisskeyBubbleGameThTh._(_root);
 	@override late final _StringsMisskeyAnnouncementThTh announcement_ = _StringsMisskeyAnnouncementThTh._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingThTh initialAccountSetting_ = _StringsMisskeyInitialAccountSettingThTh._(_root);
@@ -1381,6 +1382,17 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenThTh offlineScreen_ = _StringsMisskeyOfflineScreenThTh._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingThTh urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingThTh._(_root);
 	@override late final _StringsMisskeyMediaControlsThTh mediaControls_ = _StringsMisskeyMediaControlsThTh._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryThTh extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryThTh._(_StringsThTh root) : this._root = root, super._(root);
+
+	@override final _StringsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'ถูกระงับ';
+	@override late final _StringsMisskeyDeliveryTypeThTh type_ = _StringsMisskeyDeliveryTypeThTh._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2083,7 +2095,6 @@ class _StringsMisskeyPermissionsThTh extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => 'ดูข้อมูลเซิร์ฟเวอร์';
 	@override String get readAdminShowModerationLog => 'ดูปูมการแก้ไข';
 	@override String get readAdminShowUser => 'ดูข้อมูลส่วนตัวของผู้ใช้';
-	@override String get readAdminShowUsers => 'ดูข้อมูลส่วนตัวของผู้ใช้';
 	@override String get writeAdminSuspendUser => 'ระงับผู้ใช้';
 	@override String get writeAdminUnsetUserAvatar => 'ลบอวตารผู้ใช้';
 	@override String get writeAdminUnsetUserBanner => 'ลบแบนเนอร์ผู้ใช้';
@@ -2769,6 +2780,16 @@ class _StringsMisskeyMediaControlsThTh extends _StringsMisskeyMediaControlsEnUs 
 	@override String get pip => 'รูปภาพในรูปภาม';
 	@override String get playbackRate => 'ความเร็วในการเล่น';
 	@override String get loop => 'เล่นวนซ้ำ';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeThTh extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeThTh._(_StringsThTh root) : this._root = root, super._(root);
+
+	@override final _StringsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'กำลังเผยแพร่';
 }
 
 // Path: misskey.bubbleGame_.score_

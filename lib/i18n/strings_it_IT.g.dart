@@ -1313,6 +1313,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get keepOriginalFilename => 'Mantieni il nome file originale';
 	@override String get keepOriginalFilenameDescription => 'Disattivandola, i file verranno caricati usando nomi casuali.';
 	@override String get noDescription => 'Manca la descrizione';
+	@override late final _StringsMisskeyDeliveryItIt delivery_ = _StringsMisskeyDeliveryItIt._(_root);
 	@override late final _StringsMisskeyBubbleGameItIt bubbleGame_ = _StringsMisskeyBubbleGameItIt._(_root);
 	@override late final _StringsMisskeyAnnouncementItIt announcement_ = _StringsMisskeyAnnouncementItIt._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingItIt initialAccountSetting_ = _StringsMisskeyInitialAccountSettingItIt._(_root);
@@ -1382,6 +1383,17 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenItIt offlineScreen_ = _StringsMisskeyOfflineScreenItIt._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingItIt urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingItIt._(_root);
 	@override late final _StringsMisskeyMediaControlsItIt mediaControls_ = _StringsMisskeyMediaControlsItIt._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryItIt extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Sospensione';
+	@override late final _StringsMisskeyDeliveryTypeItIt type_ = _StringsMisskeyDeliveryTypeItIt._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2084,7 +2096,6 @@ class _StringsMisskeyPermissionsItIt extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => 'Vedere le informazioni sul server';
 	@override String get readAdminShowModerationLog => 'Vedere lo storico di moderazione';
 	@override String get readAdminShowUser => 'Vedere le informazioni private degli account utente';
-	@override String get readAdminShowUsers => 'Vedere le informazioni private degli account utente';
 	@override String get writeAdminSuspendUser => 'Sospendere i profili';
 	@override String get writeAdminUnsetUserAvatar => 'Rimuovere la foto profilo dai profili';
 	@override String get writeAdminUnsetUserBanner => 'Rimuovere l\'immagine testata dai profili';
@@ -2768,6 +2779,16 @@ class _StringsMisskeyMediaControlsItIt extends _StringsMisskeyMediaControlsEnUs 
 	@override String get pip => 'Sovraimpressione';
 	@override String get playbackRate => 'Velocità di riproduzione';
 	@override String get loop => 'Ripetizione infinita';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeItIt extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Pubblicazione';
 }
 
 // Path: misskey.bubbleGame_.score_

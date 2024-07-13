@@ -1259,6 +1259,7 @@ class _StringsMisskeyDeDe extends _StringsMisskeyEnUs {
 	@override String get sfx => 'Soundeffekte';
 	@override String lastNDays({required Object n}) => 'Letzten ${n} Tage';
 	@override String get surrender => 'Abbrechen';
+	@override late final _StringsMisskeyDeliveryDeDe delivery_ = _StringsMisskeyDeliveryDeDe._(_root);
 	@override late final _StringsMisskeyAnnouncementDeDe announcement_ = _StringsMisskeyAnnouncementDeDe._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingDeDe initialAccountSetting_ = _StringsMisskeyInitialAccountSettingDeDe._(_root);
 	@override late final _StringsMisskeyInitialTutorialDeDe initialTutorial_ = _StringsMisskeyInitialTutorialDeDe._(_root);
@@ -1320,6 +1321,17 @@ class _StringsMisskeyDeDe extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyFileViewerDeDe fileViewer_ = _StringsMisskeyFileViewerDeDe._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerDeDe externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerDeDe._(_root);
 	@override late final _StringsMisskeyReversiDeDe reversi_ = _StringsMisskeyReversiDeDe._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryDeDe extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryDeDe._(_StringsDeDe root) : this._root = root, super._(root);
+
+	@override final _StringsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Gesperrt';
+	@override late final _StringsMisskeyDeliveryTypeDeDe type_ = _StringsMisskeyDeliveryTypeDeDe._(_root);
 }
 
 // Path: misskey.announcement_
@@ -2489,6 +2501,16 @@ class _StringsMisskeyReversiDeDe extends _StringsMisskeyReversiEnUs {
 	@override String get black => 'Schwarz';
 	@override String get white => 'Weiß';
 	@override String get total => 'Gesamt';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeDeDe extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeDeDe._(_StringsDeDe root) : this._root = root, super._(root);
+
+	@override final _StringsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Wird veröffentlicht';
 }
 
 // Path: misskey.initialTutorial_.landing_

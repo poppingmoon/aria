@@ -534,6 +534,7 @@ class _StringsMisskeyNoNo extends _StringsMisskeyEnUs {
 	@override String get replies => 'Svar';
 	@override String get renotes => 'Renote';
 	@override String get surrender => 'Avbryt';
+	@override late final _StringsMisskeyDeliveryNoNo delivery_ = _StringsMisskeyDeliveryNoNo._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingNoNo initialAccountSetting_ = _StringsMisskeyInitialAccountSettingNoNo._(_root);
 	@override late final _StringsMisskeyAchievementsNoNo achievements_ = _StringsMisskeyAchievementsNoNo._(_root);
 	@override late final _StringsMisskeyRoleNoNo role_ = _StringsMisskeyRoleNoNo._(_root);
@@ -570,6 +571,16 @@ class _StringsMisskeyNoNo extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDeckNoNo deck_ = _StringsMisskeyDeckNoNo._(_root);
 	@override late final _StringsMisskeyWebhookSettingsNoNo webhookSettings_ = _StringsMisskeyWebhookSettingsNoNo._(_root);
 	@override late final _StringsMisskeyModerationLogTypesNoNo moderationLogTypes_ = _StringsMisskeyModerationLogTypesNoNo._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryNoNo extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryNoNo._(_StringsNoNo root) : this._root = root, super._(root);
+
+	@override final _StringsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspendert';
 }
 
 // Path: misskey.initialAccountSetting_

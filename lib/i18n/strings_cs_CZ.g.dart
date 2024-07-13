@@ -1173,6 +1173,7 @@ class _StringsMisskeyCsCz extends _StringsMisskeyEnUs {
 	@override String get flip => 'Otočit';
 	@override String lastNDays({required Object n}) => 'Posledních ${n} dnů';
 	@override String get surrender => 'Zrušit';
+	@override late final _StringsMisskeyDeliveryCsCz delivery_ = _StringsMisskeyDeliveryCsCz._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingCsCz initialAccountSetting_ = _StringsMisskeyInitialAccountSettingCsCz._(_root);
 	@override late final _StringsMisskeyServerRulesCsCz serverRules_ = _StringsMisskeyServerRulesCsCz._(_root);
 	@override late final _StringsMisskeyServerSettingsCsCz serverSettings_ = _StringsMisskeyServerSettingsCsCz._(_root);
@@ -1229,6 +1230,17 @@ class _StringsMisskeyCsCz extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsCsCz webhookSettings_ = _StringsMisskeyWebhookSettingsCsCz._(_root);
 	@override late final _StringsMisskeyModerationLogTypesCsCz moderationLogTypes_ = _StringsMisskeyModerationLogTypesCsCz._(_root);
 	@override late final _StringsMisskeyReversiCsCz reversi_ = _StringsMisskeyReversiCsCz._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryCsCz extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryCsCz._(_StringsCsCz root) : this._root = root, super._(root);
+
+	@override final _StringsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspendováno';
+	@override late final _StringsMisskeyDeliveryTypeCsCz type_ = _StringsMisskeyDeliveryTypeCsCz._(_root);
 }
 
 // Path: misskey.initialAccountSetting_
@@ -2237,6 +2249,16 @@ class _StringsMisskeyReversiCsCz extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Celkem';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeCsCz extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeCsCz._(_StringsCsCz root) : this._root = root, super._(root);
+
+	@override final _StringsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publikuji';
 }
 
 // Path: misskey.achievements_.types_

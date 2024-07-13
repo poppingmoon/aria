@@ -1122,6 +1122,10 @@ pullDownToRefresh: "Kéo xuống để làm mới"
 cwNotationRequired: "Nếu \"Ẩn nội dung\" được bật thì cần phải có chú thích."
 lastNDays: "{n} ngày trước"
 surrender: "Từ chối"
+delivery_:
+  stop: "Đã vô hiệu hóa"
+  type_:
+    none: "Đang đăng"
 announcement_:
   forExistingUsers: "Chỉ những người dùng đã tồn tại"
   forExistingUsersDescription: "Nếu được bật, thông báo này sẽ chỉ hiển thị với những người dùng đã tồn tại vào lúc thông báo được tạo. Nếu tắt đi, những tài khoản mới đăng ký sau khi thông báo được đăng lên cũng sẽ thấy nó."

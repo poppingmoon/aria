@@ -451,6 +451,7 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get file => 'ໄຟລ໌';
 	@override String get replies => 'ຕອບ​ໄປ​ທີ';
 	@override String get renotes => 'Renote';
+	@override late final _StringsMisskeyDeliveryLoLa delivery_ = _StringsMisskeyDeliveryLoLa._(_root);
 	@override late final _StringsMisskeyRoleLoLa role_ = _StringsMisskeyRoleLoLa._(_root);
 	@override late final _StringsMisskeyEmailLoLa email_ = _StringsMisskeyEmailLoLa._(_root);
 	@override late final _StringsMisskeyThemeLoLa theme_ = _StringsMisskeyThemeLoLa._(_root);
@@ -469,6 +470,17 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDeckLoLa deck_ = _StringsMisskeyDeckLoLa._(_root);
 	@override late final _StringsMisskeyWebhookSettingsLoLa webhookSettings_ = _StringsMisskeyWebhookSettingsLoLa._(_root);
 	@override late final _StringsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _StringsMisskeyModerationLogTypesLoLa._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryLoLa extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+
+	@override final _StringsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'ໂຈະ';
+	@override late final _StringsMisskeyDeliveryTypeLoLa type_ = _StringsMisskeyDeliveryTypeLoLa._(_root);
 }
 
 // Path: misskey.role_
@@ -666,6 +678,16 @@ class _StringsMisskeyModerationLogTypesLoLa extends _StringsMisskeyModerationLog
 
 	// Translations
 	@override String get suspend => 'ລະງັບ';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeLoLa extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+
+	@override final _StringsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'ການ​ພິມ​ເຜີຍ​ແຜ່';
 }
 
 // Path: misskey.role_.priority_
