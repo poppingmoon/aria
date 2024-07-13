@@ -42,7 +42,7 @@ dependencies:
   fluttertoast: ^8.2.6
   freezed_annotation: ^2.4.3
   gal: ^2.3.0
-  go_router: ^14.2.0
+  go_router: ^14.2.1
   highlighting: ^0.9.0+11.8.0
   hooks_riverpod: ^2.5.1
   image: ^4.2.0
