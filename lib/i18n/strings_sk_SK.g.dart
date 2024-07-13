@@ -996,6 +996,7 @@ class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
 	@override String get sourceCode => 'Zdrojový kód';
 	@override String get flip => 'Preklopiť';
 	@override String lastNDays({required Object n}) => 'Posledných ${n} dní';
+	@override late final _StringsMisskeyDeliverySkSk delivery_ = _StringsMisskeyDeliverySkSk._(_root);
 	@override late final _StringsMisskeyRoleSkSk role_ = _StringsMisskeyRoleSkSk._(_root);
 	@override late final _StringsMisskeySensitiveMediaDetectionSkSk sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionSkSk._(_root);
 	@override late final _StringsMisskeyEmailUnavailableSkSk emailUnavailable_ = _StringsMisskeyEmailUnavailableSkSk._(_root);
@@ -1043,6 +1044,17 @@ class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsSkSk webhookSettings_ = _StringsMisskeyWebhookSettingsSkSk._(_root);
 	@override late final _StringsMisskeyModerationLogTypesSkSk moderationLogTypes_ = _StringsMisskeyModerationLogTypesSkSk._(_root);
 	@override late final _StringsMisskeyReversiSkSk reversi_ = _StringsMisskeyReversiSkSk._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliverySkSk extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliverySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+
+	@override final _StringsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Zmrazené';
+	@override late final _StringsMisskeyDeliveryTypeSkSk type_ = _StringsMisskeyDeliveryTypeSkSk._(_root);
 }
 
 // Path: misskey.role_
@@ -1860,6 +1872,16 @@ class _StringsMisskeyReversiSkSk extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Celkom';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeSkSk extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+
+	@override final _StringsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Zverejňovanie';
 }
 
 // Path: misskey.role_.priority_

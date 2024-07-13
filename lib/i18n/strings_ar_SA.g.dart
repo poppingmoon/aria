@@ -1086,6 +1086,7 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override String get flip => 'اقلب';
 	@override String lastNDays({required Object n}) => 'آخر ${n} أيام';
 	@override String get surrender => 'ألغِ';
+	@override late final _StringsMisskeyDeliveryArSa delivery_ = _StringsMisskeyDeliveryArSa._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _StringsMisskeyInitialAccountSettingArSa._(_root);
 	@override late final _StringsMisskeyServerRulesArSa serverRules_ = _StringsMisskeyServerRulesArSa._(_root);
 	@override late final _StringsMisskeyAccountMigrationArSa accountMigration_ = _StringsMisskeyAccountMigrationArSa._(_root);
@@ -1137,6 +1138,16 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyModerationLogTypesArSa moderationLogTypes_ = _StringsMisskeyModerationLogTypesArSa._(_root);
 	@override late final _StringsMisskeyReversiArSa reversi_ = _StringsMisskeyReversiArSa._(_root);
 	@override late final _StringsMisskeyOfflineScreenArSa offlineScreen_ = _StringsMisskeyOfflineScreenArSa._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryArSa extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryArSa._(_StringsArSa root) : this._root = root, super._(root);
+
+	@override final _StringsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'مُعلّق';
 }
 
 // Path: misskey.initialAccountSetting_

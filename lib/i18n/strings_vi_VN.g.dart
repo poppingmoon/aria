@@ -1192,6 +1192,7 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String get cwNotationRequired => 'Nếu "Ẩn nội dung" được bật thì cần phải có chú thích.';
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
 	@override String get surrender => 'Từ chối';
+	@override late final _StringsMisskeyDeliveryViVn delivery_ = _StringsMisskeyDeliveryViVn._(_root);
 	@override late final _StringsMisskeyAnnouncementViVn announcement_ = _StringsMisskeyAnnouncementViVn._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _StringsMisskeyInitialAccountSettingViVn._(_root);
 	@override late final _StringsMisskeyServerSettingsViVn serverSettings_ = _StringsMisskeyServerSettingsViVn._(_root);
@@ -1245,6 +1246,17 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsViVn webhookSettings_ = _StringsMisskeyWebhookSettingsViVn._(_root);
 	@override late final _StringsMisskeyModerationLogTypesViVn moderationLogTypes_ = _StringsMisskeyModerationLogTypesViVn._(_root);
 	@override late final _StringsMisskeyReversiViVn reversi_ = _StringsMisskeyReversiViVn._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryViVn extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Đã vô hiệu hóa';
+	@override late final _StringsMisskeyDeliveryTypeViVn type_ = _StringsMisskeyDeliveryTypeViVn._(_root);
 }
 
 // Path: misskey.announcement_
@@ -2188,6 +2200,16 @@ class _StringsMisskeyReversiViVn extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Tổng cộng';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeViVn extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Đang đăng';
 }
 
 // Path: misskey.achievements_.types_

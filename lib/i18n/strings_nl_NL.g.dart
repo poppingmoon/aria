@@ -490,6 +490,7 @@ class _StringsMisskeyNlNl extends _StringsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'Antwoord';
 	@override String get renotes => 'Herdelen';
+	@override late final _StringsMisskeyDeliveryNlNl delivery_ = _StringsMisskeyDeliveryNlNl._(_root);
 	@override late final _StringsMisskeyEmailNlNl email_ = _StringsMisskeyEmailNlNl._(_root);
 	@override late final _StringsMisskeyThemeNlNl theme_ = _StringsMisskeyThemeNlNl._(_root);
 	@override late final _StringsMisskeySfxNlNl sfx_ = _StringsMisskeySfxNlNl._(_root);
@@ -506,6 +507,17 @@ class _StringsMisskeyNlNl extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDeckNlNl deck_ = _StringsMisskeyDeckNlNl._(_root);
 	@override late final _StringsMisskeyWebhookSettingsNlNl webhookSettings_ = _StringsMisskeyWebhookSettingsNlNl._(_root);
 	@override late final _StringsMisskeyModerationLogTypesNlNl moderationLogTypes_ = _StringsMisskeyModerationLogTypesNlNl._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryNlNl extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryNlNl._(_StringsNlNl root) : this._root = root, super._(root);
+
+	@override final _StringsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Opgeschort';
+	@override late final _StringsMisskeyDeliveryTypeNlNl type_ = _StringsMisskeyDeliveryTypeNlNl._(_root);
 }
 
 // Path: misskey.email_
@@ -685,6 +697,16 @@ class _StringsMisskeyModerationLogTypesNlNl extends _StringsMisskeyModerationLog
 	// Translations
 	@override String get suspend => 'Opschorten';
 	@override String get resetPassword => 'Wachtwoord terugzetten';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeNlNl extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeNlNl._(_StringsNlNl root) : this._root = root, super._(root);
+
+	@override final _StringsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publiceren';
 }
 
 // Path: misskey.email_.follow_

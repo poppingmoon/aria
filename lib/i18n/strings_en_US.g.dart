@@ -341,11 +341,14 @@ class _StringsMisskeyEnUs {
 	String get renote => 'Renote';
 	String get unrenote => 'Remove renote';
 	String get renoted => 'Renoted.';
+	String renotedToX({required Object name}) => 'Renote from ${name} users。';
 	String get cantRenote => 'This post can\'t be renoted.';
 	String get cantReRenote => 'A renote can\'t be renoted.';
 	String get quote => 'Quote';
 	String get inChannelRenote => 'Channel-only Renote';
 	String get inChannelQuote => 'Channel-only Quote';
+	String get renoteToChannel => 'Renote to channel';
+	String get renoteToOtherChannel => 'Renote to other channel';
 	String get pinnedNote => 'Pinned note';
 	String get pinned => 'Pin to profile';
 	String get you => 'You';
@@ -701,6 +704,7 @@ class _StringsMisskeyEnUs {
 	String noteOf({required Object user}) => 'Note by ${user}';
 	String get quoteAttached => 'Quote';
 	String get quoteQuestion => 'Append as quote?';
+	String get attachAsFileQuestion => 'The text in clipboard is long. Would you want to attach it as text file?';
 	String get noMessagesYet => 'No messages yet';
 	String get newMessageExists => 'There are new messages';
 	String get onlyOneFileCanBeAttached => 'You can only attach one file to a message';
@@ -1468,6 +1472,7 @@ class _StringsMisskeyEnUs {
 	String get noDescription => 'There is not the explanation';
 	String get alwaysConfirmFollow => 'Always confirm when following';
 	String get inquiry => 'Contact';
+	late final _StringsMisskeyDeliveryEnUs delivery_ = _StringsMisskeyDeliveryEnUs._(_root);
 	late final _StringsMisskeyBubbleGameEnUs bubbleGame_ = _StringsMisskeyBubbleGameEnUs._(_root);
 	late final _StringsMisskeyAnnouncementEnUs announcement_ = _StringsMisskeyAnnouncementEnUs._(_root);
 	late final _StringsMisskeyInitialAccountSettingEnUs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingEnUs._(_root);
@@ -1547,6 +1552,19 @@ class _StringsMisskeyIOEnUs {
 
 	// Translations
 	late final _StringsMisskeyIOSkebStatusEnUs skebStatus_ = _StringsMisskeyIOSkebStatusEnUs._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get status => 'Delivery status';
+	String get stop => 'Suspended';
+	String get resume => 'Delivery resume';
+	late final _StringsMisskeyDeliveryTypeEnUs type_ = _StringsMisskeyDeliveryTypeEnUs._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2249,7 +2267,6 @@ class _StringsMisskeyPermissionsEnUs {
 	String get readAdminServerInfo => 'View server info';
 	String get readAdminShowModerationLog => 'View moderation log';
 	String get readAdminShowUser => 'View private user info';
-	String get readAdminShowUsers => 'View private user info';
 	String get writeAdminSuspendUser => 'Suspend user';
 	String get writeAdminUnsetUserAvatar => 'Remove user avatar';
 	String get writeAdminUnsetUserBanner => 'Remove user banner';
@@ -2951,6 +2968,19 @@ class _StringsMisskeyIOSkebStatusEnUs {
 	String yenX({required Object x}) => 'JPY ${x}';
 	String nWorks({required Object n}) => 'Delivered ${n} works';
 	String nRequests({required Object n}) => 'Requested ${n} times';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get none => 'Publishing';
+	String get manuallySuspended => 'Manually suspended';
+	String get goneSuspended => 'Server is suspended due to server deletion';
+	String get autoSuspendedForNotResponding => 'Server is suspended due to no responding';
 }
 
 // Path: misskey.bubbleGame_.score_

@@ -441,6 +441,7 @@ class _StringsMisskeyTrTr extends _StringsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'yanıt';
 	@override String get renotes => 'vazgeçme';
+	@override late final _StringsMisskeyDeliveryTrTr delivery_ = _StringsMisskeyDeliveryTrTr._(_root);
 	@override late final _StringsMisskeyAccountDeleteTrTr accountDelete_ = _StringsMisskeyAccountDeleteTrTr._(_root);
 	@override late final _StringsMisskeyEmailTrTr email_ = _StringsMisskeyEmailTrTr._(_root);
 	@override late final _StringsMisskeyThemeTrTr theme_ = _StringsMisskeyThemeTrTr._(_root);
@@ -459,6 +460,17 @@ class _StringsMisskeyTrTr extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationTrTr notification_ = _StringsMisskeyNotificationTrTr._(_root);
 	@override late final _StringsMisskeyDeckTrTr deck_ = _StringsMisskeyDeckTrTr._(_root);
 	@override late final _StringsMisskeyModerationLogTypesTrTr moderationLogTypes_ = _StringsMisskeyModerationLogTypesTrTr._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryTrTr extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+
+	@override final _StringsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Askıya alınmış';
+	@override late final _StringsMisskeyDeliveryTypeTrTr type_ = _StringsMisskeyDeliveryTypeTrTr._(_root);
 }
 
 // Path: misskey.accountDelete_
@@ -662,6 +674,16 @@ class _StringsMisskeyModerationLogTypesTrTr extends _StringsMisskeyModerationLog
 	// Translations
 	@override String get suspend => 'askıya al';
 	@override String get resetPassword => 'Şifre sıfırlama';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeTrTr extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+
+	@override final _StringsTrTr _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Paylaşım';
 }
 
 // Path: misskey.email_.follow_

@@ -558,6 +558,7 @@ class _StringsMisskeySvSe extends _StringsMisskeyEnUs {
 	@override String get icon => 'Profilbild';
 	@override String get replies => 'Svara';
 	@override String get renotes => 'Omnotera';
+	@override late final _StringsMisskeyDeliverySvSe delivery_ = _StringsMisskeyDeliverySvSe._(_root);
 	@override late final _StringsMisskeyAchievementsSvSe achievements_ = _StringsMisskeyAchievementsSvSe._(_root);
 	@override late final _StringsMisskeyFfVisibilitySvSe ffVisibility_ = _StringsMisskeyFfVisibilitySvSe._(_root);
 	@override late final _StringsMisskeyEmailSvSe email_ = _StringsMisskeyEmailSvSe._(_root);
@@ -578,6 +579,17 @@ class _StringsMisskeySvSe extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDeckSvSe deck_ = _StringsMisskeyDeckSvSe._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSvSe webhookSettings_ = _StringsMisskeyWebhookSettingsSvSe._(_root);
 	@override late final _StringsMisskeyModerationLogTypesSvSe moderationLogTypes_ = _StringsMisskeyModerationLogTypesSvSe._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliverySvSe extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliverySvSe._(_StringsSvSe root) : this._root = root, super._(root);
+
+	@override final _StringsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Suspenderad';
+	@override late final _StringsMisskeyDeliveryTypeSvSe type_ = _StringsMisskeyDeliveryTypeSvSe._(_root);
 }
 
 // Path: misskey.achievements_
@@ -805,6 +817,16 @@ class _StringsMisskeyModerationLogTypesSvSe extends _StringsMisskeyModerationLog
 	// Translations
 	@override String get suspend => 'Suspendera';
 	@override String get resetPassword => 'Återställ Lösenord';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeSvSe extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+
+	@override final _StringsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Publiceras';
 }
 
 // Path: misskey.achievements_.types_

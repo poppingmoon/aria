@@ -926,6 +926,10 @@ renotes: "Preposlať"
 sourceCode: "Zdrojový kód"
 flip: "Preklopiť"
 lastNDays: "Posledných {n} dní"
+delivery_:
+  stop: "Zmrazené"
+  type_:
+    none: "Zverejňovanie"
 role_:
   priority: "Priorita"
   priority_:

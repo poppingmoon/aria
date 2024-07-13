@@ -468,6 +468,8 @@ icon: "Avatar"
 replies: "Svar"
 renotes: "Renote"
 surrender: "Avbryt"
+delivery_:
+  stop: "Suspendert"
 initialAccountSetting_:
   theseSettingsCanEditLater: "Du kan endre disse innstillingene senere."
 achievements_:

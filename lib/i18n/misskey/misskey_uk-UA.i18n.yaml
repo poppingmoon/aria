@@ -918,6 +918,10 @@ renotes: "Поширити"
 sourceCode: "Вихідний код"
 flip: "Перевернути"
 lastNDays: "Останні {n} днів"
+delivery_:
+  stop: "Призупинено"
+  type_:
+    none: "Публікація"
 achievements_:
   earnedAt: "Відкрито"
   types_:

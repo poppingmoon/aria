@@ -382,6 +382,10 @@ addMemo: "Kısa not ekle"
 icon: "Avatar"
 replies: "yanıt"
 renotes: "vazgeçme"
+delivery_:
+  stop: "Askıya alınmış"
+  type_:
+    none: "Paylaşım"
 accountDelete_:
   started: "Silme işlemi başlatıldı"
 email_:

@@ -1228,6 +1228,10 @@ enableHorizontalSwipe: "Glisser pour changer d'onglet"
 loading: "Chargement en cours"
 surrender: "Annuler"
 gameRetry: "Réessayer"
+delivery_:
+  stop: "Suspendu·e"
+  type_:
+    none: "Publié"
 bubbleGame_:
   howToPlay: "Comment jouer"
   hold: "Réserver"

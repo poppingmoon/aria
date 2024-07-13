@@ -1173,6 +1173,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get code => 'Код';
 	@override String lastNDays({required Object n}) => 'Последние ${n} сут';
 	@override String get surrender => 'Этот пост не может быть отменен.';
+	@override late final _StringsMisskeyDeliveryRuRu delivery_ = _StringsMisskeyDeliveryRuRu._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingRuRu initialAccountSetting_ = _StringsMisskeyInitialAccountSettingRuRu._(_root);
 	@override late final _StringsMisskeyInitialTutorialRuRu initialTutorial_ = _StringsMisskeyInitialTutorialRuRu._(_root);
 	@override late final _StringsMisskeyTimelineDescriptionRuRu timelineDescription_ = _StringsMisskeyTimelineDescriptionRuRu._(_root);
@@ -1228,6 +1229,17 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsRuRu webhookSettings_ = _StringsMisskeyWebhookSettingsRuRu._(_root);
 	@override late final _StringsMisskeyModerationLogTypesRuRu moderationLogTypes_ = _StringsMisskeyModerationLogTypesRuRu._(_root);
 	@override late final _StringsMisskeyReversiRuRu reversi_ = _StringsMisskeyReversiRuRu._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryRuRu extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryRuRu._(_StringsRuRu root) : this._root = root, super._(root);
+
+	@override final _StringsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'Заморожено';
+	@override late final _StringsMisskeyDeliveryTypeRuRu type_ = _StringsMisskeyDeliveryTypeRuRu._(_root);
 }
 
 // Path: misskey.initialAccountSetting_
@@ -2203,6 +2215,16 @@ class _StringsMisskeyReversiRuRu extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'Всего';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeRuRu extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeRuRu._(_StringsRuRu root) : this._root = root, super._(root);
+
+	@override final _StringsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'Публикация';
 }
 
 // Path: misskey.initialTutorial_.note_

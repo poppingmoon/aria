@@ -850,6 +850,10 @@ icon: "Avatar"
 replies: "Javob berish"
 renotes: "Qayta qayd etish"
 flip: "Teskari"
+delivery_:
+  stop: "To'xtatilgan"
+  type_:
+    none: "Yuborilmoqda"
 achievements_:
   types_:
     viewInstanceChart_:

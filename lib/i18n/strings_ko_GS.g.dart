@@ -1307,6 +1307,7 @@ class _StringsMisskeyKoGs extends _StringsMisskeyEnUs {
 	@override String get useBackupCode => '백업 코드 사용';
 	@override String get launchApp => '앱 실행';
 	@override String get useNativeUIForVideoAudioPlayer => '브라우저 UI에서 미디어 재생';
+	@override late final _StringsMisskeyDeliveryKoGs delivery_ = _StringsMisskeyDeliveryKoGs._(_root);
 	@override late final _StringsMisskeyBubbleGameKoGs bubbleGame_ = _StringsMisskeyBubbleGameKoGs._(_root);
 	@override late final _StringsMisskeyAnnouncementKoGs announcement_ = _StringsMisskeyAnnouncementKoGs._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingKoGs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingKoGs._(_root);
@@ -1386,6 +1387,17 @@ class _StringsMisskeyIOKoGs extends _StringsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _StringsMisskeyIOSkebStatusKoGs skebStatus_ = _StringsMisskeyIOSkebStatusKoGs._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryKoGs extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryKoGs._(_StringsKoGs root) : this._root = root, super._(root);
+
+	@override final _StringsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => '고만 보내예';
+	@override late final _StringsMisskeyDeliveryTypeKoGs type_ = _StringsMisskeyDeliveryTypeKoGs._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2087,7 +2099,6 @@ class _StringsMisskeyPermissionsKoGs extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => '서버 정보 보기';
 	@override String get readAdminShowModerationLog => '조정 기록 보기';
 	@override String get readAdminShowUser => '사용자 개인정보 보기';
-	@override String get readAdminShowUsers => '사용자 개인정보 보기';
 	@override String get writeAdminSuspendUser => '사용자 정지하기';
 	@override String get writeAdminUnsetUserAvatar => '사용자 아바타 삭제하기';
 	@override String get writeAdminUnsetUserBanner => '사용자 배너 삭제하기';
@@ -2789,6 +2800,16 @@ class _StringsMisskeyIOSkebStatusKoGs extends _StringsMisskeyIOSkebStatusEnUs {
 	@override String yenX({required Object x}) => 'JPY ${x}';
 	@override String nWorks({required Object n}) => '납품 실적 ${n}건';
 	@override String nRequests({required Object n}) => '거래 실적 ${n}건';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeKoGs extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeKoGs._(_StringsKoGs root) : this._root = root, super._(root);
+
+	@override final _StringsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => '보내고 잇어예';
 }
 
 // Path: misskey.bubbleGame_.score_

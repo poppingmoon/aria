@@ -207,19 +207,21 @@ class RenoteSheet extends HookConsumerWidget {
                     }
                     if (!context.mounted) return;
                     if (renoteToChannel.value) {
-                      final result = await futureWithDialog(
-                        context,
-                        ref.read(misskeyProvider(account)).notes.create(
-                              request.copyWith(channelId: channel.value?.id),
-                            ),
-                        message: t.misskey.renoted,
-                      );
-                      if (!context.mounted) return;
-                      if (result != null) {
-                        ref
-                            .read(notesNotifierProvider(account).notifier)
-                            .add(result);
-                        context.pop();
+                      if (channel.value case final channel?) {
+                        final result = await futureWithDialog(
+                          context,
+                          ref.read(misskeyProvider(account)).notes.create(
+                                request.copyWith(channelId: channel.id),
+                              ),
+                          message: t.misskey.renotedToX(name: channel.name),
+                        );
+                        if (result != null) {
+                          ref
+                              .read(notesNotifierProvider(account).notifier)
+                              .add(result);
+                          if (!context.mounted) return;
+                          context.pop();
+                        }
                       }
                     } else {
                       final result = await futureWithDialog(

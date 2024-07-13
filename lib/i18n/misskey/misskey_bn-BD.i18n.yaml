@@ -861,6 +861,10 @@ replies: "জবাব"
 renotes: "রিনোট"
 sourceCode: "সোর্স কোড"
 flip: "উল্টান"
+delivery_:
+  stop: "স্থগিত করা হয়েছে"
+  type_:
+    none: "প্রকাশ করা হচ্ছে"
 role_:
   priority: "অগ্রাধিকার"
   priority_:

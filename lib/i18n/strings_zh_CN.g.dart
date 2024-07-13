@@ -188,11 +188,14 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get renote => '转发';
 	@override String get unrenote => '取消转发';
 	@override String get renoted => '已转发。';
+	@override String renotedToX({required Object name}) => '转帖给 ${name}';
 	@override String get cantRenote => '该帖无法转发。';
 	@override String get cantReRenote => '转发无法被再次转发。';
 	@override String get quote => '引用';
 	@override String get inChannelRenote => '在频道内转发';
 	@override String get inChannelQuote => '在频道内引用';
+	@override String get renoteToChannel => '转帖至频道';
+	@override String get renoteToOtherChannel => '转帖至其它频道';
 	@override String get pinnedNote => '已置顶的帖子';
 	@override String get pinned => '置顶';
 	@override String get you => '您';
@@ -548,6 +551,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String noteOf({required Object user}) => '${user} 的帖子';
 	@override String get quoteAttached => '已引用';
 	@override String get quoteQuestion => '是否引用此链接内容？';
+	@override String get attachAsFileQuestion => '剪贴板内的文字过长。要转换为文本文件并添加吗？';
 	@override String get noMessagesYet => '现在没有新的聊天';
 	@override String get newMessageExists => '新信息';
 	@override String get onlyOneFileCanBeAttached => '只能添加一个附件';
@@ -1315,6 +1319,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get noDescription => '没有描述';
 	@override String get alwaysConfirmFollow => '总是确认关注';
 	@override String get inquiry => '联系我们';
+	@override late final _StringsMisskeyDeliveryZhCn delivery_ = _StringsMisskeyDeliveryZhCn._(_root);
 	@override late final _StringsMisskeyBubbleGameZhCn bubbleGame_ = _StringsMisskeyBubbleGameZhCn._(_root);
 	@override late final _StringsMisskeyAnnouncementZhCn announcement_ = _StringsMisskeyAnnouncementZhCn._(_root);
 	@override late final _StringsMisskeyInitialAccountSettingZhCn initialAccountSetting_ = _StringsMisskeyInitialAccountSettingZhCn._(_root);
@@ -1384,6 +1389,19 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenZhCn offlineScreen_ = _StringsMisskeyOfflineScreenZhCn._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingZhCn urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingZhCn._(_root);
 	@override late final _StringsMisskeyMediaControlsZhCn mediaControls_ = _StringsMisskeyMediaControlsZhCn._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryZhCn extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get status => '投递状态';
+	@override String get stop => '停止投递';
+	@override String get resume => '继续投递';
+	@override late final _StringsMisskeyDeliveryTypeZhCn type_ = _StringsMisskeyDeliveryTypeZhCn._(_root);
 }
 
 // Path: misskey.bubbleGame_
@@ -2086,7 +2104,6 @@ class _StringsMisskeyPermissionsZhCn extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminServerInfo => '查看服务器信息';
 	@override String get readAdminShowModerationLog => '查看管理日志';
 	@override String get readAdminShowUser => '查看用户的非公开信息';
-	@override String get readAdminShowUsers => '查看用户的非公开信息';
 	@override String get writeAdminSuspendUser => '冻结用户';
 	@override String get writeAdminUnsetUserAvatar => '删除用户头像';
 	@override String get writeAdminUnsetUserBanner => '删除用户横幅';
@@ -2774,6 +2791,19 @@ class _StringsMisskeyMediaControlsZhCn extends _StringsMisskeyMediaControlsEnUs 
 	@override String get loop => '循环播放';
 }
 
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeZhCn extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => '投递中';
+	@override String get manuallySuspended => '手动停止中';
+	@override String get goneSuspended => '因服务器被删除而停止';
+	@override String get autoSuspendedForNotResponding => '因服务器无应答而停止';
+}
+
 // Path: misskey.bubbleGame_.score_
 class _StringsMisskeyBubbleGameScoreZhCn extends _StringsMisskeyBubbleGameScoreEnUs {
 	_StringsMisskeyBubbleGameScoreZhCn._(_StringsZhCn root) : this._root = root, super._(root);
@@ -3044,8 +3074,10 @@ class _StringsMisskeyRoleConditionZhCn extends _StringsMisskeyRoleConditionEnUs 
 	@override String get roleAssignedTo => '已分配给手动角色';
 	@override String get isLocal => '是本地用户';
 	@override String get isRemote => '是远程用户';
+	@override String get isCat => '猫猫用户';
 	@override String get isBot => '机器人用户';
 	@override String get isSuspended => '停用的用户';
+	@override String get isLocked => '锁推用户';
 	@override String get isExplorable => '启用“使账号可见”的用户';
 	@override String get createdLessThan => '账户创建时间少于';
 	@override String get createdMoreThan => '账户创建时间超过';

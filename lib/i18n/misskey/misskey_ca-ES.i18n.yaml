@@ -1228,6 +1228,10 @@ gameRetry: "Torna a provar"
 notUsePleaseLeaveBlank: "Si no voleu usar-ho, deixeu-ho en blanc"
 useTotp: "Usa una contrasenya d'un sol ús"
 useBackupCode: "Usa un codi de recuperació"
+delivery_:
+  stop: "Suspés"
+  type_:
+    none: "S'està publicant"
 bubbleGame_:
   howToPlay: "Com es juga"
   howToPlay_:
@@ -2005,7 +2009,6 @@ permissions_:
   readAdminServerInfo: "Veure informació del servidor"
   readAdminShowModerationLog: "Veure registre de moderació "
   readAdminShowUser: "Veure informació privada de l'usuari "
-  readAdminShowUsers: "Veure informació privada de l'usuari "
   writeAdminSuspendUser: "Suspendre usuari"
   writeAdminUnsetUserAvatar: "Esborrar avatar d'usuari "
   writeAdminUnsetUserBanner: "Esborrar bàner de l'usuari "

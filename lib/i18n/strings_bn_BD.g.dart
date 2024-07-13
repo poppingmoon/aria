@@ -929,6 +929,7 @@ class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
 	@override String get renotes => 'রিনোট';
 	@override String get sourceCode => 'সোর্স কোড';
 	@override String get flip => 'উল্টান';
+	@override late final _StringsMisskeyDeliveryBnBd delivery_ = _StringsMisskeyDeliveryBnBd._(_root);
 	@override late final _StringsMisskeyRoleBnBd role_ = _StringsMisskeyRoleBnBd._(_root);
 	@override late final _StringsMisskeyEmailUnavailableBnBd emailUnavailable_ = _StringsMisskeyEmailUnavailableBnBd._(_root);
 	@override late final _StringsMisskeyFfVisibilityBnBd ffVisibility_ = _StringsMisskeyFfVisibilityBnBd._(_root);
@@ -974,6 +975,17 @@ class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyWebhookSettingsBnBd webhookSettings_ = _StringsMisskeyWebhookSettingsBnBd._(_root);
 	@override late final _StringsMisskeyModerationLogTypesBnBd moderationLogTypes_ = _StringsMisskeyModerationLogTypesBnBd._(_root);
 	@override late final _StringsMisskeyReversiBnBd reversi_ = _StringsMisskeyReversiBnBd._(_root);
+}
+
+// Path: misskey.delivery_
+class _StringsMisskeyDeliveryBnBd extends _StringsMisskeyDeliveryEnUs {
+	_StringsMisskeyDeliveryBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+
+	@override final _StringsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get stop => 'স্থগিত করা হয়েছে';
+	@override late final _StringsMisskeyDeliveryTypeBnBd type_ = _StringsMisskeyDeliveryTypeBnBd._(_root);
 }
 
 // Path: misskey.role_
@@ -1739,6 +1751,16 @@ class _StringsMisskeyReversiBnBd extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get total => 'মোট';
+}
+
+// Path: misskey.delivery_.type_
+class _StringsMisskeyDeliveryTypeBnBd extends _StringsMisskeyDeliveryTypeEnUs {
+	_StringsMisskeyDeliveryTypeBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+
+	@override final _StringsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get none => 'প্রকাশ করা হচ্ছে';
 }
 
 // Path: misskey.role_.priority_

@@ -1237,6 +1237,10 @@ useNativeUIForVideoAudioPlayer: "Usar la interfaz del navegador cuando se reprod
 keepOriginalFilename: "Mantener el nombre original del archivo"
 noDescription: "No hay descripción"
 alwaysConfirmFollow: "Confirmar siempre cuando se sigue a alguien"
+delivery_:
+  stop: "Suspendido"
+  type_:
+    none: "Publicando"
 bubbleGame_:
   howToPlay: "Cómo jugar"
   hold: "Mantener"
@@ -2033,7 +2037,6 @@ permissions_:
   readAdminServerInfo: "Ver información del servidor"
   readAdminShowModerationLog: "Ver log de moderación"
   readAdminShowUser: "Ver información privada de usuario"
-  readAdminShowUsers: "Ver información privada de usuario"
   writeAdminSuspendUser: "Suspender cuentas de usuario"
   writeAdminUnsetUserAvatar: "Quitar avatares de usuario"
   writeAdminUnsetUserBanner: "Quitar banner de usuarios"
