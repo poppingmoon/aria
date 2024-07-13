@@ -36,9 +36,9 @@ Future<T?> futureWithDialog<T>(
   }
   try {
     final result = await future;
-    if (entry != null && entry.mounted) {
-      entry.remove();
-    }
+    try {
+      entry?.remove();
+    } catch (_) {}
     if (message != null) {
       if (defaultTargetPlatform
           case TargetPlatform.android || TargetPlatform.iOS) {
@@ -53,9 +53,9 @@ Future<T?> futureWithDialog<T>(
     }
     return result;
   } catch (e, st) {
-    if (entry != null && entry.mounted) {
-      entry.remove();
-    }
+    try {
+      entry?.remove();
+    } catch (_) {}
     if (!context.mounted) return null;
     await showErrorMessageDialog(
       context,
