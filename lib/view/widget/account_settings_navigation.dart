@@ -96,6 +96,7 @@ class AccountSettingsNavigation extends ConsumerWidget {
     return ListView(
       shrinkWrap: true,
       physics: physics,
+      padding: EdgeInsets.zero,
       children: AccountSettingsDestination.values
           .map(
             (destination) => rail
