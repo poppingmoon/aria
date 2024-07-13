@@ -84,6 +84,7 @@ class GeneralSettingsNavigation extends StatelessWidget {
     return ListView(
       shrinkWrap: true,
       physics: physics,
+      padding: EdgeInsets.zero,
       children: GeneralSettingsDestination.values
           .map(
             (destination) => rail
