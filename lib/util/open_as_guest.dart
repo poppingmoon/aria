@@ -15,5 +15,5 @@ Future<void> openUserAsGuest(WidgetRef ref, UserDetailed user) async {
     userNotifierProvider(guest, username: user.username).future,
   );
   if (!ref.context.mounted) return;
-  await ref.context.push('/$guest/users/${userAsLocal.id}');
+  unawaited(ref.context.push('/$guest/users/${userAsLocal.id}'));
 }
