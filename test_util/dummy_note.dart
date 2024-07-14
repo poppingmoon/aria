@@ -7,8 +7,6 @@ final dummyNote = Note(
   createdAt: DateTime(0),
   user: dummyUserLite,
   userId: '',
-  renoteCount: 0,
-  repliesCount: 0,
   reactions: {},
   fileIds: [],
   files: [],

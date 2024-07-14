@@ -735,8 +735,6 @@ class NoteDisplayPage extends HookConsumerWidget {
                           ),
                           userId: '',
                           visibility: NoteVisibility.public,
-                          renoteCount: 0,
-                          repliesCount: 0,
                           reactionCount: 55,
                           reactions: defaultPinnedEmojis.asMap().map(
                                 (key, value) => MapEntry(value, key + 1),
@@ -785,7 +783,6 @@ class NoteDisplayPage extends HookConsumerWidget {
                             userId: '',
                             visibility: NoteVisibility.public,
                             renoteCount: 1,
-                            repliesCount: 0,
                             reactionCount: 55,
                             reactions: defaultPinnedEmojis.asMap().map(
                                   (key, value) => MapEntry(value, key + 1),
