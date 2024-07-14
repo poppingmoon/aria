@@ -39,30 +39,22 @@ class Jump extends HookWidget {
     if (speed == Duration.zero) {
       return child;
     }
-    final delay = safeParseDuration(args['delay']) ?? Duration.zero;
-    final duration = delay + speed;
-    final start = delay.inMilliseconds / duration.inMilliseconds;
-    final controller = useAnimationController(duration: delay + speed);
+    final delay =
+        safeParseDuration(args['delay'], allowNegative: true) ?? Duration.zero;
+    final controller = useAnimationController(duration: speed);
     useEffect(
       () {
-        controller.forward();
-        controller.addStatusListener((status) {
-          if (status == AnimationStatus.completed) {
-            controller.forward(from: start);
-          }
-        });
+        if (delay.isNegative) {
+          controller.forward(
+            from: -delay.inMilliseconds / speed.inMilliseconds,
+          );
+        }
+        Future.delayed(delay, () => controller.repeat());
         return;
       },
       [speed, delay],
     );
-    final offset = useAnimation(
-      _offsetTween.animate(
-        CurvedAnimation(
-          parent: controller,
-          curve: Interval(start, 1.0),
-        ),
-      ),
-    );
+    final offset = useAnimation(_offsetTween.animate(controller));
 
     return Transform.translate(offset: offset, child: child);
   }

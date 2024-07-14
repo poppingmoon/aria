@@ -235,10 +235,16 @@ class Shake extends HookWidget {
     if (speed == Duration.zero) {
       return child;
     }
-    final delay = safeParseDuration(args['delay']) ?? Duration.zero;
+    final delay =
+        safeParseDuration(args['delay'], allowNegative: true) ?? Duration.zero;
     final controller = useAnimationController(duration: speed);
     useEffect(
       () {
+        if (delay.isNegative) {
+          controller.forward(
+            from: -delay.inMilliseconds / speed.inMilliseconds,
+          );
+        }
         Future.delayed(delay, () => controller.repeat());
         return;
       },
