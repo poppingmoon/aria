@@ -58,7 +58,7 @@ class ClipPreview extends ConsumerWidget {
                   '${t.misskey.notesCount}: ',
                   NumberFormat().format(notesCount),
                   if (i?.policies
-                      case UserPolicies(:final noteEachClipsLimit)) ...[
+                      case UserPolicies(:final noteEachClipsLimit?)) ...[
                     ' / ',
                     NumberFormat().format(noteEachClipsLimit.toInt()),
                     ' (',

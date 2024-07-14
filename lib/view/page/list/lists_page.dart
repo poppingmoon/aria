@@ -60,7 +60,7 @@ class ListsPage extends ConsumerWidget {
                                           .format(list.userIds.length),
                                       if (i?.policies
                                           case UserPolicies(
-                                            :final userEachUserListsLimit,
+                                            :final userEachUserListsLimit?,
                                           ))
                                         ' / ${NumberFormat().format(
                                           userEachUserListsLimit.toInt(),

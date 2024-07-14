@@ -31,8 +31,6 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
         visibility: visibility,
         visibleUserIds: visibleUserIds ?? [],
         localOnly: localOnly ?? false,
-        renoteCount: 0,
-        repliesCount: 0,
         reactions: {},
         reactionEmojis: {},
         fileIds: fileIds ?? [],

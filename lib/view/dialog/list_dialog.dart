@@ -38,14 +38,14 @@ class ListDialog extends HookConsumerWidget {
                   n: [
                     NumberFormat().format(list.userIds.length),
                     if (i?.policies
-                        case UserPolicies(:final userEachUserListsLimit)) ...[
+                        case UserPolicies(:final userEachUserListsLimit?)) ...[
                       ' / ',
                       NumberFormat().format(userEachUserListsLimit.toInt()),
                     ],
                   ].join(),
                 ),
                 if (i?.policies
-                    case UserPolicies(:final userEachUserListsLimit)) ...[
+                    case UserPolicies(:final userEachUserListsLimit?)) ...[
                   ' (',
                   t.misskey.remainingN(
                     n: NumberFormat().format(
