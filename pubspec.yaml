@@ -40,7 +40,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   flutter_svg: ^2.0.10+1
   fluttertoast: ^8.2.6
-  freezed_annotation: ^2.4.3
+  freezed_annotation: ^2.4.4
   gal: ^2.3.0
   go_router: ^14.2.1
   highlighting: ^0.9.0+11.8.0
