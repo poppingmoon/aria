@@ -97,8 +97,10 @@ class SettingsPage extends HookConsumerWidget {
                       color: Theme.of(context).colorScheme.surface,
                     ),
                   ),
-                  const GeneralSettingsNavigation(
-                    physics: NeverScrollableScrollPhysics(),
+                  // Adding "const" to this prevents update of translations.
+                  // ignore: prefer_const_constructors
+                  GeneralSettingsNavigation(
+                    physics: const NeverScrollableScrollPhysics(),
                   ),
                   Container(
                     height: 8.0,
