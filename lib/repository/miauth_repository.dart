@@ -56,7 +56,9 @@ class MiAuthRepository {
           {
             'name': 'Aria',
             'permission': _permissions.map((e) => e.value).join(','),
-            'callback': 'aria://aria/miauth',
+            if (defaultTargetPlatform
+                case TargetPlatform.android || TargetPlatform.iOS)
+              'callback': 'aria://aria/miauth',
           },
         );
         return (sessionId, url);
@@ -68,7 +70,9 @@ class MiAuthRepository {
       {
         'name': 'Aria',
         'permission': _permissions.map((e) => e.value).join(','),
-        'callback': 'aria://aria/miauth',
+        if (defaultTargetPlatform
+            case TargetPlatform.android || TargetPlatform.iOS)
+          'callback': 'aria://aria/miauth',
       },
     );
     return (sessionId, url);
