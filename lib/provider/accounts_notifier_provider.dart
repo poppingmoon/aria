@@ -5,7 +5,6 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
 import 'dio_provider.dart';
-import 'emojis_notifier_provider.dart';
 import 'shared_preferences_provider.dart';
 import 'tokens_notifier_provider.dart';
 
@@ -37,14 +36,9 @@ class AccountsNotifier extends _$AccountsNotifier {
     if (state.contains(account)) {
       return;
     }
+    await ref.read(tokensNotifierProvider.notifier).add(account, token);
     state = [...state, account];
-    await Future.wait([
-      _save(),
-      ref.read(tokensNotifierProvider.notifier).add(account, token),
-    ]);
-    await ref
-        .read(emojisNotifierProvider(account.host).notifier)
-        .reloadEmojis();
+    await _save();
   }
 
   Future<bool> loginWithToken(String host, String token) async {

@@ -32,19 +32,18 @@ class AuthenticatePage extends ConsumerWidget {
       ),
       body: Center(
         child: ElevatedButton(
-          onPressed: () => futureWithDialog(
-            context,
-            Future(() async {
-              final succeeded =
-                  await ref.read(miAuthNotifierProvider.notifier).check();
-              if (!context.mounted) return;
-              if (succeeded) {
-                context.go('/timelines');
-              } else {
-                await showMessageDialog(context, t.misskey.loginFailed);
-              }
-            }),
-          ),
+          onPressed: () async {
+            final succeeded = await futureWithDialog(
+              context,
+              ref.read(miAuthNotifierProvider.notifier).check(),
+            );
+            if (!context.mounted) return;
+            if (succeeded ?? false) {
+              context.go('/timelines');
+            } else {
+              await showMessageDialog(context, t.misskey.loginFailed);
+            }
+          },
           child: Text(t.aria.authenticated),
         ),
       ),
