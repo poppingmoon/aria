@@ -1,0 +1,80 @@
+name: aria
+version: git
+title: Aria for Misskey
+summary: Dive into the interplanetary microblogging platform 🚀
+description: |
+  Aria is a client app for Misskey, a federated social media platform.
+
+  Supports most of Misskey's features
+  Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.
+
+  Swipe to switch between multiple accounts (of multiple servers)
+  Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account's timeline to a tab makes it easy to follow topics across servers.
+
+  Based on the design of the official Misskey Web client
+  The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
+
+  Highly customizable
+  Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.
+icon: snap/gui/aria.png
+issues: https://github.com/poppingmoon/aria/issues
+license: AGPL-3.0
+source-code: https://github.com/poppingmoon/aria.git
+website: https://github.com/poppingmoon/aria
+
+platforms:
+  amd64:
+  arm64:
+
+confinement: strict
+base: core24
+grade: stable
+
+slots:
+  dbus-aria:
+    interface: dbus
+    bus: session
+    name: com.poppingmoon.aria
+
+apps:
+  aria:
+    command: aria
+    extensions: [gnome]
+    plugs:
+      - audio-playback
+      - browser-support
+      - desktop
+      - desktop-legacy
+      - home
+      - network
+      - password-manager-service
+      - removable-media
+      - screen-inhibit-control
+    slots:
+      - dbus-aria
+
+parts:
+  aria:
+    source: .
+    plugin: nil
+    build-packages:
+      - clang
+      - cmake
+      - curl
+      - git
+      - libsecret-1-dev
+      - ninja-build
+      - unzip
+    stage-packages:
+      - libsecret-1-0
+    override-build: |
+      curl -fsSL https://fvm.app/install.sh | bash
+      fvm install
+      curl https://sh.rustup.rs -sSf | sh -s -- -y
+      fvm flutter build linux
+      mv build/linux/*/release/bundle/* $CRAFT_PART_INSTALL
+
+  zenity-integration:
+    plugin: nil
+    stage-snaps:
+      - zenity-integration
