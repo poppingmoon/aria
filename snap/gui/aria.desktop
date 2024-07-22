@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Aria
+Comment=Dive into the interplanetary microblogging platform 🚀
+Exec=aria
+Icon=${SNAP}/meta/gui/aria.png
+Terminal=false
+Type=Application
+Categories=Network;
