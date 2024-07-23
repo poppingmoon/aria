@@ -28,6 +28,10 @@ class AccountSettings with _$AccountSettings {
     @Default(false) bool keepOriginalUploading,
     @Default(true) bool keepOriginalFilename,
 
+    // Mute
+    @Default([]) List<MuteWord> mutedWords,
+    @Default([]) List<MuteWord> hardMutedWords,
+
     // UserSelectDialog
     @Default([]) List<String> recentlyUsedUsers,
 

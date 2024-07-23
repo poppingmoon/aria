@@ -6,6 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../test_util/create_container.dart';
 import '../../test_util/dummy_me_detailed.dart';
 import '../../test_util/dummy_note.dart';
+import '../../test_util/dummy_user_lite.dart';
 
 void main() {
   const account = Account(host: 'misskey.tld', username: 'testuser');
@@ -14,8 +15,10 @@ void main() {
     test('should return false if mutedWords is empty', () async {
       final container = await createContainer(
         account,
-        i: dummyMeDetailed,
-        note: dummyNote.copyWith(userId: '1', text: 'foo'),
+        i: dummyMeDetailed.copyWith(
+          mutedWords: [],
+        ),
+        note: dummyNote.copyWith(text: 'foo'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -30,7 +33,7 @@ void main() {
             const MuteWord(content: ['foo']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo'),
+        note: dummyNote.copyWith(text: 'foo'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
@@ -45,7 +48,7 @@ void main() {
             const MuteWord(content: ['bar']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo'),
+        note: dummyNote.copyWith(text: 'foo'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -56,12 +59,14 @@ void main() {
       final container = await createContainer(
         account,
         i: dummyMeDetailed.copyWith(
-          id: '1',
           mutedWords: [
             const MuteWord(content: ['foo']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo'),
+        note: dummyNote.copyWith(
+          text: 'foo',
+          user: dummyUserLite.copyWith(username: 'testuser'),
+        ),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -76,7 +81,7 @@ void main() {
             const MuteWord(content: ['bar']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo', cw: 'bar'),
+        note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
@@ -92,7 +97,7 @@ void main() {
             const MuteWord(content: ['bar']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo', cw: 'bar'),
+        note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
@@ -107,7 +112,7 @@ void main() {
             const MuteWord(content: ['baz']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo', cw: 'bar'),
+        note: dummyNote.copyWith(text: 'foo', cw: 'bar'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -122,7 +127,7 @@ void main() {
             const MuteWord(content: ['foo', 'bar']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo'),
+        note: dummyNote.copyWith(text: 'foo'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -135,7 +140,7 @@ void main() {
             const MuteWord(content: ['foo', 'bar']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foobar'),
+        note: dummyNote.copyWith(text: 'foobar'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
@@ -146,12 +151,14 @@ void main() {
       final container = await createContainer(
         account,
         i: dummyMeDetailed.copyWith(
-          id: '1',
           mutedWords: [
             const MuteWord(content: ['foo', 'bar']),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo bar'),
+        note: dummyNote.copyWith(
+          text: 'foo bar',
+          user: dummyUserLite.copyWith(username: 'testuser'),
+        ),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -166,7 +173,7 @@ void main() {
             const MuteWord(regExp: '/bar/'),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foo'),
+        note: dummyNote.copyWith(text: 'foo'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -179,7 +186,7 @@ void main() {
             const MuteWord(regExp: '/bar/'),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foobar'),
+        note: dummyNote.copyWith(text: 'foobar'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });
@@ -190,12 +197,14 @@ void main() {
       final container = await createContainer(
         account,
         i: dummyMeDetailed.copyWith(
-          id: '1',
           mutedWords: [
             const MuteWord(regExp: '/bar/'),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'foobar'),
+        note: dummyNote.copyWith(
+          text: 'foobar',
+          user: dummyUserLite.copyWith(username: 'testuser'),
+        ),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isFalse);
     });
@@ -210,7 +219,7 @@ void main() {
             const MuteWord(regExp: '/bar/i'),
           ],
         ),
-        note: dummyNote.copyWith(userId: '1', text: 'fooBar'),
+        note: dummyNote.copyWith(text: 'fooBar'),
       );
       expect(container.read(checkWordMuteProvider(account, '')), isTrue);
     });

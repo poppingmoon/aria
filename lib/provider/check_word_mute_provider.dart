@@ -1,8 +1,8 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
-import 'api/i_notifier_provider.dart';
 import 'mute_provider.dart';
+import 'muted_words_notifier_provider.dart';
 import 'note_provider.dart';
 
 part 'check_word_mute_provider.g.dart';
@@ -15,8 +15,8 @@ bool checkWordMute(
   bool hardMute = false,
 }) {
   final note = ref.watch(noteProvider(account, noteId));
-  final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-  if (note == null || i == null || note.userId == i.id) {
+  if (note == null ||
+      (note.user.username == account.username && note.user.host == null)) {
     return false;
   }
   final text = [
@@ -30,7 +30,8 @@ bool checkWordMute(
   if (text.isEmpty) {
     return false;
   }
-  final mutedWords = hardMute ? i.hardMutedWords : i.mutedWords;
+  final mutedWords =
+      ref.watch(mutedWordsNotifierProvider(account, hardMute: hardMute));
   final (ac, filters, regExps) = ref.watch(muteProvider(mutedWords));
   if (ac.firstMatch(text) != null) {
     return true;

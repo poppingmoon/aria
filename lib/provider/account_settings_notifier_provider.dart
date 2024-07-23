@@ -92,11 +92,6 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
     await _save();
   }
 
-  Future<void> setRecentlyUsedUsers(List<String> recentlyUsedUsers) async {
-    state = state.copyWith(recentlyUsedUsers: recentlyUsedUsers);
-    await _save();
-  }
-
   Future<void> setUploadFolder(String? uploadFolder) async {
     state = state.copyWith(uploadFolder: uploadFolder);
     await _save();
@@ -109,6 +104,21 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
 
   Future<void> setKeepOriginalFilename(bool keepOriginalFilename) async {
     state = state.copyWith(keepOriginalFilename: keepOriginalFilename);
+    await _save();
+  }
+
+  Future<void> setMutedWords(List<MuteWord> mutedWords) async {
+    state = state.copyWith(mutedWords: mutedWords);
+    await _save();
+  }
+
+  Future<void> setHardMutedWords(List<MuteWord> hardMutedWords) async {
+    state = state.copyWith(hardMutedWords: hardMutedWords);
+    await _save();
+  }
+
+  Future<void> setRecentlyUsedUsers(List<String> recentlyUsedUsers) async {
+    state = state.copyWith(recentlyUsedUsers: recentlyUsedUsers);
     await _save();
   }
 
