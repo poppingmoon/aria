@@ -7,7 +7,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/muted_words_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/message_dialog.dart';
 
@@ -55,22 +55,21 @@ class MutedWordsEditor extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final mutedWords =
+        ref.watch(mutedWordsNotifierProvider(account, hardMute: hardMute));
     final controller = useTextEditingController();
     final wordMuteText = useState('');
     final isChanged = useState(false);
     useEffect(
       () {
-        if (i != null) {
-          wordMuteText.value = i.mutedWords
-              .map((muteWord) => muteWord.content?.join(' ') ?? muteWord.regExp)
-              .nonNulls
-              .join('\n');
-          controller.text = wordMuteText.value;
-        }
+        wordMuteText.value = mutedWords
+            .map((muteWord) => muteWord.content?.join(' ') ?? muteWord.regExp)
+            .nonNulls
+            .join('\n');
+        controller.text = wordMuteText.value;
         return;
       },
-      [i],
+      [mutedWords],
     );
     useEffect(
       () {
@@ -91,7 +90,25 @@ class MutedWordsEditor extends HookConsumerWidget {
       expandedCrossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Shortcuts(
-          shortcuts: disablingTextShortcuts,
+          shortcuts: {
+            ...disablingTextShortcuts,
+            submitActivator: VoidCallbackIntent(() async {
+              if (isChanged.value) {
+                final mutes = _parseMutes(context, controller.text);
+                await futureWithDialog(
+                  context,
+                  ref
+                      .read(
+                        mutedWordsNotifierProvider(
+                          account,
+                          hardMute: hardMute,
+                        ).notifier,
+                      )
+                      .updateMutedWords(mutes),
+                );
+              }
+            }),
+          },
           child: TextField(
             controller: controller,
             decoration: InputDecoration(
@@ -104,7 +121,10 @@ class MutedWordsEditor extends HookConsumerWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            '${t.misskey.wordMute_.muteWordsDescription}\n${t.misskey.wordMute_.muteWordsDescription2}',
+            [
+              t.misskey.wordMute_.muteWordsDescription,
+              t.misskey.wordMute_.muteWordsDescription2,
+            ].join('\n'),
           ),
         ),
         SizedBox(
@@ -113,21 +133,17 @@ class MutedWordsEditor extends HookConsumerWidget {
             onPressed: isChanged.value
                 ? () async {
                     final mutes = _parseMutes(context, controller.text);
-                    if (hardMute) {
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(iNotifierProvider(account).notifier)
-                            .setHardMutedWords(mutes),
-                      );
-                    } else {
-                      await futureWithDialog(
-                        context,
-                        ref
-                            .read(iNotifierProvider(account).notifier)
-                            .setMutedWords(mutes),
-                      );
-                    }
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            mutedWordsNotifierProvider(
+                              account,
+                              hardMute: hardMute,
+                            ).notifier,
+                          )
+                          .updateMutedWords(mutes),
+                    );
                   }
                 : null,
             icon: const Icon(Icons.save),

@@ -37,7 +37,9 @@ mixin _$AccountSettings {
       throw _privateConstructorUsedError; // Drive
   String? get uploadFolder => throw _privateConstructorUsedError;
   bool get keepOriginalUploading => throw _privateConstructorUsedError;
-  bool get keepOriginalFilename =>
+  bool get keepOriginalFilename => throw _privateConstructorUsedError; // Mute
+  List<MuteWord> get mutedWords => throw _privateConstructorUsedError;
+  List<MuteWord> get hardMutedWords =>
       throw _privateConstructorUsedError; // UserSelectDialog
   List<String> get recentlyUsedUsers =>
       throw _privateConstructorUsedError; // PostForm
@@ -69,6 +71,8 @@ abstract class $AccountSettingsCopyWith<$Res> {
       String? uploadFolder,
       bool keepOriginalUploading,
       bool keepOriginalFilename,
+      List<MuteWord> mutedWords,
+      List<MuteWord> hardMutedWords,
       List<String> recentlyUsedUsers,
       List<String> hashtags});
 }
@@ -99,6 +103,8 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? uploadFolder = freezed,
     Object? keepOriginalUploading = null,
     Object? keepOriginalFilename = null,
+    Object? mutedWords = null,
+    Object? hardMutedWords = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
   }) {
@@ -155,6 +161,14 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
           ? _value.keepOriginalFilename
           : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
               as bool,
+      mutedWords: null == mutedWords
+          ? _value.mutedWords
+          : mutedWords // ignore: cast_nullable_to_non_nullable
+              as List<MuteWord>,
+      hardMutedWords: null == hardMutedWords
+          ? _value.hardMutedWords
+          : hardMutedWords // ignore: cast_nullable_to_non_nullable
+              as List<MuteWord>,
       recentlyUsedUsers: null == recentlyUsedUsers
           ? _value.recentlyUsedUsers
           : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
@@ -189,6 +203,8 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
       String? uploadFolder,
       bool keepOriginalUploading,
       bool keepOriginalFilename,
+      List<MuteWord> mutedWords,
+      List<MuteWord> hardMutedWords,
       List<String> recentlyUsedUsers,
       List<String> hashtags});
 }
@@ -217,6 +233,8 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? uploadFolder = freezed,
     Object? keepOriginalUploading = null,
     Object? keepOriginalFilename = null,
+    Object? mutedWords = null,
+    Object? hardMutedWords = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
   }) {
@@ -273,6 +291,14 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
           ? _value.keepOriginalFilename
           : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
               as bool,
+      mutedWords: null == mutedWords
+          ? _value._mutedWords
+          : mutedWords // ignore: cast_nullable_to_non_nullable
+              as List<MuteWord>,
+      hardMutedWords: null == hardMutedWords
+          ? _value._hardMutedWords
+          : hardMutedWords // ignore: cast_nullable_to_non_nullable
+              as List<MuteWord>,
       recentlyUsedUsers: null == recentlyUsedUsers
           ? _value._recentlyUsedUsers
           : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
@@ -302,11 +328,15 @@ class _$AccountSettingsImpl implements _AccountSettings {
       this.uploadFolder,
       this.keepOriginalUploading = false,
       this.keepOriginalFilename = true,
+      final List<MuteWord> mutedWords = const [],
+      final List<MuteWord> hardMutedWords = const [],
       final List<String> recentlyUsedUsers = const [],
       final List<String> hashtags = const []})
       : _pinnedEmojisForReaction = pinnedEmojisForReaction,
         _pinnedEmojis = pinnedEmojis,
         _recentlyUsedEmojis = recentlyUsedEmojis,
+        _mutedWords = mutedWords,
+        _hardMutedWords = hardMutedWords,
         _recentlyUsedUsers = recentlyUsedUsers,
         _hashtags = hashtags;
 
@@ -374,6 +404,26 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @override
   @JsonKey()
   final bool keepOriginalFilename;
+// Mute
+  final List<MuteWord> _mutedWords;
+// Mute
+  @override
+  @JsonKey()
+  List<MuteWord> get mutedWords {
+    if (_mutedWords is EqualUnmodifiableListView) return _mutedWords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_mutedWords);
+  }
+
+  final List<MuteWord> _hardMutedWords;
+  @override
+  @JsonKey()
+  List<MuteWord> get hardMutedWords {
+    if (_hardMutedWords is EqualUnmodifiableListView) return _hardMutedWords;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_hardMutedWords);
+  }
+
 // UserSelectDialog
   final List<String> _recentlyUsedUsers;
 // UserSelectDialog
@@ -399,7 +449,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @override
   String toString() {
-    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
   }
 
   @override
@@ -433,6 +483,10 @@ class _$AccountSettingsImpl implements _AccountSettings {
             (identical(other.keepOriginalFilename, keepOriginalFilename) ||
                 other.keepOriginalFilename == keepOriginalFilename) &&
             const DeepCollectionEquality()
+                .equals(other._mutedWords, _mutedWords) &&
+            const DeepCollectionEquality()
+                .equals(other._hardMutedWords, _hardMutedWords) &&
+            const DeepCollectionEquality()
                 .equals(other._recentlyUsedUsers, _recentlyUsedUsers) &&
             const DeepCollectionEquality().equals(other._hashtags, _hashtags));
   }
@@ -454,6 +508,8 @@ class _$AccountSettingsImpl implements _AccountSettings {
       uploadFolder,
       keepOriginalUploading,
       keepOriginalFilename,
+      const DeepCollectionEquality().hash(_mutedWords),
+      const DeepCollectionEquality().hash(_hardMutedWords),
       const DeepCollectionEquality().hash(_recentlyUsedUsers),
       const DeepCollectionEquality().hash(_hashtags));
 
@@ -487,6 +543,8 @@ abstract class _AccountSettings implements AccountSettings {
       final String? uploadFolder,
       final bool keepOriginalUploading,
       final bool keepOriginalFilename,
+      final List<MuteWord> mutedWords,
+      final List<MuteWord> hardMutedWords,
       final List<String> recentlyUsedUsers,
       final List<String> hashtags}) = _$AccountSettingsImpl;
 
@@ -519,6 +577,10 @@ abstract class _AccountSettings implements AccountSettings {
   bool get keepOriginalUploading;
   @override
   bool get keepOriginalFilename;
+  @override // Mute
+  List<MuteWord> get mutedWords;
+  @override
+  List<MuteWord> get hardMutedWords;
   @override // UserSelectDialog
   List<String> get recentlyUsedUsers;
   @override // PostForm

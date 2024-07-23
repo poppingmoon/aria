@@ -37,6 +37,14 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
       uploadFolder: json['uploadFolder'] as String?,
       keepOriginalUploading: json['keepOriginalUploading'] as bool? ?? false,
       keepOriginalFilename: json['keepOriginalFilename'] as bool? ?? true,
+      mutedWords: (json['mutedWords'] as List<dynamic>?)
+              ?.map((e) => MuteWord.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
+      hardMutedWords: (json['hardMutedWords'] as List<dynamic>?)
+              ?.map((e) => MuteWord.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
       recentlyUsedUsers: (json['recentlyUsedUsers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -73,6 +81,9 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
   writeNotNull('uploadFolder', instance.uploadFolder);
   val['keepOriginalUploading'] = instance.keepOriginalUploading;
   val['keepOriginalFilename'] = instance.keepOriginalFilename;
+  val['mutedWords'] = instance.mutedWords.map((e) => e.toJson()).toList();
+  val['hardMutedWords'] =
+      instance.hardMutedWords.map((e) => e.toJson()).toList();
   val['recentlyUsedUsers'] = instance.recentlyUsedUsers;
   val['hashtags'] = instance.hashtags;
   return val;
