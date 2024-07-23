@@ -30,6 +30,7 @@ emojiPickerUseDialog: "絵文字ピッカーをダイアログで表示するで
 enableFederation: "連合ありにするで"
 endpoint: "エンドポイント"
 expandNote: "ノートを開くで"
+extraMentionsWarning: "返信元のノートには入ってへんメンションがあるで"
 fileNotFound: "ファイルがあらへん"
 findServer: "Misskeyサーバーを探す"
 followConfirm(rich): "{name}をフォローしてええか？"

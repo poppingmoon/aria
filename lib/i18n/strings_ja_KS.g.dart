@@ -76,6 +76,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get enableFederation => '連合ありにするで';
 	@override String get endpoint => 'エンドポイント';
 	@override String get expandNote => 'ノートを開くで';
+	@override String get extraMentionsWarning => '返信元のノートには入ってへんメンションがあるで';
 	@override String get fileNotFound => 'ファイルがあらへん';
 	@override String get findServer => 'Misskeyサーバーを探す';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [

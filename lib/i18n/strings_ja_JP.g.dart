@@ -76,6 +76,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get enableFederation => '連合ありにする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get expandNote => 'ノートを開く';
+	@override String get extraMentionsWarning => '返信元のノートには含まれていないメンションがあります';
 	@override String get fileNotFound => 'ファイルが見つかりません';
 	@override String get findServer => 'Misskeyサーバーを見つける';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [

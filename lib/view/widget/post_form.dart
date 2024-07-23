@@ -203,12 +203,31 @@ class PostForm extends HookConsumerWidget {
       () => extractMentions(const MfmParser().parse(request.text ?? '')),
       [request.text],
     );
-    final hasMentionToRemote = mentions.any((node) => node.host != null);
+    final replyMentions = useMemoized(
+      () => extractMentions(const MfmParser().parse(reply?.text ?? '')),
+      [reply],
+    );
+    final hasMentionToRemote = useMemoized(
+      () => mentions.any((mention) => mention.host != null),
+      [mentions],
+    );
+    final extraMentions = useMemoized(
+      () => mentions.where(
+        (mention) =>
+            reply?.user.acct != mention.acct &&
+            replyMentions.every(
+              (replyMention) => replyMention.acct != mention.acct,
+            ),
+      ),
+      [mentions, reply, replyMentions],
+    );
     final visibleUsers = useState(<UserDetailed>[]);
-    final notSpecifiedMentions = mentions.where(
-      (mention) => !visibleUsers.value.any(
-        (user) =>
-            user.username == mention.username && user.host == mention.host,
+    final notSpecifiedMentions = useMemoized(
+      () => mentions.where(
+        (mention) => !visibleUsers.value.any(
+          (user) =>
+              user.username == mention.username && user.host == mention.host,
+        ),
       ),
     );
     final canChangeLocalOnly = noteId == null &&
@@ -769,6 +788,32 @@ class PostForm extends HookConsumerWidget {
                               : null,
                           child: Text(t.aria.enableFederation),
                         ),
+                    ],
+                  ),
+                ),
+              ),
+            if (extraMentions.isNotEmpty)
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Text(t.aria.extraMentionsWarning),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          String text = request.text ?? '';
+                          for (final mention in extraMentions) {
+                            text = text.replaceAllMapped(
+                              RegExp('${mention.acct}(\$|[^\\w.-])'),
+                              (match) => match[1] ?? '',
+                            );
+                          }
+                          controller.text = text;
+                        },
+                        child: Text(t.misskey.remove),
+                      ),
                     ],
                   ),
                 ),

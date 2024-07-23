@@ -84,6 +84,7 @@ class _StringsAriaEnUs {
 	String get enableFederation => 'Enable federation';
 	String get endpoint => 'Endpoint';
 	String get expandNote => 'Expand note';
+	String get extraMentionsWarning => 'This note includes mentions that are not included in the target note of reply';
 	String get fileNotFound => 'File not found';
 	String get findServer => 'Find a Misskey server';
 	TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -115,7 +116,7 @@ class _StringsAriaEnUs {
 	String get loginWithAccessToken => 'Sign in with an access token';
 	String get margin => 'Margin';
 	String get media => 'Media';
-	String get mentionToRemoteWarning => 'This note contains mentions to remote users';
+	String get mentionToRemoteWarning => 'This note includes mentions to remote users';
 	String get moved => 'Moved';
 	String get muted => 'Muted';
 	String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
