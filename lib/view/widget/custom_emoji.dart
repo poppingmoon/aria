@@ -23,6 +23,7 @@ class CustomEmoji extends ConsumerWidget {
     this.disableTooltip = false,
     this.fallbackTextStyle,
     this.fallbackToImage = true,
+    this.enableFadeIn = true,
   });
 
   final Account account;
@@ -36,6 +37,7 @@ class CustomEmoji extends ConsumerWidget {
   final bool disableTooltip;
   final TextStyle? fallbackTextStyle;
   final bool fallbackToImage;
+  final bool enableFadeIn;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -104,6 +106,7 @@ class CustomEmoji extends ConsumerWidget {
                         ),
             ),
             semanticLabel: emoji,
+            enableFadeIn: enableFadeIn,
           ),
         ),
       ),

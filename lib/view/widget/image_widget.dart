@@ -18,6 +18,7 @@ class ImageWidget extends ConsumerWidget {
     this.alignment = Alignment.center,
     this.errorBuilder,
     this.semanticLabel,
+    this.enableFadeIn = true,
   });
 
   final String url;
@@ -29,6 +30,7 @@ class ImageWidget extends ConsumerWidget {
   final Alignment alignment;
   final Widget Function(BuildContext, Object, Object?)? errorBuilder;
   final String? semanticLabel;
+  final bool enableFadeIn;
 
   Widget _buildPlaceholder() {
     if (blurHash != null) {
@@ -106,6 +108,8 @@ class ImageWidget extends ConsumerWidget {
           errorWidget: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
           color: Color.fromRGBO(255, 255, 255, opacity),
           colorBlendMode: BlendMode.modulate,
+          fadeInDuration:
+              enableFadeIn ? const Duration(milliseconds: 500) : Duration.zero,
         ),
       );
     }

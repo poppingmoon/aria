@@ -31,6 +31,7 @@ List<InlineSpan> buildMfm(
   TextAlign? textAlign,
   TextOverflow? overflow,
   int? maxLines,
+  bool enableEmojiFadeIn = true,
 }) {
   final brightness = Theme.of(ref.context).brightness;
   final colors = ref.read(misskeyColorsProvider(brightness));
@@ -59,6 +60,7 @@ List<InlineSpan> buildMfm(
           : null,
       fallbackTextStyle: fallbackTextStyle,
       fallbackToImage: false,
+      enableFadeIn: enableEmojiFadeIn,
     ),
     mentionBuilder: (username, host, scale, opacity) {
       final absoluteHost = host ??
@@ -124,6 +126,7 @@ class Mfm extends HookConsumerWidget {
     this.textAlign,
     this.overflow,
     this.maxLines,
+    this.enableEmojiFadeIn = true,
   });
 
   final Account account;
@@ -141,6 +144,7 @@ class Mfm extends HookConsumerWidget {
   final TextAlign? textAlign;
   final TextOverflow? overflow;
   final int? maxLines;
+  final bool enableEmojiFadeIn;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -163,6 +167,7 @@ class Mfm extends HookConsumerWidget {
           textAlign: textAlign,
           overflow: overflow,
           maxLines: maxLines,
+          enableEmojiFadeIn: enableEmojiFadeIn,
         ),
       ),
       [account, text, nodes, simple, style, author, colors, emojis],
