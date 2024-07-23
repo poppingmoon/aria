@@ -209,6 +209,7 @@ class AsUiWidget extends HookConsumerWidget {
           onClickEv: onClickEv != null
               ? (clickEv) => onClickEv.call(value: clickEv)
               : null,
+          enableEmojiFadeIn: false,
         );
       },
       button: (component) {
