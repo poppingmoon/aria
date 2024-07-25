@@ -74,8 +74,9 @@ class NotificationsListView extends HookConsumerWidget {
                 ref
                     .read(notificationsNotifierProvider(account).notifier)
                     .loadMore();
+                isAtBottom.value = true;
               }
-            } else if (isAtBottom.value) {
+            } else {
               isAtBottom.value = false;
             }
           });

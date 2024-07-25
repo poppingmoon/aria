@@ -22,7 +22,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
       final response = await _fetchNotes(sinceId);
       return PaginationState.fromIterable(response);
     } else {
-      return const PaginationState(items: []);
+      return const PaginationState(items: [], isLastLoaded: true);
     }
   }
 

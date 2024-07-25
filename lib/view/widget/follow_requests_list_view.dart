@@ -88,8 +88,9 @@ class FollowRequestsListView extends HookConsumerWidget {
                 ref
                     .read(followRequestsNotifierProvider(account).notifier)
                     .loadMore();
+                isAtBottom.value = true;
               }
-            } else if (isAtBottom.value) {
+            } else {
               isAtBottom.value = false;
             }
           });

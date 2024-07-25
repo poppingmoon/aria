@@ -80,7 +80,7 @@ class DrivePage extends HookConsumerWidget {
                     .loadMore();
                 isAtBottom.value = true;
               }
-            } else if (isAtBottom.value) {
+            } else {
               isAtBottom.value = false;
             }
           });
