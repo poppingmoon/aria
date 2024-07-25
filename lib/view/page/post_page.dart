@@ -18,6 +18,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../widget/mfm_keyboard.dart';
@@ -87,6 +88,12 @@ class PostPage extends HookConsumerWidget {
               .read(accountSettingsNotifierProvider(account).notifier)
               .setHashtags({...hashtags, ...history}.toList()),
         );
+      }
+      if (ref.read(timelineTabSettingsProvider)?.channelId
+          case final channelId?) {
+        ref
+            .read(postNotifierProvider(account, noteId: noteId).notifier)
+            .setChannel(channelId);
       }
       ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
       ref.context.pop();
