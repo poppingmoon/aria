@@ -94,40 +94,43 @@ class TimelineListView extends HookConsumerWidget {
       );
       ref.listen(timelineStreamNotifierProvider(tabSettings), (_, next) {
         next.whenData((note) {
-          ref
-              .read(
-                timelineNotesAfterNoteNotifierProvider(
-                  tabSettings,
-                  sinceId: centerId,
-                ).notifier,
-              )
-              .addNote(note);
-          if (vibrateOnNote) {
-            HapticFeedback.lightImpact();
-          }
-          if (keepAnimation.value) {
-            if (controller.offset < 400.0) {
-              if (tabSettings.id != null) {
-                ref
-                    .read(
-                      timelineLastViewedAtNotifierProvider(tabSettings)
-                          .notifier,
-                    )
-                    .save(note.createdAt);
+          if (centerId == null || isLatestLoaded) {
+            ref
+                .read(
+                  timelineNotesAfterNoteNotifierProvider(
+                    tabSettings,
+                    sinceId: centerId,
+                  ).notifier,
+                )
+                .addNote(note);
+            if (vibrateOnNote) {
+              HapticFeedback.lightImpact();
+            }
+            if (keepAnimation.value) {
+              if (controller.offset < 400.0) {
+                if (tabSettings.id != null) {
+                  ref
+                      .read(
+                        timelineLastViewedAtNotifierProvider(tabSettings)
+                            .notifier,
+                      )
+                      .save(note.createdAt);
+                }
+                Future<void>.delayed(const Duration(milliseconds: 100),
+                    () async {
+                  await controller.scrollToTop();
+                  await Future<void>.delayed(
+                    const Duration(milliseconds: 100),
+                    controller.scrollToTop,
+                  );
+                });
+              } else {
+                keepAnimation.value = false;
+                hasUnread.value = true;
               }
-              Future<void>.delayed(const Duration(milliseconds: 100), () async {
-                await controller.scrollToTop();
-                await Future<void>.delayed(
-                  const Duration(milliseconds: 100),
-                  controller.scrollToTop,
-                );
-              });
             } else {
-              keepAnimation.value = false;
               hasUnread.value = true;
             }
-          } else {
-            hasUnread.value = true;
           }
         });
       });
@@ -146,8 +149,9 @@ class TimelineListView extends HookConsumerWidget {
                       ).notifier,
                     )
                     .loadMore();
+                isAtTop.value = true;
               }
-            } else if (isAtTop.value) {
+            } else {
               isAtTop.value = false;
             }
           }
@@ -161,8 +165,9 @@ class TimelineListView extends HookConsumerWidget {
                     ).notifier,
                   )
                   .loadMore();
+              isAtBottom.value = true;
             }
-          } else if (isAtBottom.value) {
+          } else {
             isAtBottom.value = false;
           }
         }
@@ -192,6 +197,8 @@ class TimelineListView extends HookConsumerWidget {
                 .connect(),
         ]);
       },
+      notificationPredicate: (_) =>
+          nextNotes.valueOrNull?.isLastLoaded ?? false,
       child: Center(
         child: Stack(
           alignment: Alignment.topCenter,

@@ -42,7 +42,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
               loadMore?.call(false);
               isAtBottom.value = true;
             }
-          } else if (isAtBottom.value) {
+          } else {
             isAtBottom.value = false;
           }
         }
