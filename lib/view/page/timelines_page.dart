@@ -15,8 +15,9 @@ import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
-import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
+import '../../provider/timeline_tab_index_notifier_provider.dart';
+import '../../provider/timeline_tab_settings_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../widget/post_form.dart';
 import '../widget/timeline_drawer.dart';
@@ -30,22 +31,8 @@ class TimelinesPage extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final tabs = ref.watch(timelineTabsNotifierProvider);
     final numTabs = tabs.length;
-    final initialIndex = useMemoized(
-      () {
-        int latestIndex = 0;
-        DateTime latestDate = DateTime(0);
-        for (final (index, tabSettings) in tabs.indexed) {
-          final lastViewedAt =
-              ref.read(timelineLastViewedAtNotifierProvider(tabSettings));
-          if (lastViewedAt != null && lastViewedAt.isAfter(latestDate)) {
-            latestIndex = index;
-            latestDate = lastViewedAt;
-          }
-        }
-        return latestIndex;
-      },
-      [],
-    );
+    final tabIndex = ref.watch(timelineTabIndexNotifierProvider);
+    final tabSettings = ref.watch(timelineTabSettingsProvider);
     final showTimelineTabBarAtBottom = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.showTimelineTabBarAtBottom),
@@ -60,11 +47,9 @@ class TimelinesPage extends HookConsumerWidget {
     );
     final controller = useTabController(
       initialLength: numTabs,
-      initialIndex: initialIndex,
+      initialIndex: useMemoized(() => tabIndex),
       keys: [numTabs],
     );
-    final tabIndex = useState(controller.index);
-    final tabSettings = tabs.elementAtOrNull(tabIndex.value);
     final i = tabSettings != null
         ? ref.watch(iNotifierProvider(tabSettings.account)).valueOrNull
         : null;
@@ -73,7 +58,7 @@ class TimelinesPage extends HookConsumerWidget {
       () {
         void callback() {
           if (tabs.isEmpty) return;
-          final previousIndex = tabIndex.value;
+          final previousIndex = tabIndex;
           final nextIndex = controller.index;
           if (previousIndex == nextIndex) return;
           final previousAccount = tabs[previousIndex].account;
@@ -112,7 +97,9 @@ class TimelinesPage extends HookConsumerWidget {
                   .clearChannel();
             }
           }
-          tabIndex.value = nextIndex;
+          ref
+              .read(timelineTabIndexNotifierProvider.notifier)
+              .updateIndex(nextIndex);
         }
 
         if (tabSettings != null) {

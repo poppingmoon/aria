@@ -181,13 +181,7 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void reset() {
-    state = _defaultRequest.copyWith(
-      channelId: state.channelId,
-      localOnly: state.channelId != null ? true : _defaultRequest.localOnly,
-      visibility: state.channelId != null
-          ? NoteVisibility.public
-          : _defaultRequest.visibility,
-    );
+    state = _defaultRequest;
     ref.read(sharedPreferencesProvider).remove(_key);
   }
 

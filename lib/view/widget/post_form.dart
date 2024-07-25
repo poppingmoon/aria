@@ -29,6 +29,7 @@ import '../../provider/api/user_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
+import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
@@ -85,7 +86,7 @@ class PostForm extends HookConsumerWidget {
     WidgetRef ref,
     Account account,
   ) async {
-    final text = ref.read(postNotifierProvider(account, noteId: noteId)).text;
+    final request = ref.read(postNotifierProvider(account, noteId: noteId));
     final attaches =
         ref.read(attachesNotifierProvider(account, noteId: noteId));
     final hasFiles = attaches.isNotEmpty;
@@ -104,7 +105,6 @@ class PostForm extends HookConsumerWidget {
     if (!ref.context.mounted) return;
     if (needsUpload ||
         (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
-      final request = ref.read(postNotifierProvider(account, noteId: noteId));
       final confirmed = await confirmPost(
         ref,
         account,
@@ -122,7 +122,7 @@ class PostForm extends HookConsumerWidget {
     );
     if (!ref.context.mounted) return;
     if (result != null) {
-      if (text != null) {
+      if (request.text case final text?) {
         final nodes = const MfmParser().parse(text);
         final hashtags = nodes
             .extract((node) => node is MfmHashTag)
@@ -135,6 +135,12 @@ class PostForm extends HookConsumerWidget {
               .read(accountSettingsNotifierProvider(account).notifier)
               .setHashtags({...hashtags, ...history}.toList()),
         );
+      }
+      if (ref.read(timelineTabSettingsProvider)?.channelId
+          case final channelId?) {
+        ref
+            .read(postNotifierProvider(account, noteId: noteId).notifier)
+            .setChannel(channelId);
       }
       ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
       ref.context.pop();
