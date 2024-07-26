@@ -60,6 +60,9 @@ class TimelinesPage extends HookConsumerWidget {
           if (tabs.isEmpty) return;
           final previousIndex = tabIndex;
           final nextIndex = controller.index;
+          ref
+              .read(timelineTabIndexNotifierProvider.notifier)
+              .updateIndex(nextIndex);
           if (previousIndex == nextIndex) return;
           final previousAccount = tabs[previousIndex].account;
           final nextTab = tabs[nextIndex];
@@ -97,9 +100,6 @@ class TimelinesPage extends HookConsumerWidget {
                   .clearChannel();
             }
           }
-          ref
-              .read(timelineTabIndexNotifierProvider.notifier)
-              .updateIndex(nextIndex);
         }
 
         if (tabSettings != null) {
