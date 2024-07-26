@@ -407,7 +407,8 @@ class NoteSheet extends ConsumerWidget {
                 ListTile(
                   leading: const Icon(Icons.edit),
                   title: Text(t.misskey.edit),
-                  onTap: () => context.push('/$account/notes/$noteId/edit'),
+                  onTap: () =>
+                      context.push('/$account/notes/${appearNote.id}/edit'),
                 ),
               ListTile(
                 leading: const Icon(Icons.edit_outlined),
