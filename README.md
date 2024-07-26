@@ -5,25 +5,30 @@
 [![CI](https://github.com/poppingmoon/aria/actions/workflows/ci.yml/badge.svg)](https://github.com/poppingmoon/aria/actions/workflows/ci.yml)
 [![Build](https://github.com/poppingmoon/aria/actions/workflows/build.yml/badge.svg)](https://github.com/poppingmoon/aria/actions/workflows/build.yml)
 [![GitHub Release](https://img.shields.io/github/v/release/poppingmoon/aria)](https://github.com/poppingmoon/aria/releases/latest)
-[![F-Droid Version](https://img.shields.io/f-droid/v/com.poppingmoon.aria)
-](https://f-droid.org/packages/com.poppingmoon.aria)
+[![F-Droid Version](https://img.shields.io/f-droid/v/com.poppingmoon.aria)](https://f-droid.org/packages/com.poppingmoon.aria)
 
-A [Misskey](https://github.com/misskey-dev/misskey) client app forked from [Miria](https://github.com/shiosyakeyakini-info/miria).
+A [Misskey](https://github.com/misskey-dev/misskey) client app forked from
+[Miria](https://github.com/shiosyakeyakini-info/miria).
 
 ## Download
 
-[fdroid]: https://f-droid.org/packages/com.poppingmoon.aria
-[release]: https://github.com/poppingmoon/aria/releases/latest
-[testflight]: https://testflight.apple.com/join/mfGCrziz
+| Android                    | iOS                      | Windows                 | macOS                    | Linux                    |
+| -------------------------- | ------------------------ | ----------------------- | ------------------------ | ------------------------ |
+| [Google Play][Google Play] | [App Store][App Store]   | [EXE installer][GitHub] | [App Store][App Store]   | [Snap Store][Snap Store] |
+| [F-Droid][F-Droid]         | [TestFlight][TestFlight] | [ZIP][GitHub]           | [TestFlight][TestFlight] | [TAR][GitHub]            |
+| [APK][GitHub]              | [IPA][GitHub]            |                         | [DMG Installer][GitHub]  |                          |
 
-| Android           | iOS                      | Windows                  | macOS                    | Linux          |
-| ----------------- | ------------------------ | ------------------------ | ------------------------ | -------------- |
-| [F-Droid][fdroid] | [TestFlight][testflight] | [EXE installer][release] | [TestFlight][testflight] | [TAR][release] |
-| [APK][release]    | [IPA][release]           | [ZIP][release]           | [DMG Installer][release] |                |
-
+[App Store]: https://apps.apple.com/app/aria-for-misskey/id6499410880
+[F-Droid]: https://f-droid.org/packages/com.poppingmoon.aria
+[GitHub]: https://github.com/poppingmoon/aria/releases/latest
+[Google Play]: https://play.google.com/store/apps/details?id=com.poppingmoon.aria
+[Snap Store]: https://snapcraft.io/aria
+[TestFlight]: https://testflight.apple.com/join/mfGCrziz
 
 ## Icon
 
 ![aria.png](https://raw.githubusercontent.com/poppingmoon/aria/main/assets/aria.png)
 
-The icon of Aria was created by [@sevenc_nanashi@voskey.icalo.net](https://voskey.icalo.net/@sevenc_nanashi) and is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0).
+The icon of Aria was created by
+[@sevenc_nanashi@voskey.icalo.net](https://voskey.icalo.net/@sevenc_nanashi) and
+is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0).
