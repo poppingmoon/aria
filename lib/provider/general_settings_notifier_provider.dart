@@ -329,6 +329,21 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowHomeFAB(bool showHomeFAB) async {
+    state = state.copyWith(showHomeFAB: showHomeFAB);
+    await _save();
+  }
+
+  Future<void> setShowNotificationsFAB(bool showNotificationsFAB) async {
+    state = state.copyWith(showNotificationsFAB: showNotificationsFAB);
+    await _save();
+  }
+
+  Future<void> setShowShowPostFormFAB(bool showShowPostFormFAB) async {
+    state = state.copyWith(showShowPostFormFAB: showShowPostFormFAB);
+    await _save();
+  }
+
   Future<void> setAlwaysShowTabHeader(bool alwaysShowTabHeader) async {
     state = state.copyWith(alwaysShowTabHeader: alwaysShowTabHeader);
     await _save();

@@ -100,6 +100,27 @@ class AppearancePage extends HookConsumerWidget {
                 .setShowMenuButtonInTabBar(value),
           ),
           SwitchListTile(
+            title: Text(t.aria.showHomeFAB),
+            value: settings.showHomeFAB,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowHomeFAB(value),
+          ),
+          SwitchListTile(
+            title: Text(t.aria.showNotificationsFAB),
+            value: settings.showNotificationsFAB,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowNotificationsFAB(value),
+          ),
+          SwitchListTile(
+            title: Text(t.aria.showShowPostFormFAB),
+            value: settings.showShowPostFormFAB,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowShowPostFormFAB(value),
+          ),
+          SwitchListTile(
             title: Text(t.aria.alwaysShowTabHeader),
             value: settings.alwaysShowTabHeader,
             onChanged: (value) => ref
