@@ -41,6 +41,18 @@ class TimelinesPage extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showMenuButtonInTabBar),
     );
+    final showHomeFAB = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showHomeFAB),
+    );
+    final showNotificationsFAB = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showNotificationsFAB),
+    );
+    final showShowPostFormFAB = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showShowPostFormFAB),
+    );
     final enableHorizontalSwipe = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.enableHorizontalSwipe),
@@ -272,81 +284,89 @@ class TimelinesPage extends HookConsumerWidget {
                                 scaffoldKey.currentState?.openDrawer(),
                             child: const Icon(Icons.menu),
                           ),
-                        FloatingActionButton(
-                          heroTag: const ValueKey(1),
-                          tooltip: t.misskey.home,
-                          foregroundColor: colors.fg,
-                          backgroundColor: colors.panel,
-                          shape: const CircleBorder(),
-                          onPressed: tabSettings != null
-                              ? () => ref
-                                  .read(
-                                    timelineScrollControllerProvider(
-                                      tabSettings,
+                        if (showHomeFAB)
+                          FloatingActionButton(
+                            heroTag: const ValueKey(1),
+                            tooltip: t.misskey.home,
+                            foregroundColor: colors.fg,
+                            backgroundColor: colors.panel,
+                            shape: const CircleBorder(),
+                            onPressed: tabSettings != null
+                                ? () => ref
+                                    .read(
+                                      timelineScrollControllerProvider(
+                                        tabSettings,
+                                      ),
+                                    )
+                                    .scrollToTop()
+                                : null,
+                            child: const Icon(Icons.home),
+                          ),
+                        if (showNotificationsFAB)
+                          FloatingActionButton(
+                            heroTag: const ValueKey(2),
+                            tooltip: t.misskey.notifications,
+                            foregroundColor: colors.fg.withOpacity(
+                              tabSettings != null &&
+                                      !tabSettings.account.isGuest
+                                  ? 1.0
+                                  : 0.5,
+                            ),
+                            backgroundColor: colors.panel.withOpacity(
+                              tabSettings != null &&
+                                      !tabSettings.account.isGuest
+                                  ? 1.0
+                                  : 0.5,
+                            ),
+                            disabledElevation: 0.0,
+                            shape: const CircleBorder(),
+                            onPressed: tabSettings != null &&
+                                    !tabSettings.account.isGuest
+                                ? () => context.push(
+                                      '/${tabSettings.account}/notifications',
+                                    )
+                                : null,
+                            child: Stack(
+                              children: [
+                                const Icon(Icons.notifications),
+                                if (i?.hasUnreadNotification ?? false)
+                                  DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: colors.accent,
                                     ),
-                                  )
-                                  .scrollToTop()
-                              : null,
-                          child: const Icon(Icons.home),
-                        ),
-                        FloatingActionButton(
-                          heroTag: const ValueKey(2),
-                          tooltip: t.misskey.notifications,
-                          foregroundColor: colors.fg.withOpacity(
-                            tabSettings != null && !tabSettings.account.isGuest
-                                ? 1.0
-                                : 0.5,
-                          ),
-                          backgroundColor: colors.panel.withOpacity(
-                            tabSettings != null && !tabSettings.account.isGuest
-                                ? 1.0
-                                : 0.5,
-                          ),
-                          disabledElevation: 0.0,
-                          shape: const CircleBorder(),
-                          onPressed: tabSettings != null &&
-                                  !tabSettings.account.isGuest
-                              ? () => context
-                                  .push('/${tabSettings.account}/notifications')
-                              : null,
-                          child: Stack(
-                            children: [
-                              const Icon(Icons.notifications),
-                              if (i?.hasUnreadNotification ?? false)
-                                DecoratedBox(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: colors.accent,
+                                    child: const SizedBox(
+                                      height: 12.0,
+                                      width: 12.0,
+                                    ),
                                   ),
-                                  child: const SizedBox(
-                                    height: 12.0,
-                                    width: 12.0,
-                                  ),
-                                ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                        FloatingActionButton(
-                          heroTag: const ValueKey(3),
-                          tooltip: t.aria.showPostForm,
-                          foregroundColor: colors.fg.withOpacity(
-                            tabSettings != null && !tabSettings.account.isGuest
-                                ? 1.0
-                                : 0.5,
+                        if (showShowPostFormFAB)
+                          FloatingActionButton(
+                            heroTag: const ValueKey(3),
+                            tooltip: t.aria.showPostForm,
+                            foregroundColor: colors.fg.withOpacity(
+                              tabSettings != null &&
+                                      !tabSettings.account.isGuest
+                                  ? 1.0
+                                  : 0.5,
+                            ),
+                            backgroundColor: colors.panel.withOpacity(
+                              tabSettings != null &&
+                                      !tabSettings.account.isGuest
+                                  ? 1.0
+                                  : 0.5,
+                            ),
+                            disabledElevation: 0.0,
+                            shape: const CircleBorder(),
+                            onPressed: tabSettings != null &&
+                                    !tabSettings.account.isGuest
+                                ? () => showPostForm.value = !showPostForm.value
+                                : null,
+                            child: const Icon(Icons.keyboard),
                           ),
-                          backgroundColor: colors.panel.withOpacity(
-                            tabSettings != null && !tabSettings.account.isGuest
-                                ? 1.0
-                                : 0.5,
-                          ),
-                          disabledElevation: 0.0,
-                          shape: const CircleBorder(),
-                          onPressed: tabSettings != null &&
-                                  !tabSettings.account.isGuest
-                              ? () => showPostForm.value = !showPostForm.value
-                              : null,
-                          child: const Icon(Icons.keyboard),
-                        ),
                         FloatingActionButton(
                           heroTag: const ValueKey(4),
                           tooltip: t.misskey.note,
