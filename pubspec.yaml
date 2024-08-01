@@ -98,7 +98,10 @@ dev_dependencies:
   build_runner: ^2.4.9
   custom_lint: ^0.6.4
   flutter_gen_runner: ^5.6.0
-  flutter_launcher_icons: ^0.13.1
+  flutter_launcher_icons:
+    git:
+      url: https://github.com/fluttercommunity/flutter_launcher_icons
+      ref: 006cb1ed53f969bf11816cde5b16dd520e1ee40e
   flutter_test:
     sdk: flutter
   freezed: ^2.5.2
@@ -203,6 +206,7 @@ flutter_launcher_icons:
   android: true
   adaptive_icon_foreground: "assets/aria_android.png"
   adaptive_icon_background: "#ffffff"
+  adaptive_icon_monochrome: "assets/aria_android_monochrome.png"
   ios: true
   remove_alpha_ios: true
   windows:
