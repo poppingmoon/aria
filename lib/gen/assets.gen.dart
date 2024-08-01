@@ -289,6 +289,8 @@ class Assets {
   static const AssetGenImage aria = AssetGenImage('assets/aria.png');
   static const AssetGenImage ariaAndroid =
       AssetGenImage('assets/aria_android.png');
+  static const AssetGenImage ariaAndroidMonochrome =
+      AssetGenImage('assets/aria_android_monochrome.png');
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
   static const String flower = 'assets/flower.svg';
@@ -296,7 +298,8 @@ class Assets {
   static const $AssetsMisskeyGen misskey = $AssetsMisskeyGen();
 
   /// List of all assets
-  static List<dynamic> get values => [aria, ariaAndroid, bird, cat, flower];
+  static List<dynamic> get values =>
+      [aria, ariaAndroid, ariaAndroidMonochrome, bird, cat, flower];
 }
 
 class AssetGenImage {
