@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../model/id.dart';
 import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
@@ -28,88 +27,6 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(tabSettings.account));
 
-  Future<Iterable<Note>> _fetchNotesFromFanoutTimeline(String sinceId) async {
-    // If we only specify `sinceId`, only notes cached on Redis will be returned.
-    // So here we fetch api repeatedly with both `sinceDate` and `untilDate` to
-    // get notes posted right after the specified note.
-    final now = DateTime.now();
-    int minutes = 1;
-    DateTime sinceDate =
-        Id.parse(sinceId).date.add(const Duration(milliseconds: 1));
-    while (sinceDate.isBefore(now)) {
-      final untilDate = sinceDate.add(Duration(minutes: minutes));
-      final notes = await switch (tabSettings.tabType) {
-        TabType.homeTimeline => _misskey.notes.homeTimeline(
-            NotesTimelineRequest(
-              sinceDate: sinceDate,
-              untilDate: untilDate,
-              limit: 100,
-              withRenotes: tabSettings.withRenotes,
-              withFiles: tabSettings.withFiles,
-            ),
-          ),
-        TabType.localTimeline => _misskey.notes.localTimeline(
-            NotesLocalTimelineRequest(
-              sinceDate: sinceDate,
-              untilDate: untilDate,
-              limit: 100,
-              withRenotes: tabSettings.withRenotes,
-              withReplies: tabSettings.withReplies,
-              withFiles: tabSettings.withFiles,
-            ),
-          ),
-        TabType.hybridTimeline => _misskey.notes.hybridTimeline(
-            NotesHybridTimelineRequest(
-              sinceDate: sinceDate,
-              untilDate: untilDate,
-              limit: 100,
-              withRenotes: tabSettings.withRenotes,
-              withReplies: tabSettings.withReplies,
-              withFiles: tabSettings.withFiles,
-            ),
-          ),
-        TabType.userList => _misskey.notes.userListTimeline(
-            UserListTimelineRequest(
-              listId: tabSettings.listId!,
-              sinceDate: sinceDate,
-              untilDate: untilDate,
-              limit: 100,
-              withRenotes: tabSettings.withRenotes,
-              withFiles: tabSettings.withFiles,
-            ),
-          ),
-        TabType.channel => _misskey.channels.timeline(
-            ChannelsTimelineRequest(
-              channelId: tabSettings.channelId!,
-              sinceDate: sinceDate,
-              untilDate: untilDate,
-              limit: 100,
-            ),
-          ),
-        TabType.user => _misskey.users.notes(
-            UsersNotesRequest(
-              userId: tabSettings.userId!,
-              sinceDate: sinceDate,
-              untilDate: untilDate,
-              limit: 100,
-              withRenotes: tabSettings.withRenotes,
-              withReplies: tabSettings.withReplies,
-              withFiles: tabSettings.withFiles,
-              withChannelNotes: true,
-            ),
-          ),
-        _ => throw Error(),
-      };
-      if (notes.isNotEmpty) {
-        return notes;
-      } else {
-        minutes *= 2;
-        sinceDate = untilDate;
-      }
-    }
-    return [];
-  }
-
   Future<Iterable<Note>> _fetchNotesFromCustomTimeline(String sinceId) async {
     final endpoint = tabSettings.endpoint;
     if (endpoint == null) {
@@ -129,13 +46,29 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
 
   Future<Iterable<Note>> _fetchNotes(String sinceId) async {
     final notes = await switch (tabSettings.tabType) {
-      TabType.homeTimeline ||
-      TabType.localTimeline ||
-      TabType.hybridTimeline ||
-      TabType.userList ||
-      TabType.channel ||
-      TabType.user =>
-        _fetchNotesFromFanoutTimeline(sinceId),
+      TabType.homeTimeline => _misskey.notes.homeTimeline(
+          NotesTimelineRequest(
+            sinceId: sinceId,
+            withRenotes: tabSettings.withRenotes,
+            withFiles: tabSettings.withFiles,
+          ),
+        ),
+      TabType.localTimeline => _misskey.notes.localTimeline(
+          NotesLocalTimelineRequest(
+            sinceId: sinceId,
+            withRenotes: tabSettings.withRenotes,
+            withReplies: tabSettings.withReplies,
+            withFiles: tabSettings.withFiles,
+          ),
+        ),
+      TabType.hybridTimeline => _misskey.notes.hybridTimeline(
+          NotesHybridTimelineRequest(
+            sinceId: sinceId,
+            withRenotes: tabSettings.withRenotes,
+            withReplies: tabSettings.withReplies,
+            withFiles: tabSettings.withFiles,
+          ),
+        ),
       TabType.globalTimeline => _misskey.notes.globalTimeline(
           NotesGlobalTimelineRequest(
             sinceId: sinceId,
@@ -149,9 +82,23 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
             sinceId: sinceId,
           ),
         ),
+      TabType.userList => _misskey.notes.userListTimeline(
+          UserListTimelineRequest(
+            listId: tabSettings.listId!,
+            sinceId: sinceId,
+            withRenotes: tabSettings.withRenotes,
+            withFiles: tabSettings.withFiles,
+          ),
+        ),
       TabType.antenna => _misskey.antennas.notes(
           AntennasNotesRequest(
             antennaId: tabSettings.antennaId!,
+            sinceId: sinceId,
+          ),
+        ),
+      TabType.channel => _misskey.channels.timeline(
+          ChannelsTimelineRequest(
+            channelId: tabSettings.channelId!,
             sinceId: sinceId,
           ),
         ),
@@ -162,6 +109,16 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
           NotesMentionsRequest(
             sinceId: sinceId,
             visibility: NoteVisibility.specified,
+          ),
+        ),
+      TabType.user => _misskey.users.notes(
+          UsersNotesRequest(
+            userId: tabSettings.userId!,
+            sinceId: sinceId,
+            withRenotes: tabSettings.withRenotes,
+            withReplies: tabSettings.withReplies,
+            withFiles: tabSettings.withFiles,
+            withChannelNotes: true,
           ),
         ),
       TabType.notifications => throw UnsupportedError(
