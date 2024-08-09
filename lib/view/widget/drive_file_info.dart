@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
-import 'package:pretty_bytes/pretty_bytes.dart';
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -13,6 +12,7 @@ import '../../util/copy_text.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/navigate.dart';
+import '../../util/pretty_bytes.dart';
 import '../dialog/text_field_dialog.dart';
 import 'media_list.dart';
 import 'time_widget.dart';
@@ -218,25 +218,11 @@ class DriveFileInfo extends ConsumerWidget {
                       child: Text(t.misskey.fileViewer_.size),
                     ),
                     InkWell(
-                      onLongPress: () => copyToClipboard(
-                        context,
-                        prettyBytes(
-                          file.size.toDouble(),
-                          locale:
-                              Localizations.localeOf(context).toLanguageTag(),
-                          binary: true,
-                        ),
-                      ),
+                      onLongPress: () =>
+                          copyToClipboard(context, prettyBytes(file.size)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          prettyBytes(
-                            file.size.toDouble(),
-                            locale:
-                                Localizations.localeOf(context).toLanguageTag(),
-                            binary: true,
-                          ),
-                        ),
+                        child: Text(prettyBytes(file.size.toDouble())),
                       ),
                     ),
                   ],
