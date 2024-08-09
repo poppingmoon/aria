@@ -20,7 +20,9 @@ mixin _$DataSaver {
   bool get avatar => throw _privateConstructorUsedError;
   bool get urlPreview => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DataSaver
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DataSaverCopyWith<DataSaver> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$DataSaverCopyWithImpl<$Res, $Val extends DataSaver>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DataSaver
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -86,6 +90,8 @@ class __$$DataSaverImplCopyWithImpl<$Res>
       _$DataSaverImpl _value, $Res Function(_$DataSaverImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DataSaver
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -142,7 +148,9 @@ class _$DataSaverImpl implements _DataSaver {
   @override
   int get hashCode => Object.hash(runtimeType, media, avatar, urlPreview);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DataSaver
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DataSaverImplCopyWith<_$DataSaverImpl> get copyWith =>
@@ -161,8 +169,11 @@ abstract class _DataSaver implements DataSaver {
   bool get avatar;
   @override
   bool get urlPreview;
+
+  /// Create a copy of DataSaver
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DataSaverImplCopyWith<_$DataSaverImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

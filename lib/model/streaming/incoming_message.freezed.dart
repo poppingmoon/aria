@@ -25,8 +25,12 @@ mixin _$IncomingMessage {
   IncomingMessageType? get type => throw _privateConstructorUsedError;
   Map<String, dynamic> get body => throw _privateConstructorUsedError;
 
+  /// Serializes this IncomingMessage to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of IncomingMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $IncomingMessageCopyWith<IncomingMessage> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +57,8 @@ class _$IncomingMessageCopyWithImpl<$Res, $Val extends IncomingMessage>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of IncomingMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -94,6 +100,8 @@ class __$$IncomingMessageImplCopyWithImpl<$Res>
       _$IncomingMessageImpl _value, $Res Function(_$IncomingMessageImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of IncomingMessage
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -150,12 +158,14 @@ class _$IncomingMessageImpl implements _IncomingMessage {
             const DeepCollectionEquality().equals(other._body, _body));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType, type, const DeepCollectionEquality().hash(_body));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of IncomingMessage
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$IncomingMessageImplCopyWith<_$IncomingMessageImpl> get copyWith =>
@@ -179,13 +189,17 @@ abstract class _IncomingMessage implements IncomingMessage {
   factory _IncomingMessage.fromJson(Map<String, dynamic> json) =
       _$IncomingMessageImpl.fromJson;
 
-  @override // ignore: invalid_annotation_target
+// ignore: invalid_annotation_target
+  @override
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   IncomingMessageType? get type;
   @override
   Map<String, dynamic> get body;
+
+  /// Create a copy of IncomingMessage
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$IncomingMessageImplCopyWith<_$IncomingMessageImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

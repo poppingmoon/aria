@@ -32,8 +32,12 @@ mixin _$AntennaSettings {
   bool? get withFile => throw _privateConstructorUsedError;
   bool? get excludeBots => throw _privateConstructorUsedError;
 
+  /// Serializes this AntennaSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AntennaSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AntennaSettingsCopyWith<AntennaSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -68,6 +72,8 @@ class _$AntennaSettingsCopyWithImpl<$Res, $Val extends AntennaSettings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AntennaSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -162,6 +168,8 @@ class __$$AntennaSettingsImplCopyWithImpl<$Res>
       _$AntennaSettingsImpl _value, $Res Function(_$AntennaSettingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AntennaSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -325,7 +333,7 @@ class _$AntennaSettingsImpl implements _AntennaSettings {
                 other.excludeBots == excludeBots));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -341,7 +349,9 @@ class _$AntennaSettingsImpl implements _AntennaSettings {
       withFile,
       excludeBots);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AntennaSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AntennaSettingsImplCopyWith<_$AntennaSettingsImpl> get copyWith =>
@@ -395,8 +405,11 @@ abstract class _AntennaSettings implements AntennaSettings {
   bool? get withFile;
   @override
   bool? get excludeBots;
+
+  /// Create a copy of AntennaSettings
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AntennaSettingsImplCopyWith<_$AntennaSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

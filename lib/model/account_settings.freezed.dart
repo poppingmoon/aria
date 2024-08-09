@@ -45,8 +45,12 @@ mixin _$AccountSettings {
       throw _privateConstructorUsedError; // PostForm
   List<String> get hashtags => throw _privateConstructorUsedError;
 
+  /// Serializes this AccountSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AccountSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AccountSettingsCopyWith<AccountSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -87,6 +91,8 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AccountSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,6 +223,8 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
       _$AccountSettingsImpl _value, $Res Function(_$AccountSettingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AccountSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -491,7 +499,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
             const DeepCollectionEquality().equals(other._hashtags, _hashtags));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -513,7 +521,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
       const DeepCollectionEquality().hash(_recentlyUsedUsers),
       const DeepCollectionEquality().hash(_hashtags));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AccountSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AccountSettingsImplCopyWith<_$AccountSettingsImpl> get copyWith =>
@@ -551,7 +561,8 @@ abstract class _AccountSettings implements AccountSettings {
   factory _AccountSettings.fromJson(Map<String, dynamic> json) =
       _$AccountSettingsImpl.fromJson;
 
-  @override // Privacy
+// Privacy
+  @override
   bool get keepCw;
   @override
   bool get rememberNoteVisibility;
@@ -564,29 +575,32 @@ abstract class _AccountSettings implements AccountSettings {
   @override
   NoteVisibility get visibility;
   @override
-  bool get localOnly;
-  @override // EmojiPicker
+  bool get localOnly; // EmojiPicker
+  @override
   List<String> get pinnedEmojisForReaction;
   @override
   List<String> get pinnedEmojis;
   @override
-  List<String> get recentlyUsedEmojis;
-  @override // Drive
+  List<String> get recentlyUsedEmojis; // Drive
+  @override
   String? get uploadFolder;
   @override
   bool get keepOriginalUploading;
   @override
-  bool get keepOriginalFilename;
-  @override // Mute
+  bool get keepOriginalFilename; // Mute
+  @override
   List<MuteWord> get mutedWords;
   @override
-  List<MuteWord> get hardMutedWords;
-  @override // UserSelectDialog
-  List<String> get recentlyUsedUsers;
-  @override // PostForm
-  List<String> get hashtags;
+  List<MuteWord> get hardMutedWords; // UserSelectDialog
   @override
-  @JsonKey(ignore: true)
+  List<String> get recentlyUsedUsers; // PostForm
+  @override
+  List<String> get hashtags;
+
+  /// Create a copy of AccountSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AccountSettingsImplCopyWith<_$AccountSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

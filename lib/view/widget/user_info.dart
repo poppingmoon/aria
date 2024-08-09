@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:misskey_dart/misskey_dart.dart' hide Clip;
+import 'package:misskey_dart/misskey_dart.dart' hide Clip, UserBanner;
 
 import '../../extension/user_detailed_extension.dart';
 import '../../i18n/strings.g.dart';

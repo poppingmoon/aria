@@ -23,8 +23,12 @@ mixin _$UrlUploadFinished {
   String? get marker => throw _privateConstructorUsedError;
   DriveFile get file => throw _privateConstructorUsedError;
 
+  /// Serializes this UrlUploadFinished to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of UrlUploadFinished
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $UrlUploadFinishedCopyWith<UrlUploadFinished> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -50,6 +54,8 @@ class _$UrlUploadFinishedCopyWithImpl<$Res, $Val extends UrlUploadFinished>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of UrlUploadFinished
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -68,6 +74,8 @@ class _$UrlUploadFinishedCopyWithImpl<$Res, $Val extends UrlUploadFinished>
     ) as $Val);
   }
 
+  /// Create a copy of UrlUploadFinished
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DriveFileCopyWith<$Res> get file {
@@ -99,6 +107,8 @@ class __$$UrlUploadFinishedImplCopyWithImpl<$Res>
       $Res Function(_$UrlUploadFinishedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of UrlUploadFinished
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -145,11 +155,13 @@ class _$UrlUploadFinishedImpl implements _UrlUploadFinished {
             (identical(other.file, file) || other.file == file));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, marker, file);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of UrlUploadFinished
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$UrlUploadFinishedImplCopyWith<_$UrlUploadFinishedImpl> get copyWith =>
@@ -176,8 +188,11 @@ abstract class _UrlUploadFinished implements UrlUploadFinished {
   String? get marker;
   @override
   DriveFile get file;
+
+  /// Create a copy of UrlUploadFinished
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$UrlUploadFinishedImplCopyWith<_$UrlUploadFinishedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

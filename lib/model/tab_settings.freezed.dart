@@ -40,8 +40,12 @@ mixin _$TabSettings {
   String? get endpoint => throw _privateConstructorUsedError;
   String? get streamingChannel => throw _privateConstructorUsedError;
 
+  /// Serializes this TabSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of TabSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TabSettingsCopyWith<TabSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -86,6 +90,8 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TabSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -189,6 +195,8 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
     ) as $Val);
   }
 
+  /// Create a copy of TabSettings
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AccountCopyWith<$Res> get account {
@@ -239,6 +247,8 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
       _$TabSettingsImpl _value, $Res Function(_$TabSettingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TabSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,7 +469,7 @@ class _$TabSettingsImpl extends _TabSettings {
                 other.streamingChannel == streamingChannel));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -484,7 +494,9 @@ class _$TabSettingsImpl extends _TabSettings {
         streamingChannel
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TabSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TabSettingsImplCopyWith<_$TabSettingsImpl> get copyWith =>
@@ -562,8 +574,11 @@ abstract class _TabSettings extends TabSettings {
   String? get endpoint;
   @override
   String? get streamingChannel;
+
+  /// Create a copy of TabSettings
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TabSettingsImplCopyWith<_$TabSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

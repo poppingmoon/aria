@@ -24,7 +24,9 @@ mixin _$ImageLayer {
   double get angle => throw _privateConstructorUsedError;
   bool get flipX => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageLayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImageLayerCopyWith<ImageLayer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -55,6 +57,8 @@ class _$ImageLayerCopyWithImpl<$Res, $Val extends ImageLayer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImageLayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -125,6 +129,8 @@ class __$$ImageLayerImplCopyWithImpl<$Res>
       _$ImageLayerImpl _value, $Res Function(_$ImageLayerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImageLayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -231,7 +237,9 @@ class _$ImageLayerImpl implements _ImageLayer {
       angle,
       flipX);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageLayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImageLayerImplCopyWith<_$ImageLayerImpl> get copyWith =>
@@ -262,8 +270,11 @@ abstract class _ImageLayer implements ImageLayer {
   double get angle;
   @override
   bool get flipX;
+
+  /// Create a copy of ImageLayer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImageLayerImplCopyWith<_$ImageLayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -278,7 +289,9 @@ mixin _$TextLayer {
   double get angle => throw _privateConstructorUsedError;
   bool get flipX => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TextLayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $TextLayerCopyWith<TextLayer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -308,6 +321,8 @@ class _$TextLayerCopyWithImpl<$Res, $Val extends TextLayer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of TextLayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -378,6 +393,8 @@ class __$$TextLayerImplCopyWithImpl<$Res>
       _$TextLayerImpl _value, $Res Function(_$TextLayerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of TextLayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -477,7 +494,9 @@ class _$TextLayerImpl implements _TextLayer {
   int get hashCode => Object.hash(
       runtimeType, text, color, backgroundColor, offset, scale, angle, flipX);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of TextLayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$TextLayerImplCopyWith<_$TextLayerImpl> get copyWith =>
@@ -508,8 +527,11 @@ abstract class _TextLayer implements TextLayer {
   double get angle;
   @override
   bool get flipX;
+
+  /// Create a copy of TextLayer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$TextLayerImplCopyWith<_$TextLayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -524,7 +546,9 @@ mixin _$DrawLayer {
   double get angle => throw _privateConstructorUsedError;
   bool get flipX => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DrawLayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DrawLayerCopyWith<DrawLayer> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -554,6 +578,8 @@ class _$DrawLayerCopyWithImpl<$Res, $Val extends DrawLayer>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DrawLayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -624,6 +650,8 @@ class __$$DrawLayerImplCopyWithImpl<$Res>
       _$DrawLayerImpl _value, $Res Function(_$DrawLayerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DrawLayer
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -739,7 +767,9 @@ class _$DrawLayerImpl implements _DrawLayer {
       angle,
       flipX);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DrawLayer
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DrawLayerImplCopyWith<_$DrawLayerImpl> get copyWith =>
@@ -770,8 +800,11 @@ abstract class _DrawLayer implements DrawLayer {
   double get angle;
   @override
   bool get flipX;
+
+  /// Create a copy of DrawLayer
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DrawLayerImplCopyWith<_$DrawLayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

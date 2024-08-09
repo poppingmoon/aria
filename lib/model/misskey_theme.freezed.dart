@@ -27,8 +27,12 @@ mixin _$MisskeyTheme {
   String? get base => throw _privateConstructorUsedError;
   Map<String, String> get props => throw _privateConstructorUsedError;
 
+  /// Serializes this MisskeyTheme to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MisskeyTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MisskeyThemeCopyWith<MisskeyTheme> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -58,6 +62,8 @@ class _$MisskeyThemeCopyWithImpl<$Res, $Val extends MisskeyTheme>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MisskeyTheme
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -122,6 +128,8 @@ class __$$MisskeyThemeImplCopyWithImpl<$Res>
       _$MisskeyThemeImpl _value, $Res Function(_$MisskeyThemeImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MisskeyTheme
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -212,12 +220,14 @@ class _$MisskeyThemeImpl implements _MisskeyTheme {
             const DeepCollectionEquality().equals(other._props, _props));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, author, desc, base,
       const DeepCollectionEquality().hash(_props));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MisskeyTheme
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MisskeyThemeImplCopyWith<_$MisskeyThemeImpl> get copyWith =>
@@ -255,8 +265,11 @@ abstract class _MisskeyTheme implements MisskeyTheme {
   String? get base;
   @override
   Map<String, String> get props;
+
+  /// Create a copy of MisskeyTheme
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MisskeyThemeImplCopyWith<_$MisskeyThemeImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
