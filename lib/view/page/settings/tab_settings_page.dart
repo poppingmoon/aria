@@ -161,7 +161,7 @@ class TabSettingsPage extends HookConsumerWidget {
 
     return PopScope(
       canPop: (initialTabSettings ?? TabSettings.dummy()) == tabSettings.value,
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, __) async {
         if (!didPop) {
           final confirmed =
               await confirm(context, message: t.aria.discardChangesConfirm);

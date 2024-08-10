@@ -144,7 +144,7 @@ class PostPage extends HookConsumerWidget {
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return PopScope(
-      onPopInvoked: (_) => ref
+      onPopInvokedWithResult: (_, __) => ref
           .read(postNotifierProvider(account.value, noteId: noteId).notifier)
           .save(),
       child: Scaffold(
