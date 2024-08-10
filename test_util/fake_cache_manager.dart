@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:file/memory.dart';
 import 'package:flutter_cache_manager/file.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
-import 'package:flutter_cache_manager/src/storage/file_system/file_system.dart';
 
 class FakeFileSystem implements FileSystem {
   @override
