@@ -23,7 +23,9 @@ mixin _$LocalPostFile {
   String? get type => throw _privateConstructorUsedError;
   bool get uploading => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocalPostFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $LocalPostFileCopyWith<LocalPostFile> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -53,6 +55,8 @@ class _$LocalPostFileCopyWithImpl<$Res, $Val extends LocalPostFile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of LocalPostFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -117,6 +121,8 @@ class __$$LocalPostFileImplCopyWithImpl<$Res>
       _$LocalPostFileImpl _value, $Res Function(_$LocalPostFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of LocalPostFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -206,7 +212,9 @@ class _$LocalPostFileImpl implements _LocalPostFile {
   int get hashCode => Object.hash(
       runtimeType, file, name, isSensitive, comment, type, uploading);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of LocalPostFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LocalPostFileImplCopyWith<_$LocalPostFileImpl> get copyWith =>
@@ -234,8 +242,11 @@ abstract class _LocalPostFile implements LocalPostFile {
   String? get type;
   @override
   bool get uploading;
+
+  /// Create a copy of LocalPostFile
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LocalPostFileImplCopyWith<_$LocalPostFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -248,7 +259,9 @@ mixin _$DrivePostFile {
   String? get comment => throw _privateConstructorUsedError;
   String? get type => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DrivePostFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $DrivePostFileCopyWith<DrivePostFile> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -279,6 +292,8 @@ class _$DrivePostFileCopyWithImpl<$Res, $Val extends DrivePostFile>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of DrivePostFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -312,6 +327,8 @@ class _$DrivePostFileCopyWithImpl<$Res, $Val extends DrivePostFile>
     ) as $Val);
   }
 
+  /// Create a copy of DrivePostFile
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DriveFileCopyWith<$Res> get file {
@@ -348,6 +365,8 @@ class __$$DrivePostFileImplCopyWithImpl<$Res>
       _$DrivePostFileImpl _value, $Res Function(_$DrivePostFileImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DrivePostFile
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -426,7 +445,9 @@ class _$DrivePostFileImpl implements _DrivePostFile {
   int get hashCode =>
       Object.hash(runtimeType, file, name, isSensitive, comment, type);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DrivePostFile
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$DrivePostFileImplCopyWith<_$DrivePostFileImpl> get copyWith =>
@@ -451,8 +472,11 @@ abstract class _DrivePostFile implements DrivePostFile {
   String? get comment;
   @override
   String? get type;
+
+  /// Create a copy of DrivePostFile
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DrivePostFileImplCopyWith<_$DrivePostFileImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

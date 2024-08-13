@@ -104,8 +104,12 @@ mixin _$GeneralSettings {
   String get lightThemeId => throw _privateConstructorUsedError;
   String get darkThemeId => throw _privateConstructorUsedError;
 
+  /// Serializes this GeneralSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of GeneralSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $GeneralSettingsCopyWith<GeneralSettings> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -202,6 +206,8 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of GeneralSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -663,6 +669,8 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       _$GeneralSettingsImpl _value, $Res Function(_$GeneralSettingsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of GeneralSettings
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1450,7 +1458,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.darkThemeId, darkThemeId) || other.darkThemeId == darkThemeId));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
         runtimeType,
@@ -1528,7 +1536,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         darkThemeId
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of GeneralSettings
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$GeneralSettingsImplCopyWith<_$GeneralSettingsImpl> get copyWith =>
@@ -1622,11 +1632,12 @@ abstract class _GeneralSettings implements GeneralSettings {
   factory _GeneralSettings.fromJson(Map<String, dynamic> json) =
       _$GeneralSettingsImpl.fromJson;
 
-  @override // Locale
+// Locale
 // ignore: invalid_annotation_target
+  @override
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  AppLocale? get locale;
-  @override // Note display
+  AppLocale? get locale; // Note display
+  @override
   bool get collapseRenotes;
   @override
   SensitiveMediaDisplay get sensitive;
@@ -1699,16 +1710,16 @@ abstract class _GeneralSettings implements GeneralSettings {
   Color? get followersNoteBackgroundColor;
   @override
   @ColorConverter()
-  Color? get specifiedNoteBackgroundColor;
-  @override // Emoji picker
+  Color? get specifiedNoteBackgroundColor; // Emoji picker
+  @override
   bool get emojiPickerUseDialog;
   @override
   double get emojiPickerScale;
   @override
   bool get emojiPickerAutofocus;
   @override
-  bool get emojiPickerKeepOpen;
-  @override // Appearance
+  bool get emojiPickerKeepOpen; // Appearance
+  @override
   bool get dataSaverMedia;
   @override
   bool get dataSaverAvatar;
@@ -1743,8 +1754,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get vibrateNote;
   @override
-  bool get vibrateNotification;
-  @override // Behavior
+  bool get vibrateNotification; // Behavior
+  @override
   bool get enableInfiniteScroll;
   @override
   bool get keepScreenOn;
@@ -1765,15 +1776,18 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get confirmBeforeFollow;
   @override
-  LaunchMode get launchMode;
-  @override // Theme
+  LaunchMode get launchMode; // Theme
+  @override
   ThemeMode get themeMode;
   @override
   String get lightThemeId;
   @override
   String get darkThemeId;
+
+  /// Create a copy of GeneralSettings
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$GeneralSettingsImplCopyWith<_$GeneralSettingsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

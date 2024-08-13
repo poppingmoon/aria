@@ -22,8 +22,12 @@ EmojiAdded _$EmojiAddedFromJson(Map<String, dynamic> json) {
 mixin _$EmojiAdded {
   Emoji get emoji => throw _privateConstructorUsedError;
 
+  /// Serializes this EmojiAdded to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EmojiAdded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EmojiAddedCopyWith<EmojiAdded> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -49,6 +53,8 @@ class _$EmojiAddedCopyWithImpl<$Res, $Val extends EmojiAdded>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EmojiAdded
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -62,6 +68,8 @@ class _$EmojiAddedCopyWithImpl<$Res, $Val extends EmojiAdded>
     ) as $Val);
   }
 
+  /// Create a copy of EmojiAdded
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $EmojiCopyWith<$Res> get emoji {
@@ -93,6 +101,8 @@ class __$$EmojiAddedImplCopyWithImpl<$Res>
       _$EmojiAddedImpl _value, $Res Function(_$EmojiAddedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EmojiAdded
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -131,11 +141,13 @@ class _$EmojiAddedImpl implements _EmojiAdded {
             (identical(other.emoji, emoji) || other.emoji == emoji));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, emoji);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EmojiAdded
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmojiAddedImplCopyWith<_$EmojiAddedImpl> get copyWith =>
@@ -157,8 +169,11 @@ abstract class _EmojiAdded implements EmojiAdded {
 
   @override
   Emoji get emoji;
+
+  /// Create a copy of EmojiAdded
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmojiAddedImplCopyWith<_$EmojiAddedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -171,8 +186,12 @@ EmojiUpdated _$EmojiUpdatedFromJson(Map<String, dynamic> json) {
 mixin _$EmojiUpdated {
   List<Emoji> get emojis => throw _privateConstructorUsedError;
 
+  /// Serializes this EmojiUpdated to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EmojiUpdated
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EmojiUpdatedCopyWith<EmojiUpdated> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -196,6 +215,8 @@ class _$EmojiUpdatedCopyWithImpl<$Res, $Val extends EmojiUpdated>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EmojiUpdated
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -229,6 +250,8 @@ class __$$EmojiUpdatedImplCopyWithImpl<$Res>
       _$EmojiUpdatedImpl _value, $Res Function(_$EmojiUpdatedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EmojiUpdated
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -273,12 +296,14 @@ class _$EmojiUpdatedImpl implements _EmojiUpdated {
             const DeepCollectionEquality().equals(other._emojis, _emojis));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_emojis));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EmojiUpdated
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmojiUpdatedImplCopyWith<_$EmojiUpdatedImpl> get copyWith =>
@@ -301,8 +326,11 @@ abstract class _EmojiUpdated implements EmojiUpdated {
 
   @override
   List<Emoji> get emojis;
+
+  /// Create a copy of EmojiUpdated
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmojiUpdatedImplCopyWith<_$EmojiUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -315,8 +343,12 @@ EmojiDeleted _$EmojiDeletedFromJson(Map<String, dynamic> json) {
 mixin _$EmojiDeleted {
   List<Emoji> get emojis => throw _privateConstructorUsedError;
 
+  /// Serializes this EmojiDeleted to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EmojiDeleted
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EmojiDeletedCopyWith<EmojiDeleted> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -340,6 +372,8 @@ class _$EmojiDeletedCopyWithImpl<$Res, $Val extends EmojiDeleted>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EmojiDeleted
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -373,6 +407,8 @@ class __$$EmojiDeletedImplCopyWithImpl<$Res>
       _$EmojiDeletedImpl _value, $Res Function(_$EmojiDeletedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EmojiDeleted
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -417,12 +453,14 @@ class _$EmojiDeletedImpl implements _EmojiDeleted {
             const DeepCollectionEquality().equals(other._emojis, _emojis));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(_emojis));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EmojiDeleted
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmojiDeletedImplCopyWith<_$EmojiDeletedImpl> get copyWith =>
@@ -445,8 +483,11 @@ abstract class _EmojiDeleted implements EmojiDeleted {
 
   @override
   List<Emoji> get emojis;
+
+  /// Create a copy of EmojiDeleted
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmojiDeletedImplCopyWith<_$EmojiDeletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -459,7 +500,9 @@ AnnouncementCreated _$AnnouncementCreatedFromJson(Map<String, dynamic> json) {
 mixin _$AnnouncementCreated {
   AnnouncementsResponse get announcement => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnnouncementCreated
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AnnouncementCreatedCopyWith<AnnouncementCreated> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -485,6 +528,8 @@ class _$AnnouncementCreatedCopyWithImpl<$Res, $Val extends AnnouncementCreated>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AnnouncementCreated
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -498,6 +543,8 @@ class _$AnnouncementCreatedCopyWithImpl<$Res, $Val extends AnnouncementCreated>
     ) as $Val);
   }
 
+  /// Create a copy of AnnouncementCreated
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $AnnouncementsResponseCopyWith<$Res> get announcement {
@@ -529,6 +576,8 @@ class __$$AnnouncementCreatedImplCopyWithImpl<$Res>
       $Res Function(_$AnnouncementCreatedImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AnnouncementCreated
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -568,11 +617,13 @@ class _$AnnouncementCreatedImpl implements _AnnouncementCreated {
                 other.announcement == announcement));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, announcement);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AnnouncementCreated
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AnnouncementCreatedImplCopyWith<_$AnnouncementCreatedImpl> get copyWith =>
@@ -590,8 +641,11 @@ abstract class _AnnouncementCreated implements AnnouncementCreated {
 
   @override
   AnnouncementsResponse get announcement;
+
+  /// Create a copy of AnnouncementCreated
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AnnouncementCreatedImplCopyWith<_$AnnouncementCreatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

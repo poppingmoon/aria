@@ -29,8 +29,12 @@ mixin _$SummalyResult {
   bool? get sensitive => throw _privateConstructorUsedError;
   String? get url => throw _privateConstructorUsedError;
 
+  /// Serializes this SummalyResult to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of SummalyResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $SummalyResultCopyWith<SummalyResult> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -64,6 +68,8 @@ class _$SummalyResultCopyWithImpl<$Res, $Val extends SummalyResult>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of SummalyResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -112,6 +118,8 @@ class _$SummalyResultCopyWithImpl<$Res, $Val extends SummalyResult>
     ) as $Val);
   }
 
+  /// Create a copy of SummalyResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $PlayerCopyWith<$Res> get player {
@@ -151,6 +159,8 @@ class __$$SummalyResultImplCopyWithImpl<$Res>
       _$SummalyResultImpl _value, $Res Function(_$SummalyResultImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of SummalyResult
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -257,12 +267,14 @@ class _$SummalyResultImpl implements _SummalyResult {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, title, icon, description,
       thumbnail, player, sitename, sensitive, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of SummalyResult
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$SummalyResultImplCopyWith<_$SummalyResultImpl> get copyWith =>
@@ -306,8 +318,11 @@ abstract class _SummalyResult implements SummalyResult {
   bool? get sensitive;
   @override
   String? get url;
+
+  /// Create a copy of SummalyResult
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$SummalyResultImplCopyWith<_$SummalyResultImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -323,8 +338,12 @@ mixin _$Player {
   double? get height => throw _privateConstructorUsedError;
   List<String>? get allow => throw _privateConstructorUsedError;
 
+  /// Serializes this Player to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of Player
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PlayerCopyWith<Player> get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -346,6 +365,8 @@ class _$PlayerCopyWithImpl<$Res, $Val extends Player>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of Player
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -393,6 +414,8 @@ class __$$PlayerImplCopyWithImpl<$Res>
       _$PlayerImpl _value, $Res Function(_$PlayerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of Player
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -464,12 +487,14 @@ class _$PlayerImpl implements _Player {
             const DeepCollectionEquality().equals(other._allow, _allow));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url, width, height,
       const DeepCollectionEquality().hash(_allow));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of Player
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PlayerImplCopyWith<_$PlayerImpl> get copyWith =>
@@ -500,8 +525,11 @@ abstract class _Player implements Player {
   double? get height;
   @override
   List<String>? get allow;
+
+  /// Create a copy of Player
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PlayerImplCopyWith<_$PlayerImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

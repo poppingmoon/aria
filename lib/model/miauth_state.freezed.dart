@@ -20,7 +20,9 @@ mixin _$MiAuthState {
   String get sessionId => throw _privateConstructorUsedError;
   Uri get url => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MiAuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MiAuthStateCopyWith<MiAuthState> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -44,6 +46,8 @@ class _$MiAuthStateCopyWithImpl<$Res, $Val extends MiAuthState>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MiAuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -87,6 +91,8 @@ class __$$MiAuthStateImplCopyWithImpl<$Res>
       _$MiAuthStateImpl _value, $Res Function(_$MiAuthStateImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MiAuthState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -143,7 +149,9 @@ class _$MiAuthStateImpl implements _MiAuthState {
   @override
   int get hashCode => Object.hash(runtimeType, host, sessionId, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MiAuthState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MiAuthStateImplCopyWith<_$MiAuthStateImpl> get copyWith =>
@@ -162,8 +170,11 @@ abstract class _MiAuthState implements MiAuthState {
   String get sessionId;
   @override
   Uri get url;
+
+  /// Create a copy of MiAuthState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MiAuthStateImplCopyWith<_$MiAuthStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

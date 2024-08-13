@@ -3,7 +3,7 @@ import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:misskey_dart/misskey_dart.dart' hide Clip;
+import 'package:misskey_dart/misskey_dart.dart' hide Clip, UserBanner;
 
 import '../../../constant/colors.dart';
 import '../../../extension/user_detailed_extension.dart';

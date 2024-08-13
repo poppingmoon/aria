@@ -146,6 +146,9 @@ class _$AsUiComponentCopyWithImpl<$Res, $Val extends AsUiComponent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -165,6 +168,8 @@ class __$$AsUiComponent_RootImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_RootImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -203,7 +208,9 @@ class _$AsUiComponent_RootImpl extends AsUiComponent_Root {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_RootImplCopyWith<_$AsUiComponent_RootImpl> get copyWith =>
@@ -353,7 +360,10 @@ abstract class AsUiComponent_Root extends AsUiComponent {
 
   @override
   AsUiRoot get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_RootImplCopyWith<_$AsUiComponent_RootImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -377,6 +387,8 @@ class __$$AsUiComponent_ContainerImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_ContainerImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -415,7 +427,9 @@ class _$AsUiComponent_ContainerImpl extends AsUiComponent_Container {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ContainerImplCopyWith<_$AsUiComponent_ContainerImpl>
@@ -565,7 +579,10 @@ abstract class AsUiComponent_Container extends AsUiComponent {
 
   @override
   AsUiContainer get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ContainerImplCopyWith<_$AsUiComponent_ContainerImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -587,6 +604,8 @@ class __$$AsUiComponent_TextImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_TextImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -625,7 +644,9 @@ class _$AsUiComponent_TextImpl extends AsUiComponent_Text {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_TextImplCopyWith<_$AsUiComponent_TextImpl> get copyWith =>
@@ -775,7 +796,10 @@ abstract class AsUiComponent_Text extends AsUiComponent {
 
   @override
   AsUiText get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_TextImplCopyWith<_$AsUiComponent_TextImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -797,6 +821,8 @@ class __$$AsUiComponent_MfmImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_MfmImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -835,7 +861,9 @@ class _$AsUiComponent_MfmImpl extends AsUiComponent_Mfm {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_MfmImplCopyWith<_$AsUiComponent_MfmImpl> get copyWith =>
@@ -985,7 +1013,10 @@ abstract class AsUiComponent_Mfm extends AsUiComponent {
 
   @override
   AsUiMfm get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_MfmImplCopyWith<_$AsUiComponent_MfmImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1007,6 +1038,8 @@ class __$$AsUiComponent_ButtonImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_ButtonImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1045,7 +1078,9 @@ class _$AsUiComponent_ButtonImpl extends AsUiComponent_Button {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ButtonImplCopyWith<_$AsUiComponent_ButtonImpl>
@@ -1196,7 +1231,10 @@ abstract class AsUiComponent_Button extends AsUiComponent {
 
   @override
   AsUiButton get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ButtonImplCopyWith<_$AsUiComponent_ButtonImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1219,6 +1257,8 @@ class __$$AsUiComponent_ButtonsImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_ButtonsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1257,7 +1297,9 @@ class _$AsUiComponent_ButtonsImpl extends AsUiComponent_Buttons {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ButtonsImplCopyWith<_$AsUiComponent_ButtonsImpl>
@@ -1407,7 +1449,10 @@ abstract class AsUiComponent_Buttons extends AsUiComponent {
 
   @override
   AsUiButtons get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ButtonsImplCopyWith<_$AsUiComponent_ButtonsImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1431,6 +1476,8 @@ class __$$AsUiComponent_ToggleSwitchImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_ToggleSwitchImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1469,7 +1516,9 @@ class _$AsUiComponent_ToggleSwitchImpl extends AsUiComponent_ToggleSwitch {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ToggleSwitchImplCopyWith<_$AsUiComponent_ToggleSwitchImpl>
@@ -1619,7 +1668,10 @@ abstract class AsUiComponent_ToggleSwitch extends AsUiComponent {
 
   @override
   AsUiSwitch get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ToggleSwitchImplCopyWith<_$AsUiComponent_ToggleSwitchImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1643,6 +1695,8 @@ class __$$AsUiComponent_TextareaImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_TextareaImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1681,7 +1735,9 @@ class _$AsUiComponent_TextareaImpl extends AsUiComponent_Textarea {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_TextareaImplCopyWith<_$AsUiComponent_TextareaImpl>
@@ -1831,7 +1887,10 @@ abstract class AsUiComponent_Textarea extends AsUiComponent {
 
   @override
   AsUiTextarea get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_TextareaImplCopyWith<_$AsUiComponent_TextareaImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -1855,6 +1914,8 @@ class __$$AsUiComponent_TextInputImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_TextInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1893,7 +1954,9 @@ class _$AsUiComponent_TextInputImpl extends AsUiComponent_TextInput {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_TextInputImplCopyWith<_$AsUiComponent_TextInputImpl>
@@ -2043,7 +2106,10 @@ abstract class AsUiComponent_TextInput extends AsUiComponent {
 
   @override
   AsUiTextInput get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_TextInputImplCopyWith<_$AsUiComponent_TextInputImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2067,6 +2133,8 @@ class __$$AsUiComponent_NumberInputImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_NumberInputImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2105,7 +2173,9 @@ class _$AsUiComponent_NumberInputImpl extends AsUiComponent_NumberInput {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_NumberInputImplCopyWith<_$AsUiComponent_NumberInputImpl>
@@ -2255,7 +2325,10 @@ abstract class AsUiComponent_NumberInput extends AsUiComponent {
 
   @override
   AsUiNumberInput get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_NumberInputImplCopyWith<_$AsUiComponent_NumberInputImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2277,6 +2350,8 @@ class __$$AsUiComponent_SelectImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_SelectImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2315,7 +2390,9 @@ class _$AsUiComponent_SelectImpl extends AsUiComponent_Select {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_SelectImplCopyWith<_$AsUiComponent_SelectImpl>
@@ -2466,7 +2543,10 @@ abstract class AsUiComponent_Select extends AsUiComponent {
 
   @override
   AsUiSelect get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_SelectImplCopyWith<_$AsUiComponent_SelectImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2488,6 +2568,8 @@ class __$$AsUiComponent_FolderImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_FolderImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2526,7 +2608,9 @@ class _$AsUiComponent_FolderImpl extends AsUiComponent_Folder {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_FolderImplCopyWith<_$AsUiComponent_FolderImpl>
@@ -2677,7 +2761,10 @@ abstract class AsUiComponent_Folder extends AsUiComponent {
 
   @override
   AsUiFolder get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_FolderImplCopyWith<_$AsUiComponent_FolderImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -2702,6 +2789,8 @@ class __$$AsUiComponent_PostFormButtonImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_PostFormButtonImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2740,7 +2829,9 @@ class _$AsUiComponent_PostFormButtonImpl extends AsUiComponent_PostFormButton {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_PostFormButtonImplCopyWith<
@@ -2891,7 +2982,10 @@ abstract class AsUiComponent_PostFormButton extends AsUiComponent {
 
   @override
   AsUiPostFormButton get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_PostFormButtonImplCopyWith<
           _$AsUiComponent_PostFormButtonImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -2916,6 +3010,8 @@ class __$$AsUiComponent_PostFormImplCopyWithImpl<$Res>
       $Res Function(_$AsUiComponent_PostFormImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -2954,7 +3050,9 @@ class _$AsUiComponent_PostFormImpl extends AsUiComponent_PostForm {
   @override
   int get hashCode => Object.hash(runtimeType, field0);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_PostFormImplCopyWith<_$AsUiComponent_PostFormImpl>
@@ -3104,7 +3202,10 @@ abstract class AsUiComponent_PostForm extends AsUiComponent {
 
   @override
   AsUiPostForm get field0;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AsUiComponent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_PostFormImplCopyWith<_$AsUiComponent_PostFormImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

@@ -19,7 +19,9 @@ mixin _$PaginationState<T> {
   List<T> get items => throw _privateConstructorUsedError;
   bool get isLastLoaded => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaginationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $PaginationStateCopyWith<T, PaginationState<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -43,6 +45,8 @@ class _$PaginationStateCopyWithImpl<T, $Res, $Val extends PaginationState<T>>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of PaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -81,6 +85,8 @@ class __$$PaginationStateImplCopyWithImpl<T, $Res>
       $Res Function(_$PaginationStateImpl<T>) _then)
       : super(_value, _then);
 
+  /// Create a copy of PaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -140,7 +146,9 @@ class _$PaginationStateImpl<T> extends _PaginationState<T> {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_items), isLastLoaded);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of PaginationState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$PaginationStateImplCopyWith<T, _$PaginationStateImpl<T>> get copyWith =>
@@ -158,8 +166,11 @@ abstract class _PaginationState<T> extends PaginationState<T> {
   List<T> get items;
   @override
   bool get isLastLoaded;
+
+  /// Create a copy of PaginationState
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PaginationStateImplCopyWith<T, _$PaginationStateImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

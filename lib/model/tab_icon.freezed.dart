@@ -22,8 +22,12 @@ MaterialIcon _$MaterialIconFromJson(Map<String, dynamic> json) {
 mixin _$MaterialIcon {
   int get codePoint => throw _privateConstructorUsedError;
 
+  /// Serializes this MaterialIcon to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of MaterialIcon
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MaterialIconCopyWith<MaterialIcon> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -47,6 +51,8 @@ class _$MaterialIconCopyWithImpl<$Res, $Val extends MaterialIcon>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MaterialIcon
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -80,6 +86,8 @@ class __$$MaterialIconImplCopyWithImpl<$Res>
       _$MaterialIconImpl _value, $Res Function(_$MaterialIconImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MaterialIcon
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -119,11 +127,13 @@ class _$MaterialIconImpl implements _MaterialIcon {
                 other.codePoint == codePoint));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, codePoint);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MaterialIcon
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MaterialIconImplCopyWith<_$MaterialIconImpl> get copyWith =>
@@ -146,8 +156,11 @@ abstract class _MaterialIcon implements MaterialIcon {
 
   @override
   int get codePoint;
+
+  /// Create a copy of MaterialIcon
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MaterialIconImplCopyWith<_$MaterialIconImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -160,8 +173,12 @@ ImageIcon _$ImageIconFromJson(Map<String, dynamic> json) {
 mixin _$ImageIcon {
   String get url => throw _privateConstructorUsedError;
 
+  /// Serializes this ImageIcon to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of ImageIcon
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $ImageIconCopyWith<ImageIcon> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -184,6 +201,8 @@ class _$ImageIconCopyWithImpl<$Res, $Val extends ImageIcon>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of ImageIcon
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -217,6 +236,8 @@ class __$$ImageIconImplCopyWithImpl<$Res>
       _$ImageIconImpl _value, $Res Function(_$ImageIconImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of ImageIcon
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -255,11 +276,13 @@ class _$ImageIconImpl implements _ImageIcon {
             (identical(other.url, url) || other.url == url));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, url);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of ImageIcon
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$ImageIconImplCopyWith<_$ImageIconImpl> get copyWith =>
@@ -281,8 +304,11 @@ abstract class _ImageIcon implements ImageIcon {
 
   @override
   String get url;
+
+  /// Create a copy of ImageIcon
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ImageIconImplCopyWith<_$ImageIconImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -295,8 +321,12 @@ EmojiIcon _$EmojiIconFromJson(Map<String, dynamic> json) {
 mixin _$EmojiIcon {
   String get emoji => throw _privateConstructorUsedError;
 
+  /// Serializes this EmojiIcon to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of EmojiIcon
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $EmojiIconCopyWith<EmojiIcon> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -319,6 +349,8 @@ class _$EmojiIconCopyWithImpl<$Res, $Val extends EmojiIcon>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of EmojiIcon
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -352,6 +384,8 @@ class __$$EmojiIconImplCopyWithImpl<$Res>
       _$EmojiIconImpl _value, $Res Function(_$EmojiIconImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of EmojiIcon
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -390,11 +424,13 @@ class _$EmojiIconImpl implements _EmojiIcon {
             (identical(other.emoji, emoji) || other.emoji == emoji));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, emoji);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of EmojiIcon
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$EmojiIconImplCopyWith<_$EmojiIconImpl> get copyWith =>
@@ -416,8 +452,11 @@ abstract class _EmojiIcon implements EmojiIcon {
 
   @override
   String get emoji;
+
+  /// Create a copy of EmojiIcon
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$EmojiIconImplCopyWith<_$EmojiIconImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -29,8 +29,12 @@ mixin _$AriaBackup {
   Map<String, Map<String, String>>? get aiscriptStorage =>
       throw _privateConstructorUsedError;
 
+  /// Serializes this AriaBackup to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of AriaBackup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $AriaBackupCopyWith<AriaBackup> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -62,6 +66,8 @@ class _$AriaBackupCopyWithImpl<$Res, $Val extends AriaBackup>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of AriaBackup
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -100,6 +106,8 @@ class _$AriaBackupCopyWithImpl<$Res, $Val extends AriaBackup>
     ) as $Val);
   }
 
+  /// Create a copy of AriaBackup
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $GeneralSettingsCopyWith<$Res>? get generalSettings {
@@ -141,6 +149,8 @@ class __$$AriaBackupImplCopyWithImpl<$Res>
       _$AriaBackupImpl _value, $Res Function(_$AriaBackupImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of AriaBackup
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -273,7 +283,7 @@ class _$AriaBackupImpl implements _AriaBackup {
                 .equals(other._aiscriptStorage, _aiscriptStorage));
   }
 
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -284,7 +294,9 @@ class _$AriaBackupImpl implements _AriaBackup {
       const DeepCollectionEquality().hash(_themes),
       const DeepCollectionEquality().hash(_aiscriptStorage));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of AriaBackup
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AriaBackupImplCopyWith<_$AriaBackupImpl> get copyWith =>
@@ -323,8 +335,11 @@ abstract class _AriaBackup implements AriaBackup {
   List<String>? get themes;
   @override
   Map<String, Map<String, String>>? get aiscriptStorage;
+
+  /// Create a copy of AriaBackup
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AriaBackupImplCopyWith<_$AriaBackupImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

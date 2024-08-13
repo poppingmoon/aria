@@ -32,9 +32,8 @@ class ReactionsViewer extends HookConsumerWidget {
     Map<String, String> emojis,
   ) {
     Future.delayed(const Duration(milliseconds: 50), () {
-      if (!(ModalRoute.of(context)?.isCurrent ?? false)) {
-        return;
-      }
+      if (!context.mounted) return;
+      if (!(ModalRoute.of(context)?.isCurrent ?? false)) return;
       if (key.currentContext?.findRenderObject()
           case final RenderBox renderBox) {
         final offset = renderBox.localToGlobal(Offset.zero);

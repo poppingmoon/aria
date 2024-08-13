@@ -38,7 +38,9 @@ mixin _$MfmConfig {
   TextOverflow? get overflow => throw _privateConstructorUsedError;
   int? get maxLines => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MfmConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MfmConfigCopyWith<MfmConfig> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -81,6 +83,8 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MfmConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -179,6 +183,8 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
     ) as $Val);
   }
 
+  /// Create a copy of MfmConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $MisskeyColorsCopyWith<$Res> get colors {
@@ -228,6 +234,8 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
       _$MfmConfigImpl _value, $Res Function(_$MfmConfigImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MfmConfig
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -456,7 +464,9 @@ class _$MfmConfigImpl implements _MfmConfig {
       overflow,
       maxLines);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MfmConfig
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MfmConfigImplCopyWith<_$MfmConfigImpl> get copyWith =>
@@ -522,8 +532,11 @@ abstract class _MfmConfig implements MfmConfig {
   TextOverflow? get overflow;
   @override
   int? get maxLines;
+
+  /// Create a copy of MfmConfig
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MfmConfigImplCopyWith<_$MfmConfigImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

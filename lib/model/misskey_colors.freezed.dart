@@ -45,7 +45,9 @@ mixin _$MisskeyColors {
   Color get error => throw _privateConstructorUsedError;
   Color get warn => throw _privateConstructorUsedError;
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MisskeyColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   $MisskeyColorsCopyWith<MisskeyColors> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -97,6 +99,8 @@ class _$MisskeyColorsCopyWithImpl<$Res, $Val extends MisskeyColors>
   // ignore: unused_field
   final $Res Function($Val) _then;
 
+  /// Create a copy of MisskeyColors
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -293,6 +297,8 @@ class __$$MisskeyColorsImplCopyWithImpl<$Res>
       _$MisskeyColorsImpl _value, $Res Function(_$MisskeyColorsImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of MisskeyColors
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -616,7 +622,9 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
         warn
       ]);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of MisskeyColors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$MisskeyColorsImplCopyWith<_$MisskeyColorsImpl> get copyWith =>
@@ -710,8 +718,11 @@ abstract class _MisskeyColors implements MisskeyColors {
   Color get error;
   @override
   Color get warn;
+
+  /// Create a copy of MisskeyColors
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(ignore: true)
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$MisskeyColorsImplCopyWith<_$MisskeyColorsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
