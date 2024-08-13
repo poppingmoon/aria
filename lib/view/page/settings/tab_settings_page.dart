@@ -695,6 +695,13 @@ class TabSettingsPage extends HookConsumerWidget {
                     onChanged: (value) => tabSettings.value =
                         tabSettings.value.copyWith(withSensitive: value),
                   ),
+                  if (tabType != TabType.notifications)
+                    SwitchListTile(
+                      title: Text(t.aria.keepTimelinePosition),
+                      value: tabSettings.value.keepPosition,
+                      onChanged: (value) => tabSettings.value =
+                          tabSettings.value.copyWith(keepPosition: value),
+                    ),
                 ],
                 const SizedBox(height: 80.0),
               ],

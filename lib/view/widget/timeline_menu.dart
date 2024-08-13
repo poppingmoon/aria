@@ -12,7 +12,7 @@ import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
 import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
-import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
 
 class TimelineMenu extends ConsumerWidget {
@@ -193,14 +193,16 @@ class TimelineMenu extends ConsumerWidget {
                     onTap: () async {
                       final centerId =
                           ref.read(timelineCenterNotifierProvider(tabSettings));
-                      final lastViewedAt = ref.read(
-                        timelineLastViewedAtNotifierProvider(tabSettings),
+                      final lastViewedNoteId = ref.read(
+                        timelineLastViewedNoteIdNotifierProvider(tabSettings),
                       );
                       final date = await pickDateTime(
                         context,
                         initialDate: centerId != null
                             ? Id.parse(centerId).date
-                            : lastViewedAt,
+                            : lastViewedNoteId != null
+                                ? Id.parse(lastViewedNoteId).date
+                                : null,
                         lastDate: DateTime.now(),
                       );
                       if (date != null) {
@@ -225,11 +227,22 @@ class TimelineMenu extends ConsumerWidget {
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
                   onTap: () {
+                    ref
+                        .read(
+                          timelineCenterNotifierProvider(tabSettings).notifier,
+                        )
+                        .reset();
                     ref.invalidate(webSocketChannelProvider(account));
                     ref.invalidate(
                       timelineNotesAfterNoteNotifierProvider(tabSettings),
                     );
                     ref.invalidate(timelineNotesNotifierProvider(tabSettings));
+                    ref
+                        .read(
+                          timelineLastViewedNoteIdNotifierProvider(tabSettings)
+                              .notifier,
+                        )
+                        .saveFromDate(DateTime.now());
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

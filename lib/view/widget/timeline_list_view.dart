@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../../extension/date_time_extension.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
@@ -16,7 +15,7 @@ import '../../provider/streaming/incoming_message_provider.dart';
 import '../../provider/streaming/timeline_stream_notifier.dart';
 import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
-import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import 'notifications_list_view.dart';
 import 'pagination_bottom_widget.dart';
@@ -43,14 +42,14 @@ class TimelineListView extends HookConsumerWidget {
         controller: controller,
       );
     }
+    final lastViewedNoteId =
+        ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings));
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
     final nextNotes = ref.watch(
       timelineNotesAfterNoteNotifierProvider(tabSettings, sinceId: centerId),
     );
-    final lastViewedAt =
-        ref.watch(timelineLastViewedAtNotifierProvider(tabSettings));
     final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
     final previousNotes = ref
         .watch(timelineNotesNotifierProvider(tabSettings, untilId: centerId));
@@ -108,14 +107,12 @@ class TimelineListView extends HookConsumerWidget {
             }
             if (keepAnimation.value) {
               if (controller.offset < 400.0) {
-                if (tabSettings.id != null) {
-                  ref
-                      .read(
-                        timelineLastViewedAtNotifierProvider(tabSettings)
-                            .notifier,
-                      )
-                      .save(note.createdAt);
-                }
+                ref
+                    .read(
+                      timelineLastViewedNoteIdNotifierProvider(tabSettings)
+                          .notifier,
+                    )
+                    .save(note.id);
                 Future<void>.delayed(const Duration(milliseconds: 100),
                     () async {
                   await controller.scrollToTop();
@@ -179,6 +176,41 @@ class TimelineListView extends HookConsumerWidget {
       },
       [centerId],
     );
+    useEffect(
+      () {
+        void callback() {
+          if (controller.position.extentBefore < 400.0) {
+            final nextNotes = ref
+                .read(
+                  timelineNotesAfterNoteNotifierProvider(
+                    tabSettings,
+                    sinceId: centerId,
+                  ),
+                )
+                .valueOrNull
+                ?.items;
+            final latestNoteId = nextNotes?.firstOrNull?.id;
+            if (latestNoteId != null &&
+                (lastViewedNoteId == null ||
+                    lastViewedNoteId.compareTo(latestNoteId) < 0)) {
+              ref
+                  .read(
+                    timelineLastViewedNoteIdNotifierProvider(
+                      tabSettings,
+                    ).notifier,
+                  )
+                  .save(latestNoteId);
+            }
+          }
+        }
+
+        if (tabSettings.keepPosition) {
+          controller.addListener(callback);
+        }
+        return () => controller.removeListener(callback);
+      },
+      [centerId],
+    );
 
     return RefreshIndicator(
       onRefresh: () async {
@@ -191,6 +223,11 @@ class TimelineListView extends HookConsumerWidget {
             timelineNotesAfterNoteNotifierProvider(tabSettings).future,
           ),
           ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
+          ref
+              .read(
+                timelineLastViewedNoteIdNotifierProvider(tabSettings).notifier,
+              )
+              .saveFromDate(DateTime.now()),
           if (!tabSettings.disableStreaming)
             ref
                 .read(timelineStreamNotifierProvider(tabSettings).notifier)
@@ -210,21 +247,20 @@ class TimelineListView extends HookConsumerWidget {
                 controller: controller,
                 center: centerKey,
                 slivers: [
-                  if (centerId != null)
-                    SliverToBoxAdapter(
-                      child: PaginationBottomWidget(
-                        paginationState: nextNotes,
-                        loadMore: () => ref
-                            .read(
-                              timelineNotesAfterNoteNotifierProvider(
-                                tabSettings,
-                                sinceId: centerId,
-                              ).notifier,
-                            )
-                            .loadMore(skipError: true),
-                        reversed: true,
-                      ),
+                  SliverToBoxAdapter(
+                    child: PaginationBottomWidget(
+                      paginationState: nextNotes,
+                      loadMore: () => ref
+                          .read(
+                            timelineNotesAfterNoteNotifierProvider(
+                              tabSettings,
+                              sinceId: centerId,
+                            ).notifier,
+                          )
+                          .loadMore(skipError: true),
+                      reversed: true,
                     ),
+                  ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) ||
                       (previousNotes.valueOrNull?.items.isNotEmpty ?? false))
                     SliverToBoxAdapter(
@@ -257,19 +293,18 @@ class TimelineListView extends HookConsumerWidget {
                     separatorBuilder: (_, __) => const Divider(height: 1.0),
                     itemCount: nextNotes.valueOrNull?.items.length ?? 0,
                   ),
-                  if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) &&
-                      (previousNotes.valueOrNull?.items.isNotEmpty ?? false))
-                    SliverToBoxAdapter(
-                      child: lastViewedAt?.isBetween(
-                                previousNotes
-                                    .valueOrNull?.items.firstOrNull?.createdAt,
-                                nextNotes
-                                    .valueOrNull?.items.lastOrNull?.createdAt,
-                              ) ??
-                              false
-                          ? _NewNotesDivider(key: lastViewedAtKey)
-                          : const Divider(height: 1.0),
-                    ),
+                  if (previousNotes.valueOrNull?.items.firstOrNull?.id
+                      case final previousNoteId?)
+                    if (nextNotes.valueOrNull?.items.lastOrNull?.id
+                        case final nextNoteId?)
+                      SliverToBoxAdapter(
+                        child: lastViewedNoteId != null &&
+                                previousNoteId.compareTo(lastViewedNoteId) <=
+                                    0 &&
+                                lastViewedNoteId.compareTo(nextNoteId) < 0
+                            ? _NewNotesDivider(key: lastViewedAtKey)
+                            : const Divider(height: 1.0),
+                      ),
                   SliverList.separated(
                     key: centerKey,
                     itemBuilder: (context, index) {
@@ -284,18 +319,25 @@ class TimelineListView extends HookConsumerWidget {
                         ),
                       );
                     },
-                    separatorBuilder: (context, index) =>
-                        lastViewedAt?.isBetween(
-                                  previousNotes.valueOrNull?.items
-                                      .elementAtOrNull(index + 1)
-                                      ?.createdAt,
-                                  previousNotes.valueOrNull?.items
-                                      .elementAtOrNull(index)
-                                      ?.createdAt,
-                                ) ??
-                                false
-                            ? _NewNotesDivider(key: lastViewedAtKey)
-                            : const Divider(height: 0.0),
+                    separatorBuilder: (context, index) {
+                      if (lastViewedNoteId != null) {
+                        if (previousNotes.valueOrNull?.items
+                                .elementAtOrNull(index + 1)
+                                ?.id
+                            case final previousNoteId?
+                            when previousNoteId.compareTo(lastViewedNoteId) <=
+                                0) {
+                          if (previousNotes.valueOrNull?.items
+                                  .elementAtOrNull(index)
+                                  ?.id
+                              case final nextNoteId?
+                              when lastViewedNoteId.compareTo(nextNoteId) < 0) {
+                            return _NewNotesDivider(key: lastViewedAtKey);
+                          }
+                        }
+                      }
+                      return const Divider(height: 0.0);
+                    },
                     itemCount: previousNotes.valueOrNull?.items.length ?? 0,
                   ),
                   if ((nextNotes.valueOrNull?.items.isNotEmpty ?? false) ||

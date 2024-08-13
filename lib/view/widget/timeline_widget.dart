@@ -5,8 +5,10 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
+import '../../extension/scroll_controller_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/id.dart';
 import '../../model/streaming/broadcast.dart' as broadcast;
 import '../../model/streaming/main_event.dart';
 import '../../model/tab_type.dart';
@@ -19,7 +21,8 @@ import '../../provider/streaming/broadcast_provider.dart';
 import '../../provider/streaming/main_stream_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
-import '../../provider/timeline_last_viewed_at_notifier_provider.dart';
+import '../../provider/timeline_last_viewed_at_provider.dart';
+import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../../util/format_datetime.dart';
@@ -47,25 +50,42 @@ class TimelineWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.vibrateNotification),
     );
-    final lastViewedAt = tabSettings.tabType != TabType.notifications
-        ? ref.watch(timelineLastViewedAtNotifierProvider(tabSettings))
+    final lastViewedNoteId = tabSettings.tabType != TabType.notifications
+        ? ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings))
         : null;
+    final lastViewedAt = lastViewedNoteId != null
+        ? ref.watch(timelineLastViewedAtProvider(tabSettings))
+        : null;
+    final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final nextNotes = tabSettings.tabType != TabType.notifications
         ? ref
-            .watch(timelineNotesAfterNoteNotifierProvider(tabSettings))
+            .watch(
+              timelineNotesAfterNoteNotifierProvider(
+                tabSettings,
+                sinceId: centerId,
+              ),
+            )
             .valueOrNull
         : null;
     final previousNotes = tabSettings.tabType != TabType.notifications
-        ? ref.watch(timelineNotesNotifierProvider(tabSettings)).valueOrNull
+        ? ref
+            .watch(
+              timelineNotesNotifierProvider(tabSettings, untilId: centerId),
+            )
+            .valueOrNull
         : null;
     final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
     final scrollController =
         ref.watch(timelineScrollControllerProvider(tabSettings));
     useEffect(
       () {
-        ref
-            .read(timelineLastViewedAtNotifierProvider(tabSettings).notifier)
-            .save(DateTime.now());
+        if (!tabSettings.keepPosition) {
+          ref
+              .read(
+                timelineLastViewedNoteIdNotifierProvider(tabSettings).notifier,
+              )
+              .saveFromDate(DateTime.now());
+        }
         if (!tabSettings.disableSubscribing) {
           final notifier =
               ref.read(noteSubscriptionNotifierProvider(account).notifier);
@@ -199,82 +219,126 @@ class TimelineWidget extends HookConsumerWidget {
                 ),
               ),
             ),
-            if (lastViewedAt != null &&
-                showLastViewedAt.value &&
-                !(nextNotes?.isLastLoaded ?? true) &&
-                (previousNotes?.items.firstOrNull?.createdAt
-                        .isAfter(lastViewedAt) ??
-                    false))
-              Container(
-                color: Theme.of(context).colorScheme.secondaryContainer,
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: InkWell(
-                  onTap: () async {
-                    final currentContext = lastViewedAtKey.currentContext;
-                    if (currentContext != null) {
-                      await Scrollable.ensureVisible(currentContext);
-                    } else {
-                      final centerId =
-                          ref.read(timelineCenterNotifierProvider(tabSettings));
-                      final maxScrollExtent =
-                          scrollController.position.maxScrollExtent;
-                      final notes = ref
-                          .watch(timelineNotesNotifierProvider(tabSettings))
-                          .valueOrNull;
-                      final oldestNote = notes?.items.lastOrNull;
-                      if (centerId == null &&
-                          !(oldestNote?.createdAt.isAfter(lastViewedAt) ??
-                              true) &&
-                          maxScrollExtent < 40000.0) {
-                        double position = 0.0;
-                        scrollController.jumpTo(position);
-                        while (position < maxScrollExtent) {
-                          final currentContext = lastViewedAtKey.currentContext;
-                          if (currentContext != null &&
-                              currentContext.mounted) {
-                            await Scrollable.ensureVisible(currentContext);
-                            break;
-                          }
-                          position += 400.0;
-                          await scrollController.animateTo(
-                            position,
-                            duration: const Duration(milliseconds: 30),
-                            curve: Curves.linear,
-                          );
-                        }
+            if (lastViewedNoteId != null && showLastViewedAt.value)
+              if (previousNotes?.items.firstOrNull?.id
+                  case final previousNoteId?
+                  when lastViewedNoteId.compareTo(previousNoteId) < 0)
+                Container(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: InkWell(
+                    onTap: () async {
+                      final currentContext = lastViewedAtKey.currentContext;
+                      if (currentContext != null) {
+                        await Scrollable.ensureVisible(currentContext);
                       } else {
-                        await ref
-                            .read(
-                              timelineCenterNotifierProvider(tabSettings)
-                                  .notifier,
-                            )
-                            .setCenterFromDate(lastViewedAt);
+                        final centerId = ref
+                            .read(timelineCenterNotifierProvider(tabSettings));
+                        final maxScrollExtent =
+                            scrollController.position.maxScrollExtent;
+                        final notes = ref
+                            .watch(timelineNotesNotifierProvider(tabSettings))
+                            .valueOrNull;
+                        final oldestNote = notes?.items.lastOrNull;
+                        if (centerId == null &&
+                            oldestNote != null &&
+                            oldestNote.id.compareTo(lastViewedNoteId) < 0 &&
+                            maxScrollExtent < 40000.0) {
+                          double position = 0.0;
+                          scrollController.jumpTo(position);
+                          while (position < maxScrollExtent) {
+                            final currentContext =
+                                lastViewedAtKey.currentContext;
+                            if (currentContext != null &&
+                                currentContext.mounted) {
+                              await Scrollable.ensureVisible(currentContext);
+                              break;
+                            }
+                            position += 400.0;
+                            await scrollController.animateTo(
+                              position,
+                              duration: const Duration(milliseconds: 30),
+                              curve: Curves.linear,
+                            );
+                          }
+                        } else {
+                          ref
+                              .read(
+                                timelineCenterNotifierProvider(tabSettings)
+                                    .notifier,
+                              )
+                              .setCenter(lastViewedNoteId);
+                        }
                       }
-                    }
-                    showLastViewedAt.value = false;
-                  },
-                  child: Row(
-                    children: [
-                      const Icon(Icons.history),
-                      const SizedBox(width: 8.0),
-                      Expanded(
-                        child: Text(
-                          t.aria.jumpTo(
-                            x: '${absoluteTime(lastViewedAt)} (${relativeTime(lastViewedAt)})',
+                      showLastViewedAt.value = false;
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.history),
+                        const SizedBox(width: 8.0),
+                        if (lastViewedAt != null)
+                          Expanded(
+                            child: Text(
+                              t.aria.jumpTo(
+                                x: [
+                                  absoluteTime(lastViewedAt),
+                                  ' (',
+                                  relativeTime(lastViewedAt),
+                                  ')',
+                                ].join(),
+                              ),
+                            ),
                           ),
+                        IconButton(
+                          style: IconButton.styleFrom(
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          onPressed: () => showLastViewedAt.value = false,
+                          icon: const Icon(Icons.close),
                         ),
-                      ),
-                      IconButton(
-                        style: IconButton.styleFrom(
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      ],
+                    ),
+                  ),
+                )
+              else if (nextNotes?.items.firstOrNull?.id case final nextNoteId?
+                  when lastViewedNoteId.compareTo(nextNoteId) < 0)
+                Container(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: InkWell(
+                    onTap: () async {
+                      await scrollController.scrollToTop();
+                      showLastViewedAt.value = false;
+                    },
+                    child: Row(
+                      children: [
+                        const Icon(Icons.history),
+                        const SizedBox(width: 8.0),
+                        if (Id.tryParse(nextNoteId)?.date
+                            case final nextNoteDate?)
+                          Expanded(
+                            child: Text(
+                              t.aria.jumpTo(
+                                x: [
+                                  absoluteTime(nextNoteDate),
+                                  ' (',
+                                  relativeTime(nextNoteDate),
+                                  ')',
+                                ].join(),
+                              ),
+                            ),
+                          ),
+                        IconButton(
+                          style: IconButton.styleFrom(
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          onPressed: () => showLastViewedAt.value = false,
+                          icon: const Icon(Icons.close),
                         ),
-                        onPressed: () => showLastViewedAt.value = false,
-                        icon: const Icon(Icons.close),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
             Expanded(
               child: TimelineListView(
                 tabSettings: tabSettings,

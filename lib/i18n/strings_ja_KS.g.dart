@@ -103,6 +103,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get invalidListFormat => 'リストの形式が間違ってるみたいや';
 	@override String jumpTo({required Object x}) => '${x}にジャンプ';
 	@override String get keepOpen => '開けたまんまにする';
+	@override String get keepTimelinePosition => 'タイムラインの位置を覚えとく';
 	@override String get lineHeight => '行間';
 	@override String get loginWithAccessToken => 'アクセストークンでログイン';
 	@override String get margin => '余白';

@@ -22,6 +22,7 @@ class TabSettings with _$TabSettings {
     @Default(true) bool withSelfRenotes,
     @Default(false) bool withFiles,
     @Default(true) bool withSensitive,
+    @Default(false) bool keepPosition,
     String? roleId,
     String? channelId,
     String? listId,

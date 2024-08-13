@@ -22,6 +22,7 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
       withSelfRenotes: json['withSelfRenotes'] as bool? ?? true,
       withFiles: json['withFiles'] as bool? ?? false,
       withSensitive: json['withSensitive'] as bool? ?? true,
+      keepPosition: json['keepPosition'] as bool? ?? false,
       roleId: json['roleId'] as String?,
       channelId: json['channelId'] as String?,
       listId: json['listId'] as String?,
@@ -52,6 +53,7 @@ Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
   val['withSelfRenotes'] = instance.withSelfRenotes;
   val['withFiles'] = instance.withFiles;
   val['withSensitive'] = instance.withSensitive;
+  val['keepPosition'] = instance.keepPosition;
   writeNotNull('roleId', instance.roleId);
   writeNotNull('channelId', instance.channelId);
   writeNotNull('listId', instance.listId);

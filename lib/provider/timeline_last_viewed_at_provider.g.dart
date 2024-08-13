@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'timeline_center_notifier_provider.dart';
+part of 'timeline_last_viewed_at_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$timelineCenterNotifierHash() =>
-    r'8591d2acf197213bf5abdefe739f1abf3f449d22';
+String _$timelineLastViewedAtHash() =>
+    r'bf9ce2df14ff7da0ae2576ae69dcf44a9c3f6ac3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,36 +30,27 @@ class _SystemHash {
   }
 }
 
-abstract class _$TimelineCenterNotifier
-    extends BuildlessAutoDisposeNotifier<String?> {
-  late final TabSettings tabSettings;
+/// See also [timelineLastViewedAt].
+@ProviderFor(timelineLastViewedAt)
+const timelineLastViewedAtProvider = TimelineLastViewedAtFamily();
 
-  String? build(
-    TabSettings tabSettings,
-  );
-}
+/// See also [timelineLastViewedAt].
+class TimelineLastViewedAtFamily extends Family<DateTime?> {
+  /// See also [timelineLastViewedAt].
+  const TimelineLastViewedAtFamily();
 
-/// See also [TimelineCenterNotifier].
-@ProviderFor(TimelineCenterNotifier)
-const timelineCenterNotifierProvider = TimelineCenterNotifierFamily();
-
-/// See also [TimelineCenterNotifier].
-class TimelineCenterNotifierFamily extends Family<String?> {
-  /// See also [TimelineCenterNotifier].
-  const TimelineCenterNotifierFamily();
-
-  /// See also [TimelineCenterNotifier].
-  TimelineCenterNotifierProvider call(
+  /// See also [timelineLastViewedAt].
+  TimelineLastViewedAtProvider call(
     TabSettings tabSettings,
   ) {
-    return TimelineCenterNotifierProvider(
+    return TimelineLastViewedAtProvider(
       tabSettings,
     );
   }
 
   @override
-  TimelineCenterNotifierProvider getProviderOverride(
-    covariant TimelineCenterNotifierProvider provider,
+  TimelineLastViewedAtProvider getProviderOverride(
+    covariant TimelineLastViewedAtProvider provider,
   ) {
     return call(
       provider.tabSettings,
@@ -78,30 +69,32 @@ class TimelineCenterNotifierFamily extends Family<String?> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'timelineCenterNotifierProvider';
+  String? get name => r'timelineLastViewedAtProvider';
 }
 
-/// See also [TimelineCenterNotifier].
-class TimelineCenterNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<TimelineCenterNotifier, String?> {
-  /// See also [TimelineCenterNotifier].
-  TimelineCenterNotifierProvider(
+/// See also [timelineLastViewedAt].
+class TimelineLastViewedAtProvider extends AutoDisposeProvider<DateTime?> {
+  /// See also [timelineLastViewedAt].
+  TimelineLastViewedAtProvider(
     TabSettings tabSettings,
   ) : this._internal(
-          () => TimelineCenterNotifier()..tabSettings = tabSettings,
-          from: timelineCenterNotifierProvider,
-          name: r'timelineCenterNotifierProvider',
+          (ref) => timelineLastViewedAt(
+            ref as TimelineLastViewedAtRef,
+            tabSettings,
+          ),
+          from: timelineLastViewedAtProvider,
+          name: r'timelineLastViewedAtProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$timelineCenterNotifierHash,
-          dependencies: TimelineCenterNotifierFamily._dependencies,
+                  : _$timelineLastViewedAtHash,
+          dependencies: TimelineLastViewedAtFamily._dependencies,
           allTransitiveDependencies:
-              TimelineCenterNotifierFamily._allTransitiveDependencies,
+              TimelineLastViewedAtFamily._allTransitiveDependencies,
           tabSettings: tabSettings,
         );
 
-  TimelineCenterNotifierProvider._internal(
+  TimelineLastViewedAtProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -114,20 +107,13 @@ class TimelineCenterNotifierProvider
   final TabSettings tabSettings;
 
   @override
-  String? runNotifierBuild(
-    covariant TimelineCenterNotifier notifier,
+  Override overrideWith(
+    DateTime? Function(TimelineLastViewedAtRef provider) create,
   ) {
-    return notifier.build(
-      tabSettings,
-    );
-  }
-
-  @override
-  Override overrideWith(TimelineCenterNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: TimelineCenterNotifierProvider._internal(
-        () => create()..tabSettings = tabSettings,
+      override: TimelineLastViewedAtProvider._internal(
+        (ref) => create(ref as TimelineLastViewedAtRef),
         from: from,
         name: null,
         dependencies: null,
@@ -139,14 +125,13 @@ class TimelineCenterNotifierProvider
   }
 
   @override
-  AutoDisposeNotifierProviderElement<TimelineCenterNotifier, String?>
-      createElement() {
-    return _TimelineCenterNotifierProviderElement(this);
+  AutoDisposeProviderElement<DateTime?> createElement() {
+    return _TimelineLastViewedAtProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is TimelineCenterNotifierProvider &&
+    return other is TimelineLastViewedAtProvider &&
         other.tabSettings == tabSettings;
   }
 
@@ -159,19 +144,18 @@ class TimelineCenterNotifierProvider
   }
 }
 
-mixin TimelineCenterNotifierRef on AutoDisposeNotifierProviderRef<String?> {
+mixin TimelineLastViewedAtRef on AutoDisposeProviderRef<DateTime?> {
   /// The parameter `tabSettings` of this provider.
   TabSettings get tabSettings;
 }
 
-class _TimelineCenterNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<TimelineCenterNotifier, String?>
-    with TimelineCenterNotifierRef {
-  _TimelineCenterNotifierProviderElement(super.provider);
+class _TimelineLastViewedAtProviderElement
+    extends AutoDisposeProviderElement<DateTime?> with TimelineLastViewedAtRef {
+  _TimelineLastViewedAtProviderElement(super.provider);
 
   @override
   TabSettings get tabSettings =>
-      (origin as TimelineCenterNotifierProvider).tabSettings;
+      (origin as TimelineLastViewedAtProvider).tabSettings;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
