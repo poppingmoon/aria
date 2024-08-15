@@ -49,10 +49,10 @@ class ClipDialog extends HookConsumerWidget {
                       if (i?.policies
                           case UserPolicies(:final noteEachClipsLimit?)) ...[
                         ' / ',
-                        NumberFormat().format(noteEachClipsLimit.toInt()),
+                        NumberFormat().format(noteEachClipsLimit),
                         ' (',
                         t.misskey.remainingN(
-                          n: noteEachClipsLimit.toInt() - clip.notesCount!,
+                          n: noteEachClipsLimit - clip.notesCount!,
                         ),
                         ')',
                       ],

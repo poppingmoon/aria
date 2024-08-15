@@ -40,7 +40,7 @@ class ListDialog extends HookConsumerWidget {
                     if (i?.policies
                         case UserPolicies(:final userEachUserListsLimit?)) ...[
                       ' / ',
-                      NumberFormat().format(userEachUserListsLimit.toInt()),
+                      NumberFormat().format(userEachUserListsLimit),
                     ],
                   ].join(),
                 ),
@@ -49,7 +49,7 @@ class ListDialog extends HookConsumerWidget {
                   ' (',
                   t.misskey.remainingN(
                     n: NumberFormat().format(
-                      userEachUserListsLimit.toInt() - list.userIds.length,
+                      userEachUserListsLimit - list.userIds.length,
                     ),
                   ),
                   ')',
