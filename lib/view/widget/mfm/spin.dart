@@ -54,7 +54,7 @@ class Spin extends HookWidget {
       return Transform(
         transform: Matrix4.identity()
           ..setEntry(3, 2, 0.008)
-          ..rotateX(angle),
+          ..rotateX(-angle),
         alignment: Alignment.center,
         child: child,
       );
@@ -62,7 +62,7 @@ class Spin extends HookWidget {
       return Transform(
         transform: Matrix4.identity()
           ..setEntry(3, 2, 0.008)
-          ..rotateY(angle),
+          ..rotateY(-angle),
         alignment: Alignment.center,
         child: child,
       );
