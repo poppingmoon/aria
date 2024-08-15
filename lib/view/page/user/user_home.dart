@@ -23,12 +23,14 @@ import '../../../util/punycode.dart';
 import '../../dialog/image_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
+import '../../widget/image_widget.dart';
 import '../../widget/mfm.dart';
 import '../../widget/note_widget.dart';
 import '../../widget/role_chip.dart';
 import '../../widget/shake_widget.dart';
 import '../../widget/skeb_status_widget.dart';
 import '../../widget/time_widget.dart';
+import '../../widget/url_sheet.dart';
 import '../../widget/url_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_banner.dart';
@@ -401,6 +403,61 @@ class _UserHome extends ConsumerWidget {
                             ),
                     ),
                   ),
+                  if (user.mutualLinkSections case final mutualLinkSections?
+                      when mutualLinkSections.isNotEmpty) ...[
+                    ColoredBox(
+                      color: colors.panel,
+                      child: const Divider(),
+                    ),
+                    for (final section in mutualLinkSections) ...[
+                      if (section.name case final name?)
+                        Container(
+                          width: double.infinity,
+                          color: colors.panel,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(name),
+                          ),
+                        ),
+                      Material(
+                        color: colors.panel,
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(8.0),
+                          child: Wrap(
+                            alignment: WrapAlignment.spaceEvenly,
+                            spacing: 8.0,
+                            runSpacing: 8.0,
+                            children: section.mutualLinks
+                                .map(
+                                  (link) => InkWell(
+                                    onTap: () =>
+                                        launchUrl(ref, Uri.parse(link.url)),
+                                    onLongPress: () =>
+                                        showModalBottomSheet<void>(
+                                      context: context,
+                                      builder: (context) =>
+                                          UrlSheet(url: link.url),
+                                    ),
+                                    child: link.imgSrc != null
+                                        ? ImageWidget(
+                                            url: link.imgSrc!,
+                                            width: 200.0,
+                                            height: 40.0,
+                                            semanticLabel: link.description,
+                                          )
+                                        : const SizedBox(
+                                            width: 200.0,
+                                            height: 40.0,
+                                          ),
+                                  ),
+                                )
+                                .toList(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ],
                   ColoredBox(
                     color: colors.panel,
                     child: const Divider(),
