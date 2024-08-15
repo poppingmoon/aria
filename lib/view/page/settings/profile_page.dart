@@ -6,7 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:misskey_dart/misskey_dart.dart' hide Clip, UserBanner;
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../../constant/langmap.dart';
 import '../../../constant/shortcuts.dart';

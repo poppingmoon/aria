@@ -24,7 +24,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final avatarDecorations = ref.watch(avatarDecorationsProvider(account));
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final maxAvatarDecorations = i?.policies?.avatarDecorationLimit?.toInt();
+    final maxAvatarDecorations = i?.policies?.avatarDecorationLimit;
     final remaining =
         (maxAvatarDecorations ?? 0) - (i?.avatarDecorations.length ?? 0);
     final colors =
@@ -45,8 +45,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: Text(
                         '${t.misskey.profile_.avatarDecorationMax(
-                          max: i?.policies?.avatarDecorationLimit?.toInt() ??
-                              '?',
+                          max: i?.policies?.avatarDecorationLimit ?? '?',
                         )} (${t.misskey.remainingN(n: remaining)})',
                         style: TextStyle(color: colors.infoFg),
                       ),

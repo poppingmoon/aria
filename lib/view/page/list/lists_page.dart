@@ -63,7 +63,7 @@ class ListsPage extends ConsumerWidget {
                                             :final userEachUserListsLimit?,
                                           ))
                                         ' / ${NumberFormat().format(
-                                          userEachUserListsLimit.toInt(),
+                                          userEachUserListsLimit,
                                         )}',
                                     ].join(),
                                   ),
