@@ -127,7 +127,7 @@ class NoteSheet extends ConsumerWidget {
               detailed: true,
             ),
             onTap: !disableHeader
-                ? () => context.push('/$account/notes/$noteId')
+                ? () => context.push('/$account/notes/${appearNote.id}')
                 : null,
           ),
           const Divider(height: 0.0),
@@ -200,7 +200,7 @@ class NoteSheet extends ConsumerWidget {
                 }
                 if (!context.mounted) return;
                 if (destination.host == account.host) {
-                  await context.push('/$destination/notes/$noteId');
+                  await context.push('/$destination/notes/${appearNote.id}');
                   return;
                 }
                 if (destination.host == appearNote.user.host &&
@@ -382,12 +382,14 @@ class NoteSheet extends ConsumerWidget {
                       context,
                       ref
                           .read(iNotifierProvider(account).notifier)
-                          .unpin(noteId),
+                          .unpin(appearNote.id),
                     );
                   } else {
                     await futureWithDialog(
                       context,
-                      ref.read(iNotifierProvider(account).notifier).pin(noteId),
+                      ref
+                          .read(iNotifierProvider(account).notifier)
+                          .pin(appearNote.id),
                     );
                   }
                 },
