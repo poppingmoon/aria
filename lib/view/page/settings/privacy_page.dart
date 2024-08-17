@@ -232,15 +232,17 @@ class PrivacyPage extends ConsumerWidget {
               final result = await showRadioDialog(
                 context,
                 title: Text(t.misskey.reactionAcceptance),
-                values: [null, ...ReactionAcceptance.values],
-                initialValue: settings.reactionAcceptance,
+                values: [null, ...ReactionAcceptance.values]
+                    .map((value) => (value,))
+                    .toList(),
+                initialValue: (settings.reactionAcceptance,),
                 itemBuilder: (context, acceptance) =>
-                    ReactionAcceptanceWidget(acceptance: acceptance),
+                    ReactionAcceptanceWidget(acceptance: acceptance.$1),
               );
               if (result != null) {
                 await ref
                     .read(accountSettingsNotifierProvider(account).notifier)
-                    .setReactionAcceptance(result);
+                    .setReactionAcceptance(result.$1);
               }
             },
           ),
