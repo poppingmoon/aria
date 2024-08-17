@@ -7,7 +7,7 @@ part of 'timeline_tab_index_notifier_provider.dart';
 // **************************************************************************
 
 String _$timelineTabIndexNotifierHash() =>
-    r'94badda4322835febadcd8dba8b93f084b5dd09b';
+    r'1e1beb3b4ea3b037c6a4a3e7772e958a5e6f7dfa';
 
 /// See also [TimelineTabIndexNotifier].
 @ProviderFor(TimelineTabIndexNotifier)

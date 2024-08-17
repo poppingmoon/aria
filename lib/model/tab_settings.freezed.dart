@@ -32,6 +32,7 @@ mixin _$TabSettings {
   bool get withSelfRenotes => throw _privateConstructorUsedError;
   bool get withFiles => throw _privateConstructorUsedError;
   bool get withSensitive => throw _privateConstructorUsedError;
+  bool get keepPosition => throw _privateConstructorUsedError;
   String? get roleId => throw _privateConstructorUsedError;
   String? get channelId => throw _privateConstructorUsedError;
   String? get listId => throw _privateConstructorUsedError;
@@ -69,6 +70,7 @@ abstract class $TabSettingsCopyWith<$Res> {
       bool withSelfRenotes,
       bool withFiles,
       bool withSensitive,
+      bool keepPosition,
       String? roleId,
       String? channelId,
       String? listId,
@@ -107,6 +109,7 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
     Object? withSelfRenotes = null,
     Object? withFiles = null,
     Object? withSensitive = null,
+    Object? keepPosition = null,
     Object? roleId = freezed,
     Object? channelId = freezed,
     Object? listId = freezed,
@@ -163,6 +166,10 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
       withSensitive: null == withSensitive
           ? _value.withSensitive
           : withSensitive // ignore: cast_nullable_to_non_nullable
+              as bool,
+      keepPosition: null == keepPosition
+          ? _value.keepPosition
+          : keepPosition // ignore: cast_nullable_to_non_nullable
               as bool,
       roleId: freezed == roleId
           ? _value.roleId
@@ -227,6 +234,7 @@ abstract class _$$TabSettingsImplCopyWith<$Res>
       bool withSelfRenotes,
       bool withFiles,
       bool withSensitive,
+      bool keepPosition,
       String? roleId,
       String? channelId,
       String? listId,
@@ -264,6 +272,7 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
     Object? withSelfRenotes = null,
     Object? withFiles = null,
     Object? withSensitive = null,
+    Object? keepPosition = null,
     Object? roleId = freezed,
     Object? channelId = freezed,
     Object? listId = freezed,
@@ -321,6 +330,10 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
           ? _value.withSensitive
           : withSensitive // ignore: cast_nullable_to_non_nullable
               as bool,
+      keepPosition: null == keepPosition
+          ? _value.keepPosition
+          : keepPosition // ignore: cast_nullable_to_non_nullable
+              as bool,
       roleId: freezed == roleId
           ? _value.roleId
           : roleId // ignore: cast_nullable_to_non_nullable
@@ -369,6 +382,7 @@ class _$TabSettingsImpl extends _TabSettings {
       this.withSelfRenotes = true,
       this.withFiles = false,
       this.withSensitive = true,
+      this.keepPosition = false,
       this.roleId,
       this.channelId,
       this.listId,
@@ -413,6 +427,9 @@ class _$TabSettingsImpl extends _TabSettings {
   @JsonKey()
   final bool withSensitive;
   @override
+  @JsonKey()
+  final bool keepPosition;
+  @override
   final String? roleId;
   @override
   final String? channelId;
@@ -429,7 +446,7 @@ class _$TabSettingsImpl extends _TabSettings {
 
   @override
   String toString() {
-    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel)';
+    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, keepPosition: $keepPosition, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel)';
   }
 
   @override
@@ -456,6 +473,8 @@ class _$TabSettingsImpl extends _TabSettings {
                 other.withFiles == withFiles) &&
             (identical(other.withSensitive, withSensitive) ||
                 other.withSensitive == withSensitive) &&
+            (identical(other.keepPosition, keepPosition) ||
+                other.keepPosition == keepPosition) &&
             (identical(other.roleId, roleId) || other.roleId == roleId) &&
             (identical(other.channelId, channelId) ||
                 other.channelId == channelId) &&
@@ -485,6 +504,7 @@ class _$TabSettingsImpl extends _TabSettings {
         withSelfRenotes,
         withFiles,
         withSensitive,
+        keepPosition,
         roleId,
         channelId,
         listId,
@@ -524,6 +544,7 @@ abstract class _TabSettings extends TabSettings {
       final bool withSelfRenotes,
       final bool withFiles,
       final bool withSensitive,
+      final bool keepPosition,
       final String? roleId,
       final String? channelId,
       final String? listId,
@@ -560,6 +581,8 @@ abstract class _TabSettings extends TabSettings {
   bool get withFiles;
   @override
   bool get withSensitive;
+  @override
+  bool get keepPosition;
   @override
   String? get roleId;
   @override

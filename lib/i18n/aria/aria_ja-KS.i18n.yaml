@@ -44,6 +44,7 @@ importConfirm: "設定をインポートしてええか？今の設定は上書�
 invalidListFormat: "リストの形式が間違ってるみたいや"
 jumpTo: "{x}にジャンプ"
 keepOpen: "開けたまんまにする"
+keepTimelinePosition: "タイムラインの位置を覚えとく"
 lineHeight: "行間"
 loginWithAccessToken: "アクセストークンでログイン"
 margin: "余白"
