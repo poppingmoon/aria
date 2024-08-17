@@ -91,6 +91,14 @@ class Id {
     };
   }
 
+  static Id? tryParse(String str) {
+    try {
+      return parse(str);
+    } catch (_) {
+      return null;
+    }
+  }
+
   @override
   String toString() {
     final epochMillis = date.millisecondsSinceEpoch;

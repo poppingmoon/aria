@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../../model/id.dart';
 import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
@@ -106,6 +107,9 @@ class TimelineNotesNotifier extends _$TimelineNotesNotifier {
             antennaId: tabSettings.antennaId!,
             untilId: untilId,
             limit: limit,
+            pagination: untilId != null
+                ? Id.tryParse(untilId)?.date.millisecondsSinceEpoch.toString()
+                : null,
           ),
         ),
       TabType.channel => _misskey.channels.timeline(
