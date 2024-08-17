@@ -247,7 +247,7 @@ class NoteFooter extends ConsumerWidget {
                                 final confirmed = await confirmReaction(
                                   context,
                                   account: account,
-                                  emoji: '❤️',
+                                  emoji: '❤',
                                   note: appearNote,
                                 );
                                 if (!confirmed) return;
@@ -259,7 +259,7 @@ class NoteFooter extends ConsumerWidget {
                                     .read(
                                       notesNotifierProvider(account).notifier,
                                     )
-                                    .react(appearNote.id, '❤️'),
+                                    .react(appearNote.id, '❤'),
                                 overlay: false,
                               );
                             }
@@ -276,7 +276,7 @@ class NoteFooter extends ConsumerWidget {
                                 builder: (context) => ReactionUsersSheet(
                                   account: account,
                                   noteId: appearNote.id,
-                                  reaction: '❤️',
+                                  reaction: '❤',
                                 ),
                                 isScrollControlled: true,
                               )
@@ -293,7 +293,7 @@ class NoteFooter extends ConsumerWidget {
                                 if (appearNote.id.isEmpty) return;
                                 final emoji = appearNote.reactionAcceptance ==
                                         ReactionAcceptance.likeOnly
-                                    ? '❤️'
+                                    ? '❤'
                                     : await pickEmoji(
                                         ref,
                                         account,
@@ -362,7 +362,7 @@ class NoteFooter extends ConsumerWidget {
                                 builder: (context) => ReactionUsersSheet(
                                   account: account,
                                   noteId: appearNote.id,
-                                  reaction: '❤️',
+                                  reaction: '❤',
                                 ),
                                 isScrollControlled: true,
                               );
