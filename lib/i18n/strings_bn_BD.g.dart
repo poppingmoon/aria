@@ -973,6 +973,7 @@ class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationBnBd notification_ = _StringsMisskeyNotificationBnBd._(_root);
 	@override late final _StringsMisskeyDeckBnBd deck_ = _StringsMisskeyDeckBnBd._(_root);
 	@override late final _StringsMisskeyWebhookSettingsBnBd webhookSettings_ = _StringsMisskeyWebhookSettingsBnBd._(_root);
+	@override late final _StringsMisskeyAbuseReportBnBd abuseReport_ = _StringsMisskeyAbuseReportBnBd._(_root);
 	@override late final _StringsMisskeyModerationLogTypesBnBd moderationLogTypes_ = _StringsMisskeyModerationLogTypesBnBd._(_root);
 	@override late final _StringsMisskeyReversiBnBd reversi_ = _StringsMisskeyReversiBnBd._(_root);
 }
@@ -1273,8 +1274,6 @@ class _StringsMisskeySfxBnBd extends _StringsMisskeySfxEnUs {
 	@override String get note => 'নোটগুলি';
 	@override String get noteMy => 'নোট (আপনার)';
 	@override String get notification => 'বিজ্ঞপ্তি';
-	@override String get antenna => 'অ্যান্টেনাগুলি';
-	@override String get channel => 'চ্যানেলের বিজ্ঞপ্তি';
 }
 
 // Path: misskey.ago_
@@ -1732,6 +1731,16 @@ class _StringsMisskeyWebhookSettingsBnBd extends _StringsMisskeyWebhookSettingsE
 	@override String get active => 'চালু';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportBnBd extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+
+	@override final _StringsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientBnBd notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientBnBd._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesBnBd extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesBnBd._(_StringsBnBd root) : this._root = root, super._(root);
@@ -1935,6 +1944,16 @@ class _StringsMisskeyDeckColumnsBnBd extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get direct => 'ডাইরেক্ট নোটগুলি';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientBnBd extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+
+	@override final _StringsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(_root);
+}
+
 // Path: misskey.pages_.blocks.note_
 class _StringsMisskeyPagesBlocksNoteBnBd extends _StringsMisskeyPagesBlocksNoteEnUs {
 	_StringsMisskeyPagesBlocksNoteBnBd._(_StringsBnBd root) : this._root = root, super._(root);
@@ -1945,4 +1964,14 @@ class _StringsMisskeyPagesBlocksNoteBnBd extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'নোট ID';
 	@override String get idDescription => 'আপনি এর বদলে নোটের URL পেস্ট করতে পারেন.';
 	@override String get detailed => 'বিস্তারিত দেখুন';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+
+	@override final _StringsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'ইমেইল';
 }

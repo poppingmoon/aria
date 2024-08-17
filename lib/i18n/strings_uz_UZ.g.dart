@@ -947,6 +947,7 @@ class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationUzUz notification_ = _StringsMisskeyNotificationUzUz._(_root);
 	@override late final _StringsMisskeyDeckUzUz deck_ = _StringsMisskeyDeckUzUz._(_root);
 	@override late final _StringsMisskeyWebhookSettingsUzUz webhookSettings_ = _StringsMisskeyWebhookSettingsUzUz._(_root);
+	@override late final _StringsMisskeyAbuseReportUzUz abuseReport_ = _StringsMisskeyAbuseReportUzUz._(_root);
 	@override late final _StringsMisskeyModerationLogTypesUzUz moderationLogTypes_ = _StringsMisskeyModerationLogTypesUzUz._(_root);
 	@override late final _StringsMisskeyReversiUzUz reversi_ = _StringsMisskeyReversiUzUz._(_root);
 }
@@ -1374,6 +1375,16 @@ class _StringsMisskeyWebhookSettingsUzUz extends _StringsMisskeyWebhookSettingsE
 	@override late final _StringsMisskeyWebhookSettingsEventsUzUz events_ = _StringsMisskeyWebhookSettingsEventsUzUz._(_root);
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportUzUz extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+
+	@override final _StringsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientUzUz notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientUzUz._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesUzUz extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesUzUz._(_StringsUzUz root) : this._root = root, super._(root);
@@ -1543,6 +1554,16 @@ class _StringsMisskeyWebhookSettingsEventsUzUz extends _StringsMisskeyWebhookSet
 	@override String get mention => 'Eslanganda';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientUzUz extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+
+	@override final _StringsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(_root);
+}
+
 // Path: misskey.achievements_.types_.viewInstanceChart_
 class _StringsMisskeyAchievementsTypesViewInstanceChartUzUz extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
 	_StringsMisskeyAchievementsTypesViewInstanceChartUzUz._(_StringsUzUz root) : this._root = root, super._(root);
@@ -1562,4 +1583,14 @@ class _StringsMisskeyPagesBlocksNoteUzUz extends _StringsMisskeyPagesBlocksNoteE
 	// Translations
 	@override String get id => 'Qayd ID';
 	@override String get detailed => 'Batafsil ko\'rinishi';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+
+	@override final _StringsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }

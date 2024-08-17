@@ -578,6 +578,7 @@ class _StringsMisskeySvSe extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationSvSe notification_ = _StringsMisskeyNotificationSvSe._(_root);
 	@override late final _StringsMisskeyDeckSvSe deck_ = _StringsMisskeyDeckSvSe._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSvSe webhookSettings_ = _StringsMisskeyWebhookSettingsSvSe._(_root);
+	@override late final _StringsMisskeyAbuseReportSvSe abuseReport_ = _StringsMisskeyAbuseReportSvSe._(_root);
 	@override late final _StringsMisskeyModerationLogTypesSvSe moderationLogTypes_ = _StringsMisskeyModerationLogTypesSvSe._(_root);
 }
 
@@ -652,7 +653,6 @@ class _StringsMisskeySfxSvSe extends _StringsMisskeySfxEnUs {
 	// Translations
 	@override String get note => 'Noter';
 	@override String get notification => 'Notifikationer';
-	@override String get antenna => 'Antenner';
 }
 
 // Path: misskey.x2fa_
@@ -808,6 +808,16 @@ class _StringsMisskeyWebhookSettingsSvSe extends _StringsMisskeyWebhookSettingsE
 	@override String get active => 'Aktiverad';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportSvSe extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+
+	@override final _StringsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientSvSe notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientSvSe._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesSvSe extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
@@ -920,6 +930,16 @@ class _StringsMisskeyDeckColumnsSvSe extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get mentions => 'Omnämningar';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientSvSe extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+
+	@override final _StringsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(_root);
+}
+
 // Path: misskey.achievements_.types_.open3windows_
 class _StringsMisskeyAchievementsTypesOpen3windowsSvSe extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
 	_StringsMisskeyAchievementsTypesOpen3windowsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
@@ -929,4 +949,14 @@ class _StringsMisskeyAchievementsTypesOpen3windowsSvSe extends _StringsMisskeyAc
 	// Translations
 	@override String get title => 'Flera Fönster';
 	@override String get description => 'Ha minst 3 fönster öppna samtidigt';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+
+	@override final _StringsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'E-post';
 }

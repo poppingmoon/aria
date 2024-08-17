@@ -1266,8 +1266,6 @@ sfx_:
   note: "الملاحظات"
   noteMy: "ملاحظتي"
   notification: "الإشعارات"
-  antenna: "الهوائيات"
-  channel: "إشعارات القنات"
 ago_:
   future: "المستقبَل"
   justNow: "اللحظة"
@@ -1570,6 +1568,10 @@ webhookSettings_:
   active: "مُفعّل"
   events_:
     reaction: "عند التفاعل"
+abuseReport_:
+  notificationRecipient_:
+    recipientType_:
+      mail: "البريد الإلكتروني "
 moderationLogTypes_:
   suspend: "علِق"
   deleteDriveFile: "حُذف الملف"

@@ -298,6 +298,7 @@ class _StringsMisskeyEnUs {
 	String get copyFolderId => 'Copy folder ID';
 	String get copyProfileUrl => 'Copy profile URL';
 	String get searchUser => 'Search for a user';
+	String get searchThisUsersNotes => 'Search this user’s notes';
 	String get reply => 'Reply';
 	String get loadMore => 'Load more';
 	String get showMore => 'Show more';
@@ -346,7 +347,7 @@ class _StringsMisskeyEnUs {
 	String get renote => 'Renote';
 	String get unrenote => 'Remove renote';
 	String get renoted => 'Renoted.';
-	String renotedToX({required Object name}) => 'Renote from ${name} users。';
+	String renotedToX({required Object name}) => 'Renote to ${name}.';
 	String get cantRenote => 'This post can\'t be renoted.';
 	String get cantReRenote => 'A renote can\'t be renoted.';
 	String get quote => 'Quote';
@@ -363,8 +364,8 @@ class _StringsMisskeyEnUs {
 	String get reaction => 'Reactions';
 	String get reactions => 'Reactions';
 	String get emojiPicker => 'Emoji picker';
-	String get pinnedEmojisForReactionSettingDescription => 'Set the emojis which should be pinned and displayed immediately when reacting.';
-	String get pinnedEmojisSettingDescription => 'Set the emojis to be pinned and displayed when viewing emoji picker';
+	String get pinnedEmojisForReactionSettingDescription => 'Set the emojis to be pinned and displayed when reacting.';
+	String get pinnedEmojisSettingDescription => 'Set the emojis to be pinned and displayed when viewing emoji picker.';
 	String get emojiPickerDisplay => 'Emoji picker display';
 	String get overwriteFromPinnedEmojisForReaction => 'Override from reaction settings';
 	String get overwriteFromPinnedEmojis => 'Override from general settings';
@@ -392,6 +393,7 @@ class _StringsMisskeyEnUs {
 	String get selectChannel => 'Select a channel';
 	String get selectAntenna => 'Select an antenna';
 	String get editAntenna => 'Edit antenna';
+	String get createAntenna => 'Create an antenna';
 	String get selectWidget => 'Select a widget';
 	String get editWidgets => 'Edit widgets';
 	String get editWidgetsExit => 'Done';
@@ -403,7 +405,7 @@ class _StringsMisskeyEnUs {
 	String get addEmoji => 'Add an emoji';
 	String get settingGuide => 'Recommended settings';
 	String get cacheRemoteFiles => 'Cache remote files';
-	String get cacheRemoteFilesDescription => 'When this setting is disabled, remote files are loaded directly from the remote instance. Disabling this will decrease storage usage, but increase traffic, as thumbnails will not be generated.';
+	String get cacheRemoteFilesDescription => 'When this setting is disabled, remote files are loaded directly from the remote servers. Disabling this will decrease storage usage, but increase traffic, as thumbnails will not be generated.';
 	String get youCanCleanRemoteFilesCache => 'You can clear the cache by clicking the 🗑️ button in the file management view.';
 	String get cacheRemoteSensitiveFiles => 'Cache sensitive remote files';
 	String get cacheRemoteSensitiveFilesDescription => 'When this setting is disabled, sensitive remote files are loaded directly from the remote instance without caching.';
@@ -418,6 +420,10 @@ class _StringsMisskeyEnUs {
 	String get reloadAccountsList => 'Reload account list';
 	String get loginFailed => 'Failed to sign in';
 	String get showOnRemote => 'View on remote instance';
+	String get continueOnRemote => 'Continue on a remote server';
+	String get chooseServerOnMisskeyHub => 'Choose a server from the Misskey Hub';
+	String get specifyServerHost => 'Specify a server host directly';
+	String get inputHostName => 'Enter the domain';
 	String get general => 'General';
 	String get wallpaper => 'Wallpaper';
 	String get setWallpaper => 'Set wallpaper';
@@ -428,6 +434,7 @@ class _StringsMisskeyEnUs {
 	String get proxyAccount => 'Proxy account';
 	String get proxyAccountDescription => 'A proxy account is an account that acts as a remote follower for users under certain conditions. For example, when a user adds a remote user to the list, the remote user\'s activity will not be delivered to the instance if no local user is following that user, so the proxy account will follow instead.';
 	String get host => 'Host';
+	String get selectSelf => 'Select myself';
 	String get selectUser => 'Select a user';
 	String get recipient => 'Recipient';
 	String get annotation => 'Comments';
@@ -443,6 +450,7 @@ class _StringsMisskeyEnUs {
 	String get stopActivityDelivery => 'Stop sending activities';
 	String get blockThisInstance => 'Block this instance';
 	String get silenceThisInstance => 'Silence this instance';
+	String get mediaSilenceThisInstance => 'Media-silence this server';
 	String get operations => 'Operations';
 	String get software => 'Software';
 	String get version => 'Version';
@@ -463,7 +471,9 @@ class _StringsMisskeyEnUs {
 	String get blockedInstances => 'Blocked Instances';
 	String get blockedInstancesDescription => 'List the hostnames of the instances you want to block separated by linebreaks. Listed instances will no longer be able to communicate with this instance.';
 	String get silencedInstances => 'Silenced instances';
-	String get silencedInstancesDescription => 'List the hostnames of the instances that you want to silence. All accounts of the listed instances will be treated as silenced, can only make follow requests, and cannot mention local accounts if not followed. This will not affect blocked instances.';
+	String get silencedInstancesDescription => 'List the host names of the servers that you want to silence, separated by a new line. All accounts belonging to the listed servers will be treated as silenced, and can only make follow requests, and cannot mention local accounts if not followed. This will not affect the blocked servers.';
+	String get mediaSilencedInstances => 'Media-silenced servers';
+	String get mediaSilencedInstancesDescription => 'List the host names of the servers that you want to media-silence, separated by a new line. All accounts belonging to the listed servers will be treated as sensitive, and can\'t use custom emojis. This will not affect the blocked servers.';
 	String get muteAndBlock => 'Mutes and Blocks';
 	String get mutedUsers => 'Muted users';
 	String get blockedUsers => 'Blocked users';
@@ -554,6 +564,7 @@ class _StringsMisskeyEnUs {
 	String get selectFiles => 'Select files';
 	String get selectFolder => 'Select a folder';
 	String get selectFolders => 'Select folders';
+	String get fileNotSelected => '';
 	String get renameFile => 'Rename file';
 	String get folderName => 'Folder name';
 	String get createFolder => 'Create a folder';
@@ -625,7 +636,7 @@ class _StringsMisskeyEnUs {
 	String get enableMcaptcha => 'Enable mCaptcha';
 	String get mcaptchaSiteKey => 'Site key';
 	String get mcaptchaSecretKey => 'Secret key';
-	String get mcaptchaInstanceUrl => 'mCaptcha instance URL';
+	String get mcaptchaInstanceUrl => 'mCaptcha server URL';
 	String get recaptcha => 'reCAPTCHA';
 	String get enableRecaptcha => 'Enable reCAPTCHA';
 	String get recaptchaSiteKey => 'Site key';
@@ -714,6 +725,7 @@ class _StringsMisskeyEnUs {
 	String get newMessageExists => 'There are new messages';
 	String get onlyOneFileCanBeAttached => 'You can only attach one file to a message';
 	String get signinRequired => 'Please register or sign in before continuing';
+	String get signinOrContinueOnRemote => 'To continue, you need to move your server or sign up / log in to this server.';
 	String get invitations => 'Invites';
 	String get invitationCode => 'Invitation code';
 	String get checking => 'Checking...';
@@ -1074,6 +1086,7 @@ class _StringsMisskeyEnUs {
 	String get accounts => 'Accounts';
 	String get switch_ => 'Switch';
 	String get noMaintainerInformationWarning => 'Maintainer information is not configured.';
+	String get noInquiryUrlWarning => 'Inquiry URL isn’t set';
 	String get noBotProtectionWarning => 'Bot protection is not configured.';
 	String get configure => 'Configure';
 	String get postToGallery => 'Create new gallery post';
@@ -1263,6 +1276,7 @@ class _StringsMisskeyEnUs {
 	String get thisPostMayBeAnnoyingCancel => 'Cancel';
 	String get thisPostMayBeAnnoyingIgnore => 'Post anyway';
 	String get collapseRenotes => 'Collapse renotes you\'ve already seen';
+	String get collapseRenotesDescription => 'Collapse notes that you\'ve reacted to or renoted before.';
 	String get internalServerError => 'Internal Server Error';
 	String get internalServerErrorDescription => 'The server has run into an unexpected error.';
 	String get copyErrorInfo => 'Copy error details';
@@ -1336,6 +1350,8 @@ class _StringsMisskeyEnUs {
 	String get preservedUsernamesDescription => 'List usernames to reserve separated by linebreaks. These will become unable during normal account creation, but can be used by administrators to manually create accounts. Already existing accounts using these usernames will not be affected.';
 	String get createNoteFromTheFile => 'Compose note from this file';
 	String get archive => 'Archive';
+	String get archived => 'Archived';
+	String get unarchive => 'Unarchive';
 	String channelArchiveConfirmTitle({required Object name}) => 'Really archive ${name}?';
 	String get channelArchiveConfirmDescription => 'An archived channel won\'t appear in the channel list or search results anymore. New posts can also not be added to it anymore.';
 	String get thisChannelArchived => 'This channel has been archived.';
@@ -1346,6 +1362,9 @@ class _StringsMisskeyEnUs {
 	String get preventAiLearningDescription => 'Requests crawlers to not use posted text or image material etc. in machine learning (Predictive / Generative AI) data sets. This is achieved by adding a "noai" HTML-Response flag to the respective content. A complete prevention can however not be achieved through this flag, as it may simply be ignored.';
 	String get options => 'Options';
 	String get specifyUser => 'Specific user';
+	String get lookupConfirm => 'Do you want to look up?';
+	String get openTagPageConfirm => 'Do you want to open a hashtag page?';
+	String get specifyHost => 'Specify a host';
 	String get failedToPreviewUrl => 'Could not preview';
 	String get update => 'Update';
 	String get rolesThatCanBeUsedThisEmojiAsReaction => 'Roles that can use this emoji as reaction';
@@ -1474,9 +1493,14 @@ class _StringsMisskeyEnUs {
 	String get useNativeUIForVideoAudioPlayer => 'Use UI of browser when play video and audio';
 	String get keepOriginalFilename => 'Keep original file name';
 	String get keepOriginalFilenameDescription => 'If you turn off this setting, files names will be replaced with random string automatically when you upload files.';
-	String get noDescription => 'There is not the explanation';
+	String get noDescription => 'There is no explanation';
 	String get alwaysConfirmFollow => 'Always confirm when following';
 	String get inquiry => 'Contact';
+	String get tryAgain => 'Please try again later';
+	String get confirmWhenRevealingSensitiveMedia => 'Confirm when revealing sensitive media';
+	String get sensitiveMediaRevealConfirm => 'This might be a sensitive media. Are you sure to reveal?';
+	String get createdLists => 'Created lists';
+	String get createdAntennas => 'Created antennas';
 	late final _StringsMisskeyDeliveryEnUs delivery_ = _StringsMisskeyDeliveryEnUs._(_root);
 	late final _StringsMisskeyBubbleGameEnUs bubbleGame_ = _StringsMisskeyBubbleGameEnUs._(_root);
 	late final _StringsMisskeyAnnouncementEnUs announcement_ = _StringsMisskeyAnnouncementEnUs._(_root);
@@ -1538,6 +1562,7 @@ class _StringsMisskeyEnUs {
 	late final _StringsMisskeyDisabledTimelineEnUs disabledTimeline_ = _StringsMisskeyDisabledTimelineEnUs._(_root);
 	late final _StringsMisskeyDrivecleanerEnUs drivecleaner_ = _StringsMisskeyDrivecleanerEnUs._(_root);
 	late final _StringsMisskeyWebhookSettingsEnUs webhookSettings_ = _StringsMisskeyWebhookSettingsEnUs._(_root);
+	late final _StringsMisskeyAbuseReportEnUs abuseReport_ = _StringsMisskeyAbuseReportEnUs._(_root);
 	late final _StringsMisskeyModerationLogTypesEnUs moderationLogTypes_ = _StringsMisskeyModerationLogTypesEnUs._(_root);
 	late final _StringsMisskeyFileViewerEnUs fileViewer_ = _StringsMisskeyFileViewerEnUs._(_root);
 	late final _StringsMisskeyExternalResourceInstallerEnUs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerEnUs._(_root);
@@ -1547,6 +1572,7 @@ class _StringsMisskeyEnUs {
 	late final _StringsMisskeyOfflineScreenEnUs offlineScreen_ = _StringsMisskeyOfflineScreenEnUs._(_root);
 	late final _StringsMisskeyUrlPreviewSettingEnUs urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingEnUs._(_root);
 	late final _StringsMisskeyMediaControlsEnUs mediaControls_ = _StringsMisskeyMediaControlsEnUs._(_root);
+	late final _StringsMisskeyContextMenuEnUs contextMenu_ = _StringsMisskeyContextMenuEnUs._(_root);
 }
 
 // Path: misskeyIO
@@ -1691,6 +1717,8 @@ class _StringsMisskeyServerSettingsEnUs {
 	String get fanoutTimelineDescription => 'Greatly increases performance of timeline retrieval and reduces load on the database when enabled. In exchange, memory usage of Redis will increase. Consider disabling this in case of low server memory or server instability.';
 	String get fanoutTimelineDbFallback => 'Fallback to database';
 	String get fanoutTimelineDbFallbackDescription => 'When enabled, the timeline will fall back to the database for additional queries if the timeline is not cached. Disabling it further reduces the server load by eliminating the fallback process, but limits the range of timelines that can be retrieved.';
+	String get inquiryUrl => 'Inquiry URL';
+	String get inquiryUrlDescription => 'Specify a URL for the inquiry form to the server maintainer or a web page for the contact information.';
 }
 
 // Path: misskey.accountMigration_
@@ -2111,8 +2139,6 @@ class _StringsMisskeySfxEnUs {
 	String get note => 'New note';
 	String get noteMy => 'Own note';
 	String get notification => 'Notifications';
-	String get antenna => 'Antennas';
-	String get channel => 'Channel notifications';
 	String get reaction => 'On choosing a reaction';
 }
 
@@ -2129,6 +2155,7 @@ class _StringsMisskeySoundSettingsEnUs {
 	String get driveFileTypeWarnDescription => 'Select an audio file';
 	String get driveFileDurationWarn => 'The audio is too long.';
 	String get driveFileDurationWarnDescription => 'Long audio may disrupt using Misskey. Still continue?';
+	String get driveFileError => 'It couldn\'t load the sound. Please change the setting.';
 }
 
 // Path: misskey.ago_
@@ -2286,7 +2313,7 @@ class _StringsMisskeyPermissionsEnUs {
 	String get readAdminInviteCodes => 'View invite codes';
 	String get writeAdminAnnouncements => 'Manage announcements';
 	String get readAdminAnnouncements => 'View announcements';
-	String get writeAdminAvatarDecorations => 'Manage avatar decorations';
+	String get writeAdminAvatarDecorations => 'Can manage avatar decorations';
 	String get readAdminAvatarDecorations => 'View avatar decorations';
 	String get writeAdminFederation => 'Manage federation data';
 	String get writeAdminAccount => 'Manage user account';
@@ -2693,6 +2720,7 @@ class _StringsMisskeyDeckEnUs {
 	String get alwaysShowMainColumn => 'Always show main column';
 	String get columnAlign => 'Align columns';
 	String get addColumn => 'Add column';
+	String get newNoteNotificationSettings => 'Notification setting for new notes';
 	String get configureColumn => 'Column settings';
 	String get swapLeft => 'Swap with the left column';
 	String get swapRight => 'Swap with the right column';
@@ -2753,11 +2781,24 @@ class _StringsMisskeyWebhookSettingsEnUs {
 
 	// Translations
 	String get createWebhook => 'Create Webhook';
+	String get modifyWebhook => 'Modify Webhook';
 	String get name => 'Name';
 	String get secret => 'Secret';
-	String get events => 'Webhook Events';
+	String get trigger => 'Trigger';
 	String get active => 'Enabled';
 	late final _StringsMisskeyWebhookSettingsEventsEnUs events_ = _StringsMisskeyWebhookSettingsEventsEnUs._(_root);
+	late final _StringsMisskeyWebhookSettingsSystemEventsEnUs systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsEnUs._(_root);
+	String get deleteConfirm => 'Are you sure you want to delete the Webhook?';
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final _StringsMisskeyAbuseReportNotificationRecipientEnUs notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientEnUs._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2803,6 +2844,13 @@ class _StringsMisskeyModerationLogTypesEnUs {
 	String get deleteAvatarDecoration => 'Avatar decoration deleted';
 	String get unsetUserAvatar => 'Unset this user\'s avatar';
 	String get unsetUserBanner => 'Unset this user\'s banner';
+	String get createSystemWebhook => 'Create SystemWebhook';
+	String get updateSystemWebhook => 'Update SystemWebhook';
+	String get deleteSystemWebhook => 'Delete SystemWebhook';
+	String get createAbuseReportNotificationRecipient => 'Create a recipient for abuse reports';
+	String get updateAbuseReportNotificationRecipient => 'Update recipients for abuse reports';
+	String get deleteAbuseReportNotificationRecipient => 'Delete a recipient for abuse reports';
+	String get deleteFlash => 'Delete Play';
 }
 
 // Path: misskey.fileViewer_
@@ -2957,6 +3005,19 @@ class _StringsMisskeyMediaControlsEnUs {
 	String get pip => 'Picture in Picture';
 	String get playbackRate => 'Playback Speed';
 	String get loop => 'Loop playback';
+}
+
+// Path: misskey.contextMenu_
+class _StringsMisskeyContextMenuEnUs {
+	_StringsMisskeyContextMenuEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Context menu';
+	String get app => 'Application';
+	String get appWithShift => 'Application with shift key';
+	String get native => 'Native';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3232,6 +3293,7 @@ class _StringsMisskeyRoleOptionsEnUs {
 	String get canManageAvatarDecorations => 'Manage avatar decorations';
 	String get driveCapacity => 'Drive capacity';
 	String get alwaysMarkNsfw => 'Always mark files as NSFW';
+	String get canUpdateBioMedia => 'Allow to edit an icon or a banner image';
 	String get pinMax => 'Maximum number of pinned notes';
 	String get antennaMax => 'Maximum number of antennas';
 	String get wordMuteMax => 'Maximum number of characters allowed in word mutes';
@@ -3458,6 +3520,35 @@ class _StringsMisskeyWebhookSettingsEventsEnUs {
 	String get mention => 'When being mentioned';
 }
 
+// Path: misskey.webhookSettings_.systemEvents_
+class _StringsMisskeyWebhookSettingsSystemEventsEnUs {
+	_StringsMisskeyWebhookSettingsSystemEventsEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get abuseReport => 'When received a new abuse report';
+	String get abuseReportResolved => 'When resolved abuse reports';
+	String get userCreated => 'When user is created';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get createRecipient => 'Add a recipient for abuse reports';
+	String get modifyRecipient => 'Edit a recipient for abuse reports';
+	String get recipientType => 'Notification type';
+	late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs._(_root);
+	String get keywords => 'Keywords';
+	String get notifiedUser => 'Users to notify';
+	String get notifiedWebhook => 'Webhook to use';
+	String get deleteConfirm => 'Are you sure that you want to delete the notification recipient?';
+}
+
 // Path: misskey.externalResourceInstaller_.plugin_
 class _StringsMisskeyExternalResourceInstallerPluginEnUs {
 	_StringsMisskeyExternalResourceInstallerPluginEnUs._(this._root);
@@ -3606,7 +3697,7 @@ class _StringsMisskeyInitialTutorialPostNoteCwEnUs {
 	String get title => 'Content Warning';
 	String get description => 'Instead of the body, the content written in \'comments\' field will be displayed. Pressing "read more" will reveal the body.';
 	late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs._(_root);
-	String get useCases => 'This is used when following the server guidelines for necessary notes or for self-restriction of spoiler or sensitive text.';
+	String get useCases => 'This is used when following the server guidelines, for necessary notes, or for self-restriction of spoiler or sensitive text.';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
@@ -4504,6 +4595,18 @@ class _StringsMisskeyPagesBlocksNoteEnUs {
 	String get detailed => 'Detailed view';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get mail => 'Email';
+	String get webhook => 'Webhook';
+	late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs._(_root);
+}
+
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
 class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
 	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs._(this._root);
@@ -4602,4 +4705,15 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
 	// Translations
 	String get cw => 'This will surely make you hungry!';
 	String get note => 'Just had a chocolate-glazed donut 🍩😋';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get mail => 'Send the email to moderators\' email addresses when you receive abuse.';
+	String get webhook => 'Send a notification to SystemWebhook when you receive or resolve abuse.';
 }

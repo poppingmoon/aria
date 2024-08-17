@@ -410,8 +410,6 @@ class _StringsMisskeySfxElGr extends _StringsMisskeySfxEnUs {
 	// Translations
 	@override String get note => 'Σημειώματα';
 	@override String get notification => 'Ειδοποιήσεις';
-	@override String get antenna => 'Αντένες';
-	@override String get channel => 'Ειδοποιήσεις καναλιών';
 }
 
 // Path: misskey.ago_

@@ -74,15 +74,15 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String renotedBy({required Object user}) => 'Renoted ໂດຍ ${user}';
 	@override String get noNotes => 'ບໍ່ມີ note';
 	@override String get noNotifications => 'ບໍ່ມີການແຈ້ງເຕືອນ';
-	@override String get instance => 'ອີນສະແຕນ';
-	@override String get settings => 'ກຳນົດຄ່າ';
+	@override String get instance => 'ເຊີຟເວີຣ໌';
+	@override String get settings => 'ຕັ້ງຄ່າ';
 	@override String get notificationSettings => 'ຕັ້ງຄ່າການແຈ້ງເຕືອນ';
 	@override String get basicSettings => 'ການຕັ້ງຄ່າພື້ນຖານ';
 	@override String get otherSettings => 'ການຕັ້ງຄ່າອື່ນໆ';
-	@override String get openInWindow => 'ເປີດໃນປ່ອງຢ້ຽມ';
-	@override String get profile => 'ໂພຼຟາຍ';
+	@override String get openInWindow => 'ເປີດໃນ window';
+	@override String get profile => 'ໂປຣໄຟລ໌';
 	@override String get timeline => 'ໄທມ໌ໄລນ໌';
-	@override String get noAccountDescription => 'ຜູ້ໃຊ້ນີ້ຍັງບໍ່ໄດ້ຂຽນໃນຊີວະປະຫວັດຂອງເຂົາເຈົ້າເທື່ອ';
+	@override String get noAccountDescription => 'ຜູ້ໃຊ້ຄົນນີ້ຍັງບໍ່ໄດ້ຂຽນຄຳແນະນຳໂຕ';
 	@override String get login => 'ເຂົ້າ​ສູ່​ລະ​ບົບ';
 	@override String get loggingIn => 'ກຳລັງເຂົ້າສູ່ລະບົບ...';
 	@override String get logout => 'ອອກ​ຈາກ​ລະ​ບົບ';
@@ -93,7 +93,7 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get addUser => 'ເພີ່ມຜູ້ໃຊ້';
 	@override String get favorite => 'ເພີ່ມໃສ່ລາຍການທີ່ມັກ';
 	@override String get favorites => 'ລາຍການທີ່ມັກ';
-	@override String get unfavorite => 'ລຶບອອກຈາກລາຍການທີ່ມັກ';
+	@override String get unfavorite => 'ເອົາອອກຈາກລາຍການທີ່ມັກ';
 	@override String get favorited => 'ເພີ່ມໃສ່ລາຍການທີ່ມັກແລ້ວ';
 	@override String get alreadyFavorited => 'ເພີ່ມເຂົ້າໃນລາຍການທີ່ມັກແລ້ວ.';
 	@override String get cantFavorite => 'ບໍ່ສາມາດເພີ່ມໃສ່ລາຍການທີ່ມັກໄດ້.';
@@ -104,41 +104,41 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get copyLinkRenote => 'ຄັດລອກລິ້ງຂອງ renote';
 	@override String get delete => 'ລຶບ';
 	@override String get deleteAndEdit => 'ລຶບ​ແລະ​ແກ້​ໄຂ​';
-	@override String get deleteAndEditConfirm => 'ເຈົ້າ​ແນ່​ໃຈ​ບໍ່? ທີ່ທ່ານຕ້ອງການທີ່ຈະລຶບ note ນີ້ ແລະແກ້ໄຂມັນ ທ່ານອາດຈະສູນເສຍ reaction, renote, ແລະການຕອບກັບທັງໝົດ';
+	@override String get deleteAndEditConfirm => 'ຕ້ອງການລຶບ note ນີ້ແລະແກ້ໄຂໃໝ່ແມ່ນບໍ່? reaction, renote ແລະການຕອບກັບຕໍ່ note ນີ້ ທັງເບິດຈະຖືກລຶບອອກ';
 	@override String get addToList => 'ເພີ່ມໃສ່ລາຍຊື່';
 	@override String get addToAntenna => 'ເພີ່ມໃສ່ເສົາອາກາດ';
 	@override String get sendMessage => 'ສົ່ງຂໍ້ຄວາມ';
-	@override String get copyRSS => 'ສຳເນົາ RSS';
-	@override String get copyUsername => 'ສຳເນົາຊື່ຜູ້ໃຊ້';
-	@override String get copyUserId => 'ສຳເນົາ ID ຜູ້ໃຊ້';
-	@override String get copyNoteId => 'ສຳເນົາ ID ບັນທຶກ';
-	@override String get copyFileId => 'ສຳເນົາ ID ໄຟລ໌';
-	@override String get copyFolderId => 'ສຳເນົາ ID ໂຟນເດີ';
-	@override String get copyProfileUrl => 'ສຳເນົາ URL ໂປຣໄຟລ໌';
+	@override String get copyRSS => 'ຄັດລອກ RSS';
+	@override String get copyUsername => 'ຄັດລອກຊື່ຜູ້ໃຊ້';
+	@override String get copyUserId => 'ຄັດລອກ ID ຜູ້ໃຊ້';
+	@override String get copyNoteId => 'ຄັດລອກ ID ຂອງ note';
+	@override String get copyFileId => 'ຄັດລອກ ID ໄຟລ໌';
+	@override String get copyFolderId => 'ຄັດລອກ ID ໂຟລ໌ເດີຣ໌';
+	@override String get copyProfileUrl => 'ຄັດລອກ URL ໂປຣໄຟລ໌';
 	@override String get searchUser => 'ຄົ້ນຫາຜູ້ໃຊ້';
-	@override String get reply => 'ຕອບ​ໄປ​ທີ';
+	@override String get reply => 'ຕອບ​ກັບ';
 	@override String get loadMore => 'ໂຫຼດເພີ່ມເຕີມ';
 	@override String get showMore => 'ໂຫຼດເພີ່ມເຕີມ';
 	@override String get showLess => 'ປິດ';
-	@override String get youGotNewFollower => 'ໄດ້ຕິດຕາມທ່ານ';
-	@override String get receiveFollowRequest => 'ປະຕິບັດຕາມຄໍາຮ້ອງຂໍທີ່ໄດ້ຮັບ';
-	@override String get followRequestAccepted => 'ຜູ້ຕິດຕາມໄດ້ຍອມຮັບຄໍາຮ້ອງຂໍຂອງທ່ານ';
-	@override String get mention => 'ກ່າວຖືງ';
-	@override String get mentions => 'ກ່າວເຖິງ';
+	@override String get youGotNewFollower => 'ໄດ້ຕິດຕາມເຈົ້າ';
+	@override String get receiveFollowRequest => 'ມີຄຳຂໍຕິດຕາມສົ່ງມາ';
+	@override String get followRequestAccepted => 'ການຕິດຕາມໄດ້ຮັບອນຸຍາດແລ້ວ';
+	@override String get mention => 'ເວົ້າເຖີງ';
+	@override String get mentions => 'ເວົ້າເຖີງເຈົ້າ';
 	@override String get directNotes => 'ໂພສ Direct note';
 	@override String get importAndExport => 'ນໍາເຂົ້າ / ສົ່ງອອກ';
 	@override String get import => 'ນຳເຂົ້າ';
 	@override String get export => 'ສົ່ງອອກ';
 	@override String get files => 'ໄຟລ໌';
 	@override String get download => 'ດາວໂຫລດ';
-	@override String driveFileDeleteConfirm({required Object name}) => 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການລຶບໄຟລ໌ "${name}"? note ທີ່ມີໄຟລ໌ແນບນີ້ຈະຖືກລຶບຖິ້ມ';
-	@override String unfollowConfirm({required Object name}) => 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການເຊົາຕິດຕາມ ${name}?';
-	@override String get exportRequested => 'ໃນເວລາທີ່ທ່ານໄດ້ຮ້ອງຂໍການສົ່ງອອກ ມັນອາດຈະໃຊ້ເວລາບາງເວລາ ແລະມັນຈະຖືກເພີ່ມໃສ່ drive ຂອງທ່ານເມື່ອມັນສຳເລັດແລ້ວ';
-	@override String get importRequested => 'ໃນເວລາທີ່ທ່ານໄດ້ຮ້ອງຂໍການນໍາເຂົ້າ ມັນອາດຈະໃຊ້ເວລາບາງເວລາ';
+	@override String driveFileDeleteConfirm({required Object name}) => 'ຕ້ອງການລຶບໄຟລ໌ “${name}” ແມ່ນບໍ່? Note ທີ່ແນບມາກັບໄຟລ໌ນີ້ຈະຖືກລຶບອອກ';
+	@override String unfollowConfirm({required Object name}) => 'ຕ້ອງການເລີກຕິດຕາມ ${name} ແມ່ນບໍ່?';
+	@override String get exportRequested => 'ເຈົ້າໄດ້ຮ້ອງຂໍການສົ່ງອອກ ອາດໃຊ້ເວລາຈັກໜ່ອຍ ເມື່ອແລ້ວຈະຖືກເພີ່ມໃສ່ drive';
+	@override String get importRequested => 'ເຈົ້າໄດ້ຮ້ອງຂໍການນຳເຂົ້າ ການດຳເນິນການນີ້ອາດໃຊ້ເວລາຈັກໜ່ອຍ';
 	@override String get lists => 'ລາຍການ';
-	@override String get noLists => 'ທ່ານ​ບໍ່​ມີ​ລາຍ​ການ​ໃດໆ​';
-	@override String get note => 'ບັນທຶກ';
-	@override String get notes => 'ບັນທຶກ';
+	@override String get noLists => 'ບໍ່​ມີ​ລາຍ​ການ​ໃດໆ​';
+	@override String get note => 'Note';
+	@override String get notes => 'Note';
 	@override String get following => 'ກຳລັງຕິດຕາມ';
 	@override String get followers => 'ຜູ້ຕິດຕາມ';
 	@override String get followsYou => 'ຕິດ​ຕາມ​ເຈົ້າ';
@@ -180,11 +180,11 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get attachCancel => 'ເອົາໄຟລ໌ແນບ';
 	@override String get mute => 'ປີດສຽງ';
 	@override String get unmute => 'ເປີດສຽງ';
-	@override String get block => 'ບ໋ອກ';
-	@override String get unblock => 'ຍົກເລີກກາຮົບລັອກ';
+	@override String get block => 'ບລັອກ';
+	@override String get unblock => 'ເລີກບລັອກ';
 	@override String get suspend => 'ລະງັບ';
 	@override String get unsuspend => 'ເຊົາ​ລະ​ງັບ';
-	@override String get selectList => 'ເລືອກບັນຊີລາຍການ';
+	@override String get selectList => 'ເລືອກລາຍຊື່';
 	@override String get editList => 'ແກ້ໄຂລາຍຊື່';
 	@override String get selectChannel => 'ເລືອກຊ່ອງ';
 	@override String get selectAntenna => 'ເລືອກເສົາອາກາດ';
@@ -207,30 +207,30 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get autoAcceptFollowed => 'ອະນຸມັດອັດຕະໂນມັດຕາມຄຳຮ້ອງຂໍຈາກຜູ້ໃຊ້ທີ່ທ່ານກຳລັງຕິດຕາມຢູ່';
 	@override String get addAccount => 'ເພີ່ມບັນຊີ';
 	@override String get loginFailed => 'ການເຂົ້າສູ່ລະບົບບໍ່ສຳເລັດ';
-	@override String get showOnRemote => 'ເບິ່ງຢູ່ໃນຕົວຢ່າງໄລຍະໄກ';
+	@override String get showOnRemote => 'ເບິ່ງໃນເຊີຟເວີຣ໌ໄລຍະໄກ';
 	@override String get general => 'ທົ່ວໄປ';
 	@override String get wallpaper => 'ພາບພື້ນຫລັງ';
 	@override String get setWallpaper => 'ຕັ້ງເປັນພາບພື້ນຫຼັງ';
 	@override String get removeWallpaper => 'ລຶບຮູບວໍເປເປີອອກ';
 	@override String searchWith({required Object q}) => 'ຊອກຫາ: ${q}';
-	@override String get youHaveNoLists => 'ທ່ານ​ບໍ່​ມີ​ລາຍ​ການ​ໃດໆ​';
+	@override String get youHaveNoLists => 'ເຈົ້າບໍ່ມີລາຍຊື່ໃດໆ';
 	@override String get proxyAccount => 'ບັນຊີພຣັອກຊີ';
-	@override String get host => 'ໂຮດສ';
+	@override String get host => 'ໂຮສຕ໌';
 	@override String get selectUser => 'ເລືອກຜູ້ໃຊ້';
 	@override String get recipient => 'ເຖິງ';
 	@override String get annotation => 'ຄຳເຫັນ';
 	@override String get federation => 'ສະຫະພັນ';
-	@override String get instances => 'ອີນສະແຕນ';
+	@override String get instances => 'ເຊີຟເວີຣ໌';
 	@override String get registeredAt => 'ລົງທະບຽນຢູ່';
 	@override String get storageUsage => 'ບ່ອນ​ຈັດ​ເກັບ​ຂໍ້​ມູນທີ່ໃຊ້';
-	@override String get charts => 'ອັນດັບເພງ';
+	@override String get charts => 'ແຜນພູມ';
 	@override String get perHour => 'ຕໍ່ຊົ່ວໂມງ';
 	@override String get perDay => 'ຕໍ່​ມື້';
 	@override String get stopActivityDelivery => 'ຢຸດເຊົາການສົ່ງກິດຈະກໍາ';
 	@override String get blockThisInstance => 'ຂັດຂວາງຕົວຢ່າງນີ້';
 	@override String get operations => 'ການດຳເນີນງານ';
 	@override String get software => 'ຊອບແວ';
-	@override String get version => 'ສະບັບ';
+	@override String get version => 'ເວີຣ໌ຊັນ';
 	@override String get metadata => 'Metadata';
 	@override String withNFiles({required Object n}) => '${n} ໄຟລ໌(s)';
 	@override String get monitor => 'ຈໍພາບ';
@@ -255,15 +255,15 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get blocked => 'ບລັອກແລ້ວ ';
 	@override String get suspended => 'ໂຈະ';
 	@override String get all => 'ທັງໝົດ';
-	@override String get subscribing => 'ສະໝັກສະມາຊິກແລັວ';
-	@override String get publishing => 'ການ​ພິມ​ເຜີຍ​ແຜ່';
+	@override String get subscribing => 'ກຳລັງສະມັກສະມາຊິກ';
+	@override String get publishing => 'ກຳລັງ​ເຜີຍ​ແພ່';
 	@override String get notResponding => 'ບໍ່ຕອບສະໜອງ';
-	@override String get instanceFollowing => 'ກຳລັງຕິດຕາມສຸດຕົວຢ່າງ';
-	@override String get instanceFollowers => 'ຜູ້ຕິດຕາມຕົວຢ່າງ';
-	@override String get instanceUsers => 'ຜູ້​ຊົມ​ໃຊ້​ຂອງ​ຕົວ​ຢ່າງ​ນີ້​';
+	@override String get instanceFollowing => 'ກຳລັງຕິດຕາມບົນເຊີຟເວີຣ໌';
+	@override String get instanceFollowers => 'ຜູ້ຕິດຕາມຂອງເຊີຟເວີຣ໌';
+	@override String get instanceUsers => 'ຜູ້​ໃຊ້​ຂອງ​ເຊີຟເວີຣ໌ນີ້';
 	@override String get changePassword => 'ປ່ຽນ​ລະ​ຫັດ​ຜ່ານ';
 	@override String get security => 'ຄວາມປອດໄພ';
-	@override String get retypedNotMatch => 'ວັດສະດຸປ້ອນບໍ່ກົງກັນ';
+	@override String get retypedNotMatch => 'ປ້ອນຂໍ້ມູນບໍ່ກົງກັນ';
 	@override String get currentPassword => 'ລະຫັດຜ່ານປະຈຸບັນ';
 	@override String get newPassword => 'ລະຫັດຜ່ານໃໝ່';
 	@override String get newPasswordRetype => 'ໃສ່ລະຫັດຜ່ານໃໝ່ອີກເທື່ອໜຶ່ງ';
@@ -279,14 +279,14 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get removed => 'ລຶບແລ້ວ';
 	@override String get resetAreYouSure => 'ຣີ​ເຊັດບໍ?';
 	@override String get saved => 'ບັນທຶກແລ້ວ';
-	@override String get messaging => 'ແຊ໋ດ';
+	@override String get messaging => 'ແຊັຕ';
 	@override String get upload => 'ອັບໂຫຼດ';
 	@override String get keepOriginalUploading => 'ຮັກສາຮູບພາບຕົ້ນສະບັບ';
 	@override String get fromDrive => 'ຈາກ Drive';
 	@override String get fromUrl => 'ຈາກ URL';
 	@override String get uploadFromUrl => 'ອັບໂຫຼດຈາກ URL';
 	@override String get uploadFromUrlDescription => 'URL ຂອງໄຟລ໌ທີ່ທ່ານຕ້ອງການອັບໂຫລດ';
-	@override String get uploadFromUrlRequested => 'ຮ້ອງຂໍການອັບໂຫລດ';
+	@override String get uploadFromUrlRequested => 'ຮ້ອງຂໍການອັບໂຫລດແລ້ວ';
 	@override String get explore => 'ສຳຫຼວດ';
 	@override String get messageRead => 'ອ່ານແລ້ວ';
 	@override String get startMessaging => 'ເລີ່ມການສົນທະນາໃໝ່';
@@ -300,47 +300,47 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get image => 'ຮູບພາບ';
 	@override String get birthday => 'ວັນເກີດ';
 	@override String yearsOld({required Object age}) => '${age} ປີ';
-	@override String get registeredDate => 'ວັນທີ່ເປັນສະມາຊິກ';
+	@override String get registeredDate => 'ວັນທີ່ລົງທະບຽນ';
 	@override String get location => 'ທີ່ຕັ້ງ';
-	@override String get theme => 'ແທ໋ມ';
-	@override String get themeForLightMode => 'ຮູບແບບສີສັນເພື່ອໃຊ້ໃນໂໝດແສງ';
-	@override String get themeForDarkMode => 'ຮູບແບບສີສັນທີ່ຈະໃຊ້ຢູ່ໃນໂໝດມືດ';
+	@override String get theme => 'Theme';
+	@override String get themeForLightMode => 'Theme ໃຊ້ໃນໂໝດສະຫວ່າງ';
+	@override String get themeForDarkMode => 'Theme ໃຊ້ໃນໂໝດມືດ';
 	@override String get light => 'ສະຫວ່າງ';
 	@override String get dark => 'ມືດ';
 	@override String get lightThemes => 'ຊຸດຮູບແບບສະຫວ່າງ';
 	@override String get darkThemes => 'ຮູບແບບສີສັນມືດ';
 	@override String get syncDeviceDarkMode => 'ຊິງຄ໌ໂໝດມືດກັບການຕັ້ງຄ່າທົ່ວອຸປະກອນ';
-	@override String get drive => 'ຂັບ';
+	@override String get drive => 'Drive';
 	@override String get fileName => 'ຊື່ໄຟລ໌';
 	@override String get selectFile => 'ເລືອກໄຟລ໌';
 	@override String get selectFiles => 'ເລືອກໄຟລ໌';
 	@override String get selectFolder => 'ເລືອກໂຟລເດີ';
 	@override String get selectFolders => 'ເລືອກໂຟລເດີ';
 	@override String get renameFile => 'ປ່ຽນຊື່ໄຟລ໌';
-	@override String get folderName => 'ຊື່ໂຟນເດີ';
+	@override String get folderName => 'ຊື່ໂຟລເດີຣ໌';
 	@override String get createFolder => '​ສ້າງ​ໂຟ​ລ​ເດີ';
 	@override String get renameFolder => 'ປ່ຽນຊື່ໂຟນເດີນີ້';
 	@override String get deleteFolder => 'ລົບໂຟ​ລ​ເດີ​';
 	@override String get addFile => 'ເພີ່ມໄຟລ໌';
 	@override String get emptyDrive => 'Drive ຂອງທ່ານຫວ່າງເປົ່າ';
-	@override String get emptyFolder => 'ໂຟນເດີນີ້ເປົ່າຫວ່າງ';
+	@override String get emptyFolder => 'ໂຟລເດີຣ໌ນີ້ວ່າງເປົ່າ';
 	@override String get unableToDelete => 'ບໍ່​ສາ​ມາດລົບໄດ້';
 	@override String get inputNewFileName => 'ໃສ່ຊື່ໄຟລ໌ໃໝ່';
 	@override String get inputNewDescription => 'ໃສ່ຄຳບັນຍາຍໃໝ່';
 	@override String get inputNewFolderName => 'ໃສ່ຊື່ໂຟນເດີໃໝ່';
 	@override String get circularReferenceFolder => 'ໂຟນເດີປາຍທາງແມ່ນໂຟນເດີຍ່ອຍຂອງໂຟນເດີທີ່ທ່ານຕ້ອງການຍ້າຍ';
 	@override String get rename => 'ປ່ຽນຊື່';
-	@override String get doNothing => 'ບໍ່ສົນໃຈ';
-	@override String get watch => 'ເບິ່ງ';
-	@override String get unwatch => 'ຢຸດເບິ່ງ';
+	@override String get doNothing => 'ຢ່າມັນ';
+	@override String get watch => 'ເພັ່ງເລັງ';
+	@override String get unwatch => 'ຢຸດເພັ່ງເລັງ';
 	@override String get accept => 'ອະນຸຍາດ';
 	@override String get reject => 'ປະຕິເສດ';
 	@override String get normal => 'ປົກກະຕິ';
 	@override String get instanceName => 'ຊື່ເຊີເວີ້';
-	@override String get instanceDescription => 'ຄໍາອະທິບາຍຕົວຢ່າງ';
+	@override String get instanceDescription => 'ຄຳອະທິບາຍແນະນຳເຊີຟເວີຣ໌';
 	@override String get maintainerName => 'ຜູ້ດູແລ';
-	@override String get maintainerEmail => 'ອີເມວ admin';
-	@override String get tosUrl => 'ເງື່ອນໄຂການໃຫ້ບໍລິການ URL';
+	@override String get maintainerEmail => 'ອີເມລຜູ້ດູແລ';
+	@override String get tosUrl => ' URL ເງື່ອນໄຂການໃຫ້ບໍລິການ';
 	@override String get thisYear => 'ປີນີ້';
 	@override String get thisMonth => 'ເດືອນນີ້';
 	@override String get today => 'ມື້ນີ້';
@@ -348,34 +348,34 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String monthX({required Object month}) => 'ເດືອນ ${month}';
 	@override String yearX({required Object year}) => 'ປີ ${year}';
 	@override String get pages => 'ໜ້າ';
-	@override String get integration => 'ຄວາມສຳພັນຂອງ';
+	@override String get integration => 'ເຊື່ອມໂຍງ';
 	@override String get connectService => 'ເຊື່ອມຕໍ່';
 	@override String get disconnectService => 'ຕັດການເຊື່ອມຕໍ່';
 	@override String get enableLocalTimeline => 'ເປີດໃຊ້ທາມລາຍທ້ອງຖິ່ນ';
 	@override String get enableGlobalTimeline => 'ເປີດໃຊ້ທາມລາຍທົ່ວໂລກ';
-	@override String get disablingTimelinesInfo => 'ຜູ້ເບິ່ງແຍງລະບົບ ແລະຜູ້ຄວບຄຸມຈະມີການເຂົ້າເຖິງທຸກກຳນົດເວລາ, ເຖິງແມ່ນວ່າຈະບໍ່ໄດ້ເປີດໃຊ້ງານກໍຕາມ';
+	@override String get disablingTimelinesInfo => 'ຜູ້ດູແລລະບບແລະຜູ້ຄວບຄຸມຈະສາມາດເຂົ້າເຖີງໄທມ໌ໄລນ໌ທັ້ງເບີດ ເຖີງວ່າຈະບໍ່ໄດ້ເປີດໃຊ້ງານກໍ່ຕາມ';
 	@override String get registration => 'ລົງທະບຽນ';
 	@override String get enableRegistration => 'ເປີດໃຊ້ການລົງທະບຽນຜູ້ໃຊ້ໃໝ່';
 	@override String get invite => 'ເຊີນ';
-	@override String get driveCapacityPerLocalAccount => 'ຄວາມອາດສາມາດຂັບຕໍ່ຜູ້ໃຊ້ທ້ອງຖິ່ນ';
-	@override String get driveCapacityPerRemoteAccount => 'ໄດຣຟ໌ຄວາມອາດສາມາດຕໍ່ຜູ້ໃຊ້ທາງໄກ';
+	@override String get driveCapacityPerLocalAccount => 'ຄວາມຈຸຂອງ drive ຕໍ່ຜູ້ໃຊ້ທ້ອງຖິ່ນ';
+	@override String get driveCapacityPerRemoteAccount => 'ຄວາມຈຸຂອງ drive ຕໍ່ຜູ້ໃຊ້ໄລຍະໄກ';
 	@override String get basicInfo => 'ຂໍ້ມຸນເບື້ອງຕົ້ນ';
-	@override String get pinnedNotes => 'ບັນທຶກທີ່ປັກໝຸດໄວ້';
-	@override String get hcaptchaSiteKey => 'ກະແຈໄຊທ໌';
-	@override String get hcaptchaSecretKey => 'ກະແຈລັບ';
-	@override String get mcaptchaSiteKey => 'ກະແຈໄຊທ໌';
-	@override String get mcaptchaSecretKey => 'ກະແຈລັບ';
+	@override String get pinnedNotes => 'Note ທີ່ປັກໝຸດໄວ້';
+	@override String get hcaptchaSiteKey => 'Site key';
+	@override String get hcaptchaSecretKey => 'Secret key';
+	@override String get mcaptchaSiteKey => 'Site key';
+	@override String get mcaptchaSecretKey => 'Secret Key';
 	@override String get recaptcha => 'reCAPTCHA';
-	@override String get enableRecaptcha => 'ເປີດໃຊ້ງານລີແຄ໋ບຈາ';
-	@override String get recaptchaSiteKey => 'ກະແຈໄຊທ໌';
-	@override String get recaptchaSecretKey => 'ກະແຈລັບ';
-	@override String get turnstileSiteKey => 'ກະແຈໄຊທ໌';
-	@override String get turnstileSecretKey => 'ກະແຈລັບ';
+	@override String get enableRecaptcha => 'ເປີດໃຊ້ງານ reCAPTCHA';
+	@override String get recaptchaSiteKey => 'Site key';
+	@override String get recaptchaSecretKey => 'Secret key';
+	@override String get turnstileSiteKey => 'Site key';
+	@override String get turnstileSecretKey => 'Secret key';
 	@override String get name => 'ຊື່';
 	@override String get userList => 'ລາຍການ';
 	@override String get about => 'ກ່ຽວກັບ';
 	@override String get aboutMisskey => 'ກ່ຽວກັບ Misskey';
-	@override String get administrator => 'ຜູ້ບໍລິຫານ';
+	@override String get administrator => 'ຜູ້ດູແລ';
 	@override String get token => 'ໂທເຄັນ';
 	@override String get share => 'ແບ່ງປັນ';
 	@override String get notFound => 'ບໍ່ພົບ';
@@ -388,27 +388,27 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get text => 'ຂໍ້ຄວາມ';
 	@override String get enable => 'ເປີດໃຊ້';
 	@override String get next => 'ຕໍ່ໄປ';
-	@override String get retype => 'ເຂົ້າໄປອີກຄັ້ງ';
-	@override String get quoteAttached => 'ວົງຢືມ';
+	@override String get retype => 'ລອງພິມລະຫັດອີກເທື່ອໜຶ່ງ';
+	@override String get quoteAttached => 'ອ້າງອິງ';
 	@override String get invitations => 'ເຊີນ';
 	@override String get unavailable => 'ບໍ່​ສາ​ມາດ​ໃຊ້​ໄດ້';
 	@override String get language => 'ພາສາ';
 	@override String aboutX({required Object x}) => 'ກ່ຽວກັບ ${x}';
 	@override String get emojiStyle => 'ຮູບແບບອີໂມຈິ';
 	@override String get native => 'ພາ​ສາ​ແມ່';
-	@override String get noHistory => '​ບໍ່​ມີ​ລາຍ​ການ​ຢູ່​ບ່ອນ​ນີ້';
+	@override String get noHistory => '​ບໍ່​ມີປະຫວັດ';
 	@override String get doing => 'ກຳລັງປະມວນຜົນ...';
 	@override String get category => 'ຫມວດຫມູ່';
-	@override String get tags => 'ແທ໋ກ';
+	@override String get tags => 'Aliases';
 	@override String get createAccount => 'ສ້າງບັນຊີ';
-	@override String get existingAccount => 'ທີ່ມີຢູ່';
-	@override String get dashboard => 'ໜ້າປັດ';
+	@override String get existingAccount => 'ບັນຊີທີ່ມີຢູ່ແລ້ວ';
+	@override String get dashboard => 'Dashboard';
 	@override String get local => 'ທ້ອງຖິ່ນ';
 	@override String get numberOfDays => 'ຈຳນວນມື້';
 	@override String get objectStorageBucket => 'Bucket';
 	@override String get objectStoragePrefix => 'Prefix';
 	@override String get objectStorageEndpoint => 'Endpoint';
-	@override String get objectStorageRegion => 'ພາກ​ພື້ນ';
+	@override String get objectStorageRegion => 'ພູມິພາກ';
 	@override String get deleteAll => 'ລຶບທັງໝົດ';
 	@override String get sounds => 'ສຽງ';
 	@override String get sound => 'ສຽງ';
@@ -421,11 +421,11 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get sort => 'ຈັດຮຽງໂດຍ';
 	@override String get ascendingOrder => 'ນ້ອຍໄປຫາໃຫຍ່';
 	@override String get descendingOrder => 'ໃຫຍ່ຫານ້ອຍ';
-	@override String get output => 'ຜົນຜະລິດ';
-	@override String get script => 'ບົດ​ຄວາມ';
+	@override String get output => 'Output';
+	@override String get script => 'Script';
 	@override String get menu => 'ເມນູ';
-	@override String get rearrange => 'ຈັດລຽງຄືນ';
-	@override String get poll => 'ການພູນ';
+	@override String get rearrange => 'ຈັດລຽງໃໝ່';
+	@override String get poll => 'Poll';
 	@override String get description => 'ລາຍລະອຽດ';
 	@override String get author => 'ຜູ້ຂຽນ';
 	@override String get manage => 'ການຈັດການ';
@@ -439,7 +439,7 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get notificationType => '​ປະເພດການ​ແຈ້ງ​ເຕືອນ';
 	@override String get edit => 'ແກ້ໄຂ';
 	@override String get email => 'ອີເມວ';
-	@override String get smtpHost => 'ໂຮດສ';
+	@override String get smtpHost => 'ໂຮສຕ໌';
 	@override String get smtpUser => 'ຊື່ຜູ້ໃຊ້';
 	@override String get smtpPass => 'ລະຫັດຜ່ານ';
 	@override String get clearCache => 'ລຶບລ້າງແຄສ';
@@ -449,7 +449,7 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get middle => 'ປານກາງ';
 	@override String get searchByGoogle => 'ຄົ້ນຫາ';
 	@override String get file => 'ໄຟລ໌';
-	@override String get replies => 'ຕອບ​ໄປ​ທີ';
+	@override String get replies => 'ຕອບ​ກັບ';
 	@override String get renotes => 'Renote';
 	@override late final _StringsMisskeyDeliveryLoLa delivery_ = _StringsMisskeyDeliveryLoLa._(_root);
 	@override late final _StringsMisskeyRoleLoLa role_ = _StringsMisskeyRoleLoLa._(_root);
@@ -469,6 +469,7 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationLoLa notification_ = _StringsMisskeyNotificationLoLa._(_root);
 	@override late final _StringsMisskeyDeckLoLa deck_ = _StringsMisskeyDeckLoLa._(_root);
 	@override late final _StringsMisskeyWebhookSettingsLoLa webhookSettings_ = _StringsMisskeyWebhookSettingsLoLa._(_root);
+	@override late final _StringsMisskeyAbuseReportLoLa abuseReport_ = _StringsMisskeyAbuseReportLoLa._(_root);
 	@override late final _StringsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _StringsMisskeyModerationLogTypesLoLa._(_root);
 }
 
@@ -542,8 +543,8 @@ class _StringsMisskeyWidgetsLoLa extends _StringsMisskeyWidgetsEnUs {
 	@override final _StringsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override String get profile => 'ໂພຼຟາຍ';
-	@override String get instanceInfo => 'ອີນສະແຕນ';
+	@override String get profile => 'ໂປຣໄຟລ໌';
+	@override String get instanceInfo => 'ຂໍ້ມູລເຊີຟເວີຣ໌';
 	@override String get notifications => 'ການແຈ້ງເຕືອນ';
 	@override String get timeline => '​ເສັ້ນກຳ​ນົດ​ເວ​ລາ​';
 	@override String get activity => 'ກິດຈະກຳ';
@@ -593,7 +594,7 @@ class _StringsMisskeyExportOrImportLoLa extends _StringsMisskeyExportOrImportEnU
 	// Translations
 	@override String get followingList => 'ກຳລັງຕິດຕາມ';
 	@override String get muteList => 'ປີດສຽງ';
-	@override String get blockingList => 'ບ໋ອກ';
+	@override String get blockingList => 'ບລັອກ';
 	@override String get userLists => 'ລາຍການ';
 }
 
@@ -624,7 +625,7 @@ class _StringsMisskeyPlayLoLa extends _StringsMisskeyPlayEnUs {
 	@override final _StringsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override String get script => 'ບົດ​ຄວາມ';
+	@override String get script => 'Script';
 	@override String get summary => 'ລາຍລະອຽດ';
 }
 
@@ -645,7 +646,7 @@ class _StringsMisskeyNotificationLoLa extends _StringsMisskeyNotificationEnUs {
 	@override final _StringsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override String get youWereFollowed => 'ໄດ້ຕິດຕາມທ່ານ';
+	@override String get youWereFollowed => 'ໄດ້ຕິດຕາມເຈົ້າ';
 	@override late final _StringsMisskeyNotificationTypesLoLa types_ = _StringsMisskeyNotificationTypesLoLa._(_root);
 	@override late final _StringsMisskeyNotificationActionsLoLa actions_ = _StringsMisskeyNotificationActionsLoLa._(_root);
 }
@@ -670,6 +671,16 @@ class _StringsMisskeyWebhookSettingsLoLa extends _StringsMisskeyWebhookSettingsE
 	@override String get name => 'ຊື່';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportLoLa extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+
+	@override final _StringsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientLoLa notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientLoLa._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesLoLa extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesLoLa._(_StringsLoLa root) : this._root = root, super._(root);
@@ -687,7 +698,7 @@ class _StringsMisskeyDeliveryTypeLoLa extends _StringsMisskeyDeliveryTypeEnUs {
 	@override final _StringsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override String get none => 'ການ​ພິມ​ເຜີຍ​ແຜ່';
+	@override String get none => 'ກຳລັງ​ເຜີຍ​ແພ່';
 }
 
 // Path: misskey.role_.priority_
@@ -749,10 +760,10 @@ class _StringsMisskeyNotificationTypesLoLa extends _StringsMisskeyNotificationTy
 
 	// Translations
 	@override String get follow => 'ກຳລັງຕິດຕາມ';
-	@override String get mention => 'ໄດ້ກ່າວມາ';
+	@override String get mention => 'ໄດ້ກ່າວເຖິງ';
 	@override String get renote => 'Renote';
-	@override String get quote => 'ລວມຂໍ້ຄວາມອ້າງອີງ';
-	@override String get reaction => 'ປະຕິກິລິຍາ';
+	@override String get quote => 'ອ້າງອີງ';
+	@override String get reaction => 'Reaction';
 }
 
 // Path: misskey.notification_.actions_
@@ -762,7 +773,7 @@ class _StringsMisskeyNotificationActionsLoLa extends _StringsMisskeyNotification
 	@override final _StringsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override String get reply => 'ຕອບ​ໄປ​ທີ';
+	@override String get reply => 'ຕອບ​ກັບ';
 	@override String get renote => 'Renote';
 }
 
@@ -777,5 +788,25 @@ class _StringsMisskeyDeckColumnsLoLa extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get tl => '​ເສັ້ນກຳ​ນົດ​ເວ​ລາ​';
 	@override String get list => 'ລາຍການ';
 	@override String get channel => 'ຊ່ອງ';
-	@override String get mentions => 'ກ່າວເຖິງ';
+	@override String get mentions => 'ກ່າວເຖິງເຈົ້າ';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientLoLa extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+
+	@override final _StringsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(_root);
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+
+	@override final _StringsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'ອີເມວ';
 }

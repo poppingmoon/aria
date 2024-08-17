@@ -1227,6 +1227,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDialogRuRu dialog_ = _StringsMisskeyDialogRuRu._(_root);
 	@override late final _StringsMisskeyDisabledTimelineRuRu disabledTimeline_ = _StringsMisskeyDisabledTimelineRuRu._(_root);
 	@override late final _StringsMisskeyWebhookSettingsRuRu webhookSettings_ = _StringsMisskeyWebhookSettingsRuRu._(_root);
+	@override late final _StringsMisskeyAbuseReportRuRu abuseReport_ = _StringsMisskeyAbuseReportRuRu._(_root);
 	@override late final _StringsMisskeyModerationLogTypesRuRu moderationLogTypes_ = _StringsMisskeyModerationLogTypesRuRu._(_root);
 	@override late final _StringsMisskeyReversiRuRu reversi_ = _StringsMisskeyReversiRuRu._(_root);
 }
@@ -1654,8 +1655,6 @@ class _StringsMisskeySfxRuRu extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Заметки';
 	@override String get noteMy => 'Собственные заметки';
 	@override String get notification => 'Уведомления';
-	@override String get antenna => 'Антенна';
-	@override String get channel => 'Канал';
 }
 
 // Path: misskey.ago_
@@ -2193,6 +2192,16 @@ class _StringsMisskeyWebhookSettingsRuRu extends _StringsMisskeyWebhookSettingsE
 	@override String get active => 'Вкл.';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportRuRu extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportRuRu._(_StringsRuRu root) : this._root = root, super._(root);
+
+	@override final _StringsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRuRu notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientRuRu._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesRuRu extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesRuRu._(_StringsRuRu root) : this._root = root, super._(root);
@@ -2539,6 +2548,16 @@ class _StringsMisskeyDeckColumnsRuRu extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get mentions => 'Упоминания';
 	@override String get direct => 'Личное';
 	@override String get roleTimeline => 'История Ролей';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientRuRu extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRuRu._(_StringsRuRu root) : this._root = root, super._(root);
+
+	@override final _StringsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRuRu recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRuRu._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -3379,4 +3398,14 @@ class _StringsMisskeyPagesBlocksNoteRuRu extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'Идентификатор заметки';
 	@override String get idDescription => 'Можно также вставить ссылку на заметку.';
 	@override String get detailed => 'Подробный вид';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRuRu extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRuRu._(_StringsRuRu root) : this._root = root, super._(root);
+
+	@override final _StringsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Электронная почта';
 }

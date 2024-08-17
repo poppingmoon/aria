@@ -1042,6 +1042,7 @@ class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationSkSk notification_ = _StringsMisskeyNotificationSkSk._(_root);
 	@override late final _StringsMisskeyDeckSkSk deck_ = _StringsMisskeyDeckSkSk._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSkSk webhookSettings_ = _StringsMisskeyWebhookSettingsSkSk._(_root);
+	@override late final _StringsMisskeyAbuseReportSkSk abuseReport_ = _StringsMisskeyAbuseReportSkSk._(_root);
 	@override late final _StringsMisskeyModerationLogTypesSkSk moderationLogTypes_ = _StringsMisskeyModerationLogTypesSkSk._(_root);
 	@override late final _StringsMisskeyReversiSkSk reversi_ = _StringsMisskeyReversiSkSk._(_root);
 }
@@ -1384,8 +1385,6 @@ class _StringsMisskeySfxSkSk extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Poznámky';
 	@override String get noteMy => 'Vlastná poznámka';
 	@override String get notification => 'Oznámenia';
-	@override String get antenna => 'Antény';
-	@override String get channel => 'Upozornenia kanála';
 }
 
 // Path: misskey.ago_
@@ -1853,6 +1852,16 @@ class _StringsMisskeyWebhookSettingsSkSk extends _StringsMisskeyWebhookSettingsE
 	@override String get active => 'Zapnuté';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportSkSk extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+
+	@override final _StringsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientSkSk notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientSkSk._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesSkSk extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesSkSk._(_StringsSkSk root) : this._root = root, super._(root);
@@ -2056,6 +2065,16 @@ class _StringsMisskeyDeckColumnsSkSk extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get direct => 'Priame poznámky';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientSkSk extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+
+	@override final _StringsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(_root);
+}
+
 // Path: misskey.pages_.blocks.note_
 class _StringsMisskeyPagesBlocksNoteSkSk extends _StringsMisskeyPagesBlocksNoteEnUs {
 	_StringsMisskeyPagesBlocksNoteSkSk._(_StringsSkSk root) : this._root = root, super._(root);
@@ -2066,4 +2085,14 @@ class _StringsMisskeyPagesBlocksNoteSkSk extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'ID poznámky';
 	@override String get idDescription => 'Alebo môžete vložiť URL poznámky sem';
 	@override String get detailed => 'Podrobný pohľad';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+
+	@override final _StringsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }

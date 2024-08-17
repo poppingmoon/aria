@@ -570,6 +570,7 @@ class _StringsMisskeyNoNo extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationNoNo notification_ = _StringsMisskeyNotificationNoNo._(_root);
 	@override late final _StringsMisskeyDeckNoNo deck_ = _StringsMisskeyDeckNoNo._(_root);
 	@override late final _StringsMisskeyWebhookSettingsNoNo webhookSettings_ = _StringsMisskeyWebhookSettingsNoNo._(_root);
+	@override late final _StringsMisskeyAbuseReportNoNo abuseReport_ = _StringsMisskeyAbuseReportNoNo._(_root);
 	@override late final _StringsMisskeyModerationLogTypesNoNo moderationLogTypes_ = _StringsMisskeyModerationLogTypesNoNo._(_root);
 }
 
@@ -1024,6 +1025,16 @@ class _StringsMisskeyWebhookSettingsNoNo extends _StringsMisskeyWebhookSettingsE
 	@override String get name => 'Navn';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportNoNo extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportNoNo._(_StringsNoNo root) : this._root = root, super._(root);
+
+	@override final _StringsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientNoNo notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientNoNo._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesNoNo extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesNoNo._(_StringsNoNo root) : this._root = root, super._(root);
@@ -1177,6 +1188,16 @@ class _StringsMisskeyDeckColumnsNoNo extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get list => 'Lister';
 	@override String get channel => 'Kanaler';
 	@override String get direct => 'Direkte';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientNoNo extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientNoNo._(_StringsNoNo root) : this._root = root, super._(root);
+
+	@override final _StringsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeNoNo recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeNoNo._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes10_
@@ -1495,4 +1516,14 @@ class _StringsMisskeyAchievementsTypesBrainDiverNoNo extends _StringsMisskeyAchi
 	// Translations
 	@override String get title => 'Brain Diver';
 	@override String get flavor => 'Misskey-Misskey La-Tu-Ma';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeNoNo extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeNoNo._(_StringsNoNo root) : this._root = root, super._(root);
+
+	@override final _StringsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'E-post';
 }

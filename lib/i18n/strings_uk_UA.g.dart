@@ -1033,6 +1033,7 @@ class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationUkUa notification_ = _StringsMisskeyNotificationUkUa._(_root);
 	@override late final _StringsMisskeyDeckUkUa deck_ = _StringsMisskeyDeckUkUa._(_root);
 	@override late final _StringsMisskeyWebhookSettingsUkUa webhookSettings_ = _StringsMisskeyWebhookSettingsUkUa._(_root);
+	@override late final _StringsMisskeyAbuseReportUkUa abuseReport_ = _StringsMisskeyAbuseReportUkUa._(_root);
 	@override late final _StringsMisskeyModerationLogTypesUkUa moderationLogTypes_ = _StringsMisskeyModerationLogTypesUkUa._(_root);
 	@override late final _StringsMisskeyReversiUkUa reversi_ = _StringsMisskeyReversiUkUa._(_root);
 }
@@ -1360,8 +1361,6 @@ class _StringsMisskeySfxUkUa extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Нотатки';
 	@override String get noteMy => 'Мої нотатки';
 	@override String get notification => 'Сповіщення';
-	@override String get antenna => 'Прийом антени';
-	@override String get channel => 'Повідомлення каналу';
 }
 
 // Path: misskey.ago_
@@ -1812,6 +1811,16 @@ class _StringsMisskeyWebhookSettingsUkUa extends _StringsMisskeyWebhookSettingsE
 	@override String get active => 'Увімкнено';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportUkUa extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+
+	@override final _StringsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientUkUa notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientUkUa._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesUkUa extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
@@ -2091,6 +2100,16 @@ class _StringsMisskeyDeckColumnsUkUa extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get channel => 'Канали';
 	@override String get mentions => 'Згадки';
 	@override String get direct => 'Особисте';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientUkUa extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+
+	@override final _StringsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -2888,4 +2907,14 @@ class _StringsMisskeyPagesBlocksNoteUkUa extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'Ідентифікатор нотатки';
 	@override String get idDescription => 'Також можна вказати посилання на нотатку';
 	@override String get detailed => 'Детальний вигляд';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+
+	@override final _StringsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'E-mail';
 }

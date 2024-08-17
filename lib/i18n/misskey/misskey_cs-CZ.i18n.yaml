@@ -1649,8 +1649,6 @@ sfx_:
   note: "Poznámky"
   noteMy: "Moje poznámka"
   notification: "Oznámení"
-  antenna: "Antény"
-  channel: "Oznámení kanálu"
 ago_:
   future: "Budoucí"
   justNow: "Teď"
@@ -2016,7 +2014,6 @@ webhookSettings_:
   createWebhook: "Vytvořit Webhook"
   name: "Jméno"
   secret: "Tajné"
-  events: "Události Webhook"
   active: "Zapnuto"
   events_:
     follow: "Při sledování uživatele"
@@ -2026,6 +2023,10 @@ webhookSettings_:
     renote: "Při renotaci poznámky"
     reaction: "Při obdržení reakce"
     mention: "Při zmínce"
+abuseReport_:
+  notificationRecipient_:
+    recipientType_:
+      mail: "Email"
 moderationLogTypes_:
   suspend: "Zmrazit"
   resetPassword: "Resetovat heslo"
