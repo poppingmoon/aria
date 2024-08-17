@@ -43,8 +43,9 @@ class AntennaSettingsDialog extends HookConsumerWidget {
         lists?.firstWhereOrNull((list) => list.id == settings.value.userListId);
 
     return AlertDialog(
-      title:
-          Text(this.settings?.name == null ? t.misskey.create : t.misskey.edit),
+      title: Text(
+        this.settings?.name == null ? t.misskey.createAntenna : t.misskey.edit,
+      ),
       content: Column(
         children: [
           ListTile(

@@ -104,6 +104,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                 children: [
                   SwitchListTile(
                     title: Text(t.misskey.collapseRenotes),
+                    subtitle: Text(t.misskey.collapseRenotesDescription),
                     value: settings.collapseRenotes,
                     onChanged: (value) => ref
                         .read(generalSettingsNotifierProvider.notifier)

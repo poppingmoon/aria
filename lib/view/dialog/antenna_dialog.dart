@@ -57,7 +57,7 @@ class AntennaDialog extends HookConsumerWidget {
         ),
         ListTile(
           leading: const Icon(Icons.add),
-          title: Text(t.misskey.create),
+          title: Text(t.misskey.createAntenna),
           onTap: () async {
             final result = await showDialog<AntennaSettings>(
               context: context,

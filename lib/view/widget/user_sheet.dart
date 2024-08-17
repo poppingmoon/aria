@@ -205,7 +205,7 @@ class UserSheet extends ConsumerWidget {
                 (i != null && (i.policies?.canSearchNotes ?? true)))
               ListTile(
                 leading: const Icon(Icons.search),
-                title: Text(t.misskey.search),
+                title: Text(t.misskey.searchThisUsersNotes),
                 onTap: () => context.push('/$account/search?userId=$userId'),
               ),
             if (!account.isGuest) ...[
