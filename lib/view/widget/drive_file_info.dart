@@ -5,6 +5,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../model/post_file.dart';
 import '../../provider/api/drive_files_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
@@ -13,6 +14,7 @@ import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/navigate.dart';
 import '../../util/pretty_bytes.dart';
+import '../dialog/file_caption_edit_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import 'media_list.dart';
 import 'time_widget.dart';
@@ -48,11 +50,11 @@ class DriveFileInfo extends ConsumerWidget {
   }
 
   Future<void> _setComment(WidgetRef ref, DriveFile file) async {
-    final comment = await showTextFieldDialog(
-      ref.context,
-      title: Text(t.misskey.enterFileDescription),
-      initialText: file.comment,
-      maxLines: null,
+    final comment = await showDialog<String>(
+      context: ref.context,
+      builder: (context) => FileCaptionEditDialog(
+        file: DrivePostFile.fromDriveFile(file),
+      ),
     );
     if (!ref.context.mounted) return;
     if (comment != null && comment != file.comment) {

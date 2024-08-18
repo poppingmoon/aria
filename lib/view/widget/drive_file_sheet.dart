@@ -17,9 +17,10 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/file_caption_edit_dialog.dart';
 import '../dialog/gallery_dialog.dart';
 import '../dialog/message_dialog.dart';
-import '../dialog/post_file_editor_dialog.dart';
+import '../dialog/text_field_dialog.dart';
 import '../page/drive_page.dart';
 import 'post_file_thumbnail.dart';
 import 'time_widget.dart';
@@ -34,14 +35,14 @@ class DriveFileSheet extends ConsumerWidget {
   final Account account;
   final DriveFile file;
 
-  Future<void> _editFile(WidgetRef ref) async {
-    final postFile = DrivePostFile.fromDriveFile(file);
-    final result = await showDialog<PostFile>(
-      context: ref.context,
-      builder: (context) => PostFileEditorDialog(file: postFile),
+  Future<void> _renameFile(WidgetRef ref) async {
+    final result = await showTextFieldDialog(
+      ref.context,
+      title: Text(t.misskey.renameFile),
+      initialText: file.name,
     );
     if (!ref.context.mounted) return;
-    if (result != null && result != postFile) {
+    if (result != null && result != file.name) {
       await futureWithDialog(
         ref.context,
         ref
@@ -50,9 +51,48 @@ class DriveFileSheet extends ConsumerWidget {
             )
             .updateFile(
               fileId: file.id,
-              name: result.name,
-              isSensitive: result.isSensitive,
-              comment: result.comment,
+              name: result,
+            ),
+      );
+      if (!ref.context.mounted) return;
+      ref.context.pop();
+    }
+  }
+
+  Future<void> _updateIsSensitive(WidgetRef ref, bool isSensitive) async {
+    await futureWithDialog(
+      ref.context,
+      ref
+          .read(
+            driveFilesNotifierProvider(account, file.folderId).notifier,
+          )
+          .updateFile(
+            fileId: file.id,
+            isSensitive: isSensitive,
+          ),
+    );
+    if (!ref.context.mounted) return;
+    ref.context.pop();
+  }
+
+  Future<void> _describeFile(WidgetRef ref) async {
+    final result = await showDialog<String>(
+      context: ref.context,
+      builder: (context) => FileCaptionEditDialog(
+        file: DrivePostFile.fromDriveFile(file),
+      ),
+    );
+    if (!ref.context.mounted) return;
+    if (result != null && result != file.name) {
+      await futureWithDialog(
+        ref.context,
+        ref
+            .read(
+              driveFilesNotifierProvider(account, file.folderId).notifier,
+            )
+            .updateFile(
+              fileId: file.id,
+              comment: result,
             ),
       );
       if (!ref.context.mounted) return;
@@ -177,16 +217,36 @@ class DriveFileSheet extends ConsumerWidget {
         ListTile(
           leading: AspectRatio(
             aspectRatio: 1,
-            child: PostFileThumbnail(file: DrivePostFile.fromDriveFile(file)),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: PostFileThumbnail(file: DrivePostFile.fromDriveFile(file)),
+            ),
           ),
           title: Text(file.name),
           subtitle: TimeWidget(time: file.createdAt, detailed: true),
         ),
-        const Divider(),
+        const Divider(height: 0.0),
         ListTile(
-          leading: const Icon(Icons.settings),
-          title: Text(t.aria.editFile),
-          onTap: () => _editFile(ref),
+          leading: const Icon(Icons.edit),
+          title: Text(t.misskey.renameFile),
+          onTap: () => _renameFile(ref),
+        ),
+        if (file.isSensitive)
+          ListTile(
+            leading: const Icon(Icons.visibility),
+            title: Text(t.misskey.unmarkAsSensitive),
+            onTap: () => _updateIsSensitive(ref, false),
+          )
+        else
+          ListTile(
+            leading: const Icon(Icons.visibility_off),
+            title: Text(t.misskey.markAsSensitive),
+            onTap: () => _updateIsSensitive(ref, true),
+          ),
+        ListTile(
+          leading: const Icon(Icons.edit_note),
+          title: Text(t.misskey.describeFile),
+          onTap: () => _describeFile(ref),
         ),
         if (file.type.startsWith('image/'))
           ListTile(
@@ -195,7 +255,7 @@ class DriveFileSheet extends ConsumerWidget {
             onTap: () => _editImage(ref),
           ),
         ListTile(
-          leading: const Icon(Icons.edit),
+          leading: const Icon(Icons.edit_outlined),
           title: Text(t.misskey.createNoteFromTheFile),
           onTap: () {
             ref
