@@ -1037,8 +1037,6 @@ sfx_:
   note: "নোটগুলি"
   noteMy: "নোট (আপনার)"
   notification: "বিজ্ঞপ্তি"
-  antenna: "অ্যান্টেনাগুলি"
-  channel: "চ্যানেলের বিজ্ঞপ্তি"
 ago_:
   future: "ভবিষ্যৎ"
   justNow: "এইমাত্র"
@@ -1350,6 +1348,10 @@ deck_:
 webhookSettings_:
   name: "নাম"
   active: "চালু"
+abuseReport_:
+  notificationRecipient_:
+    recipientType_:
+      mail: "ইমেইল"
 moderationLogTypes_:
   suspend: "স্থগিত করা"
   resetPassword: "পাসওয়ার্ড রিসেট করুন"

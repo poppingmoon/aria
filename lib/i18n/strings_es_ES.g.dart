@@ -139,6 +139,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get copyFolderId => 'Copiar ID de carpeta';
 	@override String get copyProfileUrl => 'Copiar la URL del perfil';
 	@override String get searchUser => 'Buscar un usuario';
+	@override String get searchThisUsersNotes => '';
 	@override String get reply => 'Responder';
 	@override String get loadMore => 'Ver más';
 	@override String get showMore => 'Ver más';
@@ -381,7 +382,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get theme => 'Tema';
 	@override String get themeForLightMode => 'Tema para usar en Modo Linterna';
 	@override String get themeForDarkMode => 'Tema para usar en Modo Oscuro';
-	@override String get light => 'Linterna';
+	@override String get light => 'Claro';
 	@override String get dark => 'Oscuro';
 	@override String get lightThemes => 'Tema claro';
 	@override String get darkThemes => 'Tema oscuro';
@@ -1373,6 +1374,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDisabledTimelineEsEs disabledTimeline_ = _StringsMisskeyDisabledTimelineEsEs._(_root);
 	@override late final _StringsMisskeyDrivecleanerEsEs drivecleaner_ = _StringsMisskeyDrivecleanerEsEs._(_root);
 	@override late final _StringsMisskeyWebhookSettingsEsEs webhookSettings_ = _StringsMisskeyWebhookSettingsEsEs._(_root);
+	@override late final _StringsMisskeyAbuseReportEsEs abuseReport_ = _StringsMisskeyAbuseReportEsEs._(_root);
 	@override late final _StringsMisskeyModerationLogTypesEsEs moderationLogTypes_ = _StringsMisskeyModerationLogTypesEsEs._(_root);
 	@override late final _StringsMisskeyFileViewerEsEs fileViewer_ = _StringsMisskeyFileViewerEsEs._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerEsEs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerEsEs._(_root);
@@ -1933,8 +1935,6 @@ class _StringsMisskeySfxEsEs extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Notas';
 	@override String get noteMy => 'Nota (a mí mismo)';
 	@override String get notification => 'Notificaciones';
-	@override String get antenna => 'Antena receptora';
-	@override String get channel => 'Notificaciones del canal';
 	@override String get reaction => 'Al seleccionar una reacción';
 }
 
@@ -2575,9 +2575,18 @@ class _StringsMisskeyWebhookSettingsEsEs extends _StringsMisskeyWebhookSettingsE
 	@override String get createWebhook => 'Crear Webhook';
 	@override String get name => 'Nombre';
 	@override String get secret => 'Secreto';
-	@override String get events => 'Eventos de webhook';
 	@override String get active => 'Activado';
 	@override late final _StringsMisskeyWebhookSettingsEventsEsEs events_ = _StringsMisskeyWebhookSettingsEventsEsEs._(_root);
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportEsEs extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportEsEs._(_StringsEsEs root) : this._root = root, super._(root);
+
+	@override final _StringsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientEsEs notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientEsEs._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -3193,6 +3202,16 @@ class _StringsMisskeyWebhookSettingsEventsEsEs extends _StringsMisskeyWebhookSet
 	@override String get renote => 'Cuando reciba un "re-note"';
 	@override String get reaction => 'Cuando se recibe una reacción';
 	@override String get mention => 'Cuando hay una mención';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientEsEs extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientEsEs._(_StringsEsEs root) : this._root = root, super._(root);
+
+	@override final _StringsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4223,6 +4242,16 @@ class _StringsMisskeyPagesBlocksNoteEsEs extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'Id de la nota';
 	@override String get idDescription => 'Pega la URL de la nota para configurarla';
 	@override String get detailed => 'Ver Detalles';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs._(_StringsEsEs root) : this._root = root, super._(root);
+
+	@override final _StringsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Correo';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_

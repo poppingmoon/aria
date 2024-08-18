@@ -1359,6 +1359,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationCaEs notification_ = _StringsMisskeyNotificationCaEs._(_root);
 	@override late final _StringsMisskeyDeckCaEs deck_ = _StringsMisskeyDeckCaEs._(_root);
 	@override late final _StringsMisskeyWebhookSettingsCaEs webhookSettings_ = _StringsMisskeyWebhookSettingsCaEs._(_root);
+	@override late final _StringsMisskeyAbuseReportCaEs abuseReport_ = _StringsMisskeyAbuseReportCaEs._(_root);
 	@override late final _StringsMisskeyModerationLogTypesCaEs moderationLogTypes_ = _StringsMisskeyModerationLogTypesCaEs._(_root);
 	@override late final _StringsMisskeyFileViewerCaEs fileViewer_ = _StringsMisskeyFileViewerCaEs._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerCaEs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerCaEs._(_root);
@@ -1910,8 +1911,6 @@ class _StringsMisskeySfxCaEs extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Notes';
 	@override String get noteMy => 'Nota (per mi)';
 	@override String get notification => 'Notificacions';
-	@override String get antenna => 'Antenes';
-	@override String get channel => 'Notificacions dels canals';
 	@override String get reaction => 'Quan se selecciona una reacció ';
 }
 
@@ -2383,6 +2382,16 @@ class _StringsMisskeyWebhookSettingsCaEs extends _StringsMisskeyWebhookSettingsE
 	// Translations
 	@override String get name => 'Nom';
 	@override String get active => 'Activat';
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportCaEs extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientCaEs notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientCaEs._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2880,6 +2889,16 @@ class _StringsMisskeyDeckColumnsCaEs extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get channel => 'Canals';
 	@override String get mentions => 'Mencions';
 	@override String get direct => 'Publicacions directes';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientCaEs extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -3859,6 +3878,16 @@ class _StringsMisskeyPagesBlocksNoteCaEs extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'ID de la publicació';
 	@override String get idDescription => 'Alternativament pots enganxar l\'adreça URL de la nota aquí.';
 	@override String get detailed => 'Mostra els detalls';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Correu electrònic';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_

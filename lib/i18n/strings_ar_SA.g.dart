@@ -1135,6 +1135,7 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationArSa notification_ = _StringsMisskeyNotificationArSa._(_root);
 	@override late final _StringsMisskeyDeckArSa deck_ = _StringsMisskeyDeckArSa._(_root);
 	@override late final _StringsMisskeyWebhookSettingsArSa webhookSettings_ = _StringsMisskeyWebhookSettingsArSa._(_root);
+	@override late final _StringsMisskeyAbuseReportArSa abuseReport_ = _StringsMisskeyAbuseReportArSa._(_root);
 	@override late final _StringsMisskeyModerationLogTypesArSa moderationLogTypes_ = _StringsMisskeyModerationLogTypesArSa._(_root);
 	@override late final _StringsMisskeyReversiArSa reversi_ = _StringsMisskeyReversiArSa._(_root);
 	@override late final _StringsMisskeyOfflineScreenArSa offlineScreen_ = _StringsMisskeyOfflineScreenArSa._(_root);
@@ -1499,8 +1500,6 @@ class _StringsMisskeySfxArSa extends _StringsMisskeySfxEnUs {
 	@override String get note => 'الملاحظات';
 	@override String get noteMy => 'ملاحظتي';
 	@override String get notification => 'الإشعارات';
-	@override String get antenna => 'الهوائيات';
-	@override String get channel => 'إشعارات القنات';
 }
 
 // Path: misskey.ago_
@@ -1949,6 +1948,16 @@ class _StringsMisskeyWebhookSettingsArSa extends _StringsMisskeyWebhookSettingsE
 	@override late final _StringsMisskeyWebhookSettingsEventsArSa events_ = _StringsMisskeyWebhookSettingsEventsArSa._(_root);
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportArSa extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportArSa._(_StringsArSa root) : this._root = root, super._(root);
+
+	@override final _StringsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientArSa notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientArSa._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesArSa extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesArSa._(_StringsArSa root) : this._root = root, super._(root);
@@ -2212,6 +2221,16 @@ class _StringsMisskeyWebhookSettingsEventsArSa extends _StringsMisskeyWebhookSet
 	@override String get reaction => 'عند التفاعل';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientArSa extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientArSa._(_StringsArSa root) : this._root = root, super._(root);
+
+	@override final _StringsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(_root);
+}
+
 // Path: misskey.achievements_.types_.notes1_
 class _StringsMisskeyAchievementsTypesNotes1ArSa extends _StringsMisskeyAchievementsTypesNotes1EnUs {
 	_StringsMisskeyAchievementsTypesNotes1ArSa._(_StringsArSa root) : this._root = root, super._(root);
@@ -2448,4 +2467,14 @@ class _StringsMisskeyPagesBlocksNoteArSa extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'معرّف الملاحظة';
 	@override String get idDescription => 'كبديل يمكنك إدخال رابك الملاحظة هنا';
 	@override String get detailed => 'عرض مفصّل';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(_StringsArSa root) : this._root = root, super._(root);
+
+	@override final _StringsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'البريد الإلكتروني ';
 }

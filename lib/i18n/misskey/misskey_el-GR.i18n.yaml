@@ -305,8 +305,6 @@ theme_:
 sfx_:
   note: "Σημειώματα"
   notification: "Ειδοποιήσεις"
-  antenna: "Αντένες"
-  channel: "Ειδοποιήσεις καναλιών"
 ago_:
   future: "Μελλοντικό"
   justNow: "Μόλις τώρα"

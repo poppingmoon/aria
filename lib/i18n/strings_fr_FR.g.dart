@@ -1168,6 +1168,8 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'Énumérez les noms d\'utilisateur à réserver, séparés par des nouvelles lignes. Les noms d\'utilisateur spécifiés ici ne seront plus utilisables lors de la création d\'un compte, sauf la création manuelle par un administrateur. De plus, les comptes existants ne seront pas affectés.';
 	@override String get createNoteFromTheFile => 'Rédiger une note de ce fichier';
 	@override String get archive => 'Archive';
+	@override String get archived => 'Archivé';
+	@override String get unarchive => 'Annuler l\'archivage';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Voulez-vous vraiment archiver ${name} ?';
 	@override String get channelArchiveConfirmDescription => 'Une fois archivé, le canal n\'apparaîtra plus dans la liste des canaux ni dans les résultats de recherche, et la publication des nouvelles notes sera impossible.';
 	@override String get thisChannelArchived => 'Ce canal a été archivé.';
@@ -1298,6 +1300,8 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get loading => 'Chargement en cours';
 	@override String get surrender => 'Annuler';
 	@override String get gameRetry => 'Réessayer';
+	@override String get launchApp => 'Lancer l\'app';
+	@override String get inquiry => 'Contact';
 	@override late final _StringsMisskeyDeliveryFrFr delivery_ = _StringsMisskeyDeliveryFrFr._(_root);
 	@override late final _StringsMisskeyBubbleGameFrFr bubbleGame_ = _StringsMisskeyBubbleGameFrFr._(_root);
 	@override late final _StringsMisskeyAnnouncementFrFr announcement_ = _StringsMisskeyAnnouncementFrFr._(_root);
@@ -1356,6 +1360,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDeckFrFr deck_ = _StringsMisskeyDeckFrFr._(_root);
 	@override late final _StringsMisskeyDrivecleanerFrFr drivecleaner_ = _StringsMisskeyDrivecleanerFrFr._(_root);
 	@override late final _StringsMisskeyWebhookSettingsFrFr webhookSettings_ = _StringsMisskeyWebhookSettingsFrFr._(_root);
+	@override late final _StringsMisskeyAbuseReportFrFr abuseReport_ = _StringsMisskeyAbuseReportFrFr._(_root);
 	@override late final _StringsMisskeyModerationLogTypesFrFr moderationLogTypes_ = _StringsMisskeyModerationLogTypesFrFr._(_root);
 	@override late final _StringsMisskeyFileViewerFrFr fileViewer_ = _StringsMisskeyFileViewerFrFr._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerFrFr externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerFrFr._(_root);
@@ -1370,6 +1375,7 @@ class _StringsMisskeyDeliveryFrFr extends _StringsMisskeyDeliveryEnUs {
 	@override final _StringsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get status => 'Statut de la diffusion';
 	@override String get stop => 'Suspendu·e';
 	@override late final _StringsMisskeyDeliveryTypeFrFr type_ = _StringsMisskeyDeliveryTypeFrFr._(_root);
 }
@@ -1864,8 +1870,6 @@ class _StringsMisskeySfxFrFr extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Nouvelle note';
 	@override String get noteMy => 'Ma note';
 	@override String get notification => 'Notifications';
-	@override String get antenna => 'Réception de l’antenne';
-	@override String get channel => 'Notifications de canal';
 	@override String get reaction => 'Lors de la sélection de la réaction';
 }
 
@@ -2393,6 +2397,16 @@ class _StringsMisskeyWebhookSettingsFrFr extends _StringsMisskeyWebhookSettingsE
 	@override String get active => 'Activé';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportFrFr extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportFrFr._(_StringsFrFr root) : this._root = root, super._(root);
+
+	@override final _StringsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientFrFr notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientFrFr._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesFrFr extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesFrFr._(_StringsFrFr root) : this._root = root, super._(root);
@@ -2863,6 +2877,16 @@ class _StringsMisskeyDeckColumnsFrFr extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get channel => 'Canal';
 	@override String get mentions => 'Mentions';
 	@override String get direct => 'Direct';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientFrFr extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientFrFr._(_StringsFrFr root) : this._root = root, super._(root);
+
+	@override final _StringsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeFrFr recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeFrFr._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -3561,6 +3585,16 @@ class _StringsMisskeyPagesBlocksNoteFrFr extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'Identifiant de la note';
 	@override String get idDescription => 'Pour configurer la note, vous pouvez aussi coller ici l\'URL correspondante.';
 	@override String get detailed => 'Afficher les détails';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeFrFr extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeFrFr._(_StringsFrFr root) : this._root = root, super._(root);
+
+	@override final _StringsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'E-mail ';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_

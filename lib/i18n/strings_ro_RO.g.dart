@@ -735,6 +735,7 @@ class _StringsMisskeyRoRo extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationRoRo notification_ = _StringsMisskeyNotificationRoRo._(_root);
 	@override late final _StringsMisskeyDeckRoRo deck_ = _StringsMisskeyDeckRoRo._(_root);
 	@override late final _StringsMisskeyWebhookSettingsRoRo webhookSettings_ = _StringsMisskeyWebhookSettingsRoRo._(_root);
+	@override late final _StringsMisskeyAbuseReportRoRo abuseReport_ = _StringsMisskeyAbuseReportRoRo._(_root);
 	@override late final _StringsMisskeyModerationLogTypesRoRo moderationLogTypes_ = _StringsMisskeyModerationLogTypesRoRo._(_root);
 	@override late final _StringsMisskeyReversiRoRo reversi_ = _StringsMisskeyReversiRoRo._(_root);
 }
@@ -947,6 +948,16 @@ class _StringsMisskeyWebhookSettingsRoRo extends _StringsMisskeyWebhookSettingsE
 	@override String get name => 'Nume';
 }
 
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportRoRo extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportRoRo._(_StringsRoRo root) : this._root = root, super._(root);
+
+	@override final _StringsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRoRo notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientRoRo._(_root);
+}
+
 // Path: misskey.moderationLogTypes_
 class _StringsMisskeyModerationLogTypesRoRo extends _StringsMisskeyModerationLogTypesEnUs {
 	_StringsMisskeyModerationLogTypesRoRo._(_StringsRoRo root) : this._root = root, super._(root);
@@ -1068,4 +1079,24 @@ class _StringsMisskeyDeckColumnsRoRo extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get list => 'Liste';
 	@override String get channel => 'Canale';
 	@override String get mentions => 'Mențiuni';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientRoRo extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRoRo._(_StringsRoRo root) : this._root = root, super._(root);
+
+	@override final _StringsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRoRo recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRoRo._(_root);
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRoRo extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeRoRo._(_StringsRoRo root) : this._root = root, super._(root);
+
+	@override final _StringsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }

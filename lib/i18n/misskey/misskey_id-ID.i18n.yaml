@@ -184,6 +184,10 @@ addAccount: "Tambahkan akun"
 reloadAccountsList: "Muat ulang daftar akun"
 loginFailed: "Gagal untuk masuk"
 showOnRemote: "Lihat profil asli"
+continueOnRemote: "Lihat di peladen asal"
+chooseServerOnMisskeyHub: "Pilih peladen dari Misskey Hub"
+specifyServerHost: "Tentukan domain peladen"
+inputHostName: "Masukkan nama domain"
 general: "Umum"
 wallpaper: "Wallpaper"
 setWallpaper: "Atur wallpaper"
@@ -320,6 +324,7 @@ selectFile: "Pilih berkas"
 selectFiles: "Pilih berkas"
 selectFolder: "Pilih folder"
 selectFolders: "Pilih folder"
+fileNotSelected: "Tidak ada file yang dipilih"
 renameFile: "Ubah nama berkas"
 folderName: "Nama folder"
 createFolder: "Buat folder"
@@ -1243,6 +1248,7 @@ keepOriginalFilenameDescription: "Apabila pengaturan ini dimatikan, nama berkas 
 noDescription: "Tidak ada deskripsi"
 alwaysConfirmFollow: "Selalu konfirmasi ketika mengikuti"
 inquiry: "Hubungi kami"
+tryAgain: "Silahkan coba lagi."
 delivery_:
   status: "Status pengiriman"
   stop: "Ditangguhkan"
@@ -1743,7 +1749,7 @@ emailUnavailable_:
   smtp: "Peladen alamat surel ini tidak merespon"
   banned: "Kamu tidak dapat mendaftar dengan alamat surel ini"
 ffVisibility_:
-  public: "Terbitkan"
+  public: "Publik"
   followers: "Tampil untuk pengikut saja"
   private: "Tersembunyi"
 signup_:
@@ -1936,8 +1942,6 @@ sfx_:
   note: "Catatan"
   noteMy: "Catatan (Saya)"
   notification: "Notifikasi"
-  antenna: "Penerimaan Antenna"
-  channel: "Notifikasi Kanal"
   reaction: "Ketika memilih reaksi"
 soundSettings_:
   driveFile: "Menggunakan berkas audio dalam Drive"
@@ -2400,9 +2404,9 @@ drivecleaner_:
   orderByCreatedAtAsc: "Tanggal (Naik)"
 webhookSettings_:
   createWebhook: "Buat Webhook"
+  modifyWebhook: "Sunting Webhook"
   name: "Nama"
   secret: "Secret"
-  events: "Webhook Events"
   active: "Aktif"
   events_:
     follow: "Ketika mengikuti pengguna"
@@ -2412,6 +2416,11 @@ webhookSettings_:
     renote: "Ketika direnote"
     reaction: "Ketika menerima reaksi"
     mention: "Ketika sedang disebut"
+  deleteConfirm: "Apakah kamu yakin ingin menghapus Webhook?"
+abuseReport_:
+  notificationRecipient_:
+    recipientType_:
+      mail: "Surel"
 moderationLogTypes_:
   createRole: "Peran telah dibuat"
   deleteRole: "Peran telah dihapus"

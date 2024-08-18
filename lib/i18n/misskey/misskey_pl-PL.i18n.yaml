@@ -1225,8 +1225,6 @@ sfx_:
   note: "Wpisy"
   noteMy: "Mój wpis"
   notification: "Powiadomienia"
-  antenna: "Anteny"
-  channel: "Powiadomienia kanału"
 ago_:
   future: "W przyszłości"
   justNow: "Przed chwilą"
@@ -1550,7 +1548,6 @@ webhookSettings_:
   createWebhook: "Stwórz Webhook"
   name: "Nazwa"
   secret: "Sekret"
-  events: "Uruchomienie Webhooka"
   active: "Właczono"
   events_:
     follow: "Po zaobserwowaniu użytkownika"
@@ -1560,6 +1557,10 @@ webhookSettings_:
     renote: "Po udostępnieniu wpisu"
     reaction: "Po otrzymaniu reakcji"
     mention: "Po zostaniu wspomnianym"
+abuseReport_:
+  notificationRecipient_:
+    recipientType_:
+      mail: "Adres e-mail"
 moderationLogTypes_:
   suspend: "Zawieś"
   resetPassword: "Zresetuj hasło"

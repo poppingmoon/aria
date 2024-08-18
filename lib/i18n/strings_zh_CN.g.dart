@@ -140,6 +140,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get copyFolderId => '复制文件夹ID';
 	@override String get copyProfileUrl => '复制个人资料URL';
 	@override String get searchUser => '搜索用户';
+	@override String get searchThisUsersNotes => '搜索用户帖子';
 	@override String get reply => '回复';
 	@override String get loadMore => '查看更多';
 	@override String get showMore => '查看更多';
@@ -234,6 +235,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get selectChannel => '选择频道';
 	@override String get selectAntenna => '选择天线';
 	@override String get editAntenna => '编辑天线';
+	@override String get createAntenna => '创建天线';
 	@override String get selectWidget => '选择小工具';
 	@override String get editWidgets => '编辑部件';
 	@override String get editWidgetsExit => '完成编辑';
@@ -260,6 +262,10 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get reloadAccountsList => '更新账户列表';
 	@override String get loginFailed => '登录失败';
 	@override String get showOnRemote => '转到所在服务器显示';
+	@override String get continueOnRemote => '转到所在服务器继续';
+	@override String get chooseServerOnMisskeyHub => '从 Misskey Hub 选择服务器';
+	@override String get specifyServerHost => '直接输入服务器域名';
+	@override String get inputHostName => '请输入域名';
 	@override String get general => '常规设置';
 	@override String get wallpaper => '壁纸';
 	@override String get setWallpaper => '设置壁纸';
@@ -270,6 +276,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get proxyAccount => '代理账户';
 	@override String get proxyAccountDescription => '代理账户是在某些情况下替代用户进行远程关注用的账户。 例如说，当用户将一位远程用户放入一个列表中时，如果本地服务器上没有任何人关注这位远程用户，则这位远程用户的账户活动将不会被送到本地服务器上。作为替代，此时将使用代理账户进行关注。';
 	@override String get host => '主机名';
+	@override String get selectSelf => '选择自己';
 	@override String get selectUser => '选择用户';
 	@override String get recipient => '收件人';
 	@override String get annotation => '注解';
@@ -285,6 +292,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get stopActivityDelivery => '停止发送活动';
 	@override String get blockThisInstance => '阻止此服务器向本服务器推流';
 	@override String get silenceThisInstance => '使服务器静音';
+	@override String get mediaSilenceThisInstance => '隐藏此服务器的媒体文件';
 	@override String get operations => '操作';
 	@override String get software => '软件';
 	@override String get version => '版本';
@@ -303,9 +311,11 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get clearCachedFiles => '清除缓存';
 	@override String get clearCachedFilesConfirm => '确定要清除所有缓存的远程文件？';
 	@override String get blockedInstances => '被封锁的服务器';
-	@override String get blockedInstancesDescription => '设定要封锁的服务器，以换行来进行分割。被封锁的服务器将无法与本服务器进行交换通讯。子域名也同样会被封锁。';
+	@override String get blockedInstancesDescription => '设定要封锁的服务器，以换行分隔。被封锁的服务器将无法与本服务器进行交换通讯。子域名也同样会被封锁。';
 	@override String get silencedInstances => '被静音的服务器';
-	@override String get silencedInstancesDescription => '设置要静音的服务器，以换行符分隔。被静音的服务器内所有的账户将默认处于「静音」状态，仅能发送关注请求，并且在未关注状态下无法提及本地账户。被阻止的实例不受影响。';
+	@override String get silencedInstancesDescription => '设置要静音的服务器，以换行分隔。被静音的服务器内所有的账户将默认处于「静音」状态，仅能发送关注请求，并且在未关注状态下无法提及本地账户。被阻止的实例不受影响。';
+	@override String get mediaSilencedInstances => '已隐藏媒体文件的服务器';
+	@override String get mediaSilencedInstancesDescription => '设置要隐藏媒体文件的服务器，以换行分隔。被设置为隐藏媒体文件服务器内所有账号的文件均按照「敏感内容」处理，且将无法使用自定义表情符号。被阻止的实例不受影响。';
 	@override String get muteAndBlock => '静音/拉黑';
 	@override String get mutedUsers => '已静音用户';
 	@override String get blockedUsers => '已拉黑的用户';
@@ -396,6 +406,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get selectFiles => '选择文件';
 	@override String get selectFolder => '选择文件夹';
 	@override String get selectFolders => '选择多个文件夹';
+	@override String get fileNotSelected => '未选择文件';
 	@override String get renameFile => '重命名文件';
 	@override String get folderName => '文件夹名称';
 	@override String get createFolder => '创建文件夹';
@@ -430,7 +441,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get instanceDescription => '服务器简介';
 	@override String get maintainerName => '管理员名称';
 	@override String get maintainerEmail => '管理员电子邮箱';
-	@override String get tosUrl => '服务条款 URL';
+	@override String get tosUrl => '服务条款地址';
 	@override String get thisYear => '今年';
 	@override String get thisMonth => '本月';
 	@override String get today => '今天';
@@ -512,8 +523,8 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get token => 'Token (令牌)';
 	@override String get x2fa => '双因素认证';
 	@override String get setupOf2fa => '设置双因素认证';
-	@override String get totp => '身份验证应用';
-	@override String get totpDescription => '使用认证应用输入一次性密码。';
+	@override String get totp => '验证器';
+	@override String get totpDescription => '使用验证器输入一次性密码';
 	@override String get moderator => '监察员';
 	@override String get moderation => '管理';
 	@override String get moderationNote => '管理笔记';
@@ -556,6 +567,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get newMessageExists => '新信息';
 	@override String get onlyOneFileCanBeAttached => '只能添加一个附件';
 	@override String get signinRequired => '请先登录';
+	@override String get signinOrContinueOnRemote => '若要继续，需要转到您所使用的实例，或者在此服务器上注册或登录。';
 	@override String get invitations => '邀请';
 	@override String get invitationCode => '邀请码';
 	@override String get checking => '正在确认';
@@ -916,6 +928,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get accounts => '账户';
 	@override String get switch_ => '切换';
 	@override String get noMaintainerInformationWarning => '管理人员信息未设置。';
+	@override String get noInquiryUrlWarning => '尚未设置联络地址。';
 	@override String get noBotProtectionWarning => 'Bot 防御未设置。';
 	@override String get configure => '设置';
 	@override String get postToGallery => '发送到图库';
@@ -927,7 +940,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get ads => '广告';
 	@override String get expiration => '截止时间';
 	@override String get startingperiod => '开始时间';
-	@override String get memo => '便笺';
+	@override String get memo => '备注';
 	@override String get priority => '优先级';
 	@override String get high => '高';
 	@override String get middle => '中';
@@ -1105,6 +1118,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingCancel => '取消';
 	@override String get thisPostMayBeAnnoyingIgnore => '就这样发布';
 	@override String get collapseRenotes => '省略显示已经看过的转发内容';
+	@override String get collapseRenotesDescription => '将回应过或转贴过的贴子折叠表示。';
 	@override String get internalServerError => '内部服务器错误';
 	@override String get internalServerErrorDescription => '内部服务器发生了预期外的错误';
 	@override String get copyErrorInfo => '复制错误信息';
@@ -1178,6 +1192,8 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => '列出需要保留的用户名，使用换行来作为分割。被指定的用户名在建立账户时无法使用，但由管理员所创建的账户不受该限制。此外，现有的账户也不会受到影响。';
 	@override String get createNoteFromTheFile => '从文件创建帖子';
 	@override String get archive => '归档';
+	@override String get archived => '已归档';
+	@override String get unarchive => '取消归档';
 	@override String channelArchiveConfirmTitle({required Object name}) => '要将 ${name} 归档吗？';
 	@override String get channelArchiveConfirmDescription => '归档后，在频道列表与搜索结果中不会显示，也无法发布新的贴文。';
 	@override String get thisChannelArchived => '该频道已被归档。';
@@ -1188,6 +1204,9 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get preventAiLearningDescription => '要求文章生成 AI 或图像生成 AI 不能够以发布的帖子和图像等内容作为学习对象。这是通过在 HTML 响应中包含 noai 标志来实现的，这不能完全阻止 AI 学习你的发布内容，并不是所有 AI 都会遵守这类请求。';
 	@override String get options => '选项';
 	@override String get specifyUser => '用户指定';
+	@override String get lookupConfirm => '确定查询？';
+	@override String get openTagPageConfirm => '确定打开话题标签页面？';
+	@override String get specifyHost => '指定主机名';
 	@override String get failedToPreviewUrl => '无法预览';
 	@override String get update => '更新';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => '可以使用表情作为回应的角色';
@@ -1258,7 +1277,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get sourceCode => '源代码';
 	@override String get sourceCodeIsNotYetProvided => '还未提供源代码。要解决此问题请联系管理员。';
 	@override String get repositoryUrl => '仓库地址';
-	@override String get repositoryUrlDescription => '若源代码所在的仓库是公开的，请填入对应的 URL。若是按原样使用 Misskey（并未追加或者修改代码）的情况请填入 https://github.com/misskey-dev/misskey。';
+	@override String get repositoryUrlDescription => '若源代码所在的仓库是公开的，请填入对应的 URL。若并未追加或者修改 Misskey 的代码，请填入 https://github.com/misskey-dev/misskey。';
 	@override String get repositoryUrlOrTarballRequired => '若仓库并未公开，则需要提供 tarball 作为替代。详情请看 .config/example.yml。';
 	@override String get feedback => '反馈';
 	@override String get feedbackUrl => '反馈地址';
@@ -1319,6 +1338,11 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get noDescription => '没有描述';
 	@override String get alwaysConfirmFollow => '总是确认关注';
 	@override String get inquiry => '联系我们';
+	@override String get tryAgain => '请再试一次';
+	@override String get confirmWhenRevealingSensitiveMedia => '显示敏感内容前需要确认';
+	@override String get sensitiveMediaRevealConfirm => '这是敏感内容。是否显示？';
+	@override String get createdLists => '已创建的列表';
+	@override String get createdAntennas => '已创建的天线';
 	@override late final _StringsMisskeyDeliveryZhCn delivery_ = _StringsMisskeyDeliveryZhCn._(_root);
 	@override late final _StringsMisskeyBubbleGameZhCn bubbleGame_ = _StringsMisskeyBubbleGameZhCn._(_root);
 	@override late final _StringsMisskeyAnnouncementZhCn announcement_ = _StringsMisskeyAnnouncementZhCn._(_root);
@@ -1380,6 +1404,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDisabledTimelineZhCn disabledTimeline_ = _StringsMisskeyDisabledTimelineZhCn._(_root);
 	@override late final _StringsMisskeyDrivecleanerZhCn drivecleaner_ = _StringsMisskeyDrivecleanerZhCn._(_root);
 	@override late final _StringsMisskeyWebhookSettingsZhCn webhookSettings_ = _StringsMisskeyWebhookSettingsZhCn._(_root);
+	@override late final _StringsMisskeyAbuseReportZhCn abuseReport_ = _StringsMisskeyAbuseReportZhCn._(_root);
 	@override late final _StringsMisskeyModerationLogTypesZhCn moderationLogTypes_ = _StringsMisskeyModerationLogTypesZhCn._(_root);
 	@override late final _StringsMisskeyFileViewerZhCn fileViewer_ = _StringsMisskeyFileViewerZhCn._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerZhCn externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerZhCn._(_root);
@@ -1389,6 +1414,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenZhCn offlineScreen_ = _StringsMisskeyOfflineScreenZhCn._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingZhCn urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingZhCn._(_root);
 	@override late final _StringsMisskeyMediaControlsZhCn mediaControls_ = _StringsMisskeyMediaControlsZhCn._(_root);
+	@override late final _StringsMisskeyContextMenuZhCn contextMenu_ = _StringsMisskeyContextMenuZhCn._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1523,6 +1549,8 @@ class _StringsMisskeyServerSettingsZhCn extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => '当启用时，可显著提高获取各种时间线时的性能，并减轻数据库的负荷。但是相对的 Redis 的内存使用量将会增加。如果服务器的内存不是很大，又或者运行不稳定的话可以把它关掉。';
 	@override String get fanoutTimelineDbFallback => '回退到数据库';
 	@override String get fanoutTimelineDbFallbackDescription => '当启用时，若时间线未被缓存，则将额外查询数据库。禁用该功能可通过不执行回退处理进一步减少服务器负载，但会限制可检索的时间线范围。';
+	@override String get inquiryUrl => '联络地址';
+	@override String get inquiryUrlDescription => '用来指定诸如向服务运营商咨询的论坛地址，或记载了运营商联系方式之类的网页地址。';
 }
 
 // Path: misskey.accountMigration_
@@ -1594,8 +1622,8 @@ class _StringsMisskeyRoleZhCn extends _StringsMisskeyRoleEnUs {
 	@override String get descriptionOfIsExplorable => '打开后将公开角色时间线。如果角色不是公开的，就无法公开时间线。';
 	@override String get displayOrder => '显示顺序';
 	@override String get descriptionOfDisplayOrder => '数字越大，显示位置越靠前。';
-	@override String get canEditMembersByModerator => '允许监察者编辑成员';
-	@override String get descriptionOfCanEditMembersByModerator => '如果选中，监察者和管理员都能够为用户分配/取消分配角色。如果未选中，则只有管理员可以执行此操作。';
+	@override String get canEditMembersByModerator => '允许监察员编辑成员';
+	@override String get descriptionOfCanEditMembersByModerator => '如果选中，监察员和管理员都能够为用户分配/取消分配角色。如果未选中，则只有管理员可以执行此操作。';
 	@override String get priority => '优先级';
 	@override late final _StringsMisskeyRolePriorityZhCn priority_ = _StringsMisskeyRolePriorityZhCn._(_root);
 	@override late final _StringsMisskeyRoleOptionsZhCn options_ = _StringsMisskeyRoleOptionsZhCn._(_root);
@@ -1943,8 +1971,6 @@ class _StringsMisskeySfxZhCn extends _StringsMisskeySfxEnUs {
 	@override String get note => '帖子';
 	@override String get noteMy => '我的帖子';
 	@override String get notification => '通知';
-	@override String get antenna => '天线接收';
-	@override String get channel => '频道通知';
 	@override String get reaction => '选择回应时';
 }
 
@@ -1961,6 +1987,7 @@ class _StringsMisskeySoundSettingsZhCn extends _StringsMisskeySoundSettingsEnUs 
 	@override String get driveFileTypeWarnDescription => '请选择音频文件';
 	@override String get driveFileDurationWarn => '音频过长';
 	@override String get driveFileDurationWarnDescription => '使用长音频可能会影响 Misskey 的使用。即使这样也要继续吗？';
+	@override String get driveFileError => '无法读取声音。请更改设置。';
 }
 
 // Path: misskey.ago_
@@ -2019,7 +2046,7 @@ class _StringsMisskeyX2faZhCn extends _StringsMisskeyX2faEnUs {
 
 	// Translations
 	@override String get alreadyRegistered => '此设备已被注册';
-	@override String get registerTOTP => '开始设置认证应用';
+	@override String get registerTOTP => '开始设置验证器';
 	@override String step1({required Object a, required Object b}) => '首先，在您的设备上安装验证应用，例如 ${a} 或 ${b}。';
 	@override String get step2 => '然后，扫描屏幕上显示的二维码。';
 	@override String get step2Uri => '如果使用桌面应用程序的话，请输入下面的 URI';
@@ -2028,23 +2055,23 @@ class _StringsMisskeyX2faZhCn extends _StringsMisskeyX2faEnUs {
 	@override String get setupCompleted => '设置完成';
 	@override String get step4 => '从现在开始，任何登录操作都将要求您提供动态口令。';
 	@override String get securityKeyNotSupported => '您的浏览器不支持安全密钥。';
-	@override String get registerTOTPBeforeKey => '要注册安全密钥或 Passkey，请先设置验证器应用程序。';
+	@override String get registerTOTPBeforeKey => '要注册安全密钥或 Passkey，请先设置验证器。';
 	@override String get securityKeyInfo => '注册兼容 WebAuthn 的密钥，例如支持 FIDO2 的硬件安全密钥、设备上的生物识别功能、PIN 码以及 Passkey 等。';
 	@override String get registerSecurityKey => '注册安全密钥或 Passkey';
 	@override String get securityKeyName => '输入密钥名称';
 	@override String get tapSecurityKey => '请按照浏览器说明操作来注册安全密钥或 Passkey。';
 	@override String get removeKey => '删除安全密钥';
 	@override String removeKeyConfirm({required Object name}) => '您确定要删除 ${name} 吗？';
-	@override String get whyTOTPOnlyRenew => '如果注册了安全密钥，则无法取消验证器应用程序上的设置。';
-	@override String get renewTOTP => '重置验证器应用程序';
-	@override String get renewTOTPConfirm => '当前验证器应用程序的验证码将不再有效';
+	@override String get whyTOTPOnlyRenew => '当注册了安全密钥时，无法取消使用验证器。';
+	@override String get renewTOTP => '重置验证器';
+	@override String get renewTOTPConfirm => '当前验证器的验证码及备用代码已失效';
 	@override String get renewTOTPOk => '重新配置';
 	@override String get renewTOTPCancel => '不用，谢谢';
 	@override String get checkBackupCodesBeforeCloseThisWizard => '在关闭此窗口前，请确认下面的备用代码';
 	@override String get backupCodes => '备用代码';
-	@override String get backupCodesDescription => '如果无法使用认证应用，可以使用以下的备用代码来访问账户。请务必将这些代码保存在安全的地方。每个代码仅可使用一次。';
-	@override String get backupCodeUsedWarning => '已使用备用代码。如果无法使用认证应用，请尽快重新设定。';
-	@override String get backupCodesExhaustedWarning => '已使用完所有的备用代码。如果无法使用认证应用，将无法再访问您的账户。请再次设定认证应用。';
+	@override String get backupCodesDescription => '如果无法使用验证器，可以使用以下的备用代码来访问账户。请务必将这些代码保存在安全的地方。每个代码仅可使用一次。';
+	@override String get backupCodeUsedWarning => '已使用备用代码。若验证器无法使用，请尽快重置验证器。';
+	@override String get backupCodesExhaustedWarning => '已使用完所有的备用代码。若验证器无法使用，则无法再访问您的账户。请重置验证器。';
 	@override String get moreDetailedGuideHere => '此处为详细指南';
 }
 
@@ -2525,6 +2552,7 @@ class _StringsMisskeyDeckZhCn extends _StringsMisskeyDeckEnUs {
 	@override String get alwaysShowMainColumn => '总是显示主列';
 	@override String get columnAlign => '列对齐';
 	@override String get addColumn => '添加列';
+	@override String get newNoteNotificationSettings => '新帖子通知设定';
 	@override String get configureColumn => '列设置';
 	@override String get swapLeft => '向左移动';
 	@override String get swapRight => '向右移动';
@@ -2585,11 +2613,24 @@ class _StringsMisskeyWebhookSettingsZhCn extends _StringsMisskeyWebhookSettingsE
 
 	// Translations
 	@override String get createWebhook => '创建 Webhook';
+	@override String get modifyWebhook => '编辑 webhook';
 	@override String get name => '名称';
 	@override String get secret => '密钥';
-	@override String get events => '何时运行 Webhook';
+	@override String get trigger => '触发器';
 	@override String get active => '已启用';
 	@override late final _StringsMisskeyWebhookSettingsEventsZhCn events_ = _StringsMisskeyWebhookSettingsEventsZhCn._(_root);
+	@override late final _StringsMisskeyWebhookSettingsSystemEventsZhCn systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsZhCn._(_root);
+	@override String get deleteConfirm => '要删除 webhook 吗？';
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportZhCn extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientZhCn notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientZhCn._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2635,6 +2676,13 @@ class _StringsMisskeyModerationLogTypesZhCn extends _StringsMisskeyModerationLog
 	@override String get deleteAvatarDecoration => '删除头像挂件';
 	@override String get unsetUserAvatar => '清除用户头像';
 	@override String get unsetUserBanner => '清除用户横幅';
+	@override String get createSystemWebhook => '新建了 SystemWebhook';
+	@override String get updateSystemWebhook => '更新了 SystemWebhook';
+	@override String get deleteSystemWebhook => '删除了 SystemWebhook';
+	@override String get createAbuseReportNotificationRecipient => '新建了举报通知';
+	@override String get updateAbuseReportNotificationRecipient => '更新了举报通知';
+	@override String get deleteAbuseReportNotificationRecipient => '删除了举报通知';
+	@override String get deleteFlash => '删除了 Play';
 }
 
 // Path: misskey.fileViewer_
@@ -2789,6 +2837,19 @@ class _StringsMisskeyMediaControlsZhCn extends _StringsMisskeyMediaControlsEnUs 
 	@override String get pip => '画中画';
 	@override String get playbackRate => '播放速度';
 	@override String get loop => '循环播放';
+}
+
+// Path: misskey.contextMenu_
+class _StringsMisskeyContextMenuZhCn extends _StringsMisskeyContextMenuEnUs {
+	_StringsMisskeyContextMenuZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '上下文菜单';
+	@override String get app => '应用';
+	@override String get appWithShift => 'Shift 键应用';
+	@override String get native => '浏览器的用户界面';
 }
 
 // Path: misskey.delivery_.type_
@@ -3048,6 +3109,7 @@ class _StringsMisskeyRoleOptionsZhCn extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canManageAvatarDecorations => '管理头像挂件';
 	@override String get driveCapacity => '网盘容量';
 	@override String get alwaysMarkNsfw => '总是将文件标记为 NSFW';
+	@override String get canUpdateBioMedia => '可以更新头像和横幅';
 	@override String get pinMax => '帖子置顶数量限制';
 	@override String get antennaMax => '可创建的最大天线数量';
 	@override String get wordMuteMax => '屏蔽词的字数限制';
@@ -3272,6 +3334,35 @@ class _StringsMisskeyWebhookSettingsEventsZhCn extends _StringsMisskeyWebhookSet
 	@override String get renote => '被转发时';
 	@override String get reaction => '被回应时';
 	@override String get mention => '被提及时';
+}
+
+// Path: misskey.webhookSettings_.systemEvents_
+class _StringsMisskeyWebhookSettingsSystemEventsZhCn extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
+	_StringsMisskeyWebhookSettingsSystemEventsZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get abuseReport => '当收到举报时';
+	@override String get abuseReportResolved => '当举报被处理时';
+	@override String get userCreated => '当用户被创建时';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientZhCn extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get createRecipient => '新建举报通知';
+	@override String get modifyRecipient => '编辑举报通知';
+	@override String get recipientType => '通知类型';
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhCn recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhCn._(_root);
+	@override String get keywords => '关键字';
+	@override String get notifiedUser => '通知的用户';
+	@override String get notifiedWebhook => '使用的 webhook';
+	@override String get deleteConfirm => '要删除通知吗？';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4289,6 +4380,7 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhCn extends 
 	// Translations
 	@override String get title => '两个🤯';
 	@override String get description => '你合成出了2个游戏里最大的Emoji';
+	@override String get flavor => '';
 }
 
 // Path: misskey.pages_.blocks.note_
@@ -4301,6 +4393,18 @@ class _StringsMisskeyPagesBlocksNoteZhCn extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => '帖子 ID';
 	@override String get idDescription => '您也可以通过粘贴帖子的URL来进行设置。';
 	@override String get detailed => '显示详细信息';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhCn extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => '邮箱';
+	@override String get webhook => 'Webhook';
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhCn captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhCn._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
@@ -4401,4 +4505,15 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteZhCn extends _StringsMi
 	// Translations
 	@override String get cw => '深夜报复社会';
 	@override String get note => '茨了带巧克力的甜甜圈🍩😋';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhCn extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => '当收到新举报时，向持有监察员权限的用户发送通知邮件';
+	@override String get webhook => '当收到新举报及举报被处理时，使用指定的 SystemWebhook 发送通知';
 }

@@ -284,6 +284,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get copyFolderId => 'フォルダーIDをコピー';
 	@override String get copyProfileUrl => 'プロフィールURLをコピー';
 	@override String get searchUser => 'ユーザーを検索';
+	@override String get searchThisUsersNotes => 'ユーザーのノートを検索';
 	@override String get reply => '返信';
 	@override String get loadMore => 'もっと見る';
 	@override String get showMore => 'もっと見る';
@@ -378,6 +379,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get selectChannel => 'チャンネルを選択';
 	@override String get selectAntenna => 'アンテナを選択';
 	@override String get editAntenna => 'アンテナを編集';
+	@override String get createAntenna => 'アンテナを作成';
 	@override String get selectWidget => 'ウィジェットを選択';
 	@override String get editWidgets => 'ウィジェットを編集';
 	@override String get editWidgetsExit => '編集を終了';
@@ -404,6 +406,10 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get reloadAccountsList => 'アカウントリストの情報を更新';
 	@override String get loginFailed => 'ログインに失敗しました';
 	@override String get showOnRemote => 'リモートで表示';
+	@override String get continueOnRemote => 'リモートで続行';
+	@override String get chooseServerOnMisskeyHub => 'Misskey Hubからサーバーを選択';
+	@override String get specifyServerHost => 'サーバーのドメインを直接指定';
+	@override String get inputHostName => 'ドメインを入力してください';
 	@override String get general => '全般';
 	@override String get wallpaper => '壁紙';
 	@override String get setWallpaper => '壁紙を設定';
@@ -414,6 +420,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get proxyAccount => 'プロキシアカウント';
 	@override String get proxyAccountDescription => 'プロキシアカウントは、特定の条件下でユーザーのリモートフォローを代行するアカウントです。例えば、ユーザーがリモートユーザーをリストに入れたとき、リストに入れられたユーザーを誰もフォローしていないとアクティビティがサーバーに配達されないため、代わりにプロキシアカウントがフォローするようにします。';
 	@override String get host => 'ホスト';
+	@override String get selectSelf => '自分を選択';
 	@override String get selectUser => 'ユーザーを選択';
 	@override String get recipient => '宛先';
 	@override String get annotation => '注釈';
@@ -429,6 +436,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get stopActivityDelivery => 'アクティビティの配送を停止';
 	@override String get blockThisInstance => 'このサーバーをブロック';
 	@override String get silenceThisInstance => 'サーバーをサイレンス';
+	@override String get mediaSilenceThisInstance => 'サーバーをメディアサイレンス';
 	@override String get operations => '操作';
 	@override String get software => 'ソフトウェア';
 	@override String get version => 'バージョン';
@@ -450,6 +458,8 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'ブロックしたいサーバーのホストを改行で区切って設定します。ブロックされたサーバーは、このインスタンスとやり取りできなくなります。';
 	@override String get silencedInstances => 'サイレンスしたサーバー';
 	@override String get silencedInstancesDescription => 'サイレンスしたいサーバーのホストを改行で区切って設定します。サイレンスされたサーバーに所属するアカウントはすべて「サイレンス」として扱われ、フォローがすべてリクエストになります。ブロックしたインスタンスには影響しません。';
+	@override String get mediaSilencedInstances => 'メディアサイレンスしたサーバー';
+	@override String get mediaSilencedInstancesDescription => 'メディアサイレンスしたいサーバーのホストを改行で区切って設定します。メディアサイレンスされたサーバーに所属するアカウントによるファイルはすべてセンシティブとして扱われ、カスタム絵文字が使用できないようになります。ブロックしたインスタンスには影響しません。';
 	@override String get muteAndBlock => 'ミュートとブロック';
 	@override String get mutedUsers => 'ミュートしたユーザー';
 	@override String get blockedUsers => 'ブロックしたユーザー';
@@ -540,6 +550,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get selectFiles => 'ファイルを選択';
 	@override String get selectFolder => 'フォルダーを選択';
 	@override String get selectFolders => 'フォルダーを選択';
+	@override String get fileNotSelected => 'ファイルが選択されていません';
 	@override String get renameFile => 'ファイル名を変更';
 	@override String get folderName => 'フォルダー名';
 	@override String get createFolder => 'フォルダーを作成';
@@ -699,7 +710,8 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get noMessagesYet => 'まだチャットはありません';
 	@override String get newMessageExists => '新しいメッセージがあります';
 	@override String get onlyOneFileCanBeAttached => 'メッセージに添付できるファイルはひとつです';
-	@override String get signinRequired => '続行する前に、サインアップまたはサインインが必要です';
+	@override String get signinRequired => '続行する前に、登録またはログインが必要です';
+	@override String get signinOrContinueOnRemote => '続行するには、お使いのサーバーに移動するか、このサーバーに登録・ログインする必要があります';
 	@override String get invitations => '招待';
 	@override String get invitationCode => '招待コード';
 	@override String get checking => '確認しています';
@@ -915,7 +927,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get reportAbuse => '通報';
 	@override String get reportAbuseRenote => 'リノートを通報';
 	@override String reportAbuseOf({required Object name}) => '${name}を通報する';
-	@override String get fillAbuseReportDescription => '通報理由の詳細を記入してください。対象のノートがある場合はそのURLも記入してください。';
+	@override String get fillAbuseReportDescription => '通報理由の詳細を記入してください。対象のノートやページなどがある場合はそのURLも記入してください。';
 	@override String get abuseReported => '内容が送信されました。ご報告ありがとうございました。';
 	@override String get reporter => '通報者';
 	@override String get reporteeOrigin => '通報先';
@@ -1060,6 +1072,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get accounts => 'アカウント';
 	@override String get switch_ => '切り替え';
 	@override String get noMaintainerInformationWarning => '管理者情報が設定されていません。';
+	@override String get noInquiryUrlWarning => '問い合わせ先URLが設定されていません。';
 	@override String get noBotProtectionWarning => 'Botプロテクションが設定されていません。';
 	@override String get configure => '設定する';
 	@override String get postToGallery => 'ギャラリーへ投稿';
@@ -1249,6 +1262,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingCancel => 'やめる';
 	@override String get thisPostMayBeAnnoyingIgnore => 'このまま投稿';
 	@override String get collapseRenotes => 'リノートのスマート省略';
+	@override String get collapseRenotesDescription => 'リアクションやリノートをしたことがあるノートをたたんで表示します。';
 	@override String get internalServerError => 'サーバー内部エラー';
 	@override String get internalServerErrorDescription => 'サーバー内部で予期しないエラーが発生しました。';
 	@override String get copyErrorInfo => 'エラー情報をコピー';
@@ -1322,6 +1336,8 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => '予約するユーザー名を改行で列挙します。ここで指定されたユーザー名はアカウント作成時に使えなくなりますが、管理者によるアカウント作成時はこの制限を受けません。また、既に存在するアカウントも影響を受けません。';
 	@override String get createNoteFromTheFile => 'このファイルからノートを作成';
 	@override String get archive => 'アーカイブ';
+	@override String get archived => 'アーカイブ済み';
+	@override String get unarchive => 'アーカイブ解除';
 	@override String channelArchiveConfirmTitle({required Object name}) => '${name}をアーカイブしますか？';
 	@override String get channelArchiveConfirmDescription => 'アーカイブすると、チャンネル一覧や検索結果に表示されなくなり、新たな書き込みもできなくなります。';
 	@override String get thisChannelArchived => 'このチャンネルはアーカイブされています。';
@@ -1332,6 +1348,9 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get preventAiLearningDescription => '外部の文章生成AIや画像生成AIに対して、投稿したノートや画像などのコンテンツを学習の対象にしないように要求します。これはnoaiフラグをHTMLレスポンスに含めることによって実現されますが、この要求に従うかはそのAI次第であるため、学習を完全に防止するものではありません。';
 	@override String get options => 'オプション';
 	@override String get specifyUser => 'ユーザー指定';
+	@override String get lookupConfirm => '照会しますか？';
+	@override String get openTagPageConfirm => 'ハッシュタグのページを開きますか？';
+	@override String get specifyHost => 'ホスト指定';
 	@override String get failedToPreviewUrl => 'プレビューできません';
 	@override String get update => '更新';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'リアクションとして使えるロール';
@@ -1463,6 +1482,11 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get noDescription => '説明文はありません';
 	@override String get alwaysConfirmFollow => 'フォローの際常に確認する';
 	@override String get inquiry => 'お問い合わせ';
+	@override String get tryAgain => 'もう一度お試しください。';
+	@override String get confirmWhenRevealingSensitiveMedia => 'センシティブなメディアを表示するとき確認する';
+	@override String get sensitiveMediaRevealConfirm => 'センシティブなメディアです。表示しますか？';
+	@override String get createdLists => '作成したリスト';
+	@override String get createdAntennas => '作成したアンテナ';
 	@override late final _StringsMisskeyDeliveryJaJp delivery_ = _StringsMisskeyDeliveryJaJp._(_root);
 	@override late final _StringsMisskeyBubbleGameJaJp bubbleGame_ = _StringsMisskeyBubbleGameJaJp._(_root);
 	@override late final _StringsMisskeyAnnouncementJaJp announcement_ = _StringsMisskeyAnnouncementJaJp._(_root);
@@ -1524,6 +1548,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDisabledTimelineJaJp disabledTimeline_ = _StringsMisskeyDisabledTimelineJaJp._(_root);
 	@override late final _StringsMisskeyDrivecleanerJaJp drivecleaner_ = _StringsMisskeyDrivecleanerJaJp._(_root);
 	@override late final _StringsMisskeyWebhookSettingsJaJp webhookSettings_ = _StringsMisskeyWebhookSettingsJaJp._(_root);
+	@override late final _StringsMisskeyAbuseReportJaJp abuseReport_ = _StringsMisskeyAbuseReportJaJp._(_root);
 	@override late final _StringsMisskeyModerationLogTypesJaJp moderationLogTypes_ = _StringsMisskeyModerationLogTypesJaJp._(_root);
 	@override late final _StringsMisskeyFileViewerJaJp fileViewer_ = _StringsMisskeyFileViewerJaJp._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerJaJp externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerJaJp._(_root);
@@ -1533,6 +1558,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenJaJp offlineScreen_ = _StringsMisskeyOfflineScreenJaJp._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingJaJp urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingJaJp._(_root);
 	@override late final _StringsMisskeyMediaControlsJaJp mediaControls_ = _StringsMisskeyMediaControlsJaJp._(_root);
+	@override late final _StringsMisskeyContextMenuJaJp contextMenu_ = _StringsMisskeyContextMenuJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -1677,6 +1703,8 @@ class _StringsMisskeyServerSettingsJaJp extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => '有効にすると、各種タイムラインを取得する際のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。サーバーのメモリ容量が少ない場合、または動作が不安定な場合は無効にすることができます。';
 	@override String get fanoutTimelineDbFallback => 'データベースへのフォールバック';
 	@override String get fanoutTimelineDbFallbackDescription => '有効にすると、タイムラインがキャッシュされていない場合にDBへ追加で問い合わせを行うフォールバック処理を行います。無効にすると、フォールバック処理を行わないことでさらにサーバーの負荷を軽減することができますが、タイムラインが取得できる範囲に制限が生じます。';
+	@override String get inquiryUrl => '問い合わせ先URL';
+	@override String get inquiryUrlDescription => 'サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定します。';
 }
 
 // Path: misskey.accountMigration_
@@ -2113,6 +2141,7 @@ class _StringsMisskeySoundSettingsJaJp extends _StringsMisskeySoundSettingsEnUs 
 	@override String get driveFileTypeWarnDescription => '音声ファイルを選択してください';
 	@override String get driveFileDurationWarn => '音声が長すぎます';
 	@override String get driveFileDurationWarnDescription => '長い音声を使用するとMisskeyの使用に支障をきたす可能性があります。それでも続行しますか？';
+	@override String get driveFileError => '音声が読み込めませんでした。設定を変更してください';
 }
 
 // Path: misskey.ago_
@@ -2677,6 +2706,7 @@ class _StringsMisskeyDeckJaJp extends _StringsMisskeyDeckEnUs {
 	@override String get alwaysShowMainColumn => '常にメインカラムを表示';
 	@override String get columnAlign => 'カラムの寄せ';
 	@override String get addColumn => 'カラムを追加';
+	@override String get newNoteNotificationSettings => '新着ノート通知の設定';
 	@override String get configureColumn => 'カラムの設定';
 	@override String get swapLeft => '左に移動';
 	@override String get swapRight => '右に移動';
@@ -2737,11 +2767,24 @@ class _StringsMisskeyWebhookSettingsJaJp extends _StringsMisskeyWebhookSettingsE
 
 	// Translations
 	@override String get createWebhook => 'Webhookを作成';
+	@override String get modifyWebhook => 'Webhookを編集';
 	@override String get name => '名前';
 	@override String get secret => 'シークレット';
-	@override String get events => 'Webhookを実行するタイミング';
+	@override String get trigger => 'トリガー';
 	@override String get active => '有効';
 	@override late final _StringsMisskeyWebhookSettingsEventsJaJp events_ = _StringsMisskeyWebhookSettingsEventsJaJp._(_root);
+	@override late final _StringsMisskeyWebhookSettingsSystemEventsJaJp systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsJaJp._(_root);
+	@override String get deleteConfirm => 'Webhookを削除しますか？';
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportJaJp extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientJaJp notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientJaJp._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2787,6 +2830,13 @@ class _StringsMisskeyModerationLogTypesJaJp extends _StringsMisskeyModerationLog
 	@override String get deleteAvatarDecoration => 'アイコンデコレーションを削除';
 	@override String get unsetUserAvatar => 'ユーザーのアイコンを解除';
 	@override String get unsetUserBanner => 'ユーザーのバナーを解除';
+	@override String get createSystemWebhook => 'SystemWebhookを作成';
+	@override String get updateSystemWebhook => 'SystemWebhookを更新';
+	@override String get deleteSystemWebhook => 'SystemWebhookを削除';
+	@override String get createAbuseReportNotificationRecipient => '通報の通知先を作成';
+	@override String get updateAbuseReportNotificationRecipient => '通報の通知先を更新';
+	@override String get deleteAbuseReportNotificationRecipient => '通報の通知先を削除';
+	@override String get deleteFlash => 'Playを削除';
 }
 
 // Path: misskey.fileViewer_
@@ -2941,6 +2991,19 @@ class _StringsMisskeyMediaControlsJaJp extends _StringsMisskeyMediaControlsEnUs 
 	@override String get pip => 'ピクチャインピクチャ';
 	@override String get playbackRate => '再生速度';
 	@override String get loop => 'ループ再生';
+}
+
+// Path: misskey.contextMenu_
+class _StringsMisskeyContextMenuJaJp extends _StringsMisskeyContextMenuEnUs {
+	_StringsMisskeyContextMenuJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'コンテキストメニュー';
+	@override String get app => 'アプリケーション';
+	@override String get appWithShift => 'Shiftキーでアプリケーション';
+	@override String get native => 'ブラウザのUI';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3216,6 +3279,7 @@ class _StringsMisskeyRoleOptionsJaJp extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canManageAvatarDecorations => 'アバターデコレーションの管理';
 	@override String get driveCapacity => 'ドライブ容量';
 	@override String get alwaysMarkNsfw => 'ファイルにNSFWを常に付与';
+	@override String get canUpdateBioMedia => 'アイコンとバナーの更新を許可';
 	@override String get pinMax => 'ノートのピン留めの最大数';
 	@override String get antennaMax => 'アンテナの作成可能数';
 	@override String get wordMuteMax => 'ワードミュートの最大文字数';
@@ -3440,6 +3504,35 @@ class _StringsMisskeyWebhookSettingsEventsJaJp extends _StringsMisskeyWebhookSet
 	@override String get renote => 'Renoteされたとき';
 	@override String get reaction => 'リアクションがあったとき';
 	@override String get mention => 'メンションされたとき';
+}
+
+// Path: misskey.webhookSettings_.systemEvents_
+class _StringsMisskeyWebhookSettingsSystemEventsJaJp extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
+	_StringsMisskeyWebhookSettingsSystemEventsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get abuseReport => 'ユーザーから通報があったとき';
+	@override String get abuseReportResolved => 'ユーザーからの通報を処理したとき';
+	@override String get userCreated => 'ユーザーが作成されたとき';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientJaJp extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get createRecipient => '通報の通知先を追加';
+	@override String get modifyRecipient => '通報の通知先を編集';
+	@override String get recipientType => '通知先の種類';
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp._(_root);
+	@override String get keywords => 'キーワード';
+	@override String get notifiedUser => '通知先ユーザー';
+	@override String get notifiedWebhook => '使用するWebhook';
+	@override String get deleteConfirm => '通知先を削除しますか？';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4488,6 +4581,18 @@ class _StringsMisskeyPagesBlocksNoteJaJp extends _StringsMisskeyPagesBlocksNoteE
 	@override String get detailed => '詳細な表示';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'メール';
+	@override String get webhook => 'Webhook';
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp._(_root);
+}
+
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
 class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp extends _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
 	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
@@ -4586,4 +4691,15 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp extends _StringsMi
 	// Translations
 	@override String get cw => '飯テロ注意';
 	@override String get note => 'チョコのかかったドーナツを食べました🍩😋';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'モデレーター権限を持つユーザーのメールアドレスに通知を送ります(通報を受けた時のみ)';
+	@override String get webhook => '指定したSystemWebhookに通知を送ります(通報を受けた時と通報を解決した時にそれぞれ発信)';
 }

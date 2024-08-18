@@ -1317,6 +1317,7 @@ class _StringsMisskeyDeDe extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDisabledTimelineDeDe disabledTimeline_ = _StringsMisskeyDisabledTimelineDeDe._(_root);
 	@override late final _StringsMisskeyDrivecleanerDeDe drivecleaner_ = _StringsMisskeyDrivecleanerDeDe._(_root);
 	@override late final _StringsMisskeyWebhookSettingsDeDe webhookSettings_ = _StringsMisskeyWebhookSettingsDeDe._(_root);
+	@override late final _StringsMisskeyAbuseReportDeDe abuseReport_ = _StringsMisskeyAbuseReportDeDe._(_root);
 	@override late final _StringsMisskeyModerationLogTypesDeDe moderationLogTypes_ = _StringsMisskeyModerationLogTypesDeDe._(_root);
 	@override late final _StringsMisskeyFileViewerDeDe fileViewer_ = _StringsMisskeyFileViewerDeDe._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerDeDe externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerDeDe._(_root);
@@ -1852,8 +1853,6 @@ class _StringsMisskeySfxDeDe extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Notizen';
 	@override String get noteMy => 'Meine Notizen';
 	@override String get notification => 'Benachrichtigungen';
-	@override String get antenna => 'Antennen';
-	@override String get channel => 'Kanalbenachrichtigung';
 }
 
 // Path: misskey.ago_
@@ -2410,9 +2409,18 @@ class _StringsMisskeyWebhookSettingsDeDe extends _StringsMisskeyWebhookSettingsE
 	@override String get createWebhook => 'Webhook erstellen';
 	@override String get name => 'Name';
 	@override String get secret => 'Secret';
-	@override String get events => 'Webhook-Ereignisse';
 	@override String get active => 'Aktiviert';
 	@override late final _StringsMisskeyWebhookSettingsEventsDeDe events_ = _StringsMisskeyWebhookSettingsEventsDeDe._(_root);
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportDeDe extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportDeDe._(_StringsDeDe root) : this._root = root, super._(root);
+
+	@override final _StringsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientDeDe notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientDeDe._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2899,6 +2907,16 @@ class _StringsMisskeyWebhookSettingsEventsDeDe extends _StringsMisskeyWebhookSet
 	@override String get renote => 'Wenn du ein Renote erhältst';
 	@override String get reaction => 'Wenn du eine Reaktion erhältst';
 	@override String get mention => 'Wenn du erwähnt wirst';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientDeDe extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientDeDe._(_StringsDeDe root) : this._root = root, super._(root);
+
+	@override final _StringsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -3843,6 +3861,16 @@ class _StringsMisskeyPagesBlocksNoteDeDe extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'Notiz-ID';
 	@override String get idDescription => 'Du kannst alternativ auch die Notiz-URL angeben.';
 	@override String get detailed => 'Detailierte Ansicht';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe._(_StringsDeDe root) : this._root = root, super._(root);
+
+	@override final _StringsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_

@@ -1228,6 +1228,7 @@ class _StringsMisskeyCsCz extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDisabledTimelineCsCz disabledTimeline_ = _StringsMisskeyDisabledTimelineCsCz._(_root);
 	@override late final _StringsMisskeyDrivecleanerCsCz drivecleaner_ = _StringsMisskeyDrivecleanerCsCz._(_root);
 	@override late final _StringsMisskeyWebhookSettingsCsCz webhookSettings_ = _StringsMisskeyWebhookSettingsCsCz._(_root);
+	@override late final _StringsMisskeyAbuseReportCsCz abuseReport_ = _StringsMisskeyAbuseReportCsCz._(_root);
 	@override late final _StringsMisskeyModerationLogTypesCsCz moderationLogTypes_ = _StringsMisskeyModerationLogTypesCsCz._(_root);
 	@override late final _StringsMisskeyReversiCsCz reversi_ = _StringsMisskeyReversiCsCz._(_root);
 }
@@ -1691,8 +1692,6 @@ class _StringsMisskeySfxCsCz extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Poznámky';
 	@override String get noteMy => 'Moje poznámka';
 	@override String get notification => 'Oznámení';
-	@override String get antenna => 'Antény';
-	@override String get channel => 'Oznámení kanálu';
 }
 
 // Path: misskey.ago_
@@ -2224,9 +2223,18 @@ class _StringsMisskeyWebhookSettingsCsCz extends _StringsMisskeyWebhookSettingsE
 	@override String get createWebhook => 'Vytvořit Webhook';
 	@override String get name => 'Jméno';
 	@override String get secret => 'Tajné';
-	@override String get events => 'Události Webhook';
 	@override String get active => 'Zapnuto';
 	@override late final _StringsMisskeyWebhookSettingsEventsCsCz events_ = _StringsMisskeyWebhookSettingsEventsCsCz._(_root);
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportCsCz extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportCsCz._(_StringsCsCz root) : this._root = root, super._(root);
+
+	@override final _StringsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientCsCz notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientCsCz._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2585,6 +2593,16 @@ class _StringsMisskeyWebhookSettingsEventsCsCz extends _StringsMisskeyWebhookSet
 	@override String get renote => 'Při renotaci poznámky';
 	@override String get reaction => 'Při obdržení reakce';
 	@override String get mention => 'Při zmínce';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientCsCz extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientCsCz._(_StringsCsCz root) : this._root = root, super._(root);
+
+	@override final _StringsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCsCz recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCsCz._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -3425,4 +3443,14 @@ class _StringsMisskeyPagesBlocksNoteCsCz extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'ID poznámky';
 	@override String get idDescription => 'Adresu URL poznámky můžete vložit také sem.';
 	@override String get detailed => 'Podrobné zobrazení';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCsCz extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCsCz._(_StringsCsCz root) : this._root = root, super._(root);
+
+	@override final _StringsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }

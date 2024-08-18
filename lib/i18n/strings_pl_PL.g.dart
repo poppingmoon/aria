@@ -1144,6 +1144,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyNotificationPlPl notification_ = _StringsMisskeyNotificationPlPl._(_root);
 	@override late final _StringsMisskeyDeckPlPl deck_ = _StringsMisskeyDeckPlPl._(_root);
 	@override late final _StringsMisskeyWebhookSettingsPlPl webhookSettings_ = _StringsMisskeyWebhookSettingsPlPl._(_root);
+	@override late final _StringsMisskeyAbuseReportPlPl abuseReport_ = _StringsMisskeyAbuseReportPlPl._(_root);
 	@override late final _StringsMisskeyModerationLogTypesPlPl moderationLogTypes_ = _StringsMisskeyModerationLogTypesPlPl._(_root);
 	@override late final _StringsMisskeyReversiPlPl reversi_ = _StringsMisskeyReversiPlPl._(_root);
 }
@@ -1487,8 +1488,6 @@ class _StringsMisskeySfxPlPl extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Wpisy';
 	@override String get noteMy => 'Mój wpis';
 	@override String get notification => 'Powiadomienia';
-	@override String get antenna => 'Anteny';
-	@override String get channel => 'Powiadomienia kanału';
 }
 
 // Path: misskey.ago_
@@ -1957,9 +1956,18 @@ class _StringsMisskeyWebhookSettingsPlPl extends _StringsMisskeyWebhookSettingsE
 	@override String get createWebhook => 'Stwórz Webhook';
 	@override String get name => 'Nazwa';
 	@override String get secret => 'Sekret';
-	@override String get events => 'Uruchomienie Webhooka';
 	@override String get active => 'Właczono';
 	@override late final _StringsMisskeyWebhookSettingsEventsPlPl events_ = _StringsMisskeyWebhookSettingsEventsPlPl._(_root);
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportPlPl extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportPlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientPlPl notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientPlPl._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2201,6 +2209,16 @@ class _StringsMisskeyWebhookSettingsEventsPlPl extends _StringsMisskeyWebhookSet
 	@override String get mention => 'Po zostaniu wspomnianym';
 }
 
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientPlPl extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientPlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypePlPl recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypePlPl._(_root);
+}
+
 // Path: misskey.pages_.blocks.note_
 class _StringsMisskeyPagesBlocksNotePlPl extends _StringsMisskeyPagesBlocksNoteEnUs {
 	_StringsMisskeyPagesBlocksNotePlPl._(_StringsPlPl root) : this._root = root, super._(root);
@@ -2211,4 +2229,14 @@ class _StringsMisskeyPagesBlocksNotePlPl extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'ID wpisu';
 	@override String get idDescription => 'Możesz też wkleić adres URL wpisu, aby go ustawić.';
 	@override String get detailed => 'Szczegółowy widok';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypePlPl extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypePlPl._(_StringsPlPl root) : this._root = root, super._(root);
+
+	@override final _StringsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Adres e-mail';
 }

@@ -450,6 +450,7 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String get enableMcaptcha => 'Bật mCaptcha';
 	@override String get mcaptchaSiteKey => 'Khóa của trang';
 	@override String get mcaptchaSecretKey => 'Khóa bí mật';
+	@override String get mcaptchaInstanceUrl => 'URL mCaptcha máy chủ';
 	@override String get recaptcha => 'reCAPTCHA';
 	@override String get enableRecaptcha => 'Bật reCAPTCHA';
 	@override String get recaptchaSiteKey => 'Khóa của trang';
@@ -500,6 +501,7 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String get moderation => 'Kiểm duyệt';
 	@override String get moderationNote => 'Ghi chú kiểm duyệt';
 	@override String get addModerationNote => 'Thêm ghi chú kiểm duyệt';
+	@override String get moderationLogs => 'Nhật kí quản trị';
 	@override String nUsersMentioned({required Object n}) => 'Dùng bởi ${n} người';
 	@override String get securityKeyAndPasskey => 'Mã bảo mật・Passkey';
 	@override String get securityKey => 'Khóa bảo mật';
@@ -532,6 +534,7 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Tút của ${user}';
 	@override String get quoteAttached => 'Trích dẫn';
 	@override String get quoteQuestion => 'Trích dẫn lại?';
+	@override String get attachAsFileQuestion => 'Văn bản ở trong bộ nhớ tạm rất dài. Bạn có muốn đăng nó dưới dạng một tệp văn bản không?';
 	@override String get noMessagesYet => 'Chưa có tin nhắn';
 	@override String get newMessageExists => 'Bạn có tin nhắn mới';
 	@override String get onlyOneFileCanBeAttached => 'Bạn chỉ có thể đính kèm một tập tin';
@@ -1244,6 +1247,7 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDeckViVn deck_ = _StringsMisskeyDeckViVn._(_root);
 	@override late final _StringsMisskeyDialogViVn dialog_ = _StringsMisskeyDialogViVn._(_root);
 	@override late final _StringsMisskeyWebhookSettingsViVn webhookSettings_ = _StringsMisskeyWebhookSettingsViVn._(_root);
+	@override late final _StringsMisskeyAbuseReportViVn abuseReport_ = _StringsMisskeyAbuseReportViVn._(_root);
 	@override late final _StringsMisskeyModerationLogTypesViVn moderationLogTypes_ = _StringsMisskeyModerationLogTypesViVn._(_root);
 	@override late final _StringsMisskeyReversiViVn reversi_ = _StringsMisskeyReversiViVn._(_root);
 }
@@ -1666,8 +1670,6 @@ class _StringsMisskeySfxViVn extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Tút';
 	@override String get noteMy => 'Tút của tôi';
 	@override String get notification => 'Thông báo';
-	@override String get antenna => 'Trạm phát sóng';
-	@override String get channel => 'Kênh';
 }
 
 // Path: misskey.ago_
@@ -2175,9 +2177,18 @@ class _StringsMisskeyWebhookSettingsViVn extends _StringsMisskeyWebhookSettingsE
 	@override String get createWebhook => 'Tạo Webhook';
 	@override String get name => 'Tên';
 	@override String get secret => 'Mã bí mật';
-	@override String get events => 'Sự kiện Webhook';
 	@override String get active => 'Đã bật';
 	@override late final _StringsMisskeyWebhookSettingsEventsViVn events_ = _StringsMisskeyWebhookSettingsEventsViVn._(_root);
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportViVn extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientViVn notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientViVn._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -2498,6 +2509,16 @@ class _StringsMisskeyWebhookSettingsEventsViVn extends _StringsMisskeyWebhookSet
 	// Translations
 	@override String get reaction => 'Khi nhận được sự kiện';
 	@override String get mention => 'Khi có người nhắc tới bạn';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientViVn extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -3172,4 +3193,14 @@ class _StringsMisskeyPagesBlocksNoteViVn extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'ID tút';
 	@override String get idDescription => 'Ngoài ra, bạn có thể dán URL tút vào đây.';
 	@override String get detailed => 'Xem chi tiết';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_StringsViVn root) : this._root = root, super._(root);
+
+	@override final _StringsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Email';
 }

@@ -260,6 +260,10 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get reloadAccountsList => 'Muat ulang daftar akun';
 	@override String get loginFailed => 'Gagal untuk masuk';
 	@override String get showOnRemote => 'Lihat profil asli';
+	@override String get continueOnRemote => 'Lihat di peladen asal';
+	@override String get chooseServerOnMisskeyHub => 'Pilih peladen dari Misskey Hub';
+	@override String get specifyServerHost => 'Tentukan domain peladen';
+	@override String get inputHostName => 'Masukkan nama domain';
 	@override String get general => 'Umum';
 	@override String get wallpaper => 'Wallpaper';
 	@override String get setWallpaper => 'Atur wallpaper';
@@ -396,6 +400,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get selectFiles => 'Pilih berkas';
 	@override String get selectFolder => 'Pilih folder';
 	@override String get selectFolders => 'Pilih folder';
+	@override String get fileNotSelected => 'Tidak ada file yang dipilih';
 	@override String get renameFile => 'Ubah nama berkas';
 	@override String get folderName => 'Nama folder';
 	@override String get createFolder => 'Buat folder';
@@ -1319,6 +1324,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get noDescription => 'Tidak ada deskripsi';
 	@override String get alwaysConfirmFollow => 'Selalu konfirmasi ketika mengikuti';
 	@override String get inquiry => 'Hubungi kami';
+	@override String get tryAgain => 'Silahkan coba lagi.';
 	@override late final _StringsMisskeyDeliveryIdId delivery_ = _StringsMisskeyDeliveryIdId._(_root);
 	@override late final _StringsMisskeyBubbleGameIdId bubbleGame_ = _StringsMisskeyBubbleGameIdId._(_root);
 	@override late final _StringsMisskeyAnnouncementIdId announcement_ = _StringsMisskeyAnnouncementIdId._(_root);
@@ -1380,6 +1386,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDisabledTimelineIdId disabledTimeline_ = _StringsMisskeyDisabledTimelineIdId._(_root);
 	@override late final _StringsMisskeyDrivecleanerIdId drivecleaner_ = _StringsMisskeyDrivecleanerIdId._(_root);
 	@override late final _StringsMisskeyWebhookSettingsIdId webhookSettings_ = _StringsMisskeyWebhookSettingsIdId._(_root);
+	@override late final _StringsMisskeyAbuseReportIdId abuseReport_ = _StringsMisskeyAbuseReportIdId._(_root);
 	@override late final _StringsMisskeyModerationLogTypesIdId moderationLogTypes_ = _StringsMisskeyModerationLogTypesIdId._(_root);
 	@override late final _StringsMisskeyFileViewerIdId fileViewer_ = _StringsMisskeyFileViewerIdId._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerIdId externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerIdId._(_root);
@@ -1640,7 +1647,7 @@ class _StringsMisskeyFfVisibilityIdId extends _StringsMisskeyFfVisibilityEnUs {
 	@override final _StringsIdId _root; // ignore: unused_field
 
 	// Translations
-	@override String get public => 'Terbitkan';
+	@override String get public => 'Publik';
 	@override String get followers => 'Tampil untuk pengikut saja';
 	@override String get private => 'Tersembunyi';
 }
@@ -1943,8 +1950,6 @@ class _StringsMisskeySfxIdId extends _StringsMisskeySfxEnUs {
 	@override String get note => 'Catatan';
 	@override String get noteMy => 'Catatan (Saya)';
 	@override String get notification => 'Notifikasi';
-	@override String get antenna => 'Penerimaan Antenna';
-	@override String get channel => 'Notifikasi Kanal';
 	@override String get reaction => 'Ketika memilih reaksi';
 }
 
@@ -2585,11 +2590,22 @@ class _StringsMisskeyWebhookSettingsIdId extends _StringsMisskeyWebhookSettingsE
 
 	// Translations
 	@override String get createWebhook => 'Buat Webhook';
+	@override String get modifyWebhook => 'Sunting Webhook';
 	@override String get name => 'Nama';
 	@override String get secret => 'Secret';
-	@override String get events => 'Webhook Events';
 	@override String get active => 'Aktif';
 	@override late final _StringsMisskeyWebhookSettingsEventsIdId events_ = _StringsMisskeyWebhookSettingsEventsIdId._(_root);
+	@override String get deleteConfirm => 'Apakah kamu yakin ingin menghapus Webhook?';
+}
+
+// Path: misskey.abuseReport_
+class _StringsMisskeyAbuseReportIdId extends _StringsMisskeyAbuseReportEnUs {
+	_StringsMisskeyAbuseReportIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientIdId notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientIdId._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
@@ -3272,6 +3288,16 @@ class _StringsMisskeyWebhookSettingsEventsIdId extends _StringsMisskeyWebhookSet
 	@override String get renote => 'Ketika direnote';
 	@override String get reaction => 'Ketika menerima reaksi';
 	@override String get mention => 'Ketika sedang disebut';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_
+class _StringsMisskeyAbuseReportNotificationRecipientIdId extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4302,6 +4328,16 @@ class _StringsMisskeyPagesBlocksNoteIdId extends _StringsMisskeyPagesBlocksNoteE
 	@override String get id => 'ID Catatan';
 	@override String get idDescription => 'Kamu dapat menyetel ini dengan menempelkan tautan URL Catatan.';
 	@override String get detailed => 'Tampilan rincian';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId._(_StringsIdId root) : this._root = root, super._(root);
+
+	@override final _StringsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Surel';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
