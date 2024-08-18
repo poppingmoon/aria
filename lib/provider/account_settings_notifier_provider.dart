@@ -92,6 +92,11 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
     await _save();
   }
 
+  Future<void> setDefaultReaction(String? defaultReaction) async {
+    state = state.copyWith(defaultReaction: defaultReaction);
+    await _save();
+  }
+
   Future<void> setUploadFolder(String? uploadFolder) async {
     state = state.copyWith(uploadFolder: uploadFolder);
     await _save();

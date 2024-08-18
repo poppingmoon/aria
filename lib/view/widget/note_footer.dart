@@ -9,6 +9,7 @@ import '../../constant/colors.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/post_notifier_provider.dart';
@@ -241,13 +242,19 @@ class NoteFooter extends ConsumerWidget {
                       onPressed: !account.isGuest
                           ? () async {
                               if (appearNote.id.isEmpty) return;
+                              final defaultReaction = ref
+                                  .read(
+                                    accountSettingsNotifierProvider(account),
+                                  )
+                                  .defaultReaction;
+                              final emoji = defaultReaction ?? '❤';
                               if (ref
                                   .read(generalSettingsNotifierProvider)
                                   .confirmBeforeReact) {
                                 final confirmed = await confirmReaction(
                                   context,
                                   account: account,
-                                  emoji: '❤️',
+                                  emoji: emoji,
                                   note: appearNote,
                                 );
                                 if (!confirmed) return;
@@ -259,7 +266,7 @@ class NoteFooter extends ConsumerWidget {
                                     .read(
                                       notesNotifierProvider(account).notifier,
                                     )
-                                    .react(appearNote.id, '❤️'),
+                                    .react(appearNote.id, emoji),
                                 overlay: false,
                               );
                             }
@@ -276,7 +283,7 @@ class NoteFooter extends ConsumerWidget {
                                 builder: (context) => ReactionUsersSheet(
                                   account: account,
                                   noteId: appearNote.id,
-                                  reaction: '❤️',
+                                  reaction: '❤',
                                 ),
                                 isScrollControlled: true,
                               )
@@ -293,7 +300,7 @@ class NoteFooter extends ConsumerWidget {
                                 if (appearNote.id.isEmpty) return;
                                 final emoji = appearNote.reactionAcceptance ==
                                         ReactionAcceptance.likeOnly
-                                    ? '❤️'
+                                    ? '❤'
                                     : await pickEmoji(
                                         ref,
                                         account,
@@ -362,7 +369,7 @@ class NoteFooter extends ConsumerWidget {
                                 builder: (context) => ReactionUsersSheet(
                                   account: account,
                                   noteId: appearNote.id,
-                                  reaction: '❤️',
+                                  reaction: '❤',
                                 ),
                                 isScrollControlled: true,
                               );

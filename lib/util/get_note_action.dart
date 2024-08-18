@@ -34,7 +34,7 @@ void Function()? getNoteAction(
         ? () async {
             final emoji =
                 appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
-                    ? '❤️'
+                    ? '❤'
                     : await pickEmoji(
                         ref,
                         account,

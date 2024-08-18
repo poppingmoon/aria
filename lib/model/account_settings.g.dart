@@ -34,6 +34,7 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      defaultReaction: json['defaultReaction'] as String?,
       uploadFolder: json['uploadFolder'] as String?,
       keepOriginalUploading: json['keepOriginalUploading'] as bool? ?? false,
       keepOriginalFilename: json['keepOriginalFilename'] as bool? ?? true,
@@ -78,6 +79,7 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
   val['pinnedEmojisForReaction'] = instance.pinnedEmojisForReaction;
   val['pinnedEmojis'] = instance.pinnedEmojis;
   val['recentlyUsedEmojis'] = instance.recentlyUsedEmojis;
+  writeNotNull('defaultReaction', instance.defaultReaction);
   writeNotNull('uploadFolder', instance.uploadFolder);
   val['keepOriginalUploading'] = instance.keepOriginalUploading;
   val['keepOriginalFilename'] = instance.keepOriginalFilename;
