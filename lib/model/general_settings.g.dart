@@ -113,6 +113,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       confirmBeforePost: json['confirmBeforePost'] as bool? ?? true,
       confirmBeforeReact: json['confirmBeforeReact'] as bool? ?? true,
       confirmBeforeFollow: json['confirmBeforeFollow'] as bool? ?? true,
+      confirmWhenRevealingSensitiveMedia:
+          json['confirmWhenRevealingSensitiveMedia'] as bool? ?? false,
       launchMode:
           $enumDecodeNullable(_$LaunchModeEnumMap, json['launchMode']) ??
               LaunchMode.externalApplication,
@@ -217,6 +219,8 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['confirmBeforePost'] = instance.confirmBeforePost;
   val['confirmBeforeReact'] = instance.confirmBeforeReact;
   val['confirmBeforeFollow'] = instance.confirmBeforeFollow;
+  val['confirmWhenRevealingSensitiveMedia'] =
+      instance.confirmWhenRevealingSensitiveMedia;
   val['launchMode'] = _$LaunchModeEnumMap[instance.launchMode]!;
   val['themeMode'] = _$ThemeModeEnumMap[instance.themeMode]!;
   val['lightThemeId'] = instance.lightThemeId;

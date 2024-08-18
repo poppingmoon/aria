@@ -171,6 +171,13 @@ class BehaviorPage extends ConsumerWidget {
                 .read(generalSettingsNotifierProvider.notifier)
                 .setConfirmBeforeFollow(value),
           ),
+          SwitchListTile(
+            title: Text(t.misskey.confirmWhenRevealingSensitiveMedia),
+            value: settings.confirmWhenRevealingSensitiveMedia,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setConfirmWhenRevealingSensitiveMedia(value),
+          ),
           ListTile(
             title: Text(t.aria.webBrowser),
             subtitle: Text(

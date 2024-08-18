@@ -429,6 +429,15 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setConfirmWhenRevealingSensitiveMedia(
+    bool confirmWhenRevealingSensitiveMedia,
+  ) async {
+    state = state.copyWith(
+      confirmWhenRevealingSensitiveMedia: confirmWhenRevealingSensitiveMedia,
+    );
+    await _save();
+  }
+
   Future<void> setLaunchMode(LaunchMode launchMode) async {
     state = state.copyWith(launchMode: launchMode);
     await _save();

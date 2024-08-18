@@ -17,6 +17,7 @@ import '../../provider/static_image_url_provider.dart';
 import '../../util/launch_url.dart';
 import '../../util/pretty_bytes.dart';
 import '../dialog/audio_dialog.dart';
+import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'image_widget.dart';
@@ -223,9 +224,34 @@ class MediaCard extends HookConsumerWidget {
         label: file.comment ?? file.name,
         child: hide.value
             ? InkWell(
-                onTap: !openMediaOnDoubleTap ? () => hide.value = false : null,
-                onDoubleTap:
-                    openMediaOnDoubleTap ? () => hide.value = false : null,
+                onTap: !openMediaOnDoubleTap
+                    ? () async {
+                        if (ref
+                            .read(generalSettingsNotifierProvider)
+                            .confirmWhenRevealingSensitiveMedia) {
+                          final result = await confirm(
+                            context,
+                            message: t.misskey.sensitiveMediaRevealConfirm,
+                          );
+                          if (!result) return;
+                        }
+                        hide.value = false;
+                      }
+                    : null,
+                onDoubleTap: openMediaOnDoubleTap
+                    ? () async {
+                        if (ref
+                            .read(generalSettingsNotifierProvider)
+                            .confirmWhenRevealingSensitiveMedia) {
+                          final result = await confirm(
+                            context,
+                            message: t.misskey.sensitiveMediaRevealConfirm,
+                          );
+                          if (!result) return;
+                        }
+                        hide.value = false;
+                      }
+                    : null,
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
