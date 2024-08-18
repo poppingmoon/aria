@@ -19,7 +19,7 @@ class PlayNotifier extends _$PlayNotifier {
     required String title,
     required String summary,
     required String script,
-    required FlashVisibility visibility,
+    FlashVisibility? visibility,
   }) async {
     await _misskey.flash.update(
       FlashUpdateRequest(

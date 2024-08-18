@@ -30,7 +30,7 @@ class PlayEditPage extends HookConsumerWidget {
     final title = useState(play?.title);
     final summary = useState(play?.summary);
     final script = useState(play?.script);
-    final public = useState(true);
+    final visibility = useState(play?.visibility);
     final titleController = useTextEditingController(text: play?.title);
     final summaryController = useTextEditingController(text: play?.summary);
     final scriptController = useTextEditingController(text: play?.script);
@@ -136,11 +136,26 @@ class PlayEditPage extends HookConsumerWidget {
                   ),
                 ),
               ),
-              SwitchListTile(
-                title: Text(t.misskey.visibility),
-                subtitle: Text(t.misskey.play_.visibilityDescription),
-                value: public.value,
-                onChanged: (value) => public.value = value,
+              ListTile(
+                title: DropdownButtonFormField(
+                  decoration: InputDecoration(
+                    labelText: t.misskey.visibility,
+                    helperText: t.misskey.play_.visibilityDescription,
+                  ),
+                  items: [
+                    DropdownMenuItem(
+                      value: FlashVisibility.public,
+                      child: Text(t.misskey.public),
+                    ),
+                    DropdownMenuItem(
+                      value: FlashVisibility.private,
+                      child: Text(t.misskey.private),
+                    ),
+                  ],
+                  value: visibility.value,
+                  onChanged: (value) => visibility.value = value,
+                  isExpanded: true,
+                ),
               ),
             ],
           ),
@@ -158,9 +173,7 @@ class PlayEditPage extends HookConsumerWidget {
                       summary: summary.value ?? '',
                       script: script.value ?? '',
                       permissions: [],
-                      visibility: public.value
-                          ? FlashVisibility.public
-                          : FlashVisibility.private,
+                      visibility: visibility.value,
                     ),
                   ),
             );
@@ -177,9 +190,7 @@ class PlayEditPage extends HookConsumerWidget {
                     title: title.value ?? 'New Play',
                     summary: summary.value ?? '',
                     script: script.value ?? '',
-                    visibility: public.value
-                        ? FlashVisibility.public
-                        : FlashVisibility.private,
+                    visibility: visibility.value,
                   ),
             );
             if (!context.mounted) return;

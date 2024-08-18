@@ -9,15 +9,22 @@ import 'misskey_provider.dart';
 
 part 'id_gen_method_provider.g.dart';
 
-@Riverpod(keepAlive: true)
+@riverpod
 FutureOr<IdGenMethod> idGenMethod(IdGenMethodRef ref, Account account) async {
-  final id = ref.read(notesNotifierProvider(account)).values.firstOrNull?.id ??
-      (await ref.read(iNotifierProvider(account).future))?.id ??
-      (await ref
-              .read(misskeyProvider(account))
-              .users
-              .users(const UsersUsersRequest(limit: 1)))
-          .first
-          .id;
-  return Id.parse(id).method;
+  final link = ref.keepAlive();
+  try {
+    final id =
+        ref.read(notesNotifierProvider(account)).values.firstOrNull?.id ??
+            (await ref.read(iNotifierProvider(account).future))?.id ??
+            (await ref
+                    .read(misskeyProvider(account))
+                    .users
+                    .users(const UsersUsersRequest(limit: 1)))
+                .first
+                .id;
+    return Id.parse(id).method;
+  } catch (_) {
+    link.close();
+    rethrow;
+  }
 }
