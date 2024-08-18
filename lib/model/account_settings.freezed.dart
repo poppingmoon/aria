@@ -33,8 +33,8 @@ mixin _$AccountSettings {
   List<String> get pinnedEmojisForReaction =>
       throw _privateConstructorUsedError;
   List<String> get pinnedEmojis => throw _privateConstructorUsedError;
-  List<String> get recentlyUsedEmojis =>
-      throw _privateConstructorUsedError; // Drive
+  List<String> get recentlyUsedEmojis => throw _privateConstructorUsedError;
+  String? get defaultReaction => throw _privateConstructorUsedError; // Drive
   String? get uploadFolder => throw _privateConstructorUsedError;
   bool get keepOriginalUploading => throw _privateConstructorUsedError;
   bool get keepOriginalFilename => throw _privateConstructorUsedError; // Mute
@@ -72,6 +72,7 @@ abstract class $AccountSettingsCopyWith<$Res> {
       List<String> pinnedEmojisForReaction,
       List<String> pinnedEmojis,
       List<String> recentlyUsedEmojis,
+      String? defaultReaction,
       String? uploadFolder,
       bool keepOriginalUploading,
       bool keepOriginalFilename,
@@ -106,6 +107,7 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? pinnedEmojisForReaction = null,
     Object? pinnedEmojis = null,
     Object? recentlyUsedEmojis = null,
+    Object? defaultReaction = freezed,
     Object? uploadFolder = freezed,
     Object? keepOriginalUploading = null,
     Object? keepOriginalFilename = null,
@@ -155,6 +157,10 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
           ? _value.recentlyUsedEmojis
           : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      defaultReaction: freezed == defaultReaction
+          ? _value.defaultReaction
+          : defaultReaction // ignore: cast_nullable_to_non_nullable
+              as String?,
       uploadFolder: freezed == uploadFolder
           ? _value.uploadFolder
           : uploadFolder // ignore: cast_nullable_to_non_nullable
@@ -206,6 +212,7 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
       List<String> pinnedEmojisForReaction,
       List<String> pinnedEmojis,
       List<String> recentlyUsedEmojis,
+      String? defaultReaction,
       String? uploadFolder,
       bool keepOriginalUploading,
       bool keepOriginalFilename,
@@ -238,6 +245,7 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? pinnedEmojisForReaction = null,
     Object? pinnedEmojis = null,
     Object? recentlyUsedEmojis = null,
+    Object? defaultReaction = freezed,
     Object? uploadFolder = freezed,
     Object? keepOriginalUploading = null,
     Object? keepOriginalFilename = null,
@@ -287,6 +295,10 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
           ? _value._recentlyUsedEmojis
           : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      defaultReaction: freezed == defaultReaction
+          ? _value.defaultReaction
+          : defaultReaction // ignore: cast_nullable_to_non_nullable
+              as String?,
       uploadFolder: freezed == uploadFolder
           ? _value.uploadFolder
           : uploadFolder // ignore: cast_nullable_to_non_nullable
@@ -333,6 +345,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
       final List<String> pinnedEmojisForReaction = defaultPinnedEmojis,
       final List<String> pinnedEmojis = defaultPinnedEmojis,
       final List<String> recentlyUsedEmojis = const [],
+      this.defaultReaction,
       this.uploadFolder,
       this.keepOriginalUploading = false,
       this.keepOriginalFilename = true,
@@ -403,6 +416,8 @@ class _$AccountSettingsImpl implements _AccountSettings {
     return EqualUnmodifiableListView(_recentlyUsedEmojis);
   }
 
+  @override
+  final String? defaultReaction;
 // Drive
   @override
   final String? uploadFolder;
@@ -457,7 +472,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @override
   String toString() {
-    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
   }
 
   @override
@@ -484,6 +499,8 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 .equals(other._pinnedEmojis, _pinnedEmojis) &&
             const DeepCollectionEquality()
                 .equals(other._recentlyUsedEmojis, _recentlyUsedEmojis) &&
+            (identical(other.defaultReaction, defaultReaction) ||
+                other.defaultReaction == defaultReaction) &&
             (identical(other.uploadFolder, uploadFolder) ||
                 other.uploadFolder == uploadFolder) &&
             (identical(other.keepOriginalUploading, keepOriginalUploading) ||
@@ -513,6 +530,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
       const DeepCollectionEquality().hash(_pinnedEmojisForReaction),
       const DeepCollectionEquality().hash(_pinnedEmojis),
       const DeepCollectionEquality().hash(_recentlyUsedEmojis),
+      defaultReaction,
       uploadFolder,
       keepOriginalUploading,
       keepOriginalFilename,
@@ -550,6 +568,7 @@ abstract class _AccountSettings implements AccountSettings {
       final List<String> pinnedEmojisForReaction,
       final List<String> pinnedEmojis,
       final List<String> recentlyUsedEmojis,
+      final String? defaultReaction,
       final String? uploadFolder,
       final bool keepOriginalUploading,
       final bool keepOriginalFilename,
@@ -581,7 +600,9 @@ abstract class _AccountSettings implements AccountSettings {
   @override
   List<String> get pinnedEmojis;
   @override
-  List<String> get recentlyUsedEmojis; // Drive
+  List<String> get recentlyUsedEmojis;
+  @override
+  String? get defaultReaction; // Drive
   @override
   String? get uploadFolder;
   @override

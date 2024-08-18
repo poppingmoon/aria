@@ -65,6 +65,7 @@ class _StringsAriaEnUs {
 	String get copyName => 'Copy name';
 	String get crop => 'Crop';
 	String get custom => 'Custom';
+	String get defaultReaction => 'Default reaction';
 	String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
 		one: 'Are you sure you want to delete ${n} file?',
 		other: 'Are you sure you want to delete ${n} files?',

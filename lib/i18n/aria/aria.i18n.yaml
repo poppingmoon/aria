@@ -14,6 +14,7 @@ copied: "Copied to clipboard"
 copyName: "Copy name"
 crop: "Crop"
 custom: "Custom"
+defaultReaction: "Default reaction"
 deleteFilesConfirm:
   one: "Are you sure you want to delete {n} file?"
   other: "Are you sure you want to delete {n} files?"

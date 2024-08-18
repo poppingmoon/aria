@@ -60,6 +60,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get copyName => '名前をコピー';
 	@override String get crop => 'クロップ';
 	@override String get custom => 'カスタム';
+	@override String get defaultReaction => 'デフォルトのリアクション';
 	@override String deleteFilesConfirm({required Object n}) => '${n}個のファイルを削除しますか？';
 	@override String get deleteTabConfirm => 'このタブを削除しますか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを無効にする';

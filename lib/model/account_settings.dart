@@ -22,6 +22,7 @@ class AccountSettings with _$AccountSettings {
     @Default(defaultPinnedEmojis) List<String> pinnedEmojisForReaction,
     @Default(defaultPinnedEmojis) List<String> pinnedEmojis,
     @Default([]) List<String> recentlyUsedEmojis,
+    String? defaultReaction,
 
     // Drive
     String? uploadFolder,
