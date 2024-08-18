@@ -18,8 +18,9 @@ import '../../provider/file_system_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/audio_dialog.dart';
+import '../dialog/file_caption_edit_dialog.dart';
 import '../dialog/image_dialog.dart';
-import '../dialog/post_file_editor_dialog.dart';
+import '../dialog/text_field_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'post_file_thumbnail.dart';
 
@@ -37,7 +38,7 @@ class PostFormAttaches extends ConsumerWidget {
   final bool gallery;
   final double maxCrossAxisExtent;
 
-  Future<void> _editFile(WidgetRef ref, int index) async {
+  Future<void> _renameFile(WidgetRef ref, int index) async {
     final file = ref.read(
       attachesNotifierProvider(
         account,
@@ -45,21 +46,71 @@ class PostFormAttaches extends ConsumerWidget {
         gallery: gallery,
       ),
     )[index];
-    final result = await showDialog<PostFile>(
-      context: ref.context,
-      builder: (context) => PostFileEditorDialog(file: file),
+    final result = await showTextFieldDialog(
+      ref.context,
+      title: Text(t.misskey.renameFile),
+      initialText: file.name,
     );
     if (!ref.context.mounted) return;
-    if (result != null && result != file) {
-      if (result is DrivePostFile) {
+    if (result != null && result != file.name) {
+      switch (file) {
+        case DrivePostFile():
+          final driveFile = await futureWithDialog(
+            ref.context,
+            ref.read(misskeyProvider(account)).drive.files.update(
+                  DriveFilesUpdateRequest(
+                    fileId: file.file.id,
+                    name: result,
+                  ),
+                ),
+          );
+          if (driveFile != null) {
+            ref
+                .read(
+                  attachesNotifierProvider(
+                    account,
+                    noteId: noteId,
+                    gallery: gallery,
+                  ).notifier,
+                )
+                .replace(index, DrivePostFile.fromDriveFile(driveFile));
+          }
+        case LocalPostFile():
+          ref
+              .read(
+                attachesNotifierProvider(
+                  account,
+                  noteId: noteId,
+                  gallery: gallery,
+                ).notifier,
+              )
+              .replace(index, file.copyWith(name: result));
+      }
+    }
+    if (!ref.context.mounted) return;
+    ref.context.pop();
+  }
+
+  Future<void> _updateIsSensitive(
+    WidgetRef ref,
+    int index,
+    bool isSensitive,
+  ) async {
+    final file = ref.read(
+      attachesNotifierProvider(
+        account,
+        noteId: noteId,
+        gallery: gallery,
+      ),
+    )[index];
+    switch (file) {
+      case DrivePostFile():
         final driveFile = await futureWithDialog(
           ref.context,
           ref.read(misskeyProvider(account)).drive.files.update(
                 DriveFilesUpdateRequest(
-                  fileId: result.file.id,
-                  name: result.name,
-                  isSensitive: result.isSensitive,
-                  comment: result.comment,
+                  fileId: file.file.id,
+                  isSensitive: isSensitive,
                 ),
               ),
         );
@@ -74,7 +125,7 @@ class PostFormAttaches extends ConsumerWidget {
               )
               .replace(index, DrivePostFile.fromDriveFile(driveFile));
         }
-      } else {
+      case LocalPostFile():
         ref
             .read(
               attachesNotifierProvider(
@@ -83,9 +134,62 @@ class PostFormAttaches extends ConsumerWidget {
                 gallery: gallery,
               ).notifier,
             )
-            .replace(index, result);
+            .replace(index, file.copyWith(isSensitive: isSensitive));
+    }
+    if (!ref.context.mounted) return;
+    ref.context.pop();
+  }
+
+  Future<void> _describeFile(WidgetRef ref, int index) async {
+    final file = ref.read(
+      attachesNotifierProvider(
+        account,
+        noteId: noteId,
+        gallery: gallery,
+      ),
+    )[index];
+    final result = await showDialog<String>(
+      context: ref.context,
+      builder: (context) => FileCaptionEditDialog(file: file),
+    );
+    if (!ref.context.mounted) return;
+    if (result != null && result != file.comment) {
+      switch (file) {
+        case DrivePostFile():
+          final driveFile = await futureWithDialog(
+            ref.context,
+            ref.read(misskeyProvider(account)).drive.files.update(
+                  DriveFilesUpdateRequest(
+                    fileId: file.file.id,
+                    comment: result,
+                  ),
+                ),
+          );
+          if (driveFile != null) {
+            ref
+                .read(
+                  attachesNotifierProvider(
+                    account,
+                    noteId: noteId,
+                    gallery: gallery,
+                  ).notifier,
+                )
+                .replace(index, DrivePostFile.fromDriveFile(driveFile));
+          }
+        case LocalPostFile():
+          ref
+              .read(
+                attachesNotifierProvider(
+                  account,
+                  noteId: noteId,
+                  gallery: gallery,
+                ).notifier,
+              )
+              .replace(index, file.copyWith(comment: result));
       }
     }
+    if (!ref.context.mounted) return;
+    ref.context.pop();
   }
 
   Future<void> _editImage(WidgetRef ref, int index) async {
@@ -131,6 +235,8 @@ class PostFormAttaches extends ConsumerWidget {
             ),
           );
     }
+    if (!ref.context.mounted) return;
+    ref.context.pop();
   }
 
   @override
@@ -244,8 +350,25 @@ class PostFormAttaches extends ConsumerWidget {
                             ),
                         ListTile(
                           leading: const Icon(Icons.edit),
-                          title: Text(t.aria.editFile),
-                          onTap: () => _editFile(ref, index),
+                          title: Text(t.misskey.renameFile),
+                          onTap: () => _renameFile(ref, index),
+                        ),
+                        if (files[index].isSensitive)
+                          ListTile(
+                            leading: const Icon(Icons.visibility),
+                            title: Text(t.misskey.unmarkAsSensitive),
+                            onTap: () => _updateIsSensitive(ref, index, false),
+                          )
+                        else
+                          ListTile(
+                            leading: const Icon(Icons.visibility_off),
+                            title: Text(t.misskey.markAsSensitive),
+                            onTap: () => _updateIsSensitive(ref, index, true),
+                          ),
+                        ListTile(
+                          leading: const Icon(Icons.edit_note),
+                          title: Text(t.misskey.describeFile),
+                          onTap: () => _describeFile(ref, index),
                         ),
                         if (files[index].type?.startsWith('image/') ?? false)
                           ListTile(
