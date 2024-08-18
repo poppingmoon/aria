@@ -110,6 +110,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool confirmBeforePost,
     @Default(true) bool confirmBeforeReact,
     @Default(true) bool confirmBeforeFollow,
+    @Default(false) bool confirmWhenRevealingSensitiveMedia,
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
 
     // Theme
