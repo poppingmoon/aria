@@ -22,6 +22,7 @@ class GalleryMy extends ConsumerWidget {
       itemBuilder: (context, post) => GalleryPostPreview(
         account: account,
         post: post,
+        hideUserInfo: true,
         onTap: () => context.push('/$account/gallery/${post.id}'),
       ),
       onRefresh: () =>

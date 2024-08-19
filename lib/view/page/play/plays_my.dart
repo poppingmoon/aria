@@ -22,6 +22,7 @@ class PlaysMy extends ConsumerWidget {
       itemBuilder: (context, play) => PlayPreview(
         account: account,
         play: play,
+        hideUserInfo: true,
         onTap: () => context.push('/$account/play/${play.id}'),
       ),
       onRefresh: () => ref.refresh(playsNotifierProvider(account).future),

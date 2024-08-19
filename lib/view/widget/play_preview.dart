@@ -12,11 +12,13 @@ class PlayPreview extends StatelessWidget {
     super.key,
     required this.account,
     required this.play,
+    this.hideUserInfo = false,
     this.onTap,
   });
 
   final Account account;
   final Flash play;
+  final bool hideUserInfo;
   final void Function()? onTap;
 
   @override
@@ -37,18 +39,19 @@ class PlayPreview extends StatelessWidget {
                 maxLines: 1,
               ),
             ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: Row(
-              children: [
-                UserAvatar(account: account, user: play.user),
-                const SizedBox(width: 2.0),
-                Expanded(
-                  child: UsernameWidget(account: account, user: play.user),
-                ),
-              ],
+          if (!hideUserInfo)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Row(
+                children: [
+                  UserAvatar(account: account, user: play.user),
+                  const SizedBox(width: 2.0),
+                  Expanded(
+                    child: UsernameWidget(account: account, user: play.user),
+                  ),
+                ],
+              ),
             ),
-          ),
         ],
       ),
       trailing: play.visibility == FlashVisibility.private

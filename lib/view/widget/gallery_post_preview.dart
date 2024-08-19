@@ -23,11 +23,13 @@ class GalleryPostPreview extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.post,
+    this.hideUserInfo = false,
     this.onTap,
   });
 
   final Account account;
   final GalleryPost post;
+  final bool hideUserInfo;
   final void Function()? onTap;
 
   @override
@@ -141,29 +143,32 @@ class GalleryPostPreview extends HookConsumerWidget {
               ),
               const Divider(),
             ],
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  UserAvatar(
-                    account: account,
-                    user: post.user,
-                    onTap: () => context.push('/$account/users/${post.userId}'),
-                  ),
-                  const SizedBox(width: 2.0),
-                  UsernameWidget(
-                    account: account,
-                    user: post.user,
-                    onTap: () => context.push('/$account/users/${post.userId}'),
-                    onLongPress: () => showUserSheet(
-                      context: context,
+            if (!hideUserInfo)
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    UserAvatar(
                       account: account,
-                      userId: post.userId,
+                      user: post.user,
+                      onTap: () =>
+                          context.push('/$account/users/${post.userId}'),
                     ),
-                  ),
-                ],
+                    const SizedBox(width: 2.0),
+                    UsernameWidget(
+                      account: account,
+                      user: post.user,
+                      onTap: () =>
+                          context.push('/$account/users/${post.userId}'),
+                      onLongPress: () => showUserSheet(
+                        context: context,
+                        account: account,
+                        userId: post.userId,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
