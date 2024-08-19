@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
+import '../../provider/timeline_tabs_notifier_provider.dart';
 import '../dialog/confirmation_dialog.dart';
 
 enum AccountSettingsDestination {
@@ -61,13 +62,27 @@ class AccountSettingsNavigation extends ConsumerWidget {
         ref.context,
         message: t.misskey.logoutConfirm,
       );
-      if (confirmed) {
-        await ref.read(accountsNotifierProvider.notifier).remove(account);
-        if (!ref.context.mounted) return;
-        ref.context.pop();
-        if (selectedDestination != null && ref.context.canPop()) {
-          ref.context.pop();
+      if (!confirmed) return;
+      await ref.read(accountsNotifierProvider.notifier).remove(account);
+      if (!ref.context.mounted) return;
+      final tabs = ref
+          .read(timelineTabsNotifierProvider)
+          .where((tab) => tab.account == account);
+      if (tabs.isNotEmpty) {
+        final confirmed = await confirm(
+          ref.context,
+          message: t.aria.deleteAccountTabsConfirm(n: tabs.length),
+        );
+        if (confirmed) {
+          await ref
+              .read(timelineTabsNotifierProvider.notifier)
+              .deleteAll(tabs.map((tab) => tab.id).nonNulls);
         }
+      }
+      if (!ref.context.mounted) return;
+      ref.context.pop();
+      if (selectedDestination != null && ref.context.canPop()) {
+        ref.context.pop();
       }
     } else {
       final location = switch (destination) {

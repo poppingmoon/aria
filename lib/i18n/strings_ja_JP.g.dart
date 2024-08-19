@@ -64,6 +64,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get crop => 'クロップ';
 	@override String get custom => 'カスタム';
 	@override String get defaultReaction => 'デフォルトのリアクション';
+	@override String deleteAccountTabsConfirm({required Object n}) => 'このアカウントのタブが${n}個あります。削除しますか？';
 	@override String deleteFilesConfirm({required Object n}) => '${n}個のファイルを削除しますか？';
 	@override String get deleteTabConfirm => 'このタブを削除しますか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを無効にする';
@@ -72,7 +73,6 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get doubleTapToShow => 'ダブルタップして表示';
 	@override String get downloaded => 'ダウンロードしました';
 	@override String get draw => '手描き';
-	@override String get editFile => 'ファイルを編集';
 	@override String get editImage => '画像を編集';
 	@override String get emojiPickerAutofocus => '絵文字ピッカーでキーボードを自動で開く';
 	@override String get emojiPickerScale => '絵文字ピッカーのサイズ';

@@ -69,6 +69,10 @@ class _StringsAriaEnUs {
 	String get crop => 'Crop';
 	String get custom => 'Custom';
 	String get defaultReaction => 'Default reaction';
+	String deleteAccountTabsConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
+		one: 'Do you want to delete ${n} tab related to this account?',
+		other: 'Do you want to delete ${n} tabs related to this account?',
+	);
 	String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
 		one: 'Are you sure you want to delete ${n} file?',
 		other: 'Are you sure you want to delete ${n} files?',
@@ -80,7 +84,6 @@ class _StringsAriaEnUs {
 	String get doubleTapToShow => 'Double tap to show';
 	String get downloaded => 'Downloaded';
 	String get draw => 'Draw';
-	String get editFile => 'Edit file';
 	String get editImage => 'Edit image';
 	String get emojiPickerAutofocus => 'Expand keyboard on opening emoji picker';
 	String get emojiPickerScale => 'Emoji picker scale';

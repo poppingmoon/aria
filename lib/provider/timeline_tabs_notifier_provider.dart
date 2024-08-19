@@ -72,6 +72,11 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
     await _save();
   }
 
+  Future<void> deleteAll(Iterable<String> tabIds) async {
+    state = state.where((tab) => !tabIds.contains(tab.id)).toList();
+    await _save();
+  }
+
   Future<void> reorder(int oldIndex, int newIndex) async {
     final items = state.toList();
     final item = items.removeAt(oldIndex);
