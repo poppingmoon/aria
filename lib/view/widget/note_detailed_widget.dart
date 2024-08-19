@@ -126,7 +126,12 @@ class NoteDetailedWidget extends HookConsumerWidget {
         : null;
     final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
     final isRenote = note.isRenote;
-    final showContent = useState(false);
+    final showContent = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.alwaysExpandCw),
+      ),
+    );
     final parsed = appearNote.text != null
         ? ref.watch(parsedMfmProvider(appearNote.text!))
         : null;

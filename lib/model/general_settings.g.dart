@@ -42,6 +42,10 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['showSubNoteReactionsViewer'] as bool? ?? false,
       showNoteFooter: json['showNoteFooter'] as bool? ?? true,
       showSubNoteFooter: json['showSubNoteFooter'] as bool? ?? false,
+      alwaysExpandCw: json['alwaysExpandCw'] as bool? ?? false,
+      alwaysExpandLongNote: json['alwaysExpandLongNote'] as bool? ?? false,
+      alwaysExpandMediaInSubNote:
+          json['alwaysExpandMediaInSubNote'] as bool? ?? false,
       emojiStyle:
           $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
               EmojiStyle.twemoji,
@@ -159,6 +163,9 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showSubNoteReactionsViewer'] = instance.showSubNoteReactionsViewer;
   val['showNoteFooter'] = instance.showNoteFooter;
   val['showSubNoteFooter'] = instance.showSubNoteFooter;
+  val['alwaysExpandCw'] = instance.alwaysExpandCw;
+  val['alwaysExpandLongNote'] = instance.alwaysExpandLongNote;
+  val['alwaysExpandMediaInSubNote'] = instance.alwaysExpandMediaInSubNote;
   val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
   writeNotNull('fontFamily', instance.fontFamily);
   val['fontSize'] = instance.fontSize;

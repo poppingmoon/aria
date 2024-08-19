@@ -53,6 +53,9 @@ class _StringsAriaEnUs {
 		const TextSpan(text: '.\nWe would like to show our appreciation to all contributers of these projects.'),
 	]);
 	String get addTab => 'Add tab';
+	String get alwaysExpandCw => 'Always expand content warning';
+	String get alwaysExpandLongNote => 'Always expand long note';
+	String get alwaysExpandMediaInSubNote => 'Always expand media in sub note';
 	String get alwaysShowTabHeader => 'Always show tab info';
 	String get authenticate => 'Authenticate';
 	String get authenticated => 'Authenticated';

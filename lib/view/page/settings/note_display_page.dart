@@ -310,6 +310,27 @@ class NoteDisplayPage extends HookConsumerWidget {
                         .read(generalSettingsNotifierProvider.notifier)
                         .setShowSubNoteFooter(value),
                   ),
+                  SwitchListTile(
+                    title: Text(t.aria.alwaysExpandCw),
+                    value: settings.alwaysExpandCw,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setAlwaysExpandCw(value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.aria.alwaysExpandLongNote),
+                    value: settings.alwaysExpandLongNote,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setAlwaysExpandLongNote(value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.aria.alwaysExpandMediaInSubNote),
+                    value: settings.alwaysExpandMediaInSubNote,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setAlwaysExpandMediaInSubNote(value),
+                  ),
                   ListTile(
                     title: Text(t.misskey.emojiStyle),
                     subtitle: Text(
