@@ -41,9 +41,9 @@ class RenoteSheet extends HookConsumerWidget {
       NoteVisibility.min(
         ref.read(
           accountSettingsNotifierProvider(account).select(
-            (settings) => settings.rememberNoteVisibility
-                ? settings.visibility
-                : settings.defaultNoteVisibility,
+            (settings) => settings.rememberRenoteVisibility
+                ? settings.renoteVisibility
+                : settings.defaultRenoteVisibility,
           ),
         ),
         isSilenced
@@ -55,9 +55,9 @@ class RenoteSheet extends HookConsumerWidget {
       note.localOnly ||
           ref.read(
             accountSettingsNotifierProvider(account).select(
-              (settings) => settings.rememberNoteVisibility
-                  ? settings.localOnly
-                  : settings.defaultNoteLocalOnly,
+              (settings) => settings.rememberRenoteVisibility
+                  ? settings.renoteLocalOnly
+                  : settings.defaultRenoteLocalOnly,
             ),
           ),
     );
@@ -122,10 +122,10 @@ class RenoteSheet extends HookConsumerWidget {
                 visibility.value = result;
                 if (ref
                     .read(accountSettingsNotifierProvider(account))
-                    .rememberNoteVisibility) {
+                    .rememberRenoteVisibility) {
                   await ref
                       .read(accountSettingsNotifierProvider(account).notifier)
-                      .setVisibility(result);
+                      .setRenoteVisibility(result);
                 }
               }
             },
@@ -178,12 +178,12 @@ class RenoteSheet extends HookConsumerWidget {
                     localOnly.value = value;
                     if (ref
                         .read(accountSettingsNotifierProvider(account))
-                        .rememberNoteVisibility) {
+                        .rememberRenoteVisibility) {
                       ref
                           .read(
                             accountSettingsNotifierProvider(account).notifier,
                           )
-                          .setLocalOnly(value);
+                          .setRenoteLocalOnly(value);
                     }
                   }
                 : null,

@@ -58,6 +58,25 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
     await _save();
   }
 
+  Future<void> setRememberRenoteVisibility(
+    bool rememberRenoteVisibility,
+  ) async {
+    state = state.copyWith(rememberRenoteVisibility: rememberRenoteVisibility);
+    await _save();
+  }
+
+  Future<void> setDefaultRenoteVisibility(
+    NoteVisibility defaultRenoteVisibility,
+  ) async {
+    state = state.copyWith(defaultRenoteVisibility: defaultRenoteVisibility);
+    await _save();
+  }
+
+  Future<void> setDefaultRenoteLocalOnly(bool defaultRenoteLocalOnly) async {
+    state = state.copyWith(defaultRenoteLocalOnly: defaultRenoteLocalOnly);
+    await _save();
+  }
+
   Future<void> setReactionAcceptance(
     ReactionAcceptance? reactionAcceptance,
   ) async {
@@ -72,6 +91,16 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
 
   Future<void> setLocalOnly(bool localOnly) async {
     state = state.copyWith(localOnly: localOnly);
+    await _save();
+  }
+
+  Future<void> setRenoteVisibility(NoteVisibility renoteVisibility) async {
+    state = state.copyWith(renoteVisibility: renoteVisibility);
+    await _save();
+  }
+
+  Future<void> setRenoteLocalOnly(bool renoteLocalOnly) async {
+    state = state.copyWith(renoteLocalOnly: renoteLocalOnly);
     await _save();
   }
 

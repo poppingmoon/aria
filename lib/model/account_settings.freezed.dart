@@ -26,10 +26,16 @@ mixin _$AccountSettings {
   NoteVisibility get defaultNoteVisibility =>
       throw _privateConstructorUsedError;
   bool get defaultNoteLocalOnly => throw _privateConstructorUsedError;
+  bool get rememberRenoteVisibility => throw _privateConstructorUsedError;
+  NoteVisibility get defaultRenoteVisibility =>
+      throw _privateConstructorUsedError;
+  bool get defaultRenoteLocalOnly => throw _privateConstructorUsedError;
   ReactionAcceptance? get reactionAcceptance =>
       throw _privateConstructorUsedError;
   NoteVisibility get visibility => throw _privateConstructorUsedError;
-  bool get localOnly => throw _privateConstructorUsedError; // EmojiPicker
+  bool get localOnly => throw _privateConstructorUsedError;
+  NoteVisibility get renoteVisibility => throw _privateConstructorUsedError;
+  bool get renoteLocalOnly => throw _privateConstructorUsedError; // EmojiPicker
   List<String> get pinnedEmojisForReaction =>
       throw _privateConstructorUsedError;
   List<String> get pinnedEmojis => throw _privateConstructorUsedError;
@@ -66,9 +72,14 @@ abstract class $AccountSettingsCopyWith<$Res> {
       bool rememberNoteVisibility,
       NoteVisibility defaultNoteVisibility,
       bool defaultNoteLocalOnly,
+      bool rememberRenoteVisibility,
+      NoteVisibility defaultRenoteVisibility,
+      bool defaultRenoteLocalOnly,
       ReactionAcceptance? reactionAcceptance,
       NoteVisibility visibility,
       bool localOnly,
+      NoteVisibility renoteVisibility,
+      bool renoteLocalOnly,
       List<String> pinnedEmojisForReaction,
       List<String> pinnedEmojis,
       List<String> recentlyUsedEmojis,
@@ -101,9 +112,14 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? rememberNoteVisibility = null,
     Object? defaultNoteVisibility = null,
     Object? defaultNoteLocalOnly = null,
+    Object? rememberRenoteVisibility = null,
+    Object? defaultRenoteVisibility = null,
+    Object? defaultRenoteLocalOnly = null,
     Object? reactionAcceptance = freezed,
     Object? visibility = null,
     Object? localOnly = null,
+    Object? renoteVisibility = null,
+    Object? renoteLocalOnly = null,
     Object? pinnedEmojisForReaction = null,
     Object? pinnedEmojis = null,
     Object? recentlyUsedEmojis = null,
@@ -133,6 +149,18 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
           ? _value.defaultNoteLocalOnly
           : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
               as bool,
+      rememberRenoteVisibility: null == rememberRenoteVisibility
+          ? _value.rememberRenoteVisibility
+          : rememberRenoteVisibility // ignore: cast_nullable_to_non_nullable
+              as bool,
+      defaultRenoteVisibility: null == defaultRenoteVisibility
+          ? _value.defaultRenoteVisibility
+          : defaultRenoteVisibility // ignore: cast_nullable_to_non_nullable
+              as NoteVisibility,
+      defaultRenoteLocalOnly: null == defaultRenoteLocalOnly
+          ? _value.defaultRenoteLocalOnly
+          : defaultRenoteLocalOnly // ignore: cast_nullable_to_non_nullable
+              as bool,
       reactionAcceptance: freezed == reactionAcceptance
           ? _value.reactionAcceptance
           : reactionAcceptance // ignore: cast_nullable_to_non_nullable
@@ -144,6 +172,14 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
       localOnly: null == localOnly
           ? _value.localOnly
           : localOnly // ignore: cast_nullable_to_non_nullable
+              as bool,
+      renoteVisibility: null == renoteVisibility
+          ? _value.renoteVisibility
+          : renoteVisibility // ignore: cast_nullable_to_non_nullable
+              as NoteVisibility,
+      renoteLocalOnly: null == renoteLocalOnly
+          ? _value.renoteLocalOnly
+          : renoteLocalOnly // ignore: cast_nullable_to_non_nullable
               as bool,
       pinnedEmojisForReaction: null == pinnedEmojisForReaction
           ? _value.pinnedEmojisForReaction
@@ -206,9 +242,14 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
       bool rememberNoteVisibility,
       NoteVisibility defaultNoteVisibility,
       bool defaultNoteLocalOnly,
+      bool rememberRenoteVisibility,
+      NoteVisibility defaultRenoteVisibility,
+      bool defaultRenoteLocalOnly,
       ReactionAcceptance? reactionAcceptance,
       NoteVisibility visibility,
       bool localOnly,
+      NoteVisibility renoteVisibility,
+      bool renoteLocalOnly,
       List<String> pinnedEmojisForReaction,
       List<String> pinnedEmojis,
       List<String> recentlyUsedEmojis,
@@ -239,9 +280,14 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? rememberNoteVisibility = null,
     Object? defaultNoteVisibility = null,
     Object? defaultNoteLocalOnly = null,
+    Object? rememberRenoteVisibility = null,
+    Object? defaultRenoteVisibility = null,
+    Object? defaultRenoteLocalOnly = null,
     Object? reactionAcceptance = freezed,
     Object? visibility = null,
     Object? localOnly = null,
+    Object? renoteVisibility = null,
+    Object? renoteLocalOnly = null,
     Object? pinnedEmojisForReaction = null,
     Object? pinnedEmojis = null,
     Object? recentlyUsedEmojis = null,
@@ -271,6 +317,18 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
           ? _value.defaultNoteLocalOnly
           : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
               as bool,
+      rememberRenoteVisibility: null == rememberRenoteVisibility
+          ? _value.rememberRenoteVisibility
+          : rememberRenoteVisibility // ignore: cast_nullable_to_non_nullable
+              as bool,
+      defaultRenoteVisibility: null == defaultRenoteVisibility
+          ? _value.defaultRenoteVisibility
+          : defaultRenoteVisibility // ignore: cast_nullable_to_non_nullable
+              as NoteVisibility,
+      defaultRenoteLocalOnly: null == defaultRenoteLocalOnly
+          ? _value.defaultRenoteLocalOnly
+          : defaultRenoteLocalOnly // ignore: cast_nullable_to_non_nullable
+              as bool,
       reactionAcceptance: freezed == reactionAcceptance
           ? _value.reactionAcceptance
           : reactionAcceptance // ignore: cast_nullable_to_non_nullable
@@ -282,6 +340,14 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
       localOnly: null == localOnly
           ? _value.localOnly
           : localOnly // ignore: cast_nullable_to_non_nullable
+              as bool,
+      renoteVisibility: null == renoteVisibility
+          ? _value.renoteVisibility
+          : renoteVisibility // ignore: cast_nullable_to_non_nullable
+              as NoteVisibility,
+      renoteLocalOnly: null == renoteLocalOnly
+          ? _value.renoteLocalOnly
+          : renoteLocalOnly // ignore: cast_nullable_to_non_nullable
               as bool,
       pinnedEmojisForReaction: null == pinnedEmojisForReaction
           ? _value._pinnedEmojisForReaction
@@ -339,9 +405,14 @@ class _$AccountSettingsImpl implements _AccountSettings {
       this.rememberNoteVisibility = false,
       this.defaultNoteVisibility = NoteVisibility.public,
       this.defaultNoteLocalOnly = false,
+      this.rememberRenoteVisibility = false,
+      this.defaultRenoteVisibility = NoteVisibility.public,
+      this.defaultRenoteLocalOnly = false,
       this.reactionAcceptance,
       this.visibility = NoteVisibility.public,
       this.localOnly = false,
+      this.renoteVisibility = NoteVisibility.public,
+      this.renoteLocalOnly = false,
       final List<String> pinnedEmojisForReaction = defaultPinnedEmojis,
       final List<String> pinnedEmojis = defaultPinnedEmojis,
       final List<String> recentlyUsedEmojis = const [],
@@ -378,6 +449,15 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @JsonKey()
   final bool defaultNoteLocalOnly;
   @override
+  @JsonKey()
+  final bool rememberRenoteVisibility;
+  @override
+  @JsonKey()
+  final NoteVisibility defaultRenoteVisibility;
+  @override
+  @JsonKey()
+  final bool defaultRenoteLocalOnly;
+  @override
   final ReactionAcceptance? reactionAcceptance;
   @override
   @JsonKey()
@@ -385,6 +465,12 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @override
   @JsonKey()
   final bool localOnly;
+  @override
+  @JsonKey()
+  final NoteVisibility renoteVisibility;
+  @override
+  @JsonKey()
+  final bool renoteLocalOnly;
 // EmojiPicker
   final List<String> _pinnedEmojisForReaction;
 // EmojiPicker
@@ -472,7 +558,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @override
   String toString() {
-    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
   }
 
   @override
@@ -487,12 +573,24 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 other.defaultNoteVisibility == defaultNoteVisibility) &&
             (identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) ||
                 other.defaultNoteLocalOnly == defaultNoteLocalOnly) &&
+            (identical(
+                    other.rememberRenoteVisibility, rememberRenoteVisibility) ||
+                other.rememberRenoteVisibility == rememberRenoteVisibility) &&
+            (identical(
+                    other.defaultRenoteVisibility, defaultRenoteVisibility) ||
+                other.defaultRenoteVisibility == defaultRenoteVisibility) &&
+            (identical(other.defaultRenoteLocalOnly, defaultRenoteLocalOnly) ||
+                other.defaultRenoteLocalOnly == defaultRenoteLocalOnly) &&
             (identical(other.reactionAcceptance, reactionAcceptance) ||
                 other.reactionAcceptance == reactionAcceptance) &&
             (identical(other.visibility, visibility) ||
                 other.visibility == visibility) &&
             (identical(other.localOnly, localOnly) ||
                 other.localOnly == localOnly) &&
+            (identical(other.renoteVisibility, renoteVisibility) ||
+                other.renoteVisibility == renoteVisibility) &&
+            (identical(other.renoteLocalOnly, renoteLocalOnly) ||
+                other.renoteLocalOnly == renoteLocalOnly) &&
             const DeepCollectionEquality().equals(
                 other._pinnedEmojisForReaction, _pinnedEmojisForReaction) &&
             const DeepCollectionEquality()
@@ -518,26 +616,32 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      keepCw,
-      rememberNoteVisibility,
-      defaultNoteVisibility,
-      defaultNoteLocalOnly,
-      reactionAcceptance,
-      visibility,
-      localOnly,
-      const DeepCollectionEquality().hash(_pinnedEmojisForReaction),
-      const DeepCollectionEquality().hash(_pinnedEmojis),
-      const DeepCollectionEquality().hash(_recentlyUsedEmojis),
-      defaultReaction,
-      uploadFolder,
-      keepOriginalUploading,
-      keepOriginalFilename,
-      const DeepCollectionEquality().hash(_mutedWords),
-      const DeepCollectionEquality().hash(_hardMutedWords),
-      const DeepCollectionEquality().hash(_recentlyUsedUsers),
-      const DeepCollectionEquality().hash(_hashtags));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        keepCw,
+        rememberNoteVisibility,
+        defaultNoteVisibility,
+        defaultNoteLocalOnly,
+        rememberRenoteVisibility,
+        defaultRenoteVisibility,
+        defaultRenoteLocalOnly,
+        reactionAcceptance,
+        visibility,
+        localOnly,
+        renoteVisibility,
+        renoteLocalOnly,
+        const DeepCollectionEquality().hash(_pinnedEmojisForReaction),
+        const DeepCollectionEquality().hash(_pinnedEmojis),
+        const DeepCollectionEquality().hash(_recentlyUsedEmojis),
+        defaultReaction,
+        uploadFolder,
+        keepOriginalUploading,
+        keepOriginalFilename,
+        const DeepCollectionEquality().hash(_mutedWords),
+        const DeepCollectionEquality().hash(_hardMutedWords),
+        const DeepCollectionEquality().hash(_recentlyUsedUsers),
+        const DeepCollectionEquality().hash(_hashtags)
+      ]);
 
   /// Create a copy of AccountSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -562,9 +666,14 @@ abstract class _AccountSettings implements AccountSettings {
       final bool rememberNoteVisibility,
       final NoteVisibility defaultNoteVisibility,
       final bool defaultNoteLocalOnly,
+      final bool rememberRenoteVisibility,
+      final NoteVisibility defaultRenoteVisibility,
+      final bool defaultRenoteLocalOnly,
       final ReactionAcceptance? reactionAcceptance,
       final NoteVisibility visibility,
       final bool localOnly,
+      final NoteVisibility renoteVisibility,
+      final bool renoteLocalOnly,
       final List<String> pinnedEmojisForReaction,
       final List<String> pinnedEmojis,
       final List<String> recentlyUsedEmojis,
@@ -590,11 +699,21 @@ abstract class _AccountSettings implements AccountSettings {
   @override
   bool get defaultNoteLocalOnly;
   @override
+  bool get rememberRenoteVisibility;
+  @override
+  NoteVisibility get defaultRenoteVisibility;
+  @override
+  bool get defaultRenoteLocalOnly;
+  @override
   ReactionAcceptance? get reactionAcceptance;
   @override
   NoteVisibility get visibility;
   @override
-  bool get localOnly; // EmojiPicker
+  bool get localOnly;
+  @override
+  NoteVisibility get renoteVisibility;
+  @override
+  bool get renoteLocalOnly; // EmojiPicker
   @override
   List<String> get pinnedEmojisForReaction;
   @override

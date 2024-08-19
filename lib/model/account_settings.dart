@@ -14,9 +14,14 @@ class AccountSettings with _$AccountSettings {
     @Default(false) bool rememberNoteVisibility,
     @Default(NoteVisibility.public) NoteVisibility defaultNoteVisibility,
     @Default(false) bool defaultNoteLocalOnly,
+    @Default(false) bool rememberRenoteVisibility,
+    @Default(NoteVisibility.public) NoteVisibility defaultRenoteVisibility,
+    @Default(false) bool defaultRenoteLocalOnly,
     ReactionAcceptance? reactionAcceptance,
     @Default(NoteVisibility.public) NoteVisibility visibility,
     @Default(false) bool localOnly,
+    @Default(NoteVisibility.public) NoteVisibility renoteVisibility,
+    @Default(false) bool renoteLocalOnly,
 
     // EmojiPicker
     @Default(defaultPinnedEmojis) List<String> pinnedEmojisForReaction,

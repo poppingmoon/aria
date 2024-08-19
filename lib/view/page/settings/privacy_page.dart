@@ -222,6 +222,65 @@ class PrivacyPage extends ConsumerWidget {
                   .setDefaultNoteLocalOnly(value),
             ),
           ],
+          SwitchListTile(
+            title: Text(
+              '${t.misskey.rememberNoteVisibility} (${t.misskey.renote})',
+            ),
+            value: settings.rememberRenoteVisibility,
+            onChanged: (value) => ref
+                .read(accountSettingsNotifierProvider(account).notifier)
+                .setRememberRenoteVisibility(value),
+          ),
+          if (!settings.rememberRenoteVisibility) ...[
+            ListTile(
+              title: Text(
+                '${t.misskey.defaultNoteVisibility} (${t.misskey.renote})',
+              ),
+              subtitle: NoteVisibilityWidget(
+                visibility: settings.defaultRenoteVisibility,
+              ),
+              onTap: () async {
+                final result = await showRadioDialog(
+                  context,
+                  title: Text(
+                    '${t.misskey.defaultNoteVisibility} (${t.misskey.renote})',
+                  ),
+                  values: NoteVisibility.values,
+                  initialValue: settings.defaultRenoteVisibility,
+                  itemBuilder: (context, visibility) => ListTile(
+                    title: NoteVisibilityWidget(visibility: visibility),
+                    subtitle: Text(
+                      switch (visibility) {
+                        NoteVisibility.public =>
+                          t.misskey.visibility_.publicDescription,
+                        NoteVisibility.home =>
+                          t.misskey.visibility_.homeDescription,
+                        NoteVisibility.followers =>
+                          t.misskey.visibility_.followersDescription,
+                        NoteVisibility.specified =>
+                          t.misskey.visibility_.specifiedDescription,
+                      },
+                    ),
+                  ),
+                );
+                if (result != null) {
+                  await ref
+                      .read(accountSettingsNotifierProvider(account).notifier)
+                      .setDefaultRenoteVisibility(result);
+                }
+              },
+            ),
+            SwitchListTile(
+              title: Text(
+                '${t.misskey.visibility_.disableFederation} (${t.misskey.renote})',
+              ),
+              subtitle: Text(t.misskey.disableFederationConfirmWarn),
+              value: settings.defaultRenoteLocalOnly,
+              onChanged: (value) => ref
+                  .read(accountSettingsNotifierProvider(account).notifier)
+                  .setDefaultRenoteLocalOnly(value),
+            ),
+          ],
           ListTile(
             title: Text(t.misskey.reactionAcceptance),
             subtitle: ReactionAcceptanceWidget(
