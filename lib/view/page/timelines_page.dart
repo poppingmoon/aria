@@ -59,7 +59,7 @@ class TimelinesPage extends HookConsumerWidget {
     );
     final controller = useTabController(
       initialLength: numTabs,
-      initialIndex: useMemoized(() => tabIndex),
+      initialIndex: useMemoized(() => tabIndex, [numTabs]),
       keys: [numTabs],
     );
     final i = tabSettings != null

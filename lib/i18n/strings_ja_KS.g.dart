@@ -64,6 +64,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get crop => 'クロップ';
 	@override String get custom => 'カスタム';
 	@override String get defaultReaction => 'デフォルトのリアクション';
+	@override String deleteAccountTabsConfirm({required Object n}) => 'このアカウントのタブが${n}個あるけどほかしとこか？';
 	@override String deleteFilesConfirm({required Object n}) => 'ファイルが${n}個あるけどほかしてええか？';
 	@override String get deleteTabConfirm => 'このタブほかしてええか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを止めとく';
