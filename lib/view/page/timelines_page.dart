@@ -70,7 +70,7 @@ class TimelinesPage extends HookConsumerWidget {
       () {
         void callback() {
           if (tabs.isEmpty) return;
-          final previousIndex = tabIndex;
+          final previousIndex = controller.previousIndex;
           final nextIndex = controller.index;
           ref
               .read(timelineTabIndexNotifierProvider.notifier)
@@ -121,6 +121,15 @@ class TimelinesPage extends HookConsumerWidget {
               .reloadEmojis();
           if (!account.isGuest) {
             ref.read(mainStreamNotifierProvider(account).notifier).connect();
+            Future(() {
+              if (tabSettings.tabType == TabType.channel) {
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setChannel(tabSettings.channelId);
+              } else {
+                ref.read(postNotifierProvider(account).notifier).clearChannel();
+              }
+            });
           }
         }
         controller.addListener(callback);
