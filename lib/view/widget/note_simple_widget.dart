@@ -59,7 +59,12 @@ class NoteSimpleWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.avatarScale),
     );
-    final showContent = useState(false);
+    final showContent = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.alwaysExpandCw),
+      ),
+    );
 
     return InkWell(
       onTap: getNoteAction(

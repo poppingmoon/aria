@@ -168,7 +168,12 @@ class NoteWidget extends HookConsumerWidget {
     final isRenote = note.isRenote;
     final isMyRenote = i != null && note.user.id == i.id;
     final isMyNote = i != null && appearNote.user.id == i.id;
-    final showContent = useState(false);
+    final showContent = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.alwaysExpandCw),
+      ),
+    );
     final parsed = appearNote.text != null
         ? ref.watch(parsedMfmProvider(appearNote.text!))
         : null;
@@ -184,6 +189,10 @@ class NoteWidget extends HookConsumerWidget {
           .select((settings) => settings.avatarScale),
     );
     final isLong = appearNote.cw == null &&
+        !ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.alwaysExpandLongNote),
+        ) &&
         ref.watch(noteIsLongProvider(account, appearNote.id));
     final isCollapsed = useState(appearNote.cw == null && isLong);
     final showTicker = ref.watch(

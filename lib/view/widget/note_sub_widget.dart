@@ -63,7 +63,12 @@ class NoteSubWidget extends HookConsumerWidget {
     final children = showReplies && depth < 5
         ? ref.watch(childrenNotesNotifierProvider(account, noteId))
         : null;
-    final showContent = useState(false);
+    final showContent = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.alwaysExpandCw),
+      ),
+    );
 
     return InkWell(
       onTap: getNoteAction(

@@ -46,6 +46,9 @@ mixin _$GeneralSettings {
   bool get showSubNoteReactionsViewer => throw _privateConstructorUsedError;
   bool get showNoteFooter => throw _privateConstructorUsedError;
   bool get showSubNoteFooter => throw _privateConstructorUsedError;
+  bool get alwaysExpandCw => throw _privateConstructorUsedError;
+  bool get alwaysExpandLongNote => throw _privateConstructorUsedError;
+  bool get alwaysExpandMediaInSubNote => throw _privateConstructorUsedError;
   EmojiStyle get emojiStyle => throw _privateConstructorUsedError;
   String? get fontFamily => throw _privateConstructorUsedError;
   double get fontSize => throw _privateConstructorUsedError;
@@ -146,6 +149,9 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showSubNoteReactionsViewer,
       bool showNoteFooter,
       bool showSubNoteFooter,
+      bool alwaysExpandCw,
+      bool alwaysExpandLongNote,
+      bool alwaysExpandMediaInSubNote,
       EmojiStyle emojiStyle,
       String? fontFamily,
       double fontSize,
@@ -236,6 +242,9 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showSubNoteReactionsViewer = null,
     Object? showNoteFooter = null,
     Object? showSubNoteFooter = null,
+    Object? alwaysExpandCw = null,
+    Object? alwaysExpandLongNote = null,
+    Object? alwaysExpandMediaInSubNote = null,
     Object? emojiStyle = null,
     Object? fontFamily = freezed,
     Object? fontSize = null,
@@ -376,6 +385,18 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
       showSubNoteFooter: null == showSubNoteFooter
           ? _value.showSubNoteFooter
           : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      alwaysExpandCw: null == alwaysExpandCw
+          ? _value.alwaysExpandCw
+          : alwaysExpandCw // ignore: cast_nullable_to_non_nullable
+              as bool,
+      alwaysExpandLongNote: null == alwaysExpandLongNote
+          ? _value.alwaysExpandLongNote
+          : alwaysExpandLongNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      alwaysExpandMediaInSubNote: null == alwaysExpandMediaInSubNote
+          ? _value.alwaysExpandMediaInSubNote
+          : alwaysExpandMediaInSubNote // ignore: cast_nullable_to_non_nullable
               as bool,
       emojiStyle: null == emojiStyle
           ? _value.emojiStyle
@@ -618,6 +639,9 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showSubNoteReactionsViewer,
       bool showNoteFooter,
       bool showSubNoteFooter,
+      bool alwaysExpandCw,
+      bool alwaysExpandLongNote,
+      bool alwaysExpandMediaInSubNote,
       EmojiStyle emojiStyle,
       String? fontFamily,
       double fontSize,
@@ -706,6 +730,9 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showSubNoteReactionsViewer = null,
     Object? showNoteFooter = null,
     Object? showSubNoteFooter = null,
+    Object? alwaysExpandCw = null,
+    Object? alwaysExpandLongNote = null,
+    Object? alwaysExpandMediaInSubNote = null,
     Object? emojiStyle = null,
     Object? fontFamily = freezed,
     Object? fontSize = null,
@@ -846,6 +873,18 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
       showSubNoteFooter: null == showSubNoteFooter
           ? _value.showSubNoteFooter
           : showSubNoteFooter // ignore: cast_nullable_to_non_nullable
+              as bool,
+      alwaysExpandCw: null == alwaysExpandCw
+          ? _value.alwaysExpandCw
+          : alwaysExpandCw // ignore: cast_nullable_to_non_nullable
+              as bool,
+      alwaysExpandLongNote: null == alwaysExpandLongNote
+          ? _value.alwaysExpandLongNote
+          : alwaysExpandLongNote // ignore: cast_nullable_to_non_nullable
+              as bool,
+      alwaysExpandMediaInSubNote: null == alwaysExpandMediaInSubNote
+          ? _value.alwaysExpandMediaInSubNote
+          : alwaysExpandMediaInSubNote // ignore: cast_nullable_to_non_nullable
               as bool,
       emojiStyle: null == emojiStyle
           ? _value.emojiStyle
@@ -1083,6 +1122,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showSubNoteReactionsViewer = false,
       this.showNoteFooter = true,
       this.showSubNoteFooter = false,
+      this.alwaysExpandCw = false,
+      this.alwaysExpandLongNote = false,
+      this.alwaysExpandMediaInSubNote = false,
       this.emojiStyle = EmojiStyle.twemoji,
       this.fontFamily,
       this.fontSize = defaultFontSize,
@@ -1207,6 +1249,15 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final bool showSubNoteFooter;
+  @override
+  @JsonKey()
+  final bool alwaysExpandCw;
+  @override
+  @JsonKey()
+  final bool alwaysExpandLongNote;
+  @override
+  @JsonKey()
+  final bool alwaysExpandMediaInSubNote;
   @override
   @JsonKey()
   final EmojiStyle emojiStyle;
@@ -1366,7 +1417,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1422,14 +1473,17 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.showNoteFooter == showNoteFooter) &&
             (identical(other.showSubNoteFooter, showSubNoteFooter) ||
                 other.showSubNoteFooter == showSubNoteFooter) &&
-            (identical(other.emojiStyle, emojiStyle) ||
-                other.emojiStyle == emojiStyle) &&
-            (identical(other.fontFamily, fontFamily) ||
-                other.fontFamily == fontFamily) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
-            (identical(other.lineHeight, lineHeight) ||
-                other.lineHeight == lineHeight) &&
+            (identical(other.alwaysExpandCw, alwaysExpandCw) ||
+                other.alwaysExpandCw == alwaysExpandCw) &&
+            (identical(other.alwaysExpandLongNote, alwaysExpandLongNote) ||
+                other.alwaysExpandLongNote == alwaysExpandLongNote) &&
+            (identical(other.alwaysExpandMediaInSubNote, alwaysExpandMediaInSubNote) ||
+                other.alwaysExpandMediaInSubNote ==
+                    alwaysExpandMediaInSubNote) &&
+            (identical(other.emojiStyle, emojiStyle) || other.emojiStyle == emojiStyle) &&
+            (identical(other.fontFamily, fontFamily) || other.fontFamily == fontFamily) &&
+            (identical(other.fontSize, fontSize) || other.fontSize == fontSize) &&
+            (identical(other.lineHeight, lineHeight) || other.lineHeight == lineHeight) &&
             (identical(other.avatarScale, avatarScale) || other.avatarScale == avatarScale) &&
             (identical(other.reactionsDisplayScale, reactionsDisplayScale) || other.reactionsDisplayScale == reactionsDisplayScale) &&
             (identical(other.limitWidthOfReaction, limitWidthOfReaction) || other.limitWidthOfReaction == limitWidthOfReaction) &&
@@ -1505,6 +1559,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showSubNoteReactionsViewer,
         showNoteFooter,
         showSubNoteFooter,
+        alwaysExpandCw,
+        alwaysExpandLongNote,
+        alwaysExpandMediaInSubNote,
         emojiStyle,
         fontFamily,
         fontSize,
@@ -1600,6 +1657,9 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showSubNoteReactionsViewer,
       final bool showNoteFooter,
       final bool showSubNoteFooter,
+      final bool alwaysExpandCw,
+      final bool alwaysExpandLongNote,
+      final bool alwaysExpandMediaInSubNote,
       final EmojiStyle emojiStyle,
       final String? fontFamily,
       final double fontSize,
@@ -1702,6 +1762,12 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get showNoteFooter;
   @override
   bool get showSubNoteFooter;
+  @override
+  bool get alwaysExpandCw;
+  @override
+  bool get alwaysExpandLongNote;
+  @override
+  bool get alwaysExpandMediaInSubNote;
   @override
   EmojiStyle get emojiStyle;
   @override

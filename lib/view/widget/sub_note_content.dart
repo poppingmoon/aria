@@ -51,8 +51,16 @@ class SubNoteContent extends HookConsumerWidget {
         );
     final parsed =
         note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
-    final isLong =
-        note.cw == null && ref.watch(noteIsLongProvider(account, noteId));
+    final isLong = note.cw == null &&
+        !ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.alwaysExpandLongNote),
+        ) &&
+        ref.watch(noteIsLongProvider(account, noteId));
+    final expandMedia = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysExpandMediaInSubNote),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final isCollapsed = useState(isLong);
@@ -131,25 +139,27 @@ class SubNoteContent extends HookConsumerWidget {
           ),
         if (!isCollapsed.value) ...[
           if (note.files.isNotEmpty) ...[
-            TextButton.icon(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.only(
-                  top: 4.0,
-                  right: 8.0,
-                  bottom: 4.0,
+            if (!expandMedia)
+              TextButton.icon(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.only(
+                    top: 4.0,
+                    right: 8.0,
+                    bottom: 4.0,
+                  ),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                minimumSize: Size.zero,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                onPressed: () =>
+                    isFilesCollapsed.value = !isFilesCollapsed.value,
+                icon: Icon(
+                  isFilesCollapsed.value
+                      ? Icons.arrow_right
+                      : Icons.arrow_drop_down,
+                ),
+                label: Text(t.misskey.withNFiles(n: note.files.length)),
               ),
-              onPressed: () => isFilesCollapsed.value = !isFilesCollapsed.value,
-              icon: Icon(
-                isFilesCollapsed.value
-                    ? Icons.arrow_right
-                    : Icons.arrow_drop_down,
-              ),
-              label: Text(t.misskey.withNFiles(n: note.files.length)),
-            ),
-            if (!isFilesCollapsed.value)
+            if (expandMedia || !isFilesCollapsed.value)
               MediaList(
                 account: account,
                 files: note.files,
@@ -157,25 +167,26 @@ class SubNoteContent extends HookConsumerWidget {
               ),
           ],
           if (note case Note(:final poll?)) ...[
-            TextButton.icon(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.only(
-                  top: 4.0,
-                  right: 8.0,
-                  bottom: 4.0,
+            if (!expandMedia)
+              TextButton.icon(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.only(
+                    top: 4.0,
+                    right: 8.0,
+                    bottom: 4.0,
+                  ),
+                  minimumSize: Size.zero,
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                minimumSize: Size.zero,
-                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                onPressed: () => isPollCollapsed.value = !isPollCollapsed.value,
+                icon: Icon(
+                  isPollCollapsed.value
+                      ? Icons.arrow_right
+                      : Icons.arrow_drop_down,
+                ),
+                label: Text(t.misskey.poll),
               ),
-              onPressed: () => isPollCollapsed.value = !isPollCollapsed.value,
-              icon: Icon(
-                isPollCollapsed.value
-                    ? Icons.arrow_right
-                    : Icons.arrow_drop_down,
-              ),
-              label: Text(t.misskey.poll),
-            ),
-            if (!isPollCollapsed.value)
+            if (expandMedia || !isPollCollapsed.value)
               PollWidget(account: account, noteId: noteId, poll: poll),
           ],
         ],

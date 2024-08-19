@@ -166,6 +166,24 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setAlwaysExpandCw(bool alwaysExpandCw) async {
+    state = state.copyWith(alwaysExpandCw: alwaysExpandCw);
+    await _save();
+  }
+
+  Future<void> setAlwaysExpandLongNote(bool alwaysExpandLongNote) async {
+    state = state.copyWith(alwaysExpandLongNote: alwaysExpandLongNote);
+    await _save();
+  }
+
+  Future<void> setAlwaysExpandMediaInSubNote(
+    bool alwaysExpandMediaInSubNote,
+  ) async {
+    state =
+        state.copyWith(alwaysExpandMediaInSubNote: alwaysExpandMediaInSubNote);
+    await _save();
+  }
+
   Future<void> setEmojiStyle(EmojiStyle emojiStyle) async {
     state = state.copyWith(emojiStyle: emojiStyle);
     await _save();
