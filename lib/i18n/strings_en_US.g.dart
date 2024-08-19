@@ -80,7 +80,6 @@ class _StringsAriaEnUs {
 	String get doubleTapToShow => 'Double tap to show';
 	String get downloaded => 'Downloaded';
 	String get draw => 'Draw';
-	String get editFile => 'Edit file';
 	String get editImage => 'Edit image';
 	String get emojiPickerAutofocus => 'Expand keyboard on opening emoji picker';
 	String get emojiPickerScale => 'Emoji picker scale';

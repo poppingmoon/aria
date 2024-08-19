@@ -72,7 +72,6 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get doubleTapToShow => 'ダブルタップして表示';
 	@override String get downloaded => 'ダウンロードしました';
 	@override String get draw => '手描き';
-	@override String get editFile => 'ファイルを編集';
 	@override String get editImage => '画像を編集';
 	@override String get emojiPickerAutofocus => '絵文字ピッカーでキーボードを自動で開く';
 	@override String get emojiPickerScale => '絵文字ピッカーのサイズ';
