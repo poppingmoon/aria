@@ -6,7 +6,7 @@ part of 'id_gen_method_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$idGenMethodHash() => r'53a83de44ab06ffcf6688c536546c9be2959cc60';
+String _$idGenMethodHash() => r'c13bff0f092e16cbd8c26187e86e40399932106f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -72,7 +72,7 @@ class IdGenMethodFamily extends Family<AsyncValue<IdGenMethod>> {
 }
 
 /// See also [idGenMethod].
-class IdGenMethodProvider extends FutureProvider<IdGenMethod> {
+class IdGenMethodProvider extends AutoDisposeFutureProvider<IdGenMethod> {
   /// See also [idGenMethod].
   IdGenMethodProvider(
     Account account,
@@ -124,7 +124,7 @@ class IdGenMethodProvider extends FutureProvider<IdGenMethod> {
   }
 
   @override
-  FutureProviderElement<IdGenMethod> createElement() {
+  AutoDisposeFutureProviderElement<IdGenMethod> createElement() {
     return _IdGenMethodProviderElement(this);
   }
 
@@ -142,13 +142,13 @@ class IdGenMethodProvider extends FutureProvider<IdGenMethod> {
   }
 }
 
-mixin IdGenMethodRef on FutureProviderRef<IdGenMethod> {
+mixin IdGenMethodRef on AutoDisposeFutureProviderRef<IdGenMethod> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
-class _IdGenMethodProviderElement extends FutureProviderElement<IdGenMethod>
-    with IdGenMethodRef {
+class _IdGenMethodProviderElement
+    extends AutoDisposeFutureProviderElement<IdGenMethod> with IdGenMethodRef {
   _IdGenMethodProviderElement(super.provider);
 
   @override
