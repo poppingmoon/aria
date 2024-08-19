@@ -15,12 +15,22 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
               _$NoteVisibilityEnumMap, json['defaultNoteVisibility']) ??
           NoteVisibility.public,
       defaultNoteLocalOnly: json['defaultNoteLocalOnly'] as bool? ?? false,
+      rememberRenoteVisibility:
+          json['rememberRenoteVisibility'] as bool? ?? false,
+      defaultRenoteVisibility: $enumDecodeNullable(
+              _$NoteVisibilityEnumMap, json['defaultRenoteVisibility']) ??
+          NoteVisibility.public,
+      defaultRenoteLocalOnly: json['defaultRenoteLocalOnly'] as bool? ?? false,
       reactionAcceptance: $enumDecodeNullable(
           _$ReactionAcceptanceEnumMap, json['reactionAcceptance']),
       visibility:
           $enumDecodeNullable(_$NoteVisibilityEnumMap, json['visibility']) ??
               NoteVisibility.public,
       localOnly: json['localOnly'] as bool? ?? false,
+      renoteVisibility: $enumDecodeNullable(
+              _$NoteVisibilityEnumMap, json['renoteVisibility']) ??
+          NoteVisibility.public,
+      renoteLocalOnly: json['renoteLocalOnly'] as bool? ?? false,
       pinnedEmojisForReaction:
           (json['pinnedEmojisForReaction'] as List<dynamic>?)
                   ?.map((e) => e as String)
@@ -64,6 +74,10 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
     'defaultNoteVisibility':
         _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
     'defaultNoteLocalOnly': instance.defaultNoteLocalOnly,
+    'rememberRenoteVisibility': instance.rememberRenoteVisibility,
+    'defaultRenoteVisibility':
+        _$NoteVisibilityEnumMap[instance.defaultRenoteVisibility]!,
+    'defaultRenoteLocalOnly': instance.defaultRenoteLocalOnly,
   };
 
   void writeNotNull(String key, dynamic value) {
@@ -76,6 +90,8 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
       _$ReactionAcceptanceEnumMap[instance.reactionAcceptance]);
   val['visibility'] = _$NoteVisibilityEnumMap[instance.visibility]!;
   val['localOnly'] = instance.localOnly;
+  val['renoteVisibility'] = _$NoteVisibilityEnumMap[instance.renoteVisibility]!;
+  val['renoteLocalOnly'] = instance.renoteLocalOnly;
   val['pinnedEmojisForReaction'] = instance.pinnedEmojisForReaction;
   val['pinnedEmojis'] = instance.pinnedEmojis;
   val['recentlyUsedEmojis'] = instance.recentlyUsedEmojis;
