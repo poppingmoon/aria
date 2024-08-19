@@ -16,11 +16,13 @@ class ClipPreview extends ConsumerWidget {
     super.key,
     required this.account,
     required this.clip,
+    this.hideUserInfo = false,
     this.onTap,
   });
 
   final Account account;
   final Clip clip;
+  final bool hideUserInfo;
   final void Function()? onTap;
 
   @override
@@ -68,18 +70,19 @@ class ClipPreview extends ConsumerWidget {
                 ].join(),
               ),
             ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: Row(
-              children: [
-                UserAvatar(account: account, user: clip.user),
-                const SizedBox(width: 2.0),
-                Expanded(
-                  child: UsernameWidget(account: account, user: clip.user),
-                ),
-              ],
+          if (!hideUserInfo)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2.0),
+              child: Row(
+                children: [
+                  UserAvatar(account: account, user: clip.user),
+                  const SizedBox(width: 2.0),
+                  Expanded(
+                    child: UsernameWidget(account: account, user: clip.user),
+                  ),
+                ],
+              ),
             ),
-          ),
         ],
       ),
       onTap: onTap,

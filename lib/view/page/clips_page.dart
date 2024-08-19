@@ -68,6 +68,7 @@ class ClipsPage extends ConsumerWidget {
                                     (clip) => ClipPreview(
                                       account: account,
                                       clip: clip,
+                                      hideUserInfo: true,
                                       onTap: () => context
                                           .push('/$account/clips/${clip.id}'),
                                     ),
