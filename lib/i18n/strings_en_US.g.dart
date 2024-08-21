@@ -88,6 +88,7 @@ class _StringsAriaEnUs {
 	String get emojiPickerAutofocus => 'Expand keyboard on opening emoji picker';
 	String get emojiPickerScale => 'Emoji picker scale';
 	String get emojiPickerUseDialog => 'Display emoji picker as dialog';
+	String get enableEmojiFadeIn => 'Enable fade-in animations for custom emojis';
 	String get enableFederation => 'Enable federation';
 	String get endpoint => 'Endpoint';
 	String get expandNote => 'Expand note';

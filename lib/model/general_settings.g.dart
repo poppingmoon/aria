@@ -85,6 +85,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       reduceAnimation: json['reduceAnimation'] as bool? ?? false,
       disableShowingAnimatedImages:
           json['disableShowingAnimatedImages'] as bool? ?? false,
+      enableEmojiFadeIn: json['enableEmojiFadeIn'] as bool? ?? false,
       forceShowAds: json['forceShowAds'] as bool? ?? false,
       useGroupedNotifications:
           json['useGroupedNotifications'] as bool? ?? false,
@@ -202,6 +203,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['disableDataSaverWhenOnWifi'] = instance.disableDataSaverWhenOnWifi;
   val['reduceAnimation'] = instance.reduceAnimation;
   val['disableShowingAnimatedImages'] = instance.disableShowingAnimatedImages;
+  val['enableEmojiFadeIn'] = instance.enableEmojiFadeIn;
   val['forceShowAds'] = instance.forceShowAds;
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
   val['showTimelineTabBarAtBottom'] = instance.showTimelineTabBarAtBottom;

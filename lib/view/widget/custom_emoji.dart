@@ -23,7 +23,7 @@ class CustomEmoji extends ConsumerWidget {
     this.disableTooltip = false,
     this.fallbackTextStyle,
     this.fallbackToImage = true,
-    this.enableFadeIn = true,
+    this.enableFadeIn,
   });
 
   final Account account;
@@ -37,7 +37,7 @@ class CustomEmoji extends ConsumerWidget {
   final bool disableTooltip;
   final TextStyle? fallbackTextStyle;
   final bool fallbackToImage;
-  final bool enableFadeIn;
+  final bool? enableFadeIn;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -59,6 +59,11 @@ class CustomEmoji extends ConsumerWidget {
         (settings) => settings.disableShowingAnimatedImages,
       ),
     );
+    final bool enableFadeIn = this.enableFadeIn ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.enableEmojiFadeIn),
+        );
 
     return InkWell(
       onTap: onTap,

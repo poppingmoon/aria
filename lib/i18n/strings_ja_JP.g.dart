@@ -77,6 +77,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get emojiPickerAutofocus => '絵文字ピッカーでキーボードを自動で開く';
 	@override String get emojiPickerScale => '絵文字ピッカーのサイズ';
 	@override String get emojiPickerUseDialog => '絵文字ピッカーをダイアログにする';
+	@override String get enableEmojiFadeIn => 'カスタム絵文字のフェードインを有効にする';
 	@override String get enableFederation => '連合ありにする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get expandNote => 'ノートを開く';
