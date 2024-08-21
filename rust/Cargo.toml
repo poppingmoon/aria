@@ -8,7 +8,7 @@ crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
 aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "fc97648062d3391b11a50e5bad61c917bcc97202" }
-flutter_rust_bridge = "=2.2.0"
+flutter_rust_bridge = "=2.3.0"
 futures = "0.3"
 indexmap = "2.3"
 serde_json = { version = "1.0", features = ["preserve_order"] }
