@@ -110,7 +110,7 @@ class ImageWidget extends ConsumerWidget {
           cacheManager: ref.watch(cacheManagerProvider),
           placeholder: (_, __) => _buildPlaceholder(),
           errorWidget: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
-          color: Color.fromRGBO(255, 255, 255, opacity),
+          color: opacity < 1.0 ? Color.fromRGBO(255, 255, 255, opacity) : null,
           colorBlendMode: BlendMode.modulate,
           fadeOutDuration: Duration.zero,
         ),
