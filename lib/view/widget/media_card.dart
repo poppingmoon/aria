@@ -256,13 +256,17 @@ class MediaCard extends HookConsumerWidget {
                   alignment: Alignment.center,
                   children: [
                     if (file case DriveFile(:final blurhash?))
-                      ColorFiltered(
-                        colorFilter: const ColorFilter.mode(
-                          Color(0xffb4b4b4),
-                          BlendMode.multiply,
-                        ),
-                        child: BlurHash(hash: blurhash),
-                      )
+                      if (defaultTargetPlatform
+                          case TargetPlatform.iOS || TargetPlatform.macOS)
+                        BlurHash(hash: blurhash)
+                      else
+                        ColorFiltered(
+                          colorFilter: const ColorFilter.mode(
+                            Color(0xffb4b4b4),
+                            BlendMode.multiply,
+                          ),
+                          child: BlurHash(hash: blurhash),
+                        )
                     else
                       const Positioned.fill(
                         child: ColoredBox(color: Color(0xff888888)),
