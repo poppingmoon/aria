@@ -101,10 +101,13 @@ class TimelineNote extends HookConsumerWidget {
       }
     }
     if (!tabSettings.disableSubscribing) {
-      useEffect(() {
-        Future(() => notifier.subscribe(appearNote.id));
-        return () => Future(() => notifier.unsubscribe(appearNote.id));
-      });
+      useEffect(
+        () {
+          Future(() => notifier.subscribe(appearNote.id));
+          return () => Future(() => notifier.unsubscribe(appearNote.id));
+        },
+        [],
+      );
       ref.listen(
         noteUpdateEventProvider(account, appearNote.id),
         (_, next) {

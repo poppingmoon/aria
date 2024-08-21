@@ -324,6 +324,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setEnableEmojiFadeIn(bool enableEmojiFadeIn) async {
+    state = state.copyWith(enableEmojiFadeIn: enableEmojiFadeIn);
+    await _save();
+  }
+
   Future<void> setForceShowAds(bool forceShowAds) async {
     state = state.copyWith(forceShowAds: forceShowAds);
     await _save();

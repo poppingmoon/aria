@@ -89,6 +89,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool disableDataSaverWhenOnWifi,
     @Default(false) bool reduceAnimation,
     @Default(false) bool disableShowingAnimatedImages,
+    @Default(false) bool enableEmojiFadeIn,
     @Default(false) bool forceShowAds,
     @Default(false) bool useGroupedNotifications,
     @Default(false) bool showTimelineTabBarAtBottom,

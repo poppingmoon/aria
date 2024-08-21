@@ -33,8 +33,12 @@ class ImageWidget extends ConsumerWidget {
   final bool enableFadeIn;
 
   Widget _buildPlaceholder() {
-    if (blurHash != null) {
-      return BlurHash(hash: blurHash!);
+    if (blurHash case final blurHash?) {
+      return SizedBox(
+        width: width,
+        height: height,
+        child: BlurHash(hash: blurHash),
+      );
     } else {
       return SizedBox(width: width, height: height);
     }
@@ -94,7 +98,7 @@ class ImageWidget extends ConsumerWidget {
           }
         },
       );
-    } else {
+    } else if (enableFadeIn) {
       return Semantics(
         label: semanticLabel,
         child: CachedNetworkImage(
@@ -108,9 +112,26 @@ class ImageWidget extends ConsumerWidget {
           errorWidget: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
           color: Color.fromRGBO(255, 255, 255, opacity),
           colorBlendMode: BlendMode.modulate,
-          fadeInDuration:
-              enableFadeIn ? const Duration(milliseconds: 500) : Duration.zero,
+          fadeOutDuration: Duration.zero,
         ),
+      );
+    } else {
+      return Image(
+        image: CachedNetworkImageProvider(
+          url,
+          cacheManager: ref.watch(cacheManagerProvider),
+        ),
+        width: width,
+        height: height,
+        fit: fit,
+        alignment: alignment,
+        opacity: AlwaysStoppedAnimation(opacity),
+        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) =>
+            wasSynchronouslyLoaded || frame != null
+                ? child
+                : _buildPlaceholder(),
+        errorBuilder: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
+        semanticLabel: semanticLabel,
       );
     }
   }

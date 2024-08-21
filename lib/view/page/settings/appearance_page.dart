@@ -72,6 +72,13 @@ class AppearancePage extends HookConsumerWidget {
                 .setDisableShowingAnimatedImages(value),
           ),
           SwitchListTile(
+            title: Text(t.aria.enableEmojiFadeIn),
+            value: settings.enableEmojiFadeIn,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setEnableEmojiFadeIn(value),
+          ),
+          SwitchListTile(
             title: Text(t.misskey.forceShowAds),
             value: settings.forceShowAds,
             onChanged: (value) => ref
