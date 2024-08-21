@@ -312,7 +312,7 @@ class TimelineWidget extends HookConsumerWidget {
                     },
                     child: Row(
                       children: [
-                        const Icon(Icons.history),
+                        const Icon(Icons.update),
                         const SizedBox(width: 8.0),
                         if (Id.tryParse(nextNoteId)?.date
                             case final nextNoteDate?)
