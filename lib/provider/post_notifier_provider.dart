@@ -314,6 +314,20 @@ class PostNotifier extends _$PostNotifier {
     if (reply == null) {
       state = state.copyWith(replyId: null);
     } else {
+      if (state.replyId == reply.id) return;
+      if (state.text case final text?) {
+        final nodes = const MfmParser().parse(text);
+        final isMentionOnly = nodes.every(
+          (node) => switch (node) {
+            MfmMention() => true,
+            MfmText(:final text) => RegExp(r'\s*').hasMatch(text),
+            _ => false,
+          },
+        );
+        if (isMentionOnly) {
+          state = state.copyWith(text: null);
+        }
+      }
       final visibility = reply.channelId != null
           ? NoteVisibility.public
           : NoteVisibility.min(
