@@ -8,8 +8,8 @@ import '../../model/account.dart';
 import '../../model/post_file.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
-import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
+import '../../provider/post_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 
 class DeleteAndEditDialog extends ConsumerWidget {

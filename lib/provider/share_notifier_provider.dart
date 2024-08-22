@@ -6,10 +6,10 @@ import '../model/account.dart';
 import '../model/post_file.dart';
 import 'accounts_notifier_provider.dart';
 import 'api/attaches_notifier_provider.dart';
-import 'api/post_notifier_provider.dart';
 import 'file_system_provider.dart';
 import 'miauth_notifier_provider.dart';
 import 'misskey_servers_provider.dart';
+import 'post_notifier_provider.dart';
 import 'receive_sharing_intent_provider.dart';
 
 part 'share_notifier_provider.g.dart';

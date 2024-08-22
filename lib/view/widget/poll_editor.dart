@@ -5,7 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/api/post_notifier_provider.dart';
+import '../../provider/post_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
 import '../dialog/duration_picker_dialog.dart';
 import '../dialog/text_field_dialog.dart';

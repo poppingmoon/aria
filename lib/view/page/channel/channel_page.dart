@@ -6,7 +6,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/tab_settings.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
-import '../../../provider/api/post_notifier_provider.dart';
+import '../../../provider/post_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/launch_url.dart';
 import '../../widget/timeline_list_view.dart';
