@@ -8,8 +8,8 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../model/account.dart';
-import '../../provider/api/post_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/post_notifier_provider.dart';
 import '../../rust/api/aiscript/ui.dart';
 import '../../util/safe_parse_color.dart';
 import 'mfm.dart';

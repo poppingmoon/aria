@@ -5,17 +5,17 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../../extension/note_extension.dart';
-import '../../extension/user_extension.dart';
-import '../../model/account.dart';
-import '../../util/extract_mentions.dart';
-import '../account_settings_notifier_provider.dart';
-import '../note_provider.dart';
-import '../notes_notifier_provider.dart';
-import '../shared_preferences_provider.dart';
-import 'endpoints_provider.dart';
-import 'i_notifier_provider.dart';
-import 'misskey_provider.dart';
+import '../extension/note_extension.dart';
+import '../extension/user_extension.dart';
+import '../model/account.dart';
+import '../util/extract_mentions.dart';
+import 'account_settings_notifier_provider.dart';
+import 'api/endpoints_provider.dart';
+import 'api/i_notifier_provider.dart';
+import 'api/misskey_provider.dart';
+import 'note_provider.dart';
+import 'notes_notifier_provider.dart';
+import 'shared_preferences_provider.dart';
 
 part 'post_notifier_provider.g.dart';
 
@@ -314,6 +314,20 @@ class PostNotifier extends _$PostNotifier {
     if (reply == null) {
       state = state.copyWith(replyId: null);
     } else {
+      if (state.replyId == reply.id) return;
+      if (state.text case final text?) {
+        final nodes = const MfmParser().parse(text);
+        final isMentionOnly = nodes.every(
+          (node) => switch (node) {
+            MfmMention() => true,
+            MfmText(:final text) => RegExp(r'\s*').hasMatch(text),
+            _ => false,
+          },
+        );
+        if (isMentionOnly) {
+          state = state.copyWith(text: null);
+        }
+      }
       final visibility = reply.channelId != null
           ? NoteVisibility.public
           : NoteVisibility.min(
