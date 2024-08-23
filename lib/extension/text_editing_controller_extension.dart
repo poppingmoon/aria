@@ -15,6 +15,7 @@ extension TextEditingControllerExtension on TextEditingController {
         baseOffset: startIndex + insertText.length,
         extentOffset: endIndex + insertText.length,
       ),
+      composing: TextRange.empty,
     );
   }
 
@@ -26,6 +27,7 @@ extension TextEditingControllerExtension on TextEditingController {
       text: '$beforeSelection$replace$afterSelection',
       selection:
           TextSelection.collapsed(offset: startIndex - length + replace.length),
+      composing: TextRange.empty,
     );
   }
 }
