@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart' hide launchUrl;
 
 import '../../i18n/strings.g.dart';
 import '../../provider/miauth_notifier_provider.dart';
@@ -25,7 +27,13 @@ class LoginPage extends HookConsumerWidget {
             .toLowerCase();
     final url =
         ref.read(miAuthNotifierProvider.notifier).buildMiAuthUrl(trimmed);
-    launchUrl(ref, url);
+    launchUrl(
+      ref,
+      url,
+      mode: defaultTargetPlatform == TargetPlatform.iOS
+          ? LaunchMode.inAppWebView
+          : null,
+    );
     ref.context.push('/login/authenticate');
   }
 
