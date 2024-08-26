@@ -172,7 +172,7 @@ class NotesNotifier extends _$NotesNotifier {
         ? '${reaction.substring(0, reaction.length - 1)}@.:'
         : reaction;
     final cachedNote = state[noteId];
-    if (cachedNote != null) {
+    if (cachedNote != null && cachedNote.myReaction != emoji) {
       add(
         cachedNote.copyWith(
           reactionCount: (cachedNote.reactionCount ?? 0) + 1,
