@@ -210,7 +210,7 @@ class MediaCard extends HookConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
 
     return Card(
-      clipBehavior: Clip.hardEdge,
+      clipBehavior: Clip.antiAlias,
       shape: file.isSensitive && highlightSensitiveMedia
           ? RoundedRectangleBorder(
               side: BorderSide(

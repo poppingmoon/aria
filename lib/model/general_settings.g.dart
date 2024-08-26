@@ -46,6 +46,9 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       alwaysExpandLongNote: json['alwaysExpandLongNote'] as bool? ?? false,
       alwaysExpandMediaInSubNote:
           json['alwaysExpandMediaInSubNote'] as bool? ?? false,
+      mediaListWithOneImageAppearance: $enumDecodeNullable(
+          _$MediaListWithOneImageAppearanceEnumMap,
+          json['mediaListWithOneImageAppearance']),
       emojiStyle:
           $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
               EmojiStyle.twemoji,
@@ -167,6 +170,10 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['alwaysExpandCw'] = instance.alwaysExpandCw;
   val['alwaysExpandLongNote'] = instance.alwaysExpandLongNote;
   val['alwaysExpandMediaInSubNote'] = instance.alwaysExpandMediaInSubNote;
+  writeNotNull(
+      'mediaListWithOneImageAppearance',
+      _$MediaListWithOneImageAppearanceEnumMap[
+          instance.mediaListWithOneImageAppearance]);
   val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
   writeNotNull('fontFamily', instance.fontFamily);
   val['fontSize'] = instance.fontSize;
@@ -281,6 +288,12 @@ const _$InstanceTickerEnumMap = {
   InstanceTicker.none: 'none',
   InstanceTicker.remote: 'remote',
   InstanceTicker.always: 'always',
+};
+
+const _$MediaListWithOneImageAppearanceEnumMap = {
+  MediaListWithOneImageAppearance.r16_9: 'r16_9',
+  MediaListWithOneImageAppearance.r1_1: 'r1_1',
+  MediaListWithOneImageAppearance.r2_3: 'r2_3',
 };
 
 const _$EmojiStyleEnumMap = {

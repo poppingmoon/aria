@@ -361,6 +361,50 @@ class NoteDisplayPage extends HookConsumerWidget {
                     },
                   ),
                   ListTile(
+                    title: Text(t.misskey.mediaListWithOneImageAppearance),
+                    subtitle: Text(
+                      switch (settings.mediaListWithOneImageAppearance) {
+                        null => t.misskey.default_,
+                        MediaListWithOneImageAppearance.r16_9 =>
+                          t.misskey.limitTo(x: '16:9'),
+                        MediaListWithOneImageAppearance.r1_1 =>
+                          t.misskey.limitTo(x: '1:1'),
+                        MediaListWithOneImageAppearance.r2_3 =>
+                          t.misskey.limitTo(x: '2:3'),
+                      },
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.mediaListWithOneImageAppearance),
+                        values: [
+                          null,
+                          ...MediaListWithOneImageAppearance.values,
+                        ].map((value) => (value,)),
+                        initialValue: (
+                          settings.mediaListWithOneImageAppearance,
+                        ),
+                        itemBuilder: (context, value) => Text(
+                          switch (value.$1) {
+                            null => t.misskey.default_,
+                            MediaListWithOneImageAppearance.r16_9 =>
+                              t.misskey.limitTo(x: '16:9'),
+                            MediaListWithOneImageAppearance.r1_1 =>
+                              t.misskey.limitTo(x: '1:1'),
+                            MediaListWithOneImageAppearance.r2_3 =>
+                              t.misskey.limitTo(x: '2:3'),
+                          },
+                        ),
+                      );
+                      if (result != null) {
+                        await ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setMediaListWithOneImageAppearance(result.$1);
+                      }
+                    },
+                  ),
+                  ListTile(
                     title: Text(t.aria.font),
                     subtitle: Text(settings.fontFamily ?? t.misskey.system),
                     trailing: const Icon(Icons.navigate_next),
