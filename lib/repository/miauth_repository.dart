@@ -56,8 +56,7 @@ class MiAuthRepository {
           {
             'name': 'Aria',
             'permission': _permissions.map((e) => e.value).join(','),
-            if (defaultTargetPlatform
-                case TargetPlatform.android || TargetPlatform.iOS)
+            if (defaultTargetPlatform == TargetPlatform.android)
               'callback': 'aria://aria/miauth',
           },
         );
