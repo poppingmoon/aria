@@ -81,6 +81,7 @@ class _StringsAriaEnUs {
 	String get disableDataSaverWhenOnWifi => 'Disable data saver when on Wi-Fi';
 	String get disableSubscribingNotes => 'Disable real-time reaction updates';
 	String get discardChangesConfirm => 'Are you sure you want to discard changes and back?';
+	String get displayOfThumbnail => 'Display of thumbnail';
 	String get doubleTapToShow => 'Double tap to show';
 	String get downloaded => 'Downloaded';
 	String get draw => 'Draw';
@@ -188,6 +189,8 @@ class _StringsAriaEnUs {
 	]);
 	String get showAvatarsInNote => 'Show avatars in notes';
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
+	String get showEntireImage => 'Show entire image';
+	String get showExpandedImage => 'Show expanded image';
 	String get showHomeFAB => 'Show home floating action button';
 	String get showImage => 'Show image';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';

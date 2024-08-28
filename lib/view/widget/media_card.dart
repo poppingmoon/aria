@@ -30,12 +30,14 @@ class MediaCard extends HookConsumerWidget {
     required this.files,
     this.index = 0,
     this.user,
+    this.fit = BoxFit.contain,
   });
 
   final Account account;
   final List<DriveFile> files;
   final int index;
   final User? user;
+  final BoxFit fit;
 
   Widget _buildContent(WidgetRef ref) {
     final file = files[index];
@@ -68,7 +70,7 @@ class MediaCard extends HookConsumerWidget {
             ? ImageWidget(
                 url: url,
                 blurHash: file.blurhash,
-                fit: BoxFit.fitHeight,
+                fit: fit,
               )
             : blurHash != null
                 ? BlurHash(hash: blurHash)
@@ -91,7 +93,7 @@ class MediaCard extends HookConsumerWidget {
                 ImageWidget(
                   url: thumbnailUrl,
                   blurHash: file.blurhash,
-                  fit: BoxFit.fitHeight,
+                  fit: fit,
                 ),
               DecoratedBox(
                 decoration: BoxDecoration(
@@ -153,7 +155,7 @@ class MediaCard extends HookConsumerWidget {
             ImageWidget(
               url: thumbnailUrl,
               blurHash: file.blurhash,
-              fit: BoxFit.fitHeight,
+              fit: fit,
             )
           else if (file case DriveFile(:final blurhash?))
             BlurHash(hash: blurhash),

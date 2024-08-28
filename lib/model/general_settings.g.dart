@@ -49,6 +49,9 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       mediaListWithOneImageAppearance: $enumDecodeNullable(
           _$MediaListWithOneImageAppearanceEnumMap,
           json['mediaListWithOneImageAppearance']),
+      thumbnailBoxFit:
+          $enumDecodeNullable(_$BoxFitEnumMap, json['thumbnailBoxFit']) ??
+              BoxFit.contain,
       emojiStyle:
           $enumDecodeNullable(_$EmojiStyleEnumMap, json['emojiStyle']) ??
               EmojiStyle.twemoji,
@@ -174,6 +177,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
       'mediaListWithOneImageAppearance',
       _$MediaListWithOneImageAppearanceEnumMap[
           instance.mediaListWithOneImageAppearance]);
+  val['thumbnailBoxFit'] = _$BoxFitEnumMap[instance.thumbnailBoxFit]!;
   val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
   writeNotNull('fontFamily', instance.fontFamily);
   val['fontSize'] = instance.fontSize;
@@ -294,6 +298,16 @@ const _$MediaListWithOneImageAppearanceEnumMap = {
   MediaListWithOneImageAppearance.r16_9: 'r16_9',
   MediaListWithOneImageAppearance.r1_1: 'r1_1',
   MediaListWithOneImageAppearance.r2_3: 'r2_3',
+};
+
+const _$BoxFitEnumMap = {
+  BoxFit.fill: 'fill',
+  BoxFit.contain: 'contain',
+  BoxFit.cover: 'cover',
+  BoxFit.fitWidth: 'fitWidth',
+  BoxFit.fitHeight: 'fitHeight',
+  BoxFit.none: 'none',
+  BoxFit.scaleDown: 'scaleDown',
 };
 
 const _$EmojiStyleEnumMap = {

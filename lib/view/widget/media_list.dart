@@ -24,6 +24,10 @@ class MediaList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final fit = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.thumbnailBoxFit),
+    );
     switch (files.length) {
       case 1:
         final file = files.single;
@@ -55,6 +59,7 @@ class MediaList extends ConsumerWidget {
               account: account,
               files: files,
               user: user,
+              fit: fit,
             ),
           ),
         );
@@ -72,6 +77,7 @@ class MediaList extends ConsumerWidget {
                     files: files,
                     index: index,
                     user: user,
+                    fit: fit,
                   ),
                 ),
               )

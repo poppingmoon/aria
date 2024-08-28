@@ -405,6 +405,37 @@ class NoteDisplayPage extends HookConsumerWidget {
                     },
                   ),
                   ListTile(
+                    title: Text(t.aria.displayOfThumbnail),
+                    subtitle: Text(
+                      switch (settings.thumbnailBoxFit) {
+                        BoxFit.contain => t.aria.showEntireImage,
+                        BoxFit.cover => t.aria.showExpandedImage,
+                        _ => t.misskey.unknown,
+                      },
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showRadioDialog(
+                        context,
+                        title: Text(t.misskey.mediaListWithOneImageAppearance),
+                        values: [BoxFit.contain, BoxFit.cover],
+                        initialValue: settings.thumbnailBoxFit,
+                        itemBuilder: (context, value) => Text(
+                          switch (value) {
+                            BoxFit.contain => t.aria.showEntireImage,
+                            BoxFit.cover => t.aria.showExpandedImage,
+                            _ => t.misskey.unknown,
+                          },
+                        ),
+                      );
+                      if (result != null) {
+                        await ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setThumbnailBoxFit(result);
+                      }
+                    },
+                  ),
+                  ListTile(
                     title: Text(t.aria.font),
                     subtitle: Text(settings.fontFamily ?? t.misskey.system),
                     trailing: const Icon(Icons.navigate_next),
