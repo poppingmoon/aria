@@ -6,6 +6,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 
+import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/page_provider.dart';
@@ -58,15 +59,28 @@ class PagePage extends ConsumerWidget {
         final nodes = const MfmParser().parse(text);
         final urls = extractUrl(nodes);
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: page.alignCenter ?? false
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: [
-            Mfm(account: account, nodes: nodes),
+            Mfm(
+              account: account,
+              nodes: nodes,
+              style: TextStyle(
+                fontFamilyFallback: page.font == 'serif'
+                    ? ['serif', FontFamily.notoSerifJP]
+                    : null,
+              ),
+              textAlign: page.alignCenter ?? false ? TextAlign.center : null,
+            ),
             ...urls.map((url) => UrlPreview(account: account, link: url)),
           ],
         );
       case PageSection(:final title, :final children):
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: page.alignCenter ?? false
+              ? CrossAxisAlignment.center
+              : CrossAxisAlignment.start,
           children: [
             Text(
               title ?? '',
@@ -74,7 +88,13 @@ class PagePage extends ConsumerWidget {
                   .textTheme
                   .bodyMedium
                   ?.apply(fontSizeFactor: topLevel ? 1.35 : 1.0)
-                  .copyWith(fontWeight: FontWeight.bold),
+                  .copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontFamilyFallback: page.font == 'serif'
+                        ? ['serif', FontFamily.notoSerifJP]
+                        : null,
+                  ),
+              textAlign: page.alignCenter ?? false ? TextAlign.center : null,
             ),
             const SizedBox(height: 8.0),
             ...?children?.map(
