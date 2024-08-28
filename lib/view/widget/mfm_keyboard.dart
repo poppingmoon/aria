@@ -264,68 +264,70 @@ class MfmKeyboard extends HookConsumerWidget {
                 (name, _) =>
                     queryArgNames.contains(name) || !name.startsWith(argQuery),
               );
-              return fnArgs.entries
-                  .map(
-                    (e) => TextButton(
-                      onPressed: () async {
-                        if (requiresPeriod) {
-                          controller.insert('.');
-                        }
-                        if (requiresComma) {
-                          controller.insert(',');
-                        }
-                        controller.insert(e.key.substring(argQuery.length));
-                        switch ((fnName, e.key)) {
-                          case (_, 'color'):
-                            final color = await showColorPickerDialog(
-                              ref.context,
-                              Colors.red,
-                              pickersEnabled: {
-                                ColorPickerType.primary: false,
-                                ColorPickerType.accent: false,
-                                ColorPickerType.wheel: true,
-                              },
-                            );
-                            if (color != Colors.red) {
-                              controller.insert('=${color.hex}');
-                            }
-                          case ('border', 'style'):
-                            final style = await showDialog<String>(
-                              context: ref.context,
-                              builder: (context) => SimpleDialog(
-                                children: [
-                                  'hidden',
-                                  'dotted',
-                                  'dashed',
-                                  'solid',
-                                  'double',
-                                  'groove',
-                                  'ridge',
-                                  'inset',
-                                  'outset',
-                                ]
-                                    .map(
-                                      (style) => SimpleDialogOption(
-                                        onPressed: () => context.pop(style),
-                                        child: Text(style),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
-                            );
-                            if (style != null) {
-                              controller.insert('=$style');
-                            }
-                          default:
-                            if (e.value != null) {
-                              controller.insert('=${e.value}');
-                            }
-                        }
-                      },
-                      child: Text(e.key),
-                    ),
-                  )
-                  .toList();
+              if (fnArgs.isNotEmpty) {
+                return fnArgs.entries
+                    .map(
+                      (e) => TextButton(
+                        onPressed: () async {
+                          if (requiresPeriod) {
+                            controller.insert('.');
+                          }
+                          if (requiresComma) {
+                            controller.insert(',');
+                          }
+                          controller.insert(e.key.substring(argQuery.length));
+                          switch ((fnName, e.key)) {
+                            case (_, 'color'):
+                              final color = await showColorPickerDialog(
+                                ref.context,
+                                Colors.red,
+                                pickersEnabled: {
+                                  ColorPickerType.primary: false,
+                                  ColorPickerType.accent: false,
+                                  ColorPickerType.wheel: true,
+                                },
+                              );
+                              if (color != Colors.red) {
+                                controller.insert('=${color.hex}');
+                              }
+                            case ('border', 'style'):
+                              final style = await showDialog<String>(
+                                context: ref.context,
+                                builder: (context) => SimpleDialog(
+                                  children: [
+                                    'hidden',
+                                    'dotted',
+                                    'dashed',
+                                    'solid',
+                                    'double',
+                                    'groove',
+                                    'ridge',
+                                    'inset',
+                                    'outset',
+                                  ]
+                                      .map(
+                                        (style) => SimpleDialogOption(
+                                          onPressed: () => context.pop(style),
+                                          child: Text(style),
+                                        ),
+                                      )
+                                      .toList(),
+                                ),
+                              );
+                              if (style != null) {
+                                controller.insert('=$style');
+                              }
+                            default:
+                              if (e.value != null) {
+                                controller.insert('=${e.value}');
+                              }
+                          }
+                        },
+                        child: Text(e.key),
+                      ),
+                    )
+                    .toList();
+              }
             }
           }
         case TagType.mention:
