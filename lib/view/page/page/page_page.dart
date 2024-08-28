@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart' hide Page;
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -76,19 +77,25 @@ class PagePage extends ConsumerWidget {
                   .copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8.0),
-            ...children.map(
+            ...?children?.map(
               (child) => _buildBlock(context, page, child, topLevel: false),
             ),
           ],
         );
-      case PageImage(:final fileId):
-        return MediaList(
-          account: account,
-          files: [page.attachedFiles.firstWhere((file) => file.id == fileId)],
-          user: page.user,
-        );
-      case PageNote(note: final noteId, :final detailed):
-        if (detailed) {
+      case PageImage(:final fileId?):
+        final file =
+            page.attachedFiles?.firstWhereOrNull((file) => file.id == fileId);
+        if (file != null) {
+          return MediaList(
+            account: account,
+            files: [file],
+            user: page.user,
+          );
+        } else {
+          return const SizedBox.shrink();
+        }
+      case PageNote(note: final noteId?, :final detailed):
+        if (detailed ?? false) {
           return NoteDetailedWidget(account: account, noteId: noteId);
         } else {
           return NoteWidget(account: account, noteId: noteId);
@@ -282,7 +289,7 @@ class PagePage extends ConsumerWidget {
                         children: [
                           LikeButton(
                             isLiked: page.isLiked ?? false,
-                            likedCount: page.likedCount,
+                            likedCount: page.likedCount ?? 0,
                             onTap: !account.isGuest
                                 ? () => futureWithDialog(
                                       context,

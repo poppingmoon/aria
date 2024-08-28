@@ -47,8 +47,8 @@ class PageNotifier extends _$PageNotifier {
 
   Iterable<String> _getNoteIds(AbstractPageContent block) {
     return switch (block) {
-      PageSection(:final children) => children.map(_getNoteIds).flattened,
-      PageNote(:final note) => [note],
+      PageSection(:final children?) => children.map(_getNoteIds).flattened,
+      PageNote(:final note?) => [note],
       _ => [],
     };
   }
@@ -57,7 +57,7 @@ class PageNotifier extends _$PageNotifier {
     await _misskey.pages.like(PagesLikeRequest(pageId: _pageId));
     final page = await future;
     state = AsyncValue.data(
-      page.copyWith(isLiked: true, likedCount: page.likedCount + 1),
+      page.copyWith(isLiked: true, likedCount: (page.likedCount ?? 0) + 1),
     );
   }
 
@@ -65,7 +65,7 @@ class PageNotifier extends _$PageNotifier {
     await _misskey.pages.unlike(PagesUnlikeRequest(pageId: _pageId));
     final page = await future;
     state = AsyncValue.data(
-      page.copyWith(isLiked: false, likedCount: page.likedCount - 1),
+      page.copyWith(isLiked: false, likedCount: (page.likedCount ?? 1) - 1),
     );
   }
 }
