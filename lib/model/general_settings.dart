@@ -61,6 +61,8 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool alwaysExpandCw,
     @Default(false) bool alwaysExpandLongNote,
     @Default(false) bool alwaysExpandMediaInSubNote,
+    MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,
+    @Default(BoxFit.contain) BoxFit thumbnailBoxFit,
     @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,
     String? fontFamily,
     @Default(defaultFontSize) double fontSize,
@@ -137,6 +139,12 @@ enum InstanceTicker {
   none,
   remote,
   always,
+}
+
+enum MediaListWithOneImageAppearance {
+  r16_9,
+  r1_1,
+  r2_3,
 }
 
 enum EmojiStyle {

@@ -184,6 +184,20 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setMediaListWithOneImageAppearance(
+    MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,
+  ) async {
+    state = state.copyWith(
+      mediaListWithOneImageAppearance: mediaListWithOneImageAppearance,
+    );
+    await _save();
+  }
+
+  Future<void> setThumbnailBoxFit(BoxFit thumbnailBoxFit) async {
+    state = state.copyWith(thumbnailBoxFit: thumbnailBoxFit);
+    await _save();
+  }
+
   Future<void> setEmojiStyle(EmojiStyle emojiStyle) async {
     state = state.copyWith(emojiStyle: emojiStyle);
     await _save();

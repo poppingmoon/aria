@@ -70,6 +70,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを止めとく';
 	@override String get disableSubscribingNotes => 'ツッコミをいちいち更新せんようにする';
 	@override String get discardChangesConfirm => '変えんと戻ってええか？';
+	@override String get displayOfThumbnail => 'サムネイルの表示';
 	@override String get doubleTapToShow => '二度押ししたら見えるで';
 	@override String get downloaded => 'ダウンロードしたで';
 	@override String get draw => '手描き';
@@ -173,6 +174,8 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	]);
 	@override String get showAvatarsInNote => 'ノートにユーザーのアイコンを表示するで';
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示するで';
+	@override String get showEntireImage => '全体を表示するで';
+	@override String get showExpandedImage => 'でかくして表示するで';
 	@override String get showHomeFAB => 'ホームボタンを表示するで';
 	@override String get showImage => '画像を表示';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';

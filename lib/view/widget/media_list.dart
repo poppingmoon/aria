@@ -6,6 +6,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../model/account.dart';
+import '../../model/general_settings.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import 'media_card.dart';
 
 class MediaList extends ConsumerWidget {
@@ -22,21 +24,43 @@ class MediaList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final fit = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.thumbnailBoxFit),
+    );
     switch (files.length) {
       case 1:
         final file = files.single;
         final width = file.properties.width;
         final height = file.properties.height;
-        final aspectRatio = max(
-          16 / 9,
-          (width != null && height != null) ? width / height : 0.0,
+        final minAspectRatio = ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => switch (settings.mediaListWithOneImageAppearance) {
+              null => 0.0,
+              MediaListWithOneImageAppearance.r16_9 => 16 / 9,
+              MediaListWithOneImageAppearance.r1_1 => 1.0,
+              MediaListWithOneImageAppearance.r2_3 => 2 / 3,
+            },
+          ),
         );
-        return AspectRatio(
-          aspectRatio: aspectRatio,
-          child: MediaCard(
-            account: account,
-            files: files,
-            user: user,
+        final aspectRatio = max(
+          (width != null && height != null) ? width / height : 16 / 9,
+          minAspectRatio,
+        );
+        return ConstrainedBox(
+          constraints: BoxConstraints(
+            minWidth: double.infinity,
+            minHeight: 64.0,
+            maxHeight: minAspectRatio > 0.0 ? double.infinity : 360.0,
+          ),
+          child: AspectRatio(
+            aspectRatio: aspectRatio,
+            child: MediaCard(
+              account: account,
+              files: files,
+              user: user,
+              fit: fit,
+            ),
           ),
         );
       default:
@@ -53,6 +77,7 @@ class MediaList extends ConsumerWidget {
                     files: files,
                     index: index,
                     user: user,
+                    fit: fit,
                   ),
                 ),
               )
