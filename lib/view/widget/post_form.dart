@@ -853,6 +853,54 @@ class PostForm extends HookConsumerWidget {
                 maxLines: maxLines,
                 maxLength: (request.text?.length ?? 0) > 2900 ? 3000 : null,
                 maxLengthEnforcement: MaxLengthEnforcement.none,
+                contextMenuBuilder: (context, editableTextState) =>
+                    AdaptiveTextSelectionToolbar.editable(
+                  clipboardStatus: ClipboardStatus.pasteable,
+                  onCopy: editableTextState.copyEnabled
+                      ? () => editableTextState
+                          .copySelection(SelectionChangedCause.toolbar)
+                      : null,
+                  onCut: editableTextState.cutEnabled
+                      ? () => editableTextState
+                          .cutSelection(SelectionChangedCause.toolbar)
+                      : null,
+                  onPaste: editableTextState.pasteEnabled
+                      ? () async {
+                          final data =
+                              await Clipboard.getData(Clipboard.kTextPlain);
+                          if (data case ClipboardData(:final text?)) {
+                            if (Uri.tryParse(text) != null) {
+                              if (!controller.selection.isCollapsed) {
+                                controller.insert('[', ']()');
+                                controller.selection = TextSelection.collapsed(
+                                  offset: controller.selection.end + 2,
+                                );
+                              }
+                            }
+                            await editableTextState
+                                .pasteText(SelectionChangedCause.toolbar);
+                          }
+                        }
+                      : null,
+                  onSelectAll: editableTextState.selectAllEnabled
+                      ? () => editableTextState
+                          .selectAll(SelectionChangedCause.toolbar)
+                      : null,
+                  onLookUp: editableTextState.lookUpEnabled
+                      ? () => editableTextState
+                          .lookUpSelection(SelectionChangedCause.toolbar)
+                      : null,
+                  onSearchWeb: editableTextState.searchWebEnabled
+                      ? () => editableTextState
+                          .searchWebForSelection(SelectionChangedCause.toolbar)
+                      : null,
+                  onShare: editableTextState.shareEnabled
+                      ? () => editableTextState
+                          .shareSelection(SelectionChangedCause.toolbar)
+                      : null,
+                  onLiveTextInput: null,
+                  anchors: editableTextState.contextMenuAnchors,
+                ),
               ),
             ),
             Padding(
