@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:searchfield/searchfield.dart';
 
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
@@ -11,6 +12,7 @@ Future<String?> showTextFieldDialog(
   String? initialText,
   InputDecoration? decoration,
   int? maxLines = 1,
+  List<String>? autocompleteOptions,
 }) async {
   return showDialog(
     context: context,
@@ -19,6 +21,7 @@ Future<String?> showTextFieldDialog(
       initialText: initialText,
       decoration: decoration,
       maxLines: maxLines,
+      autocompleteOptions: autocompleteOptions,
     ),
   );
 }
@@ -30,16 +33,59 @@ class TextFieldDialog extends HookWidget {
     this.initialText,
     this.decoration,
     this.maxLines = 1,
+    this.autocompleteOptions,
   });
 
   final Widget? title;
   final String? initialText;
   final InputDecoration? decoration;
   final int? maxLines;
+  final List<String>? autocompleteOptions;
+
+  Widget _buildField(BuildContext context, TextEditingController controller) {
+    if (autocompleteOptions case final options? when options.isNotEmpty) {
+      return SearchField(
+        controller: controller,
+        suggestions: options
+            .map((option) => SearchFieldListItem<String>(option))
+            .toList(),
+        searchInputDecoration: decoration ??
+            InputDecoration(
+              suffixIcon: maxLines == 1
+                  ? IconButton(
+                      onPressed: () => controller.clear(),
+                      icon: const Icon(Icons.close),
+                    )
+                  : null,
+            ),
+        onSubmit: (value) => context.pop(value),
+        autofocus: true,
+        textInputAction: maxLines == 1 ? TextInputAction.done : null,
+      );
+    } else {
+      return TextField(
+        controller: controller,
+        decoration: decoration ??
+            InputDecoration(
+              suffixIcon: maxLines == 1
+                  ? IconButton(
+                      onPressed: () => controller.clear(),
+                      icon: const Icon(Icons.close),
+                    )
+                  : null,
+            ),
+        onSubmitted: (value) => context.pop(value),
+        maxLines: maxLines,
+        autofocus: true,
+        textInputAction: maxLines == 1 ? TextInputAction.done : null,
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     final controller = useTextEditingController(text: initialText);
+
     return Shortcuts(
       shortcuts: {
         ...disablingTextShortcuts,
@@ -47,22 +93,7 @@ class TextFieldDialog extends HookWidget {
       },
       child: AlertDialog(
         title: title,
-        content: TextField(
-          controller: controller,
-          decoration: decoration ??
-              InputDecoration(
-                suffixIcon: maxLines == 1
-                    ? IconButton(
-                        onPressed: () => controller.clear(),
-                        icon: const Icon(Icons.close),
-                      )
-                    : null,
-              ),
-          onSubmitted: (value) => context.pop(value),
-          maxLines: maxLines,
-          autofocus: true,
-          textInputAction: maxLines == 1 ? TextInputAction.done : null,
-        ),
+        content: _buildField(context, controller),
         actions: [
           ElevatedButton(
             onPressed: () => context.pop(controller.text),

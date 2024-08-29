@@ -74,6 +74,7 @@ dependencies:
   riverpod_annotation: ^2.3.5
   rust_lib_aria:
     path: rust_builder
+  searchfield: ^1.0.9
   share_plus: ^10.0.0
   shared_preferences: ^2.3.2
   slang: ^3.31.1
