@@ -7,9 +7,7 @@ import '../../../model/account.dart';
 import '../../../model/id.dart';
 import '../../../model/tab_settings.dart';
 import '../../../model/tab_type.dart';
-import '../../../provider/api/user_notifier_provider.dart';
 import '../../../provider/timeline_center_notifier_provider.dart';
-import '../../../util/future_with_dialog.dart';
 import '../../../util/pick_date_time.dart';
 import '../../widget/timeline_list_view.dart';
 
@@ -74,20 +72,12 @@ class UserNotes extends HookConsumerWidget {
                 tooltip: t.aria.timeMachine,
                 icon: const Icon(Icons.history),
                 onPressed: () async {
-                  final user = await futureWithDialog(
-                    context,
-                    ref.read(
-                      userNotifierProvider(account, userId: userId).future,
-                    ),
-                  );
-                  if (!context.mounted) return;
                   final centerId =
                       ref.read(timelineCenterNotifierProvider(tabSettings));
                   final date = await pickDateTime(
                     context,
                     initialDate:
                         centerId != null ? Id.parse(centerId).date : null,
-                    firstDate: user?.createdAt,
                     lastDate: DateTime.now(),
                   );
                   if (date != null) {
