@@ -23,7 +23,10 @@ const previousActivator = SingleActivator(
   LogicalKeyboardKey.arrowLeft,
   includeRepeats: false,
 );
-const nextActivator = SingleActivator(LogicalKeyboardKey.arrowRight);
+const nextActivator = SingleActivator(
+  LogicalKeyboardKey.arrowRight,
+  includeRepeats: false,
+);
 
 const disablingTextShortcuts = {
   darkModeActivator: DoNothingAndStopPropagationTextIntent(),
