@@ -17,6 +17,7 @@ import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/antenna_provider.dart';
 import '../../../provider/api/antennas_notifier_provider.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
+import '../../../provider/api/endpoints_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/list_provider.dart';
 import '../../../provider/api/lists_notifier_provider.dart';
@@ -555,12 +556,21 @@ class TabSettingsPage extends HookConsumerWidget {
                     ),
                     trailing: const Icon(Icons.navigate_next),
                     onTap: () async {
+                      List<String>? endpoints;
+                      if (account.value case final account?) {
+                        try {
+                          endpoints = await ref
+                              .read(endpointsProvider(account.host).future);
+                        } catch (_) {}
+                      }
+                      if (!context.mounted) return;
                       final result = await showTextFieldDialog(
                         context,
                         title: Text(t.aria.endpoint),
                         initialText: tabSettings.value.endpoint,
                         decoration:
                             const InputDecoration(hintText: 'notes/timeline'),
+                        autocompleteOptions: endpoints,
                       );
                       if (result != null) {
                         if (!context.mounted) return;
