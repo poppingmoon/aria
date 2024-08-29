@@ -142,6 +142,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get openInInternalBrowser => '内部ブラウザで開く';
 	@override String get openMenu => 'メニューを開く';
 	@override String get openSensitiveMediaOnDoubleTap => 'ダブルタップしてセンシティブなメディアを開く';
+	@override String get parameters => 'パラメータ';
 	@override String get paste => '貼り付け';
 	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
 		const TextSpan(text: 'JSON形式で表記された絵文字のリストを貼り付けて一括でピン止めします。\nMisskey Webでピン止めした絵文字のリストは'),

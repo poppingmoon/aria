@@ -157,6 +157,7 @@ class _StringsAriaEnUs {
 	String get openInInternalBrowser => 'Open in internal browser';
 	String get openMenu => 'Open menu';
 	String get openSensitiveMediaOnDoubleTap => 'Open sensitive media on double tap';
+	String get parameters => 'Parameters';
 	String get paste => 'Paste';
 	TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
 		const TextSpan(text: 'Paste JSON format emojis list to pin the emojis.\nYou can copy your pinned emojis for Misskey Web from '),

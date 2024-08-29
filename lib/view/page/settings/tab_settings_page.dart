@@ -5,6 +5,7 @@ import 'package:flutter/material.dart' hide ImageIcon;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:json5/json5.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../../extension/user_extension.dart';
@@ -570,11 +571,12 @@ class TabSettingsPage extends HookConsumerWidget {
                         initialText: tabSettings.value.endpoint,
                         decoration:
                             const InputDecoration(hintText: 'notes/timeline'),
+                        maxLength: 100,
                         autocompleteOptions: endpoints,
                       );
                       if (result != null) {
                         if (!context.mounted) return;
-                        if (RegExp(r'^[\w\/\-]{0,50}$').hasMatch(result)) {
+                        if (RegExp(r'^[\w\/\-]{0,100}$').hasMatch(result)) {
                           tabSettings.value = tabSettings.value.copyWith(
                             endpoint: result.isNotEmpty ? result : null,
                           );
@@ -602,14 +604,60 @@ class TabSettingsPage extends HookConsumerWidget {
                         initialText: tabSettings.value.streamingChannel,
                         decoration:
                             const InputDecoration(hintText: 'homeTimeline'),
+                        maxLength: 100,
                       );
                       if (result != null) {
                         if (!context.mounted) return;
-                        if (RegExp(r'^\w{0,50}$').hasMatch(result)) {
+                        if (RegExp(r'^\w{0,100}$').hasMatch(result)) {
                           tabSettings.value = tabSettings.value.copyWith(
                             streamingChannel: result.isNotEmpty ? result : null,
                           );
                         } else {
+                          await showMessageDialog(
+                            context,
+                            t.misskey.invalidValue,
+                          );
+                        }
+                      }
+                    },
+                  ),
+                  ListTile(
+                    title: Text('${t.aria.parameters} (JSON)'),
+                    subtitle: Text(
+                      tabSettings.value.parameters != null
+                          ? tabSettings.value.parameters!.keys.join(', ')
+                          : t.misskey.notSet,
+                    ),
+                    trailing: const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final params = tabSettings.value.parameters;
+                      final result = await showTextFieldDialog(
+                        context,
+                        title: Text('${t.aria.parameters} (JSON)'),
+                        initialText: params != null
+                            ? json5Encode(params, space: 2)
+                            : '{\n  \n}',
+                        minLines: 5,
+                        maxLines: null,
+                        maxLength: 200,
+                      );
+                      if (result != null) {
+                        if (!context.mounted) return;
+                        try {
+                          if (result.isEmpty) {
+                            tabSettings.value = tabSettings.value.copyWith(
+                              parameters: null,
+                            );
+                          } else {
+                            final params = json5Decode(result);
+                            tabSettings.value = tabSettings.value.copyWith(
+                              parameters: params is Map<String, dynamic> &&
+                                      params.isNotEmpty
+                                  ? params
+                                  : null,
+                            );
+                          }
+                        } catch (_) {
                           await showMessageDialog(
                             context,
                             t.misskey.invalidValue,

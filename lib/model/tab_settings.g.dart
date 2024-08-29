@@ -30,6 +30,7 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String?,
       endpoint: json['endpoint'] as String?,
       streamingChannel: json['streamingChannel'] as String?,
+      parameters: json['parameters'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
@@ -61,6 +62,7 @@ Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
   writeNotNull('userId', instance.userId);
   writeNotNull('endpoint', instance.endpoint);
   writeNotNull('streamingChannel', instance.streamingChannel);
+  writeNotNull('parameters', instance.parameters);
   return val;
 }
 
