@@ -142,6 +142,7 @@ class _StringsAriaJaKs extends _StringsAriaEnUs {
 	@override String get openInInternalBrowser => '内部ブラウザで開くで';
 	@override String get openMenu => 'メニューを開くで';
 	@override String get openSensitiveMediaOnDoubleTap => '二度押ししてきわどいメディアを開くで';
+	@override String get parameters => 'パラメータ';
 	@override String get paste => '貼り付け';
 	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
 		const TextSpan(text: 'JSON形式で表記された絵文字のリストを貼り付けて一括でピン留めするで。\nMisskey Webでピン留めした絵文字のリストは'),

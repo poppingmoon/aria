@@ -40,6 +40,7 @@ mixin _$TabSettings {
   String? get userId => throw _privateConstructorUsedError;
   String? get endpoint => throw _privateConstructorUsedError;
   String? get streamingChannel => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get parameters => throw _privateConstructorUsedError;
 
   /// Serializes this TabSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -77,7 +78,8 @@ abstract class $TabSettingsCopyWith<$Res> {
       String? antennaId,
       String? userId,
       String? endpoint,
-      String? streamingChannel});
+      String? streamingChannel,
+      Map<String, dynamic>? parameters});
 
   $AccountCopyWith<$Res> get account;
 }
@@ -117,6 +119,7 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
     Object? userId = freezed,
     Object? endpoint = freezed,
     Object? streamingChannel = freezed,
+    Object? parameters = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -199,6 +202,10 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
           ? _value.streamingChannel
           : streamingChannel // ignore: cast_nullable_to_non_nullable
               as String?,
+      parameters: freezed == parameters
+          ? _value.parameters
+          : parameters // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 
@@ -241,7 +248,8 @@ abstract class _$$TabSettingsImplCopyWith<$Res>
       String? antennaId,
       String? userId,
       String? endpoint,
-      String? streamingChannel});
+      String? streamingChannel,
+      Map<String, dynamic>? parameters});
 
   @override
   $AccountCopyWith<$Res> get account;
@@ -280,6 +288,7 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
     Object? userId = freezed,
     Object? endpoint = freezed,
     Object? streamingChannel = freezed,
+    Object? parameters = freezed,
   }) {
     return _then(_$TabSettingsImpl(
       id: freezed == id
@@ -362,6 +371,10 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
           ? _value.streamingChannel
           : streamingChannel // ignore: cast_nullable_to_non_nullable
               as String?,
+      parameters: freezed == parameters
+          ? _value._parameters
+          : parameters // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -389,8 +402,10 @@ class _$TabSettingsImpl extends _TabSettings {
       this.antennaId,
       this.userId,
       this.endpoint,
-      this.streamingChannel})
-      : super._();
+      this.streamingChannel,
+      final Map<String, dynamic>? parameters})
+      : _parameters = parameters,
+        super._();
 
   factory _$TabSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$TabSettingsImplFromJson(json);
@@ -443,10 +458,19 @@ class _$TabSettingsImpl extends _TabSettings {
   final String? endpoint;
   @override
   final String? streamingChannel;
+  final Map<String, dynamic>? _parameters;
+  @override
+  Map<String, dynamic>? get parameters {
+    final value = _parameters;
+    if (value == null) return null;
+    if (_parameters is EqualUnmodifiableMapView) return _parameters;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, keepPosition: $keepPosition, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel)';
+    return 'TabSettings(id: $id, tabType: $tabType, name: $name, account: $account, icon: $icon, disableStreaming: $disableStreaming, disableSubscribing: $disableSubscribing, withReplies: $withReplies, withRenotes: $withRenotes, withSelfRenotes: $withSelfRenotes, withFiles: $withFiles, withSensitive: $withSensitive, keepPosition: $keepPosition, roleId: $roleId, channelId: $channelId, listId: $listId, antennaId: $antennaId, userId: $userId, endpoint: $endpoint, streamingChannel: $streamingChannel, parameters: $parameters)';
   }
 
   @override
@@ -485,7 +509,9 @@ class _$TabSettingsImpl extends _TabSettings {
             (identical(other.endpoint, endpoint) ||
                 other.endpoint == endpoint) &&
             (identical(other.streamingChannel, streamingChannel) ||
-                other.streamingChannel == streamingChannel));
+                other.streamingChannel == streamingChannel) &&
+            const DeepCollectionEquality()
+                .equals(other._parameters, _parameters));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -511,7 +537,8 @@ class _$TabSettingsImpl extends _TabSettings {
         antennaId,
         userId,
         endpoint,
-        streamingChannel
+        streamingChannel,
+        const DeepCollectionEquality().hash(_parameters)
       ]);
 
   /// Create a copy of TabSettings
@@ -551,7 +578,8 @@ abstract class _TabSettings extends TabSettings {
       final String? antennaId,
       final String? userId,
       final String? endpoint,
-      final String? streamingChannel}) = _$TabSettingsImpl;
+      final String? streamingChannel,
+      final Map<String, dynamic>? parameters}) = _$TabSettingsImpl;
   const _TabSettings._() : super._();
 
   factory _TabSettings.fromJson(Map<String, dynamic> json) =
@@ -597,6 +625,8 @@ abstract class _TabSettings extends TabSettings {
   String? get endpoint;
   @override
   String? get streamingChannel;
+  @override
+  Map<String, dynamic>? get parameters;
 
   /// Create a copy of TabSettings
   /// with the given fields replaced by the non-null parameter values.

@@ -11,7 +11,10 @@ Future<String?> showTextFieldDialog(
   Widget? title,
   String? initialText,
   InputDecoration? decoration,
+  TextStyle? style,
+  int? minLines,
   int? maxLines = 1,
+  int? maxLength,
   List<String>? autocompleteOptions,
 }) async {
   return showDialog(
@@ -20,7 +23,10 @@ Future<String?> showTextFieldDialog(
       title: title,
       initialText: initialText,
       decoration: decoration,
+      style: style,
+      minLines: minLines,
       maxLines: maxLines,
+      maxLength: maxLength,
       autocompleteOptions: autocompleteOptions,
     ),
   );
@@ -32,14 +38,20 @@ class TextFieldDialog extends HookWidget {
     this.title,
     this.initialText,
     this.decoration,
+    this.style,
+    this.minLines,
     this.maxLines = 1,
+    this.maxLength,
     this.autocompleteOptions,
   });
 
   final Widget? title;
   final String? initialText;
   final InputDecoration? decoration;
+  final TextStyle? style;
+  final int? minLines;
   final int? maxLines;
+  final int? maxLength;
   final List<String>? autocompleteOptions;
 
   Widget _buildField(BuildContext context, TextEditingController controller) {
@@ -58,6 +70,8 @@ class TextFieldDialog extends HookWidget {
                     )
                   : null,
             ),
+        searchStyle: style,
+        maxLength: maxLength,
         onSubmit: (value) => context.pop(value),
         autofocus: true,
         textInputAction: maxLines == 1 ? TextInputAction.done : null,
@@ -74,8 +88,11 @@ class TextFieldDialog extends HookWidget {
                     )
                   : null,
             ),
+        style: style,
         onSubmitted: (value) => context.pop(value),
+        minLines: minLines,
         maxLines: maxLines,
+        maxLength: maxLength,
         autofocus: true,
         textInputAction: maxLines == 1 ? TextInputAction.done : null,
       );

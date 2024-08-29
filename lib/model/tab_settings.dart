@@ -30,6 +30,7 @@ class TabSettings with _$TabSettings {
     String? userId,
     String? endpoint,
     String? streamingChannel,
+    Map<String, dynamic>? parameters,
   }) = _TabSettings;
 
   const TabSettings._();

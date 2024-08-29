@@ -49,6 +49,13 @@ class TimelineTabsNotifier extends _$TimelineTabsNotifier {
       antennaId:
           tabSettings.tabType == TabType.antenna ? tabSettings.antennaId : null,
       userId: tabSettings.tabType == TabType.user ? tabSettings.userId : null,
+      endpoint:
+          tabSettings.tabType == TabType.custom ? tabSettings.endpoint : null,
+      streamingChannel: tabSettings.tabType == TabType.custom
+          ? tabSettings.streamingChannel
+          : null,
+      parameters:
+          tabSettings.tabType == TabType.custom ? tabSettings.parameters : null,
     );
   }
 

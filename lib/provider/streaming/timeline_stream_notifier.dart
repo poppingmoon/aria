@@ -120,6 +120,7 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
                     if (!tabSettings.withRenotes) 'withRenotes': false,
                     if (tabSettings.withReplies) 'withRenotes': true,
                     if (tabSettings.withFiles) 'withFiles': true,
+                    ...?tabSettings.parameters,
                   },
                 },
               },

@@ -39,6 +39,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
         'withRenotes': tabSettings.withRenotes,
         'withReplies': tabSettings.withReplies,
         'withFiles': tabSettings.withFiles,
+        ...?tabSettings.parameters,
       },
     );
     return response.map((e) => Note.fromJson(e as Map<String, dynamic>));
