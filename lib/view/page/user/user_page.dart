@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -122,12 +120,14 @@ class UserPage extends HookConsumerWidget {
             if (user?.birthday?.day == now.day &&
                 user?.birthday?.month == now.month)
               Align(
-                alignment: Alignment.topCenter,
+                alignment: const Alignment(0.0, -0.5),
                 child: ConfettiWidget(
-                  confettiController: useConfettiController(),
-                  blastDirection: -pi / 2,
-                  maxBlastForce: 10,
-                  gravity: 0.1,
+                  confettiController: useConfettiController(
+                    duration: const Duration(seconds: 10),
+                  ),
+                  blastDirectionality: BlastDirectionality.explosive,
+                  numberOfParticles: 50,
+                  maxBlastForce: 80.0,
                 ),
               ),
           ],
