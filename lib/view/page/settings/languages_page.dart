@@ -32,7 +32,7 @@ class LanguagesPage extends ConsumerWidget {
                 child: Mfm(
                   account: Account.dummy(),
                   text: t.misskey.i18nInfo(
-                    link: '[crowdin](https://crowdin.com/project/misskey)',
+                    link: '[Crowdin](https://crowdin.com/project/misskey)',
                   ),
                 ),
               ),
@@ -49,13 +49,13 @@ class LanguagesPage extends ConsumerWidget {
                       child: InkWell(
                         onTap: () => launchUrl(
                           ref,
-                          Uri.https('github.com', 'poppingmoon/aria'),
+                          Uri.https('crowdin.com', 'project/aria-for-misskey'),
                         ),
                         child: Text.rich(
                           TextSpan(
                             children: [
                               TextSpan(
-                                text: 'GitHub',
+                                text: 'Crowdin',
                                 style: TextStyle(color: colors.link),
                               ),
                               WidgetSpan(

@@ -64,8 +64,14 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get crop => 'クロップ';
 	@override String get custom => 'カスタム';
 	@override String get defaultReaction => 'デフォルトのリアクション';
-	@override String deleteAccountTabsConfirm({required Object n}) => 'このアカウントのタブが${n}個あります。削除しますか？';
-	@override String deleteFilesConfirm({required Object n}) => '${n}個のファイルを削除しますか？';
+	@override String deleteAccountTabsConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ja'))(n,
+		one: 'このアカウントのタブが${n}個あります。削除しますか？',
+		other: 'このアカウントのタブが${n}個あります。削除しますか？',
+	);
+	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ja'))(n,
+		one: '${n}個のファイルを削除しますか？',
+		other: '${n}個のファイルを削除しますか？',
+	);
 	@override String get deleteTabConfirm => 'このタブを削除しますか？';
 	@override String get disableDataSaverWhenOnWifi => 'Wi-Fi接続中はデータセーバーを無効にする';
 	@override String get disableSubscribingNotes => 'リアクションのリアルタイム更新を無効にする';
@@ -117,7 +123,10 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
 	@override String get moved => '移動しました';
 	@override String get muted => 'ミュート中';
-	@override String nFiles({required Object n}) => '${n}個のファイル';
+	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ja'))(n,
+		one: '${n}個のファイル',
+		other: '${n}個のファイル',
+	);
 	@override String get newFollowRequestReceived => '新しいフォロー申請があります';
 	@override String get newNotes => '新しいノート';
 	@override String get newNotificationReceived => '新しい通知があります';
