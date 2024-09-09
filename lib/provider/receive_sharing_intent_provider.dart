@@ -11,13 +11,14 @@ Stream<List<SharedMediaFile>> receiveSharingIntent(
 ) async* {
   final files = await ReceiveSharingIntent.instance.getInitialMedia();
   if (files.isNotEmpty) {
-    ref.read(shareNotifierProvider.notifier).markNeedRedirect();
     yield files;
+    ref.read(shareNotifierProvider.notifier).markNeedRedirect();
+    await ReceiveSharingIntent.instance.reset();
   }
   await for (final files in ReceiveSharingIntent.instance.getMediaStream()) {
     if (files.isNotEmpty) {
-      ref.read(shareNotifierProvider.notifier).markNeedRedirect();
       yield files;
+      ref.read(shareNotifierProvider.notifier).markNeedRedirect();
     }
   }
 }
