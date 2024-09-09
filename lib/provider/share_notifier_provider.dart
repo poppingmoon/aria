@@ -29,30 +29,40 @@ class ShareNotifier extends _$ShareNotifier {
   Future<String?> redirect() async {
     final sharedFiles = await ref.read(receiveSharingIntentProvider.future);
     state = false;
-    if (sharedFiles.singleOrNull?.type == SharedMediaType.url) {
-      final url = Uri.parse(sharedFiles.single.path);
-      if (url.scheme == 'aria') {
-        if (url.path == '/miauth') {
-          final succeeded =
-              await ref.read(miAuthNotifierProvider.notifier).check();
-          if (succeeded) {
-            return '/timelines';
-          } else {
-            return '/login/authenticate';
+    if (sharedFiles.isNotEmpty) {
+      if (sharedFiles.singleOrNull?.type == SharedMediaType.url) {
+        final url = Uri.parse(sharedFiles.single.path);
+        if (url.scheme == 'aria') {
+          if (url.path == '/miauth') {
+            final succeeded =
+                await ref.read(miAuthNotifierProvider.notifier).check();
+            if (succeeded) {
+              return '/timelines';
+            } else {
+              return '/login/authenticate';
+            }
+          }
+          return url.path;
+        } else {
+          final account = ref
+              .read(accountsNotifierProvider)
+              .firstWhereOrNull((account) => account.host == url.host);
+          if (account != null) {
+            return '/$account/${url.pathSegments.join('/')}';
+          }
+          final servers = await ref.read(misskeyServersProvider.future);
+          if (servers.any((server) => server.url == url.host)) {
+            return '/${url.host}/${url.pathSegments.join('/')}';
           }
         }
-        return url.path;
+      }
+
+      final accounts = ref.read(accountsNotifierProvider);
+      if (accounts.singleOrNull case final account?) {
+        await share(account);
+        return '/$account/post';
       } else {
-        final account = ref
-            .read(accountsNotifierProvider)
-            .firstWhereOrNull((account) => account.host == url.host);
-        if (account != null) {
-          return '/$account/${url.pathSegments.join('/')}';
-        }
-        final servers = await ref.read(misskeyServersProvider.future);
-        if (servers.any((server) => server.url == url.host)) {
-          return '/${url.host}/${url.pathSegments.join('/')}';
-        }
+        return '/share';
       }
     }
     return null;

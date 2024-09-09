@@ -1,11 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
 import '../model/tab_settings.dart';
-import '../provider/accounts_notifier_provider.dart';
 import '../provider/boot_state_provider.dart';
 import '../provider/miauth_notifier_provider.dart';
 import '../provider/receive_sharing_intent_provider.dart';
@@ -646,27 +644,14 @@ GoRouter router(RouterRef ref) {
         ],
       ),
     ],
-    redirect: (context, _) async {
-      if (sharedFiles case AsyncData(value: final sharedFiles)) {
+    redirect: (context, _) {
+      if (!bootState.hasValue || bootState.value == null) {
+        return null;
+      }
+      if (sharedFiles?.hasValue ?? false) {
         final needRedirect = ref.read(shareNotifierProvider);
         if (needRedirect) {
-          if (sharedFiles.length == 1) {
-            if (sharedFiles.single.type == SharedMediaType.url) {
-              final path =
-                  await ref.read(shareNotifierProvider.notifier).redirect();
-              if (path != null) {
-                return path;
-              }
-            }
-          }
-          final accounts = ref.read(accountsNotifierProvider);
-          if (accounts.length == 1) {
-            final account = accounts.single;
-            await ref.read(shareNotifierProvider.notifier).share(account);
-            return '/$account/post';
-          } else {
-            return '/share';
-          }
+          return ref.read(shareNotifierProvider.notifier).redirect();
         }
       }
       return null;
