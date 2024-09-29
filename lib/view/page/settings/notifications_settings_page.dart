@@ -9,6 +9,7 @@ import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 import 'package:uuid/uuid.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
+import '../../../constant/fcm_token_prefix.dart';
 import '../../../constant/misskey_web_push_proxy_url.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -52,7 +53,12 @@ class NotificationsSettingsPage extends ConsumerWidget {
       );
       sub.close();
       if (unifiedPushEndpoint == null) return;
-      endpoint = unifiedPushEndpoint;
+      if (unifiedPushEndpoint.startsWith(fcmTokenPrefix)) {
+        endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
+        fcmToken = unifiedPushEndpoint.substring(fcmTokenPrefix.length);
+      } else {
+        endpoint = unifiedPushEndpoint;
+      }
     } else {
       endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
     }
