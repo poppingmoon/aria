@@ -4,6 +4,7 @@ import 'package:webpush_encryption/webpush_encryption.dart';
 
 import '../constant/misskey_web_push_proxy_url.dart';
 import '../model/account.dart';
+import 'api/misskey_provider.dart';
 import 'dio_provider.dart';
 import 'shared_preferences_provider.dart';
 import 'web_push_key_set_notifier_provider.dart';
@@ -48,5 +49,26 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
     }
     await ref.read(sharedPreferencesProvider).setString(_key, endpoint);
     state = endpoint;
+  }
+
+  Future<void> unsubscribe() async {
+    final endpoint = state;
+    if (endpoint == null) return;
+    final keySet =
+        await ref.read(webPushKeySetNotifierNotifierProvider(account).future);
+    if (keySet == null) {
+      await ref.read(dioProvider).delete<void>(endpoint);
+    }
+    await ref
+        .read(misskeyProvider(account))
+        .sw
+        .unregister(SwUnregisterRequest(endpoint: endpoint));
+    if (keySet != null) {
+      await ref
+          .read(webPushKeySetNotifierNotifierProvider(account).notifier)
+          .delete();
+    }
+    await ref.read(sharedPreferencesProvider).remove(_key);
+    state = null;
   }
 }

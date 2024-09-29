@@ -56,6 +56,15 @@ class NotificationsSettingsPage extends ConsumerWidget {
     );
   }
 
+  Future<void> _unsubscribe(WidgetRef ref) {
+    return futureWithDialog(
+      ref.context,
+      ref
+          .read(pushSubscriptionNotifierProvider(account).notifier)
+          .unsubscribe(),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
@@ -83,7 +92,7 @@ class NotificationsSettingsPage extends ConsumerWidget {
             title: Text(t.misskey.subscribePushNotification),
             value: endpoint != null,
             onChanged: endpoint != null
-                ? (_) {}
+                ? (_) => _unsubscribe(ref)
                 : i != null && isPushNotificationSupported
                     ? (_) => _subscribe(ref)
                     : null,
