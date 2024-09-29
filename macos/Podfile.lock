@@ -45,6 +45,9 @@ PODS:
     - FlutterMacOS
   - wakelock_plus (0.0.1):
     - FlutterMacOS
+  - webcrypto (0.1.1):
+    - Flutter
+    - FlutterMacOS
 
 DEPENDENCIES:
   - audio_service (from `Flutter/ephemeral/.symlinks/plugins/audio_service/macos`)
@@ -66,6 +69,7 @@ DEPENDENCIES:
   - url_launcher_macos (from `Flutter/ephemeral/.symlinks/plugins/url_launcher_macos/macos`)
   - video_player_avfoundation (from `Flutter/ephemeral/.symlinks/plugins/video_player_avfoundation/darwin`)
   - wakelock_plus (from `Flutter/ephemeral/.symlinks/plugins/wakelock_plus/macos`)
+  - webcrypto (from `Flutter/ephemeral/.symlinks/plugins/webcrypto/darwin`)
 
 SPEC REPOS:
   trunk:
@@ -110,6 +114,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/video_player_avfoundation/darwin
   wakelock_plus:
     :path: Flutter/ephemeral/.symlinks/plugins/wakelock_plus/macos
+  webcrypto:
+    :path: Flutter/ephemeral/.symlinks/plugins/webcrypto/darwin
 
 SPEC CHECKSUMS:
   audio_service: b88ff778e0e3915efd4cd1a5ad6f0beef0c950a9
@@ -132,6 +138,7 @@ SPEC CHECKSUMS:
   url_launcher_macos: c82c93949963e55b228a30115bd219499a6fe404
   video_player_avfoundation: 7c6c11d8470e1675df7397027218274b6d2360b3
   wakelock_plus: 4783562c9a43d209c458cb9b30692134af456269
+  webcrypto: aa788ff6b0a956e5d6e613b35b99c13e220ca2d0
 
 PODFILE CHECKSUM: c2e95c8c0fe03c5c57e438583cae4cc732296009
 

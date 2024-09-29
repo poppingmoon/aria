@@ -1,0 +1,52 @@
+import 'package:misskey_dart/misskey_dart.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:webpush_encryption/webpush_encryption.dart';
+
+import '../constant/misskey_web_push_proxy_url.dart';
+import '../model/account.dart';
+import 'dio_provider.dart';
+import 'shared_preferences_provider.dart';
+import 'web_push_key_set_notifier_provider.dart';
+
+part 'push_subscription_notifier_provider.g.dart';
+
+@riverpod
+class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
+  @override
+  String? build(Account account) {
+    return ref.watch(sharedPreferencesProvider).getString(_key);
+  }
+
+  String get _key => '$account/push-subscription';
+
+  Future<void> subscribe({
+    required String id,
+    String? fcmToken,
+    String? apnsToken,
+    required WebPushKeySet keySet,
+    required SwRegisterResponse response,
+  }) async {
+    final endpoint = response.endpoint;
+    if (endpoint.startsWith(misskeyWebPushProxyUrl)) {
+      final jwk = await (await keySet.privateKey.privKey).exportJsonWebKey();
+      await ref.read(dioProvider).post<Map<String, dynamic>>(
+        '$misskeyWebPushProxyUrl/subscriptions',
+        data: {
+          'id': id,
+          if (fcmToken != null) 'fcmToken': fcmToken,
+          if (apnsToken != null) 'apnsToken': apnsToken,
+          'auth': keySet.publicKey.auth,
+          'publicKey': keySet.publicKey.p256dh,
+          'privateKey': jwk['d'],
+          'vapidKey': response.key,
+        },
+      );
+    } else {
+      await ref
+          .read(webPushKeySetNotifierNotifierProvider(account).notifier)
+          .save(keySet);
+    }
+    await ref.read(sharedPreferencesProvider).setString(_key, endpoint);
+    state = endpoint;
+  }
+}

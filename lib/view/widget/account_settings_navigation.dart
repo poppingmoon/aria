@@ -13,6 +13,7 @@ enum AccountSettingsDestination {
   privacy,
   emojiPicker,
   drive,
+  notifications,
   muteBlock,
   signOut,
 }
@@ -37,6 +38,8 @@ class AccountSettingsNavigation extends ConsumerWidget {
       AccountSettingsDestination.privacy => const Icon(Icons.lock),
       AccountSettingsDestination.emojiPicker => const Icon(Icons.emoji_symbols),
       AccountSettingsDestination.drive => const Icon(Icons.cloud),
+      AccountSettingsDestination.notifications =>
+        const Icon(Icons.notifications),
       AccountSettingsDestination.muteBlock => const Icon(Icons.block),
       AccountSettingsDestination.signOut => const Icon(Icons.logout),
     };
@@ -48,6 +51,7 @@ class AccountSettingsNavigation extends ConsumerWidget {
       AccountSettingsDestination.privacy => t.misskey.privacy,
       AccountSettingsDestination.emojiPicker => t.misskey.emojiPicker,
       AccountSettingsDestination.drive => t.misskey.drive,
+      AccountSettingsDestination.notifications => t.misskey.notifications,
       AccountSettingsDestination.muteBlock => t.misskey.muteAndBlock,
       AccountSettingsDestination.signOut => t.misskey.logout,
     };
@@ -93,6 +97,8 @@ class AccountSettingsNavigation extends ConsumerWidget {
         AccountSettingsDestination.emojiPicker =>
           '/settings/accounts/$account/emoji-picker',
         AccountSettingsDestination.drive => '/settings/accounts/$account/drive',
+        AccountSettingsDestination.notifications =>
+          '/settings/accounts/$account/notifications',
         AccountSettingsDestination.muteBlock =>
           '/settings/accounts/$account/mute-block',
         AccountSettingsDestination.signOut =>
