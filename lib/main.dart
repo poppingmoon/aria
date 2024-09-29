@@ -1,11 +1,14 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'constant/shortcuts.dart';
 import 'gen/assets.gen.dart';
@@ -69,7 +72,6 @@ void main() async {
     );
   });
   final prefs = await SharedPreferences.getInstance();
-  await RustLib.init();
   runApp(
     ProviderScope(
       overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
@@ -78,8 +80,23 @@ void main() async {
   );
 }
 
-class Aria extends ConsumerWidget {
+class Aria extends HookConsumerWidget {
   const Aria({super.key});
+
+  Future<void> _init(WidgetRef ref) async {
+    final generalSettings = ref.read(generalSettingsNotifierProvider);
+    Future(() {
+      if (generalSettings.locale case final locale?) {
+        LocaleSettings.setLocale(locale);
+      } else {
+        LocaleSettings.useDeviceLocale();
+      }
+    }).ignore();
+    if (generalSettings.keepScreenOn) {
+      WakelockPlus.enable().ignore();
+    }
+    RustLib.init().ignore();
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -88,6 +105,13 @@ class Aria extends ConsumerWidget {
     final darkTheme = ref.watch(themeDataProvider(Brightness.dark));
     final themeMode = ref.watch(
       generalSettingsNotifierProvider.select((settings) => settings.themeMode),
+    );
+    useEffect(
+      () {
+        _init(ref);
+        return;
+      },
+      [],
     );
 
     return MaterialApp.router(
@@ -99,7 +123,7 @@ class Aria extends ConsumerWidget {
       locale: TranslationProvider.of(context).flutterLocale,
       supportedLocales: AppLocaleUtils.supportedLocales,
       localizationsDelegates: GlobalMaterialLocalizations.delegates,
-      scrollBehavior: AppScrollBehavior(),
+      scrollBehavior: _AppScrollBehavior(),
       shortcuts: {
         ...WidgetsApp.defaultShortcuts,
         darkModeActivator: VoidCallbackIntent(() {
@@ -123,7 +147,7 @@ class Aria extends ConsumerWidget {
   }
 }
 
-class AppScrollBehavior extends MaterialScrollBehavior {
+class _AppScrollBehavior extends MaterialScrollBehavior {
   @override
   Widget buildScrollbar(
     BuildContext context,

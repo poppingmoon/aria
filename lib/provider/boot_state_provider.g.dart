@@ -6,7 +6,7 @@ part of 'boot_state_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$bootStateHash() => r'1b4b0cd89cfb8bb41c15d0df2b2cf4badde924cc';
+String _$bootStateHash() => r'19d3fd126c79299a3de35ee77f99f1fd7943e5bf';
 
 /// See also [BootState].
 @ProviderFor(BootState)
