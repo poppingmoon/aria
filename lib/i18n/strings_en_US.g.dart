@@ -156,6 +156,11 @@ class _StringsAriaEnUs {
 	String get openInExternalBrowser => 'Open in external browser';
 	String get openInInternalBrowser => 'Open in internal browser';
 	String get openMenu => 'Open menu';
+	TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		const TextSpan(text: 'Open '),
+		scratchpad,
+		const TextSpan(text: ' in your browser, then enter the following code and run it.'),
+	]);
 	String get openSensitiveMediaOnDoubleTap => 'Open sensitive media on double tap';
 	String get parameters => 'Parameters';
 	String get paste => 'Paste';
@@ -164,9 +169,11 @@ class _StringsAriaEnUs {
 		url,
 		const TextSpan(text: '.'),
 	]);
+	String get pasteResponseBelow => 'Paste the response below.';
 	String get pinToEmojiPicker => 'Pin to emoji picker';
 	String get playAudio => 'Play audio';
 	String get playVideo => 'Play video';
+	String get pleaseCopyResponse => 'Please copy this response';
 	String get postConfirm => 'Are you sure you want to post this note?';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
