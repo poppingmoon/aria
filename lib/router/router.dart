@@ -649,10 +649,7 @@ GoRouter router(RouterRef ref) {
         return null;
       }
       if (sharedFiles?.hasValue ?? false) {
-        final needRedirect = ref.read(shareNotifierProvider);
-        if (needRedirect) {
-          return ref.read(shareNotifierProvider.notifier).redirect();
-        }
+        return Future(ref.read(shareNotifierProvider.notifier).redirect);
       }
       return null;
     },
