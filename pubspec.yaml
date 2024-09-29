@@ -87,6 +87,8 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
       ref: 4e9421350c0f6b3c4ca908e79042e6a2ab5d6dfc
+  unifiedpush: ^5.0.2
+  unifiedpush_ui: ^0.1.0
   url_launcher: ^6.3.1
   uuid: ^4.5.1
   vector_math: ^2.1.4

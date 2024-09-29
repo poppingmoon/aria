@@ -8,6 +8,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:unifiedpush/unifiedpush.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import 'constant/shortcuts.dart';
@@ -16,6 +17,7 @@ import 'i18n/strings.g.dart';
 import 'provider/general_settings_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
+import 'provider/unified_push_endpoint_notifier_provider.dart';
 import 'router/router.dart';
 import 'rust/frb_generated.dart';
 
@@ -96,6 +98,20 @@ class Aria extends HookConsumerWidget {
       WakelockPlus.enable().ignore();
     }
     RustLib.init().ignore();
+
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      await UnifiedPush.initialize(
+        onNewEndpoint: (endpoint, instance) => ref
+            .read(unifiedPushEndpointNotifierProvider(instance).notifier)
+            .updateEndpoint(endpoint),
+        onRegistrationFailed: (instance) => ref
+            .read(unifiedPushEndpointNotifierProvider(instance).notifier)
+            .remove(),
+        onUnregistered: (instance) => ref
+            .read(unifiedPushEndpointNotifierProvider(instance).notifier)
+            .remove(),
+      );
+    }
   }
 
   @override

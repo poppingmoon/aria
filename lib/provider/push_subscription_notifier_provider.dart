@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:unifiedpush/unifiedpush.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
 import '../constant/misskey_web_push_proxy_url.dart';
@@ -54,6 +56,9 @@ class PushSubscriptionNotifier extends _$PushSubscriptionNotifier {
   Future<void> unsubscribe() async {
     final endpoint = state;
     if (endpoint == null) return;
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      await UnifiedPush.unregister(account.toString());
+    }
     final keySet =
         await ref.read(webPushKeySetNotifierNotifierProvider(account).future);
     if (keySet == null) {
