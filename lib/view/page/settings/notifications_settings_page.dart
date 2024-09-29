@@ -4,14 +4,18 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+import 'package:unifiedpush/unifiedpush.dart';
+import 'package:unifiedpush_ui/unifiedpush_ui.dart';
 import 'package:uuid/uuid.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
+import '../../../constant/misskey_web_push_proxy_url.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/push_subscription_notifier_provider.dart';
+import '../../../provider/unified_push_endpoint_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/sw_register_dialog.dart';
 
@@ -22,9 +26,36 @@ class NotificationsSettingsPage extends ConsumerWidget {
 
   Future<void> _subscribe(WidgetRef ref) async {
     final id = const Uuid().v4();
-    const String endpoint = '';
+    final String endpoint;
     String? fcmToken;
     String? apnsToken;
+
+    // Request permissions and get the endpoint and the token.
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      await UnifiedPush.removeNoDistributorDialogACK();
+      if (!ref.context.mounted) return;
+      await UnifiedPushUi(
+        ref.context,
+        [account.toString()],
+        _UnifiedPushFunctions(),
+      ).registerAppWithDialog();
+      if (!ref.context.mounted) return;
+      final completer = Completer<String>();
+      final sub = ref.listenManual(
+        unifiedPushEndpointNotifierProvider(account.toString()),
+        (_, endpoint) => endpoint != null ? completer.complete(endpoint) : null,
+        fireImmediately: true,
+      );
+      final unifiedPushEndpoint = await futureWithDialog(
+        ref.context,
+        completer.future.timeout(const Duration(seconds: 5)),
+      );
+      sub.close();
+      if (unifiedPushEndpoint == null) return;
+      endpoint = unifiedPushEndpoint;
+    } else {
+      endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
+    }
 
     final keySet = await WebPushKeySet.newKeyPair();
     if (!ref.context.mounted) return;
@@ -100,5 +131,27 @@ class NotificationsSettingsPage extends ConsumerWidget {
         ],
       ),
     );
+  }
+}
+
+class _UnifiedPushFunctions extends UnifiedPushFunctions {
+  @override
+  Future<String?> getDistributor() {
+    return UnifiedPush.getDistributor();
+  }
+
+  @override
+  Future<List<String>> getDistributors() {
+    return UnifiedPush.getDistributors();
+  }
+
+  @override
+  Future<void> registerApp(String instance) {
+    return UnifiedPush.registerApp(instance);
+  }
+
+  @override
+  Future<void> saveDistributor(String distributor) {
+    return UnifiedPush.saveDistributor(distributor);
   }
 }
