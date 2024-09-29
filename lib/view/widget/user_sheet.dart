@@ -92,7 +92,7 @@ class UserSheet extends ConsumerWidget {
               leading: const Icon(Icons.copy),
               title: Text(t.aria.copyName),
               onTap: () {
-                copyToClipboard(context, user.name ?? user.username);
+                copyToClipboard(context, user.nameOrUsername);
                 context.pop();
               },
             ),
