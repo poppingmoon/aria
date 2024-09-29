@@ -59,6 +59,7 @@ import '../view/page/settings/languages_page.dart';
 import '../view/page/settings/mute_block_page.dart';
 import '../view/page/settings/muted_users_page.dart';
 import '../view/page/settings/note_display_page.dart';
+import '../view/page/settings/notifications_settings_page.dart';
 import '../view/page/settings/pinned_emojis_editor_page.dart';
 import '../view/page/settings/privacy_page.dart';
 import '../view/page/settings/profile_page.dart';
@@ -196,6 +197,13 @@ GoRouter router(RouterRef ref) {
                         ),
                       ),
                     ],
+                  ),
+                  GoRoute(
+                    path: 'notifications',
+                    builder: (_, state) => NotificationsSettingsPage(
+                      account:
+                          Account.fromString(state.pathParameters['acct']!),
+                    ),
                   ),
                   GoRoute(
                     path: 'privacy',

@@ -2074,6 +2074,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  webcrypto:
+    dependency: "direct overridden"
+    description:
+      path: "."
+      ref: fa98c5de1f9d611f09a0bb58df773fa47abb3906
+      resolved-ref: fa98c5de1f9d611f09a0bb58df773fa47abb3906
+      url: "https://github.com/poppingmoon/webcrypto.dart"
+    source: git
+    version: "0.5.7"
   webdriver:
     dependency: transitive
     description:
@@ -2082,6 +2091,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  webpush_encryption:
+    dependency: "direct main"
+    description:
+      name: webpush_encryption
+      sha256: c4f7f1cdeba595d96d2e860d78e49f492308f22fa246a1d63c80915671d109b6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0-rc1"
   win32:
     dependency: transitive
     description:
