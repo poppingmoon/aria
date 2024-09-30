@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:unifiedpush/unifiedpush.dart';
@@ -18,6 +19,7 @@ import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/push_subscription_notifier_provider.dart';
 import '../../../provider/unified_push_endpoint_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
+import '../../dialog/message_dialog.dart';
 import '../../dialog/sw_register_dialog.dart';
 
 class NotificationsSettingsPage extends ConsumerWidget {
@@ -33,6 +35,16 @@ class NotificationsSettingsPage extends ConsumerWidget {
 
     // Request permissions and get the endpoint and the token.
     if (defaultTargetPlatform == TargetPlatform.android) {
+      final result = await FlutterLocalNotificationsPlugin()
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.requestNotificationsPermission();
+      if (!ref.context.mounted) return;
+      if (!(result ?? false)) {
+        await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+        return;
+      }
+
       await UnifiedPush.removeNoDistributorDialogACK();
       if (!ref.context.mounted) return;
       await UnifiedPushUi(
