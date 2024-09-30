@@ -33,6 +33,7 @@ dependencies:
   flutter_image_compress: ^2.3.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_box_shadow: ^1.0.8
+  flutter_local_notifications: ^17.2.3
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.2
