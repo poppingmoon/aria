@@ -74,6 +74,12 @@ class NotificationsSettingsPage extends ConsumerWidget {
       }
     } else {
       final connector = ref.read(apnsPushConnectorProvider);
+      final result = await connector.requestNotificationPermissions();
+      if (!ref.context.mounted) return;
+      if (!result) {
+        await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+        return;
+      }
 
       endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
       final completer = Completer<String>();
