@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+const ariaColor = Color(0xff175dc4);
 const bannerBackgroundColor = Color(0xff4c5e6d);
 const pinColor = Color(0xffd28a3f);
 const eventFollow = Color(0xff36aed2);
