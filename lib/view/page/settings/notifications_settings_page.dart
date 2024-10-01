@@ -16,6 +16,7 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/api/meta_notifier_provider.dart';
+import '../../../provider/apns_push_connector_provider.dart';
 import '../../../provider/push_subscription_notifier_provider.dart';
 import '../../../provider/unified_push_endpoint_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
@@ -72,7 +73,26 @@ class NotificationsSettingsPage extends ConsumerWidget {
         endpoint = unifiedPushEndpoint;
       }
     } else {
+      final connector = ref.read(apnsPushConnectorProvider);
+
       endpoint = '$misskeyWebPushProxyUrl/subscriptions/$id';
+      final completer = Completer<String>();
+
+      void callback() {
+        if (connector.token.value case final token?
+            when !completer.isCompleted) {
+          completer.complete(token);
+        }
+      }
+
+      callback();
+      connector.token.addListener(callback);
+      apnsToken = await futureWithDialog(
+        ref.context,
+        completer.future.timeout(const Duration(seconds: 5)),
+      );
+      connector.token.removeListener(callback);
+      if (apnsToken == null) return;
     }
 
     final keySet = await WebPushKeySet.newKeyPair();

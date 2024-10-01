@@ -515,6 +515,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_apns_only:
+    dependency: "direct main"
+    description:
+      path: flutter_apns_only
+      ref: "1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb"
+      resolved-ref: "1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb"
+      url: "https://github.com/poppingmoon/flutter-apns"
+    source: git
+    version: "1.6.0"
   flutter_blurhash:
     dependency: "direct main"
     description:
