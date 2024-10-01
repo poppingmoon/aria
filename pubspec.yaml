@@ -25,6 +25,11 @@ dependencies:
   flex_color_picker: ^3.6.0
   flutter:
     sdk: flutter
+  flutter_apns_only:
+    git:
+      url: https://github.com/poppingmoon/flutter-apns
+      ref: 1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb
+      path: flutter_apns_only
   flutter_blurhash: ^0.8.2
   flutter_cache_manager: ^3.4.1
   flutter_highlighting: ^0.9.0+11.8.0

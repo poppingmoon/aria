@@ -14,6 +14,7 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import 'constant/shortcuts.dart';
 import 'gen/assets.gen.dart';
 import 'i18n/strings.g.dart';
+import 'provider/apns_push_connector_provider.dart';
 import 'provider/general_settings_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
@@ -111,6 +112,9 @@ class Aria extends HookConsumerWidget {
             .read(unifiedPushEndpointNotifierProvider(instance).notifier)
             .remove(),
       );
+    } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      final connector = ref.read(apnsPushConnectorProvider);
+      connector.configureApns();
     }
   }
 
