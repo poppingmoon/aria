@@ -43,6 +43,7 @@ class MiAuthNotifier extends _$MiAuthNotifier {
             username: user.username,
           ),
           token,
+          user.id,
         );
     state = null;
     return true;

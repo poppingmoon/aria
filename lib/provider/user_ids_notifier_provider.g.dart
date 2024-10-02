@@ -1,26 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'miauth_notifier_provider.dart';
+part of 'user_ids_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$miAuthNotifierHash() => r'ec8dd00f018b943f97eef92aeabe1ee8352b8689';
+String _$userIdsNotifierHash() => r'320f041f3fd6aa4fc114c6579ab309b9ce44a9b7';
 
-/// See also [MiAuthNotifier].
-@ProviderFor(MiAuthNotifier)
-final miAuthNotifierProvider =
-    NotifierProvider<MiAuthNotifier, MiAuthState?>.internal(
-  MiAuthNotifier.new,
-  name: r'miAuthNotifierProvider',
+/// See also [UserIdsNotifier].
+@ProviderFor(UserIdsNotifier)
+final userIdsNotifierProvider =
+    NotifierProvider<UserIdsNotifier, Map<Account, String>>.internal(
+  UserIdsNotifier.new,
+  name: r'userIdsNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$miAuthNotifierHash,
+      : _$userIdsNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MiAuthNotifier = Notifier<MiAuthState?>;
+typedef _$UserIdsNotifier = Notifier<Map<Account, String>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

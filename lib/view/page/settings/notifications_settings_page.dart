@@ -20,6 +20,7 @@ import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/apns_push_connector_provider.dart';
 import '../../../provider/push_subscription_notifier_provider.dart';
 import '../../../provider/unified_push_endpoint_notifier_provider.dart';
+import '../../../provider/user_ids_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/message_dialog.dart';
 import '../../dialog/sw_register_dialog.dart';
@@ -189,7 +190,12 @@ class NotificationsSettingsPage extends ConsumerWidget {
             onChanged: endpoint != null
                 ? (_) => _unsubscribe(ref)
                 : i != null && isPushNotificationSupported
-                    ? (_) => _subscribe(ref)
+                    ? (_) async {
+                        await _subscribe(ref);
+                        await ref
+                            .read(userIdsNotifierProvider.notifier)
+                            .add(account, i.id);
+                      }
                     : null,
           ),
         ],

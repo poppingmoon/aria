@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
 import 'package:file/file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ import 'provider/general_settings_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
 import 'provider/unified_push_endpoint_notifier_provider.dart';
+import 'provider/user_ids_notifier_provider.dart';
 import 'provider/web_push_key_set_notifier_provider.dart';
 import 'router/router.dart';
 import 'rust/frb_generated.dart';
@@ -131,7 +133,7 @@ class Aria extends HookConsumerWidget {
             .read(unifiedPushEndpointNotifierProvider(instance).notifier)
             .remove(),
         onMessage: (message, instance) async {
-          final account = Account.fromString(instance);
+          Account account = Account.fromString(instance);
           final keySet = await ref.read(
             webPushKeySetNotifierNotifierProvider(account).future,
           );
@@ -147,6 +149,12 @@ class Aria extends HookConsumerWidget {
                 jsonDecode(utf8.decode(message)) as Map<String, dynamic>;
             fcmMessage['body'] = jsonDecode(fcmMessage['body'] as String);
             notification = PushNotification.fromJson(fcmMessage);
+            account = ref
+                    .read(userIdsNotifierProvider)
+                    .entries
+                    .firstWhereOrNull((e) => e.value == notification.userId)
+                    ?.key ??
+                account;
           }
 
           final title = switch (notification.body?.type) {

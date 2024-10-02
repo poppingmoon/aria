@@ -7,6 +7,7 @@ import '../model/account.dart';
 import 'dio_provider.dart';
 import 'shared_preferences_provider.dart';
 import 'tokens_notifier_provider.dart';
+import 'user_ids_notifier_provider.dart';
 
 part 'accounts_notifier_provider.g.dart';
 
@@ -32,8 +33,9 @@ class AccountsNotifier extends _$AccountsNotifier {
         .setStringList(_key, state.map((e) => jsonEncode(e)).toList());
   }
 
-  Future<void> login(Account account, String token) async {
+  Future<void> login(Account account, String token, String userId) async {
     await ref.read(tokensNotifierProvider.notifier).add(account, token);
+    await ref.read(userIdsNotifierProvider.notifier).add(account, userId);
     if (state.contains(account)) return;
     state = {...state, account}.toList();
     await _save();
@@ -52,6 +54,7 @@ class AccountsNotifier extends _$AccountsNotifier {
             username: i.data!['username'] as String,
           ),
           token,
+          i.data!['id'] as String,
         );
         return true;
       }
@@ -66,6 +69,7 @@ class AccountsNotifier extends _$AccountsNotifier {
         username: i.data!['username'] as String,
       ),
       token,
+      i.data!['id'] as String,
     );
     return true;
   }
