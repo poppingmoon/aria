@@ -5,7 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
+import '../../provider/push_subscription_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 
 enum AccountSettingsDestination {
@@ -67,6 +69,14 @@ class AccountSettingsNavigation extends ConsumerWidget {
         message: t.misskey.logoutConfirm,
       );
       if (!confirmed) return;
+      if (!ref.context.mounted) return;
+      await futureWithDialog(
+        ref.context,
+        ref
+            .read(pushSubscriptionNotifierProvider(account).notifier)
+            .unsubscribe()
+            .then((_) => true),
+      );
       await ref.read(accountsNotifierProvider.notifier).remove(account);
       if (!ref.context.mounted) return;
       final tabs = ref
