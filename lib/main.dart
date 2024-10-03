@@ -7,6 +7,7 @@ import 'package:file/file.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_apns_only/flutter_apns_only.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -28,6 +29,7 @@ import 'model/id.dart';
 import 'provider/apns_push_connector_provider.dart';
 import 'provider/cache_manager_provider.dart';
 import 'provider/general_settings_notifier_provider.dart';
+import 'provider/push_notification_notifier_provider.dart';
 import 'provider/shared_preferences_provider.dart';
 import 'provider/theme_data_provider.dart';
 import 'provider/unified_push_endpoint_notifier_provider.dart';
@@ -120,6 +122,8 @@ class Aria extends HookConsumerWidget {
         const InitializationSettings(
           android: AndroidInitializationSettings('ic_notification'),
         ),
+        onDidReceiveNotificationResponse: (response) =>
+            _onDidReceiveNotificationResponse(ref, response),
       );
 
       await UnifiedPush.initialize(
@@ -411,9 +415,43 @@ class Aria extends HookConsumerWidget {
           );
         },
       );
+
+      final appLaunchDetails = await flutterLocalNotificationsPlugin
+          .getNotificationAppLaunchDetails();
+      if (appLaunchDetails?.notificationResponse case final response?) {
+        _onDidReceiveNotificationResponse(ref, response);
+      }
     } else if (defaultTargetPlatform == TargetPlatform.iOS) {
+      Future<void> onMessageOpenedApp(ApnsRemoteMessage message) async {
+        if (message.payload['data'] case final Map<dynamic, dynamic> data) {
+          if (data['payload'] case final Map<dynamic, dynamic> payload) {
+            final notification = PushNotification.fromJson(
+              payload.map((key, value) => MapEntry(key.toString(), value)),
+            );
+            ref
+                .read(pushNotificationNotifierProvider.notifier)
+                .add(notification);
+          }
+        }
+      }
+
       final connector = ref.read(apnsPushConnectorProvider);
-      connector.configureApns();
+      connector.configureApns(
+        onLaunch: onMessageOpenedApp,
+        onResume: onMessageOpenedApp,
+      );
+      connector.shouldPresent = (_) async => true;
+    }
+  }
+
+  void _onDidReceiveNotificationResponse(
+    WidgetRef ref,
+    NotificationResponse response,
+  ) {
+    if (response.payload case final payload?) {
+      final json = jsonDecode(payload) as Map<String, dynamic>;
+      final notification = PushNotification.fromJson(json);
+      ref.read(pushNotificationNotifierProvider.notifier).add(notification);
     }
   }
 
@@ -432,6 +470,19 @@ class Aria extends HookConsumerWidget {
       },
       [],
     );
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      useOnAppLifecycleStateChange(
+        (_, state) async {
+          if (state == AppLifecycleState.resumed) {
+            final appLaunchDetails = await FlutterLocalNotificationsPlugin()
+                .getNotificationAppLaunchDetails();
+            if (appLaunchDetails?.notificationResponse case final response?) {
+              _onDidReceiveNotificationResponse(ref, response);
+            }
+          }
+        },
+      );
+    }
 
     return MaterialApp.router(
       routerConfig: router,
