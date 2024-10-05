@@ -185,7 +185,18 @@ class NotificationWidget extends ConsumerWidget {
             user: user,
             icon: const Icon(Icons.check),
             iconBackgroundColor: eventFollow,
-            subtitle: Text(t.misskey.followRequestAccepted),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(t.misskey.followRequestAccepted),
+                const SizedBox(height: 4.0),
+                if (notification.message case final message?)
+                  Text(
+                    message,
+                    style: const TextStyle(fontStyle: FontStyle.italic),
+                  ),
+              ],
+            ),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
             onLongPress: () => showUserSheet(
