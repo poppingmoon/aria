@@ -1254,8 +1254,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "666be6cfa61d67c8c844749b31afd2cc871145e7"
-      resolved-ref: "666be6cfa61d67c8c844749b31afd2cc871145e7"
+      ref: "1449140ef181f95a273a43f4397e86577f93f370"
+      resolved-ref: "1449140ef181f95a273a43f4397e86577f93f370"
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"
@@ -1271,8 +1271,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: d0c635bc83c31205f1f08cc03826eed3e3295ba3
-      resolved-ref: d0c635bc83c31205f1f08cc03826eed3e3295ba3
+      ref: "051804219c69f3cf72ddbecdd6308dc14e725c0c"
+      resolved-ref: "051804219c69f3cf72ddbecdd6308dc14e725c0c"
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"

@@ -21,7 +21,11 @@ class ChildrenNotesNotifier extends _$ChildrenNotesNotifier {
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
     final notes = await ref.read(misskeyProvider(account)).notes.children(
-          NotesChildrenRequest(noteId: noteId, untilId: untilId),
+          NotesChildrenRequest(
+            noteId: noteId,
+            depth: 1,
+            untilId: untilId,
+          ),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;
