@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:searchfield/searchfield.dart';
 
 import '../../constant/shortcuts.dart';
+import '../../extension/search_input_decoration_extension.dart';
 import '../../i18n/strings.g.dart';
 
 Future<String?> showTextFieldDialog(
@@ -61,16 +62,19 @@ class TextFieldDialog extends HookWidget {
         suggestions: options
             .map((option) => SearchFieldListItem<String>(option))
             .toList(),
-        searchInputDecoration: decoration ??
-            InputDecoration(
-              suffixIcon: maxLines == 1
-                  ? IconButton(
-                      onPressed: () => controller.clear(),
-                      icon: const Icon(Icons.close),
-                    )
-                  : null,
-            ),
-        searchStyle: style,
+        searchInputDecoration: SearchInputDecoration(
+          searchStyle: style,
+        ).applyInputDecoration(
+          decoration ??
+              InputDecoration(
+                suffixIcon: maxLines == 1
+                    ? IconButton(
+                        onPressed: () => controller.clear(),
+                        icon: const Icon(Icons.close),
+                      )
+                    : null,
+              ),
+        ),
         maxLength: maxLength,
         onSubmit: (value) => context.pop(value),
         autofocus: true,

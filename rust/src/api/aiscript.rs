@@ -1,6 +1,9 @@
 use std::{collections::HashMap, sync::Arc};
 
-use aiscript::values::{Value, V};
+use aiscript::v0::{
+    values::{Value, V},
+    Interpreter, Parser,
+};
 use flutter_rust_bridge::DartFnFuture;
 use futures::FutureExt;
 
@@ -9,8 +12,8 @@ pub mod play;
 pub mod ui;
 
 pub struct AiScript {
-    pub(crate) parser: aiscript::Parser,
-    pub(crate) interpreter: aiscript::Interpreter,
+    pub(crate) parser: Parser,
+    pub(crate) interpreter: Interpreter,
 }
 
 impl AiScript {
@@ -21,7 +24,7 @@ impl AiScript {
         ui: Option<ui::AsUiLib>,
         play: Option<play::AsPlayLib>,
     ) -> Self {
-        let parser = aiscript::Parser::default();
+        let parser = Parser::default();
         let mut consts = HashMap::new();
         if let Some(api) = api {
             api.register(&mut consts);
@@ -34,7 +37,7 @@ impl AiScript {
         }
         let in_ = Arc::new(read);
         let out = Arc::new(write);
-        let interpreter = aiscript::Interpreter::new(
+        let interpreter = Interpreter::new(
             consts,
             Some(move |input| in_(input)),
             Some(move |value: Value| {

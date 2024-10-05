@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use aiscript::values::Value;
+use aiscript::v0::values::Value;
 
 pub struct AsPlayLib {
     pub this_id: String,

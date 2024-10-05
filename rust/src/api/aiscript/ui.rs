@@ -1,6 +1,6 @@
 use std::{collections::HashMap, ops::Deref, sync::Arc};
 
-use aiscript::{
+use aiscript::v0::{
     errors::AiScriptError,
     values::{VArr, VFn, VObj, Value, V},
     Interpreter,
