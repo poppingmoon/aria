@@ -38,27 +38,173 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 	@override final _StringsKoKr _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => 'Aria란';
+	@override String get accessToken => '액세스 토큰';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: '아리아는 '),
+		miria,
+		const TextSpan(text: '의 포크입니다.\n아리아의 로컬라이제이션은 '),
+		misskey,
+		const TextSpan(text: '의 로컬라이제이션 파일을 기본으로합니다.'),
+	]);
+	@override String get addTab => '탭 추가';
+	@override String get alwaysExpandCw => 'CW 항상 펼치기';
+	@override String get alwaysExpandLongNote => '긴 노트 항상 펼치기';
+	@override String get alwaysExpandMediaInSubNote => '서브노트의 미디어 항상 펼치기';
+	@override String get alwaysShowTabHeader => '탭 정보 항상 보이기';
+	@override String get authenticate => '인증';
+	@override String get authenticated => '인증됨';
+	@override String get avatarSize => '아바타 크기';
+	@override String get background => '배경';
+	@override String get confirmBeforeFollow => '팔로우를 수동으로 승인';
+	@override String get confirmBeforePost => '확인 후 게시';
+	@override String get confirmBeforeReact => '확인 후 리액션';
+	@override String get copied => '클립보드로 복사됨';
+	@override String get copyName => '이름 복사';
+	@override String get crop => '자르기';
+	@override String get custom => '커스텀';
+	@override String get defaultReaction => '기본 리액션';
+	@override String deleteAccountTabsConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ko'))(n,
+		one: '이 계정과 연관된 ${n} 탭을 닫으시겠습니까?',
+		other: '이 계정과 연관된 ${n} 탭들을 닫으시겠습니까?',
+	);
+	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ko'))(n,
+		one: '${n} 파일을 삭제하겠습니까?',
+		other: '${n} 파일들을 삭제하겠습니까?',
+	);
+	@override String get deleteTabConfirm => '이 탭을 닫으시겠습니까?';
+	@override String get disableDataSaverWhenOnWifi => '와이파이일 때 데이터 절약모드 비활성화';
+	@override String get disableSubscribingNotes => '실시간 리액션 업데이트 비활성화';
+	@override String get discardChangesConfirm => '변경 사항을 취소하고 돌아가시겠습니까?';
+	@override String get displayOfThumbnail => '썸네일 표시';
+	@override String get doubleTapToShow => '더블 탭하여 표시';
+	@override String get downloaded => '다운로드 완료';
+	@override String get editImage => '이미지 수정';
+	@override String get emojiPickerScale => '이모지 선택기 스케일';
+	@override String get enableEmojiFadeIn => '커스텀 이모지에 페이드인 애니메이션 활성화';
+	@override String get enableFederation => '연합 활성화하기';
+	@override String get endpoint => 'Endpoint';
+	@override String get expandNote => '노트 펼치기';
+	@override String get fileNotFound => '파일을 찾을 수 없음';
+	@override String get findServer => 'Misskey 서버 찾아보기';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		name,
 		const TextSpan(text: '님을 팔로우 하시겠습니까?'),
 	]);
+	@override String get font => '폰트';
+	@override String get fromDevice => '장치에서';
+	@override String get guest => '게스트';
 	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
 		const TextSpan(text: 'Aria는 자원봉사자들에 의해 다양한 언어로 번역되고 있습니다. '),
 		link,
 		const TextSpan(text: '에서 번역에 참가할 수 있습니다.'),
 	]);
+	@override String get importCompleted => '가져오기 완료';
+	@override String get importConfirm => '설정을 가져오시겠습니까? 현재 설정을 덮어쓰게됩니다.';
+	@override String get invalidListFormat => '리스트가 유효하지 않음';
+	@override String jumpTo({required Object x}) => '${x} 로 이동';
+	@override String get keepOpen => '계속 열기';
+	@override String get keepTimelinePosition => '타임라인 유지';
+	@override String get lineHeight => '줄 간격';
+	@override String get loginWithAccessToken => '엑세스 토큰으로 로그인';
+	@override String get margin => '여백';
+	@override String get media => '미디어';
+	@override String get mentionToRemoteWarning => '이 노트는 리모트유저에게 맨션한 것을 포함합니다';
+	@override String get moved => '이동됨';
+	@override String get muted => '뮤트됨';
+	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ko'))(n,
+		one: '${n} 파일',
+	);
+	@override String get newFollowRequestReceived => '새로운 팔로우 요청이 있습니다';
+	@override String get newNotes => '새 노트';
+	@override String get newNotificationReceived => '새 알림이 있습니다';
+	@override String get newNotifications => '새 알림';
+	@override String get noAccounts => '계정 없음';
+	@override String get noTabs => '탭 없음';
+	@override String get noThemes => '테마 없음';
+	@override String get noteDoubleTapAction => '더블 탭 해서 노트';
+	@override String get noteFooterSize => '노트 동작 버튼 사이즈';
+	@override String get noteLongPressAction => '길게 눌러서 노트';
+	@override String get noteTapAction => '탭하여 노트';
+	@override String get notesAfterRenotes => '리노트 후 노트';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: '명이 접속 중'),
 	]);
+	@override String get opacity => '불투명도';
+	@override String get openAsGuest => '게스트로 열기';
+	@override String get openInAnotherAccount => '다른 계정으로 열기';
+	@override String get openInBrowser => '브라우저에서 열기';
+	@override String get openInExternalBrowser => '외부 브라우저에서 열기';
+	@override String get openInInternalBrowser => '내부 브라우저에서 열기';
+	@override String get openMenu => '메뉴 열기';
+	@override String get openSensitiveMediaOnDoubleTap => '더블 탭하여 민감한 미디어 열기';
+	@override String get parameters => '매개변수';
+	@override String get paste => '복사';
+	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
+		const TextSpan(text: '이모지를 고정하려면 Json파일을 붙여넣기 해야합니다.\n'),
+		url,
+		const TextSpan(text: '에서 미스키 웹용으로 고정된 이모지를 복사할 수 있습니다.'),
+	]);
+	@override String get pinToEmojiPicker => '이모지 선택기에 고정';
+	@override String get playAudio => '소리 재생';
+	@override String get playVideo => '동영상 재생';
+	@override String get postConfirm => '이 노트를 게시하시겠습니까?';
+	@override String get reactionConfirm => '리액션을 추가하시겠습니까?';
+	@override String get renoteConfirm => '이 노트를 리노트하시겠습니까?';
+	@override String get renoteToChannel => '채널에 리노트';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
 		const TextSpan(text: '님이 리노트'),
 	]);
+	@override String get rotate => '회전';
+	@override String get scale => '스케일';
+	@override String get selectIcon => '아이콘 선택';
+	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
+		user,
+		const TextSpan(text: '님이 셀프-리노트함'),
+	]);
+	@override String get serverUrl => '서버 URL';
+	@override String get settingsFileForAria => 'Aria 설정 파일';
+	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
+		user,
+		const TextSpan(text: ' 설정'),
+	]);
+	@override String get showAvatarsInNote => '노트 내 아바타 보기';
+	@override String get showAvatarsInSubNote => '서브노트 내 아바타 보기';
+	@override String get showEntireImage => '전체 이미지 보기';
+	@override String get showExpandedImage => '확장된 이미지 보기';
+	@override String get showHomeFAB => '홈 플로팅 동작 버튼 표시';
+	@override String get showImage => '이미지 표시';
+	@override String get showLikeButtonInNoteFooter => '노트 동작에 "좋아요" 추가';
+	@override String get showMenuButtonInTabBar => '탭 바에 메뉴버튼 표시';
+	@override String get showNoteCreatedAt => '노트 생성일 표시';
+	@override String get showNoteFooter => '노트 내 동작 버튼 표시';
+	@override String get showNoteReactionsViewer => '노트 내 리액션 뷰어 표시';
+	@override String get showNotificationsFAB => '알림 플로팅 동작 버튼 표시';
+	@override String get showPopupOnNewNote => '새 노트 위에 팝업 표시';
+	@override String get showQuoteButtonInNoteFooter => '노트 동작에 "인용" 추가';
+	@override String get showSelfRenotes => '셀프리노트 표시';
+	@override String get showStackTrace => '스택 추적 표시';
+	@override String get showSubNoteFooter => '서브노트 내 버튼 표시';
+	@override String get showSubNoteReactionsViewer => '서브노트 내 리액션 뷰어 표시';
+	@override String get showTimelineLastViewedAt => '타임라인 마지막으로 본 날짜 표시';
+	@override String get showTimelineTabBarAtBottom => '타임라인 탭 바를 하단에 표시';
+	@override String get showTranslateButtonInNoteFooter => '노트 동작에 번역을 추가';
+	@override String get streamingChannel => '스트리밍 채널';
+	@override String get tabName => '탭 이름';
+	@override String get tabType => '탭 타입';
+	@override String get tabs => '탭';
+	@override String get tapToShow => '탭해서 보기';
+	@override String get timeMachine => '타임머신';
+	@override String get unfavorited => '즐겨찾기에서 제거됨';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		name,
 		const TextSpan(text: '님을 언팔로우하시겠습니까?'),
 	]);
+	@override String get untilDate => '까지';
+	@override String get uploaded => '업로드됨';
+	@override String get useThisEmoji => '이 이모지 사용하기';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		name,
 		const TextSpan(text: '의 민감한 파일이 포함된 게시물'),
@@ -67,6 +213,9 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 		name,
 		const TextSpan(text: '의 민감한 파일이 포함된 게시물'),
 	]);
+	@override String get vibrateNote => '새 노트 시 진동';
+	@override String get vibrateNotification => '새 알림 시 진동';
+	@override String get webBrowser => '웹 브라우저';
 }
 
 // Path: misskey
