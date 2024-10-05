@@ -120,10 +120,13 @@ class ProfilePage extends HookConsumerWidget {
         useTextEditingController(text: i.valueOrNull?.description);
     final locationController =
         useTextEditingController(text: i.valueOrNull?.location);
+    final followedMessageController =
+        useTextEditingController(text: i.valueOrNull?.followedMessage);
     final name = useState(i.valueOrNull?.name);
     final description = useState(i.valueOrNull?.description);
     final location = useState(i.valueOrNull?.location);
     final fields = useState(i.valueOrNull?.fields ?? []);
+    final followedMessage = useState(i.valueOrNull?.followedMessage);
     final showPreview = useState(false);
     ref.listen(iNotifierProvider(account), (_, i) {
       if (i case AsyncData(value: final i?)) {
@@ -134,6 +137,8 @@ class ProfilePage extends HookConsumerWidget {
         locationController.text = i.location ?? '';
         location.value = i.location;
         fields.value = i.fields ?? [];
+        followedMessage.value = i.followedMessage;
+        followedMessageController.text = i.followedMessage ?? '';
       }
     });
     useEffect(
@@ -151,6 +156,12 @@ class ProfilePage extends HookConsumerWidget {
           () => location.value = locationController.text.isNotEmpty
               ? locationController.text
               : null,
+        );
+        followedMessageController.addListener(
+          () => followedMessage.value =
+              followedMessageController.text.isNotEmpty
+                  ? followedMessageController.text
+                  : null,
         );
         return;
       },
@@ -610,6 +621,48 @@ class ProfilePage extends HookConsumerWidget {
                   ),
                 ],
               ),
+              ListTile(
+                title: Shortcuts(
+                  shortcuts: disablingTextShortcuts,
+                  child: TextField(
+                    controller: followedMessageController,
+                    decoration: InputDecoration(
+                      labelText: t.misskey.profile_.followedMessage,
+                      helperText: [
+                        t.misskey.profile_.followedMessageDescription,
+                        t.misskey.profile_
+                            .followedMessageDescriptionForLockedAccount,
+                      ].join('\n'),
+                      helperMaxLines: 100,
+                      suffix: IconButton(
+                        style: IconButton.styleFrom(
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
+                        tooltip: t.misskey.save,
+                        onPressed: followedMessage.value != i.followedMessage
+                            ? () {
+                                futureWithDialog(
+                                  context,
+                                  ref
+                                      .read(
+                                        iNotifierProvider(account).notifier,
+                                      )
+                                      .setFollowedMessage(
+                                        followedMessage.value,
+                                      ),
+                                );
+                              }
+                            : null,
+                        icon: const Icon(Icons.save),
+                      ),
+                      alignLabelWithHint: true,
+                    ),
+                    maxLength:
+                        (followedMessage.value?.length ?? 0) > 200 ? 256 : null,
+                    maxLengthEnforcement: MaxLengthEnforcement.none,
+                  ),
+                ),
+              ),
               ExpansionTile(
                 title: Text(t.misskey.advancedSettings),
                 children: [
@@ -637,6 +690,7 @@ class ProfilePage extends HookConsumerWidget {
                   ),
                 ],
               ),
+              const SizedBox(height: 100.0),
             ],
           ),
         AsyncValue(:final error?, :final stackTrace) =>

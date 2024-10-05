@@ -73,6 +73,16 @@ class INotifier extends _$INotifier {
     await _save(response);
   }
 
+  Future<void> setFollowedMessage(String? followedMessage) async {
+    final response = await _misskey.apiService.post<Map<String, dynamic>>(
+      'i/update',
+      {'followedMessage': followedMessage},
+      excludeRemoveNullPredicate: (_, __) => true,
+    );
+    state = AsyncValue.data(MeDetailed.fromJson(response));
+    await _save(response);
+  }
+
   Future<void> setLocation(String? location) async {
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'i/update',
