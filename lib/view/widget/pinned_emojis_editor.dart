@@ -137,7 +137,7 @@ class PinnedEmojisEditor extends HookConsumerWidget {
                   .read(
                     pinnedEmojisNotifierProvider(
                       account,
-                      reaction: true,
+                      reaction: reaction,
                     ).notifier,
                   )
                   .reset();
