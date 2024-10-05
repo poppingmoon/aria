@@ -149,7 +149,7 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     ref.read(notesNotifierProvider(account).notifier).addAll(
           notifications.map((notification) => notification.note).nonNulls,
         );
-    return notifications;
+    return notifications.where((notification) => notification.id != untilId);
   }
 
   Future<void> loadMore({bool skipError = false}) async {
