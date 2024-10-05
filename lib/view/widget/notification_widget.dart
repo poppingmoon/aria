@@ -10,6 +10,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/api/misskey_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -261,6 +262,58 @@ class NotificationWidget extends ConsumerWidget {
           iconBackgroundColor: eventOther,
           title: Text(t.misskey.notification_.roleAssigned),
           subtitle: Text(notification.role?.name ?? ''),
+          createdAt: notification.createdAt,
+        );
+      case NotificationType.exportCompleted:
+        return _NotificationTile(
+          account: account,
+          user: i,
+          icon: const Icon(Icons.archive),
+          iconBackgroundColor: eventOther,
+          title: Text(
+            t.misskey.notification_.exportOfXCompleted(
+              x: switch (notification.exportedEntity) {
+                UserExportableEntities.antenna => t.misskey.antennas,
+                UserExportableEntities.blocking => t.misskey.blockedUsers,
+                UserExportableEntities.clip => t.misskey.clips,
+                UserExportableEntities.customEmoji => t.misskey.customEmojis,
+                UserExportableEntities.favorite => t.misskey.favorites,
+                UserExportableEntities.following => t.misskey.following,
+                UserExportableEntities.muting => t.misskey.mutedUsers,
+                UserExportableEntities.note => t.misskey.notes,
+                UserExportableEntities.userList => t.misskey.lists,
+                null => '',
+              },
+            ),
+          ),
+          subtitle: Text(t.misskey.showFile),
+          createdAt: notification.createdAt,
+          onTap: () async {
+            if (notification.fileId case final fileId?) {
+              final file = await futureWithDialog(
+                context,
+                ref
+                    .read(misskeyProvider(account))
+                    .drive
+                    .files
+                    .show(DriveFilesShowRequest(fileId: fileId)),
+              );
+              if (!context.mounted) return;
+              if (file?.folderId case final folderId?) {
+                await context.push('/$account/drive/file/$folderId/$fileId');
+              } else {
+                await context.push('/$account/drive/file/$fileId');
+              }
+            }
+          },
+        );
+      case NotificationType.login:
+        return _NotificationTile(
+          account: account,
+          user: i,
+          icon: const Icon(Icons.login),
+          iconBackgroundColor: eventLogin,
+          title: Text(t.misskey.notification_.login),
           createdAt: notification.createdAt,
         );
       case NotificationType.reactionGrouped:
