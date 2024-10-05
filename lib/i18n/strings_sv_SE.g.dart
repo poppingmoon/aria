@@ -902,6 +902,7 @@ class _StringsMisskeyNotificationTypesSvSe extends _StringsMisskeyNotificationTy
 	@override String get renote => 'Omnotera';
 	@override String get quote => 'Citat';
 	@override String get reaction => 'Reaktioner';
+	@override String get login => 'Logga in';
 }
 
 // Path: misskey.notification_.actions_

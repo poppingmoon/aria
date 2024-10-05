@@ -674,6 +674,7 @@ class _StringsMisskeyNotificationTypesElGr extends _StringsMisskeyNotificationTy
 	@override String get renote => 'Κοινοποίηση σημειώματος';
 	@override String get quote => 'Παράθεση';
 	@override String get reaction => 'Αντιδράσεις';
+	@override String get login => 'Σύνδεση';
 }
 
 // Path: misskey.notification_.actions_

@@ -764,6 +764,7 @@ class _StringsMisskeyNotificationTypesLoLa extends _StringsMisskeyNotificationTy
 	@override String get renote => 'Renote';
 	@override String get quote => 'ອ້າງອີງ';
 	@override String get reaction => 'Reaction';
+	@override String get login => 'ເຂົ້າ​ສູ່​ລະ​ບົບ';
 }
 
 // Path: misskey.notification_.actions_

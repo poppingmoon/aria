@@ -566,7 +566,6 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'O ${x}';
 	@override String get emojiStyle => 'Styl emoji';
 	@override String get native => 'Natywny';
-	@override String get disableDrawer => 'Nie używaj menu w stylu szuflady';
 	@override String get showNoteActionsOnlyHover => 'Pokazuj akcje notatek tylko po najechaniu myszką';
 	@override String get showReactionsCount => 'Wyświetl liczbę reakcji na notatkę';
 	@override String get noHistory => 'Brak historii';
@@ -2160,6 +2159,7 @@ class _StringsMisskeyNotificationTypesPlPl extends _StringsMisskeyNotificationTy
 	@override String get reaction => 'Reakcja';
 	@override String get receiveFollowRequest => 'Otrzymano prośbę o możliwość obserwacji';
 	@override String get followRequestAccepted => 'Przyjęto prośbę o możliwość obserwacji';
+	@override String get login => 'Zaloguj się';
 	@override String get app => 'Powiadomienia z aplikacji';
 }
 

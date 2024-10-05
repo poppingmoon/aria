@@ -705,6 +705,7 @@ notification_:
     renote: "Renotes"
     quote: "Sitater"
     reaction: "Reaksjoner"
+    login: "Logg inn"
   actions_:
     reply: "Svar"
     renote: "Renote"

@@ -543,7 +543,6 @@ class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => '${x} haqida';
 	@override String get emojiStyle => 'Emoji ko\'rinishi';
 	@override String get native => 'Mahalliy';
-	@override String get disableDrawer => 'Slayd menyusidan foydalanmang';
 	@override String get showNoteActionsOnlyHover => 'Eslatma amallarini faqat sichqonchani olib borganda ko‘rsatish';
 	@override String get noHistory => 'Tarix yo\'q';
 	@override String get signinHistory => 'kirish tarixi';
@@ -1512,6 +1511,7 @@ class _StringsMisskeyNotificationTypesUzUz extends _StringsMisskeyNotificationTy
 	@override String get quote => 'Iqtibos keltirish';
 	@override String get reaction => 'Reaktsiyalar';
 	@override String get receiveFollowRequest => 'Qabul qilingan kuzatuv so\'rovlari';
+	@override String get login => 'Kirish';
 }
 
 // Path: misskey.notification_.actions_

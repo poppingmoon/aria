@@ -525,7 +525,6 @@ class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
 	@override String get uiLanguage => 'Мова інтерфейсу';
 	@override String aboutX({required Object x}) => 'Про ${x}';
 	@override String get native => 'місцевий';
-	@override String get disableDrawer => 'Не використовувати висувні меню';
 	@override String get noHistory => 'Історія порожня';
 	@override String get signinHistory => 'Історія входів';
 	@override String get enableAdvancedMfm => 'Увімкнути розширений MFM';
@@ -2070,6 +2069,7 @@ class _StringsMisskeyNotificationTypesUkUa extends _StringsMisskeyNotificationTy
 	@override String get reaction => 'Реакції';
 	@override String get receiveFollowRequest => 'Запити на підписку';
 	@override String get followRequestAccepted => 'Прийняті підписки';
+	@override String get login => 'Увійти';
 	@override String get app => 'Сповіщення від додатків';
 }
 

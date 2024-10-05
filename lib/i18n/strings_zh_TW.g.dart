@@ -88,6 +88,9 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get notifications => '通知';
 	@override String get username => '使用者名稱';
 	@override String get password => '密碼';
+	@override String get initialPasswordForSetup => '初始設定用的密碼';
+	@override String get initialPasswordIsIncorrect => '初始設定用的密碼錯誤。';
+	@override String get initialPasswordForSetupDescription => '如果您自己安裝了 Misskey，請使用您在設定檔中輸入的密碼。\n如果您使用 Misskey 的託管服務之類的服務，請使用提供的密碼。\n如果您尚未設定密碼，請將其留空並繼續。';
 	@override String get forgotPassword => '忘記密碼';
 	@override String get fetchingAsApObject => '從聯邦宇宙取得中...';
 	@override String get ok => 'OK';
@@ -316,6 +319,8 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get silencedInstancesDescription => '設定要禁言的伺服器主機名稱，以換行分隔。隸屬於禁言伺服器的所有帳戶都將被視為「禁言帳戶」，只能發出「追隨請求」，而且無法提及未追隨的本地帳戶。這不會影響已封鎖的實例。';
 	@override String get mediaSilencedInstances => '媒體被禁言的伺服器';
 	@override String get mediaSilencedInstancesDescription => '設定您想要對媒體設定禁言的伺服器，以換行符號區隔。來自被媒體禁言的伺服器所屬帳戶的所有檔案都會被視為敏感檔案，且自訂表情符號不能使用。被封鎖的伺服器不受影響。';
+	@override String get federationAllowedHosts => '允許聯邦通訊的伺服器';
+	@override String get federationAllowedHostsDescription => '設定允許聯邦通訊的伺服器主機，以換行符號分隔。';
 	@override String get muteAndBlock => '靜音和封鎖';
 	@override String get mutedUsers => '被靜音的使用者';
 	@override String get blockedUsers => '被封鎖的使用者';
@@ -414,6 +419,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get deleteFolder => '刪除資料夾';
 	@override String get folder => '資料夾';
 	@override String get addFile => '加入附件';
+	@override String get showFile => '瀏覽文件';
 	@override String get emptyDrive => '雲端硬碟為空';
 	@override String get emptyFolder => '資料夾為空';
 	@override String get unableToDelete => '無法刪除';
@@ -589,7 +595,10 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => '關於${x}';
 	@override String get emojiStyle => '表情符號的風格';
 	@override String get native => '原生';
-	@override String get disableDrawer => '不顯示下拉式選單';
+	@override String get menuStyle => '選單風格';
+	@override String get style => '風格';
+	@override String get drawer => '側邊欄';
+	@override String get popup => '彈出式視窗';
 	@override String get showNoteActionsOnlyHover => '僅在游標停留時顯示貼文的操作選項';
 	@override String get showReactionsCount => '顯示貼文的反應數目';
 	@override String get noHistory => '沒有歷史紀錄';
@@ -672,6 +681,8 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get descendingOrder => '降冪';
 	@override String get scratchpad => '暫存記憶體';
 	@override String get scratchpadDescription => 'AiScript 控制臺為 AiScript 的實驗環境。您可以在此編寫、執行和確認程式碼與 Misskey 互動的結果。';
+	@override String get uiInspector => 'UI 檢查';
+	@override String get uiInspectorDescription => '您可以看到記憶體中存在的 UI 元件實例的清單。  UI 元件由 Ui:C: 系列函數產生。';
 	@override String get output => '輸出';
 	@override String get script => '腳本';
 	@override String get disablePagesScript => '停用頁面的 AiScript 腳本';
@@ -1266,7 +1277,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get notificationRecieveConfig => '接受通知的設定';
 	@override String get mutualFollow => '互相追隨';
 	@override String get followingOrFollower => '追隨中或追隨者';
-	@override String get fileAttachedOnly => '顯示包含附件的貼文';
+	@override String get fileAttachedOnly => '只顯示包含附件的貼文';
 	@override String get showRepliesToOthersInTimeline => '顯示給其他人的回覆';
 	@override String get hideRepliesToOthersInTimeline => '在時間軸上隱藏給其他人的回覆';
 	@override String get showRepliesToOthersInTimelineAll => '在時間軸包含追隨中所有人的回覆';
@@ -1343,6 +1354,19 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get sensitiveMediaRevealConfirm => '這是敏感媒體。確定要顯示嗎？';
 	@override String get createdLists => '已建立的清單';
 	@override String get createdAntennas => '已建立的天線';
+	@override String fromX({required Object x}) => '自 ${x}';
+	@override String get genEmbedCode => '產生嵌入程式碼';
+	@override String get noteOfThisUser => '這個使用者的貼文列表';
+	@override String get clipNoteLimitExceeded => '沒辦法在這個摘錄中增加更多貼文了。';
+	@override String get performance => '性能';
+	@override String get modified => '已變更';
+	@override String get discard => '取消';
+	@override String thereAreNChanges({required Object n}) => '有 ${n} 處的變更';
+	@override String get signinWithPasskey => '使用密碼金鑰登入';
+	@override String get unknownWebAuthnKey => '未註冊的金鑰。';
+	@override String get passkeyVerificationFailed => '驗證金鑰失敗。';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '雖然驗證金鑰成功，但是無密碼登入的方式是停用的。';
+	@override String get messageToFollower => '給追隨者的訊息';
 	@override late final _StringsMisskeyDeliveryZhTw delivery_ = _StringsMisskeyDeliveryZhTw._(_root);
 	@override late final _StringsMisskeyBubbleGameZhTw bubbleGame_ = _StringsMisskeyBubbleGameZhTw._(_root);
 	@override late final _StringsMisskeyAnnouncementZhTw announcement_ = _StringsMisskeyAnnouncementZhTw._(_root);
@@ -1415,6 +1439,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyUrlPreviewSettingZhTw urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingZhTw._(_root);
 	@override late final _StringsMisskeyMediaControlsZhTw mediaControls_ = _StringsMisskeyMediaControlsZhTw._(_root);
 	@override late final _StringsMisskeyContextMenuZhTw contextMenu_ = _StringsMisskeyContextMenuZhTw._(_root);
+	@override late final _StringsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _StringsMisskeyEmbedCodeGenZhTw._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1549,6 +1574,7 @@ class _StringsMisskeyServerSettingsZhTw extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => '如果啟用的話，檢索各個時間軸的性能會顯著提昇，資料庫的負荷也會減少。不過，Redis 的記憶體使用量會增加。如果伺服器的記憶體容量比較少或者運行不穩定，可以停用。';
 	@override String get fanoutTimelineDbFallback => '資料庫的回退';
 	@override String get fanoutTimelineDbFallbackDescription => '若啟用，在時間軸沒有快取的情況下將執行回退處理以額外查詢資料庫。若停用，可以透過不執行回退處理來進一步減少伺服器的負荷，但會限制可取得的時間軸範圍。';
+	@override String get reactionsBufferingDescription => '啟用時，可以顯著提高建立反應時的效能並減少資料庫的負載。 但是，Redis 記憶體使用量會增加。';
 	@override String get inquiryUrl => '聯絡表單網址';
 	@override String get inquiryUrlDescription => '指定伺服器運營者的聯絡表單網址，或包含運營者聯絡資訊網頁的網址。';
 }
@@ -2349,6 +2375,9 @@ class _StringsMisskeyProfileZhTw extends _StringsMisskeyProfileEnUs {
 	@override String get changeBanner => '變更橫幅圖像';
 	@override String get verifiedLinkDescription => '如果輸入包含您個人資料的網站 URL，欄位旁邊將出現驗證圖示。';
 	@override String avatarDecorationMax({required Object max}) => '最多可以設置 ${max} 個裝飾。';
+	@override String get followedMessage => '被追隨時的訊息';
+	@override String get followedMessageDescription => '可以設定被追隨時顯示給對方的訊息。';
+	@override String get followedMessageDescriptionForLockedAccount => '如果追隨是需要審核的話，在允許追隨請求之後顯示。';
 }
 
 // Path: misskey.exportOrImport_
@@ -2489,6 +2518,7 @@ class _StringsMisskeyPagesZhTw extends _StringsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => '設定封面影像';
 	@override String get eyeCatchingImageRemove => '刪除封面影像';
 	@override String get chooseBlock => '新增方塊';
+	@override String get enterSectionTitle => '輸入區段的標題';
 	@override String get selectType => '選擇類型';
 	@override String get contentBlocks => '內容';
 	@override String get inputBlocks => '輸入';
@@ -2538,6 +2568,8 @@ class _StringsMisskeyNotificationZhTw extends _StringsMisskeyNotificationEnUs {
 	@override String renotedBySomeUsers({required Object n}) => '${n}人做了轉發';
 	@override String followedBySomeUsers({required Object n}) => '被${n}人追隨了';
 	@override String get flushNotification => '重置通知歷史紀錄';
+	@override String exportOfXCompleted({required Object x}) => '${x} 的匯出已完成。';
+	@override String get login => '已登入';
 	@override late final _StringsMisskeyNotificationTypesZhTw types_ = _StringsMisskeyNotificationTypesZhTw._(_root);
 	@override late final _StringsMisskeyNotificationActionsZhTw actions_ = _StringsMisskeyNotificationActionsZhTw._(_root);
 }
@@ -2621,6 +2653,7 @@ class _StringsMisskeyWebhookSettingsZhTw extends _StringsMisskeyWebhookSettingsE
 	@override late final _StringsMisskeyWebhookSettingsEventsZhTw events_ = _StringsMisskeyWebhookSettingsEventsZhTw._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSystemEventsZhTw systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsZhTw._(_root);
 	@override String get deleteConfirm => '請問是否要刪除 Webhook？';
+	@override String get testRemarks => '按下切換開關右側的按鈕，就會將假資料發送至 Webhook。';
 }
 
 // Path: misskey.abuseReport_
@@ -2682,6 +2715,10 @@ class _StringsMisskeyModerationLogTypesZhTw extends _StringsMisskeyModerationLog
 	@override String get createAbuseReportNotificationRecipient => '建立接收檢舉的通知對象';
 	@override String get updateAbuseReportNotificationRecipient => '更新接收檢舉的通知對象';
 	@override String get deleteAbuseReportNotificationRecipient => '刪除接收檢舉的通知對象';
+	@override String get deleteAccount => '刪除帳戶';
+	@override String get deletePage => '刪除頁面';
+	@override String get deleteFlash => '刪除 Play';
+	@override String get deleteGalleryPost => '刪除相簿的貼文';
 }
 
 // Path: misskey.fileViewer_
@@ -2849,6 +2886,28 @@ class _StringsMisskeyContextMenuZhTw extends _StringsMisskeyContextMenuEnUs {
 	@override String get app => '應用程式';
 	@override String get appWithShift => 'Shift 鍵應用程式';
 	@override String get native => '瀏覽器的使用者介面';
+}
+
+// Path: misskey.embedCodeGen_
+class _StringsMisskeyEmbedCodeGenZhTw extends _StringsMisskeyEmbedCodeGenEnUs {
+	_StringsMisskeyEmbedCodeGenZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+
+	@override final _StringsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '自訂嵌入程式碼';
+	@override String get header => '檢視標頭 ';
+	@override String get autoload => '自動繼續載入（不建議）';
+	@override String get maxHeight => '最大高度';
+	@override String get maxHeightDescription => '設定為 0 時代表沒有最大值。請指定某個值以避免小工具持續在縱向延伸。';
+	@override String get maxHeightWarn => '最大高度限制已停用（0）。如果這個變更不是您想要的，請將最大高度設定為某個值。';
+	@override String get previewIsNotActual => '由於超出了預覽畫面可顯示的範圍，因此顯示內容會與實際嵌入時有所不同。';
+	@override String get rounded => '圓角';
+	@override String get border => '給外框加上邊框';
+	@override String get applyToPreview => '反映在預覽中';
+	@override String get generateCode => '建立嵌入程式碼';
+	@override String get codeGenerated => '已產生程式碼';
+	@override String get codeGeneratedDescription => '請將產生的程式碼貼到您的網站上。';
 }
 
 // Path: misskey.delivery_.type_
@@ -3123,6 +3182,11 @@ class _StringsMisskeyRoleOptionsZhTw extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canSearchNotes => '可否搜尋貼文';
 	@override String get canUseTranslator => '使用翻譯功能';
 	@override String get avatarDecorationLimit => '頭像裝飾的最大設置量';
+	@override String get canImportAntennas => '允許匯入天線';
+	@override String get canImportBlocking => '允許匯入封鎖名單';
+	@override String get canImportFollowing => '允許匯入跟隨名單';
+	@override String get canImportMuting => '允許匯入靜音名單';
+	@override String get canImportUserLists => '允許匯入清單';
 }
 
 // Path: misskey.role_.condition_
@@ -3285,6 +3349,9 @@ class _StringsMisskeyNotificationTypesZhTw extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => '追隨請求已接受';
 	@override String get roleAssigned => '已授予角色';
 	@override String get achievementEarned => '獲得成就';
+	@override String get exportCompleted => '已完成匯出。';
+	@override String get login => '登入';
+	@override String get test => '通知測試';
 	@override String get app => '應用程式通知';
 }
 

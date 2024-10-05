@@ -1537,6 +1537,7 @@ notification_:
     reaction: "التفاعل"
     receiveFollowRequest: "طلبات المتابعة"
     followRequestAccepted: "طلبات المتابعة المقبولة"
+    login: "لِج"
     app: "إشعارات التطبيقات المرتبطة"
   actions_:
     followBack: "تابعك بالمثل"

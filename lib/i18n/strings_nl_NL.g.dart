@@ -762,6 +762,7 @@ class _StringsMisskeyNotificationTypesNlNl extends _StringsMisskeyNotificationTy
 	@override String get renote => 'Herdelen';
 	@override String get quote => 'Quote';
 	@override String get reaction => 'Reacties';
+	@override String get login => 'Inloggen';
 }
 
 // Path: misskey.notification_.actions_

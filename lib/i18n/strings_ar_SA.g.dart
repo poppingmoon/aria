@@ -2178,6 +2178,7 @@ class _StringsMisskeyNotificationTypesArSa extends _StringsMisskeyNotificationTy
 	@override String get reaction => 'التفاعل';
 	@override String get receiveFollowRequest => 'طلبات المتابعة';
 	@override String get followRequestAccepted => 'طلبات المتابعة المقبولة';
+	@override String get login => 'لِج';
 	@override String get app => 'إشعارات التطبيقات المرتبطة';
 }
 

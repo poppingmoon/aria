@@ -741,6 +741,7 @@ class _StringsMisskeyNotificationTypesTrTr extends _StringsMisskeyNotificationTy
 	@override String get reaction => 'Tepkiler';
 	@override String get receiveFollowRequest => 'Takip isteği alındı';
 	@override String get followRequestAccepted => 'Takip isteği kabul edildi';
+	@override String get login => 'Giriş Yap ';
 }
 
 // Path: misskey.notification_.actions_

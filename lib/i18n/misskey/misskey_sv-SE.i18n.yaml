@@ -566,6 +566,7 @@ notification_:
     renote: "Omnotera"
     quote: "Citat"
     reaction: "Reaktioner"
+    login: "Logga in"
   actions_:
     reply: "Svara"
     renote: "Omnotera"

@@ -528,7 +528,6 @@ class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'O ${x}';
 	@override String get emojiStyle => 'Štýl emoji';
 	@override String get native => 'Natívne';
-	@override String get disableDrawer => 'Nepoužívať šuflíkové menu';
 	@override String get showNoteActionsOnlyHover => 'Ovládacie prvky poznámky sa zobrazujú len po nabehnutí myši';
 	@override String get noHistory => 'Žiadna história';
 	@override String get signinHistory => 'História prihlásení';
@@ -2032,6 +2031,7 @@ class _StringsMisskeyNotificationTypesSkSk extends _StringsMisskeyNotificationTy
 	@override String get pollEnded => 'Hlasovanie skončilo';
 	@override String get receiveFollowRequest => 'Doručené žiadosti o sledovanie';
 	@override String get followRequestAccepted => 'Schválené žiadosti o sledovanie';
+	@override String get login => 'Prihlásiť sa';
 	@override String get app => 'Oznámenia z prepojených aplikácií';
 }
 

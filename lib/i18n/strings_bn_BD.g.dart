@@ -523,7 +523,6 @@ class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
 	@override String get language => 'ভাষা';
 	@override String get uiLanguage => 'UI এর ভাষা';
 	@override String aboutX({required Object x}) => '${x} সম্পর্কে';
-	@override String get disableDrawer => 'ড্রয়ার মেনু প্রদর্শন করবেন না';
 	@override String get noHistory => 'কোনো ইতিহাস নেই';
 	@override String get signinHistory => 'প্রবেশ করার ইতিহাস';
 	@override String get doing => 'প্রক্রিয়া করছে...';
@@ -1911,6 +1910,7 @@ class _StringsMisskeyNotificationTypesBnBd extends _StringsMisskeyNotificationTy
 	@override String get pollEnded => 'পোল শেষ';
 	@override String get receiveFollowRequest => 'প্রাপ্ত অনুসরণের অনুরোধসমূহ';
 	@override String get followRequestAccepted => 'গৃহীত অনুসরণের অনুরোধসমূহ';
+	@override String get login => 'প্রবেশ করুন';
 	@override String get app => 'লিঙ্ক করা অ্যাপ থেকে বিজ্ঞপ্তি';
 }
 

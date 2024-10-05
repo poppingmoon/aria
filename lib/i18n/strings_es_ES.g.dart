@@ -188,11 +188,14 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get renote => 'Renotar';
 	@override String get unrenote => 'Quitar renota';
 	@override String get renoted => 'Renotado';
+	@override String renotedToX({required Object name}) => '${name} usuarios han renotado。';
 	@override String get cantRenote => 'No se puede renotar este post';
 	@override String get cantReRenote => 'No se puede renotar una renota';
 	@override String get quote => 'Citar';
 	@override String get inChannelRenote => 'Renota sólo del canal';
 	@override String get inChannelQuote => 'Cita sólo del canal';
+	@override String get renoteToChannel => 'Renotar a otro canal';
+	@override String get renoteToOtherChannel => 'Renotar a otro canal';
 	@override String get pinnedNote => 'Nota fijada';
 	@override String get pinned => 'Fijar al perfil';
 	@override String get you => 'Tú';
@@ -231,6 +234,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get selectChannel => 'Seleccionar canal';
 	@override String get selectAntenna => 'Seleccionar antena';
 	@override String get editAntenna => 'Editar antena';
+	@override String get createAntenna => 'Crear una antena';
 	@override String get selectWidget => 'Seleccionar widget';
 	@override String get editWidgets => 'Editar widgets';
 	@override String get editWidgetsExit => 'Terminar edición';
@@ -257,6 +261,10 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get reloadAccountsList => 'Recargar lista de cuentas';
 	@override String get loginFailed => 'Error al iniciar sesión.';
 	@override String get showOnRemote => 'Ver en una instancia remota';
+	@override String get continueOnRemote => 'Ver en una instancia remota';
+	@override String get chooseServerOnMisskeyHub => 'Elegir un servidor en Misskey Hub';
+	@override String get specifyServerHost => 'Especifica una instancia directamente';
+	@override String get inputHostName => 'Introduzca el dominio';
 	@override String get general => 'General';
 	@override String get wallpaper => 'Fondo de pantalla';
 	@override String get setWallpaper => 'Establecer fondo de pantalla';
@@ -573,7 +581,6 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Acerca de ${x}';
 	@override String get emojiStyle => 'Estilo de emoji';
 	@override String get native => 'Nativo';
-	@override String get disableDrawer => 'No mostrar los menús en cajones';
 	@override String get showNoteActionsOnlyHover => 'Mostrar acciones de la nota sólo al pasar el cursor';
 	@override String get showReactionsCount => 'Mostrar el número de reacciones en las notas';
 	@override String get noHistory => 'No hay datos en el historial';
@@ -1174,6 +1181,8 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'La lista de nombres de usuario para reservar tienen que separarse con saltos de línea.\nEstos estarán indisponibles durante la creación de cuentas, pero pueden ser usados para que los administradores puedan crear esas cuentas manualmente. Las cuentas existentes con esos nombres de usuario no se verán afectadas.';
 	@override String get createNoteFromTheFile => 'Componer una nota desde éste archivo';
 	@override String get archive => 'Archivo';
+	@override String get archived => 'Archivado';
+	@override String get unarchive => 'Desarchivar';
 	@override String channelArchiveConfirmTitle({required Object name}) => '¿Seguro de archivar ${name}?';
 	@override String get channelArchiveConfirmDescription => 'Un canal archivado no aparecerá en la lista de canales ni en los resultados. Las nuevas publicaciones tampoco serán añadidas.';
 	@override String get thisChannelArchived => 'El canal ha sido archivado.';
@@ -2697,6 +2706,7 @@ class _StringsMisskeyReversiEsEs extends _StringsMisskeyReversiEnUs {
 
 	// Translations
 	@override String get reversi => 'Reversi';
+	@override String get rules => 'Reglas';
 	@override String won({required Object name}) => '${name} ha ganado';
 	@override String get total => 'Total';
 }
@@ -3154,6 +3164,7 @@ class _StringsMisskeyNotificationTypesEsEs extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => 'El seguimiento fue aceptado';
 	@override String get roleAssigned => 'Rol asignado';
 	@override String get achievementEarned => 'Logro desbloqueado';
+	@override String get login => 'Iniciar sesión';
 	@override String get app => 'Notificaciones desde aplicaciones';
 }
 
@@ -3212,6 +3223,7 @@ class _StringsMisskeyAbuseReportNotificationRecipientEsEs extends _StringsMisske
 
 	// Translations
 	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs._(_root);
+	@override String get keywords => 'Palabras Clave';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4252,6 +4264,7 @@ class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEsEs extends _
 
 	// Translations
 	@override String get mail => 'Correo';
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_

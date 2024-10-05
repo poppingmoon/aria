@@ -567,7 +567,6 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'À propos de ${x}';
 	@override String get emojiStyle => 'Style des émojis';
 	@override String get native => 'Natif';
-	@override String get disableDrawer => 'Les menus ne s\'affichent pas dans le tiroir';
 	@override String get showNoteActionsOnlyHover => 'Afficher les actions de note uniquement au survol';
 	@override String get showReactionsCount => 'Afficher le nombre de réactions des notes';
 	@override String get noHistory => 'Pas d\'historique';
@@ -2846,6 +2845,7 @@ class _StringsMisskeyNotificationTypesFrFr extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => 'Demande d\'abonnement acceptée';
 	@override String get roleAssigned => 'Rôle reçu';
 	@override String get achievementEarned => 'Déverrouillage d\'accomplissement';
+	@override String get login => 'Se connecter';
 	@override String get app => 'Notifications provenant des apps';
 }
 

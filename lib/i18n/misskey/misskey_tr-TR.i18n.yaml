@@ -450,6 +450,7 @@ notification_:
     reaction: "Tepkiler"
     receiveFollowRequest: "Takip isteği alındı"
     followRequestAccepted: "Takip isteği kabul edildi"
+    login: "Giriş Yap "
   actions_:
     reply: "yanıt"
     renote: "vazgeçme"

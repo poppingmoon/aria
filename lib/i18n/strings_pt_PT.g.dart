@@ -73,7 +73,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override final _StringsPtPt _root; // ignore: unused_field
 
 	// Translations
-	@override String get lang__ => 'Português';
+	@override String get lang__ => '日本語';
 	@override String get headlineMisskey => 'Uma rede ligada por notas';
 	@override String get introMisskey => 'Bem-vindo! O Misskey é um serviço de microblog descentralizado de código aberto.\nCrie "notas" para compartilhar o que está acontecendo agora ou para se expressar com todos à sua volta 📡\nVocê também pode adicionar rapidamente reações às notas de outras pessoas usando a função "Reações" 👍\nVamos explorar um novo mundo 🚀';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} é uma instância da plataforma de código aberto <b>Misskey</b>.';
@@ -83,7 +83,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get username => 'Nome de usuário';
 	@override String get password => 'Senha';
 	@override String get forgotPassword => 'Esqueci-me da senha';
-	@override String get fetchingAsApObject => 'Buscando no Fediverso';
+	@override String get fetchingAsApObject => 'Buscando no Fediverso...';
 	@override String get ok => 'OK';
 	@override String get gotIt => 'Entendi';
 	@override String get cancel => 'Cancelar';
@@ -99,7 +99,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get otherSettings => 'Outras configurações';
 	@override String get openInWindow => 'Abrir em um janela';
 	@override String get profile => 'Perfil';
-	@override String get timeline => 'Linha do tempo';
+	@override String get timeline => 'Cronologia';
 	@override String get noAccountDescription => 'Este usuário não tem uma descrição.';
 	@override String get login => 'Iniciar sessão';
 	@override String get loggingIn => 'Iniciando sessão…';
@@ -156,7 +156,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get importRequested => 'A sua solicitação de importação foi enviada. Isso pode levar algum tempo.';
 	@override String get lists => 'Listas';
 	@override String get noLists => 'Não possui nenhuma lista';
-	@override String get note => 'Post';
+	@override String get note => 'Publicar';
 	@override String get notes => 'Posts';
 	@override String get following => 'Seguindo';
 	@override String get followers => 'Seguidores';
@@ -346,7 +346,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get featured => 'Destaques';
 	@override String get usernameOrUserId => 'Nome de usuário ou ID do usuário';
 	@override String get noSuchUser => 'Usuário não encontrado';
-	@override String get lookup => 'Buscando';
+	@override String get lookup => 'Consultar';
 	@override String get announcements => 'Avisos';
 	@override String get imageUrl => 'URL da imagem';
 	@override String get remove => 'Remover';
@@ -370,7 +370,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get messageRead => 'Lida';
 	@override String get noMoreHistory => 'Não existe histórico anterior';
 	@override String get startMessaging => 'Iniciar conversação';
-	@override String nUsersRead({required Object n}) => '${n} Pessoas leem';
+	@override String nUsersRead({required Object n}) => '${n} pessoas leram';
 	@override String agreeTo({required Object x0}) => 'Eu concordo com ${x0}';
 	@override String get agree => 'Concordar';
 	@override String get agreeBelow => 'Eu concordo com o seguinte';
@@ -386,7 +386,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String yearsOld({required Object age}) => '${age} anos';
 	@override String get registeredDate => 'Data de registro';
 	@override String get location => 'Localização';
-	@override String get theme => 'tema';
+	@override String get theme => 'Tema';
 	@override String get themeForLightMode => 'Temas usados ​​no modo de luz';
 	@override String get themeForDarkMode => 'Temas usados ​​no modo escuro';
 	@override String get light => 'Claro';
@@ -583,7 +583,6 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Sobre ${x}';
 	@override String get emojiStyle => 'Estilo de emojis';
 	@override String get native => 'Nativo';
-	@override String get disableDrawer => 'Não mostrar o menu em formato de gaveta';
 	@override String get showNoteActionsOnlyHover => 'Exibir as ações da nota somente ao passar o cursor sobre ela';
 	@override String get showReactionsCount => 'Ver o número de reações nas notas';
 	@override String get noHistory => 'Ainda não há histórico';
@@ -774,7 +773,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get behavior => 'Comportamento';
 	@override String get sample => 'Exemplo';
 	@override String get abuseReports => 'Denúncias';
-	@override String get reportAbuse => 'Denúncias';
+	@override String get reportAbuse => 'Denunciar';
 	@override String get reportAbuseRenote => 'Reportar repostagem';
 	@override String reportAbuseOf({required Object name}) => 'Denunciar ${name}';
 	@override String get fillAbuseReportDescription => 'Por favor, forneça detalhes sobre o motivo da denúncia. Se houver uma nota específica envolvida, inclua também a URL dela.';
@@ -917,7 +916,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get enabled => 'Ativado';
 	@override String get disabled => 'Desativado';
 	@override String get quickAction => 'Ações rápidas';
-	@override String get user => 'Usuários';
+	@override String get user => 'Usuário';
 	@override String get administration => 'Administrar';
 	@override String get accounts => 'Contas';
 	@override String get switch_ => 'Trocar';
@@ -1337,6 +1336,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get sensitiveMediaRevealConfirm => 'Essa mídia pode ser sensível. Deseja revelá-la?';
 	@override String get createdLists => 'Listas criadas';
 	@override String get createdAntennas => 'Antenas criadas';
+	@override String get clipNoteLimitExceeded => 'Não é possível adicionar mais notas ao clipe.';
 	@override late final _StringsMisskeyDeliveryPtPt delivery_ = _StringsMisskeyDeliveryPtPt._(_root);
 	@override late final _StringsMisskeyBubbleGamePtPt bubbleGame_ = _StringsMisskeyBubbleGamePtPt._(_root);
 	@override late final _StringsMisskeyAnnouncementPtPt announcement_ = _StringsMisskeyAnnouncementPtPt._(_root);
@@ -2483,6 +2483,7 @@ class _StringsMisskeyPagesPtPt extends _StringsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => 'Escolher miniatura';
 	@override String get eyeCatchingImageRemove => 'Excluir miniatura';
 	@override String get chooseBlock => 'Adicionar bloco';
+	@override String get enterSectionTitle => 'Insira um título à seção';
 	@override String get selectType => 'Selecionar um tipo';
 	@override String get contentBlocks => 'Conteúdo';
 	@override String get inputBlocks => 'Inserir';
@@ -2676,6 +2677,10 @@ class _StringsMisskeyModerationLogTypesPtPt extends _StringsMisskeyModerationLog
 	@override String get createAbuseReportNotificationRecipient => 'Criar um destinatário para relatórios de abuso';
 	@override String get updateAbuseReportNotificationRecipient => 'Atualizar destinatários para relatórios de abuso';
 	@override String get deleteAbuseReportNotificationRecipient => 'Remover um destinatário para relatórios de abuso';
+	@override String get deleteAccount => 'Remover conta';
+	@override String get deletePage => 'Remover página';
+	@override String get deleteFlash => 'Remover Play';
+	@override String get deleteGalleryPost => 'Remover a publicação da galeria';
 }
 
 // Path: misskey.fileViewer_
@@ -3272,13 +3277,14 @@ class _StringsMisskeyNotificationTypesPtPt extends _StringsMisskeyNotificationTy
 	@override String get mention => 'Menção';
 	@override String get reply => 'Respostas';
 	@override String get renote => 'Repostar';
-	@override String get quote => 'Citar';
+	@override String get quote => 'Citações';
 	@override String get reaction => 'Reações';
 	@override String get pollEnded => 'Enquetes terminando';
 	@override String get receiveFollowRequest => 'Recebeu pedidos de seguidor';
 	@override String get followRequestAccepted => 'Aceitou pedidos de seguidor';
 	@override String get roleAssigned => 'Cargo dado';
 	@override String get achievementEarned => 'Conquista desbloqueada';
+	@override String get login => 'Iniciar sessão';
 	@override String get app => 'Notificações de aplicativos conectados';
 }
 
