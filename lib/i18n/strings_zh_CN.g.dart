@@ -88,6 +88,9 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get notifications => '通知';
 	@override String get username => '用户名';
 	@override String get password => '密码';
+	@override String get initialPasswordForSetup => '初始化密码';
+	@override String get initialPasswordIsIncorrect => '初始化密码不正确';
+	@override String get initialPasswordForSetupDescription => '如果是自己安装的 Misskey，请输入配置文件里设好的密码。\n如果使用的是 Misskey 的托管服务等，请输入服务商提供的密码。\n如果没有设置密码，请留空并继续。';
 	@override String get forgotPassword => '忘记密码';
 	@override String get fetchingAsApObject => '在联邦宇宙查询中...';
 	@override String get ok => 'OK';
@@ -170,7 +173,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get createList => '创建列表';
 	@override String get manageLists => '管理列表';
 	@override String get error => '错误';
-	@override String get somethingHappened => '出现了一些问题！';
+	@override String get somethingHappened => '出错了';
 	@override String get retry => '重试';
 	@override String get pageLoadError => '页面加载失败。';
 	@override String get pageLoadErrorDescription => '这通常是由于网络或浏览器缓存的原因。请清除缓存或等待片刻后重试。';
@@ -247,7 +250,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get addEmoji => '添加表情符号';
 	@override String get settingGuide => '推荐配置';
 	@override String get cacheRemoteFiles => '缓存远程文件';
-	@override String get cacheRemoteFilesDescription => '启用此设定时，将在此服务器上缓存远程文件。虽然可以加快图片显示的速度，但是相对的会消耗大量的服务器存储空间。用户角色内的网盘容量决定了这个远程用户能在服务器上保留保留多少缓存。当超出了这个限制时，旧的文件将从缓存中被删除，成为链接。当禁用此设定时，则是从一开始就将远程文件保留为链接。此时推荐将 default.yml 的 proxyRemoteFiles 设置为 true 以优化缩略图生成及保护用户隐私。';
+	@override String get cacheRemoteFilesDescription => '启用此设定时，将在此服务器上缓存远程文件。虽然可以加快图片显示的速度，但是相对的会消耗大量的服务器存储空间。用户角色内的网盘容量决定了这个远程用户能在服务器上保留多少缓存。当超出了这个限制时，旧的文件将从缓存中被删除，成为链接。当禁用此设定时，则是从一开始就将远程文件保留为链接。此时推荐将 default.yml 的 proxyRemoteFiles 设置为 true 以优化缩略图生成及保护用户隐私。';
 	@override String get youCanCleanRemoteFilesCache => '可以使用文件管理的🗑️按钮来删除所有的缓存。';
 	@override String get cacheRemoteSensitiveFiles => '缓存远程敏感媒体文件';
 	@override String get cacheRemoteSensitiveFilesDescription => '如果禁用这项设定，远程服务器的敏感媒体将不会被缓存，而是直接链接。';
@@ -316,6 +319,8 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get silencedInstancesDescription => '设置要静音的服务器，以换行分隔。被静音的服务器内所有的账户将默认处于「静音」状态，仅能发送关注请求，并且在未关注状态下无法提及本地账户。被阻止的实例不受影响。';
 	@override String get mediaSilencedInstances => '已隐藏媒体文件的服务器';
 	@override String get mediaSilencedInstancesDescription => '设置要隐藏媒体文件的服务器，以换行分隔。被设置为隐藏媒体文件服务器内所有账号的文件均按照「敏感内容」处理，且将无法使用自定义表情符号。被阻止的实例不受影响。';
+	@override String get federationAllowedHosts => '允许联合的服务器';
+	@override String get federationAllowedHostsDescription => '设定允许联合的服务器，以换行分隔。';
 	@override String get muteAndBlock => '静音/拉黑';
 	@override String get mutedUsers => '已静音用户';
 	@override String get blockedUsers => '已拉黑的用户';
@@ -414,6 +419,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get deleteFolder => '删除文件夹';
 	@override String get folder => '文件夹';
 	@override String get addFile => '添加文件';
+	@override String get showFile => '显示文件';
 	@override String get emptyDrive => '网盘中无文件';
 	@override String get emptyFolder => '此文件夹中无文件';
 	@override String get unableToDelete => '无法删除';
@@ -589,7 +595,10 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => '关于 ${x}';
 	@override String get emojiStyle => '表情符号的样式';
 	@override String get native => '原生';
-	@override String get disableDrawer => '不显示抽屉菜单';
+	@override String get menuStyle => '菜单样式';
+	@override String get style => '样式';
+	@override String get drawer => '抽屉';
+	@override String get popup => '弹窗';
 	@override String get showNoteActionsOnlyHover => '仅在悬停时显示帖子操作';
 	@override String get showReactionsCount => '显示帖子的回应数';
 	@override String get noHistory => '没有历史记录';
@@ -672,6 +681,8 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get descendingOrder => '降序';
 	@override String get scratchpad => 'AiScript 控制台';
 	@override String get scratchpadDescription => 'AiScript 控制台为 AiScript 提供了实验环境。您可以编写代码与 Misskey 交互，运行并查看结果。';
+	@override String get uiInspector => 'UI 检查器';
+	@override String get uiInspectorDescription => '查看所有内存中由 UI 组件生成出的实例。UI 组件由 UI:C 系列函数所生成。';
 	@override String get output => '输出';
 	@override String get script => '脚本';
 	@override String get disablePagesScript => '禁用页面脚本';
@@ -1343,6 +1354,19 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get sensitiveMediaRevealConfirm => '这是敏感内容。是否显示？';
 	@override String get createdLists => '已创建的列表';
 	@override String get createdAntennas => '已创建的天线';
+	@override String fromX({required Object x}) => '从 ${x}';
+	@override String get genEmbedCode => '生成嵌入代码';
+	@override String get noteOfThisUser => '此用户的帖子';
+	@override String get clipNoteLimitExceeded => '无法再往此便签内添加更多帖子';
+	@override String get performance => '性能';
+	@override String get modified => '有变更';
+	@override String get discard => '取消';
+	@override String thereAreNChanges({required Object n}) => '有 ${n} 处更改';
+	@override String get signinWithPasskey => '使用通行密钥登录';
+	@override String get unknownWebAuthnKey => '此通行密钥未注册。';
+	@override String get passkeyVerificationFailed => '验证通行密钥失败。';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '通行密钥验证成功，但账户未开启无密码登录。';
+	@override String get messageToFollower => '给关注者的消息';
 	@override late final _StringsMisskeyDeliveryZhCn delivery_ = _StringsMisskeyDeliveryZhCn._(_root);
 	@override late final _StringsMisskeyBubbleGameZhCn bubbleGame_ = _StringsMisskeyBubbleGameZhCn._(_root);
 	@override late final _StringsMisskeyAnnouncementZhCn announcement_ = _StringsMisskeyAnnouncementZhCn._(_root);
@@ -1415,6 +1439,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyUrlPreviewSettingZhCn urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingZhCn._(_root);
 	@override late final _StringsMisskeyMediaControlsZhCn mediaControls_ = _StringsMisskeyMediaControlsZhCn._(_root);
 	@override late final _StringsMisskeyContextMenuZhCn contextMenu_ = _StringsMisskeyContextMenuZhCn._(_root);
+	@override late final _StringsMisskeyEmbedCodeGenZhCn embedCodeGen_ = _StringsMisskeyEmbedCodeGenZhCn._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1549,6 +1574,7 @@ class _StringsMisskeyServerSettingsZhCn extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => '当启用时，可显著提高获取各种时间线时的性能，并减轻数据库的负荷。但是相对的 Redis 的内存使用量将会增加。如果服务器的内存不是很大，又或者运行不稳定的话可以把它关掉。';
 	@override String get fanoutTimelineDbFallback => '回退到数据库';
 	@override String get fanoutTimelineDbFallbackDescription => '当启用时，若时间线未被缓存，则将额外查询数据库。禁用该功能可通过不执行回退处理进一步减少服务器负载，但会限制可检索的时间线范围。';
+	@override String get reactionsBufferingDescription => '开启时可显著提高发送回应时的性能，及减轻数据库负荷。但 Redis 的内存用量会相应增加。';
 	@override String get inquiryUrl => '联络地址';
 	@override String get inquiryUrlDescription => '用来指定诸如向服务运营商咨询的论坛地址，或记载了运营商联系方式之类的网页地址。';
 }
@@ -2349,6 +2375,9 @@ class _StringsMisskeyProfileZhCn extends _StringsMisskeyProfileEnUs {
 	@override String get changeBanner => '修改横幅';
 	@override String get verifiedLinkDescription => '如果将内容设置为 URL，当链接所指向的网页内包含自己的个人资料链接时，可以显示一个已验证图标。';
 	@override String avatarDecorationMax({required Object max}) => '最多可添加 ${max} 个挂件';
+	@override String get followedMessage => '被关注时显示的消息';
+	@override String get followedMessageDescription => '可以设置被关注时向对方显示的短消息。';
+	@override String get followedMessageDescriptionForLockedAccount => '需要批准才能关注的情况下，消息是在被请求被批准后显示。';
 }
 
 // Path: misskey.exportOrImport_
@@ -2489,6 +2518,7 @@ class _StringsMisskeyPagesZhCn extends _StringsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => '设置封面图片';
 	@override String get eyeCatchingImageRemove => '删除封面图片';
 	@override String get chooseBlock => '添加块';
+	@override String get enterSectionTitle => '输入会话标题';
 	@override String get selectType => '选择类型';
 	@override String get contentBlocks => '内容';
 	@override String get inputBlocks => '输入';
@@ -2538,6 +2568,8 @@ class _StringsMisskeyNotificationZhCn extends _StringsMisskeyNotificationEnUs {
 	@override String renotedBySomeUsers({required Object n}) => '${n} 人转发了';
 	@override String followedBySomeUsers({required Object n}) => '被 ${n} 人关注';
 	@override String get flushNotification => '重置通知历史';
+	@override String exportOfXCompleted({required Object x}) => '已完成 ${x} 个导出';
+	@override String get login => '有新的登录';
 	@override late final _StringsMisskeyNotificationTypesZhCn types_ = _StringsMisskeyNotificationTypesZhCn._(_root);
 	@override late final _StringsMisskeyNotificationActionsZhCn actions_ = _StringsMisskeyNotificationActionsZhCn._(_root);
 }
@@ -2621,6 +2653,7 @@ class _StringsMisskeyWebhookSettingsZhCn extends _StringsMisskeyWebhookSettingsE
 	@override late final _StringsMisskeyWebhookSettingsEventsZhCn events_ = _StringsMisskeyWebhookSettingsEventsZhCn._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSystemEventsZhCn systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsZhCn._(_root);
 	@override String get deleteConfirm => '要删除 webhook 吗？';
+	@override String get testRemarks => '点击开关右侧的按钮，可以发送使用假数据的测试 Webhook。';
 }
 
 // Path: misskey.abuseReport_
@@ -2682,7 +2715,10 @@ class _StringsMisskeyModerationLogTypesZhCn extends _StringsMisskeyModerationLog
 	@override String get createAbuseReportNotificationRecipient => '新建了举报通知';
 	@override String get updateAbuseReportNotificationRecipient => '更新了举报通知';
 	@override String get deleteAbuseReportNotificationRecipient => '删除了举报通知';
+	@override String get deleteAccount => '删除了账户';
+	@override String get deletePage => '删除了页面';
 	@override String get deleteFlash => '删除了 Play';
+	@override String get deleteGalleryPost => '删除了图库稿件';
 }
 
 // Path: misskey.fileViewer_
@@ -2850,6 +2886,28 @@ class _StringsMisskeyContextMenuZhCn extends _StringsMisskeyContextMenuEnUs {
 	@override String get app => '应用';
 	@override String get appWithShift => 'Shift 键应用';
 	@override String get native => '浏览器的用户界面';
+}
+
+// Path: misskey.embedCodeGen_
+class _StringsMisskeyEmbedCodeGenZhCn extends _StringsMisskeyEmbedCodeGenEnUs {
+	_StringsMisskeyEmbedCodeGenZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '自定义嵌入代码';
+	@override String get header => '显示标题';
+	@override String get autoload => '连续加载（不推荐）';
+	@override String get maxHeight => '最大高度';
+	@override String get maxHeightDescription => '若将最大值设为 0 则不限制最大高度。为防止小工具无限增高，建议设置一下。';
+	@override String get maxHeightWarn => '最大高度限制已禁用（0）。若这不是您想要的效果，请将最大高度设一个值。';
+	@override String get previewIsNotActual => '由于超出了预览画面可显示的范围，因此显示内容会与实际嵌入时有所不同。';
+	@override String get rounded => '圆角';
+	@override String get border => '外边框';
+	@override String get applyToPreview => '应用预览';
+	@override String get generateCode => '生成嵌入代码';
+	@override String get codeGenerated => '已生成代码';
+	@override String get codeGeneratedDescription => '将生成的代码贴到网站上来使用。';
 }
 
 // Path: misskey.delivery_.type_
@@ -3124,6 +3182,11 @@ class _StringsMisskeyRoleOptionsZhCn extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canSearchNotes => '是否可以搜索帖子';
 	@override String get canUseTranslator => '使用翻译功能';
 	@override String get avatarDecorationLimit => '可添加头像挂件的最大个数';
+	@override String get canImportAntennas => '允许导入天线';
+	@override String get canImportBlocking => '允许导入拉黑列表';
+	@override String get canImportFollowing => '允许导入关注列表';
+	@override String get canImportMuting => '允许导入屏蔽列表';
+	@override String get canImportUserLists => '允许导入用户列表';
 }
 
 // Path: misskey.role_.condition_
@@ -3286,6 +3349,9 @@ class _StringsMisskeyNotificationTypesZhCn extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => '关注请求已通过';
 	@override String get roleAssigned => '授予的角色';
 	@override String get achievementEarned => '取得的成就';
+	@override String get exportCompleted => '已完成导出';
+	@override String get login => '登录';
+	@override String get test => '测试通知';
 	@override String get app => '关联应用的通知';
 }
 
@@ -4145,7 +4211,7 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secZhCn extends _StringsMissk
 	// Translations
 	@override String get title => '报时';
 	@override String get description => '在 0 点发布一篇帖子';
-	@override String get flavor => '嘣 嘣 嘣 Biu——！';
+	@override String get flavor => '报时信号最后一响，零点整';
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
@@ -4322,8 +4388,8 @@ class _StringsMisskeyAchievementsTypesCookieClickedZhCn extends _StringsMisskeyA
 
 	// Translations
 	@override String get title => '点击饼干小游戏';
-	@override String get description => '点击了可疑的饼干';
-	@override String get flavor => '是不是软件有问题？';
+	@override String get description => '点击了饼干';
+	@override String get flavor => '用错软件了？';
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
@@ -4380,7 +4446,7 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhCn extends 
 	// Translations
 	@override String get title => '两个🤯';
 	@override String get description => '你合成出了2个游戏里最大的Emoji';
-	@override String get flavor => '';
+	@override String get flavor => '大约能　装满　这些便当盒　🤯　🤯　（比划）';
 }
 
 // Path: misskey.pages_.blocks.note_

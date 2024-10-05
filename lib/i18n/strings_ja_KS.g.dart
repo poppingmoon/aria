@@ -250,6 +250,9 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get notifications => '通知';
 	@override String get username => 'ユーザー名';
 	@override String get password => 'パスワード';
+	@override String get initialPasswordForSetup => '初期設定開始用パスワード';
+	@override String get initialPasswordIsIncorrect => '初期設定開始用のパスワードが違います。';
+	@override String get initialPasswordForSetupDescription => 'Misskeyを自分でインストールした場合は、設定ファイルに入力したパスワードを使用してください。\nMisskeyのホスティングサービスなどを使用している場合は、提供されたパスワードを使用してください。\nパスワードを設定していない場合は、空欄にしたまま続行してください。';
 	@override String get forgotPassword => 'パスワード忘れたん？';
 	@override String get fetchingAsApObject => '今ちと連合に照会しとるで';
 	@override String get ok => 'ええで';
@@ -478,6 +481,8 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get silencedInstancesDescription => 'サイレンスしたいサーバーのホストを改行で区切って設定すんで。サイレンスされたサーバーに所属するアカウントはすべて「サイレンス」として扱われ、フォローがすべてリクエストになり、フォロワーでないローカルアカウントにはメンションできなくなんねん。ブロックしたインスタンスには影響せーへんで。';
 	@override String get mediaSilencedInstances => 'メディアサイレンスしたサーバー';
 	@override String get mediaSilencedInstancesDescription => 'メディアサイレンスしたいサーバーのホストを改行で区切って設定するで。メディアサイレンスされたサーバーに所属するアカウントによるファイルはすべてセンシティブとして扱われてな、カスタム絵文字が使えへんようになるで。ブロックしたインスタンスには影響せえへんで。';
+	@override String get federationAllowedHosts => '連合を許可するサーバー';
+	@override String get federationAllowedHostsDescription => '連合を許可するサーバーのホストを改行で区切って設定します。';
 	@override String get muteAndBlock => 'ミュートとブロック';
 	@override String get mutedUsers => 'ミュートしとるユーザー';
 	@override String get blockedUsers => 'ブロックしとるユーザー';
@@ -576,6 +581,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get deleteFolder => 'フォルダーをほかす';
 	@override String get folder => 'フォルダー';
 	@override String get addFile => 'ファイルを追加';
+	@override String get showFile => 'ファイルを表示';
 	@override String get emptyDrive => 'ドライブは空っぽや';
 	@override String get emptyFolder => 'このフォルダーは空や';
 	@override String get unableToDelete => '消せんかったわ';
@@ -751,7 +757,10 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => '${x}について';
 	@override String get emojiStyle => '絵文字のスタイル';
 	@override String get native => 'ネイティブ';
-	@override String get disableDrawer => 'メニューをドロワーで表示せえへん';
+	@override String get menuStyle => 'メニューのスタイル';
+	@override String get style => 'スタイル';
+	@override String get drawer => 'ドロワー';
+	@override String get popup => 'ポップアップ';
 	@override String get showNoteActionsOnlyHover => 'ノートの操作部をホバー時のみ表示するで';
 	@override String get showReactionsCount => 'ノートのリアクション数を表示する';
 	@override String get noHistory => '履歴はないわ。';
@@ -834,6 +843,8 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get descendingOrder => '大きい順';
 	@override String get scratchpad => 'スクラッチパッド';
 	@override String get scratchpadDescription => 'スクラッチパッドではAiScriptを色々試すことができるんや。Misskeyに対して色々できるコードを書いて動かしてみたり、結果を見たりできるで。';
+	@override String get uiInspector => 'UIインスペクター';
+	@override String get uiInspectorDescription => 'メモリ上に存在しているUIコンポーネントのインスタンスの一覧を見ることができます。UIコンポーネントはUi:C:系関数により生成されます。';
 	@override String get output => '出力';
 	@override String get script => 'スクリプト';
 	@override String get disablePagesScript => 'Pagesのスクリプトを無効にしてや';
@@ -950,10 +961,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get reporter => '通報者';
 	@override String get reporteeOrigin => '通報先';
 	@override String get reporterOrigin => '通報元';
-	@override String get forwardReport => 'リモートサーバーに通報を転送するで';
-	@override String get forwardReportIsAnonymous => 'リモートサーバーからはあんたの情報は見えんなって、匿名のシステムアカウントとして表示されるで。';
 	@override String get send => '送信';
-	@override String get abuseMarkAsResolved => '対応したで';
 	@override String get openInNewTab => '新しいタブで開く';
 	@override String get openInSideView => 'サイドビューで開く';
 	@override String get defaultNavigationBehaviour => 'デフォルトのナビゲーション';
@@ -1505,6 +1513,19 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override String get sensitiveMediaRevealConfirm => 'センシティブなメディアやで。表示するんか？';
 	@override String get createdLists => '作成したリスト';
 	@override String get createdAntennas => '作成したアンテナ';
+	@override String fromX({required Object x}) => '${x}から';
+	@override String get genEmbedCode => '埋め込みコードを生成';
+	@override String get noteOfThisUser => 'このユーザーのノート一覧';
+	@override String get clipNoteLimitExceeded => 'これ以上このクリップにノートを追加できません。';
+	@override String get performance => 'パフォーマンス';
+	@override String get modified => '変更あり';
+	@override String get discard => '破棄';
+	@override String thereAreNChanges({required Object n}) => '${n}件の変更があります';
+	@override String get signinWithPasskey => 'パスキーでログイン';
+	@override String get unknownWebAuthnKey => '登録されていないパスキーです。';
+	@override String get passkeyVerificationFailed => 'パスキーの検証に失敗しました。';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'パスキーの検証に成功しましたが、パスワードレスログインが無効になっています。';
+	@override String get messageToFollower => 'フォロワーへのメッセージ';
 	@override late final _StringsMisskeyDeliveryJaKs delivery_ = _StringsMisskeyDeliveryJaKs._(_root);
 	@override late final _StringsMisskeyBubbleGameJaKs bubbleGame_ = _StringsMisskeyBubbleGameJaKs._(_root);
 	@override late final _StringsMisskeyAnnouncementJaKs announcement_ = _StringsMisskeyAnnouncementJaKs._(_root);
@@ -1577,6 +1598,7 @@ class _StringsMisskeyJaKs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyUrlPreviewSettingJaKs urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingJaKs._(_root);
 	@override late final _StringsMisskeyMediaControlsJaKs mediaControls_ = _StringsMisskeyMediaControlsJaKs._(_root);
 	@override late final _StringsMisskeyContextMenuJaKs contextMenu_ = _StringsMisskeyContextMenuJaKs._(_root);
+	@override late final _StringsMisskeyEmbedCodeGenJaKs embedCodeGen_ = _StringsMisskeyEmbedCodeGenJaKs._(_root);
 }
 
 // Path: misskeyIO
@@ -1721,6 +1743,7 @@ class _StringsMisskeyServerSettingsJaKs extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => '入れると、おのおのタイムラインを取得するときにめちゃめちゃ動きが良うなって、データベースが軽くなるわ。でも、Redisのメモリ使う量が増えるから注意な。サーバーのメモリが足りんときとか、動きが変なときは切れるで。';
 	@override String get fanoutTimelineDbFallback => 'データベースにフォールバックする';
 	@override String get fanoutTimelineDbFallbackDescription => '有効にしたら、タイムラインがキャッシュん中に入ってないときにDBにもっかい問い合わせるフォールバック処理ってのをやっとくで。切ったらフォールバック処理をやらんからサーバーはもっと軽くなんねんけど、タイムラインの取得範囲がちょっと減るで。';
+	@override String get reactionsBufferingDescription => '有効にすると、リアクション作成時のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。';
 	@override String get inquiryUrl => '問い合わせ先URL';
 	@override String get inquiryUrlDescription => 'サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定するで。';
 }
@@ -2521,6 +2544,9 @@ class _StringsMisskeyProfileJaKs extends _StringsMisskeyProfileEnUs {
 	@override String get changeBanner => 'バナー画像を変更するで';
 	@override String get verifiedLinkDescription => '内容をURLに設定すると、リンク先のwebサイトに自分のプロフのリンクが含まれてる場合に所有者確認済みアイコンを表示させることができるで。';
 	@override String avatarDecorationMax({required Object max}) => '最大${max}つまでデコつけれんで';
+	@override String get followedMessage => 'フォローされた時のメッセージ';
+	@override String get followedMessageDescription => 'フォローされた時に相手に表示する短いメッセージを設定できます。';
+	@override String get followedMessageDescriptionForLockedAccount => 'フォローを承認制にしている場合、フォローリクエストを許可した時に表示されます。';
 }
 
 // Path: misskey.exportOrImport_
@@ -2661,6 +2687,7 @@ class _StringsMisskeyPagesJaKs extends _StringsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => 'アイキャッチ画像を設定';
 	@override String get eyeCatchingImageRemove => 'アイキャッチ画像を削除';
 	@override String get chooseBlock => 'ブロックを追加';
+	@override String get enterSectionTitle => 'セクションタイトルを入力';
 	@override String get selectType => '種類を選択';
 	@override String get contentBlocks => 'コンテンツ';
 	@override String get inputBlocks => '入力';
@@ -2710,6 +2737,8 @@ class _StringsMisskeyNotificationJaKs extends _StringsMisskeyNotificationEnUs {
 	@override String renotedBySomeUsers({required Object n}) => '${n}人がリノートしたで';
 	@override String followedBySomeUsers({required Object n}) => '${n}人にフォローされたで';
 	@override String get flushNotification => '通知の履歴をリセットする';
+	@override String exportOfXCompleted({required Object x}) => '${x}のエクスポートが完了しました';
+	@override String get login => 'ログインがありました';
 	@override late final _StringsMisskeyNotificationTypesJaKs types_ = _StringsMisskeyNotificationTypesJaKs._(_root);
 	@override late final _StringsMisskeyNotificationActionsJaKs actions_ = _StringsMisskeyNotificationActionsJaKs._(_root);
 }
@@ -2793,6 +2822,7 @@ class _StringsMisskeyWebhookSettingsJaKs extends _StringsMisskeyWebhookSettingsE
 	@override late final _StringsMisskeyWebhookSettingsEventsJaKs events_ = _StringsMisskeyWebhookSettingsEventsJaKs._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSystemEventsJaKs systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsJaKs._(_root);
 	@override String get deleteConfirm => 'ほんまにWebhookをほかしてもええんか？';
+	@override String get testRemarks => 'スイッチの右にあるボタンをクリックするとダミーのデータを使用したテスト用Webhookを送信できます。';
 }
 
 // Path: misskey.abuseReport_
@@ -2854,7 +2884,10 @@ class _StringsMisskeyModerationLogTypesJaKs extends _StringsMisskeyModerationLog
 	@override String get createAbuseReportNotificationRecipient => '通報の通知先を作成';
 	@override String get updateAbuseReportNotificationRecipient => '通報の通知先を更新';
 	@override String get deleteAbuseReportNotificationRecipient => '通報の通知先を削除';
+	@override String get deleteAccount => 'アカウントを削除';
+	@override String get deletePage => 'ページを削除';
 	@override String get deleteFlash => 'Playを削除';
+	@override String get deleteGalleryPost => 'ギャラリーの投稿を削除';
 }
 
 // Path: misskey.fileViewer_
@@ -3022,6 +3055,28 @@ class _StringsMisskeyContextMenuJaKs extends _StringsMisskeyContextMenuEnUs {
 	@override String get app => 'アプリケーション';
 	@override String get appWithShift => 'Shiftキーでアプリケーション';
 	@override String get native => 'ブラウザのUI';
+}
+
+// Path: misskey.embedCodeGen_
+class _StringsMisskeyEmbedCodeGenJaKs extends _StringsMisskeyEmbedCodeGenEnUs {
+	_StringsMisskeyEmbedCodeGenJaKs._(_StringsJaKs root) : this._root = root, super._(root);
+
+	@override final _StringsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '埋め込みコードをカスタマイズ';
+	@override String get header => 'ヘッダーを表示';
+	@override String get autoload => '自動で続きを読み込む（非推奨）';
+	@override String get maxHeight => '高さの最大値';
+	@override String get maxHeightDescription => '0で最大値の設定が無効になります。ウィジェットが縦に伸び続けるのを防ぐために、何らかの値に指定してください。';
+	@override String get maxHeightWarn => '高さの最大値制限が無効（0）になっています。これが意図した変更ではない場合は、高さの最大値を何らかの値に設定してください。';
+	@override String get previewIsNotActual => 'プレビュー画面で表示可能な範囲を超えたため、実際に埋め込んだ際とは表示が異なります。';
+	@override String get rounded => '角丸にする';
+	@override String get border => '外枠に枠線をつける';
+	@override String get applyToPreview => 'プレビューに反映';
+	@override String get generateCode => '埋め込みコードを作成';
+	@override String get codeGenerated => 'コードが生成されました';
+	@override String get codeGeneratedDescription => '生成されたコードをウェブサイトに貼り付けてご利用ください。';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3312,6 +3367,11 @@ class _StringsMisskeyRoleOptionsJaKs extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canSearchNotes => 'ノート探せるかどうか';
 	@override String get canUseTranslator => '翻訳使えるかどうか';
 	@override String get avatarDecorationLimit => 'アイコンデコのいっちばんつけれる数';
+	@override String get canImportAntennas => 'アンテナのインポートを許可';
+	@override String get canImportBlocking => 'ブロックのインポートを許可';
+	@override String get canImportFollowing => 'フォローのインポートを許可';
+	@override String get canImportMuting => 'ミュートのインポートを許可';
+	@override String get canImportUserLists => 'リストのインポートを許可';
 }
 
 // Path: misskey.role_.condition_
@@ -3474,6 +3534,9 @@ class _StringsMisskeyNotificationTypesJaKs extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => 'フォローが受理されたで';
 	@override String get roleAssigned => 'ロールが付与された';
 	@override String get achievementEarned => '実績の獲得';
+	@override String get exportCompleted => 'エクスポートが完了した';
+	@override String get login => 'ログイン';
+	@override String get test => '通知のテスト';
 	@override String get app => '連携アプリからの通知や';
 }
 

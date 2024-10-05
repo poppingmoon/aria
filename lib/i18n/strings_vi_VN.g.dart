@@ -560,7 +560,6 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Giới thiệu ${x}';
 	@override String get emojiStyle => 'Kiểu cách Emoji';
 	@override String get native => 'Bản xứ';
-	@override String get disableDrawer => 'Không dùng menu thanh bên';
 	@override String get showNoteActionsOnlyHover => 'Chỉ hiển thị các hành động ghi chú khi di chuột';
 	@override String get noHistory => 'Không có dữ liệu';
 	@override String get signinHistory => 'Lịch sử đăng nhập';
@@ -2467,6 +2466,7 @@ class _StringsMisskeyNotificationTypesViVn extends _StringsMisskeyNotificationTy
 	@override String get receiveFollowRequest => 'Yêu cầu theo dõi';
 	@override String get followRequestAccepted => 'Yêu cầu theo dõi được chấp nhận';
 	@override String get achievementEarned => 'Hoàn thành Achievement';
+	@override String get login => 'Đăng nhập';
 	@override String get app => 'Từ app liên kết';
 }
 

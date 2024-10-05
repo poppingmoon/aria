@@ -140,6 +140,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get copyFolderId => 'Copiar ID de carpeta';
 	@override String get copyProfileUrl => 'Copiar URL del perfil';
 	@override String get searchUser => 'Cercar un usuari';
+	@override String get searchThisUsersNotes => 'Cerca les publicacions de l\'usuari';
 	@override String get reply => 'Respondre';
 	@override String get loadMore => 'Carregar més';
 	@override String get showMore => 'Veure més';
@@ -188,11 +189,14 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get renote => 'Impulsa';
 	@override String get unrenote => 'Anul·la l\'impuls';
 	@override String get renoted => 'S\'ha impulsat';
+	@override String renotedToX({required Object name}) => 'Impulsat per ${name}.';
 	@override String get cantRenote => 'No es pot impulsar aquesta publicació';
 	@override String get cantReRenote => 'No es pot impulsar l\'impuls.';
 	@override String get quote => 'Cita';
 	@override String get inChannelRenote => 'Renotar només al Canal';
 	@override String get inChannelQuote => 'Citar només al Canal';
+	@override String get renoteToChannel => 'Impulsa a un canal';
+	@override String get renoteToOtherChannel => 'Impulsa a un altre canal';
 	@override String get pinnedNote => 'Nota fixada';
 	@override String get pinned => 'Fixar al perfil';
 	@override String get you => 'Tu';
@@ -231,6 +235,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get selectChannel => 'Selecciona un canal';
 	@override String get selectAntenna => 'Tria una antena';
 	@override String get editAntenna => 'Modificar antena';
+	@override String get createAntenna => 'Crea una antena';
 	@override String get selectWidget => 'Triar un giny';
 	@override String get editWidgets => 'Editar ginys';
 	@override String get editWidgetsExit => 'Fet';
@@ -257,6 +262,10 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get reloadAccountsList => 'Recarregar la llista de contactes';
 	@override String get loginFailed => 'S\'ha produït un error al accedir.';
 	@override String get showOnRemote => 'Navega més en el perfil original';
+	@override String get continueOnRemote => 'Veure perfil original';
+	@override String get chooseServerOnMisskeyHub => 'Escull un servidor des del Hub de Misskey';
+	@override String get specifyServerHost => 'Especifica un servidor directament';
+	@override String get inputHostName => 'Introdueix el domini';
 	@override String get general => 'General';
 	@override String get wallpaper => 'Fons de Pantalla';
 	@override String get setWallpaper => 'Defineix el fons de pantalla';
@@ -267,6 +276,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get proxyAccount => 'Compte de proxy';
 	@override String get proxyAccountDescription => 'Un compte proxy és un compte que actua com a seguidor remot per als usuaris en determinades condicions. Per exemple, quan un usuari afegeix un usuari remot a la llista, l\'activitat de l\'usuari remot no es lliurarà al servidor si cap usuari local segueix aquest usuari, de manera que el compte proxy el seguirà.';
 	@override String get host => 'Amfitrió';
+	@override String get selectSelf => 'Escollir manualment';
 	@override String get selectUser => 'Selecciona usuari/a';
 	@override String get recipient => 'Destinatari';
 	@override String get annotation => 'Comentaris';
@@ -282,6 +292,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get stopActivityDelivery => 'Deixa d\'enviar activitats';
 	@override String get blockThisInstance => 'Deixa d\'enviar activitats';
 	@override String get silenceThisInstance => 'Silencia aquesta instància ';
+	@override String get mediaSilenceThisInstance => 'Silenciar els arxius d\'aquesta instància ';
 	@override String get operations => 'Accions';
 	@override String get software => 'Programari';
 	@override String get version => 'Versió';
@@ -303,6 +314,10 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Llista els enllaços d\'amfitrió de les instàncies que vols bloquejar separades per un salt de pàgina. Les instàncies llistades no podran comunicar-se amb aquesta instància.';
 	@override String get silencedInstances => 'Instàncies silenciades';
 	@override String get silencedInstancesDescription => 'Llista els enllaços d\'amfitrió de les instàncies que vols silenciar. Tots els comptes de les instàncies llistades s\'establiran com silenciades i només podran fer sol·licitacions de seguiment, i no podran mencionar als comptes locals si no els segueixen. Això no afectarà les instàncies bloquejades.';
+	@override String get mediaSilencedInstances => 'Instàncies amb els arxius silenciats';
+	@override String get mediaSilencedInstancesDescription => 'Llista els noms dels servidors que vulguis silenciar els arxius, un servidor per línia. Tots els comptes que pertanyin als servidors llistats seran tractats com sensibles i no podran fer servir emojis personalitzats. Això no tindrà efecte sobre els servidors blocats.';
+	@override String get federationAllowedHosts => 'Llista de servidors federats';
+	@override String get federationAllowedHostsDescription => 'Llista dels servidors amb els quals es federa.';
 	@override String get muteAndBlock => 'Silencia i bloca';
 	@override String get mutedUsers => 'Usuaris silenciats';
 	@override String get blockedUsers => 'Usuaris bloquejats';
@@ -393,6 +408,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get selectFiles => 'Selecciona fitxers';
 	@override String get selectFolder => 'Selecció de carpeta';
 	@override String get selectFolders => 'Selecció de carpeta';
+	@override String get fileNotSelected => 'Cap fitxer seleccionat';
 	@override String get renameFile => 'Canvia el nom del fitxer';
 	@override String get folderName => 'Nom de la carpeta';
 	@override String get createFolder => 'Crea una carpeta';
@@ -400,6 +416,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get deleteFolder => 'Elimina la carpeta';
 	@override String get folder => 'Carpeta ';
 	@override String get addFile => 'Afegeix un fitxer';
+	@override String get showFile => 'Mostrar fitxer';
 	@override String get emptyDrive => 'La teva unitat és buida';
 	@override String get emptyFolder => 'La carpeta està buida';
 	@override String get unableToDelete => 'No es pot eliminar';
@@ -548,10 +565,12 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Publicació de: ${user}';
 	@override String get quoteAttached => 'Frase adjunta';
 	@override String get quoteQuestion => 'Vols annexar-la com a cita?';
+	@override String get attachAsFileQuestion => 'El text copiat és massa llarg. Vols adjuntar-lo com un fitxer de text?';
 	@override String get noMessagesYet => 'Encara no hi ha missatges';
 	@override String get newMessageExists => 'Has rebut un nou missatge';
 	@override String get onlyOneFileCanBeAttached => 'Només pots adjuntar un fitxer a un missatge';
 	@override String get signinRequired => 'Si us plau, Registra\'t o inicia la sessió abans de continuar';
+	@override String get signinOrContinueOnRemote => 'Per continuar necessites moure el teu servidor o registrar-te / iniciar sessió en aquest servidor.';
 	@override String get invitations => 'Convida';
 	@override String get invitationCode => 'Codi d\'invitació';
 	@override String get checking => 'Comprovació en curs...';
@@ -573,7 +592,10 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Respecte a ${x}';
 	@override String get emojiStyle => 'Estil d\'emoji';
 	@override String get native => 'Nadiu';
-	@override String get disableDrawer => 'No mostrar els menús en calaixos';
+	@override String get menuStyle => 'Estil de menú';
+	@override String get style => 'Estil';
+	@override String get drawer => 'Calaix';
+	@override String get popup => 'Emergent';
 	@override String get showNoteActionsOnlyHover => 'Només mostra accions de la nota en passar amb el cursor';
 	@override String get showReactionsCount => 'Mostra el nombre de reaccions a les publicacions';
 	@override String get noHistory => 'No hi ha un registre previ';
@@ -623,7 +645,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get objectStorageUseProxy => 'Connectar-se  mitjançant un Proxy';
 	@override String get objectStorageUseProxyDesc => 'Desactiva\'l si no faràs servir un Proxy per les connexions de l\'API';
 	@override String get objectStorageSetPublicRead => 'Configurar les pujades com públiques ';
-	@override String get s3ForcePathStyleDesc => 'Si s3ForcePathStyle es troba activat el nom del dipòsit s\'ha d\'incloure a l\'adreça URL en comtes del nom del host. Potser que necessitis activar-ho quan facis servir, per exemple, Minio a un servidor propi.';
+	@override String get s3ForcePathStyleDesc => 'Si s3ForcePathStyle es troba activat el nom del cubell s\'haurà d\'especificar com a part de l\'adreça URL en comptes del nom del servidor. Podria ser que necessitis activar aquesta opció quan facis servir serveis com ara l\'allotjament a un servidor propi.';
 	@override String get serverLogs => 'Registres del servidor';
 	@override String get deleteAll => 'Elimina-ho tot';
 	@override String get showFixedPostForm => 'Mostrar el formulari per escriure a l\'inici de la línia de temps';
@@ -656,6 +678,8 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get descendingOrder => 'Descendent';
 	@override String get scratchpad => 'Bloc de proves';
 	@override String get scratchpadDescription => 'El bloc de proves proporciona un entorn experimental per AiScript. Pot escriure i verificar els resultats que interactuen amb Misskey.';
+	@override String get uiInspector => 'Inspector de la interfície';
+	@override String get uiInspectorDescription => 'Podeu visualitzar una llista d\'elements UI presents en la memòria. Els components de la interfície d\'usuari són generats per les funcions Ui:C:.';
 	@override String get output => 'Sortida';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Desactivar AiScript a les pàgines ';
@@ -912,6 +936,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get accounts => 'Comptes';
 	@override String get switch_ => 'Canvia';
 	@override String get noMaintainerInformationWarning => 'La informació de l\'administrador no s\'ha configurat';
+	@override String get noInquiryUrlWarning => 'No s\'ha desat l\'URL de consulta.';
 	@override String get noBotProtectionWarning => 'La protecció contra bots no s\'ha configurat.';
 	@override String get configure => 'Configurar';
 	@override String get postToGallery => 'Crear una nova publicació a la galeria';
@@ -1101,6 +1126,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingCancel => 'Cancel·lar ';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Publicar de totes maneres';
 	@override String get collapseRenotes => 'Col·lapsar les renotes que ja has vist';
+	@override String get collapseRenotesDescription => 'Col·lapse les notes a les quals ja has reaccionat o que ja has renotat';
 	@override String get internalServerError => 'Error intern del servidor';
 	@override String get internalServerErrorDescription => 'El servidor ha fallat de manera inexplicable.';
 	@override String get copyErrorInfo => 'Copiar la informació de l\'error ';
@@ -1174,6 +1200,8 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'Llistat de noms d\'usuaris que no es poden fer servir separats per salts de linia. Aquests noms d\'usuaris no estaran disponibles quan es creï un compte d\'usuari normal, però els administradors els poden fer servir per crear comptes manualment. Per altre banda els comptes ja creats amb aquests noms d\'usuari no es veure\'n afectats.';
 	@override String get createNoteFromTheFile => 'Compon una nota des d\'aquest fitxer';
 	@override String get archive => 'Arxiu';
+	@override String get archived => 'Arxivat';
+	@override String get unarchive => 'Desarxivar';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Vols arxivar ${name}?';
 	@override String get channelArchiveConfirmDescription => 'Un Canal arxivat no apareixerà a la llista de canals o als resultats de cerca. Tampoc es poden afegir noves entrades.';
 	@override String get thisChannelArchived => 'Aquest Canal ha sigut arxivat.';
@@ -1184,6 +1212,9 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get preventAiLearningDescription => 'Demanar els indexadors no fer servir els texts, imatges, etc. en cap conjunt de dades per alimentar l\'aprenentatge automàtic (IA Predictiva/ Generativa). Això s\'aconsegueix afegint la etiqueta "noai" com a resposta HTML al contingut corresponent. Prevenir aquest ús totalment pot ser que no sigui aconseguit, ja que molts indexadors poden obviar aquesta etiqueta.';
 	@override String get options => 'Opcions';
 	@override String get specifyUser => 'Especificar usuari';
+	@override String get lookupConfirm => 'Vols fer una cerca?';
+	@override String get openTagPageConfirm => 'Vols obrir una pàgina d\'etiquetes?';
+	@override String get specifyHost => 'Especifica un servidor';
 	@override String get failedToPreviewUrl => 'Vista prèvia no disponible';
 	@override String get update => 'Actualitzar';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Rols que poden fer servir aquest emoji com a reacció ';
@@ -1252,7 +1283,10 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get confirmHideRepliesAll => 'Aquesta opció no té marxa enrere. Vols ocultar les teves respostes a tots els usuaris que segueixes a la línia de temps?';
 	@override String get externalServices => 'Serveis externs';
 	@override String get sourceCode => 'Codi font';
+	@override String get sourceCodeIsNotYetProvided => 'El codi font encara no es troba disponible. Contacta amb l\'administrador per solucionar aquest problema.';
 	@override String get repositoryUrl => 'URL del repositori';
+	@override String get repositoryUrlDescription => 'Si estàs fent servir Misskey tal com és (sense cap canvi al codi font), introdueix https://github.com/misskey-dev/misskey';
+	@override String get repositoryUrlOrTarballRequired => 'Si no ofereixes cap repositori, publica un fitxer tarball. Dona una ullada a .config/example.yml per a més informació.';
 	@override String get feedback => 'Opinió';
 	@override String get feedbackUrl => 'URL per a opinar';
 	@override String get impressum => 'Impressum';
@@ -1291,6 +1325,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get replay => 'Reproduir';
 	@override String get replaying => 'Reproduint';
 	@override String get endReplay => 'Tanca la redifusió';
+	@override String get copyReplayData => 'Copia les dades de la resposta';
 	@override String get ranking => 'Classificació';
 	@override String lastNDays({required Object n}) => 'Últims ${n} dies';
 	@override String get backToTitle => 'Torna al títol';
@@ -1304,6 +1339,31 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get notUsePleaseLeaveBlank => 'Si no voleu usar-ho, deixeu-ho en blanc';
 	@override String get useTotp => 'Usa una contrasenya d\'un sol ús';
 	@override String get useBackupCode => 'Usa un codi de recuperació';
+	@override String get launchApp => 'Inicia l\'aplicació ';
+	@override String get useNativeUIForVideoAudioPlayer => 'Fes servir la UI del navegador quan reprodueixis vídeo i àudio ';
+	@override String get keepOriginalFilename => 'Desa el nom del fitxer original';
+	@override String get keepOriginalFilenameDescription => 'Si desactives aquesta opció els noms dels fitxers se substituiran per una cadena aleatòria quan carreguis nous fitxers de forma automàtica.';
+	@override String get noDescription => 'No hi ha una descripció ';
+	@override String get alwaysConfirmFollow => 'Confirma sempre els seguiments';
+	@override String get inquiry => 'Contacte';
+	@override String get tryAgain => 'Intenta-ho més tard.';
+	@override String get confirmWhenRevealingSensitiveMedia => 'Confirmació quan revelis contingut sensible ';
+	@override String get sensitiveMediaRevealConfirm => 'Aquest contingut potser sensible. Segur que ho vols revelar?';
+	@override String get createdLists => 'Llistes creades ';
+	@override String get createdAntennas => 'Antenes creades';
+	@override String fromX({required Object x}) => 'De ${x}';
+	@override String get genEmbedCode => 'Obtenir el codi per incrustar';
+	@override String get noteOfThisUser => 'Notes d\'aquest usuari';
+	@override String get clipNoteLimitExceeded => 'No es poden afegir més notes a aquest clip.';
+	@override String get performance => 'Rendiment';
+	@override String get modified => 'Modificat';
+	@override String get discard => 'Descarta';
+	@override String thereAreNChanges({required Object n}) => 'Hi ha(n) ${n} canvi(s)';
+	@override String get signinWithPasskey => 'Inicia sessió amb Passkey';
+	@override String get unknownWebAuthnKey => 'Passkey desconeguda';
+	@override String get passkeyVerificationFailed => 'La verificació a fallat';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verificació de la passkey a estat correcta, però s\'ha deshabilitat l\'inici de sessió sense contrasenya.';
+	@override String get messageToFollower => 'Missatge als meus seguidors';
 	@override late final _StringsMisskeyDeliveryCaEs delivery_ = _StringsMisskeyDeliveryCaEs._(_root);
 	@override late final _StringsMisskeyBubbleGameCaEs bubbleGame_ = _StringsMisskeyBubbleGameCaEs._(_root);
 	@override late final _StringsMisskeyAnnouncementCaEs announcement_ = _StringsMisskeyAnnouncementCaEs._(_root);
@@ -1343,7 +1403,9 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyTimeCaEs time_ = _StringsMisskeyTimeCaEs._(_root);
 	@override late final _StringsMisskeyX2faCaEs x2fa_ = _StringsMisskeyX2faCaEs._(_root);
 	@override late final _StringsMisskeyPermissionsCaEs permissions_ = _StringsMisskeyPermissionsCaEs._(_root);
+	@override late final _StringsMisskeyAuthCaEs auth_ = _StringsMisskeyAuthCaEs._(_root);
 	@override late final _StringsMisskeyAntennaSourcesCaEs antennaSources_ = _StringsMisskeyAntennaSourcesCaEs._(_root);
+	@override late final _StringsMisskeyWeekdayCaEs weekday_ = _StringsMisskeyWeekdayCaEs._(_root);
 	@override late final _StringsMisskeyWidgetsCaEs widgets_ = _StringsMisskeyWidgetsCaEs._(_root);
 	@override late final _StringsMisskeyCwCaEs cw_ = _StringsMisskeyCwCaEs._(_root);
 	@override late final _StringsMisskeyPollCaEs poll_ = _StringsMisskeyPollCaEs._(_root);
@@ -1352,18 +1414,24 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyProfileCaEs profile_ = _StringsMisskeyProfileCaEs._(_root);
 	@override late final _StringsMisskeyExportOrImportCaEs exportOrImport_ = _StringsMisskeyExportOrImportCaEs._(_root);
 	@override late final _StringsMisskeyChartsCaEs charts_ = _StringsMisskeyChartsCaEs._(_root);
+	@override late final _StringsMisskeyInstanceChartsCaEs instanceCharts_ = _StringsMisskeyInstanceChartsCaEs._(_root);
 	@override late final _StringsMisskeyTimelinesCaEs timelines_ = _StringsMisskeyTimelinesCaEs._(_root);
 	@override late final _StringsMisskeyPlayCaEs play_ = _StringsMisskeyPlayCaEs._(_root);
 	@override late final _StringsMisskeyPagesCaEs pages_ = _StringsMisskeyPagesCaEs._(_root);
 	@override late final _StringsMisskeyRelayStatusCaEs relayStatus_ = _StringsMisskeyRelayStatusCaEs._(_root);
 	@override late final _StringsMisskeyNotificationCaEs notification_ = _StringsMisskeyNotificationCaEs._(_root);
 	@override late final _StringsMisskeyDeckCaEs deck_ = _StringsMisskeyDeckCaEs._(_root);
+	@override late final _StringsMisskeyDialogCaEs dialog_ = _StringsMisskeyDialogCaEs._(_root);
+	@override late final _StringsMisskeyDisabledTimelineCaEs disabledTimeline_ = _StringsMisskeyDisabledTimelineCaEs._(_root);
+	@override late final _StringsMisskeyDrivecleanerCaEs drivecleaner_ = _StringsMisskeyDrivecleanerCaEs._(_root);
 	@override late final _StringsMisskeyWebhookSettingsCaEs webhookSettings_ = _StringsMisskeyWebhookSettingsCaEs._(_root);
 	@override late final _StringsMisskeyAbuseReportCaEs abuseReport_ = _StringsMisskeyAbuseReportCaEs._(_root);
 	@override late final _StringsMisskeyModerationLogTypesCaEs moderationLogTypes_ = _StringsMisskeyModerationLogTypesCaEs._(_root);
 	@override late final _StringsMisskeyFileViewerCaEs fileViewer_ = _StringsMisskeyFileViewerCaEs._(_root);
 	@override late final _StringsMisskeyExternalResourceInstallerCaEs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerCaEs._(_root);
+	@override late final _StringsMisskeyDataSaverCaEs dataSaver_ = _StringsMisskeyDataSaverCaEs._(_root);
 	@override late final _StringsMisskeyReversiCaEs reversi_ = _StringsMisskeyReversiCaEs._(_root);
+	@override late final _StringsMisskeyEmbedCodeGenCaEs embedCodeGen_ = _StringsMisskeyEmbedCodeGenCaEs._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1373,7 +1441,9 @@ class _StringsMisskeyDeliveryCaEs extends _StringsMisskeyDeliveryEnUs {
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get status => 'Estat d\'entrega ';
 	@override String get stop => 'Suspés';
+	@override String get resume => 'Torna a enviar';
 	@override late final _StringsMisskeyDeliveryTypeCaEs type_ = _StringsMisskeyDeliveryTypeCaEs._(_root);
 }
 
@@ -1385,6 +1455,8 @@ class _StringsMisskeyBubbleGameCaEs extends _StringsMisskeyBubbleGameEnUs {
 
 	// Translations
 	@override String get howToPlay => 'Com es juga';
+	@override String get hold => 'Mantenir';
+	@override late final _StringsMisskeyBubbleGameScoreCaEs score_ = _StringsMisskeyBubbleGameScoreCaEs._(_root);
 	@override late final _StringsMisskeyBubbleGameHowToPlayCaEs howToPlay_ = _StringsMisskeyBubbleGameHowToPlayCaEs._(_root);
 }
 
@@ -1494,6 +1566,9 @@ class _StringsMisskeyServerSettingsCaEs extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => 'Quan es troba activat millora bastant el rendiment quan es recuperen les línies de temps i redueix la carrega de la base de dades. Com a contrapunt, l\'ús de memòria de Redis es veurà incrementada. Considera d\'estabilitat aquesta opció en cas de tenir un servidor amb poca memòria o si tens problemes de inestabilitat.';
 	@override String get fanoutTimelineDbFallback => 'Carregar de la base de dades';
 	@override String get fanoutTimelineDbFallbackDescription => 'Quan s\'activa, la línia de temps fa servir la base de dades per consultes adicionals si la línia de temps no es troba a la memòria cau. Si és desactiva la càrrega del servidor és veure reduïda, però també és reduirà el nombre de línies de temps que és poden obtenir.';
+	@override String get reactionsBufferingDescription => 'Quan s\'activa aquesta opció millora bastant el rendiment en recuperar les línies de temps reduint la càrrega de la base. Com a contrapunt, augmentarà  l\'ús de memòria de Redís. Desactiva aquesta opció en cas de tenir un servidor amb poca memòria o si tens problemes d\'inestabilitat.';
+	@override String get inquiryUrl => 'URL de consulta ';
+	@override String get inquiryUrlDescription => 'Escriu adreça URL per al formulari de consulta per al mantenidor del servidor o una pàgina web amb el contacte d\'informació.';
 }
 
 // Path: misskey.accountMigration_
@@ -1707,6 +1782,7 @@ class _StringsMisskeyPluginCaEs extends _StringsMisskeyPluginEnUs {
 	@override String get installWarn => 'Si us plau, no instal·lis afegits que no siguin de confiança.';
 	@override String get manage => 'Gestionar els afegits';
 	@override String get viewSource => 'Veure l\'origen ';
+	@override String get viewLog => 'Mostra el registre';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1760,6 +1836,8 @@ class _StringsMisskeyAboutMisskeyCaEs extends _StringsMisskeyAboutMisskeyEnUs {
 	@override String get contributors => 'Col·laboradors principals';
 	@override String get allContributors => 'Tots els col·laboradors ';
 	@override String get source => 'Codi font';
+	@override String get original => 'Original';
+	@override String thisIsModifiedVersion({required Object name}) => 'En ${name} fa servir una versió modificada de Misskey.';
 	@override String get translation => 'Tradueix Misskey';
 	@override String get donate => 'Fes un donatiu a Misskey';
 	@override String get morePatrons => 'També agraïm el suport d\'altres col·laboradors que no surten en aquesta llista. Gràcies! 🥰';
@@ -1927,6 +2005,7 @@ class _StringsMisskeySoundSettingsCaEs extends _StringsMisskeySoundSettingsEnUs 
 	@override String get driveFileTypeWarnDescription => 'Seleccionar un fitxer d\'àudio ';
 	@override String get driveFileDurationWarn => 'L\'àudio és massa llarg';
 	@override String get driveFileDurationWarnDescription => 'Els àudios molt llargs pot interrompre l\'ús de Misskey. Vols continuar?';
+	@override String get driveFileError => 'El so no es pot carregar. Canvia la configuració';
 }
 
 // Path: misskey.ago_
@@ -2011,6 +2090,7 @@ class _StringsMisskeyX2faCaEs extends _StringsMisskeyX2faEnUs {
 	@override String get backupCodesDescription => 'Si l\'aplicació d\'autenticació no es pot utilitzar, es pot accedir al compte utilitzant els següents codis de còpia de seguretat. Assegura\'t de mantenir aquests codis en un lloc segur. Cada codi es pot utilitzar només una vegada.';
 	@override String get backupCodeUsedWarning => 'Es va utilitzar un codi de còpia de seguretat. Si l\'aplicació de certificació està disponible, reconfigura l\'aplicació d\'autenticació tan aviat com sigui possible.';
 	@override String get backupCodesExhaustedWarning => 'Es van utilitzar tots els codis de còpia de seguretat. Si no es pot utilitzar l\'aplicació d\'autenticació, ja no es pot accedir al compte. Torna a registrar l\'aplicació d\'autenticació.';
+	@override String get moreDetailedGuideHere => 'Aquí tens una guia al detall';
 }
 
 // Path: misskey.permissions_
@@ -2092,6 +2172,36 @@ class _StringsMisskeyPermissionsCaEs extends _StringsMisskeyPermissionsEnUs {
 	@override String get readAdminEmoji => 'Veure emojis';
 	@override String get writeAdminQueue => 'Gestionar la cua de feines';
 	@override String get readAdminQueue => 'Veure la cua de feines';
+	@override String get writeAdminPromo => 'Gestiona les notes promocionals';
+	@override String get writeAdminDrive => 'Gestiona el disc de l\'usuari';
+	@override String get readAdminDrive => 'Veure la informació del disc de l\'usuari';
+	@override String get readAdminStream => 'Fes servir l\'API sobre Websocket per l\'administració';
+	@override String get writeAdminAd => 'Gestiona la publicitat';
+	@override String get readAdminAd => 'Veure anuncis';
+	@override String get writeInviteCodes => 'Crear codis d\'invitació';
+	@override String get readInviteCodes => 'Obtenir codis d\'invitació';
+	@override String get writeClipFavorite => 'Gestionar els clips favorits';
+	@override String get readClipFavorite => 'Veure clips favorits';
+	@override String get readFederation => 'Veure dades de federació';
+	@override String get writeReportAbuse => 'Informar d\'un abús';
+}
+
+// Path: misskey.auth_
+class _StringsMisskeyAuthCaEs extends _StringsMisskeyAuthEnUs {
+	_StringsMisskeyAuthCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get shareAccessTitle => 'Concedeix permisos a l\'aplicació';
+	@override String shareAccess({required Object name}) => 'Vols que ${name} pugui accedir al vostre compte?';
+	@override String get shareAccessAsk => 'Segur que vols que aquesta aplicació pugui accedir al vostre compte?';
+	@override String permission({required Object name}) => '${name} demana els següents permisos';
+	@override String get permissionAsk => 'Aquesta aplicació demana els següents permisos';
+	@override String get pleaseGoBack => 'Si us plau, torna a l\'aplicació';
+	@override String get callback => 'Tornant a l\'aplicació';
+	@override String get denied => 'Accés denegat';
+	@override String get pleaseLogin => 'Si us plau, identificat per autoritzar l\'aplicació.';
 }
 
 // Path: misskey.antennaSources_
@@ -2105,6 +2215,23 @@ class _StringsMisskeyAntennaSourcesCaEs extends _StringsMisskeyAntennaSourcesEnU
 	@override String get homeTimeline => 'Publicacions dels usuaris seguits';
 	@override String get users => 'Publicacions d\'usuaris específics';
 	@override String get userList => 'Publicacions d\'una llista d\'usuaris';
+	@override String get userBlacklist => 'Totes les notes excepte les d\'un o alguns usuaris especificats';
+}
+
+// Path: misskey.weekday_
+class _StringsMisskeyWeekdayCaEs extends _StringsMisskeyWeekdayEnUs {
+	_StringsMisskeyWeekdayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get sunday => 'Diumenge';
+	@override String get monday => 'Dilluns';
+	@override String get tuesday => 'Dimarts';
+	@override String get wednesday => 'Dimecres';
+	@override String get thursday => 'Dijous';
+	@override String get friday => 'Divendres';
+	@override String get saturday => 'Dissabte';
 }
 
 // Path: misskey.widgets_
@@ -2116,13 +2243,33 @@ class _StringsMisskeyWidgetsCaEs extends _StringsMisskeyWidgetsEnUs {
 	// Translations
 	@override String get profile => 'Perfil';
 	@override String get instanceInfo => 'Informació del fitxer d\'instal·lació';
+	@override String get memo => 'Notes adhesives';
 	@override String get notifications => 'Notificacions';
 	@override String get timeline => 'Línia de temps';
+	@override String get calendar => 'Calendari';
+	@override String get trends => 'Tendència';
+	@override String get clock => 'Rellotge';
+	@override String get rss => 'Lector RSS';
+	@override String get rssTicker => 'RSS ticker';
 	@override String get activity => 'Activitat';
+	@override String get photos => 'Fotografies';
+	@override String get digitalClock => 'Rellotge digital';
+	@override String get unixClock => 'Rellotge UNIX';
 	@override String get federation => 'Federació';
+	@override String get instanceCloud => 'Núvol d\'instàncies';
+	@override String get postForm => 'Formulari de publicació';
+	@override String get slideshow => 'Presentació';
 	@override String get button => 'Botó ';
+	@override String get onlineUsers => 'Usuaris actius';
 	@override String get jobQueue => 'Cua de tasques';
+	@override String get serverMetric => 'Mètriques del servidor';
+	@override String get aiscript => 'Consola AiScript';
+	@override String get aiscriptApp => 'Aplicació AiScript';
+	@override String get aichan => 'Ai';
+	@override String get userList => 'Llistat d\'usuaris';
 	@override late final _StringsMisskeyWidgetsUserListCaEs userList_ = _StringsMisskeyWidgetsUserListCaEs._(_root);
+	@override String get clicker => 'Clicker';
+	@override String get birthdayFollowings => 'Usuaris que fan l\'aniversari avui';
 }
 
 // Path: misskey.cw_
@@ -2220,6 +2367,9 @@ class _StringsMisskeyProfileCaEs extends _StringsMisskeyProfileEnUs {
 	@override String get changeBanner => 'Canviar el bàner ';
 	@override String get verifiedLinkDescription => 'Escrivint una adreça URL que enllaci a aquest perfil, una icona de propietat verificada es mostrarà al costat del camp.';
 	@override String avatarDecorationMax({required Object max}) => 'Pot afegir un màxim de ${max} decoracions.';
+	@override String get followedMessage => 'Missatge als nous seguidors';
+	@override String get followedMessageDescription => 'Es pot configurar un missatge curt que es mostra a l\'altra persona quan comença a seguir-te.';
+	@override String get followedMessageDescriptionForLockedAccount => 'Si comencen a seguir-te es mostra un missatge de quan es permet aquesta sol·licitud. ';
 }
 
 // Path: misskey.exportOrImport_
@@ -2230,11 +2380,15 @@ class _StringsMisskeyExportOrImportCaEs extends _StringsMisskeyExportOrImportEnU
 
 	// Translations
 	@override String get allNotes => 'Totes les publicacions';
+	@override String get favoritedNotes => 'Notes preferides';
 	@override String get clips => 'Retalls';
 	@override String get followingList => 'Seguint';
 	@override String get muteList => 'Silencia';
 	@override String get blockingList => 'Bloqueja';
 	@override String get userLists => 'Llistes';
+	@override String get excludeMutingUsers => 'Exclou usuaris silenciats';
+	@override String get excludeInactiveUsers => 'Exclou usuaris inactius';
+	@override String get withReplies => 'Inclou a la línia de temps les respostes d\'usuaris importats';
 }
 
 // Path: misskey.charts_
@@ -2245,6 +2399,38 @@ class _StringsMisskeyChartsCaEs extends _StringsMisskeyChartsEnUs {
 
 	// Translations
 	@override String get federation => 'Federació';
+	@override String get apRequest => 'Peticions';
+	@override String get usersIncDec => 'Diferència entre el nombre d\'usuaris';
+	@override String get usersTotal => 'Nombre total d\'usuaris';
+	@override String get activeUsers => 'Usuaris actius';
+	@override String get notesIncDec => 'Diferència entre el nombre de notes';
+	@override String get localNotesIncDec => 'Diferencia en el nombre de notes locals';
+	@override String get remoteNotesIncDec => 'Diferencia en el nombre de notes remotes';
+	@override String get notesTotal => 'Nombre total de notes';
+	@override String get filesIncDec => 'Diferencia en el nombre de fitxers';
+	@override String get filesTotal => 'Nombre total de fitxers';
+	@override String get storageUsageIncDec => 'Diferencia en l\'emmagatzematge usat';
+	@override String get storageUsageTotal => 'Emmagatzematge usat';
+}
+
+// Path: misskey.instanceCharts_
+class _StringsMisskeyInstanceChartsCaEs extends _StringsMisskeyInstanceChartsEnUs {
+	_StringsMisskeyInstanceChartsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get requests => 'Peticions';
+	@override String get users => 'Diferència entre el nombre d\'usuaris';
+	@override String get usersTotal => 'Usuaris totals acumulats';
+	@override String get notes => 'Diferència entre el nombre de notes';
+	@override String get notesTotal => 'Notes totals acumulades';
+	@override String get ff => 'Diferència en nombre d\'usuaris seguits / seguidors';
+	@override String get ffTotal => 'Nombre total acumulat d\'usuaris seguits / seguidors';
+	@override String get cacheSize => 'Diferència a la mida de la memòria cau';
+	@override String get cacheSizeTotal => 'Total acumulat de la mida de la memòria cau';
+	@override String get files => 'Diferència al nombre d\'arxius';
+	@override String get filesTotal => 'Nombre acumulatiu de fitxers';
 }
 
 // Path: misskey.timelines_
@@ -2267,11 +2453,21 @@ class _StringsMisskeyPlayCaEs extends _StringsMisskeyPlayEnUs {
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get new_ => 'Crear un guió';
+	@override String get edit => 'Editar guió';
+	@override String get created => 'Guió creat';
+	@override String get updated => 'Guió editat';
+	@override String get deleted => 'Guió esborrat';
+	@override String get pageSetting => 'Configuració del guió';
+	@override String get editThisPage => 'Edita aquest guió';
 	@override String get viewSource => 'Veure l\'origen ';
+	@override String get my => 'Els meus guions';
+	@override String get liked => 'Guions que m\'han agradat';
 	@override String get featured => 'Popular';
 	@override String get title => 'Títol ';
 	@override String get script => 'Script';
 	@override String get summary => 'Descripció';
+	@override String get visibilityDescription => '';
 }
 
 // Path: misskey.pages_
@@ -2281,6 +2477,17 @@ class _StringsMisskeyPagesCaEs extends _StringsMisskeyPagesEnUs {
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get newPage => 'pa';
+	@override String get editPage => 'Editar la pàgina';
+	@override String get readPage => 'Veure el codi font d\'aquesta pàgina';
+	@override String get created => 'La pàgina ha sigut creada correctament';
+	@override String get updated => 'La pàgina s\'ha editat correctament';
+	@override String get deleted => 'La pàgina s\'ha esborrat sense problemes';
+	@override String get pageSetting => 'Configuració de la pàgina';
+	@override String get nameAlreadyExists => 'L\'adreça URL de la pàgina ja existeix';
+	@override String get invalidNameTitle => 'L\'adreça URL de la pàgina no és vàlida';
+	@override String get invalidNameText => 'Assegurat que el títol de la pàgina no és buit';
+	@override String get editThisPage => 'Editar la pàgina';
 	@override String get viewSource => 'Veure l\'origen ';
 	@override String get viewPage => 'Veure les teves pàgines ';
 	@override String get like => 'M\'agrada ';
@@ -2303,6 +2510,7 @@ class _StringsMisskeyPagesCaEs extends _StringsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => 'Escull una miniatura';
 	@override String get eyeCatchingImageRemove => 'Esborrar la miniatura';
 	@override String get chooseBlock => 'Afegeix un bloc';
+	@override String get enterSectionTitle => 'Escriu el títol de la secció';
 	@override String get selectType => 'Seleccionar tipus';
 	@override String get contentBlocks => 'Contingut';
 	@override String get inputBlocks => 'Entrada ';
@@ -2348,7 +2556,11 @@ class _StringsMisskeyNotificationCaEs extends _StringsMisskeyNotificationEnUs {
 	@override String get sendTestNotification => 'Enviar notificació de prova';
 	@override String get notificationWillBeDisplayedLikeThis => 'Les notificacions és veure\'n així ';
 	@override String reactedBySomeUsers({required Object n}) => 'Han reaccionat ${n} usuaris';
+	@override String likedBySomeUsers({required Object n}) => 'A ${n} usuaris els hi agrada la teva nota';
 	@override String renotedBySomeUsers({required Object n}) => 'L\'han impulsat ${n} usuaris';
+	@override String followedBySomeUsers({required Object n}) => 'Et segueixen ${n} usuaris';
+	@override String get flushNotification => 'Netejar notificacions';
+	@override String exportOfXCompleted({required Object x}) => 'Completada l\'exportació de ${x}';
 	@override late final _StringsMisskeyNotificationTypesCaEs types_ = _StringsMisskeyNotificationTypesCaEs._(_root);
 	@override late final _StringsMisskeyNotificationActionsCaEs actions_ = _StringsMisskeyNotificationActionsCaEs._(_root);
 }
@@ -2360,17 +2572,60 @@ class _StringsMisskeyDeckCaEs extends _StringsMisskeyDeckEnUs {
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get alwaysShowMainColumn => 'Mostrar sempre la columna principal';
 	@override String get columnAlign => 'Alinea les columnes';
 	@override String get addColumn => 'Afig una columna';
+	@override String get newNoteNotificationSettings => 'Configuració de notificacions per a notes noves';
+	@override String get configureColumn => 'Configuració de columnes';
 	@override String get swapLeft => 'Mou a l’esquerra';
 	@override String get swapRight => 'Mou a la dreta';
 	@override String get swapUp => 'Mou cap amunt';
 	@override String get swapDown => 'Mou cap avall';
+	@override String get stackLeft => 'Pila a la columna esquerra';
 	@override String get popRight => 'Col·loca a la dreta';
 	@override String get profile => 'Perfil';
 	@override String get newProfile => 'Perfil nou';
 	@override String get deleteProfile => 'Elimina el perfil';
+	@override String get introduction => 'Crea la interfície perfecta posant les columnes allà on vulguis!';
+	@override String get introduction2 => 'Fes clic al botó + de la dreta per afegir noves columnes sempre que vulguis.';
+	@override String get widgetsIntroduction => 'Selecciona "Editar ginys" a la columna del menú i afegeix un.';
+	@override String get useSimpleUiForNonRootPages => 'Usa una interfície senzilla per a les pàgines navegades';
+	@override String get usedAsMinWidthWhenFlexible => 'L\'amplada mínima es farà servir quan "Ajust automàtic de l\'amplada" estigui activat';
+	@override String get flexible => 'Ajust automàtic de l\'amplada';
 	@override late final _StringsMisskeyDeckColumnsCaEs columns_ = _StringsMisskeyDeckColumnsCaEs._(_root);
+}
+
+// Path: misskey.dialog_
+class _StringsMisskeyDialogCaEs extends _StringsMisskeyDialogEnUs {
+	_StringsMisskeyDialogCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String charactersExceeded({required Object current, required Object max}) => 'Has arribat al màxim de caràcters! Actualment és ${current} de ${max}';
+	@override String charactersBelow({required Object current, required Object min}) => 'Ets per sota del mínim de caràcters! Actualment és ${current} de ${min}';
+}
+
+// Path: misskey.disabledTimeline_
+class _StringsMisskeyDisabledTimelineCaEs extends _StringsMisskeyDisabledTimelineEnUs {
+	_StringsMisskeyDisabledTimelineCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Línia de tems desactivada';
+	@override String get description => 'No pots fer servir aquesta línia de temps amb els teus rols actuals.';
+}
+
+// Path: misskey.drivecleaner_
+class _StringsMisskeyDrivecleanerCaEs extends _StringsMisskeyDrivecleanerEnUs {
+	_StringsMisskeyDrivecleanerCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get orderBySizeDesc => 'Mida del fitxer descendent';
+	@override String get orderByCreatedAtAsc => 'Data ascendent';
 }
 
 // Path: misskey.webhookSettings_
@@ -2380,8 +2635,16 @@ class _StringsMisskeyWebhookSettingsCaEs extends _StringsMisskeyWebhookSettingsE
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get createWebhook => 'Crear un Webhook';
+	@override String get modifyWebhook => 'Modificar un Webhook';
 	@override String get name => 'Nom';
+	@override String get secret => 'Secret';
+	@override String get trigger => 'Activador';
 	@override String get active => 'Activat';
+	@override late final _StringsMisskeyWebhookSettingsEventsCaEs events_ = _StringsMisskeyWebhookSettingsEventsCaEs._(_root);
+	@override late final _StringsMisskeyWebhookSettingsSystemEventsCaEs systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsCaEs._(_root);
+	@override String get deleteConfirm => 'Segur que vols esborrar el webhook?';
+	@override String get testRemarks => 'Si feu clic al botó a la dreta de l\'interruptor, podeu enviar un webhook de prova amb dades dummy.';
 }
 
 // Path: misskey.abuseReport_
@@ -2401,10 +2664,30 @@ class _StringsMisskeyModerationLogTypesCaEs extends _StringsMisskeyModerationLog
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get createRole => 'Rol creat';
+	@override String get deleteRole => 'Rol esborrat';
+	@override String get updateRole => 'Rol actualitzat';
+	@override String get assignRole => 'Assignat al rol';
+	@override String get unassignRole => 'Esborrat del rol';
 	@override String get suspend => 'Suspèn';
+	@override String get unsuspend => 'Suspensió treta';
+	@override String get addCustomEmoji => 'Afegit emoji personalitzat';
+	@override String get updateCustomEmoji => 'Actualitzat emoji personalitzat';
+	@override String get deleteCustomEmoji => 'Esborrat emoji personalitzat';
+	@override String get updateServerSettings => 'Configuració del servidor actualitzada';
+	@override String get updateUserNote => 'Nota de moderació actualitzada';
+	@override String get deleteDriveFile => 'Fitxer esborrat';
+	@override String get deleteNote => 'Nota esborrada';
+	@override String get createGlobalAnnouncement => 'Anunci global creat';
+	@override String get createUserAnnouncement => 'Anunci individual creat';
+	@override String get updateGlobalAnnouncement => 'Anunci global actualitzat';
+	@override String get updateUserAnnouncement => 'Anunci individual actualitzat ';
+	@override String get deleteGlobalAnnouncement => 'Anunci global esborrat';
+	@override String get deleteUserAnnouncement => 'Anunci individual esborrat ';
 	@override String get resetPassword => 'Restableix la contrasenya';
 	@override String get suspendRemoteInstance => 'Servidor remot suspès ';
 	@override String get unsuspendRemoteInstance => 'S\'ha tret la suspensió del servidor remot';
+	@override String get updateRemoteInstanceNote => 'Nota de moderació de la instància remota actualitzada';
 	@override String get markSensitiveDriveFile => 'Fitxer marcat com a sensible';
 	@override String get unmarkSensitiveDriveFile => 'S\'ha tret la marca de sensible del fitxer';
 	@override String get resolveAbuseReport => 'Informe resolt';
@@ -2417,6 +2700,16 @@ class _StringsMisskeyModerationLogTypesCaEs extends _StringsMisskeyModerationLog
 	@override String get deleteAvatarDecoration => 'S\'ha esborrat la decoració de l\'avatar ';
 	@override String get unsetUserAvatar => 'Esborrar l\'avatar d\'aquest usuari';
 	@override String get unsetUserBanner => 'Esborrar el bàner d\'aquest usuari';
+	@override String get createSystemWebhook => 'Crear un SystemWebhook';
+	@override String get updateSystemWebhook => 'Actualitzar SystemWebhook';
+	@override String get deleteSystemWebhook => 'Esborrar SystemWebhook';
+	@override String get createAbuseReportNotificationRecipient => 'Crear un destinatari per l\'informe de moderació ';
+	@override String get updateAbuseReportNotificationRecipient => 'Actualitzar destinatari per l\'informe de moderació ';
+	@override String get deleteAbuseReportNotificationRecipient => 'Esborrar destinatari de l\'informe de moderació ';
+	@override String get deleteAccount => 'Esborrar el compte ';
+	@override String get deletePage => 'Esborrar la pàgina';
+	@override String get deleteFlash => 'Esborrar el guió';
+	@override String get deleteGalleryPost => 'Esborrar la publicació de la galeria';
 }
 
 // Path: misskey.fileViewer_
@@ -2451,6 +2744,19 @@ class _StringsMisskeyExternalResourceInstallerCaEs extends _StringsMisskeyExtern
 	@override late final _StringsMisskeyExternalResourceInstallerErrorsCaEs errors_ = _StringsMisskeyExternalResourceInstallerErrorsCaEs._(_root);
 }
 
+// Path: misskey.dataSaver_
+class _StringsMisskeyDataSaverCaEs extends _StringsMisskeyDataSaverEnUs {
+	_StringsMisskeyDataSaverCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _StringsMisskeyDataSaverMediaCaEs media_ = _StringsMisskeyDataSaverMediaCaEs._(_root);
+	@override late final _StringsMisskeyDataSaverAvatarCaEs avatar_ = _StringsMisskeyDataSaverAvatarCaEs._(_root);
+	@override late final _StringsMisskeyDataSaverUrlPreviewCaEs urlPreview_ = _StringsMisskeyDataSaverUrlPreviewCaEs._(_root);
+	@override late final _StringsMisskeyDataSaverCodeCaEs code_ = _StringsMisskeyDataSaverCodeCaEs._(_root);
+}
+
 // Path: misskey.reversi_
 class _StringsMisskeyReversiCaEs extends _StringsMisskeyReversiEnUs {
 	_StringsMisskeyReversiCaEs._(_StringsCaEs root) : this._root = root, super._(root);
@@ -2461,6 +2767,28 @@ class _StringsMisskeyReversiCaEs extends _StringsMisskeyReversiEnUs {
 	@override String get total => 'Total';
 }
 
+// Path: misskey.embedCodeGen_
+class _StringsMisskeyEmbedCodeGenCaEs extends _StringsMisskeyEmbedCodeGenEnUs {
+	_StringsMisskeyEmbedCodeGenCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Personalitza el codi per incrustar';
+	@override String get header => 'Mostrar la capçalera';
+	@override String get autoload => 'Carregar automàticament (no recomanat)';
+	@override String get maxHeight => 'Alçada màxima';
+	@override String get maxHeightDescription => '0 anul·la la configuració màxima. Per evitar que continuï creixent verticalment, especifiqui qualsevol valor.';
+	@override String get maxHeightWarn => 'El límit màxim d\'alçada és nul (0). Si això no és un canvi previst, estableix el màxim d\'alçada a un cert valor.';
+	@override String get previewIsNotActual => 'La visualització és diferent de la que es mostra quan s\'implanta.';
+	@override String get rounded => 'Angle recte';
+	@override String get border => 'Afegeix un marc al contenidor';
+	@override String get applyToPreview => 'Aplica a la vista prèvia';
+	@override String get generateCode => 'Crea el codi per incrustar';
+	@override String get codeGenerated => 'Codi generat';
+	@override String get codeGeneratedDescription => 'Si us plau, enganxeu el codi generat al lloc web.';
+}
+
 // Path: misskey.delivery_.type_
 class _StringsMisskeyDeliveryTypeCaEs extends _StringsMisskeyDeliveryTypeEnUs {
 	_StringsMisskeyDeliveryTypeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
@@ -2469,6 +2797,25 @@ class _StringsMisskeyDeliveryTypeCaEs extends _StringsMisskeyDeliveryTypeEnUs {
 
 	// Translations
 	@override String get none => 'S\'està publicant';
+	@override String get manuallySuspended => 'Suspendre manualment';
+	@override String get goneSuspended => 'Servidor suspès perquè el servidor s\'ha esborrat';
+	@override String get autoSuspendedForNotResponding => 'Servidor suspès perquè el servidor no respon';
+}
+
+// Path: misskey.bubbleGame_.score_
+class _StringsMisskeyBubbleGameScoreCaEs extends _StringsMisskeyBubbleGameScoreEnUs {
+	_StringsMisskeyBubbleGameScoreCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get score => 'Puntuació ';
+	@override String get scoreYen => 'Diners guanyats';
+	@override String get highScore => 'Millor puntuació ';
+	@override String get maxChain => 'Nombre màxim de combos';
+	@override String yen({required Object yen}) => '${yen}Ien';
+	@override String estimatedQty({required Object qty}) => '${qty}peces';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit}ongiris';
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
@@ -2690,6 +3037,7 @@ class _StringsMisskeyRoleOptionsCaEs extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get gtlAvailable => 'Pot veure la línia de temps global';
 	@override String get ltlAvailable => 'Pot veure la línia de temps local';
 	@override String get canPublicNote => 'Pot enviar notes públiques';
+	@override String get mentionMax => 'Nombre màxim de mencions a una nota';
 	@override String get canInvite => 'Pot crear invitacions a la instància ';
 	@override String get inviteLimit => 'Límit d\'invitacions ';
 	@override String get inviteLimitCycle => 'Temps de refresc de les invitacions';
@@ -2698,6 +3046,7 @@ class _StringsMisskeyRoleOptionsCaEs extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canManageAvatarDecorations => 'Gestiona les decoracions dels avatars ';
 	@override String get driveCapacity => 'Capacitat del disc';
 	@override String get alwaysMarkNsfw => 'Marca sempre els fitxers com a sensibles';
+	@override String get canUpdateBioMedia => 'Permet l\'edició d\'una icona o un bàner';
 	@override String get pinMax => 'Nombre màxim de notes fixades';
 	@override String get antennaMax => 'Nombre màxim d\'antenes';
 	@override String get wordMuteMax => 'Nombre màxim de caràcters permesos a les paraules silenciades';
@@ -2712,6 +3061,11 @@ class _StringsMisskeyRoleOptionsCaEs extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canSearchNotes => 'Pot cercar notes';
 	@override String get canUseTranslator => 'Pot fer servir el traductor';
 	@override String get avatarDecorationLimit => 'Nombre màxim de decoracions que es poden aplicar els avatars';
+	@override String get canImportAntennas => 'Autoritza la importació d\'antenes ';
+	@override String get canImportBlocking => 'Autoritza la importació de bloquejats';
+	@override String get canImportFollowing => 'Autoritza la importació de seguidors';
+	@override String get canImportMuting => 'Autoritza la importació de silenciats';
+	@override String get canImportUserLists => 'Autoritza la importació de llistes d\'usuaris ';
 }
 
 // Path: misskey.role_.condition_
@@ -2721,8 +3075,14 @@ class _StringsMisskeyRoleConditionCaEs extends _StringsMisskeyRoleConditionEnUs 
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get roleAssignedTo => 'Assignat a rols manuals';
 	@override String get isLocal => 'Usuari local';
 	@override String get isRemote => 'Usuari remot';
+	@override String get isCat => 'Usuaris gats';
+	@override String get isBot => 'Usuaris bots';
+	@override String get isSuspended => 'Usuari suspès';
+	@override String get isLocked => 'Comptes privats';
+	@override String get isExplorable => 'Fes que el compte aparegui a les cerques';
 	@override String get createdLessThan => 'Han passat menys de X a passat des de la creació del compte';
 	@override String get createdMoreThan => 'Han passat més de X des de la creació del compte';
 	@override String get followersLessThanOrEq => 'Té menys de X seguidors';
@@ -2842,6 +3202,8 @@ class _StringsMisskeyPagesBlocksCaEs extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get section => 'Secció ';
 	@override String get image => 'Imatges';
 	@override String get button => 'Botó ';
+	@override String get dynamic => 'Blocs dinàmics';
+	@override String dynamicDescription({required Object play}) => 'Aquest bloc és antic. Ara en endavant fes servir ${play}';
 	@override String get note => 'Incorporar una Nota';
 	@override late final _StringsMisskeyPagesBlocksNoteCaEs note_ = _StringsMisskeyPagesBlocksNoteCaEs._(_root);
 }
@@ -2854,11 +3216,22 @@ class _StringsMisskeyNotificationTypesCaEs extends _StringsMisskeyNotificationTy
 
 	// Translations
 	@override String get all => 'Tots';
+	@override String get note => 'Notes noves';
 	@override String get follow => 'Seguint';
 	@override String get mention => 'Menció';
+	@override String get reply => 'Respostes';
 	@override String get renote => 'Renotar';
 	@override String get quote => 'Citar';
 	@override String get reaction => 'Reaccions';
+	@override String get pollEnded => 'Enquesta terminada';
+	@override String get receiveFollowRequest => 'Rebuda una petició de seguiment';
+	@override String get followRequestAccepted => 'Petició de seguiment acceptada';
+	@override String get roleAssigned => 'Rol donat';
+	@override String get achievementEarned => 'Assoliment desbloquejat';
+	@override String get exportCompleted => 'Exportació completada';
+	@override String get login => 'Iniciar sessió';
+	@override String get test => 'Prova la notificació';
+	@override String get app => 'Notificacions d\'aplicacions';
 }
 
 // Path: misskey.notification_.actions_
@@ -2889,6 +3262,35 @@ class _StringsMisskeyDeckColumnsCaEs extends _StringsMisskeyDeckColumnsEnUs {
 	@override String get channel => 'Canals';
 	@override String get mentions => 'Mencions';
 	@override String get direct => 'Publicacions directes';
+	@override String get roleTimeline => 'Línia de temps dels rols';
+}
+
+// Path: misskey.webhookSettings_.events_
+class _StringsMisskeyWebhookSettingsEventsCaEs extends _StringsMisskeyWebhookSettingsEventsEnUs {
+	_StringsMisskeyWebhookSettingsEventsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get follow => 'Quan se segueix a un usuari';
+	@override String get followed => 'Quan et segueixen';
+	@override String get note => 'Quan es publica una nota';
+	@override String get reply => 'Quan es rep una resposta';
+	@override String get renote => 'Quan es renoti';
+	@override String get reaction => 'Quan es rep una reacció ';
+	@override String get mention => 'Quan et mencionen';
+}
+
+// Path: misskey.webhookSettings_.systemEvents_
+class _StringsMisskeyWebhookSettingsSystemEventsCaEs extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
+	_StringsMisskeyWebhookSettingsSystemEventsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get abuseReport => 'Quan reps un nou informe de moderació ';
+	@override String get abuseReportResolved => 'Quan resols un informe de moderació ';
+	@override String get userCreated => 'Quan es crea un usuari';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
@@ -2898,7 +3300,14 @@ class _StringsMisskeyAbuseReportNotificationRecipientCaEs extends _StringsMisske
 	@override final _StringsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get createRecipient => 'Afegeix un destinatari a l\'informe de moderació ';
+	@override String get modifyRecipient => 'Editar un destinatari en l\'informe de moderació ';
+	@override String get recipientType => 'Tipus de notificació ';
 	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(_root);
+	@override String get keywords => 'Paraules clau';
+	@override String get notifiedUser => 'Usuaris que s\'han de notificar ';
+	@override String get notifiedWebhook => 'Webhook que s\'ha de fer servir';
+	@override String get deleteConfirm => 'Segur que vols esborrar el destinatari de l\'informe de moderació?';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -2953,6 +3362,56 @@ class _StringsMisskeyExternalResourceInstallerErrorsCaEs extends _StringsMisskey
 
 	// Translations
 	@override late final _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs invalidParams_ = _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs resourceTypeNotSupported_ = _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs failedToFetch_ = _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs hashUnmatched_ = _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs pluginParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs pluginInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs themeParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs._(_root);
+	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs themeInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs._(_root);
+}
+
+// Path: misskey.dataSaver_.media_
+class _StringsMisskeyDataSaverMediaCaEs extends _StringsMisskeyDataSaverMediaEnUs {
+	_StringsMisskeyDataSaverMediaCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Carregant multimèdia ';
+	@override String get description => 'Desactiva la càrrega automàtica d\'imatges i vídeos. Les imatges i els vídeos amagats es carregaran quan es faci clic a sobre.';
+}
+
+// Path: misskey.dataSaver_.avatar_
+class _StringsMisskeyDataSaverAvatarCaEs extends _StringsMisskeyDataSaverAvatarEnUs {
+	_StringsMisskeyDataSaverAvatarCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Avatars animats';
+	@override String get description => 'Detenir l\'animació dels avatars animats. Les imatges animades solen tenir un pes més gran que les imatges normals, reduint el tràfic disponible.';
+}
+
+// Path: misskey.dataSaver_.urlPreview_
+class _StringsMisskeyDataSaverUrlPreviewCaEs extends _StringsMisskeyDataSaverUrlPreviewEnUs {
+	_StringsMisskeyDataSaverUrlPreviewCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Miniatures vista prèvia de l\'URL';
+	@override String get description => 'Les imatges en miniatura que serveixen com a vista prèvia de les URLs no es tornaran a carregar.';
+}
+
+// Path: misskey.dataSaver_.code_
+class _StringsMisskeyDataSaverCodeCaEs extends _StringsMisskeyDataSaverCodeEnUs {
+	_StringsMisskeyDataSaverCodeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ressaltat del codi ';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -3888,6 +4347,8 @@ class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs extends _
 
 	// Translations
 	@override String get mail => 'Correu electrònic';
+	@override String get webhook => 'Webhook';
+	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
@@ -3898,6 +4359,85 @@ class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs extends _S
 
 	// Translations
 	@override String get title => 'Paràmetres no vàlids ';
+	@override String get description => 'No hi ha suficient informació per carregar les dades del lloc extern. Confirma l\'URL que hi ha escrita.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
+class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'El recurs extern no està suportat.';
+	@override String get description => 'Aquesta mena de recurs no està suportat. Contacta amb l\'administrador.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
+class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs extends _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ha fallat l\'obtenció de dades';
+	@override String get fetchErrorDescription => 'Ha aparegut un error comunicant-se amb el lloc extern. Si després d\'intentar-ho un altre cop no es resol, contacta amb l\'administrador.';
+	@override String get parseErrorDescription => 'Ha aparegut un error processant les dades carregades del lloc extern. Contacta amb l\'administrador.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
+class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ha fallat la verificació de les dades';
+	@override String get description => 'Ha aparegut un error verificant les dades obtingudes. Com a mesura de seguretat la instal·lació no pot continuar. Contacta amb l\'administrador.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
+class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Error d\'AiScript';
+	@override String get description => 'Les dades sol·licitades s\'han obtingut correctament, però hem trobat un error durant el processament d\'AiScript. Contacta amb l\'autor de l\'afegit. Detalls de l\'error es pot veure a la consola JavaScript.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
+class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'La instal·lació de l\'afegit a fallat';
+	@override String get description => 'Ha aparegut un error durant la instal·lació de l\'afegit. Intenta-ho una altra vegada. El detall de l\'error es pot veure a la consola JavaScript.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
+class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ha fallat el processament del tema';
+	@override String get description => 'Les dades sol·licitades s\'han obtingut correctament, però hem trobat un error durant el processament del tema. Contacta amb l\'autor de l\'afegit. Detalls de l\'error es pot veure a la consola JavaScript.';
+}
+
+// Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
+class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
+	_StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'La instal·lació del tema a fallat';
+	@override String get description => 'Ha aparegut un error durant la instal·lació del tema. Intenta-ho una altra vegada. El detall de l\'error es pot veure a la consola JavaScript.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
@@ -3909,4 +4449,15 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs extends _StringsMi
 	// Translations
 	@override String get cw => 'Això et farà venir gana!';
 	@override String get note => 'Acabo de menjar-me un donut de xocolata 🍩😋';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
+class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Enviar un correu electrònic a tots els moderadors quan es rep un informe de moderació ';
+	@override String get webhook => 'Enviar una notificació al SystemWebhook quan es rebi o es resolgui un informe de moderació ';
 }

@@ -545,7 +545,6 @@ class _StringsMisskeyCsCz extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'O ${x}';
 	@override String get emojiStyle => 'Styl emoji';
 	@override String get native => 'Výchozí';
-	@override String get disableDrawer => 'Nepoužívat šuplíkové menu';
 	@override String get showNoteActionsOnlyHover => 'Zobrazit akce poznámky jenom při naběhnutí myši';
 	@override String get noHistory => 'Žádná historie';
 	@override String get signinHistory => 'Historie přihlášení';
@@ -2545,6 +2544,7 @@ class _StringsMisskeyNotificationTypesCsCz extends _StringsMisskeyNotificationTy
 	@override String get receiveFollowRequest => 'Obdržené žádosti o sledování';
 	@override String get followRequestAccepted => 'Přijaté žádosti o sledování';
 	@override String get achievementEarned => 'Úspěch odemčen';
+	@override String get login => 'Přihlásit se';
 	@override String get app => 'Oznámení z propojených aplikací';
 }
 

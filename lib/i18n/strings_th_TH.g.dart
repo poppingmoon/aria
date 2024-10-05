@@ -586,7 +586,6 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'เกี่ยวกับ ${x}';
 	@override String get emojiStyle => 'สไตล์ของเอโมจิ';
 	@override String get native => 'ภาษาแม่';
-	@override String get disableDrawer => 'ไม่แสดงเมนูในรูปแบบลิ้นชัก';
 	@override String get showNoteActionsOnlyHover => 'แสดงการดำเนินการโน้ตเมื่อโฮเวอร์(วางเมาส์เหนือ)เท่านั้น';
 	@override String get showReactionsCount => 'แสดงจำนวนรีแอกชั่นในโน้ต';
 	@override String get noHistory => 'ไม่มีประวัติ';
@@ -3282,6 +3281,7 @@ class _StringsMisskeyNotificationTypesThTh extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => 'อนุมัติให้ติดตามแล้ว';
 	@override String get roleAssigned => 'ให้บทบาท';
 	@override String get achievementEarned => 'ปลดล็อกความสำเร็จแล้ว';
+	@override String get login => 'เข้าสู่ระบบ';
 	@override String get app => 'การแจ้งเตือนจากแอปที่มีลิงก์';
 }
 

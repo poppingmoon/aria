@@ -460,6 +460,7 @@ notification_:
     renote: "Renote"
     quote: "ອ້າງອີງ"
     reaction: "Reaction"
+    login: "ເຂົ້າ​ສູ່​ລະ​ບົບ"
   actions_:
     reply: "ຕອບ​ກັບ"
     renote: "Renote"

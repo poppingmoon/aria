@@ -490,6 +490,7 @@ notification_:
     renote: "Herdelen"
     quote: "Quote"
     reaction: "Reacties"
+    login: "Inloggen"
   actions_:
     reply: "Antwoord"
     renote: "Herdelen"

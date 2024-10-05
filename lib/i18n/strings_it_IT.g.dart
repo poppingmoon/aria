@@ -80,7 +80,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 
 	// Translations
 	@override String get lang__ => 'Italiano';
-	@override String get headlineMisskey => 'Rete collegata tramite note';
+	@override String get headlineMisskey => 'Rete collegata tramite Note';
 	@override String get introMisskey => 'Eccoci! Misskey è un servizio di microblogging decentralizzato, libero e aperto. \n\n📡 Puoi pubblicare «Note» per condividere ciò che sta succedendo o per dire a tutti qualcosa su di te. \n\n👍 Puoi reagire inviando emoji rapidi alle «Note» provenienti da altri profili nel Fediverso.\n\n🚀 Esplora un nuovo mondo insieme a noi!';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} è uno dei servizi (chiamati istanze) che utilizzano la piattaforma open source <b>Misskey</b>.';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
@@ -140,6 +140,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get copyFolderId => 'Copia ID della cartella';
 	@override String get copyProfileUrl => 'Copia URL del profilo';
 	@override String get searchUser => 'Cerca profilo';
+	@override String get searchThisUsersNotes => 'Cerca le sue Note';
 	@override String get reply => 'Rispondi';
 	@override String get loadMore => 'Mostra di più';
 	@override String get showMore => 'Espandi';
@@ -234,6 +235,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get selectChannel => 'Seleziona canale';
 	@override String get selectAntenna => 'Scegli un\'antenna';
 	@override String get editAntenna => 'Modifica Antenna';
+	@override String get createAntenna => 'Crea Antenna';
 	@override String get selectWidget => 'Seleziona il riquadro';
 	@override String get editWidgets => 'Modifica i riquadri';
 	@override String get editWidgetsExit => 'Conferma le modifiche';
@@ -274,6 +276,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get proxyAccount => 'Profilo proxy';
 	@override String get proxyAccountDescription => 'Un profilo proxy funziona come follower per i profili remoti, sotto certe condizioni. Ad esempio, quando un profilo locale ne inserisce uno remoto in una lista (senza seguirlo), se nessun altro segue quel profilo remoto, le attività non possono essere distribuite. Dunque, il profilo proxy le seguirà per tutti.';
 	@override String get host => 'Host';
+	@override String get selectSelf => 'Segli me';
 	@override String get selectUser => 'Seleziona profilo';
 	@override String get recipient => 'Destinatario';
 	@override String get annotation => 'Annotazione preventiva';
@@ -289,6 +292,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get stopActivityDelivery => 'Interrompi la distribuzione di attività';
 	@override String get blockThisInstance => 'Bloccare l\'istanza';
 	@override String get silenceThisInstance => 'Silenziare l\'istanza';
+	@override String get mediaSilenceThisInstance => 'Silenzia i media dell\'istanza';
 	@override String get operations => 'Operazioni';
 	@override String get software => 'Software';
 	@override String get version => 'Versione';
@@ -310,6 +314,10 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Elenca le istanze che vuoi bloccare, una per riga. Esse non potranno più interagire con la tua istanza.';
 	@override String get silencedInstances => 'Istanze silenziate';
 	@override String get silencedInstancesDescription => 'Elenca i nomi host delle istanze che vuoi silenziare. Tutti i profili nelle istanze silenziate vengono trattati come tali. Possono solo inviare richieste di follow e menzionare soltanto i profili locali che seguono. Le istanze bloccate non sono interessate.';
+	@override String get mediaSilencedInstances => 'Istanze coi media silenziati';
+	@override String get mediaSilencedInstancesDescription => 'Elenca i nomi host delle istanze di cui vuoi silenziare i media, uno per riga. Tutti gli allegati dei profili nelle istanze silenziate per via degli allegati espliciti, verranno impostati come tali, le emoji personalizzate non saranno disponibili. Le istanze bloccate sono escluse.';
+	@override String get federationAllowedHosts => 'Server a cui consentire la federazione';
+	@override String get federationAllowedHostsDescription => 'Indica gli host dei server a cui è consentita la federazione, uno per ogni linea.';
 	@override String get muteAndBlock => 'Silenziare e bloccare';
 	@override String get mutedUsers => 'Profili silenziati';
 	@override String get blockedUsers => 'Profili bloccati';
@@ -408,6 +416,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get deleteFolder => 'Elimina cartella';
 	@override String get folder => 'Cartella';
 	@override String get addFile => 'Allega';
+	@override String get showFile => 'Visualizza file';
 	@override String get emptyDrive => 'Il Drive è vuoto';
 	@override String get emptyFolder => 'La cartella è vuota';
 	@override String get unableToDelete => 'Eliminazione impossibile';
@@ -529,7 +538,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get securityKey => 'Chiave di sicurezza';
 	@override String get lastUsed => 'Ultima attività';
 	@override String lastUsedAt({required Object t}) => 'Uso più recente: ${t}';
-	@override String get unregister => 'Annulla l\'iscrizione';
+	@override String get unregister => 'Rimuovi autenticazione a due fattori (2FA/MFA)';
 	@override String get passwordLessLogin => 'Accedi senza password';
 	@override String get passwordLessLoginDescription => 'Accedi senza password, usando la chiave di sicurezza';
 	@override String get resetPassword => 'Ripristina la password';
@@ -583,7 +592,10 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Informazioni su ${x}';
 	@override String get emojiStyle => 'Stile emoji';
 	@override String get native => 'Nativo';
-	@override String get disableDrawer => 'Non mostrare il menù sul drawer';
+	@override String get menuStyle => 'Stile menu';
+	@override String get style => 'Stile';
+	@override String get drawer => 'Drawer';
+	@override String get popup => 'Popup';
 	@override String get showNoteActionsOnlyHover => 'Mostra le azioni delle Note solo al passaggio del mouse';
 	@override String get showReactionsCount => 'Visualizza il numero di reazioni su una nota';
 	@override String get noHistory => 'Nessuna cronologia';
@@ -639,7 +651,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get showFixedPostForm => 'Visualizzare la finestra di pubblicazione in cima alla timeline';
 	@override String get showFixedPostFormInChannel => 'Per i canali, mostra il modulo di pubblicazione in cima alla timeline';
 	@override String get withRepliesByDefaultForNewlyFollowed => 'Quando segui nuovi profili, includi le risposte in TL come impostazione predefinita';
-	@override String get newNoteRecived => 'Nuove note da leggere';
+	@override String get newNoteRecived => 'Nuove Note da leggere';
 	@override String get sounds => 'Impostazioni suoni';
 	@override String get sound => 'Suono';
 	@override String get listen => 'Ascolta';
@@ -666,6 +678,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get descendingOrder => 'Diminuisce';
 	@override String get scratchpad => 'ScratchPad';
 	@override String get scratchpadDescription => 'Lo Scratchpad offre un ambiente per esperimenti di AiScript. È possibile scrivere, eseguire e confermare i risultati dell\'interazione del codice con Misskey.';
+	@override String get uiInspector => 'UI Inspector';
+	@override String get uiInspectorDescription => 'Puoi visualizzare un elenco di elementi UI presenti in memoria. I componenti dell\'interfaccia utente vengono generati dalle funzioni Ui:C:.';
 	@override String get output => 'Uscita';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Disabilita AiScript nelle pagine';
@@ -1186,6 +1200,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'Elenca, uno per linea, i nomi utente che non possono essere registrati durante la creazione del profilo. La restrizione non si applica agli amministratori. Inoltre, i profili già registrati sono esenti.';
 	@override String get createNoteFromTheFile => 'Crea Nota da questo file';
 	@override String get archive => 'Archivio';
+	@override String get archived => 'Archiviato';
+	@override String get unarchive => 'Annulla archiviazione';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Vuoi davvero archiviare ${name}?';
 	@override String get channelArchiveConfirmDescription => 'Un canale archiviato non compare nell\'elenco canali, nemmeno nei risultati di ricerca. Non può ricevere nemmeno nuove Note.';
 	@override String get thisChannelArchived => 'Questo canale è stato archiviato.';
@@ -1196,6 +1212,9 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get preventAiLearningDescription => 'Aggiungendo il campo "noai" alla risposta HTML, si indica ai Robot esterni di non usare testi e allegati per addestrare sistemi di Machine Learning (IA predittiva/generativa). Anche se è impossibile sapere se la richiesta venga onorata o semplicemente ignorata.';
 	@override String get options => 'Opzioni del ruolo';
 	@override String get specifyUser => 'Profilo specifico';
+	@override String get lookupConfirm => 'Vuoi davvero richiedere informazioni?';
+	@override String get openTagPageConfirm => 'Vuoi davvero aprire la pagina dell\'hashtag?';
+	@override String get specifyHost => 'Specifica l\'host';
 	@override String get failedToPreviewUrl => 'Anteprima non disponibile';
 	@override String get update => 'Aggiorna';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Ruoli che possono usare questa emoji come reazione';
@@ -1330,6 +1349,21 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get tryAgain => 'Per favore riprova';
 	@override String get confirmWhenRevealingSensitiveMedia => 'Richiedi conferma prima di mostrare gli allegati espliciti';
 	@override String get sensitiveMediaRevealConfirm => 'Questo allegato è esplicito, vuoi vederlo?';
+	@override String get createdLists => 'Liste create';
+	@override String get createdAntennas => 'Antenne create';
+	@override String fromX({required Object x}) => 'Da ${x}';
+	@override String get genEmbedCode => 'Ottieni il codice di incorporamento';
+	@override String get noteOfThisUser => 'Elenco di Note di questo profilo';
+	@override String get clipNoteLimitExceeded => 'Non è possibile aggiungere ulteriori Note a questa Clip.';
+	@override String get performance => 'Prestazioni';
+	@override String get modified => 'Modificato';
+	@override String get discard => 'Scarta';
+	@override String thereAreNChanges({required Object n}) => 'Ci sono ${n} cambiamenti';
+	@override String get signinWithPasskey => 'Accedi con passkey';
+	@override String get unknownWebAuthnKey => 'Questa è una passkey sconosciuta.';
+	@override String get passkeyVerificationFailed => 'La verifica della passkey non è riuscita.';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verifica della passkey è riuscita, ma l\'accesso senza password è disabilitato.';
+	@override String get messageToFollower => 'Messaggio ai follower';
 	@override late final _StringsMisskeyDeliveryItIt delivery_ = _StringsMisskeyDeliveryItIt._(_root);
 	@override late final _StringsMisskeyBubbleGameItIt bubbleGame_ = _StringsMisskeyBubbleGameItIt._(_root);
 	@override late final _StringsMisskeyAnnouncementItIt announcement_ = _StringsMisskeyAnnouncementItIt._(_root);
@@ -1401,6 +1435,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyOfflineScreenItIt offlineScreen_ = _StringsMisskeyOfflineScreenItIt._(_root);
 	@override late final _StringsMisskeyUrlPreviewSettingItIt urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingItIt._(_root);
 	@override late final _StringsMisskeyMediaControlsItIt mediaControls_ = _StringsMisskeyMediaControlsItIt._(_root);
+	@override late final _StringsMisskeyContextMenuItIt contextMenu_ = _StringsMisskeyContextMenuItIt._(_root);
+	@override late final _StringsMisskeyEmbedCodeGenItIt embedCodeGen_ = _StringsMisskeyEmbedCodeGenItIt._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1481,7 +1517,7 @@ class _StringsMisskeyInitialTutorialItIt extends _StringsMisskeyInitialTutorialE
 	@override final _StringsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get launchTutorial => 'Guarda il tutorial';
+	@override String get launchTutorial => 'Inizia il tutorial';
 	@override String get title => 'Tutorial';
 	@override String get wellDone => 'Ottimo lavoro!';
 	@override String get skipAreYouSure => 'Vuoi davvero interrompere il tutorial?';
@@ -1535,6 +1571,7 @@ class _StringsMisskeyServerSettingsItIt extends _StringsMisskeyServerSettingsEnU
 	@override String get fanoutTimelineDescription => 'Attivando questa funzionalità migliori notevolmente la capacità delle Timeline di collezionare Note, riducendo il carico sul database. Tuttavia, aumenterà l\'impiego di memoria RAM per Redis. Disattiva se il tuo server ha poca RAM o la funzionalità è irregolare.';
 	@override String get fanoutTimelineDbFallback => 'Elaborazione dati alternativa';
 	@override String get fanoutTimelineDbFallbackDescription => 'Attivando l\'elaborazione alternativa, verrà interrogato ulteriormente il database se la timeline non è nella cache. \nDisattivando, si può ridurre ulteriormente il carico del server, evitando l\'elaborazione alternativa, ma limitando l\'intervallo recuperabile delle timeline.';
+	@override String get reactionsBufferingDescription => 'Attivando questa opzione, puoi migliorare significativamente le prestazioni durante la creazione delle reazioni e ridurre il carico sul database. Tuttavia, aumenterà l\'impiego di memoria Redis.';
 	@override String get inquiryUrl => 'URL di contatto';
 	@override String get inquiryUrlDescription => 'Specificare l\'URL al modulo di contatto, oppure le informazioni con i dati di contatto dell\'amministrazione.';
 }
@@ -1973,6 +2010,7 @@ class _StringsMisskeySoundSettingsItIt extends _StringsMisskeySoundSettingsEnUs 
 	@override String get driveFileTypeWarnDescription => 'Per favore, scegli un file di tipo audio';
 	@override String get driveFileDurationWarn => 'La durata dell\'audio è troppo lunga';
 	@override String get driveFileDurationWarnDescription => 'Scegliere un audio lungo potrebbe interferire con l\'uso di Misskey. Vuoi continuare lo stesso?';
+	@override String get driveFileError => 'Impossibile caricare l\'audio. Si prega di modificare le impostazioni';
 }
 
 // Path: misskey.ago_
@@ -2334,6 +2372,9 @@ class _StringsMisskeyProfileItIt extends _StringsMisskeyProfileEnUs {
 	@override String get changeBanner => 'Cambia intestazione';
 	@override String get verifiedLinkDescription => 'Puoi verificare il tuo profilo mostrando una icona. Devi inserire la URL alla pagina che contiene un link al tuo profilo.';
 	@override String avatarDecorationMax({required Object max}) => 'Puoi aggiungere fino a ${max} decorazioni.';
+	@override String get followedMessage => 'Messaggio, quando qualcuno ti segue';
+	@override String get followedMessageDescription => 'Puoi impostare un breve messaggio da mostrare agli altri profili quando ti seguono.';
+	@override String get followedMessageDescriptionForLockedAccount => 'Quando approvi una richiesta di follow, verrà visualizzato questo testo.';
 }
 
 // Path: misskey.exportOrImport_
@@ -2474,6 +2515,7 @@ class _StringsMisskeyPagesItIt extends _StringsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => 'Imposta un\'immagine attraente';
 	@override String get eyeCatchingImageRemove => 'Elimina immagine attraente';
 	@override String get chooseBlock => 'Aggiungi blocco';
+	@override String get enterSectionTitle => 'Inserisci il titolo della sezione';
 	@override String get selectType => 'Seleziona tipo';
 	@override String get contentBlocks => 'Contenuto';
 	@override String get inputBlocks => 'Blocchi di input';
@@ -2523,6 +2565,7 @@ class _StringsMisskeyNotificationItIt extends _StringsMisskeyNotificationEnUs {
 	@override String renotedBySomeUsers({required Object n}) => '${n} Rinota';
 	@override String followedBySomeUsers({required Object n}) => '${n} follower';
 	@override String get flushNotification => 'Azzera le notifiche';
+	@override String exportOfXCompleted({required Object x}) => 'Abbiamo completato l\'esportazione di ${x}';
 	@override late final _StringsMisskeyNotificationTypesItIt types_ = _StringsMisskeyNotificationTypesItIt._(_root);
 	@override late final _StringsMisskeyNotificationActionsItIt actions_ = _StringsMisskeyNotificationActionsItIt._(_root);
 }
@@ -2601,10 +2644,12 @@ class _StringsMisskeyWebhookSettingsItIt extends _StringsMisskeyWebhookSettingsE
 	@override String get modifyWebhook => 'Modifica Webhook';
 	@override String get name => 'Nome';
 	@override String get secret => 'Segreto';
+	@override String get trigger => 'Trigger';
 	@override String get active => 'Attivo';
 	@override late final _StringsMisskeyWebhookSettingsEventsItIt events_ = _StringsMisskeyWebhookSettingsEventsItIt._(_root);
 	@override late final _StringsMisskeyWebhookSettingsSystemEventsItIt systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsItIt._(_root);
 	@override String get deleteConfirm => 'Vuoi davvero eliminare il Webhook?';
+	@override String get testRemarks => 'Clicca il bottone a destra dell\'interruttore, per provare l\'invio di un webhook con dati fittizi.';
 }
 
 // Path: misskey.abuseReport_
@@ -2666,6 +2711,10 @@ class _StringsMisskeyModerationLogTypesItIt extends _StringsMisskeyModerationLog
 	@override String get createAbuseReportNotificationRecipient => 'Crea destinatario per le notifiche di segnalazioni';
 	@override String get updateAbuseReportNotificationRecipient => 'Aggiorna destinatario notifiche di segnalazioni';
 	@override String get deleteAbuseReportNotificationRecipient => 'Elimina destinatario notifiche di segnalazioni';
+	@override String get deleteAccount => 'Quando viene eliminato un profilo';
+	@override String get deletePage => 'Pagina eliminata';
+	@override String get deleteFlash => 'Play eliminato';
+	@override String get deleteGalleryPost => 'Eliminazione pubblicazione nella Galleria';
 }
 
 // Path: misskey.fileViewer_
@@ -2822,6 +2871,41 @@ class _StringsMisskeyMediaControlsItIt extends _StringsMisskeyMediaControlsEnUs 
 	@override String get loop => 'Ripetizione infinita';
 }
 
+// Path: misskey.contextMenu_
+class _StringsMisskeyContextMenuItIt extends _StringsMisskeyContextMenuEnUs {
+	_StringsMisskeyContextMenuItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Menu contestuale';
+	@override String get app => 'Applicazione';
+	@override String get appWithShift => 'Applicazione Shift+Tasto';
+	@override String get native => 'Interfaccia utente del browser';
+}
+
+// Path: misskey.embedCodeGen_
+class _StringsMisskeyEmbedCodeGenItIt extends _StringsMisskeyEmbedCodeGenEnUs {
+	_StringsMisskeyEmbedCodeGenItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Personalizza il codice di incorporamento';
+	@override String get header => 'Mostra la testata';
+	@override String get autoload => 'Carica automaticamente di più (sconsigliato)';
+	@override String get maxHeight => 'Altezza massima';
+	@override String get maxHeightDescription => 'Specifica un valore per evitare che continui a crescere verticalmente. Il valore 0 disabilita il limite d\'altezza.';
+	@override String get maxHeightWarn => 'L\'altezza massima è disabilitata (0). Se l\'effetto è indesiderato, prova a impostare l\'altezza massima a un valore specifico.';
+	@override String get previewIsNotActual => 'Poiché supera l\'intervallo che può essere visualizzato in anteprima, la visualizzazione vera e propria sarà diversa quando effettivamente incorporata.';
+	@override String get rounded => 'Bordo arrotondato';
+	@override String get border => 'Aggiungi un bordo al contenitore';
+	@override String get applyToPreview => 'Applica all\'anteprima';
+	@override String get generateCode => 'Crea il codice di incorporamento';
+	@override String get codeGenerated => 'Codice generato';
+	@override String get codeGeneratedDescription => 'Incolla il codice appena generato sul tuo sito web.';
+}
+
 // Path: misskey.delivery_.type_
 class _StringsMisskeyDeliveryTypeItIt extends _StringsMisskeyDeliveryTypeEnUs {
 	_StringsMisskeyDeliveryTypeItIt._(_StringsItIt root) : this._root = root, super._(root);
@@ -2883,10 +2967,10 @@ class _StringsMisskeyInitialTutorialNoteItIt extends _StringsMisskeyInitialTutor
 	// Translations
 	@override String get title => 'Cosa sono le Note?';
 	@override String get description => 'Gli status su Misskey sono chiamati "Note". Le Note sono elencate in ordine cronologico nelle timeline e vengono aggiornate in tempo reale.';
-	@override String get reply => 'Puoi rispondere alle Note. Puoi anche rispondere alle risposte e continuare i dialoghi come un conversazioni.';
-	@override String get renote => 'Puoi ri-condividere le Note, facendole rifluire sulla Timeline. Puoi anche aggiungere testo e citare altri profili.';
-	@override String get reaction => 'Puoi aggiungere una reazione. Nella pagina successiva spiegheremo i dettagli.';
-	@override String get menu => 'Puoi svolgere varie attività, come visualizzare i dettagli delle Note o copiare i collegamenti.';
+	@override String get reply => 'Puoi rispondere alle Note, alle altre risposte e dialogare in conversazioni.';
+	@override String get renote => 'Puoi ri-condividere le Note, ritorneranno sulla Timeline. Aggiungendo del testo, scriverai una Citazione.';
+	@override String get reaction => 'Puoi aggiungere una reazione. Nella pagina successiva ti spiego come.';
+	@override String get menu => 'Per altre attività, ad esempio, vedere i dettagli delle Note o copiare i collegamenti.';
 }
 
 // Path: misskey.initialTutorial_.reaction_
@@ -2897,7 +2981,7 @@ class _StringsMisskeyInitialTutorialReactionItIt extends _StringsMisskeyInitialT
 
 	// Translations
 	@override String get title => 'Cosa sono le Reazioni?';
-	@override String get description => 'Puoi reagire alle Note. Le sensazioni che non si riescono a trasmettere con i "Mi piace" si possono esprimere facilmente inviando una reazione.';
+	@override String get description => 'Reazioni alle Note. Le sensazioni che non si possono descrivere con "Mi piace" si esprimono facilmente con le reazioni.';
 	@override String get letsTryReacting => 'Puoi aggiungere una Reazione cliccando il bottone "+" (più) della relativa Nota. Prova ad aggiungerne una a questa Nota di esempio!';
 	@override String get reactToContinue => 'Aggiungere la Reazione ti consentirà di procedere col tutorial.';
 	@override String get reactNotification => 'Quando qualcuno reagisce alle tue Note, ricevi una notifica in tempo reale.';
@@ -2918,7 +3002,7 @@ class _StringsMisskeyInitialTutorialTimelineItIt extends _StringsMisskeyInitialT
 	@override String get social => 'sia le Note della Timeline Home che quelle della Timeline Locale, insieme!';
 	@override String get global => 'le Note da pubblicate da tutte le altre istanze federate con la nostra.';
 	@override String get description2 => 'Nella parte superiore dello schermo, puoi scegliere una Timeline o l\'altra in qualsiasi momento.';
-	@override String description3({required Object link}) => 'Ci sono anche sequenze temporali di elenchi, sequenze temporali di canali, ecc. Per ulteriori dettagli, consultare il ${link}.\nPuoi vedere anche Timeline delle liste di profili (se ne hai create), canali, ecc... Per i dettagli, visita ${link}.';
+	@override String description3({required Object link}) => 'Ci sono anche sequenze temporali di elenchi, sequenze temporali di canali, ecc. Per ulteriori dettagli, consultare la ${link}.\nPuoi vedere anche Timeline delle liste di profili (se ne hai create), canali, ecc... Per i dettagli, c\'è la ${link}.';
 }
 
 // Path: misskey.initialTutorial_.postNote_
@@ -3094,6 +3178,11 @@ class _StringsMisskeyRoleOptionsItIt extends _StringsMisskeyRoleOptionsEnUs {
 	@override String get canSearchNotes => 'Ricercare nelle Note';
 	@override String get canUseTranslator => 'Tradurre le Note';
 	@override String get avatarDecorationLimit => 'Numero massimo di decorazioni foto profilo installabili';
+	@override String get canImportAntennas => 'Può importare Antenne';
+	@override String get canImportBlocking => 'Può importare Blocchi';
+	@override String get canImportFollowing => 'Può importare Following';
+	@override String get canImportMuting => 'Può importare Silenziati';
+	@override String get canImportUserLists => 'Può importare liste di Profili';
 }
 
 // Path: misskey.role_.condition_
@@ -3256,6 +3345,9 @@ class _StringsMisskeyNotificationTypesItIt extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => 'Richiesta di follow accettata';
 	@override String get roleAssigned => 'Ruolo concesso';
 	@override String get achievementEarned => 'Risultato raggiunto';
+	@override String get exportCompleted => 'Esportazione completata';
+	@override String get login => 'Accedi';
+	@override String get test => 'Prova la notifica';
 	@override String get app => 'Notifiche da applicazioni';
 }
 
@@ -3315,6 +3407,7 @@ class _StringsMisskeyWebhookSettingsSystemEventsItIt extends _StringsMisskeyWebh
 	// Translations
 	@override String get abuseReport => 'Quando arriva una segnalazione';
 	@override String get abuseReportResolved => 'Quando una segnalazione è risolta';
+	@override String get userCreated => 'Quando viene creato un profilo';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

@@ -518,7 +518,6 @@ class _StringsMisskeyRoRo extends _StringsMisskeyEnUs {
 	@override String get language => 'Limbă';
 	@override String get uiLanguage => 'Limba interfeței';
 	@override String aboutX({required Object x}) => 'Despre ${x}';
-	@override String get disableDrawer => 'Nu folosi meniuri în stil sertar';
 	@override String get noHistory => 'Nu există istoric';
 	@override String get signinHistory => 'Istoric autentificări';
 	@override String get doing => 'Se procesează...';
@@ -1053,6 +1052,7 @@ class _StringsMisskeyNotificationTypesRoRo extends _StringsMisskeyNotificationTy
 	@override String get renote => 'Re-notează';
 	@override String get quote => 'Citează';
 	@override String get reaction => 'Reacție';
+	@override String get login => 'Autentifică-te';
 }
 
 // Path: misskey.notification_.actions_

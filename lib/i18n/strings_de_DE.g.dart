@@ -565,7 +565,6 @@ class _StringsMisskeyDeDe extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Über ${x}';
 	@override String get emojiStyle => 'Emoji-Stil';
 	@override String get native => 'Nativ';
-	@override String get disableDrawer => 'Keine ausfahrbaren Menüs verwenden';
 	@override String get showNoteActionsOnlyHover => 'Notizmenü nur bei Mouseover anzeigen';
 	@override String get noHistory => 'Kein Verlauf gefunden';
 	@override String get signinHistory => 'Anmeldungsverlauf';
@@ -2859,6 +2858,7 @@ class _StringsMisskeyNotificationTypesDeDe extends _StringsMisskeyNotificationTy
 	@override String get receiveFollowRequest => 'Erhaltene Follow-Anfragen';
 	@override String get followRequestAccepted => 'Akzeptierte Follow-Anfragen';
 	@override String get achievementEarned => 'Errungenschaft freigeschaltet';
+	@override String get login => 'Anmelden';
 	@override String get app => 'Benachrichtigungen von Apps';
 }
 

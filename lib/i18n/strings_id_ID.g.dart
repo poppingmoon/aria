@@ -140,6 +140,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get copyFolderId => 'Salin Folder';
 	@override String get copyProfileUrl => 'Salin Alamat Web Profil';
 	@override String get searchUser => 'Cari pengguna';
+	@override String get searchThisUsersNotes => 'Mencari catatan pengguna';
 	@override String get reply => 'Balas';
 	@override String get loadMore => 'Selebihnya';
 	@override String get showMore => 'Selebihnya';
@@ -234,6 +235,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get selectChannel => 'Pilih kanal';
 	@override String get selectAntenna => 'Pilih Antena';
 	@override String get editAntenna => 'Sunting antena';
+	@override String get createAntenna => 'Membuat antena.';
 	@override String get selectWidget => 'Pilih gawit';
 	@override String get editWidgets => 'Sunting gawit';
 	@override String get editWidgetsExit => 'Selesai';
@@ -582,7 +584,6 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Tentang ${x}';
 	@override String get emojiStyle => 'Gaya emoji';
 	@override String get native => 'Native';
-	@override String get disableDrawer => 'Jangan gunakan menu bergaya laci';
 	@override String get showNoteActionsOnlyHover => 'Hanya tampilkan aksi catatan saat ditunjuk';
 	@override String get showReactionsCount => 'Lihat jumlah reaksi dalam catatan';
 	@override String get noHistory => 'Tidak ada riwayat';
@@ -3240,6 +3241,7 @@ class _StringsMisskeyNotificationTypesIdId extends _StringsMisskeyNotificationTy
 	@override String get followRequestAccepted => 'Permintaan mengikuti disetujui';
 	@override String get roleAssigned => 'Peran Diberikan';
 	@override String get achievementEarned => 'Pencapaian didapatkan';
+	@override String get login => 'Masuk';
 	@override String get app => 'Notifikasi dari aplikasi tertaut';
 }
 
