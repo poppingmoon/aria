@@ -204,10 +204,12 @@ class PostPage extends HookConsumerWidget {
                           clipBehavior: Clip.antiAlias,
                           child: request.isRenote
                               ? NoteWidget(
+                                  key: const ValueKey('renote'),
                                   account: account.value,
                                   noteId: request.renoteId!,
                                 )
                               : NoteWidget(
+                                  key: const ValueKey('note'),
                                   account: account.value,
                                   noteId: '',
                                   note: note,
