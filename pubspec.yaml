@@ -63,7 +63,7 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 459c6ad309f19dfcd183b7e41092ed60364597aa
+      ref: e5213df6d305d1343f28429b6b6341ac91d9c98a
   multi_split_view: ^3.5.0
   package_info_plus: ^8.0.2
   photo_view: ^0.15.0

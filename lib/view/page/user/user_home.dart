@@ -313,6 +313,42 @@ class _UserHome extends ConsumerWidget {
                       color: colors.panel,
                     ),
                   ),
+                  if (user
+                      case UserDetailedNotMeWithRelations(
+                            :final followedMessage?
+                          ) ||
+                          MeDetailed(:final followedMessage?))
+                    Container(
+                      width: double.infinity,
+                      color: colors.panel,
+                      child: Card(
+                        margin: const EdgeInsets.all(8.0),
+                        color: Color.lerp(colors.accent, colors.panel, 0.85),
+                        clipBehavior: Clip.hardEdge,
+                        child: InkWell(
+                          onLongPress: () =>
+                              copyToClipboard(context, followedMessage),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Text(
+                                  t.misskey.messageToFollower,
+                                  style: Theme.of(context).textTheme.labelSmall,
+                                ),
+                                Mfm(
+                                  account: account,
+                                  text: followedMessage,
+                                  simple: true,
+                                  emojis: user.emojis,
+                                  author: user,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   Material(
                     color: colors.panel,
                     child: SizedBox(
