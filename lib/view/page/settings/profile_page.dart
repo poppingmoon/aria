@@ -270,7 +270,10 @@ class ProfilePage extends HookConsumerWidget {
                     controller: nameController,
                     decoration: InputDecoration(
                       labelText: t.misskey.profile_.name,
-                      suffixIcon: IconButton(
+                      suffix: IconButton(
+                        style: IconButton.styleFrom(
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
                         tooltip: t.misskey.save,
                         onPressed: name.value != i.name
                             ? () {
@@ -303,10 +306,13 @@ class ProfilePage extends HookConsumerWidget {
                     controller: descriptionController,
                     decoration: InputDecoration(
                       labelText: t.misskey.profile_.description,
-                      hintText: t.misskey.profile_.youCanIncludeHashtags,
+                      helperText: t.misskey.profile_.youCanIncludeHashtags,
                       suffix: Column(
                         children: [
                           IconButton(
+                            style: IconButton.styleFrom(
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
                             tooltip: t.misskey.preview,
                             onPressed: () =>
                                 showPreview.value = !showPreview.value,
@@ -317,6 +323,9 @@ class ProfilePage extends HookConsumerWidget {
                             ),
                           ),
                           IconButton(
+                            style: IconButton.styleFrom(
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
                             tooltip: t.misskey.save,
                             onPressed: description.value != i.description
                                 ? () {
@@ -365,7 +374,10 @@ class ProfilePage extends HookConsumerWidget {
                     controller: locationController,
                     decoration: InputDecoration(
                       labelText: t.misskey.location,
-                      suffixIcon: IconButton(
+                      suffix: IconButton(
+                        style: IconButton.styleFrom(
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                        ),
                         tooltip: t.misskey.save,
                         onPressed: location.value != i.location
                             ? () {
