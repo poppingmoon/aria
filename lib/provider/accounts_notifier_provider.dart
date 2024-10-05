@@ -33,11 +33,9 @@ class AccountsNotifier extends _$AccountsNotifier {
   }
 
   Future<void> login(Account account, String token) async {
-    if (state.contains(account)) {
-      return;
-    }
     await ref.read(tokensNotifierProvider.notifier).add(account, token);
-    state = [...state, account];
+    if (state.contains(account)) return;
+    state = {...state, account}.toList();
     await _save();
   }
 
