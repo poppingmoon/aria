@@ -1,6 +1,6 @@
 aboutAria: "Aria란"
 accessToken: "액세스 토큰"
-acknowledgements(rich): "아리아는 {miria}의 포크입니다.\n아리아의 로컬라이제이션은 {misskey}의 로컬라이제이션 파일을 기본으로 합니다."
+acknowledgements(rich): "아리아는 {miria}의 포크입니다.\n아리아의 로컬라이제이션은 {misskey}의 로컬라이제이션 파일을 기본으로 합니다.\n각 프로젝트의 기여자 여러분들께 감사드립니다."
 addTab: "탭 추가"
 alwaysExpandCw: "CW 항상 펼치기"
 alwaysExpandLongNote: "긴 노트 항상 펼치기"
