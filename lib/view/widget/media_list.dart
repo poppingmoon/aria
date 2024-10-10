@@ -68,6 +68,8 @@ class MediaList extends ConsumerWidget {
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           crossAxisCount: 2,
+          mainAxisSpacing: 4.0,
+          crossAxisSpacing: 4.0,
           children: files
               .mapIndexed(
                 (index, file) => AspectRatio(

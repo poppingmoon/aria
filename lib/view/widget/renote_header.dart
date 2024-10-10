@@ -55,16 +55,16 @@ class RenoteHeader extends HookConsumerWidget {
           data: IconThemeData(color: colors.renote),
           child: Row(
             children: [
-              if (showAvatars)
+              if (showAvatars) ...[
                 UserAvatar(
                   account: account,
                   user: note.user,
                   onTap: () => context.push('/$account/users/${note.userId}'),
                 ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                child: Icon(Icons.repeat_rounded, color: colors.renote),
-              ),
+                const SizedBox(width: 2.0),
+              ],
+              Icon(Icons.repeat_rounded, color: colors.renote),
+              const SizedBox(width: 2.0),
               Expanded(
                 child: Align(
                   alignment: Alignment.centerLeft,

@@ -456,39 +456,47 @@ class NoteDetailedWidget extends HookConsumerWidget {
                           ),
                         ),
                       if (appearNote.files.isNotEmpty)
-                        MediaList(
-                          account: account,
-                          files: appearNote.files,
-                          user: note.user,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: MediaList(
+                            account: account,
+                            files: appearNote.files,
+                            user: note.user,
+                          ),
                         ),
                       if (appearNote case Note(:final poll?))
-                        PollWidget(
-                          account: account,
-                          noteId: appearNote.id,
-                          poll: poll,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4.0),
+                          child: PollWidget(
+                            account: account,
+                            noteId: appearNote.id,
+                            poll: poll,
+                          ),
                         ),
                       if (urls != null)
                         ...urls.map(
-                          (url) => UrlPreview(account: account, link: url),
+                          (url) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
+                            child: UrlPreview(account: account, link: url),
+                          ),
                         ),
-                      if (appearNote case Note(:final renoteId?))
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: DottedBorder(
-                            color: colors.renote,
-                            borderType: BorderType.RRect,
-                            dashPattern: const [2, 4],
-                            radius: const Radius.circular(8.0),
-                            child: DefaultTextStyle.merge(
-                              style: style.apply(fontSizeFactor: 0.95),
-                              child: NoteSimpleWidget(
-                                account: account,
-                                noteId: renoteId,
-                                borderRadius: BorderRadius.circular(4.0),
-                              ),
+                      if (appearNote case Note(:final renoteId?)) ...[
+                        const SizedBox(height: 4.0),
+                        DottedBorder(
+                          color: colors.renote,
+                          borderType: BorderType.RRect,
+                          dashPattern: const [2, 4],
+                          radius: const Radius.circular(8.0),
+                          child: DefaultTextStyle.merge(
+                            style: style.apply(fontSizeFactor: 0.95),
+                            child: NoteSimpleWidget(
+                              account: account,
+                              noteId: renoteId,
+                              borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
                         ),
+                      ],
                     ],
                     if (appearNote case Note(:final channel?)) ...[
                       const SizedBox(height: 4.0),
