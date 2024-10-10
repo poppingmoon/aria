@@ -83,4 +83,6 @@ extension UserExtension on User {
       _ => user,
     };
   }
+
+  String get nameOrUsername => name ?? username;
 }

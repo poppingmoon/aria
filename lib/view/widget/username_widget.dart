@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../extension/user_extension.dart';
 import '../../model/account.dart';
 import 'mfm.dart';
 
@@ -14,7 +15,7 @@ List<InlineSpan> buildUsername(
   return buildMfm(
     ref,
     account: account,
-    text: user.name ?? user.username,
+    text: user.nameOrUsername,
     simple: true,
     style: style,
     emojis: user.emojis,
@@ -44,7 +45,7 @@ class UsernameWidget extends StatelessWidget {
       onLongPress: onLongPress,
       child: Mfm(
         account: account,
-        text: user.name ?? user.username,
+        text: user.nameOrUsername,
         simple: true,
         style: style,
         emojis: user.emojis,

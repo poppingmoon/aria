@@ -5,7 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
+import '../../provider/push_subscription_notifier_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 
 enum AccountSettingsDestination {
@@ -13,6 +15,7 @@ enum AccountSettingsDestination {
   privacy,
   emojiPicker,
   drive,
+  notifications,
   muteBlock,
   signOut,
 }
@@ -37,6 +40,8 @@ class AccountSettingsNavigation extends ConsumerWidget {
       AccountSettingsDestination.privacy => const Icon(Icons.lock),
       AccountSettingsDestination.emojiPicker => const Icon(Icons.emoji_symbols),
       AccountSettingsDestination.drive => const Icon(Icons.cloud),
+      AccountSettingsDestination.notifications =>
+        const Icon(Icons.notifications),
       AccountSettingsDestination.muteBlock => const Icon(Icons.block),
       AccountSettingsDestination.signOut => const Icon(Icons.logout),
     };
@@ -48,6 +53,7 @@ class AccountSettingsNavigation extends ConsumerWidget {
       AccountSettingsDestination.privacy => t.misskey.privacy,
       AccountSettingsDestination.emojiPicker => t.misskey.emojiPicker,
       AccountSettingsDestination.drive => t.misskey.drive,
+      AccountSettingsDestination.notifications => t.misskey.notifications,
       AccountSettingsDestination.muteBlock => t.misskey.muteAndBlock,
       AccountSettingsDestination.signOut => t.misskey.logout,
     };
@@ -63,6 +69,14 @@ class AccountSettingsNavigation extends ConsumerWidget {
         message: t.misskey.logoutConfirm,
       );
       if (!confirmed) return;
+      if (!ref.context.mounted) return;
+      await futureWithDialog(
+        ref.context,
+        ref
+            .read(pushSubscriptionNotifierProvider(account).notifier)
+            .unsubscribe()
+            .then((_) => true),
+      );
       await ref.read(accountsNotifierProvider.notifier).remove(account);
       if (!ref.context.mounted) return;
       final tabs = ref
@@ -93,6 +107,8 @@ class AccountSettingsNavigation extends ConsumerWidget {
         AccountSettingsDestination.emojiPicker =>
           '/settings/accounts/$account/emoji-picker',
         AccountSettingsDestination.drive => '/settings/accounts/$account/drive',
+        AccountSettingsDestination.notifications =>
+          '/settings/accounts/$account/notifications',
         AccountSettingsDestination.muteBlock =>
           '/settings/accounts/$account/mute-block',
         AccountSettingsDestination.signOut =>

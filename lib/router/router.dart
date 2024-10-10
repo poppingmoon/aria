@@ -5,7 +5,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../model/account.dart';
 import '../model/tab_settings.dart';
 import '../provider/boot_state_provider.dart';
+import '../provider/message_opened_app_notifier_provider.dart';
 import '../provider/miauth_notifier_provider.dart';
+import '../provider/push_notification_notifier_provider.dart';
 import '../provider/receive_sharing_intent_provider.dart';
 import '../provider/share_notifier_provider.dart';
 import '../util/safe_parse_double.dart';
@@ -59,6 +61,7 @@ import '../view/page/settings/languages_page.dart';
 import '../view/page/settings/mute_block_page.dart';
 import '../view/page/settings/muted_users_page.dart';
 import '../view/page/settings/note_display_page.dart';
+import '../view/page/settings/notifications_settings_page.dart';
 import '../view/page/settings/pinned_emojis_editor_page.dart';
 import '../view/page/settings/privacy_page.dart';
 import '../view/page/settings/profile_page.dart';
@@ -88,6 +91,7 @@ GoRouter router(RouterRef ref) {
           defaultTargetPlatform == TargetPlatform.iOS
       ? ref.watch(receiveSharingIntentProvider)
       : null;
+  final pushNotification = ref.watch(pushNotificationNotifierProvider);
 
   return GoRouter(
     debugLogDiagnostics: true,
@@ -196,6 +200,13 @@ GoRouter router(RouterRef ref) {
                         ),
                       ),
                     ],
+                  ),
+                  GoRoute(
+                    path: 'notifications',
+                    builder: (_, state) => NotificationsSettingsPage(
+                      account:
+                          Account.fromString(state.pathParameters['acct']!),
+                    ),
                   ),
                   GoRoute(
                     path: 'privacy',
@@ -649,10 +660,12 @@ GoRouter router(RouterRef ref) {
         return null;
       }
       if (sharedFiles?.hasValue ?? false) {
-        final needRedirect = ref.read(shareNotifierProvider);
-        if (needRedirect) {
-          return ref.read(shareNotifierProvider.notifier).redirect();
-        }
+        return Future(ref.read(shareNotifierProvider.notifier).redirect);
+      }
+      if (pushNotification.hasValue) {
+        return Future(
+          ref.read(messageOpenedAppNotifierProvider.notifier).redirect,
+        );
       }
       return null;
     },
