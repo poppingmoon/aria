@@ -46,6 +46,10 @@ class NotificationWidget extends ConsumerWidget {
                 ?.items ??
             []
         : <FollowRequest>[];
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
@@ -399,7 +403,8 @@ class NotificationWidget extends ConsumerWidget {
                         child: UserAvatar(
                           account: account,
                           user: reaction.user,
-                          size: 50.0,
+                          size: DefaultTextStyle.of(context).style.lineHeight *
+                              avatarScale,
                           onTap: () => context
                               .push('/$account/users/${reaction.user.id}'),
                         ),
@@ -498,7 +503,8 @@ class NotificationWidget extends ConsumerWidget {
                     child: UserAvatar(
                       account: account,
                       user: user,
-                      size: 50.0,
+                      size: DefaultTextStyle.of(context).style.lineHeight *
+                          avatarScale,
                       onTap: () => context.push('/$account/users/${user.id}'),
                     ),
                   ),
