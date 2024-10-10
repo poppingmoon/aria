@@ -696,10 +696,7 @@ class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
 	@override String get reporter => 'অভিযোগকারী';
 	@override String get reporteeOrigin => 'অভিযোগটির উৎস';
 	@override String get reporterOrigin => 'অভিযোগকারীর উৎস';
-	@override String get forwardReport => 'রিমোট ইন্সত্যান্সে অভিযোগটি পাঠান';
-	@override String get forwardReportIsAnonymous => 'আপনার তথ্য রিমোট ইন্সত্যান্সে পাঠানো হবে না এবং একটি বেনামী সিস্টেম অ্যাকাউন্ট হিসাবে প্রদর্শিত হবে।';
 	@override String get send => 'পাঠান';
-	@override String get abuseMarkAsResolved => 'অভিযোগটিকে সমাধাকৃত হিসাবে চিহ্নিত করুন';
 	@override String get openInNewTab => 'নতুন ট্যাবে খুলুন';
 	@override String get openInSideView => 'সাইড ভিউতে খুলুন';
 	@override String get defaultNavigationBehaviour => 'ডিফল্ট নেভিগেশন';
@@ -1842,7 +1839,6 @@ class _StringsMisskeyThemeKeysBnBd extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'বাটনের পটভূমি';
 	@override String get buttonHoverBg => 'বাটনের পটভূমি (হভার)';
 	@override String get inputBorder => 'ইনপুট ফিল্ডের বর্ডার';
-	@override String get listItemHoverBg => 'লিস্ট আইটেমের পটভূমি (হোভার)';
 	@override String get driveFolderBg => 'ড্রাইভ ফোল্ডারের পটভূমি';
 	@override String get wallpaperOverlay => 'ওয়ালপেপার ওভারলে';
 	@override String get badge => 'ব্যাজ';

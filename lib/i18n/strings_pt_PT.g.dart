@@ -73,7 +73,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override final _StringsPtPt _root; // ignore: unused_field
 
 	// Translations
-	@override String get lang__ => '日本語';
+	@override String get lang__ => 'Português';
 	@override String get headlineMisskey => 'Uma rede ligada por notas';
 	@override String get introMisskey => 'Bem-vindo! O Misskey é um serviço de microblog descentralizado de código aberto.\nCrie "notas" para compartilhar o que está acontecendo agora ou para se expressar com todos à sua volta 📡\nVocê também pode adicionar rapidamente reações às notas de outras pessoas usando a função "Reações" 👍\nVamos explorar um novo mundo 🚀';
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} é uma instância da plataforma de código aberto <b>Misskey</b>.';
@@ -99,7 +99,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get otherSettings => 'Outras configurações';
 	@override String get openInWindow => 'Abrir em um janela';
 	@override String get profile => 'Perfil';
-	@override String get timeline => 'Cronologia';
+	@override String get timeline => 'Linha do tempo';
 	@override String get noAccountDescription => 'Este usuário não tem uma descrição.';
 	@override String get login => 'Iniciar sessão';
 	@override String get loggingIn => 'Iniciando sessão…';
@@ -781,10 +781,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Denunciante';
 	@override String get reporteeOrigin => 'Origem da denúncia';
 	@override String get reporterOrigin => 'Origem do denunciante';
-	@override String get forwardReport => 'Encaminhar a denúncia para o servidor remoto';
-	@override String get forwardReportIsAnonymous => 'No servidor remoto, suas informações não serão visíveis, e você será apresentado como uma conta do sistema anônima.';
 	@override String get send => 'Enviar';
-	@override String get abuseMarkAsResolved => 'Marcar denúncia como resolvida';
 	@override String get openInNewTab => 'Abrir em nova aba';
 	@override String get openInSideView => 'Abrir em visão lateral';
 	@override String get defaultNavigationBehaviour => 'Navegação padrão';
@@ -1135,7 +1132,7 @@ class _StringsMisskeyPtPt extends _StringsMisskeyEnUs {
 	@override String get sensitiveWords => 'Palavras sensíveis';
 	@override String get sensitiveWordsDescription => 'A visibilidade de todas as notas contendo as palavras configuradas será colocadas como "Início" automaticamente. Você pode listar várias delas separando-as por linha.';
 	@override String get sensitiveWordsDescription2 => 'Utilizar espaços irá criar expressões aditivas (AND) e cercar palavras-chave com barras irá transformá-las em expressões regulares (RegEx)';
-	@override String get prohibitedWords => 'Palavras proibídas';
+	@override String get prohibitedWords => 'Palavras proibidas';
 	@override String get prohibitedWordsDescription => 'Habilita um erro ao tentar publicar uma nota contendo as palavras escolhidas. Várias palavras podem ser escolhidas, separando-as por linha.';
 	@override String get prohibitedWordsDescription2 => 'Utilizar espaços irá criar expressões aditivas (AND) e cercar palavras-chave com barras irá transformá-las em expressões regulares (RegEx)';
 	@override String get hiddenTags => 'Hashtags escondidas';
@@ -3211,7 +3208,6 @@ class _StringsMisskeyThemeKeysPtPt extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Plano de fundo de botão';
 	@override String get buttonHoverBg => 'Plano de fundo de botão (Selecionado)';
 	@override String get inputBorder => 'Borda de campo digitável';
-	@override String get listItemHoverBg => 'Plano de fundo do item de uma lista (Selecionado)';
 	@override String get driveFolderBg => 'Plano de fundo da pasta no Drive';
 	@override String get wallpaperOverlay => 'Sobreposição do papel de parede.';
 	@override String get badge => 'Emblema';
@@ -3517,7 +3513,7 @@ class _StringsMisskeyAchievementsTypesNotes1PtPt extends _StringsMisskeyAchievem
 
 	// Translations
 	@override String get title => 'Configurando o meu misskey';
-	@override String get description => 'Post uma nota pela primeira vez';
+	@override String get description => 'Poste uma nota pela primeira vez';
 	@override String get flavor => 'Divirta-se com o Misskey!';
 }
 

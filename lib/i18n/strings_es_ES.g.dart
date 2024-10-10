@@ -779,10 +779,7 @@ class _StringsMisskeyEsEs extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Reportador';
 	@override String get reporteeOrigin => 'Reportar a';
 	@override String get reporterOrigin => 'Origen del reporte';
-	@override String get forwardReport => 'Transferir un informe a una instancia remota';
-	@override String get forwardReportIsAnonymous => 'No puede ver su información de la instancia remota y aparecerá como una cuenta anónima del sistema';
 	@override String get send => 'Enviar';
-	@override String get abuseMarkAsResolved => 'Marcar reporte como resuelto';
 	@override String get openInNewTab => 'Abrir en una Nueva Pestaña';
 	@override String get openInSideView => 'Abrir en una vista al costado';
 	@override String get defaultNavigationBehaviour => 'Navegación por defecto';
@@ -3091,7 +3088,6 @@ class _StringsMisskeyThemeKeysEsEs extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Fondo de botón';
 	@override String get buttonHoverBg => 'Fondo de botón (hover)';
 	@override String get inputBorder => 'Borde de los campos de entrada';
-	@override String get listItemHoverBg => 'Fondo de elemento de listas (hover)';
 	@override String get driveFolderBg => 'Fondo de capeta del drive';
 	@override String get wallpaperOverlay => 'Transparencia del fondo de pantalla';
 	@override String get badge => 'Medalla';

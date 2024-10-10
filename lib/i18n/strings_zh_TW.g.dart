@@ -799,10 +799,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get reporter => '檢舉者';
 	@override String get reporteeOrigin => '檢舉來源';
 	@override String get reporterOrigin => '檢舉者來源';
-	@override String get forwardReport => '將報告轉送給遠端伺服器';
-	@override String get forwardReportIsAnonymous => '在遠端實例上看不到您的資訊，顯示的報告者是匿名的系统帳戶。';
 	@override String get send => '發送';
-	@override String get abuseMarkAsResolved => '處理完畢';
 	@override String get openInNewTab => '在新分頁中開啟';
 	@override String get openInSideView => '在側欄中開啟';
 	@override String get defaultNavigationBehaviour => '預設導航';
@@ -1004,6 +1001,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get continueThread => '查看更多貼文';
 	@override String get deleteAccountConfirm => '將要刪除帳戶。是否確定？';
 	@override String get incorrectPassword => '密碼錯誤。';
+	@override String get incorrectTotp => '一次性密碼錯誤，或者已過期。';
 	@override String voteConfirm({required Object choice}) => '確定投給「${choice}」？';
 	@override String get hide => '隱藏';
 	@override String get useDrawerReactionPickerForMobile => '在移動設備上使用抽屜顯示';
@@ -3276,7 +3274,6 @@ class _StringsMisskeyThemeKeysZhTw extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => '按鈕背景';
 	@override String get buttonHoverBg => '按鈕背景 (漂浮)';
 	@override String get inputBorder => '輸入框邊框';
-	@override String get listItemHoverBg => '列表物品背景 (漂浮)';
 	@override String get driveFolderBg => '雲端硬碟文件夾背景';
 	@override String get wallpaperOverlay => '壁紙覆蓋層';
 	@override String get badge => '徽章';

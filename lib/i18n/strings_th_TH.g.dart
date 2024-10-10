@@ -784,10 +784,7 @@ class _StringsMisskeyThTh extends _StringsMisskeyEnUs {
 	@override String get reporter => 'ผู้รายงาน';
 	@override String get reporteeOrigin => 'ปลายทางรายงาน';
 	@override String get reporterOrigin => 'แหล่งผู้รายงาน';
-	@override String get forwardReport => 'ส่งต่อรายงานไปยังเซิร์ฟเวอร์ระยะไกล';
-	@override String get forwardReportIsAnonymous => 'ข้อมูลของคุณจะไม่ปรากฏบนเซิร์ฟเวอร์ระยะไกลและปรากฏเป็นบัญชีระบบที่ไม่ระบุชื่อ';
 	@override String get send => 'ส่ง';
-	@override String get abuseMarkAsResolved => 'ทำเครื่องหมายรายงานว่าแก้ไขแล้ว';
 	@override String get openInNewTab => 'เปิดในแท็บใหม่';
 	@override String get openInSideView => 'เปิดในมุมมองด้านข้าง';
 	@override String get defaultNavigationBehaviour => 'พฤติกรรมการนำทางที่เป็นค่าเริ่มต้น';
@@ -3208,7 +3205,6 @@ class _StringsMisskeyThemeKeysThTh extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'ปุ่มพื้นหลัง';
 	@override String get buttonHoverBg => 'ปุ่มพื้นหลัง (โฮเวอร์)';
 	@override String get inputBorder => 'เส้นขอบของช่องป้อนข้อมูล';
-	@override String get listItemHoverBg => 'รายการไอเทมพื้นหลัง (โฮเวอร์)';
 	@override String get driveFolderBg => 'พื้นหลังโฟลเดอร์ไดรฟ์';
 	@override String get wallpaperOverlay => 'วอลล์เปเปอร์ซ้อนทับ';
 	@override String get badge => 'ตรา';

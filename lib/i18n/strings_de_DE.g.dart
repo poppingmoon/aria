@@ -760,10 +760,7 @@ class _StringsMisskeyDeDe extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Melder';
 	@override String get reporteeOrigin => 'Herkunft des Gemeldeten';
 	@override String get reporterOrigin => 'Herkunft des Meldenden';
-	@override String get forwardReport => 'Meldung an fremde Instanz weiterleiten';
-	@override String get forwardReportIsAnonymous => 'Anstatt deines Benutzerkontos wird bei der fremden Instanz ein anonymes Systemkonto als Melder angezeigt.';
 	@override String get send => 'Senden';
-	@override String get abuseMarkAsResolved => 'Meldung als gelöst markieren';
 	@override String get openInNewTab => 'In neuem Tab öffnen';
 	@override String get openInSideView => 'In Seitenansicht öffnen';
 	@override String get defaultNavigationBehaviour => 'Standardnavigationsverhalten';
@@ -2788,7 +2785,6 @@ class _StringsMisskeyThemeKeysDeDe extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Hintergrund von Schaltflächen';
 	@override String get buttonHoverBg => 'Hintergrund von Schaltflächen (Mouseover)';
 	@override String get inputBorder => 'Rahmen von Eingabefeldern';
-	@override String get listItemHoverBg => 'Hintergrund von Listeneinträgen (Mouseover)';
 	@override String get driveFolderBg => 'Hintergrund von Drive-Ordnern';
 	@override String get wallpaperOverlay => 'Hintergrundbild-Overlay';
 	@override String get badge => 'Wappen';

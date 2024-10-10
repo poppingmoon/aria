@@ -696,10 +696,7 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override String get reporter => 'المُبلّغ';
 	@override String get reporteeOrigin => 'أصل البلاغ';
 	@override String get reporterOrigin => 'أصل المُبلّغ';
-	@override String get forwardReport => 'وجّه البلاغ إلى المثيل البعيد';
-	@override String get forwardReportIsAnonymous => 'في المثيل البعيد سيظهر المبلّغ كحساب مجهول.';
 	@override String get send => 'أرسل';
-	@override String get abuseMarkAsResolved => 'علّم البلاغ كمحلول';
 	@override String get openInNewTab => 'افتح في لسان جديد';
 	@override String get defaultNavigationBehaviour => 'سلوك الملاحة الافتراضي';
 	@override String get editTheseSettingsMayBreakAccount => 'تعديل هذه الإعدادات قد يسبب عطبًا لحسابك';
@@ -2116,7 +2113,6 @@ class _StringsMisskeyThemeKeysArSa extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'خلفية الأزرار';
 	@override String get buttonHoverBg => 'خلفية الأزرار (عند التمرير فوقها)';
 	@override String get inputBorder => 'حواف حقل الإدخال';
-	@override String get listItemHoverBg => 'خلفية عناصر القائمة (عند التمرير فوقها)';
 	@override String get driveFolderBg => 'خلفية مجلد قرص التخزين';
 	@override String get messageBg => 'خلفية المحادثة';
 }
