@@ -161,7 +161,13 @@ class NoteWidget extends HookConsumerWidget {
         );
     final mfmSettings = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => (settings.advancedMfm, settings.animatedMfm),
+        (settings) => (
+          settings.advancedMfm,
+          settings.animatedMfm,
+          settings.fontFamily,
+          settings.fontSize,
+          settings.lineHeight,
+        ),
       ),
     );
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;

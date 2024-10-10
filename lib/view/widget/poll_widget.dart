@@ -8,7 +8,9 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../hook/tap_gesture_recognizer_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
+import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
@@ -28,8 +30,6 @@ class PollWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final total = poll.choices.fold(0, (acc, choice) => acc + choice.votes);
     final expiresAt = poll.expiresAt;
     final remaining = expiresAt?.difference(DateTime.now());
@@ -37,7 +37,22 @@ class PollWidget extends HookConsumerWidget {
     final isVoted =
         !poll.multiple && poll.choices.any((choice) => choice.isVoted);
     final showResult = useState(closed || isVoted);
+    final emojis =
+        ref.watch(noteProvider(account, noteId).select((note) => note?.emojis));
+    final mfmSettings = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => (
+          settings.advancedMfm,
+          settings.animatedMfm,
+          settings.fontFamily,
+          settings.fontSize,
+          settings.lineHeight,
+        ),
+      ),
+    );
     final recognizer = useTapGestureRecognizer();
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,8 +122,15 @@ class PollWidget extends HookConsumerWidget {
                                     account: account,
                                     text: choice.text,
                                     simple: true,
+                                    emojis: emojis,
                                   ),
-                                  [colors],
+                                  [
+                                    account,
+                                    choice.text,
+                                    colors,
+                                    emojis,
+                                    mfmSettings,
+                                  ],
                                 ),
                                 if (showResult.value)
                                   TextSpan(

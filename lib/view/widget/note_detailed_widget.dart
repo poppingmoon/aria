@@ -121,6 +121,17 @@ class NoteDetailedWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.noteLongPressAction),
     );
+    final mfmSettings = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => (
+          settings.advancedMfm,
+          settings.animatedMfm,
+          settings.fontFamily,
+          settings.fontSize,
+          settings.lineHeight,
+        ),
+      ),
+    );
     final conversation = appearNote.replyId != null
         ? ref.watch(conversationNotesProvider(account, noteId))
         : null;
@@ -416,6 +427,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                     colors,
                                     appearNote.user,
                                     appearNote.emojis,
+                                    mfmSettings,
                                   ],
                                 ),
                               if (appearNote.renoteId != null)
