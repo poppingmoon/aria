@@ -81,81 +81,78 @@ class UrlPreview extends HookConsumerWidget {
           Row(
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: InkWell(
-                    onTap: () => navigate(ref, account, link),
-                    onLongPress: () => showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) => UrlSheet(url: link),
-                    ),
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).colorScheme.outlineVariant,
-                          strokeAlign: BorderSide.strokeAlignOutside,
-                        ),
-                        borderRadius: BorderRadius.circular(4.0),
+                child: InkWell(
+                  onTap: () => navigate(ref, account, link),
+                  onLongPress: () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => UrlSheet(url: link),
+                  ),
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        strokeAlign: BorderSide.strokeAlignOutside,
                       ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4.0),
-                        child: Row(
-                          children: [
-                            if (thumbnail == null || hideThumbnail)
-                              SizedBox(height: imageSize)
-                            else
-                              ImageWidget(
-                                url: thumbnail,
-                                height: imageSize,
-                                width: imageSize,
-                                fit: BoxFit.cover,
-                              ),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      summalyResult?.title ?? link,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: titleStyle,
-                                    ),
-                                    Text(
-                                      summalyResult?.description ?? '',
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      style: descriptionStyle,
-                                    ),
-                                    Row(
-                                      children: [
-                                        if (icon != null) ...[
-                                          ImageWidget(
-                                            url: icon,
-                                            height: linkStyle.fontSize,
-                                            width: linkStyle.fontSize,
-                                          ),
-                                          const SizedBox(width: 4.0),
-                                        ],
-                                        Expanded(
-                                          child: Text(
-                                            summalyResult?.sitename ?? '',
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
-                                            style: linkStyle,
-                                          ),
+                      borderRadius: BorderRadius.circular(4.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(4.0),
+                      child: Row(
+                        children: [
+                          if (thumbnail == null || hideThumbnail)
+                            SizedBox(height: imageSize)
+                          else
+                            ImageWidget(
+                              url: thumbnail,
+                              height: imageSize,
+                              width: imageSize,
+                              fit: BoxFit.cover,
+                            ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    summalyResult?.title ?? link,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: titleStyle,
+                                  ),
+                                  Text(
+                                    summalyResult?.description ?? '',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: descriptionStyle,
+                                  ),
+                                  Row(
+                                    children: [
+                                      if (icon != null) ...[
+                                        ImageWidget(
+                                          url: icon,
+                                          height: linkStyle.fontSize,
+                                          width: linkStyle.fontSize,
                                         ),
+                                        const SizedBox(width: 4.0),
                                       ],
-                                    ),
-                                  ],
-                                ),
+                                      Expanded(
+                                        child: Text(
+                                          summalyResult?.sitename ?? '',
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: linkStyle,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

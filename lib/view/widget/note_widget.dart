@@ -477,25 +477,44 @@ class NoteWidget extends HookConsumerWidget {
                                 ),
                               if (!isCollapsed.value) ...[
                                 if (appearNote.files.isNotEmpty)
-                                  MediaList(
-                                    account: account,
-                                    files: appearNote.files,
-                                    user: appearNote.user,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4.0,
+                                    ),
+                                    child: MediaList(
+                                      account: account,
+                                      files: appearNote.files,
+                                      user: appearNote.user,
+                                    ),
                                   ),
                                 if (appearNote case Note(:final poll?))
-                                  PollWidget(
-                                    account: account,
-                                    noteId: appearNote.id,
-                                    poll: poll,
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4.0,
+                                    ),
+                                    child: PollWidget(
+                                      account: account,
+                                      noteId: appearNote.id,
+                                      poll: poll,
+                                    ),
                                   ),
                                 if (urls != null)
                                   ...urls.map(
-                                    (url) =>
-                                        UrlPreview(account: account, link: url),
+                                    (url) => Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 4.0,
+                                      ),
+                                      child: UrlPreview(
+                                        account: account,
+                                        link: url,
+                                      ),
+                                    ),
                                   ),
                                 if (appearNote case Note(:final renoteId?))
                                   Padding(
-                                    padding: const EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4.0,
+                                    ),
                                     child: DottedBorder(
                                       color: colors.renote,
                                       borderType: BorderType.RRect,
