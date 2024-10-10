@@ -49,6 +49,17 @@ class SubNoteContent extends HookConsumerWidget {
           generalSettingsNotifierProvider
               .select((settings) => settings.showSubNoteFooter),
         );
+    final mfmSettings = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => (
+          settings.advancedMfm,
+          settings.animatedMfm,
+          settings.fontFamily,
+          settings.fontSize,
+          settings.lineHeight,
+        ),
+      ),
+    );
     final parsed =
         note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
     final isLong = note.cw == null &&
@@ -111,7 +122,15 @@ class SubNoteContent extends HookConsumerWidget {
                       ),
                       maxLines: isCollapsed.value ? 10 : null,
                     ),
-                    [account, parsed, colors, note.user, note.emojis],
+                    [
+                      account,
+                      parsed,
+                      colors,
+                      note.user,
+                      note.emojis,
+                      isCollapsed.value,
+                      mfmSettings,
+                    ],
                   ),
                 if (note.renoteId != null)
                   WidgetSpan(
