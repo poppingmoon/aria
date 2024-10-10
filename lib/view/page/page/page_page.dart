@@ -73,7 +73,12 @@ class PagePage extends ConsumerWidget {
               ),
               textAlign: page.alignCenter ?? false ? TextAlign.center : null,
             ),
-            ...urls.map((url) => UrlPreview(account: account, link: url)),
+            ...urls.map(
+              (url) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: UrlPreview(account: account, link: url),
+              ),
+            ),
           ],
         );
       case PageSection(:final title, :final children):

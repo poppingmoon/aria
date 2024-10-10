@@ -155,51 +155,53 @@ class PollWidget extends HookConsumerWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(text: t.misskey.poll_.totalVotes(n: total)),
+        const SizedBox(height: 2.0),
+        Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: t.misskey.poll_.totalVotes(n: total)),
+              const TextSpan(text: ' · '),
+              if (!closed && !isVoted)
+                TextSpan(
+                  text: showResult.value
+                      ? t.misskey.poll_.vote
+                      : t.misskey.poll_.showResult,
+                  recognizer: recognizer
+                    ..onTap = () => showResult.value = !showResult.value,
+                )
+              else if (isVoted)
+                TextSpan(text: t.misskey.poll_.voted)
+              else if (closed)
+                TextSpan(text: t.misskey.poll_.closed),
+              if (remaining != null && !remaining.isNegative) ...[
                 const TextSpan(text: ' · '),
-                if (!closed && !isVoted)
-                  TextSpan(
-                    text: showResult.value
-                        ? t.misskey.poll_.vote
-                        : t.misskey.poll_.showResult,
-                    recognizer: recognizer
-                      ..onTap = () => showResult.value = !showResult.value,
-                  )
-                else if (isVoted)
-                  TextSpan(text: t.misskey.poll_.voted)
-                else if (closed)
-                  TextSpan(text: t.misskey.poll_.closed),
-                if (remaining != null && !remaining.isNegative) ...[
-                  const TextSpan(text: ' · '),
-                  TextSpan(
-                    text: remaining.inDays > 0
-                        ? t.misskey.poll_.remainingDays(
-                            d: remaining.inDays,
-                            h: remaining.inHours % 24,
-                          )
-                        : remaining.inHours > 0
-                            ? t.misskey.poll_.remainingHours(
-                                h: remaining.inHours,
-                                m: remaining.inMinutes % 60,
-                              )
-                            : remaining.inMinutes > 0
-                                ? t.misskey.poll_.remainingMinutes(
-                                    m: remaining.inMinutes,
-                                    s: remaining.inSeconds % 60,
-                                  )
-                                : t.misskey.poll_.remainingSeconds(
-                                    s: remaining.inSeconds,
-                                  ),
-                  ),
-                ],
+                TextSpan(
+                  text: remaining.inDays > 0
+                      ? t.misskey.poll_.remainingDays(
+                          d: remaining.inDays,
+                          h: remaining.inHours % 24,
+                        )
+                      : remaining.inHours > 0
+                          ? t.misskey.poll_.remainingHours(
+                              h: remaining.inHours,
+                              m: remaining.inMinutes % 60,
+                            )
+                          : remaining.inMinutes > 0
+                              ? t.misskey.poll_.remainingMinutes(
+                                  m: remaining.inMinutes,
+                                  s: remaining.inSeconds % 60,
+                                )
+                              : t.misskey.poll_.remainingSeconds(
+                                  s: remaining.inSeconds,
+                                ),
+                ),
               ],
-            ),
+            ],
           ),
+          style: DefaultTextStyle.of(context).style.apply(
+                fontSizeFactor: 0.9,
+                color: colors.fg.withOpacity(0.75),
+              ),
         ),
       ],
     );

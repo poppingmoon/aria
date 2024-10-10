@@ -179,10 +179,13 @@ class SubNoteContent extends HookConsumerWidget {
                 label: Text(t.misskey.withNFiles(n: note.files.length)),
               ),
             if (expandMedia || !isFilesCollapsed.value)
-              MediaList(
-                account: account,
-                files: note.files,
-                user: note.user,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: MediaList(
+                  account: account,
+                  files: note.files,
+                  user: note.user,
+                ),
               ),
           ],
           if (note case Note(:final poll?)) ...[
@@ -206,7 +209,10 @@ class SubNoteContent extends HookConsumerWidget {
                 label: Text(t.misskey.poll),
               ),
             if (expandMedia || !isPollCollapsed.value)
-              PollWidget(account: account, noteId: noteId, poll: poll),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: PollWidget(account: account, noteId: noteId, poll: poll),
+              ),
           ],
         ],
         if (isLong)

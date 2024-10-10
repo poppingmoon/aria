@@ -222,6 +222,7 @@ class MediaCard extends HookConsumerWidget {
               borderRadius: BorderRadius.circular(16.0),
             )
           : null,
+      margin: EdgeInsets.zero,
       child: Semantics(
         label: file.comment ?? file.name,
         child: hide.value
