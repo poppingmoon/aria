@@ -763,10 +763,7 @@ class _StringsMisskeyPlPl extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Zgłaszający';
 	@override String get reporteeOrigin => 'Pochodzenie zgłoszonego';
 	@override String get reporterOrigin => 'Pochodzenie zgłaszającego';
-	@override String get forwardReport => 'Przekaż zgłoszenie do innej instancji';
-	@override String get forwardReportIsAnonymous => 'Zamiast twojego konta, anonimowe konto systemowe będzie wyświetlone jako zgłaszający na instancji zdalnej.';
 	@override String get send => 'Wyślij';
-	@override String get abuseMarkAsResolved => 'Oznacz zgłoszenie jako rozwiązane';
 	@override String get openInNewTab => 'Otwórz w nowej karcie';
 	@override String get openInSideView => 'Otwórz w bocznym widoku';
 	@override String get defaultNavigationBehaviour => 'Domyślne zachowanie nawigacji';
@@ -2092,7 +2089,6 @@ class _StringsMisskeyThemeKeysPlPl extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Tło przycisku';
 	@override String get buttonHoverBg => 'Tło przycisku (po najechaniu)';
 	@override String get inputBorder => 'Obramowanie pola wejścia';
-	@override String get listItemHoverBg => 'Tło elementu listy (po najechaniu)';
 	@override String get driveFolderBg => 'Tło folderu na dysku';
 	@override String get wallpaperOverlay => 'Nakładka tapety';
 	@override String get badge => 'Odznaka';

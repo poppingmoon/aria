@@ -696,6 +696,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get moderator => 'モデレーター';
 	@override String get moderation => 'モデレーション';
 	@override String get moderationNote => 'モデレーションノート';
+	@override String get moderationNoteDescription => 'モデレーター間でだけ共有されるメモを記入することができます。';
 	@override String get addModerationNote => 'モデレーションノートを追加する';
 	@override String get moderationLogs => 'モデログ';
 	@override String nUsersMentioned({required Object n}) => '${n}人が投稿';
@@ -1163,6 +1164,7 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get continueThread => 'さらにスレッドを見る';
 	@override String get deleteAccountConfirm => 'アカウントが削除されます。よろしいですか？';
 	@override String get incorrectPassword => 'パスワードが間違っています。';
+	@override String get incorrectTotp => 'ワンタイムパスワードが間違っているか、期限切れになっています。';
 	@override String voteConfirm({required Object choice}) => '「${choice}」に投票しますか？';
 	@override String get hide => '隠す';
 	@override String get useDrawerReactionPickerForMobile => 'モバイルデバイスのときドロワーで表示';
@@ -1526,6 +1528,8 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationFailed => 'パスキーの検証に失敗しました。';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'パスキーの検証に成功しましたが、パスワードレスログインが無効になっています。';
 	@override String get messageToFollower => 'フォロワーへのメッセージ';
+	@override String get target => '対象';
+	@override late final _StringsMisskeyAbuseUserReportJaJp abuseUserReport_ = _StringsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _StringsMisskeyDeliveryJaJp delivery_ = _StringsMisskeyDeliveryJaJp._(_root);
 	@override late final _StringsMisskeyBubbleGameJaJp bubbleGame_ = _StringsMisskeyBubbleGameJaJp._(_root);
 	@override late final _StringsMisskeyAnnouncementJaJp announcement_ = _StringsMisskeyAnnouncementJaJp._(_root);
@@ -1609,6 +1613,21 @@ class _StringsMisskeyIOJaJp extends _StringsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _StringsMisskeyIOSkebStatusJaJp skebStatus_ = _StringsMisskeyIOSkebStatusJaJp._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportJaJp extends _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+
+	@override final _StringsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => '転送';
+	@override String get forwardDescription => '匿名のシステムアカウントとして、リモートサーバーに通報を転送します。';
+	@override String get resolve => '解決';
+	@override String get accept => '是認';
+	@override String get reject => '否認';
+	@override String get resolveTutorial => '内容が正当である通報に対応した場合は「是認」を選択し、肯定的にケースが解決されたことをマークします。\n内容が正当でない通報の場合は「否認」を選択し、否定的にケースが解決されたことをマークします。';
 }
 
 // Path: misskey.delivery_
@@ -2869,6 +2888,8 @@ class _StringsMisskeyModerationLogTypesJaJp extends _StringsMisskeyModerationLog
 	@override String get markSensitiveDriveFile => 'ファイルをセンシティブ付与';
 	@override String get unmarkSensitiveDriveFile => 'ファイルをセンシティブ解除';
 	@override String get resolveAbuseReport => '通報を解決';
+	@override String get forwardAbuseReport => '通報を転送';
+	@override String get updateAbuseReportNote => '通報のモデレーションノート更新';
 	@override String get createInvitation => '招待コードを作成';
 	@override String get createAd => '広告を作成';
 	@override String get deleteAd => '広告を削除';
@@ -3461,7 +3482,6 @@ class _StringsMisskeyThemeKeysJaJp extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'ボタンの背景';
 	@override String get buttonHoverBg => 'ボタンの背景 (ホバー)';
 	@override String get inputBorder => '入力ボックスの縁取り';
-	@override String get listItemHoverBg => 'リスト項目の背景 (ホバー)';
 	@override String get driveFolderBg => 'ドライブフォルダーの背景';
 	@override String get wallpaperOverlay => '壁紙のオーバーレイ';
 	@override String get badge => 'バッジ';

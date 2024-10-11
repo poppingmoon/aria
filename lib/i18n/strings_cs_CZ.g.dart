@@ -731,10 +731,7 @@ class _StringsMisskeyCsCz extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Nahlásil';
 	@override String get reporteeOrigin => 'Původ nahlášení';
 	@override String get reporterOrigin => 'Původ nahlasovače';
-	@override String get forwardReport => 'Přeposlat nahlášení do vzdálené instance';
-	@override String get forwardReportIsAnonymous => 'Místo vašeho účtu se ve vzdálené instanci zobrazí anonymní systémový účet jako nahlašovač.';
 	@override String get send => 'Odeslat';
-	@override String get abuseMarkAsResolved => 'Označit nahlášení jako vyřešené';
 	@override String get openInNewTab => 'Otevřít v nové kartě';
 	@override String get openInSideView => 'Otevřít v bočním panelu';
 	@override String get defaultNavigationBehaviour => 'Výchozí chování navigace';
@@ -2475,7 +2472,6 @@ class _StringsMisskeyThemeKeysCsCz extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Pozadí tlačítka';
 	@override String get buttonHoverBg => 'Pozadí tlačítka (Hover)';
 	@override String get inputBorder => 'Ohraničení vstupního pole';
-	@override String get listItemHoverBg => 'Pozadí položky seznamu (Hover)';
 	@override String get driveFolderBg => 'Pozadí složky disku';
 	@override String get wallpaperOverlay => 'Překrytí tapety';
 	@override String get badge => 'Odznak';

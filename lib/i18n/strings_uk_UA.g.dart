@@ -703,10 +703,7 @@ class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Репортер';
 	@override String get reporteeOrigin => 'Про кого повідомлено';
 	@override String get reporterOrigin => 'Хто повідомив';
-	@override String get forwardReport => 'Переслати звіт на віддалений інстанс';
-	@override String get forwardReportIsAnonymous => 'Замість вашого облікового запису анонімний системний обліковий запис буде відображатися як доповідач на віддаленому інстансі';
 	@override String get send => 'Відправити';
-	@override String get abuseMarkAsResolved => 'Позначити скаргу як вирішену';
 	@override String get openInNewTab => 'Відкрити в новій вкладці';
 	@override String get openInSideView => 'Відкрити збоку';
 	@override String get defaultNavigationBehaviour => 'Поведінка навігації за замовчуванням';
@@ -2002,7 +1999,6 @@ class _StringsMisskeyThemeKeysUkUa extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Фон кнопки';
 	@override String get buttonHoverBg => 'Фон кнопки (при наведенні)';
 	@override String get inputBorder => 'Край поля вводу';
-	@override String get listItemHoverBg => 'Фон елементу в списку (при наведенні)';
 	@override String get driveFolderBg => 'Фон папки на диску';
 	@override String get wallpaperOverlay => 'Накладання шпалер';
 	@override String get badge => 'Значок';

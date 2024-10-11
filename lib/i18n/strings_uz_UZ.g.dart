@@ -701,10 +701,7 @@ class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Shikoyat qiluvchi';
 	@override String get reporteeOrigin => 'Xabarning kelib chiqishi';
 	@override String get reporterOrigin => 'Xabarchining joylashuvi';
-	@override String get forwardReport => 'Xabarni masofadagi serverga yuborish';
-	@override String get forwardReportIsAnonymous => 'Sizning yuborayotgan xabaringiz o\'z akkountingiz emas balki anonim tarzda qoladi';
 	@override String get send => 'Yuborish';
-	@override String get abuseMarkAsResolved => 'Yuborilgan xabarni hal qilingan deb belgilash';
 	@override String get openInNewTab => 'Yangi tab da ochish';
 	@override String get openInSideView => 'Yon panelda ochish';
 	@override String get defaultNavigationBehaviour => 'Standart navigatsiya harakati';

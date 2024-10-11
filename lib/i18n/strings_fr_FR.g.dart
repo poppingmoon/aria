@@ -765,10 +765,7 @@ class _StringsMisskeyFrFr extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Signalé par';
 	@override String get reporteeOrigin => 'Origine du signalement';
 	@override String get reporterOrigin => 'Signalé par';
-	@override String get forwardReport => 'Transférer le signalement à l’instance distante';
-	@override String get forwardReportIsAnonymous => 'L\'instance distante ne sera pas en mesure de voir vos informations et apparaîtra comme un compte anonyme du système.';
 	@override String get send => 'Envoyer';
-	@override String get abuseMarkAsResolved => 'Marquer le signalement comme résolu';
 	@override String get openInNewTab => 'Ouvrir dans un nouvel onglet';
 	@override String get openInSideView => 'Ouvrir en vue latérale';
 	@override String get defaultNavigationBehaviour => 'Navigation par défaut';
@@ -2775,7 +2772,6 @@ class _StringsMisskeyThemeKeysFrFr extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Arrière-plan du bouton';
 	@override String get buttonHoverBg => 'Arrière-plan du bouton (survolé)';
 	@override String get inputBorder => 'Cadre de la zone de texte';
-	@override String get listItemHoverBg => 'Arrière-plan d\'item de liste (survolé)';
 	@override String get driveFolderBg => 'Arrière-plan du dossier de disque';
 	@override String get wallpaperOverlay => 'Superposition de fond d\'écran';
 	@override String get badge => 'Badge';

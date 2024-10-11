@@ -37,29 +37,82 @@ class _StringsAriaIdId extends _StringsAriaEnUs {
 	@override final _StringsIdId _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => 'Tentang Aria';
+	@override String get accessToken => 'Token akses';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Aria adalah fork dari '),
+		miria,
+		const TextSpan(text: '.\nTerjemahan Aria berdasarkan dari berkas terjemahan dari '),
+		misskey,
+		const TextSpan(text: '.\nKami ingin menunjukkan apresiasi kami kepada semua kontributor projek ini.'),
+	]);
+	@override String get addTab => 'Tambah tab';
+	@override String get authenticate => 'Autentikasi';
+	@override String get authenticated => 'Terautentikasi';
+	@override String get avatarSize => 'Ukuran avatar';
+	@override String get background => 'Latar belakang';
+	@override String get copied => 'Disalin ke papan klip';
+	@override String get copyName => 'Salin nama';
+	@override String get crop => 'Potong';
+	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('id'))(n,
+		one: 'Anda yakin ingin menghapus ${n} berkas?',
+		other: 'Anda yakin ingin menghapus ${n} berkas?',
+	);
+	@override String get deleteTabConfirm => 'Anda yakin ingin menghapus tab ini?';
+	@override String get doubleTapToShow => 'Tab dua kali untuk menampilkan';
+	@override String get downloaded => 'Terunduh';
+	@override String get editImage => 'Sunting gambar';
+	@override String get emojiPickerScale => 'Ukuran pemilih emoji';
+	@override String get enableFederation => 'Nyalakan federasi';
+	@override String get fileNotFound => 'Berkas tidak ditemukan';
+	@override String get findServer => 'Cari server Misskey';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Apakah kamu yakin ingin mengikuti '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get fromDevice => 'Dari perangkat';
+	@override String get guest => 'Pengunjung';
 	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
 		const TextSpan(text: 'Aria diterjemahkan ke dalam banyak bahasa oleh sukarelawan. Kamu juga dapat ikut membantu menerjemahkannya di '),
 		link,
 		const TextSpan(text: '.'),
 	]);
+	@override String get importCompleted => 'Impor selesai';
+	@override String get invalidListFormat => 'Format daftar tidak berlaku';
+	@override String jumpTo({required Object x}) => 'Lompat ke ${x}';
+	@override String get loginWithAccessToken => 'Masuk dengan token akses';
+	@override String get media => 'Media';
+	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('id'))(n,
+		one: '${n} berkas',
+		other: '${n} berkas',
+	);
+	@override String get newNotifications => 'Notifikasi baru';
+	@override String get noAccounts => 'Tidak ada akun';
+	@override String get noTabs => 'Tidak ada tab';
+	@override String get noThemes => 'Tidak ada tema';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: ' orang sedang daring'),
 	]);
+	@override String get openMenu => 'Buka menu';
+	@override String get paste => 'Tempel';
+	@override String get playAudio => 'Putar audio';
+	@override String get playVideo => 'Putar video';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'direnote oleh '),
 		user,
 	]);
+	@override String get rotate => 'Putar';
+	@override String get showImage => 'Tampilkan gambar';
+	@override String get sinceDate => 'Sejak';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Berhenti mengikuti '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get uploaded => 'Terunggah';
+	@override String get useThisEmoji => 'Gunakan emoji ini';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Postingan oleh '),
 		name,
@@ -70,6 +123,9 @@ class _StringsAriaIdId extends _StringsAriaEnUs {
 		name,
 		const TextSpan(text: ' mengandung konten sensitif'),
 	]);
+	@override String get vibrateNote => 'Getarkan untuk note baru';
+	@override String get vibrateNotification => 'Getarkan untuk notifikasi baru';
+	@override String get webBrowser => 'Peramban web';
 }
 
 // Path: misskey
@@ -782,10 +838,7 @@ class _StringsMisskeyIdId extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Pelapor';
 	@override String get reporteeOrigin => 'Yang dilaporkan';
 	@override String get reporterOrigin => 'Pelapor';
-	@override String get forwardReport => 'Teruskan laporan ke instansi luar';
-	@override String get forwardReportIsAnonymous => 'Untuk melindungi privasi akun kamu, akun anonim dari sistem akan digunakan sebagai pelapor pada instansi luar.';
 	@override String get send => 'Kirim';
-	@override String get abuseMarkAsResolved => 'Tandai laporan sebagai selesai';
 	@override String get openInNewTab => 'Buka di tab baru';
 	@override String get openInSideView => 'Buka di tampilan samping';
 	@override String get defaultNavigationBehaviour => 'Navigasi bawaan';
@@ -3168,7 +3221,6 @@ class _StringsMisskeyThemeKeysIdId extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Latar belakang tombol';
 	@override String get buttonHoverBg => 'Latar belakang tombol (Mengambang)';
 	@override String get inputBorder => 'Batas bidang masukan';
-	@override String get listItemHoverBg => 'Latar belakang daftar item (Mengambang)';
 	@override String get driveFolderBg => 'Latar belakang folder drive';
 	@override String get wallpaperOverlay => 'Lapisan wallpaper';
 	@override String get badge => 'Lencana';

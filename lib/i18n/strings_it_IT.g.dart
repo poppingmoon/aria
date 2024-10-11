@@ -88,6 +88,9 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get notifications => 'Notifiche';
 	@override String get username => 'Nome utente';
 	@override String get password => 'Password';
+	@override String get initialPasswordForSetup => 'Password iniziale, per avviare le impostazioni';
+	@override String get initialPasswordIsIncorrect => 'Password iniziale, sbagliata.';
+	@override String get initialPasswordForSetupDescription => 'Se hai installato Misskey di persona, usa la password che hai indicato nel file di configurazione.\nSe stai utilizzando un servizio di hosting Misskey, usa la password fornita dal gestore.\nSe non hai una password preimpostata, lascia il campo vuoto e continua.';
 	@override String get forgotPassword => 'Hai dimenticato la password?';
 	@override String get fetchingAsApObject => 'Recuperando dal Fediverso...';
 	@override String get ok => 'OK';
@@ -796,10 +799,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get reporter => 'il corrispondente';
 	@override String get reporteeOrigin => 'Segnalazione a';
 	@override String get reporterOrigin => 'Segnalazione da';
-	@override String get forwardReport => 'Inoltro di un report a un\'istanza remota.';
-	@override String get forwardReportIsAnonymous => 'L\'istanza remota non vedrà le tue informazioni, apparirai come profilo di sistema, anonimo.';
 	@override String get send => 'Inviare';
-	@override String get abuseMarkAsResolved => 'Risolvi segnalazione';
 	@override String get openInNewTab => 'Apri in una nuova scheda';
 	@override String get openInSideView => 'Apri in vista laterale';
 	@override String get defaultNavigationBehaviour => 'Navigazione preimpostata';
@@ -1001,6 +1001,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get continueThread => 'Altre conversazioni';
 	@override String get deleteAccountConfirm => 'Così verrà eliminato il profilo. Vuoi procedere?';
 	@override String get incorrectPassword => 'La password è errata.';
+	@override String get incorrectTotp => 'Il codice OTP è sbagliato, oppure scaduto.';
 	@override String voteConfirm({required Object choice}) => 'Votare per「${choice}」?';
 	@override String get hide => 'Nascondere';
 	@override String get useDrawerReactionPickerForMobile => 'Mostra sul drawer da dispositivo mobile';
@@ -2566,6 +2567,7 @@ class _StringsMisskeyNotificationItIt extends _StringsMisskeyNotificationEnUs {
 	@override String followedBySomeUsers({required Object n}) => '${n} follower';
 	@override String get flushNotification => 'Azzera le notifiche';
 	@override String exportOfXCompleted({required Object x}) => 'Abbiamo completato l\'esportazione di ${x}';
+	@override String get login => 'Autenticazione avvenuta';
 	@override late final _StringsMisskeyNotificationTypesItIt types_ = _StringsMisskeyNotificationTypesItIt._(_root);
 	@override late final _StringsMisskeyNotificationActionsItIt actions_ = _StringsMisskeyNotificationActionsItIt._(_root);
 }
@@ -3272,7 +3274,6 @@ class _StringsMisskeyThemeKeysItIt extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Sfondo del pulsante';
 	@override String get buttonHoverBg => 'Sfondo del pulsante (sorvolato)';
 	@override String get inputBorder => 'Inquadra casella di testo';
-	@override String get listItemHoverBg => 'Sfondo della voce di elenco (sorvolato)';
 	@override String get driveFolderBg => 'Sfondo della cartella di disco';
 	@override String get wallpaperOverlay => 'Sovrapposizione dello sfondo';
 	@override String get badge => 'Distintivo';

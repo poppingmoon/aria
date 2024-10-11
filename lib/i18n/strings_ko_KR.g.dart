@@ -45,7 +45,7 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 		miria,
 		const TextSpan(text: '의 포크입니다.\n아리아의 로컬라이제이션은 '),
 		misskey,
-		const TextSpan(text: '의 로컬라이제이션 파일을 기본으로합니다.'),
+		const TextSpan(text: '의 로컬라이제이션 파일을 기본으로 합니다.\n각 프로젝트의 기여자 여러분들께 감사드립니다.'),
 	]);
 	@override String get addTab => '탭 추가';
 	@override String get alwaysExpandCw => 'CW 항상 펼치기';
@@ -79,12 +79,16 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 	@override String get displayOfThumbnail => '썸네일 표시';
 	@override String get doubleTapToShow => '더블 탭하여 표시';
 	@override String get downloaded => '다운로드 완료';
+	@override String get draw => '그리기';
 	@override String get editImage => '이미지 수정';
+	@override String get emojiPickerAutofocus => '이모지 선택기를 열 때 키보드 확장하기';
 	@override String get emojiPickerScale => '이모지 선택기 스케일';
+	@override String get emojiPickerUseDialog => '다이얼로그(박스) 형태로 이모지 선택기 표시하기';
 	@override String get enableEmojiFadeIn => '커스텀 이모지에 페이드인 애니메이션 활성화';
 	@override String get enableFederation => '연합 활성화하기';
 	@override String get endpoint => 'Endpoint';
 	@override String get expandNote => '노트 펼치기';
+	@override String get extraMentionsWarning => '이 노트에는 대상 답글에 포함되지 않은 멘션이 포함되어 있습니다.';
 	@override String get fileNotFound => '파일을 찾을 수 없음';
 	@override String get findServer => 'Misskey 서버 찾아보기';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -99,12 +103,19 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 		link,
 		const TextSpan(text: '에서 번역에 참가할 수 있습니다.'),
 	]);
+	@override TextSpan iconAttribution({required InlineSpan sevenc_nanashi, required InlineSpan cc_by}) => TextSpan(children: [
+		const TextSpan(text: 'Aria의 아이콘은 '),
+		sevenc_nanashi,
+		const TextSpan(text: ' 가 제작했으며 '),
+		cc_by,
+		const TextSpan(text: ' 에 따라 이용할 수 있습니다.'),
+	]);
 	@override String get importCompleted => '가져오기 완료';
 	@override String get importConfirm => '설정을 가져오시겠습니까? 현재 설정을 덮어쓰게됩니다.';
 	@override String get invalidListFormat => '리스트가 유효하지 않음';
 	@override String jumpTo({required Object x}) => '${x} 로 이동';
 	@override String get keepOpen => '계속 열기';
-	@override String get keepTimelinePosition => '타임라인 유지';
+	@override String get keepTimelinePosition => '타임라인 위치 고정';
 	@override String get lineHeight => '줄 간격';
 	@override String get loginWithAccessToken => '엑세스 토큰으로 로그인';
 	@override String get margin => '여백';
@@ -114,6 +125,7 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 	@override String get muted => '뮤트됨';
 	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ko'))(n,
 		one: '${n} 파일',
+		other: '${n} 파일',
 	);
 	@override String get newFollowRequestReceived => '새로운 팔로우 요청이 있습니다';
 	@override String get newNotes => '새 노트';
@@ -140,7 +152,7 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 	@override String get openMenu => '메뉴 열기';
 	@override String get openSensitiveMediaOnDoubleTap => '더블 탭하여 민감한 미디어 열기';
 	@override String get parameters => '매개변수';
-	@override String get paste => '복사';
+	@override String get paste => '붙여넣기';
 	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
 		const TextSpan(text: '이모지를 고정하려면 Json파일을 붙여넣기 해야합니다.\n'),
 		url,
@@ -183,14 +195,18 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 	@override String get showNoteReactionsViewer => '노트 내 리액션 뷰어 표시';
 	@override String get showNotificationsFAB => '알림 플로팅 동작 버튼 표시';
 	@override String get showPopupOnNewNote => '새 노트 위에 팝업 표시';
+	@override String get showPostForm => '게시물 양식 표시';
 	@override String get showQuoteButtonInNoteFooter => '노트 동작에 "인용" 추가';
 	@override String get showSelfRenotes => '셀프리노트 표시';
-	@override String get showStackTrace => '스택 추적 표시';
+	@override String get showShowPostFormFAB => '미니포스트 양식 플로팅 동작 버튼 표시';
+	@override String get showStackTrace => '스택 트레이스 표시';
 	@override String get showSubNoteFooter => '서브노트 내 버튼 표시';
 	@override String get showSubNoteReactionsViewer => '서브노트 내 리액션 뷰어 표시';
 	@override String get showTimelineLastViewedAt => '타임라인 마지막으로 본 날짜 표시';
 	@override String get showTimelineTabBarAtBottom => '타임라인 탭 바를 하단에 표시';
 	@override String get showTranslateButtonInNoteFooter => '노트 동작에 번역을 추가';
+	@override String get sinceDate => '시작 날짜';
+	@override String get stackTrace => '스텍 트레이스';
 	@override String get streamingChannel => '스트리밍 채널';
 	@override String get tabName => '탭 이름';
 	@override String get tabType => '탭 타입';
@@ -202,12 +218,12 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 		name,
 		const TextSpan(text: '님을 언팔로우하시겠습니까?'),
 	]);
-	@override String get untilDate => '까지';
+	@override String get untilDate => '종료일';
 	@override String get uploaded => '업로드됨';
 	@override String get useThisEmoji => '이 이모지 사용하기';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		name,
-		const TextSpan(text: '의 민감한 파일이 포함된 게시물'),
+		const TextSpan(text: '님이 무언가 말했습니다'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		name,
@@ -680,6 +696,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get moderator => '모더레이터';
 	@override String get moderation => '조정';
 	@override String get moderationNote => '조정 기록';
+	@override String get moderationNoteDescription => '모더레이터 역할을 가진 유저만 보이는 메모를 적을 수 있습니다.';
 	@override String get addModerationNote => '조정 기록 추가하기';
 	@override String get moderationLogs => '모더레이션 로그';
 	@override String nUsersMentioned({required Object n}) => '${n}명이 언급함';
@@ -945,10 +962,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get reporter => '신고자';
 	@override String get reporteeOrigin => '피신고자';
 	@override String get reporterOrigin => '신고자';
-	@override String get forwardReport => '리모트 서버에도 신고 내용 보내기';
-	@override String get forwardReportIsAnonymous => '리모트 서버에서는 나의 정보를 볼 수 없으며, 익명의 시스템 계정으로 표시됩니다.';
 	@override String get send => '전송';
-	@override String get abuseMarkAsResolved => '해결됨으로 표시';
 	@override String get openInNewTab => '새 탭에서 열기';
 	@override String get openInSideView => '사이드뷰로 열기';
 	@override String get defaultNavigationBehaviour => '기본 탐색 동작';
@@ -1150,6 +1164,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get continueThread => '글타래 더 보기';
 	@override String get deleteAccountConfirm => '계정이 삭제되고 되돌릴 수 없게 됩니다. 계속하시겠습니까? ';
 	@override String get incorrectPassword => '비밀번호가 올바르지 않습니다.';
+	@override String get incorrectTotp => 'OTP 번호가 틀렸거나 유효기간이 만료되어 있을 수 있습니다.';
 	@override String voteConfirm({required Object choice}) => '"${choice}"에 투표하시겠습니까?';
 	@override String get hide => '숨기기';
 	@override String get useDrawerReactionPickerForMobile => '모바일에서 드로어 메뉴로 표시';
@@ -1349,7 +1364,7 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => '예약할 사용자명을 한 줄에 하나씩 입력합니다. 여기에서 지정한 사용자명으로는 계정을 생성할 수 없게 됩니다. 단, 관리자 권한으로 계정을 생성할 때에는 해당되지 않으며, 이미 존재하는 계정도 영향을 받지 않습니다.';
 	@override String get createNoteFromTheFile => '이 파일로 노트를 작성';
 	@override String get archive => '아카이브';
-	@override String get archived => '보관됨';
+	@override String get archived => '아카이브 됨';
 	@override String get unarchive => '보관 취소';
 	@override String channelArchiveConfirmTitle({required Object name}) => '${name} 채널을 보존하시겠습니까?';
 	@override String get channelArchiveConfirmDescription => '보존한 채널은 채널 목록과 검색 결과에 표시되지 않으며 새로운 노트도 작성할 수 없습니다.';
@@ -1513,6 +1528,8 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationFailed => '패스키 검증을 실패했습니다.';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '패스키를 검증했으나, 비밀번호 없이 로그인하기가 꺼져 있습니다.';
 	@override String get messageToFollower => '팔로워에 보낼 메시지';
+	@override String get target => '대상';
+	@override late final _StringsMisskeyAbuseUserReportKoKr abuseUserReport_ = _StringsMisskeyAbuseUserReportKoKr._(_root);
 	@override late final _StringsMisskeyDeliveryKoKr delivery_ = _StringsMisskeyDeliveryKoKr._(_root);
 	@override late final _StringsMisskeyBubbleGameKoKr bubbleGame_ = _StringsMisskeyBubbleGameKoKr._(_root);
 	@override late final _StringsMisskeyAnnouncementKoKr announcement_ = _StringsMisskeyAnnouncementKoKr._(_root);
@@ -1596,6 +1613,21 @@ class _StringsMisskeyIOKoKr extends _StringsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _StringsMisskeyIOSkebStatusKoKr skebStatus_ = _StringsMisskeyIOSkebStatusKoKr._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportKoKr extends _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+
+	@override final _StringsKoKr _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => '전달';
+	@override String get forwardDescription => '익명 시스템 계정을 사용하여 리모트 서버에 신고 내용을 전달할 수 있습니다.';
+	@override String get resolve => '해결됨';
+	@override String get accept => '인용';
+	@override String get reject => '기각';
+	@override String get resolveTutorial => '적절한 신고 내용에 대응한 경우, "인용"을 선택하여 "해결됨"으로 기록합니다.\n적절하지 않은 신고를 받은 경우, "기각"을 선택하여 "기각"으로 기록합니다.';
 }
 
 // Path: misskey.delivery_
@@ -2165,7 +2197,7 @@ class _StringsMisskeySoundSettingsKoKr extends _StringsMisskeySoundSettingsEnUs 
 	// Translations
 	@override String get driveFile => '드라이브에 있는 오디오를 사용';
 	@override String get driveFileWarn => '드라이브에 있는 파일을 선택하세요.';
-	@override String get driveFileTypeWarn => '이 파일은 지원되지 않습니다.';
+	@override String get driveFileTypeWarn => '이 파이';
 	@override String get driveFileTypeWarnDescription => '오디오 파일을 선택하세요.';
 	@override String get driveFileDurationWarn => '오디오가 너무 깁니다';
 	@override String get driveFileDurationWarnDescription => '긴 오디오로 설정할 경우 미스키 사용에 지장이 갈 수도 있습니다. 그래도 괜찮습니까?';
@@ -2856,6 +2888,8 @@ class _StringsMisskeyModerationLogTypesKoKr extends _StringsMisskeyModerationLog
 	@override String get markSensitiveDriveFile => '파일에 열람주의를 설정';
 	@override String get unmarkSensitiveDriveFile => '파일에 열람주의를 해제';
 	@override String get resolveAbuseReport => '신고 처리';
+	@override String get forwardAbuseReport => '신고 전달';
+	@override String get updateAbuseReportNote => '신고 조정 노트 갱신';
 	@override String get createInvitation => '초대 코드 생성';
 	@override String get createAd => '광고 생성';
 	@override String get deleteAd => '광고 삭제';
@@ -3010,7 +3044,7 @@ class _StringsMisskeyUrlPreviewSettingKoKr extends _StringsMisskeyUrlPreviewSett
 	@override String get timeoutDescription => '미리보기를 로딩하는데 걸리는 시간이 정한 시간보다 오래 걸리는 경우, 미리보기를 생성하지 않습니다.';
 	@override String get maximumContentLength => 'Content-Length의 최대치 (byte)';
 	@override String get maximumContentLengthDescription => 'Content-Length가 이 값을 넘어서면 미리보기를 생성하지 않습니다.';
-	@override String get requireContentLength => 'Content-Length를 얻었을 때만 미리보기 만들기';
+	@override String get requireContentLength => 'Content-Length를 받아온 경우에만 ';
 	@override String get requireContentLengthDescription => '상대 서버가 Content-Length를 되돌려주지 않는다면 미리보기를 만들지 않습니다.';
 	@override String get userAgent => 'User-Agent';
 	@override String get userAgentDescription => '미리보기를 얻을 때 사용한 User-Agent를 설정합니다. 비어 있다면 기본값의 User-Agent를 사용합니다.';
@@ -3448,7 +3482,6 @@ class _StringsMisskeyThemeKeysKoKr extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => '버튼 배경';
 	@override String get buttonHoverBg => '버튼 배경 (호버)';
 	@override String get inputBorder => '입력 필드 테두리';
-	@override String get listItemHoverBg => '리스트 항목 배경 (호버)';
 	@override String get driveFolderBg => '드라이브 폴더 배경';
 	@override String get wallpaperOverlay => '배경화면 오버레이';
 	@override String get badge => '배지';
@@ -3581,7 +3614,7 @@ class _StringsMisskeyWebhookSettingsSystemEventsKoKr extends _StringsMisskeyWebh
 	@override final _StringsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override String get abuseReport => '유저로부터 신고를 받았을 때';
+	@override String get abuseReport => '유저롭';
 	@override String get abuseReportResolved => '받은 신고를 처리했을 때';
 	@override String get userCreated => '유저가 생성되었을 때';
 }

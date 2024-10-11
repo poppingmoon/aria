@@ -705,10 +705,7 @@ class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Nahlásil';
 	@override String get reporteeOrigin => 'Pôvod nahláseného';
 	@override String get reporterOrigin => 'Pôvod nahlasovača';
-	@override String get forwardReport => 'Preposlať nahlásenie na server';
-	@override String get forwardReportIsAnonymous => 'Namiesto vášho účtu bude zobrazený anonymný systémový účet na vzdialenom serveri ako autor nahlásenia.';
 	@override String get send => 'Poslať';
-	@override String get abuseMarkAsResolved => 'Označiť nahlásenia ako vyriešené';
 	@override String get openInNewTab => 'Otvoriť v novom tabe';
 	@override String get openInSideView => 'Otvoriť v bočnom paneli';
 	@override String get defaultNavigationBehaviour => 'Predvolené správanie navigácie';
@@ -1963,7 +1960,6 @@ class _StringsMisskeyThemeKeysSkSk extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Pozadie tlačidla';
 	@override String get buttonHoverBg => 'Pozadie tlačidla (pod kurzorom)';
 	@override String get inputBorder => 'Okraj vstupného poľa';
-	@override String get listItemHoverBg => 'Pozadie položky zoznamu (pod kurzorom)';
 	@override String get driveFolderBg => 'Pozadie priečinu disku';
 	@override String get wallpaperOverlay => 'Vrstvenie pozadia';
 	@override String get badge => 'Odznak';

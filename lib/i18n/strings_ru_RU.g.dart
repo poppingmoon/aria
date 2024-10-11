@@ -774,10 +774,7 @@ class _StringsMisskeyRuRu extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Сообщивший';
 	@override String get reporteeOrigin => 'О ком сообщено';
 	@override String get reporterOrigin => 'Кто сообщил';
-	@override String get forwardReport => 'Отправить жалобу на инстанс автора.';
-	@override String get forwardReportIsAnonymous => 'Жалоба на удалённый инстанс будет отправлена анонимно. Вместо ваших данных у получателя будет отображена системная учётная запись.';
 	@override String get send => 'Отправить';
-	@override String get abuseMarkAsResolved => 'Отметить жалобу как решённую';
 	@override String get openInNewTab => 'Открыть в новой вкладке';
 	@override String get openInSideView => 'Открывать в боковой колонке';
 	@override String get defaultNavigationBehaviour => 'Поведение навигации по умолчанию';
@@ -2666,7 +2663,6 @@ class _StringsMisskeyThemeKeysRuRu extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Фон кнопки';
 	@override String get buttonHoverBg => 'Текст кнопки';
 	@override String get inputBorder => 'Рамка поля ввода';
-	@override String get listItemHoverBg => 'Фон пункта списка (под указателем)';
 	@override String get driveFolderBg => 'Фон папки «Диска»';
 	@override String get wallpaperOverlay => 'Слой обоев';
 	@override String get badge => 'Значок';

@@ -690,10 +690,7 @@ class _StringsMisskeyRoRo extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Raportorul';
 	@override String get reporteeOrigin => 'Originea raportatului';
 	@override String get reporterOrigin => 'Originea raportorului';
-	@override String get forwardReport => 'Redirecționează raportul către instanța externă';
-	@override String get forwardReportIsAnonymous => 'În locul contului tău, va fi afișat un cont anonim, de sistem, ca raportor către instanța externă.';
 	@override String get send => 'Trimite';
-	@override String get abuseMarkAsResolved => 'Marchează raportul ca rezolvat';
 	@override String get openInNewTab => 'Deschide în tab nou';
 	@override String get openInSideView => 'Deschide în vedere laterală';
 	@override String get defaultNavigationBehaviour => 'Comportament de navigare implicit';

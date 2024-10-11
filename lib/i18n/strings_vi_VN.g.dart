@@ -749,10 +749,7 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Người báo cáo';
 	@override String get reporteeOrigin => 'Bị báo cáo';
 	@override String get reporterOrigin => 'Máy chủ người báo cáo';
-	@override String get forwardReport => 'Chuyển tiếp báo cáo cho máy chủ từ xa';
-	@override String get forwardReportIsAnonymous => 'Thay vì tài khoản của bạn, một tài khoản hệ thống ẩn danh sẽ được hiển thị dưới dạng người báo cáo ở máy chủ từ xa.';
 	@override String get send => 'Gửi';
-	@override String get abuseMarkAsResolved => 'Đánh dấu đã xử lý';
 	@override String get openInNewTab => 'Mở trong tab mới';
 	@override String get openInSideView => 'Mở trong thanh bên';
 	@override String get defaultNavigationBehaviour => 'Thao tác điều hướng mặc định';
@@ -2397,7 +2394,6 @@ class _StringsMisskeyThemeKeysViVn extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Nền nút';
 	@override String get buttonHoverBg => 'Nền nút (Chạm)';
 	@override String get inputBorder => 'Đường viền khung soạn thảo';
-	@override String get listItemHoverBg => 'Nền mục liệt kê (Chạm)';
 	@override String get driveFolderBg => 'Nền thư mục Ổ đĩa';
 	@override String get wallpaperOverlay => 'Lớp phủ hình nền';
 	@override String get badge => 'Huy hiệu';

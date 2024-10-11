@@ -362,7 +362,7 @@ class _StringsMisskeyEnUs {
 	String get renote => 'Renote';
 	String get unrenote => 'Remove renote';
 	String get renoted => 'Renoted.';
-	String renotedToX({required Object name}) => 'Renote to ${name}.';
+	String renotedToX({required Object name}) => 'Renoted to ${name}.';
 	String get cantRenote => 'This post can\'t be renoted.';
 	String get cantReRenote => 'A renote can\'t be renoted.';
 	String get quote => 'Quote';
@@ -704,6 +704,7 @@ class _StringsMisskeyEnUs {
 	String get moderator => 'Moderator';
 	String get moderation => 'Moderation';
 	String get moderationNote => 'Moderation note';
+	String get moderationNoteDescription => 'You can fill in notes that will be shared only among moderators.';
 	String get addModerationNote => 'Add moderation note';
 	String get moderationLogs => 'Moderation logs';
 	String nUsersMentioned({required Object n}) => 'Mentioned by ${n} users';
@@ -969,10 +970,7 @@ class _StringsMisskeyEnUs {
 	String get reporter => 'Reporter';
 	String get reporteeOrigin => 'Reportee Origin';
 	String get reporterOrigin => 'Reporter Origin';
-	String get forwardReport => 'Forward report to remote instance';
-	String get forwardReportIsAnonymous => 'Instead of your account, an anonymous system account will be displayed as reporter at the remote instance.';
 	String get send => 'Send';
-	String get abuseMarkAsResolved => 'Mark report as resolved';
 	String get openInNewTab => 'Open in new tab';
 	String get openInSideView => 'Open in side view';
 	String get defaultNavigationBehaviour => 'Default navigation behavior';
@@ -1174,6 +1172,7 @@ class _StringsMisskeyEnUs {
 	String get continueThread => 'View thread continuation';
 	String get deleteAccountConfirm => 'This will irreversibly delete your account. Proceed?';
 	String get incorrectPassword => 'Incorrect password.';
+	String get incorrectTotp => 'The one-time password is incorrect or has expired.';
 	String voteConfirm({required Object choice}) => 'Confirm your vote for "${choice}"?';
 	String get hide => 'Hide';
 	String get useDrawerReactionPickerForMobile => 'Display reaction picker as drawer on mobile';
@@ -1537,6 +1536,8 @@ class _StringsMisskeyEnUs {
 	String get passkeyVerificationFailed => 'Passkey verification has failed.';
 	String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Passkey verification has succeeded but password-less login is disabled.';
 	String get messageToFollower => 'Message to followers';
+	String get target => 'Target';
+	late final _StringsMisskeyAbuseUserReportEnUs abuseUserReport_ = _StringsMisskeyAbuseUserReportEnUs._(_root);
 	late final _StringsMisskeyDeliveryEnUs delivery_ = _StringsMisskeyDeliveryEnUs._(_root);
 	late final _StringsMisskeyBubbleGameEnUs bubbleGame_ = _StringsMisskeyBubbleGameEnUs._(_root);
 	late final _StringsMisskeyAnnouncementEnUs announcement_ = _StringsMisskeyAnnouncementEnUs._(_root);
@@ -1620,6 +1621,21 @@ class _StringsMisskeyIOEnUs {
 
 	// Translations
 	late final _StringsMisskeyIOSkebStatusEnUs skebStatus_ = _StringsMisskeyIOSkebStatusEnUs._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportEnUs._(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get forward => 'Forward';
+	String get forwardDescription => 'Forward the report to a remote server as an anonymous system account.';
+	String get resolve => 'Resolve';
+	String get accept => 'Accept';
+	String get reject => 'Reject';
+	String get resolveTutorial => 'If the report is legitimate in content, select "Accept" to mark the case as resolved in the affirmative.\nIf the content of the report is not legitimate, select "Reject" to mark the case as resolved in the negative.';
 }
 
 // Path: misskey.delivery_
@@ -2880,6 +2896,8 @@ class _StringsMisskeyModerationLogTypesEnUs {
 	String get markSensitiveDriveFile => 'File marked as sensitive';
 	String get unmarkSensitiveDriveFile => 'File unmarked as sensitive';
 	String get resolveAbuseReport => 'Report resolved';
+	String get forwardAbuseReport => 'Report forwarded';
+	String get updateAbuseReportNote => 'Moderation note of a report updated';
 	String get createInvitation => 'Invite generated';
 	String get createAd => 'Ad created';
 	String get deleteAd => 'Ad deleted';
@@ -2887,18 +2905,18 @@ class _StringsMisskeyModerationLogTypesEnUs {
 	String get createAvatarDecoration => 'Avatar decoration created';
 	String get updateAvatarDecoration => 'Avatar decoration updated';
 	String get deleteAvatarDecoration => 'Avatar decoration deleted';
-	String get unsetUserAvatar => 'Unset this user\'s avatar';
-	String get unsetUserBanner => 'Unset this user\'s banner';
-	String get createSystemWebhook => 'Create SystemWebhook';
-	String get updateSystemWebhook => 'Update SystemWebhook';
-	String get deleteSystemWebhook => 'Delete SystemWebhook';
-	String get createAbuseReportNotificationRecipient => 'Create a recipient for abuse reports';
-	String get updateAbuseReportNotificationRecipient => 'Update recipients for abuse reports';
-	String get deleteAbuseReportNotificationRecipient => 'Delete a recipient for abuse reports';
-	String get deleteAccount => 'Delete the account';
-	String get deletePage => 'Delete the page';
-	String get deleteFlash => 'Delete Play';
-	String get deleteGalleryPost => 'Delete the gallery post';
+	String get unsetUserAvatar => 'User avatar unset';
+	String get unsetUserBanner => 'User banner unset';
+	String get createSystemWebhook => 'System Webhook created';
+	String get updateSystemWebhook => 'System Webhook updated';
+	String get deleteSystemWebhook => 'System Webhook deleted';
+	String get createAbuseReportNotificationRecipient => 'Recipient for reports created';
+	String get updateAbuseReportNotificationRecipient => 'Recipient for reports updated';
+	String get deleteAbuseReportNotificationRecipient => 'Recipient for reports deleted';
+	String get deleteAccount => 'Account deleted';
+	String get deletePage => 'Page deleted';
+	String get deleteFlash => 'Play deleted';
+	String get deleteGalleryPost => 'Gallery post deleted';
 }
 
 // Path: misskey.fileViewer_
@@ -3363,7 +3381,7 @@ class _StringsMisskeyRoleOptionsEnUs {
 	String get canManageAvatarDecorations => 'Manage avatar decorations';
 	String get driveCapacity => 'Drive capacity';
 	String get alwaysMarkNsfw => 'Always mark files as NSFW';
-	String get canUpdateBioMedia => 'Allow to edit an icon or a banner image';
+	String get canUpdateBioMedia => 'Can edit an icon or a banner image';
 	String get pinMax => 'Maximum number of pinned notes';
 	String get antennaMax => 'Maximum number of antennas';
 	String get wordMuteMax => 'Maximum number of characters allowed in word mutes';
@@ -3472,7 +3490,6 @@ class _StringsMisskeyThemeKeysEnUs {
 	String get buttonBg => 'Button background';
 	String get buttonHoverBg => 'Button background (Hover)';
 	String get inputBorder => 'Input field border';
-	String get listItemHoverBg => 'List item background (Hover)';
 	String get driveFolderBg => 'Drive folder background';
 	String get wallpaperOverlay => 'Wallpaper overlay';
 	String get badge => 'Badge';
@@ -3605,8 +3622,8 @@ class _StringsMisskeyWebhookSettingsSystemEventsEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get abuseReport => 'When received a new abuse report';
-	String get abuseReportResolved => 'When resolved abuse report';
+	String get abuseReport => 'When received a new report';
+	String get abuseReportResolved => 'When resolved report';
 	String get userCreated => 'When user is created';
 }
 
@@ -3617,8 +3634,8 @@ class _StringsMisskeyAbuseReportNotificationRecipientEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get createRecipient => 'Add a recipient for abuse reports';
-	String get modifyRecipient => 'Edit a recipient for abuse reports';
+	String get createRecipient => 'Add a recipient for reports';
+	String get modifyRecipient => 'Edit a recipient for reports';
 	String get recipientType => 'Notification type';
 	late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs._(_root);
 	String get keywords => 'Keywords';
@@ -4792,6 +4809,6 @@ class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	String get mail => 'Send the email to moderators\' email addresses when you receive abuse.';
-	String get webhook => 'Send a notification to SystemWebhook when you receive or resolve abuse.';
+	String get mail => 'Send the email to moderators\' email addresses when you receive reports.';
+	String get webhook => 'Send a notification to System Webhook when you receive or resolve reports.';
 }

@@ -88,6 +88,8 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get notifications => 'Notificacions';
 	@override String get username => 'Nom d\'usuari';
 	@override String get password => 'Contrasenya';
+	@override String get initialPasswordForSetup => 'Contrasenya inicial per la configuració inicial';
+	@override String get initialPasswordIsIncorrect => 'La contrasenya no és correcta.';
 	@override String get forgotPassword => 'Contrasenya oblidada';
 	@override String get fetchingAsApObject => 'Cercant en el Fediverse...';
 	@override String get ok => 'OK';
@@ -531,6 +533,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get moderator => 'Moderador/a';
 	@override String get moderation => 'Moderació';
 	@override String get moderationNote => 'Nota de moderació ';
+	@override String get moderationNoteDescription => 'Pots escriure notes que es compartiran entre els moderadors.';
 	@override String get addModerationNote => 'Afegir una nota de moderació ';
 	@override String get moderationLogs => 'Registre de moderació ';
 	@override String nUsersMentioned({required Object n}) => '${n} usuaris mencionats';
@@ -796,10 +799,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get reporter => 'Denunciant ';
 	@override String get reporteeOrigin => 'Origen de la denúncia ';
 	@override String get reporterOrigin => 'Origen del denunciant';
-	@override String get forwardReport => 'Transferir la denúncia a una instància remota';
-	@override String get forwardReportIsAnonymous => 'En lloc del teu compte, es farà servir un compte anònim com a denunciant al servidor remot.';
 	@override String get send => 'Envia';
-	@override String get abuseMarkAsResolved => 'Marca la denúncia com a resolta';
 	@override String get openInNewTab => 'Obre a una pestanya nova';
 	@override String get openInSideView => 'Obre a una vista lateral';
 	@override String get defaultNavigationBehaviour => 'Navegació per defecte';
@@ -1001,6 +1001,7 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get continueThread => 'Veure la continuació del fil';
 	@override String get deleteAccountConfirm => 'Això eliminarà el teu compte irreversiblement. Procedir?';
 	@override String get incorrectPassword => 'Contrasenya incorrecta.';
+	@override String get incorrectTotp => 'La contrasenya no és correcta, o ha caducat.';
 	@override String voteConfirm({required Object choice}) => 'Confirma el teu vot "${choice}"';
 	@override String get hide => 'Amagar';
 	@override String get useDrawerReactionPickerForMobile => 'Mostrar el selector de reaccions com un calaix al mòbil ';
@@ -1364,6 +1365,8 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationFailed => 'La verificació a fallat';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verificació de la passkey a estat correcta, però s\'ha deshabilitat l\'inici de sessió sense contrasenya.';
 	@override String get messageToFollower => 'Missatge als meus seguidors';
+	@override String get target => 'Assumpte ';
+	@override late final _StringsMisskeyAbuseUserReportCaEs abuseUserReport_ = _StringsMisskeyAbuseUserReportCaEs._(_root);
 	@override late final _StringsMisskeyDeliveryCaEs delivery_ = _StringsMisskeyDeliveryCaEs._(_root);
 	@override late final _StringsMisskeyBubbleGameCaEs bubbleGame_ = _StringsMisskeyBubbleGameCaEs._(_root);
 	@override late final _StringsMisskeyAnnouncementCaEs announcement_ = _StringsMisskeyAnnouncementCaEs._(_root);
@@ -1432,6 +1435,21 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyDataSaverCaEs dataSaver_ = _StringsMisskeyDataSaverCaEs._(_root);
 	@override late final _StringsMisskeyReversiCaEs reversi_ = _StringsMisskeyReversiCaEs._(_root);
 	@override late final _StringsMisskeyEmbedCodeGenCaEs embedCodeGen_ = _StringsMisskeyEmbedCodeGenCaEs._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportCaEs extends _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+
+	@override final _StringsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => 'Reenviar ';
+	@override String get forwardDescription => 'Reenvia l\'informe a una altra instància com un compte del sistema anònima.';
+	@override String get resolve => 'Solució ';
+	@override String get accept => 'Acceptar ';
+	@override String get reject => 'Rebutjar';
+	@override String get resolveTutorial => 'Si l\'informe és legítim selecciona "Acceptar" per resoldre\'l positivament. Però si l\'informe no és legítim selecciona "Rebutjar" per resoldre\'l negativament.';
 }
 
 // Path: misskey.delivery_
@@ -2691,6 +2709,8 @@ class _StringsMisskeyModerationLogTypesCaEs extends _StringsMisskeyModerationLog
 	@override String get markSensitiveDriveFile => 'Fitxer marcat com a sensible';
 	@override String get unmarkSensitiveDriveFile => 'S\'ha tret la marca de sensible del fitxer';
 	@override String get resolveAbuseReport => 'Informe resolt';
+	@override String get forwardAbuseReport => 'Informe reenviat';
+	@override String get updateAbuseReportNote => 'Nota de moderació d\'un informe actualitzat';
 	@override String get createInvitation => 'Crear codi d\'invitació ';
 	@override String get createAd => 'Anunci creat';
 	@override String get deleteAd => 'Anunci esborrat';
@@ -3155,7 +3175,6 @@ class _StringsMisskeyThemeKeysCaEs extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => 'Fons botó ';
 	@override String get buttonHoverBg => 'Fons botó (en passar-hi per sobre)';
 	@override String get inputBorder => 'Contorn del cap d\'introducció ';
-	@override String get listItemHoverBg => 'Fons dels elements d\'una llista';
 	@override String get driveFolderBg => 'Fons de la carpeta Disc';
 	@override String get wallpaperOverlay => 'Superposició del fons de pantalla ';
 	@override String get badge => 'Insígnia ';

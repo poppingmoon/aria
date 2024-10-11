@@ -534,6 +534,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get moderator => '监察员';
 	@override String get moderation => '管理';
 	@override String get moderationNote => '管理笔记';
+	@override String get moderationNoteDescription => '可以用来记录仅在管理员之间共享的笔记。';
 	@override String get addModerationNote => '添加管理笔记';
 	@override String get moderationLogs => '管理日志';
 	@override String nUsersMentioned({required Object n}) => '${n} 被提到';
@@ -799,10 +800,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get reporter => '举报者';
 	@override String get reporteeOrigin => '举报来源';
 	@override String get reporterOrigin => '举报者来源';
-	@override String get forwardReport => '将该举报信息转发给远程服务器';
-	@override String get forwardReportIsAnonymous => '在远程实例上显示的报告者是匿名的系统账号，而不是您的账号。';
 	@override String get send => '发送';
-	@override String get abuseMarkAsResolved => '处理完毕';
 	@override String get openInNewTab => '在新标签页中打开';
 	@override String get openInSideView => '在侧边栏中打开';
 	@override String get defaultNavigationBehaviour => '默认导航';
@@ -1004,6 +1002,7 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get continueThread => '查看更多帖子';
 	@override String get deleteAccountConfirm => '将要删除账户。是否确认？';
 	@override String get incorrectPassword => '密码错误';
+	@override String get incorrectTotp => '一次性密码不正确或已过期';
 	@override String voteConfirm({required Object choice}) => '确定投给 “${choice}” ？';
 	@override String get hide => '隐藏';
 	@override String get useDrawerReactionPickerForMobile => '在移动设备上使用抽屉显示';
@@ -1280,10 +1279,10 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get fileAttachedOnly => '仅限媒体';
 	@override String get showRepliesToOthersInTimeline => '在时间线中包含给别人的回复';
 	@override String get hideRepliesToOthersInTimeline => '在时间线中隐藏给别人的回复';
-	@override String get showRepliesToOthersInTimelineAll => '在时间线中包含现在关注的所有人的回复';
-	@override String get hideRepliesToOthersInTimelineAll => '在时间线中隐藏现在关注的所有人的回复';
-	@override String get confirmShowRepliesAll => '此操作不可撤销。确认要在时间线中包含现在关注的所有人的回复吗？';
-	@override String get confirmHideRepliesAll => '此操作不可撤销。确认要在时间线中隐藏现在关注的所有人的回复吗？';
+	@override String get showRepliesToOthersInTimelineAll => '在时间线中显示所有现在关注的人的回复';
+	@override String get hideRepliesToOthersInTimelineAll => '在时间线中隐藏所有现在关注的人的回复';
+	@override String get confirmShowRepliesAll => '此操作不可撤销。确认要在时间线中显示所有现在关注的人的回复吗？';
+	@override String get confirmHideRepliesAll => '此操作不可撤销。确认要在时间线中隐藏所有现在关注的人的回复吗？';
 	@override String get externalServices => '外部服务';
 	@override String get sourceCode => '源代码';
 	@override String get sourceCodeIsNotYetProvided => '还未提供源代码。要解决此问题请联系管理员。';
@@ -1367,6 +1366,8 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationFailed => '验证通行密钥失败。';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '通行密钥验证成功，但账户未开启无密码登录。';
 	@override String get messageToFollower => '给关注者的消息';
+	@override String get target => '对象';
+	@override late final _StringsMisskeyAbuseUserReportZhCn abuseUserReport_ = _StringsMisskeyAbuseUserReportZhCn._(_root);
 	@override late final _StringsMisskeyDeliveryZhCn delivery_ = _StringsMisskeyDeliveryZhCn._(_root);
 	@override late final _StringsMisskeyBubbleGameZhCn bubbleGame_ = _StringsMisskeyBubbleGameZhCn._(_root);
 	@override late final _StringsMisskeyAnnouncementZhCn announcement_ = _StringsMisskeyAnnouncementZhCn._(_root);
@@ -1440,6 +1441,21 @@ class _StringsMisskeyZhCn extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyMediaControlsZhCn mediaControls_ = _StringsMisskeyMediaControlsZhCn._(_root);
 	@override late final _StringsMisskeyContextMenuZhCn contextMenu_ = _StringsMisskeyContextMenuZhCn._(_root);
 	@override late final _StringsMisskeyEmbedCodeGenZhCn embedCodeGen_ = _StringsMisskeyEmbedCodeGenZhCn._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportZhCn extends _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportZhCn._(_StringsZhCn root) : this._root = root, super._(root);
+
+	@override final _StringsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => '转发';
+	@override String get forwardDescription => '目标是匿名系统账户，将把举报转发给远程服务器。';
+	@override String get resolve => '解决';
+	@override String get accept => '确认';
+	@override String get reject => '拒绝';
+	@override String get resolveTutorial => '如果举报内容有理且已解决，选择「确认」将案件以肯定的态度标记为已解决。\n如果举报内容站不住脚，选择「拒绝」将案件以否定的态度标记为已解决。';
 }
 
 // Path: misskey.delivery_
@@ -2700,6 +2716,8 @@ class _StringsMisskeyModerationLogTypesZhCn extends _StringsMisskeyModerationLog
 	@override String get markSensitiveDriveFile => '标记网盘文件为敏感媒体';
 	@override String get unmarkSensitiveDriveFile => '取消标记网盘文件为敏感媒体';
 	@override String get resolveAbuseReport => '处理举报';
+	@override String get forwardAbuseReport => '转发举报';
+	@override String get updateAbuseReportNote => '更新举报用管理笔记';
 	@override String get createInvitation => '生成邀请码';
 	@override String get createAd => '创建了广告';
 	@override String get deleteAd => '删除了广告';
@@ -3276,7 +3294,6 @@ class _StringsMisskeyThemeKeysZhCn extends _StringsMisskeyThemeKeysEnUs {
 	@override String get buttonBg => '按钮背景';
 	@override String get buttonHoverBg => '按钮背景（悬停）';
 	@override String get inputBorder => '输入框边框';
-	@override String get listItemHoverBg => '下拉列表项目背景（悬停）';
 	@override String get driveFolderBg => '网盘的文件夹背景';
 	@override String get wallpaperOverlay => '壁纸叠加层';
 	@override String get badge => '徽章';
@@ -4211,7 +4228,7 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secZhCn extends _StringsMissk
 	// Translations
 	@override String get title => '报时';
 	@override String get description => '在 0 点发布一篇帖子';
-	@override String get flavor => '报时信号最后一响，零点整';
+	@override String get flavor => '嘟 · 嘟 · 嘟 · 哔——';
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
