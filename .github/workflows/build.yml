@@ -22,7 +22,7 @@ jobs:
       - name: Get Flutter version from .fvmrc
         id: get-flutter-version
         run: >
-          echo version=$(grep flutter .fvmrc | cut -d ":" -f2|cut -d "\"" -f2)
+          echo version=$(grep flutter .fvmrc | cut -d ':' -f 2 | cut -d '"' -f 2)
           >> $GITHUB_OUTPUT
 
   build-apk:
@@ -138,9 +138,9 @@ jobs:
 
       - name: Get build number
         id: get-build-number
-        run: >
-          echo build-number=$(grep version pubspec.yaml | cut -d "+" -f2)
-          >> $GITHUB_OUTPUT
+        run: |
+          build_number=$(grep version pubspec.yaml | cut -d '+' -f 2)
+          echo build-number=$build_number >> $GITHUB_OUTPUT
 
       - name: Build App Bundle
         env:
@@ -175,8 +175,17 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Get build name
+        id: get-build-name
+        run: |
+          build_name=$(grep version pubspec.yaml | sed 's/[^0-9]*\([0-9.]*\).*/\1/')
+          echo build-name=$build_name >> $GITHUB_OUTPUT
+
       - name: Build for iOS
-        run: flutter build ios --no-codesign
+        run: >
+          flutter build ios
+          --no-codesign
+          --build-name ${{ steps.get-build-name.outputs.build-name }}
 
       - name: Copy Runner.app
         run: |
