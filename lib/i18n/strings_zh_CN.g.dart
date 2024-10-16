@@ -2393,7 +2393,7 @@ class _StringsMisskeyProfileZhCn extends _StringsMisskeyProfileEnUs {
 	@override String avatarDecorationMax({required Object max}) => '最多可添加 ${max} 个挂件';
 	@override String get followedMessage => '被关注时显示的消息';
 	@override String get followedMessageDescription => '可以设置被关注时向对方显示的短消息。';
-	@override String get followedMessageDescriptionForLockedAccount => '需要批准才能关注的情况下，消息是在被请求被批准后显示。';
+	@override String get followedMessageDescriptionForLockedAccount => '需要批准才能关注的情况下，消息是在请求被批准后显示。';
 }
 
 // Path: misskey.exportOrImport_

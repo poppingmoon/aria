@@ -534,6 +534,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get moderator => 'Moderatore';
 	@override String get moderation => 'moderazione';
 	@override String get moderationNote => 'Promemoria di moderazione';
+	@override String get moderationNoteDescription => 'Puoi scrivere promemoria condivisi solo tra moderatori.';
 	@override String get addModerationNote => 'Aggiungi promemoria di moderazione';
 	@override String get moderationLogs => 'Cronologia di moderazione';
 	@override String nUsersMentioned({required Object n}) => '${n} profili ne parlano';
@@ -921,7 +922,7 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get hideOnlineStatus => 'Modalità invisibile';
 	@override String get hideOnlineStatusDescription => 'Attivando questa opzione potresti ridurre l\'usabilità di alcune funzioni, come la ricerca.';
 	@override String get online => 'Online';
-	@override String get active => 'Attività';
+	@override String get active => 'Attivo';
 	@override String get offline => 'Offline';
 	@override String get notRecommended => 'Sconsigliato';
 	@override String get botProtection => 'Protezione contro i bot';
@@ -1365,6 +1366,8 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationFailed => 'La verifica della passkey non è riuscita.';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verifica della passkey è riuscita, ma l\'accesso senza password è disabilitato.';
 	@override String get messageToFollower => 'Messaggio ai follower';
+	@override String get target => 'Riferimento';
+	@override late final _StringsMisskeyAbuseUserReportItIt abuseUserReport_ = _StringsMisskeyAbuseUserReportItIt._(_root);
 	@override late final _StringsMisskeyDeliveryItIt delivery_ = _StringsMisskeyDeliveryItIt._(_root);
 	@override late final _StringsMisskeyBubbleGameItIt bubbleGame_ = _StringsMisskeyBubbleGameItIt._(_root);
 	@override late final _StringsMisskeyAnnouncementItIt announcement_ = _StringsMisskeyAnnouncementItIt._(_root);
@@ -1440,6 +1443,21 @@ class _StringsMisskeyItIt extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyEmbedCodeGenItIt embedCodeGen_ = _StringsMisskeyEmbedCodeGenItIt._(_root);
 }
 
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportItIt extends _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportItIt._(_StringsItIt root) : this._root = root, super._(root);
+
+	@override final _StringsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => 'Inoltra';
+	@override String get forwardDescription => 'Inoltra il report al server remoto, per mezzo di account di sistema, anonimo.';
+	@override String get resolve => 'Risolvi';
+	@override String get accept => 'Approva';
+	@override String get reject => 'Rifiuta';
+	@override String get resolveTutorial => 'Se moderi una segnalazione legittima, scegli "Approva" per risolvere positivamente.\nSe la segnalazione non è legittima, seleziona "Rifiuta" per risolvere negativamente.';
+}
+
 // Path: misskey.delivery_
 class _StringsMisskeyDeliveryItIt extends _StringsMisskeyDeliveryEnUs {
 	_StringsMisskeyDeliveryItIt._(_StringsItIt root) : this._root = root, super._(root);
@@ -1475,16 +1493,16 @@ class _StringsMisskeyAnnouncementItIt extends _StringsMisskeyAnnouncementEnUs {
 	// Translations
 	@override String get forExistingUsers => 'Solo ai profili attuali';
 	@override String get forExistingUsersDescription => 'L\'annuncio sarà visibile solo ai profili esistenti in questo momento. Se disabilitato, sarà visibile anche ai profili che verranno creati dopo la pubblicazione di questo annuncio.';
-	@override String get needConfirmationToRead => 'Richiede la conferma di lettura';
-	@override String get needConfirmationToReadDescription => 'Sarà visualizzata una finestra di dialogo che richiede la conferma di lettura. Inoltre, non è soggetto a conferme di lettura massicce.';
+	@override String get needConfirmationToRead => 'Conferma di lettura obbligatoria';
+	@override String get needConfirmationToReadDescription => 'I profili riceveranno una finestra di dialogo che richiede di accettare obbligatoriamente per procedere. Tale richiesta è esente da  "conferma tutte".';
 	@override String get end => 'Archivia l\'annuncio';
 	@override String get tooManyActiveAnnouncementDescription => 'L\'esperienza delle persone può peggiorare se ci sono troppi annunci attivi. Considera anche l\'archiviazione degli annunci conclusi.';
 	@override String get readConfirmTitle => 'Segnare come già letto?';
 	@override String readConfirmText({required Object title}) => 'Hai già letto "${title}˝?';
 	@override String get shouldNotBeUsedToPresentPermanentInfo => 'Ti consigliamo di utilizzare gli annunci per pubblicare informazioni tempestive e limitate nel tempo, anziché informazioni importanti a lungo andare nel tempo, poiché potrebbero risultare difficili da ritrovare e peggiorare la fruibilità del servizio, specialmente alle nuove persone iscritte.';
 	@override String get dialogAnnouncementUxWarn => 'Ti consigliamo di usarli con cautela, poiché è molto probabile che avere più di un annuncio in stile "finestra di dialogo" peggiori sensibilmente la fruibilità del servizio, specialmente alle nuove persone iscritte.';
-	@override String get silence => 'Silenziare gli annunci';
-	@override String get silenceDescription => 'Se attivi questa opzione, non riceverai notifiche sugli annunci, evitando di contrassegnarle come già lette.';
+	@override String get silence => 'Annuncio silenzioso';
+	@override String get silenceDescription => 'Attivando questa opzione, non invierai la notifica, evitando che debba essere contrassegnata come già letta.';
 }
 
 // Path: misskey.initialAccountSetting_
@@ -2275,7 +2293,7 @@ class _StringsMisskeyWidgetsItIt extends _StringsMisskeyWidgetsEnUs {
 	@override String get userList => 'Elenco utenti';
 	@override late final _StringsMisskeyWidgetsUserListItIt userList_ = _StringsMisskeyWidgetsUserListItIt._(_root);
 	@override String get clicker => 'Cliccaggio';
-	@override String get birthdayFollowings => 'Chi nacque oggi';
+	@override String get birthdayFollowings => 'Compleanni del giorno';
 }
 
 // Path: misskey.cw_
@@ -2698,6 +2716,8 @@ class _StringsMisskeyModerationLogTypesItIt extends _StringsMisskeyModerationLog
 	@override String get markSensitiveDriveFile => 'File nel Drive segnato come esplicito';
 	@override String get unmarkSensitiveDriveFile => 'File nel Drive segnato come non esplicito';
 	@override String get resolveAbuseReport => 'Segnalazione risolta';
+	@override String get forwardAbuseReport => 'Segnalazione inoltrata';
+	@override String get updateAbuseReportNote => 'Ha aggiornato la segnalazione';
 	@override String get createInvitation => 'Genera codice di invito';
 	@override String get createAd => 'Banner creato';
 	@override String get deleteAd => 'Banner eliminato';
