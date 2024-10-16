@@ -150,6 +150,11 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get openInExternalBrowser => '外部ブラウザで開く';
 	@override String get openInInternalBrowser => '内部ブラウザで開く';
 	@override String get openMenu => 'メニューを開く';
+	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		const TextSpan(text: 'ブラウザで'),
+		scratchpad,
+		const TextSpan(text: 'を開き、以下のコードを入力して実行してください。'),
+	]);
 	@override String get openSensitiveMediaOnDoubleTap => 'ダブルタップしてセンシティブなメディアを開く';
 	@override String get parameters => 'パラメータ';
 	@override String get paste => '貼り付け';
@@ -158,9 +163,11 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 		url,
 		const TextSpan(text: 'からコピーすることができます。'),
 	]);
+	@override String get pasteResponseBelow => '以下にレスポンスを貼り付けてください。';
 	@override String get pinToEmojiPicker => '絵文字ピッカーにピン留め';
 	@override String get playAudio => '音声を再生';
 	@override String get playVideo => '動画を再生';
+	@override String get pleaseCopyResponse => '以下のレスポンスをコピーしてください';
 	@override String get postConfirm => 'このノートを投稿しますか？';
 	@override String get reactionConfirm => 'リアクションしますか？';
 	@override String get renoteConfirm => 'このノートをリノートしますか？';

@@ -534,6 +534,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get moderator => '審查員';
 	@override String get moderation => '審查';
 	@override String get moderationNote => '管理筆記';
+	@override String get moderationNoteDescription => '您可以編寫僅在審查員之間共用的註解。';
 	@override String get addModerationNote => '新增管理筆記';
 	@override String get moderationLogs => '管理日誌';
 	@override String nUsersMentioned({required Object n}) => '被 ${n} 個人提及';
@@ -599,7 +600,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get style => '風格';
 	@override String get drawer => '側邊欄';
 	@override String get popup => '彈出式視窗';
-	@override String get showNoteActionsOnlyHover => '僅在游標停留時顯示貼文的操作選項';
+	@override String get showNoteActionsOnlyHover => '僅在游標停留時顯示貼文的';
 	@override String get showReactionsCount => '顯示貼文的反應數目';
 	@override String get noHistory => '沒有歷史紀錄';
 	@override String get signinHistory => '登入歷史';
@@ -1098,7 +1099,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get neverShow => '不再顯示';
 	@override String get remindMeLater => '以後再說';
 	@override String get didYouLikeMisskey => '您喜歡 Misskey 嗎？';
-	@override String pleaseDonate({required Object host}) => 'Misskey 是由 ${host} 使用的免費軟體。請贊助我們，讓開發得以持續！';
+	@override String pleaseDonate({required Object host}) => 'Misskey是由${host}使用的免費軟體。請贊助我們，讓開發的工作能夠持續！';
 	@override String correspondingSourceIsAvailable({required Object anchor}) => '對應的原始碼可以在 ${anchor} 處找到。';
 	@override String get roles => '角色';
 	@override String get role => '角色';
@@ -1274,7 +1275,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get edited => '已編輯';
 	@override String get notificationRecieveConfig => '接受通知的設定';
 	@override String get mutualFollow => '互相追隨';
-	@override String get followingOrFollower => '追隨中或追隨者';
+	@override String get followingOrFollower => '追隨中或者追隨者';
 	@override String get fileAttachedOnly => '只顯示包含附件的貼文';
 	@override String get showRepliesToOthersInTimeline => '顯示給其他人的回覆';
 	@override String get hideRepliesToOthersInTimeline => '在時間軸上隱藏給其他人的回覆';
@@ -1345,7 +1346,7 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get keepOriginalFilename => '保留原始檔名';
 	@override String get keepOriginalFilenameDescription => '如果關閉此設置，上傳時檔案名稱會自動替換為隨機字串。';
 	@override String get noDescription => '沒有說明文字';
-	@override String get alwaysConfirmFollow => '點擊追隨時總是顯示確認訊息';
+	@override String get alwaysConfirmFollow => '跟隨時總是確認';
 	@override String get inquiry => '聯絡我們';
 	@override String get tryAgain => '請再試一次。';
 	@override String get confirmWhenRevealingSensitiveMedia => '要顯示敏感媒體時需確認';
@@ -1365,6 +1366,8 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationFailed => '驗證金鑰失敗。';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '雖然驗證金鑰成功，但是無密碼登入的方式是停用的。';
 	@override String get messageToFollower => '給追隨者的訊息';
+	@override String get target => '目標 ';
+	@override late final _StringsMisskeyAbuseUserReportZhTw abuseUserReport_ = _StringsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _StringsMisskeyDeliveryZhTw delivery_ = _StringsMisskeyDeliveryZhTw._(_root);
 	@override late final _StringsMisskeyBubbleGameZhTw bubbleGame_ = _StringsMisskeyBubbleGameZhTw._(_root);
 	@override late final _StringsMisskeyAnnouncementZhTw announcement_ = _StringsMisskeyAnnouncementZhTw._(_root);
@@ -1438,6 +1441,21 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override late final _StringsMisskeyMediaControlsZhTw mediaControls_ = _StringsMisskeyMediaControlsZhTw._(_root);
 	@override late final _StringsMisskeyContextMenuZhTw contextMenu_ = _StringsMisskeyContextMenuZhTw._(_root);
 	@override late final _StringsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _StringsMisskeyEmbedCodeGenZhTw._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _StringsMisskeyAbuseUserReportZhTw extends _StringsMisskeyAbuseUserReportEnUs {
+	_StringsMisskeyAbuseUserReportZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+
+	@override final _StringsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => '轉發';
+	@override String get forwardDescription => '以匿名系統帳戶將檢舉轉發至遠端伺服器。';
+	@override String get resolve => '解決';
+	@override String get accept => '接受';
+	@override String get reject => '拒絕';
+	@override String get resolveTutorial => '如果您已回覆正當的檢舉，請選擇「接受」以將案件標記為已解決。\n 如果檢舉的內容不正當，請選擇「拒絕」將案件標記為已解決。';
 }
 
 // Path: misskey.delivery_
@@ -1596,7 +1614,7 @@ class _StringsMisskeyAccountMigrationZhTw extends _StringsMisskeyAccountMigratio
 	@override String get startMigration => '遷移';
 	@override String migrationConfirm({required Object account}) => '確定要將這個帳戶遷移至 ${account} 嗎？一旦遷移就無法撤銷，也就無法以原來的狀態使用這個帳戶。\n另外，請確認在要遷移到的帳戶已經建立了一個別名。';
 	@override String get movedAndCannotBeUndone => '帳戶已遷移。\n遷移無法撤消。';
-	@override String get postMigrationNote => '在完成遷移的 24 小時後解除此帳戶的追隨。此帳戶的追隨中、追隨者數量變為 0。由於不會解除追隨者，你的追隨者仍然可以繼續檢視這個帳戶發布給追隨者的貼文。';
+	@override String get postMigrationNote => '取消追蹤此帳戶將在遷移操作後 24 小時執行。\n 此帳戶有 0 個關注者/關注者。 您的關注者仍然可以看到此帳戶的關注者帖子，因為您不會被取消關注。';
 	@override String get movedTo => '要遷移到的帳戶：';
 }
 
@@ -1903,7 +1921,7 @@ class _StringsMisskeyChannelZhTw extends _StringsMisskeyChannelEnUs {
 	@override String get following => '追隨中';
 	@override String usersCount({required Object n}) => '有 ${n} 人參與';
 	@override String notesCount({required Object n}) => '有 ${n} 篇貼文';
-	@override String get nameAndDescription => '名稱與說明';
+	@override String get nameAndDescription => '名稱';
 	@override String get nameOnly => '僅名稱';
 	@override String get allowRenoteToExternal => '允許在頻道外轉發和引用';
 }
@@ -2698,6 +2716,8 @@ class _StringsMisskeyModerationLogTypesZhTw extends _StringsMisskeyModerationLog
 	@override String get markSensitiveDriveFile => '標記為敏感檔案';
 	@override String get unmarkSensitiveDriveFile => '撤銷標記為敏感檔案';
 	@override String get resolveAbuseReport => '解決檢舉';
+	@override String get forwardAbuseReport => '轉發檢舉';
+	@override String get updateAbuseReportNote => '更新檢舉的審查備註';
 	@override String get createInvitation => '建立邀請碼';
 	@override String get createAd => '建立廣告';
 	@override String get deleteAd => '刪除廣告';
@@ -3423,7 +3443,7 @@ class _StringsMisskeyAbuseReportNotificationRecipientZhTw extends _StringsMisske
 	@override String get recipientType => '通知對象的種類';
 	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw._(_root);
 	@override String get keywords => '關鍵字';
-	@override String get notifiedUser => '被通知的使用者';
+	@override String get notifiedUser => '通知的使用者';
 	@override String get notifiedWebhook => '使用的 Webhook';
 	@override String get deleteConfirm => '確定要刪除通知對象嗎？';
 }
@@ -3974,7 +3994,7 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatZhTw extends _StringsMisskeyAch
 	// Translations
 	@override String get title => '我是貓';
 	@override String get description => '已將帳戶設定為貓';
-	@override String get flavor => '還沒有名字。';
+	@override String get flavor => '沒有名字。';
 }
 
 // Path: misskey.achievements_.types_.following1_
@@ -4028,7 +4048,7 @@ class _StringsMisskeyAchievementsTypesFollowing300ZhTw extends _StringsMisskeyAc
 	@override final _StringsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '朋友過多';
+	@override String get title => '朋友太多';
 	@override String get description => '追隨超過300人了';
 }
 
