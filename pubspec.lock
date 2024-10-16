@@ -515,6 +515,15 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_apns_only:
+    dependency: "direct main"
+    description:
+      path: flutter_apns_only
+      ref: "1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb"
+      resolved-ref: "1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb"
+      url: "https://github.com/poppingmoon/flutter-apns"
+    source: git
+    version: "1.6.0"
   flutter_blurhash:
     dependency: "direct main"
     description:
@@ -753,6 +762,30 @@ packages:
       url: "https://github.com/fluttercommunity/flutter_launcher_icons"
     source: git
     version: "0.13.1"
+  flutter_local_notifications:
+    dependency: "direct main"
+    description:
+      name: flutter_local_notifications
+      sha256: "49eeef364fddb71515bc78d5a8c51435a68bccd6e4d68e25a942c5e47761ae71"
+      url: "https://pub.dev"
+    source: hosted
+    version: "17.2.3"
+  flutter_local_notifications_linux:
+    dependency: transitive
+    description:
+      name: flutter_local_notifications_linux
+      sha256: c49bd06165cad9beeb79090b18cd1eb0296f4bf4b23b84426e37dd7c027fc3af
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.1"
+  flutter_local_notifications_platform_interface:
+    dependency: transitive
+    description:
+      name: flutter_local_notifications_platform_interface
+      sha256: "85f8d07fe708c1bdcf45037f2c0109753b26ae077e9d9e899d55971711a4ea66"
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.0"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -1279,8 +1312,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: cf8333b00066c016c99773f40ff6d881636e4a2f
-      resolved-ref: cf8333b00066c016c99773f40ff6d881636e4a2f
+      ref: "103efab93cce466ffc1a3ff792b8d33fb1843c40"
+      resolved-ref: "103efab93cce466ffc1a3ff792b8d33fb1843c40"
       url: "https://github.com/poppingmoon/misskey_dart"
     source: git
     version: "1.0.0"
@@ -1856,6 +1889,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  timezone:
+    dependency: transitive
+    description:
+      name: timezone
+      sha256: "2236ec079a174ce07434e89fcd3fcda430025eb7692244139a9cf54fdcf1fc7d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.4"
   timing:
     dependency: transitive
     description:
@@ -1898,6 +1939,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.3.2"
+  unifiedpush:
+    dependency: "direct main"
+    description:
+      name: unifiedpush
+      sha256: "6dbed5a6305ca33f1865c7a3d814ae39476b79a2d23ca76a5708f023f405730f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.0.2"
+  unifiedpush_android:
+    dependency: transitive
+    description:
+      name: unifiedpush_android
+      sha256: "7443dece0a850ae956514f809983eb2b39fc518c2c7d24dbfe817198bec89134"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.3.0"
+  unifiedpush_platform_interface:
+    dependency: transitive
+    description:
+      name: unifiedpush_platform_interface
+      sha256: dd588d78a8b2bfc10430e30035526e98caa543d0b7364a6344b5eb4815721c6d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.2"
+  unifiedpush_ui:
+    dependency: "direct main"
+    description:
+      name: unifiedpush_ui
+      sha256: cf86f0214f37debd41f25c0425c8489df85e27f9f8784fed571eb7a86d39ba11
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.0"
   url_launcher:
     dependency: "direct main"
     description:
@@ -2098,6 +2171,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  webcrypto:
+    dependency: "direct overridden"
+    description:
+      path: "."
+      ref: "702001aa58a6a21aadf4820e9f2f9c175fe8e962"
+      resolved-ref: "702001aa58a6a21aadf4820e9f2f9c175fe8e962"
+      url: "https://github.com/poppingmoon/webcrypto.dart"
+    source: git
+    version: "0.5.7"
   webdriver:
     dependency: transitive
     description:
@@ -2106,6 +2188,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  webpush_encryption:
+    dependency: "direct main"
+    description:
+      name: webpush_encryption
+      sha256: c4f7f1cdeba595d96d2e860d78e49f492308f22fa246a1d63c80915671d109b6
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0-rc1"
   win32:
     dependency: transitive
     description:

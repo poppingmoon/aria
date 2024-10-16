@@ -25,6 +25,11 @@ dependencies:
   flex_color_picker: ^3.6.0
   flutter:
     sdk: flutter
+  flutter_apns_only:
+    git:
+      url: https://github.com/poppingmoon/flutter-apns
+      ref: 1911c4f5fd1bd6d10361561916f8ec15ab6e8dbb
+      path: flutter_apns_only
   flutter_blurhash: ^0.8.2
   flutter_cache_manager: ^3.4.1
   flutter_highlighting: ^0.9.0+11.8.0
@@ -33,6 +38,7 @@ dependencies:
   flutter_image_compress: ^2.3.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_box_shadow: ^1.0.8
+  flutter_local_notifications: ^17.2.3
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.2
@@ -63,7 +69,7 @@ dependencies:
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: cf8333b00066c016c99773f40ff6d881636e4a2f
+      ref: 103efab93cce466ffc1a3ff792b8d33fb1843c40
   multi_split_view: ^3.5.0
   package_info_plus: ^8.0.3
   photo_view: ^0.15.0
@@ -87,12 +93,15 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/twemoji_v2
       ref: 4e9421350c0f6b3c4ca908e79042e6a2ab5d6dfc
+  unifiedpush: ^5.0.2
+  unifiedpush_ui: ^0.1.0
   url_launcher: ^6.3.1
   uuid: ^4.5.1
   vector_math: ^2.1.4
   video_player: ^2.9.2
   wakelock_plus: ^1.2.8
   web_socket_channel: ^3.0.1
+  webpush_encryption: ^1.0.0-rc1
 
 dev_dependencies:
   build_runner: ^2.4.13
@@ -114,6 +123,12 @@ dev_dependencies:
   riverpod_lint: ^2.3.13
   slang_build_runner: ^3.32.0
   yaml: ^3.1.2
+
+dependency_overrides:
+  webcrypto:
+    git:
+      url: https://github.com/poppingmoon/webcrypto.dart
+      ref: 702001aa58a6a21aadf4820e9f2f9c175fe8e962
 
 flutter:
   uses-material-design: true

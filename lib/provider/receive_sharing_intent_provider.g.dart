@@ -7,7 +7,7 @@ part of 'receive_sharing_intent_provider.dart';
 // **************************************************************************
 
 String _$receiveSharingIntentHash() =>
-    r'0e5e04e10d0ad83d64dc73ffabd9194083481699';
+    r'12ac16659f23cdcb4c3f8e28aa54bb58d2c09de8';
 
 /// See also [receiveSharingIntent].
 @ProviderFor(receiveSharingIntent)

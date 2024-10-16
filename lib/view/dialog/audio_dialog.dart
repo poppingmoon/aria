@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../extension/user_extension.dart';
 import '../../model/account.dart';
 import '../../provider/audio_handler_provider.dart';
 import '../widget/user_avatar.dart';
@@ -37,7 +38,7 @@ class AudioDialog extends HookConsumerWidget {
             MediaItem(
               id: file.url,
               title: file.name,
-              artist: user?.name ?? user?.username,
+              artist: user?.nameOrUsername,
               artUri: user?.avatarUrl,
             ),
           );

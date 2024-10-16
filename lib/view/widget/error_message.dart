@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -21,47 +22,53 @@ class ErrorMessage extends HookWidget {
   Widget build(BuildContext context) {
     final showStackTrace = useState(false);
     final error = this.error;
-    final message = error is MisskeyException
-        ? switch (error.code) {
-            'INTERNAL_ERROR' => [
-                t.misskey.internalServerError,
-                t.misskey.internalServerErrorDescription,
+    final message = switch (error) {
+      MisskeyException(:final code) => switch (code) {
+          'INTERNAL_ERROR' => [
+              t.misskey.internalServerError,
+              t.misskey.internalServerErrorDescription,
+              const JsonEncoder.withIndent('  ').convert(error.info),
+            ],
+          'RATE_LIMIT_EXCEEDED' => [
+              t.misskey.cannotPerformTemporary,
+              t.misskey.cannotPerformTemporaryDescription,
+            ],
+          'INVALID_PARAM' => [
+              t.misskey.invalidParamError,
+              t.misskey.invalidParamErrorDescription,
+              if (error.info != null)
                 const JsonEncoder.withIndent('  ').convert(error.info),
-              ],
-            'RATE_LIMIT_EXCEEDED' => [
-                t.misskey.cannotPerformTemporary,
-                t.misskey.cannotPerformTemporaryDescription,
-              ],
-            'INVALID_PARAM' => [
-                t.misskey.invalidParamError,
-                t.misskey.invalidParamErrorDescription,
-                if (error.info != null)
-                  const JsonEncoder.withIndent('  ').convert(error.info),
-              ],
-            'ROLE_PERMISSION_DENIED' => [
-                t.misskey.permissionDeniedError,
-                t.misskey.permissionDeniedErrorDescription,
-              ],
-            'RECURSIVE_NESTING' => [t.misskey.circularReferenceFolder],
-            'HAS_CHILD_FILES_OR_FOLDERS' => [t.misskey.hasChildFilesOrFolders],
-            'NO_SUCH_ROLE' => [t.misskey.noRole],
-            'NAME_ALREADY_EXISTS' => [t.misskey.pages_.nameAlreadyExists],
-            'NO_SUCH_USER' || 'USER_NOT_FOUND' => [t.misskey.noSuchUser],
-            _ => error.code.startsWith('TOO_MANY')
-                ? [
-                    t.misskey.youCannotCreateAnymore,
-                    error.message,
-                    error.id,
-                  ]
-                : [
-                    error.code,
-                    error.message,
-                    if (error.info != null)
-                      const JsonEncoder.withIndent('  ').convert(error.info),
-                  ]
-          }
-            .join('\n')
-        : error.toString();
+            ],
+          'ROLE_PERMISSION_DENIED' => [
+              t.misskey.permissionDeniedError,
+              t.misskey.permissionDeniedErrorDescription,
+            ],
+          'RECURSIVE_NESTING' => [t.misskey.circularReferenceFolder],
+          'HAS_CHILD_FILES_OR_FOLDERS' => [t.misskey.hasChildFilesOrFolders],
+          'NO_SUCH_ROLE' => [t.misskey.noRole],
+          'NAME_ALREADY_EXISTS' => [t.misskey.pages_.nameAlreadyExists],
+          'NO_SUCH_USER' || 'USER_NOT_FOUND' => [t.misskey.noSuchUser],
+          _ => error.code.startsWith('TOO_MANY')
+              ? [
+                  t.misskey.youCannotCreateAnymore,
+                  error.message,
+                  error.id,
+                ]
+              : [
+                  error.code,
+                  error.message,
+                  if (error.info != null)
+                    const JsonEncoder.withIndent('  ').convert(error.info),
+                ]
+        }
+            .join('\n'),
+      DioException(:final type, :final response, :final error) => [
+          type,
+          if (response != null) response,
+          if (error != null) error,
+        ].join('\n'),
+      _ => error.toString(),
+    };
 
     return Column(
       mainAxisSize: MainAxisSize.min,

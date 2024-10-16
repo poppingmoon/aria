@@ -22,13 +22,17 @@ class ShareNotifier extends _$ShareNotifier {
     return false;
   }
 
-  void markNeedRedirect() {
+  void markShouldRedirect() {
     state = true;
   }
 
   Future<String?> redirect() async {
+    if (!state) {
+      return null;
+    }
+    await Future(() => state = false);
+
     final sharedFiles = await ref.read(receiveSharingIntentProvider.future);
-    state = false;
     if (sharedFiles.isNotEmpty) {
       if (sharedFiles.singleOrNull?.type == SharedMediaType.url) {
         final url = Uri.parse(sharedFiles.single.path);
@@ -65,6 +69,7 @@ class ShareNotifier extends _$ShareNotifier {
         return '/share';
       }
     }
+
     return null;
   }
 
@@ -95,6 +100,5 @@ class ShareNotifier extends _$ShareNotifier {
     if (files.isNotEmpty) {
       ref.read(attachesNotifierProvider(account).notifier).addAll(files);
     }
-    state = false;
   }
 }
