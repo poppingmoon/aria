@@ -7,7 +7,7 @@ part of 'timeline_notes_after_note_notifier_provider.dart';
 // **************************************************************************
 
 String _$timelineNotesAfterNoteNotifierHash() =>
-    r'e29433aff3e0f9cba8dc82e2df1576a93f10529c';
+    r'807935d681491796690db3ae4b82f8c8fae281e7';
 
 /// Copied from Dart SDK
 class _SystemHash {

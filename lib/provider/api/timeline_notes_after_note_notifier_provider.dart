@@ -151,7 +151,7 @@ class TimelineNotesAfterNoteNotifier extends _$TimelineNotesAfterNoteNotifier {
 
   void addNote(Note note) {
     final value = state.valueOrNull;
-    if (value?.items.lastOrNull?.id != note.id) {
+    if (value?.items.firstOrNull?.id != note.id) {
       state = AsyncValue.data(
         PaginationState(
           items: [note, ...?value?.items],
