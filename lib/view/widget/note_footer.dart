@@ -266,7 +266,14 @@ class NoteFooter extends HookConsumerWidget {
                                 ),
                                 child: Text(
                                   NumberFormat().format(appearNote.renoteCount),
-                                  style: style,
+                                  style: style.apply(
+                                    color: renotedBy.value != null
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .primary
+                                            .withOpacity(0.6)
+                                        : null,
+                                  ),
                                 ),
                               ),
                           ],
