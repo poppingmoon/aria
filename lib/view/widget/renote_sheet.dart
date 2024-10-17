@@ -220,7 +220,7 @@ class RenoteSheet extends HookConsumerWidget {
                               .read(notesNotifierProvider(account).notifier)
                               .add(result);
                           if (!context.mounted) return;
-                          context.pop();
+                          context.pop(result);
                         }
                       }
                     } else {
@@ -239,7 +239,7 @@ class RenoteSheet extends HookConsumerWidget {
                         ref
                             .read(notesNotifierProvider(account).notifier)
                             .add(result);
-                        context.pop();
+                        context.pop(result);
                       }
                     }
                   }
