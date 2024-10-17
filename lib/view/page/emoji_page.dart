@@ -112,8 +112,7 @@ class EmojiPage extends ConsumerWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: KeyValueWidget(
                           label: t.misskey.localOnly,
-                          text:
-                              emoji.isSensitive ? t.misskey.yes : t.misskey.no,
+                          text: emoji.localOnly ? t.misskey.yes : t.misskey.no,
                         ),
                       ),
                       Padding(
