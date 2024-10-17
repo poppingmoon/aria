@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -40,7 +41,13 @@ class AboutAriaPage extends HookConsumerWidget {
                       future: PackageInfo.fromPlatform(),
                       builder: (context, snapshot) {
                         if (snapshot case AsyncSnapshot(:final data?)) {
-                          return Text(data.version);
+                          final buildNumber =
+                              defaultTargetPlatform == TargetPlatform.android &&
+                                      kReleaseMode
+                                  ? data.buildNumber
+                                      .substring(0, data.buildNumber.length - 1)
+                                  : data.buildNumber;
+                          return Text('${data.version}+$buildNumber');
                         } else {
                           return const SizedBox.shrink();
                         }
