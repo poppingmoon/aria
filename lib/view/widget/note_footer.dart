@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/colors.dart';
+import '../../extension/note_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
+import '../../provider/api/misskey_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
@@ -29,7 +32,7 @@ import 'renote_sheet.dart';
 import 'renote_users_sheet.dart';
 import 'translated_note_sheet.dart';
 
-class NoteFooter extends ConsumerWidget {
+class NoteFooter extends HookConsumerWidget {
   const NoteFooter({
     super.key,
     required this.account,
@@ -88,6 +91,7 @@ class NoteFooter extends ConsumerWidget {
       NoteVisibility.followers => isMyNote,
       _ => false,
     };
+    final renotedBy = useState(note.isRenote ? noteId : null);
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -164,10 +168,64 @@ class NoteFooter extends ConsumerWidget {
                             ? t.misskey.renote
                             : null,
                         onPressed: !account.isGuest
-                            ? () {
+                            ? () async {
                                 if (appearNote.id.isEmpty) return;
+                                if (renotedBy.value case final noteId?) {
+                                  final unrenote =
+                                      await showModalBottomSheet<bool>(
+                                    context: context,
+                                    builder: (context) => ListView(
+                                      shrinkWrap: true,
+                                      children: [
+                                        ListTile(
+                                          leading:
+                                              const Icon(Icons.repeat_rounded),
+                                          title: Text(t.misskey.renote),
+                                          onTap: () => context.pop(false),
+                                        ),
+                                        ListTile(
+                                          leading: const Icon(Icons.delete),
+                                          title: Text(t.misskey.unrenote),
+                                          onTap: () => context.pop(true),
+                                          iconColor: Theme.of(context)
+                                              .colorScheme
+                                              .error,
+                                          textColor: Theme.of(context)
+                                              .colorScheme
+                                              .error,
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                  if (!context.mounted) return;
+                                  if (unrenote == null) return;
+                                  if (unrenote) {
+                                    final result = await futureWithDialog(
+                                      context,
+                                      ref
+                                          .read(misskeyProvider(account))
+                                          .notes
+                                          .delete(
+                                            NotesDeleteRequest(noteId: noteId),
+                                          )
+                                          .then((_) => true),
+                                    );
+                                    if (!context.mounted) return;
+                                    if (result != null) {
+                                      ref
+                                          .read(
+                                            notesNotifierProvider(account)
+                                                .notifier,
+                                          )
+                                          .remove(noteId);
+                                      renotedBy.value = null;
+                                    }
+                                    return;
+                                  }
+                                }
                                 if (showQuoteButton) {
-                                  showModalBottomSheet<void>(
+                                  final result =
+                                      await showModalBottomSheet<Note>(
                                     context: context,
                                     builder: (context) => RenoteSheet(
                                       account: account,
@@ -175,6 +233,9 @@ class NoteFooter extends ConsumerWidget {
                                     ),
                                     clipBehavior: Clip.hardEdge,
                                   );
+                                  if (result != null) {
+                                    renotedBy.value = result.id;
+                                  }
                                 } else {
                                   ref
                                       .read(
@@ -184,7 +245,7 @@ class NoteFooter extends ConsumerWidget {
                                   if (focusPostForm case final focusPostForm?) {
                                     focusPostForm();
                                   } else {
-                                    context.push('/$account/post');
+                                    await context.push('/$account/post');
                                   }
                                 }
                               }
@@ -192,7 +253,12 @@ class NoteFooter extends ConsumerWidget {
                         icon: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            const Icon(Icons.repeat_rounded),
+                            Icon(
+                              Icons.repeat_rounded,
+                              color: renotedBy.value != null
+                                  ? Theme.of(context).colorScheme.primary
+                                  : null,
+                            ),
                             if (appearNote.renoteCount > 0)
                               Padding(
                                 padding: const EdgeInsets.symmetric(
@@ -200,7 +266,14 @@ class NoteFooter extends ConsumerWidget {
                                 ),
                                 child: Text(
                                   NumberFormat().format(appearNote.renoteCount),
-                                  style: style,
+                                  style: style.apply(
+                                    color: renotedBy.value != null
+                                        ? Theme.of(context)
+                                            .colorScheme
+                                            .primary
+                                            .withOpacity(0.6)
+                                        : null,
+                                  ),
                                 ),
                               ),
                           ],
