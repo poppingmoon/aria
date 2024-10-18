@@ -125,6 +125,11 @@ dev_dependencies:
   yaml: ^3.1.2
 
 dependency_overrides:
+  highlighting:
+    git:
+      url: https://github.com/poppingmoon/dart-highlighting
+      ref: 76d9f984d53de07b445965f13a5e02c3bd3ed83a
+      path: highlighting
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart

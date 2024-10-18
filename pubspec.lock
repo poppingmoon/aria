@@ -977,11 +977,12 @@ packages:
   highlighting:
     dependency: "direct main"
     description:
-      name: highlighting
-      sha256: "196005ed9c98ee559939fcecd466fa941b9e99b3a93394691b86780ad4da50f3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.9.0+11.8.0"
+      path: highlighting
+      ref: "76d9f984d53de07b445965f13a5e02c3bd3ed83a"
+      resolved-ref: "76d9f984d53de07b445965f13a5e02c3bd3ed83a"
+      url: "https://github.com/poppingmoon/dart-highlighting"
+    source: git
+    version: "0.9.1+11.8.0"
   hooks_riverpod:
     dependency: "direct main"
     description:
