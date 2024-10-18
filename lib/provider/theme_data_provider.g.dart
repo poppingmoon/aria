@@ -6,7 +6,7 @@ part of 'theme_data_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$themeDataHash() => r'34c8a09a41a01f8fde33bc9d24f0be096b3a015c';
+String _$themeDataHash() => r'45aba6248cadcf8da9d5157b8a05b2615f916853';
 
 /// Copied from Dart SDK
 class _SystemHash {
