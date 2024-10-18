@@ -85,13 +85,15 @@ class NoteFooter extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showReactionsCount),
     );
-    final isMyNote = i != null && appearNote.user.id == i.id;
+    final isMyNote = i != null && appearNote.userId == i.id;
     final canRenote = switch (appearNote.visibility) {
       NoteVisibility.public || NoteVisibility.home => true,
       NoteVisibility.followers => isMyNote,
       _ => false,
     };
-    final renotedBy = useState(note.isRenote ? noteId : null);
+    final myRenotingNoteId = useState(
+      note.isRenote && i != null && note.userId == i.id ? noteId : null,
+    );
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -170,7 +172,7 @@ class NoteFooter extends HookConsumerWidget {
                         onPressed: !account.isGuest
                             ? () async {
                                 if (appearNote.id.isEmpty) return;
-                                if (renotedBy.value case final noteId?) {
+                                if (myRenotingNoteId.value case final noteId?) {
                                   final unrenote =
                                       await showModalBottomSheet<bool>(
                                     context: context,
@@ -218,7 +220,7 @@ class NoteFooter extends HookConsumerWidget {
                                                 .notifier,
                                           )
                                           .remove(noteId);
-                                      renotedBy.value = null;
+                                      myRenotingNoteId.value = null;
                                     }
                                     return;
                                   }
@@ -234,7 +236,7 @@ class NoteFooter extends HookConsumerWidget {
                                     clipBehavior: Clip.hardEdge,
                                   );
                                   if (result != null) {
-                                    renotedBy.value = result.id;
+                                    myRenotingNoteId.value = result.id;
                                   }
                                 } else {
                                   ref
@@ -255,7 +257,7 @@ class NoteFooter extends HookConsumerWidget {
                           children: [
                             Icon(
                               Icons.repeat_rounded,
-                              color: renotedBy.value != null
+                              color: myRenotingNoteId.value != null
                                   ? Theme.of(context).colorScheme.primary
                                   : null,
                             ),
@@ -267,7 +269,7 @@ class NoteFooter extends HookConsumerWidget {
                                 child: Text(
                                   NumberFormat().format(appearNote.renoteCount),
                                   style: style.apply(
-                                    color: renotedBy.value != null
+                                    color: myRenotingNoteId.value != null
                                         ? Theme.of(context)
                                             .colorScheme
                                             .primary
