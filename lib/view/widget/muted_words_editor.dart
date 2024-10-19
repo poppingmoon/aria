@@ -120,6 +120,7 @@ class MutedWordsEditor extends HookConsumerWidget {
             ),
             minLines: 5,
             maxLines: 10,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ),
         const SizedBox(height: 4.0),

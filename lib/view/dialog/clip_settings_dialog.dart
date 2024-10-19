@@ -35,6 +35,7 @@ class ClipSettingsDialog extends HookWidget {
                 onChanged: (value) =>
                     settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),
@@ -53,6 +54,7 @@ class ClipSettingsDialog extends HookWidget {
                     .copyWith(description: value.isNotEmpty ? value : null),
                 maxLines: 5,
                 textInputAction: TextInputAction.done,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),

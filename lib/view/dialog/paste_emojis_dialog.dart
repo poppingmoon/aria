@@ -80,6 +80,7 @@ class PasteEmojisDialog extends HookConsumerWidget {
                 floatingLabelBehavior: FloatingLabelBehavior.always,
               ),
               maxLines: null,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ],

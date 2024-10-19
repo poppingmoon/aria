@@ -91,6 +91,7 @@ class UserSelectDialog extends HookConsumerWidget {
                       onChanged: (value) => username.value = value,
                       keyboardType: TextInputType.url,
                       textInputAction: TextInputAction.next,
+                      onTapOutside: (_) => primaryFocus?.unfocus(),
                     ),
                   ),
                   if (!localOnly) ...[
@@ -107,6 +108,7 @@ class UserSelectDialog extends HookConsumerWidget {
                         onChanged: (value) => host.value = value,
                         keyboardType: TextInputType.url,
                         textInputAction: TextInputAction.done,
+                        onTapOutside: (_) => primaryFocus?.unfocus(),
                       ),
                     ),
                   ],

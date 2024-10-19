@@ -83,6 +83,7 @@ class FileCaptionEditDialog extends HookWidget {
               onSubmitted: (value) => context.pop(value),
               maxLines: 5,
               autofocus: true,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ],

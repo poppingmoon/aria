@@ -80,6 +80,7 @@ class TextFieldDialog extends HookWidget {
         onSubmit: (value) => context.pop(value),
         autofocus: true,
         textInputAction: maxLines == 1 ? TextInputAction.done : null,
+        onTapOutside: (_) => primaryFocus?.unfocus(),
       );
     } else {
       return TextField(
@@ -92,6 +93,7 @@ class TextFieldDialog extends HookWidget {
         maxLength: maxLength,
         autofocus: true,
         textInputAction: maxLines == 1 ? TextInputAction.done : null,
+        onTapOutside: (_) => primaryFocus?.unfocus(),
       );
     }
   }

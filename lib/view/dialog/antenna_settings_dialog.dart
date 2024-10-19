@@ -61,6 +61,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 onChanged: (value) =>
                     settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),
@@ -179,6 +180,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                   alignLabelWithHint: true,
                 ),
                 maxLines: 5,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),
@@ -196,6 +198,7 @@ class AntennaSettingsDialog extends HookConsumerWidget {
                 ),
                 minLines: 3,
                 maxLines: 10,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),

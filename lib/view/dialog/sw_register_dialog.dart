@@ -105,6 +105,7 @@ if (Core:type(response) == 'error') {
               style: const TextStyle(fontFamily: 'monospace'),
               onChanged: (value) => responseText.value = value,
               maxLines: null,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ],

@@ -160,6 +160,7 @@ class TokenLoginPage extends HookConsumerWidget {
                               ),
                               keyboardType: TextInputType.visiblePassword,
                               textInputAction: TextInputAction.done,
+                              onTapOutside: (_) => primaryFocus?.unfocus(),
                             ),
                           ),
                           const SizedBox(height: 16.0),

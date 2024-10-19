@@ -104,6 +104,7 @@ class PlayEditPage extends HookConsumerWidget {
                     decoration:
                         InputDecoration(labelText: t.misskey.play_.title),
                     textInputAction: TextInputAction.next,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -119,6 +120,7 @@ class PlayEditPage extends HookConsumerWidget {
                     textInputAction: TextInputAction.next,
                     minLines: 3,
                     maxLines: 10,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -134,6 +136,7 @@ class PlayEditPage extends HookConsumerWidget {
                     style: const TextStyle(fontFamily: 'monospace'),
                     minLines: 10,
                     maxLines: null,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),

@@ -40,6 +40,7 @@ class MisskeyServers extends HookConsumerWidget {
               ),
               onChanged: (value) => query.value = value,
               textInputAction: TextInputAction.search,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ),

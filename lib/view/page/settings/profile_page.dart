@@ -308,6 +308,7 @@ class ProfilePage extends HookConsumerWidget {
                           .read(iNotifierProvider(account).notifier)
                           .setName(value),
                     ),
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -367,6 +368,7 @@ class ProfilePage extends HookConsumerWidget {
                     maxLength:
                         (description.value?.length ?? 0) > 1400 ? 1500 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -412,6 +414,7 @@ class ProfilePage extends HookConsumerWidget {
                     ),
                     maxLength: (location.value?.length ?? 0) > 40 ? 50 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -668,6 +671,7 @@ class ProfilePage extends HookConsumerWidget {
                     maxLength:
                         (followedMessage.value?.length ?? 0) > 200 ? 256 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),

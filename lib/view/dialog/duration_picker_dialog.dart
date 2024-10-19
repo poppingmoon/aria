@@ -54,6 +54,7 @@ class DurationPickerDialog extends HookWidget {
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
           const SizedBox(height: 8.0),
           TextField(
@@ -65,6 +66,7 @@ class DurationPickerDialog extends HookWidget {
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
           const SizedBox(height: 8.0),
           TextField(
@@ -76,6 +78,7 @@ class DurationPickerDialog extends HookWidget {
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
           const SizedBox(height: 8.0),
           TextField(
@@ -95,6 +98,7 @@ class DurationPickerDialog extends HookWidget {
               ),
             ),
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ],
       ),

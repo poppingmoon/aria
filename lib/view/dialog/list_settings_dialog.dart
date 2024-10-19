@@ -32,6 +32,7 @@ class ListSettingsDialog extends HookWidget {
                 ),
                 onChanged: (value) =>
                     settings.value = settings.value.copyWith(name: value),
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),

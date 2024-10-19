@@ -30,6 +30,7 @@ class FieldDialog extends HookWidget {
                 enabledBorder: Theme.of(context).inputDecorationTheme.border,
               ),
               textInputAction: TextInputAction.next,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
             const SizedBox(height: 8.0),
             TextField(
@@ -39,6 +40,7 @@ class FieldDialog extends HookWidget {
                 enabledBorder: Theme.of(context).inputDecorationTheme.border,
               ),
               textInputAction: TextInputAction.done,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ],
         ),

@@ -46,6 +46,7 @@ class ChannelsSearch extends HookConsumerWidget {
                     const InputDecoration(prefixIcon: Icon(Icons.search)),
                 onSubmitted: (value) => query.value = value.trim(),
                 textInputAction: TextInputAction.search,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),
