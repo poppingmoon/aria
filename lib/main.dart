@@ -177,9 +177,9 @@ class Aria extends HookConsumerWidget {
               ),
             NotificationType.note => t.misskey.notification_.newNote,
             NotificationType.reaction => [
-                notification.body?.reaction ?? '',
-                notification.body?.user?.nameOrUsername ?? '',
-              ].join(' '),
+                notification.body?.reaction?.split('@')[0].replaceAll(':', ''),
+                notification.body?.user?.nameOrUsername,
+              ].nonNulls.join(' '),
             NotificationType.receiveFollowRequest =>
               t.misskey.notification_.youReceivedFollowRequest,
             NotificationType.followRequestAccepted =>
