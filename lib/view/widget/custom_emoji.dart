@@ -70,7 +70,7 @@ class CustomEmoji extends ConsumerWidget {
       child: TooltipVisibility(
         visible: !disableTooltip,
         child: Tooltip(
-          message: emoji,
+          message: emoji.replaceAll('@.', ''),
           child: ImageWidget(
             url: disableShowingAnimatedImages
                 ? ref
