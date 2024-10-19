@@ -75,6 +75,7 @@ class GalleryEditPage extends HookConsumerWidget {
       ),
       body: ListView(
         children: [
+          const SizedBox(height: 4.0),
           ListTile(
             title: Shortcuts(
               shortcuts: disablingTextShortcuts,
@@ -82,6 +83,7 @@ class GalleryEditPage extends HookConsumerWidget {
                 controller: titleController,
                 decoration: InputDecoration(labelText: t.misskey.title),
                 textInputAction: TextInputAction.next,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),
@@ -97,6 +99,7 @@ class GalleryEditPage extends HookConsumerWidget {
                 textInputAction: TextInputAction.next,
                 minLines: 3,
                 maxLines: 10,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),

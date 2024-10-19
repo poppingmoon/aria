@@ -13,8 +13,17 @@ class MisskeyServerListDialog extends StatelessWidget {
       title: Text(t.aria.findServer),
       content: SizedBox(
         width: double.maxFinite,
-        child: MisskeyServers(
-          onTapServer: (item) => context.pop(item.url),
+        child: Theme(
+          data: Theme.of(context).copyWith(
+            inputDecorationTheme: Theme.of(context)
+                .inputDecorationTheme
+                .copyWith(
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                ),
+          ),
+          child: MisskeyServers(
+            onTapServer: (item) => context.pop(item.url),
+          ),
         ),
       ),
     );

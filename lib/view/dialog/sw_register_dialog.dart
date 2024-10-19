@@ -85,6 +85,7 @@ if (Core:type(response) == 'error') {
           ),
           const SizedBox(height: 8.0),
           Text(t.aria.pasteResponseBelow),
+          const SizedBox(height: 8.0),
           Shortcuts(
             shortcuts: disablingTextShortcuts,
             child: TextField(
@@ -99,10 +100,12 @@ if (Core:type(response) == 'error') {
                   ),
                 ),
                 floatingLabelBehavior: FloatingLabelBehavior.always,
+                enabledBorder: Theme.of(context).inputDecorationTheme.border,
               ),
               style: const TextStyle(fontFamily: 'monospace'),
               onChanged: (value) => responseText.value = value,
               maxLines: null,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ],

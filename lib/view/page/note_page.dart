@@ -157,6 +157,7 @@ class NotePage extends HookConsumerWidget {
             controller: controller,
             center: centerKey,
             slivers: [
+              const SliverToBoxAdapter(child: SizedBox(height: 4.0)),
               if (nextNotesState != null) ...[
                 SliverToBoxAdapter(
                   child: PaginationBottomWidget(
@@ -180,7 +181,7 @@ class NotePage extends HookConsumerWidget {
                     SliverToBoxAdapter(
                       child: Container(
                         height: 8.0,
-                        margin: const EdgeInsets.only(top: 8.0),
+                        margin: const EdgeInsets.only(top: 4.0),
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(8.0),
@@ -205,7 +206,7 @@ class NotePage extends HookConsumerWidget {
                     SliverToBoxAdapter(
                       child: Container(
                         height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 8.0),
+                        margin: const EdgeInsets.only(bottom: 4.0),
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(8.0),
@@ -250,7 +251,7 @@ class NotePage extends HookConsumerWidget {
                 key: centerKey,
                 child: remoteUrl != null
                     ? Card(
-                        margin: const EdgeInsets.symmetric(vertical: 8.0),
+                        margin: const EdgeInsets.symmetric(vertical: 4.0),
                         color: colors.infoWarnBg,
                         elevation: 0.0,
                         child: Padding(
@@ -302,7 +303,7 @@ class NotePage extends HookConsumerWidget {
               ),
               SliverToBoxAdapter(
                 child: Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  margin: const EdgeInsets.symmetric(vertical: 4.0),
                   color: colors.panel,
                   elevation: 0.0,
                   clipBehavior: Clip.hardEdge,
@@ -319,7 +320,7 @@ class NotePage extends HookConsumerWidget {
                     SliverToBoxAdapter(
                       child: Container(
                         height: 8.0,
-                        margin: const EdgeInsets.only(top: 8.0),
+                        margin: const EdgeInsets.only(top: 4.0),
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(8.0),
@@ -344,7 +345,7 @@ class NotePage extends HookConsumerWidget {
                     SliverToBoxAdapter(
                       child: Container(
                         height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 8.0),
+                        margin: const EdgeInsets.only(bottom: 4.0),
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(8.0),
@@ -402,6 +403,7 @@ class NotePage extends HookConsumerWidget {
                     ],
                   ),
                 ),
+              const SliverToBoxAdapter(child: SizedBox(height: 4.0)),
             ],
           ),
         ),

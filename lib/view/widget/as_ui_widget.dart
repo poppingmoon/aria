@@ -303,6 +303,7 @@ class AsUiWidget extends HookConsumerWidget {
                 onInput != null ? (value) => onInput.call(value: value) : null,
             minLines: 6,
             maxLines: 6,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
       },
@@ -324,6 +325,7 @@ class AsUiWidget extends HookConsumerWidget {
             ),
             onChanged:
                 onInput != null ? (value) => onInput.call(value: value) : null,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
       },
@@ -425,6 +427,7 @@ class AsUiWidget extends HookConsumerWidget {
                     }
                   }
                 : null,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
       },

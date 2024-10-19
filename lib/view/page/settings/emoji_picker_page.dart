@@ -60,7 +60,7 @@ class EmojiPickerPage extends HookConsumerWidget {
               ),
               Container(
                 height: 8.0,
-                margin: const EdgeInsets.only(bottom: 8.0),
+                margin: const EdgeInsets.only(bottom: 4.0),
                 decoration: BoxDecoration(
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(8.0),
@@ -72,7 +72,7 @@ class EmojiPickerPage extends HookConsumerWidget {
             ],
             Container(
               height: 8.0,
-              margin: const EdgeInsets.only(top: 8.0),
+              margin: const EdgeInsets.only(top: 4.0),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8.0),

@@ -94,6 +94,9 @@ Future<String?> pickEmoji(
           post: post,
         ),
       ),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(12.0)),
+      ),
       isScrollControlled: true,
       clipBehavior: Clip.hardEdge,
     );
@@ -182,7 +185,7 @@ class EmojiPicker extends HookConsumerWidget {
         ),
         if (customEmojis.isNotEmpty || unicodeEmojis.isNotEmpty) ...[
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Wrap(
               spacing: 4.0,
               runSpacing: 4.0,
@@ -216,7 +219,7 @@ class EmojiPicker extends HookConsumerWidget {
         ],
         if (pinnedEmojis.isNotEmpty) ...[
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Wrap(
               spacing: 4.0,
               runSpacing: 4.0,
@@ -246,8 +249,9 @@ class EmojiPicker extends HookConsumerWidget {
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(t.misskey.recentUsed),
           ),
+          const SizedBox(height: 4.0),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Wrap(
               spacing: 4.0,
               runSpacing: 4.0,

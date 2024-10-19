@@ -22,28 +22,39 @@ class ClipSettingsDialog extends HookWidget {
       title: Text(this.settings == null ? t.misskey.create : t.misskey.edit),
       content: Column(
         children: [
-          ListTile(
-            title: Text(t.misskey.name),
-            subtitle: Shortcuts(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: nameController,
+                decoration: InputDecoration(
+                  labelText: t.misskey.name,
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                ),
                 onChanged: (value) =>
                     settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),
-          ListTile(
-            title: Text('${t.misskey.description} (${t.misskey.optional})'),
-            subtitle: Shortcuts(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: descriptionController,
+                decoration: InputDecoration(
+                  labelText: '${t.misskey.description} (${t.misskey.optional})',
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  alignLabelWithHint: true,
+                ),
                 onChanged: (value) => settings.value = settings.value
                     .copyWith(description: value.isNotEmpty ? value : null),
                 maxLines: 5,
                 textInputAction: TextInputAction.done,
+                onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
             ),
           ),

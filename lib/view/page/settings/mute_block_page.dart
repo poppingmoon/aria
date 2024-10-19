@@ -60,6 +60,7 @@ class MuteBlockPage extends HookConsumerWidget {
             expandedCrossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Card(
+                margin: EdgeInsets.zero,
                 color: colors.infoBg,
                 elevation: 0.0,
                 child: Container(
@@ -71,23 +72,24 @@ class MuteBlockPage extends HookConsumerWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 8.0),
               Shortcuts(
                 shortcuts: disablingTextShortcuts,
                 child: TextField(
                   controller: serverMuteController,
                   decoration: InputDecoration(
                     hintText: t.misskey.instanceMute_.heading,
+                    helperText: [
+                      t.misskey.instanceMute_.instanceMuteDescription,
+                      t.misskey.instanceMute_.instanceMuteDescription2,
+                    ].join('\n'),
                   ),
                   minLines: 5,
                   maxLines: 10,
+                  onTapOutside: (_) => primaryFocus?.unfocus(),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  '${t.misskey.instanceMute_.instanceMuteDescription}\n${t.misskey.instanceMute_.instanceMuteDescription2}',
-                ),
-              ),
+              const SizedBox(height: 4.0),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(

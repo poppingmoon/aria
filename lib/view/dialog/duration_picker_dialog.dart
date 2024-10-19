@@ -47,28 +47,46 @@ class DurationPickerDialog extends HookWidget {
         children: [
           TextField(
             controller: daysController,
-            decoration: InputDecoration(labelText: t.misskey.time_.day),
+            decoration: InputDecoration(
+              labelText: t.misskey.time_.day,
+              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+            ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
+          const SizedBox(height: 8.0),
           TextField(
             controller: hoursController,
-            decoration: InputDecoration(labelText: t.misskey.time_.hour),
+            decoration: InputDecoration(
+              labelText: t.misskey.time_.hour,
+              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+            ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
+          const SizedBox(height: 8.0),
           TextField(
             controller: minutesController,
-            decoration: InputDecoration(labelText: t.misskey.time_.minute),
+            decoration: InputDecoration(
+              labelText: t.misskey.time_.minute,
+              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+            ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.next,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
+          const SizedBox(height: 8.0),
           TextField(
             controller: secondsController,
-            decoration: InputDecoration(labelText: t.misskey.time_.second),
+            decoration: InputDecoration(
+              labelText: t.misskey.time_.second,
+              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+            ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.done,
             onSubmitted: (_) => context.pop(
@@ -80,6 +98,7 @@ class DurationPickerDialog extends HookWidget {
               ),
             ),
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ],
       ),

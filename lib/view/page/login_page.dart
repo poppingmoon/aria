@@ -111,6 +111,7 @@ class LoginPage extends HookConsumerWidget {
                                   )
                                 : const SizedBox(width: 50.0, height: 50.0),
                           ),
+                          const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
                             controller: controller,
                             focusNode: focusNode,
@@ -120,6 +121,10 @@ class LoginPage extends HookConsumerWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: TextButton(
+                              style: TextButton.styleFrom(
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
                               onPressed: () async {
                                 final server = await showDialog<String>(
                                   context: context,

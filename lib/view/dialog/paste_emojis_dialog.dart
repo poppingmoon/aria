@@ -68,12 +68,19 @@ class PasteEmojisDialog extends HookConsumerWidget {
               ),
             ),
           ),
+          const SizedBox(height: 12.0),
           Shortcuts(
             shortcuts: disablingTextShortcuts,
             child: TextField(
               controller: controller,
-              decoration: const InputDecoration(hintText: _sampleEmojis),
+              decoration: InputDecoration(
+                labelText: '${t.misskey.value} (JSON)',
+                hintText: _sampleEmojis,
+                enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+              ),
               maxLines: null,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ],

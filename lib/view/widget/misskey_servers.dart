@@ -31,7 +31,7 @@ class MisskeyServers extends HookConsumerWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
           child: Shortcuts(
             shortcuts: disablingTextShortcuts,
             child: TextField(
@@ -40,6 +40,7 @@ class MisskeyServers extends HookConsumerWidget {
               ),
               onChanged: (value) => query.value = value,
               textInputAction: TextInputAction.search,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
             ),
           ),
         ),

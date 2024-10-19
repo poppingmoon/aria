@@ -113,20 +113,17 @@ class MutedWordsEditor extends HookConsumerWidget {
             controller: controller,
             decoration: InputDecoration(
               hintText: t.misskey.wordMute_.muteWords,
+              helperText: [
+                t.misskey.wordMute_.muteWordsDescription,
+                t.misskey.wordMute_.muteWordsDescription2,
+              ].join('\n'),
             ),
             minLines: 5,
             maxLines: 10,
+            onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            [
-              t.misskey.wordMute_.muteWordsDescription,
-              t.misskey.wordMute_.muteWordsDescription2,
-            ].join('\n'),
-          ),
-        ),
+        const SizedBox(height: 4.0),
         SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(

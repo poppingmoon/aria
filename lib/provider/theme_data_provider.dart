@@ -60,7 +60,15 @@ ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
         ),
     iconTheme: IconThemeData(color: colors.fg),
     inputDecorationTheme: InputDecorationTheme(
+      helperMaxLines: 100,
       hintStyle: TextStyle(color: colors.fg.withOpacity(0.5)),
+      filled: true,
+      fillColor: colors.panel,
+      enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
+      border: OutlineInputBorder(
+        borderSide: BorderSide(color: colors.divider),
+        borderRadius: BorderRadius.circular(6.0),
+      ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(

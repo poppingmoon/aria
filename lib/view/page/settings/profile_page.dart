@@ -283,18 +283,19 @@ class ProfilePage extends HookConsumerWidget {
                       labelText: t.misskey.profile_.name,
                       suffix: IconButton(
                         style: IconButton.styleFrom(
+                          minimumSize: Size.zero,
+                          iconSize: 18.0,
+                          padding: const EdgeInsets.all(4.0),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         tooltip: t.misskey.save,
                         onPressed: name.value != i.name
-                            ? () {
-                                futureWithDialog(
+                            ? () => futureWithDialog(
                                   context,
                                   ref
                                       .read(iNotifierProvider(account).notifier)
                                       .setName(name.value),
-                                );
-                              }
+                                )
                             : null,
                         icon: const Icon(Icons.save),
                       ),
@@ -307,6 +308,7 @@ class ProfilePage extends HookConsumerWidget {
                           .read(iNotifierProvider(account).notifier)
                           .setName(value),
                     ),
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -322,6 +324,9 @@ class ProfilePage extends HookConsumerWidget {
                         children: [
                           IconButton(
                             style: IconButton.styleFrom(
+                              minimumSize: Size.zero,
+                              iconSize: 18.0,
+                              padding: const EdgeInsets.all(4.0),
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
                             tooltip: t.misskey.preview,
@@ -333,22 +338,24 @@ class ProfilePage extends HookConsumerWidget {
                                   : Icons.visibility,
                             ),
                           ),
+                          const SizedBox(height: 4.0),
                           IconButton(
                             style: IconButton.styleFrom(
+                              minimumSize: Size.zero,
+                              iconSize: 18.0,
+                              padding: const EdgeInsets.all(4.0),
                               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
                             tooltip: t.misskey.save,
                             onPressed: description.value != i.description
-                                ? () {
-                                    futureWithDialog(
+                                ? () => futureWithDialog(
                                       context,
                                       ref
                                           .read(
                                             iNotifierProvider(account).notifier,
                                           )
                                           .setDescription(description.value),
-                                    );
-                                  }
+                                    )
                                 : null,
                             icon: const Icon(Icons.save),
                           ),
@@ -361,6 +368,7 @@ class ProfilePage extends HookConsumerWidget {
                     maxLength:
                         (description.value?.length ?? 0) > 1400 ? 1500 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -387,24 +395,26 @@ class ProfilePage extends HookConsumerWidget {
                       labelText: t.misskey.location,
                       suffix: IconButton(
                         style: IconButton.styleFrom(
+                          minimumSize: Size.zero,
+                          iconSize: 18.0,
+                          padding: const EdgeInsets.all(4.0),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         tooltip: t.misskey.save,
                         onPressed: location.value != i.location
-                            ? () {
-                                futureWithDialog(
+                            ? () => futureWithDialog(
                                   context,
                                   ref
                                       .read(iNotifierProvider(account).notifier)
                                       .setLocation(location.value),
-                                );
-                              }
+                                )
                             : null,
                         icon: const Icon(Icons.save),
                       ),
                     ),
                     maxLength: (location.value?.length ?? 0) > 40 ? 50 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),
@@ -636,12 +646,14 @@ class ProfilePage extends HookConsumerWidget {
                       helperMaxLines: 100,
                       suffix: IconButton(
                         style: IconButton.styleFrom(
+                          minimumSize: Size.zero,
+                          iconSize: 18.0,
+                          padding: const EdgeInsets.all(4.0),
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         ),
                         tooltip: t.misskey.save,
                         onPressed: followedMessage.value != i.followedMessage
-                            ? () {
-                                futureWithDialog(
+                            ? () => futureWithDialog(
                                   context,
                                   ref
                                       .read(
@@ -650,8 +662,7 @@ class ProfilePage extends HookConsumerWidget {
                                       .setFollowedMessage(
                                         followedMessage.value,
                                       ),
-                                );
-                              }
+                                )
                             : null,
                         icon: const Icon(Icons.save),
                       ),
@@ -660,6 +671,7 @@ class ProfilePage extends HookConsumerWidget {
                     maxLength:
                         (followedMessage.value?.length ?? 0) > 200 ? 256 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    onTapOutside: (_) => primaryFocus?.unfocus(),
                   ),
                 ),
               ),

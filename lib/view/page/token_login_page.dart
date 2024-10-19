@@ -103,6 +103,7 @@ class TokenLoginPage extends HookConsumerWidget {
                                   )
                                 : const SizedBox(width: 50.0, height: 50.0),
                           ),
+                          const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
                             controller: hostController,
                             focusNode: hostFocusNode,
@@ -112,6 +113,10 @@ class TokenLoginPage extends HookConsumerWidget {
                           Align(
                             alignment: Alignment.centerLeft,
                             child: TextButton(
+                              style: TextButton.styleFrom(
+                                minimumSize: Size.zero,
+                                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                              ),
                               onPressed: () async {
                                 final host = await showDialog<String>(
                                   context: context,
@@ -127,6 +132,7 @@ class TokenLoginPage extends HookConsumerWidget {
                               child: Text(t.aria.findServer),
                             ),
                           ),
+                          const SizedBox(height: 8.0),
                           Shortcuts(
                             shortcuts: {
                               ...disablingTextShortcuts,
@@ -154,6 +160,7 @@ class TokenLoginPage extends HookConsumerWidget {
                               ),
                               keyboardType: TextInputType.visiblePassword,
                               textInputAction: TextInputAction.done,
+                              onTapOutside: (_) => primaryFocus?.unfocus(),
                             ),
                           ),
                           const SizedBox(height: 16.0),
