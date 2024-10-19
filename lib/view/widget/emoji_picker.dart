@@ -63,9 +63,8 @@ Future<String?> pickEmoji(
     }
   }
 
-  final useDialog =
-      ref.read(generalSettingsNotifierProvider).emojiPickerUseDialog;
-  if (useDialog) {
+  final settings = ref.read(generalSettingsNotifierProvider);
+  if (settings.emojiPickerUseDialog) {
     return showDialog<String>(
       context: ref.context,
       builder: (context) => Dialog(
@@ -82,6 +81,7 @@ Future<String?> pickEmoji(
     return showModalBottomSheet<String>(
       context: ref.context,
       builder: (context) => DraggableScrollableSheet(
+        initialChildSize: settings.emojiPickerAutofocus ? 0.8 : 0.5,
         minChildSize: 0.5,
         maxChildSize: 0.8,
         expand: false,
