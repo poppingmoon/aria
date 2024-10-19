@@ -29,10 +29,11 @@ class TranslatedNoteSheet extends ConsumerWidget {
       ),
     );
 
-    return switch (translatedNote) {
-      AsyncValue(valueOrNull: final translatedNote?) => SingleChildScrollView(
-          child: Column(
-            children: [
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        ...switch (translatedNote) {
+          AsyncValue(valueOrNull: final translatedNote?) => [
               ListTile(
                 title: Text(
                   t.misskey.translatedFrom(x: translatedNote.sourceLang),
@@ -58,11 +59,18 @@ class TranslatedNoteSheet extends ConsumerWidget {
                 ),
               ),
             ],
-          ),
-        ),
-      AsyncValue(:final error?, :final stackTrace) =>
-        ErrorMessage(error: error, stackTrace: stackTrace),
-      _ => const Center(child: CircularProgressIndicator()),
-    };
+          AsyncValue(:final error?, :final stackTrace) => [
+              ErrorMessage(error: error, stackTrace: stackTrace),
+            ],
+          _ => [
+              const SizedBox(
+                width: double.infinity,
+                height: 100.0,
+                child: Center(child: CircularProgressIndicator()),
+              ),
+            ],
+        },
+      ],
+    );
   }
 }

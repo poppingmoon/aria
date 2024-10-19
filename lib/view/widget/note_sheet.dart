@@ -269,6 +269,8 @@ class NoteSheet extends ConsumerWidget {
                       account: account,
                       note: appearNote,
                     ),
+                    clipBehavior: Clip.antiAlias,
+                    scrollControlDisabledMaxHeightRatio: 0.8,
                   );
                 } else {
                   launchUrl(
