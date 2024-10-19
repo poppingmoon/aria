@@ -23,8 +23,15 @@ class AccountsPage extends HookConsumerWidget {
           ? Center(child: Text(t.aria.noAccounts))
           : ReorderableListView.builder(
               itemBuilder: (context, index) {
-                if (index < accounts.length) {
-                  final account = accounts[index];
+                if (index == 0) {
+                  return ReorderableDragStartListener(
+                    key: ValueKey(index),
+                    index: index,
+                    enabled: false,
+                    child: const SizedBox(height: 4.0),
+                  );
+                } else if (index < accounts.length + 1) {
+                  final account = accounts[index - 1];
                   return ReorderableDragStartListenerWrapper(
                     key: ValueKey(index),
                     index: index,
@@ -50,7 +57,7 @@ class AccountsPage extends HookConsumerWidget {
                   );
                 }
               },
-              itemCount: accounts.length + 1,
+              itemCount: accounts.length + 2,
               onReorder: (oldIndex, newIndex) => ref
                   .read(accountsNotifierProvider.notifier)
                   .reorder(oldIndex, newIndex),

@@ -26,8 +26,15 @@ class TabsPage extends HookConsumerWidget {
           ? Center(child: Text(t.aria.noTabs))
           : ReorderableListView.builder(
               itemBuilder: (context, index) {
-                if (index < tabs.length) {
-                  final tabSettings = tabs[index];
+                if (index == 0) {
+                  return ReorderableDragStartListener(
+                    key: ValueKey(index),
+                    index: index,
+                    enabled: false,
+                    child: const SizedBox(height: 4.0),
+                  );
+                } else if (index < tabs.length + 1) {
+                  final tabSettings = tabs[index - 1];
                   return ReorderableDragStartListenerWrapper(
                     key: ValueKey(index),
                     index: index,
@@ -39,9 +46,7 @@ class TabsPage extends HookConsumerWidget {
                         leading: TabIconWidget(tabSettings: tabSettings),
                         title: tabSettings.name != null
                             ? Text(tabSettings.name ?? '')
-                            : TabTypeWidget(
-                                tabType: tabSettings.tabType,
-                              ),
+                            : TabTypeWidget(tabType: tabSettings.tabType),
                         subtitle: Text(tabSettings.account.toString()),
                         trailing: const Icon(Icons.drag_handle),
                         onTap: () =>
@@ -58,7 +63,7 @@ class TabsPage extends HookConsumerWidget {
                   );
                 }
               },
-              itemCount: tabs.length + 1,
+              itemCount: tabs.length + 2,
               onReorder: (oldIndex, newIndex) => ref
                   .read(timelineTabsNotifierProvider.notifier)
                   .reorder(oldIndex, min(newIndex, tabs.length)),

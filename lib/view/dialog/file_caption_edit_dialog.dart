@@ -24,6 +24,7 @@ class FileCaptionEditDialog extends HookWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Card(
+            margin: EdgeInsets.zero,
             clipBehavior: Clip.antiAlias,
             child: InkWell(
               onTap: switch (file.type) {
@@ -65,6 +66,7 @@ class FileCaptionEditDialog extends HookWidget {
               ),
             ),
           ),
+          const SizedBox(height: 16.0),
           Shortcuts(
             shortcuts: {
               ...disablingTextShortcuts,
@@ -73,7 +75,11 @@ class FileCaptionEditDialog extends HookWidget {
             },
             child: TextField(
               controller: controller,
-              decoration: InputDecoration(labelText: t.misskey.caption),
+              decoration: InputDecoration(
+                labelText: t.misskey.caption,
+                enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                alignLabelWithHint: true,
+              ),
               onSubmitted: (value) => context.pop(value),
               maxLines: 5,
               autofocus: true,

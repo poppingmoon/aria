@@ -27,13 +27,16 @@ class FieldDialog extends HookWidget {
               controller: nameController,
               decoration: InputDecoration(
                 labelText: t.misskey.profile_.metadataLabel,
+                enabledBorder: Theme.of(context).inputDecorationTheme.border,
               ),
               textInputAction: TextInputAction.next,
             ),
+            const SizedBox(height: 8.0),
             TextField(
               controller: valueController,
               decoration: InputDecoration(
                 labelText: t.misskey.profile_.metadataContent,
+                enabledBorder: Theme.of(context).inputDecorationTheme.border,
               ),
               textInputAction: TextInputAction.done,
             ),

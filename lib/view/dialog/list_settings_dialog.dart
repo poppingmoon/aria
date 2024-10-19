@@ -20,12 +20,16 @@ class ListSettingsDialog extends HookWidget {
       title: Text(t.misskey.editList),
       content: Column(
         children: [
-          ListTile(
-            title: Text(t.misskey.name),
-            subtitle: Shortcuts(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: controller,
+                decoration: InputDecoration(
+                  labelText: t.misskey.name,
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                ),
                 onChanged: (value) =>
                     settings.value = settings.value.copyWith(name: value),
               ),

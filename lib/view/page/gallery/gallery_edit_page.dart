@@ -75,6 +75,7 @@ class GalleryEditPage extends HookConsumerWidget {
       ),
       body: ListView(
         children: [
+          const SizedBox(height: 4.0),
           ListTile(
             title: Shortcuts(
               shortcuts: disablingTextShortcuts,

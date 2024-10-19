@@ -31,7 +31,7 @@ class MisskeyServers extends HookConsumerWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0),
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
           child: Shortcuts(
             shortcuts: disablingTextShortcuts,
             child: TextField(

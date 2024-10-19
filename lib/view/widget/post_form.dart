@@ -824,7 +824,7 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
-            if (useCw.value)
+            if (useCw.value) ...[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Shortcuts(
@@ -834,6 +834,7 @@ class PostForm extends HookConsumerWidget {
                     focusNode: cwFocusNode,
                     decoration: InputDecoration(
                       hintText: t.misskey.annotation,
+                      filled: false,
                     ),
                     autofocus: true,
                     textInputAction: TextInputAction.next,
@@ -842,12 +843,17 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
+              const Divider(height: 0.0),
+            ],
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: TextField(
                 controller: controller,
                 focusNode: focusNode,
-                decoration: InputDecoration(hintText: placeholder),
+                decoration: InputDecoration(
+                  hintText: placeholder,
+                  filled: false,
+                ),
                 autofocus: true,
                 minLines: 1,
                 maxLines: maxLines,

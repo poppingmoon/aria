@@ -48,12 +48,16 @@ class AntennaSettingsDialog extends HookConsumerWidget {
       ),
       content: Column(
         children: [
-          ListTile(
-            title: Shortcuts(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: t.misskey.name),
+                decoration: InputDecoration(
+                  labelText: t.misskey.name,
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                ),
                 onChanged: (value) =>
                     settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
@@ -162,34 +166,38 @@ class AntennaSettingsDialog extends HookConsumerWidget {
             onChanged: (value) =>
                 settings.value = settings.value.copyWith(withReplies: value),
           ),
-          ListTile(
-            title: Shortcuts(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: keywordsController,
                 decoration: InputDecoration(
                   labelText: t.misskey.antennaKeywords,
+                  helperText: t.misskey.antennaKeywordsDescription,
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
                 maxLines: 5,
               ),
             ),
-            subtitle: Text(t.misskey.antennaKeywordsDescription),
           ),
-          ListTile(
-            title: Shortcuts(
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
                 controller: excludeKeywordsController,
                 decoration: InputDecoration(
                   labelText: t.misskey.antennaExcludeKeywords,
+                  helperText: t.misskey.antennaKeywordsDescription,
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
                 minLines: 3,
                 maxLines: 10,
               ),
             ),
-            subtitle: Text(t.misskey.antennaKeywordsDescription),
           ),
           SwitchListTile(
             title: Text(t.misskey.localOnly),

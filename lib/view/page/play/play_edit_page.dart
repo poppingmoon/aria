@@ -95,6 +95,7 @@ class PlayEditPage extends HookConsumerWidget {
           height: double.infinity,
           child: ListView(
             children: [
+              const SizedBox(height: 4.0),
               ListTile(
                 title: Shortcuts(
                   shortcuts: disablingTextShortcuts,

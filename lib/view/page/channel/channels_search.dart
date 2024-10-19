@@ -35,8 +35,9 @@ class ChannelsSearch extends HookConsumerWidget {
     return PaginatedListView(
       header: SliverList.list(
         children: [
+          const SizedBox(height: 8.0),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: Shortcuts(
               shortcuts: disablingTextShortcuts,
               child: TextField(
@@ -48,8 +49,9 @@ class ChannelsSearch extends HookConsumerWidget {
               ),
             ),
           ),
+          const SizedBox(height: 4.0),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: SegmentedButton(
               segments: [
                 ButtonSegment(
@@ -67,12 +69,13 @@ class ChannelsSearch extends HookConsumerWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: ElevatedButton(
               onPressed: () => query.value = controller.text.trim(),
               child: Text(t.misskey.search),
             ),
           ),
+          const SizedBox(height: 4.0),
         ],
       ),
       paginationState: channels,

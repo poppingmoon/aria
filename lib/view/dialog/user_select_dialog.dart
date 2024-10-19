@@ -84,24 +84,32 @@ class UserSelectDialog extends HookConsumerWidget {
                       decoration: InputDecoration(
                         labelText: t.misskey.username,
                         prefixText: '@',
+                        enabledBorder:
+                            Theme.of(context).inputDecorationTheme.border,
+                        floatingLabelBehavior: FloatingLabelBehavior.always,
                       ),
                       onChanged: (value) => username.value = value,
                       keyboardType: TextInputType.url,
                       textInputAction: TextInputAction.next,
                     ),
                   ),
-                  if (!localOnly)
+                  if (!localOnly) ...[
+                    const SizedBox(width: 8.0),
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           labelText: t.misskey.host,
                           prefixText: '@',
+                          enabledBorder:
+                              Theme.of(context).inputDecorationTheme.border,
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
                         ),
                         onChanged: (value) => host.value = value,
                         keyboardType: TextInputType.url,
                         textInputAction: TextInputAction.done,
                       ),
                     ),
+                  ],
                 ],
               ),
             ),

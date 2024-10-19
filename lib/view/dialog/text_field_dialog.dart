@@ -56,6 +56,16 @@ class TextFieldDialog extends HookWidget {
   final List<String>? autocompleteOptions;
 
   Widget _buildField(BuildContext context, TextEditingController controller) {
+    final decoration = (this.decoration ?? const InputDecoration()).copyWith(
+      suffixIcon: maxLines == 1
+          ? IconButton(
+              onPressed: () => controller.clear(),
+              icon: const Icon(Icons.close),
+            )
+          : null,
+      enabledBorder: Theme.of(context).inputDecorationTheme.border,
+    );
+
     if (autocompleteOptions case final options? when options.isNotEmpty) {
       return SearchField(
         controller: controller,
@@ -64,17 +74,8 @@ class TextFieldDialog extends HookWidget {
             .toList(),
         searchInputDecoration: SearchInputDecoration(
           searchStyle: style,
-        ).applyInputDecoration(
-          decoration ??
-              InputDecoration(
-                suffixIcon: maxLines == 1
-                    ? IconButton(
-                        onPressed: () => controller.clear(),
-                        icon: const Icon(Icons.close),
-                      )
-                    : null,
-              ),
-        ),
+          cursorColor: Theme.of(context).colorScheme.primary,
+        ).applyInputDecoration(decoration),
         maxLength: maxLength,
         onSubmit: (value) => context.pop(value),
         autofocus: true,
@@ -83,15 +84,7 @@ class TextFieldDialog extends HookWidget {
     } else {
       return TextField(
         controller: controller,
-        decoration: decoration ??
-            InputDecoration(
-              suffixIcon: maxLines == 1
-                  ? IconButton(
-                      onPressed: () => controller.clear(),
-                      icon: const Icon(Icons.close),
-                    )
-                  : null,
-            ),
+        decoration: decoration,
         style: style,
         onSubmitted: (value) => context.pop(value),
         minLines: minLines,
