@@ -50,7 +50,7 @@ class ChannelsSearch extends HookConsumerWidget {
               ),
             ),
           ),
-          const SizedBox(height: 4.0),
+          const SizedBox(height: 8.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: SegmentedButton(
@@ -69,6 +69,7 @@ class ChannelsSearch extends HookConsumerWidget {
                   includeDescription.value = selection.single,
             ),
           ),
+          const SizedBox(height: 4.0),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0),
             child: ElevatedButton(

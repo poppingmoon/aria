@@ -185,7 +185,7 @@ class _UserHome extends ConsumerWidget {
           child: Center(
             child: Container(
               width: 800.0,
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              margin: const EdgeInsets.only(bottom: 4.0, left: 8.0, right: 8.0),
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(8.0),
@@ -245,7 +245,7 @@ class _UserHome extends ConsumerWidget {
                 width: 800.0,
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Card(
-                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                  margin: const EdgeInsets.symmetric(vertical: 4.0),
                   color: colors.infoWarnBg,
                   elevation: 0.0,
                   child: Padding(
@@ -305,7 +305,7 @@ class _UserHome extends ConsumerWidget {
                 children: [
                   Container(
                     height: 8.0,
-                    margin: const EdgeInsets.only(top: 8.0),
+                    margin: const EdgeInsets.only(top: 4.0),
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(8.0),
