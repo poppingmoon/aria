@@ -25,17 +25,21 @@ class TimelineListView extends HookConsumerWidget {
   const TimelineListView({
     super.key,
     required this.tabSettings,
+    this.nested = false,
     this.focusPostForm,
     this.lastViewedAtKey,
   });
 
   final TabSettings tabSettings;
+  final bool nested;
   final void Function()? focusPostForm;
   final Key? lastViewedAtKey;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.watch(timelineScrollControllerProvider(tabSettings));
+    final controller = nested
+        ? PrimaryScrollController.of(context)
+        : ref.watch(timelineScrollControllerProvider(tabSettings));
     if (tabSettings.tabType == TabType.notifications) {
       return NotificationsListView(
         account: tabSettings.account,
@@ -244,7 +248,7 @@ class TimelineListView extends HookConsumerWidget {
               width: 800.0,
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: CustomScrollView(
-                controller: controller,
+                controller: nested ? null : controller,
                 center: centerKey,
                 slivers: [
                   SliverToBoxAdapter(
