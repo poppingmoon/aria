@@ -67,7 +67,7 @@ class EmojiSheet extends ConsumerWidget {
                     ?.reactionEmojis[emoji.substring(1, emoji.length - 1)],
               ),
             ),
-            subtitle: Text(emoji),
+            subtitle: Text(emoji.replaceAll('@.', '')),
           )
         else
           ListTile(title: Text(emoji)),

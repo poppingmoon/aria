@@ -148,6 +148,17 @@ class Mfm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final mfmSettings = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => (
+          settings.advancedMfm,
+          settings.animatedMfm,
+          settings.fontFamily,
+          settings.fontSize,
+          settings.lineHeight,
+        ),
+      ),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final span = useMemoized(
@@ -163,6 +174,7 @@ class Mfm extends HookConsumerWidget {
           author: author,
           nyaize: nyaize,
           isUserDescription: isUserDescription,
+          onTapEmoji: onTapEmoji,
           onClickEv: onClickEv,
           textAlign: textAlign,
           overflow: overflow,
@@ -170,7 +182,17 @@ class Mfm extends HookConsumerWidget {
           enableEmojiFadeIn: enableEmojiFadeIn,
         ),
       ),
-      [account, text, nodes, simple, style, author, colors, emojis],
+      [
+        account,
+        text,
+        nodes,
+        simple,
+        style,
+        author,
+        colors,
+        emojis,
+        mfmSettings,
+      ],
     );
 
     if (selectable) {
