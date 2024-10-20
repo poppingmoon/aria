@@ -6,6 +6,7 @@ import 'package:tinycolor2/tinycolor2.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
+import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/online_users_count_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -13,7 +14,6 @@ import '../../provider/timeline_scroll_controller_provider.dart';
 import 'ad_widget.dart';
 import 'streaming_error_icon.dart';
 import 'tab_icon_widget.dart';
-import 'tab_name_widget.dart';
 import 'timeline_menu.dart';
 
 class TimelineHeader extends HookConsumerWidget {
@@ -33,6 +33,10 @@ class TimelineHeader extends HookConsumerWidget {
     final alwaysShowHeader = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.alwaysShowTabHeader),
+    );
+    final oneLine = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showTabHeaderInOneLine),
     );
     final isMenuExpanded = useState(false);
     final sizeFactor = useState(1.0);
@@ -92,12 +96,51 @@ class TimelineHeader extends HookConsumerWidget {
             ),
           ],
         ),
-        title: TabNameWidget(tabSettings: tabSettings),
-        subtitle: Text(
-          tabSettings.account.toString(),
+        title: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(
+                text: tabSettings.name ??
+                    switch (tabSettings.tabType) {
+                      TabType.homeTimeline => t.misskey.timelines_.home,
+                      TabType.localTimeline => t.misskey.timelines_.local,
+                      TabType.hybridTimeline => t.misskey.timelines_.social,
+                      TabType.globalTimeline => t.misskey.timelines_.global,
+                      TabType.roleTimeline => t.misskey.role,
+                      TabType.userList => t.misskey.userList,
+                      TabType.antenna => t.misskey.antennas,
+                      TabType.channel => t.misskey.channel,
+                      TabType.mention => t.misskey.mentions,
+                      TabType.direct => t.misskey.directNotes,
+                      TabType.user => t.misskey.user,
+                      TabType.notifications => t.misskey.notifications,
+                      TabType.custom => t.aria.custom,
+                    },
+              ),
+              if (oneLine) ...[
+                const WidgetSpan(child: SizedBox(width: 8.0)),
+                TextSpan(
+                  text: tabSettings.account.toString(),
+                  style: DefaultTextStyle.of(context).style.apply(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onSurface
+                            .withOpacity(0.85),
+                      ),
+                ),
+              ],
+            ],
+          ),
           overflow: TextOverflow.ellipsis,
-          maxLines: 1,
+          maxLines: oneLine ? 1 : null,
         ),
+        subtitle: !oneLine
+            ? Text(
+                tabSettings.account.toString(),
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
+              )
+            : null,
         onExpansionChanged: (value) {
           isMenuExpanded.value = value;
           if (value) {

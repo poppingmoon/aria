@@ -101,6 +101,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       showHomeFAB: json['showHomeFAB'] as bool? ?? true,
       showNotificationsFAB: json['showNotificationsFAB'] as bool? ?? true,
       showShowPostFormFAB: json['showShowPostFormFAB'] as bool? ?? true,
+      showTabHeaderInOneLine: json['showTabHeaderInOneLine'] as bool? ?? true,
       alwaysShowTabHeader: json['alwaysShowTabHeader'] as bool? ?? false,
       showTimelineLastViewedAt:
           json['showTimelineLastViewedAt'] as bool? ?? true,
@@ -222,6 +223,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['showHomeFAB'] = instance.showHomeFAB;
   val['showNotificationsFAB'] = instance.showNotificationsFAB;
   val['showShowPostFormFAB'] = instance.showShowPostFormFAB;
+  val['showTabHeaderInOneLine'] = instance.showTabHeaderInOneLine;
   val['alwaysShowTabHeader'] = instance.alwaysShowTabHeader;
   val['showTimelineLastViewedAt'] = instance.showTimelineLastViewedAt;
   val['showPopupOnNewNote'] = instance.showPopupOnNewNote;

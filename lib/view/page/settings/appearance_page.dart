@@ -128,6 +128,13 @@ class AppearancePage extends HookConsumerWidget {
                 .setShowShowPostFormFAB(value),
           ),
           SwitchListTile(
+            title: Text(t.aria.showTabHeaderInOneLine),
+            value: settings.showTabHeaderInOneLine,
+            onChanged: (value) => ref
+                .read(generalSettingsNotifierProvider.notifier)
+                .setShowTabHeaderInOneLine(value),
+          ),
+          SwitchListTile(
             title: Text(t.aria.alwaysShowTabHeader),
             value: settings.alwaysShowTabHeader,
             onChanged: (value) => ref

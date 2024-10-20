@@ -90,6 +90,7 @@ mixin _$GeneralSettings {
   bool get showHomeFAB => throw _privateConstructorUsedError;
   bool get showNotificationsFAB => throw _privateConstructorUsedError;
   bool get showShowPostFormFAB => throw _privateConstructorUsedError;
+  bool get showTabHeaderInOneLine => throw _privateConstructorUsedError;
   bool get alwaysShowTabHeader => throw _privateConstructorUsedError;
   bool get showTimelineLastViewedAt => throw _privateConstructorUsedError;
   bool get showPopupOnNewNote => throw _privateConstructorUsedError;
@@ -190,6 +191,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool showHomeFAB,
       bool showNotificationsFAB,
       bool showShowPostFormFAB,
+      bool showTabHeaderInOneLine,
       bool alwaysShowTabHeader,
       bool showTimelineLastViewedAt,
       bool showPopupOnNewNote,
@@ -286,6 +288,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? showHomeFAB = null,
     Object? showNotificationsFAB = null,
     Object? showShowPostFormFAB = null,
+    Object? showTabHeaderInOneLine = null,
     Object? alwaysShowTabHeader = null,
     Object? showTimelineLastViewedAt = null,
     Object? showPopupOnNewNote = null,
@@ -545,6 +548,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.showShowPostFormFAB
           : showShowPostFormFAB // ignore: cast_nullable_to_non_nullable
               as bool,
+      showTabHeaderInOneLine: null == showTabHeaderInOneLine
+          ? _value.showTabHeaderInOneLine
+          : showTabHeaderInOneLine // ignore: cast_nullable_to_non_nullable
+              as bool,
       alwaysShowTabHeader: null == alwaysShowTabHeader
           ? _value.alwaysShowTabHeader
           : alwaysShowTabHeader // ignore: cast_nullable_to_non_nullable
@@ -699,6 +706,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool showHomeFAB,
       bool showNotificationsFAB,
       bool showShowPostFormFAB,
+      bool showTabHeaderInOneLine,
       bool alwaysShowTabHeader,
       bool showTimelineLastViewedAt,
       bool showPopupOnNewNote,
@@ -793,6 +801,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? showHomeFAB = null,
     Object? showNotificationsFAB = null,
     Object? showShowPostFormFAB = null,
+    Object? showTabHeaderInOneLine = null,
     Object? alwaysShowTabHeader = null,
     Object? showTimelineLastViewedAt = null,
     Object? showPopupOnNewNote = null,
@@ -1052,6 +1061,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.showShowPostFormFAB
           : showShowPostFormFAB // ignore: cast_nullable_to_non_nullable
               as bool,
+      showTabHeaderInOneLine: null == showTabHeaderInOneLine
+          ? _value.showTabHeaderInOneLine
+          : showTabHeaderInOneLine // ignore: cast_nullable_to_non_nullable
+              as bool,
       alwaysShowTabHeader: null == alwaysShowTabHeader
           ? _value.alwaysShowTabHeader
           : alwaysShowTabHeader // ignore: cast_nullable_to_non_nullable
@@ -1201,6 +1214,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.showHomeFAB = true,
       this.showNotificationsFAB = true,
       this.showShowPostFormFAB = true,
+      this.showTabHeaderInOneLine = true,
       this.alwaysShowTabHeader = false,
       this.showTimelineLastViewedAt = true,
       this.showPopupOnNewNote = true,
@@ -1407,6 +1421,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool showShowPostFormFAB;
   @override
   @JsonKey()
+  final bool showTabHeaderInOneLine;
+  @override
+  @JsonKey()
   final bool alwaysShowTabHeader;
   @override
   @JsonKey()
@@ -1470,7 +1487,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1567,6 +1584,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.showHomeFAB, showHomeFAB) || other.showHomeFAB == showHomeFAB) &&
             (identical(other.showNotificationsFAB, showNotificationsFAB) || other.showNotificationsFAB == showNotificationsFAB) &&
             (identical(other.showShowPostFormFAB, showShowPostFormFAB) || other.showShowPostFormFAB == showShowPostFormFAB) &&
+            (identical(other.showTabHeaderInOneLine, showTabHeaderInOneLine) || other.showTabHeaderInOneLine == showTabHeaderInOneLine) &&
             (identical(other.alwaysShowTabHeader, alwaysShowTabHeader) || other.alwaysShowTabHeader == alwaysShowTabHeader) &&
             (identical(other.showTimelineLastViewedAt, showTimelineLastViewedAt) || other.showTimelineLastViewedAt == showTimelineLastViewedAt) &&
             (identical(other.showPopupOnNewNote, showPopupOnNewNote) || other.showPopupOnNewNote == showPopupOnNewNote) &&
@@ -1652,6 +1670,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         showHomeFAB,
         showNotificationsFAB,
         showShowPostFormFAB,
+        showTabHeaderInOneLine,
         alwaysShowTabHeader,
         showTimelineLastViewedAt,
         showPopupOnNewNote,
@@ -1753,6 +1772,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool showHomeFAB,
       final bool showNotificationsFAB,
       final bool showShowPostFormFAB,
+      final bool showTabHeaderInOneLine,
       final bool alwaysShowTabHeader,
       final bool showTimelineLastViewedAt,
       final bool showPopupOnNewNote,
@@ -1902,6 +1922,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   bool get showNotificationsFAB;
   @override
   bool get showShowPostFormFAB;
+  @override
+  bool get showTabHeaderInOneLine;
   @override
   bool get alwaysShowTabHeader;
   @override

@@ -99,6 +99,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool showHomeFAB,
     @Default(true) bool showNotificationsFAB,
     @Default(true) bool showShowPostFormFAB,
+    @Default(true) bool showTabHeaderInOneLine,
     @Default(false) bool alwaysShowTabHeader,
     @Default(true) bool showTimelineLastViewedAt,
     @Default(true) bool showPopupOnNewNote,

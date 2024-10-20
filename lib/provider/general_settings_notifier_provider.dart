@@ -381,6 +381,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowTabHeaderInOneLine(bool showTabHeaderInOneLine) async {
+    state = state.copyWith(showTabHeaderInOneLine: showTabHeaderInOneLine);
+    await _save();
+  }
+
   Future<void> setAlwaysShowTabHeader(bool alwaysShowTabHeader) async {
     state = state.copyWith(alwaysShowTabHeader: alwaysShowTabHeader);
     await _save();
