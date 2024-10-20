@@ -287,10 +287,13 @@ class TimelineWidget extends HookConsumerWidget {
                                   ')',
                                 ].join(),
                               ),
+                              maxLines: 1,
                             ),
                           ),
                         IconButton(
                           style: IconButton.styleFrom(
+                            minimumSize: Size.zero,
+                            padding: const EdgeInsets.all(6.0),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           onPressed: () => showLastViewedAt.value = false,
@@ -326,10 +329,13 @@ class TimelineWidget extends HookConsumerWidget {
                                   ')',
                                 ].join(),
                               ),
+                              maxLines: 1,
                             ),
                           ),
                         IconButton(
                           style: IconButton.styleFrom(
+                            minimumSize: Size.zero,
+                            padding: const EdgeInsets.all(6.0),
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           ),
                           onPressed: () => showLastViewedAt.value = false,
