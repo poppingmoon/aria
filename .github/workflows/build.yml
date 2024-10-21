@@ -157,13 +157,35 @@ jobs:
           name: App Bundle
           path: build/app/outputs/bundle/release/app-release.aab
 
-  build-ios:
+  build-ipa:
     runs-on: macos-latest
 
     needs: get-flutter-version
 
+    env:
+      APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
+      APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
+      APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+      CERTIFICATE_PRIVATE_KEY: ${{ secrets.CERTIFICATE_PRIVATE_KEY }}
+
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install codemagic-cli-tools
+        run: pip install codemagic-cli-tools
+
+      - name: Set up keychain
+        run: keychain initialize
+
+      - name: Fetch signing files
+        run: >
+          app-store-connect fetch-signing-files com.poppingmoon.aria
+          --platform IOS
+          --type IOS_APP_STORE
+          --create
+
+      - name: Add certificates
+        run: keychain add-certificates
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
@@ -181,11 +203,43 @@ jobs:
           build_name=$(grep version pubspec.yaml | sed 's/[^0-9]*\([0-9.]*\).*/\1/')
           echo build-name=$build_name >> $GITHUB_OUTPUT
 
-      - name: Build for iOS
+      - name: Build IPA
         run: >
-          flutter build ios
-          --no-codesign
+          flutter build ipa
           --build-name ${{ steps.get-build-name.outputs.build-name }}
+          --export-options-plist=ios/ExportOptions.plist
+          --verbose
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: IPA (signed)
+          path: build/ios/ipa/aria.ipa
+
+      - name: Publish IPA
+        if: startsWith(github.ref, 'refs/tags/')
+        run: app-store-connect publish --path build/ios/ipa/aria.ipa
+
+  build-ipa-unsigned:
+    runs-on: macos-latest
+
+    needs: get-flutter-version
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
+          cache: true
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build for iOS
+        run: flutter build ios --no-codesign
 
       - name: Copy Runner.app
         run: |
@@ -207,33 +261,6 @@ jobs:
         with:
           files: aria-${{ github.ref_name }}.ipa
           draft: true
-
-      - name: Create xcarchive
-        if: startsWith(github.ref, 'refs/tags/')
-        working-directory: ios
-        run: >
-          xcodebuild archive
-          CODE_SIGNING_ALLOWED=NO
-          -workspace Runner.xcworkspace
-          -scheme Runner
-          -configuration Release
-          -archivePath Runner.xcarchive
-
-      - name: Dump AuthKey
-        if: startsWith(github.ref, 'refs/tags/')
-        run: echo "${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}" > AuthKey.p8
-
-      - name: Create IPA
-        if: startsWith(github.ref, 'refs/tags/')
-        run: >
-          xcodebuild
-          -exportArchive
-          -archivePath ios/Runner.xcarchive
-          -exportOptionsPlist ios/ExportOptions.plist
-          -allowProvisioningUpdates
-          -authenticationKeyIssuerID ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
-          -authenticationKeyID ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
-          -authenticationKeyPath $(pwd)/AuthKey.p8
 
   build-windows-x64:
     runs-on: windows-latest
@@ -309,12 +336,10 @@ jobs:
       APP_STORE_CONNECT_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_ISSUER_ID }}
       APP_STORE_CONNECT_KEY_IDENTIFIER: ${{ secrets.APP_STORE_CONNECT_KEY_IDENTIFIER }}
       APP_STORE_CONNECT_PRIVATE_KEY: ${{ secrets.APP_STORE_CONNECT_PRIVATE_KEY }}
+      CERTIFICATE_PRIVATE_KEY: ${{ secrets.CERTIFICATE_PRIVATE_KEY }}
 
     steps:
       - uses: actions/checkout@v4
-
-      - name: Dump cert_key
-        run: echo "${{ secrets.CERT_KEY }}" > cert_key
 
       - name: Install codemagic-cli-tools
         run: pip install codemagic-cli-tools
@@ -324,14 +349,12 @@ jobs:
           app-store-connect fetch-signing-files com.poppingmoon.aria
           --platform MAC_OS
           --type MAC_APP_STORE
-          --certificate-key=@file:cert_key
           --create
 
       - name: Fetch certificates
         run: >
           app-store-connect certificates list
           --type MAC_INSTALLER_DISTRIBUTION
-          --certificate-key=@file:cert_key
           --save
 
       - name: Set up keychain
@@ -353,8 +376,14 @@ jobs:
       - name: Get dependencies
         run: flutter pub get
 
+      - name: Get build name
+        id: get-build-name
+        run: |
+          build_name=$(grep version pubspec.yaml | sed 's/[^0-9]*\([0-9.]*\).*/\1/')
+          echo build-name=$build_name >> $GITHUB_OUTPUT
+
       - name: Build for macOS
-        run: flutter build macos
+        run: flutter build macos --build-name ${{ steps.get-build-name.outputs.build-name }}
 
       - name: Install create-dmg
         run: brew install create-dmg
