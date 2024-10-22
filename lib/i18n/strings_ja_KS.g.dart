@@ -212,6 +212,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get showStackTrace => 'スタックトレース見して';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示するで';
 	@override String get showSubNoteReactionsViewer => 'サブノートにツッコミを表示するで';
+	@override String get showTabHeaderInOneLine => 'タブの情報を1行で表示する';
 	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示するで';
 	@override String get showTimelineTabBarAtBottom => 'タイムラインのタブバーを下に表示するで';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';

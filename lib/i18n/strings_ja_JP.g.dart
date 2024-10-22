@@ -212,6 +212,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get showStackTrace => 'スタックトレースを表示';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示する';
 	@override String get showSubNoteReactionsViewer => 'サブノートにリアクションを表示する';
+	@override String get showTabHeaderInOneLine => 'タブの情報を1行で表示する';
 	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示する';
 	@override String get showTimelineTabBarAtBottom => 'タイムラインのタブバーを下に表示する';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
@@ -2747,7 +2748,7 @@ class _TranslationsMisskeyNotificationJaJp extends TranslationsMisskeyNotificati
 	@override String youGotMention({required Object name}) => '${name}からのメンション';
 	@override String youGotReply({required Object name}) => '${name}からのリプライ';
 	@override String youGotQuote({required Object name}) => '${name}による引用';
-	@override String youRenoted({required Object name}) => '${name}がRenoteしました';
+	@override String youRenoted({required Object name}) => '${name}がリノートしました';
 	@override String get youWereFollowed => 'フォローされました';
 	@override String get youReceivedFollowRequest => 'フォローリクエストが来ました';
 	@override String get yourFollowRequestAccepted => 'フォローリクエストが承認されました';
@@ -3556,7 +3557,7 @@ class _TranslationsMisskeyNotificationTypesJaJp extends TranslationsMisskeyNotif
 	@override String get follow => 'フォロー';
 	@override String get mention => 'メンション';
 	@override String get reply => 'リプライ';
-	@override String get renote => 'Renote';
+	@override String get renote => 'リノート';
 	@override String get quote => '引用';
 	@override String get reaction => 'リアクション';
 	@override String get pollEnded => 'アンケートが終了';
@@ -3579,7 +3580,7 @@ class _TranslationsMisskeyNotificationActionsJaJp extends TranslationsMisskeyNot
 	// Translations
 	@override String get followBack => 'フォローバック';
 	@override String get reply => '返信';
-	@override String get renote => 'Renote';
+	@override String get renote => 'リノート';
 }
 
 // Path: misskey.deck_.columns_
