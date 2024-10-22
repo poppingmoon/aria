@@ -243,6 +243,10 @@ jobs:
           -archivePath Runner.xcarchive
           -allowProvisioningUpdates
 
+      - name: Dump AuthKey
+        working-directory: ios
+        run: echo $APP_STORE_CONNECT_PRIVATE_KEY > AuthKey.p8
+
       - name: Create IPA
         if: startsWith(github.ref, 'refs/tags/')
         working-directory: ios
@@ -252,6 +256,9 @@ jobs:
           -archivePath Runner.xcarchive
           -exportOptionsPlist ExportOptions.plist
           -allowProvisioningUpdates
+          -authenticationKeyIssuerID $APP_STORE_CONNECT_ISSUER_ID
+          -authenticationKeyID $APP_STORE_CONNECT_KEY_IDENTIFIER
+          -authenticationKeyPath $(pwd)/AuthKey.p8
 
   build-windows-x64:
     runs-on: windows-latest
