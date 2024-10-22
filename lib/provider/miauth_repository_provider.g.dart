@@ -6,7 +6,7 @@ part of 'miauth_repository_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$miAuthRepositoryHash() => r'13b981616896101772b83993977286426a380a2a';
+String _$miAuthRepositoryHash() => r'c26494a9a41e561c457b7256fb0e15c50c1f2932';
 
 /// See also [miAuthRepository].
 @ProviderFor(miAuthRepository)
@@ -20,6 +20,8 @@ final miAuthRepositoryProvider = AutoDisposeProvider<MiAuthRepository>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef MiAuthRepositoryRef = AutoDisposeProviderRef<MiAuthRepository>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -6,7 +6,7 @@ part of 'misskey_servers_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$misskeyServersHash() => r'c5aaefbdbe6d7a96ed9666cc41369003e974aecd';
+String _$misskeyServersHash() => r'077962f82fddd91c6eaec960da4c049726445eaf';
 
 /// See also [misskeyServers].
 @ProviderFor(misskeyServers)
@@ -21,7 +21,9 @@ final misskeyServersProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef MisskeyServersRef
     = AutoDisposeFutureProviderRef<List<JoinMisskeyInstanceInfo>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

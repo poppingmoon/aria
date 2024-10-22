@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constant/unicode_emoji_index.g.dart';
@@ -5,7 +6,7 @@ import '../constant/unicode_emoji_index.g.dart';
 part 'search_unicode_emojis_provider.g.dart';
 
 @riverpod
-Set<String> searchUnicodeEmojis(SearchUnicodeEmojisRef ref, String query) {
+Set<String> searchUnicodeEmojis(Ref ref, String query) {
   if (query.isEmpty) {
     return {};
   }

@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
@@ -9,7 +10,7 @@ part 'check_word_mute_provider.g.dart';
 
 @riverpod
 bool checkWordMute(
-  CheckWordMuteRef ref,
+  Ref ref,
   Account account,
   String noteId, {
   bool hardMute = false,

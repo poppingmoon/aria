@@ -7,7 +7,7 @@ part of 'search_misskey_servers_provider.dart';
 // **************************************************************************
 
 String _$searchMisskeyServersHash() =>
-    r'8de333ac094c96948f46bd381b4f16a9799e66cf';
+    r'5d85ae53e7d9115ab65f50045b3c445f3d3703e9';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -148,6 +148,8 @@ class SearchMisskeyServersProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin SearchMisskeyServersRef
     on AutoDisposeFutureProviderRef<List<JoinMisskeyInstanceInfo>> {
   /// The parameter `query` of this provider.
@@ -163,4 +165,4 @@ class _SearchMisskeyServersProviderElement
   String get query => (origin as SearchMisskeyServersProvider).query;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

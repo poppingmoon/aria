@@ -1,4 +1,5 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/data_saver.dart';
@@ -8,7 +9,7 @@ import 'general_settings_notifier_provider.dart';
 part 'data_saver_provider.g.dart';
 
 @riverpod
-DataSaver dataSaver(DataSaverRef ref) {
+DataSaver dataSaver(Ref ref) {
   final dataSaver = ref.watch(
     generalSettingsNotifierProvider.select(
       (settings) => DataSaver(

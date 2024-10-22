@@ -6,7 +6,7 @@ part of 'static_image_url_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staticImageUrlHash() => r'f6fea069577d0bc52f4511d31f66cdec8a54a04b';
+String _$staticImageUrlHash() => r'ae34acc65548bf2164cc0c7c958682f7a251522d';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,6 +154,8 @@ class StaticImageUrlProvider extends AutoDisposeProvider<Uri?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin StaticImageUrlRef on AutoDisposeProviderRef<Uri?> {
   /// The parameter `host` of this provider.
   String get host;
@@ -172,4 +174,4 @@ class _StaticImageUrlProviderElement extends AutoDisposeProviderElement<Uri?>
   String get baseUrl => (origin as StaticImageUrlProvider).baseUrl;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

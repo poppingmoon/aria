@@ -7,7 +7,7 @@ part of 'search_unicode_emojis_provider.dart';
 // **************************************************************************
 
 String _$searchUnicodeEmojisHash() =>
-    r'955c5db14c6703cca645636d3166834adbc72d4a';
+    r'4c0269a9c0b0a67739886325547cb2feb8d58330';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -143,6 +143,8 @@ class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin SearchUnicodeEmojisRef on AutoDisposeProviderRef<Set<String>> {
   /// The parameter `query` of this provider.
   String get query;
@@ -157,4 +159,4 @@ class _SearchUnicodeEmojisProviderElement
   String get query => (origin as SearchUnicodeEmojisProvider).query;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

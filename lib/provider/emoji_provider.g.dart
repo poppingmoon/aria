@@ -6,7 +6,7 @@ part of 'emoji_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojiHash() => r'967c4327030d5465e7cbf929167f76bfec9ca81a';
+String _$emojiHash() => r'eca2d22aaf0880f7d02890984911e0eaa4ce27ca';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -151,6 +151,8 @@ class EmojiProvider extends Provider<Emoji?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin EmojiRef on ProviderRef<Emoji?> {
   /// The parameter `host` of this provider.
   String get host;
@@ -168,4 +170,4 @@ class _EmojiProviderElement extends ProviderElement<Emoji?> with EmojiRef {
   String get code => (origin as EmojiProvider).code;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

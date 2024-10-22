@@ -6,7 +6,7 @@ part of 'aho_corasick_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$ahoCorasickHash() => r'db743f39c1e76c69f15a4ed28ee37867e055da5b';
+String _$ahoCorasickHash() => r'0f2fa8df1a01755f2665d95f7880eb456b2310e5';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class AhoCorasickProvider extends Provider<AhoCorasick> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin AhoCorasickRef on ProviderRef<AhoCorasick> {
   /// The parameter `words` of this provider.
   List<String> get words;
@@ -155,4 +157,4 @@ class _AhoCorasickProviderElement extends ProviderElement<AhoCorasick>
   List<String> get words => (origin as AhoCorasickProvider).words;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

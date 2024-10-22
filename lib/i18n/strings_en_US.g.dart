@@ -2,11 +2,12 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
 part of 'strings.g.dart';
 
 // Path: <root>
+typedef TranslationsEnUs = Translations; // ignore: unused_element
 class Translations implements BaseTranslations<AppLocale, Translations> {
 	/// Returns the current translations of the given [context].
 	///
@@ -16,7 +17,7 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	Translations.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	Translations({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.enUs,
@@ -31,14 +32,14 @@ class Translations implements BaseTranslations<AppLocale, Translations> {
 	late final Translations _root = this; // ignore: unused_field
 
 	// Translations
-	late final _StringsAriaEnUs aria = _StringsAriaEnUs._(_root);
-	late final _StringsMisskeyEnUs misskey = _StringsMisskeyEnUs._(_root);
-	late final _StringsMisskeyIOEnUs misskeyIO = _StringsMisskeyIOEnUs._(_root);
+	late final TranslationsAriaEnUs aria = TranslationsAriaEnUs.internal(_root);
+	late final TranslationsMisskeyEnUs misskey = TranslationsMisskeyEnUs.internal(_root);
+	late final TranslationsMisskeyIOEnUs misskeyIO = TranslationsMisskeyIOEnUs.internal(_root);
 }
 
 // Path: aria
-class _StringsAriaEnUs {
-	_StringsAriaEnUs._(this._root);
+class TranslationsAriaEnUs {
+	TranslationsAriaEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -251,8 +252,8 @@ class _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyEnUs {
-	_StringsMisskeyEnUs._(this._root);
+class TranslationsMisskeyEnUs {
+	TranslationsMisskeyEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1545,95 +1546,95 @@ class _StringsMisskeyEnUs {
 	String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Passkey verification has succeeded but password-less login is disabled.';
 	String get messageToFollower => 'Message to followers';
 	String get target => 'Target';
-	late final _StringsMisskeyAbuseUserReportEnUs abuseUserReport_ = _StringsMisskeyAbuseUserReportEnUs._(_root);
-	late final _StringsMisskeyDeliveryEnUs delivery_ = _StringsMisskeyDeliveryEnUs._(_root);
-	late final _StringsMisskeyBubbleGameEnUs bubbleGame_ = _StringsMisskeyBubbleGameEnUs._(_root);
-	late final _StringsMisskeyAnnouncementEnUs announcement_ = _StringsMisskeyAnnouncementEnUs._(_root);
-	late final _StringsMisskeyInitialAccountSettingEnUs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialEnUs initialTutorial_ = _StringsMisskeyInitialTutorialEnUs._(_root);
-	late final _StringsMisskeyTimelineDescriptionEnUs timelineDescription_ = _StringsMisskeyTimelineDescriptionEnUs._(_root);
-	late final _StringsMisskeyServerRulesEnUs serverRules_ = _StringsMisskeyServerRulesEnUs._(_root);
-	late final _StringsMisskeyServerSettingsEnUs serverSettings_ = _StringsMisskeyServerSettingsEnUs._(_root);
-	late final _StringsMisskeyAccountMigrationEnUs accountMigration_ = _StringsMisskeyAccountMigrationEnUs._(_root);
-	late final _StringsMisskeyAchievementsEnUs achievements_ = _StringsMisskeyAchievementsEnUs._(_root);
-	late final _StringsMisskeyRoleEnUs role_ = _StringsMisskeyRoleEnUs._(_root);
-	late final _StringsMisskeySensitiveMediaDetectionEnUs sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionEnUs._(_root);
-	late final _StringsMisskeyEmailUnavailableEnUs emailUnavailable_ = _StringsMisskeyEmailUnavailableEnUs._(_root);
-	late final _StringsMisskeyFfVisibilityEnUs ffVisibility_ = _StringsMisskeyFfVisibilityEnUs._(_root);
-	late final _StringsMisskeySignupEnUs signup_ = _StringsMisskeySignupEnUs._(_root);
-	late final _StringsMisskeyAccountDeleteEnUs accountDelete_ = _StringsMisskeyAccountDeleteEnUs._(_root);
-	late final _StringsMisskeyAdEnUs ad_ = _StringsMisskeyAdEnUs._(_root);
-	late final _StringsMisskeyForgotPasswordEnUs forgotPassword_ = _StringsMisskeyForgotPasswordEnUs._(_root);
-	late final _StringsMisskeyGalleryEnUs gallery_ = _StringsMisskeyGalleryEnUs._(_root);
-	late final _StringsMisskeyEmailEnUs email_ = _StringsMisskeyEmailEnUs._(_root);
-	late final _StringsMisskeyPluginEnUs plugin_ = _StringsMisskeyPluginEnUs._(_root);
-	late final _StringsMisskeyPreferencesBackupsEnUs preferencesBackups_ = _StringsMisskeyPreferencesBackupsEnUs._(_root);
-	late final _StringsMisskeyRegistryEnUs registry_ = _StringsMisskeyRegistryEnUs._(_root);
-	late final _StringsMisskeyAboutMisskeyEnUs aboutMisskey_ = _StringsMisskeyAboutMisskeyEnUs._(_root);
-	late final _StringsMisskeyDisplayOfSensitiveMediaEnUs displayOfSensitiveMedia_ = _StringsMisskeyDisplayOfSensitiveMediaEnUs._(_root);
-	late final _StringsMisskeyInstanceTickerEnUs instanceTicker_ = _StringsMisskeyInstanceTickerEnUs._(_root);
-	late final _StringsMisskeyServerDisconnectedBehaviorEnUs serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorEnUs._(_root);
-	late final _StringsMisskeyChannelEnUs channel_ = _StringsMisskeyChannelEnUs._(_root);
-	late final _StringsMisskeyMenuDisplayEnUs menuDisplay_ = _StringsMisskeyMenuDisplayEnUs._(_root);
-	late final _StringsMisskeyWordMuteEnUs wordMute_ = _StringsMisskeyWordMuteEnUs._(_root);
-	late final _StringsMisskeyInstanceMuteEnUs instanceMute_ = _StringsMisskeyInstanceMuteEnUs._(_root);
-	late final _StringsMisskeyThemeEnUs theme_ = _StringsMisskeyThemeEnUs._(_root);
-	late final _StringsMisskeySfxEnUs sfx_ = _StringsMisskeySfxEnUs._(_root);
-	late final _StringsMisskeySoundSettingsEnUs soundSettings_ = _StringsMisskeySoundSettingsEnUs._(_root);
-	late final _StringsMisskeyAgoEnUs ago_ = _StringsMisskeyAgoEnUs._(_root);
-	late final _StringsMisskeyTimeInEnUs timeIn_ = _StringsMisskeyTimeInEnUs._(_root);
-	late final _StringsMisskeyTimeEnUs time_ = _StringsMisskeyTimeEnUs._(_root);
-	late final _StringsMisskeyX2faEnUs x2fa_ = _StringsMisskeyX2faEnUs._(_root);
-	late final _StringsMisskeyPermissionsEnUs permissions_ = _StringsMisskeyPermissionsEnUs._(_root);
-	late final _StringsMisskeyAuthEnUs auth_ = _StringsMisskeyAuthEnUs._(_root);
-	late final _StringsMisskeyAntennaSourcesEnUs antennaSources_ = _StringsMisskeyAntennaSourcesEnUs._(_root);
-	late final _StringsMisskeyWeekdayEnUs weekday_ = _StringsMisskeyWeekdayEnUs._(_root);
-	late final _StringsMisskeyWidgetsEnUs widgets_ = _StringsMisskeyWidgetsEnUs._(_root);
-	late final _StringsMisskeyCwEnUs cw_ = _StringsMisskeyCwEnUs._(_root);
-	late final _StringsMisskeyPollEnUs poll_ = _StringsMisskeyPollEnUs._(_root);
-	late final _StringsMisskeyVisibilityEnUs visibility_ = _StringsMisskeyVisibilityEnUs._(_root);
-	late final _StringsMisskeyPostFormEnUs postForm_ = _StringsMisskeyPostFormEnUs._(_root);
-	late final _StringsMisskeyProfileEnUs profile_ = _StringsMisskeyProfileEnUs._(_root);
-	late final _StringsMisskeyExportOrImportEnUs exportOrImport_ = _StringsMisskeyExportOrImportEnUs._(_root);
-	late final _StringsMisskeyChartsEnUs charts_ = _StringsMisskeyChartsEnUs._(_root);
-	late final _StringsMisskeyInstanceChartsEnUs instanceCharts_ = _StringsMisskeyInstanceChartsEnUs._(_root);
-	late final _StringsMisskeyTimelinesEnUs timelines_ = _StringsMisskeyTimelinesEnUs._(_root);
-	late final _StringsMisskeyPlayEnUs play_ = _StringsMisskeyPlayEnUs._(_root);
-	late final _StringsMisskeyPagesEnUs pages_ = _StringsMisskeyPagesEnUs._(_root);
-	late final _StringsMisskeyRelayStatusEnUs relayStatus_ = _StringsMisskeyRelayStatusEnUs._(_root);
-	late final _StringsMisskeyNotificationEnUs notification_ = _StringsMisskeyNotificationEnUs._(_root);
-	late final _StringsMisskeyDeckEnUs deck_ = _StringsMisskeyDeckEnUs._(_root);
-	late final _StringsMisskeyDialogEnUs dialog_ = _StringsMisskeyDialogEnUs._(_root);
-	late final _StringsMisskeyDisabledTimelineEnUs disabledTimeline_ = _StringsMisskeyDisabledTimelineEnUs._(_root);
-	late final _StringsMisskeyDrivecleanerEnUs drivecleaner_ = _StringsMisskeyDrivecleanerEnUs._(_root);
-	late final _StringsMisskeyWebhookSettingsEnUs webhookSettings_ = _StringsMisskeyWebhookSettingsEnUs._(_root);
-	late final _StringsMisskeyAbuseReportEnUs abuseReport_ = _StringsMisskeyAbuseReportEnUs._(_root);
-	late final _StringsMisskeyModerationLogTypesEnUs moderationLogTypes_ = _StringsMisskeyModerationLogTypesEnUs._(_root);
-	late final _StringsMisskeyFileViewerEnUs fileViewer_ = _StringsMisskeyFileViewerEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerEnUs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerEnUs._(_root);
-	late final _StringsMisskeyDataSaverEnUs dataSaver_ = _StringsMisskeyDataSaverEnUs._(_root);
-	late final _StringsMisskeyHemisphereEnUs hemisphere_ = _StringsMisskeyHemisphereEnUs._(_root);
-	late final _StringsMisskeyReversiEnUs reversi_ = _StringsMisskeyReversiEnUs._(_root);
-	late final _StringsMisskeyOfflineScreenEnUs offlineScreen_ = _StringsMisskeyOfflineScreenEnUs._(_root);
-	late final _StringsMisskeyUrlPreviewSettingEnUs urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingEnUs._(_root);
-	late final _StringsMisskeyMediaControlsEnUs mediaControls_ = _StringsMisskeyMediaControlsEnUs._(_root);
-	late final _StringsMisskeyContextMenuEnUs contextMenu_ = _StringsMisskeyContextMenuEnUs._(_root);
-	late final _StringsMisskeyEmbedCodeGenEnUs embedCodeGen_ = _StringsMisskeyEmbedCodeGenEnUs._(_root);
+	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
+	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
+	late final TranslationsMisskeyBubbleGameEnUs bubbleGame_ = TranslationsMisskeyBubbleGameEnUs.internal(_root);
+	late final TranslationsMisskeyAnnouncementEnUs announcement_ = TranslationsMisskeyAnnouncementEnUs.internal(_root);
+	late final TranslationsMisskeyInitialAccountSettingEnUs initialAccountSetting_ = TranslationsMisskeyInitialAccountSettingEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialEnUs initialTutorial_ = TranslationsMisskeyInitialTutorialEnUs.internal(_root);
+	late final TranslationsMisskeyTimelineDescriptionEnUs timelineDescription_ = TranslationsMisskeyTimelineDescriptionEnUs.internal(_root);
+	late final TranslationsMisskeyServerRulesEnUs serverRules_ = TranslationsMisskeyServerRulesEnUs.internal(_root);
+	late final TranslationsMisskeyServerSettingsEnUs serverSettings_ = TranslationsMisskeyServerSettingsEnUs.internal(_root);
+	late final TranslationsMisskeyAccountMigrationEnUs accountMigration_ = TranslationsMisskeyAccountMigrationEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsEnUs achievements_ = TranslationsMisskeyAchievementsEnUs.internal(_root);
+	late final TranslationsMisskeyRoleEnUs role_ = TranslationsMisskeyRoleEnUs.internal(_root);
+	late final TranslationsMisskeySensitiveMediaDetectionEnUs sensitiveMediaDetection_ = TranslationsMisskeySensitiveMediaDetectionEnUs.internal(_root);
+	late final TranslationsMisskeyEmailUnavailableEnUs emailUnavailable_ = TranslationsMisskeyEmailUnavailableEnUs.internal(_root);
+	late final TranslationsMisskeyFfVisibilityEnUs ffVisibility_ = TranslationsMisskeyFfVisibilityEnUs.internal(_root);
+	late final TranslationsMisskeySignupEnUs signup_ = TranslationsMisskeySignupEnUs.internal(_root);
+	late final TranslationsMisskeyAccountDeleteEnUs accountDelete_ = TranslationsMisskeyAccountDeleteEnUs.internal(_root);
+	late final TranslationsMisskeyAdEnUs ad_ = TranslationsMisskeyAdEnUs.internal(_root);
+	late final TranslationsMisskeyForgotPasswordEnUs forgotPassword_ = TranslationsMisskeyForgotPasswordEnUs.internal(_root);
+	late final TranslationsMisskeyGalleryEnUs gallery_ = TranslationsMisskeyGalleryEnUs.internal(_root);
+	late final TranslationsMisskeyEmailEnUs email_ = TranslationsMisskeyEmailEnUs.internal(_root);
+	late final TranslationsMisskeyPluginEnUs plugin_ = TranslationsMisskeyPluginEnUs.internal(_root);
+	late final TranslationsMisskeyPreferencesBackupsEnUs preferencesBackups_ = TranslationsMisskeyPreferencesBackupsEnUs.internal(_root);
+	late final TranslationsMisskeyRegistryEnUs registry_ = TranslationsMisskeyRegistryEnUs.internal(_root);
+	late final TranslationsMisskeyAboutMisskeyEnUs aboutMisskey_ = TranslationsMisskeyAboutMisskeyEnUs.internal(_root);
+	late final TranslationsMisskeyDisplayOfSensitiveMediaEnUs displayOfSensitiveMedia_ = TranslationsMisskeyDisplayOfSensitiveMediaEnUs.internal(_root);
+	late final TranslationsMisskeyInstanceTickerEnUs instanceTicker_ = TranslationsMisskeyInstanceTickerEnUs.internal(_root);
+	late final TranslationsMisskeyServerDisconnectedBehaviorEnUs serverDisconnectedBehavior_ = TranslationsMisskeyServerDisconnectedBehaviorEnUs.internal(_root);
+	late final TranslationsMisskeyChannelEnUs channel_ = TranslationsMisskeyChannelEnUs.internal(_root);
+	late final TranslationsMisskeyMenuDisplayEnUs menuDisplay_ = TranslationsMisskeyMenuDisplayEnUs.internal(_root);
+	late final TranslationsMisskeyWordMuteEnUs wordMute_ = TranslationsMisskeyWordMuteEnUs.internal(_root);
+	late final TranslationsMisskeyInstanceMuteEnUs instanceMute_ = TranslationsMisskeyInstanceMuteEnUs.internal(_root);
+	late final TranslationsMisskeyThemeEnUs theme_ = TranslationsMisskeyThemeEnUs.internal(_root);
+	late final TranslationsMisskeySfxEnUs sfx_ = TranslationsMisskeySfxEnUs.internal(_root);
+	late final TranslationsMisskeySoundSettingsEnUs soundSettings_ = TranslationsMisskeySoundSettingsEnUs.internal(_root);
+	late final TranslationsMisskeyAgoEnUs ago_ = TranslationsMisskeyAgoEnUs.internal(_root);
+	late final TranslationsMisskeyTimeInEnUs timeIn_ = TranslationsMisskeyTimeInEnUs.internal(_root);
+	late final TranslationsMisskeyTimeEnUs time_ = TranslationsMisskeyTimeEnUs.internal(_root);
+	late final TranslationsMisskeyX2faEnUs x2fa_ = TranslationsMisskeyX2faEnUs.internal(_root);
+	late final TranslationsMisskeyPermissionsEnUs permissions_ = TranslationsMisskeyPermissionsEnUs.internal(_root);
+	late final TranslationsMisskeyAuthEnUs auth_ = TranslationsMisskeyAuthEnUs.internal(_root);
+	late final TranslationsMisskeyAntennaSourcesEnUs antennaSources_ = TranslationsMisskeyAntennaSourcesEnUs.internal(_root);
+	late final TranslationsMisskeyWeekdayEnUs weekday_ = TranslationsMisskeyWeekdayEnUs.internal(_root);
+	late final TranslationsMisskeyWidgetsEnUs widgets_ = TranslationsMisskeyWidgetsEnUs.internal(_root);
+	late final TranslationsMisskeyCwEnUs cw_ = TranslationsMisskeyCwEnUs.internal(_root);
+	late final TranslationsMisskeyPollEnUs poll_ = TranslationsMisskeyPollEnUs.internal(_root);
+	late final TranslationsMisskeyVisibilityEnUs visibility_ = TranslationsMisskeyVisibilityEnUs.internal(_root);
+	late final TranslationsMisskeyPostFormEnUs postForm_ = TranslationsMisskeyPostFormEnUs.internal(_root);
+	late final TranslationsMisskeyProfileEnUs profile_ = TranslationsMisskeyProfileEnUs.internal(_root);
+	late final TranslationsMisskeyExportOrImportEnUs exportOrImport_ = TranslationsMisskeyExportOrImportEnUs.internal(_root);
+	late final TranslationsMisskeyChartsEnUs charts_ = TranslationsMisskeyChartsEnUs.internal(_root);
+	late final TranslationsMisskeyInstanceChartsEnUs instanceCharts_ = TranslationsMisskeyInstanceChartsEnUs.internal(_root);
+	late final TranslationsMisskeyTimelinesEnUs timelines_ = TranslationsMisskeyTimelinesEnUs.internal(_root);
+	late final TranslationsMisskeyPlayEnUs play_ = TranslationsMisskeyPlayEnUs.internal(_root);
+	late final TranslationsMisskeyPagesEnUs pages_ = TranslationsMisskeyPagesEnUs.internal(_root);
+	late final TranslationsMisskeyRelayStatusEnUs relayStatus_ = TranslationsMisskeyRelayStatusEnUs.internal(_root);
+	late final TranslationsMisskeyNotificationEnUs notification_ = TranslationsMisskeyNotificationEnUs.internal(_root);
+	late final TranslationsMisskeyDeckEnUs deck_ = TranslationsMisskeyDeckEnUs.internal(_root);
+	late final TranslationsMisskeyDialogEnUs dialog_ = TranslationsMisskeyDialogEnUs.internal(_root);
+	late final TranslationsMisskeyDisabledTimelineEnUs disabledTimeline_ = TranslationsMisskeyDisabledTimelineEnUs.internal(_root);
+	late final TranslationsMisskeyDrivecleanerEnUs drivecleaner_ = TranslationsMisskeyDrivecleanerEnUs.internal(_root);
+	late final TranslationsMisskeyWebhookSettingsEnUs webhookSettings_ = TranslationsMisskeyWebhookSettingsEnUs.internal(_root);
+	late final TranslationsMisskeyAbuseReportEnUs abuseReport_ = TranslationsMisskeyAbuseReportEnUs.internal(_root);
+	late final TranslationsMisskeyModerationLogTypesEnUs moderationLogTypes_ = TranslationsMisskeyModerationLogTypesEnUs.internal(_root);
+	late final TranslationsMisskeyFileViewerEnUs fileViewer_ = TranslationsMisskeyFileViewerEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerEnUs externalResourceInstaller_ = TranslationsMisskeyExternalResourceInstallerEnUs.internal(_root);
+	late final TranslationsMisskeyDataSaverEnUs dataSaver_ = TranslationsMisskeyDataSaverEnUs.internal(_root);
+	late final TranslationsMisskeyHemisphereEnUs hemisphere_ = TranslationsMisskeyHemisphereEnUs.internal(_root);
+	late final TranslationsMisskeyReversiEnUs reversi_ = TranslationsMisskeyReversiEnUs.internal(_root);
+	late final TranslationsMisskeyOfflineScreenEnUs offlineScreen_ = TranslationsMisskeyOfflineScreenEnUs.internal(_root);
+	late final TranslationsMisskeyUrlPreviewSettingEnUs urlPreviewSetting_ = TranslationsMisskeyUrlPreviewSettingEnUs.internal(_root);
+	late final TranslationsMisskeyMediaControlsEnUs mediaControls_ = TranslationsMisskeyMediaControlsEnUs.internal(_root);
+	late final TranslationsMisskeyContextMenuEnUs contextMenu_ = TranslationsMisskeyContextMenuEnUs.internal(_root);
+	late final TranslationsMisskeyEmbedCodeGenEnUs embedCodeGen_ = TranslationsMisskeyEmbedCodeGenEnUs.internal(_root);
 }
 
 // Path: misskeyIO
-class _StringsMisskeyIOEnUs {
-	_StringsMisskeyIOEnUs._(this._root);
+class TranslationsMisskeyIOEnUs {
+	TranslationsMisskeyIOEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyIOSkebStatusEnUs skebStatus_ = _StringsMisskeyIOSkebStatusEnUs._(_root);
+	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
 }
 
 // Path: misskey.abuseUserReport_
-class _StringsMisskeyAbuseUserReportEnUs {
-	_StringsMisskeyAbuseUserReportEnUs._(this._root);
+class TranslationsMisskeyAbuseUserReportEnUs {
+	TranslationsMisskeyAbuseUserReportEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1647,8 +1648,8 @@ class _StringsMisskeyAbuseUserReportEnUs {
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryEnUs._(this._root);
+class TranslationsMisskeyDeliveryEnUs {
+	TranslationsMisskeyDeliveryEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1656,25 +1657,25 @@ class _StringsMisskeyDeliveryEnUs {
 	String get status => 'Delivery status';
 	String get stop => 'Suspended';
 	String get resume => 'Delivery resume';
-	late final _StringsMisskeyDeliveryTypeEnUs type_ = _StringsMisskeyDeliveryTypeEnUs._(_root);
+	late final TranslationsMisskeyDeliveryTypeEnUs type_ = TranslationsMisskeyDeliveryTypeEnUs.internal(_root);
 }
 
 // Path: misskey.bubbleGame_
-class _StringsMisskeyBubbleGameEnUs {
-	_StringsMisskeyBubbleGameEnUs._(this._root);
+class TranslationsMisskeyBubbleGameEnUs {
+	TranslationsMisskeyBubbleGameEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get howToPlay => 'How to play';
 	String get hold => 'Hold';
-	late final _StringsMisskeyBubbleGameScoreEnUs score_ = _StringsMisskeyBubbleGameScoreEnUs._(_root);
-	late final _StringsMisskeyBubbleGameHowToPlayEnUs howToPlay_ = _StringsMisskeyBubbleGameHowToPlayEnUs._(_root);
+	late final TranslationsMisskeyBubbleGameScoreEnUs score_ = TranslationsMisskeyBubbleGameScoreEnUs.internal(_root);
+	late final TranslationsMisskeyBubbleGameHowToPlayEnUs howToPlay_ = TranslationsMisskeyBubbleGameHowToPlayEnUs.internal(_root);
 }
 
 // Path: misskey.announcement_
-class _StringsMisskeyAnnouncementEnUs {
-	_StringsMisskeyAnnouncementEnUs._(this._root);
+class TranslationsMisskeyAnnouncementEnUs {
+	TranslationsMisskeyAnnouncementEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1694,8 +1695,8 @@ class _StringsMisskeyAnnouncementEnUs {
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingEnUs._(this._root);
+class TranslationsMisskeyInitialAccountSettingEnUs {
+	TranslationsMisskeyInitialAccountSettingEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1718,8 +1719,8 @@ class _StringsMisskeyInitialAccountSettingEnUs {
 }
 
 // Path: misskey.initialTutorial_
-class _StringsMisskeyInitialTutorialEnUs {
-	_StringsMisskeyInitialTutorialEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialEnUs {
+	TranslationsMisskeyInitialTutorialEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1728,18 +1729,18 @@ class _StringsMisskeyInitialTutorialEnUs {
 	String get title => 'Tutorial';
 	String get wellDone => 'Well done!';
 	String get skipAreYouSure => 'Quit Tutorial?';
-	late final _StringsMisskeyInitialTutorialLandingEnUs landing_ = _StringsMisskeyInitialTutorialLandingEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialNoteEnUs note_ = _StringsMisskeyInitialTutorialNoteEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialReactionEnUs reaction_ = _StringsMisskeyInitialTutorialReactionEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialTimelineEnUs timeline_ = _StringsMisskeyInitialTutorialTimelineEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialPostNoteEnUs postNote_ = _StringsMisskeyInitialTutorialPostNoteEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs howToMakeAttachmentsSensitive_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialDoneEnUs done_ = _StringsMisskeyInitialTutorialDoneEnUs._(_root);
+	late final TranslationsMisskeyInitialTutorialLandingEnUs landing_ = TranslationsMisskeyInitialTutorialLandingEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialNoteEnUs note_ = TranslationsMisskeyInitialTutorialNoteEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialReactionEnUs reaction_ = TranslationsMisskeyInitialTutorialReactionEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialTimelineEnUs timeline_ = TranslationsMisskeyInitialTutorialTimelineEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialPostNoteEnUs postNote_ = TranslationsMisskeyInitialTutorialPostNoteEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs howToMakeAttachmentsSensitive_ = TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialDoneEnUs done_ = TranslationsMisskeyInitialTutorialDoneEnUs.internal(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _StringsMisskeyTimelineDescriptionEnUs {
-	_StringsMisskeyTimelineDescriptionEnUs._(this._root);
+class TranslationsMisskeyTimelineDescriptionEnUs {
+	TranslationsMisskeyTimelineDescriptionEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1751,8 +1752,8 @@ class _StringsMisskeyTimelineDescriptionEnUs {
 }
 
 // Path: misskey.serverRules_
-class _StringsMisskeyServerRulesEnUs {
-	_StringsMisskeyServerRulesEnUs._(this._root);
+class TranslationsMisskeyServerRulesEnUs {
+	TranslationsMisskeyServerRulesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1761,8 +1762,8 @@ class _StringsMisskeyServerRulesEnUs {
 }
 
 // Path: misskey.serverSettings_
-class _StringsMisskeyServerSettingsEnUs {
-	_StringsMisskeyServerSettingsEnUs._(this._root);
+class TranslationsMisskeyServerSettingsEnUs {
+	TranslationsMisskeyServerSettingsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1784,8 +1785,8 @@ class _StringsMisskeyServerSettingsEnUs {
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationEnUs._(this._root);
+class TranslationsMisskeyAccountMigrationEnUs {
+	TranslationsMisskeyAccountMigrationEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1807,19 +1808,19 @@ class _StringsMisskeyAccountMigrationEnUs {
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsEnUs._(this._root);
+class TranslationsMisskeyAchievementsEnUs {
+	TranslationsMisskeyAchievementsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get earnedAt => 'Unlocked at';
-	late final _StringsMisskeyAchievementsTypesEnUs types_ = _StringsMisskeyAchievementsTypesEnUs._(_root);
+	late final TranslationsMisskeyAchievementsTypesEnUs types_ = TranslationsMisskeyAchievementsTypesEnUs.internal(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleEnUs._(this._root);
+class TranslationsMisskeyRoleEnUs {
+	TranslationsMisskeyRoleEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1855,14 +1856,14 @@ class _StringsMisskeyRoleEnUs {
 	String get canEditMembersByModerator => 'Allow moderators to edit the list of members for this role';
 	String get descriptionOfCanEditMembersByModerator => 'When turned on, moderators as well as administrators will be able to assign and unassign users to this role. When turned off, only administrators will be able to assign users.';
 	String get priority => 'Priority';
-	late final _StringsMisskeyRolePriorityEnUs priority_ = _StringsMisskeyRolePriorityEnUs._(_root);
-	late final _StringsMisskeyRoleOptionsEnUs options_ = _StringsMisskeyRoleOptionsEnUs._(_root);
-	late final _StringsMisskeyRoleConditionEnUs condition_ = _StringsMisskeyRoleConditionEnUs._(_root);
+	late final TranslationsMisskeyRolePriorityEnUs priority_ = TranslationsMisskeyRolePriorityEnUs.internal(_root);
+	late final TranslationsMisskeyRoleOptionsEnUs options_ = TranslationsMisskeyRoleOptionsEnUs.internal(_root);
+	late final TranslationsMisskeyRoleConditionEnUs condition_ = TranslationsMisskeyRoleConditionEnUs.internal(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionEnUs._(this._root);
+class TranslationsMisskeySensitiveMediaDetectionEnUs {
+	TranslationsMisskeySensitiveMediaDetectionEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1877,8 +1878,8 @@ class _StringsMisskeySensitiveMediaDetectionEnUs {
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableEnUs._(this._root);
+class TranslationsMisskeyEmailUnavailableEnUs {
+	TranslationsMisskeyEmailUnavailableEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1892,8 +1893,8 @@ class _StringsMisskeyEmailUnavailableEnUs {
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityEnUs._(this._root);
+class TranslationsMisskeyFfVisibilityEnUs {
+	TranslationsMisskeyFfVisibilityEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1904,8 +1905,8 @@ class _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupEnUs._(this._root);
+class TranslationsMisskeySignupEnUs {
+	TranslationsMisskeySignupEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1916,8 +1917,8 @@ class _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteEnUs._(this._root);
+class TranslationsMisskeyAccountDeleteEnUs {
+	TranslationsMisskeyAccountDeleteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1931,8 +1932,8 @@ class _StringsMisskeyAccountDeleteEnUs {
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdEnUs._(this._root);
+class TranslationsMisskeyAdEnUs {
+	TranslationsMisskeyAdEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1948,8 +1949,8 @@ class _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordEnUs._(this._root);
+class TranslationsMisskeyForgotPasswordEnUs {
+	TranslationsMisskeyForgotPasswordEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1960,8 +1961,8 @@ class _StringsMisskeyForgotPasswordEnUs {
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryEnUs._(this._root);
+class TranslationsMisskeyGalleryEnUs {
+	TranslationsMisskeyGalleryEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1973,19 +1974,19 @@ class _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailEnUs._(this._root);
+class TranslationsMisskeyEmailEnUs {
+	TranslationsMisskeyEmailEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyEmailFollowEnUs follow_ = _StringsMisskeyEmailFollowEnUs._(_root);
-	late final _StringsMisskeyEmailReceiveFollowRequestEnUs receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestEnUs._(_root);
+	late final TranslationsMisskeyEmailFollowEnUs follow_ = TranslationsMisskeyEmailFollowEnUs.internal(_root);
+	late final TranslationsMisskeyEmailReceiveFollowRequestEnUs receiveFollowRequest_ = TranslationsMisskeyEmailReceiveFollowRequestEnUs.internal(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginEnUs._(this._root);
+class TranslationsMisskeyPluginEnUs {
+	TranslationsMisskeyPluginEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -1998,8 +1999,8 @@ class _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsEnUs._(this._root);
+class TranslationsMisskeyPreferencesBackupsEnUs {
+	TranslationsMisskeyPreferencesBackupsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2024,8 +2025,8 @@ class _StringsMisskeyPreferencesBackupsEnUs {
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryEnUs._(this._root);
+class TranslationsMisskeyRegistryEnUs {
+	TranslationsMisskeyRegistryEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2038,8 +2039,8 @@ class _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyEnUs._(this._root);
+class TranslationsMisskeyAboutMisskeyEnUs {
+	TranslationsMisskeyAboutMisskeyEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2058,8 +2059,8 @@ class _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.displayOfSensitiveMedia_
-class _StringsMisskeyDisplayOfSensitiveMediaEnUs {
-	_StringsMisskeyDisplayOfSensitiveMediaEnUs._(this._root);
+class TranslationsMisskeyDisplayOfSensitiveMediaEnUs {
+	TranslationsMisskeyDisplayOfSensitiveMediaEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2070,8 +2071,8 @@ class _StringsMisskeyDisplayOfSensitiveMediaEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerEnUs._(this._root);
+class TranslationsMisskeyInstanceTickerEnUs {
+	TranslationsMisskeyInstanceTickerEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2082,8 +2083,8 @@ class _StringsMisskeyInstanceTickerEnUs {
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorEnUs._(this._root);
+class TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	TranslationsMisskeyServerDisconnectedBehaviorEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2094,8 +2095,8 @@ class _StringsMisskeyServerDisconnectedBehaviorEnUs {
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelEnUs._(this._root);
+class TranslationsMisskeyChannelEnUs {
+	TranslationsMisskeyChannelEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2115,8 +2116,8 @@ class _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayEnUs._(this._root);
+class TranslationsMisskeyMenuDisplayEnUs {
+	TranslationsMisskeyMenuDisplayEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2128,8 +2129,8 @@ class _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteEnUs._(this._root);
+class TranslationsMisskeyWordMuteEnUs {
+	TranslationsMisskeyWordMuteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2140,8 +2141,8 @@ class _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteEnUs._(this._root);
+class TranslationsMisskeyInstanceMuteEnUs {
+	TranslationsMisskeyInstanceMuteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2153,8 +2154,8 @@ class _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeEnUs._(this._root);
+class TranslationsMisskeyThemeEnUs {
+	TranslationsMisskeyThemeEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2188,12 +2189,12 @@ class _StringsMisskeyThemeEnUs {
 	String get inputConstantName => 'Enter a name for this constant';
 	String get importInfo => 'If you enter theme code here, you can import it to the theme editor';
 	String deleteConstantConfirm({required Object const_}) => 'Do you really want to delete the constant ${const_}?';
-	late final _StringsMisskeyThemeKeysEnUs keys = _StringsMisskeyThemeKeysEnUs._(_root);
+	late final TranslationsMisskeyThemeKeysEnUs keys = TranslationsMisskeyThemeKeysEnUs.internal(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxEnUs._(this._root);
+class TranslationsMisskeySfxEnUs {
+	TranslationsMisskeySfxEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2205,8 +2206,8 @@ class _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.soundSettings_
-class _StringsMisskeySoundSettingsEnUs {
-	_StringsMisskeySoundSettingsEnUs._(this._root);
+class TranslationsMisskeySoundSettingsEnUs {
+	TranslationsMisskeySoundSettingsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2221,8 +2222,8 @@ class _StringsMisskeySoundSettingsEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoEnUs._(this._root);
+class TranslationsMisskeyAgoEnUs {
+	TranslationsMisskeyAgoEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2240,8 +2241,8 @@ class _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.timeIn_
-class _StringsMisskeyTimeInEnUs {
-	_StringsMisskeyTimeInEnUs._(this._root);
+class TranslationsMisskeyTimeInEnUs {
+	TranslationsMisskeyTimeInEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2256,8 +2257,8 @@ class _StringsMisskeyTimeInEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeEnUs._(this._root);
+class TranslationsMisskeyTimeEnUs {
+	TranslationsMisskeyTimeEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2269,8 +2270,8 @@ class _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faEnUs._(this._root);
+class TranslationsMisskeyX2faEnUs {
+	TranslationsMisskeyX2faEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2306,8 +2307,8 @@ class _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsEnUs._(this._root);
+class TranslationsMisskeyPermissionsEnUs {
+	TranslationsMisskeyPermissionsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2399,8 +2400,8 @@ class _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthEnUs._(this._root);
+class TranslationsMisskeyAuthEnUs {
+	TranslationsMisskeyAuthEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2417,8 +2418,8 @@ class _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesEnUs._(this._root);
+class TranslationsMisskeyAntennaSourcesEnUs {
+	TranslationsMisskeyAntennaSourcesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2431,8 +2432,8 @@ class _StringsMisskeyAntennaSourcesEnUs {
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayEnUs._(this._root);
+class TranslationsMisskeyWeekdayEnUs {
+	TranslationsMisskeyWeekdayEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2447,8 +2448,8 @@ class _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsEnUs._(this._root);
+class TranslationsMisskeyWidgetsEnUs {
+	TranslationsMisskeyWidgetsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2479,14 +2480,14 @@ class _StringsMisskeyWidgetsEnUs {
 	String get aiscriptApp => 'AiScript App';
 	String get aichan => 'Ai';
 	String get userList => 'User list';
-	late final _StringsMisskeyWidgetsUserListEnUs userList_ = _StringsMisskeyWidgetsUserListEnUs._(_root);
+	late final TranslationsMisskeyWidgetsUserListEnUs userList_ = TranslationsMisskeyWidgetsUserListEnUs.internal(_root);
 	String get clicker => 'Clicker';
 	String get birthdayFollowings => 'Users who celebrate their birthday today';
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwEnUs._(this._root);
+class TranslationsMisskeyCwEnUs {
+	TranslationsMisskeyCwEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2498,8 +2499,8 @@ class _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollEnUs._(this._root);
+class TranslationsMisskeyPollEnUs {
+	TranslationsMisskeyPollEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2528,8 +2529,8 @@ class _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityEnUs._(this._root);
+class TranslationsMisskeyVisibilityEnUs {
+	TranslationsMisskeyVisibilityEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2547,8 +2548,8 @@ class _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormEnUs._(this._root);
+class TranslationsMisskeyPostFormEnUs {
+	TranslationsMisskeyPostFormEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2556,12 +2557,12 @@ class _StringsMisskeyPostFormEnUs {
 	String get replyPlaceholder => 'Reply to this note...';
 	String get quotePlaceholder => 'Quote this note...';
 	String get channelPlaceholder => 'Post to a channel...';
-	late final _StringsMisskeyPostFormPlaceholdersEnUs placeholders_ = _StringsMisskeyPostFormPlaceholdersEnUs._(_root);
+	late final TranslationsMisskeyPostFormPlaceholdersEnUs placeholders_ = TranslationsMisskeyPostFormPlaceholdersEnUs.internal(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileEnUs._(this._root);
+class TranslationsMisskeyProfileEnUs {
+	TranslationsMisskeyProfileEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2585,8 +2586,8 @@ class _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportEnUs._(this._root);
+class TranslationsMisskeyExportOrImportEnUs {
+	TranslationsMisskeyExportOrImportEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2604,8 +2605,8 @@ class _StringsMisskeyExportOrImportEnUs {
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsEnUs._(this._root);
+class TranslationsMisskeyChartsEnUs {
+	TranslationsMisskeyChartsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2626,8 +2627,8 @@ class _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsEnUs._(this._root);
+class TranslationsMisskeyInstanceChartsEnUs {
+	TranslationsMisskeyInstanceChartsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2646,8 +2647,8 @@ class _StringsMisskeyInstanceChartsEnUs {
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesEnUs._(this._root);
+class TranslationsMisskeyTimelinesEnUs {
+	TranslationsMisskeyTimelinesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2659,8 +2660,8 @@ class _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayEnUs._(this._root);
+class TranslationsMisskeyPlayEnUs {
+	TranslationsMisskeyPlayEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2683,8 +2684,8 @@ class _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesEnUs._(this._root);
+class TranslationsMisskeyPagesEnUs {
+	TranslationsMisskeyPagesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2727,12 +2728,12 @@ class _StringsMisskeyPagesEnUs {
 	String get contentBlocks => 'Content';
 	String get inputBlocks => 'Input';
 	String get specialBlocks => 'Special';
-	late final _StringsMisskeyPagesBlocksEnUs blocks = _StringsMisskeyPagesBlocksEnUs._(_root);
+	late final TranslationsMisskeyPagesBlocksEnUs blocks = TranslationsMisskeyPagesBlocksEnUs.internal(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusEnUs._(this._root);
+class TranslationsMisskeyRelayStatusEnUs {
+	TranslationsMisskeyRelayStatusEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2743,8 +2744,8 @@ class _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationEnUs._(this._root);
+class TranslationsMisskeyNotificationEnUs {
+	TranslationsMisskeyNotificationEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2774,13 +2775,13 @@ class _StringsMisskeyNotificationEnUs {
 	String get flushNotification => 'Clear notifications';
 	String exportOfXCompleted({required Object x}) => 'Export of ${x} has been completed';
 	String get login => 'Someone logged in';
-	late final _StringsMisskeyNotificationTypesEnUs types_ = _StringsMisskeyNotificationTypesEnUs._(_root);
-	late final _StringsMisskeyNotificationActionsEnUs actions_ = _StringsMisskeyNotificationActionsEnUs._(_root);
+	late final TranslationsMisskeyNotificationTypesEnUs types_ = TranslationsMisskeyNotificationTypesEnUs.internal(_root);
+	late final TranslationsMisskeyNotificationActionsEnUs actions_ = TranslationsMisskeyNotificationActionsEnUs.internal(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckEnUs._(this._root);
+class TranslationsMisskeyDeckEnUs {
+	TranslationsMisskeyDeckEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2805,12 +2806,12 @@ class _StringsMisskeyDeckEnUs {
 	String get useSimpleUiForNonRootPages => 'Use simple UI for navigated pages';
 	String get usedAsMinWidthWhenFlexible => 'Minimum width will be used for this when the "Auto-adjust width" option is enabled';
 	String get flexible => 'Auto-adjust width';
-	late final _StringsMisskeyDeckColumnsEnUs columns_ = _StringsMisskeyDeckColumnsEnUs._(_root);
+	late final TranslationsMisskeyDeckColumnsEnUs columns_ = TranslationsMisskeyDeckColumnsEnUs.internal(_root);
 }
 
 // Path: misskey.dialog_
-class _StringsMisskeyDialogEnUs {
-	_StringsMisskeyDialogEnUs._(this._root);
+class TranslationsMisskeyDialogEnUs {
+	TranslationsMisskeyDialogEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2820,8 +2821,8 @@ class _StringsMisskeyDialogEnUs {
 }
 
 // Path: misskey.disabledTimeline_
-class _StringsMisskeyDisabledTimelineEnUs {
-	_StringsMisskeyDisabledTimelineEnUs._(this._root);
+class TranslationsMisskeyDisabledTimelineEnUs {
+	TranslationsMisskeyDisabledTimelineEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2831,8 +2832,8 @@ class _StringsMisskeyDisabledTimelineEnUs {
 }
 
 // Path: misskey.drivecleaner_
-class _StringsMisskeyDrivecleanerEnUs {
-	_StringsMisskeyDrivecleanerEnUs._(this._root);
+class TranslationsMisskeyDrivecleanerEnUs {
+	TranslationsMisskeyDrivecleanerEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2842,8 +2843,8 @@ class _StringsMisskeyDrivecleanerEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsEnUs._(this._root);
+class TranslationsMisskeyWebhookSettingsEnUs {
+	TranslationsMisskeyWebhookSettingsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2854,25 +2855,25 @@ class _StringsMisskeyWebhookSettingsEnUs {
 	String get secret => 'Secret';
 	String get trigger => 'Trigger';
 	String get active => 'Enabled';
-	late final _StringsMisskeyWebhookSettingsEventsEnUs events_ = _StringsMisskeyWebhookSettingsEventsEnUs._(_root);
-	late final _StringsMisskeyWebhookSettingsSystemEventsEnUs systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsEnUs._(_root);
+	late final TranslationsMisskeyWebhookSettingsEventsEnUs events_ = TranslationsMisskeyWebhookSettingsEventsEnUs.internal(_root);
+	late final TranslationsMisskeyWebhookSettingsSystemEventsEnUs systemEvents_ = TranslationsMisskeyWebhookSettingsSystemEventsEnUs.internal(_root);
 	String get deleteConfirm => 'Are you sure you want to delete the Webhook?';
 	String get testRemarks => 'Click the button to the right of the switch to send a test Webhook with dummy data.';
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportEnUs._(this._root);
+class TranslationsMisskeyAbuseReportEnUs {
+	TranslationsMisskeyAbuseReportEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyAbuseReportNotificationRecipientEnUs notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientEnUs._(_root);
+	late final TranslationsMisskeyAbuseReportNotificationRecipientEnUs notificationRecipient_ = TranslationsMisskeyAbuseReportNotificationRecipientEnUs.internal(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesEnUs._(this._root);
+class TranslationsMisskeyModerationLogTypesEnUs {
+	TranslationsMisskeyModerationLogTypesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2928,8 +2929,8 @@ class _StringsMisskeyModerationLogTypesEnUs {
 }
 
 // Path: misskey.fileViewer_
-class _StringsMisskeyFileViewerEnUs {
-	_StringsMisskeyFileViewerEnUs._(this._root);
+class TranslationsMisskeyFileViewerEnUs {
+	TranslationsMisskeyFileViewerEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2944,37 +2945,37 @@ class _StringsMisskeyFileViewerEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_
-class _StringsMisskeyExternalResourceInstallerEnUs {
-	_StringsMisskeyExternalResourceInstallerEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerEnUs {
+	TranslationsMisskeyExternalResourceInstallerEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Install from external site';
 	String get checkVendorBeforeInstall => 'Make sure the distributor of this resource is trustworthy before installation.';
-	late final _StringsMisskeyExternalResourceInstallerPluginEnUs plugin_ = _StringsMisskeyExternalResourceInstallerPluginEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerThemeEnUs theme_ = _StringsMisskeyExternalResourceInstallerThemeEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerMetaEnUs meta_ = _StringsMisskeyExternalResourceInstallerMetaEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerVendorInfoEnUs vendorInfo_ = _StringsMisskeyExternalResourceInstallerVendorInfoEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsEnUs errors_ = _StringsMisskeyExternalResourceInstallerErrorsEnUs._(_root);
+	late final TranslationsMisskeyExternalResourceInstallerPluginEnUs plugin_ = TranslationsMisskeyExternalResourceInstallerPluginEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerThemeEnUs theme_ = TranslationsMisskeyExternalResourceInstallerThemeEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerMetaEnUs meta_ = TranslationsMisskeyExternalResourceInstallerMetaEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs vendorInfo_ = TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsEnUs errors_ = TranslationsMisskeyExternalResourceInstallerErrorsEnUs.internal(_root);
 }
 
 // Path: misskey.dataSaver_
-class _StringsMisskeyDataSaverEnUs {
-	_StringsMisskeyDataSaverEnUs._(this._root);
+class TranslationsMisskeyDataSaverEnUs {
+	TranslationsMisskeyDataSaverEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyDataSaverMediaEnUs media_ = _StringsMisskeyDataSaverMediaEnUs._(_root);
-	late final _StringsMisskeyDataSaverAvatarEnUs avatar_ = _StringsMisskeyDataSaverAvatarEnUs._(_root);
-	late final _StringsMisskeyDataSaverUrlPreviewEnUs urlPreview_ = _StringsMisskeyDataSaverUrlPreviewEnUs._(_root);
-	late final _StringsMisskeyDataSaverCodeEnUs code_ = _StringsMisskeyDataSaverCodeEnUs._(_root);
+	late final TranslationsMisskeyDataSaverMediaEnUs media_ = TranslationsMisskeyDataSaverMediaEnUs.internal(_root);
+	late final TranslationsMisskeyDataSaverAvatarEnUs avatar_ = TranslationsMisskeyDataSaverAvatarEnUs.internal(_root);
+	late final TranslationsMisskeyDataSaverUrlPreviewEnUs urlPreview_ = TranslationsMisskeyDataSaverUrlPreviewEnUs.internal(_root);
+	late final TranslationsMisskeyDataSaverCodeEnUs code_ = TranslationsMisskeyDataSaverCodeEnUs.internal(_root);
 }
 
 // Path: misskey.hemisphere_
-class _StringsMisskeyHemisphereEnUs {
-	_StringsMisskeyHemisphereEnUs._(this._root);
+class TranslationsMisskeyHemisphereEnUs {
+	TranslationsMisskeyHemisphereEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -2985,8 +2986,8 @@ class _StringsMisskeyHemisphereEnUs {
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiEnUs._(this._root);
+class TranslationsMisskeyReversiEnUs {
+	TranslationsMisskeyReversiEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3037,8 +3038,8 @@ class _StringsMisskeyReversiEnUs {
 }
 
 // Path: misskey.offlineScreen_
-class _StringsMisskeyOfflineScreenEnUs {
-	_StringsMisskeyOfflineScreenEnUs._(this._root);
+class TranslationsMisskeyOfflineScreenEnUs {
+	TranslationsMisskeyOfflineScreenEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3048,8 +3049,8 @@ class _StringsMisskeyOfflineScreenEnUs {
 }
 
 // Path: misskey.urlPreviewSetting_
-class _StringsMisskeyUrlPreviewSettingEnUs {
-	_StringsMisskeyUrlPreviewSettingEnUs._(this._root);
+class TranslationsMisskeyUrlPreviewSettingEnUs {
+	TranslationsMisskeyUrlPreviewSettingEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3070,8 +3071,8 @@ class _StringsMisskeyUrlPreviewSettingEnUs {
 }
 
 // Path: misskey.mediaControls_
-class _StringsMisskeyMediaControlsEnUs {
-	_StringsMisskeyMediaControlsEnUs._(this._root);
+class TranslationsMisskeyMediaControlsEnUs {
+	TranslationsMisskeyMediaControlsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3082,8 +3083,8 @@ class _StringsMisskeyMediaControlsEnUs {
 }
 
 // Path: misskey.contextMenu_
-class _StringsMisskeyContextMenuEnUs {
-	_StringsMisskeyContextMenuEnUs._(this._root);
+class TranslationsMisskeyContextMenuEnUs {
+	TranslationsMisskeyContextMenuEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3095,8 +3096,8 @@ class _StringsMisskeyContextMenuEnUs {
 }
 
 // Path: misskey.embedCodeGen_
-class _StringsMisskeyEmbedCodeGenEnUs {
-	_StringsMisskeyEmbedCodeGenEnUs._(this._root);
+class TranslationsMisskeyEmbedCodeGenEnUs {
+	TranslationsMisskeyEmbedCodeGenEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3117,13 +3118,13 @@ class _StringsMisskeyEmbedCodeGenEnUs {
 }
 
 // Path: misskeyIO.skebStatus_
-class _StringsMisskeyIOSkebStatusEnUs {
-	_StringsMisskeyIOSkebStatusEnUs._(this._root);
+class TranslationsMisskeyIOSkebStatusEnUs {
+	TranslationsMisskeyIOSkebStatusEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyIOSkebStatusGenresEnUs genres_ = _StringsMisskeyIOSkebStatusGenresEnUs._(_root);
+	late final TranslationsMisskeyIOSkebStatusGenresEnUs genres_ = TranslationsMisskeyIOSkebStatusGenresEnUs.internal(_root);
 	String get seeking => 'Seeking';
 	String get stopped => 'Stopped';
 	String get client => 'Client';
@@ -3133,8 +3134,8 @@ class _StringsMisskeyIOSkebStatusEnUs {
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeEnUs._(this._root);
+class TranslationsMisskeyDeliveryTypeEnUs {
+	TranslationsMisskeyDeliveryTypeEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3146,8 +3147,8 @@ class _StringsMisskeyDeliveryTypeEnUs {
 }
 
 // Path: misskey.bubbleGame_.score_
-class _StringsMisskeyBubbleGameScoreEnUs {
-	_StringsMisskeyBubbleGameScoreEnUs._(this._root);
+class TranslationsMisskeyBubbleGameScoreEnUs {
+	TranslationsMisskeyBubbleGameScoreEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3162,8 +3163,8 @@ class _StringsMisskeyBubbleGameScoreEnUs {
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
-class _StringsMisskeyBubbleGameHowToPlayEnUs {
-	_StringsMisskeyBubbleGameHowToPlayEnUs._(this._root);
+class TranslationsMisskeyBubbleGameHowToPlayEnUs {
+	TranslationsMisskeyBubbleGameHowToPlayEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3174,8 +3175,8 @@ class _StringsMisskeyBubbleGameHowToPlayEnUs {
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _StringsMisskeyInitialTutorialLandingEnUs {
-	_StringsMisskeyInitialTutorialLandingEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialLandingEnUs {
+	TranslationsMisskeyInitialTutorialLandingEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3185,8 +3186,8 @@ class _StringsMisskeyInitialTutorialLandingEnUs {
 }
 
 // Path: misskey.initialTutorial_.note_
-class _StringsMisskeyInitialTutorialNoteEnUs {
-	_StringsMisskeyInitialTutorialNoteEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialNoteEnUs {
+	TranslationsMisskeyInitialTutorialNoteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3200,8 +3201,8 @@ class _StringsMisskeyInitialTutorialNoteEnUs {
 }
 
 // Path: misskey.initialTutorial_.reaction_
-class _StringsMisskeyInitialTutorialReactionEnUs {
-	_StringsMisskeyInitialTutorialReactionEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialReactionEnUs {
+	TranslationsMisskeyInitialTutorialReactionEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3215,8 +3216,8 @@ class _StringsMisskeyInitialTutorialReactionEnUs {
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _StringsMisskeyInitialTutorialTimelineEnUs {
-	_StringsMisskeyInitialTutorialTimelineEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialTimelineEnUs {
+	TranslationsMisskeyInitialTutorialTimelineEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3232,21 +3233,21 @@ class _StringsMisskeyInitialTutorialTimelineEnUs {
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _StringsMisskeyInitialTutorialPostNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialPostNoteEnUs {
+	TranslationsMisskeyInitialTutorialPostNoteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Note Posting Settings';
 	String get description1 => 'When posting a note on Misskey, various options are available. The posting form looks like this.';
-	late final _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs visibility_ = _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs._(_root);
-	late final _StringsMisskeyInitialTutorialPostNoteCwEnUs cw_ = _StringsMisskeyInitialTutorialPostNoteCwEnUs._(_root);
+	late final TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs visibility_ = TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs.internal(_root);
+	late final TranslationsMisskeyInitialTutorialPostNoteCwEnUs cw_ = TranslationsMisskeyInitialTutorialPostNoteCwEnUs.internal(_root);
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
+	TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3254,15 +3255,15 @@ class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
 	String get title => 'How to Mark Attachments as Sensitive?';
 	String get description => 'For attachments that are required by server guidelines or that should not be left intact, add a "sensitive" flag.';
 	String get tryThisFile => 'Try marking the image attached in this form as sensitive!';
-	late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs._(_root);
+	late final TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs exampleNote_ = TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs.internal(_root);
 	String get method => 'To mark an attachment as sensitive, click the file thumbnail, open the menu, and click "Mark as Sensitive."';
 	String get sensitiveSucceeded => 'When attaching files, please set sensitivities in accordance with the server guidelines.';
 	String get doItToContinue => 'Mark the attachment file as sensitive to proceed.';
 }
 
 // Path: misskey.initialTutorial_.done_
-class _StringsMisskeyInitialTutorialDoneEnUs {
-	_StringsMisskeyInitialTutorialDoneEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialDoneEnUs {
+	TranslationsMisskeyInitialTutorialDoneEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3272,95 +3273,95 @@ class _StringsMisskeyInitialTutorialDoneEnUs {
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesEnUs {
+	TranslationsMisskeyAchievementsTypesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyAchievementsTypesNotes1EnUs notes1_ = _StringsMisskeyAchievementsTypesNotes1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes10EnUs notes10_ = _StringsMisskeyAchievementsTypesNotes10EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes100EnUs notes100_ = _StringsMisskeyAchievementsTypesNotes100EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes500EnUs notes500_ = _StringsMisskeyAchievementsTypesNotes500EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes1000EnUs notes1000_ = _StringsMisskeyAchievementsTypesNotes1000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes5000EnUs notes5000_ = _StringsMisskeyAchievementsTypesNotes5000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes10000EnUs notes10000_ = _StringsMisskeyAchievementsTypesNotes10000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes20000EnUs notes20000_ = _StringsMisskeyAchievementsTypesNotes20000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes30000EnUs notes30000_ = _StringsMisskeyAchievementsTypesNotes30000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes40000EnUs notes40000_ = _StringsMisskeyAchievementsTypesNotes40000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes50000EnUs notes50000_ = _StringsMisskeyAchievementsTypesNotes50000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes60000EnUs notes60000_ = _StringsMisskeyAchievementsTypesNotes60000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes70000EnUs notes70000_ = _StringsMisskeyAchievementsTypesNotes70000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes80000EnUs notes80000_ = _StringsMisskeyAchievementsTypesNotes80000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes90000EnUs notes90000_ = _StringsMisskeyAchievementsTypesNotes90000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNotes100000EnUs notes100000_ = _StringsMisskeyAchievementsTypesNotes100000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin3EnUs login3_ = _StringsMisskeyAchievementsTypesLogin3EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin7EnUs login7_ = _StringsMisskeyAchievementsTypesLogin7EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin15EnUs login15_ = _StringsMisskeyAchievementsTypesLogin15EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin30EnUs login30_ = _StringsMisskeyAchievementsTypesLogin30EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin60EnUs login60_ = _StringsMisskeyAchievementsTypesLogin60EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin100EnUs login100_ = _StringsMisskeyAchievementsTypesLogin100EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin200EnUs login200_ = _StringsMisskeyAchievementsTypesLogin200EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin300EnUs login300_ = _StringsMisskeyAchievementsTypesLogin300EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin400EnUs login400_ = _StringsMisskeyAchievementsTypesLogin400EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin500EnUs login500_ = _StringsMisskeyAchievementsTypesLogin500EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin600EnUs login600_ = _StringsMisskeyAchievementsTypesLogin600EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin700EnUs login700_ = _StringsMisskeyAchievementsTypesLogin700EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin800EnUs login800_ = _StringsMisskeyAchievementsTypesLogin800EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin900EnUs login900_ = _StringsMisskeyAchievementsTypesLogin900EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLogin1000EnUs login1000_ = _StringsMisskeyAchievementsTypesLogin1000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNoteClipped1EnUs noteClipped1_ = _StringsMisskeyAchievementsTypesNoteClipped1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNoteFavorited1EnUs noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesProfileFilledEnUs profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesMarkedAsCatEnUs markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowing1EnUs following1_ = _StringsMisskeyAchievementsTypesFollowing1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowing10EnUs following10_ = _StringsMisskeyAchievementsTypesFollowing10EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowing50EnUs following50_ = _StringsMisskeyAchievementsTypesFollowing50EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowing100EnUs following100_ = _StringsMisskeyAchievementsTypesFollowing100EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowing300EnUs following300_ = _StringsMisskeyAchievementsTypesFollowing300EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers1EnUs followers1_ = _StringsMisskeyAchievementsTypesFollowers1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers10EnUs followers10_ = _StringsMisskeyAchievementsTypesFollowers10EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers50EnUs followers50_ = _StringsMisskeyAchievementsTypesFollowers50EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers100EnUs followers100_ = _StringsMisskeyAchievementsTypesFollowers100EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers300EnUs followers300_ = _StringsMisskeyAchievementsTypesFollowers300EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers500EnUs followers500_ = _StringsMisskeyAchievementsTypesFollowers500EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFollowers1000EnUs followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesCollectAchievements30EnUs collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesViewAchievements3minEnUs viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesILoveMisskeyEnUs iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesFoundTreasureEnUs foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesClient30minEnUs client30min_ = _StringsMisskeyAchievementsTypesClient30minEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesClient60minEnUs client60min_ = _StringsMisskeyAchievementsTypesClient60minEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesSelfQuoteEnUs selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesHtl20npmEnUs htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesViewInstanceChartEnUs viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesOpen3windowsEnUs open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs driveFolderCircularReference_ = _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesReactWithoutReadEnUs reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesClickedClickHereEnUs clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs passedSinceAccountCreated2_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs passedSinceAccountCreated3_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesCookieClickedEnUs cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesBrainDiverEnUs brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs smashTestNotificationButton_ = _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesTutorialCompletedEnUs tutorialCompleted_ = _StringsMisskeyAchievementsTypesTutorialCompletedEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs bubbleGameExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs._(_root);
-	late final _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs bubbleGameDoubleExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs._(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes1EnUs notes1_ = TranslationsMisskeyAchievementsTypesNotes1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes10EnUs notes10_ = TranslationsMisskeyAchievementsTypesNotes10EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes100EnUs notes100_ = TranslationsMisskeyAchievementsTypesNotes100EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes500EnUs notes500_ = TranslationsMisskeyAchievementsTypesNotes500EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes1000EnUs notes1000_ = TranslationsMisskeyAchievementsTypesNotes1000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes5000EnUs notes5000_ = TranslationsMisskeyAchievementsTypesNotes5000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes10000EnUs notes10000_ = TranslationsMisskeyAchievementsTypesNotes10000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes20000EnUs notes20000_ = TranslationsMisskeyAchievementsTypesNotes20000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes30000EnUs notes30000_ = TranslationsMisskeyAchievementsTypesNotes30000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes40000EnUs notes40000_ = TranslationsMisskeyAchievementsTypesNotes40000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes50000EnUs notes50000_ = TranslationsMisskeyAchievementsTypesNotes50000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes60000EnUs notes60000_ = TranslationsMisskeyAchievementsTypesNotes60000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes70000EnUs notes70000_ = TranslationsMisskeyAchievementsTypesNotes70000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes80000EnUs notes80000_ = TranslationsMisskeyAchievementsTypesNotes80000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes90000EnUs notes90000_ = TranslationsMisskeyAchievementsTypesNotes90000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNotes100000EnUs notes100000_ = TranslationsMisskeyAchievementsTypesNotes100000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin3EnUs login3_ = TranslationsMisskeyAchievementsTypesLogin3EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin7EnUs login7_ = TranslationsMisskeyAchievementsTypesLogin7EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin15EnUs login15_ = TranslationsMisskeyAchievementsTypesLogin15EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin30EnUs login30_ = TranslationsMisskeyAchievementsTypesLogin30EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin60EnUs login60_ = TranslationsMisskeyAchievementsTypesLogin60EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin100EnUs login100_ = TranslationsMisskeyAchievementsTypesLogin100EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin200EnUs login200_ = TranslationsMisskeyAchievementsTypesLogin200EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin300EnUs login300_ = TranslationsMisskeyAchievementsTypesLogin300EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin400EnUs login400_ = TranslationsMisskeyAchievementsTypesLogin400EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin500EnUs login500_ = TranslationsMisskeyAchievementsTypesLogin500EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin600EnUs login600_ = TranslationsMisskeyAchievementsTypesLogin600EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin700EnUs login700_ = TranslationsMisskeyAchievementsTypesLogin700EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin800EnUs login800_ = TranslationsMisskeyAchievementsTypesLogin800EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin900EnUs login900_ = TranslationsMisskeyAchievementsTypesLogin900EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLogin1000EnUs login1000_ = TranslationsMisskeyAchievementsTypesLogin1000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNoteClipped1EnUs noteClipped1_ = TranslationsMisskeyAchievementsTypesNoteClipped1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs noteFavorited1_ = TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs myNoteFavorited1_ = TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesProfileFilledEnUs profileFilled_ = TranslationsMisskeyAchievementsTypesProfileFilledEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs markedAsCat_ = TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowing1EnUs following1_ = TranslationsMisskeyAchievementsTypesFollowing1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowing10EnUs following10_ = TranslationsMisskeyAchievementsTypesFollowing10EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowing50EnUs following50_ = TranslationsMisskeyAchievementsTypesFollowing50EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowing100EnUs following100_ = TranslationsMisskeyAchievementsTypesFollowing100EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowing300EnUs following300_ = TranslationsMisskeyAchievementsTypesFollowing300EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers1EnUs followers1_ = TranslationsMisskeyAchievementsTypesFollowers1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers10EnUs followers10_ = TranslationsMisskeyAchievementsTypesFollowers10EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers50EnUs followers50_ = TranslationsMisskeyAchievementsTypesFollowers50EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers100EnUs followers100_ = TranslationsMisskeyAchievementsTypesFollowers100EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers300EnUs followers300_ = TranslationsMisskeyAchievementsTypesFollowers300EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers500EnUs followers500_ = TranslationsMisskeyAchievementsTypesFollowers500EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFollowers1000EnUs followers1000_ = TranslationsMisskeyAchievementsTypesFollowers1000EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs collectAchievements30_ = TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs viewAchievements3min_ = TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs iLoveMisskey_ = TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesFoundTreasureEnUs foundTreasure_ = TranslationsMisskeyAchievementsTypesFoundTreasureEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesClient30minEnUs client30min_ = TranslationsMisskeyAchievementsTypesClient30minEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesClient60minEnUs client60min_ = TranslationsMisskeyAchievementsTypesClient60minEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs noteDeletedWithin1min_ = TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs postedAtLateNight_ = TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs postedAt0min0sec_ = TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesSelfQuoteEnUs selfQuote_ = TranslationsMisskeyAchievementsTypesSelfQuoteEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesHtl20npmEnUs htl20npm_ = TranslationsMisskeyAchievementsTypesHtl20npmEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs viewInstanceChart_ = TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs outputHelloWorldOnScratchpad_ = TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesOpen3windowsEnUs open3windows_ = TranslationsMisskeyAchievementsTypesOpen3windowsEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs driveFolderCircularReference_ = TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs reactWithoutRead_ = TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesClickedClickHereEnUs clickedClickHere_ = TranslationsMisskeyAchievementsTypesClickedClickHereEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs justPlainLucky_ = TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs setNameToSyuilo_ = TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs passedSinceAccountCreated1_ = TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs passedSinceAccountCreated2_ = TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs passedSinceAccountCreated3_ = TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs loggedInOnBirthday_ = TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs loggedInOnNewYearsDay_ = TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesCookieClickedEnUs cookieClicked_ = TranslationsMisskeyAchievementsTypesCookieClickedEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesBrainDiverEnUs brainDiver_ = TranslationsMisskeyAchievementsTypesBrainDiverEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs smashTestNotificationButton_ = TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs tutorialCompleted_ = TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs bubbleGameExplodingHead_ = TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs.internal(_root);
+	late final TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs bubbleGameDoubleExplodingHead_ = TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs.internal(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityEnUs._(this._root);
+class TranslationsMisskeyRolePriorityEnUs {
+	TranslationsMisskeyRolePriorityEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3371,8 +3372,8 @@ class _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsEnUs._(this._root);
+class TranslationsMisskeyRoleOptionsEnUs {
+	TranslationsMisskeyRoleOptionsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3412,8 +3413,8 @@ class _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionEnUs._(this._root);
+class TranslationsMisskeyRoleConditionEnUs {
+	TranslationsMisskeyRoleConditionEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3440,8 +3441,8 @@ class _StringsMisskeyRoleConditionEnUs {
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowEnUs._(this._root);
+class TranslationsMisskeyEmailFollowEnUs {
+	TranslationsMisskeyEmailFollowEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3450,8 +3451,8 @@ class _StringsMisskeyEmailFollowEnUs {
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestEnUs._(this._root);
+class TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	TranslationsMisskeyEmailReceiveFollowRequestEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3460,8 +3461,8 @@ class _StringsMisskeyEmailReceiveFollowRequestEnUs {
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysEnUs._(this._root);
+class TranslationsMisskeyThemeKeysEnUs {
+	TranslationsMisskeyThemeKeysEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3508,8 +3509,8 @@ class _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListEnUs._(this._root);
+class TranslationsMisskeyWidgetsUserListEnUs {
+	TranslationsMisskeyWidgetsUserListEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3518,8 +3519,8 @@ class _StringsMisskeyWidgetsUserListEnUs {
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersEnUs._(this._root);
+class TranslationsMisskeyPostFormPlaceholdersEnUs {
+	TranslationsMisskeyPostFormPlaceholdersEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3533,8 +3534,8 @@ class _StringsMisskeyPostFormPlaceholdersEnUs {
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksEnUs._(this._root);
+class TranslationsMisskeyPagesBlocksEnUs {
+	TranslationsMisskeyPagesBlocksEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3547,12 +3548,12 @@ class _StringsMisskeyPagesBlocksEnUs {
 	String get dynamic => 'Dynamic Blocks';
 	String dynamicDescription({required Object play}) => 'This block has been abolished. Please use ${play} from now on.';
 	String get note => 'Embedded note';
-	late final _StringsMisskeyPagesBlocksNoteEnUs note_ = _StringsMisskeyPagesBlocksNoteEnUs._(_root);
+	late final TranslationsMisskeyPagesBlocksNoteEnUs note_ = TranslationsMisskeyPagesBlocksNoteEnUs.internal(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesEnUs._(this._root);
+class TranslationsMisskeyNotificationTypesEnUs {
+	TranslationsMisskeyNotificationTypesEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3577,8 +3578,8 @@ class _StringsMisskeyNotificationTypesEnUs {
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsEnUs._(this._root);
+class TranslationsMisskeyNotificationActionsEnUs {
+	TranslationsMisskeyNotificationActionsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3589,8 +3590,8 @@ class _StringsMisskeyNotificationActionsEnUs {
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsEnUs._(this._root);
+class TranslationsMisskeyDeckColumnsEnUs {
+	TranslationsMisskeyDeckColumnsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3608,8 +3609,8 @@ class _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsEnUs._(this._root);
+class TranslationsMisskeyWebhookSettingsEventsEnUs {
+	TranslationsMisskeyWebhookSettingsEventsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3624,8 +3625,8 @@ class _StringsMisskeyWebhookSettingsEventsEnUs {
 }
 
 // Path: misskey.webhookSettings_.systemEvents_
-class _StringsMisskeyWebhookSettingsSystemEventsEnUs {
-	_StringsMisskeyWebhookSettingsSystemEventsEnUs._(this._root);
+class TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
+	TranslationsMisskeyWebhookSettingsSystemEventsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3636,8 +3637,8 @@ class _StringsMisskeyWebhookSettingsSystemEventsEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientEnUs._(this._root);
+class TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	TranslationsMisskeyAbuseReportNotificationRecipientEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3645,7 +3646,7 @@ class _StringsMisskeyAbuseReportNotificationRecipientEnUs {
 	String get createRecipient => 'Add a recipient for reports';
 	String get modifyRecipient => 'Edit a recipient for reports';
 	String get recipientType => 'Notification type';
-	late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs._(_root);
+	late final TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs recipientType_ = TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs.internal(_root);
 	String get keywords => 'Keywords';
 	String get notifiedUser => 'Users to notify';
 	String get notifiedWebhook => 'Webhook to use';
@@ -3653,8 +3654,8 @@ class _StringsMisskeyAbuseReportNotificationRecipientEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
-class _StringsMisskeyExternalResourceInstallerPluginEnUs {
-	_StringsMisskeyExternalResourceInstallerPluginEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerPluginEnUs {
+	TranslationsMisskeyExternalResourceInstallerPluginEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3664,8 +3665,8 @@ class _StringsMisskeyExternalResourceInstallerPluginEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
-class _StringsMisskeyExternalResourceInstallerThemeEnUs {
-	_StringsMisskeyExternalResourceInstallerThemeEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerThemeEnUs {
+	TranslationsMisskeyExternalResourceInstallerThemeEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3675,8 +3676,8 @@ class _StringsMisskeyExternalResourceInstallerThemeEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
-class _StringsMisskeyExternalResourceInstallerMetaEnUs {
-	_StringsMisskeyExternalResourceInstallerMetaEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerMetaEnUs {
+	TranslationsMisskeyExternalResourceInstallerMetaEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3685,8 +3686,8 @@ class _StringsMisskeyExternalResourceInstallerMetaEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.vendorInfo_
-class _StringsMisskeyExternalResourceInstallerVendorInfoEnUs {
-	_StringsMisskeyExternalResourceInstallerVendorInfoEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs {
+	TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3697,25 +3698,25 @@ class _StringsMisskeyExternalResourceInstallerVendorInfoEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_
-class _StringsMisskeyExternalResourceInstallerErrorsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
-	late final _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs invalidParams_ = _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs resourceTypeNotSupported_ = _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs failedToFetch_ = _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs hashUnmatched_ = _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs pluginParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs pluginInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs themeParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs._(_root);
-	late final _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs themeInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs._(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs invalidParams_ = TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs resourceTypeNotSupported_ = TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs failedToFetch_ = TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs hashUnmatched_ = TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs pluginParseFailed_ = TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs pluginInstallFailed_ = TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs themeParseFailed_ = TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs.internal(_root);
+	late final TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs themeInstallFailed_ = TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs.internal(_root);
 }
 
 // Path: misskey.dataSaver_.media_
-class _StringsMisskeyDataSaverMediaEnUs {
-	_StringsMisskeyDataSaverMediaEnUs._(this._root);
+class TranslationsMisskeyDataSaverMediaEnUs {
+	TranslationsMisskeyDataSaverMediaEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3725,8 +3726,8 @@ class _StringsMisskeyDataSaverMediaEnUs {
 }
 
 // Path: misskey.dataSaver_.avatar_
-class _StringsMisskeyDataSaverAvatarEnUs {
-	_StringsMisskeyDataSaverAvatarEnUs._(this._root);
+class TranslationsMisskeyDataSaverAvatarEnUs {
+	TranslationsMisskeyDataSaverAvatarEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3736,8 +3737,8 @@ class _StringsMisskeyDataSaverAvatarEnUs {
 }
 
 // Path: misskey.dataSaver_.urlPreview_
-class _StringsMisskeyDataSaverUrlPreviewEnUs {
-	_StringsMisskeyDataSaverUrlPreviewEnUs._(this._root);
+class TranslationsMisskeyDataSaverUrlPreviewEnUs {
+	TranslationsMisskeyDataSaverUrlPreviewEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3747,8 +3748,8 @@ class _StringsMisskeyDataSaverUrlPreviewEnUs {
 }
 
 // Path: misskey.dataSaver_.code_
-class _StringsMisskeyDataSaverCodeEnUs {
-	_StringsMisskeyDataSaverCodeEnUs._(this._root);
+class TranslationsMisskeyDataSaverCodeEnUs {
+	TranslationsMisskeyDataSaverCodeEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3758,8 +3759,8 @@ class _StringsMisskeyDataSaverCodeEnUs {
 }
 
 // Path: misskeyIO.skebStatus_.genres_
-class _StringsMisskeyIOSkebStatusGenresEnUs {
-	_StringsMisskeyIOSkebStatusGenresEnUs._(this._root);
+class TranslationsMisskeyIOSkebStatusGenresEnUs {
+	TranslationsMisskeyIOSkebStatusGenresEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3774,8 +3775,8 @@ class _StringsMisskeyIOSkebStatusGenresEnUs {
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_StringsMisskeyInitialTutorialPostNoteVisibilityEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
+	TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3791,21 +3792,21 @@ class _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs {
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
-class _StringsMisskeyInitialTutorialPostNoteCwEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialPostNoteCwEnUs {
+	TranslationsMisskeyInitialTutorialPostNoteCwEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get title => 'Content Warning';
 	String get description => 'Instead of the body, the content written in \'comments\' field will be displayed. Pressing "read more" will reveal the body.';
-	late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs._(_root);
+	late final TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs exampleNote_ = TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs.internal(_root);
 	String get useCases => 'This is used when following the server guidelines, for necessary notes, or for self-restriction of spoiler or sensitive text.';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3814,8 +3815,8 @@ class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	TranslationsMisskeyAchievementsTypesNotes1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3826,8 +3827,8 @@ class _StringsMisskeyAchievementsTypesNotes1EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	TranslationsMisskeyAchievementsTypesNotes10EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3837,8 +3838,8 @@ class _StringsMisskeyAchievementsTypesNotes10EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	TranslationsMisskeyAchievementsTypesNotes100EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3848,8 +3849,8 @@ class _StringsMisskeyAchievementsTypesNotes100EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	TranslationsMisskeyAchievementsTypesNotes500EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3859,8 +3860,8 @@ class _StringsMisskeyAchievementsTypesNotes500EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes1000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3870,8 +3871,8 @@ class _StringsMisskeyAchievementsTypesNotes1000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes5000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3881,8 +3882,8 @@ class _StringsMisskeyAchievementsTypesNotes5000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes10000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3892,8 +3893,8 @@ class _StringsMisskeyAchievementsTypesNotes10000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes20000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3903,8 +3904,8 @@ class _StringsMisskeyAchievementsTypesNotes20000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes30000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3914,8 +3915,8 @@ class _StringsMisskeyAchievementsTypesNotes30000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes40000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3925,8 +3926,8 @@ class _StringsMisskeyAchievementsTypesNotes40000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes50000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3936,8 +3937,8 @@ class _StringsMisskeyAchievementsTypesNotes50000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes60000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3947,8 +3948,8 @@ class _StringsMisskeyAchievementsTypesNotes60000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes70000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3958,8 +3959,8 @@ class _StringsMisskeyAchievementsTypesNotes70000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes80000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3969,8 +3970,8 @@ class _StringsMisskeyAchievementsTypesNotes80000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes90000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3980,8 +3981,8 @@ class _StringsMisskeyAchievementsTypesNotes90000EnUs {
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	TranslationsMisskeyAchievementsTypesNotes100000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -3992,8 +3993,8 @@ class _StringsMisskeyAchievementsTypesNotes100000EnUs {
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	TranslationsMisskeyAchievementsTypesLogin3EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4004,8 +4005,8 @@ class _StringsMisskeyAchievementsTypesLogin3EnUs {
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	TranslationsMisskeyAchievementsTypesLogin7EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4016,8 +4017,8 @@ class _StringsMisskeyAchievementsTypesLogin7EnUs {
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	TranslationsMisskeyAchievementsTypesLogin15EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4027,8 +4028,8 @@ class _StringsMisskeyAchievementsTypesLogin15EnUs {
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	TranslationsMisskeyAchievementsTypesLogin30EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4038,8 +4039,8 @@ class _StringsMisskeyAchievementsTypesLogin30EnUs {
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	TranslationsMisskeyAchievementsTypesLogin60EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4049,8 +4050,8 @@ class _StringsMisskeyAchievementsTypesLogin60EnUs {
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	TranslationsMisskeyAchievementsTypesLogin100EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4061,8 +4062,8 @@ class _StringsMisskeyAchievementsTypesLogin100EnUs {
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	TranslationsMisskeyAchievementsTypesLogin200EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4072,8 +4073,8 @@ class _StringsMisskeyAchievementsTypesLogin200EnUs {
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	TranslationsMisskeyAchievementsTypesLogin300EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4083,8 +4084,8 @@ class _StringsMisskeyAchievementsTypesLogin300EnUs {
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	TranslationsMisskeyAchievementsTypesLogin400EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4094,8 +4095,8 @@ class _StringsMisskeyAchievementsTypesLogin400EnUs {
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _StringsMisskeyAchievementsTypesLogin500EnUs {
-	_StringsMisskeyAchievementsTypesLogin500EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin500EnUs {
+	TranslationsMisskeyAchievementsTypesLogin500EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4106,8 +4107,8 @@ class _StringsMisskeyAchievementsTypesLogin500EnUs {
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _StringsMisskeyAchievementsTypesLogin600EnUs {
-	_StringsMisskeyAchievementsTypesLogin600EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin600EnUs {
+	TranslationsMisskeyAchievementsTypesLogin600EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4117,8 +4118,8 @@ class _StringsMisskeyAchievementsTypesLogin600EnUs {
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _StringsMisskeyAchievementsTypesLogin700EnUs {
-	_StringsMisskeyAchievementsTypesLogin700EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin700EnUs {
+	TranslationsMisskeyAchievementsTypesLogin700EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4128,8 +4129,8 @@ class _StringsMisskeyAchievementsTypesLogin700EnUs {
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _StringsMisskeyAchievementsTypesLogin800EnUs {
-	_StringsMisskeyAchievementsTypesLogin800EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin800EnUs {
+	TranslationsMisskeyAchievementsTypesLogin800EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4139,8 +4140,8 @@ class _StringsMisskeyAchievementsTypesLogin800EnUs {
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _StringsMisskeyAchievementsTypesLogin900EnUs {
-	_StringsMisskeyAchievementsTypesLogin900EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin900EnUs {
+	TranslationsMisskeyAchievementsTypesLogin900EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4150,8 +4151,8 @@ class _StringsMisskeyAchievementsTypesLogin900EnUs {
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	TranslationsMisskeyAchievementsTypesLogin1000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4162,8 +4163,8 @@ class _StringsMisskeyAchievementsTypesLogin1000EnUs {
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_StringsMisskeyAchievementsTypesNoteClipped1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	TranslationsMisskeyAchievementsTypesNoteClipped1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4173,8 +4174,8 @@ class _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4184,8 +4185,8 @@ class _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4195,8 +4196,8 @@ class _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	TranslationsMisskeyAchievementsTypesProfileFilledEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4206,8 +4207,8 @@ class _StringsMisskeyAchievementsTypesProfileFilledEnUs {
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4218,8 +4219,8 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	TranslationsMisskeyAchievementsTypesFollowing1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4229,8 +4230,8 @@ class _StringsMisskeyAchievementsTypesFollowing1EnUs {
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	TranslationsMisskeyAchievementsTypesFollowing10EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4240,8 +4241,8 @@ class _StringsMisskeyAchievementsTypesFollowing10EnUs {
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	TranslationsMisskeyAchievementsTypesFollowing50EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4251,8 +4252,8 @@ class _StringsMisskeyAchievementsTypesFollowing50EnUs {
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	TranslationsMisskeyAchievementsTypesFollowing100EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4262,8 +4263,8 @@ class _StringsMisskeyAchievementsTypesFollowing100EnUs {
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	TranslationsMisskeyAchievementsTypesFollowing300EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4273,8 +4274,8 @@ class _StringsMisskeyAchievementsTypesFollowing300EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4284,8 +4285,8 @@ class _StringsMisskeyAchievementsTypesFollowers1EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers10EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4295,8 +4296,8 @@ class _StringsMisskeyAchievementsTypesFollowers10EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers50EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4306,8 +4307,8 @@ class _StringsMisskeyAchievementsTypesFollowers50EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers100EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4317,8 +4318,8 @@ class _StringsMisskeyAchievementsTypesFollowers100EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers300EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4328,8 +4329,8 @@ class _StringsMisskeyAchievementsTypesFollowers300EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers500EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4339,8 +4340,8 @@ class _StringsMisskeyAchievementsTypesFollowers500EnUs {
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	TranslationsMisskeyAchievementsTypesFollowers1000EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4350,8 +4351,8 @@ class _StringsMisskeyAchievementsTypesFollowers1000EnUs {
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4361,8 +4362,8 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4372,8 +4373,8 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4384,8 +4385,8 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	TranslationsMisskeyAchievementsTypesFoundTreasureEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4395,8 +4396,8 @@ class _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	TranslationsMisskeyAchievementsTypesClient30minEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4406,8 +4407,8 @@ class _StringsMisskeyAchievementsTypesClient30minEnUs {
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _StringsMisskeyAchievementsTypesClient60minEnUs {
-	_StringsMisskeyAchievementsTypesClient60minEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesClient60minEnUs {
+	TranslationsMisskeyAchievementsTypesClient60minEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4417,8 +4418,8 @@ class _StringsMisskeyAchievementsTypesClient60minEnUs {
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4428,8 +4429,8 @@ class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4440,8 +4441,8 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4452,8 +4453,8 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	TranslationsMisskeyAchievementsTypesSelfQuoteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4463,8 +4464,8 @@ class _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	TranslationsMisskeyAchievementsTypesHtl20npmEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4474,8 +4475,8 @@ class _StringsMisskeyAchievementsTypesHtl20npmEnUs {
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4485,8 +4486,8 @@ class _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4496,8 +4497,8 @@ class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	TranslationsMisskeyAchievementsTypesOpen3windowsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4507,8 +4508,8 @@ class _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
-class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
-	_StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
+	TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4518,8 +4519,8 @@ class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4529,8 +4530,8 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	TranslationsMisskeyAchievementsTypesClickedClickHereEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4540,8 +4541,8 @@ class _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4551,8 +4552,8 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4562,8 +4563,8 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4573,8 +4574,8 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
+	TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4584,8 +4585,8 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
+	TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4595,8 +4596,8 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4606,8 +4607,8 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4618,8 +4619,8 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	TranslationsMisskeyAchievementsTypesCookieClickedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4630,8 +4631,8 @@ class _StringsMisskeyAchievementsTypesCookieClickedEnUs {
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _StringsMisskeyAchievementsTypesBrainDiverEnUs {
-	_StringsMisskeyAchievementsTypesBrainDiverEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
+	TranslationsMisskeyAchievementsTypesBrainDiverEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4642,8 +4643,8 @@ class _StringsMisskeyAchievementsTypesBrainDiverEnUs {
 }
 
 // Path: misskey.achievements_.types_.smashTestNotificationButton_
-class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
-	_StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
+	TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4653,8 +4654,8 @@ class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
-class _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
-	_StringsMisskeyAchievementsTypesTutorialCompletedEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs {
+	TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4664,8 +4665,8 @@ class _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
 }
 
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4675,8 +4676,8 @@ class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs._(this._root);
+class TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4687,8 +4688,8 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteEnUs._(this._root);
+class TranslationsMisskeyPagesBlocksNoteEnUs {
+	TranslationsMisskeyPagesBlocksNoteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4699,20 +4700,20 @@ class _StringsMisskeyPagesBlocksNoteEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs._(this._root);
+class TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
 	// Translations
 	String get mail => 'Email';
 	String get webhook => 'Webhook';
-	late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs._(_root);
+	late final TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs captions_ = TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs.internal(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
-class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4722,8 +4723,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
-class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4733,8 +4734,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
-class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4745,8 +4746,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
-class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4756,8 +4757,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4767,8 +4768,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4778,8 +4779,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4789,8 +4790,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs._(this._root);
+class TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
+	TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4800,8 +4801,8 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
-class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs._(this._root);
+class TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
+	TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 
@@ -4811,8 +4812,8 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs._(this._root);
+class TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs.internal(this._root);
 
 	final Translations _root; // ignore: unused_field
 

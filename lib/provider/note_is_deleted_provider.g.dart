@@ -6,7 +6,7 @@ part of 'note_is_deleted_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteIsDeletedHash() => r'3a3589cbe9e6b2310a2d17abd67c60f654229744';
+String _$noteIsDeletedHash() => r'cfdc143508dd237b20d034aa4cbce48bf33cf6d8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,6 +154,8 @@ class NoteIsDeletedProvider extends AutoDisposeProvider<bool> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin NoteIsDeletedRef on AutoDisposeProviderRef<bool> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -172,4 +174,4 @@ class _NoteIsDeletedProviderElement extends AutoDisposeProviderElement<bool>
   String get noteId => (origin as NoteIsDeletedProvider).noteId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

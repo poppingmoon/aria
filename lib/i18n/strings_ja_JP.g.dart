@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsJaJp extends Translations {
+class TranslationsJaJp extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsJaJp.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsJaJp({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.jaJp,
@@ -18,24 +21,24 @@ class _StringsJaJp extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ja-JP>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsJaJp _root = this; // ignore: unused_field
+	late final TranslationsJaJp _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaJaJp aria = _StringsAriaJaJp._(_root);
-	@override late final _StringsMisskeyJaJp misskey = _StringsMisskeyJaJp._(_root);
-	@override late final _StringsMisskeyIOJaJp misskeyIO = _StringsMisskeyIOJaJp._(_root);
+	@override late final _TranslationsAriaJaJp aria = _TranslationsAriaJaJp._(_root);
+	@override late final _TranslationsMisskeyJaJp misskey = _TranslationsMisskeyJaJp._(_root);
+	@override late final _TranslationsMisskeyIOJaJp misskeyIO = _TranslationsMisskeyIOJaJp._(_root);
 }
 
 // Path: aria
-class _StringsAriaJaJp extends _StringsAriaEnUs {
-	_StringsAriaJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
+	_TranslationsAriaJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get aboutAria => 'Ariaについて';
@@ -209,6 +212,7 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 	@override String get showStackTrace => 'スタックトレースを表示';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示する';
 	@override String get showSubNoteReactionsViewer => 'サブノートにリアクションを表示する';
+	@override String get showTabHeaderInOneLine => 'タブの情報を1行で表示する';
 	@override String get showTimelineLastViewedAt => 'タイムラインを最後に見た日時を表示する';
 	@override String get showTimelineTabBarAtBottom => 'タイムラインのタブバーを下に表示する';
 	@override String get showTranslateButtonInNoteFooter => 'ノートのアクションに翻訳を追加';
@@ -242,10 +246,10 @@ class _StringsAriaJaJp extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
-	_StringsMisskeyJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => '日本語';
@@ -1536,97 +1540,97 @@ class _StringsMisskeyJaJp extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'パスキーの検証に成功しましたが、パスワードレスログインが無効になっています。';
 	@override String get messageToFollower => 'フォロワーへのメッセージ';
 	@override String get target => '対象';
-	@override late final _StringsMisskeyAbuseUserReportJaJp abuseUserReport_ = _StringsMisskeyAbuseUserReportJaJp._(_root);
-	@override late final _StringsMisskeyDeliveryJaJp delivery_ = _StringsMisskeyDeliveryJaJp._(_root);
-	@override late final _StringsMisskeyBubbleGameJaJp bubbleGame_ = _StringsMisskeyBubbleGameJaJp._(_root);
-	@override late final _StringsMisskeyAnnouncementJaJp announcement_ = _StringsMisskeyAnnouncementJaJp._(_root);
-	@override late final _StringsMisskeyInitialAccountSettingJaJp initialAccountSetting_ = _StringsMisskeyInitialAccountSettingJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialJaJp initialTutorial_ = _StringsMisskeyInitialTutorialJaJp._(_root);
-	@override late final _StringsMisskeyTimelineDescriptionJaJp timelineDescription_ = _StringsMisskeyTimelineDescriptionJaJp._(_root);
-	@override late final _StringsMisskeyServerRulesJaJp serverRules_ = _StringsMisskeyServerRulesJaJp._(_root);
-	@override late final _StringsMisskeyServerSettingsJaJp serverSettings_ = _StringsMisskeyServerSettingsJaJp._(_root);
-	@override late final _StringsMisskeyAccountMigrationJaJp accountMigration_ = _StringsMisskeyAccountMigrationJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsJaJp achievements_ = _StringsMisskeyAchievementsJaJp._(_root);
-	@override late final _StringsMisskeyRoleJaJp role_ = _StringsMisskeyRoleJaJp._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionJaJp sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionJaJp._(_root);
-	@override late final _StringsMisskeyEmailUnavailableJaJp emailUnavailable_ = _StringsMisskeyEmailUnavailableJaJp._(_root);
-	@override late final _StringsMisskeyFfVisibilityJaJp ffVisibility_ = _StringsMisskeyFfVisibilityJaJp._(_root);
-	@override late final _StringsMisskeySignupJaJp signup_ = _StringsMisskeySignupJaJp._(_root);
-	@override late final _StringsMisskeyAccountDeleteJaJp accountDelete_ = _StringsMisskeyAccountDeleteJaJp._(_root);
-	@override late final _StringsMisskeyAdJaJp ad_ = _StringsMisskeyAdJaJp._(_root);
-	@override late final _StringsMisskeyForgotPasswordJaJp forgotPassword_ = _StringsMisskeyForgotPasswordJaJp._(_root);
-	@override late final _StringsMisskeyGalleryJaJp gallery_ = _StringsMisskeyGalleryJaJp._(_root);
-	@override late final _StringsMisskeyEmailJaJp email_ = _StringsMisskeyEmailJaJp._(_root);
-	@override late final _StringsMisskeyPluginJaJp plugin_ = _StringsMisskeyPluginJaJp._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsJaJp preferencesBackups_ = _StringsMisskeyPreferencesBackupsJaJp._(_root);
-	@override late final _StringsMisskeyRegistryJaJp registry_ = _StringsMisskeyRegistryJaJp._(_root);
-	@override late final _StringsMisskeyAboutMisskeyJaJp aboutMisskey_ = _StringsMisskeyAboutMisskeyJaJp._(_root);
-	@override late final _StringsMisskeyDisplayOfSensitiveMediaJaJp displayOfSensitiveMedia_ = _StringsMisskeyDisplayOfSensitiveMediaJaJp._(_root);
-	@override late final _StringsMisskeyInstanceTickerJaJp instanceTicker_ = _StringsMisskeyInstanceTickerJaJp._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorJaJp serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorJaJp._(_root);
-	@override late final _StringsMisskeyChannelJaJp channel_ = _StringsMisskeyChannelJaJp._(_root);
-	@override late final _StringsMisskeyMenuDisplayJaJp menuDisplay_ = _StringsMisskeyMenuDisplayJaJp._(_root);
-	@override late final _StringsMisskeyWordMuteJaJp wordMute_ = _StringsMisskeyWordMuteJaJp._(_root);
-	@override late final _StringsMisskeyInstanceMuteJaJp instanceMute_ = _StringsMisskeyInstanceMuteJaJp._(_root);
-	@override late final _StringsMisskeyThemeJaJp theme_ = _StringsMisskeyThemeJaJp._(_root);
-	@override late final _StringsMisskeySfxJaJp sfx_ = _StringsMisskeySfxJaJp._(_root);
-	@override late final _StringsMisskeySoundSettingsJaJp soundSettings_ = _StringsMisskeySoundSettingsJaJp._(_root);
-	@override late final _StringsMisskeyAgoJaJp ago_ = _StringsMisskeyAgoJaJp._(_root);
-	@override late final _StringsMisskeyTimeInJaJp timeIn_ = _StringsMisskeyTimeInJaJp._(_root);
-	@override late final _StringsMisskeyTimeJaJp time_ = _StringsMisskeyTimeJaJp._(_root);
-	@override late final _StringsMisskeyX2faJaJp x2fa_ = _StringsMisskeyX2faJaJp._(_root);
-	@override late final _StringsMisskeyPermissionsJaJp permissions_ = _StringsMisskeyPermissionsJaJp._(_root);
-	@override late final _StringsMisskeyAuthJaJp auth_ = _StringsMisskeyAuthJaJp._(_root);
-	@override late final _StringsMisskeyAntennaSourcesJaJp antennaSources_ = _StringsMisskeyAntennaSourcesJaJp._(_root);
-	@override late final _StringsMisskeyWeekdayJaJp weekday_ = _StringsMisskeyWeekdayJaJp._(_root);
-	@override late final _StringsMisskeyWidgetsJaJp widgets_ = _StringsMisskeyWidgetsJaJp._(_root);
-	@override late final _StringsMisskeyCwJaJp cw_ = _StringsMisskeyCwJaJp._(_root);
-	@override late final _StringsMisskeyPollJaJp poll_ = _StringsMisskeyPollJaJp._(_root);
-	@override late final _StringsMisskeyVisibilityJaJp visibility_ = _StringsMisskeyVisibilityJaJp._(_root);
-	@override late final _StringsMisskeyPostFormJaJp postForm_ = _StringsMisskeyPostFormJaJp._(_root);
-	@override late final _StringsMisskeyProfileJaJp profile_ = _StringsMisskeyProfileJaJp._(_root);
-	@override late final _StringsMisskeyExportOrImportJaJp exportOrImport_ = _StringsMisskeyExportOrImportJaJp._(_root);
-	@override late final _StringsMisskeyChartsJaJp charts_ = _StringsMisskeyChartsJaJp._(_root);
-	@override late final _StringsMisskeyInstanceChartsJaJp instanceCharts_ = _StringsMisskeyInstanceChartsJaJp._(_root);
-	@override late final _StringsMisskeyTimelinesJaJp timelines_ = _StringsMisskeyTimelinesJaJp._(_root);
-	@override late final _StringsMisskeyPlayJaJp play_ = _StringsMisskeyPlayJaJp._(_root);
-	@override late final _StringsMisskeyPagesJaJp pages_ = _StringsMisskeyPagesJaJp._(_root);
-	@override late final _StringsMisskeyRelayStatusJaJp relayStatus_ = _StringsMisskeyRelayStatusJaJp._(_root);
-	@override late final _StringsMisskeyNotificationJaJp notification_ = _StringsMisskeyNotificationJaJp._(_root);
-	@override late final _StringsMisskeyDeckJaJp deck_ = _StringsMisskeyDeckJaJp._(_root);
-	@override late final _StringsMisskeyDialogJaJp dialog_ = _StringsMisskeyDialogJaJp._(_root);
-	@override late final _StringsMisskeyDisabledTimelineJaJp disabledTimeline_ = _StringsMisskeyDisabledTimelineJaJp._(_root);
-	@override late final _StringsMisskeyDrivecleanerJaJp drivecleaner_ = _StringsMisskeyDrivecleanerJaJp._(_root);
-	@override late final _StringsMisskeyWebhookSettingsJaJp webhookSettings_ = _StringsMisskeyWebhookSettingsJaJp._(_root);
-	@override late final _StringsMisskeyAbuseReportJaJp abuseReport_ = _StringsMisskeyAbuseReportJaJp._(_root);
-	@override late final _StringsMisskeyModerationLogTypesJaJp moderationLogTypes_ = _StringsMisskeyModerationLogTypesJaJp._(_root);
-	@override late final _StringsMisskeyFileViewerJaJp fileViewer_ = _StringsMisskeyFileViewerJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerJaJp externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerJaJp._(_root);
-	@override late final _StringsMisskeyDataSaverJaJp dataSaver_ = _StringsMisskeyDataSaverJaJp._(_root);
-	@override late final _StringsMisskeyHemisphereJaJp hemisphere_ = _StringsMisskeyHemisphereJaJp._(_root);
-	@override late final _StringsMisskeyReversiJaJp reversi_ = _StringsMisskeyReversiJaJp._(_root);
-	@override late final _StringsMisskeyOfflineScreenJaJp offlineScreen_ = _StringsMisskeyOfflineScreenJaJp._(_root);
-	@override late final _StringsMisskeyUrlPreviewSettingJaJp urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingJaJp._(_root);
-	@override late final _StringsMisskeyMediaControlsJaJp mediaControls_ = _StringsMisskeyMediaControlsJaJp._(_root);
-	@override late final _StringsMisskeyContextMenuJaJp contextMenu_ = _StringsMisskeyContextMenuJaJp._(_root);
-	@override late final _StringsMisskeyEmbedCodeGenJaJp embedCodeGen_ = _StringsMisskeyEmbedCodeGenJaJp._(_root);
+	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
+	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
+	@override late final _TranslationsMisskeyBubbleGameJaJp bubbleGame_ = _TranslationsMisskeyBubbleGameJaJp._(_root);
+	@override late final _TranslationsMisskeyAnnouncementJaJp announcement_ = _TranslationsMisskeyAnnouncementJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingJaJp initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialJaJp initialTutorial_ = _TranslationsMisskeyInitialTutorialJaJp._(_root);
+	@override late final _TranslationsMisskeyTimelineDescriptionJaJp timelineDescription_ = _TranslationsMisskeyTimelineDescriptionJaJp._(_root);
+	@override late final _TranslationsMisskeyServerRulesJaJp serverRules_ = _TranslationsMisskeyServerRulesJaJp._(_root);
+	@override late final _TranslationsMisskeyServerSettingsJaJp serverSettings_ = _TranslationsMisskeyServerSettingsJaJp._(_root);
+	@override late final _TranslationsMisskeyAccountMigrationJaJp accountMigration_ = _TranslationsMisskeyAccountMigrationJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsJaJp achievements_ = _TranslationsMisskeyAchievementsJaJp._(_root);
+	@override late final _TranslationsMisskeyRoleJaJp role_ = _TranslationsMisskeyRoleJaJp._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionJaJp sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionJaJp._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableJaJp emailUnavailable_ = _TranslationsMisskeyEmailUnavailableJaJp._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityJaJp ffVisibility_ = _TranslationsMisskeyFfVisibilityJaJp._(_root);
+	@override late final _TranslationsMisskeySignupJaJp signup_ = _TranslationsMisskeySignupJaJp._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteJaJp accountDelete_ = _TranslationsMisskeyAccountDeleteJaJp._(_root);
+	@override late final _TranslationsMisskeyAdJaJp ad_ = _TranslationsMisskeyAdJaJp._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordJaJp forgotPassword_ = _TranslationsMisskeyForgotPasswordJaJp._(_root);
+	@override late final _TranslationsMisskeyGalleryJaJp gallery_ = _TranslationsMisskeyGalleryJaJp._(_root);
+	@override late final _TranslationsMisskeyEmailJaJp email_ = _TranslationsMisskeyEmailJaJp._(_root);
+	@override late final _TranslationsMisskeyPluginJaJp plugin_ = _TranslationsMisskeyPluginJaJp._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsJaJp preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsJaJp._(_root);
+	@override late final _TranslationsMisskeyRegistryJaJp registry_ = _TranslationsMisskeyRegistryJaJp._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyJaJp aboutMisskey_ = _TranslationsMisskeyAboutMisskeyJaJp._(_root);
+	@override late final _TranslationsMisskeyDisplayOfSensitiveMediaJaJp displayOfSensitiveMedia_ = _TranslationsMisskeyDisplayOfSensitiveMediaJaJp._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerJaJp instanceTicker_ = _TranslationsMisskeyInstanceTickerJaJp._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorJaJp serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorJaJp._(_root);
+	@override late final _TranslationsMisskeyChannelJaJp channel_ = _TranslationsMisskeyChannelJaJp._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayJaJp menuDisplay_ = _TranslationsMisskeyMenuDisplayJaJp._(_root);
+	@override late final _TranslationsMisskeyWordMuteJaJp wordMute_ = _TranslationsMisskeyWordMuteJaJp._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteJaJp instanceMute_ = _TranslationsMisskeyInstanceMuteJaJp._(_root);
+	@override late final _TranslationsMisskeyThemeJaJp theme_ = _TranslationsMisskeyThemeJaJp._(_root);
+	@override late final _TranslationsMisskeySfxJaJp sfx_ = _TranslationsMisskeySfxJaJp._(_root);
+	@override late final _TranslationsMisskeySoundSettingsJaJp soundSettings_ = _TranslationsMisskeySoundSettingsJaJp._(_root);
+	@override late final _TranslationsMisskeyAgoJaJp ago_ = _TranslationsMisskeyAgoJaJp._(_root);
+	@override late final _TranslationsMisskeyTimeInJaJp timeIn_ = _TranslationsMisskeyTimeInJaJp._(_root);
+	@override late final _TranslationsMisskeyTimeJaJp time_ = _TranslationsMisskeyTimeJaJp._(_root);
+	@override late final _TranslationsMisskeyX2faJaJp x2fa_ = _TranslationsMisskeyX2faJaJp._(_root);
+	@override late final _TranslationsMisskeyPermissionsJaJp permissions_ = _TranslationsMisskeyPermissionsJaJp._(_root);
+	@override late final _TranslationsMisskeyAuthJaJp auth_ = _TranslationsMisskeyAuthJaJp._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesJaJp antennaSources_ = _TranslationsMisskeyAntennaSourcesJaJp._(_root);
+	@override late final _TranslationsMisskeyWeekdayJaJp weekday_ = _TranslationsMisskeyWeekdayJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetsJaJp widgets_ = _TranslationsMisskeyWidgetsJaJp._(_root);
+	@override late final _TranslationsMisskeyCwJaJp cw_ = _TranslationsMisskeyCwJaJp._(_root);
+	@override late final _TranslationsMisskeyPollJaJp poll_ = _TranslationsMisskeyPollJaJp._(_root);
+	@override late final _TranslationsMisskeyVisibilityJaJp visibility_ = _TranslationsMisskeyVisibilityJaJp._(_root);
+	@override late final _TranslationsMisskeyPostFormJaJp postForm_ = _TranslationsMisskeyPostFormJaJp._(_root);
+	@override late final _TranslationsMisskeyProfileJaJp profile_ = _TranslationsMisskeyProfileJaJp._(_root);
+	@override late final _TranslationsMisskeyExportOrImportJaJp exportOrImport_ = _TranslationsMisskeyExportOrImportJaJp._(_root);
+	@override late final _TranslationsMisskeyChartsJaJp charts_ = _TranslationsMisskeyChartsJaJp._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsJaJp instanceCharts_ = _TranslationsMisskeyInstanceChartsJaJp._(_root);
+	@override late final _TranslationsMisskeyTimelinesJaJp timelines_ = _TranslationsMisskeyTimelinesJaJp._(_root);
+	@override late final _TranslationsMisskeyPlayJaJp play_ = _TranslationsMisskeyPlayJaJp._(_root);
+	@override late final _TranslationsMisskeyPagesJaJp pages_ = _TranslationsMisskeyPagesJaJp._(_root);
+	@override late final _TranslationsMisskeyRelayStatusJaJp relayStatus_ = _TranslationsMisskeyRelayStatusJaJp._(_root);
+	@override late final _TranslationsMisskeyNotificationJaJp notification_ = _TranslationsMisskeyNotificationJaJp._(_root);
+	@override late final _TranslationsMisskeyDeckJaJp deck_ = _TranslationsMisskeyDeckJaJp._(_root);
+	@override late final _TranslationsMisskeyDialogJaJp dialog_ = _TranslationsMisskeyDialogJaJp._(_root);
+	@override late final _TranslationsMisskeyDisabledTimelineJaJp disabledTimeline_ = _TranslationsMisskeyDisabledTimelineJaJp._(_root);
+	@override late final _TranslationsMisskeyDrivecleanerJaJp drivecleaner_ = _TranslationsMisskeyDrivecleanerJaJp._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsJaJp webhookSettings_ = _TranslationsMisskeyWebhookSettingsJaJp._(_root);
+	@override late final _TranslationsMisskeyAbuseReportJaJp abuseReport_ = _TranslationsMisskeyAbuseReportJaJp._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesJaJp moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesJaJp._(_root);
+	@override late final _TranslationsMisskeyFileViewerJaJp fileViewer_ = _TranslationsMisskeyFileViewerJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerJaJp externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerJaJp._(_root);
+	@override late final _TranslationsMisskeyDataSaverJaJp dataSaver_ = _TranslationsMisskeyDataSaverJaJp._(_root);
+	@override late final _TranslationsMisskeyHemisphereJaJp hemisphere_ = _TranslationsMisskeyHemisphereJaJp._(_root);
+	@override late final _TranslationsMisskeyReversiJaJp reversi_ = _TranslationsMisskeyReversiJaJp._(_root);
+	@override late final _TranslationsMisskeyOfflineScreenJaJp offlineScreen_ = _TranslationsMisskeyOfflineScreenJaJp._(_root);
+	@override late final _TranslationsMisskeyUrlPreviewSettingJaJp urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingJaJp._(_root);
+	@override late final _TranslationsMisskeyMediaControlsJaJp mediaControls_ = _TranslationsMisskeyMediaControlsJaJp._(_root);
+	@override late final _TranslationsMisskeyContextMenuJaJp contextMenu_ = _TranslationsMisskeyContextMenuJaJp._(_root);
+	@override late final _TranslationsMisskeyEmbedCodeGenJaJp embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenJaJp._(_root);
 }
 
 // Path: misskeyIO
-class _StringsMisskeyIOJaJp extends _StringsMisskeyIOEnUs {
-	_StringsMisskeyIOJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyIOJaJp extends TranslationsMisskeyIOEnUs {
+	_TranslationsMisskeyIOJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyIOSkebStatusJaJp skebStatus_ = _StringsMisskeyIOSkebStatusJaJp._(_root);
+	@override late final _TranslationsMisskeyIOSkebStatusJaJp skebStatus_ = _TranslationsMisskeyIOSkebStatusJaJp._(_root);
 }
 
 // Path: misskey.abuseUserReport_
-class _StringsMisskeyAbuseUserReportJaJp extends _StringsMisskeyAbuseUserReportEnUs {
-	_StringsMisskeyAbuseUserReportJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseUserReportJaJp extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get forward => '転送';
@@ -1638,36 +1642,36 @@ class _StringsMisskeyAbuseUserReportJaJp extends _StringsMisskeyAbuseUserReportE
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryJaJp extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryJaJp extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get status => '配信状態';
 	@override String get stop => '配信停止';
 	@override String get resume => '配信再開';
-	@override late final _StringsMisskeyDeliveryTypeJaJp type_ = _StringsMisskeyDeliveryTypeJaJp._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeJaJp type_ = _TranslationsMisskeyDeliveryTypeJaJp._(_root);
 }
 
 // Path: misskey.bubbleGame_
-class _StringsMisskeyBubbleGameJaJp extends _StringsMisskeyBubbleGameEnUs {
-	_StringsMisskeyBubbleGameJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameJaJp extends TranslationsMisskeyBubbleGameEnUs {
+	_TranslationsMisskeyBubbleGameJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get howToPlay => '遊び方';
 	@override String get hold => 'ホールド';
-	@override late final _StringsMisskeyBubbleGameScoreJaJp score_ = _StringsMisskeyBubbleGameScoreJaJp._(_root);
-	@override late final _StringsMisskeyBubbleGameHowToPlayJaJp howToPlay_ = _StringsMisskeyBubbleGameHowToPlayJaJp._(_root);
+	@override late final _TranslationsMisskeyBubbleGameScoreJaJp score_ = _TranslationsMisskeyBubbleGameScoreJaJp._(_root);
+	@override late final _TranslationsMisskeyBubbleGameHowToPlayJaJp howToPlay_ = _TranslationsMisskeyBubbleGameHowToPlayJaJp._(_root);
 }
 
 // Path: misskey.announcement_
-class _StringsMisskeyAnnouncementJaJp extends _StringsMisskeyAnnouncementEnUs {
-	_StringsMisskeyAnnouncementJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAnnouncementJaJp extends TranslationsMisskeyAnnouncementEnUs {
+	_TranslationsMisskeyAnnouncementJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get forExistingUsers => '既存ユーザーのみ';
@@ -1685,10 +1689,10 @@ class _StringsMisskeyAnnouncementJaJp extends _StringsMisskeyAnnouncementEnUs {
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingJaJp extends _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialAccountSettingJaJp extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountCreated => 'アカウントの作成が完了しました！';
@@ -1709,30 +1713,30 @@ class _StringsMisskeyInitialAccountSettingJaJp extends _StringsMisskeyInitialAcc
 }
 
 // Path: misskey.initialTutorial_
-class _StringsMisskeyInitialTutorialJaJp extends _StringsMisskeyInitialTutorialEnUs {
-	_StringsMisskeyInitialTutorialJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialJaJp extends TranslationsMisskeyInitialTutorialEnUs {
+	_TranslationsMisskeyInitialTutorialJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get launchTutorial => 'チュートリアルを見る';
 	@override String get title => 'チュートリアル';
 	@override String get wellDone => 'よくできました';
 	@override String get skipAreYouSure => 'チュートリアルを終了しますか？';
-	@override late final _StringsMisskeyInitialTutorialLandingJaJp landing_ = _StringsMisskeyInitialTutorialLandingJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialNoteJaJp note_ = _StringsMisskeyInitialTutorialNoteJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialReactionJaJp reaction_ = _StringsMisskeyInitialTutorialReactionJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialTimelineJaJp timeline_ = _StringsMisskeyInitialTutorialTimelineJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteJaJp postNote_ = _StringsMisskeyInitialTutorialPostNoteJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp howToMakeAttachmentsSensitive_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialDoneJaJp done_ = _StringsMisskeyInitialTutorialDoneJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialLandingJaJp landing_ = _TranslationsMisskeyInitialTutorialLandingJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialNoteJaJp note_ = _TranslationsMisskeyInitialTutorialNoteJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialReactionJaJp reaction_ = _TranslationsMisskeyInitialTutorialReactionJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialTimelineJaJp timeline_ = _TranslationsMisskeyInitialTutorialTimelineJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteJaJp postNote_ = _TranslationsMisskeyInitialTutorialPostNoteJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp howToMakeAttachmentsSensitive_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialDoneJaJp done_ = _TranslationsMisskeyInitialTutorialDoneJaJp._(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _StringsMisskeyTimelineDescriptionJaJp extends _StringsMisskeyTimelineDescriptionEnUs {
-	_StringsMisskeyTimelineDescriptionJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelineDescriptionJaJp extends TranslationsMisskeyTimelineDescriptionEnUs {
+	_TranslationsMisskeyTimelineDescriptionJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'ホームタイムラインでは、あなたがフォローしているアカウントの投稿を見られます。';
@@ -1742,20 +1746,20 @@ class _StringsMisskeyTimelineDescriptionJaJp extends _StringsMisskeyTimelineDesc
 }
 
 // Path: misskey.serverRules_
-class _StringsMisskeyServerRulesJaJp extends _StringsMisskeyServerRulesEnUs {
-	_StringsMisskeyServerRulesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerRulesJaJp extends TranslationsMisskeyServerRulesEnUs {
+	_TranslationsMisskeyServerRulesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '新規登録前に表示する、サーバーの簡潔なルールを設定します。内容は利用規約の要約とすることを推奨します。';
 }
 
 // Path: misskey.serverSettings_
-class _StringsMisskeyServerSettingsJaJp extends _StringsMisskeyServerSettingsEnUs {
-	_StringsMisskeyServerSettingsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSettingsEnUs {
+	_TranslationsMisskeyServerSettingsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get iconUrl => 'アイコン画像のURL';
@@ -1775,10 +1779,10 @@ class _StringsMisskeyServerSettingsJaJp extends _StringsMisskeyServerSettingsEnU
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationJaJp extends _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountMigrationJaJp extends TranslationsMisskeyAccountMigrationEnUs {
+	_TranslationsMisskeyAccountMigrationJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get moveFrom => '別のアカウントからこのアカウントに移行';
@@ -1798,21 +1802,21 @@ class _StringsMisskeyAccountMigrationJaJp extends _StringsMisskeyAccountMigratio
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsJaJp extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsJaJp extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => '獲得日時';
-	@override late final _StringsMisskeyAchievementsTypesJaJp types_ = _StringsMisskeyAchievementsTypesJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJaJp types_ = _TranslationsMisskeyAchievementsTypesJaJp._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleJaJp extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleJaJp extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'ロールの作成';
@@ -1846,16 +1850,16 @@ class _StringsMisskeyRoleJaJp extends _StringsMisskeyRoleEnUs {
 	@override String get canEditMembersByModerator => 'モデレーターのメンバー編集を許可';
 	@override String get descriptionOfCanEditMembersByModerator => 'オンにすると、管理者に加えてモデレーターもこのロールへユーザーをアサイン/アサイン解除できるようになります。オフにすると管理者のみが行えます。';
 	@override String get priority => '優先度';
-	@override late final _StringsMisskeyRolePriorityJaJp priority_ = _StringsMisskeyRolePriorityJaJp._(_root);
-	@override late final _StringsMisskeyRoleOptionsJaJp options_ = _StringsMisskeyRoleOptionsJaJp._(_root);
-	@override late final _StringsMisskeyRoleConditionJaJp condition_ = _StringsMisskeyRoleConditionJaJp._(_root);
+	@override late final _TranslationsMisskeyRolePriorityJaJp priority_ = _TranslationsMisskeyRolePriorityJaJp._(_root);
+	@override late final _TranslationsMisskeyRoleOptionsJaJp options_ = _TranslationsMisskeyRoleOptionsJaJp._(_root);
+	@override late final _TranslationsMisskeyRoleConditionJaJp condition_ = _TranslationsMisskeyRoleConditionJaJp._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionJaJp extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionJaJp extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '機械学習を使って自動でセンシティブなメディアを検出し、モデレーションに役立てることができます。サーバーの負荷が少し増えます。';
@@ -1868,10 +1872,10 @@ class _StringsMisskeySensitiveMediaDetectionJaJp extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableJaJp extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableJaJp extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => '既に使用されています';
@@ -1883,10 +1887,10 @@ class _StringsMisskeyEmailUnavailableJaJp extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityJaJp extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityJaJp extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => '公開';
@@ -1895,10 +1899,10 @@ class _StringsMisskeyFfVisibilityJaJp extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupJaJp extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupJaJp extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'ほとんど完了です';
@@ -1907,10 +1911,10 @@ class _StringsMisskeySignupJaJp extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteJaJp extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteJaJp extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'アカウントの削除';
@@ -1922,10 +1926,10 @@ class _StringsMisskeyAccountDeleteJaJp extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdJaJp extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdJaJp extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => '戻る';
@@ -1939,10 +1943,10 @@ class _StringsMisskeyAdJaJp extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordJaJp extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordJaJp extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => 'アカウントに登録したメールアドレスを入力してください。そのアドレス宛てに、パスワードリセット用のリンクが送信されます。';
@@ -1951,10 +1955,10 @@ class _StringsMisskeyForgotPasswordJaJp extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryJaJp extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryJaJp extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => '自分の投稿';
@@ -1964,21 +1968,21 @@ class _StringsMisskeyGalleryJaJp extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailJaJp extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailJaJp extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowJaJp follow_ = _StringsMisskeyEmailFollowJaJp._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestJaJp receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestJaJp._(_root);
+	@override late final _TranslationsMisskeyEmailFollowJaJp follow_ = _TranslationsMisskeyEmailFollowJaJp._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestJaJp receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestJaJp._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginJaJp extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginJaJp extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'プラグインのインストール';
@@ -1989,10 +1993,10 @@ class _StringsMisskeyPluginJaJp extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsJaJp extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsJaJp extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => '作成したバックアップ';
@@ -2015,10 +2019,10 @@ class _StringsMisskeyPreferencesBackupsJaJp extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryJaJp extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryJaJp extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'スコープ';
@@ -2029,10 +2033,10 @@ class _StringsMisskeyRegistryJaJp extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyJaJp extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyJaJp extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskeyはsyuiloによって2014年から開発されている、オープンソースのソフトウェアです。';
@@ -2049,10 +2053,10 @@ class _StringsMisskeyAboutMisskeyJaJp extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.displayOfSensitiveMedia_
-class _StringsMisskeyDisplayOfSensitiveMediaJaJp extends _StringsMisskeyDisplayOfSensitiveMediaEnUs {
-	_StringsMisskeyDisplayOfSensitiveMediaJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisplayOfSensitiveMediaJaJp extends TranslationsMisskeyDisplayOfSensitiveMediaEnUs {
+	_TranslationsMisskeyDisplayOfSensitiveMediaJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get respect => 'センシティブ設定されたメディアを隠す';
@@ -2061,10 +2065,10 @@ class _StringsMisskeyDisplayOfSensitiveMediaJaJp extends _StringsMisskeyDisplayO
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerJaJp extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerJaJp extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => '表示しない';
@@ -2073,10 +2077,10 @@ class _StringsMisskeyInstanceTickerJaJp extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorJaJp extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorJaJp extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => '自動でリロード';
@@ -2085,10 +2089,10 @@ class _StringsMisskeyServerDisconnectedBehaviorJaJp extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelJaJp extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelJaJp extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'チャンネルを作成';
@@ -2106,10 +2110,10 @@ class _StringsMisskeyChannelJaJp extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayJaJp extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayJaJp extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => '横';
@@ -2119,10 +2123,10 @@ class _StringsMisskeyMenuDisplayJaJp extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteJaJp extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteJaJp extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'ミュートするワード';
@@ -2131,10 +2135,10 @@ class _StringsMisskeyWordMuteJaJp extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteJaJp extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteJaJp extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => 'ミュートしたサーバーのユーザーへの返信を含めて、設定したサーバーの全てのノートとRenoteをミュートします。';
@@ -2144,10 +2148,10 @@ class _StringsMisskeyInstanceMuteJaJp extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeJaJp extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeJaJp extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'テーマを探す';
@@ -2179,14 +2183,14 @@ class _StringsMisskeyThemeJaJp extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => '定数名を入力してください';
 	@override String get importInfo => 'ここにテーマコードを貼り付けて、エディターにインポートできます';
 	@override String deleteConstantConfirm({required Object const_}) => '定数 ${const_} を削除しても良いですか？';
-	@override late final _StringsMisskeyThemeKeysJaJp keys = _StringsMisskeyThemeKeysJaJp._(_root);
+	@override late final _TranslationsMisskeyThemeKeysJaJp keys = _TranslationsMisskeyThemeKeysJaJp._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxJaJp extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxJaJp extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'ノート';
@@ -2196,10 +2200,10 @@ class _StringsMisskeySfxJaJp extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.soundSettings_
-class _StringsMisskeySoundSettingsJaJp extends _StringsMisskeySoundSettingsEnUs {
-	_StringsMisskeySoundSettingsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeySoundSettingsJaJp extends TranslationsMisskeySoundSettingsEnUs {
+	_TranslationsMisskeySoundSettingsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get driveFile => 'ドライブの音声を使用';
@@ -2212,10 +2216,10 @@ class _StringsMisskeySoundSettingsJaJp extends _StringsMisskeySoundSettingsEnUs 
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoJaJp extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoJaJp extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => '未来';
@@ -2231,10 +2235,10 @@ class _StringsMisskeyAgoJaJp extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.timeIn_
-class _StringsMisskeyTimeInJaJp extends _StringsMisskeyTimeInEnUs {
-	_StringsMisskeyTimeInJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeInJaJp extends TranslationsMisskeyTimeInEnUs {
+	_TranslationsMisskeyTimeInJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String seconds({required Object n}) => '${n}秒後';
@@ -2247,10 +2251,10 @@ class _StringsMisskeyTimeInJaJp extends _StringsMisskeyTimeInEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeJaJp extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeJaJp extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => '秒';
@@ -2260,10 +2264,10 @@ class _StringsMisskeyTimeJaJp extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faJaJp extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faJaJp extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => '既に設定は完了しています。';
@@ -2297,10 +2301,10 @@ class _StringsMisskeyX2faJaJp extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsJaJp extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsJaJp extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'アカウントの情報を見る';
@@ -2390,10 +2394,10 @@ class _StringsMisskeyPermissionsJaJp extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthJaJp extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthJaJp extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get shareAccessTitle => 'アプリへのアクセス許可';
@@ -2408,10 +2412,10 @@ class _StringsMisskeyAuthJaJp extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesJaJp extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesJaJp extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => '全てのノート';
@@ -2422,10 +2426,10 @@ class _StringsMisskeyAntennaSourcesJaJp extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayJaJp extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayJaJp extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => '日曜日';
@@ -2438,10 +2442,10 @@ class _StringsMisskeyWeekdayJaJp extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsJaJp extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsJaJp extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'プロフィール';
@@ -2470,16 +2474,16 @@ class _StringsMisskeyWidgetsJaJp extends _StringsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript App';
 	@override String get aichan => '藍';
 	@override String get userList => 'ユーザーリスト';
-	@override late final _StringsMisskeyWidgetsUserListJaJp userList_ = _StringsMisskeyWidgetsUserListJaJp._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListJaJp userList_ = _TranslationsMisskeyWidgetsUserListJaJp._(_root);
 	@override String get clicker => 'クリッカー';
 	@override String get birthdayFollowings => '今日誕生日のユーザー';
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwJaJp extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwJaJp extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => '隠す';
@@ -2489,10 +2493,10 @@ class _StringsMisskeyCwJaJp extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollJaJp extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollJaJp extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => '選択肢は最低2つ必要です';
@@ -2519,10 +2523,10 @@ class _StringsMisskeyPollJaJp extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityJaJp extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityJaJp extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'パブリック';
@@ -2538,23 +2542,23 @@ class _StringsMisskeyVisibilityJaJp extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormJaJp extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormJaJp extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'このノートに返信...';
 	@override String get quotePlaceholder => 'このノートを引用...';
 	@override String get channelPlaceholder => 'チャンネルに投稿...';
-	@override late final _StringsMisskeyPostFormPlaceholdersJaJp placeholders_ = _StringsMisskeyPostFormPlaceholdersJaJp._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersJaJp placeholders_ = _TranslationsMisskeyPostFormPlaceholdersJaJp._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileJaJp extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileJaJp extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => '名前';
@@ -2576,10 +2580,10 @@ class _StringsMisskeyProfileJaJp extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportJaJp extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportJaJp extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => '全てのノート';
@@ -2595,10 +2599,10 @@ class _StringsMisskeyExportOrImportJaJp extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsJaJp extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsJaJp extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => '連合';
@@ -2617,10 +2621,10 @@ class _StringsMisskeyChartsJaJp extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsJaJp extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsJaJp extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'リクエスト';
@@ -2637,10 +2641,10 @@ class _StringsMisskeyInstanceChartsJaJp extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesJaJp extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesJaJp extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'ホーム';
@@ -2650,10 +2654,10 @@ class _StringsMisskeyTimelinesJaJp extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayJaJp extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayJaJp extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'Playの作成';
@@ -2674,10 +2678,10 @@ class _StringsMisskeyPlayJaJp extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesJaJp extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesJaJp extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'ページの作成';
@@ -2718,14 +2722,14 @@ class _StringsMisskeyPagesJaJp extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'コンテンツ';
 	@override String get inputBlocks => '入力';
 	@override String get specialBlocks => '特殊';
-	@override late final _StringsMisskeyPagesBlocksJaJp blocks = _StringsMisskeyPagesBlocksJaJp._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksJaJp blocks = _TranslationsMisskeyPagesBlocksJaJp._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusJaJp extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusJaJp extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => '承認待ち';
@@ -2734,17 +2738,17 @@ class _StringsMisskeyRelayStatusJaJp extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationJaJp extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationJaJp extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'ファイルがアップロードされました';
 	@override String youGotMention({required Object name}) => '${name}からのメンション';
 	@override String youGotReply({required Object name}) => '${name}からのリプライ';
 	@override String youGotQuote({required Object name}) => '${name}による引用';
-	@override String youRenoted({required Object name}) => '${name}がRenoteしました';
+	@override String youRenoted({required Object name}) => '${name}がリノートしました';
 	@override String get youWereFollowed => 'フォローされました';
 	@override String get youReceivedFollowRequest => 'フォローリクエストが来ました';
 	@override String get yourFollowRequestAccepted => 'フォローリクエストが承認されました';
@@ -2765,15 +2769,15 @@ class _StringsMisskeyNotificationJaJp extends _StringsMisskeyNotificationEnUs {
 	@override String get flushNotification => '通知の履歴をリセットする';
 	@override String exportOfXCompleted({required Object x}) => '${x}のエクスポートが完了しました';
 	@override String get login => 'ログインがありました';
-	@override late final _StringsMisskeyNotificationTypesJaJp types_ = _StringsMisskeyNotificationTypesJaJp._(_root);
-	@override late final _StringsMisskeyNotificationActionsJaJp actions_ = _StringsMisskeyNotificationActionsJaJp._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesJaJp types_ = _TranslationsMisskeyNotificationTypesJaJp._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsJaJp actions_ = _TranslationsMisskeyNotificationActionsJaJp._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckJaJp extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckJaJp extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => '常にメインカラムを表示';
@@ -2796,14 +2800,14 @@ class _StringsMisskeyDeckJaJp extends _StringsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '非ルートページは簡易UIで表示';
 	@override String get usedAsMinWidthWhenFlexible => '「幅を自動調整」が有効の場合、これが幅の最小値となります';
 	@override String get flexible => '幅を自動調整';
-	@override late final _StringsMisskeyDeckColumnsJaJp columns_ = _StringsMisskeyDeckColumnsJaJp._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsJaJp columns_ = _TranslationsMisskeyDeckColumnsJaJp._(_root);
 }
 
 // Path: misskey.dialog_
-class _StringsMisskeyDialogJaJp extends _StringsMisskeyDialogEnUs {
-	_StringsMisskeyDialogJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDialogJaJp extends TranslationsMisskeyDialogEnUs {
+	_TranslationsMisskeyDialogJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String charactersExceeded({required Object current, required Object max}) => '最大文字数を超えています！ 現在 ${current} / 制限 ${max}';
@@ -2811,10 +2815,10 @@ class _StringsMisskeyDialogJaJp extends _StringsMisskeyDialogEnUs {
 }
 
 // Path: misskey.disabledTimeline_
-class _StringsMisskeyDisabledTimelineJaJp extends _StringsMisskeyDisabledTimelineEnUs {
-	_StringsMisskeyDisabledTimelineJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisabledTimelineJaJp extends TranslationsMisskeyDisabledTimelineEnUs {
+	_TranslationsMisskeyDisabledTimelineJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '無効化されたタイムライン';
@@ -2822,10 +2826,10 @@ class _StringsMisskeyDisabledTimelineJaJp extends _StringsMisskeyDisabledTimelin
 }
 
 // Path: misskey.drivecleaner_
-class _StringsMisskeyDrivecleanerJaJp extends _StringsMisskeyDrivecleanerEnUs {
-	_StringsMisskeyDrivecleanerJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDrivecleanerJaJp extends TranslationsMisskeyDrivecleanerEnUs {
+	_TranslationsMisskeyDrivecleanerJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get orderBySizeDesc => 'サイズが大きい順';
@@ -2833,10 +2837,10 @@ class _StringsMisskeyDrivecleanerJaJp extends _StringsMisskeyDrivecleanerEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsJaJp extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsJaJp extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get createWebhook => 'Webhookを作成';
@@ -2845,27 +2849,27 @@ class _StringsMisskeyWebhookSettingsJaJp extends _StringsMisskeyWebhookSettingsE
 	@override String get secret => 'シークレット';
 	@override String get trigger => 'トリガー';
 	@override String get active => '有効';
-	@override late final _StringsMisskeyWebhookSettingsEventsJaJp events_ = _StringsMisskeyWebhookSettingsEventsJaJp._(_root);
-	@override late final _StringsMisskeyWebhookSettingsSystemEventsJaJp systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsJaJp._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsJaJp events_ = _TranslationsMisskeyWebhookSettingsEventsJaJp._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsJaJp systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsJaJp._(_root);
 	@override String get deleteConfirm => 'Webhookを削除しますか？';
 	@override String get testRemarks => 'スイッチの右にあるボタンをクリックするとダミーのデータを使用したテスト用Webhookを送信できます。';
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportJaJp extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportJaJp extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientJaJp notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientJaJp._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientJaJp notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientJaJp._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesJaJp extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesJaJp extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRole => 'ロールを作成';
@@ -2919,10 +2923,10 @@ class _StringsMisskeyModerationLogTypesJaJp extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.fileViewer_
-class _StringsMisskeyFileViewerJaJp extends _StringsMisskeyFileViewerEnUs {
-	_StringsMisskeyFileViewerJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyFileViewerJaJp extends TranslationsMisskeyFileViewerEnUs {
+	_TranslationsMisskeyFileViewerJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ファイルの詳細';
@@ -2935,39 +2939,39 @@ class _StringsMisskeyFileViewerJaJp extends _StringsMisskeyFileViewerEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_
-class _StringsMisskeyExternalResourceInstallerJaJp extends _StringsMisskeyExternalResourceInstallerEnUs {
-	_StringsMisskeyExternalResourceInstallerJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerJaJp extends TranslationsMisskeyExternalResourceInstallerEnUs {
+	_TranslationsMisskeyExternalResourceInstallerJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '外部サイトからインストール';
 	@override String get checkVendorBeforeInstall => '配布元が信頼できるかを確認した上でインストールしてください。';
-	@override late final _StringsMisskeyExternalResourceInstallerPluginJaJp plugin_ = _StringsMisskeyExternalResourceInstallerPluginJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerThemeJaJp theme_ = _StringsMisskeyExternalResourceInstallerThemeJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerMetaJaJp meta_ = _StringsMisskeyExternalResourceInstallerMetaJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerVendorInfoJaJp vendorInfo_ = _StringsMisskeyExternalResourceInstallerVendorInfoJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsJaJp errors_ = _StringsMisskeyExternalResourceInstallerErrorsJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerPluginJaJp plugin_ = _TranslationsMisskeyExternalResourceInstallerPluginJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerThemeJaJp theme_ = _TranslationsMisskeyExternalResourceInstallerThemeJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerMetaJaJp meta_ = _TranslationsMisskeyExternalResourceInstallerMetaJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerVendorInfoJaJp vendorInfo_ = _TranslationsMisskeyExternalResourceInstallerVendorInfoJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsJaJp errors_ = _TranslationsMisskeyExternalResourceInstallerErrorsJaJp._(_root);
 }
 
 // Path: misskey.dataSaver_
-class _StringsMisskeyDataSaverJaJp extends _StringsMisskeyDataSaverEnUs {
-	_StringsMisskeyDataSaverJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverJaJp extends TranslationsMisskeyDataSaverEnUs {
+	_TranslationsMisskeyDataSaverJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyDataSaverMediaJaJp media_ = _StringsMisskeyDataSaverMediaJaJp._(_root);
-	@override late final _StringsMisskeyDataSaverAvatarJaJp avatar_ = _StringsMisskeyDataSaverAvatarJaJp._(_root);
-	@override late final _StringsMisskeyDataSaverUrlPreviewJaJp urlPreview_ = _StringsMisskeyDataSaverUrlPreviewJaJp._(_root);
-	@override late final _StringsMisskeyDataSaverCodeJaJp code_ = _StringsMisskeyDataSaverCodeJaJp._(_root);
+	@override late final _TranslationsMisskeyDataSaverMediaJaJp media_ = _TranslationsMisskeyDataSaverMediaJaJp._(_root);
+	@override late final _TranslationsMisskeyDataSaverAvatarJaJp avatar_ = _TranslationsMisskeyDataSaverAvatarJaJp._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewJaJp urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewJaJp._(_root);
+	@override late final _TranslationsMisskeyDataSaverCodeJaJp code_ = _TranslationsMisskeyDataSaverCodeJaJp._(_root);
 }
 
 // Path: misskey.hemisphere_
-class _StringsMisskeyHemisphereJaJp extends _StringsMisskeyHemisphereEnUs {
-	_StringsMisskeyHemisphereJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyHemisphereJaJp extends TranslationsMisskeyHemisphereEnUs {
+	_TranslationsMisskeyHemisphereJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get N => '北半球';
@@ -2976,10 +2980,10 @@ class _StringsMisskeyHemisphereJaJp extends _StringsMisskeyHemisphereEnUs {
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiJaJp extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiJaJp extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get reversi => 'リバーシ';
@@ -3028,10 +3032,10 @@ class _StringsMisskeyReversiJaJp extends _StringsMisskeyReversiEnUs {
 }
 
 // Path: misskey.offlineScreen_
-class _StringsMisskeyOfflineScreenJaJp extends _StringsMisskeyOfflineScreenEnUs {
-	_StringsMisskeyOfflineScreenJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyOfflineScreenJaJp extends TranslationsMisskeyOfflineScreenEnUs {
+	_TranslationsMisskeyOfflineScreenJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'オフライン - サーバーに接続できません';
@@ -3039,10 +3043,10 @@ class _StringsMisskeyOfflineScreenJaJp extends _StringsMisskeyOfflineScreenEnUs 
 }
 
 // Path: misskey.urlPreviewSetting_
-class _StringsMisskeyUrlPreviewSettingJaJp extends _StringsMisskeyUrlPreviewSettingEnUs {
-	_StringsMisskeyUrlPreviewSettingJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyUrlPreviewSettingJaJp extends TranslationsMisskeyUrlPreviewSettingEnUs {
+	_TranslationsMisskeyUrlPreviewSettingJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'URLプレビューの設定';
@@ -3061,10 +3065,10 @@ class _StringsMisskeyUrlPreviewSettingJaJp extends _StringsMisskeyUrlPreviewSett
 }
 
 // Path: misskey.mediaControls_
-class _StringsMisskeyMediaControlsJaJp extends _StringsMisskeyMediaControlsEnUs {
-	_StringsMisskeyMediaControlsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyMediaControlsJaJp extends TranslationsMisskeyMediaControlsEnUs {
+	_TranslationsMisskeyMediaControlsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get pip => 'ピクチャインピクチャ';
@@ -3073,10 +3077,10 @@ class _StringsMisskeyMediaControlsJaJp extends _StringsMisskeyMediaControlsEnUs 
 }
 
 // Path: misskey.contextMenu_
-class _StringsMisskeyContextMenuJaJp extends _StringsMisskeyContextMenuEnUs {
-	_StringsMisskeyContextMenuJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyContextMenuJaJp extends TranslationsMisskeyContextMenuEnUs {
+	_TranslationsMisskeyContextMenuJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'コンテキストメニュー';
@@ -3086,10 +3090,10 @@ class _StringsMisskeyContextMenuJaJp extends _StringsMisskeyContextMenuEnUs {
 }
 
 // Path: misskey.embedCodeGen_
-class _StringsMisskeyEmbedCodeGenJaJp extends _StringsMisskeyEmbedCodeGenEnUs {
-	_StringsMisskeyEmbedCodeGenJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmbedCodeGenJaJp extends TranslationsMisskeyEmbedCodeGenEnUs {
+	_TranslationsMisskeyEmbedCodeGenJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '埋め込みコードをカスタマイズ';
@@ -3108,13 +3112,13 @@ class _StringsMisskeyEmbedCodeGenJaJp extends _StringsMisskeyEmbedCodeGenEnUs {
 }
 
 // Path: misskeyIO.skebStatus_
-class _StringsMisskeyIOSkebStatusJaJp extends _StringsMisskeyIOSkebStatusEnUs {
-	_StringsMisskeyIOSkebStatusJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyIOSkebStatusJaJp extends TranslationsMisskeyIOSkebStatusEnUs {
+	_TranslationsMisskeyIOSkebStatusJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyIOSkebStatusGenresJaJp genres_ = _StringsMisskeyIOSkebStatusGenresJaJp._(_root);
+	@override late final _TranslationsMisskeyIOSkebStatusGenresJaJp genres_ = _TranslationsMisskeyIOSkebStatusGenresJaJp._(_root);
 	@override String get seeking => '募集中';
 	@override String get stopped => '停止中';
 	@override String get client => 'クライアント';
@@ -3124,10 +3128,10 @@ class _StringsMisskeyIOSkebStatusJaJp extends _StringsMisskeyIOSkebStatusEnUs {
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeJaJp extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeJaJp extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => '配信中';
@@ -3137,10 +3141,10 @@ class _StringsMisskeyDeliveryTypeJaJp extends _StringsMisskeyDeliveryTypeEnUs {
 }
 
 // Path: misskey.bubbleGame_.score_
-class _StringsMisskeyBubbleGameScoreJaJp extends _StringsMisskeyBubbleGameScoreEnUs {
-	_StringsMisskeyBubbleGameScoreJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameScoreJaJp extends TranslationsMisskeyBubbleGameScoreEnUs {
+	_TranslationsMisskeyBubbleGameScoreJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get score => 'スコア';
@@ -3153,10 +3157,10 @@ class _StringsMisskeyBubbleGameScoreJaJp extends _StringsMisskeyBubbleGameScoreE
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
-class _StringsMisskeyBubbleGameHowToPlayJaJp extends _StringsMisskeyBubbleGameHowToPlayEnUs {
-	_StringsMisskeyBubbleGameHowToPlayJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameHowToPlayJaJp extends TranslationsMisskeyBubbleGameHowToPlayEnUs {
+	_TranslationsMisskeyBubbleGameHowToPlayJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get section1 => '位置を調整してハコにモノを落とします。';
@@ -3165,10 +3169,10 @@ class _StringsMisskeyBubbleGameHowToPlayJaJp extends _StringsMisskeyBubbleGameHo
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _StringsMisskeyInitialTutorialLandingJaJp extends _StringsMisskeyInitialTutorialLandingEnUs {
-	_StringsMisskeyInitialTutorialLandingJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialLandingJaJp extends TranslationsMisskeyInitialTutorialLandingEnUs {
+	_TranslationsMisskeyInitialTutorialLandingJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'チュートリアルへようこそ';
@@ -3176,10 +3180,10 @@ class _StringsMisskeyInitialTutorialLandingJaJp extends _StringsMisskeyInitialTu
 }
 
 // Path: misskey.initialTutorial_.note_
-class _StringsMisskeyInitialTutorialNoteJaJp extends _StringsMisskeyInitialTutorialNoteEnUs {
-	_StringsMisskeyInitialTutorialNoteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialNoteJaJp extends TranslationsMisskeyInitialTutorialNoteEnUs {
+	_TranslationsMisskeyInitialTutorialNoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートって何？';
@@ -3191,10 +3195,10 @@ class _StringsMisskeyInitialTutorialNoteJaJp extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.initialTutorial_.reaction_
-class _StringsMisskeyInitialTutorialReactionJaJp extends _StringsMisskeyInitialTutorialReactionEnUs {
-	_StringsMisskeyInitialTutorialReactionJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialReactionJaJp extends TranslationsMisskeyInitialTutorialReactionEnUs {
+	_TranslationsMisskeyInitialTutorialReactionJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'リアクションって何？';
@@ -3206,10 +3210,10 @@ class _StringsMisskeyInitialTutorialReactionJaJp extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _StringsMisskeyInitialTutorialTimelineJaJp extends _StringsMisskeyInitialTutorialTimelineEnUs {
-	_StringsMisskeyInitialTutorialTimelineJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialTimelineJaJp extends TranslationsMisskeyInitialTutorialTimelineEnUs {
+	_TranslationsMisskeyInitialTutorialTimelineJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'タイムラインのしくみ';
@@ -3223,39 +3227,39 @@ class _StringsMisskeyInitialTutorialTimelineJaJp extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _StringsMisskeyInitialTutorialPostNoteJaJp extends _StringsMisskeyInitialTutorialPostNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteJaJp extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートの投稿設定';
 	@override String get description1 => 'Misskeyにノートを投稿する際には、様々なオプションの設定が可能です。投稿フォームはこのようになっています。';
-	@override late final _StringsMisskeyInitialTutorialPostNoteVisibilityJaJp visibility_ = _StringsMisskeyInitialTutorialPostNoteVisibilityJaJp._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwJaJp cw_ = _StringsMisskeyInitialTutorialPostNoteCwJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityJaJp visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwJaJp cw_ = _TranslationsMisskeyInitialTutorialPostNoteCwJaJp._(_root);
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '添付ファイルをセンシティブにするには？';
 	@override String get description => 'サーバーのガイドラインにより必要とされる際や、そのまま見れる状態にしておくべきではない添付ファイルには、「センシティブ」設定を付けます。';
 	@override String get tryThisFile => '試しに、このフォームに添付された画像をセンシティブにしてみてください！';
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp._(_root);
 	@override String get method => '添付ファイルをセンシティブにする際は、そのファイルをクリックしてメニューを開き、「センシティブとして設定」をクリックします。';
 	@override String get sensitiveSucceeded => 'ファイルを添付する際は、サーバーのガイドラインに従ってセンシティブを適切に設定してください。';
 	@override String get doItToContinue => '画像をセンシティブに設定すると先に進めるようになります。';
 }
 
 // Path: misskey.initialTutorial_.done_
-class _StringsMisskeyInitialTutorialDoneJaJp extends _StringsMisskeyInitialTutorialDoneEnUs {
-	_StringsMisskeyInitialTutorialDoneJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialDoneJaJp extends TranslationsMisskeyInitialTutorialDoneEnUs {
+	_TranslationsMisskeyInitialTutorialDoneJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'チュートリアルは終了です🎉';
@@ -3263,97 +3267,97 @@ class _StringsMisskeyInitialTutorialDoneJaJp extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesJaJp extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJaJp extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1JaJp notes1_ = _StringsMisskeyAchievementsTypesNotes1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10JaJp notes10_ = _StringsMisskeyAchievementsTypesNotes10JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100JaJp notes100_ = _StringsMisskeyAchievementsTypesNotes100JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500JaJp notes500_ = _StringsMisskeyAchievementsTypesNotes500JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000JaJp notes1000_ = _StringsMisskeyAchievementsTypesNotes1000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000JaJp notes5000_ = _StringsMisskeyAchievementsTypesNotes5000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000JaJp notes10000_ = _StringsMisskeyAchievementsTypesNotes10000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000JaJp notes20000_ = _StringsMisskeyAchievementsTypesNotes20000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000JaJp notes30000_ = _StringsMisskeyAchievementsTypesNotes30000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000JaJp notes40000_ = _StringsMisskeyAchievementsTypesNotes40000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000JaJp notes50000_ = _StringsMisskeyAchievementsTypesNotes50000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes60000JaJp notes60000_ = _StringsMisskeyAchievementsTypesNotes60000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes70000JaJp notes70000_ = _StringsMisskeyAchievementsTypesNotes70000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes80000JaJp notes80000_ = _StringsMisskeyAchievementsTypesNotes80000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes90000JaJp notes90000_ = _StringsMisskeyAchievementsTypesNotes90000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000JaJp notes100000_ = _StringsMisskeyAchievementsTypesNotes100000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3JaJp login3_ = _StringsMisskeyAchievementsTypesLogin3JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin7JaJp login7_ = _StringsMisskeyAchievementsTypesLogin7JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin15JaJp login15_ = _StringsMisskeyAchievementsTypesLogin15JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin30JaJp login30_ = _StringsMisskeyAchievementsTypesLogin30JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin60JaJp login60_ = _StringsMisskeyAchievementsTypesLogin60JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin100JaJp login100_ = _StringsMisskeyAchievementsTypesLogin100JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin200JaJp login200_ = _StringsMisskeyAchievementsTypesLogin200JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin300JaJp login300_ = _StringsMisskeyAchievementsTypesLogin300JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin400JaJp login400_ = _StringsMisskeyAchievementsTypesLogin400JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin500JaJp login500_ = _StringsMisskeyAchievementsTypesLogin500JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin600JaJp login600_ = _StringsMisskeyAchievementsTypesLogin600JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin700JaJp login700_ = _StringsMisskeyAchievementsTypesLogin700JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin800JaJp login800_ = _StringsMisskeyAchievementsTypesLogin800JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin900JaJp login900_ = _StringsMisskeyAchievementsTypesLogin900JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin1000JaJp login1000_ = _StringsMisskeyAchievementsTypesLogin1000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteClipped1JaJp noteClipped1_ = _StringsMisskeyAchievementsTypesNoteClipped1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1JaJp noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1JaJp myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledJaJp profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatJaJp markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing1JaJp following1_ = _StringsMisskeyAchievementsTypesFollowing1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing10JaJp following10_ = _StringsMisskeyAchievementsTypesFollowing10JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing50JaJp following50_ = _StringsMisskeyAchievementsTypesFollowing50JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing100JaJp following100_ = _StringsMisskeyAchievementsTypesFollowing100JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing300JaJp following300_ = _StringsMisskeyAchievementsTypesFollowing300JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1JaJp followers1_ = _StringsMisskeyAchievementsTypesFollowers1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers10JaJp followers10_ = _StringsMisskeyAchievementsTypesFollowers10JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers50JaJp followers50_ = _StringsMisskeyAchievementsTypesFollowers50JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers100JaJp followers100_ = _StringsMisskeyAchievementsTypesFollowers100JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers300JaJp followers300_ = _StringsMisskeyAchievementsTypesFollowers300JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers500JaJp followers500_ = _StringsMisskeyAchievementsTypesFollowers500JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1000JaJp followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30JaJp collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minJaJp viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyJaJp iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFoundTreasureJaJp foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient30minJaJp client30min_ = _StringsMisskeyAchievementsTypesClient30minJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient60minJaJp client60min_ = _StringsMisskeyAchievementsTypesClient60minJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightJaJp postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secJaJp postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSelfQuoteJaJp selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesHtl20npmJaJp htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartJaJp viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOpen3windowsJaJp open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp driveFolderCircularReference_ = _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadJaJp reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClickedClickHereJaJp clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyJaJp justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloJaJp setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp passedSinceAccountCreated2_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp passedSinceAccountCreated3_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCookieClickedJaJp cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBrainDiverJaJp brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp smashTestNotificationButton_ = _StringsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesTutorialCompletedJaJp tutorialCompleted_ = _StringsMisskeyAchievementsTypesTutorialCompletedJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp bubbleGameExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp bubbleGameDoubleExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1JaJp notes1_ = _TranslationsMisskeyAchievementsTypesNotes1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10JaJp notes10_ = _TranslationsMisskeyAchievementsTypesNotes10JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100JaJp notes100_ = _TranslationsMisskeyAchievementsTypesNotes100JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500JaJp notes500_ = _TranslationsMisskeyAchievementsTypesNotes500JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000JaJp notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000JaJp notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000JaJp notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000JaJp notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000JaJp notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000JaJp notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000JaJp notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000JaJp notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000JaJp notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000JaJp notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000JaJp notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000JaJp notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3JaJp login3_ = _TranslationsMisskeyAchievementsTypesLogin3JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin7JaJp login7_ = _TranslationsMisskeyAchievementsTypesLogin7JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin15JaJp login15_ = _TranslationsMisskeyAchievementsTypesLogin15JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin30JaJp login30_ = _TranslationsMisskeyAchievementsTypesLogin30JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin60JaJp login60_ = _TranslationsMisskeyAchievementsTypesLogin60JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin100JaJp login100_ = _TranslationsMisskeyAchievementsTypesLogin100JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin200JaJp login200_ = _TranslationsMisskeyAchievementsTypesLogin200JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin300JaJp login300_ = _TranslationsMisskeyAchievementsTypesLogin300JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin400JaJp login400_ = _TranslationsMisskeyAchievementsTypesLogin400JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin500JaJp login500_ = _TranslationsMisskeyAchievementsTypesLogin500JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin600JaJp login600_ = _TranslationsMisskeyAchievementsTypesLogin600JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin700JaJp login700_ = _TranslationsMisskeyAchievementsTypesLogin700JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin800JaJp login800_ = _TranslationsMisskeyAchievementsTypesLogin800JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin900JaJp login900_ = _TranslationsMisskeyAchievementsTypesLogin900JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin1000JaJp login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1JaJp noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1JaJp noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1JaJp myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledJaJp profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatJaJp markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing1JaJp following1_ = _TranslationsMisskeyAchievementsTypesFollowing1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing10JaJp following10_ = _TranslationsMisskeyAchievementsTypesFollowing10JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing50JaJp following50_ = _TranslationsMisskeyAchievementsTypesFollowing50JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing100JaJp following100_ = _TranslationsMisskeyAchievementsTypesFollowing100JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing300JaJp following300_ = _TranslationsMisskeyAchievementsTypesFollowing300JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1JaJp followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers10JaJp followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers50JaJp followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers100JaJp followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers300JaJp followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers500JaJp followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000JaJp followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30JaJp collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minJaJp viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyJaJp iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureJaJp foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient30minJaJp client30min_ = _TranslationsMisskeyAchievementsTypesClient30minJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient60minJaJp client60min_ = _TranslationsMisskeyAchievementsTypesClient60minJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightJaJp postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secJaJp postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteJaJp selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmJaJp htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartJaJp viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsJaJp open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp driveFolderCircularReference_ = _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadJaJp reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereJaJp clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyJaJp justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloJaJp setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp passedSinceAccountCreated2_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp passedSinceAccountCreated3_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedJaJp cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverJaJp brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp smashTestNotificationButton_ = _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesTutorialCompletedJaJp tutorialCompleted_ = _TranslationsMisskeyAchievementsTypesTutorialCompletedJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityJaJp extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityJaJp extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => '低';
@@ -3362,10 +3366,10 @@ class _StringsMisskeyRolePriorityJaJp extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsJaJp extends _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleOptionsJaJp extends TranslationsMisskeyRoleOptionsEnUs {
+	_TranslationsMisskeyRoleOptionsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get gtlAvailable => 'グローバルタイムラインの閲覧';
@@ -3403,10 +3407,10 @@ class _StringsMisskeyRoleOptionsJaJp extends _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionJaJp extends _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleConditionJaJp extends TranslationsMisskeyRoleConditionEnUs {
+	_TranslationsMisskeyRoleConditionJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get roleAssignedTo => 'マニュアルロールにアサイン済み';
@@ -3431,30 +3435,30 @@ class _StringsMisskeyRoleConditionJaJp extends _StringsMisskeyRoleConditionEnUs 
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowJaJp extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowJaJp extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'フォローされました';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestJaJp extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestJaJp extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'フォローリクエストを受け取りました';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysJaJp extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysJaJp extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'アクセント';
@@ -3499,20 +3503,20 @@ class _StringsMisskeyThemeKeysJaJp extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListJaJp extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListJaJp extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'リストを選択';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersJaJp extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersJaJp extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'いまどうしてる？';
@@ -3524,10 +3528,10 @@ class _StringsMisskeyPostFormPlaceholdersJaJp extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksJaJp extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksJaJp extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'テキスト';
@@ -3538,14 +3542,14 @@ class _StringsMisskeyPagesBlocksJaJp extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get dynamic => '動的ブロック';
 	@override String dynamicDescription({required Object play}) => 'このブロックは廃止されています。今後は${play}を利用してください。';
 	@override String get note => 'ノート埋め込み';
-	@override late final _StringsMisskeyPagesBlocksNoteJaJp note_ = _StringsMisskeyPagesBlocksNoteJaJp._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteJaJp note_ = _TranslationsMisskeyPagesBlocksNoteJaJp._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesJaJp extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesJaJp extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'すべて';
@@ -3553,7 +3557,7 @@ class _StringsMisskeyNotificationTypesJaJp extends _StringsMisskeyNotificationTy
 	@override String get follow => 'フォロー';
 	@override String get mention => 'メンション';
 	@override String get reply => 'リプライ';
-	@override String get renote => 'Renote';
+	@override String get renote => 'リノート';
 	@override String get quote => '引用';
 	@override String get reaction => 'リアクション';
 	@override String get pollEnded => 'アンケートが終了';
@@ -3568,22 +3572,22 @@ class _StringsMisskeyNotificationTypesJaJp extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsJaJp extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsJaJp extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => 'フォローバック';
 	@override String get reply => '返信';
-	@override String get renote => 'Renote';
+	@override String get renote => 'リノート';
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsJaJp extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsJaJp extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'メイン';
@@ -3599,10 +3603,10 @@ class _StringsMisskeyDeckColumnsJaJp extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsJaJp extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsJaJp extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => 'フォローしたとき';
@@ -3615,10 +3619,10 @@ class _StringsMisskeyWebhookSettingsEventsJaJp extends _StringsMisskeyWebhookSet
 }
 
 // Path: misskey.webhookSettings_.systemEvents_
-class _StringsMisskeyWebhookSettingsSystemEventsJaJp extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
-	_StringsMisskeyWebhookSettingsSystemEventsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsSystemEventsJaJp extends TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsSystemEventsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get abuseReport => 'ユーザーから通報があったとき';
@@ -3627,16 +3631,16 @@ class _StringsMisskeyWebhookSettingsSystemEventsJaJp extends _StringsMisskeyWebh
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientJaJp extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientJaJp extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRecipient => '通報の通知先を追加';
 	@override String get modifyRecipient => '通報の通知先を編集';
 	@override String get recipientType => '通知先の種類';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp._(_root);
 	@override String get keywords => 'キーワード';
 	@override String get notifiedUser => '通知先ユーザー';
 	@override String get notifiedWebhook => '使用するWebhook';
@@ -3644,10 +3648,10 @@ class _StringsMisskeyAbuseReportNotificationRecipientJaJp extends _StringsMisske
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
-class _StringsMisskeyExternalResourceInstallerPluginJaJp extends _StringsMisskeyExternalResourceInstallerPluginEnUs {
-	_StringsMisskeyExternalResourceInstallerPluginJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerPluginJaJp extends TranslationsMisskeyExternalResourceInstallerPluginEnUs {
+	_TranslationsMisskeyExternalResourceInstallerPluginJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'このプラグインをインストールしますか？';
@@ -3655,10 +3659,10 @@ class _StringsMisskeyExternalResourceInstallerPluginJaJp extends _StringsMisskey
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
-class _StringsMisskeyExternalResourceInstallerThemeJaJp extends _StringsMisskeyExternalResourceInstallerThemeEnUs {
-	_StringsMisskeyExternalResourceInstallerThemeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerThemeJaJp extends TranslationsMisskeyExternalResourceInstallerThemeEnUs {
+	_TranslationsMisskeyExternalResourceInstallerThemeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'このテーマをインストールしますか？';
@@ -3666,20 +3670,20 @@ class _StringsMisskeyExternalResourceInstallerThemeJaJp extends _StringsMisskeyE
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
-class _StringsMisskeyExternalResourceInstallerMetaJaJp extends _StringsMisskeyExternalResourceInstallerMetaEnUs {
-	_StringsMisskeyExternalResourceInstallerMetaJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerMetaJaJp extends TranslationsMisskeyExternalResourceInstallerMetaEnUs {
+	_TranslationsMisskeyExternalResourceInstallerMetaJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get base => '基本のカラースキーム';
 }
 
 // Path: misskey.externalResourceInstaller_.vendorInfo_
-class _StringsMisskeyExternalResourceInstallerVendorInfoJaJp extends _StringsMisskeyExternalResourceInstallerVendorInfoEnUs {
-	_StringsMisskeyExternalResourceInstallerVendorInfoJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerVendorInfoJaJp extends TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs {
+	_TranslationsMisskeyExternalResourceInstallerVendorInfoJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '配布元情報';
@@ -3688,27 +3692,27 @@ class _StringsMisskeyExternalResourceInstallerVendorInfoJaJp extends _StringsMis
 }
 
 // Path: misskey.externalResourceInstaller_.errors_
-class _StringsMisskeyExternalResourceInstallerErrorsJaJp extends _StringsMisskeyExternalResourceInstallerErrorsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp invalidParams_ = _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp resourceTypeNotSupported_ = _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp failedToFetch_ = _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp hashUnmatched_ = _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp pluginParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp pluginInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp themeParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp themeInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp invalidParams_ = _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp resourceTypeNotSupported_ = _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp failedToFetch_ = _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp hashUnmatched_ = _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp pluginParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp pluginInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp themeParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp themeInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp._(_root);
 }
 
 // Path: misskey.dataSaver_.media_
-class _StringsMisskeyDataSaverMediaJaJp extends _StringsMisskeyDataSaverMediaEnUs {
-	_StringsMisskeyDataSaverMediaJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverMediaJaJp extends TranslationsMisskeyDataSaverMediaEnUs {
+	_TranslationsMisskeyDataSaverMediaJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'メディアの読み込みを無効化';
@@ -3716,10 +3720,10 @@ class _StringsMisskeyDataSaverMediaJaJp extends _StringsMisskeyDataSaverMediaEnU
 }
 
 // Path: misskey.dataSaver_.avatar_
-class _StringsMisskeyDataSaverAvatarJaJp extends _StringsMisskeyDataSaverAvatarEnUs {
-	_StringsMisskeyDataSaverAvatarJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverAvatarJaJp extends TranslationsMisskeyDataSaverAvatarEnUs {
+	_TranslationsMisskeyDataSaverAvatarJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'アイコン画像のアニメーションを無効化';
@@ -3727,10 +3731,10 @@ class _StringsMisskeyDataSaverAvatarJaJp extends _StringsMisskeyDataSaverAvatarE
 }
 
 // Path: misskey.dataSaver_.urlPreview_
-class _StringsMisskeyDataSaverUrlPreviewJaJp extends _StringsMisskeyDataSaverUrlPreviewEnUs {
-	_StringsMisskeyDataSaverUrlPreviewJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverUrlPreviewJaJp extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'URLプレビューのサムネイルを非表示';
@@ -3738,10 +3742,10 @@ class _StringsMisskeyDataSaverUrlPreviewJaJp extends _StringsMisskeyDataSaverUrl
 }
 
 // Path: misskey.dataSaver_.code_
-class _StringsMisskeyDataSaverCodeJaJp extends _StringsMisskeyDataSaverCodeEnUs {
-	_StringsMisskeyDataSaverCodeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverCodeJaJp extends TranslationsMisskeyDataSaverCodeEnUs {
+	_TranslationsMisskeyDataSaverCodeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'コードハイライトを非表示';
@@ -3749,10 +3753,10 @@ class _StringsMisskeyDataSaverCodeJaJp extends _StringsMisskeyDataSaverCodeEnUs 
 }
 
 // Path: misskeyIO.skebStatus_.genres_
-class _StringsMisskeyIOSkebStatusGenresJaJp extends _StringsMisskeyIOSkebStatusGenresEnUs {
-	_StringsMisskeyIOSkebStatusGenresJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyIOSkebStatusGenresJaJp extends TranslationsMisskeyIOSkebStatusGenresEnUs {
+	_TranslationsMisskeyIOSkebStatusGenresJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get art => 'イラスト';
@@ -3765,10 +3769,10 @@ class _StringsMisskeyIOSkebStatusGenresJaJp extends _StringsMisskeyIOSkebStatusG
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _StringsMisskeyInitialTutorialPostNoteVisibilityJaJp extends _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_StringsMisskeyInitialTutorialPostNoteVisibilityJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteVisibilityJaJp extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteVisibilityJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'ノートを表示できる相手を制限できます。';
@@ -3782,33 +3786,33 @@ class _StringsMisskeyInitialTutorialPostNoteVisibilityJaJp extends _StringsMissk
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
-class _StringsMisskeyInitialTutorialPostNoteCwJaJp extends _StringsMisskeyInitialTutorialPostNoteCwEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwJaJp extends TranslationsMisskeyInitialTutorialPostNoteCwEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '内容を隠す（CW）';
 	@override String get description => '本文のかわりに「注釈」に書いた内容が表示されます。「もっと見る」を押すと本文が表示されます。';
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp._(_root);
 	@override String get useCases => 'サーバーのガイドラインにより必要とされるノートに指定したり、ネタバレ投稿やセンシティブな文章を自主規制したりするときに使います。';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => '納豆のフタ開けるのミスったわね…';
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1JaJp extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1JaJp extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'just setting up my msky';
@@ -3817,10 +3821,10 @@ class _StringsMisskeyAchievementsTypesNotes1JaJp extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10JaJp extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10JaJp extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'いくつかのノート';
@@ -3828,10 +3832,10 @@ class _StringsMisskeyAchievementsTypesNotes10JaJp extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100JaJp extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100JaJp extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'たくさんのノート';
@@ -3839,10 +3843,10 @@ class _StringsMisskeyAchievementsTypesNotes100JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500JaJp extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500JaJp extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートまみれ';
@@ -3850,10 +3854,10 @@ class _StringsMisskeyAchievementsTypesNotes500JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000JaJp extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000JaJp extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートの山';
@@ -3861,10 +3865,10 @@ class _StringsMisskeyAchievementsTypesNotes1000JaJp extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000JaJp extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000JaJp extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '湧き出るノート';
@@ -3872,10 +3876,10 @@ class _StringsMisskeyAchievementsTypesNotes5000JaJp extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000JaJp extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000JaJp extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'スーパーノート';
@@ -3883,10 +3887,10 @@ class _StringsMisskeyAchievementsTypesNotes10000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000JaJp extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000JaJp extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ニードモアノート';
@@ -3894,10 +3898,10 @@ class _StringsMisskeyAchievementsTypesNotes20000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000JaJp extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000JaJp extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートノートノート';
@@ -3905,10 +3909,10 @@ class _StringsMisskeyAchievementsTypesNotes30000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000JaJp extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000JaJp extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノート工場';
@@ -3916,10 +3920,10 @@ class _StringsMisskeyAchievementsTypesNotes40000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000JaJp extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000JaJp extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートの惑星';
@@ -3927,10 +3931,10 @@ class _StringsMisskeyAchievementsTypesNotes50000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000JaJp extends _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes60000JaJp extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートクエーサー';
@@ -3938,10 +3942,10 @@ class _StringsMisskeyAchievementsTypesNotes60000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000JaJp extends _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes70000JaJp extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ブラックノートホール';
@@ -3949,10 +3953,10 @@ class _StringsMisskeyAchievementsTypesNotes70000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000JaJp extends _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes80000JaJp extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートギャラクシー';
@@ -3960,10 +3964,10 @@ class _StringsMisskeyAchievementsTypesNotes80000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000JaJp extends _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes90000JaJp extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートバース';
@@ -3971,10 +3975,10 @@ class _StringsMisskeyAchievementsTypesNotes90000JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000JaJp extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000JaJp extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
@@ -3983,10 +3987,10 @@ class _StringsMisskeyAchievementsTypesNotes100000JaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3JaJp extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3JaJp extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ビギナーⅠ';
@@ -3995,10 +3999,10 @@ class _StringsMisskeyAchievementsTypesLogin3JaJp extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7JaJp extends _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin7JaJp extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin7JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ビギナーⅡ';
@@ -4007,10 +4011,10 @@ class _StringsMisskeyAchievementsTypesLogin7JaJp extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15JaJp extends _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin15JaJp extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin15JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ビギナーⅢ';
@@ -4018,10 +4022,10 @@ class _StringsMisskeyAchievementsTypesLogin15JaJp extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30JaJp extends _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin30JaJp extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin30JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ミスキストⅠ';
@@ -4029,10 +4033,10 @@ class _StringsMisskeyAchievementsTypesLogin30JaJp extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60JaJp extends _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin60JaJp extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin60JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ミスキストⅡ';
@@ -4040,10 +4044,10 @@ class _StringsMisskeyAchievementsTypesLogin60JaJp extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100JaJp extends _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin100JaJp extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin100JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ミスキストⅢ';
@@ -4052,10 +4056,10 @@ class _StringsMisskeyAchievementsTypesLogin100JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200JaJp extends _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin200JaJp extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin200JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '常連Ⅰ';
@@ -4063,10 +4067,10 @@ class _StringsMisskeyAchievementsTypesLogin200JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300JaJp extends _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin300JaJp extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin300JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '常連Ⅱ';
@@ -4074,10 +4078,10 @@ class _StringsMisskeyAchievementsTypesLogin300JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400JaJp extends _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin400JaJp extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin400JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '常連Ⅲ';
@@ -4085,10 +4089,10 @@ class _StringsMisskeyAchievementsTypesLogin400JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _StringsMisskeyAchievementsTypesLogin500JaJp extends _StringsMisskeyAchievementsTypesLogin500EnUs {
-	_StringsMisskeyAchievementsTypesLogin500JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin500JaJp extends TranslationsMisskeyAchievementsTypesLogin500EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin500JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ベテランⅠ';
@@ -4097,10 +4101,10 @@ class _StringsMisskeyAchievementsTypesLogin500JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _StringsMisskeyAchievementsTypesLogin600JaJp extends _StringsMisskeyAchievementsTypesLogin600EnUs {
-	_StringsMisskeyAchievementsTypesLogin600JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin600JaJp extends TranslationsMisskeyAchievementsTypesLogin600EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin600JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ベテランⅡ';
@@ -4108,10 +4112,10 @@ class _StringsMisskeyAchievementsTypesLogin600JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _StringsMisskeyAchievementsTypesLogin700JaJp extends _StringsMisskeyAchievementsTypesLogin700EnUs {
-	_StringsMisskeyAchievementsTypesLogin700JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin700JaJp extends TranslationsMisskeyAchievementsTypesLogin700EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin700JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ベテランⅢ';
@@ -4119,10 +4123,10 @@ class _StringsMisskeyAchievementsTypesLogin700JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _StringsMisskeyAchievementsTypesLogin800JaJp extends _StringsMisskeyAchievementsTypesLogin800EnUs {
-	_StringsMisskeyAchievementsTypesLogin800JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin800JaJp extends TranslationsMisskeyAchievementsTypesLogin800EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin800JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートマスターⅠ';
@@ -4130,10 +4134,10 @@ class _StringsMisskeyAchievementsTypesLogin800JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _StringsMisskeyAchievementsTypesLogin900JaJp extends _StringsMisskeyAchievementsTypesLogin900EnUs {
-	_StringsMisskeyAchievementsTypesLogin900JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin900JaJp extends TranslationsMisskeyAchievementsTypesLogin900EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin900JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートマスターⅡ';
@@ -4141,10 +4145,10 @@ class _StringsMisskeyAchievementsTypesLogin900JaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000JaJp extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin1000JaJp extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin1000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ノートマスターⅢ';
@@ -4153,10 +4157,10 @@ class _StringsMisskeyAchievementsTypesLogin1000JaJp extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _StringsMisskeyAchievementsTypesNoteClipped1JaJp extends _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_StringsMisskeyAchievementsTypesNoteClipped1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteClipped1JaJp extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteClipped1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'クリップせずにはいられないな';
@@ -4164,10 +4168,10 @@ class _StringsMisskeyAchievementsTypesNoteClipped1JaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1JaJp extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1JaJp extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '星をみるひと';
@@ -4175,10 +4179,10 @@ class _StringsMisskeyAchievementsTypesNoteFavorited1JaJp extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1JaJp extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1JaJp extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '星が欲しい';
@@ -4186,10 +4190,10 @@ class _StringsMisskeyAchievementsTypesMyNoteFavorited1JaJp extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledJaJp extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledJaJp extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '準備万端';
@@ -4197,10 +4201,10 @@ class _StringsMisskeyAchievementsTypesProfileFilledJaJp extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatJaJp extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatJaJp extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '吾輩は猫である';
@@ -4209,10 +4213,10 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatJaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1JaJp extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing1JaJp extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'はじめてのフォロー';
@@ -4220,10 +4224,10 @@ class _StringsMisskeyAchievementsTypesFollowing1JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10JaJp extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing10JaJp extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing10JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ついてく、ついてく';
@@ -4231,10 +4235,10 @@ class _StringsMisskeyAchievementsTypesFollowing10JaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50JaJp extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing50JaJp extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing50JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '友達たくさん';
@@ -4242,10 +4246,10 @@ class _StringsMisskeyAchievementsTypesFollowing50JaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100JaJp extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing100JaJp extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing100JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '友達100人';
@@ -4253,10 +4257,10 @@ class _StringsMisskeyAchievementsTypesFollowing100JaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300JaJp extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing300JaJp extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing300JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '友達過多';
@@ -4264,10 +4268,10 @@ class _StringsMisskeyAchievementsTypesFollowing300JaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1JaJp extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1JaJp extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'はじめてのフォロワー';
@@ -4275,10 +4279,10 @@ class _StringsMisskeyAchievementsTypesFollowers1JaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10JaJp extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers10JaJp extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers10JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'フォローミー！';
@@ -4286,10 +4290,10 @@ class _StringsMisskeyAchievementsTypesFollowers10JaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50JaJp extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers50JaJp extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers50JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ぞろぞろ';
@@ -4297,10 +4301,10 @@ class _StringsMisskeyAchievementsTypesFollowers50JaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100JaJp extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers100JaJp extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers100JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '人気者';
@@ -4308,10 +4312,10 @@ class _StringsMisskeyAchievementsTypesFollowers100JaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300JaJp extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers300JaJp extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers300JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '一列でお並びください';
@@ -4319,10 +4323,10 @@ class _StringsMisskeyAchievementsTypesFollowers300JaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500JaJp extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers500JaJp extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers500JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '基地局';
@@ -4330,10 +4334,10 @@ class _StringsMisskeyAchievementsTypesFollowers500JaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000JaJp extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1000JaJp extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1000JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'インフルエンサー';
@@ -4341,10 +4345,10 @@ class _StringsMisskeyAchievementsTypesFollowers1000JaJp extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30JaJp extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCollectAchievements30JaJp extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_TranslationsMisskeyAchievementsTypesCollectAchievements30JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '実績コレクター';
@@ -4352,10 +4356,10 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30JaJp extends _Strings
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minJaJp extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewAchievements3minJaJp extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_TranslationsMisskeyAchievementsTypesViewAchievements3minJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '実績好き';
@@ -4363,10 +4367,10 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minJaJp extends _StringsM
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyJaJp extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesILoveMisskeyJaJp extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_TranslationsMisskeyAchievementsTypesILoveMisskeyJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'I Love Misskey';
@@ -4375,10 +4379,10 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyJaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureJaJp extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFoundTreasureJaJp extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_TranslationsMisskeyAchievementsTypesFoundTreasureJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '宝探し';
@@ -4386,10 +4390,10 @@ class _StringsMisskeyAchievementsTypesFoundTreasureJaJp extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minJaJp extends _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient30minJaJp extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient30minJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ひとやすみ';
@@ -4397,10 +4401,10 @@ class _StringsMisskeyAchievementsTypesClient30minJaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _StringsMisskeyAchievementsTypesClient60minJaJp extends _StringsMisskeyAchievementsTypesClient60minEnUs {
-	_StringsMisskeyAchievementsTypesClient60minJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient60minJaJp extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient60minJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskeyの見すぎ';
@@ -4408,10 +4412,10 @@ class _StringsMisskeyAchievementsTypesClient60minJaJp extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'いまのなし';
@@ -4419,10 +4423,10 @@ class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minJaJp extends _Strings
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightJaJp extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAtLateNightJaJp extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAtLateNightJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '夜行性';
@@ -4431,10 +4435,10 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightJaJp extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secJaJp extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAt0min0secJaJp extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAt0min0secJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '時報';
@@ -4443,10 +4447,10 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secJaJp extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteJaJp extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSelfQuoteJaJp extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_TranslationsMisskeyAchievementsTypesSelfQuoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '自己言及';
@@ -4454,10 +4458,10 @@ class _StringsMisskeyAchievementsTypesSelfQuoteJaJp extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmJaJp extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesHtl20npmJaJp extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	_TranslationsMisskeyAchievementsTypesHtl20npmJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '流れるTL';
@@ -4465,10 +4469,10 @@ class _StringsMisskeyAchievementsTypesHtl20npmJaJp extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartJaJp extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartJaJp extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'アナリスト';
@@ -4476,10 +4480,10 @@ class _StringsMisskeyAchievementsTypesViewInstanceChartJaJp extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Hello, world!';
@@ -4487,10 +4491,10 @@ class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadJaJp extends _
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsJaJp extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOpen3windowsJaJp extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_TranslationsMisskeyAchievementsTypesOpen3windowsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'マルチウィンドウ';
@@ -4498,10 +4502,10 @@ class _StringsMisskeyAchievementsTypesOpen3windowsJaJp extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
-class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp extends _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
-	_StringsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp extends TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
+	_TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '循環参照';
@@ -4509,10 +4513,10 @@ class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceJaJp extends _
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadJaJp extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesReactWithoutReadJaJp extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_TranslationsMisskeyAchievementsTypesReactWithoutReadJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ちゃんと読んだ？';
@@ -4520,10 +4524,10 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadJaJp extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereJaJp extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClickedClickHereJaJp extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_TranslationsMisskeyAchievementsTypesClickedClickHereJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ここをクリック';
@@ -4531,10 +4535,10 @@ class _StringsMisskeyAchievementsTypesClickedClickHereJaJp extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyJaJp extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJustPlainLuckyJaJp extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_TranslationsMisskeyAchievementsTypesJustPlainLuckyJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '単なるラッキー';
@@ -4542,10 +4546,10 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyJaJp extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloJaJp extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloJaJp extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '神様コンプレックス';
@@ -4553,10 +4557,10 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloJaJp extends _StringsMisske
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '一周年';
@@ -4564,10 +4568,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1JaJp extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '二周年';
@@ -4575,10 +4579,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2JaJp extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '三周年';
@@ -4586,10 +4590,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3JaJp extends _St
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ハッピーバースデー';
@@ -4597,10 +4601,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayJaJp extends _StringsMis
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'あけましておめでとうございます';
@@ -4609,10 +4613,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayJaJp extends _Strings
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedJaJp extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCookieClickedJaJp extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	_TranslationsMisskeyAchievementsTypesCookieClickedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'クッキーをクリックするゲーム';
@@ -4621,10 +4625,10 @@ class _StringsMisskeyAchievementsTypesCookieClickedJaJp extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _StringsMisskeyAchievementsTypesBrainDiverJaJp extends _StringsMisskeyAchievementsTypesBrainDiverEnUs {
-	_StringsMisskeyAchievementsTypesBrainDiverJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBrainDiverJaJp extends TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
+	_TranslationsMisskeyAchievementsTypesBrainDiverJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Brain Diver';
@@ -4633,10 +4637,10 @@ class _StringsMisskeyAchievementsTypesBrainDiverJaJp extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.smashTestNotificationButton_
-class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp extends _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
-	_StringsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp extends TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
+	_TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'テスト過剰';
@@ -4644,10 +4648,10 @@ class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonJaJp extends _S
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
-class _StringsMisskeyAchievementsTypesTutorialCompletedJaJp extends _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
-	_StringsMisskeyAchievementsTypesTutorialCompletedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesTutorialCompletedJaJp extends TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs {
+	_TranslationsMisskeyAchievementsTypesTutorialCompletedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskey初心者講座 修了証';
@@ -4655,10 +4659,10 @@ class _StringsMisskeyAchievementsTypesTutorialCompletedJaJp extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp extends _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '🤯';
@@ -4666,10 +4670,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadJaJp extends _Strin
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp extends _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ダブル🤯';
@@ -4678,10 +4682,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadJaJp extends 
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteJaJp extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteJaJp extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'ノートID';
@@ -4690,22 +4694,22 @@ class _StringsMisskeyPagesBlocksNoteJaJp extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'メール';
 	@override String get webhook => 'Webhook';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp captions_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
-class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp extends _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'パラメータが不足しています';
@@ -4713,10 +4717,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsJaJp extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
-class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp extends _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'この外部リソースには対応していません';
@@ -4724,10 +4728,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedJaJp
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
-class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp extends _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'データの取得に失敗しました';
@@ -4736,10 +4740,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchJaJp extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
-class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp extends _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '正しいデータが取得できませんでした';
@@ -4747,10 +4751,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedJaJp extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp extends _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'AiScript エラー';
@@ -4758,10 +4762,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedJaJp extend
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp extends _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'プラグインのインストールに失敗しました';
@@ -4769,10 +4773,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedJaJp exte
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp extends _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'テーマ解析エラー';
@@ -4780,10 +4784,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedJaJp extends
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp extends _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp extends TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'テーマのインストールに失敗しました';
@@ -4791,10 +4795,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp exten
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
-class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp extends _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp extends TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get cw => '飯テロ注意';
@@ -4802,10 +4806,10 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteJaJp extends _StringsMi
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp._(_StringsJaJp root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
 
-	@override final _StringsJaJp _root; // ignore: unused_field
+	final TranslationsJaJp _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'モデレーター権限を持つユーザーのメールアドレスに通知を送ります(通報を受けた時のみ)';

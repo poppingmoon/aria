@@ -6,7 +6,7 @@ part of 'id_gen_method_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$idGenMethodHash() => r'c13bff0f092e16cbd8c26187e86e40399932106f';
+String _$idGenMethodHash() => r'4f44a0ae972e787cadd83071e7a8dfc007987f35';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class IdGenMethodProvider extends AutoDisposeFutureProvider<IdGenMethod> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin IdGenMethodRef on AutoDisposeFutureProviderRef<IdGenMethod> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -155,4 +157,4 @@ class _IdGenMethodProviderElement
   Account get account => (origin as IdGenMethodProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

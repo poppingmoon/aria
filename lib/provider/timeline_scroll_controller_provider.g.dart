@@ -7,7 +7,7 @@ part of 'timeline_scroll_controller_provider.dart';
 // **************************************************************************
 
 String _$timelineScrollControllerHash() =>
-    r'd6454866e60e3041fd0d4c4c5a0b450fcd4ce8cd';
+    r'fe1f323afac7d86b41998b7f4ef17d90b61cb29b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -145,6 +145,8 @@ class TimelineScrollControllerProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TimelineScrollControllerRef
     on AutoDisposeProviderRef<Raw<ScrollController>> {
   /// The parameter `tabSettings` of this provider.
@@ -161,4 +163,4 @@ class _TimelineScrollControllerProviderElement
       (origin as TimelineScrollControllerProvider).tabSettings;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

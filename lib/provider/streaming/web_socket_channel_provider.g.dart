@@ -6,7 +6,7 @@ part of 'web_socket_channel_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$webSocketChannelHash() => r'3947036910d9375cb7af87933f1abd16a0d2719a';
+String _$webSocketChannelHash() => r'5ddea08e6600a5706ea0d761fc99e39d820989ad';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin WebSocketChannelRef on AutoDisposeProviderRef<WebSocketChannel> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -156,4 +158,4 @@ class _WebSocketChannelProviderElement
   Account get account => (origin as WebSocketChannelProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

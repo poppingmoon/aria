@@ -6,7 +6,7 @@ part of 'avatar_decorations_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$avatarDecorationsHash() => r'684ec3d1d03221cc976823f2a047aa88ef952401';
+String _$avatarDecorationsHash() => r'9a76ac50fb4f87d648bbae19499c5fc8566c4884';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -147,6 +147,8 @@ class AvatarDecorationsProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin AvatarDecorationsRef
     on AutoDisposeFutureProviderRef<List<GetAvatarDecorationsResponse>> {
   /// The parameter `account` of this provider.
@@ -162,4 +164,4 @@ class _AvatarDecorationsProviderElement
   Account get account => (origin as AvatarDecorationsProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

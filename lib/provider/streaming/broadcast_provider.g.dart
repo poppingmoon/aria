@@ -6,7 +6,7 @@ part of 'broadcast_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$broadcastHash() => r'dcce507f57465bff0eb6e2689e28095fe24bee60';
+String _$broadcastHash() => r'7230fae404420f7385521bf9c5f4df36f101925e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -141,6 +141,8 @@ class BroadcastProvider extends AutoDisposeStreamProvider<Broadcast> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin BroadcastRef on AutoDisposeStreamProviderRef<Broadcast> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -154,4 +156,4 @@ class _BroadcastProviderElement
   Account get account => (origin as BroadcastProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

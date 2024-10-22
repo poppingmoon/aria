@@ -6,7 +6,7 @@ part of 'note_is_long_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteIsLongHash() => r'cc405c6f9f06671319bf3138dcbe55823f663ea5';
+String _$noteIsLongHash() => r'0ba45ba6e079aaefe6c231e422e163c4ee6358ad';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,6 +154,8 @@ class NoteIsLongProvider extends AutoDisposeProvider<bool> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin NoteIsLongRef on AutoDisposeProviderRef<bool> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -172,4 +174,4 @@ class _NoteIsLongProviderElement extends AutoDisposeProviderElement<bool>
   String get noteId => (origin as NoteIsLongProvider).noteId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

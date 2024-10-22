@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsUkUa extends Translations {
+class TranslationsUkUa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsUkUa.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsUkUa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.ukUa,
@@ -18,23 +21,23 @@ class _StringsUkUa extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <uk-UA>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsUkUa _root = this; // ignore: unused_field
+	late final TranslationsUkUa _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaUkUa aria = _StringsAriaUkUa._(_root);
-	@override late final _StringsMisskeyUkUa misskey = _StringsMisskeyUkUa._(_root);
+	@override late final _TranslationsAriaUkUa aria = _TranslationsAriaUkUa._(_root);
+	@override late final _TranslationsMisskeyUkUa misskey = _TranslationsMisskeyUkUa._(_root);
 }
 
 // Path: aria
-class _StringsAriaUkUa extends _StringsAriaEnUs {
-	_StringsAriaUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsAriaUkUa extends TranslationsAriaEnUs {
+	_TranslationsAriaUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -66,10 +69,10 @@ class _StringsAriaUkUa extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
-	_StringsMisskeyUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'Українська';
@@ -983,84 +986,84 @@ class _StringsMisskeyUkUa extends _StringsMisskeyEnUs {
 	@override String get sourceCode => 'Вихідний код';
 	@override String get flip => 'Перевернути';
 	@override String lastNDays({required Object n}) => 'Останні ${n} днів';
-	@override late final _StringsMisskeyDeliveryUkUa delivery_ = _StringsMisskeyDeliveryUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsUkUa achievements_ = _StringsMisskeyAchievementsUkUa._(_root);
-	@override late final _StringsMisskeyRoleUkUa role_ = _StringsMisskeyRoleUkUa._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionUkUa sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionUkUa._(_root);
-	@override late final _StringsMisskeyEmailUnavailableUkUa emailUnavailable_ = _StringsMisskeyEmailUnavailableUkUa._(_root);
-	@override late final _StringsMisskeyFfVisibilityUkUa ffVisibility_ = _StringsMisskeyFfVisibilityUkUa._(_root);
-	@override late final _StringsMisskeySignupUkUa signup_ = _StringsMisskeySignupUkUa._(_root);
-	@override late final _StringsMisskeyAccountDeleteUkUa accountDelete_ = _StringsMisskeyAccountDeleteUkUa._(_root);
-	@override late final _StringsMisskeyAdUkUa ad_ = _StringsMisskeyAdUkUa._(_root);
-	@override late final _StringsMisskeyGalleryUkUa gallery_ = _StringsMisskeyGalleryUkUa._(_root);
-	@override late final _StringsMisskeyEmailUkUa email_ = _StringsMisskeyEmailUkUa._(_root);
-	@override late final _StringsMisskeyPluginUkUa plugin_ = _StringsMisskeyPluginUkUa._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsUkUa preferencesBackups_ = _StringsMisskeyPreferencesBackupsUkUa._(_root);
-	@override late final _StringsMisskeyRegistryUkUa registry_ = _StringsMisskeyRegistryUkUa._(_root);
-	@override late final _StringsMisskeyAboutMisskeyUkUa aboutMisskey_ = _StringsMisskeyAboutMisskeyUkUa._(_root);
-	@override late final _StringsMisskeyInstanceTickerUkUa instanceTicker_ = _StringsMisskeyInstanceTickerUkUa._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorUkUa serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorUkUa._(_root);
-	@override late final _StringsMisskeyChannelUkUa channel_ = _StringsMisskeyChannelUkUa._(_root);
-	@override late final _StringsMisskeyMenuDisplayUkUa menuDisplay_ = _StringsMisskeyMenuDisplayUkUa._(_root);
-	@override late final _StringsMisskeyWordMuteUkUa wordMute_ = _StringsMisskeyWordMuteUkUa._(_root);
-	@override late final _StringsMisskeyInstanceMuteUkUa instanceMute_ = _StringsMisskeyInstanceMuteUkUa._(_root);
-	@override late final _StringsMisskeyThemeUkUa theme_ = _StringsMisskeyThemeUkUa._(_root);
-	@override late final _StringsMisskeySfxUkUa sfx_ = _StringsMisskeySfxUkUa._(_root);
-	@override late final _StringsMisskeyAgoUkUa ago_ = _StringsMisskeyAgoUkUa._(_root);
-	@override late final _StringsMisskeyTimeUkUa time_ = _StringsMisskeyTimeUkUa._(_root);
-	@override late final _StringsMisskeyX2faUkUa x2fa_ = _StringsMisskeyX2faUkUa._(_root);
-	@override late final _StringsMisskeyPermissionsUkUa permissions_ = _StringsMisskeyPermissionsUkUa._(_root);
-	@override late final _StringsMisskeyAuthUkUa auth_ = _StringsMisskeyAuthUkUa._(_root);
-	@override late final _StringsMisskeyAntennaSourcesUkUa antennaSources_ = _StringsMisskeyAntennaSourcesUkUa._(_root);
-	@override late final _StringsMisskeyWeekdayUkUa weekday_ = _StringsMisskeyWeekdayUkUa._(_root);
-	@override late final _StringsMisskeyWidgetsUkUa widgets_ = _StringsMisskeyWidgetsUkUa._(_root);
-	@override late final _StringsMisskeyCwUkUa cw_ = _StringsMisskeyCwUkUa._(_root);
-	@override late final _StringsMisskeyPollUkUa poll_ = _StringsMisskeyPollUkUa._(_root);
-	@override late final _StringsMisskeyVisibilityUkUa visibility_ = _StringsMisskeyVisibilityUkUa._(_root);
-	@override late final _StringsMisskeyPostFormUkUa postForm_ = _StringsMisskeyPostFormUkUa._(_root);
-	@override late final _StringsMisskeyProfileUkUa profile_ = _StringsMisskeyProfileUkUa._(_root);
-	@override late final _StringsMisskeyExportOrImportUkUa exportOrImport_ = _StringsMisskeyExportOrImportUkUa._(_root);
-	@override late final _StringsMisskeyChartsUkUa charts_ = _StringsMisskeyChartsUkUa._(_root);
-	@override late final _StringsMisskeyInstanceChartsUkUa instanceCharts_ = _StringsMisskeyInstanceChartsUkUa._(_root);
-	@override late final _StringsMisskeyTimelinesUkUa timelines_ = _StringsMisskeyTimelinesUkUa._(_root);
-	@override late final _StringsMisskeyPlayUkUa play_ = _StringsMisskeyPlayUkUa._(_root);
-	@override late final _StringsMisskeyPagesUkUa pages_ = _StringsMisskeyPagesUkUa._(_root);
-	@override late final _StringsMisskeyRelayStatusUkUa relayStatus_ = _StringsMisskeyRelayStatusUkUa._(_root);
-	@override late final _StringsMisskeyNotificationUkUa notification_ = _StringsMisskeyNotificationUkUa._(_root);
-	@override late final _StringsMisskeyDeckUkUa deck_ = _StringsMisskeyDeckUkUa._(_root);
-	@override late final _StringsMisskeyWebhookSettingsUkUa webhookSettings_ = _StringsMisskeyWebhookSettingsUkUa._(_root);
-	@override late final _StringsMisskeyAbuseReportUkUa abuseReport_ = _StringsMisskeyAbuseReportUkUa._(_root);
-	@override late final _StringsMisskeyModerationLogTypesUkUa moderationLogTypes_ = _StringsMisskeyModerationLogTypesUkUa._(_root);
-	@override late final _StringsMisskeyReversiUkUa reversi_ = _StringsMisskeyReversiUkUa._(_root);
+	@override late final _TranslationsMisskeyDeliveryUkUa delivery_ = _TranslationsMisskeyDeliveryUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsUkUa achievements_ = _TranslationsMisskeyAchievementsUkUa._(_root);
+	@override late final _TranslationsMisskeyRoleUkUa role_ = _TranslationsMisskeyRoleUkUa._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionUkUa sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionUkUa._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableUkUa emailUnavailable_ = _TranslationsMisskeyEmailUnavailableUkUa._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityUkUa ffVisibility_ = _TranslationsMisskeyFfVisibilityUkUa._(_root);
+	@override late final _TranslationsMisskeySignupUkUa signup_ = _TranslationsMisskeySignupUkUa._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteUkUa accountDelete_ = _TranslationsMisskeyAccountDeleteUkUa._(_root);
+	@override late final _TranslationsMisskeyAdUkUa ad_ = _TranslationsMisskeyAdUkUa._(_root);
+	@override late final _TranslationsMisskeyGalleryUkUa gallery_ = _TranslationsMisskeyGalleryUkUa._(_root);
+	@override late final _TranslationsMisskeyEmailUkUa email_ = _TranslationsMisskeyEmailUkUa._(_root);
+	@override late final _TranslationsMisskeyPluginUkUa plugin_ = _TranslationsMisskeyPluginUkUa._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsUkUa preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsUkUa._(_root);
+	@override late final _TranslationsMisskeyRegistryUkUa registry_ = _TranslationsMisskeyRegistryUkUa._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyUkUa aboutMisskey_ = _TranslationsMisskeyAboutMisskeyUkUa._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerUkUa instanceTicker_ = _TranslationsMisskeyInstanceTickerUkUa._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorUkUa serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorUkUa._(_root);
+	@override late final _TranslationsMisskeyChannelUkUa channel_ = _TranslationsMisskeyChannelUkUa._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayUkUa menuDisplay_ = _TranslationsMisskeyMenuDisplayUkUa._(_root);
+	@override late final _TranslationsMisskeyWordMuteUkUa wordMute_ = _TranslationsMisskeyWordMuteUkUa._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteUkUa instanceMute_ = _TranslationsMisskeyInstanceMuteUkUa._(_root);
+	@override late final _TranslationsMisskeyThemeUkUa theme_ = _TranslationsMisskeyThemeUkUa._(_root);
+	@override late final _TranslationsMisskeySfxUkUa sfx_ = _TranslationsMisskeySfxUkUa._(_root);
+	@override late final _TranslationsMisskeyAgoUkUa ago_ = _TranslationsMisskeyAgoUkUa._(_root);
+	@override late final _TranslationsMisskeyTimeUkUa time_ = _TranslationsMisskeyTimeUkUa._(_root);
+	@override late final _TranslationsMisskeyX2faUkUa x2fa_ = _TranslationsMisskeyX2faUkUa._(_root);
+	@override late final _TranslationsMisskeyPermissionsUkUa permissions_ = _TranslationsMisskeyPermissionsUkUa._(_root);
+	@override late final _TranslationsMisskeyAuthUkUa auth_ = _TranslationsMisskeyAuthUkUa._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesUkUa antennaSources_ = _TranslationsMisskeyAntennaSourcesUkUa._(_root);
+	@override late final _TranslationsMisskeyWeekdayUkUa weekday_ = _TranslationsMisskeyWeekdayUkUa._(_root);
+	@override late final _TranslationsMisskeyWidgetsUkUa widgets_ = _TranslationsMisskeyWidgetsUkUa._(_root);
+	@override late final _TranslationsMisskeyCwUkUa cw_ = _TranslationsMisskeyCwUkUa._(_root);
+	@override late final _TranslationsMisskeyPollUkUa poll_ = _TranslationsMisskeyPollUkUa._(_root);
+	@override late final _TranslationsMisskeyVisibilityUkUa visibility_ = _TranslationsMisskeyVisibilityUkUa._(_root);
+	@override late final _TranslationsMisskeyPostFormUkUa postForm_ = _TranslationsMisskeyPostFormUkUa._(_root);
+	@override late final _TranslationsMisskeyProfileUkUa profile_ = _TranslationsMisskeyProfileUkUa._(_root);
+	@override late final _TranslationsMisskeyExportOrImportUkUa exportOrImport_ = _TranslationsMisskeyExportOrImportUkUa._(_root);
+	@override late final _TranslationsMisskeyChartsUkUa charts_ = _TranslationsMisskeyChartsUkUa._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsUkUa instanceCharts_ = _TranslationsMisskeyInstanceChartsUkUa._(_root);
+	@override late final _TranslationsMisskeyTimelinesUkUa timelines_ = _TranslationsMisskeyTimelinesUkUa._(_root);
+	@override late final _TranslationsMisskeyPlayUkUa play_ = _TranslationsMisskeyPlayUkUa._(_root);
+	@override late final _TranslationsMisskeyPagesUkUa pages_ = _TranslationsMisskeyPagesUkUa._(_root);
+	@override late final _TranslationsMisskeyRelayStatusUkUa relayStatus_ = _TranslationsMisskeyRelayStatusUkUa._(_root);
+	@override late final _TranslationsMisskeyNotificationUkUa notification_ = _TranslationsMisskeyNotificationUkUa._(_root);
+	@override late final _TranslationsMisskeyDeckUkUa deck_ = _TranslationsMisskeyDeckUkUa._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsUkUa webhookSettings_ = _TranslationsMisskeyWebhookSettingsUkUa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportUkUa abuseReport_ = _TranslationsMisskeyAbuseReportUkUa._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesUkUa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesUkUa._(_root);
+	@override late final _TranslationsMisskeyReversiUkUa reversi_ = _TranslationsMisskeyReversiUkUa._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryUkUa extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryUkUa extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'Призупинено';
-	@override late final _StringsMisskeyDeliveryTypeUkUa type_ = _StringsMisskeyDeliveryTypeUkUa._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeUkUa type_ = _TranslationsMisskeyDeliveryTypeUkUa._(_root);
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsUkUa extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsUkUa extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => 'Відкрито';
-	@override late final _StringsMisskeyAchievementsTypesUkUa types_ = _StringsMisskeyAchievementsTypesUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesUkUa types_ = _TranslationsMisskeyAchievementsTypesUkUa._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleUkUa extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleUkUa extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'Нова роль';
@@ -1071,14 +1074,14 @@ class _StringsMisskeyRoleUkUa extends _StringsMisskeyRoleEnUs {
 	@override String get assignTarget => 'Призначити';
 	@override String get manual => 'Вручну';
 	@override String get priority => 'Пріоритет';
-	@override late final _StringsMisskeyRolePriorityUkUa priority_ = _StringsMisskeyRolePriorityUkUa._(_root);
+	@override late final _TranslationsMisskeyRolePriorityUkUa priority_ = _TranslationsMisskeyRolePriorityUkUa._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionUkUa extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionUkUa extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get sensitivity => 'Чутливість детектування';
@@ -1087,10 +1090,10 @@ class _StringsMisskeySensitiveMediaDetectionUkUa extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableUkUa extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableUkUa extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => 'Ця email адреса вже використовується';
@@ -1101,10 +1104,10 @@ class _StringsMisskeyEmailUnavailableUkUa extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityUkUa extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityUkUa extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Опублікувати';
@@ -1113,10 +1116,10 @@ class _StringsMisskeyFfVisibilityUkUa extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupUkUa extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupUkUa extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'Майже готово';
@@ -1124,10 +1127,10 @@ class _StringsMisskeySignupUkUa extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteUkUa extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteUkUa extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'Видалити акаунт';
@@ -1137,10 +1140,10 @@ class _StringsMisskeyAccountDeleteUkUa extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdUkUa extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdUkUa extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'Назад';
@@ -1149,10 +1152,10 @@ class _StringsMisskeyAdUkUa extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryUkUa extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryUkUa extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => 'Моя галерея';
@@ -1162,21 +1165,21 @@ class _StringsMisskeyGalleryUkUa extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailUkUa extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUkUa extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowUkUa follow_ = _StringsMisskeyEmailFollowUkUa._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestUkUa receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestUkUa._(_root);
+	@override late final _TranslationsMisskeyEmailFollowUkUa follow_ = _TranslationsMisskeyEmailFollowUkUa._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestUkUa receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestUkUa._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginUkUa extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginUkUa extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'Встановити плагін';
@@ -1186,10 +1189,10 @@ class _StringsMisskeyPluginUkUa extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsUkUa extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsUkUa extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => 'Створені бекапи';
@@ -1205,10 +1208,10 @@ class _StringsMisskeyPreferencesBackupsUkUa extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryUkUa extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryUkUa extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'Область дії';
@@ -1219,10 +1222,10 @@ class _StringsMisskeyRegistryUkUa extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyUkUa extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyUkUa extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey - це програмне забезпечення з відкритим кодом, яке розробляє syuilo з 2014 року.';
@@ -1236,10 +1239,10 @@ class _StringsMisskeyAboutMisskeyUkUa extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerUkUa extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerUkUa extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Не відображати';
@@ -1248,10 +1251,10 @@ class _StringsMisskeyInstanceTickerUkUa extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorUkUa extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorUkUa extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => 'Автоматично перезавантажити';
@@ -1260,10 +1263,10 @@ class _StringsMisskeyServerDisconnectedBehaviorUkUa extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelUkUa extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelUkUa extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'Створити канал';
@@ -1277,10 +1280,10 @@ class _StringsMisskeyChannelUkUa extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayUkUa extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayUkUa extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => 'Збоку';
@@ -1290,10 +1293,10 @@ class _StringsMisskeyMenuDisplayUkUa extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteUkUa extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteUkUa extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'Заглушені слова';
@@ -1302,10 +1305,10 @@ class _StringsMisskeyWordMuteUkUa extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteUkUa extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteUkUa extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription2 => 'Розділяйте новими рядками';
@@ -1314,10 +1317,10 @@ class _StringsMisskeyInstanceMuteUkUa extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeUkUa extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeUkUa extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'Оглянути теми';
@@ -1344,14 +1347,14 @@ class _StringsMisskeyThemeUkUa extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'Введіть назву константи';
 	@override String get importInfo => 'Вставляючи сюди код теми, ви можете добавити її до редактору тем';
 	@override String deleteConstantConfirm({required Object const_}) => 'Ви дійсно бажаєте видалити константу "${const_}"?';
-	@override late final _StringsMisskeyThemeKeysUkUa keys = _StringsMisskeyThemeKeysUkUa._(_root);
+	@override late final _TranslationsMisskeyThemeKeysUkUa keys = _TranslationsMisskeyThemeKeysUkUa._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxUkUa extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxUkUa extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Нотатки';
@@ -1360,10 +1363,10 @@ class _StringsMisskeySfxUkUa extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoUkUa extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoUkUa extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => 'Майбутнє';
@@ -1379,10 +1382,10 @@ class _StringsMisskeyAgoUkUa extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeUkUa extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeUkUa extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => 'с';
@@ -1392,10 +1395,10 @@ class _StringsMisskeyTimeUkUa extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faUkUa extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faUkUa extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => 'Двофакторна автентифікація вже налаштована.';
@@ -1407,10 +1410,10 @@ class _StringsMisskeyX2faUkUa extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsUkUa extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsUkUa extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'Переглядати дані профілю';
@@ -1445,10 +1448,10 @@ class _StringsMisskeyPermissionsUkUa extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthUkUa extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthUkUa extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String shareAccess({required Object name}) => 'Ви хочете надати "${name}" доступ до цього акаунту?';
@@ -1457,10 +1460,10 @@ class _StringsMisskeyAuthUkUa extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesUkUa extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesUkUa extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Всі нотатки';
@@ -1468,10 +1471,10 @@ class _StringsMisskeyAntennaSourcesUkUa extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayUkUa extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayUkUa extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => 'Неділя';
@@ -1484,10 +1487,10 @@ class _StringsMisskeyWeekdayUkUa extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsUkUa extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUkUa extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Профіль';
@@ -1514,14 +1517,14 @@ class _StringsMisskeyWidgetsUkUa extends _StringsMisskeyWidgetsEnUs {
 	@override String get aiscript => 'Консоль AiScript';
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Список користувачів';
-	@override late final _StringsMisskeyWidgetsUserListUkUa userList_ = _StringsMisskeyWidgetsUserListUkUa._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListUkUa userList_ = _TranslationsMisskeyWidgetsUserListUkUa._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwUkUa extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwUkUa extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => 'Сховати';
@@ -1531,10 +1534,10 @@ class _StringsMisskeyCwUkUa extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollUkUa extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollUkUa extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'Потрібні принаймні два варіанти.';
@@ -1561,10 +1564,10 @@ class _StringsMisskeyPollUkUa extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityUkUa extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityUkUa extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Публічний';
@@ -1578,23 +1581,23 @@ class _StringsMisskeyVisibilityUkUa extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormUkUa extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormUkUa extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'Відповідь на цю нотатку...';
 	@override String get quotePlaceholder => 'Прокоментуйте цю нотатку...';
 	@override String get channelPlaceholder => 'Опублікувати в каналі';
-	@override late final _StringsMisskeyPostFormPlaceholdersUkUa placeholders_ = _StringsMisskeyPostFormPlaceholdersUkUa._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersUkUa placeholders_ = _TranslationsMisskeyPostFormPlaceholdersUkUa._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileUkUa extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileUkUa extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Ім\'я';
@@ -1611,10 +1614,10 @@ class _StringsMisskeyProfileUkUa extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportUkUa extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportUkUa extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'Всі нотатки';
@@ -1628,10 +1631,10 @@ class _StringsMisskeyExportOrImportUkUa extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsUkUa extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsUkUa extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Федіверс';
@@ -1648,10 +1651,10 @@ class _StringsMisskeyChartsUkUa extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsUkUa extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsUkUa extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'Запити';
@@ -1667,10 +1670,10 @@ class _StringsMisskeyInstanceChartsUkUa extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesUkUa extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesUkUa extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Домівка';
@@ -1680,10 +1683,10 @@ class _StringsMisskeyTimelinesUkUa extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayUkUa extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayUkUa extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get viewSource => 'Переглянути вихідний код';
@@ -1694,10 +1697,10 @@ class _StringsMisskeyPlayUkUa extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesUkUa extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesUkUa extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'Створити сторінку';
@@ -1737,14 +1740,14 @@ class _StringsMisskeyPagesUkUa extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'Контент';
 	@override String get inputBlocks => 'Ввід';
 	@override String get specialBlocks => 'Особливе';
-	@override late final _StringsMisskeyPagesBlocksUkUa blocks = _StringsMisskeyPagesBlocksUkUa._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksUkUa blocks = _TranslationsMisskeyPagesBlocksUkUa._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusUkUa extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusUkUa extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'Очікує затвердження';
@@ -1753,10 +1756,10 @@ class _StringsMisskeyRelayStatusUkUa extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationUkUa extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationUkUa extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'Файл успішно завантажено';
@@ -1768,15 +1771,15 @@ class _StringsMisskeyNotificationUkUa extends _StringsMisskeyNotificationEnUs {
 	@override String get youReceivedFollowRequest => 'Ви отримали запит на підписку';
 	@override String get yourFollowRequestAccepted => 'Запит на підписку прийнято';
 	@override String get achievementEarned => 'Досягнення відкрито';
-	@override late final _StringsMisskeyNotificationTypesUkUa types_ = _StringsMisskeyNotificationTypesUkUa._(_root);
-	@override late final _StringsMisskeyNotificationActionsUkUa actions_ = _StringsMisskeyNotificationActionsUkUa._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesUkUa types_ = _TranslationsMisskeyNotificationTypesUkUa._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsUkUa actions_ = _TranslationsMisskeyNotificationActionsUkUa._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckUkUa extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckUkUa extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'Завжди показувати головну колонку';
@@ -1793,14 +1796,14 @@ class _StringsMisskeyDeckUkUa extends _StringsMisskeyDeckEnUs {
 	@override String get deleteProfile => 'Видалити профіль';
 	@override String get introduction => 'Створіть для себе ідеальний інтерфейс, вільно розташувавши стовпці!';
 	@override String get widgetsIntroduction => 'Будь ласка, виберіть «Редагувати віджети» в меню стовпців і додайте віджет.';
-	@override late final _StringsMisskeyDeckColumnsUkUa columns_ = _StringsMisskeyDeckColumnsUkUa._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsUkUa columns_ = _TranslationsMisskeyDeckColumnsUkUa._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsUkUa extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsUkUa extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Ім\'я';
@@ -1808,20 +1811,20 @@ class _StringsMisskeyWebhookSettingsUkUa extends _StringsMisskeyWebhookSettingsE
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportUkUa extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportUkUa extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientUkUa notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientUkUa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientUkUa notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientUkUa._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesUkUa extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesUkUa extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'Призупинити';
@@ -1829,110 +1832,110 @@ class _StringsMisskeyModerationLogTypesUkUa extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiUkUa extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiUkUa extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'Всього';
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeUkUa extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeUkUa extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Публікація';
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesUkUa extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesUkUa extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1UkUa notes1_ = _StringsMisskeyAchievementsTypesNotes1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10UkUa notes10_ = _StringsMisskeyAchievementsTypesNotes10UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100UkUa notes100_ = _StringsMisskeyAchievementsTypesNotes100UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500UkUa notes500_ = _StringsMisskeyAchievementsTypesNotes500UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000UkUa notes1000_ = _StringsMisskeyAchievementsTypesNotes1000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000UkUa notes5000_ = _StringsMisskeyAchievementsTypesNotes5000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000UkUa notes10000_ = _StringsMisskeyAchievementsTypesNotes10000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000UkUa notes20000_ = _StringsMisskeyAchievementsTypesNotes20000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000UkUa notes30000_ = _StringsMisskeyAchievementsTypesNotes30000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000UkUa notes40000_ = _StringsMisskeyAchievementsTypesNotes40000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000UkUa notes50000_ = _StringsMisskeyAchievementsTypesNotes50000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes60000UkUa notes60000_ = _StringsMisskeyAchievementsTypesNotes60000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes70000UkUa notes70000_ = _StringsMisskeyAchievementsTypesNotes70000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes80000UkUa notes80000_ = _StringsMisskeyAchievementsTypesNotes80000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes90000UkUa notes90000_ = _StringsMisskeyAchievementsTypesNotes90000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000UkUa notes100000_ = _StringsMisskeyAchievementsTypesNotes100000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3UkUa login3_ = _StringsMisskeyAchievementsTypesLogin3UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin7UkUa login7_ = _StringsMisskeyAchievementsTypesLogin7UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin15UkUa login15_ = _StringsMisskeyAchievementsTypesLogin15UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin30UkUa login30_ = _StringsMisskeyAchievementsTypesLogin30UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin60UkUa login60_ = _StringsMisskeyAchievementsTypesLogin60UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin100UkUa login100_ = _StringsMisskeyAchievementsTypesLogin100UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin200UkUa login200_ = _StringsMisskeyAchievementsTypesLogin200UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin300UkUa login300_ = _StringsMisskeyAchievementsTypesLogin300UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin400UkUa login400_ = _StringsMisskeyAchievementsTypesLogin400UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin500UkUa login500_ = _StringsMisskeyAchievementsTypesLogin500UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin600UkUa login600_ = _StringsMisskeyAchievementsTypesLogin600UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin700UkUa login700_ = _StringsMisskeyAchievementsTypesLogin700UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin800UkUa login800_ = _StringsMisskeyAchievementsTypesLogin800UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin900UkUa login900_ = _StringsMisskeyAchievementsTypesLogin900UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin1000UkUa login1000_ = _StringsMisskeyAchievementsTypesLogin1000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteClipped1UkUa noteClipped1_ = _StringsMisskeyAchievementsTypesNoteClipped1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1UkUa noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1UkUa myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledUkUa profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatUkUa markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing1UkUa following1_ = _StringsMisskeyAchievementsTypesFollowing1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing10UkUa following10_ = _StringsMisskeyAchievementsTypesFollowing10UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing50UkUa following50_ = _StringsMisskeyAchievementsTypesFollowing50UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing100UkUa following100_ = _StringsMisskeyAchievementsTypesFollowing100UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing300UkUa following300_ = _StringsMisskeyAchievementsTypesFollowing300UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1UkUa followers1_ = _StringsMisskeyAchievementsTypesFollowers1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers10UkUa followers10_ = _StringsMisskeyAchievementsTypesFollowers10UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers50UkUa followers50_ = _StringsMisskeyAchievementsTypesFollowers50UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers100UkUa followers100_ = _StringsMisskeyAchievementsTypesFollowers100UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers300UkUa followers300_ = _StringsMisskeyAchievementsTypesFollowers300UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers500UkUa followers500_ = _StringsMisskeyAchievementsTypesFollowers500UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1000UkUa followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30UkUa collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minUkUa viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyUkUa iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFoundTreasureUkUa foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient30minUkUa client30min_ = _StringsMisskeyAchievementsTypesClient30minUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightUkUa postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secUkUa postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSelfQuoteUkUa selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesHtl20npmUkUa htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartUkUa viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadUkUa reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClickedClickHereUkUa clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyUkUa justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloUkUa setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa passedSinceAccountCreated2_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa passedSinceAccountCreated3_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCookieClickedUkUa cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedUkUa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBrainDiverUkUa brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1UkUa notes1_ = _TranslationsMisskeyAchievementsTypesNotes1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10UkUa notes10_ = _TranslationsMisskeyAchievementsTypesNotes10UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100UkUa notes100_ = _TranslationsMisskeyAchievementsTypesNotes100UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500UkUa notes500_ = _TranslationsMisskeyAchievementsTypesNotes500UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000UkUa notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000UkUa notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000UkUa notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000UkUa notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000UkUa notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000UkUa notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000UkUa notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000UkUa notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000UkUa notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000UkUa notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000UkUa notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000UkUa notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3UkUa login3_ = _TranslationsMisskeyAchievementsTypesLogin3UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin7UkUa login7_ = _TranslationsMisskeyAchievementsTypesLogin7UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin15UkUa login15_ = _TranslationsMisskeyAchievementsTypesLogin15UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin30UkUa login30_ = _TranslationsMisskeyAchievementsTypesLogin30UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin60UkUa login60_ = _TranslationsMisskeyAchievementsTypesLogin60UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin100UkUa login100_ = _TranslationsMisskeyAchievementsTypesLogin100UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin200UkUa login200_ = _TranslationsMisskeyAchievementsTypesLogin200UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin300UkUa login300_ = _TranslationsMisskeyAchievementsTypesLogin300UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin400UkUa login400_ = _TranslationsMisskeyAchievementsTypesLogin400UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin500UkUa login500_ = _TranslationsMisskeyAchievementsTypesLogin500UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin600UkUa login600_ = _TranslationsMisskeyAchievementsTypesLogin600UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin700UkUa login700_ = _TranslationsMisskeyAchievementsTypesLogin700UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin800UkUa login800_ = _TranslationsMisskeyAchievementsTypesLogin800UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin900UkUa login900_ = _TranslationsMisskeyAchievementsTypesLogin900UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin1000UkUa login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1UkUa noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1UkUa noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1UkUa myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledUkUa profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatUkUa markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing1UkUa following1_ = _TranslationsMisskeyAchievementsTypesFollowing1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing10UkUa following10_ = _TranslationsMisskeyAchievementsTypesFollowing10UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing50UkUa following50_ = _TranslationsMisskeyAchievementsTypesFollowing50UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing100UkUa following100_ = _TranslationsMisskeyAchievementsTypesFollowing100UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing300UkUa following300_ = _TranslationsMisskeyAchievementsTypesFollowing300UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1UkUa followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers10UkUa followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers50UkUa followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers100UkUa followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers300UkUa followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers500UkUa followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000UkUa followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30UkUa collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minUkUa viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyUkUa iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureUkUa foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient30minUkUa client30min_ = _TranslationsMisskeyAchievementsTypesClient30minUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightUkUa postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secUkUa postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteUkUa selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmUkUa htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartUkUa viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadUkUa reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereUkUa clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyUkUa justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloUkUa setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa passedSinceAccountCreated2_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa passedSinceAccountCreated3_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedUkUa cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedUkUa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverUkUa brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverUkUa._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityUkUa extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityUkUa extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'Низький';
@@ -1941,30 +1944,30 @@ class _StringsMisskeyRolePriorityUkUa extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowUkUa extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowUkUa extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Новий підписник';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestUkUa extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestUkUa extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Отримано запит на підписку';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysUkUa extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysUkUa extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'Акцент';
@@ -2009,20 +2012,20 @@ class _StringsMisskeyThemeKeysUkUa extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListUkUa extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListUkUa extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Виберіть список';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersUkUa extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersUkUa extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'Чим займаєтесь?';
@@ -2034,10 +2037,10 @@ class _StringsMisskeyPostFormPlaceholdersUkUa extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksUkUa extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksUkUa extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'Текст';
@@ -2046,14 +2049,14 @@ class _StringsMisskeyPagesBlocksUkUa extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get image => 'Зображення';
 	@override String get button => 'Кнопка';
 	@override String get note => 'Вбудована нотатка';
-	@override late final _StringsMisskeyPagesBlocksNoteUkUa note_ = _StringsMisskeyPagesBlocksNoteUkUa._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteUkUa note_ = _TranslationsMisskeyPagesBlocksNoteUkUa._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesUkUa extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesUkUa extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Все';
@@ -2070,10 +2073,10 @@ class _StringsMisskeyNotificationTypesUkUa extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsUkUa extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsUkUa extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get reply => 'Відповісти';
@@ -2081,10 +2084,10 @@ class _StringsMisskeyNotificationActionsUkUa extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsUkUa extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsUkUa extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'Головна';
@@ -2099,20 +2102,20 @@ class _StringsMisskeyDeckColumnsUkUa extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientUkUa extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientUkUa extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1UkUa extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1UkUa extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Привіт, Misskey!';
@@ -2121,10 +2124,10 @@ class _StringsMisskeyAchievementsTypesNotes1UkUa extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10UkUa extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10UkUa extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Декілька нотаток';
@@ -2132,10 +2135,10 @@ class _StringsMisskeyAchievementsTypesNotes10UkUa extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100UkUa extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100UkUa extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Купа нотаток';
@@ -2143,10 +2146,10 @@ class _StringsMisskeyAchievementsTypesNotes100UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500UkUa extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500UkUa extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Все в нотатках';
@@ -2154,10 +2157,10 @@ class _StringsMisskeyAchievementsTypesNotes500UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000UkUa extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000UkUa extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Гора нотаток';
@@ -2165,10 +2168,10 @@ class _StringsMisskeyAchievementsTypesNotes1000UkUa extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000UkUa extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000UkUa extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Переповнюючі нотатки';
@@ -2176,10 +2179,10 @@ class _StringsMisskeyAchievementsTypesNotes5000UkUa extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000UkUa extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000UkUa extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Супернотатка';
@@ -2187,10 +2190,10 @@ class _StringsMisskeyAchievementsTypesNotes10000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000UkUa extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000UkUa extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Треба Більше Нотаток';
@@ -2198,10 +2201,10 @@ class _StringsMisskeyAchievementsTypesNotes20000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000UkUa extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000UkUa extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Нотатки нотатки нотатки';
@@ -2209,10 +2212,10 @@ class _StringsMisskeyAchievementsTypesNotes30000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000UkUa extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000UkUa extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Фабрика нотаток';
@@ -2220,10 +2223,10 @@ class _StringsMisskeyAchievementsTypesNotes40000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000UkUa extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000UkUa extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Планета нотаток';
@@ -2231,10 +2234,10 @@ class _StringsMisskeyAchievementsTypesNotes50000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000UkUa extends _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes60000UkUa extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Нотатковий квазар';
@@ -2242,10 +2245,10 @@ class _StringsMisskeyAchievementsTypesNotes60000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000UkUa extends _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes70000UkUa extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Чорна нотаткова діра';
@@ -2253,10 +2256,10 @@ class _StringsMisskeyAchievementsTypesNotes70000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000UkUa extends _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes80000UkUa extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Галактика нотаток';
@@ -2264,10 +2267,10 @@ class _StringsMisskeyAchievementsTypesNotes80000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000UkUa extends _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes90000UkUa extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Нотатковерс';
@@ -2275,10 +2278,10 @@ class _StringsMisskeyAchievementsTypesNotes90000UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000UkUa extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000UkUa extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
@@ -2287,10 +2290,10 @@ class _StringsMisskeyAchievementsTypesNotes100000UkUa extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3UkUa extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3UkUa extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Новачок I';
@@ -2299,10 +2302,10 @@ class _StringsMisskeyAchievementsTypesLogin3UkUa extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7UkUa extends _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin7UkUa extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin7UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Новачок II';
@@ -2311,10 +2314,10 @@ class _StringsMisskeyAchievementsTypesLogin7UkUa extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15UkUa extends _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin15UkUa extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin15UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Новачок III';
@@ -2322,10 +2325,10 @@ class _StringsMisskeyAchievementsTypesLogin15UkUa extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30UkUa extends _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin30UkUa extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin30UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Міскієць I';
@@ -2333,10 +2336,10 @@ class _StringsMisskeyAchievementsTypesLogin30UkUa extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60UkUa extends _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin60UkUa extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin60UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Міскієць II';
@@ -2344,10 +2347,10 @@ class _StringsMisskeyAchievementsTypesLogin60UkUa extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100UkUa extends _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin100UkUa extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin100UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Міскієць III';
@@ -2356,10 +2359,10 @@ class _StringsMisskeyAchievementsTypesLogin100UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200UkUa extends _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin200UkUa extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin200UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Завсідник I';
@@ -2367,10 +2370,10 @@ class _StringsMisskeyAchievementsTypesLogin200UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300UkUa extends _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin300UkUa extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin300UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Завсідник II';
@@ -2378,10 +2381,10 @@ class _StringsMisskeyAchievementsTypesLogin300UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400UkUa extends _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin400UkUa extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin400UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Завсідник III';
@@ -2389,10 +2392,10 @@ class _StringsMisskeyAchievementsTypesLogin400UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _StringsMisskeyAchievementsTypesLogin500UkUa extends _StringsMisskeyAchievementsTypesLogin500EnUs {
-	_StringsMisskeyAchievementsTypesLogin500UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin500UkUa extends TranslationsMisskeyAchievementsTypesLogin500EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin500UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ветеран I';
@@ -2401,10 +2404,10 @@ class _StringsMisskeyAchievementsTypesLogin500UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _StringsMisskeyAchievementsTypesLogin600UkUa extends _StringsMisskeyAchievementsTypesLogin600EnUs {
-	_StringsMisskeyAchievementsTypesLogin600UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin600UkUa extends TranslationsMisskeyAchievementsTypesLogin600EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin600UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ветеран II';
@@ -2412,10 +2415,10 @@ class _StringsMisskeyAchievementsTypesLogin600UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _StringsMisskeyAchievementsTypesLogin700UkUa extends _StringsMisskeyAchievementsTypesLogin700EnUs {
-	_StringsMisskeyAchievementsTypesLogin700UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin700UkUa extends TranslationsMisskeyAchievementsTypesLogin700EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin700UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ветеран III';
@@ -2423,10 +2426,10 @@ class _StringsMisskeyAchievementsTypesLogin700UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _StringsMisskeyAchievementsTypesLogin800UkUa extends _StringsMisskeyAchievementsTypesLogin800EnUs {
-	_StringsMisskeyAchievementsTypesLogin800UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin800UkUa extends TranslationsMisskeyAchievementsTypesLogin800EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin800UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Майстер нотаток I';
@@ -2434,10 +2437,10 @@ class _StringsMisskeyAchievementsTypesLogin800UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _StringsMisskeyAchievementsTypesLogin900UkUa extends _StringsMisskeyAchievementsTypesLogin900EnUs {
-	_StringsMisskeyAchievementsTypesLogin900UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin900UkUa extends TranslationsMisskeyAchievementsTypesLogin900EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin900UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Майстер нотаток II';
@@ -2445,10 +2448,10 @@ class _StringsMisskeyAchievementsTypesLogin900UkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000UkUa extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin1000UkUa extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin1000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Майстер нотаток III';
@@ -2457,10 +2460,10 @@ class _StringsMisskeyAchievementsTypesLogin1000UkUa extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _StringsMisskeyAchievementsTypesNoteClipped1UkUa extends _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_StringsMisskeyAchievementsTypesNoteClipped1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteClipped1UkUa extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteClipped1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Не можна не зберегти';
@@ -2468,30 +2471,30 @@ class _StringsMisskeyAchievementsTypesNoteClipped1UkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1UkUa extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1UkUa extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Дивитися на зірки';
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1UkUa extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1UkUa extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'У пошуках зірок';
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledUkUa extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledUkUa extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Повна готовність';
@@ -2499,10 +2502,10 @@ class _StringsMisskeyAchievementsTypesProfileFilledUkUa extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatUkUa extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatUkUa extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Я кіт';
@@ -2511,30 +2514,30 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatUkUa extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1UkUa extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing1UkUa extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Перша підписка';
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10UkUa extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing10UkUa extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing10UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Продовжуй, продовжуй';
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50UkUa extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing50UkUa extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing50UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Багато друзів';
@@ -2542,10 +2545,10 @@ class _StringsMisskeyAchievementsTypesFollowing50UkUa extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100UkUa extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing100UkUa extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing100UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '100 друзів';
@@ -2553,10 +2556,10 @@ class _StringsMisskeyAchievementsTypesFollowing100UkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300UkUa extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing300UkUa extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing300UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Надлишок друзів';
@@ -2564,10 +2567,10 @@ class _StringsMisskeyAchievementsTypesFollowing300UkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1UkUa extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1UkUa extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Перший підписник';
@@ -2575,10 +2578,10 @@ class _StringsMisskeyAchievementsTypesFollowers1UkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10UkUa extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers10UkUa extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers10UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Follow me!';
@@ -2586,20 +2589,20 @@ class _StringsMisskeyAchievementsTypesFollowers10UkUa extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50UkUa extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers50UkUa extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers50UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Кількість підписників досягла 50';
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100UkUa extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers100UkUa extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers100UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Популярна особа';
@@ -2607,10 +2610,10 @@ class _StringsMisskeyAchievementsTypesFollowers100UkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300UkUa extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers300UkUa extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers300UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ставайте в чергу';
@@ -2618,10 +2621,10 @@ class _StringsMisskeyAchievementsTypesFollowers300UkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500UkUa extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers500UkUa extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers500UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Радіовежа';
@@ -2629,10 +2632,10 @@ class _StringsMisskeyAchievementsTypesFollowers500UkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000UkUa extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1000UkUa extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1000UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Інфлюенсер';
@@ -2640,10 +2643,10 @@ class _StringsMisskeyAchievementsTypesFollowers1000UkUa extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30UkUa extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCollectAchievements30UkUa extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_TranslationsMisskeyAchievementsTypesCollectAchievements30UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Збирач досягнень';
@@ -2651,10 +2654,10 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30UkUa extends _Strings
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minUkUa extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewAchievements3minUkUa extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_TranslationsMisskeyAchievementsTypesViewAchievements3minUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Шанувальник досягнень';
@@ -2662,10 +2665,10 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minUkUa extends _StringsM
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyUkUa extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesILoveMisskeyUkUa extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_TranslationsMisskeyAchievementsTypesILoveMisskeyUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'I Love Misskey';
@@ -2674,10 +2677,10 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyUkUa extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureUkUa extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFoundTreasureUkUa extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_TranslationsMisskeyAchievementsTypesFoundTreasureUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Пошуки скарбів';
@@ -2685,10 +2688,10 @@ class _StringsMisskeyAchievementsTypesFoundTreasureUkUa extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minUkUa extends _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient30minUkUa extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient30minUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Коротка перерва';
@@ -2696,10 +2699,10 @@ class _StringsMisskeyAchievementsTypesClient30minUkUa extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Не зважай';
@@ -2707,10 +2710,10 @@ class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minUkUa extends _Strings
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightUkUa extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAtLateNightUkUa extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAtLateNightUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Нічне життя';
@@ -2719,10 +2722,10 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightUkUa extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secUkUa extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAt0min0secUkUa extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAt0min0secUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Сигнал часу';
@@ -2730,10 +2733,10 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secUkUa extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteUkUa extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSelfQuoteUkUa extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_TranslationsMisskeyAchievementsTypesSelfQuoteUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Самопосилання';
@@ -2741,10 +2744,10 @@ class _StringsMisskeyAchievementsTypesSelfQuoteUkUa extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmUkUa extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesHtl20npmUkUa extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	_TranslationsMisskeyAchievementsTypesHtl20npmUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Плинна стрічка';
@@ -2752,20 +2755,20 @@ class _StringsMisskeyAchievementsTypesHtl20npmUkUa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartUkUa extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartUkUa extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Аналітик';
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Hello, world!';
@@ -2773,10 +2776,10 @@ class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadUkUa extends _
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadUkUa extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesReactWithoutReadUkUa extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_TranslationsMisskeyAchievementsTypesReactWithoutReadUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Прочитали як слід?';
@@ -2784,10 +2787,10 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadUkUa extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereUkUa extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClickedClickHereUkUa extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_TranslationsMisskeyAchievementsTypesClickedClickHereUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Натисніть тут';
@@ -2795,10 +2798,10 @@ class _StringsMisskeyAchievementsTypesClickedClickHereUkUa extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyUkUa extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJustPlainLuckyUkUa extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_TranslationsMisskeyAchievementsTypesJustPlainLuckyUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Просто вдача';
@@ -2806,10 +2809,10 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyUkUa extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloUkUa extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloUkUa extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Комплекс бога';
@@ -2817,10 +2820,10 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloUkUa extends _StringsMisske
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Перша річниця';
@@ -2828,10 +2831,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1UkUa extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Друга річниця';
@@ -2839,10 +2842,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2UkUa extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Третя річниця';
@@ -2850,10 +2853,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3UkUa extends _St
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'З Днем народження!';
@@ -2861,10 +2864,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayUkUa extends _StringsMis
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'З Новим роком!';
@@ -2872,20 +2875,20 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayUkUa extends _Strings
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedUkUa extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCookieClickedUkUa extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	_TranslationsMisskeyAchievementsTypesCookieClickedUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get flavor => 'Чекайте, це вірний сайт?';
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _StringsMisskeyAchievementsTypesBrainDiverUkUa extends _StringsMisskeyAchievementsTypesBrainDiverEnUs {
-	_StringsMisskeyAchievementsTypesBrainDiverUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBrainDiverUkUa extends TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
+	_TranslationsMisskeyAchievementsTypesBrainDiverUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Brain Diver';
@@ -2894,10 +2897,10 @@ class _StringsMisskeyAchievementsTypesBrainDiverUkUa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteUkUa extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteUkUa extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'Ідентифікатор нотатки';
@@ -2906,10 +2909,10 @@ class _StringsMisskeyPagesBlocksNoteUkUa extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(_StringsUkUa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
 
-	@override final _StringsUkUa _root; // ignore: unused_field
+	final TranslationsUkUa _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'E-mail';

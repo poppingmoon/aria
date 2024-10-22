@@ -6,7 +6,7 @@ part of 'incoming_message_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$incomingMessageHash() => r'f41daa6b731639e0931a84af1368b3dda6760f71';
+String _$incomingMessageHash() => r'3875bb57c5c94b293532feb6ed842a9a7d7469bb';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -143,6 +143,8 @@ class IncomingMessageProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin IncomingMessageRef on AutoDisposeStreamProviderRef<IncomingMessage> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -157,4 +159,4 @@ class _IncomingMessageProviderElement
   Account get account => (origin as IncomingMessageProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

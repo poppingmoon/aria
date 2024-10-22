@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsBnBd extends Translations {
+class TranslationsBnBd extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsBnBd.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsBnBd({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.bnBd,
@@ -18,23 +21,23 @@ class _StringsBnBd extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <bn-BD>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsBnBd _root = this; // ignore: unused_field
+	late final TranslationsBnBd _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaBnBd aria = _StringsAriaBnBd._(_root);
-	@override late final _StringsMisskeyBnBd misskey = _StringsMisskeyBnBd._(_root);
+	@override late final _TranslationsAriaBnBd aria = _TranslationsAriaBnBd._(_root);
+	@override late final _TranslationsMisskeyBnBd misskey = _TranslationsMisskeyBnBd._(_root);
 }
 
 // Path: aria
-class _StringsAriaBnBd extends _StringsAriaEnUs {
-	_StringsAriaBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsAriaBnBd extends TranslationsAriaEnUs {
+	_TranslationsAriaBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -65,10 +68,10 @@ class _StringsAriaBnBd extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
-	_StringsMisskeyBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'বাংলা';
@@ -925,82 +928,82 @@ class _StringsMisskeyBnBd extends _StringsMisskeyEnUs {
 	@override String get renotes => 'রিনোট';
 	@override String get sourceCode => 'সোর্স কোড';
 	@override String get flip => 'উল্টান';
-	@override late final _StringsMisskeyDeliveryBnBd delivery_ = _StringsMisskeyDeliveryBnBd._(_root);
-	@override late final _StringsMisskeyRoleBnBd role_ = _StringsMisskeyRoleBnBd._(_root);
-	@override late final _StringsMisskeyEmailUnavailableBnBd emailUnavailable_ = _StringsMisskeyEmailUnavailableBnBd._(_root);
-	@override late final _StringsMisskeyFfVisibilityBnBd ffVisibility_ = _StringsMisskeyFfVisibilityBnBd._(_root);
-	@override late final _StringsMisskeySignupBnBd signup_ = _StringsMisskeySignupBnBd._(_root);
-	@override late final _StringsMisskeyAccountDeleteBnBd accountDelete_ = _StringsMisskeyAccountDeleteBnBd._(_root);
-	@override late final _StringsMisskeyAdBnBd ad_ = _StringsMisskeyAdBnBd._(_root);
-	@override late final _StringsMisskeyForgotPasswordBnBd forgotPassword_ = _StringsMisskeyForgotPasswordBnBd._(_root);
-	@override late final _StringsMisskeyGalleryBnBd gallery_ = _StringsMisskeyGalleryBnBd._(_root);
-	@override late final _StringsMisskeyEmailBnBd email_ = _StringsMisskeyEmailBnBd._(_root);
-	@override late final _StringsMisskeyPluginBnBd plugin_ = _StringsMisskeyPluginBnBd._(_root);
-	@override late final _StringsMisskeyRegistryBnBd registry_ = _StringsMisskeyRegistryBnBd._(_root);
-	@override late final _StringsMisskeyAboutMisskeyBnBd aboutMisskey_ = _StringsMisskeyAboutMisskeyBnBd._(_root);
-	@override late final _StringsMisskeyInstanceTickerBnBd instanceTicker_ = _StringsMisskeyInstanceTickerBnBd._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorBnBd serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorBnBd._(_root);
-	@override late final _StringsMisskeyChannelBnBd channel_ = _StringsMisskeyChannelBnBd._(_root);
-	@override late final _StringsMisskeyMenuDisplayBnBd menuDisplay_ = _StringsMisskeyMenuDisplayBnBd._(_root);
-	@override late final _StringsMisskeyWordMuteBnBd wordMute_ = _StringsMisskeyWordMuteBnBd._(_root);
-	@override late final _StringsMisskeyInstanceMuteBnBd instanceMute_ = _StringsMisskeyInstanceMuteBnBd._(_root);
-	@override late final _StringsMisskeyThemeBnBd theme_ = _StringsMisskeyThemeBnBd._(_root);
-	@override late final _StringsMisskeySfxBnBd sfx_ = _StringsMisskeySfxBnBd._(_root);
-	@override late final _StringsMisskeyAgoBnBd ago_ = _StringsMisskeyAgoBnBd._(_root);
-	@override late final _StringsMisskeyTimeBnBd time_ = _StringsMisskeyTimeBnBd._(_root);
-	@override late final _StringsMisskeyX2faBnBd x2fa_ = _StringsMisskeyX2faBnBd._(_root);
-	@override late final _StringsMisskeyPermissionsBnBd permissions_ = _StringsMisskeyPermissionsBnBd._(_root);
-	@override late final _StringsMisskeyAuthBnBd auth_ = _StringsMisskeyAuthBnBd._(_root);
-	@override late final _StringsMisskeyAntennaSourcesBnBd antennaSources_ = _StringsMisskeyAntennaSourcesBnBd._(_root);
-	@override late final _StringsMisskeyWeekdayBnBd weekday_ = _StringsMisskeyWeekdayBnBd._(_root);
-	@override late final _StringsMisskeyWidgetsBnBd widgets_ = _StringsMisskeyWidgetsBnBd._(_root);
-	@override late final _StringsMisskeyCwBnBd cw_ = _StringsMisskeyCwBnBd._(_root);
-	@override late final _StringsMisskeyPollBnBd poll_ = _StringsMisskeyPollBnBd._(_root);
-	@override late final _StringsMisskeyVisibilityBnBd visibility_ = _StringsMisskeyVisibilityBnBd._(_root);
-	@override late final _StringsMisskeyPostFormBnBd postForm_ = _StringsMisskeyPostFormBnBd._(_root);
-	@override late final _StringsMisskeyProfileBnBd profile_ = _StringsMisskeyProfileBnBd._(_root);
-	@override late final _StringsMisskeyExportOrImportBnBd exportOrImport_ = _StringsMisskeyExportOrImportBnBd._(_root);
-	@override late final _StringsMisskeyChartsBnBd charts_ = _StringsMisskeyChartsBnBd._(_root);
-	@override late final _StringsMisskeyInstanceChartsBnBd instanceCharts_ = _StringsMisskeyInstanceChartsBnBd._(_root);
-	@override late final _StringsMisskeyTimelinesBnBd timelines_ = _StringsMisskeyTimelinesBnBd._(_root);
-	@override late final _StringsMisskeyPlayBnBd play_ = _StringsMisskeyPlayBnBd._(_root);
-	@override late final _StringsMisskeyPagesBnBd pages_ = _StringsMisskeyPagesBnBd._(_root);
-	@override late final _StringsMisskeyRelayStatusBnBd relayStatus_ = _StringsMisskeyRelayStatusBnBd._(_root);
-	@override late final _StringsMisskeyNotificationBnBd notification_ = _StringsMisskeyNotificationBnBd._(_root);
-	@override late final _StringsMisskeyDeckBnBd deck_ = _StringsMisskeyDeckBnBd._(_root);
-	@override late final _StringsMisskeyWebhookSettingsBnBd webhookSettings_ = _StringsMisskeyWebhookSettingsBnBd._(_root);
-	@override late final _StringsMisskeyAbuseReportBnBd abuseReport_ = _StringsMisskeyAbuseReportBnBd._(_root);
-	@override late final _StringsMisskeyModerationLogTypesBnBd moderationLogTypes_ = _StringsMisskeyModerationLogTypesBnBd._(_root);
-	@override late final _StringsMisskeyReversiBnBd reversi_ = _StringsMisskeyReversiBnBd._(_root);
+	@override late final _TranslationsMisskeyDeliveryBnBd delivery_ = _TranslationsMisskeyDeliveryBnBd._(_root);
+	@override late final _TranslationsMisskeyRoleBnBd role_ = _TranslationsMisskeyRoleBnBd._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableBnBd emailUnavailable_ = _TranslationsMisskeyEmailUnavailableBnBd._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityBnBd ffVisibility_ = _TranslationsMisskeyFfVisibilityBnBd._(_root);
+	@override late final _TranslationsMisskeySignupBnBd signup_ = _TranslationsMisskeySignupBnBd._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteBnBd accountDelete_ = _TranslationsMisskeyAccountDeleteBnBd._(_root);
+	@override late final _TranslationsMisskeyAdBnBd ad_ = _TranslationsMisskeyAdBnBd._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordBnBd forgotPassword_ = _TranslationsMisskeyForgotPasswordBnBd._(_root);
+	@override late final _TranslationsMisskeyGalleryBnBd gallery_ = _TranslationsMisskeyGalleryBnBd._(_root);
+	@override late final _TranslationsMisskeyEmailBnBd email_ = _TranslationsMisskeyEmailBnBd._(_root);
+	@override late final _TranslationsMisskeyPluginBnBd plugin_ = _TranslationsMisskeyPluginBnBd._(_root);
+	@override late final _TranslationsMisskeyRegistryBnBd registry_ = _TranslationsMisskeyRegistryBnBd._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyBnBd aboutMisskey_ = _TranslationsMisskeyAboutMisskeyBnBd._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerBnBd instanceTicker_ = _TranslationsMisskeyInstanceTickerBnBd._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorBnBd serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorBnBd._(_root);
+	@override late final _TranslationsMisskeyChannelBnBd channel_ = _TranslationsMisskeyChannelBnBd._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayBnBd menuDisplay_ = _TranslationsMisskeyMenuDisplayBnBd._(_root);
+	@override late final _TranslationsMisskeyWordMuteBnBd wordMute_ = _TranslationsMisskeyWordMuteBnBd._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteBnBd instanceMute_ = _TranslationsMisskeyInstanceMuteBnBd._(_root);
+	@override late final _TranslationsMisskeyThemeBnBd theme_ = _TranslationsMisskeyThemeBnBd._(_root);
+	@override late final _TranslationsMisskeySfxBnBd sfx_ = _TranslationsMisskeySfxBnBd._(_root);
+	@override late final _TranslationsMisskeyAgoBnBd ago_ = _TranslationsMisskeyAgoBnBd._(_root);
+	@override late final _TranslationsMisskeyTimeBnBd time_ = _TranslationsMisskeyTimeBnBd._(_root);
+	@override late final _TranslationsMisskeyX2faBnBd x2fa_ = _TranslationsMisskeyX2faBnBd._(_root);
+	@override late final _TranslationsMisskeyPermissionsBnBd permissions_ = _TranslationsMisskeyPermissionsBnBd._(_root);
+	@override late final _TranslationsMisskeyAuthBnBd auth_ = _TranslationsMisskeyAuthBnBd._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesBnBd antennaSources_ = _TranslationsMisskeyAntennaSourcesBnBd._(_root);
+	@override late final _TranslationsMisskeyWeekdayBnBd weekday_ = _TranslationsMisskeyWeekdayBnBd._(_root);
+	@override late final _TranslationsMisskeyWidgetsBnBd widgets_ = _TranslationsMisskeyWidgetsBnBd._(_root);
+	@override late final _TranslationsMisskeyCwBnBd cw_ = _TranslationsMisskeyCwBnBd._(_root);
+	@override late final _TranslationsMisskeyPollBnBd poll_ = _TranslationsMisskeyPollBnBd._(_root);
+	@override late final _TranslationsMisskeyVisibilityBnBd visibility_ = _TranslationsMisskeyVisibilityBnBd._(_root);
+	@override late final _TranslationsMisskeyPostFormBnBd postForm_ = _TranslationsMisskeyPostFormBnBd._(_root);
+	@override late final _TranslationsMisskeyProfileBnBd profile_ = _TranslationsMisskeyProfileBnBd._(_root);
+	@override late final _TranslationsMisskeyExportOrImportBnBd exportOrImport_ = _TranslationsMisskeyExportOrImportBnBd._(_root);
+	@override late final _TranslationsMisskeyChartsBnBd charts_ = _TranslationsMisskeyChartsBnBd._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsBnBd instanceCharts_ = _TranslationsMisskeyInstanceChartsBnBd._(_root);
+	@override late final _TranslationsMisskeyTimelinesBnBd timelines_ = _TranslationsMisskeyTimelinesBnBd._(_root);
+	@override late final _TranslationsMisskeyPlayBnBd play_ = _TranslationsMisskeyPlayBnBd._(_root);
+	@override late final _TranslationsMisskeyPagesBnBd pages_ = _TranslationsMisskeyPagesBnBd._(_root);
+	@override late final _TranslationsMisskeyRelayStatusBnBd relayStatus_ = _TranslationsMisskeyRelayStatusBnBd._(_root);
+	@override late final _TranslationsMisskeyNotificationBnBd notification_ = _TranslationsMisskeyNotificationBnBd._(_root);
+	@override late final _TranslationsMisskeyDeckBnBd deck_ = _TranslationsMisskeyDeckBnBd._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsBnBd webhookSettings_ = _TranslationsMisskeyWebhookSettingsBnBd._(_root);
+	@override late final _TranslationsMisskeyAbuseReportBnBd abuseReport_ = _TranslationsMisskeyAbuseReportBnBd._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesBnBd moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesBnBd._(_root);
+	@override late final _TranslationsMisskeyReversiBnBd reversi_ = _TranslationsMisskeyReversiBnBd._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryBnBd extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryBnBd extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'স্থগিত করা হয়েছে';
-	@override late final _StringsMisskeyDeliveryTypeBnBd type_ = _StringsMisskeyDeliveryTypeBnBd._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeBnBd type_ = _TranslationsMisskeyDeliveryTypeBnBd._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleBnBd extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleBnBd extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get priority => 'অগ্রাধিকার';
-	@override late final _StringsMisskeyRolePriorityBnBd priority_ = _StringsMisskeyRolePriorityBnBd._(_root);
+	@override late final _TranslationsMisskeyRolePriorityBnBd priority_ = _TranslationsMisskeyRolePriorityBnBd._(_root);
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableBnBd extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableBnBd extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => 'এই ইমেইল ঠিকানাটি ইতোমধ্যে ব্যবহৃত হয়েছে';
@@ -1011,10 +1014,10 @@ class _StringsMisskeyEmailUnavailableBnBd extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityBnBd extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityBnBd extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'প্রকাশ';
@@ -1023,10 +1026,10 @@ class _StringsMisskeyFfVisibilityBnBd extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupBnBd extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupBnBd extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'প্রায় শেষ';
@@ -1035,10 +1038,10 @@ class _StringsMisskeySignupBnBd extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteBnBd extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteBnBd extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'অ্যাকাউন্ট মুছে ফেলুন';
@@ -1050,10 +1053,10 @@ class _StringsMisskeyAccountDeleteBnBd extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdBnBd extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdBnBd extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'পিছনে';
@@ -1062,10 +1065,10 @@ class _StringsMisskeyAdBnBd extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordBnBd extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordBnBd extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => 'আপনি আপনার অ্যাকাউন্টের জন্য নিবন্ধিত ইমেল ঠিকানা লিখুন. সেই ঠিকানায় একটি পাসওয়ার্ড রিসেট লিঙ্ক পাঠানো হবে।';
@@ -1074,10 +1077,10 @@ class _StringsMisskeyForgotPasswordBnBd extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryBnBd extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryBnBd extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => 'আমার গ্যালারী';
@@ -1087,21 +1090,21 @@ class _StringsMisskeyGalleryBnBd extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailBnBd extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailBnBd extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowBnBd follow_ = _StringsMisskeyEmailFollowBnBd._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestBnBd receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestBnBd._(_root);
+	@override late final _TranslationsMisskeyEmailFollowBnBd follow_ = _TranslationsMisskeyEmailFollowBnBd._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestBnBd receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestBnBd._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginBnBd extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginBnBd extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'প্লাগইন ইন্সটল করুন';
@@ -1111,10 +1114,10 @@ class _StringsMisskeyPluginBnBd extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryBnBd extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryBnBd extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'স্কোপ';
@@ -1125,10 +1128,10 @@ class _StringsMisskeyRegistryBnBd extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyBnBd extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyBnBd extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey, একটি ওপেন সোর্স সফ্টওয়্যার যা 2014 সাল থেকে syuilo তৈরি করছেন।';
@@ -1142,10 +1145,10 @@ class _StringsMisskeyAboutMisskeyBnBd extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerBnBd extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerBnBd extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'দেখাবেন না';
@@ -1154,10 +1157,10 @@ class _StringsMisskeyInstanceTickerBnBd extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorBnBd extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorBnBd extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => 'স্বয়ংক্রিয়ভাবে রিলোড';
@@ -1166,10 +1169,10 @@ class _StringsMisskeyServerDisconnectedBehaviorBnBd extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelBnBd extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelBnBd extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'চ্যানেল বানান';
@@ -1184,10 +1187,10 @@ class _StringsMisskeyChannelBnBd extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayBnBd extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayBnBd extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => 'পাশে';
@@ -1197,10 +1200,10 @@ class _StringsMisskeyMenuDisplayBnBd extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteBnBd extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteBnBd extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'নিঃশব্দ করা শব্দগুলি';
@@ -1209,10 +1212,10 @@ class _StringsMisskeyWordMuteBnBd extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteBnBd extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteBnBd extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => 'কনফিগার করা ইন্সট্যান্সের সব নোট এবং রিনোট মিউট করুন, মিউট করা ইন্সট্যান্সের ব্যবহারকারীদের উত্তর সহ।';
@@ -1222,10 +1225,10 @@ class _StringsMisskeyInstanceMuteBnBd extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeBnBd extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeBnBd extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'থিমগুলি ঘুরে দেখুন';
@@ -1257,14 +1260,14 @@ class _StringsMisskeyThemeBnBd extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'ধ্রুবকটির নাম লিখুন';
 	@override String get importInfo => 'আপনি এখানে থিম কোড পেস্ট করতে পারেন এবং সেটিকে এডিটরে ইম্পোর্ট করতে পারেন';
 	@override String deleteConstantConfirm({required Object const_}) => 'আপনি কি ধ্রুবক ${const_} মুছে ফেলতে চান？';
-	@override late final _StringsMisskeyThemeKeysBnBd keys = _StringsMisskeyThemeKeysBnBd._(_root);
+	@override late final _TranslationsMisskeyThemeKeysBnBd keys = _TranslationsMisskeyThemeKeysBnBd._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxBnBd extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxBnBd extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'নোটগুলি';
@@ -1273,10 +1276,10 @@ class _StringsMisskeySfxBnBd extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoBnBd extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoBnBd extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => 'ভবিষ্যৎ';
@@ -1292,10 +1295,10 @@ class _StringsMisskeyAgoBnBd extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeBnBd extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeBnBd extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => 'সেকেন্ড';
@@ -1305,10 +1308,10 @@ class _StringsMisskeyTimeBnBd extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faBnBd extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faBnBd extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => 'আপনি ইতিমধ্যে একটি 2-ফ্যাক্টর অথেনটিকেশন ডিভাইস নিবন্ধন করেছেন৷';
@@ -1321,10 +1324,10 @@ class _StringsMisskeyX2faBnBd extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsBnBd extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsBnBd extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'অ্যাকাউন্টের তথ্য দেখুন';
@@ -1362,10 +1365,10 @@ class _StringsMisskeyPermissionsBnBd extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthBnBd extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthBnBd extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String shareAccess({required Object name}) => '"${name}" কে অ্যাকাউন্টের অ্যাক্সেস দিবেন?';
@@ -1377,10 +1380,10 @@ class _StringsMisskeyAuthBnBd extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesBnBd extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesBnBd extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'সকল নোট';
@@ -1390,10 +1393,10 @@ class _StringsMisskeyAntennaSourcesBnBd extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayBnBd extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayBnBd extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => 'রবিবার';
@@ -1406,10 +1409,10 @@ class _StringsMisskeyWeekdayBnBd extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsBnBd extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsBnBd extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'প্রোফাইল';
@@ -1433,14 +1436,14 @@ class _StringsMisskeyWidgetsBnBd extends _StringsMisskeyWidgetsEnUs {
 	@override String get serverMetric => 'সার্ভার মেট্রিক্স';
 	@override String get aiscript => 'AiScript কনসোল';
 	@override String get aichan => 'আই চান';
-	@override late final _StringsMisskeyWidgetsUserListBnBd userList_ = _StringsMisskeyWidgetsUserListBnBd._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListBnBd userList_ = _TranslationsMisskeyWidgetsUserListBnBd._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwBnBd extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwBnBd extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => 'লুকান';
@@ -1450,10 +1453,10 @@ class _StringsMisskeyCwBnBd extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollBnBd extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollBnBd extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'সর্বনিম্ন 2 টি অপশন বেছে নিতে হবে';
@@ -1480,10 +1483,10 @@ class _StringsMisskeyPollBnBd extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityBnBd extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityBnBd extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'সর্বজনীন';
@@ -1497,23 +1500,23 @@ class _StringsMisskeyVisibilityBnBd extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormBnBd extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormBnBd extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'নোটটির জবাব দিন...';
 	@override String get quotePlaceholder => 'নোটটিকে উদ্ধৃত করুন...';
 	@override String get channelPlaceholder => 'চ্যানেলে পোস্ট করুন...';
-	@override late final _StringsMisskeyPostFormPlaceholdersBnBd placeholders_ = _StringsMisskeyPostFormPlaceholdersBnBd._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersBnBd placeholders_ = _TranslationsMisskeyPostFormPlaceholdersBnBd._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileBnBd extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileBnBd extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'নাম';
@@ -1530,10 +1533,10 @@ class _StringsMisskeyProfileBnBd extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportBnBd extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportBnBd extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'সকল নোট';
@@ -1547,10 +1550,10 @@ class _StringsMisskeyExportOrImportBnBd extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsBnBd extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsBnBd extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'ফেডিভার্স';
@@ -1569,10 +1572,10 @@ class _StringsMisskeyChartsBnBd extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsBnBd extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsBnBd extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'অনুরোধসমূহ';
@@ -1589,10 +1592,10 @@ class _StringsMisskeyInstanceChartsBnBd extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesBnBd extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesBnBd extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'মূল পাতা';
@@ -1602,10 +1605,10 @@ class _StringsMisskeyTimelinesBnBd extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayBnBd extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayBnBd extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get viewSource => 'উৎস দেখুন';
@@ -1616,10 +1619,10 @@ class _StringsMisskeyPlayBnBd extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesBnBd extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBnBd extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'নতুন পৃষ্ঠা বানান';
@@ -1659,14 +1662,14 @@ class _StringsMisskeyPagesBnBd extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'বিষয়বস্তু';
 	@override String get inputBlocks => 'ইনপুট';
 	@override String get specialBlocks => 'বিশেষ';
-	@override late final _StringsMisskeyPagesBlocksBnBd blocks = _StringsMisskeyPagesBlocksBnBd._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksBnBd blocks = _TranslationsMisskeyPagesBlocksBnBd._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusBnBd extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusBnBd extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'অপেক্ষমান';
@@ -1675,10 +1678,10 @@ class _StringsMisskeyRelayStatusBnBd extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationBnBd extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationBnBd extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'ফাইল সফলভাবে আপলোড করা হয়েছে';
@@ -1691,15 +1694,15 @@ class _StringsMisskeyNotificationBnBd extends _StringsMisskeyNotificationEnUs {
 	@override String get yourFollowRequestAccepted => 'আপনার অনুসরণ করার অনুরোধ গৃহীত হয়েছে';
 	@override String get pollEnded => 'পোলের ফলাফল দেখা যাবে';
 	@override String get emptyPushNotificationMessage => 'আপডেট করা পুশ বিজ্ঞপ্তি';
-	@override late final _StringsMisskeyNotificationTypesBnBd types_ = _StringsMisskeyNotificationTypesBnBd._(_root);
-	@override late final _StringsMisskeyNotificationActionsBnBd actions_ = _StringsMisskeyNotificationActionsBnBd._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesBnBd types_ = _TranslationsMisskeyNotificationTypesBnBd._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsBnBd actions_ = _TranslationsMisskeyNotificationActionsBnBd._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckBnBd extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckBnBd extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'সর্বদা মেইন কলাম দেখান';
@@ -1713,14 +1716,14 @@ class _StringsMisskeyDeckBnBd extends _StringsMisskeyDeckEnUs {
 	@override String get stackLeft => 'বাম কলামে সাজান';
 	@override String get popRight => 'ডানদিকে রাখুন';
 	@override String get profile => 'প্রোফাইল';
-	@override late final _StringsMisskeyDeckColumnsBnBd columns_ = _StringsMisskeyDeckColumnsBnBd._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsBnBd columns_ = _TranslationsMisskeyDeckColumnsBnBd._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsBnBd extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsBnBd extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'নাম';
@@ -1728,20 +1731,20 @@ class _StringsMisskeyWebhookSettingsBnBd extends _StringsMisskeyWebhookSettingsE
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportBnBd extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportBnBd extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientBnBd notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientBnBd._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientBnBd notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientBnBd._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesBnBd extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesBnBd extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'স্থগিত করা';
@@ -1749,30 +1752,30 @@ class _StringsMisskeyModerationLogTypesBnBd extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiBnBd extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiBnBd extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'মোট';
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeBnBd extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeBnBd extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'প্রকাশ করা হচ্ছে';
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityBnBd extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityBnBd extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'নিম্ন';
@@ -1781,30 +1784,30 @@ class _StringsMisskeyRolePriorityBnBd extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowBnBd extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowBnBd extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'আপনাকে অনুসরণ করছে';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestBnBd extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestBnBd extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'অনুসরণ করার অনুরোধ পেয়েছেন';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysBnBd extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysBnBd extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'অ্যাকসেন্ট';
@@ -1849,20 +1852,20 @@ class _StringsMisskeyThemeKeysBnBd extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListBnBd extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListBnBd extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'লিস্ট নির্বাচন করুন';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersBnBd extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersBnBd extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'আপনি এখন কি করছেন?';
@@ -1874,10 +1877,10 @@ class _StringsMisskeyPostFormPlaceholdersBnBd extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksBnBd extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksBnBd extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'লেখা';
@@ -1886,14 +1889,14 @@ class _StringsMisskeyPagesBlocksBnBd extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get image => 'ছবি';
 	@override String get button => 'বাটন';
 	@override String get note => 'এম্বেড নোট';
-	@override late final _StringsMisskeyPagesBlocksNoteBnBd note_ = _StringsMisskeyPagesBlocksNoteBnBd._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteBnBd note_ = _TranslationsMisskeyPagesBlocksNoteBnBd._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesBnBd extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesBnBd extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'সকল';
@@ -1911,10 +1914,10 @@ class _StringsMisskeyNotificationTypesBnBd extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsBnBd extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsBnBd extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => 'ফলো ব্যাক করেছে';
@@ -1923,10 +1926,10 @@ class _StringsMisskeyNotificationActionsBnBd extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsBnBd extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsBnBd extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'প্রধান';
@@ -1941,20 +1944,20 @@ class _StringsMisskeyDeckColumnsBnBd extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientBnBd extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientBnBd extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(_root);
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteBnBd extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteBnBd extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'নোট ID';
@@ -1963,10 +1966,10 @@ class _StringsMisskeyPagesBlocksNoteBnBd extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(_StringsBnBd root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
 
-	@override final _StringsBnBd _root; // ignore: unused_field
+	final TranslationsBnBd _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'ইমেইল';

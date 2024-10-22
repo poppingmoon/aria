@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsViVn extends Translations {
+class TranslationsViVn extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsViVn.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsViVn({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.viVn,
@@ -18,23 +21,23 @@ class _StringsViVn extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <vi-VN>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsViVn _root = this; // ignore: unused_field
+	late final TranslationsViVn _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaViVn aria = _StringsAriaViVn._(_root);
-	@override late final _StringsMisskeyViVn misskey = _StringsMisskeyViVn._(_root);
+	@override late final _TranslationsAriaViVn aria = _TranslationsAriaViVn._(_root);
+	@override late final _TranslationsMisskeyViVn misskey = _TranslationsMisskeyViVn._(_root);
 }
 
 // Path: aria
-class _StringsAriaViVn extends _StringsAriaEnUs {
-	_StringsAriaViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsAriaViVn extends TranslationsAriaEnUs {
+	_TranslationsAriaViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -67,10 +70,10 @@ class _StringsAriaViVn extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
-	_StringsMisskeyViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'Tiếng Nhật';
@@ -1191,79 +1194,79 @@ class _StringsMisskeyViVn extends _StringsMisskeyEnUs {
 	@override String get cwNotationRequired => 'Nếu "Ẩn nội dung" được bật thì cần phải có chú thích.';
 	@override String lastNDays({required Object n}) => '${n} ngày trước';
 	@override String get surrender => 'Từ chối';
-	@override late final _StringsMisskeyDeliveryViVn delivery_ = _StringsMisskeyDeliveryViVn._(_root);
-	@override late final _StringsMisskeyAnnouncementViVn announcement_ = _StringsMisskeyAnnouncementViVn._(_root);
-	@override late final _StringsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _StringsMisskeyInitialAccountSettingViVn._(_root);
-	@override late final _StringsMisskeyServerSettingsViVn serverSettings_ = _StringsMisskeyServerSettingsViVn._(_root);
-	@override late final _StringsMisskeyAccountMigrationViVn accountMigration_ = _StringsMisskeyAccountMigrationViVn._(_root);
-	@override late final _StringsMisskeyAchievementsViVn achievements_ = _StringsMisskeyAchievementsViVn._(_root);
-	@override late final _StringsMisskeyRoleViVn role_ = _StringsMisskeyRoleViVn._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionViVn sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionViVn._(_root);
-	@override late final _StringsMisskeyEmailUnavailableViVn emailUnavailable_ = _StringsMisskeyEmailUnavailableViVn._(_root);
-	@override late final _StringsMisskeyFfVisibilityViVn ffVisibility_ = _StringsMisskeyFfVisibilityViVn._(_root);
-	@override late final _StringsMisskeySignupViVn signup_ = _StringsMisskeySignupViVn._(_root);
-	@override late final _StringsMisskeyAccountDeleteViVn accountDelete_ = _StringsMisskeyAccountDeleteViVn._(_root);
-	@override late final _StringsMisskeyAdViVn ad_ = _StringsMisskeyAdViVn._(_root);
-	@override late final _StringsMisskeyForgotPasswordViVn forgotPassword_ = _StringsMisskeyForgotPasswordViVn._(_root);
-	@override late final _StringsMisskeyGalleryViVn gallery_ = _StringsMisskeyGalleryViVn._(_root);
-	@override late final _StringsMisskeyEmailViVn email_ = _StringsMisskeyEmailViVn._(_root);
-	@override late final _StringsMisskeyPluginViVn plugin_ = _StringsMisskeyPluginViVn._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsViVn preferencesBackups_ = _StringsMisskeyPreferencesBackupsViVn._(_root);
-	@override late final _StringsMisskeyRegistryViVn registry_ = _StringsMisskeyRegistryViVn._(_root);
-	@override late final _StringsMisskeyAboutMisskeyViVn aboutMisskey_ = _StringsMisskeyAboutMisskeyViVn._(_root);
-	@override late final _StringsMisskeyInstanceTickerViVn instanceTicker_ = _StringsMisskeyInstanceTickerViVn._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorViVn serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorViVn._(_root);
-	@override late final _StringsMisskeyChannelViVn channel_ = _StringsMisskeyChannelViVn._(_root);
-	@override late final _StringsMisskeyMenuDisplayViVn menuDisplay_ = _StringsMisskeyMenuDisplayViVn._(_root);
-	@override late final _StringsMisskeyWordMuteViVn wordMute_ = _StringsMisskeyWordMuteViVn._(_root);
-	@override late final _StringsMisskeyInstanceMuteViVn instanceMute_ = _StringsMisskeyInstanceMuteViVn._(_root);
-	@override late final _StringsMisskeyThemeViVn theme_ = _StringsMisskeyThemeViVn._(_root);
-	@override late final _StringsMisskeySfxViVn sfx_ = _StringsMisskeySfxViVn._(_root);
-	@override late final _StringsMisskeyAgoViVn ago_ = _StringsMisskeyAgoViVn._(_root);
-	@override late final _StringsMisskeyTimeViVn time_ = _StringsMisskeyTimeViVn._(_root);
-	@override late final _StringsMisskeyX2faViVn x2fa_ = _StringsMisskeyX2faViVn._(_root);
-	@override late final _StringsMisskeyPermissionsViVn permissions_ = _StringsMisskeyPermissionsViVn._(_root);
-	@override late final _StringsMisskeyAuthViVn auth_ = _StringsMisskeyAuthViVn._(_root);
-	@override late final _StringsMisskeyAntennaSourcesViVn antennaSources_ = _StringsMisskeyAntennaSourcesViVn._(_root);
-	@override late final _StringsMisskeyWeekdayViVn weekday_ = _StringsMisskeyWeekdayViVn._(_root);
-	@override late final _StringsMisskeyWidgetsViVn widgets_ = _StringsMisskeyWidgetsViVn._(_root);
-	@override late final _StringsMisskeyCwViVn cw_ = _StringsMisskeyCwViVn._(_root);
-	@override late final _StringsMisskeyPollViVn poll_ = _StringsMisskeyPollViVn._(_root);
-	@override late final _StringsMisskeyVisibilityViVn visibility_ = _StringsMisskeyVisibilityViVn._(_root);
-	@override late final _StringsMisskeyPostFormViVn postForm_ = _StringsMisskeyPostFormViVn._(_root);
-	@override late final _StringsMisskeyProfileViVn profile_ = _StringsMisskeyProfileViVn._(_root);
-	@override late final _StringsMisskeyExportOrImportViVn exportOrImport_ = _StringsMisskeyExportOrImportViVn._(_root);
-	@override late final _StringsMisskeyChartsViVn charts_ = _StringsMisskeyChartsViVn._(_root);
-	@override late final _StringsMisskeyInstanceChartsViVn instanceCharts_ = _StringsMisskeyInstanceChartsViVn._(_root);
-	@override late final _StringsMisskeyTimelinesViVn timelines_ = _StringsMisskeyTimelinesViVn._(_root);
-	@override late final _StringsMisskeyPlayViVn play_ = _StringsMisskeyPlayViVn._(_root);
-	@override late final _StringsMisskeyPagesViVn pages_ = _StringsMisskeyPagesViVn._(_root);
-	@override late final _StringsMisskeyRelayStatusViVn relayStatus_ = _StringsMisskeyRelayStatusViVn._(_root);
-	@override late final _StringsMisskeyNotificationViVn notification_ = _StringsMisskeyNotificationViVn._(_root);
-	@override late final _StringsMisskeyDeckViVn deck_ = _StringsMisskeyDeckViVn._(_root);
-	@override late final _StringsMisskeyDialogViVn dialog_ = _StringsMisskeyDialogViVn._(_root);
-	@override late final _StringsMisskeyWebhookSettingsViVn webhookSettings_ = _StringsMisskeyWebhookSettingsViVn._(_root);
-	@override late final _StringsMisskeyAbuseReportViVn abuseReport_ = _StringsMisskeyAbuseReportViVn._(_root);
-	@override late final _StringsMisskeyModerationLogTypesViVn moderationLogTypes_ = _StringsMisskeyModerationLogTypesViVn._(_root);
-	@override late final _StringsMisskeyReversiViVn reversi_ = _StringsMisskeyReversiViVn._(_root);
+	@override late final _TranslationsMisskeyDeliveryViVn delivery_ = _TranslationsMisskeyDeliveryViVn._(_root);
+	@override late final _TranslationsMisskeyAnnouncementViVn announcement_ = _TranslationsMisskeyAnnouncementViVn._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingViVn initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingViVn._(_root);
+	@override late final _TranslationsMisskeyServerSettingsViVn serverSettings_ = _TranslationsMisskeyServerSettingsViVn._(_root);
+	@override late final _TranslationsMisskeyAccountMigrationViVn accountMigration_ = _TranslationsMisskeyAccountMigrationViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsViVn achievements_ = _TranslationsMisskeyAchievementsViVn._(_root);
+	@override late final _TranslationsMisskeyRoleViVn role_ = _TranslationsMisskeyRoleViVn._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionViVn sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionViVn._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableViVn emailUnavailable_ = _TranslationsMisskeyEmailUnavailableViVn._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityViVn ffVisibility_ = _TranslationsMisskeyFfVisibilityViVn._(_root);
+	@override late final _TranslationsMisskeySignupViVn signup_ = _TranslationsMisskeySignupViVn._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteViVn accountDelete_ = _TranslationsMisskeyAccountDeleteViVn._(_root);
+	@override late final _TranslationsMisskeyAdViVn ad_ = _TranslationsMisskeyAdViVn._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordViVn forgotPassword_ = _TranslationsMisskeyForgotPasswordViVn._(_root);
+	@override late final _TranslationsMisskeyGalleryViVn gallery_ = _TranslationsMisskeyGalleryViVn._(_root);
+	@override late final _TranslationsMisskeyEmailViVn email_ = _TranslationsMisskeyEmailViVn._(_root);
+	@override late final _TranslationsMisskeyPluginViVn plugin_ = _TranslationsMisskeyPluginViVn._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsViVn preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsViVn._(_root);
+	@override late final _TranslationsMisskeyRegistryViVn registry_ = _TranslationsMisskeyRegistryViVn._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyViVn aboutMisskey_ = _TranslationsMisskeyAboutMisskeyViVn._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerViVn instanceTicker_ = _TranslationsMisskeyInstanceTickerViVn._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorViVn serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorViVn._(_root);
+	@override late final _TranslationsMisskeyChannelViVn channel_ = _TranslationsMisskeyChannelViVn._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayViVn menuDisplay_ = _TranslationsMisskeyMenuDisplayViVn._(_root);
+	@override late final _TranslationsMisskeyWordMuteViVn wordMute_ = _TranslationsMisskeyWordMuteViVn._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteViVn instanceMute_ = _TranslationsMisskeyInstanceMuteViVn._(_root);
+	@override late final _TranslationsMisskeyThemeViVn theme_ = _TranslationsMisskeyThemeViVn._(_root);
+	@override late final _TranslationsMisskeySfxViVn sfx_ = _TranslationsMisskeySfxViVn._(_root);
+	@override late final _TranslationsMisskeyAgoViVn ago_ = _TranslationsMisskeyAgoViVn._(_root);
+	@override late final _TranslationsMisskeyTimeViVn time_ = _TranslationsMisskeyTimeViVn._(_root);
+	@override late final _TranslationsMisskeyX2faViVn x2fa_ = _TranslationsMisskeyX2faViVn._(_root);
+	@override late final _TranslationsMisskeyPermissionsViVn permissions_ = _TranslationsMisskeyPermissionsViVn._(_root);
+	@override late final _TranslationsMisskeyAuthViVn auth_ = _TranslationsMisskeyAuthViVn._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesViVn antennaSources_ = _TranslationsMisskeyAntennaSourcesViVn._(_root);
+	@override late final _TranslationsMisskeyWeekdayViVn weekday_ = _TranslationsMisskeyWeekdayViVn._(_root);
+	@override late final _TranslationsMisskeyWidgetsViVn widgets_ = _TranslationsMisskeyWidgetsViVn._(_root);
+	@override late final _TranslationsMisskeyCwViVn cw_ = _TranslationsMisskeyCwViVn._(_root);
+	@override late final _TranslationsMisskeyPollViVn poll_ = _TranslationsMisskeyPollViVn._(_root);
+	@override late final _TranslationsMisskeyVisibilityViVn visibility_ = _TranslationsMisskeyVisibilityViVn._(_root);
+	@override late final _TranslationsMisskeyPostFormViVn postForm_ = _TranslationsMisskeyPostFormViVn._(_root);
+	@override late final _TranslationsMisskeyProfileViVn profile_ = _TranslationsMisskeyProfileViVn._(_root);
+	@override late final _TranslationsMisskeyExportOrImportViVn exportOrImport_ = _TranslationsMisskeyExportOrImportViVn._(_root);
+	@override late final _TranslationsMisskeyChartsViVn charts_ = _TranslationsMisskeyChartsViVn._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsViVn instanceCharts_ = _TranslationsMisskeyInstanceChartsViVn._(_root);
+	@override late final _TranslationsMisskeyTimelinesViVn timelines_ = _TranslationsMisskeyTimelinesViVn._(_root);
+	@override late final _TranslationsMisskeyPlayViVn play_ = _TranslationsMisskeyPlayViVn._(_root);
+	@override late final _TranslationsMisskeyPagesViVn pages_ = _TranslationsMisskeyPagesViVn._(_root);
+	@override late final _TranslationsMisskeyRelayStatusViVn relayStatus_ = _TranslationsMisskeyRelayStatusViVn._(_root);
+	@override late final _TranslationsMisskeyNotificationViVn notification_ = _TranslationsMisskeyNotificationViVn._(_root);
+	@override late final _TranslationsMisskeyDeckViVn deck_ = _TranslationsMisskeyDeckViVn._(_root);
+	@override late final _TranslationsMisskeyDialogViVn dialog_ = _TranslationsMisskeyDialogViVn._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsViVn webhookSettings_ = _TranslationsMisskeyWebhookSettingsViVn._(_root);
+	@override late final _TranslationsMisskeyAbuseReportViVn abuseReport_ = _TranslationsMisskeyAbuseReportViVn._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesViVn moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesViVn._(_root);
+	@override late final _TranslationsMisskeyReversiViVn reversi_ = _TranslationsMisskeyReversiViVn._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryViVn extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryViVn extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'Đã vô hiệu hóa';
-	@override late final _StringsMisskeyDeliveryTypeViVn type_ = _StringsMisskeyDeliveryTypeViVn._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeViVn type_ = _TranslationsMisskeyDeliveryTypeViVn._(_root);
 }
 
 // Path: misskey.announcement_
-class _StringsMisskeyAnnouncementViVn extends _StringsMisskeyAnnouncementEnUs {
-	_StringsMisskeyAnnouncementViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAnnouncementViVn extends TranslationsMisskeyAnnouncementEnUs {
+	_TranslationsMisskeyAnnouncementViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get forExistingUsers => 'Chỉ những người dùng đã tồn tại';
@@ -1275,10 +1278,10 @@ class _StringsMisskeyAnnouncementViVn extends _StringsMisskeyAnnouncementEnUs {
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingViVn extends _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialAccountSettingViVn extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountCreated => 'Tài khoản của bạn đã được tạo thành công!';
@@ -1297,10 +1300,10 @@ class _StringsMisskeyInitialAccountSettingViVn extends _StringsMisskeyInitialAcc
 }
 
 // Path: misskey.serverSettings_
-class _StringsMisskeyServerSettingsViVn extends _StringsMisskeyServerSettingsEnUs {
-	_StringsMisskeyServerSettingsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerSettingsViVn extends TranslationsMisskeyServerSettingsEnUs {
+	_TranslationsMisskeyServerSettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get iconUrl => 'Biểu tượng URL';
@@ -1309,10 +1312,10 @@ class _StringsMisskeyServerSettingsViVn extends _StringsMisskeyServerSettingsEnU
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationViVn extends _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountMigrationViVn extends TranslationsMisskeyAccountMigrationEnUs {
+	_TranslationsMisskeyAccountMigrationViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get moveFrom => 'Chuyển một tài khoản khác vào tài khoản này';
@@ -1326,35 +1329,35 @@ class _StringsMisskeyAccountMigrationViVn extends _StringsMisskeyAccountMigratio
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsViVn extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsViVn extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => 'Ngày thu nhận';
-	@override late final _StringsMisskeyAchievementsTypesViVn types_ = _StringsMisskeyAchievementsTypesViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViVn types_ = _TranslationsMisskeyAchievementsTypesViVn._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleViVn extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleViVn extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get assignTarget => 'Phân công';
 	@override String get priority => 'Ưu tiên';
-	@override late final _StringsMisskeyRolePriorityViVn priority_ = _StringsMisskeyRolePriorityViVn._(_root);
-	@override late final _StringsMisskeyRoleOptionsViVn options_ = _StringsMisskeyRoleOptionsViVn._(_root);
-	@override late final _StringsMisskeyRoleConditionViVn condition_ = _StringsMisskeyRoleConditionViVn._(_root);
+	@override late final _TranslationsMisskeyRolePriorityViVn priority_ = _TranslationsMisskeyRolePriorityViVn._(_root);
+	@override late final _TranslationsMisskeyRoleOptionsViVn options_ = _TranslationsMisskeyRoleOptionsViVn._(_root);
+	@override late final _TranslationsMisskeyRoleConditionViVn condition_ = _TranslationsMisskeyRoleConditionViVn._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionViVn extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionViVn extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Giảm nỗ lực kiểm duyệt máy chủ thông qua việc tự động nhận dạng media NSFW thông qua học máy. Điều này sẽ làm tăng một chút áp lực trên máy chủ.';
@@ -1367,10 +1370,10 @@ class _StringsMisskeySensitiveMediaDetectionViVn extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableViVn extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableViVn extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => 'Địa chỉ email đã được sử dụng';
@@ -1381,10 +1384,10 @@ class _StringsMisskeyEmailUnavailableViVn extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityViVn extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityViVn extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Đăng';
@@ -1393,10 +1396,10 @@ class _StringsMisskeyFfVisibilityViVn extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupViVn extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupViVn extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'Gần xong rồi';
@@ -1405,10 +1408,10 @@ class _StringsMisskeySignupViVn extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteViVn extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteViVn extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'Xóa tài khoản';
@@ -1420,10 +1423,10 @@ class _StringsMisskeyAccountDeleteViVn extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdViVn extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdViVn extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'Quay lại';
@@ -1432,10 +1435,10 @@ class _StringsMisskeyAdViVn extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordViVn extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordViVn extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => 'Nhập địa chỉ email bạn đã sử dụng để đăng ký. Một liên kết mà bạn có thể đặt lại mật khẩu của mình sau đó sẽ được gửi đến nó.';
@@ -1444,10 +1447,10 @@ class _StringsMisskeyForgotPasswordViVn extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryViVn extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryViVn extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => 'Kho Ảnh';
@@ -1457,21 +1460,21 @@ class _StringsMisskeyGalleryViVn extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailViVn extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailViVn extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowViVn follow_ = _StringsMisskeyEmailFollowViVn._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestViVn receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestViVn._(_root);
+	@override late final _TranslationsMisskeyEmailFollowViVn follow_ = _TranslationsMisskeyEmailFollowViVn._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestViVn receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestViVn._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginViVn extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginViVn extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'Cài đặt tiện ích';
@@ -1481,10 +1484,10 @@ class _StringsMisskeyPluginViVn extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsViVn extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsViVn extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => 'Tạo sao lưu';
@@ -1507,10 +1510,10 @@ class _StringsMisskeyPreferencesBackupsViVn extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryViVn extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryViVn extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'Phạm vi';
@@ -1521,10 +1524,10 @@ class _StringsMisskeyRegistryViVn extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyViVn extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyViVn extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey là phần mềm mã nguồn mở được phát triển bởi syuilo từ năm 2014.';
@@ -1538,10 +1541,10 @@ class _StringsMisskeyAboutMisskeyViVn extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerViVn extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerViVn extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Không hiển thị';
@@ -1550,10 +1553,10 @@ class _StringsMisskeyInstanceTickerViVn extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorViVn extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorViVn extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => 'Tự động tải lại';
@@ -1562,10 +1565,10 @@ class _StringsMisskeyServerDisconnectedBehaviorViVn extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelViVn extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelViVn extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'Tạo kênh';
@@ -1580,10 +1583,10 @@ class _StringsMisskeyChannelViVn extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayViVn extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayViVn extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => 'Thanh bên';
@@ -1593,10 +1596,10 @@ class _StringsMisskeyMenuDisplayViVn extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteViVn extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteViVn extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'Ẩn từ ngữ';
@@ -1605,10 +1608,10 @@ class _StringsMisskeyWordMuteViVn extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteViVn extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteViVn extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => 'Thao tác này sẽ ẩn mọi tút/lượt đăng lại từ các máy chủ được liệt kê, bao gồm cả những tút  dạng trả lời từ máy chủ bị ẩn.';
@@ -1618,10 +1621,10 @@ class _StringsMisskeyInstanceMuteViVn extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeViVn extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeViVn extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'Khám phá theme';
@@ -1653,14 +1656,14 @@ class _StringsMisskeyThemeViVn extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'Nhập tên cho hằng số này';
 	@override String get importInfo => 'Nếu bạn nhập mã theme ở đây, bạn có thể nhập mã đó vào trình chỉnh sửa theme';
 	@override String deleteConstantConfirm({required Object const_}) => 'Bạn có chắc muốn xóa hằng số ${const_} không?';
-	@override late final _StringsMisskeyThemeKeysViVn keys = _StringsMisskeyThemeKeysViVn._(_root);
+	@override late final _TranslationsMisskeyThemeKeysViVn keys = _TranslationsMisskeyThemeKeysViVn._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxViVn extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxViVn extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Tút';
@@ -1669,10 +1672,10 @@ class _StringsMisskeySfxViVn extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoViVn extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoViVn extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => 'Tương lai';
@@ -1688,10 +1691,10 @@ class _StringsMisskeyAgoViVn extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeViVn extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeViVn extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => 's';
@@ -1701,10 +1704,10 @@ class _StringsMisskeyTimeViVn extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faViVn extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faViVn extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => 'Bạn đã đăng ký thiết bị xác minh 2 bước.';
@@ -1729,10 +1732,10 @@ class _StringsMisskeyX2faViVn extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsViVn extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsViVn extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'Xem thông tin tài khoản của bạn';
@@ -1770,10 +1773,10 @@ class _StringsMisskeyPermissionsViVn extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthViVn extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthViVn extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get shareAccessTitle => 'Cho phép truy cập app';
@@ -1788,10 +1791,10 @@ class _StringsMisskeyAuthViVn extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesViVn extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesViVn extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Toàn bộ tút';
@@ -1801,10 +1804,10 @@ class _StringsMisskeyAntennaSourcesViVn extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayViVn extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayViVn extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => 'Chủ Nhật';
@@ -1817,10 +1820,10 @@ class _StringsMisskeyWeekdayViVn extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsViVn extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsViVn extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Trang cá nhân';
@@ -1849,15 +1852,15 @@ class _StringsMisskeyWidgetsViVn extends _StringsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript App';
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Danh sách người dùng';
-	@override late final _StringsMisskeyWidgetsUserListViVn userList_ = _StringsMisskeyWidgetsUserListViVn._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListViVn userList_ = _TranslationsMisskeyWidgetsUserListViVn._(_root);
 	@override String get clicker => 'clicker';
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwViVn extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwViVn extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => 'Ẩn';
@@ -1867,10 +1870,10 @@ class _StringsMisskeyCwViVn extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollViVn extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollViVn extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'Cần ít nhất hai lựa chọn.';
@@ -1897,10 +1900,10 @@ class _StringsMisskeyPollViVn extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityViVn extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityViVn extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Công khai';
@@ -1916,23 +1919,23 @@ class _StringsMisskeyVisibilityViVn extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormViVn extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormViVn extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'Trả lời tút này';
 	@override String get quotePlaceholder => 'Trích dẫn tút này';
 	@override String get channelPlaceholder => 'Đăng lên một kênh';
-	@override late final _StringsMisskeyPostFormPlaceholdersViVn placeholders_ = _StringsMisskeyPostFormPlaceholdersViVn._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersViVn placeholders_ = _TranslationsMisskeyPostFormPlaceholdersViVn._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileViVn extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileViVn extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Tên';
@@ -1949,10 +1952,10 @@ class _StringsMisskeyProfileViVn extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportViVn extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportViVn extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'Toàn bộ tút';
@@ -1967,10 +1970,10 @@ class _StringsMisskeyExportOrImportViVn extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsViVn extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsViVn extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Liên hợp';
@@ -1989,10 +1992,10 @@ class _StringsMisskeyChartsViVn extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsViVn extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsViVn extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'Lượt yêu cầu';
@@ -2009,10 +2012,10 @@ class _StringsMisskeyInstanceChartsViVn extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesViVn extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesViVn extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Trang chính';
@@ -2022,10 +2025,10 @@ class _StringsMisskeyTimelinesViVn extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayViVn extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayViVn extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'Tạo Play mới';
@@ -2045,10 +2048,10 @@ class _StringsMisskeyPlayViVn extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesViVn extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesViVn extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'Tạo Trang mới';
@@ -2088,14 +2091,14 @@ class _StringsMisskeyPagesViVn extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'Nội dung';
 	@override String get inputBlocks => 'Nhập';
 	@override String get specialBlocks => 'Đặc biệt';
-	@override late final _StringsMisskeyPagesBlocksViVn blocks = _StringsMisskeyPagesBlocksViVn._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksViVn blocks = _TranslationsMisskeyPagesBlocksViVn._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusViVn extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusViVn extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'Đang chờ';
@@ -2104,10 +2107,10 @@ class _StringsMisskeyRelayStatusViVn extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationViVn extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationViVn extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'Đã tải lên tập tin';
@@ -2122,15 +2125,15 @@ class _StringsMisskeyNotificationViVn extends _StringsMisskeyNotificationEnUs {
 	@override String unreadAntennaNote({required Object name}) => 'Ăng ten ${name}';
 	@override String get emptyPushNotificationMessage => 'Đã cập nhật thông báo đẩy';
 	@override String get achievementEarned => 'Hoàn thành Achievement';
-	@override late final _StringsMisskeyNotificationTypesViVn types_ = _StringsMisskeyNotificationTypesViVn._(_root);
-	@override late final _StringsMisskeyNotificationActionsViVn actions_ = _StringsMisskeyNotificationActionsViVn._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesViVn types_ = _TranslationsMisskeyNotificationTypesViVn._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsViVn actions_ = _TranslationsMisskeyNotificationActionsViVn._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckViVn extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckViVn extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'Luôn hiện cột chính';
@@ -2149,14 +2152,14 @@ class _StringsMisskeyDeckViVn extends _StringsMisskeyDeckEnUs {
 	@override String get introduction => 'Kết hợp các cột để tạo giao diện của riêng bạn!';
 	@override String get introduction2 => 'Bạn có thể thêm cột bất kỳ lúc nào bằng cách nhấn + ở bên phải màn hình.';
 	@override String get widgetsIntroduction => 'Chọn "Sửa widget" trong menu cột và thêm một widget.';
-	@override late final _StringsMisskeyDeckColumnsViVn columns_ = _StringsMisskeyDeckColumnsViVn._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsViVn columns_ = _TranslationsMisskeyDeckColumnsViVn._(_root);
 }
 
 // Path: misskey.dialog_
-class _StringsMisskeyDialogViVn extends _StringsMisskeyDialogEnUs {
-	_StringsMisskeyDialogViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyDialogViVn extends TranslationsMisskeyDialogEnUs {
+	_TranslationsMisskeyDialogViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String charactersExceeded({required Object current, required Object max}) => 'Bạn nhắn quá giới hạn ký tự!! Hiện nay ${current} / giới hạn ${max}';
@@ -2164,34 +2167,34 @@ class _StringsMisskeyDialogViVn extends _StringsMisskeyDialogEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsViVn extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsViVn extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get createWebhook => 'Tạo Webhook';
 	@override String get name => 'Tên';
 	@override String get secret => 'Mã bí mật';
 	@override String get active => 'Đã bật';
-	@override late final _StringsMisskeyWebhookSettingsEventsViVn events_ = _StringsMisskeyWebhookSettingsEventsViVn._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsViVn events_ = _TranslationsMisskeyWebhookSettingsEventsViVn._(_root);
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportViVn extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportViVn extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientViVn notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientViVn._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientViVn notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientViVn._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesViVn extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesViVn extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'Vô hiệu hóa';
@@ -2200,99 +2203,99 @@ class _StringsMisskeyModerationLogTypesViVn extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiViVn extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiViVn extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'Tổng cộng';
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeViVn extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeViVn extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Đang đăng';
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesViVn extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViVn extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1ViVn notes1_ = _StringsMisskeyAchievementsTypesNotes1ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10ViVn notes10_ = _StringsMisskeyAchievementsTypesNotes10ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100ViVn notes100_ = _StringsMisskeyAchievementsTypesNotes100ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500ViVn notes500_ = _StringsMisskeyAchievementsTypesNotes500ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000ViVn notes1000_ = _StringsMisskeyAchievementsTypesNotes1000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000ViVn notes5000_ = _StringsMisskeyAchievementsTypesNotes5000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000ViVn notes10000_ = _StringsMisskeyAchievementsTypesNotes10000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000ViVn notes20000_ = _StringsMisskeyAchievementsTypesNotes20000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000ViVn notes30000_ = _StringsMisskeyAchievementsTypesNotes30000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000ViVn notes40000_ = _StringsMisskeyAchievementsTypesNotes40000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000ViVn notes50000_ = _StringsMisskeyAchievementsTypesNotes50000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000ViVn notes100000_ = _StringsMisskeyAchievementsTypesNotes100000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3ViVn login3_ = _StringsMisskeyAchievementsTypesLogin3ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin7ViVn login7_ = _StringsMisskeyAchievementsTypesLogin7ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin15ViVn login15_ = _StringsMisskeyAchievementsTypesLogin15ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin30ViVn login30_ = _StringsMisskeyAchievementsTypesLogin30ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin60ViVn login60_ = _StringsMisskeyAchievementsTypesLogin60ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin100ViVn login100_ = _StringsMisskeyAchievementsTypesLogin100ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin200ViVn login200_ = _StringsMisskeyAchievementsTypesLogin200ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin300ViVn login300_ = _StringsMisskeyAchievementsTypesLogin300ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin400ViVn login400_ = _StringsMisskeyAchievementsTypesLogin400ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin1000ViVn login1000_ = _StringsMisskeyAchievementsTypesLogin1000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1ViVn noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledViVn profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatViVn markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing1ViVn following1_ = _StringsMisskeyAchievementsTypesFollowing1ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing10ViVn following10_ = _StringsMisskeyAchievementsTypesFollowing10ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing50ViVn following50_ = _StringsMisskeyAchievementsTypesFollowing50ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing100ViVn following100_ = _StringsMisskeyAchievementsTypesFollowing100ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing300ViVn following300_ = _StringsMisskeyAchievementsTypesFollowing300ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1ViVn followers1_ = _StringsMisskeyAchievementsTypesFollowers1ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers10ViVn followers10_ = _StringsMisskeyAchievementsTypesFollowers10ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers50ViVn followers50_ = _StringsMisskeyAchievementsTypesFollowers50ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers100ViVn followers100_ = _StringsMisskeyAchievementsTypesFollowers100ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers300ViVn followers300_ = _StringsMisskeyAchievementsTypesFollowers300ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers500ViVn followers500_ = _StringsMisskeyAchievementsTypesFollowers500ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1000ViVn followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30ViVn collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minViVn viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyViVn iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFoundTreasureViVn foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient30minViVn client30min_ = _StringsMisskeyAchievementsTypesClient30minViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient60minViVn client60min_ = _StringsMisskeyAchievementsTypesClient60minViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightViVn postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secViVn postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSelfQuoteViVn selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesHtl20npmViVn htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartViVn viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOpen3windowsViVn open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadViVn reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClickedClickHereViVn clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyViVn justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCookieClickedViVn cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1ViVn notes1_ = _TranslationsMisskeyAchievementsTypesNotes1ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10ViVn notes10_ = _TranslationsMisskeyAchievementsTypesNotes10ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100ViVn notes100_ = _TranslationsMisskeyAchievementsTypesNotes100ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500ViVn notes500_ = _TranslationsMisskeyAchievementsTypesNotes500ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000ViVn notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000ViVn notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000ViVn notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000ViVn notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000ViVn notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000ViVn notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000ViVn notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000ViVn notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3ViVn login3_ = _TranslationsMisskeyAchievementsTypesLogin3ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin7ViVn login7_ = _TranslationsMisskeyAchievementsTypesLogin7ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin15ViVn login15_ = _TranslationsMisskeyAchievementsTypesLogin15ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin30ViVn login30_ = _TranslationsMisskeyAchievementsTypesLogin30ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin60ViVn login60_ = _TranslationsMisskeyAchievementsTypesLogin60ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin100ViVn login100_ = _TranslationsMisskeyAchievementsTypesLogin100ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin200ViVn login200_ = _TranslationsMisskeyAchievementsTypesLogin200ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin300ViVn login300_ = _TranslationsMisskeyAchievementsTypesLogin300ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin400ViVn login400_ = _TranslationsMisskeyAchievementsTypesLogin400ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin1000ViVn login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledViVn profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing1ViVn following1_ = _TranslationsMisskeyAchievementsTypesFollowing1ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing10ViVn following10_ = _TranslationsMisskeyAchievementsTypesFollowing10ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing50ViVn following50_ = _TranslationsMisskeyAchievementsTypesFollowing50ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing100ViVn following100_ = _TranslationsMisskeyAchievementsTypesFollowing100ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing300ViVn following300_ = _TranslationsMisskeyAchievementsTypesFollowing300ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1ViVn followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers10ViVn followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers50ViVn followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers100ViVn followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers300ViVn followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers500ViVn followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000ViVn followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureViVn foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient30minViVn client30min_ = _TranslationsMisskeyAchievementsTypesClient30minViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient60minViVn client60min_ = _TranslationsMisskeyAchievementsTypesClient60minViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteViVn selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmViVn htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsViVn open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereViVn clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedViVn cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedViVn._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityViVn extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityViVn extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'Thấp';
@@ -2301,10 +2304,10 @@ class _StringsMisskeyRolePriorityViVn extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsViVn extends _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleOptionsViVn extends TranslationsMisskeyRoleOptionsEnUs {
+	_TranslationsMisskeyRoleOptionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get gtlAvailable => 'Xem Timeline xã hội';
@@ -2319,10 +2322,10 @@ class _StringsMisskeyRoleOptionsViVn extends _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionViVn extends _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleConditionViVn extends TranslationsMisskeyRoleConditionEnUs {
+	_TranslationsMisskeyRoleConditionViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get createdMoreThan => 'Trôi qua ～ sau khi lập tài khoản';
@@ -2336,30 +2339,30 @@ class _StringsMisskeyRoleConditionViVn extends _StringsMisskeyRoleConditionEnUs 
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowViVn extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowViVn extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'đã theo dõi bạn';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestViVn extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestViVn extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Chấp nhận yêu cầu theo dõi';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysViVn extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysViVn extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'Màu phụ';
@@ -2404,20 +2407,20 @@ class _StringsMisskeyThemeKeysViVn extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListViVn extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListViVn extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Chọn danh sách';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersViVn extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersViVn extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'Bạn đang định làm gì?';
@@ -2429,10 +2432,10 @@ class _StringsMisskeyPostFormPlaceholdersViVn extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksViVn extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksViVn extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'Văn bản';
@@ -2441,14 +2444,14 @@ class _StringsMisskeyPagesBlocksViVn extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get image => 'Hình ảnh';
 	@override String get button => 'Nút';
 	@override String get note => 'Tút đã nhúng';
-	@override late final _StringsMisskeyPagesBlocksNoteViVn note_ = _StringsMisskeyPagesBlocksNoteViVn._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteViVn note_ = _TranslationsMisskeyPagesBlocksNoteViVn._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesViVn extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesViVn extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Toàn bộ';
@@ -2467,10 +2470,10 @@ class _StringsMisskeyNotificationTypesViVn extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsViVn extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsViVn extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => 'đã theo dõi lại bạn';
@@ -2479,10 +2482,10 @@ class _StringsMisskeyNotificationActionsViVn extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsViVn extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsViVn extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'Chính';
@@ -2497,10 +2500,10 @@ class _StringsMisskeyDeckColumnsViVn extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsViVn extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsViVn extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get reaction => 'Khi nhận được sự kiện';
@@ -2508,20 +2511,20 @@ class _StringsMisskeyWebhookSettingsEventsViVn extends _StringsMisskeyWebhookSet
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientViVn extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientViVn extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1ViVn extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1ViVn extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'just setting up my msky';
@@ -2530,10 +2533,10 @@ class _StringsMisskeyAchievementsTypesNotes1ViVn extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10ViVn extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10ViVn extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Một số bài viết';
@@ -2541,10 +2544,10 @@ class _StringsMisskeyAchievementsTypesNotes10ViVn extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100ViVn extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100ViVn extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Rất nhiều bài biết';
@@ -2552,10 +2555,10 @@ class _StringsMisskeyAchievementsTypesNotes100ViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500ViVn extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500ViVn extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Như đầy bài viết';
@@ -2563,10 +2566,10 @@ class _StringsMisskeyAchievementsTypesNotes500ViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000ViVn extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000ViVn extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ngọn núi bài viết';
@@ -2574,10 +2577,10 @@ class _StringsMisskeyAchievementsTypesNotes1000ViVn extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000ViVn extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000ViVn extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Bài viết chảy như suối';
@@ -2585,10 +2588,10 @@ class _StringsMisskeyAchievementsTypesNotes5000ViVn extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000ViVn extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000ViVn extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Bài Viết siu nhìu';
@@ -2596,10 +2599,10 @@ class _StringsMisskeyAchievementsTypesNotes10000ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000ViVn extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000ViVn extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Need more note';
@@ -2607,10 +2610,10 @@ class _StringsMisskeyAchievementsTypesNotes20000ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000ViVn extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000ViVn extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ĐĂNG VỚI BÀI';
@@ -2618,10 +2621,10 @@ class _StringsMisskeyAchievementsTypesNotes30000ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000ViVn extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000ViVn extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Nhà xưởng dăng bài';
@@ -2629,10 +2632,10 @@ class _StringsMisskeyAchievementsTypesNotes40000ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000ViVn extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000ViVn extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Hàng tinh đăng bài';
@@ -2640,10 +2643,10 @@ class _StringsMisskeyAchievementsTypesNotes50000ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000ViVn extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000ViVn extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
@@ -2652,10 +2655,10 @@ class _StringsMisskeyAchievementsTypesNotes100000ViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3ViVn extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3ViVn extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Sơ cấp I';
@@ -2664,10 +2667,10 @@ class _StringsMisskeyAchievementsTypesLogin3ViVn extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7ViVn extends _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin7ViVn extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin7ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Sơ cấp II';
@@ -2676,10 +2679,10 @@ class _StringsMisskeyAchievementsTypesLogin7ViVn extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15ViVn extends _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin15ViVn extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin15ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Sơ cấp III';
@@ -2687,10 +2690,10 @@ class _StringsMisskeyAchievementsTypesLogin15ViVn extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30ViVn extends _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin30ViVn extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin30ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist cấp I';
@@ -2698,10 +2701,10 @@ class _StringsMisskeyAchievementsTypesLogin30ViVn extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60ViVn extends _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin60ViVn extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin60ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist cấp II';
@@ -2709,10 +2712,10 @@ class _StringsMisskeyAchievementsTypesLogin60ViVn extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100ViVn extends _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin100ViVn extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist cấp III';
@@ -2721,10 +2724,10 @@ class _StringsMisskeyAchievementsTypesLogin100ViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200ViVn extends _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin200ViVn extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin200ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Khách hàng thường xuyên cấp I';
@@ -2732,10 +2735,10 @@ class _StringsMisskeyAchievementsTypesLogin200ViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300ViVn extends _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin300ViVn extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin300ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Khách hàng thường xuyên cấp II';
@@ -2743,10 +2746,10 @@ class _StringsMisskeyAchievementsTypesLogin300ViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400ViVn extends _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin400ViVn extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin400ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Khách hàng thường xuyên cấp III';
@@ -2754,40 +2757,40 @@ class _StringsMisskeyAchievementsTypesLogin400ViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000ViVn extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin1000ViVn extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin1000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get flavor => 'Cảm ơn bạn đã sử dụng Misskey!';
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1ViVn extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Nhà thiên văn học';
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Đi tìm những ngôi sao';
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledViVn extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledViVn extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Luôn sẵn sàng';
@@ -2795,10 +2798,10 @@ class _StringsMisskeyAchievementsTypesProfileFilledViVn extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatViVn extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatViVn extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Tôi là một con mèo';
@@ -2807,10 +2810,10 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1ViVn extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing1ViVn extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Theo dõi đầu tiên';
@@ -2818,10 +2821,10 @@ class _StringsMisskeyAchievementsTypesFollowing1ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10ViVn extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing10ViVn extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing10ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Cứ theo dõi và theo dõi';
@@ -2829,10 +2832,10 @@ class _StringsMisskeyAchievementsTypesFollowing10ViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50ViVn extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing50ViVn extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing50ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Bạn bè nhiều quá';
@@ -2840,10 +2843,10 @@ class _StringsMisskeyAchievementsTypesFollowing50ViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100ViVn extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing100ViVn extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Trăm bạn bè';
@@ -2851,10 +2854,10 @@ class _StringsMisskeyAchievementsTypesFollowing100ViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300ViVn extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing300ViVn extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing300ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Quá nhiều bạn bè';
@@ -2862,10 +2865,10 @@ class _StringsMisskeyAchievementsTypesFollowing300ViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1ViVn extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1ViVn extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ai đầu tiên theo dõi bạn';
@@ -2873,10 +2876,10 @@ class _StringsMisskeyAchievementsTypesFollowers1ViVn extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10ViVn extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers10ViVn extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers10ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'FOLLOW ME!!';
@@ -2884,10 +2887,10 @@ class _StringsMisskeyAchievementsTypesFollowers10ViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50ViVn extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers50ViVn extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers50ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Từng chút một';
@@ -2895,10 +2898,10 @@ class _StringsMisskeyAchievementsTypesFollowers50ViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100ViVn extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers100ViVn extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers100ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Người nổi tiếng';
@@ -2906,10 +2909,10 @@ class _StringsMisskeyAchievementsTypesFollowers100ViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300ViVn extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers300ViVn extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers300ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Vui lòng xếp thành hàng nào';
@@ -2917,10 +2920,10 @@ class _StringsMisskeyAchievementsTypesFollowers300ViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500ViVn extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers500ViVn extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers500ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Trạm phát sóng';
@@ -2928,10 +2931,10 @@ class _StringsMisskeyAchievementsTypesFollowers500ViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000ViVn extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1000ViVn extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1000ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Người có tầm ảnh hưởng';
@@ -2939,10 +2942,10 @@ class _StringsMisskeyAchievementsTypesFollowers1000ViVn extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30ViVn extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_TranslationsMisskeyAchievementsTypesCollectAchievements30ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Người sưu tập thành tích';
@@ -2950,10 +2953,10 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30ViVn extends _Strings
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minViVn extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewAchievements3minViVn extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_TranslationsMisskeyAchievementsTypesViewAchievements3minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Yêu Thành tích';
@@ -2961,10 +2964,10 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minViVn extends _StringsM
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyViVn extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesILoveMisskeyViVn extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_TranslationsMisskeyAchievementsTypesILoveMisskeyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Tôi Yêu Misskey';
@@ -2973,10 +2976,10 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureViVn extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFoundTreasureViVn extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_TranslationsMisskeyAchievementsTypesFoundTreasureViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Tìm kiếm kho báu';
@@ -2984,10 +2987,10 @@ class _StringsMisskeyAchievementsTypesFoundTreasureViVn extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minViVn extends _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient30minViVn extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient30minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Giải lao xỉu';
@@ -2995,30 +2998,30 @@ class _StringsMisskeyAchievementsTypesClient30minViVn extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _StringsMisskeyAchievementsTypesClient60minViVn extends _StringsMisskeyAchievementsTypesClient60minEnUs {
-	_StringsMisskeyAchievementsTypesClient60minViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient60minViVn extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient60minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Giữ Misskey mở trong ít nhất 60 phút';
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Xem như không có gì đâu nha';
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightViVn extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAtLateNightViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Loài ăn đêm';
@@ -3027,10 +3030,10 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightViVn extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secViVn extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAt0min0secViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Tín hiệu báo giờ';
@@ -3039,10 +3042,10 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secViVn extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteViVn extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSelfQuoteViVn extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_TranslationsMisskeyAchievementsTypesSelfQuoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Nói đến bản thân';
@@ -3050,10 +3053,10 @@ class _StringsMisskeyAchievementsTypesSelfQuoteViVn extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmViVn extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesHtl20npmViVn extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	_TranslationsMisskeyAchievementsTypesHtl20npmViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Timeline trôi như con sông';
@@ -3061,10 +3064,10 @@ class _StringsMisskeyAchievementsTypesHtl20npmViVn extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartViVn extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartViVn extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Nhà phân tích';
@@ -3072,20 +3075,20 @@ class _StringsMisskeyAchievementsTypesViewInstanceChartViVn extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Chào thế giới!';
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsViVn extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOpen3windowsViVn extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_TranslationsMisskeyAchievementsTypesOpen3windowsViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Nhiều cửa sổ';
@@ -3093,10 +3096,10 @@ class _StringsMisskeyAchievementsTypesOpen3windowsViVn extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadViVn extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesReactWithoutReadViVn extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_TranslationsMisskeyAchievementsTypesReactWithoutReadViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Bài này bạn đọc kỹ chứ? ';
@@ -3104,10 +3107,10 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadViVn extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereViVn extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClickedClickHereViVn extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_TranslationsMisskeyAchievementsTypesClickedClickHereViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Bấm đây';
@@ -3115,10 +3118,10 @@ class _StringsMisskeyAchievementsTypesClickedClickHereViVn extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyViVn extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_TranslationsMisskeyAchievementsTypesJustPlainLuckyViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Chỉ là một cuộc máy mắn';
@@ -3126,10 +3129,10 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyViVn extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ngưỡng mộ với vị thần';
@@ -3137,20 +3140,20 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloViVn extends _StringsMisske
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Kỷ niệm một năm';
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Sinh nhật vủi vẻ';
@@ -3158,10 +3161,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayViVn extends _StringsMis
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Chức mừng năm mới';
@@ -3170,20 +3173,20 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayViVn extends _Strings
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedViVn extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCookieClickedViVn extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	_TranslationsMisskeyAchievementsTypesCookieClickedViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get flavor => 'Bạn nhầm phầm mềm chứ?';
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteViVn extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteViVn extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'ID tút';
@@ -3192,10 +3195,10 @@ class _StringsMisskeyPagesBlocksNoteViVn extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(_StringsViVn root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
 
-	@override final _StringsViVn _root; // ignore: unused_field
+	final TranslationsViVn _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'Email';

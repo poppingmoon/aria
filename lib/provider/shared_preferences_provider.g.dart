@@ -6,7 +6,7 @@ part of 'shared_preferences_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sharedPreferencesHash() => r'2557f54fd8b6501440ec6dcee949cabe02a7d8c7';
+String _$sharedPreferencesHash() => r'1a68dc21fcdddf6183e153028c32f94136400870';
 
 /// See also [sharedPreferences].
 @ProviderFor(sharedPreferences)
@@ -20,6 +20,8 @@ final sharedPreferencesProvider = Provider<SharedPreferences>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef SharedPreferencesRef = ProviderRef<SharedPreferences>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

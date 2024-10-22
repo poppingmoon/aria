@@ -6,7 +6,7 @@ part of 'favorite_channels_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$favoriteChannelsHash() => r'c29b91d61fdc0955bfbab371eb61cdb4dac36162';
+String _$favoriteChannelsHash() => r'92da3075cd96c7e85ca280ee2fe3db24465d6615';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -145,6 +145,8 @@ class FavoriteChannelsProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin FavoriteChannelsRef
     on AutoDisposeFutureProviderRef<List<CommunityChannel>> {
   /// The parameter `account` of this provider.
@@ -160,4 +162,4 @@ class _FavoriteChannelsProviderElement
   Account get account => (origin as FavoriteChannelsProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

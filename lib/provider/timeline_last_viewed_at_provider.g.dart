@@ -7,7 +7,7 @@ part of 'timeline_last_viewed_at_provider.dart';
 // **************************************************************************
 
 String _$timelineLastViewedAtHash() =>
-    r'bf9ce2df14ff7da0ae2576ae69dcf44a9c3f6ac3';
+    r'be8976a7ee6821b3ae63b998a9690bf7cb827f6c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -144,6 +144,8 @@ class TimelineLastViewedAtProvider extends AutoDisposeProvider<DateTime?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TimelineLastViewedAtRef on AutoDisposeProviderRef<DateTime?> {
   /// The parameter `tabSettings` of this provider.
   TabSettings get tabSettings;
@@ -158,4 +160,4 @@ class _TimelineLastViewedAtProviderElement
       (origin as TimelineLastViewedAtProvider).tabSettings;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

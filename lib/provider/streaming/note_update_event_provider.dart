@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/account.dart';
@@ -9,7 +10,7 @@ part 'note_update_event_provider.g.dart';
 
 @riverpod
 Stream<NoteUpdateEvent> noteUpdateEvent(
-  NoteUpdateEventRef ref,
+  Ref ref,
   Account account,
   String noteId,
 ) async* {

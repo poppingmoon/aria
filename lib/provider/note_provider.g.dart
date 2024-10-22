@@ -6,7 +6,7 @@ part of 'note_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteHash() => r'666c9eb443f8e131df24df830324eb745db24c43';
+String _$noteHash() => r'a667fa12e07a5dd4bf19f2b5836fc85490a8106f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -151,6 +151,8 @@ class NoteProvider extends Provider<Note?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin NoteRef on ProviderRef<Note?> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -168,4 +170,4 @@ class _NoteProviderElement extends ProviderElement<Note?> with NoteRef {
   String get noteId => (origin as NoteProvider).noteId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

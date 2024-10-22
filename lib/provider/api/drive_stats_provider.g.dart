@@ -6,7 +6,7 @@ part of 'drive_stats_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$driveStatsHash() => r'2998813a782013c4943d007558bfb20720172b8a';
+String _$driveStatsHash() => r'2701f57fe05b2ecc070d5510abb4b0d56d9616f7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class DriveStatsProvider extends AutoDisposeFutureProvider<DriveResponse> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin DriveStatsRef on AutoDisposeFutureProviderRef<DriveResponse> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -155,4 +157,4 @@ class _DriveStatsProviderElement
   Account get account => (origin as DriveStatsProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../model/summaly_result.dart';
@@ -7,7 +8,7 @@ part 'summaly_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 FutureOr<SummalyResult?> summaly(
-  SummalyRef ref,
+  Ref ref,
   String host,
   String link, {
   String? lang,

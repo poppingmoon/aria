@@ -1,15 +1,14 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'misskey_servers_provider.g.dart';
 
 @riverpod
-FutureOr<List<JoinMisskeyInstanceInfo>> misskeyServers(
-  MisskeyServersRef ref,
-) async {
+FutureOr<List<JoinMisskeyInstanceInfo>> misskeyServers(Ref ref) async {
   final link = ref.keepAlive();
   Timer? timer;
   ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));

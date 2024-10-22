@@ -6,7 +6,7 @@ part of 'summaly_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$summalyHash() => r'97cdf2596d2eb03f6f18bab957088b5f49e35698';
+String _$summalyHash() => r'da89b72a76a5e979d3583825cb5219fa8af9eeb8';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -164,6 +164,8 @@ class SummalyProvider extends FutureProvider<SummalyResult?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin SummalyRef on FutureProviderRef<SummalyResult?> {
   /// The parameter `host` of this provider.
   String get host;
@@ -187,4 +189,4 @@ class _SummalyProviderElement extends FutureProviderElement<SummalyResult?>
   String? get lang => (origin as SummalyProvider).lang;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

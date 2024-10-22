@@ -6,7 +6,7 @@ part of 'node_info_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$nodeInfoHash() => r'efbfef2fc4f438aba74a47262856e93e4fe32e15';
+String _$nodeInfoHash() => r'e5aa1a1bf26c9d93a44c5a45b35e31d357fb34f5';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -141,6 +141,8 @@ class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin NodeInfoRef on AutoDisposeFutureProviderRef<Map<String, dynamic>> {
   /// The parameter `host` of this provider.
   String get host;
@@ -155,4 +157,4 @@ class _NodeInfoProviderElement
   String get host => (origin as NodeInfoProvider).host;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

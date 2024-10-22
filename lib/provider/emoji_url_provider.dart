@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
@@ -9,7 +10,7 @@ part 'emoji_url_provider.g.dart';
 
 @riverpod
 (String, String) emojiUrl(
-  EmojiUrlRef ref,
+  Ref ref,
   Account account,
   String emoji, {
   String? url,

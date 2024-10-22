@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'dio_provider.dart';
@@ -5,7 +6,7 @@ import 'dio_provider.dart';
 part 'node_info_provider.g.dart';
 
 @riverpod
-FutureOr<Map<String, dynamic>> nodeInfo(NodeInfoRef ref, String host) async {
+FutureOr<Map<String, dynamic>> nodeInfo(Ref ref, String host) async {
   final response = await ref
       .read(dioProvider)
       .getUri<Map<String, dynamic>>(Uri.https(host, '.well-known/nodeinfo'));

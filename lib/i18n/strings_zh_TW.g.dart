@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsZhTw extends Translations {
+class TranslationsZhTw extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsZhTw.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsZhTw({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.zhTw,
@@ -18,23 +21,23 @@ class _StringsZhTw extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <zh-TW>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsZhTw _root = this; // ignore: unused_field
+	late final TranslationsZhTw _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaZhTw aria = _StringsAriaZhTw._(_root);
-	@override late final _StringsMisskeyZhTw misskey = _StringsMisskeyZhTw._(_root);
+	@override late final _TranslationsAriaZhTw aria = _TranslationsAriaZhTw._(_root);
+	@override late final _TranslationsMisskeyZhTw misskey = _TranslationsMisskeyZhTw._(_root);
 }
 
 // Path: aria
-class _StringsAriaZhTw extends _StringsAriaEnUs {
-	_StringsAriaZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsAriaZhTw extends TranslationsAriaEnUs {
+	_TranslationsAriaZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -73,10 +76,10 @@ class _StringsAriaZhTw extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
-	_StringsMisskeyZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => '繁體中文（台灣）';
@@ -1367,87 +1370,87 @@ class _StringsMisskeyZhTw extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '雖然驗證金鑰成功，但是無密碼登入的方式是停用的。';
 	@override String get messageToFollower => '給追隨者的訊息';
 	@override String get target => '目標 ';
-	@override late final _StringsMisskeyAbuseUserReportZhTw abuseUserReport_ = _StringsMisskeyAbuseUserReportZhTw._(_root);
-	@override late final _StringsMisskeyDeliveryZhTw delivery_ = _StringsMisskeyDeliveryZhTw._(_root);
-	@override late final _StringsMisskeyBubbleGameZhTw bubbleGame_ = _StringsMisskeyBubbleGameZhTw._(_root);
-	@override late final _StringsMisskeyAnnouncementZhTw announcement_ = _StringsMisskeyAnnouncementZhTw._(_root);
-	@override late final _StringsMisskeyInitialAccountSettingZhTw initialAccountSetting_ = _StringsMisskeyInitialAccountSettingZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialZhTw initialTutorial_ = _StringsMisskeyInitialTutorialZhTw._(_root);
-	@override late final _StringsMisskeyTimelineDescriptionZhTw timelineDescription_ = _StringsMisskeyTimelineDescriptionZhTw._(_root);
-	@override late final _StringsMisskeyServerRulesZhTw serverRules_ = _StringsMisskeyServerRulesZhTw._(_root);
-	@override late final _StringsMisskeyServerSettingsZhTw serverSettings_ = _StringsMisskeyServerSettingsZhTw._(_root);
-	@override late final _StringsMisskeyAccountMigrationZhTw accountMigration_ = _StringsMisskeyAccountMigrationZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsZhTw achievements_ = _StringsMisskeyAchievementsZhTw._(_root);
-	@override late final _StringsMisskeyRoleZhTw role_ = _StringsMisskeyRoleZhTw._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionZhTw sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionZhTw._(_root);
-	@override late final _StringsMisskeyEmailUnavailableZhTw emailUnavailable_ = _StringsMisskeyEmailUnavailableZhTw._(_root);
-	@override late final _StringsMisskeyFfVisibilityZhTw ffVisibility_ = _StringsMisskeyFfVisibilityZhTw._(_root);
-	@override late final _StringsMisskeySignupZhTw signup_ = _StringsMisskeySignupZhTw._(_root);
-	@override late final _StringsMisskeyAccountDeleteZhTw accountDelete_ = _StringsMisskeyAccountDeleteZhTw._(_root);
-	@override late final _StringsMisskeyAdZhTw ad_ = _StringsMisskeyAdZhTw._(_root);
-	@override late final _StringsMisskeyForgotPasswordZhTw forgotPassword_ = _StringsMisskeyForgotPasswordZhTw._(_root);
-	@override late final _StringsMisskeyGalleryZhTw gallery_ = _StringsMisskeyGalleryZhTw._(_root);
-	@override late final _StringsMisskeyEmailZhTw email_ = _StringsMisskeyEmailZhTw._(_root);
-	@override late final _StringsMisskeyPluginZhTw plugin_ = _StringsMisskeyPluginZhTw._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsZhTw preferencesBackups_ = _StringsMisskeyPreferencesBackupsZhTw._(_root);
-	@override late final _StringsMisskeyRegistryZhTw registry_ = _StringsMisskeyRegistryZhTw._(_root);
-	@override late final _StringsMisskeyAboutMisskeyZhTw aboutMisskey_ = _StringsMisskeyAboutMisskeyZhTw._(_root);
-	@override late final _StringsMisskeyDisplayOfSensitiveMediaZhTw displayOfSensitiveMedia_ = _StringsMisskeyDisplayOfSensitiveMediaZhTw._(_root);
-	@override late final _StringsMisskeyInstanceTickerZhTw instanceTicker_ = _StringsMisskeyInstanceTickerZhTw._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorZhTw serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorZhTw._(_root);
-	@override late final _StringsMisskeyChannelZhTw channel_ = _StringsMisskeyChannelZhTw._(_root);
-	@override late final _StringsMisskeyMenuDisplayZhTw menuDisplay_ = _StringsMisskeyMenuDisplayZhTw._(_root);
-	@override late final _StringsMisskeyWordMuteZhTw wordMute_ = _StringsMisskeyWordMuteZhTw._(_root);
-	@override late final _StringsMisskeyInstanceMuteZhTw instanceMute_ = _StringsMisskeyInstanceMuteZhTw._(_root);
-	@override late final _StringsMisskeyThemeZhTw theme_ = _StringsMisskeyThemeZhTw._(_root);
-	@override late final _StringsMisskeySfxZhTw sfx_ = _StringsMisskeySfxZhTw._(_root);
-	@override late final _StringsMisskeySoundSettingsZhTw soundSettings_ = _StringsMisskeySoundSettingsZhTw._(_root);
-	@override late final _StringsMisskeyAgoZhTw ago_ = _StringsMisskeyAgoZhTw._(_root);
-	@override late final _StringsMisskeyTimeInZhTw timeIn_ = _StringsMisskeyTimeInZhTw._(_root);
-	@override late final _StringsMisskeyTimeZhTw time_ = _StringsMisskeyTimeZhTw._(_root);
-	@override late final _StringsMisskeyX2faZhTw x2fa_ = _StringsMisskeyX2faZhTw._(_root);
-	@override late final _StringsMisskeyPermissionsZhTw permissions_ = _StringsMisskeyPermissionsZhTw._(_root);
-	@override late final _StringsMisskeyAuthZhTw auth_ = _StringsMisskeyAuthZhTw._(_root);
-	@override late final _StringsMisskeyAntennaSourcesZhTw antennaSources_ = _StringsMisskeyAntennaSourcesZhTw._(_root);
-	@override late final _StringsMisskeyWeekdayZhTw weekday_ = _StringsMisskeyWeekdayZhTw._(_root);
-	@override late final _StringsMisskeyWidgetsZhTw widgets_ = _StringsMisskeyWidgetsZhTw._(_root);
-	@override late final _StringsMisskeyCwZhTw cw_ = _StringsMisskeyCwZhTw._(_root);
-	@override late final _StringsMisskeyPollZhTw poll_ = _StringsMisskeyPollZhTw._(_root);
-	@override late final _StringsMisskeyVisibilityZhTw visibility_ = _StringsMisskeyVisibilityZhTw._(_root);
-	@override late final _StringsMisskeyPostFormZhTw postForm_ = _StringsMisskeyPostFormZhTw._(_root);
-	@override late final _StringsMisskeyProfileZhTw profile_ = _StringsMisskeyProfileZhTw._(_root);
-	@override late final _StringsMisskeyExportOrImportZhTw exportOrImport_ = _StringsMisskeyExportOrImportZhTw._(_root);
-	@override late final _StringsMisskeyChartsZhTw charts_ = _StringsMisskeyChartsZhTw._(_root);
-	@override late final _StringsMisskeyInstanceChartsZhTw instanceCharts_ = _StringsMisskeyInstanceChartsZhTw._(_root);
-	@override late final _StringsMisskeyTimelinesZhTw timelines_ = _StringsMisskeyTimelinesZhTw._(_root);
-	@override late final _StringsMisskeyPlayZhTw play_ = _StringsMisskeyPlayZhTw._(_root);
-	@override late final _StringsMisskeyPagesZhTw pages_ = _StringsMisskeyPagesZhTw._(_root);
-	@override late final _StringsMisskeyRelayStatusZhTw relayStatus_ = _StringsMisskeyRelayStatusZhTw._(_root);
-	@override late final _StringsMisskeyNotificationZhTw notification_ = _StringsMisskeyNotificationZhTw._(_root);
-	@override late final _StringsMisskeyDeckZhTw deck_ = _StringsMisskeyDeckZhTw._(_root);
-	@override late final _StringsMisskeyDialogZhTw dialog_ = _StringsMisskeyDialogZhTw._(_root);
-	@override late final _StringsMisskeyDisabledTimelineZhTw disabledTimeline_ = _StringsMisskeyDisabledTimelineZhTw._(_root);
-	@override late final _StringsMisskeyDrivecleanerZhTw drivecleaner_ = _StringsMisskeyDrivecleanerZhTw._(_root);
-	@override late final _StringsMisskeyWebhookSettingsZhTw webhookSettings_ = _StringsMisskeyWebhookSettingsZhTw._(_root);
-	@override late final _StringsMisskeyAbuseReportZhTw abuseReport_ = _StringsMisskeyAbuseReportZhTw._(_root);
-	@override late final _StringsMisskeyModerationLogTypesZhTw moderationLogTypes_ = _StringsMisskeyModerationLogTypesZhTw._(_root);
-	@override late final _StringsMisskeyFileViewerZhTw fileViewer_ = _StringsMisskeyFileViewerZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerZhTw externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerZhTw._(_root);
-	@override late final _StringsMisskeyDataSaverZhTw dataSaver_ = _StringsMisskeyDataSaverZhTw._(_root);
-	@override late final _StringsMisskeyHemisphereZhTw hemisphere_ = _StringsMisskeyHemisphereZhTw._(_root);
-	@override late final _StringsMisskeyReversiZhTw reversi_ = _StringsMisskeyReversiZhTw._(_root);
-	@override late final _StringsMisskeyOfflineScreenZhTw offlineScreen_ = _StringsMisskeyOfflineScreenZhTw._(_root);
-	@override late final _StringsMisskeyUrlPreviewSettingZhTw urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingZhTw._(_root);
-	@override late final _StringsMisskeyMediaControlsZhTw mediaControls_ = _StringsMisskeyMediaControlsZhTw._(_root);
-	@override late final _StringsMisskeyContextMenuZhTw contextMenu_ = _StringsMisskeyContextMenuZhTw._(_root);
-	@override late final _StringsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _StringsMisskeyEmbedCodeGenZhTw._(_root);
+	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
+	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
+	@override late final _TranslationsMisskeyBubbleGameZhTw bubbleGame_ = _TranslationsMisskeyBubbleGameZhTw._(_root);
+	@override late final _TranslationsMisskeyAnnouncementZhTw announcement_ = _TranslationsMisskeyAnnouncementZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingZhTw initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialZhTw initialTutorial_ = _TranslationsMisskeyInitialTutorialZhTw._(_root);
+	@override late final _TranslationsMisskeyTimelineDescriptionZhTw timelineDescription_ = _TranslationsMisskeyTimelineDescriptionZhTw._(_root);
+	@override late final _TranslationsMisskeyServerRulesZhTw serverRules_ = _TranslationsMisskeyServerRulesZhTw._(_root);
+	@override late final _TranslationsMisskeyServerSettingsZhTw serverSettings_ = _TranslationsMisskeyServerSettingsZhTw._(_root);
+	@override late final _TranslationsMisskeyAccountMigrationZhTw accountMigration_ = _TranslationsMisskeyAccountMigrationZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsZhTw achievements_ = _TranslationsMisskeyAchievementsZhTw._(_root);
+	@override late final _TranslationsMisskeyRoleZhTw role_ = _TranslationsMisskeyRoleZhTw._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionZhTw sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionZhTw._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableZhTw emailUnavailable_ = _TranslationsMisskeyEmailUnavailableZhTw._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityZhTw ffVisibility_ = _TranslationsMisskeyFfVisibilityZhTw._(_root);
+	@override late final _TranslationsMisskeySignupZhTw signup_ = _TranslationsMisskeySignupZhTw._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteZhTw accountDelete_ = _TranslationsMisskeyAccountDeleteZhTw._(_root);
+	@override late final _TranslationsMisskeyAdZhTw ad_ = _TranslationsMisskeyAdZhTw._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordZhTw forgotPassword_ = _TranslationsMisskeyForgotPasswordZhTw._(_root);
+	@override late final _TranslationsMisskeyGalleryZhTw gallery_ = _TranslationsMisskeyGalleryZhTw._(_root);
+	@override late final _TranslationsMisskeyEmailZhTw email_ = _TranslationsMisskeyEmailZhTw._(_root);
+	@override late final _TranslationsMisskeyPluginZhTw plugin_ = _TranslationsMisskeyPluginZhTw._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsZhTw preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsZhTw._(_root);
+	@override late final _TranslationsMisskeyRegistryZhTw registry_ = _TranslationsMisskeyRegistryZhTw._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyZhTw aboutMisskey_ = _TranslationsMisskeyAboutMisskeyZhTw._(_root);
+	@override late final _TranslationsMisskeyDisplayOfSensitiveMediaZhTw displayOfSensitiveMedia_ = _TranslationsMisskeyDisplayOfSensitiveMediaZhTw._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerZhTw instanceTicker_ = _TranslationsMisskeyInstanceTickerZhTw._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorZhTw serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorZhTw._(_root);
+	@override late final _TranslationsMisskeyChannelZhTw channel_ = _TranslationsMisskeyChannelZhTw._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayZhTw menuDisplay_ = _TranslationsMisskeyMenuDisplayZhTw._(_root);
+	@override late final _TranslationsMisskeyWordMuteZhTw wordMute_ = _TranslationsMisskeyWordMuteZhTw._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteZhTw instanceMute_ = _TranslationsMisskeyInstanceMuteZhTw._(_root);
+	@override late final _TranslationsMisskeyThemeZhTw theme_ = _TranslationsMisskeyThemeZhTw._(_root);
+	@override late final _TranslationsMisskeySfxZhTw sfx_ = _TranslationsMisskeySfxZhTw._(_root);
+	@override late final _TranslationsMisskeySoundSettingsZhTw soundSettings_ = _TranslationsMisskeySoundSettingsZhTw._(_root);
+	@override late final _TranslationsMisskeyAgoZhTw ago_ = _TranslationsMisskeyAgoZhTw._(_root);
+	@override late final _TranslationsMisskeyTimeInZhTw timeIn_ = _TranslationsMisskeyTimeInZhTw._(_root);
+	@override late final _TranslationsMisskeyTimeZhTw time_ = _TranslationsMisskeyTimeZhTw._(_root);
+	@override late final _TranslationsMisskeyX2faZhTw x2fa_ = _TranslationsMisskeyX2faZhTw._(_root);
+	@override late final _TranslationsMisskeyPermissionsZhTw permissions_ = _TranslationsMisskeyPermissionsZhTw._(_root);
+	@override late final _TranslationsMisskeyAuthZhTw auth_ = _TranslationsMisskeyAuthZhTw._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesZhTw antennaSources_ = _TranslationsMisskeyAntennaSourcesZhTw._(_root);
+	@override late final _TranslationsMisskeyWeekdayZhTw weekday_ = _TranslationsMisskeyWeekdayZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetsZhTw widgets_ = _TranslationsMisskeyWidgetsZhTw._(_root);
+	@override late final _TranslationsMisskeyCwZhTw cw_ = _TranslationsMisskeyCwZhTw._(_root);
+	@override late final _TranslationsMisskeyPollZhTw poll_ = _TranslationsMisskeyPollZhTw._(_root);
+	@override late final _TranslationsMisskeyVisibilityZhTw visibility_ = _TranslationsMisskeyVisibilityZhTw._(_root);
+	@override late final _TranslationsMisskeyPostFormZhTw postForm_ = _TranslationsMisskeyPostFormZhTw._(_root);
+	@override late final _TranslationsMisskeyProfileZhTw profile_ = _TranslationsMisskeyProfileZhTw._(_root);
+	@override late final _TranslationsMisskeyExportOrImportZhTw exportOrImport_ = _TranslationsMisskeyExportOrImportZhTw._(_root);
+	@override late final _TranslationsMisskeyChartsZhTw charts_ = _TranslationsMisskeyChartsZhTw._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsZhTw instanceCharts_ = _TranslationsMisskeyInstanceChartsZhTw._(_root);
+	@override late final _TranslationsMisskeyTimelinesZhTw timelines_ = _TranslationsMisskeyTimelinesZhTw._(_root);
+	@override late final _TranslationsMisskeyPlayZhTw play_ = _TranslationsMisskeyPlayZhTw._(_root);
+	@override late final _TranslationsMisskeyPagesZhTw pages_ = _TranslationsMisskeyPagesZhTw._(_root);
+	@override late final _TranslationsMisskeyRelayStatusZhTw relayStatus_ = _TranslationsMisskeyRelayStatusZhTw._(_root);
+	@override late final _TranslationsMisskeyNotificationZhTw notification_ = _TranslationsMisskeyNotificationZhTw._(_root);
+	@override late final _TranslationsMisskeyDeckZhTw deck_ = _TranslationsMisskeyDeckZhTw._(_root);
+	@override late final _TranslationsMisskeyDialogZhTw dialog_ = _TranslationsMisskeyDialogZhTw._(_root);
+	@override late final _TranslationsMisskeyDisabledTimelineZhTw disabledTimeline_ = _TranslationsMisskeyDisabledTimelineZhTw._(_root);
+	@override late final _TranslationsMisskeyDrivecleanerZhTw drivecleaner_ = _TranslationsMisskeyDrivecleanerZhTw._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsZhTw webhookSettings_ = _TranslationsMisskeyWebhookSettingsZhTw._(_root);
+	@override late final _TranslationsMisskeyAbuseReportZhTw abuseReport_ = _TranslationsMisskeyAbuseReportZhTw._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesZhTw moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesZhTw._(_root);
+	@override late final _TranslationsMisskeyFileViewerZhTw fileViewer_ = _TranslationsMisskeyFileViewerZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerZhTw externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerZhTw._(_root);
+	@override late final _TranslationsMisskeyDataSaverZhTw dataSaver_ = _TranslationsMisskeyDataSaverZhTw._(_root);
+	@override late final _TranslationsMisskeyHemisphereZhTw hemisphere_ = _TranslationsMisskeyHemisphereZhTw._(_root);
+	@override late final _TranslationsMisskeyReversiZhTw reversi_ = _TranslationsMisskeyReversiZhTw._(_root);
+	@override late final _TranslationsMisskeyOfflineScreenZhTw offlineScreen_ = _TranslationsMisskeyOfflineScreenZhTw._(_root);
+	@override late final _TranslationsMisskeyUrlPreviewSettingZhTw urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingZhTw._(_root);
+	@override late final _TranslationsMisskeyMediaControlsZhTw mediaControls_ = _TranslationsMisskeyMediaControlsZhTw._(_root);
+	@override late final _TranslationsMisskeyContextMenuZhTw contextMenu_ = _TranslationsMisskeyContextMenuZhTw._(_root);
+	@override late final _TranslationsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhTw._(_root);
 }
 
 // Path: misskey.abuseUserReport_
-class _StringsMisskeyAbuseUserReportZhTw extends _StringsMisskeyAbuseUserReportEnUs {
-	_StringsMisskeyAbuseUserReportZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseUserReportZhTw extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get forward => '轉發';
@@ -1459,36 +1462,36 @@ class _StringsMisskeyAbuseUserReportZhTw extends _StringsMisskeyAbuseUserReportE
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryZhTw extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryZhTw extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get status => '傳送狀態';
 	@override String get stop => '停止發送';
 	@override String get resume => '恢復發送';
-	@override late final _StringsMisskeyDeliveryTypeZhTw type_ = _StringsMisskeyDeliveryTypeZhTw._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeZhTw type_ = _TranslationsMisskeyDeliveryTypeZhTw._(_root);
 }
 
 // Path: misskey.bubbleGame_
-class _StringsMisskeyBubbleGameZhTw extends _StringsMisskeyBubbleGameEnUs {
-	_StringsMisskeyBubbleGameZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameZhTw extends TranslationsMisskeyBubbleGameEnUs {
+	_TranslationsMisskeyBubbleGameZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get howToPlay => '玩法說明';
 	@override String get hold => '保留';
-	@override late final _StringsMisskeyBubbleGameScoreZhTw score_ = _StringsMisskeyBubbleGameScoreZhTw._(_root);
-	@override late final _StringsMisskeyBubbleGameHowToPlayZhTw howToPlay_ = _StringsMisskeyBubbleGameHowToPlayZhTw._(_root);
+	@override late final _TranslationsMisskeyBubbleGameScoreZhTw score_ = _TranslationsMisskeyBubbleGameScoreZhTw._(_root);
+	@override late final _TranslationsMisskeyBubbleGameHowToPlayZhTw howToPlay_ = _TranslationsMisskeyBubbleGameHowToPlayZhTw._(_root);
 }
 
 // Path: misskey.announcement_
-class _StringsMisskeyAnnouncementZhTw extends _StringsMisskeyAnnouncementEnUs {
-	_StringsMisskeyAnnouncementZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAnnouncementZhTw extends TranslationsMisskeyAnnouncementEnUs {
+	_TranslationsMisskeyAnnouncementZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get forExistingUsers => '僅限既有的使用者';
@@ -1506,10 +1509,10 @@ class _StringsMisskeyAnnouncementZhTw extends _StringsMisskeyAnnouncementEnUs {
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingZhTw extends _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialAccountSettingZhTw extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountCreated => '帳戶已建立完成！';
@@ -1530,30 +1533,30 @@ class _StringsMisskeyInitialAccountSettingZhTw extends _StringsMisskeyInitialAcc
 }
 
 // Path: misskey.initialTutorial_
-class _StringsMisskeyInitialTutorialZhTw extends _StringsMisskeyInitialTutorialEnUs {
-	_StringsMisskeyInitialTutorialZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialZhTw extends TranslationsMisskeyInitialTutorialEnUs {
+	_TranslationsMisskeyInitialTutorialZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get launchTutorial => '觀看教學課程';
 	@override String get title => '新手教學';
 	@override String get wellDone => '做得好';
 	@override String get skipAreYouSure => '結束教學模式？';
-	@override late final _StringsMisskeyInitialTutorialLandingZhTw landing_ = _StringsMisskeyInitialTutorialLandingZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialNoteZhTw note_ = _StringsMisskeyInitialTutorialNoteZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialReactionZhTw reaction_ = _StringsMisskeyInitialTutorialReactionZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialTimelineZhTw timeline_ = _StringsMisskeyInitialTutorialTimelineZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteZhTw postNote_ = _StringsMisskeyInitialTutorialPostNoteZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw howToMakeAttachmentsSensitive_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialDoneZhTw done_ = _StringsMisskeyInitialTutorialDoneZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialLandingZhTw landing_ = _TranslationsMisskeyInitialTutorialLandingZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialNoteZhTw note_ = _TranslationsMisskeyInitialTutorialNoteZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialReactionZhTw reaction_ = _TranslationsMisskeyInitialTutorialReactionZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialTimelineZhTw timeline_ = _TranslationsMisskeyInitialTutorialTimelineZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteZhTw postNote_ = _TranslationsMisskeyInitialTutorialPostNoteZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw howToMakeAttachmentsSensitive_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialDoneZhTw done_ = _TranslationsMisskeyInitialTutorialDoneZhTw._(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _StringsMisskeyTimelineDescriptionZhTw extends _StringsMisskeyTimelineDescriptionEnUs {
-	_StringsMisskeyTimelineDescriptionZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelineDescriptionZhTw extends TranslationsMisskeyTimelineDescriptionEnUs {
+	_TranslationsMisskeyTimelineDescriptionZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => '在首頁時間軸上，可以看到您追隨的使用者的貼文。';
@@ -1563,20 +1566,20 @@ class _StringsMisskeyTimelineDescriptionZhTw extends _StringsMisskeyTimelineDesc
 }
 
 // Path: misskey.serverRules_
-class _StringsMisskeyServerRulesZhTw extends _StringsMisskeyServerRulesEnUs {
-	_StringsMisskeyServerRulesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerRulesZhTw extends TranslationsMisskeyServerRulesEnUs {
+	_TranslationsMisskeyServerRulesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '設定在註冊頁面顯示的伺服器簡要規則。建議是服務條款的摘要。';
 }
 
 // Path: misskey.serverSettings_
-class _StringsMisskeyServerSettingsZhTw extends _StringsMisskeyServerSettingsEnUs {
-	_StringsMisskeyServerSettingsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSettingsEnUs {
+	_TranslationsMisskeyServerSettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get iconUrl => '圖示的 URL';
@@ -1596,10 +1599,10 @@ class _StringsMisskeyServerSettingsZhTw extends _StringsMisskeyServerSettingsEnU
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationZhTw extends _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountMigrationZhTw extends TranslationsMisskeyAccountMigrationEnUs {
+	_TranslationsMisskeyAccountMigrationZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get moveFrom => '從其他帳戶遷移到這個帳戶';
@@ -1619,21 +1622,21 @@ class _StringsMisskeyAccountMigrationZhTw extends _StringsMisskeyAccountMigratio
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsZhTw extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsZhTw extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => '獲得日期';
-	@override late final _StringsMisskeyAchievementsTypesZhTw types_ = _StringsMisskeyAchievementsTypesZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesZhTw types_ = _TranslationsMisskeyAchievementsTypesZhTw._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleZhTw extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleZhTw extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => '建立角色';
@@ -1667,16 +1670,16 @@ class _StringsMisskeyRoleZhTw extends _StringsMisskeyRoleEnUs {
 	@override String get canEditMembersByModerator => '允許編輯審查員的成員';
 	@override String get descriptionOfCanEditMembersByModerator => '如果開啟，管理員與審查員都可以為使用者指派/解除指派該角色。如果關閉，則只有管理員可以執行。';
 	@override String get priority => '優先級';
-	@override late final _StringsMisskeyRolePriorityZhTw priority_ = _StringsMisskeyRolePriorityZhTw._(_root);
-	@override late final _StringsMisskeyRoleOptionsZhTw options_ = _StringsMisskeyRoleOptionsZhTw._(_root);
-	@override late final _StringsMisskeyRoleConditionZhTw condition_ = _StringsMisskeyRoleConditionZhTw._(_root);
+	@override late final _TranslationsMisskeyRolePriorityZhTw priority_ = _TranslationsMisskeyRolePriorityZhTw._(_root);
+	@override late final _TranslationsMisskeyRoleOptionsZhTw options_ = _TranslationsMisskeyRoleOptionsZhTw._(_root);
+	@override late final _TranslationsMisskeyRoleConditionZhTw condition_ = _TranslationsMisskeyRoleConditionZhTw._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionZhTw extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionZhTw extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '您可以使用機器學習自動檢測敏感檔案以便審查。這會稍微增加伺服器負荷。';
@@ -1689,10 +1692,10 @@ class _StringsMisskeySensitiveMediaDetectionZhTw extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableZhTw extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableZhTw extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => '已被使用';
@@ -1704,10 +1707,10 @@ class _StringsMisskeyEmailUnavailableZhTw extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityZhTw extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityZhTw extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => '公開';
@@ -1716,10 +1719,10 @@ class _StringsMisskeyFfVisibilityZhTw extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupZhTw extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupZhTw extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => '即將完成';
@@ -1728,10 +1731,10 @@ class _StringsMisskeySignupZhTw extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteZhTw extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteZhTw extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => '刪除帳戶';
@@ -1743,10 +1746,10 @@ class _StringsMisskeyAccountDeleteZhTw extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdZhTw extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdZhTw extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => '返回';
@@ -1760,10 +1763,10 @@ class _StringsMisskeyAdZhTw extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordZhTw extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordZhTw extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => '請輸入您的帳戶註冊的電子郵件地址。 密碼重置連結將被發送到該電子郵件地址。';
@@ -1772,10 +1775,10 @@ class _StringsMisskeyForgotPasswordZhTw extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryZhTw extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryZhTw extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => '我的貼文';
@@ -1785,21 +1788,21 @@ class _StringsMisskeyGalleryZhTw extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailZhTw extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailZhTw extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowZhTw follow_ = _StringsMisskeyEmailFollowZhTw._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestZhTw receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestZhTw._(_root);
+	@override late final _TranslationsMisskeyEmailFollowZhTw follow_ = _TranslationsMisskeyEmailFollowZhTw._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestZhTw receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestZhTw._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginZhTw extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginZhTw extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => '安裝外掛組件';
@@ -1810,10 +1813,10 @@ class _StringsMisskeyPluginZhTw extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsZhTw extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsZhTw extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => '已備份的設定檔';
@@ -1836,10 +1839,10 @@ class _StringsMisskeyPreferencesBackupsZhTw extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryZhTw extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryZhTw extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => '範圍';
@@ -1850,10 +1853,10 @@ class _StringsMisskeyRegistryZhTw extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyZhTw extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyZhTw extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey 是由 syuilo 自 2014 年起開發的開放原始碼軟體。';
@@ -1870,10 +1873,10 @@ class _StringsMisskeyAboutMisskeyZhTw extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.displayOfSensitiveMedia_
-class _StringsMisskeyDisplayOfSensitiveMediaZhTw extends _StringsMisskeyDisplayOfSensitiveMediaEnUs {
-	_StringsMisskeyDisplayOfSensitiveMediaZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisplayOfSensitiveMediaZhTw extends TranslationsMisskeyDisplayOfSensitiveMediaEnUs {
+	_TranslationsMisskeyDisplayOfSensitiveMediaZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get respect => '隱藏敏感檔案';
@@ -1882,10 +1885,10 @@ class _StringsMisskeyDisplayOfSensitiveMediaZhTw extends _StringsMisskeyDisplayO
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerZhTw extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerZhTw extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => '隱藏';
@@ -1894,10 +1897,10 @@ class _StringsMisskeyInstanceTickerZhTw extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorZhTw extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorZhTw extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => '自動重載';
@@ -1906,10 +1909,10 @@ class _StringsMisskeyServerDisconnectedBehaviorZhTw extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelZhTw extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelZhTw extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => '建立頻道';
@@ -1927,10 +1930,10 @@ class _StringsMisskeyChannelZhTw extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayZhTw extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayZhTw extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => '橫向';
@@ -1940,10 +1943,10 @@ class _StringsMisskeyMenuDisplayZhTw extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteZhTw extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteZhTw extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => '加入靜音文字';
@@ -1952,10 +1955,10 @@ class _StringsMisskeyWordMuteZhTw extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteZhTw extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteZhTw extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => '包括對被靜音伺服器上的使用者的回覆，被設定的伺服器上所有貼文及轉發都會被靜音。';
@@ -1965,10 +1968,10 @@ class _StringsMisskeyInstanceMuteZhTw extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeZhTw extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeZhTw extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => '探索佈景主題';
@@ -2000,14 +2003,14 @@ class _StringsMisskeyThemeZhTw extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => '請輸入常數名稱';
 	@override String get importInfo => '您可以在此貼上佈景主題代碼，將其匯入編輯器中';
 	@override String deleteConstantConfirm({required Object const_}) => '確定要刪除常數${const_}嗎？';
-	@override late final _StringsMisskeyThemeKeysZhTw keys = _StringsMisskeyThemeKeysZhTw._(_root);
+	@override late final _TranslationsMisskeyThemeKeysZhTw keys = _TranslationsMisskeyThemeKeysZhTw._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxZhTw extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxZhTw extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => '貼文';
@@ -2017,10 +2020,10 @@ class _StringsMisskeySfxZhTw extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.soundSettings_
-class _StringsMisskeySoundSettingsZhTw extends _StringsMisskeySoundSettingsEnUs {
-	_StringsMisskeySoundSettingsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeySoundSettingsZhTw extends TranslationsMisskeySoundSettingsEnUs {
+	_TranslationsMisskeySoundSettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get driveFile => '使用雲端硬碟的音效檔案';
@@ -2033,10 +2036,10 @@ class _StringsMisskeySoundSettingsZhTw extends _StringsMisskeySoundSettingsEnUs 
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoZhTw extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoZhTw extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => '未來';
@@ -2052,10 +2055,10 @@ class _StringsMisskeyAgoZhTw extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.timeIn_
-class _StringsMisskeyTimeInZhTw extends _StringsMisskeyTimeInEnUs {
-	_StringsMisskeyTimeInZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeInZhTw extends TranslationsMisskeyTimeInEnUs {
+	_TranslationsMisskeyTimeInZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String seconds({required Object n}) => '${n}秒後';
@@ -2068,10 +2071,10 @@ class _StringsMisskeyTimeInZhTw extends _StringsMisskeyTimeInEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeZhTw extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeZhTw extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => '秒';
@@ -2081,10 +2084,10 @@ class _StringsMisskeyTimeZhTw extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faZhTw extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faZhTw extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => '此裝置已被註冊過了';
@@ -2118,10 +2121,10 @@ class _StringsMisskeyX2faZhTw extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsZhTw extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsZhTw extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => '查看我的帳戶資訊';
@@ -2211,10 +2214,10 @@ class _StringsMisskeyPermissionsZhTw extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthZhTw extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthZhTw extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get shareAccessTitle => '應用程式的存取權限';
@@ -2229,10 +2232,10 @@ class _StringsMisskeyAuthZhTw extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesZhTw extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesZhTw extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => '全部貼文';
@@ -2243,10 +2246,10 @@ class _StringsMisskeyAntennaSourcesZhTw extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayZhTw extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayZhTw extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => '星期天';
@@ -2259,10 +2262,10 @@ class _StringsMisskeyWeekdayZhTw extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsZhTw extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsZhTw extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => '個人檔案';
@@ -2291,16 +2294,16 @@ class _StringsMisskeyWidgetsZhTw extends _StringsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript App';
 	@override String get aichan => '小藍';
 	@override String get userList => '使用者列表';
-	@override late final _StringsMisskeyWidgetsUserListZhTw userList_ = _StringsMisskeyWidgetsUserListZhTw._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListZhTw userList_ = _TranslationsMisskeyWidgetsUserListZhTw._(_root);
 	@override String get clicker => '點擊器';
 	@override String get birthdayFollowings => '今天生日的使用者';
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwZhTw extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwZhTw extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => '隱藏';
@@ -2310,10 +2313,10 @@ class _StringsMisskeyCwZhTw extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollZhTw extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollZhTw extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => '需要至少兩個選項。';
@@ -2340,10 +2343,10 @@ class _StringsMisskeyPollZhTw extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityZhTw extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityZhTw extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => '公開';
@@ -2359,23 +2362,23 @@ class _StringsMisskeyVisibilityZhTw extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormZhTw extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormZhTw extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => '回覆此貼文...';
 	@override String get quotePlaceholder => '引用此貼文...';
 	@override String get channelPlaceholder => '發佈到頻道';
-	@override late final _StringsMisskeyPostFormPlaceholdersZhTw placeholders_ = _StringsMisskeyPostFormPlaceholdersZhTw._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersZhTw placeholders_ = _TranslationsMisskeyPostFormPlaceholdersZhTw._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileZhTw extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileZhTw extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => '名字';
@@ -2397,10 +2400,10 @@ class _StringsMisskeyProfileZhTw extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportZhTw extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportZhTw extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => '所有貼文';
@@ -2416,10 +2419,10 @@ class _StringsMisskeyExportOrImportZhTw extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsZhTw extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsZhTw extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => '聯邦宇宙';
@@ -2438,10 +2441,10 @@ class _StringsMisskeyChartsZhTw extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsZhTw extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsZhTw extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => '請求';
@@ -2458,10 +2461,10 @@ class _StringsMisskeyInstanceChartsZhTw extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesZhTw extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesZhTw extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => '首頁';
@@ -2471,10 +2474,10 @@ class _StringsMisskeyTimelinesZhTw extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayZhTw extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayZhTw extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => '新增 Play';
@@ -2495,10 +2498,10 @@ class _StringsMisskeyPlayZhTw extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesZhTw extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesZhTw extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => '建立頁面';
@@ -2539,14 +2542,14 @@ class _StringsMisskeyPagesZhTw extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => '內容';
 	@override String get inputBlocks => '輸入';
 	@override String get specialBlocks => '特殊';
-	@override late final _StringsMisskeyPagesBlocksZhTw blocks = _StringsMisskeyPagesBlocksZhTw._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksZhTw blocks = _TranslationsMisskeyPagesBlocksZhTw._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusZhTw extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusZhTw extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => '等待核准';
@@ -2555,10 +2558,10 @@ class _StringsMisskeyRelayStatusZhTw extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationZhTw extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationZhTw extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => '上傳檔案成功。';
@@ -2586,15 +2589,15 @@ class _StringsMisskeyNotificationZhTw extends _StringsMisskeyNotificationEnUs {
 	@override String get flushNotification => '重置通知歷史紀錄';
 	@override String exportOfXCompleted({required Object x}) => '${x} 的匯出已完成。';
 	@override String get login => '已登入';
-	@override late final _StringsMisskeyNotificationTypesZhTw types_ = _StringsMisskeyNotificationTypesZhTw._(_root);
-	@override late final _StringsMisskeyNotificationActionsZhTw actions_ = _StringsMisskeyNotificationActionsZhTw._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesZhTw types_ = _TranslationsMisskeyNotificationTypesZhTw._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsZhTw actions_ = _TranslationsMisskeyNotificationActionsZhTw._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckZhTw extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckZhTw extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => '總是顯示主欄';
@@ -2617,14 +2620,14 @@ class _StringsMisskeyDeckZhTw extends _StringsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '用簡易介面顯示非根頁面';
 	@override String get usedAsMinWidthWhenFlexible => '如果啟用「自動調整寬度」，此為最小寬度';
 	@override String get flexible => '自動調整寬度';
-	@override late final _StringsMisskeyDeckColumnsZhTw columns_ = _StringsMisskeyDeckColumnsZhTw._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsZhTw columns_ = _TranslationsMisskeyDeckColumnsZhTw._(_root);
 }
 
 // Path: misskey.dialog_
-class _StringsMisskeyDialogZhTw extends _StringsMisskeyDialogEnUs {
-	_StringsMisskeyDialogZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDialogZhTw extends TranslationsMisskeyDialogEnUs {
+	_TranslationsMisskeyDialogZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String charactersExceeded({required Object current, required Object max}) => '您的貼文太長了！現時字數 ${current}／限制字數 ${max}';
@@ -2632,10 +2635,10 @@ class _StringsMisskeyDialogZhTw extends _StringsMisskeyDialogEnUs {
 }
 
 // Path: misskey.disabledTimeline_
-class _StringsMisskeyDisabledTimelineZhTw extends _StringsMisskeyDisabledTimelineEnUs {
-	_StringsMisskeyDisabledTimelineZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisabledTimelineZhTw extends TranslationsMisskeyDisabledTimelineEnUs {
+	_TranslationsMisskeyDisabledTimelineZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '時間軸已停用';
@@ -2643,10 +2646,10 @@ class _StringsMisskeyDisabledTimelineZhTw extends _StringsMisskeyDisabledTimelin
 }
 
 // Path: misskey.drivecleaner_
-class _StringsMisskeyDrivecleanerZhTw extends _StringsMisskeyDrivecleanerEnUs {
-	_StringsMisskeyDrivecleanerZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDrivecleanerZhTw extends TranslationsMisskeyDrivecleanerEnUs {
+	_TranslationsMisskeyDrivecleanerZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get orderBySizeDesc => '按大小降序排列';
@@ -2654,10 +2657,10 @@ class _StringsMisskeyDrivecleanerZhTw extends _StringsMisskeyDrivecleanerEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsZhTw extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsZhTw extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get createWebhook => '建立 Webhook';
@@ -2666,27 +2669,27 @@ class _StringsMisskeyWebhookSettingsZhTw extends _StringsMisskeyWebhookSettingsE
 	@override String get secret => '密鑰';
 	@override String get trigger => '觸發器';
 	@override String get active => '已啟用';
-	@override late final _StringsMisskeyWebhookSettingsEventsZhTw events_ = _StringsMisskeyWebhookSettingsEventsZhTw._(_root);
-	@override late final _StringsMisskeyWebhookSettingsSystemEventsZhTw systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsZhTw._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsZhTw events_ = _TranslationsMisskeyWebhookSettingsEventsZhTw._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsZhTw systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsZhTw._(_root);
 	@override String get deleteConfirm => '請問是否要刪除 Webhook？';
 	@override String get testRemarks => '按下切換開關右側的按鈕，就會將假資料發送至 Webhook。';
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportZhTw extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportZhTw extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientZhTw notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientZhTw._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientZhTw notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientZhTw._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesZhTw extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesZhTw extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRole => '新增角色';
@@ -2740,10 +2743,10 @@ class _StringsMisskeyModerationLogTypesZhTw extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.fileViewer_
-class _StringsMisskeyFileViewerZhTw extends _StringsMisskeyFileViewerEnUs {
-	_StringsMisskeyFileViewerZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyFileViewerZhTw extends TranslationsMisskeyFileViewerEnUs {
+	_TranslationsMisskeyFileViewerZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '檔案詳細資訊';
@@ -2756,39 +2759,39 @@ class _StringsMisskeyFileViewerZhTw extends _StringsMisskeyFileViewerEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_
-class _StringsMisskeyExternalResourceInstallerZhTw extends _StringsMisskeyExternalResourceInstallerEnUs {
-	_StringsMisskeyExternalResourceInstallerZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerZhTw extends TranslationsMisskeyExternalResourceInstallerEnUs {
+	_TranslationsMisskeyExternalResourceInstallerZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '從外部網站安裝';
 	@override String get checkVendorBeforeInstall => '安裝前請確認提供者是可信賴的。';
-	@override late final _StringsMisskeyExternalResourceInstallerPluginZhTw plugin_ = _StringsMisskeyExternalResourceInstallerPluginZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerThemeZhTw theme_ = _StringsMisskeyExternalResourceInstallerThemeZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerMetaZhTw meta_ = _StringsMisskeyExternalResourceInstallerMetaZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerVendorInfoZhTw vendorInfo_ = _StringsMisskeyExternalResourceInstallerVendorInfoZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsZhTw errors_ = _StringsMisskeyExternalResourceInstallerErrorsZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerPluginZhTw plugin_ = _TranslationsMisskeyExternalResourceInstallerPluginZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerThemeZhTw theme_ = _TranslationsMisskeyExternalResourceInstallerThemeZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerMetaZhTw meta_ = _TranslationsMisskeyExternalResourceInstallerMetaZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerVendorInfoZhTw vendorInfo_ = _TranslationsMisskeyExternalResourceInstallerVendorInfoZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsZhTw errors_ = _TranslationsMisskeyExternalResourceInstallerErrorsZhTw._(_root);
 }
 
 // Path: misskey.dataSaver_
-class _StringsMisskeyDataSaverZhTw extends _StringsMisskeyDataSaverEnUs {
-	_StringsMisskeyDataSaverZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverZhTw extends TranslationsMisskeyDataSaverEnUs {
+	_TranslationsMisskeyDataSaverZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyDataSaverMediaZhTw media_ = _StringsMisskeyDataSaverMediaZhTw._(_root);
-	@override late final _StringsMisskeyDataSaverAvatarZhTw avatar_ = _StringsMisskeyDataSaverAvatarZhTw._(_root);
-	@override late final _StringsMisskeyDataSaverUrlPreviewZhTw urlPreview_ = _StringsMisskeyDataSaverUrlPreviewZhTw._(_root);
-	@override late final _StringsMisskeyDataSaverCodeZhTw code_ = _StringsMisskeyDataSaverCodeZhTw._(_root);
+	@override late final _TranslationsMisskeyDataSaverMediaZhTw media_ = _TranslationsMisskeyDataSaverMediaZhTw._(_root);
+	@override late final _TranslationsMisskeyDataSaverAvatarZhTw avatar_ = _TranslationsMisskeyDataSaverAvatarZhTw._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewZhTw urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewZhTw._(_root);
+	@override late final _TranslationsMisskeyDataSaverCodeZhTw code_ = _TranslationsMisskeyDataSaverCodeZhTw._(_root);
 }
 
 // Path: misskey.hemisphere_
-class _StringsMisskeyHemisphereZhTw extends _StringsMisskeyHemisphereEnUs {
-	_StringsMisskeyHemisphereZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyHemisphereZhTw extends TranslationsMisskeyHemisphereEnUs {
+	_TranslationsMisskeyHemisphereZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get N => '北半球';
@@ -2797,10 +2800,10 @@ class _StringsMisskeyHemisphereZhTw extends _StringsMisskeyHemisphereEnUs {
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiZhTw extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiZhTw extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get reversi => '黑白棋';
@@ -2849,10 +2852,10 @@ class _StringsMisskeyReversiZhTw extends _StringsMisskeyReversiEnUs {
 }
 
 // Path: misskey.offlineScreen_
-class _StringsMisskeyOfflineScreenZhTw extends _StringsMisskeyOfflineScreenEnUs {
-	_StringsMisskeyOfflineScreenZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyOfflineScreenZhTw extends TranslationsMisskeyOfflineScreenEnUs {
+	_TranslationsMisskeyOfflineScreenZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '離線－無法連接伺服器';
@@ -2860,10 +2863,10 @@ class _StringsMisskeyOfflineScreenZhTw extends _StringsMisskeyOfflineScreenEnUs 
 }
 
 // Path: misskey.urlPreviewSetting_
-class _StringsMisskeyUrlPreviewSettingZhTw extends _StringsMisskeyUrlPreviewSettingEnUs {
-	_StringsMisskeyUrlPreviewSettingZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyUrlPreviewSettingZhTw extends TranslationsMisskeyUrlPreviewSettingEnUs {
+	_TranslationsMisskeyUrlPreviewSettingZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'URL 預覽設定';
@@ -2882,10 +2885,10 @@ class _StringsMisskeyUrlPreviewSettingZhTw extends _StringsMisskeyUrlPreviewSett
 }
 
 // Path: misskey.mediaControls_
-class _StringsMisskeyMediaControlsZhTw extends _StringsMisskeyMediaControlsEnUs {
-	_StringsMisskeyMediaControlsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyMediaControlsZhTw extends TranslationsMisskeyMediaControlsEnUs {
+	_TranslationsMisskeyMediaControlsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get pip => '畫中畫';
@@ -2894,10 +2897,10 @@ class _StringsMisskeyMediaControlsZhTw extends _StringsMisskeyMediaControlsEnUs 
 }
 
 // Path: misskey.contextMenu_
-class _StringsMisskeyContextMenuZhTw extends _StringsMisskeyContextMenuEnUs {
-	_StringsMisskeyContextMenuZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyContextMenuZhTw extends TranslationsMisskeyContextMenuEnUs {
+	_TranslationsMisskeyContextMenuZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '內容功能表';
@@ -2907,10 +2910,10 @@ class _StringsMisskeyContextMenuZhTw extends _StringsMisskeyContextMenuEnUs {
 }
 
 // Path: misskey.embedCodeGen_
-class _StringsMisskeyEmbedCodeGenZhTw extends _StringsMisskeyEmbedCodeGenEnUs {
-	_StringsMisskeyEmbedCodeGenZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmbedCodeGenZhTw extends TranslationsMisskeyEmbedCodeGenEnUs {
+	_TranslationsMisskeyEmbedCodeGenZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '自訂嵌入程式碼';
@@ -2929,10 +2932,10 @@ class _StringsMisskeyEmbedCodeGenZhTw extends _StringsMisskeyEmbedCodeGenEnUs {
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeZhTw extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeZhTw extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => '發送中';
@@ -2942,10 +2945,10 @@ class _StringsMisskeyDeliveryTypeZhTw extends _StringsMisskeyDeliveryTypeEnUs {
 }
 
 // Path: misskey.bubbleGame_.score_
-class _StringsMisskeyBubbleGameScoreZhTw extends _StringsMisskeyBubbleGameScoreEnUs {
-	_StringsMisskeyBubbleGameScoreZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameScoreZhTw extends TranslationsMisskeyBubbleGameScoreEnUs {
+	_TranslationsMisskeyBubbleGameScoreZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get score => '分數';
@@ -2958,10 +2961,10 @@ class _StringsMisskeyBubbleGameScoreZhTw extends _StringsMisskeyBubbleGameScoreE
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
-class _StringsMisskeyBubbleGameHowToPlayZhTw extends _StringsMisskeyBubbleGameHowToPlayEnUs {
-	_StringsMisskeyBubbleGameHowToPlayZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameHowToPlayZhTw extends TranslationsMisskeyBubbleGameHowToPlayEnUs {
+	_TranslationsMisskeyBubbleGameHowToPlayZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get section1 => '調整位置並將物體放入盒子中。';
@@ -2970,10 +2973,10 @@ class _StringsMisskeyBubbleGameHowToPlayZhTw extends _StringsMisskeyBubbleGameHo
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _StringsMisskeyInitialTutorialLandingZhTw extends _StringsMisskeyInitialTutorialLandingEnUs {
-	_StringsMisskeyInitialTutorialLandingZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialLandingZhTw extends TranslationsMisskeyInitialTutorialLandingEnUs {
+	_TranslationsMisskeyInitialTutorialLandingZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '歡迎使用本教學課程';
@@ -2981,10 +2984,10 @@ class _StringsMisskeyInitialTutorialLandingZhTw extends _StringsMisskeyInitialTu
 }
 
 // Path: misskey.initialTutorial_.note_
-class _StringsMisskeyInitialTutorialNoteZhTw extends _StringsMisskeyInitialTutorialNoteEnUs {
-	_StringsMisskeyInitialTutorialNoteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialNoteZhTw extends TranslationsMisskeyInitialTutorialNoteEnUs {
+	_TranslationsMisskeyInitialTutorialNoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '什麼是貼文？';
@@ -2996,10 +2999,10 @@ class _StringsMisskeyInitialTutorialNoteZhTw extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.initialTutorial_.reaction_
-class _StringsMisskeyInitialTutorialReactionZhTw extends _StringsMisskeyInitialTutorialReactionEnUs {
-	_StringsMisskeyInitialTutorialReactionZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialReactionZhTw extends TranslationsMisskeyInitialTutorialReactionEnUs {
+	_TranslationsMisskeyInitialTutorialReactionZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '什麼是反應？';
@@ -3011,10 +3014,10 @@ class _StringsMisskeyInitialTutorialReactionZhTw extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _StringsMisskeyInitialTutorialTimelineZhTw extends _StringsMisskeyInitialTutorialTimelineEnUs {
-	_StringsMisskeyInitialTutorialTimelineZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialTimelineZhTw extends TranslationsMisskeyInitialTutorialTimelineEnUs {
+	_TranslationsMisskeyInitialTutorialTimelineZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '時間軸如何運作';
@@ -3028,39 +3031,39 @@ class _StringsMisskeyInitialTutorialTimelineZhTw extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _StringsMisskeyInitialTutorialPostNoteZhTw extends _StringsMisskeyInitialTutorialPostNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteZhTw extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文的發布設定';
 	@override String get description1 => '在Misskey上發布貼文時，可以設定各種選項。發布表單如下所示。';
-	@override late final _StringsMisskeyInitialTutorialPostNoteVisibilityZhTw visibility_ = _StringsMisskeyInitialTutorialPostNoteVisibilityZhTw._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwZhTw cw_ = _StringsMisskeyInitialTutorialPostNoteCwZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityZhTw visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwZhTw cw_ = _TranslationsMisskeyInitialTutorialPostNoteCwZhTw._(_root);
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '如何標記上傳附件為敏感內容？';
 	@override String get description => '如果伺服器服務條款有規範，又或者不希望上傳附件直接被看見，可以設置為「敏感內容」';
 	@override String get tryThisFile => '試試看！把附加在發文表單的圖像檔案標記為敏感內容。';
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw._(_root);
 	@override String get method => '若要使上傳附件標記為敏感內容，請按一下該檔案以開啟選單，然後點擊「標記為敏感內容」。';
 	@override String get sensitiveSucceeded => '上傳附件時，請務必根據伺服器的服務條款適當設定敏感內容。';
 	@override String get doItToContinue => '把圖像標記為敏感內容以繼續教學課程。';
 }
 
 // Path: misskey.initialTutorial_.done_
-class _StringsMisskeyInitialTutorialDoneZhTw extends _StringsMisskeyInitialTutorialDoneEnUs {
-	_StringsMisskeyInitialTutorialDoneZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialDoneZhTw extends TranslationsMisskeyInitialTutorialDoneEnUs {
+	_TranslationsMisskeyInitialTutorialDoneZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '教學課程已結束';
@@ -3068,97 +3071,97 @@ class _StringsMisskeyInitialTutorialDoneZhTw extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesZhTw extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesZhTw extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1ZhTw notes1_ = _StringsMisskeyAchievementsTypesNotes1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10ZhTw notes10_ = _StringsMisskeyAchievementsTypesNotes10ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100ZhTw notes100_ = _StringsMisskeyAchievementsTypesNotes100ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500ZhTw notes500_ = _StringsMisskeyAchievementsTypesNotes500ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000ZhTw notes1000_ = _StringsMisskeyAchievementsTypesNotes1000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000ZhTw notes5000_ = _StringsMisskeyAchievementsTypesNotes5000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000ZhTw notes10000_ = _StringsMisskeyAchievementsTypesNotes10000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000ZhTw notes20000_ = _StringsMisskeyAchievementsTypesNotes20000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000ZhTw notes30000_ = _StringsMisskeyAchievementsTypesNotes30000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000ZhTw notes40000_ = _StringsMisskeyAchievementsTypesNotes40000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000ZhTw notes50000_ = _StringsMisskeyAchievementsTypesNotes50000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes60000ZhTw notes60000_ = _StringsMisskeyAchievementsTypesNotes60000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes70000ZhTw notes70000_ = _StringsMisskeyAchievementsTypesNotes70000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes80000ZhTw notes80000_ = _StringsMisskeyAchievementsTypesNotes80000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes90000ZhTw notes90000_ = _StringsMisskeyAchievementsTypesNotes90000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000ZhTw notes100000_ = _StringsMisskeyAchievementsTypesNotes100000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3ZhTw login3_ = _StringsMisskeyAchievementsTypesLogin3ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin7ZhTw login7_ = _StringsMisskeyAchievementsTypesLogin7ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin15ZhTw login15_ = _StringsMisskeyAchievementsTypesLogin15ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin30ZhTw login30_ = _StringsMisskeyAchievementsTypesLogin30ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin60ZhTw login60_ = _StringsMisskeyAchievementsTypesLogin60ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin100ZhTw login100_ = _StringsMisskeyAchievementsTypesLogin100ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin200ZhTw login200_ = _StringsMisskeyAchievementsTypesLogin200ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin300ZhTw login300_ = _StringsMisskeyAchievementsTypesLogin300ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin400ZhTw login400_ = _StringsMisskeyAchievementsTypesLogin400ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin500ZhTw login500_ = _StringsMisskeyAchievementsTypesLogin500ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin600ZhTw login600_ = _StringsMisskeyAchievementsTypesLogin600ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin700ZhTw login700_ = _StringsMisskeyAchievementsTypesLogin700ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin800ZhTw login800_ = _StringsMisskeyAchievementsTypesLogin800ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin900ZhTw login900_ = _StringsMisskeyAchievementsTypesLogin900ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin1000ZhTw login1000_ = _StringsMisskeyAchievementsTypesLogin1000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteClipped1ZhTw noteClipped1_ = _StringsMisskeyAchievementsTypesNoteClipped1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1ZhTw noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1ZhTw myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledZhTw profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatZhTw markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing1ZhTw following1_ = _StringsMisskeyAchievementsTypesFollowing1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing10ZhTw following10_ = _StringsMisskeyAchievementsTypesFollowing10ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing50ZhTw following50_ = _StringsMisskeyAchievementsTypesFollowing50ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing100ZhTw following100_ = _StringsMisskeyAchievementsTypesFollowing100ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing300ZhTw following300_ = _StringsMisskeyAchievementsTypesFollowing300ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1ZhTw followers1_ = _StringsMisskeyAchievementsTypesFollowers1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers10ZhTw followers10_ = _StringsMisskeyAchievementsTypesFollowers10ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers50ZhTw followers50_ = _StringsMisskeyAchievementsTypesFollowers50ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers100ZhTw followers100_ = _StringsMisskeyAchievementsTypesFollowers100ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers300ZhTw followers300_ = _StringsMisskeyAchievementsTypesFollowers300ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers500ZhTw followers500_ = _StringsMisskeyAchievementsTypesFollowers500ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1000ZhTw followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30ZhTw collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minZhTw viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyZhTw iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFoundTreasureZhTw foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient30minZhTw client30min_ = _StringsMisskeyAchievementsTypesClient30minZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient60minZhTw client60min_ = _StringsMisskeyAchievementsTypesClient60minZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightZhTw postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secZhTw postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSelfQuoteZhTw selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesHtl20npmZhTw htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartZhTw viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOpen3windowsZhTw open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw driveFolderCircularReference_ = _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadZhTw reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClickedClickHereZhTw clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyZhTw justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloZhTw setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw passedSinceAccountCreated2_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw passedSinceAccountCreated3_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCookieClickedZhTw cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBrainDiverZhTw brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw smashTestNotificationButton_ = _StringsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesTutorialCompletedZhTw tutorialCompleted_ = _StringsMisskeyAchievementsTypesTutorialCompletedZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw bubbleGameExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw bubbleGameDoubleExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1ZhTw notes1_ = _TranslationsMisskeyAchievementsTypesNotes1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10ZhTw notes10_ = _TranslationsMisskeyAchievementsTypesNotes10ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100ZhTw notes100_ = _TranslationsMisskeyAchievementsTypesNotes100ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500ZhTw notes500_ = _TranslationsMisskeyAchievementsTypesNotes500ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000ZhTw notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000ZhTw notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000ZhTw notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000ZhTw notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000ZhTw notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000ZhTw notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000ZhTw notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000ZhTw notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000ZhTw notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000ZhTw notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000ZhTw notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000ZhTw notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3ZhTw login3_ = _TranslationsMisskeyAchievementsTypesLogin3ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin7ZhTw login7_ = _TranslationsMisskeyAchievementsTypesLogin7ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin15ZhTw login15_ = _TranslationsMisskeyAchievementsTypesLogin15ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin30ZhTw login30_ = _TranslationsMisskeyAchievementsTypesLogin30ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin60ZhTw login60_ = _TranslationsMisskeyAchievementsTypesLogin60ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin100ZhTw login100_ = _TranslationsMisskeyAchievementsTypesLogin100ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin200ZhTw login200_ = _TranslationsMisskeyAchievementsTypesLogin200ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin300ZhTw login300_ = _TranslationsMisskeyAchievementsTypesLogin300ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin400ZhTw login400_ = _TranslationsMisskeyAchievementsTypesLogin400ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin500ZhTw login500_ = _TranslationsMisskeyAchievementsTypesLogin500ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin600ZhTw login600_ = _TranslationsMisskeyAchievementsTypesLogin600ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin700ZhTw login700_ = _TranslationsMisskeyAchievementsTypesLogin700ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin800ZhTw login800_ = _TranslationsMisskeyAchievementsTypesLogin800ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin900ZhTw login900_ = _TranslationsMisskeyAchievementsTypesLogin900ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin1000ZhTw login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1ZhTw noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1ZhTw noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ZhTw myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledZhTw profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatZhTw markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing1ZhTw following1_ = _TranslationsMisskeyAchievementsTypesFollowing1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing10ZhTw following10_ = _TranslationsMisskeyAchievementsTypesFollowing10ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing50ZhTw following50_ = _TranslationsMisskeyAchievementsTypesFollowing50ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing100ZhTw following100_ = _TranslationsMisskeyAchievementsTypesFollowing100ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing300ZhTw following300_ = _TranslationsMisskeyAchievementsTypesFollowing300ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1ZhTw followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers10ZhTw followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers50ZhTw followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers100ZhTw followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers300ZhTw followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers500ZhTw followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000ZhTw followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30ZhTw collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minZhTw viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyZhTw iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureZhTw foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient30minZhTw client30min_ = _TranslationsMisskeyAchievementsTypesClient30minZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient60minZhTw client60min_ = _TranslationsMisskeyAchievementsTypesClient60minZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightZhTw postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secZhTw postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteZhTw selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmZhTw htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartZhTw viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsZhTw open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw driveFolderCircularReference_ = _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadZhTw reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereZhTw clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyZhTw justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloZhTw setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw passedSinceAccountCreated2_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw passedSinceAccountCreated3_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedZhTw cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverZhTw brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw smashTestNotificationButton_ = _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesTutorialCompletedZhTw tutorialCompleted_ = _TranslationsMisskeyAchievementsTypesTutorialCompletedZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityZhTw extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityZhTw extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => '低';
@@ -3167,10 +3170,10 @@ class _StringsMisskeyRolePriorityZhTw extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsZhTw extends _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptionsEnUs {
+	_TranslationsMisskeyRoleOptionsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get gtlAvailable => '瀏覽全域時間軸';
@@ -3208,10 +3211,10 @@ class _StringsMisskeyRoleOptionsZhTw extends _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionZhTw extends _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleConditionZhTw extends TranslationsMisskeyRoleConditionEnUs {
+	_TranslationsMisskeyRoleConditionZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get roleAssignedTo => '手動指派角色完成';
@@ -3236,30 +3239,30 @@ class _StringsMisskeyRoleConditionZhTw extends _StringsMisskeyRoleConditionEnUs 
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowZhTw extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowZhTw extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '您有新的追隨者';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestZhTw extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestZhTw extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '收到追隨請求';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysZhTw extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysZhTw extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => '重點色彩';
@@ -3304,20 +3307,20 @@ class _StringsMisskeyThemeKeysZhTw extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListZhTw extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListZhTw extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => '選擇清單';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersZhTw extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersZhTw extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => '今天過得如何？';
@@ -3329,10 +3332,10 @@ class _StringsMisskeyPostFormPlaceholdersZhTw extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksZhTw extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksZhTw extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => '文字';
@@ -3343,14 +3346,14 @@ class _StringsMisskeyPagesBlocksZhTw extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get dynamic => '動態方塊';
 	@override String dynamicDescription({required Object play}) => '這個方塊已經廢止，現在開始請使用 ${play}。';
 	@override String get note => '嵌式貼文';
-	@override late final _StringsMisskeyPagesBlocksNoteZhTw note_ = _StringsMisskeyPagesBlocksNoteZhTw._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteZhTw note_ = _TranslationsMisskeyPagesBlocksNoteZhTw._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesZhTw extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesZhTw extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => '全部 ';
@@ -3373,10 +3376,10 @@ class _StringsMisskeyNotificationTypesZhTw extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsZhTw extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsZhTw extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => '追隨回去';
@@ -3385,10 +3388,10 @@ class _StringsMisskeyNotificationActionsZhTw extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsZhTw extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsZhTw extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => '主列';
@@ -3404,10 +3407,10 @@ class _StringsMisskeyDeckColumnsZhTw extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsZhTw extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsZhTw extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => '當你追隨時';
@@ -3420,10 +3423,10 @@ class _StringsMisskeyWebhookSettingsEventsZhTw extends _StringsMisskeyWebhookSet
 }
 
 // Path: misskey.webhookSettings_.systemEvents_
-class _StringsMisskeyWebhookSettingsSystemEventsZhTw extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
-	_StringsMisskeyWebhookSettingsSystemEventsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsSystemEventsZhTw extends TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsSystemEventsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get abuseReport => '當使用者檢舉時';
@@ -3432,16 +3435,16 @@ class _StringsMisskeyWebhookSettingsSystemEventsZhTw extends _StringsMisskeyWebh
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientZhTw extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientZhTw extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRecipient => '新增接收檢舉的通知對象';
 	@override String get modifyRecipient => '編輯接收檢舉的通知對象';
 	@override String get recipientType => '通知對象的種類';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw._(_root);
 	@override String get keywords => '關鍵字';
 	@override String get notifiedUser => '通知的使用者';
 	@override String get notifiedWebhook => '使用的 Webhook';
@@ -3449,10 +3452,10 @@ class _StringsMisskeyAbuseReportNotificationRecipientZhTw extends _StringsMisske
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
-class _StringsMisskeyExternalResourceInstallerPluginZhTw extends _StringsMisskeyExternalResourceInstallerPluginEnUs {
-	_StringsMisskeyExternalResourceInstallerPluginZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerPluginZhTw extends TranslationsMisskeyExternalResourceInstallerPluginEnUs {
+	_TranslationsMisskeyExternalResourceInstallerPluginZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '要安裝此外掛嘛？';
@@ -3460,10 +3463,10 @@ class _StringsMisskeyExternalResourceInstallerPluginZhTw extends _StringsMisskey
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
-class _StringsMisskeyExternalResourceInstallerThemeZhTw extends _StringsMisskeyExternalResourceInstallerThemeEnUs {
-	_StringsMisskeyExternalResourceInstallerThemeZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerThemeZhTw extends TranslationsMisskeyExternalResourceInstallerThemeEnUs {
+	_TranslationsMisskeyExternalResourceInstallerThemeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '要安裝此佈景主題嗎？';
@@ -3471,20 +3474,20 @@ class _StringsMisskeyExternalResourceInstallerThemeZhTw extends _StringsMisskeyE
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
-class _StringsMisskeyExternalResourceInstallerMetaZhTw extends _StringsMisskeyExternalResourceInstallerMetaEnUs {
-	_StringsMisskeyExternalResourceInstallerMetaZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerMetaZhTw extends TranslationsMisskeyExternalResourceInstallerMetaEnUs {
+	_TranslationsMisskeyExternalResourceInstallerMetaZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get base => '基本配色方案';
 }
 
 // Path: misskey.externalResourceInstaller_.vendorInfo_
-class _StringsMisskeyExternalResourceInstallerVendorInfoZhTw extends _StringsMisskeyExternalResourceInstallerVendorInfoEnUs {
-	_StringsMisskeyExternalResourceInstallerVendorInfoZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerVendorInfoZhTw extends TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs {
+	_TranslationsMisskeyExternalResourceInstallerVendorInfoZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '提供者資訊';
@@ -3493,27 +3496,27 @@ class _StringsMisskeyExternalResourceInstallerVendorInfoZhTw extends _StringsMis
 }
 
 // Path: misskey.externalResourceInstaller_.errors_
-class _StringsMisskeyExternalResourceInstallerErrorsZhTw extends _StringsMisskeyExternalResourceInstallerErrorsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw invalidParams_ = _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw resourceTypeNotSupported_ = _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw failedToFetch_ = _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw hashUnmatched_ = _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw pluginParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw pluginInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw themeParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw themeInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw invalidParams_ = _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw resourceTypeNotSupported_ = _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw failedToFetch_ = _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw hashUnmatched_ = _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw pluginParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw pluginInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw themeParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw themeInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw._(_root);
 }
 
 // Path: misskey.dataSaver_.media_
-class _StringsMisskeyDataSaverMediaZhTw extends _StringsMisskeyDataSaverMediaEnUs {
-	_StringsMisskeyDataSaverMediaZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverMediaZhTw extends TranslationsMisskeyDataSaverMediaEnUs {
+	_TranslationsMisskeyDataSaverMediaZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '載入媒體檔案';
@@ -3521,10 +3524,10 @@ class _StringsMisskeyDataSaverMediaZhTw extends _StringsMisskeyDataSaverMediaEnU
 }
 
 // Path: misskey.dataSaver_.avatar_
-class _StringsMisskeyDataSaverAvatarZhTw extends _StringsMisskeyDataSaverAvatarEnUs {
-	_StringsMisskeyDataSaverAvatarZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverAvatarZhTw extends TranslationsMisskeyDataSaverAvatarEnUs {
+	_TranslationsMisskeyDataSaverAvatarZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '大頭貼';
@@ -3532,10 +3535,10 @@ class _StringsMisskeyDataSaverAvatarZhTw extends _StringsMisskeyDataSaverAvatarE
 }
 
 // Path: misskey.dataSaver_.urlPreview_
-class _StringsMisskeyDataSaverUrlPreviewZhTw extends _StringsMisskeyDataSaverUrlPreviewEnUs {
-	_StringsMisskeyDataSaverUrlPreviewZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverUrlPreviewZhTw extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '網址預覽縮圖';
@@ -3543,10 +3546,10 @@ class _StringsMisskeyDataSaverUrlPreviewZhTw extends _StringsMisskeyDataSaverUrl
 }
 
 // Path: misskey.dataSaver_.code_
-class _StringsMisskeyDataSaverCodeZhTw extends _StringsMisskeyDataSaverCodeEnUs {
-	_StringsMisskeyDataSaverCodeZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverCodeZhTw extends TranslationsMisskeyDataSaverCodeEnUs {
+	_TranslationsMisskeyDataSaverCodeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '程式碼突出顯示';
@@ -3554,10 +3557,10 @@ class _StringsMisskeyDataSaverCodeZhTw extends _StringsMisskeyDataSaverCodeEnUs 
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _StringsMisskeyInitialTutorialPostNoteVisibilityZhTw extends _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_StringsMisskeyInitialTutorialPostNoteVisibilityZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteVisibilityZhTw extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteVisibilityZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '可以限制誰可以看到您的貼文。';
@@ -3571,33 +3574,33 @@ class _StringsMisskeyInitialTutorialPostNoteVisibilityZhTw extends _StringsMissk
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
-class _StringsMisskeyInitialTutorialPostNoteCwZhTw extends _StringsMisskeyInitialTutorialPostNoteCwEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwZhTw extends TranslationsMisskeyInitialTutorialPostNoteCwEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '隱藏內容（CW）';
 	@override String get description => '將顯示「註釋」中寫入的內容而不是本文。按一下「顯示內容」以顯示本文。';
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw._(_root);
 	@override String get useCases => '伺服器的服務條款可能會規範特定的貼文需要使用隱藏內容，除此之外也會用在隱藏劇情洩漏與敏感內容的貼文。';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => '打開納豆的包裝失敗了…';
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1ZhTw extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1ZhTw extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '歡迎！';
@@ -3606,10 +3609,10 @@ class _StringsMisskeyAchievementsTypesNotes1ZhTw extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10ZhTw extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10ZhTw extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '若干貼文';
@@ -3617,10 +3620,10 @@ class _StringsMisskeyAchievementsTypesNotes10ZhTw extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100ZhTw extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100ZhTw extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '許多貼文';
@@ -3628,10 +3631,10 @@ class _StringsMisskeyAchievementsTypesNotes100ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500ZhTw extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500ZhTw extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '滿滿的貼文';
@@ -3639,10 +3642,10 @@ class _StringsMisskeyAchievementsTypesNotes500ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000ZhTw extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000ZhTw extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '堆積如山的貼文';
@@ -3650,10 +3653,10 @@ class _StringsMisskeyAchievementsTypesNotes1000ZhTw extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000ZhTw extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000ZhTw extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '滔滔不絕的貼文';
@@ -3661,10 +3664,10 @@ class _StringsMisskeyAchievementsTypesNotes5000ZhTw extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000ZhTw extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000ZhTw extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '超級貼文';
@@ -3672,10 +3675,10 @@ class _StringsMisskeyAchievementsTypesNotes10000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000ZhTw extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000ZhTw extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '需要更多貼文';
@@ -3683,10 +3686,10 @@ class _StringsMisskeyAchievementsTypesNotes20000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000ZhTw extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000ZhTw extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文貼文貼文';
@@ -3694,10 +3697,10 @@ class _StringsMisskeyAchievementsTypesNotes30000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000ZhTw extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000ZhTw extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文工廠';
@@ -3705,10 +3708,10 @@ class _StringsMisskeyAchievementsTypesNotes40000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000ZhTw extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000ZhTw extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文星球';
@@ -3716,10 +3719,10 @@ class _StringsMisskeyAchievementsTypesNotes50000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000ZhTw extends _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes60000ZhTw extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文類星體';
@@ -3727,10 +3730,10 @@ class _StringsMisskeyAchievementsTypesNotes60000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000ZhTw extends _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes70000ZhTw extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文黑洞';
@@ -3738,10 +3741,10 @@ class _StringsMisskeyAchievementsTypesNotes70000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000ZhTw extends _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes80000ZhTw extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文銀河';
@@ -3749,10 +3752,10 @@ class _StringsMisskeyAchievementsTypesNotes80000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000ZhTw extends _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes90000ZhTw extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文宇宙';
@@ -3760,10 +3763,10 @@ class _StringsMisskeyAchievementsTypesNotes90000ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000ZhTw extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000ZhTw extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
@@ -3772,10 +3775,10 @@ class _StringsMisskeyAchievementsTypesNotes100000ZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3ZhTw extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3ZhTw extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '初學者Ⅰ';
@@ -3784,10 +3787,10 @@ class _StringsMisskeyAchievementsTypesLogin3ZhTw extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7ZhTw extends _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin7ZhTw extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin7ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '初學者ⅠⅠ';
@@ -3796,10 +3799,10 @@ class _StringsMisskeyAchievementsTypesLogin7ZhTw extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15ZhTw extends _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin15ZhTw extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin15ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '初學者ⅠⅠⅠ';
@@ -3807,10 +3810,10 @@ class _StringsMisskeyAchievementsTypesLogin15ZhTw extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30ZhTw extends _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin30ZhTw extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin30ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist Ⅰ';
@@ -3818,10 +3821,10 @@ class _StringsMisskeyAchievementsTypesLogin30ZhTw extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60ZhTw extends _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin60ZhTw extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin60ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist ⅠⅠ';
@@ -3829,10 +3832,10 @@ class _StringsMisskeyAchievementsTypesLogin60ZhTw extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100ZhTw extends _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin100ZhTw extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin100ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist ⅠⅠⅠ';
@@ -3841,10 +3844,10 @@ class _StringsMisskeyAchievementsTypesLogin100ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200ZhTw extends _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin200ZhTw extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin200ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '普通Ⅰ';
@@ -3852,10 +3855,10 @@ class _StringsMisskeyAchievementsTypesLogin200ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300ZhTw extends _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin300ZhTw extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin300ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '普通ⅠⅠ';
@@ -3863,10 +3866,10 @@ class _StringsMisskeyAchievementsTypesLogin300ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400ZhTw extends _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin400ZhTw extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin400ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '普通ⅠⅠⅠ';
@@ -3874,10 +3877,10 @@ class _StringsMisskeyAchievementsTypesLogin400ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _StringsMisskeyAchievementsTypesLogin500ZhTw extends _StringsMisskeyAchievementsTypesLogin500EnUs {
-	_StringsMisskeyAchievementsTypesLogin500ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin500ZhTw extends TranslationsMisskeyAchievementsTypesLogin500EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin500ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '老兵Ⅰ';
@@ -3886,10 +3889,10 @@ class _StringsMisskeyAchievementsTypesLogin500ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _StringsMisskeyAchievementsTypesLogin600ZhTw extends _StringsMisskeyAchievementsTypesLogin600EnUs {
-	_StringsMisskeyAchievementsTypesLogin600ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin600ZhTw extends TranslationsMisskeyAchievementsTypesLogin600EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin600ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '老兵ⅠⅠ';
@@ -3897,10 +3900,10 @@ class _StringsMisskeyAchievementsTypesLogin600ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _StringsMisskeyAchievementsTypesLogin700ZhTw extends _StringsMisskeyAchievementsTypesLogin700EnUs {
-	_StringsMisskeyAchievementsTypesLogin700ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin700ZhTw extends TranslationsMisskeyAchievementsTypesLogin700EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin700ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '老兵ⅠⅠⅠ';
@@ -3908,10 +3911,10 @@ class _StringsMisskeyAchievementsTypesLogin700ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _StringsMisskeyAchievementsTypesLogin800ZhTw extends _StringsMisskeyAchievementsTypesLogin800EnUs {
-	_StringsMisskeyAchievementsTypesLogin800ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin800ZhTw extends TranslationsMisskeyAchievementsTypesLogin800EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin800ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文大師Ⅰ';
@@ -3919,10 +3922,10 @@ class _StringsMisskeyAchievementsTypesLogin800ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _StringsMisskeyAchievementsTypesLogin900ZhTw extends _StringsMisskeyAchievementsTypesLogin900EnUs {
-	_StringsMisskeyAchievementsTypesLogin900ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin900ZhTw extends TranslationsMisskeyAchievementsTypesLogin900EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin900ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文大師ⅠⅠ';
@@ -3930,10 +3933,10 @@ class _StringsMisskeyAchievementsTypesLogin900ZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000ZhTw extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin1000ZhTw extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin1000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '貼文大師ⅠⅠⅠ';
@@ -3942,10 +3945,10 @@ class _StringsMisskeyAchievementsTypesLogin1000ZhTw extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _StringsMisskeyAchievementsTypesNoteClipped1ZhTw extends _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_StringsMisskeyAchievementsTypesNoteClipped1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteClipped1ZhTw extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteClipped1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '忍不住要收進摘錄裡';
@@ -3953,10 +3956,10 @@ class _StringsMisskeyAchievementsTypesNoteClipped1ZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1ZhTw extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1ZhTw extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '觀星者';
@@ -3964,10 +3967,10 @@ class _StringsMisskeyAchievementsTypesNoteFavorited1ZhTw extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1ZhTw extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ZhTw extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '想要星星';
@@ -3975,10 +3978,10 @@ class _StringsMisskeyAchievementsTypesMyNoteFavorited1ZhTw extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledZhTw extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledZhTw extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '有備而來';
@@ -3986,10 +3989,10 @@ class _StringsMisskeyAchievementsTypesProfileFilledZhTw extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatZhTw extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatZhTw extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '我是貓';
@@ -3998,10 +4001,10 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1ZhTw extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing1ZhTw extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '首次追隨';
@@ -4009,10 +4012,10 @@ class _StringsMisskeyAchievementsTypesFollowing1ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10ZhTw extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing10ZhTw extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing10ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '跟著跟著';
@@ -4020,10 +4023,10 @@ class _StringsMisskeyAchievementsTypesFollowing10ZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50ZhTw extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing50ZhTw extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing50ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '朋友很多';
@@ -4031,10 +4034,10 @@ class _StringsMisskeyAchievementsTypesFollowing50ZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100ZhTw extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing100ZhTw extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing100ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '一百位朋友';
@@ -4042,10 +4045,10 @@ class _StringsMisskeyAchievementsTypesFollowing100ZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300ZhTw extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing300ZhTw extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing300ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '朋友太多';
@@ -4053,10 +4056,10 @@ class _StringsMisskeyAchievementsTypesFollowing300ZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1ZhTw extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1ZhTw extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '第一個追隨者';
@@ -4064,10 +4067,10 @@ class _StringsMisskeyAchievementsTypesFollowers1ZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10ZhTw extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers10ZhTw extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers10ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '追隨我吧！';
@@ -4075,10 +4078,10 @@ class _StringsMisskeyAchievementsTypesFollowers10ZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50ZhTw extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers50ZhTw extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers50ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '成群結隊';
@@ -4086,10 +4089,10 @@ class _StringsMisskeyAchievementsTypesFollowers50ZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100ZhTw extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers100ZhTw extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers100ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '熱門人物';
@@ -4097,10 +4100,10 @@ class _StringsMisskeyAchievementsTypesFollowers100ZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300ZhTw extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers300ZhTw extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers300ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '請排隊';
@@ -4108,10 +4111,10 @@ class _StringsMisskeyAchievementsTypesFollowers300ZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500ZhTw extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers500ZhTw extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers500ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '基地臺';
@@ -4119,10 +4122,10 @@ class _StringsMisskeyAchievementsTypesFollowers500ZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000ZhTw extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1000ZhTw extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1000ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '星光熠熠';
@@ -4130,10 +4133,10 @@ class _StringsMisskeyAchievementsTypesFollowers1000ZhTw extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30ZhTw extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCollectAchievements30ZhTw extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_TranslationsMisskeyAchievementsTypesCollectAchievements30ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '成就收藏家';
@@ -4141,10 +4144,10 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30ZhTw extends _Strings
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minZhTw extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewAchievements3minZhTw extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_TranslationsMisskeyAchievementsTypesViewAchievements3minZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '成就發燒友';
@@ -4152,10 +4155,10 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minZhTw extends _StringsM
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyZhTw extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesILoveMisskeyZhTw extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_TranslationsMisskeyAchievementsTypesILoveMisskeyZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'I Love Misskey';
@@ -4164,10 +4167,10 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureZhTw extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFoundTreasureZhTw extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_TranslationsMisskeyAchievementsTypesFoundTreasureZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '尋寶';
@@ -4175,10 +4178,10 @@ class _StringsMisskeyAchievementsTypesFoundTreasureZhTw extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minZhTw extends _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient30minZhTw extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient30minZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '休息一下';
@@ -4186,10 +4189,10 @@ class _StringsMisskeyAchievementsTypesClient30minZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _StringsMisskeyAchievementsTypesClient60minZhTw extends _StringsMisskeyAchievementsTypesClient60minEnUs {
-	_StringsMisskeyAchievementsTypesClient60minZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient60minZhTw extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient60minZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskey 看太多';
@@ -4197,10 +4200,10 @@ class _StringsMisskeyAchievementsTypesClient60minZhTw extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '欲言又止';
@@ -4208,10 +4211,10 @@ class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minZhTw extends _Strings
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightZhTw extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAtLateNightZhTw extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAtLateNightZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '夜貓子';
@@ -4220,10 +4223,10 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightZhTw extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secZhTw extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAt0min0secZhTw extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAt0min0secZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '報時';
@@ -4232,10 +4235,10 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secZhTw extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteZhTw extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSelfQuoteZhTw extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_TranslationsMisskeyAchievementsTypesSelfQuoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '自我引用';
@@ -4243,10 +4246,10 @@ class _StringsMisskeyAchievementsTypesSelfQuoteZhTw extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmZhTw extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesHtl20npmZhTw extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	_TranslationsMisskeyAchievementsTypesHtl20npmZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '源源不絕';
@@ -4254,10 +4257,10 @@ class _StringsMisskeyAchievementsTypesHtl20npmZhTw extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartZhTw extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartZhTw extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '分析師';
@@ -4265,10 +4268,10 @@ class _StringsMisskeyAchievementsTypesViewInstanceChartZhTw extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Hello, world!';
@@ -4276,10 +4279,10 @@ class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadZhTw extends _
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsZhTw extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOpen3windowsZhTw extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_TranslationsMisskeyAchievementsTypesOpen3windowsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '多重視窗';
@@ -4287,10 +4290,10 @@ class _StringsMisskeyAchievementsTypesOpen3windowsZhTw extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
-class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw extends _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
-	_StringsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw extends TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
+	_TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '循環引用';
@@ -4298,10 +4301,10 @@ class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceZhTw extends _
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadZhTw extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesReactWithoutReadZhTw extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_TranslationsMisskeyAchievementsTypesReactWithoutReadZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '有好好讀過嗎？';
@@ -4309,10 +4312,10 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadZhTw extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereZhTw extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClickedClickHereZhTw extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_TranslationsMisskeyAchievementsTypesClickedClickHereZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '點擊這裡';
@@ -4320,10 +4323,10 @@ class _StringsMisskeyAchievementsTypesClickedClickHereZhTw extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyZhTw extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJustPlainLuckyZhTw extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_TranslationsMisskeyAchievementsTypesJustPlainLuckyZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '只是運氣好';
@@ -4331,10 +4334,10 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyZhTw extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloZhTw extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloZhTw extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '神與您同在';
@@ -4342,10 +4345,10 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloZhTw extends _StringsMisske
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '一週年';
@@ -4353,10 +4356,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1ZhTw extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '二週年';
@@ -4364,10 +4367,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2ZhTw extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '三週年';
@@ -4375,10 +4378,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3ZhTw extends _St
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '生日快樂';
@@ -4386,10 +4389,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayZhTw extends _StringsMis
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '新年快樂';
@@ -4398,10 +4401,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayZhTw extends _Strings
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedZhTw extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCookieClickedZhTw extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	_TranslationsMisskeyAchievementsTypesCookieClickedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '點擊餅乾的遊戲';
@@ -4410,10 +4413,10 @@ class _StringsMisskeyAchievementsTypesCookieClickedZhTw extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _StringsMisskeyAchievementsTypesBrainDiverZhTw extends _StringsMisskeyAchievementsTypesBrainDiverEnUs {
-	_StringsMisskeyAchievementsTypesBrainDiverZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBrainDiverZhTw extends TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
+	_TranslationsMisskeyAchievementsTypesBrainDiverZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Brain Driver';
@@ -4422,10 +4425,10 @@ class _StringsMisskeyAchievementsTypesBrainDiverZhTw extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.smashTestNotificationButton_
-class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw extends _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
-	_StringsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw extends TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
+	_TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '過度測試';
@@ -4433,10 +4436,10 @@ class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonZhTw extends _S
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
-class _StringsMisskeyAchievementsTypesTutorialCompletedZhTw extends _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
-	_StringsMisskeyAchievementsTypesTutorialCompletedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesTutorialCompletedZhTw extends TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs {
+	_TranslationsMisskeyAchievementsTypesTutorialCompletedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskey新手講座 結業證書';
@@ -4444,10 +4447,10 @@ class _StringsMisskeyAchievementsTypesTutorialCompletedZhTw extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw extends _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '🤯';
@@ -4455,10 +4458,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadZhTw extends _Strin
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw extends _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '雙重🤯';
@@ -4467,10 +4470,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadZhTw extends 
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteZhTw extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteZhTw extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => '貼文ID';
@@ -4479,22 +4482,22 @@ class _StringsMisskeyPagesBlocksNoteZhTw extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => '電子郵件';
 	@override String get webhook => 'Webhook';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw captions_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
-class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw extends _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '缺少參數';
@@ -4502,10 +4505,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsZhTw extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
-class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw extends _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '不支援此外部資源。';
@@ -4513,10 +4516,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedZhTw
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
-class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw extends _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '無法取得資料';
@@ -4525,10 +4528,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchZhTw extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
-class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw extends _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '無法取得正確資料';
@@ -4536,10 +4539,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedZhTw extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw extends _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'AiScript 錯誤';
@@ -4547,10 +4550,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedZhTw extend
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw extends _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '外掛安裝失敗';
@@ -4558,10 +4561,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw exte
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw extends _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '佈景主題解析錯誤';
@@ -4569,10 +4572,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedZhTw extends
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw extends _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw extends TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '無法安裝佈景主題';
@@ -4580,10 +4583,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw exten
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
-class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw extends _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw extends TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get cw => '注意消夜文';
@@ -4591,10 +4594,10 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteZhTw extends _StringsMi
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw._(_StringsZhTw root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
 
-	@override final _StringsZhTw _root; // ignore: unused_field
+	final TranslationsZhTw _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => '寄送到擁有監察員權限的使用者電子郵件地址（僅在收到檢舉時）';

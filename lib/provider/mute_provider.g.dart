@@ -6,7 +6,7 @@ part of 'mute_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$muteHash() => r'82167cecb754f640642eb232258337b610eb23d5';
+String _$muteHash() => r'0641ba880aca46ee720b761708d188c922f2c91e';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -143,6 +143,8 @@ class MuteProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin MuteRef on ProviderRef<(AhoCorasick, List<List<String>>, List<RegExp>)> {
   /// The parameter `mutedWords` of this provider.
   List<MuteWord> get mutedWords;
@@ -157,4 +159,4 @@ class _MuteProviderElement
   List<MuteWord> get mutedWords => (origin as MuteProvider).mutedWords;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

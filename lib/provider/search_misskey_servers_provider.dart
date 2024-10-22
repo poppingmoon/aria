@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,7 +9,7 @@ part 'search_misskey_servers_provider.g.dart';
 
 @riverpod
 FutureOr<List<JoinMisskeyInstanceInfo>> searchMisskeyServers(
-  SearchMisskeyServersRef ref,
+  Ref ref,
   String query,
 ) async {
   final servers = await ref.watch(misskeyServersProvider.future);

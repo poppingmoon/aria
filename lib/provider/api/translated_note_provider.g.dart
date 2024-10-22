@@ -6,7 +6,7 @@ part of 'translated_note_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$translatedNoteHash() => r'59ac2d1ecf857290464a06b1ae5b768d14f1ecef';
+String _$translatedNoteHash() => r'e59caed4eda77ad53b60e79ca086d203c20a729b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -167,6 +167,8 @@ class TranslatedNoteProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TranslatedNoteRef
     on AutoDisposeFutureProviderRef<NotesTranslateResponse> {
   /// The parameter `account` of this provider.
@@ -192,4 +194,4 @@ class _TranslatedNoteProviderElement
   String get targetLang => (origin as TranslatedNoteProvider).targetLang;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

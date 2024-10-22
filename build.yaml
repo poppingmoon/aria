@@ -8,7 +8,6 @@ targets:
           input_directory: lib/i18n
           input_file_pattern: .i18n.yaml
           output_directory: lib/i18n
-          output_format: multiple_files
           namespaces: true
           string_interpolation: braces
           flat_map: false

@@ -7,7 +7,7 @@ part of 'receive_sharing_intent_provider.dart';
 // **************************************************************************
 
 String _$receiveSharingIntentHash() =>
-    r'12ac16659f23cdcb4c3f8e28aa54bb58d2c09de8';
+    r'46ef562192a7b42d470b288eb18b4257868bdf75';
 
 /// See also [receiveSharingIntent].
 @ProviderFor(receiveSharingIntent)
@@ -22,7 +22,9 @@ final receiveSharingIntentProvider =
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef ReceiveSharingIntentRef
     = AutoDisposeStreamProviderRef<List<SharedMediaFile>>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

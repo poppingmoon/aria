@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../constant/builtin_misskey_colors.g.dart';
@@ -10,7 +11,7 @@ import 'installed_misskey_colors_provider.dart';
 part 'misskey_colors_provider.g.dart';
 
 @riverpod
-MisskeyColors misskeyColors(MisskeyColorsRef ref, Brightness brightness) {
+MisskeyColors misskeyColors(Ref ref, Brightness brightness) {
   final themeId = ref.watch(
     generalSettingsNotifierProvider.select(
       (settings) => switch (brightness) {

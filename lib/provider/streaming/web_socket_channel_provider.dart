@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -9,10 +10,7 @@ import '../token_provider.dart';
 part 'web_socket_channel_provider.g.dart';
 
 @riverpod
-WebSocketChannel webSocketChannel(
-  WebSocketChannelRef ref,
-  Account account,
-) {
+WebSocketChannel webSocketChannel(Ref ref, Account account) {
   final token = ref.watch(tokenProvider(account));
   if (kDebugMode) {
     if (account.host.startsWith('localhost')) {

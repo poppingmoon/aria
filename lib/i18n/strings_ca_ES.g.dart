@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsCaEs extends Translations {
+class TranslationsCaEs extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsCaEs.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsCaEs({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.caEs,
@@ -18,23 +21,23 @@ class _StringsCaEs extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ca-ES>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsCaEs _root = this; // ignore: unused_field
+	late final TranslationsCaEs _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaCaEs aria = _StringsAriaCaEs._(_root);
-	@override late final _StringsMisskeyCaEs misskey = _StringsMisskeyCaEs._(_root);
+	@override late final _TranslationsAriaCaEs aria = _TranslationsAriaCaEs._(_root);
+	@override late final _TranslationsMisskeyCaEs misskey = _TranslationsMisskeyCaEs._(_root);
 }
 
 // Path: aria
-class _StringsAriaCaEs extends _StringsAriaEnUs {
-	_StringsAriaCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsAriaCaEs extends TranslationsAriaEnUs {
+	_TranslationsAriaCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -73,10 +76,10 @@ class _StringsAriaCaEs extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
-	_StringsMisskeyCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'Català';
@@ -1366,82 +1369,82 @@ class _StringsMisskeyCaEs extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verificació de la passkey a estat correcta, però s\'ha deshabilitat l\'inici de sessió sense contrasenya.';
 	@override String get messageToFollower => 'Missatge als meus seguidors';
 	@override String get target => 'Assumpte ';
-	@override late final _StringsMisskeyAbuseUserReportCaEs abuseUserReport_ = _StringsMisskeyAbuseUserReportCaEs._(_root);
-	@override late final _StringsMisskeyDeliveryCaEs delivery_ = _StringsMisskeyDeliveryCaEs._(_root);
-	@override late final _StringsMisskeyBubbleGameCaEs bubbleGame_ = _StringsMisskeyBubbleGameCaEs._(_root);
-	@override late final _StringsMisskeyAnnouncementCaEs announcement_ = _StringsMisskeyAnnouncementCaEs._(_root);
-	@override late final _StringsMisskeyInitialAccountSettingCaEs initialAccountSetting_ = _StringsMisskeyInitialAccountSettingCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialCaEs initialTutorial_ = _StringsMisskeyInitialTutorialCaEs._(_root);
-	@override late final _StringsMisskeyTimelineDescriptionCaEs timelineDescription_ = _StringsMisskeyTimelineDescriptionCaEs._(_root);
-	@override late final _StringsMisskeyServerRulesCaEs serverRules_ = _StringsMisskeyServerRulesCaEs._(_root);
-	@override late final _StringsMisskeyServerSettingsCaEs serverSettings_ = _StringsMisskeyServerSettingsCaEs._(_root);
-	@override late final _StringsMisskeyAccountMigrationCaEs accountMigration_ = _StringsMisskeyAccountMigrationCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsCaEs achievements_ = _StringsMisskeyAchievementsCaEs._(_root);
-	@override late final _StringsMisskeyRoleCaEs role_ = _StringsMisskeyRoleCaEs._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionCaEs sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionCaEs._(_root);
-	@override late final _StringsMisskeyEmailUnavailableCaEs emailUnavailable_ = _StringsMisskeyEmailUnavailableCaEs._(_root);
-	@override late final _StringsMisskeyFfVisibilityCaEs ffVisibility_ = _StringsMisskeyFfVisibilityCaEs._(_root);
-	@override late final _StringsMisskeySignupCaEs signup_ = _StringsMisskeySignupCaEs._(_root);
-	@override late final _StringsMisskeyAccountDeleteCaEs accountDelete_ = _StringsMisskeyAccountDeleteCaEs._(_root);
-	@override late final _StringsMisskeyAdCaEs ad_ = _StringsMisskeyAdCaEs._(_root);
-	@override late final _StringsMisskeyForgotPasswordCaEs forgotPassword_ = _StringsMisskeyForgotPasswordCaEs._(_root);
-	@override late final _StringsMisskeyGalleryCaEs gallery_ = _StringsMisskeyGalleryCaEs._(_root);
-	@override late final _StringsMisskeyEmailCaEs email_ = _StringsMisskeyEmailCaEs._(_root);
-	@override late final _StringsMisskeyPluginCaEs plugin_ = _StringsMisskeyPluginCaEs._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsCaEs preferencesBackups_ = _StringsMisskeyPreferencesBackupsCaEs._(_root);
-	@override late final _StringsMisskeyRegistryCaEs registry_ = _StringsMisskeyRegistryCaEs._(_root);
-	@override late final _StringsMisskeyAboutMisskeyCaEs aboutMisskey_ = _StringsMisskeyAboutMisskeyCaEs._(_root);
-	@override late final _StringsMisskeyDisplayOfSensitiveMediaCaEs displayOfSensitiveMedia_ = _StringsMisskeyDisplayOfSensitiveMediaCaEs._(_root);
-	@override late final _StringsMisskeyInstanceTickerCaEs instanceTicker_ = _StringsMisskeyInstanceTickerCaEs._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorCaEs serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorCaEs._(_root);
-	@override late final _StringsMisskeyChannelCaEs channel_ = _StringsMisskeyChannelCaEs._(_root);
-	@override late final _StringsMisskeyMenuDisplayCaEs menuDisplay_ = _StringsMisskeyMenuDisplayCaEs._(_root);
-	@override late final _StringsMisskeyWordMuteCaEs wordMute_ = _StringsMisskeyWordMuteCaEs._(_root);
-	@override late final _StringsMisskeyInstanceMuteCaEs instanceMute_ = _StringsMisskeyInstanceMuteCaEs._(_root);
-	@override late final _StringsMisskeyThemeCaEs theme_ = _StringsMisskeyThemeCaEs._(_root);
-	@override late final _StringsMisskeySfxCaEs sfx_ = _StringsMisskeySfxCaEs._(_root);
-	@override late final _StringsMisskeySoundSettingsCaEs soundSettings_ = _StringsMisskeySoundSettingsCaEs._(_root);
-	@override late final _StringsMisskeyAgoCaEs ago_ = _StringsMisskeyAgoCaEs._(_root);
-	@override late final _StringsMisskeyTimeInCaEs timeIn_ = _StringsMisskeyTimeInCaEs._(_root);
-	@override late final _StringsMisskeyTimeCaEs time_ = _StringsMisskeyTimeCaEs._(_root);
-	@override late final _StringsMisskeyX2faCaEs x2fa_ = _StringsMisskeyX2faCaEs._(_root);
-	@override late final _StringsMisskeyPermissionsCaEs permissions_ = _StringsMisskeyPermissionsCaEs._(_root);
-	@override late final _StringsMisskeyAuthCaEs auth_ = _StringsMisskeyAuthCaEs._(_root);
-	@override late final _StringsMisskeyAntennaSourcesCaEs antennaSources_ = _StringsMisskeyAntennaSourcesCaEs._(_root);
-	@override late final _StringsMisskeyWeekdayCaEs weekday_ = _StringsMisskeyWeekdayCaEs._(_root);
-	@override late final _StringsMisskeyWidgetsCaEs widgets_ = _StringsMisskeyWidgetsCaEs._(_root);
-	@override late final _StringsMisskeyCwCaEs cw_ = _StringsMisskeyCwCaEs._(_root);
-	@override late final _StringsMisskeyPollCaEs poll_ = _StringsMisskeyPollCaEs._(_root);
-	@override late final _StringsMisskeyVisibilityCaEs visibility_ = _StringsMisskeyVisibilityCaEs._(_root);
-	@override late final _StringsMisskeyPostFormCaEs postForm_ = _StringsMisskeyPostFormCaEs._(_root);
-	@override late final _StringsMisskeyProfileCaEs profile_ = _StringsMisskeyProfileCaEs._(_root);
-	@override late final _StringsMisskeyExportOrImportCaEs exportOrImport_ = _StringsMisskeyExportOrImportCaEs._(_root);
-	@override late final _StringsMisskeyChartsCaEs charts_ = _StringsMisskeyChartsCaEs._(_root);
-	@override late final _StringsMisskeyInstanceChartsCaEs instanceCharts_ = _StringsMisskeyInstanceChartsCaEs._(_root);
-	@override late final _StringsMisskeyTimelinesCaEs timelines_ = _StringsMisskeyTimelinesCaEs._(_root);
-	@override late final _StringsMisskeyPlayCaEs play_ = _StringsMisskeyPlayCaEs._(_root);
-	@override late final _StringsMisskeyPagesCaEs pages_ = _StringsMisskeyPagesCaEs._(_root);
-	@override late final _StringsMisskeyRelayStatusCaEs relayStatus_ = _StringsMisskeyRelayStatusCaEs._(_root);
-	@override late final _StringsMisskeyNotificationCaEs notification_ = _StringsMisskeyNotificationCaEs._(_root);
-	@override late final _StringsMisskeyDeckCaEs deck_ = _StringsMisskeyDeckCaEs._(_root);
-	@override late final _StringsMisskeyDialogCaEs dialog_ = _StringsMisskeyDialogCaEs._(_root);
-	@override late final _StringsMisskeyDisabledTimelineCaEs disabledTimeline_ = _StringsMisskeyDisabledTimelineCaEs._(_root);
-	@override late final _StringsMisskeyDrivecleanerCaEs drivecleaner_ = _StringsMisskeyDrivecleanerCaEs._(_root);
-	@override late final _StringsMisskeyWebhookSettingsCaEs webhookSettings_ = _StringsMisskeyWebhookSettingsCaEs._(_root);
-	@override late final _StringsMisskeyAbuseReportCaEs abuseReport_ = _StringsMisskeyAbuseReportCaEs._(_root);
-	@override late final _StringsMisskeyModerationLogTypesCaEs moderationLogTypes_ = _StringsMisskeyModerationLogTypesCaEs._(_root);
-	@override late final _StringsMisskeyFileViewerCaEs fileViewer_ = _StringsMisskeyFileViewerCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerCaEs externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerCaEs._(_root);
-	@override late final _StringsMisskeyDataSaverCaEs dataSaver_ = _StringsMisskeyDataSaverCaEs._(_root);
-	@override late final _StringsMisskeyReversiCaEs reversi_ = _StringsMisskeyReversiCaEs._(_root);
-	@override late final _StringsMisskeyEmbedCodeGenCaEs embedCodeGen_ = _StringsMisskeyEmbedCodeGenCaEs._(_root);
+	@override late final _TranslationsMisskeyAbuseUserReportCaEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportCaEs._(_root);
+	@override late final _TranslationsMisskeyDeliveryCaEs delivery_ = _TranslationsMisskeyDeliveryCaEs._(_root);
+	@override late final _TranslationsMisskeyBubbleGameCaEs bubbleGame_ = _TranslationsMisskeyBubbleGameCaEs._(_root);
+	@override late final _TranslationsMisskeyAnnouncementCaEs announcement_ = _TranslationsMisskeyAnnouncementCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingCaEs initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialCaEs initialTutorial_ = _TranslationsMisskeyInitialTutorialCaEs._(_root);
+	@override late final _TranslationsMisskeyTimelineDescriptionCaEs timelineDescription_ = _TranslationsMisskeyTimelineDescriptionCaEs._(_root);
+	@override late final _TranslationsMisskeyServerRulesCaEs serverRules_ = _TranslationsMisskeyServerRulesCaEs._(_root);
+	@override late final _TranslationsMisskeyServerSettingsCaEs serverSettings_ = _TranslationsMisskeyServerSettingsCaEs._(_root);
+	@override late final _TranslationsMisskeyAccountMigrationCaEs accountMigration_ = _TranslationsMisskeyAccountMigrationCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsCaEs achievements_ = _TranslationsMisskeyAchievementsCaEs._(_root);
+	@override late final _TranslationsMisskeyRoleCaEs role_ = _TranslationsMisskeyRoleCaEs._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionCaEs sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionCaEs._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableCaEs emailUnavailable_ = _TranslationsMisskeyEmailUnavailableCaEs._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityCaEs ffVisibility_ = _TranslationsMisskeyFfVisibilityCaEs._(_root);
+	@override late final _TranslationsMisskeySignupCaEs signup_ = _TranslationsMisskeySignupCaEs._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteCaEs accountDelete_ = _TranslationsMisskeyAccountDeleteCaEs._(_root);
+	@override late final _TranslationsMisskeyAdCaEs ad_ = _TranslationsMisskeyAdCaEs._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordCaEs forgotPassword_ = _TranslationsMisskeyForgotPasswordCaEs._(_root);
+	@override late final _TranslationsMisskeyGalleryCaEs gallery_ = _TranslationsMisskeyGalleryCaEs._(_root);
+	@override late final _TranslationsMisskeyEmailCaEs email_ = _TranslationsMisskeyEmailCaEs._(_root);
+	@override late final _TranslationsMisskeyPluginCaEs plugin_ = _TranslationsMisskeyPluginCaEs._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsCaEs preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsCaEs._(_root);
+	@override late final _TranslationsMisskeyRegistryCaEs registry_ = _TranslationsMisskeyRegistryCaEs._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyCaEs aboutMisskey_ = _TranslationsMisskeyAboutMisskeyCaEs._(_root);
+	@override late final _TranslationsMisskeyDisplayOfSensitiveMediaCaEs displayOfSensitiveMedia_ = _TranslationsMisskeyDisplayOfSensitiveMediaCaEs._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerCaEs instanceTicker_ = _TranslationsMisskeyInstanceTickerCaEs._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorCaEs serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorCaEs._(_root);
+	@override late final _TranslationsMisskeyChannelCaEs channel_ = _TranslationsMisskeyChannelCaEs._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayCaEs menuDisplay_ = _TranslationsMisskeyMenuDisplayCaEs._(_root);
+	@override late final _TranslationsMisskeyWordMuteCaEs wordMute_ = _TranslationsMisskeyWordMuteCaEs._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteCaEs instanceMute_ = _TranslationsMisskeyInstanceMuteCaEs._(_root);
+	@override late final _TranslationsMisskeyThemeCaEs theme_ = _TranslationsMisskeyThemeCaEs._(_root);
+	@override late final _TranslationsMisskeySfxCaEs sfx_ = _TranslationsMisskeySfxCaEs._(_root);
+	@override late final _TranslationsMisskeySoundSettingsCaEs soundSettings_ = _TranslationsMisskeySoundSettingsCaEs._(_root);
+	@override late final _TranslationsMisskeyAgoCaEs ago_ = _TranslationsMisskeyAgoCaEs._(_root);
+	@override late final _TranslationsMisskeyTimeInCaEs timeIn_ = _TranslationsMisskeyTimeInCaEs._(_root);
+	@override late final _TranslationsMisskeyTimeCaEs time_ = _TranslationsMisskeyTimeCaEs._(_root);
+	@override late final _TranslationsMisskeyX2faCaEs x2fa_ = _TranslationsMisskeyX2faCaEs._(_root);
+	@override late final _TranslationsMisskeyPermissionsCaEs permissions_ = _TranslationsMisskeyPermissionsCaEs._(_root);
+	@override late final _TranslationsMisskeyAuthCaEs auth_ = _TranslationsMisskeyAuthCaEs._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesCaEs antennaSources_ = _TranslationsMisskeyAntennaSourcesCaEs._(_root);
+	@override late final _TranslationsMisskeyWeekdayCaEs weekday_ = _TranslationsMisskeyWeekdayCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetsCaEs widgets_ = _TranslationsMisskeyWidgetsCaEs._(_root);
+	@override late final _TranslationsMisskeyCwCaEs cw_ = _TranslationsMisskeyCwCaEs._(_root);
+	@override late final _TranslationsMisskeyPollCaEs poll_ = _TranslationsMisskeyPollCaEs._(_root);
+	@override late final _TranslationsMisskeyVisibilityCaEs visibility_ = _TranslationsMisskeyVisibilityCaEs._(_root);
+	@override late final _TranslationsMisskeyPostFormCaEs postForm_ = _TranslationsMisskeyPostFormCaEs._(_root);
+	@override late final _TranslationsMisskeyProfileCaEs profile_ = _TranslationsMisskeyProfileCaEs._(_root);
+	@override late final _TranslationsMisskeyExportOrImportCaEs exportOrImport_ = _TranslationsMisskeyExportOrImportCaEs._(_root);
+	@override late final _TranslationsMisskeyChartsCaEs charts_ = _TranslationsMisskeyChartsCaEs._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsCaEs instanceCharts_ = _TranslationsMisskeyInstanceChartsCaEs._(_root);
+	@override late final _TranslationsMisskeyTimelinesCaEs timelines_ = _TranslationsMisskeyTimelinesCaEs._(_root);
+	@override late final _TranslationsMisskeyPlayCaEs play_ = _TranslationsMisskeyPlayCaEs._(_root);
+	@override late final _TranslationsMisskeyPagesCaEs pages_ = _TranslationsMisskeyPagesCaEs._(_root);
+	@override late final _TranslationsMisskeyRelayStatusCaEs relayStatus_ = _TranslationsMisskeyRelayStatusCaEs._(_root);
+	@override late final _TranslationsMisskeyNotificationCaEs notification_ = _TranslationsMisskeyNotificationCaEs._(_root);
+	@override late final _TranslationsMisskeyDeckCaEs deck_ = _TranslationsMisskeyDeckCaEs._(_root);
+	@override late final _TranslationsMisskeyDialogCaEs dialog_ = _TranslationsMisskeyDialogCaEs._(_root);
+	@override late final _TranslationsMisskeyDisabledTimelineCaEs disabledTimeline_ = _TranslationsMisskeyDisabledTimelineCaEs._(_root);
+	@override late final _TranslationsMisskeyDrivecleanerCaEs drivecleaner_ = _TranslationsMisskeyDrivecleanerCaEs._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsCaEs webhookSettings_ = _TranslationsMisskeyWebhookSettingsCaEs._(_root);
+	@override late final _TranslationsMisskeyAbuseReportCaEs abuseReport_ = _TranslationsMisskeyAbuseReportCaEs._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesCaEs moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesCaEs._(_root);
+	@override late final _TranslationsMisskeyFileViewerCaEs fileViewer_ = _TranslationsMisskeyFileViewerCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerCaEs externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverCaEs dataSaver_ = _TranslationsMisskeyDataSaverCaEs._(_root);
+	@override late final _TranslationsMisskeyReversiCaEs reversi_ = _TranslationsMisskeyReversiCaEs._(_root);
+	@override late final _TranslationsMisskeyEmbedCodeGenCaEs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenCaEs._(_root);
 }
 
 // Path: misskey.abuseUserReport_
-class _StringsMisskeyAbuseUserReportCaEs extends _StringsMisskeyAbuseUserReportEnUs {
-	_StringsMisskeyAbuseUserReportCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseUserReportCaEs extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get forward => 'Reenviar ';
@@ -1453,36 +1456,36 @@ class _StringsMisskeyAbuseUserReportCaEs extends _StringsMisskeyAbuseUserReportE
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryCaEs extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryCaEs extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get status => 'Estat d\'entrega ';
 	@override String get stop => 'Suspés';
 	@override String get resume => 'Torna a enviar';
-	@override late final _StringsMisskeyDeliveryTypeCaEs type_ = _StringsMisskeyDeliveryTypeCaEs._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeCaEs type_ = _TranslationsMisskeyDeliveryTypeCaEs._(_root);
 }
 
 // Path: misskey.bubbleGame_
-class _StringsMisskeyBubbleGameCaEs extends _StringsMisskeyBubbleGameEnUs {
-	_StringsMisskeyBubbleGameCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameCaEs extends TranslationsMisskeyBubbleGameEnUs {
+	_TranslationsMisskeyBubbleGameCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get howToPlay => 'Com es juga';
 	@override String get hold => 'Mantenir';
-	@override late final _StringsMisskeyBubbleGameScoreCaEs score_ = _StringsMisskeyBubbleGameScoreCaEs._(_root);
-	@override late final _StringsMisskeyBubbleGameHowToPlayCaEs howToPlay_ = _StringsMisskeyBubbleGameHowToPlayCaEs._(_root);
+	@override late final _TranslationsMisskeyBubbleGameScoreCaEs score_ = _TranslationsMisskeyBubbleGameScoreCaEs._(_root);
+	@override late final _TranslationsMisskeyBubbleGameHowToPlayCaEs howToPlay_ = _TranslationsMisskeyBubbleGameHowToPlayCaEs._(_root);
 }
 
 // Path: misskey.announcement_
-class _StringsMisskeyAnnouncementCaEs extends _StringsMisskeyAnnouncementEnUs {
-	_StringsMisskeyAnnouncementCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAnnouncementCaEs extends TranslationsMisskeyAnnouncementEnUs {
+	_TranslationsMisskeyAnnouncementCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get forExistingUsers => 'Anunci per usuaris registrats';
@@ -1500,10 +1503,10 @@ class _StringsMisskeyAnnouncementCaEs extends _StringsMisskeyAnnouncementEnUs {
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingCaEs extends _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialAccountSettingCaEs extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountCreated => 'S\'ha completat la creació del compte!';
@@ -1524,30 +1527,30 @@ class _StringsMisskeyInitialAccountSettingCaEs extends _StringsMisskeyInitialAcc
 }
 
 // Path: misskey.initialTutorial_
-class _StringsMisskeyInitialTutorialCaEs extends _StringsMisskeyInitialTutorialEnUs {
-	_StringsMisskeyInitialTutorialCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialCaEs extends TranslationsMisskeyInitialTutorialEnUs {
+	_TranslationsMisskeyInitialTutorialCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get launchTutorial => 'Començar tutorial';
 	@override String get title => 'Tutorial';
 	@override String get wellDone => 'Ben fet!';
 	@override String get skipAreYouSure => 'Sortir del tutorial?';
-	@override late final _StringsMisskeyInitialTutorialLandingCaEs landing_ = _StringsMisskeyInitialTutorialLandingCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialNoteCaEs note_ = _StringsMisskeyInitialTutorialNoteCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialReactionCaEs reaction_ = _StringsMisskeyInitialTutorialReactionCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialTimelineCaEs timeline_ = _StringsMisskeyInitialTutorialTimelineCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteCaEs postNote_ = _StringsMisskeyInitialTutorialPostNoteCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs howToMakeAttachmentsSensitive_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialDoneCaEs done_ = _StringsMisskeyInitialTutorialDoneCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialLandingCaEs landing_ = _TranslationsMisskeyInitialTutorialLandingCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialNoteCaEs note_ = _TranslationsMisskeyInitialTutorialNoteCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialReactionCaEs reaction_ = _TranslationsMisskeyInitialTutorialReactionCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialTimelineCaEs timeline_ = _TranslationsMisskeyInitialTutorialTimelineCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCaEs postNote_ = _TranslationsMisskeyInitialTutorialPostNoteCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs howToMakeAttachmentsSensitive_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialDoneCaEs done_ = _TranslationsMisskeyInitialTutorialDoneCaEs._(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _StringsMisskeyTimelineDescriptionCaEs extends _StringsMisskeyTimelineDescriptionEnUs {
-	_StringsMisskeyTimelineDescriptionCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelineDescriptionCaEs extends TranslationsMisskeyTimelineDescriptionEnUs {
+	_TranslationsMisskeyTimelineDescriptionCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'A la línia de temps d\'Inici pots veure les notes dels usuaris que segueixes.';
@@ -1557,20 +1560,20 @@ class _StringsMisskeyTimelineDescriptionCaEs extends _StringsMisskeyTimelineDesc
 }
 
 // Path: misskey.serverRules_
-class _StringsMisskeyServerRulesCaEs extends _StringsMisskeyServerRulesEnUs {
-	_StringsMisskeyServerRulesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerRulesCaEs extends TranslationsMisskeyServerRulesEnUs {
+	_TranslationsMisskeyServerRulesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Un conjunt de regles que seran mostrades abans de registrar-se. Es recomanable configurar un resum dels termes d\'ús.';
 }
 
 // Path: misskey.serverSettings_
-class _StringsMisskeyServerSettingsCaEs extends _StringsMisskeyServerSettingsEnUs {
-	_StringsMisskeyServerSettingsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSettingsEnUs {
+	_TranslationsMisskeyServerSettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get iconUrl => 'URL de la icona';
@@ -1590,10 +1593,10 @@ class _StringsMisskeyServerSettingsCaEs extends _StringsMisskeyServerSettingsEnU
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationCaEs extends _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountMigrationCaEs extends TranslationsMisskeyAccountMigrationEnUs {
+	_TranslationsMisskeyAccountMigrationCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get moveFrom => 'Migrar un altre compte a aquest';
@@ -1613,21 +1616,21 @@ class _StringsMisskeyAccountMigrationCaEs extends _StringsMisskeyAccountMigratio
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsCaEs extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsCaEs extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => 'Desbloquejat el';
-	@override late final _StringsMisskeyAchievementsTypesCaEs types_ = _StringsMisskeyAchievementsTypesCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCaEs types_ = _TranslationsMisskeyAchievementsTypesCaEs._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleCaEs extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleCaEs extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'Nou rol';
@@ -1661,16 +1664,16 @@ class _StringsMisskeyRoleCaEs extends _StringsMisskeyRoleEnUs {
 	@override String get canEditMembersByModerator => 'Permetre que els moderadors editin la llista d\'usuaris en aquest rol';
 	@override String get descriptionOfCanEditMembersByModerator => 'Quan s\'activa, els moderadors, així com els administradors, podran afegir i treure usuaris d\'aquest rol. Si es troba desactivat, només els administradors poden assignar usuaris.';
 	@override String get priority => 'Prioritat';
-	@override late final _StringsMisskeyRolePriorityCaEs priority_ = _StringsMisskeyRolePriorityCaEs._(_root);
-	@override late final _StringsMisskeyRoleOptionsCaEs options_ = _StringsMisskeyRoleOptionsCaEs._(_root);
-	@override late final _StringsMisskeyRoleConditionCaEs condition_ = _StringsMisskeyRoleConditionCaEs._(_root);
+	@override late final _TranslationsMisskeyRolePriorityCaEs priority_ = _TranslationsMisskeyRolePriorityCaEs._(_root);
+	@override late final _TranslationsMisskeyRoleOptionsCaEs options_ = _TranslationsMisskeyRoleOptionsCaEs._(_root);
+	@override late final _TranslationsMisskeyRoleConditionCaEs condition_ = _TranslationsMisskeyRoleConditionCaEs._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionCaEs extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionCaEs extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Redueix els esforços de moderació gràcies al reconeixement automàtic dels fitxers amb contingut sensible mitjançant Machine Learing. Això augmentarà la càrrega del servidor.';
@@ -1683,10 +1686,10 @@ class _StringsMisskeySensitiveMediaDetectionCaEs extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableCaEs extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableCaEs extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => 'Aquest correu electrònic ja s\'està fent servir';
@@ -1698,10 +1701,10 @@ class _StringsMisskeyEmailUnavailableCaEs extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityCaEs extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityCaEs extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Publicar';
@@ -1710,10 +1713,10 @@ class _StringsMisskeyFfVisibilityCaEs extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupCaEs extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupCaEs extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'Ja quasi estem';
@@ -1722,10 +1725,10 @@ class _StringsMisskeySignupCaEs extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteCaEs extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteCaEs extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'Eliminar el compte';
@@ -1737,10 +1740,10 @@ class _StringsMisskeyAccountDeleteCaEs extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdCaEs extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdCaEs extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'Tornar';
@@ -1754,10 +1757,10 @@ class _StringsMisskeyAdCaEs extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordCaEs extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordCaEs extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => 'Escriu l\'adreça de correu electrònic amb la que et vas registrar. S\'enviarà un correu electrònic amb un enllaç perquè puguis canviar-la.';
@@ -1766,10 +1769,10 @@ class _StringsMisskeyForgotPasswordCaEs extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryCaEs extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryCaEs extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => 'La meva Galeria ';
@@ -1779,21 +1782,21 @@ class _StringsMisskeyGalleryCaEs extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailCaEs extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailCaEs extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowCaEs follow_ = _StringsMisskeyEmailFollowCaEs._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestCaEs receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestCaEs._(_root);
+	@override late final _TranslationsMisskeyEmailFollowCaEs follow_ = _TranslationsMisskeyEmailFollowCaEs._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestCaEs receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestCaEs._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginCaEs extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginCaEs extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'Instal·lar un afegit ';
@@ -1804,10 +1807,10 @@ class _StringsMisskeyPluginCaEs extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsCaEs extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsCaEs extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => 'Llista de còpies de seguretat';
@@ -1830,10 +1833,10 @@ class _StringsMisskeyPreferencesBackupsCaEs extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryCaEs extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryCaEs extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'Àmbit ';
@@ -1844,10 +1847,10 @@ class _StringsMisskeyRegistryCaEs extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyCaEs extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyCaEs extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey és un programa de codi obert desenvolupar per syuilo des de 2014';
@@ -1864,10 +1867,10 @@ class _StringsMisskeyAboutMisskeyCaEs extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.displayOfSensitiveMedia_
-class _StringsMisskeyDisplayOfSensitiveMediaCaEs extends _StringsMisskeyDisplayOfSensitiveMediaEnUs {
-	_StringsMisskeyDisplayOfSensitiveMediaCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisplayOfSensitiveMediaCaEs extends TranslationsMisskeyDisplayOfSensitiveMediaEnUs {
+	_TranslationsMisskeyDisplayOfSensitiveMediaCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get respect => 'Ocultar imatges o vídeos marcats com a sensibles';
@@ -1876,10 +1879,10 @@ class _StringsMisskeyDisplayOfSensitiveMediaCaEs extends _StringsMisskeyDisplayO
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerCaEs extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerCaEs extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'No mostrar mai';
@@ -1888,10 +1891,10 @@ class _StringsMisskeyInstanceTickerCaEs extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorCaEs extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorCaEs extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => 'Recarregar automàticament ';
@@ -1900,10 +1903,10 @@ class _StringsMisskeyServerDisconnectedBehaviorCaEs extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelCaEs extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelCaEs extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'Crear un canal';
@@ -1921,10 +1924,10 @@ class _StringsMisskeyChannelCaEs extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayCaEs extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayCaEs extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => 'Horitzontal ';
@@ -1934,10 +1937,10 @@ class _StringsMisskeyMenuDisplayCaEs extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteCaEs extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteCaEs extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'Paraules silenciades';
@@ -1946,10 +1949,10 @@ class _StringsMisskeyWordMuteCaEs extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteCaEs extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteCaEs extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => 'Silencia tots els impulsos dels servidors seleccionats, també els usuaris que responen a altres d\'un servidor silenciat.';
@@ -1959,10 +1962,10 @@ class _StringsMisskeyInstanceMuteCaEs extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeCaEs extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeCaEs extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'Explorar els temes ';
@@ -1994,14 +1997,14 @@ class _StringsMisskeyThemeCaEs extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'Escriu un nom per aquesta constant';
 	@override String get importInfo => 'Si escrius el codi del tema aquí, el podràs importar a l\'editor del tema';
 	@override String deleteConstantConfirm({required Object const_}) => 'Vols esborrar la constant ${const_}?';
-	@override late final _StringsMisskeyThemeKeysCaEs keys = _StringsMisskeyThemeKeysCaEs._(_root);
+	@override late final _TranslationsMisskeyThemeKeysCaEs keys = _TranslationsMisskeyThemeKeysCaEs._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxCaEs extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxCaEs extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Notes';
@@ -2011,10 +2014,10 @@ class _StringsMisskeySfxCaEs extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.soundSettings_
-class _StringsMisskeySoundSettingsCaEs extends _StringsMisskeySoundSettingsEnUs {
-	_StringsMisskeySoundSettingsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeySoundSettingsCaEs extends TranslationsMisskeySoundSettingsEnUs {
+	_TranslationsMisskeySoundSettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get driveFile => 'Fer servir un fitxer d\'àudio del disc';
@@ -2027,10 +2030,10 @@ class _StringsMisskeySoundSettingsCaEs extends _StringsMisskeySoundSettingsEnUs 
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoCaEs extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoCaEs extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => 'Futur ';
@@ -2046,10 +2049,10 @@ class _StringsMisskeyAgoCaEs extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.timeIn_
-class _StringsMisskeyTimeInCaEs extends _StringsMisskeyTimeInEnUs {
-	_StringsMisskeyTimeInCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeInCaEs extends TranslationsMisskeyTimeInEnUs {
+	_TranslationsMisskeyTimeInCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String seconds({required Object n}) => 'En ${n} segons';
@@ -2062,10 +2065,10 @@ class _StringsMisskeyTimeInCaEs extends _StringsMisskeyTimeInEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeCaEs extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeCaEs extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => 'Segon(s)';
@@ -2075,10 +2078,10 @@ class _StringsMisskeyTimeCaEs extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faCaEs extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faCaEs extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => 'J has registrat un dispositiu d\'autenticació de doble factor.';
@@ -2112,10 +2115,10 @@ class _StringsMisskeyX2faCaEs extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsCaEs extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsCaEs extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'Veure la informació del compte.';
@@ -2205,10 +2208,10 @@ class _StringsMisskeyPermissionsCaEs extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthCaEs extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthCaEs extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get shareAccessTitle => 'Concedeix permisos a l\'aplicació';
@@ -2223,10 +2226,10 @@ class _StringsMisskeyAuthCaEs extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesCaEs extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesCaEs extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Totes les publicacions';
@@ -2237,10 +2240,10 @@ class _StringsMisskeyAntennaSourcesCaEs extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayCaEs extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayCaEs extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => 'Diumenge';
@@ -2253,10 +2256,10 @@ class _StringsMisskeyWeekdayCaEs extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsCaEs extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsCaEs extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Perfil';
@@ -2285,16 +2288,16 @@ class _StringsMisskeyWidgetsCaEs extends _StringsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'Aplicació AiScript';
 	@override String get aichan => 'Ai';
 	@override String get userList => 'Llistat d\'usuaris';
-	@override late final _StringsMisskeyWidgetsUserListCaEs userList_ = _StringsMisskeyWidgetsUserListCaEs._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListCaEs userList_ = _TranslationsMisskeyWidgetsUserListCaEs._(_root);
 	@override String get clicker => 'Clicker';
 	@override String get birthdayFollowings => 'Usuaris que fan l\'aniversari avui';
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwCaEs extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwCaEs extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => 'Amagar';
@@ -2304,10 +2307,10 @@ class _StringsMisskeyCwCaEs extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollCaEs extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollCaEs extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'Es necessita escollir dues opcions com a mínim ';
@@ -2334,10 +2337,10 @@ class _StringsMisskeyPollCaEs extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityCaEs extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityCaEs extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Públic ';
@@ -2353,23 +2356,23 @@ class _StringsMisskeyVisibilityCaEs extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormCaEs extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormCaEs extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'Contestar...';
 	@override String get quotePlaceholder => 'Citar...';
 	@override String get channelPlaceholder => 'Publicar a un canal...';
-	@override late final _StringsMisskeyPostFormPlaceholdersCaEs placeholders_ = _StringsMisskeyPostFormPlaceholdersCaEs._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersCaEs placeholders_ = _TranslationsMisskeyPostFormPlaceholdersCaEs._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileCaEs extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileCaEs extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Nom';
@@ -2391,10 +2394,10 @@ class _StringsMisskeyProfileCaEs extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportCaEs extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportCaEs extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'Totes les publicacions';
@@ -2410,10 +2413,10 @@ class _StringsMisskeyExportOrImportCaEs extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsCaEs extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsCaEs extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Federació';
@@ -2432,10 +2435,10 @@ class _StringsMisskeyChartsCaEs extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsCaEs extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsCaEs extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'Peticions';
@@ -2452,10 +2455,10 @@ class _StringsMisskeyInstanceChartsCaEs extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesCaEs extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesCaEs extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Inici';
@@ -2465,10 +2468,10 @@ class _StringsMisskeyTimelinesCaEs extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayCaEs extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayCaEs extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'Crear un guió';
@@ -2489,10 +2492,10 @@ class _StringsMisskeyPlayCaEs extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesCaEs extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesCaEs extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'pa';
@@ -2533,14 +2536,14 @@ class _StringsMisskeyPagesCaEs extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'Contingut';
 	@override String get inputBlocks => 'Entrada ';
 	@override String get specialBlocks => 'Especial';
-	@override late final _StringsMisskeyPagesBlocksCaEs blocks = _StringsMisskeyPagesBlocksCaEs._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksCaEs blocks = _TranslationsMisskeyPagesBlocksCaEs._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusCaEs extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusCaEs extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'Pendent';
@@ -2549,10 +2552,10 @@ class _StringsMisskeyRelayStatusCaEs extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationCaEs extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationCaEs extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'Fitxer pujat sense cap problema';
@@ -2579,15 +2582,15 @@ class _StringsMisskeyNotificationCaEs extends _StringsMisskeyNotificationEnUs {
 	@override String followedBySomeUsers({required Object n}) => 'Et segueixen ${n} usuaris';
 	@override String get flushNotification => 'Netejar notificacions';
 	@override String exportOfXCompleted({required Object x}) => 'Completada l\'exportació de ${x}';
-	@override late final _StringsMisskeyNotificationTypesCaEs types_ = _StringsMisskeyNotificationTypesCaEs._(_root);
-	@override late final _StringsMisskeyNotificationActionsCaEs actions_ = _StringsMisskeyNotificationActionsCaEs._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesCaEs types_ = _TranslationsMisskeyNotificationTypesCaEs._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsCaEs actions_ = _TranslationsMisskeyNotificationActionsCaEs._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckCaEs extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckCaEs extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'Mostrar sempre la columna principal';
@@ -2610,14 +2613,14 @@ class _StringsMisskeyDeckCaEs extends _StringsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => 'Usa una interfície senzilla per a les pàgines navegades';
 	@override String get usedAsMinWidthWhenFlexible => 'L\'amplada mínima es farà servir quan "Ajust automàtic de l\'amplada" estigui activat';
 	@override String get flexible => 'Ajust automàtic de l\'amplada';
-	@override late final _StringsMisskeyDeckColumnsCaEs columns_ = _StringsMisskeyDeckColumnsCaEs._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsCaEs columns_ = _TranslationsMisskeyDeckColumnsCaEs._(_root);
 }
 
 // Path: misskey.dialog_
-class _StringsMisskeyDialogCaEs extends _StringsMisskeyDialogEnUs {
-	_StringsMisskeyDialogCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDialogCaEs extends TranslationsMisskeyDialogEnUs {
+	_TranslationsMisskeyDialogCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String charactersExceeded({required Object current, required Object max}) => 'Has arribat al màxim de caràcters! Actualment és ${current} de ${max}';
@@ -2625,10 +2628,10 @@ class _StringsMisskeyDialogCaEs extends _StringsMisskeyDialogEnUs {
 }
 
 // Path: misskey.disabledTimeline_
-class _StringsMisskeyDisabledTimelineCaEs extends _StringsMisskeyDisabledTimelineEnUs {
-	_StringsMisskeyDisabledTimelineCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisabledTimelineCaEs extends TranslationsMisskeyDisabledTimelineEnUs {
+	_TranslationsMisskeyDisabledTimelineCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Línia de tems desactivada';
@@ -2636,10 +2639,10 @@ class _StringsMisskeyDisabledTimelineCaEs extends _StringsMisskeyDisabledTimelin
 }
 
 // Path: misskey.drivecleaner_
-class _StringsMisskeyDrivecleanerCaEs extends _StringsMisskeyDrivecleanerEnUs {
-	_StringsMisskeyDrivecleanerCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDrivecleanerCaEs extends TranslationsMisskeyDrivecleanerEnUs {
+	_TranslationsMisskeyDrivecleanerCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get orderBySizeDesc => 'Mida del fitxer descendent';
@@ -2647,10 +2650,10 @@ class _StringsMisskeyDrivecleanerCaEs extends _StringsMisskeyDrivecleanerEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsCaEs extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsCaEs extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get createWebhook => 'Crear un Webhook';
@@ -2659,27 +2662,27 @@ class _StringsMisskeyWebhookSettingsCaEs extends _StringsMisskeyWebhookSettingsE
 	@override String get secret => 'Secret';
 	@override String get trigger => 'Activador';
 	@override String get active => 'Activat';
-	@override late final _StringsMisskeyWebhookSettingsEventsCaEs events_ = _StringsMisskeyWebhookSettingsEventsCaEs._(_root);
-	@override late final _StringsMisskeyWebhookSettingsSystemEventsCaEs systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsCaEs._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsCaEs events_ = _TranslationsMisskeyWebhookSettingsEventsCaEs._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsCaEs systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsCaEs._(_root);
 	@override String get deleteConfirm => 'Segur que vols esborrar el webhook?';
 	@override String get testRemarks => 'Si feu clic al botó a la dreta de l\'interruptor, podeu enviar un webhook de prova amb dades dummy.';
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportCaEs extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportCaEs extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientCaEs notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientCaEs._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientCaEs notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientCaEs._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesCaEs extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesCaEs extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRole => 'Rol creat';
@@ -2733,10 +2736,10 @@ class _StringsMisskeyModerationLogTypesCaEs extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.fileViewer_
-class _StringsMisskeyFileViewerCaEs extends _StringsMisskeyFileViewerEnUs {
-	_StringsMisskeyFileViewerCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyFileViewerCaEs extends TranslationsMisskeyFileViewerEnUs {
+	_TranslationsMisskeyFileViewerCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Detall del fitxer';
@@ -2749,49 +2752,49 @@ class _StringsMisskeyFileViewerCaEs extends _StringsMisskeyFileViewerEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_
-class _StringsMisskeyExternalResourceInstallerCaEs extends _StringsMisskeyExternalResourceInstallerEnUs {
-	_StringsMisskeyExternalResourceInstallerCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerCaEs extends TranslationsMisskeyExternalResourceInstallerEnUs {
+	_TranslationsMisskeyExternalResourceInstallerCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Instal·lar des d\'un lloc extern';
 	@override String get checkVendorBeforeInstall => 'Assegura\'t que qui distribueix aquest recurs és fiable abans d\'instal·lar-ho.';
-	@override late final _StringsMisskeyExternalResourceInstallerPluginCaEs plugin_ = _StringsMisskeyExternalResourceInstallerPluginCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerThemeCaEs theme_ = _StringsMisskeyExternalResourceInstallerThemeCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerMetaCaEs meta_ = _StringsMisskeyExternalResourceInstallerMetaCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerVendorInfoCaEs vendorInfo_ = _StringsMisskeyExternalResourceInstallerVendorInfoCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsCaEs errors_ = _StringsMisskeyExternalResourceInstallerErrorsCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerPluginCaEs plugin_ = _TranslationsMisskeyExternalResourceInstallerPluginCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerThemeCaEs theme_ = _TranslationsMisskeyExternalResourceInstallerThemeCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerMetaCaEs meta_ = _TranslationsMisskeyExternalResourceInstallerMetaCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerVendorInfoCaEs vendorInfo_ = _TranslationsMisskeyExternalResourceInstallerVendorInfoCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsCaEs errors_ = _TranslationsMisskeyExternalResourceInstallerErrorsCaEs._(_root);
 }
 
 // Path: misskey.dataSaver_
-class _StringsMisskeyDataSaverCaEs extends _StringsMisskeyDataSaverEnUs {
-	_StringsMisskeyDataSaverCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverCaEs extends TranslationsMisskeyDataSaverEnUs {
+	_TranslationsMisskeyDataSaverCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyDataSaverMediaCaEs media_ = _StringsMisskeyDataSaverMediaCaEs._(_root);
-	@override late final _StringsMisskeyDataSaverAvatarCaEs avatar_ = _StringsMisskeyDataSaverAvatarCaEs._(_root);
-	@override late final _StringsMisskeyDataSaverUrlPreviewCaEs urlPreview_ = _StringsMisskeyDataSaverUrlPreviewCaEs._(_root);
-	@override late final _StringsMisskeyDataSaverCodeCaEs code_ = _StringsMisskeyDataSaverCodeCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverMediaCaEs media_ = _TranslationsMisskeyDataSaverMediaCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverAvatarCaEs avatar_ = _TranslationsMisskeyDataSaverAvatarCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewCaEs urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewCaEs._(_root);
+	@override late final _TranslationsMisskeyDataSaverCodeCaEs code_ = _TranslationsMisskeyDataSaverCodeCaEs._(_root);
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiCaEs extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiCaEs extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'Total';
 }
 
 // Path: misskey.embedCodeGen_
-class _StringsMisskeyEmbedCodeGenCaEs extends _StringsMisskeyEmbedCodeGenEnUs {
-	_StringsMisskeyEmbedCodeGenCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmbedCodeGenCaEs extends TranslationsMisskeyEmbedCodeGenEnUs {
+	_TranslationsMisskeyEmbedCodeGenCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Personalitza el codi per incrustar';
@@ -2810,10 +2813,10 @@ class _StringsMisskeyEmbedCodeGenCaEs extends _StringsMisskeyEmbedCodeGenEnUs {
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeCaEs extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeCaEs extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'S\'està publicant';
@@ -2823,10 +2826,10 @@ class _StringsMisskeyDeliveryTypeCaEs extends _StringsMisskeyDeliveryTypeEnUs {
 }
 
 // Path: misskey.bubbleGame_.score_
-class _StringsMisskeyBubbleGameScoreCaEs extends _StringsMisskeyBubbleGameScoreEnUs {
-	_StringsMisskeyBubbleGameScoreCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameScoreCaEs extends TranslationsMisskeyBubbleGameScoreEnUs {
+	_TranslationsMisskeyBubbleGameScoreCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get score => 'Puntuació ';
@@ -2839,10 +2842,10 @@ class _StringsMisskeyBubbleGameScoreCaEs extends _StringsMisskeyBubbleGameScoreE
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
-class _StringsMisskeyBubbleGameHowToPlayCaEs extends _StringsMisskeyBubbleGameHowToPlayEnUs {
-	_StringsMisskeyBubbleGameHowToPlayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameHowToPlayCaEs extends TranslationsMisskeyBubbleGameHowToPlayEnUs {
+	_TranslationsMisskeyBubbleGameHowToPlayCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get section1 => 'Ajusta la posició i deixa caure l\'objecte dintre la caixa.';
@@ -2851,10 +2854,10 @@ class _StringsMisskeyBubbleGameHowToPlayCaEs extends _StringsMisskeyBubbleGameHo
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _StringsMisskeyInitialTutorialLandingCaEs extends _StringsMisskeyInitialTutorialLandingEnUs {
-	_StringsMisskeyInitialTutorialLandingCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialLandingCaEs extends TranslationsMisskeyInitialTutorialLandingEnUs {
+	_TranslationsMisskeyInitialTutorialLandingCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Benvingut al tutorial';
@@ -2862,10 +2865,10 @@ class _StringsMisskeyInitialTutorialLandingCaEs extends _StringsMisskeyInitialTu
 }
 
 // Path: misskey.initialTutorial_.note_
-class _StringsMisskeyInitialTutorialNoteCaEs extends _StringsMisskeyInitialTutorialNoteEnUs {
-	_StringsMisskeyInitialTutorialNoteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialNoteCaEs extends TranslationsMisskeyInitialTutorialNoteEnUs {
+	_TranslationsMisskeyInitialTutorialNoteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Què és una Nota?';
@@ -2877,10 +2880,10 @@ class _StringsMisskeyInitialTutorialNoteCaEs extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.initialTutorial_.reaction_
-class _StringsMisskeyInitialTutorialReactionCaEs extends _StringsMisskeyInitialTutorialReactionEnUs {
-	_StringsMisskeyInitialTutorialReactionCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialReactionCaEs extends TranslationsMisskeyInitialTutorialReactionEnUs {
+	_TranslationsMisskeyInitialTutorialReactionCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Què són les Reaccions?';
@@ -2892,10 +2895,10 @@ class _StringsMisskeyInitialTutorialReactionCaEs extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _StringsMisskeyInitialTutorialTimelineCaEs extends _StringsMisskeyInitialTutorialTimelineEnUs {
-	_StringsMisskeyInitialTutorialTimelineCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialTimelineCaEs extends TranslationsMisskeyInitialTutorialTimelineEnUs {
+	_TranslationsMisskeyInitialTutorialTimelineCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'El concepte de les línies de temps';
@@ -2909,39 +2912,39 @@ class _StringsMisskeyInitialTutorialTimelineCaEs extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _StringsMisskeyInitialTutorialPostNoteCaEs extends _StringsMisskeyInitialTutorialPostNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCaEs extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Configuració de la publicació de les notes';
 	@override String get description1 => 'Quan públiques una nota a Misskey hi ha diferents opcions disponibles. El formulari de publicació es veu així';
-	@override late final _StringsMisskeyInitialTutorialPostNoteVisibilityCaEs visibility_ = _StringsMisskeyInitialTutorialPostNoteVisibilityCaEs._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwCaEs cw_ = _StringsMisskeyInitialTutorialPostNoteCwCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityCaEs visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwCaEs cw_ = _TranslationsMisskeyInitialTutorialPostNoteCwCaEs._(_root);
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Com marcar adjunts com a contingut sensible?';
 	@override String get description => 'Per adjunts que sigui requerit per les normes del servidor o que puguin contenir material sensible, s\'ha d\'afegir l\'opció \'sensible\'.';
 	@override String get tryThisFile => 'Prova de marcar la imatge adjunta en aquest formulari com a sensible!';
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs._(_root);
 	@override String get method => 'Per marcar un adjunt com a sensible, fes clic a la miniatura de l\'adjunt, obre el menú i fes clic a \'Marcar com a sensible\'.';
 	@override String get sensitiveSucceeded => 'Quan adjuntis fitxers si us plau marca la sensibilitat seguint les normes del servidor.';
 	@override String get doItToContinue => 'Marca el fitxer adjunt com a sensible per poder continuar.';
 }
 
 // Path: misskey.initialTutorial_.done_
-class _StringsMisskeyInitialTutorialDoneCaEs extends _StringsMisskeyInitialTutorialDoneEnUs {
-	_StringsMisskeyInitialTutorialDoneCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialDoneCaEs extends TranslationsMisskeyInitialTutorialDoneEnUs {
+	_TranslationsMisskeyInitialTutorialDoneCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Has completat el tutorial 🎉';
@@ -2949,97 +2952,97 @@ class _StringsMisskeyInitialTutorialDoneCaEs extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesCaEs extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCaEs extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1CaEs notes1_ = _StringsMisskeyAchievementsTypesNotes1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10CaEs notes10_ = _StringsMisskeyAchievementsTypesNotes10CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100CaEs notes100_ = _StringsMisskeyAchievementsTypesNotes100CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500CaEs notes500_ = _StringsMisskeyAchievementsTypesNotes500CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000CaEs notes1000_ = _StringsMisskeyAchievementsTypesNotes1000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000CaEs notes5000_ = _StringsMisskeyAchievementsTypesNotes5000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000CaEs notes10000_ = _StringsMisskeyAchievementsTypesNotes10000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000CaEs notes20000_ = _StringsMisskeyAchievementsTypesNotes20000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000CaEs notes30000_ = _StringsMisskeyAchievementsTypesNotes30000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000CaEs notes40000_ = _StringsMisskeyAchievementsTypesNotes40000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000CaEs notes50000_ = _StringsMisskeyAchievementsTypesNotes50000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes60000CaEs notes60000_ = _StringsMisskeyAchievementsTypesNotes60000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes70000CaEs notes70000_ = _StringsMisskeyAchievementsTypesNotes70000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes80000CaEs notes80000_ = _StringsMisskeyAchievementsTypesNotes80000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes90000CaEs notes90000_ = _StringsMisskeyAchievementsTypesNotes90000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000CaEs notes100000_ = _StringsMisskeyAchievementsTypesNotes100000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3CaEs login3_ = _StringsMisskeyAchievementsTypesLogin3CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin7CaEs login7_ = _StringsMisskeyAchievementsTypesLogin7CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin15CaEs login15_ = _StringsMisskeyAchievementsTypesLogin15CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin30CaEs login30_ = _StringsMisskeyAchievementsTypesLogin30CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin60CaEs login60_ = _StringsMisskeyAchievementsTypesLogin60CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin100CaEs login100_ = _StringsMisskeyAchievementsTypesLogin100CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin200CaEs login200_ = _StringsMisskeyAchievementsTypesLogin200CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin300CaEs login300_ = _StringsMisskeyAchievementsTypesLogin300CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin400CaEs login400_ = _StringsMisskeyAchievementsTypesLogin400CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin500CaEs login500_ = _StringsMisskeyAchievementsTypesLogin500CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin600CaEs login600_ = _StringsMisskeyAchievementsTypesLogin600CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin700CaEs login700_ = _StringsMisskeyAchievementsTypesLogin700CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin800CaEs login800_ = _StringsMisskeyAchievementsTypesLogin800CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin900CaEs login900_ = _StringsMisskeyAchievementsTypesLogin900CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin1000CaEs login1000_ = _StringsMisskeyAchievementsTypesLogin1000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteClipped1CaEs noteClipped1_ = _StringsMisskeyAchievementsTypesNoteClipped1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1CaEs noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1CaEs myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledCaEs profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatCaEs markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing1CaEs following1_ = _StringsMisskeyAchievementsTypesFollowing1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing10CaEs following10_ = _StringsMisskeyAchievementsTypesFollowing10CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing50CaEs following50_ = _StringsMisskeyAchievementsTypesFollowing50CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing100CaEs following100_ = _StringsMisskeyAchievementsTypesFollowing100CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing300CaEs following300_ = _StringsMisskeyAchievementsTypesFollowing300CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1CaEs followers1_ = _StringsMisskeyAchievementsTypesFollowers1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers10CaEs followers10_ = _StringsMisskeyAchievementsTypesFollowers10CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers50CaEs followers50_ = _StringsMisskeyAchievementsTypesFollowers50CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers100CaEs followers100_ = _StringsMisskeyAchievementsTypesFollowers100CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers300CaEs followers300_ = _StringsMisskeyAchievementsTypesFollowers300CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers500CaEs followers500_ = _StringsMisskeyAchievementsTypesFollowers500CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1000CaEs followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30CaEs collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minCaEs viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyCaEs iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFoundTreasureCaEs foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient30minCaEs client30min_ = _StringsMisskeyAchievementsTypesClient30minCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient60minCaEs client60min_ = _StringsMisskeyAchievementsTypesClient60minCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightCaEs postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secCaEs postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSelfQuoteCaEs selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesHtl20npmCaEs htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartCaEs viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOpen3windowsCaEs open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs driveFolderCircularReference_ = _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadCaEs reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClickedClickHereCaEs clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyCaEs justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloCaEs setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs passedSinceAccountCreated2_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs passedSinceAccountCreated3_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCookieClickedCaEs cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBrainDiverCaEs brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs smashTestNotificationButton_ = _StringsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesTutorialCompletedCaEs tutorialCompleted_ = _StringsMisskeyAchievementsTypesTutorialCompletedCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs bubbleGameExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs bubbleGameDoubleExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1CaEs notes1_ = _TranslationsMisskeyAchievementsTypesNotes1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10CaEs notes10_ = _TranslationsMisskeyAchievementsTypesNotes10CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100CaEs notes100_ = _TranslationsMisskeyAchievementsTypesNotes100CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500CaEs notes500_ = _TranslationsMisskeyAchievementsTypesNotes500CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000CaEs notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000CaEs notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000CaEs notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000CaEs notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000CaEs notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000CaEs notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000CaEs notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000CaEs notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000CaEs notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000CaEs notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000CaEs notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000CaEs notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3CaEs login3_ = _TranslationsMisskeyAchievementsTypesLogin3CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin7CaEs login7_ = _TranslationsMisskeyAchievementsTypesLogin7CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin15CaEs login15_ = _TranslationsMisskeyAchievementsTypesLogin15CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin30CaEs login30_ = _TranslationsMisskeyAchievementsTypesLogin30CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin60CaEs login60_ = _TranslationsMisskeyAchievementsTypesLogin60CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin100CaEs login100_ = _TranslationsMisskeyAchievementsTypesLogin100CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin200CaEs login200_ = _TranslationsMisskeyAchievementsTypesLogin200CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin300CaEs login300_ = _TranslationsMisskeyAchievementsTypesLogin300CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin400CaEs login400_ = _TranslationsMisskeyAchievementsTypesLogin400CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin500CaEs login500_ = _TranslationsMisskeyAchievementsTypesLogin500CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin600CaEs login600_ = _TranslationsMisskeyAchievementsTypesLogin600CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin700CaEs login700_ = _TranslationsMisskeyAchievementsTypesLogin700CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin800CaEs login800_ = _TranslationsMisskeyAchievementsTypesLogin800CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin900CaEs login900_ = _TranslationsMisskeyAchievementsTypesLogin900CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin1000CaEs login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1CaEs noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1CaEs noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1CaEs myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledCaEs profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatCaEs markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing1CaEs following1_ = _TranslationsMisskeyAchievementsTypesFollowing1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing10CaEs following10_ = _TranslationsMisskeyAchievementsTypesFollowing10CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing50CaEs following50_ = _TranslationsMisskeyAchievementsTypesFollowing50CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing100CaEs following100_ = _TranslationsMisskeyAchievementsTypesFollowing100CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing300CaEs following300_ = _TranslationsMisskeyAchievementsTypesFollowing300CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1CaEs followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers10CaEs followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers50CaEs followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers100CaEs followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers300CaEs followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers500CaEs followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000CaEs followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30CaEs collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minCaEs viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyCaEs iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureCaEs foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient30minCaEs client30min_ = _TranslationsMisskeyAchievementsTypesClient30minCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient60minCaEs client60min_ = _TranslationsMisskeyAchievementsTypesClient60minCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightCaEs postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secCaEs postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteCaEs selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmCaEs htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartCaEs viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsCaEs open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs driveFolderCircularReference_ = _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadCaEs reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereCaEs clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyCaEs justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloCaEs setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs passedSinceAccountCreated2_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs passedSinceAccountCreated3_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedCaEs cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverCaEs brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs smashTestNotificationButton_ = _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesTutorialCompletedCaEs tutorialCompleted_ = _TranslationsMisskeyAchievementsTypesTutorialCompletedCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityCaEs extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityCaEs extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'Baixa';
@@ -3048,10 +3051,10 @@ class _StringsMisskeyRolePriorityCaEs extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsCaEs extends _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleOptionsCaEs extends TranslationsMisskeyRoleOptionsEnUs {
+	_TranslationsMisskeyRoleOptionsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get gtlAvailable => 'Pot veure la línia de temps global';
@@ -3089,10 +3092,10 @@ class _StringsMisskeyRoleOptionsCaEs extends _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionCaEs extends _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleConditionCaEs extends TranslationsMisskeyRoleConditionEnUs {
+	_TranslationsMisskeyRoleConditionCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get roleAssignedTo => 'Assignat a rols manuals';
@@ -3117,30 +3120,30 @@ class _StringsMisskeyRoleConditionCaEs extends _StringsMisskeyRoleConditionEnUs 
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowCaEs extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowCaEs extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 't\'ha seguit';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestCaEs extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestCaEs extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Has rebut una sol·licitud  de seguiment';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysCaEs extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysCaEs extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'Accent';
@@ -3185,20 +3188,20 @@ class _StringsMisskeyThemeKeysCaEs extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListCaEs extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListCaEs extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Tria una llista';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersCaEs extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersCaEs extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'Que vols dir?...';
@@ -3210,10 +3213,10 @@ class _StringsMisskeyPostFormPlaceholdersCaEs extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksCaEs extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksCaEs extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'Text';
@@ -3224,14 +3227,14 @@ class _StringsMisskeyPagesBlocksCaEs extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get dynamic => 'Blocs dinàmics';
 	@override String dynamicDescription({required Object play}) => 'Aquest bloc és antic. Ara en endavant fes servir ${play}';
 	@override String get note => 'Incorporar una Nota';
-	@override late final _StringsMisskeyPagesBlocksNoteCaEs note_ = _StringsMisskeyPagesBlocksNoteCaEs._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteCaEs note_ = _TranslationsMisskeyPagesBlocksNoteCaEs._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesCaEs extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Tots';
@@ -3254,10 +3257,10 @@ class _StringsMisskeyNotificationTypesCaEs extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsCaEs extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsCaEs extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => 't\'ha seguit també';
@@ -3266,10 +3269,10 @@ class _StringsMisskeyNotificationActionsCaEs extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsCaEs extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsCaEs extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'Principal';
@@ -3285,10 +3288,10 @@ class _StringsMisskeyDeckColumnsCaEs extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsCaEs extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsCaEs extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => 'Quan se segueix a un usuari';
@@ -3301,10 +3304,10 @@ class _StringsMisskeyWebhookSettingsEventsCaEs extends _StringsMisskeyWebhookSet
 }
 
 // Path: misskey.webhookSettings_.systemEvents_
-class _StringsMisskeyWebhookSettingsSystemEventsCaEs extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
-	_StringsMisskeyWebhookSettingsSystemEventsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsSystemEventsCaEs extends TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsSystemEventsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get abuseReport => 'Quan reps un nou informe de moderació ';
@@ -3313,16 +3316,16 @@ class _StringsMisskeyWebhookSettingsSystemEventsCaEs extends _StringsMisskeyWebh
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientCaEs extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientCaEs extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRecipient => 'Afegeix un destinatari a l\'informe de moderació ';
 	@override String get modifyRecipient => 'Editar un destinatari en l\'informe de moderació ';
 	@override String get recipientType => 'Tipus de notificació ';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(_root);
 	@override String get keywords => 'Paraules clau';
 	@override String get notifiedUser => 'Usuaris que s\'han de notificar ';
 	@override String get notifiedWebhook => 'Webhook que s\'ha de fer servir';
@@ -3330,10 +3333,10 @@ class _StringsMisskeyAbuseReportNotificationRecipientCaEs extends _StringsMisske
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
-class _StringsMisskeyExternalResourceInstallerPluginCaEs extends _StringsMisskeyExternalResourceInstallerPluginEnUs {
-	_StringsMisskeyExternalResourceInstallerPluginCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerPluginCaEs extends TranslationsMisskeyExternalResourceInstallerPluginEnUs {
+	_TranslationsMisskeyExternalResourceInstallerPluginCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Vols instal·lar aquest afegit?';
@@ -3341,10 +3344,10 @@ class _StringsMisskeyExternalResourceInstallerPluginCaEs extends _StringsMisskey
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
-class _StringsMisskeyExternalResourceInstallerThemeCaEs extends _StringsMisskeyExternalResourceInstallerThemeEnUs {
-	_StringsMisskeyExternalResourceInstallerThemeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerThemeCaEs extends TranslationsMisskeyExternalResourceInstallerThemeEnUs {
+	_TranslationsMisskeyExternalResourceInstallerThemeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Vols instal·lar aquest tema?';
@@ -3352,20 +3355,20 @@ class _StringsMisskeyExternalResourceInstallerThemeCaEs extends _StringsMisskeyE
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
-class _StringsMisskeyExternalResourceInstallerMetaCaEs extends _StringsMisskeyExternalResourceInstallerMetaEnUs {
-	_StringsMisskeyExternalResourceInstallerMetaCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerMetaCaEs extends TranslationsMisskeyExternalResourceInstallerMetaEnUs {
+	_TranslationsMisskeyExternalResourceInstallerMetaCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get base => 'Paleta de colors base';
 }
 
 // Path: misskey.externalResourceInstaller_.vendorInfo_
-class _StringsMisskeyExternalResourceInstallerVendorInfoCaEs extends _StringsMisskeyExternalResourceInstallerVendorInfoEnUs {
-	_StringsMisskeyExternalResourceInstallerVendorInfoCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerVendorInfoCaEs extends TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs {
+	_TranslationsMisskeyExternalResourceInstallerVendorInfoCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Informació del distribuïdor ';
@@ -3374,27 +3377,27 @@ class _StringsMisskeyExternalResourceInstallerVendorInfoCaEs extends _StringsMis
 }
 
 // Path: misskey.externalResourceInstaller_.errors_
-class _StringsMisskeyExternalResourceInstallerErrorsCaEs extends _StringsMisskeyExternalResourceInstallerErrorsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs invalidParams_ = _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs resourceTypeNotSupported_ = _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs failedToFetch_ = _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs hashUnmatched_ = _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs pluginParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs pluginInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs themeParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs themeInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs invalidParams_ = _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs resourceTypeNotSupported_ = _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs failedToFetch_ = _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs hashUnmatched_ = _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs pluginParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs pluginInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs themeParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs themeInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs._(_root);
 }
 
 // Path: misskey.dataSaver_.media_
-class _StringsMisskeyDataSaverMediaCaEs extends _StringsMisskeyDataSaverMediaEnUs {
-	_StringsMisskeyDataSaverMediaCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverMediaCaEs extends TranslationsMisskeyDataSaverMediaEnUs {
+	_TranslationsMisskeyDataSaverMediaCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Carregant multimèdia ';
@@ -3402,10 +3405,10 @@ class _StringsMisskeyDataSaverMediaCaEs extends _StringsMisskeyDataSaverMediaEnU
 }
 
 // Path: misskey.dataSaver_.avatar_
-class _StringsMisskeyDataSaverAvatarCaEs extends _StringsMisskeyDataSaverAvatarEnUs {
-	_StringsMisskeyDataSaverAvatarCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverAvatarCaEs extends TranslationsMisskeyDataSaverAvatarEnUs {
+	_TranslationsMisskeyDataSaverAvatarCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Avatars animats';
@@ -3413,10 +3416,10 @@ class _StringsMisskeyDataSaverAvatarCaEs extends _StringsMisskeyDataSaverAvatarE
 }
 
 // Path: misskey.dataSaver_.urlPreview_
-class _StringsMisskeyDataSaverUrlPreviewCaEs extends _StringsMisskeyDataSaverUrlPreviewEnUs {
-	_StringsMisskeyDataSaverUrlPreviewCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverUrlPreviewCaEs extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Miniatures vista prèvia de l\'URL';
@@ -3424,20 +3427,20 @@ class _StringsMisskeyDataSaverUrlPreviewCaEs extends _StringsMisskeyDataSaverUrl
 }
 
 // Path: misskey.dataSaver_.code_
-class _StringsMisskeyDataSaverCodeCaEs extends _StringsMisskeyDataSaverCodeEnUs {
-	_StringsMisskeyDataSaverCodeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverCodeCaEs extends TranslationsMisskeyDataSaverCodeEnUs {
+	_TranslationsMisskeyDataSaverCodeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ressaltat del codi ';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _StringsMisskeyInitialTutorialPostNoteVisibilityCaEs extends _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_StringsMisskeyInitialTutorialPostNoteVisibilityCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteVisibilityCaEs extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteVisibilityCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Pots limitar qui pot veure les teves notes.';
@@ -3451,33 +3454,33 @@ class _StringsMisskeyInitialTutorialPostNoteVisibilityCaEs extends _StringsMissk
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
-class _StringsMisskeyInitialTutorialPostNoteCwCaEs extends _StringsMisskeyInitialTutorialPostNoteCwEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwCaEs extends TranslationsMisskeyInitialTutorialPostNoteCwEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Avís de Contingut (CW)';
 	@override String get description => 'En comptes del cos de la nota es mostrarà el que s\'escrigui al camp de \'comentaris\'. Fent clic a \'Llegir més\' es mostrarà el cos.';
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs._(_root);
 	@override String get useCases => 'Això es fa servir per seguir normes del servidor sobre certes notes o per ocultar contingut sensible O revelador.';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Oops! L\'he fet bona en obrir la tapa de Nocilla...';
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1CaEs extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1CaEs extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Aquí, configurant el meu msky';
@@ -3486,10 +3489,10 @@ class _StringsMisskeyAchievementsTypesNotes1CaEs extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10CaEs extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10CaEs extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Algunes notes';
@@ -3497,10 +3500,10 @@ class _StringsMisskeyAchievementsTypesNotes10CaEs extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100CaEs extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100CaEs extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Un piló de notes';
@@ -3508,10 +3511,10 @@ class _StringsMisskeyAchievementsTypesNotes100CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500CaEs extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500CaEs extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Cobert de notes';
@@ -3519,10 +3522,10 @@ class _StringsMisskeyAchievementsTypesNotes500CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000CaEs extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000CaEs extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Un piló de notes';
@@ -3530,10 +3533,10 @@ class _StringsMisskeyAchievementsTypesNotes1000CaEs extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000CaEs extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000CaEs extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Desbordament de notes';
@@ -3541,10 +3544,10 @@ class _StringsMisskeyAchievementsTypesNotes5000CaEs extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000CaEs extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000CaEs extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Supernota';
@@ -3552,10 +3555,10 @@ class _StringsMisskeyAchievementsTypesNotes10000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000CaEs extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000CaEs extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Necessito... Més... Notes!';
@@ -3563,10 +3566,10 @@ class _StringsMisskeyAchievementsTypesNotes20000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000CaEs extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000CaEs extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Notes notes notes!';
@@ -3574,10 +3577,10 @@ class _StringsMisskeyAchievementsTypesNotes30000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000CaEs extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000CaEs extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Fàbrica de notes';
@@ -3585,10 +3588,10 @@ class _StringsMisskeyAchievementsTypesNotes40000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000CaEs extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000CaEs extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Planeta de notes';
@@ -3596,10 +3599,10 @@ class _StringsMisskeyAchievementsTypesNotes50000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000CaEs extends _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes60000CaEs extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Quàsar de notes';
@@ -3607,10 +3610,10 @@ class _StringsMisskeyAchievementsTypesNotes60000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000CaEs extends _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes70000CaEs extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Forat negre de notes';
@@ -3618,10 +3621,10 @@ class _StringsMisskeyAchievementsTypesNotes70000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000CaEs extends _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes80000CaEs extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Galàxia de notes';
@@ -3629,10 +3632,10 @@ class _StringsMisskeyAchievementsTypesNotes80000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000CaEs extends _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes90000CaEs extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Univers de notes';
@@ -3640,10 +3643,10 @@ class _StringsMisskeyAchievementsTypesNotes90000CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000CaEs extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000CaEs extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
@@ -3652,10 +3655,10 @@ class _StringsMisskeyAchievementsTypesNotes100000CaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3CaEs extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3CaEs extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Principiant I';
@@ -3664,10 +3667,10 @@ class _StringsMisskeyAchievementsTypesLogin3CaEs extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7CaEs extends _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin7CaEs extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin7CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Principiant II';
@@ -3676,10 +3679,10 @@ class _StringsMisskeyAchievementsTypesLogin7CaEs extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15CaEs extends _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin15CaEs extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin15CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Principiant III';
@@ -3687,10 +3690,10 @@ class _StringsMisskeyAchievementsTypesLogin15CaEs extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30CaEs extends _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin30CaEs extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin30CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist I';
@@ -3698,10 +3701,10 @@ class _StringsMisskeyAchievementsTypesLogin30CaEs extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60CaEs extends _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin60CaEs extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin60CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist II';
@@ -3709,10 +3712,10 @@ class _StringsMisskeyAchievementsTypesLogin60CaEs extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100CaEs extends _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin100CaEs extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin100CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskist III';
@@ -3721,10 +3724,10 @@ class _StringsMisskeyAchievementsTypesLogin100CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200CaEs extends _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin200CaEs extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin200CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Regular I';
@@ -3732,10 +3735,10 @@ class _StringsMisskeyAchievementsTypesLogin200CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300CaEs extends _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin300CaEs extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin300CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Regular II';
@@ -3743,10 +3746,10 @@ class _StringsMisskeyAchievementsTypesLogin300CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400CaEs extends _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin400CaEs extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin400CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Regular III';
@@ -3754,10 +3757,10 @@ class _StringsMisskeyAchievementsTypesLogin400CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _StringsMisskeyAchievementsTypesLogin500CaEs extends _StringsMisskeyAchievementsTypesLogin500EnUs {
-	_StringsMisskeyAchievementsTypesLogin500CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin500CaEs extends TranslationsMisskeyAchievementsTypesLogin500EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin500CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Expert I';
@@ -3766,10 +3769,10 @@ class _StringsMisskeyAchievementsTypesLogin500CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _StringsMisskeyAchievementsTypesLogin600CaEs extends _StringsMisskeyAchievementsTypesLogin600EnUs {
-	_StringsMisskeyAchievementsTypesLogin600CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin600CaEs extends TranslationsMisskeyAchievementsTypesLogin600EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin600CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Expert II';
@@ -3777,10 +3780,10 @@ class _StringsMisskeyAchievementsTypesLogin600CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _StringsMisskeyAchievementsTypesLogin700CaEs extends _StringsMisskeyAchievementsTypesLogin700EnUs {
-	_StringsMisskeyAchievementsTypesLogin700CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin700CaEs extends TranslationsMisskeyAchievementsTypesLogin700EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin700CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Expert III';
@@ -3788,10 +3791,10 @@ class _StringsMisskeyAchievementsTypesLogin700CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _StringsMisskeyAchievementsTypesLogin800CaEs extends _StringsMisskeyAchievementsTypesLogin800EnUs {
-	_StringsMisskeyAchievementsTypesLogin800CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin800CaEs extends TranslationsMisskeyAchievementsTypesLogin800EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin800CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Mestre de les Notes I';
@@ -3799,10 +3802,10 @@ class _StringsMisskeyAchievementsTypesLogin800CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _StringsMisskeyAchievementsTypesLogin900CaEs extends _StringsMisskeyAchievementsTypesLogin900EnUs {
-	_StringsMisskeyAchievementsTypesLogin900CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin900CaEs extends TranslationsMisskeyAchievementsTypesLogin900EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin900CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Mestre de les Notes II';
@@ -3810,10 +3813,10 @@ class _StringsMisskeyAchievementsTypesLogin900CaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000CaEs extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin1000CaEs extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin1000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Mestre de les Notes III';
@@ -3822,10 +3825,10 @@ class _StringsMisskeyAchievementsTypesLogin1000CaEs extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _StringsMisskeyAchievementsTypesNoteClipped1CaEs extends _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_StringsMisskeyAchievementsTypesNoteClipped1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteClipped1CaEs extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteClipped1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'He de retallar-te!';
@@ -3833,10 +3836,10 @@ class _StringsMisskeyAchievementsTypesNoteClipped1CaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1CaEs extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1CaEs extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Quan miro les estrelles';
@@ -3844,10 +3847,10 @@ class _StringsMisskeyAchievementsTypesNoteFavorited1CaEs extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1CaEs extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1CaEs extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Vull una estrella';
@@ -3855,10 +3858,10 @@ class _StringsMisskeyAchievementsTypesMyNoteFavorited1CaEs extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledCaEs extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledCaEs extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Estic a punt';
@@ -3866,10 +3869,10 @@ class _StringsMisskeyAchievementsTypesProfileFilledCaEs extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatCaEs extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatCaEs extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Soc un gat';
@@ -3878,10 +3881,10 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatCaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1CaEs extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing1CaEs extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'És el meu primer seguiment';
@@ -3889,10 +3892,10 @@ class _StringsMisskeyAchievementsTypesFollowing1CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10CaEs extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing10CaEs extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing10CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Segueix-me... Segueix-me...';
@@ -3900,10 +3903,10 @@ class _StringsMisskeyAchievementsTypesFollowing10CaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50CaEs extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing50CaEs extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing50CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Molts amics';
@@ -3911,10 +3914,10 @@ class _StringsMisskeyAchievementsTypesFollowing50CaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100CaEs extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing100CaEs extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing100CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '100 amics';
@@ -3922,10 +3925,10 @@ class _StringsMisskeyAchievementsTypesFollowing100CaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300CaEs extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing300CaEs extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing300CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Sobrecàrrega d\'amics';
@@ -3933,10 +3936,10 @@ class _StringsMisskeyAchievementsTypesFollowing300CaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1CaEs extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1CaEs extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Primer seguidor';
@@ -3944,10 +3947,10 @@ class _StringsMisskeyAchievementsTypesFollowers1CaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10CaEs extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers10CaEs extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers10CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Segueix-me!';
@@ -3955,10 +3958,10 @@ class _StringsMisskeyAchievementsTypesFollowers10CaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50CaEs extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers50CaEs extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers50CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Venen en manada';
@@ -3966,10 +3969,10 @@ class _StringsMisskeyAchievementsTypesFollowers50CaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100CaEs extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers100CaEs extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers100CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Popular';
@@ -3977,10 +3980,10 @@ class _StringsMisskeyAchievementsTypesFollowers100CaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300CaEs extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers300CaEs extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers300CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Si us plau, d\'un en un!';
@@ -3988,10 +3991,10 @@ class _StringsMisskeyAchievementsTypesFollowers300CaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500CaEs extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers500CaEs extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers500CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Torre de ràdio';
@@ -3999,10 +4002,10 @@ class _StringsMisskeyAchievementsTypesFollowers500CaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000CaEs extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1000CaEs extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1000CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Influenciador';
@@ -4010,10 +4013,10 @@ class _StringsMisskeyAchievementsTypesFollowers1000CaEs extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30CaEs extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCollectAchievements30CaEs extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_TranslationsMisskeyAchievementsTypesCollectAchievements30CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Col·leccionista d\'èxits ';
@@ -4021,10 +4024,10 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30CaEs extends _Strings
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minCaEs extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewAchievements3minCaEs extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_TranslationsMisskeyAchievementsTypesViewAchievements3minCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'M\'agraden els èxits ';
@@ -4032,10 +4035,10 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minCaEs extends _StringsM
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyCaEs extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesILoveMisskeyCaEs extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_TranslationsMisskeyAchievementsTypesILoveMisskeyCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Estimo Misskey';
@@ -4044,10 +4047,10 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyCaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureCaEs extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFoundTreasureCaEs extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_TranslationsMisskeyAchievementsTypesFoundTreasureCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'A la Recerca del Tresor';
@@ -4055,10 +4058,10 @@ class _StringsMisskeyAchievementsTypesFoundTreasureCaEs extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minCaEs extends _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient30minCaEs extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient30minCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Parem una estona';
@@ -4066,10 +4069,10 @@ class _StringsMisskeyAchievementsTypesClient30minCaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _StringsMisskeyAchievementsTypesClient60minCaEs extends _StringsMisskeyAchievementsTypesClient60minEnUs {
-	_StringsMisskeyAchievementsTypesClient60minCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient60minCaEs extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient60minCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'A totes amb Misskey';
@@ -4077,10 +4080,10 @@ class _StringsMisskeyAchievementsTypesClient60minCaEs extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'No et preocupis';
@@ -4088,10 +4091,10 @@ class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minCaEs extends _Strings
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightCaEs extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAtLateNightCaEs extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAtLateNightCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Nocturn';
@@ -4100,10 +4103,10 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightCaEs extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secCaEs extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAt0min0secCaEs extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAt0min0secCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Rellotge xerraire';
@@ -4112,10 +4115,10 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secCaEs extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteCaEs extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSelfQuoteCaEs extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_TranslationsMisskeyAchievementsTypesSelfQuoteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Autoreferència ';
@@ -4123,10 +4126,10 @@ class _StringsMisskeyAchievementsTypesSelfQuoteCaEs extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmCaEs extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesHtl20npmCaEs extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	_TranslationsMisskeyAchievementsTypesHtl20npmCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Línia de temps fluida';
@@ -4134,10 +4137,10 @@ class _StringsMisskeyAchievementsTypesHtl20npmCaEs extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartCaEs extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartCaEs extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Analista ';
@@ -4145,10 +4148,10 @@ class _StringsMisskeyAchievementsTypesViewInstanceChartCaEs extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Hola, món!';
@@ -4156,10 +4159,10 @@ class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadCaEs extends _
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsCaEs extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOpen3windowsCaEs extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_TranslationsMisskeyAchievementsTypesOpen3windowsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Multi finestres';
@@ -4167,10 +4170,10 @@ class _StringsMisskeyAchievementsTypesOpen3windowsCaEs extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
-class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs extends _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
-	_StringsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs extends TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
+	_TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Consulteu la secció de bucle';
@@ -4178,10 +4181,10 @@ class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceCaEs extends _
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadCaEs extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesReactWithoutReadCaEs extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_TranslationsMisskeyAchievementsTypesReactWithoutReadCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'De veritat has llegit això?';
@@ -4189,10 +4192,10 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadCaEs extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereCaEs extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClickedClickHereCaEs extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_TranslationsMisskeyAchievementsTypesClickedClickHereCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Fer clic';
@@ -4200,10 +4203,10 @@ class _StringsMisskeyAchievementsTypesClickedClickHereCaEs extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyCaEs extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJustPlainLuckyCaEs extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_TranslationsMisskeyAchievementsTypesJustPlainLuckyCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ha sigut sort';
@@ -4211,10 +4214,10 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyCaEs extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloCaEs extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloCaEs extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'soc millor';
@@ -4222,10 +4225,10 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloCaEs extends _StringsMisske
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Primer aniversari';
@@ -4233,10 +4236,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1CaEs extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Segon aniversari';
@@ -4244,10 +4247,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2CaEs extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Tres anys';
@@ -4255,10 +4258,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3CaEs extends _St
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Felicitats!';
@@ -4266,10 +4269,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayCaEs extends _StringsMis
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Bon any nou!';
@@ -4278,10 +4281,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayCaEs extends _Strings
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedCaEs extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCookieClickedCaEs extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	_TranslationsMisskeyAchievementsTypesCookieClickedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Un joc en què fas clic a les galetes';
@@ -4290,10 +4293,10 @@ class _StringsMisskeyAchievementsTypesCookieClickedCaEs extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _StringsMisskeyAchievementsTypesBrainDiverCaEs extends _StringsMisskeyAchievementsTypesBrainDiverEnUs {
-	_StringsMisskeyAchievementsTypesBrainDiverCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBrainDiverCaEs extends TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
+	_TranslationsMisskeyAchievementsTypesBrainDiverCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Busseja Ments';
@@ -4302,10 +4305,10 @@ class _StringsMisskeyAchievementsTypesBrainDiverCaEs extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.smashTestNotificationButton_
-class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs extends _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
-	_StringsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs extends TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
+	_TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Sobrecàrrega de proves';
@@ -4313,10 +4316,10 @@ class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonCaEs extends _S
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
-class _StringsMisskeyAchievementsTypesTutorialCompletedCaEs extends _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
-	_StringsMisskeyAchievementsTypesTutorialCompletedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesTutorialCompletedCaEs extends TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs {
+	_TranslationsMisskeyAchievementsTypesTutorialCompletedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Diploma del Curs Elemental de Misskey';
@@ -4324,10 +4327,10 @@ class _StringsMisskeyAchievementsTypesTutorialCompletedCaEs extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs extends _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '🤯';
@@ -4335,10 +4338,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadCaEs extends _Strin
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs extends _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Doble 🤯';
@@ -4347,10 +4350,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadCaEs extends 
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteCaEs extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteCaEs extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'ID de la publicació';
@@ -4359,22 +4362,22 @@ class _StringsMisskeyPagesBlocksNoteCaEs extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'Correu electrònic';
 	@override String get webhook => 'Webhook';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs captions_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
-class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs extends _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Paràmetres no vàlids ';
@@ -4382,10 +4385,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsCaEs extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
-class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'El recurs extern no està suportat.';
@@ -4393,10 +4396,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedCaEs
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
-class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs extends _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ha fallat l\'obtenció de dades';
@@ -4405,10 +4408,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchCaEs extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
-class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ha fallat la verificació de les dades';
@@ -4416,10 +4419,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedCaEs extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Error d\'AiScript';
@@ -4427,10 +4430,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedCaEs extend
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'La instal·lació de l\'afegit a fallat';
@@ -4438,10 +4441,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedCaEs exte
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Ha fallat el processament del tema';
@@ -4449,10 +4452,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedCaEs extends
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs extends _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs extends TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'La instal·lació del tema a fallat';
@@ -4460,10 +4463,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedCaEs exten
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
-class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs extends _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs extends TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get cw => 'Això et farà venir gana!';
@@ -4471,10 +4474,10 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteCaEs extends _StringsMi
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs._(_StringsCaEs root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
 
-	@override final _StringsCaEs _root; // ignore: unused_field
+	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'Enviar un correu electrònic a tots els moderadors quan es rep un informe de moderació ';

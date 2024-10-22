@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsSkSk extends Translations {
+class TranslationsSkSk extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsSkSk.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsSkSk({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.skSk,
@@ -18,23 +21,23 @@ class _StringsSkSk extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <sk-SK>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsSkSk _root = this; // ignore: unused_field
+	late final TranslationsSkSk _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaSkSk aria = _StringsAriaSkSk._(_root);
-	@override late final _StringsMisskeySkSk misskey = _StringsMisskeySkSk._(_root);
+	@override late final _TranslationsAriaSkSk aria = _TranslationsAriaSkSk._(_root);
+	@override late final _TranslationsMisskeySkSk misskey = _TranslationsMisskeySkSk._(_root);
 }
 
 // Path: aria
-class _StringsAriaSkSk extends _StringsAriaEnUs {
-	_StringsAriaSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsAriaSkSk extends TranslationsAriaEnUs {
+	_TranslationsAriaSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -67,10 +70,10 @@ class _StringsAriaSkSk extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
-	_StringsMisskeySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'Slovenčina';
@@ -992,84 +995,84 @@ class _StringsMisskeySkSk extends _StringsMisskeyEnUs {
 	@override String get sourceCode => 'Zdrojový kód';
 	@override String get flip => 'Preklopiť';
 	@override String lastNDays({required Object n}) => 'Posledných ${n} dní';
-	@override late final _StringsMisskeyDeliverySkSk delivery_ = _StringsMisskeyDeliverySkSk._(_root);
-	@override late final _StringsMisskeyRoleSkSk role_ = _StringsMisskeyRoleSkSk._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionSkSk sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionSkSk._(_root);
-	@override late final _StringsMisskeyEmailUnavailableSkSk emailUnavailable_ = _StringsMisskeyEmailUnavailableSkSk._(_root);
-	@override late final _StringsMisskeyFfVisibilitySkSk ffVisibility_ = _StringsMisskeyFfVisibilitySkSk._(_root);
-	@override late final _StringsMisskeySignupSkSk signup_ = _StringsMisskeySignupSkSk._(_root);
-	@override late final _StringsMisskeyAccountDeleteSkSk accountDelete_ = _StringsMisskeyAccountDeleteSkSk._(_root);
-	@override late final _StringsMisskeyAdSkSk ad_ = _StringsMisskeyAdSkSk._(_root);
-	@override late final _StringsMisskeyForgotPasswordSkSk forgotPassword_ = _StringsMisskeyForgotPasswordSkSk._(_root);
-	@override late final _StringsMisskeyGallerySkSk gallery_ = _StringsMisskeyGallerySkSk._(_root);
-	@override late final _StringsMisskeyEmailSkSk email_ = _StringsMisskeyEmailSkSk._(_root);
-	@override late final _StringsMisskeyPluginSkSk plugin_ = _StringsMisskeyPluginSkSk._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsSkSk preferencesBackups_ = _StringsMisskeyPreferencesBackupsSkSk._(_root);
-	@override late final _StringsMisskeyRegistrySkSk registry_ = _StringsMisskeyRegistrySkSk._(_root);
-	@override late final _StringsMisskeyAboutMisskeySkSk aboutMisskey_ = _StringsMisskeyAboutMisskeySkSk._(_root);
-	@override late final _StringsMisskeyInstanceTickerSkSk instanceTicker_ = _StringsMisskeyInstanceTickerSkSk._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorSkSk serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorSkSk._(_root);
-	@override late final _StringsMisskeyChannelSkSk channel_ = _StringsMisskeyChannelSkSk._(_root);
-	@override late final _StringsMisskeyMenuDisplaySkSk menuDisplay_ = _StringsMisskeyMenuDisplaySkSk._(_root);
-	@override late final _StringsMisskeyWordMuteSkSk wordMute_ = _StringsMisskeyWordMuteSkSk._(_root);
-	@override late final _StringsMisskeyInstanceMuteSkSk instanceMute_ = _StringsMisskeyInstanceMuteSkSk._(_root);
-	@override late final _StringsMisskeyThemeSkSk theme_ = _StringsMisskeyThemeSkSk._(_root);
-	@override late final _StringsMisskeySfxSkSk sfx_ = _StringsMisskeySfxSkSk._(_root);
-	@override late final _StringsMisskeyAgoSkSk ago_ = _StringsMisskeyAgoSkSk._(_root);
-	@override late final _StringsMisskeyTimeSkSk time_ = _StringsMisskeyTimeSkSk._(_root);
-	@override late final _StringsMisskeyX2faSkSk x2fa_ = _StringsMisskeyX2faSkSk._(_root);
-	@override late final _StringsMisskeyPermissionsSkSk permissions_ = _StringsMisskeyPermissionsSkSk._(_root);
-	@override late final _StringsMisskeyAuthSkSk auth_ = _StringsMisskeyAuthSkSk._(_root);
-	@override late final _StringsMisskeyAntennaSourcesSkSk antennaSources_ = _StringsMisskeyAntennaSourcesSkSk._(_root);
-	@override late final _StringsMisskeyWeekdaySkSk weekday_ = _StringsMisskeyWeekdaySkSk._(_root);
-	@override late final _StringsMisskeyWidgetsSkSk widgets_ = _StringsMisskeyWidgetsSkSk._(_root);
-	@override late final _StringsMisskeyCwSkSk cw_ = _StringsMisskeyCwSkSk._(_root);
-	@override late final _StringsMisskeyPollSkSk poll_ = _StringsMisskeyPollSkSk._(_root);
-	@override late final _StringsMisskeyVisibilitySkSk visibility_ = _StringsMisskeyVisibilitySkSk._(_root);
-	@override late final _StringsMisskeyPostFormSkSk postForm_ = _StringsMisskeyPostFormSkSk._(_root);
-	@override late final _StringsMisskeyProfileSkSk profile_ = _StringsMisskeyProfileSkSk._(_root);
-	@override late final _StringsMisskeyExportOrImportSkSk exportOrImport_ = _StringsMisskeyExportOrImportSkSk._(_root);
-	@override late final _StringsMisskeyChartsSkSk charts_ = _StringsMisskeyChartsSkSk._(_root);
-	@override late final _StringsMisskeyInstanceChartsSkSk instanceCharts_ = _StringsMisskeyInstanceChartsSkSk._(_root);
-	@override late final _StringsMisskeyTimelinesSkSk timelines_ = _StringsMisskeyTimelinesSkSk._(_root);
-	@override late final _StringsMisskeyPlaySkSk play_ = _StringsMisskeyPlaySkSk._(_root);
-	@override late final _StringsMisskeyPagesSkSk pages_ = _StringsMisskeyPagesSkSk._(_root);
-	@override late final _StringsMisskeyRelayStatusSkSk relayStatus_ = _StringsMisskeyRelayStatusSkSk._(_root);
-	@override late final _StringsMisskeyNotificationSkSk notification_ = _StringsMisskeyNotificationSkSk._(_root);
-	@override late final _StringsMisskeyDeckSkSk deck_ = _StringsMisskeyDeckSkSk._(_root);
-	@override late final _StringsMisskeyWebhookSettingsSkSk webhookSettings_ = _StringsMisskeyWebhookSettingsSkSk._(_root);
-	@override late final _StringsMisskeyAbuseReportSkSk abuseReport_ = _StringsMisskeyAbuseReportSkSk._(_root);
-	@override late final _StringsMisskeyModerationLogTypesSkSk moderationLogTypes_ = _StringsMisskeyModerationLogTypesSkSk._(_root);
-	@override late final _StringsMisskeyReversiSkSk reversi_ = _StringsMisskeyReversiSkSk._(_root);
+	@override late final _TranslationsMisskeyDeliverySkSk delivery_ = _TranslationsMisskeyDeliverySkSk._(_root);
+	@override late final _TranslationsMisskeyRoleSkSk role_ = _TranslationsMisskeyRoleSkSk._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionSkSk sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionSkSk._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableSkSk emailUnavailable_ = _TranslationsMisskeyEmailUnavailableSkSk._(_root);
+	@override late final _TranslationsMisskeyFfVisibilitySkSk ffVisibility_ = _TranslationsMisskeyFfVisibilitySkSk._(_root);
+	@override late final _TranslationsMisskeySignupSkSk signup_ = _TranslationsMisskeySignupSkSk._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteSkSk accountDelete_ = _TranslationsMisskeyAccountDeleteSkSk._(_root);
+	@override late final _TranslationsMisskeyAdSkSk ad_ = _TranslationsMisskeyAdSkSk._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordSkSk forgotPassword_ = _TranslationsMisskeyForgotPasswordSkSk._(_root);
+	@override late final _TranslationsMisskeyGallerySkSk gallery_ = _TranslationsMisskeyGallerySkSk._(_root);
+	@override late final _TranslationsMisskeyEmailSkSk email_ = _TranslationsMisskeyEmailSkSk._(_root);
+	@override late final _TranslationsMisskeyPluginSkSk plugin_ = _TranslationsMisskeyPluginSkSk._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsSkSk preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsSkSk._(_root);
+	@override late final _TranslationsMisskeyRegistrySkSk registry_ = _TranslationsMisskeyRegistrySkSk._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeySkSk aboutMisskey_ = _TranslationsMisskeyAboutMisskeySkSk._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerSkSk instanceTicker_ = _TranslationsMisskeyInstanceTickerSkSk._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorSkSk serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorSkSk._(_root);
+	@override late final _TranslationsMisskeyChannelSkSk channel_ = _TranslationsMisskeyChannelSkSk._(_root);
+	@override late final _TranslationsMisskeyMenuDisplaySkSk menuDisplay_ = _TranslationsMisskeyMenuDisplaySkSk._(_root);
+	@override late final _TranslationsMisskeyWordMuteSkSk wordMute_ = _TranslationsMisskeyWordMuteSkSk._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteSkSk instanceMute_ = _TranslationsMisskeyInstanceMuteSkSk._(_root);
+	@override late final _TranslationsMisskeyThemeSkSk theme_ = _TranslationsMisskeyThemeSkSk._(_root);
+	@override late final _TranslationsMisskeySfxSkSk sfx_ = _TranslationsMisskeySfxSkSk._(_root);
+	@override late final _TranslationsMisskeyAgoSkSk ago_ = _TranslationsMisskeyAgoSkSk._(_root);
+	@override late final _TranslationsMisskeyTimeSkSk time_ = _TranslationsMisskeyTimeSkSk._(_root);
+	@override late final _TranslationsMisskeyX2faSkSk x2fa_ = _TranslationsMisskeyX2faSkSk._(_root);
+	@override late final _TranslationsMisskeyPermissionsSkSk permissions_ = _TranslationsMisskeyPermissionsSkSk._(_root);
+	@override late final _TranslationsMisskeyAuthSkSk auth_ = _TranslationsMisskeyAuthSkSk._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesSkSk antennaSources_ = _TranslationsMisskeyAntennaSourcesSkSk._(_root);
+	@override late final _TranslationsMisskeyWeekdaySkSk weekday_ = _TranslationsMisskeyWeekdaySkSk._(_root);
+	@override late final _TranslationsMisskeyWidgetsSkSk widgets_ = _TranslationsMisskeyWidgetsSkSk._(_root);
+	@override late final _TranslationsMisskeyCwSkSk cw_ = _TranslationsMisskeyCwSkSk._(_root);
+	@override late final _TranslationsMisskeyPollSkSk poll_ = _TranslationsMisskeyPollSkSk._(_root);
+	@override late final _TranslationsMisskeyVisibilitySkSk visibility_ = _TranslationsMisskeyVisibilitySkSk._(_root);
+	@override late final _TranslationsMisskeyPostFormSkSk postForm_ = _TranslationsMisskeyPostFormSkSk._(_root);
+	@override late final _TranslationsMisskeyProfileSkSk profile_ = _TranslationsMisskeyProfileSkSk._(_root);
+	@override late final _TranslationsMisskeyExportOrImportSkSk exportOrImport_ = _TranslationsMisskeyExportOrImportSkSk._(_root);
+	@override late final _TranslationsMisskeyChartsSkSk charts_ = _TranslationsMisskeyChartsSkSk._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsSkSk instanceCharts_ = _TranslationsMisskeyInstanceChartsSkSk._(_root);
+	@override late final _TranslationsMisskeyTimelinesSkSk timelines_ = _TranslationsMisskeyTimelinesSkSk._(_root);
+	@override late final _TranslationsMisskeyPlaySkSk play_ = _TranslationsMisskeyPlaySkSk._(_root);
+	@override late final _TranslationsMisskeyPagesSkSk pages_ = _TranslationsMisskeyPagesSkSk._(_root);
+	@override late final _TranslationsMisskeyRelayStatusSkSk relayStatus_ = _TranslationsMisskeyRelayStatusSkSk._(_root);
+	@override late final _TranslationsMisskeyNotificationSkSk notification_ = _TranslationsMisskeyNotificationSkSk._(_root);
+	@override late final _TranslationsMisskeyDeckSkSk deck_ = _TranslationsMisskeyDeckSkSk._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSkSk webhookSettings_ = _TranslationsMisskeyWebhookSettingsSkSk._(_root);
+	@override late final _TranslationsMisskeyAbuseReportSkSk abuseReport_ = _TranslationsMisskeyAbuseReportSkSk._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesSkSk moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesSkSk._(_root);
+	@override late final _TranslationsMisskeyReversiSkSk reversi_ = _TranslationsMisskeyReversiSkSk._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliverySkSk extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliverySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliverySkSk extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliverySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'Zmrazené';
-	@override late final _StringsMisskeyDeliveryTypeSkSk type_ = _StringsMisskeyDeliveryTypeSkSk._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeSkSk type_ = _TranslationsMisskeyDeliveryTypeSkSk._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleSkSk extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleSkSk extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get priority => 'Priorita';
-	@override late final _StringsMisskeyRolePrioritySkSk priority_ = _StringsMisskeyRolePrioritySkSk._(_root);
+	@override late final _TranslationsMisskeyRolePrioritySkSk priority_ = _TranslationsMisskeyRolePrioritySkSk._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionSkSk extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionSkSk extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'Strojové učenie sa použije na automatickú detekciu citlivých médií na účely ich moderovania. Mierne sa zvýši zaťaženie servera.';
@@ -1082,10 +1085,10 @@ class _StringsMisskeySensitiveMediaDetectionSkSk extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableSkSk extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableSkSk extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => 'Táto emailová adresa sa už používa';
@@ -1096,10 +1099,10 @@ class _StringsMisskeyEmailUnavailableSkSk extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilitySkSk extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilitySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilitySkSk extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilitySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Zverejniť';
@@ -1108,10 +1111,10 @@ class _StringsMisskeyFfVisibilitySkSk extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupSkSk extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupSkSk extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'Skoro na konci';
@@ -1120,10 +1123,10 @@ class _StringsMisskeySignupSkSk extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteSkSk extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteSkSk extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'Odstrániť účet';
@@ -1135,10 +1138,10 @@ class _StringsMisskeyAccountDeleteSkSk extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdSkSk extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdSkSk extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'Späť';
@@ -1147,10 +1150,10 @@ class _StringsMisskeyAdSkSk extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordSkSk extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordSkSk extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => 'Zadajte emailovú adresu, ktorú ste použili pri registrácii. Pošleme vám na ňu odkaz, cez ktorý si môžete obnoviť heslo.';
@@ -1159,10 +1162,10 @@ class _StringsMisskeyForgotPasswordSkSk extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGallerySkSk extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGallerySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyGallerySkSk extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGallerySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => 'Moja galéria';
@@ -1172,21 +1175,21 @@ class _StringsMisskeyGallerySkSk extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailSkSk extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailSkSk extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowSkSk follow_ = _StringsMisskeyEmailFollowSkSk._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestSkSk receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestSkSk._(_root);
+	@override late final _TranslationsMisskeyEmailFollowSkSk follow_ = _TranslationsMisskeyEmailFollowSkSk._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestSkSk receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestSkSk._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginSkSk extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginSkSk extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'Inštalova pluginy';
@@ -1196,10 +1199,10 @@ class _StringsMisskeyPluginSkSk extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsSkSk extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsSkSk extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => 'Vytvorené zálohy';
@@ -1222,10 +1225,10 @@ class _StringsMisskeyPreferencesBackupsSkSk extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistrySkSk extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistrySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistrySkSk extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistrySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'Oblasť';
@@ -1236,10 +1239,10 @@ class _StringsMisskeyRegistrySkSk extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeySkSk extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeySkSk extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey je open-source softvér, ktorý vyvíja syuilo od 2014.';
@@ -1253,10 +1256,10 @@ class _StringsMisskeyAboutMisskeySkSk extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerSkSk extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerSkSk extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Nikdy nezobrazovať';
@@ -1265,10 +1268,10 @@ class _StringsMisskeyInstanceTickerSkSk extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorSkSk extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorSkSk extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => 'Automaticky obnoviť';
@@ -1277,10 +1280,10 @@ class _StringsMisskeyServerDisconnectedBehaviorSkSk extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelSkSk extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelSkSk extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'Vytvoriť kanál';
@@ -1295,10 +1298,10 @@ class _StringsMisskeyChannelSkSk extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplaySkSk extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplaySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplaySkSk extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplaySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => 'Strana';
@@ -1308,10 +1311,10 @@ class _StringsMisskeyMenuDisplaySkSk extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteSkSk extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteSkSk extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'Umlčané slová';
@@ -1320,10 +1323,10 @@ class _StringsMisskeyWordMuteSkSk extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteSkSk extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteSkSk extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => 'Toto umlčí všetky poznámky/preposlania zo zoznamu serverov, vrátane tých, na ktoré používatelia odpovedajú z umlčaného servera.';
@@ -1333,10 +1336,10 @@ class _StringsMisskeyInstanceMuteSkSk extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeSkSk extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeSkSk extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'Objavovať témy';
@@ -1368,14 +1371,14 @@ class _StringsMisskeyThemeSkSk extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => 'Zadajte názov tejto konštanty';
 	@override String get importInfo => 'Ak sem zadáte kód témy, môžete ju importovať do editora tém.';
 	@override String deleteConstantConfirm({required Object const_}) => 'Naozaj chcete odstrániť konštantu ${const_}?';
-	@override late final _StringsMisskeyThemeKeysSkSk keys = _StringsMisskeyThemeKeysSkSk._(_root);
+	@override late final _TranslationsMisskeyThemeKeysSkSk keys = _TranslationsMisskeyThemeKeysSkSk._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxSkSk extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxSkSk extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Poznámky';
@@ -1384,10 +1387,10 @@ class _StringsMisskeySfxSkSk extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoSkSk extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoSkSk extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => 'Budúcnosť';
@@ -1403,10 +1406,10 @@ class _StringsMisskeyAgoSkSk extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeSkSk extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeSkSk extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => 's';
@@ -1416,10 +1419,10 @@ class _StringsMisskeyTimeSkSk extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faSkSk extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faSkSk extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => 'Už ste zaregistrovali 2-faktorové autentifikačné zariadenie.';
@@ -1433,10 +1436,10 @@ class _StringsMisskeyX2faSkSk extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsSkSk extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsSkSk extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'Vidieť informácie o vašom účte';
@@ -1474,10 +1477,10 @@ class _StringsMisskeyPermissionsSkSk extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthSkSk extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthSkSk extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String shareAccess({required Object name}) => 'Prajete si povoliť "${name}", aby mal prístup k tomuto účtu?';
@@ -1489,10 +1492,10 @@ class _StringsMisskeyAuthSkSk extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesSkSk extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesSkSk extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Všetky poznámky';
@@ -1502,10 +1505,10 @@ class _StringsMisskeyAntennaSourcesSkSk extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdaySkSk extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdaySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdaySkSk extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdaySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => 'Nedeľa';
@@ -1518,10 +1521,10 @@ class _StringsMisskeyWeekdaySkSk extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsSkSk extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsSkSk extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Profil';
@@ -1548,14 +1551,14 @@ class _StringsMisskeyWidgetsSkSk extends _StringsMisskeyWidgetsEnUs {
 	@override String get serverMetric => 'Metriky servera';
 	@override String get aiscript => 'Konzola AiScript';
 	@override String get aichan => 'Ai';
-	@override late final _StringsMisskeyWidgetsUserListSkSk userList_ = _StringsMisskeyWidgetsUserListSkSk._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListSkSk userList_ = _TranslationsMisskeyWidgetsUserListSkSk._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwSkSk extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwSkSk extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => 'Skryť';
@@ -1565,10 +1568,10 @@ class _StringsMisskeyCwSkSk extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollSkSk extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollSkSk extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'Treba aspoň dve voľby';
@@ -1595,10 +1598,10 @@ class _StringsMisskeyPollSkSk extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilitySkSk extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilitySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilitySkSk extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilitySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Verejné';
@@ -1612,23 +1615,23 @@ class _StringsMisskeyVisibilitySkSk extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormSkSk extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormSkSk extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'Odpoveď na túto poznámku...';
 	@override String get quotePlaceholder => 'Citovanie tejto poznámky...';
 	@override String get channelPlaceholder => 'Poslať do kanála...';
-	@override late final _StringsMisskeyPostFormPlaceholdersSkSk placeholders_ = _StringsMisskeyPostFormPlaceholdersSkSk._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersSkSk placeholders_ = _TranslationsMisskeyPostFormPlaceholdersSkSk._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileSkSk extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileSkSk extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Názov';
@@ -1645,10 +1648,10 @@ class _StringsMisskeyProfileSkSk extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportSkSk extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportSkSk extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'Všetky poznámky';
@@ -1662,10 +1665,10 @@ class _StringsMisskeyExportOrImportSkSk extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsSkSk extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsSkSk extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Federácia';
@@ -1684,10 +1687,10 @@ class _StringsMisskeyChartsSkSk extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsSkSk extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsSkSk extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'Žiadosti';
@@ -1704,10 +1707,10 @@ class _StringsMisskeyInstanceChartsSkSk extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesSkSk extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesSkSk extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Domov';
@@ -1717,10 +1720,10 @@ class _StringsMisskeyTimelinesSkSk extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlaySkSk extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlaySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlaySkSk extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlaySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get viewSource => 'Ukázať zdroj';
@@ -1731,10 +1734,10 @@ class _StringsMisskeyPlaySkSk extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesSkSk extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesSkSk extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'Vytvoriť novú stránku';
@@ -1774,14 +1777,14 @@ class _StringsMisskeyPagesSkSk extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'Obsah';
 	@override String get inputBlocks => 'Vstup';
 	@override String get specialBlocks => 'Špeciálne';
-	@override late final _StringsMisskeyPagesBlocksSkSk blocks = _StringsMisskeyPagesBlocksSkSk._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksSkSk blocks = _TranslationsMisskeyPagesBlocksSkSk._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusSkSk extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusSkSk extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'Čaká sa';
@@ -1790,10 +1793,10 @@ class _StringsMisskeyRelayStatusSkSk extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationSkSk extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationSkSk extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'Súbor sa úspešne nahral';
@@ -1807,15 +1810,15 @@ class _StringsMisskeyNotificationSkSk extends _StringsMisskeyNotificationEnUs {
 	@override String get pollEnded => 'Výsledky hlasovania sú k dispozícii.';
 	@override String unreadAntennaNote({required Object name}) => 'Anténa ${name}';
 	@override String get emptyPushNotificationMessage => 'Push notifikácie aktualizované';
-	@override late final _StringsMisskeyNotificationTypesSkSk types_ = _StringsMisskeyNotificationTypesSkSk._(_root);
-	@override late final _StringsMisskeyNotificationActionsSkSk actions_ = _StringsMisskeyNotificationActionsSkSk._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesSkSk types_ = _TranslationsMisskeyNotificationTypesSkSk._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsSkSk actions_ = _TranslationsMisskeyNotificationActionsSkSk._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckSkSk extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckSkSk extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'Vždy zobraziť v hlavnom stĺpci';
@@ -1834,14 +1837,14 @@ class _StringsMisskeyDeckSkSk extends _StringsMisskeyDeckEnUs {
 	@override String get introduction => 'Kombinujte stĺpce a vytvorte si svoje vlastné rozhranie!';
 	@override String get introduction2 => 'Stlačením tlačidla + v pravej časti obrazovky môžete kedykoľvek pridať stĺpce.';
 	@override String get widgetsIntroduction => 'V ponuke stĺpca vyberte možnosť "Upraviť widget" a pridajte widget';
-	@override late final _StringsMisskeyDeckColumnsSkSk columns_ = _StringsMisskeyDeckColumnsSkSk._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsSkSk columns_ = _TranslationsMisskeyDeckColumnsSkSk._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsSkSk extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsSkSk extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Názov';
@@ -1849,20 +1852,20 @@ class _StringsMisskeyWebhookSettingsSkSk extends _StringsMisskeyWebhookSettingsE
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportSkSk extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportSkSk extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientSkSk notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientSkSk._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientSkSk notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientSkSk._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesSkSk extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesSkSk extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'Zmraziť';
@@ -1870,30 +1873,30 @@ class _StringsMisskeyModerationLogTypesSkSk extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiSkSk extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiSkSk extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'Celkom';
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeSkSk extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeSkSk extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Zverejňovanie';
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePrioritySkSk extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePrioritySkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePrioritySkSk extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePrioritySkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'Málo';
@@ -1902,30 +1905,30 @@ class _StringsMisskeyRolePrioritySkSk extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowSkSk extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowSkSk extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Máte nového sledujúceho';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestSkSk extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestSkSk extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Dostali ste žiadosť o sledovanie';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysSkSk extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysSkSk extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'Akcent';
@@ -1970,20 +1973,20 @@ class _StringsMisskeyThemeKeysSkSk extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListSkSk extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListSkSk extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Vyberte zoznam';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersSkSk extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersSkSk extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'Čo máte v pláne?';
@@ -1995,10 +1998,10 @@ class _StringsMisskeyPostFormPlaceholdersSkSk extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksSkSk extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksSkSk extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'Text';
@@ -2007,14 +2010,14 @@ class _StringsMisskeyPagesBlocksSkSk extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get image => 'Obrázky';
 	@override String get button => 'Tlačidlo';
 	@override String get note => 'Vložená poznámka';
-	@override late final _StringsMisskeyPagesBlocksNoteSkSk note_ = _StringsMisskeyPagesBlocksNoteSkSk._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteSkSk note_ = _TranslationsMisskeyPagesBlocksNoteSkSk._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesSkSk extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesSkSk extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Všetky';
@@ -2032,10 +2035,10 @@ class _StringsMisskeyNotificationTypesSkSk extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsSkSk extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsSkSk extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => 'Sledovať späť\n';
@@ -2044,10 +2047,10 @@ class _StringsMisskeyNotificationActionsSkSk extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsSkSk extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsSkSk extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'Hlavný';
@@ -2062,20 +2065,20 @@ class _StringsMisskeyDeckColumnsSkSk extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientSkSk extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientSkSk extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(_root);
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteSkSk extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteSkSk extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'ID poznámky';
@@ -2084,10 +2087,10 @@ class _StringsMisskeyPagesBlocksNoteSkSk extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(_StringsSkSk root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
 
-	@override final _StringsSkSk _root; // ignore: unused_field
+	final TranslationsSkSk _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'Email';
