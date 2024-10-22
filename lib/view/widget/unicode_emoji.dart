@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:twemoji_v2/twemoji_v2.dart';
 
+import '../../extension/text_style_extension.dart';
+import '../../gen/assets.gen.dart';
+import '../../model/account.dart';
 import '../../model/general_settings.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/muted_emojis_notifier_provider.dart';
 
 const _v11Reactions = {
   'like': '👍',
@@ -22,12 +26,14 @@ const _v11Reactions = {
 class UnicodeEmoji extends ConsumerWidget {
   const UnicodeEmoji({
     super.key,
+    this.account,
     required this.emoji,
     this.style,
     this.onTap,
     this.inline = false,
   });
 
+  final Account? account;
   final String emoji;
   final TextStyle? style;
   final void Function()? onTap;
@@ -40,6 +46,19 @@ class UnicodeEmoji extends ConsumerWidget {
     );
     final emoji = _v11Reactions[this.emoji] ?? this.emoji;
     final style = DefaultTextStyle.of(context).style.merge(this.style);
+    final muted = ref
+        .watch(mutedEmojisNotifierProvider(account ?? Account.dummy()))
+        .contains(emoji);
+    if (muted) {
+      return InkWell(
+        onTap: onTap,
+        child: Assets.misskey.packages.frontend.assets.dummy.image(
+          height: style.lineHeight,
+          opacity: AlwaysStoppedAnimation(style.color?.opacity ?? 1.0),
+          fit: BoxFit.contain,
+        ),
+      );
+    }
 
     switch (emojiStyle) {
       case EmojiStyle.native:

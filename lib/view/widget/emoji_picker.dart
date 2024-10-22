@@ -207,6 +207,7 @@ class EmojiPicker extends HookConsumerWidget {
                 }),
                 ...unicodeEmojis.map(
                   (emoji) => UnicodeEmoji(
+                    account: account,
                     emoji: emoji,
                     style: style.apply(fontSizeFactor: fontScaleFactor),
                     onTap: () => onTapEmoji(emoji, keepOpen),
@@ -345,6 +346,7 @@ class EmojiPicker extends HookConsumerWidget {
                     children: emojis
                         .map(
                           (emoji) => UnicodeEmoji(
+                            account: account,
                             emoji: emoji,
                             style: style.apply(fontSizeFactor: fontScaleFactor),
                             onTap: () => onTapEmoji(emoji, keepOpen),

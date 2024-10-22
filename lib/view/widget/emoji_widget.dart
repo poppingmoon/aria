@@ -38,6 +38,7 @@ class EmojiWidget extends StatelessWidget {
       );
     } else {
       return UnicodeEmoji(
+        account: account,
         emoji: emoji,
         style: style,
         onTap: onTap,

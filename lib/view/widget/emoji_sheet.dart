@@ -8,6 +8,7 @@ import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/muted_emojis_notifier_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../util/check_reaction_permissions.dart';
@@ -51,6 +52,9 @@ class EmojiSheet extends ConsumerWidget {
       pinnedEmojisNotifierProvider(account)
           .select((emojis) => emojis.contains(emoji)),
     );
+    final isMuted = ref
+        .watch(mutedEmojisNotifierProvider(account))
+        .contains(emoji.replaceFirst('@.', ''));
 
     return ListView(
       shrinkWrap: true,
@@ -159,6 +163,23 @@ class EmojiSheet extends ConsumerWidget {
               },
             ),
         ],
+        if (!account.isGuest)
+          if (isMuted)
+            ListTile(
+              leading: const Icon(Icons.visibility),
+              title: Text(t.misskey.unmute),
+              onTap: () => ref
+                  .read(mutedEmojisNotifierProvider(account).notifier)
+                  .remove(emoji),
+            )
+          else
+            ListTile(
+              leading: const Icon(Icons.visibility_off),
+              title: Text(t.misskey.mute),
+              onTap: () => ref
+                  .read(mutedEmojisNotifierProvider(account).notifier)
+                  .add(emoji),
+            ),
         if (isCustomEmoji)
           ListTile(
             leading: const Icon(Icons.info_outline),

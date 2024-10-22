@@ -151,6 +151,11 @@ class AccountSettingsNotifier extends _$AccountSettingsNotifier {
     await _save();
   }
 
+  Future<void> setMutedEmojis(List<String> mutedEmojis) async {
+    state = state.copyWith(mutedEmojis: mutedEmojis);
+    await _save();
+  }
+
   Future<void> setRecentlyUsedUsers(List<String> recentlyUsedUsers) async {
     state = state.copyWith(recentlyUsedUsers: recentlyUsedUsers);
     await _save();

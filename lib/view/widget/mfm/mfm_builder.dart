@@ -14,7 +14,6 @@ import '../../../util/format_datetime.dart';
 import '../../../util/nyaize.dart';
 import '../../../util/safe_parse_color.dart';
 import '../../../util/safe_parse_double.dart';
-import '../unicode_emoji.dart';
 import '../url_widget.dart';
 import 'blur.dart';
 import 'border.dart';
@@ -221,7 +220,7 @@ extension MfmBuilder on MfmConfig {
               ),
             MfmEmojiCode(:final name) => WidgetSpan(
                 alignment: PlaceholderAlignment.middle,
-                child: emojiBuilder(
+                child: customEmojiBuilder(
                   name,
                   scale * (simple ? 1.0 : 2.0),
                   opacity,
@@ -234,15 +233,12 @@ extension MfmBuilder on MfmConfig {
             MfmUnicodeEmoji(:final emoji) => WidgetSpan(
                 alignment: PlaceholderAlignment.baseline,
                 baseline: TextBaseline.alphabetic,
-                child: UnicodeEmoji(
-                  emoji: emoji,
-                  style: style.apply(
+                child: unicodeEmojiBuilder(
+                  emoji,
+                  style.apply(
                     fontSizeFactor: scale,
                     color: style.color?.withOpacity(opacity),
                   ),
-                  onTap:
-                      onTapEmoji != null ? () => onTapEmoji?.call(emoji) : null,
-                  inline: true,
                 ),
               ),
             MfmMathInline(:final formula) => WidgetSpan(

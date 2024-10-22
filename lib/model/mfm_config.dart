@@ -16,7 +16,8 @@ class MfmConfig with _$MfmConfig {
       double scale,
       double opacity,
       TextStyle fallbackTextStyle,
-    ) emojiBuilder,
+    ) customEmojiBuilder,
+    required Widget Function(String emoji, TextStyle style) unicodeEmojiBuilder,
     required Widget Function(
       String username,
       String? host,

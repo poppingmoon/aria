@@ -131,6 +131,7 @@ class TranslationsAriaEnUs {
 	String get mentionToRemoteWarning => 'This note includes mentions to remote users';
 	String get moved => 'Moved';
 	String get muted => 'Muted';
+	String get mutedEmojis => 'Muted emojis';
 	String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('en'))(n,
 		one: '${n} file',
 		other: '${n} files',

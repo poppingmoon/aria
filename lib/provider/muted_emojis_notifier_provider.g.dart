@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'account_settings_notifier_provider.dart';
+part of 'muted_emojis_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountSettingsNotifierHash() =>
-    r'2e096500c468a689d4676b98367036a187552139';
+String _$mutedEmojisNotifierHash() =>
+    r'c921f6a34042e74faef53fb85cfe083ae70c74b3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,36 +30,35 @@ class _SystemHash {
   }
 }
 
-abstract class _$AccountSettingsNotifier
-    extends BuildlessNotifier<AccountSettings> {
+abstract class _$MutedEmojisNotifier extends BuildlessNotifier<Set<String>> {
   late final Account account;
 
-  AccountSettings build(
+  Set<String> build(
     Account account,
   );
 }
 
-/// See also [AccountSettingsNotifier].
-@ProviderFor(AccountSettingsNotifier)
-const accountSettingsNotifierProvider = AccountSettingsNotifierFamily();
+/// See also [MutedEmojisNotifier].
+@ProviderFor(MutedEmojisNotifier)
+const mutedEmojisNotifierProvider = MutedEmojisNotifierFamily();
 
-/// See also [AccountSettingsNotifier].
-class AccountSettingsNotifierFamily extends Family<AccountSettings> {
-  /// See also [AccountSettingsNotifier].
-  const AccountSettingsNotifierFamily();
+/// See also [MutedEmojisNotifier].
+class MutedEmojisNotifierFamily extends Family<Set<String>> {
+  /// See also [MutedEmojisNotifier].
+  const MutedEmojisNotifierFamily();
 
-  /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider call(
+  /// See also [MutedEmojisNotifier].
+  MutedEmojisNotifierProvider call(
     Account account,
   ) {
-    return AccountSettingsNotifierProvider(
+    return MutedEmojisNotifierProvider(
       account,
     );
   }
 
   @override
-  AccountSettingsNotifierProvider getProviderOverride(
-    covariant AccountSettingsNotifierProvider provider,
+  MutedEmojisNotifierProvider getProviderOverride(
+    covariant MutedEmojisNotifierProvider provider,
   ) {
     return call(
       provider.account,
@@ -78,30 +77,30 @@ class AccountSettingsNotifierFamily extends Family<AccountSettings> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'accountSettingsNotifierProvider';
+  String? get name => r'mutedEmojisNotifierProvider';
 }
 
-/// See also [AccountSettingsNotifier].
-class AccountSettingsNotifierProvider
-    extends NotifierProviderImpl<AccountSettingsNotifier, AccountSettings> {
-  /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider(
+/// See also [MutedEmojisNotifier].
+class MutedEmojisNotifierProvider
+    extends NotifierProviderImpl<MutedEmojisNotifier, Set<String>> {
+  /// See also [MutedEmojisNotifier].
+  MutedEmojisNotifierProvider(
     Account account,
   ) : this._internal(
-          () => AccountSettingsNotifier()..account = account,
-          from: accountSettingsNotifierProvider,
-          name: r'accountSettingsNotifierProvider',
+          () => MutedEmojisNotifier()..account = account,
+          from: mutedEmojisNotifierProvider,
+          name: r'mutedEmojisNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$accountSettingsNotifierHash,
-          dependencies: AccountSettingsNotifierFamily._dependencies,
+                  : _$mutedEmojisNotifierHash,
+          dependencies: MutedEmojisNotifierFamily._dependencies,
           allTransitiveDependencies:
-              AccountSettingsNotifierFamily._allTransitiveDependencies,
+              MutedEmojisNotifierFamily._allTransitiveDependencies,
           account: account,
         );
 
-  AccountSettingsNotifierProvider._internal(
+  MutedEmojisNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -114,8 +113,8 @@ class AccountSettingsNotifierProvider
   final Account account;
 
   @override
-  AccountSettings runNotifierBuild(
-    covariant AccountSettingsNotifier notifier,
+  Set<String> runNotifierBuild(
+    covariant MutedEmojisNotifier notifier,
   ) {
     return notifier.build(
       account,
@@ -123,10 +122,10 @@ class AccountSettingsNotifierProvider
   }
 
   @override
-  Override overrideWith(AccountSettingsNotifier Function() create) {
+  Override overrideWith(MutedEmojisNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: AccountSettingsNotifierProvider._internal(
+      override: MutedEmojisNotifierProvider._internal(
         () => create()..account = account,
         from: from,
         name: null,
@@ -139,14 +138,13 @@ class AccountSettingsNotifierProvider
   }
 
   @override
-  NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
-      createElement() {
-    return _AccountSettingsNotifierProviderElement(this);
+  NotifierProviderElement<MutedEmojisNotifier, Set<String>> createElement() {
+    return _MutedEmojisNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AccountSettingsNotifierProvider && other.account == account;
+    return other is MutedEmojisNotifierProvider && other.account == account;
   }
 
   @override
@@ -160,18 +158,18 @@ class AccountSettingsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin AccountSettingsNotifierRef on NotifierProviderRef<AccountSettings> {
+mixin MutedEmojisNotifierRef on NotifierProviderRef<Set<String>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
-class _AccountSettingsNotifierProviderElement
-    extends NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
-    with AccountSettingsNotifierRef {
-  _AccountSettingsNotifierProviderElement(super.provider);
+class _MutedEmojisNotifierProviderElement
+    extends NotifierProviderElement<MutedEmojisNotifier, Set<String>>
+    with MutedEmojisNotifierRef {
+  _MutedEmojisNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as AccountSettingsNotifierProvider).account;
+  Account get account => (origin as MutedEmojisNotifierProvider).account;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

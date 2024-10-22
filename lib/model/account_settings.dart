@@ -37,6 +37,7 @@ class AccountSettings with _$AccountSettings {
     // Mute
     @Default([]) List<MuteWord> mutedWords,
     @Default([]) List<MuteWord> hardMutedWords,
+    @Default([]) List<String> mutedEmojis,
 
     // UserSelectDialog
     @Default([]) List<String> recentlyUsedUsers,

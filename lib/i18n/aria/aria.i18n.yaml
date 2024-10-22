@@ -63,6 +63,7 @@ media: "Media"
 mentionToRemoteWarning: "This note includes mentions to remote users"
 moved: "Moved"
 muted: "Muted"
+mutedEmojis: "Muted emojis"
 nFiles:
   one: "{n} file"
   other: "{n} files"

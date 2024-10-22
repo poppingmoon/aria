@@ -8,8 +8,11 @@ import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
+import '../../../provider/muted_emojis_notifier_provider.dart';
+import '../../../util/decode_custom_emoji.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../widget/account_settings_scaffold.dart';
+import '../../widget/emoji_picker.dart';
 import '../../widget/muted_words_editor.dart';
 
 class MuteBlockPage extends StatelessWidget {
@@ -26,6 +29,7 @@ class MuteBlockPage extends StatelessWidget {
         children: [
           MutedWordsEditor(account: account),
           MutedWordsEditor(account: account, hardMute: true),
+          _MutedEmojisEditor(account: account),
           _InstanceMuteEditor(account: account),
           ListTile(
             leading: const Icon(Icons.repeat_rounded),
@@ -51,6 +55,131 @@ class MuteBlockPage extends StatelessWidget {
         ],
       ),
       selectedDestination: AccountSettingsDestination.muteBlock,
+    );
+  }
+}
+
+class _MutedEmojisEditor extends HookConsumerWidget {
+  const _MutedEmojisEditor({required this.account});
+
+  final Account account;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final mutedEmojis = ref.watch(mutedEmojisNotifierProvider(account));
+    final mutedEmojisText = useState(mutedEmojis.join('\n'));
+    final controller = useTextEditingController(text: mutedEmojis.join('\n'));
+    final isChanged = useState(false);
+    final showTextField = useState(false);
+    ref.listen(
+      mutedEmojisNotifierProvider(account),
+      (_, mutedEmojis) {
+        mutedEmojisText.value = mutedEmojis.join('\n');
+        controller.text = mutedEmojisText.value;
+      },
+    );
+    useEffect(
+      () {
+        controller.addListener(() {
+          isChanged.value = controller.text != mutedEmojisText.value;
+        });
+        return;
+      },
+      [],
+    );
+
+    return ExpansionTile(
+      leading: const Icon(Icons.emoji_symbols),
+      title: Text(t.aria.mutedEmojis),
+      childrenPadding: const EdgeInsets.all(8.0),
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 4.0,
+            runSpacing: 4.0,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              ...mutedEmojis.map(
+                (emoji) => InputChip(
+                  label: Text(emoji),
+                  onPressed: emoji.startsWith(':')
+                      ? () {
+                          final (name, host) = decodeCustomEmoji(emoji);
+                          context.push('/${host ?? account}/emojis/$name');
+                        }
+                      : null,
+                  onDeleted: () => ref
+                      .read(mutedEmojisNotifierProvider(account).notifier)
+                      .remove(emoji),
+                  backgroundColor: Theme.of(context).colorScheme.surface,
+                  shape: StadiumBorder(
+                    side: BorderSide(
+                      color: Theme.of(context).colorScheme.outlineVariant,
+                    ),
+                  ),
+                ),
+              ),
+              IconButton(
+                tooltip: t.misskey.add,
+                onPressed: () async {
+                  final emoji = await pickEmoji(
+                    ref,
+                    account,
+                    saveHistory: false,
+                  );
+                  if (!context.mounted) return;
+                  if (emoji != null) {
+                    await ref
+                        .read(mutedEmojisNotifierProvider(account).notifier)
+                        .add(emoji);
+                  }
+                },
+                icon: const Icon(Icons.add),
+              ),
+              IconButton(
+                tooltip: t.misskey.edit,
+                onPressed: () => showTextField.value = !showTextField.value,
+                icon: Icon(showTextField.value ? Icons.edit_off : Icons.edit),
+              ),
+            ],
+          ),
+        ),
+        if (showTextField.value) ...[
+          const SizedBox(height: 4.0),
+          Shortcuts(
+            shortcuts: disablingTextShortcuts,
+            child: TextField(
+              controller: controller,
+              minLines: 5,
+              maxLines: 10,
+              onTapOutside: (_) => primaryFocus?.unfocus(),
+            ),
+          ),
+          const SizedBox(height: 8.0),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton.icon(
+              onPressed: isChanged.value
+                  ? () async {
+                      final mutes = controller.text
+                          .trim()
+                          .split('\n')
+                          .map((emoji) => emoji.trim())
+                          .where((emoji) => emoji.isNotEmpty);
+                      await ref
+                          .read(mutedEmojisNotifierProvider(account).notifier)
+                          .updateMutedEmojis(mutes);
+                      showTextField.value = false;
+                    }
+                  : null,
+              icon: const Icon(Icons.save),
+              label: Text(t.misskey.save),
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

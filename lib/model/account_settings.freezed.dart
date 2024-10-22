@@ -45,7 +45,8 @@ mixin _$AccountSettings {
   bool get keepOriginalUploading => throw _privateConstructorUsedError;
   bool get keepOriginalFilename => throw _privateConstructorUsedError; // Mute
   List<MuteWord> get mutedWords => throw _privateConstructorUsedError;
-  List<MuteWord> get hardMutedWords =>
+  List<MuteWord> get hardMutedWords => throw _privateConstructorUsedError;
+  List<String> get mutedEmojis =>
       throw _privateConstructorUsedError; // UserSelectDialog
   List<String> get recentlyUsedUsers =>
       throw _privateConstructorUsedError; // PostForm
@@ -89,6 +90,7 @@ abstract class $AccountSettingsCopyWith<$Res> {
       bool keepOriginalFilename,
       List<MuteWord> mutedWords,
       List<MuteWord> hardMutedWords,
+      List<String> mutedEmojis,
       List<String> recentlyUsedUsers,
       List<String> hashtags});
 }
@@ -129,6 +131,7 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? keepOriginalFilename = null,
     Object? mutedWords = null,
     Object? hardMutedWords = null,
+    Object? mutedEmojis = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
   }) {
@@ -217,6 +220,10 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
           ? _value.hardMutedWords
           : hardMutedWords // ignore: cast_nullable_to_non_nullable
               as List<MuteWord>,
+      mutedEmojis: null == mutedEmojis
+          ? _value.mutedEmojis
+          : mutedEmojis // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       recentlyUsedUsers: null == recentlyUsedUsers
           ? _value.recentlyUsedUsers
           : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
@@ -259,6 +266,7 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
       bool keepOriginalFilename,
       List<MuteWord> mutedWords,
       List<MuteWord> hardMutedWords,
+      List<String> mutedEmojis,
       List<String> recentlyUsedUsers,
       List<String> hashtags});
 }
@@ -297,6 +305,7 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? keepOriginalFilename = null,
     Object? mutedWords = null,
     Object? hardMutedWords = null,
+    Object? mutedEmojis = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
   }) {
@@ -385,6 +394,10 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
           ? _value._hardMutedWords
           : hardMutedWords // ignore: cast_nullable_to_non_nullable
               as List<MuteWord>,
+      mutedEmojis: null == mutedEmojis
+          ? _value._mutedEmojis
+          : mutedEmojis // ignore: cast_nullable_to_non_nullable
+              as List<String>,
       recentlyUsedUsers: null == recentlyUsedUsers
           ? _value._recentlyUsedUsers
           : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
@@ -422,6 +435,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
       this.keepOriginalFilename = true,
       final List<MuteWord> mutedWords = const [],
       final List<MuteWord> hardMutedWords = const [],
+      final List<String> mutedEmojis = const [],
       final List<String> recentlyUsedUsers = const [],
       final List<String> hashtags = const []})
       : _pinnedEmojisForReaction = pinnedEmojisForReaction,
@@ -429,6 +443,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
         _recentlyUsedEmojis = recentlyUsedEmojis,
         _mutedWords = mutedWords,
         _hardMutedWords = hardMutedWords,
+        _mutedEmojis = mutedEmojis,
         _recentlyUsedUsers = recentlyUsedUsers,
         _hashtags = hashtags;
 
@@ -533,6 +548,15 @@ class _$AccountSettingsImpl implements _AccountSettings {
     return EqualUnmodifiableListView(_hardMutedWords);
   }
 
+  final List<String> _mutedEmojis;
+  @override
+  @JsonKey()
+  List<String> get mutedEmojis {
+    if (_mutedEmojis is EqualUnmodifiableListView) return _mutedEmojis;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_mutedEmojis);
+  }
+
 // UserSelectDialog
   final List<String> _recentlyUsedUsers;
 // UserSelectDialog
@@ -558,7 +582,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @override
   String toString() {
-    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, mutedEmojis: $mutedEmojis, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
   }
 
   @override
@@ -610,6 +634,8 @@ class _$AccountSettingsImpl implements _AccountSettings {
             const DeepCollectionEquality()
                 .equals(other._hardMutedWords, _hardMutedWords) &&
             const DeepCollectionEquality()
+                .equals(other._mutedEmojis, _mutedEmojis) &&
+            const DeepCollectionEquality()
                 .equals(other._recentlyUsedUsers, _recentlyUsedUsers) &&
             const DeepCollectionEquality().equals(other._hashtags, _hashtags));
   }
@@ -639,6 +665,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
         keepOriginalFilename,
         const DeepCollectionEquality().hash(_mutedWords),
         const DeepCollectionEquality().hash(_hardMutedWords),
+        const DeepCollectionEquality().hash(_mutedEmojis),
         const DeepCollectionEquality().hash(_recentlyUsedUsers),
         const DeepCollectionEquality().hash(_hashtags)
       ]);
@@ -683,6 +710,7 @@ abstract class _AccountSettings implements AccountSettings {
       final bool keepOriginalFilename,
       final List<MuteWord> mutedWords,
       final List<MuteWord> hardMutedWords,
+      final List<String> mutedEmojis,
       final List<String> recentlyUsedUsers,
       final List<String> hashtags}) = _$AccountSettingsImpl;
 
@@ -731,7 +759,9 @@ abstract class _AccountSettings implements AccountSettings {
   @override
   List<MuteWord> get mutedWords;
   @override
-  List<MuteWord> get hardMutedWords; // UserSelectDialog
+  List<MuteWord> get hardMutedWords;
+  @override
+  List<String> get mutedEmojis; // UserSelectDialog
   @override
   List<String> get recentlyUsedUsers; // PostForm
   @override

@@ -19,7 +19,9 @@ mixin _$MfmConfig {
   MisskeyColors get colors => throw _privateConstructorUsedError;
   bool get simple => throw _privateConstructorUsedError;
   TextStyle get style => throw _privateConstructorUsedError;
-  Widget Function(String, double, double, TextStyle) get emojiBuilder =>
+  Widget Function(String, double, double, TextStyle) get customEmojiBuilder =>
+      throw _privateConstructorUsedError;
+  Widget Function(String, TextStyle) get unicodeEmojiBuilder =>
       throw _privateConstructorUsedError;
   Widget Function(String, String?, double, double) get mentionBuilder =>
       throw _privateConstructorUsedError;
@@ -54,7 +56,8 @@ abstract class $MfmConfigCopyWith<$Res> {
       {MisskeyColors colors,
       bool simple,
       TextStyle style,
-      Widget Function(String, double, double, TextStyle) emojiBuilder,
+      Widget Function(String, double, double, TextStyle) customEmojiBuilder,
+      Widget Function(String, TextStyle) unicodeEmojiBuilder,
       Widget Function(String, String?, double, double) mentionBuilder,
       void Function(String)? onTapEmoji,
       void Function(String)? onLinkTap,
@@ -91,7 +94,8 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
     Object? colors = null,
     Object? simple = null,
     Object? style = null,
-    Object? emojiBuilder = null,
+    Object? customEmojiBuilder = null,
+    Object? unicodeEmojiBuilder = null,
     Object? mentionBuilder = null,
     Object? onTapEmoji = freezed,
     Object? onLinkTap = freezed,
@@ -120,10 +124,14 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
               as TextStyle,
-      emojiBuilder: null == emojiBuilder
-          ? _value.emojiBuilder
-          : emojiBuilder // ignore: cast_nullable_to_non_nullable
+      customEmojiBuilder: null == customEmojiBuilder
+          ? _value.customEmojiBuilder
+          : customEmojiBuilder // ignore: cast_nullable_to_non_nullable
               as Widget Function(String, double, double, TextStyle),
+      unicodeEmojiBuilder: null == unicodeEmojiBuilder
+          ? _value.unicodeEmojiBuilder
+          : unicodeEmojiBuilder // ignore: cast_nullable_to_non_nullable
+              as Widget Function(String, TextStyle),
       mentionBuilder: null == mentionBuilder
           ? _value.mentionBuilder
           : mentionBuilder // ignore: cast_nullable_to_non_nullable
@@ -206,7 +214,8 @@ abstract class _$$MfmConfigImplCopyWith<$Res>
       {MisskeyColors colors,
       bool simple,
       TextStyle style,
-      Widget Function(String, double, double, TextStyle) emojiBuilder,
+      Widget Function(String, double, double, TextStyle) customEmojiBuilder,
+      Widget Function(String, TextStyle) unicodeEmojiBuilder,
       Widget Function(String, String?, double, double) mentionBuilder,
       void Function(String)? onTapEmoji,
       void Function(String)? onLinkTap,
@@ -242,7 +251,8 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
     Object? colors = null,
     Object? simple = null,
     Object? style = null,
-    Object? emojiBuilder = null,
+    Object? customEmojiBuilder = null,
+    Object? unicodeEmojiBuilder = null,
     Object? mentionBuilder = null,
     Object? onTapEmoji = freezed,
     Object? onLinkTap = freezed,
@@ -271,10 +281,14 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
               as TextStyle,
-      emojiBuilder: null == emojiBuilder
-          ? _value.emojiBuilder
-          : emojiBuilder // ignore: cast_nullable_to_non_nullable
+      customEmojiBuilder: null == customEmojiBuilder
+          ? _value.customEmojiBuilder
+          : customEmojiBuilder // ignore: cast_nullable_to_non_nullable
               as Widget Function(String, double, double, TextStyle),
+      unicodeEmojiBuilder: null == unicodeEmojiBuilder
+          ? _value.unicodeEmojiBuilder
+          : unicodeEmojiBuilder // ignore: cast_nullable_to_non_nullable
+              as Widget Function(String, TextStyle),
       mentionBuilder: null == mentionBuilder
           ? _value.mentionBuilder
           : mentionBuilder // ignore: cast_nullable_to_non_nullable
@@ -342,7 +356,8 @@ class _$MfmConfigImpl implements _MfmConfig {
       {required this.colors,
       required this.simple,
       required this.style,
-      required this.emojiBuilder,
+      required this.customEmojiBuilder,
+      required this.unicodeEmojiBuilder,
       required this.mentionBuilder,
       this.onTapEmoji,
       this.onLinkTap,
@@ -365,7 +380,9 @@ class _$MfmConfigImpl implements _MfmConfig {
   @override
   final TextStyle style;
   @override
-  final Widget Function(String, double, double, TextStyle) emojiBuilder;
+  final Widget Function(String, double, double, TextStyle) customEmojiBuilder;
+  @override
+  final Widget Function(String, TextStyle) unicodeEmojiBuilder;
   @override
   final Widget Function(String, String?, double, double) mentionBuilder;
   @override
@@ -402,7 +419,7 @@ class _$MfmConfigImpl implements _MfmConfig {
 
   @override
   String toString() {
-    return 'MfmConfig(colors: $colors, simple: $simple, style: $style, emojiBuilder: $emojiBuilder, mentionBuilder: $mentionBuilder, onTapEmoji: $onTapEmoji, onLinkTap: $onLinkTap, onLinkLongPress: $onLinkLongPress, onHashtagTap: $onHashtagTap, onClickEv: $onClickEv, shouldNyaize: $shouldNyaize, useAdvanced: $useAdvanced, useAnimation: $useAnimation, scale: $scale, opacity: $opacity, align: $align, overflow: $overflow, maxLines: $maxLines)';
+    return 'MfmConfig(colors: $colors, simple: $simple, style: $style, customEmojiBuilder: $customEmojiBuilder, unicodeEmojiBuilder: $unicodeEmojiBuilder, mentionBuilder: $mentionBuilder, onTapEmoji: $onTapEmoji, onLinkTap: $onLinkTap, onLinkLongPress: $onLinkLongPress, onHashtagTap: $onHashtagTap, onClickEv: $onClickEv, shouldNyaize: $shouldNyaize, useAdvanced: $useAdvanced, useAnimation: $useAnimation, scale: $scale, opacity: $opacity, align: $align, overflow: $overflow, maxLines: $maxLines)';
   }
 
   @override
@@ -413,8 +430,10 @@ class _$MfmConfigImpl implements _MfmConfig {
             (identical(other.colors, colors) || other.colors == colors) &&
             (identical(other.simple, simple) || other.simple == simple) &&
             (identical(other.style, style) || other.style == style) &&
-            (identical(other.emojiBuilder, emojiBuilder) ||
-                other.emojiBuilder == emojiBuilder) &&
+            (identical(other.customEmojiBuilder, customEmojiBuilder) ||
+                other.customEmojiBuilder == customEmojiBuilder) &&
+            (identical(other.unicodeEmojiBuilder, unicodeEmojiBuilder) ||
+                other.unicodeEmojiBuilder == unicodeEmojiBuilder) &&
             (identical(other.mentionBuilder, mentionBuilder) ||
                 other.mentionBuilder == mentionBuilder) &&
             (identical(other.onTapEmoji, onTapEmoji) ||
@@ -443,26 +462,28 @@ class _$MfmConfigImpl implements _MfmConfig {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      colors,
-      simple,
-      style,
-      emojiBuilder,
-      mentionBuilder,
-      onTapEmoji,
-      onLinkTap,
-      onLinkLongPress,
-      onHashtagTap,
-      onClickEv,
-      shouldNyaize,
-      useAdvanced,
-      useAnimation,
-      scale,
-      opacity,
-      align,
-      overflow,
-      maxLines);
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        colors,
+        simple,
+        style,
+        customEmojiBuilder,
+        unicodeEmojiBuilder,
+        mentionBuilder,
+        onTapEmoji,
+        onLinkTap,
+        onLinkLongPress,
+        onHashtagTap,
+        onClickEv,
+        shouldNyaize,
+        useAdvanced,
+        useAnimation,
+        scale,
+        opacity,
+        align,
+        overflow,
+        maxLines
+      ]);
 
   /// Create a copy of MfmConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -479,7 +500,8 @@ abstract class _MfmConfig implements MfmConfig {
       required final bool simple,
       required final TextStyle style,
       required final Widget Function(String, double, double, TextStyle)
-          emojiBuilder,
+          customEmojiBuilder,
+      required final Widget Function(String, TextStyle) unicodeEmojiBuilder,
       required final Widget Function(String, String?, double, double)
           mentionBuilder,
       final void Function(String)? onTapEmoji,
@@ -503,7 +525,9 @@ abstract class _MfmConfig implements MfmConfig {
   @override
   TextStyle get style;
   @override
-  Widget Function(String, double, double, TextStyle) get emojiBuilder;
+  Widget Function(String, double, double, TextStyle) get customEmojiBuilder;
+  @override
+  Widget Function(String, TextStyle) get unicodeEmojiBuilder;
   @override
   Widget Function(String, String?, double, double) get mentionBuilder;
   @override
