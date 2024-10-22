@@ -245,7 +245,7 @@ jobs:
 
       - name: Dump AuthKey
         working-directory: ios
-        run: echo $APP_STORE_CONNECT_PRIVATE_KEY > AuthKey.p8
+        run: echo "$APP_STORE_CONNECT_PRIVATE_KEY" > AuthKey.p8
 
       - name: Create IPA
         if: startsWith(github.ref, 'refs/tags/')
