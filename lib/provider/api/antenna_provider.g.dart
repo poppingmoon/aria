@@ -6,7 +6,7 @@ part of 'antenna_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$antennaHash() => r'5cb55c8fa339702ead6c2bb38145571125d0a634';
+String _$antennaHash() => r'b34a56473eb124ebe5dbc928c338650f26d513c6';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -153,6 +153,8 @@ class AntennaProvider extends AutoDisposeFutureProvider<Antenna> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin AntennaRef on AutoDisposeFutureProviderRef<Antenna> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -171,4 +173,4 @@ class _AntennaProviderElement extends AutoDisposeFutureProviderElement<Antenna>
   String get antennaId => (origin as AntennaProvider).antennaId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -6,7 +6,7 @@ part of 'drive_folder_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$driveFolderHash() => r'945eebb75229331f57335fa1171ea334501d6719';
+String _$driveFolderHash() => r'26b085d970a50384fd0e10933616d48d4365391b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,6 +154,8 @@ class DriveFolderProvider extends AutoDisposeFutureProvider<DriveFolder> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin DriveFolderRef on AutoDisposeFutureProviderRef<DriveFolder> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -172,4 +174,4 @@ class _DriveFolderProviderElement
   String get folderId => (origin as DriveFolderProvider).folderId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

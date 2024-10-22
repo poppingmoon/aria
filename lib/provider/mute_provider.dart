@@ -1,4 +1,5 @@
 import 'package:aho_corasick/aho_corasick.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,7 +9,7 @@ part 'mute_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 (AhoCorasick, List<List<String>>, List<RegExp>) mute(
-  MuteRef ref,
+  Ref ref,
   List<MuteWord> mutedWords,
 ) {
   final acable = <String>[];

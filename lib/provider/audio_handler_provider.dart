@@ -1,12 +1,13 @@
 import 'package:audio_service/audio_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'audio_handler_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-FutureOr<AudioHandler> audioHandler(AudioHandlerRef ref) {
+FutureOr<AudioHandler> audioHandler(Ref ref) {
   return switch (defaultTargetPlatform) {
     TargetPlatform.android ||
     TargetPlatform.iOS ||
@@ -24,19 +25,19 @@ FutureOr<AudioHandler> audioHandler(AudioHandlerRef ref) {
 }
 
 @riverpod
-Stream<MediaItem?> mediaItem(MediaItemRef ref) {
+Stream<MediaItem?> mediaItem(Ref ref) {
   return ref.watch(audioHandlerProvider).valueOrNull?.mediaItem ??
       const Stream.empty();
 }
 
 @riverpod
-Stream<PlaybackState> playbackState(PlaybackStateRef ref) {
+Stream<PlaybackState> playbackState(Ref ref) {
   return ref.watch(audioHandlerProvider).valueOrNull?.playbackState ??
       const Stream.empty();
 }
 
 @riverpod
-Stream<Duration> position(PositionRef ref) {
+Stream<Duration> position(Ref ref) {
   ref.listen(audioHandlerProvider, (_, __) => ref.invalidateSelf());
   return AudioService.position;
 }

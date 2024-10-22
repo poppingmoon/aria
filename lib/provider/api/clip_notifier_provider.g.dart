@@ -173,6 +173,8 @@ class ClipNotifierProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ClipNotifierRef on AutoDisposeAsyncNotifierProviderRef<Clip> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -192,4 +194,4 @@ class _ClipNotifierProviderElement
   String get clipId => (origin as ClipNotifierProvider).clipId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

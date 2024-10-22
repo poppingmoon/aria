@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsSvSe extends Translations {
+class TranslationsSvSe extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsSvSe.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsSvSe({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.svSe,
@@ -18,23 +21,23 @@ class _StringsSvSe extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <sv-SE>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsSvSe _root = this; // ignore: unused_field
+	late final TranslationsSvSe _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaSvSe aria = _StringsAriaSvSe._(_root);
-	@override late final _StringsMisskeySvSe misskey = _StringsMisskeySvSe._(_root);
+	@override late final _TranslationsAriaSvSe aria = _TranslationsAriaSvSe._(_root);
+	@override late final _TranslationsMisskeySvSe misskey = _TranslationsMisskeySvSe._(_root);
 }
 
 // Path: aria
-class _StringsAriaSvSe extends _StringsAriaEnUs {
-	_StringsAriaSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsAriaSvSe extends TranslationsAriaEnUs {
+	_TranslationsAriaSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -63,10 +66,10 @@ class _StringsAriaSvSe extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeySvSe extends _StringsMisskeyEnUs {
-	_StringsMisskeySvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'Svenska';
@@ -558,76 +561,76 @@ class _StringsMisskeySvSe extends _StringsMisskeyEnUs {
 	@override String get icon => 'Profilbild';
 	@override String get replies => 'Svara';
 	@override String get renotes => 'Omnotera';
-	@override late final _StringsMisskeyDeliverySvSe delivery_ = _StringsMisskeyDeliverySvSe._(_root);
-	@override late final _StringsMisskeyAchievementsSvSe achievements_ = _StringsMisskeyAchievementsSvSe._(_root);
-	@override late final _StringsMisskeyFfVisibilitySvSe ffVisibility_ = _StringsMisskeyFfVisibilitySvSe._(_root);
-	@override late final _StringsMisskeyEmailSvSe email_ = _StringsMisskeyEmailSvSe._(_root);
-	@override late final _StringsMisskeyChannelSvSe channel_ = _StringsMisskeyChannelSvSe._(_root);
-	@override late final _StringsMisskeyThemeSvSe theme_ = _StringsMisskeyThemeSvSe._(_root);
-	@override late final _StringsMisskeySfxSvSe sfx_ = _StringsMisskeySfxSvSe._(_root);
-	@override late final _StringsMisskeyX2faSvSe x2fa_ = _StringsMisskeyX2faSvSe._(_root);
-	@override late final _StringsMisskeyAntennaSourcesSvSe antennaSources_ = _StringsMisskeyAntennaSourcesSvSe._(_root);
-	@override late final _StringsMisskeyWidgetsSvSe widgets_ = _StringsMisskeyWidgetsSvSe._(_root);
-	@override late final _StringsMisskeyCwSvSe cw_ = _StringsMisskeyCwSvSe._(_root);
-	@override late final _StringsMisskeyVisibilitySvSe visibility_ = _StringsMisskeyVisibilitySvSe._(_root);
-	@override late final _StringsMisskeyProfileSvSe profile_ = _StringsMisskeyProfileSvSe._(_root);
-	@override late final _StringsMisskeyExportOrImportSvSe exportOrImport_ = _StringsMisskeyExportOrImportSvSe._(_root);
-	@override late final _StringsMisskeyChartsSvSe charts_ = _StringsMisskeyChartsSvSe._(_root);
-	@override late final _StringsMisskeyTimelinesSvSe timelines_ = _StringsMisskeyTimelinesSvSe._(_root);
-	@override late final _StringsMisskeyPagesSvSe pages_ = _StringsMisskeyPagesSvSe._(_root);
-	@override late final _StringsMisskeyNotificationSvSe notification_ = _StringsMisskeyNotificationSvSe._(_root);
-	@override late final _StringsMisskeyDeckSvSe deck_ = _StringsMisskeyDeckSvSe._(_root);
-	@override late final _StringsMisskeyWebhookSettingsSvSe webhookSettings_ = _StringsMisskeyWebhookSettingsSvSe._(_root);
-	@override late final _StringsMisskeyAbuseReportSvSe abuseReport_ = _StringsMisskeyAbuseReportSvSe._(_root);
-	@override late final _StringsMisskeyModerationLogTypesSvSe moderationLogTypes_ = _StringsMisskeyModerationLogTypesSvSe._(_root);
+	@override late final _TranslationsMisskeyDeliverySvSe delivery_ = _TranslationsMisskeyDeliverySvSe._(_root);
+	@override late final _TranslationsMisskeyAchievementsSvSe achievements_ = _TranslationsMisskeyAchievementsSvSe._(_root);
+	@override late final _TranslationsMisskeyFfVisibilitySvSe ffVisibility_ = _TranslationsMisskeyFfVisibilitySvSe._(_root);
+	@override late final _TranslationsMisskeyEmailSvSe email_ = _TranslationsMisskeyEmailSvSe._(_root);
+	@override late final _TranslationsMisskeyChannelSvSe channel_ = _TranslationsMisskeyChannelSvSe._(_root);
+	@override late final _TranslationsMisskeyThemeSvSe theme_ = _TranslationsMisskeyThemeSvSe._(_root);
+	@override late final _TranslationsMisskeySfxSvSe sfx_ = _TranslationsMisskeySfxSvSe._(_root);
+	@override late final _TranslationsMisskeyX2faSvSe x2fa_ = _TranslationsMisskeyX2faSvSe._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesSvSe antennaSources_ = _TranslationsMisskeyAntennaSourcesSvSe._(_root);
+	@override late final _TranslationsMisskeyWidgetsSvSe widgets_ = _TranslationsMisskeyWidgetsSvSe._(_root);
+	@override late final _TranslationsMisskeyCwSvSe cw_ = _TranslationsMisskeyCwSvSe._(_root);
+	@override late final _TranslationsMisskeyVisibilitySvSe visibility_ = _TranslationsMisskeyVisibilitySvSe._(_root);
+	@override late final _TranslationsMisskeyProfileSvSe profile_ = _TranslationsMisskeyProfileSvSe._(_root);
+	@override late final _TranslationsMisskeyExportOrImportSvSe exportOrImport_ = _TranslationsMisskeyExportOrImportSvSe._(_root);
+	@override late final _TranslationsMisskeyChartsSvSe charts_ = _TranslationsMisskeyChartsSvSe._(_root);
+	@override late final _TranslationsMisskeyTimelinesSvSe timelines_ = _TranslationsMisskeyTimelinesSvSe._(_root);
+	@override late final _TranslationsMisskeyPagesSvSe pages_ = _TranslationsMisskeyPagesSvSe._(_root);
+	@override late final _TranslationsMisskeyNotificationSvSe notification_ = _TranslationsMisskeyNotificationSvSe._(_root);
+	@override late final _TranslationsMisskeyDeckSvSe deck_ = _TranslationsMisskeyDeckSvSe._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSvSe webhookSettings_ = _TranslationsMisskeyWebhookSettingsSvSe._(_root);
+	@override late final _TranslationsMisskeyAbuseReportSvSe abuseReport_ = _TranslationsMisskeyAbuseReportSvSe._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesSvSe moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesSvSe._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliverySvSe extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliverySvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliverySvSe extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliverySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'Suspenderad';
-	@override late final _StringsMisskeyDeliveryTypeSvSe type_ = _StringsMisskeyDeliveryTypeSvSe._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeSvSe type_ = _TranslationsMisskeyDeliveryTypeSvSe._(_root);
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsSvSe extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsSvSe extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesSvSe types_ = _StringsMisskeyAchievementsTypesSvSe._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSvSe types_ = _TranslationsMisskeyAchievementsTypesSvSe._(_root);
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilitySvSe extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilitySvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilitySvSe extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilitySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Publicera';
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailSvSe extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailSvSe extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowSvSe follow_ = _StringsMisskeyEmailFollowSvSe._(_root);
+	@override late final _TranslationsMisskeyEmailFollowSvSe follow_ = _TranslationsMisskeyEmailFollowSvSe._(_root);
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelSvSe extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelSvSe extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get setBanner => 'Välj banner';
@@ -635,20 +638,20 @@ class _StringsMisskeyChannelSvSe extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeSvSe extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeSvSe extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyThemeKeysSvSe keys = _StringsMisskeyThemeKeysSvSe._(_root);
+	@override late final _TranslationsMisskeyThemeKeysSvSe keys = _TranslationsMisskeyThemeKeysSvSe._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxSvSe extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxSvSe extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Noter';
@@ -656,20 +659,20 @@ class _StringsMisskeySfxSvSe extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faSvSe extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faSvSe extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get renewTOTPCancel => 'Nej tack';
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesSvSe extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesSvSe extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Alla noter';
@@ -679,10 +682,10 @@ class _StringsMisskeyAntennaSourcesSvSe extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsSvSe extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsSvSe extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Profil';
@@ -692,24 +695,24 @@ class _StringsMisskeyWidgetsSvSe extends _StringsMisskeyWidgetsEnUs {
 	@override String get activity => 'Aktivitet';
 	@override String get federation => 'Federation';
 	@override String get jobQueue => 'Jobbkö';
-	@override late final _StringsMisskeyWidgetsUserListSvSe userList_ = _StringsMisskeyWidgetsUserListSvSe._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListSvSe userList_ = _TranslationsMisskeyWidgetsUserListSvSe._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwSvSe extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwSvSe extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get show => 'Ladda mer';
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilitySvSe extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilitySvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilitySvSe extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilitySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Hem';
@@ -717,10 +720,10 @@ class _StringsMisskeyVisibilitySvSe extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileSvSe extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileSvSe extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Namn';
@@ -730,10 +733,10 @@ class _StringsMisskeyProfileSvSe extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportSvSe extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportSvSe extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'Alla noter';
@@ -744,20 +747,20 @@ class _StringsMisskeyExportOrImportSvSe extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsSvSe extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsSvSe extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Federation';
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesSvSe extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesSvSe extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Hem';
@@ -765,43 +768,43 @@ class _StringsMisskeyTimelinesSvSe extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesSvSe extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesSvSe extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyPagesBlocksSvSe blocks = _StringsMisskeyPagesBlocksSvSe._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksSvSe blocks = _TranslationsMisskeyPagesBlocksSvSe._(_root);
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationSvSe extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationSvSe extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get youWereFollowed => 'följde dig';
 	@override String unreadAntennaNote({required Object name}) => 'Antenn ${name}';
-	@override late final _StringsMisskeyNotificationTypesSvSe types_ = _StringsMisskeyNotificationTypesSvSe._(_root);
-	@override late final _StringsMisskeyNotificationActionsSvSe actions_ = _StringsMisskeyNotificationActionsSvSe._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesSvSe types_ = _TranslationsMisskeyNotificationTypesSvSe._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsSvSe actions_ = _TranslationsMisskeyNotificationActionsSvSe._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckSvSe extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckSvSe extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyDeckColumnsSvSe columns_ = _StringsMisskeyDeckColumnsSvSe._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsSvSe columns_ = _TranslationsMisskeyDeckColumnsSvSe._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsSvSe extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsSvSe extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Namn';
@@ -809,20 +812,20 @@ class _StringsMisskeyWebhookSettingsSvSe extends _StringsMisskeyWebhookSettingsE
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportSvSe extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportSvSe extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientSvSe notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientSvSe._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientSvSe notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientSvSe._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesSvSe extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesSvSe extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'Suspendera';
@@ -830,40 +833,40 @@ class _StringsMisskeyModerationLogTypesSvSe extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeSvSe extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeSvSe extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Publiceras';
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesSvSe extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSvSe extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesOpen3windowsSvSe open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsSvSe._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsSvSe open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsSvSe._(_root);
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowSvSe extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowSvSe extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'följde dig';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysSvSe extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysSvSe extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get mention => 'Nämn';
@@ -871,30 +874,30 @@ class _StringsMisskeyThemeKeysSvSe extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListSvSe extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListSvSe extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Välj lista';
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksSvSe extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksSvSe extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get image => 'Bilder';
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesSvSe extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesSvSe extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => 'Följer';
@@ -906,10 +909,10 @@ class _StringsMisskeyNotificationTypesSvSe extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsSvSe extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsSvSe extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get reply => 'Svara';
@@ -917,10 +920,10 @@ class _StringsMisskeyNotificationActionsSvSe extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsSvSe extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsSvSe extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get notifications => 'Notifikationer';
@@ -932,20 +935,20 @@ class _StringsMisskeyDeckColumnsSvSe extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientSvSe extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientSvSe extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(_root);
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsSvSe extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOpen3windowsSvSe extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_TranslationsMisskeyAchievementsTypesOpen3windowsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Flera Fönster';
@@ -953,10 +956,10 @@ class _StringsMisskeyAchievementsTypesOpen3windowsSvSe extends _StringsMisskeyAc
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(_StringsSvSe root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
 
-	@override final _StringsSvSe _root; // ignore: unused_field
+	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'E-post';

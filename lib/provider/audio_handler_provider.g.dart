@@ -6,7 +6,7 @@ part of 'audio_handler_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$audioHandlerHash() => r'094da1b238c0ae0b0342e3c0454e165ed1fdec73';
+String _$audioHandlerHash() => r'5f474609ac9d7823ac48789e6107b172fbb913f1';
 
 /// See also [audioHandler].
 @ProviderFor(audioHandler)
@@ -19,8 +19,10 @@ final audioHandlerProvider = FutureProvider<AudioHandler>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef AudioHandlerRef = FutureProviderRef<AudioHandler>;
-String _$mediaItemHash() => r'1c17a5fbde67766fb9727bf628c013b1caf189a4';
+String _$mediaItemHash() => r'23c018b59c06e00e9f1b34f13791e53c5c9064f8';
 
 /// See also [mediaItem].
 @ProviderFor(mediaItem)
@@ -33,8 +35,10 @@ final mediaItemProvider = AutoDisposeStreamProvider<MediaItem?>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef MediaItemRef = AutoDisposeStreamProviderRef<MediaItem?>;
-String _$playbackStateHash() => r'd5f6138c11c77919fb8a44d6d1e9d9825c4ccf43';
+String _$playbackStateHash() => r'0aa248311c0295f344cc3b89b8251a73c6a4b23f';
 
 /// See also [playbackState].
 @ProviderFor(playbackState)
@@ -48,8 +52,10 @@ final playbackStateProvider = AutoDisposeStreamProvider<PlaybackState>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef PlaybackStateRef = AutoDisposeStreamProviderRef<PlaybackState>;
-String _$positionHash() => r'0825ac909ee5c910d2dc9784b640b3fd67e56ec3';
+String _$positionHash() => r'f81e7e2f2e292d8540e3e1d0505943289cfe340e';
 
 /// See also [position].
 @ProviderFor(position)
@@ -62,6 +68,8 @@ final positionProvider = AutoDisposeStreamProvider<Duration>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef PositionRef = AutoDisposeStreamProviderRef<Duration>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

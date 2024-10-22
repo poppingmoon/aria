@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsKoKr extends Translations {
+class TranslationsKoKr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsKoKr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsKoKr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.koKr,
@@ -18,24 +21,24 @@ class _StringsKoKr extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ko-KR>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsKoKr _root = this; // ignore: unused_field
+	late final TranslationsKoKr _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaKoKr aria = _StringsAriaKoKr._(_root);
-	@override late final _StringsMisskeyKoKr misskey = _StringsMisskeyKoKr._(_root);
-	@override late final _StringsMisskeyIOKoKr misskeyIO = _StringsMisskeyIOKoKr._(_root);
+	@override late final _TranslationsAriaKoKr aria = _TranslationsAriaKoKr._(_root);
+	@override late final _TranslationsMisskeyKoKr misskey = _TranslationsMisskeyKoKr._(_root);
+	@override late final _TranslationsMisskeyIOKoKr misskeyIO = _TranslationsMisskeyIOKoKr._(_root);
 }
 
 // Path: aria
-class _StringsAriaKoKr extends _StringsAriaEnUs {
-	_StringsAriaKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
+	_TranslationsAriaKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get aboutAria => 'Aria란';
@@ -235,10 +238,10 @@ class _StringsAriaKoKr extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
-	_StringsMisskeyKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => '한국어';
@@ -1529,97 +1532,97 @@ class _StringsMisskeyKoKr extends _StringsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '패스키를 검증했으나, 비밀번호 없이 로그인하기가 꺼져 있습니다.';
 	@override String get messageToFollower => '팔로워에 보낼 메시지';
 	@override String get target => '대상';
-	@override late final _StringsMisskeyAbuseUserReportKoKr abuseUserReport_ = _StringsMisskeyAbuseUserReportKoKr._(_root);
-	@override late final _StringsMisskeyDeliveryKoKr delivery_ = _StringsMisskeyDeliveryKoKr._(_root);
-	@override late final _StringsMisskeyBubbleGameKoKr bubbleGame_ = _StringsMisskeyBubbleGameKoKr._(_root);
-	@override late final _StringsMisskeyAnnouncementKoKr announcement_ = _StringsMisskeyAnnouncementKoKr._(_root);
-	@override late final _StringsMisskeyInitialAccountSettingKoKr initialAccountSetting_ = _StringsMisskeyInitialAccountSettingKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialKoKr initialTutorial_ = _StringsMisskeyInitialTutorialKoKr._(_root);
-	@override late final _StringsMisskeyTimelineDescriptionKoKr timelineDescription_ = _StringsMisskeyTimelineDescriptionKoKr._(_root);
-	@override late final _StringsMisskeyServerRulesKoKr serverRules_ = _StringsMisskeyServerRulesKoKr._(_root);
-	@override late final _StringsMisskeyServerSettingsKoKr serverSettings_ = _StringsMisskeyServerSettingsKoKr._(_root);
-	@override late final _StringsMisskeyAccountMigrationKoKr accountMigration_ = _StringsMisskeyAccountMigrationKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsKoKr achievements_ = _StringsMisskeyAchievementsKoKr._(_root);
-	@override late final _StringsMisskeyRoleKoKr role_ = _StringsMisskeyRoleKoKr._(_root);
-	@override late final _StringsMisskeySensitiveMediaDetectionKoKr sensitiveMediaDetection_ = _StringsMisskeySensitiveMediaDetectionKoKr._(_root);
-	@override late final _StringsMisskeyEmailUnavailableKoKr emailUnavailable_ = _StringsMisskeyEmailUnavailableKoKr._(_root);
-	@override late final _StringsMisskeyFfVisibilityKoKr ffVisibility_ = _StringsMisskeyFfVisibilityKoKr._(_root);
-	@override late final _StringsMisskeySignupKoKr signup_ = _StringsMisskeySignupKoKr._(_root);
-	@override late final _StringsMisskeyAccountDeleteKoKr accountDelete_ = _StringsMisskeyAccountDeleteKoKr._(_root);
-	@override late final _StringsMisskeyAdKoKr ad_ = _StringsMisskeyAdKoKr._(_root);
-	@override late final _StringsMisskeyForgotPasswordKoKr forgotPassword_ = _StringsMisskeyForgotPasswordKoKr._(_root);
-	@override late final _StringsMisskeyGalleryKoKr gallery_ = _StringsMisskeyGalleryKoKr._(_root);
-	@override late final _StringsMisskeyEmailKoKr email_ = _StringsMisskeyEmailKoKr._(_root);
-	@override late final _StringsMisskeyPluginKoKr plugin_ = _StringsMisskeyPluginKoKr._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsKoKr preferencesBackups_ = _StringsMisskeyPreferencesBackupsKoKr._(_root);
-	@override late final _StringsMisskeyRegistryKoKr registry_ = _StringsMisskeyRegistryKoKr._(_root);
-	@override late final _StringsMisskeyAboutMisskeyKoKr aboutMisskey_ = _StringsMisskeyAboutMisskeyKoKr._(_root);
-	@override late final _StringsMisskeyDisplayOfSensitiveMediaKoKr displayOfSensitiveMedia_ = _StringsMisskeyDisplayOfSensitiveMediaKoKr._(_root);
-	@override late final _StringsMisskeyInstanceTickerKoKr instanceTicker_ = _StringsMisskeyInstanceTickerKoKr._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorKoKr serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorKoKr._(_root);
-	@override late final _StringsMisskeyChannelKoKr channel_ = _StringsMisskeyChannelKoKr._(_root);
-	@override late final _StringsMisskeyMenuDisplayKoKr menuDisplay_ = _StringsMisskeyMenuDisplayKoKr._(_root);
-	@override late final _StringsMisskeyWordMuteKoKr wordMute_ = _StringsMisskeyWordMuteKoKr._(_root);
-	@override late final _StringsMisskeyInstanceMuteKoKr instanceMute_ = _StringsMisskeyInstanceMuteKoKr._(_root);
-	@override late final _StringsMisskeyThemeKoKr theme_ = _StringsMisskeyThemeKoKr._(_root);
-	@override late final _StringsMisskeySfxKoKr sfx_ = _StringsMisskeySfxKoKr._(_root);
-	@override late final _StringsMisskeySoundSettingsKoKr soundSettings_ = _StringsMisskeySoundSettingsKoKr._(_root);
-	@override late final _StringsMisskeyAgoKoKr ago_ = _StringsMisskeyAgoKoKr._(_root);
-	@override late final _StringsMisskeyTimeInKoKr timeIn_ = _StringsMisskeyTimeInKoKr._(_root);
-	@override late final _StringsMisskeyTimeKoKr time_ = _StringsMisskeyTimeKoKr._(_root);
-	@override late final _StringsMisskeyX2faKoKr x2fa_ = _StringsMisskeyX2faKoKr._(_root);
-	@override late final _StringsMisskeyPermissionsKoKr permissions_ = _StringsMisskeyPermissionsKoKr._(_root);
-	@override late final _StringsMisskeyAuthKoKr auth_ = _StringsMisskeyAuthKoKr._(_root);
-	@override late final _StringsMisskeyAntennaSourcesKoKr antennaSources_ = _StringsMisskeyAntennaSourcesKoKr._(_root);
-	@override late final _StringsMisskeyWeekdayKoKr weekday_ = _StringsMisskeyWeekdayKoKr._(_root);
-	@override late final _StringsMisskeyWidgetsKoKr widgets_ = _StringsMisskeyWidgetsKoKr._(_root);
-	@override late final _StringsMisskeyCwKoKr cw_ = _StringsMisskeyCwKoKr._(_root);
-	@override late final _StringsMisskeyPollKoKr poll_ = _StringsMisskeyPollKoKr._(_root);
-	@override late final _StringsMisskeyVisibilityKoKr visibility_ = _StringsMisskeyVisibilityKoKr._(_root);
-	@override late final _StringsMisskeyPostFormKoKr postForm_ = _StringsMisskeyPostFormKoKr._(_root);
-	@override late final _StringsMisskeyProfileKoKr profile_ = _StringsMisskeyProfileKoKr._(_root);
-	@override late final _StringsMisskeyExportOrImportKoKr exportOrImport_ = _StringsMisskeyExportOrImportKoKr._(_root);
-	@override late final _StringsMisskeyChartsKoKr charts_ = _StringsMisskeyChartsKoKr._(_root);
-	@override late final _StringsMisskeyInstanceChartsKoKr instanceCharts_ = _StringsMisskeyInstanceChartsKoKr._(_root);
-	@override late final _StringsMisskeyTimelinesKoKr timelines_ = _StringsMisskeyTimelinesKoKr._(_root);
-	@override late final _StringsMisskeyPlayKoKr play_ = _StringsMisskeyPlayKoKr._(_root);
-	@override late final _StringsMisskeyPagesKoKr pages_ = _StringsMisskeyPagesKoKr._(_root);
-	@override late final _StringsMisskeyRelayStatusKoKr relayStatus_ = _StringsMisskeyRelayStatusKoKr._(_root);
-	@override late final _StringsMisskeyNotificationKoKr notification_ = _StringsMisskeyNotificationKoKr._(_root);
-	@override late final _StringsMisskeyDeckKoKr deck_ = _StringsMisskeyDeckKoKr._(_root);
-	@override late final _StringsMisskeyDialogKoKr dialog_ = _StringsMisskeyDialogKoKr._(_root);
-	@override late final _StringsMisskeyDisabledTimelineKoKr disabledTimeline_ = _StringsMisskeyDisabledTimelineKoKr._(_root);
-	@override late final _StringsMisskeyDrivecleanerKoKr drivecleaner_ = _StringsMisskeyDrivecleanerKoKr._(_root);
-	@override late final _StringsMisskeyWebhookSettingsKoKr webhookSettings_ = _StringsMisskeyWebhookSettingsKoKr._(_root);
-	@override late final _StringsMisskeyAbuseReportKoKr abuseReport_ = _StringsMisskeyAbuseReportKoKr._(_root);
-	@override late final _StringsMisskeyModerationLogTypesKoKr moderationLogTypes_ = _StringsMisskeyModerationLogTypesKoKr._(_root);
-	@override late final _StringsMisskeyFileViewerKoKr fileViewer_ = _StringsMisskeyFileViewerKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerKoKr externalResourceInstaller_ = _StringsMisskeyExternalResourceInstallerKoKr._(_root);
-	@override late final _StringsMisskeyDataSaverKoKr dataSaver_ = _StringsMisskeyDataSaverKoKr._(_root);
-	@override late final _StringsMisskeyHemisphereKoKr hemisphere_ = _StringsMisskeyHemisphereKoKr._(_root);
-	@override late final _StringsMisskeyReversiKoKr reversi_ = _StringsMisskeyReversiKoKr._(_root);
-	@override late final _StringsMisskeyOfflineScreenKoKr offlineScreen_ = _StringsMisskeyOfflineScreenKoKr._(_root);
-	@override late final _StringsMisskeyUrlPreviewSettingKoKr urlPreviewSetting_ = _StringsMisskeyUrlPreviewSettingKoKr._(_root);
-	@override late final _StringsMisskeyMediaControlsKoKr mediaControls_ = _StringsMisskeyMediaControlsKoKr._(_root);
-	@override late final _StringsMisskeyContextMenuKoKr contextMenu_ = _StringsMisskeyContextMenuKoKr._(_root);
-	@override late final _StringsMisskeyEmbedCodeGenKoKr embedCodeGen_ = _StringsMisskeyEmbedCodeGenKoKr._(_root);
+	@override late final _TranslationsMisskeyAbuseUserReportKoKr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportKoKr._(_root);
+	@override late final _TranslationsMisskeyDeliveryKoKr delivery_ = _TranslationsMisskeyDeliveryKoKr._(_root);
+	@override late final _TranslationsMisskeyBubbleGameKoKr bubbleGame_ = _TranslationsMisskeyBubbleGameKoKr._(_root);
+	@override late final _TranslationsMisskeyAnnouncementKoKr announcement_ = _TranslationsMisskeyAnnouncementKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingKoKr initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialKoKr initialTutorial_ = _TranslationsMisskeyInitialTutorialKoKr._(_root);
+	@override late final _TranslationsMisskeyTimelineDescriptionKoKr timelineDescription_ = _TranslationsMisskeyTimelineDescriptionKoKr._(_root);
+	@override late final _TranslationsMisskeyServerRulesKoKr serverRules_ = _TranslationsMisskeyServerRulesKoKr._(_root);
+	@override late final _TranslationsMisskeyServerSettingsKoKr serverSettings_ = _TranslationsMisskeyServerSettingsKoKr._(_root);
+	@override late final _TranslationsMisskeyAccountMigrationKoKr accountMigration_ = _TranslationsMisskeyAccountMigrationKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsKoKr achievements_ = _TranslationsMisskeyAchievementsKoKr._(_root);
+	@override late final _TranslationsMisskeyRoleKoKr role_ = _TranslationsMisskeyRoleKoKr._(_root);
+	@override late final _TranslationsMisskeySensitiveMediaDetectionKoKr sensitiveMediaDetection_ = _TranslationsMisskeySensitiveMediaDetectionKoKr._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableKoKr emailUnavailable_ = _TranslationsMisskeyEmailUnavailableKoKr._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityKoKr ffVisibility_ = _TranslationsMisskeyFfVisibilityKoKr._(_root);
+	@override late final _TranslationsMisskeySignupKoKr signup_ = _TranslationsMisskeySignupKoKr._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteKoKr accountDelete_ = _TranslationsMisskeyAccountDeleteKoKr._(_root);
+	@override late final _TranslationsMisskeyAdKoKr ad_ = _TranslationsMisskeyAdKoKr._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordKoKr forgotPassword_ = _TranslationsMisskeyForgotPasswordKoKr._(_root);
+	@override late final _TranslationsMisskeyGalleryKoKr gallery_ = _TranslationsMisskeyGalleryKoKr._(_root);
+	@override late final _TranslationsMisskeyEmailKoKr email_ = _TranslationsMisskeyEmailKoKr._(_root);
+	@override late final _TranslationsMisskeyPluginKoKr plugin_ = _TranslationsMisskeyPluginKoKr._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsKoKr preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsKoKr._(_root);
+	@override late final _TranslationsMisskeyRegistryKoKr registry_ = _TranslationsMisskeyRegistryKoKr._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyKoKr aboutMisskey_ = _TranslationsMisskeyAboutMisskeyKoKr._(_root);
+	@override late final _TranslationsMisskeyDisplayOfSensitiveMediaKoKr displayOfSensitiveMedia_ = _TranslationsMisskeyDisplayOfSensitiveMediaKoKr._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerKoKr instanceTicker_ = _TranslationsMisskeyInstanceTickerKoKr._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorKoKr serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorKoKr._(_root);
+	@override late final _TranslationsMisskeyChannelKoKr channel_ = _TranslationsMisskeyChannelKoKr._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayKoKr menuDisplay_ = _TranslationsMisskeyMenuDisplayKoKr._(_root);
+	@override late final _TranslationsMisskeyWordMuteKoKr wordMute_ = _TranslationsMisskeyWordMuteKoKr._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteKoKr instanceMute_ = _TranslationsMisskeyInstanceMuteKoKr._(_root);
+	@override late final _TranslationsMisskeyThemeKoKr theme_ = _TranslationsMisskeyThemeKoKr._(_root);
+	@override late final _TranslationsMisskeySfxKoKr sfx_ = _TranslationsMisskeySfxKoKr._(_root);
+	@override late final _TranslationsMisskeySoundSettingsKoKr soundSettings_ = _TranslationsMisskeySoundSettingsKoKr._(_root);
+	@override late final _TranslationsMisskeyAgoKoKr ago_ = _TranslationsMisskeyAgoKoKr._(_root);
+	@override late final _TranslationsMisskeyTimeInKoKr timeIn_ = _TranslationsMisskeyTimeInKoKr._(_root);
+	@override late final _TranslationsMisskeyTimeKoKr time_ = _TranslationsMisskeyTimeKoKr._(_root);
+	@override late final _TranslationsMisskeyX2faKoKr x2fa_ = _TranslationsMisskeyX2faKoKr._(_root);
+	@override late final _TranslationsMisskeyPermissionsKoKr permissions_ = _TranslationsMisskeyPermissionsKoKr._(_root);
+	@override late final _TranslationsMisskeyAuthKoKr auth_ = _TranslationsMisskeyAuthKoKr._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesKoKr antennaSources_ = _TranslationsMisskeyAntennaSourcesKoKr._(_root);
+	@override late final _TranslationsMisskeyWeekdayKoKr weekday_ = _TranslationsMisskeyWeekdayKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetsKoKr widgets_ = _TranslationsMisskeyWidgetsKoKr._(_root);
+	@override late final _TranslationsMisskeyCwKoKr cw_ = _TranslationsMisskeyCwKoKr._(_root);
+	@override late final _TranslationsMisskeyPollKoKr poll_ = _TranslationsMisskeyPollKoKr._(_root);
+	@override late final _TranslationsMisskeyVisibilityKoKr visibility_ = _TranslationsMisskeyVisibilityKoKr._(_root);
+	@override late final _TranslationsMisskeyPostFormKoKr postForm_ = _TranslationsMisskeyPostFormKoKr._(_root);
+	@override late final _TranslationsMisskeyProfileKoKr profile_ = _TranslationsMisskeyProfileKoKr._(_root);
+	@override late final _TranslationsMisskeyExportOrImportKoKr exportOrImport_ = _TranslationsMisskeyExportOrImportKoKr._(_root);
+	@override late final _TranslationsMisskeyChartsKoKr charts_ = _TranslationsMisskeyChartsKoKr._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsKoKr instanceCharts_ = _TranslationsMisskeyInstanceChartsKoKr._(_root);
+	@override late final _TranslationsMisskeyTimelinesKoKr timelines_ = _TranslationsMisskeyTimelinesKoKr._(_root);
+	@override late final _TranslationsMisskeyPlayKoKr play_ = _TranslationsMisskeyPlayKoKr._(_root);
+	@override late final _TranslationsMisskeyPagesKoKr pages_ = _TranslationsMisskeyPagesKoKr._(_root);
+	@override late final _TranslationsMisskeyRelayStatusKoKr relayStatus_ = _TranslationsMisskeyRelayStatusKoKr._(_root);
+	@override late final _TranslationsMisskeyNotificationKoKr notification_ = _TranslationsMisskeyNotificationKoKr._(_root);
+	@override late final _TranslationsMisskeyDeckKoKr deck_ = _TranslationsMisskeyDeckKoKr._(_root);
+	@override late final _TranslationsMisskeyDialogKoKr dialog_ = _TranslationsMisskeyDialogKoKr._(_root);
+	@override late final _TranslationsMisskeyDisabledTimelineKoKr disabledTimeline_ = _TranslationsMisskeyDisabledTimelineKoKr._(_root);
+	@override late final _TranslationsMisskeyDrivecleanerKoKr drivecleaner_ = _TranslationsMisskeyDrivecleanerKoKr._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsKoKr webhookSettings_ = _TranslationsMisskeyWebhookSettingsKoKr._(_root);
+	@override late final _TranslationsMisskeyAbuseReportKoKr abuseReport_ = _TranslationsMisskeyAbuseReportKoKr._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesKoKr moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesKoKr._(_root);
+	@override late final _TranslationsMisskeyFileViewerKoKr fileViewer_ = _TranslationsMisskeyFileViewerKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerKoKr externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverKoKr dataSaver_ = _TranslationsMisskeyDataSaverKoKr._(_root);
+	@override late final _TranslationsMisskeyHemisphereKoKr hemisphere_ = _TranslationsMisskeyHemisphereKoKr._(_root);
+	@override late final _TranslationsMisskeyReversiKoKr reversi_ = _TranslationsMisskeyReversiKoKr._(_root);
+	@override late final _TranslationsMisskeyOfflineScreenKoKr offlineScreen_ = _TranslationsMisskeyOfflineScreenKoKr._(_root);
+	@override late final _TranslationsMisskeyUrlPreviewSettingKoKr urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingKoKr._(_root);
+	@override late final _TranslationsMisskeyMediaControlsKoKr mediaControls_ = _TranslationsMisskeyMediaControlsKoKr._(_root);
+	@override late final _TranslationsMisskeyContextMenuKoKr contextMenu_ = _TranslationsMisskeyContextMenuKoKr._(_root);
+	@override late final _TranslationsMisskeyEmbedCodeGenKoKr embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenKoKr._(_root);
 }
 
 // Path: misskeyIO
-class _StringsMisskeyIOKoKr extends _StringsMisskeyIOEnUs {
-	_StringsMisskeyIOKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyIOKoKr extends TranslationsMisskeyIOEnUs {
+	_TranslationsMisskeyIOKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyIOSkebStatusKoKr skebStatus_ = _StringsMisskeyIOSkebStatusKoKr._(_root);
+	@override late final _TranslationsMisskeyIOSkebStatusKoKr skebStatus_ = _TranslationsMisskeyIOSkebStatusKoKr._(_root);
 }
 
 // Path: misskey.abuseUserReport_
-class _StringsMisskeyAbuseUserReportKoKr extends _StringsMisskeyAbuseUserReportEnUs {
-	_StringsMisskeyAbuseUserReportKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseUserReportKoKr extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get forward => '전달';
@@ -1631,36 +1634,36 @@ class _StringsMisskeyAbuseUserReportKoKr extends _StringsMisskeyAbuseUserReportE
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryKoKr extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryKoKr extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get status => '전송 상태';
 	@override String get stop => '정지됨';
 	@override String get resume => '전송 다시 시작';
-	@override late final _StringsMisskeyDeliveryTypeKoKr type_ = _StringsMisskeyDeliveryTypeKoKr._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeKoKr type_ = _TranslationsMisskeyDeliveryTypeKoKr._(_root);
 }
 
 // Path: misskey.bubbleGame_
-class _StringsMisskeyBubbleGameKoKr extends _StringsMisskeyBubbleGameEnUs {
-	_StringsMisskeyBubbleGameKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameKoKr extends TranslationsMisskeyBubbleGameEnUs {
+	_TranslationsMisskeyBubbleGameKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get howToPlay => '설명';
 	@override String get hold => '홀드';
-	@override late final _StringsMisskeyBubbleGameScoreKoKr score_ = _StringsMisskeyBubbleGameScoreKoKr._(_root);
-	@override late final _StringsMisskeyBubbleGameHowToPlayKoKr howToPlay_ = _StringsMisskeyBubbleGameHowToPlayKoKr._(_root);
+	@override late final _TranslationsMisskeyBubbleGameScoreKoKr score_ = _TranslationsMisskeyBubbleGameScoreKoKr._(_root);
+	@override late final _TranslationsMisskeyBubbleGameHowToPlayKoKr howToPlay_ = _TranslationsMisskeyBubbleGameHowToPlayKoKr._(_root);
 }
 
 // Path: misskey.announcement_
-class _StringsMisskeyAnnouncementKoKr extends _StringsMisskeyAnnouncementEnUs {
-	_StringsMisskeyAnnouncementKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAnnouncementKoKr extends TranslationsMisskeyAnnouncementEnUs {
+	_TranslationsMisskeyAnnouncementKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get forExistingUsers => '기존 유저에게만 알림';
@@ -1678,10 +1681,10 @@ class _StringsMisskeyAnnouncementKoKr extends _StringsMisskeyAnnouncementEnUs {
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingKoKr extends _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialAccountSettingKoKr extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountCreated => '계정 생성이 완료되었습니다!';
@@ -1702,30 +1705,30 @@ class _StringsMisskeyInitialAccountSettingKoKr extends _StringsMisskeyInitialAcc
 }
 
 // Path: misskey.initialTutorial_
-class _StringsMisskeyInitialTutorialKoKr extends _StringsMisskeyInitialTutorialEnUs {
-	_StringsMisskeyInitialTutorialKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialKoKr extends TranslationsMisskeyInitialTutorialEnUs {
+	_TranslationsMisskeyInitialTutorialKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get launchTutorial => '튜토리얼 보기';
 	@override String get title => '튜토리얼';
 	@override String get wellDone => '잘 하셨습니다';
 	@override String get skipAreYouSure => '튜토리얼을 종료하시겠습니까?';
-	@override late final _StringsMisskeyInitialTutorialLandingKoKr landing_ = _StringsMisskeyInitialTutorialLandingKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialNoteKoKr note_ = _StringsMisskeyInitialTutorialNoteKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialReactionKoKr reaction_ = _StringsMisskeyInitialTutorialReactionKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialTimelineKoKr timeline_ = _StringsMisskeyInitialTutorialTimelineKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteKoKr postNote_ = _StringsMisskeyInitialTutorialPostNoteKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr howToMakeAttachmentsSensitive_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialDoneKoKr done_ = _StringsMisskeyInitialTutorialDoneKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialLandingKoKr landing_ = _TranslationsMisskeyInitialTutorialLandingKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialNoteKoKr note_ = _TranslationsMisskeyInitialTutorialNoteKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialReactionKoKr reaction_ = _TranslationsMisskeyInitialTutorialReactionKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialTimelineKoKr timeline_ = _TranslationsMisskeyInitialTutorialTimelineKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteKoKr postNote_ = _TranslationsMisskeyInitialTutorialPostNoteKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr howToMakeAttachmentsSensitive_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialDoneKoKr done_ = _TranslationsMisskeyInitialTutorialDoneKoKr._(_root);
 }
 
 // Path: misskey.timelineDescription_
-class _StringsMisskeyTimelineDescriptionKoKr extends _StringsMisskeyTimelineDescriptionEnUs {
-	_StringsMisskeyTimelineDescriptionKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelineDescriptionKoKr extends TranslationsMisskeyTimelineDescriptionEnUs {
+	_TranslationsMisskeyTimelineDescriptionKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => '홈 타임라인에서는, 내가 팔로우한 계정의 게시물을 볼 수 있습니다.';
@@ -1735,20 +1738,20 @@ class _StringsMisskeyTimelineDescriptionKoKr extends _StringsMisskeyTimelineDesc
 }
 
 // Path: misskey.serverRules_
-class _StringsMisskeyServerRulesKoKr extends _StringsMisskeyServerRulesEnUs {
-	_StringsMisskeyServerRulesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerRulesKoKr extends TranslationsMisskeyServerRulesEnUs {
+	_TranslationsMisskeyServerRulesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '회원 가입 이전에 간단하게 표시할 서버 규칙입니다. 이용 약관의 요약으로 구성하는 것을 추천합니다.';
 }
 
 // Path: misskey.serverSettings_
-class _StringsMisskeyServerSettingsKoKr extends _StringsMisskeyServerSettingsEnUs {
-	_StringsMisskeyServerSettingsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerSettingsKoKr extends TranslationsMisskeyServerSettingsEnUs {
+	_TranslationsMisskeyServerSettingsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get iconUrl => '아이콘 URL';
@@ -1768,10 +1771,10 @@ class _StringsMisskeyServerSettingsKoKr extends _StringsMisskeyServerSettingsEnU
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationKoKr extends _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountMigrationKoKr extends TranslationsMisskeyAccountMigrationEnUs {
+	_TranslationsMisskeyAccountMigrationKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get moveFrom => '다른 계정에서 이 계정으로 이사';
@@ -1791,21 +1794,21 @@ class _StringsMisskeyAccountMigrationKoKr extends _StringsMisskeyAccountMigratio
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsKoKr extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsKoKr extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get earnedAt => '달성 일시';
-	@override late final _StringsMisskeyAchievementsTypesKoKr types_ = _StringsMisskeyAchievementsTypesKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesKoKr types_ = _TranslationsMisskeyAchievementsTypesKoKr._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleKoKr extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleKoKr extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => '새 역할 생성';
@@ -1839,16 +1842,16 @@ class _StringsMisskeyRoleKoKr extends _StringsMisskeyRoleEnUs {
 	@override String get canEditMembersByModerator => '모더레이터의 역할 수정 허용';
 	@override String get descriptionOfCanEditMembersByModerator => '이 옵션을 켜면 모더레이터도 이 역할에 사용자를 할당하거나 삭제할 수 있습니다. 꺼져 있으면 관리자만 할당이 가능합니다.';
 	@override String get priority => '우선순위';
-	@override late final _StringsMisskeyRolePriorityKoKr priority_ = _StringsMisskeyRolePriorityKoKr._(_root);
-	@override late final _StringsMisskeyRoleOptionsKoKr options_ = _StringsMisskeyRoleOptionsKoKr._(_root);
-	@override late final _StringsMisskeyRoleConditionKoKr condition_ = _StringsMisskeyRoleConditionKoKr._(_root);
+	@override late final _TranslationsMisskeyRolePriorityKoKr priority_ = _TranslationsMisskeyRolePriorityKoKr._(_root);
+	@override late final _TranslationsMisskeyRoleOptionsKoKr options_ = _TranslationsMisskeyRoleOptionsKoKr._(_root);
+	@override late final _TranslationsMisskeyRoleConditionKoKr condition_ = _TranslationsMisskeyRoleConditionKoKr._(_root);
 }
 
 // Path: misskey.sensitiveMediaDetection_
-class _StringsMisskeySensitiveMediaDetectionKoKr extends _StringsMisskeySensitiveMediaDetectionEnUs {
-	_StringsMisskeySensitiveMediaDetectionKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeySensitiveMediaDetectionKoKr extends TranslationsMisskeySensitiveMediaDetectionEnUs {
+	_TranslationsMisskeySensitiveMediaDetectionKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '기계 학습으로 민감한 미디어를 알아서 찾아내어 조정에 참고하도록 합니다. 서버가 부하를 다소 받습니다.';
@@ -1861,10 +1864,10 @@ class _StringsMisskeySensitiveMediaDetectionKoKr extends _StringsMisskeySensitiv
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableKoKr extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableKoKr extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => '이 메일 주소는 사용중입니다';
@@ -1876,10 +1879,10 @@ class _StringsMisskeyEmailUnavailableKoKr extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityKoKr extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityKoKr extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => '공개';
@@ -1888,10 +1891,10 @@ class _StringsMisskeyFfVisibilityKoKr extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupKoKr extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupKoKr extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => '거의 다 끝났습니다';
@@ -1900,10 +1903,10 @@ class _StringsMisskeySignupKoKr extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteKoKr extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteKoKr extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => '계정 삭제';
@@ -1915,10 +1918,10 @@ class _StringsMisskeyAccountDeleteKoKr extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdKoKr extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdKoKr extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => '뒤로';
@@ -1932,10 +1935,10 @@ class _StringsMisskeyAdKoKr extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordKoKr extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordKoKr extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => '여기에 계정에 등록한 메일 주소를 입력해 주세요. 입력한 메일 주소로 비밀번호 재설정 링크를 발송합니다.';
@@ -1944,10 +1947,10 @@ class _StringsMisskeyForgotPasswordKoKr extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryKoKr extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryKoKr extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => '내 갤러리';
@@ -1957,21 +1960,21 @@ class _StringsMisskeyGalleryKoKr extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailKoKr extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailKoKr extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowKoKr follow_ = _StringsMisskeyEmailFollowKoKr._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestKoKr receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestKoKr._(_root);
+	@override late final _TranslationsMisskeyEmailFollowKoKr follow_ = _TranslationsMisskeyEmailFollowKoKr._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestKoKr receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestKoKr._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginKoKr extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginKoKr extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => '플러그인 설치';
@@ -1982,10 +1985,10 @@ class _StringsMisskeyPluginKoKr extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsKoKr extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsKoKr extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get list => '생성한 백업';
@@ -2008,10 +2011,10 @@ class _StringsMisskeyPreferencesBackupsKoKr extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryKoKr extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryKoKr extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => '범위';
@@ -2022,10 +2025,10 @@ class _StringsMisskeyRegistryKoKr extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyKoKr extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyKoKr extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'Misskey는 syuilo가 2014년부터 개발한 오픈소스 소프트웨어입니다.';
@@ -2042,10 +2045,10 @@ class _StringsMisskeyAboutMisskeyKoKr extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.displayOfSensitiveMedia_
-class _StringsMisskeyDisplayOfSensitiveMediaKoKr extends _StringsMisskeyDisplayOfSensitiveMediaEnUs {
-	_StringsMisskeyDisplayOfSensitiveMediaKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisplayOfSensitiveMediaKoKr extends TranslationsMisskeyDisplayOfSensitiveMediaEnUs {
+	_TranslationsMisskeyDisplayOfSensitiveMediaKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get respect => '민감한 콘텐츠로 표시된 미디어 숨기기';
@@ -2054,10 +2057,10 @@ class _StringsMisskeyDisplayOfSensitiveMediaKoKr extends _StringsMisskeyDisplayO
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerKoKr extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerKoKr extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => '보이지 않음';
@@ -2066,10 +2069,10 @@ class _StringsMisskeyInstanceTickerKoKr extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorKoKr extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorKoKr extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => '자동으로 새로고침';
@@ -2078,10 +2081,10 @@ class _StringsMisskeyServerDisconnectedBehaviorKoKr extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelKoKr extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelKoKr extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => '채널 생성';
@@ -2099,10 +2102,10 @@ class _StringsMisskeyChannelKoKr extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayKoKr extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayKoKr extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => '가로';
@@ -2112,10 +2115,10 @@ class _StringsMisskeyMenuDisplayKoKr extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteKoKr extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteKoKr extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => '뮤트할 단어';
@@ -2124,10 +2127,10 @@ class _StringsMisskeyWordMuteKoKr extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteKoKr extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteKoKr extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => '뮤트한 서버에서 오는 답글을 포함한 모든 노트와 Renote를 뮤트합니다.';
@@ -2137,10 +2140,10 @@ class _StringsMisskeyInstanceMuteKoKr extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeKoKr extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKoKr extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => '테마 둘러보기';
@@ -2172,14 +2175,14 @@ class _StringsMisskeyThemeKoKr extends _StringsMisskeyThemeEnUs {
 	@override String get inputConstantName => '상수 이름을 입력하세요';
 	@override String get importInfo => '여기에 테마 코드를 붙여 넣어 에디터로 불러올 수 있습니다.';
 	@override String deleteConstantConfirm({required Object const_}) => '상수 ${const_}를 삭제하시겠습니까?';
-	@override late final _StringsMisskeyThemeKeysKoKr keys = _StringsMisskeyThemeKeysKoKr._(_root);
+	@override late final _TranslationsMisskeyThemeKeysKoKr keys = _TranslationsMisskeyThemeKeysKoKr._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxKoKr extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxKoKr extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => '새 노트';
@@ -2189,10 +2192,10 @@ class _StringsMisskeySfxKoKr extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.soundSettings_
-class _StringsMisskeySoundSettingsKoKr extends _StringsMisskeySoundSettingsEnUs {
-	_StringsMisskeySoundSettingsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeySoundSettingsKoKr extends TranslationsMisskeySoundSettingsEnUs {
+	_TranslationsMisskeySoundSettingsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get driveFile => '드라이브에 있는 오디오를 사용';
@@ -2205,10 +2208,10 @@ class _StringsMisskeySoundSettingsKoKr extends _StringsMisskeySoundSettingsEnUs 
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoKoKr extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoKoKr extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => '미래';
@@ -2224,10 +2227,10 @@ class _StringsMisskeyAgoKoKr extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.timeIn_
-class _StringsMisskeyTimeInKoKr extends _StringsMisskeyTimeInEnUs {
-	_StringsMisskeyTimeInKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeInKoKr extends TranslationsMisskeyTimeInEnUs {
+	_TranslationsMisskeyTimeInKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String seconds({required Object n}) => '${n}초 후';
@@ -2240,10 +2243,10 @@ class _StringsMisskeyTimeInKoKr extends _StringsMisskeyTimeInEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeKoKr extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeKoKr extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => '초';
@@ -2253,10 +2256,10 @@ class _StringsMisskeyTimeKoKr extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faKoKr extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faKoKr extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => '이미 설정이 완료되었습니다.';
@@ -2290,10 +2293,10 @@ class _StringsMisskeyX2faKoKr extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsKoKr extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsKoKr extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => '계정의 정보를 봅니다';
@@ -2383,10 +2386,10 @@ class _StringsMisskeyPermissionsKoKr extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthKoKr extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthKoKr extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get shareAccessTitle => '어플리케이션의 접근 허가';
@@ -2401,10 +2404,10 @@ class _StringsMisskeyAuthKoKr extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesKoKr extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesKoKr extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => '모든 노트';
@@ -2415,10 +2418,10 @@ class _StringsMisskeyAntennaSourcesKoKr extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayKoKr extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayKoKr extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => '일요일';
@@ -2431,10 +2434,10 @@ class _StringsMisskeyWeekdayKoKr extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsKoKr extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsKoKr extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => '프로필';
@@ -2463,16 +2466,16 @@ class _StringsMisskeyWidgetsKoKr extends _StringsMisskeyWidgetsEnUs {
 	@override String get aiscriptApp => 'AiScript 앱';
 	@override String get aichan => '아이';
 	@override String get userList => '유저 리스트';
-	@override late final _StringsMisskeyWidgetsUserListKoKr userList_ = _StringsMisskeyWidgetsUserListKoKr._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListKoKr userList_ = _TranslationsMisskeyWidgetsUserListKoKr._(_root);
 	@override String get clicker => '클리커';
 	@override String get birthdayFollowings => '오늘이 생일인 사용자';
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwKoKr extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwKoKr extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => '숨기기';
@@ -2482,10 +2485,10 @@ class _StringsMisskeyCwKoKr extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollKoKr extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollKoKr extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => '투표 항목이 최소 2개 필요합니다';
@@ -2512,10 +2515,10 @@ class _StringsMisskeyPollKoKr extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityKoKr extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityKoKr extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => '공개';
@@ -2531,23 +2534,23 @@ class _StringsMisskeyVisibilityKoKr extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormKoKr extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormKoKr extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => '이 노트에 답글...';
 	@override String get quotePlaceholder => '이 노트를 인용...';
 	@override String get channelPlaceholder => '채널에 게시하기...';
-	@override late final _StringsMisskeyPostFormPlaceholdersKoKr placeholders_ = _StringsMisskeyPostFormPlaceholdersKoKr._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersKoKr placeholders_ = _TranslationsMisskeyPostFormPlaceholdersKoKr._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileKoKr extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileKoKr extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => '이름';
@@ -2569,10 +2572,10 @@ class _StringsMisskeyProfileKoKr extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportKoKr extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportKoKr extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => '모든 노트';
@@ -2588,10 +2591,10 @@ class _StringsMisskeyExportOrImportKoKr extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsKoKr extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsKoKr extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => '연합';
@@ -2610,10 +2613,10 @@ class _StringsMisskeyChartsKoKr extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsKoKr extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsKoKr extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => '요청';
@@ -2630,10 +2633,10 @@ class _StringsMisskeyInstanceChartsKoKr extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesKoKr extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesKoKr extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => '홈';
@@ -2643,10 +2646,10 @@ class _StringsMisskeyTimelinesKoKr extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayKoKr extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayKoKr extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'Play 만들기';
@@ -2667,10 +2670,10 @@ class _StringsMisskeyPlayKoKr extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesKoKr extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesKoKr extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => '페이지 만들기';
@@ -2711,14 +2714,14 @@ class _StringsMisskeyPagesKoKr extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => '콘텐츠';
 	@override String get inputBlocks => '입력';
 	@override String get specialBlocks => '특수';
-	@override late final _StringsMisskeyPagesBlocksKoKr blocks = _StringsMisskeyPagesBlocksKoKr._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksKoKr blocks = _TranslationsMisskeyPagesBlocksKoKr._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusKoKr extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusKoKr extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => '대기 중';
@@ -2727,10 +2730,10 @@ class _StringsMisskeyRelayStatusKoKr extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationKoKr extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationKoKr extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => '파일이 업로드되었습니다';
@@ -2758,15 +2761,15 @@ class _StringsMisskeyNotificationKoKr extends _StringsMisskeyNotificationEnUs {
 	@override String get flushNotification => '알림 이력을 초기화';
 	@override String exportOfXCompleted({required Object x}) => '${x} 추출에 성공했습니다.';
 	@override String get login => '로그인 알림이 있습니다';
-	@override late final _StringsMisskeyNotificationTypesKoKr types_ = _StringsMisskeyNotificationTypesKoKr._(_root);
-	@override late final _StringsMisskeyNotificationActionsKoKr actions_ = _StringsMisskeyNotificationActionsKoKr._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesKoKr types_ = _TranslationsMisskeyNotificationTypesKoKr._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsKoKr actions_ = _TranslationsMisskeyNotificationActionsKoKr._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckKoKr extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckKoKr extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => '메인 칼럼 항상 표시';
@@ -2789,14 +2792,14 @@ class _StringsMisskeyDeckKoKr extends _StringsMisskeyDeckEnUs {
 	@override String get useSimpleUiForNonRootPages => '루트 이외의 페이지로 접속한 경우 UI 간략화하기';
 	@override String get usedAsMinWidthWhenFlexible => '\'폭 자동 조정\'이 활성화된 경우 최소 폭으로 사용됩니다';
 	@override String get flexible => '폭 자동 조정';
-	@override late final _StringsMisskeyDeckColumnsKoKr columns_ = _StringsMisskeyDeckColumnsKoKr._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsKoKr columns_ = _TranslationsMisskeyDeckColumnsKoKr._(_root);
 }
 
 // Path: misskey.dialog_
-class _StringsMisskeyDialogKoKr extends _StringsMisskeyDialogEnUs {
-	_StringsMisskeyDialogKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDialogKoKr extends TranslationsMisskeyDialogEnUs {
+	_TranslationsMisskeyDialogKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String charactersExceeded({required Object current, required Object max}) => '최대 글자수를 초과하였습니다! 현재 ${current} / 최대 ${max}';
@@ -2804,10 +2807,10 @@ class _StringsMisskeyDialogKoKr extends _StringsMisskeyDialogEnUs {
 }
 
 // Path: misskey.disabledTimeline_
-class _StringsMisskeyDisabledTimelineKoKr extends _StringsMisskeyDisabledTimelineEnUs {
-	_StringsMisskeyDisabledTimelineKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDisabledTimelineKoKr extends TranslationsMisskeyDisabledTimelineEnUs {
+	_TranslationsMisskeyDisabledTimelineKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '비활성화된 타임라인';
@@ -2815,10 +2818,10 @@ class _StringsMisskeyDisabledTimelineKoKr extends _StringsMisskeyDisabledTimelin
 }
 
 // Path: misskey.drivecleaner_
-class _StringsMisskeyDrivecleanerKoKr extends _StringsMisskeyDrivecleanerEnUs {
-	_StringsMisskeyDrivecleanerKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDrivecleanerKoKr extends TranslationsMisskeyDrivecleanerEnUs {
+	_TranslationsMisskeyDrivecleanerKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get orderBySizeDesc => '크기가 큰 순';
@@ -2826,10 +2829,10 @@ class _StringsMisskeyDrivecleanerKoKr extends _StringsMisskeyDrivecleanerEnUs {
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsKoKr extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsKoKr extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get createWebhook => 'Webhook 생성';
@@ -2838,27 +2841,27 @@ class _StringsMisskeyWebhookSettingsKoKr extends _StringsMisskeyWebhookSettingsE
 	@override String get secret => '시크릿';
 	@override String get trigger => '트리거';
 	@override String get active => '활성화';
-	@override late final _StringsMisskeyWebhookSettingsEventsKoKr events_ = _StringsMisskeyWebhookSettingsEventsKoKr._(_root);
-	@override late final _StringsMisskeyWebhookSettingsSystemEventsKoKr systemEvents_ = _StringsMisskeyWebhookSettingsSystemEventsKoKr._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsKoKr events_ = _TranslationsMisskeyWebhookSettingsEventsKoKr._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsKoKr systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsKoKr._(_root);
 	@override String get deleteConfirm => 'Webhook을 삭제할까요?';
 	@override String get testRemarks => '스위치 오른쪽에 있는 버튼을 클릭하여 더미 데이터를 사용한 테스트용 웹 훅을 보낼 수 있습니다.';
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportKoKr extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportKoKr extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientKoKr notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientKoKr._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientKoKr notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientKoKr._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesKoKr extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesKoKr extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRole => '역할 생성';
@@ -2912,10 +2915,10 @@ class _StringsMisskeyModerationLogTypesKoKr extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.fileViewer_
-class _StringsMisskeyFileViewerKoKr extends _StringsMisskeyFileViewerEnUs {
-	_StringsMisskeyFileViewerKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyFileViewerKoKr extends TranslationsMisskeyFileViewerEnUs {
+	_TranslationsMisskeyFileViewerKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '파일 상세';
@@ -2928,39 +2931,39 @@ class _StringsMisskeyFileViewerKoKr extends _StringsMisskeyFileViewerEnUs {
 }
 
 // Path: misskey.externalResourceInstaller_
-class _StringsMisskeyExternalResourceInstallerKoKr extends _StringsMisskeyExternalResourceInstallerEnUs {
-	_StringsMisskeyExternalResourceInstallerKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerKoKr extends TranslationsMisskeyExternalResourceInstallerEnUs {
+	_TranslationsMisskeyExternalResourceInstallerKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '외부 사이트로부터 설치';
 	@override String get checkVendorBeforeInstall => '제공자를 신뢰할 수 있는 경우에만 설치하십시오.';
-	@override late final _StringsMisskeyExternalResourceInstallerPluginKoKr plugin_ = _StringsMisskeyExternalResourceInstallerPluginKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerThemeKoKr theme_ = _StringsMisskeyExternalResourceInstallerThemeKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerMetaKoKr meta_ = _StringsMisskeyExternalResourceInstallerMetaKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerVendorInfoKoKr vendorInfo_ = _StringsMisskeyExternalResourceInstallerVendorInfoKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsKoKr errors_ = _StringsMisskeyExternalResourceInstallerErrorsKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerPluginKoKr plugin_ = _TranslationsMisskeyExternalResourceInstallerPluginKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerThemeKoKr theme_ = _TranslationsMisskeyExternalResourceInstallerThemeKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerMetaKoKr meta_ = _TranslationsMisskeyExternalResourceInstallerMetaKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerVendorInfoKoKr vendorInfo_ = _TranslationsMisskeyExternalResourceInstallerVendorInfoKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsKoKr errors_ = _TranslationsMisskeyExternalResourceInstallerErrorsKoKr._(_root);
 }
 
 // Path: misskey.dataSaver_
-class _StringsMisskeyDataSaverKoKr extends _StringsMisskeyDataSaverEnUs {
-	_StringsMisskeyDataSaverKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverKoKr extends TranslationsMisskeyDataSaverEnUs {
+	_TranslationsMisskeyDataSaverKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyDataSaverMediaKoKr media_ = _StringsMisskeyDataSaverMediaKoKr._(_root);
-	@override late final _StringsMisskeyDataSaverAvatarKoKr avatar_ = _StringsMisskeyDataSaverAvatarKoKr._(_root);
-	@override late final _StringsMisskeyDataSaverUrlPreviewKoKr urlPreview_ = _StringsMisskeyDataSaverUrlPreviewKoKr._(_root);
-	@override late final _StringsMisskeyDataSaverCodeKoKr code_ = _StringsMisskeyDataSaverCodeKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverMediaKoKr media_ = _TranslationsMisskeyDataSaverMediaKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverAvatarKoKr avatar_ = _TranslationsMisskeyDataSaverAvatarKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverUrlPreviewKoKr urlPreview_ = _TranslationsMisskeyDataSaverUrlPreviewKoKr._(_root);
+	@override late final _TranslationsMisskeyDataSaverCodeKoKr code_ = _TranslationsMisskeyDataSaverCodeKoKr._(_root);
 }
 
 // Path: misskey.hemisphere_
-class _StringsMisskeyHemisphereKoKr extends _StringsMisskeyHemisphereEnUs {
-	_StringsMisskeyHemisphereKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyHemisphereKoKr extends TranslationsMisskeyHemisphereEnUs {
+	_TranslationsMisskeyHemisphereKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get N => '북반구';
@@ -2969,10 +2972,10 @@ class _StringsMisskeyHemisphereKoKr extends _StringsMisskeyHemisphereEnUs {
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiKoKr extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiKoKr extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get reversi => '리버시';
@@ -3021,10 +3024,10 @@ class _StringsMisskeyReversiKoKr extends _StringsMisskeyReversiEnUs {
 }
 
 // Path: misskey.offlineScreen_
-class _StringsMisskeyOfflineScreenKoKr extends _StringsMisskeyOfflineScreenEnUs {
-	_StringsMisskeyOfflineScreenKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyOfflineScreenKoKr extends TranslationsMisskeyOfflineScreenEnUs {
+	_TranslationsMisskeyOfflineScreenKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '오프라인 - 서버에 접속할 수 없습니다';
@@ -3032,10 +3035,10 @@ class _StringsMisskeyOfflineScreenKoKr extends _StringsMisskeyOfflineScreenEnUs 
 }
 
 // Path: misskey.urlPreviewSetting_
-class _StringsMisskeyUrlPreviewSettingKoKr extends _StringsMisskeyUrlPreviewSettingEnUs {
-	_StringsMisskeyUrlPreviewSettingKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyUrlPreviewSettingKoKr extends TranslationsMisskeyUrlPreviewSettingEnUs {
+	_TranslationsMisskeyUrlPreviewSettingKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'URL 미리보기 설정';
@@ -3054,10 +3057,10 @@ class _StringsMisskeyUrlPreviewSettingKoKr extends _StringsMisskeyUrlPreviewSett
 }
 
 // Path: misskey.mediaControls_
-class _StringsMisskeyMediaControlsKoKr extends _StringsMisskeyMediaControlsEnUs {
-	_StringsMisskeyMediaControlsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyMediaControlsKoKr extends TranslationsMisskeyMediaControlsEnUs {
+	_TranslationsMisskeyMediaControlsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get pip => '화면 속 화면';
@@ -3066,10 +3069,10 @@ class _StringsMisskeyMediaControlsKoKr extends _StringsMisskeyMediaControlsEnUs 
 }
 
 // Path: misskey.contextMenu_
-class _StringsMisskeyContextMenuKoKr extends _StringsMisskeyContextMenuEnUs {
-	_StringsMisskeyContextMenuKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyContextMenuKoKr extends TranslationsMisskeyContextMenuEnUs {
+	_TranslationsMisskeyContextMenuKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '컨텍스트 메뉴';
@@ -3079,10 +3082,10 @@ class _StringsMisskeyContextMenuKoKr extends _StringsMisskeyContextMenuEnUs {
 }
 
 // Path: misskey.embedCodeGen_
-class _StringsMisskeyEmbedCodeGenKoKr extends _StringsMisskeyEmbedCodeGenEnUs {
-	_StringsMisskeyEmbedCodeGenKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmbedCodeGenKoKr extends TranslationsMisskeyEmbedCodeGenEnUs {
+	_TranslationsMisskeyEmbedCodeGenKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '임베디드 코드를 커스터마이즈';
@@ -3101,13 +3104,13 @@ class _StringsMisskeyEmbedCodeGenKoKr extends _StringsMisskeyEmbedCodeGenEnUs {
 }
 
 // Path: misskeyIO.skebStatus_
-class _StringsMisskeyIOSkebStatusKoKr extends _StringsMisskeyIOSkebStatusEnUs {
-	_StringsMisskeyIOSkebStatusKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyIOSkebStatusKoKr extends TranslationsMisskeyIOSkebStatusEnUs {
+	_TranslationsMisskeyIOSkebStatusKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyIOSkebStatusGenresKoKr genres_ = _StringsMisskeyIOSkebStatusGenresKoKr._(_root);
+	@override late final _TranslationsMisskeyIOSkebStatusGenresKoKr genres_ = _TranslationsMisskeyIOSkebStatusGenresKoKr._(_root);
 	@override String get seeking => '모집 중';
 	@override String get stopped => '정지 중';
 	@override String get client => '클라이언트';
@@ -3117,10 +3120,10 @@ class _StringsMisskeyIOSkebStatusKoKr extends _StringsMisskeyIOSkebStatusEnUs {
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeKoKr extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeKoKr extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => '배포 중';
@@ -3130,10 +3133,10 @@ class _StringsMisskeyDeliveryTypeKoKr extends _StringsMisskeyDeliveryTypeEnUs {
 }
 
 // Path: misskey.bubbleGame_.score_
-class _StringsMisskeyBubbleGameScoreKoKr extends _StringsMisskeyBubbleGameScoreEnUs {
-	_StringsMisskeyBubbleGameScoreKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameScoreKoKr extends TranslationsMisskeyBubbleGameScoreEnUs {
+	_TranslationsMisskeyBubbleGameScoreKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get score => '점수';
@@ -3146,10 +3149,10 @@ class _StringsMisskeyBubbleGameScoreKoKr extends _StringsMisskeyBubbleGameScoreE
 }
 
 // Path: misskey.bubbleGame_.howToPlay_
-class _StringsMisskeyBubbleGameHowToPlayKoKr extends _StringsMisskeyBubbleGameHowToPlayEnUs {
-	_StringsMisskeyBubbleGameHowToPlayKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyBubbleGameHowToPlayKoKr extends TranslationsMisskeyBubbleGameHowToPlayEnUs {
+	_TranslationsMisskeyBubbleGameHowToPlayKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get section1 => '위치를 조정하여 상자에 물건을 떨어뜨립니다.';
@@ -3158,10 +3161,10 @@ class _StringsMisskeyBubbleGameHowToPlayKoKr extends _StringsMisskeyBubbleGameHo
 }
 
 // Path: misskey.initialTutorial_.landing_
-class _StringsMisskeyInitialTutorialLandingKoKr extends _StringsMisskeyInitialTutorialLandingEnUs {
-	_StringsMisskeyInitialTutorialLandingKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialLandingKoKr extends TranslationsMisskeyInitialTutorialLandingEnUs {
+	_TranslationsMisskeyInitialTutorialLandingKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '튜토리얼에 오신 걸 환영합니다';
@@ -3169,10 +3172,10 @@ class _StringsMisskeyInitialTutorialLandingKoKr extends _StringsMisskeyInitialTu
 }
 
 // Path: misskey.initialTutorial_.note_
-class _StringsMisskeyInitialTutorialNoteKoKr extends _StringsMisskeyInitialTutorialNoteEnUs {
-	_StringsMisskeyInitialTutorialNoteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialNoteKoKr extends TranslationsMisskeyInitialTutorialNoteEnUs {
+	_TranslationsMisskeyInitialTutorialNoteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '\'노트\'가 무엇인가요?';
@@ -3184,10 +3187,10 @@ class _StringsMisskeyInitialTutorialNoteKoKr extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.initialTutorial_.reaction_
-class _StringsMisskeyInitialTutorialReactionKoKr extends _StringsMisskeyInitialTutorialReactionEnUs {
-	_StringsMisskeyInitialTutorialReactionKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialReactionKoKr extends TranslationsMisskeyInitialTutorialReactionEnUs {
+	_TranslationsMisskeyInitialTutorialReactionKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '\'리액션\'이 무엇인가요?';
@@ -3199,10 +3202,10 @@ class _StringsMisskeyInitialTutorialReactionKoKr extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.timeline_
-class _StringsMisskeyInitialTutorialTimelineKoKr extends _StringsMisskeyInitialTutorialTimelineEnUs {
-	_StringsMisskeyInitialTutorialTimelineKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialTimelineKoKr extends TranslationsMisskeyInitialTutorialTimelineEnUs {
+	_TranslationsMisskeyInitialTutorialTimelineKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '타임라인에 대하여';
@@ -3216,39 +3219,39 @@ class _StringsMisskeyInitialTutorialTimelineKoKr extends _StringsMisskeyInitialT
 }
 
 // Path: misskey.initialTutorial_.postNote_
-class _StringsMisskeyInitialTutorialPostNoteKoKr extends _StringsMisskeyInitialTutorialPostNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteKoKr extends TranslationsMisskeyInitialTutorialPostNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 게시 설정';
 	@override String get description1 => 'Misskey에 노트를 쓸 때에는 다양한 옵션을 설정할 수 있습니다. 노트를 작성하는 화면은 이렇게 생겼습니다.';
-	@override late final _StringsMisskeyInitialTutorialPostNoteVisibilityKoKr visibility_ = _StringsMisskeyInitialTutorialPostNoteVisibilityKoKr._(_root);
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwKoKr cw_ = _StringsMisskeyInitialTutorialPostNoteCwKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteVisibilityKoKr visibility_ = _TranslationsMisskeyInitialTutorialPostNoteVisibilityKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwKoKr cw_ = _TranslationsMisskeyInitialTutorialPostNoteCwKoKr._(_root);
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '첨부 파일을 열람주의로 설정하려면?';
 	@override String get description => '서버의 가이드라인에 따라 필요한 이미지, 또는 그대로 노출되기에 부적절한 미디어는 \'열람 주의\'를 설정해 주세요.';
 	@override String get tryThisFile => '이 작성 창에 첨부된 이미지를 열람 주의로 설정해 보세요!';
-	@override late final _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr exampleNote_ = _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr._(_root);
 	@override String get method => '첨부 파일을 열람 주의로 설정하려면, 해당 파일을 클릭하여 메뉴를 열고, \'열람주의로 설정\'을 클릭합니다.';
 	@override String get sensitiveSucceeded => '파일을 첨부할 때에는 서버의 가이드라인에 따라 적절히 열람주의를 설정해 주시기 바랍니다.';
 	@override String get doItToContinue => '이미지를 열람 주의로 설정하면 다음으로 넘어갈 수 있게 됩니다.';
 }
 
 // Path: misskey.initialTutorial_.done_
-class _StringsMisskeyInitialTutorialDoneKoKr extends _StringsMisskeyInitialTutorialDoneEnUs {
-	_StringsMisskeyInitialTutorialDoneKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialDoneKoKr extends TranslationsMisskeyInitialTutorialDoneEnUs {
+	_TranslationsMisskeyInitialTutorialDoneKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '튜토리얼이 끝났습니다! 🎉';
@@ -3256,97 +3259,97 @@ class _StringsMisskeyInitialTutorialDoneKoKr extends _StringsMisskeyInitialTutor
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesKoKr extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesKoKr extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1KoKr notes1_ = _StringsMisskeyAchievementsTypesNotes1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10KoKr notes10_ = _StringsMisskeyAchievementsTypesNotes10KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100KoKr notes100_ = _StringsMisskeyAchievementsTypesNotes100KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500KoKr notes500_ = _StringsMisskeyAchievementsTypesNotes500KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000KoKr notes1000_ = _StringsMisskeyAchievementsTypesNotes1000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000KoKr notes5000_ = _StringsMisskeyAchievementsTypesNotes5000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000KoKr notes10000_ = _StringsMisskeyAchievementsTypesNotes10000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000KoKr notes20000_ = _StringsMisskeyAchievementsTypesNotes20000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000KoKr notes30000_ = _StringsMisskeyAchievementsTypesNotes30000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000KoKr notes40000_ = _StringsMisskeyAchievementsTypesNotes40000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000KoKr notes50000_ = _StringsMisskeyAchievementsTypesNotes50000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes60000KoKr notes60000_ = _StringsMisskeyAchievementsTypesNotes60000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes70000KoKr notes70000_ = _StringsMisskeyAchievementsTypesNotes70000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes80000KoKr notes80000_ = _StringsMisskeyAchievementsTypesNotes80000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes90000KoKr notes90000_ = _StringsMisskeyAchievementsTypesNotes90000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000KoKr notes100000_ = _StringsMisskeyAchievementsTypesNotes100000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3KoKr login3_ = _StringsMisskeyAchievementsTypesLogin3KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin7KoKr login7_ = _StringsMisskeyAchievementsTypesLogin7KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin15KoKr login15_ = _StringsMisskeyAchievementsTypesLogin15KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin30KoKr login30_ = _StringsMisskeyAchievementsTypesLogin30KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin60KoKr login60_ = _StringsMisskeyAchievementsTypesLogin60KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin100KoKr login100_ = _StringsMisskeyAchievementsTypesLogin100KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin200KoKr login200_ = _StringsMisskeyAchievementsTypesLogin200KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin300KoKr login300_ = _StringsMisskeyAchievementsTypesLogin300KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin400KoKr login400_ = _StringsMisskeyAchievementsTypesLogin400KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin500KoKr login500_ = _StringsMisskeyAchievementsTypesLogin500KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin600KoKr login600_ = _StringsMisskeyAchievementsTypesLogin600KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin700KoKr login700_ = _StringsMisskeyAchievementsTypesLogin700KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin800KoKr login800_ = _StringsMisskeyAchievementsTypesLogin800KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin900KoKr login900_ = _StringsMisskeyAchievementsTypesLogin900KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin1000KoKr login1000_ = _StringsMisskeyAchievementsTypesLogin1000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteClipped1KoKr noteClipped1_ = _StringsMisskeyAchievementsTypesNoteClipped1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1KoKr noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1KoKr myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledKoKr profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatKoKr markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing1KoKr following1_ = _StringsMisskeyAchievementsTypesFollowing1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing10KoKr following10_ = _StringsMisskeyAchievementsTypesFollowing10KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing50KoKr following50_ = _StringsMisskeyAchievementsTypesFollowing50KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing100KoKr following100_ = _StringsMisskeyAchievementsTypesFollowing100KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowing300KoKr following300_ = _StringsMisskeyAchievementsTypesFollowing300KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1KoKr followers1_ = _StringsMisskeyAchievementsTypesFollowers1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers10KoKr followers10_ = _StringsMisskeyAchievementsTypesFollowers10KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers50KoKr followers50_ = _StringsMisskeyAchievementsTypesFollowers50KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers100KoKr followers100_ = _StringsMisskeyAchievementsTypesFollowers100KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers300KoKr followers300_ = _StringsMisskeyAchievementsTypesFollowers300KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers500KoKr followers500_ = _StringsMisskeyAchievementsTypesFollowers500KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFollowers1000KoKr followers1000_ = _StringsMisskeyAchievementsTypesFollowers1000KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCollectAchievements30KoKr collectAchievements30_ = _StringsMisskeyAchievementsTypesCollectAchievements30KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewAchievements3minKoKr viewAchievements3min_ = _StringsMisskeyAchievementsTypesViewAchievements3minKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesILoveMisskeyKoKr iLoveMisskey_ = _StringsMisskeyAchievementsTypesILoveMisskeyKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesFoundTreasureKoKr foundTreasure_ = _StringsMisskeyAchievementsTypesFoundTreasureKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient30minKoKr client30min_ = _StringsMisskeyAchievementsTypesClient30minKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClient60minKoKr client60min_ = _StringsMisskeyAchievementsTypesClient60minKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr noteDeletedWithin1min_ = _StringsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAtLateNightKoKr postedAtLateNight_ = _StringsMisskeyAchievementsTypesPostedAtLateNightKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPostedAt0min0secKoKr postedAt0min0sec_ = _StringsMisskeyAchievementsTypesPostedAt0min0secKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSelfQuoteKoKr selfQuote_ = _StringsMisskeyAchievementsTypesSelfQuoteKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesHtl20npmKoKr htl20npm_ = _StringsMisskeyAchievementsTypesHtl20npmKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartKoKr viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr outputHelloWorldOnScratchpad_ = _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesOpen3windowsKoKr open3windows_ = _StringsMisskeyAchievementsTypesOpen3windowsKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr driveFolderCircularReference_ = _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesReactWithoutReadKoKr reactWithoutRead_ = _StringsMisskeyAchievementsTypesReactWithoutReadKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesClickedClickHereKoKr clickedClickHere_ = _StringsMisskeyAchievementsTypesClickedClickHereKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesJustPlainLuckyKoKr justPlainLucky_ = _StringsMisskeyAchievementsTypesJustPlainLuckyKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSetNameToSyuiloKoKr setNameToSyuilo_ = _StringsMisskeyAchievementsTypesSetNameToSyuiloKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr passedSinceAccountCreated1_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr passedSinceAccountCreated2_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr passedSinceAccountCreated3_ = _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr loggedInOnBirthday_ = _StringsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr loggedInOnNewYearsDay_ = _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesCookieClickedKoKr cookieClicked_ = _StringsMisskeyAchievementsTypesCookieClickedKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBrainDiverKoKr brainDiver_ = _StringsMisskeyAchievementsTypesBrainDiverKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr smashTestNotificationButton_ = _StringsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesTutorialCompletedKoKr tutorialCompleted_ = _StringsMisskeyAchievementsTypesTutorialCompletedKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr bubbleGameExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr._(_root);
-	@override late final _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr bubbleGameDoubleExplodingHead_ = _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1KoKr notes1_ = _TranslationsMisskeyAchievementsTypesNotes1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10KoKr notes10_ = _TranslationsMisskeyAchievementsTypesNotes10KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100KoKr notes100_ = _TranslationsMisskeyAchievementsTypesNotes100KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500KoKr notes500_ = _TranslationsMisskeyAchievementsTypesNotes500KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000KoKr notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000KoKr notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000KoKr notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000KoKr notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000KoKr notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000KoKr notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000KoKr notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000KoKr notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000KoKr notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000KoKr notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000KoKr notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000KoKr notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3KoKr login3_ = _TranslationsMisskeyAchievementsTypesLogin3KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin7KoKr login7_ = _TranslationsMisskeyAchievementsTypesLogin7KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin15KoKr login15_ = _TranslationsMisskeyAchievementsTypesLogin15KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin30KoKr login30_ = _TranslationsMisskeyAchievementsTypesLogin30KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin60KoKr login60_ = _TranslationsMisskeyAchievementsTypesLogin60KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin100KoKr login100_ = _TranslationsMisskeyAchievementsTypesLogin100KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin200KoKr login200_ = _TranslationsMisskeyAchievementsTypesLogin200KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin300KoKr login300_ = _TranslationsMisskeyAchievementsTypesLogin300KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin400KoKr login400_ = _TranslationsMisskeyAchievementsTypesLogin400KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin500KoKr login500_ = _TranslationsMisskeyAchievementsTypesLogin500KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin600KoKr login600_ = _TranslationsMisskeyAchievementsTypesLogin600KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin700KoKr login700_ = _TranslationsMisskeyAchievementsTypesLogin700KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin800KoKr login800_ = _TranslationsMisskeyAchievementsTypesLogin800KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin900KoKr login900_ = _TranslationsMisskeyAchievementsTypesLogin900KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin1000KoKr login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1KoKr noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1KoKr noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1KoKr myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledKoKr profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatKoKr markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing1KoKr following1_ = _TranslationsMisskeyAchievementsTypesFollowing1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing10KoKr following10_ = _TranslationsMisskeyAchievementsTypesFollowing10KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing50KoKr following50_ = _TranslationsMisskeyAchievementsTypesFollowing50KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing100KoKr following100_ = _TranslationsMisskeyAchievementsTypesFollowing100KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowing300KoKr following300_ = _TranslationsMisskeyAchievementsTypesFollowing300KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1KoKr followers1_ = _TranslationsMisskeyAchievementsTypesFollowers1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers10KoKr followers10_ = _TranslationsMisskeyAchievementsTypesFollowers10KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers50KoKr followers50_ = _TranslationsMisskeyAchievementsTypesFollowers50KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers100KoKr followers100_ = _TranslationsMisskeyAchievementsTypesFollowers100KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers300KoKr followers300_ = _TranslationsMisskeyAchievementsTypesFollowers300KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers500KoKr followers500_ = _TranslationsMisskeyAchievementsTypesFollowers500KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFollowers1000KoKr followers1000_ = _TranslationsMisskeyAchievementsTypesFollowers1000KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCollectAchievements30KoKr collectAchievements30_ = _TranslationsMisskeyAchievementsTypesCollectAchievements30KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewAchievements3minKoKr viewAchievements3min_ = _TranslationsMisskeyAchievementsTypesViewAchievements3minKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesILoveMisskeyKoKr iLoveMisskey_ = _TranslationsMisskeyAchievementsTypesILoveMisskeyKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesFoundTreasureKoKr foundTreasure_ = _TranslationsMisskeyAchievementsTypesFoundTreasureKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient30minKoKr client30min_ = _TranslationsMisskeyAchievementsTypesClient30minKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClient60minKoKr client60min_ = _TranslationsMisskeyAchievementsTypesClient60minKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr noteDeletedWithin1min_ = _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAtLateNightKoKr postedAtLateNight_ = _TranslationsMisskeyAchievementsTypesPostedAtLateNightKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPostedAt0min0secKoKr postedAt0min0sec_ = _TranslationsMisskeyAchievementsTypesPostedAt0min0secKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSelfQuoteKoKr selfQuote_ = _TranslationsMisskeyAchievementsTypesSelfQuoteKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesHtl20npmKoKr htl20npm_ = _TranslationsMisskeyAchievementsTypesHtl20npmKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartKoKr viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr outputHelloWorldOnScratchpad_ = _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesOpen3windowsKoKr open3windows_ = _TranslationsMisskeyAchievementsTypesOpen3windowsKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr driveFolderCircularReference_ = _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesReactWithoutReadKoKr reactWithoutRead_ = _TranslationsMisskeyAchievementsTypesReactWithoutReadKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesClickedClickHereKoKr clickedClickHere_ = _TranslationsMisskeyAchievementsTypesClickedClickHereKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesJustPlainLuckyKoKr justPlainLucky_ = _TranslationsMisskeyAchievementsTypesJustPlainLuckyKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSetNameToSyuiloKoKr setNameToSyuilo_ = _TranslationsMisskeyAchievementsTypesSetNameToSyuiloKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr passedSinceAccountCreated1_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr passedSinceAccountCreated2_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr passedSinceAccountCreated3_ = _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr loggedInOnBirthday_ = _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr loggedInOnNewYearsDay_ = _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesCookieClickedKoKr cookieClicked_ = _TranslationsMisskeyAchievementsTypesCookieClickedKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverKoKr brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr smashTestNotificationButton_ = _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesTutorialCompletedKoKr tutorialCompleted_ = _TranslationsMisskeyAchievementsTypesTutorialCompletedKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityKoKr extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityKoKr extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => '낮음';
@@ -3355,10 +3358,10 @@ class _StringsMisskeyRolePriorityKoKr extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsKoKr extends _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleOptionsKoKr extends TranslationsMisskeyRoleOptionsEnUs {
+	_TranslationsMisskeyRoleOptionsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get gtlAvailable => '글로벌 타임라인 보이기';
@@ -3396,10 +3399,10 @@ class _StringsMisskeyRoleOptionsKoKr extends _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionKoKr extends _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleConditionKoKr extends TranslationsMisskeyRoleConditionEnUs {
+	_TranslationsMisskeyRoleConditionKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get roleAssignedTo => '수동 역할에 이미 할당됨';
@@ -3424,30 +3427,30 @@ class _StringsMisskeyRoleConditionKoKr extends _StringsMisskeyRoleConditionEnUs 
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowKoKr extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowKoKr extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '새로운 팔로워가 있습니다';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestKoKr extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestKoKr extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '팔로우 요청을 받았습니다';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysKoKr extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysKoKr extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => '강조 색상';
@@ -3492,20 +3495,20 @@ class _StringsMisskeyThemeKeysKoKr extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListKoKr extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListKoKr extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => '리스트 선택';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersKoKr extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersKoKr extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => '지금 무엇을 하고 있나요?';
@@ -3517,10 +3520,10 @@ class _StringsMisskeyPostFormPlaceholdersKoKr extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksKoKr extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksKoKr extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => '텍스트';
@@ -3531,14 +3534,14 @@ class _StringsMisskeyPagesBlocksKoKr extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get dynamic => '동적 블록';
 	@override String dynamicDescription({required Object play}) => '이 블록은 폐지되었습니다. 이제부터 ${play}에서 이용해 주세요.';
 	@override String get note => '노트필기';
-	@override late final _StringsMisskeyPagesBlocksNoteKoKr note_ = _StringsMisskeyPagesBlocksNoteKoKr._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteKoKr note_ = _TranslationsMisskeyPagesBlocksNoteKoKr._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesKoKr extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesKoKr extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => '전부';
@@ -3561,10 +3564,10 @@ class _StringsMisskeyNotificationTypesKoKr extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsKoKr extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsKoKr extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => '팔로우';
@@ -3573,10 +3576,10 @@ class _StringsMisskeyNotificationActionsKoKr extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsKoKr extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsKoKr extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => '메인';
@@ -3592,10 +3595,10 @@ class _StringsMisskeyDeckColumnsKoKr extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsKoKr extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsKoKr extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => '누군가를 팔로우했을 때';
@@ -3608,10 +3611,10 @@ class _StringsMisskeyWebhookSettingsEventsKoKr extends _StringsMisskeyWebhookSet
 }
 
 // Path: misskey.webhookSettings_.systemEvents_
-class _StringsMisskeyWebhookSettingsSystemEventsKoKr extends _StringsMisskeyWebhookSettingsSystemEventsEnUs {
-	_StringsMisskeyWebhookSettingsSystemEventsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsSystemEventsKoKr extends TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsSystemEventsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get abuseReport => '유저롭';
@@ -3620,16 +3623,16 @@ class _StringsMisskeyWebhookSettingsSystemEventsKoKr extends _StringsMisskeyWebh
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientKoKr extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientKoKr extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get createRecipient => '신고 수신자 추가';
 	@override String get modifyRecipient => '신고 수신자 편집';
 	@override String get recipientType => '알림 종류';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr._(_root);
 	@override String get keywords => '키워드';
 	@override String get notifiedUser => '알릴 사용자';
 	@override String get notifiedWebhook => '사용할 Webhook';
@@ -3637,10 +3640,10 @@ class _StringsMisskeyAbuseReportNotificationRecipientKoKr extends _StringsMisske
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
-class _StringsMisskeyExternalResourceInstallerPluginKoKr extends _StringsMisskeyExternalResourceInstallerPluginEnUs {
-	_StringsMisskeyExternalResourceInstallerPluginKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerPluginKoKr extends TranslationsMisskeyExternalResourceInstallerPluginEnUs {
+	_TranslationsMisskeyExternalResourceInstallerPluginKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '이 플러그인을 설치하시겠습니까?';
@@ -3648,10 +3651,10 @@ class _StringsMisskeyExternalResourceInstallerPluginKoKr extends _StringsMisskey
 }
 
 // Path: misskey.externalResourceInstaller_.theme_
-class _StringsMisskeyExternalResourceInstallerThemeKoKr extends _StringsMisskeyExternalResourceInstallerThemeEnUs {
-	_StringsMisskeyExternalResourceInstallerThemeKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerThemeKoKr extends TranslationsMisskeyExternalResourceInstallerThemeEnUs {
+	_TranslationsMisskeyExternalResourceInstallerThemeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '이 테마를 설치하시겠습니까?';
@@ -3659,20 +3662,20 @@ class _StringsMisskeyExternalResourceInstallerThemeKoKr extends _StringsMisskeyE
 }
 
 // Path: misskey.externalResourceInstaller_.meta_
-class _StringsMisskeyExternalResourceInstallerMetaKoKr extends _StringsMisskeyExternalResourceInstallerMetaEnUs {
-	_StringsMisskeyExternalResourceInstallerMetaKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerMetaKoKr extends TranslationsMisskeyExternalResourceInstallerMetaEnUs {
+	_TranslationsMisskeyExternalResourceInstallerMetaKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get base => '기본 컬러 스키마';
 }
 
 // Path: misskey.externalResourceInstaller_.vendorInfo_
-class _StringsMisskeyExternalResourceInstallerVendorInfoKoKr extends _StringsMisskeyExternalResourceInstallerVendorInfoEnUs {
-	_StringsMisskeyExternalResourceInstallerVendorInfoKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerVendorInfoKoKr extends TranslationsMisskeyExternalResourceInstallerVendorInfoEnUs {
+	_TranslationsMisskeyExternalResourceInstallerVendorInfoKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '제공자 정보';
@@ -3681,27 +3684,27 @@ class _StringsMisskeyExternalResourceInstallerVendorInfoKoKr extends _StringsMis
 }
 
 // Path: misskey.externalResourceInstaller_.errors_
-class _StringsMisskeyExternalResourceInstallerErrorsKoKr extends _StringsMisskeyExternalResourceInstallerErrorsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr invalidParams_ = _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr resourceTypeNotSupported_ = _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr failedToFetch_ = _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr hashUnmatched_ = _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr pluginParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr pluginInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr themeParseFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr._(_root);
-	@override late final _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr themeInstallFailed_ = _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr invalidParams_ = _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr resourceTypeNotSupported_ = _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr failedToFetch_ = _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr hashUnmatched_ = _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr pluginParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr pluginInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr themeParseFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr._(_root);
+	@override late final _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr themeInstallFailed_ = _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr._(_root);
 }
 
 // Path: misskey.dataSaver_.media_
-class _StringsMisskeyDataSaverMediaKoKr extends _StringsMisskeyDataSaverMediaEnUs {
-	_StringsMisskeyDataSaverMediaKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverMediaKoKr extends TranslationsMisskeyDataSaverMediaEnUs {
+	_TranslationsMisskeyDataSaverMediaKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '미디어 불러오기';
@@ -3709,10 +3712,10 @@ class _StringsMisskeyDataSaverMediaKoKr extends _StringsMisskeyDataSaverMediaEnU
 }
 
 // Path: misskey.dataSaver_.avatar_
-class _StringsMisskeyDataSaverAvatarKoKr extends _StringsMisskeyDataSaverAvatarEnUs {
-	_StringsMisskeyDataSaverAvatarKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverAvatarKoKr extends TranslationsMisskeyDataSaverAvatarEnUs {
+	_TranslationsMisskeyDataSaverAvatarKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '아이콘 이미지';
@@ -3720,10 +3723,10 @@ class _StringsMisskeyDataSaverAvatarKoKr extends _StringsMisskeyDataSaverAvatarE
 }
 
 // Path: misskey.dataSaver_.urlPreview_
-class _StringsMisskeyDataSaverUrlPreviewKoKr extends _StringsMisskeyDataSaverUrlPreviewEnUs {
-	_StringsMisskeyDataSaverUrlPreviewKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverUrlPreviewKoKr extends TranslationsMisskeyDataSaverUrlPreviewEnUs {
+	_TranslationsMisskeyDataSaverUrlPreviewKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'URL 미리보기의 섬네일';
@@ -3731,10 +3734,10 @@ class _StringsMisskeyDataSaverUrlPreviewKoKr extends _StringsMisskeyDataSaverUrl
 }
 
 // Path: misskey.dataSaver_.code_
-class _StringsMisskeyDataSaverCodeKoKr extends _StringsMisskeyDataSaverCodeEnUs {
-	_StringsMisskeyDataSaverCodeKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDataSaverCodeKoKr extends TranslationsMisskeyDataSaverCodeEnUs {
+	_TranslationsMisskeyDataSaverCodeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '문자열 강조';
@@ -3742,10 +3745,10 @@ class _StringsMisskeyDataSaverCodeKoKr extends _StringsMisskeyDataSaverCodeEnUs 
 }
 
 // Path: misskeyIO.skebStatus_.genres_
-class _StringsMisskeyIOSkebStatusGenresKoKr extends _StringsMisskeyIOSkebStatusGenresEnUs {
-	_StringsMisskeyIOSkebStatusGenresKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyIOSkebStatusGenresKoKr extends TranslationsMisskeyIOSkebStatusGenresEnUs {
+	_TranslationsMisskeyIOSkebStatusGenresKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get art => '작품';
@@ -3758,10 +3761,10 @@ class _StringsMisskeyIOSkebStatusGenresKoKr extends _StringsMisskeyIOSkebStatusG
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
-class _StringsMisskeyInitialTutorialPostNoteVisibilityKoKr extends _StringsMisskeyInitialTutorialPostNoteVisibilityEnUs {
-	_StringsMisskeyInitialTutorialPostNoteVisibilityKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteVisibilityKoKr extends TranslationsMisskeyInitialTutorialPostNoteVisibilityEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteVisibilityKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => '노트를 볼 수 있는 사람을 제한할 수 있습니다.';
@@ -3775,33 +3778,33 @@ class _StringsMisskeyInitialTutorialPostNoteVisibilityKoKr extends _StringsMissk
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
-class _StringsMisskeyInitialTutorialPostNoteCwKoKr extends _StringsMisskeyInitialTutorialPostNoteCwEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwKoKr extends TranslationsMisskeyInitialTutorialPostNoteCwEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '내용 가리기 (CW)';
 	@override String get description => '본문 대신에 \'내용에 대한 주석\'에 입력한 텍스트가 먼저 표시됩니다. \'더 보기\' 버튼을 누르면 본문이 표시됩니다.';
-	@override late final _StringsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr exampleNote_ = _StringsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr._(_root);
 	@override String get useCases => '서버의 가이드라인에 따라 특정 주제를 다룰 때에 사용하거나, 스포일러 및 민감한 화제를 다룰 때에 자율적으로 사용하기도 합니다.';
 }
 
 // Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
-class _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr extends _StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => '낫또 뚜껑 뜯다가 실수했다…';
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1KoKr extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1KoKr extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '미스키 계정 만들었어요';
@@ -3810,10 +3813,10 @@ class _StringsMisskeyAchievementsTypesNotes1KoKr extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10KoKr extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10KoKr extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '몇 가지 노트';
@@ -3821,10 +3824,10 @@ class _StringsMisskeyAchievementsTypesNotes10KoKr extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100KoKr extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100KoKr extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '많은 노트';
@@ -3832,10 +3835,10 @@ class _StringsMisskeyAchievementsTypesNotes100KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500KoKr extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500KoKr extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 범벅';
@@ -3843,10 +3846,10 @@ class _StringsMisskeyAchievementsTypesNotes500KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000KoKr extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000KoKr extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트가 산더미';
@@ -3854,10 +3857,10 @@ class _StringsMisskeyAchievementsTypesNotes1000KoKr extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000KoKr extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000KoKr extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '솟아나는 노트';
@@ -3865,10 +3868,10 @@ class _StringsMisskeyAchievementsTypesNotes5000KoKr extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000KoKr extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000KoKr extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '슈퍼 노트';
@@ -3876,10 +3879,10 @@ class _StringsMisskeyAchievementsTypesNotes10000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000KoKr extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000KoKr extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트가 필요해요';
@@ -3887,10 +3890,10 @@ class _StringsMisskeyAchievementsTypesNotes20000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000KoKr extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000KoKr extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트노트노트';
@@ -3898,10 +3901,10 @@ class _StringsMisskeyAchievementsTypesNotes30000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000KoKr extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000KoKr extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 공장';
@@ -3909,10 +3912,10 @@ class _StringsMisskeyAchievementsTypesNotes40000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000KoKr extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000KoKr extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 행성';
@@ -3920,10 +3923,10 @@ class _StringsMisskeyAchievementsTypesNotes50000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000KoKr extends _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes60000KoKr extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 퀘이사';
@@ -3931,10 +3934,10 @@ class _StringsMisskeyAchievementsTypesNotes60000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000KoKr extends _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes70000KoKr extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 블랙홀';
@@ -3942,10 +3945,10 @@ class _StringsMisskeyAchievementsTypesNotes70000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000KoKr extends _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes80000KoKr extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 은하';
@@ -3953,10 +3956,10 @@ class _StringsMisskeyAchievementsTypesNotes80000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000KoKr extends _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes90000KoKr extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 우주';
@@ -3964,10 +3967,10 @@ class _StringsMisskeyAchievementsTypesNotes90000KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000KoKr extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000KoKr extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
@@ -3976,10 +3979,10 @@ class _StringsMisskeyAchievementsTypesNotes100000KoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3KoKr extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3KoKr extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '초보자 I';
@@ -3988,10 +3991,10 @@ class _StringsMisskeyAchievementsTypesLogin3KoKr extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login7_
-class _StringsMisskeyAchievementsTypesLogin7KoKr extends _StringsMisskeyAchievementsTypesLogin7EnUs {
-	_StringsMisskeyAchievementsTypesLogin7KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin7KoKr extends TranslationsMisskeyAchievementsTypesLogin7EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin7KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '초보자 II';
@@ -4000,10 +4003,10 @@ class _StringsMisskeyAchievementsTypesLogin7KoKr extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.login15_
-class _StringsMisskeyAchievementsTypesLogin15KoKr extends _StringsMisskeyAchievementsTypesLogin15EnUs {
-	_StringsMisskeyAchievementsTypesLogin15KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin15KoKr extends TranslationsMisskeyAchievementsTypesLogin15EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin15KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '초보자 III';
@@ -4011,10 +4014,10 @@ class _StringsMisskeyAchievementsTypesLogin15KoKr extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login30_
-class _StringsMisskeyAchievementsTypesLogin30KoKr extends _StringsMisskeyAchievementsTypesLogin30EnUs {
-	_StringsMisskeyAchievementsTypesLogin30KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin30KoKr extends TranslationsMisskeyAchievementsTypesLogin30EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin30KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '미스키스트 I';
@@ -4022,10 +4025,10 @@ class _StringsMisskeyAchievementsTypesLogin30KoKr extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login60_
-class _StringsMisskeyAchievementsTypesLogin60KoKr extends _StringsMisskeyAchievementsTypesLogin60EnUs {
-	_StringsMisskeyAchievementsTypesLogin60KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin60KoKr extends TranslationsMisskeyAchievementsTypesLogin60EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin60KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '미스키스트 II';
@@ -4033,10 +4036,10 @@ class _StringsMisskeyAchievementsTypesLogin60KoKr extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.login100_
-class _StringsMisskeyAchievementsTypesLogin100KoKr extends _StringsMisskeyAchievementsTypesLogin100EnUs {
-	_StringsMisskeyAchievementsTypesLogin100KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin100KoKr extends TranslationsMisskeyAchievementsTypesLogin100EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin100KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '미스키스트 III';
@@ -4045,10 +4048,10 @@ class _StringsMisskeyAchievementsTypesLogin100KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login200_
-class _StringsMisskeyAchievementsTypesLogin200KoKr extends _StringsMisskeyAchievementsTypesLogin200EnUs {
-	_StringsMisskeyAchievementsTypesLogin200KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin200KoKr extends TranslationsMisskeyAchievementsTypesLogin200EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin200KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '단골 I';
@@ -4056,10 +4059,10 @@ class _StringsMisskeyAchievementsTypesLogin200KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login300_
-class _StringsMisskeyAchievementsTypesLogin300KoKr extends _StringsMisskeyAchievementsTypesLogin300EnUs {
-	_StringsMisskeyAchievementsTypesLogin300KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin300KoKr extends TranslationsMisskeyAchievementsTypesLogin300EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin300KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '단골 II';
@@ -4067,10 +4070,10 @@ class _StringsMisskeyAchievementsTypesLogin300KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login400_
-class _StringsMisskeyAchievementsTypesLogin400KoKr extends _StringsMisskeyAchievementsTypesLogin400EnUs {
-	_StringsMisskeyAchievementsTypesLogin400KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin400KoKr extends TranslationsMisskeyAchievementsTypesLogin400EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin400KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '단골 III';
@@ -4078,10 +4081,10 @@ class _StringsMisskeyAchievementsTypesLogin400KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login500_
-class _StringsMisskeyAchievementsTypesLogin500KoKr extends _StringsMisskeyAchievementsTypesLogin500EnUs {
-	_StringsMisskeyAchievementsTypesLogin500KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin500KoKr extends TranslationsMisskeyAchievementsTypesLogin500EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin500KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '베테랑 I';
@@ -4090,10 +4093,10 @@ class _StringsMisskeyAchievementsTypesLogin500KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login600_
-class _StringsMisskeyAchievementsTypesLogin600KoKr extends _StringsMisskeyAchievementsTypesLogin600EnUs {
-	_StringsMisskeyAchievementsTypesLogin600KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin600KoKr extends TranslationsMisskeyAchievementsTypesLogin600EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin600KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '베테랑 II';
@@ -4101,10 +4104,10 @@ class _StringsMisskeyAchievementsTypesLogin600KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login700_
-class _StringsMisskeyAchievementsTypesLogin700KoKr extends _StringsMisskeyAchievementsTypesLogin700EnUs {
-	_StringsMisskeyAchievementsTypesLogin700KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin700KoKr extends TranslationsMisskeyAchievementsTypesLogin700EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin700KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '베테랑 III';
@@ -4112,10 +4115,10 @@ class _StringsMisskeyAchievementsTypesLogin700KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login800_
-class _StringsMisskeyAchievementsTypesLogin800KoKr extends _StringsMisskeyAchievementsTypesLogin800EnUs {
-	_StringsMisskeyAchievementsTypesLogin800KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin800KoKr extends TranslationsMisskeyAchievementsTypesLogin800EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin800KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 마스터 I';
@@ -4123,10 +4126,10 @@ class _StringsMisskeyAchievementsTypesLogin800KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login900_
-class _StringsMisskeyAchievementsTypesLogin900KoKr extends _StringsMisskeyAchievementsTypesLogin900EnUs {
-	_StringsMisskeyAchievementsTypesLogin900KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin900KoKr extends TranslationsMisskeyAchievementsTypesLogin900EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin900KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 마스터 II';
@@ -4134,10 +4137,10 @@ class _StringsMisskeyAchievementsTypesLogin900KoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.login1000_
-class _StringsMisskeyAchievementsTypesLogin1000KoKr extends _StringsMisskeyAchievementsTypesLogin1000EnUs {
-	_StringsMisskeyAchievementsTypesLogin1000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin1000KoKr extends TranslationsMisskeyAchievementsTypesLogin1000EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin1000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '노트 마스터 III';
@@ -4146,10 +4149,10 @@ class _StringsMisskeyAchievementsTypesLogin1000KoKr extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.noteClipped1_
-class _StringsMisskeyAchievementsTypesNoteClipped1KoKr extends _StringsMisskeyAchievementsTypesNoteClipped1EnUs {
-	_StringsMisskeyAchievementsTypesNoteClipped1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteClipped1KoKr extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteClipped1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '클립할 수밖에 없었어';
@@ -4157,10 +4160,10 @@ class _StringsMisskeyAchievementsTypesNoteClipped1KoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1KoKr extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1KoKr extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '별을 바라보는 자';
@@ -4168,10 +4171,10 @@ class _StringsMisskeyAchievementsTypesNoteFavorited1KoKr extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1KoKr extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1KoKr extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '별을 원하는 자';
@@ -4179,10 +4182,10 @@ class _StringsMisskeyAchievementsTypesMyNoteFavorited1KoKr extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledKoKr extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledKoKr extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '준비 완료';
@@ -4190,10 +4193,10 @@ class _StringsMisskeyAchievementsTypesProfileFilledKoKr extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatKoKr extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatKoKr extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '나는 고양이다냥!';
@@ -4202,10 +4205,10 @@ class _StringsMisskeyAchievementsTypesMarkedAsCatKoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following1_
-class _StringsMisskeyAchievementsTypesFollowing1KoKr extends _StringsMisskeyAchievementsTypesFollowing1EnUs {
-	_StringsMisskeyAchievementsTypesFollowing1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing1KoKr extends TranslationsMisskeyAchievementsTypesFollowing1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '첫 팔로우';
@@ -4213,10 +4216,10 @@ class _StringsMisskeyAchievementsTypesFollowing1KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.following10_
-class _StringsMisskeyAchievementsTypesFollowing10KoKr extends _StringsMisskeyAchievementsTypesFollowing10EnUs {
-	_StringsMisskeyAchievementsTypesFollowing10KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing10KoKr extends TranslationsMisskeyAchievementsTypesFollowing10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing10KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '팔로우, 팔로우';
@@ -4224,10 +4227,10 @@ class _StringsMisskeyAchievementsTypesFollowing10KoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following50_
-class _StringsMisskeyAchievementsTypesFollowing50KoKr extends _StringsMisskeyAchievementsTypesFollowing50EnUs {
-	_StringsMisskeyAchievementsTypesFollowing50KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing50KoKr extends TranslationsMisskeyAchievementsTypesFollowing50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing50KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '친구 잔뜩';
@@ -4235,10 +4238,10 @@ class _StringsMisskeyAchievementsTypesFollowing50KoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.following100_
-class _StringsMisskeyAchievementsTypesFollowing100KoKr extends _StringsMisskeyAchievementsTypesFollowing100EnUs {
-	_StringsMisskeyAchievementsTypesFollowing100KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing100KoKr extends TranslationsMisskeyAchievementsTypesFollowing100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing100KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '주소록 한 권으론 부족해';
@@ -4246,10 +4249,10 @@ class _StringsMisskeyAchievementsTypesFollowing100KoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.following300_
-class _StringsMisskeyAchievementsTypesFollowing300KoKr extends _StringsMisskeyAchievementsTypesFollowing300EnUs {
-	_StringsMisskeyAchievementsTypesFollowing300KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowing300KoKr extends TranslationsMisskeyAchievementsTypesFollowing300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowing300KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '친구가 넘쳐나';
@@ -4257,10 +4260,10 @@ class _StringsMisskeyAchievementsTypesFollowing300KoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1_
-class _StringsMisskeyAchievementsTypesFollowers1KoKr extends _StringsMisskeyAchievementsTypesFollowers1EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1KoKr extends TranslationsMisskeyAchievementsTypesFollowers1EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '첫 팔로워';
@@ -4268,10 +4271,10 @@ class _StringsMisskeyAchievementsTypesFollowers1KoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.followers10_
-class _StringsMisskeyAchievementsTypesFollowers10KoKr extends _StringsMisskeyAchievementsTypesFollowers10EnUs {
-	_StringsMisskeyAchievementsTypesFollowers10KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers10KoKr extends TranslationsMisskeyAchievementsTypesFollowers10EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers10KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '팔로우 미!';
@@ -4279,10 +4282,10 @@ class _StringsMisskeyAchievementsTypesFollowers10KoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers50_
-class _StringsMisskeyAchievementsTypesFollowers50KoKr extends _StringsMisskeyAchievementsTypesFollowers50EnUs {
-	_StringsMisskeyAchievementsTypesFollowers50KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers50KoKr extends TranslationsMisskeyAchievementsTypesFollowers50EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers50KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '이곳저곳';
@@ -4290,10 +4293,10 @@ class _StringsMisskeyAchievementsTypesFollowers50KoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.followers100_
-class _StringsMisskeyAchievementsTypesFollowers100KoKr extends _StringsMisskeyAchievementsTypesFollowers100EnUs {
-	_StringsMisskeyAchievementsTypesFollowers100KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers100KoKr extends TranslationsMisskeyAchievementsTypesFollowers100EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers100KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '인기왕';
@@ -4301,10 +4304,10 @@ class _StringsMisskeyAchievementsTypesFollowers100KoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers300_
-class _StringsMisskeyAchievementsTypesFollowers300KoKr extends _StringsMisskeyAchievementsTypesFollowers300EnUs {
-	_StringsMisskeyAchievementsTypesFollowers300KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers300KoKr extends TranslationsMisskeyAchievementsTypesFollowers300EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers300KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '줄 좀 서봐요';
@@ -4312,10 +4315,10 @@ class _StringsMisskeyAchievementsTypesFollowers300KoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers500_
-class _StringsMisskeyAchievementsTypesFollowers500KoKr extends _StringsMisskeyAchievementsTypesFollowers500EnUs {
-	_StringsMisskeyAchievementsTypesFollowers500KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers500KoKr extends TranslationsMisskeyAchievementsTypesFollowers500EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers500KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '기지국';
@@ -4323,10 +4326,10 @@ class _StringsMisskeyAchievementsTypesFollowers500KoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.followers1000_
-class _StringsMisskeyAchievementsTypesFollowers1000KoKr extends _StringsMisskeyAchievementsTypesFollowers1000EnUs {
-	_StringsMisskeyAchievementsTypesFollowers1000KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFollowers1000KoKr extends TranslationsMisskeyAchievementsTypesFollowers1000EnUs {
+	_TranslationsMisskeyAchievementsTypesFollowers1000KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '유명인사';
@@ -4334,10 +4337,10 @@ class _StringsMisskeyAchievementsTypesFollowers1000KoKr extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.collectAchievements30_
-class _StringsMisskeyAchievementsTypesCollectAchievements30KoKr extends _StringsMisskeyAchievementsTypesCollectAchievements30EnUs {
-	_StringsMisskeyAchievementsTypesCollectAchievements30KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCollectAchievements30KoKr extends TranslationsMisskeyAchievementsTypesCollectAchievements30EnUs {
+	_TranslationsMisskeyAchievementsTypesCollectAchievements30KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '도전 과제 콜렉터';
@@ -4345,10 +4348,10 @@ class _StringsMisskeyAchievementsTypesCollectAchievements30KoKr extends _Strings
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
-class _StringsMisskeyAchievementsTypesViewAchievements3minKoKr extends _StringsMisskeyAchievementsTypesViewAchievements3minEnUs {
-	_StringsMisskeyAchievementsTypesViewAchievements3minKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewAchievements3minKoKr extends TranslationsMisskeyAchievementsTypesViewAchievements3minEnUs {
+	_TranslationsMisskeyAchievementsTypesViewAchievements3minKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '저 도전과제 좋아해요';
@@ -4356,10 +4359,10 @@ class _StringsMisskeyAchievementsTypesViewAchievements3minKoKr extends _StringsM
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_
-class _StringsMisskeyAchievementsTypesILoveMisskeyKoKr extends _StringsMisskeyAchievementsTypesILoveMisskeyEnUs {
-	_StringsMisskeyAchievementsTypesILoveMisskeyKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesILoveMisskeyKoKr extends TranslationsMisskeyAchievementsTypesILoveMisskeyEnUs {
+	_TranslationsMisskeyAchievementsTypesILoveMisskeyKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'I Love Misskey';
@@ -4368,10 +4371,10 @@ class _StringsMisskeyAchievementsTypesILoveMisskeyKoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.foundTreasure_
-class _StringsMisskeyAchievementsTypesFoundTreasureKoKr extends _StringsMisskeyAchievementsTypesFoundTreasureEnUs {
-	_StringsMisskeyAchievementsTypesFoundTreasureKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesFoundTreasureKoKr extends TranslationsMisskeyAchievementsTypesFoundTreasureEnUs {
+	_TranslationsMisskeyAchievementsTypesFoundTreasureKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '보물찾기';
@@ -4379,10 +4382,10 @@ class _StringsMisskeyAchievementsTypesFoundTreasureKoKr extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.client30min_
-class _StringsMisskeyAchievementsTypesClient30minKoKr extends _StringsMisskeyAchievementsTypesClient30minEnUs {
-	_StringsMisskeyAchievementsTypesClient30minKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient30minKoKr extends TranslationsMisskeyAchievementsTypesClient30minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient30minKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '잠시 쉬어요';
@@ -4390,10 +4393,10 @@ class _StringsMisskeyAchievementsTypesClient30minKoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.client60min_
-class _StringsMisskeyAchievementsTypesClient60minKoKr extends _StringsMisskeyAchievementsTypesClient60minEnUs {
-	_StringsMisskeyAchievementsTypesClient60minKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClient60minKoKr extends TranslationsMisskeyAchievementsTypesClient60minEnUs {
+	_TranslationsMisskeyAchievementsTypesClient60minKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'No "Miss" in Misskey';
@@ -4401,10 +4404,10 @@ class _StringsMisskeyAchievementsTypesClient60minKoKr extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.noteDeletedWithin1min_
-class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr extends _StringsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
-	_StringsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr extends TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minEnUs {
+	_TranslationsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '있었는데요 없었습니다';
@@ -4412,10 +4415,10 @@ class _StringsMisskeyAchievementsTypesNoteDeletedWithin1minKoKr extends _Strings
 }
 
 // Path: misskey.achievements_.types_.postedAtLateNight_
-class _StringsMisskeyAchievementsTypesPostedAtLateNightKoKr extends _StringsMisskeyAchievementsTypesPostedAtLateNightEnUs {
-	_StringsMisskeyAchievementsTypesPostedAtLateNightKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAtLateNightKoKr extends TranslationsMisskeyAchievementsTypesPostedAtLateNightEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAtLateNightKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '올빼미';
@@ -4424,10 +4427,10 @@ class _StringsMisskeyAchievementsTypesPostedAtLateNightKoKr extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.postedAt0min0sec_
-class _StringsMisskeyAchievementsTypesPostedAt0min0secKoKr extends _StringsMisskeyAchievementsTypesPostedAt0min0secEnUs {
-	_StringsMisskeyAchievementsTypesPostedAt0min0secKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPostedAt0min0secKoKr extends TranslationsMisskeyAchievementsTypesPostedAt0min0secEnUs {
+	_TranslationsMisskeyAchievementsTypesPostedAt0min0secKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '정각';
@@ -4436,10 +4439,10 @@ class _StringsMisskeyAchievementsTypesPostedAt0min0secKoKr extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.selfQuote_
-class _StringsMisskeyAchievementsTypesSelfQuoteKoKr extends _StringsMisskeyAchievementsTypesSelfQuoteEnUs {
-	_StringsMisskeyAchievementsTypesSelfQuoteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSelfQuoteKoKr extends TranslationsMisskeyAchievementsTypesSelfQuoteEnUs {
+	_TranslationsMisskeyAchievementsTypesSelfQuoteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '혼잣말';
@@ -4447,10 +4450,10 @@ class _StringsMisskeyAchievementsTypesSelfQuoteKoKr extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.htl20npm_
-class _StringsMisskeyAchievementsTypesHtl20npmKoKr extends _StringsMisskeyAchievementsTypesHtl20npmEnUs {
-	_StringsMisskeyAchievementsTypesHtl20npmKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesHtl20npmKoKr extends TranslationsMisskeyAchievementsTypesHtl20npmEnUs {
+	_TranslationsMisskeyAchievementsTypesHtl20npmKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '타임라인 폭주 중';
@@ -4458,10 +4461,10 @@ class _StringsMisskeyAchievementsTypesHtl20npmKoKr extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartKoKr extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartKoKr extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '애널리스트';
@@ -4469,10 +4472,10 @@ class _StringsMisskeyAchievementsTypesViewInstanceChartKoKr extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.outputHelloWorldOnScratchpad_
-class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr extends _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
-	_StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr extends TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadEnUs {
+	_TranslationsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Hello, world!';
@@ -4480,10 +4483,10 @@ class _StringsMisskeyAchievementsTypesOutputHelloWorldOnScratchpadKoKr extends _
 }
 
 // Path: misskey.achievements_.types_.open3windows_
-class _StringsMisskeyAchievementsTypesOpen3windowsKoKr extends _StringsMisskeyAchievementsTypesOpen3windowsEnUs {
-	_StringsMisskeyAchievementsTypesOpen3windowsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesOpen3windowsKoKr extends TranslationsMisskeyAchievementsTypesOpen3windowsEnUs {
+	_TranslationsMisskeyAchievementsTypesOpen3windowsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '멀티 윈도우';
@@ -4491,10 +4494,10 @@ class _StringsMisskeyAchievementsTypesOpen3windowsKoKr extends _StringsMisskeyAc
 }
 
 // Path: misskey.achievements_.types_.driveFolderCircularReference_
-class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr extends _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
-	_StringsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr extends TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceEnUs {
+	_TranslationsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '순환 참조';
@@ -4502,10 +4505,10 @@ class _StringsMisskeyAchievementsTypesDriveFolderCircularReferenceKoKr extends _
 }
 
 // Path: misskey.achievements_.types_.reactWithoutRead_
-class _StringsMisskeyAchievementsTypesReactWithoutReadKoKr extends _StringsMisskeyAchievementsTypesReactWithoutReadEnUs {
-	_StringsMisskeyAchievementsTypesReactWithoutReadKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesReactWithoutReadKoKr extends TranslationsMisskeyAchievementsTypesReactWithoutReadEnUs {
+	_TranslationsMisskeyAchievementsTypesReactWithoutReadKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '읽고 답하긴 하시는 건가요?';
@@ -4513,10 +4516,10 @@ class _StringsMisskeyAchievementsTypesReactWithoutReadKoKr extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.clickedClickHere_
-class _StringsMisskeyAchievementsTypesClickedClickHereKoKr extends _StringsMisskeyAchievementsTypesClickedClickHereEnUs {
-	_StringsMisskeyAchievementsTypesClickedClickHereKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesClickedClickHereKoKr extends TranslationsMisskeyAchievementsTypesClickedClickHereEnUs {
+	_TranslationsMisskeyAchievementsTypesClickedClickHereKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '여기를 누르세요';
@@ -4524,10 +4527,10 @@ class _StringsMisskeyAchievementsTypesClickedClickHereKoKr extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.justPlainLucky_
-class _StringsMisskeyAchievementsTypesJustPlainLuckyKoKr extends _StringsMisskeyAchievementsTypesJustPlainLuckyEnUs {
-	_StringsMisskeyAchievementsTypesJustPlainLuckyKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesJustPlainLuckyKoKr extends TranslationsMisskeyAchievementsTypesJustPlainLuckyEnUs {
+	_TranslationsMisskeyAchievementsTypesJustPlainLuckyKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '그냥 운이 좋았어';
@@ -4535,10 +4538,10 @@ class _StringsMisskeyAchievementsTypesJustPlainLuckyKoKr extends _StringsMisskey
 }
 
 // Path: misskey.achievements_.types_.setNameToSyuilo_
-class _StringsMisskeyAchievementsTypesSetNameToSyuiloKoKr extends _StringsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
-	_StringsMisskeyAchievementsTypesSetNameToSyuiloKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloKoKr extends TranslationsMisskeyAchievementsTypesSetNameToSyuiloEnUs {
+	_TranslationsMisskeyAchievementsTypesSetNameToSyuiloKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '신 콤플렉스';
@@ -4546,10 +4549,10 @@ class _StringsMisskeyAchievementsTypesSetNameToSyuiloKoKr extends _StringsMisske
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated1_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '1주년';
@@ -4557,10 +4560,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated1KoKr extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '2주년';
@@ -4568,10 +4571,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated2KoKr extends _St
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
-class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr extends _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
-	_StringsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr extends TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3EnUs {
+	_TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '3주년';
@@ -4579,10 +4582,10 @@ class _StringsMisskeyAchievementsTypesPassedSinceAccountCreated3KoKr extends _St
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
-class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr extends _StringsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr extends TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '생일 축하합니다!';
@@ -4590,10 +4593,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnBirthdayKoKr extends _StringsMis
 }
 
 // Path: misskey.achievements_.types_.loggedInOnNewYearsDay_
-class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr extends _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
-	_StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr extends TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayEnUs {
+	_TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '새해 복 많이 받으세요';
@@ -4602,10 +4605,10 @@ class _StringsMisskeyAchievementsTypesLoggedInOnNewYearsDayKoKr extends _Strings
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
-class _StringsMisskeyAchievementsTypesCookieClickedKoKr extends _StringsMisskeyAchievementsTypesCookieClickedEnUs {
-	_StringsMisskeyAchievementsTypesCookieClickedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesCookieClickedKoKr extends TranslationsMisskeyAchievementsTypesCookieClickedEnUs {
+	_TranslationsMisskeyAchievementsTypesCookieClickedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '쿠키를 클릭하는 게임';
@@ -4614,10 +4617,10 @@ class _StringsMisskeyAchievementsTypesCookieClickedKoKr extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.brainDiver_
-class _StringsMisskeyAchievementsTypesBrainDiverKoKr extends _StringsMisskeyAchievementsTypesBrainDiverEnUs {
-	_StringsMisskeyAchievementsTypesBrainDiverKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBrainDiverKoKr extends TranslationsMisskeyAchievementsTypesBrainDiverEnUs {
+	_TranslationsMisskeyAchievementsTypesBrainDiverKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Brain Diver';
@@ -4626,10 +4629,10 @@ class _StringsMisskeyAchievementsTypesBrainDiverKoKr extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.smashTestNotificationButton_
-class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr extends _StringsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
-	_StringsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr extends TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonEnUs {
+	_TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '테스트 과잉';
@@ -4637,10 +4640,10 @@ class _StringsMisskeyAchievementsTypesSmashTestNotificationButtonKoKr extends _S
 }
 
 // Path: misskey.achievements_.types_.tutorialCompleted_
-class _StringsMisskeyAchievementsTypesTutorialCompletedKoKr extends _StringsMisskeyAchievementsTypesTutorialCompletedEnUs {
-	_StringsMisskeyAchievementsTypesTutorialCompletedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesTutorialCompletedKoKr extends TranslationsMisskeyAchievementsTypesTutorialCompletedEnUs {
+	_TranslationsMisskeyAchievementsTypesTutorialCompletedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Misskey 입문자 과정 수료증';
@@ -4648,10 +4651,10 @@ class _StringsMisskeyAchievementsTypesTutorialCompletedKoKr extends _StringsMiss
 }
 
 // Path: misskey.achievements_.types_.bubbleGameExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr extends _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '🤯';
@@ -4659,10 +4662,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameExplodingHeadKoKr extends _Strin
 }
 
 // Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
-class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr extends _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
-	_StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '더블 🤯';
@@ -4671,10 +4674,10 @@ class _StringsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadKoKr extends 
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteKoKr extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteKoKr extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => '노트 ID';
@@ -4683,22 +4686,22 @@ class _StringsMisskeyPagesBlocksNoteKoKr extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => '이메일';
 	@override String get webhook => 'Webhook';
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr captions_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr captions_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
-class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr extends _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '파라미터가 부족합니다';
@@ -4706,10 +4709,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsInvalidParamsKoKr extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.resourceTypeNotSupported_
-class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr extends _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '해당하는 외부 리소스는 지원되지 않습니다.';
@@ -4717,10 +4720,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsResourceTypeNotSupportedKoKr
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.failedToFetch_
-class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr extends _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '데이터를 불러올 수 없습니다';
@@ -4729,10 +4732,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsFailedToFetchKoKr extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.hashUnmatched_
-class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr extends _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '데이터가 올바르지 않습니다.';
@@ -4740,10 +4743,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsHashUnmatchedKoKr extends _S
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr extends _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'AiScript 오류';
@@ -4751,10 +4754,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginParseFailedKoKr extend
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.pluginInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr extends _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '플러그인 설치에 실패했습니다';
@@ -4762,10 +4765,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsPluginInstallFailedKoKr exte
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr extends _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '테마 코드 분석 오류';
@@ -4773,10 +4776,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeParseFailedKoKr extends
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeInstallFailed_
-class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr extends _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
-	_StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr extends TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
+	_TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => '테마를 설치하지 못했습니다';
@@ -4784,10 +4787,10 @@ class _StringsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoKr exten
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_
-class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr extends _StringsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
-	_StringsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr extends TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get cw => '배고픈 사람 주의';
@@ -4795,10 +4798,10 @@ class _StringsMisskeyInitialTutorialPostNoteCwExampleNoteKoKr extends _StringsMi
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr._(_StringsKoKr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsKoKr._(TranslationsKoKr root) : this._root = root, super.internal(root);
 
-	@override final _StringsKoKr _root; // ignore: unused_field
+	final TranslationsKoKr _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => '모더레이터 권한을 가진 사용자의 이메일 주소에 알림을 보냅니다 (신고를 받은 때에만)';

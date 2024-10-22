@@ -7,7 +7,7 @@ part of 'federation_instance_provider.dart';
 // **************************************************************************
 
 String _$federationInstanceHash() =>
-    r'8b45989b1b0571577a5ace9829b4313e0dccba5b';
+    r'7d839c4af8d32812bd8e80fedd7af3cffe4d0c82';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -160,6 +160,8 @@ class FederationInstanceProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin FederationInstanceRef
     on AutoDisposeFutureProviderRef<FederationShowInstanceResponse> {
   /// The parameter `account` of this provider.
@@ -180,4 +182,4 @@ class _FederationInstanceProviderElement
   String get host => (origin as FederationInstanceProvider).host;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

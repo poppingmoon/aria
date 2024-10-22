@@ -7,7 +7,7 @@ part of 'reversi_invitations_provider.dart';
 // **************************************************************************
 
 String _$reversiInvitationsHash() =>
-    r'a2f03246f4575a443018902761e487b500c3f999';
+    r'3b62206a345f4be6bd41ff8146e38321efb44c54';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -143,6 +143,8 @@ class ReversiInvitationsProvider extends AutoDisposeFutureProvider<List<User>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ReversiInvitationsRef on AutoDisposeFutureProviderRef<List<User>> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -157,4 +159,4 @@ class _ReversiInvitationsProviderElement
   Account get account => (origin as ReversiInvitationsProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

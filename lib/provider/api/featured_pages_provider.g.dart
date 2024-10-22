@@ -6,7 +6,7 @@ part of 'featured_pages_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$featuredPagesHash() => r'9cfdf2b7dc98049718b2d905f11b801a9fe4c0c4';
+String _$featuredPagesHash() => r'4e58a17a7c2c8658e462fc9ba79a70186fd69f5a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class FeaturedPagesProvider extends AutoDisposeFutureProvider<List<Page>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin FeaturedPagesRef on AutoDisposeFutureProviderRef<List<Page>> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -155,4 +157,4 @@ class _FeaturedPagesProviderElement
   Account get account => (origin as FeaturedPagesProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

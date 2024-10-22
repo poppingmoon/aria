@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsArSa extends Translations {
+class TranslationsArSa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsArSa.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsArSa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.arSa,
@@ -18,23 +21,23 @@ class _StringsArSa extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <ar-SA>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsArSa _root = this; // ignore: unused_field
+	late final TranslationsArSa _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaArSa aria = _StringsAriaArSa._(_root);
-	@override late final _StringsMisskeyArSa misskey = _StringsMisskeyArSa._(_root);
+	@override late final _TranslationsAriaArSa aria = _TranslationsAriaArSa._(_root);
+	@override late final _TranslationsMisskeyArSa misskey = _TranslationsMisskeyArSa._(_root);
 }
 
 // Path: aria
-class _StringsAriaArSa extends _StringsAriaEnUs {
-	_StringsAriaArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsAriaArSa extends TranslationsAriaEnUs {
+	_TranslationsAriaArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -63,10 +66,10 @@ class _StringsAriaArSa extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
-	_StringsMisskeyArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'العربية';
@@ -1083,76 +1086,76 @@ class _StringsMisskeyArSa extends _StringsMisskeyEnUs {
 	@override String get flip => 'اقلب';
 	@override String lastNDays({required Object n}) => 'آخر ${n} أيام';
 	@override String get surrender => 'ألغِ';
-	@override late final _StringsMisskeyDeliveryArSa delivery_ = _StringsMisskeyDeliveryArSa._(_root);
-	@override late final _StringsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _StringsMisskeyInitialAccountSettingArSa._(_root);
-	@override late final _StringsMisskeyServerRulesArSa serverRules_ = _StringsMisskeyServerRulesArSa._(_root);
-	@override late final _StringsMisskeyAccountMigrationArSa accountMigration_ = _StringsMisskeyAccountMigrationArSa._(_root);
-	@override late final _StringsMisskeyAchievementsArSa achievements_ = _StringsMisskeyAchievementsArSa._(_root);
-	@override late final _StringsMisskeyRoleArSa role_ = _StringsMisskeyRoleArSa._(_root);
-	@override late final _StringsMisskeyEmailUnavailableArSa emailUnavailable_ = _StringsMisskeyEmailUnavailableArSa._(_root);
-	@override late final _StringsMisskeyFfVisibilityArSa ffVisibility_ = _StringsMisskeyFfVisibilityArSa._(_root);
-	@override late final _StringsMisskeySignupArSa signup_ = _StringsMisskeySignupArSa._(_root);
-	@override late final _StringsMisskeyAccountDeleteArSa accountDelete_ = _StringsMisskeyAccountDeleteArSa._(_root);
-	@override late final _StringsMisskeyAdArSa ad_ = _StringsMisskeyAdArSa._(_root);
-	@override late final _StringsMisskeyForgotPasswordArSa forgotPassword_ = _StringsMisskeyForgotPasswordArSa._(_root);
-	@override late final _StringsMisskeyGalleryArSa gallery_ = _StringsMisskeyGalleryArSa._(_root);
-	@override late final _StringsMisskeyEmailArSa email_ = _StringsMisskeyEmailArSa._(_root);
-	@override late final _StringsMisskeyPluginArSa plugin_ = _StringsMisskeyPluginArSa._(_root);
-	@override late final _StringsMisskeyPreferencesBackupsArSa preferencesBackups_ = _StringsMisskeyPreferencesBackupsArSa._(_root);
-	@override late final _StringsMisskeyRegistryArSa registry_ = _StringsMisskeyRegistryArSa._(_root);
-	@override late final _StringsMisskeyAboutMisskeyArSa aboutMisskey_ = _StringsMisskeyAboutMisskeyArSa._(_root);
-	@override late final _StringsMisskeyInstanceTickerArSa instanceTicker_ = _StringsMisskeyInstanceTickerArSa._(_root);
-	@override late final _StringsMisskeyServerDisconnectedBehaviorArSa serverDisconnectedBehavior_ = _StringsMisskeyServerDisconnectedBehaviorArSa._(_root);
-	@override late final _StringsMisskeyChannelArSa channel_ = _StringsMisskeyChannelArSa._(_root);
-	@override late final _StringsMisskeyMenuDisplayArSa menuDisplay_ = _StringsMisskeyMenuDisplayArSa._(_root);
-	@override late final _StringsMisskeyWordMuteArSa wordMute_ = _StringsMisskeyWordMuteArSa._(_root);
-	@override late final _StringsMisskeyInstanceMuteArSa instanceMute_ = _StringsMisskeyInstanceMuteArSa._(_root);
-	@override late final _StringsMisskeyThemeArSa theme_ = _StringsMisskeyThemeArSa._(_root);
-	@override late final _StringsMisskeySfxArSa sfx_ = _StringsMisskeySfxArSa._(_root);
-	@override late final _StringsMisskeyAgoArSa ago_ = _StringsMisskeyAgoArSa._(_root);
-	@override late final _StringsMisskeyTimeArSa time_ = _StringsMisskeyTimeArSa._(_root);
-	@override late final _StringsMisskeyX2faArSa x2fa_ = _StringsMisskeyX2faArSa._(_root);
-	@override late final _StringsMisskeyPermissionsArSa permissions_ = _StringsMisskeyPermissionsArSa._(_root);
-	@override late final _StringsMisskeyAuthArSa auth_ = _StringsMisskeyAuthArSa._(_root);
-	@override late final _StringsMisskeyAntennaSourcesArSa antennaSources_ = _StringsMisskeyAntennaSourcesArSa._(_root);
-	@override late final _StringsMisskeyWeekdayArSa weekday_ = _StringsMisskeyWeekdayArSa._(_root);
-	@override late final _StringsMisskeyWidgetsArSa widgets_ = _StringsMisskeyWidgetsArSa._(_root);
-	@override late final _StringsMisskeyCwArSa cw_ = _StringsMisskeyCwArSa._(_root);
-	@override late final _StringsMisskeyPollArSa poll_ = _StringsMisskeyPollArSa._(_root);
-	@override late final _StringsMisskeyVisibilityArSa visibility_ = _StringsMisskeyVisibilityArSa._(_root);
-	@override late final _StringsMisskeyPostFormArSa postForm_ = _StringsMisskeyPostFormArSa._(_root);
-	@override late final _StringsMisskeyProfileArSa profile_ = _StringsMisskeyProfileArSa._(_root);
-	@override late final _StringsMisskeyExportOrImportArSa exportOrImport_ = _StringsMisskeyExportOrImportArSa._(_root);
-	@override late final _StringsMisskeyChartsArSa charts_ = _StringsMisskeyChartsArSa._(_root);
-	@override late final _StringsMisskeyInstanceChartsArSa instanceCharts_ = _StringsMisskeyInstanceChartsArSa._(_root);
-	@override late final _StringsMisskeyTimelinesArSa timelines_ = _StringsMisskeyTimelinesArSa._(_root);
-	@override late final _StringsMisskeyPlayArSa play_ = _StringsMisskeyPlayArSa._(_root);
-	@override late final _StringsMisskeyPagesArSa pages_ = _StringsMisskeyPagesArSa._(_root);
-	@override late final _StringsMisskeyRelayStatusArSa relayStatus_ = _StringsMisskeyRelayStatusArSa._(_root);
-	@override late final _StringsMisskeyNotificationArSa notification_ = _StringsMisskeyNotificationArSa._(_root);
-	@override late final _StringsMisskeyDeckArSa deck_ = _StringsMisskeyDeckArSa._(_root);
-	@override late final _StringsMisskeyWebhookSettingsArSa webhookSettings_ = _StringsMisskeyWebhookSettingsArSa._(_root);
-	@override late final _StringsMisskeyAbuseReportArSa abuseReport_ = _StringsMisskeyAbuseReportArSa._(_root);
-	@override late final _StringsMisskeyModerationLogTypesArSa moderationLogTypes_ = _StringsMisskeyModerationLogTypesArSa._(_root);
-	@override late final _StringsMisskeyReversiArSa reversi_ = _StringsMisskeyReversiArSa._(_root);
-	@override late final _StringsMisskeyOfflineScreenArSa offlineScreen_ = _StringsMisskeyOfflineScreenArSa._(_root);
+	@override late final _TranslationsMisskeyDeliveryArSa delivery_ = _TranslationsMisskeyDeliveryArSa._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingArSa initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingArSa._(_root);
+	@override late final _TranslationsMisskeyServerRulesArSa serverRules_ = _TranslationsMisskeyServerRulesArSa._(_root);
+	@override late final _TranslationsMisskeyAccountMigrationArSa accountMigration_ = _TranslationsMisskeyAccountMigrationArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsArSa achievements_ = _TranslationsMisskeyAchievementsArSa._(_root);
+	@override late final _TranslationsMisskeyRoleArSa role_ = _TranslationsMisskeyRoleArSa._(_root);
+	@override late final _TranslationsMisskeyEmailUnavailableArSa emailUnavailable_ = _TranslationsMisskeyEmailUnavailableArSa._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityArSa ffVisibility_ = _TranslationsMisskeyFfVisibilityArSa._(_root);
+	@override late final _TranslationsMisskeySignupArSa signup_ = _TranslationsMisskeySignupArSa._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteArSa accountDelete_ = _TranslationsMisskeyAccountDeleteArSa._(_root);
+	@override late final _TranslationsMisskeyAdArSa ad_ = _TranslationsMisskeyAdArSa._(_root);
+	@override late final _TranslationsMisskeyForgotPasswordArSa forgotPassword_ = _TranslationsMisskeyForgotPasswordArSa._(_root);
+	@override late final _TranslationsMisskeyGalleryArSa gallery_ = _TranslationsMisskeyGalleryArSa._(_root);
+	@override late final _TranslationsMisskeyEmailArSa email_ = _TranslationsMisskeyEmailArSa._(_root);
+	@override late final _TranslationsMisskeyPluginArSa plugin_ = _TranslationsMisskeyPluginArSa._(_root);
+	@override late final _TranslationsMisskeyPreferencesBackupsArSa preferencesBackups_ = _TranslationsMisskeyPreferencesBackupsArSa._(_root);
+	@override late final _TranslationsMisskeyRegistryArSa registry_ = _TranslationsMisskeyRegistryArSa._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeyArSa aboutMisskey_ = _TranslationsMisskeyAboutMisskeyArSa._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerArSa instanceTicker_ = _TranslationsMisskeyInstanceTickerArSa._(_root);
+	@override late final _TranslationsMisskeyServerDisconnectedBehaviorArSa serverDisconnectedBehavior_ = _TranslationsMisskeyServerDisconnectedBehaviorArSa._(_root);
+	@override late final _TranslationsMisskeyChannelArSa channel_ = _TranslationsMisskeyChannelArSa._(_root);
+	@override late final _TranslationsMisskeyMenuDisplayArSa menuDisplay_ = _TranslationsMisskeyMenuDisplayArSa._(_root);
+	@override late final _TranslationsMisskeyWordMuteArSa wordMute_ = _TranslationsMisskeyWordMuteArSa._(_root);
+	@override late final _TranslationsMisskeyInstanceMuteArSa instanceMute_ = _TranslationsMisskeyInstanceMuteArSa._(_root);
+	@override late final _TranslationsMisskeyThemeArSa theme_ = _TranslationsMisskeyThemeArSa._(_root);
+	@override late final _TranslationsMisskeySfxArSa sfx_ = _TranslationsMisskeySfxArSa._(_root);
+	@override late final _TranslationsMisskeyAgoArSa ago_ = _TranslationsMisskeyAgoArSa._(_root);
+	@override late final _TranslationsMisskeyTimeArSa time_ = _TranslationsMisskeyTimeArSa._(_root);
+	@override late final _TranslationsMisskeyX2faArSa x2fa_ = _TranslationsMisskeyX2faArSa._(_root);
+	@override late final _TranslationsMisskeyPermissionsArSa permissions_ = _TranslationsMisskeyPermissionsArSa._(_root);
+	@override late final _TranslationsMisskeyAuthArSa auth_ = _TranslationsMisskeyAuthArSa._(_root);
+	@override late final _TranslationsMisskeyAntennaSourcesArSa antennaSources_ = _TranslationsMisskeyAntennaSourcesArSa._(_root);
+	@override late final _TranslationsMisskeyWeekdayArSa weekday_ = _TranslationsMisskeyWeekdayArSa._(_root);
+	@override late final _TranslationsMisskeyWidgetsArSa widgets_ = _TranslationsMisskeyWidgetsArSa._(_root);
+	@override late final _TranslationsMisskeyCwArSa cw_ = _TranslationsMisskeyCwArSa._(_root);
+	@override late final _TranslationsMisskeyPollArSa poll_ = _TranslationsMisskeyPollArSa._(_root);
+	@override late final _TranslationsMisskeyVisibilityArSa visibility_ = _TranslationsMisskeyVisibilityArSa._(_root);
+	@override late final _TranslationsMisskeyPostFormArSa postForm_ = _TranslationsMisskeyPostFormArSa._(_root);
+	@override late final _TranslationsMisskeyProfileArSa profile_ = _TranslationsMisskeyProfileArSa._(_root);
+	@override late final _TranslationsMisskeyExportOrImportArSa exportOrImport_ = _TranslationsMisskeyExportOrImportArSa._(_root);
+	@override late final _TranslationsMisskeyChartsArSa charts_ = _TranslationsMisskeyChartsArSa._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsArSa instanceCharts_ = _TranslationsMisskeyInstanceChartsArSa._(_root);
+	@override late final _TranslationsMisskeyTimelinesArSa timelines_ = _TranslationsMisskeyTimelinesArSa._(_root);
+	@override late final _TranslationsMisskeyPlayArSa play_ = _TranslationsMisskeyPlayArSa._(_root);
+	@override late final _TranslationsMisskeyPagesArSa pages_ = _TranslationsMisskeyPagesArSa._(_root);
+	@override late final _TranslationsMisskeyRelayStatusArSa relayStatus_ = _TranslationsMisskeyRelayStatusArSa._(_root);
+	@override late final _TranslationsMisskeyNotificationArSa notification_ = _TranslationsMisskeyNotificationArSa._(_root);
+	@override late final _TranslationsMisskeyDeckArSa deck_ = _TranslationsMisskeyDeckArSa._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsArSa webhookSettings_ = _TranslationsMisskeyWebhookSettingsArSa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportArSa abuseReport_ = _TranslationsMisskeyAbuseReportArSa._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesArSa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesArSa._(_root);
+	@override late final _TranslationsMisskeyReversiArSa reversi_ = _TranslationsMisskeyReversiArSa._(_root);
+	@override late final _TranslationsMisskeyOfflineScreenArSa offlineScreen_ = _TranslationsMisskeyOfflineScreenArSa._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryArSa extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryArSa extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'مُعلّق';
 }
 
 // Path: misskey.initialAccountSetting_
-class _StringsMisskeyInitialAccountSettingArSa extends _StringsMisskeyInitialAccountSettingEnUs {
-	_StringsMisskeyInitialAccountSettingArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInitialAccountSettingArSa extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountCreated => 'نجح إنشاء حسابك!';
@@ -1166,20 +1169,20 @@ class _StringsMisskeyInitialAccountSettingArSa extends _StringsMisskeyInitialAcc
 }
 
 // Path: misskey.serverRules_
-class _StringsMisskeyServerRulesArSa extends _StringsMisskeyServerRulesEnUs {
-	_StringsMisskeyServerRulesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerRulesArSa extends TranslationsMisskeyServerRulesEnUs {
+	_TranslationsMisskeyServerRulesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'مجموعة من القواعد لعرضها عند التسجيل، من المستحسن كتابة ملخصٍ للشروط الخدمة.';
 }
 
 // Path: misskey.accountMigration_
-class _StringsMisskeyAccountMigrationArSa extends _StringsMisskeyAccountMigrationEnUs {
-	_StringsMisskeyAccountMigrationArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountMigrationArSa extends TranslationsMisskeyAccountMigrationEnUs {
+	_TranslationsMisskeyAccountMigrationArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get moveFrom => 'انقل حسابًا آخر لهذا الحساب';
@@ -1191,20 +1194,20 @@ class _StringsMisskeyAccountMigrationArSa extends _StringsMisskeyAccountMigratio
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsArSa extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsArSa extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesArSa types_ = _StringsMisskeyAchievementsTypesArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesArSa types_ = _TranslationsMisskeyAchievementsTypesArSa._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleArSa extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleArSa extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get new_ => 'دور جديد';
@@ -1217,16 +1220,16 @@ class _StringsMisskeyRoleArSa extends _StringsMisskeyRoleEnUs {
 	@override String get options => 'خيارات';
 	@override String get policies => 'السياسة العامة';
 	@override String get priority => 'الأولوية';
-	@override late final _StringsMisskeyRolePriorityArSa priority_ = _StringsMisskeyRolePriorityArSa._(_root);
-	@override late final _StringsMisskeyRoleOptionsArSa options_ = _StringsMisskeyRoleOptionsArSa._(_root);
-	@override late final _StringsMisskeyRoleConditionArSa condition_ = _StringsMisskeyRoleConditionArSa._(_root);
+	@override late final _TranslationsMisskeyRolePriorityArSa priority_ = _TranslationsMisskeyRolePriorityArSa._(_root);
+	@override late final _TranslationsMisskeyRoleOptionsArSa options_ = _TranslationsMisskeyRoleOptionsArSa._(_root);
+	@override late final _TranslationsMisskeyRoleConditionArSa condition_ = _TranslationsMisskeyRoleConditionArSa._(_root);
 }
 
 // Path: misskey.emailUnavailable_
-class _StringsMisskeyEmailUnavailableArSa extends _StringsMisskeyEmailUnavailableEnUs {
-	_StringsMisskeyEmailUnavailableArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUnavailableArSa extends TranslationsMisskeyEmailUnavailableEnUs {
+	_TranslationsMisskeyEmailUnavailableArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get used => 'هذا البريد الإلكتروني مستخدم';
@@ -1236,10 +1239,10 @@ class _StringsMisskeyEmailUnavailableArSa extends _StringsMisskeyEmailUnavailabl
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityArSa extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityArSa extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'علني';
@@ -1248,10 +1251,10 @@ class _StringsMisskeyFfVisibilityArSa extends _StringsMisskeyFfVisibilityEnUs {
 }
 
 // Path: misskey.signup_
-class _StringsMisskeySignupArSa extends _StringsMisskeySignupEnUs {
-	_StringsMisskeySignupArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeySignupArSa extends TranslationsMisskeySignupEnUs {
+	_TranslationsMisskeySignupArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get almostThere => 'كدت تنتهي';
@@ -1260,10 +1263,10 @@ class _StringsMisskeySignupArSa extends _StringsMisskeySignupEnUs {
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteArSa extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteArSa extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get accountDelete => 'احذف الحساب';
@@ -1275,10 +1278,10 @@ class _StringsMisskeyAccountDeleteArSa extends _StringsMisskeyAccountDeleteEnUs 
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdArSa extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdArSa extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'رجوع';
@@ -1287,10 +1290,10 @@ class _StringsMisskeyAdArSa extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.forgotPassword_
-class _StringsMisskeyForgotPasswordArSa extends _StringsMisskeyForgotPasswordEnUs {
-	_StringsMisskeyForgotPasswordArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyForgotPasswordArSa extends TranslationsMisskeyForgotPasswordEnUs {
+	_TranslationsMisskeyForgotPasswordArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get enterEmail => 'أدخل البريد الإلكتروني المرتبط بحسابك لكي يرسل إليك رابط لإعادة تعيين كلمة المرور.';
@@ -1299,10 +1302,10 @@ class _StringsMisskeyForgotPasswordArSa extends _StringsMisskeyForgotPasswordEnU
 }
 
 // Path: misskey.gallery_
-class _StringsMisskeyGalleryArSa extends _StringsMisskeyGalleryEnUs {
-	_StringsMisskeyGalleryArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyGalleryArSa extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGalleryArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get my => 'معرضي';
@@ -1312,21 +1315,21 @@ class _StringsMisskeyGalleryArSa extends _StringsMisskeyGalleryEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailArSa extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailArSa extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowArSa follow_ = _StringsMisskeyEmailFollowArSa._(_root);
-	@override late final _StringsMisskeyEmailReceiveFollowRequestArSa receiveFollowRequest_ = _StringsMisskeyEmailReceiveFollowRequestArSa._(_root);
+	@override late final _TranslationsMisskeyEmailFollowArSa follow_ = _TranslationsMisskeyEmailFollowArSa._(_root);
+	@override late final _TranslationsMisskeyEmailReceiveFollowRequestArSa receiveFollowRequest_ = _TranslationsMisskeyEmailReceiveFollowRequestArSa._(_root);
 }
 
 // Path: misskey.plugin_
-class _StringsMisskeyPluginArSa extends _StringsMisskeyPluginEnUs {
-	_StringsMisskeyPluginArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPluginArSa extends TranslationsMisskeyPluginEnUs {
+	_TranslationsMisskeyPluginArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'ثبّت إضافات';
@@ -1336,10 +1339,10 @@ class _StringsMisskeyPluginArSa extends _StringsMisskeyPluginEnUs {
 }
 
 // Path: misskey.preferencesBackups_
-class _StringsMisskeyPreferencesBackupsArSa extends _StringsMisskeyPreferencesBackupsEnUs {
-	_StringsMisskeyPreferencesBackupsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPreferencesBackupsArSa extends TranslationsMisskeyPreferencesBackupsEnUs {
+	_TranslationsMisskeyPreferencesBackupsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String createdAt({required Object date, required Object time}) => 'تم إنشاؤه: ${date} ${time}';
@@ -1347,10 +1350,10 @@ class _StringsMisskeyPreferencesBackupsArSa extends _StringsMisskeyPreferencesBa
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryArSa extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryArSa extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get scope => 'الحيّز';
@@ -1361,10 +1364,10 @@ class _StringsMisskeyRegistryArSa extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.aboutMisskey_
-class _StringsMisskeyAboutMisskeyArSa extends _StringsMisskeyAboutMisskeyEnUs {
-	_StringsMisskeyAboutMisskeyArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAboutMisskeyArSa extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeyArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get about => 'ميسكي هو برمجية مفتوحة المصدر يطورها syuilo منذ 2014.';
@@ -1378,10 +1381,10 @@ class _StringsMisskeyAboutMisskeyArSa extends _StringsMisskeyAboutMisskeyEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerArSa extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerArSa extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'لا تظهره بتاتًا';
@@ -1390,10 +1393,10 @@ class _StringsMisskeyInstanceTickerArSa extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.serverDisconnectedBehavior_
-class _StringsMisskeyServerDisconnectedBehaviorArSa extends _StringsMisskeyServerDisconnectedBehaviorEnUs {
-	_StringsMisskeyServerDisconnectedBehaviorArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyServerDisconnectedBehaviorArSa extends TranslationsMisskeyServerDisconnectedBehaviorEnUs {
+	_TranslationsMisskeyServerDisconnectedBehaviorArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get reload => 'إعادة تحميل تلقائية';
@@ -1401,10 +1404,10 @@ class _StringsMisskeyServerDisconnectedBehaviorArSa extends _StringsMisskeyServe
 }
 
 // Path: misskey.channel_
-class _StringsMisskeyChannelArSa extends _StringsMisskeyChannelEnUs {
-	_StringsMisskeyChannelArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyChannelArSa extends TranslationsMisskeyChannelEnUs {
+	_TranslationsMisskeyChannelArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get create => 'أنشئ قناة';
@@ -1419,10 +1422,10 @@ class _StringsMisskeyChannelArSa extends _StringsMisskeyChannelEnUs {
 }
 
 // Path: misskey.menuDisplay_
-class _StringsMisskeyMenuDisplayArSa extends _StringsMisskeyMenuDisplayEnUs {
-	_StringsMisskeyMenuDisplayArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyMenuDisplayArSa extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplayArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get sideFull => 'جانبي';
@@ -1431,10 +1434,10 @@ class _StringsMisskeyMenuDisplayArSa extends _StringsMisskeyMenuDisplayEnUs {
 }
 
 // Path: misskey.wordMute_
-class _StringsMisskeyWordMuteArSa extends _StringsMisskeyWordMuteEnUs {
-	_StringsMisskeyWordMuteArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWordMuteArSa extends TranslationsMisskeyWordMuteEnUs {
+	_TranslationsMisskeyWordMuteArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get muteWords => 'الكلمات المحظورة';
@@ -1443,10 +1446,10 @@ class _StringsMisskeyWordMuteArSa extends _StringsMisskeyWordMuteEnUs {
 }
 
 // Path: misskey.instanceMute_
-class _StringsMisskeyInstanceMuteArSa extends _StringsMisskeyInstanceMuteEnUs {
-	_StringsMisskeyInstanceMuteArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceMuteArSa extends TranslationsMisskeyInstanceMuteEnUs {
+	_TranslationsMisskeyInstanceMuteArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get instanceMuteDescription => 'هذه سيحجب كل ملاحظات الخوادم المحجوبة ومشاركاتها والردود على تلك الملاحظات حتى وإن كانت من خادم غير محجوب.';
@@ -1456,10 +1459,10 @@ class _StringsMisskeyInstanceMuteArSa extends _StringsMisskeyInstanceMuteEnUs {
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeArSa extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeArSa extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get explore => 'استكشف قوالب المظهر';
@@ -1484,14 +1487,14 @@ class _StringsMisskeyThemeArSa extends _StringsMisskeyThemeEnUs {
 	@override String get alpha => 'الشفافية';
 	@override String get inputConstantName => 'أدخل اسمًا للثابت';
 	@override String deleteConstantConfirm({required Object const_}) => 'أمتأكد من حذف الثابت ${const_}؟';
-	@override late final _StringsMisskeyThemeKeysArSa keys = _StringsMisskeyThemeKeysArSa._(_root);
+	@override late final _TranslationsMisskeyThemeKeysArSa keys = _TranslationsMisskeyThemeKeysArSa._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxArSa extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxArSa extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'الملاحظات';
@@ -1500,10 +1503,10 @@ class _StringsMisskeySfxArSa extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoArSa extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoArSa extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get future => 'المستقبَل';
@@ -1519,10 +1522,10 @@ class _StringsMisskeyAgoArSa extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.time_
-class _StringsMisskeyTimeArSa extends _StringsMisskeyTimeEnUs {
-	_StringsMisskeyTimeArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimeArSa extends TranslationsMisskeyTimeEnUs {
+	_TranslationsMisskeyTimeArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get second => 'ثا';
@@ -1532,10 +1535,10 @@ class _StringsMisskeyTimeArSa extends _StringsMisskeyTimeEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faArSa extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faArSa extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get alreadyRegistered => 'سجلت سلفًا جهازًا للاستيثاق بعاملين.';
@@ -1547,10 +1550,10 @@ class _StringsMisskeyX2faArSa extends _StringsMisskeyX2faEnUs {
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsArSa extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsArSa extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get readAccount => 'اعرض معلومات حسابك';
@@ -1586,10 +1589,10 @@ class _StringsMisskeyPermissionsArSa extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.auth_
-class _StringsMisskeyAuthArSa extends _StringsMisskeyAuthEnUs {
-	_StringsMisskeyAuthArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAuthArSa extends TranslationsMisskeyAuthEnUs {
+	_TranslationsMisskeyAuthArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String shareAccess({required Object name}) => 'أتريد التفويض لـ "${name}" بالوصول لحسابك؟';
@@ -1601,10 +1604,10 @@ class _StringsMisskeyAuthArSa extends _StringsMisskeyAuthEnUs {
 }
 
 // Path: misskey.antennaSources_
-class _StringsMisskeyAntennaSourcesArSa extends _StringsMisskeyAntennaSourcesEnUs {
-	_StringsMisskeyAntennaSourcesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAntennaSourcesArSa extends TranslationsMisskeyAntennaSourcesEnUs {
+	_TranslationsMisskeyAntennaSourcesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'كل الملاحظات';
@@ -1613,10 +1616,10 @@ class _StringsMisskeyAntennaSourcesArSa extends _StringsMisskeyAntennaSourcesEnU
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayArSa extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayArSa extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get sunday => 'الأحد';
@@ -1629,10 +1632,10 @@ class _StringsMisskeyWeekdayArSa extends _StringsMisskeyWeekdayEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsArSa extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsArSa extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'الملف التعريفي';
@@ -1655,14 +1658,14 @@ class _StringsMisskeyWidgetsArSa extends _StringsMisskeyWidgetsEnUs {
 	@override String get jobQueue => 'قائمة الانتظار';
 	@override String get serverMetric => 'إحصائيات الخادم';
 	@override String get userList => 'قائمة المستخدمين';
-	@override late final _StringsMisskeyWidgetsUserListArSa userList_ = _StringsMisskeyWidgetsUserListArSa._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListArSa userList_ = _TranslationsMisskeyWidgetsUserListArSa._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwArSa extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwArSa extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get hide => 'إخفاء';
@@ -1672,10 +1675,10 @@ class _StringsMisskeyCwArSa extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollArSa extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollArSa extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'تحتاج إلى خيارَين على الأقل';
@@ -1702,10 +1705,10 @@ class _StringsMisskeyPollArSa extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityArSa extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityArSa extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'علني';
@@ -1719,23 +1722,23 @@ class _StringsMisskeyVisibilityArSa extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.postForm_
-class _StringsMisskeyPostFormArSa extends _StringsMisskeyPostFormEnUs {
-	_StringsMisskeyPostFormArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormArSa extends TranslationsMisskeyPostFormEnUs {
+	_TranslationsMisskeyPostFormArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get replyPlaceholder => 'رد على هذه الملاحظة…';
 	@override String get quotePlaceholder => 'اقتبس هذه الملاحظة…';
 	@override String get channelPlaceholder => 'انشر في قناة...';
-	@override late final _StringsMisskeyPostFormPlaceholdersArSa placeholders_ = _StringsMisskeyPostFormPlaceholdersArSa._(_root);
+	@override late final _TranslationsMisskeyPostFormPlaceholdersArSa placeholders_ = _TranslationsMisskeyPostFormPlaceholdersArSa._(_root);
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileArSa extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileArSa extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'الإسم';
@@ -1752,10 +1755,10 @@ class _StringsMisskeyProfileArSa extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportArSa extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportArSa extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'كل الملاحظات';
@@ -1770,10 +1773,10 @@ class _StringsMisskeyExportOrImportArSa extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsArSa extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsArSa extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'الفديرالية';
@@ -1792,10 +1795,10 @@ class _StringsMisskeyChartsArSa extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsArSa extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsArSa extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'الطلبات';
@@ -1810,10 +1813,10 @@ class _StringsMisskeyInstanceChartsArSa extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesArSa extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesArSa extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'الرئيسي';
@@ -1823,10 +1826,10 @@ class _StringsMisskeyTimelinesArSa extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayArSa extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayArSa extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get viewSource => 'اظهر المصدر';
@@ -1836,10 +1839,10 @@ class _StringsMisskeyPlayArSa extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesArSa extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesArSa extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'أنشئ صفحة جديدة';
@@ -1877,14 +1880,14 @@ class _StringsMisskeyPagesArSa extends _StringsMisskeyPagesEnUs {
 	@override String get contentBlocks => 'المحتوى';
 	@override String get inputBlocks => 'مُدخل';
 	@override String get specialBlocks => 'خاص';
-	@override late final _StringsMisskeyPagesBlocksArSa blocks = _StringsMisskeyPagesBlocksArSa._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksArSa blocks = _TranslationsMisskeyPagesBlocksArSa._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusArSa extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusArSa extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'مُعلّق';
@@ -1893,10 +1896,10 @@ class _StringsMisskeyRelayStatusArSa extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationArSa extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationArSa extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'نجح رفع الملف';
@@ -1909,15 +1912,15 @@ class _StringsMisskeyNotificationArSa extends _StringsMisskeyNotificationEnUs {
 	@override String get yourFollowRequestAccepted => 'قُبل طلب المتابعة';
 	@override String get pollEnded => 'انتهى الاستطلاع';
 	@override String unreadAntennaNote({required Object name}) => 'هوائي ${name}';
-	@override late final _StringsMisskeyNotificationTypesArSa types_ = _StringsMisskeyNotificationTypesArSa._(_root);
-	@override late final _StringsMisskeyNotificationActionsArSa actions_ = _StringsMisskeyNotificationActionsArSa._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesArSa types_ = _TranslationsMisskeyNotificationTypesArSa._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsArSa actions_ = _TranslationsMisskeyNotificationActionsArSa._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckArSa extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckArSa extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'أظهر العمود الأساسي دائمًا';
@@ -1930,36 +1933,36 @@ class _StringsMisskeyDeckArSa extends _StringsMisskeyDeckEnUs {
 	@override String get profile => 'حسابي الشخصي';
 	@override String get newProfile => 'ملف تعريفي جديد';
 	@override String get deleteProfile => 'حذف الملف التعريفي';
-	@override late final _StringsMisskeyDeckColumnsArSa columns_ = _StringsMisskeyDeckColumnsArSa._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsArSa columns_ = _TranslationsMisskeyDeckColumnsArSa._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsArSa extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsArSa extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'الاسم';
 	@override String get active => 'مُفعّل';
-	@override late final _StringsMisskeyWebhookSettingsEventsArSa events_ = _StringsMisskeyWebhookSettingsEventsArSa._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsArSa events_ = _TranslationsMisskeyWebhookSettingsEventsArSa._(_root);
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportArSa extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportArSa extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientArSa notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientArSa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientArSa notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientArSa._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesArSa extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesArSa extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'علِق';
@@ -1974,10 +1977,10 @@ class _StringsMisskeyModerationLogTypesArSa extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiArSa extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiArSa extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'المجموع';
@@ -1989,10 +1992,10 @@ class _StringsMisskeyReversiArSa extends _StringsMisskeyReversiEnUs {
 }
 
 // Path: misskey.offlineScreen_
-class _StringsMisskeyOfflineScreenArSa extends _StringsMisskeyOfflineScreenEnUs {
-	_StringsMisskeyOfflineScreenArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyOfflineScreenArSa extends TranslationsMisskeyOfflineScreenEnUs {
+	_TranslationsMisskeyOfflineScreenArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'غير متصل - يتعذر الاتصال بالخادم';
@@ -2000,40 +2003,40 @@ class _StringsMisskeyOfflineScreenArSa extends _StringsMisskeyOfflineScreenEnUs 
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesArSa extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesArSa extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesNotes1ArSa notes1_ = _StringsMisskeyAchievementsTypesNotes1ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10ArSa notes10_ = _StringsMisskeyAchievementsTypesNotes10ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100ArSa notes100_ = _StringsMisskeyAchievementsTypesNotes100ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes500ArSa notes500_ = _StringsMisskeyAchievementsTypesNotes500ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes1000ArSa notes1000_ = _StringsMisskeyAchievementsTypesNotes1000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes5000ArSa notes5000_ = _StringsMisskeyAchievementsTypesNotes5000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes10000ArSa notes10000_ = _StringsMisskeyAchievementsTypesNotes10000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes20000ArSa notes20000_ = _StringsMisskeyAchievementsTypesNotes20000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes30000ArSa notes30000_ = _StringsMisskeyAchievementsTypesNotes30000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes40000ArSa notes40000_ = _StringsMisskeyAchievementsTypesNotes40000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes50000ArSa notes50000_ = _StringsMisskeyAchievementsTypesNotes50000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes60000ArSa notes60000_ = _StringsMisskeyAchievementsTypesNotes60000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes70000ArSa notes70000_ = _StringsMisskeyAchievementsTypesNotes70000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes80000ArSa notes80000_ = _StringsMisskeyAchievementsTypesNotes80000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes90000ArSa notes90000_ = _StringsMisskeyAchievementsTypesNotes90000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNotes100000ArSa notes100000_ = _StringsMisskeyAchievementsTypesNotes100000ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesLogin3ArSa login3_ = _StringsMisskeyAchievementsTypesLogin3ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesNoteFavorited1ArSa noteFavorited1_ = _StringsMisskeyAchievementsTypesNoteFavorited1ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMyNoteFavorited1ArSa myNoteFavorited1_ = _StringsMisskeyAchievementsTypesMyNoteFavorited1ArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesProfileFilledArSa profileFilled_ = _StringsMisskeyAchievementsTypesProfileFilledArSa._(_root);
-	@override late final _StringsMisskeyAchievementsTypesMarkedAsCatArSa markedAsCat_ = _StringsMisskeyAchievementsTypesMarkedAsCatArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1ArSa notes1_ = _TranslationsMisskeyAchievementsTypesNotes1ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10ArSa notes10_ = _TranslationsMisskeyAchievementsTypesNotes10ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100ArSa notes100_ = _TranslationsMisskeyAchievementsTypesNotes100ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500ArSa notes500_ = _TranslationsMisskeyAchievementsTypesNotes500ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000ArSa notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000ArSa notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000ArSa notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000ArSa notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000ArSa notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000ArSa notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000ArSa notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000ArSa notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000ArSa notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000ArSa notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000ArSa notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes100000ArSa notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesLogin3ArSa login3_ = _TranslationsMisskeyAchievementsTypesLogin3ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteFavorited1ArSa noteFavorited1_ = _TranslationsMisskeyAchievementsTypesNoteFavorited1ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ArSa myNoteFavorited1_ = _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledArSa profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledArSa._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatArSa markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatArSa._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityArSa extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityArSa extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'منخفضة';
@@ -2042,10 +2045,10 @@ class _StringsMisskeyRolePriorityArSa extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.role_.options_
-class _StringsMisskeyRoleOptionsArSa extends _StringsMisskeyRoleOptionsEnUs {
-	_StringsMisskeyRoleOptionsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleOptionsArSa extends TranslationsMisskeyRoleOptionsEnUs {
+	_TranslationsMisskeyRoleOptionsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get canManageCustomEmojis => 'إدارة الإيموجي المخصصة';
@@ -2053,10 +2056,10 @@ class _StringsMisskeyRoleOptionsArSa extends _StringsMisskeyRoleOptionsEnUs {
 }
 
 // Path: misskey.role_.condition_
-class _StringsMisskeyRoleConditionArSa extends _StringsMisskeyRoleConditionEnUs {
-	_StringsMisskeyRoleConditionArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleConditionArSa extends TranslationsMisskeyRoleConditionEnUs {
+	_TranslationsMisskeyRoleConditionArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get isLocal => 'مستخدم محلي';
@@ -2064,30 +2067,30 @@ class _StringsMisskeyRoleConditionArSa extends _StringsMisskeyRoleConditionEnUs 
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowArSa extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowArSa extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'يتابعك';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
-class _StringsMisskeyEmailReceiveFollowRequestArSa extends _StringsMisskeyEmailReceiveFollowRequestEnUs {
-	_StringsMisskeyEmailReceiveFollowRequestArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailReceiveFollowRequestArSa extends TranslationsMisskeyEmailReceiveFollowRequestEnUs {
+	_TranslationsMisskeyEmailReceiveFollowRequestArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'استلمت طلب متابعة';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysArSa extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysArSa extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'طابع لوني';
@@ -2118,20 +2121,20 @@ class _StringsMisskeyThemeKeysArSa extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListArSa extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListArSa extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'اختر قائمة';
 }
 
 // Path: misskey.postForm_.placeholders_
-class _StringsMisskeyPostFormPlaceholdersArSa extends _StringsMisskeyPostFormPlaceholdersEnUs {
-	_StringsMisskeyPostFormPlaceholdersArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPostFormPlaceholdersArSa extends TranslationsMisskeyPostFormPlaceholdersEnUs {
+	_TranslationsMisskeyPostFormPlaceholdersArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get a => 'ما الذي تنوي فعله؟';
@@ -2143,10 +2146,10 @@ class _StringsMisskeyPostFormPlaceholdersArSa extends _StringsMisskeyPostFormPla
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksArSa extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksArSa extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'نص';
@@ -2155,14 +2158,14 @@ class _StringsMisskeyPagesBlocksArSa extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get image => 'صور';
 	@override String get button => 'زرّ';
 	@override String get note => 'ملاحظة مضمّنة';
-	@override late final _StringsMisskeyPagesBlocksNoteArSa note_ = _StringsMisskeyPagesBlocksNoteArSa._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteArSa note_ = _TranslationsMisskeyPagesBlocksNoteArSa._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesArSa extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesArSa extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'الكل';
@@ -2179,10 +2182,10 @@ class _StringsMisskeyNotificationTypesArSa extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsArSa extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsArSa extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get followBack => 'تابعك بالمثل';
@@ -2191,10 +2194,10 @@ class _StringsMisskeyNotificationActionsArSa extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsArSa extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsArSa extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'الرئيسية';
@@ -2209,30 +2212,30 @@ class _StringsMisskeyDeckColumnsArSa extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsArSa extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsArSa extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get reaction => 'عند التفاعل';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientArSa extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientArSa extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(_root);
 }
 
 // Path: misskey.achievements_.types_.notes1_
-class _StringsMisskeyAchievementsTypesNotes1ArSa extends _StringsMisskeyAchievementsTypesNotes1EnUs {
-	_StringsMisskeyAchievementsTypesNotes1ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1ArSa extends TranslationsMisskeyAchievementsTypesNotes1EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'انشر ملاحظتك الأولى';
@@ -2240,10 +2243,10 @@ class _StringsMisskeyAchievementsTypesNotes1ArSa extends _StringsMisskeyAchievem
 }
 
 // Path: misskey.achievements_.types_.notes10_
-class _StringsMisskeyAchievementsTypesNotes10ArSa extends _StringsMisskeyAchievementsTypesNotes10EnUs {
-	_StringsMisskeyAchievementsTypesNotes10ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10ArSa extends TranslationsMisskeyAchievementsTypesNotes10EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'بعض الملاحظات';
@@ -2251,10 +2254,10 @@ class _StringsMisskeyAchievementsTypesNotes10ArSa extends _StringsMisskeyAchieve
 }
 
 // Path: misskey.achievements_.types_.notes100_
-class _StringsMisskeyAchievementsTypesNotes100ArSa extends _StringsMisskeyAchievementsTypesNotes100EnUs {
-	_StringsMisskeyAchievementsTypesNotes100ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100ArSa extends TranslationsMisskeyAchievementsTypesNotes100EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'كثير من الملاحظات';
@@ -2262,20 +2265,20 @@ class _StringsMisskeyAchievementsTypesNotes100ArSa extends _StringsMisskeyAchiev
 }
 
 // Path: misskey.achievements_.types_.notes500_
-class _StringsMisskeyAchievementsTypesNotes500ArSa extends _StringsMisskeyAchievementsTypesNotes500EnUs {
-	_StringsMisskeyAchievementsTypesNotes500ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes500ArSa extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'انشر 500 ملاحظة';
 }
 
 // Path: misskey.achievements_.types_.notes1000_
-class _StringsMisskeyAchievementsTypesNotes1000ArSa extends _StringsMisskeyAchievementsTypesNotes1000EnUs {
-	_StringsMisskeyAchievementsTypesNotes1000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes1000ArSa extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'جبل ملاحظات';
@@ -2283,30 +2286,30 @@ class _StringsMisskeyAchievementsTypesNotes1000ArSa extends _StringsMisskeyAchie
 }
 
 // Path: misskey.achievements_.types_.notes5000_
-class _StringsMisskeyAchievementsTypesNotes5000ArSa extends _StringsMisskeyAchievementsTypesNotes5000EnUs {
-	_StringsMisskeyAchievementsTypesNotes5000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes5000ArSa extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'انشر 5000 ملاحظة';
 }
 
 // Path: misskey.achievements_.types_.notes10000_
-class _StringsMisskeyAchievementsTypesNotes10000ArSa extends _StringsMisskeyAchievementsTypesNotes10000EnUs {
-	_StringsMisskeyAchievementsTypesNotes10000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes10000ArSa extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'انشر 10000 ملاحظة';
 }
 
 // Path: misskey.achievements_.types_.notes20000_
-class _StringsMisskeyAchievementsTypesNotes20000ArSa extends _StringsMisskeyAchievementsTypesNotes20000EnUs {
-	_StringsMisskeyAchievementsTypesNotes20000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes20000ArSa extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'أريد...ملاحظات...أكثر';
@@ -2314,10 +2317,10 @@ class _StringsMisskeyAchievementsTypesNotes20000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes30000_
-class _StringsMisskeyAchievementsTypesNotes30000ArSa extends _StringsMisskeyAchievementsTypesNotes30000EnUs {
-	_StringsMisskeyAchievementsTypesNotes30000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes30000ArSa extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ملاحظات وملاحظات وملاحظات';
@@ -2325,10 +2328,10 @@ class _StringsMisskeyAchievementsTypesNotes30000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes40000_
-class _StringsMisskeyAchievementsTypesNotes40000ArSa extends _StringsMisskeyAchievementsTypesNotes40000EnUs {
-	_StringsMisskeyAchievementsTypesNotes40000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes40000ArSa extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'مصنع ملاحظات';
@@ -2336,10 +2339,10 @@ class _StringsMisskeyAchievementsTypesNotes40000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes50000_
-class _StringsMisskeyAchievementsTypesNotes50000ArSa extends _StringsMisskeyAchievementsTypesNotes50000EnUs {
-	_StringsMisskeyAchievementsTypesNotes50000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes50000ArSa extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'كوكب ملاحظات';
@@ -2347,10 +2350,10 @@ class _StringsMisskeyAchievementsTypesNotes50000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes60000_
-class _StringsMisskeyAchievementsTypesNotes60000ArSa extends _StringsMisskeyAchievementsTypesNotes60000EnUs {
-	_StringsMisskeyAchievementsTypesNotes60000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes60000ArSa extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'نجم ملاحظات';
@@ -2358,10 +2361,10 @@ class _StringsMisskeyAchievementsTypesNotes60000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes70000_
-class _StringsMisskeyAchievementsTypesNotes70000ArSa extends _StringsMisskeyAchievementsTypesNotes70000EnUs {
-	_StringsMisskeyAchievementsTypesNotes70000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes70000ArSa extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ثقب أسود للملاحظات';
@@ -2369,10 +2372,10 @@ class _StringsMisskeyAchievementsTypesNotes70000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes80000_
-class _StringsMisskeyAchievementsTypesNotes80000ArSa extends _StringsMisskeyAchievementsTypesNotes80000EnUs {
-	_StringsMisskeyAchievementsTypesNotes80000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes80000ArSa extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'مجرة ملاحظات';
@@ -2380,10 +2383,10 @@ class _StringsMisskeyAchievementsTypesNotes80000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes90000_
-class _StringsMisskeyAchievementsTypesNotes90000ArSa extends _StringsMisskeyAchievementsTypesNotes90000EnUs {
-	_StringsMisskeyAchievementsTypesNotes90000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes90000ArSa extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'كوْن ملاحظات';
@@ -2391,10 +2394,10 @@ class _StringsMisskeyAchievementsTypesNotes90000ArSa extends _StringsMisskeyAchi
 }
 
 // Path: misskey.achievements_.types_.notes100000_
-class _StringsMisskeyAchievementsTypesNotes100000ArSa extends _StringsMisskeyAchievementsTypesNotes100000EnUs {
-	_StringsMisskeyAchievementsTypesNotes100000ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNotes100000ArSa extends TranslationsMisskeyAchievementsTypesNotes100000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes100000ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'كل ملاحظاتك لنا';
@@ -2403,30 +2406,30 @@ class _StringsMisskeyAchievementsTypesNotes100000ArSa extends _StringsMisskeyAch
 }
 
 // Path: misskey.achievements_.types_.login3_
-class _StringsMisskeyAchievementsTypesLogin3ArSa extends _StringsMisskeyAchievementsTypesLogin3EnUs {
-	_StringsMisskeyAchievementsTypesLogin3ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesLogin3ArSa extends TranslationsMisskeyAchievementsTypesLogin3EnUs {
+	_TranslationsMisskeyAchievementsTypesLogin3ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'مبتدأ I';
 }
 
 // Path: misskey.achievements_.types_.noteFavorited1_
-class _StringsMisskeyAchievementsTypesNoteFavorited1ArSa extends _StringsMisskeyAchievementsTypesNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesNoteFavorited1ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesNoteFavorited1ArSa extends TranslationsMisskeyAchievementsTypesNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteFavorited1ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'فضًِل ملاحظتك الأولى';
 }
 
 // Path: misskey.achievements_.types_.myNoteFavorited1_
-class _StringsMisskeyAchievementsTypesMyNoteFavorited1ArSa extends _StringsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
-	_StringsMisskeyAchievementsTypesMyNoteFavorited1ArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMyNoteFavorited1ArSa extends TranslationsMisskeyAchievementsTypesMyNoteFavorited1EnUs {
+	_TranslationsMisskeyAchievementsTypesMyNoteFavorited1ArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ساعٍ للنجوم';
@@ -2434,10 +2437,10 @@ class _StringsMisskeyAchievementsTypesMyNoteFavorited1ArSa extends _StringsMissk
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
-class _StringsMisskeyAchievementsTypesProfileFilledArSa extends _StringsMisskeyAchievementsTypesProfileFilledEnUs {
-	_StringsMisskeyAchievementsTypesProfileFilledArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesProfileFilledArSa extends TranslationsMisskeyAchievementsTypesProfileFilledEnUs {
+	_TranslationsMisskeyAchievementsTypesProfileFilledArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'مستعد';
@@ -2445,20 +2448,20 @@ class _StringsMisskeyAchievementsTypesProfileFilledArSa extends _StringsMisskeyA
 }
 
 // Path: misskey.achievements_.types_.markedAsCat_
-class _StringsMisskeyAchievementsTypesMarkedAsCatArSa extends _StringsMisskeyAchievementsTypesMarkedAsCatEnUs {
-	_StringsMisskeyAchievementsTypesMarkedAsCatArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesMarkedAsCatArSa extends TranslationsMisskeyAchievementsTypesMarkedAsCatEnUs {
+	_TranslationsMisskeyAchievementsTypesMarkedAsCatArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'أنا قط';
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteArSa extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteArSa extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'معرّف الملاحظة';
@@ -2467,10 +2470,10 @@ class _StringsMisskeyPagesBlocksNoteArSa extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(_StringsArSa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
 
-	@override final _StringsArSa _root; // ignore: unused_field
+	final TranslationsArSa _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'البريد الإلكتروني ';

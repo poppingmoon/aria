@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -8,7 +9,7 @@ part 'drive_folder_provider.g.dart';
 
 @riverpod
 FutureOr<DriveFolder> driveFolder(
-  DriveFolderRef ref,
+  Ref ref,
   Account account,
   String folderId,
 ) {

@@ -7,7 +7,7 @@ part of 'search_custom_emojis_provider.dart';
 // **************************************************************************
 
 String _$searchCustomEmojisHash() =>
-    r'2af3337d4793d4c18e7014c7b4699988dd831b9d';
+    r'90b7d6e0f82b378a19bb71937eb1cb2b8eed747f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -155,6 +155,8 @@ class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin SearchCustomEmojisRef on ProviderRef<Set<Emoji>> {
   /// The parameter `host` of this provider.
   String get host;
@@ -173,4 +175,4 @@ class _SearchCustomEmojisProviderElement extends ProviderElement<Set<Emoji>>
   String get query => (origin as SearchCustomEmojisProvider).query;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

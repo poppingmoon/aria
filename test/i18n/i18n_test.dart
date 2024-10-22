@@ -7,7 +7,7 @@ void main() {
     test('Should compile', () {
       // The following test will fail if the i18n file is either not compiled
       // or there are compile-time errors.
-      expect(AppLocale.enUs.build().misskey.search, 'Search');
+      expect(AppLocale.enUs.buildSync().misskey.search, 'Search');
     });
 
     test('All locales should be supported by Flutter', () {

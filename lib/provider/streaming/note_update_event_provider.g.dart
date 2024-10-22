@@ -6,7 +6,7 @@ part of 'note_update_event_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteUpdateEventHash() => r'ef5c8b7179a79478afcd80cada0b4752ad2f9c39';
+String _$noteUpdateEventHash() => r'4b07c4472790fbf502b442ddfcd9754e1104f057';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -155,6 +155,8 @@ class NoteUpdateEventProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin NoteUpdateEventRef on AutoDisposeStreamProviderRef<NoteUpdateEvent> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -174,4 +176,4 @@ class _NoteUpdateEventProviderElement
   String get noteId => (origin as NoteUpdateEventProvider).noteId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

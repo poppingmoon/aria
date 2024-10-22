@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -27,10 +28,7 @@ Map<String, Set<Emoji>> _buildCustomEmojiIndex(Iterable<Emoji> emojis) {
 }
 
 @Riverpod(keepAlive: true)
-Future<Map<String, Set<Emoji>>> customEmojiIndex(
-  CustomEmojiIndexRef ref,
-  String host,
-) async {
+Future<Map<String, Set<Emoji>>> customEmojiIndex(Ref ref, String host) async {
   final emojis = await ref.watch(emojisNotifierProvider(host).future);
   final index = await compute(_buildCustomEmojiIndex, emojis.values);
   return index;

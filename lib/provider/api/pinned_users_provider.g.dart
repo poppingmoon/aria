@@ -6,7 +6,7 @@ part of 'pinned_users_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pinnedUsersHash() => r'a3cc4d8da4317272c152160f6bc0a99ce3b1e985';
+String _$pinnedUsersHash() => r'ac6b5320cbb9fdef3a8ed60484628053ce7053b2';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -143,6 +143,8 @@ class PinnedUsersProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin PinnedUsersRef on AutoDisposeFutureProviderRef<List<UserDetailed>> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -157,4 +159,4 @@ class _PinnedUsersProviderElement
   Account get account => (origin as PinnedUsersProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

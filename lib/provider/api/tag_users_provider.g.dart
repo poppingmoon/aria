@@ -6,7 +6,7 @@ part of 'tag_users_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tagUsersHash() => r'8094b6f83a25a81af2b85e62117100f53fc23c00';
+String _$tagUsersHash() => r'47cbf3d98fe606420e4a451f037d565374cfff25';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -175,6 +175,8 @@ class TagUsersProvider extends AutoDisposeFutureProvider<List<UserDetailed>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin TagUsersRef on AutoDisposeFutureProviderRef<List<UserDetailed>> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -204,4 +206,4 @@ class _TagUsersProviderElement
   Origin? get userOrigin => (origin as TagUsersProvider).userOrigin;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

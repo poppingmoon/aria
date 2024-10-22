@@ -7,7 +7,7 @@ part of 'popular_gallery_posts_provider.dart';
 // **************************************************************************
 
 String _$popularGalleryPostsHash() =>
-    r'3b307ac1e5e58ec5354e5ae9cf561566dcad2da2';
+    r'99410ed538dada0f580564609b9821ed78d463b4';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -145,6 +145,8 @@ class PopularGalleryPostsProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin PopularGalleryPostsRef
     on AutoDisposeFutureProviderRef<List<GalleryPost>> {
   /// The parameter `account` of this provider.
@@ -160,4 +162,4 @@ class _PopularGalleryPostsProviderElement
   Account get account => (origin as PopularGalleryPostsProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

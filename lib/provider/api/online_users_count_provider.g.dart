@@ -6,7 +6,7 @@ part of 'online_users_count_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$onlineUsersCountHash() => r'a4d9d7a113ba106898806756086e1b077106a380';
+String _$onlineUsersCountHash() => r'621dc98d3fce2c4610a488e0b1c47cc53a714d4a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class OnlineUsersCountProvider extends AutoDisposeFutureProvider<int> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin OnlineUsersCountRef on AutoDisposeFutureProviderRef<int> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -155,4 +157,4 @@ class _OnlineUsersCountProviderElement
   Account get account => (origin as OnlineUsersCountProvider).account;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

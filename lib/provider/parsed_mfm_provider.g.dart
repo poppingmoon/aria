@@ -6,7 +6,7 @@ part of 'parsed_mfm_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$parsedMfmHash() => r'9d1988ed27d000507ded7db6e1b208e18e85ad7b';
+String _$parsedMfmHash() => r'f892bb53f573cf67e71461071eda194d4ea747b6';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -141,6 +141,8 @@ class ParsedMfmProvider extends AutoDisposeProvider<List<MfmNode>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ParsedMfmRef on AutoDisposeProviderRef<List<MfmNode>> {
   /// The parameter `text` of this provider.
   String get text;
@@ -154,4 +156,4 @@ class _ParsedMfmProviderElement
   String get text => (origin as ParsedMfmProvider).text;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

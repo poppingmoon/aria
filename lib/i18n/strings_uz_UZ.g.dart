@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsUzUz extends Translations {
+class TranslationsUzUz extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsUzUz.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsUzUz({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.uzUz,
@@ -18,23 +21,23 @@ class _StringsUzUz extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <uz-UZ>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsUzUz _root = this; // ignore: unused_field
+	late final TranslationsUzUz _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaUzUz aria = _StringsAriaUzUz._(_root);
-	@override late final _StringsMisskeyUzUz misskey = _StringsMisskeyUzUz._(_root);
+	@override late final _TranslationsAriaUzUz aria = _TranslationsAriaUzUz._(_root);
+	@override late final _TranslationsMisskeyUzUz misskey = _TranslationsMisskeyUzUz._(_root);
 }
 
 // Path: aria
-class _StringsAriaUzUz extends _StringsAriaEnUs {
-	_StringsAriaUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsAriaUzUz extends TranslationsAriaEnUs {
+	_TranslationsAriaUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -65,10 +68,10 @@ class _StringsAriaUzUz extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
-	_StringsMisskeyUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'O\'zbek tili';
@@ -914,87 +917,87 @@ class _StringsMisskeyUzUz extends _StringsMisskeyEnUs {
 	@override String get replies => 'Javob berish';
 	@override String get renotes => 'Qayta qayd etish';
 	@override String get flip => 'Teskari';
-	@override late final _StringsMisskeyDeliveryUzUz delivery_ = _StringsMisskeyDeliveryUzUz._(_root);
-	@override late final _StringsMisskeyAchievementsUzUz achievements_ = _StringsMisskeyAchievementsUzUz._(_root);
-	@override late final _StringsMisskeyRoleUzUz role_ = _StringsMisskeyRoleUzUz._(_root);
-	@override late final _StringsMisskeyFfVisibilityUzUz ffVisibility_ = _StringsMisskeyFfVisibilityUzUz._(_root);
-	@override late final _StringsMisskeyAdUzUz ad_ = _StringsMisskeyAdUzUz._(_root);
-	@override late final _StringsMisskeyEmailUzUz email_ = _StringsMisskeyEmailUzUz._(_root);
-	@override late final _StringsMisskeyRegistryUzUz registry_ = _StringsMisskeyRegistryUzUz._(_root);
-	@override late final _StringsMisskeyInstanceTickerUzUz instanceTicker_ = _StringsMisskeyInstanceTickerUzUz._(_root);
-	@override late final _StringsMisskeyThemeUzUz theme_ = _StringsMisskeyThemeUzUz._(_root);
-	@override late final _StringsMisskeySfxUzUz sfx_ = _StringsMisskeySfxUzUz._(_root);
-	@override late final _StringsMisskeyAgoUzUz ago_ = _StringsMisskeyAgoUzUz._(_root);
-	@override late final _StringsMisskeyX2faUzUz x2fa_ = _StringsMisskeyX2faUzUz._(_root);
-	@override late final _StringsMisskeyPermissionsUzUz permissions_ = _StringsMisskeyPermissionsUzUz._(_root);
-	@override late final _StringsMisskeyWeekdayUzUz weekday_ = _StringsMisskeyWeekdayUzUz._(_root);
-	@override late final _StringsMisskeyWidgetsUzUz widgets_ = _StringsMisskeyWidgetsUzUz._(_root);
-	@override late final _StringsMisskeyCwUzUz cw_ = _StringsMisskeyCwUzUz._(_root);
-	@override late final _StringsMisskeyPollUzUz poll_ = _StringsMisskeyPollUzUz._(_root);
-	@override late final _StringsMisskeyVisibilityUzUz visibility_ = _StringsMisskeyVisibilityUzUz._(_root);
-	@override late final _StringsMisskeyProfileUzUz profile_ = _StringsMisskeyProfileUzUz._(_root);
-	@override late final _StringsMisskeyExportOrImportUzUz exportOrImport_ = _StringsMisskeyExportOrImportUzUz._(_root);
-	@override late final _StringsMisskeyChartsUzUz charts_ = _StringsMisskeyChartsUzUz._(_root);
-	@override late final _StringsMisskeyInstanceChartsUzUz instanceCharts_ = _StringsMisskeyInstanceChartsUzUz._(_root);
-	@override late final _StringsMisskeyTimelinesUzUz timelines_ = _StringsMisskeyTimelinesUzUz._(_root);
-	@override late final _StringsMisskeyPlayUzUz play_ = _StringsMisskeyPlayUzUz._(_root);
-	@override late final _StringsMisskeyPagesUzUz pages_ = _StringsMisskeyPagesUzUz._(_root);
-	@override late final _StringsMisskeyRelayStatusUzUz relayStatus_ = _StringsMisskeyRelayStatusUzUz._(_root);
-	@override late final _StringsMisskeyNotificationUzUz notification_ = _StringsMisskeyNotificationUzUz._(_root);
-	@override late final _StringsMisskeyDeckUzUz deck_ = _StringsMisskeyDeckUzUz._(_root);
-	@override late final _StringsMisskeyWebhookSettingsUzUz webhookSettings_ = _StringsMisskeyWebhookSettingsUzUz._(_root);
-	@override late final _StringsMisskeyAbuseReportUzUz abuseReport_ = _StringsMisskeyAbuseReportUzUz._(_root);
-	@override late final _StringsMisskeyModerationLogTypesUzUz moderationLogTypes_ = _StringsMisskeyModerationLogTypesUzUz._(_root);
-	@override late final _StringsMisskeyReversiUzUz reversi_ = _StringsMisskeyReversiUzUz._(_root);
+	@override late final _TranslationsMisskeyDeliveryUzUz delivery_ = _TranslationsMisskeyDeliveryUzUz._(_root);
+	@override late final _TranslationsMisskeyAchievementsUzUz achievements_ = _TranslationsMisskeyAchievementsUzUz._(_root);
+	@override late final _TranslationsMisskeyRoleUzUz role_ = _TranslationsMisskeyRoleUzUz._(_root);
+	@override late final _TranslationsMisskeyFfVisibilityUzUz ffVisibility_ = _TranslationsMisskeyFfVisibilityUzUz._(_root);
+	@override late final _TranslationsMisskeyAdUzUz ad_ = _TranslationsMisskeyAdUzUz._(_root);
+	@override late final _TranslationsMisskeyEmailUzUz email_ = _TranslationsMisskeyEmailUzUz._(_root);
+	@override late final _TranslationsMisskeyRegistryUzUz registry_ = _TranslationsMisskeyRegistryUzUz._(_root);
+	@override late final _TranslationsMisskeyInstanceTickerUzUz instanceTicker_ = _TranslationsMisskeyInstanceTickerUzUz._(_root);
+	@override late final _TranslationsMisskeyThemeUzUz theme_ = _TranslationsMisskeyThemeUzUz._(_root);
+	@override late final _TranslationsMisskeySfxUzUz sfx_ = _TranslationsMisskeySfxUzUz._(_root);
+	@override late final _TranslationsMisskeyAgoUzUz ago_ = _TranslationsMisskeyAgoUzUz._(_root);
+	@override late final _TranslationsMisskeyX2faUzUz x2fa_ = _TranslationsMisskeyX2faUzUz._(_root);
+	@override late final _TranslationsMisskeyPermissionsUzUz permissions_ = _TranslationsMisskeyPermissionsUzUz._(_root);
+	@override late final _TranslationsMisskeyWeekdayUzUz weekday_ = _TranslationsMisskeyWeekdayUzUz._(_root);
+	@override late final _TranslationsMisskeyWidgetsUzUz widgets_ = _TranslationsMisskeyWidgetsUzUz._(_root);
+	@override late final _TranslationsMisskeyCwUzUz cw_ = _TranslationsMisskeyCwUzUz._(_root);
+	@override late final _TranslationsMisskeyPollUzUz poll_ = _TranslationsMisskeyPollUzUz._(_root);
+	@override late final _TranslationsMisskeyVisibilityUzUz visibility_ = _TranslationsMisskeyVisibilityUzUz._(_root);
+	@override late final _TranslationsMisskeyProfileUzUz profile_ = _TranslationsMisskeyProfileUzUz._(_root);
+	@override late final _TranslationsMisskeyExportOrImportUzUz exportOrImport_ = _TranslationsMisskeyExportOrImportUzUz._(_root);
+	@override late final _TranslationsMisskeyChartsUzUz charts_ = _TranslationsMisskeyChartsUzUz._(_root);
+	@override late final _TranslationsMisskeyInstanceChartsUzUz instanceCharts_ = _TranslationsMisskeyInstanceChartsUzUz._(_root);
+	@override late final _TranslationsMisskeyTimelinesUzUz timelines_ = _TranslationsMisskeyTimelinesUzUz._(_root);
+	@override late final _TranslationsMisskeyPlayUzUz play_ = _TranslationsMisskeyPlayUzUz._(_root);
+	@override late final _TranslationsMisskeyPagesUzUz pages_ = _TranslationsMisskeyPagesUzUz._(_root);
+	@override late final _TranslationsMisskeyRelayStatusUzUz relayStatus_ = _TranslationsMisskeyRelayStatusUzUz._(_root);
+	@override late final _TranslationsMisskeyNotificationUzUz notification_ = _TranslationsMisskeyNotificationUzUz._(_root);
+	@override late final _TranslationsMisskeyDeckUzUz deck_ = _TranslationsMisskeyDeckUzUz._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsUzUz webhookSettings_ = _TranslationsMisskeyWebhookSettingsUzUz._(_root);
+	@override late final _TranslationsMisskeyAbuseReportUzUz abuseReport_ = _TranslationsMisskeyAbuseReportUzUz._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesUzUz moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesUzUz._(_root);
+	@override late final _TranslationsMisskeyReversiUzUz reversi_ = _TranslationsMisskeyReversiUzUz._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryUzUz extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryUzUz extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'To\'xtatilgan';
-	@override late final _StringsMisskeyDeliveryTypeUzUz type_ = _StringsMisskeyDeliveryTypeUzUz._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeUzUz type_ = _TranslationsMisskeyDeliveryTypeUzUz._(_root);
 }
 
 // Path: misskey.achievements_
-class _StringsMisskeyAchievementsUzUz extends _StringsMisskeyAchievementsEnUs {
-	_StringsMisskeyAchievementsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsUzUz extends TranslationsMisskeyAchievementsEnUs {
+	_TranslationsMisskeyAchievementsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesUzUz types_ = _StringsMisskeyAchievementsTypesUzUz._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesUzUz types_ = _TranslationsMisskeyAchievementsTypesUzUz._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleUzUz extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleUzUz extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get priority => 'Ustuvorlik';
-	@override late final _StringsMisskeyRolePriorityUzUz priority_ = _StringsMisskeyRolePriorityUzUz._(_root);
+	@override late final _TranslationsMisskeyRolePriorityUzUz priority_ = _TranslationsMisskeyRolePriorityUzUz._(_root);
 }
 
 // Path: misskey.ffVisibility_
-class _StringsMisskeyFfVisibilityUzUz extends _StringsMisskeyFfVisibilityEnUs {
-	_StringsMisskeyFfVisibilityUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyFfVisibilityUzUz extends TranslationsMisskeyFfVisibilityEnUs {
+	_TranslationsMisskeyFfVisibilityUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Chiqarish';
 }
 
 // Path: misskey.ad_
-class _StringsMisskeyAdUzUz extends _StringsMisskeyAdEnUs {
-	_StringsMisskeyAdUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAdUzUz extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get back => 'qaytish';
@@ -1002,20 +1005,20 @@ class _StringsMisskeyAdUzUz extends _StringsMisskeyAdEnUs {
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailUzUz extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailUzUz extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowUzUz follow_ = _StringsMisskeyEmailFollowUzUz._(_root);
+	@override late final _TranslationsMisskeyEmailFollowUzUz follow_ = _TranslationsMisskeyEmailFollowUzUz._(_root);
 }
 
 // Path: misskey.registry_
-class _StringsMisskeyRegistryUzUz extends _StringsMisskeyRegistryEnUs {
-	_StringsMisskeyRegistryUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyRegistryUzUz extends TranslationsMisskeyRegistryEnUs {
+	_TranslationsMisskeyRegistryUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get key => 'Kalit';
@@ -1023,10 +1026,10 @@ class _StringsMisskeyRegistryUzUz extends _StringsMisskeyRegistryEnUs {
 }
 
 // Path: misskey.instanceTicker_
-class _StringsMisskeyInstanceTickerUzUz extends _StringsMisskeyInstanceTickerEnUs {
-	_StringsMisskeyInstanceTickerUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceTickerUzUz extends TranslationsMisskeyInstanceTickerEnUs {
+	_TranslationsMisskeyInstanceTickerUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Boshqa ko\'rsatilmasin';
@@ -1034,10 +1037,10 @@ class _StringsMisskeyInstanceTickerUzUz extends _StringsMisskeyInstanceTickerEnU
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeUzUz extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeUzUz extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get install => 'Rang sxemasini o\'rnatish';
@@ -1061,14 +1064,14 @@ class _StringsMisskeyThemeUzUz extends _StringsMisskeyThemeEnUs {
 	@override String get lighten => 'Yoritish';
 	@override String get inputConstantName => 'Ushbu o\'zgarmas uchun nom kiriting';
 	@override String deleteConstantConfirm({required Object const_}) => 'Siz rostdan ham ${const_} o\'zgarmasni o\'chirmoqchimisiz?';
-	@override late final _StringsMisskeyThemeKeysUzUz keys = _StringsMisskeyThemeKeysUzUz._(_root);
+	@override late final _TranslationsMisskeyThemeKeysUzUz keys = _TranslationsMisskeyThemeKeysUzUz._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxUzUz extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxUzUz extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'Qaydlar';
@@ -1076,10 +1079,10 @@ class _StringsMisskeySfxUzUz extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.ago_
-class _StringsMisskeyAgoUzUz extends _StringsMisskeyAgoEnUs {
-	_StringsMisskeyAgoUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAgoUzUz extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String minutesAgo({required Object n}) => '${n} daqiqa oldin';
@@ -1089,20 +1092,20 @@ class _StringsMisskeyAgoUzUz extends _StringsMisskeyAgoEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faUzUz extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faUzUz extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get renewTOTPCancel => 'Hozir emas';
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsUzUz extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsUzUz extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get readBlocks => 'Bloklangan foydalanuvchilar roʻyxatini koʻring';
@@ -1110,20 +1113,20 @@ class _StringsMisskeyPermissionsUzUz extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.weekday_
-class _StringsMisskeyWeekdayUzUz extends _StringsMisskeyWeekdayEnUs {
-	_StringsMisskeyWeekdayUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyWeekdayUzUz extends TranslationsMisskeyWeekdayEnUs {
+	_TranslationsMisskeyWeekdayUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get saturday => 'Shanba';
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsUzUz extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUzUz extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Profil';
@@ -1138,14 +1141,14 @@ class _StringsMisskeyWidgetsUzUz extends _StringsMisskeyWidgetsEnUs {
 	@override String get federation => 'Federatsiya';
 	@override String get button => 'Tugma';
 	@override String get jobQueue => 'Vazifalar navbati';
-	@override late final _StringsMisskeyWidgetsUserListUzUz userList_ = _StringsMisskeyWidgetsUserListUzUz._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListUzUz userList_ = _TranslationsMisskeyWidgetsUserListUzUz._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwUzUz extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwUzUz extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get show => 'Ko‘proq ko‘rish';
@@ -1154,10 +1157,10 @@ class _StringsMisskeyCwUzUz extends _StringsMisskeyCwEnUs {
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollUzUz extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollUzUz extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get noOnlyOneChoice => 'Kamida ikkita tanvol kerak';
@@ -1179,10 +1182,10 @@ class _StringsMisskeyPollUzUz extends _StringsMisskeyPollEnUs {
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityUzUz extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityUzUz extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get public => 'Ommaviy';
@@ -1193,10 +1196,10 @@ class _StringsMisskeyVisibilityUzUz extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileUzUz extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileUzUz extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Ism';
@@ -1209,10 +1212,10 @@ class _StringsMisskeyProfileUzUz extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportUzUz extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportUzUz extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get allNotes => 'Barcha qaydlar';
@@ -1224,10 +1227,10 @@ class _StringsMisskeyExportOrImportUzUz extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsUzUz extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsUzUz extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Federatsiya';
@@ -1239,10 +1242,10 @@ class _StringsMisskeyChartsUzUz extends _StringsMisskeyChartsEnUs {
 }
 
 // Path: misskey.instanceCharts_
-class _StringsMisskeyInstanceChartsUzUz extends _StringsMisskeyInstanceChartsEnUs {
-	_StringsMisskeyInstanceChartsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyInstanceChartsUzUz extends TranslationsMisskeyInstanceChartsEnUs {
+	_TranslationsMisskeyInstanceChartsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get requests => 'So\'rovlar';
@@ -1252,10 +1255,10 @@ class _StringsMisskeyInstanceChartsUzUz extends _StringsMisskeyInstanceChartsEnU
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesUzUz extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesUzUz extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Bosh sahifa';
@@ -1265,10 +1268,10 @@ class _StringsMisskeyTimelinesUzUz extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayUzUz extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayUzUz extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get featured => 'Mashhur';
@@ -1278,10 +1281,10 @@ class _StringsMisskeyPlayUzUz extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesUzUz extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesUzUz extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get newPage => 'Yangi Sahifa yaratish';
@@ -1305,14 +1308,14 @@ class _StringsMisskeyPagesUzUz extends _StringsMisskeyPagesEnUs {
 	@override String get fontSansSerif => 'Sans Serif';
 	@override String get selectType => 'Turni tanlang';
 	@override String get contentBlocks => 'Tarkib';
-	@override late final _StringsMisskeyPagesBlocksUzUz blocks = _StringsMisskeyPagesBlocksUzUz._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksUzUz blocks = _TranslationsMisskeyPagesBlocksUzUz._(_root);
 }
 
 // Path: misskey.relayStatus_
-class _StringsMisskeyRelayStatusUzUz extends _StringsMisskeyRelayStatusEnUs {
-	_StringsMisskeyRelayStatusUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyRelayStatusUzUz extends TranslationsMisskeyRelayStatusEnUs {
+	_TranslationsMisskeyRelayStatusUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get requesting => 'Kutilmoqda';
@@ -1321,10 +1324,10 @@ class _StringsMisskeyRelayStatusUzUz extends _StringsMisskeyRelayStatusEnUs {
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationUzUz extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationUzUz extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get fileUploaded => 'Fayl muvaffaqiyatli yuklandi';
@@ -1334,15 +1337,15 @@ class _StringsMisskeyNotificationUzUz extends _StringsMisskeyNotificationEnUs {
 	@override String youRenoted({required Object name}) => '${name} dan qayta qayd qilish';
 	@override String get youWereFollowed => 'sizga obuna bo\'ldi';
 	@override String unreadAntennaNote({required Object name}) => 'Antenna ${name}';
-	@override late final _StringsMisskeyNotificationTypesUzUz types_ = _StringsMisskeyNotificationTypesUzUz._(_root);
-	@override late final _StringsMisskeyNotificationActionsUzUz actions_ = _StringsMisskeyNotificationActionsUzUz._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesUzUz types_ = _TranslationsMisskeyNotificationTypesUzUz._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsUzUz actions_ = _TranslationsMisskeyNotificationActionsUzUz._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckUzUz extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckUzUz extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get alwaysShowMainColumn => 'Har doim asosiy ustunni ko\'rsatish';
@@ -1356,36 +1359,36 @@ class _StringsMisskeyDeckUzUz extends _StringsMisskeyDeckEnUs {
 	@override String get profile => 'Profil';
 	@override String get newProfile => 'Yangi profil';
 	@override String get deleteProfile => 'Profilni o‘chirib tashlash';
-	@override late final _StringsMisskeyDeckColumnsUzUz columns_ = _StringsMisskeyDeckColumnsUzUz._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsUzUz columns_ = _TranslationsMisskeyDeckColumnsUzUz._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsUzUz extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsUzUz extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'Ism';
 	@override String get active => 'Yoqilgan';
-	@override late final _StringsMisskeyWebhookSettingsEventsUzUz events_ = _StringsMisskeyWebhookSettingsEventsUzUz._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsEventsUzUz events_ = _TranslationsMisskeyWebhookSettingsEventsUzUz._(_root);
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportUzUz extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportUzUz extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientUzUz notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientUzUz._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientUzUz notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientUzUz._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesUzUz extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesUzUz extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'To\'xtatish';
@@ -1393,40 +1396,40 @@ class _StringsMisskeyModerationLogTypesUzUz extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.reversi_
-class _StringsMisskeyReversiUzUz extends _StringsMisskeyReversiEnUs {
-	_StringsMisskeyReversiUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyReversiUzUz extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get total => 'Jami';
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeUzUz extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeUzUz extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Yuborilmoqda';
 }
 
 // Path: misskey.achievements_.types_
-class _StringsMisskeyAchievementsTypesUzUz extends _StringsMisskeyAchievementsTypesEnUs {
-	_StringsMisskeyAchievementsTypesUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesUzUz extends TranslationsMisskeyAchievementsTypesEnUs {
+	_TranslationsMisskeyAchievementsTypesUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAchievementsTypesViewInstanceChartUzUz viewInstanceChart_ = _StringsMisskeyAchievementsTypesViewInstanceChartUzUz._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesViewInstanceChartUzUz viewInstanceChart_ = _TranslationsMisskeyAchievementsTypesViewInstanceChartUzUz._(_root);
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityUzUz extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityUzUz extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get low => 'Quyi';
@@ -1435,20 +1438,20 @@ class _StringsMisskeyRolePriorityUzUz extends _StringsMisskeyRolePriorityEnUs {
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowUzUz extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowUzUz extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'sizga obuna bo\'ldi';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysUzUz extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysUzUz extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get accent => 'Urg\'u';
@@ -1469,20 +1472,20 @@ class _StringsMisskeyThemeKeysUzUz extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListUzUz extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListUzUz extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Ro\'yxat tanlash';
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksUzUz extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksUzUz extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get text => 'Matn';
@@ -1491,14 +1494,14 @@ class _StringsMisskeyPagesBlocksUzUz extends _StringsMisskeyPagesBlocksEnUs {
 	@override String get image => 'Rasmlar';
 	@override String get button => 'Tugma';
 	@override String get note => 'Biriktirilgan qayd';
-	@override late final _StringsMisskeyPagesBlocksNoteUzUz note_ = _StringsMisskeyPagesBlocksNoteUzUz._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksNoteUzUz note_ = _TranslationsMisskeyPagesBlocksNoteUzUz._(_root);
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesUzUz extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesUzUz extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get all => 'Barchasi';
@@ -1512,10 +1515,10 @@ class _StringsMisskeyNotificationTypesUzUz extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsUzUz extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsUzUz extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get reply => 'Javob berish';
@@ -1523,10 +1526,10 @@ class _StringsMisskeyNotificationActionsUzUz extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsUzUz extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsUzUz extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get main => 'Asosiy';
@@ -1541,10 +1544,10 @@ class _StringsMisskeyDeckColumnsUzUz extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.webhookSettings_.events_
-class _StringsMisskeyWebhookSettingsEventsUzUz extends _StringsMisskeyWebhookSettingsEventsEnUs {
-	_StringsMisskeyWebhookSettingsEventsUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsEventsUzUz extends TranslationsMisskeyWebhookSettingsEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsEventsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get renote => 'Qayta qayd qilinganda';
@@ -1552,30 +1555,30 @@ class _StringsMisskeyWebhookSettingsEventsUzUz extends _StringsMisskeyWebhookSet
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientUzUz extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientUzUz extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(_root);
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_
-class _StringsMisskeyAchievementsTypesViewInstanceChartUzUz extends _StringsMisskeyAchievementsTypesViewInstanceChartEnUs {
-	_StringsMisskeyAchievementsTypesViewInstanceChartUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAchievementsTypesViewInstanceChartUzUz extends TranslationsMisskeyAchievementsTypesViewInstanceChartEnUs {
+	_TranslationsMisskeyAchievementsTypesViewInstanceChartUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'Tahlilchi';
 }
 
 // Path: misskey.pages_.blocks.note_
-class _StringsMisskeyPagesBlocksNoteUzUz extends _StringsMisskeyPagesBlocksNoteEnUs {
-	_StringsMisskeyPagesBlocksNoteUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksNoteUzUz extends TranslationsMisskeyPagesBlocksNoteEnUs {
+	_TranslationsMisskeyPagesBlocksNoteUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get id => 'Qayd ID';
@@ -1583,10 +1586,10 @@ class _StringsMisskeyPagesBlocksNoteUzUz extends _StringsMisskeyPagesBlocksNoteE
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(_StringsUzUz root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
 
-	@override final _StringsUzUz _root; // ignore: unused_field
+	final TranslationsUzUz _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'Email';

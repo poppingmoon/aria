@@ -6,7 +6,7 @@ part of 'appear_note_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$appearNoteHash() => r'3a1207480e40548bbb324a4bb96e383f3ea360a5';
+String _$appearNoteHash() => r'9c57a6a8cadff5964a9e7e8ca997cfdc13fb9b40';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,6 +154,8 @@ class AppearNoteProvider extends AutoDisposeProvider<Note?> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin AppearNoteRef on AutoDisposeProviderRef<Note?> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -172,4 +174,4 @@ class _AppearNoteProviderElement extends AutoDisposeProviderElement<Note?>
   String get noteId => (origin as AppearNoteProvider).noteId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

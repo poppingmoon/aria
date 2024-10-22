@@ -6,7 +6,7 @@ part of 'skeb_status_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$skebStatusHash() => r'4c2d861e767bf903cbc71981a9d5a7650d450fb0';
+String _$skebStatusHash() => r'b5dfed470a89b0fe82cd75ce84969524932afd3c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -156,6 +156,8 @@ class SkebStatusProvider
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin SkebStatusRef
     on AutoDisposeFutureProviderRef<UsersGetSkebStatusResponse> {
   /// The parameter `account` of this provider.
@@ -176,4 +178,4 @@ class _SkebStatusProviderElement
   String get userId => (origin as SkebStatusProvider).userId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

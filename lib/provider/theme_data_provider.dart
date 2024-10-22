@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../gen/fonts.gen.dart';
@@ -8,7 +9,7 @@ import 'misskey_colors_provider.dart';
 part 'theme_data_provider.g.dart';
 
 @riverpod
-ThemeData themeData(ThemeDataRef ref, Brightness brightness) {
+ThemeData themeData(Ref ref, Brightness brightness) {
   final colors = ref.watch(misskeyColorsProvider(brightness));
   final fontSize = ref.watch(
     generalSettingsNotifierProvider.select((settings) => settings.fontSize),

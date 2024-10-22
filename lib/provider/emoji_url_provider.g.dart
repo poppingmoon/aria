@@ -6,7 +6,7 @@ part of 'emoji_url_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojiUrlHash() => r'ccc9622002c2c412f0bb6449fa94cd5e87bd9e62';
+String _$emojiUrlHash() => r'e4f2a5d346910b25bf84f9b62024c3b068b91880';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -186,6 +186,8 @@ class EmojiUrlProvider extends AutoDisposeProvider<(String, String)> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin EmojiUrlRef on AutoDisposeProviderRef<(String, String)> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -219,4 +221,4 @@ class _EmojiUrlProviderElement
   bool get useOriginalSize => (origin as EmojiUrlProvider).useOriginalSize;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

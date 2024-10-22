@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'api/meta_notifier_provider.dart';
@@ -5,7 +6,7 @@ import 'api/meta_notifier_provider.dart';
 part 'static_image_url_provider.g.dart';
 
 @riverpod
-Uri? staticImageUrl(StaticImageUrlRef ref, String host, String baseUrl) {
+Uri? staticImageUrl(Ref ref, String host, String baseUrl) {
   if (host.isEmpty) {
     return Uri.tryParse(baseUrl);
   }

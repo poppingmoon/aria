@@ -6,7 +6,7 @@ part of 'list_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$listHash() => r'b9e36b9e76e473b66f2f2eb4eef841a97174b010';
+String _$listHash() => r'3910a35c760267b2eab411d34d4ecac7896c5bbe';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -162,6 +162,8 @@ class ListProvider extends AutoDisposeFutureProvider<UsersListsShowResponse> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ListRef on AutoDisposeFutureProviderRef<UsersListsShowResponse> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -186,4 +188,4 @@ class _ListProviderElement
   bool? get forPublic => (origin as ListProvider).forPublic;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

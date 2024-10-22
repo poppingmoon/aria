@@ -6,7 +6,7 @@ part of 'role_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$roleHash() => r'a5443738a0f6c2324306d149e7a67b1bdf70b5a0';
+String _$roleHash() => r'869afb2d1f442e12aca741864e6c27d18d61631f';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -151,6 +151,8 @@ class RoleProvider extends AutoDisposeFutureProvider<RolesListResponse> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin RoleRef on AutoDisposeFutureProviderRef<RolesListResponse> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -169,4 +171,4 @@ class _RoleProviderElement
   String get roleId => (origin as RoleProvider).roleId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

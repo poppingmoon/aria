@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsLoLa extends Translations {
+class TranslationsLoLa extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsLoLa.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsLoLa({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.loLa,
@@ -18,23 +21,23 @@ class _StringsLoLa extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <lo-LA>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsLoLa _root = this; // ignore: unused_field
+	late final TranslationsLoLa _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaLoLa aria = _StringsAriaLoLa._(_root);
-	@override late final _StringsMisskeyLoLa misskey = _StringsMisskeyLoLa._(_root);
+	@override late final _TranslationsAriaLoLa aria = _TranslationsAriaLoLa._(_root);
+	@override late final _TranslationsMisskeyLoLa misskey = _TranslationsMisskeyLoLa._(_root);
 }
 
 // Path: aria
-class _StringsAriaLoLa extends _StringsAriaEnUs {
-	_StringsAriaLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsAriaLoLa extends TranslationsAriaEnUs {
+	_TranslationsAriaLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
@@ -49,10 +52,10 @@ class _StringsAriaLoLa extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
-	_StringsMisskeyLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'ພາສາລາວ';
@@ -451,75 +454,75 @@ class _StringsMisskeyLoLa extends _StringsMisskeyEnUs {
 	@override String get file => 'ໄຟລ໌';
 	@override String get replies => 'ຕອບ​ກັບ';
 	@override String get renotes => 'Renote';
-	@override late final _StringsMisskeyDeliveryLoLa delivery_ = _StringsMisskeyDeliveryLoLa._(_root);
-	@override late final _StringsMisskeyRoleLoLa role_ = _StringsMisskeyRoleLoLa._(_root);
-	@override late final _StringsMisskeyEmailLoLa email_ = _StringsMisskeyEmailLoLa._(_root);
-	@override late final _StringsMisskeyThemeLoLa theme_ = _StringsMisskeyThemeLoLa._(_root);
-	@override late final _StringsMisskeySfxLoLa sfx_ = _StringsMisskeySfxLoLa._(_root);
-	@override late final _StringsMisskeyX2faLoLa x2fa_ = _StringsMisskeyX2faLoLa._(_root);
-	@override late final _StringsMisskeyWidgetsLoLa widgets_ = _StringsMisskeyWidgetsLoLa._(_root);
-	@override late final _StringsMisskeyCwLoLa cw_ = _StringsMisskeyCwLoLa._(_root);
-	@override late final _StringsMisskeyVisibilityLoLa visibility_ = _StringsMisskeyVisibilityLoLa._(_root);
-	@override late final _StringsMisskeyProfileLoLa profile_ = _StringsMisskeyProfileLoLa._(_root);
-	@override late final _StringsMisskeyExportOrImportLoLa exportOrImport_ = _StringsMisskeyExportOrImportLoLa._(_root);
-	@override late final _StringsMisskeyChartsLoLa charts_ = _StringsMisskeyChartsLoLa._(_root);
-	@override late final _StringsMisskeyTimelinesLoLa timelines_ = _StringsMisskeyTimelinesLoLa._(_root);
-	@override late final _StringsMisskeyPlayLoLa play_ = _StringsMisskeyPlayLoLa._(_root);
-	@override late final _StringsMisskeyPagesLoLa pages_ = _StringsMisskeyPagesLoLa._(_root);
-	@override late final _StringsMisskeyNotificationLoLa notification_ = _StringsMisskeyNotificationLoLa._(_root);
-	@override late final _StringsMisskeyDeckLoLa deck_ = _StringsMisskeyDeckLoLa._(_root);
-	@override late final _StringsMisskeyWebhookSettingsLoLa webhookSettings_ = _StringsMisskeyWebhookSettingsLoLa._(_root);
-	@override late final _StringsMisskeyAbuseReportLoLa abuseReport_ = _StringsMisskeyAbuseReportLoLa._(_root);
-	@override late final _StringsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _StringsMisskeyModerationLogTypesLoLa._(_root);
+	@override late final _TranslationsMisskeyDeliveryLoLa delivery_ = _TranslationsMisskeyDeliveryLoLa._(_root);
+	@override late final _TranslationsMisskeyRoleLoLa role_ = _TranslationsMisskeyRoleLoLa._(_root);
+	@override late final _TranslationsMisskeyEmailLoLa email_ = _TranslationsMisskeyEmailLoLa._(_root);
+	@override late final _TranslationsMisskeyThemeLoLa theme_ = _TranslationsMisskeyThemeLoLa._(_root);
+	@override late final _TranslationsMisskeySfxLoLa sfx_ = _TranslationsMisskeySfxLoLa._(_root);
+	@override late final _TranslationsMisskeyX2faLoLa x2fa_ = _TranslationsMisskeyX2faLoLa._(_root);
+	@override late final _TranslationsMisskeyWidgetsLoLa widgets_ = _TranslationsMisskeyWidgetsLoLa._(_root);
+	@override late final _TranslationsMisskeyCwLoLa cw_ = _TranslationsMisskeyCwLoLa._(_root);
+	@override late final _TranslationsMisskeyVisibilityLoLa visibility_ = _TranslationsMisskeyVisibilityLoLa._(_root);
+	@override late final _TranslationsMisskeyProfileLoLa profile_ = _TranslationsMisskeyProfileLoLa._(_root);
+	@override late final _TranslationsMisskeyExportOrImportLoLa exportOrImport_ = _TranslationsMisskeyExportOrImportLoLa._(_root);
+	@override late final _TranslationsMisskeyChartsLoLa charts_ = _TranslationsMisskeyChartsLoLa._(_root);
+	@override late final _TranslationsMisskeyTimelinesLoLa timelines_ = _TranslationsMisskeyTimelinesLoLa._(_root);
+	@override late final _TranslationsMisskeyPlayLoLa play_ = _TranslationsMisskeyPlayLoLa._(_root);
+	@override late final _TranslationsMisskeyPagesLoLa pages_ = _TranslationsMisskeyPagesLoLa._(_root);
+	@override late final _TranslationsMisskeyNotificationLoLa notification_ = _TranslationsMisskeyNotificationLoLa._(_root);
+	@override late final _TranslationsMisskeyDeckLoLa deck_ = _TranslationsMisskeyDeckLoLa._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsLoLa webhookSettings_ = _TranslationsMisskeyWebhookSettingsLoLa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportLoLa abuseReport_ = _TranslationsMisskeyAbuseReportLoLa._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesLoLa._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryLoLa extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryLoLa extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'ໂຈະ';
-	@override late final _StringsMisskeyDeliveryTypeLoLa type_ = _StringsMisskeyDeliveryTypeLoLa._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeLoLa type_ = _TranslationsMisskeyDeliveryTypeLoLa._(_root);
 }
 
 // Path: misskey.role_
-class _StringsMisskeyRoleLoLa extends _StringsMisskeyRoleEnUs {
-	_StringsMisskeyRoleLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRoleLoLa extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyRolePriorityLoLa priority_ = _StringsMisskeyRolePriorityLoLa._(_root);
+	@override late final _TranslationsMisskeyRolePriorityLoLa priority_ = _TranslationsMisskeyRolePriorityLoLa._(_root);
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailLoLa extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailLoLa extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowLoLa follow_ = _StringsMisskeyEmailFollowLoLa._(_root);
+	@override late final _TranslationsMisskeyEmailFollowLoLa follow_ = _TranslationsMisskeyEmailFollowLoLa._(_root);
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeLoLa extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeLoLa extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get description => 'ລາຍລະອຽດ';
-	@override late final _StringsMisskeyThemeKeysLoLa keys = _StringsMisskeyThemeKeysLoLa._(_root);
+	@override late final _TranslationsMisskeyThemeKeysLoLa keys = _TranslationsMisskeyThemeKeysLoLa._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxLoLa extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxLoLa extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'ບັນທຶກ';
@@ -527,20 +530,20 @@ class _StringsMisskeySfxLoLa extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faLoLa extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faLoLa extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get renewTOTPCancel => 'ບໍ່​ແມ່ນ​ຕອນ​ນີ້';
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsLoLa extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsLoLa extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'ໂປຣໄຟລ໌';
@@ -550,24 +553,24 @@ class _StringsMisskeyWidgetsLoLa extends _StringsMisskeyWidgetsEnUs {
 	@override String get activity => 'ກິດຈະກຳ';
 	@override String get federation => 'ສະຫະພັນ';
 	@override String get jobQueue => 'ຄິວວຽກ';
-	@override late final _StringsMisskeyWidgetsUserListLoLa userList_ = _StringsMisskeyWidgetsUserListLoLa._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListLoLa userList_ = _TranslationsMisskeyWidgetsUserListLoLa._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwLoLa extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwLoLa extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get show => 'ໂຫຼດເພີ່ມເຕີມ';
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityLoLa extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityLoLa extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'ໜ້າຫຼັກ';
@@ -575,10 +578,10 @@ class _StringsMisskeyVisibilityLoLa extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileLoLa extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileLoLa extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'ຊື່';
@@ -586,10 +589,10 @@ class _StringsMisskeyProfileLoLa extends _StringsMisskeyProfileEnUs {
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportLoLa extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportLoLa extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get followingList => 'ກຳລັງຕິດຕາມ';
@@ -599,30 +602,30 @@ class _StringsMisskeyExportOrImportLoLa extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsLoLa extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsLoLa extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'ສະຫະພັນ';
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesLoLa extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesLoLa extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'ໜ້າຫຼັກ';
 }
 
 // Path: misskey.play_
-class _StringsMisskeyPlayLoLa extends _StringsMisskeyPlayEnUs {
-	_StringsMisskeyPlayLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPlayLoLa extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlayLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get script => 'Script';
@@ -630,102 +633,102 @@ class _StringsMisskeyPlayLoLa extends _StringsMisskeyPlayEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesLoLa extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesLoLa extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyPagesBlocksLoLa blocks = _StringsMisskeyPagesBlocksLoLa._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksLoLa blocks = _TranslationsMisskeyPagesBlocksLoLa._(_root);
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationLoLa extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationLoLa extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get youWereFollowed => 'ໄດ້ຕິດຕາມເຈົ້າ';
-	@override late final _StringsMisskeyNotificationTypesLoLa types_ = _StringsMisskeyNotificationTypesLoLa._(_root);
-	@override late final _StringsMisskeyNotificationActionsLoLa actions_ = _StringsMisskeyNotificationActionsLoLa._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesLoLa types_ = _TranslationsMisskeyNotificationTypesLoLa._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsLoLa actions_ = _TranslationsMisskeyNotificationActionsLoLa._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckLoLa extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckLoLa extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyDeckColumnsLoLa columns_ = _StringsMisskeyDeckColumnsLoLa._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsLoLa columns_ = _TranslationsMisskeyDeckColumnsLoLa._(_root);
 }
 
 // Path: misskey.webhookSettings_
-class _StringsMisskeyWebhookSettingsLoLa extends _StringsMisskeyWebhookSettingsEnUs {
-	_StringsMisskeyWebhookSettingsLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWebhookSettingsLoLa extends TranslationsMisskeyWebhookSettingsEnUs {
+	_TranslationsMisskeyWebhookSettingsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get name => 'ຊື່';
 }
 
 // Path: misskey.abuseReport_
-class _StringsMisskeyAbuseReportLoLa extends _StringsMisskeyAbuseReportEnUs {
-	_StringsMisskeyAbuseReportLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportLoLa extends TranslationsMisskeyAbuseReportEnUs {
+	_TranslationsMisskeyAbuseReportLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientLoLa notificationRecipient_ = _StringsMisskeyAbuseReportNotificationRecipientLoLa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientLoLa notificationRecipient_ = _TranslationsMisskeyAbuseReportNotificationRecipientLoLa._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesLoLa extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesLoLa extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'ລະງັບ';
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeLoLa extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeLoLa extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'ກຳລັງ​ເຜີຍ​ແພ່';
 }
 
 // Path: misskey.role_.priority_
-class _StringsMisskeyRolePriorityLoLa extends _StringsMisskeyRolePriorityEnUs {
-	_StringsMisskeyRolePriorityLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyRolePriorityLoLa extends TranslationsMisskeyRolePriorityEnUs {
+	_TranslationsMisskeyRolePriorityLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get middle => 'ປານກາງ';
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowLoLa extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowLoLa extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'ໄດ້ຕິດຕາມທ່ານ';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysLoLa extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysLoLa extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get mention => 'ໄດ້ກ່າວມາ';
@@ -733,30 +736,30 @@ class _StringsMisskeyThemeKeysLoLa extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListLoLa extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListLoLa extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'ເລືອກບັນຊີລາຍການ';
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksLoLa extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksLoLa extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get image => 'ຮູບພາບ';
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesLoLa extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesLoLa extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => 'ກຳລັງຕິດຕາມ';
@@ -768,10 +771,10 @@ class _StringsMisskeyNotificationTypesLoLa extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsLoLa extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsLoLa extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get reply => 'ຕອບ​ກັບ';
@@ -779,10 +782,10 @@ class _StringsMisskeyNotificationActionsLoLa extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsLoLa extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsLoLa extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get notifications => 'ການແຈ້ງເຕືອນ';
@@ -793,20 +796,20 @@ class _StringsMisskeyDeckColumnsLoLa extends _StringsMisskeyDeckColumnsEnUs {
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
-class _StringsMisskeyAbuseReportNotificationRecipientLoLa extends _StringsMisskeyAbuseReportNotificationRecipientEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientLoLa extends TranslationsMisskeyAbuseReportNotificationRecipientEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa recipientType_ = _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(_root);
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(_root);
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_
-class _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa extends _StringsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
-	_StringsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(_StringsLoLa root) : this._root = root, super._(root);
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
 
-	@override final _StringsLoLa _root; // ignore: unused_field
+	final TranslationsLoLa _root; // ignore: unused_field
 
 	// Translations
 	@override String get mail => 'ອີເມວ';

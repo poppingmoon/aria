@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'average_color_provider.g.dart';
 
 @riverpod
-Color averageColor(AverageColorRef ref, String blurHash) {
+Color averageColor(Ref ref, String blurHash) {
   final value = blurHash
       .substring(2, 6)
       .split('')

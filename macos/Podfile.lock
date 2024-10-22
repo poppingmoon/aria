@@ -125,7 +125,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   audio_service: b88ff778e0e3915efd4cd1a5ad6f0beef0c950a9
   audio_session: dea1f41890dbf1718f04a56f1d6150fd50039b72
-  connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
+  connectivity_plus: 4c41c08fc6d7c91f63bc7aec70ffe3730b04f563
   flutter_image_compress_macos: c26c3c13ea0f28ae6dea4e139b3292e7729f99f1
   flutter_inappwebview_macos: bdf207b8f4ebd58e86ae06cd96b147de99a67c9b
   flutter_local_notifications: 3805ca215b2fb7f397d78b66db91f6a747af52e4
@@ -135,10 +135,10 @@ SPEC CHECKSUMS:
   image_editor_common: 1b11f59fad8909bafcdaa0f31cc9373425b58600
   just_audio: 9b67ca7b97c61cfc9784ea23cd8cc55eb226d489
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
-  package_info_plus: d2f71247aab4b6521434f887276093acc70d214c
+  package_info_plus: f5790acc797bf17c3e959e9d6cf162cc68ff7523
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   rust_lib_aria: 793a1cb9897092ee3e848adb8d284dee13466e34
-  share_plus: a182a58e04e51647c0481aadabbc4de44b3a2bce
+  share_plus: fd717ef89a2801d3491e737630112b80c310640e
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
   sqflite_darwin: a553b1fd6fe66f53bbb0fe5b4f5bab93f08d7a13
   url_launcher_macos: c82c93949963e55b228a30115bd219499a6fe404

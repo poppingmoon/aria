@@ -6,7 +6,7 @@ part of 'conversation_notes_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$conversationNotesHash() => r'11b1a61fd4cfc7069f0dc6a4094ae8d5559945d1';
+String _$conversationNotesHash() => r'd4125b10db9e74084e1c7fc71bbff00a92a2868b';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -154,6 +154,8 @@ class ConversationNotesProvider extends AutoDisposeFutureProvider<List<Note>> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin ConversationNotesRef on AutoDisposeFutureProviderRef<List<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
@@ -173,4 +175,4 @@ class _ConversationNotesProviderElement
   String get noteId => (origin as ConversationNotesProvider).noteId;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

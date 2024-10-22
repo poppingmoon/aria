@@ -6,7 +6,7 @@ part of 'data_saver_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dataSaverHash() => r'e71ba3f7a64d8da74317312f138c15db28bb037a';
+String _$dataSaverHash() => r'729c751262c5266c08794ba8f2fd40f399d922dc';
 
 /// See also [dataSaver].
 @ProviderFor(dataSaver)
@@ -19,6 +19,8 @@ final dataSaverProvider = AutoDisposeProvider<DataSaver>.internal(
   allTransitiveDependencies: null,
 );
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 typedef DataSaverRef = AutoDisposeProviderRef<DataSaver>;
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

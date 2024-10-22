@@ -6,7 +6,7 @@ part of 'average_color_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$averageColorHash() => r'7ab53e71c0136b8a278d4ab29880f098bca9a036';
+String _$averageColorHash() => r'06665cfb6770de47493dab0049f170bb74039f4c';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -142,6 +142,8 @@ class AverageColorProvider extends AutoDisposeProvider<Color> {
   }
 }
 
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
 mixin AverageColorRef on AutoDisposeProviderRef<Color> {
   /// The parameter `blurHash` of this provider.
   String get blurHash;
@@ -155,4 +157,4 @@ class _AverageColorProviderElement extends AutoDisposeProviderElement<Color>
   String get blurHash => (origin as AverageColorProvider).blurHash;
 }
 // ignore_for_file: type=lint
-// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
+// ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

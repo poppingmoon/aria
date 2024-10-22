@@ -2,15 +2,18 @@
 /// Generated file. Do not edit.
 ///
 // coverage:ignore-file
-// ignore_for_file: type=lint
+// ignore_for_file: type=lint, unused_import
 
-part of 'strings.g.dart';
+import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:slang/generated.dart';
+import 'strings.g.dart';
 
 // Path: <root>
-class _StringsTrTr extends Translations {
+class TranslationsTrTr extends Translations {
 	/// You can call this constructor and build your own translation instance of this locale.
 	/// Constructing via the enum [AppLocale.build] is preferred.
-	_StringsTrTr.build({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
+	TranslationsTrTr({Map<String, Node>? overrides, PluralResolver? cardinalResolver, PluralResolver? ordinalResolver})
 		: assert(overrides == null, 'Set "translation_overrides: true" in order to enable this feature.'),
 		  $meta = TranslationMetadata(
 		    locale: AppLocale.trTr,
@@ -18,23 +21,23 @@ class _StringsTrTr extends Translations {
 		    cardinalResolver: cardinalResolver,
 		    ordinalResolver: ordinalResolver,
 		  ),
-		  super.build(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
+		  super(cardinalResolver: cardinalResolver, ordinalResolver: ordinalResolver);
 
 	/// Metadata for the translations of <tr-TR>.
 	@override final TranslationMetadata<AppLocale, Translations> $meta;
 
-	@override late final _StringsTrTr _root = this; // ignore: unused_field
+	late final TranslationsTrTr _root = this; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsAriaTrTr aria = _StringsAriaTrTr._(_root);
-	@override late final _StringsMisskeyTrTr misskey = _StringsMisskeyTrTr._(_root);
+	@override late final _TranslationsAriaTrTr aria = _TranslationsAriaTrTr._(_root);
+	@override late final _TranslationsMisskeyTrTr misskey = _TranslationsMisskeyTrTr._(_root);
 }
 
 // Path: aria
-class _StringsAriaTrTr extends _StringsAriaEnUs {
-	_StringsAriaTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsAriaTrTr extends TranslationsAriaEnUs {
+	_TranslationsAriaTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -56,10 +59,10 @@ class _StringsAriaTrTr extends _StringsAriaEnUs {
 }
 
 // Path: misskey
-class _StringsMisskeyTrTr extends _StringsMisskeyEnUs {
-	_StringsMisskeyTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
+	_TranslationsMisskeyTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get lang__ => 'Türkçe';
@@ -441,74 +444,74 @@ class _StringsMisskeyTrTr extends _StringsMisskeyEnUs {
 	@override String get icon => 'Avatar';
 	@override String get replies => 'yanıt';
 	@override String get renotes => 'vazgeçme';
-	@override late final _StringsMisskeyDeliveryTrTr delivery_ = _StringsMisskeyDeliveryTrTr._(_root);
-	@override late final _StringsMisskeyAccountDeleteTrTr accountDelete_ = _StringsMisskeyAccountDeleteTrTr._(_root);
-	@override late final _StringsMisskeyEmailTrTr email_ = _StringsMisskeyEmailTrTr._(_root);
-	@override late final _StringsMisskeyThemeTrTr theme_ = _StringsMisskeyThemeTrTr._(_root);
-	@override late final _StringsMisskeySfxTrTr sfx_ = _StringsMisskeySfxTrTr._(_root);
-	@override late final _StringsMisskeyX2faTrTr x2fa_ = _StringsMisskeyX2faTrTr._(_root);
-	@override late final _StringsMisskeyPermissionsTrTr permissions_ = _StringsMisskeyPermissionsTrTr._(_root);
-	@override late final _StringsMisskeyWidgetsTrTr widgets_ = _StringsMisskeyWidgetsTrTr._(_root);
-	@override late final _StringsMisskeyCwTrTr cw_ = _StringsMisskeyCwTrTr._(_root);
-	@override late final _StringsMisskeyPollTrTr poll_ = _StringsMisskeyPollTrTr._(_root);
-	@override late final _StringsMisskeyVisibilityTrTr visibility_ = _StringsMisskeyVisibilityTrTr._(_root);
-	@override late final _StringsMisskeyProfileTrTr profile_ = _StringsMisskeyProfileTrTr._(_root);
-	@override late final _StringsMisskeyExportOrImportTrTr exportOrImport_ = _StringsMisskeyExportOrImportTrTr._(_root);
-	@override late final _StringsMisskeyChartsTrTr charts_ = _StringsMisskeyChartsTrTr._(_root);
-	@override late final _StringsMisskeyTimelinesTrTr timelines_ = _StringsMisskeyTimelinesTrTr._(_root);
-	@override late final _StringsMisskeyPagesTrTr pages_ = _StringsMisskeyPagesTrTr._(_root);
-	@override late final _StringsMisskeyNotificationTrTr notification_ = _StringsMisskeyNotificationTrTr._(_root);
-	@override late final _StringsMisskeyDeckTrTr deck_ = _StringsMisskeyDeckTrTr._(_root);
-	@override late final _StringsMisskeyModerationLogTypesTrTr moderationLogTypes_ = _StringsMisskeyModerationLogTypesTrTr._(_root);
+	@override late final _TranslationsMisskeyDeliveryTrTr delivery_ = _TranslationsMisskeyDeliveryTrTr._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteTrTr accountDelete_ = _TranslationsMisskeyAccountDeleteTrTr._(_root);
+	@override late final _TranslationsMisskeyEmailTrTr email_ = _TranslationsMisskeyEmailTrTr._(_root);
+	@override late final _TranslationsMisskeyThemeTrTr theme_ = _TranslationsMisskeyThemeTrTr._(_root);
+	@override late final _TranslationsMisskeySfxTrTr sfx_ = _TranslationsMisskeySfxTrTr._(_root);
+	@override late final _TranslationsMisskeyX2faTrTr x2fa_ = _TranslationsMisskeyX2faTrTr._(_root);
+	@override late final _TranslationsMisskeyPermissionsTrTr permissions_ = _TranslationsMisskeyPermissionsTrTr._(_root);
+	@override late final _TranslationsMisskeyWidgetsTrTr widgets_ = _TranslationsMisskeyWidgetsTrTr._(_root);
+	@override late final _TranslationsMisskeyCwTrTr cw_ = _TranslationsMisskeyCwTrTr._(_root);
+	@override late final _TranslationsMisskeyPollTrTr poll_ = _TranslationsMisskeyPollTrTr._(_root);
+	@override late final _TranslationsMisskeyVisibilityTrTr visibility_ = _TranslationsMisskeyVisibilityTrTr._(_root);
+	@override late final _TranslationsMisskeyProfileTrTr profile_ = _TranslationsMisskeyProfileTrTr._(_root);
+	@override late final _TranslationsMisskeyExportOrImportTrTr exportOrImport_ = _TranslationsMisskeyExportOrImportTrTr._(_root);
+	@override late final _TranslationsMisskeyChartsTrTr charts_ = _TranslationsMisskeyChartsTrTr._(_root);
+	@override late final _TranslationsMisskeyTimelinesTrTr timelines_ = _TranslationsMisskeyTimelinesTrTr._(_root);
+	@override late final _TranslationsMisskeyPagesTrTr pages_ = _TranslationsMisskeyPagesTrTr._(_root);
+	@override late final _TranslationsMisskeyNotificationTrTr notification_ = _TranslationsMisskeyNotificationTrTr._(_root);
+	@override late final _TranslationsMisskeyDeckTrTr deck_ = _TranslationsMisskeyDeckTrTr._(_root);
+	@override late final _TranslationsMisskeyModerationLogTypesTrTr moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesTrTr._(_root);
 }
 
 // Path: misskey.delivery_
-class _StringsMisskeyDeliveryTrTr extends _StringsMisskeyDeliveryEnUs {
-	_StringsMisskeyDeliveryTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTrTr extends TranslationsMisskeyDeliveryEnUs {
+	_TranslationsMisskeyDeliveryTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get stop => 'Askıya alınmış';
-	@override late final _StringsMisskeyDeliveryTypeTrTr type_ = _StringsMisskeyDeliveryTypeTrTr._(_root);
+	@override late final _TranslationsMisskeyDeliveryTypeTrTr type_ = _TranslationsMisskeyDeliveryTypeTrTr._(_root);
 }
 
 // Path: misskey.accountDelete_
-class _StringsMisskeyAccountDeleteTrTr extends _StringsMisskeyAccountDeleteEnUs {
-	_StringsMisskeyAccountDeleteTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyAccountDeleteTrTr extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get started => 'Silme işlemi başlatıldı';
 }
 
 // Path: misskey.email_
-class _StringsMisskeyEmailTrTr extends _StringsMisskeyEmailEnUs {
-	_StringsMisskeyEmailTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailTrTr extends TranslationsMisskeyEmailEnUs {
+	_TranslationsMisskeyEmailTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyEmailFollowTrTr follow_ = _StringsMisskeyEmailFollowTrTr._(_root);
+	@override late final _TranslationsMisskeyEmailFollowTrTr follow_ = _TranslationsMisskeyEmailFollowTrTr._(_root);
 }
 
 // Path: misskey.theme_
-class _StringsMisskeyThemeTrTr extends _StringsMisskeyThemeEnUs {
-	_StringsMisskeyThemeTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeTrTr extends TranslationsMisskeyThemeEnUs {
+	_TranslationsMisskeyThemeTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get color => 'Renk';
-	@override late final _StringsMisskeyThemeKeysTrTr keys = _StringsMisskeyThemeKeysTrTr._(_root);
+	@override late final _TranslationsMisskeyThemeKeysTrTr keys = _TranslationsMisskeyThemeKeysTrTr._(_root);
 }
 
 // Path: misskey.sfx_
-class _StringsMisskeySfxTrTr extends _StringsMisskeySfxEnUs {
-	_StringsMisskeySfxTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeySfxTrTr extends TranslationsMisskeySfxEnUs {
+	_TranslationsMisskeySfxTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get note => 'notlar';
@@ -516,20 +519,20 @@ class _StringsMisskeySfxTrTr extends _StringsMisskeySfxEnUs {
 }
 
 // Path: misskey.x2fa_
-class _StringsMisskeyX2faTrTr extends _StringsMisskeyX2faEnUs {
-	_StringsMisskeyX2faTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyX2faTrTr extends TranslationsMisskeyX2faEnUs {
+	_TranslationsMisskeyX2faTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get renewTOTPCancel => 'Hayır, teşekkürler';
 }
 
 // Path: misskey.permissions_
-class _StringsMisskeyPermissionsTrTr extends _StringsMisskeyPermissionsEnUs {
-	_StringsMisskeyPermissionsTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPermissionsTrTr extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get readBlocks => 'Engellenen hesapları gör';
@@ -537,10 +540,10 @@ class _StringsMisskeyPermissionsTrTr extends _StringsMisskeyPermissionsEnUs {
 }
 
 // Path: misskey.widgets_
-class _StringsMisskeyWidgetsTrTr extends _StringsMisskeyWidgetsEnUs {
-	_StringsMisskeyWidgetsTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsTrTr extends TranslationsMisskeyWidgetsEnUs {
+	_TranslationsMisskeyWidgetsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get profile => 'Profil';
@@ -552,34 +555,34 @@ class _StringsMisskeyWidgetsTrTr extends _StringsMisskeyWidgetsEnUs {
 	@override String get activity => 'Etkinlik';
 	@override String get federation => 'Federasyon';
 	@override String get jobQueue => 'İşlem sırası';
-	@override late final _StringsMisskeyWidgetsUserListTrTr userList_ = _StringsMisskeyWidgetsUserListTrTr._(_root);
+	@override late final _TranslationsMisskeyWidgetsUserListTrTr userList_ = _TranslationsMisskeyWidgetsUserListTrTr._(_root);
 }
 
 // Path: misskey.cw_
-class _StringsMisskeyCwTrTr extends _StringsMisskeyCwEnUs {
-	_StringsMisskeyCwTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyCwTrTr extends TranslationsMisskeyCwEnUs {
+	_TranslationsMisskeyCwTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get show => 'Devamını yükle';
 }
 
 // Path: misskey.poll_
-class _StringsMisskeyPollTrTr extends _StringsMisskeyPollEnUs {
-	_StringsMisskeyPollTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPollTrTr extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get vote => 'Oy kullan';
 }
 
 // Path: misskey.visibility_
-class _StringsMisskeyVisibilityTrTr extends _StringsMisskeyVisibilityEnUs {
-	_StringsMisskeyVisibilityTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyVisibilityTrTr extends TranslationsMisskeyVisibilityEnUs {
+	_TranslationsMisskeyVisibilityTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get publicDescription => 'Herkese açık';
@@ -588,20 +591,20 @@ class _StringsMisskeyVisibilityTrTr extends _StringsMisskeyVisibilityEnUs {
 }
 
 // Path: misskey.profile_
-class _StringsMisskeyProfileTrTr extends _StringsMisskeyProfileEnUs {
-	_StringsMisskeyProfileTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyProfileTrTr extends TranslationsMisskeyProfileEnUs {
+	_TranslationsMisskeyProfileTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get username => 'Kullanıcı Adı';
 }
 
 // Path: misskey.exportOrImport_
-class _StringsMisskeyExportOrImportTrTr extends _StringsMisskeyExportOrImportEnUs {
-	_StringsMisskeyExportOrImportTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyExportOrImportTrTr extends TranslationsMisskeyExportOrImportEnUs {
+	_TranslationsMisskeyExportOrImportTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get followingList => 'takipçi';
@@ -611,20 +614,20 @@ class _StringsMisskeyExportOrImportTrTr extends _StringsMisskeyExportOrImportEnU
 }
 
 // Path: misskey.charts_
-class _StringsMisskeyChartsTrTr extends _StringsMisskeyChartsEnUs {
-	_StringsMisskeyChartsTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyChartsTrTr extends TranslationsMisskeyChartsEnUs {
+	_TranslationsMisskeyChartsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get federation => 'Federasyon';
 }
 
 // Path: misskey.timelines_
-class _StringsMisskeyTimelinesTrTr extends _StringsMisskeyTimelinesEnUs {
-	_StringsMisskeyTimelinesTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyTimelinesTrTr extends TranslationsMisskeyTimelinesEnUs {
+	_TranslationsMisskeyTimelinesTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get home => 'Ana sayfa';
@@ -632,44 +635,44 @@ class _StringsMisskeyTimelinesTrTr extends _StringsMisskeyTimelinesEnUs {
 }
 
 // Path: misskey.pages_
-class _StringsMisskeyPagesTrTr extends _StringsMisskeyPagesEnUs {
-	_StringsMisskeyPagesTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesTrTr extends TranslationsMisskeyPagesEnUs {
+	_TranslationsMisskeyPagesTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
-	@override late final _StringsMisskeyPagesBlocksTrTr blocks = _StringsMisskeyPagesBlocksTrTr._(_root);
+	@override late final _TranslationsMisskeyPagesBlocksTrTr blocks = _TranslationsMisskeyPagesBlocksTrTr._(_root);
 }
 
 // Path: misskey.notification_
-class _StringsMisskeyNotificationTrTr extends _StringsMisskeyNotificationEnUs {
-	_StringsMisskeyNotificationTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTrTr extends TranslationsMisskeyNotificationEnUs {
+	_TranslationsMisskeyNotificationTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get youWereFollowed => 'seni takip etti';
 	@override String unreadAntennaNote({required Object name}) => '${name} anteni';
-	@override late final _StringsMisskeyNotificationTypesTrTr types_ = _StringsMisskeyNotificationTypesTrTr._(_root);
-	@override late final _StringsMisskeyNotificationActionsTrTr actions_ = _StringsMisskeyNotificationActionsTrTr._(_root);
+	@override late final _TranslationsMisskeyNotificationTypesTrTr types_ = _TranslationsMisskeyNotificationTypesTrTr._(_root);
+	@override late final _TranslationsMisskeyNotificationActionsTrTr actions_ = _TranslationsMisskeyNotificationActionsTrTr._(_root);
 }
 
 // Path: misskey.deck_
-class _StringsMisskeyDeckTrTr extends _StringsMisskeyDeckEnUs {
-	_StringsMisskeyDeckTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckTrTr extends TranslationsMisskeyDeckEnUs {
+	_TranslationsMisskeyDeckTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get configureColumn => 'Sütun seçenekleri';
-	@override late final _StringsMisskeyDeckColumnsTrTr columns_ = _StringsMisskeyDeckColumnsTrTr._(_root);
+	@override late final _TranslationsMisskeyDeckColumnsTrTr columns_ = _TranslationsMisskeyDeckColumnsTrTr._(_root);
 }
 
 // Path: misskey.moderationLogTypes_
-class _StringsMisskeyModerationLogTypesTrTr extends _StringsMisskeyModerationLogTypesEnUs {
-	_StringsMisskeyModerationLogTypesTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyModerationLogTypesTrTr extends TranslationsMisskeyModerationLogTypesEnUs {
+	_TranslationsMisskeyModerationLogTypesTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get suspend => 'askıya al';
@@ -677,30 +680,30 @@ class _StringsMisskeyModerationLogTypesTrTr extends _StringsMisskeyModerationLog
 }
 
 // Path: misskey.delivery_.type_
-class _StringsMisskeyDeliveryTypeTrTr extends _StringsMisskeyDeliveryTypeEnUs {
-	_StringsMisskeyDeliveryTypeTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeliveryTypeTrTr extends TranslationsMisskeyDeliveryTypeEnUs {
+	_TranslationsMisskeyDeliveryTypeTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get none => 'Paylaşım';
 }
 
 // Path: misskey.email_.follow_
-class _StringsMisskeyEmailFollowTrTr extends _StringsMisskeyEmailFollowEnUs {
-	_StringsMisskeyEmailFollowTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyEmailFollowTrTr extends TranslationsMisskeyEmailFollowEnUs {
+	_TranslationsMisskeyEmailFollowTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get title => 'seni takip etti';
 }
 
 // Path: misskey.theme_.keys
-class _StringsMisskeyThemeKeysTrTr extends _StringsMisskeyThemeKeysEnUs {
-	_StringsMisskeyThemeKeysTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyThemeKeysTrTr extends TranslationsMisskeyThemeKeysEnUs {
+	_TranslationsMisskeyThemeKeysTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get mention => 'Bahset';
@@ -708,30 +711,30 @@ class _StringsMisskeyThemeKeysTrTr extends _StringsMisskeyThemeKeysEnUs {
 }
 
 // Path: misskey.widgets_.userList_
-class _StringsMisskeyWidgetsUserListTrTr extends _StringsMisskeyWidgetsUserListEnUs {
-	_StringsMisskeyWidgetsUserListTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyWidgetsUserListTrTr extends TranslationsMisskeyWidgetsUserListEnUs {
+	_TranslationsMisskeyWidgetsUserListTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get chooseList => 'Bir liste seç';
 }
 
 // Path: misskey.pages_.blocks
-class _StringsMisskeyPagesBlocksTrTr extends _StringsMisskeyPagesBlocksEnUs {
-	_StringsMisskeyPagesBlocksTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyPagesBlocksTrTr extends TranslationsMisskeyPagesBlocksEnUs {
+	_TranslationsMisskeyPagesBlocksTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get image => 'Görseller';
 }
 
 // Path: misskey.notification_.types_
-class _StringsMisskeyNotificationTypesTrTr extends _StringsMisskeyNotificationTypesEnUs {
-	_StringsMisskeyNotificationTypesTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationTypesTrTr extends TranslationsMisskeyNotificationTypesEnUs {
+	_TranslationsMisskeyNotificationTypesTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get follow => 'takipçi';
@@ -745,10 +748,10 @@ class _StringsMisskeyNotificationTypesTrTr extends _StringsMisskeyNotificationTy
 }
 
 // Path: misskey.notification_.actions_
-class _StringsMisskeyNotificationActionsTrTr extends _StringsMisskeyNotificationActionsEnUs {
-	_StringsMisskeyNotificationActionsTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyNotificationActionsTrTr extends TranslationsMisskeyNotificationActionsEnUs {
+	_TranslationsMisskeyNotificationActionsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get reply => 'yanıt';
@@ -756,10 +759,10 @@ class _StringsMisskeyNotificationActionsTrTr extends _StringsMisskeyNotification
 }
 
 // Path: misskey.deck_.columns_
-class _StringsMisskeyDeckColumnsTrTr extends _StringsMisskeyDeckColumnsEnUs {
-	_StringsMisskeyDeckColumnsTrTr._(_StringsTrTr root) : this._root = root, super._(root);
+class _TranslationsMisskeyDeckColumnsTrTr extends TranslationsMisskeyDeckColumnsEnUs {
+	_TranslationsMisskeyDeckColumnsTrTr._(TranslationsTrTr root) : this._root = root, super.internal(root);
 
-	@override final _StringsTrTr _root; // ignore: unused_field
+	final TranslationsTrTr _root; // ignore: unused_field
 
 	// Translations
 	@override String get notifications => 'Bildirim';

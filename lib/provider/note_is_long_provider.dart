@@ -1,3 +1,4 @@
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -36,7 +37,7 @@ int _countNewLines(List<MfmNode> nodes) {
 }
 
 @riverpod
-bool noteIsLong(NoteIsLongRef ref, Account account, String noteId) {
+bool noteIsLong(Ref ref, Account account, String noteId) {
   final text =
       ref.watch(noteProvider(account, noteId).select((note) => note?.text));
   if (text != null) {
