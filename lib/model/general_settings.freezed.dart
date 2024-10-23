@@ -109,7 +109,8 @@ mixin _$GeneralSettings {
   bool get confirmBeforeFollow => throw _privateConstructorUsedError;
   bool get confirmWhenRevealingSensitiveMedia =>
       throw _privateConstructorUsedError;
-  LaunchMode get launchMode => throw _privateConstructorUsedError; // Theme
+  LaunchMode get launchMode => throw _privateConstructorUsedError;
+  bool get enablePredictiveBack => throw _privateConstructorUsedError; // Theme
   ThemeMode get themeMode => throw _privateConstructorUsedError;
   String get lightThemeId => throw _privateConstructorUsedError;
   String get darkThemeId => throw _privateConstructorUsedError;
@@ -209,6 +210,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool confirmBeforeFollow,
       bool confirmWhenRevealingSensitiveMedia,
       LaunchMode launchMode,
+      bool enablePredictiveBack,
       ThemeMode themeMode,
       String lightThemeId,
       String darkThemeId});
@@ -306,6 +308,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? confirmBeforeFollow = null,
     Object? confirmWhenRevealingSensitiveMedia = null,
     Object? launchMode = null,
+    Object? enablePredictiveBack = null,
     Object? themeMode = null,
     Object? lightThemeId = null,
     Object? darkThemeId = null,
@@ -621,6 +624,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.launchMode
           : launchMode // ignore: cast_nullable_to_non_nullable
               as LaunchMode,
+      enablePredictiveBack: null == enablePredictiveBack
+          ? _value.enablePredictiveBack
+          : enablePredictiveBack // ignore: cast_nullable_to_non_nullable
+              as bool,
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
@@ -724,6 +731,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool confirmBeforeFollow,
       bool confirmWhenRevealingSensitiveMedia,
       LaunchMode launchMode,
+      bool enablePredictiveBack,
       ThemeMode themeMode,
       String lightThemeId,
       String darkThemeId});
@@ -819,6 +827,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? confirmBeforeFollow = null,
     Object? confirmWhenRevealingSensitiveMedia = null,
     Object? launchMode = null,
+    Object? enablePredictiveBack = null,
     Object? themeMode = null,
     Object? lightThemeId = null,
     Object? darkThemeId = null,
@@ -1134,6 +1143,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.launchMode
           : launchMode // ignore: cast_nullable_to_non_nullable
               as LaunchMode,
+      enablePredictiveBack: null == enablePredictiveBack
+          ? _value.enablePredictiveBack
+          : enablePredictiveBack // ignore: cast_nullable_to_non_nullable
+              as bool,
       themeMode: null == themeMode
           ? _value.themeMode
           : themeMode // ignore: cast_nullable_to_non_nullable
@@ -1232,6 +1245,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.confirmBeforeFollow = true,
       this.confirmWhenRevealingSensitiveMedia = false,
       this.launchMode = LaunchMode.externalApplication,
+      this.enablePredictiveBack = false,
       this.themeMode = ThemeMode.system,
       this.lightThemeId = 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
       this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34'});
@@ -1474,6 +1488,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final LaunchMode launchMode;
+  @override
+  @JsonKey()
+  final bool enablePredictiveBack;
 // Theme
   @override
   @JsonKey()
@@ -1487,7 +1504,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1602,6 +1619,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.confirmBeforeFollow, confirmBeforeFollow) || other.confirmBeforeFollow == confirmBeforeFollow) &&
             (identical(other.confirmWhenRevealingSensitiveMedia, confirmWhenRevealingSensitiveMedia) || other.confirmWhenRevealingSensitiveMedia == confirmWhenRevealingSensitiveMedia) &&
             (identical(other.launchMode, launchMode) || other.launchMode == launchMode) &&
+            (identical(other.enablePredictiveBack, enablePredictiveBack) || other.enablePredictiveBack == enablePredictiveBack) &&
             (identical(other.themeMode, themeMode) || other.themeMode == themeMode) &&
             (identical(other.lightThemeId, lightThemeId) || other.lightThemeId == lightThemeId) &&
             (identical(other.darkThemeId, darkThemeId) || other.darkThemeId == darkThemeId));
@@ -1688,6 +1706,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         confirmBeforeFollow,
         confirmWhenRevealingSensitiveMedia,
         launchMode,
+        enablePredictiveBack,
         themeMode,
         lightThemeId,
         darkThemeId
@@ -1790,6 +1809,7 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool confirmBeforeFollow,
       final bool confirmWhenRevealingSensitiveMedia,
       final LaunchMode launchMode,
+      final bool enablePredictiveBack,
       final ThemeMode themeMode,
       final String lightThemeId,
       final String darkThemeId}) = _$GeneralSettingsImpl;
@@ -1957,7 +1977,9 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get confirmWhenRevealingSensitiveMedia;
   @override
-  LaunchMode get launchMode; // Theme
+  LaunchMode get launchMode;
+  @override
+  bool get enablePredictiveBack; // Theme
   @override
   ThemeMode get themeMode;
   @override
