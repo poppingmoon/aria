@@ -485,6 +485,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setEnablePredictiveBack(bool enablePredictiveBack) async {
+    state = state.copyWith(enablePredictiveBack: enablePredictiveBack);
+    await _save();
+  }
+
   Future<void> setThemeMode(ThemeMode themeMode) async {
     state = state.copyWith(themeMode: themeMode);
     await _save();

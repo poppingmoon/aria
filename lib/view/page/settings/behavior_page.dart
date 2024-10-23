@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -213,6 +214,14 @@ class BehaviorPage extends ConsumerWidget {
               }
             },
           ),
+          if (defaultTargetPlatform == TargetPlatform.android)
+            SwitchListTile(
+              title: Text(t.aria.enablePredictiveBack),
+              value: settings.enablePredictiveBack,
+              onChanged: (value) => ref
+                  .read(generalSettingsNotifierProvider.notifier)
+                  .setEnablePredictiveBack(value),
+            ),
         ],
       ),
       selectedDestination: GeneralSettingsDestination.behavior,

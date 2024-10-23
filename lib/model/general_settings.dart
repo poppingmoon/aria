@@ -119,6 +119,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool confirmBeforeFollow,
     @Default(false) bool confirmWhenRevealingSensitiveMedia,
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
+    @Default(false) bool enablePredictiveBack,
 
     // Theme
     @Default(ThemeMode.system) ThemeMode themeMode,

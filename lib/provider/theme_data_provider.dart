@@ -20,6 +20,11 @@ ThemeData themeData(Ref ref, Brightness brightness) {
   final height = ref.watch(
     generalSettingsNotifierProvider.select((settings) => settings.lineHeight),
   );
+  final enablePredictiveBack = ref.watch(
+    generalSettingsNotifierProvider
+        .select((settings) => settings.enablePredictiveBack),
+  );
+
   return ThemeData(
     colorScheme: ColorScheme.fromSeed(
       seedColor: colors.accent,
@@ -98,11 +103,13 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     ),
     sliderTheme:
         const SliderThemeData(showValueIndicator: ShowValueIndicator.always),
-    pageTransitionsTheme: const PageTransitionsTheme(
+    pageTransitionsTheme: PageTransitionsTheme(
       builders: {
-        TargetPlatform.android: PredictiveBackPageTransitionsBuilder(),
-        TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
-        TargetPlatform.macOS: CupertinoPageTransitionsBuilder(),
+        TargetPlatform.android: enablePredictiveBack
+            ? const PredictiveBackPageTransitionsBuilder()
+            : const ZoomPageTransitionsBuilder(),
+        TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
+        TargetPlatform.macOS: const CupertinoPageTransitionsBuilder(),
       },
     ),
   );
