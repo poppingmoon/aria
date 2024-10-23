@@ -161,6 +161,7 @@ class NoteFooter extends HookConsumerWidget {
                                   account: account,
                                   noteId: appearNote.id,
                                 ),
+                                clipBehavior: Clip.antiAlias,
                                 isScrollControlled: true,
                               );
                             }
@@ -358,7 +359,7 @@ class NoteFooter extends HookConsumerWidget {
                                 builder: (context) => ReactionUsersSheet(
                                   account: account,
                                   noteId: appearNote.id,
-                                  reaction: '❤',
+                                  initialReaction: '❤',
                                 ),
                                 isScrollControlled: true,
                               )
@@ -444,7 +445,7 @@ class NoteFooter extends HookConsumerWidget {
                                 builder: (context) => ReactionUsersSheet(
                                   account: account,
                                   noteId: appearNote.id,
-                                  reaction: '❤',
+                                  initialReaction: '❤',
                                 ),
                                 isScrollControlled: true,
                               );
