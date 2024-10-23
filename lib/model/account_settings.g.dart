@@ -56,6 +56,10 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
               ?.map((e) => MuteWord.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
+      mutedEmojis: (json['mutedEmojis'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
       recentlyUsedUsers: (json['recentlyUsedUsers'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
@@ -102,6 +106,7 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
   val['mutedWords'] = instance.mutedWords.map((e) => e.toJson()).toList();
   val['hardMutedWords'] =
       instance.hardMutedWords.map((e) => e.toJson()).toList();
+  val['mutedEmojis'] = instance.mutedEmojis;
   val['recentlyUsedUsers'] = instance.recentlyUsedUsers;
   val['hashtags'] = instance.hashtags;
   return val;

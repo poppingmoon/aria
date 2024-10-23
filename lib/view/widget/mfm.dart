@@ -13,6 +13,7 @@ import '../../util/navigate.dart';
 import 'custom_emoji.dart';
 import 'mention_widget.dart';
 import 'mfm/mfm_builder.dart';
+import 'unicode_emoji.dart';
 import 'url_sheet.dart';
 
 List<InlineSpan> buildMfm(
@@ -47,7 +48,7 @@ List<InlineSpan> buildMfm(
     colors: colors,
     simple: simple,
     style: textStyle,
-    emojiBuilder: (name, scale, opacity, fallbackTextStyle) => CustomEmoji(
+    customEmojiBuilder: (name, scale, opacity, style) => CustomEmoji(
       account: account,
       emoji: ':$name:',
       url: emojis?[name],
@@ -58,9 +59,15 @@ List<InlineSpan> buildMfm(
       onTap: onTapEmoji != null
           ? () => onTapEmoji(':$name@${author?.host ?? '.'}:')
           : null,
-      fallbackTextStyle: fallbackTextStyle,
+      fallbackTextStyle: style,
       fallbackToImage: false,
       enableFadeIn: enableEmojiFadeIn,
+    ),
+    unicodeEmojiBuilder: (emoji, style) => UnicodeEmoji(
+      account: account,
+      emoji: emoji,
+      onTap: onTapEmoji != null ? () => onTapEmoji.call(emoji) : null,
+      inline: true,
     ),
     mentionBuilder: (username, host, scale, opacity) {
       final absoluteHost = host ??

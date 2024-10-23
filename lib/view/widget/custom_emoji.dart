@@ -6,6 +6,7 @@ import '../../gen/assets.gen.dart';
 import '../../model/account.dart';
 import '../../provider/emoji_url_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/muted_emojis_notifier_provider.dart';
 import '../../provider/static_image_url_provider.dart';
 import 'image_widget.dart';
 
@@ -45,6 +46,26 @@ class CustomEmoji extends ConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
     final fallbackTextStyle = this.fallbackTextStyle ?? style;
     final height = this.height ?? style.lineHeight;
+    final muted = ref
+        .watch(mutedEmojisNotifierProvider(account))
+        .contains(emoji.replaceFirst('@.', ''));
+    if (muted) {
+      return InkWell(
+        onTap: onTap,
+        child: TooltipVisibility(
+          visible: !disableTooltip,
+          child: Tooltip(
+            message: emoji.replaceFirst('@.', ''),
+            child: Assets.misskey.packages.frontend.assets.dummy.image(
+              height: height,
+              opacity: AlwaysStoppedAnimation(opacity),
+              fit: BoxFit.contain,
+            ),
+          ),
+        ),
+      );
+    }
+
     final (proxiedUrl, rawUrl) = ref.watch(
       emojiUrlProvider(
         account,
@@ -70,7 +91,7 @@ class CustomEmoji extends ConsumerWidget {
       child: TooltipVisibility(
         visible: !disableTooltip,
         child: Tooltip(
-          message: emoji.replaceAll('@.', ''),
+          message: emoji.replaceFirst('@.', ''),
           child: ImageWidget(
             url: disableShowingAnimatedImages
                 ? ref
