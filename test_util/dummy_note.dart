@@ -7,6 +7,7 @@ final dummyNote = Note(
   createdAt: DateTime(0),
   user: dummyUserLite,
   userId: '',
+  visibility: NoteVisibility.public,
   reactions: {},
   fileIds: [],
   files: [],
