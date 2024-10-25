@@ -60,7 +60,6 @@ class NoteFooter extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final showQuoteButton = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.showQuoteButtonInNoteFooter),
@@ -81,19 +80,12 @@ class NoteFooter extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.noteFooterScale),
     );
-    final showReactionsCount = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showReactionsCount),
-    );
     final isMyNote = i != null && appearNote.userId == i.id;
     final canRenote = switch (appearNote.visibility) {
       NoteVisibility.public || NoteVisibility.home => true,
       NoteVisibility.followers => isMyNote,
       _ => false,
     };
-    final myRenotingNoteId = useState(
-      note.isRenote && i != null && note.userId == i.id ? noteId : null,
-    );
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -117,190 +109,28 @@ class NoteFooter extends HookConsumerWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  IconButton(
-                    tooltip: t.misskey.reply,
-                    onPressed: !account.isGuest
-                        ? () {
-                            if (appearNote.id.isEmpty) return;
-                            ref
-                                .read(postNotifierProvider(account).notifier)
-                                .setReply(appearNote);
-                            if (focusPostForm case final focusPostForm?) {
-                              focusPostForm();
-                            } else {
-                              context.push('/$account/post');
-                            }
-                          }
-                        : null,
-                    icon: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.reply),
-                        if (appearNote.repliesCount > 0)
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 2.0,
-                            ),
-                            child: Text(
-                              NumberFormat().format(appearNote.repliesCount),
-                              style: style,
-                            ),
-                          ),
-                      ],
-                    ),
+                  _ReplyButton(
+                    account: account,
+                    note: appearNote,
+                    focusPostForm: focusPostForm,
+                    style: style,
                   ),
                   if (canRenote) ...[
-                    GestureDetector(
-                      onLongPress: appearNote.renoteCount > 0
-                          ? () {
-                              if (appearNote.id.isEmpty) return;
-                              HapticFeedback.lightImpact();
-                              showModalBottomSheet<void>(
-                                context: context,
-                                builder: (context) => RenoteUsersSheet(
-                                  account: account,
-                                  noteId: appearNote.id,
-                                ),
-                                isScrollControlled: true,
-                              );
-                            }
+                    _RenoteButton(
+                      account: account,
+                      note: appearNote,
+                      myRenotingNoteId: note.isRenote && note.userId == i?.id
+                          ? note.id
                           : null,
-                      child: IconButton(
-                        tooltip: appearNote.renoteCount <= 0
-                            ? t.misskey.renote
-                            : null,
-                        onPressed: !account.isGuest
-                            ? () async {
-                                if (appearNote.id.isEmpty) return;
-                                if (myRenotingNoteId.value case final noteId?) {
-                                  final unrenote =
-                                      await showModalBottomSheet<bool>(
-                                    context: context,
-                                    builder: (context) => ListView(
-                                      shrinkWrap: true,
-                                      children: [
-                                        ListTile(
-                                          leading:
-                                              const Icon(Icons.repeat_rounded),
-                                          title: Text(t.misskey.renote),
-                                          onTap: () => context.pop(false),
-                                        ),
-                                        ListTile(
-                                          leading: const Icon(Icons.delete),
-                                          title: Text(t.misskey.unrenote),
-                                          onTap: () => context.pop(true),
-                                          iconColor: Theme.of(context)
-                                              .colorScheme
-                                              .error,
-                                          textColor: Theme.of(context)
-                                              .colorScheme
-                                              .error,
-                                        ),
-                                      ],
-                                    ),
-                                  );
-                                  if (!context.mounted) return;
-                                  if (unrenote == null) return;
-                                  if (unrenote) {
-                                    final result = await futureWithDialog(
-                                      context,
-                                      ref
-                                          .read(misskeyProvider(account))
-                                          .notes
-                                          .delete(
-                                            NotesDeleteRequest(noteId: noteId),
-                                          )
-                                          .then((_) => true),
-                                    );
-                                    if (!context.mounted) return;
-                                    if (result != null) {
-                                      ref
-                                          .read(
-                                            notesNotifierProvider(account)
-                                                .notifier,
-                                          )
-                                          .remove(noteId);
-                                      myRenotingNoteId.value = null;
-                                    }
-                                    return;
-                                  }
-                                }
-                                if (showQuoteButton) {
-                                  final result =
-                                      await showModalBottomSheet<Note>(
-                                    context: context,
-                                    builder: (context) => RenoteSheet(
-                                      account: account,
-                                      note: appearNote,
-                                    ),
-                                    clipBehavior: Clip.hardEdge,
-                                  );
-                                  if (result != null) {
-                                    myRenotingNoteId.value = result.id;
-                                  }
-                                } else {
-                                  ref
-                                      .read(
-                                        postNotifierProvider(account).notifier,
-                                      )
-                                      .setRenote(appearNote);
-                                  if (focusPostForm case final focusPostForm?) {
-                                    focusPostForm();
-                                  } else {
-                                    await context.push('/$account/post');
-                                  }
-                                }
-                              }
-                            : null,
-                        icon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.repeat_rounded,
-                              color: myRenotingNoteId.value != null
-                                  ? Theme.of(context).colorScheme.primary
-                                  : null,
-                            ),
-                            if (appearNote.renoteCount > 0)
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 2.0,
-                                ),
-                                child: Text(
-                                  NumberFormat().format(appearNote.renoteCount),
-                                  style: style.apply(
-                                    color: myRenotingNoteId.value != null
-                                        ? Theme.of(context)
-                                            .colorScheme
-                                            .primary
-                                            .withOpacity(0.6)
-                                        : null,
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
+                      showQuoteButton: showQuoteButton,
+                      focusPostForm: focusPostForm,
+                      style: style,
                     ),
                     if (showQuoteButton)
-                      IconButton(
-                        tooltip: t.misskey.quote,
-                        onPressed: !account.isGuest
-                            ? () {
-                                if (appearNote.id.isEmpty) return;
-                                ref
-                                    .read(
-                                      postNotifierProvider(account).notifier,
-                                    )
-                                    .setRenote(appearNote);
-                                if (focusPostForm case final focusPostForm?) {
-                                  focusPostForm();
-                                } else {
-                                  context.push('/$account/post');
-                                }
-                              }
-                            : null,
-                        icon: const Icon(Icons.format_quote_outlined),
+                      _QuoteButton(
+                        account: account,
+                        note: appearNote,
+                        focusPostForm: focusPostForm,
                       ),
                   ] else
                     IconButton(
@@ -312,259 +142,37 @@ class NoteFooter extends HookConsumerWidget {
                       appearNote.reactionAcceptance !=
                           ReactionAcceptance.likeOnly &&
                       appearNote.myReaction == null)
-                    IconButton(
-                      tooltip: t.misskey.like,
-                      onPressed: !account.isGuest
-                          ? () async {
-                              if (appearNote.id.isEmpty) return;
-                              final defaultReaction = ref
-                                  .read(
-                                    accountSettingsNotifierProvider(account),
-                                  )
-                                  .defaultReaction;
-                              final emoji = defaultReaction ?? '❤';
-                              if (ref
-                                  .read(generalSettingsNotifierProvider)
-                                  .confirmBeforeReact) {
-                                final confirmed = await confirmReaction(
-                                  context,
-                                  account: account,
-                                  emoji: emoji,
-                                  note: appearNote,
-                                );
-                                if (!confirmed) return;
-                              }
-                              if (!context.mounted) return;
-                              await futureWithDialog(
-                                context,
-                                ref
-                                    .read(
-                                      notesNotifierProvider(account).notifier,
-                                    )
-                                    .react(appearNote.id, emoji),
-                                overlay: false,
-                              );
-                            }
-                          : null,
-                      icon: const Icon(Icons.favorite_border),
+                    _LikeButton(
+                      account: account,
+                      note: appearNote,
                     ),
                   if (appearNote.myReaction == null)
-                    GestureDetector(
-                      onLongPress: appearNote.reactionAcceptance ==
-                                  ReactionAcceptance.likeOnly &&
-                              (appearNote.reactionCount ?? 0) > 0
-                          ? () => showModalBottomSheet<void>(
-                                context: context,
-                                builder: (context) => ReactionUsersSheet(
-                                  account: account,
-                                  noteId: appearNote.id,
-                                  reaction: '❤',
-                                ),
-                                isScrollControlled: true,
-                              )
-                          : null,
-                      child: IconButton(
-                        tooltip: appearNote.reactionAcceptance !=
-                                ReactionAcceptance.likeOnly
-                            ? t.misskey.reaction
-                            : (appearNote.reactionCount ?? 0) <= 0
-                                ? t.misskey.like
-                                : null,
-                        onPressed: !account.isGuest
-                            ? () async {
-                                if (appearNote.id.isEmpty) return;
-                                final emoji = appearNote.reactionAcceptance ==
-                                        ReactionAcceptance.likeOnly
-                                    ? '❤'
-                                    : await pickEmoji(
-                                        ref,
-                                        account,
-                                        reaction: true,
-                                        targetNote: appearNote,
-                                      );
-                                if (!context.mounted) return;
-                                if (emoji != null) {
-                                  if (ref
-                                      .read(generalSettingsNotifierProvider)
-                                      .confirmBeforeReact) {
-                                    final confirmed = await confirmReaction(
-                                      context,
-                                      account: account,
-                                      emoji: emoji,
-                                      note: appearNote,
-                                    );
-                                    if (!confirmed) return;
-                                  }
-                                  if (!context.mounted) return;
-                                  await futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          notesNotifierProvider(account)
-                                              .notifier,
-                                        )
-                                        .react(appearNote.id, emoji),
-                                    overlay: false,
-                                  );
-                                }
-                              }
-                            : null,
-                        icon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (appearNote.reactionAcceptance ==
-                                ReactionAcceptance.likeOnly)
-                              const Icon(Icons.favorite_border)
-                            else
-                              const Icon(Icons.add),
-                            if (showReactionsCount &&
-                                (appearNote.reactionCount ?? 0) > 0)
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 2.0,
-                                ),
-                                child: Text(
-                                  NumberFormat()
-                                      .format(appearNote.reactionCount),
-                                  style: style,
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
+                    _AddReactionButton(
+                      account: account,
+                      note: appearNote,
+                      style: style,
                     )
                   else
-                    GestureDetector(
-                      onLongPress: appearNote.reactionAcceptance ==
-                              ReactionAcceptance.likeOnly
-                          ? () {
-                              if (appearNote.id.isEmpty) return;
-                              showModalBottomSheet<void>(
-                                context: context,
-                                builder: (context) => ReactionUsersSheet(
-                                  account: account,
-                                  noteId: appearNote.id,
-                                  reaction: '❤',
-                                ),
-                                isScrollControlled: true,
-                              );
-                            }
-                          : null,
-                      child: IconButton(
-                        tooltip: appearNote.reactionAcceptance !=
-                                ReactionAcceptance.likeOnly
-                            ? t.misskey.reaction
-                            : null,
-                        onPressed: () async {
-                          if (appearNote.id.isEmpty) return;
-                          final confirmed = await confirm(
-                            context,
-                            message: t.misskey.cancelReactionConfirm,
-                          );
-                          if (!confirmed) return;
-                          if (!context.mounted) return;
-                          await futureWithDialog(
-                            context,
-                            ref
-                                .read(notesNotifierProvider(account).notifier)
-                                .unreact(appearNote.id),
-                            overlay: false,
-                          );
-                        },
-                        icon: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (appearNote.reactionAcceptance ==
-                                ReactionAcceptance.likeOnly)
-                              const Icon(
-                                Icons.favorite,
-                                color: eventReactionHeart,
-                              )
-                            else
-                              Icon(
-                                Icons.remove,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
-                            if ((appearNote.reactionAcceptance ==
-                                        ReactionAcceptance.likeOnly ||
-                                    showReactionsCount) &&
-                                (appearNote.reactionCount ?? 0) > 0)
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 2.0,
-                                ),
-                                child: Text(
-                                  NumberFormat()
-                                      .format(appearNote.reactionCount),
-                                  style: style,
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
+                    _RemoveReactionButton(
+                      account: account,
+                      note: appearNote,
+                      style: style,
                     ),
                   if (showClipButton)
-                    IconButton(
-                      tooltip: t.misskey.clip,
-                      onPressed: !account.isGuest
-                          ? () {
-                              if (appearNote.id.isEmpty) return;
-                              showDialog<void>(
-                                context: context,
-                                builder: (context) => ClipDialog(
-                                  account: account,
-                                  noteId: appearNote.id,
-                                ),
-                              );
-                            }
-                          : null,
-                      icon: const Icon(Icons.attach_file),
+                    _ClipButton(
+                      account: account,
+                      note: appearNote,
                     ),
                   if (showTranslateButton)
-                    IconButton(
-                      tooltip: t.misskey.translate,
-                      onPressed: () {
-                        if ((i?.policies?.canUseTranslator ?? false) &&
-                            (meta?.translatorAvailable ?? false)) {
-                          showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => TranslatedNoteSheet(
-                              account: account,
-                              note: appearNote,
-                            ),
-                            clipBehavior: Clip.antiAlias,
-                            scrollControlDisabledMaxHeightRatio: 0.8,
-                          );
-                        } else {
-                          launchUrl(
-                            ref,
-                            Uri.https(
-                              'translate.google.com',
-                              '',
-                              {
-                                'text': [appearNote.cw, appearNote.text]
-                                    .nonNulls
-                                    .join('\n'),
-                              },
-                            ),
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.translate),
+                    _TranslateButton(
+                      account: account,
+                      note: appearNote,
                     ),
-                  IconButton(
-                    tooltip: t.misskey.menu,
-                    onPressed: () {
-                      if (note.id.isEmpty) return;
-                      showNoteSheet(
-                        context: context,
-                        account: account,
-                        noteId: noteId,
-                        disableHeader: disableHeader,
-                        focusPostForm: focusPostForm,
-                      );
-                    },
-                    icon: const Icon(Icons.more_horiz),
+                  _MenuButton(
+                    account: account,
+                    note: appearNote,
+                    disableHeader: disableHeader,
+                    focusPostForm: focusPostForm,
                   ),
                 ],
               ),
@@ -572,6 +180,553 @@ class NoteFooter extends HookConsumerWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class _ReplyButton extends ConsumerWidget {
+  const _ReplyButton({
+    required this.account,
+    required this.note,
+    this.focusPostForm,
+    this.style,
+  });
+
+  final Account account;
+  final Note note;
+  final void Function()? focusPostForm;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IconButton(
+      tooltip: t.misskey.reply,
+      onPressed: !account.isGuest
+          ? () {
+              if (note.id.isEmpty) return;
+              ref.read(postNotifierProvider(account).notifier).setReply(note);
+              if (focusPostForm case final focusPostForm?) {
+                focusPostForm();
+              } else {
+                context.push('/$account/post');
+              }
+            }
+          : null,
+      icon: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.reply),
+          if (note.repliesCount > 0)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 2.0),
+              child: Text(
+                NumberFormat().format(note.repliesCount),
+                style: style,
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}
+
+class _RenoteButton extends HookConsumerWidget {
+  const _RenoteButton({
+    required this.account,
+    required this.note,
+    this.myRenotingNoteId,
+    this.showQuoteButton = false,
+    this.focusPostForm,
+    this.style,
+  });
+
+  final Account account;
+  final Note note;
+  final String? myRenotingNoteId;
+  final bool showQuoteButton;
+  final void Function()? focusPostForm;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final myRenotingNoteId = useState(this.myRenotingNoteId);
+
+    return GestureDetector(
+      onLongPress: note.renoteCount > 0
+          ? () {
+              if (note.id.isEmpty) return;
+              HapticFeedback.lightImpact();
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => RenoteUsersSheet(
+                  account: account,
+                  noteId: note.id,
+                ),
+                isScrollControlled: true,
+              );
+            }
+          : null,
+      child: IconButton(
+        tooltip: note.renoteCount <= 0 ? t.misskey.renote : null,
+        onPressed: !account.isGuest
+            ? () async {
+                if (note.id.isEmpty) return;
+                if (myRenotingNoteId.value case final noteId?) {
+                  final unrenote = await showModalBottomSheet<bool>(
+                    context: context,
+                    builder: (context) => ListView(
+                      shrinkWrap: true,
+                      children: [
+                        ListTile(
+                          leading: const Icon(Icons.repeat_rounded),
+                          title: Text(t.misskey.renote),
+                          onTap: () => context.pop(false),
+                        ),
+                        ListTile(
+                          leading: const Icon(Icons.delete),
+                          title: Text(t.misskey.unrenote),
+                          onTap: () => context.pop(true),
+                          iconColor: Theme.of(context).colorScheme.error,
+                          textColor: Theme.of(context).colorScheme.error,
+                        ),
+                      ],
+                    ),
+                  );
+                  if (!context.mounted) return;
+                  if (unrenote == null) return;
+                  if (unrenote) {
+                    final result = await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .notes
+                          .delete(NotesDeleteRequest(noteId: noteId))
+                          .then((_) => true),
+                    );
+                    if (!context.mounted) return;
+                    if (result != null) {
+                      ref
+                          .read(notesNotifierProvider(account).notifier)
+                          .remove(noteId);
+                      myRenotingNoteId.value = null;
+                    }
+                    return;
+                  }
+                }
+                if (showQuoteButton) {
+                  final result = await showModalBottomSheet<Note>(
+                    context: context,
+                    builder: (context) => RenoteSheet(
+                      account: account,
+                      note: note,
+                    ),
+                    clipBehavior: Clip.hardEdge,
+                  );
+                  if (result != null) {
+                    myRenotingNoteId.value = result.id;
+                  }
+                } else {
+                  ref
+                      .read(postNotifierProvider(account).notifier)
+                      .setRenote(note);
+                  if (focusPostForm case final focusPostForm?) {
+                    focusPostForm();
+                  } else {
+                    await context.push('/$account/post');
+                  }
+                }
+              }
+            : null,
+        icon: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.repeat_rounded,
+              color: myRenotingNoteId.value != null
+                  ? Theme.of(context).colorScheme.primary
+                  : null,
+            ),
+            if (note.renoteCount > 0)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: Text(
+                  NumberFormat().format(note.renoteCount),
+                  style: style?.apply(
+                    color: myRenotingNoteId.value != null
+                        ? Theme.of(context).colorScheme.primary.withOpacity(0.6)
+                        : null,
+                  ),
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _QuoteButton extends ConsumerWidget {
+  const _QuoteButton({
+    required this.account,
+    required this.note,
+    this.focusPostForm,
+  });
+
+  final Account account;
+  final Note note;
+  final void Function()? focusPostForm;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IconButton(
+      tooltip: t.misskey.quote,
+      onPressed: !account.isGuest
+          ? () {
+              if (note.id.isEmpty) return;
+              ref.read(postNotifierProvider(account).notifier).setRenote(note);
+              if (focusPostForm case final focusPostForm?) {
+                focusPostForm();
+              } else {
+                context.push('/$account/post');
+              }
+            }
+          : null,
+      icon: const Icon(Icons.format_quote_outlined),
+    );
+  }
+}
+
+class _LikeButton extends ConsumerWidget {
+  const _LikeButton({
+    required this.account,
+    required this.note,
+  });
+
+  final Account account;
+  final Note note;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IconButton(
+      tooltip: t.misskey.like,
+      onPressed: !account.isGuest
+          ? () async {
+              if (note.id.isEmpty) return;
+              final defaultReaction = ref
+                  .read(accountSettingsNotifierProvider(account))
+                  .defaultReaction;
+              final emoji = defaultReaction ?? '❤';
+              if (ref
+                  .read(generalSettingsNotifierProvider)
+                  .confirmBeforeReact) {
+                final confirmed = await confirmReaction(
+                  context,
+                  account: account,
+                  emoji: emoji,
+                  note: note,
+                );
+                if (!confirmed) return;
+              }
+              if (!context.mounted) return;
+              await futureWithDialog(
+                context,
+                ref
+                    .read(notesNotifierProvider(account).notifier)
+                    .react(note.id, emoji),
+                overlay: false,
+              );
+            }
+          : null,
+      icon: const Icon(Icons.favorite_border),
+    );
+  }
+}
+
+class _AddReactionButton extends ConsumerWidget {
+  const _AddReactionButton({
+    required this.account,
+    required this.note,
+    this.style,
+  });
+
+  final Account account;
+  final Note note;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showReactionsCount = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showReactionsCount),
+    );
+
+    return GestureDetector(
+      onLongPress: (note.reactionCount ?? 0) > 0
+          ? () => showModalBottomSheet<void>(
+                context: context,
+                builder: (context) => ReactionUsersSheet(
+                  account: account,
+                  noteId: note.id,
+                  initialReaction: note.reactions.entries.fold<(String?, int)>(
+                    (null, 0),
+                    (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc,
+                  ).$1,
+                ),
+                clipBehavior: Clip.antiAlias,
+                isScrollControlled: true,
+              )
+          : null,
+      child: IconButton(
+        tooltip: (note.reactionCount ?? 0) <= 0
+            ? note.reactionAcceptance == ReactionAcceptance.likeOnly
+                ? t.misskey.like
+                : t.misskey.reaction
+            : null,
+        onPressed: !account.isGuest
+            ? () async {
+                if (note.id.isEmpty) return;
+                final emoji =
+                    note.reactionAcceptance == ReactionAcceptance.likeOnly
+                        ? '❤'
+                        : await pickEmoji(
+                            ref,
+                            account,
+                            reaction: true,
+                            targetNote: note,
+                          );
+                if (!context.mounted) return;
+                if (emoji != null) {
+                  if (ref
+                      .read(generalSettingsNotifierProvider)
+                      .confirmBeforeReact) {
+                    final confirmed = await confirmReaction(
+                      context,
+                      account: account,
+                      emoji: emoji,
+                      note: note,
+                    );
+                    if (!confirmed) return;
+                  }
+                  if (!context.mounted) return;
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .react(note.id, emoji),
+                    overlay: false,
+                  );
+                }
+              }
+            : null,
+        icon: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (note.reactionAcceptance == ReactionAcceptance.likeOnly)
+              const Icon(Icons.favorite_border)
+            else
+              const Icon(Icons.add),
+            if (showReactionsCount && (note.reactionCount ?? 0) > 0)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                child: Text(
+                  NumberFormat().format(note.reactionCount),
+                  style: style,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _RemoveReactionButton extends ConsumerWidget {
+  const _RemoveReactionButton({
+    required this.account,
+    required this.note,
+    this.style,
+  });
+
+  final Account account;
+  final Note note;
+  final TextStyle? style;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showReactionsCount = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showReactionsCount),
+    );
+
+    return GestureDetector(
+      onLongPress: () {
+        if (note.id.isEmpty) return;
+        showModalBottomSheet<void>(
+          context: context,
+          builder: (context) => ReactionUsersSheet(
+            account: account,
+            noteId: note.id,
+            initialReaction: note.reactions.entries.fold<(String?, int)>(
+              (null, 0),
+              (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc,
+            ).$1,
+          ),
+          clipBehavior: Clip.antiAlias,
+          isScrollControlled: true,
+        );
+      },
+      child: IconButton(
+        onPressed: () async {
+          if (note.id.isEmpty) return;
+          final confirmed = await confirm(
+            context,
+            message: t.misskey.cancelReactionConfirm,
+          );
+          if (!confirmed) return;
+          if (!context.mounted) return;
+          await futureWithDialog(
+            context,
+            ref.read(notesNotifierProvider(account).notifier).unreact(note.id),
+            overlay: false,
+          );
+        },
+        icon: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (note.reactionAcceptance == ReactionAcceptance.likeOnly)
+              const Icon(
+                Icons.favorite,
+                color: eventReactionHeart,
+              )
+            else
+              Icon(
+                Icons.remove,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            if ((note.reactionAcceptance == ReactionAcceptance.likeOnly ||
+                    showReactionsCount) &&
+                (note.reactionCount ?? 0) > 0)
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 2.0,
+                ),
+                child: Text(
+                  NumberFormat().format(note.reactionCount),
+                  style: style,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ClipButton extends ConsumerWidget {
+  const _ClipButton({
+    required this.account,
+    required this.note,
+  });
+
+  final Account account;
+  final Note note;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IconButton(
+      tooltip: t.misskey.clip,
+      onPressed: !account.isGuest
+          ? () {
+              if (note.id.isEmpty) return;
+              showDialog<void>(
+                context: context,
+                builder: (context) => ClipDialog(
+                  account: account,
+                  noteId: note.id,
+                ),
+              );
+            }
+          : null,
+      icon: const Icon(Icons.attach_file),
+    );
+  }
+}
+
+class _TranslateButton extends ConsumerWidget {
+  const _TranslateButton({
+    required this.account,
+    required this.note,
+  });
+
+  final Account account;
+  final Note note;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
+
+    return IconButton(
+      tooltip: t.misskey.translate,
+      onPressed: () {
+        if (note.id.isEmpty) return;
+        if ((i?.policies?.canUseTranslator ?? false) &&
+            (meta?.translatorAvailable ?? false)) {
+          showModalBottomSheet<void>(
+            context: context,
+            builder: (context) => TranslatedNoteSheet(
+              account: account,
+              note: note,
+            ),
+            clipBehavior: Clip.antiAlias,
+            scrollControlDisabledMaxHeightRatio: 0.8,
+          );
+        } else {
+          launchUrl(
+            ref,
+            Uri.https(
+              'translate.google.com',
+              '',
+              {
+                'text': [note.cw, note.text].nonNulls.join('\n'),
+              },
+            ),
+          );
+        }
+      },
+      icon: const Icon(Icons.translate),
+    );
+  }
+}
+
+class _MenuButton extends ConsumerWidget {
+  const _MenuButton({
+    required this.account,
+    required this.note,
+    this.disableHeader = false,
+    this.focusPostForm,
+  });
+
+  final Account account;
+  final Note note;
+  final bool disableHeader;
+  final void Function()? focusPostForm;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return IconButton(
+      tooltip: t.misskey.menu,
+      onPressed: () {
+        if (note.id.isEmpty) return;
+        showNoteSheet(
+          context: context,
+          account: account,
+          noteId: note.id,
+          disableHeader: disableHeader,
+          focusPostForm: focusPostForm,
+        );
+      },
+      icon: const Icon(Icons.more_horiz),
     );
   }
 }

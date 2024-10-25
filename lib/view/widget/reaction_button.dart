@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -136,8 +136,9 @@ class ReactionButton extends ConsumerWidget {
                 builder: (context) => ReactionUsersSheet(
                   account: account,
                   noteId: note.id,
-                  reaction: emoji,
+                  initialReaction: emoji,
                 ),
+                clipBehavior: Clip.antiAlias,
                 isScrollControlled: true,
               )
           : null,
