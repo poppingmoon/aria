@@ -865,8 +865,7 @@ void main() {
       expect(find.byType(ReactionUsersSheet), findsNothing);
     });
 
-    testWidgets(
-        'should not show reacted users on long press if reacted and not like-only',
+    testWidgets('should show reacted users on long press if reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
@@ -881,27 +880,6 @@ void main() {
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       await tester.longPress(find.byIcon(Icons.add));
-      await tester.pumpAndSettle();
-      expect(find.byType(ReactionUsersSheet), findsNothing);
-    });
-
-    testWidgets(
-        'should show reacted users on long press if reacted and like-only',
-        (tester) async {
-      const account = Account(host: 'misskey.tld', username: 'testuser');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        reactionCount: 1,
-        reactionAcceptance: ReactionAcceptance.likeOnly,
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
-      await tester.longPress(find.byIcon(Icons.favorite_border));
       await tester.pumpAndSettle();
       expect(find.byType(ReactionUsersSheet), findsOne);
     });
@@ -1022,8 +1000,7 @@ void main() {
       expect(find.text(t.misskey.cancelReactionConfirm), findsOne);
     });
 
-    testWidgets(
-        'should not show reacted users on long press if reacted and not like-only',
+    testWidgets('should show reacted users on long press if reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
@@ -1039,28 +1016,6 @@ void main() {
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       await tester.longPress(find.byIcon(Icons.remove));
-      await tester.pumpAndSettle();
-      expect(find.byType(ReactionUsersSheet), findsNothing);
-    });
-
-    testWidgets(
-        'should show reacted users on long press if reacted and like-only',
-        (tester) async {
-      const account = Account(host: 'misskey.tld', username: 'testuser');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        reactionCount: 1,
-        myReaction: '❤',
-        reactionAcceptance: ReactionAcceptance.likeOnly,
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
-      await tester.longPress(find.byIcon(Icons.favorite));
       await tester.pumpAndSettle();
       expect(find.byType(ReactionUsersSheet), findsOne);
     });

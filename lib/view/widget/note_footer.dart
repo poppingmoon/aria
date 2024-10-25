@@ -461,25 +461,27 @@ class _AddReactionButton extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onLongPress: note.reactionAcceptance == ReactionAcceptance.likeOnly &&
-              (note.reactionCount ?? 0) > 0
+      onLongPress: (note.reactionCount ?? 0) > 0
           ? () => showModalBottomSheet<void>(
                 context: context,
                 builder: (context) => ReactionUsersSheet(
                   account: account,
                   noteId: note.id,
-                  initialReaction: '❤',
+                  initialReaction: note.reactions.entries.fold<(String?, int)>(
+                    (null, 0),
+                    (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc,
+                  ).$1,
                 ),
                 clipBehavior: Clip.antiAlias,
                 isScrollControlled: true,
               )
           : null,
       child: IconButton(
-        tooltip: note.reactionAcceptance != ReactionAcceptance.likeOnly
-            ? t.misskey.reaction
-            : (note.reactionCount ?? 0) <= 0
+        tooltip: (note.reactionCount ?? 0) <= 0
+            ? note.reactionAcceptance == ReactionAcceptance.likeOnly
                 ? t.misskey.like
-                : null,
+                : t.misskey.reaction
+            : null,
         onPressed: !account.isGuest
             ? () async {
                 if (note.id.isEmpty) return;
@@ -557,25 +559,23 @@ class _RemoveReactionButton extends ConsumerWidget {
     );
 
     return GestureDetector(
-      onLongPress: note.reactionAcceptance == ReactionAcceptance.likeOnly
-          ? () {
-              if (note.id.isEmpty) return;
-              showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => ReactionUsersSheet(
-                  account: account,
-                  noteId: note.id,
-                  initialReaction: '❤',
-                ),
-                clipBehavior: Clip.antiAlias,
-                isScrollControlled: true,
-              );
-            }
-          : null,
+      onLongPress: () {
+        if (note.id.isEmpty) return;
+        showModalBottomSheet<void>(
+          context: context,
+          builder: (context) => ReactionUsersSheet(
+            account: account,
+            noteId: note.id,
+            initialReaction: note.reactions.entries.fold<(String?, int)>(
+              (null, 0),
+              (acc, e) => acc.$2 < e.value ? (e.key, e.value) : acc,
+            ).$1,
+          ),
+          clipBehavior: Clip.antiAlias,
+          isScrollControlled: true,
+        );
+      },
       child: IconButton(
-        tooltip: note.reactionAcceptance != ReactionAcceptance.likeOnly
-            ? t.misskey.reaction
-            : null,
         onPressed: () async {
           if (note.id.isEmpty) return;
           final confirmed = await confirm(
