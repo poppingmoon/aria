@@ -774,10 +774,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_local_notifications
-      sha256: "49eeef364fddb71515bc78d5a8c51435a68bccd6e4d68e25a942c5e47761ae71"
+      sha256: "674173fd3c9eda9d4c8528da2ce0ea69f161577495a9cc835a2a4ecd7eadeb35"
       url: "https://pub.dev"
     source: hosted
-    version: "17.2.3"
+    version: "17.2.4"
   flutter_local_notifications_linux:
     dependency: transitive
     description:
@@ -827,10 +827,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_rust_bridge
-      sha256: "0ad5079de35d317650fec59b26cb4d0c116ebc2ce703a29f9367513b8a91c287"
+      sha256: "5fe868d3cb8cbc4d83091748552e03f00ccfa41b8e44691bc382611f831d5f8b"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0"
+    version: "2.5.1"
   flutter_secure_storage:
     dependency: "direct main"
     description:
@@ -1330,10 +1330,10 @@ packages:
     dependency: "direct main"
     description:
       name: multi_split_view
-      sha256: "30548c5e4cc6f24d5d4ca784dc5dff80d599ef1f704b1565819eb88a74f0eb62"
+      sha256: "99c02f128e7423818d13b8f2e01e3027e953b35508019dcee214791bd0525db5"
       url: "https://pub.dev"
     source: hosted
-    version: "3.5.0"
+    version: "3.6.0"
   nested:
     dependency: transitive
     description:
@@ -1402,10 +1402,10 @@ packages:
     dependency: transitive
     description:
       name: path_parsing
-      sha256: e3e67b1629e6f7e8100b367d3db6ba6af4b1f0bb80f64db18ef1fbabd2fa9ccf
+      sha256: "45f7d6bba1128761de5540f39d5ca000ea8a1f22f06b76b61094a60a2997bd0e"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.1"
+    version: "1.0.2"
   path_provider:
     dependency: transitive
     description:
@@ -1625,18 +1625,18 @@ packages:
     dependency: "direct main"
     description:
       name: searchfield
-      sha256: "6ae29d79f9aa648f59a50ed8616704e6a2118b228fda5ad3af3520d8208b41d4"
+      sha256: "837721576ca1de1ce40c9841760e40cd7452d3068ea2a22a7b25d06133a7d989"
       url: "https://pub.dev"
     source: hosted
-    version: "1.1.6"
+    version: "1.1.7"
   share_plus:
     dependency: "direct main"
     description:
       name: share_plus
-      sha256: "334fcdf0ef9c0df0e3b428faebcac9568f35c747d59831474b2fc56e156d244e"
+      sha256: "3af2cda1752e5c24f2fc04b6083b40f013ffe84fb90472f30c6499a9213d5442"
       url: "https://pub.dev"
     source: hosted
-    version: "10.1.0"
+    version: "10.1.1"
   share_plus_platform_interface:
     dependency: transitive
     description:
@@ -1726,26 +1726,26 @@ packages:
     dependency: "direct main"
     description:
       name: slang
-      sha256: f1da602c879fe7f2ea399faff1003a540c6adb745b5f603a9ab0c7275cd0b428
+      sha256: b04db2dbaf927b28600a2f8a272a3bf2ae309556dcc5d6beb02d66af0be39e4c
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "4.1.0"
   slang_build_runner:
     dependency: "direct dev"
     description:
       name: slang_build_runner
-      sha256: "9120c69f934895ba3d743e2c01f05d33103e85a944fc453d45306d85f40f9f69"
+      sha256: "6338653769ab088ad222e84b1f382fffb867a9a3ead802960aa4d0ab45a62f5f"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "4.1.0"
   slang_flutter:
     dependency: "direct main"
     description:
       name: slang_flutter
-      sha256: cc5d079107365e04842419d24bda6e22d1576331a5ac877734efd3b9e926860d
+      sha256: "59988f37bb8b50d96ee46832a8a389036c0da26c04b1b1d4aa6690c00f70eccf"
       url: "https://pub.dev"
     source: hosted
-    version: "4.0.0"
+    version: "4.1.0"
   source_gen:
     dependency: transitive
     description:
@@ -1992,10 +1992,10 @@ packages:
     dependency: transitive
     description:
       name: url_launcher_android
-      sha256: "8fc3bae0b68c02c47c5c86fa8bfa74471d42687b0eded01b78de87872db745e2"
+      sha256: "0dea215895a4d254401730ca0ba8204b29109a34a99fb06ae559a2b60988d2de"
       url: "https://pub.dev"
     source: hosted
-    version: "6.3.12"
+    version: "6.3.13"
   url_launcher_ios:
     dependency: transitive
     description:
@@ -2096,10 +2096,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_android
-      sha256: "2800d68d6d5b4c22da62453568ed68e63c35bea524d4fa42062e53d6bb591433"
+      sha256: "391e092ba4abe2f93b3e625bd6b6a6ec7d7414279462c1c0ee42b5ab8d0a0898"
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.13"
+    version: "2.7.16"
   video_player_avfoundation:
     dependency: transitive
     description:
@@ -2120,10 +2120,10 @@ packages:
     dependency: transitive
     description:
       name: video_player_web
-      sha256: "6dcdd298136523eaf7dfc31abaf0dfba9aa8a8dbc96670e87e9d42b6f2caf774"
+      sha256: "881b375a934d8ebf868c7fb1423b2bfaa393a0a265fa3f733079a86536064a10"
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.2"
+    version: "2.3.3"
   vm_service:
     dependency: transitive
     description:
