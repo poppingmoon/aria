@@ -153,6 +153,10 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '외부 브라우저에서 열기';
 	@override String get openInInternalBrowser => '내부 브라우저에서 열기';
 	@override String get openMenu => '메뉴 열기';
+	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		scratchpad,
+		const TextSpan(text: ' 를 브라우저에서 열고, 다음 코드를 클릭한 다음 실행하세요.'),
+	]);
 	@override String get openSensitiveMediaOnDoubleTap => '더블 탭하여 민감한 미디어 열기';
 	@override String get parameters => '매개변수';
 	@override String get paste => '붙여넣기';
@@ -161,9 +165,11 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 		url,
 		const TextSpan(text: '에서 미스키 웹용으로 고정된 이모지를 복사할 수 있습니다.'),
 	]);
+	@override String get pasteResponseBelow => '답변을 아래 복사하세요';
 	@override String get pinToEmojiPicker => '이모지 선택기에 고정';
 	@override String get playAudio => '소리 재생';
 	@override String get playVideo => '동영상 재생';
+	@override String get pleaseCopyResponse => '이 답변을 복사하세요';
 	@override String get postConfirm => '이 노트를 게시하시겠습니까?';
 	@override String get reactionConfirm => '리액션을 추가하시겠습니까?';
 	@override String get renoteConfirm => '이 노트를 리노트하시겠습니까?';
@@ -205,6 +211,7 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 	@override String get showStackTrace => '스택 트레이스 표시';
 	@override String get showSubNoteFooter => '서브노트 내 버튼 표시';
 	@override String get showSubNoteReactionsViewer => '서브노트 내 리액션 뷰어 표시';
+	@override String get showTabHeaderInOneLine => '탭 정보를 한 줄로 표시';
 	@override String get showTimelineLastViewedAt => '타임라인 마지막으로 본 날짜 표시';
 	@override String get showTimelineTabBarAtBottom => '타임라인 탭 바를 하단에 표시';
 	@override String get showTranslateButtonInNoteFooter => '노트 동작에 번역을 추가';

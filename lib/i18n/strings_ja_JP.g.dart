@@ -89,6 +89,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get emojiPickerUseDialog => '絵文字ピッカーをダイアログにする';
 	@override String get enableEmojiFadeIn => 'カスタム絵文字のフェードインを有効にする';
 	@override String get enableFederation => '連合ありにする';
+	@override String get enablePredictiveBack => '予測型「戻る」アニメーションを有効にする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get expandNote => 'ノートを開く';
 	@override String get extraMentionsWarning => '返信元のノートには含まれていないメンションがあります';
@@ -126,6 +127,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
 	@override String get moved => '移動しました';
 	@override String get muted => 'ミュート中';
+	@override String get mutedEmojis => 'ミュートした絵文字';
 	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('ja'))(n,
 		one: '${n}個のファイル',
 		other: '${n}個のファイル',
