@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:collection/collection.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import 'api/i_notifier_provider.dart';
 import 'notes_notifier_provider.dart';
 import 'push_notification_notifier_provider.dart';
 import 'user_ids_notifier_provider.dart';
@@ -42,16 +43,13 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
       return null;
     }
 
-    try {
-      if (notification.body?.note?.id case final noteId?) {
-        unawaited(
-          ref.read(notesNotifierProvider(account).notifier).show(noteId),
-        );
-        return '/$account/notes/$noteId';
-      } else if (notification.body?.userId case final userId?) {
-        return '/$account/users/$userId';
-      }
-    } catch (_) {}
+    ref.read(iNotifierProvider(account).notifier).readNotifications().ignore();
+    if (notification.body?.note?.id case final noteId?) {
+      ref.read(notesNotifierProvider(account).notifier).show(noteId).ignore();
+      return '/$account/notes/$noteId';
+    } else if (notification.body?.userId case final userId?) {
+      return '/$account/users/$userId';
+    }
     return '/$account/notifications';
   }
 }
