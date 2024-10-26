@@ -64,9 +64,11 @@ class TabsPage extends HookConsumerWidget {
                 }
               },
               itemCount: tabs.length + 2,
-              onReorder: (oldIndex, newIndex) => ref
-                  .read(timelineTabsNotifierProvider.notifier)
-                  .reorder(oldIndex, min(newIndex, tabs.length)),
+              onReorder: (oldIndex, newIndex) =>
+                  ref.read(timelineTabsNotifierProvider.notifier).reorder(
+                        max(0, oldIndex - 1),
+                        min(newIndex - 1, tabs.length),
+                      ),
               proxyDecorator: (child, _, animation) => AnimatedBuilder(
                 animation: animation,
                 builder: (context, child) {
