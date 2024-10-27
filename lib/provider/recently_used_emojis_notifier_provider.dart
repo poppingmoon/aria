@@ -25,7 +25,7 @@ class RecentlyUsedEmojisNotifier extends _$RecentlyUsedEmojisNotifier {
     await _save({emoji, ...state}.take(32).toList());
   }
 
-  Future<void> clear() async {
+  Future<void> reset() async {
     await _save([]);
   }
 }

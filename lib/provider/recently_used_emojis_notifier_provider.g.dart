@@ -7,7 +7,7 @@ part of 'recently_used_emojis_notifier_provider.dart';
 // **************************************************************************
 
 String _$recentlyUsedEmojisNotifierHash() =>
-    r'fd607c6cbcc176accc86de3cb92d678e38ea1803';
+    r'7503fbc4429196d128494af9286b2aa5c26c4b90';
 
 /// Copied from Dart SDK
 class _SystemHash {

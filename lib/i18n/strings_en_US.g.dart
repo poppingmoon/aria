@@ -181,6 +181,7 @@ class TranslationsAriaEnUs {
 	String get pleaseCopyResponse => 'Please copy this response';
 	String get postConfirm => 'Are you sure you want to post this note?';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
+	String get recentlyUsedEmojis => 'Recently used emojis';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
 	String get renoteToChannel => 'Renote to a channel';
 	TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
