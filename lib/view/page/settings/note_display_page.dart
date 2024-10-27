@@ -338,6 +338,13 @@ class NoteDisplayPage extends HookConsumerWidget {
                         .read(generalSettingsNotifierProvider.notifier)
                         .setMergeReactionsByName(value),
                   ),
+                  SwitchListTile(
+                    title: Text(t.aria.alwaysShowAllReactions),
+                    value: settings.alwaysShowAllReactions,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setAlwaysShowAllReactions(value),
+                  ),
                   ListTile(
                     title: Text(t.misskey.emojiStyle),
                     subtitle: Text(

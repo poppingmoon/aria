@@ -167,6 +167,10 @@ class NoteDetailedWidget extends HookConsumerWidget {
         },
       ),
     );
+    final showAllReactions = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysShowAllReactions),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
@@ -545,6 +549,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                       ReactionsViewer(
                         account: account,
                         noteId: appearNote.id,
+                        showAllReactions: showAllReactions,
                       ),
                     NoteFooter(
                       account: account,

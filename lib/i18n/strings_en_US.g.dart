@@ -57,6 +57,7 @@ class TranslationsAriaEnUs {
 	String get alwaysExpandCw => 'Always expand content warning';
 	String get alwaysExpandLongNote => 'Always expand long note';
 	String get alwaysExpandMediaInSubNote => 'Always expand media in sub note';
+	String get alwaysShowAllReactions => 'Always show all reactions';
 	String get alwaysShowTabHeader => 'Always show tab info';
 	String get authenticate => 'Authenticate';
 	String get authenticated => 'Authenticated';

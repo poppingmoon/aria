@@ -47,6 +47,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       alwaysExpandMediaInSubNote:
           json['alwaysExpandMediaInSubNote'] as bool? ?? false,
       mergeReactionsByName: json['mergeReactionsByName'] as bool? ?? false,
+      alwaysShowAllReactions: json['alwaysShowAllReactions'] as bool? ?? false,
       mediaListWithOneImageAppearance: $enumDecodeNullable(
           _$MediaListWithOneImageAppearanceEnumMap,
           json['mediaListWithOneImageAppearance']),
@@ -177,6 +178,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['alwaysExpandLongNote'] = instance.alwaysExpandLongNote;
   val['alwaysExpandMediaInSubNote'] = instance.alwaysExpandMediaInSubNote;
   val['mergeReactionsByName'] = instance.mergeReactionsByName;
+  val['alwaysShowAllReactions'] = instance.alwaysShowAllReactions;
   writeNotNull(
       'mediaListWithOneImageAppearance',
       _$MediaListWithOneImageAppearanceEnumMap[
