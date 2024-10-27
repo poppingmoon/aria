@@ -61,6 +61,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool alwaysExpandCw,
     @Default(false) bool alwaysExpandLongNote,
     @Default(false) bool alwaysExpandMediaInSubNote,
+    @Default(false) bool mergeReactionsByName,
     MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,
     @Default(BoxFit.contain) BoxFit thumbnailBoxFit,
     @Default(EmojiStyle.twemoji) EmojiStyle emojiStyle,

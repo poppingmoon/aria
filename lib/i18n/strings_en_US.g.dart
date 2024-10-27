@@ -129,6 +129,7 @@ class TranslationsAriaEnUs {
 	String get margin => 'Margin';
 	String get media => 'Media';
 	String get mentionToRemoteWarning => 'This note includes mentions to remote users';
+	String get mergeReactionsByName => 'Merge reactions with the same name';
 	String get moved => 'Moved';
 	String get muted => 'Muted';
 	String get mutedEmojis => 'Muted emojis';
