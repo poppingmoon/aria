@@ -57,6 +57,7 @@ class TranslationsAriaEnUs {
 	String get alwaysExpandCw => 'Always expand content warning';
 	String get alwaysExpandLongNote => 'Always expand long note';
 	String get alwaysExpandMediaInSubNote => 'Always expand media in sub note';
+	String get alwaysShowAllReactions => 'Always show all reactions';
 	String get alwaysShowTabHeader => 'Always show tab info';
 	String get authenticate => 'Authenticate';
 	String get authenticated => 'Authenticated';
@@ -129,6 +130,7 @@ class TranslationsAriaEnUs {
 	String get margin => 'Margin';
 	String get media => 'Media';
 	String get mentionToRemoteWarning => 'This note includes mentions to remote users';
+	String get mergeReactionsByName => 'Merge reactions with the same name';
 	String get moved => 'Moved';
 	String get muted => 'Muted';
 	String get mutedEmojis => 'Muted emojis';

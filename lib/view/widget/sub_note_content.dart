@@ -72,6 +72,10 @@ class SubNoteContent extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.alwaysExpandMediaInSubNote),
     );
+    final showAllReactions = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysShowAllReactions),
+    );
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final isCollapsed = useState(isLong);
@@ -232,6 +236,7 @@ class SubNoteContent extends HookConsumerWidget {
           ReactionsViewer(
             account: account,
             noteId: noteId,
+            showAllReactions: showAllReactions,
             note: this.note,
           ),
         ],

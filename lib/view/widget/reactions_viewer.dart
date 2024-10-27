@@ -8,6 +8,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/note_provider.dart';
+import '../../util/decode_custom_emoji.dart';
 import 'reaction_button.dart';
 import 'reaction_effect.dart';
 
@@ -24,6 +25,45 @@ class ReactionsViewer extends HookConsumerWidget {
   final String noteId;
   final bool showAllReactions;
   final Note? note;
+
+  Map<String, int> _mergeReactions(WidgetRef ref, Map<String, int> reactions) {
+    final groups = reactions.entries
+        .groupListsBy((reaction) => reaction.key.startsWith(':'));
+    final customEmojiReactions = groups[true]
+        ?.map((reaction) {
+          final (name, host) = decodeCustomEmoji(reaction.key);
+          return (
+            emoji: reaction.key,
+            name: name,
+            host: host,
+            count: reaction.value,
+          );
+        })
+        .groupFoldBy<String?,
+            ({String emoji, String? host, int count, int totalCount})>(
+          (reaction) => reaction.name,
+          (acc, reaction) => (acc == null ||
+                  reaction.host == null ||
+                  (acc.host != null && acc.count < reaction.count))
+              ? (
+                  emoji: reaction.emoji,
+                  host: reaction.host,
+                  count: reaction.count,
+                  totalCount: (acc?.totalCount ?? 0) + reaction.count,
+                )
+              : (
+                  emoji: acc.emoji,
+                  host: acc.host,
+                  count: acc.count,
+                  totalCount: acc.totalCount + reaction.count,
+                ),
+        )
+        .map((key, value) => MapEntry(value.emoji, value.totalCount));
+    return Map.fromEntries(
+      [...?groups[false], ...?customEmojiReactions?.entries]
+          .sortedBy<num>((e) => -e.value),
+    );
+  }
 
   void _showReactionEffect(
     BuildContext context,
@@ -73,15 +113,31 @@ class ReactionsViewer extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.reduceAnimation),
     );
-    final reactions = useState(
-      Map.fromEntries(note.reactions.entries.sortedBy<num>((e) => -e.value)),
+    final shouldMergeReactions = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.mergeReactionsByName),
     );
+    final initialReactions = useMemoized(
+      () {
+        if (shouldMergeReactions) {
+          return _mergeReactions(ref, note.reactions);
+        } else {
+          return Map.fromEntries(
+            note.reactions.entries.sortedBy<num>((e) => -e.value),
+          );
+        }
+      },
+      [shouldMergeReactions],
+    );
+    final reactions = useState(initialReactions);
     final keys = useState(
-      note.reactions.map((key, value) => MapEntry(key, GlobalKey())),
+      initialReactions.map((key, value) => MapEntry(key, GlobalKey())),
     );
     useEffect(
       () {
-        final newSource = Map.of(note.reactions);
+        final newSource = shouldMergeReactions
+            ? _mergeReactions(ref, note.reactions)
+            : Map.of(note.reactions);
         final newReactions = <String, int>{};
         final emojis = {...note.emojis, ...note.reactionEmojis};
         for (final reaction in reactions.value.entries) {

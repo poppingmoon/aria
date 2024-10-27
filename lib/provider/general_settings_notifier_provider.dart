@@ -184,6 +184,16 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setMergeReactionsByName(bool mergeReactionsByName) async {
+    state = state.copyWith(mergeReactionsByName: mergeReactionsByName);
+    await _save();
+  }
+
+  Future<void> setAlwaysShowAllReactions(bool alwaysShowAllReactions) async {
+    state = state.copyWith(alwaysShowAllReactions: alwaysShowAllReactions);
+    await _save();
+  }
+
   Future<void> setMediaListWithOneImageAppearance(
     MediaListWithOneImageAppearance? mediaListWithOneImageAppearance,
   ) async {

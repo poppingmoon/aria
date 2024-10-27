@@ -219,6 +219,10 @@ class NoteWidget extends HookConsumerWidget {
           isRenote &&
           (isMyRenote || isMyNote || appearNote.myReaction != null),
     );
+    final showAllReactions = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysShowAllReactions),
+    );
     final backgroundColor = this.backgroundColor ??
         ref.watch(
           generalSettingsNotifierProvider.select(
@@ -591,6 +595,7 @@ class NoteWidget extends HookConsumerWidget {
                               ReactionsViewer(
                                 account: account,
                                 noteId: appearNote.id,
+                                showAllReactions: showAllReactions,
                                 note: this.note,
                               ),
                             if (showFooter)
