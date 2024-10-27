@@ -1,11 +1,15 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/account_settings_notifier_provider.dart';
+import '../../../provider/recently_used_emojis_notifier_provider.dart';
+import '../../dialog/confirmation_dialog.dart';
 import '../../widget/account_settings_scaffold.dart';
 import '../../widget/emoji_picker.dart';
+import '../../widget/emoji_sheet.dart';
 import '../../widget/emoji_widget.dart';
 import '../../widget/pinned_emojis_editor.dart';
 
@@ -25,7 +29,9 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
         children: [
           PinnedEmojisEditor(account: account, reaction: true),
           PinnedEmojisEditor(account: account),
+          _RecentlyUsedEmojisEditor(account: account),
           ListTile(
+            leading: const Icon(Icons.emoji_symbols),
             title: Text(t.aria.defaultReaction),
             subtitle: settings.defaultReaction != null
                 ? Builder(
@@ -63,6 +69,79 @@ class PinnedEmojisEditorPage extends ConsumerWidget {
         ],
       ),
       selectedDestination: AccountSettingsDestination.emojiPicker,
+    );
+  }
+}
+
+class _RecentlyUsedEmojisEditor extends ConsumerWidget {
+  const _RecentlyUsedEmojisEditor({required this.account});
+
+  final Account account;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final recentlyUsedEmojis =
+        ref.watch(recentlyUsedEmojisNotifierProvider(account));
+
+    return ExpansionTile(
+      leading: const Icon(Icons.history),
+      title: Text(t.aria.recentlyUsedEmojis),
+      children: [
+        if (recentlyUsedEmojis.isNotEmpty) ...[
+          Card(
+            margin: const EdgeInsets.all(8.0),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(8.0),
+              child: Wrap(
+                spacing: 4.0,
+                runSpacing: 4.0,
+                children: recentlyUsedEmojis
+                    .mapIndexed(
+                      (index, emoji) => EmojiWidget(
+                        account: account,
+                        emoji: emoji,
+                        onTap: () => showModalBottomSheet<void>(
+                          context: context,
+                          builder: (context) => EmojiSheet(
+                            account: account,
+                            emoji: emoji,
+                          ),
+                        ),
+                        style: DefaultTextStyle.of(context)
+                            .style
+                            .apply(fontSizeFactor: 2.0),
+                        disableTooltip: true,
+                      ),
+                    )
+                    .toList(),
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.refresh),
+            title: Text(t.misskey.default_),
+            onTap: () async {
+              final confirmed = await confirm(
+                context,
+                message: t.misskey.resetAreYouSure,
+              );
+              if (confirmed) {
+                await ref
+                    .read(recentlyUsedEmojisNotifierProvider(account).notifier)
+                    .reset();
+              }
+            },
+            iconColor: Theme.of(context).colorScheme.error,
+            textColor: Theme.of(context).colorScheme.error,
+            dense: true,
+          ),
+        ] else
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(t.misskey.nothing),
+          ),
+      ],
     );
   }
 }
