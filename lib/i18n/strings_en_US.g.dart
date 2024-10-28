@@ -63,6 +63,7 @@ class TranslationsAriaEnUs {
 	String get authenticated => 'Authenticated';
 	String get avatarSize => 'Avatar size';
 	String get background => 'Background';
+	String get buttonTypes => 'Button types';
 	String get confirmBeforeFollow => 'Confirm before follow';
 	String get confirmBeforePost => 'Confirm before post';
 	String get confirmBeforeReact => 'Confirm before react';
@@ -180,6 +181,7 @@ class TranslationsAriaEnUs {
 	String get playVideo => 'Play video';
 	String get pleaseCopyResponse => 'Please copy this response';
 	String get postConfirm => 'Are you sure you want to post this note?';
+	String get postForm => 'Posting form';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get recentlyUsedEmojis => 'Recently used emojis';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
@@ -205,19 +207,17 @@ class TranslationsAriaEnUs {
 	String get showAvatarsInSubNote => 'Show avatars in sub notes';
 	String get showEntireImage => 'Show entire image';
 	String get showExpandedImage => 'Show expanded image';
-	String get showHomeFAB => 'Show home floating action button';
 	String get showImage => 'Show image';
 	String get showLikeButtonInNoteFooter => 'Add "Like" to note action menu';
 	String get showMenuButtonInTabBar => 'Show menu button in tab bar';
 	String get showNoteCreatedAt => 'Show creation date of notes';
 	String get showNoteFooter => 'Show action buttons in notes';
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
-	String get showNotificationsFAB => 'Show notifications floating action button';
 	String get showPopupOnNewNote => 'Show popup on new note';
-	String get showPostForm => 'Show post form';
 	String get showQuoteButtonInNoteFooter => 'Add "Quote" to note action menu';
 	String get showSelfRenotes => 'Show self-renotes';
-	String get showShowPostFormFAB => 'Show mini post form floating action button';
+	String get showSmallButtons => 'Show small buttons';
+	String get showSquaredButtons => 'Show squared buttons';
 	String get showStackTrace => 'Show stack trace';
 	String get showSubNoteFooter => 'Show action buttons in subnotes';
 	String get showSubNoteReactionsViewer => 'Show reactions viewers in subnotes';
@@ -233,6 +233,7 @@ class TranslationsAriaEnUs {
 	String get tabs => 'Tabs';
 	String get tapToShow => 'Tap to show';
 	String get timeMachine => 'Time machine';
+	String get timelinesPageButtons => 'Timelines page buttons';
 	String get unfavorited => 'Removed from favorites';
 	TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Are you sure you want to unfollow '),

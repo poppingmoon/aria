@@ -376,18 +376,28 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setShowHomeFAB(bool showHomeFAB) async {
-    state = state.copyWith(showHomeFAB: showHomeFAB);
+  Future<void> setTimelinesPageButtonTypes(
+    List<TimelinesPageButtonType?> timelinesPageButtonTypes,
+  ) async {
+    state = state.copyWith(timelinesPageButtonTypes: timelinesPageButtonTypes);
     await _save();
   }
 
-  Future<void> setShowNotificationsFAB(bool showNotificationsFAB) async {
-    state = state.copyWith(showNotificationsFAB: showNotificationsFAB);
+  Future<void> setShowSmallTimelinesPageButtons(
+    bool showSmallTimelinesPageButtons,
+  ) async {
+    state = state.copyWith(
+      showSmallTimelinesPageButtons: showSmallTimelinesPageButtons,
+    );
     await _save();
   }
 
-  Future<void> setShowShowPostFormFAB(bool showShowPostFormFAB) async {
-    state = state.copyWith(showShowPostFormFAB: showShowPostFormFAB);
+  Future<void> setShowSquaredTimelinesPageButtons(
+    bool showSquaredTimelinesPageButtons,
+  ) async {
+    state = state.copyWith(
+      showSquaredTimelinesPageButtons: showSquaredTimelinesPageButtons,
+    );
     await _save();
   }
 
