@@ -100,9 +100,16 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       showTimelineTabBarAtBottom:
           json['showTimelineTabBarAtBottom'] as bool? ?? false,
       showMenuButtonInTabBar: json['showMenuButtonInTabBar'] as bool? ?? false,
-      showHomeFAB: json['showHomeFAB'] as bool? ?? true,
-      showNotificationsFAB: json['showNotificationsFAB'] as bool? ?? true,
-      showShowPostFormFAB: json['showShowPostFormFAB'] as bool? ?? true,
+      timelinesPageButtonTypes:
+          (json['timelinesPageButtonTypes'] as List<dynamic>?)
+                  ?.map((e) =>
+                      $enumDecodeNullable(_$TimelinesPageButtonTypeEnumMap, e))
+                  .toList() ??
+              defaultTimelinesPageButtonTypes,
+      showSmallTimelinesPageButtons:
+          json['showSmallTimelinesPageButtons'] as bool? ?? false,
+      showSquaredTimelinesPageButtons:
+          json['showSquaredTimelinesPageButtons'] as bool? ?? false,
       showTabHeaderInOneLine: json['showTabHeaderInOneLine'] as bool? ?? true,
       alwaysShowTabHeader: json['alwaysShowTabHeader'] as bool? ?? false,
       showTimelineLastViewedAt:
@@ -225,9 +232,12 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['useGroupedNotifications'] = instance.useGroupedNotifications;
   val['showTimelineTabBarAtBottom'] = instance.showTimelineTabBarAtBottom;
   val['showMenuButtonInTabBar'] = instance.showMenuButtonInTabBar;
-  val['showHomeFAB'] = instance.showHomeFAB;
-  val['showNotificationsFAB'] = instance.showNotificationsFAB;
-  val['showShowPostFormFAB'] = instance.showShowPostFormFAB;
+  val['timelinesPageButtonTypes'] = instance.timelinesPageButtonTypes
+      .map((e) => _$TimelinesPageButtonTypeEnumMap[e])
+      .toList();
+  val['showSmallTimelinesPageButtons'] = instance.showSmallTimelinesPageButtons;
+  val['showSquaredTimelinesPageButtons'] =
+      instance.showSquaredTimelinesPageButtons;
   val['showTabHeaderInOneLine'] = instance.showTabHeaderInOneLine;
   val['alwaysShowTabHeader'] = instance.alwaysShowTabHeader;
   val['showTimelineLastViewedAt'] = instance.showTimelineLastViewedAt;
@@ -328,6 +338,32 @@ Value? _$JsonConverterFromJson<Json, Value>(
   Value? Function(Json json) fromJson,
 ) =>
     json == null ? null : fromJson(json as Json);
+
+const _$TimelinesPageButtonTypeEnumMap = {
+  TimelinesPageButtonType.announcements: 'announcements',
+  TimelinesPageButtonType.antennas: 'antennas',
+  TimelinesPageButtonType.channels: 'channels',
+  TimelinesPageButtonType.clips: 'clips',
+  TimelinesPageButtonType.drive: 'drive',
+  TimelinesPageButtonType.explore: 'explore',
+  TimelinesPageButtonType.favorites: 'favorites',
+  TimelinesPageButtonType.gallery: 'gallery',
+  TimelinesPageButtonType.games: 'games',
+  TimelinesPageButtonType.home: 'home',
+  TimelinesPageButtonType.instanceInfo: 'instanceInfo',
+  TimelinesPageButtonType.lists: 'lists',
+  TimelinesPageButtonType.lookup: 'lookup',
+  TimelinesPageButtonType.menu: 'menu',
+  TimelinesPageButtonType.note: 'note',
+  TimelinesPageButtonType.notifications: 'notifications',
+  TimelinesPageButtonType.pages: 'pages',
+  TimelinesPageButtonType.play: 'play',
+  TimelinesPageButtonType.postForm: 'postForm',
+  TimelinesPageButtonType.profile: 'profile',
+  TimelinesPageButtonType.reload: 'reload',
+  TimelinesPageButtonType.search: 'search',
+  TimelinesPageButtonType.settings: 'settings',
+};
 
 const _$NoteActionTypeEnumMap = {
   NoteActionType.none: 'none',

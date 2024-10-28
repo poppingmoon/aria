@@ -89,9 +89,11 @@ mixin _$GeneralSettings {
   bool get useGroupedNotifications => throw _privateConstructorUsedError;
   bool get showTimelineTabBarAtBottom => throw _privateConstructorUsedError;
   bool get showMenuButtonInTabBar => throw _privateConstructorUsedError;
-  bool get showHomeFAB => throw _privateConstructorUsedError;
-  bool get showNotificationsFAB => throw _privateConstructorUsedError;
-  bool get showShowPostFormFAB => throw _privateConstructorUsedError;
+  List<TimelinesPageButtonType?> get timelinesPageButtonTypes =>
+      throw _privateConstructorUsedError;
+  bool get showSmallTimelinesPageButtons => throw _privateConstructorUsedError;
+  bool get showSquaredTimelinesPageButtons =>
+      throw _privateConstructorUsedError;
   bool get showTabHeaderInOneLine => throw _privateConstructorUsedError;
   bool get alwaysShowTabHeader => throw _privateConstructorUsedError;
   bool get showTimelineLastViewedAt => throw _privateConstructorUsedError;
@@ -193,9 +195,9 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool useGroupedNotifications,
       bool showTimelineTabBarAtBottom,
       bool showMenuButtonInTabBar,
-      bool showHomeFAB,
-      bool showNotificationsFAB,
-      bool showShowPostFormFAB,
+      List<TimelinesPageButtonType?> timelinesPageButtonTypes,
+      bool showSmallTimelinesPageButtons,
+      bool showSquaredTimelinesPageButtons,
       bool showTabHeaderInOneLine,
       bool alwaysShowTabHeader,
       bool showTimelineLastViewedAt,
@@ -293,9 +295,9 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? useGroupedNotifications = null,
     Object? showTimelineTabBarAtBottom = null,
     Object? showMenuButtonInTabBar = null,
-    Object? showHomeFAB = null,
-    Object? showNotificationsFAB = null,
-    Object? showShowPostFormFAB = null,
+    Object? timelinesPageButtonTypes = null,
+    Object? showSmallTimelinesPageButtons = null,
+    Object? showSquaredTimelinesPageButtons = null,
     Object? showTabHeaderInOneLine = null,
     Object? alwaysShowTabHeader = null,
     Object? showTimelineLastViewedAt = null,
@@ -553,17 +555,17 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.showMenuButtonInTabBar
           : showMenuButtonInTabBar // ignore: cast_nullable_to_non_nullable
               as bool,
-      showHomeFAB: null == showHomeFAB
-          ? _value.showHomeFAB
-          : showHomeFAB // ignore: cast_nullable_to_non_nullable
+      timelinesPageButtonTypes: null == timelinesPageButtonTypes
+          ? _value.timelinesPageButtonTypes
+          : timelinesPageButtonTypes // ignore: cast_nullable_to_non_nullable
+              as List<TimelinesPageButtonType?>,
+      showSmallTimelinesPageButtons: null == showSmallTimelinesPageButtons
+          ? _value.showSmallTimelinesPageButtons
+          : showSmallTimelinesPageButtons // ignore: cast_nullable_to_non_nullable
               as bool,
-      showNotificationsFAB: null == showNotificationsFAB
-          ? _value.showNotificationsFAB
-          : showNotificationsFAB // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showShowPostFormFAB: null == showShowPostFormFAB
-          ? _value.showShowPostFormFAB
-          : showShowPostFormFAB // ignore: cast_nullable_to_non_nullable
+      showSquaredTimelinesPageButtons: null == showSquaredTimelinesPageButtons
+          ? _value.showSquaredTimelinesPageButtons
+          : showSquaredTimelinesPageButtons // ignore: cast_nullable_to_non_nullable
               as bool,
       showTabHeaderInOneLine: null == showTabHeaderInOneLine
           ? _value.showTabHeaderInOneLine
@@ -726,9 +728,9 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool useGroupedNotifications,
       bool showTimelineTabBarAtBottom,
       bool showMenuButtonInTabBar,
-      bool showHomeFAB,
-      bool showNotificationsFAB,
-      bool showShowPostFormFAB,
+      List<TimelinesPageButtonType?> timelinesPageButtonTypes,
+      bool showSmallTimelinesPageButtons,
+      bool showSquaredTimelinesPageButtons,
       bool showTabHeaderInOneLine,
       bool alwaysShowTabHeader,
       bool showTimelineLastViewedAt,
@@ -824,9 +826,9 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? useGroupedNotifications = null,
     Object? showTimelineTabBarAtBottom = null,
     Object? showMenuButtonInTabBar = null,
-    Object? showHomeFAB = null,
-    Object? showNotificationsFAB = null,
-    Object? showShowPostFormFAB = null,
+    Object? timelinesPageButtonTypes = null,
+    Object? showSmallTimelinesPageButtons = null,
+    Object? showSquaredTimelinesPageButtons = null,
     Object? showTabHeaderInOneLine = null,
     Object? alwaysShowTabHeader = null,
     Object? showTimelineLastViewedAt = null,
@@ -1084,17 +1086,17 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.showMenuButtonInTabBar
           : showMenuButtonInTabBar // ignore: cast_nullable_to_non_nullable
               as bool,
-      showHomeFAB: null == showHomeFAB
-          ? _value.showHomeFAB
-          : showHomeFAB // ignore: cast_nullable_to_non_nullable
+      timelinesPageButtonTypes: null == timelinesPageButtonTypes
+          ? _value._timelinesPageButtonTypes
+          : timelinesPageButtonTypes // ignore: cast_nullable_to_non_nullable
+              as List<TimelinesPageButtonType?>,
+      showSmallTimelinesPageButtons: null == showSmallTimelinesPageButtons
+          ? _value.showSmallTimelinesPageButtons
+          : showSmallTimelinesPageButtons // ignore: cast_nullable_to_non_nullable
               as bool,
-      showNotificationsFAB: null == showNotificationsFAB
-          ? _value.showNotificationsFAB
-          : showNotificationsFAB // ignore: cast_nullable_to_non_nullable
-              as bool,
-      showShowPostFormFAB: null == showShowPostFormFAB
-          ? _value.showShowPostFormFAB
-          : showShowPostFormFAB // ignore: cast_nullable_to_non_nullable
+      showSquaredTimelinesPageButtons: null == showSquaredTimelinesPageButtons
+          ? _value.showSquaredTimelinesPageButtons
+          : showSquaredTimelinesPageButtons // ignore: cast_nullable_to_non_nullable
               as bool,
       showTabHeaderInOneLine: null == showTabHeaderInOneLine
           ? _value.showTabHeaderInOneLine
@@ -1252,9 +1254,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.useGroupedNotifications = false,
       this.showTimelineTabBarAtBottom = false,
       this.showMenuButtonInTabBar = false,
-      this.showHomeFAB = true,
-      this.showNotificationsFAB = true,
-      this.showShowPostFormFAB = true,
+      final List<TimelinesPageButtonType?> timelinesPageButtonTypes =
+          defaultTimelinesPageButtonTypes,
+      this.showSmallTimelinesPageButtons = false,
+      this.showSquaredTimelinesPageButtons = false,
       this.showTabHeaderInOneLine = true,
       this.alwaysShowTabHeader = false,
       this.showTimelineLastViewedAt = true,
@@ -1276,7 +1279,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.enablePredictiveBack = false,
       this.themeMode = ThemeMode.system,
       this.lightThemeId = 'a58a0abb-ff8c-476a-8dec-0ad7837e7e96',
-      this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34'});
+      this.darkThemeId = '66e7e5a9-cd43-42cd-837d-12f47841fa34'})
+      : _timelinesPageButtonTypes = timelinesPageButtonTypes;
 
   factory _$GeneralSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$GeneralSettingsImplFromJson(json);
@@ -1458,15 +1462,22 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @override
   @JsonKey()
   final bool showMenuButtonInTabBar;
+  final List<TimelinesPageButtonType?> _timelinesPageButtonTypes;
   @override
   @JsonKey()
-  final bool showHomeFAB;
+  List<TimelinesPageButtonType?> get timelinesPageButtonTypes {
+    if (_timelinesPageButtonTypes is EqualUnmodifiableListView)
+      return _timelinesPageButtonTypes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_timelinesPageButtonTypes);
+  }
+
   @override
   @JsonKey()
-  final bool showNotificationsFAB;
+  final bool showSmallTimelinesPageButtons;
   @override
   @JsonKey()
-  final bool showShowPostFormFAB;
+  final bool showSquaredTimelinesPageButtons;
   @override
   @JsonKey()
   final bool showTabHeaderInOneLine;
@@ -1538,7 +1549,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mergeReactionsByName: $mergeReactionsByName, alwaysShowAllReactions: $alwaysShowAllReactions, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, showHomeFAB: $showHomeFAB, showNotificationsFAB: $showNotificationsFAB, showShowPostFormFAB: $showShowPostFormFAB, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mergeReactionsByName: $mergeReactionsByName, alwaysShowAllReactions: $alwaysShowAllReactions, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, timelinesPageButtonTypes: $timelinesPageButtonTypes, showSmallTimelinesPageButtons: $showSmallTimelinesPageButtons, showSquaredTimelinesPageButtons: $showSquaredTimelinesPageButtons, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1634,9 +1645,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
             (identical(other.useGroupedNotifications, useGroupedNotifications) || other.useGroupedNotifications == useGroupedNotifications) &&
             (identical(other.showTimelineTabBarAtBottom, showTimelineTabBarAtBottom) || other.showTimelineTabBarAtBottom == showTimelineTabBarAtBottom) &&
             (identical(other.showMenuButtonInTabBar, showMenuButtonInTabBar) || other.showMenuButtonInTabBar == showMenuButtonInTabBar) &&
-            (identical(other.showHomeFAB, showHomeFAB) || other.showHomeFAB == showHomeFAB) &&
-            (identical(other.showNotificationsFAB, showNotificationsFAB) || other.showNotificationsFAB == showNotificationsFAB) &&
-            (identical(other.showShowPostFormFAB, showShowPostFormFAB) || other.showShowPostFormFAB == showShowPostFormFAB) &&
+            const DeepCollectionEquality().equals(other._timelinesPageButtonTypes, _timelinesPageButtonTypes) &&
+            (identical(other.showSmallTimelinesPageButtons, showSmallTimelinesPageButtons) || other.showSmallTimelinesPageButtons == showSmallTimelinesPageButtons) &&
+            (identical(other.showSquaredTimelinesPageButtons, showSquaredTimelinesPageButtons) || other.showSquaredTimelinesPageButtons == showSquaredTimelinesPageButtons) &&
             (identical(other.showTabHeaderInOneLine, showTabHeaderInOneLine) || other.showTabHeaderInOneLine == showTabHeaderInOneLine) &&
             (identical(other.alwaysShowTabHeader, alwaysShowTabHeader) || other.alwaysShowTabHeader == alwaysShowTabHeader) &&
             (identical(other.showTimelineLastViewedAt, showTimelineLastViewedAt) || other.showTimelineLastViewedAt == showTimelineLastViewedAt) &&
@@ -1723,9 +1734,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         useGroupedNotifications,
         showTimelineTabBarAtBottom,
         showMenuButtonInTabBar,
-        showHomeFAB,
-        showNotificationsFAB,
-        showShowPostFormFAB,
+        const DeepCollectionEquality().hash(_timelinesPageButtonTypes),
+        showSmallTimelinesPageButtons,
+        showSquaredTimelinesPageButtons,
         showTabHeaderInOneLine,
         alwaysShowTabHeader,
         showTimelineLastViewedAt,
@@ -1828,9 +1839,9 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool useGroupedNotifications,
       final bool showTimelineTabBarAtBottom,
       final bool showMenuButtonInTabBar,
-      final bool showHomeFAB,
-      final bool showNotificationsFAB,
-      final bool showShowPostFormFAB,
+      final List<TimelinesPageButtonType?> timelinesPageButtonTypes,
+      final bool showSmallTimelinesPageButtons,
+      final bool showSquaredTimelinesPageButtons,
       final bool showTabHeaderInOneLine,
       final bool alwaysShowTabHeader,
       final bool showTimelineLastViewedAt,
@@ -1981,11 +1992,11 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get showMenuButtonInTabBar;
   @override
-  bool get showHomeFAB;
+  List<TimelinesPageButtonType?> get timelinesPageButtonTypes;
   @override
-  bool get showNotificationsFAB;
+  bool get showSmallTimelinesPageButtons;
   @override
-  bool get showShowPostFormFAB;
+  bool get showSquaredTimelinesPageButtons;
   @override
   bool get showTabHeaderInOneLine;
   @override

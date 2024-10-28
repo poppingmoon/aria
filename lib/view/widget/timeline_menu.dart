@@ -8,12 +8,10 @@ import '../../model/id.dart';
 import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/timeline_notes_after_note_notifier_provider.dart';
-import '../../provider/api/timeline_notes_notifier_provider.dart';
-import '../../provider/streaming/web_socket_channel_provider.dart';
 import '../../provider/timeline_center_notifier_provider.dart';
 import '../../provider/timeline_last_viewed_note_id_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
+import '../../util/reload_timeline.dart';
 
 class TimelineMenu extends ConsumerWidget {
   const TimelineMenu({super.key, required this.tabSettings});
@@ -226,24 +224,7 @@ class TimelineMenu extends ConsumerWidget {
               Card(
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  onTap: () {
-                    ref
-                        .read(
-                          timelineCenterNotifierProvider(tabSettings).notifier,
-                        )
-                        .reset();
-                    ref.invalidate(webSocketChannelProvider(account));
-                    ref.invalidate(
-                      timelineNotesAfterNoteNotifierProvider(tabSettings),
-                    );
-                    ref.invalidate(timelineNotesNotifierProvider(tabSettings));
-                    ref
-                        .read(
-                          timelineLastViewedNoteIdNotifierProvider(tabSettings)
-                              .notifier,
-                        )
-                        .saveFromDate(DateTime.now());
-                  },
+                  onTap: () => reloadTimeline(ref, tabSettings),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

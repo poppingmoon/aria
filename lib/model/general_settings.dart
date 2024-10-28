@@ -27,6 +27,13 @@ const defaultNoteHorizontalPadding = 12.0;
 const maxNoteHorizontalPadding = 36.0;
 const minEmojiPickerScale = 0.1;
 const maxEmojiPickerScale = 3.0;
+const defaultTimelinesPageButtonTypes = [
+  TimelinesPageButtonType.menu,
+  TimelinesPageButtonType.home,
+  TimelinesPageButtonType.notifications,
+  TimelinesPageButtonType.postForm,
+  TimelinesPageButtonType.note,
+];
 
 @freezed
 class GeneralSettings with _$GeneralSettings {
@@ -98,9 +105,10 @@ class GeneralSettings with _$GeneralSettings {
     @Default(false) bool useGroupedNotifications,
     @Default(false) bool showTimelineTabBarAtBottom,
     @Default(false) bool showMenuButtonInTabBar,
-    @Default(true) bool showHomeFAB,
-    @Default(true) bool showNotificationsFAB,
-    @Default(true) bool showShowPostFormFAB,
+    @Default(defaultTimelinesPageButtonTypes)
+    List<TimelinesPageButtonType?> timelinesPageButtonTypes,
+    @Default(false) bool showSmallTimelinesPageButtons,
+    @Default(false) bool showSquaredTimelinesPageButtons,
     @Default(true) bool showTabHeaderInOneLine,
     @Default(false) bool alwaysShowTabHeader,
     @Default(true) bool showTimelineLastViewedAt,
@@ -175,4 +183,30 @@ class ColorConverter extends JsonConverter<Color, int> {
   int toJson(Color color) {
     return color.value;
   }
+}
+
+enum TimelinesPageButtonType {
+  announcements,
+  antennas,
+  channels,
+  clips,
+  drive,
+  explore,
+  favorites,
+  gallery,
+  games,
+  home,
+  instanceInfo,
+  lists,
+  lookup,
+  menu,
+  note,
+  notifications,
+  pages,
+  play,
+  postForm,
+  profile,
+  reload,
+  search,
+  settings,
 }

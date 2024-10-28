@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -8,6 +9,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../constant/shortcuts.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
+import '../../model/general_settings.dart';
+import '../../model/tab_settings.dart';
 import '../../model/tab_type.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
@@ -19,10 +22,14 @@ import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tab_index_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
+import '../../util/lookup.dart';
+import '../../util/reload_timeline.dart';
+import '../dialog/text_field_dialog.dart';
 import '../widget/post_form.dart';
 import '../widget/timeline_drawer.dart';
 import '../widget/timeline_tab_bar.dart';
 import '../widget/timeline_widget.dart';
+import '../widget/user_avatar.dart';
 
 class TimelinesPage extends HookConsumerWidget {
   const TimelinesPage({super.key});
@@ -38,20 +45,25 @@ class TimelinesPage extends HookConsumerWidget {
           .select((settings) => settings.showTimelineTabBarAtBottom),
     );
     final showMenuButtonInTabBar = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showMenuButtonInTabBar),
+      generalSettingsNotifierProvider.select(
+        (settings) =>
+            settings.showMenuButtonInTabBar ||
+            !settings.timelinesPageButtonTypes
+                .sublist(0, 5)
+                .contains(TimelinesPageButtonType.menu),
+      ),
     );
-    final showHomeFAB = ref.watch(
+    final buttonTypes = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.showHomeFAB),
+          .select((settings) => settings.timelinesPageButtonTypes),
     );
-    final showNotificationsFAB = ref.watch(
+    final mini = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.showNotificationsFAB),
+          .select((settings) => settings.showSmallTimelinesPageButtons),
     );
-    final showShowPostFormFAB = ref.watch(
+    final square = ref.watch(
       generalSettingsNotifierProvider
-          .select((settings) => settings.showShowPostFormFAB),
+          .select((settings) => settings.showSquaredTimelinesPageButtons),
     );
     final enableHorizontalSwipe = ref.watch(
       generalSettingsNotifierProvider
@@ -62,9 +74,6 @@ class TimelinesPage extends HookConsumerWidget {
       initialIndex: useMemoized(() => tabIndex, [numTabs]),
       keys: [numTabs],
     );
-    final i = tabSettings != null
-        ? ref.watch(iNotifierProvider(tabSettings.account)).valueOrNull
-        : null;
     final showPostForm = useState(false);
     useEffect(
       () {
@@ -138,7 +147,6 @@ class TimelinesPage extends HookConsumerWidget {
       [tabs],
     );
     final isLargeScreen = MediaQuery.sizeOf(context).width > 1200.0;
-    final scaffoldKey = useMemoized(() => GlobalKey<ScaffoldState>());
     final rootFocusNode = useFocusNode();
     final postFormFocusNode = useFocusNode();
     final colors =
@@ -176,11 +184,11 @@ class TimelinesPage extends HookConsumerWidget {
             ),
           Expanded(
             child: Scaffold(
-              key: scaffoldKey,
               appBar: showTimelineTabBarAtBottom
                   ? null
                   : AppBar(
-                      automaticallyImplyLeading: showMenuButtonInTabBar,
+                      automaticallyImplyLeading:
+                          !isLargeScreen && showMenuButtonInTabBar,
                       title: TimelineTabBar(controller: controller),
                       centerTitle: true,
                     ),
@@ -266,7 +274,7 @@ class TimelinesPage extends HookConsumerWidget {
                       elevation: 0.0,
                       child: Row(
                         children: [
-                          if (showMenuButtonInTabBar)
+                          if (!isLargeScreen && showMenuButtonInTabBar)
                             const Padding(
                               padding: EdgeInsets.all(8.0),
                               child: DrawerButton(),
@@ -281,152 +289,258 @@ class TimelinesPage extends HookConsumerWidget {
               floatingActionButton: tabSettings == null || !showPostForm.value
                   ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        if (!isLargeScreen)
-                          FloatingActionButton(
-                            heroTag: const ValueKey(0),
-                            tooltip: t.misskey.menu,
-                            foregroundColor: colors.fg,
-                            backgroundColor: colors.panel,
-                            shape: const CircleBorder(),
-                            onPressed: () =>
-                                scaffoldKey.currentState?.openDrawer(),
-                            child: const Icon(Icons.menu),
-                          ),
-                        if (showHomeFAB)
-                          FloatingActionButton(
-                            heroTag: const ValueKey(1),
-                            tooltip: t.misskey.home,
-                            foregroundColor: colors.fg,
-                            backgroundColor: colors.panel,
-                            shape: const CircleBorder(),
-                            onPressed: tabSettings != null
-                                ? () => ref
-                                    .read(
-                                      timelineScrollControllerProvider(
-                                        tabSettings,
-                                      ),
-                                    )
-                                    .scrollToTop()
-                                : null,
-                            child: const Icon(Icons.home),
-                          ),
-                        if (showNotificationsFAB)
-                          FloatingActionButton(
-                            heroTag: const ValueKey(2),
-                            tooltip: t.misskey.notifications,
-                            foregroundColor: colors.fg.withOpacity(
-                              tabSettings != null &&
-                                      !tabSettings.account.isGuest
-                                  ? 1.0
-                                  : 0.5,
-                            ),
-                            backgroundColor: colors.panel.withOpacity(
-                              tabSettings != null &&
-                                      !tabSettings.account.isGuest
-                                  ? 1.0
-                                  : 0.5,
-                            ),
-                            disabledElevation: 0.0,
-                            shape: const CircleBorder(),
-                            onPressed: tabSettings != null &&
-                                    !tabSettings.account.isGuest
-                                ? () => context.push(
-                                      '/${tabSettings.account}/notifications',
-                                    )
-                                : null,
-                            child: Stack(
-                              children: [
-                                const Icon(Icons.notifications),
-                                if (i?.hasUnreadNotification ?? false)
-                                  DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: colors.accent,
-                                    ),
-                                    child: const SizedBox(
-                                      height: 12.0,
-                                      width: 12.0,
-                                    ),
+                      children: buttonTypes
+                          .where(
+                            (type) =>
+                                !isLargeScreen ||
+                                type != TimelinesPageButtonType.menu,
+                          )
+                          .mapIndexed(
+                            (index, type) => type != null
+                                ? _TimelinesPageButton(
+                                    tabSettings: tabSettings,
+                                    buttonType: type,
+                                    index: index,
+                                    mini: mini,
+                                    square: square,
+                                    showPostForm: () =>
+                                        showPostForm.value = true,
+                                  )
+                                : SizedBox.square(
+                                    dimension: mini ? 40.0 : 56.0,
                                   ),
-                              ],
-                            ),
-                          ),
-                        if (showShowPostFormFAB)
-                          FloatingActionButton(
-                            heroTag: const ValueKey(3),
-                            tooltip: t.aria.showPostForm,
-                            foregroundColor: colors.fg.withOpacity(
-                              tabSettings != null &&
-                                      !tabSettings.account.isGuest
-                                  ? 1.0
-                                  : 0.5,
-                            ),
-                            backgroundColor: colors.panel.withOpacity(
-                              tabSettings != null &&
-                                      !tabSettings.account.isGuest
-                                  ? 1.0
-                                  : 0.5,
-                            ),
-                            disabledElevation: 0.0,
-                            shape: const CircleBorder(),
-                            onPressed: tabSettings != null &&
-                                    !tabSettings.account.isGuest
-                                ? () => showPostForm.value = !showPostForm.value
-                                : null,
-                            child: const Icon(Icons.keyboard),
-                          ),
-                        FloatingActionButton(
-                          heroTag: const ValueKey(4),
-                          tooltip: t.misskey.note,
-                          onPressed: tabSettings != null &&
-                                  !tabSettings.account.isGuest
-                              ? () =>
-                                  context.push('/${tabSettings.account}/post')
-                              : null,
-                          foregroundColor: colors.fgOnAccent.withOpacity(
-                            tabSettings != null && !tabSettings.account.isGuest
-                                ? 1.0
-                                : 0.5,
-                          ),
-                          backgroundColor: Colors.transparent,
-                          shape: const CircleBorder(),
-                          disabledElevation: 0.0,
-                          child: Ink(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  colors.buttonGradateA.withOpacity(
-                                    tabSettings != null &&
-                                            !tabSettings.account.isGuest
-                                        ? 1.0
-                                        : 0.5,
-                                  ),
-                                  colors.buttonGradateB.withOpacity(
-                                    tabSettings != null &&
-                                            !tabSettings.account.isGuest
-                                        ? 1.0
-                                        : 0.5,
-                                  ),
-                                ],
-                              ),
-                              borderRadius: BorderRadius.circular(32.0),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(16.0),
-                              child: Icon(Icons.edit),
-                            ),
-                          ),
-                        ),
-                      ],
+                          )
+                          .toList(),
                     )
                   : const SizedBox.shrink(),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerFloat,
+              floatingActionButtonLocation: mini
+                  ? FloatingActionButtonLocation.miniCenterFloat
+                  : FloatingActionButtonLocation.centerFloat,
             ),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _TimelinesPageButton extends ConsumerWidget {
+  const _TimelinesPageButton({
+    required this.tabSettings,
+    required this.buttonType,
+    this.index,
+    this.mini = false,
+    this.square = false,
+    this.showPostForm,
+  });
+
+  final TabSettings? tabSettings;
+  final TimelinesPageButtonType buttonType;
+  final int? index;
+  final bool mini;
+  final bool square;
+  final void Function()? showPostForm;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final account = tabSettings?.account;
+    final i = account != null
+        ? ref.watch(iNotifierProvider(account)).valueOrNull
+        : null;
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
+    final requireTabSettings = switch (buttonType) {
+      TimelinesPageButtonType.menu || TimelinesPageButtonType.settings => false,
+      _ => true,
+    };
+    final requireCredencial = switch (buttonType) {
+      TimelinesPageButtonType.announcements => false,
+      TimelinesPageButtonType.antennas => true,
+      TimelinesPageButtonType.channels => false,
+      TimelinesPageButtonType.clips => true,
+      TimelinesPageButtonType.drive => true,
+      TimelinesPageButtonType.explore => false,
+      TimelinesPageButtonType.favorites => true,
+      TimelinesPageButtonType.gallery => false,
+      TimelinesPageButtonType.games => false,
+      TimelinesPageButtonType.home => false,
+      TimelinesPageButtonType.instanceInfo => false,
+      TimelinesPageButtonType.lists => true,
+      TimelinesPageButtonType.lookup => true,
+      TimelinesPageButtonType.menu => false,
+      TimelinesPageButtonType.notifications => true,
+      TimelinesPageButtonType.pages => false,
+      TimelinesPageButtonType.play => false,
+      TimelinesPageButtonType.postForm => true,
+      TimelinesPageButtonType.note => true,
+      TimelinesPageButtonType.profile => true,
+      TimelinesPageButtonType.reload => false,
+      TimelinesPageButtonType.search => false,
+      TimelinesPageButtonType.settings => false,
+    };
+    final disabled = (requireTabSettings && tabSettings == null) ||
+        (requireCredencial && (tabSettings?.account.isGuest ?? true));
+    final primary = buttonType == TimelinesPageButtonType.note;
+
+    final tooltip = switch (buttonType) {
+      TimelinesPageButtonType.announcements => t.misskey.announcements,
+      TimelinesPageButtonType.antennas => t.misskey.antennas,
+      TimelinesPageButtonType.channels => t.misskey.channel,
+      TimelinesPageButtonType.clips => t.misskey.clips,
+      TimelinesPageButtonType.drive => t.misskey.drive,
+      TimelinesPageButtonType.explore => t.misskey.explore,
+      TimelinesPageButtonType.favorites => t.misskey.favorites,
+      TimelinesPageButtonType.gallery => t.misskey.gallery,
+      TimelinesPageButtonType.games => 'Misskey Games',
+      TimelinesPageButtonType.home => t.misskey.home,
+      TimelinesPageButtonType.instanceInfo => t.misskey.instanceInfo,
+      TimelinesPageButtonType.lists => t.misskey.lists,
+      TimelinesPageButtonType.lookup => t.misskey.lookup,
+      TimelinesPageButtonType.menu => t.misskey.menu,
+      TimelinesPageButtonType.note => t.misskey.note,
+      TimelinesPageButtonType.notifications => t.misskey.notifications,
+      TimelinesPageButtonType.pages => t.misskey.pages,
+      TimelinesPageButtonType.play => 'Play',
+      TimelinesPageButtonType.postForm => t.aria.postForm,
+      TimelinesPageButtonType.profile => t.misskey.profile,
+      TimelinesPageButtonType.reload => t.misskey.reload,
+      TimelinesPageButtonType.search => t.misskey.search,
+      TimelinesPageButtonType.settings => t.misskey.settings,
+    };
+    final onPressed = switch (buttonType) {
+      TimelinesPageButtonType.announcements => () =>
+          context.push('/$account/announcements'),
+      TimelinesPageButtonType.antennas => () =>
+          context.push('/$account/antennas'),
+      TimelinesPageButtonType.channels => () =>
+          context.push('/$account/channels'),
+      TimelinesPageButtonType.clips => () => context.push('/$account/clips'),
+      TimelinesPageButtonType.drive => () => context.push('/$account/drive'),
+      TimelinesPageButtonType.explore => () =>
+          context.push('/$account/explore'),
+      TimelinesPageButtonType.favorites => () =>
+          context.push('/$account/favorites'),
+      TimelinesPageButtonType.gallery => () =>
+          context.push('/$account/gallery'),
+      TimelinesPageButtonType.games => () => context.push('/$account/games'),
+      TimelinesPageButtonType.home => () => ref
+          .read(timelineScrollControllerProvider(tabSettings!))
+          .scrollToTop(),
+      TimelinesPageButtonType.instanceInfo => () =>
+          context.push('/$account/servers/${account!.host}'),
+      TimelinesPageButtonType.lists => () => context.push('/$account/lists'),
+      TimelinesPageButtonType.lookup => () async {
+          final result = await showTextFieldDialog(
+            context,
+            title: Text(t.misskey.lookup),
+          );
+          if (!context.mounted) return;
+          if (result == null) return;
+          await lookup(ref, account!, result.trim());
+        },
+      TimelinesPageButtonType.menu => () => Scaffold.of(context).openDrawer(),
+      TimelinesPageButtonType.note => () => context.push('/$account/post'),
+      TimelinesPageButtonType.notifications => () =>
+          context.push('/$account/notifications'),
+      TimelinesPageButtonType.pages => () => context.push('/$account/pages'),
+      TimelinesPageButtonType.play => () => context.push('/$account/play'),
+      TimelinesPageButtonType.postForm => showPostForm,
+      TimelinesPageButtonType.profile => () =>
+          context.push('/$account/@${account!.username}'),
+      TimelinesPageButtonType.reload => () => reloadTimeline(ref, tabSettings!),
+      TimelinesPageButtonType.search => () => context.push('/$account/search'),
+      TimelinesPageButtonType.settings => () => context.push('/settings'),
+    };
+    final child = switch (buttonType) {
+      TimelinesPageButtonType.announcements => Stack(
+          children: [
+            const Icon(Icons.campaign),
+            if (i?.hasUnreadAnnouncement ?? false)
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                child: const SizedBox(
+                  height: 12.0,
+                  width: 12.0,
+                ),
+              ),
+          ],
+        ),
+      TimelinesPageButtonType.antennas =>
+        const Icon(Icons.settings_input_antenna),
+      TimelinesPageButtonType.channels => const Icon(Icons.tv),
+      TimelinesPageButtonType.clips => const Icon(Icons.attach_file),
+      TimelinesPageButtonType.drive => const Icon(Icons.cloud),
+      TimelinesPageButtonType.explore => const Icon(Icons.tag),
+      TimelinesPageButtonType.favorites => const Icon(Icons.star_rounded),
+      TimelinesPageButtonType.gallery => const Icon(Icons.collections),
+      TimelinesPageButtonType.games => const Icon(Icons.games),
+      TimelinesPageButtonType.home => const Icon(Icons.home),
+      TimelinesPageButtonType.instanceInfo => const Icon(Icons.dns),
+      TimelinesPageButtonType.lists => const Icon(Icons.list),
+      TimelinesPageButtonType.lookup => const Icon(Icons.travel_explore),
+      TimelinesPageButtonType.menu => const Icon(Icons.menu),
+      TimelinesPageButtonType.note => Ink(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                colors.buttonGradateA.withOpacity(!disabled ? 1.0 : 0.5),
+                colors.buttonGradateB.withOpacity(!disabled ? 1.0 : 0.5),
+              ],
+            ),
+            borderRadius: BorderRadius.circular(
+              square
+                  ? mini
+                      ? 12.0
+                      : 16.0
+                  : 32.0,
+            ),
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(mini ? 8.0 : 16.0),
+            child: const Icon(Icons.edit),
+          ),
+        ),
+      TimelinesPageButtonType.notifications => Stack(
+          children: [
+            const Icon(Icons.notifications),
+            if (i?.hasUnreadNotification ?? false)
+              DecoratedBox(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: colors.accent,
+                ),
+                child: const SizedBox(height: 12.0, width: 12.0),
+              ),
+          ],
+        ),
+      TimelinesPageButtonType.pages => const Icon(Icons.article),
+      TimelinesPageButtonType.play => const Icon(Icons.play_arrow),
+      TimelinesPageButtonType.postForm => const Icon(Icons.keyboard),
+      TimelinesPageButtonType.profile => account != null && i != null
+          ? UserAvatar(account: account, user: i, size: 28.0)
+          : const Icon(Icons.person),
+      TimelinesPageButtonType.reload => const Icon(Icons.refresh),
+      TimelinesPageButtonType.search => const Icon(Icons.search),
+      TimelinesPageButtonType.settings => const Icon(Icons.settings),
+    };
+
+    return FloatingActionButton(
+      heroTag: ValueKey('<_TimelinesPageButton tag $index>'),
+      tooltip: tooltip,
+      foregroundColor: (primary ? colors.fgOnAccent : colors.fg)
+          .withOpacity(!disabled ? 1.0 : 0.5),
+      backgroundColor: primary
+          ? Colors.transparent
+          : colors.panel.withOpacity(!disabled ? 1.0 : 0.5),
+      disabledElevation: 0.0,
+      shape: square ? null : const CircleBorder(),
+      mini: mini,
+      onPressed: !disabled ? onPressed : null,
+      child: child,
     );
   }
 }
