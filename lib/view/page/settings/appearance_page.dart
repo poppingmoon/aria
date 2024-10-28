@@ -334,7 +334,7 @@ class _TimelinesPageButtonTypeNameWidget extends StatelessWidget {
         TimelinesPageButtonType.notifications => t.misskey.notifications,
         TimelinesPageButtonType.pages => t.misskey.pages,
         TimelinesPageButtonType.play => 'Play',
-        TimelinesPageButtonType.postForm => t.aria.postForm,
+        TimelinesPageButtonType.postForm => t.misskey.widgets_.postForm,
         TimelinesPageButtonType.profile => t.misskey.profile,
         TimelinesPageButtonType.reload => t.misskey.reload,
         TimelinesPageButtonType.search => t.misskey.search,
