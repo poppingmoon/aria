@@ -181,7 +181,6 @@ class TranslationsAriaEnUs {
 	String get playVideo => 'Play video';
 	String get pleaseCopyResponse => 'Please copy this response';
 	String get postConfirm => 'Are you sure you want to post this note?';
-	String get postForm => 'Posting form';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get recentlyUsedEmojis => 'Recently used emojis';
 	String get renoteConfirm => 'Are you sure you want to renote this note?';
