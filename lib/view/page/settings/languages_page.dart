@@ -100,9 +100,7 @@ class LanguagesPage extends ConsumerWidget {
                   groupValue: locale,
                   onChanged: (_) {
                     ref
-                        .read(
-                          generalSettingsNotifierProvider.notifier,
-                        )
+                        .read(generalSettingsNotifierProvider.notifier)
                         .setLocale(null);
                     LocaleSettings.useDeviceLocale();
                   },
@@ -117,17 +115,17 @@ class LanguagesPage extends ConsumerWidget {
                     )
                     .map(
                       (appLocale) => RadioListTile(
-                        title: Text(
-                          appLocale.translations.misskey.lang__,
+                        title: FutureBuilder(
+                          future: LocaleSettings.instance.loadLocale(appLocale),
+                          builder: (context, snapshot) =>
+                              Text(appLocale.translations.misskey.lang__),
                         ),
                         subtitle: Text(appLocale.languageTag),
                         value: appLocale,
                         groupValue: locale,
                         onChanged: (locale) {
                           ref
-                              .read(
-                                generalSettingsNotifierProvider.notifier,
-                              )
+                              .read(generalSettingsNotifierProvider.notifier)
                               .setLocale(locale);
                           if (locale == null) {
                             LocaleSettings.useDeviceLocale();
