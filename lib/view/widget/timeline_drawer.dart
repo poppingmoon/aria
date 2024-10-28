@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/misskey_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
-import '../../util/navigate.dart';
+import '../../util/lookup.dart';
 import '../dialog/text_field_dialog.dart';
 import 'user_avatar.dart';
 import 'username_widget.dart';
@@ -181,34 +179,7 @@ class TimelineDrawer extends HookConsumerWidget {
                       );
                       if (!context.mounted) return;
                       if (result == null) return;
-                      final query = result.trim();
-                      if (query.startsWith('@') && !query.contains(' ')) {
-                        await context.push('/$account/$query');
-                      } else if (query.startsWith('#')) {
-                        await context
-                            .push('/$account/tags/${query.substring(1)}');
-                      } else if (query.startsWith('https://')) {
-                        final url = Uri.tryParse(query);
-                        if (url == null) return;
-                        try {
-                          final response = await ref
-                              .read(misskeyProvider(account))
-                              .ap
-                              .show(ApShowRequest(uri: url));
-                          if (!context.mounted) return;
-                          if (response.type == 'User') {
-                            await context.push(
-                              '/$account/users/${response.object['id']}',
-                            );
-                          } else if (response.type == 'Note') {
-                            await context.push(
-                              '/$account/notes/${response.object['id']}',
-                            );
-                          }
-                        } catch (_) {
-                          await navigate(ref, account, query);
-                        }
-                      }
+                      await lookup(ref, account, result.trim());
                     },
                     child: ListTile(
                       leading: const Icon(Icons.travel_explore),
