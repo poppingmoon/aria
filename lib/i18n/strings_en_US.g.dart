@@ -190,6 +190,7 @@ class TranslationsAriaEnUs {
 		const TextSpan(text: 'Renoted by '),
 		user,
 	]);
+	String get reset => 'Reset';
 	String get rotate => 'Rotate';
 	String get scale => 'Scale';
 	String get selectIcon => 'Select an icon';
@@ -228,6 +229,7 @@ class TranslationsAriaEnUs {
 	String get sinceDate => 'Since';
 	String get stackTrace => 'Stack trace';
 	String get streamingChannel => 'Streaming channel';
+	String get swapCw => 'Swap comments with the body';
 	String get tabName => 'Tab name';
 	String get tabType => 'Tab type';
 	String get tabs => 'Tabs';

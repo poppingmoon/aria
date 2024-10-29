@@ -32,6 +32,7 @@ import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
 import '../../util/future_with_dialog.dart';
+import '../dialog/confirmation_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
 import '../page/channel/channels_page.dart';
@@ -273,6 +274,16 @@ class PostForm extends HookConsumerWidget {
     final isFocused = useState(false);
     ref.listen(
       postNotifierProvider(account.value, noteId: noteId)
+          .select((request) => request.cw),
+      (_, cw) {
+        final s = cw ?? '';
+        if (s != cwController.text) {
+          cwController.text = s;
+        }
+      },
+    );
+    ref.listen(
+      postNotifierProvider(account.value, noteId: noteId)
           .select((request) => request.text),
       (_, text) {
         final s = text ?? '';
@@ -462,50 +473,105 @@ class PostForm extends HookConsumerWidget {
                         ? const Icon(Icons.rocket_outlined)
                         : const Icon(Icons.rocket),
                   ),
-                  IconButton(
-                    onPressed: noteId == null
-                        ? () async {
-                            final result = await showModalBottomSheet<
-                                (ReactionAcceptance?,)>(
-                              context: context,
-                              builder: (context) => ListView(
-                                shrinkWrap: true,
-                                children: [
-                                  ListTile(
-                                    title: Text(
-                                      t.misskey.reactionAcceptance,
-                                    ),
-                                  ),
-                                  const Divider(height: 0.0),
-                                  ...[
-                                    null,
-                                    ...ReactionAcceptance.values,
-                                  ].map(
-                                    (acceptance) => ListTile(
-                                      leading: ReactionAcceptanceIcon(
-                                        acceptance: acceptance,
+                  PopupMenuButton<void>(
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        onTap: noteId == null
+                            ? () async {
+                                final result = await showModalBottomSheet<
+                                    (ReactionAcceptance?,)>(
+                                  context: context,
+                                  builder: (context) => ListView(
+                                    shrinkWrap: true,
+                                    children: [
+                                      ListTile(
+                                        title: Text(
+                                          t.misskey.reactionAcceptance,
+                                        ),
                                       ),
-                                      title: ReactionAcceptanceWidget(
-                                        acceptance: acceptance,
+                                      const Divider(height: 0.0),
+                                      ...[
+                                        null,
+                                        ...ReactionAcceptance.values,
+                                      ].map(
+                                        (acceptance) => ListTile(
+                                          leading: ReactionAcceptanceIcon(
+                                            acceptance: acceptance,
+                                          ),
+                                          title: ReactionAcceptanceWidget(
+                                            acceptance: acceptance,
+                                          ),
+                                          onTap: () =>
+                                              context.pop((acceptance,)),
+                                        ),
                                       ),
-                                      onTap: () => context.pop((acceptance,)),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            );
-                            if (result != null) {
-                              ref
-                                  .read(
-                                    postNotifierProvider(account.value)
-                                        .notifier,
-                                  )
-                                  .setReactionAcceptance(result.$1);
-                            }
+                                );
+                                if (result != null) {
+                                  ref
+                                      .read(
+                                        postNotifierProvider(account.value)
+                                            .notifier,
+                                      )
+                                      .setReactionAcceptance(result.$1);
+                                }
+                              }
+                            : null,
+                        child: ListTile(
+                          leading: ReactionAcceptanceIcon(
+                            acceptance: request.reactionAcceptance,
+                          ),
+                          title: Text(t.misskey.reactionAcceptance),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: () {
+                          final text = request.text;
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setText(request.cw);
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setCw(text?.replaceAll('\n', ' '));
+                          useCw.value = true;
+                        },
+                        enabled: request.text != null || request.cw != null,
+                        child: ListTile(
+                          leading: const Icon(Icons.swap_vert),
+                          title: Text(t.aria.swapCw),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: () async {
+                          final confirmed = await confirm(
+                            context,
+                            message: t.misskey.resetAreYouSure,
+                          );
+                          if (!context.mounted) return;
+                          if (confirmed) {
+                            ref
+                                .read(
+                                  postNotifierProvider(account.value).notifier,
+                                )
+                                .reset();
                           }
-                        : null,
-                    icon: ReactionAcceptanceIcon(
-                      acceptance: request.reactionAcceptance,
+                        },
+                        child: ListTile(
+                          leading: const Icon(Icons.delete),
+                          title: Text(t.aria.reset),
+                          iconColor: colors.error,
+                          textColor: colors.error,
+                        ),
+                      ),
+                    ],
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.more_horiz),
                     ),
                   ),
                   if (showPostButton) ...[
