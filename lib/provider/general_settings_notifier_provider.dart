@@ -505,6 +505,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setEnableSpellCheck(bool enableSpellCheck) async {
+    state = state.copyWith(enableSpellCheck: enableSpellCheck);
+    await _save();
+  }
+
   Future<void> setEnablePredictiveBack(bool enablePredictiveBack) async {
     state = state.copyWith(enablePredictiveBack: enablePredictiveBack);
     await _save();

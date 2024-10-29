@@ -129,6 +129,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool confirmBeforeFollow,
     @Default(false) bool confirmWhenRevealingSensitiveMedia,
     @Default(LaunchMode.externalApplication) LaunchMode launchMode,
+    @Default(false) bool enableSpellCheck,
     @Default(false) bool enablePredictiveBack,
 
     // Theme

@@ -139,6 +139,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       launchMode:
           $enumDecodeNullable(_$LaunchModeEnumMap, json['launchMode']) ??
               LaunchMode.externalApplication,
+      enableSpellCheck: json['enableSpellCheck'] as bool? ?? false,
       enablePredictiveBack: json['enablePredictiveBack'] as bool? ?? false,
       themeMode: $enumDecodeNullable(_$ThemeModeEnumMap, json['themeMode']) ??
           ThemeMode.system,
@@ -259,6 +260,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   val['confirmWhenRevealingSensitiveMedia'] =
       instance.confirmWhenRevealingSensitiveMedia;
   val['launchMode'] = _$LaunchModeEnumMap[instance.launchMode]!;
+  val['enableSpellCheck'] = instance.enableSpellCheck;
   val['enablePredictiveBack'] = instance.enablePredictiveBack;
   val['themeMode'] = _$ThemeModeEnumMap[instance.themeMode]!;
   val['lightThemeId'] = instance.lightThemeId;

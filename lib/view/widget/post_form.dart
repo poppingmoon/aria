@@ -257,6 +257,10 @@ class PostForm extends HookConsumerWidget {
       _ when request.renoteId != null => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
+    final enableSpellCheck = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.enableSpellCheck),
+    );
     final useCw =
         useState(useMemoized(() => request.cw?.isNotEmpty ?? false, []));
     final cwController = this.cwController ??
@@ -840,6 +844,9 @@ class PostForm extends HookConsumerWidget {
                     textInputAction: TextInputAction.next,
                     maxLength: (request.cw?.length ?? 0) > 80 ? 100 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
+                    spellCheckConfiguration: enableSpellCheck
+                        ? const SpellCheckConfiguration()
+                        : null,
                   ),
                 ),
               ),
@@ -907,6 +914,8 @@ class PostForm extends HookConsumerWidget {
                   onLiveTextInput: null,
                   anchors: editableTextState.contextMenuAnchors,
                 ),
+                spellCheckConfiguration:
+                    enableSpellCheck ? const SpellCheckConfiguration() : null,
               ),
             ),
             Padding(
