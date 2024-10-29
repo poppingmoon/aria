@@ -282,7 +282,13 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void setCw(String? cw) {
-    state = state.copyWith(cw: cw?.isNotEmpty ?? false ? cw : null);
+    if ((cw == null || cw.isEmpty) && state.cw != null) {
+      state = state.copyWith(cw: null);
+    } else if (cw != state.cw) {
+      state = state.copyWith(cw: cw);
+    } else {
+      return;
+    }
     _scheduleSave();
   }
 
@@ -462,7 +468,13 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void setText(String? text) {
-    state = state.copyWith(text: text?.isNotEmpty ?? false ? text : null);
+    if ((text == null || text.isEmpty) && state.text != null) {
+      state = state.copyWith(text: null);
+    } else if (text != state.text) {
+      state = state.copyWith(text: text);
+    } else {
+      return;
+    }
     _scheduleSave();
   }
 
