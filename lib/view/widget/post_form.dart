@@ -274,6 +274,16 @@ class PostForm extends HookConsumerWidget {
     final isFocused = useState(false);
     ref.listen(
       postNotifierProvider(account.value, noteId: noteId)
+          .select((request) => request.cw),
+      (_, cw) {
+        final s = cw ?? '';
+        if (s != cwController.text) {
+          cwController.text = s;
+        }
+      },
+    );
+    ref.listen(
+      postNotifierProvider(account.value, noteId: noteId)
           .select((request) => request.text),
       (_, text) {
         final s = text ?? '';
@@ -513,6 +523,27 @@ class PostForm extends HookConsumerWidget {
                             acceptance: request.reactionAcceptance,
                           ),
                           title: Text(t.misskey.reactionAcceptance),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: () {
+                          final text = request.text;
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setText(request.cw);
+                          ref
+                              .read(
+                                postNotifierProvider(account.value).notifier,
+                              )
+                              .setCw(text?.replaceAll('\n', ' '));
+                          useCw.value = true;
+                        },
+                        enabled: request.text != null || request.cw != null,
+                        child: ListTile(
+                          leading: const Icon(Icons.swap_vert),
+                          title: Text(t.aria.swapCw),
                         ),
                       ),
                       PopupMenuItem(
