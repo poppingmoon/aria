@@ -32,6 +32,7 @@ import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
 import '../../util/future_with_dialog.dart';
+import '../dialog/confirmation_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
 import '../page/channel/channels_page.dart';
@@ -512,6 +513,28 @@ class PostForm extends HookConsumerWidget {
                             acceptance: request.reactionAcceptance,
                           ),
                           title: Text(t.misskey.reactionAcceptance),
+                        ),
+                      ),
+                      PopupMenuItem(
+                        onTap: () async {
+                          final confirmed = await confirm(
+                            context,
+                            message: t.misskey.resetAreYouSure,
+                          );
+                          if (!context.mounted) return;
+                          if (confirmed) {
+                            ref
+                                .read(
+                                  postNotifierProvider(account.value).notifier,
+                                )
+                                .reset();
+                          }
+                        },
+                        child: ListTile(
+                          leading: const Icon(Icons.delete),
+                          title: Text(t.aria.reset),
+                          iconColor: colors.error,
+                          textColor: colors.error,
                         ),
                       ),
                     ],

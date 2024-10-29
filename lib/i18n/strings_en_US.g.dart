@@ -190,6 +190,7 @@ class TranslationsAriaEnUs {
 		const TextSpan(text: 'Renoted by '),
 		user,
 	]);
+	String get reset => 'Reset';
 	String get rotate => 'Rotate';
 	String get scale => 'Scale';
 	String get selectIcon => 'Select an icon';
