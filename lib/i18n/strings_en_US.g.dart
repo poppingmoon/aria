@@ -95,6 +95,7 @@ class TranslationsAriaEnUs {
 	String get enableEmojiFadeIn => 'Enable fade-in animations for custom emojis';
 	String get enableFederation => 'Enable federation';
 	String get enablePredictiveBack => 'Enable predictive back animations';
+	String get enableSpellCheck => 'Enable spell check';
 	String get endpoint => 'Endpoint';
 	String get expandNote => 'Expand note';
 	String get extraMentionsWarning => 'This note includes mentions that are not included in the target note of reply';

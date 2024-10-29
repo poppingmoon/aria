@@ -214,6 +214,15 @@ class BehaviorPage extends ConsumerWidget {
               }
             },
           ),
+          if (defaultTargetPlatform
+              case TargetPlatform.android || TargetPlatform.iOS)
+            SwitchListTile(
+              title: Text(t.aria.enableSpellCheck),
+              value: settings.enableSpellCheck,
+              onChanged: (value) => ref
+                  .read(generalSettingsNotifierProvider.notifier)
+                  .setEnableSpellCheck(value),
+            ),
           if (defaultTargetPlatform == TargetPlatform.android)
             SwitchListTile(
               title: Text(t.aria.enablePredictiveBack),
