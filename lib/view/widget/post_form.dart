@@ -462,50 +462,62 @@ class PostForm extends HookConsumerWidget {
                         ? const Icon(Icons.rocket_outlined)
                         : const Icon(Icons.rocket),
                   ),
-                  IconButton(
-                    onPressed: noteId == null
-                        ? () async {
-                            final result = await showModalBottomSheet<
-                                (ReactionAcceptance?,)>(
-                              context: context,
-                              builder: (context) => ListView(
-                                shrinkWrap: true,
-                                children: [
-                                  ListTile(
-                                    title: Text(
-                                      t.misskey.reactionAcceptance,
-                                    ),
-                                  ),
-                                  const Divider(height: 0.0),
-                                  ...[
-                                    null,
-                                    ...ReactionAcceptance.values,
-                                  ].map(
-                                    (acceptance) => ListTile(
-                                      leading: ReactionAcceptanceIcon(
-                                        acceptance: acceptance,
+                  PopupMenuButton<void>(
+                    itemBuilder: (context) => [
+                      PopupMenuItem(
+                        onTap: noteId == null
+                            ? () async {
+                                final result = await showModalBottomSheet<
+                                    (ReactionAcceptance?,)>(
+                                  context: context,
+                                  builder: (context) => ListView(
+                                    shrinkWrap: true,
+                                    children: [
+                                      ListTile(
+                                        title: Text(
+                                          t.misskey.reactionAcceptance,
+                                        ),
                                       ),
-                                      title: ReactionAcceptanceWidget(
-                                        acceptance: acceptance,
+                                      const Divider(height: 0.0),
+                                      ...[
+                                        null,
+                                        ...ReactionAcceptance.values,
+                                      ].map(
+                                        (acceptance) => ListTile(
+                                          leading: ReactionAcceptanceIcon(
+                                            acceptance: acceptance,
+                                          ),
+                                          title: ReactionAcceptanceWidget(
+                                            acceptance: acceptance,
+                                          ),
+                                          onTap: () =>
+                                              context.pop((acceptance,)),
+                                        ),
                                       ),
-                                      onTap: () => context.pop((acceptance,)),
-                                    ),
+                                    ],
                                   ),
-                                ],
-                              ),
-                            );
-                            if (result != null) {
-                              ref
-                                  .read(
-                                    postNotifierProvider(account.value)
-                                        .notifier,
-                                  )
-                                  .setReactionAcceptance(result.$1);
-                            }
-                          }
-                        : null,
-                    icon: ReactionAcceptanceIcon(
-                      acceptance: request.reactionAcceptance,
+                                );
+                                if (result != null) {
+                                  ref
+                                      .read(
+                                        postNotifierProvider(account.value)
+                                            .notifier,
+                                      )
+                                      .setReactionAcceptance(result.$1);
+                                }
+                              }
+                            : null,
+                        child: ListTile(
+                          leading: ReactionAcceptanceIcon(
+                            acceptance: request.reactionAcceptance,
+                          ),
+                          title: Text(t.misskey.reactionAcceptance),
+                        ),
+                      ),
+                    ],
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.more_horiz),
                     ),
                   ),
                   if (showPostButton) ...[
