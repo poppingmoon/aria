@@ -961,7 +961,8 @@ class PostForm extends HookConsumerWidget {
                           final data =
                               await Clipboard.getData(Clipboard.kTextPlain);
                           if (data case ClipboardData(:final text?)) {
-                            if (Uri.tryParse(text) != null) {
+                            if (Uri.tryParse(text) case final url?
+                                when RegExp(r'^https?$').hasMatch(url.scheme)) {
                               if (!controller.selection.isCollapsed) {
                                 controller.insert('[', ']()');
                                 controller.selection = TextSelection.collapsed(
