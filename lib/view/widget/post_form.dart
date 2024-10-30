@@ -219,13 +219,15 @@ class PostForm extends HookConsumerWidget {
       [mentions],
     );
     final extraMentions = useMemoized(
-      () => mentions.where(
-        (mention) =>
-            reply?.user.acct != mention.acct &&
-            replyMentions.every(
-              (replyMention) => replyMention.acct != mention.acct,
-            ),
-      ),
+      () => reply != null
+          ? mentions.where(
+              (mention) =>
+                  reply.user.acct != mention.acct &&
+                  replyMentions.every(
+                    (replyMention) => replyMention.acct != mention.acct,
+                  ),
+            )
+          : <MfmMention>[],
       [mentions, reply, replyMentions],
     );
     final visibleUsers = useState(<UserDetailed>[]);
@@ -236,6 +238,7 @@ class PostForm extends HookConsumerWidget {
               user.username == mention.username && user.host == mention.host,
         ),
       ),
+      [mentions, visibleUsers],
     );
     final canChangeLocalOnly = noteId == null &&
         request.channelId == null &&
@@ -746,7 +749,7 @@ class PostForm extends HookConsumerWidget {
               ),
             if (request.visibility == NoteVisibility.specified) ...[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Wrap(
                   spacing: 4.0,
                   runSpacing: 4.0,
@@ -795,8 +798,10 @@ class PostForm extends HookConsumerWidget {
                   ],
                 ),
               ),
-              if (notSpecifiedMentions.isNotEmpty)
+              const SizedBox(height: 8.0),
+              if (notSpecifiedMentions.isNotEmpty) ...[
                 Card(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -840,9 +845,12 @@ class PostForm extends HookConsumerWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 8.0),
+              ],
             ],
-            if (hasMentionToRemote && (request.localOnly ?? false))
+            if (hasMentionToRemote && (request.localOnly ?? false)) ...[
               Card(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -868,8 +876,11 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
-            if (extraMentions.isNotEmpty)
+              const SizedBox(height: 8.0),
+            ],
+            if (extraMentions.isNotEmpty) ...[
               Card(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -894,6 +905,8 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
+              const SizedBox(height: 8.0),
+            ],
             if (useCw.value) ...[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
