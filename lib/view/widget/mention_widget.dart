@@ -58,6 +58,7 @@ class MentionWidget extends ConsumerWidget {
                 : url,
             cacheManager: ref.watch(cacheManagerProvider),
           ),
+          onForegroundImageError: (_, __) {},
         ),
         label: Text.rich(
           TextSpan(

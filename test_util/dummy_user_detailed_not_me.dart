@@ -1,9 +1,8 @@
 import 'package:misskey_dart/misskey_dart.dart';
 
-final dummyMeDetailed = MeDetailed(
+final dummyUserDetailedNotMe = UserDetailedNotMe(
   id: '',
   username: '',
-  avatarUrl: Uri(),
   isBot: false,
   isCat: false,
   createdAt: DateTime(0),
@@ -13,9 +12,4 @@ final dummyMeDetailed = MeDetailed(
   followersCount: 0,
   followingCount: 0,
   notesCount: 0,
-  isModerator: false,
-  isAdmin: false,
-  alwaysMarkNsfw: false,
-  carefulBot: false,
-  autoAcceptFollowed: false,
 );

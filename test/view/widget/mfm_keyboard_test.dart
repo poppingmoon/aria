@@ -1,11 +1,39 @@
 import 'package:aria/model/account.dart';
-import 'package:aria/provider/shared_preferences_provider.dart';
+import 'package:aria/provider/account_settings_notifier_provider.dart';
+import 'package:aria/provider/dio_provider.dart';
 import 'package:aria/view/widget/mfm_keyboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:http_mock_adapter/http_mock_adapter.dart';
 
-import '../../../test_util/fake_shared_preferences.dart';
+import '../../../test_util/create_overrides.dart';
+import '../../../test_util/dummy_me_detailed.dart';
+import '../../../test_util/dummy_user_detailed_not_me.dart';
+
+Future<ProviderContainer> setupWidget(
+  WidgetTester tester, {
+  required Account account,
+  required TextEditingController controller,
+}) async {
+  await tester.pumpWidget(
+    ProviderScope(
+      overrides: createOverrides(account),
+      child: MaterialApp(
+        home: Material(
+          child: MfmKeyboard(
+            account: account,
+            controller: controller,
+          ),
+        ),
+      ),
+    ),
+  );
+  await tester.pumpAndSettle();
+  final container =
+      ProviderScope.containerOf(tester.element(find.byType(MfmKeyboard)));
+  return container;
+}
 
 void main() {
   group('getLastTag', () {
@@ -87,52 +115,329 @@ void main() {
   });
 
   group('widget', () {
-    testWidgets('show fallback keyboards', (tester) async {
-      final controller = TextEditingController();
-      await tester.pumpWidget(
-        MaterialApp(
-          home: MfmKeyboard(
-            account: Account.dummy(),
-            controller: controller,
-          ),
-        ),
-      );
-
-      expect(find.text(':'), findsOneWidget);
-      final lastItemFinder = find.text('?[]()');
-      await tester.scrollUntilVisible(lastItemFinder, 500.0);
-      expect(lastItemFinder, findsOneWidget);
-      await tester.tap(lastItemFinder);
-      await tester.pumpAndSettle();
-      expect(controller.text, '?[]()');
+    group('basic', () {
+      testWidgets('should show a basic keyboard', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        expect(find.text(':'), findsOne);
+        final lastItemFinder = find.text('?[]()');
+        await tester.scrollUntilVisible(lastItemFinder, 500.0);
+        expect(lastItemFinder, findsOne);
+        await tester.tap(lastItemFinder);
+        expect(controller.text, '?[]()');
+      });
     });
 
-    testWidgets('show emoji keyboards', (tester) async {
-      final controller = TextEditingController(text: ':');
-      controller.selection = const TextSelection.collapsed(offset: 1);
-      final map = {
-        '/accountSettings': '{"recentlyUsedEmojis": ["❤️"]}',
-      };
-      await tester.pumpWidget(
-        ProviderScope(
-          overrides: [
-            sharedPreferencesProvider
-                .overrideWithValue(FakeSharedPreferences(map)),
-          ],
-          child: MaterialApp(
-            home: MfmKeyboard(
-              account: Account.dummy(),
-              controller: controller,
-            ),
-          ),
-        ),
-      );
+    group('emoji', () {
+      testWidgets('should show recently used emojis', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: ':');
+        controller.selection = const TextSelection.collapsed(offset: 1);
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setRecentlyUsedEmojis(['❤️']);
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(const ValueKey('❤️')));
+        expect(controller.text, '❤️');
+      });
 
-      final buttonFinder = find.byKey(const ValueKey('❤️'));
-      expect(buttonFinder, findsOneWidget);
-      await tester.tap(buttonFinder);
-      await tester.pumpAndSettle();
-      expect(controller.text, '❤️');
+      testWidgets('should search emojis', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: ':heart');
+        controller.selection = const TextSelection.collapsed(offset: 6);
+        await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(const ValueKey('❤️')));
+        await tester.pumpAndSettle();
+        expect(controller.text, '❤️');
+      });
+
+      testWidgets('should not show an emoji keyboard after a close tag',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: ':heart:');
+        controller.selection = const TextSelection.collapsed(offset: 7);
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setRecentlyUsedEmojis(['❤️']);
+        await tester.pumpAndSettle();
+        expect(find.text(':'), findsOne);
+        expect(find.byKey(const ValueKey('❤️')), findsNothing);
+      });
+
+      testWidgets('should not show an emoji keyboard after a space',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: ': ');
+        controller.selection = const TextSelection.collapsed(offset: 2);
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setRecentlyUsedEmojis(['❤️']);
+        await tester.pumpAndSettle();
+        expect(find.text(':'), findsOne);
+        expect(find.byKey(const ValueKey('❤️')), findsNothing);
+      });
+    });
+
+    group('MFM fn', () {
+      testWidgets('should show MFM fn names', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: r'$[');
+        controller.selection = const TextSelection.collapsed(offset: 2);
+        await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await tester.pumpAndSettle();
+        expect(find.text('tada'), findsOne);
+        controller.text = r'$[x';
+        controller.selection = const TextSelection.collapsed(offset: 3);
+        await tester.pumpAndSettle();
+        expect(find.text('tada'), findsNothing);
+        await tester.tap(find.text('x2'));
+        expect(controller.text, r'$[x2 ');
+      });
+
+      testWidgets('should show MFM fn args', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: r'$[spin');
+        controller.selection = const TextSelection.collapsed(offset: 6);
+        await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await tester.pumpAndSettle();
+        expect(find.text('speed'), findsOne);
+        expect(find.text('x'), findsOne);
+        controller.text = r'$[spin.';
+        controller.selection = const TextSelection.collapsed(offset: 7);
+        await tester.pumpAndSettle();
+        expect(find.text('speed'), findsOne);
+        expect(find.text('x'), findsOne);
+        controller.text = r'$[spin.s';
+        controller.selection = const TextSelection.collapsed(offset: 8);
+        await tester.pumpAndSettle();
+        expect(find.text('x'), findsNothing);
+        await tester.tap(find.text('speed'));
+        await tester.pumpAndSettle();
+        expect(controller.text, r'$[spin.speed=1.5s');
+        expect(find.text('speed'), findsNothing);
+        await tester.tap(find.text('x'));
+        expect(controller.text, r'$[spin.speed=1.5s,x');
+      });
+
+      testWidgets('should not show an MFM fn keyboard after a close tag',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: r'$[]');
+        controller.selection = const TextSelection.collapsed(offset: 3);
+        await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await tester.pumpAndSettle();
+        expect(find.text(':'), findsOne);
+        expect(find.text('tada'), findsNothing);
+      });
+
+      testWidgets('should not show an MFM fn keyboard after a space',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: r'$[ ');
+        controller.selection = const TextSelection.collapsed(offset: 3);
+        await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await tester.pumpAndSettle();
+        expect(find.text(':'), findsOne);
+        expect(find.text('tada'), findsNothing);
+      });
+    });
+
+    group('mention', () {
+      testWidgets('should show recently used users', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+        dioAdapter.onPost(
+          'users/show',
+          (server) => server.reply(
+            200,
+            [
+              dummyMeDetailed.copyWith(username: 'testuser').toJson(),
+              dummyUserDetailedNotMe
+                  .copyWith(username: 'testuser', host: 'misskey2.tld')
+                  .toJson(),
+            ],
+          ),
+          data: {
+            'userIds': ['testuser', 'testuser@misskey2.tld'],
+          },
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setRecentlyUsedUsers(['testuser', 'testuser@misskey2.tld']);
+        controller.text = '@';
+        controller.selection = const TextSelection.collapsed(offset: 1);
+        await tester.pumpAndSettle();
+        expect(find.text('@testuser'), findsOne);
+        await tester.tap(find.text('@testuser@misskey2.tld'));
+        expect(controller.text, '@testuser@misskey2.tld ');
+      });
+
+      testWidgets('should search users', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+        dioAdapter.onPost(
+          'users/search-by-username-and-host',
+          (server) => server.reply(
+            200,
+            [
+              dummyMeDetailed.copyWith(username: 'testuser').toJson(),
+              dummyUserDetailedNotMe
+                  .copyWith(username: 'testuser', host: 'misskey2.tld')
+                  .toJson(),
+            ],
+          ),
+          data: {'username': 'testuser'},
+        );
+        controller.text = '@testuser';
+        controller.selection = const TextSelection.collapsed(offset: 9);
+        await tester.pumpAndSettle();
+        expect(find.text('@testuser'), findsOne);
+        await tester.tap(find.text('@testuser@misskey2.tld'));
+        expect(controller.text, '@testuser@misskey2.tld ');
+      });
+
+      testWidgets('should not show an mention keyboard after a space',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+        dioAdapter.onPost(
+          'users/show',
+          (server) => server.reply(
+            200,
+            [dummyMeDetailed.copyWith(username: 'testuser').toJson()],
+          ),
+          data: {
+            'userIds': ['testuser'],
+          },
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setRecentlyUsedUsers(['testuser']);
+        controller.text = '@ ';
+        controller.selection = const TextSelection.collapsed(offset: 2);
+        await tester.pumpAndSettle();
+        expect(find.text(':'), findsOne);
+        expect(find.text('@testuser'), findsNothing);
+      });
+    });
+
+    group('hashtag', () {
+      testWidgets('should show recently used hashtags', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setHashtags(['test']);
+        controller.text = '#';
+        controller.selection = const TextSelection.collapsed(offset: 1);
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('test'));
+        expect(controller.text, '#test ');
+      });
+
+      testWidgets('should search hashtags', (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+        dioAdapter.onPost(
+          'hashtags/search',
+          (server) => server.reply(200, ['test']),
+          data: {'query': 't'},
+        );
+        controller.text = '#t';
+        controller.selection = const TextSelection.collapsed(offset: 2);
+        await tester.pumpAndSettle();
+        await tester.tap(find.text('test'));
+        expect(controller.text, '#test ');
+      });
+
+      testWidgets('should not show a hashtag keyboard after a space',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController();
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setHashtags(['test']);
+        controller.text = '# ';
+        controller.selection = const TextSelection.collapsed(offset: 2);
+        await tester.pumpAndSettle();
+        expect(find.text(':'), findsOne);
+        expect(find.text('test'), findsNothing);
+      });
     });
   });
 }
