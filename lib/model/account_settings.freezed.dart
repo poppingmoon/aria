@@ -51,6 +51,8 @@ mixin _$AccountSettings {
   List<String> get recentlyUsedUsers =>
       throw _privateConstructorUsedError; // PostForm
   List<String> get hashtags => throw _privateConstructorUsedError;
+  bool get postFormUseHashtags => throw _privateConstructorUsedError;
+  List<String> get postFormHashtags => throw _privateConstructorUsedError;
 
   /// Serializes this AccountSettings to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -92,7 +94,9 @@ abstract class $AccountSettingsCopyWith<$Res> {
       List<MuteWord> hardMutedWords,
       List<String> mutedEmojis,
       List<String> recentlyUsedUsers,
-      List<String> hashtags});
+      List<String> hashtags,
+      bool postFormUseHashtags,
+      List<String> postFormHashtags});
 }
 
 /// @nodoc
@@ -134,6 +138,8 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? mutedEmojis = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
+    Object? postFormUseHashtags = null,
+    Object? postFormHashtags = null,
   }) {
     return _then(_value.copyWith(
       keepCw: null == keepCw
@@ -232,6 +238,14 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
           ? _value.hashtags
           : hashtags // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      postFormUseHashtags: null == postFormUseHashtags
+          ? _value.postFormUseHashtags
+          : postFormUseHashtags // ignore: cast_nullable_to_non_nullable
+              as bool,
+      postFormHashtags: null == postFormHashtags
+          ? _value.postFormHashtags
+          : postFormHashtags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -268,7 +282,9 @@ abstract class _$$AccountSettingsImplCopyWith<$Res>
       List<MuteWord> hardMutedWords,
       List<String> mutedEmojis,
       List<String> recentlyUsedUsers,
-      List<String> hashtags});
+      List<String> hashtags,
+      bool postFormUseHashtags,
+      List<String> postFormHashtags});
 }
 
 /// @nodoc
@@ -308,6 +324,8 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? mutedEmojis = null,
     Object? recentlyUsedUsers = null,
     Object? hashtags = null,
+    Object? postFormUseHashtags = null,
+    Object? postFormHashtags = null,
   }) {
     return _then(_$AccountSettingsImpl(
       keepCw: null == keepCw
@@ -406,6 +424,14 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
           ? _value._hashtags
           : hashtags // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      postFormUseHashtags: null == postFormUseHashtags
+          ? _value.postFormUseHashtags
+          : postFormUseHashtags // ignore: cast_nullable_to_non_nullable
+              as bool,
+      postFormHashtags: null == postFormHashtags
+          ? _value._postFormHashtags
+          : postFormHashtags // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -437,7 +463,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
       final List<MuteWord> hardMutedWords = const [],
       final List<String> mutedEmojis = const [],
       final List<String> recentlyUsedUsers = const [],
-      final List<String> hashtags = const []})
+      final List<String> hashtags = const [],
+      this.postFormUseHashtags = false,
+      final List<String> postFormHashtags = const []})
       : _pinnedEmojisForReaction = pinnedEmojisForReaction,
         _pinnedEmojis = pinnedEmojis,
         _recentlyUsedEmojis = recentlyUsedEmojis,
@@ -445,7 +473,8 @@ class _$AccountSettingsImpl implements _AccountSettings {
         _hardMutedWords = hardMutedWords,
         _mutedEmojis = mutedEmojis,
         _recentlyUsedUsers = recentlyUsedUsers,
-        _hashtags = hashtags;
+        _hashtags = hashtags,
+        _postFormHashtags = postFormHashtags;
 
   factory _$AccountSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountSettingsImplFromJson(json);
@@ -581,8 +610,21 @@ class _$AccountSettingsImpl implements _AccountSettings {
   }
 
   @override
+  @JsonKey()
+  final bool postFormUseHashtags;
+  final List<String> _postFormHashtags;
+  @override
+  @JsonKey()
+  List<String> get postFormHashtags {
+    if (_postFormHashtags is EqualUnmodifiableListView)
+      return _postFormHashtags;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_postFormHashtags);
+  }
+
+  @override
   String toString() {
-    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, mutedEmojis: $mutedEmojis, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags)';
+    return 'AccountSettings(keepCw: $keepCw, rememberNoteVisibility: $rememberNoteVisibility, defaultNoteVisibility: $defaultNoteVisibility, defaultNoteLocalOnly: $defaultNoteLocalOnly, rememberRenoteVisibility: $rememberRenoteVisibility, defaultRenoteVisibility: $defaultRenoteVisibility, defaultRenoteLocalOnly: $defaultRenoteLocalOnly, reactionAcceptance: $reactionAcceptance, visibility: $visibility, localOnly: $localOnly, renoteVisibility: $renoteVisibility, renoteLocalOnly: $renoteLocalOnly, pinnedEmojisForReaction: $pinnedEmojisForReaction, pinnedEmojis: $pinnedEmojis, recentlyUsedEmojis: $recentlyUsedEmojis, defaultReaction: $defaultReaction, uploadFolder: $uploadFolder, keepOriginalUploading: $keepOriginalUploading, keepOriginalFilename: $keepOriginalFilename, mutedWords: $mutedWords, hardMutedWords: $hardMutedWords, mutedEmojis: $mutedEmojis, recentlyUsedUsers: $recentlyUsedUsers, hashtags: $hashtags, postFormUseHashtags: $postFormUseHashtags, postFormHashtags: $postFormHashtags)';
   }
 
   @override
@@ -597,11 +639,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 other.defaultNoteVisibility == defaultNoteVisibility) &&
             (identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) ||
                 other.defaultNoteLocalOnly == defaultNoteLocalOnly) &&
-            (identical(
-                    other.rememberRenoteVisibility, rememberRenoteVisibility) ||
+            (identical(other.rememberRenoteVisibility, rememberRenoteVisibility) ||
                 other.rememberRenoteVisibility == rememberRenoteVisibility) &&
-            (identical(
-                    other.defaultRenoteVisibility, defaultRenoteVisibility) ||
+            (identical(other.defaultRenoteVisibility, defaultRenoteVisibility) ||
                 other.defaultRenoteVisibility == defaultRenoteVisibility) &&
             (identical(other.defaultRenoteLocalOnly, defaultRenoteLocalOnly) ||
                 other.defaultRenoteLocalOnly == defaultRenoteLocalOnly) &&
@@ -637,7 +677,11 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 .equals(other._mutedEmojis, _mutedEmojis) &&
             const DeepCollectionEquality()
                 .equals(other._recentlyUsedUsers, _recentlyUsedUsers) &&
-            const DeepCollectionEquality().equals(other._hashtags, _hashtags));
+            const DeepCollectionEquality().equals(other._hashtags, _hashtags) &&
+            (identical(other.postFormUseHashtags, postFormUseHashtags) ||
+                other.postFormUseHashtags == postFormUseHashtags) &&
+            const DeepCollectionEquality()
+                .equals(other._postFormHashtags, _postFormHashtags));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -667,7 +711,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
         const DeepCollectionEquality().hash(_hardMutedWords),
         const DeepCollectionEquality().hash(_mutedEmojis),
         const DeepCollectionEquality().hash(_recentlyUsedUsers),
-        const DeepCollectionEquality().hash(_hashtags)
+        const DeepCollectionEquality().hash(_hashtags),
+        postFormUseHashtags,
+        const DeepCollectionEquality().hash(_postFormHashtags)
       ]);
 
   /// Create a copy of AccountSettings
@@ -712,7 +758,9 @@ abstract class _AccountSettings implements AccountSettings {
       final List<MuteWord> hardMutedWords,
       final List<String> mutedEmojis,
       final List<String> recentlyUsedUsers,
-      final List<String> hashtags}) = _$AccountSettingsImpl;
+      final List<String> hashtags,
+      final bool postFormUseHashtags,
+      final List<String> postFormHashtags}) = _$AccountSettingsImpl;
 
   factory _AccountSettings.fromJson(Map<String, dynamic> json) =
       _$AccountSettingsImpl.fromJson;
@@ -766,6 +814,10 @@ abstract class _AccountSettings implements AccountSettings {
   List<String> get recentlyUsedUsers; // PostForm
   @override
   List<String> get hashtags;
+  @override
+  bool get postFormUseHashtags;
+  @override
+  List<String> get postFormHashtags;
 
   /// Create a copy of AccountSettings
   /// with the given fields replaced by the non-null parameter values.

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_editing_controller_extension.dart';
 import '../../extension/user_extension.dart';
@@ -35,87 +36,6 @@ enum TagType {
 
   final String tag;
 }
-
-const Map<String, Map<String, String?>> _mfmFn = {
-  'tada': {
-    'delay': '0s',
-    'speed': '1s',
-  },
-  'jelly': {
-    'speed': '1s',
-    'delay': '0s',
-  },
-  'twitch': {
-    'speed': '0.5s',
-    'delay': '0s',
-  },
-  'shake': {
-    'speed': '0.5s',
-    'delay': '0s',
-  },
-  'spin': {
-    'speed': '1.5s',
-    'delay': '0s',
-    'x': null,
-    'y': null,
-    'left': null,
-    'alternate': null,
-  },
-  'jump': {
-    'speed': '0.75s',
-    'delay': '0s',
-  },
-  'bounce': {
-    'speed': '0.75s',
-    'delay': '0s',
-  },
-  'flip': {
-    'v': null,
-    'h': null,
-  },
-  'x2': {},
-  'x3': {},
-  'x4': {},
-  'scale': {
-    'x': '1',
-    'y': '1',
-  },
-  'position': {
-    'x': '0',
-    'y': '0',
-  },
-  'fg': {
-    'color': null,
-  },
-  'bg': {
-    'color': null,
-  },
-  'border': {
-    'color': null,
-    'style': 'solid',
-    'width': '1',
-    'radius': '0',
-    'noclip': null,
-  },
-  'font': {
-    'serif': null,
-    'monospace': null,
-    'cursive': null,
-    'fantasy': null,
-  },
-  'blur': {},
-  'rainbow': {
-    'speed': '1s',
-  },
-  'sparkle': {
-    'speed': '1.5s',
-  },
-  'rotate': {
-    'deg': '90',
-  },
-  'ruby': {},
-  'unixtime': {},
-};
 
 class MfmKeyboard extends HookConsumerWidget {
   const MfmKeyboard({
@@ -148,329 +68,59 @@ class MfmKeyboard extends HookConsumerWidget {
     }
   }
 
-  List<Widget> _buildButtons(
-    WidgetRef ref,
-    TextEditingController controller,
-    TagType? tagType,
-    int tagIndex,
-  ) {
-    if (tagType != null) {
-      final selectionIndex = max(0, controller.selection.start);
-      final query = controller.text
-          .substring(tagIndex + tagType.tag.length, selectionIndex);
-      switch (tagType) {
-        case TagType.emoji:
-          if (!RegExp(r':\w+$')
-              .hasMatch(controller.text.substring(0, tagIndex))) {
-            final emojis = [
-              if (query.isEmpty)
-                ...ref
-                    .watch(recentlyUsedEmojisNotifierProvider(account))
-                    .map((emoji) => emoji.replaceAll('@.', ''))
-              else ...[
-                ...ref
-                    .watch(searchCustomEmojisProvider(account.host, query))
-                    .map((emoji) => ':${emoji.name}:'),
-                ...ref.watch(searchUnicodeEmojisProvider(query)),
-              ],
-            ];
-            if (emojis.isNotEmpty) {
-              return [
-                ...emojis.map(
-                  (emoji) => TextButton(
-                    key: ValueKey(emoji),
-                    style: TextButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    ),
-                    onPressed: () =>
-                        controller.replace(query.length + 1, emoji),
-                    child: EmojiWidget(account: account, emoji: emoji),
-                  ),
-                ),
-                TextButton(
-                  onPressed: () async {
-                    final emoji = await pickEmoji(ref, account);
-                    if (emoji != null) {
-                      controller.replace(
-                        query.length + 1,
-                        emoji.replaceAll('@.', ''),
-                      );
-                    }
-                  },
-                  child: Text(t.misskey.more),
-                ),
-              ];
-            }
-          }
-        case TagType.mfmFn:
-          final periodIndex = query.indexOf('.');
-          if (periodIndex < 0 && !_mfmFn.containsKey(query)) {
-            final fnNames = _mfmFn.keys.where((name) => name.startsWith(query));
-            if (fnNames.isNotEmpty) {
-              return fnNames
-                  .map(
-                    (name) => TextButton(
-                      onPressed: () async {
-                        controller.insert(name.substring(query.length));
-                        switch (name) {
-                          case 'scale' || 'position' || 'font':
-                            controller.insert('.', ' ');
-                          case 'fg' || 'bg':
-                            final color = await showColorPickerDialog(
-                              ref.context,
-                              Colors.red,
-                              pickersEnabled: {
-                                ColorPickerType.primary: false,
-                                ColorPickerType.accent: false,
-                                ColorPickerType.wheel: true,
-                              },
-                            );
-                            if (color != Colors.red) {
-                              controller.insert('.color=${color.hex} ');
-                            }
-
-                          case 'unixtime':
-                            final date = await pickDateTime(ref.context);
-                            if (date != null) {
-                              final unixtime =
-                                  date.millisecondsSinceEpoch ~/ 1000;
-                              controller.insert(' $unixtime');
-                            }
-                          default:
-                            controller.insert(' ');
-                        }
-                      },
-                      child: Text(name),
-                    ),
-                  )
-                  .toList();
-            }
-          } else {
-            final requiresPeriod = periodIndex < 0;
-            final fnName =
-                requiresPeriod ? query : query.substring(0, periodIndex);
-            final fnArgs = Map<String, String?>.of(_mfmFn[fnName] ?? {});
-            if (fnArgs.isNotEmpty) {
-              final queryArgNames = requiresPeriod
-                  ? ['']
-                  : query
-                      .substring(periodIndex + 1)
-                      .split(',')
-                      .map((s) => s.split('=').first)
-                      .toList();
-              final requiresComma = fnArgs.containsKey(queryArgNames.last);
-              final argQuery = requiresComma ? '' : queryArgNames.removeLast();
-              fnArgs.removeWhere(
-                (name, _) =>
-                    queryArgNames.contains(name) || !name.startsWith(argQuery),
-              );
-              if (fnArgs.isNotEmpty) {
-                return fnArgs.entries
-                    .map(
-                      (e) => TextButton(
-                        onPressed: () async {
-                          if (requiresPeriod) {
-                            controller.insert('.');
-                          }
-                          if (requiresComma) {
-                            controller.insert(',');
-                          }
-                          controller.insert(e.key.substring(argQuery.length));
-                          switch ((fnName, e.key)) {
-                            case (_, 'color'):
-                              final color = await showColorPickerDialog(
-                                ref.context,
-                                Colors.red,
-                                pickersEnabled: {
-                                  ColorPickerType.primary: false,
-                                  ColorPickerType.accent: false,
-                                  ColorPickerType.wheel: true,
-                                },
-                              );
-                              if (color != Colors.red) {
-                                controller.insert('=${color.hex}');
-                              }
-                            case ('border', 'style'):
-                              final style = await showDialog<String>(
-                                context: ref.context,
-                                builder: (context) => SimpleDialog(
-                                  children: [
-                                    'hidden',
-                                    'dotted',
-                                    'dashed',
-                                    'solid',
-                                    'double',
-                                    'groove',
-                                    'ridge',
-                                    'inset',
-                                    'outset',
-                                  ]
-                                      .map(
-                                        (style) => SimpleDialogOption(
-                                          onPressed: () => context.pop(style),
-                                          child: Text(style),
-                                        ),
-                                      )
-                                      .toList(),
-                                ),
-                              );
-                              if (style != null) {
-                                controller.insert('=$style');
-                              }
-                            default:
-                              if (e.value != null) {
-                                controller.insert('=${e.value}');
-                              }
-                          }
-                        },
-                        child: Text(e.key),
-                      ),
-                    )
-                    .toList();
-              }
-            }
-          }
-        case TagType.mention:
-          final acct = query.split('@');
-          final users = query.isEmpty
-              ? ref
-                  .watch(recentlyUsedUsersNotifierProvider(account))
-                  .valueOrNull
-              : ref
-                  .watch(
-                    searchUsersByUsernameProvider(
-                      account,
-                      acct[0],
-                      acct.elementAtOrNull(1),
-                    ),
-                  )
-                  .valueOrNull;
-          if (users != null && users.isNotEmpty) {
-            return users
-                .map(
-                  (user) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: MentionWidget(
-                      account: account,
-                      username: user.username,
-                      host: user.host ?? account.host,
-                      onTap: () => controller
-                          .insert('${user.acct.substring(query.length + 1)} '),
-                    ),
-                  ),
-                )
-                .toList();
-          }
-        case TagType.hashtag:
-          final hashtags = query.isEmpty
-              ? ref.watch(
-                  accountSettingsNotifierProvider(account)
-                      .select((settings) => settings.hashtags),
-                )
-              : ref.watch(searchHashtagsProvider(account, query)).valueOrNull;
-          if (hashtags != null && hashtags.isNotEmpty) {
-            return hashtags
-                .map(
-                  (hashtag) => TextButton(
-                    onPressed: () => controller
-                        .insert('${hashtag.substring(query.length)} '),
-                    child: Text(hashtag),
-                  ),
-                )
-                .toList();
-          }
-      }
-    }
-    return [
-      TextButton(
-        onPressed: () => controller.insert(':'),
-        child: const Text(':'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert(r'$[', ']'),
-        child: const Text(r'$['),
-      ),
-      TextButton(
-        onPressed: () async {
-          final user = await selectUser(ref.context, account);
-          if (user != null) {
-            controller.insert('${user.acct} ');
-          } else {
-            controller.insert('@');
-          }
-        },
-        child: const Text('@'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('#'),
-        child: const Text('#'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('<center>', '</center>'),
-        child: const Text('<center>'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('<small>', '</small>'),
-        child: const Text('<small>'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('<i>', '</i>'),
-        child: const Text('<i>'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('<plain>', '</plain>'),
-        child: const Text('<plain>'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('> '),
-        child: const Text('>'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('`', '`'),
-        child: const Text('`'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('```\n', '\n```'),
-        child: const Text('```'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('**', '**'),
-        child: const Text('**'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('~~', '~~'),
-        child: const Text('~~'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('[', ']()'),
-        child: const Text('[]()'),
-      ),
-      TextButton(
-        onPressed: () => controller.insert('?[', ']()'),
-        child: const Text('?[]()'),
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tagType = useState<TagType?>(null);
-    final tagIndex = useState(-1);
     useEffect(
       () {
-        final (type, index) = getLastTag();
-        tagType.value = type;
-        tagIndex.value = index;
-        controller.addListener(() {
-          final (type, index) = getLastTag();
+        void callback() {
+          final (type, _) = getLastTag();
           tagType.value = type;
-          tagIndex.value = index;
-        });
-        return;
+        }
+
+        callback();
+        controller.addListener(callback);
+        return () => controller.removeListener(callback);
       },
       [account, controller],
     );
 
+    return switch (tagType.value) {
+      TagType.emoji => MfmEmojiKeyboard(
+          account: account,
+          controller: controller,
+          fallbackBuilder: (context) =>
+              MfmBasicKeyboard(account: account, controller: controller),
+        ),
+      TagType.mfmFn => MfmFnKeyboard(
+          controller: controller,
+          fallbackBuilder: (context) =>
+              MfmBasicKeyboard(account: account, controller: controller),
+        ),
+      TagType.mention => MfmMentionKeyboard(
+          account: account,
+          controller: controller,
+          fallbackBuilder: (context) =>
+              MfmBasicKeyboard(account: account, controller: controller),
+        ),
+      TagType.hashtag => MfmHashtagKeyboard(
+          account: account,
+          controller: controller,
+          fallbackBuilder: (context) =>
+              MfmBasicKeyboard(account: account, controller: controller),
+        ),
+      null => MfmBasicKeyboard(account: account, controller: controller),
+    };
+  }
+}
+
+class _MfmKeyboardContainer extends StatelessWidget {
+  const _MfmKeyboardContainer({required this.children});
+
+  final List<Widget> children;
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
       height: 40.0,
@@ -485,14 +135,560 @@ class MfmKeyboard extends HookConsumerWidget {
         ),
         child: ListView(
           scrollDirection: Axis.horizontal,
-          children: _buildButtons(
-            ref,
-            controller,
-            tagType.value,
-            tagIndex.value,
-          ),
+          children: children,
         ),
       ),
     );
+  }
+}
+
+class MfmBasicKeyboard extends ConsumerWidget {
+  const MfmBasicKeyboard({
+    super.key,
+    required this.account,
+    required this.controller,
+  });
+
+  final Account account;
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return _MfmKeyboardContainer(
+      children: [
+        TextButton(
+          onPressed: () => controller.insert(':'),
+          child: const Text(':'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert(r'$[', ']'),
+          child: const Text(r'$['),
+        ),
+        TextButton(
+          onPressed: () async {
+            final user = await selectUser(ref.context, account);
+            if (user != null) {
+              controller.insert('${user.acct} ');
+            } else {
+              controller.insert('@');
+            }
+          },
+          child: const Text('@'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('#'),
+          child: const Text('#'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('<center>', '</center>'),
+          child: const Text('<center>'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('<small>', '</small>'),
+          child: const Text('<small>'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('<i>', '</i>'),
+          child: const Text('<i>'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('<plain>', '</plain>'),
+          child: const Text('<plain>'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('> '),
+          child: const Text('>'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('`', '`'),
+          child: const Text('`'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('```\n', '\n```'),
+          child: const Text('```'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('**', '**'),
+          child: const Text('**'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('~~', '~~'),
+          child: const Text('~~'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('[', ']()'),
+          child: const Text('[]()'),
+        ),
+        TextButton(
+          onPressed: () => controller.insert('?[', ']()'),
+          child: const Text('?[]()'),
+        ),
+      ],
+    );
+  }
+}
+
+class MfmEmojiKeyboard extends HookConsumerWidget {
+  const MfmEmojiKeyboard({
+    super.key,
+    required this.account,
+    required this.controller,
+    this.fallbackBuilder,
+  });
+
+  final Account account;
+  final TextEditingController controller;
+  final Widget Function(BuildContext context)? fallbackBuilder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final query = useState('');
+    final isAfterCloseTag = useState(false);
+    useEffect(
+      () {
+        void callback() {
+          final selectionIndex = max(0, controller.selection.start);
+          final textBeforeSelection =
+              controller.text.substring(0, selectionIndex);
+          final match = RegExp(r':?(\S*)$').firstMatch(textBeforeSelection);
+          query.value = match?[1] ?? '';
+          final tagIndex = selectionIndex - (match?[0]?.length ?? 0) + 1;
+          isAfterCloseTag.value =
+              RegExp(r':\w+$').hasMatch(controller.text.substring(0, tagIndex));
+        }
+
+        callback();
+        controller.addListener(callback);
+        return () => controller.removeListener(callback);
+      },
+      [account, controller],
+    );
+
+    if (!isAfterCloseTag.value) {
+      final emojis = [
+        if (query.value.isEmpty)
+          ...ref
+              .watch(recentlyUsedEmojisNotifierProvider(account))
+              .map((emoji) => emoji.replaceAll('@.', ''))
+        else ...[
+          ...ref
+              .watch(searchCustomEmojisProvider(account.host, query.value))
+              .map((emoji) => ':${emoji.name}:'),
+          ...ref.watch(searchUnicodeEmojisProvider(query.value)),
+        ],
+      ];
+      if (emojis.isNotEmpty) {
+        return _MfmKeyboardContainer(
+          children: [
+            ...emojis.map(
+              (emoji) => TextButton(
+                key: ValueKey(emoji),
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                ),
+                onPressed: () =>
+                    controller.replace(query.value.length + 1, emoji),
+                child: EmojiWidget(account: account, emoji: emoji),
+              ),
+            ),
+            TextButton(
+              onPressed: () async {
+                final emoji = await pickEmoji(ref, account);
+                if (emoji != null) {
+                  controller.replace(
+                    query.value.length + 1,
+                    emoji.replaceAll('@.', ''),
+                  );
+                }
+              },
+              child: Text(t.misskey.more),
+            ),
+          ],
+        );
+      }
+    }
+
+    return fallbackBuilder?.call(context) ?? const SizedBox.shrink();
+  }
+}
+
+class MfmFnKeyboard extends HookConsumerWidget {
+  const MfmFnKeyboard({
+    super.key,
+    required this.controller,
+    this.fallbackBuilder,
+  });
+
+  final TextEditingController controller;
+  final Widget Function(BuildContext context)? fallbackBuilder;
+
+  static const Map<String, Map<String, String?>> _mfmFn = {
+    'tada': {
+      'delay': '0s',
+      'speed': '1s',
+    },
+    'jelly': {
+      'speed': '1s',
+      'delay': '0s',
+    },
+    'twitch': {
+      'speed': '0.5s',
+      'delay': '0s',
+    },
+    'shake': {
+      'speed': '0.5s',
+      'delay': '0s',
+    },
+    'spin': {
+      'speed': '1.5s',
+      'delay': '0s',
+      'x': null,
+      'y': null,
+      'left': null,
+      'alternate': null,
+    },
+    'jump': {
+      'speed': '0.75s',
+      'delay': '0s',
+    },
+    'bounce': {
+      'speed': '0.75s',
+      'delay': '0s',
+    },
+    'flip': {
+      'v': null,
+      'h': null,
+    },
+    'x2': {},
+    'x3': {},
+    'x4': {},
+    'scale': {
+      'x': '1',
+      'y': '1',
+    },
+    'position': {
+      'x': '0',
+      'y': '0',
+    },
+    'fg': {
+      'color': null,
+    },
+    'bg': {
+      'color': null,
+    },
+    'border': {
+      'color': null,
+      'style': 'solid',
+      'width': '1',
+      'radius': '0',
+      'noclip': null,
+    },
+    'font': {
+      'serif': null,
+      'monospace': null,
+      'cursive': null,
+      'fantasy': null,
+    },
+    'blur': {},
+    'rainbow': {
+      'speed': '1s',
+    },
+    'sparkle': {
+      'speed': '1.5s',
+    },
+    'rotate': {
+      'deg': '90',
+    },
+    'ruby': {},
+    'unixtime': {},
+  };
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final query = useState('');
+    final periodIndex = useState(-1);
+    useEffect(
+      () {
+        void callback() {
+          final selectionIndex = max(0, controller.selection.start);
+          final textBeforeSelection =
+              controller.text.substring(0, selectionIndex);
+          query.value =
+              RegExp(r'(\$\[)?(\S*)$').firstMatch(textBeforeSelection)?[2] ??
+                  '';
+          periodIndex.value = query.value.indexOf('.');
+        }
+
+        callback();
+        controller.addListener(callback);
+        return () => controller.removeListener(callback);
+      },
+      [controller],
+    );
+
+    if (periodIndex.value < 0 && !_mfmFn.containsKey(query.value)) {
+      final fnNames = _mfmFn.keys.where((name) => name.startsWith(query.value));
+      if (fnNames.isNotEmpty) {
+        return _MfmKeyboardContainer(
+          children: fnNames
+              .map(
+                (name) => TextButton(
+                  onPressed: () async {
+                    controller.insert(name.substring(query.value.length));
+                    switch (name) {
+                      case 'scale' || 'position' || 'font':
+                        controller.insert('.', ' ');
+                      case 'fg' || 'bg':
+                        final color = await showColorPickerDialog(
+                          ref.context,
+                          Colors.red,
+                          pickersEnabled: {
+                            ColorPickerType.primary: false,
+                            ColorPickerType.accent: false,
+                            ColorPickerType.wheel: true,
+                          },
+                        );
+                        if (color != Colors.red) {
+                          controller.insert('.color=${color.hex} ');
+                        }
+
+                      case 'unixtime':
+                        final date = await pickDateTime(ref.context);
+                        if (date != null) {
+                          final unixtime = date.millisecondsSinceEpoch ~/ 1000;
+                          controller.insert(' $unixtime');
+                        }
+                      default:
+                        controller.insert(' ');
+                    }
+                  },
+                  child: Text(name),
+                ),
+              )
+              .toList(),
+        );
+      }
+    } else {
+      final requiresPeriod = periodIndex.value < 0;
+      final fnName = requiresPeriod
+          ? query.value
+          : query.value.substring(0, periodIndex.value);
+      final fnArgs = Map<String, String?>.of(_mfmFn[fnName] ?? {});
+      if (fnArgs.isNotEmpty) {
+        final queryArgNames = requiresPeriod
+            ? ['']
+            : query.value
+                .substring(periodIndex.value + 1)
+                .split(',')
+                .map((s) => s.split('=').first)
+                .toList();
+        final requiresComma = fnArgs.containsKey(queryArgNames.last);
+        final argQuery = requiresComma ? '' : queryArgNames.removeLast();
+        fnArgs.removeWhere(
+          (name, _) =>
+              queryArgNames.contains(name) || !name.startsWith(argQuery),
+        );
+        if (fnArgs.isNotEmpty) {
+          return _MfmKeyboardContainer(
+            children: fnArgs.entries
+                .map(
+                  (e) => TextButton(
+                    onPressed: () async {
+                      if (requiresPeriod) {
+                        controller.insert('.');
+                      }
+                      if (requiresComma) {
+                        controller.insert(',');
+                      }
+                      controller.insert(e.key.substring(argQuery.length));
+                      switch ((fnName, e.key)) {
+                        case (_, 'color'):
+                          final color = await showColorPickerDialog(
+                            ref.context,
+                            Colors.red,
+                            pickersEnabled: {
+                              ColorPickerType.primary: false,
+                              ColorPickerType.accent: false,
+                              ColorPickerType.wheel: true,
+                            },
+                          );
+                          if (color != Colors.red) {
+                            controller.insert('=${color.hex}');
+                          }
+                        case ('border', 'style'):
+                          final style = await showDialog<String>(
+                            context: ref.context,
+                            builder: (context) => SimpleDialog(
+                              children: [
+                                'hidden',
+                                'dotted',
+                                'dashed',
+                                'solid',
+                                'double',
+                                'groove',
+                                'ridge',
+                                'inset',
+                                'outset',
+                              ]
+                                  .map(
+                                    (style) => SimpleDialogOption(
+                                      onPressed: () => context.pop(style),
+                                      child: Text(style),
+                                    ),
+                                  )
+                                  .toList(),
+                            ),
+                          );
+                          if (style != null) {
+                            controller.insert('=$style');
+                          }
+                        default:
+                          if (e.value != null) {
+                            controller.insert('=${e.value}');
+                          }
+                      }
+                    },
+                    child: Text(e.key),
+                  ),
+                )
+                .toList(),
+          );
+        }
+      }
+    }
+
+    return fallbackBuilder?.call(context) ?? const SizedBox.shrink();
+  }
+}
+
+class MfmMentionKeyboard extends HookConsumerWidget {
+  const MfmMentionKeyboard({
+    super.key,
+    required this.account,
+    required this.controller,
+    this.fallbackBuilder,
+  });
+
+  final Account account;
+  final TextEditingController controller;
+  final Widget Function(BuildContext context)? fallbackBuilder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final query = useState('');
+    final users = useState(<UserDetailed>[]);
+    useEffect(
+      () {
+        Future<void> callback() async {
+          final selectionIndex = max(0, controller.selection.start);
+          final textBeforeSelection =
+              controller.text.substring(0, selectionIndex);
+          query.value =
+              RegExp(r'@?(\S*)$').firstMatch(textBeforeSelection)?[1] ?? '';
+          if (query.value case final query when query.isNotEmpty) {
+            final acct = query.split('@');
+            users.value = await ref.read(
+              searchUsersByUsernameProvider(
+                account,
+                acct.first,
+                acct.elementAtOrNull(1),
+              ).future,
+            );
+          }
+        }
+
+        callback();
+        controller.addListener(callback);
+        return () => controller.removeListener(callback);
+      },
+      [account, controller],
+    );
+    final recentlyUsedUsers =
+        ref.watch(recentlyUsedUsersNotifierProvider(account)).valueOrNull;
+
+    if (query.value.isEmpty ? recentlyUsedUsers : users.value case final users?
+        when users.isNotEmpty) {
+      return _MfmKeyboardContainer(
+        children: users
+            .map(
+              (user) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: MentionWidget(
+                  account: account,
+                  username: user.username,
+                  host: user.host ?? account.host,
+                  onTap: () => controller.insert(
+                    '${user.acct.substring(query.value.length + 1)} ',
+                  ),
+                ),
+              ),
+            )
+            .toList(),
+      );
+    }
+
+    return fallbackBuilder?.call(context) ?? const SizedBox.shrink();
+  }
+}
+
+class MfmHashtagKeyboard extends HookConsumerWidget {
+  const MfmHashtagKeyboard({
+    super.key,
+    required this.account,
+    required this.controller,
+    this.fallbackBuilder,
+  });
+
+  final Account account;
+  final TextEditingController controller;
+  final Widget Function(BuildContext context)? fallbackBuilder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final query = useState('');
+    final hashtags = useState(<String>[]);
+    useEffect(
+      () {
+        Future<void> callback() async {
+          final selectionIndex = max(0, controller.selection.start);
+          final textBeforeSelection =
+              controller.text.substring(0, selectionIndex);
+          query.value =
+              RegExp(r'#?(\S*)$').firstMatch(textBeforeSelection)?[1] ?? '';
+          if (query.value case final query when query.isNotEmpty) {
+            hashtags.value =
+                await ref.read(searchHashtagsProvider(account, query).future);
+          } else {
+            hashtags.value = [];
+          }
+        }
+
+        callback();
+        controller.addListener(callback);
+        return () => controller.removeListener(callback);
+      },
+      [account, controller],
+    );
+    final history = ref.watch(
+      accountSettingsNotifierProvider(account)
+          .select((settings) => settings.hashtags),
+    );
+
+    if (query.value.isEmpty ? history : hashtags.value case final hashtags
+        when hashtags.isNotEmpty) {
+      return _MfmKeyboardContainer(
+        children: hashtags
+            .map(
+              (hashtag) => TextButton(
+                onPressed: () => controller
+                    .insert('${hashtag.substring(query.value.length)} '),
+                child: Text(hashtag),
+              ),
+            )
+            .toList(),
+      );
+    }
+
+    return fallbackBuilder?.call(context) ?? const SizedBox.shrink();
   }
 }

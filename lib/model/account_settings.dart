@@ -44,6 +44,8 @@ class AccountSettings with _$AccountSettings {
 
     // PostForm
     @Default([]) List<String> hashtags,
+    @Default(false) bool postFormUseHashtags,
+    @Default([]) List<String> postFormHashtags,
   }) = _AccountSettings;
 
   factory AccountSettings.fromJson(Map<String, Object?> json) =>

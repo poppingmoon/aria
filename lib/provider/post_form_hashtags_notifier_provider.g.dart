@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'account_settings_notifier_provider.dart';
+part of 'post_form_hashtags_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountSettingsNotifierHash() =>
-    r'f4aafb2d7072ca2ab428674abd69667529b8f178';
+String _$postFormHashtagsNotifierHash() =>
+    r'c2c120a5f2b3ea5c4e70d8a173901b1275af8988';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,36 +30,36 @@ class _SystemHash {
   }
 }
 
-abstract class _$AccountSettingsNotifier
-    extends BuildlessNotifier<AccountSettings> {
+abstract class _$PostFormHashtagsNotifier
+    extends BuildlessNotifier<List<String>> {
   late final Account account;
 
-  AccountSettings build(
+  List<String> build(
     Account account,
   );
 }
 
-/// See also [AccountSettingsNotifier].
-@ProviderFor(AccountSettingsNotifier)
-const accountSettingsNotifierProvider = AccountSettingsNotifierFamily();
+/// See also [PostFormHashtagsNotifier].
+@ProviderFor(PostFormHashtagsNotifier)
+const postFormHashtagsNotifierProvider = PostFormHashtagsNotifierFamily();
 
-/// See also [AccountSettingsNotifier].
-class AccountSettingsNotifierFamily extends Family<AccountSettings> {
-  /// See also [AccountSettingsNotifier].
-  const AccountSettingsNotifierFamily();
+/// See also [PostFormHashtagsNotifier].
+class PostFormHashtagsNotifierFamily extends Family<List<String>> {
+  /// See also [PostFormHashtagsNotifier].
+  const PostFormHashtagsNotifierFamily();
 
-  /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider call(
+  /// See also [PostFormHashtagsNotifier].
+  PostFormHashtagsNotifierProvider call(
     Account account,
   ) {
-    return AccountSettingsNotifierProvider(
+    return PostFormHashtagsNotifierProvider(
       account,
     );
   }
 
   @override
-  AccountSettingsNotifierProvider getProviderOverride(
-    covariant AccountSettingsNotifierProvider provider,
+  PostFormHashtagsNotifierProvider getProviderOverride(
+    covariant PostFormHashtagsNotifierProvider provider,
   ) {
     return call(
       provider.account,
@@ -78,30 +78,30 @@ class AccountSettingsNotifierFamily extends Family<AccountSettings> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'accountSettingsNotifierProvider';
+  String? get name => r'postFormHashtagsNotifierProvider';
 }
 
-/// See also [AccountSettingsNotifier].
-class AccountSettingsNotifierProvider
-    extends NotifierProviderImpl<AccountSettingsNotifier, AccountSettings> {
-  /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider(
+/// See also [PostFormHashtagsNotifier].
+class PostFormHashtagsNotifierProvider
+    extends NotifierProviderImpl<PostFormHashtagsNotifier, List<String>> {
+  /// See also [PostFormHashtagsNotifier].
+  PostFormHashtagsNotifierProvider(
     Account account,
   ) : this._internal(
-          () => AccountSettingsNotifier()..account = account,
-          from: accountSettingsNotifierProvider,
-          name: r'accountSettingsNotifierProvider',
+          () => PostFormHashtagsNotifier()..account = account,
+          from: postFormHashtagsNotifierProvider,
+          name: r'postFormHashtagsNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$accountSettingsNotifierHash,
-          dependencies: AccountSettingsNotifierFamily._dependencies,
+                  : _$postFormHashtagsNotifierHash,
+          dependencies: PostFormHashtagsNotifierFamily._dependencies,
           allTransitiveDependencies:
-              AccountSettingsNotifierFamily._allTransitiveDependencies,
+              PostFormHashtagsNotifierFamily._allTransitiveDependencies,
           account: account,
         );
 
-  AccountSettingsNotifierProvider._internal(
+  PostFormHashtagsNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -114,8 +114,8 @@ class AccountSettingsNotifierProvider
   final Account account;
 
   @override
-  AccountSettings runNotifierBuild(
-    covariant AccountSettingsNotifier notifier,
+  List<String> runNotifierBuild(
+    covariant PostFormHashtagsNotifier notifier,
   ) {
     return notifier.build(
       account,
@@ -123,10 +123,10 @@ class AccountSettingsNotifierProvider
   }
 
   @override
-  Override overrideWith(AccountSettingsNotifier Function() create) {
+  Override overrideWith(PostFormHashtagsNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: AccountSettingsNotifierProvider._internal(
+      override: PostFormHashtagsNotifierProvider._internal(
         () => create()..account = account,
         from: from,
         name: null,
@@ -139,14 +139,15 @@ class AccountSettingsNotifierProvider
   }
 
   @override
-  NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
+  NotifierProviderElement<PostFormHashtagsNotifier, List<String>>
       createElement() {
-    return _AccountSettingsNotifierProviderElement(this);
+    return _PostFormHashtagsNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is AccountSettingsNotifierProvider && other.account == account;
+    return other is PostFormHashtagsNotifierProvider &&
+        other.account == account;
   }
 
   @override
@@ -160,18 +161,18 @@ class AccountSettingsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin AccountSettingsNotifierRef on NotifierProviderRef<AccountSettings> {
+mixin PostFormHashtagsNotifierRef on NotifierProviderRef<List<String>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
-class _AccountSettingsNotifierProviderElement
-    extends NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
-    with AccountSettingsNotifierRef {
-  _AccountSettingsNotifierProviderElement(super.provider);
+class _PostFormHashtagsNotifierProviderElement
+    extends NotifierProviderElement<PostFormHashtagsNotifier, List<String>>
+    with PostFormHashtagsNotifierRef {
+  _PostFormHashtagsNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as AccountSettingsNotifierProvider).account;
+  Account get account => (origin as PostFormHashtagsNotifierProvider).account;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

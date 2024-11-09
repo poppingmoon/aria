@@ -41,7 +41,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     dividerColor: colors.divider,
     canvasColor: colors.bg,
     scaffoldBackgroundColor: colors.bg,
-    textTheme: ThemeData.light()
+    textTheme: ThemeData(brightness: brightness)
         .textTheme
         .merge(
           TextTheme(
@@ -63,6 +63,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
               : null,
           displayColor: colors.fg,
           bodyColor: colors.fg,
+          decorationColor: colors.fg,
         ),
     iconTheme: IconThemeData(color: colors.fg),
     inputDecorationTheme: InputDecorationTheme(

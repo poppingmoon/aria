@@ -6,6 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../extension/note_extension.dart';
+import '../extension/notes_create_request_extension.dart';
 import '../extension/user_extension.dart';
 import '../model/account.dart';
 import '../util/extract_mentions.dart';
@@ -185,33 +186,41 @@ class PostNotifier extends _$PostNotifier {
     ref.read(sharedPreferencesProvider).remove(_key);
   }
 
-  Future<bool> post({List<String>? fileIds}) async {
+  Future<Note> post({
+    List<String>? fileIds,
+    List<String>? hashtags,
+  }) async {
     if (noteId == null) {
       final response = await ref
           .read(misskeyProvider(account))
           .notes
-          .create(state.copyWith(fileIds: fileIds));
+          .create(state.copyWith(fileIds: fileIds).addHashtags(hashtags));
       ref.read(notesNotifierProvider(account).notifier).add(response);
       reset();
+      return response;
     } else {
       final endpoints = await ref.read(endpointsProvider(account.host).future);
       if (endpoints.contains('notes/update')) {
         await ref.read(misskeyProvider(account)).notes.update(
               NotesUpdateRequest(
                 noteId: noteId!,
-                text: state.text,
+                text: state.addHashtags(hashtags).text,
                 cw: state.cw,
                 fileIds: fileIds,
                 poll: state.poll,
               ),
             );
+        final note =
+            state.copyWith(fileIds: fileIds).addHashtags(hashtags).toNote();
+        ref.read(notesNotifierProvider(account).notifier).add(note);
+        return note;
       } else {
         final response = await ref.read(misskeyProvider(account)).notes.edit(
               NotesEditRequest(
                 editId: noteId!,
                 visibility: state.visibility,
                 visibleUserIds: state.visibleUserIds,
-                text: state.text,
+                text: state.addHashtags(hashtags).text,
                 cw: state.cw,
                 localOnly: state.localOnly,
                 fileIds: fileIds,
@@ -222,9 +231,9 @@ class PostNotifier extends _$PostNotifier {
               ),
             );
         ref.read(notesNotifierProvider(account).notifier).add(response);
+        return response;
       }
     }
-    return true;
   }
 
   void setVisibility(NoteVisibility visibility) {

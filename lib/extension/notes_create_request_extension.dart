@@ -58,4 +58,23 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
               )
             : null,
       );
+
+  NotesCreateRequest addHashtags(List<String>? hashtags) {
+    if (hashtags case final hashtags? when hashtags.isNotEmpty) {
+      if (text case final text? when text.isNotEmpty) {
+        if (text.split('\n').last.trim().isEmpty) {
+          return copyWith(
+            text: '$text${hashtags.map((tag) => '#$tag').join(' ')}',
+          );
+        } else {
+          return copyWith(
+            text: '$text ${hashtags.map((tag) => '#$tag').join(' ')}',
+          );
+        }
+      } else {
+        return copyWith(text: hashtags.map((tag) => '#$tag').join(' '));
+      }
+    }
+    return this;
+  }
 }
