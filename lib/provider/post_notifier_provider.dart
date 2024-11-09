@@ -186,12 +186,15 @@ class PostNotifier extends _$PostNotifier {
     ref.read(sharedPreferencesProvider).remove(_key);
   }
 
-  Future<Note> post({List<String>? fileIds}) async {
+  Future<Note> post({
+    List<String>? fileIds,
+    List<String>? hashtags,
+  }) async {
     if (noteId == null) {
       final response = await ref
           .read(misskeyProvider(account))
           .notes
-          .create(state.copyWith(fileIds: fileIds));
+          .create(state.copyWith(fileIds: fileIds).addHashtags(hashtags));
       ref.read(notesNotifierProvider(account).notifier).add(response);
       reset();
       return response;
@@ -201,13 +204,14 @@ class PostNotifier extends _$PostNotifier {
         await ref.read(misskeyProvider(account)).notes.update(
               NotesUpdateRequest(
                 noteId: noteId!,
-                text: state.text,
+                text: state.addHashtags(hashtags).text,
                 cw: state.cw,
                 fileIds: fileIds,
                 poll: state.poll,
               ),
             );
-        final note = state.copyWith(fileIds: fileIds).toNote();
+        final note =
+            state.copyWith(fileIds: fileIds).addHashtags(hashtags).toNote();
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
@@ -216,7 +220,7 @@ class PostNotifier extends _$PostNotifier {
                 editId: noteId!,
                 visibility: state.visibility,
                 visibleUserIds: state.visibleUserIds,
-                text: state.text,
+                text: state.addHashtags(hashtags).text,
                 cw: state.cw,
                 localOnly: state.localOnly,
                 fileIds: fileIds,

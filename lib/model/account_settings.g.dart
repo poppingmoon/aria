@@ -68,6 +68,11 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
               ?.map((e) => e as String)
               .toList() ??
           const [],
+      postFormUseHashtags: json['postFormUseHashtags'] as bool? ?? false,
+      postFormHashtags: (json['postFormHashtags'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$AccountSettingsImplToJson(
@@ -109,6 +114,8 @@ Map<String, dynamic> _$$AccountSettingsImplToJson(
   val['mutedEmojis'] = instance.mutedEmojis;
   val['recentlyUsedUsers'] = instance.recentlyUsedUsers;
   val['hashtags'] = instance.hashtags;
+  val['postFormUseHashtags'] = instance.postFormUseHashtags;
+  val['postFormHashtags'] = instance.postFormHashtags;
   return val;
 }
 

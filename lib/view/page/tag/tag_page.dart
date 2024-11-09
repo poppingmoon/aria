@@ -4,7 +4,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
-import '../../../provider/post_notifier_provider.dart';
+import '../../../provider/api/tag_notes_notifier_provider.dart';
+import '../../../provider/post_form_hashtags_notifier_provider.dart';
 import 'tag_notes.dart';
 import 'tag_users.dart';
 
@@ -44,11 +45,17 @@ class TagPage extends ConsumerWidget {
         floatingActionButton: account.isGuest
             ? null
             : FloatingActionButton.extended(
-                onPressed: () {
+                onPressed: () async {
+                  final hashtags =
+                      ref.read(postFormHashtagsNotifierProvider(account));
                   ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setText('#$tag ');
-                  context.push('/$account/post');
+                      .read(postFormHashtagsNotifierProvider(account).notifier)
+                      .updateHashtags([tag]);
+                  await context.push('/$account/post');
+                  ref
+                      .read(postFormHashtagsNotifierProvider(account).notifier)
+                      .updateHashtags(hashtags);
+                  ref.invalidate(tagNotesNotifierProvider(account, tag));
                 },
                 label: Text(t.misskey.postToHashtag),
                 icon: const Icon(Icons.edit),

@@ -17,6 +17,7 @@ import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -40,6 +41,10 @@ class PostPage extends HookConsumerWidget {
     Account account,
   ) async {
     final request = ref.read(postNotifierProvider(account, noteId: noteId));
+    final hashtags =
+        ref.read(accountSettingsNotifierProvider(account)).postFormUseHashtags
+            ? ref.read(postFormHashtagsNotifierProvider(account))
+            : null;
     final attaches =
         ref.read(attachesNotifierProvider(account, noteId: noteId));
     final hasFiles = attaches.isNotEmpty;
@@ -61,7 +66,7 @@ class PostPage extends HookConsumerWidget {
       final confirmed = await confirmPost(
         ref,
         account,
-        request,
+        request.addHashtags(hashtags),
         files: files,
       );
       if (!confirmed) return;
@@ -69,13 +74,14 @@ class PostPage extends HookConsumerWidget {
     }
     final result = await futureWithDialog(
       ref.context,
-      ref
-          .read(postNotifierProvider(account, noteId: noteId).notifier)
-          .post(fileIds: files?.map((file) => file.id).toList()),
+      ref.read(postNotifierProvider(account, noteId: noteId).notifier).post(
+            fileIds: files?.map((file) => file.id).toList(),
+            hashtags: hashtags,
+          ),
     );
     if (!ref.context.mounted) return;
-    if (result != null) {
-      if (request.text case final text?) {
+    if (result case final note?) {
+      if (note.text case final text?) {
         final nodes = const MfmParser().parse(text);
         final hashtags = nodes
             .extract((node) => node is MfmHashTag)
@@ -95,6 +101,9 @@ class PostPage extends HookConsumerWidget {
             .read(postNotifierProvider(account, noteId: noteId).notifier)
             .setChannel(channelId);
       }
+      unawaited(
+        ref.read(postFormHashtagsNotifierProvider(account).notifier).save(),
+      );
       ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
       ref.context.pop();
     }
@@ -113,7 +122,14 @@ class PostPage extends HookConsumerWidget {
             .watch(channelNotifierProvider(account.value, request.channelId!))
             .valueOrNull
         : null;
-    final note = request.toNote(i: i, channel: channel);
+    final hashtags = ref.watch(postFormHashtagsNotifierProvider(account.value));
+    final useHashtags = ref.watch(
+      accountSettingsNotifierProvider(account.value)
+          .select((settings) => settings.postFormUseHashtags),
+    );
+    final note = request
+        .addHashtags(useHashtags ? hashtags : null)
+        .toNote(i: i, channel: channel);
     final canPost = request.canPost || attaches.isNotEmpty;
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (request) {
@@ -124,19 +140,39 @@ class PostPage extends HookConsumerWidget {
       _ when request.renoteId != null => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
-    final cwController =
-        useTextEditingController(text: request.cw, keys: [account.value]);
-    final controller =
-        useTextEditingController(text: request.text, keys: [account.value]);
+    final cwController = useTextEditingController(text: request.cw);
+    final controller = useTextEditingController(text: request.text);
+    final hashtagsController =
+        useTextEditingController(text: hashtags.join(' '));
     final cwFocusNode = useFocusNode();
     final focusNode = useFocusNode();
+    final hashtagsFocusNode = useFocusNode();
     final isCwFocused = useState(false);
     final isFocused = useState(false);
+    final isHashtagsFocused = useState(false);
     useEffect(
       () {
-        cwFocusNode.addListener(() => isCwFocused.value = cwFocusNode.hasFocus);
-        focusNode.addListener(() => isFocused.value = focusNode.hasFocus);
-        return;
+        void cwFocusNodeCallback() {
+          isCwFocused.value = cwFocusNode.hasFocus;
+        }
+
+        void focusNodeCallback() {
+          isFocused.value = focusNode.hasFocus;
+        }
+
+        void hashtagsFocusNodeCallback() {
+          isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
+        }
+
+        cwFocusNode.addListener(cwFocusNodeCallback);
+        focusNode.addListener(focusNodeCallback);
+        hashtagsFocusNode.addListener(hashtagsFocusNodeCallback);
+
+        return () {
+          cwFocusNode.removeListener(cwFocusNodeCallback);
+          focusNode.removeListener(focusNodeCallback);
+          hashtagsFocusNode.removeListener(hashtagsFocusNodeCallback);
+        };
       },
       [account.value],
     );
@@ -191,8 +227,10 @@ class PostPage extends HookConsumerWidget {
                             noteId: noteId,
                             controller: controller,
                             cwController: cwController,
+                            hashtagsController: hashtagsController,
                             focusNode: focusNode,
                             cwFocusNode: cwFocusNode,
+                            hashtagsFocusNode: hashtagsFocusNode,
                             onAccountChanged: (newAccount) =>
                                 account.value = newAccount,
                           ),
@@ -242,6 +280,17 @@ class PostPage extends HookConsumerWidget {
                 child: MfmKeyboard(
                   account: account.value,
                   controller: controller,
+                ),
+              ),
+            ),
+            Visibility(
+              visible: isHashtagsFocused.value,
+              maintainState: true,
+              child: TextFieldTapRegion(
+                onTapOutside: (_) => primaryFocus?.unfocus(),
+                child: MfmHashtagKeyboard(
+                  account: account.value,
+                  controller: hashtagsController,
                 ),
               ),
             ),
