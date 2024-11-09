@@ -462,7 +462,10 @@ class _AddReactionButton extends ConsumerWidget {
 
     return GestureDetector(
       onLongPress: (note.reactionCount ?? 0) > 0
-          ? () => showModalBottomSheet<void>(
+          ? () {
+              if (note.id.isEmpty) return;
+              HapticFeedback.lightImpact();
+              showModalBottomSheet<void>(
                 context: context,
                 builder: (context) => ReactionUsersSheet(
                   account: account,
@@ -474,7 +477,8 @@ class _AddReactionButton extends ConsumerWidget {
                 ),
                 clipBehavior: Clip.antiAlias,
                 isScrollControlled: true,
-              )
+              );
+            }
           : null,
       child: IconButton(
         tooltip: (note.reactionCount ?? 0) <= 0
@@ -561,6 +565,7 @@ class _RemoveReactionButton extends ConsumerWidget {
     return GestureDetector(
       onLongPress: () {
         if (note.id.isEmpty) return;
+        HapticFeedback.lightImpact();
         showModalBottomSheet<void>(
           context: context,
           builder: (context) => ReactionUsersSheet(

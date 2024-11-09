@@ -68,22 +68,26 @@ class ReactionUsersSheet extends HookConsumerWidget {
                   const SizedBox(width: 12.0),
                   ...?reactions?.map(
                     (emoji) => Padding(
-                      padding: const EdgeInsets.all(2.0),
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 2.0,
+                        horizontal: 4.0,
+                      ),
                       child: ElevatedButton(
                         onPressed: () => reaction.value = emoji,
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 2.0,
-                            horizontal: 4.0,
+                            vertical: 4.0,
+                            horizontal: 6.0,
                           ),
                           minimumSize: Size.zero,
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           shape: RoundedRectangleBorder(
+                            side: emoji == reaction.value
+                                ? BorderSide(color: colors.accent)
+                                : BorderSide.none,
                             borderRadius: BorderRadius.circular(4.0),
                           ),
-                          backgroundColor: emoji == reaction.value
-                              ? colors.accent.withOpacity(0.5)
-                              : colors.buttonBg,
+                          backgroundColor: colors.buttonBg,
                           elevation: 0.0,
                         ),
                         child: ConstrainedBox(
