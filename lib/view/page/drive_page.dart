@@ -59,7 +59,8 @@ class DrivePage extends HookConsumerWidget {
     final stats = !selectFiles && !selectFolder
         ? ref.watch(driveStatsProvider(account)).valueOrNull
         : null;
-    final isSelecting = selectFiles || selectedFiles.isNotEmpty;
+    final isSelecting =
+        selectFiles || (!selectFolder && selectedFiles.isNotEmpty);
     final controller = useScrollController();
     final isAtBottom = useState(false);
     useEffect(
@@ -93,9 +94,9 @@ class DrivePage extends HookConsumerWidget {
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return PopScope(
-      canPop: currentFolder == null && selectedFiles.isEmpty,
+      canPop: currentFolder == null && (selectFolder || selectedFiles.isEmpty),
       onPopInvokedWithResult: (_, __) {
-        if (selectedFiles.isNotEmpty) {
+        if (!selectFolder && selectedFiles.isNotEmpty) {
           ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
         } else if (currentFolder != null) {
           hierarchyFolders.value = hierarchyFolders.value
@@ -106,7 +107,7 @@ class DrivePage extends HookConsumerWidget {
         appBar: AppBar(
           leading:
               selectedFiles.isEmpty ? const BackButton() : const CloseButton(),
-          title: selectFiles || selectedFiles.isNotEmpty
+          title: selectFiles || (!selectFolder && selectedFiles.isNotEmpty)
               ? Text.rich(
                   TextSpan(
                     text: t.misskey.selectFiles,
