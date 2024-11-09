@@ -85,7 +85,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get lang__ => 'Català';
 	@override String get headlineMisskey => 'Una xarxa connectada per notes';
 	@override String get introMisskey => 'Benvingut! Misskey és un servei de microblogging descentralitzat de codi obert.\nCrea "notes" per compartir els teus pensaments amb tots els que t\'envolten. 📡\nAmb "reaccions", també pots expressar ràpidament els teus sentiments sobre les notes de tothom. 👍\nExplorem un món nou! 🚀';
-	@override String poweredByMisskeyDescription({required Object name}) => '${name} És un del serveis (anomenats instàncies de Misskey) que utilitzen la plataforma de codi obert <b>Misskey</b>.';
+	@override String poweredByMisskeyDescription({required Object name}) => '${name} És un dels serveis (anomenats instàncies de Misskey) que utilitzen la plataforma de codi obert <b>Misskey</b>.';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
 	@override String get search => 'Cercar';
 	@override String get notifications => 'Notificacions';
@@ -93,6 +93,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get password => 'Contrasenya';
 	@override String get initialPasswordForSetup => 'Contrasenya inicial per la configuració inicial';
 	@override String get initialPasswordIsIncorrect => 'La contrasenya no és correcta.';
+	@override String get initialPasswordForSetupDescription => 'Fes servir la contrasenya que has fet servir al fitxer de configuració, si tu mateix has instal·lat Misskey.\nSi fas servir una empresa d\'allotjament de Misskey, fes servir la contrasenya que t\'han donat.\nSi no has posat cap contrasenya deixar l\'espai en blanc.';
 	@override String get forgotPassword => 'Contrasenya oblidada';
 	@override String get fetchingAsApObject => 'Cercant en el Fediverse...';
 	@override String get ok => 'OK';
@@ -413,7 +414,6 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Selecciona fitxers';
 	@override String get selectFolder => 'Selecció de carpeta';
 	@override String get selectFolders => 'Selecció de carpeta';
-	@override String get fileNotSelected => 'Cap fitxer seleccionat';
 	@override String get renameFile => 'Canvia el nom del fitxer';
 	@override String get folderName => 'Nom de la carpeta';
 	@override String get createFolder => 'Crea una carpeta';
@@ -1029,6 +1029,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get oneDay => 'Un dia';
 	@override String get oneWeek => 'Una setmana';
 	@override String get oneMonth => 'Un mes';
+	@override String get threeMonths => '3 mesos';
+	@override String get oneYear => '1 any';
+	@override String get threeDays => '3 dies';
 	@override String get reflectMayTakeTime => 'Això pot trigar una estona a tenir efecte';
 	@override String get failedToFetchAccountInformation => 'No es pot obtenir la informació del compte';
 	@override String get rateLimitExceeded => 'S\'ha arribat al màxim de peticions';
@@ -1169,6 +1172,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => 'Això farà que la càrrega del servidor augmenti temporalment.';
 	@override String get enableChartsForRemoteUser => 'Generar gràfiques d\'usuaris remots';
 	@override String get enableChartsForFederatedInstances => 'Generar gràfiques d\'instàncies remotes';
+	@override String get enableStatsForFederatedInstances => 'Activa les estadístiques de les instàncies remotes federades';
 	@override String get showClipButtonInNoteFooter => 'Afegir "Retall" al menú d\'acció de la nota';
 	@override String get reactionsDisplaySize => 'Mida de les reaccions';
 	@override String get limitWidthOfReaction => 'Limitar l\'amplada màxima de la reacció i mostrar-les en una mida reduïda ';
@@ -1369,6 +1373,15 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verificació de la passkey a estat correcta, però s\'ha deshabilitat l\'inici de sessió sense contrasenya.';
 	@override String get messageToFollower => 'Missatge als meus seguidors';
 	@override String get target => 'Assumpte ';
+	@override String get testCaptchaWarning => 'És una característica dissenyada per a la prova de CAPTCHA. <strong>No l\'utilitzes en l\'entorn real.</strong>';
+	@override String get prohibitedWordsForNameOfUser => 'Noms prohibits per escollir noms d\'usuari ';
+	@override String get prohibitedWordsForNameOfUserDescription => 'Si qualsevol d\'aquestes paraules es troben a un nom d\'usuari la creació de l\'usuari no es durà a terme. Als moderadors no els afecta aquesta restricció.';
+	@override String get yourNameContainsProhibitedWords => 'El nom conté paraules prohibides ';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Si de veritat vols fer servir aquest nom posat en contacte amb l\'administrador.';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => 'L\'autor requereix l\'inici de sessió per poder veure';
+	@override String get lockdown => 'Bloquejat';
+	@override String get pleaseSelectAccount => 'Seleccionar un compte';
+	@override late final _TranslationsMisskeyAccountSettingsCaEs accountSettings_ = _TranslationsMisskeyAccountSettingsCaEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportCaEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportCaEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryCaEs delivery_ = _TranslationsMisskeyDeliveryCaEs._(_root);
 	@override late final _TranslationsMisskeyBubbleGameCaEs bubbleGame_ = _TranslationsMisskeyBubbleGameCaEs._(_root);
@@ -1436,8 +1449,33 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFileViewerCaEs fileViewer_ = _TranslationsMisskeyFileViewerCaEs._(_root);
 	@override late final _TranslationsMisskeyExternalResourceInstallerCaEs externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerCaEs._(_root);
 	@override late final _TranslationsMisskeyDataSaverCaEs dataSaver_ = _TranslationsMisskeyDataSaverCaEs._(_root);
+	@override late final _TranslationsMisskeyHemisphereCaEs hemisphere_ = _TranslationsMisskeyHemisphereCaEs._(_root);
 	@override late final _TranslationsMisskeyReversiCaEs reversi_ = _TranslationsMisskeyReversiCaEs._(_root);
+	@override late final _TranslationsMisskeyOfflineScreenCaEs offlineScreen_ = _TranslationsMisskeyOfflineScreenCaEs._(_root);
+	@override late final _TranslationsMisskeyUrlPreviewSettingCaEs urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingCaEs._(_root);
+	@override late final _TranslationsMisskeyMediaControlsCaEs mediaControls_ = _TranslationsMisskeyMediaControlsCaEs._(_root);
+	@override late final _TranslationsMisskeyContextMenuCaEs contextMenu_ = _TranslationsMisskeyContextMenuCaEs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenCaEs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenCaEs._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsCaEs extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'És obligatori l\'inici de sessió per poder veure el contingut';
+	@override String get requireSigninToViewContentsDescription1 => 'Es requereix l\'inici de sessió per poder veure totes les notes i el contingut que has creat. Amb això esperem evitar que els rastrejadors recopilin informació.';
+	@override String get requireSigninToViewContentsDescription2 => 'També es desactivaran les vistes prèvies d\'URLS (OGP), la incrustació a pàgines web i la visualització des de servidors que no admetin la citació de notes.';
+	@override String get requireSigninToViewContentsDescription3 => 'Aquestes restriccions pot ser que no s\'apliquin als continguts federats en servidors remots.';
+	@override String get makeNotesFollowersOnlyBefore => 'Permetre que les notes antigues només es mostrin als seguidors.';
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'Mentre aquesta funció estigui activada, les notes que hagin passat la data i hora fixada o hagi passat els temps establert seran visibles només per als teus seguidors. Quan es desactivi, també es restableix l\'estat públic de la nota.';
+	@override String get makeNotesHiddenBefore => 'Fes que les notes antigues siguin privades';
+	@override String get makeNotesHiddenBeforeDescription => 'Mentres aquesta funció estigui activada les notes que hagin superat una data i hora fixada o hagi passat el temps establert només seran visibles per a tu. Si la desactives es restablirà també l\'estat públic de les notes.';
+	@override String get mayNotEffectForFederatedNotes => 'Això pot ser que no afecti les notes federades.';
+	@override String get notesHavePassedSpecifiedPeriod => 'Notes publicades durant un període de temps especificat.';
+	@override String get notesOlderThanSpecifiedDateAndTime => 'Notes més antigues de la data i temps especificat ';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1590,6 +1628,7 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => 'Quan s\'activa aquesta opció millora bastant el rendiment en recuperar les línies de temps reduint la càrrega de la base. Com a contrapunt, augmentarà  l\'ús de memòria de Redís. Desactiva aquesta opció en cas de tenir un servidor amb poca memòria o si tens problemes d\'inestabilitat.';
 	@override String get inquiryUrl => 'URL de consulta ';
 	@override String get inquiryUrlDescription => 'Escriu adreça URL per al formulari de consulta per al mantenidor del servidor o una pàgina web amb el contacte d\'informació.';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Si no es detecta activitat per part del moderador durant un període de temps, aquesta opció es desactiva automàticament per evitar el correu brossa.';
 }
 
 // Path: misskey.accountMigration_
@@ -2221,8 +2260,11 @@ class _TranslationsMisskeyAuthCaEs extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => 'Aquesta aplicació demana els següents permisos';
 	@override String get pleaseGoBack => 'Si us plau, torna a l\'aplicació';
 	@override String get callback => 'Tornant a l\'aplicació';
+	@override String get accepted => 'Accés garantit';
 	@override String get denied => 'Accés denegat';
+	@override String get scopeUser => 'Opera com si fossis aquest usuari';
 	@override String get pleaseLogin => 'Si us plau, identificat per autoritzar l\'aplicació.';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => 'Si es garanteix l\'accés, seràs redirigit automàticament a la següent adreça URL';
 }
 
 // Path: misskey.antennaSources_
@@ -2582,6 +2624,7 @@ class _TranslationsMisskeyNotificationCaEs extends TranslationsMisskeyNotificati
 	@override String followedBySomeUsers({required Object n}) => 'Et segueixen ${n} usuaris';
 	@override String get flushNotification => 'Netejar notificacions';
 	@override String exportOfXCompleted({required Object x}) => 'Completada l\'exportació de ${x}';
+	@override String get login => 'Algú ha iniciat sessió ';
 	@override late final _TranslationsMisskeyNotificationTypesCaEs types_ = _TranslationsMisskeyNotificationTypesCaEs._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsCaEs actions_ = _TranslationsMisskeyNotificationActionsCaEs._(_root);
 }
@@ -2780,6 +2823,18 @@ class _TranslationsMisskeyDataSaverCaEs extends TranslationsMisskeyDataSaverEnUs
 	@override late final _TranslationsMisskeyDataSaverCodeCaEs code_ = _TranslationsMisskeyDataSaverCodeCaEs._(_root);
 }
 
+// Path: misskey.hemisphere_
+class _TranslationsMisskeyHemisphereCaEs extends TranslationsMisskeyHemisphereEnUs {
+	_TranslationsMisskeyHemisphereCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get N => 'Hemisferi Nord ';
+	@override String get S => 'Hemisferi Sud';
+	@override String get caption => 'El fan servir alguns clients per determinar l\'estació de l\'any.';
+}
+
 // Path: misskey.reversi_
 class _TranslationsMisskeyReversiCaEs extends TranslationsMisskeyReversiEnUs {
 	_TranslationsMisskeyReversiCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -2787,7 +2842,107 @@ class _TranslationsMisskeyReversiCaEs extends TranslationsMisskeyReversiEnUs {
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get reversi => 'Reversi';
+	@override String get gameSettings => 'Opcions del joc';
+	@override String get chooseBoard => 'Escull un taulell';
+	@override String get blackOrWhite => 'Negres/Blanques';
+	@override String blackIs({required Object name}) => '${name} juga amb negres ';
+	@override String get rules => 'Regles';
+	@override String get thisGameIsStartedSoon => 'El joc començarà en breu';
+	@override String get waitingForOther => 'Esperant la tirada de l\'oponent ';
+	@override String get waitingForMe => 'Esperant el teu torn';
+	@override String get waitingBoth => 'Prepara\'t ';
+	@override String get ready => 'Preparat ';
+	@override String get cancelReady => ' No preparat ';
+	@override String get opponentTurn => 'Torn de l\'oponent ';
+	@override String get myTurn => 'El teu torn';
+	@override String turnOf({required Object name}) => 'Li toca a ${name}';
+	@override String pastTurnOf({required Object name}) => 'Torn de ${name}';
+	@override String get surrender => 'Rendeix-te';
+	@override String get surrendered => 'T\'has rendit';
+	@override String get timeout => 'Temps esgotat';
+	@override String get drawn => 'Empat';
+	@override String won({required Object name}) => '${name} ha guanyat';
+	@override String get black => 'Negres';
+	@override String get white => 'Blanques';
 	@override String get total => 'Total';
+	@override String turnCount({required Object count}) => 'Torn ${count}';
+	@override String get myGames => 'Jugades';
+	@override String get allGames => 'Totes les jugades';
+	@override String get ended => 'Acabat';
+	@override String get playing => 'Jugant';
+	@override String get isLlotheo => 'Qui tingui menys pedres guanya (Llotheo)';
+	@override String get loopedMap => 'Mapa de recursiu';
+	@override String get canPutEverywhere => 'Les fitxes es poden posar a qualsevol lloc';
+	@override String get timeLimitForEachTurn => 'Temps límit per jugada';
+	@override String get freeMatch => 'Partida lliure';
+	@override String get lookingForPlayer => 'Buscant contrincant...';
+	@override String get gameCanceled => 'La partida s\'ha cancel·lat ';
+	@override String get shareToTlTheGameWhenStart => 'Compartir la partida a la línia de temps quan comenci';
+	@override String get iStartedAGame => 'La partida ha començat! #MisskeyReversi';
+	@override String get opponentHasSettingsChanged => 'L\'oponent h canviat la seva configuració ';
+	@override String get allowIrregularRules => 'Regles irregulars (totalment lliure)';
+	@override String get disallowIrregularRules => 'Sense regles irregulars';
+	@override String get showBoardLabels => 'Mostrar el número de línia i columna al tauler de joc';
+	@override String get useAvatarAsStone => 'Fer servir els avatars dels usuaris com a fitxes';
+}
+
+// Path: misskey.offlineScreen_
+class _TranslationsMisskeyOfflineScreenCaEs extends TranslationsMisskeyOfflineScreenEnUs {
+	_TranslationsMisskeyOfflineScreenCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Fora de línia - No es pot connectar amb el servidor';
+	@override String get header => 'Impossible connectar amb el servidor';
+}
+
+// Path: misskey.urlPreviewSetting_
+class _TranslationsMisskeyUrlPreviewSettingCaEs extends TranslationsMisskeyUrlPreviewSettingEnUs {
+	_TranslationsMisskeyUrlPreviewSettingCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Configuració per a la previsualització de l\'URL';
+	@override String get enable => 'Activa la previsualització de l\'URL';
+	@override String get timeout => 'Temps màxim per carregar la previsualització de l\'URL (ms)';
+	@override String get timeoutDescription => 'Si l\'obtenció de la previsualització triga més que el temps establert, no es generarà la vista prèvia.';
+	@override String get maximumContentLength => 'Longitud màxima del contingut (bytes)';
+	@override String get maximumContentLengthDescription => 'Si la màxima longitud és més gran que aquest valor, la previsualització no es generarà.';
+	@override String get requireContentLength => 'Generar la previsualització només si es pot obtenir la longitud màxima ';
+	@override String get requireContentLengthDescription => 'Si l\'altre servidor no proporciona la longitud màxima, la previsualització no es generarà.';
+	@override String get userAgent => 'User-Agent';
+	@override String get userAgentDescription => 'Estableix l\'User-Agent que és farà servir per a la recuperació de la vista prèvia. Si és deixa en blanc es farà servir l\'User-Agent per defecte.';
+	@override String get summaryProxy => 'Proxy endpoints per generar vistes prèvies';
+	@override String get summaryProxyDescription => 'La vista prèvia es genera fent servir Summaly proxy, no la genera el mateix Misskey.';
+	@override String get summaryProxyDescription2 => 'Els següents paràmetres són passats al proxy com cadenes de consulta. Si el proxy no els admet, s\'ignoren els valors configurats.';
+}
+
+// Path: misskey.mediaControls_
+class _TranslationsMisskeyMediaControlsCaEs extends TranslationsMisskeyMediaControlsEnUs {
+	_TranslationsMisskeyMediaControlsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get pip => 'Imatge sobre impressionada ';
+	@override String get playbackRate => 'Velocitat de reproducció ';
+	@override String get loop => 'Reproducció en bucle';
+}
+
+// Path: misskey.contextMenu_
+class _TranslationsMisskeyContextMenuCaEs extends TranslationsMisskeyContextMenuEnUs {
+	_TranslationsMisskeyContextMenuCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Menú contextual';
+	@override String get app => 'Aplicació ';
+	@override String get appWithShift => 'Aplicació amb la tecla shift';
+	@override String get native => 'Interfície del navegador';
 }
 
 // Path: misskey.embedCodeGen_
@@ -3313,6 +3468,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsCaEs extends TranslationsMi
 	@override String get abuseReport => 'Quan reps un nou informe de moderació ';
 	@override String get abuseReportResolved => 'Quan resols un informe de moderació ';
 	@override String get userCreated => 'Quan es crea un usuari';
+	@override String get inactiveModeratorsWarning => 'Quan el compte d\'un moderador no té activitat durant un temps';
+	@override String get inactiveModeratorsInvitationOnlyChanged => 'Quan el compte d\'un moderador no té activitat durant un temps, i el servidor es canvia a registre per invitacions';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
@@ -3434,6 +3591,7 @@ class _TranslationsMisskeyDataSaverCodeCaEs extends TranslationsMisskeyDataSaver
 
 	// Translations
 	@override String get title => 'Ressaltat del codi ';
+	@override String get description => 'Quan s\'utilitza codi MFM, no es llegeix fins que es copiï. En els punts destacats del codi s\'han de llegir els fitxers definits per a cada llengua que resulti alt, però no es poden llegir automàticament, per la qual cosa es poden reduir les quantitats de comunicació.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

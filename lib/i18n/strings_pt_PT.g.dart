@@ -403,7 +403,6 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Selecione os arquivos';
 	@override String get selectFolder => 'Selecionar uma pasta';
 	@override String get selectFolders => 'Selecionar uma pasta';
-	@override String get fileNotSelected => 'Nenhuma pasta selecionada';
 	@override String get renameFile => 'Renomear ficheiro';
 	@override String get folderName => 'Nome da pasta';
 	@override String get createFolder => 'Criar pasta';

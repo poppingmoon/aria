@@ -598,7 +598,6 @@ class TranslationsMisskeyEnUs {
 	String get selectFiles => 'Select files';
 	String get selectFolder => 'Select a folder';
 	String get selectFolders => 'Select folders';
-	String get fileNotSelected => '';
 	String get renameFile => 'Rename file';
 	String get folderName => 'Folder name';
 	String get createFolder => 'Create a folder';
@@ -1214,6 +1213,9 @@ class TranslationsMisskeyEnUs {
 	String get oneDay => 'One day';
 	String get oneWeek => 'One week';
 	String get oneMonth => 'One month';
+	String get threeMonths => '3 months';
+	String get oneYear => '1 year';
+	String get threeDays => '3 days';
 	String get reflectMayTakeTime => 'It may take some time for this to be reflected.';
 	String get failedToFetchAccountInformation => 'Could not fetch account information';
 	String get rateLimitExceeded => 'Rate limit exceeded';
@@ -1354,6 +1356,7 @@ class TranslationsMisskeyEnUs {
 	String get retryAllQueuesConfirmText => 'This will temporarily increase the server load.';
 	String get enableChartsForRemoteUser => 'Generate remote user data charts';
 	String get enableChartsForFederatedInstances => 'Generate remote instance data charts';
+	String get enableStatsForFederatedInstances => 'Receive remote server stats';
 	String get showClipButtonInNoteFooter => 'Add "Clip" to note action menu';
 	String get reactionsDisplaySize => 'Reaction display size';
 	String get limitWidthOfReaction => 'Limit the maximum width of reactions and display them in reduced size.';
@@ -1554,6 +1557,15 @@ class TranslationsMisskeyEnUs {
 	String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'Passkey verification has succeeded but password-less login is disabled.';
 	String get messageToFollower => 'Message to followers';
 	String get target => 'Target';
+	String get testCaptchaWarning => 'This function is intended for CAPTCHA testing purposes.\n<strong>Do not use in a production environment.</strong>';
+	String get prohibitedWordsForNameOfUser => 'Prohibited words for user names';
+	String get prohibitedWordsForNameOfUserDescription => 'If any of the strings in this list are included in the user\'s name, the name will be denied. Users with moderator privileges are not affected by this restriction.';
+	String get yourNameContainsProhibitedWords => 'Your name contains prohibited words';
+	String get yourNameContainsProhibitedWordsDescription => 'If you wish to use this name, please contact your server administrator.';
+	String get thisContentsAreMarkedAsSigninRequiredByAuthor => 'Set by the author to require login to view';
+	String get lockdown => 'Lockdown';
+	String get pleaseSelectAccount => 'Select an account';
+	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
 	late final TranslationsMisskeyBubbleGameEnUs bubbleGame_ = TranslationsMisskeyBubbleGameEnUs.internal(_root);
@@ -1638,6 +1650,26 @@ class TranslationsMisskeyIOEnUs {
 
 	// Translations
 	late final TranslationsMisskeyIOSkebStatusEnUs skebStatus_ = TranslationsMisskeyIOSkebStatusEnUs.internal(_root);
+}
+
+// Path: misskey.accountSettings_
+class TranslationsMisskeyAccountSettingsEnUs {
+	TranslationsMisskeyAccountSettingsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get requireSigninToViewContents => 'Require sign-in to view contents';
+	String get requireSigninToViewContentsDescription1 => 'Require login to view all notes and other content you have created. This will have the effect of preventing crawlers from collecting your information.';
+	String get requireSigninToViewContentsDescription2 => 'Content will not be displayed in URL previews (OGP), embedded in web pages, or on servers that don\'t support note quotes.';
+	String get requireSigninToViewContentsDescription3 => 'These restrictions may not apply to federated content from other remote servers.';
+	String get makeNotesFollowersOnlyBefore => 'Make past notes to be displayed only to followers';
+	String get makeNotesFollowersOnlyBeforeDescription => 'While this feature is enabled, only followers can see notes past the set date and time or have been visible for a set time. When it is deactivated, the note publication status will also be restored.';
+	String get makeNotesHiddenBefore => 'Make past notes private';
+	String get makeNotesHiddenBeforeDescription => 'While this feature is enabled, notes that are past the set date and time or have been visible only to you. When it is deactivated, the note publication status will also be restored.';
+	String get mayNotEffectForFederatedNotes => 'Notes federated to a remote server may not be effective.';
+	String get notesHavePassedSpecifiedPeriod => 'Note that the specified time has passed';
+	String get notesOlderThanSpecifiedDateAndTime => 'Notes before the specified date and time';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1790,6 +1822,7 @@ class TranslationsMisskeyServerSettingsEnUs {
 	String get reactionsBufferingDescription => 'When enabled, performance during reaction creation will be greatly improved, reducing the load on the database. However, Redis memory usage will increase.';
 	String get inquiryUrl => 'Inquiry URL';
 	String get inquiryUrlDescription => 'Specify a URL for the inquiry form to the server maintainer or a web page for the contact information.';
+	String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'If no moderator activity is detected for a while, this setting will be automatically turned off to prevent spam.';
 }
 
 // Path: misskey.accountMigration_
@@ -2421,8 +2454,11 @@ class TranslationsMisskeyAuthEnUs {
 	String get permissionAsk => 'This application requests the following permissions';
 	String get pleaseGoBack => 'Please go back to the application';
 	String get callback => 'Returning to the application';
+	String get accepted => 'Access granted';
 	String get denied => 'Access denied';
+	String get scopeUser => 'Operate as the following user';
 	String get pleaseLogin => 'Please log in to authorize applications.';
+	String get byClickingYouWillBeRedirectedToThisUrl => 'When access is granted, you will automatically be redirected to the following URL';
 }
 
 // Path: misskey.antennaSources_
@@ -3642,6 +3678,8 @@ class TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
 	String get abuseReport => 'When received a new report';
 	String get abuseReportResolved => 'When resolved report';
 	String get userCreated => 'When user is created';
+	String get inactiveModeratorsWarning => 'When moderators have been inactive for a while';
+	String get inactiveModeratorsInvitationOnlyChanged => 'When a moderator has been inactive for a while, and the server is changed to invitation-only';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

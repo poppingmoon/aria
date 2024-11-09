@@ -90,6 +90,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Notificaciones';
 	@override String get username => 'Nombre de usuario';
 	@override String get password => 'Contraseña';
+	@override String get initialPasswordForSetup => 'Contraseña para iniciar la inicialización';
+	@override String get initialPasswordIsIncorrect => 'La contraseña para iniciar la configuración inicial es incorrecta.';
 	@override String get forgotPassword => 'Olvidé mi contraseña';
 	@override String get fetchingAsApObject => 'Buscando en el fediverso';
 	@override String get ok => 'OK';
@@ -584,6 +586,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Acerca de ${x}';
 	@override String get emojiStyle => 'Estilo de emoji';
 	@override String get native => 'Nativo';
+	@override String get menuStyle => 'Diseño del menú';
+	@override String get style => 'Diseño';
 	@override String get showNoteActionsOnlyHover => 'Mostrar acciones de la nota sólo al pasar el cursor';
 	@override String get showReactionsCount => 'Mostrar el número de reacciones en las notas';
 	@override String get noHistory => 'No hay datos en el historial';
@@ -1007,6 +1011,9 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 día';
 	@override String get oneWeek => '1 semana';
 	@override String get oneMonth => '1 mes';
+	@override String get threeMonths => 'Tres meses';
+	@override String get oneYear => 'Un año';
+	@override String get threeDays => 'Tres días';
 	@override String get reflectMayTakeTime => 'Puede pasar un tiempo hasta que se reflejen los cambios';
 	@override String get failedToFetchAccountInformation => 'No se pudo obtener información de la cuenta';
 	@override String get rateLimitExceeded => 'Se excedió el límite de peticiones';
@@ -1322,6 +1329,12 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get keepOriginalFilename => 'Mantener el nombre original del archivo';
 	@override String get noDescription => 'No hay descripción';
 	@override String get alwaysConfirmFollow => 'Confirmar siempre cuando se sigue a alguien';
+	@override String get inquiry => 'Contacto';
+	@override String get tryAgain => 'Por favor , inténtalo de nuevo';
+	@override String get performance => 'Rendimiento';
+	@override String get unknownWebAuthnKey => 'Esto no se ha registrado llave maestra.';
+	@override String get messageToFollower => 'Mensaje a seguidores';
+	@override late final _TranslationsMisskeyAbuseUserReportEsEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportEsEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryEsEs delivery_ = _TranslationsMisskeyDeliveryEsEs._(_root);
 	@override late final _TranslationsMisskeyBubbleGameEsEs bubbleGame_ = _TranslationsMisskeyBubbleGameEsEs._(_root);
 	@override late final _TranslationsMisskeyAnnouncementEsEs announcement_ = _TranslationsMisskeyAnnouncementEsEs._(_root);
@@ -1392,6 +1405,17 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiEsEs reversi_ = _TranslationsMisskeyReversiEsEs._(_root);
 	@override late final _TranslationsMisskeyUrlPreviewSettingEsEs urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingEsEs._(_root);
 	@override late final _TranslationsMisskeyMediaControlsEsEs mediaControls_ = _TranslationsMisskeyMediaControlsEsEs._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _TranslationsMisskeyAbuseUserReportEsEs extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get accept => 'Acepte';
+	@override String get reject => 'repudio';
 }
 
 // Path: misskey.delivery_
@@ -2586,6 +2610,7 @@ class _TranslationsMisskeyWebhookSettingsEsEs extends TranslationsMisskeyWebhook
 	@override String get secret => 'Secreto';
 	@override String get active => 'Activado';
 	@override late final _TranslationsMisskeyWebhookSettingsEventsEsEs events_ = _TranslationsMisskeyWebhookSettingsEventsEsEs._(_root);
+	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsEsEs systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsEsEs._(_root);
 }
 
 // Path: misskey.abuseReport_
@@ -3164,6 +3189,7 @@ class _TranslationsMisskeyNotificationTypesEsEs extends TranslationsMisskeyNotif
 	@override String get roleAssigned => 'Rol asignado';
 	@override String get achievementEarned => 'Logro desbloqueado';
 	@override String get login => 'Iniciar sesión';
+	@override String get test => 'Pruebas de nofiticaciones';
 	@override String get app => 'Notificaciones desde aplicaciones';
 }
 
@@ -3212,6 +3238,16 @@ class _TranslationsMisskeyWebhookSettingsEventsEsEs extends TranslationsMisskeyW
 	@override String get renote => 'Cuando reciba un "re-note"';
 	@override String get reaction => 'Cuando se recibe una reacción';
 	@override String get mention => 'Cuando hay una mención';
+}
+
+// Path: misskey.webhookSettings_.systemEvents_
+class _TranslationsMisskeyWebhookSettingsSystemEventsEsEs extends TranslationsMisskeyWebhookSettingsSystemEventsEnUs {
+	_TranslationsMisskeyWebhookSettingsSystemEventsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get userCreated => 'Cuando se crea el usuario.';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

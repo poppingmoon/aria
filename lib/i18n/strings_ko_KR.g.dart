@@ -195,19 +195,15 @@ class _TranslationsAriaKoKr extends TranslationsAriaEnUs {
 	@override String get showAvatarsInSubNote => '서브노트 내 아바타 보기';
 	@override String get showEntireImage => '전체 이미지 보기';
 	@override String get showExpandedImage => '확장된 이미지 보기';
-	@override String get showHomeFAB => '홈 플로팅 동작 버튼 표시';
 	@override String get showImage => '이미지 표시';
 	@override String get showLikeButtonInNoteFooter => '노트 동작에 "좋아요" 추가';
 	@override String get showMenuButtonInTabBar => '탭 바에 메뉴버튼 표시';
 	@override String get showNoteCreatedAt => '노트 생성일 표시';
 	@override String get showNoteFooter => '노트 내 동작 버튼 표시';
 	@override String get showNoteReactionsViewer => '노트 내 리액션 뷰어 표시';
-	@override String get showNotificationsFAB => '알림 플로팅 동작 버튼 표시';
 	@override String get showPopupOnNewNote => '새 노트 위에 팝업 표시';
-	@override String get showPostForm => '게시물 양식 표시';
 	@override String get showQuoteButtonInNoteFooter => '노트 동작에 "인용" 추가';
 	@override String get showSelfRenotes => '셀프리노트 표시';
-	@override String get showShowPostFormFAB => '미니포스트 양식 플로팅 동작 버튼 표시';
 	@override String get showStackTrace => '스택 트레이스 표시';
 	@override String get showSubNoteFooter => '서브노트 내 버튼 표시';
 	@override String get showSubNoteReactionsViewer => '서브노트 내 리액션 뷰어 표시';
@@ -583,7 +579,6 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => '파일 선택';
 	@override String get selectFolder => '폴더 선택';
 	@override String get selectFolders => '폴더 선택';
-	@override String get fileNotSelected => '파일을 선택하지 않았습니다';
 	@override String get renameFile => '파일 이름 변경';
 	@override String get folderName => '폴더 이름';
 	@override String get createFolder => '폴더 만들기';
@@ -1339,6 +1334,7 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => '일시적으로 서버의 부하가 증가할 수 있습니다.';
 	@override String get enableChartsForRemoteUser => '리모트 유저의 차트를 생성';
 	@override String get enableChartsForFederatedInstances => '리모트 서버의 차트를 생성';
+	@override String get enableStatsForFederatedInstances => '리모트 서버 정보 받아오기';
 	@override String get showClipButtonInNoteFooter => '노트 동작에 클립을 추가';
 	@override String get reactionsDisplaySize => '리액션 표시 크기';
 	@override String get limitWidthOfReaction => '리액션의 최대 폭을 제한하고 작게 표시하기';
@@ -1539,6 +1535,11 @@ class _TranslationsMisskeyKoKr extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '패스키를 검증했으나, 비밀번호 없이 로그인하기가 꺼져 있습니다.';
 	@override String get messageToFollower => '팔로워에 보낼 메시지';
 	@override String get target => '대상';
+	@override String get testCaptchaWarning => 'CAPTCHA를 테스트하기 위한 기능입니다. <strong>실제 환경에서는 사용하지 마세요.</strong>';
+	@override String get prohibitedWordsForNameOfUser => '금지 단어 (사용자 이름)';
+	@override String get prohibitedWordsForNameOfUserDescription => '이 목록에 포함되는 키워드가 사용자 이름에 있는 경우, 일반 사용자는 이름을 바꿀 수 없습니다. 모더레이터 권한을 가진 사용자는 제한 대상에서 제외됩니다.';
+	@override String get yourNameContainsProhibitedWords => '바꾸려는 이름에 금지된 키워드가 포함되어 있습니다.';
+	@override String get yourNameContainsProhibitedWordsDescription => '이름에 금지된 키워드가 있습니다. 이름을 사용해야 하는 경우, 서버 관리자에 문의하세요.';
 	@override late final _TranslationsMisskeyAbuseUserReportKoKr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportKoKr._(_root);
 	@override late final _TranslationsMisskeyDeliveryKoKr delivery_ = _TranslationsMisskeyDeliveryKoKr._(_root);
 	@override late final _TranslationsMisskeyBubbleGameKoKr bubbleGame_ = _TranslationsMisskeyBubbleGameKoKr._(_root);
@@ -1775,6 +1776,7 @@ class _TranslationsMisskeyServerSettingsKoKr extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '활성화 한 경우, 리액션 작성 퍼포먼스가 대폭 향상되어 DB의 부하를 줄일 수 있으나, Redis의 메모리 사용량이 많아집니다.';
 	@override String get inquiryUrl => '문의처 URL';
 	@override String get inquiryUrlDescription => '서버 운영자에게 보내는 문의 양식의 URL이나 운영자의 연락처 등이 적힌 웹 페이지의 URL을 설정합니다.';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '일정 기간동안 모더레이터의 활동이 감지되지 않는 경우, 스팸 방지를 위해 이 설정은 자동으로 꺼집니다.';
 }
 
 // Path: misskey.accountMigration_
@@ -3627,6 +3629,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsKoKr extends TranslationsMi
 	@override String get abuseReport => '유저롭';
 	@override String get abuseReportResolved => '받은 신고를 처리했을 때';
 	@override String get userCreated => '유저가 생성되었을 때';
+	@override String get inactiveModeratorsWarning => '모더레이터가 일정 기간동안 활동하지 않은 경우';
+	@override String get inactiveModeratorsInvitationOnlyChanged => '모더레이터가 일정 기간 활동하지 않아 시스템에 의해 초대제로 바뀐 경우';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

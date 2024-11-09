@@ -85,6 +85,9 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Уведомления';
 	@override String get username => 'Имя пользователя';
 	@override String get password => 'Пароль';
+	@override String get initialPasswordForSetup => 'Пароль для начала настройки';
+	@override String get initialPasswordIsIncorrect => 'Пароль для запуска настройки неверен';
+	@override String get initialPasswordForSetupDescription => 'Если вы установили Misskey самостоятельно, используйте пароль, который вы указали в файле конфигурации.\nЕсли вы используете что-то вроде хостинга Misskey, используйте предоставленный пароль.\nЕсли вы не установили пароль, оставьте его пустым и продолжайте.';
 	@override String get forgotPassword => 'Забыли пароль?';
 	@override String get fetchingAsApObject => 'Приём с других сайтов';
 	@override String get ok => 'Подтвердить';
@@ -309,6 +312,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get blockedInstances => 'Заблокированные инстансы';
 	@override String get blockedInstancesDescription => 'Введите список инстансов, которые хотите заблокировать. Они больше не смогут обмениваться с вашим инстансом.';
 	@override String get silencedInstances => 'Заглушённые инстансы';
+	@override String get federationAllowedHosts => 'Серверы, поддерживающие федерацию';
 	@override String get muteAndBlock => 'Скрытие и блокировка';
 	@override String get mutedUsers => 'Скрытые пользователи';
 	@override String get blockedUsers => 'Заблокированные пользователи';
@@ -399,7 +403,6 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Выберите файлы';
 	@override String get selectFolder => 'Выберите папку';
 	@override String get selectFolders => 'Выберите папки';
-	@override String get fileNotSelected => 'Файл не выбран';
 	@override String get renameFile => 'Переименовать файл';
 	@override String get folderName => 'Имя папки';
 	@override String get createFolder => 'Создать папку';
@@ -407,6 +410,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get deleteFolder => 'Удалить папку';
 	@override String get folder => 'Папка';
 	@override String get addFile => 'Добавить файл';
+	@override String get showFile => 'Посмотреть файл';
 	@override String get emptyDrive => 'Диск пуст';
 	@override String get emptyFolder => 'Папка пуста';
 	@override String get unableToDelete => 'Удаление невозможно';
@@ -520,6 +524,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get totpDescription => 'Описание приложения-аутентификатора';
 	@override String get moderator => 'Модератор';
 	@override String get moderation => 'Модерация';
+	@override String get moderationNote => 'Примечания модератора';
 	@override String get moderationLogs => 'Журнал модерации';
 	@override String nUsersMentioned({required Object n}) => 'Упомянуло пользователей: ${n}';
 	@override String get securityKeyAndPasskey => 'Ключ безопасности и парольная фраза';
@@ -580,6 +585,8 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Описание ${x}';
 	@override String get emojiStyle => 'Стиль эмодзи';
 	@override String get native => 'Системные';
+	@override String get menuStyle => 'Стиль меню';
+	@override String get style => 'Стиль';
 	@override String get showNoteActionsOnlyHover => 'Показывать кнопки у заметок только при наведении';
 	@override String get showReactionsCount => 'Видеть количество реакций на заметках';
 	@override String get noHistory => 'История пока пуста';
