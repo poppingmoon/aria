@@ -66,6 +66,7 @@ List<InlineSpan> buildMfm(
     unicodeEmojiBuilder: (emoji, style) => UnicodeEmoji(
       account: account,
       emoji: emoji,
+      style: style,
       onTap: onTapEmoji != null ? () => onTapEmoji.call(emoji) : null,
       inline: true,
     ),
