@@ -88,6 +88,9 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'เเจ้งเตือน';
 	@override String get username => 'ชื่อผู้ใช้';
 	@override String get password => 'รหัสผ่าน';
+	@override String get initialPasswordForSetup => 'รหัสผ่านเริ่มต้นสำหรับการตั้งค่า';
+	@override String get initialPasswordIsIncorrect => 'รหัสผ่านเริ่มต้นสำหรับตั้งค่านั้นไม่ถูกต้องค่ะ';
+	@override String get initialPasswordForSetupDescription => 'ถ้าหากคุณติดตั้ง Misskey เอง ให้ใช้รหัสผ่านที่คุณป้อนในไฟล์กำหนดค่า \nถ้าหากคุณกำลังใช้บริการโฮสต์ Misskey ให้ใช้รหัสผ่านที่ได้รับมา\nถ้ายังไม่มีรหัสผ่าน ให้ข้ามช่องรหัสผ่านไป แล้วกดต่อไป';
 	@override String get forgotPassword => 'ลืมรหัสผ่าน';
 	@override String get fetchingAsApObject => 'กำลังดึงข้อมูลจากสหพันธ์...';
 	@override String get ok => 'ตกลง';
@@ -316,6 +319,8 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get silencedInstancesDescription => 'ระบุโฮสต์ของเซิร์ฟเวอร์ที่ต้องการปิดปาก คั่นด้วยการขึ้นบรรทัดใหม่, บัญชีทั้งหมดของเซิร์ฟเวอร์ดังกล่าวจะถือว่าถูกปิดปากเช่นกัน ทำได้เฉพาะคำขอติดตามเท่านั้น และไม่สามารถกล่าวถึงบัญชีในเซิร์ฟเวอร์นี้ได้หากไม่ได้ถูกติดตามกลับ | สิ่งนี้ไม่มีผลต่ออินสแตนซ์ที่ถูกบล็อก';
 	@override String get mediaSilencedInstances => 'เซิร์ฟเวอร์ที่ถูกปิดปากสื่อ';
 	@override String get mediaSilencedInstancesDescription => 'ระบุโฮสต์ของเซิร์ฟเวอร์ที่ต้องการปิดปากสื่อ คั่นด้วยการขึ้นบรรทัดใหม่, ไฟล์ที่ถูกส่งจากบัญชีของเซิร์ฟเวอร์ดังกล่าวจะถือว่าถูกปิดปาก แล้วจะถูกติดเครื่องหมายว่ามีเนื้อหาละเอียดอ่อน และเอโมจิแบบกำหนดเองก็จะใช้ไม่ได้ด้วย | สิ่งนี้ไม่มีผลต่ออินสแตนซ์ที่ถูกบล็อก';
+	@override String get federationAllowedHosts => 'เซิร์ฟเวอร์ที่เปิดให้บริการแบบเฟเดอเรชั่น';
+	@override String get federationAllowedHostsDescription => 'ระบุชื่อโฮสต์ของเซิร์ฟเวอร์ที่คุณต้องการอนุญาตให้เชื่อมต่อแบบเฟเดอเรชั่น โดยต้องเว้นวรรคแต่ละบรรทัด';
 	@override String get muteAndBlock => 'ปิดเสียงและบล็อก';
 	@override String get mutedUsers => 'ผู้ใช้ที่ถูกปิดเสียง';
 	@override String get blockedUsers => 'ผู้ใช้ที่ถูกบล็อก';
@@ -406,7 +411,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'เลือกไฟล์';
 	@override String get selectFolder => 'เลือกโฟลเดอร์';
 	@override String get selectFolders => 'เลือกโฟลเดอร์';
-	@override String get fileNotSelected => 'ยังไม่ได้เลือกไฟล์';
 	@override String get renameFile => 'เปลี่ยนชื่อไฟล์';
 	@override String get folderName => 'ชื่อโฟลเดอร์';
 	@override String get createFolder => 'สร้างโฟลเดอร์';
@@ -414,6 +418,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get deleteFolder => 'ลบโฟลเดอร์';
 	@override String get folder => 'โฟลเดอร์';
 	@override String get addFile => 'เพิ่มไฟล์';
+	@override String get showFile => 'แสดงไฟล์';
 	@override String get emptyDrive => 'ไดรฟ์ของคุณว่างเปล่านะ';
 	@override String get emptyFolder => 'โฟลเดอร์นี้ว่างเปล่า';
 	@override String get unableToDelete => 'ไม่สามารถลบออกได้';
@@ -528,6 +533,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get moderator => 'ผู้ควบคุม';
 	@override String get moderation => 'การกลั่นกรอง';
 	@override String get moderationNote => 'โน้ตการกลั่นกรอง';
+	@override String get moderationNoteDescription => 'คุณสามารถใส่โน้ตส่วนตัวที่เฉพาะผู้ดูแลระบบเท่านั้นที่สามารถเข้าถึงได้';
 	@override String get addModerationNote => 'เพิ่มโน้ตการกลั่นกรอง';
 	@override String get moderationLogs => 'ปูมการควบคุมดูแล';
 	@override String nUsersMentioned({required Object n}) => 'กล่าวถึงโดยผู้ใช้ ${n} ราย';
@@ -589,6 +595,10 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'เกี่ยวกับ ${x}';
 	@override String get emojiStyle => 'สไตล์ของเอโมจิ';
 	@override String get native => 'ภาษาแม่';
+	@override String get menuStyle => 'สไตล์เมนู';
+	@override String get style => 'สไตล์';
+	@override String get drawer => 'ตัววาด';
+	@override String get popup => 'ป๊อปอัพ';
 	@override String get showNoteActionsOnlyHover => 'แสดงการดำเนินการโน้ตเมื่อโฮเวอร์(วางเมาส์เหนือ)เท่านั้น';
 	@override String get showReactionsCount => 'แสดงจำนวนรีแอกชั่นในโน้ต';
 	@override String get noHistory => 'ไม่มีประวัติ';
@@ -671,6 +681,8 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get descendingOrder => 'เรียงลำดับลง';
 	@override String get scratchpad => 'Scratchpad';
 	@override String get scratchpadDescription => 'Scratchpad ให้สภาพแวดล้อมสำหรับการทดลอง AiScript คุณสามารถเขียนโค้ด/สั่งดำเนินการ/ตรวจสอบผลลัพธ์ ของการโต้ตอบกับ Misskey ได้';
+	@override String get uiInspector => 'ตัวตรวจสอบ UI';
+	@override String get uiInspectorDescription => 'คุณสามารถตรวจสอบรายชื่อเซิร์ฟเวอร์ที่เกี่ยวข้องกับส่วนประกอบอินเตอร์เฟซผู้ใช้ (UI) บนหน่วยความจำของระบบ ส่วนประกอบ UI เหล่านี้จะถูกสร้างขึ้นโดยฟังก์ชัน Ui:C:';
 	@override String get output => 'เอาท์พุต';
 	@override String get script => 'สคริปต์';
 	@override String get disablePagesScript => 'ปิดการใช้งาน AiScript บนเพจ';
@@ -989,6 +1001,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get continueThread => 'ดูความต่อเนื่องเธรด';
 	@override String get deleteAccountConfirm => 'การดำเนินการนี้จะลบบัญชีของคุณอย่างถาวรเลยนะ แน่ใจหรอดำเนินการ?';
 	@override String get incorrectPassword => 'รหัสผ่านไม่ถูกต้อง';
+	@override String get incorrectTotp => 'รหัสยืนยันตัวตนแบบใช้ครั้งเดียวที่ท่านได้ระบุมานั้น ไม่ถูกต้องหรือหมดอายุลงแล้วค่ะ';
 	@override String voteConfirm({required Object choice}) => 'ต้องการโหวต “${choice}” ใช่ไหม?';
 	@override String get hide => 'ซ่อน';
 	@override String get useDrawerReactionPickerForMobile => 'แสดง ตัวจิ้มรีแอคชั่น เป็นแบบลิ้นชัก เมื่อใช้บนมือถือ';
@@ -1153,6 +1166,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => 'สิ่งนี้จะเพิ่มการโหลดเซิร์ฟเวอร์ชั่วคราวนะ';
 	@override String get enableChartsForRemoteUser => 'สร้างแผนภูมิข้อมูลผู้ใช้ระยะไกล';
 	@override String get enableChartsForFederatedInstances => 'สร้างแผนภูมิของเซิร์ฟเวอร์ระยะไกล';
+	@override String get enableStatsForFederatedInstances => 'ดึงข้อมูลสถิติจากเซิร์ฟเวอร์ที่อยู่ห่างไกล';
 	@override String get showClipButtonInNoteFooter => 'เพิ่ม “คลิป” ไปยังเมนูสั่งการของโน้ต';
 	@override String get reactionsDisplaySize => 'ขนาดของรีแอคชั่น';
 	@override String get limitWidthOfReaction => 'จำกัดความกว้างสูงสุดของรีแอคชั่นและแสดงให้เล็กลง';
@@ -1339,6 +1353,26 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get sensitiveMediaRevealConfirm => 'สื่อนี้มีเนื้อหาละเอียดอ่อน, ต้องการแสดงใช่ไหม?';
 	@override String get createdLists => 'รายชื่อที่ถูกสร้าง';
 	@override String get createdAntennas => 'เสาอากาศที่ถูกสร้าง';
+	@override String fromX({required Object x}) => 'จาก ${x}';
+	@override String get genEmbedCode => 'สร้างรหัสฝัง';
+	@override String get noteOfThisUser => 'โน้ตโดยผู้ใช้นี้';
+	@override String get clipNoteLimitExceeded => 'ไม่สามารถเพิ่มโน้ตเพิ่มเติมในคลิปนี้ได้อีกแล้ว';
+	@override String get performance => 'ประสิทธิภาพ​';
+	@override String get modified => 'แก้ไข';
+	@override String get discard => 'ละทิ้ง';
+	@override String thereAreNChanges({required Object n}) => 'มีอยู่ ${n} เปลี่ยนแปลง(s)';
+	@override String get signinWithPasskey => 'ลงชื่อเข้าใช้ด้วย Passkey';
+	@override String get unknownWebAuthnKey => 'พาสคีย์ไม่ถูกต้องค่ะ';
+	@override String get passkeyVerificationFailed => 'การยืนยันกุญแจดิจิทัลไม่สำเร็จค่ะ';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'การยืนยันพาสคีย์สำเร็จแล้ว แต่การลงชื่อเข้าใช้แบบไม่ต้องใส่รหัสผ่านถูกปิดใช้งานแล้ว';
+	@override String get messageToFollower => 'ข้อความถึงผู้ติดตาม';
+	@override String get target => 'เป้า';
+	@override String get testCaptchaWarning => 'ฟังก์ชันนี้มีไว้สำหรับทดสอบ CAPTCHA เท่านั้น\n<strong>ห้ามนำไปใช้ในระบบจริงโดยเด็ดขาด</strong>';
+	@override String get prohibitedWordsForNameOfUser => 'คำนี้ไม่สามารถใช้เป็นชื่อผู้ใช้ได้';
+	@override String get prohibitedWordsForNameOfUserDescription => 'หากมีสตริงใดๆ ในรายการนี้ปรากฏอยู่ในชื่อของผู้ใช้ ชื่อนั้นจะถูกปฏิเสธ ผู้ใช้ที่มีสิทธิ์แต่ผู้ดูแลระบบนั้นจะไม่ได้รับผลกระทบใดๆจากข้อจำกัดนี้ค่ะ';
+	@override String get yourNameContainsProhibitedWords => 'ชื่อของคุณนั้นมีคำที่ต้องห้าม';
+	@override String get yourNameContainsProhibitedWordsDescription => 'ถ้าหากคุณต้องการใช้ชื่อนี้ กรุณาติดต่อผู้ดูแลระบบของเซิร์ฟเวอร์นะค่ะ';
+	@override late final _TranslationsMisskeyAbuseUserReportThTh abuseUserReport_ = _TranslationsMisskeyAbuseUserReportThTh._(_root);
 	@override late final _TranslationsMisskeyDeliveryThTh delivery_ = _TranslationsMisskeyDeliveryThTh._(_root);
 	@override late final _TranslationsMisskeyBubbleGameThTh bubbleGame_ = _TranslationsMisskeyBubbleGameThTh._(_root);
 	@override late final _TranslationsMisskeyAnnouncementThTh announcement_ = _TranslationsMisskeyAnnouncementThTh._(_root);
@@ -1411,6 +1445,22 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingThTh urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingThTh._(_root);
 	@override late final _TranslationsMisskeyMediaControlsThTh mediaControls_ = _TranslationsMisskeyMediaControlsThTh._(_root);
 	@override late final _TranslationsMisskeyContextMenuThTh contextMenu_ = _TranslationsMisskeyContextMenuThTh._(_root);
+	@override late final _TranslationsMisskeyEmbedCodeGenThTh embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenThTh._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _TranslationsMisskeyAbuseUserReportThTh extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => 'ส่ง​ต่อ';
+	@override String get forwardDescription => 'ส่งรายงานไปยังเซิร์ฟเวอร์ระยะไกลโดยใช้บัญชีระบบที่ไม่ระบุตัวตน';
+	@override String get resolve => 'แก้ไข';
+	@override String get accept => 'ยอมรับ';
+	@override String get reject => 'ปฏิเสธ';
+	@override String get resolveTutorial => 'ถ้าหากรายงานนี้มีเนื้อหาถูกต้อง ให้เลือก "ยอมรับ" เพื่อปิดเคสกรณีนี้โดยถือว่าได้รับการแก้ไขแล้ว\nถ้าหากเนื้อหาในรายงานนี้นั้นไม่ถูกต้อง ให้เลือก "ปฏิเสธ" เพื่อปิดเคสกรณีนี้โดยถือว่าไม่ได้รับการแก้ไข';
 }
 
 // Path: misskey.delivery_
@@ -1545,8 +1595,10 @@ class _TranslationsMisskeyServerSettingsThTh extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDescription => 'เพิ่มประสิทธิภาพการดึงข้อมูลไทม์ไลน์อย่างมาก และลดภาระในฐานข้อมูลเมื่อเปิดใช้งาน ในทางกลับกัน การใช้หน่วยความจำของ Redis จะเพิ่มขึ้น ลองปิดการใช้งานนี้ในกรณีที่หน่วยความจำเซิร์ฟเวอร์เหลือน้อยหรือเซิร์ฟเวอร์ไม่เสถียร';
 	@override String get fanoutTimelineDbFallback => 'ฟอลแบ๊กกลับฐานข้อมูล';
 	@override String get fanoutTimelineDbFallbackDescription => 'เมื่อเปิดใช้งาน หากไม่ได้แคชไทม์ไลน์ ไทม์ไลน์จะฟอลแบ๊กไปยังฐานข้อมูลสำหรับการ query เพิ่มเติม การปิดใช้งานจะช่วยลดภาระของเซิร์ฟเวอร์ด้วยการกำจัดกระบวนฟอลแบ๊ก แต่มันก็จะจำกัดช่วงเวลาไทม์ไลน์ที่สามารถดึงข้อมูลได้';
+	@override String get reactionsBufferingDescription => 'เมื่อเปิดใช้งานฟังก์ชันนี้ก็จะช่วยลด latency ในการสร้างปฏิกิริยา แต่อาจจะส่งผลให้ memory footprint ของ Redis เพิ่มขึ้นนะ';
 	@override String get inquiryUrl => 'URL สำหรับการติดต่อสอบถาม';
 	@override String get inquiryUrlDescription => 'ระบุ URL ของหน้าเว็บที่มีแบบฟอร์มสำหรับติดต่อผู้ดูแลเซิร์ฟเวอร์ หรือข้อมูลการติดต่อของผู้ดูแลเซิร์ฟเวอร์';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'ถ้าหากไม่มีการตรวจสอบจากผู้ดูแลระบบหรือไม่มีความเคลื่อนไหวมาเป็นระยะเวลาหนึ่ง ระบบจะทำการปิดใช้งานฟังก์ชันนี้โดยอัตโนมัติ เพื่อลดความเสี่ยงในการถูกโจมตีด้วยสแปมและอื่นๆ';
 }
 
 // Path: misskey.accountMigration_
@@ -2345,6 +2397,9 @@ class _TranslationsMisskeyProfileThTh extends TranslationsMisskeyProfileEnUs {
 	@override String get changeBanner => 'เปลี่ยนแบนเนอร์';
 	@override String get verifiedLinkDescription => 'หากป้อน URL ที่มีลิงก์ไปยังโปรไฟล์ของคุณ ไอคอนการยืนยันความเป็นเจ้าของจะแสดงถัดจากฟิลด์นั้น ๆ';
 	@override String avatarDecorationMax({required Object max}) => 'คุณสามารถเพิ่มการตกแต่งได้สูงสุด ${max}';
+	@override String get followedMessage => 'ส่งข้อความเมื่อมีคนกดติดตาม';
+	@override String get followedMessageDescription => 'ส่งข้อความเมื่อมีคนกดติดตามแล้ว';
+	@override String get followedMessageDescriptionForLockedAccount => 'ถ้าหากคุณตั้งค่าให้คนอื่นต้องขออนุญาตก่อนที่จะติดตามคุณ ระบบจะขึ้นข้อความนี้ในตอนที่คุณอนุมัติให้เขาติดตาม';
 }
 
 // Path: misskey.exportOrImport_
@@ -2485,6 +2540,7 @@ class _TranslationsMisskeyPagesThTh extends TranslationsMisskeyPagesEnUs {
 	@override String get eyeCatchingImageSet => 'ตั้งค่าภาพขนาดย่อ';
 	@override String get eyeCatchingImageRemove => 'ลบภาพขนาดย่อ';
 	@override String get chooseBlock => 'เพิ่มบล็อค';
+	@override String get enterSectionTitle => 'ป้อนชื่อหัวข้อ';
 	@override String get selectType => 'เลือกชนิด';
 	@override String get contentBlocks => 'เนื้อหา';
 	@override String get inputBlocks => 'ป้อนข้อมูล';
@@ -2534,6 +2590,8 @@ class _TranslationsMisskeyNotificationThTh extends TranslationsMisskeyNotificati
 	@override String renotedBySomeUsers({required Object n}) => 'รีโน้ตจากผู้ใช้ ${n} ราย';
 	@override String followedBySomeUsers({required Object n}) => 'มีผู้ติดตาม ${n} ราย';
 	@override String get flushNotification => 'ล้างประวัติการแจ้งเตือน';
+	@override String exportOfXCompleted({required Object x}) => 'การดำเนินการส่งออก ${x} ได้เสร็จสิ้นลงแล้ว';
+	@override String get login => 'มีคนล็อกอิน';
 	@override late final _TranslationsMisskeyNotificationTypesThTh types_ = _TranslationsMisskeyNotificationTypesThTh._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsThTh actions_ = _TranslationsMisskeyNotificationActionsThTh._(_root);
 }
@@ -2617,6 +2675,7 @@ class _TranslationsMisskeyWebhookSettingsThTh extends TranslationsMisskeyWebhook
 	@override late final _TranslationsMisskeyWebhookSettingsEventsThTh events_ = _TranslationsMisskeyWebhookSettingsEventsThTh._(_root);
 	@override late final _TranslationsMisskeyWebhookSettingsSystemEventsThTh systemEvents_ = _TranslationsMisskeyWebhookSettingsSystemEventsThTh._(_root);
 	@override String get deleteConfirm => 'ต้องการลบ Webhook ใช่ไหม?';
+	@override String get testRemarks => 'คลิกปุ่มทางด้านขวาของสวิตช์เพื่อส่ง Webhook ทดสอบที่มีข้อมูลจำลอง';
 }
 
 // Path: misskey.abuseReport_
@@ -2663,6 +2722,8 @@ class _TranslationsMisskeyModerationLogTypesThTh extends TranslationsMisskeyMode
 	@override String get markSensitiveDriveFile => 'ทำเครื่องหมายไฟล์ว่ามีเนื้อหาละเอียดอ่อน';
 	@override String get unmarkSensitiveDriveFile => 'ยกเลิกทำเครื่องหมายไฟล์ว่ามีเนื้อหาละเอียดอ่อน';
 	@override String get resolveAbuseReport => 'รายงานได้รับการแก้ไขแล้ว';
+	@override String get forwardAbuseReport => 'ได้ส่งรายงานไปแล้ว';
+	@override String get updateAbuseReportNote => 'โน้ตการกลั่นกรองที่รายงานไปนั้น ได้รับการอัปเดตแล้ว';
 	@override String get createInvitation => 'สร้างรหัสเชิญ';
 	@override String get createAd => 'สร้างโฆษณาแล้ว';
 	@override String get deleteAd => 'ลบโฆษณาออกแล้ว';
@@ -2678,6 +2739,10 @@ class _TranslationsMisskeyModerationLogTypesThTh extends TranslationsMisskeyMode
 	@override String get createAbuseReportNotificationRecipient => 'สร้างปลายทางการแจ้งเตือนการรายงาน';
 	@override String get updateAbuseReportNotificationRecipient => 'อัปเดตปลายทางการแจ้งเตือนการรายงาน';
 	@override String get deleteAbuseReportNotificationRecipient => 'ลบปลายทางการแจ้งเตือนการรายงาน';
+	@override String get deleteAccount => 'บัญชีถูกลบไปแล้ว';
+	@override String get deletePage => 'เพจถูกลบออกไปแล้ว';
+	@override String get deleteFlash => 'Play ถูกลบออกไปแล้ว';
+	@override String get deleteGalleryPost => 'โพสต์แกลเลอรี่ถูกลบออกแล้ว';
 }
 
 // Path: misskey.fileViewer_
@@ -2845,6 +2910,28 @@ class _TranslationsMisskeyContextMenuThTh extends TranslationsMisskeyContextMenu
 	@override String get app => 'แอปพลิเคชัน';
 	@override String get appWithShift => 'แอปฟลิเคชันด้วยปุ่มยกแคร่ (Shift)';
 	@override String get native => 'UI ของเบราว์เซอร์';
+}
+
+// Path: misskey.embedCodeGen_
+class _TranslationsMisskeyEmbedCodeGenThTh extends TranslationsMisskeyEmbedCodeGenEnUs {
+	_TranslationsMisskeyEmbedCodeGenThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ปรับแต่งโค้ดฝัง';
+	@override String get header => 'แสดงส่วนหัว';
+	@override String get autoload => 'โหลดเพิ่มโดยอัตโนมัติ (เลิกใช้แล้ว)';
+	@override String get maxHeight => 'ความสูงสุด';
+	@override String get maxHeightDescription => 'หากถ้าตั้งค่าเป็น 0 จะทำให้ไม่มีการจำกัดความสูงของวิดเจ็ต แต่ควรตั้งค่าเป็นตัวเลขอื่นๆ เพื่อไม่ให้วิดเจ็ตยืดตัวลงไปเรื่อยๆ';
+	@override String get maxHeightWarn => 'การจำกัดความสูงสูงสุดถูกปิดใช้งาน (0) หากไม่ได้ตั้งใจให้เป็นเช่นนี้ โปรดตั้งค่าความสูงสูงสุดให้เป็นค่าอื่นๆแทน';
+	@override String get previewIsNotActual => 'การแสดงผลนั้นต่างจากการฝังจริงเพราะเกินขอบเขตที่แสดงบนหน้าจอตัวอย่างนะ';
+	@override String get rounded => 'ทำให้มันกลม';
+	@override String get border => 'เพิ่มขอบให้กับกรอบด้านนอก';
+	@override String get applyToPreview => 'นำไปใช้กับการแสดงตัวอย่าง';
+	@override String get generateCode => 'สร้างโค้ดสำหรับการฝัง';
+	@override String get codeGenerated => 'รหัสถูกสร้างขึ้นแล้ว';
+	@override String get codeGeneratedDescription => 'นำโค้ดที่สร้างแล้วไปวางในเว็บไซต์ของคุณเพื่อฝังเนื้อหา';
 }
 
 // Path: misskey.delivery_.type_
@@ -3119,6 +3206,11 @@ class _TranslationsMisskeyRoleOptionsThTh extends TranslationsMisskeyRoleOptions
 	@override String get canSearchNotes => 'การใช้การค้นหาโน้ต';
 	@override String get canUseTranslator => 'การใช้งานแปล';
 	@override String get avatarDecorationLimit => 'จำนวนการตกแต่งไอคอนสูงสุดที่สามารถติดตั้งได้';
+	@override String get canImportAntennas => 'อนุญาตให้นำเข้าเสาอากาศ';
+	@override String get canImportBlocking => 'อนุญาตให้นำเข้าการบล็อก';
+	@override String get canImportFollowing => 'อนุญาตให้นำเข้ารายการต่อไปนี้';
+	@override String get canImportMuting => 'อนุญาตให้นำเข้าการปิดกั้น';
+	@override String get canImportUserLists => 'อนุญาตให้นำเข้ารายการ';
 }
 
 // Path: misskey.role_.condition_
@@ -3280,7 +3372,9 @@ class _TranslationsMisskeyNotificationTypesThTh extends TranslationsMisskeyNotif
 	@override String get followRequestAccepted => 'อนุมัติให้ติดตามแล้ว';
 	@override String get roleAssigned => 'ให้บทบาท';
 	@override String get achievementEarned => 'ปลดล็อกความสำเร็จแล้ว';
+	@override String get exportCompleted => 'กระบวนการส่งออกข้อมูลได้เสร็จสิ้นสมบูรณ์แล้ว';
 	@override String get login => 'เข้าสู่ระบบ';
+	@override String get test => 'ทดสอบระบบแจ้งเตือน';
 	@override String get app => 'การแจ้งเตือนจากแอปที่มีลิงก์';
 }
 
@@ -3341,6 +3435,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsThTh extends TranslationsMi
 	@override String get abuseReport => 'เมื่อมีการรายงานจากผู้ใช้';
 	@override String get abuseReportResolved => 'เมื่อมีการจัดการกับการรายงานจากผู้ใช้';
 	@override String get userCreated => 'เมื่อผู้ใช้ถูกสร้างขึ้น';
+	@override String get inactiveModeratorsWarning => 'เมื่อผู้ดูแลระบบไม่ได้ใช้งานมานานระยะหนึ่ง';
+	@override String get inactiveModeratorsInvitationOnlyChanged => 'เมื่อผู้ดูแลระบบที่ไม่ได้ใช้งานมานาน และเซิร์ฟเวอร์เปลี่ยนเป็นแบบเชิญเข้าร่วมเท่านั้น';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

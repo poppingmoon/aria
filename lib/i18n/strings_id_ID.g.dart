@@ -335,6 +335,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get proxyAccount => 'Akun proksi';
 	@override String get proxyAccountDescription => 'Akun proksi merupakan sebuah akun yang bertindak sebagai pengikut instansi luar untuk pengguna dalam kondisi tertentu. Sebagai contoh, ketika pengguna menambahkan seorang pengguna instansi luar ke dalam daftar, aktivitas dari pengguna instansi luar tidak akan disampaikan ke instansi apabila tidak ada pengguna lokal yang mengikuti pengguna tersebut, dengan begitu akun proksilah yang akan mengikutinya.';
 	@override String get host => 'Host';
+	@override String get selectSelf => 'Pilih diri sendiri';
 	@override String get selectUser => 'Pilih pengguna';
 	@override String get recipient => 'Penerima';
 	@override String get annotation => 'Keterangan konten';
@@ -371,6 +372,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Daftar nama host dari instansi yang diperlukan untuk diblokir. Instansi yang didaftarkan tidak akan dapat berkomunikasi dengan instansi ini.';
 	@override String get silencedInstances => 'Instansi yang disenyapkan';
 	@override String get silencedInstancesDescription => 'Daftar nama host dari instansi yang ingin kamu senyapkan. Semua akun dari instansi yang terdaftar akan diperlakukan sebagai disenyapkan. Hal ini membuat akun hanya dapat membuat permintaan mengikuti, dan tidak dapat menyebutkan akun lokal apabila tidak mengikuti. Hal ini tidak akan mempengaruhi instansi yang diblokir.';
+	@override String get federationAllowedHosts => 'Server yang membolehkan federasi';
 	@override String get muteAndBlock => 'Bisukan / Blokir';
 	@override String get mutedUsers => 'Pengguna yang dibisukan';
 	@override String get blockedUsers => 'Pengguna yang diblokir';
@@ -461,7 +463,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Pilih berkas';
 	@override String get selectFolder => 'Pilih folder';
 	@override String get selectFolders => 'Pilih folder';
-	@override String get fileNotSelected => 'Tidak ada file yang dipilih';
 	@override String get renameFile => 'Ubah nama berkas';
 	@override String get folderName => 'Nama folder';
 	@override String get createFolder => 'Buat folder';
@@ -469,6 +470,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get deleteFolder => 'Hapus folder';
 	@override String get folder => 'Folder';
 	@override String get addFile => 'Tambahkan berkas';
+	@override String get showFile => 'Tampilkan berkas';
 	@override String get emptyDrive => 'Drive kosong';
 	@override String get emptyFolder => 'Folder kosong';
 	@override String get unableToDelete => 'Tidak dapat menghapus';
@@ -643,6 +645,8 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'Tentang ${x}';
 	@override String get emojiStyle => 'Gaya emoji';
 	@override String get native => 'Native';
+	@override String get menuStyle => 'Gaya menu';
+	@override String get style => 'Gaya';
 	@override String get showNoteActionsOnlyHover => 'Hanya tampilkan aksi catatan saat ditunjuk';
 	@override String get showReactionsCount => 'Lihat jumlah reaksi dalam catatan';
 	@override String get noHistory => 'Tidak ada riwayat';
@@ -1066,6 +1070,9 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 Hari';
 	@override String get oneWeek => '1 Bulan';
 	@override String get oneMonth => 'satu bulan';
+	@override String get threeMonths => '3 bulan';
+	@override String get oneYear => '1 tahun';
+	@override String get threeDays => '3 hari';
 	@override String get reflectMayTakeTime => 'Mungkin perlu beberapa saat untuk dicerminkan.';
 	@override String get failedToFetchAccountInformation => 'Gagal untuk mendapatkan informasi akun';
 	@override String get rateLimitExceeded => 'Batas sudah terlampaui';
@@ -1240,6 +1247,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'Daftar nama pengguna yang dicadangkan dipisah dengan baris baru. Nama pengguna berikut akan tidak dapat dipakai pada pembuatan akun normal, namun dapat digunakan oleh admin untuk membuat akun baru. Akun yang sudah ada dengan menggunakan nama pengguna ini tidak akan terpengaruh.';
 	@override String get createNoteFromTheFile => 'Buat catatan dari berkas ini';
 	@override String get archive => 'Arsipkan';
+	@override String get archived => 'Diarsipkan';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Yakin untuk mengarsipkan ${name}?';
 	@override String get channelArchiveConfirmDescription => 'Kanal yang diarsipkan tidak akan muncul pada daftar kanal atau hasil pencarian. Postingan baru juga tidak dapat ditambahkan lagi.';
 	@override String get thisChannelArchived => 'Kanal ini telah diarsipkan.';
@@ -1250,6 +1258,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get preventAiLearningDescription => 'Minta perayap web untuk tidak menggunakan materi teks atau gambar yang telah diposting ke dalam set data Pembelajaran Mesin (Prediktif / Generatif). Hal ini dicapai dengan menambahkan flag HTML-Response "noai" ke masing-masing konten. Pencegahan penuh mungkin tidak dapat dicapai dengan flag ini, karena juga dapat diabaikan begitu saja.';
 	@override String get options => 'Opsi peran';
 	@override String get specifyUser => 'Pengguna spesifik';
+	@override String get openTagPageConfirm => 'Apakah ingin membuka laman tagar?';
 	@override String get failedToPreviewUrl => 'Tidak dapat dipratinjau';
 	@override String get update => 'Perbarui';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Peran yang dapat menggunakan emoji ini sebagai reaksi';
@@ -1382,6 +1391,16 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get alwaysConfirmFollow => 'Selalu konfirmasi ketika mengikuti';
 	@override String get inquiry => 'Hubungi kami';
 	@override String get tryAgain => 'Silahkan coba lagi.';
+	@override String get createdLists => 'Senarai yang dibuat';
+	@override String get createdAntennas => 'Antena yang dibuat';
+	@override String fromX({required Object x}) => 'Dari ${x}';
+	@override String get noteOfThisUser => 'Catatan oleh pengguna ini';
+	@override String get clipNoteLimitExceeded => 'Klip ini tak bisa ditambahi lagi catatan.';
+	@override String get performance => 'Kinerja';
+	@override String get modified => 'Diubah';
+	@override String thereAreNChanges({required Object n}) => 'Ada ${n} perubahan';
+	@override String get prohibitedWordsForNameOfUser => 'Kata yang dilarang untuk nama pengguna';
+	@override late final _TranslationsMisskeyAbuseUserReportIdId abuseUserReport_ = _TranslationsMisskeyAbuseUserReportIdId._(_root);
 	@override late final _TranslationsMisskeyDeliveryIdId delivery_ = _TranslationsMisskeyDeliveryIdId._(_root);
 	@override late final _TranslationsMisskeyBubbleGameIdId bubbleGame_ = _TranslationsMisskeyBubbleGameIdId._(_root);
 	@override late final _TranslationsMisskeyAnnouncementIdId announcement_ = _TranslationsMisskeyAnnouncementIdId._(_root);
@@ -1453,6 +1472,17 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyOfflineScreenIdId offlineScreen_ = _TranslationsMisskeyOfflineScreenIdId._(_root);
 	@override late final _TranslationsMisskeyUrlPreviewSettingIdId urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingIdId._(_root);
 	@override late final _TranslationsMisskeyMediaControlsIdId mediaControls_ = _TranslationsMisskeyMediaControlsIdId._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _TranslationsMisskeyAbuseUserReportIdId extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get accept => 'Setuju';
+	@override String get reject => 'Tolak';
 }
 
 // Path: misskey.delivery_
@@ -2023,6 +2053,7 @@ class _TranslationsMisskeySoundSettingsIdId extends TranslationsMisskeySoundSett
 	@override String get driveFileTypeWarnDescription => 'Pilih berkas audio';
 	@override String get driveFileDurationWarn => 'Audio ini terlalu panjang';
 	@override String get driveFileDurationWarnDescription => 'Audio panjang dapat mengganggu penggunaan Misskey. Masih ingin melanjutkan?';
+	@override String get driveFileError => 'Tak bisa memuat audio. Mohon ubah pengaturan';
 }
 
 // Path: misskey.ago_
@@ -2708,6 +2739,7 @@ class _TranslationsMisskeyModerationLogTypesIdId extends TranslationsMisskeyMode
 	@override String get deleteAvatarDecoration => 'Hapus dekorasi avatar';
 	@override String get unsetUserAvatar => 'Hapus avatar pengguna';
 	@override String get unsetUserBanner => 'Hapus banner pengguna';
+	@override String get deleteAccount => 'Akun dihapus';
 }
 
 // Path: misskey.fileViewer_
@@ -3135,6 +3167,8 @@ class _TranslationsMisskeyRoleOptionsIdId extends TranslationsMisskeyRoleOptions
 	@override String get canSearchNotes => 'Penggunaan pencarian catatan';
 	@override String get canUseTranslator => 'Penggunaan penerjemah';
 	@override String get avatarDecorationLimit => 'Jumlah maksimum dekorasi avatar yang dapat diterapkan';
+	@override String get canImportAntennas => 'Izinkan mengimpor antena';
+	@override String get canImportUserLists => 'Izinkan mengimpor senarai';
 }
 
 // Path: misskey.role_.condition_
@@ -3355,6 +3389,7 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientIdId extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId._(_root);
+	@override String get keywords => 'Kata kunci';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -4395,6 +4430,7 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeIdId exte
 
 	// Translations
 	@override String get mail => 'Surel';
+	@override String get webhook => 'Webhook';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_

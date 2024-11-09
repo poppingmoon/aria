@@ -414,7 +414,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => '選擇檔案';
 	@override String get selectFolder => '選擇資料夾';
 	@override String get selectFolders => '選擇資料夾';
-	@override String get fileNotSelected => '尚未選擇檔案';
 	@override String get renameFile => '重新命名檔案';
 	@override String get folderName => '資料夾名稱';
 	@override String get createFolder => '新增資料夾';
@@ -1030,6 +1029,9 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '一天';
 	@override String get oneWeek => '一週';
 	@override String get oneMonth => '一個月';
+	@override String get threeMonths => '3 個月';
+	@override String get oneYear => '1 年';
+	@override String get threeDays => '3 日';
 	@override String get reflectMayTakeTime => '可能需要一些時間才會出現效果。';
 	@override String get failedToFetchAccountInformation => '取得帳戶資訊失敗';
 	@override String get rateLimitExceeded => '已超過速率限制';
@@ -1170,6 +1172,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => '伺服器的負荷可能會暫時增加。';
 	@override String get enableChartsForRemoteUser => '生成遠端使用者的圖表';
 	@override String get enableChartsForFederatedInstances => '生成遠端伺服器的圖表';
+	@override String get enableStatsForFederatedInstances => '取得遠端伺服器資訊';
 	@override String get showClipButtonInNoteFooter => '新增摘錄按鈕至貼文';
 	@override String get reactionsDisplaySize => '反應的顯示尺寸';
 	@override String get limitWidthOfReaction => '限制反應的最大寬度，並縮小顯示尺寸。';
@@ -1370,6 +1373,15 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '雖然驗證金鑰成功，但是無密碼登入的方式是停用的。';
 	@override String get messageToFollower => '給追隨者的訊息';
 	@override String get target => '目標 ';
+	@override String get testCaptchaWarning => '此功能用於 CAPTCHA 的測試。<strong>請勿在正式環境中使用。</strong>';
+	@override String get prohibitedWordsForNameOfUser => '禁止使用的字詞（使用者名稱）';
+	@override String get prohibitedWordsForNameOfUserDescription => '如果使用者名稱包含此清單中的任何字串，則拒絕重新命名使用者。 具有審查員權限的使用者不受此限制的影響。';
+	@override String get yourNameContainsProhibitedWords => '您嘗試更改的名稱包含禁止的字串';
+	@override String get yourNameContainsProhibitedWordsDescription => '名稱中包含禁止使用的字串。 如果您想使用此名稱，請聯絡您的伺服器管理員。';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '作者將其設定為需要登入才能顯示。';
+	@override String get lockdown => '鎖定';
+	@override String get pleaseSelectAccount => '請選擇帳戶';
+	@override late final _TranslationsMisskeyAccountSettingsZhTw accountSettings_ = _TranslationsMisskeyAccountSettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
 	@override late final _TranslationsMisskeyBubbleGameZhTw bubbleGame_ = _TranslationsMisskeyBubbleGameZhTw._(_root);
@@ -1444,6 +1456,26 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsZhTw mediaControls_ = _TranslationsMisskeyMediaControlsZhTw._(_root);
 	@override late final _TranslationsMisskeyContextMenuZhTw contextMenu_ = _TranslationsMisskeyContextMenuZhTw._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhTw._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsZhTw extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => '須登入以顯示內容';
+	@override String get requireSigninToViewContentsDescription1 => '必須登入才會顯示您建立的貼文等內容。可望有效防止資訊被爬蟲蒐集。';
+	@override String get requireSigninToViewContentsDescription2 => '來自不支援 URL 預覽 (OGP)、 網頁嵌入和引用貼文的伺服器，也將停止顯示。';
+	@override String get requireSigninToViewContentsDescription3 => '這些限制可能不適用於被聯邦發送至遠端伺服器的內容。';
+	@override String get makeNotesFollowersOnlyBefore => '讓過去的貼文僅對追隨者顯示';
+	@override String get makeNotesFollowersOnlyBeforeDescription => '啟用此功能後，超過設定的日期和時間或超過設定時間的貼文將僅對追隨者顯示。 如果您再次停用它，貼文的公開狀態也會恢復原狀。';
+	@override String get makeNotesHiddenBefore => '隱藏過去的貼文';
+	@override String get makeNotesHiddenBeforeDescription => '啟用此功能後，超過設定的日期和時間或超過設定時間的貼文將僅對自己顯示（私密化）。 如果您再次停用它，貼文的公開狀態也會恢復原狀。';
+	@override String get mayNotEffectForFederatedNotes => '聯邦發送至遠端伺服器的貼文可能會不受影響。';
+	@override String get notesHavePassedSpecifiedPeriod => '早於指定時間的貼文';
+	@override String get notesOlderThanSpecifiedDateAndTime => '指定時間和日期之前的貼文';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1596,6 +1628,7 @@ class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '啟用時，可以顯著提高建立反應時的效能並減少資料庫的負載。 但是，Redis 記憶體使用量會增加。';
 	@override String get inquiryUrl => '聯絡表單網址';
 	@override String get inquiryUrlDescription => '指定伺服器運營者的聯絡表單網址，或包含運營者聯絡資訊網頁的網址。';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '為了防止 spam，如果一段期間內沒有偵測到審查員的活動，此設定將自動關閉。';
 }
 
 // Path: misskey.accountMigration_
@@ -2227,8 +2260,11 @@ class _TranslationsMisskeyAuthZhTw extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => '此應用程式需要以下權限';
 	@override String get pleaseGoBack => '請返回至應用程式';
 	@override String get callback => '回到應用程式';
+	@override String get accepted => '已授予存取權限';
 	@override String get denied => '拒絕訪問';
+	@override String get scopeUser => '以下列使用者身分操作';
 	@override String get pleaseLogin => '必須登入以提供應用程式的存取權限。';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => '如果授予存取權限，就會自動導向到以下的網址';
 }
 
 // Path: misskey.antennaSources_
@@ -3361,7 +3397,7 @@ class _TranslationsMisskeyNotificationTypesZhTw extends TranslationsMisskeyNotif
 	@override String get follow => '追隨中';
 	@override String get mention => '提及';
 	@override String get reply => '回覆';
-	@override String get renote => '轉發貼文';
+	@override String get renote => '轉發';
 	@override String get quote => '引用';
 	@override String get reaction => '反應';
 	@override String get pollEnded => '問卷調查結束';
@@ -3432,6 +3468,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsZhTw extends TranslationsMi
 	@override String get abuseReport => '當使用者檢舉時';
 	@override String get abuseReportResolved => '當處理了使用者的檢舉時';
 	@override String get userCreated => '使用者被新增時';
+	@override String get inactiveModeratorsWarning => '當審查員在一段時間內沒有活動時';
+	@override String get inactiveModeratorsInvitationOnlyChanged => '當審查員在一段時間內不活動時，系統會將模式變更為邀請制';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

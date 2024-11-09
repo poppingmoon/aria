@@ -54,11 +54,13 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get alwaysExpandCw => 'CWを常に展開する';
 	@override String get alwaysExpandLongNote => '長いノートを常に展開する';
 	@override String get alwaysExpandMediaInSubNote => 'サブノート中のメディアを常に展開する';
+	@override String get alwaysShowAllReactions => '全てのリアクションを常に表示する';
 	@override String get alwaysShowTabHeader => 'タブの情報を常に表示する';
 	@override String get authenticate => '認証';
 	@override String get authenticated => '認証してきた';
 	@override String get avatarSize => 'アイコンのサイズ';
 	@override String get background => '背景';
+	@override String get buttonTypes => 'ボタンのタイプ';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
 	@override String get confirmBeforeReact => 'リアクションする前に確認する';
@@ -90,6 +92,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get enableEmojiFadeIn => 'カスタム絵文字のフェードインを有効にする';
 	@override String get enableFederation => '連合ありにする';
 	@override String get enablePredictiveBack => '予測型「戻る」アニメーションを有効にする';
+	@override String get enableSpellCheck => 'スペルチェックを有効にする';
 	@override String get endpoint => 'エンドポイント';
 	@override String get expandNote => 'ノートを開く';
 	@override String get extraMentionsWarning => '返信元のノートには含まれていないメンションがあります';
@@ -125,6 +128,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get margin => '余白';
 	@override String get media => 'メディア';
 	@override String get mentionToRemoteWarning => 'リモートユーザーへのメンションが含まれています';
+	@override String get mergeReactionsByName => '同じ名前のリアクションをまとめて表示する';
 	@override String get moved => '移動しました';
 	@override String get muted => 'ミュート中';
 	@override String get mutedEmojis => 'ミュートした絵文字';
@@ -175,12 +179,14 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get pleaseCopyResponse => '以下のレスポンスをコピーしてください';
 	@override String get postConfirm => 'このノートを投稿しますか？';
 	@override String get reactionConfirm => 'リアクションしますか？';
+	@override String get recentlyUsedEmojis => '最近使用した絵文字';
 	@override String get renoteConfirm => 'このノートをリノートしますか？';
 	@override String get renoteToChannel => 'チャンネルにリノート';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
 		const TextSpan(text: 'がリノート'),
 	]);
+	@override String get reset => 'リセット';
 	@override String get rotate => '回転';
 	@override String get scale => '拡大';
 	@override String get selectIcon => 'アイコンを選択';
@@ -198,19 +204,17 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get showAvatarsInSubNote => 'サブノートにユーザーのアイコンを表示する';
 	@override String get showEntireImage => '全体を表示する';
 	@override String get showExpandedImage => '拡大して表示する';
-	@override String get showHomeFAB => 'ホームボタンを表示する';
 	@override String get showImage => '画像を表示';
 	@override String get showLikeButtonInNoteFooter => 'ノートのアクションにいいねを追加';
 	@override String get showMenuButtonInTabBar => 'タイムラインのタブバーにメニューボタンを追加';
 	@override String get showNoteCreatedAt => 'ノートの作成日時を表示する';
 	@override String get showNoteFooter => 'ノートにアクションボタンを表示する';
 	@override String get showNoteReactionsViewer => 'ノートにリアクションを表示する';
-	@override String get showNotificationsFAB => '通知ボタンを表示する';
 	@override String get showPopupOnNewNote => 'ノートを受信したときにポップアップを表示する';
-	@override String get showPostForm => '投稿フォームを表示';
 	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
 	@override String get showSelfRenotes => 'セルフリノートを表示する';
-	@override String get showShowPostFormFAB => '投稿フォームボタンを表示する';
+	@override String get showSmallButtons => 'ボタンを小さく表示する';
+	@override String get showSquaredButtons => 'ボタンを四角形で表示する';
 	@override String get showStackTrace => 'スタックトレースを表示';
 	@override String get showSubNoteFooter => 'サブノートにアクションボタンを表示する';
 	@override String get showSubNoteReactionsViewer => 'サブノートにリアクションを表示する';
@@ -221,11 +225,13 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get sinceDate => 'この日から';
 	@override String get stackTrace => 'スタックトレース';
 	@override String get streamingChannel => 'ストリーミングチャンネル';
+	@override String get swapCw => '注釈と本文を入れ替える';
 	@override String get tabName => 'タブの名前';
 	@override String get tabType => 'タブの種類';
 	@override String get tabs => 'タブ';
 	@override String get tapToShow => 'タップして表示';
 	@override String get timeMachine => 'タイムマシン';
+	@override String get timelinesPageButtons => 'タイムラインページのボタン';
 	@override String get unfavorited => 'お気に入りを解除しました';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		name,
@@ -586,7 +592,6 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'ファイルを選択';
 	@override String get selectFolder => 'フォルダーを選択';
 	@override String get selectFolders => 'フォルダーを選択';
-	@override String get fileNotSelected => 'ファイルが選択されていません';
 	@override String get renameFile => 'ファイル名を変更';
 	@override String get folderName => 'フォルダー名';
 	@override String get createFolder => 'フォルダーを作成';
@@ -1202,6 +1207,9 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1日';
 	@override String get oneWeek => '1週間';
 	@override String get oneMonth => '1ヶ月';
+	@override String get threeMonths => '3ヶ月';
+	@override String get oneYear => '1年';
+	@override String get threeDays => '3日';
 	@override String get reflectMayTakeTime => '反映されるまで時間がかかる場合があります。';
 	@override String get failedToFetchAccountInformation => 'アカウント情報の取得に失敗しました';
 	@override String get rateLimitExceeded => 'レート制限を超えました';
@@ -1342,6 +1350,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => '一時的にサーバーの負荷が増大することがあります。';
 	@override String get enableChartsForRemoteUser => 'リモートユーザーのチャートを生成';
 	@override String get enableChartsForFederatedInstances => 'リモートサーバーのチャートを生成';
+	@override String get enableStatsForFederatedInstances => 'リモートサーバーの情報を取得';
 	@override String get showClipButtonInNoteFooter => 'ノートのアクションにクリップを追加';
 	@override String get reactionsDisplaySize => 'リアクションの表示サイズ';
 	@override String get limitWidthOfReaction => 'リアクションの最大横幅を制限し、縮小して表示する';
@@ -1542,6 +1551,15 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'パスキーの検証に成功しましたが、パスワードレスログインが無効になっています。';
 	@override String get messageToFollower => 'フォロワーへのメッセージ';
 	@override String get target => '対象';
+	@override String get testCaptchaWarning => 'CAPTCHAのテストを目的とした機能です。<strong>本番環境で使用しないでください。</strong>';
+	@override String get prohibitedWordsForNameOfUser => '禁止ワード（ユーザーの名前）';
+	@override String get prohibitedWordsForNameOfUserDescription => 'このリストに含まれる文字列がユーザーの名前に含まれる場合、ユーザーの名前の変更を拒否します。モデレーター権限を持つユーザーはこの制限の影響を受けません。';
+	@override String get yourNameContainsProhibitedWords => '変更しようとした名前に禁止された文字列が含まれています';
+	@override String get yourNameContainsProhibitedWordsDescription => '名前に禁止されている文字列が含まれています。この名前を使用したい場合は、サーバー管理者にお問い合わせください。';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '投稿者により、表示にはログインが必要と設定されています';
+	@override String get lockdown => 'ロックダウン';
+	@override String get pleaseSelectAccount => 'アカウントを選択してください';
+	@override late final _TranslationsMisskeyAccountSettingsJaJp accountSettings_ = _TranslationsMisskeyAccountSettingsJaJp._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
 	@override late final _TranslationsMisskeyBubbleGameJaJp bubbleGame_ = _TranslationsMisskeyBubbleGameJaJp._(_root);
@@ -1626,6 +1644,26 @@ class _TranslationsMisskeyIOJaJp extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusJaJp skebStatus_ = _TranslationsMisskeyIOSkebStatusJaJp._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsJaJp extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'コンテンツの表示にログインを必須にする';
+	@override String get requireSigninToViewContentsDescription1 => 'あなたが作成した全てのノートなどのコンテンツを表示するのにログインを必須にします。クローラーに情報が収集されるのを防ぐ効果が期待できます。';
+	@override String get requireSigninToViewContentsDescription2 => 'URLプレビュー(OGP)、Webページへの埋め込み、ノートの引用に対応していないサーバーからの表示も不可になります。';
+	@override String get requireSigninToViewContentsDescription3 => 'リモートサーバーに連合されたコンテンツでは、これらの制限が適用されない場合があります。';
+	@override String get makeNotesFollowersOnlyBefore => '過去のノートをフォロワーのみ表示可能にする';
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'この機能が有効になっている間、設定された日時より過去、または設定された時間を経過しているノートがフォロワーのみ表示可能になります。無効に戻すと、ノートの公開状態も元に戻ります。';
+	@override String get makeNotesHiddenBefore => '過去のノートを非公開化する';
+	@override String get makeNotesHiddenBeforeDescription => 'この機能が有効になっている間、設定された日時より過去、または設定された時間を経過しているノートが自分のみ表示可能(非公開化)になります。無効に戻すと、ノートの公開状態も元に戻ります。';
+	@override String get mayNotEffectForFederatedNotes => 'リモートサーバーに連合されたノートには効果が及ばない場合があります。';
+	@override String get notesHavePassedSpecifiedPeriod => '指定した時間を経過しているノート';
+	@override String get notesOlderThanSpecifiedDateAndTime => '指定した日時より前のノート';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1778,6 +1816,7 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '有効にすると、リアクション作成時のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。';
 	@override String get inquiryUrl => '問い合わせ先URL';
 	@override String get inquiryUrlDescription => 'サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定します。';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '一定期間モデレーターのアクティビティが検出されなかった場合、スパム防止のためこの設定は自動でオフになります。';
 }
 
 // Path: misskey.accountMigration_
@@ -2409,8 +2448,11 @@ class _TranslationsMisskeyAuthJaJp extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => 'このアプリは次の権限を要求しています';
 	@override String get pleaseGoBack => 'アプリケーションに戻ってやっていってください';
 	@override String get callback => 'アプリケーションに戻っています';
+	@override String get accepted => 'アクセスを許可しました';
 	@override String get denied => 'アクセスを拒否しました';
+	@override String get scopeUser => '以下のユーザーとして操作しています';
 	@override String get pleaseLogin => 'アプリケーションにアクセス許可を与えるには、ログインが必要です。';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => 'アクセスを許可すると、自動で以下のURLに遷移します';
 }
 
 // Path: misskey.antennaSources_
@@ -3630,6 +3672,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsJaJp extends TranslationsMi
 	@override String get abuseReport => 'ユーザーから通報があったとき';
 	@override String get abuseReportResolved => 'ユーザーからの通報を処理したとき';
 	@override String get userCreated => 'ユーザーが作成されたとき';
+	@override String get inactiveModeratorsWarning => 'モデレーターが一定期間非アクティブになったとき';
+	@override String get inactiveModeratorsInvitationOnlyChanged => 'モデレーターが一定期間非アクティブだったため、システムにより招待制へと変更されたとき';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

@@ -296,8 +296,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get perHour => '每小时';
 	@override String get perDay => '每天';
 	@override String get stopActivityDelivery => '停止发送活动';
-	@override String get blockThisInstance => '阻止此服务器向本服务器推流';
-	@override String get silenceThisInstance => '使服务器静音';
+	@override String get blockThisInstance => '封锁此服务器';
+	@override String get silenceThisInstance => '静音此服务器';
 	@override String get mediaSilenceThisInstance => '隐藏此服务器的媒体文件';
 	@override String get operations => '操作';
 	@override String get software => '软件';
@@ -341,7 +341,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get noJobs => '没有任务';
 	@override String get federating => '联合中';
 	@override String get blocked => '已拉黑';
-	@override String get suspended => '停止推流';
+	@override String get suspended => '停止投递';
 	@override String get all => '全部';
 	@override String get subscribing => '已订阅';
 	@override String get publishing => '投递中';
@@ -414,7 +414,6 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => '选择文件';
 	@override String get selectFolder => '选择文件夹';
 	@override String get selectFolders => '选择多个文件夹';
-	@override String get fileNotSelected => '未选择文件';
 	@override String get renameFile => '重命名文件';
 	@override String get folderName => '文件夹名称';
 	@override String get createFolder => '创建文件夹';
@@ -789,7 +788,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get other => '其他';
 	@override String get regenerateLoginToken => '重新生成登录令牌';
 	@override String get regenerateLoginTokenDescription => '重新生成用于登录的内部令牌。通常您不需要这样做。重新生成后，您将在所有设备上登出。';
-	@override String get theKeywordWhenSearchingForCustomEmoji => '这将是搜素自定义表情符号时的关键词。';
+	@override String get theKeywordWhenSearchingForCustomEmoji => '这将是搜索自定义表情符号时的关键词。';
 	@override String get setMultipleBySeparatingWithSpace => '您可以使用空格分隔多个项目。';
 	@override String get fileIdOrUrl => '文件 ID 或者 URL';
 	@override String get behavior => '行为';
@@ -1030,6 +1029,9 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 天';
 	@override String get oneWeek => '1 周';
 	@override String get oneMonth => '1 个月';
+	@override String get threeMonths => '3 个月';
+	@override String get oneYear => '1 年';
+	@override String get threeDays => '3 天';
 	@override String get reflectMayTakeTime => '可能需要一些时间才能体现出效果。';
 	@override String get failedToFetchAccountInformation => '获取账户信息失败';
 	@override String get rateLimitExceeded => '已超过速率限制';
@@ -1153,7 +1155,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get rolesAssignedToMe => '指派给自己的角色';
 	@override String get resetPasswordConfirm => '确定重置密码？';
 	@override String get sensitiveWords => '敏感词';
-	@override String get sensitiveWordsDescription => '将包含设置词的帖子的可见范围设置为首页。可以通过用换行符分隔来设置多个。';
+	@override String get sensitiveWordsDescription => '包含这些词的帖子将只在首页可见。可用换行来设定多个词。';
 	@override String get sensitiveWordsDescription2 => 'AND 条件用空格分隔，正则表达式用斜线包裹。';
 	@override String get prohibitedWords => '禁用词';
 	@override String get prohibitedWordsDescription => '发布包含设定词汇的帖子时将出错。可用换行设定多个关键字';
@@ -1170,6 +1172,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => '可能会使服务器负荷在一定时间内增加';
 	@override String get enableChartsForRemoteUser => '生成远程用户的图表';
 	@override String get enableChartsForFederatedInstances => '生成远程服务器的图表';
+	@override String get enableStatsForFederatedInstances => '获取远程服务器的信息';
 	@override String get showClipButtonInNoteFooter => '在贴文下方显示便签按钮';
 	@override String get reactionsDisplaySize => '回应显示大小';
 	@override String get limitWidthOfReaction => '限制回应的最大宽度，并将其缩小显示';
@@ -1370,6 +1373,15 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '通行密钥验证成功，但账户未开启无密码登录。';
 	@override String get messageToFollower => '给关注者的消息';
 	@override String get target => '对象';
+	@override String get testCaptchaWarning => '此功能为测试 CAPTCHA 用。<strong>请勿在正式环境中使用。</strong>';
+	@override String get prohibitedWordsForNameOfUser => '用户名中禁止的词';
+	@override String get prohibitedWordsForNameOfUserDescription => '更改用户名时，如果用户名中包含此列表里的词汇，用户的改名请求将被拒绝。持有管理员权限的用户不受此限制。';
+	@override String get yourNameContainsProhibitedWords => '目标用户名包含违禁词';
+	@override String get yourNameContainsProhibitedWordsDescription => '用户名内含有违禁词。若想使用此用户名，请联系服务器管理员。';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '根据发帖者的设定，需要登录才能显示';
+	@override String get lockdown => '锁定';
+	@override String get pleaseSelectAccount => '请选择帐户';
+	@override late final _TranslationsMisskeyAccountSettingsZhCn accountSettings_ = _TranslationsMisskeyAccountSettingsZhCn._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhCn abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhCn._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhCn delivery_ = _TranslationsMisskeyDeliveryZhCn._(_root);
 	@override late final _TranslationsMisskeyBubbleGameZhCn bubbleGame_ = _TranslationsMisskeyBubbleGameZhCn._(_root);
@@ -1444,6 +1456,26 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsZhCn mediaControls_ = _TranslationsMisskeyMediaControlsZhCn._(_root);
 	@override late final _TranslationsMisskeyContextMenuZhCn contextMenu_ = _TranslationsMisskeyContextMenuZhCn._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhCn embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhCn._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsZhCn extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => '需要登录才能显示内容';
+	@override String get requireSigninToViewContentsDescription1 => '您发布的所有帖子将变成需要登入后才会显示。有望防止爬虫收集各种信息。';
+	@override String get requireSigninToViewContentsDescription2 => '没有 URL 预览（OGP）、内嵌网页、引用帖子的功能的服务器也将无法显示。';
+	@override String get requireSigninToViewContentsDescription3 => '这些限制可能不适用于联合到远程服务器的内容。';
+	@override String get makeNotesFollowersOnlyBefore => '可将过去的帖子设为仅关注者可见';
+	@override String get makeNotesFollowersOnlyBeforeDescription => '开启此设定时，超过设定的时间或日期后，帖子将变为仅关注者可见。关闭后帖子的公开状态将恢复成原本的设定。';
+	@override String get makeNotesHiddenBefore => '将过去的帖子设为私密';
+	@override String get makeNotesHiddenBeforeDescription => '开启此设定时，超过设定的时间或日期后，帖子将变为仅自己可见。关闭后帖子的公开状态将恢复成原本的设定。';
+	@override String get mayNotEffectForFederatedNotes => '与远程服务器联合的帖子在远端可能会没有效果。';
+	@override String get notesHavePassedSpecifiedPeriod => '超过指定时间的帖子';
+	@override String get notesOlderThanSpecifiedDateAndTime => '指定日期前的帖子';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1596,6 +1628,7 @@ class _TranslationsMisskeyServerSettingsZhCn extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '开启时可显著提高发送回应时的性能，及减轻数据库负荷。但 Redis 的内存用量会相应增加。';
 	@override String get inquiryUrl => '联络地址';
 	@override String get inquiryUrlDescription => '用来指定诸如向服务运营商咨询的论坛地址，或记载了运营商联系方式之类的网页地址。';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '若在一段时间内没有检测到管理活动，为防止垃圾信息，此设定将自动关闭。';
 }
 
 // Path: misskey.accountMigration_
@@ -2227,8 +2260,11 @@ class _TranslationsMisskeyAuthZhCn extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => '这个应用程序需要以下权限';
 	@override String get pleaseGoBack => '请返回到应用程序';
 	@override String get callback => '回到应用程序';
+	@override String get accepted => '已允许访问';
 	@override String get denied => '拒绝访问';
+	@override String get scopeUser => '以下面的用户进行操作';
 	@override String get pleaseLogin => '在对应用进行授权许可之前，请先登录';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => '允许访问后将会自动重定向到以下 URL';
 }
 
 // Path: misskey.antennaSources_
@@ -3432,6 +3468,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsZhCn extends TranslationsMi
 	@override String get abuseReport => '当收到举报时';
 	@override String get abuseReportResolved => '当举报被处理时';
 	@override String get userCreated => '当用户被创建时';
+	@override String get inactiveModeratorsWarning => '当管理员在一段时间内不活跃时';
+	@override String get inactiveModeratorsInvitationOnlyChanged => '当因为管理员在一段时间内不活跃，导致服务器变为邀请制时';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_

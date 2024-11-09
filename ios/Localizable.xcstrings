@@ -72,7 +72,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Adesso ti segue"
+            "value": "Follower aggiuntivo"
           }
         },
         "ja": {
@@ -1473,6 +1473,12 @@
     "_notification.login": {
       "extractionState": "manual",
       "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algú ha iniciat sessió "
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1495,6 +1501,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "로그인 알림이 있습니다"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "มีคนล็อกอิน"
           }
         },
         "zh-Hans": {
@@ -1544,6 +1556,12 @@
             "value": "안테나 추출에 성공했습니다."
           }
         },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก เสาอากาศ ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1589,6 +1607,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "차단한 유저 추출에 성공했습니다."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก ผู้ใช้ที่ถูกบล็อก ได้เสร็จสิ้นลงแล้ว"
           }
         },
         "zh-Hans": {
@@ -1638,6 +1662,12 @@
             "value": "클립 추출에 성공했습니다."
           }
         },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก คลิป ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1683,6 +1713,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "커스텀 이모지 추출에 성공했습니다."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก เอโมจิที่กำหนดเอง ได้เสร็จสิ้นลงแล้ว"
           }
         },
         "zh-Hans": {
@@ -1732,6 +1768,12 @@
             "value": "즐겨찾기 추출에 성공했습니다."
           }
         },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก รายการโปรด ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1764,7 +1806,7 @@
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Abbiamo completato l'esportazione di Follow"
+            "value": "Abbiamo completato l'esportazione di Following"
           }
         },
         "ja": {
@@ -1777,6 +1819,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "팔로잉 추출에 성공했습니다."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก กำลังติดตาม ได้เสร็จสิ้นลงแล้ว"
           }
         },
         "zh-Hans": {
@@ -1826,6 +1874,12 @@
             "value": "뮤트한 유저 추출에 성공했습니다."
           }
         },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก ผู้ใช้ที่ถูกปิดเสียง ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1873,6 +1927,12 @@
             "value": "노트 추출에 성공했습니다."
           }
         },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก  โน้ต ได้เสร็จสิ้นลงแล้ว"
+          }
+        },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
@@ -1918,6 +1978,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "리스트 추출에 성공했습니다."
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "การดำเนินการส่งออก รายชื่อ ได้เสร็จสิ้นลงแล้ว"
           }
         },
         "zh-Hans": {

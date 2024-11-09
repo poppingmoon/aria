@@ -151,7 +151,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get loadMore => 'Mostra di più';
 	@override String get showMore => 'Espandi';
 	@override String get showLess => 'Comprimi';
-	@override String get youGotNewFollower => 'Adesso ti segue';
+	@override String get youGotNewFollower => 'Hai un nuovo Follower';
 	@override String get receiveFollowRequest => 'Hai ricevuto una richiesta di follow';
 	@override String get followRequestAccepted => 'Ha accettato la tua richiesta di follow';
 	@override String get mention => 'Menzioni';
@@ -163,14 +163,14 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get files => 'Allegati';
 	@override String get download => 'Scarica';
 	@override String driveFileDeleteConfirm({required Object name}) => 'Vuoi davvero eliminare il file "${name}", e le Note a cui è stato allegato?';
-	@override String unfollowConfirm({required Object name}) => 'Vuoi davvero smettere di seguire ${name}?';
+	@override String unfollowConfirm({required Object name}) => 'Vuoi davvero togliere il Following a ${name}?';
 	@override String get exportRequested => 'Hai richiesto un\'esportazione, e potrebbe volerci tempo. Quando sarà compiuta, il file verrà aggiunto direttamente al Drive.';
 	@override String get importRequested => 'Hai richiesto un\'importazione. Potrebbe richiedere un po\' di tempo.';
 	@override String get lists => 'Liste';
 	@override String get noLists => 'Nessuna lista';
 	@override String get note => 'Nota';
 	@override String get notes => 'Note';
-	@override String get following => 'Follow';
+	@override String get following => 'Following';
 	@override String get followers => 'Follower';
 	@override String get followsYou => 'Follower';
 	@override String get createList => 'Aggiungi una nuova lista';
@@ -189,7 +189,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get follow => 'Segui';
 	@override String get followRequest => 'Richiesta di follow';
 	@override String get followRequests => 'Richieste di follow';
-	@override String get unfollow => 'Smetti di seguire';
+	@override String get unfollow => 'Togli Following';
 	@override String get followRequestPending => 'Richiesta in approvazione';
 	@override String get enterEmoji => 'Inserisci emoji';
 	@override String get renote => 'Rinota';
@@ -278,7 +278,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get removeWallpaper => 'Elimina lo sfondo';
 	@override String searchWith({required Object q}) => 'Cerca: ${q}';
 	@override String get youHaveNoLists => 'Non hai ancora creato nessuna lista';
-	@override String followConfirm({required Object name}) => 'Vuoi seguire ${name}?';
+	@override String followConfirm({required Object name}) => 'Confermi il Following a ${name}?';
 	@override String get proxyAccount => 'Profilo proxy';
 	@override String get proxyAccountDescription => 'Un profilo proxy funziona come follower per i profili remoti, sotto certe condizioni. Ad esempio, quando un profilo locale ne inserisce uno remoto in una lista (senza seguirlo), se nessun altro segue quel profilo remoto, le attività non possono essere distribuite. Dunque, il profilo proxy le seguirà per tutti.';
 	@override String get host => 'Host';
@@ -346,7 +346,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get subscribing => 'Iscrizione';
 	@override String get publishing => 'Pubblicazione';
 	@override String get notResponding => 'Nessuna risposta';
-	@override String get instanceFollowing => 'Seguiti dall\'istanza';
+	@override String get instanceFollowing => 'Istanza Following';
 	@override String get instanceFollowers => 'Follower dell\'istanza';
 	@override String get instanceUsers => 'Profili nell\'istanza';
 	@override String get changePassword => 'Aggiorna Password';
@@ -414,7 +414,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Scelta allegato';
 	@override String get selectFolder => 'Seleziona cartella';
 	@override String get selectFolders => 'Seleziona cartella';
-	@override String get fileNotSelected => 'Nessun file selezionato';
 	@override String get renameFile => 'Rinomina file';
 	@override String get folderName => 'Nome della cartella';
 	@override String get createFolder => 'Nuova cartella';
@@ -698,7 +697,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get deleteAllFiles => 'Elimina tutti i file';
 	@override String get deleteAllFilesConfirm => 'Vuoi davvero eliminare tutti i file?';
 	@override String get removeAllFollowing => 'Annulla tutti i follow';
-	@override String removeAllFollowingDescription({required Object host}) => 'Cancella tutti i follows del server ${host}. Per favore, esegui se, ad esempio, l\'istanza non esiste più.';
+	@override String removeAllFollowingDescription({required Object host}) => 'Togli il Following a tutti i profili su ${host}. Utile, ad esempio, quando l\'istanza non esiste più.';
 	@override String get userSuspended => 'L\'utente è in sospensione';
 	@override String get userSilenced => 'Profilo silenziato';
 	@override String get yourAccountSuspendedTitle => 'Questo profilo è sospeso';
@@ -771,7 +770,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get regexpError => 'errore regex';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Si è verificato un errore nell\'espressione regolare alla riga ${line} della parola muta ${tab}:';
 	@override String get instanceMute => 'Silenziare l\'istanza';
-	@override String userSaysSomething({required Object name}) => '${name} ha parlato';
+	@override String userSaysSomething({required Object name}) => '${name} ha detto qualcosa';
 	@override String get makeActive => 'Attiva';
 	@override String get display => 'Visualizza';
 	@override String get copy => 'Copia';
@@ -786,7 +785,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get notificationSettingDesc => 'Seleziona il tipo di notifiche da visualizzare.';
 	@override String get useGlobalSetting => 'Usa impostazioni generali';
 	@override String get useGlobalSettingDesc => 'Quando attiva, verranno utilizzate le impostazioni notifiche del profilo. Altrimenti si possono segliere impostazioni personalizzate.';
-	@override String get other => 'Ulteriori';
+	@override String get other => 'Eccetera';
 	@override String get regenerateLoginToken => 'Genera di nuovo un token di connessione';
 	@override String get regenerateLoginTokenDescription => 'Genera un nuovo token di autenticazione. Solitamente questa operazione non è necessaria: quando si genera un nuovo token, tutti i dispositivi vanno disconnessi.';
 	@override String get theKeywordWhenSearchingForCustomEmoji => 'Questa sarà la parola chiave durante la ricerca di emoji personalizzate';
@@ -830,7 +829,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get renotesCount => 'Numero di note che hai ricondiviso';
 	@override String get repliedCount => 'Numero di risposte ricevute';
 	@override String get renotedCount => 'Numero delle tue note ricondivise';
-	@override String get followingCount => 'Numero di profili seguiti';
+	@override String get followingCount => 'Numero di Following';
 	@override String get followersCount => 'Numero di profili che ti seguono';
 	@override String get sentReactionsCount => 'Numero di reazioni inviate';
 	@override String get receivedReactionsCount => 'Numero di reazioni ricevute';
@@ -984,8 +983,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get lastCommunication => 'La comunicazione più recente';
 	@override String get resolved => 'Risolto';
 	@override String get unresolved => 'Non risolto';
-	@override String get breakFollow => 'Impedire di seguirmi';
-	@override String get breakFollowConfirm => 'Vuoi davvero che questo profilo smetta di seguirti?';
+	@override String get breakFollow => 'Rimuovi Follower';
+	@override String get breakFollowConfirm => 'Vuoi davvero togliere questo Follower?';
 	@override String get itsOn => 'Abilitato';
 	@override String get itsOff => 'Disabilitato';
 	@override String get on => 'Acceso';
@@ -1000,7 +999,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get classic => 'Classico';
 	@override String get muteThread => 'Silenziare conversazione';
 	@override String get unmuteThread => 'Riattiva la conversazione';
-	@override String get followingVisibility => 'Visibilità dei profili seguiti';
+	@override String get followingVisibility => 'Visibilità dei Following';
 	@override String get followersVisibility => 'Visibilità dei profili che ti seguono';
 	@override String get continueThread => 'Altre conversazioni';
 	@override String get deleteAccountConfirm => 'Così verrà eliminato il profilo. Vuoi procedere?';
@@ -1030,6 +1029,9 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 giorno';
 	@override String get oneWeek => '1 settimana';
 	@override String get oneMonth => 'Un mese';
+	@override String get threeMonths => '3 mesi';
+	@override String get oneYear => '1 anno';
+	@override String get threeDays => '3 giorni';
 	@override String get reflectMayTakeTime => 'Potrebbe essere necessario un po\' di tempo perché ciò abbia effetto.';
 	@override String get failedToFetchAccountInformation => 'Impossibile recuperare le informazioni sul profilo';
 	@override String get rateLimitExceeded => 'Superato il limite di richieste.';
@@ -1048,7 +1050,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get driveCapOverrideCaption => 'Se viene specificato meno di 0, viene annullato.';
 	@override String get requireAdminForView => 'Per visualizzarli, è necessario aver effettuato l\'accesso con un profilo amministratore.';
 	@override String get isSystemAccount => 'Questi profili vengono creati e gestiti automaticamente dal sistema';
-	@override String typeToConfirm({required Object x}) => 'Per eseguire questa operazione, digitare ${x}';
+	@override String typeToConfirm({required Object x}) => 'Digita ${x} per continuare';
 	@override String get deleteAccount => 'Eliminazione profilo';
 	@override String get document => 'Documento';
 	@override String get numberOfPageCache => 'Numero di pagine cache';
@@ -1103,7 +1105,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get remindMeLater => 'Rimanda';
 	@override String get didYouLikeMisskey => 'Ti piace Misskey?';
 	@override String pleaseDonate({required Object host}) => 'Misskey è il software libero utilizzato su ${host}. Offrendo una donazione è più facile continuare a svilupparlo!';
-	@override String correspondingSourceIsAvailable({required Object anchor}) => ' ${anchor}';
+	@override String correspondingSourceIsAvailable({required Object anchor}) => 'Il codice sorgente corrispondente è disponibile su ${anchor}.';
 	@override String get roles => 'Ruoli';
 	@override String get role => 'Ruolo';
 	@override String get noRole => 'Ruolo non trovato';
@@ -1170,6 +1172,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => 'Potrebbe sovraccaricare il server temporaneamente.';
 	@override String get enableChartsForRemoteUser => 'Abilita i grafici per i profili remoti';
 	@override String get enableChartsForFederatedInstances => 'Abilita i grafici per le istanze federate';
+	@override String get enableStatsForFederatedInstances => 'Informazioni statistiche sui server federati';
 	@override String get showClipButtonInNoteFooter => 'Aggiungi il bottone Clip tra le azioni delle Note';
 	@override String get reactionsDisplaySize => 'Grandezza delle reazioni';
 	@override String get limitWidthOfReaction => 'Limita la larghezza delle reazioni e ridimensionale';
@@ -1212,7 +1215,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get thisChannelArchived => 'Questo canale è stato archiviato.';
 	@override String get displayOfNote => 'Visualizzazione delle Note';
 	@override String get initialAccountSetting => 'Impostazioni iniziali del profilo';
-	@override String get youFollowing => 'Seguiti';
+	@override String get youFollowing => 'Following';
 	@override String get preventAiLearning => 'Impedisci l\'apprendimento della IA';
 	@override String get preventAiLearningDescription => 'Aggiungendo il campo "noai" alla risposta HTML, si indica ai Robot esterni di non usare testi e allegati per addestrare sistemi di Machine Learning (IA predittiva/generativa). Anche se è impossibile sapere se la richiesta venga onorata o semplicemente ignorata.';
 	@override String get options => 'Opzioni del ruolo';
@@ -1370,6 +1373,15 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verifica della passkey è riuscita, ma l\'accesso senza password è disabilitato.';
 	@override String get messageToFollower => 'Messaggio ai follower';
 	@override String get target => 'Riferimento';
+	@override String get testCaptchaWarning => 'Questa funzione è destinata al test CAPTCHA. <strong>Da non utilizzare in ambiente di produzione.</strong>';
+	@override String get prohibitedWordsForNameOfUser => 'Parole proibite (nome utente)';
+	@override String get prohibitedWordsForNameOfUserDescription => 'Il sistema rifiuta di rinominare un utente, se il nome contiene qualsiasi parola nell\'elenco. Sono esenti i profili con privilegi di moderazione.';
+	@override String get yourNameContainsProhibitedWords => 'Il nome che hai scelto contiene una o più parole vietate';
+	@override String get yourNameContainsProhibitedWordsDescription => 'Se desideri comunque utilizzare questo nome, contatta l\'\'amministrazione.';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => 'L\'autore richiede di iscriversi per vedere il contenuto';
+	@override String get lockdown => 'Isolamento';
+	@override String get pleaseSelectAccount => 'Per favore, seleziona un profilo';
+	@override late final _TranslationsMisskeyAccountSettingsItIt accountSettings_ = _TranslationsMisskeyAccountSettingsItIt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportItIt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportItIt._(_root);
 	@override late final _TranslationsMisskeyDeliveryItIt delivery_ = _TranslationsMisskeyDeliveryItIt._(_root);
 	@override late final _TranslationsMisskeyBubbleGameItIt bubbleGame_ = _TranslationsMisskeyBubbleGameItIt._(_root);
@@ -1444,6 +1456,26 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsItIt mediaControls_ = _TranslationsMisskeyMediaControlsItIt._(_root);
 	@override late final _TranslationsMisskeyContextMenuItIt contextMenu_ = _TranslationsMisskeyContextMenuItIt._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenItIt embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenItIt._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsItIt extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'Per vedere il contenuto, è necessaria l\'iscrizione';
+	@override String get requireSigninToViewContentsDescription1 => 'Richiedere l\'iscrizione per visualizzare tutte le Note e gli altri contenuti che hai creato. Probabilmente l\'effetto è impedire la raccolta di informazioni da parte dei bot crawler.';
+	@override String get requireSigninToViewContentsDescription2 => 'La visualizzazione verrà disabilitata a server che non supportano l\'anteprima URL (OGP), all\'incorporamento nelle pagine Web e alla citazione delle Note.';
+	@override String get requireSigninToViewContentsDescription3 => 'Queste restrizioni potrebbero non applicarsi al contenuto federato su server remoti.';
+	@override String get makeNotesFollowersOnlyBefore => 'Rendi visibili solo ai Follower le Note pubblicate in precedenza';
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'Mentre questa funzione è abilitata, le Note antecedenti al momento impostato, saranno visibili solo ai profili Follower. Disabilitandola nuovamente, verrà ripristinata anche la visibilità pubblica della Nota.';
+	@override String get makeNotesHiddenBefore => 'Nascondi le Note pubblicate in precedenza';
+	@override String get makeNotesHiddenBeforeDescription => 'Mentre questa funzione è abilitata, le Note antecedenti al momento impostato, saranno visibili soltanto a te (private). Disabilitandola nuovamente, verrà ripristinata anche la visibilità pubblica della Nota.';
+	@override String get mayNotEffectForFederatedNotes => 'Le Note già federate su server remoti potrebbero non essere modificate.';
+	@override String get notesHavePassedSpecifiedPeriod => 'Note antecedenti al periodo specificato';
+	@override String get notesOlderThanSpecifiedDateAndTime => 'Note antecedenti al momento specificato';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1559,7 +1591,7 @@ class _TranslationsMisskeyTimelineDescriptionItIt extends TranslationsMisskeyTim
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get home => 'Nella Timeline Home, la tua cronologia principale, puoi vedere le Note provenienti dai profili che segui (follow).';
+	@override String get home => 'Nella Timeline Home, la tua cronologia principale, puoi vedere le Note provenienti dai profili che segui (Following).';
 	@override String get local => 'La Timeline Locale, è una cronologia di Note pubblicate da tutti i profili iscritti su questo server.';
 	@override String get social => 'La Timeline Sociale, unisce in ordine cronologico l\'elenco di Note presenti nella Timeline Home e quella Locale.';
 	@override String get global => 'La Timeline Federata ti consente di vedere le Note pubblicate dai profili di tutti gli altri server federati a questo.';
@@ -1596,6 +1628,7 @@ class _TranslationsMisskeyServerSettingsItIt extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => 'Attivando questa opzione, puoi migliorare significativamente le prestazioni durante la creazione delle reazioni e ridurre il carico sul database. Tuttavia, aumenterà l\'impiego di memoria Redis.';
 	@override String get inquiryUrl => 'URL di contatto';
 	@override String get inquiryUrlDescription => 'Specificare l\'URL al modulo di contatto, oppure le informazioni con i dati di contatto dell\'amministrazione.';
+	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Per prevenire SPAM, questa impostazione verrà disattivata automaticamente, se non si rileva alcuna attività di moderazione durante un certo periodo di tempo.';
 }
 
 // Path: misskey.accountMigration_
@@ -1608,7 +1641,7 @@ class _TranslationsMisskeyAccountMigrationItIt extends TranslationsMisskeyAccoun
 	@override String get moveFrom => 'Migra un altro profilo dentro a questo';
 	@override String get moveFromSub => 'Crea un alias verso un altro profilo remoto';
 	@override String moveFromLabel({required Object n}) => 'Profilo da cui migrare #${n}';
-	@override String get moveFromDescription => 'Se desideri spostare i profili follower da un altro profilo a questo, devi prima creare un alias qui. Assicurati averlo creato PRIMA di eseguire l\'attività! Inserisci l\'indirizzo del profilo mittente in questo modo: @persona@istanza.it';
+	@override String get moveFromDescription => 'Se desideri spostare i Follower da un altro profilo a questo, devi prima creare un alias qui. Assicurati averlo creato PRIMA di eseguire l\'attività! Inserisci l\'indirizzo del profilo mittente in questo modo: @persona@istanza.it';
 	@override String get moveTo => 'Migrare questo profilo verso un un altro';
 	@override String get moveToLabel => 'Profilo verso cui migrare';
 	@override String get moveCannotBeUndone => 'La migrazione è irreversibile, non può essere interrotta o annullata.';
@@ -1617,7 +1650,7 @@ class _TranslationsMisskeyAccountMigrationItIt extends TranslationsMisskeyAccoun
 	@override String get startMigration => 'Avvia la migrazione';
 	@override String migrationConfirm({required Object account}) => 'Vuoi davvero migrare questo profilo su ${account}? L\'azione è irreversibile e non potrai più utilizzare questo profilo nel suo stato originale.\nInoltre, assicurati di aver già creato un alias sull\'account a cui ti stai trasferendo.';
 	@override String get movedAndCannotBeUndone => 'Il tuo profilo è stato migrato.\nLa migrazione non può essere annullata.';
-	@override String get postMigrationNote => 'Questo profilo smetterà di seguire gli altri profili remoti a 24 ore dal termine della migrazione.\nSia i Follow che i Follower scenderanno a zero. I tuoi follower saranno comunque in grado di vedere le Note per soli follower, poiché non smetteranno di seguirti.';
+	@override String get postMigrationNote => 'Questo profilo smetterà di seguire gli altri profili remoti a 24 ore dal termine della migrazione.\nSia i Following che i Follower scenderanno a zero. I tuoi Follower saranno comunque in grado di vedere le Note per soli Follower, poiché non smetteranno di seguirti.';
 	@override String get movedTo => 'Profilo verso cui migrare';
 }
 
@@ -1921,7 +1954,7 @@ class _TranslationsMisskeyChannelItIt extends TranslationsMisskeyChannelEnUs {
 	@override String get removeBanner => 'Rimuovi intestazione';
 	@override String get featured => 'Di tendenza';
 	@override String get owned => 'I miei canali';
-	@override String get following => 'Seguiti';
+	@override String get following => 'Following';
 	@override String usersCount({required Object n}) => '${n} partecipanti';
 	@override String notesCount({required Object n}) => '${n} note';
 	@override String get nameAndDescription => 'Nome e descrizione';
@@ -2136,7 +2169,7 @@ class _TranslationsMisskeyPermissionsItIt extends TranslationsMisskeyPermissions
 	@override String get readFavorites => 'Visualizza i tuoi preferiti';
 	@override String get writeFavorites => 'Gestisci i tuoi preferiti';
 	@override String get readFollowing => 'Vedi le informazioni di follow';
-	@override String get writeFollowing => 'Following di altri profili';
+	@override String get writeFollowing => 'Aggiungere e togliere Following';
 	@override String get readMessaging => 'Visualizzare la chat';
 	@override String get writeMessaging => 'Gestire la chat';
 	@override String get readMutes => 'Vedi i profili silenziati';
@@ -2227,8 +2260,11 @@ class _TranslationsMisskeyAuthItIt extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => 'Questa app richiede le seguenti autorizzazioni:';
 	@override String get pleaseGoBack => 'Si prega di ritornare sulla app';
 	@override String get callback => 'Ritornando sulla app';
+	@override String get accepted => 'Accesso concesso';
 	@override String get denied => 'Accesso negato';
+	@override String get scopeUser => 'Sto funzionando per il seguente profilo';
 	@override String get pleaseLogin => 'Per favore accedi al tuo account per cambiare i permessi dell\'applicazione';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => 'Consentendo l\'accesso, si verrà reindirizzati presso questo indirizzo URL';
 }
 
 // Path: misskey.antennaSources_
@@ -2239,7 +2275,7 @@ class _TranslationsMisskeyAntennaSourcesItIt extends TranslationsMisskeyAntennaS
 
 	// Translations
 	@override String get all => 'Tutte le note';
-	@override String get homeTimeline => 'Note dagli utenti che segui';
+	@override String get homeTimeline => 'Note dai tuoi Following';
 	@override String get users => 'Note dagli utenti selezionati';
 	@override String get userList => 'Note dagli utenti della lista selezionata';
 	@override String get userBlacklist => 'Tutte le Note tranne quelle di uno o più profili specificati';
@@ -2409,7 +2445,7 @@ class _TranslationsMisskeyExportOrImportItIt extends TranslationsMisskeyExportOr
 	@override String get allNotes => 'Tutte le note';
 	@override String get favoritedNotes => 'Note preferite';
 	@override String get clips => 'Clip';
-	@override String get followingList => 'Follow';
+	@override String get followingList => 'Following';
 	@override String get muteList => 'Elenco profili silenziati';
 	@override String get blockingList => 'Elenco profili bloccati';
 	@override String get userLists => 'Liste';
@@ -2569,7 +2605,7 @@ class _TranslationsMisskeyNotificationItIt extends TranslationsMisskeyNotificati
 	@override String youGotReply({required Object name}) => '${name} ti ha risposto';
 	@override String youGotQuote({required Object name}) => '${name} ha citato la tua Nota e ha detto';
 	@override String youRenoted({required Object name}) => '${name} ha rinotato';
-	@override String get youWereFollowed => 'Adesso ti segue';
+	@override String get youWereFollowed => 'Follower aggiuntivo';
 	@override String get youReceivedFollowRequest => 'Hai ricevuto una richiesta di follow';
 	@override String get yourFollowRequestAccepted => 'La tua richiesta di follow è stata accettata';
 	@override String get pollEnded => 'Risultati del sondaggio.';
@@ -3022,7 +3058,7 @@ class _TranslationsMisskeyInitialTutorialTimelineItIt extends TranslationsMisske
 	// Translations
 	@override String get title => 'Come funziona la Timeline';
 	@override String get description1 => 'Misskey fornisce alcune Timeline (sequenze cronologiche di Note). Una di queste potrebbe essere stata disattivata dagli amministratori.';
-	@override String get home => 'le Note provenienti dai profili che segui (follow).';
+	@override String get home => 'le Note provenienti dai profili che segui (Following).';
 	@override String get local => 'tutte le Note pubblicate dai profili di questa istanza.';
 	@override String get social => 'sia le Note della Timeline Home che quelle della Timeline Locale, insieme!';
 	@override String get global => 'le Note da pubblicate da tutte le altre istanze federate con la nostra.';
@@ -3245,7 +3281,7 @@ class _TranslationsMisskeyEmailFollowItIt extends TranslationsMisskeyEmailFollow
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Adesso ti segue';
+	@override String get title => 'Follower aggiuntivo';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
@@ -3358,7 +3394,7 @@ class _TranslationsMisskeyNotificationTypesItIt extends TranslationsMisskeyNotif
 	// Translations
 	@override String get all => 'Tutto';
 	@override String get note => 'Nuove Note';
-	@override String get follow => 'Nuovi profili follower';
+	@override String get follow => 'Follower';
 	@override String get mention => 'Menzioni';
 	@override String get reply => 'Risposte';
 	@override String get renote => 'Rinota';
@@ -3382,7 +3418,7 @@ class _TranslationsMisskeyNotificationActionsItIt extends TranslationsMisskeyNot
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get followBack => 'Segui';
+	@override String get followBack => 'Following ricambiato';
 	@override String get reply => 'Rispondi';
 	@override String get renote => 'Rinota';
 }
@@ -3413,7 +3449,7 @@ class _TranslationsMisskeyWebhookSettingsEventsItIt extends TranslationsMisskeyW
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get follow => 'Quando segui un profilo';
+	@override String get follow => 'Quando aggiungi Following';
 	@override String get followed => 'Quando ti segue un profilo';
 	@override String get note => 'Quando pubblichi una Nota';
 	@override String get reply => 'Quando rispondono ad una Nota';
@@ -3432,6 +3468,8 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsItIt extends TranslationsMi
 	@override String get abuseReport => 'Quando arriva una segnalazione';
 	@override String get abuseReportResolved => 'Quando una segnalazione è risolta';
 	@override String get userCreated => 'Quando viene creato un profilo';
+	@override String get inactiveModeratorsWarning => 'Quando un profilo moderatore rimane inattivo per un determinato periodo';
+	@override String get inactiveModeratorsInvitationOnlyChanged => 'Quando la moderazione è rimasta inattiva per un determinato periodo e il sistema è cambiato in modalità "solo inviti"';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_
