@@ -280,6 +280,7 @@ class DrivePage extends HookConsumerWidget {
           ]),
           child: CustomScrollView(
             controller: controller,
+            physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               if (folders
                   case AsyncValue(
