@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 
+import '../../../extension/user_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
+import '../../../provider/api/i_notifier_provider.dart';
+import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/play_notifier_provider.dart';
 import '../../../provider/misskey_colors_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
 import '../../../util/copy_text.dart';
+import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
+import '../../dialog/confirmation_dialog.dart';
+import '../../dialog/text_field_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
@@ -33,6 +40,7 @@ class PlayPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = useState(this.account);
+    final i = ref.watch(iNotifierProvider(account.value)).valueOrNull;
     final play = ref.watch(playNotifierProvider(this.account, playId));
     final url = Uri.https(this.account.host, 'play/$playId');
     final colors =
@@ -74,6 +82,49 @@ class PlayPage extends HookConsumerWidget {
                   onTap: () =>
                       context.push('/${account.value}/play/$playId/edit'),
                   child: Text(t.misskey.edit),
+                ),
+              if (play.valueOrNull?.user case final user?
+                  when !account.value.isGuest && i?.id != user.id)
+                PopupMenuItem(
+                  onTap: () async {
+                    final comment = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      initialText: [
+                        'Play: $url',
+                        '-----',
+                        '',
+                      ].join('\n'),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
+                      ),
+                      maxLines: null,
+                    );
+                    if (!context.mounted) return;
+                    if (comment == null) return;
+                    final confirmed = await confirm(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      message: comment,
+                      okText: t.misskey.reportAbuse,
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(misskeyProvider(account.value))
+                            .users
+                            .reportAbuse(
+                              UsersReportAbuseRequest(
+                                userId: user.id,
+                                comment: comment,
+                              ),
+                            ),
+                      );
+                    }
+                  },
+                  child: Text(t.misskey.reportAbuse),
                 ),
             ],
           ),

@@ -5,15 +5,20 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../../extension/user_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/gallery_post_notifier_provider.dart';
+import '../../../provider/api/i_notifier_provider.dart';
+import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/user_gallery_posts_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
+import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/image_gallery_dialog.dart';
+import '../../dialog/text_field_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
@@ -37,6 +42,7 @@ class GalleryPostPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final post = ref.watch(galleryPostNotifierProvider(account, postId));
     final url = Uri.https(account.host, 'gallery/$postId');
 
@@ -76,6 +82,46 @@ class GalleryPostPage extends ConsumerWidget {
                 onTap: () => Share.share('${post.valueOrNull?.title} $url'),
                 child: Text(t.misskey.share),
               ),
+              if (post.valueOrNull?.user case final user?
+                  when !account.isGuest && i?.id != user.id)
+                PopupMenuItem(
+                  onTap: () async {
+                    final comment = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      initialText: [
+                        'Post: $url',
+                        '-----',
+                        '',
+                      ].join('\n'),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
+                      ),
+                      maxLines: null,
+                    );
+                    if (!context.mounted) return;
+                    if (comment == null) return;
+                    final confirmed = await confirm(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      message: comment,
+                      okText: t.misskey.reportAbuse,
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
+                        ref.read(misskeyProvider(account)).users.reportAbuse(
+                              UsersReportAbuseRequest(
+                                userId: user.id,
+                                comment: comment,
+                              ),
+                            ),
+                      );
+                    }
+                  },
+                  child: Text(t.misskey.reportAbuse),
+                ),
             ],
           ),
         ],
