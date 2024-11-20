@@ -63,6 +63,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
           margin: const EdgeInsets.symmetric(horizontal: 8.0),
           child: CustomScrollView(
             controller: controller,
+            physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               if (header case final header?) header,
               if (paginationState != null) ...[

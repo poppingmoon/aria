@@ -6,6 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/drive_folders_notifier_provider.dart';
+import '../../provider/selected_drive_files_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/text_field_dialog.dart';
@@ -83,6 +84,7 @@ class DriveFolderSheet extends ConsumerWidget {
             .delete(folder.id),
         message: t.misskey.removed,
       );
+      ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
       if (!ref.context.mounted) return;
       ref.context.pop();
     }
