@@ -501,7 +501,7 @@ class NoteSheet extends ConsumerWidget {
                     initialText: [
                       if ((appearNote.url ?? appearNote.uri) != null)
                         'Note: ${appearNote.url ?? appearNote.uri}',
-                      'Local Note: https://${account.host}/${appearNote.id}',
+                      'Local Note: $url',
                       '-----',
                       '',
                     ].join('\n'),
