@@ -505,6 +505,9 @@ class NoteSheet extends ConsumerWidget {
                       '-----',
                       '',
                     ].join('\n'),
+                    decoration: InputDecoration(
+                      helperText: t.misskey.fillAbuseReportDescription,
+                    ),
                     maxLines: null,
                   );
                   if (!context.mounted) return;

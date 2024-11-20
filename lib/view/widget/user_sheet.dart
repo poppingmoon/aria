@@ -430,6 +430,9 @@ class UserSheet extends ConsumerWidget {
                     final comment = await showTextFieldDialog(
                       context,
                       title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
+                      ),
                       maxLines: null,
                     );
                     if (!context.mounted) return;
