@@ -73,9 +73,7 @@ class TwitterEmbed extends HookConsumerWidget {
       height: height.value,
       child: InAppWebView(
         initialSettings: InAppWebViewSettings(transparentBackground: true),
-        initialUrlRequest: URLRequest(
-          url: WebUri.uri(Uri.dataFromString(content, mimeType: 'text/html')),
-        ),
+        initialData: InAppWebViewInitialData(data: content),
         onWebViewCreated: (controller) => controller.addJavaScriptHandler(
           handlerName: 'onReady',
           callback: (arguments) =>

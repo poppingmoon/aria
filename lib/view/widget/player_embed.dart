@@ -32,14 +32,18 @@ class PlayerEmbed extends ConsumerWidget {
       ),
       initialUrlRequest: URLRequest(url: WebUri.uri(replacedUrl)),
       shouldOverrideUrlLoading: (controller, navigationAction) async {
+        final url = navigationAction.request.url;
         if (navigationAction.hasGesture ?? false) {
-          final url = navigationAction.request.url;
           if (url != null) {
             await launchUrl(ref, url);
             return NavigationActionPolicy.CANCEL;
           }
         }
-        return NavigationActionPolicy.ALLOW;
+        if (url?.normalizePath() == replacedUrl.normalizePath()) {
+          return NavigationActionPolicy.ALLOW;
+        } else {
+          return NavigationActionPolicy.CANCEL;
+        }
       },
     );
 
