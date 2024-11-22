@@ -116,7 +116,7 @@ jobs:
       - name: Start simulator
         uses: futureware-tech/simulator-action@v3
         with:
-          model: 'iPhone 14'
+          model: 'iPhone 15'
 
       - name: Pre-build the app
         uses: nick-fields/retry@v3
