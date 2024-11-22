@@ -170,7 +170,7 @@ class NoteFooter extends HookConsumerWidget {
                     ),
                   _MenuButton(
                     account: account,
-                    note: appearNote,
+                    note: note,
                     disableHeader: disableHeader,
                     focusPostForm: focusPostForm,
                   ),
