@@ -17,6 +17,7 @@ import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
@@ -170,7 +171,7 @@ class NoteFooter extends HookConsumerWidget {
                     ),
                   _MenuButton(
                     account: account,
-                    note: appearNote,
+                    note: note,
                     disableHeader: disableHeader,
                     focusPostForm: focusPostForm,
                   ),
@@ -250,6 +251,8 @@ class _RenoteButton extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final myRenotingNoteId = useState(this.myRenotingNoteId);
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return GestureDetector(
       onLongPress: note.renoteCount > 0
@@ -286,8 +289,8 @@ class _RenoteButton extends HookConsumerWidget {
                           leading: const Icon(Icons.delete),
                           title: Text(t.misskey.unrenote),
                           onTap: () => context.pop(true),
-                          iconColor: Theme.of(context).colorScheme.error,
-                          textColor: Theme.of(context).colorScheme.error,
+                          iconColor: colors.error,
+                          textColor: colors.error,
                         ),
                       ],
                     ),
@@ -342,9 +345,7 @@ class _RenoteButton extends HookConsumerWidget {
           children: [
             Icon(
               Icons.repeat_rounded,
-              color: myRenotingNoteId.value != null
-                  ? Theme.of(context).colorScheme.primary
-                  : null,
+              color: myRenotingNoteId.value != null ? colors.renote : null,
             ),
             if (note.renoteCount > 0)
               Padding(
@@ -353,7 +354,7 @@ class _RenoteButton extends HookConsumerWidget {
                   NumberFormat().format(note.renoteCount),
                   style: style?.apply(
                     color: myRenotingNoteId.value != null
-                        ? Theme.of(context).colorScheme.primary.withOpacity(0.6)
+                        ? colors.renote.withOpacity(0.6)
                         : null,
                   ),
                 ),

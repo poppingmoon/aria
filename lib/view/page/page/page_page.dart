@@ -6,9 +6,12 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 
+import '../../../extension/user_extension.dart';
 import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
+import '../../../provider/api/i_notifier_provider.dart';
+import '../../../provider/api/misskey_provider.dart';
 import '../../../provider/api/page_provider.dart';
 import '../../../provider/api/user_pages_notifier_provider.dart';
 import '../../../provider/post_notifier_provider.dart';
@@ -16,7 +19,9 @@ import '../../../util/copy_text.dart';
 import '../../../util/extract_url.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
+import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/image_dialog.dart';
+import '../../dialog/text_field_dialog.dart';
 import '../../widget/ad_widget.dart';
 import '../../widget/error_message.dart';
 import '../../widget/follow_button.dart';
@@ -163,6 +168,7 @@ class PagePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final page = ref.watch(
       pageNotifierProvider(
         account,
@@ -206,6 +212,46 @@ class PagePage extends ConsumerWidget {
                 onTap: () => Share.share('${page.valueOrNull?.title} $url'),
                 child: Text(t.misskey.share),
               ),
+              if (page.valueOrNull?.user case final user?
+                  when !account.isGuest && i?.id != user.id)
+                PopupMenuItem(
+                  onTap: () async {
+                    final comment = await showTextFieldDialog(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      initialText: [
+                        'Page: $url',
+                        '-----',
+                        '',
+                      ].join('\n'),
+                      decoration: InputDecoration(
+                        helperText: t.misskey.fillAbuseReportDescription,
+                      ),
+                      maxLines: null,
+                    );
+                    if (!context.mounted) return;
+                    if (comment == null) return;
+                    final confirmed = await confirm(
+                      context,
+                      title: Text(t.misskey.reportAbuseOf(name: user.acct)),
+                      message: comment,
+                      okText: t.misskey.reportAbuse,
+                    );
+                    if (!context.mounted) return;
+                    if (confirmed) {
+                      await futureWithDialog(
+                        context,
+                        ref.read(misskeyProvider(account)).users.reportAbuse(
+                              UsersReportAbuseRequest(
+                                userId: user.id,
+                                comment: comment,
+                              ),
+                            ),
+                      );
+                    }
+                  },
+                  child: Text(t.misskey.reportAbuse),
+                ),
             ],
           ),
         ],

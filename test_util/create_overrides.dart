@@ -42,6 +42,8 @@ List<Override> createOverrides(
     sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
     dioProvider.overrideWithValue(dio),
     misskeyProvider(account).overrideWithValue(misskey),
+    misskeyProvider(account.copyWith(username: null))
+        .overrideWithValue(misskey),
     if (note != null) noteProvider(account, note.id).overrideWithValue(note),
     ...?emojis?.map(
       (emoji) =>

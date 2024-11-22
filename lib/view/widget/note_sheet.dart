@@ -499,12 +499,62 @@ class NoteSheet extends ConsumerWidget {
                       t.misskey.reportAbuseOf(name: appearNote.user.acct),
                     ),
                     initialText: [
-                      if ((appearNote.url ?? appearNote.uri) != null)
-                        'Note: ${appearNote.url ?? appearNote.uri}',
-                      'Local Note: https://${account.host}/${appearNote.id}',
+                      if (appearNote.url ?? appearNote.uri case final url?)
+                        'Note: $url',
+                      'Local Note: $url',
                       '-----',
                       '',
                     ].join('\n'),
+                    decoration: InputDecoration(
+                      helperText: t.misskey.fillAbuseReportDescription,
+                    ),
+                    maxLines: null,
+                  );
+                  if (!context.mounted) return;
+                  if (comment == null) return;
+                  final confirmed = await confirm(
+                    context,
+                    title: Text(
+                      t.misskey.reportAbuseOf(name: appearNote.user.acct),
+                    ),
+                    message: comment,
+                    okText: t.misskey.reportAbuse,
+                  );
+                  if (!context.mounted) return;
+                  if (confirmed) {
+                    await futureWithDialog(
+                      context,
+                      ref.read(misskeyProvider(account)).users.reportAbuse(
+                            UsersReportAbuseRequest(
+                              userId: appearNote.userId,
+                              comment: comment,
+                            ),
+                          ),
+                    );
+                  }
+                },
+              ),
+            if (note.isRenote &&
+                (note.user.host != null ||
+                    note.user.username != account.username))
+              ListTile(
+                leading: const Icon(Icons.report_outlined),
+                title: Text(t.misskey.reportAbuseRenote),
+                onTap: () async {
+                  final comment = await showTextFieldDialog(
+                    context,
+                    title: Text(
+                      t.misskey.reportAbuseOf(name: appearNote.user.acct),
+                    ),
+                    initialText: [
+                      if (note.uri ?? note.url case final url?) 'Note: $url',
+                      'Local Note: ${Uri.https(account.host, '/notes/$noteId')}',
+                      '-----',
+                      '',
+                    ].join('\n'),
+                    decoration: InputDecoration(
+                      helperText: t.misskey.fillAbuseReportDescription,
+                    ),
                     maxLines: null,
                   );
                   if (!context.mounted) return;
