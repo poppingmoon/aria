@@ -108,7 +108,10 @@ class PagePage extends ConsumerWidget {
             ),
             const SizedBox(height: 8.0),
             ...?children?.map(
-              (child) => _buildBlock(context, page, child, topLevel: false),
+              (child) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: _buildBlock(context, page, child, topLevel: false),
+              ),
             ),
           ],
         );
