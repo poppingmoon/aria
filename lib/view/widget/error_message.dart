@@ -3,12 +3,14 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
+import '../../provider/tokens_notifier_provider.dart';
 import '../../util/copy_text.dart';
 
-class ErrorMessage extends HookWidget {
+class ErrorMessage extends HookConsumerWidget {
   const ErrorMessage({
     super.key,
     this.error,
@@ -19,7 +21,9 @@ class ErrorMessage extends HookWidget {
   final StackTrace? stackTrace;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final tokens = ref.watch(tokensNotifierProvider).values;
+    final isCollapsed = useState(true);
     final showStackTrace = useState(false);
     final error = this.error;
     final message = switch (error) {
@@ -69,6 +73,16 @@ class ErrorMessage extends HookWidget {
         ].join('\n'),
       _ => error.toString(),
     };
+    final maskedMessage = tokens.fold(
+      message,
+      (acc, token) => acc.replaceAll(token, '*' * token.length),
+    );
+    final maskedStackTrace = stackTrace != null
+        ? tokens.fold(
+            stackTrace.toString(),
+            (acc, token) => acc.replaceAll(token, '*' * token.length),
+          )
+        : null;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -76,21 +90,40 @@ class ErrorMessage extends HookWidget {
         ListTile(
           title: Text(t.misskey.error),
           subtitle: InkWell(
-            onLongPress: () => copyToClipboard(context, message),
-            child: Text(message),
+            onTap: () => isCollapsed.value = false,
+            onLongPress: () => copyToClipboard(context, maskedMessage),
+            child: Text(
+              maskedMessage,
+              overflow: TextOverflow.fade,
+              maxLines: isCollapsed.value ? 10 : null,
+            ),
           ),
         ),
         if (showStackTrace.value)
           ListTile(
             title: Text(t.aria.stackTrace),
             subtitle: InkWell(
-              onLongPress: () =>
-                  copyToClipboard(context, stackTrace.toString()),
-              child: Text(stackTrace.toString()),
+              onLongPress: maskedStackTrace != null
+                  ? () => copyToClipboard(context, maskedStackTrace)
+                  : null,
+              child: maskedStackTrace != null
+                  ? Text(maskedStackTrace)
+                  : Text(
+                      t.misskey.nothing,
+                      style: TextStyle(
+                        color: DefaultTextStyle.of(context)
+                            .style
+                            .color
+                            ?.withOpacity(0.5),
+                      ),
+                    ),
             ),
           ),
         TextButton(
-          onPressed: () => showStackTrace.value = !showStackTrace.value,
+          onPressed: () {
+            isCollapsed.value = showStackTrace.value;
+            showStackTrace.value = !showStackTrace.value;
+          },
           child: Text(
             showStackTrace.value ? t.misskey.close : t.aria.showStackTrace,
           ),
