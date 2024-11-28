@@ -222,8 +222,16 @@ class SubNoteContent extends HookConsumerWidget {
         if (isLong)
           OutlinedButton(
             style: OutlinedButton.styleFrom(
-              textStyle: style,
-              minimumSize: Size(double.infinity, style.fontSize! * 2.5),
+              foregroundColor: colors.fg,
+              backgroundColor: colors.buttonBg,
+              textStyle: style
+                  .apply(fontSizeFactor: 0.9)
+                  .copyWith(fontWeight: FontWeight.bold),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+              minimumSize: const Size(double.infinity, 0.0),
+              side: BorderSide.none,
+              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             onPressed: () => isCollapsed.value = !isCollapsed.value,
             child: Text(

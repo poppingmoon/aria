@@ -419,7 +419,8 @@ class NoteWidget extends HookConsumerWidget {
                               ),
                             ],
                             if (appearNote.cw == null || showContent.value) ...[
-                              if (parsed != null || appearNote.replyId != null)
+                              if (parsed != null ||
+                                  appearNote.replyId != null) ...[
                                 Text.rich(
                                   TextSpan(
                                     children: [
@@ -479,76 +480,71 @@ class NoteWidget extends HookConsumerWidget {
                                   ),
                                   maxLines: isCollapsed.value ? 10 : null,
                                 ),
-                              if (!isCollapsed.value) ...[
-                                if (appearNote.files.isNotEmpty)
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 4.0,
-                                    ),
-                                    child: MediaList(
-                                      account: account,
-                                      files: appearNote.files,
-                                      user: appearNote.user,
-                                    ),
-                                  ),
-                                if (appearNote case Note(:final poll?))
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 4.0,
-                                    ),
-                                    child: PollWidget(
-                                      account: account,
-                                      noteId: appearNote.id,
-                                      poll: poll,
-                                    ),
-                                  ),
-                                if (urls != null)
-                                  ...urls.map(
-                                    (url) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 4.0,
-                                      ),
-                                      child: UrlPreview(
-                                        account: account,
-                                        link: url,
-                                      ),
-                                    ),
-                                  ),
-                                if (appearNote case Note(:final renoteId?))
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 4.0,
-                                    ),
-                                    child: DottedBorder(
-                                      color: colors.renote,
-                                      borderType: BorderType.RRect,
-                                      dashPattern: const [2, 4],
-                                      radius: const Radius.circular(8.0),
-                                      child: DefaultTextStyle.merge(
-                                        style: style.apply(
-                                          fontSizeFactor: 0.95,
-                                        ),
-                                        child: NoteSimpleWidget(
-                                          account: account,
-                                          noteId: renoteId,
-                                          borderRadius:
-                                              BorderRadius.circular(4.0),
-                                          showFooter: this.showFooter,
-                                          focusPostForm: focusPostForm,
-                                          note: this.note?.renote,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                const SizedBox(height: 4.0),
                               ],
-                              if (isLong)
+                              if (!isCollapsed.value) ...[
+                                if (appearNote.files.isNotEmpty) ...[
+                                  MediaList(
+                                    account: account,
+                                    files: appearNote.files,
+                                    user: appearNote.user,
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                ],
+                                if (appearNote case Note(:final poll?)) ...[
+                                  PollWidget(
+                                    account: account,
+                                    noteId: appearNote.id,
+                                    poll: poll,
+                                  ),
+                                  const SizedBox(height: 4.0),
+                                ],
+                                if (urls != null && urls.isNotEmpty)
+                                  for (final url in urls) ...[
+                                    UrlPreview(account: account, link: url),
+                                    const SizedBox(height: 8.0),
+                                  ],
+                                if (appearNote case Note(:final renoteId?)) ...[
+                                  DottedBorder(
+                                    color: colors.renote,
+                                    borderType: BorderType.RRect,
+                                    dashPattern: const [2, 4],
+                                    radius: const Radius.circular(8.0),
+                                    child: DefaultTextStyle.merge(
+                                      style: style.apply(
+                                        fontSizeFactor: 0.95,
+                                      ),
+                                      child: NoteSimpleWidget(
+                                        account: account,
+                                        noteId: renoteId,
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                        showFooter: this.showFooter,
+                                        focusPostForm: focusPostForm,
+                                        note: this.note?.renote,
+                                      ),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4.0),
+                                ],
+                              ],
+                              if (isLong) ...[
                                 OutlinedButton(
                                   style: OutlinedButton.styleFrom(
-                                    textStyle: style,
-                                    minimumSize: Size(
-                                      double.infinity,
-                                      style.fontSize! * 2.5,
+                                    foregroundColor: colors.fg,
+                                    backgroundColor: colors.buttonBg,
+                                    textStyle: style
+                                        .apply(fontSizeFactor: 0.9)
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 6.0,
+                                      horizontal: 12.0,
                                     ),
+                                    minimumSize:
+                                        const Size(double.infinity, 0.0),
+                                    side: BorderSide.none,
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
                                   ),
                                   onPressed: () =>
                                       isCollapsed.value = !isCollapsed.value,
@@ -558,9 +554,10 @@ class NoteWidget extends HookConsumerWidget {
                                         : t.misskey.showLess,
                                   ),
                                 ),
+                                const SizedBox(height: 4.0),
+                              ],
                             ],
                             if (appearNote case Note(:final channel?)) ...[
-                              const SizedBox(height: 4.0),
                               InkWell(
                                 onTap: () => context
                                     .push('/$account/channels/${channel.id}'),
@@ -587,17 +584,19 @@ class NoteWidget extends HookConsumerWidget {
                                   ],
                                 ),
                               ),
+                              const SizedBox(height: 4.0),
                             ],
-                            const SizedBox(height: 4.0),
                             if (appearNote.reactionAcceptance !=
                                     ReactionAcceptance.likeOnly &&
-                                showReactionsViewer)
+                                showReactionsViewer &&
+                                appearNote.reactions.isNotEmpty) ...[
                               ReactionsViewer(
                                 account: account,
                                 noteId: appearNote.id,
                                 showAllReactions: showAllReactions,
                                 note: this.note,
                               ),
+                            ],
                             if (showFooter)
                               NoteFooter(
                                 account: account,

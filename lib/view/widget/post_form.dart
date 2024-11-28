@@ -1273,12 +1273,15 @@ class PostForm extends HookConsumerWidget {
                   maxCrossAxisExtent: thumbnailSize,
                 ),
               ),
+              const SizedBox(height: 8.0),
             ],
-            if (request.poll != null)
+            if (request.poll != null) ...[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: PollEditor(account: account.value, noteId: noteId),
               ),
+              const SizedBox(height: 8.0),
+            ],
             if (showKeyboard) ...[
               Visibility(
                 visible: isCwFocused.value,
