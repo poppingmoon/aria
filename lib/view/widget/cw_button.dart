@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
+import '../../provider/misskey_colors_provider.dart';
 
-class CwButton extends StatelessWidget {
+class CwButton extends ConsumerWidget {
   const CwButton({
     super.key,
     required this.note,
@@ -16,13 +18,20 @@ class CwButton extends StatelessWidget {
   final bool isOpen;
 
   @override
-  Widget build(BuildContext context) {
-    final style = DefaultTextStyle.of(context).style;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final style = DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.9);
 
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        textStyle: style,
-        minimumSize: Size(double.infinity, style.fontSize! * 2.5),
+        foregroundColor: colors.fg,
+        backgroundColor: colors.buttonBg,
+        textStyle: style.copyWith(fontWeight: FontWeight.bold),
+        padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+        minimumSize: const Size(double.infinity, 0.0),
+        side: BorderSide.none,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: onPressed != null ? () => onPressed?.call(!isOpen) : null,
       child: Text.rich(

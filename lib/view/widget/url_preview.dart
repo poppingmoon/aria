@@ -8,6 +8,7 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/summaly_result.dart';
 import '../../provider/data_saver_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../provider/summaly_provider.dart';
 import '../../util/navigate.dart';
 import 'image_widget.dart';
@@ -67,6 +68,8 @@ class UrlPreview extends HookConsumerWidget {
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
     final tweetId = _extractTweetId(link);
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
     final titleStyle =
         style.apply(fontSizeFactor: 0.85).copyWith(fontWeight: FontWeight.bold);
@@ -175,35 +178,35 @@ class UrlPreview extends HookConsumerWidget {
                   lang: Localizations.localeOf(context).toLanguageTag(),
                 ),
             ],
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: OutlinedButton.icon(
-                style: OutlinedButton.styleFrom(
-                  minimumSize: Size(
-                    0.0,
-                    DefaultTextStyle.of(context).style.fontSize! * 2.0,
-                  ),
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  textStyle: style.apply(fontSizeFactor: 0.85),
-                ),
-                onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
-                icon: Icon(
-                  isPlayerOpen.value
-                      ? Icons.close
-                      : playerUrl != null
-                          ? Icons.play_arrow
-                          : Icons.open_in_full,
-                  size: style.apply(fontSizeFactor: 0.85).lineHeight,
-                ),
-                label: Text(
-                  isPlayerOpen.value
-                      ? playerUrl != null
-                          ? t.misskey.disablePlayer
-                          : t.misskey.close
-                      : playerUrl != null
-                          ? t.misskey.enablePlayer
-                          : t.misskey.expandTweet,
-                ),
+            const SizedBox(height: 4.0),
+            OutlinedButton.icon(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: colors.fg,
+                backgroundColor: colors.buttonBg,
+                textStyle: style.apply(fontSizeFactor: 0.9),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+                minimumSize: Size.zero,
+                side: BorderSide.none,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,
+              icon: Icon(
+                isPlayerOpen.value
+                    ? Icons.close
+                    : playerUrl != null
+                        ? Icons.play_arrow
+                        : Icons.open_in_full,
+                size: style.apply(fontSizeFactor: 0.9).lineHeight,
+              ),
+              label: Text(
+                isPlayerOpen.value
+                    ? playerUrl != null
+                        ? t.misskey.disablePlayer
+                        : t.misskey.close
+                    : playerUrl != null
+                        ? t.misskey.enablePlayer
+                        : t.misskey.expandTweet,
               ),
             ),
           ],

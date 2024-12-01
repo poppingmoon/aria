@@ -1,4 +1,3 @@
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -57,94 +56,91 @@ class PollWidget extends HookConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ...poll.choices.mapIndexed(
-          (index, choice) => Padding(
-            padding: const EdgeInsets.symmetric(vertical: 2.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.transparent),
-                  borderRadius: BorderRadius.circular(4.0),
-                  color: showResult.value ? null : colors.accentedBg,
-                  gradient: showResult.value
-                      ? LinearGradient(
-                          colors: [
-                            colors.buttonGradateA,
-                            colors.buttonGradateB,
-                            colors.accentedBg,
-                          ],
-                          stops: [
-                            0,
-                            choice.votes / total,
-                            choice.votes / total,
-                          ],
-                        )
-                      : null,
-                ),
-                child: InkWell(
-                  onTap: !account.isGuest && !closed && !isVoted
-                      ? () async {
-                          final confirmed = await confirm(
+        for (final (index, choice) in poll.choices.indexed) ...[
+          SizedBox(
+            width: double.infinity,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.transparent),
+                borderRadius: BorderRadius.circular(4.0),
+                color: showResult.value ? null : colors.accentedBg,
+                gradient: showResult.value
+                    ? LinearGradient(
+                        colors: [
+                          colors.buttonGradateA,
+                          colors.buttonGradateB,
+                          colors.accentedBg,
+                        ],
+                        stops: [
+                          0,
+                          choice.votes / total,
+                          choice.votes / total,
+                        ],
+                      )
+                    : null,
+              ),
+              child: InkWell(
+                onTap: !account.isGuest && !closed && !isVoted
+                    ? () async {
+                        final confirmed = await confirm(
+                          context,
+                          message: t.misskey.voteConfirm(choice: choice.text),
+                        );
+                        if (!context.mounted) return;
+                        if (confirmed) {
+                          await futureWithDialog(
                             context,
-                            message: t.misskey.voteConfirm(choice: choice.text),
+                            ref
+                                .read(notesNotifierProvider(account).notifier)
+                                .vote(noteId, index),
+                            overlay: false,
                           );
-                          if (!context.mounted) return;
-                          if (confirmed) {
-                            await futureWithDialog(
-                              context,
-                              ref
-                                  .read(notesNotifierProvider(account).notifier)
-                                  .vote(noteId, index),
-                              overlay: false,
-                            );
-                            showResult.value = !poll.multiple;
-                          }
+                          showResult.value = !poll.multiple;
                         }
-                      : null,
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4.0),
-                          color: colors.bg.withOpacity(0.9),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                ...useMemoized(
-                                  () => buildMfm(
-                                    ref,
-                                    account: account,
-                                    text: choice.text,
-                                    simple: true,
-                                    emojis: emojis,
-                                  ),
-                                  [
-                                    account,
-                                    choice.text,
-                                    colors,
-                                    emojis,
-                                    mfmSettings,
-                                  ],
+                      }
+                    : null,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(4.0),
+                        color: colors.bg.withOpacity(0.9),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Text.rich(
+                          TextSpan(
+                            children: [
+                              ...useMemoized(
+                                () => buildMfm(
+                                  ref,
+                                  account: account,
+                                  text: choice.text,
+                                  simple: true,
+                                  emojis: emojis,
                                 ),
-                                if (showResult.value)
-                                  TextSpan(
-                                    text:
-                                        ' (${t.misskey.poll_.votesCount(n: NumberFormat().format(choice.votes))})',
-                                    style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .onSurface
-                                          .withOpacity(0.5),
-                                    ),
+                                [
+                                  account,
+                                  choice.text,
+                                  colors,
+                                  emojis,
+                                  mfmSettings,
+                                ],
+                              ),
+                              if (showResult.value)
+                                TextSpan(
+                                  text:
+                                      ' (${t.misskey.poll_.votesCount(n: NumberFormat().format(choice.votes))})',
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.5),
                                   ),
-                              ],
-                            ),
+                                ),
+                            ],
                           ),
                         ),
                       ),
@@ -154,8 +150,8 @@ class PollWidget extends HookConsumerWidget {
               ),
             ),
           ),
-        ),
-        const SizedBox(height: 2.0),
+          const SizedBox(height: 4.0),
+        ],
         Text.rich(
           TextSpan(
             children: [

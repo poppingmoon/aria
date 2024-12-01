@@ -220,6 +220,13 @@ class NotificationsListView extends HookConsumerWidget {
               Positioned(
                 top: 8.0,
                 child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: Size(
+                      0.0,
+                      DefaultTextStyle.of(context).style.fontSize! * 2.75,
+                    ),
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  ),
                   onPressed: () {
                     controller.scrollToTop();
                     keepAnimation.value = true;
