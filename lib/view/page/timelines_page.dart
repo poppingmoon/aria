@@ -49,7 +49,7 @@ class TimelinesPage extends HookConsumerWidget {
         (settings) =>
             settings.showMenuButtonInTabBar ||
             !settings.timelinesPageButtonTypes
-                .sublist(0, 5)
+                .take(5)
                 .contains(TimelinesPageButtonType.menu),
       ),
     );
