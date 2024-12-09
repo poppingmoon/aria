@@ -20,6 +20,7 @@ import '../../provider/recently_used_users_notifier_provider.dart';
 import '../../provider/search_custom_emojis_provider.dart';
 import '../../provider/search_unicode_emojis_provider.dart';
 import '../../util/pick_date_time.dart';
+import '../../util/punycode.dart';
 import '../dialog/user_select_dialog.dart';
 import 'emoji_picker.dart';
 import 'emoji_widget.dart';
@@ -250,7 +251,8 @@ class MfmEmojiKeyboard extends HookConsumerWidget {
           final selectionIndex = max(0, controller.selection.start);
           final textBeforeSelection =
               controller.text.substring(0, selectionIndex);
-          final match = RegExp(r':?(\S*)$').firstMatch(textBeforeSelection);
+          final match = RegExp(r':(\S*)$').firstMatch(textBeforeSelection) ??
+              RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
           query.value = match?[1] ?? '';
           final tagIndex = selectionIndex - (match?[0]?.length ?? 0) + 1;
           isAfterCloseTag.value =
@@ -413,9 +415,9 @@ class MfmFnKeyboard extends HookConsumerWidget {
           final selectionIndex = max(0, controller.selection.start);
           final textBeforeSelection =
               controller.text.substring(0, selectionIndex);
-          query.value =
-              RegExp(r'(\$\[)?(\S*)$').firstMatch(textBeforeSelection)?[2] ??
-                  '';
+          final match = RegExp(r'\$\[(\S*)$').firstMatch(textBeforeSelection) ??
+              RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
+          query.value = match?[1] ?? '';
           periodIndex.value = query.value.indexOf('.');
         }
 
@@ -583,17 +585,23 @@ class MfmMentionKeyboard extends HookConsumerWidget {
           final selectionIndex = max(0, controller.selection.start);
           final textBeforeSelection =
               controller.text.substring(0, selectionIndex);
-          query.value =
-              RegExp(r'@?(\S*)$').firstMatch(textBeforeSelection)?[1] ?? '';
-          if (query.value case final query when query.isNotEmpty) {
-            final acct = query.split('@');
+          final match = RegExp(r'(@([a-zA-Z0-9_.-]+))?@([^@\s]*)$')
+              .firstMatch(textBeforeSelection);
+          query.value = match?[0]?.substring(1) ?? '';
+          final first = match?[2];
+          final second = match?[3];
+          final username = first ?? second;
+          final host = first != null && second != null ? toAscii(second) : null;
+          if (username != null && username.isNotEmpty) {
             users.value = await ref.read(
               searchUsersByUsernameProvider(
                 account,
-                acct.first,
-                acct.elementAtOrNull(1),
+                username,
+                host != null && host.isNotEmpty ? host : null,
               ).future,
             );
+          } else {
+            users.value = [];
           }
         }
 
@@ -617,8 +625,9 @@ class MfmMentionKeyboard extends HookConsumerWidget {
                   account: account,
                   username: user.username,
                   host: user.host ?? account.host,
-                  onTap: () => controller.insert(
-                    '${user.acct.substring(query.value.length + 1)} ',
+                  onTap: () => controller.replace(
+                    query.value.length + 1,
+                    '${user.acct} ',
                   ),
                 ),
               ),
@@ -653,8 +662,9 @@ class MfmHashtagKeyboard extends HookConsumerWidget {
           final selectionIndex = max(0, controller.selection.start);
           final textBeforeSelection =
               controller.text.substring(0, selectionIndex);
-          query.value =
-              RegExp(r'#?(\S*)$').firstMatch(textBeforeSelection)?[1] ?? '';
+          final match = RegExp(r'#(\S*)$').firstMatch(textBeforeSelection) ??
+              RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
+          query.value = match?[1] ?? '';
           if (query.value case final query when query.isNotEmpty) {
             hashtags.value =
                 await ref.read(searchHashtagsProvider(account, query).future);

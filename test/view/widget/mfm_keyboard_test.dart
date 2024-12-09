@@ -37,11 +37,10 @@ Future<ProviderContainer> setupWidget(
 
 void main() {
   group('getLastTag', () {
-    final controller = TextEditingController();
-    final widget =
-        MfmKeyboard(account: Account.dummy(), controller: controller);
-
     test('emoji', () {
+      final controller = TextEditingController();
+      final widget =
+          MfmKeyboard(account: Account.dummy(), controller: controller);
       controller.text = ':';
       controller.selection = const TextSelection.collapsed(offset: 0);
       expect(widget.getLastTag(), equals((null, -1)));
@@ -58,6 +57,9 @@ void main() {
     });
 
     test('mfmFn', () {
+      final controller = TextEditingController();
+      final widget =
+          MfmKeyboard(account: Account.dummy(), controller: controller);
       controller.text = r'$[';
       controller.selection = const TextSelection.collapsed(offset: 0);
       expect(widget.getLastTag(), equals((null, -1)));
@@ -74,6 +76,9 @@ void main() {
     });
 
     test('mention', () {
+      final controller = TextEditingController();
+      final widget =
+          MfmKeyboard(account: Account.dummy(), controller: controller);
       controller.text = '@';
       controller.selection = const TextSelection.collapsed(offset: 0);
       expect(widget.getLastTag(), equals((null, -1)));
@@ -87,6 +92,9 @@ void main() {
     });
 
     test('hashtag', () {
+      final controller = TextEditingController();
+      final widget =
+          MfmKeyboard(account: Account.dummy(), controller: controller);
       controller.text = '#';
       controller.selection = const TextSelection.collapsed(offset: 0);
       expect(widget.getLastTag(), equals((null, -1)));
@@ -100,6 +108,9 @@ void main() {
     });
 
     test('mixed', () {
+      final controller = TextEditingController();
+      final widget =
+          MfmKeyboard(account: Account.dummy(), controller: controller);
       controller.text = r':emoji: #hashtag $[tada a] @user';
       controller.selection = const TextSelection.collapsed(offset: 0);
       expect(widget.getLastTag(), equals((null, -1)));
@@ -165,6 +176,26 @@ void main() {
         await tester.pumpAndSettle();
         expect(controller.text, '❤️');
       });
+
+      testWidgets(
+        'should show an emoji keyboard if an open tag is between characters',
+        (tester) async {
+          const account = Account(host: 'misskey.tld', username: 'testuser');
+          final controller = TextEditingController(text: 'a:b');
+          controller.selection = const TextSelection.collapsed(offset: 2);
+          final container = await setupWidget(
+            tester,
+            account: account,
+            controller: controller,
+          );
+          await container
+              .read(accountSettingsNotifierProvider(account).notifier)
+              .setRecentlyUsedEmojis(['❤️']);
+          await tester.pumpAndSettle();
+          await tester.tap(find.byKey(const ValueKey('❤️')));
+          expect(controller.text, 'a❤️b');
+        },
+      );
 
       testWidgets('should not show an emoji keyboard after a close tag',
           (tester) async {
@@ -251,6 +282,23 @@ void main() {
         await tester.tap(find.text('x'));
         expect(controller.text, r'$[spin.speed=1.5s,x');
       });
+
+      testWidgets(
+        'should show an MFM fn keyboard if an open tag is between characters',
+        (tester) async {
+          const account = Account(host: 'misskey.tld', username: 'testuser');
+          final controller = TextEditingController(text: r'a$[b');
+          controller.selection = const TextSelection.collapsed(offset: 3);
+          await setupWidget(
+            tester,
+            account: account,
+            controller: controller,
+          );
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('tada'));
+          expect(controller.text, r'a$[tada b');
+        },
+      );
 
       testWidgets('should not show an MFM fn keyboard after a close tag',
           (tester) async {
@@ -349,7 +397,27 @@ void main() {
         expect(controller.text, '@testuser@misskey2.tld ');
       });
 
-      testWidgets('should not show an mention keyboard after a space',
+      testWidgets(
+        'should show a mention keyboard if an open tag is between characters',
+        (tester) async {
+          const account = Account(host: 'misskey.tld', username: 'testuser');
+          final controller = TextEditingController(text: 'a:b');
+          controller.selection = const TextSelection.collapsed(offset: 2);
+          final container = await setupWidget(
+            tester,
+            account: account,
+            controller: controller,
+          );
+          await container
+              .read(accountSettingsNotifierProvider(account).notifier)
+              .setRecentlyUsedEmojis(['❤️']);
+          await tester.pumpAndSettle();
+          await tester.tap(find.byKey(const ValueKey('❤️')));
+          expect(controller.text, 'a❤️b');
+        },
+      );
+
+      testWidgets('should not show a mention keyboard after a space',
           (tester) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final controller = TextEditingController();

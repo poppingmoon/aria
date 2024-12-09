@@ -10,6 +10,7 @@ import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/search_users_by_username_provider.dart';
 import '../../provider/recently_used_users_notifier_provider.dart';
+import '../../util/punycode.dart';
 import '../widget/error_message.dart';
 import '../widget/user_preview.dart';
 import '../widget/user_sheet.dart';
@@ -51,8 +52,8 @@ class UserSelectDialog extends HookConsumerWidget {
         ? ref.watch(
             searchUsersByUsernameProvider(
               account,
-              username.value,
-              host.value,
+              username.value.isNotEmpty ? username.value : null,
+              host.value.isNotEmpty ? toAscii(host.value) : null,
             ),
           )
         : null;
