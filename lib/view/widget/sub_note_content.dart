@@ -231,6 +231,7 @@ class SubNoteContent extends HookConsumerWidget {
                   const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
               minimumSize: const Size(double.infinity, 0.0),
               side: BorderSide.none,
+              visualDensity: VisualDensity.standard,
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             onPressed: () => isCollapsed.value = !isCollapsed.value,

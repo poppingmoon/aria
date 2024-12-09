@@ -543,6 +543,7 @@ class NoteWidget extends HookConsumerWidget {
                                     minimumSize:
                                         const Size(double.infinity, 0.0),
                                     side: BorderSide.none,
+                                    visualDensity: VisualDensity.standard,
                                     tapTargetSize:
                                         MaterialTapTargetSize.shrinkWrap,
                                   ),
@@ -556,7 +557,8 @@ class NoteWidget extends HookConsumerWidget {
                                 ),
                                 const SizedBox(height: 4.0),
                               ],
-                            ],
+                            ] else
+                              const SizedBox(height: 2.0),
                             if (appearNote case Note(:final channel?)) ...[
                               InkWell(
                                 onTap: () => context

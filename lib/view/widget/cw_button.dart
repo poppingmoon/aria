@@ -31,6 +31,7 @@ class CwButton extends ConsumerWidget {
         padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
         minimumSize: const Size(double.infinity, 0.0),
         side: BorderSide.none,
+        visualDensity: VisualDensity.standard,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       onPressed: onPressed != null ? () => onPressed?.call(!isOpen) : null,
