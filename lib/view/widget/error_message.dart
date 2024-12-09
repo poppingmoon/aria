@@ -52,18 +52,21 @@ class ErrorMessage extends HookConsumerWidget {
           'NO_SUCH_ROLE' => [t.misskey.noRole],
           'NAME_ALREADY_EXISTS' => [t.misskey.pages_.nameAlreadyExists],
           'NO_SUCH_USER' || 'USER_NOT_FOUND' => [t.misskey.noSuchUser],
-          _ => error.code.startsWith('TOO_MANY')
-              ? [
-                  t.misskey.youCannotCreateAnymore,
-                  error.message,
-                  error.id,
-                ]
-              : [
-                  error.code,
-                  error.message,
-                  if (error.info != null)
-                    const JsonEncoder.withIndent('  ').convert(error.info),
-                ]
+          'CREDENTIAL_REQUIRED' => [t.misskey.signinRequired],
+          'SIGNIN_REQUIRED' => [
+              t.misskey.thisContentsAreMarkedAsSigninRequiredByAuthor,
+            ],
+          _ when error.code.startsWith('TOO_MANY') => [
+              t.misskey.youCannotCreateAnymore,
+              error.message,
+              error.id,
+            ],
+          _ => [
+              error.code,
+              error.message,
+              if (error.info case final info?)
+                const JsonEncoder.withIndent('  ').convert(info),
+            ]
         }
             .join('\n'),
       DioException(:final type, :final response, :final error) => [
