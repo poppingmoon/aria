@@ -9,6 +9,7 @@ import '../../provider/api/announcements_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../dialog/confirmation_dialog.dart';
+import '../dialog/image_dialog.dart';
 import 'image_widget.dart';
 import 'mfm.dart';
 import 'time_widget.dart';
@@ -40,14 +41,14 @@ class AnnouncementWidget extends ConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (announcement.forYou ?? false)
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-            child: Row(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (announcement.forYou ?? false) ...[
+            Row(
               children: [
                 Icon(
                   Icons.push_pin,
@@ -61,10 +62,9 @@ class AnnouncementWidget extends ConsumerWidget {
                 ),
               ],
             ),
-          ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text.rich(
+            const SizedBox(height: 8.0),
+          ],
+          Text.rich(
             TextSpan(
               children: [
                 if (showButton) const TextSpan(text: '🆕'),
@@ -94,19 +94,22 @@ class AnnouncementWidget extends ConsumerWidget {
             ),
             style: titleStyle,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Mfm(account: account, text: announcement.text),
-        ),
-        if (imageUrl != null)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(child: ImageWidget(url: imageUrl.toString())),
-          ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: DefaultTextStyle(
+          const SizedBox(height: 8.0),
+          Mfm(account: account, text: announcement.text),
+          const SizedBox(height: 8.0),
+          if (imageUrl != null) ...[
+            Center(
+              child: InkWell(
+                onTap: () => showDialog<void>(
+                  context: context,
+                  builder: (context) => ImageDialog(url: imageUrl.toString()),
+                ),
+                child: ImageWidget(url: imageUrl.toString()),
+              ),
+            ),
+            const SizedBox(height: 8.0),
+          ],
+          DefaultTextStyle(
             style: DefaultTextStyle.of(context).style.apply(
                   fontSizeFactor: 0.9,
                   color:
@@ -117,11 +120,9 @@ class AnnouncementWidget extends ConsumerWidget {
               detailed: true,
             ),
           ),
-        ),
-        if (showButton)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
+          if (showButton) ...[
+            const SizedBox(height: 8.0),
+            ElevatedButton(
               onPressed: () async {
                 if (announcement.needConfirmationToRead ?? false) {
                   final confirmed = await confirm(
@@ -143,8 +144,9 @@ class AnnouncementWidget extends ConsumerWidget {
               },
               child: Text(t.misskey.gotIt),
             ),
-          ),
-      ],
+          ],
+        ],
+      ),
     );
   }
 }
