@@ -78,7 +78,9 @@ class InstanceTickerWidget extends ConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
                     child: Text(
-                      (instance != null ? instance?.name : meta?.name) ?? '',
+                      instance != null
+                          ? instance?.name ?? host ?? ''
+                          : meta?.name ?? account.host,
                       style: style.copyWith(
                         color: Colors.white,
                         height: 1.0,
