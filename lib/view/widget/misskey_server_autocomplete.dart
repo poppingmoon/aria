@@ -77,7 +77,7 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
                             text: toAscii(
                               text
                                   .trim()
-                                  .replaceFirst('https://', '')
+                                  .replaceFirst(RegExp('https?://'), '')
                                   .split('/')
                                   .first,
                             ).toLowerCase(),

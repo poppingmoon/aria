@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
@@ -9,8 +10,10 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart' hide launchUrl;
 
 import '../../i18n/strings.g.dart';
+import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/miauth_notifier_provider.dart';
 import '../../provider/misskey_servers_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/punycode.dart';
 import '../dialog/misskey_server_list_dialog.dart';
@@ -21,20 +24,31 @@ import '../widget/misskey_server_background.dart';
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
 
-  void _launchMiAuth(WidgetRef ref, String host) {
-    final trimmed =
-        toAscii(host.trim().replaceFirst('https://', '').split('/').first)
-            .toLowerCase();
+  Future<void> _launchMiAuth(WidgetRef ref, String hostText) async {
+    final trimmed = toAscii(
+      hostText.trim().replaceFirst(RegExp('https?://'), '').split('/').first,
+    ).toLowerCase();
+    try {
+      final meta = await ref.read(metaNotifierProvider(trimmed).future);
+      if (!ref.context.mounted) return;
+      if (meta.features?.miauth case false || null) {
+        unawaited(ref.context.push('/login/token?host=$trimmed'));
+        return;
+      }
+    } catch (_) {}
+    if (!ref.context.mounted) return;
     final url =
         ref.read(miAuthNotifierProvider.notifier).buildMiAuthUrl(trimmed);
-    launchUrl(
-      ref,
-      url,
-      mode: defaultTargetPlatform == TargetPlatform.iOS
-          ? LaunchMode.inAppWebView
-          : null,
+    unawaited(
+      launchUrl(
+        ref,
+        url,
+        mode: defaultTargetPlatform == TargetPlatform.iOS
+            ? LaunchMode.inAppWebView
+            : null,
+      ),
     );
-    ref.context.push('/login/authenticate');
+    unawaited(ref.context.push('/login/authenticate'));
   }
 
   @override
@@ -116,7 +130,10 @@ class LoginPage extends HookConsumerWidget {
                             controller: controller,
                             focusNode: focusNode,
                             autofocus: true,
-                            onSubmitted: (host) => _launchMiAuth(ref, host),
+                            onSubmitted: (host) => futureWithDialog(
+                              context,
+                              _launchMiAuth(ref, host),
+                            ),
                           ),
                           Align(
                             alignment: Alignment.centerLeft,
@@ -141,7 +158,10 @@ class LoginPage extends HookConsumerWidget {
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
                             onPressed: host.value.isNotEmpty
-                                ? () => _launchMiAuth(ref, host.value)
+                                ? () => futureWithDialog(
+                                      context,
+                                      _launchMiAuth(ref, host.value),
+                                    )
                                 : null,
                             icon: const Icon(Icons.open_in_browser),
                             label: Text(t.aria.authenticate),
