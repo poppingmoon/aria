@@ -269,7 +269,7 @@ class TimelinesPage extends HookConsumerWidget {
               bottomNavigationBar: showTimelineTabBarAtBottom
                   ? BottomAppBar(
                       padding: EdgeInsets.zero,
-                      height: 56.0,
+                      height: kToolbarHeight,
                       color: colors.panel,
                       elevation: 0.0,
                       child: Row(

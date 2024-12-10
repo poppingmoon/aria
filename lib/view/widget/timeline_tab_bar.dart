@@ -8,13 +8,14 @@ import '../../provider/timeline_scroll_controller_provider.dart';
 import '../../provider/timeline_tabs_notifier_provider.dart';
 import 'tab_icon_widget.dart';
 
-class TimelineTabBar extends HookConsumerWidget implements PreferredSizeWidget {
+class TimelineTabBar extends HookConsumerWidget {
   const TimelineTabBar({super.key, required this.controller});
 
   final TabController controller;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    const tabHeight = 46.0;
     final tabs = ref.watch(timelineTabsNotifierProvider);
 
     return TabBar(
@@ -30,6 +31,8 @@ class TimelineTabBar extends HookConsumerWidget implements PreferredSizeWidget {
       indicator: BoxDecoration(
         color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
       ),
+      labelPadding:
+          const EdgeInsets.symmetric(horizontal: (tabHeight - 24.0) / 2),
       indicatorSize: TabBarIndicatorSize.tab,
       indicatorWeight: 0.0,
       dividerHeight: 0.0,
@@ -56,7 +59,4 @@ class TimelineTabBar extends HookConsumerWidget implements PreferredSizeWidget {
       tabAlignment: TabAlignment.center,
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(46.0);
 }

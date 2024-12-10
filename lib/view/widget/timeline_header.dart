@@ -149,6 +149,7 @@ class TimelineHeader extends HookConsumerWidget {
         },
         backgroundColor: Theme.of(context).colorScheme.surface,
         collapsedBackgroundColor: Theme.of(context).colorScheme.surface,
+        visualDensity: VisualDensity.compact,
         children: [
           if (onlineUsersCount != null)
             Text.rich(
