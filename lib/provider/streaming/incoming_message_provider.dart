@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,7 +15,9 @@ Stream<IncomingMessage> incomingMessage(Ref ref, Account account) {
   final webSocketChannel = ref.watch(webSocketChannelProvider(account));
   return webSocketChannel.stream.map((msg) {
     final message = jsonDecode(msg as String);
-    debugPrint('webSocketChannel: $msg');
+    if (kDebugMode) {
+      debugPrint('webSocketChannel: $msg');
+    }
     return IncomingMessage.fromJson(message as Map<String, dynamic>);
   });
 }

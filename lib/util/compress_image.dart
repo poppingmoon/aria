@@ -59,7 +59,9 @@ Future<Uint8List?> compressImage(Uint8List image, String? type) async {
         return resized;
       }
     } catch (e) {
-      debugPrint(e.toString());
+      if (kDebugMode) {
+        debugPrint(e.toString());
+      }
     }
   } else {
     try {
@@ -82,7 +84,9 @@ Future<Uint8List?> compressImage(Uint8List image, String? type) async {
         return resized.rawBytes;
       }
     } catch (e) {
-      debugPrint(e.toString());
+      if (kDebugMode) {
+        debugPrint(e.toString());
+      }
     }
   }
   return null;
