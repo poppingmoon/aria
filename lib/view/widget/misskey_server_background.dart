@@ -18,10 +18,29 @@ class MisskeyServerBackground extends HookConsumerWidget {
   final Widget child;
 
   String? getBackgroundImageUrl(JoinMisskeyInstanceInfo? server) {
-    return server?.meta?['backgroundImageUrl'] as String? ??
-        (server != null && server.icon
-            ? 'https://instanceapp.misskey.page/instance-icons/${server.url}.webp'
-            : null);
+    if (server == null) {
+      return null;
+    }
+    if (server.meta?['backgroundImageUrl'] case final String url
+        when url.isNotEmpty) {
+      return url;
+    }
+    if (server.background) {
+      return 'https://instanceapp.misskey.page/instance-backgrounds/${server.url}.webp';
+    }
+    if (server.meta?['bannerUrl'] case final String url when url.isNotEmpty) {
+      return url;
+    }
+    if (server.banner) {
+      return 'https://instanceapp.misskey.page/instance-banners/${server.url}.webp';
+    }
+    if (server.meta?['iconUrl'] case final String url when url.isNotEmpty) {
+      return url;
+    }
+    if (server.icon) {
+      return 'https://instanceapp.misskey.page/instance-icons/${server.url}.webp';
+    }
+    return null;
   }
 
   @override
