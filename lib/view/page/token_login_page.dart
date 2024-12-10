@@ -22,16 +22,14 @@ class TokenLoginPage extends HookConsumerWidget {
 
   final String? host;
 
-  Future<void> _login(WidgetRef ref, String host, String token) async {
-    final trimmed =
-        toAscii(host.trim().replaceFirst('https://', '').split('/').first)
-            .toLowerCase();
-    await futureWithDialog(
-      ref.context,
-      ref
-          .read(accountsNotifierProvider.notifier)
-          .loginWithToken(trimmed, token),
-    );
+  Future<void> _login(WidgetRef ref, String hostText, String token) async {
+    final trimmed = toAscii(
+      hostText.trim().replaceFirst(RegExp('https?://'), '').split('/').first,
+    ).toLowerCase();
+    if (!ref.context.mounted) return;
+    await ref
+        .read(accountsNotifierProvider.notifier)
+        .loginWithToken(trimmed, token);
     if (!ref.context.mounted) return;
     ref.context.go('/timelines');
   }
@@ -107,7 +105,7 @@ class TokenLoginPage extends HookConsumerWidget {
                           MisskeyServerAutocomplete(
                             controller: hostController,
                             focusNode: hostFocusNode,
-                            autofocus: true,
+                            autofocus: this.host?.isEmpty ?? true,
                             onSubmitted: (_) => tokenFocusNode.requestFocus(),
                           ),
                           Align(
@@ -139,10 +137,13 @@ class TokenLoginPage extends HookConsumerWidget {
                               submitActivator: VoidCallbackIntent(
                                 () => hostController.text.isNotEmpty &&
                                         tokenController.text.isNotEmpty
-                                    ? _login(
-                                        ref,
-                                        hostController.text,
-                                        tokenController.text,
+                                    ? futureWithDialog(
+                                        context,
+                                        _login(
+                                          ref,
+                                          hostController.text,
+                                          tokenController.text,
+                                        ),
                                       )
                                     : null,
                               ),
@@ -167,10 +168,13 @@ class TokenLoginPage extends HookConsumerWidget {
                           ElevatedButton.icon(
                             onPressed:
                                 host.value.isNotEmpty && token.value.isNotEmpty
-                                    ? () => _login(
-                                          ref,
-                                          hostController.text,
-                                          tokenController.text,
+                                    ? () => futureWithDialog(
+                                          context,
+                                          _login(
+                                            ref,
+                                            hostController.text,
+                                            tokenController.text,
+                                          ),
                                         )
                                     : null,
                             icon: const Icon(Icons.key),
