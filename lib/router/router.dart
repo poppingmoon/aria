@@ -131,7 +131,7 @@ GoRouter router(Ref ref) {
             path: 'token',
             builder:
                 (_, state) =>
-                    TokenLoginPage(host: state.uri.queryParameters['host']),
+                    TokenLoginPage(query: state.uri.queryParameters['query']),
           ),
         ],
       ),

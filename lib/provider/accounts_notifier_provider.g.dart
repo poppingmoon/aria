@@ -6,7 +6,7 @@ part of 'accounts_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$accountsNotifierHash() => r'430d4a0e1498e308ffaaaaed3fc492c76aa7680f';
+String _$accountsNotifierHash() => r'996f0db04e4a2fa905baab379c13c95c30a4a644';
 
 /// See also [AccountsNotifier].
 @ProviderFor(AccountsNotifier)

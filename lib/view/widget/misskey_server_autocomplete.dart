@@ -47,7 +47,12 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
                   prefixIcon: const Icon(Icons.dns),
                   labelText: t.aria.serverUrl,
                   hintText: 'misskey.io',
-                  prefixText: 'https://',
+                  prefixText:
+                      textEditingController.value.text.startsWith(
+                            RegExp('https?://'),
+                          )
+                          ? null
+                          : 'https://',
                   suffixIcon: IconButton(
                     onPressed: () => controller.clear(),
                     icon: const Icon(Icons.close),
@@ -80,19 +85,23 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
                                       Clipboard.kTextPlain,
                                     );
                                     if (data case ClipboardData(:final text?)) {
+                                      final trimmed = text.trim();
+                                      final match = RegExp(
+                                        '^(https?://)?([^/]*)',
+                                        caseSensitive: false,
+                                      ).firstMatch(trimmed);
+                                      final scheme = match?[1];
+                                      final host = match?[2] ?? trimmed;
                                       await Clipboard.setData(
                                         ClipboardData(
                                           text:
-                                              toAscii(
-                                                text
-                                                    .trim()
-                                                    .replaceFirst(
-                                                      RegExp('https?://'),
-                                                      '',
-                                                    )
-                                                    .split('/')
-                                                    .first,
-                                              ).toLowerCase(),
+                                              [
+                                                if (scheme case final scheme?
+                                                    when scheme.toLowerCase() !=
+                                                        'https://')
+                                                  scheme,
+                                                toAscii(host).toLowerCase(),
+                                              ].join(),
                                         ),
                                       );
                                       await editableTextState.pasteText(

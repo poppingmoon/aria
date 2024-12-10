@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MiAuthState {
 
- String get host; String get sessionId; Uri get url;
+ Uri get serverUrl; String get sessionId; Uri get url;
 /// Create a copy of MiAuthState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $MiAuthStateCopyWith<MiAuthState> get copyWith => _$MiAuthStateCopyWithImpl<MiAu
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MiAuthState&&(identical(other.host, host) || other.host == host)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MiAuthState&&(identical(other.serverUrl, serverUrl) || other.serverUrl == serverUrl)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,host,sessionId,url);
+int get hashCode => Object.hash(runtimeType,serverUrl,sessionId,url);
 
 @override
 String toString() {
-  return 'MiAuthState(host: $host, sessionId: $sessionId, url: $url)';
+  return 'MiAuthState(serverUrl: $serverUrl, sessionId: $sessionId, url: $url)';
 }
 
 
@@ -46,7 +46,7 @@ abstract mixin class $MiAuthStateCopyWith<$Res>  {
   factory $MiAuthStateCopyWith(MiAuthState value, $Res Function(MiAuthState) _then) = _$MiAuthStateCopyWithImpl;
 @useResult
 $Res call({
- String host, String sessionId, Uri url
+ Uri serverUrl, String sessionId, Uri url
 });
 
 
@@ -63,10 +63,10 @@ class _$MiAuthStateCopyWithImpl<$Res>
 
 /// Create a copy of MiAuthState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? host = null,Object? sessionId = null,Object? url = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? serverUrl = null,Object? sessionId = null,Object? url = null,}) {
   return _then(_self.copyWith(
-host: null == host ? _self.host : host // ignore: cast_nullable_to_non_nullable
-as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+serverUrl: null == serverUrl ? _self.serverUrl : serverUrl // ignore: cast_nullable_to_non_nullable
+as Uri,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
 as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as Uri,
   ));
@@ -79,10 +79,10 @@ as Uri,
 
 
 class _MiAuthState implements MiAuthState {
-  const _MiAuthState({required this.host, required this.sessionId, required this.url});
+  const _MiAuthState({required this.serverUrl, required this.sessionId, required this.url});
   
 
-@override final  String host;
+@override final  Uri serverUrl;
 @override final  String sessionId;
 @override final  Uri url;
 
@@ -96,16 +96,16 @@ _$MiAuthStateCopyWith<_MiAuthState> get copyWith => __$MiAuthStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MiAuthState&&(identical(other.host, host) || other.host == host)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MiAuthState&&(identical(other.serverUrl, serverUrl) || other.serverUrl == serverUrl)&&(identical(other.sessionId, sessionId) || other.sessionId == sessionId)&&(identical(other.url, url) || other.url == url));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,host,sessionId,url);
+int get hashCode => Object.hash(runtimeType,serverUrl,sessionId,url);
 
 @override
 String toString() {
-  return 'MiAuthState(host: $host, sessionId: $sessionId, url: $url)';
+  return 'MiAuthState(serverUrl: $serverUrl, sessionId: $sessionId, url: $url)';
 }
 
 
@@ -116,7 +116,7 @@ abstract mixin class _$MiAuthStateCopyWith<$Res> implements $MiAuthStateCopyWith
   factory _$MiAuthStateCopyWith(_MiAuthState value, $Res Function(_MiAuthState) _then) = __$MiAuthStateCopyWithImpl;
 @override @useResult
 $Res call({
- String host, String sessionId, Uri url
+ Uri serverUrl, String sessionId, Uri url
 });
 
 
@@ -133,10 +133,10 @@ class __$MiAuthStateCopyWithImpl<$Res>
 
 /// Create a copy of MiAuthState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? host = null,Object? sessionId = null,Object? url = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? serverUrl = null,Object? sessionId = null,Object? url = null,}) {
   return _then(_MiAuthState(
-host: null == host ? _self.host : host // ignore: cast_nullable_to_non_nullable
-as String,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
+serverUrl: null == serverUrl ? _self.serverUrl : serverUrl // ignore: cast_nullable_to_non_nullable
+as Uri,sessionId: null == sessionId ? _self.sessionId : sessionId // ignore: cast_nullable_to_non_nullable
 as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
 as Uri,
   ));

@@ -14,10 +14,10 @@ import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/aiscript_storage_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/play_notifier_provider.dart';
-import '../../provider/dio_provider.dart';
 import '../../provider/emojis_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_notifier_provider.dart';
+import '../../provider/server_url_notifier_provider.dart';
 import '../../rust/api/aiscript.dart';
 import '../../rust/api/aiscript/api.dart';
 import '../../rust/api/aiscript/play.dart';
@@ -350,10 +350,11 @@ class PlayWidget extends HookConsumerWidget {
                                     },
                                     api: (ep, param, token) async {
                                       final json = jsonDecode(param);
-                                      final dio = ref.read(dioProvider);
+                                      final serverUrl = ref.read(
+                                        serverUrlNotifierProvider(account.host),
+                                      );
                                       final misskey = Misskey(
-                                        dio: dio,
-                                        host: account.host,
+                                        serverUrl: serverUrl,
                                         token: token,
                                       );
                                       try {
@@ -370,9 +371,11 @@ class PlayWidget extends HookConsumerWidget {
                                         return (jsonEncode(response), null);
                                       } on MisskeyException catch (e) {
                                         if (account.host != host) {
+                                          final serverUrl = ref.read(
+                                            serverUrlNotifierProvider(host),
+                                          );
                                           final misskey = Misskey(
-                                            dio: dio,
-                                            host: host,
+                                            serverUrl: serverUrl,
                                           );
                                           try {
                                             final response = await misskey
