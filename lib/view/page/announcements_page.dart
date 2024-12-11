@@ -64,7 +64,7 @@ class _Announcements extends ConsumerWidget {
       header: isActive && (hasUnreadAnnouncement ?? false)
           ? SliverToBoxAdapter(
               child: Card(
-                margin: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                margin: const EdgeInsets.only(top: 8.0),
                 color: colors.infoWarnBg,
                 elevation: 0.0,
                 child: Padding(
