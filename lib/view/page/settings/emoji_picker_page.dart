@@ -52,6 +52,7 @@ class EmojiPickerPage extends HookConsumerWidget {
                 tiles: accounts.map(
                   (account) => AccountPreview(
                     account: account,
+                    trailing: const Icon(Icons.navigate_next),
                     onTap: () => context.push(
                       '/settings/accounts/$account/emoji-picker',
                     ),
