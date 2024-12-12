@@ -46,9 +46,17 @@ class CustomEmoji extends ConsumerWidget {
     final style = DefaultTextStyle.of(context).style;
     final fallbackTextStyle = this.fallbackTextStyle ?? style;
     final height = this.height ?? style.lineHeight;
-    final muted = ref
-        .watch(mutedEmojisNotifierProvider(account))
-        .contains(emoji.replaceFirst('@.', ''));
+    final muted = ref.watch(
+      mutedEmojisNotifierProvider(account).select((emojis) {
+        final emoji = this.emoji.replaceFirst('@.', '');
+        if (!emoji.contains('@') && host != null) {
+          return emojis
+              .contains('${emoji.substring(0, emoji.length - 1)}@$host:');
+        } else {
+          return emojis.contains(emoji);
+        }
+      }),
+    );
     if (muted) {
       return InkWell(
         onTap: onTap,
