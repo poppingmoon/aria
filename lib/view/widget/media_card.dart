@@ -59,12 +59,10 @@ class MediaCard extends HookConsumerWidget {
               : file.thumbnailUrl;
       final blurHash = file.blurhash;
       return InkWell(
-        onTap: () => showDialog<void>(
-          context: ref.context,
-          builder: (context) => ImageGalleryDialog(
-            files: files,
-            initialIndex: index,
-          ),
+        onTap: () => showImageGalleryDialog(
+          ref.context,
+          files: files,
+          initialIndex: index,
         ),
         child: url != null
             ? ImageWidget(

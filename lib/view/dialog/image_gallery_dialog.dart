@@ -15,6 +15,20 @@ import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import 'message_dialog.dart';
 
+Future<void> showImageGalleryDialog(
+  BuildContext context, {
+  required List<DriveFile> files,
+  int initialIndex = 0,
+}) {
+  return showDialog(
+    context: context,
+    builder: (context) => ImageGalleryDialog(
+      files: files,
+      initialIndex: initialIndex,
+    ),
+  );
+}
+
 class ImageGalleryDialog extends HookConsumerWidget {
   const ImageGalleryDialog({
     super.key,
@@ -187,7 +201,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                         comment != null && comment.isNotEmpty
                             ? comment
                             : files[index.value].name,
-                        style: TextStyle(
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                           shadows: [
                             Shadow(
                               blurRadius: 2.0,
