@@ -82,10 +82,10 @@ class GeneralSettings with _$GeneralSettings {
     @Default(1.0) double noteFooterScale,
     @Default(defaultNoteVerticalPadding) double noteVerticalPadding,
     @Default(defaultNoteHorizontalPadding) double noteHorizontalPadding,
-    @ColorConverter() Color? publicNoteBackgroundColor,
-    @ColorConverter() Color? homeNoteBackgroundColor,
-    @ColorConverter() Color? followersNoteBackgroundColor,
-    @ColorConverter() Color? specifiedNoteBackgroundColor,
+    @_ColorConverter() Color? publicNoteBackgroundColor,
+    @_ColorConverter() Color? homeNoteBackgroundColor,
+    @_ColorConverter() Color? followersNoteBackgroundColor,
+    @_ColorConverter() Color? specifiedNoteBackgroundColor,
 
     // Emoji picker
     @Default(false) bool emojiPickerUseDialog,
@@ -172,17 +172,26 @@ enum NoteActionType {
   reaction,
 }
 
-class ColorConverter extends JsonConverter<Color, int> {
-  const ColorConverter();
+class _ColorConverter extends JsonConverter<Color, int> {
+  const _ColorConverter();
 
   @override
   Color fromJson(int json) {
     return Color(json);
   }
 
+  // https://github.com/flutter/engine/blob/3.27.0/lib/ui/painting.dart#L188-L190
+  static int _floatToInt8(double x) {
+    return (x * 255.0).round() & 0xff;
+  }
+
+  // https://github.com/flutter/engine/blob/3.27.0/lib/ui/painting.dart#L201-L206
   @override
   int toJson(Color color) {
-    return color.value;
+    return _floatToInt8(color.a) << 24 |
+        _floatToInt8(color.r) << 16 |
+        _floatToInt8(color.g) << 8 |
+        _floatToInt8(color.b) << 0;
   }
 }
 

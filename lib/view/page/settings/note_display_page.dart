@@ -86,9 +86,10 @@ class NoteDisplayPage extends HookConsumerWidget {
           dividerPainter: DividerPainters.grooved1(
             size: 40.0,
             highlightedSize: 60.0,
-            color: Theme.of(context).colorScheme.onSurface.withOpacity(0.3),
+            color:
+                Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3),
             highlightedColor:
-                Theme.of(context).colorScheme.onSurface.withOpacity(0.9),
+                Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.9),
             thickness: 4.0,
             highlightedThickness: 6.0,
           ),
@@ -611,7 +612,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .onSurface
-                            .withOpacity(0.8),
+                            .withValues(alpha: 0.8),
                       ),
                     ),
                   ),
@@ -673,7 +674,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .onSurface
-                            .withOpacity(0.8),
+                            .withValues(alpha: 0.8),
                       ),
                     ),
                   ),

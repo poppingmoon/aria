@@ -231,7 +231,7 @@ class TimelinesPage extends HookConsumerWidget {
                           if (tabSettings != null && showPostForm.value)
                             Material(
                               clipBehavior: Clip.hardEdge,
-                              color: colors.panel.withOpacity(0.5),
+                              color: colors.panel.withValues(alpha: 0.5),
                               child: BackdropFilter(
                                 filter: ImageFilter.blur(
                                   sigmaX: 16.0,
@@ -241,7 +241,8 @@ class TimelinesPage extends HookConsumerWidget {
                                   decoration: BoxDecoration(
                                     border: Border(
                                       top: BorderSide(
-                                        color: colors.divider.withOpacity(0.1),
+                                        color: colors.divider
+                                            .withValues(alpha: 0.1),
                                         width: 2.0,
                                       ),
                                     ),
@@ -487,8 +488,8 @@ class _TimelinesPageButton extends ConsumerWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                colors.buttonGradateA.withOpacity(!disabled ? 1.0 : 0.5),
-                colors.buttonGradateB.withOpacity(!disabled ? 1.0 : 0.5),
+                colors.buttonGradateA.withValues(alpha: !disabled ? 1.0 : 0.5),
+                colors.buttonGradateB.withValues(alpha: !disabled ? 1.0 : 0.5),
               ],
             ),
             borderRadius: BorderRadius.circular(
@@ -532,10 +533,10 @@ class _TimelinesPageButton extends ConsumerWidget {
       heroTag: ValueKey('<_TimelinesPageButton tag $index>'),
       tooltip: tooltip,
       foregroundColor: (primary ? colors.fgOnAccent : colors.fg)
-          .withOpacity(!disabled ? 1.0 : 0.5),
+          .withValues(alpha: !disabled ? 1.0 : 0.5),
       backgroundColor: primary
           ? Colors.transparent
-          : colors.panel.withOpacity(!disabled ? 1.0 : 0.5),
+          : colors.panel.withValues(alpha: !disabled ? 1.0 : 0.5),
       disabledElevation: 0.0,
       shape: square ? null : const CircleBorder(),
       mini: mini,

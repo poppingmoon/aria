@@ -115,13 +115,16 @@ class NoteWidget extends HookConsumerWidget {
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface
-                        .withOpacity(0.7),
+                        .withValues(alpha: 0.7),
                   ),
                 ),
               ),
             ),
             style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -277,11 +280,13 @@ class NoteWidget extends HookConsumerWidget {
                   when !renoteCollapsed.value) ...[
                 DefaultTextStyle.merge(
                   style: style.apply(
-                    color: style.color?.withOpacity(0.7),
+                    color: style.color?.withValues(alpha: 0.7),
                     fontSizeFactor: 0.9,
                   ),
                   child: IconTheme.merge(
-                    data: IconThemeData(color: style.color?.withOpacity(0.7)),
+                    data: IconThemeData(
+                      color: style.color?.withValues(alpha: 0.7),
+                    ),
                     child: ChannelColorBarBox(
                       note: appearNote.reply,
                       child: Padding(
@@ -333,7 +338,7 @@ class NoteWidget extends HookConsumerWidget {
                       Expanded(
                         child: DefaultTextStyle.merge(
                           style: style.apply(
-                            color: style.color?.withOpacity(0.7),
+                            color: style.color?.withValues(alpha: 0.7),
                             fontSizeFactor: 0.9,
                           ),
                           child: NoteSummary(
@@ -572,14 +577,16 @@ class NoteWidget extends HookConsumerWidget {
                                       ),
                                       child: Icon(
                                         Icons.tv,
-                                        color: style.color?.withOpacity(0.7),
+                                        color:
+                                            style.color?.withValues(alpha: 0.7),
                                         size: style.lineHeight * 0.8,
                                       ),
                                     ),
                                     Text(
                                       channel.name,
                                       style: style.apply(
-                                        color: style.color?.withOpacity(0.7),
+                                        color:
+                                            style.color?.withValues(alpha: 0.7),
                                         fontSizeFactor: 0.8,
                                       ),
                                     ),

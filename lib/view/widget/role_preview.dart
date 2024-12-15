@@ -41,7 +41,10 @@ class RolePreview extends ConsumerWidget {
             Icon(Icons.shield, color: Theme.of(context).colorScheme.primary),
           _ => Icon(
               Icons.person,
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.7),
             )
         },
         title: Text(role.name),

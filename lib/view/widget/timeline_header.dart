@@ -125,7 +125,7 @@ class TimelineHeader extends HookConsumerWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .onSurface
-                            .withOpacity(0.85),
+                            .withValues(alpha: 0.85),
                       ),
                 ),
               ],

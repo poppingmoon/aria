@@ -73,7 +73,7 @@ class NoteHeader extends HookConsumerWidget {
                           padding: const EdgeInsets.symmetric(horizontal: 2.0),
                           child: DefaultTextStyle.merge(
                             style: style.apply(
-                              color: style.color?.withOpacity(0.8),
+                              color: style.color?.withValues(alpha: 0.8),
                               fontSizeFactor: 0.8,
                             ),
                             child: const BotBadge(
@@ -88,7 +88,7 @@ class NoteHeader extends HookConsumerWidget {
                       TextSpan(
                         text: '@${toUnicode(host)}',
                         style: TextStyle(
-                          color: style.color?.withOpacity(0.5),
+                          color: style.color?.withValues(alpha: 0.5),
                         ),
                       ),
                     for (final role in note.user.badgeRoles)

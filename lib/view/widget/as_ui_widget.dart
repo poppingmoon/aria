@@ -58,7 +58,10 @@ class AsUiWidget extends HookConsumerWidget {
             filled: true,
             fillColor: Theme.of(context).colorScheme.surface,
             helperStyle: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.75),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.75),
             ),
             helperMaxLines: 100,
             isDense: true,
@@ -269,7 +272,7 @@ class AsUiWidget extends HookConsumerWidget {
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface
-                        .withOpacity(0.75),
+                        .withValues(alpha: 0.75),
                   ),
                 )
               : null,

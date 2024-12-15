@@ -67,7 +67,7 @@ class MentionWidget extends ConsumerWidget {
               if (!isLocal)
                 TextSpan(
                   text: '@${toUnicode(host)}',
-                  style: TextStyle(color: color.withOpacity(0.7)),
+                  style: TextStyle(color: color.withValues(alpha: 0.7)),
                 ),
             ],
           ),

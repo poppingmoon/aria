@@ -525,7 +525,10 @@ class PostForm extends HookConsumerWidget {
                         ? Theme.of(context).colorScheme.error
                         : null,
                     disabledColor: request.localOnly ?? false
-                        ? Theme.of(context).colorScheme.error.withOpacity(0.5)
+                        ? Theme.of(context)
+                            .colorScheme
+                            .error
+                            .withValues(alpha: 0.5)
                         : null,
                     icon: request.localOnly ?? false
                         ? const Icon(Icons.rocket_outlined)
@@ -640,7 +643,7 @@ class PostForm extends HookConsumerWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                         foregroundColor: colors.fgOnAccent,
                         disabledForegroundColor:
-                            colors.fgOnAccent.withOpacity(0.5),
+                            colors.fgOnAccent.withValues(alpha: 0.5),
                         backgroundColor: Colors.transparent,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -653,9 +656,9 @@ class PostForm extends HookConsumerWidget {
                           gradient: LinearGradient(
                             colors: [
                               colors.buttonGradateA
-                                  .withOpacity(canPost ? 1.0 : 0.5),
+                                  .withValues(alpha: canPost ? 1.0 : 0.5),
                               colors.buttonGradateB
-                                  .withOpacity(canPost ? 1.0 : 0.5),
+                                  .withValues(alpha: canPost ? 1.0 : 0.5),
                             ],
                           ),
                           borderRadius: BorderRadius.circular(8.0),

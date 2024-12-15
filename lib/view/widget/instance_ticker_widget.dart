@@ -48,7 +48,7 @@ class InstanceTickerWidget extends ConsumerWidget {
           colors: [
             color,
             color,
-            color.withOpacity(0),
+            color.withValues(alpha: 0),
           ],
         ),
       ),

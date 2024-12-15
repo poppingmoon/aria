@@ -112,8 +112,10 @@ class AnnouncementWidget extends ConsumerWidget {
           DefaultTextStyle(
             style: DefaultTextStyle.of(context).style.apply(
                   fontSizeFactor: 0.9,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withValues(alpha: 0.7),
                 ),
             child: TimeWidget(
               time: announcement.updatedAt ?? announcement.createdAt,

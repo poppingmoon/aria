@@ -210,7 +210,7 @@ class _UserHome extends ConsumerWidget {
                             color: Theme.of(context)
                                 .colorScheme
                                 .onSurface
-                                .withOpacity(0.5),
+                                .withValues(alpha: 0.5),
                           ),
                         ),
                         if (user.isLocked)
@@ -442,7 +442,7 @@ class _UserHome extends ConsumerWidget {
                                 color: Theme.of(context)
                                     .colorScheme
                                     .onSurface
-                                    .withOpacity(0.8),
+                                    .withValues(alpha: 0.8),
                               ),
                               textAlign: TextAlign.center,
                             ),

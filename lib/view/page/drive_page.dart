@@ -115,7 +115,9 @@ class DrivePage extends HookConsumerWidget {
                       if (selectedFiles.isNotEmpty)
                         TextSpan(
                           text: ' (${selectedFiles.length})',
-                          style: TextStyle(color: colors.fg.withOpacity(0.5)),
+                          style: TextStyle(
+                            color: colors.fg.withValues(alpha: 0.5),
+                          ),
                         ),
                     ],
                   ),
@@ -232,7 +234,7 @@ class DrivePage extends HookConsumerWidget {
                             ? () => hierarchyFolders.value = []
                             : null,
                         style: TextButton.styleFrom(
-                          foregroundColor: colors.fg.withOpacity(0.8),
+                          foregroundColor: colors.fg.withValues(alpha: 0.8),
                           disabledForegroundColor: colors.fg,
                         ),
                         icon: const Icon(Icons.cloud),
@@ -243,7 +245,7 @@ class DrivePage extends HookConsumerWidget {
                           (index, folder) => [
                             Icon(
                               Icons.navigate_next,
-                              color: colors.fg.withOpacity(0.5),
+                              color: colors.fg.withValues(alpha: 0.5),
                             ),
                             TextButton(
                               onPressed: folder.id != folderId
@@ -252,7 +254,8 @@ class DrivePage extends HookConsumerWidget {
                                           .sublist(0, index + 1)
                                   : null,
                               style: TextButton.styleFrom(
-                                foregroundColor: colors.fg.withOpacity(0.8),
+                                foregroundColor:
+                                    colors.fg.withValues(alpha: 0.8),
                                 disabledForegroundColor: colors.fg,
                               ),
                               child: Text(

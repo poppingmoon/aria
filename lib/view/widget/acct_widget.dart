@@ -26,8 +26,10 @@ class AcctWidget extends StatelessWidget {
             TextSpan(
               text: '@${toUnicode(user.host ?? account.host)}',
               style: TextStyle(
-                color:
-                    DefaultTextStyle.of(context).style.color?.withOpacity(0.5),
+                color: DefaultTextStyle.of(context)
+                    .style
+                    .color
+                    ?.withValues(alpha: 0.5),
               ),
             ),
         ],

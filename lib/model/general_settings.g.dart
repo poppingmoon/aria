@@ -72,15 +72,15 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           (json['noteHorizontalPadding'] as num?)?.toDouble() ??
               defaultNoteHorizontalPadding,
       publicNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
-          json['publicNoteBackgroundColor'], const ColorConverter().fromJson),
+          json['publicNoteBackgroundColor'], const _ColorConverter().fromJson),
       homeNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
-          json['homeNoteBackgroundColor'], const ColorConverter().fromJson),
+          json['homeNoteBackgroundColor'], const _ColorConverter().fromJson),
       followersNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
           json['followersNoteBackgroundColor'],
-          const ColorConverter().fromJson),
+          const _ColorConverter().fromJson),
       specifiedNoteBackgroundColor: _$JsonConverterFromJson<int, Color>(
           json['specifiedNoteBackgroundColor'],
-          const ColorConverter().fromJson),
+          const _ColorConverter().fromJson),
       emojiPickerUseDialog: json['emojiPickerUseDialog'] as bool? ?? false,
       emojiPickerScale: (json['emojiPickerScale'] as num?)?.toDouble() ?? 1.0,
       emojiPickerAutofocus: json['emojiPickerAutofocus'] as bool? ?? true,
@@ -205,19 +205,19 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   writeNotNull(
       'publicNoteBackgroundColor',
       _$JsonConverterToJson<int, Color>(
-          instance.publicNoteBackgroundColor, const ColorConverter().toJson));
+          instance.publicNoteBackgroundColor, const _ColorConverter().toJson));
   writeNotNull(
       'homeNoteBackgroundColor',
       _$JsonConverterToJson<int, Color>(
-          instance.homeNoteBackgroundColor, const ColorConverter().toJson));
+          instance.homeNoteBackgroundColor, const _ColorConverter().toJson));
   writeNotNull(
       'followersNoteBackgroundColor',
       _$JsonConverterToJson<int, Color>(instance.followersNoteBackgroundColor,
-          const ColorConverter().toJson));
+          const _ColorConverter().toJson));
   writeNotNull(
       'specifiedNoteBackgroundColor',
       _$JsonConverterToJson<int, Color>(instance.specifiedNoteBackgroundColor,
-          const ColorConverter().toJson));
+          const _ColorConverter().toJson));
   val['emojiPickerUseDialog'] = instance.emojiPickerUseDialog;
   val['emojiPickerScale'] = instance.emojiPickerScale;
   val['emojiPickerAutofocus'] = instance.emojiPickerAutofocus;

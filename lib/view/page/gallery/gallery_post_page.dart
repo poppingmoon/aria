@@ -258,7 +258,7 @@ class GalleryPostPage extends ConsumerWidget {
                       color: Theme.of(context)
                           .colorScheme
                           .onSurface
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                     ),
                     child: Text.rich(
                       TextSpan(
@@ -285,7 +285,7 @@ class GalleryPostPage extends ConsumerWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .onSurface
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                       child: Text.rich(
                         TextSpan(

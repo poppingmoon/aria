@@ -65,7 +65,7 @@ extension MfmBuilder on MfmConfig {
                         : text,
                 style: style.apply(
                   fontSizeFactor: scale,
-                  color: style.color?.withOpacity(opacity),
+                  color: style.color?.withValues(alpha: opacity),
                 ),
               ),
             MfmBold(:final children?) => TextSpan(
@@ -141,7 +141,7 @@ extension MfmBuilder on MfmConfig {
                         WidgetSpan(
                           child: Icon(
                             Icons.open_in_new,
-                            color: colors.link.withOpacity(opacity),
+                            color: colors.link.withValues(alpha: opacity),
                             size: style.fontSize! * scale,
                           ),
                         ),
@@ -165,7 +165,7 @@ extension MfmBuilder on MfmConfig {
                     '#$hashTag',
                     style: style.apply(
                       fontSizeFactor: scale,
-                      color: colors.hashtag.withOpacity(opacity),
+                      color: colors.hashtag.withValues(alpha: opacity),
                     ),
                     overflow: overflow,
                     textScaler: TextScaler.noScaling,
@@ -201,7 +201,7 @@ extension MfmBuilder on MfmConfig {
                   decoration: BoxDecoration(
                     border: material.Border(
                       left: BorderSide(
-                        color: colors.fg.withOpacity(opacity * 0.7),
+                        color: colors.fg.withValues(alpha: opacity * 0.7),
                         width: 3.0,
                       ),
                     ),
@@ -225,7 +225,7 @@ extension MfmBuilder on MfmConfig {
                   scale * (simple ? 1.0 : 2.0),
                   opacity,
                   style.copyWith(
-                    color: style.color?.withOpacity(opacity),
+                    color: style.color?.withValues(alpha: opacity),
                     height: simple ? 1.0 : null,
                   ),
                 ),
@@ -237,7 +237,7 @@ extension MfmBuilder on MfmConfig {
                   emoji,
                   style.apply(
                     fontSizeFactor: scale,
-                    color: style.color?.withOpacity(opacity),
+                    color: style.color?.withValues(alpha: opacity),
                   ),
                 ),
               ),
@@ -248,7 +248,7 @@ extension MfmBuilder on MfmConfig {
                   formula,
                   mathStyle: MathStyle.text,
                   textStyle: style.apply(
-                    color: style.color?.withOpacity(opacity),
+                    color: style.color?.withValues(alpha: opacity),
                   ),
                   textScaleFactor: scale,
                   onErrorFallback: (_) => Text(
@@ -274,7 +274,7 @@ extension MfmBuilder on MfmConfig {
                       formula,
                       mathStyle: MathStyle.text,
                       textStyle: style.apply(
-                        color: style.color?.withOpacity(opacity),
+                        color: style.color?.withValues(alpha: opacity),
                       ),
                       textScaleFactor: scale,
                       onErrorFallback: (_) => Text(
@@ -303,7 +303,7 @@ extension MfmBuilder on MfmConfig {
                 text: text,
                 style: style.apply(
                   fontSizeFactor: scale,
-                  color: style.color?.withOpacity(opacity),
+                  color: style.color?.withValues(alpha: opacity),
                 ),
               ),
             MfmNode(:final children?) => TextSpan(children: build(children)),
@@ -646,7 +646,7 @@ extension MfmBuilder on MfmConfig {
         return TextSpan(
           children: copyWith(
             style: style.apply(color: color),
-            opacity: opacity * color.opacity,
+            opacity: opacity * color.a,
           ).build(children),
         );
       case 'bg':
@@ -658,7 +658,7 @@ extension MfmBuilder on MfmConfig {
               : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: ColoredBox(
-            color: color.withOpacity(opacity * color.opacity),
+            color: color.withValues(alpha: opacity * color.a),
             child: Text.rich(
               span,
               textAlign: align,
@@ -690,7 +690,7 @@ extension MfmBuilder on MfmConfig {
         final rubyStyle = style
             .apply(
               fontSizeFactor: scale * 0.5,
-              color: style.color?.withOpacity(opacity),
+              color: style.color?.withValues(alpha: opacity),
             )
             .copyWith(height: 1.0);
         if (children.length <= 1) {
@@ -779,7 +779,7 @@ extension MfmBuilder on MfmConfig {
                       alignment: PlaceholderAlignment.middle,
                       child: Icon(
                         Icons.access_time,
-                        color: style.color?.withOpacity(opacity),
+                        color: style.color?.withValues(alpha: opacity),
                         size: style.lineHeight * scale * 0.9,
                       ),
                     ),
@@ -789,7 +789,7 @@ extension MfmBuilder on MfmConfig {
                         text: '${absoluteTime(time)} (${relativeTime(time)})',
                         style: style.apply(
                           fontSizeFactor: scale * 0.9,
-                          color: style.color?.withOpacity(opacity),
+                          color: style.color?.withValues(alpha: opacity),
                         ),
                       )
                     else

@@ -69,8 +69,8 @@ class PollEditor extends ConsumerWidget {
                     ? choice
                     : t.misskey.poll_.choiceN(n: index + 1),
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.onSurface.withOpacity(
-                        choice.isNotEmpty ? 1.0 : 0.5,
+                  color: Theme.of(context).colorScheme.onSurface.withValues(
+                        alpha: choice.isNotEmpty ? 1.0 : 0.5,
                       ),
                 ),
               ),
