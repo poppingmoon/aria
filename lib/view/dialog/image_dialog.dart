@@ -20,6 +20,7 @@ Future<void> showImageDialog(
   return showDialog(
     context: context,
     builder: (context) => ImageDialog(url: url, file: file),
+    useSafeArea: false,
   );
 }
 
@@ -54,46 +55,50 @@ class ImageDialog extends HookConsumerWidget {
                 const BoxDecoration(color: Colors.transparent),
           ),
         ),
-        Align(
-          alignment: Alignment.topLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: IconButton(
-              style: IconButton.styleFrom(backgroundColor: Colors.white54),
-              onPressed: () => context.pop(),
-              icon: const Icon(Icons.close),
-            ),
-          ),
-        ),
-        if (url != null)
-          Align(
-            alignment: Alignment.topRight,
+        SafeArea(
+          child: Align(
+            alignment: Alignment.topLeft,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: IconButton(
                 style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                onPressed: () async {
-                  if (!await Gal.requestAccess()) {
+                onPressed: () => context.pop(),
+                icon: const Icon(Icons.close),
+              ),
+            ),
+          ),
+        ),
+        if (url != null)
+          SafeArea(
+            child: Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: IconButton(
+                  style: IconButton.styleFrom(backgroundColor: Colors.white54),
+                  onPressed: () async {
+                    if (!await Gal.requestAccess()) {
+                      if (!context.mounted) return;
+                      await showMessageDialog(
+                        context,
+                        t.misskey.permissionDeniedError,
+                      );
+                      return;
+                    }
                     if (!context.mounted) return;
-                    await showMessageDialog(
+                    await futureWithDialog(
                       context,
-                      t.misskey.permissionDeniedError,
+                      Future(() async {
+                        final file = await ref
+                            .read(cacheManagerProvider)
+                            .getSingleFile(url!);
+                        await Gal.putImage(file.path);
+                      }),
+                      message: t.aria.downloaded,
                     );
-                    return;
-                  }
-                  if (!context.mounted) return;
-                  await futureWithDialog(
-                    context,
-                    Future(() async {
-                      final file = await ref
-                          .read(cacheManagerProvider)
-                          .getSingleFile(url!);
-                      await Gal.putImage(file.path);
-                    }),
-                    message: t.aria.downloaded,
-                  );
-                },
-                icon: const Icon(Icons.save),
+                  },
+                  icon: const Icon(Icons.save),
+                ),
               ),
             ),
           ),

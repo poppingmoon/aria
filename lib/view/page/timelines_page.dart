@@ -193,6 +193,7 @@ class TimelinesPage extends HookConsumerWidget {
                       centerTitle: true,
                     ),
               body: SafeArea(
+                bottom: false,
                 child: numTabs == 0
                     ? Center(
                         child: Column(
@@ -247,17 +248,20 @@ class TimelinesPage extends HookConsumerWidget {
                                       ),
                                     ),
                                   ),
-                                  child: SingleChildScrollView(
-                                    child: PostForm(
-                                      account: tabSettings.account,
-                                      focusNode: postFormFocusNode,
-                                      onHide: () => showPostForm.value = false,
-                                      onExpand: (account) =>
-                                          context.push('/$account/post'),
-                                      showPostButton: true,
-                                      showKeyboard: true,
-                                      maxLines: 6,
-                                      thumbnailSize: 100.0,
+                                  child: SafeArea(
+                                    child: SingleChildScrollView(
+                                      child: PostForm(
+                                        account: tabSettings.account,
+                                        focusNode: postFormFocusNode,
+                                        onHide: () =>
+                                            showPostForm.value = false,
+                                        onExpand: (account) =>
+                                            context.push('/$account/post'),
+                                        showPostButton: true,
+                                        showKeyboard: true,
+                                        maxLines: 6,
+                                        thumbnailSize: 100.0,
+                                      ),
                                     ),
                                   ),
                                 ),
