@@ -287,10 +287,9 @@ class PagePage extends ConsumerWidget {
                         ),
                         clipBehavior: Clip.antiAlias,
                         child: InkWell(
-                          onTap: () => showDialog<void>(
-                            context: context,
-                            builder: (context) =>
-                                ImageDialog(url: eyeCatchingImage.url),
+                          onTap: () => showImageDialog(
+                            context,
+                            url: eyeCatchingImage.url,
                           ),
                           child: ImageWidget(
                             url: eyeCatchingImage.url,

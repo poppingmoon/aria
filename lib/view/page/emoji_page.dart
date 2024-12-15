@@ -50,10 +50,9 @@ class EmojiPage extends ConsumerWidget {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: InkWell(
-                          onTap: () => showDialog<void>(
-                            context: context,
-                            builder: (context) =>
-                                ImageDialog(url: emoji.url.toString()),
+                          onTap: () => showImageDialog(
+                            context,
+                            url: emoji.url.toString(),
                           ),
                           child: ImageWidget(url: emoji.url.toString()),
                         ),

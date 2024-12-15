@@ -171,10 +171,9 @@ class _UserHome extends ConsumerWidget {
                   account: account,
                   user: user,
                   size: 100.0,
-                  onTap: () => showDialog<void>(
-                    context: context,
-                    builder: (context) =>
-                        ImageDialog(url: user.avatarUrl.toString()),
+                  onTap: () => showImageDialog(
+                    context,
+                    url: user.avatarUrl.toString(),
                   ),
                 ),
               ),

@@ -100,10 +100,7 @@ class AnnouncementWidget extends ConsumerWidget {
           if (imageUrl != null) ...[
             Center(
               child: InkWell(
-                onTap: () => showDialog<void>(
-                  context: context,
-                  builder: (context) => ImageDialog(url: imageUrl.toString()),
-                ),
+                onTap: () => showImageDialog(context, url: imageUrl.toString()),
                 child: ImageWidget(url: imageUrl.toString()),
               ),
             ),

@@ -12,6 +12,17 @@ import '../../provider/cache_manager_provider.dart';
 import '../../util/future_with_dialog.dart';
 import 'message_dialog.dart';
 
+Future<void> showImageDialog(
+  BuildContext context, {
+  String? url,
+  File? file,
+}) {
+  return showDialog(
+    context: context,
+    builder: (context) => ImageDialog(url: url, file: file),
+  );
+}
+
 class ImageDialog extends HookConsumerWidget {
   const ImageDialog({
     super.key,
