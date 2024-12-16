@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
@@ -207,23 +208,10 @@ class ImageGalleryDialog extends HookConsumerWidget {
                     child: ConstrainedBox(
                       constraints: const BoxConstraints(maxHeight: 100.0),
                       child: SingleChildScrollView(
-                        child: Text(
-                          comment != null && comment.isNotEmpty
+                        child: _ShadowText(
+                          text: comment != null && comment.isNotEmpty
                               ? comment
                               : files[index.value].name,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            shadows: [
-                              Shadow(
-                                blurRadius: 2.0,
-                                color: Theme.of(context).canvasColor,
-                              ),
-                              Shadow(
-                                blurRadius: 2.0,
-                                color: Theme.of(context).canvasColor,
-                              ),
-                            ],
-                          ),
                         ),
                       ),
                     ),
@@ -235,5 +223,51 @@ class ImageGalleryDialog extends HookConsumerWidget {
         ),
       ],
     );
+  }
+}
+
+class _ShadowText extends StatelessWidget {
+  const _ShadowText({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final shadowColor = theme.canvasColor;
+    final style = theme.textTheme.bodyMedium ?? const TextStyle();
+
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      return Stack(
+        children: [
+          Text(
+            text,
+            style: style.copyWith(
+              foreground: Paint()
+                ..color = shadowColor.withValues(alpha: 0.5)
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 2.0,
+            ),
+          ),
+          Text(text, style: style),
+        ],
+      );
+    } else {
+      return Text(
+        text,
+        style: style.copyWith(
+          shadows: [
+            Shadow(
+              blurRadius: 2.0,
+              color: shadowColor,
+            ),
+            Shadow(
+              blurRadius: 2.0,
+              color: shadowColor,
+            ),
+          ],
+        ),
+      );
+    }
   }
 }
