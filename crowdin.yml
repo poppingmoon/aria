@@ -1,3 +1,7 @@
 files:
+  - source: /fastlane/metadata/android/en-US/*.txt
+    ignore:
+      - /fastlane/metadata/android/en-US/title.txt
+    translation: /fastlane/metadata/android/%locale%/%original_file_name%
   - source: /lib/i18n/aria/aria.i18n.yaml
     translation: /lib/i18n/aria/aria_%locale%.i18n.yaml
