@@ -27,7 +27,7 @@ MisskeyColors compileTheme(MisskeyTheme theme) {
       return switch (func) {
         'darken' => color.darken(arg.toInt()),
         'lighten' => color.lighten(arg.toInt()),
-        'alpha' => color.withOpacity(arg),
+        'alpha' => color.withValues(alpha: arg),
         'hue' => color.spin(arg),
         'saturate' => color.saturate(arg.toInt()),
         _ => color,

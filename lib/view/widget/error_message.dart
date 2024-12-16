@@ -114,7 +114,7 @@ class ErrorMessage extends HookConsumerWidget {
                         color: DefaultTextStyle.of(context)
                             .style
                             .color
-                            ?.withOpacity(0.5),
+                            ?.withValues(alpha: 0.5),
                       ),
                     ),
             ),

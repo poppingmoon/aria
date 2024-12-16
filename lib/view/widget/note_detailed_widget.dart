@@ -95,13 +95,16 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     color: Theme.of(context)
                         .colorScheme
                         .onSurface
-                        .withOpacity(0.7),
+                        .withValues(alpha: 0.7),
                   ),
                 ),
               ),
             ),
             style: TextStyle(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
           ),
@@ -217,11 +220,13 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 padding: const EdgeInsets.symmetric(vertical: 4.0),
                 child: DefaultTextStyle.merge(
                   style: style.apply(
-                    color: style.color?.withOpacity(0.7),
+                    color: style.color?.withValues(alpha: 0.7),
                     fontSizeFactor: 0.9,
                   ),
                   child: IconTheme.merge(
-                    data: IconThemeData(color: style.color?.withOpacity(0.7)),
+                    data: IconThemeData(
+                      color: style.color?.withValues(alpha: 0.7),
+                    ),
                     child: Column(
                       children: [
                         for (final note in conversation.reversed) ...[
@@ -300,8 +305,8 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                         if (appearNote.user.isBot)
                                           DefaultTextStyle.merge(
                                             style: style.apply(
-                                              color:
-                                                  style.color?.withOpacity(0.8),
+                                              color: style.color
+                                                  ?.withValues(alpha: 0.8),
                                               fontSizeFactor: 0.8,
                                             ),
                                             child: const BotBadge(),
@@ -510,21 +515,21 @@ class NoteDetailedWidget extends HookConsumerWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 2.0,
-                              ),
-                              child: Icon(
-                                Icons.tv,
-                                color: style.color?.withOpacity(0.7),
-                                size: style.lineHeight * 0.8,
-                              ),
+                            Icon(
+                              Icons.tv,
+                              color: style.color?.withValues(alpha: 0.7),
+                              size: style.lineHeight * 0.8,
                             ),
-                            Text(
-                              channel.name,
-                              style: style.apply(
-                                color: style.color?.withOpacity(0.7),
-                                fontSizeFactor: 0.8,
+                            const SizedBox(width: 2.0),
+                            Expanded(
+                              child: Text(
+                                channel.name,
+                                style: style.apply(
+                                  color: style.color?.withValues(alpha: 0.7),
+                                  fontSizeFactor: 0.8,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
                               ),
                             ),
                           ],
@@ -535,7 +540,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: DefaultTextStyle.merge(
                         style: style.apply(
-                          color: style.color?.withOpacity(0.7),
+                          color: style.color?.withValues(alpha: 0.7),
                           fontSizeFactor: 0.9,
                         ),
                         child: TimeWidget(

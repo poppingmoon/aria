@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart' hide BoxDecoration, BoxShadow;
-import 'package:flutter_inset_box_shadow/flutter_inset_box_shadow.dart';
+import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -171,10 +171,9 @@ class _UserHome extends ConsumerWidget {
                   account: account,
                   user: user,
                   size: 100.0,
-                  onTap: () => showDialog<void>(
-                    context: context,
-                    builder: (context) =>
-                        ImageDialog(url: user.avatarUrl.toString()),
+                  onTap: () => showImageDialog(
+                    context,
+                    url: user.avatarUrl.toString(),
                   ),
                 ),
               ),
@@ -210,7 +209,7 @@ class _UserHome extends ConsumerWidget {
                             color: Theme.of(context)
                                 .colorScheme
                                 .onSurface
-                                .withOpacity(0.5),
+                                .withValues(alpha: 0.5),
                           ),
                         ),
                         if (user.isLocked)
@@ -442,7 +441,7 @@ class _UserHome extends ConsumerWidget {
                                 color: Theme.of(context)
                                     .colorScheme
                                     .onSurface
-                                    .withOpacity(0.8),
+                                    .withValues(alpha: 0.8),
                               ),
                               textAlign: TextAlign.center,
                             ),

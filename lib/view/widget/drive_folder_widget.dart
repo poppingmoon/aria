@@ -60,7 +60,7 @@ class DriveFolderWidget extends ConsumerWidget {
                         t.misskey.uploadFolder,
                         style: style.apply(
                           fontSizeFactor: 0.9,
-                          color: style.color?.withOpacity(0.8),
+                          color: style.color?.withValues(alpha: 0.8),
                         ),
                       ),
                   ],

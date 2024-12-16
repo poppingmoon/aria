@@ -137,7 +137,7 @@ class SearchNotes extends HookConsumerWidget {
                               TextSpan(
                                 text: '@${toUnicode(user.host!)}',
                                 style: TextStyle(
-                                  color: style.color?.withOpacity(0.5),
+                                  color: style.color?.withValues(alpha: 0.5),
                                 ),
                               ),
                           ],

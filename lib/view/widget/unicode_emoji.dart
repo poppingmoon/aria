@@ -54,7 +54,7 @@ class UnicodeEmoji extends ConsumerWidget {
         onTap: onTap,
         child: Assets.misskey.packages.frontend.assets.dummy.image(
           height: style.lineHeight,
-          opacity: AlwaysStoppedAnimation(style.color?.opacity ?? 1.0),
+          opacity: AlwaysStoppedAnimation(style.color?.a ?? 1.0),
           fit: BoxFit.contain,
         ),
       );
@@ -79,7 +79,7 @@ class UnicodeEmoji extends ConsumerWidget {
               emoji: emoji,
               height: style.fontSize,
               width: style.fontSize,
-              opacity: style.color?.opacity,
+              opacity: style.color?.a,
             ),
           ),
         );

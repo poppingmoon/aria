@@ -70,7 +70,7 @@ class TokenLoginPage extends HookConsumerWidget {
                   title: Text(t.aria.loginWithAccessToken),
                   backgroundColor: Theme.of(context)
                       .scaffoldBackgroundColor
-                      .withOpacity(0.5),
+                      .withValues(alpha: 0.5),
                 ),
               ),
             ),

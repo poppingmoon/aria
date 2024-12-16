@@ -797,7 +797,7 @@ class _NotificationTile extends ConsumerWidget {
                       DefaultTextStyle.merge(
                         style: style.apply(
                           fontSizeFactor: 0.85,
-                          color: style.color?.withOpacity(0.8),
+                          color: style.color?.withValues(alpha: 0.8),
                         ),
                         child: TimeWidget(time: createdAt),
                       ),
@@ -808,7 +808,7 @@ class _NotificationTile extends ConsumerWidget {
                   DefaultTextStyle.merge(
                     style: style.apply(
                       fontSizeFactor: 0.85,
-                      color: style.color?.withOpacity(0.8),
+                      color: style.color?.withValues(alpha: 0.8),
                     ),
                     child: subtitle,
                   ),

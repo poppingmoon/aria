@@ -27,7 +27,7 @@ class KeyValueWidget extends ConsumerWidget {
         Text(
           label,
           style: style.apply(
-            color: style.color?.withOpacity(0.75),
+            color: style.color?.withValues(alpha: 0.75),
             fontSizeFactor: 0.85,
           ),
         ),
@@ -39,7 +39,7 @@ class KeyValueWidget extends ConsumerWidget {
               child: Text(
                 text ?? '(${t.misskey.none})',
                 style: text == null
-                    ? style.apply(color: style.color?.withOpacity(0.5))
+                    ? style.apply(color: style.color?.withValues(alpha: 0.5))
                     : null,
               ),
             ),

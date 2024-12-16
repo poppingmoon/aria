@@ -29,7 +29,7 @@ class TimelineTabBar extends HookConsumerWidget {
           .toList(),
       controller: controller,
       indicator: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
+        color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.5),
       ),
       labelPadding:
           const EdgeInsets.symmetric(horizontal: (tabHeight - 24.0) / 2),

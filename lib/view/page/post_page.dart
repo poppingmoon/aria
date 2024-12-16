@@ -306,8 +306,10 @@ class PostPage extends HookConsumerWidget {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        colors.buttonGradateA.withOpacity(canPost ? 1.0 : 0.5),
-                        colors.buttonGradateB.withOpacity(canPost ? 1.0 : 0.5),
+                        colors.buttonGradateA
+                            .withValues(alpha: canPost ? 1.0 : 0.5),
+                        colors.buttonGradateB
+                            .withValues(alpha: canPost ? 1.0 : 0.5),
                       ],
                     ),
                     borderRadius: BorderRadius.circular(16.0),
@@ -321,14 +323,14 @@ class PostPage extends HookConsumerWidget {
                           buttonText,
                           style: TextStyle(
                             color: colors.fgOnAccent
-                                .withOpacity(canPost ? 1.0 : 0.5),
+                                .withValues(alpha: canPost ? 1.0 : 0.5),
                           ),
                         ),
                         const SizedBox(width: 4.0),
                         Icon(
                           buttonIcon,
                           color: colors.fgOnAccent
-                              .withOpacity(canPost ? 1.0 : 0.5),
+                              .withValues(alpha: canPost ? 1.0 : 0.5),
                         ),
                       ],
                     ),

@@ -20,6 +20,8 @@ class LikeButton extends StatelessWidget {
         backgroundColor: const Color(0x12ff567d),
         foregroundColor: const Color(0xffff002f),
         disabledForegroundColor: const Color(0x77ff002f),
+        iconColor: const Color(0xffff002f),
+        disabledIconColor: const Color(0x77ff002f),
       ),
       onPressed: onTap,
       child: Row(

@@ -29,7 +29,7 @@ class Sparkle extends HookWidget {
     );
     final sizeFactor = random.nextDouble();
     return _Particle(
-      color: colors[random.nextInt(colors.length)].withOpacity(opacity),
+      color: colors[random.nextInt(colors.length)].withValues(alpha: opacity),
       position: position,
       size: (0.2 + sizeFactor / 10.0 * 3.0) * 32.0,
       duration: Duration(milliseconds: 1000 + (sizeFactor * 1000).toInt()),

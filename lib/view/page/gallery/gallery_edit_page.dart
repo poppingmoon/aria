@@ -156,7 +156,7 @@ class GalleryEditPage extends HookConsumerWidget {
         backgroundColor: Theme.of(context)
             .colorScheme
             .primary
-            .withOpacity(canSave ? 1.0 : 0.5),
+            .withValues(alpha: canSave ? 1.0 : 0.5),
         disabledElevation: 0.0,
         onPressed: canSave
             ? () async {

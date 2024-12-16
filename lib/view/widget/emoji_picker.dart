@@ -237,7 +237,7 @@ class EmojiPicker extends HookConsumerWidget {
                   onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
                   style: style.apply(
                     fontSizeFactor: fontScaleFactor,
-                    color: style.color?.withOpacity(enabled ? 1.0 : 0.1),
+                    color: style.color?.withValues(alpha: enabled ? 1.0 : 0.1),
                   ),
                 );
               }).toList(),
@@ -269,7 +269,7 @@ class EmojiPicker extends HookConsumerWidget {
                   onTap: enabled ? () => onTapEmoji(emoji, keepOpen) : null,
                   style: style.apply(
                     fontSizeFactor: fontScaleFactor,
-                    color: style.color?.withOpacity(enabled ? 1.0 : 0.1),
+                    color: style.color?.withValues(alpha: enabled ? 1.0 : 0.1),
                   ),
                 );
               }).toList(),

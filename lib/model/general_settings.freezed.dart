@@ -64,13 +64,13 @@ mixin _$GeneralSettings {
   double get noteFooterScale => throw _privateConstructorUsedError;
   double get noteVerticalPadding => throw _privateConstructorUsedError;
   double get noteHorizontalPadding => throw _privateConstructorUsedError;
-  @ColorConverter()
+  @_ColorConverter()
   Color? get publicNoteBackgroundColor => throw _privateConstructorUsedError;
-  @ColorConverter()
+  @_ColorConverter()
   Color? get homeNoteBackgroundColor => throw _privateConstructorUsedError;
-  @ColorConverter()
+  @_ColorConverter()
   Color? get followersNoteBackgroundColor => throw _privateConstructorUsedError;
-  @ColorConverter()
+  @_ColorConverter()
   Color? get specifiedNoteBackgroundColor =>
       throw _privateConstructorUsedError; // Emoji picker
   bool get emojiPickerUseDialog => throw _privateConstructorUsedError;
@@ -177,10 +177,10 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       double noteFooterScale,
       double noteVerticalPadding,
       double noteHorizontalPadding,
-      @ColorConverter() Color? publicNoteBackgroundColor,
-      @ColorConverter() Color? homeNoteBackgroundColor,
-      @ColorConverter() Color? followersNoteBackgroundColor,
-      @ColorConverter() Color? specifiedNoteBackgroundColor,
+      @_ColorConverter() Color? publicNoteBackgroundColor,
+      @_ColorConverter() Color? homeNoteBackgroundColor,
+      @_ColorConverter() Color? followersNoteBackgroundColor,
+      @_ColorConverter() Color? specifiedNoteBackgroundColor,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
@@ -716,10 +716,10 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       double noteFooterScale,
       double noteVerticalPadding,
       double noteHorizontalPadding,
-      @ColorConverter() Color? publicNoteBackgroundColor,
-      @ColorConverter() Color? homeNoteBackgroundColor,
-      @ColorConverter() Color? followersNoteBackgroundColor,
-      @ColorConverter() Color? specifiedNoteBackgroundColor,
+      @_ColorConverter() Color? publicNoteBackgroundColor,
+      @_ColorConverter() Color? homeNoteBackgroundColor,
+      @_ColorConverter() Color? followersNoteBackgroundColor,
+      @_ColorConverter() Color? specifiedNoteBackgroundColor,
       bool emojiPickerUseDialog,
       double emojiPickerScale,
       bool emojiPickerAutofocus,
@@ -1248,10 +1248,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.noteFooterScale = 1.0,
       this.noteVerticalPadding = defaultNoteVerticalPadding,
       this.noteHorizontalPadding = defaultNoteHorizontalPadding,
-      @ColorConverter() this.publicNoteBackgroundColor,
-      @ColorConverter() this.homeNoteBackgroundColor,
-      @ColorConverter() this.followersNoteBackgroundColor,
-      @ColorConverter() this.specifiedNoteBackgroundColor,
+      @_ColorConverter() this.publicNoteBackgroundColor,
+      @_ColorConverter() this.homeNoteBackgroundColor,
+      @_ColorConverter() this.followersNoteBackgroundColor,
+      @_ColorConverter() this.specifiedNoteBackgroundColor,
       this.emojiPickerUseDialog = false,
       this.emojiPickerScale = 1.0,
       this.emojiPickerAutofocus = true,
@@ -1418,16 +1418,16 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   @JsonKey()
   final double noteHorizontalPadding;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   final Color? publicNoteBackgroundColor;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   final Color? homeNoteBackgroundColor;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   final Color? followersNoteBackgroundColor;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   final Color? specifiedNoteBackgroundColor;
 // Emoji picker
   @override
@@ -1839,10 +1839,10 @@ abstract class _GeneralSettings implements GeneralSettings {
       final double noteFooterScale,
       final double noteVerticalPadding,
       final double noteHorizontalPadding,
-      @ColorConverter() final Color? publicNoteBackgroundColor,
-      @ColorConverter() final Color? homeNoteBackgroundColor,
-      @ColorConverter() final Color? followersNoteBackgroundColor,
-      @ColorConverter() final Color? specifiedNoteBackgroundColor,
+      @_ColorConverter() final Color? publicNoteBackgroundColor,
+      @_ColorConverter() final Color? homeNoteBackgroundColor,
+      @_ColorConverter() final Color? followersNoteBackgroundColor,
+      @_ColorConverter() final Color? specifiedNoteBackgroundColor,
       final bool emojiPickerUseDialog,
       final double emojiPickerScale,
       final bool emojiPickerAutofocus,
@@ -1970,16 +1970,16 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   double get noteHorizontalPadding;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   Color? get publicNoteBackgroundColor;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   Color? get homeNoteBackgroundColor;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   Color? get followersNoteBackgroundColor;
   @override
-  @ColorConverter()
+  @_ColorConverter()
   Color? get specifiedNoteBackgroundColor; // Emoji picker
   @override
   bool get emojiPickerUseDialog;

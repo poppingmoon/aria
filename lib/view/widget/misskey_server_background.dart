@@ -73,6 +73,7 @@ class MisskeyServerBackground extends HookConsumerWidget {
           }
         }
 
+        listener();
         controller.addListener(listener);
         return () => controller.removeListener(listener);
       },

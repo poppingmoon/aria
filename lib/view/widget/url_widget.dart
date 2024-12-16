@@ -64,7 +64,7 @@ class UrlWidget extends StatelessWidget {
           this.url,
           style: style.apply(
             fontSizeFactor: scale,
-            color: style.color?.withOpacity(opacity),
+            color: style.color?.withValues(alpha: opacity),
           ),
           textAlign: align,
           overflow: overflow,
@@ -94,8 +94,9 @@ class UrlWidget extends StatelessWidget {
             if (scheme.isNotEmpty)
               TextSpan(
                 text: '$scheme://'.breakAll,
-                style:
-                    TextStyle(color: style.color?.withOpacity(opacity * 0.5)),
+                style: TextStyle(
+                  color: style.color?.withValues(alpha: opacity * 0.5),
+                ),
               ),
             TextSpan(
               text: host.breakAll,
@@ -104,13 +105,16 @@ class UrlWidget extends StatelessWidget {
             if (url.hasPort) TextSpan(text: ':$port'.breakAll),
             TextSpan(
               text: path.breakAll,
-              style: TextStyle(color: style.color?.withOpacity(opacity * 0.8)),
+              style: TextStyle(
+                color: style.color?.withValues(alpha: opacity * 0.8),
+              ),
             ),
             if (query.isNotEmpty)
               TextSpan(
                 text: '?$query'.breakAll,
-                style:
-                    TextStyle(color: style.color?.withOpacity(opacity * 0.5)),
+                style: TextStyle(
+                  color: style.color?.withValues(alpha: opacity * 0.5),
+                ),
               ),
             if (fragment.isNotEmpty)
               TextSpan(
@@ -120,7 +124,7 @@ class UrlWidget extends StatelessWidget {
             WidgetSpan(
               child: Icon(
                 Icons.open_in_new,
-                color: style.color?.withOpacity(opacity),
+                color: style.color?.withValues(alpha: opacity),
                 size: style.fontSize! * scale,
               ),
             ),
@@ -132,7 +136,7 @@ class UrlWidget extends StatelessWidget {
         ),
         style: style.apply(
           fontSizeFactor: scale,
-          color: style.color?.withOpacity(opacity),
+          color: style.color?.withValues(alpha: opacity),
         ),
         textAlign: align,
         overflow: overflow,

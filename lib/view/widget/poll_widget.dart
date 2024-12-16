@@ -106,7 +106,7 @@ class PollWidget extends HookConsumerWidget {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4.0),
-                        color: colors.bg.withOpacity(0.9),
+                        color: colors.bg.withValues(alpha: 0.9),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
@@ -137,7 +137,7 @@ class PollWidget extends HookConsumerWidget {
                                     color: Theme.of(context)
                                         .colorScheme
                                         .onSurface
-                                        .withOpacity(0.5),
+                                        .withValues(alpha: 0.5),
                                   ),
                                 ),
                             ],
@@ -196,7 +196,7 @@ class PollWidget extends HookConsumerWidget {
           ),
           style: DefaultTextStyle.of(context).style.apply(
                 fontSizeFactor: 0.9,
-                color: colors.fg.withOpacity(0.75),
+                color: colors.fg.withValues(alpha: 0.75),
               ),
         ),
       ],

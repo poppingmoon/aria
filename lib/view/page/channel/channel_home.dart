@@ -40,10 +40,7 @@ class ChannelHome extends ConsumerWidget {
             children: [
               InkWell(
                 onTap: () => bannerUrl != null
-                    ? showDialog<void>(
-                        context: context,
-                        builder: (context) => ImageDialog(url: bannerUrl),
-                      )
+                    ? showImageDialog(context, url: bannerUrl)
                     : null,
                 child: Stack(
                   children: [

@@ -29,18 +29,16 @@ class FileCaptionEditDialog extends HookWidget {
             child: InkWell(
               onTap: switch (file.type) {
                 final type? when type.startsWith('image/') => () =>
-                    showDialog<void>(
-                      context: context,
-                      builder: (context) => ImageDialog(
-                        url: switch (file) {
-                          DrivePostFile(:final file) => file.url,
-                          _ => null,
-                        },
-                        file: switch (file) {
-                          LocalPostFile(:final file) => file,
-                          _ => null,
-                        },
-                      ),
+                    showImageDialog(
+                      context,
+                      url: switch (file) {
+                        DrivePostFile(:final file) => file.url,
+                        _ => null,
+                      },
+                      file: switch (file) {
+                        LocalPostFile(:final file) => file,
+                        _ => null,
+                      },
                     ),
                 final type? when type.startsWith('video/') => () =>
                     showDialog<void>(

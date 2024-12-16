@@ -100,10 +100,7 @@ class AnnouncementWidget extends ConsumerWidget {
           if (imageUrl != null) ...[
             Center(
               child: InkWell(
-                onTap: () => showDialog<void>(
-                  context: context,
-                  builder: (context) => ImageDialog(url: imageUrl.toString()),
-                ),
+                onTap: () => showImageDialog(context, url: imageUrl.toString()),
                 child: ImageWidget(url: imageUrl.toString()),
               ),
             ),
@@ -112,8 +109,10 @@ class AnnouncementWidget extends ConsumerWidget {
           DefaultTextStyle(
             style: DefaultTextStyle.of(context).style.apply(
                   fontSizeFactor: 0.9,
-                  color:
-                      Theme.of(context).colorScheme.onSurface.withOpacity(0.7),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withValues(alpha: 0.7),
                 ),
             child: TimeWidget(
               time: announcement.updatedAt ?? announcement.createdAt,

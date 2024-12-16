@@ -31,7 +31,7 @@ class EmojiWidget extends StatelessWidget {
         emoji: emoji,
         url: emojis[emoji.substring(1, emoji.length - 1)],
         height: style?.lineHeight,
-        opacity: style?.color?.opacity ?? 1.0,
+        opacity: style?.color?.a ?? 1.0,
         onTap: onTap,
         disableTooltip: disableTooltip,
         fallbackTextStyle: style,

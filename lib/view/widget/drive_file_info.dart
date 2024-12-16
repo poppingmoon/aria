@@ -156,7 +156,7 @@ class DriveFileInfo extends ConsumerWidget {
                             ],
                             style: TextStyle(
                               color: file.comment == null
-                                  ? colors.fg.withOpacity(0.5)
+                                  ? colors.fg.withValues(alpha: 0.5)
                                   : null,
                             ),
                           ),

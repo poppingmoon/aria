@@ -135,15 +135,10 @@ class GalleryPostPage extends ConsumerWidget {
               children: [
                 ...post.files.mapIndexed(
                   (index, file) => InkWell(
-                    onTap: () => showDialog<void>(
-                      context: ref.context,
-                      builder: (context) => DefaultTextStyle.merge(
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        child: ImageGalleryDialog(
-                          files: post.files,
-                          initialIndex: index,
-                        ),
-                      ),
+                    onTap: () => showImageGalleryDialog(
+                      ref.context,
+                      files: post.files,
+                      initialIndex: index,
                     ),
                     child: ImageWidget(url: file.url, fit: BoxFit.cover),
                   ),
@@ -258,7 +253,7 @@ class GalleryPostPage extends ConsumerWidget {
                       color: Theme.of(context)
                           .colorScheme
                           .onSurface
-                          .withOpacity(0.75),
+                          .withValues(alpha: 0.75),
                     ),
                     child: Text.rich(
                       TextSpan(
@@ -285,7 +280,7 @@ class GalleryPostPage extends ConsumerWidget {
                         color: Theme.of(context)
                             .colorScheme
                             .onSurface
-                            .withOpacity(0.75),
+                            .withValues(alpha: 0.75),
                       ),
                       child: Text.rich(
                         TextSpan(

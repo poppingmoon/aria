@@ -68,7 +68,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     iconTheme: IconThemeData(color: colors.fg),
     inputDecorationTheme: InputDecorationTheme(
       helperMaxLines: 100,
-      hintStyle: TextStyle(color: colors.fg.withOpacity(0.5)),
+      hintStyle: TextStyle(color: colors.fg.withValues(alpha: 0.5)),
       filled: true,
       fillColor: colors.panel,
       enabledBorder: const OutlineInputBorder(borderSide: BorderSide.none),
@@ -81,6 +81,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
       style: ElevatedButton.styleFrom(
         foregroundColor: colors.fgOnAccent,
         backgroundColor: colors.accent,
+        iconColor: colors.fgOnAccent,
         textStyle: TextStyle(fontSize: fontSize),
         minimumSize: Size(64.0, fontSize * 3),
       ),

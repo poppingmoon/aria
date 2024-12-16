@@ -30,18 +30,18 @@ class Border extends StatelessWidget {
   (Color, Color) _get3DColors(Color color) {
     // https://searchfox.org/mozilla-central/source/layout/base/nsCSSColorUtils.cpp#22
     const darkerScale = 2.0 / 3.0;
-    if (color.red == 0 && color.green == 0 && color.blue == 0) {
+    if (color.r == 0 && color.g == 0 && color.b == 0) {
       return (
-        Color.fromARGB(color.alpha, 76, 76, 76),
-        Color.fromARGB(color.alpha, 178, 178, 178),
+        Color.fromRGBO(76, 76, 76, color.a),
+        Color.fromRGBO(178, 178, 178, color.a),
       );
     } else {
       return (
-        Color.fromARGB(
-          color.alpha,
-          (color.red * darkerScale).toInt(),
-          (color.green * darkerScale).toInt(),
-          (color.blue * darkerScale).toInt(),
+        Color.from(
+          alpha: color.a,
+          red: color.r * darkerScale,
+          green: color.g * darkerScale,
+          blue: color.b * darkerScale,
         ),
         color,
       );

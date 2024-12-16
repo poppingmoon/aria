@@ -91,14 +91,19 @@ class NoteFooter extends HookConsumerWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final style = DefaultTextStyle.of(context).style.apply(
-              color: Theme.of(context).colorScheme.onSurface.withOpacity(0.6),
+              color: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.6),
               fontSizeFactor: scale * 800.0 / constraints.maxWidth,
             );
         return IconButtonTheme(
           data: IconButtonThemeData(
             style: IconButton.styleFrom(
-              foregroundColor:
-                  Theme.of(context).colorScheme.onSurface.withOpacity(0.8),
+              foregroundColor: Theme.of(context)
+                  .colorScheme
+                  .onSurface
+                  .withValues(alpha: 0.8),
               iconSize: style.lineHeight,
               minimumSize: Size.fromRadius(style.fontSize!),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -354,7 +359,7 @@ class _RenoteButton extends HookConsumerWidget {
                   NumberFormat().format(note.renoteCount),
                   style: style?.apply(
                     color: myRenotingNoteId.value != null
-                        ? colors.renote.withOpacity(0.6)
+                        ? colors.renote.withValues(alpha: 0.6)
                         : null,
                   ),
                 ),

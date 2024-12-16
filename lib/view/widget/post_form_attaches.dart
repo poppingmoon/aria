@@ -299,18 +299,16 @@ class PostFormAttaches extends ConsumerWidget {
                           ListTile(
                             leading: const Icon(Icons.visibility),
                             title: Text(t.aria.showImage),
-                            onTap: () => showDialog<void>(
-                              context: context,
-                              builder: (context) => ImageDialog(
-                                url: switch (files[index]) {
-                                  DrivePostFile(:final file) => file.url,
-                                  _ => null,
-                                },
-                                file: switch (files[index]) {
-                                  LocalPostFile(:final file) => file,
-                                  _ => null,
-                                },
-                              ),
+                            onTap: () => showImageDialog(
+                              context,
+                              url: switch (files[index]) {
+                                DrivePostFile(:final file) => file.url,
+                                _ => null,
+                              },
+                              file: switch (files[index]) {
+                                LocalPostFile(:final file) => file,
+                                _ => null,
+                              },
                             ),
                           ),
                         if (files[index].type?.startsWith('video/') ?? false)
