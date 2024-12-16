@@ -183,6 +183,7 @@ class UrlPreview extends HookConsumerWidget {
               style: OutlinedButton.styleFrom(
                 foregroundColor: colors.fg,
                 backgroundColor: colors.buttonBg,
+                iconColor: colors.fg,
                 textStyle: style.apply(fontSizeFactor: 0.9),
                 padding:
                     const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),

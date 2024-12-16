@@ -515,21 +515,21 @@ class NoteDetailedWidget extends HookConsumerWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 2.0,
-                              ),
-                              child: Icon(
-                                Icons.tv,
-                                color: style.color?.withValues(alpha: 0.7),
-                                size: style.lineHeight * 0.8,
-                              ),
+                            Icon(
+                              Icons.tv,
+                              color: style.color?.withValues(alpha: 0.7),
+                              size: style.lineHeight * 0.8,
                             ),
-                            Text(
-                              channel.name,
-                              style: style.apply(
-                                color: style.color?.withValues(alpha: 0.7),
-                                fontSizeFactor: 0.8,
+                            const SizedBox(width: 2.0),
+                            Expanded(
+                              child: Text(
+                                channel.name,
+                                style: style.apply(
+                                  color: style.color?.withValues(alpha: 0.7),
+                                  fontSizeFactor: 0.8,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
                               ),
                             ),
                           ],

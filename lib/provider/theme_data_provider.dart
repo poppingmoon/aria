@@ -81,6 +81,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
       style: ElevatedButton.styleFrom(
         foregroundColor: colors.fgOnAccent,
         backgroundColor: colors.accent,
+        iconColor: colors.fgOnAccent,
         textStyle: TextStyle(fontSize: fontSize),
         minimumSize: Size(64.0, fontSize * 3),
       ),

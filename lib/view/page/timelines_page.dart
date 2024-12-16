@@ -190,6 +190,7 @@ class TimelinesPage extends HookConsumerWidget {
                       automaticallyImplyLeading:
                           !isLargeScreen && showMenuButtonInTabBar,
                       title: TimelineTabBar(controller: controller),
+                      titleSpacing: 0.0,
                       centerTitle: true,
                     ),
               body: SafeArea(

@@ -233,7 +233,7 @@ class DrivePage extends HookConsumerWidget {
                         onPressed: hierarchyFolders.value.isNotEmpty
                             ? () => hierarchyFolders.value = []
                             : null,
-                        style: TextButton.styleFrom(
+                        style: IconButton.styleFrom(
                           foregroundColor: colors.fg.withValues(alpha: 0.8),
                           disabledForegroundColor: colors.fg,
                         ),

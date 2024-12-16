@@ -645,6 +645,9 @@ class PostForm extends HookConsumerWidget {
                         disabledForegroundColor:
                             colors.fgOnAccent.withValues(alpha: 0.5),
                         backgroundColor: Colors.transparent,
+                        iconColor: colors.fgOnAccent,
+                        disabledIconColor:
+                            colors.fgOnAccent.withValues(alpha: 0.5),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -665,7 +668,7 @@ class PostForm extends HookConsumerWidget {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 8.0,
+                            vertical: 10.0,
                             horizontal: 16.0,
                           ),
                           child: Row(
@@ -1155,9 +1158,10 @@ class PostForm extends HookConsumerWidget {
                               }
                             },
                             icon: Icon(
-                              useCw.value
-                                  ? Icons.visibility_off
-                                  : Icons.visibility,
+                              Icons.visibility_off,
+                              color: useCw.value
+                                  ? Theme.of(context).colorScheme.primary
+                                  : null,
                             ),
                           ),
                           IconButton(

@@ -145,6 +145,7 @@ class AvatarDecorationsPage extends ConsumerWidget {
                     child: OutlinedButton.icon(
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Theme.of(context).colorScheme.error,
+                        iconColor: Theme.of(context).colorScheme.error,
                       ),
                       onPressed: () async {
                         final confirmed = await confirm(

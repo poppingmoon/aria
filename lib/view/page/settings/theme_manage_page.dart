@@ -177,6 +177,7 @@ class ThemeManagePage extends ConsumerWidget {
                               style: OutlinedButton.styleFrom(
                                 foregroundColor:
                                     Theme.of(context).colorScheme.error,
+                                iconColor: Theme.of(context).colorScheme.error,
                               ),
                               icon: const Icon(Icons.delete),
                               label: Text(t.misskey.uninstall),
