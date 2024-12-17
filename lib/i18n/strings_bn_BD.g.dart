@@ -414,7 +414,6 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'গ্লোবাল টাইমলাইন চালু করুন';
 	@override String get disablingTimelinesInfo => 'আপনি এই টাইমলাইনগুলি বন্ধ করলেও প্রশাসক এবং মডারেটররা এই টাইমলাইনগুলি ব্যাবহার করতে পারবে';
 	@override String get registration => 'নিবন্ধন';
-	@override String get enableRegistration => 'নতুন ব্যাবহারকারী নিবন্ধন চালু করুন';
 	@override String get invite => 'আমন্ত্রণ';
 	@override String get driveCapacityPerLocalAccount => 'প্রত্যেক স্থানীয় ব্যাবহারকারীর জন্য ড্রাইভের জায়গা';
 	@override String get driveCapacityPerRemoteAccount => 'প্রত্যেক রিমোট ব্যাবহারকারীর জন্য ড্রাইভের জায়গা';

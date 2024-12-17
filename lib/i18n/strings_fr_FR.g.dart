@@ -85,6 +85,9 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Notifications';
 	@override String get username => 'Nom d’utilisateur·rice';
 	@override String get password => 'Mot de passe';
+	@override String get initialPasswordForSetup => 'Mot de passe initial pour la configuration';
+	@override String get initialPasswordIsIncorrect => 'Mot de passe initial pour la configuration est incorrecte';
+	@override String get initialPasswordForSetupDescription => 'Utilisez le mot de passe que vous avez entré pour le fichier de configuration si vous avez installé Misskey vous-même.\nSi vous utilisez un service d\'hébergement Misskey, utilisez le mot de passe fourni.\nSi vous n\'avez pas défini de mot de passe, laissez le champ vide pour continuer.';
 	@override String get forgotPassword => 'Mot de passe oublié';
 	@override String get fetchingAsApObject => 'Récupération depuis le fédiverse …';
 	@override String get ok => 'OK';
@@ -137,6 +140,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get copyFolderId => 'Copier l\'identifiant du dossier';
 	@override String get copyProfileUrl => 'Copier l\'URL du profil';
 	@override String get searchUser => 'Chercher un·e utilisateur·rice';
+	@override String get searchThisUsersNotes => 'Cherchez les notes de cet·te utilisateur·rice';
 	@override String get reply => 'Répondre';
 	@override String get loadMore => 'Afficher plus …';
 	@override String get showMore => 'Voir plus';
@@ -185,6 +189,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get renote => 'Renoter';
 	@override String get unrenote => 'Annuler la Renote';
 	@override String get renoted => 'Renoté !';
+	@override String renotedToX({required Object name}) => 'Renoté en ${name}';
 	@override String get cantRenote => 'Ce message ne peut pas être renoté.';
 	@override String get cantReRenote => 'Impossible de renoter une Renote.';
 	@override String get quote => 'Citer';
@@ -228,6 +233,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get selectChannel => 'Sélectionner un canal';
 	@override String get selectAntenna => 'Sélectionner une antenne';
 	@override String get editAntenna => 'Modifier l\'antenne';
+	@override String get createAntenna => 'Créer une antenne';
 	@override String get selectWidget => 'Sélectionner un widget';
 	@override String get editWidgets => 'Modifier les widgets';
 	@override String get editWidgetsExit => 'Valider les modifications';
@@ -254,6 +260,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get reloadAccountsList => 'Rafraichir la liste des comptes';
 	@override String get loginFailed => 'Échec de la connexion';
 	@override String get showOnRemote => 'Voir sur l’instance distante';
+	@override String get continueOnRemote => 'Continuer sur l\'instance distante';
 	@override String get general => 'Général';
 	@override String get wallpaper => 'Fond d’écran';
 	@override String get setWallpaper => 'Définir le fond d’écran';
@@ -264,6 +271,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get proxyAccount => 'Compte proxy';
 	@override String get proxyAccountDescription => 'Un compte proxy se comporte, dans certaines conditions, comme un·e abonné·e distant·e pour les utilisateurs d\'autres instances. Par exemple, quand un·e utilisateur·rice ajoute un·e utilisateur·rice distant·e à une liste, ses notes ne seront pas visibles sur l\'instance si personne ne suit cet·te utilisateur·rice. Le compte proxy va donc suivre cet·te utilisateur·rice pour que ses notes soient acheminées.';
 	@override String get host => 'Serveur distant';
+	@override String get selectSelf => 'Sélectionner manuellement';
 	@override String get selectUser => 'Sélectionner un·e utilisateur·rice';
 	@override String get recipient => 'Destinataire';
 	@override String get annotation => 'Commentaires';
@@ -397,6 +405,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get deleteFolder => 'Supprimer le dossier';
 	@override String get folder => 'Dossier';
 	@override String get addFile => 'Ajouter un fichier';
+	@override String get showFile => 'Voir les fichiers';
 	@override String get emptyDrive => 'Le Disque est vide';
 	@override String get emptyFolder => 'Le dossier est vide';
 	@override String get unableToDelete => 'Suppression impossible';
@@ -439,7 +448,6 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Activer le fil global';
 	@override String get disablingTimelinesInfo => 'Même si vous désactivez ces fils, les administrateur·rice·s et les modérateur·rice·s pourront toujours y accéder.';
 	@override String get registration => 'S’inscrire';
-	@override String get enableRegistration => 'Autoriser les nouvelles inscriptions';
 	@override String get invite => 'Inviter';
 	@override String get driveCapacityPerLocalAccount => 'Capacité de stockage du Disque par utilisateur local';
 	@override String get driveCapacityPerRemoteAccount => 'Capacité de stockage du Disque par utilisateur distant';
@@ -507,10 +515,11 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get x2fa => 'Authentification à deux facteurs';
 	@override String get setupOf2fa => 'Configuration de l’authentification à deux facteurs';
 	@override String get totp => 'Application d\'authentification';
-	@override String get totpDescription => 'Entrez un mot de passe à usage unique à l\'aide d\'une application d\'authentification';
+	@override String get totpDescription => 'Entrer un mot de passe à usage unique à l\'aide d\'une application d\'authentification';
 	@override String get moderator => 'Modérateur·rice·s';
 	@override String get moderation => 'Modérations';
 	@override String get moderationNote => 'Note de modération';
+	@override String get moderationNoteDescription => 'Vous pouvez remplir des notes qui seront partagés seulement entre modérateurs.';
 	@override String get addModerationNote => 'Ajouter une note de modération';
 	@override String get moderationLogs => 'Journal de modération';
 	@override String nUsersMentioned({required Object n}) => '${n} utilisateur·rice·s mentionné·e·s';
@@ -570,6 +579,10 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String aboutX({required Object x}) => 'À propos de ${x}';
 	@override String get emojiStyle => 'Style des émojis';
 	@override String get native => 'Natif';
+	@override String get menuStyle => 'Style du menu';
+	@override String get style => 'Style';
+	@override String get drawer => 'Sélecteur';
+	@override String get popup => 'Pop-up';
 	@override String get showNoteActionsOnlyHover => 'Afficher les actions de note uniquement au survol';
 	@override String get showReactionsCount => 'Afficher le nombre de réactions des notes';
 	@override String get noHistory => 'Pas d\'historique';
@@ -652,6 +665,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get descendingOrder => 'Descendant';
 	@override String get scratchpad => 'ScratchPad';
 	@override String get scratchpadDescription => 'ScratchPad fournit un environnement expérimental pour AiScript. Vous pouvez vérifier la rédaction de votre code, sa bonne exécution et le résultat de son interaction avec Misskey.';
+	@override String get uiInspector => 'Inspecteur UI';
 	@override String get output => 'Sortie';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Désactiver AiScript sur les Pages';
@@ -695,7 +709,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get describeFile => 'Ajouter une description d\'image';
 	@override String get enterFileDescription => 'Saisissez une description';
 	@override String get author => 'Auteur·rice';
-	@override String get leaveConfirm => 'Vous avez des modifications non-sauvegardées. Voulez-vous les ignorer ?';
+	@override String get leaveConfirm => 'Vous avez des modifications non sauvegardées. Voulez-vous les ignorer ?';
 	@override String get manage => 'Gestion';
 	@override String get plugins => 'Extensions';
 	@override String get preferencesBackups => 'Sauvegarder les paramètres';
@@ -905,6 +919,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get accounts => 'Comptes';
 	@override String get switch_ => 'Remplacer';
 	@override String get noMaintainerInformationWarning => 'Informations administrateur non configurées.';
+	@override String get noInquiryUrlWarning => 'L\'URL demandé n\'est pas définie';
 	@override String get noBotProtectionWarning => 'La protection contre les bots n\'est pas configurée.';
 	@override String get configure => 'Configurer';
 	@override String get postToGallery => 'Publier dans la galerie';
@@ -969,6 +984,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get continueThread => 'Afficher la suite du fil';
 	@override String get deleteAccountConfirm => 'Votre compte sera supprimé. Êtes vous certain ?';
 	@override String get incorrectPassword => 'Le mot de passe est incorrect.';
+	@override String get incorrectTotp => 'Le mot de passe à usage unique est incorrect ou a expiré.';
 	@override String voteConfirm({required Object choice}) => 'Confirmez-vous votre vote pour « ${choice} » ?';
 	@override String get hide => 'Masquer';
 	@override String get useDrawerReactionPickerForMobile => 'Afficher le sélecteur de réactions en tant que panneau sur mobile';
@@ -993,6 +1009,9 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '1 jour';
 	@override String get oneWeek => '1 semaine';
 	@override String get oneMonth => 'Un mois';
+	@override String get threeMonths => '3 mois';
+	@override String get oneYear => '1 an';
+	@override String get threeDays => '3 jours';
 	@override String get reflectMayTakeTime => 'Cela peut prendre un certain temps avant que cela ne se termine.';
 	@override String get failedToFetchAccountInformation => 'Impossible de récupérer les informations du compte.';
 	@override String get rateLimitExceeded => 'Limite de taux dépassée';
@@ -1000,7 +1019,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get cropImageAsk => 'Voulez-vous recadrer cette image ?';
 	@override String get cropYes => 'Rogner';
 	@override String get cropNo => 'Utiliser en l\'état';
-	@override String get file => 'Fichiers';
+	@override String get file => 'Fichier';
 	@override String recentNHours({required Object n}) => 'Dernières ${n} heures';
 	@override String recentNDays({required Object n}) => 'Derniers ${n} jours';
 	@override String get noEmailServerWarning => 'Serveur de courrier non configuré.';
@@ -1132,6 +1151,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => 'Cela peut augmenter temporairement la charge du serveur.';
 	@override String get enableChartsForRemoteUser => 'Générer les graphiques pour les utilisateurs distants';
 	@override String get enableChartsForFederatedInstances => 'Générer les graphiques pour les instances distantes';
+	@override String get enableStatsForFederatedInstances => 'Recevoir les statistiques des instances distantes';
 	@override String get showClipButtonInNoteFooter => 'Ajouter « Clip » au menu d\'action de la note';
 	@override String get reactionsDisplaySize => 'Taille de l\'affichage des réactions';
 	@override String get limitWidthOfReaction => 'Limiter la largeur maximale des réactions et les afficher en taille réduite';
@@ -1179,6 +1199,8 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get preventAiLearningDescription => 'Demander aux robots d\'indexation de ne pas utiliser le contenu publié, tel que les notes et les images, dans l\'apprentissage automatique d\'IA générative. Cela est réalisé en incluant le drapeau « noai » dans la réponse HTML. Une prévention complète n\'est toutefois pas possible, car il est au robot d\'indexation de respecter cette demande.';
 	@override String get options => 'Options';
 	@override String get specifyUser => 'Spécifier l\'utilisateur·rice';
+	@override String get openTagPageConfirm => 'Ouvrir une page d\'hashtags ?';
+	@override String get specifyHost => 'Spécifier un serveur distant';
 	@override String get failedToPreviewUrl => 'Aperçu d\'URL échoué';
 	@override String get update => 'Mettre à jour';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Rôles qui peuvent utiliser cet émoji comme réaction';
@@ -1299,8 +1321,40 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override String get loading => 'Chargement en cours';
 	@override String get surrender => 'Annuler';
 	@override String get gameRetry => 'Réessayer';
+	@override String get notUsePleaseLeaveBlank => 'Laisser vide si non utilisé';
+	@override String get useTotp => 'Entrer un mot de passe à usage unique';
+	@override String get useBackupCode => 'Utiliser le codes de secours';
 	@override String get launchApp => 'Lancer l\'app';
+	@override String get useNativeUIForVideoAudioPlayer => 'Lire les vidéos et audios en utilisant l\'UI du navigateur';
+	@override String get keepOriginalFilename => 'Garder le nom original du fichier';
+	@override String get keepOriginalFilenameDescription => 'Si vous désactivez ce paramètre, les noms de fichiers seront automatiquement remplacés par des noms aléatoires lorsque vous téléchargerez des fichiers.';
+	@override String get noDescription => 'Il n\'y a pas de description';
+	@override String get alwaysConfirmFollow => 'Confirmer lors d\'un abonnement';
 	@override String get inquiry => 'Contact';
+	@override String get tryAgain => 'Veuillez réessayer plus tard';
+	@override String get confirmWhenRevealingSensitiveMedia => 'Confirmer pour révéler du contenu sensible';
+	@override String get sensitiveMediaRevealConfirm => 'Ceci pourrait être du contenu sensible. Voulez-vous l\'afficher ?';
+	@override String get createdLists => 'Listes créées';
+	@override String get createdAntennas => 'Antennes créées';
+	@override String fromX({required Object x}) => 'De ${x}';
+	@override String get genEmbedCode => 'Générer le code d\'intégration';
+	@override String get noteOfThisUser => 'Notes de cet·te utilisateur·rice';
+	@override String get clipNoteLimitExceeded => 'Aucune note supplémentaire ne peut être ajoutée à ce clip.';
+	@override String get performance => 'Performance';
+	@override String get modified => 'Modifié';
+	@override String get discard => 'Annuler';
+	@override String thereAreNChanges({required Object n}) => 'Il y a ${n} modification(s)';
+	@override String get signinWithPasskey => 'Se connecter avec une clé d\'accès';
+	@override String get unknownWebAuthnKey => 'Clé d\'accès inconnue.';
+	@override String get passkeyVerificationFailed => 'La vérification de la clé d\'accès a échoué.';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La vérification de la clé d\'accès a réussi, mais la connexion sans mot de passe est désactivée.';
+	@override String get messageToFollower => 'Message aux abonné·es';
+	@override String get target => 'Destinataire';
+	@override String get prohibitedWordsForNameOfUser => 'Mots interdits pour les noms d\'utilisateur·rices';
+	@override String get lockdown => 'Verrouiller';
+	@override String get pleaseSelectAccount => 'Sélectionner un compte';
+	@override String get availableRoles => 'Rôles disponibles';
+	@override late final _TranslationsMisskeyAbuseUserReportFrFr abuseUserReport_ = _TranslationsMisskeyAbuseUserReportFrFr._(_root);
 	@override late final _TranslationsMisskeyDeliveryFrFr delivery_ = _TranslationsMisskeyDeliveryFrFr._(_root);
 	@override late final _TranslationsMisskeyBubbleGameFrFr bubbleGame_ = _TranslationsMisskeyBubbleGameFrFr._(_root);
 	@override late final _TranslationsMisskeyAnnouncementFrFr announcement_ = _TranslationsMisskeyAnnouncementFrFr._(_root);
@@ -1365,6 +1419,23 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyExternalResourceInstallerFrFr externalResourceInstaller_ = _TranslationsMisskeyExternalResourceInstallerFrFr._(_root);
 	@override late final _TranslationsMisskeyDataSaverFrFr dataSaver_ = _TranslationsMisskeyDataSaverFrFr._(_root);
 	@override late final _TranslationsMisskeyReversiFrFr reversi_ = _TranslationsMisskeyReversiFrFr._(_root);
+	@override late final _TranslationsMisskeyMediaControlsFrFr mediaControls_ = _TranslationsMisskeyMediaControlsFrFr._(_root);
+	@override late final _TranslationsMisskeyEmbedCodeGenFrFr embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenFrFr._(_root);
+}
+
+// Path: misskey.abuseUserReport_
+class _TranslationsMisskeyAbuseUserReportFrFr extends TranslationsMisskeyAbuseUserReportEnUs {
+	_TranslationsMisskeyAbuseUserReportFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get forward => 'Transférer';
+	@override String get forwardDescription => 'Transférer le signalement vers une instance distante en tant qu\'anonyme.';
+	@override String get resolve => 'Résoudre';
+	@override String get accept => 'Accepter';
+	@override String get reject => 'Rejeter';
+	@override String get resolveTutorial => 'Si le signalement est légitime dans son contenu, sélectionnez « Accepter » pour marquer le cas comme résolu par l\'affirmative.\nSi le contenu du rapport n\'est pas légitime, sélectionnez « Rejeter » pour marquer le cas comme résolu par la négative.';
 }
 
 // Path: misskey.delivery_
@@ -1376,6 +1447,7 @@ class _TranslationsMisskeyDeliveryFrFr extends TranslationsMisskeyDeliveryEnUs {
 	// Translations
 	@override String get status => 'Statut de la diffusion';
 	@override String get stop => 'Suspendu·e';
+	@override String get resume => 'Reprendre';
 	@override late final _TranslationsMisskeyDeliveryTypeFrFr type_ = _TranslationsMisskeyDeliveryTypeFrFr._(_root);
 }
 
@@ -1424,6 +1496,7 @@ class _TranslationsMisskeyInitialAccountSettingFrFr extends TranslationsMisskeyI
 	@override String get profileSetting => 'Paramètres du profil';
 	@override String get privacySetting => 'Paramètres de confidentialité';
 	@override String get initialAccountSettingCompleted => 'Configuration du profil terminée avec succès !';
+	@override String haveFun({required Object name}) => 'Profitez de ${name} !';
 	@override String youCanContinueTutorial({required Object name}) => 'Vous pouvez procéder au tutoriel sur l\'utilisation de ${name}(Misskey) ou vous arrêter ici et commencer à l\'utiliser immédiatement.';
 	@override String get startTutorial => 'Démarrer le tutoriel';
 	@override String get skipAreYouSure => 'Désirez-vous ignorer la configuration du profil ?';
@@ -1998,6 +2071,29 @@ class _TranslationsMisskeyPermissionsFrFr extends TranslationsMisskeyPermissions
 	@override String get writeGallery => 'Éditer la galerie';
 	@override String get readGalleryLikes => 'Voir les mentions « J\'aime » dans la galerie';
 	@override String get writeGalleryLikes => 'Gérer les mentions « J\'aime » dans la galerie';
+	@override String get readFlash => 'Voir le Play';
+	@override String get writeFlash => 'Modifier le Play';
+	@override String get readFlashLikes => 'Lire vos mentions j\'aime des Play';
+	@override String get writeFlashLikes => 'Modifier vos mentions j\'aime des Play';
+	@override String get readAdminAbuseUserReports => 'Voir les utilisateurs signalés';
+	@override String get writeAdminDeleteAccount => 'Supprimer le compte d\'utilisateur';
+	@override String get writeAdminDeleteAllFilesOfAUser => 'Supprimer tous les fichiers d\'un utilisateur';
+	@override String get readAdminIndexStats => 'Voir les statistiques sur les index de base de données';
+	@override String get readAdminTableStats => 'Voir les statistiques sur les index de base de données';
+	@override String get readAdminUserIps => 'Voir l\'adresse IP de l\'utilisateur';
+	@override String get readAdminMeta => 'Voir les métadonnées de l\'instance';
+	@override String get writeAdminResetPassword => 'Réinitialiser le mot de passe de l\'utilisateur';
+	@override String get writeAdminResolveAbuseUserReport => 'Résoudre le signalement d\'un utilisateur';
+	@override String get writeAdminSendEmail => 'Envoyer un mail';
+	@override String get readAdminServerInfo => 'Voir les informations de l\'instance';
+	@override String get readAdminShowModerationLog => 'Voir les logs de modération';
+	@override String get readAdminShowUser => 'Voir les informations privées de l\'utilisateur';
+	@override String get writeAdminSuspendUser => 'Suspendre l\'utilisateur';
+	@override String get writeAdminUnsetUserAvatar => 'Retirer l\'avatar de l\'utilisateur';
+	@override String get writeAdminUnsetUserBanner => 'Retirer la bannière de l\'utilisateur';
+	@override String get writeAdminUnsuspendUser => 'Lever la suspension d\'un utilisateur';
+	@override String get writeAdminMeta => 'Gérer les métadonnées de l\'instance';
+	@override String get writeAdminRoles => 'Gérer les rôles';
 }
 
 // Path: misskey.auth_
@@ -2254,7 +2350,16 @@ class _TranslationsMisskeyPlayFrFr extends TranslationsMisskeyPlayEnUs {
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get new_ => 'Créer un Play';
+	@override String get edit => 'Modifier un Play';
+	@override String get created => 'Play créé';
+	@override String get updated => 'Play édité';
+	@override String get deleted => 'Play supprimé';
+	@override String get pageSetting => 'Configuration du Play';
+	@override String get editThisPage => 'Modifier ce Play';
 	@override String get viewSource => 'Afficher la source';
+	@override String get my => 'Mes Play';
+	@override String get liked => 'Play aimés';
 	@override String get featured => 'Populaire';
 	@override String get title => 'Titre';
 	@override String get script => 'Script';
@@ -2342,8 +2447,10 @@ class _TranslationsMisskeyNotificationFrFr extends TranslationsMisskeyNotificati
 	@override String get achievementEarned => 'Accomplissement déverrouillé';
 	@override String get testNotification => 'Tester la notification';
 	@override String reactedBySomeUsers({required Object n}) => '${n} utilisateur·rice·s ont réagi';
+	@override String likedBySomeUsers({required Object n}) => '${n} utilisateurs ont aimé votre note';
 	@override String renotedBySomeUsers({required Object n}) => '${n} utilisateur·rice·s ont renoté';
 	@override String followedBySomeUsers({required Object n}) => '${n} utilisateur·rice·s se sont abonné·e·s à vous';
+	@override String get login => 'Quelqu\'un s\'est connecté';
 	@override late final _TranslationsMisskeyNotificationTypesFrFr types_ = _TranslationsMisskeyNotificationTypesFrFr._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsFrFr actions_ = _TranslationsMisskeyNotificationActionsFrFr._(_root);
 }
@@ -2393,6 +2500,8 @@ class _TranslationsMisskeyWebhookSettingsFrFr extends TranslationsMisskeyWebhook
 
 	// Translations
 	@override String get name => 'Nom';
+	@override String get secret => 'Secret';
+	@override String get trigger => 'Activateur';
 	@override String get active => 'Activé';
 }
 
@@ -2448,6 +2557,7 @@ class _TranslationsMisskeyModerationLogTypesFrFr extends TranslationsMisskeyMode
 	@override String get deleteAvatarDecoration => 'Décoration d\'avatar supprimée';
 	@override String get unsetUserAvatar => 'Supprimer l\'avatar de l\'utilisateur·rice';
 	@override String get unsetUserBanner => 'Supprimer la bannière de l\'utilisateur·rice';
+	@override String get deleteFlash => 'Supprimer le Play';
 }
 
 // Path: misskey.fileViewer_
@@ -2502,8 +2612,39 @@ class _TranslationsMisskeyReversiFrFr extends TranslationsMisskeyReversiEnUs {
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get reversi => 'Reversi';
+	@override String blackIs({required Object name}) => '${name} joue les noirs';
+	@override String get rules => 'Règles';
 	@override String get waitingBoth => 'Préparez-vous';
+	@override String get myTurn => 'C’est votre tour';
+	@override String turnOf({required Object name}) => 'C\'est le tour de ${name}';
+	@override String pastTurnOf({required Object name}) => 'Tour de ${name}';
+	@override String get surrender => 'Se rendre';
+	@override String get surrendered => 'Par abandon';
 	@override String get total => 'Total';
+	@override String get playing => 'En cours';
+	@override String get lookingForPlayer => 'Recherche d\'adversaire';
+}
+
+// Path: misskey.mediaControls_
+class _TranslationsMisskeyMediaControlsFrFr extends TranslationsMisskeyMediaControlsEnUs {
+	_TranslationsMisskeyMediaControlsFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get playbackRate => 'Vitesse de lecture';
+}
+
+// Path: misskey.embedCodeGen_
+class _TranslationsMisskeyEmbedCodeGenFrFr extends TranslationsMisskeyEmbedCodeGenEnUs {
+	_TranslationsMisskeyEmbedCodeGenFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Personnaliser le code d\'intégration';
+	@override String get generateCode => 'Générer le code d\'intégration';
 }
 
 // Path: misskey.delivery_.type_
@@ -2514,6 +2655,9 @@ class _TranslationsMisskeyDeliveryTypeFrFr extends TranslationsMisskeyDeliveryTy
 
 	// Translations
 	@override String get none => 'Publié';
+	@override String get manuallySuspended => 'Suspendre manuellement';
+	@override String get goneSuspended => 'L\'instance est suspendue en raison de la suppression de ce dernier';
+	@override String get autoSuspendedForNotResponding => 'L\'instance est suspendue car elle ne répond pas';
 }
 
 // Path: misskey.bubbleGame_.score_
@@ -2529,6 +2673,7 @@ class _TranslationsMisskeyBubbleGameScoreFrFr extends TranslationsMisskeyBubbleG
 	@override String get maxChain => 'Nombre maximum de chaînes';
 	@override String yen({required Object yen}) => '${yen} yens';
 	@override String estimatedQty({required Object qty}) => '${qty} pièces';
+	@override String scoreSweets({required Object onigiriQtyWithUnit}) => '${onigiriQtyWithUnit} Onigiri(s)';
 }
 
 // Path: misskey.initialTutorial_.landing_
@@ -2639,6 +2784,18 @@ class _TranslationsMisskeyAchievementsTypesFrFr extends TranslationsMisskeyAchie
 	@override late final _TranslationsMisskeyAchievementsTypesNotes1FrFr notes1_ = _TranslationsMisskeyAchievementsTypesNotes1FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesNotes10FrFr notes10_ = _TranslationsMisskeyAchievementsTypesNotes10FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesNotes100FrFr notes100_ = _TranslationsMisskeyAchievementsTypesNotes100FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes500FrFr notes500_ = _TranslationsMisskeyAchievementsTypesNotes500FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes1000FrFr notes1000_ = _TranslationsMisskeyAchievementsTypesNotes1000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes5000FrFr notes5000_ = _TranslationsMisskeyAchievementsTypesNotes5000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes10000FrFr notes10000_ = _TranslationsMisskeyAchievementsTypesNotes10000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes20000FrFr notes20000_ = _TranslationsMisskeyAchievementsTypesNotes20000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes30000FrFr notes30000_ = _TranslationsMisskeyAchievementsTypesNotes30000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes40000FrFr notes40000_ = _TranslationsMisskeyAchievementsTypesNotes40000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes50000FrFr notes50000_ = _TranslationsMisskeyAchievementsTypesNotes50000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes60000FrFr notes60000_ = _TranslationsMisskeyAchievementsTypesNotes60000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes70000FrFr notes70000_ = _TranslationsMisskeyAchievementsTypesNotes70000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes80000FrFr notes80000_ = _TranslationsMisskeyAchievementsTypesNotes80000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNotes90000FrFr notes90000_ = _TranslationsMisskeyAchievementsTypesNotes90000FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesNotes100000FrFr notes100000_ = _TranslationsMisskeyAchievementsTypesNotes100000FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesLogin3FrFr login3_ = _TranslationsMisskeyAchievementsTypesLogin3FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesLogin7FrFr login7_ = _TranslationsMisskeyAchievementsTypesLogin7FrFr._(_root);
@@ -2655,6 +2812,7 @@ class _TranslationsMisskeyAchievementsTypesFrFr extends TranslationsMisskeyAchie
 	@override late final _TranslationsMisskeyAchievementsTypesLogin800FrFr login800_ = _TranslationsMisskeyAchievementsTypesLogin800FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesLogin900FrFr login900_ = _TranslationsMisskeyAchievementsTypesLogin900FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesLogin1000FrFr login1000_ = _TranslationsMisskeyAchievementsTypesLogin1000FrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesNoteClipped1FrFr noteClipped1_ = _TranslationsMisskeyAchievementsTypesNoteClipped1FrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesProfileFilledFrFr profileFilled_ = _TranslationsMisskeyAchievementsTypesProfileFilledFrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesMarkedAsCatFrFr markedAsCat_ = _TranslationsMisskeyAchievementsTypesMarkedAsCatFrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesFollowing1FrFr following1_ = _TranslationsMisskeyAchievementsTypesFollowing1FrFr._(_root);
@@ -2687,6 +2845,8 @@ class _TranslationsMisskeyAchievementsTypesFrFr extends TranslationsMisskeyAchie
 	@override late final _TranslationsMisskeyAchievementsTypesBrainDiverFrFr brainDiver_ = _TranslationsMisskeyAchievementsTypesBrainDiverFrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonFrFr smashTestNotificationButton_ = _TranslationsMisskeyAchievementsTypesSmashTestNotificationButtonFrFr._(_root);
 	@override late final _TranslationsMisskeyAchievementsTypesTutorialCompletedFrFr tutorialCompleted_ = _TranslationsMisskeyAchievementsTypesTutorialCompletedFrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadFrFr bubbleGameExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadFrFr._(_root);
+	@override late final _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadFrFr bubbleGameDoubleExplodingHead_ = _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadFrFr._(_root);
 }
 
 // Path: misskey.role_.priority_
@@ -2711,9 +2871,11 @@ class _TranslationsMisskeyRoleOptionsFrFr extends TranslationsMisskeyRoleOptions
 	@override String get canManageCustomEmojis => 'Gestion des émojis personnalisés';
 	@override String get canManageAvatarDecorations => 'Gestion des décorations d\'avatar';
 	@override String get driveCapacity => 'Capacité de stockage du Disque';
+	@override String get antennaMax => 'Nombre maximum d\'antennes';
 	@override String get wordMuteMax => 'Nombre maximal de caractères dans le filtre de mots';
 	@override String get canUseTranslator => 'Usage de la fonctionnalité de traduction';
 	@override String get avatarDecorationLimit => 'Nombre maximal de décorations d\'avatar';
+	@override String get canImportAntennas => 'Autoriser l\'importation d\'antennes';
 }
 
 // Path: misskey.email_.follow_
@@ -2833,6 +2995,7 @@ class _TranslationsMisskeyNotificationTypesFrFr extends TranslationsMisskeyNotif
 
 	// Translations
 	@override String get all => 'Toutes';
+	@override String get note => 'Nouvelles notes';
 	@override String get follow => 'Nouvel·le abonné·e';
 	@override String get mention => 'Mentions';
 	@override String get reply => 'Réponses';
@@ -2886,6 +3049,7 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientFrFr extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeFrFr recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeFrFr._(_root);
+	@override String get keywords => 'Mots clés ';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -3053,6 +3217,7 @@ class _TranslationsMisskeyAchievementsTypesNotes10FrFr extends TranslationsMissk
 
 	// Translations
 	@override String get title => 'Quelques notes';
+	@override String get description => 'Poster 10 notes';
 }
 
 // Path: misskey.achievements_.types_.notes100_
@@ -3063,6 +3228,139 @@ class _TranslationsMisskeyAchievementsTypesNotes100FrFr extends TranslationsMiss
 
 	// Translations
 	@override String get title => 'Beaucoup de notes';
+	@override String get description => 'Poster 100 notes';
+}
+
+// Path: misskey.achievements_.types_.notes500_
+class _TranslationsMisskeyAchievementsTypesNotes500FrFr extends TranslationsMisskeyAchievementsTypesNotes500EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes500FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Couvert de notes';
+	@override String get description => 'Poster 500 notes';
+}
+
+// Path: misskey.achievements_.types_.notes1000_
+class _TranslationsMisskeyAchievementsTypesNotes1000FrFr extends TranslationsMisskeyAchievementsTypesNotes1000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes1000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Une montagne de notes';
+	@override String get description => 'Poster 1000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes5000_
+class _TranslationsMisskeyAchievementsTypesNotes5000FrFr extends TranslationsMisskeyAchievementsTypesNotes5000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes5000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Débordement de notes';
+	@override String get description => 'Poster 5 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes10000_
+class _TranslationsMisskeyAchievementsTypesNotes10000FrFr extends TranslationsMisskeyAchievementsTypesNotes10000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes10000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Super note';
+	@override String get description => 'Poster 10 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes20000_
+class _TranslationsMisskeyAchievementsTypesNotes20000FrFr extends TranslationsMisskeyAchievementsTypesNotes20000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes20000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Encore... plus... de... notes...';
+	@override String get description => 'Poster 20 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes30000_
+class _TranslationsMisskeyAchievementsTypesNotes30000FrFr extends TranslationsMisskeyAchievementsTypesNotes30000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes30000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Notes notes notes !';
+	@override String get description => 'Poster 30 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes40000_
+class _TranslationsMisskeyAchievementsTypesNotes40000FrFr extends TranslationsMisskeyAchievementsTypesNotes40000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes40000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Usine de notes';
+	@override String get description => 'Poster 40 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes50000_
+class _TranslationsMisskeyAchievementsTypesNotes50000FrFr extends TranslationsMisskeyAchievementsTypesNotes50000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes50000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Planète des notes';
+	@override String get description => 'Poster 50 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes60000_
+class _TranslationsMisskeyAchievementsTypesNotes60000FrFr extends TranslationsMisskeyAchievementsTypesNotes60000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes60000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Quasar de note';
+	@override String get description => 'Poster 50 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes70000_
+class _TranslationsMisskeyAchievementsTypesNotes70000FrFr extends TranslationsMisskeyAchievementsTypesNotes70000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes70000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Trou noir de notes';
+	@override String get description => 'Poster 70 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes80000_
+class _TranslationsMisskeyAchievementsTypesNotes80000FrFr extends TranslationsMisskeyAchievementsTypesNotes80000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes80000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Galaxie de notes';
+	@override String get description => 'Poster 80 000 notes';
+}
+
+// Path: misskey.achievements_.types_.notes90000_
+class _TranslationsMisskeyAchievementsTypesNotes90000FrFr extends TranslationsMisskeyAchievementsTypesNotes90000EnUs {
+	_TranslationsMisskeyAchievementsTypesNotes90000FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Univers de notes';
+	@override String get description => 'Poster 90 000 notes';
 }
 
 // Path: misskey.achievements_.types_.notes100000_
@@ -3073,6 +3371,8 @@ class _TranslationsMisskeyAchievementsTypesNotes100000FrFr extends TranslationsM
 
 	// Translations
 	@override String get title => 'ALL YOUR NOTE ARE BELONG TO US';
+	@override String get description => 'Poster 100 000 notes';
+	@override String get flavor => 'Avez-vous tant de choses à dire ?';
 }
 
 // Path: misskey.achievements_.types_.login3_
@@ -3082,8 +3382,9 @@ class _TranslationsMisskeyAchievementsTypesLogin3FrFr extends TranslationsMisske
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Débutant Ⅰ';
+	@override String get title => 'Débutant I';
 	@override String get description => 'Se connecter pour un total de 3 jours';
+	@override String get flavor => 'Dès maintenant, appelez-moi Misskeynaute';
 }
 
 // Path: misskey.achievements_.types_.login7_
@@ -3093,8 +3394,9 @@ class _TranslationsMisskeyAchievementsTypesLogin7FrFr extends TranslationsMisske
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Débutant Ⅱ';
+	@override String get title => 'Débutant II';
 	@override String get description => 'Se connecter pour un total de 7 jours';
+	@override String get flavor => 'On s\'habitue ?';
 }
 
 // Path: misskey.achievements_.types_.login15_
@@ -3104,7 +3406,7 @@ class _TranslationsMisskeyAchievementsTypesLogin15FrFr extends TranslationsMissk
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Débutant Ⅲ';
+	@override String get title => 'Débutant III';
 	@override String get description => 'Se connecter pour un total de 15 jours';
 }
 
@@ -3184,6 +3486,7 @@ class _TranslationsMisskeyAchievementsTypesLogin500FrFr extends TranslationsMiss
 	// Translations
 	@override String get title => 'Expert I';
 	@override String get description => 'Se connecter pour un total de 500 jours';
+	@override String get flavor => 'Non, mes amis, j\'aime les notes';
 }
 
 // Path: misskey.achievements_.types_.login600_
@@ -3215,6 +3518,7 @@ class _TranslationsMisskeyAchievementsTypesLogin800FrFr extends TranslationsMiss
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Maître des notes I';
 	@override String get description => 'Se connecter pour un total de 800 jours';
 }
 
@@ -3225,6 +3529,7 @@ class _TranslationsMisskeyAchievementsTypesLogin900FrFr extends TranslationsMiss
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Maître des notes II';
 	@override String get description => 'Se connecter pour un total de 900 jours';
 }
 
@@ -3235,7 +3540,20 @@ class _TranslationsMisskeyAchievementsTypesLogin1000FrFr extends TranslationsMis
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Maître des notes III';
+	@override String get description => 'Se connecter pour un total de 1 000 jours';
 	@override String get flavor => 'Merci d\'utiliser Misskey !';
+}
+
+// Path: misskey.achievements_.types_.noteClipped1_
+class _TranslationsMisskeyAchievementsTypesNoteClipped1FrFr extends TranslationsMisskeyAchievementsTypesNoteClipped1EnUs {
+	_TranslationsMisskeyAchievementsTypesNoteClipped1FrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Je... dois... clip...';
+	@override String get description => 'Ajouter sa première note aux clips';
 }
 
 // Path: misskey.achievements_.types_.profileFilled_
@@ -3478,6 +3796,7 @@ class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloFrFr extends Translati
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Complexe de dieu';
 	@override String get description => 'Vous avez spécifié « syuilo » comme nom';
 }
 
@@ -3489,6 +3808,7 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated1FrFr extend
 
 	// Translations
 	@override String get title => 'Premier anniversaire';
+	@override String get description => 'Un an est passé depuis la création du compte';
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated2_
@@ -3499,6 +3819,7 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated2FrFr extend
 
 	// Translations
 	@override String get title => 'Second anniversaire';
+	@override String get description => 'Deux ans sont passés depuis la création du compte';
 }
 
 // Path: misskey.achievements_.types_.passedSinceAccountCreated3_
@@ -3509,6 +3830,7 @@ class _TranslationsMisskeyAchievementsTypesPassedSinceAccountCreated3FrFr extend
 
 	// Translations
 	@override String get title => '3ème anniversaire';
+	@override String get description => 'Trois ans sont passés depuis la création du compte';
 }
 
 // Path: misskey.achievements_.types_.loggedInOnBirthday_
@@ -3530,6 +3852,8 @@ class _TranslationsMisskeyAchievementsTypesLoggedInOnNewYearsDayFrFr extends Tra
 
 	// Translations
 	@override String get title => 'Bonne année !';
+	@override String get description => 'Vous vous êtes connecté le premier jour de l\'année';
+	@override String get flavor => 'Merci pour le soutient continue sur cette instance.';
 }
 
 // Path: misskey.achievements_.types_.cookieClicked_
@@ -3539,6 +3863,8 @@ class _TranslationsMisskeyAchievementsTypesCookieClickedFrFr extends Translation
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Jeu de clic sur des cookies';
+	@override String get description => 'Cliqué sur un cookie';
 	@override String get flavor => 'Attendez une minute, vous êtes sur le mauvais site web ?';
 }
 
@@ -3549,6 +3875,8 @@ class _TranslationsMisskeyAchievementsTypesBrainDiverFrFr extends TranslationsMi
 	final TranslationsFrFr _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Brain Diver';
+	@override String get description => 'Poster le lien sur Brain Diver';
 	@override String get flavor => 'Misskey-Misskey La-Tu-Ma';
 }
 
@@ -3572,6 +3900,27 @@ class _TranslationsMisskeyAchievementsTypesTutorialCompletedFrFr extends Transla
 	// Translations
 	@override String get title => 'Diplôme de la course élémentaire de Misskey';
 	@override String get description => 'Terminer le tutoriel';
+}
+
+// Path: misskey.achievements_.types_.bubbleGameExplodingHead_
+class _TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadFrFr extends TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameExplodingHeadFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '🤯';
+	@override String get description => 'Le plus gros objet du jeu de bulles';
+}
+
+// Path: misskey.achievements_.types_.bubbleGameDoubleExplodingHead_
+class _TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadFrFr extends TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadEnUs {
+	_TranslationsMisskeyAchievementsTypesBubbleGameDoubleExplodingHeadFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Double🤯';
 }
 
 // Path: misskey.pages_.blocks.note_

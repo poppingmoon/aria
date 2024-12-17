@@ -598,6 +598,7 @@ class TranslationsMisskeyEnUs {
 	String get selectFiles => 'Select files';
 	String get selectFolder => 'Select a folder';
 	String get selectFolders => 'Select folders';
+	String get fileNotSelected => 'No file selected';
 	String get renameFile => 'Rename file';
 	String get folderName => 'Folder name';
 	String get createFolder => 'Create a folder';
@@ -648,7 +649,6 @@ class TranslationsMisskeyEnUs {
 	String get enableGlobalTimeline => 'Enable global timeline';
 	String get disablingTimelinesInfo => 'Adminstrators and Moderators will always have access to all timelines, even if they are not enabled.';
 	String get registration => 'Register';
-	String get enableRegistration => 'Enable new user registration';
 	String get invite => 'Invite';
 	String get driveCapacityPerLocalAccount => 'Drive capacity per local user';
 	String get driveCapacityPerRemoteAccount => 'Drive capacity per remote user';
@@ -853,6 +853,7 @@ class TranslationsMisskeyEnUs {
 	String get notUseSound => 'Disable sound';
 	String get useSoundOnlyWhenActive => 'Output sounds only if Misskey is active.';
 	String get details => 'Details';
+	String get renoteDetails => 'Renote details';
 	String get chooseEmoji => 'Select an emoji';
 	String get unableToProcess => 'The operation could not be completed';
 	String get recentUsed => 'Recently used';
@@ -1565,6 +1566,7 @@ class TranslationsMisskeyEnUs {
 	String get thisContentsAreMarkedAsSigninRequiredByAuthor => 'Set by the author to require login to view';
 	String get lockdown => 'Lockdown';
 	String get pleaseSelectAccount => 'Select an account';
+	String get availableRoles => 'Available roles';
 	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
@@ -1640,6 +1642,7 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyMediaControlsEnUs mediaControls_ = TranslationsMisskeyMediaControlsEnUs.internal(_root);
 	late final TranslationsMisskeyContextMenuEnUs contextMenu_ = TranslationsMisskeyContextMenuEnUs.internal(_root);
 	late final TranslationsMisskeyEmbedCodeGenEnUs embedCodeGen_ = TranslationsMisskeyEmbedCodeGenEnUs.internal(_root);
+	late final TranslationsMisskeySelfXssPreventionEnUs selfXssPrevention_ = TranslationsMisskeySelfXssPreventionEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -1667,7 +1670,7 @@ class TranslationsMisskeyAccountSettingsEnUs {
 	String get makeNotesFollowersOnlyBeforeDescription => 'While this feature is enabled, only followers can see notes past the set date and time or have been visible for a set time. When it is deactivated, the note publication status will also be restored.';
 	String get makeNotesHiddenBefore => 'Make past notes private';
 	String get makeNotesHiddenBeforeDescription => 'While this feature is enabled, notes that are past the set date and time or have been visible only to you. When it is deactivated, the note publication status will also be restored.';
-	String get mayNotEffectForFederatedNotes => 'Notes federated to a remote server may not be effective.';
+	String get mayNotEffectForFederatedNotes => 'Notes federated to a remote server may not be affected.';
 	String get notesHavePassedSpecifiedPeriod => 'Note that the specified time has passed';
 	String get notesOlderThanSpecifiedDateAndTime => 'Notes before the specified date and time';
 }
@@ -2526,7 +2529,7 @@ class TranslationsMisskeyWidgetsEnUs {
 	String get userList => 'User list';
 	late final TranslationsMisskeyWidgetsUserListEnUs userList_ = TranslationsMisskeyWidgetsUserListEnUs.internal(_root);
 	String get clicker => 'Clicker';
-	String get birthdayFollowings => 'Users who celebrate their birthday today';
+	String get birthdayFollowings => 'Today\'s Birthdays';
 }
 
 // Path: misskey.cw_
@@ -3159,6 +3162,20 @@ class TranslationsMisskeyEmbedCodeGenEnUs {
 	String get generateCode => 'Generate embed code';
 	String get codeGenerated => 'The code has been generated';
 	String get codeGeneratedDescription => 'Paste the generated code into your website to embed the content.';
+}
+
+// Path: misskey.selfXssPrevention_
+class TranslationsMisskeySelfXssPreventionEnUs {
+	TranslationsMisskeySelfXssPreventionEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get warning => 'WARNING';
+	String get title => '"Paste something on this screen" is all a scam.';
+	String get description1 => 'If you paste something here, a malicious user could hijack your account or steal your personal information.';
+	String get description2 => 'If you do not understand exactly what you are trying to paste, %cstop working right now and close this window.';
+	String description3({required Object link}) => 'For more information, please refer to this. ${link}';
 }
 
 // Path: misskeyIO.skebStatus_

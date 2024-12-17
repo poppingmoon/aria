@@ -403,6 +403,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Selecione os arquivos';
 	@override String get selectFolder => 'Selecionar uma pasta';
 	@override String get selectFolders => 'Selecionar uma pasta';
+	@override String get fileNotSelected => 'Nenhuma pasta selecionada';
 	@override String get renameFile => 'Renomear ficheiro';
 	@override String get folderName => 'Nome da pasta';
 	@override String get createFolder => 'Criar pasta';
@@ -452,7 +453,6 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Ativar linha do tempo global';
 	@override String get disablingTimelinesInfo => 'Se você desabilitar essas linhas do tempo, administradores e moderadores ainda poderão usá-las por conveniência.';
 	@override String get registration => 'Registar';
-	@override String get enableRegistration => 'Permitir que qualquer pessoa se registre';
 	@override String get invite => 'Convidar';
 	@override String get driveCapacityPerLocalAccount => 'Capacidade do drive por usuário local';
 	@override String get driveCapacityPerRemoteAccount => 'Capacidade do drive por usuário remoto';

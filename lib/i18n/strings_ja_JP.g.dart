@@ -592,6 +592,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'ファイルを選択';
 	@override String get selectFolder => 'フォルダーを選択';
 	@override String get selectFolders => 'フォルダーを選択';
+	@override String get fileNotSelected => 'ファイルが選択されていません';
 	@override String get renameFile => 'ファイル名を変更';
 	@override String get folderName => 'フォルダー名';
 	@override String get createFolder => 'フォルダーを作成';
@@ -642,7 +643,6 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'グローバルタイムラインを有効にする';
 	@override String get disablingTimelinesInfo => 'これらのタイムラインを無効化しても、利便性のため管理者およびモデレーターは引き続き利用することができます。';
 	@override String get registration => '登録';
-	@override String get enableRegistration => '誰でも新規登録できるようにする';
 	@override String get invite => '招待';
 	@override String get driveCapacityPerLocalAccount => 'ローカルユーザーひとりあたりのドライブ容量';
 	@override String get driveCapacityPerRemoteAccount => 'リモートユーザーひとりあたりのドライブ容量';
@@ -847,6 +847,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get notUseSound => 'サウンドを出力しない';
 	@override String get useSoundOnlyWhenActive => 'Misskeyがアクティブな時のみサウンドを出力する';
 	@override String get details => '詳細';
+	@override String get renoteDetails => 'リノートの詳細';
 	@override String get chooseEmoji => '絵文字を選択';
 	@override String get unableToProcess => '操作を完了できません';
 	@override String get recentUsed => '最近使用';
@@ -1559,6 +1560,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '投稿者により、表示にはログインが必要と設定されています';
 	@override String get lockdown => 'ロックダウン';
 	@override String get pleaseSelectAccount => 'アカウントを選択してください';
+	@override String get availableRoles => '利用可能なロール';
 	@override late final _TranslationsMisskeyAccountSettingsJaJp accountSettings_ = _TranslationsMisskeyAccountSettingsJaJp._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
@@ -1634,6 +1636,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsJaJp mediaControls_ = _TranslationsMisskeyMediaControlsJaJp._(_root);
 	@override late final _TranslationsMisskeyContextMenuJaJp contextMenu_ = _TranslationsMisskeyContextMenuJaJp._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenJaJp embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenJaJp._(_root);
+	@override late final _TranslationsMisskeySelfXssPreventionJaJp selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -3153,6 +3156,20 @@ class _TranslationsMisskeyEmbedCodeGenJaJp extends TranslationsMisskeyEmbedCodeG
 	@override String get generateCode => '埋め込みコードを作成';
 	@override String get codeGenerated => 'コードが生成されました';
 	@override String get codeGeneratedDescription => '生成されたコードをウェブサイトに貼り付けてご利用ください。';
+}
+
+// Path: misskey.selfXssPrevention_
+class _TranslationsMisskeySelfXssPreventionJaJp extends TranslationsMisskeySelfXssPreventionEnUs {
+	_TranslationsMisskeySelfXssPreventionJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get warning => '警告';
+	@override String get title => '「この画面に何か貼り付けろ」はすべて詐欺です。';
+	@override String get description1 => 'ここに何かを貼り付けると、悪意のあるユーザーにアカウントを乗っ取られたり、個人情報を盗まれたりする可能性があります。';
+	@override String get description2 => '貼り付けようとしているものが何なのかを正確に理解していない場合は、%c今すぐ作業を中止してこのウィンドウを閉じてください。';
+	@override String description3({required Object link}) => '詳しくはこちらをご確認ください。 ${link}';
 }
 
 // Path: misskeyIO.skebStatus_

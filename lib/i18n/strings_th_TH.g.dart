@@ -411,6 +411,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'เลือกไฟล์';
 	@override String get selectFolder => 'เลือกโฟลเดอร์';
 	@override String get selectFolders => 'เลือกโฟลเดอร์';
+	@override String get fileNotSelected => 'ยังไม่ได้เลือกไฟล์';
 	@override String get renameFile => 'เปลี่ยนชื่อไฟล์';
 	@override String get folderName => 'ชื่อโฟลเดอร์';
 	@override String get createFolder => 'สร้างโฟลเดอร์';
@@ -461,7 +462,6 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'เปิดใช้งานไทม์ไลน์ทั่วโลก';
 	@override String get disablingTimelinesInfo => 'ผู้ดูแลระบบและผู้ควบคุมจะสามารถเข้าถึงไทม์ไลน์ทั้งหมด ถึงแม้ว่าจะไม่ได้เปิดใช้งานก็ตาม';
 	@override String get registration => 'ลงทะเบียน';
-	@override String get enableRegistration => 'เปิดใช้งานการลงทะเบียนผู้ใช้ใหม่';
 	@override String get invite => 'คำเชิญ';
 	@override String get driveCapacityPerLocalAccount => 'ความจุของไดรฟ์ต่อผู้ใช้ท้องถิ่น';
 	@override String get driveCapacityPerRemoteAccount => 'ความจุของไดรฟ์ต่อผู้ใช้ระยะไกล';

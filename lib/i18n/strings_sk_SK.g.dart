@@ -408,7 +408,6 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Povoliť globálnu časovú os';
 	@override String get disablingTimelinesInfo => 'Administrátori a moderátori majú vždy prístup ku všetkým časovým osiam, aj keď sú vypnuté.';
 	@override String get registration => 'Registrácia';
-	@override String get enableRegistration => 'Povoliť registráciu nových používateľov';
 	@override String get invite => 'Pozvať';
 	@override String get driveCapacityPerLocalAccount => 'Kapacita disku pre používateľa';
 	@override String get driveCapacityPerRemoteAccount => 'Kapacita disku pre vzdialeného používateľa';

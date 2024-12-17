@@ -403,6 +403,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Выберите файлы';
 	@override String get selectFolder => 'Выберите папку';
 	@override String get selectFolders => 'Выберите папки';
+	@override String get fileNotSelected => 'Файл не выбран';
 	@override String get renameFile => 'Переименовать файл';
 	@override String get folderName => 'Имя папки';
 	@override String get createFolder => 'Создать папку';
@@ -453,7 +454,6 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Включить глобальную ленту';
 	@override String get disablingTimelinesInfo => 'У администраторов и модераторов есть доступ ко всем лентам, даже если они отключены.';
 	@override String get registration => 'Регистрация';
-	@override String get enableRegistration => 'Разрешить регистрацию';
 	@override String get invite => 'Пригласить';
 	@override String get driveCapacityPerLocalAccount => 'Объём Диска на одного локального пользователя';
 	@override String get driveCapacityPerRemoteAccount => 'Объём Диска на одного пользователя с другого экземпляра';

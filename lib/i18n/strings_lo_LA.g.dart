@@ -358,7 +358,6 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'ເປີດໃຊ້ທາມລາຍທົ່ວໂລກ';
 	@override String get disablingTimelinesInfo => 'ຜູ້ດູແລລະບບແລະຜູ້ຄວບຄຸມຈະສາມາດເຂົ້າເຖີງໄທມ໌ໄລນ໌ທັ້ງເບີດ ເຖີງວ່າຈະບໍ່ໄດ້ເປີດໃຊ້ງານກໍ່ຕາມ';
 	@override String get registration => 'ລົງທະບຽນ';
-	@override String get enableRegistration => 'ເປີດໃຊ້ການລົງທະບຽນຜູ້ໃຊ້ໃໝ່';
 	@override String get invite => 'ເຊີນ';
 	@override String get driveCapacityPerLocalAccount => 'ຄວາມຈຸຂອງ drive ຕໍ່ຜູ້ໃຊ້ທ້ອງຖິ່ນ';
 	@override String get driveCapacityPerRemoteAccount => 'ຄວາມຈຸຂອງ drive ຕໍ່ຜູ້ໃຊ້ໄລຍະໄກ';

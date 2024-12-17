@@ -592,6 +592,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'ファイル選んでや';
 	@override String get selectFolder => 'フォルダ選んでや';
 	@override String get selectFolders => 'フォルダ選んでや';
+	@override String get fileNotSelected => 'ファイルが選択されてへんで';
 	@override String get renameFile => 'ファイル名をいらう';
 	@override String get folderName => 'フォルダー名';
 	@override String get createFolder => 'フォルダー作る';
@@ -642,7 +643,6 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'グローバルタイムラインを使えるようにするわ';
 	@override String get disablingTimelinesInfo => 'ここらへんのタイムラインを使えんようにしてしもても、管理者とモデレーターは使えるままになってるで、そうやなかったら不便やからな。';
 	@override String get registration => '登録';
-	@override String get enableRegistration => '一見さんでも誰でもいらっしゃ～い';
 	@override String get invite => '来てや';
 	@override String get driveCapacityPerLocalAccount => 'ローカルユーザーはんひとりあたりのドライブ容量';
 	@override String get driveCapacityPerRemoteAccount => 'リモートユーザーはんひとりあたりのドライブ容量';
@@ -847,6 +847,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get notUseSound => '音出さへん';
 	@override String get useSoundOnlyWhenActive => 'Misskeyがアクティブなときだけ音出す';
 	@override String get details => 'もっと';
+	@override String get renoteDetails => 'リノートの詳細';
 	@override String get chooseEmoji => '絵文字を選ぶ';
 	@override String get unableToProcess => 'なんか奥の方で詰まってもうた';
 	@override String get recentUsed => '最近使ったやつ';
@@ -1559,6 +1560,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '投稿者により、表示にはログインが必要と設定されています';
 	@override String get lockdown => 'ロックダウン';
 	@override String get pleaseSelectAccount => 'アカウントを選択してください';
+	@override String get availableRoles => '利用可能なロール';
 	@override late final _TranslationsMisskeyAccountSettingsJaKs accountSettings_ = _TranslationsMisskeyAccountSettingsJaKs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaKs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaKs._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaKs delivery_ = _TranslationsMisskeyDeliveryJaKs._(_root);
@@ -1634,6 +1636,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsJaKs mediaControls_ = _TranslationsMisskeyMediaControlsJaKs._(_root);
 	@override late final _TranslationsMisskeyContextMenuJaKs contextMenu_ = _TranslationsMisskeyContextMenuJaKs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenJaKs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenJaKs._(_root);
+	@override late final _TranslationsMisskeySelfXssPreventionJaKs selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionJaKs._(_root);
 }
 
 // Path: misskeyIO
@@ -3153,6 +3156,20 @@ class _TranslationsMisskeyEmbedCodeGenJaKs extends TranslationsMisskeyEmbedCodeG
 	@override String get generateCode => '埋め込みコード作る';
 	@override String get codeGenerated => 'コード作ったで';
 	@override String get codeGeneratedDescription => '作ったコードはウェブサイトに貼っつけて使ってや。';
+}
+
+// Path: misskey.selfXssPrevention_
+class _TranslationsMisskeySelfXssPreventionJaKs extends TranslationsMisskeySelfXssPreventionEnUs {
+	_TranslationsMisskeySelfXssPreventionJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get warning => '警告';
+	@override String get title => '「この画面に何か貼り付けろ」はすべて詐欺です。';
+	@override String get description1 => 'ここに何かを貼り付けると、悪意のあるユーザーにアカウントを乗っ取られたり、個人情報を盗まれたりする可能性があります。';
+	@override String get description2 => '貼り付けようとしているものが何なのかを正確に理解していない場合は、%c今すぐ作業を中止してこのウィンドウを閉じてください。';
+	@override String description3({required Object link}) => '詳しくはこちらをご確認ください。 ${link}';
 }
 
 // Path: misskeyIO.skebStatus_

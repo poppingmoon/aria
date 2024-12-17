@@ -409,7 +409,6 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Activeaza cronologia globală';
 	@override String get disablingTimelinesInfo => 'Administratorii și Moderatorii vor avea mereu access la toate cronologiile, chiar dacă nu sunt activate.';
 	@override String get registration => 'Inregistrare';
-	@override String get enableRegistration => 'Activează înregistrările pentru utilizatori noi';
 	@override String get invite => 'Invită';
 	@override String get driveCapacityPerLocalAccount => 'Capacitatea Drive-ului per utilizator local';
 	@override String get driveCapacityPerRemoteAccount => 'Capacitatea Drive-ului per utilizator extern';

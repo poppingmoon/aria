@@ -463,6 +463,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Pilih berkas';
 	@override String get selectFolder => 'Pilih folder';
 	@override String get selectFolders => 'Pilih folder';
+	@override String get fileNotSelected => 'Tidak ada file yang dipilih';
 	@override String get renameFile => 'Ubah nama berkas';
 	@override String get folderName => 'Nama folder';
 	@override String get createFolder => 'Buat folder';
@@ -513,7 +514,6 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Nyalakan lini masa global';
 	@override String get disablingTimelinesInfo => 'Admin dan Moderator akan selalu memiliki akses ke semua lini masa meskipun lini masa tersebut tidak diaktifkan.';
 	@override String get registration => 'Pendaftaran';
-	@override String get enableRegistration => 'Nyalakan pendaftaran pengguna baru';
 	@override String get invite => 'Undang';
 	@override String get driveCapacityPerLocalAccount => 'Kapasitas drive per pengguna lokal';
 	@override String get driveCapacityPerRemoteAccount => 'Kapasitas drive per pengguna remote';

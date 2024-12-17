@@ -397,7 +397,6 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Inschakelen globale tijdlijn ';
 	@override String get disablingTimelinesInfo => 'Beheerders en moderators hebben altijd toegang tot alle tijdlijnen, ook als ze niet actief zijn.';
 	@override String get registration => 'Registreren';
-	@override String get enableRegistration => 'Inschakelen registratie nieuwe gebruikers ';
 	@override String get invite => 'Uitnodigen';
 	@override String get driveCapacityPerLocalAccount => 'Opslagruimte per lokale gebruiker';
 	@override String get driveCapacityPerRemoteAccount => 'Opslagruimte per externe gebruiker';

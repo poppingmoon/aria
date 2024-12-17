@@ -410,7 +410,6 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String monthX({required Object month}) => '${month} ay';
 	@override String get pages => 'Sayfalar';
 	@override String get integration => 'Entegrasyon';
-	@override String get enableRegistration => 'Kayıtlara izin ver';
 	@override String get basicInfo => 'Temel bilgiler';
 	@override String get pinnedUsers => 'Sabitlenmiş kullanıcılar';
 	@override String get pinnedNotes => 'Sabitlenen';

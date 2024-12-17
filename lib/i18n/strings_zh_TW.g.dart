@@ -91,8 +91,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get notifications => '通知';
 	@override String get username => '使用者名稱';
 	@override String get password => '密碼';
-	@override String get initialPasswordForSetup => '初始設定用的密碼';
-	@override String get initialPasswordIsIncorrect => '初始設定用的密碼錯誤。';
+	@override String get initialPasswordForSetup => '啟動初始設定的密碼';
+	@override String get initialPasswordIsIncorrect => '啟動初始設定的密碼錯誤。';
 	@override String get initialPasswordForSetupDescription => '如果您自己安裝了 Misskey，請使用您在設定檔中輸入的密碼。\n如果您使用 Misskey 的託管服務之類的服務，請使用提供的密碼。\n如果您尚未設定密碼，請將其留空並繼續。';
 	@override String get forgotPassword => '忘記密碼';
 	@override String get fetchingAsApObject => '從聯邦宇宙取得中...';
@@ -414,6 +414,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => '選擇檔案';
 	@override String get selectFolder => '選擇資料夾';
 	@override String get selectFolders => '選擇資料夾';
+	@override String get fileNotSelected => '尚未選擇檔案';
 	@override String get renameFile => '重新命名檔案';
 	@override String get folderName => '資料夾名稱';
 	@override String get createFolder => '新增資料夾';
@@ -464,7 +465,6 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => '啟用全域時間軸';
 	@override String get disablingTimelinesInfo => '為了方便，即使您關閉了時間軸功能，管理員和審查員仍可以繼續使用。';
 	@override String get registration => '註冊';
-	@override String get enableRegistration => '開放新使用者註冊';
 	@override String get invite => '邀請';
 	@override String get driveCapacityPerLocalAccount => '每個本地使用者的雲端硬碟容量';
 	@override String get driveCapacityPerRemoteAccount => '每個非本地用戶的雲端空間大小';
@@ -669,6 +669,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get notUseSound => '關閉音效';
 	@override String get useSoundOnlyWhenActive => '瀏覽器在前景運作時，Misskey 才會發出音效';
 	@override String get details => '詳細資訊';
+	@override String get renoteDetails => '轉發貼文的細節';
 	@override String get chooseEmoji => '選擇您的表情符號';
 	@override String get unableToProcess => '操作無法完成';
 	@override String get recentUsed => '最近使用';
@@ -1201,7 +1202,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get horizontal => '橫向';
 	@override String get position => '位置';
 	@override String get serverRules => '伺服器規則';
-	@override String get pleaseConfirmBelowBeforeSignup => '在本伺服器註冊之前，請確認下列事項。';
+	@override String get pleaseConfirmBelowBeforeSignup => '在本伺服器註冊之前，必須確認並同意以下內容。';
 	@override String get pleaseAgreeAllToContinue => '必須全部勾選「同意」才能繼續。';
 	@override String get continue_ => '繼續';
 	@override String get preservedUsernames => '保留的使用者名稱';
@@ -1381,6 +1382,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '作者將其設定為需要登入才能顯示。';
 	@override String get lockdown => '鎖定';
 	@override String get pleaseSelectAccount => '請選擇帳戶';
+	@override String get availableRoles => '可用角色';
 	@override late final _TranslationsMisskeyAccountSettingsZhTw accountSettings_ = _TranslationsMisskeyAccountSettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
@@ -1456,6 +1458,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsZhTw mediaControls_ = _TranslationsMisskeyMediaControlsZhTw._(_root);
 	@override late final _TranslationsMisskeyContextMenuZhTw contextMenu_ = _TranslationsMisskeyContextMenuZhTw._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhTw._(_root);
+	@override late final _TranslationsMisskeySelfXssPreventionZhTw selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionZhTw._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2965,6 +2968,20 @@ class _TranslationsMisskeyEmbedCodeGenZhTw extends TranslationsMisskeyEmbedCodeG
 	@override String get generateCode => '建立嵌入程式碼';
 	@override String get codeGenerated => '已產生程式碼';
 	@override String get codeGeneratedDescription => '請將產生的程式碼貼到您的網站上。';
+}
+
+// Path: misskey.selfXssPrevention_
+class _TranslationsMisskeySelfXssPreventionZhTw extends TranslationsMisskeySelfXssPreventionEnUs {
+	_TranslationsMisskeySelfXssPreventionZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get warning => '警告';
+	@override String get title => '「在此畫面貼上一些內容」完全是個騙局。';
+	@override String get description1 => '如果您在此處貼上任何內容，惡意使用者可能會接管您的帳戶或竊取您的個人資訊。';
+	@override String get description2 => '如果您不確切知道要貼上的內容，%c 請立即停止工作並關閉此視窗。';
+	@override String description3({required Object link}) => '細節請看這裡。${link}';
 }
 
 // Path: misskey.delivery_.type_

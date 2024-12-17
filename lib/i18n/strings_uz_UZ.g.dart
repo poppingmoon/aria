@@ -424,7 +424,6 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Global vaqt mintaqasini yoqing';
 	@override String get disablingTimelinesInfo => 'Administratorlar va Moderatorlar har doim barcha vaqt jadvallariga kirish huquqiga ega bo\'ladilar, hatto ular yoqilmagan bo\'lsa ham.';
 	@override String get registration => 'Ro\'yxatdan o\'tish';
-	@override String get enableRegistration => 'Ro\'yxatdan o\'tishni yoqing';
 	@override String get invite => 'Taklif qilish';
 	@override String get driveCapacityPerLocalAccount => 'Har bir mahalliy foydalanuvchi uchun disk maydoni';
 	@override String get driveCapacityPerRemoteAccount => 'Har bir masofaviy foydalanuvchi uchun disk maydoni';

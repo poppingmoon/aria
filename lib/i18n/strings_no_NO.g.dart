@@ -333,7 +333,6 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Aktiver global tidslinje';
 	@override String get disablingTimelinesInfo => 'Administratorer og Moderatorer vil alltid ha tilgang til alle tidslinjer, selv om de ikke er aktivert.';
 	@override String get registration => 'Registrer';
-	@override String get enableRegistration => 'Aktiver registrering av nye brukere';
 	@override String get invite => 'Inviter';
 	@override String get basicInfo => 'Grunnleggende informasjon';
 	@override String get pinnedUsers => 'Festede brukrere';
