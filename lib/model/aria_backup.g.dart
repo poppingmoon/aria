@@ -27,22 +27,17 @@ _$AriaBackupImpl _$$AriaBackupImplFromJson(Map<String, dynamic> json) =>
       ),
     );
 
-Map<String, dynamic> _$$AriaBackupImplToJson(_$AriaBackupImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('metadata', instance.metadata);
-  writeNotNull(
-      'timelineTabs', instance.timelineTabs?.map((e) => e.toJson()).toList());
-  writeNotNull('accountSettings',
-      instance.accountSettings?.map((k, e) => MapEntry(k, e.toJson())));
-  writeNotNull('generalSettings', instance.generalSettings?.toJson());
-  writeNotNull('themes', instance.themes);
-  writeNotNull('aiscriptStorage', instance.aiscriptStorage);
-  return val;
-}
+Map<String, dynamic> _$$AriaBackupImplToJson(_$AriaBackupImpl instance) =>
+    <String, dynamic>{
+      if (instance.metadata case final value?) 'metadata': value,
+      if (instance.timelineTabs?.map((e) => e.toJson()).toList()
+          case final value?)
+        'timelineTabs': value,
+      if (instance.accountSettings?.map((k, e) => MapEntry(k, e.toJson()))
+          case final value?)
+        'accountSettings': value,
+      if (instance.generalSettings?.toJson() case final value?)
+        'generalSettings': value,
+      if (instance.themes case final value?) 'themes': value,
+      if (instance.aiscriptStorage case final value?) 'aiscriptStorage': value,
+    };

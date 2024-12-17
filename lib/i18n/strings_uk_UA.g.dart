@@ -410,7 +410,6 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Увімкнути глобальну стрічку';
 	@override String get disablingTimelinesInfo => 'Адміністратори та модератори завжди мають доступ до всіх стрічок, навіть якщо вони вимкнуті.';
 	@override String get registration => 'Реєстрація';
-	@override String get enableRegistration => 'Дозволити реєстрацію';
 	@override String get invite => 'Запросити';
 	@override String get driveCapacityPerLocalAccount => 'Об\'єм диска на одного локального користувача';
 	@override String get driveCapacityPerRemoteAccount => 'Об\'єм диска на одного віддаленого користувача';

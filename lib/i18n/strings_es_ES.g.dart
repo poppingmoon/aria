@@ -40,28 +40,206 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	final TranslationsEsEs _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => 'Acerca de Aria';
+	@override String get accessToken => 'Token de acceso';
+	@override TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
+		const TextSpan(text: 'Aria es una fork de '),
+		miria,
+		const TextSpan(text: '.\nLas traducciones de Aria se basan en los archivos de localización de '),
+		misskey,
+		const TextSpan(text: '.\nNos gustaría mostrar nuestro agradecimiento a todos los contribuyentes de estos proyectos.'),
+	]);
+	@override String get addTab => 'Añadir pestaña';
+	@override String get alwaysExpandCw => 'Mostrar la advertencia de contenido';
+	@override String get alwaysExpandLongNote => 'Mostrar las notas largas';
+	@override String get alwaysExpandMediaInSubNote => 'Mostrar multimedia en subnotas';
+	@override String get alwaysShowAllReactions => 'Mostrar todas las reacciones';
+	@override String get alwaysShowTabHeader => 'Mostrar información la pestaña';
+	@override String get authenticate => 'Autenticar';
+	@override String get authenticated => 'Autenticado';
+	@override String get avatarSize => 'Tamaño del avatar';
+	@override String get background => 'Fondo';
+	@override String get buttonTypes => 'Tipos de botón';
+	@override String get confirmBeforeFollow => 'Confirmar antes de seguir';
+	@override String get confirmBeforePost => 'Confirmar antes de publicar';
+	@override String get confirmBeforeReact => 'Confirmar antes de reaccionar';
+	@override String get copied => 'Copiado al portapapeles';
+	@override String get copyName => 'Copiar nombre';
+	@override String get crop => 'Recortar';
+	@override String get custom => 'Personalizado';
+	@override String get defaultReaction => 'Reacción predeterminada';
+	@override String deleteAccountTabsConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: '¿Quieres eliminar la pestaña ${n} relacionada con esta cuenta?',
+		other: '¿Quieres eliminar ${n} pestañas relacionadas con esta cuenta?',
+	);
+	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: '¿Estás seguro de que deseas eliminar el archivo ${n}?',
+		other: '¿Estás seguro de que deseas eliminar ${n} archivos?',
+	);
+	@override String get deleteTabConfirm => '¿Estás seguro de eliminar esta pestaña?';
+	@override String get disableDataSaverWhenOnWifi => 'Desactivar el ahorro de datos en Wi-Fi';
+	@override String get disableSubscribingNotes => 'Desactivar reacciones en tiempo real';
+	@override String get discardChangesConfirm => '¿Está seguro que desea descartar los cambios?';
+	@override String get displayOfThumbnail => 'Mostrar miniatura';
+	@override String get doubleTapToShow => 'Doble toque para mostrar';
+	@override String get downloaded => 'Descargado';
+	@override String get draw => 'Dibujar';
+	@override String get editImage => 'Editar imagen';
+	@override String get emojiPickerAutofocus => 'Mostrar el teclado al abrir el selector de emoji';
+	@override String get emojiPickerScale => 'Escala del selector de emojis';
+	@override String get emojiPickerUseDialog => 'Mostrar selector de emojis como un diálogo';
+	@override String get enableEmojiFadeIn => 'Habilitar animaciones fade-in para emojis personalizados';
+	@override String get enableFederation => 'Habilitar federación';
+	@override String get enablePredictiveBack => 'Habilitar animaciones de gesto atrás predictivo';
+	@override String get enableSpellCheck => 'Activar el corrector ortográfico';
+	@override String get endpoint => 'Endpoint';
+	@override String get expandNote => 'Mostrar nota';
+	@override String get extraMentionsWarning => 'Esta nota incluye menciones que no están incluidas en la nota a responder';
+	@override String get fileNotFound => 'Archivo no encontrado';
+	@override String get findServer => 'Encuentra un servidor Misskey';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: '¿Desea seguir a '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get font => 'Fuente';
+	@override String get fromDevice => 'Desde el dispositivo';
+	@override String get guest => 'Invitado';
 	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
 		const TextSpan(text: 'Aria está siendo traducido a varios idiomas gracias a voluntarios. Se puede colaborar traduciendo en '),
 		link,
 	]);
+	@override TextSpan iconAttribution({required InlineSpan sevenc_nanashi, required InlineSpan cc_by}) => TextSpan(children: [
+		const TextSpan(text: 'El icono de Aria fue creado por '),
+		sevenc_nanashi,
+		const TextSpan(text: ' y está licenciado bajo '),
+		cc_by,
+		const TextSpan(text: '.'),
+	]);
+	@override String get importCompleted => 'Importación completada';
+	@override String get importConfirm => '¿Está seguro de que desea importar la configuración? Se sobrescribirá la configuración existente.';
+	@override String get invalidListFormat => 'El formato de lista no es válido';
+	@override String jumpTo({required Object x}) => 'Ir a ${x}';
+	@override String get keepOpen => 'Mantener abierto';
+	@override String get keepTimelinePosition => 'Mantener posición de la línea de tiempo';
+	@override String get lineHeight => 'Altura de la línea';
+	@override String get loginWithAccessToken => 'Iniciar sesión con un token de acceso';
+	@override String get margin => 'Margen';
+	@override String get media => 'Multimedia';
+	@override String get mentionToRemoteWarning => 'Esta nota incluye menciones a usuarios remotos';
+	@override String get mergeReactionsByName => 'Combinar reacciones con el mismo nombre';
+	@override String get moved => 'Movido';
+	@override String get muted => 'Silenciado';
+	@override String get mutedEmojis => 'Emojis silenciados';
+	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('es'))(n,
+		one: 'Archivo ${n}',
+		other: 'Archivos ${n}',
+	);
+	@override String get newFollowRequestReceived => 'Hay nuevas solicitudes de seguidores';
+	@override String get newNotes => 'Nuevas notas';
+	@override String get newNotificationReceived => 'Hay nuevas notificaciones';
+	@override String get newNotifications => 'Nuevas notificaciones';
+	@override String get noAccounts => 'No hay ninguna cuenta';
+	@override String get noTabs => 'Sin pestañas';
+	@override String get noThemes => 'No hay temas';
+	@override String get noteDoubleTapAction => 'Acción de doble toque en notas';
+	@override String get noteFooterSize => 'Tamaño del botón de acción en notas';
+	@override String get noteLongPressAction => 'Acción de pulsación larga en notas';
+	@override String get noteTapAction => 'Acción de toque de nota';
+	@override String get notesAfterRenotes => 'Notas después de renotar';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: ' usuarios en línea'),
 	]);
+	@override String get opacity => 'Opacidad';
+	@override String get openAsGuest => 'Abrir como invitado';
+	@override String get openInAnotherAccount => 'Abrir en otra cuenta';
+	@override String get openInBrowser => 'Abrir en el navegador';
+	@override String get openInExternalBrowser => 'Abrir en el navegador externo';
+	@override String get openInInternalBrowser => 'Abrir en navegador interno';
+	@override String get openMenu => 'Abrir menú';
+	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		const TextSpan(text: 'Abre '),
+		scratchpad,
+		const TextSpan(text: ' en tu navegador, luego introduce el siguiente código y ejecútalo'),
+	]);
+	@override String get openSensitiveMediaOnDoubleTap => 'Abrir multimedia sensible con doble toque';
+	@override String get parameters => 'Parámetros';
+	@override String get paste => 'Pegar';
+	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
+		const TextSpan(text: 'Pega la lista de emojis en formato JSON para anclar los emojis.\nPuedes copiar tus emojis anclados para la Web de Misskey desde '),
+		url,
+		const TextSpan(text: '.'),
+	]);
+	@override String get pasteResponseBelow => 'Pegar la respuesta a continuación.';
+	@override String get pinToEmojiPicker => 'Fijar al selector de emojis';
+	@override String get playAudio => 'Reproducir audio';
+	@override String get playVideo => 'Reproducir vídeo';
+	@override String get pleaseCopyResponse => 'Por favor copie esta respuesta';
+	@override String get postConfirm => '¿Estás seguro de publicar esta nota?';
+	@override String get reactionConfirm => '¿Estás seguro de añadir una reacción?';
+	@override String get recentlyUsedEmojis => 'Emojis usados recientemente';
+	@override String get renoteConfirm => '¿Estás seguro de renotar esta nota?';
+	@override String get renoteToChannel => 'Renotar a un canal';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Renotado por '),
 		user,
 	]);
+	@override String get reset => 'Restablecer';
+	@override String get rotate => 'Rotar';
+	@override String get scale => 'Escala';
+	@override String get selectIcon => 'Seleccione un icono';
+	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Auto-renotado por '),
+		user,
+	]);
+	@override String get serverUrl => 'URL del servidor';
+	@override String get settingsFileForAria => 'Archivo de configuración para Aria';
+	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Configuración de '),
+		user,
+	]);
+	@override String get showAvatarsInNote => 'Mostrar avatares en notas';
+	@override String get showAvatarsInSubNote => 'Mostrar avatares en subnotas';
+	@override String get showEntireImage => 'Mostrar imagen completa';
+	@override String get showExpandedImage => 'Mostrar imagen expandida';
+	@override String get showImage => 'Mostrar imagen';
+	@override String get showLikeButtonInNoteFooter => 'Añadir "Like" al menú de acciones';
+	@override String get showMenuButtonInTabBar => 'Mostrar el botón de menú en la barra de pestañas';
+	@override String get showNoteCreatedAt => 'Mostrar fecha de creación de notas';
+	@override String get showNoteFooter => 'Mostrar botones de acción en notas';
+	@override String get showNoteReactionsViewer => 'Mostrar los que reaccionaron en notas';
+	@override String get showPopupOnNewNote => 'Mostrar ventana emergente en nueva nota';
+	@override String get showQuoteButtonInNoteFooter => 'Añadir "Citar" al menú de acciones';
+	@override String get showSelfRenotes => 'Mostrar auto-renotes';
+	@override String get showSmallButtons => 'Mostrar botones pequeños';
+	@override String get showSquaredButtons => 'Mostrar botones cuadrados';
+	@override String get showStackTrace => 'Mostrar stack trace';
+	@override String get showSubNoteFooter => 'Mostrar botones de acción en subnotas';
+	@override String get showSubNoteReactionsViewer => 'Mostrar los que reaccionaron en subnotas';
+	@override String get showTabHeaderInOneLine => 'Mostrar información de la pestaña en una línea';
+	@override String get showTimelineLastViewedAt => 'Mostrar la última fecha de las líneas de tiempo';
+	@override String get showTimelineTabBarAtBottom => 'Mostrar la línea de tiempo en la parte inferior';
+	@override String get showTranslateButtonInNoteFooter => 'Añadir "Traducir" al menú de acciones';
+	@override String get sinceDate => 'Desde';
+	@override String get stackTrace => 'Stack trace';
+	@override String get streamingChannel => 'Canal de transmisión';
+	@override String get swapCw => 'Intercambiar comentarios con el contenido';
+	@override String get tabName => 'Nombre de la pestaña';
+	@override String get tabType => 'Tipo de pestaña';
+	@override String get tabs => 'Pestañas';
+	@override String get tapToShow => 'Tocar para mostrar';
+	@override String get timeMachine => 'Máquina del tiempo';
+	@override String get timelinesPageButtons => 'Botones de la página de líneas de tiempo';
+	@override String get unfavorited => 'Eliminar de Favoritos';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: '¿Desea dejar de seguir a '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get untilDate => 'Hasta';
+	@override String get uploaded => 'Subido';
+	@override String get useThisEmoji => 'Usar este emoji';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'La publicación de '),
 		name,
@@ -72,6 +250,9 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' contiene material sensible'),
 	]);
+	@override String get vibrateNote => 'Vibrar en una nueva nota';
+	@override String get vibrateNotification => 'Vibrar en una nueva notificación';
+	@override String get webBrowser => 'Navegador';
 }
 
 // Path: misskey
@@ -455,7 +636,6 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Habilitar linea de tiempo global';
 	@override String get disablingTimelinesInfo => 'Aunque se desactiven estas lineas de tiempo, por conveniencia el administrador y los moderadores pueden seguir usándolos';
 	@override String get registration => 'Registro';
-	@override String get enableRegistration => 'Permitir nuevos registros';
 	@override String get invite => 'Invitar';
 	@override String get driveCapacityPerLocalAccount => 'Capacidad del drive por usuario local';
 	@override String get driveCapacityPerRemoteAccount => 'Capacidad del drive por usuario remoto';

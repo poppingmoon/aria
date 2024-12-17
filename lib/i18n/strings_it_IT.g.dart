@@ -414,6 +414,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Scelta allegato';
 	@override String get selectFolder => 'Seleziona cartella';
 	@override String get selectFolders => 'Seleziona cartella';
+	@override String get fileNotSelected => 'Nessun file selezionato';
 	@override String get renameFile => 'Rinomina file';
 	@override String get folderName => 'Nome della cartella';
 	@override String get createFolder => 'Nuova cartella';
@@ -464,7 +465,6 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Abilita la timeline federata';
 	@override String get disablingTimelinesInfo => 'Anche disabilitandole, gli Amministratori e i Moderatori potranno comunque accedervi.';
 	@override String get registration => 'Iscriviti';
-	@override String get enableRegistration => 'Consenti a chiunque di registrarsi';
 	@override String get invite => 'Invita';
 	@override String get driveCapacityPerLocalAccount => 'Capienza del Drive per profilo locale';
 	@override String get driveCapacityPerRemoteAccount => 'Capienza del Drive per profilo remoto';
@@ -1456,6 +1456,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsItIt mediaControls_ = _TranslationsMisskeyMediaControlsItIt._(_root);
 	@override late final _TranslationsMisskeyContextMenuItIt contextMenu_ = _TranslationsMisskeyContextMenuItIt._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenItIt embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenItIt._(_root);
+	@override late final _TranslationsMisskeySelfXssPreventionItIt selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionItIt._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2965,6 +2966,20 @@ class _TranslationsMisskeyEmbedCodeGenItIt extends TranslationsMisskeyEmbedCodeG
 	@override String get generateCode => 'Crea il codice di incorporamento';
 	@override String get codeGenerated => 'Codice generato';
 	@override String get codeGeneratedDescription => 'Incolla il codice appena generato sul tuo sito web.';
+}
+
+// Path: misskey.selfXssPrevention_
+class _TranslationsMisskeySelfXssPreventionItIt extends TranslationsMisskeySelfXssPreventionEnUs {
+	_TranslationsMisskeySelfXssPreventionItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get warning => 'Avviso';
+	@override String get title => '"Incolla qualcosa su questa schermata" è tutta una truffa.';
+	@override String get description1 => 'Incollando qualcosa qui, malintenzionati potrebbero prendere il controllo del tuo profilo o rubare i tuoi dati personali.';
+	@override String get description2 => 'Se non sai esattamente cosa stai facendo, %c smetti subito e chiudi questa finestra.';
+	@override String description3({required Object link}) => 'Per favore, controlla questo collegamento per avere maggiori dettagli. ${link}';
 }
 
 // Path: misskey.delivery_.type_

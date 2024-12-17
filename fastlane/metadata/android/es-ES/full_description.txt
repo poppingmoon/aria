@@ -1,0 +1,14 @@
+Aria es un cliente para Misskey, una red social federada.
+
+Soporta la mayoría de las características de Misskey
+Aria soporta la mayoría de las características disponibles en Misskey incluyendo ver varios tipos de líneas de tiempo postear notas, editar clips, listas de antenas, etc.
+
+Desliza para cambiar entre múltiples cuentas (de múltiples servidores)
+Aria hace fácil el ver diferentes líneas de tiempo guardando las que deseas ver como pestañas.
+Añadir la línea de tiempo de cualquier cuenta a una pestaña hace fácil el seguir temas entre servidores
+
+Basado en el diseño oficial de Misskey
+La interfaz de usuario está diseñada para parecer familiar, similar a la interfaz oficial de Misskey, y también soporta la decoración de notas con MFM.
+
+Altamente personalizable
+Numerosos ajustes, como tamaños de la pantalla de reacción y los iconos de usuario, pueden ser cambiados y ajustados a su gusto. Además, puedes cambiar el tema para decorar la aplicación con tus colores favoritos.

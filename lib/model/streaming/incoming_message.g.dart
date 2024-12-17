@@ -15,19 +15,12 @@ _$IncomingMessageImpl _$$IncomingMessageImplFromJson(
     );
 
 Map<String, dynamic> _$$IncomingMessageImplToJson(
-    _$IncomingMessageImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('type', _$IncomingMessageTypeEnumMap[instance.type]);
-  val['body'] = instance.body;
-  return val;
-}
+        _$IncomingMessageImpl instance) =>
+    <String, dynamic>{
+      if (_$IncomingMessageTypeEnumMap[instance.type] case final value?)
+        'type': value,
+      'body': instance.body,
+    };
 
 const _$IncomingMessageTypeEnumMap = {
   IncomingMessageType.channel: 'channel',

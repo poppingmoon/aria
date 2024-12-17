@@ -14,16 +14,8 @@ _$UrlUploadFinishedImpl _$$UrlUploadFinishedImplFromJson(
     );
 
 Map<String, dynamic> _$$UrlUploadFinishedImplToJson(
-    _$UrlUploadFinishedImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('marker', instance.marker);
-  val['file'] = instance.file.toJson();
-  return val;
-}
+        _$UrlUploadFinishedImpl instance) =>
+    <String, dynamic>{
+      if (instance.marker case final value?) 'marker': value,
+      'file': instance.file.toJson(),
+    };

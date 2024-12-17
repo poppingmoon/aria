@@ -425,7 +425,6 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Povolit globální čas';
 	@override String get disablingTimelinesInfo => 'Administrátoři a Moderátoři budou mít stálý přístup ke všem časovým osám i přes to že nejsou zapnuté.';
 	@override String get registration => 'Registrace';
-	@override String get enableRegistration => 'Povolit registraci novým uživatelům';
 	@override String get invite => 'Pozvat';
 	@override String get driveCapacityPerLocalAccount => 'Kapacita disku na lokálního uživatele';
 	@override String get driveCapacityPerRemoteAccount => 'Kapacita disku na vzdáleného uživatele';

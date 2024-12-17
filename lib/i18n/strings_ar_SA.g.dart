@@ -416,7 +416,6 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'تفعيل الخيط الزمني الشامل';
 	@override String get disablingTimelinesInfo => 'سيتمكن المديرون والمشرفون من الوصول إلى كل الخيوط الزمنية حتى وإن لم تفعّل.';
 	@override String get registration => 'إنشاء حساب';
-	@override String get enableRegistration => 'تفعيل إنشاء الحسابات الجديدة';
 	@override String get invite => 'دعوة';
 	@override String get driveCapacityPerLocalAccount => 'حصة التخزين لكل مستخدم محلي';
 	@override String get driveCapacityPerRemoteAccount => 'حصة التخزين لكل مستخدم بعيد';

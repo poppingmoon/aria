@@ -225,7 +225,7 @@ class ImportExportPage extends ConsumerWidget {
                       ),
                     );
                     if (files == null) return;
-                    final latest = files.flattened
+                    final latest = files.flattenedToList
                         .sortedBy((file) => file.createdAt)
                         .lastOrNull;
                     if (!context.mounted) return;

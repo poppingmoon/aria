@@ -85,6 +85,9 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Thông báo';
 	@override String get username => 'Tên người dùng';
 	@override String get password => 'Mật khẩu';
+	@override String get initialPasswordForSetup => 'Mật khẩu ban đầu để thiết lập';
+	@override String get initialPasswordIsIncorrect => 'Mật khẩu ban đầu đã nhập sai';
+	@override String get initialPasswordForSetupDescription => 'Nếu bạn tự cài đặt Misskey, hãy sử dụng mật khẩu ban đầu của bạn đã nhập trong tệp cấu hình.\nNếu bạn đang sử dụng dịch vụ nào đó giống như dịch vụ lưu trữ của Misskey, hãy sử dụng mật khẩu ban đầu được cung cấp.\nNếu bạn chưa đặt mật khẩu ban đầu, vui lòng để trống và tiếp tục.';
 	@override String get forgotPassword => 'Quên mật khẩu';
 	@override String get fetchingAsApObject => 'Đang nạp dữ liệu từ Fediverse...';
 	@override String get ok => 'Đồng ý';
@@ -431,7 +434,6 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => 'Bật bảng tin liên hợp';
 	@override String get disablingTimelinesInfo => 'Quản trị viên và Kiểm duyệt viên luôn có quyền truy cập mọi bảng tin, kể cả khi chúng không được bật.';
 	@override String get registration => 'Đăng ký';
-	@override String get enableRegistration => 'Cho phép đăng ký mới';
 	@override String get invite => 'Mời';
 	@override String get driveCapacityPerLocalAccount => 'Dung lượng ổ đĩa tối đa cho mỗi người dùng';
 	@override String get driveCapacityPerRemoteAccount => 'Dung lượng ổ đĩa tối đa cho mỗi người dùng từ xa';

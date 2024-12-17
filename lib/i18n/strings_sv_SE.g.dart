@@ -406,7 +406,6 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get enableLocalTimeline => 'Aktivera lokal tidslinje';
 	@override String get enableGlobalTimeline => 'Aktivera global tidslinje';
 	@override String get registration => 'Registrera';
-	@override String get enableRegistration => 'Aktivera registrering av nya användare';
 	@override String get invite => 'Inbjudan';
 	@override String get inMb => 'I megabyte';
 	@override String get bannerUrl => 'URL till banner-bilden';
@@ -458,6 +457,7 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get resetPassword => 'Återställ Lösenord';
 	@override String newPasswordIs({required Object password}) => 'Det nya lösenordet är "${password}"';
 	@override String get share => 'Dela';
+	@override String get markAsReadAllTalkMessages => 'Markera alla meddelanden som lästa';
 	@override String get help => 'Hjälp';
 	@override String get close => 'Stäng';
 	@override String get invites => 'Inbjudan';
@@ -466,12 +466,15 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get text => 'Text';
 	@override String get enable => 'Aktivera';
 	@override String get next => 'Nästa';
+	@override String get retype => 'Ange igen';
+	@override String get noMessagesYet => 'Inga meddelanden än';
 	@override String get invitations => 'Inbjudan';
 	@override String get invitationCode => 'Inbjudningskod';
 	@override String get available => 'Tillgängligt';
 	@override String get weakPassword => 'Svagt Lösenord';
 	@override String get normalPassword => 'Medel Lösenord';
 	@override String get strongPassword => 'Starkt Lösenord';
+	@override String signinWith({required Object x}) => 'Logga in med ${x}';
 	@override String get signinFailed => 'Kan inte logga in. Det angivna användarnamnet eller lösenordet är felaktigt.';
 	@override String get or => 'eller';
 	@override String get language => 'Språk';
@@ -483,70 +486,124 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get regenerate => 'Regenerera';
 	@override String get fontSize => 'Textstorlek';
 	@override String get openImageInNewTab => 'Öppna bild i ny flik';
+	@override String get appearance => 'Utseende';
 	@override String get clientSettings => 'Klientinställningar';
 	@override String get accountSettings => 'Kontoinställningar';
 	@override String get numberOfDays => 'Antal dagar';
+	@override String get objectStorageUseSSL => 'Använd SSL';
+	@override String get serverLogs => 'Serverloggar';
 	@override String get deleteAll => 'Radera alla';
 	@override String get sounds => 'Ljud';
 	@override String get sound => 'Ljud';
 	@override String get listen => 'Lyssna';
 	@override String get none => 'Ingen';
 	@override String get volume => 'Volym';
+	@override String get notUseSound => 'Inaktivera ljud';
 	@override String get chooseEmoji => 'Välj en emoji';
 	@override String get recentUsed => 'Senast använd';
 	@override String get install => 'Installera';
 	@override String get uninstall => 'Avinstallera';
+	@override String get deleteAllFiles => 'Radera alla filer';
+	@override String get deleteAllFilesConfirm => 'Är du säker på att du vill radera alla filer?';
 	@override String get menu => 'Meny';
+	@override String get addItem => 'Lägg till objekt';
 	@override String get serviceworkerInfo => 'Måste vara aktiverad för pushnotiser.';
 	@override String get enableInfiniteScroll => 'Ladda mer automatiskt';
 	@override String get enablePlayer => 'Öppna videospelare';
+	@override String get description => 'Beskrivning';
 	@override String get permission => 'Behörigheter';
 	@override String get enableAll => 'Aktivera alla';
+	@override String get disableAll => 'Inaktivera alla';
 	@override String get edit => 'Ändra';
 	@override String get enableEmail => 'Aktivera epost-utskick';
 	@override String get email => 'E-post';
+	@override String get emailAddress => 'E-postadress';
 	@override String get smtpHost => 'Värd';
 	@override String get smtpUser => 'Användarnamn';
 	@override String get smtpPass => 'Lösenord';
 	@override String get emptyToDisableSmtpAuth => 'Lämna användarnamn och lösenord tomt för att avaktivera SMTP verifiering';
+	@override String get makeActive => 'Aktivera';
+	@override String get copy => 'Kopiera';
+	@override String get overview => 'Översikt';
 	@override String get logs => 'Logg';
+	@override String get database => 'Databas';
 	@override String get channel => 'kanal';
 	@override String get create => 'Skapa';
 	@override String get other => 'Mer';
+	@override String get abuseReports => 'Rapporter';
+	@override String get reportAbuse => 'Rapporter';
+	@override String reportAbuseOf({required Object name}) => 'Rapportera ${name}';
+	@override String get abuseReported => 'Din rapport har skickats. Tack så mycket.';
 	@override String get send => 'Skicka';
 	@override String get openInNewTab => 'Öppna i ny flik';
 	@override String get createNew => 'Skapa ny';
+	@override String get private => 'Privat';
 	@override String i18nInfo({required Object link}) => 'Misskey översätts till många olika språk av volontärer. Du kan hjälpa till med översättningen på ${link}.';
 	@override String get accountInfo => 'Kontoinformation';
+	@override String get followersCount => 'Antal följare';
+	@override String get yes => 'Ja';
+	@override String get no => 'Nej';
 	@override String get clips => 'Klipp';
 	@override String get duplicate => 'Duplicera';
 	@override String get reloadToApplySetting => 'Inställningen tillämpas efter sidan laddas om. Vill du göra det nu?';
 	@override String get clearCache => 'Rensa cache';
 	@override String onlineUsersCount({required Object n}) => '${n} användare är online';
+	@override String nUsers({required Object n}) => '${n} användare';
 	@override String nNotes({required Object n}) => '${n} Noter';
 	@override String get backgroundColor => 'Bakgrundsbild';
 	@override String get textColor => 'Text';
+	@override String get saveAs => 'Spara som...';
+	@override String get saveConfirm => 'Spara ändringar?';
 	@override String get youAreRunningUpToDateClient => 'Klienten du använder är uppdaterat.';
 	@override String get newVersionOfClientAvailable => 'Ny version av klienten är tillgänglig.';
+	@override String get editCode => 'Redigera kod';
 	@override String get publish => 'Publicera';
 	@override String typingUsers({required Object users}) => '${users} skriver';
+	@override String get goBack => 'Tillbaka';
+	@override String get addDescription => 'Lägg till beskrivning';
 	@override String get info => 'Om';
+	@override String get online => 'Online';
+	@override String get active => 'Aktiv';
+	@override String get offline => 'Offline';
 	@override String get enabled => 'Aktiverad';
+	@override String get quickAction => 'Snabbåtgärder';
 	@override String get user => 'Användare';
+	@override String get gallery => 'Galleri';
+	@override String get popularPosts => 'Populära inlägg';
 	@override String get customCssWarn => 'Den här inställningen borde bara ändrats av en som har rätta kunskaper. Om du ställer in det här fel så kan klienten sluta fungera rätt.';
 	@override String get global => 'Global';
 	@override String get squareAvatars => 'Visa fyrkantiga profilbilder';
 	@override String get sent => 'Skicka';
+	@override String get searchResult => 'Sökresultat';
+	@override String get learnMore => 'Läs mer';
 	@override String get misskeyUpdated => 'Misskey har uppdaterats!';
+	@override String get translate => 'Översätt';
+	@override String get controlPanel => 'Kontrollpanel';
+	@override String get manageAccounts => 'Hantera konton';
 	@override String get incorrectPassword => 'Fel lösenord.';
+	@override String get hide => 'Dölj';
 	@override String welcomeBackWithName({required Object name}) => 'Välkommen tillbaka, ${name}';
 	@override String clickToFinishEmailVerification({required Object ok}) => 'Tryck på [${ok}] för att slutföra bekräftelsen på e-postadressen.';
+	@override String get size => 'Storlek';
 	@override String get searchByGoogle => 'Sök';
+	@override String get indefinitely => 'Aldrig';
+	@override String get tenMinutes => '10 minuter';
+	@override String get oneHour => 'En timme';
+	@override String get oneDay => 'En dag';
+	@override String get oneWeek => 'En vecka';
+	@override String get oneMonth => 'En månad';
+	@override String get threeMonths => '3 månader';
+	@override String get oneYear => '1 år';
+	@override String get threeDays => '3 dagar';
 	@override String get file => 'Filer';
+	@override String get deleteAccount => 'Radera konto';
+	@override String get label => 'Etikett';
 	@override String get cannotUploadBecauseNoFreeSpace => 'Kan inte ladda upp filen för att det finns inget lagringsutrymme kvar.';
 	@override String get cannotUploadBecauseExceedsFileSizeLimit => 'Kan inte ladda upp filen för att den är större än filstorleksgränsen.';
+	@override String get beta => 'Beta';
 	@override String get enableAutoSensitive => 'Automatisk NSFW markering';
 	@override String get enableAutoSensitiveDescription => 'Tillåter automatiskt detektering och marketing av NSFW media genom Maskininlärning när möjligt. Även om denna inställningen är avaktiverad, kan det vara aktiverat på hela instansen.';
+	@override String get move => 'Flytta';
 	@override String get pushNotification => 'Pushnotiser';
 	@override String get subscribePushNotification => 'Aktivera pushnotiser';
 	@override String get unsubscribePushNotification => 'Avaktivera pushnotiser';
@@ -555,34 +612,65 @@ class _TranslationsMisskeySvSe extends TranslationsMisskeyEnUs {
 	@override String get windowMaximize => 'Maximera';
 	@override String get windowMinimize => 'Minimera';
 	@override String get windowRestore => 'Återställ';
+	@override String get tools => 'Verktyg';
+	@override String get like => 'Gilla';
 	@override String pleaseDonate({required Object host}) => 'Misskey är en gratis programvara som används på ${host}. Donera gärna för att göra utvecklingen ständigt, tack!';
+	@override String get roles => 'Roll';
+	@override String get role => 'Roll';
+	@override String get color => 'Färg';
 	@override String get resetPasswordConfirm => 'Återställ verkligen ditt lösenord?';
 	@override String get dataSaver => 'Databesparing';
 	@override String get icon => 'Profilbild';
+	@override String get forYou => 'För dig';
 	@override String get replies => 'Svara';
 	@override String get renotes => 'Omnotera';
+	@override String get loadReplies => 'Visa svar';
+	@override String get loadConversation => 'Visa konversation';
+	@override String get authentication => 'Autentisering';
+	@override String get sourceCode => 'Källkod';
+	@override String get doReaction => 'Lägg till reaktion';
+	@override String get code => 'Kod';
+	@override String get gameRetry => 'Försök igen';
+	@override String get inquiry => 'Kontakt';
+	@override String get tryAgain => 'Försök igen senare';
+	@override String get signinWithPasskey => 'Logga in med nyckel';
+	@override String get unknownWebAuthnKey => 'Okänd nyckel';
 	@override late final _TranslationsMisskeyDeliverySvSe delivery_ = _TranslationsMisskeyDeliverySvSe._(_root);
+	@override late final _TranslationsMisskeyInitialAccountSettingSvSe initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingSvSe._(_root);
+	@override late final _TranslationsMisskeyInitialTutorialSvSe initialTutorial_ = _TranslationsMisskeyInitialTutorialSvSe._(_root);
 	@override late final _TranslationsMisskeyAchievementsSvSe achievements_ = _TranslationsMisskeyAchievementsSvSe._(_root);
+	@override late final _TranslationsMisskeyRoleSvSe role_ = _TranslationsMisskeyRoleSvSe._(_root);
 	@override late final _TranslationsMisskeyFfVisibilitySvSe ffVisibility_ = _TranslationsMisskeyFfVisibilitySvSe._(_root);
+	@override late final _TranslationsMisskeyAccountDeleteSvSe accountDelete_ = _TranslationsMisskeyAccountDeleteSvSe._(_root);
+	@override late final _TranslationsMisskeyAdSvSe ad_ = _TranslationsMisskeyAdSvSe._(_root);
+	@override late final _TranslationsMisskeyGallerySvSe gallery_ = _TranslationsMisskeyGallerySvSe._(_root);
 	@override late final _TranslationsMisskeyEmailSvSe email_ = _TranslationsMisskeyEmailSvSe._(_root);
+	@override late final _TranslationsMisskeyAboutMisskeySvSe aboutMisskey_ = _TranslationsMisskeyAboutMisskeySvSe._(_root);
 	@override late final _TranslationsMisskeyChannelSvSe channel_ = _TranslationsMisskeyChannelSvSe._(_root);
+	@override late final _TranslationsMisskeyMenuDisplaySvSe menuDisplay_ = _TranslationsMisskeyMenuDisplaySvSe._(_root);
 	@override late final _TranslationsMisskeyThemeSvSe theme_ = _TranslationsMisskeyThemeSvSe._(_root);
 	@override late final _TranslationsMisskeySfxSvSe sfx_ = _TranslationsMisskeySfxSvSe._(_root);
+	@override late final _TranslationsMisskeyAgoSvSe ago_ = _TranslationsMisskeyAgoSvSe._(_root);
 	@override late final _TranslationsMisskeyX2faSvSe x2fa_ = _TranslationsMisskeyX2faSvSe._(_root);
+	@override late final _TranslationsMisskeyPermissionsSvSe permissions_ = _TranslationsMisskeyPermissionsSvSe._(_root);
 	@override late final _TranslationsMisskeyAntennaSourcesSvSe antennaSources_ = _TranslationsMisskeyAntennaSourcesSvSe._(_root);
 	@override late final _TranslationsMisskeyWidgetsSvSe widgets_ = _TranslationsMisskeyWidgetsSvSe._(_root);
 	@override late final _TranslationsMisskeyCwSvSe cw_ = _TranslationsMisskeyCwSvSe._(_root);
+	@override late final _TranslationsMisskeyPollSvSe poll_ = _TranslationsMisskeyPollSvSe._(_root);
 	@override late final _TranslationsMisskeyVisibilitySvSe visibility_ = _TranslationsMisskeyVisibilitySvSe._(_root);
 	@override late final _TranslationsMisskeyProfileSvSe profile_ = _TranslationsMisskeyProfileSvSe._(_root);
 	@override late final _TranslationsMisskeyExportOrImportSvSe exportOrImport_ = _TranslationsMisskeyExportOrImportSvSe._(_root);
 	@override late final _TranslationsMisskeyChartsSvSe charts_ = _TranslationsMisskeyChartsSvSe._(_root);
 	@override late final _TranslationsMisskeyTimelinesSvSe timelines_ = _TranslationsMisskeyTimelinesSvSe._(_root);
+	@override late final _TranslationsMisskeyPlaySvSe play_ = _TranslationsMisskeyPlaySvSe._(_root);
 	@override late final _TranslationsMisskeyPagesSvSe pages_ = _TranslationsMisskeyPagesSvSe._(_root);
 	@override late final _TranslationsMisskeyNotificationSvSe notification_ = _TranslationsMisskeyNotificationSvSe._(_root);
 	@override late final _TranslationsMisskeyDeckSvSe deck_ = _TranslationsMisskeyDeckSvSe._(_root);
 	@override late final _TranslationsMisskeyWebhookSettingsSvSe webhookSettings_ = _TranslationsMisskeyWebhookSettingsSvSe._(_root);
 	@override late final _TranslationsMisskeyAbuseReportSvSe abuseReport_ = _TranslationsMisskeyAbuseReportSvSe._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesSvSe moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesSvSe._(_root);
+	@override late final _TranslationsMisskeyReversiSvSe reversi_ = _TranslationsMisskeyReversiSvSe._(_root);
+	@override late final _TranslationsMisskeySelfXssPreventionSvSe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionSvSe._(_root);
 }
 
 // Path: misskey.delivery_
@@ -596,6 +684,26 @@ class _TranslationsMisskeyDeliverySvSe extends TranslationsMisskeyDeliveryEnUs {
 	@override late final _TranslationsMisskeyDeliveryTypeSvSe type_ = _TranslationsMisskeyDeliveryTypeSvSe._(_root);
 }
 
+// Path: misskey.initialAccountSetting_
+class _TranslationsMisskeyInitialAccountSettingSvSe extends TranslationsMisskeyInitialAccountSettingEnUs {
+	_TranslationsMisskeyInitialAccountSettingSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get profileSetting => 'Profilinställningar';
+}
+
+// Path: misskey.initialTutorial_
+class _TranslationsMisskeyInitialTutorialSvSe extends TranslationsMisskeyInitialTutorialEnUs {
+	_TranslationsMisskeyInitialTutorialSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyInitialTutorialReactionSvSe reaction_ = _TranslationsMisskeyInitialTutorialReactionSvSe._(_root);
+}
+
 // Path: misskey.achievements_
 class _TranslationsMisskeyAchievementsSvSe extends TranslationsMisskeyAchievementsEnUs {
 	_TranslationsMisskeyAchievementsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -606,6 +714,16 @@ class _TranslationsMisskeyAchievementsSvSe extends TranslationsMisskeyAchievemen
 	@override late final _TranslationsMisskeyAchievementsTypesSvSe types_ = _TranslationsMisskeyAchievementsTypesSvSe._(_root);
 }
 
+// Path: misskey.role_
+class _TranslationsMisskeyRoleSvSe extends TranslationsMisskeyRoleEnUs {
+	_TranslationsMisskeyRoleSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get edit => 'Redigera roll';
+}
+
 // Path: misskey.ffVisibility_
 class _TranslationsMisskeyFfVisibilitySvSe extends TranslationsMisskeyFfVisibilityEnUs {
 	_TranslationsMisskeyFfVisibilitySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -614,6 +732,37 @@ class _TranslationsMisskeyFfVisibilitySvSe extends TranslationsMisskeyFfVisibili
 
 	// Translations
 	@override String get public => 'Publicera';
+	@override String get private => 'Privat';
+}
+
+// Path: misskey.accountDelete_
+class _TranslationsMisskeyAccountDeleteSvSe extends TranslationsMisskeyAccountDeleteEnUs {
+	_TranslationsMisskeyAccountDeleteSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get accountDelete => 'Radera konto';
+}
+
+// Path: misskey.ad_
+class _TranslationsMisskeyAdSvSe extends TranslationsMisskeyAdEnUs {
+	_TranslationsMisskeyAdSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get back => 'Tillbaka';
+}
+
+// Path: misskey.gallery_
+class _TranslationsMisskeyGallerySvSe extends TranslationsMisskeyGalleryEnUs {
+	_TranslationsMisskeyGallerySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get like => 'Gilla';
 }
 
 // Path: misskey.email_
@@ -626,6 +775,17 @@ class _TranslationsMisskeyEmailSvSe extends TranslationsMisskeyEmailEnUs {
 	@override late final _TranslationsMisskeyEmailFollowSvSe follow_ = _TranslationsMisskeyEmailFollowSvSe._(_root);
 }
 
+// Path: misskey.aboutMisskey_
+class _TranslationsMisskeyAboutMisskeySvSe extends TranslationsMisskeyAboutMisskeyEnUs {
+	_TranslationsMisskeyAboutMisskeySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get source => 'Källkod';
+	@override String get projectMembers => 'Projektmedlemmar';
+}
+
 // Path: misskey.channel_
 class _TranslationsMisskeyChannelSvSe extends TranslationsMisskeyChannelEnUs {
 	_TranslationsMisskeyChannelSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -635,6 +795,17 @@ class _TranslationsMisskeyChannelSvSe extends TranslationsMisskeyChannelEnUs {
 	// Translations
 	@override String get setBanner => 'Välj banner';
 	@override String get removeBanner => 'Ta bort banner';
+	@override String get nameAndDescription => 'Namn och beskrivning';
+}
+
+// Path: misskey.menuDisplay_
+class _TranslationsMisskeyMenuDisplaySvSe extends TranslationsMisskeyMenuDisplayEnUs {
+	_TranslationsMisskeyMenuDisplaySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get hide => 'Dölj';
 }
 
 // Path: misskey.theme_
@@ -644,6 +815,8 @@ class _TranslationsMisskeyThemeSvSe extends TranslationsMisskeyThemeEnUs {
 	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
+	@override String get description => 'Beskrivning';
+	@override String get color => 'Färg';
 	@override late final _TranslationsMisskeyThemeKeysSvSe keys = _TranslationsMisskeyThemeKeysSvSe._(_root);
 }
 
@@ -658,6 +831,16 @@ class _TranslationsMisskeySfxSvSe extends TranslationsMisskeySfxEnUs {
 	@override String get notification => 'Notifikationer';
 }
 
+// Path: misskey.ago_
+class _TranslationsMisskeyAgoSvSe extends TranslationsMisskeyAgoEnUs {
+	_TranslationsMisskeyAgoSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get justNow => 'Just nu';
+}
+
 // Path: misskey.x2fa_
 class _TranslationsMisskeyX2faSvSe extends TranslationsMisskeyX2faEnUs {
 	_TranslationsMisskeyX2faSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -665,7 +848,22 @@ class _TranslationsMisskeyX2faSvSe extends TranslationsMisskeyX2faEnUs {
 	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
+	@override String get step3Title => 'Ange en autentiseringskod';
 	@override String get renewTOTPCancel => 'Nej tack';
+}
+
+// Path: misskey.permissions_
+class _TranslationsMisskeyPermissionsSvSe extends TranslationsMisskeyPermissionsEnUs {
+	_TranslationsMisskeyPermissionsSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get readReactions => 'Visa dina reaktioner';
+	@override String get writeReactions => 'Redigera dina reaktioner';
+	@override String get writeAdminDeleteAccount => 'Radera användarkonto';
+	@override String get writeAdminRoles => 'Hantera roller';
+	@override String get readAdminRoles => 'Visa roller';
 }
 
 // Path: misskey.antennaSources_
@@ -705,7 +903,20 @@ class _TranslationsMisskeyCwSvSe extends TranslationsMisskeyCwEnUs {
 	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
+	@override String get hide => 'Dölj';
 	@override String get show => 'Ladda mer';
+	@override String chars({required Object count}) => '${count} tecken';
+	@override String files({required Object count}) => '${count} fil(er)';
+}
+
+// Path: misskey.poll_
+class _TranslationsMisskeyPollSvSe extends TranslationsMisskeyPollEnUs {
+	_TranslationsMisskeyPollSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get infinite => 'Aldrig';
 }
 
 // Path: misskey.visibility_
@@ -728,6 +939,7 @@ class _TranslationsMisskeyProfileSvSe extends TranslationsMisskeyProfileEnUs {
 	// Translations
 	@override String get name => 'Namn';
 	@override String get username => 'Användarnamn';
+	@override String get metadataLabel => 'Etikett';
 	@override String get changeAvatar => 'Ändra profilbild';
 	@override String get changeBanner => 'Ändra banner';
 }
@@ -754,6 +966,7 @@ class _TranslationsMisskeyChartsSvSe extends TranslationsMisskeyChartsEnUs {
 
 	// Translations
 	@override String get federation => 'Federation';
+	@override String get activeUsers => 'Aktiva användare';
 }
 
 // Path: misskey.timelines_
@@ -765,6 +978,16 @@ class _TranslationsMisskeyTimelinesSvSe extends TranslationsMisskeyTimelinesEnUs
 	// Translations
 	@override String get home => 'Hem';
 	@override String get global => 'Global';
+}
+
+// Path: misskey.play_
+class _TranslationsMisskeyPlaySvSe extends TranslationsMisskeyPlayEnUs {
+	_TranslationsMisskeyPlaySvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get summary => 'Beskrivning';
 }
 
 // Path: misskey.pages_
@@ -797,6 +1020,8 @@ class _TranslationsMisskeyDeckSvSe extends TranslationsMisskeyDeckEnUs {
 	final TranslationsSvSe _root; // ignore: unused_field
 
 	// Translations
+	@override String get addColumn => 'Lägg till kolumn';
+	@override String get deleteProfile => 'Radera profil';
 	@override late final _TranslationsMisskeyDeckColumnsSvSe columns_ = _TranslationsMisskeyDeckColumnsSvSe._(_root);
 }
 
@@ -832,6 +1057,29 @@ class _TranslationsMisskeyModerationLogTypesSvSe extends TranslationsMisskeyMode
 	@override String get resetPassword => 'Återställ Lösenord';
 }
 
+// Path: misskey.reversi_
+class _TranslationsMisskeyReversiSvSe extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get blackOrWhite => 'Svart/Vit';
+	@override String get rules => 'Regler';
+	@override String get black => 'Svart';
+	@override String get white => 'Vit';
+}
+
+// Path: misskey.selfXssPrevention_
+class _TranslationsMisskeySelfXssPreventionSvSe extends TranslationsMisskeySelfXssPreventionEnUs {
+	_TranslationsMisskeySelfXssPreventionSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get warning => 'VARNING';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeSvSe extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
@@ -840,6 +1088,16 @@ class _TranslationsMisskeyDeliveryTypeSvSe extends TranslationsMisskeyDeliveryTy
 
 	// Translations
 	@override String get none => 'Publiceras';
+}
+
+// Path: misskey.initialTutorial_.reaction_
+class _TranslationsMisskeyInitialTutorialReactionSvSe extends TranslationsMisskeyInitialTutorialReactionEnUs {
+	_TranslationsMisskeyInitialTutorialReactionSvSe._(TranslationsSvSe root) : this._root = root, super.internal(root);
+
+	final TranslationsSvSe _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Vad är reaktioner?';
 }
 
 // Path: misskey.achievements_.types_

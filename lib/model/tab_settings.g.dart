@@ -33,38 +33,31 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
       parameters: json['parameters'] as Map<String, dynamic>?,
     );
 
-Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  val['tabType'] = _$TabTypeEnumMap[instance.tabType]!;
-  writeNotNull('name', instance.name);
-  val['account'] = instance.account.toJson();
-  writeNotNull('icon', instance.icon?.toJson());
-  val['disableStreaming'] = instance.disableStreaming;
-  val['disableSubscribing'] = instance.disableSubscribing;
-  val['withReplies'] = instance.withReplies;
-  val['withRenotes'] = instance.withRenotes;
-  val['withSelfRenotes'] = instance.withSelfRenotes;
-  val['withFiles'] = instance.withFiles;
-  val['withSensitive'] = instance.withSensitive;
-  val['keepPosition'] = instance.keepPosition;
-  writeNotNull('roleId', instance.roleId);
-  writeNotNull('channelId', instance.channelId);
-  writeNotNull('listId', instance.listId);
-  writeNotNull('antennaId', instance.antennaId);
-  writeNotNull('userId', instance.userId);
-  writeNotNull('endpoint', instance.endpoint);
-  writeNotNull('streamingChannel', instance.streamingChannel);
-  writeNotNull('parameters', instance.parameters);
-  return val;
-}
+Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) =>
+    <String, dynamic>{
+      if (instance.id case final value?) 'id': value,
+      'tabType': _$TabTypeEnumMap[instance.tabType]!,
+      if (instance.name case final value?) 'name': value,
+      'account': instance.account.toJson(),
+      if (instance.icon?.toJson() case final value?) 'icon': value,
+      'disableStreaming': instance.disableStreaming,
+      'disableSubscribing': instance.disableSubscribing,
+      'withReplies': instance.withReplies,
+      'withRenotes': instance.withRenotes,
+      'withSelfRenotes': instance.withSelfRenotes,
+      'withFiles': instance.withFiles,
+      'withSensitive': instance.withSensitive,
+      'keepPosition': instance.keepPosition,
+      if (instance.roleId case final value?) 'roleId': value,
+      if (instance.channelId case final value?) 'channelId': value,
+      if (instance.listId case final value?) 'listId': value,
+      if (instance.antennaId case final value?) 'antennaId': value,
+      if (instance.userId case final value?) 'userId': value,
+      if (instance.endpoint case final value?) 'endpoint': value,
+      if (instance.streamingChannel case final value?)
+        'streamingChannel': value,
+      if (instance.parameters case final value?) 'parameters': value,
+    };
 
 const _$TabTypeEnumMap = {
   TabType.homeTimeline: 'homeTimeline',

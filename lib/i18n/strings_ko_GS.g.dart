@@ -153,6 +153,10 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get openInExternalBrowser => '외부 브라우저서 열으래이';
 	@override String get openInInternalBrowser => '내부 브라우저서 열으래이';
 	@override String get openMenu => '메뉴 열으래이';
+	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		scratchpad,
+		const TextSpan(text: ' 를 브라우저에서 열고, 다음 코드를 클릭한 다음 실행하세요.'),
+	]);
 	@override String get openSensitiveMediaOnDoubleTap => '야시시한 미디어는 두 번 눌러서 열라카래이';
 	@override String get parameters => '매개변수';
 	@override String get paste => '붙여넣기';
@@ -161,9 +165,11 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 		url,
 		const TextSpan(text: '에 가가, 거 미스키 웹에서 고정된 이모지 목록을 복사해주믄 고맙겠대이.'),
 	]);
+	@override String get pasteResponseBelow => '답변을 아래 복사하세요';
 	@override String get pinToEmojiPicker => '이모지 선택기에 고정';
 	@override String get playAudio => '소리 듣기';
 	@override String get playVideo => '동영상 재생';
+	@override String get pleaseCopyResponse => '이 답변을 복사하세요';
 	@override String get postConfirm => '노트 게시한대이. 맞제?';
 	@override String get reactionConfirm => '리액션 단대이?';
 	@override String get renoteConfirm => '리노트한대이?';
@@ -201,6 +207,7 @@ class _TranslationsAriaKoGs extends TranslationsAriaEnUs {
 	@override String get showStackTrace => '스택 트레이스 보여달래이';
 	@override String get showSubNoteFooter => '서브노트에도 액션 버튼을 넣어달래이';
 	@override String get showSubNoteReactionsViewer => '서브노트에도 리액션 뷰어를 넣어달래이';
+	@override String get showTabHeaderInOneLine => '탭 정보를 한 줄로 표시';
 	@override String get showTimelineLastViewedAt => '타임라인 마지막으로 본 날짜를 보여달래이';
 	@override String get showTimelineTabBarAtBottom => '타임라인 탭 바를 화면 아래쪽에다가 박아놓으래이';
 	@override String get showTranslateButtonInNoteFooter => '노트 액션에 "번역"을 넣어달래이';
@@ -572,6 +579,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => '파일 개리기';
 	@override String get selectFolder => '폴더 개리기';
 	@override String get selectFolders => '폴더 개리기';
+	@override String get fileNotSelected => '파일을 선택하지 않았습니다';
 	@override String get renameFile => '파일 이럼 바꾸기';
 	@override String get folderName => '폴더 이럼';
 	@override String get createFolder => '폴더 맨걸기';
@@ -622,7 +630,6 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get enableGlobalTimeline => '글로벌 타임라인 키기';
 	@override String get disablingTimelinesInfo => '요 타임라인얼 꺼도 간리자하고 중재자넌 고대로 설 수 잇십니다.';
 	@override String get registration => '맨걸기';
-	@override String get enableRegistration => '누라도 새로 맨걸 수 잇거로 하기';
 	@override String get invite => '초대하기';
 	@override String get driveCapacityPerLocalAccount => '로컬 사용자 하나마중 드라이브 커기';
 	@override String get driveCapacityPerRemoteAccount => '웬겍 사용자 하나마중 드라이브 커기';
@@ -827,6 +834,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get notUseSound => '음소거하기';
 	@override String get useSoundOnlyWhenActive => 'Misskey가 활성화되어 있을 때만 소리 내기';
 	@override String get details => '자세히';
+	@override String get renoteDetails => '리노트 상세 내용';
 	@override String get chooseEmoji => '이모지 개리기';
 	@override String get unableToProcess => '작업 다 몬 했십니다';
 	@override String get recentUsed => '최근 쓴 놈';
@@ -1187,6 +1195,9 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get oneDay => '하리';
 	@override String get oneWeek => '한 주';
 	@override String get oneMonth => '한 달';
+	@override String get threeMonths => '3개월';
+	@override String get oneYear => '1년';
+	@override String get threeDays => '3일';
 	@override String get reflectMayTakeTime => '반영되기까지 시간이 걸릴 수 있습니다.';
 	@override String get failedToFetchAccountInformation => '계정 정보를 가져오지 못했습니다';
 	@override String get rateLimitExceeded => '요청 제한 횟수를 초과하였습니다';
@@ -1494,7 +1505,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get backToTitle => '타이틀로 가기';
 	@override String get hemisphere => '거주 지역';
 	@override String get withSensitive => '민감한 파일이 포함된 노트 보기';
-	@override String userSaysSomethingSensitive({required Object name}) => '${name} 같은 민감한 파일이 포함된 글';
+	@override String userSaysSomethingSensitive({required Object name}) => '${name}의 민감한 파일이 포함된 게시물';
 	@override String get enableHorizontalSwipe => '스와이프하여 탭 전환';
 	@override String get loading => '불러오는 중';
 	@override String get surrender => '아이예';
@@ -1526,13 +1537,18 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get unknownWebAuthnKey => '등록되지 않은 패스키입니다.';
 	@override String get passkeyVerificationFailed => '패스키 검증을 실패했습니다.';
 	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => '패스키를 검증했으나, 비밀번호 없이 로그인하기가 꺼져 있습니다.';
-	@override String get messageToFollower => '팔로워에 보낼 메시지';
+	@override String get messageToFollower => '팔로워에게 보낼 메시지';
 	@override String get target => '대상';
 	@override String get testCaptchaWarning => 'CAPTCHA를 테스트하기 위한 기능입니다. <strong>실제 환경에서는 사용하지 마세요.</strong>';
 	@override String get prohibitedWordsForNameOfUser => '금지 단어 (사용자 이름)';
 	@override String get prohibitedWordsForNameOfUserDescription => '이 목록에 포함되는 키워드가 사용자 이름에 있는 경우, 일반 사용자는 이름을 바꿀 수 없습니다. 모더레이터 권한을 가진 사용자는 제한 대상에서 제외됩니다.';
 	@override String get yourNameContainsProhibitedWords => '바꾸려는 이름에 금지된 키워드가 포함되어 있습니다.';
 	@override String get yourNameContainsProhibitedWordsDescription => '이름에 금지된 키워드가 있습니다. 이름을 사용해야 하는 경우, 서버 관리자에 문의하세요.';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '게시자에 의해 로그인해야 볼 수 있도록 설정되어 있습니다.';
+	@override String get lockdown => '잠금';
+	@override String get pleaseSelectAccount => '계정을 선택해주세요.';
+	@override String get availableRoles => '사용 가능한 역할';
+	@override late final _TranslationsMisskeyAccountSettingsKoGs accountSettings_ = _TranslationsMisskeyAccountSettingsKoGs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportKoGs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportKoGs._(_root);
 	@override late final _TranslationsMisskeyDeliveryKoGs delivery_ = _TranslationsMisskeyDeliveryKoGs._(_root);
 	@override late final _TranslationsMisskeyBubbleGameKoGs bubbleGame_ = _TranslationsMisskeyBubbleGameKoGs._(_root);
@@ -1607,6 +1623,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsKoGs mediaControls_ = _TranslationsMisskeyMediaControlsKoGs._(_root);
 	@override late final _TranslationsMisskeyContextMenuKoGs contextMenu_ = _TranslationsMisskeyContextMenuKoGs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenKoGs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenKoGs._(_root);
+	@override late final _TranslationsMisskeySelfXssPreventionKoGs selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionKoGs._(_root);
 }
 
 // Path: misskeyIO
@@ -1617,6 +1634,26 @@ class _TranslationsMisskeyIOKoGs extends TranslationsMisskeyIOEnUs {
 
 	// Translations
 	@override late final _TranslationsMisskeyIOSkebStatusKoGs skebStatus_ = _TranslationsMisskeyIOSkebStatusKoGs._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsKoGs extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => '콘텐츠 열람을 위해 로그인으 필수로 설정하기';
+	@override String get requireSigninToViewContentsDescription1 => '자신이 작성한 모든 노트 등의 콘텐츠를 보기 위해 로그인을 필수로 설정합니다. 크롤러가 정보 수집하는 것을 방지하는 효과를 기대할 수 있습니다.';
+	@override String get requireSigninToViewContentsDescription2 => 'URL 미리보기(OGP), 웹페이지에 삽입, 노트 인용을 지원하지 않는 서버에서 볼 수 없게 됩니다.';
+	@override String get requireSigninToViewContentsDescription3 => '원격 서버에 연합된 콘텐츠에는 이러한 제한이 적용되지 않을 수 있습니다.';
+	@override String get makeNotesFollowersOnlyBefore => '과거 노트는 팔로워만 볼 수 있도록 설정하기';
+	@override String get makeNotesFollowersOnlyBeforeDescription => '이 기능이 활성화되어 있는 동안, 설정된 날짜 및 시간보다 과거 또는 설정된 시간이 지난 노트는 팔로워만 볼 수 있게 됩니다.비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
+	@override String get makeNotesHiddenBefore => '과거 노트 비공개로 전환하기';
+	@override String get makeNotesHiddenBeforeDescription => '이 기능이 활성화되어 있는 동안 설정한 날짜 및 시간보다 과거 또는 설정한 시간이 지난 노트는 본인만 볼 수 있게(비공개로 전환) 됩니다. 비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
+	@override String get mayNotEffectForFederatedNotes => '원격 서버에 연합된 노트에는 효과가 없을 수도 있습니다.';
+	@override String get notesHavePassedSpecifiedPeriod => '지정한 시간이 경과된 노트';
+	@override String get notesOlderThanSpecifiedDateAndTime => '지정된 날짜 및 시간 이전의 노트';
 }
 
 // Path: misskey.abuseUserReport_
@@ -2401,8 +2438,11 @@ class _TranslationsMisskeyAuthKoGs extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => '이 앱은 다음의 권한을 요청합니다';
 	@override String get pleaseGoBack => '앱으로 돌아가서 시도해 주세요';
 	@override String get callback => '앱으로 돌아갑니다';
+	@override String get accepted => '접근 권한이 부여되었습니다.';
 	@override String get denied => '접근이 거부되었습니다';
+	@override String get scopeUser => '다음 사용자로 활동하고 있습니다.';
 	@override String get pleaseLogin => '어플리케이션의 접근을 허가하려면 로그인하십시오.';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => '접근을 허용하면 자동으로 다음 URL로 이동합니다.';
 }
 
 // Path: misskey.antennaSources_
@@ -3103,6 +3143,20 @@ class _TranslationsMisskeyEmbedCodeGenKoGs extends TranslationsMisskeyEmbedCodeG
 	@override String get generateCode => '임베디드 코드를 만들기';
 	@override String get codeGenerated => '코드를 만들었습니다.';
 	@override String get codeGeneratedDescription => '만들어진 코드를 웹 사이트에 붙여서 사용하세요.';
+}
+
+// Path: misskey.selfXssPrevention_
+class _TranslationsMisskeySelfXssPreventionKoGs extends TranslationsMisskeySelfXssPreventionEnUs {
+	_TranslationsMisskeySelfXssPreventionKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get warning => '경고';
+	@override String get title => '“이 화면에 뭔가를 붙여넣어라"는 것은 모두 사기입니다.';
+	@override String get description1 => '여기에 무언가를 붙여넣으면 악의적인 사용자에게 계정을 탈취당하거나 개인정보를 도용당할 수 있습니다.';
+	@override String get description2 => '붙여 넣으려는 항목이 무엇인지 정확히 이해하지 못하는 경우, %c지금 바로 작업을 중단하고 이 창을 닫으십시오.';
+	@override String description3({required Object link}) => '자세한 내용은 여기를 확인해 주세요.  ${link}';
 }
 
 // Path: misskeyIO.skebStatus_
