@@ -8,20 +8,20 @@ environment:
 
 dependencies:
   aho_corasick: ^2.0.0
-  audio_service: ^0.18.15
+  audio_service: ^0.18.16
   audio_video_progress_bar: ^2.0.3
   cached_network_image: ^3.4.1
   characters: ^1.3.0
   chewie: ^1.8.5
-  collection: ^1.18.0
+  collection: ^1.19.0
   colorfilter_generator: ^0.0.8
   confetti: ^0.8.0
-  connectivity_plus: ^6.1.0
+  connectivity_plus: ^6.1.1
   dio: ^5.7.0
   dotted_border: ^2.1.0
   extended_image: ^9.0.7
   file: ^7.0.0
-  file_picker: ^8.1.3
+  file_picker: ^8.1.6
   flex_color_picker: ^3.6.0
   flutter:
     sdk: flutter
@@ -32,32 +32,42 @@ dependencies:
       path: flutter_apns_only
   flutter_blurhash: ^0.8.2
   flutter_cache_manager: ^3.4.1
-  flutter_highlighting: ^0.9.0+11.8.0
+  flutter_highlighting:
+    git:
+      url: https://github.com/poppingmoon/dart-highlighting
+      ref: f8722192d6a92582299a8a0c3756862d31298388
+      path: flutter_highlighting
   flutter_hooks: ^0.20.5
-  flutter_html: ^3.0.0-beta.2
+  flutter_html:
+    git:
+      url: https://github.com/poppingmoon/flutter_html
+      ref: 226c14238fd0bfdec4ad829cf7fb91993c445fe9
   flutter_image_compress: ^2.3.0
   flutter_inappwebview: ^6.1.5
   flutter_inset_shadow: ^2.0.3
-  flutter_local_notifications: ^18.0.0
+  flutter_local_notifications: ^18.0.1
   flutter_localizations:
     sdk: flutter
   flutter_math_fork: ^0.7.3
-  flutter_rust_bridge: ^2.6.0
+  flutter_rust_bridge: ^2.7.0
   flutter_secure_storage: ^9.2.2
-  flutter_svg: ^2.0.14
-  fluttertoast: ^8.2.8
+  flutter_svg: ^2.0.16
+  fluttertoast: ^8.2.10
   freezed_annotation: ^2.4.4
-  gal: ^2.3.0
-  go_router: ^14.4.1
+  gal: ^2.3.1
+  go_router: ^14.6.2
   highlighting:
     git:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: 76d9f984d53de07b445965f13a5e02c3bd3ed83a
       path: highlighting
   hooks_riverpod: ^2.6.1
-  image: ^4.3.0
-  image_compression: ^1.0.5
-  image_editor: ^1.5.1
+  image: ^4.5.0
+  image_compression:
+    git:
+      url: https://github.com/poppingmoon/image_compression
+      ref: 37b78624635c42f51524cdfc001ae9073ec468ee
+  image_editor: ^1.6.0
   image_size_getter: ^2.2.0
   intl: ^0.19.0
   json5: ^0.8.2
@@ -68,13 +78,13 @@ dependencies:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
       ref: 1449140ef181f95a273a43f4397e86577f93f370
-  mime: ^1.0.6
+  mime: ^2.0.0
   misskey_dart:
     git:
       url: https://github.com/poppingmoon/misskey_dart
-      ref: 640bdfcf8ac8f19d215ca9b4330e2c7ada9feca5
+      ref: 3f007c360d848c390982e8e739e1ce052091b3aa
   multi_split_view: ^3.6.0
-  package_info_plus: ^8.1.1
+  package_info_plus: ^8.1.2
   photo_view: ^0.15.0
   punycode: ^1.0.0
   receive_sharing_intent:
@@ -87,10 +97,10 @@ dependencies:
   rust_lib_aria:
     path: rust_builder
   searchfield: ^1.2.1
-  share_plus: ^10.1.2
+  share_plus: ^10.1.3
   shared_preferences: ^2.3.3
-  slang: ^4.1.0
-  slang_flutter: ^4.1.0
+  slang: ^4.4.0
+  slang_flutter: ^4.4.0
   tinycolor2:
     git:
       url: https://github.com/poppingmoon/tinycolor2
@@ -110,32 +120,24 @@ dependencies:
   webpush_encryption: ^1.0.0-rc1
 
 dev_dependencies:
-  build_runner: ^2.4.13
+  build_runner: ^2.4.14
   custom_lint: ^0.7.0
   flutter_gen_runner: ^5.8.0
-  flutter_launcher_icons:
-    git:
-      url: https://github.com/fluttercommunity/flutter_launcher_icons
-      ref: 006cb1ed53f969bf11816cde5b16dd520e1ee40e
+  flutter_launcher_icons: ^0.14.2
   flutter_test:
     sdk: flutter
   freezed: ^2.5.7
   http_mock_adapter: ^0.6.1
   integration_test:
     sdk: flutter
-  json_serializable: ^6.8.0
+  json_serializable: ^6.9.0
   lint: ^2.3.0
-  riverpod_generator: ^2.6.2
-  riverpod_lint: ^2.6.2
-  slang_build_runner: ^4.1.0
+  riverpod_generator: ^2.6.3
+  riverpod_lint: ^2.6.3
+  slang_build_runner: ^4.4.0
   yaml: ^3.1.2
 
 dependency_overrides:
-  highlighting:
-    git:
-      url: https://github.com/poppingmoon/dart-highlighting
-      ref: 76d9f984d53de07b445965f13a5e02c3bd3ed83a
-      path: highlighting
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart

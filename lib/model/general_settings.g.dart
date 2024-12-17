@@ -150,123 +150,118 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
     );
 
 Map<String, dynamic> _$$GeneralSettingsImplToJson(
-    _$GeneralSettingsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('locale', _$AppLocaleEnumMap[instance.locale]);
-  val['collapseRenotes'] = instance.collapseRenotes;
-  val['sensitive'] = _$SensitiveMediaDisplayEnumMap[instance.sensitive]!;
-  val['highlightSensitiveMedia'] = instance.highlightSensitiveMedia;
-  val['animatedMfm'] = instance.animatedMfm;
-  val['advancedMfm'] = instance.advancedMfm;
-  val['showReactionsCount'] = instance.showReactionsCount;
-  val['loadRawImages'] = instance.loadRawImages;
-  val['instanceTicker'] = _$InstanceTickerEnumMap[instance.instanceTicker]!;
-  val['showNoteCreatedAt'] = instance.showNoteCreatedAt;
-  val['showAvatarsInNote'] = instance.showAvatarsInNote;
-  val['showAvatarsInSubNote'] = instance.showAvatarsInSubNote;
-  val['squareAvatars'] = instance.squareAvatars;
-  val['showAvatarDecorations'] = instance.showAvatarDecorations;
-  val['showQuoteButtonInNoteFooter'] = instance.showQuoteButtonInNoteFooter;
-  val['showLikeButtonInNoteFooter'] = instance.showLikeButtonInNoteFooter;
-  val['showClipButtonInNoteFooter'] = instance.showClipButtonInNoteFooter;
-  val['showTranslateButtonInNoteFooter'] =
-      instance.showTranslateButtonInNoteFooter;
-  val['showNoteReactionsViewer'] = instance.showNoteReactionsViewer;
-  val['showSubNoteReactionsViewer'] = instance.showSubNoteReactionsViewer;
-  val['showNoteFooter'] = instance.showNoteFooter;
-  val['showSubNoteFooter'] = instance.showSubNoteFooter;
-  val['alwaysExpandCw'] = instance.alwaysExpandCw;
-  val['alwaysExpandLongNote'] = instance.alwaysExpandLongNote;
-  val['alwaysExpandMediaInSubNote'] = instance.alwaysExpandMediaInSubNote;
-  val['mergeReactionsByName'] = instance.mergeReactionsByName;
-  val['alwaysShowAllReactions'] = instance.alwaysShowAllReactions;
-  writeNotNull(
-      'mediaListWithOneImageAppearance',
-      _$MediaListWithOneImageAppearanceEnumMap[
-          instance.mediaListWithOneImageAppearance]);
-  val['thumbnailBoxFit'] = _$BoxFitEnumMap[instance.thumbnailBoxFit]!;
-  val['emojiStyle'] = _$EmojiStyleEnumMap[instance.emojiStyle]!;
-  writeNotNull('fontFamily', instance.fontFamily);
-  val['fontSize'] = instance.fontSize;
-  val['lineHeight'] = instance.lineHeight;
-  val['avatarScale'] = instance.avatarScale;
-  val['reactionsDisplayScale'] = instance.reactionsDisplayScale;
-  val['limitWidthOfReaction'] = instance.limitWidthOfReaction;
-  val['noteFooterScale'] = instance.noteFooterScale;
-  val['noteVerticalPadding'] = instance.noteVerticalPadding;
-  val['noteHorizontalPadding'] = instance.noteHorizontalPadding;
-  writeNotNull(
-      'publicNoteBackgroundColor',
-      _$JsonConverterToJson<int, Color>(
-          instance.publicNoteBackgroundColor, const _ColorConverter().toJson));
-  writeNotNull(
-      'homeNoteBackgroundColor',
-      _$JsonConverterToJson<int, Color>(
-          instance.homeNoteBackgroundColor, const _ColorConverter().toJson));
-  writeNotNull(
-      'followersNoteBackgroundColor',
-      _$JsonConverterToJson<int, Color>(instance.followersNoteBackgroundColor,
-          const _ColorConverter().toJson));
-  writeNotNull(
-      'specifiedNoteBackgroundColor',
-      _$JsonConverterToJson<int, Color>(instance.specifiedNoteBackgroundColor,
-          const _ColorConverter().toJson));
-  val['emojiPickerUseDialog'] = instance.emojiPickerUseDialog;
-  val['emojiPickerScale'] = instance.emojiPickerScale;
-  val['emojiPickerAutofocus'] = instance.emojiPickerAutofocus;
-  val['emojiPickerKeepOpen'] = instance.emojiPickerKeepOpen;
-  val['dataSaverMedia'] = instance.dataSaverMedia;
-  val['dataSaverAvatar'] = instance.dataSaverAvatar;
-  val['dataSaverUrlPreview'] = instance.dataSaverUrlPreview;
-  val['disableDataSaverWhenOnWifi'] = instance.disableDataSaverWhenOnWifi;
-  val['reduceAnimation'] = instance.reduceAnimation;
-  val['disableShowingAnimatedImages'] = instance.disableShowingAnimatedImages;
-  val['enableEmojiFadeIn'] = instance.enableEmojiFadeIn;
-  val['forceShowAds'] = instance.forceShowAds;
-  val['useGroupedNotifications'] = instance.useGroupedNotifications;
-  val['showTimelineTabBarAtBottom'] = instance.showTimelineTabBarAtBottom;
-  val['showMenuButtonInTabBar'] = instance.showMenuButtonInTabBar;
-  val['timelinesPageButtonTypes'] = instance.timelinesPageButtonTypes
-      .map((e) => _$TimelinesPageButtonTypeEnumMap[e])
-      .toList();
-  val['showSmallTimelinesPageButtons'] = instance.showSmallTimelinesPageButtons;
-  val['showSquaredTimelinesPageButtons'] =
-      instance.showSquaredTimelinesPageButtons;
-  val['showTabHeaderInOneLine'] = instance.showTabHeaderInOneLine;
-  val['alwaysShowTabHeader'] = instance.alwaysShowTabHeader;
-  val['showTimelineLastViewedAt'] = instance.showTimelineLastViewedAt;
-  val['showPopupOnNewNote'] = instance.showPopupOnNewNote;
-  val['vibrateNote'] = instance.vibrateNote;
-  val['vibrateNotification'] = instance.vibrateNotification;
-  val['enableInfiniteScroll'] = instance.enableInfiniteScroll;
-  val['keepScreenOn'] = instance.keepScreenOn;
-  val['enableHorizontalSwipe'] = instance.enableHorizontalSwipe;
-  val['openSensitiveMediaOnDoubleTap'] = instance.openSensitiveMediaOnDoubleTap;
-  val['noteTapAction'] = _$NoteActionTypeEnumMap[instance.noteTapAction]!;
-  val['noteDoubleTapAction'] =
-      _$NoteActionTypeEnumMap[instance.noteDoubleTapAction]!;
-  val['noteLongPressAction'] =
-      _$NoteActionTypeEnumMap[instance.noteLongPressAction]!;
-  val['confirmBeforePost'] = instance.confirmBeforePost;
-  val['confirmBeforeReact'] = instance.confirmBeforeReact;
-  val['confirmBeforeFollow'] = instance.confirmBeforeFollow;
-  val['confirmWhenRevealingSensitiveMedia'] =
-      instance.confirmWhenRevealingSensitiveMedia;
-  val['launchMode'] = _$LaunchModeEnumMap[instance.launchMode]!;
-  val['enableSpellCheck'] = instance.enableSpellCheck;
-  val['enablePredictiveBack'] = instance.enablePredictiveBack;
-  val['themeMode'] = _$ThemeModeEnumMap[instance.themeMode]!;
-  val['lightThemeId'] = instance.lightThemeId;
-  val['darkThemeId'] = instance.darkThemeId;
-  return val;
-}
+        _$GeneralSettingsImpl instance) =>
+    <String, dynamic>{
+      if (_$AppLocaleEnumMap[instance.locale] case final value?)
+        'locale': value,
+      'collapseRenotes': instance.collapseRenotes,
+      'sensitive': _$SensitiveMediaDisplayEnumMap[instance.sensitive]!,
+      'highlightSensitiveMedia': instance.highlightSensitiveMedia,
+      'animatedMfm': instance.animatedMfm,
+      'advancedMfm': instance.advancedMfm,
+      'showReactionsCount': instance.showReactionsCount,
+      'loadRawImages': instance.loadRawImages,
+      'instanceTicker': _$InstanceTickerEnumMap[instance.instanceTicker]!,
+      'showNoteCreatedAt': instance.showNoteCreatedAt,
+      'showAvatarsInNote': instance.showAvatarsInNote,
+      'showAvatarsInSubNote': instance.showAvatarsInSubNote,
+      'squareAvatars': instance.squareAvatars,
+      'showAvatarDecorations': instance.showAvatarDecorations,
+      'showQuoteButtonInNoteFooter': instance.showQuoteButtonInNoteFooter,
+      'showLikeButtonInNoteFooter': instance.showLikeButtonInNoteFooter,
+      'showClipButtonInNoteFooter': instance.showClipButtonInNoteFooter,
+      'showTranslateButtonInNoteFooter':
+          instance.showTranslateButtonInNoteFooter,
+      'showNoteReactionsViewer': instance.showNoteReactionsViewer,
+      'showSubNoteReactionsViewer': instance.showSubNoteReactionsViewer,
+      'showNoteFooter': instance.showNoteFooter,
+      'showSubNoteFooter': instance.showSubNoteFooter,
+      'alwaysExpandCw': instance.alwaysExpandCw,
+      'alwaysExpandLongNote': instance.alwaysExpandLongNote,
+      'alwaysExpandMediaInSubNote': instance.alwaysExpandMediaInSubNote,
+      'mergeReactionsByName': instance.mergeReactionsByName,
+      'alwaysShowAllReactions': instance.alwaysShowAllReactions,
+      if (_$MediaListWithOneImageAppearanceEnumMap[
+              instance.mediaListWithOneImageAppearance]
+          case final value?)
+        'mediaListWithOneImageAppearance': value,
+      'thumbnailBoxFit': _$BoxFitEnumMap[instance.thumbnailBoxFit]!,
+      'emojiStyle': _$EmojiStyleEnumMap[instance.emojiStyle]!,
+      if (instance.fontFamily case final value?) 'fontFamily': value,
+      'fontSize': instance.fontSize,
+      'lineHeight': instance.lineHeight,
+      'avatarScale': instance.avatarScale,
+      'reactionsDisplayScale': instance.reactionsDisplayScale,
+      'limitWidthOfReaction': instance.limitWidthOfReaction,
+      'noteFooterScale': instance.noteFooterScale,
+      'noteVerticalPadding': instance.noteVerticalPadding,
+      'noteHorizontalPadding': instance.noteHorizontalPadding,
+      if (_$JsonConverterToJson<int, Color>(instance.publicNoteBackgroundColor,
+              const _ColorConverter().toJson)
+          case final value?)
+        'publicNoteBackgroundColor': value,
+      if (_$JsonConverterToJson<int, Color>(
+              instance.homeNoteBackgroundColor, const _ColorConverter().toJson)
+          case final value?)
+        'homeNoteBackgroundColor': value,
+      if (_$JsonConverterToJson<int, Color>(
+              instance.followersNoteBackgroundColor,
+              const _ColorConverter().toJson)
+          case final value?)
+        'followersNoteBackgroundColor': value,
+      if (_$JsonConverterToJson<int, Color>(
+              instance.specifiedNoteBackgroundColor,
+              const _ColorConverter().toJson)
+          case final value?)
+        'specifiedNoteBackgroundColor': value,
+      'emojiPickerUseDialog': instance.emojiPickerUseDialog,
+      'emojiPickerScale': instance.emojiPickerScale,
+      'emojiPickerAutofocus': instance.emojiPickerAutofocus,
+      'emojiPickerKeepOpen': instance.emojiPickerKeepOpen,
+      'dataSaverMedia': instance.dataSaverMedia,
+      'dataSaverAvatar': instance.dataSaverAvatar,
+      'dataSaverUrlPreview': instance.dataSaverUrlPreview,
+      'disableDataSaverWhenOnWifi': instance.disableDataSaverWhenOnWifi,
+      'reduceAnimation': instance.reduceAnimation,
+      'disableShowingAnimatedImages': instance.disableShowingAnimatedImages,
+      'enableEmojiFadeIn': instance.enableEmojiFadeIn,
+      'forceShowAds': instance.forceShowAds,
+      'useGroupedNotifications': instance.useGroupedNotifications,
+      'showTimelineTabBarAtBottom': instance.showTimelineTabBarAtBottom,
+      'showMenuButtonInTabBar': instance.showMenuButtonInTabBar,
+      'timelinesPageButtonTypes': instance.timelinesPageButtonTypes
+          .map((e) => _$TimelinesPageButtonTypeEnumMap[e])
+          .toList(),
+      'showSmallTimelinesPageButtons': instance.showSmallTimelinesPageButtons,
+      'showSquaredTimelinesPageButtons':
+          instance.showSquaredTimelinesPageButtons,
+      'showTabHeaderInOneLine': instance.showTabHeaderInOneLine,
+      'alwaysShowTabHeader': instance.alwaysShowTabHeader,
+      'showTimelineLastViewedAt': instance.showTimelineLastViewedAt,
+      'showPopupOnNewNote': instance.showPopupOnNewNote,
+      'vibrateNote': instance.vibrateNote,
+      'vibrateNotification': instance.vibrateNotification,
+      'enableInfiniteScroll': instance.enableInfiniteScroll,
+      'keepScreenOn': instance.keepScreenOn,
+      'enableHorizontalSwipe': instance.enableHorizontalSwipe,
+      'openSensitiveMediaOnDoubleTap': instance.openSensitiveMediaOnDoubleTap,
+      'noteTapAction': _$NoteActionTypeEnumMap[instance.noteTapAction]!,
+      'noteDoubleTapAction':
+          _$NoteActionTypeEnumMap[instance.noteDoubleTapAction]!,
+      'noteLongPressAction':
+          _$NoteActionTypeEnumMap[instance.noteLongPressAction]!,
+      'confirmBeforePost': instance.confirmBeforePost,
+      'confirmBeforeReact': instance.confirmBeforeReact,
+      'confirmBeforeFollow': instance.confirmBeforeFollow,
+      'confirmWhenRevealingSensitiveMedia':
+          instance.confirmWhenRevealingSensitiveMedia,
+      'launchMode': _$LaunchModeEnumMap[instance.launchMode]!,
+      'enableSpellCheck': instance.enableSpellCheck,
+      'enablePredictiveBack': instance.enablePredictiveBack,
+      'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
+      'lightThemeId': instance.lightThemeId,
+      'darkThemeId': instance.darkThemeId,
+    };
 
 const _$AppLocaleEnumMap = {
   AppLocale.enUs: 'enUs',

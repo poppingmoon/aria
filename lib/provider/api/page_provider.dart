@@ -26,7 +26,7 @@ class PageNotifier extends _$PageNotifier {
         username: username,
       ),
     );
-    final noteIds = page.content.map(_getNoteIds).flattened.toSet().where(
+    final noteIds = page.content.map(_getNoteIds).flattenedToSet.where(
           (noteId) =>
               !ref.read(notesNotifierProvider(account)).containsKey(noteId),
         );
@@ -47,7 +47,8 @@ class PageNotifier extends _$PageNotifier {
 
   Iterable<String> _getNoteIds(AbstractPageContent block) {
     return switch (block) {
-      PageSection(:final children?) => children.map(_getNoteIds).flattened,
+      PageSection(:final children?) =>
+        children.map(_getNoteIds).flattenedToList,
       PageNote(:final note?) => [note],
       _ => [],
     };

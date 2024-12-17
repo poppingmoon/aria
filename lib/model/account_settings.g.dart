@@ -76,48 +76,39 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
     );
 
 Map<String, dynamic> _$$AccountSettingsImplToJson(
-    _$AccountSettingsImpl instance) {
-  final val = <String, dynamic>{
-    'keepCw': instance.keepCw,
-    'rememberNoteVisibility': instance.rememberNoteVisibility,
-    'defaultNoteVisibility':
-        _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
-    'defaultNoteLocalOnly': instance.defaultNoteLocalOnly,
-    'rememberRenoteVisibility': instance.rememberRenoteVisibility,
-    'defaultRenoteVisibility':
-        _$NoteVisibilityEnumMap[instance.defaultRenoteVisibility]!,
-    'defaultRenoteLocalOnly': instance.defaultRenoteLocalOnly,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('reactionAcceptance',
-      _$ReactionAcceptanceEnumMap[instance.reactionAcceptance]);
-  val['visibility'] = _$NoteVisibilityEnumMap[instance.visibility]!;
-  val['localOnly'] = instance.localOnly;
-  val['renoteVisibility'] = _$NoteVisibilityEnumMap[instance.renoteVisibility]!;
-  val['renoteLocalOnly'] = instance.renoteLocalOnly;
-  val['pinnedEmojisForReaction'] = instance.pinnedEmojisForReaction;
-  val['pinnedEmojis'] = instance.pinnedEmojis;
-  val['recentlyUsedEmojis'] = instance.recentlyUsedEmojis;
-  writeNotNull('defaultReaction', instance.defaultReaction);
-  writeNotNull('uploadFolder', instance.uploadFolder);
-  val['keepOriginalUploading'] = instance.keepOriginalUploading;
-  val['keepOriginalFilename'] = instance.keepOriginalFilename;
-  val['mutedWords'] = instance.mutedWords.map((e) => e.toJson()).toList();
-  val['hardMutedWords'] =
-      instance.hardMutedWords.map((e) => e.toJson()).toList();
-  val['mutedEmojis'] = instance.mutedEmojis;
-  val['recentlyUsedUsers'] = instance.recentlyUsedUsers;
-  val['hashtags'] = instance.hashtags;
-  val['postFormUseHashtags'] = instance.postFormUseHashtags;
-  val['postFormHashtags'] = instance.postFormHashtags;
-  return val;
-}
+        _$AccountSettingsImpl instance) =>
+    <String, dynamic>{
+      'keepCw': instance.keepCw,
+      'rememberNoteVisibility': instance.rememberNoteVisibility,
+      'defaultNoteVisibility':
+          _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
+      'defaultNoteLocalOnly': instance.defaultNoteLocalOnly,
+      'rememberRenoteVisibility': instance.rememberRenoteVisibility,
+      'defaultRenoteVisibility':
+          _$NoteVisibilityEnumMap[instance.defaultRenoteVisibility]!,
+      'defaultRenoteLocalOnly': instance.defaultRenoteLocalOnly,
+      if (_$ReactionAcceptanceEnumMap[instance.reactionAcceptance]
+          case final value?)
+        'reactionAcceptance': value,
+      'visibility': _$NoteVisibilityEnumMap[instance.visibility]!,
+      'localOnly': instance.localOnly,
+      'renoteVisibility': _$NoteVisibilityEnumMap[instance.renoteVisibility]!,
+      'renoteLocalOnly': instance.renoteLocalOnly,
+      'pinnedEmojisForReaction': instance.pinnedEmojisForReaction,
+      'pinnedEmojis': instance.pinnedEmojis,
+      'recentlyUsedEmojis': instance.recentlyUsedEmojis,
+      if (instance.defaultReaction case final value?) 'defaultReaction': value,
+      if (instance.uploadFolder case final value?) 'uploadFolder': value,
+      'keepOriginalUploading': instance.keepOriginalUploading,
+      'keepOriginalFilename': instance.keepOriginalFilename,
+      'mutedWords': instance.mutedWords.map((e) => e.toJson()).toList(),
+      'hardMutedWords': instance.hardMutedWords.map((e) => e.toJson()).toList(),
+      'mutedEmojis': instance.mutedEmojis,
+      'recentlyUsedUsers': instance.recentlyUsedUsers,
+      'hashtags': instance.hashtags,
+      'postFormUseHashtags': instance.postFormUseHashtags,
+      'postFormHashtags': instance.postFormHashtags,
+    };
 
 const _$NoteVisibilityEnumMap = {
   NoteVisibility.public: 'public',

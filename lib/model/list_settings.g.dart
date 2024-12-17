@@ -12,16 +12,8 @@ _$ListSettingsImpl _$$ListSettingsImplFromJson(Map<String, dynamic> json) =>
       isPublic: json['isPublic'] as bool?,
     );
 
-Map<String, dynamic> _$$ListSettingsImplToJson(_$ListSettingsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('isPublic', instance.isPublic);
-  return val;
-}
+Map<String, dynamic> _$$ListSettingsImplToJson(_$ListSettingsImpl instance) =>
+    <String, dynamic>{
+      if (instance.name case final value?) 'name': value,
+      if (instance.isPublic case final value?) 'isPublic': value,
+    };

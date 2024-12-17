@@ -28,28 +28,20 @@ _$AntennaSettingsImpl _$$AntennaSettingsImplFromJson(
     );
 
 Map<String, dynamic> _$$AntennaSettingsImplToJson(
-    _$AntennaSettingsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('src', _$AntennaSourceEnumMap[instance.src]);
-  writeNotNull('userListId', instance.userListId);
-  writeNotNull('users', instance.users);
-  writeNotNull('withReplies', instance.withReplies);
-  writeNotNull('keywords', instance.keywords);
-  writeNotNull('excludeKeywords', instance.excludeKeywords);
-  writeNotNull('localOnly', instance.localOnly);
-  writeNotNull('caseSensitive', instance.caseSensitive);
-  writeNotNull('withFile', instance.withFile);
-  writeNotNull('excludeBots', instance.excludeBots);
-  return val;
-}
+        _$AntennaSettingsImpl instance) =>
+    <String, dynamic>{
+      if (instance.name case final value?) 'name': value,
+      if (_$AntennaSourceEnumMap[instance.src] case final value?) 'src': value,
+      if (instance.userListId case final value?) 'userListId': value,
+      if (instance.users case final value?) 'users': value,
+      if (instance.withReplies case final value?) 'withReplies': value,
+      if (instance.keywords case final value?) 'keywords': value,
+      if (instance.excludeKeywords case final value?) 'excludeKeywords': value,
+      if (instance.localOnly case final value?) 'localOnly': value,
+      if (instance.caseSensitive case final value?) 'caseSensitive': value,
+      if (instance.withFile case final value?) 'withFile': value,
+      if (instance.excludeBots case final value?) 'excludeBots': value,
+    };
 
 const _$AntennaSourceEnumMap = {
   AntennaSource.home: 'home',

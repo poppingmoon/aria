@@ -15,21 +15,12 @@ _$ReactedImpl _$$ReactedImplFromJson(Map<String, dynamic> json) =>
       userId: json['userId'] as String,
     );
 
-Map<String, dynamic> _$$ReactedImplToJson(_$ReactedImpl instance) {
-  final val = <String, dynamic>{
-    'reaction': instance.reaction,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('emoji', instance.emoji?.toJson());
-  val['userId'] = instance.userId;
-  return val;
-}
+Map<String, dynamic> _$$ReactedImplToJson(_$ReactedImpl instance) =>
+    <String, dynamic>{
+      'reaction': instance.reaction,
+      if (instance.emoji?.toJson() case final value?) 'emoji': value,
+      'userId': instance.userId,
+    };
 
 _$UnreactedImpl _$$UnreactedImplFromJson(Map<String, dynamic> json) =>
     _$UnreactedImpl(
@@ -74,20 +65,12 @@ _$UpdatedImpl _$$UpdatedImplFromJson(Map<String, dynamic> json) =>
           : Note.fromJson(json['note'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$UpdatedImplToJson(_$UpdatedImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('cw', instance.cw);
-  writeNotNull('text', instance.text);
-  writeNotNull('note', instance.note?.toJson());
-  return val;
-}
+Map<String, dynamic> _$$UpdatedImplToJson(_$UpdatedImpl instance) =>
+    <String, dynamic>{
+      if (instance.cw case final value?) 'cw': value,
+      if (instance.text case final value?) 'text': value,
+      if (instance.note?.toJson() case final value?) 'note': value,
+    };
 
 _$ReactedEmojiImpl _$$ReactedEmojiImplFromJson(Map<String, dynamic> json) =>
     _$ReactedEmojiImpl(

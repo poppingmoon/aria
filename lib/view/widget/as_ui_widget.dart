@@ -90,7 +90,7 @@ class AsUiWidget extends HookConsumerWidget {
                     ),
                   ],
                 )
-                .flattened,
+                .flattenedToList,
           ],
         ),
       ),
@@ -159,7 +159,7 @@ class AsUiWidget extends HookConsumerWidget {
                         ),
                       ],
                     )
-                    .flattened,
+                    .flattenedToList,
               ],
             ),
           ),

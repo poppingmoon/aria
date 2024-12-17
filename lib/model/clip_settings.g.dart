@@ -13,17 +13,9 @@ _$ClipSettingsImpl _$$ClipSettingsImplFromJson(Map<String, dynamic> json) =>
       isPublic: json['isPublic'] as bool?,
     );
 
-Map<String, dynamic> _$$ClipSettingsImplToJson(_$ClipSettingsImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('name', instance.name);
-  writeNotNull('description', instance.description);
-  writeNotNull('isPublic', instance.isPublic);
-  return val;
-}
+Map<String, dynamic> _$$ClipSettingsImplToJson(_$ClipSettingsImpl instance) =>
+    <String, dynamic>{
+      if (instance.name case final value?) 'name': value,
+      if (instance.description case final value?) 'description': value,
+      if (instance.isPublic case final value?) 'isPublic': value,
+    };

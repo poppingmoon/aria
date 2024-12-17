@@ -18,25 +18,17 @@ _$SummalyResultImpl _$$SummalyResultImplFromJson(Map<String, dynamic> json) =>
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$$SummalyResultImplToJson(_$SummalyResultImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('title', instance.title);
-  writeNotNull('icon', instance.icon);
-  writeNotNull('description', instance.description);
-  writeNotNull('thumbnail', instance.thumbnail);
-  val['player'] = instance.player.toJson();
-  writeNotNull('sitename', instance.sitename);
-  writeNotNull('sensitive', instance.sensitive);
-  writeNotNull('url', instance.url);
-  return val;
-}
+Map<String, dynamic> _$$SummalyResultImplToJson(_$SummalyResultImpl instance) =>
+    <String, dynamic>{
+      if (instance.title case final value?) 'title': value,
+      if (instance.icon case final value?) 'icon': value,
+      if (instance.description case final value?) 'description': value,
+      if (instance.thumbnail case final value?) 'thumbnail': value,
+      'player': instance.player.toJson(),
+      if (instance.sitename case final value?) 'sitename': value,
+      if (instance.sensitive case final value?) 'sensitive': value,
+      if (instance.url case final value?) 'url': value,
+    };
 
 _$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
       url: json['url'] as String?,
@@ -46,18 +38,10 @@ _$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
           (json['allow'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
-Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('url', instance.url);
-  writeNotNull('width', instance.width);
-  writeNotNull('height', instance.height);
-  writeNotNull('allow', instance.allow);
-  return val;
-}
+Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) =>
+    <String, dynamic>{
+      if (instance.url case final value?) 'url': value,
+      if (instance.width case final value?) 'width': value,
+      if (instance.height case final value?) 'height': value,
+      if (instance.allow case final value?) 'allow': value,
+    };

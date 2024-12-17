@@ -12,17 +12,8 @@ _$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
     );
 
-Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) {
-  final val = <String, dynamic>{
-    'host': instance.host,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('username', instance.username);
-  return val;
-}
+Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
+    <String, dynamic>{
+      'host': instance.host,
+      if (instance.username case final value?) 'username': value,
+    };
