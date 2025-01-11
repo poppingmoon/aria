@@ -1258,8 +1258,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "1449140ef181f95a273a43f4397e86577f93f370"
-      resolved-ref: "1449140ef181f95a273a43f4397e86577f93f370"
+      ref: "9ccc6080f1e2b7eb3c16aa44879485489bccf46f"
+      resolved-ref: "9ccc6080f1e2b7eb3c16aa44879485489bccf46f"
       url: "https://github.com/poppingmoon/dart_mfm_parser"
     source: git
     version: "1.0.5"

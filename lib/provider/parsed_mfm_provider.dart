@@ -6,5 +6,5 @@ part 'parsed_mfm_provider.g.dart';
 
 @riverpod
 List<MfmNode> parsedMfm(Ref ref, String text) {
-  return const MfmParser().parse(text);
+  return parse(text);
 }

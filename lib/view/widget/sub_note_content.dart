@@ -11,7 +11,6 @@ import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_is_long_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/parsed_mfm_provider.dart';
-import 'emoji_sheet.dart';
 import 'media_list.dart';
 import 'mfm.dart';
 import 'note_footer.dart';
@@ -49,17 +48,6 @@ class SubNoteContent extends HookConsumerWidget {
           generalSettingsNotifierProvider
               .select((settings) => settings.showSubNoteFooter),
         );
-    final mfmSettings = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.advancedMfm,
-          settings.animatedMfm,
-          settings.fontFamily,
-          settings.fontSize,
-          settings.lineHeight,
-        ),
-      ),
-    );
     final parsed =
         note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
     final isLong = note.cw == null &&
@@ -88,76 +76,49 @@ class SubNoteContent extends HookConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (parsed != null || note.replyId != null || note.renoteId != null)
-          Text.rich(
-            TextSpan(
-              children: [
-                if (note.replyId != null)
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: InkWell(
-                      borderRadius: BorderRadius.circular(8.0),
-                      onTap: () =>
-                          context.push('/$account/notes/${note.replyId}'),
-                      child: Padding(
-                        padding: const EdgeInsets.only(right: 4.0),
-                        child: Icon(
-                          Icons.reply,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+          Mfm(
+            account: account,
+            leadingSpans: [
+              if (note.replyId case final replyId?)
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.middle,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(8.0),
+                    onTap: () => context.push('/$account/notes/$replyId'),
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 4.0),
+                      child: Icon(
+                        Icons.reply,
+                        color: Theme.of(context).colorScheme.primary,
                       ),
                     ),
                   ),
-                if (parsed != null)
-                  ...useMemoized(
-                    () => buildMfm(
-                      ref,
-                      account: account,
-                      nodes: parsed,
-                      emojis: note.emojis,
-                      author: note.user,
-                      nyaize: true,
-                      onTapEmoji: (emoji) => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => EmojiSheet(
-                          account: account,
-                          emoji: emoji,
-                          targetNote: note,
+                ),
+            ],
+            nodes: parsed,
+            trailingSpans: [
+              if (note.renoteId case final renoteId?)
+                WidgetSpan(
+                  alignment: PlaceholderAlignment.middle,
+                  child: InkWell(
+                    onTap: () => context.push('/$account/notes/$renoteId'),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 4.0),
+                      child: Text(
+                        'RN: ...',
+                        style: TextStyle(
+                          color: colors.renote,
+                          fontStyle: FontStyle.italic,
                         ),
-                      ),
-                      maxLines: isCollapsed.value ? 10 : null,
-                    ),
-                    [
-                      account,
-                      parsed,
-                      colors,
-                      note.user,
-                      note.emojis,
-                      isCollapsed.value,
-                      mfmSettings,
-                    ],
-                  ),
-                if (note.renoteId != null)
-                  WidgetSpan(
-                    alignment: PlaceholderAlignment.middle,
-                    child: InkWell(
-                      onTap: () {
-                        context.push('/$account/notes/${note.renoteId}');
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 4.0),
-                        child: Text(
-                          'RN: ...',
-                          style: TextStyle(
-                            color: colors.renote,
-                            fontStyle: FontStyle.italic,
-                          ),
-                          textScaler: TextScaler.noScaling,
-                        ),
+                        textScaler: TextScaler.noScaling,
                       ),
                     ),
                   ),
-              ],
-            ),
+                ),
+            ],
+            emojis: note.emojis,
+            author: note.user,
+            nyaize: true,
             maxLines: isCollapsed.value ? 10 : null,
           ),
         if (!isCollapsed.value) ...[
@@ -192,7 +153,7 @@ class SubNoteContent extends HookConsumerWidget {
                 ),
               ),
           ],
-          if (note case Note(:final poll?)) ...[
+          if (note.poll case final poll?) ...[
             if (!expandMedia)
               TextButton.icon(
                 style: TextButton.styleFrom(

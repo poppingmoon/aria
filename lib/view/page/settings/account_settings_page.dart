@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../widget/account_settings_navigation.dart';
 import '../../widget/username_widget.dart';
 
@@ -17,28 +15,21 @@ class AccountSettingsPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Scaffold(
       appBar: AppBar(
-        title: Text.rich(
-          t.aria.settingsForUser(
-            user: i != null
-                ? TextSpan(
-                    children: useMemoized(
-                      () => buildUsername(
-                        ref,
-                        account: account,
-                        user: i,
-                        style: Theme.of(context).textTheme.titleLarge,
-                      ),
-                      [i, colors],
-                    ),
-                  )
-                : TextSpan(text: account.toString()),
-          ),
-        ),
+        title: i != null
+            ? UsernameWidget(
+                account: account,
+                user: i,
+                builder: (context, span) =>
+                    Text.rich(t.aria.settingsForUser(user: span)),
+              )
+            : Text.rich(
+                t.aria.settingsForUser(
+                  user: TextSpan(text: account.toString()),
+                ),
+              ),
       ),
       body: Center(
         child: Container(

@@ -77,7 +77,7 @@ dependencies:
   mfm_parser:
     git:
       url: https://github.com/poppingmoon/dart_mfm_parser
-      ref: 1449140ef181f95a273a43f4397e86577f93f370
+      ref: 9ccc6080f1e2b7eb3c16aa44879485489bccf46f
   mime: ^2.0.0
   misskey_dart:
     git:

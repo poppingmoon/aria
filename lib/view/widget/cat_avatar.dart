@@ -120,9 +120,10 @@ class CatAvatar extends HookConsumerWidget {
           loopAnimation.value = false;
         },
         child: Stack(
+          alignment: Alignment.center,
           children: [
             Transform.translate(
-              offset: Offset(size * 0.25, size * 0.25),
+              offset: Offset(-size * 0.25, 0.0),
               child: CatEar(
                 listenable: animation,
                 color: catEarColor,
@@ -130,7 +131,7 @@ class CatAvatar extends HookConsumerWidget {
               ),
             ),
             Transform.translate(
-              offset: Offset(size * 0.75, size * 0.25),
+              offset: Offset(size * 0.25, 0.0),
               child: CatEar(
                 listenable: animation,
                 color: catEarColor,

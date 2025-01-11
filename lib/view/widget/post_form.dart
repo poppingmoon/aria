@@ -135,11 +135,11 @@ class PostForm extends HookConsumerWidget {
     if (!ref.context.mounted) return;
     if (result case final note?) {
       if (note.text case final text?) {
-        final nodes = const MfmParser().parse(text);
+        final nodes = parse(text);
         final hashtags = nodes
-            .extract((node) => node is MfmHashTag)
-            .whereType<MfmHashTag>()
-            .map((node) => node.hashTag);
+            .extract((node) => node is MfmHashtag)
+            .whereType<MfmHashtag>()
+            .map((node) => node.hashtag);
         final history =
             ref.read(accountSettingsNotifierProvider(account)).hashtags;
         unawaited(
@@ -221,11 +221,11 @@ class PostForm extends HookConsumerWidget {
             .valueOrNull
         : null;
     final mentions = useMemoized(
-      () => extractMentions(const MfmParser().parse(request.text ?? '')),
+      () => extractMentions(parse(request.text ?? '')),
       [request.text],
     );
     final replyMentions = useMemoized(
-      () => extractMentions(const MfmParser().parse(reply?.text ?? '')),
+      () => extractMentions(parse(reply?.text ?? '')),
       [reply],
     );
     final hasMentionToRemote = useMemoized(

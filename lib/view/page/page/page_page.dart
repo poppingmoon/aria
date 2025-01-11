@@ -61,7 +61,7 @@ class PagePage extends ConsumerWidget {
   }) {
     switch (block) {
       case PageText(:final text?):
-        final nodes = const MfmParser().parse(text);
+        final nodes = parse(text);
         final urls = extractUrl(nodes);
         return Column(
           crossAxisAlignment: page.alignCenter ?? false
@@ -325,15 +325,17 @@ class PagePage extends ConsumerWidget {
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerLeft,
-                              child: UsernameWidget(
-                                account: account,
-                                user: page.user,
+                              child: InkWell(
                                 onTap: () => context
                                     .push('/$account/users/${page.userId}'),
                                 onLongPress: () => showUserSheet(
                                   context: context,
                                   account: account,
                                   userId: page.userId,
+                                ),
+                                child: UsernameWidget(
+                                  account: account,
+                                  user: page.user,
                                 ),
                               ),
                             ),

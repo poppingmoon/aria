@@ -49,16 +49,11 @@ class FollowButton extends HookConsumerWidget {
         onPressed: () async {
           final confirmed = await confirm(
             context,
-            content: Text.rich(
-              t.aria.unfollowConfirm(
-                name: TextSpan(
-                  children: buildUsername(
-                    ref,
-                    account: account,
-                    user: user,
-                  ),
-                ),
-              ),
+            content: UsernameWidget(
+              account: account,
+              user: user,
+              builder: (context, span) =>
+                  Text.rich(t.aria.unfollowConfirm(name: span)),
             ),
           );
           if (!context.mounted) return;
@@ -94,7 +89,9 @@ class FollowButton extends HookConsumerWidget {
                       user: i,
                       size: 48.0,
                       onTap: () => context.push('/$account/users/${i.id}'),
-                    ),
+                    )
+                  else
+                    const Icon(Icons.person, size: 48.0),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Icon(Icons.arrow_forward, size: 36.0),
@@ -107,16 +104,11 @@ class FollowButton extends HookConsumerWidget {
                   ),
                 ],
               ),
-              content: Text.rich(
-                t.aria.followConfirm(
-                  name: TextSpan(
-                    children: buildUsername(
-                      ref,
-                      account: account,
-                      user: user,
-                    ),
-                  ),
-                ),
+              content: UsernameWidget(
+                account: account,
+                user: user,
+                builder: (context, span) =>
+                    Text.rich(t.aria.followConfirm(name: span)),
               ),
               okText:
                   user.isLocked ? t.misskey.followRequest : t.misskey.follow,

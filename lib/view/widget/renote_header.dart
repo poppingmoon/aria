@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -75,27 +74,20 @@ class RenoteHeader extends HookConsumerWidget {
                       account: account,
                       userId: note.userId,
                     ),
-                    child: Text.rich(
-                      (note.userId == note.renote?.userId
-                          ? t.aria.selfRenotedBy
-                          : t.aria.renotedBy)(
-                        user: TextSpan(
-                          children: useMemoized(
-                            () => buildUsername(
-                              ref,
-                              account: account,
-                              user: note.user,
-                              style: TextStyle(
-                                color: colors.renote,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            [note.user, colors],
-                          ),
-                        ),
+                    child: UsernameWidget(
+                      account: account,
+                      user: note.user,
+                      builder: (context, span) => Text.rich(
+                        (note.userId == note.renote?.userId
+                            ? t.aria.selfRenotedBy
+                            : t.aria.renotedBy)(user: span),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: colors.renote,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),

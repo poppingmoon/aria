@@ -335,7 +335,7 @@ class PostNotifier extends _$PostNotifier {
     } else {
       if (state.replyId == reply.id) return;
       if (state.text case final text?) {
-        final nodes = const MfmParser().parse(text);
+        final nodes = parse(text);
         final isMentionOnly = nodes.every(
           (node) => switch (node) {
             MfmMention() => true,
@@ -361,12 +361,10 @@ class PostNotifier extends _$PostNotifier {
         if (reply.userId != i?.id) reply.userId,
       }.toList();
       final keepCw = ref.read(accountSettingsNotifierProvider(account)).keepCw;
-      final replyMentions =
-          extractMentions(const MfmParser().parse(reply.text ?? ''))
-              .map((mention) => mention.acct);
-      final textMentions =
-          extractMentions(const MfmParser().parse(state.text ?? ''))
-              .map((mention) => mention.acct);
+      final replyMentions = extractMentions(parse(reply.text ?? ''))
+          .map((mention) => mention.acct);
+      final textMentions = extractMentions(parse(state.text ?? ''))
+          .map((mention) => mention.acct);
       final text = [
         ...{...replyMentions, reply.user.acct}.where(
           (acct) => ![

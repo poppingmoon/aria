@@ -22,7 +22,6 @@ import '../../util/extract_url.dart';
 import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
-import 'emoji_sheet.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
@@ -97,6 +96,9 @@ class NoteWidget extends HookConsumerWidget {
     final muted =
         useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
     if (muted.value) {
+      final style = TextStyle(
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+      );
       return InkWell(
         onTap: () => muted.value = false,
         child: Padding(
@@ -104,29 +106,14 @@ class NoteWidget extends HookConsumerWidget {
             vertical: verticalPadding,
             horizontal: horizontalPadding,
           ),
-          child: Text.rich(
-            t.aria.userSaysSomething(
-              name: TextSpan(
-                children: buildUsername(
-                  ref,
-                  account: account,
-                  user: appearNote.user,
-                  style: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.7),
-                  ),
-                ),
-              ),
+          child: UsernameWidget(
+            account: account,
+            user: appearNote.user,
+            builder: (context, span) => Text.rich(
+              t.aria.userSaysSomething(name: span),
+              style: style,
+              textAlign: TextAlign.center,
             ),
-            style: TextStyle(
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.7),
-            ),
-            textAlign: TextAlign.center,
           ),
         ),
       );
@@ -162,17 +149,6 @@ class NoteWidget extends HookConsumerWidget {
           generalSettingsNotifierProvider
               .select((settings) => settings.noteLongPressAction),
         );
-    final mfmSettings = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.advancedMfm,
-          settings.animatedMfm,
-          settings.fontFamily,
-          settings.fontSize,
-          settings.lineHeight,
-        ),
-      ),
-    );
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final isRenote = note.isRenote;
     final isMyRenote = i != null && note.user.id == i.id;
@@ -402,15 +378,6 @@ class NoteWidget extends HookConsumerWidget {
                                   emojis: appearNote.emojis,
                                   author: appearNote.user,
                                   nyaize: true,
-                                  onTapEmoji: (emoji) =>
-                                      showModalBottomSheet<void>(
-                                    context: context,
-                                    builder: (context) => EmojiSheet(
-                                      account: account,
-                                      emoji: emoji,
-                                      targetNote: appearNote,
-                                    ),
-                                  ),
                                 ),
                               Padding(
                                 padding:
@@ -424,69 +391,38 @@ class NoteWidget extends HookConsumerWidget {
                               ),
                             ],
                             if (appearNote.cw == null || showContent.value) ...[
-                              if (parsed != null ||
-                                  appearNote.replyId != null) ...[
-                                Text.rich(
-                                  TextSpan(
-                                    children: [
-                                      if (appearNote
-                                          case Note(:final replyId?)) ...[
-                                        WidgetSpan(
-                                          alignment:
-                                              PlaceholderAlignment.middle,
-                                          child: InkWell(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            onTap: () => context.push(
-                                              '/$account/notes/$replyId',
-                                            ),
-                                            child: Icon(
-                                              Icons.reply,
-                                              color: colors.accent,
-                                            ),
+                              if (parsed != null || appearNote.replyId != null)
+                                Mfm(
+                                  account: account,
+                                  leadingSpans: [
+                                    if (appearNote.replyId
+                                        case final replyId?) ...[
+                                      WidgetSpan(
+                                        alignment: PlaceholderAlignment.middle,
+                                        child: InkWell(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          onTap: () => context.push(
+                                            '/$account/notes/$replyId',
+                                          ),
+                                          child: Icon(
+                                            Icons.reply,
+                                            color: colors.accent,
                                           ),
                                         ),
-                                        const WidgetSpan(
-                                          child: SizedBox(width: 4.0),
-                                        ),
-                                      ],
-                                      if (parsed != null)
-                                        ...useMemoized(
-                                          () => buildMfm(
-                                            ref,
-                                            account: account,
-                                            nodes: parsed,
-                                            emojis: appearNote.emojis,
-                                            author: appearNote.user,
-                                            nyaize: true,
-                                            onTapEmoji: (emoji) =>
-                                                showModalBottomSheet<void>(
-                                              context: context,
-                                              builder: (context) => EmojiSheet(
-                                                account: account,
-                                                emoji: emoji,
-                                                targetNote: appearNote,
-                                              ),
-                                            ),
-                                            maxLines:
-                                                isCollapsed.value ? 10 : null,
-                                          ),
-                                          [
-                                            account,
-                                            parsed,
-                                            colors,
-                                            appearNote.user,
-                                            appearNote.emojis,
-                                            isCollapsed.value,
-                                            mfmSettings,
-                                          ],
-                                        ),
+                                      ),
+                                      const WidgetSpan(
+                                        child: SizedBox(width: 4.0),
+                                      ),
                                     ],
-                                  ),
+                                  ],
+                                  nodes: parsed,
+                                  emojis: appearNote.emojis,
+                                  author: appearNote.user,
+                                  nyaize: true,
                                   maxLines: isCollapsed.value ? 10 : null,
                                 ),
-                                const SizedBox(height: 4.0),
-                              ],
+                              const SizedBox(height: 4.0),
                               if (!isCollapsed.value) ...[
                                 if (appearNote.files.isNotEmpty) ...[
                                   MediaList(

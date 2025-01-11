@@ -18,6 +18,7 @@ import 'achievement_widget.dart';
 import 'emoji_widget.dart';
 import 'follow_button.dart';
 import 'image_widget.dart';
+import 'mfm.dart';
 import 'note_sheet.dart';
 import 'note_summary.dart';
 import 'note_widget.dart';
@@ -233,7 +234,7 @@ class NotificationWidget extends ConsumerWidget {
                   )
                 : null,
             title: header != null ? Text(header) : const SizedBox.shrink(),
-            subtitle: body != null ? Text(body) : null,
+            subtitle: body != null ? Mfm(account: account, text: body) : null,
             createdAt: notification.createdAt,
           );
         }
@@ -391,29 +392,28 @@ class NotificationWidget extends ConsumerWidget {
                   (reaction) => Stack(
                     children: [
                       Tooltip(
-                        richMessage: TextSpan(
-                          children: [
-                            ...buildUsername(
-                              ref,
-                              account: account,
-                              user: reaction.user,
-                              style: TextStyle(
-                                color: switch (Theme.of(context).brightness) {
-                                  Brightness.light => Colors.white,
-                                  Brightness.dark => Colors.black,
-                                },
+                        richMessage: WidgetSpan(
+                          child: UsernameWidget(
+                            account: account,
+                            user: reaction.user,
+                            trailingSpans: [
+                              TextSpan(
+                                text: ' ${reaction.user.acct}',
+                                style: TextStyle(
+                                  color: switch (Theme.of(context).brightness) {
+                                    Brightness.light => Colors.white70,
+                                    Brightness.dark => Colors.black54,
+                                  },
+                                ),
                               ),
+                            ],
+                            style: TextStyle(
+                              color: switch (Theme.of(context).brightness) {
+                                Brightness.light => Colors.white,
+                                Brightness.dark => Colors.black,
+                              },
                             ),
-                            TextSpan(
-                              text: ' ${reaction.user.acct}',
-                              style: TextStyle(
-                                color: switch (Theme.of(context).brightness) {
-                                  Brightness.light => Colors.white70,
-                                  Brightness.dark => Colors.black54,
-                                },
-                              ),
-                            ),
-                          ],
+                          ),
                         ),
                         child: UserAvatar(
                           account: account,
@@ -490,29 +490,28 @@ class NotificationWidget extends ConsumerWidget {
             actions: notification.users
                 ?.map(
                   (user) => Tooltip(
-                    richMessage: TextSpan(
-                      children: [
-                        ...buildUsername(
-                          ref,
-                          account: account,
-                          user: user,
-                          style: TextStyle(
-                            color: switch (Theme.of(context).brightness) {
-                              Brightness.light => Colors.white,
-                              Brightness.dark => Colors.black,
-                            },
+                    richMessage: WidgetSpan(
+                      child: UsernameWidget(
+                        account: account,
+                        user: user,
+                        trailingSpans: [
+                          TextSpan(
+                            text: ' ${user.acct}',
+                            style: TextStyle(
+                              color: switch (Theme.of(context).brightness) {
+                                Brightness.light => Colors.white70,
+                                Brightness.dark => Colors.black54,
+                              },
+                            ),
                           ),
+                        ],
+                        style: TextStyle(
+                          color: switch (Theme.of(context).brightness) {
+                            Brightness.light => Colors.white,
+                            Brightness.dark => Colors.black,
+                          },
                         ),
-                        TextSpan(
-                          text: ' ${user.acct}',
-                          style: TextStyle(
-                            color: switch (Theme.of(context).brightness) {
-                              Brightness.light => Colors.white70,
-                              Brightness.dark => Colors.black54,
-                            },
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                     child: UserAvatar(
                       account: account,
@@ -555,29 +554,28 @@ class NotificationWidget extends ConsumerWidget {
             actions: users
                 .map(
                   (user) => Tooltip(
-                    richMessage: TextSpan(
-                      children: [
-                        ...buildUsername(
-                          ref,
-                          account: account,
-                          user: user,
-                          style: TextStyle(
-                            color: switch (Theme.of(context).brightness) {
-                              Brightness.light => Colors.white,
-                              Brightness.dark => Colors.black,
-                            },
+                    richMessage: WidgetSpan(
+                      child: UsernameWidget(
+                        account: account,
+                        user: user,
+                        trailingSpans: [
+                          TextSpan(
+                            text: ' ${user.acct}',
+                            style: TextStyle(
+                              color: switch (Theme.of(context).brightness) {
+                                Brightness.light => Colors.white70,
+                                Brightness.dark => Colors.black54,
+                              },
+                            ),
                           ),
+                        ],
+                        style: TextStyle(
+                          color: switch (Theme.of(context).brightness) {
+                            Brightness.light => Colors.white,
+                            Brightness.dark => Colors.black,
+                          },
                         ),
-                        TextSpan(
-                          text: ' ${user.acct}',
-                          style: TextStyle(
-                            color: switch (Theme.of(context).brightness) {
-                              Brightness.light => Colors.white70,
-                              Brightness.dark => Colors.black54,
-                            },
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
                     child: UserAvatar(
                       account: account,
@@ -602,29 +600,28 @@ class NotificationWidget extends ConsumerWidget {
       actions: notification.users
           ?.map(
             (user) => Tooltip(
-              richMessage: TextSpan(
-                children: [
-                  ...buildUsername(
-                    ref,
-                    account: account,
-                    user: user,
-                    style: TextStyle(
-                      color: switch (Theme.of(context).brightness) {
-                        Brightness.light => Colors.white,
-                        Brightness.dark => Colors.black,
-                      },
+              richMessage: WidgetSpan(
+                child: UsernameWidget(
+                  account: account,
+                  user: user,
+                  trailingSpans: [
+                    TextSpan(
+                      text: ' ${user.acct}',
+                      style: TextStyle(
+                        color: switch (Theme.of(context).brightness) {
+                          Brightness.light => Colors.white70,
+                          Brightness.dark => Colors.black54,
+                        },
+                      ),
                     ),
+                  ],
+                  style: TextStyle(
+                    color: switch (Theme.of(context).brightness) {
+                      Brightness.light => Colors.white,
+                      Brightness.dark => Colors.black,
+                    },
                   ),
-                  TextSpan(
-                    text: ' ${user.acct}',
-                    style: TextStyle(
-                      color: switch (Theme.of(context).brightness) {
-                        Brightness.light => Colors.white70,
-                        Brightness.dark => Colors.black54,
-                      },
-                    ),
-                  ),
-                ],
+                ),
               ),
               child: UserAvatar(
                 account: account,
@@ -779,9 +776,7 @@ class _NotificationTile extends ConsumerWidget {
                         alignment: Alignment.centerLeft,
                         child: title ??
                             (user != null
-                                ? UsernameWidget(
-                                    account: account,
-                                    user: user!,
+                                ? InkWell(
                                     onTap: () => context
                                         .push('/$account/users/${user!.id}'),
                                     onLongPress: () => showUserSheet(
@@ -789,8 +784,12 @@ class _NotificationTile extends ConsumerWidget {
                                       account: account,
                                       userId: user!.id,
                                     ),
+                                    child: UsernameWidget(
+                                      account: account,
+                                      user: user!,
+                                    ),
                                   )
-                                : const SizedBox.shrink()),
+                                : null),
                       ),
                     ),
                     if (createdAt != null)

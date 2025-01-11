@@ -12,7 +12,6 @@ import '../../provider/note_provider.dart';
 import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
-import 'emoji_sheet.dart';
 import 'mfm.dart';
 import 'note_header.dart';
 import 'sub_note_content.dart';
@@ -117,22 +116,15 @@ class NoteSubWidget extends HookConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       NoteHeader(account: account, note: note),
-                      if (note.cw != null) ...[
-                        Mfm(
-                          account: account,
-                          text: note.cw,
-                          emojis: note.emojis,
-                          author: note.user,
-                          nyaize: true,
-                          onTapEmoji: (emoji) => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => EmojiSheet(
-                              account: account,
-                              emoji: emoji,
-                              targetNote: note,
-                            ),
+                      if (note.cw case final cw?) ...[
+                        if (cw.isNotEmpty)
+                          Mfm(
+                            account: account,
+                            text: cw,
+                            emojis: note.emojis,
+                            author: note.user,
+                            nyaize: true,
                           ),
-                        ),
                         CwButton(
                           note: note,
                           onPressed: (value) => showContent.value = value,

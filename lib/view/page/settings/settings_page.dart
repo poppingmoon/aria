@@ -52,22 +52,20 @@ class SettingsPage extends HookConsumerWidget {
                                   user: i,
                                   size: 32.0,
                                 )
-                              : null,
-                          title: Consumer(
-                            builder: (context, ref, _) => Text.rich(
-                              t.aria.settingsForUser(
-                                user: i != null
-                                    ? TextSpan(
-                                        children: buildUsername(
-                                          ref,
-                                          account: account,
-                                          user: i,
-                                        ),
-                                      )
-                                    : TextSpan(text: account.username),
-                              ),
-                            ),
-                          ),
+                              : const Icon(Icons.person, size: 32.0),
+                          title: i != null
+                              ? UsernameWidget(
+                                  account: account,
+                                  user: i,
+                                  builder: (context, span) => Text.rich(
+                                    t.aria.settingsForUser(user: span),
+                                  ),
+                                )
+                              : Text.rich(
+                                  t.aria.settingsForUser(
+                                    user: TextSpan(text: account.username),
+                                  ),
+                                ),
                           subtitle: Text(account.toString()),
                           onTap: () =>
                               context.push('/settings/accounts/$account'),
