@@ -224,15 +224,17 @@ class ClipPage extends HookConsumerWidget {
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerLeft,
-                              child: UsernameWidget(
-                                account: account,
-                                user: user,
+                              child: InkWell(
                                 onTap: () =>
                                     context.push('/$account/users/${user.id}'),
                                 onLongPress: () => showUserSheet(
                                   context: context,
                                   account: account,
                                   userId: user.id,
+                                ),
+                                child: UsernameWidget(
+                                  account: account,
+                                  user: user,
                                 ),
                               ),
                             ),

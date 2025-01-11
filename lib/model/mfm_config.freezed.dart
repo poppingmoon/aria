@@ -16,29 +16,11 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$MfmConfig {
-  MisskeyColors get colors => throw _privateConstructorUsedError;
-  bool get simple => throw _privateConstructorUsedError;
   TextStyle get style => throw _privateConstructorUsedError;
-  Widget Function(String, double, double, TextStyle) get customEmojiBuilder =>
-      throw _privateConstructorUsedError;
-  Widget Function(String, TextStyle) get unicodeEmojiBuilder =>
-      throw _privateConstructorUsedError;
-  Widget Function(String, String?, double, double) get mentionBuilder =>
-      throw _privateConstructorUsedError;
-  void Function(String)? get onTapEmoji => throw _privateConstructorUsedError;
-  void Function(String)? get onLinkTap => throw _privateConstructorUsedError;
-  void Function(String)? get onLinkLongPress =>
-      throw _privateConstructorUsedError;
-  void Function(String)? get onHashtagTap => throw _privateConstructorUsedError;
-  void Function(String)? get onClickEv => throw _privateConstructorUsedError;
-  bool get shouldNyaize => throw _privateConstructorUsedError;
-  bool get useAdvanced => throw _privateConstructorUsedError;
-  bool get useAnimation => throw _privateConstructorUsedError;
+  bool get disableNyaize => throw _privateConstructorUsedError;
   double get scale => throw _privateConstructorUsedError;
   double get opacity => throw _privateConstructorUsedError;
   TextAlign? get align => throw _privateConstructorUsedError;
-  TextOverflow? get overflow => throw _privateConstructorUsedError;
-  int? get maxLines => throw _privateConstructorUsedError;
 
   /// Create a copy of MfmConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -53,27 +35,11 @@ abstract class $MfmConfigCopyWith<$Res> {
       _$MfmConfigCopyWithImpl<$Res, MfmConfig>;
   @useResult
   $Res call(
-      {MisskeyColors colors,
-      bool simple,
-      TextStyle style,
-      Widget Function(String, double, double, TextStyle) customEmojiBuilder,
-      Widget Function(String, TextStyle) unicodeEmojiBuilder,
-      Widget Function(String, String?, double, double) mentionBuilder,
-      void Function(String)? onTapEmoji,
-      void Function(String)? onLinkTap,
-      void Function(String)? onLinkLongPress,
-      void Function(String)? onHashtagTap,
-      void Function(String)? onClickEv,
-      bool shouldNyaize,
-      bool useAdvanced,
-      bool useAnimation,
+      {TextStyle style,
+      bool disableNyaize,
       double scale,
       double opacity,
-      TextAlign? align,
-      TextOverflow? overflow,
-      int? maxLines});
-
-  $MisskeyColorsCopyWith<$Res> get colors;
+      TextAlign? align});
 }
 
 /// @nodoc
@@ -91,82 +57,20 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? colors = null,
-    Object? simple = null,
     Object? style = null,
-    Object? customEmojiBuilder = null,
-    Object? unicodeEmojiBuilder = null,
-    Object? mentionBuilder = null,
-    Object? onTapEmoji = freezed,
-    Object? onLinkTap = freezed,
-    Object? onLinkLongPress = freezed,
-    Object? onHashtagTap = freezed,
-    Object? onClickEv = freezed,
-    Object? shouldNyaize = null,
-    Object? useAdvanced = null,
-    Object? useAnimation = null,
+    Object? disableNyaize = null,
     Object? scale = null,
     Object? opacity = null,
     Object? align = freezed,
-    Object? overflow = freezed,
-    Object? maxLines = freezed,
   }) {
     return _then(_value.copyWith(
-      colors: null == colors
-          ? _value.colors
-          : colors // ignore: cast_nullable_to_non_nullable
-              as MisskeyColors,
-      simple: null == simple
-          ? _value.simple
-          : simple // ignore: cast_nullable_to_non_nullable
-              as bool,
       style: null == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
               as TextStyle,
-      customEmojiBuilder: null == customEmojiBuilder
-          ? _value.customEmojiBuilder
-          : customEmojiBuilder // ignore: cast_nullable_to_non_nullable
-              as Widget Function(String, double, double, TextStyle),
-      unicodeEmojiBuilder: null == unicodeEmojiBuilder
-          ? _value.unicodeEmojiBuilder
-          : unicodeEmojiBuilder // ignore: cast_nullable_to_non_nullable
-              as Widget Function(String, TextStyle),
-      mentionBuilder: null == mentionBuilder
-          ? _value.mentionBuilder
-          : mentionBuilder // ignore: cast_nullable_to_non_nullable
-              as Widget Function(String, String?, double, double),
-      onTapEmoji: freezed == onTapEmoji
-          ? _value.onTapEmoji
-          : onTapEmoji // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onLinkTap: freezed == onLinkTap
-          ? _value.onLinkTap
-          : onLinkTap // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onLinkLongPress: freezed == onLinkLongPress
-          ? _value.onLinkLongPress
-          : onLinkLongPress // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onHashtagTap: freezed == onHashtagTap
-          ? _value.onHashtagTap
-          : onHashtagTap // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onClickEv: freezed == onClickEv
-          ? _value.onClickEv
-          : onClickEv // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      shouldNyaize: null == shouldNyaize
-          ? _value.shouldNyaize
-          : shouldNyaize // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useAdvanced: null == useAdvanced
-          ? _value.useAdvanced
-          : useAdvanced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useAnimation: null == useAnimation
-          ? _value.useAnimation
-          : useAnimation // ignore: cast_nullable_to_non_nullable
+      disableNyaize: null == disableNyaize
+          ? _value.disableNyaize
+          : disableNyaize // ignore: cast_nullable_to_non_nullable
               as bool,
       scale: null == scale
           ? _value.scale
@@ -180,25 +84,7 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
           ? _value.align
           : align // ignore: cast_nullable_to_non_nullable
               as TextAlign?,
-      overflow: freezed == overflow
-          ? _value.overflow
-          : overflow // ignore: cast_nullable_to_non_nullable
-              as TextOverflow?,
-      maxLines: freezed == maxLines
-          ? _value.maxLines
-          : maxLines // ignore: cast_nullable_to_non_nullable
-              as int?,
     ) as $Val);
-  }
-
-  /// Create a copy of MfmConfig
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $MisskeyColorsCopyWith<$Res> get colors {
-    return $MisskeyColorsCopyWith<$Res>(_value.colors, (value) {
-      return _then(_value.copyWith(colors: value) as $Val);
-    });
   }
 }
 
@@ -211,28 +97,11 @@ abstract class _$$MfmConfigImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {MisskeyColors colors,
-      bool simple,
-      TextStyle style,
-      Widget Function(String, double, double, TextStyle) customEmojiBuilder,
-      Widget Function(String, TextStyle) unicodeEmojiBuilder,
-      Widget Function(String, String?, double, double) mentionBuilder,
-      void Function(String)? onTapEmoji,
-      void Function(String)? onLinkTap,
-      void Function(String)? onLinkLongPress,
-      void Function(String)? onHashtagTap,
-      void Function(String)? onClickEv,
-      bool shouldNyaize,
-      bool useAdvanced,
-      bool useAnimation,
+      {TextStyle style,
+      bool disableNyaize,
       double scale,
       double opacity,
-      TextAlign? align,
-      TextOverflow? overflow,
-      int? maxLines});
-
-  @override
-  $MisskeyColorsCopyWith<$Res> get colors;
+      TextAlign? align});
 }
 
 /// @nodoc
@@ -248,82 +117,20 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? colors = null,
-    Object? simple = null,
     Object? style = null,
-    Object? customEmojiBuilder = null,
-    Object? unicodeEmojiBuilder = null,
-    Object? mentionBuilder = null,
-    Object? onTapEmoji = freezed,
-    Object? onLinkTap = freezed,
-    Object? onLinkLongPress = freezed,
-    Object? onHashtagTap = freezed,
-    Object? onClickEv = freezed,
-    Object? shouldNyaize = null,
-    Object? useAdvanced = null,
-    Object? useAnimation = null,
+    Object? disableNyaize = null,
     Object? scale = null,
     Object? opacity = null,
     Object? align = freezed,
-    Object? overflow = freezed,
-    Object? maxLines = freezed,
   }) {
     return _then(_$MfmConfigImpl(
-      colors: null == colors
-          ? _value.colors
-          : colors // ignore: cast_nullable_to_non_nullable
-              as MisskeyColors,
-      simple: null == simple
-          ? _value.simple
-          : simple // ignore: cast_nullable_to_non_nullable
-              as bool,
       style: null == style
           ? _value.style
           : style // ignore: cast_nullable_to_non_nullable
               as TextStyle,
-      customEmojiBuilder: null == customEmojiBuilder
-          ? _value.customEmojiBuilder
-          : customEmojiBuilder // ignore: cast_nullable_to_non_nullable
-              as Widget Function(String, double, double, TextStyle),
-      unicodeEmojiBuilder: null == unicodeEmojiBuilder
-          ? _value.unicodeEmojiBuilder
-          : unicodeEmojiBuilder // ignore: cast_nullable_to_non_nullable
-              as Widget Function(String, TextStyle),
-      mentionBuilder: null == mentionBuilder
-          ? _value.mentionBuilder
-          : mentionBuilder // ignore: cast_nullable_to_non_nullable
-              as Widget Function(String, String?, double, double),
-      onTapEmoji: freezed == onTapEmoji
-          ? _value.onTapEmoji
-          : onTapEmoji // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onLinkTap: freezed == onLinkTap
-          ? _value.onLinkTap
-          : onLinkTap // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onLinkLongPress: freezed == onLinkLongPress
-          ? _value.onLinkLongPress
-          : onLinkLongPress // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onHashtagTap: freezed == onHashtagTap
-          ? _value.onHashtagTap
-          : onHashtagTap // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      onClickEv: freezed == onClickEv
-          ? _value.onClickEv
-          : onClickEv // ignore: cast_nullable_to_non_nullable
-              as void Function(String)?,
-      shouldNyaize: null == shouldNyaize
-          ? _value.shouldNyaize
-          : shouldNyaize // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useAdvanced: null == useAdvanced
-          ? _value.useAdvanced
-          : useAdvanced // ignore: cast_nullable_to_non_nullable
-              as bool,
-      useAnimation: null == useAnimation
-          ? _value.useAnimation
-          : useAnimation // ignore: cast_nullable_to_non_nullable
+      disableNyaize: null == disableNyaize
+          ? _value.disableNyaize
+          : disableNyaize // ignore: cast_nullable_to_non_nullable
               as bool,
       scale: null == scale
           ? _value.scale
@@ -337,14 +144,6 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
           ? _value.align
           : align // ignore: cast_nullable_to_non_nullable
               as TextAlign?,
-      overflow: freezed == overflow
-          ? _value.overflow
-          : overflow // ignore: cast_nullable_to_non_nullable
-              as TextOverflow?,
-      maxLines: freezed == maxLines
-          ? _value.maxLines
-          : maxLines // ignore: cast_nullable_to_non_nullable
-              as int?,
     ));
   }
 }
@@ -353,57 +152,17 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
 
 class _$MfmConfigImpl implements _MfmConfig {
   const _$MfmConfigImpl(
-      {required this.colors,
-      required this.simple,
-      required this.style,
-      required this.customEmojiBuilder,
-      required this.unicodeEmojiBuilder,
-      required this.mentionBuilder,
-      this.onTapEmoji,
-      this.onLinkTap,
-      this.onLinkLongPress,
-      this.onHashtagTap,
-      this.onClickEv,
-      this.shouldNyaize = false,
-      this.useAdvanced = true,
-      this.useAnimation = false,
+      {required this.style,
+      this.disableNyaize = false,
       this.scale = 1.0,
       this.opacity = 1.0,
-      this.align,
-      this.overflow,
-      this.maxLines});
+      this.align});
 
-  @override
-  final MisskeyColors colors;
-  @override
-  final bool simple;
   @override
   final TextStyle style;
   @override
-  final Widget Function(String, double, double, TextStyle) customEmojiBuilder;
-  @override
-  final Widget Function(String, TextStyle) unicodeEmojiBuilder;
-  @override
-  final Widget Function(String, String?, double, double) mentionBuilder;
-  @override
-  final void Function(String)? onTapEmoji;
-  @override
-  final void Function(String)? onLinkTap;
-  @override
-  final void Function(String)? onLinkLongPress;
-  @override
-  final void Function(String)? onHashtagTap;
-  @override
-  final void Function(String)? onClickEv;
-  @override
   @JsonKey()
-  final bool shouldNyaize;
-  @override
-  @JsonKey()
-  final bool useAdvanced;
-  @override
-  @JsonKey()
-  final bool useAnimation;
+  final bool disableNyaize;
   @override
   @JsonKey()
   final double scale;
@@ -412,14 +171,10 @@ class _$MfmConfigImpl implements _MfmConfig {
   final double opacity;
   @override
   final TextAlign? align;
-  @override
-  final TextOverflow? overflow;
-  @override
-  final int? maxLines;
 
   @override
   String toString() {
-    return 'MfmConfig(colors: $colors, simple: $simple, style: $style, customEmojiBuilder: $customEmojiBuilder, unicodeEmojiBuilder: $unicodeEmojiBuilder, mentionBuilder: $mentionBuilder, onTapEmoji: $onTapEmoji, onLinkTap: $onLinkTap, onLinkLongPress: $onLinkLongPress, onHashtagTap: $onHashtagTap, onClickEv: $onClickEv, shouldNyaize: $shouldNyaize, useAdvanced: $useAdvanced, useAnimation: $useAnimation, scale: $scale, opacity: $opacity, align: $align, overflow: $overflow, maxLines: $maxLines)';
+    return 'MfmConfig(style: $style, disableNyaize: $disableNyaize, scale: $scale, opacity: $opacity, align: $align)';
   }
 
   @override
@@ -427,63 +182,17 @@ class _$MfmConfigImpl implements _MfmConfig {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MfmConfigImpl &&
-            (identical(other.colors, colors) || other.colors == colors) &&
-            (identical(other.simple, simple) || other.simple == simple) &&
             (identical(other.style, style) || other.style == style) &&
-            (identical(other.customEmojiBuilder, customEmojiBuilder) ||
-                other.customEmojiBuilder == customEmojiBuilder) &&
-            (identical(other.unicodeEmojiBuilder, unicodeEmojiBuilder) ||
-                other.unicodeEmojiBuilder == unicodeEmojiBuilder) &&
-            (identical(other.mentionBuilder, mentionBuilder) ||
-                other.mentionBuilder == mentionBuilder) &&
-            (identical(other.onTapEmoji, onTapEmoji) ||
-                other.onTapEmoji == onTapEmoji) &&
-            (identical(other.onLinkTap, onLinkTap) ||
-                other.onLinkTap == onLinkTap) &&
-            (identical(other.onLinkLongPress, onLinkLongPress) ||
-                other.onLinkLongPress == onLinkLongPress) &&
-            (identical(other.onHashtagTap, onHashtagTap) ||
-                other.onHashtagTap == onHashtagTap) &&
-            (identical(other.onClickEv, onClickEv) ||
-                other.onClickEv == onClickEv) &&
-            (identical(other.shouldNyaize, shouldNyaize) ||
-                other.shouldNyaize == shouldNyaize) &&
-            (identical(other.useAdvanced, useAdvanced) ||
-                other.useAdvanced == useAdvanced) &&
-            (identical(other.useAnimation, useAnimation) ||
-                other.useAnimation == useAnimation) &&
+            (identical(other.disableNyaize, disableNyaize) ||
+                other.disableNyaize == disableNyaize) &&
             (identical(other.scale, scale) || other.scale == scale) &&
             (identical(other.opacity, opacity) || other.opacity == opacity) &&
-            (identical(other.align, align) || other.align == align) &&
-            (identical(other.overflow, overflow) ||
-                other.overflow == overflow) &&
-            (identical(other.maxLines, maxLines) ||
-                other.maxLines == maxLines));
+            (identical(other.align, align) || other.align == align));
   }
 
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        colors,
-        simple,
-        style,
-        customEmojiBuilder,
-        unicodeEmojiBuilder,
-        mentionBuilder,
-        onTapEmoji,
-        onLinkTap,
-        onLinkLongPress,
-        onHashtagTap,
-        onClickEv,
-        shouldNyaize,
-        useAdvanced,
-        useAnimation,
-        scale,
-        opacity,
-        align,
-        overflow,
-        maxLines
-      ]);
+  int get hashCode =>
+      Object.hash(runtimeType, style, disableNyaize, scale, opacity, align);
 
   /// Create a copy of MfmConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -496,66 +205,22 @@ class _$MfmConfigImpl implements _MfmConfig {
 
 abstract class _MfmConfig implements MfmConfig {
   const factory _MfmConfig(
-      {required final MisskeyColors colors,
-      required final bool simple,
-      required final TextStyle style,
-      required final Widget Function(String, double, double, TextStyle)
-          customEmojiBuilder,
-      required final Widget Function(String, TextStyle) unicodeEmojiBuilder,
-      required final Widget Function(String, String?, double, double)
-          mentionBuilder,
-      final void Function(String)? onTapEmoji,
-      final void Function(String)? onLinkTap,
-      final void Function(String)? onLinkLongPress,
-      final void Function(String)? onHashtagTap,
-      final void Function(String)? onClickEv,
-      final bool shouldNyaize,
-      final bool useAdvanced,
-      final bool useAnimation,
+      {required final TextStyle style,
+      final bool disableNyaize,
       final double scale,
       final double opacity,
-      final TextAlign? align,
-      final TextOverflow? overflow,
-      final int? maxLines}) = _$MfmConfigImpl;
+      final TextAlign? align}) = _$MfmConfigImpl;
 
-  @override
-  MisskeyColors get colors;
-  @override
-  bool get simple;
   @override
   TextStyle get style;
   @override
-  Widget Function(String, double, double, TextStyle) get customEmojiBuilder;
-  @override
-  Widget Function(String, TextStyle) get unicodeEmojiBuilder;
-  @override
-  Widget Function(String, String?, double, double) get mentionBuilder;
-  @override
-  void Function(String)? get onTapEmoji;
-  @override
-  void Function(String)? get onLinkTap;
-  @override
-  void Function(String)? get onLinkLongPress;
-  @override
-  void Function(String)? get onHashtagTap;
-  @override
-  void Function(String)? get onClickEv;
-  @override
-  bool get shouldNyaize;
-  @override
-  bool get useAdvanced;
-  @override
-  bool get useAnimation;
+  bool get disableNyaize;
   @override
   double get scale;
   @override
   double get opacity;
   @override
   TextAlign? get align;
-  @override
-  TextOverflow? get overflow;
-  @override
-  int? get maxLines;
 
   /// Create a copy of MfmConfig
   /// with the given fields replaced by the non-null parameter values.

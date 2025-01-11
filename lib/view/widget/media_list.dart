@@ -70,6 +70,7 @@ class MediaList extends ConsumerWidget {
           crossAxisCount: 2,
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
+          padding: EdgeInsets.zero,
           children: files
               .mapIndexed(
                 (index, file) => AspectRatio(

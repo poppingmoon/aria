@@ -16,8 +16,8 @@ int _countText(List<MfmNode> nodes) {
       MfmInlineCode(:final code) => acc + code.length,
       MfmText(:final text) => acc + text.length,
       MfmMention(:final acct) => acc + acct.length,
-      MfmHashTag(:final hashTag) => acc + hashTag.length,
-      MfmURL(:final value) => acc + value.length,
+      MfmHashtag(:final hashtag) => acc + hashtag.length,
+      MfmUrl(:final url) => acc + url.length,
       MfmNode(:final children?) => acc + _countText(children),
       _ => acc,
     };

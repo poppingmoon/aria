@@ -64,38 +64,26 @@ class TimelineNote extends HookConsumerWidget {
                 (settings.noteVerticalPadding, settings.noteHorizontalPadding),
           ),
         );
+        final style = TextStyle(
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+        );
         return Material(
           color: Theme.of(context).colorScheme.surface,
           child: InkWell(
             onTap: () => muted.value = false,
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: verticalPadding,
-                horizontal: horizontalPadding,
-              ),
-              child: Text.rich(
-                t.aria.userSaysSomethingSensitive(
-                  name: TextSpan(
-                    children: buildUsername(
-                      ref,
-                      account: account,
-                      user: appearNote.user,
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withValues(alpha: 0.7),
-                      ),
-                    ),
-                  ),
+            child: UsernameWidget(
+              account: account,
+              user: appearNote.user,
+              builder: (context, span) => Padding(
+                padding: EdgeInsets.symmetric(
+                  vertical: verticalPadding,
+                  horizontal: horizontalPadding,
                 ),
-                style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.7),
+                child: Text.rich(
+                  t.aria.userSaysSomethingSensitive(name: span),
+                  style: style,
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
               ),
             ),
           ),

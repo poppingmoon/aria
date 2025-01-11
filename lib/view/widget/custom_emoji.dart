@@ -100,47 +100,49 @@ class CustomEmoji extends ConsumerWidget {
         visible: !disableTooltip,
         child: Tooltip(
           message: emoji.replaceFirst('@.', ''),
-          child: ImageWidget(
-            url: disableShowingAnimatedImages
-                ? ref
-                    .watch(staticImageUrlProvider(account.host, proxiedUrl))
-                    .toString()
-                : proxiedUrl,
-            height: height,
-            opacity: opacity,
-            fit: BoxFit.contain,
-            errorBuilder: (_, __, ___) => ImageWidget(
-              url: rawUrl,
+          child: RepaintBoundary(
+            child: ImageWidget(
+              url: disableShowingAnimatedImages
+                  ? ref
+                      .watch(staticImageUrlProvider(account.host, proxiedUrl))
+                      .toString()
+                  : proxiedUrl,
               height: height,
               opacity: opacity,
               fit: BoxFit.contain,
-              errorBuilder: (_, __, ___) => fallbackToImage
-                  ? Assets.misskey.packages.frontend.assets.dummy.image(
-                      height: height,
-                      opacity: AlwaysStoppedAnimation(opacity),
-                      fit: BoxFit.contain,
-                    )
-                  : height > fallbackTextStyle.lineHeight
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              emoji,
-                              style: fallbackTextStyle,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ],
-                        )
-                      : Text(
-                          emoji,
-                          style: fallbackTextStyle,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        ),
+              errorBuilder: (_, __, ___) => ImageWidget(
+                url: rawUrl,
+                height: height,
+                opacity: opacity,
+                fit: BoxFit.contain,
+                errorBuilder: (_, __, ___) => fallbackToImage
+                    ? Assets.misskey.packages.frontend.assets.dummy.image(
+                        height: height,
+                        opacity: AlwaysStoppedAnimation(opacity),
+                        fit: BoxFit.contain,
+                      )
+                    : height > fallbackTextStyle.lineHeight
+                        ? Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                emoji,
+                                style: fallbackTextStyle,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ],
+                          )
+                        : Text(
+                            emoji,
+                            style: fallbackTextStyle,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+              ),
+              semanticLabel: emoji,
+              enableFadeIn: enableFadeIn,
             ),
-            semanticLabel: emoji,
-            enableFadeIn: enableFadeIn,
           ),
         ),
       ),

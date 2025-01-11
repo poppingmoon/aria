@@ -12,7 +12,6 @@ import '../../../provider/api/channel_notifier_provider.dart';
 import '../../../provider/api/id_gen_method_provider.dart';
 import '../../../provider/api/search_notes_notifier_provider.dart';
 import '../../../provider/api/user_notifier_provider.dart';
-import '../../../provider/misskey_colors_provider.dart';
 import '../../../util/format_datetime.dart';
 import '../../../util/pick_date_time.dart';
 import '../../../util/punycode.dart';
@@ -76,8 +75,6 @@ class SearchNotes extends HookConsumerWidget {
             ),
           )
         : null;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
 
     return PaginatedListView(
@@ -113,35 +110,27 @@ class SearchNotes extends HookConsumerWidget {
               ListTile(
                 title: Text(t.misskey.user),
                 subtitle: user != null
-                    ? Text.rich(
-                        TextSpan(
-                          children: [
-                            WidgetSpan(
-                              child: UserAvatar(account: account, user: user),
-                            ),
-                            const TextSpan(text: ' '),
-                            ...useMemoized(
-                              () => buildUsername(
-                                ref,
-                                account: account,
-                                user: user,
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
+                    ? UsernameWidget(
+                        account: account,
+                        leadingSpans: [
+                          WidgetSpan(
+                            child: UserAvatar(account: account, user: user),
+                          ),
+                          const TextSpan(text: ' '),
+                        ],
+                        user: user,
+                        trailingSpans: [
+                          const TextSpan(text: ' '),
+                          TextSpan(text: '@${user.username}'),
+                          if (user.host != null)
+                            TextSpan(
+                              text: '@${toUnicode(user.host!)}',
+                              style: TextStyle(
+                                color: style.color?.withValues(alpha: 0.5),
                               ),
-                              [user, colors],
                             ),
-                            const TextSpan(text: ' '),
-                            TextSpan(text: '@${user.username}'),
-                            if (user.host != null)
-                              TextSpan(
-                                text: '@${toUnicode(user.host!)}',
-                                style: TextStyle(
-                                  color: style.color?.withValues(alpha: 0.5),
-                                ),
-                              ),
-                          ],
-                        ),
+                        ],
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       )

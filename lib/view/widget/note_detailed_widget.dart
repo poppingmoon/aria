@@ -26,7 +26,6 @@ import 'acct_widget.dart';
 import 'bot_badge.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
-import 'emoji_sheet.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
@@ -77,6 +76,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
           ),
     );
     if (muted.value) {
+      final style = TextStyle(
+        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+      );
       return InkWell(
         onTap: () => muted.value = false,
         child: Padding(
@@ -84,29 +86,14 @@ class NoteDetailedWidget extends HookConsumerWidget {
             vertical: verticalPadding,
             horizontal: horizontalPadding,
           ),
-          child: Text.rich(
-            t.aria.userSaysSomething(
-              name: TextSpan(
-                children: buildUsername(
-                  ref,
-                  account: account,
-                  user: appearNote.user,
-                  style: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.7),
-                  ),
-                ),
-              ),
+          child: UsernameWidget(
+            account: account,
+            user: appearNote.user,
+            builder: (context, span) => Text.rich(
+              t.aria.userSaysSomething(name: span),
+              style: style,
+              textAlign: TextAlign.center,
             ),
-            style: TextStyle(
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.7),
-            ),
-            textAlign: TextAlign.center,
           ),
         ),
       );
@@ -123,17 +110,6 @@ class NoteDetailedWidget extends HookConsumerWidget {
     final longPressAction = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.noteLongPressAction),
-    );
-    final mfmSettings = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.advancedMfm,
-          settings.animatedMfm,
-          settings.fontFamily,
-          settings.fontSize,
-          settings.lineHeight,
-        ),
-      ),
     );
     final conversation = appearNote.replyId != null
         ? ref.watch(conversationNotesProvider(account, noteId))
@@ -289,9 +265,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                           style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
-                                          child: UsernameWidget(
-                                            account: account,
-                                            user: appearNote.user,
+                                          child: InkWell(
                                             onTap: () => context.push(
                                               '/$account/users/${appearNote.userId}',
                                             ),
@@ -299,6 +273,10 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                               context: context,
                                               account: account,
                                               userId: appearNote.userId,
+                                            ),
+                                            child: UsernameWidget(
+                                              account: account,
+                                              user: appearNote.user,
                                             ),
                                           ),
                                         ),
@@ -359,22 +337,16 @@ class NoteDetailedWidget extends HookConsumerWidget {
                     ),
                     const SizedBox(height: 8.0),
                     if (appearNote case Note(:final cw?)) ...[
-                      Mfm(
-                        account: account,
-                        text: cw,
-                        emojis: appearNote.emojis,
-                        author: appearNote.user,
-                        nyaize: true,
-                        selectable: true,
-                        onTapEmoji: (emoji) => showModalBottomSheet<void>(
-                          context: context,
-                          builder: (context) => EmojiSheet(
+                      if (cw.isNotEmpty)
+                        SelectionArea(
+                          child: Mfm(
                             account: account,
-                            emoji: emoji,
-                            targetNote: appearNote,
+                            text: cw,
+                            emojis: appearNote.emojis,
+                            author: appearNote.user,
+                            nyaize: true,
                           ),
                         ),
-                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 2.0),
                         child: CwButton(
@@ -388,17 +360,17 @@ class NoteDetailedWidget extends HookConsumerWidget {
                       if (parsed != null ||
                           appearNote.replyId != null ||
                           appearNote.renoteId != null)
-                        SelectableText.rich(
-                          TextSpan(
-                            children: [
-                              if (note.replyId != null)
+                        SelectionArea(
+                          child: Mfm(
+                            account: account,
+                            leadingSpans: [
+                              if (note.replyId case final replyId?)
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
                                   child: InkWell(
                                     borderRadius: BorderRadius.circular(8.0),
-                                    onTap: () => context.push(
-                                      '/$account/notes/${note.replyId}',
-                                    ),
+                                    onTap: () => context
+                                        .push('/$account/notes/$replyId'),
                                     child: Padding(
                                       padding:
                                           const EdgeInsets.only(right: 4.0),
@@ -411,43 +383,15 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                     ),
                                   ),
                                 ),
-                              if (parsed != null)
-                                ...useMemoized(
-                                  () => buildMfm(
-                                    ref,
-                                    account: account,
-                                    nodes: parsed,
-                                    emojis: appearNote.emojis,
-                                    author: appearNote.user,
-                                    nyaize: true,
-                                    onTapEmoji: (emoji) =>
-                                        showModalBottomSheet<void>(
-                                      context: context,
-                                      builder: (context) => EmojiSheet(
-                                        account: account,
-                                        emoji: emoji,
-                                        targetNote: appearNote,
-                                      ),
-                                    ),
-                                  ),
-                                  [
-                                    account,
-                                    parsed,
-                                    colors,
-                                    appearNote.user,
-                                    appearNote.emojis,
-                                    mfmSettings,
-                                  ],
-                                ),
-                              if (appearNote.renoteId != null)
+                            ],
+                            nodes: parsed,
+                            trailingSpans: [
+                              if (appearNote.renoteId case final renoteId?)
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
                                   child: InkWell(
-                                    onTap: () {
-                                      context.push(
-                                        '/$account/notes/${appearNote.renoteId}',
-                                      );
-                                    },
+                                    onTap: () => context
+                                        .push('/$account/notes/$renoteId'),
                                     child: Padding(
                                       padding: const EdgeInsets.only(left: 4.0),
                                       child: Text(
@@ -462,6 +406,9 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                   ),
                                 ),
                             ],
+                            emojis: appearNote.emojis,
+                            author: appearNote.user,
+                            nyaize: true,
                           ),
                         ),
                       if (appearNote.files.isNotEmpty)

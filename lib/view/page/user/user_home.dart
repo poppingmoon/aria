@@ -22,7 +22,6 @@ import '../../../util/open_as_guest.dart';
 import '../../../util/punycode.dart';
 import '../../dialog/image_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
-import '../../widget/emoji_sheet.dart';
 import '../../widget/error_message.dart';
 import '../../widget/image_widget.dart';
 import '../../widget/mfm.dart';
@@ -419,21 +418,15 @@ class _UserHome extends ConsumerWidget {
                       width: double.infinity,
                       padding: const EdgeInsets.all(8.0),
                       child: user.description != null
-                          ? Mfm(
-                              account: account,
-                              text: user.description,
-                              emojis: user.emojis,
-                              author: user,
-                              isUserDescription: true,
-                              selectable: true,
-                              onTapEmoji: (emoji) => showModalBottomSheet<void>(
-                                context: context,
-                                builder: (context) => EmojiSheet(
-                                  account: account,
-                                  emoji: emoji,
-                                ),
+                          ? SelectionArea(
+                              child: Mfm(
+                                account: account,
+                                text: user.description,
+                                emojis: user.emojis,
+                                author: user,
+                                isUserDescription: true,
+                                textAlign: TextAlign.center,
                               ),
-                              textAlign: TextAlign.center,
                             )
                           : Text(
                               t.misskey.noAccountDescription,

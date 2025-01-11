@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,7 +9,6 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../hook/tap_gesture_recognizer_hook.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
@@ -38,17 +39,6 @@ class PollWidget extends HookConsumerWidget {
     final showResult = useState(closed || isVoted);
     final emojis =
         ref.watch(noteProvider(account, noteId).select((note) => note?.emojis));
-    final mfmSettings = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.advancedMfm,
-          settings.animatedMfm,
-          settings.fontFamily,
-          settings.fontSize,
-          settings.lineHeight,
-        ),
-      ),
-    );
     final recognizer = useTapGestureRecognizer();
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
@@ -73,8 +63,8 @@ class PollWidget extends HookConsumerWidget {
                         ],
                         stops: [
                           0,
-                          choice.votes / total,
-                          choice.votes / total,
+                          choice.votes / max(total, 1),
+                          choice.votes / max(total, 1),
                         ],
                       )
                     : null,
@@ -110,38 +100,22 @@ class PollWidget extends HookConsumerWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              ...useMemoized(
-                                () => buildMfm(
-                                  ref,
-                                  account: account,
-                                  text: choice.text,
-                                  simple: true,
-                                  emojis: emojis,
-                                ),
-                                [
-                                  account,
-                                  choice.text,
-                                  colors,
-                                  emojis,
-                                  mfmSettings,
-                                ],
-                              ),
-                              if (showResult.value)
-                                TextSpan(
-                                  text:
-                                      ' (${t.misskey.poll_.votesCount(n: NumberFormat().format(choice.votes))})',
-                                  style: TextStyle(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onSurface
-                                        .withValues(alpha: 0.5),
+                        child: Mfm(
+                          account: account,
+                          text: choice.text,
+                          trailingSpans: showResult.value
+                              ? [
+                                  TextSpan(
+                                    text:
+                                        ' (${t.misskey.poll_.votesCount(n: NumberFormat().format(choice.votes))})',
+                                    style: TextStyle(
+                                      color: colors.fg.withValues(alpha: 0.5),
+                                    ),
                                   ),
-                                ),
-                            ],
-                          ),
+                                ]
+                              : null,
+                          simple: true,
+                          emojis: emojis,
                         ),
                       ),
                     ),

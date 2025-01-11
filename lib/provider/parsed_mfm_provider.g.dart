@@ -6,7 +6,7 @@ part of 'parsed_mfm_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$parsedMfmHash() => r'f892bb53f573cf67e71461071eda194d4ea747b6';
+String _$parsedMfmHash() => r'00c66c7182a87069f2102f463cf53f4c053ec3e9';
 
 /// Copied from Dart SDK
 class _SystemHash {

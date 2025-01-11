@@ -155,15 +155,17 @@ class GalleryPostPreview extends HookConsumerWidget {
                           context.push('/$account/users/${post.userId}'),
                     ),
                     const SizedBox(width: 2.0),
-                    UsernameWidget(
-                      account: account,
-                      user: post.user,
+                    InkWell(
                       onTap: () =>
                           context.push('/$account/users/${post.userId}'),
                       onLongPress: () => showUserSheet(
                         context: context,
                         account: account,
                         userId: post.userId,
+                      ),
+                      child: UsernameWidget(
+                        account: account,
+                        user: post.user,
                       ),
                     ),
                   ],

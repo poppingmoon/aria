@@ -16,6 +16,8 @@ class MentionWidget extends ConsumerWidget {
     required this.account,
     required this.username,
     required this.host,
+    this.scale = 1.0,
+    this.opacity = 1.0,
     this.onTap,
     this.onDeleted,
     this.textScaler,
@@ -24,6 +26,8 @@ class MentionWidget extends ConsumerWidget {
   final Account account;
   final String username;
   final String host;
+  final double scale;
+  final double opacity;
   final void Function()? onTap;
   final void Function()? onDeleted;
   final TextScaler? textScaler;
@@ -39,14 +43,19 @@ class MentionWidget extends ConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final isLocal = account.host.toLowerCase() == host.toLowerCase();
-    final isMe = isLocal && account.username == username.toLowerCase();
-    final color = isMe ? colors.mentionMe : colors.mention;
+    final isMe =
+        isLocal && account.username?.toLowerCase() == username.toLowerCase();
+    final color =
+        (isMe ? colors.mentionMe : colors.mention).withValues(alpha: opacity);
+    final style = DefaultTextStyle.of(context)
+        .style
+        .apply(fontSizeFactor: scale, color: color);
 
     return ChipTheme(
       data: ChipThemeData.fromDefaults(
         primaryColor: color,
         secondaryColor: Colors.transparent,
-        labelStyle: DefaultTextStyle.of(context).style,
+        labelStyle: style,
       ),
       child: InputChip(
         avatar: CircleAvatar(
@@ -63,17 +72,20 @@ class MentionWidget extends ConsumerWidget {
         label: Text.rich(
           TextSpan(
             children: [
-              TextSpan(text: '@$username', style: TextStyle(color: color)),
+              TextSpan(text: '@$username'),
               if (!isLocal)
                 TextSpan(
                   text: '@${toUnicode(host)}',
-                  style: TextStyle(color: color.withValues(alpha: 0.7)),
+                  style:
+                      TextStyle(color: color.withValues(alpha: color.a * 0.7)),
                 ),
             ],
           ),
           textDirection: TextDirection.ltr,
           textScaler: textScaler,
         ),
+        padding: EdgeInsets.all(4.0 * scale),
+        labelPadding: EdgeInsets.symmetric(horizontal: 4.0 * scale),
         onPressed: onTap,
         onDeleted: onDeleted,
         side: BorderSide.none,
