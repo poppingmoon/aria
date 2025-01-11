@@ -166,7 +166,8 @@ class UrlPreview extends HookConsumerWidget {
         if (defaultTargetPlatform
             case TargetPlatform.android ||
                 TargetPlatform.iOS ||
-                TargetPlatform.macOS)
+                TargetPlatform.macOS ||
+                TargetPlatform.windows)
           if (playerUrl != null || tweetId != null) ...[
             if (isPlayerOpen.value) ...[
               if (summalyResult case SummalyResult(player: Player(url: _?)))
@@ -178,7 +179,7 @@ class UrlPreview extends HookConsumerWidget {
                   lang: Localizations.localeOf(context).toLanguageTag(),
                 ),
             ],
-            const SizedBox(height: 4.0),
+            const SizedBox(height: 6.0),
             OutlinedButton.icon(
               style: OutlinedButton.styleFrom(
                 foregroundColor: colors.fg,
@@ -189,6 +190,7 @@ class UrlPreview extends HookConsumerWidget {
                     const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
                 minimumSize: Size.zero,
                 side: BorderSide.none,
+                visualDensity: VisualDensity.standard,
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               onPressed: () => isPlayerOpen.value = !isPlayerOpen.value,

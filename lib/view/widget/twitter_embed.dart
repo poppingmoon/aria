@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
@@ -68,27 +69,39 @@ class TwitterEmbed extends HookConsumerWidget {
 
 </html>
 """;
+    final shouldLaunch = useState(false);
 
     return SizedBox(
       height: height.value,
-      child: InAppWebView(
-        initialSettings: InAppWebViewSettings(transparentBackground: true),
-        initialData: InAppWebViewInitialData(data: content),
-        onWebViewCreated: (controller) => controller.addJavaScriptHandler(
-          handlerName: 'onReady',
-          callback: (arguments) =>
-              height.value = (arguments.single as num).toDouble() + 16.0,
-        ),
-        shouldOverrideUrlLoading: (controller, navigationAction) async {
-          if (navigationAction.hasGesture ?? false) {
+      child: InkWell(
+        onTap: defaultTargetPlatform == TargetPlatform.windows ? () {} : null,
+        onHover: (value) => shouldLaunch.value = value,
+        child: InAppWebView(
+          initialSettings: InAppWebViewSettings(transparentBackground: true),
+          initialData: InAppWebViewInitialData(data: content),
+          onWebViewCreated: (controller) => controller.addJavaScriptHandler(
+            handlerName: 'onReady',
+            callback: (arguments) =>
+                height.value = (arguments.single as num).toDouble() + 16.0,
+          ),
+          shouldOverrideUrlLoading: (controller, navigationAction) async {
             final url = navigationAction.request.url;
-            if (url != null) {
+            if (url == null) {
+              return NavigationActionPolicy.CANCEL;
+            }
+            if (navigationAction.hasGesture ?? false) {
               await launchUrl(ref, url);
               return NavigationActionPolicy.CANCEL;
             }
-          }
-          return NavigationActionPolicy.ALLOW;
-        },
+            if (url.scheme == 'about' || url.host == 'platform.twitter.com') {
+              return NavigationActionPolicy.ALLOW;
+            }
+            if (shouldLaunch.value) {
+              await launchUrl(ref, url);
+            }
+            return NavigationActionPolicy.CANCEL;
+          },
+        ),
       ),
     );
   }
