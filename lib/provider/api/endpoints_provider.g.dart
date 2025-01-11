@@ -6,7 +6,7 @@ part of 'endpoints_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$endpointsHash() => r'fc03613363f3b924a991b48bc26784ced45f06ba';
+String _$endpointsHash() => r'2374401fbabe9f83b8e27fc8b5cae40abe46dc06';
 
 /// Copied from Dart SDK
 class _SystemHash {

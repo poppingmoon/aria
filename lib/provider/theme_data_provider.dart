@@ -40,6 +40,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     primaryColor: colors.accent,
     dividerColor: colors.divider,
     canvasColor: colors.bg,
+    disabledColor: colors.fg.withValues(alpha: 0.5),
     scaffoldBackgroundColor: colors.bg,
     textTheme: ThemeData(brightness: brightness)
         .textTheme
