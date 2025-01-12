@@ -17,7 +17,7 @@ Stream<List<String>> endpoints(Ref ref, String host) async* {
   if (file != null) {
     try {
       final s = await file.file.readAsString();
-      yield jsonDecode(s) as List<String>;
+      yield (jsonDecode(s) as List).whereType<String>().toList();
     } catch (_) {}
   }
   try {

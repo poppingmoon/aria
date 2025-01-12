@@ -1,12 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../../i18n/strings.g.dart';
 import '../../../model/general_settings.dart';
+import '../../../provider/cache_size_provider.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
+import '../../../util/future_with_dialog.dart';
+import '../../../util/pretty_bytes.dart';
 import '../../dialog/radio_dialog.dart';
 import '../../widget/general_settings_scaffold.dart';
 
@@ -16,6 +20,7 @@ class BehaviorPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final settings = ref.watch(generalSettingsNotifierProvider);
+    final cacheSize = ref.watch(cacheSizeProvider);
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.behavior)),
@@ -231,6 +236,27 @@ class BehaviorPage extends ConsumerWidget {
                   .read(generalSettingsNotifierProvider.notifier)
                   .setEnablePredictiveBack(value),
             ),
+          ListTile(
+            title: Text(t.aria.clearCache),
+            subtitle: Text(
+              switch (cacheSize) {
+                AsyncValue(valueOrNull: final cacheSize?) =>
+                  prettyBytes(cacheSize),
+                AsyncValue(error: final _?) => t.misskey.unknown,
+                _ => t.aria.calculating,
+              },
+            ),
+            trailing: const Icon(Icons.navigate_next),
+            enabled: cacheSize.valueOrNull != 0,
+            onTap: () async {
+              await futureWithDialog(
+                context,
+                getApplicationCacheDirectory()
+                    .then((cacheDir) => cacheDir.delete(recursive: true)),
+              );
+              ref.invalidate(cacheSizeProvider);
+            },
+          ),
         ],
       ),
       selectedDestination: GeneralSettingsDestination.behavior,
