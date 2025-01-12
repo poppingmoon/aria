@@ -424,7 +424,8 @@ class ImagePage extends HookConsumerWidget {
                       .getSingleFile(file.url),
                 }
                     .readAsBytes();
-                final imageSize = ImageSizeGetter.getSize(MemoryInput(data));
+                final imageSize =
+                    ImageSizeGetter.getSizeResult(MemoryInput(data)).size;
                 ref.read(overlayLayersNotifierProvider.notifier).add(
                       ImageLayer(
                         data: data,
@@ -449,7 +450,8 @@ class ImagePage extends HookConsumerWidget {
                   final file =
                       await ref.read(cacheManagerProvider).getSingleFile(url);
                   final data = await file.readAsBytes();
-                  final imageSize = ImageSizeGetter.getSize(MemoryInput(data));
+                  final imageSize =
+                      ImageSizeGetter.getSizeResult(MemoryInput(data)).size;
                   ref.read(overlayLayersNotifierProvider.notifier).add(
                         ImageLayer(
                           data: data,
@@ -469,7 +471,8 @@ class ImagePage extends HookConsumerWidget {
                   final file =
                       await ref.read(cacheManagerProvider).getSingleFile(url);
                   final data = await file.readAsBytes();
-                  final imageSize = ImageSizeGetter.getSize(MemoryInput(data));
+                  final imageSize =
+                      ImageSizeGetter.getSizeResult(MemoryInput(data)).size;
                   ref.read(overlayLayersNotifierProvider.notifier).add(
                         ImageLayer(
                           data: data,
