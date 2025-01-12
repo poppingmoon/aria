@@ -1,1 +1,2 @@
-const misskeyWebPushProxyUrl = 'https://misskey-web-push-proxy.deno.dev';
+const misskeyWebPushProxyUrl =
+    'https://misskey-web-push-proxy.poppingmoon.workers.dev';
