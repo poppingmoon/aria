@@ -29,7 +29,11 @@ mixin _$GeneralSettings {
   bool get highlightSensitiveMedia => throw _privateConstructorUsedError;
   bool get animatedMfm => throw _privateConstructorUsedError;
   bool get advancedMfm => throw _privateConstructorUsedError;
+  bool get showRepliesCount => throw _privateConstructorUsedError;
+  bool get showRenotesCount => throw _privateConstructorUsedError;
   bool get showReactionsCount => throw _privateConstructorUsedError;
+  bool get showReactionsCountInReactionButton =>
+      throw _privateConstructorUsedError;
   bool get loadRawImages => throw _privateConstructorUsedError;
   InstanceTicker get instanceTicker => throw _privateConstructorUsedError;
   bool get showNoteCreatedAt => throw _privateConstructorUsedError;
@@ -144,7 +148,10 @@ abstract class $GeneralSettingsCopyWith<$Res> {
       bool highlightSensitiveMedia,
       bool animatedMfm,
       bool advancedMfm,
+      bool showRepliesCount,
+      bool showRenotesCount,
       bool showReactionsCount,
+      bool showReactionsCountInReactionButton,
       bool loadRawImages,
       InstanceTicker instanceTicker,
       bool showNoteCreatedAt,
@@ -245,7 +252,10 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? highlightSensitiveMedia = null,
     Object? animatedMfm = null,
     Object? advancedMfm = null,
+    Object? showRepliesCount = null,
+    Object? showRenotesCount = null,
     Object? showReactionsCount = null,
+    Object? showReactionsCountInReactionButton = null,
     Object? loadRawImages = null,
     Object? instanceTicker = null,
     Object? showNoteCreatedAt = null,
@@ -349,9 +359,22 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
           ? _value.advancedMfm
           : advancedMfm // ignore: cast_nullable_to_non_nullable
               as bool,
+      showRepliesCount: null == showRepliesCount
+          ? _value.showRepliesCount
+          : showRepliesCount // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showRenotesCount: null == showRenotesCount
+          ? _value.showRenotesCount
+          : showRenotesCount // ignore: cast_nullable_to_non_nullable
+              as bool,
       showReactionsCount: null == showReactionsCount
           ? _value.showReactionsCount
           : showReactionsCount // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showReactionsCountInReactionButton: null ==
+              showReactionsCountInReactionButton
+          ? _value.showReactionsCountInReactionButton
+          : showReactionsCountInReactionButton // ignore: cast_nullable_to_non_nullable
               as bool,
       loadRawImages: null == loadRawImages
           ? _value.loadRawImages
@@ -683,7 +706,10 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
       bool highlightSensitiveMedia,
       bool animatedMfm,
       bool advancedMfm,
+      bool showRepliesCount,
+      bool showRenotesCount,
       bool showReactionsCount,
+      bool showReactionsCountInReactionButton,
       bool loadRawImages,
       InstanceTicker instanceTicker,
       bool showNoteCreatedAt,
@@ -782,7 +808,10 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? highlightSensitiveMedia = null,
     Object? animatedMfm = null,
     Object? advancedMfm = null,
+    Object? showRepliesCount = null,
+    Object? showRenotesCount = null,
     Object? showReactionsCount = null,
+    Object? showReactionsCountInReactionButton = null,
     Object? loadRawImages = null,
     Object? instanceTicker = null,
     Object? showNoteCreatedAt = null,
@@ -886,9 +915,22 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
           ? _value.advancedMfm
           : advancedMfm // ignore: cast_nullable_to_non_nullable
               as bool,
+      showRepliesCount: null == showRepliesCount
+          ? _value.showRepliesCount
+          : showRepliesCount // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showRenotesCount: null == showRenotesCount
+          ? _value.showRenotesCount
+          : showRenotesCount // ignore: cast_nullable_to_non_nullable
+              as bool,
       showReactionsCount: null == showReactionsCount
           ? _value.showReactionsCount
           : showReactionsCount // ignore: cast_nullable_to_non_nullable
+              as bool,
+      showReactionsCountInReactionButton: null ==
+              showReactionsCountInReactionButton
+          ? _value.showReactionsCountInReactionButton
+          : showReactionsCountInReactionButton // ignore: cast_nullable_to_non_nullable
               as bool,
       loadRawImages: null == loadRawImages
           ? _value.loadRawImages
@@ -1215,7 +1257,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
       this.highlightSensitiveMedia = false,
       this.animatedMfm = true,
       this.advancedMfm = true,
+      this.showRepliesCount = true,
+      this.showRenotesCount = true,
       this.showReactionsCount = false,
+      this.showReactionsCountInReactionButton = true,
       this.loadRawImages = false,
       this.instanceTicker = InstanceTicker.remote,
       this.showNoteCreatedAt = false,
@@ -1322,7 +1367,16 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool advancedMfm;
   @override
   @JsonKey()
+  final bool showRepliesCount;
+  @override
+  @JsonKey()
+  final bool showRenotesCount;
+  @override
+  @JsonKey()
   final bool showReactionsCount;
+  @override
+  @JsonKey()
+  final bool showReactionsCountInReactionButton;
   @override
   @JsonKey()
   final bool loadRawImages;
@@ -1566,7 +1620,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showReactionsCount: $showReactionsCount, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mergeReactionsByName: $mergeReactionsByName, alwaysShowAllReactions: $alwaysShowAllReactions, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, timelinesPageButtonTypes: $timelinesPageButtonTypes, showSmallTimelinesPageButtons: $showSmallTimelinesPageButtons, showSquaredTimelinesPageButtons: $showSquaredTimelinesPageButtons, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enableSpellCheck: $enableSpellCheck, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showRepliesCount: $showRepliesCount, showRenotesCount: $showRenotesCount, showReactionsCount: $showReactionsCount, showReactionsCountInReactionButton: $showReactionsCountInReactionButton, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mergeReactionsByName: $mergeReactionsByName, alwaysShowAllReactions: $alwaysShowAllReactions, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, timelinesPageButtonTypes: $timelinesPageButtonTypes, showSmallTimelinesPageButtons: $showSmallTimelinesPageButtons, showSquaredTimelinesPageButtons: $showSquaredTimelinesPageButtons, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enableSpellCheck: $enableSpellCheck, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -1585,8 +1639,15 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.animatedMfm == animatedMfm) &&
             (identical(other.advancedMfm, advancedMfm) ||
                 other.advancedMfm == advancedMfm) &&
+            (identical(other.showRepliesCount, showRepliesCount) ||
+                other.showRepliesCount == showRepliesCount) &&
+            (identical(other.showRenotesCount, showRenotesCount) ||
+                other.showRenotesCount == showRenotesCount) &&
             (identical(other.showReactionsCount, showReactionsCount) ||
                 other.showReactionsCount == showReactionsCount) &&
+            (identical(other.showReactionsCountInReactionButton, showReactionsCountInReactionButton) ||
+                other.showReactionsCountInReactionButton ==
+                    showReactionsCountInReactionButton) &&
             (identical(other.loadRawImages, loadRawImages) ||
                 other.loadRawImages == loadRawImages) &&
             (identical(other.instanceTicker, instanceTicker) ||
@@ -1615,20 +1676,14 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                     showTranslateButtonInNoteFooter) &&
             (identical(other.showNoteReactionsViewer, showNoteReactionsViewer) ||
                 other.showNoteReactionsViewer == showNoteReactionsViewer) &&
-            (identical(other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) ||
-                other.showSubNoteReactionsViewer ==
-                    showSubNoteReactionsViewer) &&
-            (identical(other.showNoteFooter, showNoteFooter) ||
-                other.showNoteFooter == showNoteFooter) &&
-            (identical(other.showSubNoteFooter, showSubNoteFooter) ||
-                other.showSubNoteFooter == showSubNoteFooter) &&
-            (identical(other.alwaysExpandCw, alwaysExpandCw) ||
-                other.alwaysExpandCw == alwaysExpandCw) &&
-            (identical(other.alwaysExpandLongNote, alwaysExpandLongNote) ||
-                other.alwaysExpandLongNote == alwaysExpandLongNote) &&
-            (identical(other.alwaysExpandMediaInSubNote, alwaysExpandMediaInSubNote) ||
-                other.alwaysExpandMediaInSubNote ==
-                    alwaysExpandMediaInSubNote) &&
+            (identical(
+                    other.showSubNoteReactionsViewer, showSubNoteReactionsViewer) ||
+                other.showSubNoteReactionsViewer == showSubNoteReactionsViewer) &&
+            (identical(other.showNoteFooter, showNoteFooter) || other.showNoteFooter == showNoteFooter) &&
+            (identical(other.showSubNoteFooter, showSubNoteFooter) || other.showSubNoteFooter == showSubNoteFooter) &&
+            (identical(other.alwaysExpandCw, alwaysExpandCw) || other.alwaysExpandCw == alwaysExpandCw) &&
+            (identical(other.alwaysExpandLongNote, alwaysExpandLongNote) || other.alwaysExpandLongNote == alwaysExpandLongNote) &&
+            (identical(other.alwaysExpandMediaInSubNote, alwaysExpandMediaInSubNote) || other.alwaysExpandMediaInSubNote == alwaysExpandMediaInSubNote) &&
             (identical(other.mergeReactionsByName, mergeReactionsByName) || other.mergeReactionsByName == mergeReactionsByName) &&
             (identical(other.alwaysShowAllReactions, alwaysShowAllReactions) || other.alwaysShowAllReactions == alwaysShowAllReactions) &&
             (identical(other.mediaListWithOneImageAppearance, mediaListWithOneImageAppearance) || other.mediaListWithOneImageAppearance == mediaListWithOneImageAppearance) &&
@@ -1700,7 +1755,10 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
         highlightSensitiveMedia,
         animatedMfm,
         advancedMfm,
+        showRepliesCount,
+        showRenotesCount,
         showReactionsCount,
+        showReactionsCountInReactionButton,
         loadRawImages,
         instanceTicker,
         showNoteCreatedAt,
@@ -1806,7 +1864,10 @@ abstract class _GeneralSettings implements GeneralSettings {
       final bool highlightSensitiveMedia,
       final bool animatedMfm,
       final bool advancedMfm,
+      final bool showRepliesCount,
+      final bool showRenotesCount,
       final bool showReactionsCount,
+      final bool showReactionsCountInReactionButton,
       final bool loadRawImages,
       final InstanceTicker instanceTicker,
       final bool showNoteCreatedAt,
@@ -1904,7 +1965,13 @@ abstract class _GeneralSettings implements GeneralSettings {
   @override
   bool get advancedMfm;
   @override
+  bool get showRepliesCount;
+  @override
+  bool get showRenotesCount;
+  @override
   bool get showReactionsCount;
+  @override
+  bool get showReactionsCountInReactionButton;
   @override
   bool get loadRawImages;
   @override

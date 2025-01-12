@@ -121,6 +121,26 @@ void main() {
       await tester.pumpAndSettle();
     });
 
+    testWidgets('should not show a replies count if disabled', (tester) async {
+      const account = Account(host: 'misskey.tld');
+      final note = dummyNote.copyWith(
+        id: 'test',
+        repliesCount: 1,
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowRepliesCount(false);
+      await tester.pumpAndSettle();
+      expect(find.text('1'), findsNothing);
+      await tester.pumpAndSettle();
+    });
+
     testWidgets('should show a replies count if replied', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
@@ -261,6 +281,26 @@ void main() {
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
       expect(find.text('0'), findsNothing);
+      await tester.pumpAndSettle();
+    });
+
+    testWidgets('should not show a renote count if disabled', (tester) async {
+      const account = Account(host: 'misskey.tld');
+      final note = dummyNote.copyWith(
+        id: 'test',
+        renoteCount: 1,
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowRenotesCount(false);
+      await tester.pumpAndSettle();
+      expect(find.text('1'), findsNothing);
       await tester.pumpAndSettle();
     });
 
@@ -868,7 +908,7 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should not show a reaction count', (tester) async {
+    testWidgets('should not show a reactions count', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -885,7 +925,7 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should not show a reaction count if enabled and not reacted',
+    testWidgets('should not show a reactions count if enabled and not reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
@@ -906,7 +946,7 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should show a reaction count if enabled and reacted',
+    testWidgets('should show a reactions count if enabled and reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
@@ -1140,7 +1180,7 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should not show a reaction count', (tester) async {
+    testWidgets('should not show a reactions count', (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -1158,7 +1198,7 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should not show a reaction count if enabled and not reacted',
+    testWidgets('should not show a reactions count if enabled and not reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
@@ -1180,7 +1220,7 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should show a reaction count if enabled and reacted',
+    testWidgets('should show a reactions count if enabled and reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(

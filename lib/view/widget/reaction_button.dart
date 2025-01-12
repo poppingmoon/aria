@@ -39,6 +39,10 @@ class ReactionButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final showReactionsCount = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showReactionsCountInReactionButton),
+    );
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
     final data = isCustomEmoji
@@ -181,8 +185,10 @@ class ReactionButton extends ConsumerWidget {
                   style: style,
                   disableTooltip: true,
                 ),
-                SizedBox(width: 4.0 * scale),
-                Text(count.toString(), style: style),
+                if (showReactionsCount) ...[
+                  SizedBox(width: 4.0 * scale),
+                  Text(count.toString(), style: style),
+                ],
               ],
             ),
           ),

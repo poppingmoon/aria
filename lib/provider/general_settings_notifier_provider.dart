@@ -67,8 +67,27 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowRepliesCount(bool showRepliesCount) async {
+    state = state.copyWith(showRepliesCount: showRepliesCount);
+    await _save();
+  }
+
+  Future<void> setShowRenotesCount(bool showRenotesCount) async {
+    state = state.copyWith(showRenotesCount: showRenotesCount);
+    await _save();
+  }
+
   Future<void> setShowReactionsCount(bool showReactionsCount) async {
     state = state.copyWith(showReactionsCount: showReactionsCount);
+    await _save();
+  }
+
+  Future<void> setShowReactionsCountInReactionButton(
+    bool showReactionsCountInReactionButton,
+  ) async {
+    state = state.copyWith(
+      showReactionsCountInReactionButton: showReactionsCountInReactionButton,
+    );
     await _save();
   }
 

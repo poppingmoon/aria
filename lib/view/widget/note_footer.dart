@@ -205,6 +205,11 @@ class _ReplyButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final showRepliesCount = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showRepliesCount),
+    );
+
     return IconButton(
       tooltip: t.misskey.reply,
       onPressed: !account.isGuest
@@ -222,7 +227,7 @@ class _ReplyButton extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Icon(Icons.reply),
-          if (note.repliesCount > 0)
+          if (showRepliesCount && note.repliesCount > 0)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 2.0),
               child: Text(
@@ -255,6 +260,10 @@ class _RenoteButton extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final showRenotesCount = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showRenotesCount),
+    );
     final myRenotingNoteId = useState(this.myRenotingNoteId);
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
@@ -352,7 +361,7 @@ class _RenoteButton extends HookConsumerWidget {
               Icons.repeat_rounded,
               color: myRenotingNoteId.value != null ? colors.renote : null,
             ),
-            if (note.renoteCount > 0)
+            if (showRenotesCount && note.renoteCount > 0)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 2.0),
                 child: Text(

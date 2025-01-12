@@ -19,7 +19,11 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
           json['highlightSensitiveMedia'] as bool? ?? false,
       animatedMfm: json['animatedMfm'] as bool? ?? true,
       advancedMfm: json['advancedMfm'] as bool? ?? true,
+      showRepliesCount: json['showRepliesCount'] as bool? ?? true,
+      showRenotesCount: json['showRenotesCount'] as bool? ?? true,
       showReactionsCount: json['showReactionsCount'] as bool? ?? false,
+      showReactionsCountInReactionButton:
+          json['showReactionsCountInReactionButton'] as bool? ?? true,
       loadRawImages: json['loadRawImages'] as bool? ?? false,
       instanceTicker: $enumDecodeNullable(
               _$InstanceTickerEnumMap, json['instanceTicker']) ??
@@ -159,7 +163,11 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
       'highlightSensitiveMedia': instance.highlightSensitiveMedia,
       'animatedMfm': instance.animatedMfm,
       'advancedMfm': instance.advancedMfm,
+      'showRepliesCount': instance.showRepliesCount,
+      'showRenotesCount': instance.showRenotesCount,
       'showReactionsCount': instance.showReactionsCount,
+      'showReactionsCountInReactionButton':
+          instance.showReactionsCountInReactionButton,
       'loadRawImages': instance.loadRawImages,
       'instanceTicker': _$InstanceTickerEnumMap[instance.instanceTicker]!,
       'showNoteCreatedAt': instance.showNoteCreatedAt,
