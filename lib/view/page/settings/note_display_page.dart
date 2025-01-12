@@ -170,11 +170,32 @@ class NoteDisplayPage extends HookConsumerWidget {
                         .setAdvancedMfm(value),
                   ),
                   SwitchListTile(
+                    title: Text(t.aria.showRepliesCount),
+                    value: settings.showRepliesCount,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowRepliesCount(value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.aria.showRenotesCount),
+                    value: settings.showRenotesCount,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowRenotesCount(value),
+                  ),
+                  SwitchListTile(
                     title: Text(t.misskey.showReactionsCount),
                     value: settings.showReactionsCount,
                     onChanged: (value) => ref
                         .read(generalSettingsNotifierProvider.notifier)
                         .setShowReactionsCount(value),
+                  ),
+                  SwitchListTile(
+                    title: Text(t.aria.showReactionsCountForEachTypes),
+                    value: settings.showReactionsCountInReactionButton,
+                    onChanged: (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowReactionsCountInReactionButton(value),
                   ),
                   SwitchListTile(
                     title: Text(t.misskey.loadRawImages),

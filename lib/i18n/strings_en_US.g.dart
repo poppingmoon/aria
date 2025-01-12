@@ -218,6 +218,9 @@ class TranslationsAriaEnUs {
 	String get showNoteReactionsViewer => 'Show reactions viewers in notes';
 	String get showPopupOnNewNote => 'Show popup on new note';
 	String get showQuoteButtonInNoteFooter => 'Add "Quote" to note action menu';
+	String get showReactionsCountForEachTypes => 'See the number of reactions for each reaction types';
+	String get showRenotesCount => 'See the number of renotes in notes';
+	String get showRepliesCount => 'See the number of replies in notes';
 	String get showSelfRenotes => 'Show self-renotes';
 	String get showSmallButtons => 'Show small buttons';
 	String get showSquaredButtons => 'Show squared buttons';
