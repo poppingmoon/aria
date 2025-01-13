@@ -61,6 +61,7 @@ MisskeyColors compileTheme(MisskeyTheme theme) {
     accentDarken: getColor(props['accentDarken']!),
     accentLighten: getColor(props['accentLighten']!),
     accentedBg: getColor(props['accentedBg']!),
+    love: getColor(props['love']!),
     bg: getColor(props['bg']!),
     fg: getColor(props['fg']!),
     fgOnAccent: getColor(props['fgOnAccent']!),

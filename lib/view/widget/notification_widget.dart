@@ -354,7 +354,7 @@ class NotificationWidget extends ConsumerWidget {
             leading: DecoratedBox(
               decoration: BoxDecoration(
                 color: note.reactionAcceptance == ReactionAcceptance.likeOnly
-                    ? eventReactionHeart
+                    ? colors.love
                     : eventReaction,
                 shape: BoxShape.circle,
               ),

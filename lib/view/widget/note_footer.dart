@@ -6,7 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
-import '../../constant/colors.dart';
 import '../../extension/note_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -576,6 +575,8 @@ class _RemoveReactionButton extends ConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showReactionsCount),
     );
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return GestureDetector(
       onLongPress: () {
@@ -614,15 +615,9 @@ class _RemoveReactionButton extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (note.reactionAcceptance == ReactionAcceptance.likeOnly)
-              const Icon(
-                Icons.favorite,
-                color: eventReactionHeart,
-              )
+              Icon(Icons.favorite, color: colors.love)
             else
-              Icon(
-                Icons.remove,
-                color: Theme.of(context).colorScheme.primary,
-              ),
+              Icon(Icons.remove, color: colors.accent),
             if ((note.reactionAcceptance == ReactionAcceptance.likeOnly ||
                     showReactionsCount) &&
                 (note.reactionCount ?? 0) > 0)
