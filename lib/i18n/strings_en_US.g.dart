@@ -65,7 +65,6 @@ class TranslationsAriaEnUs {
 	String get background => 'Background';
 	String get buttonTypes => 'Button types';
 	String get calculating => 'Calculating...';
-	String get clearCache => 'Clear cache';
 	String get confirmBeforeFollow => 'Confirm before follow';
 	String get confirmBeforePost => 'Confirm before post';
 	String get confirmBeforeReact => 'Confirm before react';

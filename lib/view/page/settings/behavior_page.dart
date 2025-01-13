@@ -237,7 +237,7 @@ class BehaviorPage extends ConsumerWidget {
                   .setEnablePredictiveBack(value),
             ),
           ListTile(
-            title: Text(t.aria.clearCache),
+            title: Text(t.misskey.clearCache),
             subtitle: Text(
               switch (cacheSize) {
                 AsyncValue(valueOrNull: final cacheSize?) =>
