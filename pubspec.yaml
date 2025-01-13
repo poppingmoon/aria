@@ -86,6 +86,7 @@ dependencies:
       ref: 3f007c360d848c390982e8e739e1ce052091b3aa
   multi_split_view: ^3.6.0
   package_info_plus: ^8.1.2
+  path: ^1.9.0
   path_provider: ^2.1.5
   photo_view: ^0.15.0
   punycode: ^1.0.0
