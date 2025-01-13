@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:ui';
 
+import 'package:async/async.dart';
 import 'package:collection/collection.dart';
 import 'package:file/file.dart';
 import 'package:flutter/foundation.dart';
@@ -17,12 +18,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'constant/colors.dart';
 import 'constant/notification_channel_id.dart';
 import 'constant/shortcuts.dart';
 import 'extension/user_extension.dart';
 import 'gen/assets.gen.dart';
+import 'hook/on_window_move_hook.dart';
+import 'hook/on_window_moved_hook.dart';
+import 'hook/on_window_resize_hook.dart';
+import 'hook/on_window_resized_hook.dart';
 import 'i18n/strings.g.dart';
 import 'model/account.dart';
 import 'model/id.dart';
@@ -35,6 +41,10 @@ import 'provider/theme_data_provider.dart';
 import 'provider/unified_push_endpoint_notifier_provider.dart';
 import 'provider/user_ids_notifier_provider.dart';
 import 'provider/web_push_key_set_notifier_provider.dart';
+import 'provider/window_position_repository_provider.dart';
+import 'provider/window_size_repository_provider.dart';
+import 'repository/window_position_repository.dart';
+import 'repository/window_size_repository.dart';
 import 'router/router.dart';
 import 'rust/frb_generated.dart';
 
@@ -91,6 +101,22 @@ void main() async {
     );
   });
   final prefs = await SharedPreferences.getInstance();
+  if (defaultTargetPlatform
+      case TargetPlatform.linux ||
+          TargetPlatform.macOS ||
+          TargetPlatform.windows) {
+    await windowManager.ensureInitialized();
+    final size = WindowSizeRepository(prefs).getSize();
+    final position = WindowPositionRepository(prefs).getPosition();
+    final options = WindowOptions(size: size);
+    await windowManager.waitUntilReadyToShow(options, () async {
+      if (position != null) {
+        await windowManager.setPosition(position);
+      }
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
   runApp(
     ProviderScope(
       overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
@@ -470,18 +496,50 @@ class Aria extends HookConsumerWidget {
       },
       [],
     );
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      useOnAppLifecycleStateChange(
-        (_, state) async {
-          if (state == AppLifecycleState.resumed) {
-            final appLaunchDetails = await FlutterLocalNotificationsPlugin()
-                .getNotificationAppLaunchDetails();
-            if (appLaunchDetails?.notificationResponse case final response?) {
-              _onDidReceiveNotificationResponse(ref, response);
+    switch (defaultTargetPlatform) {
+      case TargetPlatform.android:
+        useOnAppLifecycleStateChange(
+          (_, state) async {
+            if (state == AppLifecycleState.resumed) {
+              final appLaunchDetails = await FlutterLocalNotificationsPlugin()
+                  .getNotificationAppLaunchDetails();
+              if (appLaunchDetails?.notificationResponse case final response?) {
+                _onDidReceiveNotificationResponse(ref, response);
+              }
             }
-          }
-        },
-      );
+          },
+        );
+      case TargetPlatform.linux:
+        final sizeTimer = useMemoized(
+          () => RestartableTimer(const Duration(seconds: 1), () async {
+            final size = await windowManager.getSize();
+            await ref.read(windowSizeRepositoryProvider).setSize(size);
+          }),
+          [],
+        );
+        final positionTimer = useMemoized(
+          () => RestartableTimer(const Duration(seconds: 1), () async {
+            final position = await windowManager.getPosition();
+            await ref
+                .read(windowPositionRepositoryProvider)
+                .setPosition(position);
+          }),
+          [],
+        );
+        useOnWindowResize(sizeTimer.reset);
+        useOnWindowMove(positionTimer.reset);
+      case TargetPlatform.macOS || TargetPlatform.windows:
+        useOnWindowResized(() async {
+          final size = await windowManager.getSize();
+          await ref.read(windowSizeRepositoryProvider).setSize(size);
+        });
+        useOnWindowMoved(() async {
+          final position = await windowManager.getPosition();
+          await ref
+              .read(windowPositionRepositoryProvider)
+              .setPosition(position);
+        });
+      default:
     }
 
     return MaterialApp.router(
