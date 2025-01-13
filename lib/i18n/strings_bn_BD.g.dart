@@ -974,6 +974,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportBnBd abuseReport_ = _TranslationsMisskeyAbuseReportBnBd._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesBnBd moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesBnBd._(_root);
 	@override late final _TranslationsMisskeyReversiBnBd reversi_ = _TranslationsMisskeyReversiBnBd._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsBnBd remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsBnBd._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1760,6 +1761,16 @@ class _TranslationsMisskeyReversiBnBd extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'মোট';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsBnBd extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeBnBd extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
@@ -1950,6 +1961,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientBnBd extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeBnBd._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'পাওয়া যায়নি';
 }
 
 // Path: misskey.pages_.blocks.note_

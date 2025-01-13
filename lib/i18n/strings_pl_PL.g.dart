@@ -1171,6 +1171,7 @@ class _TranslationsMisskeyPlPl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportPlPl abuseReport_ = _TranslationsMisskeyAbuseReportPlPl._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesPlPl moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesPlPl._(_root);
 	@override late final _TranslationsMisskeyReversiPlPl reversi_ = _TranslationsMisskeyReversiPlPl._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsPlPl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPlPl._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2015,6 +2016,16 @@ class _TranslationsMisskeyReversiPlPl extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Łącznie';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsPlPl extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPlPl noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPlPl._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypePlPl extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypePlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
@@ -2241,6 +2252,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientPlPl extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypePlPl recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypePlPl._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPlPl extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPlPl._(TranslationsPlPl root) : this._root = root, super.internal(root);
+
+	final TranslationsPlPl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nie znaleziono';
 }
 
 // Path: misskey.pages_.blocks.note_

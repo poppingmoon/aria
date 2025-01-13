@@ -64,9 +64,8 @@ class _TranslationsAriaZhTw extends TranslationsAriaEnUs {
 		const TextSpan(text: '嗎？'),
 	]);
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: '包含 '),
 		name,
-		const TextSpan(text: ' 敏感檔案的貼文'),
+		const TextSpan(text: '說了什麼'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: '包含 '),
@@ -313,7 +312,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get statistics => '統計';
 	@override String get clearQueue => '清除佇列';
 	@override String get clearQueueConfirmTitle => '確定要清除佇列嗎？';
-	@override String get clearQueueConfirmText => '未發佈的貼文將不會發佈。您通常不需要確認。';
+	@override String get clearQueueConfirmText => '未成功發佈的貼文將不會再嘗試發佈。通常不需要進行這項操作。';
 	@override String get clearCachedFiles => '清除快取資料';
 	@override String get clearCachedFilesConfirm => '確定要清除所有遠端暫存資料嗎？';
 	@override String get blockedInstances => '已封鎖的伺服器';
@@ -374,8 +373,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get upload => '上傳';
 	@override String get keepOriginalUploading => '保留原圖';
 	@override String get keepOriginalUploadingDescription => '上傳圖片時保留原始圖片。關閉時，瀏覽器會在上傳時生成適用於網路傳送的版本。';
-	@override String get fromDrive => '從雲端空間';
-	@override String get fromUrl => '從 URL';
+	@override String get fromDrive => '從雲端空間中選擇';
+	@override String get fromUrl => '從 URL 上傳';
 	@override String get uploadFromUrl => '從網址上傳';
 	@override String get uploadFromUrlDescription => '您要上傳的檔案網址';
 	@override String get uploadFromUrlRequested => '已請求上傳';
@@ -407,7 +406,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get dark => '深色';
 	@override String get lightThemes => '淺色佈景主題';
 	@override String get darkThemes => '深色佈景主題';
-	@override String get syncDeviceDarkMode => '與設備的深色模式同步';
+	@override String get syncDeviceDarkMode => '與裝置的深色模式同步';
 	@override String get drive => '雲端硬碟';
 	@override String get fileName => '檔案名稱';
 	@override String get selectFile => '選擇檔案';
@@ -767,7 +766,9 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => '使用 STARTTLS 時關閉。';
 	@override String get testEmail => '測試郵件發送';
 	@override String get wordMute => '被靜音的文字';
+	@override String get wordMuteDescription => '將包含指定語句的貼文最小化。 點擊最小化的貼文即可顯示。';
 	@override String get hardWordMute => '硬文字靜音';
+	@override String get hardWordMuteDescription => '隱藏含有指定語句的貼文。 與詞彙靜音不同的是，貼文將完全隱藏不見。';
 	@override String get regexpError => '正規表達式錯誤';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} 靜音文字的第 ${line} 行的正規表達式有錯誤：';
 	@override String get instanceMute => '被靜音的實例';
@@ -847,7 +848,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get loadRawImages => '以原始圖檔顯示附件圖檔的縮圖';
 	@override String get disableShowingAnimatedImages => '不播放動態圖檔';
 	@override String get highlightSensitiveMedia => '強調敏感標記';
-	@override String get verificationEmailSent => '已發送驗證電子郵件。請點擊進入電子郵件中的鏈接完成驗證。';
+	@override String get verificationEmailSent => '已發送驗證電子郵件。請點擊進入電子郵件中的連結以完成驗證。';
 	@override String get notSet => '未設定';
 	@override String get emailVerified => '已成功驗證您的電子郵件地址';
 	@override String get noteFavoritesCount => '我的最愛貼文的數目';
@@ -904,7 +905,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get receiveAnnouncementFromInstance => '接收來自伺服器的通知';
 	@override String get emailNotification => '郵件通知';
 	@override String get publish => '發布';
-	@override String get inChannelSearch => '頻道内搜尋';
+	@override String get inChannelSearch => '頻道內搜尋';
 	@override String get useReactionPickerForContextMenu => '點擊右鍵開啟反應選擇器';
 	@override String typingUsers({required Object users}) => '${users}輸入中';
 	@override String get jumpToSpecifiedDate => '跳轉到特定日期';
@@ -1008,7 +1009,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get incorrectTotp => '一次性密碼錯誤，或者已過期。';
 	@override String voteConfirm({required Object choice}) => '確定投給「${choice}」？';
 	@override String get hide => '隱藏';
-	@override String get useDrawerReactionPickerForMobile => '在移動設備上使用抽屜顯示';
+	@override String get useDrawerReactionPickerForMobile => '在行動裝置上使用抽屜顯示';
 	@override String welcomeBackWithName({required Object name}) => '歡迎回來，${name}';
 	@override String clickToFinishEmailVerification({required Object ok}) => '點擊 [${ok}] 完成電子郵件地址認證。';
 	@override String get overridedDeviceKind => '裝置類型';
@@ -1089,7 +1090,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get pushNotificationAlreadySubscribed => '推播通知啟用中';
 	@override String get pushNotificationNotSupported => '瀏覽器或伺服器不支援推播通知';
 	@override String get sendPushNotificationReadMessage => '如果已閱讀通知與訊息，就刪除推播通知';
-	@override String get sendPushNotificationReadMessageCaption => '「」通知將立刻顯示。可能會更消耗裝置電池。';
+	@override String get sendPushNotificationReadMessageCaption => '可能會導致裝置的電池消耗量增加。';
 	@override String get windowMaximize => '最大化';
 	@override String get windowMinimize => '最小化';
 	@override String get windowRestore => '復原';
@@ -1258,20 +1259,20 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get expired => '過期';
 	@override String get doYouAgree => '你同意嗎？';
 	@override String get beSureToReadThisAsItIsImportant => '重要，請務必閱讀。';
-	@override String iHaveReadXCarefullyAndAgree({required Object x}) => '我已仔細閱讀並同意「${x}」的内容。';
+	@override String iHaveReadXCarefullyAndAgree({required Object x}) => '我已仔細閱讀並同意「${x}」的內容。';
 	@override String get dialog => '對話方塊';
 	@override String get icon => '圖示';
 	@override String get forYou => '給您';
 	@override String get currentAnnouncements => '最新公告';
 	@override String get pastAnnouncements => '歷史公告';
 	@override String get youHaveUnreadAnnouncements => '有未讀的公告。';
-	@override String get useSecurityKey => '請按照瀏覽器或設備上的說明使用安全金鑰或 Passkey。';
+	@override String get useSecurityKey => '請按照瀏覽器或裝置上的說明來使用安全金鑰或 Passkey。';
 	@override String get replies => '回覆';
 	@override String get renotes => '轉發';
 	@override String get loadReplies => '閱覽回覆';
 	@override String get loadConversation => '閱覽對話';
 	@override String get pinnedList => '已置頂的清單';
-	@override String get keepScreenOn => '保持設備螢幕開啟';
+	@override String get keepScreenOn => '保持裝置螢幕開啟';
 	@override String get verifiedLink => '已驗證連結';
 	@override String get notifyNotes => '開啟貼文通知';
 	@override String get unnotifyNotes => '關閉貼文通知';
@@ -1326,7 +1327,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get seasonalScreenEffect => '隨季節變換畫面的呈現';
 	@override String get decorate => '設置頭像裝飾';
 	@override String get addMfmFunction => '插入 MFM 功能語法';
-	@override String get enableQuickAddMfmFunction => '顯示高級 MFM 選擇器';
+	@override String get enableQuickAddMfmFunction => '顯示進階 MFM 選擇器';
 	@override String get bubbleGame => '氣泡遊戲';
 	@override String get sfx => '音效';
 	@override String get soundWillBePlayed => '將播放音效';
@@ -1353,7 +1354,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get keepOriginalFilename => '保留原始檔名';
 	@override String get keepOriginalFilenameDescription => '如果關閉此設置，上傳時檔案名稱會自動替換為隨機字串。';
 	@override String get noDescription => '沒有說明文字';
-	@override String get alwaysConfirmFollow => '跟隨時總是確認';
+	@override String get alwaysConfirmFollow => '追隨時總是確認';
 	@override String get inquiry => '聯絡我們';
 	@override String get tryAgain => '請再試一次。';
 	@override String get confirmWhenRevealingSensitiveMedia => '要顯示敏感媒體時需確認';
@@ -1383,6 +1384,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get lockdown => '鎖定';
 	@override String get pleaseSelectAccount => '請選擇帳戶';
 	@override String get availableRoles => '可用角色';
+	@override String get acknowledgeNotesAndEnable => '了解注意事項後再開啟。';
 	@override late final _TranslationsMisskeyAccountSettingsZhTw accountSettings_ = _TranslationsMisskeyAccountSettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
@@ -1459,6 +1461,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuZhTw contextMenu_ = _TranslationsMisskeyContextMenuZhTw._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhTw._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionZhTw selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionZhTw._(_root);
+	@override late final _TranslationsMisskeyFollowRequestZhTw followRequest_ = _TranslationsMisskeyFollowRequestZhTw._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsZhTw remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsZhTw._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -1558,7 +1562,7 @@ class _TranslationsMisskeyInitialAccountSettingZhTw extends TranslationsMisskeyI
 	@override String get theseSettingsCanEditLater => '這裡的設定可以在之後變更。';
 	@override String get youCanEditMoreSettingsInSettingsPageLater => '除此之外，還可以在「設定」頁面進行各種設定。之後請確認看看。';
 	@override String get followUsers => '為了構築時間軸，試著追隨您感興趣的使用者吧。';
-	@override String pushNotificationDescription({required Object name}) => '啟用推送通知，就可以在設備上接收${name}的通知。';
+	@override String pushNotificationDescription({required Object name}) => '啟用推送通知後，就可以在裝置上接收來自${name}的通知了。';
 	@override String get initialAccountSettingCompleted => '初始設定完成了！';
 	@override String haveFun({required Object name}) => '盡情享受${name}吧！';
 	@override String youCanContinueTutorial({required Object name}) => '您可以繼續學習如何使用${name}(Misskey)，也可以就此打住，立即開始使用。';
@@ -1631,6 +1635,8 @@ class _TranslationsMisskeyServerSettingsZhTw extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '啟用時，可以顯著提高建立反應時的效能並減少資料庫的負載。 但是，Redis 記憶體使用量會增加。';
 	@override String get inquiryUrl => '聯絡表單網址';
 	@override String get inquiryUrlDescription => '指定伺服器運營者的聯絡表單網址，或包含運營者聯絡資訊網頁的網址。';
+	@override String get openRegistration => '允許建立帳戶';
+	@override String get openRegistrationWarning => '開放註冊伴隨著風險。 建議只有在伺服器受到持續監控，並準備好在出現問題時能立即處理的情況下才開放註冊。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '為了防止 spam，如果一段期間內沒有偵測到審查員的活動，此設定將自動關閉。';
 }
 
@@ -1653,7 +1659,7 @@ class _TranslationsMisskeyAccountMigrationZhTw extends TranslationsMisskeyAccoun
 	@override String get startMigration => '遷移';
 	@override String migrationConfirm({required Object account}) => '確定要將這個帳戶遷移至 ${account} 嗎？一旦遷移就無法撤銷，也就無法以原來的狀態使用這個帳戶。\n另外，請確認在要遷移到的帳戶已經建立了一個別名。';
 	@override String get movedAndCannotBeUndone => '帳戶已遷移。\n遷移無法撤消。';
-	@override String get postMigrationNote => '取消追蹤此帳戶將在遷移操作後 24 小時執行。\n 此帳戶有 0 個關注者/關注者。 您的關注者仍然可以看到此帳戶的關注者帖子，因為您不會被取消關注。';
+	@override String get postMigrationNote => '將在完成遷移後的 24 小時取消追隨所有帳號。\n此帳戶的追隨中/追隨者人數將歸零。由於不會解除粉絲對您的追隨，因此他們仍然可以繼續閱覽此帳戶僅對追隨者公開的貼文。';
 	@override String get movedTo => '要遷移到的帳戶：';
 }
 
@@ -2137,7 +2143,7 @@ class _TranslationsMisskeyX2faZhTw extends TranslationsMisskeyX2faEnUs {
 	@override String get step4 => '從現在開始，任何登入操作都將要求您提供權杖。';
 	@override String get securityKeyNotSupported => '您的瀏覽器不支援安全金鑰。';
 	@override String get registerTOTPBeforeKey => '如要註冊安全金鑰或 Passkey，請先設定驗證應用程式。';
-	@override String get securityKeyInfo => '您可以設定使用支援 FIDO2 的硬體安全鎖、終端設備的指紋認證，或者 PIN 碼來登入。';
+	@override String get securityKeyInfo => '您可以設定使用支援 FIDO2 的硬體安全金鑰，以及裝置上的生物辨識、PIN 碼和密碼等來登入。';
 	@override String get registerSecurityKey => '註冊安全金鑰或 Passkey';
 	@override String get securityKeyName => '輸入金鑰名稱';
 	@override String get tapSecurityKey => '按照瀏覽器的說明註冊安全金鑰或 Passkey。';
@@ -2428,7 +2434,7 @@ class _TranslationsMisskeyProfileZhTw extends TranslationsMisskeyProfileEnUs {
 	@override String get metadataEdit => '編輯附加資訊';
 	@override String get metadataDescription => '可以在個人資料中以表格形式顯示其他資訊。';
 	@override String get metadataLabel => '標籤';
-	@override String get metadataContent => '内容';
+	@override String get metadataContent => '內容';
 	@override String get changeAvatar => '更換大頭貼';
 	@override String get changeBanner => '變更橫幅圖像';
 	@override String get verifiedLinkDescription => '如果輸入包含您個人資料的網站 URL，欄位旁邊將出現驗證圖示。';
@@ -2984,6 +2990,32 @@ class _TranslationsMisskeySelfXssPreventionZhTw extends TranslationsMisskeySelfX
 	@override String description3({required Object link}) => '細節請看這裡。${link}';
 }
 
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestZhTw extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => '收到的請求';
+	@override String get sent => '送出的請求';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsZhTw extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhTw federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhTw._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhTw uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhTw._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhTw requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhTw responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhTw._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhTw responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhTw._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeZhTw extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -3047,7 +3079,7 @@ class _TranslationsMisskeyInitialTutorialNoteZhTw extends TranslationsMisskeyIni
 	@override String get description => '在Misskey上發布的內容稱為「貼文」。貼文在時間軸上按時間順序排列，並即時更新。';
 	@override String get reply => '您可以回覆貼文，並像討論串一樣繼續對話。';
 	@override String get renote => '您可以將此貼文分享到自己的時間軸。您也可以在引用時添加文字。';
-	@override String get reaction => '您可以添加反應。詳細資訊將在下一頁進行說明。';
+	@override String get reaction => '您可以加入反應。詳細資訊將在下一頁進行說明。';
 	@override String get menu => '可執行各種操作，如查看貼文詳細資訊和複製連結。';
 }
 
@@ -3059,8 +3091,8 @@ class _TranslationsMisskeyInitialTutorialReactionZhTw extends TranslationsMisske
 
 	// Translations
 	@override String get title => '什麼是反應？';
-	@override String get description => '您可以在貼文中添加「反應」。您可以使用反應輕鬆隨意地表達「最愛/大心」所無法傳達的細微差別。';
-	@override String get letsTryReacting => '可以透過點擊貼文上的「+」按鈕來添加反應。請嘗試在此範例貼文添加反應！';
+	@override String get description => '您可以在貼文中加上「反應」。有些用「最愛/大心」無法傳達的感想，可以用反應輕鬆地表達出來。';
+	@override String get letsTryReacting => '按一下貼文上的「+」按鈕即可加入反應。試著對此範例貼文加上反應！';
 	@override String get reactToContinue => '添加反應以繼續教學課程。';
 	@override String get reactNotification => '當有人對您的貼文做出反應時會即時接收到通知。';
 	@override String get reactDone => '按下「-」按鈕可以取消反應。';
@@ -3258,7 +3290,7 @@ class _TranslationsMisskeyRoleOptionsZhTw extends TranslationsMisskeyRoleOptions
 	@override String get avatarDecorationLimit => '頭像裝飾的最大設置量';
 	@override String get canImportAntennas => '允許匯入天線';
 	@override String get canImportBlocking => '允許匯入封鎖名單';
-	@override String get canImportFollowing => '允許匯入跟隨名單';
+	@override String get canImportFollowing => '允許匯入追隨名單';
 	@override String get canImportMuting => '允許匯入靜音名單';
 	@override String get canImportUserLists => '允許匯入清單';
 }
@@ -3608,7 +3640,72 @@ class _TranslationsMisskeyDataSaverCodeZhTw extends TranslationsMisskeyDataSaver
 
 	// Translations
 	@override String get title => '程式碼突出顯示';
-	@override String get description => '如果使用了 MFM 的程式碼突顯標記，則在點擊之前不會載入。程式碼突顯要求加載每種程式語言的突顯定義檔案，但由於這些檔案不再自動載入，因此有望減少資料流量。';
+	@override String get description => '如果使用了程式碼突顯語法（如 MFM），則在點擊之前不會被載入。由於需要為對應的程式語言下載突顯定義檔案，因此關閉自動載入有助於減少資料流量。';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhTw extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '無法與這個伺服器通訊';
+	@override String get description => '與此伺服器的通訊可能被停用、或封鎖了該伺服器，或被該伺服器封鎖。\n請聯繫您的伺服器管理員。';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhTw extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUriInvalidZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URI 不正確';
+	@override String get description => '輸入的 URI 有問題。請檢查是否輸入了 URI 中不能使用的字元。';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhTw extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRequestFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '請求失敗';
+	@override String get description => '與此伺服器的通訊失敗。可能是對方伺服器斷線。 此外，請檢查是否輸入了不正確或不存在的 URI。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhTw extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '回應不正確';
+	@override String get description => '雖然能夠與這個伺服器通訊，但是取得的資料不正確。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhTw extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => '輸入的 URI 的網域與最終取得的 URI 的網域不同。 如果您是透過第三方伺服器查詢遠端內容，請使用可在原始伺服器上取得的 URI 再次查詢。';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '查無項目';
+	@override String get description => '無法找到所要求的資源，請再次檢查 URI。';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -4612,7 +4709,7 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsPluginInstallFailedZhTw
 
 	// Translations
 	@override String get title => '外掛安裝失敗';
-	@override String get description => '安裝插件時出現問題。請再試一次。請參閱 Javascript 控制台以取得錯誤詳細資訊。';
+	@override String get description => '安裝外掛時出現問題。請再試一次。可參閱 Javascript 控制台以取得錯誤詳細資訊。';
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.themeParseFailed_

@@ -72,6 +72,9 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Meldingen';
 	@override String get username => 'Gebruikersnaam';
 	@override String get password => 'Wachtwoord';
+	@override String get initialPasswordForSetup => 'Initiële wachtwoord voor configuratie';
+	@override String get initialPasswordIsIncorrect => 'Initiële wachtwoord voor configuratie is onjuist';
+	@override String get initialPasswordForSetupDescription => 'Gebruik het initiële wachtwoord uit de configuratie, als je Misskey zelf hebt geïnstalleerd.\nAls je een Misskey hosting provider gebruikt, gebruik dan het gegeven wachtwoord.\nAls je geen wachtwoord hebt gezet, laat het dan leeg om verder te gaan.';
 	@override String get forgotPassword => 'Wachtwoord vergeten';
 	@override String get fetchingAsApObject => 'Ophalen vanuit de Fediverse';
 	@override String get ok => 'Ok';
@@ -172,9 +175,12 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get renote => 'Herdelen';
 	@override String get unrenote => 'Stop herdelen';
 	@override String get renoted => 'Herdeeld';
+	@override String renotedToX({required Object name}) => 'Renoted naar ${name}';
 	@override String get cantRenote => 'Dit bericht kan niet worden herdeeld';
 	@override String get cantReRenote => 'Een herdeling kan niet worden herdeeld';
 	@override String get quote => 'Quote';
+	@override String get renoteToChannel => 'Renote naar kanaal';
+	@override String get renoteToOtherChannel => 'Renote naar ander kanaal';
 	@override String get pinnedNote => 'Vastgemaakte notitie';
 	@override String get pinned => 'Vastmaken aan profielpagina';
 	@override String get you => 'Jij';
@@ -183,6 +189,10 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get add => 'Toevoegen';
 	@override String get reaction => 'Reacties';
 	@override String get reactions => 'Reacties';
+	@override String get emojiPicker => 'Emoji kiezer';
+	@override String get pinnedEmojisForReactionSettingDescription => 'Kies de emojis die als eerste getoond worden tijdens het reageren';
+	@override String get pinnedEmojisSettingDescription => 'Kies de emojis die als eerste getoond worden tijdens het reageren';
+	@override String get emojiPickerDisplay => 'Emoji kiezer weergave';
 	@override String get reactionSettingDescription2 => 'Sleep om opnieuw te ordenen, Klik om te verwijderen, Druk op "+" om toe te voegen';
 	@override String get rememberNoteVisibility => 'Vergeet niet de notitie zichtbaarheidsinstellingen';
 	@override String get attachCancel => 'Verwijder bijlage';
@@ -204,7 +214,7 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get selectWidget => 'Kies een widget';
 	@override String get editWidgets => 'Bewerk widgets';
 	@override String get editWidgetsExit => 'Klaar';
-	@override String get customEmojis => 'Maatwerk emoji';
+	@override String get customEmojis => 'Eigen emoji';
 	@override String get emoji => 'Emoji';
 	@override String get emojis => 'Emoji';
 	@override String get emojiName => 'Naam emoji';
@@ -467,7 +477,31 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override String get inputMessageHere => 'Voer hier je bericht in';
 	@override String get close => 'Sluiten';
 	@override String get invites => 'Uitnodigen';
+	@override String get members => 'Leden';
+	@override String get transfer => 'Overdracht';
+	@override String get title => 'Titel';
+	@override String get text => 'Tekst';
+	@override String get enable => 'Inschakelen';
+	@override String get next => 'Volgende';
+	@override String get retype => 'Opnieuw invoeren';
+	@override String noteOf({required Object user}) => 'Notitie van ${user}';
+	@override String get quoteAttached => 'Citaat';
+	@override String get quoteQuestion => 'Toevoegen als citaat?';
 	@override String get invitations => 'Uitnodigen';
+	@override String get dashboard => 'Overzicht';
+	@override String get local => 'Lokaal';
+	@override String get remote => 'Remote';
+	@override String get total => 'Totaal';
+	@override String get weekOverWeekChanges => 'Wijzigingen sinds vorige week';
+	@override String get dayOverDayChanges => 'Dagelijkse wijzigingen';
+	@override String get appearance => 'Weergave';
+	@override String get clientSettings => 'Clientinstellingen';
+	@override String get accountSettings => 'Accountinstellingen';
+	@override String get promotion => 'Promotie';
+	@override String get promote => 'Promoot';
+	@override String get numberOfDays => 'Aantal dagen';
+	@override String get hideThisNote => 'Verberg deze notitie';
+	@override String get showFeaturedNotesInTimeline => 'Laat featured notities in tijdlijn zien';
 	@override String get sound => 'Geluid';
 	@override String get smtpHost => 'Server';
 	@override String get smtpUser => 'Gebruikersnaam';
@@ -509,6 +543,8 @@ class _TranslationsMisskeyNlNl extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDeckNlNl deck_ = _TranslationsMisskeyDeckNlNl._(_root);
 	@override late final _TranslationsMisskeyWebhookSettingsNlNl webhookSettings_ = _TranslationsMisskeyWebhookSettingsNlNl._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesNlNl moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesNlNl._(_root);
+	@override late final _TranslationsMisskeyReversiNlNl reversi_ = _TranslationsMisskeyReversiNlNl._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNlNl remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNlNl._(_root);
 }
 
 // Path: misskey.delivery_
@@ -701,6 +737,26 @@ class _TranslationsMisskeyModerationLogTypesNlNl extends TranslationsMisskeyMode
 	@override String get resetPassword => 'Wachtwoord terugzetten';
 }
 
+// Path: misskey.reversi_
+class _TranslationsMisskeyReversiNlNl extends TranslationsMisskeyReversiEnUs {
+	_TranslationsMisskeyReversiNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get total => 'Totaal';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsNlNl extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNlNl noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNlNl._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeNlNl extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
@@ -790,4 +846,14 @@ class _TranslationsMisskeyDeckColumnsNlNl extends TranslationsMisskeyDeckColumns
 	@override String get antenna => 'Antennes';
 	@override String get list => 'Lijsten';
 	@override String get mentions => 'Vermeldingen';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNlNl extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNlNl._(TranslationsNlNl root) : this._root = root, super.internal(root);
+
+	final TranslationsNlNl _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Niet gevonden';
 }

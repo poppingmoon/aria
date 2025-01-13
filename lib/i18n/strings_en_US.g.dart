@@ -103,7 +103,7 @@ class TranslationsAriaEnUs {
 	String get fileNotFound => 'File not found';
 	String get findServer => 'Find a Misskey server';
 	TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'Are you sure you want to follow '),
+		const TextSpan(text: 'Are you sure that you want to follow '),
 		name,
 		const TextSpan(text: '?'),
 	]);
@@ -955,7 +955,9 @@ class TranslationsMisskeyEnUs {
 	String get smtpSecureInfo => 'Turn this off when using STARTTLS';
 	String get testEmail => 'Test email delivery';
 	String get wordMute => 'Word mute';
+	String get wordMuteDescription => 'Minimize notes that contain the specified word or phrase. Minimized notes can be displayed by clicking on them.';
 	String get hardWordMute => 'Hard word mute';
+	String get hardWordMuteDescription => 'Hide notes that contain the specified word or phrase. Unlike word mute, the note will be completely hidden from view.';
 	String get regexpError => 'Regular Expression error';
 	String regexpErrorDescription({required Object line, required Object tab}) => 'An error occurred in the regular expression on line ${line} of your ${tab} word mutes:';
 	String get instanceMute => 'Instance Mutes';
@@ -1571,6 +1573,7 @@ class TranslationsMisskeyEnUs {
 	String get lockdown => 'Lockdown';
 	String get pleaseSelectAccount => 'Select an account';
 	String get availableRoles => 'Available roles';
+	String get acknowledgeNotesAndEnable => 'Turn on after understanding the precautions.';
 	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
@@ -1647,6 +1650,8 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyContextMenuEnUs contextMenu_ = TranslationsMisskeyContextMenuEnUs.internal(_root);
 	late final TranslationsMisskeyEmbedCodeGenEnUs embedCodeGen_ = TranslationsMisskeyEmbedCodeGenEnUs.internal(_root);
 	late final TranslationsMisskeySelfXssPreventionEnUs selfXssPrevention_ = TranslationsMisskeySelfXssPreventionEnUs.internal(_root);
+	late final TranslationsMisskeyFollowRequestEnUs followRequest_ = TranslationsMisskeyFollowRequestEnUs.internal(_root);
+	late final TranslationsMisskeyRemoteLookupErrorsEnUs remoteLookupErrors_ = TranslationsMisskeyRemoteLookupErrorsEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -1829,6 +1834,8 @@ class TranslationsMisskeyServerSettingsEnUs {
 	String get reactionsBufferingDescription => 'When enabled, performance during reaction creation will be greatly improved, reducing the load on the database. However, Redis memory usage will increase.';
 	String get inquiryUrl => 'Inquiry URL';
 	String get inquiryUrlDescription => 'Specify a URL for the inquiry form to the server maintainer or a web page for the contact information.';
+	String get openRegistration => 'Make the account creation open';
+	String get openRegistrationWarning => 'Opening registration carries risks. It is recommended to only enable it if you have a system in place to continuously monitor the server and respond immediately in case of any issues.';
 	String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'If no moderator activity is detected for a while, this setting will be automatically turned off to prevent spam.';
 }
 
@@ -3182,6 +3189,32 @@ class TranslationsMisskeySelfXssPreventionEnUs {
 	String description3({required Object link}) => 'For more information, please refer to this. ${link}';
 }
 
+// Path: misskey.followRequest_
+class TranslationsMisskeyFollowRequestEnUs {
+	TranslationsMisskeyFollowRequestEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get recieved => 'Received application';
+	String get sent => 'Sent application';
+}
+
+// Path: misskey.remoteLookupErrors_
+class TranslationsMisskeyRemoteLookupErrorsEnUs {
+	TranslationsMisskeyRemoteLookupErrorsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs federationNotAllowed_ = TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs.internal(_root);
+	late final TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs uriInvalid_ = TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs.internal(_root);
+	late final TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs requestFailed_ = TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs.internal(_root);
+	late final TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs responseInvalid_ = TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs.internal(_root);
+	late final TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs responseInvalidIdHostNotMatch_ = TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs.internal(_root);
+	late final TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs noSuchObject_ = TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs.internal(_root);
+}
+
 // Path: misskeyIO.skebStatus_
 class TranslationsMisskeyIOSkebStatusEnUs {
 	TranslationsMisskeyIOSkebStatusEnUs.internal(this._root);
@@ -3823,6 +3856,71 @@ class TranslationsMisskeyDataSaverCodeEnUs {
 	// Translations
 	String get title => 'Code highlighting';
 	String get description => 'If code highlighting notations are used in MFM, etc., they will not load until tapped. Syntax highlighting requires downloading the highlight definition files for each programming language. Therefore, disabling the automatic loading of these files is expected to reduce the amount of communication data.';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Unable to communicate with this server';
+	String get description => 'Communication with this server may have been disabled or this server may be blocked.\nPlease contact the server administrator.';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'URI is invalid';
+	String get description => 'There is a problem with the URI you entered. Please check if you entered characters that cannot be used in the URI.';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Request failed';
+	String get description => 'Communication with this server failed. The server may be down. Also, please make sure that you have not entered an invalid or nonexistent URI.';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Response is invalid';
+	String get description => 'It could communicate with this server, but the data obtained was incorrect.';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get description => 'The domain of the entered URI differs from the domain of the final obtained URI. If you are looking up remote content through a third-party server, please look up again using a URI that can be obtained from the origin server.';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Not found';
+	String get description => 'The requested resource was not found, please recheck the URI.';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

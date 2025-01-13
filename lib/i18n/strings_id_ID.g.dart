@@ -117,9 +117,8 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 	@override String get uploaded => 'Terunggah';
 	@override String get useThisEmoji => 'Gunakan emoji ini';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'Postingan oleh '),
 		name,
-		const TextSpan(text: ' mengandung konten sensitif'),
+		const TextSpan(text: ' mengatakan sesuatu'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Postingan oleh '),
@@ -1472,6 +1471,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyOfflineScreenIdId offlineScreen_ = _TranslationsMisskeyOfflineScreenIdId._(_root);
 	@override late final _TranslationsMisskeyUrlPreviewSettingIdId urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingIdId._(_root);
 	@override late final _TranslationsMisskeyMediaControlsIdId mediaControls_ = _TranslationsMisskeyMediaControlsIdId._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsIdId remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsIdId._(_root);
 }
 
 // Path: misskey.abuseUserReport_
@@ -2896,6 +2896,16 @@ class _TranslationsMisskeyMediaControlsIdId extends TranslationsMisskeyMediaCont
 	@override String get loop => 'Ulangi Pemutaran';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsIdId extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeIdId extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
@@ -3495,6 +3505,16 @@ class _TranslationsMisskeyDataSaverCodeIdId extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'Penyorotan kode';
 	@override String get description => 'Jika notasi penyorotan kode digunakan di MFM, dll. Fungsi tersebut tidak akan dimuat apabila tidak diketuk. Penyorotan sintaks membutuhkan pengunduhan berkas definisi penyorotan untuk setiap bahasa pemrograman. Oleh sebab itu, menonaktifkan pemuatan otomatis dari berkas ini dilakukan untuk mengurangi jumlah komunikasi data.';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Tidak dapat ditemukan';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

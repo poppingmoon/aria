@@ -1587,3 +1587,6 @@ moderationLogTypes_:
   resetPassword: "Zresetuj hasło"
 reversi_:
   total: "Łącznie"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Nie znaleziono"

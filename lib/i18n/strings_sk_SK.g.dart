@@ -1043,6 +1043,7 @@ class _TranslationsMisskeySkSk extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportSkSk abuseReport_ = _TranslationsMisskeyAbuseReportSkSk._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesSkSk moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesSkSk._(_root);
 	@override late final _TranslationsMisskeyReversiSkSk reversi_ = _TranslationsMisskeyReversiSkSk._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsSkSk remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsSkSk._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1881,6 +1882,16 @@ class _TranslationsMisskeyReversiSkSk extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Celkom';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsSkSk extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectSkSk noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectSkSk._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeSkSk extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
@@ -2071,6 +2082,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientSkSk extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeSkSk._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectSkSk extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectSkSk._(TranslationsSkSk root) : this._root = root, super.internal(root);
+
+	final TranslationsSkSk _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nenájdené';
 }
 
 // Path: misskey.pages_.blocks.note_

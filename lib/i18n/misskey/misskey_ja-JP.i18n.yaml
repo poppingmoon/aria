@@ -688,7 +688,9 @@ smtpSecure: "SMTP 接続に暗黙的なSSL/TLSを使用する"
 smtpSecureInfo: "STARTTLS使用時はオフにします。"
 testEmail: "配信テスト"
 wordMute: "ワードミュート"
+wordMuteDescription: "指定した語句を含むノートを最小化します。最小化されたノートをクリックすることで表示することができます。"
 hardWordMute: "ハードワードミュート"
+hardWordMuteDescription: "指定した語句を含むノートを隠します。ワードミュートとは異なり、ノートは完全に表示されなくなります。"
 regexpError: "正規表現エラー"
 regexpErrorDescription: "{tab}ワードミュートの{line}行目の正規表現にエラーが発生しました:"
 instanceMute: "サーバーミュート"
@@ -1304,6 +1306,7 @@ thisContentsAreMarkedAsSigninRequiredByAuthor: "投稿者により、表示に�
 lockdown: "ロックダウン"
 pleaseSelectAccount: "アカウントを選択してください"
 availableRoles: "利用可能なロール"
+acknowledgeNotesAndEnable: "注意事項を理解した上でオンにします。"
 accountSettings_:
   requireSigninToViewContents: "コンテンツの表示にログインを必須にする"
   requireSigninToViewContentsDescription1: "あなたが作成した全てのノートなどのコンテンツを表示するのにログインを必須にします。クローラーに情報が収集されるのを防ぐ効果が期待できます。"
@@ -1460,6 +1463,8 @@ serverSettings_:
   reactionsBufferingDescription: "有効にすると、リアクション作成時のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。"
   inquiryUrl: "問い合わせ先URL"
   inquiryUrlDescription: "サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定します。"
+  openRegistration: "アカウントの作成をオープンにする"
+  openRegistrationWarning: "登録を開放することはリスクが伴います。サーバーを常に監視し、トラブルが発生した際にすぐに対応できる体制がある場合のみオンにすることを推奨します。"
   thisSettingWillAutomaticallyOffWhenModeratorsInactive: "一定期間モデレーターのアクティビティが検出されなかった場合、スパム防止のためこの設定は自動でオフになります。"
 accountMigration_:
   moveFrom: "別のアカウントからこのアカウントに移行"
@@ -2742,3 +2747,24 @@ selfXssPrevention_:
   description1: "ここに何かを貼り付けると、悪意のあるユーザーにアカウントを乗っ取られたり、個人情報を盗まれたりする可能性があります。"
   description2: "貼り付けようとしているものが何なのかを正確に理解していない場合は、%c今すぐ作業を中止してこのウィンドウを閉じてください。"
   description3: "詳しくはこちらをご確認ください。 {link}"
+followRequest_:
+  recieved: "受け取った申請"
+  sent: "送った申請"
+remoteLookupErrors_:
+  federationNotAllowed_:
+    title: "このサーバーとは通信できません"
+    description: "このサーバーとの通信が無効化されているか、このサーバーをブロックしている・ブロックされている可能性があります。\nサーバー管理者にお問い合わせください。"
+  uriInvalid_:
+    title: "URIが不正です"
+    description: "入力されたURIに問題があります。URIに使用できない文字を入力していないか確認してください。"
+  requestFailed_:
+    title: "リクエストに失敗しました"
+    description: "このサーバーとの通信に失敗しました。相手サーバーがダウンしている可能性があります。また、不正なURIや存在しないURIを入力していないか確認してください。"
+  responseInvalid_:
+    title: "レスポンスが不正です"
+    description: "このサーバーと通信することはできましたが、得られたデータが不正なものでした。"
+  responseInvalidIdHostNotMatch_:
+    description: "入力されたURIのドメインと最終的に得られたURIのドメインとが異なります。第三者のサーバーを介してリモートのコンテンツを照会している場合は、発信元のサーバーで取得できるURIを使用して照会し直してください。"
+  noSuchObject_:
+    title: "見つかりません"
+    description: "要求されたリソースは見つかりませんでした。URIをもう一度お確かめください。"

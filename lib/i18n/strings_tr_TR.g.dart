@@ -74,6 +74,7 @@ class _TranslationsMisskeyTrTr extends TranslationsMisskeyEnUs {
 	@override String get notifications => 'Bildirim';
 	@override String get username => 'Kullanıcı Adı';
 	@override String get password => 'Şifre';
+	@override String get initialPasswordForSetup => '';
 	@override String get forgotPassword => 'şifremi unuttum';
 	@override String get fetchingAsApObject => '從聯邦宇宙取得中...';
 	@override String get ok => 'TAMAM';

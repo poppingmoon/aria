@@ -61,6 +61,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get avatarSize => 'アイコンのサイズ';
 	@override String get background => '背景';
 	@override String get buttonTypes => 'ボタンのタイプ';
+	@override String get calculating => '計算しとる';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
 	@override String get confirmBeforeReact => 'ツッコミする前に確認する';
@@ -212,6 +213,9 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get showNoteReactionsViewer => 'ノートにツッコミを表示するで';
 	@override String get showPopupOnNewNote => 'ノートを受信したときにポップアップを表示するで';
 	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
+	@override String get showReactionsCountForEachTypes => '各リアクションのリアクション数を表示する';
+	@override String get showRenotesCount => 'ノートのリノート数を表示する';
+	@override String get showRepliesCount => 'ノートの返信数を表示する';
 	@override String get showSelfRenotes => 'セルフリノートを表示するで';
 	@override String get showSmallButtons => 'ボタンを小さく表示するで';
 	@override String get showSquaredButtons => 'ボタンを四角形で表示するで';
@@ -276,7 +280,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get fetchingAsApObject => '今ちと連合に照会しとるで';
 	@override String get ok => 'ええで';
 	@override String get gotIt => 'ほい';
-	@override String get cancel => 'やめとく';
+	@override String get cancel => 'やめる';
 	@override String get noThankYou => 'やめとく';
 	@override String get enterUsername => 'ユーザー名を入れてや';
 	@override String renotedBy({required Object user}) => '${user}がリノートしたで';
@@ -287,7 +291,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get notificationSettings => '通知の設定';
 	@override String get basicSettings => '基本設定';
 	@override String get otherSettings => 'ほかの設定';
-	@override String get openInWindow => 'ウィンドウで開くで';
+	@override String get openInWindow => 'ウィンドウで開く';
 	@override String get profile => 'プロフィール';
 	@override String get timeline => 'タイムライン';
 	@override String get noAccountDescription => '自己紹介食ってもた';
@@ -306,7 +310,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get alreadyFavorited => 'もうお気に入りに入れとるがな。';
 	@override String get cantFavorite => 'アカン、お気に入りに入れれんかったわ。';
 	@override String get pin => 'ピン留めしとく';
-	@override String get unpin => 'やっぱピン留めせん';
+	@override String get unpin => 'ピン留めやめる';
 	@override String get copyContent => '内容をコピー';
 	@override String get copyLink => 'リンクをコピー';
 	@override String get copyLinkRenote => 'リノートのリンクをコピーするで？';
@@ -324,7 +328,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get copyFolderId => 'フォルダーIDをコピー';
 	@override String get copyProfileUrl => 'プロフィールURLをコピー';
 	@override String get searchUser => 'ユーザーを探す';
-	@override String get searchThisUsersNotes => 'ユーザーのノートを検索';
+	@override String get searchThisUsersNotes => 'ユーザーのノートを探す';
 	@override String get reply => '返事';
 	@override String get loadMore => 'まだまだあるで！';
 	@override String get showMore => 'まだまだあるで！';
@@ -399,8 +403,8 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get rememberNoteVisibility => '公開範囲覚えといて';
 	@override String get attachCancel => 'のっけるのやめる';
 	@override String get deleteFile => 'ファイルをほかす';
-	@override String get markAsSensitive => 'ちょっとこれはアカン';
-	@override String get unmarkAsSensitive => 'そこまでアカンことないやろ';
+	@override String get markAsSensitive => 'ちょっと見せられへんわ';
+	@override String get unmarkAsSensitive => '別にええんじゃね？';
 	@override String get enterFileName => 'ファイル名を入れてや';
 	@override String get mute => 'ミュート';
 	@override String get unmute => 'ミュートやめたる';
@@ -413,13 +417,13 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get blockConfirm => 'ブロックしてもええんか？';
 	@override String get unblockConfirm => 'ブロックやめたるってほんまか？';
 	@override String get suspendConfirm => '凍結してしもうてええか？';
-	@override String get unsuspendConfirm => '解凍するけどええか？';
+	@override String get unsuspendConfirm => '溶かしたるけどええか？';
 	@override String get selectList => 'リストを選ぶ';
 	@override String get editList => 'リストいじる';
 	@override String get selectChannel => 'チャンネルを選ぶ';
 	@override String get selectAntenna => 'アンテナを選ぶ';
 	@override String get editAntenna => 'アンテナいじる';
-	@override String get createAntenna => 'アンテナを作成';
+	@override String get createAntenna => 'アンテナを作る';
 	@override String get selectWidget => 'ウィジェットを選ぶ';
 	@override String get editWidgets => 'ウィジェットをいじる';
 	@override String get editWidgetsExit => 'いじるのをやめる';
@@ -433,12 +437,12 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get cacheRemoteFiles => 'リモートのファイルをキャッシュする';
 	@override String get cacheRemoteFilesDescription => 'この設定を入れとったら、リモートのファイルを端から端までこのサーバーのキャッシュん中突っ込むようになるで。画像映し出すんがめっちゃ速うなるけど、サーバーの容量をやたらと食うようになるで。リモートの人がどんだけ長くキャッシュを持っとくかはドライブ容量の制限で決めとくで。制限を超えたら古いのから順々に消してって、かわりにリンクになるで。この設定を切ったら、リモートのファイルは最初っからリンクとして扱うことにするけど、画像のサムネ作るのとかみんなのプライバシー守るために、default.ymlのproxyRemoteFilesをtrueにしといたほうがええよ。';
 	@override String get youCanCleanRemoteFilesCache => 'ファイル管理にある🗑️ボタンでキャッシュ全部ほかすで。';
-	@override String get cacheRemoteSensitiveFiles => 'リモートのきわどいファイルをキャッシュに突っ込む';
+	@override String get cacheRemoteSensitiveFiles => 'リモートのきわどいファイルをキャッシュする';
 	@override String get cacheRemoteSensitiveFilesDescription => 'この設定を切ると、リモートのきわどいファイルはキャッシュせず直でリンクするようになるで。';
 	@override String get flagAsBot => 'Botにするで';
 	@override String get flagAsBotDescription => 'もしこのアカウントをプログラム使うて運用するんやったら、このフラグをオンにしてや。オンにすれば、反応がバーッて連鎖せんように開発者が使うたり、Misskeyのシステム上での扱いがBotに合ったもんになるからな。';
 	@override String get flagAsCat => '猫や。かわええな。';
-	@override String get flagAsCatDescription => 'ネコになりたいんならこれつけとき。';
+	@override String get flagAsCatDescription => '猫になりたいんならこれつけとき。';
 	@override String get flagShowTimelineReplies => 'タイムラインにノートへの返信を表示するで';
 	@override String get flagShowTimelineRepliesDescription => 'オンにしたら、タイムラインにユーザーのノートの他にもそのユーザーの他のノートへの返信を表示するで。';
 	@override String get autoAcceptFollowed => 'フォローしとるユーザーからのフォローリクエストを勝手に許可しとく';
@@ -447,9 +451,9 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get loginFailed => 'ログインに失敗してもうた…';
 	@override String get showOnRemote => 'リモートで見る';
 	@override String get continueOnRemote => 'リモートで続行';
-	@override String get chooseServerOnMisskeyHub => 'Misskey Hubからサーバーを選択';
+	@override String get chooseServerOnMisskeyHub => 'Misskey Hubからサーバーを選ぶ';
 	@override String get specifyServerHost => 'サーバーのドメインを直接指定';
-	@override String get inputHostName => 'ドメインを入力せえや';
+	@override String get inputHostName => 'ドメインを入力してや';
 	@override String get general => '全般';
 	@override String get wallpaper => '壁紙';
 	@override String get setWallpaper => '壁紙を設定';
@@ -945,7 +949,9 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'STARTTLS使っとる時はオフにしてや。';
 	@override String get testEmail => '配信テスト';
 	@override String get wordMute => 'ワードミュート';
+	@override String get wordMuteDescription => '指定した語句を含むノートを最小化します。最小化されたノートをクリックすることで表示することができます。';
 	@override String get hardWordMute => 'ハードワードミュート';
+	@override String get hardWordMuteDescription => '指定した語句を含むノートを隠します。ワードミュートとは異なり、ノートは完全に表示されなくなります。';
 	@override String get regexpError => '正規表現エラー';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab}ワードミュートの${line}行目の正規表現にエラーが出てきたで:';
 	@override String get instanceMute => 'サーバーミュート';
@@ -1557,10 +1563,11 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get prohibitedWordsForNameOfUserDescription => 'このリストの中にある文字列がユーザー名に入っとったら、その名前に変更できひんようになるで。モデレーター権限があるユーザーは除外や。';
 	@override String get yourNameContainsProhibitedWords => 'その名前は禁止した文字列が含まれとるで';
 	@override String get yourNameContainsProhibitedWordsDescription => 'その名前は禁止した文字列が含まれとるわ。どうしてもって言うなら、サーバー管理者に言うしかないで。';
-	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '投稿者により、表示にはログインが必要と設定されています';
+	@override String get thisContentsAreMarkedAsSigninRequiredByAuthor => '投稿者が、表示にログインが要るって設定してるで';
 	@override String get lockdown => 'ロックダウン';
-	@override String get pleaseSelectAccount => 'アカウントを選択してください';
-	@override String get availableRoles => '利用可能なロール';
+	@override String get pleaseSelectAccount => 'アカウント選んでや';
+	@override String get availableRoles => '使えるロール';
+	@override String get acknowledgeNotesAndEnable => '注意事項をわかった上でオンにする。';
 	@override late final _TranslationsMisskeyAccountSettingsJaKs accountSettings_ = _TranslationsMisskeyAccountSettingsJaKs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaKs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaKs._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaKs delivery_ = _TranslationsMisskeyDeliveryJaKs._(_root);
@@ -1637,6 +1644,8 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuJaKs contextMenu_ = _TranslationsMisskeyContextMenuJaKs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenJaKs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenJaKs._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionJaKs selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionJaKs._(_root);
+	@override late final _TranslationsMisskeyFollowRequestJaKs followRequest_ = _TranslationsMisskeyFollowRequestJaKs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsJaKs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsJaKs._(_root);
 }
 
 // Path: misskeyIO
@@ -1656,17 +1665,17 @@ class _TranslationsMisskeyAccountSettingsJaKs extends TranslationsMisskeyAccount
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get requireSigninToViewContents => 'コンテンツの表示にログインを必須にする';
-	@override String get requireSigninToViewContentsDescription1 => 'あなたが作成した全てのノートなどのコンテンツを表示するのにログインを必須にします。クローラーに情報が収集されるのを防ぐ効果が期待できます。';
-	@override String get requireSigninToViewContentsDescription2 => 'URLプレビュー(OGP)、Webページへの埋め込み、ノートの引用に対応していないサーバーからの表示も不可になります。';
-	@override String get requireSigninToViewContentsDescription3 => 'リモートサーバーに連合されたコンテンツでは、これらの制限が適用されない場合があります。';
-	@override String get makeNotesFollowersOnlyBefore => '過去のノートをフォロワーのみ表示可能にする';
-	@override String get makeNotesFollowersOnlyBeforeDescription => 'この機能が有効になっている間、設定された日時より過去、または設定された時間を経過しているノートがフォロワーのみ表示可能になります。無効に戻すと、ノートの公開状態も元に戻ります。';
-	@override String get makeNotesHiddenBefore => '過去のノートを非公開化する';
-	@override String get makeNotesHiddenBeforeDescription => 'この機能が有効になっている間、設定された日時より過去、または設定された時間を経過しているノートが自分のみ表示可能(非公開化)になります。無効に戻すと、ノートの公開状態も元に戻ります。';
-	@override String get mayNotEffectForFederatedNotes => 'リモートサーバーに連合されたノートには効果が及ばない場合があります。';
-	@override String get notesHavePassedSpecifiedPeriod => '指定した時間を経過しているノート';
-	@override String get notesOlderThanSpecifiedDateAndTime => '指定した日時より前のノート';
+	@override String get requireSigninToViewContents => 'ログインしてもらってからコンテンツ見てもらう';
+	@override String get requireSigninToViewContentsDescription1 => 'あなたが作成した全部のノートとかのコンテンツを見れるようにするのにログインがいるようにするで。クローラーにいろいろ収集されるんを防げるかもしれん。';
+	@override String get requireSigninToViewContentsDescription2 => 'URLプレビュー(OGP)、Webページへの埋め込み、ノートの引用に対応してないサーバーからの表示ができんくなるで。';
+	@override String get requireSigninToViewContentsDescription3 => 'リモートサーバーに連合されたコンテンツは、これらの制限が適用されんかもしれんで。';
+	@override String get makeNotesFollowersOnlyBefore => '昔のノートをフォロワーだけに見てもらう';
+	@override String get makeNotesFollowersOnlyBeforeDescription => 'この機能が有効になってる間は、設定された日時より前、それか設定された時間が経ったノートがフォロワーのみ見れるようになるで。無効に戻すと、ノートの公開状態も戻るで。';
+	@override String get makeNotesHiddenBefore => '昔のノートを見れんようにする';
+	@override String get makeNotesHiddenBeforeDescription => 'この機能が有効になってる間は、設定された日時より前、それか設定された時間が経ったノートがフォロワーのみ見れるようになるで。無効に戻すと、ノートの公開状態も戻るで。';
+	@override String get mayNotEffectForFederatedNotes => 'リモートサーバーに連合されたノートには効果が及ばんかもしれん。';
+	@override String get notesHavePassedSpecifiedPeriod => '決めた時間が経ったノート';
+	@override String get notesOlderThanSpecifiedDateAndTime => '決めた日時より前のノート';
 }
 
 // Path: misskey.abuseUserReport_
@@ -1819,6 +1828,8 @@ class _TranslationsMisskeyServerSettingsJaKs extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '有効にしたら、リアクション作るときのパフォーマンスがすっごい上がって、データベースへの負荷が減るで。代わりに、Redisのメモリ使用は増えるで。';
 	@override String get inquiryUrl => '問い合わせ先URL';
 	@override String get inquiryUrlDescription => 'サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定するで。';
+	@override String get openRegistration => 'アカウントの作成をオープンにする';
+	@override String get openRegistrationWarning => '登録を解放するのはリスクが伴うで。サーバーをいっつも監視して、なんか起きたらすぐに対応できるんやったら、オンにしてもええと思う。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '一定期間モデレーターがおらんかったら、スパムを防ぐためにこの設定は勝手に切られるで。';
 }
 
@@ -2451,11 +2462,11 @@ class _TranslationsMisskeyAuthJaKs extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => 'このアプリは次の権限を要求しとるで';
 	@override String get pleaseGoBack => 'アプリケーションに戻ってええよ';
 	@override String get callback => 'アプリケーションに戻っとるで';
-	@override String get accepted => 'アクセスを許可しました';
+	@override String get accepted => 'アクセスを許可したで';
 	@override String get denied => 'アクセスを拒否ったで';
-	@override String get scopeUser => '以下のユーザーとして操作しています';
+	@override String get scopeUser => '以下のユーザーとしていじってるで';
 	@override String get pleaseLogin => 'アプリにアクセスさせるんやったら、ログインしてや。';
-	@override String get byClickingYouWillBeRedirectedToThisUrl => 'アクセスを許可すると、自動で以下のURLに遷移します';
+	@override String get byClickingYouWillBeRedirectedToThisUrl => 'アクセスを許したら、自動で下のURLに遷移するで';
 }
 
 // Path: misskey.antennaSources_
@@ -3166,10 +3177,36 @@ class _TranslationsMisskeySelfXssPreventionJaKs extends TranslationsMisskeySelfX
 
 	// Translations
 	@override String get warning => '警告';
-	@override String get title => '「この画面に何か貼り付けろ」はすべて詐欺です。';
-	@override String get description1 => 'ここに何かを貼り付けると、悪意のあるユーザーにアカウントを乗っ取られたり、個人情報を盗まれたりする可能性があります。';
-	@override String get description2 => '貼り付けようとしているものが何なのかを正確に理解していない場合は、%c今すぐ作業を中止してこのウィンドウを閉じてください。';
-	@override String description3({required Object link}) => '詳しくはこちらをご確認ください。 ${link}';
+	@override String get title => '「この画面になんか貼り付けろ」は全部詐欺やで。';
+	@override String get description1 => 'ここになんかはつっつけると、悪いユーザーにアカウント乗っ取られたり、個人情報盗まれたりするかもやで';
+	@override String get description2 => 'はっつけようとしてるものがなんなんかわからんのやったら、%c今すぐ作業やめてウィンドウを閉じて。';
+	@override String description3({required Object link}) => '詳しくはこれを見て。${link}';
+}
+
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestJaKs extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => 'もらった申請';
+	@override String get sent => '送った申請';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsJaKs extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaKs federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaKs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaKs uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaKs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaKs requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaKs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaKs responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaKs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaKs responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaKs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaKs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaKs._(_root);
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3813,6 +3850,71 @@ class _TranslationsMisskeyDataSaverCodeJaKs extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'コードハイライト';
 	@override String get description => 'MFMとかでコードハイライト記法が使われてるとき、タップするまで読み込まれへんくなるで。コードハイライトではハイライトする言語ごとにその決めてるファイルを読む必要はあんねんな。けどな、それは自動で読み込まれなくなるから、通信量を少なくできることができるねん。';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaKs extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'このサーバーと通信できん';
+	@override String get description => 'このサーバーとの通信は無効化されてるか、このサーバーをブロックしてるんか、ブロックされてるかもしれん。\nサーバー管理者に問い合わせてや。';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaKs extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUriInvalidJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URIがおかしいで';
+	@override String get description => '入力されたURIに問題があるで。URIに使えん文字を入れてないから確かめて。';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaKs extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRequestFailedJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'リクエスト失敗してもうたで';
+	@override String get description => 'このサーバーとの通信に失敗してもうたわ。相手サーバーがダウンしてるかもしれん。あと、おかしいURIとか、ありえんURIを入れてないか確かめて。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaKs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'レスポンスがおかしいで';
+	@override String get description => 'このサーバーと通信することはできたけど、もらったデータがおかしかったで。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaKs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => '入力されたURIのドメインと最終的に得られたURIのドメインとが違うで。第三者のサーバーを介してリモートのコンテンツを照会してるんやったら、発信元のサーバーで取得できるURIを使って照会し直して。';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaKs extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '見つからへんね';
+	@override String get description => '求められたリソースが見つからんかったで。URIをもっかい確かめてや。';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

@@ -1034,6 +1034,7 @@ class _TranslationsMisskeyUkUa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportUkUa abuseReport_ = _TranslationsMisskeyAbuseReportUkUa._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesUkUa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesUkUa._(_root);
 	@override late final _TranslationsMisskeyReversiUkUa reversi_ = _TranslationsMisskeyReversiUkUa._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUkUa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUkUa._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1840,6 +1841,16 @@ class _TranslationsMisskeyReversiUkUa extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Всього';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsUkUa extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUkUa noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUkUa._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeUkUa extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
@@ -2108,6 +2119,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientUkUa extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUkUa._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUkUa extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUkUa._(TranslationsUkUa root) : this._root = root, super.internal(root);
+
+	final TranslationsUkUa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Не знайдено';
 }
 
 // Path: misskey.achievements_.types_.notes1_

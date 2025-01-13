@@ -1352,3 +1352,6 @@ moderationLogTypes_:
   resetPassword: "পাসওয়ার্ড রিসেট করুন"
 reversi_:
   total: "মোট"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "পাওয়া যায়নি"

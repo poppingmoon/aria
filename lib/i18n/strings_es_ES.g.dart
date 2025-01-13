@@ -241,9 +241,8 @@ class _TranslationsAriaEsEs extends TranslationsAriaEnUs {
 	@override String get uploaded => 'Subido';
 	@override String get useThisEmoji => 'Usar este emoji';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'La publicación de '),
 		name,
-		const TextSpan(text: ' contiene material sensible'),
+		const TextSpan(text: ' dijo algo'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'La publicación de '),
@@ -273,6 +272,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get password => 'Contraseña';
 	@override String get initialPasswordForSetup => 'Contraseña para iniciar la inicialización';
 	@override String get initialPasswordIsIncorrect => 'La contraseña para iniciar la configuración inicial es incorrecta.';
+	@override String get initialPasswordForSetupDescription => 'Si ha instalado Misskey usted mismo, utilice la contraseña introducida en el archivo de configuración.\nSi utiliza un servicio de alojamiento de Misskey o similar, utilice la contraseña proporcionada.\nSi no ha establecido una contraseña, déjela en blanco para continuar.';
 	@override String get forgotPassword => 'Olvidé mi contraseña';
 	@override String get fetchingAsApObject => 'Buscando en el fediverso';
 	@override String get ok => 'OK';
@@ -476,6 +476,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get stopActivityDelivery => 'Dejar de enviar actividades';
 	@override String get blockThisInstance => 'Bloquear instancia';
 	@override String get silenceThisInstance => 'Silenciar esta instancia';
+	@override String get mediaSilenceThisInstance => 'Silencia la Multimedia(Imágenes,videos...) para este servidor';
 	@override String get operations => 'Operaciones';
 	@override String get software => 'Software';
 	@override String get version => 'Versión';
@@ -497,6 +498,10 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get blockedInstancesDescription => 'Seleccione los hosts de las instancias que desea bloquear, separadas por una linea nueva. Las instancias bloqueadas no podrán comunicarse con esta instancia.';
 	@override String get silencedInstances => 'Instancias silenciadas';
 	@override String get silencedInstancesDescription => 'Listar los hostname de las instancias que quieres silenciar. Todas las cuentas de las instancias listadas serán tratadas como silenciadas, solo podrán hacer peticiones de seguimiento, y no podrán mencionar cuentas locales si no las siguen. Esto no afecta a las instancias bloqueadas.';
+	@override String get mediaSilencedInstances => 'Servidores silenciados (Multimedia)';
+	@override String get mediaSilencedInstancesDescription => 'Listar las instancias que quieres silenciar. Todas las cuentas de las instancias listadas serán tratadas como silenciadas, solo podrán hacer peticiones de seguimiento, y no podrán mencionar cuentas locales si no las siguen. Esto no afecta a las instancias bloqueadas.';
+	@override String get federationAllowedHosts => 'Servidores federados';
+	@override String get federationAllowedHostsDescription => 'Establezca los nombres  de los servidores que pueden federarse, separados por una nueva línea.';
 	@override String get muteAndBlock => 'Silenciar y bloquear';
 	@override String get mutedUsers => 'Usuarios silenciados';
 	@override String get blockedUsers => 'Usuarios bloqueados';
@@ -587,6 +592,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get selectFiles => 'Elegir archivos';
 	@override String get selectFolder => 'Seleccione una carpeta';
 	@override String get selectFolders => 'Seleccione carpetas';
+	@override String get fileNotSelected => 'Archivo no seleccionado.';
 	@override String get renameFile => 'Renombrar archivo';
 	@override String get folderName => 'Nombre de la carpeta';
 	@override String get createFolder => 'Crear carpeta';
@@ -594,6 +600,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get deleteFolder => 'Borrar carpeta';
 	@override String get folder => 'Carpeta';
 	@override String get addFile => 'Agregar archivo';
+	@override String get showFile => 'Examinar archivos';
 	@override String get emptyDrive => 'El drive está vacío';
 	@override String get emptyFolder => 'La carpeta está vacía';
 	@override String get unableToDelete => 'No se puede borrar';
@@ -1380,6 +1387,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get preventAiLearningDescription => 'Pedirle a las arañas (crawlers) no usar los textos publicados o imágenes en el aprendizaje automático (IA Predictiva / Generativa). Ésto se logra añadiendo una marca respuesta HTML con la cadena "noai" al cantenido. Una prevención total no podría lograrse sólo usando ésta marca, ya que puede ser simplemente ignorada.';
 	@override String get options => 'Opción';
 	@override String get specifyUser => 'Especificar usuario';
+	@override String get lookupConfirm => '¿Quiere informarse?';
 	@override String get failedToPreviewUrl => 'No se pudo generar la vista previa';
 	@override String get update => 'Actualizar';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Roles que pueden usar este emoji como reacción';
@@ -1585,6 +1593,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiEsEs reversi_ = _TranslationsMisskeyReversiEsEs._(_root);
 	@override late final _TranslationsMisskeyUrlPreviewSettingEsEs urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingEsEs._(_root);
 	@override late final _TranslationsMisskeyMediaControlsEsEs mediaControls_ = _TranslationsMisskeyMediaControlsEsEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsEsEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsEsEs._(_root);
 }
 
 // Path: misskey.abuseUserReport_
@@ -2940,6 +2949,16 @@ class _TranslationsMisskeyMediaControlsEsEs extends TranslationsMisskeyMediaCont
 	@override String get loop => 'Reproducción en bucle';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsEsEs extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEsEs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEsEs._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeEsEs extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
@@ -3544,6 +3563,16 @@ class _TranslationsMisskeyDataSaverCodeEsEs extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'Resaltar código';
 	@override String get description => 'Si se usa resaltado de código en MFM, etc., no se cargará hasta pulsar en ello. El resaltado de sintaxis requiere la descarga de archivos de definición para cada lenguaje de programación. Debido a esto, al deshabilitar la carga automática de estos archivos reducirás el consumo de datos.';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEsEs extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'No se encuentra';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

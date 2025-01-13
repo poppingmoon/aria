@@ -61,6 +61,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get avatarSize => 'アイコンのサイズ';
 	@override String get background => '背景';
 	@override String get buttonTypes => 'ボタンのタイプ';
+	@override String get calculating => '計算中';
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
 	@override String get confirmBeforeReact => 'リアクションする前に確認する';
@@ -212,6 +213,9 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get showNoteReactionsViewer => 'ノートにリアクションを表示する';
 	@override String get showPopupOnNewNote => 'ノートを受信したときにポップアップを表示する';
 	@override String get showQuoteButtonInNoteFooter => 'ノートのアクションに引用を追加';
+	@override String get showReactionsCountForEachTypes => '各リアクションのリアクション数を表示する';
+	@override String get showRenotesCount => 'ノートのリノート数を表示する';
+	@override String get showRepliesCount => 'ノートの返信数を表示する';
 	@override String get showSelfRenotes => 'セルフリノートを表示する';
 	@override String get showSmallButtons => 'ボタンを小さく表示する';
 	@override String get showSquaredButtons => 'ボタンを四角形で表示する';
@@ -945,7 +949,9 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'STARTTLS使用時はオフにします。';
 	@override String get testEmail => '配信テスト';
 	@override String get wordMute => 'ワードミュート';
+	@override String get wordMuteDescription => '指定した語句を含むノートを最小化します。最小化されたノートをクリックすることで表示することができます。';
 	@override String get hardWordMute => 'ハードワードミュート';
+	@override String get hardWordMuteDescription => '指定した語句を含むノートを隠します。ワードミュートとは異なり、ノートは完全に表示されなくなります。';
 	@override String get regexpError => '正規表現エラー';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab}ワードミュートの${line}行目の正規表現にエラーが発生しました:';
 	@override String get instanceMute => 'サーバーミュート';
@@ -1561,6 +1567,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get lockdown => 'ロックダウン';
 	@override String get pleaseSelectAccount => 'アカウントを選択してください';
 	@override String get availableRoles => '利用可能なロール';
+	@override String get acknowledgeNotesAndEnable => '注意事項を理解した上でオンにします。';
 	@override late final _TranslationsMisskeyAccountSettingsJaJp accountSettings_ = _TranslationsMisskeyAccountSettingsJaJp._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
@@ -1637,6 +1644,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuJaJp contextMenu_ = _TranslationsMisskeyContextMenuJaJp._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenJaJp embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenJaJp._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionJaJp selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionJaJp._(_root);
+	@override late final _TranslationsMisskeyFollowRequestJaJp followRequest_ = _TranslationsMisskeyFollowRequestJaJp._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsJaJp remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -1819,6 +1828,8 @@ class _TranslationsMisskeyServerSettingsJaJp extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '有効にすると、リアクション作成時のパフォーマンスが大幅に向上し、データベースへの負荷を軽減することが可能です。ただし、Redisのメモリ使用量は増加します。';
 	@override String get inquiryUrl => '問い合わせ先URL';
 	@override String get inquiryUrlDescription => 'サーバー運営者へのお問い合わせフォームのURLや、運営者の連絡先等が記載されたWebページのURLを指定します。';
+	@override String get openRegistration => 'アカウントの作成をオープンにする';
+	@override String get openRegistrationWarning => '登録を開放することはリスクが伴います。サーバーを常に監視し、トラブルが発生した際にすぐに対応できる体制がある場合のみオンにすることを推奨します。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '一定期間モデレーターのアクティビティが検出されなかった場合、スパム防止のためこの設定は自動でオフになります。';
 }
 
@@ -3172,6 +3183,32 @@ class _TranslationsMisskeySelfXssPreventionJaJp extends TranslationsMisskeySelfX
 	@override String description3({required Object link}) => '詳しくはこちらをご確認ください。 ${link}';
 }
 
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestJaJp extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => '受け取った申請';
+	@override String get sent => '送った申請';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsJaJp extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaJp federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaJp._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaJp uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaJp._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaJp requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp._(_root);
+}
+
 // Path: misskeyIO.skebStatus_
 class _TranslationsMisskeyIOSkebStatusJaJp extends TranslationsMisskeyIOSkebStatusEnUs {
 	_TranslationsMisskeyIOSkebStatusJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
@@ -3813,6 +3850,71 @@ class _TranslationsMisskeyDataSaverCodeJaJp extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'コードハイライトを非表示';
 	@override String get description => 'MFMなどでコードハイライト記法が使われている場合、タップするまで読み込まれなくなります。コードハイライトではハイライトする言語ごとにその定義ファイルを読み込む必要がありますが、それらが自動で読み込まれなくなるため、通信量の削減が見込めます。';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaJp extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'このサーバーとは通信できません';
+	@override String get description => 'このサーバーとの通信が無効化されているか、このサーバーをブロックしている・ブロックされている可能性があります。\nサーバー管理者にお問い合わせください。';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaJp extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUriInvalidJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URIが不正です';
+	@override String get description => '入力されたURIに問題があります。URIに使用できない文字を入力していないか確認してください。';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaJp extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRequestFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'リクエストに失敗しました';
+	@override String get description => 'このサーバーとの通信に失敗しました。相手サーバーがダウンしている可能性があります。また、不正なURIや存在しないURIを入力していないか確認してください。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'レスポンスが不正です';
+	@override String get description => 'このサーバーと通信することはできましたが、得られたデータが不正なものでした。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => '入力されたURIのドメインと最終的に得られたURIのドメインとが異なります。第三者のサーバーを介してリモートのコンテンツを照会している場合は、発信元のサーバーで取得できるURIを使用して照会し直してください。';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '見つかりません';
+	@override String get description => '要求されたリソースは見つかりませんでした。URIをもう一度お確かめください。';
 }
 
 // Path: misskeyIO.skebStatus_.genres_
