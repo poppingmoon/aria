@@ -232,6 +232,26 @@ void main() {
         expect(find.text(':'), findsOne);
         expect(find.byKey(const ValueKey('❤️')), findsNothing);
       });
+
+      testWidgets(
+          'should show an emoji keyboard after an emoji and an open tag',
+          (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final controller = TextEditingController(text: ':heart::');
+        controller.selection = const TextSelection.collapsed(offset: 8);
+        final container = await setupWidget(
+          tester,
+          account: account,
+          controller: controller,
+        );
+        await container
+            .read(accountSettingsNotifierProvider(account).notifier)
+            .setRecentlyUsedEmojis(['❤️']);
+        await tester.pumpAndSettle();
+        await tester.tap(find.byKey(const ValueKey('❤️')));
+        await tester.pumpAndSettle();
+        expect(controller.text, ':heart:❤️');
+      });
     });
 
     group('MFM fn', () {
@@ -401,19 +421,31 @@ void main() {
         'should show a mention keyboard if an open tag is between characters',
         (tester) async {
           const account = Account(host: 'misskey.tld', username: 'testuser');
-          final controller = TextEditingController(text: 'a:b');
-          controller.selection = const TextSelection.collapsed(offset: 2);
+          final controller = TextEditingController();
           final container = await setupWidget(
             tester,
             account: account,
             controller: controller,
           );
+          final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+          dioAdapter.onPost(
+            'users/show',
+            (server) => server.reply(
+              200,
+              [dummyMeDetailed.copyWith(username: 'testuser').toJson()],
+            ),
+            data: {
+              'userIds': ['testuser'],
+            },
+          );
           await container
               .read(accountSettingsNotifierProvider(account).notifier)
-              .setRecentlyUsedEmojis(['❤️']);
+              .setRecentlyUsedUsers(['testuser']);
+          controller.text = 'a@b';
+          controller.selection = const TextSelection.collapsed(offset: 2);
           await tester.pumpAndSettle();
-          await tester.tap(find.byKey(const ValueKey('❤️')));
-          expect(controller.text, 'a❤️b');
+          await tester.tap(find.text('@testuser'));
+          expect(controller.text, 'a@testuser b');
         },
       );
 

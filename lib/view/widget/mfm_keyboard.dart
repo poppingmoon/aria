@@ -251,10 +251,16 @@ class MfmEmojiKeyboard extends HookConsumerWidget {
           final selectionIndex = max(0, controller.selection.start);
           final textBeforeSelection =
               controller.text.substring(0, selectionIndex);
-          final match = RegExp(r':(\S*)$').firstMatch(textBeforeSelection) ??
-              RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
-          query.value = match?[1] ?? '';
-          final tagIndex = selectionIndex - (match?[0]?.length ?? 0) + 1;
+          final match = RegExp(r':([^:\s]*)$').firstMatch(textBeforeSelection);
+          if (match == null) {
+            query.value = '';
+            return;
+          }
+          query.value = match[1] ?? '';
+          final tagIndex = min(
+            selectionIndex - (match[0]?.length ?? 0),
+            controller.text.length,
+          );
           isAfterCloseTag.value =
               RegExp(r':\w+$').hasMatch(controller.text.substring(0, tagIndex));
         }
@@ -415,8 +421,7 @@ class MfmFnKeyboard extends HookConsumerWidget {
           final selectionIndex = max(0, controller.selection.start);
           final textBeforeSelection =
               controller.text.substring(0, selectionIndex);
-          final match = RegExp(r'\$\[(\S*)$').firstMatch(textBeforeSelection) ??
-              RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
+          final match = RegExp(r'\$\[(\S*)$').firstMatch(textBeforeSelection);
           query.value = match?[1] ?? '';
           periodIndex.value = query.value.indexOf('.');
         }
