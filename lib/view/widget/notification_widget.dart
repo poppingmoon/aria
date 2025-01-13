@@ -108,6 +108,7 @@ class NotificationWidget extends ConsumerWidget {
               account: account,
               emoji: reaction,
               emojis: {...note.emojis, ...note.reactionEmojis},
+              style: const TextStyle(fontSize: 18.0, height: 1.0),
             ),
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
@@ -433,17 +434,23 @@ class NotificationWidget extends ConsumerWidget {
                               color: colors.bg,
                               shape: BoxShape.circle,
                             ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: SizedBox(
-                                width: 20,
-                                child: EmojiWidget(
-                                  account: account,
-                                  emoji: reaction.reaction,
-                                  emojis: {
-                                    ...note.emojis,
-                                    ...note.reactionEmojis,
-                                  },
+                            child: ClipOval(
+                              child: Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: SizedBox(
+                                  width: 20.0,
+                                  child: EmojiWidget(
+                                    account: account,
+                                    emoji: reaction.reaction,
+                                    emojis: {
+                                      ...note.emojis,
+                                      ...note.reactionEmojis,
+                                    },
+                                    style: const TextStyle(
+                                      fontSize: 18.0,
+                                      height: 1.0,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -738,21 +745,23 @@ class _NotificationTile extends ConsumerWidget {
                           color: colors.bg,
                           shape: BoxShape.circle,
                         ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(2.0),
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: iconBackgroundColor ?? colors.bg,
-                              shape: BoxShape.circle,
-                            ),
-                            child: IconTheme.merge(
-                              data: const IconThemeData(
-                                size: 20.0,
-                                color: Colors.white,
+                        child: ClipOval(
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: iconBackgroundColor ?? colors.bg,
+                                shape: BoxShape.circle,
                               ),
-                              child: SizedBox(
-                                width: 20.0,
-                                child: icon,
+                              child: IconTheme.merge(
+                                data: const IconThemeData(
+                                  size: 20.0,
+                                  color: Colors.white,
+                                ),
+                                child: SizedBox(
+                                  width: 20.0,
+                                  child: icon,
+                                ),
                               ),
                             ),
                           ),
