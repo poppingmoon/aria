@@ -23,6 +23,7 @@ mixin _$MisskeyColors {
   Color get accentDarken => throw _privateConstructorUsedError;
   Color get accentLighten => throw _privateConstructorUsedError;
   Color get accentedBg => throw _privateConstructorUsedError;
+  Color get love => throw _privateConstructorUsedError;
   Color get bg => throw _privateConstructorUsedError;
   Color get fg => throw _privateConstructorUsedError;
   Color get fgOnAccent => throw _privateConstructorUsedError;
@@ -66,6 +67,7 @@ abstract class $MisskeyColorsCopyWith<$Res> {
       Color accentDarken,
       Color accentLighten,
       Color accentedBg,
+      Color love,
       Color bg,
       Color fg,
       Color fgOnAccent,
@@ -111,6 +113,7 @@ class _$MisskeyColorsCopyWithImpl<$Res, $Val extends MisskeyColors>
     Object? accentDarken = null,
     Object? accentLighten = null,
     Object? accentedBg = null,
+    Object? love = null,
     Object? bg = null,
     Object? fg = null,
     Object? fgOnAccent = null,
@@ -161,6 +164,10 @@ class _$MisskeyColorsCopyWithImpl<$Res, $Val extends MisskeyColors>
       accentedBg: null == accentedBg
           ? _value.accentedBg
           : accentedBg // ignore: cast_nullable_to_non_nullable
+              as Color,
+      love: null == love
+          ? _value.love
+          : love // ignore: cast_nullable_to_non_nullable
               as Color,
       bg: null == bg
           ? _value.bg
@@ -266,6 +273,7 @@ abstract class _$$MisskeyColorsImplCopyWith<$Res>
       Color accentDarken,
       Color accentLighten,
       Color accentedBg,
+      Color love,
       Color bg,
       Color fg,
       Color fgOnAccent,
@@ -309,6 +317,7 @@ class __$$MisskeyColorsImplCopyWithImpl<$Res>
     Object? accentDarken = null,
     Object? accentLighten = null,
     Object? accentedBg = null,
+    Object? love = null,
     Object? bg = null,
     Object? fg = null,
     Object? fgOnAccent = null,
@@ -359,6 +368,10 @@ class __$$MisskeyColorsImplCopyWithImpl<$Res>
       accentedBg: null == accentedBg
           ? _value.accentedBg
           : accentedBg // ignore: cast_nullable_to_non_nullable
+              as Color,
+      love: null == love
+          ? _value.love
+          : love // ignore: cast_nullable_to_non_nullable
               as Color,
       bg: null == bg
           ? _value.bg
@@ -459,6 +472,7 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
       required this.accentDarken,
       required this.accentLighten,
       required this.accentedBg,
+      required this.love,
       required this.bg,
       required this.fg,
       required this.fgOnAccent,
@@ -495,6 +509,8 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
   final Color accentLighten;
   @override
   final Color accentedBg;
+  @override
+  final Color love;
   @override
   final Color bg;
   @override
@@ -540,7 +556,7 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
 
   @override
   String toString() {
-    return 'MisskeyColors(id: $id, name: $name, isDark: $isDark, accent: $accent, accentDarken: $accentDarken, accentLighten: $accentLighten, accentedBg: $accentedBg, bg: $bg, fg: $fg, fgOnAccent: $fgOnAccent, divider: $divider, panel: $panel, link: $link, hashtag: $hashtag, mention: $mention, mentionMe: $mentionMe, renote: $renote, infoBg: $infoBg, infoFg: $infoFg, infoWarnBg: $infoWarnBg, infoWarnFg: $infoWarnFg, buttonBg: $buttonBg, buttonGradateA: $buttonGradateA, buttonGradateB: $buttonGradateB, driveFolderBg: $driveFolderBg, success: $success, error: $error, warn: $warn)';
+    return 'MisskeyColors(id: $id, name: $name, isDark: $isDark, accent: $accent, accentDarken: $accentDarken, accentLighten: $accentLighten, accentedBg: $accentedBg, love: $love, bg: $bg, fg: $fg, fgOnAccent: $fgOnAccent, divider: $divider, panel: $panel, link: $link, hashtag: $hashtag, mention: $mention, mentionMe: $mentionMe, renote: $renote, infoBg: $infoBg, infoFg: $infoFg, infoWarnBg: $infoWarnBg, infoWarnFg: $infoWarnFg, buttonBg: $buttonBg, buttonGradateA: $buttonGradateA, buttonGradateB: $buttonGradateB, driveFolderBg: $driveFolderBg, success: $success, error: $error, warn: $warn)';
   }
 
   @override
@@ -558,6 +574,7 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
                 other.accentLighten == accentLighten) &&
             (identical(other.accentedBg, accentedBg) ||
                 other.accentedBg == accentedBg) &&
+            (identical(other.love, love) || other.love == love) &&
             (identical(other.bg, bg) || other.bg == bg) &&
             (identical(other.fg, fg) || other.fg == fg) &&
             (identical(other.fgOnAccent, fgOnAccent) ||
@@ -599,6 +616,7 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
         accentDarken,
         accentLighten,
         accentedBg,
+        love,
         bg,
         fg,
         fgOnAccent,
@@ -640,6 +658,7 @@ abstract class _MisskeyColors implements MisskeyColors {
       required final Color accentDarken,
       required final Color accentLighten,
       required final Color accentedBg,
+      required final Color love,
       required final Color bg,
       required final Color fg,
       required final Color fgOnAccent,
@@ -676,6 +695,8 @@ abstract class _MisskeyColors implements MisskeyColors {
   Color get accentLighten;
   @override
   Color get accentedBg;
+  @override
+  Color get love;
   @override
   Color get bg;
   @override

@@ -16,6 +16,7 @@ class MisskeyColors with _$MisskeyColors {
     required Color accentDarken,
     required Color accentLighten,
     required Color accentedBg,
+    required Color love,
     required Color bg,
     required Color fg,
     required Color fgOnAccent,
