@@ -187,6 +187,14 @@ class Aria extends HookConsumerWidget {
                 account;
           }
 
+          final currentLocale = LocaleSettings.currentLocale;
+          if (generalSettings.locale case final locale?
+              when locale != currentLocale) {
+            await LocaleSettings.setLocale(locale);
+          } else if (AppLocaleUtils.findDeviceLocale() != currentLocale) {
+            await LocaleSettings.useDeviceLocale();
+          }
+
           final title = switch (notification.body?.type) {
             NotificationType.follow => t.misskey.notification_.youWereFollowed,
             NotificationType.mention => t.misskey.notification_.youGotMention(
