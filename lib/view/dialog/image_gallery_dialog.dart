@@ -14,6 +14,7 @@ import '../../i18n/strings.g.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../widget/image_widget.dart';
 import 'message_dialog.dart';
 
 Future<void> showImageGalleryDialog(
@@ -90,6 +91,34 @@ class ImageGalleryDialog extends HookConsumerWidget {
                   files[index].url,
                   cacheManager: ref.watch(cacheManagerProvider),
                 ),
+              ),
+              loadingBuilder: (context, event) => Stack(
+                alignment: Alignment.center,
+                children: [
+                  if (controller.page == index.value)
+                    if (files.elementAtOrNull(index.value)?.thumbnailUrl
+                        case final thumbnailUrl?)
+                      Positioned.fill(
+                        child: ImageWidget(
+                          url: thumbnailUrl,
+                          blurHash: thumbnailUrl,
+                          fit: BoxFit.contain,
+                        ),
+                      ),
+                  SizedBox.square(
+                    dimension: 20.0,
+                    child: CircularProgressIndicator(
+                      value: switch (event) {
+                        ImageChunkEvent(
+                          :final cumulativeBytesLoaded,
+                          :final expectedTotalBytes?
+                        ) =>
+                          cumulativeBytesLoaded / expectedTotalBytes,
+                        _ => null,
+                      },
+                    ),
+                  ),
+                ],
               ),
               itemCount: files.length,
               backgroundDecoration:
