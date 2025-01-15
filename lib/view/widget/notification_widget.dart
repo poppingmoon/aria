@@ -290,11 +290,17 @@ class NotificationWidget extends ConsumerWidget {
         return _NotificationTile(
           account: account,
           user: i,
-          icon: const Icon(Icons.workspace_premium),
-          iconBackgroundColor: eventOther,
+          icon: notification.role?.iconUrl != null
+              ? ImageWidget(url: notification.role!.iconUrl!.toString())
+              : const Icon(Icons.workspace_premium),
+          iconBackgroundColor: notification.icon == null ? eventOther : null,
           title: Text(t.misskey.notification_.roleAssigned),
-          subtitle: Text(notification.role?.name ?? ''),
+          subtitle: Tooltip(
+            message: notification.role?.description ?? '',
+            child: Text(notification.role?.name ?? ''),
+          ),
           createdAt: notification.createdAt,
+          onTap: () => context.push('/$account/roles/${notification.role?.id}'),
         );
       case NotificationType.exportCompleted:
         return _NotificationTile(

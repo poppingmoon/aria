@@ -62,7 +62,25 @@ class RolePage extends ConsumerWidget {
                 noItemsLabel: t.misskey.noUsers,
               )
             else
-              Center(child: Text(t.misskey.nothing)),
+              SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    if (description != null) ...[
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(description),
+                      ),
+                    ],
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(t.misskey.nothing),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             TimelineListView(
               tabSettings: TabSettings.roleTimeline(account, roleId),
             ),
