@@ -6,7 +6,7 @@ part of 'static_image_url_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$staticImageUrlHash() => r'ae34acc65548bf2164cc0c7c958682f7a251522d';
+String _$staticImageUrlHash() => r'f3e1d77a57b6762ef35f0b67edda9934ed942db1';
 
 /// Copied from Dart SDK
 class _SystemHash {
