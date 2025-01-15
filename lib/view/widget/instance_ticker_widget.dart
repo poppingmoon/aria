@@ -6,6 +6,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
 import '../../provider/api/meta_notifier_provider.dart';
+import '../../provider/proxied_image_url_provider.dart';
 import '../../util/safe_parse_color.dart';
 import 'image_widget.dart';
 
@@ -29,15 +30,14 @@ class InstanceTickerWidget extends ConsumerWidget {
         ) ??
         const Color(0xff777777);
     final faviconUrl = instance?.faviconUrl;
-    final mediaProxy = meta?.mediaProxy;
-    final mediaProxyUrl =
-        (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
-            Uri.https(account.host, 'proxy');
     final proxiedUrl =
         instance != null && faviconUrl != null && account.host.isNotEmpty
-            ? mediaProxyUrl.replace(
-                pathSegments: [...mediaProxyUrl.pathSegments, 'preview.webp'],
-                queryParameters: {'url': faviconUrl.toString()},
+            ? ref.watch(
+                proxiedImageUrlProvider(
+                  account.host,
+                  faviconUrl.toString(),
+                  preview: true,
+                ),
               )
             : faviconUrl;
     final style = DefaultTextStyle.of(context).style;

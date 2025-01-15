@@ -1,10 +1,9 @@
-import 'package:collection/collection.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
-import 'api/meta_notifier_provider.dart';
 import 'emoji_provider.dart';
+import 'proxied_image_url_provider.dart';
 
 part 'emoji_url_provider.g.dart';
 
@@ -49,39 +48,13 @@ part 'emoji_url_provider.g.dart';
     );
   }
 
-  Uri imageUrl = rawUrl;
-  final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
-  final mediaProxy = meta?.mediaProxy;
-  final proxyUrl = (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
-      Uri.https(account.host, 'proxy');
-  if (imageUrl.host == proxyUrl.host) {
-    if (proxyUrl.pathSegments.length <= imageUrl.pathSegments.length &&
-        const ListEquality<String>().equals(
-          imageUrl.pathSegments.sublist(0, proxyUrl.pathSegments.length),
-          proxyUrl.pathSegments,
-        )) {
-      if (imageUrl.queryParameters['url'] case final url?) {
-        if (Uri.tryParse(url) case final url?) {
-          imageUrl = url;
-        }
-      }
-    }
-  } else if (imageUrl.host == account.host) {
-    if (imageUrl.pathSegments.firstOrNull == 'proxy') {
-      if (imageUrl.queryParameters['url'] case final url?) {
-        if (Uri.tryParse(url) case final url?) {
-          imageUrl = url;
-        }
-      }
-    }
-  }
-
-  final proxied = proxyUrl.replace(
-    pathSegments: [...proxyUrl.pathSegments, 'image.webp'],
-    queryParameters: {
-      'url': imageUrl.toString(),
-      if (!useOriginalSize) 'emoji': '1',
-    },
+  final proxied = ref.watch(
+    proxiedImageUrlProvider(
+      account.host,
+      rawUrl.toString(),
+      emoji: !useOriginalSize,
+    ),
   );
-  return (proxied.toString(), imageUrl.toString());
+
+  return (proxied.toString(), rawUrl.toString());
 }
