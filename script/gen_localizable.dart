@@ -46,6 +46,7 @@ const notificationKeys = [
   'yourFollowRequestAccepted',
   'achievementEarned',
   'pollEnded',
+  'roleAssigned',
   'testNotification',
   'notificationWillBeDisplayedLikeThis',
   'login',

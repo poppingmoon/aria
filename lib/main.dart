@@ -229,6 +229,8 @@ class Aria extends HookConsumerWidget {
                 },
               ),
             NotificationType.pollEnded => t.misskey.notification_.pollEnded,
+            NotificationType.roleAssigned =>
+              t.misskey.notification_.roleAssigned,
             NotificationType.app =>
               notification.body?.header ?? notification.body?.body,
             NotificationType.test => t.misskey.notification_.testNotification,
@@ -384,6 +386,7 @@ class Aria extends HookConsumerWidget {
                     .types_.bubbleGameDoubleExplodingHead_.title,
                 _ => null,
               },
+            NotificationType.roleAssigned => notification.body?.role?.name,
             NotificationType.app => notification.body?.header != null
                 ? notification.body?.body
                 : null,
