@@ -45,9 +45,9 @@ class _TranslationsAriaLoLa extends TranslationsAriaEnUs {
 		user,
 	]);
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'ທ່ານແນ່ໃຈບໍ່ວ່າຕ້ອງການເຊົາຕິດຕາມ '),
+		const TextSpan(text: 'ຕ້ອງການເລີກຕິດຕາມ '),
 		name,
-		const TextSpan(text: '?'),
+		const TextSpan(text: ' ແມ່ນບໍ່?'),
 	]);
 }
 
@@ -473,6 +473,7 @@ class _TranslationsMisskeyLoLa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWebhookSettingsLoLa webhookSettings_ = _TranslationsMisskeyWebhookSettingsLoLa._(_root);
 	@override late final _TranslationsMisskeyAbuseReportLoLa abuseReport_ = _TranslationsMisskeyAbuseReportLoLa._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesLoLa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesLoLa._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsLoLa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsLoLa._(_root);
 }
 
 // Path: misskey.delivery_
@@ -693,6 +694,16 @@ class _TranslationsMisskeyModerationLogTypesLoLa extends TranslationsMisskeyMode
 	@override String get suspend => 'ລະງັບ';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsLoLa extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectLoLa noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectLoLa._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeLoLa extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
@@ -802,6 +813,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientLoLa extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeLoLa._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectLoLa extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectLoLa._(TranslationsLoLa root) : this._root = root, super.internal(root);
+
+	final TranslationsLoLa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ບໍ່ພົບ';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_

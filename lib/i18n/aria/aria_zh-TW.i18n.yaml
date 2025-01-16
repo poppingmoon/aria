@@ -3,5 +3,5 @@ i18nInfo(rich): "Aria 已被志願者們翻譯成各種語言版本。您可以�
 onlineUsersCount(rich): "{n} 人上線"
 renotedBy(rich): "{user} 轉發了"
 unfollowConfirm(rich): "確定要取消追隨{name}嗎？"
-userSaysSomething(rich): "包含 {name} 敏感檔案的貼文"
+userSaysSomething(rich): "{name}說了什麼"
 userSaysSomethingSensitive(rich): "包含 {name} 敏感檔案的貼文"

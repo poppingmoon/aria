@@ -1138,6 +1138,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesArSa moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesArSa._(_root);
 	@override late final _TranslationsMisskeyReversiArSa reversi_ = _TranslationsMisskeyReversiArSa._(_root);
 	@override late final _TranslationsMisskeyOfflineScreenArSa offlineScreen_ = _TranslationsMisskeyOfflineScreenArSa._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsArSa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsArSa._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2001,6 +2002,16 @@ class _TranslationsMisskeyOfflineScreenArSa extends TranslationsMisskeyOfflineSc
 	@override String get header => 'يتعذر الاتصال بالخادم';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsArSa extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa._(_root);
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesArSa extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
@@ -2228,6 +2239,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientArSa extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeArSa._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'غير موجود';
 }
 
 // Path: misskey.achievements_.types_.notes1_

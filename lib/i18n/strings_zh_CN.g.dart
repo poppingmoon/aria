@@ -242,9 +242,8 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get uploaded => '已上传';
 	@override String get useThisEmoji => '使用此表情';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: '含 '),
 		name,
-		const TextSpan(text: ' 敏感文件的帖子'),
+		const TextSpan(text: ' 说了什么,但是被屏蔽词过滤了'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: '含 '),
@@ -406,15 +405,15 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get unmarkAsSensitive => '取消标记为敏感内容';
 	@override String get enterFileName => '输入文件名';
 	@override String get mute => '屏蔽';
-	@override String get unmute => '解除静音';
+	@override String get unmute => '取消隐藏';
 	@override String get renoteMute => '隐藏转帖';
 	@override String get renoteUnmute => '解除隐藏转帖';
-	@override String get block => '拉黑';
-	@override String get unblock => '取消拉黑';
+	@override String get block => '屏蔽';
+	@override String get unblock => '取消屏蔽';
 	@override String get suspend => '冻结';
 	@override String get unsuspend => '解除冻结';
-	@override String get blockConfirm => '确定要拉黑吗？';
-	@override String get unblockConfirm => '确定要解除拉黑吗？';
+	@override String get blockConfirm => '确定要屏蔽吗？';
+	@override String get unblockConfirm => '确定要取消屏蔽吗？';
 	@override String get suspendConfirm => '要冻结吗？';
 	@override String get unsuspendConfirm => '要解除冻结吗？';
 	@override String get selectList => '选择列表';
@@ -521,7 +520,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get noCustomEmojis => '没有自定义表情符号';
 	@override String get noJobs => '没有任务';
 	@override String get federating => '联合中';
-	@override String get blocked => '已拉黑';
+	@override String get blocked => '已屏蔽';
 	@override String get suspended => '停止投递';
 	@override String get all => '全部';
 	@override String get subscribing => '已订阅';
@@ -947,10 +946,12 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get smtpSecure => '在 SMTP 连接中使用隐式 SSL / TLS';
 	@override String get smtpSecureInfo => '使用 STARTTLS 时关闭。';
 	@override String get testEmail => '邮件发送测试';
-	@override String get wordMute => '隐藏文字';
-	@override String get hardWordMute => '屏蔽关键词';
+	@override String get wordMute => '隐藏关键词';
+	@override String get wordMuteDescription => '折叠包含指定关键词的帖子。被折叠的帖子可单击展开。';
+	@override String get hardWordMute => '隐藏硬关键词';
+	@override String get hardWordMuteDescription => '隐藏包含指定关键词的帖子。与隐藏关键词不同，帖子将完全不会显示。';
 	@override String get regexpError => '正则表达式错误';
-	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} 屏蔽文字的第 ${line} 行的正则表达式有错误：';
+	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} 隐藏文字的第 ${line} 行的正则表达式有错误：';
 	@override String get instanceMute => '已隐藏的服务器';
 	@override String userSaysSomething({required Object name}) => '${name} 说了什么,但是被屏蔽词过滤了';
 	@override String get makeActive => '启用';
@@ -1110,7 +1111,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get offline => '离线';
 	@override String get notRecommended => '不推荐';
 	@override String get botProtection => 'Bot防御';
-	@override String get instanceBlocking => '被阻拦的服务器';
+	@override String get instanceBlocking => '屏蔽/静音的服务器';
 	@override String get selectAccount => '选择账户';
 	@override String get switchAccount => '切换账户';
 	@override String get enabled => '已启用';
@@ -1564,6 +1565,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get lockdown => '锁定';
 	@override String get pleaseSelectAccount => '请选择帐户';
 	@override String get availableRoles => '可用角色';
+	@override String get acknowledgeNotesAndEnable => '理解注意事项后再开启。';
 	@override late final _TranslationsMisskeyAccountSettingsZhCn accountSettings_ = _TranslationsMisskeyAccountSettingsZhCn._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhCn abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhCn._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhCn delivery_ = _TranslationsMisskeyDeliveryZhCn._(_root);
@@ -1640,6 +1642,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuZhCn contextMenu_ = _TranslationsMisskeyContextMenuZhCn._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhCn embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhCn._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionZhCn selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionZhCn._(_root);
+	@override late final _TranslationsMisskeyFollowRequestZhCn followRequest_ = _TranslationsMisskeyFollowRequestZhCn._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsZhCn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsZhCn._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -1812,6 +1816,8 @@ class _TranslationsMisskeyServerSettingsZhCn extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '开启时可显著提高发送回应时的性能，及减轻数据库负荷。但 Redis 的内存用量会相应增加。';
 	@override String get inquiryUrl => '联络地址';
 	@override String get inquiryUrlDescription => '用来指定诸如向服务运营商咨询的论坛地址，或记载了运营商联系方式之类的网页地址。';
+	@override String get openRegistration => '开放注册';
+	@override String get openRegistrationWarning => '开放注册有风险。建议仅当能够持续监控服务器并在出现问题时能够立即响应时才打开它。';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '若在一段时间内没有检测到管理活动，为防止垃圾信息，此设定将自动关闭。';
 }
 
@@ -1829,7 +1835,7 @@ class _TranslationsMisskeyAccountMigrationZhCn extends TranslationsMisskeyAccoun
 	@override String get moveTo => '把这个账户迁移到新的账户';
 	@override String get moveToLabel => '迁移后的账户';
 	@override String get moveCannotBeUndone => '一旦迁移账户，就无法撤销。';
-	@override String get moveAccountDescription => '\n迁移到新帐户。\n　・现有的关注者自动关注新帐户\n　・此帐户的所有关注者都将被删除\n　・您将无法再使用此帐户发帖。\n关注者迁移是自动的，但关注中迁移必须手动完成。请在迁移前在此帐户上导出关注列表，并在迁移后立即在目标帐户上执行导入。\n屏蔽列表也是如此，因此您必须手动迁移它。\n（此描述适用于该服务器（Misskey v13.12.0 或更高版本）。其他 ActivityPub 软件（例如 Mastodon）的行为可能有所不同。）';
+	@override String get moveAccountDescription => '\n迁移到新帐户。\n　・现有的关注者自动关注新帐户\n　・此帐户的所有关注者都将被删除\n　・您将无法再使用此帐户发帖。\n关注者迁移是自动的，但关注中迁移必须手动完成。请在迁移前在此帐户上导出关注列表，并在迁移后立即在目标帐户上执行导入。\n列表、隐藏、屏蔽也是如此，因此您必须手动迁移它。\n（此描述适用于该服务器（Misskey v13.12.0 或更高版本）。其他 ActivityPub 软件（例如 Mastodon）的行为可能有所不同。）';
 	@override String get moveAccountHowTo => '要进行账户迁移，请现在目标账户中为此账户建立一个别名。\n建立别名后，请像这样输入目标账户：@username@server.example.com';
 	@override String get startMigration => '迁移';
 	@override String migrationConfirm({required Object account}) => '确定要把此账户迁移到 ${account} 吗？一旦确定后，此操作无法取消，此账户也无法以原来的状态使用。\n同时，请确认迁移后的账户，已创造别名。';
@@ -2180,7 +2186,7 @@ class _TranslationsMisskeyInstanceMuteZhCn extends TranslationsMisskeyInstanceMu
 	// Translations
 	@override String get instanceMuteDescription => '隐藏服务器中的所有帖子和转帖，包括这些服务器上的用户回复。';
 	@override String get instanceMuteDescription2 => '一行一个';
-	@override String get title => '隐藏服务器已设置的帖子。';
+	@override String get title => '下面实例中的帖子将被隐藏。';
 	@override String get heading => '已隐藏的服务器';
 }
 
@@ -2318,7 +2324,7 @@ class _TranslationsMisskeyX2faZhCn extends TranslationsMisskeyX2faEnUs {
 	@override String get step4 => '从现在开始，任何登录操作都将要求您提供动态口令。';
 	@override String get securityKeyNotSupported => '您的浏览器不支持安全密钥。';
 	@override String get registerTOTPBeforeKey => '要注册安全密钥或 Passkey，请先设置验证器。';
-	@override String get securityKeyInfo => '注册兼容 WebAuthn 的密钥，例如支持 FIDO2 的硬件安全密钥、设备上的生物识别功能、PIN 码以及 Passkey 等。';
+	@override String get securityKeyInfo => '注册兼容 WebAuthn 的密钥，例如支持 FIDO2 的硬件安全密钥、设备上的生物识别功能、PIN 以及 Passkey 等。';
 	@override String get registerSecurityKey => '注册安全密钥或 Passkey';
 	@override String get securityKeyName => '输入密钥名称';
 	@override String get tapSecurityKey => '请按照浏览器说明操作来注册安全密钥或 Passkey。';
@@ -2756,7 +2762,7 @@ class _TranslationsMisskeyPagesZhCn extends TranslationsMisskeyPagesEnUs {
 	@override String get fontSansSerif => '无衬线字体';
 	@override String get eyeCatchingImageSet => '设置封面图片';
 	@override String get eyeCatchingImageRemove => '删除封面图片';
-	@override String get chooseBlock => '添加块';
+	@override String get chooseBlock => '添加内容块';
 	@override String get enterSectionTitle => '输入会话标题';
 	@override String get selectType => '选择类型';
 	@override String get contentBlocks => '内容';
@@ -2807,7 +2813,7 @@ class _TranslationsMisskeyNotificationZhCn extends TranslationsMisskeyNotificati
 	@override String renotedBySomeUsers({required Object n}) => '${n} 人转发了';
 	@override String followedBySomeUsers({required Object n}) => '被 ${n} 人关注';
 	@override String get flushNotification => '重置通知历史';
-	@override String exportOfXCompleted({required Object x}) => '已完成 ${x} 个导出';
+	@override String exportOfXCompleted({required Object x}) => '已完成 ${x} 的导出';
 	@override String get login => '有新的登录';
 	@override late final _TranslationsMisskeyNotificationTypesZhCn types_ = _TranslationsMisskeyNotificationTypesZhCn._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsZhCn actions_ = _TranslationsMisskeyNotificationActionsZhCn._(_root);
@@ -3165,6 +3171,32 @@ class _TranslationsMisskeySelfXssPreventionZhCn extends TranslationsMisskeySelfX
 	@override String description3({required Object link}) => '详情请看这里。${link}';
 }
 
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestZhCn extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => '已收到申请';
+	@override String get sent => '已发送申请';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsZhCn extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhCn federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhCn._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhCn uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhCn._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhCn requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhCn._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeZhCn extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
@@ -3440,7 +3472,7 @@ class _TranslationsMisskeyRoleOptionsZhCn extends TranslationsMisskeyRoleOptions
 	@override String get canImportAntennas => '允许导入天线';
 	@override String get canImportBlocking => '允许导入屏蔽列表';
 	@override String get canImportFollowing => '允许导入关注列表';
-	@override String get canImportMuting => '允许导入屏蔽列表';
+	@override String get canImportMuting => '允许导入隐藏列表';
 	@override String get canImportUserLists => '允许导入用户列表';
 }
 
@@ -3577,8 +3609,8 @@ class _TranslationsMisskeyPagesBlocksZhCn extends TranslationsMisskeyPagesBlocks
 	@override String get section => '章节';
 	@override String get image => '图片';
 	@override String get button => '按钮';
-	@override String get dynamic => '动态区块';
-	@override String dynamicDescription({required Object play}) => '这个区块已经废弃。以后请使用${play}。';
+	@override String get dynamic => '动态内容块';
+	@override String dynamicDescription({required Object play}) => '这个内容块已经废弃。以后请使用${play}。';
 	@override String get note => '嵌入的帖子';
 	@override late final _TranslationsMisskeyPagesBlocksNoteZhCn note_ = _TranslationsMisskeyPagesBlocksNoteZhCn._(_root);
 }
@@ -3790,6 +3822,71 @@ class _TranslationsMisskeyDataSaverCodeZhCn extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => '代码高亮';
 	@override String get description => '如果使用了代码高亮标记，例如在 MFM 中，则在点击之前不会加载。 代码高亮要求加载每种高亮语言的定义文件，由于这些文件不再自动加载，因此有望减少数据传输量。';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhCn extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '无法与此服务器通信';
+	@override String get description => '与此服务器的通信可能被禁用，又或者是屏蔽了此服务器或被此服务器屏蔽了。\n请联系服务器的管理者。';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhCn extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUriInvalidZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URI 有误';
+	@override String get description => '输入的 URI 有问题。请确认是否输入了 URI 中无法使用的字符。';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhCn extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRequestFailedZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '请求失败';
+	@override String get description => '与该服务器的通信失败。对面服务器可能不可用。另外，请确认是否输入了无效或不存在的 URI。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '响应无效';
+	@override String get description => '成功与此服务器通信，但返回的数据无效。';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => '输入 URI 的域名和最终取得的 URI 的域名不同。如果是通过第三方服务器获取远程内容，请使用可以从原始服务器获取内容的 URI 再试一次。';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '未找到';
+	@override String get description => '未找到请求的资源。请再次检查 URI。';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -4576,7 +4673,7 @@ class _TranslationsMisskeyAchievementsTypesSetNameToSyuiloZhCn extends Translati
 	final TranslationsZhCn _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => '像神一样呐';
+	@override String get title => '上帝情结';
 	@override String get description => '将名称设定为 syuilo';
 }
 

@@ -574,6 +574,7 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyWebhookSettingsNoNo webhookSettings_ = _TranslationsMisskeyWebhookSettingsNoNo._(_root);
 	@override late final _TranslationsMisskeyAbuseReportNoNo abuseReport_ = _TranslationsMisskeyAbuseReportNoNo._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesNoNo moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesNoNo._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoNo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNoNo._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1047,6 +1048,16 @@ class _TranslationsMisskeyModerationLogTypesNoNo extends TranslationsMisskeyMode
 	@override String get suspend => 'Suspender';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsNoNo extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo._(_root);
+}
+
 // Path: misskey.achievements_.types_
 class _TranslationsMisskeyAchievementsTypesNoNo extends TranslationsMisskeyAchievementsTypesEnUs {
 	_TranslationsMisskeyAchievementsTypesNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
@@ -1201,6 +1212,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientNoNo extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeNoNo recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeNoNo._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Ikke funnet';
 }
 
 // Path: misskey.achievements_.types_.notes10_

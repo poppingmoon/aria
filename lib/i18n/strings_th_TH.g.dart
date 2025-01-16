@@ -51,7 +51,7 @@ class _TranslationsAriaThTh extends TranslationsAriaEnUs {
 	]);
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
-		const TextSpan(text: ' ผู้ใช้คนนี้กำลังออนไลน์'),
+		const TextSpan(text: ' รายกำลังออนไลน์'),
 	]);
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'รีโน้ตโดย '),
@@ -63,8 +63,8 @@ class _TranslationsAriaThTh extends TranslationsAriaEnUs {
 		const TextSpan(text: ' ใช่ไหม?'),
 	]);
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'โพสต์ที่มีไฟล์เนื้อหาละเอียดอ่อนของ '),
 		name,
+		const TextSpan(text: ' พูดอะไรบางอย่าง'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'โพสต์ที่มีไฟล์เนื้อหาละเอียดอ่อนของ '),
@@ -1446,6 +1446,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyMediaControlsThTh mediaControls_ = _TranslationsMisskeyMediaControlsThTh._(_root);
 	@override late final _TranslationsMisskeyContextMenuThTh contextMenu_ = _TranslationsMisskeyContextMenuThTh._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenThTh embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenThTh._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsThTh remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsThTh._(_root);
 }
 
 // Path: misskey.abuseUserReport_
@@ -2934,6 +2935,16 @@ class _TranslationsMisskeyEmbedCodeGenThTh extends TranslationsMisskeyEmbedCodeG
 	@override String get codeGeneratedDescription => 'นำโค้ดที่สร้างแล้วไปวางในเว็บไซต์ของคุณเพื่อฝังเนื้อหา';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsThTh extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectThTh noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectThTh._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeThTh extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
@@ -3559,6 +3570,16 @@ class _TranslationsMisskeyDataSaverCodeThTh extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'ไฮไลต์โค้ด';
 	@override String get description => 'หากใช้สัญลักษณ์ไฮไลต์โค้ดใน MFM ฯลฯ สัญลักษณ์เหล่านั้นจะไม่โหลดจนกว่าจะแตะ การไฮไลต์ไวยากรณ์(syntax)จำเป็นต้องดาวน์โหลดไฟล์คำจำกัดความของไฮไลต์สำหรับแต่ละภาษา ดังนั้นการปิดใช้งานการโหลดไฟล์เหล่านี้โดยอัตโนมัติจึงคาดว่าจะช่วยลดปริมาณข้อมูลการสื่อสารได้';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectThTh extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'ไม่พบหน้าที่ต้องการ';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

@@ -948,6 +948,7 @@ class _TranslationsMisskeyUzUz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportUzUz abuseReport_ = _TranslationsMisskeyAbuseReportUzUz._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesUzUz moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesUzUz._(_root);
 	@override late final _TranslationsMisskeyReversiUzUz reversi_ = _TranslationsMisskeyReversiUzUz._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUzUz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsUzUz._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1404,6 +1405,16 @@ class _TranslationsMisskeyReversiUzUz extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Jami';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsUzUz extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUzUz noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUzUz._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeUzUz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
@@ -1561,6 +1572,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientUzUz extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeUzUz._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUzUz extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectUzUz._(TranslationsUzUz root) : this._root = root, super.internal(root);
+
+	final TranslationsUzUz _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Topilmadi';
 }
 
 // Path: misskey.achievements_.types_.viewInstanceChart_

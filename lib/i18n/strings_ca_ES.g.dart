@@ -41,7 +41,7 @@ class _TranslationsAriaCaEs extends TranslationsAriaEnUs {
 
 	// Translations
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'Estàs segur que vols deixar de seguir '),
+		const TextSpan(text: 'Segur que vols seguir a '),
 		name,
 		const TextSpan(text: '?'),
 	]);
@@ -59,14 +59,13 @@ class _TranslationsAriaCaEs extends TranslationsAriaEnUs {
 		user,
 	]);
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'Estàs segur que vols deixar de seguir '),
+		const TextSpan(text: 'Segur que vols deixar de seguir a '),
 		name,
 		const TextSpan(text: '?'),
 	]);
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
-		const TextSpan(text: 'La publicació de '),
 		name,
-		const TextSpan(text: ' conte material sensible'),
+		const TextSpan(text: ' n\'ha dit alguna cosa'),
 	]);
 	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'La publicació de '),
@@ -126,11 +125,11 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get unfavorite => 'Eliminar dels preferits';
 	@override String get favorited => 'Afegit als preferits.';
 	@override String get alreadyFavorited => 'Ja s\'ha afegit als preferits.';
-	@override String get cantFavorite => 'No s\'ha pogut afegir als preferits.';
-	@override String get pin => 'Fixar al perfil';
+	@override String get cantFavorite => 'No es pot afegir als preferits.';
+	@override String get pin => 'Fixa al perfil';
 	@override String get unpin => 'Para de fixar del perfil';
-	@override String get copyContent => 'Copiar el contingut';
-	@override String get copyLink => 'Copiar l\'enllaç';
+	@override String get copyContent => 'Copia el contingut';
+	@override String get copyLink => 'Copia l\'enllaç';
 	@override String get copyLinkRenote => 'Copiar l\'enllaç de la renota';
 	@override String get delete => 'Elimina';
 	@override String get deleteAndEdit => 'Eliminar i editar';
@@ -186,9 +185,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get privacy => 'Privadesa';
 	@override String get makeFollowManuallyApprove => 'Les sol·licituds de seguiment requereixen aprovació';
 	@override String get defaultNoteVisibility => 'Visibilitat per defecte';
-	@override String get follow => 'Seguint';
+	@override String get follow => 'Segueix';
 	@override String get followRequest => 'Enviar sol·licitud de seguiment';
-	@override String get followRequests => 'Sol·licituds de seguiment';
+	@override String get followRequests => 'Peticions de seguiment';
 	@override String get unfollow => 'Deixar de seguir';
 	@override String get followRequestPending => 'Sol·licituds de seguiment pendents';
 	@override String get enterEmoji => 'Introduir un emoji';
@@ -278,7 +277,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get removeWallpaper => 'Elimina el fons de pantalla';
 	@override String searchWith({required Object q}) => 'Cerca: ${q}';
 	@override String get youHaveNoLists => 'No tens cap llista';
-	@override String followConfirm({required Object name}) => 'Estàs segur que vols deixar de seguir ${name}?';
+	@override String followConfirm({required Object name}) => 'Segur que vols seguir a ${name}?';
 	@override String get proxyAccount => 'Compte de proxy';
 	@override String get proxyAccountDescription => 'Un compte proxy és un compte que actua com a seguidor remot per als usuaris en determinades condicions. Per exemple, quan un usuari afegeix un usuari remot a la llista, l\'activitat de l\'usuari remot no es lliurarà al servidor si cap usuari local segueix aquest usuari, de manera que el compte proxy el seguirà.';
 	@override String get host => 'Amfitrió';
@@ -305,7 +304,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get metadata => 'Metadades';
 	@override String withNFiles({required Object n}) => '${n} fitxer(s)';
 	@override String get monitor => 'Monitor';
-	@override String get jobQueue => 'Cua de tasques';
+	@override String get jobQueue => 'Cua de feines';
 	@override String get cpuAndMemory => 'CPU i memòria';
 	@override String get network => 'Xarxa';
 	@override String get disk => 'Disc';
@@ -408,7 +407,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get lightThemes => 'Temes clars';
 	@override String get darkThemes => 'Temes foscos';
 	@override String get syncDeviceDarkMode => 'Sincronitza el mode fosc amb la configuració del dispositiu';
-	@override String get drive => 'Unitat';
+	@override String get drive => 'Disc';
 	@override String get fileName => 'Nom del Fitxer';
 	@override String get selectFile => 'Selecciona un fitxer';
 	@override String get selectFiles => 'Selecciona fitxers';
@@ -423,11 +422,11 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get folder => 'Carpeta ';
 	@override String get addFile => 'Afegeix un fitxer';
 	@override String get showFile => 'Mostrar fitxer';
-	@override String get emptyDrive => 'La teva unitat és buida';
+	@override String get emptyDrive => 'El teu Disc és buit';
 	@override String get emptyFolder => 'La carpeta està buida';
 	@override String get unableToDelete => 'No es pot eliminar';
 	@override String get inputNewFileName => 'Introduïu el nom de fitxer nou';
-	@override String get inputNewDescription => 'Inserta una nova llegenda';
+	@override String get inputNewDescription => 'Escriu el peu de foto.';
 	@override String get inputNewFolderName => 'Introduïu el nom de la carpeta nova';
 	@override String get circularReferenceFolder => 'La carpeta destinatària és una subcarpeta de la carpeta a la qual la desitges moure';
 	@override String get hasChildFilesOrFolders => 'No és possible esborrar aquesta carpeta ja que no és buida';
@@ -620,7 +619,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String limitTo({required Object x}) => 'Limita a ${x}';
 	@override String get noFollowRequests => 'No tens sol·licituds de seguiment';
 	@override String get openImageInNewTab => 'Obre imatges a una nova pestanya';
-	@override String get dashboard => 'Panell de control';
+	@override String get dashboard => 'Taulell de control';
 	@override String get local => 'Local';
 	@override String get remote => 'Remot';
 	@override String get total => 'Total';
@@ -656,7 +655,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get deleteAll => 'Elimina-ho tot';
 	@override String get showFixedPostForm => 'Mostrar el formulari per escriure a l\'inici de la línia de temps';
 	@override String get showFixedPostFormInChannel => 'Mostrar el formulari d\'escriptura al principi de la línia de temps (Canals)';
-	@override String get withRepliesByDefaultForNewlyFollowed => 'Inclou les respostes d\'usuaris nous seguits a la línia de temps per defecte.';
+	@override String get withRepliesByDefaultForNewlyFollowed => 'Inclou les respostes d\'usuaris nous que segueixes a la línia de temps per defecte.';
 	@override String get newNoteRecived => 'Hi ha publicacions noves';
 	@override String get sounds => 'Sons';
 	@override String get sound => 'So';
@@ -697,7 +696,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get unsetUserBannerConfirm => 'Segur que vols desactivar el bàner?';
 	@override String get deleteAllFiles => 'Esborra tots els arxius';
 	@override String get deleteAllFilesConfirm => 'Segur que vols esborrar tots els arxius?';
-	@override String get removeAllFollowing => 'Deixa de seguir tots els usuaris seguits';
+	@override String get removeAllFollowing => 'Deixa de seguir tots els usuaris que segueixes';
 	@override String removeAllFollowingDescription({required Object host}) => 'El fet d\'executar això, et farà deixar de seguir a tots els usuaris de ${host}. Si us plau, executa això si l\'amfitrió, per exemple, ja no existeix.';
 	@override String get userSuspended => 'Aquest usuari ha sigut suspès';
 	@override String get userSilenced => 'Aquest usuari està sent silenciat';
@@ -728,7 +727,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get themeEditor => 'Editor de temes';
 	@override String get description => 'Descripció';
 	@override String get describeFile => 'Afegir subtitulació';
-	@override String get enterFileDescription => 'Afegeix un títol';
+	@override String get enterFileDescription => 'Escriu un peu de foto';
 	@override String get author => 'Autor';
 	@override String get leaveConfirm => 'Hi ha canvis sense guardar. Els vols descartar?';
 	@override String get manage => 'Administració';
@@ -767,7 +766,9 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'Desactiva això quan facis servir connexions STARTTLS';
 	@override String get testEmail => 'Prova l\'enviament de correu ';
 	@override String get wordMute => 'Silenciar paraules ';
+	@override String get wordMuteDescription => 'Minimitza les notes que contenen la paraula o frase especificada. Les notes minimitzades poden visualitzar-se fent clic sobre elles.';
 	@override String get hardWordMute => 'Silenciar paraules fortes';
+	@override String get hardWordMuteDescription => 'Oculta les notes que contenen la paraula o frase especificada. A diferència de Silenciar paraula, la nota quedarà completament oculta a la vista.';
 	@override String get regexpError => 'Error de l\'expressió regular ';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'S\'ha produït un error a l\'expressió regular a la línia ${line} de les paraules silenciades ${tab}:';
 	@override String get instanceMute => 'Silenciar servidor';
@@ -812,7 +813,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String waitingFor({required Object x}) => 'Esperant ${x}';
 	@override String get random => 'Aleatori ';
 	@override String get system => 'Sistema';
-	@override String get switchUi => 'Canviar interfície d\'usuari ';
+	@override String get switchUi => 'Canviar la interfície';
 	@override String get desktop => 'Escriptori';
 	@override String get clip => 'Retalls';
 	@override String get createNew => 'Crear';
@@ -830,7 +831,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get renotesCount => 'Impulsos fets';
 	@override String get repliedCount => 'Nombre de respostes rebudes';
 	@override String get renotedCount => 'Impulsos rebuts';
-	@override String get followingCount => 'Nombre de comptes seguits';
+	@override String get followingCount => 'Nombre de comptes que segueixes';
 	@override String get followersCount => 'Nombre de seguidors';
 	@override String get sentReactionsCount => 'Nombre de reaccions enviades';
 	@override String get receivedReactionsCount => 'Nombre de reaccions rebudes';
@@ -862,7 +863,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get developer => 'Programador';
 	@override String get makeExplorable => 'Fes que el compte sigui visible a la secció "Explorar"';
 	@override String get makeExplorableDescription => 'Si desactives aquesta opció, el teu compte no sortirà a la secció "Explorar"';
-	@override String get showGapBetweenNotesInTimeline => 'Mostra una separació entre els articles a la línia de temps';
+	@override String get showGapBetweenNotesInTimeline => 'Notes separades a la línia de temps';
 	@override String get duplicate => 'Duplicat';
 	@override String get left => 'Esquerra';
 	@override String get center => 'Centre';
@@ -993,7 +994,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get emailRequiredForSignup => 'Demanar correu electrònic per registrar-se ';
 	@override String get unread => 'Sense llegir';
 	@override String get filter => 'Filtrar';
-	@override String get controlPanel => 'Panel de control';
+	@override String get controlPanel => 'Taulell de control';
 	@override String get manageAccounts => 'Gestionar comptes';
 	@override String get makeReactionsPublic => 'Reaccions públiques ';
 	@override String get makeReactionsPublicDescription => 'Això fa que totes les teves reaccions siguin visibles públicament ';
@@ -1012,7 +1013,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String welcomeBackWithName({required Object name}) => 'Benvingut de nou, ${name}';
 	@override String clickToFinishEmailVerification({required Object ok}) => 'Si us plau, fes clic a [${ok}] per completar la verificació per correu electrònic ';
 	@override String get overridedDeviceKind => 'Tipus de dispositiu';
-	@override String get smartphone => 'Telèfon intel·ligent';
+	@override String get smartphone => 'Mòbil ';
 	@override String get tablet => 'Tauleta';
 	@override String get auto => 'Automàtic ';
 	@override String get themeColor => 'Color del tema';
@@ -1093,7 +1094,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get windowMaximize => 'Maximitzar ';
 	@override String get windowMinimize => 'Minimitzar';
 	@override String get windowRestore => 'Restaurar';
-	@override String get caption => 'Llegenda';
+	@override String get caption => 'Peu de foto';
 	@override String get loggedInAsBot => 'Identificat com a bot';
 	@override String get tools => 'Eines';
 	@override String get cannotLoad => 'No es pot carregar';
@@ -1216,7 +1217,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get thisChannelArchived => 'Aquest Canal ha sigut arxivat.';
 	@override String get displayOfNote => 'Mostrar notes';
 	@override String get initialAccountSetting => 'Configuració del perfil';
-	@override String get youFollowing => 'Seguit';
+	@override String get youFollowing => 'Seguint';
 	@override String get preventAiLearning => 'Descartar l\'ús d\'aprenentatge automàtic (IA Generativa)';
 	@override String get preventAiLearningDescription => 'Demanar els indexadors no fer servir els texts, imatges, etc. en cap conjunt de dades per alimentar l\'aprenentatge automàtic (IA Predictiva/ Generativa). Això s\'aconsegueix afegint la etiqueta "noai" com a resposta HTML al contingut corresponent. Prevenir aquest ús totalment pot ser que no sigui aconseguit, ja que molts indexadors poden obviar aquesta etiqueta.';
 	@override String get options => 'Opcions';
@@ -1282,7 +1283,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get edited => 'Editat';
 	@override String get notificationRecieveConfig => 'Paràmetres de notificacions';
 	@override String get mutualFollow => 'Seguidor mutu';
-	@override String get followingOrFollower => 'Seguit o seguidor';
+	@override String get followingOrFollower => 'Seguint o seguidor';
 	@override String get fileAttachedOnly => 'Només notes amb adjunts';
 	@override String get showRepliesToOthersInTimeline => 'Mostrar les respostes a altres a la línia de temps';
 	@override String get hideRepliesToOthersInTimeline => 'Amagar les respostes a altres a la línia de temps';
@@ -1383,6 +1384,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get lockdown => 'Bloquejat';
 	@override String get pleaseSelectAccount => 'Seleccionar un compte';
 	@override String get availableRoles => 'Roles disponibles ';
+	@override String get acknowledgeNotesAndEnable => 'Activa\'l després de comprendre els possibles perills.';
 	@override late final _TranslationsMisskeyAccountSettingsCaEs accountSettings_ = _TranslationsMisskeyAccountSettingsCaEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportCaEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportCaEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryCaEs delivery_ = _TranslationsMisskeyDeliveryCaEs._(_root);
@@ -1459,6 +1461,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuCaEs contextMenu_ = _TranslationsMisskeyContextMenuCaEs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenCaEs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenCaEs._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionCaEs selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionCaEs._(_root);
+	@override late final _TranslationsMisskeyFollowRequestCaEs followRequest_ = _TranslationsMisskeyFollowRequestCaEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsCaEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsCaEs._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -1631,6 +1635,8 @@ class _TranslationsMisskeyServerSettingsCaEs extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => 'Quan s\'activa aquesta opció millora bastant el rendiment en recuperar les línies de temps reduint la càrrega de la base. Com a contrapunt, augmentarà  l\'ús de memòria de Redís. Desactiva aquesta opció en cas de tenir un servidor amb poca memòria o si tens problemes d\'inestabilitat.';
 	@override String get inquiryUrl => 'URL de consulta ';
 	@override String get inquiryUrlDescription => 'Escriu adreça URL per al formulari de consulta per al mantenidor del servidor o una pàgina web amb el contacte d\'informació.';
+	@override String get openRegistration => 'Registres oberts';
+	@override String get openRegistrationWarning => 'Obrir els registres és arriscat. Es recomana obrir-los només si el servidor és monitorat constantment i per respondre immediatament davant qualsevol problema.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Si no es detecta activitat per part del moderador durant un període de temps, aquesta opció es desactiva automàticament per evitar el correu brossa.';
 }
 
@@ -1653,7 +1659,7 @@ class _TranslationsMisskeyAccountMigrationCaEs extends TranslationsMisskeyAccoun
 	@override String get startMigration => 'Migrar';
 	@override String migrationConfirm({required Object account}) => 'Vols migrar aquest compte a ${account}? Una vegada comenci la migració no es podrà parar O fer marxa enrere i no podràs tornar a fer servir aquest compte mai més.';
 	@override String get movedAndCannotBeUndone => 'Aquest compte ha migrat.\nLes migracions no es poden desfer.';
-	@override String get postMigrationNote => 'Aquest compte deixarà de seguir tots els comptes que segueix 24 hores després de germinar la migració.\nEl nombre de seguidors i seguits passarà a ser de zero. Per evitar que els teus seguidors no puguin veure les publicacions marcades com a només seguidors continuaren seguint aquest compte.';
+	@override String get postMigrationNote => 'Aquest compte deixarà de seguir tots els comptes que segueix 24 hores després de terminar la migració.\nEl nombre de seguidors i seguits passarà a ser de zero. Per evitar que els teus seguidors no puguin veure les publicacions marcades com a només seguidors continuaren seguint aquest compte.';
 	@override String get movedTo => 'Nou compte:';
 }
 
@@ -1749,7 +1755,7 @@ class _TranslationsMisskeyFfVisibilityCaEs extends TranslationsMisskeyFfVisibili
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get public => 'Publicar';
+	@override String get public => 'Públic ';
 	@override String get followers => 'Visible només per a seguidors ';
 	@override String get private => 'Privat';
 }
@@ -1895,7 +1901,7 @@ class _TranslationsMisskeyAboutMisskeyCaEs extends TranslationsMisskeyAboutMissk
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get about => 'Misskey és un programa de codi obert desenvolupar per syuilo des de 2014';
+	@override String get about => 'Misskey és un programa de codi obert desenvolupat des del 2014 per syuilo';
 	@override String get contributors => 'Col·laboradors principals';
 	@override String get allContributors => 'Tots els col·laboradors ';
 	@override String get source => 'Codi font';
@@ -2327,7 +2333,7 @@ class _TranslationsMisskeyWidgetsCaEs extends TranslationsMisskeyWidgetsEnUs {
 	@override String get slideshow => 'Presentació';
 	@override String get button => 'Botó ';
 	@override String get onlineUsers => 'Usuaris actius';
-	@override String get jobQueue => 'Cua de tasques';
+	@override String get jobQueue => 'Cua de feines';
 	@override String get serverMetric => 'Mètriques del servidor';
 	@override String get aiscript => 'Consola AiScript';
 	@override String get aiscriptApp => 'Aplicació AiScript';
@@ -2448,7 +2454,7 @@ class _TranslationsMisskeyExportOrImportCaEs extends TranslationsMisskeyExportOr
 	@override String get allNotes => 'Totes les publicacions';
 	@override String get favoritedNotes => 'Notes preferides';
 	@override String get clips => 'Retalls';
-	@override String get followingList => 'Seguint';
+	@override String get followingList => 'Seguint ';
 	@override String get muteList => 'Silencia';
 	@override String get blockingList => 'Bloqueja';
 	@override String get userLists => 'Llistes';
@@ -2984,6 +2990,32 @@ class _TranslationsMisskeySelfXssPreventionCaEs extends TranslationsMisskeySelfX
 	@override String description3({required Object link}) => 'Per obtenir més informació. ${link}';
 }
 
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestCaEs extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => 'Sol·licituds rebudes';
+	@override String get sent => 'Sol·licituds enviades';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsCaEs extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedCaEs federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedCaEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidCaEs uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidCaEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedCaEs requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedCaEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCaEs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCaEs._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeCaEs extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
@@ -3298,7 +3330,7 @@ class _TranslationsMisskeyEmailFollowCaEs extends TranslationsMisskeyEmailFollow
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 't\'ha seguit';
+	@override String get title => 'Tens un nou seguidor';
 }
 
 // Path: misskey.email_.receiveFollowRequest_
@@ -3411,7 +3443,7 @@ class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotif
 	// Translations
 	@override String get all => 'Tots';
 	@override String get note => 'Notes noves';
-	@override String get follow => 'Seguint';
+	@override String get follow => 'Segueix-me';
 	@override String get mention => 'Menció';
 	@override String get reply => 'Respostes';
 	@override String get renote => 'Renotar';
@@ -3435,7 +3467,7 @@ class _TranslationsMisskeyNotificationActionsCaEs extends TranslationsMisskeyNot
 	final TranslationsCaEs _root; // ignore: unused_field
 
 	// Translations
-	@override String get followBack => 't\'ha seguit també';
+	@override String get followBack => 'També et segueix';
 	@override String get reply => 'Respondre';
 	@override String get renote => 'Renotar';
 }
@@ -3609,6 +3641,71 @@ class _TranslationsMisskeyDataSaverCodeCaEs extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'Ressaltat del codi ';
 	@override String get description => 'Quan s\'utilitza codi MFM, no es llegeix fins que es copiï. En els punts destacats del codi s\'han de llegir els fitxers definits per a cada llengua que resulti alt, però no es poden llegir automàticament, per la qual cosa es poden reduir les quantitats de comunicació.';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedCaEs extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'No es pot establir connexió amb aquest servidor';
+	@override String get description => 'És possible que s\'hagi desactivat la comunicació amb aquest servidor o que hagi estat bloquejat.\nPosa\'t en contacte amb l\'administrador del servidor.';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsUriInvalidCaEs extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUriInvalidCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'L\'adreça és incorrecte';
+	@override String get description => 'Hi ha un problema amb l\'adreça introduïda; comprova que no hagis escrit caràcters que no es puguin fer servir.';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class _TranslationsMisskeyRemoteLookupErrorsRequestFailedCaEs extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRequestFailedCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'La sol·licitud a fallat';
+	@override String get description => 'La comunicació amb aquest servidor a fallat. És possible que l\'altre servidor no funcioni. Comprova també que no has posat una adreça no vàlida o inexistent.';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'La resposta no és correcta ';
+	@override String get description => 'Hem pogut comunicar-nos amb aquest servidor, però les dades rebudes no són correctes.';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => 'El domini de l\'adreça introduïda no és el mateix que el domini de l\'adreça final obtinguda. Si estàs consultant continguts remots mitjançant servidors tercers, torna a fer la consulta fent servir l\'adreça que es pot obtenir en el servidor origen.';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCaEs extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'No s\'ha trobat';
+	@override String get description => 'No es pot trobar el recurs sol·licitat, si us plau comprova l\'adreça una altra vegada.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

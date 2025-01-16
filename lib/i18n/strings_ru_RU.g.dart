@@ -56,7 +56,7 @@ class _TranslationsAriaRuRu extends TranslationsAriaEnUs {
 	]);
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
-		const TextSpan(text: ' делится'),
+		const TextSpan(text: ' делает репост'),
 	]);
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Удалить из подписок пользователя '),
@@ -95,7 +95,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get cancel => 'Отмена';
 	@override String get noThankYou => 'Нет, спасибо';
 	@override String get enterUsername => 'Введите имя пользователя';
-	@override String renotedBy({required Object user}) => '${user} репостнул(а)';
+	@override String renotedBy({required Object user}) => '${user} делает репост';
 	@override String get noNotes => 'Нет ни одной заметки';
 	@override String get noNotifications => 'Нет уведомлений';
 	@override String get instance => 'Экземпляр';
@@ -1182,16 +1182,18 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get preservedUsernamesDescription => 'Перечислите зарезервированные имена пользователей, отделяя их строками. Они станут недоступны при создании учётной записи. Это ограничение не применяется при создании учётной записи администраторами. Также, уже существующие учётные записи останутся без изменений.';
 	@override String get createNoteFromTheFile => 'Создать заметку из этого файла';
 	@override String get archive => 'Архив';
+	@override String get unarchive => 'Разархивировать';
 	@override String channelArchiveConfirmTitle({required Object name}) => 'Переместить ${name} в архив?';
 	@override String get channelArchiveConfirmDescription => 'Архивированные каналы перестанут отображаться в списке каналов или результатах поиска. В них также нельзя будет добавлять новые записи.';
 	@override String get thisChannelArchived => 'Этот канал находится в архиве.';
 	@override String get displayOfNote => 'Отображение заметок';
 	@override String get initialAccountSetting => 'Настройка профиля';
-	@override String get youFollowing => 'Подписки';
+	@override String get youFollowing => 'Вы подписаны';
 	@override String get preventAiLearning => 'Отказаться от использования в машинном обучении (Генеративный ИИ)';
 	@override String get preventAiLearningDescription => 'Запросить краулеров не использовать опубликованный текст или изображения и т.д. для машинного обучения (Прогнозирующий / Генеративный ИИ) датасетов. Это достигается путём добавления "noai" HTTP-заголовка в ответ на соответствующий контент. Полного предотвращения через этот заголовок не избежать, так как он может быть просто проигнорирован.';
 	@override String get options => 'Настройки ролей';
 	@override String get specifyUser => 'Указанный пользователь';
+	@override String get lookupConfirm => 'Хотите узнать?';
 	@override String get openTagPageConfirm => 'Открыть страницу этого хештега?';
 	@override String get specifyHost => 'Указать сайт';
 	@override String get failedToPreviewUrl => 'Предварительный просмотр недоступен';
@@ -1255,6 +1257,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get keepOriginalFilenameDescription => 'Если вы выключите данную настройку, имена файлов будут автоматически заменены случайной строкой при загрузке.';
 	@override String get alwaysConfirmFollow => 'Всегда подтверждать подписку';
 	@override String get inquiry => 'Связаться';
+	@override String get messageToFollower => 'Сообщение подписчикам';
 	@override late final _TranslationsMisskeyDeliveryRuRu delivery_ = _TranslationsMisskeyDeliveryRuRu._(_root);
 	@override late final _TranslationsMisskeyAnnouncementRuRu announcement_ = _TranslationsMisskeyAnnouncementRuRu._(_root);
 	@override late final _TranslationsMisskeyInitialAccountSettingRuRu initialAccountSetting_ = _TranslationsMisskeyInitialAccountSettingRuRu._(_root);
@@ -1320,6 +1323,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyDataSaverRuRu dataSaver_ = _TranslationsMisskeyDataSaverRuRu._(_root);
 	@override late final _TranslationsMisskeyHemisphereRuRu hemisphere_ = _TranslationsMisskeyHemisphereRuRu._(_root);
 	@override late final _TranslationsMisskeyReversiRuRu reversi_ = _TranslationsMisskeyReversiRuRu._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRuRu remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRuRu._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2431,6 +2435,16 @@ class _TranslationsMisskeyReversiRuRu extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Всего';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsRuRu extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRuRu noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRuRu._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeRuRu extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
@@ -2592,6 +2606,7 @@ class _TranslationsMisskeyRoleOptionsRuRu extends TranslationsMisskeyRoleOptions
 	@override String get rateLimitFactor => 'Ограничение активности';
 	@override String get descriptionOfRateLimitFactor => 'Меньшее значение — слабые ограничения, большее — сильные';
 	@override String get canHideAds => 'Может скрыть рекламу';
+	@override String get canImportFollowing => 'Можно импортировать подписчиков';
 }
 
 // Path: misskey.role_.condition_
@@ -2823,6 +2838,16 @@ class _TranslationsMisskeyDataSaverCodeRuRu extends TranslationsMisskeyDataSaver
 
 	// Translations
 	@override String get title => 'Подсветка кода';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRuRu extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Не найдено';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

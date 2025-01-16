@@ -1098,3 +1098,6 @@ moderationLogTypes_:
   resetPassword: "Parolni tiklash"
 reversi_:
   total: "Jami"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Topilmadi"

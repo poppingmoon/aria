@@ -1934,3 +1934,6 @@ moderationLogTypes_:
   createInvitation: "Tạo lời mời"
 reversi_:
   total: "Tổng cộng"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Không tìm thấy"

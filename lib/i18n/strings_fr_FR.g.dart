@@ -67,6 +67,11 @@ class _TranslationsAriaFrFr extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: ' a dit quelque chose'),
 	]);
+	@override TextSpan userSaysSomethingSensitive({required InlineSpan name}) => TextSpan(children: [
+		const TextSpan(text: 'Note de '),
+		name,
+		const TextSpan(text: ' contenant des fichiers joints sensibles'),
+	]);
 }
 
 // Path: misskey
@@ -1421,6 +1426,7 @@ class _TranslationsMisskeyFrFr extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiFrFr reversi_ = _TranslationsMisskeyReversiFrFr._(_root);
 	@override late final _TranslationsMisskeyMediaControlsFrFr mediaControls_ = _TranslationsMisskeyMediaControlsFrFr._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenFrFr embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenFrFr._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFrFr remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsFrFr._(_root);
 }
 
 // Path: misskey.abuseUserReport_
@@ -2647,6 +2653,16 @@ class _TranslationsMisskeyEmbedCodeGenFrFr extends TranslationsMisskeyEmbedCodeG
 	@override String get generateCode => 'Générer le code d\'intégration';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsFrFr extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectFrFr noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectFrFr._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeFrFr extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
@@ -3155,6 +3171,16 @@ class _TranslationsMisskeyDataSaverCodeFrFr extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => 'Mise en évidence du code';
 	@override String get description => 'Si la notation de mise en évidence du code est utilisée, par exemple dans la MFM, elle ne sera pas chargée tant qu\'elle n\'aura pas été tapée. La mise en évidence du code nécessite le chargement du fichier de définition de chaque langue à mettre en évidence, mais comme ces fichiers ne sont plus chargés automatiquement, on peut s\'attendre à une réduction du trafic de données.';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectFrFr extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectFrFr._(TranslationsFrFr root) : this._root = root, super.internal(root);
+
+	final TranslationsFrFr _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Non trouvé';
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_

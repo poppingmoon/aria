@@ -736,6 +736,7 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportRoRo abuseReport_ = _TranslationsMisskeyAbuseReportRoRo._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesRoRo moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesRoRo._(_root);
 	@override late final _TranslationsMisskeyReversiRoRo reversi_ = _TranslationsMisskeyReversiRoRo._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRoRo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRoRo._(_root);
 }
 
 // Path: misskey.delivery_
@@ -977,6 +978,16 @@ class _TranslationsMisskeyReversiRoRo extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Total';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsRoRo extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeRoRo extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
@@ -1088,6 +1099,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientRoRo extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeRoRo recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeRoRo._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nu a fost găsit';
 }
 
 // Path: misskey.abuseReport_.notificationRecipient_.recipientType_

@@ -932,7 +932,9 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'STARTTLS 사용 시에는 해제합니다.';
 	@override String get testEmail => '이메일 전송 테스트';
 	@override String get wordMute => '단어 뮤트';
+	@override String get wordMuteDescription => '정해진 단어가 포함된 노트를 최소화 한 상태로 표시합니다. 최소화 된 노트는 클릭해서 표시할 수 있습니다.';
 	@override String get hardWordMute => '하드 단어 뮤트';
+	@override String get hardWordMuteDescription => '정한 단어가 들어간 노트를 숨깁니다. 단어 뮤트와 차이점은 노트가 아예 보이지 않습니다.';
 	@override String get regexpError => '정규 표현식 오류';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab}단어 뮤트 ${line}행의 정규 표현식에 오류가 발생했습니다:';
 	@override String get instanceMute => '서버 뮤트';
@@ -1548,6 +1550,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get lockdown => '잠금';
 	@override String get pleaseSelectAccount => '계정을 선택해주세요.';
 	@override String get availableRoles => '사용 가능한 역할';
+	@override String get acknowledgeNotesAndEnable => '활성화 하기 전에 주의 사항을 확인했습니다.';
 	@override late final _TranslationsMisskeyAccountSettingsKoGs accountSettings_ = _TranslationsMisskeyAccountSettingsKoGs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportKoGs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportKoGs._(_root);
 	@override late final _TranslationsMisskeyDeliveryKoGs delivery_ = _TranslationsMisskeyDeliveryKoGs._(_root);
@@ -1624,6 +1627,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuKoGs contextMenu_ = _TranslationsMisskeyContextMenuKoGs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenKoGs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenKoGs._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionKoGs selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionKoGs._(_root);
+	@override late final _TranslationsMisskeyFollowRequestKoGs followRequest_ = _TranslationsMisskeyFollowRequestKoGs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsKoGs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsKoGs._(_root);
 }
 
 // Path: misskeyIO
@@ -1643,12 +1648,12 @@ class _TranslationsMisskeyAccountSettingsKoGs extends TranslationsMisskeyAccount
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
-	@override String get requireSigninToViewContents => '콘텐츠 열람을 위해 로그인으 필수로 설정하기';
+	@override String get requireSigninToViewContents => '콘텐츠 열람을 위해 로그인을 필수로 설정하기';
 	@override String get requireSigninToViewContentsDescription1 => '자신이 작성한 모든 노트 등의 콘텐츠를 보기 위해 로그인을 필수로 설정합니다. 크롤러가 정보 수집하는 것을 방지하는 효과를 기대할 수 있습니다.';
 	@override String get requireSigninToViewContentsDescription2 => 'URL 미리보기(OGP), 웹페이지에 삽입, 노트 인용을 지원하지 않는 서버에서 볼 수 없게 됩니다.';
 	@override String get requireSigninToViewContentsDescription3 => '원격 서버에 연합된 콘텐츠에는 이러한 제한이 적용되지 않을 수 있습니다.';
 	@override String get makeNotesFollowersOnlyBefore => '과거 노트는 팔로워만 볼 수 있도록 설정하기';
-	@override String get makeNotesFollowersOnlyBeforeDescription => '이 기능이 활성화되어 있는 동안, 설정된 날짜 및 시간보다 과거 또는 설정된 시간이 지난 노트는 팔로워만 볼 수 있게 됩니다.비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
+	@override String get makeNotesFollowersOnlyBeforeDescription => '이 기능이 활성화되어 있는 동안, 설정된 날짜 및 시간보다 과거 또는 설정된 시간이 지난 노트는 팔로워만 볼 수 있게 됩니다. 비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
 	@override String get makeNotesHiddenBefore => '과거 노트 비공개로 전환하기';
 	@override String get makeNotesHiddenBeforeDescription => '이 기능이 활성화되어 있는 동안 설정한 날짜 및 시간보다 과거 또는 설정한 시간이 지난 노트는 본인만 볼 수 있게(비공개로 전환) 됩니다. 비활성화하면 노트의 공개 상태도 원래대로 돌아갑니다.';
 	@override String get mayNotEffectForFederatedNotes => '원격 서버에 연합된 노트에는 효과가 없을 수도 있습니다.';
@@ -1806,6 +1811,8 @@ class _TranslationsMisskeyServerSettingsKoGs extends TranslationsMisskeyServerSe
 	@override String get reactionsBufferingDescription => '활성화 한 경우, 리액션 작성 퍼포먼스가 대폭 향상되어 DB의 부하를 줄일 수 있으나, Redis의 메모리 사용량이 많아집니다.';
 	@override String get inquiryUrl => '문의처 URL';
 	@override String get inquiryUrlDescription => '서버 운영자에게 보내는 문의 양식의 URL이나 운영자의 연락처 등이 적힌 웹 페이지의 URL을 설정합니다.';
+	@override String get openRegistration => '회원 가입을 활성화 하기';
+	@override String get openRegistrationWarning => '회원 가입을 개방하는 것은 리스크가 따릅니다. 서버를 항상 감시할 수 있고, 문제가 발생했을 때 바로 대응할 수 있는 상태에서만 활성화 하는 것을 권장합니다.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => '일정 기간동안 모더레이터의 활동이 감지되지 않는 경우, 스팸 방지를 위해 이 설정은 자동으로 꺼집니다.';
 }
 
@@ -3159,6 +3166,30 @@ class _TranslationsMisskeySelfXssPreventionKoGs extends TranslationsMisskeySelfX
 	@override String description3({required Object link}) => '자세한 내용은 여기를 확인해 주세요.  ${link}';
 }
 
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestKoGs extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => '받은 신청';
+	@override String get sent => '보낸 신청';
+}
+
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsKoGs extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs._(_root);
+}
+
 // Path: misskeyIO.skebStatus_
 class _TranslationsMisskeyIOSkebStatusKoGs extends TranslationsMisskeyIOSkebStatusEnUs {
 	_TranslationsMisskeyIOSkebStatusKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
@@ -3673,7 +3704,7 @@ class _TranslationsMisskeyWebhookSettingsSystemEventsKoGs extends TranslationsMi
 	final TranslationsKoGs _root; // ignore: unused_field
 
 	// Translations
-	@override String get abuseReport => '유저롭';
+	@override String get abuseReport => '유저로부터 신고를 받았을 때';
 	@override String get abuseReportResolved => '받은 신고를 처리했을 때';
 	@override String get userCreated => '유저가 생성되었을 때';
 	@override String get inactiveModeratorsWarning => '모더레이터가 일정 기간동안 활동하지 않은 경우';
@@ -3800,6 +3831,49 @@ class _TranslationsMisskeyDataSaverCodeKoGs extends TranslationsMisskeyDataSaver
 	// Translations
 	@override String get title => '문자열 강조';
 	@override String get description => 'MFM 등으로 문자열 강조 기법을 사용할 때 누르기 전에는 불러오지 않습니다. 문자열 강조에서는 강조할 언어마다 그 정의 파일을 불러와야 하지만 이를 자동으로 불러오지 않으므로 데이터 사용량을 줄일 수 있습니다.';
+}
+
+// Path: misskey.remoteLookupErrors_.federationNotAllowed_
+class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '이 서버와 통신할 수 없음';
+	@override String get description => '이 서버와의 통신이 비활성화 되었거나, 이 서버를 차단 중이거나 서버에게 차단되었을 수 있습니다.\n서버 관리자에게 문의하세요.';
+}
+
+// Path: misskey.remoteLookupErrors_.uriInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs extends TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'URI가 잘못되었습니다.';
+	@override String get description => '입력한 URI에 문제가 있습니다. URI에 쓸 수 없는 문자를 넣었는지 확인해보세요.';
+}
+
+// Path: misskey.remoteLookupErrors_.requestFailed_
+class _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs extends TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '요청을 실패했습니다.';
+	@override String get description => '해당 서버와 통신을 실패했습니다. 상대방 서버에 접속 불가능한 상태일 수도 있습니다. 또는 잘못된 URI 또는 없는 URI를 입력했는지 확인해보세요.';
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '몬 찾앗십니다';
 }
 
 // Path: misskeyIO.skebStatus_.genres_

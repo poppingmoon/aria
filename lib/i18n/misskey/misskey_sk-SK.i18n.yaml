@@ -1453,3 +1453,6 @@ moderationLogTypes_:
   resetPassword: "Resetovať heslo"
 reversi_:
   total: "Celkom"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Nenájdené"

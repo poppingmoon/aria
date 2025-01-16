@@ -478,3 +478,6 @@ abuseReport_:
       mail: "ອີເມວ"
 moderationLogTypes_:
   suspend: "ລະງັບ"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "ບໍ່ພົບ"

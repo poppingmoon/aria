@@ -1592,6 +1592,12 @@
             "value": "로그인 알림이 있습니다"
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alguém entrou na conta"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1645,6 +1651,12 @@
             "value": "안테나 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Antenas foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1654,7 +1666,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 天线 个导出"
+            "value": "已完成 天线 的导出"
           }
         },
         "zh-Hant": {
@@ -1698,6 +1710,12 @@
             "value": "차단한 유저 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Usuários bloqueados foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1707,7 +1725,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已屏蔽的用户 个导出"
+            "value": "已完成 已屏蔽的用户 的导出"
           }
         },
         "zh-Hant": {
@@ -1751,6 +1769,12 @@
             "value": "클립 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Clipe foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1760,7 +1784,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 便签 个导出"
+            "value": "已完成 便签 的导出"
           }
         },
         "zh-Hant": {
@@ -1804,6 +1828,12 @@
             "value": "커스텀 이모지 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Emoji personalizado foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1813,7 +1843,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 自定义表情符号 个导出"
+            "value": "已完成 自定义表情符号 的导出"
           }
         },
         "zh-Hant": {
@@ -1857,6 +1887,12 @@
             "value": "즐겨찾기 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Favoritos foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1866,7 +1902,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 收藏 个导出"
+            "value": "已完成 收藏 的导出"
           }
         },
         "zh-Hant": {
@@ -1910,6 +1946,12 @@
             "value": "팔로잉 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Seguindo foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1919,7 +1961,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 关注中 个导出"
+            "value": "已完成 关注中 的导出"
           }
         },
         "zh-Hant": {
@@ -1963,6 +2005,12 @@
             "value": "뮤트한 유저 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Usuários silenciados foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -1972,7 +2020,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 已隐藏用户 个导出"
+            "value": "已完成 已隐藏用户 的导出"
           }
         },
         "zh-Hant": {
@@ -2016,6 +2064,12 @@
             "value": "노트 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Posts foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -2025,7 +2079,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 帖子 个导出"
+            "value": "已完成 帖子 的导出"
           }
         },
         "zh-Hant": {
@@ -2069,6 +2123,12 @@
             "value": "리스트 추출에 성공했습니다."
           }
         },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exportação de Listas foi concluída"
+          }
+        },
         "th": {
           "stringUnit": {
             "state": "translated",
@@ -2078,7 +2138,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "已完成 列表 个导出"
+            "value": "已完成 列表 的导出"
           }
         },
         "zh-Hant": {
@@ -9271,7 +9331,7 @@
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "像神一样呐"
+            "value": "上帝情结"
           }
         },
         "zh-Hant": {

@@ -1628,3 +1628,6 @@ moderationLogTypes_:
   resetPassword: "Скинути пароль"
 reversi_:
   total: "Всього"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Не знайдено"

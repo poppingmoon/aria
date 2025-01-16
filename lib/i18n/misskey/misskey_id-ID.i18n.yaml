@@ -2614,3 +2614,6 @@ mediaControls_:
   pip: "Gambar dalam Gambar"
   playbackRate: "Kecepatan Pemutaran"
   loop: "Ulangi Pemutaran"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Tidak dapat ditemukan"

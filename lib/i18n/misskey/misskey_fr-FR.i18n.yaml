@@ -2368,3 +2368,6 @@ mediaControls_:
 embedCodeGen_:
   title: "Personnaliser le code d'intégration"
   generateCode: "Générer le code d'intégration"
+remoteLookupErrors_:
+  noSuchObject_:
+    title: "Non trouvé"

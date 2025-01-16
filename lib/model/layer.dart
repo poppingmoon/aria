@@ -35,7 +35,7 @@ class ImageLayer with _$ImageLayer implements Layer {
   }) {
     return ImageLayer(
       data: data,
-      size: ImageSizeGetter.getSize(MemoryInput(data)),
+      size: ImageSizeGetter.getSizeResult(MemoryInput(data)).size,
       opacity: opacity,
       offset: offset,
       scale: scale,

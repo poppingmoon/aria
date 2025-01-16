@@ -1229,6 +1229,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportCsCz abuseReport_ = _TranslationsMisskeyAbuseReportCsCz._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesCsCz moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesCsCz._(_root);
 	@override late final _TranslationsMisskeyReversiCsCz reversi_ = _TranslationsMisskeyReversiCsCz._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsCsCz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsCsCz._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2257,6 +2258,16 @@ class _TranslationsMisskeyReversiCsCz extends TranslationsMisskeyReversiEnUs {
 	@override String get total => 'Celkem';
 }
 
+// Path: misskey.remoteLookupErrors_
+class _TranslationsMisskeyRemoteLookupErrorsCsCz extends TranslationsMisskeyRemoteLookupErrorsEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz._(_root);
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeCsCz extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
@@ -2601,6 +2612,16 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientCsCz extends Translati
 
 	// Translations
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCsCz recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCsCz._(_root);
+}
+
+// Path: misskey.remoteLookupErrors_.noSuchObject_
+class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Nenalezeno';
 }
 
 // Path: misskey.achievements_.types_.notes1_
