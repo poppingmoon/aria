@@ -57,14 +57,17 @@ class ImageGalleryDialog extends HookConsumerWidget {
     );
     final comment = files[index.value].comment;
     final isZoomed = useState(false);
+    final overlayOpacity = useState(1.0);
 
     return Stack(
       children: [
         Dismissible(
-          key: const ValueKey(0),
+          key: const ValueKey('ImageGalleryDialog'),
           direction: !isZoomed.value
               ? DismissDirection.vertical
               : DismissDirection.none,
+          onUpdate: (details) => overlayOpacity.value =
+              clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
           onDismissed: (_) => context.pop(),
           child: FocusableActionDetector(
             autofocus: true,
@@ -84,13 +87,39 @@ class ImageGalleryDialog extends HookConsumerWidget {
             },
             child: PhotoViewGallery.builder(
               pageController: controller,
-              builder: (BuildContext context, int index) =>
-                  PhotoViewGalleryPageOptions(
+              builder: (context, index) => PhotoViewGalleryPageOptions(
                 heroAttributes: PhotoViewHeroAttributes(tag: files[index].id),
                 imageProvider: CachedNetworkImageProvider(
                   files[index].url,
                   cacheManager: ref.watch(cacheManagerProvider),
                 ),
+                onTapUp: (context, details, value) {
+                  if (!isZoomed.value) {
+                    if (files[index].properties
+                        case DriveFileProperties(
+                          :final width?,
+                          :final height?,
+                        )) {
+                      if (value.scale case final scale?) {
+                        final imageWidth = width * scale;
+                        final imageHeight = height * scale;
+                        final Size(width: screenWidth, height: screenHeight) =
+                            MediaQuery.sizeOf(context);
+                        final Offset(:dx, :dy) = details.globalPosition;
+                        if (imageWidth / 2 < (dx - screenWidth / 2).abs() ||
+                            imageHeight / 2 < (dy - screenHeight / 2).abs()) {
+                          context.pop();
+                          return;
+                        }
+                      }
+                    }
+                  }
+                  if (overlayOpacity.value < 0.5) {
+                    overlayOpacity.value = 1.0;
+                  } else {
+                    overlayOpacity.value = 0.0;
+                  }
+                },
               ),
               loadingBuilder: (context, event) => Stack(
                 alignment: Alignment.center,
@@ -123,130 +152,141 @@ class ImageGalleryDialog extends HookConsumerWidget {
               itemCount: files.length,
               backgroundDecoration:
                   const BoxDecoration(color: Colors.transparent),
-              scaleStateChangedCallback: (state) => switch (state) {
-                PhotoViewScaleState.initial ||
-                PhotoViewScaleState.zoomedOut =>
-                  isZoomed.value = false,
-                PhotoViewScaleState.covering ||
-                PhotoViewScaleState.originalSize ||
-                PhotoViewScaleState.zoomedIn =>
-                  isZoomed.value = true,
+              scaleStateChangedCallback: (state) {
+                switch (state) {
+                  case PhotoViewScaleState.initial ||
+                        PhotoViewScaleState.zoomedOut:
+                    isZoomed.value = false;
+                    overlayOpacity.value = 1.0;
+                  case PhotoViewScaleState.covering ||
+                        PhotoViewScaleState.originalSize ||
+                        PhotoViewScaleState.zoomedIn:
+                    isZoomed.value = true;
+                    overlayOpacity.value = 0.0;
+                }
               },
             ),
           ),
         ),
-        SafeArea(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: IconButton(
-                style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                onPressed: () => context.pop(),
-                icon: const Icon(Icons.close),
-              ),
-            ),
-          ),
-        ),
-        SafeArea(
-          child: Align(
-            alignment: Alignment.topRight,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: IconButton(
-                style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                onPressed: () async {
-                  if (!await Gal.requestAccess()) {
-                    if (!context.mounted) return;
-                    await showMessageDialog(
-                      context,
-                      t.misskey.permissionDeniedError,
-                    );
-                    return;
-                  }
-                  if (!context.mounted) return;
-                  await futureWithDialog(
-                    context,
-                    Future(() async {
-                      final file = await ref
-                          .read(cacheManagerProvider)
-                          .getSingleFile(files[index.value].url);
-                      await Gal.putImage(file.path);
-                    }),
-                    message: t.aria.downloaded,
-                  );
-                },
-                icon: const Icon(Icons.save),
-              ),
-            ),
-          ),
-        ),
-        if (index.value > 0)
-          SafeArea(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                  onPressed: () => controller.previousPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
+        AnimatedOpacity(
+          opacity: overlayOpacity.value,
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeInOut,
+          child: SafeArea(
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: IconButton(
+                      style:
+                          IconButton.styleFrom(backgroundColor: Colors.white54),
+                      onPressed: () => context.pop(),
+                      icon: const Icon(Icons.close),
+                    ),
                   ),
-                  icon: const Icon(Icons.navigate_before),
                 ),
-              ),
-            ),
-          ),
-        if (index.value < files.length - 1)
-          SafeArea(
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                  onPressed: () => controller.nextPage(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.easeIn,
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: IconButton(
+                      style:
+                          IconButton.styleFrom(backgroundColor: Colors.white54),
+                      onPressed: () async {
+                        if (!await Gal.requestAccess()) {
+                          if (!context.mounted) return;
+                          await showMessageDialog(
+                            context,
+                            t.misskey.permissionDeniedError,
+                          );
+                          return;
+                        }
+                        if (!context.mounted) return;
+                        await futureWithDialog(
+                          context,
+                          Future(() async {
+                            final file = await ref
+                                .read(cacheManagerProvider)
+                                .getSingleFile(files[index.value].url);
+                            await Gal.putImage(file.path);
+                          }),
+                          message: t.aria.downloaded,
+                        );
+                      },
+                      icon: const Icon(Icons.save),
+                    ),
                   ),
-                  icon: const Icon(Icons.navigate_next),
                 ),
-              ),
-            ),
-          ),
-        SafeArea(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GestureDetector(
-                onLongPress: () => copyToClipboard(
-                  context,
-                  comment != null && comment.isNotEmpty
-                      ? comment
-                      : files[index.value].name,
-                ),
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: Colors.white38,
-                    borderRadius: BorderRadius.circular(8.0),
+                if (index.value > 0)
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.white54,
+                        ),
+                        onPressed: () => controller.previousPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        ),
+                        icon: const Icon(Icons.navigate_before),
+                      ),
+                    ),
                   ),
+                if (index.value < files.length - 1)
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.white54,
+                        ),
+                        onPressed: () => controller.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.easeIn,
+                        ),
+                        icon: const Icon(Icons.navigate_next),
+                      ),
+                    ),
+                  ),
+                Align(
+                  alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxHeight: 100.0),
-                      child: SingleChildScrollView(
-                        child: _ShadowText(
-                          text: comment != null && comment.isNotEmpty
-                              ? comment
-                              : files[index.value].name,
+                    child: GestureDetector(
+                      onLongPress: () => copyToClipboard(
+                        context,
+                        comment != null && comment.isNotEmpty
+                            ? comment
+                            : files[index.value].name,
+                      ),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white38,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ConstrainedBox(
+                            constraints: const BoxConstraints(maxHeight: 100.0),
+                            child: SingleChildScrollView(
+                              child: _ShadowText(
+                                text: comment != null && comment.isNotEmpty
+                                    ? comment
+                                    : files[index.value].name,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
-              ),
+              ],
             ),
           ),
         ),
