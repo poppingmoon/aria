@@ -1155,24 +1155,20 @@ class _Mfm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final needsIsolate =
+        builder != null || (trailingSpans?.isNotEmpty ?? false);
     final span = TextSpan(
       children: [
         ...?leadingSpans,
+        if (needsIsolate) const TextSpan(text: Unicode.FSI),
         if (nodes case final nodes?) ..._buildNodes(context, config, nodes),
-        if (trailingSpans case final spans? when spans.isNotEmpty) ...[
-          const TextSpan(text: Unicode.PDF),
-          ...spans,
-        ],
+        if (needsIsolate) const TextSpan(text: Unicode.PDI),
+        ...?trailingSpans,
       ],
     );
 
     if (builder case final builder?) {
-      return builder(
-        context,
-        TextSpan(
-          children: [span, const TextSpan(text: Unicode.PDF)],
-        ),
-      );
+      return builder(context, span);
     } else {
       return Text.rich(
         span,
