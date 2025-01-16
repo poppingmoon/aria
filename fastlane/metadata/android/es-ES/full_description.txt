@@ -5,6 +5,7 @@ Aria soporta la mayoría de las características disponibles en Misskey incluyen
 
 Desliza para cambiar entre múltiples cuentas (de múltiples servidores)
 Aria hace fácil el ver diferentes líneas de tiempo guardando las que deseas ver como pestañas.
+Añadir la línea de tiempo de cualquier cuenta a una pestaña hace fácil el seguir temas entre servidores
 
 Basado en el diseño oficial de Misskey
 La interfaz de usuario está diseñada para parecer familiar, similar a la interfaz oficial de Misskey, y también soporta la decoración de notas con MFM.
