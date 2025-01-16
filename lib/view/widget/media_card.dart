@@ -88,34 +88,35 @@ class MediaCard extends HookConsumerWidget {
         label: file.comment ?? file.name,
         child: hide.value
             ? InkWell(
-                onTap: !openMediaOnDoubleTap
-                    ? () async {
-                        if (ref
-                            .read(generalSettingsNotifierProvider)
-                            .confirmWhenRevealingSensitiveMedia) {
-                          final result = await confirm(
-                            context,
-                            message: t.misskey.sensitiveMediaRevealConfirm,
-                          );
-                          if (!result) return;
-                        }
-                        hide.value = false;
-                      }
-                    : null,
-                onDoubleTap: openMediaOnDoubleTap
-                    ? () async {
-                        if (ref
-                            .read(generalSettingsNotifierProvider)
-                            .confirmWhenRevealingSensitiveMedia) {
-                          final result = await confirm(
-                            context,
-                            message: t.misskey.sensitiveMediaRevealConfirm,
-                          );
-                          if (!result) return;
-                        }
-                        hide.value = false;
-                      }
-                    : null,
+                onTap: () async {
+                  if (!openMediaOnDoubleTap) {
+                    if (ref
+                        .read(generalSettingsNotifierProvider)
+                        .confirmWhenRevealingSensitiveMedia) {
+                      final result = await confirm(
+                        context,
+                        message: t.misskey.sensitiveMediaRevealConfirm,
+                      );
+                      if (!result) return;
+                    }
+                    hide.value = false;
+                  }
+                },
+                onDoubleTap: () async {
+                  if (openMediaOnDoubleTap) {
+                    if (ref
+                        .read(generalSettingsNotifierProvider)
+                        .confirmWhenRevealingSensitiveMedia) {
+                      final result = await confirm(
+                        context,
+                        message: t.misskey.sensitiveMediaRevealConfirm,
+                      );
+                      if (!result) return;
+                    }
+                    hide.value = false;
+                  }
+                },
+                onLongPress: () {},
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -411,6 +412,8 @@ class _ImagePreview extends ConsumerWidget {
 
     return InkWell(
       onTap: () => _openImage(context),
+      onDoubleTap: () => _openImage(context),
+      onLongPress: () => _openImage(context),
       child: url != null
           ? ImageWidget(
               url: url,
@@ -444,6 +447,8 @@ class _VideoPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => _openVideo(context),
+      onDoubleTap: () => _openVideo(context),
+      onLongPress: () => _openVideo(context),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -499,6 +504,8 @@ class _AudioPreview extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => _openAudio(context),
+      onDoubleTap: () => _openAudio(context),
+      onLongPress: () => _openAudio(context),
       child: Center(
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -536,6 +543,8 @@ class _FilePreview extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return InkWell(
       onTap: () => _openFile(ref),
+      onDoubleTap: () => _openFile(ref),
+      onLongPress: () => _openFile(ref),
       child: Stack(
         alignment: Alignment.center,
         children: [
