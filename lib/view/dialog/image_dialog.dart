@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -36,11 +38,18 @@ class ImageDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final isZoomed = useState(false);
+    final overlayOpacity = useState(1.0);
+
     return Stack(
       children: [
         Dismissible(
-          key: const ValueKey(''),
-          direction: DismissDirection.vertical,
+          key: const ValueKey('ImageDialog'),
+          direction: !isZoomed.value
+              ? DismissDirection.vertical
+              : DismissDirection.none,
+          onUpdate: (details) => overlayOpacity.value =
+              clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
           onDismissed: (_) => context.pop(),
           child: PhotoView(
             imageProvider: file != null
@@ -53,55 +62,85 @@ class ImageDialog extends HookConsumerWidget {
                     : null,
             backgroundDecoration:
                 const BoxDecoration(color: Colors.transparent),
+            scaleStateChangedCallback: (state) {
+              switch (state) {
+                case PhotoViewScaleState.initial ||
+                      PhotoViewScaleState.zoomedOut:
+                  isZoomed.value = false;
+                  overlayOpacity.value = 1.0;
+                case PhotoViewScaleState.covering ||
+                      PhotoViewScaleState.originalSize ||
+                      PhotoViewScaleState.zoomedIn:
+                  isZoomed.value = true;
+                  overlayOpacity.value = 0.0;
+              }
+            },
+            onTapUp: (_, __, ___) {
+              if (overlayOpacity.value < 0.5) {
+                overlayOpacity.value = 1.0;
+              } else {
+                overlayOpacity.value = 0.0;
+              }
+            },
           ),
         ),
-        SafeArea(
-          child: Align(
-            alignment: Alignment.topLeft,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: IconButton(
-                style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                onPressed: () => context.pop(),
-                icon: const Icon(Icons.close),
-              ),
-            ),
-          ),
-        ),
-        if (url != null)
-          SafeArea(
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: IconButton(
-                  style: IconButton.styleFrom(backgroundColor: Colors.white54),
-                  onPressed: () async {
-                    if (!await Gal.requestAccess()) {
-                      if (!context.mounted) return;
-                      await showMessageDialog(
-                        context,
-                        t.misskey.permissionDeniedError,
-                      );
-                      return;
-                    }
-                    if (!context.mounted) return;
-                    await futureWithDialog(
-                      context,
-                      Future(() async {
-                        final file = await ref
-                            .read(cacheManagerProvider)
-                            .getSingleFile(url!);
-                        await Gal.putImage(file.path);
-                      }),
-                      message: t.aria.downloaded,
-                    );
-                  },
-                  icon: const Icon(Icons.save),
+        AnimatedOpacity(
+          opacity: overlayOpacity.value,
+          duration: const Duration(milliseconds: 100),
+          curve: Curves.easeInOut,
+          child: SafeArea(
+            child: Stack(
+              children: [
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: IconButton(
+                      style:
+                          IconButton.styleFrom(backgroundColor: Colors.white54),
+                      onPressed: () => context.pop(),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ),
                 ),
-              ),
+                if (url != null)
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          backgroundColor: Colors.white54,
+                        ),
+                        onPressed: () async {
+                          if (!await Gal.requestAccess()) {
+                            if (!context.mounted) return;
+                            await showMessageDialog(
+                              context,
+                              t.misskey.permissionDeniedError,
+                            );
+                            return;
+                          }
+                          if (!context.mounted) return;
+                          await futureWithDialog(
+                            context,
+                            Future(() async {
+                              final file = await ref
+                                  .read(cacheManagerProvider)
+                                  .getSingleFile(url!);
+                              await Gal.putImage(file.path);
+                            }),
+                            message: t.aria.downloaded,
+                          );
+                        },
+                        icon: const Icon(Icons.save),
+                      ),
+                    ),
+                  ),
+              ],
             ),
           ),
+        ),
       ],
     );
   }
