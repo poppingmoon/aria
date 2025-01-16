@@ -39,143 +39,6 @@ class MediaCard extends HookConsumerWidget {
   final User? user;
   final BoxFit fit;
 
-  Widget _buildContent(WidgetRef ref) {
-    final file = files[index];
-    if (file.type.startsWith('image/')) {
-      final loadRawImage = ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.loadRawImages),
-      );
-      final disableShowingAnimatedImages = ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.disableShowingAnimatedImages),
-      );
-      final url = loadRawImage
-          ? file.url
-          : disableShowingAnimatedImages
-              ? ref
-                  .watch(staticImageUrlProvider(account.host, file.url))
-                  ?.toString()
-              : file.thumbnailUrl;
-      final blurHash = file.blurhash;
-      return InkWell(
-        onTap: () => showImageGalleryDialog(
-          ref.context,
-          files: files,
-          initialIndex: index,
-        ),
-        child: url != null
-            ? ImageWidget(
-                url: url,
-                blurHash: file.blurhash,
-                fit: fit,
-              )
-            : blurHash != null
-                ? BlurHash(hash: blurHash)
-                : const SizedBox.shrink(),
-      );
-    } else if (file.type.startsWith('video/')) {
-      if (defaultTargetPlatform
-          case TargetPlatform.android ||
-              TargetPlatform.iOS ||
-              TargetPlatform.macOS) {
-        return InkWell(
-          onTap: () => showDialog<void>(
-            context: ref.context,
-            builder: (context) => VideoDialog(url: file.url),
-          ),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              if (file case DriveFile(:final thumbnailUrl?))
-                ImageWidget(
-                  url: thumbnailUrl,
-                  blurHash: file.blurhash,
-                  fit: fit,
-                ),
-              DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Theme.of(ref.context).colorScheme.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(
-                    Icons.play_arrow,
-                    size: 36.0,
-                    color: Theme.of(ref.context).colorScheme.onPrimary,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      }
-    } else if (file.type.startsWith('audio/')) {
-      if (defaultTargetPlatform
-          case TargetPlatform.android ||
-              TargetPlatform.iOS ||
-              TargetPlatform.macOS) {
-        return InkWell(
-          onTap: () => showDialog<void>(
-            context: ref.context,
-            builder: (context) => AudioDialog(
-              account: account,
-              file: file,
-              user: user,
-            ),
-          ),
-          child: Center(
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: Theme.of(ref.context).colorScheme.primary,
-                shape: BoxShape.circle,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(
-                  Icons.play_arrow,
-                  size: 36.0,
-                  color: Theme.of(ref.context).colorScheme.onPrimary,
-                ),
-              ),
-            ),
-          ),
-        );
-      }
-    }
-    return InkWell(
-      onTap: () => launchUrl(ref, Uri.parse(file.url)),
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          if (file case DriveFile(:final thumbnailUrl?))
-            ImageWidget(
-              url: thumbnailUrl,
-              blurHash: file.blurhash,
-              fit: fit,
-            )
-          else if (file case DriveFile(:final blurhash?))
-            BlurHash(hash: blurhash),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: Theme.of(ref.context).colorScheme.primary,
-              shape: BoxShape.circle,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Icon(
-                Icons.open_in_browser,
-                size: 36.0,
-                color: Theme.of(ref.context).colorScheme.onPrimary,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final file = files[index];
@@ -360,7 +223,34 @@ class MediaCard extends HookConsumerWidget {
             : Stack(
                 alignment: Alignment.center,
                 children: [
-                  Positioned.fill(child: _buildContent(ref)),
+                  Positioned.fill(
+                    child: switch ((
+                      file.type.split('/').first,
+                      defaultTargetPlatform
+                    )) {
+                      ('image', _) => _ImagePreview(
+                          account: account,
+                          file: file,
+                          files: files,
+                          fit: fit,
+                        ),
+                      (
+                        'video',
+                        TargetPlatform.android ||
+                            TargetPlatform.iOS ||
+                            TargetPlatform.macOS
+                      ) =>
+                        _VideoPreview(file: file, fit: fit),
+                      (
+                        'audio',
+                        TargetPlatform.android ||
+                            TargetPlatform.iOS ||
+                            TargetPlatform.macOS
+                      ) =>
+                        _AudioPreview(account: account, file: file, user: user),
+                      _ => _FilePreview(file: file, fit: fit),
+                    },
+                  ),
                   Positioned(
                     left: 8.0,
                     top: 8.0,
@@ -472,6 +362,206 @@ class MediaCard extends HookConsumerWidget {
                       ),
                 ],
               ),
+      ),
+    );
+  }
+}
+
+class _ImagePreview extends ConsumerWidget {
+  const _ImagePreview({
+    required this.account,
+    required this.file,
+    required this.files,
+    this.fit,
+  });
+
+  final Account account;
+  final DriveFile file;
+  final List<DriveFile> files;
+  final BoxFit? fit;
+
+  void _openImage(BuildContext context) {
+    final imageFiles =
+        files.where((file) => file.type.startsWith('image/')).toList();
+    showImageGalleryDialog(
+      context,
+      files: imageFiles,
+      initialIndex: imageFiles.indexOf(file),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final loadRawImage = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.loadRawImages),
+    );
+    final disableShowingAnimatedImages = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.disableShowingAnimatedImages),
+    );
+    final url = loadRawImage
+        ? file.url
+        : disableShowingAnimatedImages
+            ? ref
+                .watch(staticImageUrlProvider(account.host, file.url))
+                ?.toString()
+            : file.thumbnailUrl;
+    final blurHash = file.blurhash;
+
+    return InkWell(
+      onTap: () => _openImage(context),
+      child: url != null
+          ? ImageWidget(
+              url: url,
+              blurHash: file.blurhash,
+              fit: fit,
+            )
+          : blurHash != null
+              ? BlurHash(hash: blurHash)
+              : const SizedBox.shrink(),
+    );
+  }
+}
+
+class _VideoPreview extends StatelessWidget {
+  const _VideoPreview({
+    required this.file,
+    this.fit,
+  });
+
+  final DriveFile file;
+  final BoxFit? fit;
+
+  void _openVideo(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (context) => VideoDialog(url: file.url),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => _openVideo(context),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          if (file case DriveFile(:final thumbnailUrl?))
+            ImageWidget(
+              url: thumbnailUrl,
+              blurHash: file.blurhash,
+              fit: fit,
+            ),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.play_arrow,
+                size: 36.0,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _AudioPreview extends StatelessWidget {
+  const _AudioPreview({
+    required this.account,
+    required this.file,
+    this.user,
+  });
+
+  final Account account;
+  final DriveFile file;
+  final User? user;
+
+  void _openAudio(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      builder: (context) => AudioDialog(
+        account: account,
+        file: file,
+        user: user,
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => _openAudio(context),
+      child: Center(
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            shape: BoxShape.circle,
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(
+              Icons.play_arrow,
+              size: 36.0,
+              color: Theme.of(context).colorScheme.onPrimary,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FilePreview extends ConsumerWidget {
+  const _FilePreview({
+    required this.file,
+    this.fit,
+  });
+
+  final DriveFile file;
+  final BoxFit? fit;
+
+  void _openFile(WidgetRef ref) {
+    launchUrl(ref, Uri.parse(file.url));
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return InkWell(
+      onTap: () => _openFile(ref),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          if (file case DriveFile(:final thumbnailUrl?))
+            ImageWidget(
+              url: thumbnailUrl,
+              blurHash: file.blurhash,
+              fit: fit,
+            )
+          else if (file case DriveFile(:final blurhash?))
+            BlurHash(hash: blurhash),
+          DecoratedBox(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primary,
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                Icons.open_in_browser,
+                size: 36.0,
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
