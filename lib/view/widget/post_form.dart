@@ -3,8 +3,10 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+// hide BoxDecoration, BoxShadow;
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+// import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
@@ -1169,7 +1171,7 @@ class PostForm extends HookConsumerWidget {
   }
 }
 
-class _PostFormFooter extends ConsumerWidget {
+class _PostFormFooter extends HookConsumerWidget {
   const _PostFormFooter({
     required this.account,
     this.noteId,
@@ -1199,145 +1201,216 @@ class _PostFormFooter extends ConsumerWidget {
       accountSettingsNotifierProvider(account)
           .select((settings) => settings.postFormUseHashtags),
     );
+    final hasExtentBefore = useState(false);
+    final hasExtentAfter = useState(false);
+    final scrollController = useScrollController();
+    useEffect(
+      () {
+        scrollController.addListener(() {
+          hasExtentBefore.value = scrollController.position.extentBefore > 8.0;
+          hasExtentAfter.value = scrollController.position.extentAfter > 8.0;
+        });
+        return;
+      },
+      [],
+    );
 
     return Row(
       children: [
         Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                IconButton(
-                  tooltip: t.misskey.attachFile,
-                  onPressed: () async {
-                    final files = await showModalBottomSheet<List<PostFile>>(
-                      context: context,
-                      builder: (context) => FilePickerSheet(
-                        account: account,
-                        allowMultiple: true,
-                      ),
-                      clipBehavior: Clip.hardEdge,
-                    );
-                    if (files != null) {
-                      ref
-                          .read(
-                            attachesNotifierProvider(account, noteId: noteId)
-                                .notifier,
-                          )
-                          .addAll(files);
-                    }
-                  },
-                  icon: const Icon(Icons.add_photo_alternate),
-                ),
-                IconButton(
-                  tooltip: t.misskey.poll,
-                  onPressed: () => ref
-                      .read(
-                        postNotifierProvider(account, noteId: noteId).notifier,
-                      )
-                      .togglePoll(),
-                  icon: Icon(
-                    Icons.bar_chart,
-                    color: request.poll != null
-                        ? Theme.of(context).colorScheme.primary
-                        : null,
-                  ),
-                ),
-                IconButton(
-                  tooltip: t.misskey.useCw,
-                  onPressed: () {
-                    if (useCw.value) {
-                      ref
-                          .read(
-                            postNotifierProvider(account, noteId: noteId)
-                                .notifier,
-                          )
-                          .setCw(null);
-                      useCw.value = false;
-                    } else {
-                      ref
-                          .read(
-                            postNotifierProvider(account, noteId: noteId)
-                                .notifier,
-                          )
-                          .setCw(cwController.text);
-                      useCw.value = true;
-                    }
-                  },
-                  icon: Icon(
-                    Icons.visibility_off,
-                    color: useCw.value
-                        ? Theme.of(context).colorScheme.primary
-                        : null,
-                  ),
-                ),
-                IconButton(
-                  tooltip: t.misskey.mention,
-                  onPressed: () async {
-                    final user = await selectUser(
-                      context,
-                      account,
-                      localOnly: request.localOnly ?? false,
-                    );
-                    if (user != null) {
-                      controller.insert(user.acct);
-                    }
-                  },
-                  icon: const Icon(Icons.alternate_email),
-                ),
-                IconButton(
-                  tooltip: t.misskey.hashtags,
-                  onPressed: () async {
-                    final value = useHashtags;
-                    await ref
-                        .read(accountSettingsNotifierProvider(account).notifier)
-                        .setPostFormUseHashtags(!value);
-                    if (!value) {
-                      hashtagsFocusNode.requestFocus();
-                    }
-                  },
-                  icon: Icon(
-                    Icons.tag,
-                    color: useHashtags
-                        ? Theme.of(context).colorScheme.primary
-                        : null,
-                  ),
-                ),
-                IconButton(
-                  tooltip: t.misskey.emoji,
-                  onPressed: () => pickEmoji(
-                    ref,
-                    account,
-                    post: true,
-                    onTapEmoji: (emoji) =>
-                        controller.insert(emoji.replaceFirst('@.', '')),
-                  ),
-                  icon: const Icon(Icons.mood),
-                ),
-                IconButton(
-                  tooltip: t.misskey.channel,
-                  onPressed: canChangeChannel
-                      ? () async {
-                          final result = await showDialog<CommunityChannel>(
+          child: Stack(
+            children: [
+              NotificationListener<ScrollMetricsNotification>(
+                onNotification: (notification) {
+                  hasExtentBefore.value =
+                      notification.metrics.extentBefore > 8.0;
+                  hasExtentAfter.value = notification.metrics.extentAfter > 8.0;
+                  return false;
+                },
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        tooltip: t.misskey.attachFile,
+                        onPressed: () async {
+                          final files =
+                              await showModalBottomSheet<List<PostFile>>(
                             context: context,
-                            builder: (context) => ChannelsPage(
+                            builder: (context) => FilePickerSheet(
                               account: account,
-                              onChannelTap: (channel) => context.pop(channel),
-                              initialIndex: 2,
+                              allowMultiple: true,
                             ),
+                            clipBehavior: Clip.hardEdge,
                           );
-                          if (!context.mounted) return;
-                          if (result != null) {
+                          if (files != null) {
                             ref
-                                .read(postNotifierProvider(account).notifier)
-                                .setChannel(result.id);
+                                .read(
+                                  attachesNotifierProvider(
+                                    account,
+                                    noteId: noteId,
+                                  ).notifier,
+                                )
+                                .addAll(files);
                           }
-                        }
-                      : null,
-                  icon: const Icon(Icons.tv),
+                        },
+                        icon: const Icon(Icons.add_photo_alternate),
+                      ),
+                      IconButton(
+                        tooltip: t.misskey.poll,
+                        onPressed: () => ref
+                            .read(
+                              postNotifierProvider(account, noteId: noteId)
+                                  .notifier,
+                            )
+                            .togglePoll(),
+                        icon: Icon(
+                          Icons.bar_chart,
+                          color: request.poll != null
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: t.misskey.useCw,
+                        onPressed: () {
+                          if (useCw.value) {
+                            ref
+                                .read(
+                                  postNotifierProvider(account, noteId: noteId)
+                                      .notifier,
+                                )
+                                .setCw(null);
+                            useCw.value = false;
+                          } else {
+                            ref
+                                .read(
+                                  postNotifierProvider(account, noteId: noteId)
+                                      .notifier,
+                                )
+                                .setCw(cwController.text);
+                            useCw.value = true;
+                          }
+                        },
+                        icon: Icon(
+                          Icons.visibility_off,
+                          color: useCw.value
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: t.misskey.mention,
+                        onPressed: () async {
+                          final user = await selectUser(
+                            context,
+                            account,
+                            localOnly: request.localOnly ?? false,
+                          );
+                          if (user != null) {
+                            controller.insert(user.acct);
+                          }
+                        },
+                        icon: const Icon(Icons.alternate_email),
+                      ),
+                      IconButton(
+                        tooltip: t.misskey.hashtags,
+                        onPressed: () async {
+                          final value = useHashtags;
+                          await ref
+                              .read(
+                                accountSettingsNotifierProvider(account)
+                                    .notifier,
+                              )
+                              .setPostFormUseHashtags(!value);
+                          if (!value) {
+                            hashtagsFocusNode.requestFocus();
+                          }
+                        },
+                        icon: Icon(
+                          Icons.tag,
+                          color: useHashtags
+                              ? Theme.of(context).colorScheme.primary
+                              : null,
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: t.misskey.emoji,
+                        onPressed: () => pickEmoji(
+                          ref,
+                          account,
+                          post: true,
+                          onTapEmoji: (emoji) =>
+                              controller.insert(emoji.replaceFirst('@.', '')),
+                        ),
+                        icon: const Icon(Icons.mood),
+                      ),
+                      IconButton(
+                        tooltip: t.misskey.channel,
+                        onPressed: canChangeChannel
+                            ? () async {
+                                final result =
+                                    await showDialog<CommunityChannel>(
+                                  context: context,
+                                  builder: (context) => ChannelsPage(
+                                    account: account,
+                                    onChannelTap: (channel) =>
+                                        context.pop(channel),
+                                    initialIndex: 2,
+                                  ),
+                                );
+                                if (!context.mounted) return;
+                                if (result != null) {
+                                  ref
+                                      .read(
+                                        postNotifierProvider(account).notifier,
+                                      )
+                                      .setChannel(result.id);
+                                }
+                              }
+                            : null,
+                        icon: const Icon(Icons.tv),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+              if (hasExtentBefore.value)
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Theme.of(context).colorScheme.surface,
+                            blurRadius: 16.0,
+                            spreadRadius: 20.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              if (hasExtentAfter.value)
+                Positioned.fill(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Theme.of(context).colorScheme.surface,
+                            blurRadius: 16.0,
+                            spreadRadius: 20.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+            ],
           ),
         ),
         if (onHide case final onHide?)
