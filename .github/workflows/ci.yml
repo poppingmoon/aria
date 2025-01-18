@@ -44,7 +44,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@v1
         with:
-          fail_on_error: true
+          fail_level: error
 
       - name: Check diff
         if: github.event_name != 'pull_request'
@@ -173,7 +173,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@v1
         with:
-          fail_on_error: true
+          fail_level: error
 
       - name: Check diff
         if: github.event_name != 'pull_request'
@@ -201,7 +201,7 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: reviewdog/action-suggester@v1
         with:
-          fail_on_error: true
+          fail_level: error
 
       - name: Check diff
         if: github.event_name != 'pull_request'
