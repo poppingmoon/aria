@@ -446,52 +446,19 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/')
         run: app-store-connect publish --path aria-${{ github.ref_name }}.app.pkg
 
-  build-linux-arm64:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-        with:
-            platforms: linux/arm64
-
-      - name: Build Docker image
-        run: docker build --platform linux/arm64 -t flutter .
-
-      - name: Build for Linux
-        run: >
-          docker run
-          -v $PWD:$PWD
-          -w $PWD
-          flutter
-          bash -c
-          "fvm install
-          && fvm flutter pub get
-          && fvm flutter build linux"
-
-      - name: Create TAR
-        working-directory: build/linux/arm64/release/bundle
-        run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-arm64.tar.gz *
-
-      - name: Upload TAR
-        uses: actions/upload-artifact@v4
-        with:
-          name: Linux arm64 TAR
-          path: aria-${{ github.ref_name }}-linux-arm64.tar.gz
-
-      - name: Release TAR
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
-        with:
-          files: aria-${{ github.ref_name }}-linux-arm64.tar.gz
-          draft: true
-
-  build-linux-x64:
-    runs-on: ubuntu-latest
+  build-linux:
+    runs-on: ${{ matrix.os }}
 
     needs: get-flutter-version
+
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-24.04-arm
+            arch: arm64
+          - os: ubuntu-latest
+            arch: x64
+      fail-fast: false
 
     steps:
       - uses: actions/checkout@v4
@@ -499,7 +466,7 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          channel: stable
+          channel: master
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
@@ -517,18 +484,18 @@ jobs:
         run: flutter build linux
 
       - name: Create TAR
-        working-directory: build/linux/x64/release/bundle
-        run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-x64.tar.gz *
+        working-directory: build/linux/${{ matrix.arch }}/release/bundle
+        run: tar -czvf ../../../../../aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz *
 
       - name: Upload TAR
         uses: actions/upload-artifact@v4
         with:
-          name: Linux x64 TAR
-          path: aria-${{ github.ref_name }}-linux-x64.tar.gz
+          name: Linux ${{ matrix.arch }} TAR
+          path: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
 
       - name: Release TAR
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: aria-${{ github.ref_name }}-linux-x64.tar.gz
+          files: aria-${{ github.ref_name }}-linux-${{ matrix.arch }}.tar.gz
           draft: true
