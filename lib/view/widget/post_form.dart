@@ -984,7 +984,6 @@ class PostForm extends HookConsumerWidget {
                       border:
                           const OutlineInputBorder(borderSide: BorderSide.none),
                     ),
-                    autofocus: true,
                     textInputAction: TextInputAction.next,
                     maxLength: (request.cw?.length ?? 0) > 80 ? 100 : null,
                     maxLengthEnforcement: MaxLengthEnforcement.none,
@@ -1090,6 +1089,7 @@ class PostForm extends HookConsumerWidget {
                 noteId: noteId,
                 cwController: cwController,
                 controller: controller,
+                cwFocusNode: cwFocusNode,
                 hashtagsFocusNode: hashtagsFocusNode,
                 onHide: onHide,
                 onExpand: onExpand,
@@ -1177,6 +1177,7 @@ class _PostFormFooter extends HookConsumerWidget {
     this.noteId,
     required this.cwController,
     required this.controller,
+    required this.cwFocusNode,
     required this.hashtagsFocusNode,
     this.onHide,
     this.onExpand,
@@ -1188,6 +1189,7 @@ class _PostFormFooter extends HookConsumerWidget {
   final String? noteId;
   final TextEditingController cwController;
   final TextEditingController controller;
+  final FocusNode cwFocusNode;
   final FocusNode hashtagsFocusNode;
   final void Function()? onHide;
   final void Function(Account account)? onExpand;
@@ -1291,6 +1293,7 @@ class _PostFormFooter extends HookConsumerWidget {
                                 )
                                 .setCw(cwController.text);
                             useCw.value = true;
+                            cwFocusNode.requestFocus();
                           }
                         },
                         icon: Icon(
