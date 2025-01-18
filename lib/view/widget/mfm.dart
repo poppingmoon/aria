@@ -137,7 +137,8 @@ class Mfm extends HookConsumerWidget {
       simple: simple,
       emojis: emojis,
       author: author,
-      shouldNyaize: nyaize && (author?.isCat ?? false),
+      shouldNyaize:
+          nyaize && (author?.isCat ?? false) && (author?.speakAsCat ?? true),
       isUserDescription: isUserDescription,
       onClickEv: onClickEv,
       overflow: overflow,
