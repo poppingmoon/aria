@@ -157,6 +157,23 @@ jobs:
           name: App Bundle
           path: build/app/outputs/bundle/release/app-release.aab
 
+      - name: Authenticate to Google Cloud
+        id: auth
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
+      - name: Upload App Bundle to Google Play
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: r0adkll/upload-google-play@v1
+        with:
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          packageName: com.poppingmoon.aria
+          track: beta
+          serviceAccountJson: ${{ steps.auth.outputs.credentials_file_path }}
+
   build-ios:
     runs-on: macos-latest
 
