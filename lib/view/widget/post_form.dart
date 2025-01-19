@@ -3,10 +3,8 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-// hide BoxDecoration, BoxShadow;
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-// import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_off_icons/material_off_icons.dart';
@@ -688,7 +686,7 @@ class PostForm extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (request case NotesCreateRequest(:final replyId?))
+            if (request.replyId case final replyId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$replyId'),
                 onLongPress: () => showNoteSheet(
@@ -698,6 +696,25 @@ class PostForm extends HookConsumerWidget {
                 ),
                 child: Row(
                   children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.reply),
+                    ),
+                    if (reply?.user case final user?) ...[
+                      UserAvatar(
+                        account: account.value,
+                        user: user,
+                        onTap: () =>
+                            context.push('/${account.value}/users/${user.id}'),
+                      ),
+                      const SizedBox(width: 4.0),
+                    ],
+                    Expanded(
+                      child: NoteSummary(
+                        account: account.value,
+                        noteId: replyId,
+                      ),
+                    ),
                     IconButton(
                       onPressed: noteId == null
                           ? () => ref
@@ -708,33 +725,10 @@ class PostForm extends HookConsumerWidget {
                           : null,
                       icon: const Icon(Icons.close),
                     ),
-                    const Icon(Icons.reply),
-                    const SizedBox(width: 4.0),
-                    Text('${t.misskey.reply}: '),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 4.0,
-                      ),
-                      child: reply != null
-                          ? UserAvatar(
-                              account: account.value,
-                              user: reply.user,
-                              onTap: () => context.push(
-                                '/$account/users/${reply.userId}',
-                              ),
-                            )
-                          : null,
-                    ),
-                    Expanded(
-                      child: NoteSummary(
-                        account: account.value,
-                        noteId: replyId,
-                      ),
-                    ),
                   ],
                 ),
               ),
-            if (request case NotesCreateRequest(:final renoteId?))
+            if (request.renoteId case final renoteId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$renoteId'),
                 onLongPress: () => showNoteSheet(
@@ -744,6 +738,25 @@ class PostForm extends HookConsumerWidget {
                 ),
                 child: Row(
                   children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.repeat_rounded),
+                    ),
+                    if (renote?.user case final user?) ...[
+                      UserAvatar(
+                        account: account.value,
+                        user: user,
+                        onTap: () =>
+                            context.push('/${account.value}/users/${user.id}'),
+                      ),
+                      const SizedBox(width: 4.0),
+                    ],
+                    Expanded(
+                      child: NoteSummary(
+                        account: account.value,
+                        noteId: renoteId,
+                      ),
+                    ),
                     IconButton(
                       onPressed: noteId == null
                           ? () => ref
@@ -754,31 +767,10 @@ class PostForm extends HookConsumerWidget {
                           : null,
                       icon: const Icon(Icons.close),
                     ),
-                    const Icon(Icons.repeat_rounded),
-                    const SizedBox(width: 4.0),
-                    Text('${t.misskey.renote}: '),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: renote != null
-                          ? UserAvatar(
-                              account: account.value,
-                              user: renote.user,
-                              onTap: () => context.push(
-                                '/$account/users/${renote.userId}',
-                              ),
-                            )
-                          : null,
-                    ),
-                    Expanded(
-                      child: NoteSummary(
-                        account: account.value,
-                        noteId: renoteId,
-                      ),
-                    ),
                   ],
                 ),
               ),
-            if (request case NotesCreateRequest(:final channelId?))
+            if (request.channelId case final channelId?)
               InkWell(
                 onTap: () =>
                     context.push('/${account.value}/channels/$channelId'),
@@ -793,6 +785,14 @@ class PostForm extends HookConsumerWidget {
                   ),
                   child: Row(
                     children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.tv),
+                      ),
+                      if (channel != null)
+                        Expanded(child: Text(channel.name))
+                      else
+                        const Spacer(),
                       IconButton(
                         onPressed: canChangeChannel
                             ? () => ref
@@ -803,10 +803,6 @@ class PostForm extends HookConsumerWidget {
                             : null,
                         icon: const Icon(Icons.close),
                       ),
-                      const Icon(Icons.tv),
-                      const SizedBox(width: 4.0),
-                      Text('${t.misskey.channel}: '),
-                      if (channel != null) Expanded(child: Text(channel.name)),
                     ],
                   ),
                 ),
