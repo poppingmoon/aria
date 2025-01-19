@@ -90,9 +90,10 @@ class PostForm extends HookConsumerWidget {
   final int? maxLines;
   final double thumbnailSize;
 
-  Future<void> _post(
+  static Future<void> post(
     WidgetRef ref,
     Account account,
+    String? noteId,
   ) async {
     final request = ref.read(postNotifierProvider(account, noteId: noteId));
     final hashtags =
@@ -439,7 +440,7 @@ class PostForm extends HookConsumerWidget {
         ...disablingTextShortcuts,
         submitActivator: VoidCallbackIntent(() {
           if (canPost) {
-            _post(ref, account.value);
+            post(ref, account.value, noteId);
           }
         }),
       },
@@ -653,8 +654,9 @@ class PostForm extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      onPressed:
-                          canPost ? () => _post(ref, account.value) : null,
+                      onPressed: canPost
+                          ? () => post(ref, account.value, noteId)
+                          : null,
                       child: Ink(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
