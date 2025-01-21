@@ -151,6 +151,7 @@ class TranslationsAriaEnUs {
 	String get noteDoubleTapAction => 'Note double tap action';
 	String get noteFooterSize => 'Note action buttons size';
 	String get noteLongPressAction => 'Note long press action';
+	String get noteScheduled => 'Note has been scheduled';
 	String get noteTapAction => 'Note tap action';
 	String get notesAfterRenotes => 'Notes after renotes';
 	TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
@@ -194,6 +195,8 @@ class TranslationsAriaEnUs {
 	String get reset => 'Reset';
 	String get rotate => 'Rotate';
 	String get scale => 'Scale';
+	String get scheduledNoteError => 'Scheduled note posting has failed';
+	String get scheduledNotePosted => 'Scheduled note has been posted';
 	String get selectIcon => 'Select an icon';
 	TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Self-renoted by '),

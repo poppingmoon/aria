@@ -252,6 +252,11 @@ class Aria extends HookConsumerWidget {
             NotificationType.pollEnded => t.misskey.notification_.pollEnded,
             NotificationType.roleAssigned =>
               t.misskey.notification_.roleAssigned,
+            NotificationType.scheduleNote ||
+            NotificationType.scheduledNoteError =>
+              t.aria.scheduledNoteError,
+            NotificationType.noteScheduled => t.aria.noteScheduled,
+            NotificationType.scheduledNotePosted => t.aria.scheduledNotePosted,
             NotificationType.app =>
               notification.body?.header ?? notification.body?.body,
             NotificationType.test => t.misskey.notification_.testNotification,
@@ -408,6 +413,13 @@ class Aria extends HookConsumerWidget {
                 _ => null,
               },
             NotificationType.roleAssigned => notification.body?.role?.name,
+            NotificationType.scheduleNote => notification.body?.errorType,
+            NotificationType.noteScheduled =>
+              notification.body?.draft?.data.text,
+            NotificationType.scheduledNotePosted =>
+              notification.body?.note?.text,
+            NotificationType.scheduledNoteError =>
+              notification.body?.draft?.reason,
             NotificationType.app => notification.body?.header != null
                 ? notification.body?.body
                 : null,
