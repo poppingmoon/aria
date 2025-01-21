@@ -21,7 +21,7 @@ extension NotesCreateRequestExtension on NotesCreateRequest {
   }) =>
       Note(
         id: '',
-        createdAt: DateTime.now(),
+        createdAt: scheduledAt ?? DateTime.now(),
         text: text,
         cw: cw,
         user: i != null

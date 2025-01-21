@@ -190,44 +190,79 @@ class PostNotifier extends _$PostNotifier {
     List<String>? fileIds,
     List<String>? hashtags,
   }) async {
+    final request = state.copyWith(fileIds: fileIds).addHashtags(hashtags);
     if (noteId == null) {
+      if (request.scheduledAt case final scheduledAt?) {
+        MeDetailed? i;
+        try {
+          i = await ref.read(iNotifierProvider(account).future);
+        } catch (_) {}
+        if (i?.policies?.canScheduleNote ?? false) {
+          await ref.read(misskeyProvider(account)).notes.create(request);
+          reset();
+          return request.toNote();
+        } else if (i?.policies?.scheduleNoteMax case final scheduleNoteMax?
+            when scheduleNoteMax > 0) {
+          await ref.read(misskeyProvider(account)).notes.schedule.create(
+                NotesScheduleCreateRequest(
+                  visibility: request.visibility,
+                  visibleUserIds: request.visibleUserIds,
+                  cw: request.cw,
+                  reactionAcceptance: request.reactionAcceptance,
+                  replyId: request.replyId,
+                  renoteId: request.renoteId,
+                  text: request.text,
+                  fileIds: request.fileIds,
+                  channelId: request.channelId,
+                  poll: request.poll,
+                  scheduleNote: ScheduleNote(scheduledAt: scheduledAt),
+                ),
+              );
+          reset();
+          return request.toNote();
+        }
+      }
       final response = await ref
           .read(misskeyProvider(account))
           .notes
-          .create(state.copyWith(fileIds: fileIds).addHashtags(hashtags));
-      ref.read(notesNotifierProvider(account).notifier).add(response);
+          .create(request.copyWith(scheduledAt: null));
+      if (response != null) {
+        ref.read(notesNotifierProvider(account).notifier).add(response);
+      }
       reset();
-      return response;
+      return response ?? request.toNote();
     } else {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
-      if (endpoints.contains('notes/update')) {
+      List<String>? endpoints;
+      try {
+        endpoints = await ref.read(endpointsProvider(account.host).future);
+      } catch (_) {}
+      if (endpoints?.contains('notes/update') ?? true) {
         await ref.read(misskeyProvider(account)).notes.update(
               NotesUpdateRequest(
                 noteId: noteId!,
-                text: state.addHashtags(hashtags).text,
-                cw: state.cw,
+                text: request.text,
+                cw: request.cw,
                 fileIds: fileIds,
-                poll: state.poll,
+                poll: request.poll,
               ),
             );
-        final note =
-            state.copyWith(fileIds: fileIds).addHashtags(hashtags).toNote();
+        final note = request.toNote();
         ref.read(notesNotifierProvider(account).notifier).add(note);
         return note;
       } else {
         final response = await ref.read(misskeyProvider(account)).notes.edit(
               NotesEditRequest(
                 editId: noteId!,
-                visibility: state.visibility,
-                visibleUserIds: state.visibleUserIds,
-                text: state.addHashtags(hashtags).text,
-                cw: state.cw,
-                localOnly: state.localOnly,
+                visibility: request.visibility,
+                visibleUserIds: request.visibleUserIds,
+                text: request.text,
+                cw: request.cw,
+                localOnly: request.localOnly,
                 fileIds: fileIds,
-                replyId: state.replyId,
-                renoteId: state.renoteId,
-                channelId: state.channelId,
-                poll: state.poll,
+                replyId: request.replyId,
+                renoteId: request.renoteId,
+                channelId: request.channelId,
+                poll: request.poll,
               ),
             );
         ref.read(notesNotifierProvider(account).notifier).add(response);
@@ -575,6 +610,11 @@ class PostNotifier extends _$PostNotifier {
         expiredAfter: expiredAfter,
       ),
     );
+    _scheduleSave();
+  }
+
+  void setScheduledAt(DateTime? scheduledAt) {
+    state = state.copyWith(scheduledAt: scheduledAt);
     _scheduleSave();
   }
 }

@@ -939,6 +939,7 @@ void main() {
       await tester.tap(find.byIcon(Icons.favorite_border));
       await tester.pumpAndSettle();
       expect(find.byType(ReactionConfirmationDialog), findsOne);
+      await tester.pumpAndSettle(const Duration(seconds: 10));
     });
 
     testWidgets('should react to a renoted note', (tester) async {

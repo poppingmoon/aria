@@ -195,6 +195,7 @@ class TranslationsAriaEnUs {
 	String get reset => 'Reset';
 	String get rotate => 'Rotate';
 	String get scale => 'Scale';
+	String get schedule => 'Schedule';
 	String get scheduledNoteError => 'Scheduled note posting has failed';
 	String get scheduledNotePosted => 'Scheduled note has been posted';
 	String get selectIcon => 'Select an icon';
@@ -264,6 +265,7 @@ class TranslationsAriaEnUs {
 	String get vibrateNote => 'Vibrate on new note';
 	String get vibrateNotification => 'Vibrate on new notification';
 	String get webBrowser => 'Web browser';
+	String willBePostedOn({required Object date}) => 'Will be posted on ${date}';
 }
 
 // Path: misskey

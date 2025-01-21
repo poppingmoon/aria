@@ -34,7 +34,9 @@ import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
+import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/pick_date_time.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
@@ -268,13 +270,23 @@ class PostForm extends HookConsumerWidget {
         (renote?.channel?.allowRenoteToExternal ?? true) &&
         reply?.channel == null;
     final canPost = request.canPost || attaches.isNotEmpty;
+    final canScheduleNote = noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (request) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
-      _ when request.isRenote => (t.misskey.renote, Icons.repeat_rounded),
-      _ when request.replyId != null => (t.misskey.reply, Icons.reply),
-      _ when request.renoteId != null => (t.misskey.quote, Icons.send),
+      NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
+          t.aria.schedule,
+          Icons.send,
+        ),
+      NotesCreateRequest(isRenote: true) => (
+          t.misskey.renote,
+          Icons.repeat_rounded,
+        ),
+      NotesCreateRequest(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NotesCreateRequest(renoteId: _?) => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
     final enableSpellCheck = ref.watch(
@@ -809,6 +821,70 @@ class PostForm extends HookConsumerWidget {
                   ),
                 ),
               ),
+            if (request.scheduledAt case final scheduledAt?
+                when canScheduleNote)
+              InkWell(
+                onTap: () async {
+                  final now = DateTime.now();
+                  final DateTime initialDate;
+                  if (request.scheduledAt case final scheduledAt?
+                      when scheduledAt.isAfter(now)) {
+                    initialDate = scheduledAt;
+                  } else {
+                    initialDate = DateTime(
+                      now.year,
+                      now.month,
+                      now.day + 1,
+                    );
+                  }
+                  final DateTime? lastDate;
+                  if (i?.policies?.scheduleNoteMaxDays case final days?
+                      when days >= 0) {
+                    lastDate = now.add(Duration(days: days));
+                  } else {
+                    lastDate = null;
+                  }
+                  final date = await pickDateTime(
+                    context,
+                    initialDate: initialDate,
+                    firstDate: now,
+                    lastDate: lastDate,
+                  );
+                  if (!context.mounted) return;
+                  if (date != null) {
+                    ref
+                        .read(
+                          postNotifierProvider(account.value, noteId: noteId)
+                              .notifier,
+                        )
+                        .setScheduledAt(date);
+                  }
+                },
+                child: Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.schedule),
+                    ),
+                    Expanded(
+                      child: Text(
+                        t.aria.willBePostedOn(date: absoluteTime(scheduledAt)),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => ref
+                          .read(
+                            postNotifierProvider(account.value, noteId: noteId)
+                                .notifier,
+                          )
+                          .setScheduledAt(null),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
+                ),
+              ),
             if (request.visibility == NoteVisibility.specified) ...[
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -1202,6 +1278,10 @@ class _PostFormFooter extends HookConsumerWidget {
       accountSettingsNotifierProvider(account)
           .select((settings) => settings.postFormUseHashtags),
     );
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final canScheduleNote = noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final hasExtentBefore = useState(false);
     final hasExtentAfter = useState(false);
     final scrollController = useScrollController();
@@ -1374,6 +1454,49 @@ class _PostFormFooter extends HookConsumerWidget {
                             : null,
                         icon: const Icon(Icons.tv),
                       ),
+                      if (canScheduleNote)
+                        IconButton(
+                          tooltip: t.aria.schedule,
+                          onPressed: () async {
+                            final now = DateTime.now();
+                            final DateTime initialDate;
+                            if (request.scheduledAt case final scheduledAt?
+                                when scheduledAt.isAfter(now)) {
+                              initialDate = scheduledAt;
+                            } else {
+                              initialDate = DateTime(
+                                now.year,
+                                now.month,
+                                now.day + 1,
+                              );
+                            }
+                            final DateTime? lastDate;
+                            if (i?.policies?.scheduleNoteMaxDays
+                                case final days? when days >= 0) {
+                              lastDate = now.add(Duration(days: days));
+                            } else {
+                              lastDate = null;
+                            }
+                            final date = await pickDateTime(
+                              context,
+                              initialDate: initialDate,
+                              firstDate: now,
+                              lastDate: lastDate,
+                            );
+                            if (!context.mounted) return;
+                            if (date != null) {
+                              ref
+                                  .read(
+                                    postNotifierProvider(
+                                      account,
+                                      noteId: noteId,
+                                    ).notifier,
+                                  )
+                                  .setScheduledAt(date);
+                            }
+                          },
+                          icon: const Icon(Icons.schedule),
+                        ),
                     ],
                   ),
                 ),

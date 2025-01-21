@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/max_content_width.dart';
 import '../../extension/notes_create_request_extension.dart';
@@ -51,13 +52,23 @@ class PostPage extends HookConsumerWidget {
         .addHashtags(useHashtags ? hashtags : null)
         .toNote(i: i, channel: channel);
     final canPost = request.canPost || attaches.isNotEmpty;
+    final canScheduleNote = noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (request) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
-      _ when request.isRenote => (t.misskey.renote, Icons.repeat_rounded),
-      _ when request.replyId != null => (t.misskey.reply, Icons.reply),
-      _ when request.renoteId != null => (t.misskey.quote, Icons.send),
+      NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
+          t.aria.schedule,
+          Icons.send,
+        ),
+      NotesCreateRequest(isRenote: true) => (
+          t.misskey.renote,
+          Icons.repeat_rounded,
+        ),
+      NotesCreateRequest(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NotesCreateRequest(renoteId: _?) => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
     final cwController = useTextEditingController(text: request.cw);

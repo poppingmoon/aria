@@ -476,6 +476,7 @@ class ProfilePage extends HookConsumerWidget {
                     onTap: () async {
                       final date = await showDatePicker(
                         context: context,
+                        initialDate: i.birthday,
                         firstDate: DateTime(0),
                         lastDate: DateTime(9999, 12, 31),
                         initialEntryMode: DatePickerEntryMode.input,
