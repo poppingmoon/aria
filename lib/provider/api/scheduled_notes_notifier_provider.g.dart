@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'notifications_notifier_provider.dart';
+part of 'scheduled_notes_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$notificationsNotifierHash() =>
-    r'bbb5c5c5543aa8c43168070e7a13f2995b2cc914';
+String _$scheduledNotesNotifierHash() =>
+    r'e4c79f48f20a3cd3df333cc3539161fe9faa5308';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,38 +30,37 @@ class _SystemHash {
   }
 }
 
-abstract class _$NotificationsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<INotificationsResponse>> {
+abstract class _$ScheduledNotesNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
   late final Account account;
 
-  FutureOr<PaginationState<INotificationsResponse>> build(
+  FutureOr<PaginationState<Note>> build(
     Account account,
   );
 }
 
-/// See also [NotificationsNotifier].
-@ProviderFor(NotificationsNotifier)
-const notificationsNotifierProvider = NotificationsNotifierFamily();
+/// See also [ScheduledNotesNotifier].
+@ProviderFor(ScheduledNotesNotifier)
+const scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily();
 
-/// See also [NotificationsNotifier].
-class NotificationsNotifierFamily
-    extends Family<AsyncValue<PaginationState<INotificationsResponse>>> {
-  /// See also [NotificationsNotifier].
-  const NotificationsNotifierFamily();
+/// See also [ScheduledNotesNotifier].
+class ScheduledNotesNotifierFamily
+    extends Family<AsyncValue<PaginationState<Note>>> {
+  /// See also [ScheduledNotesNotifier].
+  const ScheduledNotesNotifierFamily();
 
-  /// See also [NotificationsNotifier].
-  NotificationsNotifierProvider call(
+  /// See also [ScheduledNotesNotifier].
+  ScheduledNotesNotifierProvider call(
     Account account,
   ) {
-    return NotificationsNotifierProvider(
+    return ScheduledNotesNotifierProvider(
       account,
     );
   }
 
   @override
-  NotificationsNotifierProvider getProviderOverride(
-    covariant NotificationsNotifierProvider provider,
+  ScheduledNotesNotifierProvider getProviderOverride(
+    covariant ScheduledNotesNotifierProvider provider,
   ) {
     return call(
       provider.account,
@@ -80,31 +79,31 @@ class NotificationsNotifierFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'notificationsNotifierProvider';
+  String? get name => r'scheduledNotesNotifierProvider';
 }
 
-/// See also [NotificationsNotifier].
-class NotificationsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<NotificationsNotifier,
-        PaginationState<INotificationsResponse>> {
-  /// See also [NotificationsNotifier].
-  NotificationsNotifierProvider(
+/// See also [ScheduledNotesNotifier].
+class ScheduledNotesNotifierProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<ScheduledNotesNotifier,
+        PaginationState<Note>> {
+  /// See also [ScheduledNotesNotifier].
+  ScheduledNotesNotifierProvider(
     Account account,
   ) : this._internal(
-          () => NotificationsNotifier()..account = account,
-          from: notificationsNotifierProvider,
-          name: r'notificationsNotifierProvider',
+          () => ScheduledNotesNotifier()..account = account,
+          from: scheduledNotesNotifierProvider,
+          name: r'scheduledNotesNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$notificationsNotifierHash,
-          dependencies: NotificationsNotifierFamily._dependencies,
+                  : _$scheduledNotesNotifierHash,
+          dependencies: ScheduledNotesNotifierFamily._dependencies,
           allTransitiveDependencies:
-              NotificationsNotifierFamily._allTransitiveDependencies,
+              ScheduledNotesNotifierFamily._allTransitiveDependencies,
           account: account,
         );
 
-  NotificationsNotifierProvider._internal(
+  ScheduledNotesNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -117,8 +116,8 @@ class NotificationsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<PaginationState<INotificationsResponse>> runNotifierBuild(
-    covariant NotificationsNotifier notifier,
+  FutureOr<PaginationState<Note>> runNotifierBuild(
+    covariant ScheduledNotesNotifier notifier,
   ) {
     return notifier.build(
       account,
@@ -126,10 +125,10 @@ class NotificationsNotifierProvider
   }
 
   @override
-  Override overrideWith(NotificationsNotifier Function() create) {
+  Override overrideWith(ScheduledNotesNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: NotificationsNotifierProvider._internal(
+      override: ScheduledNotesNotifierProvider._internal(
         () => create()..account = account,
         from: from,
         name: null,
@@ -142,14 +141,14 @@ class NotificationsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<NotificationsNotifier,
-      PaginationState<INotificationsResponse>> createElement() {
-    return _NotificationsNotifierProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<ScheduledNotesNotifier,
+      PaginationState<Note>> createElement() {
+    return _ScheduledNotesNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is NotificationsNotifierProvider && other.account == account;
+    return other is ScheduledNotesNotifierProvider && other.account == account;
   }
 
   @override
@@ -163,19 +162,19 @@ class NotificationsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin NotificationsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<INotificationsResponse>> {
+mixin ScheduledNotesNotifierRef
+    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
-class _NotificationsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<NotificationsNotifier,
-        PaginationState<INotificationsResponse>> with NotificationsNotifierRef {
-  _NotificationsNotifierProviderElement(super.provider);
+class _ScheduledNotesNotifierProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<ScheduledNotesNotifier,
+        PaginationState<Note>> with ScheduledNotesNotifierRef {
+  _ScheduledNotesNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as NotificationsNotifierProvider).account;
+  Account get account => (origin as ScheduledNotesNotifierProvider).account;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

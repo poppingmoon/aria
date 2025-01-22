@@ -377,6 +377,7 @@ class NotificationWidget extends ConsumerWidget {
               ],
             ),
             createdAt: notification.createdAt,
+            onTap: () => context.push('/$account/scheduled-notes'),
           );
         }
       case NotificationType.scheduledNotePosted:

@@ -621,6 +621,15 @@ class PostForm extends HookConsumerWidget {
                           title: Text(t.aria.swapCw),
                         ),
                       ),
+                      if (canScheduleNote)
+                        PopupMenuItem(
+                          onTap: () =>
+                              context.push('/${account.value}/scheduled-notes'),
+                          child: ListTile(
+                            leading: const Icon(Icons.schedule),
+                            title: Text(t.aria.scheduledNotes),
+                          ),
+                        ),
                       PopupMenuItem(
                         onTap: () async {
                           final confirmed = await confirm(
@@ -644,10 +653,7 @@ class PostForm extends HookConsumerWidget {
                         ),
                       ),
                     ],
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.more_horiz),
-                    ),
+                    icon: const Icon(Icons.more_horiz),
                   ),
                   if (showPostButton) ...[
                     const SizedBox(width: 4.0),

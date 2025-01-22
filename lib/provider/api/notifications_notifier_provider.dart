@@ -125,15 +125,19 @@ class NotificationsNotifier extends _$NotificationsNotifier {
   Future<Iterable<INotificationsResponse>> _fetchNotifications({
     String? untilId,
   }) async {
-    final Iterable<INotificationsResponse> notifications;
+    Iterable<INotificationsResponse>? notifications;
     if (ref.read(generalSettingsNotifierProvider).useGroupedNotifications) {
-      final endpoints = await ref.read(endpointsProvider(account.host).future);
-      if (endpoints.contains('i/notifications-grouped')) {
-        notifications =
-            await ref.read(misskeyProvider(account)).i.notificationsGrouped(
-                  INotificationsGroupedRequest(untilId: untilId, limit: 20),
-                );
-      } else {
+      try {
+        final endpoints =
+            await ref.read(endpointsProvider(account.host).future);
+        if (endpoints.contains('i/notifications-grouped')) {
+          notifications =
+              await ref.read(misskeyProvider(account)).i.notificationsGrouped(
+                    INotificationsGroupedRequest(untilId: untilId, limit: 20),
+                  );
+        }
+      } catch (_) {}
+      if (notifications == null) {
         final response = await ref
             .read(misskeyProvider(account))
             .i

@@ -198,6 +198,7 @@ class TranslationsAriaEnUs {
 	String get schedule => 'Schedule';
 	String get scheduledNoteError => 'Scheduled note posting has failed';
 	String get scheduledNotePosted => 'Scheduled note has been posted';
+	String get scheduledNotes => 'Scheduled notes';
 	String get selectIcon => 'Select an icon';
 	TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Self-renoted by '),
