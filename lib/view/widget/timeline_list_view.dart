@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/inifite_scroll_extent_threshold.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/tab_settings.dart';
@@ -140,7 +141,8 @@ class TimelineListView extends HookConsumerWidget {
       () {
         void callback() {
           if (centerId != null) {
-            if (controller.position.extentBefore < 100) {
+            if (controller.position.extentBefore <
+                infiniteScrollExtentThreshold) {
               if (!isAtTop.value) {
                 ref
                     .read(
@@ -156,7 +158,7 @@ class TimelineListView extends HookConsumerWidget {
               isAtTop.value = false;
             }
           }
-          if (controller.position.extentAfter < 100) {
+          if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
             if (!isAtBottom.value) {
               ref
                   .read(
@@ -183,7 +185,8 @@ class TimelineListView extends HookConsumerWidget {
     useEffect(
       () {
         void callback() {
-          if (controller.position.extentBefore < 400.0) {
+          if (controller.position.extentBefore <
+              infiniteScrollExtentThreshold) {
             final nextNotes = ref
                 .read(
                   timelineNotesAfterNoteNotifierProvider(

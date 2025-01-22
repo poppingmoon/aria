@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../constant/inifite_scroll_extent_threshold.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -83,7 +84,8 @@ class FollowRequestsListView extends HookConsumerWidget {
       () {
         if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
           controller.addListener(() {
-            if (controller.position.extentAfter < 100) {
+            if (controller.position.extentAfter <
+                infiniteScrollExtentThreshold) {
               if (!isAtBottom.value) {
                 ref
                     .read(followRequestsNotifierProvider(account).notifier)

@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../constant/inifite_scroll_extent_threshold.dart';
 import '../../extension/date_time_extension.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -69,7 +70,8 @@ class NotificationsListView extends HookConsumerWidget {
         });
         if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
           controller.addListener(() {
-            if (controller.position.extentAfter < 100) {
+            if (controller.position.extentAfter <
+                infiniteScrollExtentThreshold) {
               if (!isAtBottom.value) {
                 ref
                     .read(notificationsNotifierProvider(account).notifier)

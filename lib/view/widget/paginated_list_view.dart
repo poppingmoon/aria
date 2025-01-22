@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/inifite_scroll_extent_threshold.dart';
 import '../../model/pagination_state.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import 'pagination_bottom_widget.dart';
@@ -37,7 +38,7 @@ class PaginatedListView<T> extends HookConsumerWidget {
     useEffect(
       () {
         void callback() {
-          if (controller.position.extentAfter < 100) {
+          if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
             if (!isAtBottom.value) {
               loadMore?.call(false);
               isAtBottom.value = true;
