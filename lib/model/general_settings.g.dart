@@ -24,6 +24,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       showReactionsCount: json['showReactionsCount'] as bool? ?? false,
       showReactionsCountInReactionButton:
           json['showReactionsCountInReactionButton'] as bool? ?? true,
+      showGapBetweenNotesInTimeline:
+          json['showGapBetweenNotesInTimeline'] as bool? ?? false,
       loadRawImages: json['loadRawImages'] as bool? ?? false,
       instanceTicker: $enumDecodeNullable(
               _$InstanceTickerEnumMap, json['instanceTicker']) ??
@@ -168,6 +170,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
       'showReactionsCount': instance.showReactionsCount,
       'showReactionsCountInReactionButton':
           instance.showReactionsCountInReactionButton,
+      'showGapBetweenNotesInTimeline': instance.showGapBetweenNotesInTimeline,
       'loadRawImages': instance.loadRawImages,
       'instanceTicker': _$InstanceTickerEnumMap[instance.instanceTicker]!,
       'showNoteCreatedAt': instance.showNoteCreatedAt,

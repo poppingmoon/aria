@@ -24,12 +24,14 @@ class TimelineNote extends HookConsumerWidget {
     required this.tabSettings,
     required this.noteId,
     this.focusPostForm,
+    this.margin = EdgeInsets.zero,
     this.borderRadius,
   });
 
   final TabSettings tabSettings;
   final String noteId;
   final void Function()? focusPostForm;
+  final EdgeInsetsGeometry margin;
   final BorderRadiusGeometry? borderRadius;
 
   @override
@@ -44,12 +46,15 @@ class TimelineNote extends HookConsumerWidget {
     final notifier =
         ref.watch(noteSubscriptionNotifierProvider(account).notifier);
     if (note == null || appearNote == null) {
-      return Material(
-        color: Theme.of(context).colorScheme.surface,
-        borderRadius: borderRadius,
-        child: NoteFallbackWidget(
-          account: account,
-          noteId: noteId,
+      return Padding(
+        padding: margin,
+        child: Material(
+          color: Theme.of(context).colorScheme.surface,
+          borderRadius: borderRadius,
+          child: NoteFallbackWidget(
+            account: account,
+            noteId: noteId,
+          ),
         ),
       );
     }
@@ -74,22 +79,26 @@ class TimelineNote extends HookConsumerWidget {
         final style = TextStyle(
           color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
         );
-        return Material(
-          color: Theme.of(context).colorScheme.surface,
-          child: InkWell(
-            onTap: () => muted.value = false,
-            child: UsernameWidget(
-              account: account,
-              user: appearNote.user,
-              builder: (context, span) => Padding(
-                padding: EdgeInsets.symmetric(
-                  vertical: verticalPadding,
-                  horizontal: horizontalPadding,
-                ),
-                child: Text.rich(
-                  t.aria.userSaysSomethingSensitive(name: span),
-                  style: style,
-                  textAlign: TextAlign.center,
+        return Padding(
+          padding: margin,
+          child: Material(
+            color: Theme.of(context).colorScheme.surface,
+            borderRadius: borderRadius,
+            child: InkWell(
+              onTap: () => muted.value = false,
+              child: UsernameWidget(
+                account: account,
+                user: appearNote.user,
+                builder: (context, span) => Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: verticalPadding,
+                    horizontal: horizontalPadding,
+                  ),
+                  child: Text.rich(
+                    t.aria.userSaysSomethingSensitive(name: span),
+                    style: style,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
             ),
@@ -140,6 +149,7 @@ class TimelineNote extends HookConsumerWidget {
       account: account,
       noteId: noteId,
       focusPostForm: focusPostForm,
+      margin: margin,
       borderRadius: borderRadius,
     );
   }
