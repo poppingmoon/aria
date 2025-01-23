@@ -10,4 +10,4 @@ Based on the design of the official Misskey Web client
 The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
 
 Highly customizable
-Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.
+Banyak pengaturan, seperti ukuran tampilan reaksi dan tampilan icon pengguna, yang dapat diganti dan diatur sesuai keinginan pengguna. Anda juga dapat mengganti tema aplikasi dengan warna favorit.
