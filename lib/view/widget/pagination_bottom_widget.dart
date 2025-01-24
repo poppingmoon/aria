@@ -11,45 +11,50 @@ class PaginationBottomWidget<T> extends StatelessWidget {
     this.noItemsLabel,
     this.loadMore,
     this.reversed = false,
+    this.height,
   });
 
   final AsyncValue<PaginationState<T>> paginationState;
   final String? noItemsLabel;
   final void Function()? loadMore;
   final bool reversed;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     final value = paginationState.valueOrNull;
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (paginationState.error != null)
-          ErrorMessage(
-            error: paginationState.error,
-            stackTrace: paginationState.stackTrace,
-          ),
-        if (paginationState.isLoading)
-          const Center(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: CircularProgressIndicator(),
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: height ?? 0.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (paginationState.error != null)
+            ErrorMessage(
+              error: paginationState.error,
+              stackTrace: paginationState.stackTrace,
             ),
-          )
-        else if (value == null || !value.isLastLoaded)
-          IconButton(
-            onPressed: loadMore != null ? () => loadMore!() : null,
-            icon: Icon(
-              reversed ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+          if (paginationState.isLoading)
+            Center(
+              child: Padding(
+                padding: EdgeInsets.all(value == null ? 24.0 : 8.0),
+                child: const CircularProgressIndicator(),
+              ),
+            )
+          else if (value == null || !value.isLastLoaded)
+            IconButton(
+              onPressed: loadMore != null ? () => loadMore!() : null,
+              icon: Icon(
+                reversed ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+              ),
+            )
+          else if (value.items.isEmpty && noItemsLabel != null)
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text(noItemsLabel!),
             ),
-          )
-        else if (value.items.isEmpty && noItemsLabel != null)
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(noItemsLabel!),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

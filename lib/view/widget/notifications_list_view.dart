@@ -2,9 +2,10 @@ import 'package:flutter/material.dart' hide Notification;
 import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/inifite_scroll_extent_threshold.dart';
+import '../../constant/max_content_width.dart';
 import '../../extension/date_time_extension.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -123,100 +124,144 @@ class NotificationsListView extends HookConsumerWidget {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            Container(
-              width: 800.0,
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: CustomScrollView(
-                controller: controller,
-                center: centerKey,
-                slivers: [
-                  if ((notifications.valueOrNull?.items.isNotEmpty ?? false) ||
-                      nextNotifications.value.isNotEmpty)
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(top: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
+            CustomScrollView(
+              controller: controller,
+              center: centerKey,
+              slivers: [
+                SliverList.separated(
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: index == nextNotifications.value.length - 1
+                            ? 8.0
+                            : 0.0,
+                        left: 8.0,
+                        right: 8.0,
+                        bottom: index == 0 &&
+                                (notifications.valueOrNull?.items.isEmpty ??
+                                    true)
+                            ? 8.0
+                            : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.vertical(
+                          top: index == nextNotifications.value.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                          bottom: index == 0 &&
+                                  (notifications.valueOrNull?.items.isEmpty ??
+                                      true)
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: NotificationWidget(
+                          account: account,
+                          notification: nextNotifications.value[index],
                         ),
                       ),
                     ),
-                  SliverList.separated(
-                    itemBuilder: (context, index) => Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: NotificationWidget(
-                        account: account,
-                        notification: nextNotifications.value[index],
-                      ),
-                    ),
-                    separatorBuilder: (_, __) => const Divider(height: 0),
-                    itemCount: nextNotifications.value.length,
                   ),
-                  if (nextNotifications.value.isNotEmpty &&
-                      (notifications.valueOrNull?.items.isNotEmpty ?? false))
-                    SliverToBoxAdapter(
-                      child: lastViewedAt?.isBetween(
-                                notifications
-                                    .valueOrNull?.items.firstOrNull?.createdAt,
-                                nextNotifications.value.lastOrNull?.createdAt,
-                              ) ??
-                              false
-                          ? const _NewNotificationsDivider()
-                          : const Divider(height: 1.0),
+                  separatorBuilder: (_, __) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: const Divider(height: 0.0),
                     ),
-                  SliverList.separated(
-                    key: centerKey,
-                    itemBuilder: (context, index) => Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: NotificationWidget(
-                        account: account,
-                        notification: notifications.value!.items[index],
-                      ),
-                    ),
-                    separatorBuilder: (context, index) =>
-                        lastViewedAt?.isBetween(
-                                  notifications.valueOrNull?.items
-                                      .elementAtOrNull(index + 1)
+                  ),
+                  itemCount: nextNotifications.value.length,
+                ),
+                if (nextNotifications.value.isNotEmpty &&
+                    (notifications.valueOrNull?.items.isNotEmpty ?? false))
+                  SliverToBoxAdapter(
+                    child: Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        child: lastViewedAt?.isBetween(
+                                  notifications.valueOrNull?.items.firstOrNull
                                       ?.createdAt,
-                                  notifications.valueOrNull?.items
-                                      .elementAtOrNull(index)
-                                      ?.createdAt,
+                                  nextNotifications.value.lastOrNull?.createdAt,
                                 ) ??
                                 false
                             ? const _NewNotificationsDivider()
-                            : const Divider(height: 0.0),
-                    itemCount: notifications.valueOrNull?.items.length ?? 0,
+                            : const Divider(height: 1.0),
+                      ),
+                    ),
                   ),
-                  if ((notifications.valueOrNull?.items.isNotEmpty ?? false) ||
-                      nextNotifications.value.isNotEmpty)
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(8.0),
-                            bottomRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
+                SliverList.separated(
+                  key: centerKey,
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: index == 0 && nextNotifications.value.isEmpty
+                            ? 8.0
+                            : 0.0,
+                        left: 8.0,
+                        right: 8.0,
+                        bottom: index == notifications.value!.items.length - 1
+                            ? 8.0
+                            : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.vertical(
+                          top: index == 0 && nextNotifications.value.isEmpty
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                          bottom: index == notifications.value!.items.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: NotificationWidget(
+                          account: account,
+                          notification: notifications.value!.items[index],
                         ),
                       ),
                     ),
-                  SliverToBoxAdapter(
-                    child: PaginationBottomWidget(
-                      paginationState: notifications,
-                      noItemsLabel: t.misskey.noNotes,
-                      loadMore: () => ref
-                          .read(notificationsNotifierProvider(account).notifier)
-                          .loadMore(skipError: true),
+                  ),
+                  separatorBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: lastViewedAt?.isBetween(
+                                notifications.valueOrNull?.items
+                                    .elementAtOrNull(index + 1)
+                                    ?.createdAt,
+                                notifications.valueOrNull?.items
+                                    .elementAtOrNull(index)
+                                    ?.createdAt,
+                              ) ??
+                              false
+                          ? const _NewNotificationsDivider()
+                          : const Divider(height: 0.0),
                     ),
                   ),
-                ],
-              ),
+                  itemCount: notifications.valueOrNull?.items.length ?? 0,
+                ),
+                SliverToBoxAdapter(
+                  child: Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: PaginationBottomWidget(
+                        paginationState: notifications,
+                        noItemsLabel: t.misskey.noNotes,
+                        loadMore: () => ref
+                            .read(
+                              notificationsNotifierProvider(account).notifier,
+                            )
+                            .loadMore(skipError: true),
+                        height: 120.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             if (hasUnread.value && showPopup)
               Positioned(
@@ -257,9 +302,7 @@ class _NewNotificationsDivider extends ConsumerWidget {
         children: [
           Expanded(child: Divider(color: colors.accent, thickness: 2.0)),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 8.0,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(
               t.aria.newNotifications,
               style: TextStyle(color: colors.accent),
