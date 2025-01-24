@@ -21,9 +21,11 @@ import '../../util/extract_url.dart';
 import '../../util/get_note_action.dart';
 import 'channel_color_bar_box.dart';
 import 'cw_button.dart';
+import 'hard_muted_note_widget.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
+import 'muted_note_widget.dart';
 import 'note_footer.dart';
 import 'note_header.dart';
 import 'note_simple_widget.dart';
@@ -34,7 +36,6 @@ import 'reactions_viewer.dart';
 import 'renote_header.dart';
 import 'url_preview.dart';
 import 'user_avatar.dart';
-import 'username_widget.dart';
 
 class NoteWidget extends HookConsumerWidget {
   const NoteWidget({
@@ -46,6 +47,7 @@ class NoteWidget extends HookConsumerWidget {
     this.note,
     this.showFooter,
     this.backgroundColor,
+    this.borderRadius,
   });
 
   final Account account;
@@ -55,57 +57,44 @@ class NoteWidget extends HookConsumerWidget {
   final Note? note;
   final bool? showFooter;
   final Color? backgroundColor;
+  final BorderRadiusGeometry? borderRadius;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final note = this.note ?? ref.watch(noteProvider(account, noteId));
     if (note == null) {
-      return const SizedBox.shrink();
+      return HardMutedNoteWidget(borderRadius: borderRadius);
     }
     final appearNote =
         this.note ?? ref.watch(appearNoteProvider(account, noteId));
     if (appearNote == null) {
-      return const SizedBox.shrink();
+      return HardMutedNoteWidget(borderRadius: borderRadius);
     }
     final hardMuted = withHardMute &&
         ref.watch(
           checkWordMuteProvider(account, appearNote.id, hardMute: true),
         );
     if (hardMuted) {
-      return const SizedBox.shrink();
+      return HardMutedNoteWidget(borderRadius: borderRadius);
     }
+    final muted =
+        useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
+    if (muted.value) {
+      return MutedNoteWidget(
+        account: account,
+        note: appearNote,
+        onTap: () => muted.value = false,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        borderRadius: borderRadius,
+      );
+    }
+
     final (verticalPadding, horizontalPadding) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) =>
             (settings.noteVerticalPadding, settings.noteHorizontalPadding),
       ),
     );
-    final muted =
-        useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
-    if (muted.value) {
-      final style = TextStyle(
-        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-      );
-      return InkWell(
-        onTap: () => muted.value = false,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding,
-            horizontal: horizontalPadding,
-          ),
-          child: UsernameWidget(
-            account: account,
-            user: appearNote.user,
-            builder: (context, span) => Text.rich(
-              t.aria.userSaysSomething(name: span),
-              style: style,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
-    }
-
     final showAvatars = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.showAvatarsInNote),
@@ -156,6 +145,7 @@ class NoteWidget extends HookConsumerWidget {
     return Material(
       color: backgroundColor ?? Theme.of(context).colorScheme.surface,
       clipBehavior: Clip.hardEdge,
+      borderRadius: borderRadius,
       child: InkWell(
         onTap: getNoteAction(
           ref,
@@ -476,7 +466,7 @@ class _NoteContent extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(4.0),
                     showFooter: this.showFooter,
                     focusPostForm: focusPostForm,
-                    note: note.renote,
+                    note: appearNote.renote,
                   ),
                 ),
               ),
@@ -544,7 +534,7 @@ class _NoteContent extends HookConsumerWidget {
             account: account,
             noteId: appearNote.id,
             showAllReactions: showAllReactions,
-            note: note,
+            note: appearNote,
           ),
         ],
         if (showFooter)

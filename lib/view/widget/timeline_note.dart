@@ -13,6 +13,7 @@ import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/streaming/note_subscription_notifier_provider.dart';
 import '../../provider/streaming/note_update_event_provider.dart';
+import 'hard_muted_note_widget.dart';
 import 'note_fallback_widget.dart';
 import 'note_widget.dart';
 import 'username_widget.dart';
@@ -23,36 +24,42 @@ class TimelineNote extends HookConsumerWidget {
     required this.tabSettings,
     required this.noteId,
     this.focusPostForm,
+    this.borderRadius,
   });
 
   final TabSettings tabSettings;
   final String noteId;
   final void Function()? focusPostForm;
+  final BorderRadiusGeometry? borderRadius;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final account = tabSettings.account;
     final isDeleted = ref.watch(noteIsDeletedProvider(account, noteId));
     if (isDeleted) {
-      return const SizedBox.shrink();
+      return HardMutedNoteWidget(borderRadius: borderRadius);
     }
     final note = ref.watch(noteProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
     final notifier =
         ref.watch(noteSubscriptionNotifierProvider(account).notifier);
     if (note == null || appearNote == null) {
-      return NoteFallbackWidget(
-        account: account,
-        noteId: noteId,
+      return Material(
+        color: Theme.of(context).colorScheme.surface,
+        borderRadius: borderRadius,
+        child: NoteFallbackWidget(
+          account: account,
+          noteId: noteId,
+        ),
       );
     }
     if (tabSettings.withFiles && appearNote.fileIds.isEmpty) {
-      return const SizedBox.shrink();
+      return HardMutedNoteWidget(borderRadius: borderRadius);
     }
     if (note.isRenote) {
       if (!tabSettings.withRenotes ||
           (!tabSettings.withSelfRenotes && note.userId == appearNote.userId)) {
-        return const SizedBox.shrink();
+        return HardMutedNoteWidget(borderRadius: borderRadius);
       }
     }
     if (!tabSettings.withSensitive) {
@@ -133,6 +140,7 @@ class TimelineNote extends HookConsumerWidget {
       account: account,
       noteId: noteId,
       focusPostForm: focusPostForm,
+      borderRadius: borderRadius,
     );
   }
 }

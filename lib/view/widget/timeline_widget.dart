@@ -281,12 +281,8 @@ class TimelineWidget extends HookConsumerWidget {
                           Expanded(
                             child: Text(
                               t.aria.jumpTo(
-                                x: [
-                                  absoluteTime(lastViewedAt),
-                                  ' (',
-                                  relativeTime(lastViewedAt),
-                                  ')',
-                                ].join(),
+                                x: '${absoluteTime(lastViewedAt)}'
+                                    ' (${relativeTime(lastViewedAt)})',
                               ),
                               maxLines: 1,
                             ),
@@ -323,12 +319,8 @@ class TimelineWidget extends HookConsumerWidget {
                           Expanded(
                             child: Text(
                               t.aria.jumpTo(
-                                x: [
-                                  absoluteTime(nextNoteDate),
-                                  ' (',
-                                  relativeTime(nextNoteDate),
-                                  ')',
-                                ].join(),
+                                x: '${absoluteTime(nextNoteDate)}'
+                                    ' (${relativeTime(nextNoteDate)})',
                               ),
                               maxLines: 1,
                             ),
@@ -346,6 +338,7 @@ class TimelineWidget extends HookConsumerWidget {
                     ),
                   ),
                 ),
+            const Divider(height: 1.0),
             Expanded(
               child: TimelineListView(
                 tabSettings: tabSettings,

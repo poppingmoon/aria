@@ -13,7 +13,7 @@ Note? appearNote(Ref ref, Account account, String noteId) {
   final note = ref.watch(noteProvider(account, noteId));
   if (note != null) {
     if (note.isRenote) {
-      return ref.watch(noteProvider(account, note.renote!.id));
+      return ref.watch(noteProvider(account, note.renoteId!));
     } else {
       return note;
     }

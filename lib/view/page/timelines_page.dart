@@ -278,17 +278,23 @@ class TimelinesPage extends HookConsumerWidget {
                       height: kToolbarHeight,
                       color: colors.panel,
                       elevation: 0.0,
-                      child: Row(
-                        children: [
-                          if (!isLargeScreen && showMenuButtonInTabBar)
-                            const Padding(
-                              padding: EdgeInsets.all(8.0),
-                              child: DrawerButton(),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border:
+                              Border(top: BorderSide(color: colors.divider)),
+                        ),
+                        child: Row(
+                          children: [
+                            if (!isLargeScreen && showMenuButtonInTabBar)
+                              const Padding(
+                                padding: EdgeInsets.all(8.0),
+                                child: DrawerButton(),
+                              ),
+                            Expanded(
+                              child: TimelineTabBar(controller: controller),
                             ),
-                          Expanded(
-                            child: TimelineTabBar(controller: controller),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     )
                   : null,

@@ -21,12 +21,19 @@ class NoteFallbackWidget extends ConsumerWidget {
       future: ref.read(notesNotifierProvider(account).notifier).show(noteId),
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return ErrorMessage(
-            error: snapshot.error,
-            stackTrace: snapshot.stackTrace,
+          return SingleChildScrollView(
+            child: ErrorMessage(
+              error: snapshot.error,
+              stackTrace: snapshot.stackTrace,
+            ),
           );
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: CircularProgressIndicator(),
+            ),
+          );
         }
       },
     );
