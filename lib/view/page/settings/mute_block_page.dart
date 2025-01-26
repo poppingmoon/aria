@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
@@ -163,9 +165,7 @@ class _MutedEmojisEditor extends HookConsumerWidget {
             child: ElevatedButton.icon(
               onPressed: isChanged.value
                   ? () async {
-                      final mutes = controller.text
-                          .trim()
-                          .split('\n')
+                      final mutes = LineSplitter.split(controller.text.trim())
                           .map((emoji) => emoji.trim())
                           .where((emoji) => emoji.isNotEmpty);
                       await ref
@@ -259,9 +259,7 @@ class _InstanceMuteEditor extends HookConsumerWidget {
           child: ElevatedButton.icon(
             onPressed: isChanged.value
                 ? () async {
-                    final mutes = controller.text
-                        .trim()
-                        .split('\n')
+                    final mutes = LineSplitter.split(controller.text.trim())
                         .map((server) => server.trim())
                         .where((server) => server.isNotEmpty)
                         .toList();
