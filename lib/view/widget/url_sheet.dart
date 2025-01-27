@@ -16,7 +16,7 @@ class UrlSheet extends StatelessWidget {
       shrinkWrap: true,
       children: [
         ListTile(title: Text(url)),
-        const Divider(),
+        const Divider(height: 0.0),
         ListTile(
           leading: const Icon(Icons.open_in_browser),
           title: Text(t.aria.openInInternalBrowser),
