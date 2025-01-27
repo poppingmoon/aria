@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_off_icons/material_off_icons.dart';
 
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
@@ -32,7 +33,7 @@ class MuteBlockPage extends StatelessWidget {
           _MutedEmojisEditor(account: account),
           _InstanceMuteEditor(account: account),
           ListTile(
-            leading: const Icon(Icons.repeat_rounded),
+            leading: const Icon(OffIcons.repeat_rounded),
             title: Text('${t.misskey.mutedUsers} (${t.misskey.renote})'),
             trailing: const Icon(Icons.navigate_next),
             onTap: () => context

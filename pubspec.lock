@@ -1238,6 +1238,23 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.11.1"
+  material_off_icons:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: d2ba3655f1104ed628cf9ecd88f603d71b92d90a
+      resolved-ref: d2ba3655f1104ed628cf9ecd88f603d71b92d90a
+      url: "https://github.com/poppingmoon/material_off_icons"
+    source: git
+    version: "0.1.0"
+  material_symbols_icons:
+    dependency: "direct main"
+    description:
+      name: material_symbols_icons
+      sha256: "89aac72d25dd49303f71b3b1e70f8374791846729365b25bebc2a2531e5b86cd"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2801.1"
   matrix2d:
     dependency: transitive
     description:

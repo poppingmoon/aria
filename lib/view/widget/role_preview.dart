@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
@@ -35,16 +36,24 @@ class RolePreview extends ConsumerWidget {
               width: 28.0,
               height: 28.0,
             ),
-          RolesListResponse(isAdministrator: true) =>
-            Icon(Icons.shield, color: Theme.of(context).colorScheme.primary),
-          RolesListResponse(isModerator: true) =>
-            Icon(Icons.shield, color: Theme.of(context).colorScheme.primary),
+          RolesListResponse(isAdministrator: true) => Icon(
+              Symbols.crown,
+              color: Theme.of(context).colorScheme.primary,
+              size: 28.0,
+              fill: 1.0,
+            ),
+          RolesListResponse(isModerator: true) => Icon(
+              Icons.shield,
+              color: Theme.of(context).colorScheme.primary,
+              size: 28.0,
+            ),
           _ => Icon(
               Icons.person,
               color: Theme.of(context)
                   .colorScheme
                   .onSurface
                   .withValues(alpha: 0.7),
+              size: 28.0,
             )
         },
         title: Text(role.name),
