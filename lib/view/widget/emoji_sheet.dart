@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
@@ -139,7 +140,7 @@ class EmojiSheet extends ConsumerWidget {
         if (!account.isGuest && host == null) ...[
           if (!isPinnedForReaction)
             ListTile(
-              leading: const Icon(Icons.push_pin),
+              leading: const Icon(Symbols.keep, fill: 1.0),
               title: Text('${t.aria.pinToEmojiPicker} (${t.misskey.reaction})'),
               onTap: () {
                 ref
@@ -153,7 +154,7 @@ class EmojiSheet extends ConsumerWidget {
             ),
           if (!isPinned)
             ListTile(
-              leading: const Icon(Icons.push_pin_outlined),
+              leading: const Icon(Symbols.keep_off, fill: 1.0),
               title: Text('${t.aria.pinToEmojiPicker} (${t.misskey.general})'),
               onTap: () {
                 ref

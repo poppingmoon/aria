@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_symbols_icons/symbols.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 
@@ -371,31 +372,28 @@ class NoteSheet extends ConsumerWidget {
           if (!account.isGuest) ...[
             if (appearNote.user.host == null &&
                 appearNote.user.username == account.username)
-              ListTile(
-                leading: const Icon(Icons.push_pin),
-                title: Text(
-                  i?.pinnedNoteIds?.contains(appearNote.id) ?? false
-                      ? t.misskey.unpin
-                      : t.misskey.pin,
+              if (i?.pinnedNoteIds?.contains(appearNote.id) ?? false)
+                ListTile(
+                  leading: const Icon(Symbols.keep_off, fill: 1.0),
+                  title: Text(t.misskey.unpin),
+                  onTap: () => futureWithDialog(
+                    context,
+                    ref
+                        .read(iNotifierProvider(account).notifier)
+                        .unpin(appearNote.id),
+                  ),
+                )
+              else
+                ListTile(
+                  leading: const Icon(Symbols.keep, fill: 1.0),
+                  title: Text(t.misskey.pin),
+                  onTap: () => futureWithDialog(
+                    context,
+                    ref
+                        .read(iNotifierProvider(account).notifier)
+                        .pin(appearNote.id),
+                  ),
                 ),
-                onTap: () async {
-                  if (i?.pinnedNoteIds?.contains(appearNote.id) ?? false) {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(iNotifierProvider(account).notifier)
-                          .unpin(appearNote.id),
-                    );
-                  } else {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(iNotifierProvider(account).notifier)
-                          .pin(appearNote.id),
-                    );
-                  }
-                },
-              ),
             ListTile(
               leading: const Icon(Icons.attach_file),
               title: Text(t.misskey.clip),
