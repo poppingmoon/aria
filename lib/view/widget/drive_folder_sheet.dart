@@ -100,7 +100,7 @@ class DriveFolderSheet extends ConsumerWidget {
           title: Text(folder.name),
           subtitle: TimeWidget(time: folder.createdAt),
         ),
-        const Divider(),
+        const Divider(height: 0.0),
         ListTile(
           leading: const Icon(Icons.settings),
           title: Text(t.misskey.renameFolder),
