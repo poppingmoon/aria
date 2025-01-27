@@ -68,171 +68,101 @@ class $AssetsMisskeyGen {
 class $AssetsFontsBIZUDGothicGen {
   const $AssetsFontsBIZUDGothicGen();
 
-  /// File path: assets/fonts/BIZ_UDGothic/BIZUDGothic-Bold.ttf
-  String get bIZUDGothicBold =>
-      'assets/fonts/BIZ_UDGothic/BIZUDGothic-Bold.ttf';
-
-  /// File path: assets/fonts/BIZ_UDGothic/BIZUDGothic-Regular.ttf
-  String get bIZUDGothicRegular =>
-      'assets/fonts/BIZ_UDGothic/BIZUDGothic-Regular.ttf';
-
   /// File path: assets/fonts/BIZ_UDGothic/OFL.txt
   String get ofl => 'assets/fonts/BIZ_UDGothic/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [bIZUDGothicBold, bIZUDGothicRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsBIZUDMinchoGen {
   const $AssetsFontsBIZUDMinchoGen();
 
-  /// File path: assets/fonts/BIZ_UDMincho/BIZUDMincho-Bold.ttf
-  String get bIZUDMinchoBold =>
-      'assets/fonts/BIZ_UDMincho/BIZUDMincho-Bold.ttf';
-
-  /// File path: assets/fonts/BIZ_UDMincho/BIZUDMincho-Regular.ttf
-  String get bIZUDMinchoRegular =>
-      'assets/fonts/BIZ_UDMincho/BIZUDMincho-Regular.ttf';
-
   /// File path: assets/fonts/BIZ_UDMincho/OFL.txt
   String get ofl => 'assets/fonts/BIZ_UDMincho/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [bIZUDMinchoBold, bIZUDMinchoRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsMplus1Gen {
   const $AssetsFontsMplus1Gen();
 
-  /// File path: assets/fonts/Mplus1/Mplus1-Bold.otf
-  String get mplus1Bold => 'assets/fonts/Mplus1/Mplus1-Bold.otf';
-
-  /// File path: assets/fonts/Mplus1/Mplus1-Regular.otf
-  String get mplus1Regular => 'assets/fonts/Mplus1/Mplus1-Regular.otf';
-
   /// File path: assets/fonts/Mplus1/OFL.txt
   String get ofl => 'assets/fonts/Mplus1/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [mplus1Bold, mplus1Regular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsMplus2Gen {
   const $AssetsFontsMplus2Gen();
 
-  /// File path: assets/fonts/Mplus2/Mplus2-Bold.otf
-  String get mplus2Bold => 'assets/fonts/Mplus2/Mplus2-Bold.otf';
-
-  /// File path: assets/fonts/Mplus2/Mplus2-Regular.otf
-  String get mplus2Regular => 'assets/fonts/Mplus2/Mplus2-Regular.otf';
-
   /// File path: assets/fonts/Mplus2/OFL.txt
   String get ofl => 'assets/fonts/Mplus2/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [mplus2Bold, mplus2Regular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsNotoSansJPGen {
   const $AssetsFontsNotoSansJPGen();
 
-  /// File path: assets/fonts/Noto_Sans_JP/NotoSansJP-Bold.ttf
-  String get notoSansJPBold => 'assets/fonts/Noto_Sans_JP/NotoSansJP-Bold.ttf';
-
-  /// File path: assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.ttf
-  String get notoSansJPRegular =>
-      'assets/fonts/Noto_Sans_JP/NotoSansJP-Regular.ttf';
-
   /// File path: assets/fonts/Noto_Sans_JP/OFL.txt
   String get ofl => 'assets/fonts/Noto_Sans_JP/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [notoSansJPBold, notoSansJPRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsNotoSansKRGen {
   const $AssetsFontsNotoSansKRGen();
 
-  /// File path: assets/fonts/Noto_Sans_KR/NotoSansKR-Bold.ttf
-  String get notoSansKRBold => 'assets/fonts/Noto_Sans_KR/NotoSansKR-Bold.ttf';
-
-  /// File path: assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.ttf
-  String get notoSansKRRegular =>
-      'assets/fonts/Noto_Sans_KR/NotoSansKR-Regular.ttf';
-
   /// File path: assets/fonts/Noto_Sans_KR/OFL.txt
   String get ofl => 'assets/fonts/Noto_Sans_KR/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [notoSansKRBold, notoSansKRRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsNotoSansSCGen {
   const $AssetsFontsNotoSansSCGen();
 
-  /// File path: assets/fonts/Noto_Sans_SC/NotoSansSC-Bold.ttf
-  String get notoSansSCBold => 'assets/fonts/Noto_Sans_SC/NotoSansSC-Bold.ttf';
-
-  /// File path: assets/fonts/Noto_Sans_SC/NotoSansSC-Regular.ttf
-  String get notoSansSCRegular =>
-      'assets/fonts/Noto_Sans_SC/NotoSansSC-Regular.ttf';
-
   /// File path: assets/fonts/Noto_Sans_SC/OFL.txt
   String get ofl => 'assets/fonts/Noto_Sans_SC/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [notoSansSCBold, notoSansSCRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsNotoSansTCGen {
   const $AssetsFontsNotoSansTCGen();
 
-  /// File path: assets/fonts/Noto_Sans_TC/NotoSansTC-Bold.ttf
-  String get notoSansTCBold => 'assets/fonts/Noto_Sans_TC/NotoSansTC-Bold.ttf';
-
-  /// File path: assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.ttf
-  String get notoSansTCRegular =>
-      'assets/fonts/Noto_Sans_TC/NotoSansTC-Regular.ttf';
-
   /// File path: assets/fonts/Noto_Sans_TC/OFL.txt
   String get ofl => 'assets/fonts/Noto_Sans_TC/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [notoSansTCBold, notoSansTCRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsNotoSerifJPGen {
   const $AssetsFontsNotoSerifJPGen();
 
-  /// File path: assets/fonts/Noto_Serif_JP/NotoSerifJP-Bold.otf
-  String get notoSerifJPBold =>
-      'assets/fonts/Noto_Serif_JP/NotoSerifJP-Bold.otf';
-
-  /// File path: assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf
-  String get notoSerifJPRegular =>
-      'assets/fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf';
-
   /// File path: assets/fonts/Noto_Serif_JP/OFL.txt
   String get ofl => 'assets/fonts/Noto_Serif_JP/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [notoSerifJPBold, notoSerifJPRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsNunitoGen {
   const $AssetsFontsNunitoGen();
 
-  /// File path: assets/fonts/Nunito/Nunito-Bold.ttf
-  String get nunitoBold => 'assets/fonts/Nunito/Nunito-Bold.ttf';
-
-  /// File path: assets/fonts/Nunito/Nunito-Regular.ttf
-  String get nunitoRegular => 'assets/fonts/Nunito/Nunito-Regular.ttf';
-
   /// File path: assets/fonts/Nunito/OFL.txt
   String get ofl => 'assets/fonts/Nunito/OFL.txt';
 
   /// List of all assets
-  List<String> get values => [nunitoBold, nunitoRegular, ofl];
+  List<String> get values => [ofl];
 }
 
 class $AssetsFontsPretendardGen {
@@ -241,15 +171,8 @@ class $AssetsFontsPretendardGen {
   /// File path: assets/fonts/Pretendard/LICENSE.txt
   String get license => 'assets/fonts/Pretendard/LICENSE.txt';
 
-  /// File path: assets/fonts/Pretendard/Pretendard-Bold.otf
-  String get pretendardBold => 'assets/fonts/Pretendard/Pretendard-Bold.otf';
-
-  /// File path: assets/fonts/Pretendard/Pretendard-Regular.otf
-  String get pretendardRegular =>
-      'assets/fonts/Pretendard/Pretendard-Regular.otf';
-
   /// List of all assets
-  List<String> get values => [license, pretendardBold, pretendardRegular];
+  List<String> get values => [license];
 }
 
 class $AssetsMisskeyPackagesGen {

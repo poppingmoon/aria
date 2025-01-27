@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_off_icons/material_off_icons.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../extension/text_style_extension.dart';
@@ -135,7 +136,7 @@ class NoteHeader extends HookConsumerWidget {
               if (note.localOnly)
                 Tooltip(
                   message: t.misskey.visibility_.disableFederation,
-                  child: const Icon(Icons.rocket_outlined),
+                  child: const Icon(OffIcons.rocket),
                 ),
               if (note.channel != null)
                 Tooltip(

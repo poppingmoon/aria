@@ -75,6 +75,10 @@ dependencies:
   json_annotation: ^4.9.0
   just_audio: ^0.9.43
   kana_kit: ^2.1.1
+  material_off_icons:
+    git:
+      url: https://github.com/poppingmoon/material_off_icons
+      ref: d2ba3655f1104ed628cf9ecd88f603d71b92d90a
   material_symbols_icons: ^4.2801.1
   mfm_parser:
     git:
@@ -152,17 +156,17 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
-    - assets/fonts/BIZ_UDGothic/
-    - assets/fonts/BIZ_UDMincho/
-    - assets/fonts/Mplus1/
-    - assets/fonts/Mplus2/
-    - assets/fonts/Noto_Sans_JP/
-    - assets/fonts/Noto_Sans_KR/
-    - assets/fonts/Noto_Sans_SC/
-    - assets/fonts/Noto_Sans_TC/
-    - assets/fonts/Noto_Serif_JP/
-    - assets/fonts/Nunito/
-    - assets/fonts/Pretendard/
+    - assets/fonts/BIZ_UDGothic/OFL.txt
+    - assets/fonts/BIZ_UDMincho/OFL.txt
+    - assets/fonts/Mplus1/OFL.txt
+    - assets/fonts/Mplus2/OFL.txt
+    - assets/fonts/Noto_Sans_JP/OFL.txt
+    - assets/fonts/Noto_Sans_KR/OFL.txt
+    - assets/fonts/Noto_Sans_SC/OFL.txt
+    - assets/fonts/Noto_Sans_TC/OFL.txt
+    - assets/fonts/Noto_Serif_JP/OFL.txt
+    - assets/fonts/Nunito/OFL.txt
+    - assets/fonts/Pretendard/LICENSE.txt
     - assets/misskey/COPYING
     - assets/misskey/LICENSE
     - assets/misskey/packages/frontend/assets/

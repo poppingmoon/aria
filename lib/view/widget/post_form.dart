@@ -9,6 +9,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 // import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:material_off_icons/material_off_icons.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
@@ -533,7 +534,7 @@ class PostForm extends HookConsumerWidget {
                             .withValues(alpha: 0.5)
                         : null,
                     icon: request.localOnly ?? false
-                        ? const Icon(Icons.rocket_outlined)
+                        ? const Icon(OffIcons.rocket_outlined)
                         : const Icon(Icons.rocket),
                   ),
                   PopupMenuButton<void>(
