@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -22,9 +24,7 @@ class MutedWordsEditor extends HookConsumerWidget {
   final bool hardMute;
 
   List<MuteWord> _parseMutes(BuildContext context, String mutes) {
-    return mutes
-        .trim()
-        .split('\n')
+    return LineSplitter.split(mutes.trim())
         .map((line) => line.trim())
         .mapIndexed((index, line) {
           if (line.isEmpty) {
