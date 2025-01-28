@@ -3,7 +3,7 @@ package com.poppingmoon.aria
 import android.content.Context
 import org.unifiedpush.android.foss_embedded_fcm_distributor.EmbeddedDistributorReceiver
 
-// This value must be the same as `fcmTokenPrefix` at lib/constant/push.dart.
+// This value must be the same as `fcmTokenPrefix` at lib/constant/fcm_token_prefix.dart.
 const val fcmTokenPrefix = "fcmToken:"
 
 class EmbeddedDistributor: EmbeddedDistributorReceiver() {
