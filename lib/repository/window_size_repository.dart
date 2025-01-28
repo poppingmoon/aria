@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class WindowSizeRepository {
   const WindowSizeRepository(this.prefs);
 
-  final SharedPreferences prefs;
+  final SharedPreferencesWithCache prefs;
 
   static const _widthKey = 'windowWidth';
   static const _heightKey = 'windowHeight';

@@ -1,12 +1,18 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-class FakeSharedPreferences implements SharedPreferences {
+class FakeSharedPreferences implements SharedPreferencesWithCache {
   const FakeSharedPreferences(this.map);
 
   final Map<String, dynamic> map;
 
   @override
-  Set<String> getKeys() => map.keys.toSet();
+  Future<void> reloadCache() async {}
+
+  @override
+  bool containsKey(String key) => map.containsKey(key);
+
+  @override
+  Set<String> get keys => map.keys.toSet();
 
   @override
   Object? get(String key) => map[key];
@@ -22,9 +28,6 @@ class FakeSharedPreferences implements SharedPreferences {
 
   @override
   String? getString(String key) => map[key] as String?;
-
-  @override
-  bool containsKey(String key) => map.containsKey(key);
 
   @override
   List<String>? getStringList(String key) => map[key] as List<String>?;
@@ -66,11 +69,5 @@ class FakeSharedPreferences implements SharedPreferences {
   }
 
   @override
-  Future<bool> commit() async => true;
-
-  @override
   Future<bool> clear() async => true;
-
-  @override
-  Future<void> reload() async => true;
 }

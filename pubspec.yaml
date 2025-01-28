@@ -106,7 +106,8 @@ dependencies:
     path: rust_builder
   searchfield: ^1.2.2
   share_plus: ^10.1.4
-  shared_preferences: ^2.3.5
+  shared_preferences: ^2.4.0
+  shared_preferences_platform_interface: ^2.4.1
   slang: ^4.4.1
   slang_flutter: ^4.4.0
   tinycolor2:

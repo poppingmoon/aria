@@ -15,6 +15,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/util/legacy_to_async_migration_util.dart';
+import 'package:shared_preferences_platform_interface/types.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
@@ -100,7 +102,18 @@ void main() async {
       await rootBundle.loadString(Assets.misskey.license),
     );
   });
-  final prefs = await SharedPreferences.getInstance();
+  final prefs = await SharedPreferencesWithCache.create(
+    cacheOptions: const SharedPreferencesWithCacheOptions(),
+  );
+  const migrationCompletedKey = 'migrationCompleted';
+  if (!prefs.containsKey(migrationCompletedKey)) {
+    await migrateLegacySharedPreferencesToSharedPreferencesAsyncIfNecessary(
+      legacySharedPreferencesInstance: await SharedPreferences.getInstance(),
+      sharedPreferencesAsyncOptions: const SharedPreferencesOptions(),
+      migrationCompletedKey: migrationCompletedKey,
+    );
+    await prefs.reloadCache();
+  }
   if (defaultTargetPlatform
       case TargetPlatform.linux ||
           TargetPlatform.macOS ||
