@@ -110,16 +110,6 @@ class NoteWidget extends HookConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.showAvatarsInNote),
     );
-    final showReactionsViewer = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showNoteReactionsViewer),
-    );
-    final showFooter = this.showFooter ??
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.showNoteFooter),
-        ) ??
-        false;
     final tapAction = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.noteTapAction),
@@ -137,42 +127,9 @@ class NoteWidget extends HookConsumerWidget {
         account.username == note.user.username && note.user.host == null;
     final isMyNote = account.username == appearNote.user.username &&
         appearNote.user.host == null;
-    final showContent = useState(
-      ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.alwaysExpandCw),
-      ),
-    );
-    final parsed = appearNote.text != null
-        ? ref.watch(parsedMfmProvider(appearNote.text!))
-        : null;
-    final renoteUrl = note.uri?.toString() ?? note.url?.toString();
-    final urls = useMemoized(
-      () => parsed != null
-          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
-          : null,
-      [parsed],
-    );
     final avatarScale = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.avatarScale),
-    );
-    final isLong = appearNote.cw == null &&
-        !ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.alwaysExpandLongNote),
-        ) &&
-        ref.watch(noteIsLongProvider(account, appearNote.id));
-    final isCollapsed = useState(appearNote.cw == null && isLong);
-    final showTicker = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => switch (settings.instanceTicker) {
-          InstanceTicker.none => false,
-          InstanceTicker.remote =>
-            appearNote.user.instance != null && appearNote.user.host != null,
-          InstanceTicker.always => true,
-        },
-      ),
     );
     final renoteCollapsed = useState(
       ref.watch(
@@ -181,10 +138,6 @@ class NoteWidget extends HookConsumerWidget {
           ) &&
           isRenote &&
           (isMyRenote || isMyNote || appearNote.myReaction != null),
-    );
-    final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysShowAllReactions),
     );
     final backgroundColor = this.backgroundColor ??
         ref.watch(
@@ -198,12 +151,10 @@ class NoteWidget extends HookConsumerWidget {
             },
           ),
         );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
 
     return Material(
-      color: backgroundColor ?? colors.panel,
+      color: backgroundColor ?? Theme.of(context).colorScheme.surface,
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: getNoteAction(
@@ -333,203 +284,14 @@ class NoteWidget extends HookConsumerWidget {
                           ),
                         ),
                       Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            NoteHeader(account: account, note: appearNote),
-                            if (showTicker)
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 2.0),
-                                child: DefaultTextStyle.merge(
-                                  style: style.apply(fontSizeFactor: 0.9),
-                                  child: InstanceTickerWidget(
-                                    account: account,
-                                    instance: appearNote.user.instance,
-                                    host: appearNote.user.host,
-                                  ),
-                                ),
-                              ),
-                            if (appearNote case Note(:final cw?)) ...[
-                              if (cw.isNotEmpty)
-                                Mfm(
-                                  account: account,
-                                  text: cw,
-                                  emojis: appearNote.emojis,
-                                  author: appearNote.user,
-                                  nyaize: true,
-                                ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 2.0),
-                                child: CwButton(
-                                  note: appearNote,
-                                  onPressed: (value) =>
-                                      showContent.value = value,
-                                  isOpen: showContent.value,
-                                ),
-                              ),
-                            ],
-                            if (appearNote.cw == null || showContent.value) ...[
-                              if (parsed != null || appearNote.replyId != null)
-                                Mfm(
-                                  account: account,
-                                  leadingSpans: [
-                                    if (appearNote.replyId
-                                        case final replyId?) ...[
-                                      WidgetSpan(
-                                        alignment: PlaceholderAlignment.middle,
-                                        child: InkWell(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          onTap: () => context.push(
-                                            '/$account/notes/$replyId',
-                                          ),
-                                          child: Icon(
-                                            Icons.reply,
-                                            color: colors.accent,
-                                          ),
-                                        ),
-                                      ),
-                                      const WidgetSpan(
-                                        child: SizedBox(width: 4.0),
-                                      ),
-                                    ],
-                                  ],
-                                  nodes: parsed,
-                                  emojis: appearNote.emojis,
-                                  author: appearNote.user,
-                                  nyaize: true,
-                                  maxLines: isCollapsed.value ? 10 : null,
-                                ),
-                              const SizedBox(height: 4.0),
-                              if (!isCollapsed.value) ...[
-                                if (appearNote.files.isNotEmpty) ...[
-                                  MediaList(
-                                    account: account,
-                                    files: appearNote.files,
-                                    user: appearNote.user,
-                                  ),
-                                  const SizedBox(height: 8.0),
-                                ],
-                                if (appearNote case Note(:final poll?)) ...[
-                                  PollWidget(
-                                    account: account,
-                                    noteId: appearNote.id,
-                                    poll: poll,
-                                  ),
-                                  const SizedBox(height: 4.0),
-                                ],
-                                if (urls != null && urls.isNotEmpty)
-                                  for (final url in urls) ...[
-                                    UrlPreview(account: account, link: url),
-                                    const SizedBox(height: 8.0),
-                                  ],
-                                if (appearNote case Note(:final renoteId?)) ...[
-                                  DottedBorder(
-                                    color: colors.renote,
-                                    borderType: BorderType.RRect,
-                                    dashPattern: const [2, 4],
-                                    radius: const Radius.circular(8.0),
-                                    child: DefaultTextStyle.merge(
-                                      style: style.apply(
-                                        fontSizeFactor: 0.95,
-                                      ),
-                                      child: NoteSimpleWidget(
-                                        account: account,
-                                        noteId: renoteId,
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
-                                        showFooter: this.showFooter,
-                                        focusPostForm: focusPostForm,
-                                        note: this.note?.renote,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 4.0),
-                                ],
-                              ],
-                              if (isLong) ...[
-                                OutlinedButton(
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: colors.fg,
-                                    backgroundColor: colors.buttonBg,
-                                    textStyle: style
-                                        .apply(fontSizeFactor: 0.9)
-                                        .copyWith(fontWeight: FontWeight.bold),
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 6.0,
-                                      horizontal: 12.0,
-                                    ),
-                                    minimumSize:
-                                        const Size(double.infinity, 0.0),
-                                    side: BorderSide.none,
-                                    visualDensity: VisualDensity.standard,
-                                    tapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                  ),
-                                  onPressed: () =>
-                                      isCollapsed.value = !isCollapsed.value,
-                                  child: Text(
-                                    isCollapsed.value
-                                        ? t.misskey.showMore
-                                        : t.misskey.showLess,
-                                  ),
-                                ),
-                                const SizedBox(height: 4.0),
-                              ],
-                            ] else
-                              const SizedBox(height: 2.0),
-                            if (appearNote case Note(:final channel?)) ...[
-                              InkWell(
-                                onTap: () => context
-                                    .push('/$account/channels/${channel.id}'),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Icon(
-                                      Icons.tv,
-                                      color:
-                                          style.color?.withValues(alpha: 0.7),
-                                      size: style.lineHeight * 0.8,
-                                    ),
-                                    const SizedBox(width: 2.0),
-                                    Expanded(
-                                      child: Text(
-                                        channel.name,
-                                        style: style.apply(
-                                          color: style.color
-                                              ?.withValues(alpha: 0.7),
-                                          fontSizeFactor: 0.8,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 1,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 4.0),
-                            ],
-                            if (appearNote.reactionAcceptance !=
-                                    ReactionAcceptance.likeOnly &&
-                                showReactionsViewer &&
-                                appearNote.reactions.isNotEmpty) ...[
-                              ReactionsViewer(
-                                account: account,
-                                noteId: appearNote.id,
-                                showAllReactions: showAllReactions,
-                                note: this.note,
-                              ),
-                            ],
-                            if (showFooter)
-                              NoteFooter(
-                                account: account,
-                                noteId: noteId,
-                                focusPostForm: focusPostForm,
-                                note: this.note,
-                              ),
-                          ],
+                        child: _NoteContent(
+                          account: account,
+                          noteId: noteId,
+                          note: note,
+                          appearNote: appearNote,
+                          style: style,
+                          showFooter: showFooter,
+                          focusPostForm: focusPostForm,
                         ),
                       ),
                     ],
@@ -539,6 +301,253 @@ class NoteWidget extends HookConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _NoteContent extends HookConsumerWidget {
+  const _NoteContent({
+    required this.account,
+    required this.noteId,
+    required this.note,
+    required this.appearNote,
+    required this.style,
+    required this.showFooter,
+    required this.focusPostForm,
+  });
+
+  final Account account;
+  final String noteId;
+  final Note note;
+  final Note appearNote;
+  final TextStyle style;
+  final bool? showFooter;
+  final void Function()? focusPostForm;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final showReactionsViewer = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showNoteReactionsViewer),
+    );
+    final showFooter = this.showFooter ??
+        ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.showNoteFooter),
+        ) ??
+        false;
+    final alwaysExpandCw = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysExpandCw),
+    );
+    final showContent = useState(alwaysExpandCw);
+    final parsed = appearNote.text != null
+        ? ref.watch(parsedMfmProvider(appearNote.text!))
+        : null;
+    final renoteUrl = note.uri?.toString() ?? note.url?.toString();
+    final urls = useMemoized(
+      () => parsed != null
+          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
+          : null,
+      [parsed],
+    );
+    final isLong = appearNote.cw == null &&
+        !ref.watch(
+          generalSettingsNotifierProvider
+              .select((settings) => settings.alwaysExpandLongNote),
+        ) &&
+        ref.watch(noteIsLongProvider(account, appearNote.id));
+    final isCollapsed = useState(appearNote.cw == null && isLong);
+    final showTicker = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => switch (settings.instanceTicker) {
+          InstanceTicker.none => false,
+          InstanceTicker.remote =>
+            appearNote.user.instance != null && appearNote.user.host != null,
+          InstanceTicker.always => true,
+        },
+      ),
+    );
+    final showAllReactions = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysShowAllReactions),
+    );
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        NoteHeader(account: account, note: appearNote),
+        if (showTicker)
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: DefaultTextStyle.merge(
+              style: style.apply(fontSizeFactor: 0.9),
+              child: InstanceTickerWidget(
+                account: account,
+                instance: appearNote.user.instance,
+                host: appearNote.user.host,
+              ),
+            ),
+          ),
+        if (appearNote case Note(:final cw?)) ...[
+          if (cw.isNotEmpty)
+            Mfm(
+              account: account,
+              text: cw,
+              emojis: appearNote.emojis,
+              author: appearNote.user,
+              nyaize: true,
+            ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: CwButton(
+              note: appearNote,
+              onPressed: (value) => showContent.value = value,
+              isOpen: showContent.value,
+            ),
+          ),
+        ],
+        if (appearNote.cw == null || showContent.value) ...[
+          if (parsed != null || appearNote.replyId != null)
+            Mfm(
+              account: account,
+              leadingSpans: [
+                if (appearNote.replyId case final replyId?) ...[
+                  WidgetSpan(
+                    alignment: PlaceholderAlignment.middle,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(8.0),
+                      onTap: () => context.push('/$account/notes/$replyId'),
+                      child: Icon(Icons.reply, color: colors.accent),
+                    ),
+                  ),
+                  const WidgetSpan(child: SizedBox(width: 4.0)),
+                ],
+              ],
+              nodes: parsed,
+              emojis: appearNote.emojis,
+              author: appearNote.user,
+              nyaize: true,
+              maxLines: isCollapsed.value ? 10 : null,
+            ),
+          const SizedBox(height: 4.0),
+          if (!isCollapsed.value) ...[
+            if (appearNote.files.isNotEmpty) ...[
+              MediaList(
+                account: account,
+                files: appearNote.files,
+                user: appearNote.user,
+              ),
+              const SizedBox(height: 8.0),
+            ],
+            if (appearNote case Note(:final poll?)) ...[
+              PollWidget(
+                account: account,
+                noteId: appearNote.id,
+                poll: poll,
+              ),
+              const SizedBox(height: 4.0),
+            ],
+            if (urls != null && urls.isNotEmpty)
+              for (final url in urls) ...[
+                UrlPreview(account: account, link: url),
+                const SizedBox(height: 8.0),
+              ],
+            if (appearNote case Note(:final renoteId?)) ...[
+              DottedBorder(
+                color: colors.renote,
+                borderType: BorderType.RRect,
+                dashPattern: const [2, 4],
+                radius: const Radius.circular(8.0),
+                child: DefaultTextStyle.merge(
+                  style: style.apply(fontSizeFactor: 0.95),
+                  child: NoteSimpleWidget(
+                    account: account,
+                    noteId: renoteId,
+                    borderRadius: BorderRadius.circular(4.0),
+                    showFooter: this.showFooter,
+                    focusPostForm: focusPostForm,
+                    note: note.renote,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 4.0),
+            ],
+          ],
+          if (isLong) ...[
+            OutlinedButton(
+              style: OutlinedButton.styleFrom(
+                foregroundColor: colors.fg,
+                backgroundColor: colors.buttonBg,
+                textStyle: style
+                    .apply(fontSizeFactor: 0.9)
+                    .copyWith(fontWeight: FontWeight.bold),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 6.0,
+                  horizontal: 12.0,
+                ),
+                minimumSize: const Size(double.infinity, 0.0),
+                side: BorderSide.none,
+                visualDensity: VisualDensity.standard,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              onPressed: () => isCollapsed.value = !isCollapsed.value,
+              child: Text(
+                isCollapsed.value ? t.misskey.showMore : t.misskey.showLess,
+              ),
+            ),
+            const SizedBox(height: 4.0),
+          ],
+        ] else
+          const SizedBox(height: 2.0),
+        if (appearNote case Note(:final channel?)) ...[
+          InkWell(
+            onTap: () => context.push('/$account/channels/${channel.id}'),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.tv,
+                  color: style.color?.withValues(alpha: 0.7),
+                  size: style.lineHeight * 0.8,
+                ),
+                const SizedBox(width: 2.0),
+                Expanded(
+                  child: Text(
+                    channel.name,
+                    style: style.apply(
+                      color: style.color?.withValues(alpha: 0.7),
+                      fontSizeFactor: 0.8,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 4.0),
+        ],
+        if (appearNote.reactionAcceptance != ReactionAcceptance.likeOnly &&
+            showReactionsViewer &&
+            appearNote.reactions.isNotEmpty) ...[
+          ReactionsViewer(
+            account: account,
+            noteId: appearNote.id,
+            showAllReactions: showAllReactions,
+            note: note,
+          ),
+        ],
+        if (showFooter)
+          NoteFooter(
+            account: account,
+            noteId: noteId,
+            focusPostForm: focusPostForm,
+            note: note,
+          ),
+      ],
     );
   }
 }

@@ -5,7 +5,6 @@ import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/api/meta_notifier_provider.dart';
 import 'package:aria/provider/dio_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
-import 'package:aria/provider/misskey_colors_provider.dart';
 import 'package:aria/provider/muted_words_notifier_provider.dart';
 import 'package:aria/provider/notes_notifier_provider.dart';
 import 'package:aria/view/widget/emoji_picker.dart';
@@ -246,7 +245,7 @@ void main() {
               ),
             )
             .color,
-        container.read(misskeyColorsProvider(Brightness.light)).panel,
+        Theme.of(tester.element(find.byType(NoteWidget))).colorScheme.surface,
       );
     });
 
@@ -429,7 +428,7 @@ void main() {
               ),
             )
             .color,
-        container.read(misskeyColorsProvider(Brightness.light)).panel,
+        Theme.of(tester.element(find.byType(NoteWidget))).colorScheme.surface,
       );
     });
   });

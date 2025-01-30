@@ -115,44 +115,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
     final conversation = appearNote.replyId != null
         ? ref.watch(conversationNotesProvider(account, noteId))
         : null;
-    final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
     final isRenote = note.isRenote;
-    final showContent = useState(
-      ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.alwaysExpandCw),
-      ),
-    );
-    final parsed = appearNote.text != null
-        ? ref.watch(parsedMfmProvider(appearNote.text!))
-        : null;
-    final renoteUrl = note.uri?.toString() ?? note.url?.toString();
-    final urls = useMemoized(
-      () => parsed != null
-          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
-          : null,
-      [parsed],
-    );
-    final avatarScale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.avatarScale),
-    );
-    final showTicker = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => switch (settings.instanceTicker) {
-          InstanceTicker.none => false,
-          InstanceTicker.remote =>
-            appearNote.user.instance != null && appearNote.user.host != null,
-          InstanceTicker.always => true,
-        },
-      ),
-    );
-    final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysShowAllReactions),
-    );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
 
     return InkWell(
@@ -238,332 +201,379 @@ class NoteDetailedWidget extends HookConsumerWidget {
               note: appearNote,
               child: Padding(
                 padding: EdgeInsets.only(left: horizontalPadding - 4.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        UserAvatar(
-                          account: account,
-                          user: appearNote.user,
-                          size: style.lineHeight * avatarScale,
-                          onTap: () => context
-                              .push('/$account/users/${appearNote.userId}'),
-                        ),
-                        const SizedBox(width: 8.0),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: Wrap(
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.center,
-                                      children: [
-                                        DefaultTextStyle.merge(
-                                          style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          child: InkWell(
-                                            onTap: () => context.push(
-                                              '/$account/users/${appearNote.userId}',
-                                            ),
-                                            onLongPress: () => showUserSheet(
-                                              context: context,
-                                              account: account,
-                                              userId: appearNote.userId,
-                                            ),
-                                            child: UsernameWidget(
-                                              account: account,
-                                              user: appearNote.user,
-                                            ),
-                                          ),
-                                        ),
-                                        if (appearNote.user.isBot)
-                                          DefaultTextStyle.merge(
-                                            style: style.apply(
-                                              color: style.color
-                                                  ?.withValues(alpha: 0.8),
-                                              fontSizeFactor: 0.8,
-                                            ),
-                                            child: const BotBadge(),
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                                  if (note.updatedAt case final updatedAt?)
-                                    Tooltip(
-                                      message: '${t.misskey.edited}: '
-                                          '${absoluteTime(updatedAt)}'
-                                          '.${updatedAt.millisecond.toString().padLeft(3, '0')} '
-                                          '(${relativeTime(updatedAt)})',
-                                      child: const Icon(Icons.edit),
-                                    ),
-                                  if (appearNote.visibility !=
-                                      NoteVisibility.public)
-                                    NoteVisibilityIcon(
-                                      visibility: appearNote.visibility,
-                                    ),
-                                  if (appearNote.localOnly)
-                                    Tooltip(
-                                      message: t.misskey.visibility_
-                                          .disableFederation,
-                                      child: const Icon(OffIcons.rocket),
-                                    ),
-                                ],
-                              ),
-                              AcctWidget(
-                                account: account,
-                                user: appearNote.user,
-                              ),
-                              if (showTicker)
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 2.0),
-                                  child: DefaultTextStyle.merge(
-                                    style: style.apply(fontSizeFactor: 0.9),
-                                    child: InstanceTickerWidget(
-                                      account: account,
-                                      instance: appearNote.user.instance,
-                                      host: appearNote.user.host,
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8.0),
-                    if (appearNote case Note(:final cw?)) ...[
-                      if (cw.isNotEmpty)
-                        SelectionArea(
-                          child: Mfm(
-                            account: account,
-                            text: cw,
-                            emojis: appearNote.emojis,
-                            author: appearNote.user,
-                            nyaize: true,
-                          ),
-                        ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 2.0),
-                        child: CwButton(
-                          note: appearNote,
-                          onPressed: (value) => showContent.value = value,
-                          isOpen: showContent.value,
-                        ),
-                      ),
-                    ],
-                    if (appearNote.cw == null || showContent.value) ...[
-                      if (parsed != null ||
-                          appearNote.replyId != null ||
-                          appearNote.renoteId != null)
-                        SelectionArea(
-                          child: Mfm(
-                            account: account,
-                            leadingSpans: [
-                              if (note.replyId case final replyId?)
-                                WidgetSpan(
-                                  alignment: PlaceholderAlignment.middle,
-                                  child: InkWell(
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    onTap: () => context
-                                        .push('/$account/notes/$replyId'),
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.only(right: 4.0),
-                                      child: Icon(
-                                        Icons.reply,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                            nodes: parsed,
-                            trailingSpans: [
-                              if (appearNote.renoteId case final renoteId?)
-                                WidgetSpan(
-                                  alignment: PlaceholderAlignment.middle,
-                                  child: InkWell(
-                                    onTap: () => context
-                                        .push('/$account/notes/$renoteId'),
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 4.0),
-                                      child: Text(
-                                        'RN: ...',
-                                        style: TextStyle(
-                                          color: colors.renote,
-                                          fontStyle: FontStyle.italic,
-                                        ),
-                                        textScaler: TextScaler.noScaling,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                            ],
-                            emojis: appearNote.emojis,
-                            author: appearNote.user,
-                            nyaize: true,
-                          ),
-                        ),
-                      if (appearNote.files.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: MediaList(
-                            account: account,
-                            files: appearNote.files,
-                            user: note.user,
-                          ),
-                        ),
-                      if (appearNote case Note(:final poll?))
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4.0),
-                          child: PollWidget(
-                            account: account,
-                            noteId: appearNote.id,
-                            poll: poll,
-                          ),
-                        ),
-                      if (urls != null)
-                        ...urls.map(
-                          (url) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 4.0),
-                            child: UrlPreview(account: account, link: url),
-                          ),
-                        ),
-                      if (appearNote case Note(:final renoteId?)) ...[
-                        const SizedBox(height: 4.0),
-                        DottedBorder(
-                          color: colors.renote,
-                          borderType: BorderType.RRect,
-                          dashPattern: const [2, 4],
-                          radius: const Radius.circular(8.0),
-                          child: DefaultTextStyle.merge(
-                            style: style.apply(fontSizeFactor: 0.95),
-                            child: NoteSimpleWidget(
-                              account: account,
-                              noteId: renoteId,
-                              borderRadius: BorderRadius.circular(4.0),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ],
-                    if (appearNote case Note(:final channel?)) ...[
-                      const SizedBox(height: 4.0),
-                      InkWell(
-                        onTap: () =>
-                            context.push('/$account/channels/${channel.id}'),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.tv,
-                              color: style.color?.withValues(alpha: 0.7),
-                              size: style.lineHeight * 0.8,
-                            ),
-                            const SizedBox(width: 2.0),
-                            Expanded(
-                              child: Text(
-                                channel.name,
-                                style: style.apply(
-                                  color: style.color?.withValues(alpha: 0.7),
-                                  fontSizeFactor: 0.8,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4.0),
-                      child: DefaultTextStyle.merge(
-                        style: style.apply(
-                          color: style.color?.withValues(alpha: 0.7),
-                          fontSizeFactor: 0.9,
-                        ),
-                        child: TimeWidget(
-                          time: appearNote.createdAt,
-                          detailed: true,
-                        ),
-                      ),
-                    ),
-                    if (appearNote.reactionAcceptance !=
-                        ReactionAcceptance.likeOnly)
-                      ReactionsViewer(
-                        account: account,
-                        noteId: appearNote.id,
-                        showAllReactions: showAllReactions,
-                      ),
-                    NoteFooter(
-                      account: account,
-                      noteId: noteId,
-                      disableHeader: true,
-                    ),
-                    if (children
-                        case AsyncValue(
-                          valueOrNull: PaginationState(items: final notes),
-                        ) when notes.isNotEmpty)
-                      Container(
-                        margin: const EdgeInsets.only(left: 8.0, top: 8.0),
-                        decoration: BoxDecoration(
-                          border: Border(
-                            left: BorderSide(
-                              color:
-                                  Theme.of(context).colorScheme.outlineVariant,
-                              width: 2.0,
-                            ),
-                          ),
-                        ),
-                        child: ListView.separated(
-                          itemBuilder: (context, index) => index < notes.length
-                              ? ChannelColorBarBox(
-                                  note: notes[index],
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: NoteSubWidget(
-                                      account: account,
-                                      noteId: notes[index].id,
-                                      showReplies: true,
-                                    ),
-                                  ),
-                                )
-                              : PaginationBottomWidget(
-                                  paginationState: children,
-                                  loadMore: () => ref
-                                      .read(
-                                        childrenNotesNotifierProvider(
-                                          account,
-                                          noteId,
-                                        ).notifier,
-                                      )
-                                      .loadMore(skipError: true),
-                                ),
-                          separatorBuilder: (context, index) =>
-                              index < notes.length - 1
-                                  ? const Divider()
-                                  : const SizedBox.shrink(),
-                          itemCount: notes.length + 1,
-                          physics: const NeverScrollableScrollPhysics(),
-                          shrinkWrap: true,
-                        ),
-                      ),
-                  ],
+                child: _NoteDetailedContent(
+                  account: account,
+                  noteId: noteId,
+                  note: note,
+                  appearNote: appearNote,
+                  style: style,
                 ),
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class _NoteDetailedContent extends HookConsumerWidget {
+  const _NoteDetailedContent({
+    required this.account,
+    required this.noteId,
+    required this.note,
+    required this.appearNote,
+    required this.style,
+  });
+
+  final Account account;
+  final String noteId;
+  final Note note;
+  final Note appearNote;
+  final TextStyle style;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
+    final showContent = useState(
+      ref.watch(
+        generalSettingsNotifierProvider
+            .select((settings) => settings.alwaysExpandCw),
+      ),
+    );
+    final parsed = appearNote.text != null
+        ? ref.watch(parsedMfmProvider(appearNote.text!))
+        : null;
+    final renoteUrl = note.uri?.toString() ?? note.url?.toString();
+    final urls = useMemoized(
+      () => parsed != null
+          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
+          : null,
+      [parsed],
+    );
+    final avatarScale = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.avatarScale),
+    );
+    final showTicker = ref.watch(
+      generalSettingsNotifierProvider.select(
+        (settings) => switch (settings.instanceTicker) {
+          InstanceTicker.none => false,
+          InstanceTicker.remote =>
+            appearNote.user.instance != null && appearNote.user.host != null,
+          InstanceTicker.always => true,
+        },
+      ),
+    );
+    final showAllReactions = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.alwaysShowAllReactions),
+    );
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            UserAvatar(
+              account: account,
+              user: appearNote.user,
+              size: style.lineHeight * avatarScale,
+              onTap: () => context.push('/$account/users/${appearNote.userId}'),
+            ),
+            const SizedBox(width: 8.0),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            DefaultTextStyle.merge(
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                              child: InkWell(
+                                onTap: () => context.push(
+                                  '/$account/users/${appearNote.userId}',
+                                ),
+                                onLongPress: () => showUserSheet(
+                                  context: context,
+                                  account: account,
+                                  userId: appearNote.userId,
+                                ),
+                                child: UsernameWidget(
+                                  account: account,
+                                  user: appearNote.user,
+                                ),
+                              ),
+                            ),
+                            if (appearNote.user.isBot)
+                              DefaultTextStyle.merge(
+                                style: style.apply(
+                                  color: style.color?.withValues(alpha: 0.8),
+                                  fontSizeFactor: 0.8,
+                                ),
+                                child: const BotBadge(),
+                              ),
+                          ],
+                        ),
+                      ),
+                      if (appearNote.updatedAt case final updatedAt?)
+                        Tooltip(
+                          message: '${t.misskey.edited}: '
+                              '${absoluteTime(updatedAt)}'
+                              '.${updatedAt.millisecond.toString().padLeft(3, '0')} '
+                              '(${relativeTime(updatedAt)})',
+                          child: const Icon(Icons.edit),
+                        ),
+                      if (appearNote.visibility != NoteVisibility.public)
+                        NoteVisibilityIcon(
+                          visibility: appearNote.visibility,
+                        ),
+                      if (appearNote.localOnly)
+                        Tooltip(
+                          message: t.misskey.visibility_.disableFederation,
+                          child: const Icon(OffIcons.rocket),
+                        ),
+                    ],
+                  ),
+                  AcctWidget(account: account, user: appearNote.user),
+                  if (showTicker)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 2.0),
+                      child: DefaultTextStyle.merge(
+                        style: style.apply(fontSizeFactor: 0.9),
+                        child: InstanceTickerWidget(
+                          account: account,
+                          instance: appearNote.user.instance,
+                          host: appearNote.user.host,
+                        ),
+                      ),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8.0),
+        if (appearNote case Note(:final cw?)) ...[
+          if (cw.isNotEmpty)
+            SelectionArea(
+              child: Mfm(
+                account: account,
+                text: cw,
+                emojis: appearNote.emojis,
+                author: appearNote.user,
+                nyaize: true,
+              ),
+            ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: CwButton(
+              note: appearNote,
+              onPressed: (value) => showContent.value = value,
+              isOpen: showContent.value,
+            ),
+          ),
+        ],
+        if (appearNote.cw == null || showContent.value) ...[
+          if (parsed != null ||
+              appearNote.replyId != null ||
+              appearNote.renoteId != null)
+            SelectionArea(
+              child: Mfm(
+                account: account,
+                leadingSpans: [
+                  if (appearNote.replyId case final replyId?)
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(8.0),
+                        onTap: () => context.push('/$account/notes/$replyId'),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 4.0),
+                          child: Icon(
+                            Icons.reply,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+                nodes: parsed,
+                trailingSpans: [
+                  if (appearNote.renoteId case final renoteId?)
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: InkWell(
+                        onTap: () => context.push('/$account/notes/$renoteId'),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 4.0),
+                          child: Text(
+                            'RN: ...',
+                            style: TextStyle(
+                              color: colors.renote,
+                              fontStyle: FontStyle.italic,
+                            ),
+                            textScaler: TextScaler.noScaling,
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+                emojis: appearNote.emojis,
+                author: appearNote.user,
+                nyaize: true,
+              ),
+            ),
+          if (appearNote.files.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: MediaList(
+                account: account,
+                files: appearNote.files,
+                user: appearNote.user,
+              ),
+            ),
+          if (appearNote case Note(:final poll?))
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4.0),
+              child: PollWidget(
+                account: account,
+                noteId: appearNote.id,
+                poll: poll,
+              ),
+            ),
+          if (urls != null)
+            ...urls.map(
+              (url) => Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: UrlPreview(account: account, link: url),
+              ),
+            ),
+          if (appearNote case Note(:final renoteId?)) ...[
+            const SizedBox(height: 4.0),
+            DottedBorder(
+              color: colors.renote,
+              borderType: BorderType.RRect,
+              dashPattern: const [2, 4],
+              radius: const Radius.circular(8.0),
+              child: DefaultTextStyle.merge(
+                style: style.apply(fontSizeFactor: 0.95),
+                child: NoteSimpleWidget(
+                  account: account,
+                  noteId: renoteId,
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+              ),
+            ),
+          ],
+        ],
+        if (appearNote case Note(:final channel?)) ...[
+          const SizedBox(height: 4.0),
+          InkWell(
+            onTap: () => context.push('/$account/channels/${channel.id}'),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.tv,
+                  color: style.color?.withValues(alpha: 0.7),
+                  size: style.lineHeight * 0.8,
+                ),
+                const SizedBox(width: 2.0),
+                Expanded(
+                  child: Text(
+                    channel.name,
+                    style: style.apply(
+                      color: style.color?.withValues(alpha: 0.7),
+                      fontSizeFactor: 0.8,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: DefaultTextStyle.merge(
+            style: style.apply(
+              color: style.color?.withValues(alpha: 0.7),
+              fontSizeFactor: 0.9,
+            ),
+            child: TimeWidget(
+              time: appearNote.createdAt,
+              detailed: true,
+            ),
+          ),
+        ),
+        if (appearNote.reactionAcceptance != ReactionAcceptance.likeOnly)
+          ReactionsViewer(
+            account: account,
+            noteId: appearNote.id,
+            showAllReactions: showAllReactions,
+          ),
+        NoteFooter(
+          account: account,
+          noteId: noteId,
+          disableHeader: true,
+        ),
+        if (children
+            case AsyncValue(
+              valueOrNull: PaginationState(items: final notes),
+            ) when notes.isNotEmpty)
+          Container(
+            margin: const EdgeInsets.only(left: 8.0, top: 8.0),
+            decoration: BoxDecoration(
+              border: Border(
+                left: BorderSide(
+                  color: Theme.of(context).colorScheme.outlineVariant,
+                  width: 2.0,
+                ),
+              ),
+            ),
+            child: ListView.separated(
+              itemBuilder: (context, index) => index < notes.length
+                  ? ChannelColorBarBox(
+                      note: notes[index],
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: NoteSubWidget(
+                          account: account,
+                          noteId: notes[index].id,
+                          showReplies: true,
+                        ),
+                      ),
+                    )
+                  : PaginationBottomWidget(
+                      paginationState: children,
+                      loadMore: () => ref
+                          .read(
+                            childrenNotesNotifierProvider(
+                              account,
+                              noteId,
+                            ).notifier,
+                          )
+                          .loadMore(skipError: true),
+                    ),
+              separatorBuilder: (context, index) => index < notes.length - 1
+                  ? const Divider()
+                  : const SizedBox.shrink(),
+              itemCount: notes.length + 1,
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+            ),
+          ),
+      ],
     );
   }
 }
