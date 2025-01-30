@@ -7,9 +7,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 
-import '../../../test_util/create_overrides.dart';
-import '../../../test_util/dummy_me_detailed.dart';
-import '../../../test_util/dummy_user_detailed_not_me.dart';
+import '../../test_util/create_overrides.dart';
+import '../../test_util/dummy_me_detailed.dart';
+import '../../test_util/dummy_user_detailed_not_me.dart';
 
 Future<ProviderContainer> setupWidget(
   WidgetTester tester, {

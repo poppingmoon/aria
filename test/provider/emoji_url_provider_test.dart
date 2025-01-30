@@ -3,7 +3,7 @@ import 'package:aria/provider/emoji_url_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
-import '../../test_util/create_container.dart';
+import '../test_util/create_container.dart';
 
 void main() {
   test('basic', () async {

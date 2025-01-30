@@ -40,4 +40,7 @@ class FakeCacheManager extends CacheManager with ImageCacheManager {
   }) async {
     return MemoryFileSystem().file(url);
   }
+
+  @override
+  Future<void> dispose() async {}
 }
