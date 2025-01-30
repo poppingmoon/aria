@@ -59,7 +59,7 @@ class UserInfo extends ConsumerWidget {
                         Expanded(
                           child: ListTile(
                             title: Align(
-                              alignment: Alignment.centerLeft,
+                              alignment: AlignmentDirectional.centerStart,
                               child: UsernameWidget(
                                 account: account,
                                 user: user,

@@ -63,7 +63,7 @@ class EmojiSheet extends ConsumerWidget {
         if (emoji.startsWith(':'))
           ListTile(
             title: Align(
-              alignment: Alignment.centerLeft,
+              alignment: AlignmentDirectional.centerStart,
               child: CustomEmoji(
                 account: account,
                 emoji: emoji,

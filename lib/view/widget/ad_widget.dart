@@ -107,7 +107,7 @@ class AdWidget extends HookConsumerWidget {
             ),
           ),
           Align(
-            alignment: Alignment.topRight,
+            alignment: AlignmentDirectional.topEnd,
             child: IconButton(
               style: IconButton.styleFrom(
                 backgroundColor:

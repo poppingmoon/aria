@@ -89,7 +89,7 @@ class PostConfirmationDialog extends ConsumerWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Align(
-                alignment: Alignment.centerLeft,
+                alignment: AlignmentDirectional.centerStart,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
@@ -116,7 +116,7 @@ class PostConfirmationDialog extends ConsumerWidget {
                   backgroundColor: Colors.transparent,
                 ),
               Align(
-                alignment: Alignment.centerRight,
+                alignment: AlignmentDirectional.centerEnd,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

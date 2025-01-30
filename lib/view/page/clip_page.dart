@@ -223,7 +223,7 @@ class ClipPage extends HookConsumerWidget {
                           const SizedBox(width: 4.0),
                           Expanded(
                             child: Align(
-                              alignment: Alignment.centerLeft,
+                              alignment: AlignmentDirectional.centerStart,
                               child: InkWell(
                                 onTap: () =>
                                     context.push('/$account/users/${user.id}'),

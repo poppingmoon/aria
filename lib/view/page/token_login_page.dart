@@ -109,7 +109,7 @@ class TokenLoginPage extends HookConsumerWidget {
                             onSubmitted: (_) => tokenFocusNode.requestFocus(),
                           ),
                           Align(
-                            alignment: Alignment.centerLeft,
+                            alignment: AlignmentDirectional.centerStart,
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 minimumSize: Size.zero,

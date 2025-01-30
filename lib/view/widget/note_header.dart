@@ -39,7 +39,7 @@ class NoteHeader extends HookConsumerWidget {
       children: [
         Expanded(
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: InkWell(
               onTap: note.userId.isNotEmpty
                   ? () => context.push('/$account/users/${note.userId}')

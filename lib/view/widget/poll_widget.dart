@@ -90,7 +90,7 @@ class PollWidget extends HookConsumerWidget {
                       }
                     : null,
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: DecoratedBox(

@@ -172,7 +172,7 @@ class PlayWidget extends HookConsumerWidget {
               child: Column(
                 children: [
                   Align(
-                    alignment: Alignment.topRight,
+                    alignment: AlignmentDirectional.topEnd,
                     child: Padding(
                       padding: const EdgeInsets.only(top: 12.0, right: 12.0),
                       child: IconButton(

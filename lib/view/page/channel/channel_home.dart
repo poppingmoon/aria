@@ -106,7 +106,7 @@ class ChannelHome extends ConsumerWidget {
                               ),
                       ),
                       Align(
-                        alignment: Alignment.topRight,
+                        alignment: AlignmentDirectional.topEnd,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: channel.isFavorited ?? false

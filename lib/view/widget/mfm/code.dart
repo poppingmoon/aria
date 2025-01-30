@@ -64,7 +64,7 @@ class Code extends StatelessWidget {
         ),
         if (!inline)
           Align(
-            alignment: Alignment.topRight,
+            alignment: AlignmentDirectional.topEnd,
             child: IconButton(
               tooltip: t.misskey.copy,
               style: IconButton.styleFrom(

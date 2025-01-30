@@ -299,7 +299,7 @@ class EmojiPicker extends HookConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Wrap(
                       spacing: 4.0,
                       runSpacing: 4.0,
@@ -339,7 +339,7 @@ class EmojiPicker extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Wrap(
                     spacing: 4.0,
                     runSpacing: 4.0,
