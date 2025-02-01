@@ -1,11 +1,13 @@
+import 'dart:async';
+
 import 'package:aria/i18n/strings.g.dart';
 import 'package:aria/model/account.dart';
 import 'package:aria/provider/account_settings_notifier_provider.dart';
 import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/api/meta_notifier_provider.dart';
-import 'package:aria/provider/cache_manager_provider.dart';
 import 'package:aria/provider/dio_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
+import 'package:aria/provider/misskey_colors_provider.dart';
 import 'package:aria/provider/note_provider.dart';
 import 'package:aria/provider/notes_notifier_provider.dart';
 import 'package:aria/provider/post_notifier_provider.dart';
@@ -17,46 +19,52 @@ import 'package:aria/view/widget/note_sheet.dart';
 import 'package:aria/view/widget/reaction_users_sheet.dart';
 import 'package:aria/view/widget/renote_sheet.dart';
 import 'package:aria/view/widget/renote_users_sheet.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:misskey_dart/misskey_dart.dart';
+import 'package:url_launcher_platform_interface/url_launcher_platform_interface.dart';
 
 import '../../test_util/create_overrides.dart';
 import '../../test_util/dummy_me_detailed.dart';
 import '../../test_util/dummy_note.dart';
+import '../../test_util/fake_url_launcher.dart';
+import '../../test_util/override_default_target_platform.dart';
 
 Future<ProviderContainer> setupWidget(
   WidgetTester tester, {
   required Account account,
   required String noteId,
   void Function()? focusPostForm,
+  Note? note,
 }) async {
   await tester.pumpWidget(
     ProviderScope(
       overrides: createOverrides(
         account,
-        i: dummyMeDetailed.copyWith(
-          id: 'testuser',
-          policies: const UserPolicies(canUseTranslator: true),
-        ),
-        meta: const MetaResponse(translatorAvailable: true),
+        i: dummyMeDetailed.copyWith(id: 'testuser'),
+        meta: const MetaResponse(),
       ),
       child: MaterialApp.router(
         routerConfig: GoRouter(
           routes: [
             GoRoute(
               path: '/',
-              builder: (_, __) => NoteFooter(
-                account: account,
-                noteId: noteId,
-                focusPostForm: focusPostForm,
+              builder: (_, __) => Scaffold(
+                body: NoteFooter(
+                  account: account,
+                  noteId: noteId,
+                  focusPostForm: focusPostForm,
+                  note: note,
+                ),
               ),
             ),
           ],
         ),
+        themeMode: ThemeMode.light,
       ),
     ),
   );
@@ -68,7 +76,6 @@ Future<ProviderContainer> setupWidget(
   await tester.runAsync(
     () => container.read(metaNotifierProvider(account.host).future),
   );
-  addTearDown(container.read(cacheManagerProvider).dispose);
   return container;
 }
 
@@ -168,6 +175,23 @@ void main() {
         noteId: note.id,
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.reply));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('/$account/post'), findsNothing);
+      expect(container.read(postNotifierProvider(account)).replyId, isNull);
+    });
+
+    testWidgets('should not open a post page on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.reply));
       await tester.pumpAndSettle();
@@ -337,7 +361,24 @@ void main() {
       expect(find.byType(RenoteSheet), findsNothing);
     });
 
+    testWidgets('should not show a renote sheet on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.repeat_rounded));
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteSheet), findsNothing);
+    });
+
     testWidgets('should show a renote sheet on tap', (tester) async {
+      overrideDefaultTargetPlatform();
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(id: 'test');
       final container = await setupWidget(
@@ -346,10 +387,31 @@ void main() {
         noteId: note.id,
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'notes/create',
+        (server) => server.reply(200, {'createdNote': dummyNote}),
+        data: {
+          'renoteId': 'test',
+          'visibility': 'public',
+          'localOnly': false,
+        },
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.repeat_rounded));
       await tester.pumpAndSettle();
       expect(find.byType(RenoteSheet), findsOne);
+      await tester.tap(find.text(t.misskey.renote));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(t.misskey.ok));
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteSheet), findsNothing);
+      expect(
+        tester.widget<Icon>(find.byIcon(Icons.repeat_rounded)).color,
+        container.read(misskeyColorsProvider(Brightness.light)).renote,
+      );
+      await tester.pumpAndSettle(const Duration(seconds: 10));
+      debugDefaultTargetPlatformOverride = null;
     });
 
     testWidgets('should show a block icon for a private note', (tester) async {
@@ -396,6 +458,48 @@ void main() {
     testWidgets('should show a modal bottom sheet on tap if already renoted',
         (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
+      final renote = dummyNote.copyWith(
+        id: 'renote',
+        renoteCount: 123,
+      );
+      final note = dummyNote.copyWith(
+        id: 'test',
+        userId: 'testuser',
+        renoteId: renote.id,
+        renote: renote,
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'notes/delete',
+        (server) => server.reply(200, null),
+        data: {'noteId': 'test'},
+      );
+      final colors = container.read(misskeyColorsProvider(Brightness.light));
+      await tester.pumpAndSettle();
+      expect(
+        tester.widget<Icon>(find.byIcon(Icons.repeat_rounded)).color,
+        colors.renote,
+      );
+      expect(
+        tester.widget<Text>(find.text('123')).style?.color,
+        colors.renote.withValues(alpha: 0.6),
+      );
+      await tester.tap(find.byIcon(Icons.repeat_rounded));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.delete));
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.repeat_rounded), findsNothing);
+    });
+
+    testWidgets('should show a renote sheet on tap if already renoted',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
       final renote = dummyNote.copyWith(id: 'renote');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -409,10 +513,22 @@ void main() {
         noteId: note.id,
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'notes/create',
+        (server) => server.reply(200, {'createdNote': dummyNote}),
+        data: {
+          'renoteId': 'test',
+          'visibility': 'public',
+          'localOnly': false,
+        },
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.repeat_rounded));
       await tester.pumpAndSettle();
-      expect(find.byIcon(Icons.delete), findsOne);
+      await tester.tap(find.text(t.misskey.renote));
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteSheet), findsOne);
     });
 
     testWidgets('should open a post page on tap if a quote button is hidden',
@@ -533,6 +649,22 @@ void main() {
       expect(find.byType(RenoteUsersSheet), findsNothing);
     });
 
+    testWidgets('should not show renoted users on long press for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld');
+      final note = dummyNote.copyWith(renoteCount: 1);
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      await tester.longPress(find.byIcon(Icons.repeat_rounded));
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteUsersSheet), findsNothing);
+    });
+
     testWidgets('should show renoted users on long press if renoted',
         (tester) async {
       const account = Account(host: 'misskey.tld');
@@ -606,7 +738,24 @@ void main() {
       expect(container.read(postNotifierProvider(account)).renoteId, isNull);
     });
 
-    testWidgets('should show nothing on tap a quote button', (tester) async {
+    testWidgets('should not open a post page on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.format_quote_outlined));
+      await tester.pumpAndSettle();
+      expect(find.textContaining('/$account/post'), findsNothing);
+      expect(container.read(postNotifierProvider(account)).renoteId, isNull);
+    });
+
+    testWidgets('should quote a note on tap', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(id: 'test');
       final container = await setupWidget(
@@ -744,6 +893,26 @@ void main() {
         noteId: note.id,
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowLikeButtonInNoteFooter(true);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.favorite_border));
+      await tester.pumpAndSettle();
+      expect(find.byType(ReactionConfirmationDialog), findsNothing);
+    });
+
+    testWidgets(
+        'should not show a reaction confirmation on tap for a dummy note if enabled',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
       await container
           .read(generalSettingsNotifierProvider.notifier)
           .setShowLikeButtonInNoteFooter(true);
@@ -983,6 +1152,22 @@ void main() {
       expect(find.byType(EmojiPicker), findsNothing);
     });
 
+    testWidgets('should not show an emoji picker on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pumpAndSettle();
+      expect(find.byType(EmojiPicker), findsNothing);
+    });
+
     testWidgets('should show an emoji picker on tap', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(id: 'test');
@@ -996,6 +1181,52 @@ void main() {
       await tester.tap(find.byIcon(Icons.add));
       await tester.pumpAndSettle();
       expect(find.byType(EmojiPicker), findsOne);
+    });
+
+    testWidgets('should react to a note', (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(id: 'test');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(accountSettingsNotifierProvider(account).notifier)
+          .setPinnedEmojisForReaction([':test:']);
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'notes/reactions/create',
+        (server) => server.reply(200, null),
+        data: {
+          'noteId': 'test',
+          'reaction': ':test:',
+        },
+      );
+      dioAdapter.onPost(
+        'notes/show',
+        (server) => server.reply(
+          200,
+          note.copyWith(
+            reactions: {':test:': 1},
+            myReaction: ':test:',
+          ),
+        ),
+        data: {'noteId': 'test'},
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pumpAndSettle();
+      tester.element(find.byType(EmojiPicker)).pop(':test:');
+      await tester.pumpAndSettle();
+      await tester.tap(find.text(t.misskey.ok));
+      await tester.pumpAndSettle();
+      expect(
+        container.read(noteProvider(account, 'test'))!.myReaction,
+        ':test:',
+      );
+      await tester.pumpAndSettle(const Duration(seconds: 10));
     });
 
     testWidgets('should react to a renoted note', (tester) async {
@@ -1125,12 +1356,29 @@ void main() {
       expect(find.byType(ReactionUsersSheet), findsNothing);
     });
 
+    testWidgets('should not show reacted users on long press for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(reactionCount: 1);
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      await tester.longPress(find.byIcon(Icons.add));
+      await tester.pumpAndSettle();
+      expect(find.byType(ReactionUsersSheet), findsNothing);
+    });
+
     testWidgets('should show reacted users on long press if reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
         id: 'test',
-        reactionCount: 1,
+        reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
+        reactionCount: 6,
       );
       final container = await setupWidget(
         tester,
@@ -1142,6 +1390,13 @@ void main() {
       await tester.longPress(find.byIcon(Icons.add));
       await tester.pumpAndSettle();
       expect(find.byType(ReactionUsersSheet), findsOne);
+      expect(
+        tester
+            .widget<ReactionUsersSheet>(find.byType(ReactionUsersSheet))
+            .initialReaction,
+        ':emoji2:',
+      );
+      await tester.pumpAndSettle(const Duration(seconds: 10));
     });
   });
 
@@ -1242,6 +1497,23 @@ void main() {
       await tester.pumpAndSettle();
     });
 
+    testWidgets('should not show a confirmation on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(myReaction: '❤');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: note,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.remove));
+      await tester.pumpAndSettle();
+      expect(find.text(t.misskey.cancelReactionConfirm), findsNothing);
+    });
+
     testWidgets('should show a confirmation on tap', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
@@ -1320,9 +1592,6 @@ void main() {
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
       await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setConfirmBeforeReact(false);
-      await container
           .read(accountSettingsNotifierProvider(account).notifier)
           .setPinnedEmojisForReaction([':test:']);
       final dioAdapter = DioAdapter(dio: container.read(dioProvider));
@@ -1348,13 +1617,33 @@ void main() {
       expect(container.read(noteProvider(account, 'renote'))!.myReaction, '❤');
     });
 
+    testWidgets('should not show reacted users on long press for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(
+        reactionCount: 1,
+        myReaction: ':emoji:',
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      await tester.longPress(find.byIcon(Icons.remove));
+      await tester.pumpAndSettle();
+      expect(find.byType(ReactionUsersSheet), findsNothing);
+    });
+
     testWidgets('should show reacted users on long press if reacted',
         (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
         id: 'test',
-        reactionCount: 1,
-        myReaction: '❤',
+        reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
+        reactionCount: 6,
+        myReaction: ':emoji1:',
       );
       final container = await setupWidget(
         tester,
@@ -1366,6 +1655,12 @@ void main() {
       await tester.longPress(find.byIcon(Icons.remove));
       await tester.pumpAndSettle();
       expect(find.byType(ReactionUsersSheet), findsOne);
+      expect(
+        tester
+            .widget<ReactionUsersSheet>(find.byType(ReactionUsersSheet))
+            .initialReaction,
+        ':emoji2:',
+      );
     });
   });
 
@@ -1394,6 +1689,25 @@ void main() {
         noteId: note.id,
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowClipButtonInNoteFooter(true);
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.attach_file));
+      await tester.pumpAndSettle();
+      expect(find.byType(ClipDialog), findsNothing);
+    });
+
+    testWidgets('should not show a clip dialog on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
       await container
           .read(generalSettingsNotifierProvider.notifier)
           .setShowClipButtonInNoteFooter(true);
@@ -1504,6 +1818,122 @@ void main() {
       await tester.pumpAndSettle();
     });
 
+    testWidgets('should not translate a note on tap for a dummy note',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: '',
+        note: dummyNote,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(dummyNote);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowTranslateButtonInNoteFooter(true);
+      container.invalidate(iNotifierProvider(account));
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'i',
+        (server) => server.reply(
+          200,
+          dummyMeDetailed.copyWith(
+            id: 'testuser',
+            policies: const UserPolicies(canUseTranslator: true),
+          ),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'meta',
+        (server) => server.reply(
+          200,
+          const MetaResponse(translatorAvailable: true),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'notes/translate',
+        (server) => server.reply(
+          200,
+          {'sourceLang': 'lang', 'text': 'translated note text'},
+        ),
+        data: {
+          'noteId': 'test',
+          'targetLang':
+              Localizations.localeOf(tester.element(find.byType(NoteFooter)))
+                  .toLanguageTag(),
+        },
+      );
+      await tester
+          .runAsync(() => container.read(iNotifierProvider(account).future));
+      await tester.runAsync(
+        () => container.read(metaNotifierProvider(account.host).future),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.translate));
+      await tester.pumpAndSettle();
+      expect(find.text('translated note text'), findsNothing);
+    });
+
+    testWidgets('should translate a note', (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(id: 'test');
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowTranslateButtonInNoteFooter(true);
+      container.invalidate(iNotifierProvider(account));
+      container.invalidate(metaNotifierProvider(account.host));
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'i',
+        (server) => server.reply(
+          200,
+          dummyMeDetailed.copyWith(
+            id: 'testuser',
+            policies: const UserPolicies(canUseTranslator: true),
+          ),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'meta',
+        (server) => server.reply(
+          200,
+          const MetaResponse(translatorAvailable: true),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'notes/translate',
+        (server) => server.reply(
+          200,
+          {'sourceLang': 'lang', 'text': 'translated note text'},
+        ),
+        data: {
+          'noteId': 'test',
+          'targetLang':
+              Localizations.localeOf(tester.element(find.byType(NoteFooter)))
+                  .toLanguageTag(),
+        },
+      );
+      await tester
+          .runAsync(() => container.read(iNotifierProvider(account).future));
+      await tester.runAsync(
+        () => container.read(metaNotifierProvider(account.host).future),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.translate));
+      await tester.pumpAndSettle();
+      expect(find.text('translated note text'), findsOne);
+    });
+
     testWidgets('should translate a renoted note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final renote = dummyNote.copyWith(id: 'renote');
@@ -1521,12 +1951,33 @@ void main() {
       await container
           .read(generalSettingsNotifierProvider.notifier)
           .setShowTranslateButtonInNoteFooter(true);
+      container.invalidate(iNotifierProvider(account));
+      container.invalidate(metaNotifierProvider(account.host));
       final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'i',
+        (server) => server.reply(
+          200,
+          dummyMeDetailed.copyWith(
+            id: 'testuser',
+            policies: const UserPolicies(canUseTranslator: true),
+          ),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'meta',
+        (server) => server.reply(
+          200,
+          const MetaResponse(translatorAvailable: true),
+        ),
+        data: <String, dynamic>{},
+      );
       dioAdapter.onPost(
         'notes/translate',
         (server) => server.reply(
           200,
-          {'sourceLang': 'lang', 'text': 'test'},
+          {'sourceLang': 'lang', 'text': 'translated renote text'},
         ),
         data: {
           'noteId': 'renote',
@@ -1535,10 +1986,15 @@ void main() {
                   .toLanguageTag(),
         },
       );
+      await tester
+          .runAsync(() => container.read(iNotifierProvider(account).future));
+      await tester.runAsync(
+        () => container.read(metaNotifierProvider(account.host).future),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.translate));
       await tester.pumpAndSettle();
-      expect(find.text('test'), findsOne);
+      expect(find.text('translated renote text'), findsOne);
     });
 
     testWidgets('should translate a quote note', (tester) async {
@@ -1559,12 +2015,33 @@ void main() {
       await container
           .read(generalSettingsNotifierProvider.notifier)
           .setShowTranslateButtonInNoteFooter(true);
+      container.invalidate(iNotifierProvider(account));
+      container.invalidate(metaNotifierProvider(account.host));
       final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'i',
+        (server) => server.reply(
+          200,
+          dummyMeDetailed.copyWith(
+            id: 'testuser',
+            policies: const UserPolicies(canUseTranslator: true),
+          ),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'meta',
+        (server) => server.reply(
+          200,
+          const MetaResponse(translatorAvailable: true),
+        ),
+        data: <String, dynamic>{},
+      );
       dioAdapter.onPost(
         'notes/translate',
         (server) => server.reply(
           200,
-          {'sourceLang': 'lang', 'text': 'test'},
+          {'sourceLang': 'lang', 'text': 'translated quote text'},
         ),
         data: {
           'noteId': 'test',
@@ -1573,10 +2050,111 @@ void main() {
                   .toLanguageTag(),
         },
       );
+      await tester
+          .runAsync(() => container.read(iNotifierProvider(account).future));
+      await tester.runAsync(
+        () => container.read(metaNotifierProvider(account.host).future),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byIcon(Icons.translate));
       await tester.pumpAndSettle();
-      expect(find.text('test'), findsOne);
+      expect(find.text('translated quote text'), findsOne);
+    });
+
+    testWidgets('should fallback if translator is not available',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(
+        id: 'test',
+        text: 'note text',
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowTranslateButtonInNoteFooter(true);
+      container.invalidate(iNotifierProvider(account));
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'i',
+        (server) => server.reply(
+          200,
+          dummyMeDetailed.copyWith(
+            id: 'testuser',
+            policies: const UserPolicies(canUseTranslator: true),
+          ),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'meta',
+        (server) => server.reply(
+          200,
+          const MetaResponse(translatorAvailable: false),
+        ),
+        data: <String, dynamic>{},
+      );
+      final completer = Completer<String>();
+      final urlLauncher = FakeUrlLauncher()
+        ..onLaunchUrl = (url, _) => completer.complete(url);
+      UrlLauncherPlatform.instance = urlLauncher;
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.translate));
+      await tester.pumpAndSettle();
+      final url = await completer.future;
+      expect(url, 'https://translate.google.com?text=note+text');
+    });
+
+    testWidgets('should fallback if use of translator is not allowed',
+        (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final note = dummyNote.copyWith(
+        id: 'test',
+        text: 'note text',
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setShowTranslateButtonInNoteFooter(true);
+      container.invalidate(iNotifierProvider(account));
+      final dioAdapter = DioAdapter(dio: container.read(dioProvider));
+      dioAdapter.onPost(
+        'i',
+        (server) => server.reply(
+          200,
+          dummyMeDetailed.copyWith(
+            id: 'testuser',
+            policies: const UserPolicies(canUseTranslator: false),
+          ),
+        ),
+        data: <String, dynamic>{},
+      );
+      dioAdapter.onPost(
+        'meta',
+        (server) => server.reply(
+          200,
+          const MetaResponse(translatorAvailable: true),
+        ),
+        data: <String, dynamic>{},
+      );
+      final completer = Completer<String>();
+      final urlLauncher = FakeUrlLauncher()
+        ..onLaunchUrl = (url, _) => completer.complete(url);
+      UrlLauncherPlatform.instance = urlLauncher;
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.translate));
+      await tester.pumpAndSettle();
+      final url = await completer.future;
+      expect(url, 'https://translate.google.com?text=note+text');
     });
   });
 
