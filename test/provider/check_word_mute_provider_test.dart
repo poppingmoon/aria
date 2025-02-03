@@ -3,10 +3,10 @@ import 'package:aria/provider/check_word_mute_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
-import '../../test_util/create_container.dart';
-import '../../test_util/dummy_me_detailed.dart';
-import '../../test_util/dummy_note.dart';
-import '../../test_util/dummy_user_lite.dart';
+import '../test_util/create_container.dart';
+import '../test_util/dummy_me_detailed.dart';
+import '../test_util/dummy_note.dart';
+import '../test_util/dummy_user_lite.dart';
 
 void main() {
   const account = Account(host: 'misskey.tld', username: 'testuser');

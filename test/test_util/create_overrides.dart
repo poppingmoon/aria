@@ -7,6 +7,7 @@ import 'package:aria/provider/emoji_provider.dart';
 import 'package:aria/provider/note_provider.dart';
 import 'package:aria/provider/shared_preferences_provider.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -36,8 +37,11 @@ List<Override> createOverrides(
       (server) => server.reply(200, meta.toJson()),
     );
   }
+  final cacheManager = FakeCacheManager();
+  addTearDown(cacheManager.dispose);
+
   return [
-    cacheManagerProvider.overrideWithValue(FakeCacheManager()),
+    cacheManagerProvider.overrideWithValue(cacheManager),
     // ignore: prefer_const_constructors
     sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
     dioProvider.overrideWithValue(dio),
