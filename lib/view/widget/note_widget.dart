@@ -10,7 +10,6 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
-import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/appear_note_provider.dart';
 import '../../provider/check_word_mute_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
@@ -42,31 +41,19 @@ class NoteWidget extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.noteId,
-    this.showDate = true,
     this.withHardMute = true,
     this.focusPostForm,
     this.note,
-    this.showAvatars,
-    this.showReactionsViewer,
     this.showFooter,
-    this.tapAction,
-    this.doubleTapAction,
-    this.longPressAction,
     this.backgroundColor,
   });
 
   final Account account;
   final String noteId;
-  final bool showDate;
   final bool withHardMute;
   final void Function()? focusPostForm;
   final Note? note;
-  final bool? showAvatars;
-  final bool? showReactionsViewer;
   final bool? showFooter;
-  final NoteActionType? tapAction;
-  final NoteActionType? doubleTapAction;
-  final NoteActionType? longPressAction;
   final Color? backgroundColor;
 
   @override
@@ -119,40 +106,37 @@ class NoteWidget extends HookConsumerWidget {
       );
     }
 
-    final bool showAvatars = this.showAvatars ??
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.showAvatarsInNote),
-        );
-    final bool showReactionsViewer = this.showReactionsViewer ??
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.showNoteReactionsViewer),
-        );
-    final bool showFooter = this.showFooter ??
+    final showAvatars = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showAvatarsInNote),
+    );
+    final showReactionsViewer = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.showNoteReactionsViewer),
+    );
+    final showFooter = this.showFooter ??
         ref.watch(
           generalSettingsNotifierProvider
               .select((settings) => settings.showNoteFooter),
-        );
-    final NoteActionType tapAction = this.tapAction ??
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.noteTapAction),
-        );
-    final NoteActionType doubleTapAction = this.doubleTapAction ??
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.noteDoubleTapAction),
-        );
-    final NoteActionType longPressAction = this.longPressAction ??
-        ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.noteLongPressAction),
-        );
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+        ) ??
+        false;
+    final tapAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteTapAction),
+    );
+    final doubleTapAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteDoubleTapAction),
+    );
+    final longPressAction = ref.watch(
+      generalSettingsNotifierProvider
+          .select((settings) => settings.noteLongPressAction),
+    );
     final isRenote = note.isRenote;
-    final isMyRenote = i != null && note.user.id == i.id;
-    final isMyNote = i != null && appearNote.user.id == i.id;
+    final isMyRenote =
+        account.username == note.user.username && note.user.host == null;
+    final isMyNote = account.username == appearNote.user.username &&
+        appearNote.user.host == null;
     final showContent = useState(
       ref.watch(
         generalSettingsNotifierProvider
@@ -352,11 +336,7 @@ class NoteWidget extends HookConsumerWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            NoteHeader(
-                              account: account,
-                              note: appearNote,
-                              showDate: showDate,
-                            ),
+                            NoteHeader(account: account, note: appearNote),
                             if (showTicker)
                               Padding(
                                 padding:
