@@ -151,26 +151,35 @@ class NoteWidget extends HookConsumerWidget {
         clipBehavior: Clip.hardEdge,
         borderRadius: borderRadius,
         child: InkWell(
-          onTap: getNoteAction(
-            ref,
-            account: account,
-            type: tapAction,
-            note: note,
-            appearNote: appearNote,
+          onTap: useMemoized(
+            () => getNoteAction(
+              ref,
+              account: account,
+              type: tapAction,
+              note: note,
+              appearNote: appearNote,
+            ),
+            [account, tapAction, note.id, appearNote.id],
           ),
-          onDoubleTap: getNoteAction(
-            ref,
-            account: account,
-            type: doubleTapAction,
-            note: note,
-            appearNote: appearNote,
+          onDoubleTap: useMemoized(
+            () => getNoteAction(
+              ref,
+              account: account,
+              type: doubleTapAction,
+              note: note,
+              appearNote: appearNote,
+            ),
+            [account, doubleTapAction, note.id, appearNote.id],
           ),
-          onLongPress: getNoteAction(
-            ref,
-            account: account,
-            type: longPressAction,
-            note: note,
-            appearNote: appearNote,
+          onLongPress: useMemoized(
+            () => getNoteAction(
+              ref,
+              account: account,
+              type: longPressAction,
+              note: note,
+              appearNote: appearNote,
+            ),
+            [account, longPressAction, note.id, appearNote.id],
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.only(
