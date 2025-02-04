@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -200,6 +201,7 @@ class _UserHome extends ConsumerWidget {
                   Text.rich(
                     TextSpan(
                       children: [
+                        const TextSpan(text: Unicode.LRI),
                         TextSpan(text: '@${user.username}'),
                         TextSpan(
                           text: '@${toUnicode(user.host ?? account.host)}',
@@ -210,11 +212,12 @@ class _UserHome extends ConsumerWidget {
                                 .withValues(alpha: 0.5),
                           ),
                         ),
+                        const TextSpan(text: Unicode.PDI),
                         if (user.isLocked)
                           const WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 4.0),
+                              padding: EdgeInsetsDirectional.only(start: 4.0),
                               child: Icon(Icons.lock),
                             ),
                           ),
@@ -222,7 +225,7 @@ class _UserHome extends ConsumerWidget {
                           const WidgetSpan(
                             alignment: PlaceholderAlignment.middle,
                             child: Padding(
-                              padding: EdgeInsets.only(left: 4.0),
+                              padding: EdgeInsetsDirectional.only(start: 4.0),
                               child: Icon(Icons.smart_toy_outlined),
                             ),
                           ),
@@ -513,22 +516,24 @@ class _UserHome extends ConsumerWidget {
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: Center(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                  child: Text.rich(
+                                    TextSpan(
                                       children: [
-                                        const Padding(
-                                          padding: EdgeInsets.only(right: 2.0),
+                                        const WidgetSpan(
                                           child: Icon(Icons.place),
                                         ),
-                                        Text(
-                                          t.misskey.location,
+                                        const WidgetSpan(
+                                          child: SizedBox(width: 2.0),
+                                        ),
+                                        TextSpan(
+                                          text: t.misskey.location,
                                           style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ],
                                     ),
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                                 Padding(

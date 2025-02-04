@@ -179,10 +179,10 @@ class NoteWidget extends HookConsumerWidget {
           appearNote: appearNote,
         ),
         child: Padding(
-          padding: EdgeInsets.only(
-            left: 4.0,
+          padding: EdgeInsetsDirectional.only(
+            start: 4.0,
             top: verticalPadding,
-            right: horizontalPadding,
+            end: horizontalPadding,
             bottom: verticalPadding,
           ),
           child: Column(
@@ -201,7 +201,9 @@ class NoteWidget extends HookConsumerWidget {
                     child: ChannelColorBarBox(
                       note: appearNote.reply,
                       child: Padding(
-                        padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                        padding: EdgeInsetsDirectional.only(
+                          start: horizontalPadding - 4.0,
+                        ),
                         child: NoteSubWidget(
                           account: account,
                           noteId: replyId,
@@ -217,7 +219,9 @@ class NoteWidget extends HookConsumerWidget {
                 ChannelColorBarBox(
                   note: note,
                   child: Padding(
-                    padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                    padding: EdgeInsetsDirectional.only(
+                      start: horizontalPadding - 4.0,
+                    ),
                     child: RenoteHeader(
                       account: account,
                       noteId: noteId,
@@ -271,7 +275,10 @@ class NoteWidget extends HookConsumerWidget {
                       SizedBox(width: horizontalPadding - 4.0),
                       if (showAvatars)
                         Padding(
-                          padding: const EdgeInsets.only(top: 4.0, right: 10.0),
+                          padding: const EdgeInsetsDirectional.only(
+                            top: 4.0,
+                            end: 10.0,
+                          ),
                           child: UserAvatar(
                             account: account,
                             user: appearNote.user,

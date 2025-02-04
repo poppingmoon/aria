@@ -100,7 +100,8 @@ class NoteSubWidget extends HookConsumerWidget {
               children: [
                 if (showAvatars)
                   Padding(
-                    padding: const EdgeInsets.only(top: 4.0, right: 8.0),
+                    padding:
+                        const EdgeInsetsDirectional.only(top: 4.0, end: 8.0),
                     child: UserAvatar(
                       account: account,
                       user: note.user,
@@ -144,7 +145,7 @@ class NoteSubWidget extends HookConsumerWidget {
             ),
             if (children != null)
               Container(
-                margin: const EdgeInsets.only(top: 8.0, left: 8.0),
+                margin: const EdgeInsetsDirectional.only(top: 8.0, start: 8.0),
                 decoration: BoxDecoration(
                   border: Border(
                     left: BorderSide(
@@ -159,7 +160,8 @@ class NoteSubWidget extends HookConsumerWidget {
                         (reply) => ChannelColorBarBox(
                           note: reply,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
+                            padding:
+                                const EdgeInsetsDirectional.only(start: 8.0),
                             child: NoteSubWidget(
                               account: account,
                               noteId: reply.id,

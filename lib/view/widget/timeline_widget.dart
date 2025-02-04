@@ -180,7 +180,8 @@ class TimelineWidget extends HookConsumerWidget {
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Padding(
-                                padding: const EdgeInsets.only(right: 2.0),
+                                padding:
+                                    const EdgeInsetsDirectional.only(end: 2.0),
                                 child: Icon(
                                   switch (icon) {
                                     AnnouncementIconType.info =>

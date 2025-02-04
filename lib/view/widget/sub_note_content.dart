@@ -86,7 +86,7 @@ class SubNoteContent extends HookConsumerWidget {
                     borderRadius: BorderRadius.circular(8.0),
                     onTap: () => context.push('/$account/notes/$replyId'),
                     child: Padding(
-                      padding: const EdgeInsets.only(right: 4.0),
+                      padding: const EdgeInsetsDirectional.only(end: 4.0),
                       child: Icon(
                         Icons.reply,
                         color: Theme.of(context).colorScheme.primary,
@@ -103,7 +103,7 @@ class SubNoteContent extends HookConsumerWidget {
                   child: InkWell(
                     onTap: () => context.push('/$account/notes/$renoteId'),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 4.0),
+                      padding: const EdgeInsetsDirectional.only(start: 4.0),
                       child: Text(
                         'RN: ...',
                         style: TextStyle(
@@ -126,9 +126,9 @@ class SubNoteContent extends HookConsumerWidget {
             if (!expandMedia)
               TextButton.icon(
                 style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(
+                  padding: const EdgeInsetsDirectional.only(
                     top: 4.0,
-                    right: 8.0,
+                    end: 8.0,
                     bottom: 4.0,
                   ),
                   minimumSize: Size.zero,
@@ -157,9 +157,9 @@ class SubNoteContent extends HookConsumerWidget {
             if (!expandMedia)
               TextButton.icon(
                 style: TextButton.styleFrom(
-                  padding: const EdgeInsets.only(
+                  padding: const EdgeInsetsDirectional.only(
                     top: 4.0,
-                    right: 8.0,
+                    end: 8.0,
                     bottom: 4.0,
                   ),
                   minimumSize: Size.zero,

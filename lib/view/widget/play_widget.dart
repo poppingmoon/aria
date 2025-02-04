@@ -174,7 +174,10 @@ class PlayWidget extends HookConsumerWidget {
                   Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 12.0, right: 12.0),
+                      padding: const EdgeInsetsDirectional.only(
+                        top: 12.0,
+                        end: 12.0,
+                      ),
                       child: IconButton(
                         tooltip: t.misskey.switchAccount,
                         onPressed: () async {
