@@ -5,7 +5,6 @@ import 'package:aria/provider/api/i_notifier_provider.dart';
 import 'package:aria/provider/api/meta_notifier_provider.dart';
 import 'package:aria/provider/dio_provider.dart';
 import 'package:aria/provider/general_settings_notifier_provider.dart';
-import 'package:aria/provider/misskey_colors_provider.dart';
 import 'package:aria/provider/muted_words_notifier_provider.dart';
 import 'package:aria/provider/notes_notifier_provider.dart';
 import 'package:aria/view/widget/emoji_picker.dart';
@@ -246,7 +245,7 @@ void main() {
               ),
             )
             .color,
-        container.read(misskeyColorsProvider(Brightness.light)).panel,
+        Theme.of(tester.element(find.byType(NoteWidget))).colorScheme.surface,
       );
     });
 
@@ -429,7 +428,7 @@ void main() {
               ),
             )
             .color,
-        container.read(misskeyColorsProvider(Brightness.light)).panel,
+        Theme.of(tester.element(find.byType(NoteWidget))).colorScheme.surface,
       );
     });
   });
@@ -869,13 +868,103 @@ void main() {
       expect(find.textContaining('/misskey.tld/notes/test'), findsOne);
     });
 
-    testWidgets('should collapse renote', (tester) async {
+    testWidgets('should not collapse renote if disabled', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final renote = dummyNote.copyWith(id: 'renote', text: 'renote text');
       final note = dummyNote.copyWith(
         id: 'test',
         userId: 'testuser',
         user: dummyUserLite.copyWith(id: 'testuser', username: 'testuser'),
+        renoteId: renote.id,
+        renote: renote,
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await container
+          .read(generalSettingsNotifierProvider.notifier)
+          .setCollapseRenotes(false);
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteHeader), findsOne);
+      expect(find.text('renote text'), findsOne);
+      expect(find.byType(NoteFooter), findsOne);
+    });
+
+    testWidgets('should collapse my renote', (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final renote = dummyNote.copyWith(id: 'renote', text: 'renote text');
+      final note = dummyNote.copyWith(
+        id: 'test',
+        userId: 'testuser',
+        user: dummyUserLite.copyWith(id: 'testuser', username: 'testuser'),
+        renoteId: renote.id,
+        renote: renote,
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteHeader), findsOne);
+      expect(find.text('renote text'), findsOne);
+      expect(find.byType(NoteFooter), findsNothing);
+      await tester.tap(find.text('renote text'));
+      await tester.pump(kDoubleTapTimeout);
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteHeader), findsOne);
+      expect(find.text('renote text'), findsOne);
+      expect(find.byType(NoteFooter), findsOne);
+    });
+
+    testWidgets('should collapse renote of my note', (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final renote = dummyNote.copyWith(
+        id: 'renote',
+        userId: 'testuser',
+        user: dummyUserLite.copyWith(id: 'testuser', username: 'testuser'),
+        text: 'renote text',
+      );
+      final note = dummyNote.copyWith(
+        id: 'test',
+        userId: 'testuser2',
+        user: dummyUserLite.copyWith(id: 'testuser2', username: 'testuser2'),
+        renoteId: renote.id,
+        renote: renote,
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteHeader), findsOne);
+      expect(find.text('renote text'), findsOne);
+      expect(find.byType(NoteFooter), findsNothing);
+      await tester.tap(find.text('renote text'));
+      await tester.pump(kDoubleTapTimeout);
+      await tester.pumpAndSettle();
+      expect(find.byType(RenoteHeader), findsOne);
+      expect(find.text('renote text'), findsOne);
+      expect(find.byType(NoteFooter), findsOne);
+    });
+
+    testWidgets('should collapse renote with my reaction', (tester) async {
+      const account = Account(host: 'misskey.tld', username: 'testuser');
+      final renote = dummyNote.copyWith(
+        id: 'renote',
+        text: 'renote text',
+        myReaction: ':emoji:',
+      );
+      final note = dummyNote.copyWith(
+        id: 'test',
+        userId: 'testuser2',
+        user: dummyUserLite.copyWith(id: 'testuser2', username: 'testuser2'),
         renoteId: renote.id,
         renote: renote,
       );

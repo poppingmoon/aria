@@ -22,12 +22,10 @@ class NoteHeader extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.note,
-    this.showDate = true,
   });
 
   final Account account;
   final Note note;
-  final bool showDate;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -107,17 +105,16 @@ class NoteHeader extends HookConsumerWidget {
             ),
           ),
         ),
-        if (showDate)
-          DefaultTextStyle.merge(
-            style: style.apply(fontSizeFactor: 0.9),
-            child: TimeWidget(
-              time: note.createdAt,
-              onTap: note.id.isNotEmpty
-                  ? () => context.push('/$account/notes/${note.id}')
-                  : null,
-              absolute: showCreatedAt,
-            ),
+        DefaultTextStyle.merge(
+          style: style.apply(fontSizeFactor: 0.9),
+          child: TimeWidget(
+            time: note.createdAt,
+            onTap: note.id.isNotEmpty
+                ? () => context.push('/$account/notes/${note.id}')
+                : null,
+            absolute: showCreatedAt,
           ),
+        ),
         IconTheme.merge(
           data: IconThemeData(size: style.lineHeight * 0.9),
           child: Row(
