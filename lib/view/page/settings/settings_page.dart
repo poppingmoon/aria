@@ -66,7 +66,13 @@ class SettingsPage extends HookConsumerWidget {
                                     user: TextSpan(text: account.username),
                                   ),
                                 ),
-                          subtitle: Text(account.toString()),
+                          subtitle: Align(
+                            alignment: AlignmentDirectional.centerStart,
+                            child: Text(
+                              account.toString(),
+                              textDirection: TextDirection.ltr,
+                            ),
+                          ),
                           onTap: () =>
                               context.push('/settings/accounts/$account'),
                         );

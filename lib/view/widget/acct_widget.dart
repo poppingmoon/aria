@@ -36,6 +36,7 @@ class AcctWidget extends StatelessWidget {
       ),
       maxLines: 1,
       overflow: TextOverflow.ellipsis,
+      textDirection: TextDirection.ltr,
     );
   }
 }

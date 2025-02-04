@@ -66,7 +66,10 @@ class UserInfo extends ConsumerWidget {
                                 style: style.apply(fontSizeFactor: 1.35),
                               ),
                             ),
-                            subtitle: AcctWidget(account: account, user: user),
+                            subtitle: Align(
+                              alignment: AlignmentDirectional.centerStart,
+                              child: AcctWidget(account: account, user: user),
+                            ),
                           ),
                         ),
                       ],

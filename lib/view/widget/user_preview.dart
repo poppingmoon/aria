@@ -32,7 +32,10 @@ class UserPreview extends StatelessWidget {
         alignment: AlignmentDirectional.centerStart,
         child: UsernameWidget(account: account, user: user),
       ),
-      subtitle: AcctWidget(account: account, user: user),
+      subtitle: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: AcctWidget(account: account, user: user),
+      ),
       trailing: trailing,
       onTap: onTap,
       onLongPress: onLongPress,
