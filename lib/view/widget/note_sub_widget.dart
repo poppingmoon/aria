@@ -147,8 +147,8 @@ class NoteSubWidget extends HookConsumerWidget {
               Container(
                 margin: const EdgeInsetsDirectional.only(top: 8.0, start: 8.0),
                 decoration: BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
+                  border: BorderDirectional(
+                    start: BorderSide(
                       color: Theme.of(context).colorScheme.outlineVariant,
                       width: 2.0,
                     ),

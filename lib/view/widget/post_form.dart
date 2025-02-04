@@ -784,8 +784,8 @@ class PostForm extends HookConsumerWidget {
                     context.push('/${account.value}/channels/$channelId'),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    border: Border(
-                      left: BorderSide(
+                    border: BorderDirectional(
+                      start: BorderSide(
                         color: channel?.toColor() ?? Colors.transparent,
                         width: 4,
                       ),

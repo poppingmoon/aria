@@ -538,8 +538,8 @@ class _NoteDetailedContent extends HookConsumerWidget {
           Container(
             margin: const EdgeInsetsDirectional.only(start: 8.0, top: 8.0),
             decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
+              border: BorderDirectional(
+                start: BorderSide(
                   color: Theme.of(context).colorScheme.outlineVariant,
                   width: 2.0,
                 ),

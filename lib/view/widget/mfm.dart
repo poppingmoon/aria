@@ -460,8 +460,8 @@ class _Mfm extends StatelessWidget {
             ),
             width: double.infinity,
             decoration: BoxDecoration(
-              border: material.Border(
-                left: BorderSide(
+              border: BorderDirectional(
+                start: BorderSide(
                   color: colors.fg.withValues(alpha: config.opacity * 0.7),
                   width: 3.0,
                 ),
