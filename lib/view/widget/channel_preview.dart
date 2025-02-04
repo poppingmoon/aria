@@ -86,9 +86,9 @@ class ChannelPreview extends ConsumerWidget {
                   ),
                 ),
                 if (channel.isSensitive)
-                  Positioned(
+                  PositionedDirectional(
+                    start: 8.0,
                     bottom: 8.0,
-                    left: 8.0,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         color: Colors.black87,
@@ -103,9 +103,9 @@ class ChannelPreview extends ConsumerWidget {
                       ),
                     ),
                   ),
-                Positioned(
+                PositionedDirectional(
+                  end: 8.0,
                   bottom: 8.0,
-                  right: 8.0,
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       color: Colors.black87,

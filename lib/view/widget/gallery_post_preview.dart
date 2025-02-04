@@ -111,9 +111,9 @@ class GalleryPostPreview extends HookConsumerWidget {
                     ),
                   ),
                   if (post.isSensitive)
-                    Positioned(
+                    PositionedDirectional(
+                      start: 8.0,
                       bottom: 8.0,
-                      left: 8.0,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: Colors.black87,

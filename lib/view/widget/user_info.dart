@@ -73,8 +73,8 @@ class UserInfo extends ConsumerWidget {
                     ),
                   ],
                 ),
-                Positioned(
-                  left: 16.0,
+                PositionedDirectional(
+                  start: 16.0,
                   bottom: 8.0,
                   child: DecoratedBox(
                     decoration: BoxDecoration(

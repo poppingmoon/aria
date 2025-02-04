@@ -147,9 +147,9 @@ class ChannelHome extends ConsumerWidget {
                         ),
                       ),
                     ],
-                    Positioned(
+                    PositionedDirectional(
+                      end: 8.0,
                       bottom: 8.0,
-                      right: 8.0,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: Colors.black87,

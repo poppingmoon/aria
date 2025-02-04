@@ -213,9 +213,9 @@ class ProfilePage extends HookConsumerWidget {
                     ),
                     child: UserAvatar(account: account, user: i, size: 100.0),
                   ),
-                  Positioned(
+                  PositionedDirectional(
                     top: 16.0,
-                    right: 16.0,
+                    end: 16.0,
                     child: ElevatedButton(
                       onPressed: () async {
                         final result = await _getFile(

@@ -252,8 +252,8 @@ class MediaCard extends HookConsumerWidget {
                       _ => _FilePreview(file: file, fit: fit),
                     },
                   ),
-                  Positioned(
-                    left: 8.0,
+                  PositionedDirectional(
+                    start: 8.0,
                     top: 8.0,
                     child: DefaultTextStyle.merge(
                       style: style.apply(
@@ -319,9 +319,9 @@ class MediaCard extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  Positioned(
-                    right: 8.0,
+                  PositionedDirectional(
                     top: 8.0,
+                    end: 8.0,
                     child: Opacity(
                       opacity: 0.5,
                       child: IconButton(
@@ -337,30 +337,30 @@ class MediaCard extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  if (user case User(:final username, host: null))
-                    if (!account.isGuest && account.username == username)
-                      Positioned(
-                        right: 8.0,
-                        bottom: 8.0,
-                        child: Opacity(
-                          opacity: 0.5,
-                          child: IconButton(
-                            style: IconButton.styleFrom(
-                              iconSize: 18.0,
-                              minimumSize: Size.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              foregroundColor: colors.bg,
-                              backgroundColor: colors.fg,
-                            ),
-                            onPressed: () =>
-                                context.push('/$account/drive/file/${[
-                              file.folderId,
-                              file.id,
-                            ].nonNulls.join('/')}'),
-                            icon: const Icon(Icons.more_horiz),
+                  if (user case User(:final username, host: null)
+                      when !account.isGuest && account.username == username)
+                    PositionedDirectional(
+                      end: 8.0,
+                      bottom: 8.0,
+                      child: Opacity(
+                        opacity: 0.5,
+                        child: IconButton(
+                          style: IconButton.styleFrom(
+                            iconSize: 18.0,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            foregroundColor: colors.bg,
+                            backgroundColor: colors.fg,
                           ),
+                          onPressed: () =>
+                              context.push('/$account/drive/file/${[
+                            file.folderId,
+                            file.id,
+                          ].nonNulls.join('/')}'),
+                          icon: const Icon(Icons.more_horiz),
                         ),
                       ),
+                    ),
                 ],
               ),
       ),

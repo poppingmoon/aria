@@ -456,8 +456,8 @@ class _PostFormAttach extends ConsumerWidget {
                     .upload(index),
                 icon: const Icon(Icons.upload),
               ),
-            Positioned(
-              left: 8.0,
+            PositionedDirectional(
+              start: 8.0,
               top: 8.0,
               child: DefaultTextStyle.merge(
                 style: style.apply(
@@ -546,8 +546,8 @@ class _PostFormAttach extends ConsumerWidget {
                 ),
               ),
             ),
-            Positioned(
-              right: 8.0,
+            PositionedDirectional(
+              end: 8.0,
               bottom: 8.0,
               child: Opacity(
                 opacity: 0.8,
