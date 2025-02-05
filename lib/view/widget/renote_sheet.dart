@@ -136,7 +136,7 @@ class RenoteSheet extends HookConsumerWidget {
               leading: const Icon(Icons.person),
               title: Text(t.misskey.recipient),
               subtitle: Align(
-                alignment: Alignment.centerLeft,
+                alignment: AlignmentDirectional.centerStart,
                 child: Wrap(
                   spacing: 4.0,
                   runSpacing: 4.0,

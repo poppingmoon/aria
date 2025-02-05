@@ -59,22 +59,25 @@ class UserInfo extends ConsumerWidget {
                         Expanded(
                           child: ListTile(
                             title: Align(
-                              alignment: Alignment.centerLeft,
+                              alignment: AlignmentDirectional.centerStart,
                               child: UsernameWidget(
                                 account: account,
                                 user: user,
                                 style: style.apply(fontSizeFactor: 1.35),
                               ),
                             ),
-                            subtitle: AcctWidget(account: account, user: user),
+                            subtitle: Align(
+                              alignment: AlignmentDirectional.centerStart,
+                              child: AcctWidget(account: account, user: user),
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ],
                 ),
-                Positioned(
-                  left: 16.0,
+                PositionedDirectional(
+                  start: 16.0,
                   bottom: 8.0,
                   child: DecoratedBox(
                     decoration: BoxDecoration(

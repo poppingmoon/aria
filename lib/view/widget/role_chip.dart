@@ -45,7 +45,7 @@ class RoleChip extends ConsumerWidget {
             children: [
               if (role case UserRole(:final iconUrl))
                 Padding(
-                  padding: const EdgeInsets.only(right: 5),
+                  padding: const EdgeInsetsDirectional.only(end: 4.0),
                   child: ImageWidget(
                     url: iconUrl.toString(),
                     height: height,

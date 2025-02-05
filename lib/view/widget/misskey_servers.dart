@@ -119,7 +119,8 @@ class _ServerPreview extends ConsumerWidget {
                         children: [
                           if (server.icon)
                             Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
+                              padding:
+                                  const EdgeInsetsDirectional.only(end: 8.0),
                               child: ImageWidget(
                                 url:
                                     'https://instanceapp.misskey.page/instance-icons/${server.url}.webp',

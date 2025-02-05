@@ -57,7 +57,7 @@ class UserBanner extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: Alignment.topRight,
+            alignment: AlignmentDirectional.topEnd,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: FollowButton(
@@ -74,7 +74,7 @@ class UserBanner extends StatelessWidget {
               ))
             if (isFollowed || isMuted || isBlocking)
               Align(
-                alignment: Alignment.topLeft,
+                alignment: AlignmentDirectional.topStart,
                 child: Card(
                   margin: const EdgeInsets.all(8.0),
                   child: Padding(

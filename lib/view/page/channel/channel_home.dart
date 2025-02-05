@@ -106,7 +106,7 @@ class ChannelHome extends ConsumerWidget {
                               ),
                       ),
                       Align(
-                        alignment: Alignment.topRight,
+                        alignment: AlignmentDirectional.topEnd,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: channel.isFavorited ?? false
@@ -147,9 +147,9 @@ class ChannelHome extends ConsumerWidget {
                         ),
                       ),
                     ],
-                    Positioned(
+                    PositionedDirectional(
+                      end: 8.0,
                       bottom: 8.0,
-                      right: 8.0,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
                           color: Colors.black87,

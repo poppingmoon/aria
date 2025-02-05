@@ -253,8 +253,8 @@ class AvatarDecorationsPage extends ConsumerWidget {
                                         .contains(role.id),
                                   ) ??
                                   false))
-                            const Positioned(
-                              right: 8.0,
+                            const PositionedDirectional(
+                              end: 8.0,
                               bottom: 8.0,
                               child: Icon(Icons.lock),
                             ),

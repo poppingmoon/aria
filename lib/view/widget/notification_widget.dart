@@ -432,8 +432,8 @@ class NotificationWidget extends ConsumerWidget {
                       ),
                       if (note.reactionAcceptance !=
                           ReactionAcceptance.likeOnly)
-                        Positioned(
-                          right: 2.0,
+                        PositionedDirectional(
+                          end: 2.0,
                           bottom: 2.0,
                           child: DecoratedBox(
                             decoration: BoxDecoration(
@@ -743,8 +743,8 @@ class _NotificationTile extends ConsumerWidget {
                     onTap: () => context.push('/$account/users/${user.id}'),
                   ),
                   if (icon case final icon?)
-                    Positioned(
-                      right: 0.0,
+                    PositionedDirectional(
+                      end: 0.0,
                       bottom: 0.0,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
@@ -788,7 +788,7 @@ class _NotificationTile extends ConsumerWidget {
                   children: [
                     Expanded(
                       child: Align(
-                        alignment: Alignment.centerLeft,
+                        alignment: AlignmentDirectional.centerStart,
                         child: title ??
                             (user != null
                                 ? InkWell(

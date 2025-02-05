@@ -147,10 +147,10 @@ class NoteDetailedWidget extends HookConsumerWidget {
             )
           : null,
       child: Padding(
-        padding: EdgeInsets.only(
-          left: 4.0,
+        padding: EdgeInsetsDirectional.only(
+          start: 4.0,
           top: verticalPadding,
-          right: horizontalPadding,
+          end: horizontalPadding,
           bottom: verticalPadding,
         ),
         child: Column(
@@ -173,8 +173,8 @@ class NoteDetailedWidget extends HookConsumerWidget {
                           ChannelColorBarBox(
                             note: appearNote.reply,
                             child: Padding(
-                              padding: EdgeInsets.only(
-                                left: horizontalPadding - 4.0,
+                              padding: EdgeInsetsDirectional.only(
+                                start: horizontalPadding - 4.0,
                               ),
                               child: NoteSubWidget(
                                 account: account,
@@ -193,14 +193,18 @@ class NoteDetailedWidget extends HookConsumerWidget {
               ChannelColorBarBox(
                 note: note,
                 child: Padding(
-                  padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                  padding: EdgeInsetsDirectional.only(
+                    start: horizontalPadding - 4.0,
+                  ),
                   child: RenoteHeader(account: account, noteId: noteId),
                 ),
               ),
             ChannelColorBarBox(
               note: appearNote,
               child: Padding(
-                padding: EdgeInsets.only(left: horizontalPadding - 4.0),
+                padding: EdgeInsetsDirectional.only(
+                  start: horizontalPadding - 4.0,
+                ),
                 child: _NoteDetailedContent(
                   account: account,
                   noteId: noteId,
@@ -397,7 +401,7 @@ class _NoteDetailedContent extends HookConsumerWidget {
                         borderRadius: BorderRadius.circular(8.0),
                         onTap: () => context.push('/$account/notes/$replyId'),
                         child: Padding(
-                          padding: const EdgeInsets.only(right: 4.0),
+                          padding: const EdgeInsetsDirectional.only(end: 4.0),
                           child: Icon(
                             Icons.reply,
                             color: Theme.of(context).colorScheme.primary,
@@ -414,7 +418,7 @@ class _NoteDetailedContent extends HookConsumerWidget {
                       child: InkWell(
                         onTap: () => context.push('/$account/notes/$renoteId'),
                         child: Padding(
-                          padding: const EdgeInsets.only(left: 4.0),
+                          padding: const EdgeInsetsDirectional.only(start: 4.0),
                           child: Text(
                             'RN: ...',
                             style: TextStyle(
@@ -532,10 +536,10 @@ class _NoteDetailedContent extends HookConsumerWidget {
               valueOrNull: PaginationState(items: final notes),
             ) when notes.isNotEmpty)
           Container(
-            margin: const EdgeInsets.only(left: 8.0, top: 8.0),
+            margin: const EdgeInsetsDirectional.only(start: 8.0, top: 8.0),
             decoration: BoxDecoration(
-              border: Border(
-                left: BorderSide(
+              border: BorderDirectional(
+                start: BorderSide(
                   color: Theme.of(context).colorScheme.outlineVariant,
                   width: 2.0,
                 ),
@@ -546,7 +550,7 @@ class _NoteDetailedContent extends HookConsumerWidget {
                   ? ChannelColorBarBox(
                       note: notes[index],
                       child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
+                        padding: const EdgeInsetsDirectional.only(start: 8.0),
                         child: NoteSubWidget(
                           account: account,
                           noteId: notes[index].id,

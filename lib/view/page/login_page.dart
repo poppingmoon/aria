@@ -136,7 +136,7 @@ class LoginPage extends HookConsumerWidget {
                             ),
                           ),
                           Align(
-                            alignment: Alignment.centerLeft,
+                            alignment: AlignmentDirectional.centerStart,
                             child: TextButton(
                               style: TextButton.styleFrom(
                                 minimumSize: Size.zero,

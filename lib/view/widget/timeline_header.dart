@@ -1,7 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:intl/intl.dart';
+import 'package:intl/intl.dart' hide TextDirection;
 import 'package:tinycolor2/tinycolor2.dart';
 
 import '../../i18n/strings.g.dart';
@@ -119,6 +120,7 @@ class TimelineHeader extends HookConsumerWidget {
               ),
               if (oneLine) ...[
                 const WidgetSpan(child: SizedBox(width: 8.0)),
+                const TextSpan(text: Unicode.LRI),
                 TextSpan(
                   text: tabSettings.account.toString(),
                   style: DefaultTextStyle.of(context).style.apply(
@@ -128,6 +130,7 @@ class TimelineHeader extends HookConsumerWidget {
                             .withValues(alpha: 0.85),
                       ),
                 ),
+                const TextSpan(text: Unicode.PDI),
               ],
             ],
           ),
@@ -135,10 +138,14 @@ class TimelineHeader extends HookConsumerWidget {
           maxLines: oneLine ? 1 : null,
         ),
         subtitle: !oneLine
-            ? Text(
-                tabSettings.account.toString(),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
+            ? Align(
+                alignment: AlignmentDirectional.centerStart,
+                child: Text(
+                  tabSettings.account.toString(),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  textDirection: TextDirection.ltr,
+                ),
               )
             : null,
         onExpansionChanged: (value) {

@@ -784,8 +784,8 @@ class PostForm extends HookConsumerWidget {
                     context.push('/${account.value}/channels/$channelId'),
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                    border: Border(
-                      left: BorderSide(
+                    border: BorderDirectional(
+                      start: BorderSide(
                         color: channel?.toColor() ?? Colors.transparent,
                         width: 4,
                       ),
@@ -1102,7 +1102,7 @@ class PostForm extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Align(
-                  alignment: Alignment.centerRight,
+                  alignment: AlignmentDirectional.centerEnd,
                   child: Text(
                     '${attaches.length}/16',
                     style: TextStyle(
@@ -1383,7 +1383,7 @@ class _PostFormFooter extends HookConsumerWidget {
               if (hasExtentBefore.value)
                 Positioned.fill(
                   child: Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         boxShadow: [
@@ -1400,7 +1400,7 @@ class _PostFormFooter extends HookConsumerWidget {
               if (hasExtentAfter.value)
                 Positioned.fill(
                   child: Align(
-                    alignment: Alignment.centerRight,
+                    alignment: AlignmentDirectional.centerEnd,
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         boxShadow: [

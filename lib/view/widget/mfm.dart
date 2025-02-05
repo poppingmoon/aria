@@ -453,11 +453,15 @@ class _Mfm extends StatelessWidget {
       MfmQuote(:final children?) => WidgetSpan(
           child: Container(
             margin: const EdgeInsets.all(8.0),
-            padding: const EdgeInsets.only(top: 6.0, bottom: 6.0, left: 12.0),
+            padding: const EdgeInsetsDirectional.only(
+              start: 12.0,
+              top: 6.0,
+              bottom: 6.0,
+            ),
             width: double.infinity,
             decoration: BoxDecoration(
-              border: material.Border(
-                left: BorderSide(
+              border: BorderDirectional(
+                start: BorderSide(
                   color: colors.fg.withValues(alpha: config.opacity * 0.7),
                   width: 3.0,
                 ),

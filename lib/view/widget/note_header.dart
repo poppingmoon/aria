@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -39,7 +40,7 @@ class NoteHeader extends HookConsumerWidget {
       children: [
         Expanded(
           child: Align(
-            alignment: Alignment.centerLeft,
+            alignment: AlignmentDirectional.centerStart,
             child: InkWell(
               onTap: note.userId.isNotEmpty
                   ? () => context.push('/$account/users/${note.userId}')
@@ -70,6 +71,7 @@ class NoteHeader extends HookConsumerWidget {
                       ),
                     ),
                   const WidgetSpan(child: SizedBox(width: 4.0)),
+                  const TextSpan(text: Unicode.LRI),
                   TextSpan(text: '@${note.user.username}'),
                   if (note.user case User(:final host?))
                     TextSpan(
@@ -78,6 +80,7 @@ class NoteHeader extends HookConsumerWidget {
                         color: style.color?.withValues(alpha: 0.5),
                       ),
                     ),
+                  const TextSpan(text: Unicode.PDI),
                   for (final role in note.user.badgeRoles)
                     if (role case UserBadgeRole(:final iconUrl?))
                       WidgetSpan(

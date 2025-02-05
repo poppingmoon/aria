@@ -67,7 +67,7 @@ class RenoteHeader extends HookConsumerWidget {
               const SizedBox(width: 2.0),
               Expanded(
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: InkWell(
                     onTap: () => context.push('/$account/users/${note.userId}'),
                     onLongPress: () => showUserSheet(

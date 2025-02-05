@@ -33,7 +33,7 @@ class VideoDialog extends ConsumerWidget {
           child: Center(child: _VideoWidget(url: url, file: file)),
         ),
         Align(
-          alignment: Alignment.topLeft,
+          alignment: AlignmentDirectional.topStart,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: IconButton(
@@ -45,7 +45,7 @@ class VideoDialog extends ConsumerWidget {
         ),
         if (url != null)
           Align(
-            alignment: Alignment.topRight,
+            alignment: AlignmentDirectional.topEnd,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: IconButton(

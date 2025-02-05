@@ -247,7 +247,7 @@ class EmojiPicker extends HookConsumerWidget {
         ],
         if (recentlyUsedEmojis.isNotEmpty) ...[
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(t.misskey.recentUsed),
           ),
           const SizedBox(height: 4.0),
@@ -279,7 +279,7 @@ class EmojiPicker extends HookConsumerWidget {
         ],
         if (groups.isNotEmpty) ...[
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(t.misskey.customEmojis),
           ),
           ...groups.entries.map(
@@ -299,7 +299,7 @@ class EmojiPicker extends HookConsumerWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Wrap(
                       spacing: 4.0,
                       runSpacing: 4.0,
@@ -327,7 +327,7 @@ class EmojiPicker extends HookConsumerWidget {
           const Divider(),
         ],
         Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(t.misskey.emoji),
         ),
         ...categorizedUnicodeEmojis.entries.map((e) {
@@ -339,7 +339,7 @@ class EmojiPicker extends HookConsumerWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Align(
-                  alignment: Alignment.centerLeft,
+                  alignment: AlignmentDirectional.centerStart,
                   child: Wrap(
                     spacing: 4.0,
                     runSpacing: 4.0,

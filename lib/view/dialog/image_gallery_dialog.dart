@@ -176,7 +176,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
             child: Stack(
               children: [
                 Align(
-                  alignment: Alignment.topLeft,
+                  alignment: AlignmentDirectional.topStart,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: IconButton(
@@ -188,7 +188,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                   ),
                 ),
                 Align(
-                  alignment: Alignment.topRight,
+                  alignment: AlignmentDirectional.topEnd,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: IconButton(
@@ -221,7 +221,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                 ),
                 if (index.value > 0)
                   Align(
-                    alignment: Alignment.centerLeft,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: IconButton(
@@ -238,7 +238,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                   ),
                 if (index.value < files.length - 1)
                   Align(
-                    alignment: Alignment.centerRight,
+                    alignment: AlignmentDirectional.centerEnd,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: IconButton(

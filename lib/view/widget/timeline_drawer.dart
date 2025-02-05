@@ -102,9 +102,13 @@ class TimelineDrawer extends HookConsumerWidget {
             title: i != null
                 ? UsernameWidget(account: account, user: i)
                 : Text(account.username ?? ''),
-            subtitle: Text(
-              account.toString(),
-              style: Theme.of(context).textTheme.bodySmall,
+            subtitle: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: Text(
+                account.toString(),
+                style: Theme.of(context).textTheme.bodySmall,
+                textDirection: TextDirection.ltr,
+              ),
             ),
             initiallyExpanded: account == currentAccount,
             controller: expansionTileControllers[index],

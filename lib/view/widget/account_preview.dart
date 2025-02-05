@@ -32,7 +32,10 @@ class AccountPreview extends ConsumerWidget {
       title: i != null
           ? UsernameWidget(account: account, user: i)
           : Text(account.username ?? t.aria.guest),
-      subtitle: Text(account.toString()),
+      subtitle: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: Text(account.toString(), textDirection: TextDirection.ltr),
+      ),
       trailing: trailing,
       onTap: onTap,
     );

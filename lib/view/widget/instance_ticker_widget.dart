@@ -46,6 +46,8 @@ class InstanceTickerWidget extends ConsumerWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4.0),
         gradient: LinearGradient(
+          begin: AlignmentDirectional.centerStart,
+          end: AlignmentDirectional.centerEnd,
           colors: [
             color,
             color,
@@ -54,10 +56,7 @@ class InstanceTickerWidget extends ConsumerWidget {
         ),
       ),
       child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(4.0),
-          bottomLeft: Radius.circular(4.0),
-        ),
+        borderRadius: BorderRadius.circular(4.0),
         child: InkWell(
           onTap: account.host.isNotEmpty
               ? () => context.push('/$account/servers/${host ?? account.host}')

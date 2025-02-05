@@ -47,7 +47,13 @@ class TabsPage extends HookConsumerWidget {
                         title: tabSettings.name != null
                             ? Text(tabSettings.name ?? '')
                             : TabTypeWidget(tabType: tabSettings.tabType),
-                        subtitle: Text(tabSettings.account.toString()),
+                        subtitle: Align(
+                          alignment: AlignmentDirectional.centerStart,
+                          child: Text(
+                            tabSettings.account.toString(),
+                            textDirection: TextDirection.ltr,
+                          ),
+                        ),
                         trailing: const Icon(Icons.drag_handle),
                         onTap: () =>
                             context.push('/settings/tab/${tabSettings.id}'),

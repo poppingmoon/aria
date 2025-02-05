@@ -92,7 +92,7 @@ class ImageDialog extends HookConsumerWidget {
             child: Stack(
               children: [
                 Align(
-                  alignment: Alignment.topLeft,
+                  alignment: AlignmentDirectional.topStart,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: IconButton(
@@ -105,7 +105,7 @@ class ImageDialog extends HookConsumerWidget {
                 ),
                 if (url != null)
                   Align(
-                    alignment: Alignment.topRight,
+                    alignment: AlignmentDirectional.topEnd,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: IconButton(

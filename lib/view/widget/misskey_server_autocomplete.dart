@@ -109,7 +109,7 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
             ),
           ),
           optionsViewBuilder: (context, onSelected, options) => Align(
-            alignment: Alignment.topLeft,
+            alignment: AlignmentDirectional.topStart,
             child: Material(
               elevation: 4.0,
               child: ConstrainedBox(
