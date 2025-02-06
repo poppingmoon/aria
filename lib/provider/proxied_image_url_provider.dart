@@ -36,11 +36,14 @@ Uri? proxiedImageUrl(
           imageUrl.pathSegments.sublist(0, mediaProxyUrl.pathSegments.length),
           mediaProxyUrl.pathSegments,
         )) {
-      if (imageUrl.queryParameters['url'] case final url?) {
-        if (Uri.tryParse(url) case final url?) {
-          imageUrl = url;
-        }
-      }
+      return imageUrl.replace(
+        queryParameters: {
+          ...imageUrl.queryParameters,
+          if (emoji) 'emoji': '1',
+          if (preview) 'preview': '1',
+          if (static) 'static': '1',
+        },
+      );
     }
   } else if (imageUrl.host == host) {
     if (imageUrl.pathSegments.firstOrNull == 'proxy') {
@@ -53,15 +56,7 @@ Uri? proxiedImageUrl(
   }
 
   return mediaProxyUrl.replace(
-    pathSegments: [
-      ...mediaProxyUrl.pathSegments,
-      if (preview)
-        'preview.webp'
-      else if (static)
-        'static.webp'
-      else
-        'image.webp',
-    ],
+    pathSegments: [...mediaProxyUrl.pathSegments, 'image.webp'],
     queryParameters: {
       'url': imageUrl.toString(),
       if (emoji) 'emoji': '1',
