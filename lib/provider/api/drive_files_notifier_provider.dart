@@ -182,4 +182,13 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [file, ...value.items]));
   }
+
+  void replace(DriveFile file) {
+    final value = state.valueOrNull ?? const PaginationState();
+    state = AsyncValue.data(
+      value.copyWith(
+        items: value.items.map((f) => f.id == file.id ? file : f).toList(),
+      ),
+    );
+  }
 }

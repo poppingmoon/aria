@@ -10,7 +10,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/api/misskey_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -326,22 +325,9 @@ class NotificationWidget extends ConsumerWidget {
           ),
           subtitle: Text(t.misskey.showFile),
           createdAt: notification.createdAt,
-          onTap: () async {
+          onTap: () {
             if (notification.fileId case final fileId?) {
-              final file = await futureWithDialog(
-                context,
-                ref
-                    .read(misskeyProvider(account))
-                    .drive
-                    .files
-                    .show(DriveFilesShowRequest(fileId: fileId)),
-              );
-              if (!context.mounted) return;
-              if (file?.folderId case final folderId?) {
-                await context.push('/$account/drive/file/$folderId/$fileId');
-              } else {
-                await context.push('/$account/drive/file/$fileId');
-              }
+              context.push('/$account/drive/file/$fileId');
             }
           },
         );
