@@ -6,7 +6,7 @@ part of 'proxied_image_url_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$proxiedImageUrlHash() => r'd2662e4631925c1a828c126d9efe36463b5a7751';
+String _$proxiedImageUrlHash() => r'273f773eeb4b38bbb2c5d61d1460de6f8c872cda';
 
 /// Copied from Dart SDK
 class _SystemHash {
