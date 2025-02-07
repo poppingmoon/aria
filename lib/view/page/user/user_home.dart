@@ -471,7 +471,7 @@ class _UserHome extends ConsumerWidget {
                                 .map(
                                   (link) => InkWell(
                                     onTap: () =>
-                                        launchUrl(ref, Uri.parse(link.url)),
+                                        navigate(ref, account, link.url),
                                     onLongPress: () =>
                                         showModalBottomSheet<void>(
                                       context: context,

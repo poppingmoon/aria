@@ -135,7 +135,7 @@ class DriveFileSheet extends ConsumerWidget {
 
   Future<void> _download(WidgetRef ref) async {
     final isImage = file.type.startsWith('image/');
-    final isVideo = file.type.startsWith('image/');
+    final isVideo = file.type.startsWith('video/');
     if (!isImage && !isVideo) {
       await launchUrl(ref, Uri.parse(file.url));
       return;
