@@ -34,9 +34,9 @@ class UserInfo extends ConsumerWidget {
     );
     final style = DefaultTextStyle.of(context).style;
 
-    return Card(
+    return Card.filled(
       color: Theme.of(context).colorScheme.surface,
-      elevation: 0.0,
+      margin: EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('/$account/users/${user.id}'),

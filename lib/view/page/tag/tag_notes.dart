@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/id.dart';
@@ -44,62 +45,67 @@ class TagNotes extends HookConsumerWidget {
 
     return PaginatedListView(
       header: SliverToBoxAdapter(
-        child: ExpansionTile(
-          title: Text(t.misskey.options),
-          children: [
-            ListTile(
-              title: Text(t.aria.sinceDate),
-              subtitle: Text(
-                sinceDate.value != null
-                    ? absoluteTime(sinceDate.value!)
-                    : t.misskey.notSet,
-              ),
-              trailing: sinceDate.value != null
-                  ? IconButton(
-                      onPressed: () => sinceDate.value = null,
-                      icon: const Icon(Icons.close),
-                    )
-                  : const Icon(Icons.navigate_next),
-              onTap: () async {
-                final result = await pickDateTime(
-                  context,
-                  initialDate: sinceDate.value,
-                );
-                if (result != null) {
-                  sinceDate.value = result;
-                }
-              },
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            width: maxContentWidth,
+            child: ExpansionTile(
+              title: Text(t.misskey.options),
+              children: [
+                ListTile(
+                  title: Text(t.aria.sinceDate),
+                  subtitle: Text(
+                    sinceDate.value != null
+                        ? absoluteTime(sinceDate.value!)
+                        : t.misskey.notSet,
+                  ),
+                  trailing: sinceDate.value != null
+                      ? IconButton(
+                          onPressed: () => sinceDate.value = null,
+                          icon: const Icon(Icons.close),
+                        )
+                      : const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await pickDateTime(
+                      context,
+                      initialDate: sinceDate.value,
+                    );
+                    if (result != null) {
+                      sinceDate.value = result;
+                    }
+                  },
+                ),
+                ListTile(
+                  title: Text(t.aria.untilDate),
+                  subtitle: Text(
+                    untilDate.value != null
+                        ? absoluteTime(untilDate.value!)
+                        : t.misskey.notSet,
+                  ),
+                  trailing: untilDate.value != null
+                      ? IconButton(
+                          onPressed: () => untilDate.value = null,
+                          icon: const Icon(Icons.close),
+                        )
+                      : const Icon(Icons.navigate_next),
+                  onTap: () async {
+                    final result = await pickDateTime(
+                      context,
+                      initialDate: untilDate.value,
+                    );
+                    if (result != null) {
+                      untilDate.value = result;
+                    }
+                  },
+                ),
+              ],
             ),
-            ListTile(
-              title: Text(t.aria.untilDate),
-              subtitle: Text(
-                untilDate.value != null
-                    ? absoluteTime(untilDate.value!)
-                    : t.misskey.notSet,
-              ),
-              trailing: untilDate.value != null
-                  ? IconButton(
-                      onPressed: () => untilDate.value = null,
-                      icon: const Icon(Icons.close),
-                    )
-                  : const Icon(Icons.navigate_next),
-              onTap: () async {
-                final result = await pickDateTime(
-                  context,
-                  initialDate: untilDate.value,
-                );
-                if (result != null) {
-                  untilDate.value = result;
-                }
-              },
-            ),
-          ],
+          ),
         ),
       ),
       paginationState: notes,
       itemBuilder: (context, note) =>
           NoteWidget(account: account, noteId: note.id),
-      footer: const SliverToBoxAdapter(child: SizedBox(height: 80.0)),
       onRefresh: () => ref.refresh(
         tagNotesNotifierProvider(
           account,

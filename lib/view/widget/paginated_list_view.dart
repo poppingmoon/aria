@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../constant/inifite_scroll_extent_threshold.dart';
+import '../../constant/max_content_width.dart';
 import '../../model/pagination_state.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import 'pagination_bottom_widget.dart';
@@ -58,72 +59,68 @@ class PaginatedListView<T> extends HookConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: onRefresh ?? () async {},
-      child: Center(
-        child: Container(
-          width: 800.0,
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: CustomScrollView(
-            controller: controller,
-            physics: const AlwaysScrollableScrollPhysics(),
-            slivers: [
-              if (header case final header?) header,
-              if (paginationState != null) ...[
-                if (paginationState?.valueOrNull
-                    case PaginationState(:final items))
-                  if (items.isNotEmpty) ...[
-                    if (panel)
-                      SliverToBoxAdapter(
-                        child: Container(
-                          height: 8.0,
-                          margin: const EdgeInsets.only(top: 8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(8.0),
-                              topRight: Radius.circular(8.0),
-                            ),
-                            color: Theme.of(context).colorScheme.surface,
-                          ),
-                        ),
-                      ),
-                    SliverList.separated(
-                      itemBuilder: (context, index) => Material(
-                        color: panel
-                            ? Theme.of(context).colorScheme.surface
-                            : null,
-                        child: itemBuilder(context, items[index]),
-                      ),
-                      separatorBuilder: (context, index) => panel
-                          ? const Divider(height: 0)
-                          : const SizedBox.shrink(),
-                      itemCount: items.length,
+      child: CustomScrollView(
+        controller: controller,
+        physics: const AlwaysScrollableScrollPhysics(),
+        slivers: [
+          if (header case final header?) header,
+          if (paginationState case final paginationState?) ...[
+            if (paginationState.valueOrNull?.items case final items?
+                when items.isNotEmpty)
+              SliverList.separated(
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      top: index == 0 ? 8.0 : 0.0,
+                      left: 8.0,
+                      right: 8.0,
+                      bottom: index == items.length - 1 ? 8.0 : 0.0,
                     ),
-                    if (panel)
-                      SliverToBoxAdapter(
-                        child: Container(
-                          height: 8.0,
-                          margin: const EdgeInsets.only(bottom: 8.0),
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(8.0),
-                              bottomRight: Radius.circular(8.0),
-                            ),
-                            color: Theme.of(context).colorScheme.surface,
-                          ),
-                        ),
+                    width: maxContentWidth,
+                    child: Material(
+                      color:
+                          panel ? Theme.of(context).colorScheme.surface : null,
+                      borderRadius: BorderRadius.vertical(
+                        top: panel && index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: panel && index == items.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
                       ),
-                  ],
-                SliverToBoxAdapter(
-                  child: PaginationBottomWidget(
-                    paginationState: paginationState!,
-                    noItemsLabel: noItemsLabel,
-                    loadMore: loadMore != null ? () => loadMore!(true) : null,
+                      clipBehavior: Clip.hardEdge,
+                      child: itemBuilder(context, items[index]),
+                    ),
                   ),
                 ),
-              ],
-              if (footer case final footer?) footer,
-            ],
-          ),
-        ),
+                separatorBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: panel
+                        ? const Divider(height: 0.0)
+                        : const SizedBox(height: 8.0),
+                  ),
+                ),
+                itemCount: items.length,
+              ),
+            SliverToBoxAdapter(
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: PaginationBottomWidget(
+                    paginationState: paginationState,
+                    noItemsLabel: noItemsLabel,
+                    loadMore: loadMore != null ? () => loadMore!(true) : null,
+                    height: 120.0,
+                  ),
+                ),
+              ),
+            ),
+          ],
+          if (footer case final footer?) footer,
+        ],
       ),
     );
   }

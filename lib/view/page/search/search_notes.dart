@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -80,156 +81,170 @@ class SearchNotes extends HookConsumerWidget {
     return PaginatedListView(
       header: SliverList.list(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Shortcuts(
-              shortcuts: disablingTextShortcuts,
-              child: TextField(
-                controller: controller,
-                focusNode: focusNode,
-                decoration:
-                    const InputDecoration(prefixIcon: Icon(Icons.search)),
-                autofocus: true,
-                onSubmitted: (value) => query.value = value.trim(),
-                textInputAction: TextInputAction.search,
-                onTapOutside: (_) => focusNode?.unfocus(),
+          const SizedBox(height: 8.0),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: Shortcuts(
+                shortcuts: disablingTextShortcuts,
+                child: TextField(
+                  controller: controller,
+                  focusNode: focusNode,
+                  decoration:
+                      const InputDecoration(prefixIcon: Icon(Icons.search)),
+                  autofocus: true,
+                  onSubmitted: (value) => query.value = value.trim(),
+                  textInputAction: TextInputAction.search,
+                  onTapOutside: (_) => focusNode?.unfocus(),
+                ),
               ),
             ),
           ),
-          ExpansionTile(
-            title: Text(t.misskey.options),
-            initiallyExpanded: this.userId != null || this.channelId != null,
-            children: [
-              SwitchListTile(
-                title: Text(t.misskey.localOnly),
-                value: localOnly.value,
-                onChanged: channelId.value == null
-                    ? (value) => localOnly.value = value
-                    : null,
-              ),
-              ListTile(
-                title: Text(t.misskey.user),
-                subtitle: user != null
-                    ? UsernameWidget(
-                        account: account,
-                        leadingSpans: [
-                          WidgetSpan(
-                            child: UserAvatar(account: account, user: user),
-                          ),
-                          const TextSpan(text: ' '),
-                        ],
-                        user: user,
-                        trailingSpans: [
-                          const TextSpan(text: ' '),
-                          TextSpan(text: '@${user.username}'),
-                          if (user.host != null)
-                            TextSpan(
-                              text: '@${toUnicode(user.host!)}',
-                              style: TextStyle(
-                                color: style.color?.withValues(alpha: 0.5),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ExpansionTile(
+                title: Text(t.misskey.options),
+                initiallyExpanded:
+                    this.userId != null || this.channelId != null,
+                children: [
+                  SwitchListTile(
+                    title: Text(t.misskey.localOnly),
+                    value: localOnly.value,
+                    onChanged: channelId.value == null
+                        ? (value) => localOnly.value = value
+                        : null,
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.user),
+                    subtitle: user != null
+                        ? UsernameWidget(
+                            account: account,
+                            leadingSpans: [
+                              WidgetSpan(
+                                child: UserAvatar(account: account, user: user),
                               ),
-                            ),
-                        ],
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      )
-                    : Text(t.misskey.notSet),
-                trailing: userId.value != null
-                    ? IconButton(
-                        onPressed: () => userId.value = null,
-                        icon: const Icon(Icons.close),
-                      )
-                    : const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await selectUser(
-                    context,
-                    account,
-                    includeSelf: true,
-                    localOnly: localOnly.value,
-                  );
-                  if (result != null) {
-                    userId.value = result.id;
-                  }
-                },
-              ),
-              ListTile(
-                title: Text(t.misskey.channel),
-                subtitle: Text(channel?.name ?? t.misskey.notSet),
-                trailing: channelId.value != null
-                    ? IconButton(
-                        onPressed: () => channelId.value = null,
-                        icon: const Icon(Icons.close),
-                      )
-                    : const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await showDialog<CommunityChannel>(
-                    context: context,
-                    builder: (context) => ChannelsPage(
-                      account: account,
-                      onChannelTap: (channel) => context.pop(channel),
-                      initialIndex: account.isGuest ? 1 : 2,
+                              const TextSpan(text: ' '),
+                            ],
+                            user: user,
+                            trailingSpans: [
+                              const TextSpan(text: ' '),
+                              TextSpan(text: '@${user.username}'),
+                              if (user.host != null)
+                                TextSpan(
+                                  text: '@${toUnicode(user.host!)}',
+                                  style: TextStyle(
+                                    color: style.color?.withValues(alpha: 0.5),
+                                  ),
+                                ),
+                            ],
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          )
+                        : Text(t.misskey.notSet),
+                    trailing: userId.value != null
+                        ? IconButton(
+                            onPressed: () => userId.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await selectUser(
+                        context,
+                        account,
+                        includeSelf: true,
+                        localOnly: localOnly.value,
+                      );
+                      if (result != null) {
+                        userId.value = result.id;
+                      }
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.misskey.channel),
+                    subtitle: Text(channel?.name ?? t.misskey.notSet),
+                    trailing: channelId.value != null
+                        ? IconButton(
+                            onPressed: () => channelId.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await showDialog<CommunityChannel>(
+                        context: context,
+                        builder: (context) => ChannelsPage(
+                          account: account,
+                          onChannelTap: (channel) => context.pop(channel),
+                          initialIndex: account.isGuest ? 1 : 2,
+                        ),
+                      );
+                      if (result != null) {
+                        channelId.value = result.id;
+                        localOnly.value = true;
+                      }
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.aria.sinceDate),
+                    subtitle: Text(
+                      sinceDate.value != null
+                          ? absoluteTime(sinceDate.value!)
+                          : t.misskey.notSet,
                     ),
-                  );
-                  if (result != null) {
-                    channelId.value = result.id;
-                    localOnly.value = true;
-                  }
-                },
+                    trailing: sinceDate.value != null
+                        ? IconButton(
+                            onPressed: () => sinceDate.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await pickDateTime(
+                        context,
+                        initialDate: sinceDate.value,
+                      );
+                      if (result != null) {
+                        sinceDate.value = result;
+                      }
+                    },
+                  ),
+                  ListTile(
+                    title: Text(t.aria.untilDate),
+                    subtitle: Text(
+                      untilDate.value != null
+                          ? absoluteTime(untilDate.value!)
+                          : t.misskey.notSet,
+                    ),
+                    trailing: untilDate.value != null
+                        ? IconButton(
+                            onPressed: () => untilDate.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                        : const Icon(Icons.navigate_next),
+                    onTap: () async {
+                      final result = await pickDateTime(
+                        context,
+                        initialDate: untilDate.value,
+                      );
+                      if (result != null) {
+                        untilDate.value = result;
+                      }
+                    },
+                  ),
+                ],
               ),
-              ListTile(
-                title: Text(t.aria.sinceDate),
-                subtitle: Text(
-                  sinceDate.value != null
-                      ? absoluteTime(sinceDate.value!)
-                      : t.misskey.notSet,
-                ),
-                trailing: sinceDate.value != null
-                    ? IconButton(
-                        onPressed: () => sinceDate.value = null,
-                        icon: const Icon(Icons.close),
-                      )
-                    : const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await pickDateTime(
-                    context,
-                    initialDate: sinceDate.value,
-                  );
-                  if (result != null) {
-                    sinceDate.value = result;
-                  }
-                },
-              ),
-              ListTile(
-                title: Text(t.aria.untilDate),
-                subtitle: Text(
-                  untilDate.value != null
-                      ? absoluteTime(untilDate.value!)
-                      : t.misskey.notSet,
-                ),
-                trailing: untilDate.value != null
-                    ? IconButton(
-                        onPressed: () => untilDate.value = null,
-                        icon: const Icon(Icons.close),
-                      )
-                    : const Icon(Icons.navigate_next),
-                onTap: () async {
-                  final result = await pickDateTime(
-                    context,
-                    initialDate: untilDate.value,
-                  );
-                  if (result != null) {
-                    untilDate.value = result;
-                  }
-                },
-              ),
-            ],
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () => query.value = controller.text.trim(),
-              child: Text(t.misskey.search),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ElevatedButton(
+                onPressed: () => query.value = controller.text.trim(),
+                child: Text(t.misskey.search),
+              ),
             ),
           ),
         ],

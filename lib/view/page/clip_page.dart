@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/clip_settings.dart';
@@ -128,129 +129,33 @@ class ClipPage extends HookConsumerWidget {
       ),
       body: PaginatedListView(
         header: SliverToBoxAdapter(
-          child: Card(
-            color: Theme.of(context).colorScheme.surface,
-            elevation: 0.0,
-            margin: const EdgeInsets.only(top: 8.0),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (clip case Clip(:final description?))
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
-                      child: Mfm(
-                        account: account,
-                        text: description,
-                        author: clip.user,
-                      ),
-                    )
-                  else
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
-                      child: Text('(${t.misskey.noDescription})'),
-                    ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: LikeButton(
-                      isLiked: clip?.isFavorited ?? false,
-                      likedCount: clip?.favoritedCount ?? 0,
-                      onTap: !account.isGuest
-                          ? () {
-                              if (myClip == null) {
-                                if (clip?.isFavorited ?? false) {
-                                  futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          clipNotifierProvider(account, clipId)
-                                              .notifier,
-                                        )
-                                        .unfavorite(),
-                                  );
-                                } else {
-                                  futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          clipNotifierProvider(account, clipId)
-                                              .notifier,
-                                        )
-                                        .favorite(),
-                                  );
-                                }
-                              } else {
-                                if (clip?.isFavorited ?? false) {
-                                  futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          clipsNotifierProvider(account)
-                                              .notifier,
-                                        )
-                                        .unfavorite(clipId),
-                                  );
-                                } else {
-                                  futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          clipsNotifierProvider(account)
-                                              .notifier,
-                                        )
-                                        .favorite(clipId),
-                                  );
-                                }
-                              }
-                            }
-                          : null,
-                    ),
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: Card(
+                color: Theme.of(context).colorScheme.surface,
+                elevation: 0.0,
+                margin: const EdgeInsets.only(top: 8.0),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: _ClipDescription(
+                    account: account,
+                    clipId: clipId,
+                    clip: clip,
+                    isMyClip: myClip != null,
                   ),
-                  if (clip case Clip(:final user)) ...[
-                    const Divider(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2.0),
-                      child: Row(
-                        children: [
-                          UserAvatar(
-                            account: account,
-                            user: user,
-                            size: 32.0,
-                            onTap: () =>
-                                context.push('/$account/users/${user.id}'),
-                          ),
-                          const SizedBox(width: 4.0),
-                          Expanded(
-                            child: Align(
-                              alignment: AlignmentDirectional.centerStart,
-                              child: InkWell(
-                                onTap: () =>
-                                    context.push('/$account/users/${user.id}'),
-                                onLongPress: () => showUserSheet(
-                                  context: context,
-                                  account: account,
-                                  userId: user.id,
-                                ),
-                                child: UsernameWidget(
-                                  account: account,
-                                  user: user,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ],
+                ),
               ),
             ),
           ),
         ),
         paginationState: notes,
-        itemBuilder: (context, note) =>
-            NoteWidget(account: account, noteId: note.id),
+        itemBuilder: (context, note) => NoteWidget(
+          account: account,
+          noteId: note.id,
+          withHardMute: false,
+        ),
         onRefresh: () =>
             ref.refresh(clipNotesNotifierProvider(account, clipId).future),
         loadMore: (skipError) => ref
@@ -264,6 +169,122 @@ class ClipPage extends HookConsumerWidget {
               child: const Icon(Icons.edit),
             )
           : null,
+    );
+  }
+}
+
+class _ClipDescription extends ConsumerWidget {
+  const _ClipDescription({
+    required this.account,
+    required this.clipId,
+    required this.clip,
+    required this.isMyClip,
+  });
+
+  final Account account;
+  final String clipId;
+  final Clip? clip;
+  final bool isMyClip;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (clip case Clip(:final description?, :final user))
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: Mfm(
+              account: account,
+              text: description,
+              author: user,
+            ),
+          )
+        else
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: Text('(${t.misskey.noDescription})'),
+          ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4.0),
+          child: LikeButton(
+            isLiked: clip?.isFavorited ?? false,
+            likedCount: clip?.favoritedCount ?? 0,
+            onTap: !account.isGuest
+                ? () {
+                    if (isMyClip) {
+                      if (clip?.isFavorited ?? false) {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(clipsNotifierProvider(account).notifier)
+                              .unfavorite(clipId),
+                        );
+                      } else {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(clipsNotifierProvider(account).notifier)
+                              .favorite(clipId),
+                        );
+                      }
+                    } else {
+                      if (clip?.isFavorited ?? false) {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(
+                                clipNotifierProvider(account, clipId).notifier,
+                              )
+                              .unfavorite(),
+                        );
+                      } else {
+                        futureWithDialog(
+                          context,
+                          ref
+                              .read(
+                                clipNotifierProvider(account, clipId).notifier,
+                              )
+                              .favorite(),
+                        );
+                      }
+                    }
+                  }
+                : null,
+          ),
+        ),
+        if (clip case Clip(:final user)) ...[
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: Row(
+              children: [
+                UserAvatar(
+                  account: account,
+                  user: user,
+                  size: 32.0,
+                  onTap: () => context.push('/$account/users/${user.id}'),
+                ),
+                const SizedBox(width: 4.0),
+                Expanded(
+                  child: Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: InkWell(
+                      onTap: () => context.push('/$account/users/${user.id}'),
+                      onLongPress: () => showUserSheet(
+                        context: context,
+                        account: account,
+                        userId: user.id,
+                      ),
+                      child: UsernameWidget(account: account, user: user),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ],
     );
   }
 }

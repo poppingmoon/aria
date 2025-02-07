@@ -8,13 +8,14 @@ import 'package:share_plus/share_plus.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/list_settings.dart';
+import '../../../model/tab_settings.dart';
 import '../../../provider/api/lists_notifier_provider.dart';
 import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../../util/launch_url.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../dialog/list_settings_dialog.dart';
-import 'list_notes.dart';
+import '../../widget/timeline_list_view.dart';
 import 'list_users.dart';
 
 class ListPage extends HookConsumerWidget {
@@ -130,7 +131,9 @@ class ListPage extends HookConsumerWidget {
         ),
         body: TabBarView(
           children: [
-            ListNotes(account: account, listId: listId),
+            TimelineListView(
+              tabSettings: TabSettings.userList(account, listId),
+            ),
             ListUsers(account: account, listId: listId),
           ],
         ),

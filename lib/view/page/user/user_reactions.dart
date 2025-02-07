@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/user_reactions_notifier_provider.dart';
+import '../../widget/emoji_sheet.dart';
 import '../../widget/emoji_widget.dart';
 import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
@@ -27,7 +28,12 @@ class UserReactions extends ConsumerWidget {
       paginationState: reactions,
       itemBuilder: (context, reaction) => Column(
         children: [
-          Padding(
+          Container(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(8.0)),
+            ),
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -39,6 +45,13 @@ class UserReactions extends ConsumerWidget {
                       .style
                       .apply(fontSizeFactor: 1.5),
                   emojis: reaction.note.reactionEmojis,
+                  onTap: () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => EmojiSheet(
+                      account: account,
+                      emoji: reaction.type,
+                    ),
+                  ),
                 ),
                 TimeWidget(time: reaction.createdAt),
               ],
@@ -48,17 +61,17 @@ class UserReactions extends ConsumerWidget {
             account: account,
             noteId: reaction.note.id,
             withHardMute: false,
+            borderRadius:
+                const BorderRadius.vertical(bottom: Radius.circular(8.0)),
           ),
         ],
       ),
-      onRefresh: () => ref.refresh(
-        userReactionsNotifierProvider(account, userId).future,
-      ),
+      onRefresh: () =>
+          ref.refresh(userReactionsNotifierProvider(account, userId).future),
       loadMore: (skipError) => ref
-          .read(
-            userReactionsNotifierProvider(account, userId).notifier,
-          )
+          .read(userReactionsNotifierProvider(account, userId).notifier)
           .loadMore(skipError: skipError),
+      panel: false,
       noItemsLabel: t.misskey.nothing,
     );
   }

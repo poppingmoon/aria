@@ -61,6 +61,7 @@ class ExploreFeatured extends HookConsumerWidget {
             .read(featuredPollsNotifierProvider(account).notifier)
             .loadMore(skipError: skipError),
       },
+      noItemsLabel: t.misskey.noNotes,
     );
   }
 }
