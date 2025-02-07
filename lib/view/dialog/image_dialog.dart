@@ -12,6 +12,7 @@ import 'package:photo_view/photo_view.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/cache_manager_provider.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
 Future<void> showImageDialog(
@@ -96,6 +97,8 @@ class ImageDialog extends HookConsumerWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: IconButton(
+                      tooltip:
+                          MaterialLocalizations.of(context).closeButtonTooltip,
                       style:
                           IconButton.styleFrom(backgroundColor: Colors.white54),
                       onPressed: () => context.pop(),
@@ -103,37 +106,52 @@ class ImageDialog extends HookConsumerWidget {
                     ),
                   ),
                 ),
-                if (url != null)
+                if (url case final url?)
                   Align(
                     alignment: AlignmentDirectional.topEnd,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          backgroundColor: Colors.white54,
+                      child: Material(
+                        color: Colors.white54,
+                        shape: const OvalBorder(),
+                        child: PopupMenuButton<void>(
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                              onTap: () async {
+                                if (!await Gal.requestAccess()) {
+                                  if (!context.mounted) return;
+                                  await showMessageDialog(
+                                    context,
+                                    t.misskey.permissionDeniedError,
+                                  );
+                                  return;
+                                }
+                                if (!context.mounted) return;
+                                await futureWithDialog(
+                                  context,
+                                  Future(() async {
+                                    final file = await ref
+                                        .read(cacheManagerProvider)
+                                        .getSingleFile(url);
+                                    await Gal.putImage(file.path);
+                                  }),
+                                  message: t.aria.downloaded,
+                                );
+                              },
+                              child: ListTile(
+                                leading: const Icon(Icons.download),
+                                title: Text(t.misskey.download),
+                              ),
+                            ),
+                            PopupMenuItem(
+                              onTap: () => launchUrl(ref, Uri.parse(url)),
+                              child: ListTile(
+                                leading: const Icon(Icons.open_in_browser),
+                                title: Text(t.aria.openInBrowser),
+                              ),
+                            ),
+                          ],
                         ),
-                        onPressed: () async {
-                          if (!await Gal.requestAccess()) {
-                            if (!context.mounted) return;
-                            await showMessageDialog(
-                              context,
-                              t.misskey.permissionDeniedError,
-                            );
-                            return;
-                          }
-                          if (!context.mounted) return;
-                          await futureWithDialog(
-                            context,
-                            Future(() async {
-                              final file = await ref
-                                  .read(cacheManagerProvider)
-                                  .getSingleFile(url!);
-                              await Gal.putImage(file.path);
-                            }),
-                            message: t.aria.downloaded,
-                          );
-                        },
-                        icon: const Icon(Icons.save),
                       ),
                     ),
                   ),

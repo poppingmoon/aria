@@ -135,7 +135,7 @@ class DriveFileSheet extends ConsumerWidget {
 
   Future<void> _download(WidgetRef ref) async {
     final isImage = file.type.startsWith('image/');
-    final isVideo = file.type.startsWith('image/');
+    final isVideo = file.type.startsWith('video/');
     if (!isImage && !isVideo) {
       await launchUrl(ref, Uri.parse(file.url));
       return;
@@ -173,18 +173,18 @@ class DriveFileSheet extends ConsumerWidget {
     );
     if (result == null) return;
     if (!ref.context.mounted) return;
-    await futureWithDialog(
+    final moved = await futureWithDialog(
       ref.context,
       ref
           .read(driveFilesNotifierProvider(account, file.folderId).notifier)
-          .move(
-            fileId: file.id,
-            folderId: result.$1?.id,
-          ),
+          .move(fileId: file.id, folderId: result.$1?.id)
+          .then((_) => true),
       message: t.aria.moved,
     );
     if (!ref.context.mounted) return;
-    ref.context.pop();
+    if (moved ?? false) {
+      ref.context.pop((deleted: true));
+    }
   }
 
   Future<void> _delete(WidgetRef ref) async {
@@ -194,18 +194,21 @@ class DriveFileSheet extends ConsumerWidget {
     );
     if (!ref.context.mounted) return;
     if (result) {
-      await futureWithDialog(
+      final deleted = await futureWithDialog(
         ref.context,
         ref
             .read(
               driveFilesNotifierProvider(account, file.folderId).notifier,
             )
-            .delete(file.id),
+            .delete(file.id)
+            .then((_) => true),
         message: t.misskey.removed,
       );
-      ref.read(selectedDriveFilesNotifierProvider.notifier).remove(file.id);
-      if (!ref.context.mounted) return;
-      ref.context.pop();
+      if (deleted ?? false) {
+        ref.read(selectedDriveFilesNotifierProvider.notifier).remove(file.id);
+        if (!ref.context.mounted) return;
+        ref.context.pop((deleted: true));
+      }
     }
   }
 

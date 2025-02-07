@@ -903,6 +903,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
+  gal_linux:
+    dependency: "direct main"
+    description:
+      name: gal_linux
+      sha256: "0040d61843134cc5a93e4597080a86f2ba073217957e28b2a684b4d8b050873c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   glob:
     dependency: transitive
     description:

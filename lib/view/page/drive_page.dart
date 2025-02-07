@@ -375,9 +375,7 @@ class DrivePage extends HookConsumerWidget {
                                     .add(file);
                               }
                             } else {
-                              context.push(
-                                '/$account/drive/file/${folderId != null ? '$folderId/' : ''}${file.id}',
-                              );
+                              context.push('/$account/drive/file/${file.id}');
                             }
                           },
                           onLongPress: () => ref

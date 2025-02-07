@@ -6,7 +6,7 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/post_file.dart';
-import '../../provider/api/drive_files_notifier_provider.dart';
+import '../../provider/api/drive_file_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/copy_text.dart';
@@ -41,10 +41,8 @@ class DriveFileInfo extends ConsumerWidget {
       await futureWithDialog(
         ref.context,
         ref
-            .read(
-              driveFilesNotifierProvider(account, file.folderId).notifier,
-            )
-            .updateFile(fileId: file.id, name: name),
+            .read(driveFileNotifierProvider(account, file.id).notifier)
+            .updateFile(name: name),
       );
     }
   }
@@ -61,10 +59,8 @@ class DriveFileInfo extends ConsumerWidget {
       await futureWithDialog(
         ref.context,
         ref
-            .read(
-              driveFilesNotifierProvider(account, file.folderId).notifier,
-            )
-            .updateFile(fileId: file.id, comment: comment),
+            .read(driveFileNotifierProvider(account, file.id).notifier)
+            .updateFile(comment: comment),
       );
     }
   }
@@ -72,10 +68,8 @@ class DriveFileInfo extends ConsumerWidget {
   Future<void> _setIsSensitive(WidgetRef ref, bool? isSensitive) async {
     if (isSensitive == null) return;
     await ref
-        .read(
-          driveFilesNotifierProvider(account, file.folderId).notifier,
-        )
-        .updateFile(fileId: file.id, isSensitive: isSensitive);
+        .read(driveFileNotifierProvider(account, file.id).notifier)
+        .updateFile(isSensitive: isSensitive);
   }
 
   @override

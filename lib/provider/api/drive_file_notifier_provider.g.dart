@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'drive_files_notifier_provider.dart';
+part of 'drive_file_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$driveFilesNotifierHash() =>
-    r'326c2184323465bbb154737159190abd3a6afdb7';
+String _$driveFileNotifierHash() => r'089739ee8d5b2d93121b4049441aac475c55c466';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -30,45 +29,44 @@ class _SystemHash {
   }
 }
 
-abstract class _$DriveFilesNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<DriveFile>> {
+abstract class _$DriveFileNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<DriveFile> {
   late final Account account;
-  late final String? folderId;
+  late final String fileId;
 
-  FutureOr<PaginationState<DriveFile>> build(
+  FutureOr<DriveFile> build(
     Account account,
-    String? folderId,
+    String fileId,
   );
 }
 
-/// See also [DriveFilesNotifier].
-@ProviderFor(DriveFilesNotifier)
-const driveFilesNotifierProvider = DriveFilesNotifierFamily();
+/// See also [DriveFileNotifier].
+@ProviderFor(DriveFileNotifier)
+const driveFileNotifierProvider = DriveFileNotifierFamily();
 
-/// See also [DriveFilesNotifier].
-class DriveFilesNotifierFamily
-    extends Family<AsyncValue<PaginationState<DriveFile>>> {
-  /// See also [DriveFilesNotifier].
-  const DriveFilesNotifierFamily();
+/// See also [DriveFileNotifier].
+class DriveFileNotifierFamily extends Family<AsyncValue<DriveFile>> {
+  /// See also [DriveFileNotifier].
+  const DriveFileNotifierFamily();
 
-  /// See also [DriveFilesNotifier].
-  DriveFilesNotifierProvider call(
+  /// See also [DriveFileNotifier].
+  DriveFileNotifierProvider call(
     Account account,
-    String? folderId,
+    String fileId,
   ) {
-    return DriveFilesNotifierProvider(
+    return DriveFileNotifierProvider(
       account,
-      folderId,
+      fileId,
     );
   }
 
   @override
-  DriveFilesNotifierProvider getProviderOverride(
-    covariant DriveFilesNotifierProvider provider,
+  DriveFileNotifierProvider getProviderOverride(
+    covariant DriveFileNotifierProvider provider,
   ) {
     return call(
       provider.account,
-      provider.folderId,
+      provider.fileId,
     );
   }
 
@@ -84,34 +82,34 @@ class DriveFilesNotifierFamily
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'driveFilesNotifierProvider';
+  String? get name => r'driveFileNotifierProvider';
 }
 
-/// See also [DriveFilesNotifier].
-class DriveFilesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    DriveFilesNotifier, PaginationState<DriveFile>> {
-  /// See also [DriveFilesNotifier].
-  DriveFilesNotifierProvider(
+/// See also [DriveFileNotifier].
+class DriveFileNotifierProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<DriveFileNotifier, DriveFile> {
+  /// See also [DriveFileNotifier].
+  DriveFileNotifierProvider(
     Account account,
-    String? folderId,
+    String fileId,
   ) : this._internal(
-          () => DriveFilesNotifier()
+          () => DriveFileNotifier()
             ..account = account
-            ..folderId = folderId,
-          from: driveFilesNotifierProvider,
-          name: r'driveFilesNotifierProvider',
+            ..fileId = fileId,
+          from: driveFileNotifierProvider,
+          name: r'driveFileNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$driveFilesNotifierHash,
-          dependencies: DriveFilesNotifierFamily._dependencies,
+                  : _$driveFileNotifierHash,
+          dependencies: DriveFileNotifierFamily._dependencies,
           allTransitiveDependencies:
-              DriveFilesNotifierFamily._allTransitiveDependencies,
+              DriveFileNotifierFamily._allTransitiveDependencies,
           account: account,
-          folderId: folderId,
+          fileId: fileId,
         );
 
-  DriveFilesNotifierProvider._internal(
+  DriveFileNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -119,59 +117,59 @@ class DriveFilesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.account,
-    required this.folderId,
+    required this.fileId,
   }) : super.internal();
 
   final Account account;
-  final String? folderId;
+  final String fileId;
 
   @override
-  FutureOr<PaginationState<DriveFile>> runNotifierBuild(
-    covariant DriveFilesNotifier notifier,
+  FutureOr<DriveFile> runNotifierBuild(
+    covariant DriveFileNotifier notifier,
   ) {
     return notifier.build(
       account,
-      folderId,
+      fileId,
     );
   }
 
   @override
-  Override overrideWith(DriveFilesNotifier Function() create) {
+  Override overrideWith(DriveFileNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: DriveFilesNotifierProvider._internal(
+      override: DriveFileNotifierProvider._internal(
         () => create()
           ..account = account
-          ..folderId = folderId,
+          ..fileId = fileId,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         account: account,
-        folderId: folderId,
+        fileId: fileId,
       ),
     );
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<DriveFilesNotifier,
-      PaginationState<DriveFile>> createElement() {
-    return _DriveFilesNotifierProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<DriveFileNotifier, DriveFile>
+      createElement() {
+    return _DriveFileNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is DriveFilesNotifierProvider &&
+    return other is DriveFileNotifierProvider &&
         other.account == account &&
-        other.folderId == folderId;
+        other.fileId == fileId;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, folderId.hashCode);
+    hash = _SystemHash.combine(hash, fileId.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -179,24 +177,23 @@ class DriveFilesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin DriveFilesNotifierRef
-    on AutoDisposeAsyncNotifierProviderRef<PaginationState<DriveFile>> {
+mixin DriveFileNotifierRef on AutoDisposeAsyncNotifierProviderRef<DriveFile> {
   /// The parameter `account` of this provider.
   Account get account;
 
-  /// The parameter `folderId` of this provider.
-  String? get folderId;
+  /// The parameter `fileId` of this provider.
+  String get fileId;
 }
 
-class _DriveFilesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<DriveFilesNotifier,
-        PaginationState<DriveFile>> with DriveFilesNotifierRef {
-  _DriveFilesNotifierProviderElement(super.provider);
+class _DriveFileNotifierProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<DriveFileNotifier,
+        DriveFile> with DriveFileNotifierRef {
+  _DriveFileNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as DriveFilesNotifierProvider).account;
+  Account get account => (origin as DriveFileNotifierProvider).account;
   @override
-  String? get folderId => (origin as DriveFilesNotifierProvider).folderId;
+  String get fileId => (origin as DriveFileNotifierProvider).fileId;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

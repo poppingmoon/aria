@@ -386,15 +386,6 @@ GoRouter router(Ref ref) {
                 builder: (_, state) => DriveFilePage(
                   account: Account.fromString(state.pathParameters['acct']!),
                   fileId: state.pathParameters['fileId']!,
-                  folderId: null,
-                ),
-              ),
-              GoRoute(
-                path: 'file/:folderId/:fileId',
-                builder: (_, state) => DriveFilePage(
-                  account: Account.fromString(state.pathParameters['acct']!),
-                  fileId: state.pathParameters['fileId']!,
-                  folderId: state.pathParameters['folderId'],
                 ),
               ),
             ],

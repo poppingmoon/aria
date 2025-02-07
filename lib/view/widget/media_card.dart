@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:gal/gal.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
@@ -10,18 +11,23 @@ import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/general_settings.dart';
+import '../../provider/cache_manager_provider.dart';
 import '../../provider/data_saver_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/static_image_url_provider.dart';
+import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../../util/pretty_bytes.dart';
 import '../dialog/audio_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/image_gallery_dialog.dart';
+import '../dialog/message_dialog.dart';
 import '../dialog/video_dialog.dart';
 import 'image_widget.dart';
 import 'media_icon.dart';
+import 'user_avatar.dart';
+import 'username_widget.dart';
 
 class MediaCard extends HookConsumerWidget {
   const MediaCard({
@@ -72,7 +78,8 @@ class MediaCard extends HookConsumerWidget {
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
     final style = DefaultTextStyle.of(context).style;
 
-    return Card(
+    return Card.filled(
+      color: Theme.of(context).colorScheme.surfaceContainerLow,
       clipBehavior: Clip.antiAlias,
       shape: file.isSensitive && highlightSensitiveMedia
           ? RoundedRectangleBorder(
@@ -116,7 +123,14 @@ class MediaCard extends HookConsumerWidget {
                     hide.value = false;
                   }
                 },
-                onLongPress: () {},
+                onLongPress: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (context) => _MediaCardSheet(
+                    account: account,
+                    file: file,
+                    user: user,
+                  ),
+                ),
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
@@ -233,7 +247,17 @@ class MediaCard extends HookConsumerWidget {
                           account: account,
                           file: file,
                           files: files,
+                          user: user,
                           fit: fit,
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => _MediaCardSheet(
+                              account: account,
+                              file: file,
+                              user: user,
+                              hideMedia: () => hide.value = true,
+                            ),
+                          ),
                         ),
                       (
                         'video',
@@ -241,15 +265,52 @@ class MediaCard extends HookConsumerWidget {
                             TargetPlatform.iOS ||
                             TargetPlatform.macOS
                       ) =>
-                        _VideoPreview(file: file, fit: fit),
+                        _VideoPreview(
+                          file: file,
+                          fit: fit,
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => _MediaCardSheet(
+                              account: account,
+                              file: file,
+                              user: user,
+                              hideMedia: () => hide.value = true,
+                            ),
+                          ),
+                        ),
                       (
                         'audio',
                         TargetPlatform.android ||
                             TargetPlatform.iOS ||
                             TargetPlatform.macOS
                       ) =>
-                        _AudioPreview(account: account, file: file, user: user),
-                      _ => _FilePreview(file: file, fit: fit),
+                        _AudioPreview(
+                          account: account,
+                          file: file,
+                          user: user,
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => _MediaCardSheet(
+                              account: account,
+                              file: file,
+                              user: user,
+                              hideMedia: () => hide.value = true,
+                            ),
+                          ),
+                        ),
+                      _ => _FilePreview(
+                          file: file,
+                          fit: fit,
+                          onLongPress: () => showModalBottomSheet<void>(
+                            context: context,
+                            builder: (context) => _MediaCardSheet(
+                              account: account,
+                              file: file,
+                              user: user,
+                              hideMedia: () => hide.value = true,
+                            ),
+                          ),
+                        ),
                     },
                   ),
                   PositionedDirectional(
@@ -337,30 +398,32 @@ class MediaCard extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  if (user case User(:final username, host: null)
-                      when !account.isGuest && account.username == username)
-                    PositionedDirectional(
-                      end: 8.0,
-                      bottom: 8.0,
-                      child: Opacity(
-                        opacity: 0.5,
-                        child: IconButton(
-                          style: IconButton.styleFrom(
-                            iconSize: 18.0,
-                            minimumSize: Size.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            foregroundColor: colors.bg,
-                            backgroundColor: colors.fg,
-                          ),
-                          onPressed: () =>
-                              context.push('/$account/drive/file/${[
-                            file.folderId,
-                            file.id,
-                          ].nonNulls.join('/')}'),
-                          icon: const Icon(Icons.more_horiz),
+                  PositionedDirectional(
+                    end: 8.0,
+                    bottom: 8.0,
+                    child: Opacity(
+                      opacity: 0.5,
+                      child: IconButton(
+                        style: IconButton.styleFrom(
+                          iconSize: 18.0,
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          foregroundColor: colors.bg,
+                          backgroundColor: colors.fg,
                         ),
+                        onPressed: () => showModalBottomSheet<void>(
+                          context: context,
+                          builder: (context) => _MediaCardSheet(
+                            account: account,
+                            file: file,
+                            user: user,
+                            hideMedia: () => hide.value = true,
+                          ),
+                        ),
+                        icon: const Icon(Icons.more_horiz),
                       ),
                     ),
+                  ),
                 ],
               ),
       ),
@@ -373,13 +436,17 @@ class _ImagePreview extends ConsumerWidget {
     required this.account,
     required this.file,
     required this.files,
+    this.user,
     this.fit,
+    this.onLongPress,
   });
 
   final Account account;
   final DriveFile file;
   final List<DriveFile> files;
+  final User? user;
   final BoxFit? fit;
+  final void Function()? onLongPress;
 
   void _openImage(BuildContext context) {
     final imageFiles =
@@ -413,7 +480,7 @@ class _ImagePreview extends ConsumerWidget {
     return InkWell(
       onTap: () => _openImage(context),
       onDoubleTap: () => _openImage(context),
-      onLongPress: () => _openImage(context),
+      onLongPress: onLongPress,
       child: url != null
           ? ImageWidget(
               url: url,
@@ -431,10 +498,12 @@ class _VideoPreview extends StatelessWidget {
   const _VideoPreview({
     required this.file,
     this.fit,
+    this.onLongPress,
   });
 
   final DriveFile file;
   final BoxFit? fit;
+  final void Function()? onLongPress;
 
   void _openVideo(BuildContext context) {
     showDialog<void>(
@@ -448,7 +517,7 @@ class _VideoPreview extends StatelessWidget {
     return InkWell(
       onTap: () => _openVideo(context),
       onDoubleTap: () => _openVideo(context),
-      onLongPress: () => _openVideo(context),
+      onLongPress: onLongPress,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -483,11 +552,13 @@ class _AudioPreview extends StatelessWidget {
     required this.account,
     required this.file,
     this.user,
+    this.onLongPress,
   });
 
   final Account account;
   final DriveFile file;
   final User? user;
+  final void Function()? onLongPress;
 
   void _openAudio(BuildContext context) {
     showDialog<void>(
@@ -505,7 +576,7 @@ class _AudioPreview extends StatelessWidget {
     return InkWell(
       onTap: () => _openAudio(context),
       onDoubleTap: () => _openAudio(context),
-      onLongPress: () => _openAudio(context),
+      onLongPress: onLongPress,
       child: Center(
         child: DecoratedBox(
           decoration: BoxDecoration(
@@ -530,10 +601,12 @@ class _FilePreview extends ConsumerWidget {
   const _FilePreview({
     required this.file,
     this.fit,
+    this.onLongPress,
   });
 
   final DriveFile file;
   final BoxFit? fit;
+  final void Function()? onLongPress;
 
   void _openFile(WidgetRef ref) {
     launchUrl(ref, Uri.parse(file.url));
@@ -544,7 +617,7 @@ class _FilePreview extends ConsumerWidget {
     return InkWell(
       onTap: () => _openFile(ref),
       onDoubleTap: () => _openFile(ref),
-      onLongPress: () => _openFile(ref),
+      onLongPress: onLongPress,
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -572,6 +645,108 @@ class _FilePreview extends ConsumerWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _MediaCardSheet extends ConsumerWidget {
+  const _MediaCardSheet({
+    required this.account,
+    required this.file,
+    this.user,
+    this.hideMedia,
+  });
+
+  final Account account;
+  final DriveFile file;
+  final User? user;
+  final void Function()? hideMedia;
+
+  Future<void> _download(WidgetRef ref) async {
+    final isImage = file.type.startsWith('image/');
+    final isVideo = file.type.startsWith('video/');
+    if (!isImage && !isVideo) {
+      await launchUrl(ref, Uri.parse(file.url));
+      return;
+    }
+    if (!await Gal.requestAccess()) {
+      if (!ref.context.mounted) return;
+      await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
+      return;
+    }
+    if (!ref.context.mounted) return;
+    await futureWithDialog(
+      ref.context,
+      Future(() async {
+        final file =
+            await ref.read(cacheManagerProvider).getSingleFile(this.file.url);
+        if (isImage) {
+          await Gal.putImage(file.path);
+        } else {
+          await Gal.putVideo(file.path);
+        }
+      }),
+      message: t.aria.downloaded,
+    );
+    if (!ref.context.mounted) return;
+    ref.context.pop();
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return ListView(
+      shrinkWrap: true,
+      children: [
+        if (user case final user?) ...[
+          ListTile(
+            leading: UserAvatar(
+              account: account,
+              user: user,
+              size: 32.0,
+              onTap: () => context.push('/$account/users/${user.id}'),
+            ),
+            title: Align(
+              alignment: AlignmentDirectional.centerStart,
+              child: InkWell(
+                onTap: () => context.push('/$account/users/${user.id}'),
+                child: UsernameWidget(account: account, user: user),
+              ),
+            ),
+            subtitle: Text(
+              file.name,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ),
+          const Divider(height: 0.0),
+        ],
+        if (hideMedia case final hideMedia?)
+          ListTile(
+            leading: const Icon(Icons.visibility_off),
+            title: Text(t.misskey.hide),
+            onTap: () {
+              hideMedia();
+              context.pop();
+            },
+          ),
+        ListTile(
+          leading: const Icon(Icons.download),
+          title: Text(t.misskey.download),
+          onTap: () => _download(ref),
+        ),
+        ListTile(
+          leading: const Icon(Icons.open_in_browser),
+          title: Text(t.aria.openInBrowser),
+          onTap: () => launchUrl(ref, Uri.parse(file.url)),
+        ),
+        if (user case User(:final username, host: null)
+            when !account.isGuest && account.username == username)
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: Text(t.misskey.fileViewer_.title),
+            onTap: () => context.push('/$account/drive/file/${file.id}'),
+          ),
+      ],
     );
   }
 }
