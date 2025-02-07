@@ -251,8 +251,11 @@ class BehaviorPage extends ConsumerWidget {
             onTap: () async {
               await futureWithDialog(
                 context,
-                getApplicationCacheDirectory()
-                    .then((cacheDir) => cacheDir.delete(recursive: true)),
+                getApplicationCacheDirectory().then(
+                  (cacheDir) => Future.wait(
+                    cacheDir.listSync().map((e) => e.delete(recursive: true)),
+                  ),
+                ),
               );
               ref.invalidate(cacheSizeProvider);
             },
