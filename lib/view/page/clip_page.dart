@@ -165,6 +165,7 @@ class ClipPage extends HookConsumerWidget {
       ),
       floatingActionButton: myClip != null
           ? FloatingActionButton(
+              tooltip: t.misskey.edit,
               onPressed: () => _edit(ref, myClip),
               child: const Icon(Icons.edit),
             )

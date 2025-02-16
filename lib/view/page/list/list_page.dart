@@ -138,6 +138,7 @@ class ListPage extends HookConsumerWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton(
+          tooltip: t.misskey.editList,
           onPressed: list != null ? () => _edit(ref, list) : null,
           child: const Icon(Icons.edit),
         ),

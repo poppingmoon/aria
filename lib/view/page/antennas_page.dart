@@ -90,6 +90,7 @@ class AntennasPage extends ConsumerWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: t.misskey.createAntenna,
         onPressed: () async {
           final result = await showDialog<AntennaSettings>(
             context: context,

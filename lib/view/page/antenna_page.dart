@@ -118,6 +118,7 @@ class AntennaPage extends ConsumerWidget {
         tabSettings: TabSettings.antenna(account, antennaId),
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: t.misskey.editAntenna,
         onPressed: antenna != null ? () => _edit(ref, antenna) : null,
         child: const Icon(Icons.edit),
       ),

@@ -169,6 +169,7 @@ class ClipsPage extends ConsumerWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton(
+          tooltip: t.misskey.createNewClip,
           onPressed: () async {
             final result = await showDialog<ClipSettings>(
               context: context,
