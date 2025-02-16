@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/general_settings_notifier_provider.dart';
@@ -25,76 +26,92 @@ class LanguagesPage extends ConsumerWidget {
         tileColor: colors.panel,
         child: ListView(
           children: [
-            Card(
-              margin: const EdgeInsets.all(8.0),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Mfm(
-                  account: Account.dummy(),
-                  text: t.misskey.i18nInfo(
-                    link: '[Crowdin](https://crowdin.com/project/misskey)',
-                  ),
-                ),
-              ),
-            ),
-            Card(
-              margin: const EdgeInsets.all(8.0),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text.rich(
-                  t.aria.i18nInfo(
-                    link: WidgetSpan(
-                      alignment: PlaceholderAlignment.baseline,
-                      baseline: TextBaseline.alphabetic,
-                      child: InkWell(
-                        onTap: () => launchUrl(
-                          ref,
-                          Uri.https('crowdin.com', 'project/aria-for-misskey'),
-                        ),
-                        child: Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'Crowdin',
-                                style: TextStyle(color: colors.link),
-                              ),
-                              WidgetSpan(
-                                child: Builder(
-                                  builder: (context) => Icon(
-                                    Icons.open_in_new,
-                                    color: colors.link,
-                                    size: DefaultTextStyle.of(context)
-                                        .style
-                                        .fontSize,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          textAlign: TextAlign.center,
-                          textScaler: TextScaler.noScaling,
-                        ),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: Card(
+                  margin: EdgeInsets.zero,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Mfm(
+                      account: Account.dummy(),
+                      text: t.misskey.i18nInfo(
+                        link: '[Crowdin](https://crowdin.com/project/misskey)',
+                      ),
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-            Container(
-              height: 8.0,
-              margin: const EdgeInsets.only(top: 8.0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: Card(
+                  margin: EdgeInsets.zero,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text.rich(
+                      t.aria.i18nInfo(
+                        link: WidgetSpan(
+                          alignment: PlaceholderAlignment.baseline,
+                          baseline: TextBaseline.alphabetic,
+                          child: InkWell(
+                            onTap: () => launchUrl(
+                              ref,
+                              Uri.https(
+                                'crowdin.com',
+                                'project/aria-for-misskey',
+                              ),
+                            ),
+                            child: Text.rich(
+                              TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'Crowdin',
+                                    style: TextStyle(color: colors.link),
+                                  ),
+                                  WidgetSpan(
+                                    child: Builder(
+                                      builder: (context) => Icon(
+                                        Icons.open_in_new,
+                                        color: colors.link,
+                                        size: DefaultTextStyle.of(context)
+                                            .style
+                                            .fontSize,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              textAlign: TextAlign.center,
+                              textScaler: TextScaler.noScaling,
+                            ),
+                          ),
+                        ),
+                      ),
+                      style: TextStyle(
+                        color:
+                            Theme.of(context).colorScheme.onSecondaryContainer,
+                      ),
+                    ),
+                  ),
                 ),
-                color: colors.panel,
               ),
             ),
-            ...ListTile.divideTiles(
-              context: context,
-              tiles: [
-                RadioListTile(
+            const SizedBox(height: 8.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: RadioListTile(
                   title: Text(t.misskey.system),
                   value: null,
                   groupValue: locale,
@@ -104,54 +121,73 @@ class LanguagesPage extends ConsumerWidget {
                         .setLocale(null);
                     LocaleSettings.useDeviceLocale();
                   },
+                  shape: const RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(8.0)),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
+                    vertical: 8.0,
+                    horizontal: 16.0,
+                  ),
                 ),
-                ...AppLocaleUtils.supportedLocales
-                    .sortedBy((locale) => locale.toLanguageTag())
-                    .map(
-                      (locale) => AppLocale.values.firstWhere(
-                        (appLocale) =>
-                            appLocale.languageTag == locale.toLanguageTag(),
-                      ),
-                    )
-                    .map(
-                      (appLocale) => RadioListTile(
-                        title: FutureBuilder(
-                          future: LocaleSettings.instance.loadLocale(appLocale),
-                          builder: (context, snapshot) =>
-                              Text(appLocale.translations.misskey.lang__),
-                        ),
-                        subtitle: Text(appLocale.languageTag),
-                        value: appLocale,
-                        groupValue: locale,
-                        onChanged: (locale) {
-                          ref
-                              .read(generalSettingsNotifierProvider.notifier)
-                              .setLocale(locale);
-                          if (locale == null) {
-                            LocaleSettings.useDeviceLocale();
-                          } else {
-                            LocaleSettings.setLocale(locale);
-                          }
-                        },
-                      ),
-                    ),
-              ],
-            ),
-            Container(
-              height: 8.0,
-              margin: const EdgeInsets.only(bottom: 8.0),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(8.0),
-                  bottomRight: Radius.circular(8.0),
-                ),
-                color: colors.panel,
               ),
             ),
+            for (final (index, appLocale) in AppLocaleUtils.supportedLocales
+                .sortedBy((locale) => locale.toLanguageTag())
+                .map(
+                  (locale) => AppLocale.values.firstWhere(
+                    (appLocale) =>
+                        appLocale.languageTag == locale.toLanguageTag(),
+                  ),
+                )
+                .indexed) ...[
+              const Center(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: SizedBox(
+                    width: maxContentWidth,
+                    child: Divider(height: 0.0),
+                  ),
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: RadioListTile(
+                    title: FutureBuilder(
+                      future: LocaleSettings.instance.loadLocale(appLocale),
+                      builder: (context, snapshot) =>
+                          Text(appLocale.translations.misskey.lang__),
+                    ),
+                    subtitle: Text(appLocale.languageTag),
+                    value: appLocale,
+                    groupValue: locale,
+                    onChanged: (locale) {
+                      ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setLocale(locale);
+                      if (locale == null) {
+                        LocaleSettings.useDeviceLocale();
+                      } else {
+                        LocaleSettings.setLocale(locale);
+                      }
+                    },
+                    shape: index == AppLocaleUtils.supportedLocales.length - 1
+                        ? const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              bottom: Radius.circular(8.0),
+                            ),
+                          )
+                        : null,
+                  ),
+                ),
+              ),
+            ],
+            const SizedBox(height: 8.0),
           ],
         ),
       ),
-      bodyMargin: const EdgeInsets.symmetric(horizontal: 8.0),
       selectedDestination: GeneralSettingsDestination.language,
     );
   }

@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
+import '../../constant/max_content_width.dart';
 import '../../extension/note_extension.dart';
 import '../../extension/text_style_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -94,7 +95,7 @@ class NoteFooter extends HookConsumerWidget {
                   .colorScheme
                   .onSurface
                   .withValues(alpha: 0.6),
-              fontSizeFactor: scale * 800.0 / constraints.maxWidth,
+              fontSizeFactor: scale * maxContentWidth / constraints.maxWidth,
             );
         return IconButtonTheme(
           data: IconButtonThemeData(
@@ -110,7 +111,7 @@ class NoteFooter extends HookConsumerWidget {
           ),
           child: FittedBox(
             child: SizedBox(
-              width: 800.0,
+              width: maxContentWidth,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [

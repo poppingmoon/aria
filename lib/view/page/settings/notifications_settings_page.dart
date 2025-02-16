@@ -11,6 +11,7 @@ import 'package:uuid/uuid.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';
 
 import '../../../constant/fcm_token_prefix.dart';
+import '../../../constant/max_content_width.dart';
 import '../../../constant/misskey_web_push_proxy_url.dart';
 import '../../../constant/notification_channel_id.dart';
 import '../../../i18n/strings.g.dart';
@@ -24,6 +25,7 @@ import '../../../provider/user_ids_notifier_provider.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/message_dialog.dart';
 import '../../dialog/sw_register_dialog.dart';
+import '../../widget/account_settings_scaffold.dart';
 
 class NotificationsSettingsPage extends ConsumerWidget {
   const NotificationsSettingsPage({super.key, required this.account});
@@ -171,38 +173,51 @@ class NotificationsSettingsPage extends ConsumerWidget {
       _ => false,
     };
 
-    return Scaffold(
+    return AccountSettingsScaffold(
+      account: account,
       appBar: AppBar(title: Text(t.misskey.notifications)),
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Text(
-              t.misskey.pushNotification,
-              style: TextStyle(
-                color: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withValues(alpha: 0.8),
+          const SizedBox(height: 8.0),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Text(
+                t.misskey.pushNotification,
+                style: TextStyle(
+                  color: Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withValues(alpha: 0.8),
+                ),
               ),
             ),
           ),
-          SwitchListTile(
-            title: Text(t.misskey.subscribePushNotification),
-            value: endpoint != null,
-            onChanged: endpoint != null
-                ? (_) => _unsubscribe(ref)
-                : i != null && isPushNotificationSupported
-                    ? (_) async {
-                        await _subscribe(ref);
-                        await ref
-                            .read(userIdsNotifierProvider.notifier)
-                            .add(account, i.id);
-                      }
-                    : null,
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: SwitchListTile(
+                title: Text(t.misskey.subscribePushNotification),
+                value: endpoint != null,
+                onChanged: endpoint != null
+                    ? (_) => _unsubscribe(ref)
+                    : i != null && isPushNotificationSupported
+                        ? (_) async {
+                            await _subscribe(ref);
+                            await ref
+                                .read(userIdsNotifierProvider.notifier)
+                                .add(account, i.id);
+                          }
+                        : null,
+              ),
+            ),
           ),
         ],
       ),
+      selectedDestination: AccountSettingsDestination.notifications,
     );
   }
 }

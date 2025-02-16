@@ -4,6 +4,7 @@ import 'package:json5/json5.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../constant/builtin_misskey_colors.g.dart';
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../model/misskey_theme.dart';
@@ -11,7 +12,6 @@ import '../../../provider/api/meta_notifier_provider.dart';
 import '../../../provider/misskey_theme_codes_notifier_provider.dart';
 import '../../../provider/misskey_themes_provider.dart';
 import '../../../util/compile_theme.dart';
-import '../../../util/copy_text.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/account_select_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
@@ -19,6 +19,7 @@ import '../../dialog/message_dialog.dart';
 import '../../dialog/text_field_dialog.dart';
 import '../../widget/error_message.dart';
 import '../../widget/key_value_widget.dart';
+import '../../widget/mfm/code.dart';
 
 class ThemeManagePage extends ConsumerWidget {
   const ThemeManagePage({super.key});
@@ -77,15 +78,16 @@ class ThemeManagePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.theme_.installedThemes)),
-      body: Center(
-        child: SizedBox(
-          width: 800.0,
-          child: codes.isNotEmpty
-              ? ListView.builder(
-                  itemBuilder: (context, index) {
-                    if (index < codes.length) {
-                      final theme = themes[index];
-                      return ExpansionTile(
+      body: codes.isNotEmpty
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                if (index < codes.length) {
+                  final theme = themes[index];
+                  return Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ExpansionTile(
                         leading: Icon(
                           theme != null
                               ? theme.base == 'dark'
@@ -93,107 +95,78 @@ class ThemeManagePage extends ConsumerWidget {
                                   : Icons.light_mode
                               : Icons.question_mark,
                         ),
-                        title: Text(themes[index]?.name ?? t.misskey.unknown),
+                        title: Text(theme?.name ?? t.misskey.unknown),
                         expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                        childrenPadding:
+                            const EdgeInsets.symmetric(horizontal: 16.0),
                         children: [
-                          if (theme case MisskeyTheme(:final author?))
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                                horizontal: 16.0,
-                              ),
-                              child: KeyValueWidget(
-                                label: t.misskey.author,
-                                text: author,
-                              ),
+                          if (theme case MisskeyTheme(:final author?)) ...[
+                            KeyValueWidget(
+                              label: t.misskey.author,
+                              text: author,
                             ),
-                          if (theme case MisskeyTheme(:final desc?))
-                            Padding(
-                              padding: const EdgeInsets.symmetric(
-                                vertical: 8.0,
-                                horizontal: 16.0,
-                              ),
-                              child: KeyValueWidget(
-                                label: t.misskey.theme_.description,
-                                text: desc,
-                              ),
+                            const SizedBox(height: 8.0),
+                          ],
+                          if (theme case MisskeyTheme(:final desc?)) ...[
+                            KeyValueWidget(
+                              label: t.misskey.theme_.description,
+                              text: desc,
                             ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 8.0,
-                              horizontal: 16.0,
-                            ),
-                            child: KeyValueWidget(
-                              label: t.misskey.theme_.code,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  ConstrainedBox(
-                                    constraints:
-                                        const BoxConstraints(maxHeight: 400.0),
-                                    child: SingleChildScrollView(
-                                      child: SizedBox(
-                                        width: double.maxFinite,
-                                        child: SelectableText(
-                                          codes[index],
-                                          style: const TextStyle(
-                                            fontFamily: 'monospace',
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  TextButton(
-                                    onPressed: () =>
-                                        copyToClipboard(context, codes[index]),
-                                    child: Text(t.misskey.copy),
-                                  ),
-                                ],
+                            const SizedBox(height: 8.0),
+                          ],
+                          KeyValueWidget(
+                            label: t.misskey.theme_.code,
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxHeight: 400.0,
+                                maxWidth: maxContentWidth,
+                              ),
+                              child: SingleChildScrollView(
+                                child: Code(
+                                  code: codes[index],
+                                  language: 'json',
+                                ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 8.0,
-                              horizontal: 16.0,
+                          const SizedBox(height: 8.0),
+                          OutlinedButton.icon(
+                            onPressed: () async {
+                              final confirmed = await confirm(
+                                context,
+                                message: t.misskey.deleteAreYouSure(
+                                  x: theme?.name ?? t.misskey.unknown,
+                                ),
+                              );
+                              if (confirmed) {
+                                await ref
+                                    .read(
+                                      misskeyThemeCodesNotifierProvider
+                                          .notifier,
+                                    )
+                                    .uninstall(index);
+                              }
+                            },
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor:
+                                  Theme.of(context).colorScheme.error,
+                              iconColor: Theme.of(context).colorScheme.error,
                             ),
-                            child: OutlinedButton.icon(
-                              onPressed: () async {
-                                final confirmed = await confirm(
-                                  context,
-                                  message: t.misskey.deleteAreYouSure(
-                                    x: themes[index]?.name ?? t.misskey.unknown,
-                                  ),
-                                );
-                                if (confirmed) {
-                                  await ref
-                                      .read(
-                                        misskeyThemeCodesNotifierProvider
-                                            .notifier,
-                                      )
-                                      .uninstall(index);
-                                }
-                              },
-                              style: OutlinedButton.styleFrom(
-                                foregroundColor:
-                                    Theme.of(context).colorScheme.error,
-                                iconColor: Theme.of(context).colorScheme.error,
-                              ),
-                              icon: const Icon(Icons.delete),
-                              label: Text(t.misskey.uninstall),
-                            ),
+                            icon: const Icon(Icons.delete),
+                            label: Text(t.misskey.uninstall),
                           ),
+                          const SizedBox(height: 8.0),
                         ],
-                      );
-                    } else {
-                      return const SizedBox(height: 80.0);
-                    }
-                  },
-                  itemCount: codes.length + 1,
-                )
-              : Center(child: Text(t.aria.noThemes)),
-        ),
-      ),
+                      ),
+                    ),
+                  );
+                } else {
+                  return const SizedBox(height: 120.0);
+                }
+              },
+              itemCount: codes.length + 1,
+            )
+          : Center(child: Text(t.aria.noThemes)),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           showModalBottomSheet<void>(

@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -25,12 +26,14 @@ class AccountSettingsNavigation extends ConsumerWidget {
     super.key,
     required this.account,
     this.rail = false,
+    this.round = false,
     this.selectedDestination,
     this.physics,
   });
 
   final Account account;
   final bool rail;
+  final bool round;
   final AccountSettingsDestination? selectedDestination;
   final ScrollPhysics? physics;
 
@@ -129,8 +132,8 @@ class AccountSettingsNavigation extends ConsumerWidget {
       physics: physics,
       padding: EdgeInsets.zero,
       children: AccountSettingsDestination.values
-          .map(
-            (destination) => rail
+          .mapIndexed(
+            (index, destination) => rail
                 ? IconButtonTheme(
                     data: IconButtonThemeData(
                       style: IconButton.styleFrom(
@@ -154,6 +157,18 @@ class AccountSettingsNavigation extends ConsumerWidget {
                 : ListTile(
                     leading: _buildIcon(destination),
                     title: Text(_buildLabel(destination)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: round && index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: round &&
+                                index ==
+                                    AccountSettingsDestination.values.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                      ),
+                    ),
                     onTap: destination != selectedDestination
                         ? () => _onTap(ref, destination)
                         : null,

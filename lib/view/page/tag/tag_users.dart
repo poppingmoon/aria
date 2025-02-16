@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/tag_users_provider.dart';
@@ -36,13 +37,13 @@ class TagUsers extends HookConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(tagUsersProvider(account, tag).future),
-      child: Center(
-        child: Container(
-          width: 800.0,
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: ListView(
-            children: [
-              ExpansionTile(
+      child: ListView(
+        children: [
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ExpansionTile(
                 title: Text(t.misskey.options),
                 children: [
                   ListTile(
@@ -70,23 +71,33 @@ class TagUsers extends HookConsumerWidget {
                   ),
                 ],
               ),
-              ...switch (users) {
-                AsyncValue(valueOrNull: final users?) => users.isEmpty
-                    ? [Center(child: Text(t.misskey.noUsers))]
-                    : [
-                        ...users.map(
-                          (user) => UserInfo(account: account, user: user),
-                        ),
-                        const SizedBox(height: 80.0),
-                      ],
-                AsyncValue(:final error?, :final stackTrace) => [
-                    ErrorMessage(error: error, stackTrace: stackTrace),
-                  ],
-                _ => const [Center(child: CircularProgressIndicator())],
-              },
-            ],
+            ),
           ),
-        ),
+          ...switch (users) {
+            AsyncValue(valueOrNull: final users?) => users.isEmpty
+                ? [Center(child: Text(t.misskey.noUsers))]
+                : [
+                    const SizedBox(height: 8.0),
+                    for (final (index, user) in users.indexed) ...[
+                      Center(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          width: maxContentWidth,
+                          child: UserInfo(account: account, user: user),
+                        ),
+                      ),
+                      if (index < users.length - 1)
+                        const SizedBox(height: 8.0)
+                      else
+                        const SizedBox(height: 120.0),
+                    ],
+                  ],
+            AsyncValue(:final error?, :final stackTrace) => [
+                ErrorMessage(error: error, stackTrace: stackTrace),
+              ],
+            _ => const [Center(child: CircularProgressIndicator())],
+          },
+        ],
       ),
     );
   }

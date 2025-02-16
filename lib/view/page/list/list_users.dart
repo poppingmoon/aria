@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/list_users_notifier_provider.dart';
@@ -25,17 +26,19 @@ class ListUsers extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final users = ref.watch(listUsersNotifierProvider(account, listId));
+    final theme = Theme.of(context);
 
-    return Center(
-      child: Container(
-        width: 800.0,
-        margin: const EdgeInsets.symmetric(horizontal: 8.0),
-        child: ListTileTheme(
-          tileColor: Theme.of(context).colorScheme.surface,
-          child: switch (users) {
-            AsyncValue(valueOrNull: final users?) => ListView(
-                children: [
-                  Padding(
+    return RefreshIndicator(
+      onRefresh: () =>
+          ref.refresh(listUsersNotifierProvider(account, listId).future),
+      child: switch (users) {
+        AsyncValue(valueOrNull: final users?) => ListView(
+            children: [
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ElevatedButton(
                       onPressed: () async {
@@ -60,21 +63,27 @@ class ListUsers extends ConsumerWidget {
                       child: Text(t.misskey.addUser),
                     ),
                   ),
-                  if (users.isNotEmpty) ...[
-                    Container(
-                      height: 8.0,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(8.0),
+                ),
+              ),
+              if (users.isNotEmpty)
+                for (final (index, user) in users.indexed) ...[
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ListTileTheme.merge(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: index == 0
+                                ? const Radius.circular(8.0)
+                                : Radius.zero,
+                            bottom: index == users.length - 1
+                                ? const Radius.circular(8.0)
+                                : Radius.zero,
+                          ),
                         ),
-                        color: Theme.of(context).colorScheme.surface,
-                      ),
-                    ),
-                    ...ListTile.divideTiles(
-                      context: context,
-                      tiles: users.map(
-                        (user) => UserPreview(
+                        tileColor: theme.colorScheme.surface,
+                        child: UserPreview(
                           account: account,
                           user: user,
                           trailing: IconButton(
@@ -100,7 +109,7 @@ class ListUsers extends ConsumerWidget {
                               }
                             },
                             icon: const Icon(Icons.close),
-                            color: Theme.of(context).colorScheme.error,
+                            color: theme.colorScheme.error,
                           ),
                           onTap: () =>
                               context.push('/$account/users/${user.id}'),
@@ -112,26 +121,41 @@ class ListUsers extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    Container(
-                      height: 8.0,
-                      margin: const EdgeInsets.only(bottom: 8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(8.0),
-                          bottomRight: Radius.circular(8.0),
+                  ),
+                  if (index < users.length - 1)
+                    const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: SizedBox(
+                          width: maxContentWidth,
+                          child: Divider(height: 0.0),
                         ),
-                        color: Theme.of(context).colorScheme.surface,
                       ),
-                    ),
-                  ],
-                ],
+                    )
+                  else
+                    const SizedBox(height: 120.0),
+                ]
+              else
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(t.misskey.noUsers),
+                  ),
+                ),
+            ],
+          ),
+        AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                width: maxContentWidth,
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ErrorMessage(error: error, stackTrace: stackTrace),
               ),
-            AsyncValue(:final error?, :final stackTrace) =>
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            _ => const Center(child: CircularProgressIndicator()),
-          },
-        ),
-      ),
+            ),
+          ),
+        _ => const Center(child: CircularProgressIndicator()),
+      },
     );
   }
 }

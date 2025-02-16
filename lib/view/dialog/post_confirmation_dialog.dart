@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../extension/notes_create_request_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -82,7 +83,7 @@ class PostConfirmationDialog extends ConsumerWidget {
 
     return Dialog(
       child: Container(
-        width: 800.0,
+        width: maxContentWidth,
         margin: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(

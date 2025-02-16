@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/search_misskey_servers_provider.dart';
@@ -115,7 +116,9 @@ class MisskeyServerAutocomplete extends ConsumerWidget {
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                   maxHeight: 200.0,
-                  maxWidth: min(MediaQuery.sizeOf(context).width, 800.0) - 64.0,
+                  maxWidth:
+                      min(MediaQuery.sizeOf(context).width, maxContentWidth) -
+                          64.0,
                 ),
                 // Use `CustomScrollView` instead of `ListView` because
                 // `ListView` shows white space on top of the options

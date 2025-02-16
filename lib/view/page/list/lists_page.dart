@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
@@ -21,80 +22,86 @@ class ListsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final lists = ref.watch(listsNotifierProvider(account));
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.lists)),
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(listsNotifierProvider(account).future),
-        child: Center(
-          child: switch (lists) {
-            AsyncValue(valueOrNull: final lists?) => lists.isEmpty
-                ? Text(t.misskey.nothing)
-                : Container(
-                    width: 800.0,
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ListTileTheme(
-                      tileColor: Theme.of(context).colorScheme.surface,
-                      child: ListView(
-                        children: [
-                          Container(
-                            height: 8.0,
-                            margin: const EdgeInsets.only(top: 8.0),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(8.0),
-                                topRight: Radius.circular(8.0),
-                              ),
-                              color: Theme.of(context).colorScheme.surface,
+        child: switch (lists) {
+          AsyncValue(valueOrNull: final lists?) => lists.isEmpty
+              ? Center(child: Text(t.misskey.nothing))
+              : ListView.separated(
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        left: 8.0,
+                        top: index == 0 ? 8.0 : 0.0,
+                        right: 8.0,
+                        bottom: index == lists.length - 1 ? 120.0 : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: ListTileTheme.merge(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: index == 0
+                                ? const Radius.circular(8.0)
+                                : Radius.zero,
+                            bottom: index == lists.length - 1
+                                ? const Radius.circular(8.0)
+                                : Radius.zero,
+                          ),
+                        ),
+                        tileColor: theme.colorScheme.surface,
+                        child: ListTile(
+                          title: Text(lists[index].name ?? ''),
+                          subtitle: Text(
+                            t.misskey.nUsers(
+                              n: [
+                                NumberFormat()
+                                    .format(lists[index].userIds.length),
+                                if (i?.policies
+                                    case UserPolicies(
+                                      :final userEachUserListsLimit?,
+                                    ))
+                                  ' / ${NumberFormat().format(
+                                    userEachUserListsLimit,
+                                  )}',
+                              ].join(),
                             ),
                           ),
-                          ...ListTile.divideTiles(
-                            context: context,
-                            tiles: lists.map(
-                              (list) => ListTile(
-                                title: Text(list.name ?? ''),
-                                subtitle: Text(
-                                  t.misskey.nUsers(
-                                    n: [
-                                      NumberFormat()
-                                          .format(list.userIds.length),
-                                      if (i?.policies
-                                          case UserPolicies(
-                                            :final userEachUserListsLimit?,
-                                          ))
-                                        ' / ${NumberFormat().format(
-                                          userEachUserListsLimit,
-                                        )}',
-                                    ].join(),
-                                  ),
-                                ),
-                                onTap: () =>
-                                    context.push('/$account/lists/${list.id}'),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 8.0,
-                            margin: const EdgeInsets.only(bottom: 8.0),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(8.0),
-                                bottomRight: Radius.circular(8.0),
-                              ),
-                              color: Theme.of(context).colorScheme.surface,
-                            ),
-                          ),
-                        ],
+                          onTap: () => context
+                              .push('/$account/lists/${lists[index].id}'),
+                        ),
                       ),
                     ),
                   ),
-            AsyncValue(:final error?, :final stackTrace) =>
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            _ => const CircularProgressIndicator(),
-          },
-        ),
+                  separatorBuilder: (context, index) => const Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8.0),
+                      child: SizedBox(
+                        width: maxContentWidth,
+                        child: Divider(height: 0.0),
+                      ),
+                    ),
+                  ),
+                  itemCount: lists.length,
+                ),
+          AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ErrorMessage(error: error, stackTrace: stackTrace),
+                ),
+              ),
+            ),
+          _ => const Center(child: CircularProgressIndicator()),
+        },
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: t.misskey.createList,
         onPressed: () async {
           final name = await showDialog<String>(
             context: context,

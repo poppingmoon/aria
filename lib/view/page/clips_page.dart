@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/clip_settings.dart';
@@ -21,6 +22,7 @@ class ClipsPage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final clips = ref.watch(clipsNotifierProvider(account));
     final favoriteClips = ref.watch(favoriteClipsNotifierProvider(account));
+    final theme = Theme.of(context);
 
     return DefaultTabController(
       length: 2,
@@ -39,121 +41,130 @@ class ClipsPage extends ConsumerWidget {
             RefreshIndicator(
               onRefresh: () =>
                   ref.refresh(clipsNotifierProvider(account).future),
-              child: Center(
-                child: switch (clips) {
-                  AsyncValue(valueOrNull: final clips?) => clips.isEmpty
-                      ? Text(t.misskey.nothing)
-                      : Container(
-                          width: 800.0,
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ListTileTheme(
-                            tileColor: Theme.of(context).colorScheme.surface,
-                            child: ListView(
-                              children: [
-                                Container(
-                                  height: 8.0,
-                                  margin: const EdgeInsets.only(top: 8.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(8.0),
-                                      topRight: Radius.circular(8.0),
-                                    ),
-                                    color:
-                                        Theme.of(context).colorScheme.surface,
-                                  ),
+              child: switch (clips) {
+                AsyncValue(valueOrNull: final clips?) => clips.isEmpty
+                    ? Center(child: Text(t.misskey.nothing))
+                    : ListView.separated(
+                        itemBuilder: (context, index) => Center(
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: 8.0,
+                              top: index == 0 ? 8.0 : 0.0,
+                              right: 8.0,
+                              bottom: index == clips.length - 1 ? 120.0 : 0.0,
+                            ),
+                            width: maxContentWidth,
+                            child: ListTileTheme.merge(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: index == 0
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                                  bottom: index == clips.length - 1
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
                                 ),
-                                ...ListTile.divideTiles(
-                                  context: context,
-                                  tiles: clips.map(
-                                    (clip) => ClipPreview(
-                                      account: account,
-                                      clip: clip,
-                                      hideUserInfo: true,
-                                      onTap: () => context
-                                          .push('/$account/clips/${clip.id}'),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: 8.0,
-                                  margin: const EdgeInsets.only(bottom: 8.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(8.0),
-                                      bottomRight: Radius.circular(8.0),
-                                    ),
-                                    color:
-                                        Theme.of(context).colorScheme.surface,
-                                  ),
-                                ),
-                              ],
+                              ),
+                              tileColor: theme.colorScheme.surface,
+                              child: ClipPreview(
+                                account: account,
+                                clip: clips[index],
+                                hideUserInfo: true,
+                                onTap: () => context
+                                    .push('/$account/clips/${clips[index].id}'),
+                              ),
                             ),
                           ),
                         ),
-                  AsyncValue(:final error?, :final stackTrace) =>
-                    ErrorMessage(error: error, stackTrace: stackTrace),
-                  _ => const CircularProgressIndicator(),
-                },
-              ),
+                        separatorBuilder: (context, index) => const Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: SizedBox(
+                              width: maxContentWidth,
+                              child: Divider(height: 0.0),
+                            ),
+                          ),
+                        ),
+                        itemCount: clips.length,
+                      ),
+                AsyncValue(:final error?, :final stackTrace) =>
+                  SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        child:
+                            ErrorMessage(error: error, stackTrace: stackTrace),
+                      ),
+                    ),
+                  ),
+                _ => const Center(child: CircularProgressIndicator()),
+              },
             ),
             RefreshIndicator(
               onRefresh: () =>
                   ref.refresh(favoriteClipsNotifierProvider(account).future),
-              child: Center(
-                child: switch (favoriteClips) {
-                  AsyncValue(valueOrNull: final clips?) => clips.isEmpty
-                      ? Text(t.misskey.nothing)
-                      : Container(
-                          width: 800.0,
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          child: ListTileTheme(
-                            tileColor: Theme.of(context).colorScheme.surface,
-                            child: ListView(
-                              children: [
-                                Container(
-                                  height: 8.0,
-                                  margin: const EdgeInsets.only(top: 8.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      topLeft: Radius.circular(8.0),
-                                      topRight: Radius.circular(8.0),
-                                    ),
-                                    color:
-                                        Theme.of(context).colorScheme.surface,
-                                  ),
+              child: switch (favoriteClips) {
+                AsyncValue(valueOrNull: final clips?) => clips.isEmpty
+                    ? Center(child: Text(t.misskey.nothing))
+                    : ListView.separated(
+                        itemBuilder: (context, index) => Center(
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: 8.0,
+                              top: index == 0 ? 8.0 : 0.0,
+                              right: 8.0,
+                              bottom: index == clips.length - 1 ? 120.0 : 0.0,
+                            ),
+                            width: maxContentWidth,
+                            child: ListTileTheme.merge(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: index == 0
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                                  bottom: index == clips.length - 1
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
                                 ),
-                                ...ListTile.divideTiles(
-                                  context: context,
-                                  tiles: clips.map(
-                                    (clip) => ClipPreview(
-                                      account: account,
-                                      clip: clip,
-                                      onTap: () => context
-                                          .push('/$account/clips/${clip.id}'),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  height: 8.0,
-                                  margin: const EdgeInsets.only(bottom: 8.0),
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.only(
-                                      bottomLeft: Radius.circular(8.0),
-                                      bottomRight: Radius.circular(8.0),
-                                    ),
-                                    color:
-                                        Theme.of(context).colorScheme.surface,
-                                  ),
-                                ),
-                              ],
+                              ),
+                              tileColor: theme.colorScheme.surface,
+                              child: ClipPreview(
+                                account: account,
+                                clip: clips[index],
+                                hideUserInfo: true,
+                                onTap: () => context
+                                    .push('/$account/clips/${clips[index].id}'),
+                              ),
                             ),
                           ),
                         ),
-                  AsyncValue(:final error?, :final stackTrace) =>
-                    ErrorMessage(error: error, stackTrace: stackTrace),
-                  _ => const CircularProgressIndicator(),
-                },
-              ),
+                        separatorBuilder: (context, index) => const Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: SizedBox(
+                              width: maxContentWidth,
+                              child: Divider(height: 0.0),
+                            ),
+                          ),
+                        ),
+                        itemCount: clips.length,
+                      ),
+                AsyncValue(:final error?, :final stackTrace) =>
+                  SingleChildScrollView(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    child: Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        child:
+                            ErrorMessage(error: error, stackTrace: stackTrace),
+                      ),
+                    ),
+                  ),
+                _ => const Center(child: CircularProgressIndicator()),
+              },
             ),
           ],
         ),

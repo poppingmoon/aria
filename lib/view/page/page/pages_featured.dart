@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/featured_pages_provider.dart';
@@ -19,28 +20,41 @@ class PagesFeatured extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(featuredPagesProvider(account).future),
-      child: Center(
-        child: switch (pages) {
-          AsyncValue(valueOrNull: final pages?) => pages.isEmpty
-              ? Text(t.misskey.nothing)
-              : Container(
-                  width: 800.0,
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ListView.builder(
-                    itemBuilder: (context, index) => PagePreview(
+      child: switch (pages) {
+        AsyncValue(valueOrNull: final pages?) => pages.isEmpty
+            ? Center(child: Text(t.misskey.nothing))
+            : ListView.builder(
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    width: maxContentWidth,
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == 0 ? 8.0 : 4.0,
+                      right: 8.0,
+                      bottom: index == pages.length - 1 ? 120.0 : 4.0,
+                    ),
+                    child: PagePreview(
                       account: account,
                       page: pages[index],
                       onTap: () =>
                           context.push('/$account/pages/${pages[index].id}'),
                     ),
-                    itemCount: pages.length,
                   ),
                 ),
-          AsyncValue(:final error?, :final stackTrace) =>
-            ErrorMessage(error: error, stackTrace: stackTrace),
-          _ => const CircularProgressIndicator(),
-        },
-      ),
+                itemCount: pages.length,
+              ),
+        AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                width: maxContentWidth,
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ErrorMessage(error: error, stackTrace: stackTrace),
+              ),
+            ),
+          ),
+        _ => const Center(child: CircularProgressIndicator()),
+      },
     );
   }
 }

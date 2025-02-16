@@ -8,6 +8,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:json5/json5.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../extension/user_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -207,12 +208,13 @@ class TabSettingsPage extends HookConsumerWidget {
               ),
           ],
         ),
-        body: Center(
-          child: SizedBox(
-            width: 800.0,
-            child: ListView(
-              children: [
-                ListTile(
+        body: ListView(
+          children: [
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
                   title: Text(t.misskey.account),
                   subtitle: account.value != null
                       ? Text(account.value.toString())
@@ -275,7 +277,13 @@ class TabSettingsPage extends HookConsumerWidget {
                     }
                   },
                 ),
-                ListTile(
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
                   title: Text(t.aria.tabType),
                   subtitle: TabTypeWidget(tabType: tabType),
                   trailing: const Icon(Icons.navigate_next),
@@ -407,8 +415,14 @@ class TabSettingsPage extends HookConsumerWidget {
                     }
                   },
                 ),
-                if (tabType == TabType.roleTimeline)
-                  ListTile(
+              ),
+            ),
+            if (tabType == TabType.roleTimeline)
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.misskey.role),
                     subtitle: roleId != null
                         ? Text(role?.name ?? '')
@@ -430,9 +444,15 @@ class TabSettingsPage extends HookConsumerWidget {
                         }
                       }
                     },
-                  )
-                else if (tabType == TabType.userList)
-                  ListTile(
+                  ),
+                ),
+              )
+            else if (tabType == TabType.userList)
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.misskey.userList),
                     subtitle: listId != null
                         ? Text(list?.name ?? '')
@@ -460,9 +480,15 @@ class TabSettingsPage extends HookConsumerWidget {
                         }
                       }
                     },
-                  )
-                else if (tabType == TabType.antenna)
-                  ListTile(
+                  ),
+                ),
+              )
+            else if (tabType == TabType.antenna)
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.misskey.antennas),
                     subtitle: antennaId != null
                         ? Text(antenna?.name ?? '')
@@ -485,9 +511,15 @@ class TabSettingsPage extends HookConsumerWidget {
                         }
                       }
                     },
-                  )
-                else if (tabType == TabType.channel)
-                  ListTile(
+                  ),
+                ),
+              )
+            else if (tabType == TabType.channel)
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.misskey.channel),
                     subtitle: tabSettings.value.channelId != null
                         ? Text(channel?.name ?? '')
@@ -516,9 +548,15 @@ class TabSettingsPage extends HookConsumerWidget {
                         }
                       }
                     },
-                  )
-                else if (tabType == TabType.user)
-                  ListTile(
+                  ),
+                ),
+              )
+            else if (tabType == TabType.user)
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.misskey.user),
                     subtitle: user != null && account.value != null
                         ? UsernameWidget(account: account.value!, user: user)
@@ -546,9 +584,15 @@ class TabSettingsPage extends HookConsumerWidget {
                         }
                       }
                     },
-                  )
-                else if (tabType == TabType.custom) ...[
-                  ListTile(
+                  ),
+                ),
+              )
+            else if (tabType == TabType.custom) ...[
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.aria.endpoint),
                     subtitle: Text(
                       tabSettings.value.endpoint != null
@@ -589,7 +633,13 @@ class TabSettingsPage extends HookConsumerWidget {
                       }
                     },
                   ),
-                  ListTile(
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text(t.aria.streamingChannel),
                     subtitle: Text(
                       tabSettings.value.streamingChannel != null
@@ -621,7 +671,13 @@ class TabSettingsPage extends HookConsumerWidget {
                       }
                     },
                   ),
-                  ListTile(
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ListTile(
                     title: Text('${t.aria.parameters} (JSON)'),
                     subtitle: Text(
                       tabSettings.value.parameters != null
@@ -666,8 +722,14 @@ class TabSettingsPage extends HookConsumerWidget {
                       }
                     },
                   ),
-                ],
-                ListTile(
+                ),
+              ),
+            ],
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
                   title: Text(t.aria.tabName),
                   subtitle: Text(
                     tabSettings.value.name != null
@@ -687,7 +749,13 @@ class TabSettingsPage extends HookConsumerWidget {
                     }
                   },
                 ),
-                ListTile(
+              ),
+            ),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ListTile(
                   title: Text(t.misskey.icon),
                   subtitle: tabSettings.value.icon != null
                       ? null
@@ -707,64 +775,111 @@ class TabSettingsPage extends HookConsumerWidget {
                     }
                   },
                 ),
-                if (tabType != TabType.notifications) ...[
-                  if (tabType != TabType.user)
-                    SwitchListTile(
+              ),
+            ),
+            if (tabType != TabType.notifications) ...[
+              if (tabType != TabType.user)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
                       title: Text(t.misskey.disableStreamingTimeline),
                       value: tabSettings.value.disableStreaming,
                       onChanged: (value) => tabSettings.value =
                           tabSettings.value.copyWith(disableStreaming: value),
                     ),
-                  SwitchListTile(
+                  ),
+                ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
                     title: Text(t.aria.disableSubscribingNotes),
                     value: tabSettings.value.disableSubscribing,
                     onChanged: (value) => tabSettings.value =
                         tabSettings.value.copyWith(disableSubscribing: value),
                   ),
-                  if (tabType
-                      case TabType.localTimeline || TabType.hybridTimeline)
-                    SwitchListTile(
+                ),
+              ),
+              if (tabType case TabType.localTimeline || TabType.hybridTimeline)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
                       title: Text(t.misskey.showRepliesToOthersInTimeline),
                       value: tabSettings.value.withReplies,
                       onChanged: (value) => tabSettings.value =
                           tabSettings.value.copyWith(withReplies: value),
                     ),
-                  SwitchListTile(
+                  ),
+                ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
                     title: Text(t.misskey.showRenotes),
                     value: tabSettings.value.withRenotes,
                     onChanged: (value) => tabSettings.value =
                         tabSettings.value.copyWith(withRenotes: value),
                   ),
-                  SwitchListTile(
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
                     title: Text(t.aria.showSelfRenotes),
                     value: tabSettings.value.withSelfRenotes,
                     onChanged: (value) => tabSettings.value =
                         tabSettings.value.copyWith(withSelfRenotes: value),
                   ),
-                  SwitchListTile(
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
                     title: Text(t.misskey.fileAttachedOnly),
                     value: tabSettings.value.withFiles,
                     onChanged: (value) => tabSettings.value =
                         tabSettings.value.copyWith(withFiles: value),
                   ),
-                  SwitchListTile(
+                ),
+              ),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: SwitchListTile(
                     title: Text(t.misskey.withSensitive),
                     value: tabSettings.value.withSensitive,
                     onChanged: (value) => tabSettings.value =
                         tabSettings.value.copyWith(withSensitive: value),
                   ),
-                  if (tabType != TabType.notifications)
-                    SwitchListTile(
+                ),
+              ),
+              if (tabType != TabType.notifications)
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: SwitchListTile(
                       title: Text(t.aria.keepTimelinePosition),
                       value: tabSettings.value.keepPosition,
                       onChanged: (value) => tabSettings.value =
                           tabSettings.value.copyWith(keepPosition: value),
                     ),
-                ],
-                const SizedBox(height: 80.0),
-              ],
-            ),
-          ),
+                  ),
+                ),
+            ],
+            const SizedBox(height: 120.0),
+          ],
         ),
         floatingActionButton: FloatingActionButton.extended(
           backgroundColor: Theme.of(context)

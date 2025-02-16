@@ -6,6 +6,7 @@ import 'package:mfm_parser/mfm_parser.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 import 'package:share_plus/share_plus.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../extension/user_extension.dart';
 import '../../../gen/fonts.gen.dart';
 import '../../../i18n/strings.g.dart';
@@ -184,6 +185,7 @@ class PagePage extends ConsumerWidget {
       account.host,
       '@${page.valueOrNull?.user.username}/pages/${page.valueOrNull?.name}',
     );
+    final theme = Theme.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -268,50 +270,40 @@ class PagePage extends ConsumerWidget {
             username: username,
           ).future,
         ),
-        child: Center(
-          child: switch (page) {
-            AsyncValue(valueOrNull: final page?) => Container(
-                width: 800.0,
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ListView(
-                  children: [
-                    if (page case Page(:final eyeCatchingImage?))
-                      Container(
-                        margin: const EdgeInsets.only(top: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
+        child: switch (page) {
+          AsyncValue(valueOrNull: final page?) => ListView(
+              children: [
+                const SizedBox(height: 8.0),
+                if (page case Page(:final eyeCatchingImage?))
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(8.0),
                         ),
-                        clipBehavior: Clip.antiAlias,
-                        child: InkWell(
-                          onTap: () => showImageDialog(
-                            context,
-                            url: eyeCatchingImage.url,
-                          ),
-                          child: ImageWidget(
-                            url: eyeCatchingImage.url,
-                            blurHash: eyeCatchingImage.blurhash,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      )
-                    else
-                      Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(top: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
-                        clipBehavior: Clip.antiAlias,
+                        color: theme.colorScheme.surface,
                       ),
-                    ListTile(
+                      clipBehavior: Clip.antiAlias,
+                      child: InkWell(
+                        onTap: () => showImageDialog(
+                          context,
+                          url: eyeCatchingImage.url,
+                        ),
+                        child: ImageWidget(
+                          url: eyeCatchingImage.url,
+                          blurHash: eyeCatchingImage.blurhash,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ListTile(
                       title: Text(page.title),
                       subtitle: Row(
                         children: [
@@ -342,95 +334,134 @@ class PagePage extends ConsumerWidget {
                           ),
                         ],
                       ),
-                      tileColor: Theme.of(context).colorScheme.surface,
+                      tileColor: theme.colorScheme.surface,
+                      shape: page.eyeCatchingImage == null
+                          ? const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(8.0),
+                              ),
+                            )
+                          : null,
                     ),
-                    ...page.content.map(
-                      (block) => Material(
-                        color: Theme.of(context).colorScheme.surface,
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    height: 16.0,
+                    color: theme.colorScheme.surface,
+                  ),
+                ),
+                ...page.content.map(
+                  (block) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: theme.colorScheme.surface,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: _buildBlock(context, page, block),
                         ),
                       ),
                     ),
-                    ColoredBox(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: const Divider(),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      color: Theme.of(context).colorScheme.surface,
-                      child: Row(
-                        children: [
-                          LikeButton(
-                            isLiked: page.isLiked ?? false,
-                            likedCount: page.likedCount ?? 0,
-                            onTap: !account.isGuest
-                                ? () => futureWithDialog(
-                                      context,
-                                      page.isLiked ?? false
-                                          ? ref
-                                              .read(
-                                                pageNotifierProvider(
-                                                  account,
-                                                  pageId: pageId,
-                                                  pageName: pageName,
-                                                  username: username,
-                                                ).notifier,
-                                              )
-                                              .unlike()
-                                          : ref
-                                              .read(
-                                                pageNotifierProvider(
-                                                  account,
-                                                  pageId: pageId,
-                                                  pageName: pageName,
-                                                  username: username,
-                                                ).notifier,
-                                              )
-                                              .like(),
-                                    )
-                                : null,
-                          ),
-                          const Spacer(),
-                          if (!account.isGuest)
-                            IconButton(
-                              tooltip: t.misskey.shareWithNote,
-                              onPressed: () {
-                                ref
-                                    .read(
-                                      postNotifierProvider(account).notifier,
-                                    )
-                                    .setText('${page.title} $url');
-                                context.push('/$account/post');
-                              },
-                              icon: const Icon(Icons.repeat_rounded),
-                            ),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    color: theme.colorScheme.surface,
+                    child: const Divider(),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    padding: const EdgeInsets.all(8.0),
+                    color: theme.colorScheme.surface,
+                    child: Row(
+                      children: [
+                        LikeButton(
+                          isLiked: page.isLiked ?? false,
+                          likedCount: page.likedCount ?? 0,
+                          onTap: !account.isGuest
+                              ? () => futureWithDialog(
+                                    context,
+                                    page.isLiked ?? false
+                                        ? ref
+                                            .read(
+                                              pageNotifierProvider(
+                                                account,
+                                                pageId: pageId,
+                                                pageName: pageName,
+                                                username: username,
+                                              ).notifier,
+                                            )
+                                            .unlike()
+                                        : ref
+                                            .read(
+                                              pageNotifierProvider(
+                                                account,
+                                                pageId: pageId,
+                                                pageName: pageName,
+                                                username: username,
+                                              ).notifier,
+                                            )
+                                            .like(),
+                                  )
+                              : null,
+                        ),
+                        const Spacer(),
+                        if (!account.isGuest)
                           IconButton(
-                            tooltip: t.misskey.copyLink,
-                            onPressed: () =>
-                                copyToClipboard(context, url.toString()),
-                            icon: const Icon(Icons.link),
+                            tooltip: t.misskey.shareWithNote,
+                            onPressed: () {
+                              ref
+                                  .read(
+                                    postNotifierProvider(account).notifier,
+                                  )
+                                  .setText('${page.title} $url');
+                              context.push('/$account/post');
+                            },
+                            icon: const Icon(Icons.repeat_rounded),
                           ),
-                          IconButton(
-                            tooltip: t.aria.openInBrowser,
-                            onPressed: () => launchUrl(ref, url),
-                            icon: const Icon(Icons.open_in_browser),
-                          ),
-                          IconButton(
-                            tooltip: t.misskey.share,
-                            onPressed: () => Share.share('${page.title} $url'),
-                            icon: const Icon(Icons.share),
-                          ),
-                        ],
-                      ),
+                        IconButton(
+                          tooltip: t.misskey.copyLink,
+                          onPressed: () =>
+                              copyToClipboard(context, url.toString()),
+                          icon: const Icon(Icons.link),
+                        ),
+                        IconButton(
+                          tooltip: t.aria.openInBrowser,
+                          onPressed: () => launchUrl(ref, url),
+                          icon: const Icon(Icons.open_in_browser),
+                        ),
+                        IconButton(
+                          tooltip: t.misskey.share,
+                          onPressed: () => Share.share('${page.title} $url'),
+                          icon: const Icon(Icons.share),
+                        ),
+                      ],
                     ),
-                    ColoredBox(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: const Divider(),
-                    ),
-                    Material(
-                      color: Theme.of(context).colorScheme.surface,
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    color: theme.colorScheme.surface,
+                    child: const Divider(),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: Material(
+                      color: theme.colorScheme.surface,
                       child: UserPreview(
                         account: account,
                         user: page.user,
@@ -446,28 +477,65 @@ class PagePage extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    ColoredBox(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: const Divider(),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    color: theme.colorScheme.surface,
+                    child: const Divider(),
+                  ),
+                ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    color: theme.colorScheme.surface,
+                    child: DefaultTextStyle.merge(
+                      style: TextStyle(
+                        color:
+                            theme.colorScheme.onSurface.withValues(alpha: 0.75),
+                      ),
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            TextSpan(text: '${t.misskey.createdAt}: '),
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: TimeWidget(
+                                time: page.createdAt,
+                                detailed: true,
+                                textScaler: TextScaler.noScaling,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    Container(
+                  ),
+                ),
+                if (page.updatedAt != page.createdAt)
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      color: Theme.of(context).colorScheme.surface,
+                      color: theme.colorScheme.surface,
                       child: DefaultTextStyle.merge(
                         style: TextStyle(
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
+                          color: theme.colorScheme.onSurface
                               .withValues(alpha: 0.75),
                         ),
                         child: Text.rich(
                           TextSpan(
                             children: [
-                              TextSpan(text: '${t.misskey.createdAt}: '),
+                              TextSpan(text: '${t.misskey.updatedAt}: '),
                               WidgetSpan(
                                 alignment: PlaceholderAlignment.middle,
                                 child: TimeWidget(
-                                  time: page.createdAt,
+                                  time: page.updatedAt,
                                   detailed: true,
                                   textScaler: TextScaler.noScaling,
                                 ),
@@ -477,54 +545,50 @@ class PagePage extends ConsumerWidget {
                         ),
                       ),
                     ),
-                    if (page.updatedAt != page.createdAt)
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        color: Theme.of(context).colorScheme.surface,
-                        child: DefaultTextStyle.merge(
-                          style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withValues(alpha: 0.75),
-                          ),
-                          child: Text.rich(
-                            TextSpan(
-                              children: [
-                                TextSpan(text: '${t.misskey.updatedAt}: '),
-                                WidgetSpan(
-                                  alignment: PlaceholderAlignment.middle,
-                                  child: TimeWidget(
-                                    time: page.updatedAt,
-                                    detailed: true,
-                                    textScaler: TextScaler.noScaling,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                  ),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    height: 8.0,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
                       ),
-                    Container(
-                      height: 8.0,
-                      margin: const EdgeInsets.only(bottom: 8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(8.0),
-                          bottomRight: Radius.circular(8.0),
-                        ),
-                        color: Theme.of(context).colorScheme.surface,
-                      ),
+                      color: theme.colorScheme.surface,
                     ),
-                    ClipRRect(
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: AdWidget(account: account),
                     ),
-                    Builder(
-                      builder: (context) => ExpansionTile(
+                  ),
+                ),
+                const SizedBox(height: 8.0),
+                // Builder defers API call.
+                Builder(
+                  builder: (context) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ExpansionTile(
                         leading: const Icon(Icons.schedule),
                         title: Text(t.misskey.recentPosts),
                         initiallyExpanded: true,
+                        backgroundColor: theme.colorScheme.surface,
+                        collapsedBackgroundColor: theme.colorScheme.surface,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        collapsedShape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
                         children: [
                           ...?ref
                               .watch(
@@ -533,24 +597,36 @@ class PagePage extends ConsumerWidget {
                               .valueOrNull
                               ?.items
                               .map(
-                                (page) => PagePreview(
-                                  account: account,
-                                  page: page,
-                                  onTap: () => context
-                                      .push('/$account/pages/${page.id}'),
+                                (page) => Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: PagePreview(
+                                    account: account,
+                                    page: page,
+                                    onTap: () => context
+                                        .push('/$account/pages/${page.id}'),
+                                  ),
                                 ),
                               ),
                         ],
                       ),
                     ),
-                  ],
+                  ),
+                ),
+                const SizedBox(height: 120.0),
+              ],
+            ),
+          AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Center(
+                child: Container(
+                  width: maxContentWidth,
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ErrorMessage(error: error, stackTrace: stackTrace),
                 ),
               ),
-            AsyncValue(:final error?, :final stackTrace) =>
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            _ => const CircularProgressIndicator(),
-          },
-        ),
+            ),
+          _ => const Center(child: CircularProgressIndicator()),
+        },
       ),
     );
   }
