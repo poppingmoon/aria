@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../../constant/colors.dart';
+import '../../../constant/max_content_width.dart';
 import '../../../extension/user_detailed_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -137,17 +138,16 @@ class _UserHome extends ConsumerWidget {
                     expandOnTap: true,
                   ),
                   Container(
-                    width: 800.0,
+                    width: maxContentWidth,
                     height: 50.0,
                     margin: const EdgeInsets.only(
-                      top: 8.0,
                       left: 8.0,
+                      top: 8.0,
                       right: 8.0,
                     ),
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(8.0),
-                        topRight: Radius.circular(8.0),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(8.0),
                       ),
                       color: colors.panel,
                     ),
@@ -182,12 +182,11 @@ class _UserHome extends ConsumerWidget {
         SliverToBoxAdapter(
           child: Center(
             child: Container(
-              width: 800.0,
-              margin: const EdgeInsets.only(bottom: 4.0, left: 8.0, right: 8.0),
+              width: maxContentWidth,
+              margin: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 4.0),
               decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(8.0),
-                  bottomRight: Radius.circular(8.0),
+                borderRadius: const BorderRadius.vertical(
+                  bottom: Radius.circular(8.0),
                 ),
                 color: colors.panel,
               ),
@@ -242,12 +241,14 @@ class _UserHome extends ConsumerWidget {
           SliverToBoxAdapter(
             child: Center(
               child: Container(
-                width: 800.0,
+                width: maxContentWidth,
                 margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Card(
-                  margin: const EdgeInsets.symmetric(vertical: 4.0),
+                child: Card.filled(
                   color: colors.infoWarnBg,
-                  elevation: 0.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  margin: const EdgeInsets.symmetric(vertical: 4.0),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -299,7 +300,7 @@ class _UserHome extends ConsumerWidget {
         SliverToBoxAdapter(
           child: Center(
             child: Container(
-              width: 800.0,
+              width: maxContentWidth,
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Column(
                 children: [
@@ -307,9 +308,8 @@ class _UserHome extends ConsumerWidget {
                     height: 8.0,
                     margin: const EdgeInsets.only(top: 4.0),
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(8.0),
-                        topRight: Radius.circular(8.0),
+                      borderRadius: const BorderRadius.vertical(
+                        top: Radius.circular(8.0),
                       ),
                       color: colors.panel,
                     ),
@@ -795,11 +795,10 @@ class _UserHome extends ConsumerWidget {
                   ),
                   Container(
                     height: 8.0,
-                    margin: const EdgeInsets.only(bottom: 8.0),
+                    margin: const EdgeInsets.only(bottom: 4.0),
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(8.0),
-                        bottomRight: Radius.circular(8.0),
+                      borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
                       ),
                       color: colors.panel,
                     ),
@@ -813,16 +812,21 @@ class _UserHome extends ConsumerWidget {
           SliverList.builder(
             itemBuilder: (context, index) => Center(
               child: Container(
-                width: 800.0,
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Card(
-                  margin: const EdgeInsets.symmetric(vertical: 4.0),
-                  color: colors.panel,
-                  elevation: 0.0,
-                  clipBehavior: Clip.hardEdge,
-                  child: Column(
-                    children: [
-                      Padding(
+                width: maxContentWidth,
+                margin: const EdgeInsets.symmetric(
+                  vertical: 4.0,
+                  horizontal: 8.0,
+                ),
+                child: Column(
+                  children: [
+                    DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: colors.panel,
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(8.0),
+                        ),
+                      ),
+                      child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Row(
                           children: [
@@ -841,13 +845,16 @@ class _UserHome extends ConsumerWidget {
                           ],
                         ),
                       ),
-                      NoteWidget(
-                        account: account,
-                        noteId: pinnedNoteIds[index],
-                        withHardMute: false,
+                    ),
+                    NoteWidget(
+                      account: account,
+                      noteId: pinnedNoteIds[index],
+                      withHardMute: false,
+                      borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(8.0),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -127,6 +127,8 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                 child: KeyValueWidget(
                   label: t.misskey.roles,
                   child: Wrap(
+                    spacing: 4.0,
+                    runSpacing: 4.0,
                     children: roleIds
                         .mapIndexed(
                           (index, roleId) => RoleChip(
@@ -134,7 +136,10 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                             role: UserRole(
                               id: roleId,
                               name: roles[index]?.name ?? '',
-                              color: roles[index]?.color.toString() ?? '',
+                              color: roles[index]
+                                  ?.color
+                                  ?.toRadixString(16)
+                                  .padLeft(6, '0'),
                               iconUrl: roles[index]?.iconUrl,
                               description: roles[index]?.description,
                               isModerator: roles[index]?.isModerator ?? false,

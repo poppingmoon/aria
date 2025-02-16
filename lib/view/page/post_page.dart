@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mfm_parser/mfm_parser.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../extension/list_mfm_node_extension.dart';
 import '../../extension/notes_create_request_extension.dart';
 import '../../i18n/strings.g.dart';
@@ -211,17 +212,17 @@ class PostPage extends HookConsumerWidget {
         body: Column(
           children: [
             Expanded(
-              child: Center(
-                child: SizedBox(
-                  width: 800.0,
-                  height: double.infinity,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        Card(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const SizedBox(height: 8.0),
+                    Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        child: Card.filled(
                           color: colors.panel,
-                          elevation: 0.0,
-                          margin: const EdgeInsets.all(8.0),
+                          margin: EdgeInsets.zero,
                           child: PostForm(
                             account: this.account,
                             noteId: noteId,
@@ -235,29 +236,30 @@ class PostPage extends HookConsumerWidget {
                                 account.value = newAccount,
                           ),
                         ),
-                        Card(
-                          color: colors.panel,
-                          elevation: 0.0,
-                          margin: const EdgeInsets.all(8.0),
-                          clipBehavior: Clip.antiAlias,
-                          child: request.isRenote
-                              ? NoteWidget(
-                                  key: const ValueKey('renote'),
-                                  account: account.value,
-                                  noteId: request.renoteId!,
-                                )
-                              : NoteWidget(
-                                  key: const ValueKey('note'),
-                                  account: account.value,
-                                  noteId: '',
-                                  note: note,
-                                  showFooter: false,
-                                ),
-                        ),
-                        const SizedBox(height: 80.0),
-                      ],
+                      ),
                     ),
-                  ),
+                    const SizedBox(height: 8.0),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: request.isRenote
+                          ? NoteWidget(
+                              key: const ValueKey('renote'),
+                              account: account.value,
+                              noteId: request.renoteId!,
+                              borderRadius: BorderRadius.circular(8.0),
+                            )
+                          : NoteWidget(
+                              key: const ValueKey('note'),
+                              account: account.value,
+                              noteId: '',
+                              note: note,
+                              showFooter: false,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                    ),
+                    const SizedBox(height: 120.0),
+                  ],
                 ),
               ),
             ),

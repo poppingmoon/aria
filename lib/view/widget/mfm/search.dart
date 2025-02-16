@@ -39,9 +39,8 @@ class Search extends HookConsumerWidget {
           ),
           Material(
             color: Colors.black12,
-            borderRadius: const BorderRadius.only(
-              topRight: Radius.circular(4.0),
-              bottomRight: Radius.circular(4.0),
+            borderRadius: const BorderRadius.horizontal(
+              right: Radius.circular(4.0),
             ),
             clipBehavior: Clip.hardEdge,
             child: InkWell(

@@ -42,7 +42,9 @@ class GalleryPostPreview extends HookConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Card(
+    return Card.filled(
+      color: colors.panel,
+      margin: EdgeInsets.zero,
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         onTap: onTap,

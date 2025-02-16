@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/user_lists_provider.dart';
@@ -23,64 +24,57 @@ class UserLists extends ConsumerWidget {
 
     return RefreshIndicator(
       onRefresh: () => ref.refresh(userListsProvider(account, userId).future),
-      child: Center(
-        child: lists.when(
-          data: (lists) {
-            if (lists.isEmpty) {
-              return Text(t.misskey.noLists);
-            } else {
-              return Container(
-                width: 800.0,
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ListTileTheme(
-                  tileColor: Theme.of(context).colorScheme.surface,
-                  child: ListView(
-                    children: [
-                      Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(top: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
+      child: switch (lists) {
+        AsyncValue(valueOrNull: final lists?) => lists.isEmpty
+            ? Center(child: Text(t.misskey.noLists))
+            : ListView.separated(
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == 0 ? 8.0 : 0.0,
+                      right: 8.0,
+                      bottom: index == lists.length - 1 ? 8.0 : 0.0,
+                    ),
+                    width: maxContentWidth,
+                    child: ListTile(
+                      title: Text(lists[index].name ?? ''),
+                      subtitle: Text(
+                        t.misskey.nUsers(n: lists[index].userIds.length),
                       ),
-                      ...ListTile.divideTiles(
-                        context: context,
-                        tiles: lists.map(
-                          (list) => ListTile(
-                            title: Text(list.name ?? ''),
-                            subtitle:
-                                Text(t.misskey.nUsers(n: list.userIds.length)),
-                            onTap: () => context.push(
-                              '/$account/users/$userId/list/${list.id}',
-                            ),
-                          ),
-                        ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
                       ),
-                      Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(8.0),
-                            bottomRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
+                      tileColor: Theme.of(context).colorScheme.surface,
+                      onTap: () => context.push(
+                        '/$account/users/$userId/list/${lists[index].id}',
                       ),
-                    ],
+                    ),
                   ),
                 ),
-              );
-            }
-          },
-          error: (e, st) => ErrorMessage(error: e, stackTrace: st),
-          loading: () => const CircularProgressIndicator(),
-        ),
-      ),
+                separatorBuilder: (_, __) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SizedBox(
+                      width: maxContentWidth,
+                      child: Divider(height: 0.0),
+                    ),
+                  ),
+                ),
+                itemCount: lists.length,
+              ),
+        AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ErrorMessage(error: error, stackTrace: stackTrace),
+              ),
+            ),
+          ),
+        _ => const Center(child: CircularProgressIndicator()),
+      },
     );
   }
 }

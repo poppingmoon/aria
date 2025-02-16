@@ -6,6 +6,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../constant/shortcuts.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/accounts_notifier_provider.dart';
@@ -77,7 +78,7 @@ class TokenLoginPage extends HookConsumerWidget {
             Expanded(
               child: Center(
                 child: SizedBox(
-                  width: 800.0,
+                  width: maxContentWidth,
                   child: Card(
                     margin: const EdgeInsets.all(16.0),
                     child: Padding(

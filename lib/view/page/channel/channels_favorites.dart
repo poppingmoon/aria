@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/favorite_channels_provider.dart';
@@ -23,29 +24,42 @@ class ChannelsFavorites extends ConsumerWidget {
     final channels = ref.watch(favoriteChannelsProvider(account));
     return RefreshIndicator(
       onRefresh: () => ref.refresh(favoriteChannelsProvider(account).future),
-      child: Center(
-        child: switch (channels) {
-          AsyncValue(valueOrNull: final channels?) => channels.isEmpty
-              ? Text(t.misskey.nothing)
-              : Container(
-                  width: 800.0,
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ListView.builder(
-                    itemBuilder: (context, index) => ChannelPreview(
+      child: switch (channels) {
+        AsyncValue(valueOrNull: final channels?) => channels.isEmpty
+            ? Center(child: Text(t.misskey.nothing))
+            : ListView.builder(
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    width: maxContentWidth,
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == 0 ? 8.0 : 4.0,
+                      right: 8.0,
+                      bottom: index == channels.length - 1 ? 120.0 : 4.0,
+                    ),
+                    child: ChannelPreview(
                       account: account,
                       channel: channels[index],
                       onTap: onChannelTap != null
                           ? () => onChannelTap?.call(channels[index])
                           : null,
                     ),
-                    itemCount: channels.length,
                   ),
                 ),
-          AsyncValue(:final error?, :final stackTrace) =>
-            ErrorMessage(error: error, stackTrace: stackTrace),
-          _ => const CircularProgressIndicator(),
-        },
-      ),
+                itemCount: channels.length,
+              ),
+        AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                width: maxContentWidth,
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ErrorMessage(error: error, stackTrace: stackTrace),
+              ),
+            ),
+          ),
+        _ => const Center(child: CircularProgressIndicator()),
+      },
     );
   }
 }

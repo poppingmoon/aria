@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/announcements_notifier_provider.dart';
@@ -63,31 +64,37 @@ class _Announcements extends ConsumerWidget {
     return PaginatedListView(
       header: isActive && (hasUnreadAnnouncement ?? false)
           ? SliverToBoxAdapter(
-              child: Card(
-                margin: const EdgeInsets.only(top: 8.0),
-                color: colors.infoWarnBg,
-                elevation: 0.0,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.warning_amber,
-                              color: colors.infoWarnFg,
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: Card(
+                    margin: const EdgeInsets.only(top: 8.0),
+                    color: colors.infoWarnBg,
+                    elevation: 0.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.warning_amber,
+                                  color: colors.infoWarnFg,
+                                ),
+                                Text(
+                                  t.misskey.youHaveUnreadAnnouncements,
+                                  style: TextStyle(color: colors.infoWarnFg),
+                                ),
+                              ],
                             ),
-                            Text(
-                              t.misskey.youHaveUnreadAnnouncements,
-                              style: TextStyle(color: colors.infoWarnFg),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 ),
               ),

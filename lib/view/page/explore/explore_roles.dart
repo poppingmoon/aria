@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/roles_provider.dart';
@@ -26,14 +27,25 @@ class ExploreRoles extends ConsumerWidget {
                   roles.where((role) => role.target == 'manual').toList();
               return manualRoles.isEmpty
                   ? Center(child: Text(t.misskey.noRole))
-                  : ListView.separated(
-                      itemBuilder: (context, index) => RolePreview(
-                        account: account,
-                        role: manualRoles[index],
-                        onTap: () => context
-                            .push('/$account/roles/${manualRoles[index].id}'),
+                  : ListView.builder(
+                      itemBuilder: (context, index) => Center(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            left: 8.0,
+                            top: index == 0 ? 8.0 : 4.0,
+                            right: 8.0,
+                            bottom: index == manualRoles.length - 1 ? 8.0 : 4.0,
+                          ),
+                          width: maxContentWidth,
+                          child: RolePreview(
+                            account: account,
+                            role: manualRoles[index],
+                            onTap: () => context.push(
+                              '/$account/roles/${manualRoles[index].id}',
+                            ),
+                          ),
+                        ),
                       ),
-                      separatorBuilder: (_, __) => const Divider(height: 0.0),
                       itemCount: manualRoles.length,
                     );
             },

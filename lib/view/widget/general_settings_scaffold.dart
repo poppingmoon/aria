@@ -10,14 +10,12 @@ class GeneralSettingsScaffold extends StatelessWidget {
     this.appBar,
     this.body,
     this.floatingActionButton,
-    this.bodyMargin,
     this.selectedDestination,
   });
 
   final PreferredSizeWidget? appBar;
   final Widget? body;
   final Widget? floatingActionButton;
-  final EdgeInsetsGeometry? bodyMargin;
   final GeneralSettingsDestination? selectedDestination;
 
   @override
@@ -29,6 +27,7 @@ class GeneralSettingsScaffold extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (isMiddleScreen)
             Material(
@@ -42,17 +41,7 @@ class GeneralSettingsScaffold extends StatelessWidget {
                 ),
               ),
             ),
-          if (body case final body?)
-            Expanded(
-              child: Center(
-                child: Container(
-                  width: 800.0,
-                  height: double.infinity,
-                  margin: bodyMargin,
-                  child: body,
-                ),
-              ),
-            ),
+          if (body case final body?) Expanded(child: body),
         ],
       ),
       floatingActionButton: floatingActionButton,

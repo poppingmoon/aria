@@ -12,7 +12,6 @@ class AccountSettingsScaffold extends StatelessWidget {
     this.appBar,
     this.body,
     this.floatingActionButton,
-    this.bodyMargin,
     this.selectedDestination,
   });
 
@@ -20,7 +19,6 @@ class AccountSettingsScaffold extends StatelessWidget {
   final PreferredSizeWidget? appBar;
   final Widget? body;
   final Widget? floatingActionButton;
-  final EdgeInsetsGeometry? bodyMargin;
   final AccountSettingsDestination? selectedDestination;
 
   @override
@@ -32,6 +30,7 @@ class AccountSettingsScaffold extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       body: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (isMiddleScreen)
             Material(
@@ -46,17 +45,7 @@ class AccountSettingsScaffold extends StatelessWidget {
                 ),
               ),
             ),
-          if (body case final body?)
-            Expanded(
-              child: Center(
-                child: Container(
-                  width: 800.0,
-                  height: double.infinity,
-                  margin: bodyMargin,
-                  child: body,
-                ),
-              ),
-            ),
+          if (body case final body?) Expanded(child: body),
         ],
       ),
       floatingActionButton: floatingActionButton,

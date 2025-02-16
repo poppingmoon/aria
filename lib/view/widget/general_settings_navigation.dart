@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -20,11 +21,13 @@ class GeneralSettingsNavigation extends StatelessWidget {
   const GeneralSettingsNavigation({
     super.key,
     this.rail = false,
+    this.round = false,
     this.selectedDestination,
     this.physics,
   });
 
   final bool rail;
+  final bool round;
   final GeneralSettingsDestination? selectedDestination;
   final ScrollPhysics? physics;
 
@@ -86,8 +89,8 @@ class GeneralSettingsNavigation extends StatelessWidget {
       physics: physics,
       padding: EdgeInsets.zero,
       children: GeneralSettingsDestination.values
-          .map(
-            (destination) => rail
+          .mapIndexed(
+            (index, destination) => rail
                 ? IconButtonTheme(
                     data: IconButtonThemeData(
                       style: IconButton.styleFrom(
@@ -107,6 +110,18 @@ class GeneralSettingsNavigation extends StatelessWidget {
                 : ListTile(
                     leading: _buildIcon(destination),
                     title: Text(_buildLabel(destination)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(
+                        top: round && index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: round &&
+                                index ==
+                                    GeneralSettingsDestination.values.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                      ),
+                    ),
                     onTap: destination != selectedDestination
                         ? () => _onTap(context, destination)
                         : null,

@@ -87,7 +87,35 @@ Future<ProviderContainer> setupWidget(
 
 void main() {
   group('mute', () {
-    testWidgets('should not show hard muted note', (tester) async {
+    testWidgets('should not show a note if not stored', (tester) async {
+      const account = Account(host: 'misskey.tld');
+      await setupWidget(
+        tester,
+        account: account,
+        noteId: 'test',
+      );
+      await tester.pumpAndSettle();
+      expect(find.byType(Text), findsNothing);
+    });
+
+    testWidgets('should not show a note if the renote target is not stored',
+        (tester) async {
+      const account = Account(host: 'misskey.tld');
+      final note = dummyNote.copyWith(
+        id: 'test',
+        renoteId: 'renote',
+      );
+      final container = await setupWidget(
+        tester,
+        account: account,
+        noteId: note.id,
+      );
+      container.read(notesNotifierProvider(account).notifier).add(note);
+      await tester.pumpAndSettle();
+      expect(find.byType(Text), findsNothing);
+    });
+
+    testWidgets('should not show a hard muted note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -178,7 +206,7 @@ void main() {
       await tester.pumpAndSettle(const Duration(seconds: 10));
     });
 
-    testWidgets('should not show muted note', (tester) async {
+    testWidgets('should not show a muted note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
         id: 'test',

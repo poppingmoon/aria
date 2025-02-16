@@ -9,6 +9,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart' hide launchUrl;
 
+import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/miauth_notifier_provider.dart';
@@ -101,7 +102,7 @@ class LoginPage extends HookConsumerWidget {
             Expanded(
               child: Center(
                 child: SizedBox(
-                  width: 800.0,
+                  width: maxContentWidth,
                   child: Card(
                     margin: const EdgeInsets.all(16.0),
                     child: Padding(

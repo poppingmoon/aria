@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../constant/colors.dart';
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/channel_notifier_provider.dart';
@@ -181,7 +182,7 @@ class ChannelHome extends ConsumerWidget {
               if (description != null)
                 Center(
                   child: Container(
-                    width: 800.0,
+                    width: maxContentWidth,
                     margin: const EdgeInsets.all(8.0),
                     child: Card(
                       color: Theme.of(context).colorScheme.surface,
@@ -196,9 +197,12 @@ class ChannelHome extends ConsumerWidget {
               if (channel.pinnedNoteIds.isNotEmpty) ...[
                 Center(
                   child: Container(
-                    width: 800.0,
+                    width: maxContentWidth,
                     margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 4.0,
+                      horizontal: 8.0,
+                    ),
                     child: Row(
                       children: [
                         Icon(
@@ -223,17 +227,14 @@ class ChannelHome extends ConsumerWidget {
           SliverList.builder(
             itemBuilder: (context, index) => Center(
               child: Container(
-                width: 800.0,
-                margin: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: Theme.of(context).colorScheme.surface,
-                  elevation: 0.0,
-                  clipBehavior: Clip.hardEdge,
-                  child: NoteWidget(
-                    account: account,
-                    noteId: channel.pinnedNoteIds[index],
-                    withHardMute: false,
-                  ),
+                width: maxContentWidth,
+                margin:
+                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                child: NoteWidget(
+                  account: account,
+                  noteId: channel.pinnedNoteIds[index],
+                  withHardMute: false,
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
               ),
             ),

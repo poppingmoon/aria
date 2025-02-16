@@ -3,9 +3,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
-import '../../model/pagination_state.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
@@ -34,17 +34,41 @@ class NotePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final centerKey = useMemoized(() => GlobalKey(), []);
     final note = ref.watch(noteProvider(account, noteId));
     if (note == null) {
       return Scaffold(
-        appBar: AppBar(title: Text(t.misskey.note)),
-        body: NoteFallbackWidget(
-          account: account,
-          noteId: noteId,
+        appBar: AppBar(
+          title: Text(t.misskey.note),
+          actions: [
+            IconButton(
+              tooltip: t.misskey.reload,
+              onPressed: () async {
+                await futureWithDialog(
+                  context,
+                  ref
+                      .read(notesNotifierProvider(account).notifier)
+                      .show(noteId),
+                );
+              },
+              icon: const Icon(Icons.refresh),
+            ),
+          ],
+        ),
+        body: Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+            width: maxContentWidth,
+            child: NoteFallbackWidget(
+              account: account,
+              noteId: noteId,
+            ),
+          ),
         ),
       );
     }
+
+    final centerKey = useMemoized(() => GlobalKey(), []);
     final remoteUrl = note.uri ?? note.url;
     final remoteNoteId = remoteUrl?.pathSegments
         .where((segment) => segment != 'activity')
@@ -149,17 +173,17 @@ class NotePage extends HookConsumerWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Container(
-          width: 800.0,
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: CustomScrollView(
-            controller: controller,
-            center: centerKey,
-            slivers: [
-              const SliverToBoxAdapter(child: SizedBox(height: 4.0)),
-              if (nextNotesState != null) ...[
-                SliverToBoxAdapter(
+      body: CustomScrollView(
+        controller: controller,
+        center: centerKey,
+        slivers: [
+          const SliverToBoxAdapter(child: SizedBox(height: 4.0)),
+          if (nextNotesState != null) ...[
+            SliverToBoxAdapter(
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
                   child: PaginationBottomWidget(
                     paginationState: nextNotesState,
                     loadMore: () => ref
@@ -175,85 +199,87 @@ class NotePage extends HookConsumerWidget {
                     reversed: true,
                   ),
                 ),
-                if (nextNotesState.valueOrNull
-                    case PaginationState(items: final notes))
-                  if (notes.isNotEmpty) ...[
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(top: 4.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: colors.panel,
-                        ),
+              ),
+            ),
+            if (nextNotesState.valueOrNull?.items case final notes?
+                when notes.isNotEmpty)
+              SliverList.separated(
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == notes.length - 1 ? 4.0 : 0.0,
+                      right: 8.0,
+                      bottom: index == 0 ? 4.0 : 0.0,
+                    ),
+                    width: maxContentWidth,
+                    child: NoteWidget(
+                      account: account,
+                      noteId: notes[notes.length - index - 1].id,
+                      borderRadius: BorderRadius.vertical(
+                        top: index == notes.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
                       ),
                     ),
-                    SliverList.separated(
-                      itemBuilder: (context, index) => Material(
-                        color: colors.panel,
-                        child: NoteWidget(
-                          account: account,
-                          noteId: notes[notes.length - index - 1].id,
-                        ),
-                      ),
-                      separatorBuilder: (context, index) =>
-                          const Divider(height: 1.0),
-                      itemCount: notes.length,
-                    ),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 4.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(8.0),
-                            bottomRight: Radius.circular(8.0),
-                          ),
-                          color: colors.panel,
-                        ),
-                      ),
-                    ),
-                  ],
-              ] else
-                SliverToBoxAdapter(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (tabSettings != null)
-                        IconButton(
-                          onPressed: () => showTimelineNextNotes.value = true,
-                          icon: Row(
-                            children: [
-                              const Icon(Icons.keyboard_arrow_up),
-                              if (isChannelNote)
-                                const Icon(Icons.tv)
-                              else
-                                const Icon(Icons.timeline),
-                            ],
-                          ),
-                        ),
-                      IconButton(
-                        onPressed: () => showUserNextNotes.value = true,
-                        icon: const Row(
-                          children: [
-                            Icon(Icons.keyboard_arrow_up),
-                            Icon(Icons.person),
-                          ],
-                        ),
-                      ),
-                    ],
                   ),
                 ),
-              SliverToBoxAdapter(
-                key: centerKey,
-                child: remoteUrl != null
-                    ? Card(
-                        margin: const EdgeInsets.symmetric(vertical: 4.0),
+                separatorBuilder: (context, index) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SizedBox(
+                      width: maxContentWidth,
+                      child: Divider(height: 1.0),
+                    ),
+                  ),
+                ),
+                itemCount: notes.length,
+              ),
+          ] else
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (tabSettings != null)
+                    IconButton(
+                      onPressed: () => showTimelineNextNotes.value = true,
+                      icon: Row(
+                        children: [
+                          const Icon(Icons.keyboard_arrow_up),
+                          if (isChannelNote)
+                            const Icon(Icons.tv)
+                          else
+                            const Icon(Icons.timeline),
+                        ],
+                      ),
+                    ),
+                  IconButton(
+                    onPressed: () => showUserNextNotes.value = true,
+                    icon: const Row(
+                      children: [
+                        Icon(Icons.keyboard_arrow_up),
+                        Icon(Icons.person),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          SliverToBoxAdapter(
+            key: centerKey,
+            child: remoteUrl != null
+                ? Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 4.0,
+                        horizontal: 8.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Card.filled(
                         color: colors.infoWarnBg,
-                        elevation: 0.0,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
@@ -298,14 +324,23 @@ class NotePage extends HookConsumerWidget {
                             ],
                           ),
                         ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
-              SliverToBoxAdapter(
-                child: Card(
-                  margin: const EdgeInsets.symmetric(vertical: 4.0),
+                      ),
+                    ),
+                  )
+                : null,
+          ),
+          SliverToBoxAdapter(
+            child: Center(
+              child: Container(
+                margin:
+                    const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+                width: maxContentWidth,
+                child: Card.filled(
                   color: colors.panel,
-                  elevation: 0.0,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  margin: EdgeInsets.zero,
                   clipBehavior: Clip.hardEdge,
                   child: NoteDetailedWidget(
                     account: account,
@@ -313,100 +348,93 @@ class NotePage extends HookConsumerWidget {
                   ),
                 ),
               ),
-              if (previousNotesState != null) ...[
-                if (previousNotesState.valueOrNull
-                    case PaginationState(items: final notes))
-                  if (notes.isNotEmpty) ...[
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(top: 4.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: colors.panel,
-                        ),
-                      ),
-                    ),
-                    SliverList.separated(
-                      itemBuilder: (context, index) => Material(
-                        color: colors.panel,
-                        child: NoteWidget(
-                          account: account,
-                          noteId: notes[index].id,
-                        ),
-                      ),
-                      separatorBuilder: (context, index) =>
-                          const Divider(height: 0.0),
-                      itemCount: notes.length,
-                    ),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 4.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(8.0),
-                            bottomRight: Radius.circular(8.0),
-                          ),
-                          color: colors.panel,
-                        ),
-                      ),
-                    ),
-                  ],
-                SliverToBoxAdapter(
-                  child: PaginationBottomWidget(
-                    paginationState: previousNotesState,
-                    loadMore: () => ref
-                        .read(
-                          timelineNotesNotifierProvider(
-                            showTimelinePreviousNotes.value &&
-                                    tabSettings != null
-                                ? tabSettings
-                                : TabSettings.user(account, note.userId),
-                            untilId: noteId,
-                          ).notifier,
-                        )
-                        .loadMore(skipError: true),
-                  ),
-                ),
-              ] else
-                SliverToBoxAdapter(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      if (tabSettings != null)
-                        IconButton(
-                          onPressed: () =>
-                              showTimelinePreviousNotes.value = true,
-                          icon: Row(
-                            children: [
-                              const Icon(Icons.keyboard_arrow_down),
-                              if (isChannelNote)
-                                const Icon(Icons.tv)
-                              else
-                                const Icon(Icons.timeline),
-                            ],
-                          ),
-                        ),
-                      IconButton(
-                        onPressed: () => showUserPreviousNotes.value = true,
-                        icon: const Row(
-                          children: [
-                            Icon(Icons.keyboard_arrow_down),
-                            Icon(Icons.person),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              const SliverToBoxAdapter(child: SizedBox(height: 4.0)),
-            ],
+            ),
           ),
-        ),
+          if (previousNotesState != null) ...[
+            if (previousNotesState.valueOrNull?.items case final notes?
+                when notes.isNotEmpty)
+              SliverList.separated(
+                itemBuilder: (context, index) => Center(
+                  child: Container(
+                    margin: EdgeInsets.only(
+                      left: 8.0,
+                      top: index == 0 ? 4.0 : 0.0,
+                      right: 8.0,
+                      bottom: index == notes.length - 1 ? 4.0 : 0.0,
+                    ),
+                    width: maxContentWidth,
+                    child: NoteWidget(
+                      account: account,
+                      noteId: notes[index].id,
+                      borderRadius: BorderRadius.vertical(
+                        top: index == 0
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                        bottom: index == notes.length - 1
+                            ? const Radius.circular(8.0)
+                            : Radius.zero,
+                      ),
+                    ),
+                  ),
+                ),
+                separatorBuilder: (context, index) => const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SizedBox(
+                      width: maxContentWidth,
+                      child: Divider(height: 0.0),
+                    ),
+                  ),
+                ),
+                itemCount: notes.length,
+              ),
+            SliverToBoxAdapter(
+              child: PaginationBottomWidget(
+                paginationState: previousNotesState,
+                loadMore: () => ref
+                    .read(
+                      timelineNotesNotifierProvider(
+                        showTimelinePreviousNotes.value && tabSettings != null
+                            ? tabSettings
+                            : TabSettings.user(account, note.userId),
+                        untilId: noteId,
+                      ).notifier,
+                    )
+                    .loadMore(skipError: true),
+              ),
+            ),
+          ] else
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (tabSettings != null)
+                    IconButton(
+                      onPressed: () => showTimelinePreviousNotes.value = true,
+                      icon: Row(
+                        children: [
+                          const Icon(Icons.keyboard_arrow_down),
+                          if (isChannelNote)
+                            const Icon(Icons.tv)
+                          else
+                            const Icon(Icons.timeline),
+                        ],
+                      ),
+                    ),
+                  IconButton(
+                    onPressed: () => showUserPreviousNotes.value = true,
+                    icon: const Row(
+                      children: [
+                        Icon(Icons.keyboard_arrow_down),
+                        Icon(Icons.person),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          const SliverToBoxAdapter(child: SizedBox(height: 4.0)),
+        ],
       ),
     );
   }

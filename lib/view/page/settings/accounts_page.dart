@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../widget/account_preview.dart';
@@ -25,36 +26,41 @@ class AccountsPage extends HookConsumerWidget {
           : ReorderableListView.builder(
               itemBuilder: (context, index) {
                 if (index == 0) {
-                  return ReorderableDragStartListener(
-                    key: ValueKey(index),
-                    index: index,
-                    enabled: false,
-                    child: const SizedBox(height: 4.0),
+                  return const SizedBox(
+                    key: ValueKey('<AccountsPage tag header>'),
+                    height: 4.0,
                   );
                 } else if (index < accounts.length + 1) {
                   final account = accounts[index - 1];
-                  return ReorderableDragStartListenerWrapper(
-                    key: ValueKey(index),
-                    index: index,
-                    child: Card(
-                      color: Theme.of(context).colorScheme.surface,
-                      elevation: 0.0,
-                      clipBehavior: Clip.hardEdge,
-                      child: AccountPreview(
-                        account: account,
-                        trailing: const Icon(Icons.drag_handle),
-                        avatarSize: 40.0,
-                        onTap: () =>
-                            context.push('/settings/accounts/$account'),
+                  return Center(
+                    key: ValueKey('<AccountsPage tag $index>'),
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(
+                        vertical: 4.0,
+                        horizontal: 8.0,
+                      ),
+                      width: maxContentWidth,
+                      child: ReorderableDragStartListenerWrapper(
+                        index: index,
+                        child: Card.filled(
+                          color: Theme.of(context).colorScheme.surface,
+                          margin: EdgeInsets.zero,
+                          clipBehavior: Clip.hardEdge,
+                          child: AccountPreview(
+                            account: account,
+                            trailing: const Icon(Icons.drag_handle),
+                            avatarSize: 40.0,
+                            onTap: () =>
+                                context.push('/settings/accounts/$account'),
+                          ),
+                        ),
                       ),
                     ),
                   );
                 } else {
-                  return ReorderableDragStartListener(
-                    key: ValueKey(index),
-                    index: index,
-                    enabled: false,
-                    child: const SizedBox(height: 80.0),
+                  return const SizedBox(
+                    key: ValueKey('<AccountsPage tag footer>'),
+                    height: 120.0,
                   );
                 }
               },
@@ -68,12 +74,17 @@ class AccountsPage extends HookConsumerWidget {
                 animation: animation,
                 builder: (context, child) {
                   final animValue = Curves.easeInOut.transform(animation.value);
-                  final elevation = lerpDouble(0, 6, animValue)!;
-                  return Material(
-                    elevation: elevation,
-                    borderRadius: BorderRadius.circular(12.0),
-                    color: Colors.transparent,
-                    child: child,
+                  final elevation = lerpDouble(0.0, 6.0, animValue) ?? 0.0;
+                  return Center(
+                    child: SizedBox(
+                      width: maxContentWidth + 16.0,
+                      child: Material(
+                        elevation: elevation,
+                        borderRadius: BorderRadius.circular(12.0),
+                        color: Colors.transparent,
+                        child: child,
+                      ),
+                    ),
                   );
                 },
                 child: child,
@@ -85,7 +96,6 @@ class AccountsPage extends HookConsumerWidget {
         icon: const Icon(Icons.add),
         label: Text(t.misskey.addAccount),
       ),
-      bodyMargin: const EdgeInsets.symmetric(horizontal: 8.0),
       selectedDestination: GeneralSettingsDestination.accounts,
     );
   }

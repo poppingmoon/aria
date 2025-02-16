@@ -22,9 +22,9 @@ class PagePreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Card(
+    return Card.filled(
       color: Theme.of(context).colorScheme.surface,
-      elevation: 0.0,
+      margin: EdgeInsets.zero,
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,

@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/pinned_users_provider.dart';
@@ -59,8 +60,9 @@ class ExploreUsers extends HookConsumerWidget {
     return PaginatedListView(
       header: SliverList.list(
         children: [
+          const SizedBox(height: 8.0),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: SegmentedButton(
               segments: [
                 ButtonSegment(
@@ -80,63 +82,104 @@ class ExploreUsers extends HookConsumerWidget {
               onSelectionChanged: (selection) => type.value = selection.single,
             ),
           ),
+          const SizedBox(height: 4.0),
           if (type.value == _UserType.pinned)
             ...switch (pinnedUsers) {
               AsyncValue(valueOrNull: final users?) => users.isNotEmpty
-                  ? users.map((user) => UserInfo(account: account, user: user))
-                  : [Center(child: Text(t.misskey.noUsers))],
+                  ? users.map(
+                      (user) => Center(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 4.0,
+                            horizontal: 8.0,
+                          ),
+                          width: maxContentWidth,
+                          child: UserInfo(account: account, user: user),
+                        ),
+                      ),
+                    )
+                  : [
+                      Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Text(t.misskey.noUsers),
+                        ),
+                      ),
+                    ],
               AsyncValue(:final error?, :final stackTrace) => [
-                  ErrorMessage(error: error, stackTrace: stackTrace),
-                ],
-              _ => const [Center(child: CircularProgressIndicator())],
-            }
-          else ...[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Row(
-                children: [
-                  Flexible(child: Center(child: Text(t.misskey.sort))),
-                  Flexible(
-                    flex: 3,
-                    child: DropdownButton(
-                      isExpanded: true,
-                      items: UsersSortType.values
-                          .map(
-                            (sort) => DropdownMenuItem(
-                              value: sort,
-                              child: UsersSortTypeWidget(sort: sort),
-                            ),
-                          )
-                          .toList(),
-                      value: sort.value,
-                      onChanged: (value) {
-                        if (value != null) {
-                          sort.value = value;
-                        }
-                      },
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: ErrorMessage(error: error, stackTrace: stackTrace),
                     ),
                   ),
                 ],
-              ),
-            ),
-            if (type.value == _UserType.remote)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: MisskeyServerAutocomplete(
-                  controller: controller,
-                  focusNode: focusNode,
-                  onSubmitted: (value) {
-                    final text = toAscii(
-                      value
-                          .trim()
-                          .replaceFirst('https://', '')
-                          .split('/')
-                          .first,
-                    ).toLowerCase();
-                    host.value = text.isNotEmpty ? text : null;
-                  },
+              _ => const [
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(16.0),
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                ],
+            }
+          else ...[
+            const SizedBox(height: 4.0),
+            Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: Row(
+                  children: [
+                    Flexible(child: Center(child: Text(t.misskey.sort))),
+                    Flexible(
+                      flex: 3,
+                      child: DropdownButton(
+                        isExpanded: true,
+                        items: UsersSortType.values
+                            .map(
+                              (sort) => DropdownMenuItem(
+                                value: sort,
+                                child: UsersSortTypeWidget(sort: sort),
+                              ),
+                            )
+                            .toList(),
+                        value: sort.value,
+                        onChanged: (value) {
+                          if (value != null) {
+                            sort.value = value;
+                          }
+                        },
+                      ),
+                    ),
+                  ],
                 ),
               ),
+            ),
+            if (type.value == _UserType.remote) ...[
+              const SizedBox(height: 8.0),
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: MisskeyServerAutocomplete(
+                    controller: controller,
+                    focusNode: focusNode,
+                    onSubmitted: (value) {
+                      final text = toAscii(
+                        value
+                            .trim()
+                            .replaceFirst('https://', '')
+                            .split('/')
+                            .first,
+                      ).toLowerCase();
+                      host.value = text.isNotEmpty ? text : null;
+                    },
+                  ),
+                ),
+              ),
+            ],
           ],
         ],
       ),

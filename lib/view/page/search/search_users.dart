@@ -3,6 +3,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -38,49 +39,59 @@ class SearchUsers extends HookConsumerWidget {
     return PaginatedListView(
       header: SliverList.list(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Shortcuts(
-              shortcuts: disablingTextShortcuts,
-              child: TextField(
-                controller: controller,
-                focusNode: focusNode,
-                decoration:
-                    const InputDecoration(prefixIcon: Icon(Icons.search)),
-                autofocus: true,
-                onSubmitted: (value) => query.value = value.trim(),
-                textInputAction: TextInputAction.search,
-                onTapOutside: (_) => focusNode?.unfocus(),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.all(8.0),
+              width: maxContentWidth,
+              child: Shortcuts(
+                shortcuts: disablingTextShortcuts,
+                child: TextField(
+                  controller: controller,
+                  focusNode: focusNode,
+                  decoration:
+                      const InputDecoration(prefixIcon: Icon(Icons.search)),
+                  autofocus: true,
+                  onSubmitted: (value) => query.value = value.trim(),
+                  textInputAction: TextInputAction.search,
+                  onTapOutside: (_) => focusNode?.unfocus(),
+                ),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: SegmentedButton(
-              segments: [
-                ButtonSegment(
-                  value: Origin.combined,
-                  label: Text(t.misskey.all),
-                ),
-                ButtonSegment(
-                  value: Origin.local,
-                  label: Text(t.misskey.local),
-                ),
-                ButtonSegment(
-                  value: Origin.remote,
-                  label: Text(t.misskey.remote),
-                ),
-              ],
-              selected: {origin.value},
-              onSelectionChanged: (selection) =>
-                  origin.value = selection.single,
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: SegmentedButton(
+                segments: [
+                  ButtonSegment(
+                    value: Origin.combined,
+                    label: Text(t.misskey.all),
+                  ),
+                  ButtonSegment(
+                    value: Origin.local,
+                    label: Text(t.misskey.local),
+                  ),
+                  ButtonSegment(
+                    value: Origin.remote,
+                    label: Text(t.misskey.remote),
+                  ),
+                ],
+                selected: {origin.value},
+                onSelectionChanged: (selection) =>
+                    origin.value = selection.single,
+              ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () => query.value = controller.text.trim(),
-              child: Text(t.misskey.search),
+          const SizedBox(height: 8.0),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ElevatedButton(
+                onPressed: () => query.value = controller.text.trim(),
+                child: Text(t.misskey.search),
+              ),
             ),
           ),
         ],

@@ -28,8 +28,10 @@ class ChannelPreview extends ConsumerWidget {
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
-    return Card(
-      clipBehavior: Clip.hardEdge,
+    return Card.filled(
+      color: colors.panel,
+      margin: EdgeInsets.zero,
+      clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
         child: Column(

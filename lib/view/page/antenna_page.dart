@@ -9,14 +9,12 @@ import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
 import '../../model/tab_settings.dart';
 import '../../provider/api/antennas_notifier_provider.dart';
-import '../../provider/api/timeline_notes_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import '../dialog/antenna_settings_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
-import '../widget/note_widget.dart';
-import '../widget/paginated_list_view.dart';
+import '../widget/timeline_list_view.dart';
 
 class AntennaPage extends ConsumerWidget {
   const AntennaPage({
@@ -63,8 +61,6 @@ class AntennaPage extends ConsumerWidget {
         .watch(antennasNotifierProvider(account))
         .valueOrNull
         ?.firstWhereOrNull((antenna) => antenna.id == antennaId);
-    final tabSettings = TabSettings.antenna(account, antennaId);
-    final notes = ref.watch(timelineNotesNotifierProvider(tabSettings));
 
     return Scaffold(
       appBar: AppBar(
@@ -118,20 +114,11 @@ class AntennaPage extends ConsumerWidget {
           ),
         ],
       ),
-      body: PaginatedListView(
-        paginationState: notes,
-        itemBuilder: (context, note) => NoteWidget(
-          account: account,
-          noteId: note.id,
-        ),
-        onRefresh: () =>
-            ref.refresh(timelineNotesNotifierProvider(tabSettings).future),
-        loadMore: (skipError) => ref
-            .read(timelineNotesNotifierProvider(tabSettings).notifier)
-            .loadMore(skipError: skipError),
-        noItemsLabel: t.misskey.noNotes,
+      body: TimelineListView(
+        tabSettings: TabSettings.antenna(account, antennaId),
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: t.misskey.editAntenna,
         onPressed: antenna != null ? () => _edit(ref, antenna) : null,
         child: const Icon(Icons.edit),
       ),

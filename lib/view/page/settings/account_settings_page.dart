@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/i_notifier_provider.dart';
@@ -31,44 +32,18 @@ class AccountSettingsPage extends HookConsumerWidget {
                 ),
               ),
       ),
-      body: Center(
-        child: Container(
-          width: 800.0,
-          height: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Container(
-                  height: 8.0,
-                  margin: const EdgeInsets.only(top: 8.0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(8.0),
-                      topRight: Radius.circular(8.0),
-                    ),
-                    color: Theme.of(context).colorScheme.surface,
-                  ),
-                ),
-                ListTileTheme(
-                  tileColor: Theme.of(context).colorScheme.surface,
-                  child: AccountSettingsNavigation(
-                    account: account,
-                    physics: const NeverScrollableScrollPhysics(),
-                  ),
-                ),
-                Container(
-                  height: 8.0,
-                  margin: const EdgeInsets.only(bottom: 8.0),
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(8.0),
-                      bottomRight: Radius.circular(8.0),
-                    ),
-                    color: Theme.of(context).colorScheme.surface,
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Container(
+            margin: const EdgeInsets.all(8.0),
+            width: maxContentWidth,
+            child: ListTileTheme(
+              tileColor: Theme.of(context).colorScheme.surface,
+              child: AccountSettingsNavigation(
+                account: account,
+                round: true,
+                physics: const NeverScrollableScrollPhysics(),
+              ),
             ),
           ),
         ),

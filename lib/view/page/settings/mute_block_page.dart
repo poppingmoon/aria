@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_off_icons/material_off_icons.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../constant/shortcuts.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
@@ -30,30 +31,73 @@ class MuteBlockPage extends StatelessWidget {
       appBar: AppBar(title: Text(t.misskey.muteAndBlock)),
       body: ListView(
         children: [
-          MutedWordsEditor(account: account),
-          MutedWordsEditor(account: account, hardMute: true),
-          _MutedEmojisEditor(account: account),
-          _InstanceMuteEditor(account: account),
-          ListTile(
-            leading: const Icon(OffIcons.repeat_rounded),
-            title: Text('${t.misskey.mutedUsers} (${t.misskey.renote})'),
-            trailing: const Icon(Icons.navigate_next),
-            onTap: () => context
-                .push('/settings/accounts/$account/mute-block/renote-muted'),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: MutedWordsEditor(account: account),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.visibility_off),
-            title: Text(t.misskey.mutedUsers),
-            trailing: const Icon(Icons.navigate_next),
-            onTap: () =>
-                context.push('/settings/accounts/$account/mute-block/muted'),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: MutedWordsEditor(account: account, hardMute: true),
+            ),
           ),
-          ListTile(
-            leading: const Icon(Icons.block),
-            title: Text(t.misskey.blockedUsers),
-            trailing: const Icon(Icons.navigate_next),
-            onTap: () =>
-                context.push('/settings/accounts/$account/mute-block/blocked'),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: _MutedEmojisEditor(account: account),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: _InstanceMuteEditor(account: account),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ListTile(
+                leading: const Icon(OffIcons.repeat_rounded),
+                title: Text('${t.misskey.mutedUsers} (${t.misskey.renote})'),
+                trailing: const Icon(Icons.navigate_next),
+                onTap: () => context.push(
+                  '/settings/accounts/$account/mute-block/renote-muted',
+                ),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ListTile(
+                leading: const Icon(Icons.visibility_off),
+                title: Text(t.misskey.mutedUsers),
+                trailing: const Icon(Icons.navigate_next),
+                onTap: () => context
+                    .push('/settings/accounts/$account/mute-block/muted'),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: ListTile(
+                leading: const Icon(Icons.block),
+                title: Text(t.misskey.blockedUsers),
+                trailing: const Icon(Icons.navigate_next),
+                onTap: () => context
+                    .push('/settings/accounts/$account/mute-block/blocked'),
+              ),
+            ),
           ),
         ],
       ),

@@ -30,6 +30,7 @@ import 'cw_button.dart';
 import 'instance_ticker_widget.dart';
 import 'media_list.dart';
 import 'mfm.dart';
+import 'muted_note_widget.dart';
 import 'note_footer.dart';
 import 'note_simple_widget.dart';
 import 'note_sub_widget.dart';
@@ -77,29 +78,14 @@ class NoteDetailedWidget extends HookConsumerWidget {
           ),
     );
     if (muted.value) {
-      final style = TextStyle(
-        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-      );
-      return InkWell(
+      return MutedNoteWidget(
+        account: account,
+        note: note,
         onTap: () => muted.value = false,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            vertical: verticalPadding,
-            horizontal: horizontalPadding,
-          ),
-          child: UsernameWidget(
-            account: account,
-            user: appearNote.user,
-            builder: (context, span) => Text.rich(
-              t.aria.userSaysSomething(name: span),
-              style: style,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
       );
     }
 
+    final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
     final tapAction = ref.watch(
       generalSettingsNotifierProvider
           .select((settings) => settings.noteTapAction),
@@ -214,6 +200,81 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 ),
               ),
             ),
+            if (children
+                case AsyncValue(
+                  valueOrNull: PaginationState(items: final notes),
+                ) when notes.isNotEmpty) ...[
+              ChannelColorBarBox(
+                note: note,
+                child: const SizedBox(height: 8.0, width: double.infinity),
+              ),
+              ListView.separated(
+                itemBuilder: (context, index) => index < notes.length
+                    ? ChannelColorBarBox(
+                        note: note,
+                        child: Container(
+                          margin: EdgeInsetsDirectional.only(
+                            start: horizontalPadding - 4.0,
+                          ),
+                          decoration: BoxDecoration(
+                            border: BorderDirectional(
+                              start: BorderSide(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .outlineVariant,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          child: ChannelColorBarBox(
+                            note: notes[index],
+                            child: Padding(
+                              padding:
+                                  const EdgeInsetsDirectional.only(start: 8.0),
+                              child: NoteSubWidget(
+                                account: account,
+                                noteId: notes[index].id,
+                                showReplies: true,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : PaginationBottomWidget(
+                        paginationState: children,
+                        loadMore: () => ref
+                            .read(
+                              childrenNotesNotifierProvider(
+                                account,
+                                noteId,
+                              ).notifier,
+                            )
+                            .loadMore(skipError: true),
+                      ),
+                separatorBuilder: (context, index) => index < notes.length - 1
+                    ? ChannelColorBarBox(
+                        note: note,
+                        child: Container(
+                          margin: const EdgeInsetsDirectional.only(start: 8.0),
+                          decoration: BoxDecoration(
+                            border: BorderDirectional(
+                              start: BorderSide(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .outlineVariant,
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          child: const Divider(),
+                        ),
+                      )
+                    : const SizedBox.shrink(),
+                itemCount: notes.length + 1,
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+              ),
+            ],
           ],
         ),
       ),
@@ -238,7 +299,6 @@ class _NoteDetailedContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
     final showContent = useState(
       ref.watch(
         generalSettingsNotifierProvider
@@ -531,52 +591,6 @@ class _NoteDetailedContent extends HookConsumerWidget {
           noteId: noteId,
           disableHeader: true,
         ),
-        if (children
-            case AsyncValue(
-              valueOrNull: PaginationState(items: final notes),
-            ) when notes.isNotEmpty)
-          Container(
-            margin: const EdgeInsetsDirectional.only(start: 8.0, top: 8.0),
-            decoration: BoxDecoration(
-              border: BorderDirectional(
-                start: BorderSide(
-                  color: Theme.of(context).colorScheme.outlineVariant,
-                  width: 2.0,
-                ),
-              ),
-            ),
-            child: ListView.separated(
-              itemBuilder: (context, index) => index < notes.length
-                  ? ChannelColorBarBox(
-                      note: notes[index],
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 8.0),
-                        child: NoteSubWidget(
-                          account: account,
-                          noteId: notes[index].id,
-                          showReplies: true,
-                        ),
-                      ),
-                    )
-                  : PaginationBottomWidget(
-                      paginationState: children,
-                      loadMore: () => ref
-                          .read(
-                            childrenNotesNotifierProvider(
-                              account,
-                              noteId,
-                            ).notifier,
-                          )
-                          .loadMore(skipError: true),
-                    ),
-              separatorBuilder: (context, index) => index < notes.length - 1
-                  ? const Divider()
-                  : const SizedBox.shrink(),
-              itemCount: notes.length + 1,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-            ),
-          ),
       ],
     );
   }

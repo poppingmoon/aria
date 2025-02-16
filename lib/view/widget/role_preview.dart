@@ -28,6 +28,7 @@ class RolePreview extends ConsumerWidget {
         border: color != null
             ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
             : null,
+        borderRadius: BorderRadius.circular(8.0),
       ),
       child: ListTile(
         leading: switch (role) {
@@ -59,6 +60,8 @@ class RolePreview extends ConsumerWidget {
         title: Text(role.name),
         subtitle: Text(role.description ?? ''),
         trailing: Text(t.misskey.nUsers(n: role.usersCount)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+        tileColor: Theme.of(context).colorScheme.surface,
         onTap: onTap,
       ),
     );

@@ -4,8 +4,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:misskey_dart/misskey_dart.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
+import '../../constant/inifite_scroll_extent_threshold.dart';
+import '../../constant/max_content_width.dart';
 import '../../extension/scroll_controller_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -83,7 +85,8 @@ class FollowRequestsListView extends HookConsumerWidget {
       () {
         if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
           controller.addListener(() {
-            if (controller.position.extentAfter < 100) {
+            if (controller.position.extentAfter <
+                infiniteScrollExtentThreshold) {
               if (!isAtBottom.value) {
                 ref
                     .read(followRequestsNotifierProvider(account).notifier)
@@ -113,86 +116,118 @@ class FollowRequestsListView extends HookConsumerWidget {
         child: Stack(
           alignment: Alignment.topCenter,
           children: [
-            Container(
-              width: 800.0,
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: CustomScrollView(
-                controller: controller,
-                center: centerKey,
-                slivers: [
-                  if ((requests.valueOrNull?.items.isNotEmpty ?? false) ||
-                      nextRequests.value.isNotEmpty)
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(top: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(8.0),
-                            topRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
+            CustomScrollView(
+              controller: controller,
+              center: centerKey,
+              slivers: [
+                SliverList.separated(
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: index == nextRequests.value.length - 1 ? 8.0 : 0.0,
+                        left: 8.0,
+                        right: 8.0,
+                        bottom: index == 0 &&
+                                (requests.valueOrNull?.items.isEmpty ?? true)
+                            ? 8.0
+                            : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        borderRadius: BorderRadius.vertical(
+                          top: index == nextRequests.value.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                          bottom: index == 0 &&
+                                  (requests.valueOrNull?.items.isEmpty ?? true)
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
+                        ),
+                        clipBehavior: Clip.hardEdge,
+                        child: _FollowRequestTile(
+                          account: account,
+                          user: nextRequests.value[index],
+                          onDismissed: () => nextRequests.value = nextRequests
+                              .value
+                              .whereIndexed((i, _) => i != index)
+                              .toList(),
                         ),
                       ),
                     ),
-                  SliverList.separated(
-                    itemBuilder: (context, index) => Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: FollowRequestTile(
-                        account: account,
-                        user: nextRequests.value[index],
-                        onDismissed: () => nextRequests.value = nextRequests
-                            .value
-                            .whereIndexed((i, _) => i != index)
-                            .toList(),
-                      ),
-                    ),
-                    separatorBuilder: (_, __) => const Divider(height: 0),
-                    itemCount: nextRequests.value.length,
                   ),
-                  if (nextRequests.value.isNotEmpty &&
-                      (requests.valueOrNull?.items.isNotEmpty ?? false))
-                    const SliverToBoxAdapter(child: Divider(height: 0.0)),
-                  SliverList.separated(
-                    key: centerKey,
-                    itemBuilder: (context, index) => Material(
-                      color: Theme.of(context).colorScheme.surface,
-                      child: FollowRequestTile(
-                        account: account,
-                        user: requests.value!.items[index].follower,
-                      ),
+                  separatorBuilder: (_, __) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: const Divider(height: 0.0),
                     ),
-                    separatorBuilder: (_, __) => const Divider(height: 0),
-                    itemCount: requests.valueOrNull?.items.length ?? 0,
                   ),
-                  if ((requests.valueOrNull?.items.isNotEmpty ?? false) ||
-                      nextRequests.value.isNotEmpty)
-                    SliverToBoxAdapter(
-                      child: Container(
-                        height: 8.0,
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        decoration: BoxDecoration(
-                          borderRadius: const BorderRadius.only(
-                            bottomLeft: Radius.circular(8.0),
-                            bottomRight: Radius.circular(8.0),
-                          ),
-                          color: Theme.of(context).colorScheme.surface,
-                        ),
-                      ),
-                    ),
+                  itemCount: nextRequests.value.length,
+                ),
+                if (nextRequests.value.isNotEmpty &&
+                    (requests.valueOrNull?.items.isNotEmpty ?? false))
                   SliverToBoxAdapter(
-                    child: PaginationBottomWidget(
-                      paginationState: requests,
-                      noItemsLabel: t.misskey.noFollowRequests,
-                      loadMore: () => ref
-                          .read(
-                            followRequestsNotifierProvider(account).notifier,
-                          )
-                          .loadMore(skipError: true),
+                    child: Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        child: const Divider(height: 0.0),
+                      ),
                     ),
                   ),
-                ],
-              ),
+                SliverList.separated(
+                  key: centerKey,
+                  itemBuilder: (context, index) => Center(
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        top: index == 0 && nextRequests.value.isEmpty
+                            ? 8.0
+                            : 0.0,
+                        left: 8.0,
+                        right: 8.0,
+                        bottom: index == requests.value!.items.length - 1
+                            ? 8.0
+                            : 0.0,
+                      ),
+                      width: maxContentWidth,
+                      child: Material(
+                        color: Theme.of(context).colorScheme.surface,
+                        child: _FollowRequestTile(
+                          account: account,
+                          user: requests.value!.items[index].follower,
+                        ),
+                      ),
+                    ),
+                  ),
+                  separatorBuilder: (_, __) => Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: const Divider(height: 0.0),
+                    ),
+                  ),
+                  itemCount: requests.valueOrNull?.items.length ?? 0,
+                ),
+                SliverToBoxAdapter(
+                  child: Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: PaginationBottomWidget(
+                        paginationState: requests,
+                        noItemsLabel: t.misskey.noFollowRequests,
+                        loadMore: () => ref
+                            .read(
+                              followRequestsNotifierProvider(account).notifier,
+                            )
+                            .loadMore(skipError: true),
+                        height: 120.0,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
             if (hasUnread.value && showPopup)
               Positioned(
@@ -219,9 +254,8 @@ class FollowRequestsListView extends HookConsumerWidget {
   }
 }
 
-class FollowRequestTile extends ConsumerWidget {
-  const FollowRequestTile({
-    super.key,
+class _FollowRequestTile extends ConsumerWidget {
+  const _FollowRequestTile({
     required this.account,
     required this.user,
     this.onDismissed,

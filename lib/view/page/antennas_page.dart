@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../constant/max_content_width.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/antenna_settings.dart';
@@ -23,67 +24,73 @@ class AntennasPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.antennas)),
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(antennasNotifierProvider(account).future),
-        child: Center(
-          child: switch (antennas) {
-            AsyncValue(valueOrNull: final antennas?) => antennas.isEmpty
-                ? Text(t.misskey.nothing)
-                : Container(
-                    width: 800.0,
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ListTileTheme(
-                      tileColor: Theme.of(context).colorScheme.surface,
-                      child: ListView(
-                        children: [
-                          Container(
-                            height: 8.0,
-                            margin: const EdgeInsets.only(top: 8.0),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(8.0),
-                                topRight: Radius.circular(8.0),
-                              ),
-                              color: Theme.of(context).colorScheme.surface,
+        child: switch (antennas) {
+          AsyncValue(valueOrNull: final antennas?) => antennas.isEmpty
+              ? Center(child: Text(t.misskey.nothing))
+              : ListTileTheme(
+                  tileColor: Theme.of(context).colorScheme.surface,
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => Center(
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          left: 8.0,
+                          top: index == 0 ? 8.0 : 0.0,
+                          right: 8.0,
+                          bottom: index == antennas.length - 1 ? 120.0 : 0.0,
+                        ),
+                        width: maxContentWidth,
+                        child: ListTile(
+                          title: Text(antennas[index].name),
+                          subtitle: Text(
+                            antennas[index]
+                                .keywords
+                                .map((line) => line.join(' '))
+                                .join(' | '),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top: index == 0
+                                  ? const Radius.circular(8.0)
+                                  : Radius.zero,
+                              bottom: index == antennas.length - 1
+                                  ? const Radius.circular(8.0)
+                                  : Radius.zero,
                             ),
                           ),
-                          ...ListTile.divideTiles(
-                            context: context,
-                            tiles: antennas.map(
-                              (antenna) => ListTile(
-                                title: Text(antenna.name),
-                                subtitle: Text(
-                                  antenna.keywords
-                                      .map((line) => line.join(' '))
-                                      .join(' | '),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                                onTap: () => context
-                                    .push('/$account/antennas/${antenna.id}'),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            height: 8.0,
-                            margin: const EdgeInsets.only(bottom: 8.0),
-                            decoration: BoxDecoration(
-                              borderRadius: const BorderRadius.only(
-                                bottomLeft: Radius.circular(8.0),
-                                bottomRight: Radius.circular(8.0),
-                              ),
-                              color: Theme.of(context).colorScheme.surface,
-                            ),
-                          ),
-                        ],
+                          onTap: () => context
+                              .push('/$account/antennas/${antennas[index].id}'),
+                        ),
                       ),
                     ),
+                    separatorBuilder: (context, index) => const Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: SizedBox(
+                          width: maxContentWidth,
+                          child: Divider(height: 0.0),
+                        ),
+                      ),
+                    ),
+                    itemCount: antennas.length,
                   ),
-            AsyncValue(:final error?, :final stackTrace) =>
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            _ => const CircularProgressIndicator(),
-          },
-        ),
+                ),
+          AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
+              physics: const AlwaysScrollableScrollPhysics(),
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: ErrorMessage(error: error, stackTrace: stackTrace),
+                ),
+              ),
+            ),
+          _ => const Center(child: CircularProgressIndicator()),
+        },
       ),
       floatingActionButton: FloatingActionButton(
+        tooltip: t.misskey.createAntenna,
         onPressed: () async {
           final result = await showDialog<AntennaSettings>(
             context: context,

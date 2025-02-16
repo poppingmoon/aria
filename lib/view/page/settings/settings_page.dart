@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../constant/max_content_width.dart';
 import '../../../i18n/strings.g.dart';
+import '../../../model/account.dart';
 import '../../../provider/accounts_notifier_provider.dart';
 import '../../../provider/api/i_notifier_provider.dart';
 import '../../widget/general_settings_navigation.dart';
@@ -18,111 +20,107 @@ class SettingsPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.settings)),
-      body: Center(
-        child: Container(
-          width: 800.0,
-          height: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: SingleChildScrollView(
-            child: ListTileTheme(
-              tileColor: Theme.of(context).colorScheme.surface,
-              child: Column(
-                children: [
-                  if (accounts.isNotEmpty) ...[
-                    Container(
-                      height: 8.0,
-                      margin: const EdgeInsets.only(top: 8.0),
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(8.0),
-                        ),
-                        color: Theme.of(context).colorScheme.surface,
-                      ),
-                    ),
-                    ...ListTile.divideTiles(
-                      context: context,
-                      tiles: accounts.map((account) {
-                        final i =
-                            ref.watch(iNotifierProvider(account)).valueOrNull;
-                        return ListTile(
-                          leading: i != null
-                              ? UserAvatar(
-                                  account: account,
-                                  user: i,
-                                  size: 32.0,
-                                )
-                              : const Icon(Icons.person, size: 32.0),
-                          title: i != null
-                              ? UsernameWidget(
-                                  account: account,
-                                  user: i,
-                                  builder: (context, span) => Text.rich(
-                                    t.aria.settingsForUser(user: span),
-                                  ),
-                                )
-                              : Text.rich(
-                                  t.aria.settingsForUser(
-                                    user: TextSpan(text: account.username),
-                                  ),
-                                ),
-                          subtitle: Align(
-                            alignment: AlignmentDirectional.centerStart,
-                            child: Text(
-                              account.toString(),
-                              textDirection: TextDirection.ltr,
-                            ),
-                          ),
-                          onTap: () =>
-                              context.push('/settings/accounts/$account'),
-                        );
-                      }),
-                    ),
-                    Container(
-                      height: 8.0,
-                      margin: const EdgeInsets.only(bottom: 4.0),
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(8.0),
-                          bottomRight: Radius.circular(8.0),
-                        ),
-                        color: Theme.of(context).colorScheme.surface,
-                      ),
-                    ),
-                  ],
-                  Container(
-                    height: 8.0,
-                    margin: const EdgeInsets.only(top: 4.0),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(8.0),
-                        topRight: Radius.circular(8.0),
-                      ),
-                      color: Theme.of(context).colorScheme.surface,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 8.0),
+            for (final (index, account) in accounts.indexed) ...[
+              Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
+                  child: _AccountSettingsTile(
+                    account: account,
+                    borderRadius: BorderRadius.vertical(
+                      top:
+                          index == 0 ? const Radius.circular(8.0) : Radius.zero,
+                      bottom: index == accounts.length - 1
+                          ? const Radius.circular(8.0)
+                          : Radius.zero,
                     ),
                   ),
+                ),
+              ),
+              if (index < accounts.length - 1)
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    child: SizedBox(
+                      width: maxContentWidth,
+                      child: Divider(height: 0.0),
+                    ),
+                  ),
+                )
+              else
+                const SizedBox(height: 8.0),
+            ],
+            ListTileTheme.merge(
+              tileColor: Theme.of(context).colorScheme.surface,
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  width: maxContentWidth,
                   // Adding "const" to this prevents update of translations.
                   // ignore: prefer_const_constructors
-                  GeneralSettingsNavigation(
+                  child: GeneralSettingsNavigation(
+                    round: true,
                     physics: const NeverScrollableScrollPhysics(),
                   ),
-                  Container(
-                    height: 8.0,
-                    margin: const EdgeInsets.only(bottom: 8.0),
-                    decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(8.0),
-                        bottomRight: Radius.circular(8.0),
-                      ),
-                      color: Theme.of(context).colorScheme.surface,
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
+            const SizedBox(height: 8.0),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class _AccountSettingsTile extends ConsumerWidget {
+  const _AccountSettingsTile({
+    required this.account,
+    this.borderRadius = BorderRadius.zero,
+  });
+
+  final Account account;
+  final BorderRadiusGeometry borderRadius;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+
+    return ListTile(
+      leading: i != null
+          ? UserAvatar(
+              account: account,
+              user: i,
+              size: 32.0,
+            )
+          : const Icon(Icons.person, size: 32.0),
+      title: i != null
+          ? UsernameWidget(
+              account: account,
+              user: i,
+              builder: (context, span) => Text.rich(
+                t.aria.settingsForUser(user: span),
+              ),
+            )
+          : Text.rich(
+              t.aria.settingsForUser(
+                user: TextSpan(text: account.username),
+              ),
+            ),
+      subtitle: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: Text(
+          account.toString(),
+          textDirection: TextDirection.ltr,
+        ),
+      ),
+      onTap: () => context.push('/settings/accounts/$account'),
+      tileColor: Theme.of(context).colorScheme.surface,
+      shape: RoundedRectangleBorder(borderRadius: borderRadius),
     );
   }
 }
