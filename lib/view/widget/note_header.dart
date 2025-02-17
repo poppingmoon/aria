@@ -81,22 +81,28 @@ class NoteHeader extends HookConsumerWidget {
                       ),
                     ),
                   const TextSpan(text: Unicode.PDI),
+                  const WidgetSpan(child: SizedBox(width: 2.0)),
                   for (final role in note.user.badgeRoles)
                     if (role case UserBadgeRole(:final iconUrl?))
                       WidgetSpan(
                         alignment: PlaceholderAlignment.middle,
                         child: Tooltip(
                           message: role.name,
-                          child: ImageWidget(
-                            url: iconUrl.isAbsolute
-                                ? iconUrl.toString()
-                                : iconUrl
-                                    .replace(
-                                      scheme: 'https',
-                                      host: note.user.host ?? account.host,
-                                    )
-                                    .toString(),
-                            height: style.lineHeight,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 2.0),
+                            child: ImageWidget(
+                              url: iconUrl.isAbsolute
+                                  ? iconUrl.toString()
+                                  : iconUrl
+                                      .replace(
+                                        scheme: 'https',
+                                        host: note.user.host ?? account.host,
+                                      )
+                                      .toString(),
+                              height: style.lineHeight,
+                              opacity: style.color?.a ?? 1.0,
+                            ),
                           ),
                         ),
                       ),
@@ -108,6 +114,7 @@ class NoteHeader extends HookConsumerWidget {
             ),
           ),
         ),
+        const SizedBox(width: 2.0),
         DefaultTextStyle.merge(
           style: style.apply(fontSizeFactor: 0.9),
           child: TimeWidget(
