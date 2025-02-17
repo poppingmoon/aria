@@ -72,22 +72,25 @@ class NoteWidget extends HookConsumerWidget {
     if (appearNote == null) {
       return HardMutedNoteWidget(borderRadius: borderRadius);
     }
-    final hardMuted = withHardMute &&
-        ref.watch(
-          checkWordMuteProvider(account, appearNote.id, hardMute: true),
-        );
-    if (hardMuted) {
+    final hardMuted = ref.watch(
+      checkWordMuteProvider(account, appearNote.id, hardMute: true),
+    );
+    if (hardMuted && withHardMute) {
       return HardMutedNoteWidget(borderRadius: borderRadius);
     }
-    final muted =
-        useState(ref.watch(checkWordMuteProvider(account, appearNote.id)));
+    final muted = useState(
+      hardMuted || ref.watch(checkWordMuteProvider(account, appearNote.id)),
+    );
     if (muted.value) {
-      return MutedNoteWidget(
-        account: account,
-        note: appearNote,
-        onTap: () => muted.value = false,
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        borderRadius: borderRadius,
+      return Padding(
+        padding: margin,
+        child: MutedNoteWidget(
+          account: account,
+          note: appearNote,
+          onTap: () => muted.value = false,
+          backgroundColor: Theme.of(context).colorScheme.surface,
+          borderRadius: borderRadius,
+        ),
       );
     }
 

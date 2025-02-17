@@ -201,7 +201,7 @@ void main() {
         ]),
       );
       await tester.pumpAndSettle();
-      expect(find.text('this note should be muted'), findsOne);
+      expect(find.text('this note should be muted'), findsNothing);
       expect(find.textContaining('testuser2'), findsOne);
       await tester.pumpAndSettle(const Duration(seconds: 10));
     });
@@ -249,7 +249,7 @@ void main() {
       await tester.tap(find.byType(InkWell));
       await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsOne);
-      await tester.pumpAndSettle();
+      await tester.pumpAndSettle(const Duration(seconds: 10));
     });
   });
 
