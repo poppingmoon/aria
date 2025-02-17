@@ -20,7 +20,7 @@ class NoteSummary extends ConsumerWidget {
   final String noteId;
   final void Function()? onTap;
 
-  String getNoteSummary(
+  String _getNoteSummary(
     BuildContext context,
     Note note, {
     bool detailed = true,
@@ -35,14 +35,14 @@ class NoteSummary extends ConsumerWidget {
       if (note.poll != null) '(${t.misskey.poll})',
       if (note.replyId != null)
         if (note.reply case final reply? when detailed)
-          'RE: ${getNoteSummary(context, reply, detailed: false)}'
+          'RE: ${_getNoteSummary(context, reply, detailed: false)}'
         else
           'RE: ...',
       if (note.renoteId != null)
         if (note.renote case final renote? when detailed)
-          'RE: ${getNoteSummary(context, renote, detailed: false)}'
+          'RN: ${_getNoteSummary(context, renote, detailed: false)}'
         else
-          'RE: ...',
+          'RN: ...',
     ].join(' ');
   }
 
@@ -59,7 +59,7 @@ class NoteSummary extends ConsumerWidget {
       onTap: onTap,
       child: Mfm(
         account: account,
-        text: getNoteSummary(context, note),
+        text: _getNoteSummary(context, note),
         simple: true,
         emojis: note.emojis,
         author: note.user,

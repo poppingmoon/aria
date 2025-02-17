@@ -9,8 +9,10 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
+import '../../provider/misskey_colors_provider.dart';
 import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
+import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import '../widget/note_widget.dart';
 
@@ -79,7 +81,13 @@ class PostConfirmationDialog extends ConsumerWidget {
             .watch(channelNotifierProvider(account, request.channelId!))
             .valueOrNull
         : null;
-    final note = request.toNote(i: i, channel: channel);
+    final canScheduleNote = i?.policies?.canScheduleNote ??
+        ((i?.policies?.scheduleNoteMax ?? 0) > 0);
+    final note = request
+        .copyWith(scheduledAt: canScheduleNote ? request.scheduledAt : null)
+        .toNote(i: i, channel: channel);
+    final colors =
+        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return Dialog(
       child: Container(
@@ -101,6 +109,31 @@ class PostConfirmationDialog extends ConsumerWidget {
                   ),
                 ),
               ),
+              if (request.scheduledAt case final date? when canScheduleNote)
+                Card.filled(
+                  color: colors.infoBg,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Text.rich(
+                        TextSpan(
+                          children: [
+                            const WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child: Icon(Icons.schedule),
+                            ),
+                            const WidgetSpan(child: SizedBox(width: 8.0)),
+                            TextSpan(
+                              text: t.aria
+                                  .willBePostedOn(date: absoluteTime(date)),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               if (request.isRenote)
                 NoteWidget(
                   account: account,

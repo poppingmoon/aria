@@ -12,6 +12,7 @@ import '../../provider/api/follow_requests_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
+import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
 import 'achievement_widget.dart';
 import 'emoji_widget.dart';
@@ -21,6 +22,7 @@ import 'mfm.dart';
 import 'note_sheet.dart';
 import 'note_summary.dart';
 import 'note_widget.dart';
+import 'scheduled_note_summary.dart';
 import 'time_widget.dart';
 import 'user_avatar.dart';
 import 'user_sheet.dart';
@@ -50,8 +52,8 @@ class NotificationWidget extends ConsumerWidget {
       generalSettingsNotifierProvider
           .select((settings) => settings.avatarScale),
     );
-    final leadingSize =
-        DefaultTextStyle.of(context).style.lineHeight * avatarScale;
+    final style = DefaultTextStyle.of(context).style;
+    final leadingSize = style.lineHeight * avatarScale;
     final colors =
         ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
@@ -340,6 +342,101 @@ class NotificationWidget extends ConsumerWidget {
           title: Text(t.misskey.notification_.login),
           createdAt: notification.createdAt,
         );
+      case NotificationType.noteScheduled:
+        if (notification.draft case final draft?) {
+          return _NotificationTile(
+            account: account,
+            user: i,
+            icon: const Icon(Icons.schedule),
+            iconBackgroundColor: eventOther,
+            title: Text(t.aria.noteScheduled),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ScheduledNoteSummary(account: account, note: draft),
+                if (draft.scheduledAt case final scheduledAt?) ...[
+                  const SizedBox(height: 4.0),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: Icon(
+                            Icons.schedule,
+                            size: style.lineHeight,
+                            color: style.color?.withValues(alpha: 0.5),
+                          ),
+                        ),
+                        const WidgetSpan(child: SizedBox(width: 4.0)),
+                        TextSpan(text: absoluteTime(scheduledAt)),
+                        TextSpan(text: ' (${relativeTime(scheduledAt)})'),
+                      ],
+                    ),
+                  ),
+                ],
+              ],
+            ),
+            createdAt: notification.createdAt,
+            onTap: () => context.push('/$account/scheduled-notes'),
+          );
+        }
+      case NotificationType.scheduledNotePosted:
+        if (notification.note case final note?) {
+          return _NotificationTile(
+            account: account,
+            user: i,
+            icon: const Icon(Icons.send),
+            iconBackgroundColor: eventOther,
+            title: Text(t.aria.scheduledNotePosted),
+            subtitle: NoteSummary(account: account, noteId: note.id),
+            createdAt: notification.createdAt,
+            onTap: () => context.push('/$account/notes/${note.id}'),
+            onLongPress: () => showNoteSheet(
+              context: context,
+              account: account,
+              noteId: note.id,
+            ),
+          );
+        }
+      case NotificationType.scheduleNote || NotificationType.scheduledNoteError:
+        return _NotificationTile(
+          account: account,
+          user: i,
+          icon: const Icon(Icons.error_outline),
+          iconBackgroundColor: eventOther,
+          title: Text(t.aria.scheduledNoteError),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (notification.draft case final draft?) ...[
+                ScheduledNoteSummary(account: account, note: draft),
+                const SizedBox(height: 4.0),
+              ],
+              if (notification
+                  case INotificationsResponse(errorType: final reason?) ||
+                      INotificationsResponse(
+                        draft: ScheduledNote(:final reason?),
+                      ))
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      WidgetSpan(
+                        alignment: PlaceholderAlignment.middle,
+                        child: Icon(
+                          Icons.error,
+                          size: style.lineHeight,
+                          color: style.color?.withValues(alpha: 0.5),
+                        ),
+                      ),
+                      const WidgetSpan(child: SizedBox(width: 4.0)),
+                      TextSpan(text: reason),
+                    ],
+                  ),
+                ),
+            ],
+          ),
+          createdAt: notification.createdAt,
+        );
       case NotificationType.reactionGrouped:
         if (notification case INotificationsResponse(:final note?)) {
           return _NotificationTile(
@@ -588,7 +685,7 @@ class NotificationWidget extends ConsumerWidget {
             createdAt: notification.createdAt,
           );
         }
-      case NotificationType.edited || NotificationType.scheduleNote:
+      case NotificationType.edited:
       // obsolete
       case NotificationType.pollVote || NotificationType.groupInvited || null:
     }

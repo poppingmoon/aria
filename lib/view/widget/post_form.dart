@@ -3,10 +3,8 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-// hide BoxDecoration, BoxShadow;
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-// import 'package:flutter_inset_shadow/flutter_inset_shadow.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_off_icons/material_off_icons.dart';
@@ -36,7 +34,9 @@ import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/extract_mentions.dart';
+import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/pick_date_time.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/post_confirmation_dialog.dart';
 import '../dialog/user_select_dialog.dart';
@@ -92,9 +92,10 @@ class PostForm extends HookConsumerWidget {
   final int? maxLines;
   final double thumbnailSize;
 
-  Future<void> _post(
+  static Future<void> post(
     WidgetRef ref,
     Account account,
+    String? noteId,
   ) async {
     final request = ref.read(postNotifierProvider(account, noteId: noteId));
     final hashtags =
@@ -269,13 +270,23 @@ class PostForm extends HookConsumerWidget {
         (renote?.channel?.allowRenoteToExternal ?? true) &&
         reply?.channel == null;
     final canPost = request.canPost || attaches.isNotEmpty;
+    final canScheduleNote = noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (request) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
-      _ when request.isRenote => (t.misskey.renote, Icons.repeat_rounded),
-      _ when request.replyId != null => (t.misskey.reply, Icons.reply),
-      _ when request.renoteId != null => (t.misskey.quote, Icons.send),
+      NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
+          t.aria.schedule,
+          Icons.send,
+        ),
+      NotesCreateRequest(isRenote: true) => (
+          t.misskey.renote,
+          Icons.repeat_rounded,
+        ),
+      NotesCreateRequest(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NotesCreateRequest(renoteId: _?) => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
     final enableSpellCheck = ref.watch(
@@ -388,6 +399,9 @@ class PostForm extends HookConsumerWidget {
           isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
         }
 
+        cwController.text = request.cw ?? '';
+        controller.text = request.text ?? '';
+
         cwController.addListener(cwControllerCallback);
         controller.addListener(controllerCallback);
         hashtagsController.addListener(hashtagsControllerCallback);
@@ -441,7 +455,7 @@ class PostForm extends HookConsumerWidget {
         ...disablingTextShortcuts,
         submitActivator: VoidCallbackIntent(() {
           if (canPost) {
-            _post(ref, account.value);
+            post(ref, account.value, noteId);
           }
         }),
       },
@@ -610,6 +624,15 @@ class PostForm extends HookConsumerWidget {
                           title: Text(t.aria.swapCw),
                         ),
                       ),
+                      if (canScheduleNote)
+                        PopupMenuItem(
+                          onTap: () =>
+                              context.push('/${account.value}/scheduled-notes'),
+                          child: ListTile(
+                            leading: const Icon(Icons.schedule),
+                            title: Text(t.aria.scheduledNotes),
+                          ),
+                        ),
                       PopupMenuItem(
                         onTap: () async {
                           final confirmed = await confirm(
@@ -633,10 +656,7 @@ class PostForm extends HookConsumerWidget {
                         ),
                       ),
                     ],
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(Icons.more_horiz),
-                    ),
+                    icon: const Icon(Icons.more_horiz),
                   ),
                   if (showPostButton) ...[
                     const SizedBox(width: 4.0),
@@ -655,8 +675,9 @@ class PostForm extends HookConsumerWidget {
                           borderRadius: BorderRadius.circular(8.0),
                         ),
                       ),
-                      onPressed:
-                          canPost ? () => _post(ref, account.value) : null,
+                      onPressed: canPost
+                          ? () => post(ref, account.value, noteId)
+                          : null,
                       child: Ink(
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
@@ -688,7 +709,7 @@ class PostForm extends HookConsumerWidget {
                 ],
               ),
             ),
-            if (request case NotesCreateRequest(:final replyId?))
+            if (request.replyId case final replyId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$replyId'),
                 onLongPress: () => showNoteSheet(
@@ -698,6 +719,25 @@ class PostForm extends HookConsumerWidget {
                 ),
                 child: Row(
                   children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.reply),
+                    ),
+                    if (reply?.user case final user?) ...[
+                      UserAvatar(
+                        account: account.value,
+                        user: user,
+                        onTap: () =>
+                            context.push('/${account.value}/users/${user.id}'),
+                      ),
+                      const SizedBox(width: 4.0),
+                    ],
+                    Expanded(
+                      child: NoteSummary(
+                        account: account.value,
+                        noteId: replyId,
+                      ),
+                    ),
                     IconButton(
                       onPressed: noteId == null
                           ? () => ref
@@ -708,33 +748,10 @@ class PostForm extends HookConsumerWidget {
                           : null,
                       icon: const Icon(Icons.close),
                     ),
-                    const Icon(Icons.reply),
-                    const SizedBox(width: 4.0),
-                    Text('${t.misskey.reply}: '),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 4.0,
-                      ),
-                      child: reply != null
-                          ? UserAvatar(
-                              account: account.value,
-                              user: reply.user,
-                              onTap: () => context.push(
-                                '/$account/users/${reply.userId}',
-                              ),
-                            )
-                          : null,
-                    ),
-                    Expanded(
-                      child: NoteSummary(
-                        account: account.value,
-                        noteId: replyId,
-                      ),
-                    ),
                   ],
                 ),
               ),
-            if (request case NotesCreateRequest(:final renoteId?))
+            if (request.renoteId case final renoteId?)
               InkWell(
                 onTap: () => context.push('/${account.value}/notes/$renoteId'),
                 onLongPress: () => showNoteSheet(
@@ -744,6 +761,25 @@ class PostForm extends HookConsumerWidget {
                 ),
                 child: Row(
                   children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.repeat_rounded),
+                    ),
+                    if (renote?.user case final user?) ...[
+                      UserAvatar(
+                        account: account.value,
+                        user: user,
+                        onTap: () =>
+                            context.push('/${account.value}/users/${user.id}'),
+                      ),
+                      const SizedBox(width: 4.0),
+                    ],
+                    Expanded(
+                      child: NoteSummary(
+                        account: account.value,
+                        noteId: renoteId,
+                      ),
+                    ),
                     IconButton(
                       onPressed: noteId == null
                           ? () => ref
@@ -754,31 +790,10 @@ class PostForm extends HookConsumerWidget {
                           : null,
                       icon: const Icon(Icons.close),
                     ),
-                    const Icon(Icons.repeat_rounded),
-                    const SizedBox(width: 4.0),
-                    Text('${t.misskey.renote}: '),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: renote != null
-                          ? UserAvatar(
-                              account: account.value,
-                              user: renote.user,
-                              onTap: () => context.push(
-                                '/$account/users/${renote.userId}',
-                              ),
-                            )
-                          : null,
-                    ),
-                    Expanded(
-                      child: NoteSummary(
-                        account: account.value,
-                        noteId: renoteId,
-                      ),
-                    ),
                   ],
                 ),
               ),
-            if (request case NotesCreateRequest(:final channelId?))
+            if (request.channelId case final channelId?)
               InkWell(
                 onTap: () =>
                     context.push('/${account.value}/channels/$channelId'),
@@ -793,6 +808,14 @@ class PostForm extends HookConsumerWidget {
                   ),
                   child: Row(
                     children: [
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(Icons.tv),
+                      ),
+                      if (channel != null)
+                        Expanded(child: Text(channel.name))
+                      else
+                        const Spacer(),
                       IconButton(
                         onPressed: canChangeChannel
                             ? () => ref
@@ -803,12 +826,72 @@ class PostForm extends HookConsumerWidget {
                             : null,
                         icon: const Icon(Icons.close),
                       ),
-                      const Icon(Icons.tv),
-                      const SizedBox(width: 4.0),
-                      Text('${t.misskey.channel}: '),
-                      if (channel != null) Expanded(child: Text(channel.name)),
                     ],
                   ),
+                ),
+              ),
+            if (request.scheduledAt case final scheduledAt?
+                when canScheduleNote)
+              InkWell(
+                onTap: () async {
+                  final now = DateTime.now();
+                  final DateTime initialDate;
+                  if (request.scheduledAt case final scheduledAt?
+                      when scheduledAt.isAfter(now)) {
+                    initialDate = scheduledAt;
+                  } else {
+                    initialDate = DateTime(
+                      now.year,
+                      now.month,
+                      now.day + 1,
+                    );
+                  }
+                  final DateTime? lastDate;
+                  if (i?.policies?.scheduleNoteMaxDays case final days?
+                      when days >= 0) {
+                    lastDate = now.add(Duration(days: days));
+                  } else {
+                    lastDate = null;
+                  }
+                  final date = await pickDateTime(
+                    context,
+                    initialDate: initialDate,
+                    firstDate: now,
+                    lastDate: lastDate,
+                  );
+                  if (!context.mounted) return;
+                  if (date != null) {
+                    ref
+                        .read(
+                          postNotifierProvider(account.value, noteId: noteId)
+                              .notifier,
+                        )
+                        .setScheduledAt(date);
+                  }
+                },
+                child: Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Icon(Icons.schedule),
+                    ),
+                    Expanded(
+                      child: Text(
+                        t.aria.willBePostedOn(date: absoluteTime(scheduledAt)),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () => ref
+                          .read(
+                            postNotifierProvider(account.value, noteId: noteId)
+                                .notifier,
+                          )
+                          .setScheduledAt(null),
+                      icon: const Icon(Icons.close),
+                    ),
+                  ],
                 ),
               ),
             if (request.visibility == NoteVisibility.specified) ...[
@@ -1204,6 +1287,10 @@ class _PostFormFooter extends HookConsumerWidget {
       accountSettingsNotifierProvider(account)
           .select((settings) => settings.postFormUseHashtags),
     );
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final canScheduleNote = noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final hasExtentBefore = useState(false);
     final hasExtentAfter = useState(false);
     final scrollController = useScrollController();
@@ -1376,6 +1463,49 @@ class _PostFormFooter extends HookConsumerWidget {
                             : null,
                         icon: const Icon(Icons.tv),
                       ),
+                      if (canScheduleNote)
+                        IconButton(
+                          tooltip: t.aria.schedule,
+                          onPressed: () async {
+                            final now = DateTime.now();
+                            final DateTime initialDate;
+                            if (request.scheduledAt case final scheduledAt?
+                                when scheduledAt.isAfter(now)) {
+                              initialDate = scheduledAt;
+                            } else {
+                              initialDate = DateTime(
+                                now.year,
+                                now.month,
+                                now.day + 1,
+                              );
+                            }
+                            final DateTime? lastDate;
+                            if (i?.policies?.scheduleNoteMaxDays
+                                case final days? when days >= 0) {
+                              lastDate = now.add(Duration(days: days));
+                            } else {
+                              lastDate = null;
+                            }
+                            final date = await pickDateTime(
+                              context,
+                              initialDate: initialDate,
+                              firstDate: now,
+                              lastDate: lastDate,
+                            );
+                            if (!context.mounted) return;
+                            if (date != null) {
+                              ref
+                                  .read(
+                                    postNotifierProvider(
+                                      account,
+                                      noteId: noteId,
+                                    ).notifier,
+                                  )
+                                  .setScheduledAt(date);
+                            }
+                          },
+                          icon: const Icon(Icons.schedule),
+                        ),
                     ],
                   ),
                 ),

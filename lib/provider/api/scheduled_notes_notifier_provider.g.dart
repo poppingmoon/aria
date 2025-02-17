@@ -1,12 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'post_notifier_provider.dart';
+part of 'scheduled_notes_notifier_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$postNotifierHash() => r'2f6edd6cc47af7d45b622cbf13f0cab2fa1161ee';
+String _$scheduledNotesNotifierHash() =>
+    r'e4c79f48f20a3cd3df333cc3539161fe9faa5308';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -29,43 +30,40 @@ class _SystemHash {
   }
 }
 
-abstract class _$PostNotifier extends BuildlessNotifier<NotesCreateRequest> {
+abstract class _$ScheduledNotesNotifier
+    extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
   late final Account account;
-  late final String? noteId;
 
-  NotesCreateRequest build(
-    Account account, {
-    String? noteId,
-  });
+  FutureOr<PaginationState<Note>> build(
+    Account account,
+  );
 }
 
-/// See also [PostNotifier].
-@ProviderFor(PostNotifier)
-const postNotifierProvider = PostNotifierFamily();
+/// See also [ScheduledNotesNotifier].
+@ProviderFor(ScheduledNotesNotifier)
+const scheduledNotesNotifierProvider = ScheduledNotesNotifierFamily();
 
-/// See also [PostNotifier].
-class PostNotifierFamily extends Family<NotesCreateRequest> {
-  /// See also [PostNotifier].
-  const PostNotifierFamily();
+/// See also [ScheduledNotesNotifier].
+class ScheduledNotesNotifierFamily
+    extends Family<AsyncValue<PaginationState<Note>>> {
+  /// See also [ScheduledNotesNotifier].
+  const ScheduledNotesNotifierFamily();
 
-  /// See also [PostNotifier].
-  PostNotifierProvider call(
-    Account account, {
-    String? noteId,
-  }) {
-    return PostNotifierProvider(
+  /// See also [ScheduledNotesNotifier].
+  ScheduledNotesNotifierProvider call(
+    Account account,
+  ) {
+    return ScheduledNotesNotifierProvider(
       account,
-      noteId: noteId,
     );
   }
 
   @override
-  PostNotifierProvider getProviderOverride(
-    covariant PostNotifierProvider provider,
+  ScheduledNotesNotifierProvider getProviderOverride(
+    covariant ScheduledNotesNotifierProvider provider,
   ) {
     return call(
       provider.account,
-      noteId: provider.noteId,
     );
   }
 
@@ -81,34 +79,31 @@ class PostNotifierFamily extends Family<NotesCreateRequest> {
       _allTransitiveDependencies;
 
   @override
-  String? get name => r'postNotifierProvider';
+  String? get name => r'scheduledNotesNotifierProvider';
 }
 
-/// See also [PostNotifier].
-class PostNotifierProvider
-    extends NotifierProviderImpl<PostNotifier, NotesCreateRequest> {
-  /// See also [PostNotifier].
-  PostNotifierProvider(
-    Account account, {
-    String? noteId,
-  }) : this._internal(
-          () => PostNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: postNotifierProvider,
-          name: r'postNotifierProvider',
+/// See also [ScheduledNotesNotifier].
+class ScheduledNotesNotifierProvider
+    extends AutoDisposeAsyncNotifierProviderImpl<ScheduledNotesNotifier,
+        PaginationState<Note>> {
+  /// See also [ScheduledNotesNotifier].
+  ScheduledNotesNotifierProvider(
+    Account account,
+  ) : this._internal(
+          () => ScheduledNotesNotifier()..account = account,
+          from: scheduledNotesNotifierProvider,
+          name: r'scheduledNotesNotifierProvider',
           debugGetCreateSourceHash:
               const bool.fromEnvironment('dart.vm.product')
                   ? null
-                  : _$postNotifierHash,
-          dependencies: PostNotifierFamily._dependencies,
+                  : _$scheduledNotesNotifierHash,
+          dependencies: ScheduledNotesNotifierFamily._dependencies,
           allTransitiveDependencies:
-              PostNotifierFamily._allTransitiveDependencies,
+              ScheduledNotesNotifierFamily._allTransitiveDependencies,
           account: account,
-          noteId: noteId,
         );
 
-  PostNotifierProvider._internal(
+  ScheduledNotesNotifierProvider._internal(
     super._createNotifier, {
     required super.name,
     required super.dependencies,
@@ -116,58 +111,50 @@ class PostNotifierProvider
     required super.debugGetCreateSourceHash,
     required super.from,
     required this.account,
-    required this.noteId,
   }) : super.internal();
 
   final Account account;
-  final String? noteId;
 
   @override
-  NotesCreateRequest runNotifierBuild(
-    covariant PostNotifier notifier,
+  FutureOr<PaginationState<Note>> runNotifierBuild(
+    covariant ScheduledNotesNotifier notifier,
   ) {
     return notifier.build(
       account,
-      noteId: noteId,
     );
   }
 
   @override
-  Override overrideWith(PostNotifier Function() create) {
+  Override overrideWith(ScheduledNotesNotifier Function() create) {
     return ProviderOverride(
       origin: this,
-      override: PostNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+      override: ScheduledNotesNotifierProvider._internal(
+        () => create()..account = account,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
         account: account,
-        noteId: noteId,
       ),
     );
   }
 
   @override
-  NotifierProviderElement<PostNotifier, NotesCreateRequest> createElement() {
-    return _PostNotifierProviderElement(this);
+  AutoDisposeAsyncNotifierProviderElement<ScheduledNotesNotifier,
+      PaginationState<Note>> createElement() {
+    return _ScheduledNotesNotifierProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is PostNotifierProvider &&
-        other.account == account &&
-        other.noteId == noteId;
+    return other is ScheduledNotesNotifierProvider && other.account == account;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, account.hashCode);
-    hash = _SystemHash.combine(hash, noteId.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -175,23 +162,19 @@ class PostNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin PostNotifierRef on NotifierProviderRef<NotesCreateRequest> {
+mixin ScheduledNotesNotifierRef
+    on AutoDisposeAsyncNotifierProviderRef<PaginationState<Note>> {
   /// The parameter `account` of this provider.
   Account get account;
-
-  /// The parameter `noteId` of this provider.
-  String? get noteId;
 }
 
-class _PostNotifierProviderElement
-    extends NotifierProviderElement<PostNotifier, NotesCreateRequest>
-    with PostNotifierRef {
-  _PostNotifierProviderElement(super.provider);
+class _ScheduledNotesNotifierProviderElement
+    extends AutoDisposeAsyncNotifierProviderElement<ScheduledNotesNotifier,
+        PaginationState<Note>> with ScheduledNotesNotifierRef {
+  _ScheduledNotesNotifierProviderElement(super.provider);
 
   @override
-  Account get account => (origin as PostNotifierProvider).account;
-  @override
-  String? get noteId => (origin as PostNotifierProvider).noteId;
+  Account get account => (origin as ScheduledNotesNotifierProvider).account;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

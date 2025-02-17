@@ -17,6 +17,8 @@ const _permissions = [
   Permission.readMutes,
   Permission.writeMutes,
   Permission.writeNotes,
+  Permission.readNotesSchedule,
+  Permission.writeNotesSchedule,
   Permission.readNotifications,
   Permission.writeNotifications,
   Permission.readReactions,

@@ -1,13 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:mfm_parser/mfm_parser.dart';
+import 'package:misskey_dart/misskey_dart.dart' hide Clip;
 
 import '../../constant/max_content_width.dart';
-import '../../extension/list_mfm_node_extension.dart';
 import '../../extension/notes_create_request_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -16,13 +12,10 @@ import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/channel_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
-import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../provider/post_form_hashtags_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
-import '../../provider/timeline_tab_settings_provider.dart';
 import '../../util/future_with_dialog.dart';
-import '../dialog/post_confirmation_dialog.dart';
 import '../widget/mfm_keyboard.dart';
 import '../widget/note_widget.dart';
 import '../widget/post_form.dart';
@@ -36,79 +29,6 @@ class PostPage extends HookConsumerWidget {
 
   final Account account;
   final String? noteId;
-
-  Future<void> _post(
-    WidgetRef ref,
-    Account account,
-  ) async {
-    final request = ref.read(postNotifierProvider(account, noteId: noteId));
-    final hashtags =
-        ref.read(accountSettingsNotifierProvider(account)).postFormUseHashtags
-            ? ref.read(postFormHashtagsNotifierProvider(account))
-            : null;
-    final attaches =
-        ref.read(attachesNotifierProvider(account, noteId: noteId));
-    final hasFiles = attaches.isNotEmpty;
-    final needsUpload = attaches.any((file) => file is LocalPostFile);
-    final files = hasFiles
-        ? await futureWithDialog(
-            ref.context,
-            ref
-                .read(
-                  attachesNotifierProvider(account, noteId: noteId).notifier,
-                )
-                .uploadAll(),
-          )
-        : null;
-    if (hasFiles && files == null) return;
-    if (!ref.context.mounted) return;
-    if (needsUpload ||
-        (ref.read(generalSettingsNotifierProvider).confirmBeforePost)) {
-      final confirmed = await confirmPost(
-        ref,
-        account,
-        request.addHashtags(hashtags),
-        files: files,
-      );
-      if (!confirmed) return;
-      if (!ref.context.mounted) return;
-    }
-    final result = await futureWithDialog(
-      ref.context,
-      ref.read(postNotifierProvider(account, noteId: noteId).notifier).post(
-            fileIds: files?.map((file) => file.id).toList(),
-            hashtags: hashtags,
-          ),
-    );
-    if (!ref.context.mounted) return;
-    if (result case final note?) {
-      if (note.text case final text?) {
-        final nodes = parse(text);
-        final hashtags = nodes
-            .extract((node) => node is MfmHashtag)
-            .whereType<MfmHashtag>()
-            .map((node) => node.hashtag);
-        final history =
-            ref.read(accountSettingsNotifierProvider(account)).hashtags;
-        unawaited(
-          ref
-              .read(accountSettingsNotifierProvider(account).notifier)
-              .setHashtags({...hashtags, ...history}.toList()),
-        );
-      }
-      if (ref.read(timelineTabSettingsProvider)?.channelId
-          case final channelId?) {
-        ref
-            .read(postNotifierProvider(account, noteId: noteId).notifier)
-            .setChannel(channelId);
-      }
-      unawaited(
-        ref.read(postFormHashtagsNotifierProvider(account).notifier).save(),
-      );
-      ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
-      ref.context.pop();
-    }
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -132,13 +52,23 @@ class PostPage extends HookConsumerWidget {
         .addHashtags(useHashtags ? hashtags : null)
         .toNote(i: i, channel: channel);
     final canPost = request.canPost || attaches.isNotEmpty;
+    final canScheduleNote = noteId == null &&
+        (i?.policies?.canScheduleNote ??
+            ((i?.policies?.scheduleNoteMax ?? 0) > 0));
     final needsUpload = attaches.any((file) => file is LocalPostFile);
     final (buttonText, buttonIcon) = switch (request) {
       _ when needsUpload => (t.misskey.upload, Icons.upload),
       _ when noteId != null => (t.misskey.edit, Icons.edit),
-      _ when request.isRenote => (t.misskey.renote, Icons.repeat_rounded),
-      _ when request.replyId != null => (t.misskey.reply, Icons.reply),
-      _ when request.renoteId != null => (t.misskey.quote, Icons.send),
+      NotesCreateRequest(scheduledAt: _?) when canScheduleNote => (
+          t.aria.schedule,
+          Icons.send,
+        ),
+      NotesCreateRequest(isRenote: true) => (
+          t.misskey.renote,
+          Icons.repeat_rounded,
+        ),
+      NotesCreateRequest(replyId: _?) => (t.misskey.reply, Icons.reply),
+      NotesCreateRequest(renoteId: _?) => (t.misskey.quote, Icons.send),
       _ => (t.misskey.note, Icons.send),
     };
     final cwController = useTextEditingController(text: request.cw);
@@ -203,7 +133,7 @@ class PostPage extends HookConsumerWidget {
                             .uploadAll(),
                       )
                   : canPost
-                      ? () => _post(ref, account.value)
+                      ? () => PostForm.post(ref, account.value, noteId)
                       : null,
               icon: Icon(buttonIcon),
             ),
@@ -300,7 +230,9 @@ class PostPage extends HookConsumerWidget {
         ),
         floatingActionButton: !isCwFocused.value && !isFocused.value
             ? FloatingActionButton.extended(
-                onPressed: canPost ? () => _post(ref, account.value) : null,
+                onPressed: canPost
+                    ? () => PostForm.post(ref, account.value, noteId)
+                    : null,
                 backgroundColor: Colors.transparent,
                 extendedPadding: EdgeInsets.zero,
                 disabledElevation: 0.0,

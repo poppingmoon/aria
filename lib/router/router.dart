@@ -48,6 +48,7 @@ import '../view/page/play/play_page.dart';
 import '../view/page/play/plays_page.dart';
 import '../view/page/post_page.dart';
 import '../view/page/role_page.dart';
+import '../view/page/scheduled_notes_page.dart';
 import '../view/page/search/search_page.dart';
 import '../view/page/server/server_page.dart';
 import '../view/page/settings/account_settings_page.dart';
@@ -573,6 +574,12 @@ GoRouter router(Ref ref) {
             builder: (_, state) => RolePage(
               account: Account.fromString(state.pathParameters['acct']!),
               roleId: state.pathParameters['roleId']!,
+            ),
+          ),
+          GoRoute(
+            path: 'scheduled-notes',
+            builder: (_, state) => ScheduledNotesPage(
+              account: Account.fromString(state.pathParameters['acct']!),
             ),
           ),
           GoRoute(

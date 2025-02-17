@@ -84,5 +84,11 @@ extension UserExtension on User {
     };
   }
 
-  String get nameOrUsername => name ?? username;
+  String get nameOrUsername {
+    if (name case final name? when name.isNotEmpty) {
+      return name;
+    } else {
+      return username;
+    }
+  }
 }

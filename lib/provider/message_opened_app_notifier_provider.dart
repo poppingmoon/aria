@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:collection/collection.dart';
+import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'api/i_notifier_provider.dart';
@@ -49,6 +50,8 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
       return '/$account/notes/$noteId';
     } else if (notification.body?.userId case final userId?) {
       return '/$account/users/$userId';
+    } else if (notification.body?.type == NotificationType.noteScheduled) {
+      return '/$account/scheduled-notes';
     }
     return '/$account/notifications';
   }
