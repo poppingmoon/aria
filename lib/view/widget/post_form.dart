@@ -399,6 +399,9 @@ class PostForm extends HookConsumerWidget {
           isHashtagsFocused.value = hashtagsFocusNode.hasFocus;
         }
 
+        cwController.text = request.cw ?? '';
+        controller.text = request.text ?? '';
+
         cwController.addListener(cwControllerCallback);
         controller.addListener(controllerCallback);
         hashtagsController.addListener(hashtagsControllerCallback);
