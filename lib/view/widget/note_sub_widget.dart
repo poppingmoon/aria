@@ -68,28 +68,38 @@ class NoteSubWidget extends HookConsumerWidget {
             .select((settings) => settings.alwaysExpandCw),
       ),
     );
+    final style = DefaultTextStyle.of(context).style;
 
     return InkWell(
-      onTap: getNoteAction(
-        ref,
-        account: account,
-        type: tapAction,
-        note: note,
-        appearNote: note,
+      onTap: useMemoized(
+        () => getNoteAction(
+          ref,
+          account: account,
+          type: tapAction,
+          note: note,
+          appearNote: note,
+        ),
+        [account, tapAction, note.id],
       ),
-      onDoubleTap: getNoteAction(
-        ref,
-        account: account,
-        type: doubleTapAction,
-        note: note,
-        appearNote: note,
+      onDoubleTap: useMemoized(
+        () => getNoteAction(
+          ref,
+          account: account,
+          type: doubleTapAction,
+          note: note,
+          appearNote: note,
+        ),
+        [account, doubleTapAction, note.id],
       ),
-      onLongPress: getNoteAction(
-        ref,
-        account: account,
-        type: longPressAction,
-        note: note,
-        appearNote: note,
+      onLongPress: useMemoized(
+        () => getNoteAction(
+          ref,
+          account: account,
+          type: longPressAction,
+          note: note,
+          appearNote: note,
+        ),
+        [account, longPressAction, note.id],
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 4.0),
@@ -102,14 +112,15 @@ class NoteSubWidget extends HookConsumerWidget {
                   Padding(
                     padding:
                         const EdgeInsetsDirectional.only(top: 4.0, end: 8.0),
-                    child: UserAvatar(
-                      account: account,
-                      user: note.user,
-                      size: DefaultTextStyle.of(context).style.lineHeight *
-                          avatarScale *
-                          0.9,
-                      onTap: () =>
-                          context.push('/$account/users/${note.userId}'),
+                    child: Opacity(
+                      opacity: style.color?.a ?? 1.0,
+                      child: UserAvatar(
+                        account: account,
+                        user: note.user,
+                        size: style.lineHeight * avatarScale * 0.9,
+                        onTap: () =>
+                            context.push('/$account/users/${note.userId}'),
+                      ),
                     ),
                   ),
                 Expanded(

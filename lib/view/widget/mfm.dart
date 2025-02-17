@@ -105,8 +105,8 @@ class Mfm extends HookConsumerWidget {
       [this.nodes, text],
     );
     final theme = Theme.of(context);
-    final style = DefaultTextStyle.of(ref.context)
-        .style
+    final defaultTextStyle = DefaultTextStyle.of(ref.context).style;
+    final style = defaultTextStyle
         .apply(color: theme.colorScheme.onSurface)
         .merge(this.style);
     final enableAdvanced = ref.watch(
@@ -132,7 +132,7 @@ class Mfm extends HookConsumerWidget {
       config: MfmConfig(
         style: style,
         align: textAlign,
-        opacity: style.color?.a ?? 1.0,
+        opacity: this.style?.color?.a ?? defaultTextStyle.color?.a ?? 1.0,
       ),
       simple: simple,
       emojis: emojis,

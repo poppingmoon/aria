@@ -53,6 +53,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(true) bool showRenotesCount,
     @Default(false) bool showReactionsCount,
     @Default(true) bool showReactionsCountInReactionButton,
+    @Default(false) bool showGapBetweenNotesInTimeline,
     @Default(false) bool loadRawImages,
     @Default(InstanceTicker.remote) InstanceTicker instanceTicker,
     @Default(false) bool showNoteCreatedAt,

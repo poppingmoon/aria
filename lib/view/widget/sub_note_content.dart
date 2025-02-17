@@ -89,7 +89,10 @@ class SubNoteContent extends HookConsumerWidget {
                       padding: const EdgeInsetsDirectional.only(end: 4.0),
                       child: Icon(
                         Icons.reply,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withValues(alpha: style.color?.a),
                       ),
                     ),
                   ),

@@ -66,26 +66,35 @@ class NoteSimpleWidget extends HookConsumerWidget {
     );
 
     return InkWell(
-      onTap: getNoteAction(
-        ref,
-        account: account,
-        type: tapAction,
-        note: note,
-        appearNote: note,
+      onTap: useMemoized(
+        () => getNoteAction(
+          ref,
+          account: account,
+          type: tapAction,
+          note: note,
+          appearNote: note,
+        ),
+        [account, tapAction, note.id],
       ),
-      onDoubleTap: getNoteAction(
-        ref,
-        account: account,
-        type: doubleTapAction,
-        note: note,
-        appearNote: note,
+      onDoubleTap: useMemoized(
+        () => getNoteAction(
+          ref,
+          account: account,
+          type: doubleTapAction,
+          note: note,
+          appearNote: note,
+        ),
+        [account, doubleTapAction, note.id],
       ),
-      onLongPress: getNoteAction(
-        ref,
-        account: account,
-        type: longPressAction,
-        note: note,
-        appearNote: note,
+      onLongPress: useMemoized(
+        () => getNoteAction(
+          ref,
+          account: account,
+          type: longPressAction,
+          note: note,
+          appearNote: note,
+        ),
+        [account, longPressAction, note.id],
       ),
       borderRadius: borderRadius,
       child: Padding(

@@ -87,23 +87,21 @@ class NoteFooter extends HookConsumerWidget {
       NoteVisibility.followers => isMyNote,
       _ => false,
     };
+    final theme = Theme.of(context);
+    final defaultTextStyle = DefaultTextStyle.of(context).style;
+    final opacity = defaultTextStyle.color?.a ?? 1.0;
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final style = DefaultTextStyle.of(context).style.apply(
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.6),
-              fontSizeFactor: scale * maxContentWidth / constraints.maxWidth,
-            );
+        final style = defaultTextStyle.apply(
+          color: theme.colorScheme.onSurface.withValues(alpha: 0.6 * opacity),
+          fontSizeFactor: scale * maxContentWidth / constraints.maxWidth,
+        );
         return IconButtonTheme(
           data: IconButtonThemeData(
             style: IconButton.styleFrom(
-              foregroundColor: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.8),
+              foregroundColor:
+                  theme.colorScheme.onSurface.withValues(alpha: 0.8 * opacity),
               iconSize: style.lineHeight,
               minimumSize: Size.fromRadius(style.fontSize!),
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,

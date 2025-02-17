@@ -257,6 +257,19 @@ class NoteDisplayPage extends HookConsumerWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
                       width: maxContentWidth,
                       child: SwitchListTile(
+                        title: Text(t.misskey.showGapBetweenNotesInTimeline),
+                        value: settings.showGapBetweenNotesInTimeline,
+                        onChanged: (value) => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setShowGapBetweenNotesInTimeline(value),
+                      ),
+                    ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                      width: maxContentWidth,
+                      child: SwitchListTile(
                         title: Text(t.misskey.loadRawImages),
                         value: settings.loadRawImages,
                         onChanged: (value) => ref

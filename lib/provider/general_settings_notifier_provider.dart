@@ -91,6 +91,15 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setShowGapBetweenNotesInTimeline(
+    bool showGapBetweenNotesInTimeline,
+  ) async {
+    state = state.copyWith(
+      showGapBetweenNotesInTimeline: showGapBetweenNotesInTimeline,
+    );
+    await _save();
+  }
+
   Future<void> setLoadRawImages(bool loadRawImages) async {
     state = state.copyWith(loadRawImages: loadRawImages);
     await _save();
