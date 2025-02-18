@@ -106,11 +106,7 @@ extension on String {
 }
 
 class Converter {
-  const Converter({
-    required this.key,
-    this.params = const {},
-    this.children,
-  });
+  const Converter({required this.key, this.params = const {}, this.children});
 
   final String key;
   final Map<String, String> params;
@@ -124,27 +120,26 @@ class Converter {
     for (final e in source.entries) {
       final originalKey = e.key as String;
       final originalValue = e.value;
-      final key = originalKey
-          .rotateLeadingUnderscore()
-          .prefixLeadingNumber()
-          .postfixReservedWords()
-          .replaceSeparators();
+      final key =
+          originalKey
+              .rotateLeadingUnderscore()
+              .prefixLeadingNumber()
+              .postfixReservedWords()
+              .replaceSeparators();
       if (originalValue is String) {
-        final originalParams = RegExp(r'\{([^}]+)}')
-            .allMatches(originalValue)
-            .map((match) => match[1]!);
+        final originalParams = RegExp(
+          r'\{([^}]+)}',
+        ).allMatches(originalValue).map((match) => match[1]!);
         final params = {
           for (final originalParam in originalParams)
-            originalParam: originalParam
-                .rotateLeadingUnderscore()
-                .prefixLeadingNumber()
-                .postfixReservedWords()
-                .replaceSeparators(),
+            originalParam:
+                originalParam
+                    .rotateLeadingUnderscore()
+                    .prefixLeadingNumber()
+                    .postfixReservedWords()
+                    .replaceSeparators(),
         };
-        children[originalKey] = Converter(
-          key: key,
-          params: params,
-        );
+        children[originalKey] = Converter(key: key, params: params);
       } else {
         children[originalKey] = Converter.fromYamlMap(
           key: key,
@@ -168,20 +163,20 @@ class Converter {
       if (originalValue is String) {
         final params = Map.of(converter.params);
         final invalidParams = <String>[];
-        String value = originalValue.replaceAllMapped(
-          RegExp(r'\{([^}]+)}'),
-          (match) {
-            final originalParam = match[1]!;
-            final param =
-                params.remove(originalParam) ?? converter.params[originalParam];
-            if (param == null) {
-              invalidParams.add(originalParam);
-              return '{$originalParam}';
-            } else {
-              return '{$param}';
-            }
-          },
-        ).replaceAll('{}', r'\{}');
+        String value = originalValue
+            .replaceAllMapped(RegExp(r'\{([^}]+)}'), (match) {
+              final originalParam = match[1]!;
+              final param =
+                  params.remove(originalParam) ??
+                  converter.params[originalParam];
+              if (param == null) {
+                invalidParams.add(originalParam);
+                return '{$originalParam}';
+              } else {
+                return '{$param}';
+              }
+            })
+            .replaceAll('{}', r'\{}');
         for (final originalParam in invalidParams) {
           final param = params.remove(params.keys.firstOrNull);
           value = value.replaceAll(
@@ -240,17 +235,15 @@ List<String> dumpYaml(Map<String, dynamic> input, [int level = 0]) {
 }
 
 void main() {
-  final localization = loadYaml(
-    File('misskey/locales/en-US.yml').readAsStringSync(),
-  ) as YamlMap;
+  final localization =
+      loadYaml(File('misskey/locales/en-US.yml').readAsStringSync()) as YamlMap;
 
   final converter = Converter.fromYamlMap(key: '', source: localization);
   final converted = {
     for (final language in languages)
       language: converter.convert(
-        loadYaml(
-          File('misskey/locales/$language.yml').readAsStringSync(),
-        ) as YamlMap,
+        loadYaml(File('misskey/locales/$language.yml').readAsStringSync())
+            as YamlMap,
       ),
   };
   converted['ja-KS'] = merge(converted['ja-KS']!, converted['ja-JP']!);
@@ -267,9 +260,10 @@ void main() {
 
 ${lines.join('\n')}
 """;
-    final file = language == 'en-US'
-        ? File('lib/i18n/misskey/misskey.i18n.yaml')
-        : File('lib/i18n/misskey/misskey_$language.i18n.yaml');
+    final file =
+        language == 'en-US'
+            ? File('lib/i18n/misskey/misskey.i18n.yaml')
+            : File('lib/i18n/misskey/misskey_$language.i18n.yaml');
     file.writeAsStringSync(contents);
     // ignore: avoid_print
     print('Successfully generated ${file.path}');

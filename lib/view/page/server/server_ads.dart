@@ -18,20 +18,24 @@ class ServerAds extends ConsumerWidget {
     final meta = ref.watch(metaNotifierProvider(host));
 
     return RefreshIndicator(
-      onRefresh: () =>
-          ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
+      onRefresh:
+          () => ref.read(metaNotifierProvider(host).notifier).reloadMeta(),
       child: switch (meta) {
-        AsyncValue(valueOrNull: MetaResponse(:final ads)) => ads.isNotEmpty
-            ? ListView.builder(
-                itemBuilder: (context, index) => AdWidget(
-                  account: Account(host: host),
-                  specify: ads[index],
-                ),
+        AsyncValue(valueOrNull: MetaResponse(:final ads)) =>
+          ads.isNotEmpty
+              ? ListView.builder(
+                itemBuilder:
+                    (context, index) => AdWidget(
+                      account: Account(host: host),
+                      specify: ads[index],
+                    ),
                 itemCount: ads.length,
               )
-            : Center(child: Text(t.misskey.nothing)),
-        AsyncValue(:final error?, :final stackTrace) =>
-          ErrorMessage(error: error, stackTrace: stackTrace),
+              : Center(child: Text(t.misskey.nothing)),
+        AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
+          error: error,
+          stackTrace: stackTrace,
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );

@@ -40,10 +40,12 @@ class NotificationsSettingsPage extends ConsumerWidget {
 
     // Request permissions and get the endpoint and the token.
     if (defaultTargetPlatform == TargetPlatform.android) {
-      final result = await FlutterLocalNotificationsPlugin()
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>()
-          ?.requestNotificationsPermission();
+      final result =
+          await FlutterLocalNotificationsPlugin()
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >()
+              ?.requestNotificationsPermission();
       if (!ref.context.mounted) return;
       if (!(result ?? false)) {
         await showMessageDialog(ref.context, t.misskey.permissionDeniedError);
@@ -52,11 +54,9 @@ class NotificationsSettingsPage extends ConsumerWidget {
 
       await UnifiedPush.removeNoDistributorDialogACK();
       if (!ref.context.mounted) return;
-      await UnifiedPushUi(
-        ref.context,
-        [account.toString()],
-        _UnifiedPushFunctions(),
-      ).registerAppWithDialog();
+      await UnifiedPushUi(ref.context, [
+        account.toString(),
+      ], _UnifiedPushFunctions()).registerAppWithDialog();
       if (!ref.context.mounted) return;
       final completer = Completer<String>();
       final sub = ref.listenManual(
@@ -111,21 +111,24 @@ class NotificationsSettingsPage extends ConsumerWidget {
     // Register the endpoint and keys to the Misskey server.
     final response = await showDialog<SwRegisterResponse>(
       context: ref.context,
-      builder: (context) => SwRegisterDialog(
-        account: account,
-        request: SwRegisterRequest(
-          endpoint: endpoint,
-          auth: keySet.publicKey.auth,
-          publickey: keySet.publicKey.p256dh,
-        ),
-      ),
+      builder:
+          (context) => SwRegisterDialog(
+            account: account,
+            request: SwRegisterRequest(
+              endpoint: endpoint,
+              auth: keySet.publicKey.auth,
+              publickey: keySet.publicKey.p256dh,
+            ),
+          ),
     );
     if (!ref.context.mounted || response == null) return;
 
     // Subscribe and save the endpoint.
     await futureWithDialog(
       ref.context,
-      ref.read(pushSubscriptionNotifierProvider(account).notifier).subscribe(
+      ref
+          .read(pushSubscriptionNotifierProvider(account).notifier)
+          .subscribe(
             id: id,
             fcmToken: fcmToken,
             apnsToken: apnsToken,
@@ -135,14 +138,13 @@ class NotificationsSettingsPage extends ConsumerWidget {
     );
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin()
-          .resolvePlatformSpecificImplementation<
-              AndroidFlutterLocalNotificationsPlugin>();
+      final flutterLocalNotificationsPlugin =
+          FlutterLocalNotificationsPlugin()
+              .resolvePlatformSpecificImplementation<
+                AndroidFlutterLocalNotificationsPlugin
+              >();
       await flutterLocalNotificationsPlugin?.createNotificationChannelGroup(
-        AndroidNotificationChannelGroup(
-          account.toString(),
-          account.toString(),
-        ),
+        AndroidNotificationChannelGroup(account.toString(), account.toString()),
       );
       await flutterLocalNotificationsPlugin?.createNotificationChannel(
         AndroidNotificationChannel(
@@ -187,10 +189,9 @@ class NotificationsSettingsPage extends ConsumerWidget {
               child: Text(
                 t.misskey.pushNotification,
                 style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.8),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
               ),
             ),
@@ -202,15 +203,16 @@ class NotificationsSettingsPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.subscribePushNotification),
                 value: endpoint != null,
-                onChanged: endpoint != null
-                    ? (_) => _unsubscribe(ref)
-                    : i != null && isPushNotificationSupported
+                onChanged:
+                    endpoint != null
+                        ? (_) => _unsubscribe(ref)
+                        : i != null && isPushNotificationSupported
                         ? (_) async {
-                            await _subscribe(ref);
-                            await ref
-                                .read(userIdsNotifierProvider.notifier)
-                                .add(account, i.id);
-                          }
+                          await _subscribe(ref);
+                          await ref
+                              .read(userIdsNotifierProvider.notifier)
+                              .add(account, i.id);
+                        }
                         : null,
               ),
             ),

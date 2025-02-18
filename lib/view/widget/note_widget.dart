@@ -96,44 +96,54 @@ class NoteWidget extends HookConsumerWidget {
 
     final (verticalPadding, horizontalPadding) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+        (settings) => (
+          settings.noteVerticalPadding,
+          settings.noteHorizontalPadding,
+        ),
       ),
     );
     final showAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarsInNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showAvatarsInNote,
+      ),
     );
     final tapAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteTapAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteTapAction,
+      ),
     );
     final doubleTapAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteDoubleTapAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteDoubleTapAction,
+      ),
     );
     final longPressAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteLongPressAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteLongPressAction,
+      ),
     );
     final isRenote = note.isRenote;
     final isMyRenote =
         account.username == note.user.username && note.user.host == null;
-    final isMyNote = account.username == appearNote.user.username &&
+    final isMyNote =
+        account.username == appearNote.user.username &&
         appearNote.user.host == null;
     final avatarScale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.avatarScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.avatarScale,
+      ),
     );
     final renoteCollapsed = useState(
       ref.watch(
-            generalSettingsNotifierProvider
-                .select((settings) => settings.collapseRenotes),
+            generalSettingsNotifierProvider.select(
+              (settings) => settings.collapseRenotes,
+            ),
           ) &&
           isRenote &&
           (isMyRenote || isMyNote || appearNote.myReaction != null),
     );
-    final backgroundColor = this.backgroundColor ??
+    final backgroundColor =
+        this.backgroundColor ??
         ref.watch(
           generalSettingsNotifierProvider.select(
             (settings) => switch (note.visibility) {
@@ -193,8 +203,9 @@ class NoteWidget extends HookConsumerWidget {
             ),
             child: Column(
               children: [
-                if (appearNote case Note(:final replyId?)
-                    when !renoteCollapsed.value) ...[
+                if (appearNote case Note(
+                  :final replyId?,
+                ) when !renoteCollapsed.value) ...[
                   DefaultTextStyle.merge(
                     style: style.apply(
                       color: style.color?.withValues(alpha: 0.7),
@@ -248,11 +259,12 @@ class NoteWidget extends HookConsumerWidget {
                             account: account,
                             user: appearNote.user,
                             size: style.lineHeight,
-                            onTap: appearNote.userId.isNotEmpty
-                                ? () => context.push(
+                            onTap:
+                                appearNote.userId.isNotEmpty
+                                    ? () => context.push(
                                       '/$account/users/${appearNote.userId}',
                                     )
-                                : null,
+                                    : null,
                           ),
                           const SizedBox(width: 8.0),
                         ],
@@ -289,11 +301,12 @@ class NoteWidget extends HookConsumerWidget {
                               account: account,
                               user: appearNote.user,
                               size: style.lineHeight * avatarScale,
-                              onTap: appearNote.userId.isNotEmpty
-                                  ? () => context.push(
+                              onTap:
+                                  appearNote.userId.isNotEmpty
+                                      ? () => context.push(
                                         '/$account/users/${appearNote.userId}',
                                       )
-                                  : null,
+                                      : null,
                             ),
                           ),
                         Expanded(
@@ -341,34 +354,42 @@ class _NoteContent extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showReactionsViewer = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showNoteReactionsViewer),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showNoteReactionsViewer,
+      ),
     );
-    final showFooter = this.showFooter ??
+    final showFooter =
+        this.showFooter ??
         ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.showNoteFooter),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.showNoteFooter,
+          ),
         ) ??
         false;
     final alwaysExpandCw = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysExpandCw),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.alwaysExpandCw,
+      ),
     );
     final showContent = useState(alwaysExpandCw);
-    final parsed = appearNote.text != null
-        ? ref.watch(parsedMfmProvider(appearNote.text!))
-        : null;
+    final parsed =
+        appearNote.text != null
+            ? ref.watch(parsedMfmProvider(appearNote.text!))
+            : null;
     final renoteUrl = note.uri?.toString() ?? note.url?.toString();
     final urls = useMemoized(
-      () => parsed != null
-          ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
-          : null,
+      () =>
+          parsed != null
+              ? extractUrl(parsed).where((url) => url != renoteUrl).toList()
+              : null,
       [parsed],
     );
-    final isLong = appearNote.cw == null &&
+    final isLong =
+        appearNote.cw == null &&
         !ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.alwaysExpandLongNote),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.alwaysExpandLongNote,
+          ),
         ) &&
         ref.watch(noteIsLongProvider(account, appearNote.id));
     final isCollapsed = useState(appearNote.cw == null && isLong);
@@ -383,11 +404,13 @@ class _NoteContent extends HookConsumerWidget {
       ),
     );
     final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysShowAllReactions),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.alwaysShowAllReactions,
+      ),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -457,11 +480,7 @@ class _NoteContent extends HookConsumerWidget {
               const SizedBox(height: 8.0),
             ],
             if (appearNote case Note(:final poll?)) ...[
-              PollWidget(
-                account: account,
-                noteId: appearNote.id,
-                poll: poll,
-              ),
+              PollWidget(account: account, noteId: appearNote.id, poll: poll),
               const SizedBox(height: 4.0),
             ],
             if (urls != null && urls.isNotEmpty)

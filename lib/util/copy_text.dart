@@ -10,8 +10,8 @@ void copyToClipboard(BuildContext context, String text) {
   if (defaultTargetPlatform case TargetPlatform.android || TargetPlatform.iOS) {
     Fluttertoast.showToast(msg: t.aria.copied);
   } else {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text(t.aria.copied)),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text(t.aria.copied)));
   }
 }

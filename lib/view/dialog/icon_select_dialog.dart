@@ -24,15 +24,17 @@ class IconSelectDialog extends HookConsumerWidget {
           Expanded(child: Text(t.aria.selectIcon)),
           if (account != null) ...[
             IconButton(
-              onPressed: showEmojiPicker.value
-                  ? () => showEmojiPicker.value = false
-                  : null,
+              onPressed:
+                  showEmojiPicker.value
+                      ? () => showEmojiPicker.value = false
+                      : null,
               icon: const Icon(Icons.navigate_before),
             ),
             IconButton(
-              onPressed: showEmojiPicker.value
-                  ? null
-                  : () => showEmojiPicker.value = true,
+              onPressed:
+                  showEmojiPicker.value
+                      ? null
+                      : () => showEmojiPicker.value = true,
               icon: const Icon(Icons.navigate_next),
             ),
           ],
@@ -40,32 +42,36 @@ class IconSelectDialog extends HookConsumerWidget {
       ),
       content: SizedBox(
         width: double.maxFinite,
-        child: account != null && showEmojiPicker.value
-            ? EmojiPicker(
-                account: account!,
-                onTapEmoji: (emoji, _) {
-                  if (emoji.startsWith(':')) {
-                    final url = ref.read(emojiUrlProvider(account!, emoji)).$2;
-                    context.pop(ImageIcon(url: url));
-                  } else {
-                    context.pop(EmojiIcon(emoji: emoji));
-                  }
-                },
-              )
-            : SingleChildScrollView(
-                child: Wrap(
-                  children: tabIconData
-                      .map(
-                        (icon) => IconButton(
-                          onPressed: () => context.pop(
-                            MaterialIcon(codePoint: icon.codePoint),
-                          ),
-                          icon: Icon(icon),
-                        ),
-                      )
-                      .toList(),
+        child:
+            account != null && showEmojiPicker.value
+                ? EmojiPicker(
+                  account: account!,
+                  onTapEmoji: (emoji, _) {
+                    if (emoji.startsWith(':')) {
+                      final url =
+                          ref.read(emojiUrlProvider(account!, emoji)).$2;
+                      context.pop(ImageIcon(url: url));
+                    } else {
+                      context.pop(EmojiIcon(emoji: emoji));
+                    }
+                  },
+                )
+                : SingleChildScrollView(
+                  child: Wrap(
+                    children:
+                        tabIconData
+                            .map(
+                              (icon) => IconButton(
+                                onPressed:
+                                    () => context.pop(
+                                      MaterialIcon(codePoint: icon.codePoint),
+                                    ),
+                                icon: Icon(icon),
+                              ),
+                            )
+                            .toList(),
+                  ),
                 ),
-              ),
       ),
     );
   }

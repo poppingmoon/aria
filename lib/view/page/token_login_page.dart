@@ -24,9 +24,14 @@ class TokenLoginPage extends HookConsumerWidget {
   final String? host;
 
   Future<void> _login(WidgetRef ref, String hostText, String token) async {
-    final trimmed = toAscii(
-      hostText.trim().replaceFirst(RegExp('https?://'), '').split('/').first,
-    ).toLowerCase();
+    final trimmed =
+        toAscii(
+          hostText
+              .trim()
+              .replaceFirst(RegExp('https?://'), '')
+              .split('/')
+              .first,
+        ).toLowerCase();
     if (!ref.context.mounted) return;
     await ref
         .read(accountsNotifierProvider.notifier)
@@ -41,23 +46,22 @@ class TokenLoginPage extends HookConsumerWidget {
     final hostController = useTextEditingController(text: this.host);
     final host = useState(this.host ?? '');
     final hostFocusNode = useFocusNode();
-    final server =
-        servers.firstWhereOrNull((server) => server.url == host.value);
-    final iconUrl = server?.meta?['iconUrl'] as String? ??
+    final server = servers.firstWhereOrNull(
+      (server) => server.url == host.value,
+    );
+    final iconUrl =
+        server?.meta?['iconUrl'] as String? ??
         (server != null && server.icon
             ? 'https://instanceapp.misskey.page/instance-icons/${server.url}.webp'
             : null);
     final tokenController = useTextEditingController();
     final token = useState('');
     final tokenFocusNode = useFocusNode();
-    useEffect(
-      () {
-        hostController.addListener(() => host.value = hostController.text);
-        tokenController.addListener(() => token.value = tokenController.text);
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      hostController.addListener(() => host.value = hostController.text);
+      tokenController.addListener(() => token.value = tokenController.text);
+      return;
+    }, []);
 
     return Scaffold(
       body: MisskeyServerBackground(
@@ -69,9 +73,9 @@ class TokenLoginPage extends HookConsumerWidget {
                 filter: ImageFilter.blur(sigmaX: 6.0, sigmaY: 6.0),
                 child: AppBar(
                   title: Text(t.aria.loginWithAccessToken),
-                  backgroundColor: Theme.of(context)
-                      .scaffoldBackgroundColor
-                      .withValues(alpha: 0.5),
+                  backgroundColor: Theme.of(
+                    context,
+                  ).scaffoldBackgroundColor.withValues(alpha: 0.5),
                 ),
               ),
             ),
@@ -91,16 +95,17 @@ class TokenLoginPage extends HookConsumerWidget {
                               color: Color(0xffdddddd),
                               shape: BoxShape.circle,
                             ),
-                            child: iconUrl != null
-                                ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                    child: ImageWidget(
-                                      url: iconUrl,
-                                      width: 50.0,
-                                      height: 50.0,
-                                    ),
-                                  )
-                                : const SizedBox(width: 50.0, height: 50.0),
+                            child:
+                                iconUrl != null
+                                    ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: ImageWidget(
+                                        url: iconUrl,
+                                        width: 50.0,
+                                        height: 50.0,
+                                      ),
+                                    )
+                                    : const SizedBox(width: 50.0, height: 50.0),
                           ),
                           const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
@@ -119,8 +124,9 @@ class TokenLoginPage extends HookConsumerWidget {
                               onPressed: () async {
                                 final host = await showDialog<String>(
                                   context: context,
-                                  builder: (context) =>
-                                      const MisskeyServerListDialog(),
+                                  builder:
+                                      (context) =>
+                                          const MisskeyServerListDialog(),
                                 );
                                 if (host != null) {
                                   hostController.text = host;
@@ -136,17 +142,18 @@ class TokenLoginPage extends HookConsumerWidget {
                             shortcuts: {
                               ...disablingTextShortcuts,
                               submitActivator: VoidCallbackIntent(
-                                () => hostController.text.isNotEmpty &&
-                                        tokenController.text.isNotEmpty
-                                    ? futureWithDialog(
-                                        context,
-                                        _login(
-                                          ref,
-                                          hostController.text,
-                                          tokenController.text,
-                                        ),
-                                      )
-                                    : null,
+                                () =>
+                                    hostController.text.isNotEmpty &&
+                                            tokenController.text.isNotEmpty
+                                        ? futureWithDialog(
+                                          context,
+                                          _login(
+                                            ref,
+                                            hostController.text,
+                                            tokenController.text,
+                                          ),
+                                        )
+                                        : null,
                               ),
                             },
                             child: TextField(
@@ -170,13 +177,13 @@ class TokenLoginPage extends HookConsumerWidget {
                             onPressed:
                                 host.value.isNotEmpty && token.value.isNotEmpty
                                     ? () => futureWithDialog(
-                                          context,
-                                          _login(
-                                            ref,
-                                            hostController.text,
-                                            tokenController.text,
-                                          ),
-                                        )
+                                      context,
+                                      _login(
+                                        ref,
+                                        hostController.text,
+                                        tokenController.text,
+                                      ),
+                                    )
                                     : null,
                             icon: const Icon(Icons.key),
                             label: Text(t.misskey.login),

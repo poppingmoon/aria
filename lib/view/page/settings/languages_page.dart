@@ -17,8 +17,9 @@ class LanguagesPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final locale = ref.watch(generalSettingsNotifierProvider).locale;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return GeneralSettingsScaffold(
       appBar: AppBar(title: Text(t.misskey.uiLanguage)),
@@ -64,13 +65,14 @@ class LanguagesPage extends ConsumerWidget {
                           alignment: PlaceholderAlignment.baseline,
                           baseline: TextBaseline.alphabetic,
                           child: InkWell(
-                            onTap: () => launchUrl(
-                              ref,
-                              Uri.https(
-                                'crowdin.com',
-                                'project/aria-for-misskey',
-                              ),
-                            ),
+                            onTap:
+                                () => launchUrl(
+                                  ref,
+                                  Uri.https(
+                                    'crowdin.com',
+                                    'project/aria-for-misskey',
+                                  ),
+                                ),
                             child: Text.rich(
                               TextSpan(
                                 children: [
@@ -80,13 +82,15 @@ class LanguagesPage extends ConsumerWidget {
                                   ),
                                   WidgetSpan(
                                     child: Builder(
-                                      builder: (context) => Icon(
-                                        Icons.open_in_new,
-                                        color: colors.link,
-                                        size: DefaultTextStyle.of(context)
-                                            .style
-                                            .fontSize,
-                                      ),
+                                      builder:
+                                          (context) => Icon(
+                                            Icons.open_in_new,
+                                            color: colors.link,
+                                            size:
+                                                DefaultTextStyle.of(
+                                                  context,
+                                                ).style.fontSize,
+                                          ),
                                     ),
                                   ),
                                 ],
@@ -122,8 +126,9 @@ class LanguagesPage extends ConsumerWidget {
                     LocaleSettings.useDeviceLocale();
                   },
                   shape: const RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(8.0)),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(8.0),
+                    ),
                   ),
                   contentPadding: const EdgeInsets.symmetric(
                     vertical: 8.0,
@@ -132,15 +137,16 @@ class LanguagesPage extends ConsumerWidget {
                 ),
               ),
             ),
-            for (final (index, appLocale) in AppLocaleUtils.supportedLocales
-                .sortedBy((locale) => locale.toLanguageTag())
-                .map(
-                  (locale) => AppLocale.values.firstWhere(
-                    (appLocale) =>
-                        appLocale.languageTag == locale.toLanguageTag(),
-                  ),
-                )
-                .indexed) ...[
+            for (final (index, appLocale)
+                in AppLocaleUtils.supportedLocales
+                    .sortedBy((locale) => locale.toLanguageTag())
+                    .map(
+                      (locale) => AppLocale.values.firstWhere(
+                        (appLocale) =>
+                            appLocale.languageTag == locale.toLanguageTag(),
+                      ),
+                    )
+                    .indexed) ...[
               const Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
@@ -157,8 +163,9 @@ class LanguagesPage extends ConsumerWidget {
                   child: RadioListTile(
                     title: FutureBuilder(
                       future: LocaleSettings.instance.loadLocale(appLocale),
-                      builder: (context, snapshot) =>
-                          Text(appLocale.translations.misskey.lang__),
+                      builder:
+                          (context, snapshot) =>
+                              Text(appLocale.translations.misskey.lang__),
                     ),
                     subtitle: Text(appLocale.languageTag),
                     value: appLocale,
@@ -173,13 +180,14 @@ class LanguagesPage extends ConsumerWidget {
                         LocaleSettings.setLocale(locale);
                       }
                     },
-                    shape: index == AppLocaleUtils.supportedLocales.length - 1
-                        ? const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              bottom: Radius.circular(8.0),
-                            ),
-                          )
-                        : null,
+                    shape:
+                        index == AppLocaleUtils.supportedLocales.length - 1
+                            ? const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                bottom: Radius.circular(8.0),
+                              ),
+                            )
+                            : null,
                   ),
                 ),
               ),

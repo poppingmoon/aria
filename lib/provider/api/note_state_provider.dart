@@ -9,18 +9,16 @@ part 'note_state_provider.g.dart';
 @riverpod
 class NoteStateNotifier extends _$NoteStateNotifier {
   @override
-  FutureOr<NotesStateResponse> build(
-    Account account,
-    String noteId,
-  ) {
+  FutureOr<NotesStateResponse> build(Account account, String noteId) {
     return _misskey.notes.state(NotesStateRequest(noteId: noteId));
   }
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<void> favorite() async {
-    await _misskey.notes.favorites
-        .create(NotesFavoritesCreateRequest(noteId: noteId));
+    await _misskey.notes.favorites.create(
+      NotesFavoritesCreateRequest(noteId: noteId),
+    );
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isFavorited: true));
@@ -28,8 +26,9 @@ class NoteStateNotifier extends _$NoteStateNotifier {
   }
 
   Future<void> unfavorite() async {
-    await _misskey.notes.favorites
-        .delete(NotesFavoritesDeleteRequest(noteId: noteId));
+    await _misskey.notes.favorites.delete(
+      NotesFavoritesDeleteRequest(noteId: noteId),
+    );
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isFavorited: false));
@@ -37,8 +36,9 @@ class NoteStateNotifier extends _$NoteStateNotifier {
   }
 
   Future<void> muteThread() async {
-    await _misskey.notes.threadMuting
-        .create(NotesThreadMutingCreateRequest(noteId: noteId));
+    await _misskey.notes.threadMuting.create(
+      NotesThreadMutingCreateRequest(noteId: noteId),
+    );
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isMutedThread: true));
@@ -46,8 +46,9 @@ class NoteStateNotifier extends _$NoteStateNotifier {
   }
 
   Future<void> unmuteThread() async {
-    await _misskey.notes.threadMuting
-        .delete(NotesThreadMutingDeleteRequest(noteId: noteId));
+    await _misskey.notes.threadMuting.delete(
+      NotesThreadMutingDeleteRequest(noteId: noteId),
+    );
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(value.copyWith(isMutedThread: false));

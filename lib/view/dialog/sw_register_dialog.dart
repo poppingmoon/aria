@@ -31,8 +31,9 @@ class SwRegisterDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final responseText = useState('');
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return AlertDialog(
       title: Text(t.misskey.subscribePushNotification),
@@ -46,16 +47,23 @@ class SwRegisterDialog extends HookConsumerWidget {
                 alignment: PlaceholderAlignment.baseline,
                 baseline: TextBaseline.alphabetic,
                 child: InkWell(
-                  onTap: () => launchUrl(
-                    Uri.https(account.host, 'scratchpad'),
-                    mode: LaunchMode.externalApplication,
-                  ),
-                  onLongPress: () => showModalBottomSheet<void>(
-                    context: context,
-                    builder: (context) => UrlSheet(
-                      url: Uri.https(account.host, 'scratchpad').toString(),
-                    ),
-                  ),
+                  onTap:
+                      () => launchUrl(
+                        Uri.https(account.host, 'scratchpad'),
+                        mode: LaunchMode.externalApplication,
+                      ),
+                  onLongPress:
+                      () => showModalBottomSheet<void>(
+                        context: context,
+                        builder:
+                            (context) => UrlSheet(
+                              url:
+                                  Uri.https(
+                                    account.host,
+                                    'scratchpad',
+                                  ).toString(),
+                            ),
+                      ),
                   child: Text(
                     t.misskey.scratchpad,
                     style: TextStyle(color: colors.link),
@@ -112,27 +120,28 @@ if (Core:type(response) == 'error') {
       ),
       actions: [
         ElevatedButton(
-          onPressed: responseText.value.isNotEmpty
-              ? () async {
-                  try {
-                    final json = json5Decode(responseText.value);
-                    final response = SwRegisterResponse.fromJson(
-                      json as Map<String, dynamic>,
-                    );
-                    final i = await futureWithDialog(
-                      context,
-                      ref.read(iNotifierProvider(account).future),
-                    );
-                    if (!context.mounted) return;
-                    if (i?.id == response.userId &&
-                        request.endpoint == response.endpoint) {
-                      context.pop(response);
-                      return;
-                    }
-                  } catch (_) {}
-                  await showMessageDialog(context, t.misskey.invalidValue);
-                }
-              : null,
+          onPressed:
+              responseText.value.isNotEmpty
+                  ? () async {
+                    try {
+                      final json = json5Decode(responseText.value);
+                      final response = SwRegisterResponse.fromJson(
+                        json as Map<String, dynamic>,
+                      );
+                      final i = await futureWithDialog(
+                        context,
+                        ref.read(iNotifierProvider(account).future),
+                      );
+                      if (!context.mounted) return;
+                      if (i?.id == response.userId &&
+                          request.endpoint == response.endpoint) {
+                        context.pop(response);
+                        return;
+                      }
+                    } catch (_) {}
+                    await showMessageDialog(context, t.misskey.invalidValue);
+                  }
+                  : null,
           child: Text(t.misskey.ok),
         ),
       ],

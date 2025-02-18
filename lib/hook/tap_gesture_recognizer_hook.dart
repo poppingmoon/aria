@@ -2,16 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-TapGestureRecognizer useTapGestureRecognizer({
-  List<Object?>? keys,
-}) {
+TapGestureRecognizer useTapGestureRecognizer({List<Object?>? keys}) {
   return use(_TapGestureRecognizerHook(keys: keys));
 }
 
 class _TapGestureRecognizerHook extends Hook<TapGestureRecognizer> {
-  const _TapGestureRecognizerHook({
-    super.keys,
-  });
+  const _TapGestureRecognizerHook({super.keys});
 
   @override
   HookState<TapGestureRecognizer, Hook<TapGestureRecognizer>> createState() =>

@@ -17,12 +17,10 @@ class ListsNotifier extends _$ListsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<void> create(String name) async {
-    final list =
-        await _misskey.users.list.create(UsersListsCreateRequest(name: name));
-    state = AsyncValue.data([
-      list,
-      ...?state.valueOrNull,
-    ]);
+    final list = await _misskey.users.list.create(
+      UsersListsCreateRequest(name: name),
+    );
+    state = AsyncValue.data([list, ...?state.valueOrNull]);
   }
 
   Future<void> updateList(String listId, {String? name, bool? isPublic}) async {
@@ -42,27 +40,31 @@ class ListsNotifier extends _$ListsNotifier {
   }
 
   Future<void> addUser(String listId, String userId) async {
-    await _misskey.users.list
-        .push(UsersListsPushRequest(listId: listId, userId: userId));
+    await _misskey.users.list.push(
+      UsersListsPushRequest(listId: listId, userId: userId),
+    );
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (list) => list.id == listId
-            ? list.copyWith(userIds: [...list.userIds, userId])
-            : list,
+        (list) =>
+            list.id == listId
+                ? list.copyWith(userIds: [...list.userIds, userId])
+                : list,
       ),
     ]);
   }
 
   Future<void> removeUser(String listId, String userId) async {
-    await _misskey.users.list
-        .pull(UsersListsPullRequest(listId: listId, userId: userId));
+    await _misskey.users.list.pull(
+      UsersListsPullRequest(listId: listId, userId: userId),
+    );
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (list) => list.id == listId
-            ? list.copyWith(
-                userIds: list.userIds.where((id) => id != userId).toList(),
-              )
-            : list,
+        (list) =>
+            list.id == listId
+                ? list.copyWith(
+                  userIds: list.userIds.where((id) => id != userId).toList(),
+                )
+                : list,
       ),
     ]);
   }

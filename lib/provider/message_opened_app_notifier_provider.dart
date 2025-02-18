@@ -29,17 +29,19 @@ class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
     }
     await Future(() => state = false);
 
-    final notification =
-        await ref.read(pushNotificationNotifierProvider.future);
+    final notification = await ref.read(
+      pushNotificationNotifierProvider.future,
+    );
     final userId = notification.userId;
     if (userId == null) {
       return null;
     }
-    final account = ref
-        .read(userIdsNotifierProvider)
-        .entries
-        .firstWhereOrNull((e) => e.value == userId)
-        ?.key;
+    final account =
+        ref
+            .read(userIdsNotifierProvider)
+            .entries
+            .firstWhereOrNull((e) => e.value == userId)
+            ?.key;
     if (account == null) {
       return null;
     }

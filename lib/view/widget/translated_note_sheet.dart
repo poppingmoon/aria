@@ -34,41 +34,40 @@ class TranslatedNoteSheet extends ConsumerWidget {
       children: [
         ...switch (translatedNote) {
           AsyncValue(valueOrNull: final translatedNote?) => [
-              ListTile(
-                title: Text(
-                  t.misskey.translatedFrom(x: translatedNote.sourceLang),
-                ),
-                trailing: IconButton(
-                  onPressed: () =>
-                      copyToClipboard(context, translatedNote.text),
-                  icon: const Icon(Icons.copy),
+            ListTile(
+              title: Text(
+                t.misskey.translatedFrom(x: translatedNote.sourceLang),
+              ),
+              trailing: IconButton(
+                onPressed: () => copyToClipboard(context, translatedNote.text),
+                icon: const Icon(Icons.copy),
+              ),
+            ),
+            const Divider(height: 0.0),
+            SizedBox(
+              width: double.infinity,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Mfm(
+                  account: account,
+                  text: translatedNote.text,
+                  emojis: note.emojis,
+                  author: note.user,
+                  nyaize: true,
                 ),
               ),
-              const Divider(height: 0.0),
-              SizedBox(
-                width: double.infinity,
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Mfm(
-                    account: account,
-                    text: translatedNote.text,
-                    emojis: note.emojis,
-                    author: note.user,
-                    nyaize: true,
-                  ),
-                ),
-              ),
-            ],
+            ),
+          ],
           AsyncValue(:final error?, :final stackTrace) => [
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            ],
+            ErrorMessage(error: error, stackTrace: stackTrace),
+          ],
           _ => [
-              const SizedBox(
-                width: double.infinity,
-                height: 100.0,
-                child: Center(child: CircularProgressIndicator()),
-              ),
-            ],
+            const SizedBox(
+              width: double.infinity,
+              height: 100.0,
+              child: Center(child: CircularProgressIndicator()),
+            ),
+          ],
         },
       ],
     );

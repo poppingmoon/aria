@@ -18,11 +18,7 @@ enum _BorderStyle {
 }
 
 class Border extends StatelessWidget {
-  const Border({
-    super.key,
-    required this.args,
-    required this.child,
-  });
+  const Border({super.key, required this.args, required this.child});
 
   final Map<String, dynamic> args;
   final Widget child;
@@ -83,14 +79,16 @@ class Border extends StatelessWidget {
           color: color,
           strokeWidth: width,
           borderType: BorderType.RRect,
-          dashPattern: borderStyle == _BorderStyle.dotted
-              ? [0, width * 2.0]
-              : [width * 2.5, width * 2.5],
+          dashPattern:
+              borderStyle == _BorderStyle.dotted
+                  ? [0, width * 2.0]
+                  : [width * 2.5, width * 2.5],
           radius: Radius.circular(radius),
           padding: EdgeInsets.all(width / 2),
-          strokeCap: borderStyle == _BorderStyle.dotted
-              ? StrokeCap.round
-              : StrokeCap.butt,
+          strokeCap:
+              borderStyle == _BorderStyle.dotted
+                  ? StrokeCap.round
+                  : StrokeCap.butt,
           child: child,
         );
       case _BorderStyle.solid:
@@ -120,9 +118,10 @@ class Border extends StatelessWidget {
         // A borderRadius can only be given on borders with uniform colors.
         final (darkColor, lightColor) =
             radius > 0 ? (color, color) : _get3DColors(color);
-        final colors = borderStyle == _BorderStyle.groove
-            ? (darkColor, lightColor)
-            : (lightColor, darkColor);
+        final colors =
+            borderStyle == _BorderStyle.groove
+                ? (darkColor, lightColor)
+                : (lightColor, darkColor);
         return Container(
           decoration: BoxDecoration(
             border: material.Border(
@@ -150,9 +149,10 @@ class Border extends StatelessWidget {
         // A borderRadius can only be given on borders with uniform colors.
         final (darkColor, lightColor) =
             radius > 0 ? (color, color) : _get3DColors(color);
-        final colors = borderStyle == _BorderStyle.inset
-            ? (darkColor, lightColor)
-            : (lightColor, darkColor);
+        final colors =
+            borderStyle == _BorderStyle.inset
+                ? (darkColor, lightColor)
+                : (lightColor, darkColor);
         return Container(
           decoration: BoxDecoration(
             border: material.Border(

@@ -11,16 +11,16 @@ part 'user_featured_notes_notifier_provider.g.dart';
 @riverpod
 class UserFeaturedNotesNotifier extends _$UserFeaturedNotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String userId,
-  ) async {
+  FutureOr<PaginationState<Note>> build(Account account, String userId) async {
     final response = await _fetchNotes();
     return PaginationState.fromIterable(response);
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).users.featuredNotes(
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .users
+        .featuredNotes(
           UsersFeaturedNotesRequest(userId: userId, untilId: untilId),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);

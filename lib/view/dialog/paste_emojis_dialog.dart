@@ -51,8 +51,9 @@ class PasteEmojisDialog extends HookConsumerWidget {
     );
     final recognizer = useTapGestureRecognizer();
     final controller = useTextEditingController();
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return AlertDialog(
       title: Text(t.aria.paste),
@@ -63,8 +64,8 @@ class PasteEmojisDialog extends HookConsumerWidget {
               url: TextSpan(
                 text: registryUrl.toString().breakAll,
                 style: TextStyle(color: colors.link),
-                recognizer: recognizer
-                  ..onTap = () => launchUrl(ref, registryUrl),
+                recognizer:
+                    recognizer..onTap = () => launchUrl(ref, registryUrl),
               ),
             ),
           ),

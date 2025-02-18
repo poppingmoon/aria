@@ -26,11 +26,7 @@ import 'post_file_thumbnail.dart';
 import 'time_widget.dart';
 
 class DriveFileSheet extends ConsumerWidget {
-  const DriveFileSheet({
-    super.key,
-    required this.account,
-    required this.file,
-  });
+  const DriveFileSheet({super.key, required this.account, required this.file});
 
   final Account account;
   final DriveFile file;
@@ -46,13 +42,8 @@ class DriveFileSheet extends ConsumerWidget {
       await futureWithDialog(
         ref.context,
         ref
-            .read(
-              driveFilesNotifierProvider(account, file.folderId).notifier,
-            )
-            .updateFile(
-              fileId: file.id,
-              name: result,
-            ),
+            .read(driveFilesNotifierProvider(account, file.folderId).notifier)
+            .updateFile(fileId: file.id, name: result),
       );
       if (!ref.context.mounted) return;
       ref.context.pop();
@@ -63,13 +54,8 @@ class DriveFileSheet extends ConsumerWidget {
     await futureWithDialog(
       ref.context,
       ref
-          .read(
-            driveFilesNotifierProvider(account, file.folderId).notifier,
-          )
-          .updateFile(
-            fileId: file.id,
-            isSensitive: isSensitive,
-          ),
+          .read(driveFilesNotifierProvider(account, file.folderId).notifier)
+          .updateFile(fileId: file.id, isSensitive: isSensitive),
     );
     if (!ref.context.mounted) return;
     ref.context.pop();
@@ -78,22 +64,17 @@ class DriveFileSheet extends ConsumerWidget {
   Future<void> _describeFile(WidgetRef ref) async {
     final result = await showDialog<String>(
       context: ref.context,
-      builder: (context) => FileCaptionEditDialog(
-        file: DrivePostFile.fromDriveFile(file),
-      ),
+      builder:
+          (context) =>
+              FileCaptionEditDialog(file: DrivePostFile.fromDriveFile(file)),
     );
     if (!ref.context.mounted) return;
     if (result != null && result != file.name) {
       await futureWithDialog(
         ref.context,
         ref
-            .read(
-              driveFilesNotifierProvider(account, file.folderId).notifier,
-            )
-            .updateFile(
-              fileId: file.id,
-              comment: result,
-            ),
+            .read(driveFilesNotifierProvider(account, file.folderId).notifier)
+            .updateFile(fileId: file.id, comment: result),
       );
       if (!ref.context.mounted) return;
       ref.context.pop();
@@ -117,9 +98,7 @@ class DriveFileSheet extends ConsumerWidget {
       await futureWithDialog(
         ref.context,
         ref
-            .read(
-              driveFilesNotifierProvider(account, file.folderId).notifier,
-            )
+            .read(driveFilesNotifierProvider(account, file.folderId).notifier)
             .uploadBinary(
               result,
               name: file.name,
@@ -149,8 +128,9 @@ class DriveFileSheet extends ConsumerWidget {
     await futureWithDialog(
       ref.context,
       Future(() async {
-        final file =
-            await ref.read(cacheManagerProvider).getSingleFile(this.file.url);
+        final file = await ref
+            .read(cacheManagerProvider)
+            .getSingleFile(this.file.url);
         if (isImage) {
           await Gal.putImage(file.path);
         } else {
@@ -166,10 +146,7 @@ class DriveFileSheet extends ConsumerWidget {
   Future<void> _move(WidgetRef ref) async {
     final result = await showDialog<(DriveFolder?,)>(
       context: ref.context,
-      builder: (context) => DrivePage(
-        account: account,
-        selectFolder: true,
-      ),
+      builder: (context) => DrivePage(account: account, selectFolder: true),
     );
     if (result == null) return;
     if (!ref.context.mounted) return;
@@ -197,9 +174,7 @@ class DriveFileSheet extends ConsumerWidget {
       final deleted = await futureWithDialog(
         ref.context,
         ref
-            .read(
-              driveFilesNotifierProvider(account, file.folderId).notifier,
-            )
+            .read(driveFilesNotifierProvider(account, file.folderId).notifier)
             .delete(file.id)
             .then((_) => true),
         message: t.misskey.removed,
@@ -281,11 +256,12 @@ class DriveFileSheet extends ConsumerWidget {
           leading: const Icon(Icons.collections),
           title: Text(t.misskey.gallery),
           trailing: const Icon(Icons.navigate_next),
-          onTap: () => showDialog<void>(
-            context: context,
-            builder: (context) =>
-                GalleryDialog(account: account, files: [file]),
-          ),
+          onTap:
+              () => showDialog<void>(
+                context: context,
+                builder:
+                    (context) => GalleryDialog(account: account, files: [file]),
+              ),
         ),
         ListTile(
           leading: const Icon(Icons.drive_file_move),

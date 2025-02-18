@@ -10,8 +10,7 @@ FutureOr<String?> userAgent(Ref ref) {
   return switch (defaultTargetPlatform) {
     TargetPlatform.android ||
     TargetPlatform.iOS ||
-    TargetPlatform.macOS =>
-      InAppWebViewController.getDefaultUserAgent(),
+    TargetPlatform.macOS => InAppWebViewController.getDefaultUserAgent(),
     _ => null,
   };
 }

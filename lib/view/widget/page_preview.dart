@@ -61,8 +61,10 @@ class PagePreview extends ConsumerWidget {
                         UserAvatar(account: account, user: page.user),
                         const SizedBox(width: 2.0),
                         Expanded(
-                          child:
-                              UsernameWidget(account: account, user: page.user),
+                          child: UsernameWidget(
+                            account: account,
+                            user: page.user,
+                          ),
                         ),
                       ],
                     ),

@@ -28,10 +28,7 @@ class ClipsNotifier extends _$ClipsNotifier {
         isPublic: isPublic,
       ),
     );
-    state = AsyncValue.data([
-      clip,
-      ...?state.valueOrNull,
-    ]);
+    state = AsyncValue.data([clip, ...?state.valueOrNull]);
   }
 
   Future<void> updateClip(
@@ -64,12 +61,13 @@ class ClipsNotifier extends _$ClipsNotifier {
     await _misskey.clips.favorite(ClipsFavoriteRequest(clipId: clipId));
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (clip) => clip.id == clipId
-            ? clip.copyWith(
-                isFavorited: true,
-                favoritedCount: (clip.favoritedCount ?? 0) + 1,
-              )
-            : clip,
+        (clip) =>
+            clip.id == clipId
+                ? clip.copyWith(
+                  isFavorited: true,
+                  favoritedCount: (clip.favoritedCount ?? 0) + 1,
+                )
+                : clip,
       ),
     ]);
   }
@@ -78,12 +76,13 @@ class ClipsNotifier extends _$ClipsNotifier {
     await _misskey.clips.unfavorite(ClipsUnfavoriteRequest(clipId: clipId));
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (clip) => clip.id == clipId
-            ? clip.copyWith(
-                isFavorited: false,
-                favoritedCount: (clip.favoritedCount ?? 1) - 1,
-              )
-            : clip,
+        (clip) =>
+            clip.id == clipId
+                ? clip.copyWith(
+                  isFavorited: false,
+                  favoritedCount: (clip.favoritedCount ?? 1) - 1,
+                )
+                : clip,
       ),
     ]);
   }

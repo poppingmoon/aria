@@ -52,30 +52,22 @@ class MiAuthRepository {
     final sessionId = const Uuid().v4();
     if (kDebugMode) {
       if (host.startsWith('localhost')) {
-        final url = Uri.http(
-          host,
-          'miauth/$sessionId',
-          {
-            'name': 'Aria',
-            'permission': _permissions.map((e) => e.value).join(','),
-            if (defaultTargetPlatform == TargetPlatform.android)
-              'callback': 'aria://aria/miauth',
-          },
-        );
+        final url = Uri.http(host, 'miauth/$sessionId', {
+          'name': 'Aria',
+          'permission': _permissions.map((e) => e.value).join(','),
+          if (defaultTargetPlatform == TargetPlatform.android)
+            'callback': 'aria://aria/miauth',
+        });
         return (sessionId, url);
       }
     }
-    final url = Uri.https(
-      host,
-      'miauth/$sessionId',
-      {
-        'name': 'Aria',
-        'permission': _permissions.map((e) => e.value).join(','),
-        if (defaultTargetPlatform
-            case TargetPlatform.android || TargetPlatform.iOS)
-          'callback': 'aria://aria/miauth',
-      },
-    );
+    final url = Uri.https(host, 'miauth/$sessionId', {
+      'name': 'Aria',
+      'permission': _permissions.map((e) => e.value).join(','),
+      if (defaultTargetPlatform
+          case TargetPlatform.android || TargetPlatform.iOS)
+        'callback': 'aria://aria/miauth',
+    });
     return (sessionId, url);
   }
 
@@ -92,9 +84,7 @@ class MiAuthRepository {
         if (data != null && data['ok'] as bool) {
           return (
             data['token'] as String,
-            UserDetailedNotMe.fromJson(
-              data['user'] as Map<String, dynamic>,
-            )
+            UserDetailedNotMe.fromJson(data['user'] as Map<String, dynamic>),
           );
         }
       }
@@ -106,9 +96,7 @@ class MiAuthRepository {
     if (data['ok'] as bool) {
       return (
         data['token'] as String,
-        UserDetailedNotMe.fromJson(
-          data['user'] as Map<String, dynamic>,
-        )
+        UserDetailedNotMe.fromJson(data['user'] as Map<String, dynamic>),
       );
     }
     return null;

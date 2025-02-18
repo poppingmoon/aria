@@ -5,10 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class Sparkle extends HookWidget {
-  const Sparkle({
-    this.opacity = 1.0,
-    required this.child,
-  });
+  const Sparkle({this.opacity = 1.0, required this.child});
 
   final double opacity;
   final Widget child;
@@ -38,43 +35,39 @@ class Sparkle extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller =
-        useAnimationController(duration: const Duration(hours: 1));
+    final controller = useAnimationController(
+      duration: const Duration(hours: 1),
+    );
     final particles = useState(<_Particle>[]);
     final updatedAt = useState(DateTime.now());
     Timer? timer;
-    useEffect(
-      () {
-        final animation = Tween(begin: 0.0, end: 1.0).animate(controller);
-        controller.repeat();
-        animation.addListener(() {
-          final now = DateTime.now();
-          final diff = now.difference(updatedAt.value);
-          for (final particle in particles.value) {
-            particle.update(diff);
-          }
-          particles.value = particles.value
-              .where((particle) => particle.timeAlive <= particle.duration)
-              .toList();
-          if (timer == null || !timer!.isActive) {
-            timer = Timer(
-              Duration(milliseconds: 500 + random.nextInt(500)),
-              () {
-                if (!context.mounted) return;
-                final renderBox = context.findRenderObject();
-                if (renderBox is RenderBox) {
-                  final particle = createParticle(renderBox.size);
-                  particles.value = [...particles.value, particle];
-                }
-              },
-            );
-          }
-          updatedAt.value = now;
-        });
-        return timer?.cancel;
-      },
-      [],
-    );
+    useEffect(() {
+      final animation = Tween(begin: 0.0, end: 1.0).animate(controller);
+      controller.repeat();
+      animation.addListener(() {
+        final now = DateTime.now();
+        final diff = now.difference(updatedAt.value);
+        for (final particle in particles.value) {
+          particle.update(diff);
+        }
+        particles.value =
+            particles.value
+                .where((particle) => particle.timeAlive <= particle.duration)
+                .toList();
+        if (timer == null || !timer!.isActive) {
+          timer = Timer(Duration(milliseconds: 500 + random.nextInt(500)), () {
+            if (!context.mounted) return;
+            final renderBox = context.findRenderObject();
+            if (renderBox is RenderBox) {
+              final particle = createParticle(renderBox.size);
+              particles.value = [...particles.value, particle];
+            }
+          });
+        }
+        updatedAt.value = now;
+      });
+      return timer?.cancel;
+    }, []);
 
     return RepaintBoundary(
       child: CustomPaint(
@@ -120,10 +113,7 @@ class _Particle {
     path.moveTo(externalRadius, 0);
 
     for (double step = 0; step < fullAngle; step += degreesPerStep) {
-      path.lineTo(
-        externalRadius * cos(step),
-        externalRadius * sin(step),
-      );
+      path.lineTo(externalRadius * cos(step), externalRadius * sin(step));
       path.lineTo(
         internalRadius * cos(step + halfDegreesPerStep),
         internalRadius * sin(step + halfDegreesPerStep),
@@ -143,10 +133,11 @@ class _ParticlePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (final particle in particles) {
-      final matrix = Matrix4.identity()
-        ..translate(particle.position.dx, particle.position.dy)
-        ..scale(particle.scale, particle.scale)
-        ..rotateZ(particle.angle);
+      final matrix =
+          Matrix4.identity()
+            ..translate(particle.position.dx, particle.position.dy)
+            ..scale(particle.scale, particle.scale)
+            ..rotateZ(particle.angle);
       canvas.drawPath(
         particle.path.transform(matrix.storage),
         particlePaint..color = particle.color,

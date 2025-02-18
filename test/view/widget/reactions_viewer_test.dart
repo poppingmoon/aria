@@ -29,33 +29,37 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container =
-      ProviderScope.containerOf(tester.element(find.byType(ReactionsViewer)));
+  final container = ProviderScope.containerOf(
+    tester.element(find.byType(ReactionsViewer)),
+  );
   return container;
 }
 
 void main() {
   group('basic', () {
-    testWidgets('reactions should be ordered in descending order of the count',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await tester.pumpAndSettle();
-      final reactions =
-          tester.widgetList<ReactionButton>(find.byType(ReactionButton));
-      expect(reactions.length, 3);
-      expect(reactions.elementAt(0).emoji, ':emoji2:');
-      expect(reactions.elementAt(1).emoji, ':emoji3:');
-      expect(reactions.elementAt(2).emoji, ':emoji1:');
-    });
+    testWidgets(
+      'reactions should be ordered in descending order of the count',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(
+          reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
+        );
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await tester.pumpAndSettle();
+        final reactions = tester.widgetList<ReactionButton>(
+          find.byType(ReactionButton),
+        );
+        expect(reactions.length, 3);
+        expect(reactions.elementAt(0).emoji, ':emoji2:');
+        expect(reactions.elementAt(1).emoji, ':emoji3:');
+        expect(reactions.elementAt(2).emoji, ':emoji1:');
+      },
+    );
 
     testWidgets('should show a limited number of emojis', (tester) async {
       const account = Account(host: 'misskey.tld');
@@ -111,14 +115,17 @@ void main() {
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
-      container.read(notesNotifierProvider(account).notifier).add(
+      container
+          .read(notesNotifierProvider(account).notifier)
+          .add(
             note.copyWith(
               reactions: {':emoji1:': 5, ':emoji2:': 3, ':emoji3:': 4},
             ),
           );
       await tester.pumpAndSettle();
-      final reactions =
-          tester.widgetList<ReactionButton>(find.byType(ReactionButton));
+      final reactions = tester.widgetList<ReactionButton>(
+        find.byType(ReactionButton),
+      );
       expect(reactions.length, 3);
       expect(reactions.elementAt(0).emoji, ':emoji2:');
       expect(reactions.elementAt(0).count, 3);
@@ -141,7 +148,9 @@ void main() {
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
-      container.read(notesNotifierProvider(account).notifier).add(
+      container
+          .read(notesNotifierProvider(account).notifier)
+          .add(
             note.copyWith(
               reactions: {
                 ':emoji0:': 1,
@@ -152,8 +161,9 @@ void main() {
             ),
           );
       await tester.pumpAndSettle();
-      final reactions =
-          tester.widgetList<ReactionButton>(find.byType(ReactionButton));
+      final reactions = tester.widgetList<ReactionButton>(
+        find.byType(ReactionButton),
+      );
       expect(reactions.length, 4);
       expect(reactions.elementAt(0).emoji, ':emoji2:');
       expect(reactions.elementAt(1).emoji, ':emoji3:');
@@ -162,8 +172,9 @@ void main() {
       await tester.pumpAndSettle();
     });
 
-    testWidgets('should preserve ordering of reactions when removed',
-        (tester) async {
+    testWidgets('should preserve ordering of reactions when removed', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         reactions: {':emoji1:': 1, ':emoji2:': 3, ':emoji3:': 2},
@@ -175,14 +186,13 @@ void main() {
       );
       container.read(notesNotifierProvider(account).notifier).add(note);
       await tester.pumpAndSettle();
-      container.read(notesNotifierProvider(account).notifier).add(
-            note.copyWith(
-              reactions: {':emoji1:': 4, ':emoji2:': 3},
-            ),
-          );
+      container
+          .read(notesNotifierProvider(account).notifier)
+          .add(note.copyWith(reactions: {':emoji1:': 4, ':emoji2:': 3}));
       await tester.pumpAndSettle();
-      final reactions =
-          tester.widgetList<ReactionButton>(find.byType(ReactionButton));
+      final reactions = tester.widgetList<ReactionButton>(
+        find.byType(ReactionButton),
+      );
       expect(reactions.length, 2);
       expect(reactions.elementAt(0).emoji, ':emoji2:');
       expect(reactions.elementAt(1).emoji, ':emoji1:');
@@ -191,8 +201,9 @@ void main() {
   });
 
   group('merge', () {
-    testWidgets('should show a local emoji if a local emoji is included',
-        (tester) async {
+    testWidgets('should show a local emoji if a local emoji is included', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         reactions: {
@@ -211,37 +222,40 @@ void main() {
           .read(generalSettingsNotifierProvider.notifier)
           .setMergeReactionsByName(true);
       await tester.pumpAndSettle();
-      final reaction =
-          tester.widget<ReactionButton>(find.byType(ReactionButton));
+      final reaction = tester.widget<ReactionButton>(
+        find.byType(ReactionButton),
+      );
       expect(reaction.emoji, ':emoji@.:');
       expect(reaction.count, 6);
     });
 
     testWidgets(
-        'should show a most reacted emoji if a local emoji is not included',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        reactions: {
-          ':emoji@misskey.tld:': 1,
-          ':emoji@misskey2.tld:': 3,
-          ':emoji@misskey3.tld:': 2,
-        },
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setMergeReactionsByName(true);
-      await tester.pumpAndSettle();
-      final reaction =
-          tester.widget<ReactionButton>(find.byType(ReactionButton));
-      expect(reaction.emoji, ':emoji@misskey2.tld:');
-      expect(reaction.count, 6);
-    });
+      'should show a most reacted emoji if a local emoji is not included',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(
+          reactions: {
+            ':emoji@misskey.tld:': 1,
+            ':emoji@misskey2.tld:': 3,
+            ':emoji@misskey3.tld:': 2,
+          },
+        );
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await container
+            .read(generalSettingsNotifierProvider.notifier)
+            .setMergeReactionsByName(true);
+        await tester.pumpAndSettle();
+        final reaction = tester.widget<ReactionButton>(
+          find.byType(ReactionButton),
+        );
+        expect(reaction.emoji, ':emoji@misskey2.tld:');
+        expect(reaction.count, 6);
+      },
+    );
   });
 }

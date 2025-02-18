@@ -38,12 +38,13 @@ class PrivacyPage extends ConsumerWidget {
                   title: Text(t.misskey.makeFollowManuallyApprove),
                   subtitle: Text(t.misskey.lockedAccountInfo),
                   value: i.isLocked,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setIsLocked(value),
-                  ),
+                  onChanged:
+                      (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setIsLocked(value),
+                      ),
                 ),
               ),
             ),
@@ -55,12 +56,13 @@ class PrivacyPage extends ConsumerWidget {
                   child: SwitchListTile(
                     title: Text(t.misskey.autoAcceptFollowed),
                     value: i.autoAcceptFollowed,
-                    onChanged: (value) => futureWithDialog(
-                      context,
-                      ref
-                          .read(iNotifierProvider(account).notifier)
-                          .setAutoAcceptFollowed(value),
-                    ),
+                    onChanged:
+                        (value) => futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setAutoAcceptFollowed(value),
+                        ),
                   ),
                 ),
               ),
@@ -72,12 +74,13 @@ class PrivacyPage extends ConsumerWidget {
                   title: Text(t.misskey.makeReactionsPublic),
                   subtitle: Text(t.misskey.makeReactionsPublicDescription),
                   value: i.publicReactions,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setPublicReactions(value),
-                  ),
+                  onChanged:
+                      (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setPublicReactions(value),
+                      ),
                 ),
               ),
             ),
@@ -99,8 +102,9 @@ class PrivacyPage extends ConsumerWidget {
                       values: FFVisibility.values,
                       // ignore: deprecated_member_use
                       initialValue: i.followingVisibility ?? i.ffVisibility,
-                      itemBuilder: (context, visibility) =>
-                          FfVisibilityWidget(visibility: visibility),
+                      itemBuilder:
+                          (context, visibility) =>
+                              FfVisibilityWidget(visibility: visibility),
                     );
                     if (!context.mounted) return;
                     if (result != null) {
@@ -133,8 +137,9 @@ class PrivacyPage extends ConsumerWidget {
                       values: FFVisibility.values,
                       // ignore: deprecated_member_use
                       initialValue: i.followersVisibility ?? i.ffVisibility,
-                      itemBuilder: (context, visibility) =>
-                          FfVisibilityWidget(visibility: visibility),
+                      itemBuilder:
+                          (context, visibility) =>
+                              FfVisibilityWidget(visibility: visibility),
                     );
                     if (!context.mounted) return;
                     if (result != null) {
@@ -157,12 +162,13 @@ class PrivacyPage extends ConsumerWidget {
                   title: Text(t.misskey.hideOnlineStatus),
                   subtitle: Text(t.misskey.hideOnlineStatusDescription),
                   value: i.hideOnlineStatus,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setHideOnlineStatus(value),
-                  ),
+                  onChanged:
+                      (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setHideOnlineStatus(value),
+                      ),
                 ),
               ),
             ),
@@ -174,12 +180,13 @@ class PrivacyPage extends ConsumerWidget {
                   title: Text(t.misskey.noCrawle),
                   subtitle: Text(t.misskey.noCrawleDescription),
                   value: i.noCrawle,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setNoCrawle(value),
-                  ),
+                  onChanged:
+                      (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setNoCrawle(value),
+                      ),
                 ),
               ),
             ),
@@ -192,12 +199,13 @@ class PrivacyPage extends ConsumerWidget {
                     title: Text(t.misskey.preventAiLearning),
                     subtitle: Text(t.misskey.preventAiLearningDescription),
                     value: preventAiLearning,
-                    onChanged: (value) => futureWithDialog(
-                      context,
-                      ref
-                          .read(iNotifierProvider(account).notifier)
-                          .setPreventAiLearning(value),
-                    ),
+                    onChanged:
+                        (value) => futureWithDialog(
+                          context,
+                          ref
+                              .read(iNotifierProvider(account).notifier)
+                              .setPreventAiLearning(value),
+                        ),
                   ),
                 ),
               ),
@@ -209,12 +217,13 @@ class PrivacyPage extends ConsumerWidget {
                   title: Text(t.misskey.makeExplorable),
                   subtitle: Text(t.misskey.makeExplorableDescription),
                   value: i.isExplorable,
-                  onChanged: (value) => futureWithDialog(
-                    context,
-                    ref
-                        .read(iNotifierProvider(account).notifier)
-                        .setIsExplorable(value),
-                  ),
+                  onChanged:
+                      (value) => futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setIsExplorable(value),
+                      ),
                 ),
               ),
             ),
@@ -226,9 +235,10 @@ class PrivacyPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.keepCw),
                 value: settings.keepCw,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setKeepCw(value),
+                onChanged:
+                    (value) => ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setKeepCw(value),
               ),
             ),
           ),
@@ -239,9 +249,10 @@ class PrivacyPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.rememberNoteVisibility),
                 value: settings.rememberNoteVisibility,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setRememberNoteVisibility(value),
+                onChanged:
+                    (value) => ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setRememberNoteVisibility(value),
               ),
             ),
           ),
@@ -261,21 +272,20 @@ class PrivacyPage extends ConsumerWidget {
                       title: Text(t.misskey.defaultNoteVisibility),
                       values: NoteVisibility.values,
                       initialValue: settings.defaultNoteVisibility,
-                      itemBuilder: (context, visibility) => ListTile(
-                        title: NoteVisibilityWidget(visibility: visibility),
-                        subtitle: Text(
-                          switch (visibility) {
-                            NoteVisibility.public =>
-                              t.misskey.visibility_.publicDescription,
-                            NoteVisibility.home =>
-                              t.misskey.visibility_.homeDescription,
-                            NoteVisibility.followers =>
-                              t.misskey.visibility_.followersDescription,
-                            NoteVisibility.specified =>
-                              t.misskey.visibility_.specifiedDescription,
-                          },
-                        ),
-                      ),
+                      itemBuilder:
+                          (context, visibility) => ListTile(
+                            title: NoteVisibilityWidget(visibility: visibility),
+                            subtitle: Text(switch (visibility) {
+                              NoteVisibility.public =>
+                                t.misskey.visibility_.publicDescription,
+                              NoteVisibility.home =>
+                                t.misskey.visibility_.homeDescription,
+                              NoteVisibility.followers =>
+                                t.misskey.visibility_.followersDescription,
+                              NoteVisibility.specified =>
+                                t.misskey.visibility_.specifiedDescription,
+                            }),
+                          ),
                     );
                     if (result != null) {
                       await ref
@@ -296,9 +306,12 @@ class PrivacyPage extends ConsumerWidget {
                   title: Text(t.misskey.visibility_.disableFederation),
                   subtitle: Text(t.misskey.disableFederationConfirmWarn),
                   value: settings.defaultNoteLocalOnly,
-                  onChanged: (value) => ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setDefaultNoteLocalOnly(value),
+                  onChanged:
+                      (value) => ref
+                          .read(
+                            accountSettingsNotifierProvider(account).notifier,
+                          )
+                          .setDefaultNoteLocalOnly(value),
                 ),
               ),
             ),
@@ -312,9 +325,10 @@ class PrivacyPage extends ConsumerWidget {
                   '${t.misskey.rememberNoteVisibility} (${t.misskey.renote})',
                 ),
                 value: settings.rememberRenoteVisibility,
-                onChanged: (value) => ref
-                    .read(accountSettingsNotifierProvider(account).notifier)
-                    .setRememberRenoteVisibility(value),
+                onChanged:
+                    (value) => ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setRememberRenoteVisibility(value),
               ),
             ),
           ),
@@ -338,21 +352,20 @@ class PrivacyPage extends ConsumerWidget {
                       ),
                       values: NoteVisibility.values,
                       initialValue: settings.defaultRenoteVisibility,
-                      itemBuilder: (context, visibility) => ListTile(
-                        title: NoteVisibilityWidget(visibility: visibility),
-                        subtitle: Text(
-                          switch (visibility) {
-                            NoteVisibility.public =>
-                              t.misskey.visibility_.publicDescription,
-                            NoteVisibility.home =>
-                              t.misskey.visibility_.homeDescription,
-                            NoteVisibility.followers =>
-                              t.misskey.visibility_.followersDescription,
-                            NoteVisibility.specified =>
-                              t.misskey.visibility_.specifiedDescription,
-                          },
-                        ),
-                      ),
+                      itemBuilder:
+                          (context, visibility) => ListTile(
+                            title: NoteVisibilityWidget(visibility: visibility),
+                            subtitle: Text(switch (visibility) {
+                              NoteVisibility.public =>
+                                t.misskey.visibility_.publicDescription,
+                              NoteVisibility.home =>
+                                t.misskey.visibility_.homeDescription,
+                              NoteVisibility.followers =>
+                                t.misskey.visibility_.followersDescription,
+                              NoteVisibility.specified =>
+                                t.misskey.visibility_.specifiedDescription,
+                            }),
+                          ),
                     );
                     if (result != null) {
                       await ref
@@ -375,9 +388,12 @@ class PrivacyPage extends ConsumerWidget {
                   ),
                   subtitle: Text(t.misskey.disableFederationConfirmWarn),
                   value: settings.defaultRenoteLocalOnly,
-                  onChanged: (value) => ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setDefaultRenoteLocalOnly(value),
+                  onChanged:
+                      (value) => ref
+                          .read(
+                            accountSettingsNotifierProvider(account).notifier,
+                          )
+                          .setDefaultRenoteLocalOnly(value),
                 ),
               ),
             ),
@@ -396,12 +412,15 @@ class PrivacyPage extends ConsumerWidget {
                   final result = await showRadioDialog(
                     context,
                     title: Text(t.misskey.reactionAcceptance),
-                    values: [null, ...ReactionAcceptance.values]
-                        .map((value) => (value,))
-                        .toList(),
+                    values:
+                        [
+                          null,
+                          ...ReactionAcceptance.values,
+                        ].map((value) => (value,)).toList(),
                     initialValue: (settings.reactionAcceptance,),
-                    itemBuilder: (context, acceptance) =>
-                        ReactionAcceptanceWidget(acceptance: acceptance.$1),
+                    itemBuilder:
+                        (context, acceptance) =>
+                            ReactionAcceptanceWidget(acceptance: acceptance.$1),
                   );
                   if (result != null) {
                     await ref

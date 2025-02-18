@@ -19,8 +19,9 @@ class CwButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style.apply(fontSizeFactor: 0.9);
 
     return OutlinedButton(

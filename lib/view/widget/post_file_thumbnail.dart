@@ -25,10 +25,9 @@ class PostFileThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (file
-        case DrivePostFile(
-          file: DriveFile(:final thumbnailUrl?, :final blurhash)
-        )) {
+    if (file case DrivePostFile(
+      file: DriveFile(:final thumbnailUrl?, :final blurhash),
+    )) {
       return ImageWidget(
         url: thumbnailUrl,
         blurHash: blurhash,
@@ -39,12 +38,7 @@ class PostFileThumbnail extends StatelessWidget {
     }
     if (file.type?.startsWith('image/') ?? false) {
       if (file case LocalPostFile(:final file)) {
-        return Image.file(
-          file,
-          width: width,
-          height: height,
-          fit: fit,
-        );
+        return Image.file(file, width: width, height: height, fit: fit);
       }
     }
     return SizedBox(

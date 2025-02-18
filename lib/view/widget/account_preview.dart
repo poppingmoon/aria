@@ -26,12 +26,14 @@ class AccountPreview extends ConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
 
     return ListTile(
-      leading: i != null
-          ? UserAvatar(account: account, user: i, size: avatarSize)
-          : Icon(Icons.person, size: avatarSize),
-      title: i != null
-          ? UsernameWidget(account: account, user: i)
-          : Text(account.username ?? t.aria.guest),
+      leading:
+          i != null
+              ? UserAvatar(account: account, user: i, size: avatarSize)
+              : Icon(Icons.person, size: avatarSize),
+      title:
+          i != null
+              ? UsernameWidget(account: account, user: i)
+              : Text(account.username ?? t.aria.guest),
       subtitle: Align(
         alignment: AlignmentDirectional.centerStart,
         child: Text(account.toString(), textDirection: TextDirection.ltr),

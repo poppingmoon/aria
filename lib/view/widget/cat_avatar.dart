@@ -24,14 +24,8 @@ final _catEarWiggleTween = TweenSequence([
     tween: Tween(begin: 0.17453292, end: 0.34906585),
     weight: 25,
   ),
-  TweenSequenceItem(
-    tween: Tween(begin: 0.34906585, end: 0.0),
-    weight: 20,
-  ),
-  TweenSequenceItem(
-    tween: Tween(begin: 0.0, end: 0.65624379),
-    weight: 25,
-  ),
+  TweenSequenceItem(tween: Tween(begin: 0.34906585, end: 0.0), weight: 20),
+  TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.65624379), weight: 25),
 ]);
 
 class CatAvatar extends HookConsumerWidget {
@@ -55,47 +49,50 @@ class CatAvatar extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showAvatarDecorations = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarDecorations),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showAvatarDecorations,
+      ),
     );
     final squareAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.squareAvatars),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.squareAvatars,
+      ),
     );
-    final disableShowingAnimatedImages = ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.disableShowingAnimatedImages),
+    final disableShowingAnimatedImages =
+        ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.disableShowingAnimatedImages,
+          ),
         ) ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
-    final borderRadius =
-        BorderRadius.circular(squareAvatars ? size * 0.2 : size);
+    final borderRadius = BorderRadius.circular(
+      squareAvatars ? size * 0.2 : size,
+    );
     final blurHash = user.avatarBlurhash;
-    final catEarColor = blurHash != null
-        ? ref.watch(averageColorProvider(blurHash))
-        : Theme.of(context).colorScheme.primary;
+    final catEarColor =
+        blurHash != null
+            ? ref.watch(averageColorProvider(blurHash))
+            : Theme.of(context).colorScheme.primary;
     final controller = useAnimationController(
       duration: const Duration(seconds: 1),
     );
     final animation = _catEarWiggleTween.animate(controller);
     final loopAnimation = useState(false);
-    useEffect(
-      () {
-        animation.addStatusListener((status) async {
-          if (status == AnimationStatus.completed) {
-            if (loopAnimation.value) {
-              unawaited(controller.forward(from: 0.0));
-              await Future<void>.delayed(const Duration(milliseconds: 550));
-              await HapticFeedback.lightImpact();
-              await HapticFeedback.lightImpact();
-            } else {
-              controller.reset();
-            }
+    useEffect(() {
+      animation.addStatusListener((status) async {
+        if (status == AnimationStatus.completed) {
+          if (loopAnimation.value) {
+            unawaited(controller.forward(from: 0.0));
+            await Future<void>.delayed(const Duration(milliseconds: 550));
+            await HapticFeedback.lightImpact();
+            await HapticFeedback.lightImpact();
+          } else {
+            controller.reset();
           }
-        });
-        return;
-      },
-      [],
-    );
+        }
+      });
+      return;
+    }, []);
 
     return InkWell(
       onTap: onTap,
@@ -142,16 +139,17 @@ class CatAvatar extends HookConsumerWidget {
             ClipRRect(
               borderRadius: borderRadius,
               child: ImageWidget(
-                url: disableShowingAnimatedImages
-                    ? ref
-                        .watch(
-                          staticImageUrlProvider(
-                            account.host,
-                            user.avatarUrl.toString(),
-                          ),
-                        )
-                        .toString()
-                    : user.avatarUrl.toString(),
+                url:
+                    disableShowingAnimatedImages
+                        ? ref
+                            .watch(
+                              staticImageUrlProvider(
+                                account.host,
+                                user.avatarUrl.toString(),
+                              ),
+                            )
+                            .toString()
+                        : user.avatarUrl.toString(),
                 blurHash: user.avatarBlurhash,
                 height: size,
                 width: size,

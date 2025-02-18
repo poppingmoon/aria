@@ -20,7 +20,10 @@ class MentionsNotifier extends _$MentionsNotifier {
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).notes.mentions(
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .mentions(
           NotesMentionsRequest(
             untilId: untilId,
             visibility: specified ? NoteVisibility.specified : null,

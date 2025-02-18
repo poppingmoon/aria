@@ -49,17 +49,20 @@ class MediaCard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final file = files[index];
     final highlightSensitiveMedia = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.highlightSensitiveMedia),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.highlightSensitiveMedia,
+      ),
     );
     final sensitive = ref.watch(
       generalSettingsNotifierProvider.select((settings) => settings.sensitive),
     );
-    final dataSaver =
-        ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.media));
+    final dataSaver = ref.watch(
+      dataSaverProvider.select((dataSaver) => dataSaver.media),
+    );
     final openMediaOnDoubleTap = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.openSensitiveMediaOnDoubleTap),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.openSensitiveMediaOnDoubleTap,
+      ),
     );
     final hide = useState(
       sensitive == SensitiveMediaDisplay.force ||
@@ -69,276 +72,308 @@ class MediaCard extends HookConsumerWidget {
     ref.listen(
       generalSettingsNotifierProvider.select((settings) => settings.sensitive),
       (_, sensitive) {
-        hide.value = sensitive == SensitiveMediaDisplay.force ||
+        hide.value =
+            sensitive == SensitiveMediaDisplay.force ||
             dataSaver ||
             (file.isSensitive && sensitive != SensitiveMediaDisplay.ignore);
       },
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style;
 
     return Card.filled(
       color: Theme.of(context).colorScheme.surfaceContainerLow,
       clipBehavior: Clip.antiAlias,
-      shape: file.isSensitive && highlightSensitiveMedia
-          ? RoundedRectangleBorder(
-              side: BorderSide(
-                color: colors.warn,
-                width: 4.0,
-              ),
-              borderRadius: BorderRadius.circular(16.0),
-            )
-          : null,
+      shape:
+          file.isSensitive && highlightSensitiveMedia
+              ? RoundedRectangleBorder(
+                side: BorderSide(color: colors.warn, width: 4.0),
+                borderRadius: BorderRadius.circular(16.0),
+              )
+              : null,
       margin: EdgeInsets.zero,
       child: Semantics(
         label: file.comment ?? file.name,
-        child: hide.value
-            ? InkWell(
-                onTap: () async {
-                  if (!openMediaOnDoubleTap) {
-                    if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmWhenRevealingSensitiveMedia) {
-                      final result = await confirm(
-                        context,
-                        message: t.misskey.sensitiveMediaRevealConfirm,
-                      );
-                      if (!result) return;
+        child:
+            hide.value
+                ? InkWell(
+                  onTap: () async {
+                    if (!openMediaOnDoubleTap) {
+                      if (ref
+                          .read(generalSettingsNotifierProvider)
+                          .confirmWhenRevealingSensitiveMedia) {
+                        final result = await confirm(
+                          context,
+                          message: t.misskey.sensitiveMediaRevealConfirm,
+                        );
+                        if (!result) return;
+                      }
+                      hide.value = false;
                     }
-                    hide.value = false;
-                  }
-                },
-                onDoubleTap: () async {
-                  if (openMediaOnDoubleTap) {
-                    if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmWhenRevealingSensitiveMedia) {
-                      final result = await confirm(
-                        context,
-                        message: t.misskey.sensitiveMediaRevealConfirm,
-                      );
-                      if (!result) return;
+                  },
+                  onDoubleTap: () async {
+                    if (openMediaOnDoubleTap) {
+                      if (ref
+                          .read(generalSettingsNotifierProvider)
+                          .confirmWhenRevealingSensitiveMedia) {
+                        final result = await confirm(
+                          context,
+                          message: t.misskey.sensitiveMediaRevealConfirm,
+                        );
+                        if (!result) return;
+                      }
+                      hide.value = false;
                     }
-                    hide.value = false;
-                  }
-                },
-                onLongPress: () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) => _MediaCardSheet(
-                    account: account,
-                    file: file,
-                    user: user,
+                  },
+                  onLongPress:
+                      () => showModalBottomSheet<void>(
+                        context: context,
+                        builder:
+                            (context) => _MediaCardSheet(
+                              account: account,
+                              file: file,
+                              user: user,
+                            ),
+                      ),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      if (file case DriveFile(:final blurhash?))
+                        ColorFiltered(
+                          colorFilter: const ColorFilter.mode(
+                            Color(0xffb4b4b4),
+                            BlendMode.multiply,
+                          ),
+                          child: BlurHash(hash: blurhash),
+                        )
+                      else
+                        const Positioned.fill(
+                          child: ColoredBox(color: Color(0xff888888)),
+                        ),
+                      Text.rich(
+                        TextSpan(
+                          children: [
+                            WidgetSpan(
+                              alignment: PlaceholderAlignment.middle,
+                              child:
+                                  file.isSensitive
+                                      ? Icon(
+                                        Icons.warning_amber,
+                                        size: style.lineHeight * 0.8,
+                                        color: Colors.white,
+                                      )
+                                      : MediaIcon(
+                                        mimeType: file.type,
+                                        size: style.lineHeight * 0.8,
+                                        color: Colors.white,
+                                      ),
+                            ),
+                            const WidgetSpan(child: SizedBox(width: 4.0)),
+                            if (file.isSensitive)
+                              TextSpan(
+                                text: t.misskey.sensitive,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                children: [
+                                  if (dataSaver) ...[
+                                    const TextSpan(text: ' ('),
+                                    if (file.type.startsWith('image/'))
+                                      TextSpan(
+                                        text: t.misskey.image,
+                                        children: [
+                                          if (file.size > 0)
+                                            const TextSpan(text: ' '),
+                                        ],
+                                      )
+                                    else if (file.type.startsWith('video/'))
+                                      TextSpan(
+                                        text: t.misskey.video,
+                                        children: [
+                                          if (file.size > 0)
+                                            const TextSpan(text: ' '),
+                                        ],
+                                      )
+                                    else if (file.type.startsWith('audio/'))
+                                      TextSpan(
+                                        text: t.misskey.audio,
+                                        children: [
+                                          if (file.size > 0)
+                                            const TextSpan(text: ' '),
+                                        ],
+                                      ),
+                                    if (file.size > 0)
+                                      TextSpan(text: prettyBytes(file.size)),
+                                    const TextSpan(text: ')'),
+                                  ],
+                                ],
+                              )
+                            else
+                              TextSpan(
+                                text:
+                                    file.type.startsWith('image/')
+                                        ? t.misskey.image
+                                        : file.type.startsWith('video/')
+                                        ? t.misskey.video
+                                        : file.type.startsWith('audio/')
+                                        ? t.misskey.audio
+                                        : null,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                children: [
+                                  if (dataSaver && file.size > 0) ...[
+                                    const TextSpan(text: ' '),
+                                    TextSpan(text: prettyBytes(file.size)),
+                                  ],
+                                ],
+                              ),
+                            TextSpan(
+                              text:
+                                  '\n${openMediaOnDoubleTap ? t.aria.doubleTapToShow : t.aria.tapToShow}',
+                            ),
+                          ],
+                        ),
+                        style: style.apply(
+                          color: Colors.white,
+                          fontSizeFactor: 0.8,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                ),
-                child: Stack(
+                )
+                : Stack(
                   alignment: Alignment.center,
                   children: [
-                    if (file case DriveFile(:final blurhash?))
-                      ColorFiltered(
-                        colorFilter: const ColorFilter.mode(
-                          Color(0xffb4b4b4),
-                          BlendMode.multiply,
-                        ),
-                        child: BlurHash(hash: blurhash),
-                      )
-                    else
-                      const Positioned.fill(
-                        child: ColoredBox(color: Color(0xff888888)),
-                      ),
-                    Text.rich(
-                      TextSpan(
-                        children: [
-                          WidgetSpan(
-                            alignment: PlaceholderAlignment.middle,
-                            child: file.isSensitive
-                                ? Icon(
-                                    Icons.warning_amber,
-                                    size: style.lineHeight * 0.8,
-                                    color: Colors.white,
-                                  )
-                                : MediaIcon(
-                                    mimeType: file.type,
-                                    size: style.lineHeight * 0.8,
-                                    color: Colors.white,
-                                  ),
-                          ),
-                          const WidgetSpan(child: SizedBox(width: 4.0)),
-                          if (file.isSensitive)
-                            TextSpan(
-                              text: t.misskey.sensitive,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                              children: [
-                                if (dataSaver) ...[
-                                  const TextSpan(text: ' ('),
-                                  if (file.type.startsWith('image/'))
-                                    TextSpan(
-                                      text: t.misskey.image,
-                                      children: [
-                                        if (file.size > 0)
-                                          const TextSpan(text: ' '),
-                                      ],
-                                    )
-                                  else if (file.type.startsWith('video/'))
-                                    TextSpan(
-                                      text: t.misskey.video,
-                                      children: [
-                                        if (file.size > 0)
-                                          const TextSpan(text: ' '),
-                                      ],
-                                    )
-                                  else if (file.type.startsWith('audio/'))
-                                    TextSpan(
-                                      text: t.misskey.audio,
-                                      children: [
-                                        if (file.size > 0)
-                                          const TextSpan(text: ' '),
-                                      ],
-                                    ),
-                                  if (file.size > 0)
-                                    TextSpan(
-                                      text: prettyBytes(file.size),
-                                    ),
-                                  const TextSpan(text: ')'),
-                                ],
-                              ],
-                            )
-                          else
-                            TextSpan(
-                              text: file.type.startsWith('image/')
-                                  ? t.misskey.image
-                                  : file.type.startsWith('video/')
-                                      ? t.misskey.video
-                                      : file.type.startsWith('audio/')
-                                          ? t.misskey.audio
-                                          : null,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                              children: [
-                                if (dataSaver && file.size > 0) ...[
-                                  const TextSpan(text: ' '),
-                                  TextSpan(text: prettyBytes(file.size)),
-                                ],
-                              ],
-                            ),
-                          TextSpan(
-                            text:
-                                '\n${openMediaOnDoubleTap ? t.aria.doubleTapToShow : t.aria.tapToShow}',
-                          ),
-                        ],
-                      ),
-                      style:
-                          style.apply(color: Colors.white, fontSizeFactor: 0.8),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
-                ),
-              )
-            : Stack(
-                alignment: Alignment.center,
-                children: [
-                  Positioned.fill(
-                    child: switch ((
-                      file.type.split('/').first,
-                      defaultTargetPlatform
-                    )) {
-                      ('image', _) => _ImagePreview(
+                    Positioned.fill(
+                      child: switch ((
+                        file.type.split('/').first,
+                        defaultTargetPlatform,
+                      )) {
+                        ('image', _) => _ImagePreview(
                           account: account,
                           file: file,
                           files: files,
                           user: user,
                           fit: fit,
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => _MediaCardSheet(
-                              account: account,
-                              file: file,
-                              user: user,
-                              hideMedia: () => hide.value = true,
-                            ),
-                          ),
+                          onLongPress:
+                              () => showModalBottomSheet<void>(
+                                context: context,
+                                builder:
+                                    (context) => _MediaCardSheet(
+                                      account: account,
+                                      file: file,
+                                      user: user,
+                                      hideMedia: () => hide.value = true,
+                                    ),
+                              ),
                         ),
-                      (
-                        'video',
-                        TargetPlatform.android ||
-                            TargetPlatform.iOS ||
-                            TargetPlatform.macOS
-                      ) =>
-                        _VideoPreview(
-                          file: file,
-                          fit: fit,
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => _MediaCardSheet(
-                              account: account,
-                              file: file,
-                              user: user,
-                              hideMedia: () => hide.value = true,
-                            ),
-                          ),
-                        ),
-                      (
-                        'audio',
-                        TargetPlatform.android ||
-                            TargetPlatform.iOS ||
-                            TargetPlatform.macOS
-                      ) =>
-                        _AudioPreview(
-                          account: account,
-                          file: file,
-                          user: user,
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => _MediaCardSheet(
-                              account: account,
-                              file: file,
-                              user: user,
-                              hideMedia: () => hide.value = true,
-                            ),
-                          ),
-                        ),
-                      _ => _FilePreview(
-                          file: file,
-                          fit: fit,
-                          onLongPress: () => showModalBottomSheet<void>(
-                            context: context,
-                            builder: (context) => _MediaCardSheet(
-                              account: account,
-                              file: file,
-                              user: user,
-                              hideMedia: () => hide.value = true,
-                            ),
-                          ),
-                        ),
-                    },
-                  ),
-                  PositionedDirectional(
-                    start: 8.0,
-                    top: 8.0,
-                    child: DefaultTextStyle.merge(
-                      style: style.apply(
-                        color: colors.accentLighten,
-                        fontSizeFactor: 0.8,
-                      ),
-                      child: Column(
-                        children: [
-                          if (file.type case 'image/gif' || 'image/apng')
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: Colors.black45,
-                                  borderRadius: BorderRadius.circular(6.0),
+                        (
+                          'video',
+                          TargetPlatform.android ||
+                              TargetPlatform.iOS ||
+                              TargetPlatform.macOS,
+                        ) =>
+                          _VideoPreview(
+                            file: file,
+                            fit: fit,
+                            onLongPress:
+                                () => showModalBottomSheet<void>(
+                                  context: context,
+                                  builder:
+                                      (context) => _MediaCardSheet(
+                                        account: account,
+                                        file: file,
+                                        user: user,
+                                        hideMedia: () => hide.value = true,
+                                      ),
                                 ),
-                                child: const Padding(
-                                  padding: EdgeInsets.all(4.0),
-                                  child: Text('GIF'),
+                          ),
+                        (
+                          'audio',
+                          TargetPlatform.android ||
+                              TargetPlatform.iOS ||
+                              TargetPlatform.macOS,
+                        ) =>
+                          _AudioPreview(
+                            account: account,
+                            file: file,
+                            user: user,
+                            onLongPress:
+                                () => showModalBottomSheet<void>(
+                                  context: context,
+                                  builder:
+                                      (context) => _MediaCardSheet(
+                                        account: account,
+                                        file: file,
+                                        user: user,
+                                        hideMedia: () => hide.value = true,
+                                      ),
+                                ),
+                          ),
+                        _ => _FilePreview(
+                          file: file,
+                          fit: fit,
+                          onLongPress:
+                              () => showModalBottomSheet<void>(
+                                context: context,
+                                builder:
+                                    (context) => _MediaCardSheet(
+                                      account: account,
+                                      file: file,
+                                      user: user,
+                                      hideMedia: () => hide.value = true,
+                                    ),
+                              ),
+                        ),
+                      },
+                    ),
+                    PositionedDirectional(
+                      start: 8.0,
+                      top: 8.0,
+                      child: DefaultTextStyle.merge(
+                        style: style.apply(
+                          color: colors.accentLighten,
+                          fontSizeFactor: 0.8,
+                        ),
+                        child: Column(
+                          children: [
+                            if (file.type case 'image/gif' || 'image/apng')
+                              Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: Colors.black45,
+                                    borderRadius: BorderRadius.circular(6.0),
+                                  ),
+                                  child: const Padding(
+                                    padding: EdgeInsets.all(4.0),
+                                    child: Text('GIF'),
+                                  ),
                                 ),
                               ),
-                            ),
-                          if (file case DriveFile(:final comment?))
-                            if (comment.isNotEmpty)
+                            if (file case DriveFile(:final comment?))
+                              if (comment.isNotEmpty)
+                                Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: DecoratedBox(
+                                    decoration: BoxDecoration(
+                                      color: Colors.black45,
+                                      borderRadius: BorderRadius.circular(6.0),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Tooltip(
+                                        message: comment,
+                                        child: const Text('ALT'),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                            if (file.isSensitive)
                               Padding(
                                 padding: const EdgeInsets.all(2.0),
                                 child: DecoratedBox(
@@ -349,83 +384,68 @@ class MediaCard extends HookConsumerWidget {
                                   child: Padding(
                                     padding: const EdgeInsets.all(4.0),
                                     child: Tooltip(
-                                      message: comment,
-                                      child: const Text('ALT'),
+                                      message: t.misskey.sensitive,
+                                      child: Icon(
+                                        Icons.warning_amber,
+                                        color: colors.warn,
+                                        size: style.lineHeight * 0.8,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
-                          if (file.isSensitive)
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: Colors.black45,
-                                  borderRadius: BorderRadius.circular(6.0),
-                                ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(4.0),
-                                  child: Tooltip(
-                                    message: t.misskey.sensitive,
-                                    child: Icon(
-                                      Icons.warning_amber,
-                                      color: colors.warn,
-                                      size: style.lineHeight * 0.8,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  PositionedDirectional(
-                    top: 8.0,
-                    end: 8.0,
-                    child: Opacity(
-                      opacity: 0.5,
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          iconSize: 18.0,
-                          minimumSize: Size.zero,
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          foregroundColor: colors.accentLighten,
-                          backgroundColor: colors.fg,
-                        ),
-                        onPressed: () => hide.value = true,
-                        icon: const Icon(Icons.visibility_off),
-                      ),
-                    ),
-                  ),
-                  PositionedDirectional(
-                    end: 8.0,
-                    bottom: 8.0,
-                    child: Opacity(
-                      opacity: 0.5,
-                      child: IconButton(
-                        style: IconButton.styleFrom(
-                          iconSize: 18.0,
-                          minimumSize: Size.zero,
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                          foregroundColor: colors.bg,
-                          backgroundColor: colors.fg,
-                        ),
-                        onPressed: () => showModalBottomSheet<void>(
-                          context: context,
-                          builder: (context) => _MediaCardSheet(
-                            account: account,
-                            file: file,
-                            user: user,
-                            hideMedia: () => hide.value = true,
+                    PositionedDirectional(
+                      top: 8.0,
+                      end: 8.0,
+                      child: Opacity(
+                        opacity: 0.5,
+                        child: IconButton(
+                          style: IconButton.styleFrom(
+                            iconSize: 18.0,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            foregroundColor: colors.accentLighten,
+                            backgroundColor: colors.fg,
                           ),
+                          onPressed: () => hide.value = true,
+                          icon: const Icon(Icons.visibility_off),
                         ),
-                        icon: const Icon(Icons.more_horiz),
                       ),
                     ),
-                  ),
-                ],
-              ),
+                    PositionedDirectional(
+                      end: 8.0,
+                      bottom: 8.0,
+                      child: Opacity(
+                        opacity: 0.5,
+                        child: IconButton(
+                          style: IconButton.styleFrom(
+                            iconSize: 18.0,
+                            minimumSize: Size.zero,
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            foregroundColor: colors.bg,
+                            backgroundColor: colors.fg,
+                          ),
+                          onPressed:
+                              () => showModalBottomSheet<void>(
+                                context: context,
+                                builder:
+                                    (context) => _MediaCardSheet(
+                                      account: account,
+                                      file: file,
+                                      user: user,
+                                      hideMedia: () => hide.value = true,
+                                    ),
+                              ),
+                          icon: const Icon(Icons.more_horiz),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
       ),
     );
   }
@@ -461,16 +481,19 @@ class _ImagePreview extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final loadRawImage = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.loadRawImages),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.loadRawImages,
+      ),
     );
     final disableShowingAnimatedImages = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.disableShowingAnimatedImages),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.disableShowingAnimatedImages,
+      ),
     );
-    final url = loadRawImage
-        ? file.url
-        : disableShowingAnimatedImages
+    final url =
+        loadRawImage
+            ? file.url
+            : disableShowingAnimatedImages
             ? ref
                 .watch(staticImageUrlProvider(account.host, file.url))
                 ?.toString()
@@ -481,13 +504,10 @@ class _ImagePreview extends ConsumerWidget {
       onTap: () => _openImage(context),
       onDoubleTap: () => _openImage(context),
       onLongPress: onLongPress,
-      child: url != null
-          ? ImageWidget(
-              url: url,
-              blurHash: file.blurhash,
-              fit: fit,
-            )
-          : blurHash != null
+      child:
+          url != null
+              ? ImageWidget(url: url, blurHash: file.blurhash, fit: fit)
+              : blurHash != null
               ? BlurHash(hash: blurHash)
               : const SizedBox.shrink(),
     );
@@ -495,11 +515,7 @@ class _ImagePreview extends ConsumerWidget {
 }
 
 class _VideoPreview extends StatelessWidget {
-  const _VideoPreview({
-    required this.file,
-    this.fit,
-    this.onLongPress,
-  });
+  const _VideoPreview({required this.file, this.fit, this.onLongPress});
 
   final DriveFile file;
   final BoxFit? fit;
@@ -522,11 +538,7 @@ class _VideoPreview extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           if (file case DriveFile(:final thumbnailUrl?))
-            ImageWidget(
-              url: thumbnailUrl,
-              blurHash: file.blurhash,
-              fit: fit,
-            ),
+            ImageWidget(url: thumbnailUrl, blurHash: file.blurhash, fit: fit),
           DecoratedBox(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primary,
@@ -563,11 +575,8 @@ class _AudioPreview extends StatelessWidget {
   void _openAudio(BuildContext context) {
     showDialog<void>(
       context: context,
-      builder: (context) => AudioDialog(
-        account: account,
-        file: file,
-        user: user,
-      ),
+      builder:
+          (context) => AudioDialog(account: account, file: file, user: user),
     );
   }
 
@@ -598,11 +607,7 @@ class _AudioPreview extends StatelessWidget {
 }
 
 class _FilePreview extends ConsumerWidget {
-  const _FilePreview({
-    required this.file,
-    this.fit,
-    this.onLongPress,
-  });
+  const _FilePreview({required this.file, this.fit, this.onLongPress});
 
   final DriveFile file;
   final BoxFit? fit;
@@ -622,11 +627,7 @@ class _FilePreview extends ConsumerWidget {
         alignment: Alignment.center,
         children: [
           if (file case DriveFile(:final thumbnailUrl?))
-            ImageWidget(
-              url: thumbnailUrl,
-              blurHash: file.blurhash,
-              fit: fit,
-            )
+            ImageWidget(url: thumbnailUrl, blurHash: file.blurhash, fit: fit)
           else if (file case DriveFile(:final blurhash?))
             BlurHash(hash: blurhash),
           DecoratedBox(
@@ -678,8 +679,9 @@ class _MediaCardSheet extends ConsumerWidget {
     await futureWithDialog(
       ref.context,
       Future(() async {
-        final file =
-            await ref.read(cacheManagerProvider).getSingleFile(this.file.url);
+        final file = await ref
+            .read(cacheManagerProvider)
+            .getSingleFile(this.file.url);
         if (isImage) {
           await Gal.putImage(file.path);
         } else {
@@ -739,8 +741,10 @@ class _MediaCardSheet extends ConsumerWidget {
           title: Text(t.aria.openInBrowser),
           onTap: () => launchUrl(ref, Uri.parse(file.url)),
         ),
-        if (user case User(:final username, host: null)
-            when !account.isGuest && account.username == username)
+        if (user case User(
+          :final username,
+          host: null,
+        ) when !account.isGuest && account.username == username)
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: Text(t.misskey.fileViewer_.title),

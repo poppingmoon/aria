@@ -12,8 +12,9 @@ class RecentlyUsedUsersNotifier extends _$RecentlyUsedUsersNotifier {
   @override
   Future<List<UserDetailed>> build(Account account) async {
     final userIds = ref.watch(
-      accountSettingsNotifierProvider(account)
-          .select((settings) => settings.recentlyUsedUsers),
+      accountSettingsNotifierProvider(
+        account,
+      ).select((settings) => settings.recentlyUsedUsers),
     );
     if (userIds.isEmpty) {
       return [];
@@ -33,9 +34,10 @@ class RecentlyUsedUsersNotifier extends _$RecentlyUsedUsersNotifier {
 
   Future<void> add(User user) async {
     await _save(
-      {user.id, ...?state.valueOrNull?.map((user) => user.id)}
-          .take(16)
-          .toList(),
+      {
+        user.id,
+        ...?state.valueOrNull?.map((user) => user.id),
+      }.take(16).toList(),
     );
   }
 

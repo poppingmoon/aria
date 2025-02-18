@@ -11,8 +11,9 @@ class PostFormHashtagsNotifier extends _$PostFormHashtagsNotifier {
   @override
   List<String> build(Account account) {
     return ref.watch(
-      accountSettingsNotifierProvider(account)
-          .select((settings) => settings.postFormHashtags),
+      accountSettingsNotifierProvider(
+        account,
+      ).select((settings) => settings.postFormHashtags),
     );
   }
 

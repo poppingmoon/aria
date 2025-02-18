@@ -109,17 +109,19 @@ class TimelineListView extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = nested
-        ? PrimaryScrollController.of(context)
-        : ref.watch(timelineScrollControllerProvider(tabSettings));
+    final controller =
+        nested
+            ? PrimaryScrollController.of(context)
+            : ref.watch(timelineScrollControllerProvider(tabSettings));
     if (tabSettings.tabType == TabType.notifications) {
       return NotificationsListView(
         account: tabSettings.account,
         controller: controller,
       );
     }
-    final lastViewedNoteId =
-        ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings));
+    final lastViewedNoteId = ref.watch(
+      timelineLastViewedNoteIdNotifierProvider(tabSettings),
+    );
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
     final centerKey = useMemoized(() => GlobalKey(), []);
     final hasUnread = useState(false);
@@ -128,70 +130,69 @@ class TimelineListView extends HookConsumerWidget {
     );
     final hasNextNote = nextNotes.valueOrNull?.items.isNotEmpty ?? false;
     final isLatestLoaded = nextNotes.valueOrNull?.isLastLoaded ?? false;
-    final previousNotes = ref
-        .watch(timelineNotesNotifierProvider(tabSettings, untilId: centerId));
+    final previousNotes = ref.watch(
+      timelineNotesNotifierProvider(tabSettings, untilId: centerId),
+    );
     final hasPreviousNote =
         previousNotes.valueOrNull?.items.isNotEmpty ?? false;
     final showGap = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showGapBetweenNotesInTimeline),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showGapBetweenNotesInTimeline,
+      ),
     );
     final showPopup = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showPopupOnNewNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showPopupOnNewNote,
+      ),
     );
     final vibrateOnNote = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.vibrateNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.vibrateNote,
+      ),
     );
     final newNoteDividerIndex = useState<int?>(null);
-    useEffect(
-      () {
-        if (lastViewedNoteId != null) {
-          final index = getNewNoteDividerIndex(
-            lastViewedNoteId: lastViewedNoteId,
-            nextNotes: nextNotes.valueOrNull?.items,
-            previousNotes: previousNotes.valueOrNull?.items,
-            newNoteDividerIndex: newNoteDividerIndex.value,
-          );
-          if (index != null) {
-            newNoteDividerIndex.value = index;
-          }
+    useEffect(() {
+      if (lastViewedNoteId != null) {
+        final index = getNewNoteDividerIndex(
+          lastViewedNoteId: lastViewedNoteId,
+          nextNotes: nextNotes.valueOrNull?.items,
+          previousNotes: previousNotes.valueOrNull?.items,
+          newNoteDividerIndex: newNoteDividerIndex.value,
+        );
+        if (index != null) {
+          newNoteDividerIndex.value = index;
         }
-        return;
-      },
-      [nextNotes.valueOrNull?.items, previousNotes.valueOrNull?.items],
-    );
+      }
+      return;
+    }, [nextNotes.valueOrNull?.items, previousNotes.valueOrNull?.items]);
     final keepAnimation = useState(true);
     final isAtTop = useState(false);
     final isAtBottom = useState(false);
     if (!tabSettings.disableStreaming) {
       ref.listen(incomingMessageProvider(tabSettings.account), (_, __) {});
-      final notifier =
-          ref.watch(timelineStreamNotifierProvider(tabSettings).notifier);
-      useEffect(
-        () {
-          void callback() {
-            if (controller.position.userScrollDirection ==
-                ScrollDirection.reverse) {
-              keepAnimation.value = false;
-            } else if (controller.position.extentBefore == 0) {
-              keepAnimation.value = true;
-              hasUnread.value = false;
-            }
-          }
-
-          if (centerId == null || isLatestLoaded) {
-            notifier.connect();
-            controller.addListener(callback);
-          }
-          return () {
-            notifier.disconnect();
-            controller.removeListener(callback);
-          };
-        },
-        [centerId, isLatestLoaded],
+      final notifier = ref.watch(
+        timelineStreamNotifierProvider(tabSettings).notifier,
       );
+      useEffect(() {
+        void callback() {
+          if (controller.position.userScrollDirection ==
+              ScrollDirection.reverse) {
+            keepAnimation.value = false;
+          } else if (controller.position.extentBefore == 0) {
+            keepAnimation.value = true;
+            hasUnread.value = false;
+          }
+        }
+
+        if (centerId == null || isLatestLoaded) {
+          notifier.connect();
+          controller.addListener(callback);
+        }
+        return () {
+          notifier.disconnect();
+          controller.removeListener(callback);
+        };
+      }, [centerId, isLatestLoaded]);
       ref.listen(timelineStreamNotifierProvider(tabSettings), (_, next) {
         next.whenData((note) {
           if (centerId == null || isLatestLoaded) {
@@ -210,18 +211,21 @@ class TimelineListView extends HookConsumerWidget {
               if (controller.offset < 400.0) {
                 ref
                     .read(
-                      timelineLastViewedNoteIdNotifierProvider(tabSettings)
-                          .notifier,
+                      timelineLastViewedNoteIdNotifierProvider(
+                        tabSettings,
+                      ).notifier,
                     )
                     .save(note.id);
-                Future<void>.delayed(const Duration(milliseconds: 100),
-                    () async {
-                  await controller.scrollToTop();
-                  await Future<void>.delayed(
-                    const Duration(milliseconds: 100),
-                    controller.scrollToTop,
-                  );
-                });
+                Future<void>.delayed(
+                  const Duration(milliseconds: 100),
+                  () async {
+                    await controller.scrollToTop();
+                    await Future<void>.delayed(
+                      const Duration(milliseconds: 100),
+                      controller.scrollToTop,
+                    );
+                  },
+                );
               } else {
                 keepAnimation.value = false;
                 hasUnread.value = true;
@@ -233,92 +237,86 @@ class TimelineListView extends HookConsumerWidget {
         });
       });
     }
-    useEffect(
-      () {
-        void callback() {
-          if (centerId != null) {
-            if (controller.position.extentBefore <
-                infiniteScrollExtentThreshold) {
-              if (!isAtTop.value) {
-                ref
-                    .read(
-                      timelineNotesAfterNoteNotifierProvider(
-                        tabSettings,
-                        sinceId: centerId,
-                      ).notifier,
-                    )
-                    .loadMore();
-                isAtTop.value = true;
-              }
-            } else {
-              isAtTop.value = false;
-            }
-          }
-          if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
-            if (!isAtBottom.value) {
+    useEffect(() {
+      void callback() {
+        if (centerId != null) {
+          if (controller.position.extentBefore <
+              infiniteScrollExtentThreshold) {
+            if (!isAtTop.value) {
               ref
                   .read(
-                    timelineNotesNotifierProvider(
+                    timelineNotesAfterNoteNotifierProvider(
                       tabSettings,
-                      untilId: centerId,
+                      sinceId: centerId,
                     ).notifier,
                   )
                   .loadMore();
-              isAtBottom.value = true;
+              isAtTop.value = true;
             }
           } else {
-            isAtBottom.value = false;
+            isAtTop.value = false;
           }
         }
-
-        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
-          controller.addListener(callback);
-        }
-        return () => controller.removeListener(callback);
-      },
-      [centerId],
-    );
-    useEffect(
-      () {
-        void callback() {
-          if (controller.position.extentBefore <
-              infiniteScrollExtentThreshold) {
-            final nextNotes = ref
+        if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
+          if (!isAtBottom.value) {
+            ref
                 .read(
-                  timelineNotesAfterNoteNotifierProvider(
+                  timelineNotesNotifierProvider(
                     tabSettings,
-                    sinceId: centerId,
-                  ),
+                    untilId: centerId,
+                  ).notifier,
                 )
-                .valueOrNull
-                ?.items;
-            final latestNoteId = nextNotes?.firstOrNull?.id;
-            if (latestNoteId != null &&
-                (lastViewedNoteId == null ||
-                    lastViewedNoteId.compareTo(latestNoteId) < 0)) {
+                .loadMore();
+            isAtBottom.value = true;
+          }
+        } else {
+          isAtBottom.value = false;
+        }
+      }
+
+      if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+        controller.addListener(callback);
+      }
+      return () => controller.removeListener(callback);
+    }, [centerId]);
+    useEffect(() {
+      void callback() {
+        if (controller.position.extentBefore < infiniteScrollExtentThreshold) {
+          final nextNotes =
               ref
                   .read(
-                    timelineLastViewedNoteIdNotifierProvider(
+                    timelineNotesAfterNoteNotifierProvider(
                       tabSettings,
-                    ).notifier,
+                      sinceId: centerId,
+                    ),
                   )
-                  .save(latestNoteId);
-            }
+                  .valueOrNull
+                  ?.items;
+          final latestNoteId = nextNotes?.firstOrNull?.id;
+          if (latestNoteId != null &&
+              (lastViewedNoteId == null ||
+                  lastViewedNoteId.compareTo(latestNoteId) < 0)) {
+            ref
+                .read(
+                  timelineLastViewedNoteIdNotifierProvider(
+                    tabSettings,
+                  ).notifier,
+                )
+                .save(latestNoteId);
           }
         }
+      }
 
-        if (tabSettings.keepPosition) {
-          controller.addListener(callback);
-        }
-        return () => controller.removeListener(callback);
-      },
-      [centerId],
-    );
+      if (tabSettings.keepPosition) {
+        controller.addListener(callback);
+      }
+      return () => controller.removeListener(callback);
+    }, [centerId]);
 
     return RefreshIndicator(
       onRefresh: () => reloadTimeline(ref, tabSettings),
-      notificationPredicate: (_) =>
-          nextNotes.valueOrNull?.isLastLoaded ?? false,
+      notificationPredicate:
+          (_) => nextNotes.valueOrNull?.isLastLoaded ?? false,
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
@@ -333,14 +331,15 @@ class TimelineListView extends HookConsumerWidget {
                     width: maxContentWidth,
                     child: PaginationBottomWidget(
                       paginationState: nextNotes,
-                      loadMore: () => ref
-                          .read(
-                            timelineNotesAfterNoteNotifierProvider(
-                              tabSettings,
-                              sinceId: centerId,
-                            ).notifier,
-                          )
-                          .loadMore(skipError: true),
+                      loadMore:
+                          () => ref
+                              .read(
+                                timelineNotesAfterNoteNotifierProvider(
+                                  tabSettings,
+                                  sinceId: centerId,
+                                ).notifier,
+                              )
+                              .loadMore(skipError: true),
                       reversed: true,
                     ),
                   ),
@@ -352,8 +351,10 @@ class TimelineListView extends HookConsumerWidget {
                     final note = notes[notes.length - index - 1];
                     final isTop = index == notes.length - 1;
                     final isBottom = index == 0 && !hasPreviousNote;
-                    final (isBelowNewNote, isAboveNewNote) =
-                        switch (newNoteDividerIndex.value) {
+                    final (
+                      isBelowNewNote,
+                      isAboveNewNote,
+                    ) = switch (newNoteDividerIndex.value) {
                       final i? => (index == i - 1, index == i),
                       _ => (false, false),
                     };
@@ -382,50 +383,64 @@ class TimelineListView extends HookConsumerWidget {
                           tabSettings: tabSettings,
                           noteId: note.id,
                           focusPostForm: focusPostForm,
-                          margin: showGap
-                              ? const EdgeInsets.symmetric(vertical: 4.0)
-                              : EdgeInsets.zero,
-                          borderRadius: showGap
-                              ? BorderRadius.circular(8.0)
-                              : BorderRadius.vertical(
-                                  top: isTop || isBelowNewNote
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                                  bottom: isBottom || isAboveNewNote
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                                ),
+                          margin:
+                              showGap
+                                  ? const EdgeInsets.symmetric(vertical: 4.0)
+                                  : EdgeInsets.zero,
+                          borderRadius:
+                              showGap
+                                  ? BorderRadius.circular(8.0)
+                                  : BorderRadius.vertical(
+                                    top:
+                                        isTop || isBelowNewNote
+                                            ? const Radius.circular(8.0)
+                                            : Radius.zero,
+                                    bottom:
+                                        isBottom || isAboveNewNote
+                                            ? const Radius.circular(8.0)
+                                            : Radius.zero,
+                                  ),
                         ),
                       ),
                     );
                   },
-                  separatorBuilder: (context, index) => !showGap
-                      ? Center(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                            width: maxContentWidth,
-                            child: newNoteDividerIndex.value != null &&
-                                    index == newNoteDividerIndex.value! - 1
-                                ? _NewNotesDivider(key: lastViewedAtKey)
-                                : const Divider(height: 1.0),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
+                  separatorBuilder:
+                      (context, index) =>
+                          !showGap
+                              ? Center(
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  width: maxContentWidth,
+                                  child:
+                                      newNoteDividerIndex.value != null &&
+                                              index ==
+                                                  newNoteDividerIndex.value! - 1
+                                          ? _NewNotesDivider(
+                                            key: lastViewedAtKey,
+                                          )
+                                          : const Divider(height: 1.0),
+                                ),
+                              )
+                              : const SizedBox.shrink(),
                   itemCount: notes.length,
                 ),
               SliverToBoxAdapter(
                 key: centerKey,
-                child: hasNextNote && hasPreviousNote
-                    ? Center(
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                          width: maxContentWidth,
-                          child: newNoteDividerIndex.value == 0
-                              ? _NewNotesDivider(key: lastViewedAtKey)
-                              : const Divider(height: 1.0),
-                        ),
-                      )
-                    : null,
+                child:
+                    hasNextNote && hasPreviousNote
+                        ? Center(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                            width: maxContentWidth,
+                            child:
+                                newNoteDividerIndex.value == 0
+                                    ? _NewNotesDivider(key: lastViewedAtKey)
+                                    : const Divider(height: 1.0),
+                          ),
+                        )
+                        : null,
               ),
               if (previousNotes.valueOrNull?.items case final notes?)
                 SliverList.separated(
@@ -433,8 +448,10 @@ class TimelineListView extends HookConsumerWidget {
                     final note = notes[index];
                     final isTop = index == 0 && !hasNextNote;
                     final isBottom = index == notes.length - 1;
-                    final (isBelowNewNote, isAboveNewNote) =
-                        switch (newNoteDividerIndex.value) {
+                    final (
+                      isBelowNewNote,
+                      isAboveNewNote,
+                    ) = switch (newNoteDividerIndex.value) {
                       final i? => (index == -i, index == -i - 1),
                       _ => (false, false),
                     };
@@ -463,35 +480,48 @@ class TimelineListView extends HookConsumerWidget {
                           tabSettings: tabSettings,
                           noteId: note.id,
                           focusPostForm: focusPostForm,
-                          margin: showGap
-                              ? const EdgeInsets.symmetric(vertical: 4.0)
-                              : EdgeInsets.zero,
-                          borderRadius: showGap
-                              ? BorderRadius.circular(8.0)
-                              : BorderRadius.vertical(
-                                  top: isTop || isBelowNewNote
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                                  bottom: isBottom || isAboveNewNote
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                                ),
+                          margin:
+                              showGap
+                                  ? const EdgeInsets.symmetric(vertical: 4.0)
+                                  : EdgeInsets.zero,
+                          borderRadius:
+                              showGap
+                                  ? BorderRadius.circular(8.0)
+                                  : BorderRadius.vertical(
+                                    top:
+                                        isTop || isBelowNewNote
+                                            ? const Radius.circular(8.0)
+                                            : Radius.zero,
+                                    bottom:
+                                        isBottom || isAboveNewNote
+                                            ? const Radius.circular(8.0)
+                                            : Radius.zero,
+                                  ),
                         ),
                       ),
                     );
                   },
-                  separatorBuilder: (context, index) => !showGap
-                      ? Center(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                            width: maxContentWidth,
-                            child: newNoteDividerIndex.value != null &&
-                                    index == -newNoteDividerIndex.value! - 1
-                                ? _NewNotesDivider(key: lastViewedAtKey)
-                                : const Divider(height: 0.0),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
+                  separatorBuilder:
+                      (context, index) =>
+                          !showGap
+                              ? Center(
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(
+                                    horizontal: 8.0,
+                                  ),
+                                  width: maxContentWidth,
+                                  child:
+                                      newNoteDividerIndex.value != null &&
+                                              index ==
+                                                  -newNoteDividerIndex.value! -
+                                                      1
+                                          ? _NewNotesDivider(
+                                            key: lastViewedAtKey,
+                                          )
+                                          : const Divider(height: 0.0),
+                                ),
+                              )
+                              : const SizedBox.shrink(),
                   itemCount: notes.length,
                 ),
               SliverToBoxAdapter(
@@ -502,14 +532,15 @@ class TimelineListView extends HookConsumerWidget {
                     child: PaginationBottomWidget(
                       paginationState: previousNotes,
                       noItemsLabel: t.misskey.noNotes,
-                      loadMore: () => ref
-                          .read(
-                            timelineNotesNotifierProvider(
-                              tabSettings,
-                              untilId: centerId,
-                            ).notifier,
-                          )
-                          .loadMore(skipError: true),
+                      loadMore:
+                          () => ref
+                              .read(
+                                timelineNotesNotifierProvider(
+                                  tabSettings,
+                                  untilId: centerId,
+                                ).notifier,
+                              )
+                              .loadMore(skipError: true),
                       height: 120.0,
                     ),
                   ),
@@ -572,12 +603,8 @@ class _NewNotesDivider extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
             t.aria.newNotes,
-            style: DefaultTextStyle.of(context)
-                .style
-                .apply(
-                  color: color,
-                  fontSizeFactor: 0.9,
-                )
+            style: DefaultTextStyle.of(context).style
+                .apply(color: color, fontSizeFactor: 0.9)
                 .copyWith(fontWeight: FontWeight.bold),
           ),
         ),

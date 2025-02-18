@@ -56,17 +56,18 @@ Future<ProviderContainer> setupWidget(
           routes: [
             GoRoute(
               path: '/',
-              builder: (_, __) => Scaffold(
-                body: NoteWidget(
-                  account: account,
-                  noteId: noteId,
-                  withHardMute: withHardMute,
-                  focusPostForm: focusPostForm,
-                  note: note,
-                  showFooter: showFooter,
-                  backgroundColor: backgroundColor,
-                ),
-              ),
+              builder:
+                  (_, __) => Scaffold(
+                    body: NoteWidget(
+                      account: account,
+                      noteId: noteId,
+                      withHardMute: withHardMute,
+                      focusPostForm: focusPostForm,
+                      note: note,
+                      showFooter: showFooter,
+                      backgroundColor: backgroundColor,
+                    ),
+                  ),
             ),
           ],
         ),
@@ -75,10 +76,12 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container =
-      ProviderScope.containerOf(tester.element(find.byType(NoteWidget)));
-  await tester
-      .runAsync(() => container.read(iNotifierProvider(account).future));
+  final container = ProviderScope.containerOf(
+    tester.element(find.byType(NoteWidget)),
+  );
+  await tester.runAsync(
+    () => container.read(iNotifierProvider(account).future),
+  );
   await tester.runAsync(
     () => container.read(metaNotifierProvider(account.host).future),
   );
@@ -89,22 +92,16 @@ void main() {
   group('mute', () {
     testWidgets('should not show a note if not stored', (tester) async {
       const account = Account(host: 'misskey.tld');
-      await setupWidget(
-        tester,
-        account: account,
-        noteId: 'test',
-      );
+      await setupWidget(tester, account: account, noteId: 'test');
       await tester.pumpAndSettle();
       expect(find.byType(Text), findsNothing);
     });
 
-    testWidgets('should not show a note if the renote target is not stored',
-        (tester) async {
+    testWidgets('should not show a note if the renote target is not stored', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        renoteId: 'renote',
-      );
+      final note = dummyNote.copyWith(id: 'test', renoteId: 'renote');
       final container = await setupWidget(
         tester,
         account: account,
@@ -147,12 +144,10 @@ void main() {
       );
       await tester.runAsync(
         () => container
-            .read(
-          mutedWordsNotifierProvider(account, hardMute: true).notifier,
-        )
+            .read(mutedWordsNotifierProvider(account, hardMute: true).notifier)
             .updateMutedWords(const [
-          MuteWord(content: ['mute']),
-        ]),
+              MuteWord(content: ['mute']),
+            ]),
       );
       await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsNothing);
@@ -193,12 +188,10 @@ void main() {
       );
       await tester.runAsync(
         () => container
-            .read(
-          mutedWordsNotifierProvider(account, hardMute: true).notifier,
-        )
+            .read(mutedWordsNotifierProvider(account, hardMute: true).notifier)
             .updateMutedWords(const [
-          MuteWord(content: ['mute']),
-        ]),
+              MuteWord(content: ['mute']),
+            ]),
       );
       await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsNothing);
@@ -240,8 +233,8 @@ void main() {
         () => container
             .read(mutedWordsNotifierProvider(account).notifier)
             .updateMutedWords(const [
-          MuteWord(content: ['mute']),
-        ]),
+              MuteWord(content: ['mute']),
+            ]),
       );
       await tester.pumpAndSettle();
       expect(find.text('this note should be muted'), findsNothing);
@@ -305,35 +298,37 @@ void main() {
     });
 
     testWidgets(
-        'should be public note background color if visibility is public',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(id: 'test');
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setPublicNoteBackgroundColor(Colors.amber);
-      await tester.pumpAndSettle();
-      expect(
-        tester
-            .firstWidget<Material>(
-              find.descendant(
-                of: find.byType(NoteWidget),
-                matching: find.byType(Material),
-              ),
-            )
-            .color,
-        Colors.amber,
-      );
-    });
+      'should be public note background color if visibility is public',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(id: 'test');
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await container
+            .read(generalSettingsNotifierProvider.notifier)
+            .setPublicNoteBackgroundColor(Colors.amber);
+        await tester.pumpAndSettle();
+        expect(
+          tester
+              .firstWidget<Material>(
+                find.descendant(
+                  of: find.byType(NoteWidget),
+                  matching: find.byType(Material),
+                ),
+              )
+              .color,
+          Colors.amber,
+        );
+      },
+    );
 
-    testWidgets('should be home note background color if visibility is home',
-        (tester) async {
+    testWidgets('should be home note background color if visibility is home', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -363,69 +358,72 @@ void main() {
     });
 
     testWidgets(
-        'should be followers note background color if visibility is followers',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        visibility: NoteVisibility.followers,
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setFollowersNoteBackgroundColor(Colors.amber);
-      await tester.pumpAndSettle();
-      expect(
-        tester
-            .firstWidget<Material>(
-              find.descendant(
-                of: find.byType(NoteWidget),
-                matching: find.byType(Material),
-              ),
-            )
-            .color,
-        Colors.amber,
-      );
-    });
+      'should be followers note background color if visibility is followers',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(
+          id: 'test',
+          visibility: NoteVisibility.followers,
+        );
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await container
+            .read(generalSettingsNotifierProvider.notifier)
+            .setFollowersNoteBackgroundColor(Colors.amber);
+        await tester.pumpAndSettle();
+        expect(
+          tester
+              .firstWidget<Material>(
+                find.descendant(
+                  of: find.byType(NoteWidget),
+                  matching: find.byType(Material),
+                ),
+              )
+              .color,
+          Colors.amber,
+        );
+      },
+    );
 
     testWidgets(
-        'should be specified note background color if visibility is specified',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        visibility: NoteVisibility.specified,
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setSpecifiedNoteBackgroundColor(Colors.amber);
-      await tester.pumpAndSettle();
-      expect(
-        tester
-            .firstWidget<Material>(
-              find.descendant(
-                of: find.byType(NoteWidget),
-                matching: find.byType(Material),
-              ),
-            )
-            .color,
-        Colors.amber,
-      );
-    });
+      'should be specified note background color if visibility is specified',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(
+          id: 'test',
+          visibility: NoteVisibility.specified,
+        );
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await container
+            .read(generalSettingsNotifierProvider.notifier)
+            .setSpecifiedNoteBackgroundColor(Colors.amber);
+        await tester.pumpAndSettle();
+        expect(
+          tester
+              .firstWidget<Material>(
+                find.descendant(
+                  of: find.byType(NoteWidget),
+                  matching: find.byType(Material),
+                ),
+              )
+              .color,
+          Colors.amber,
+        );
+      },
+    );
 
-    testWidgets('should be panel color if visibility is unknown',
-        (tester) async {
+    testWidgets('should be panel color if visibility is unknown', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test', visibility: null);
       final container = await setupWidget(
@@ -504,8 +502,9 @@ void main() {
         expect(find.byType(EmojiPicker), findsNothing);
       });
 
-      testWidgets('should open a note page if action type is expand',
-          (tester) async {
+      testWidgets('should open a note page if action type is expand', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -525,8 +524,9 @@ void main() {
         await tester.pumpAndSettle();
       });
 
-      testWidgets('should open a note sheet if action type is menu',
-          (tester) async {
+      testWidgets('should open a note sheet if action type is menu', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -546,28 +546,30 @@ void main() {
       });
 
       testWidgets(
-          'should not show an emoji picker if action type is reaction and guest',
-          (tester) async {
-        const account = Account(host: 'misskey.tld');
-        final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
-          tester,
-          account: account,
-          noteId: note.id,
-        );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteTapAction(NoteActionType.reaction);
-        await tester.pumpAndSettle();
-        await tester.tap(find.text('text'));
-        await tester.pump(kDoubleTapTimeout);
-        await tester.pumpAndSettle();
-        expect(find.byType(EmojiPicker), findsNothing);
-      });
+        'should not show an emoji picker if action type is reaction and guest',
+        (tester) async {
+          const account = Account(host: 'misskey.tld');
+          final note = dummyNote.copyWith(id: 'test', text: 'text');
+          final container = await setupWidget(
+            tester,
+            account: account,
+            noteId: note.id,
+          );
+          container.read(notesNotifierProvider(account).notifier).add(note);
+          await container
+              .read(generalSettingsNotifierProvider.notifier)
+              .setNoteTapAction(NoteActionType.reaction);
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('text'));
+          await tester.pump(kDoubleTapTimeout);
+          await tester.pumpAndSettle();
+          expect(find.byType(EmojiPicker), findsNothing);
+        },
+      );
 
-      testWidgets('should show an emoji picker if action type is reaction',
-          (tester) async {
+      testWidgets('should show an emoji picker if action type is reaction', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -631,8 +633,9 @@ void main() {
         expect(find.byType(EmojiPicker), findsNothing);
       });
 
-      testWidgets('should open a note page if action type is expand',
-          (tester) async {
+      testWidgets('should open a note page if action type is expand', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -650,8 +653,9 @@ void main() {
         expect(find.textContaining('/misskey.tld/notes/test'), findsOne);
       });
 
-      testWidgets('should open a note sheet if action type is menu',
-          (tester) async {
+      testWidgets('should open a note sheet if action type is menu', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -670,27 +674,29 @@ void main() {
       });
 
       testWidgets(
-          'should not show an emoji picker if action type is reaction and guest',
-          (tester) async {
-        const account = Account(host: 'misskey.tld');
-        final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
-          tester,
-          account: account,
-          noteId: note.id,
-        );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteLongPressAction(NoteActionType.reaction);
-        await tester.pumpAndSettle();
-        await tester.longPress(find.text('text'));
-        await tester.pumpAndSettle();
-        expect(find.byType(EmojiPicker), findsNothing);
-      });
+        'should not show an emoji picker if action type is reaction and guest',
+        (tester) async {
+          const account = Account(host: 'misskey.tld');
+          final note = dummyNote.copyWith(id: 'test', text: 'text');
+          final container = await setupWidget(
+            tester,
+            account: account,
+            noteId: note.id,
+          );
+          container.read(notesNotifierProvider(account).notifier).add(note);
+          await container
+              .read(generalSettingsNotifierProvider.notifier)
+              .setNoteLongPressAction(NoteActionType.reaction);
+          await tester.pumpAndSettle();
+          await tester.longPress(find.text('text'));
+          await tester.pumpAndSettle();
+          expect(find.byType(EmojiPicker), findsNothing);
+        },
+      );
 
-      testWidgets('should show an emoji picker if action type is reaction',
-          (tester) async {
+      testWidgets('should show an emoji picker if action type is reaction', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -755,8 +761,9 @@ void main() {
         expect(find.byType(EmojiPicker), findsNothing);
       });
 
-      testWidgets('should open a note page if action type is expand',
-          (tester) async {
+      testWidgets('should open a note page if action type is expand', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -777,8 +784,9 @@ void main() {
         await tester.pumpAndSettle();
       });
 
-      testWidgets('should open a note sheet if action type is menu',
-          (tester) async {
+      testWidgets('should open a note sheet if action type is menu', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -799,29 +807,31 @@ void main() {
       });
 
       testWidgets(
-          'should not show an emoji picker if action type is reaction and guest',
-          (tester) async {
-        const account = Account(host: 'misskey.tld');
-        final note = dummyNote.copyWith(id: 'test', text: 'text');
-        final container = await setupWidget(
-          tester,
-          account: account,
-          noteId: note.id,
-        );
-        container.read(notesNotifierProvider(account).notifier).add(note);
-        await container
-            .read(generalSettingsNotifierProvider.notifier)
-            .setNoteDoubleTapAction(NoteActionType.reaction);
-        await tester.pumpAndSettle();
-        await tester.tap(find.text('text'));
-        await tester.pump(kDoubleTapMinTime);
-        await tester.tap(find.text('text'), warnIfMissed: false);
-        await tester.pumpAndSettle();
-        expect(find.byType(EmojiPicker), findsNothing);
-      });
+        'should not show an emoji picker if action type is reaction and guest',
+        (tester) async {
+          const account = Account(host: 'misskey.tld');
+          final note = dummyNote.copyWith(id: 'test', text: 'text');
+          final container = await setupWidget(
+            tester,
+            account: account,
+            noteId: note.id,
+          );
+          container.read(notesNotifierProvider(account).notifier).add(note);
+          await container
+              .read(generalSettingsNotifierProvider.notifier)
+              .setNoteDoubleTapAction(NoteActionType.reaction);
+          await tester.pumpAndSettle();
+          await tester.tap(find.text('text'));
+          await tester.pump(kDoubleTapMinTime);
+          await tester.tap(find.text('text'), warnIfMissed: false);
+          await tester.pumpAndSettle();
+          expect(find.byType(EmojiPicker), findsNothing);
+        },
+      );
 
-      testWidgets('should show an emoji picker if action type is reaction',
-          (tester) async {
+      testWidgets('should show an emoji picker if action type is reaction', (
+        tester,
+      ) async {
         const account = Account(host: 'misskey.tld', username: 'testuser');
         final note = dummyNote.copyWith(id: 'test', text: 'text');
         final container = await setupWidget(
@@ -1121,8 +1131,9 @@ void main() {
   });
 
   group('instance ticker', () {
-    testWidgets('should not show an instance ticker if the setting is none',
-        (tester) async {
+    testWidgets('should not show an instance ticker if the setting is none', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -1145,57 +1156,54 @@ void main() {
     });
 
     testWidgets(
-        'should not show an instance ticker for a local note if the setting is remote',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        user: dummyUserLite,
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setInstanceTicker(InstanceTicker.remote);
-      await tester.pumpAndSettle();
-      expect(find.byType(InstanceTickerWidget), findsNothing);
-    });
+      'should not show an instance ticker for a local note if the setting is remote',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(id: 'test', user: dummyUserLite);
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await container
+            .read(generalSettingsNotifierProvider.notifier)
+            .setInstanceTicker(InstanceTicker.remote);
+        await tester.pumpAndSettle();
+        expect(find.byType(InstanceTickerWidget), findsNothing);
+      },
+    );
 
     testWidgets(
-        'should show an instance ticker for a remote note if the setting is remote',
-        (tester) async {
-      const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        user: dummyUserLite.copyWith(
-          host: 'misskey2.tld',
-          instance: const UserInstanceInfo(),
-        ),
-      );
-      final container = await setupWidget(
-        tester,
-        account: account,
-        noteId: note.id,
-      );
-      container.read(notesNotifierProvider(account).notifier).add(note);
-      await container
-          .read(generalSettingsNotifierProvider.notifier)
-          .setInstanceTicker(InstanceTicker.remote);
-      await tester.pumpAndSettle();
-      expect(find.byType(InstanceTickerWidget), findsOne);
-    });
+      'should show an instance ticker for a remote note if the setting is remote',
+      (tester) async {
+        const account = Account(host: 'misskey.tld');
+        final note = dummyNote.copyWith(
+          id: 'test',
+          user: dummyUserLite.copyWith(
+            host: 'misskey2.tld',
+            instance: const UserInstanceInfo(),
+          ),
+        );
+        final container = await setupWidget(
+          tester,
+          account: account,
+          noteId: note.id,
+        );
+        container.read(notesNotifierProvider(account).notifier).add(note);
+        await container
+            .read(generalSettingsNotifierProvider.notifier)
+            .setInstanceTicker(InstanceTicker.remote);
+        await tester.pumpAndSettle();
+        expect(find.byType(InstanceTickerWidget), findsOne);
+      },
+    );
 
-    testWidgets('should not show an instance ticker if the setting is always',
-        (tester) async {
+    testWidgets('should not show an instance ticker if the setting is always', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        user: dummyUserLite,
-      );
+      final note = dummyNote.copyWith(id: 'test', user: dummyUserLite);
       final container = await setupWidget(
         tester,
         account: account,
@@ -1368,8 +1376,9 @@ void main() {
   });
 
   group('reactions', () {
-    testWidgets('should not show a reactions viewer if like only',
-        (tester) async {
+    testWidgets('should not show a reactions viewer if like only', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -1386,13 +1395,11 @@ void main() {
       expect(find.byType(ReactionsViewer), findsNothing);
     });
 
-    testWidgets('should not show a reactions viewer if disabled',
-        (tester) async {
+    testWidgets('should not show a reactions viewer if disabled', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        reactions: {'❤': 1},
-      );
+      final note = dummyNote.copyWith(id: 'test', reactions: {'❤': 1});
       final container = await setupWidget(
         tester,
         account: account,
@@ -1406,8 +1413,9 @@ void main() {
       expect(find.byType(ReactionsViewer), findsNothing);
     });
 
-    testWidgets('should not show a reactions viewer if no reactions',
-        (tester) async {
+    testWidgets('should not show a reactions viewer if no reactions', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final note = dummyNote.copyWith(id: 'test');
       final container = await setupWidget(
@@ -1422,10 +1430,7 @@ void main() {
 
     testWidgets('should show a reactions viewer', (tester) async {
       const account = Account(host: 'misskey.tld');
-      final note = dummyNote.copyWith(
-        id: 'test',
-        reactions: {'❤': 1},
-      );
+      final note = dummyNote.copyWith(id: 'test', reactions: {'❤': 1});
       final container = await setupWidget(
         tester,
         account: account,

@@ -29,7 +29,7 @@ Uri? proxiedImageUrl(
       ref.watch(metaNotifierProvider(host)).valueOrNull?.mediaProxy;
   final mediaProxyUrl =
       (mediaProxy != null ? Uri.tryParse(mediaProxy) : null) ??
-          Uri.https(host, 'proxy');
+      Uri.https(host, 'proxy');
   if (imageUrl.host == mediaProxyUrl.host) {
     if (mediaProxyUrl.pathSegments.length <= imageUrl.pathSegments.length &&
         const ListEquality<String>().equals(

@@ -10,13 +10,11 @@ class FfVisibilityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      switch (visibility) {
-        FFVisibility.public => t.misskey.ffVisibility_.public,
-        FFVisibility.followers => t.misskey.ffVisibility_.followers,
-        FFVisibility.private => t.misskey.ffVisibility_.private,
-        _ => t.misskey.unknown,
-      },
-    );
+    return Text(switch (visibility) {
+      FFVisibility.public => t.misskey.ffVisibility_.public,
+      FFVisibility.followers => t.misskey.ffVisibility_.followers,
+      FFVisibility.private => t.misskey.ffVisibility_.private,
+      _ => t.misskey.unknown,
+    });
   }
 }

@@ -6,11 +6,7 @@ import '../../../model/account.dart';
 import 'explore_users.dart';
 
 class ExploreUsersPage extends ConsumerWidget {
-  const ExploreUsersPage({
-    super.key,
-    required this.account,
-    this.host,
-  });
+  const ExploreUsersPage({super.key, required this.account, this.host});
 
   final Account account;
   final String? host;

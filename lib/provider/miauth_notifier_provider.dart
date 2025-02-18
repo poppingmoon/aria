@@ -15,13 +15,10 @@ class MiAuthNotifier extends _$MiAuthNotifier {
   }
 
   Uri buildMiAuthUrl(String host) {
-    final (sessionId, url) =
-        ref.read(miAuthRepositoryProvider).buildMiAuthUrl(host);
-    state = MiAuthState(
-      host: host,
-      sessionId: sessionId,
-      url: url,
-    );
+    final (sessionId, url) = ref
+        .read(miAuthRepositoryProvider)
+        .buildMiAuthUrl(host);
+    state = MiAuthState(host: host, sessionId: sessionId, url: url);
     return url;
   }
 
@@ -29,19 +26,17 @@ class MiAuthNotifier extends _$MiAuthNotifier {
     if (state == null) {
       return true;
     }
-    final result = await ref.read(miAuthRepositoryProvider).check(
-          state!.host,
-          state!.sessionId,
-        );
+    final result = await ref
+        .read(miAuthRepositoryProvider)
+        .check(state!.host, state!.sessionId);
     if (result == null) {
       return false;
     }
     final (token, user) = result;
-    await ref.read(accountsNotifierProvider.notifier).login(
-          Account(
-            host: state!.host.toLowerCase(),
-            username: user.username,
-          ),
+    await ref
+        .read(accountsNotifierProvider.notifier)
+        .login(
+          Account(host: state!.host.toLowerCase(), username: user.username),
           token,
           user.id,
         );

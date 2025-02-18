@@ -27,8 +27,9 @@ class ReactionsViewer extends HookConsumerWidget {
   final Note? note;
 
   Map<String, int> _mergeReactions(WidgetRef ref, Map<String, int> reactions) {
-    final groups = reactions.entries
-        .groupListsBy((reaction) => reaction.key.startsWith(':'));
+    final groups = reactions.entries.groupListsBy(
+      (reaction) => reaction.key.startsWith(':'),
+    );
     final customEmojiReactions = groups[true]
         ?.map((reaction) {
           final (name, host) = decodeCustomEmoji(reaction.key);
@@ -39,29 +40,34 @@ class ReactionsViewer extends HookConsumerWidget {
             count: reaction.value,
           );
         })
-        .groupFoldBy<String?,
-            ({String emoji, String? host, int count, int totalCount})>(
+        .groupFoldBy<
+          String?,
+          ({String emoji, String? host, int count, int totalCount})
+        >(
           (reaction) => reaction.name,
-          (acc, reaction) => (acc == null ||
-                  reaction.host == null ||
-                  (acc.host != null && acc.count < reaction.count))
-              ? (
-                  emoji: reaction.emoji,
-                  host: reaction.host,
-                  count: reaction.count,
-                  totalCount: (acc?.totalCount ?? 0) + reaction.count,
-                )
-              : (
-                  emoji: acc.emoji,
-                  host: acc.host,
-                  count: acc.count,
-                  totalCount: acc.totalCount + reaction.count,
-                ),
+          (acc, reaction) =>
+              (acc == null ||
+                      reaction.host == null ||
+                      (acc.host != null && acc.count < reaction.count))
+                  ? (
+                    emoji: reaction.emoji,
+                    host: reaction.host,
+                    count: reaction.count,
+                    totalCount: (acc?.totalCount ?? 0) + reaction.count,
+                  )
+                  : (
+                    emoji: acc.emoji,
+                    host: acc.host,
+                    count: acc.count,
+                    totalCount: acc.totalCount + reaction.count,
+                  ),
         )
         .map((key, value) => MapEntry(value.emoji, value.totalCount));
     return Map.fromEntries(
-      [...?groups[false], ...?customEmojiReactions?.entries]
-          .sortedBy<num>((e) => -e.value),
+      [
+        ...?groups[false],
+        ...?customEmojiReactions?.entries,
+      ].sortedBy<num>((e) => -e.value),
     );
   }
 
@@ -78,18 +84,19 @@ class ReactionsViewer extends HookConsumerWidget {
           case final RenderBox renderBox) {
         final offset = renderBox.localToGlobal(Offset.zero);
         final entry = OverlayEntry(
-          builder: (context) => Positioned(
-            left: offset.dx,
-            top: offset.dy,
-            child: Material(
-              color: Colors.transparent,
-              child: ReactionEffect(
-                account: account,
-                emoji: emoji,
-                emojis: emojis,
+          builder:
+              (context) => Positioned(
+                left: offset.dx,
+                top: offset.dy,
+                child: Material(
+                  color: Colors.transparent,
+                  child: ReactionEffect(
+                    account: account,
+                    emoji: emoji,
+                    emojis: emojis,
+                  ),
+                ),
               ),
-            ),
-          ),
         );
         Overlay.of(context).insert(entry);
         Future.delayed(const Duration(milliseconds: 1100), () {
@@ -106,74 +113,64 @@ class ReactionsViewer extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     final scale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.reactionsDisplayScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.reactionsDisplayScale,
+      ),
     );
     final reduceAnimation = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.reduceAnimation),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.reduceAnimation,
+      ),
     );
     final shouldMergeReactions = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.mergeReactionsByName),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.mergeReactionsByName,
+      ),
     );
-    final initialReactions = useMemoized(
-      () {
-        if (shouldMergeReactions) {
-          return _mergeReactions(ref, note.reactions);
-        } else {
-          return Map.fromEntries(
-            note.reactions.entries.sortedBy<num>((e) => -e.value),
-          );
-        }
-      },
-      [shouldMergeReactions],
-    );
+    final initialReactions = useMemoized(() {
+      if (shouldMergeReactions) {
+        return _mergeReactions(ref, note.reactions);
+      } else {
+        return Map.fromEntries(
+          note.reactions.entries.sortedBy<num>((e) => -e.value),
+        );
+      }
+    }, [shouldMergeReactions]);
     final reactions = useState(initialReactions);
     final keys = useState(
       initialReactions.map((key, value) => MapEntry(key, GlobalKey())),
     );
-    useEffect(
-      () {
-        final newSource = shouldMergeReactions
-            ? _mergeReactions(ref, note.reactions)
-            : Map.of(note.reactions);
-        final newReactions = <String, int>{};
-        final emojis = {...note.emojis, ...note.reactionEmojis};
-        for (final reaction in reactions.value.entries) {
-          if (newSource.remove(reaction.key) case final count? when count > 0) {
-            newReactions[reaction.key] = count;
-            if (!reduceAnimation && reaction.value < count) {
-              _showReactionEffect(
-                context,
-                keys.value[reaction.key]!,
-                reaction.key,
-                emojis,
-              );
-            }
-          }
-        }
-        for (final newReaction in newSource.entries) {
-          newReactions[newReaction.key] = newReaction.value;
-          final key = GlobalKey();
-          keys.value = {
-            ...keys.value,
-            newReaction.key: key,
-          };
-          if (!reduceAnimation) {
+    useEffect(() {
+      final newSource =
+          shouldMergeReactions
+              ? _mergeReactions(ref, note.reactions)
+              : Map.of(note.reactions);
+      final newReactions = <String, int>{};
+      final emojis = {...note.emojis, ...note.reactionEmojis};
+      for (final reaction in reactions.value.entries) {
+        if (newSource.remove(reaction.key) case final count? when count > 0) {
+          newReactions[reaction.key] = count;
+          if (!reduceAnimation && reaction.value < count) {
             _showReactionEffect(
               context,
-              key,
-              newReaction.key,
+              keys.value[reaction.key]!,
+              reaction.key,
               emojis,
             );
           }
         }
-        reactions.value = newReactions;
-        return;
-      },
-      [note.reactions],
-    );
+      }
+      for (final newReaction in newSource.entries) {
+        newReactions[newReaction.key] = newReaction.value;
+        final key = GlobalKey();
+        keys.value = {...keys.value, newReaction.key: key};
+        if (!reduceAnimation) {
+          _showReactionEffect(context, key, newReaction.key, emojis);
+        }
+      }
+      reactions.value = newReactions;
+      return;
+    }, [note.reactions]);
     const maxReactions = 20;
     final showAllReactions = useState(this.showAllReactions);
 

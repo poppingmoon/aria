@@ -35,10 +35,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
 
   Future<List<DriveFolder>> _fetchFolders({String? untilId}) async {
     final response = await _misskey.drive.folders.folders(
-      DriveFoldersRequest(
-        folderId: folderId,
-        untilId: untilId,
-      ),
+      DriveFoldersRequest(folderId: folderId, untilId: untilId),
     );
     return response.toList();
   }
@@ -63,18 +60,16 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
 
   Future<void> create(String? name) async {
     final response = await _misskey.drive.folders.create(
-      DriveFoldersCreateRequest(
-        name: name,
-        parentId: folderId,
-      ),
+      DriveFoldersCreateRequest(name: name, parentId: folderId),
     );
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(value.copyWith(items: [response, ...value.items]));
   }
 
   Future<void> delete(String folderId) async {
-    await _misskey.drive.folders
-        .delete(DriveFoldersDeleteRequest(folderId: folderId));
+    await _misskey.drive.folders.delete(
+      DriveFoldersDeleteRequest(folderId: folderId),
+    );
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
@@ -85,17 +80,15 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
 
   Future<void> updateName(String folderId, String name) async {
     final response = await _misskey.drive.folders.update(
-      DriveFoldersUpdateRequest(
-        folderId: folderId,
-        name: name,
-      ),
+      DriveFoldersUpdateRequest(folderId: folderId, name: name),
     );
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items: value.items
-            .map((folder) => folder.id == folderId ? response : folder)
-            .toList(),
+        items:
+            value.items
+                .map((folder) => folder.id == folderId ? response : folder)
+                .toList(),
       ),
     );
   }
@@ -110,10 +103,7 @@ class DriveFoldersNotifier extends _$DriveFoldersNotifier {
     // To preserve `parentId` key even if it is null.
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'drive/folders/update',
-      {
-        'folderId': folderId,
-        'parentId': parentId,
-      },
+      {'folderId': folderId, 'parentId': parentId},
       excludeRemoveNullPredicate: (key, _) => key == 'parentId',
     );
     final folder = DriveFolder.fromJson(response);

@@ -27,28 +27,23 @@ class SearchPage extends HookConsumerWidget {
     final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
     final canSearchNotes =
         (i == null && (meta?.policies?.canSearchNotes ?? true)) ||
-            (i != null && (i.policies?.canSearchNotes ?? true));
+        (i != null && (i.policies?.canSearchNotes ?? true));
     final controller = useTabController(
       initialLength: 1 + (canSearchNotes ? 1 : 0),
       keys: [canSearchNotes],
     );
     final notesFocusNode = useFocusNode();
     final usersFocusNode = useFocusNode();
-    useEffect(
-      () {
-        controller.addListener(
-          () {
-            if (controller.index == 0) {
-              notesFocusNode.requestFocus();
-            } else {
-              usersFocusNode.requestFocus();
-            }
-          },
-        );
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      controller.addListener(() {
+        if (controller.index == 0) {
+          notesFocusNode.requestFocus();
+        } else {
+          usersFocusNode.requestFocus();
+        }
+      });
+      return;
+    }, []);
 
     return Scaffold(
       appBar: AppBar(
@@ -71,10 +66,7 @@ class SearchPage extends HookConsumerWidget {
               channelId: channelId,
               focusNode: notesFocusNode,
             ),
-          SearchUsers(
-            account: account,
-            focusNode: usersFocusNode,
-          ),
+          SearchUsers(account: account, focusNode: usersFocusNode),
         ],
       ),
     );

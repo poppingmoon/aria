@@ -12,9 +12,6 @@ class PaginationState<T> with _$PaginationState<T> {
   const PaginationState._();
 
   factory PaginationState.fromIterable(Iterable<T> items) {
-    return PaginationState(
-      items: items.toList(),
-      isLastLoaded: items.isEmpty,
-    );
+    return PaginationState(items: items.toList(), isLastLoaded: items.isEmpty);
   }
 }

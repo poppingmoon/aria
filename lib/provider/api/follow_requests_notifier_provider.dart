@@ -17,11 +17,10 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Future<Iterable<FollowRequest>> _fetchRequests({
-    String? untilId,
-  }) async {
-    final requests = await _misskey.following.requests
-        .list(FollowingRequestsListRequest(untilId: untilId));
+  Future<Iterable<FollowRequest>> _fetchRequests({String? untilId}) async {
+    final requests = await _misskey.following.requests.list(
+      FollowingRequestsListRequest(untilId: untilId),
+    );
     return requests;
   }
 
@@ -35,8 +34,9 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchRequests(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchRequests(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
@@ -45,30 +45,34 @@ class FollowRequestsNotifier extends _$FollowRequestsNotifier {
   }
 
   Future<void> accept(String userId) async {
-    await _misskey.following.requests
-        .accept(FollowingRequestsAcceptRequest(userId: userId));
+    await _misskey.following.requests.accept(
+      FollowingRequestsAcceptRequest(userId: userId),
+    );
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items: value.items
-              .where((request) => request.follower.id != userId)
-              .toList(),
+          items:
+              value.items
+                  .where((request) => request.follower.id != userId)
+                  .toList(),
         ),
       );
     }
   }
 
   Future<void> reject(String userId) async {
-    await _misskey.following.requests
-        .reject(FollowingRequestsRejectRequest(userId: userId));
+    await _misskey.following.requests.reject(
+      FollowingRequestsRejectRequest(userId: userId),
+    );
     final value = state.valueOrNull;
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items: value.items
-              .where((request) => request.follower.id != userId)
-              .toList(),
+          items:
+              value.items
+                  .where((request) => request.follower.id != userId)
+                  .toList(),
         ),
       );
     }

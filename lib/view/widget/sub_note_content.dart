@@ -40,32 +40,40 @@ class SubNoteContent extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     final showReactionsViewer = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showSubNoteReactionsViewer),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showSubNoteReactionsViewer,
+      ),
     );
-    final bool showFooter = this.showFooter ??
+    final bool showFooter =
+        this.showFooter ??
         ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.showSubNoteFooter),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.showSubNoteFooter,
+          ),
         );
     final parsed =
         note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
-    final isLong = note.cw == null &&
+    final isLong =
+        note.cw == null &&
         !ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.alwaysExpandLongNote),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.alwaysExpandLongNote,
+          ),
         ) &&
         ref.watch(noteIsLongProvider(account, noteId));
     final expandMedia = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysExpandMediaInSubNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.alwaysExpandMediaInSubNote,
+      ),
     );
     final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysShowAllReactions),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.alwaysShowAllReactions,
+      ),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final isCollapsed = useState(isLong);
     final isFilesCollapsed = useState(true);
     final isPollCollapsed = useState(true);
@@ -89,10 +97,9 @@ class SubNoteContent extends HookConsumerWidget {
                       padding: const EdgeInsetsDirectional.only(end: 4.0),
                       child: Icon(
                         Icons.reply,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withValues(alpha: style.color?.a),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.primary.withValues(alpha: style.color?.a),
                       ),
                     ),
                   ),
@@ -137,8 +144,8 @@ class SubNoteContent extends HookConsumerWidget {
                   minimumSize: Size.zero,
                   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                onPressed: () =>
-                    isFilesCollapsed.value = !isFilesCollapsed.value,
+                onPressed:
+                    () => isFilesCollapsed.value = !isFilesCollapsed.value,
                 icon: Icon(
                   isFilesCollapsed.value
                       ? Icons.arrow_right
@@ -191,8 +198,10 @@ class SubNoteContent extends HookConsumerWidget {
               textStyle: style
                   .apply(fontSizeFactor: 0.9)
                   .copyWith(fontWeight: FontWeight.bold),
-              padding:
-                  const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+              padding: const EdgeInsets.symmetric(
+                vertical: 6.0,
+                horizontal: 12.0,
+              ),
               minimumSize: const Size(double.infinity, 0.0),
               side: BorderSide.none,
               visualDensity: VisualDensity.standard,

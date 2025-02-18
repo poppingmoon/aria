@@ -10,35 +10,35 @@ import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< AsApiLib>>
 abstract class AsApiLib implements RustOpaqueInterface {
-  factory AsApiLib(
-          {String? userId,
-          String? userName,
-          String? userUsername,
-          required String customEmojis,
-          required String locale,
-          required String serverUrl,
-          required FutureOr<void> Function(String, String, String) dialog,
-          required FutureOr<bool> Function(String, String, String) confirm,
-          String? token,
-          required FutureOr<(String, String?)> Function(String, String, String?)
-              api,
-          required FutureOr<void> Function(String, String) save,
-          required FutureOr<String> Function(String) load,
-          required String url,
-          required FutureOr<String> Function(String) nyaize}) =>
-      RustLib.instance.api.crateApiAiscriptApiAsApiLibNew(
-          userId: userId,
-          userName: userName,
-          userUsername: userUsername,
-          customEmojis: customEmojis,
-          locale: locale,
-          serverUrl: serverUrl,
-          dialog: dialog,
-          confirm: confirm,
-          token: token,
-          api: api,
-          save: save,
-          load: load,
-          url: url,
-          nyaize: nyaize);
+  factory AsApiLib({
+    String? userId,
+    String? userName,
+    String? userUsername,
+    required String customEmojis,
+    required String locale,
+    required String serverUrl,
+    required FutureOr<void> Function(String, String, String) dialog,
+    required FutureOr<bool> Function(String, String, String) confirm,
+    String? token,
+    required FutureOr<(String, String?)> Function(String, String, String?) api,
+    required FutureOr<void> Function(String, String) save,
+    required FutureOr<String> Function(String) load,
+    required String url,
+    required FutureOr<String> Function(String) nyaize,
+  }) => RustLib.instance.api.crateApiAiscriptApiAsApiLibNew(
+    userId: userId,
+    userName: userName,
+    userUsername: userUsername,
+    customEmojis: customEmojis,
+    locale: locale,
+    serverUrl: serverUrl,
+    dialog: dialog,
+    confirm: confirm,
+    token: token,
+    api: api,
+    save: save,
+    load: load,
+    url: url,
+    nyaize: nyaize,
+  );
 }

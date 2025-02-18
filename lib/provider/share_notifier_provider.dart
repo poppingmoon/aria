@@ -82,8 +82,8 @@ class ShareNotifier extends _$ShareNotifier {
         case SharedMediaType.text || SharedMediaType.url:
           text.add(file.path);
         case SharedMediaType.image ||
-              SharedMediaType.video ||
-              SharedMediaType.file:
+            SharedMediaType.video ||
+            SharedMediaType.file:
           files.add(
             LocalPostFile.fromFile(
               ref.read(fileSystemProvider).file(file.path),

@@ -19,15 +19,17 @@ class PagesMy extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: pages,
-      itemBuilder: (context, page) => PagePreview(
-        account: account,
-        page: page,
-        onTap: () => context.push('/$account/pages/${page.id}'),
-      ),
+      itemBuilder:
+          (context, page) => PagePreview(
+            account: account,
+            page: page,
+            onTap: () => context.push('/$account/pages/${page.id}'),
+          ),
       onRefresh: () => ref.refresh(pagesNotifierProvider(account).future),
-      loadMore: (skipError) => ref
-          .read(pagesNotifierProvider(account).notifier)
-          .loadMore(skipError: skipError),
+      loadMore:
+          (skipError) => ref
+              .read(pagesNotifierProvider(account).notifier)
+              .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

@@ -35,13 +35,18 @@ class AvatarDecorationDialog extends HookConsumerWidget {
     final avatarDecorations =
         ref.watch(avatarDecorationsProvider(account)).valueOrNull;
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final data =
-        avatarDecorations?.firstWhereOrNull((e) => e.id == decoration.id);
+    final data = avatarDecorations?.firstWhereOrNull(
+      (e) => e.id == decoration.id,
+    );
     final roleIds = data?.roleIdsThatCanBeUsedThisDecoration ?? [];
-    final roles = roleIds
-        .map((roleId) => ref.watch(roleProvider(account, roleId)).valueOrNull)
-        .toList();
-    final canUse = roleIds.isEmpty ||
+    final roles =
+        roleIds
+            .map(
+              (roleId) => ref.watch(roleProvider(account, roleId)).valueOrNull,
+            )
+            .toList();
+    final canUse =
+        roleIds.isEmpty ||
         (i?.roles?.any((role) => roleIds.contains(role.id)) ?? false);
     const minAngle = -0.5;
     const maxAngle = 0.5;
@@ -54,10 +59,12 @@ class AvatarDecorationDialog extends HookConsumerWidget {
           ? decoration.angle! - (decoration.angle! + 0.5).floor()
           : 0.0,
     );
-    final offsetX =
-        useState(clampDouble(decoration.offsetX, minOffsetX, maxOffsetX));
-    final offsetY =
-        useState(clampDouble(decoration.offsetY, minOffsetY, maxOffsetY));
+    final offsetX = useState(
+      clampDouble(decoration.offsetX, minOffsetX, maxOffsetX),
+    );
+    final offsetY = useState(
+      clampDouble(decoration.offsetY, minOffsetY, maxOffsetY),
+    );
     final flipH = useState(decoration.flipH);
     final updated = UserAvatarDecoration(
       id: decoration.id,
@@ -78,33 +85,34 @@ class AvatarDecorationDialog extends HookConsumerWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: i != null
-                  ? UserAvatar(
-                      account: account,
-                      user: i,
-                      size: 60.0,
-                      decorations: index != null
-                          ? [
-                              ...i.avatarDecorations.sublist(0, index),
-                              updated,
-                              ...i.avatarDecorations.sublist(index! + 1),
-                            ]
-                          : [...i.avatarDecorations, updated],
-                    )
-                  : ImageWidget(
-                      url: decoration.url,
-                      width: 60.0,
-                      height: 60.0,
-                    ),
+              child:
+                  i != null
+                      ? UserAvatar(
+                        account: account,
+                        user: i,
+                        size: 60.0,
+                        decorations:
+                            index != null
+                                ? [
+                                  ...i.avatarDecorations.sublist(0, index),
+                                  updated,
+                                  ...i.avatarDecorations.sublist(index! + 1),
+                                ]
+                                : [...i.avatarDecorations, updated],
+                      )
+                      : ImageWidget(
+                        url: decoration.url,
+                        width: 60.0,
+                        height: 60.0,
+                      ),
             ),
             if (data case GetAvatarDecorationsResponse(:final name))
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                child: KeyValueWidget(
-                  label: t.misskey.name,
-                  text: name,
+                padding: const EdgeInsets.symmetric(
+                  vertical: 8.0,
+                  horizontal: 16.0,
                 ),
+                child: KeyValueWidget(label: t.misskey.name, text: name),
               ),
             if (data case GetAvatarDecorationsResponse(:final description))
               if (description.isNotEmpty)
@@ -129,29 +137,33 @@ class AvatarDecorationDialog extends HookConsumerWidget {
                   child: Wrap(
                     spacing: 4.0,
                     runSpacing: 4.0,
-                    children: roleIds
-                        .mapIndexed(
-                          (index, roleId) => RoleChip(
-                            account: account,
-                            role: UserRole(
-                              id: roleId,
-                              name: roles[index]?.name ?? '',
-                              color: roles[index]
-                                  ?.color
-                                  ?.toRadixString(16)
-                                  .padLeft(6, '0'),
-                              iconUrl: roles[index]?.iconUrl,
-                              description: roles[index]?.description,
-                              isModerator: roles[index]?.isModerator ?? false,
-                              isAdministrator:
-                                  roles[index]?.isAdministrator ?? false,
-                            ),
-                            onTap: roles[index]?.isPublic ?? true
-                                ? () => context.push('/$account/roles/$roleId')
-                                : null,
-                          ),
-                        )
-                        .toList(),
+                    children:
+                        roleIds
+                            .mapIndexed(
+                              (index, roleId) => RoleChip(
+                                account: account,
+                                role: UserRole(
+                                  id: roleId,
+                                  name: roles[index]?.name ?? '',
+                                  color: roles[index]?.color
+                                      ?.toRadixString(16)
+                                      .padLeft(6, '0'),
+                                  iconUrl: roles[index]?.iconUrl,
+                                  description: roles[index]?.description,
+                                  isModerator:
+                                      roles[index]?.isModerator ?? false,
+                                  isAdministrator:
+                                      roles[index]?.isAdministrator ?? false,
+                                ),
+                                onTap:
+                                    roles[index]?.isPublic ?? true
+                                        ? () => context.push(
+                                          '/$account/roles/$roleId',
+                                        )
+                                        : null,
+                              ),
+                            )
+                            .toList(),
                   ),
                 ),
               ),
@@ -204,22 +216,24 @@ class AvatarDecorationDialog extends HookConsumerWidget {
           ],
         ),
       ),
-      actions: !account.isGuest && canUse
-          ? [
-              ElevatedButton.icon(
-                onPressed: () => context.pop((updated,)),
-                icon: const Icon(Icons.check),
-                label:
-                    Text(index == null ? t.misskey.attach : t.misskey.update),
-              ),
-              if (index != null)
-                OutlinedButton.icon(
-                  onPressed: () => context.pop((null,)),
-                  icon: const Icon(Icons.close),
-                  label: Text(t.misskey.detach),
+      actions:
+          !account.isGuest && canUse
+              ? [
+                ElevatedButton.icon(
+                  onPressed: () => context.pop((updated,)),
+                  icon: const Icon(Icons.check),
+                  label: Text(
+                    index == null ? t.misskey.attach : t.misskey.update,
+                  ),
                 ),
-            ]
-          : null,
+                if (index != null)
+                  OutlinedButton.icon(
+                    onPressed: () => context.pop((null,)),
+                    icon: const Icon(Icons.close),
+                    label: Text(t.misskey.detach),
+                  ),
+              ]
+              : null,
       scrollable: true,
     );
   }

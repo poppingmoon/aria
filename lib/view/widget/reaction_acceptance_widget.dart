@@ -10,15 +10,13 @@ class ReactionAcceptanceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      switch (acceptance) {
-        null => t.misskey.all,
-        ReactionAcceptance.likeOnlyForRemote => t.misskey.likeOnlyForRemote,
-        ReactionAcceptance.nonSensitiveOnly => t.misskey.nonSensitiveOnly,
-        ReactionAcceptance.nonSensitiveOnlyForLocalLikeOnlyForRemote =>
-          t.misskey.nonSensitiveOnlyForLocalLikeOnlyForRemote,
-        ReactionAcceptance.likeOnly => t.misskey.likeOnly,
-      },
-    );
+    return Text(switch (acceptance) {
+      null => t.misskey.all,
+      ReactionAcceptance.likeOnlyForRemote => t.misskey.likeOnlyForRemote,
+      ReactionAcceptance.nonSensitiveOnly => t.misskey.nonSensitiveOnly,
+      ReactionAcceptance.nonSensitiveOnlyForLocalLikeOnlyForRemote =>
+        t.misskey.nonSensitiveOnlyForLocalLikeOnlyForRemote,
+      ReactionAcceptance.likeOnly => t.misskey.likeOnly,
+    });
   }
 }

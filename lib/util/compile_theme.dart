@@ -35,16 +35,18 @@ MisskeyColors compileTheme(MisskeyTheme theme) {
     } else {
       final input = val.trim();
       if (input.startsWith('rgb(') && input.endsWith(')')) {
-        final rgb = input
-            .substring(4, input.length - 1)
-            .split(RegExp(r'[,\s]\s*'))
-            .map(int.parse)
-            .toList();
+        final rgb =
+            input
+                .substring(4, input.length - 1)
+                .split(RegExp(r'[,\s]\s*'))
+                .map(int.parse)
+                .toList();
         return Color.fromRGBO(rgb[0], rgb[1], rgb[2], 1);
       }
       if (input.startsWith('rgba(') && input.endsWith(')')) {
-        final rgbo =
-            input.substring(5, input.length - 1).split(RegExp(r'[,\s]\s*'));
+        final rgbo = input
+            .substring(5, input.length - 1)
+            .split(RegExp(r'[,\s]\s*'));
         final rgb = rgbo.sublist(0, 3).map(int.parse).toList();
         final opacity = double.parse(rgbo[3]);
         return Color.fromRGBO(rgb[0], rgb[1], rgb[2], opacity);

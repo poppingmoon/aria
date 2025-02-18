@@ -46,27 +46,12 @@ class ChannelsPage extends ConsumerWidget {
         ),
         body: TabBarView(
           children: [
-            ChannelsSearch(
-              account: account,
-              onChannelTap: onChannelTap,
-            ),
-            ChannelsFeatured(
-              account: account,
-              onChannelTap: onChannelTap,
-            ),
+            ChannelsSearch(account: account, onChannelTap: onChannelTap),
+            ChannelsFeatured(account: account, onChannelTap: onChannelTap),
             if (!account.isGuest) ...[
-              ChannelsFavorites(
-                account: account,
-                onChannelTap: onChannelTap,
-              ),
-              ChannelsFollowing(
-                account: account,
-                onChannelTap: onChannelTap,
-              ),
-              ChannelsOwned(
-                account: account,
-                onChannelTap: onChannelTap,
-              ),
+              ChannelsFavorites(account: account, onChannelTap: onChannelTap),
+              ChannelsFollowing(account: account, onChannelTap: onChannelTap),
+              ChannelsOwned(account: account, onChannelTap: onChannelTap),
             ],
           ],
         ),

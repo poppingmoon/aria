@@ -20,16 +20,17 @@ Future<String?> showTextFieldDialog(
 }) async {
   return showDialog(
     context: context,
-    builder: (context) => TextFieldDialog(
-      title: title,
-      initialText: initialText,
-      decoration: decoration,
-      style: style,
-      minLines: minLines,
-      maxLines: maxLines,
-      maxLength: maxLength,
-      autocompleteOptions: autocompleteOptions,
-    ),
+    builder:
+        (context) => TextFieldDialog(
+          title: title,
+          initialText: initialText,
+          decoration: decoration,
+          style: style,
+          minLines: minLines,
+          maxLines: maxLines,
+          maxLength: maxLength,
+          autocompleteOptions: autocompleteOptions,
+        ),
   );
 }
 
@@ -57,21 +58,23 @@ class TextFieldDialog extends HookWidget {
 
   Widget _buildField(BuildContext context, TextEditingController controller) {
     final decoration = (this.decoration ?? const InputDecoration()).copyWith(
-      suffixIcon: maxLines == 1
-          ? IconButton(
-              onPressed: () => controller.clear(),
-              icon: const Icon(Icons.close),
-            )
-          : null,
+      suffixIcon:
+          maxLines == 1
+              ? IconButton(
+                onPressed: () => controller.clear(),
+                icon: const Icon(Icons.close),
+              )
+              : null,
       enabledBorder: Theme.of(context).inputDecorationTheme.border,
     );
 
     if (autocompleteOptions case final options? when options.isNotEmpty) {
       return SearchField(
         controller: controller,
-        suggestions: options
-            .map((option) => SearchFieldListItem<String>(option))
-            .toList(),
+        suggestions:
+            options
+                .map((option) => SearchFieldListItem<String>(option))
+                .toList(),
         searchInputDecoration: SearchInputDecoration(
           searchStyle: style,
           cursorColor: Theme.of(context).colorScheme.primary,

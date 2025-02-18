@@ -47,52 +47,51 @@ class DrivePage extends HookConsumerWidget {
     final hierarchyFolders = useState(<DriveFolder>[]);
     final folderId = hierarchyFolders.value.lastOrNull?.id;
     final parentId = hierarchyFolders.value.lastOrNull?.parentId;
-    final currentFolder = ref.watch(
+    final currentFolder =
+        ref.watch(
           driveFoldersNotifierProvider(account, parentId).select(
-            (folders) => folders.valueOrNull?.items
-                .firstWhereOrNull((folder) => folder.id == folderId),
+            (folders) => folders.valueOrNull?.items.firstWhereOrNull(
+              (folder) => folder.id == folderId,
+            ),
           ),
         ) ??
         hierarchyFolders.value.lastOrNull;
     final folders = ref.watch(driveFoldersNotifierProvider(account, folderId));
     final files = ref.watch(driveFilesNotifierProvider(account, folderId));
     final selectedFiles = ref.watch(selectedDriveFilesNotifierProvider);
-    final stats = !selectFiles && !selectFolder
-        ? ref.watch(driveStatsProvider(account)).valueOrNull
-        : null;
+    final stats =
+        !selectFiles && !selectFolder
+            ? ref.watch(driveStatsProvider(account)).valueOrNull
+            : null;
     final isSelecting =
         selectFiles || (!selectFolder && selectedFiles.isNotEmpty);
     final controller = useScrollController();
     final isAtBottom = useState(false);
-    useEffect(
-      () {
-        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
-          controller.addListener(() {
-            if (controller.position.extentAfter < 100) {
-              if (!isAtBottom.value) {
-                ref
-                    .read(
-                      driveFoldersNotifierProvider(account, folderId).notifier,
-                    )
-                    .loadMore();
-                ref
-                    .read(
-                      driveFilesNotifierProvider(account, folderId).notifier,
-                    )
-                    .loadMore();
-                isAtBottom.value = true;
-              }
-            } else {
-              isAtBottom.value = false;
+    useEffect(() {
+      if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+        controller.addListener(() {
+          if (controller.position.extentAfter < 100) {
+            if (!isAtBottom.value) {
+              ref
+                  .read(
+                    driveFoldersNotifierProvider(account, folderId).notifier,
+                  )
+                  .loadMore();
+              ref
+                  .read(driveFilesNotifierProvider(account, folderId).notifier)
+                  .loadMore();
+              isAtBottom.value = true;
             }
-          });
-        }
-        return;
-      },
-      [],
+          } else {
+            isAtBottom.value = false;
+          }
+        });
+      }
+      return;
+    }, []);
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return PopScope(
       canPop: currentFolder == null && (selectFolder || selectedFiles.isEmpty),
@@ -100,30 +99,33 @@ class DrivePage extends HookConsumerWidget {
         if (!selectFolder && selectedFiles.isNotEmpty) {
           ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
         } else if (currentFolder != null) {
-          hierarchyFolders.value = hierarchyFolders.value
-              .sublist(0, hierarchyFolders.value.length - 1);
+          hierarchyFolders.value = hierarchyFolders.value.sublist(
+            0,
+            hierarchyFolders.value.length - 1,
+          );
         }
       },
       child: Scaffold(
         appBar: AppBar(
           leading:
               selectedFiles.isEmpty ? const BackButton() : const CloseButton(),
-          title: selectFiles || (!selectFolder && selectedFiles.isNotEmpty)
-              ? Text.rich(
-                  TextSpan(
-                    text: t.misskey.selectFiles,
-                    children: [
-                      if (selectedFiles.isNotEmpty)
-                        TextSpan(
-                          text: ' (${selectedFiles.length})',
-                          style: TextStyle(
-                            color: colors.fg.withValues(alpha: 0.5),
+          title:
+              selectFiles || (!selectFolder && selectedFiles.isNotEmpty)
+                  ? Text.rich(
+                    TextSpan(
+                      text: t.misskey.selectFiles,
+                      children: [
+                        if (selectedFiles.isNotEmpty)
+                          TextSpan(
+                            text: ' (${selectedFiles.length})',
+                            style: TextStyle(
+                              color: colors.fg.withValues(alpha: 0.5),
+                            ),
                           ),
-                        ),
-                    ],
-                  ),
-                )
-              : selectFolder
+                      ],
+                    ),
+                  )
+                  : selectFolder
                   ? Text(t.misskey.selectFolder)
                   : Text(t.misskey.drive),
           actions: [
@@ -132,8 +134,8 @@ class DrivePage extends HookConsumerWidget {
                 style: TextButton.styleFrom(
                   foregroundColor: Theme.of(context).colorScheme.onSurface,
                 ),
-                onPressed: () =>
-                    context.push('/settings/accounts/$account/drive'),
+                onPressed:
+                    () => context.push('/settings/accounts/$account/drive'),
                 child: Text(
                   '${t.misskey.inUse}: '
                   '${Unicode.LRI}'
@@ -143,48 +145,56 @@ class DrivePage extends HookConsumerWidget {
               ),
             if (!selectFiles && !selectFolder)
               IconButton(
-                onPressed: () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (context) => DriveCreateSheet(
-                    account: account,
-                    folder: currentFolder,
-                  ),
-                  clipBehavior: Clip.hardEdge,
-                ),
+                onPressed:
+                    () => showModalBottomSheet<void>(
+                      context: context,
+                      builder:
+                          (context) => DriveCreateSheet(
+                            account: account,
+                            folder: currentFolder,
+                          ),
+                      clipBehavior: Clip.hardEdge,
+                    ),
                 icon: const Icon(Icons.add),
               ),
             if (isSelecting) ...[
-              if (files
-                  case AsyncValue(
-                    valueOrNull: PaginationState(items: final files),
-                  ))
+              if (files case AsyncValue(
+                valueOrNull: PaginationState(items: final files),
+              ))
                 if (files.isNotEmpty)
                   if (files.every(
                     (file) => selectedFiles.any((e) => e.id == file.id),
                   ))
                     IconButton(
-                      onPressed: () => ref
-                          .read(selectedDriveFilesNotifierProvider.notifier)
-                          .removeAll(),
+                      onPressed:
+                          () =>
+                              ref
+                                  .read(
+                                    selectedDriveFilesNotifierProvider.notifier,
+                                  )
+                                  .removeAll(),
                       icon: const Icon(Icons.deselect),
                     )
                   else
                     IconButton(
-                      onPressed: () => ref
-                          .read(selectedDriveFilesNotifierProvider.notifier)
-                          .addAll(files),
+                      onPressed:
+                          () => ref
+                              .read(selectedDriveFilesNotifierProvider.notifier)
+                              .addAll(files),
                       icon: const Icon(Icons.select_all),
                     ),
               IconButton(
-                onPressed: selectedFiles.isNotEmpty
-                    ? () => showModalBottomSheet<void>(
+                onPressed:
+                    selectedFiles.isNotEmpty
+                        ? () => showModalBottomSheet<void>(
                           context: context,
-                          builder: (context) => DriveFilesSheet(
-                            account: account,
-                            files: selectedFiles,
-                          ),
+                          builder:
+                              (context) => DriveFilesSheet(
+                                account: account,
+                                files: selectedFiles,
+                              ),
                         )
-                    : null,
+                        : null,
                 icon: const Icon(Icons.more_vert),
               ),
             ] else if (currentFolder != null)
@@ -192,10 +202,11 @@ class DrivePage extends HookConsumerWidget {
                 onPressed: () async {
                   await showModalBottomSheet<void>(
                     context: context,
-                    builder: (context) => DriveFolderSheet(
-                      account: account,
-                      folder: currentFolder,
-                    ),
+                    builder:
+                        (context) => DriveFolderSheet(
+                          account: account,
+                          folder: currentFolder,
+                        ),
                   );
                   final siblings = await ref.read(
                     driveFoldersNotifierProvider(account, parentId).future,
@@ -204,12 +215,16 @@ class DrivePage extends HookConsumerWidget {
                     (folder) => folder.id == currentFolder.id,
                   );
                   if (updated == null) {
-                    hierarchyFolders.value = hierarchyFolders.value
-                        .sublist(0, hierarchyFolders.value.length - 1);
+                    hierarchyFolders.value = hierarchyFolders.value.sublist(
+                      0,
+                      hierarchyFolders.value.length - 1,
+                    );
                   } else if (updated != currentFolder) {
                     hierarchyFolders.value = [
-                      ...hierarchyFolders.value
-                          .sublist(0, hierarchyFolders.value.length - 1),
+                      ...hierarchyFolders.value.sublist(
+                        0,
+                        hierarchyFolders.value.length - 1,
+                      ),
                       updated,
                     ];
                   }
@@ -233,9 +248,10 @@ class DrivePage extends HookConsumerWidget {
                     Padding(
                       padding: const EdgeInsets.all(10),
                       child: IconButton(
-                        onPressed: hierarchyFolders.value.isNotEmpty
-                            ? () => hierarchyFolders.value = []
-                            : null,
+                        onPressed:
+                            hierarchyFolders.value.isNotEmpty
+                                ? () => hierarchyFolders.value = []
+                                : null,
                         style: IconButton.styleFrom(
                           foregroundColor: colors.fg.withValues(alpha: 0.8),
                           disabledForegroundColor: colors.fg,
@@ -251,22 +267,26 @@ class DrivePage extends HookConsumerWidget {
                               color: colors.fg.withValues(alpha: 0.5),
                             ),
                             TextButton(
-                              onPressed: folder.id != folderId
-                                  ? () => hierarchyFolders.value =
-                                      hierarchyFolders.value
-                                          .sublist(0, index + 1)
-                                  : null,
+                              onPressed:
+                                  folder.id != folderId
+                                      ? () =>
+                                          hierarchyFolders
+                                              .value = hierarchyFolders.value
+                                              .sublist(0, index + 1)
+                                      : null,
                               style: TextButton.styleFrom(
-                                foregroundColor:
-                                    colors.fg.withValues(alpha: 0.8),
+                                foregroundColor: colors.fg.withValues(
+                                  alpha: 0.8,
+                                ),
                                 disabledForegroundColor: colors.fg,
                               ),
                               child: Text(
                                 folder.name,
                                 style: TextStyle(
-                                  fontWeight: folder.id == folderId
-                                      ? FontWeight.bold
-                                      : null,
+                                  fontWeight:
+                                      folder.id == folderId
+                                          ? FontWeight.bold
+                                          : null,
                                 ),
                               ),
                             ),
@@ -280,61 +300,73 @@ class DrivePage extends HookConsumerWidget {
           ),
         ),
         body: RefreshIndicator(
-          onRefresh: () => Future.wait([
-            ref.refresh(driveFoldersNotifierProvider(account, folderId).future),
-            ref.refresh(driveFilesNotifierProvider(account, folderId).future),
-          ]),
+          onRefresh:
+              () => Future.wait([
+                ref.refresh(
+                  driveFoldersNotifierProvider(account, folderId).future,
+                ),
+                ref.refresh(
+                  driveFilesNotifierProvider(account, folderId).future,
+                ),
+              ]),
           child: CustomScrollView(
             controller: controller,
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
-              if (folders
-                  case AsyncValue(
-                    valueOrNull: PaginationState(items: final folders)
-                  ))
+              if (folders case AsyncValue(
+                valueOrNull: PaginationState(items: final folders),
+              ))
                 SliverGrid.builder(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: itemMaxCrossAxisExtent,
                     mainAxisExtent: 100,
                   ),
                   itemCount: folders.length,
-                  itemBuilder: (context, index) => DriveFolderWidget(
-                    account: account,
-                    folder: folders[index],
-                    onTap: () => hierarchyFolders.value = [
-                      ...hierarchyFolders.value,
-                      folders[index],
-                    ],
-                    onLongPress: () => showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) => DriveFolderSheet(
+                  itemBuilder:
+                      (context, index) => DriveFolderWidget(
                         account: account,
                         folder: folders[index],
+                        onTap:
+                            () =>
+                                hierarchyFolders.value = [
+                                  ...hierarchyFolders.value,
+                                  folders[index],
+                                ],
+                        onLongPress:
+                            () => showModalBottomSheet<void>(
+                              context: context,
+                              builder:
+                                  (context) => DriveFolderSheet(
+                                    account: account,
+                                    folder: folders[index],
+                                  ),
+                            ),
                       ),
-                    ),
-                  ),
                 ),
               SliverToBoxAdapter(
                 child: PaginationBottomWidget(
                   paginationState: folders,
-                  loadMore: () => ref
-                      .read(
-                        driveFoldersNotifierProvider(account, folderId)
-                            .notifier,
-                      )
-                      .loadMore(skipError: true),
+                  loadMore:
+                      () => ref
+                          .read(
+                            driveFoldersNotifierProvider(
+                              account,
+                              folderId,
+                            ).notifier,
+                          )
+                          .loadMore(skipError: true),
                 ),
               ),
-              if (files
-                  case AsyncValue(
-                    valueOrNull: PaginationState(items: final files)
-                  ))
+              if (files case AsyncValue(
+                valueOrNull: PaginationState(items: final files),
+              ))
                 Builder(
                   builder: (context) {
                     final filtered = files.where(
                       (file) => switch (type) {
-                        FileType.media =>
-                          file.type.startsWith(RegExp('image|video')),
+                        FileType.media => file.type.startsWith(
+                          RegExp('image|video'),
+                        ),
                         FileType.image => file.type.startsWith('image'),
                         FileType.video => file.type.startsWith('video'),
                         FileType.audio => file.type.startsWith('audio'),
@@ -344,13 +376,14 @@ class DrivePage extends HookConsumerWidget {
                     return SliverGrid.builder(
                       gridDelegate:
                           const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: itemMaxCrossAxisExtent,
-                      ),
+                            maxCrossAxisExtent: itemMaxCrossAxisExtent,
+                          ),
                       itemCount: filtered.length,
                       itemBuilder: (context, index) {
                         final file = filtered.elementAt(index);
-                        final isSelected =
-                            selectedFiles.any((e) => e.id == file.id);
+                        final isSelected = selectedFiles.any(
+                          (e) => e.id == file.id,
+                        );
                         return DriveFileWidget(
                           account: account,
                           file: file,
@@ -378,9 +411,12 @@ class DrivePage extends HookConsumerWidget {
                               context.push('/$account/drive/file/${file.id}');
                             }
                           },
-                          onLongPress: () => ref
-                              .read(selectedDriveFilesNotifierProvider.notifier)
-                              .add(file),
+                          onLongPress:
+                              () => ref
+                                  .read(
+                                    selectedDriveFilesNotifierProvider.notifier,
+                                  )
+                                  .add(file),
                         );
                       },
                     );
@@ -389,42 +425,51 @@ class DrivePage extends HookConsumerWidget {
               SliverToBoxAdapter(
                 child: PaginationBottomWidget(
                   paginationState: files,
-                  loadMore: () => ref
-                      .read(
-                        driveFilesNotifierProvider(account, folderId).notifier,
-                      )
-                      .loadMore(skipError: true),
-                  noItemsLabel: folders.valueOrNull?.items.isEmpty ?? false
-                      ? folderId == null
-                          ? t.misskey.emptyDrive
-                          : t.misskey.emptyFolder
-                      : null,
+                  loadMore:
+                      () => ref
+                          .read(
+                            driveFilesNotifierProvider(
+                              account,
+                              folderId,
+                            ).notifier,
+                          )
+                          .loadMore(skipError: true),
+                  noItemsLabel:
+                      folders.valueOrNull?.items.isEmpty ?? false
+                          ? folderId == null
+                              ? t.misskey.emptyDrive
+                              : t.misskey.emptyFolder
+                          : null,
                 ),
               ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          tooltip: selectFiles || selectFolder
-              ? t.misskey.continue_
-              : t.misskey.create,
-          onPressed: selectFiles
-              ? selectedFiles.isNotEmpty
-                  ? () => context.pop(selectedFiles)
-                  : null
-              : selectFolder
+          tooltip:
+              selectFiles || selectFolder
+                  ? t.misskey.continue_
+                  : t.misskey.create,
+          onPressed:
+              selectFiles
+                  ? selectedFiles.isNotEmpty
+                      ? () => context.pop(selectedFiles)
+                      : null
+                  : selectFolder
                   ? () => context.pop((currentFolder,))
                   : () => showModalBottomSheet<void>(
-                        context: context,
-                        builder: (context) => DriveCreateSheet(
+                    context: context,
+                    builder:
+                        (context) => DriveCreateSheet(
                           account: account,
                           folder: currentFolder,
                         ),
-                        clipBehavior: Clip.hardEdge,
-                      ),
-          child: selectFiles || selectFolder
-              ? const Icon(Icons.check)
-              : const Icon(Icons.add),
+                    clipBehavior: Clip.hardEdge,
+                  ),
+          child:
+              selectFiles || selectFolder
+                  ? const Icon(Icons.check)
+                  : const Icon(Icons.add),
         ),
       ),
     );

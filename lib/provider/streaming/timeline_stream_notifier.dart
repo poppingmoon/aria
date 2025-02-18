@@ -21,20 +21,21 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
   Stream<Note> build(TabSettings tabSettings) async* {
     switch (tabSettings.tabType) {
       case TabType.homeTimeline ||
-            TabType.localTimeline ||
-            TabType.hybridTimeline ||
-            TabType.globalTimeline ||
-            TabType.roleTimeline ||
-            TabType.userList ||
-            TabType.antenna ||
-            TabType.channel ||
-            TabType.custom:
+          TabType.localTimeline ||
+          TabType.hybridTimeline ||
+          TabType.globalTimeline ||
+          TabType.roleTimeline ||
+          TabType.userList ||
+          TabType.antenna ||
+          TabType.channel ||
+          TabType.custom:
         ref.listen(
           webSocketChannelProvider(tabSettings.account),
           (_, __) => connect(),
         );
-        final message = await ref
-            .watch(incomingMessageProvider(tabSettings.account).future);
+        final message = await ref.watch(
+          incomingMessageProvider(tabSettings.account).future,
+        );
         if (message.type == IncomingMessageType.channel &&
             message.body['id'] == _id) {
           final event = message.body;
@@ -47,8 +48,9 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
           }
         }
       case TabType.mention || TabType.direct:
-        final event = await ref
-            .watch(mainStreamNotifierProvider(tabSettings.account).future);
+        final event = await ref.watch(
+          mainStreamNotifierProvider(tabSettings.account).future,
+        );
         if (event case Mention(:final note)) {
           if (tabSettings.tabType == TabType.mention ||
               note.visibility == NoteVisibility.specified) {
@@ -68,35 +70,33 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
   Future<void> connect() async {
     switch (tabSettings.tabType) {
       case TabType.homeTimeline ||
-            TabType.localTimeline ||
-            TabType.hybridTimeline ||
-            TabType.globalTimeline ||
-            TabType.roleTimeline ||
-            TabType.userList ||
-            TabType.antenna ||
-            TabType.channel:
+          TabType.localTimeline ||
+          TabType.hybridTimeline ||
+          TabType.globalTimeline ||
+          TabType.roleTimeline ||
+          TabType.userList ||
+          TabType.antenna ||
+          TabType.channel:
         await _webSocketChannel.ready;
         _webSocketChannel.sink.add(
-          jsonEncode(
-            {
-              'type': 'connect',
-              'body': {
-                'channel': tabSettings.tabType.name,
-                'id': _id,
-                'params': {
-                  if (!tabSettings.withRenotes) 'withRenotes': false,
-                  if (tabSettings.withReplies) 'withRenotes': true,
-                  if (tabSettings.withFiles) 'withFiles': true,
-                  if (tabSettings.roleId != null) 'roleId': tabSettings.roleId,
-                  if (tabSettings.channelId != null)
-                    'channelId': tabSettings.channelId,
-                  if (tabSettings.listId != null) 'listId': tabSettings.listId,
-                  if (tabSettings.antennaId != null)
-                    'antennaId': tabSettings.antennaId,
-                },
+          jsonEncode({
+            'type': 'connect',
+            'body': {
+              'channel': tabSettings.tabType.name,
+              'id': _id,
+              'params': {
+                if (!tabSettings.withRenotes) 'withRenotes': false,
+                if (tabSettings.withReplies) 'withRenotes': true,
+                if (tabSettings.withFiles) 'withFiles': true,
+                if (tabSettings.roleId != null) 'roleId': tabSettings.roleId,
+                if (tabSettings.channelId != null)
+                  'channelId': tabSettings.channelId,
+                if (tabSettings.listId != null) 'listId': tabSettings.listId,
+                if (tabSettings.antennaId != null)
+                  'antennaId': tabSettings.antennaId,
               },
             },
-          ),
+          }),
         );
       case TabType.mention || TabType.direct:
         return ref
@@ -108,21 +108,19 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
         if (tabSettings case TabSettings(:final streamingChannel?)) {
           await _webSocketChannel.ready;
           _webSocketChannel.sink.add(
-            jsonEncode(
-              {
-                'type': 'connect',
-                'body': {
-                  'channel': streamingChannel,
-                  'id': _id,
-                  'params': {
-                    if (!tabSettings.withRenotes) 'withRenotes': false,
-                    if (tabSettings.withReplies) 'withRenotes': true,
-                    if (tabSettings.withFiles) 'withFiles': true,
-                    ...?tabSettings.parameters,
-                  },
+            jsonEncode({
+              'type': 'connect',
+              'body': {
+                'channel': streamingChannel,
+                'id': _id,
+                'params': {
+                  if (!tabSettings.withRenotes) 'withRenotes': false,
+                  if (tabSettings.withReplies) 'withRenotes': true,
+                  if (tabSettings.withFiles) 'withFiles': true,
+                  ...?tabSettings.parameters,
                 },
               },
-            ),
+            }),
           );
         }
         return;
@@ -136,14 +134,10 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
     }
     await _webSocketChannel.ready;
     _webSocketChannel.sink.add(
-      jsonEncode(
-        {
-          'type': 'disconnect',
-          'body': {
-            'id': _id,
-          },
-        },
-      ),
+      jsonEncode({
+        'type': 'disconnect',
+        'body': {'id': _id},
+      }),
     );
   }
 }

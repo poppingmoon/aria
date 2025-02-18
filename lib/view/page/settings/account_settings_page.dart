@@ -19,18 +19,20 @@ class AccountSettingsPage extends HookConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: i != null
-            ? UsernameWidget(
-                account: account,
-                user: i,
-                builder: (context, span) =>
-                    Text.rich(t.aria.settingsForUser(user: span)),
-              )
-            : Text.rich(
-                t.aria.settingsForUser(
-                  user: TextSpan(text: account.toString()),
+        title:
+            i != null
+                ? UsernameWidget(
+                  account: account,
+                  user: i,
+                  builder:
+                      (context, span) =>
+                          Text.rich(t.aria.settingsForUser(user: span)),
+                )
+                : Text.rich(
+                  t.aria.settingsForUser(
+                    user: TextSpan(text: account.toString()),
+                  ),
                 ),
-              ),
       ),
       body: SingleChildScrollView(
         child: Center(

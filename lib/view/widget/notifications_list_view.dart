@@ -36,11 +36,13 @@ class NotificationsListView extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final notifications = ref.watch(notificationsNotifierProvider(account));
     final nextNotifications = useState(<INotificationsResponse>[]);
-    final lastViewedAt =
-        ref.watch(notificationsLastViewedAtNotifierProvider(account));
+    final lastViewedAt = ref.watch(
+      notificationsLastViewedAtNotifierProvider(account),
+    );
     final showPopup = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showPopupOnNewNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showPopupOnNewNote,
+      ),
     );
     final notifier = ref.watch(mainStreamNotifierProvider(account).notifier);
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
@@ -50,44 +52,40 @@ class NotificationsListView extends HookConsumerWidget {
     final keepAnimation = useState(true);
     final isAtBottom = useState(false);
     ref.listen(incomingMessageProvider(account), (_, __) {});
-    useEffect(
-      () {
-        notifier.connect();
-        ref
-            .read(notificationsLastViewedAtNotifierProvider(account).notifier)
-            .save(DateTime.now());
-        ref.read(iNotifierProvider(account).notifier).readNotifications();
+    useEffect(() {
+      notifier.connect();
+      ref
+          .read(notificationsLastViewedAtNotifierProvider(account).notifier)
+          .save(DateTime.now());
+      ref.read(iNotifierProvider(account).notifier).readNotifications();
+      controller.addListener(() {
+        if (controller.position.userScrollDirection ==
+            ScrollDirection.reverse) {
+          keepAnimation.value = false;
+        } else if (controller.position.extentBefore == 0) {
+          keepAnimation.value = true;
+          hasUnread.value = false;
+          if (i != null && i.hasUnreadNotification) {
+            ref.read(iNotifierProvider(account).notifier).readNotifications();
+          }
+        }
+      });
+      if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
         controller.addListener(() {
-          if (controller.position.userScrollDirection ==
-              ScrollDirection.reverse) {
-            keepAnimation.value = false;
-          } else if (controller.position.extentBefore == 0) {
-            keepAnimation.value = true;
-            hasUnread.value = false;
-            if (i != null && i.hasUnreadNotification) {
-              ref.read(iNotifierProvider(account).notifier).readNotifications();
+          if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
+            if (!isAtBottom.value) {
+              ref
+                  .read(notificationsNotifierProvider(account).notifier)
+                  .loadMore();
+              isAtBottom.value = true;
             }
+          } else {
+            isAtBottom.value = false;
           }
         });
-        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
-          controller.addListener(() {
-            if (controller.position.extentAfter <
-                infiniteScrollExtentThreshold) {
-              if (!isAtBottom.value) {
-                ref
-                    .read(notificationsNotifierProvider(account).notifier)
-                    .loadMore();
-                isAtBottom.value = true;
-              }
-            } else {
-              isAtBottom.value = false;
-            }
-          });
-        }
-        return;
-      },
-      [],
-    );
+      }
+      return;
+    }, []);
     ref.listen(mainStreamNotifierProvider(account), (_, next) async {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
@@ -129,48 +127,60 @@ class NotificationsListView extends HookConsumerWidget {
               center: centerKey,
               slivers: [
                 SliverList.separated(
-                  itemBuilder: (context, index) => Center(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: index == nextNotifications.value.length - 1
-                            ? 8.0
-                            : 0.0,
-                        left: 8.0,
-                        right: 8.0,
-                        bottom: index == 0 &&
-                                (notifications.valueOrNull?.items.isEmpty ??
-                                    true)
-                            ? 8.0
-                            : 0.0,
-                      ),
-                      width: maxContentWidth,
-                      child: Material(
-                        color: Theme.of(context).colorScheme.surface,
-                        borderRadius: BorderRadius.vertical(
-                          top: index == nextNotifications.value.length - 1
-                              ? const Radius.circular(8.0)
-                              : Radius.zero,
-                          bottom: index == 0 &&
-                                  (notifications.valueOrNull?.items.isEmpty ??
-                                      true)
-                              ? const Radius.circular(8.0)
-                              : Radius.zero,
+                  itemBuilder:
+                      (context, index) => Center(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            top:
+                                index == nextNotifications.value.length - 1
+                                    ? 8.0
+                                    : 0.0,
+                            left: 8.0,
+                            right: 8.0,
+                            bottom:
+                                index == 0 &&
+                                        (notifications
+                                                .valueOrNull
+                                                ?.items
+                                                .isEmpty ??
+                                            true)
+                                    ? 8.0
+                                    : 0.0,
+                          ),
+                          width: maxContentWidth,
+                          child: Material(
+                            color: Theme.of(context).colorScheme.surface,
+                            borderRadius: BorderRadius.vertical(
+                              top:
+                                  index == nextNotifications.value.length - 1
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                              bottom:
+                                  index == 0 &&
+                                          (notifications
+                                                  .valueOrNull
+                                                  ?.items
+                                                  .isEmpty ??
+                                              true)
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            child: NotificationWidget(
+                              account: account,
+                              notification: nextNotifications.value[index],
+                            ),
+                          ),
                         ),
-                        clipBehavior: Clip.hardEdge,
-                        child: NotificationWidget(
-                          account: account,
-                          notification: nextNotifications.value[index],
+                      ),
+                  separatorBuilder:
+                      (_, __) => Center(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          width: maxContentWidth,
+                          child: const Divider(height: 0.0),
                         ),
                       ),
-                    ),
-                  ),
-                  separatorBuilder: (_, __) => Center(
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                      width: maxContentWidth,
-                      child: const Divider(height: 0.0),
-                    ),
-                  ),
                   itemCount: nextNotifications.value.length,
                 ),
                 if (nextNotifications.value.isNotEmpty &&
@@ -180,67 +190,81 @@ class NotificationsListView extends HookConsumerWidget {
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         width: maxContentWidth,
-                        child: lastViewedAt?.isBetween(
-                                  notifications.valueOrNull?.items.firstOrNull
-                                      ?.createdAt,
-                                  nextNotifications.value.lastOrNull?.createdAt,
-                                ) ??
-                                false
-                            ? const _NewNotificationsDivider()
-                            : const Divider(height: 1.0),
+                        child:
+                            lastViewedAt?.isBetween(
+                                      notifications
+                                          .valueOrNull
+                                          ?.items
+                                          .firstOrNull
+                                          ?.createdAt,
+                                      nextNotifications
+                                          .value
+                                          .lastOrNull
+                                          ?.createdAt,
+                                    ) ??
+                                    false
+                                ? const _NewNotificationsDivider()
+                                : const Divider(height: 1.0),
                       ),
                     ),
                   ),
                 SliverList.separated(
                   key: centerKey,
-                  itemBuilder: (context, index) => Center(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                        top: index == 0 && nextNotifications.value.isEmpty
-                            ? 8.0
-                            : 0.0,
-                        left: 8.0,
-                        right: 8.0,
-                        bottom: index == notifications.value!.items.length - 1
-                            ? 8.0
-                            : 0.0,
-                      ),
-                      width: maxContentWidth,
-                      child: Material(
-                        color: Theme.of(context).colorScheme.surface,
-                        borderRadius: BorderRadius.vertical(
-                          top: index == 0 && nextNotifications.value.isEmpty
-                              ? const Radius.circular(8.0)
-                              : Radius.zero,
-                          bottom: index == notifications.value!.items.length - 1
-                              ? const Radius.circular(8.0)
-                              : Radius.zero,
+                  itemBuilder:
+                      (context, index) => Center(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            top:
+                                index == 0 && nextNotifications.value.isEmpty
+                                    ? 8.0
+                                    : 0.0,
+                            left: 8.0,
+                            right: 8.0,
+                            bottom:
+                                index == notifications.value!.items.length - 1
+                                    ? 8.0
+                                    : 0.0,
+                          ),
+                          width: maxContentWidth,
+                          child: Material(
+                            color: Theme.of(context).colorScheme.surface,
+                            borderRadius: BorderRadius.vertical(
+                              top:
+                                  index == 0 && nextNotifications.value.isEmpty
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                              bottom:
+                                  index == notifications.value!.items.length - 1
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                            ),
+                            clipBehavior: Clip.hardEdge,
+                            child: NotificationWidget(
+                              account: account,
+                              notification: notifications.value!.items[index],
+                            ),
+                          ),
                         ),
-                        clipBehavior: Clip.hardEdge,
-                        child: NotificationWidget(
-                          account: account,
-                          notification: notifications.value!.items[index],
+                      ),
+                  separatorBuilder:
+                      (context, index) => Center(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                          width: maxContentWidth,
+                          child:
+                              lastViewedAt?.isBetween(
+                                        notifications.valueOrNull?.items
+                                            .elementAtOrNull(index + 1)
+                                            ?.createdAt,
+                                        notifications.valueOrNull?.items
+                                            .elementAtOrNull(index)
+                                            ?.createdAt,
+                                      ) ??
+                                      false
+                                  ? const _NewNotificationsDivider()
+                                  : const Divider(height: 0.0),
                         ),
                       ),
-                    ),
-                  ),
-                  separatorBuilder: (context, index) => Center(
-                    child: Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                      width: maxContentWidth,
-                      child: lastViewedAt?.isBetween(
-                                notifications.valueOrNull?.items
-                                    .elementAtOrNull(index + 1)
-                                    ?.createdAt,
-                                notifications.valueOrNull?.items
-                                    .elementAtOrNull(index)
-                                    ?.createdAt,
-                              ) ??
-                              false
-                          ? const _NewNotificationsDivider()
-                          : const Divider(height: 0.0),
-                    ),
-                  ),
                   itemCount: notifications.valueOrNull?.items.length ?? 0,
                 ),
                 SliverToBoxAdapter(
@@ -251,11 +275,14 @@ class NotificationsListView extends HookConsumerWidget {
                       child: PaginationBottomWidget(
                         paginationState: notifications,
                         noItemsLabel: t.misskey.noNotes,
-                        loadMore: () => ref
-                            .read(
-                              notificationsNotifierProvider(account).notifier,
-                            )
-                            .loadMore(skipError: true),
+                        loadMore:
+                            () => ref
+                                .read(
+                                  notificationsNotifierProvider(
+                                    account,
+                                  ).notifier,
+                                )
+                                .loadMore(skipError: true),
                         height: 120.0,
                       ),
                     ),
@@ -293,8 +320,9 @@ class _NewNotificationsDivider extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return ColoredBox(
       color: Theme.of(context).colorScheme.surface,

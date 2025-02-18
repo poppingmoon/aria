@@ -33,7 +33,8 @@ int floatToInt8(double x) {
 
 extension on Color {
   String get hex {
-    final value = floatToInt8(a) << 24 |
+    final value =
+        floatToInt8(a) << 24 |
         floatToInt8(r) << 16 |
         floatToInt8(g) << 8 |
         floatToInt8(b) << 0;
@@ -46,10 +47,11 @@ void main() {
     (name) => compileTheme(
       MisskeyTheme.fromJson(
         json5Decode(
-          File(
-            'misskey/packages/frontend-shared/themes/$name.json5',
-          ).readAsStringSync(),
-        ) as Map<String, dynamic>,
+              File(
+                'misskey/packages/frontend-shared/themes/$name.json5',
+              ).readAsStringSync(),
+            )
+            as Map<String, dynamic>,
       ),
     ),
   );

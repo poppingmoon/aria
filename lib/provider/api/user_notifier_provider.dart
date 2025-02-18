@@ -24,14 +24,12 @@ class UserNotifier extends _$UserNotifier {
     ref.onResume(() => timer?.cancel());
     ref.onDispose(() => timer?.cancel());
     try {
-      final user = userId != null
-          ? await _misskey.users.show(UsersShowRequest(userId: userId))
-          : await _misskey.users.showByName(
-              UsersShowByUserNameRequest(
-                userName: username!,
-                host: host,
-              ),
-            );
+      final user =
+          userId != null
+              ? await _misskey.users.show(UsersShowRequest(userId: userId))
+              : await _misskey.users.showByName(
+                UsersShowByUserNameRequest(userName: username!, host: host),
+              );
       ref
           .read(notesNotifierProvider(account).notifier)
           .addAll(user.pinnedNotes ?? []);
@@ -62,12 +60,14 @@ class UserNotifier extends _$UserNotifier {
   }
 
   Future<void> cancelFollowRequest() async {
-    await _misskey.following.requests
-        .cancel(FollowingRequestsCancelRequest(userId: _userId));
+    await _misskey.following.requests.cancel(
+      FollowingRequestsCancelRequest(userId: _userId),
+    );
     final user = state.valueOrNull;
     if (user is UserDetailedNotMeWithRelations) {
-      state =
-          AsyncValue.data(user.copyWith(hasPendingFollowRequestFromYou: false));
+      state = AsyncValue.data(
+        user.copyWith(hasPendingFollowRequestFromYou: false),
+      );
     }
   }
 
@@ -120,8 +120,9 @@ class UserNotifier extends _$UserNotifier {
   }
 
   Future<void> invalidateFollow() async {
-    await _misskey.following
-        .invalidate(FollowingInvalidateRequest(userId: _userId));
+    await _misskey.following.invalidate(
+      FollowingInvalidateRequest(userId: _userId),
+    );
     final user = state.valueOrNull;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isFollowed: false));
@@ -129,8 +130,9 @@ class UserNotifier extends _$UserNotifier {
   }
 
   Future<void> updateMemo(String memo) async {
-    await _misskey.users
-        .updateMemo(UsersUpdateMemoRequest(userId: _userId, memo: memo));
+    await _misskey.users.updateMemo(
+      UsersUpdateMemoRequest(userId: _userId, memo: memo),
+    );
     final user = state.valueOrNull;
     if (user is UserDetailedNotMe) {
       state = AsyncValue.data(user.copyWith(memo: memo));
@@ -155,9 +157,10 @@ class UserNotifier extends _$UserNotifier {
     await _misskey.following.update(
       FollowingUpdateRequest(
         userId: _userId,
-        notify: notify
-            ? FollowingUpdateAllNotifyType.normal
-            : FollowingUpdateAllNotifyType.none,
+        notify:
+            notify
+                ? FollowingUpdateAllNotifyType.normal
+                : FollowingUpdateAllNotifyType.none,
       ),
     );
     final user = state.valueOrNull;

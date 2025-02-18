@@ -41,26 +41,29 @@ class NotificationWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final followRequests = (i?.isLocked ?? false)
-        ? ref
-                .watch(followRequestsNotifierProvider(account))
-                .valueOrNull
-                ?.items ??
-            []
-        : <FollowRequest>[];
+    final followRequests =
+        (i?.isLocked ?? false)
+            ? ref
+                    .watch(followRequestsNotifierProvider(account))
+                    .valueOrNull
+                    ?.items ??
+                []
+            : <FollowRequest>[];
     final avatarScale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.avatarScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.avatarScale,
+      ),
     );
     final style = DefaultTextStyle.of(context).style;
     final leadingSize = style.lineHeight * avatarScale;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     switch (notification.type) {
       case NotificationType.mention ||
-            NotificationType.reply ||
-            NotificationType.quote:
+          NotificationType.reply ||
+          NotificationType.quote:
         if (notification case INotificationsResponse(:final note?)) {
           return NoteWidget(account: account, noteId: note.id);
         }
@@ -75,11 +78,12 @@ class NotificationWidget extends ConsumerWidget {
             actions: [FollowButton(account: account, userId: user.id)],
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
-            onLongPress: () => showUserSheet(
-              context: context,
-              account: account,
-              userId: user.id,
-            ),
+            onLongPress:
+                () => showUserSheet(
+                  context: context,
+                  account: account,
+                  userId: user.id,
+                ),
           );
         }
       case NotificationType.renote:
@@ -92,16 +96,19 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: renoteId),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/$id'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: id,
+                ),
           );
         }
       case NotificationType.reaction:
-        if (notification
-            case INotificationsResponse(:final note?, :final reaction?)) {
+        if (notification case INotificationsResponse(
+          :final note?,
+          :final reaction?,
+        )) {
           return _NotificationTile(
             account: account,
             user: notification.user,
@@ -114,11 +121,12 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: note.id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: note.id,
+                ),
           );
         }
       case NotificationType.pollEnded:
@@ -132,11 +140,12 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: note.id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: note.id,
+                ),
           );
         }
       case NotificationType.receiveFollowRequest:
@@ -147,44 +156,53 @@ class NotificationWidget extends ConsumerWidget {
             icon: const Icon(Icons.schedule),
             iconBackgroundColor: eventFollow,
             subtitle: Text(t.misskey.receiveFollowRequest),
-            actions: followRequests
-                    .any((request) => request.follower.id == user.id)
-                ? [
-                    ElevatedButton(
-                      onPressed: () => futureWithDialog(
-                        context,
-                        ref
-                            .read(
-                              followRequestsNotifierProvider(account).notifier,
-                            )
-                            .accept(user.id),
+            actions:
+                followRequests.any((request) => request.follower.id == user.id)
+                    ? [
+                      ElevatedButton(
+                        onPressed:
+                            () => futureWithDialog(
+                              context,
+                              ref
+                                  .read(
+                                    followRequestsNotifierProvider(
+                                      account,
+                                    ).notifier,
+                                  )
+                                  .accept(user.id),
+                            ),
+                        child: Text(t.misskey.accept),
                       ),
-                      child: Text(t.misskey.accept),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        foregroundColor: Theme.of(context).colorScheme.primary,
-                        backgroundColor: Theme.of(context).colorScheme.surface,
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          foregroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.surface,
+                        ),
+                        onPressed:
+                            () => futureWithDialog(
+                              context,
+                              ref
+                                  .read(
+                                    followRequestsNotifierProvider(
+                                      account,
+                                    ).notifier,
+                                  )
+                                  .reject(user.id),
+                            ),
+                        child: Text(t.misskey.reject),
                       ),
-                      onPressed: () => futureWithDialog(
-                        context,
-                        ref
-                            .read(
-                              followRequestsNotifierProvider(account).notifier,
-                            )
-                            .reject(user.id),
-                      ),
-                      child: Text(t.misskey.reject),
-                    ),
-                  ]
-                : null,
+                    ]
+                    : null,
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
-            onLongPress: () => showUserSheet(
-              context: context,
-              account: account,
-              userId: user.id,
-            ),
+            onLongPress:
+                () => showUserSheet(
+                  context: context,
+                  account: account,
+                  userId: user.id,
+                ),
           );
         }
       case NotificationType.followRequestAccepted:
@@ -208,33 +226,34 @@ class NotificationWidget extends ConsumerWidget {
             ),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/users/${user.id}'),
-            onLongPress: () => showUserSheet(
-              context: context,
-              account: account,
-              userId: user.id,
-            ),
+            onLongPress:
+                () => showUserSheet(
+                  context: context,
+                  account: account,
+                  userId: user.id,
+                ),
           );
         }
       case NotificationType.app:
-        if (notification
-            case INotificationsResponse(
-              :final icon,
-              :final header,
-              :final body,
-            )) {
+        if (notification case INotificationsResponse(
+          :final icon,
+          :final header,
+          :final body,
+        )) {
           return _NotificationTile(
             account: account,
-            leading: icon != null
-                ? ClipRRect(
-                    borderRadius: BorderRadius.circular(6.0),
-                    child: ImageWidget(
-                      url: icon.toString(),
-                      width: leadingSize,
-                      height: leadingSize,
-                      fit: BoxFit.cover,
-                    ),
-                  )
-                : null,
+            leading:
+                icon != null
+                    ? ClipRRect(
+                      borderRadius: BorderRadius.circular(6.0),
+                      child: ImageWidget(
+                        url: icon.toString(),
+                        width: leadingSize,
+                        height: leadingSize,
+                        fit: BoxFit.cover,
+                      ),
+                    )
+                    : null,
             title: header != null ? Text(header) : const SizedBox.shrink(),
             subtitle: body != null ? Mfm(account: account, text: body) : null,
             createdAt: notification.createdAt,
@@ -247,8 +266,9 @@ class NotificationWidget extends ConsumerWidget {
           icon: const Icon(Icons.emoji_events),
           iconBackgroundColor: eventAchievement,
           title: Text(t.misskey.notification_.achievementEarned),
-          subtitle:
-              AchievementWidget(achievement: notification.achievement ?? ''),
+          subtitle: AchievementWidget(
+            achievement: notification.achievement ?? '',
+          ),
           createdAt: notification.createdAt,
         );
       case NotificationType.test:
@@ -280,20 +300,22 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: note.id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: note.id,
+                ),
           );
         }
       case NotificationType.roleAssigned:
         return _NotificationTile(
           account: account,
           user: i,
-          icon: notification.role?.iconUrl != null
-              ? ImageWidget(url: notification.role!.iconUrl!.toString())
-              : const Icon(Icons.workspace_premium),
+          icon:
+              notification.role?.iconUrl != null
+                  ? ImageWidget(url: notification.role!.iconUrl!.toString())
+                  : const Icon(Icons.workspace_premium),
           iconBackgroundColor: notification.icon == null ? eventOther : null,
           title: Text(t.misskey.notification_.roleAssigned),
           subtitle: Tooltip(
@@ -391,11 +413,12 @@ class NotificationWidget extends ConsumerWidget {
             subtitle: NoteSummary(account: account, noteId: note.id),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: note.id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: note.id,
+                ),
           );
         }
       case NotificationType.scheduleNote || NotificationType.scheduledNoteError:
@@ -443,9 +466,10 @@ class NotificationWidget extends ConsumerWidget {
             account: account,
             leading: DecoratedBox(
               decoration: BoxDecoration(
-                color: note.reactionAcceptance == ReactionAcceptance.likeOnly
-                    ? colors.love
-                    : eventReaction,
+                color:
+                    note.reactionAcceptance == ReactionAcceptance.likeOnly
+                        ? colors.love
+                        : eventReaction,
                 shape: BoxShape.circle,
               ),
               child: Padding(
@@ -462,100 +486,108 @@ class NotificationWidget extends ConsumerWidget {
             title: Text(
               note.reactionAcceptance == ReactionAcceptance.likeOnly
                   ? t.misskey.notification_.likedBySomeUsers(
-                      n: notification.reactions
-                              ?.map((reaction) => reaction.user.id)
-                              .toSet()
-                              .length ??
-                          0,
-                    )
+                    n:
+                        notification.reactions
+                            ?.map((reaction) => reaction.user.id)
+                            .toSet()
+                            .length ??
+                        0,
+                  )
                   : t.misskey.notification_.reactedBySomeUsers(
-                      n: notification.reactions
-                              ?.map((reaction) => reaction.user.id)
-                              .toSet()
-                              .length ??
-                          0,
-                    ),
+                    n:
+                        notification.reactions
+                            ?.map((reaction) => reaction.user.id)
+                            .toSet()
+                            .length ??
+                        0,
+                  ),
             ),
             subtitle: NoteSummary(account: account, noteId: note.id),
-            actions: notification.reactions
-                ?.map(
-                  (reaction) => Stack(
-                    children: [
-                      Tooltip(
-                        richMessage: WidgetSpan(
-                          child: UsernameWidget(
-                            account: account,
-                            user: reaction.user,
-                            trailingSpans: [
-                              TextSpan(
-                                text: ' ${reaction.user.acct}',
+            actions:
+                notification.reactions
+                    ?.map(
+                      (reaction) => Stack(
+                        children: [
+                          Tooltip(
+                            richMessage: WidgetSpan(
+                              child: UsernameWidget(
+                                account: account,
+                                user: reaction.user,
+                                trailingSpans: [
+                                  TextSpan(
+                                    text: ' ${reaction.user.acct}',
+                                    style: TextStyle(
+                                      color: switch (Theme.of(
+                                        context,
+                                      ).brightness) {
+                                        Brightness.light => Colors.white70,
+                                        Brightness.dark => Colors.black54,
+                                      },
+                                    ),
+                                  ),
+                                ],
                                 style: TextStyle(
                                   color: switch (Theme.of(context).brightness) {
-                                    Brightness.light => Colors.white70,
-                                    Brightness.dark => Colors.black54,
+                                    Brightness.light => Colors.white,
+                                    Brightness.dark => Colors.black,
                                   },
                                 ),
                               ),
-                            ],
-                            style: TextStyle(
-                              color: switch (Theme.of(context).brightness) {
-                                Brightness.light => Colors.white,
-                                Brightness.dark => Colors.black,
-                              },
+                            ),
+                            child: UserAvatar(
+                              account: account,
+                              user: reaction.user,
+                              size: leadingSize,
+                              onTap:
+                                  () => context.push(
+                                    '/$account/users/${reaction.user.id}',
+                                  ),
                             ),
                           ),
-                        ),
-                        child: UserAvatar(
-                          account: account,
-                          user: reaction.user,
-                          size: leadingSize,
-                          onTap: () => context
-                              .push('/$account/users/${reaction.user.id}'),
-                        ),
-                      ),
-                      if (note.reactionAcceptance !=
-                          ReactionAcceptance.likeOnly)
-                        PositionedDirectional(
-                          end: 2.0,
-                          bottom: 2.0,
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                              color: colors.bg,
-                              shape: BoxShape.circle,
-                            ),
-                            child: ClipOval(
-                              child: Padding(
-                                padding: const EdgeInsets.all(2.0),
-                                child: SizedBox(
-                                  width: 20.0,
-                                  child: EmojiWidget(
-                                    account: account,
-                                    emoji: reaction.reaction,
-                                    emojis: {
-                                      ...note.emojis,
-                                      ...note.reactionEmojis,
-                                    },
-                                    style: const TextStyle(
-                                      fontSize: 18.0,
-                                      height: 1.0,
+                          if (note.reactionAcceptance !=
+                              ReactionAcceptance.likeOnly)
+                            PositionedDirectional(
+                              end: 2.0,
+                              bottom: 2.0,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: colors.bg,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: ClipOval(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(2.0),
+                                    child: SizedBox(
+                                      width: 20.0,
+                                      child: EmojiWidget(
+                                        account: account,
+                                        emoji: reaction.reaction,
+                                        emojis: {
+                                          ...note.emojis,
+                                          ...note.reactionEmojis,
+                                        },
+                                        style: const TextStyle(
+                                          fontSize: 18.0,
+                                          height: 1.0,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ),
-                    ],
-                  ),
-                )
-                .toList(),
+                        ],
+                      ),
+                    )
+                    .toList(),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/${note.id}'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: note.id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: note.id,
+                ),
           );
         }
       case NotificationType.renoteGrouped:
@@ -578,58 +610,64 @@ class NotificationWidget extends ConsumerWidget {
             ),
             title: Text(
               t.misskey.notification_.renotedBySomeUsers(
-                n: notification.users?.map((user) => user.id).toSet().length ??
+                n:
+                    notification.users?.map((user) => user.id).toSet().length ??
                     0,
               ),
             ),
             subtitle: NoteSummary(account: account, noteId: renoteId),
-            actions: notification.users
-                ?.map(
-                  (user) => Tooltip(
-                    richMessage: WidgetSpan(
-                      child: UsernameWidget(
-                        account: account,
-                        user: user,
-                        trailingSpans: [
-                          TextSpan(
-                            text: ' ${user.acct}',
+            actions:
+                notification.users
+                    ?.map(
+                      (user) => Tooltip(
+                        richMessage: WidgetSpan(
+                          child: UsernameWidget(
+                            account: account,
+                            user: user,
+                            trailingSpans: [
+                              TextSpan(
+                                text: ' ${user.acct}',
+                                style: TextStyle(
+                                  color: switch (Theme.of(context).brightness) {
+                                    Brightness.light => Colors.white70,
+                                    Brightness.dark => Colors.black54,
+                                  },
+                                ),
+                              ),
+                            ],
                             style: TextStyle(
                               color: switch (Theme.of(context).brightness) {
-                                Brightness.light => Colors.white70,
-                                Brightness.dark => Colors.black54,
+                                Brightness.light => Colors.white,
+                                Brightness.dark => Colors.black,
                               },
                             ),
                           ),
-                        ],
-                        style: TextStyle(
-                          color: switch (Theme.of(context).brightness) {
-                            Brightness.light => Colors.white,
-                            Brightness.dark => Colors.black,
-                          },
+                        ),
+                        child: UserAvatar(
+                          account: account,
+                          user: user,
+                          size: leadingSize,
+                          onTap:
+                              () => context.push('/$account/users/${user.id}'),
                         ),
                       ),
-                    ),
-                    child: UserAvatar(
-                      account: account,
-                      user: user,
-                      size: leadingSize,
-                      onTap: () => context.push('/$account/users/${user.id}'),
-                    ),
-                  ),
-                )
-                .toList(),
+                    )
+                    .toList(),
             createdAt: notification.createdAt,
             onTap: () => context.push('/$account/notes/$id'),
-            onLongPress: () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: id,
-            ),
+            onLongPress:
+                () => showNoteSheet(
+                  context: context,
+                  account: account,
+                  noteId: id,
+                ),
           );
         }
       case NotificationType.noteGrouped:
-        if (notification
-            case INotificationsResponse(:final users?, :final noteIds?)) {
+        if (notification case INotificationsResponse(
+          :final users?,
+          :final noteIds?,
+        )) {
           return _NotificationTile(
             account: account,
             leading: const DecoratedBox(
@@ -639,49 +677,47 @@ class NotificationWidget extends ConsumerWidget {
               ),
               child: Padding(
                 padding: EdgeInsets.all(8.0),
-                child: Icon(
-                  Icons.edit,
-                  size: 34.0,
-                  color: Colors.white,
-                ),
+                child: Icon(Icons.edit, size: 34.0, color: Colors.white),
               ),
             ),
             title: Text(t.misskey.nNotes(n: noteIds.length)),
-            actions: users
-                .map(
-                  (user) => Tooltip(
-                    richMessage: WidgetSpan(
-                      child: UsernameWidget(
-                        account: account,
-                        user: user,
-                        trailingSpans: [
-                          TextSpan(
-                            text: ' ${user.acct}',
+            actions:
+                users
+                    .map(
+                      (user) => Tooltip(
+                        richMessage: WidgetSpan(
+                          child: UsernameWidget(
+                            account: account,
+                            user: user,
+                            trailingSpans: [
+                              TextSpan(
+                                text: ' ${user.acct}',
+                                style: TextStyle(
+                                  color: switch (Theme.of(context).brightness) {
+                                    Brightness.light => Colors.white70,
+                                    Brightness.dark => Colors.black54,
+                                  },
+                                ),
+                              ),
+                            ],
                             style: TextStyle(
                               color: switch (Theme.of(context).brightness) {
-                                Brightness.light => Colors.white70,
-                                Brightness.dark => Colors.black54,
+                                Brightness.light => Colors.white,
+                                Brightness.dark => Colors.black,
                               },
                             ),
                           ),
-                        ],
-                        style: TextStyle(
-                          color: switch (Theme.of(context).brightness) {
-                            Brightness.light => Colors.white,
-                            Brightness.dark => Colors.black,
-                          },
+                        ),
+                        child: UserAvatar(
+                          account: account,
+                          user: user,
+                          size: leadingSize,
+                          onTap:
+                              () => context.push('/$account/users/${user.id}'),
                         ),
                       ),
-                    ),
-                    child: UserAvatar(
-                      account: account,
-                      user: user,
-                      size: leadingSize,
-                      onTap: () => context.push('/$account/users/${user.id}'),
-                    ),
-                  ),
-                )
-                .toList(),
+                    )
+                    .toList(),
             createdAt: notification.createdAt,
           );
         }
@@ -693,60 +729,57 @@ class NotificationWidget extends ConsumerWidget {
       account: account,
       user: notification.user,
       subtitle: Text(notification.type?.name ?? t.misskey.unknown),
-      actions: notification.users
-          ?.map(
-            (user) => Tooltip(
-              richMessage: WidgetSpan(
-                child: UsernameWidget(
-                  account: account,
-                  user: user,
-                  trailingSpans: [
-                    TextSpan(
-                      text: ' ${user.acct}',
+      actions:
+          notification.users
+              ?.map(
+                (user) => Tooltip(
+                  richMessage: WidgetSpan(
+                    child: UsernameWidget(
+                      account: account,
+                      user: user,
+                      trailingSpans: [
+                        TextSpan(
+                          text: ' ${user.acct}',
+                          style: TextStyle(
+                            color: switch (Theme.of(context).brightness) {
+                              Brightness.light => Colors.white70,
+                              Brightness.dark => Colors.black54,
+                            },
+                          ),
+                        ),
+                      ],
                       style: TextStyle(
                         color: switch (Theme.of(context).brightness) {
-                          Brightness.light => Colors.white70,
-                          Brightness.dark => Colors.black54,
+                          Brightness.light => Colors.white,
+                          Brightness.dark => Colors.black,
                         },
                       ),
                     ),
-                  ],
-                  style: TextStyle(
-                    color: switch (Theme.of(context).brightness) {
-                      Brightness.light => Colors.white,
-                      Brightness.dark => Colors.black,
-                    },
+                  ),
+                  child: UserAvatar(
+                    account: account,
+                    user: user,
+                    size: leadingSize,
+                    onTap: () => context.push('/$account/users/${user.id}'),
                   ),
                 ),
-              ),
-              child: UserAvatar(
-                account: account,
-                user: user,
-                size: leadingSize,
-                onTap: () => context.push('/$account/users/${user.id}'),
-              ),
-            ),
-          )
-          .toList(),
+              )
+              .toList(),
       createdAt: notification.createdAt,
       onTap: switch (notification) {
-        INotificationsResponse(:final noteId?) => () =>
-            context.push('/$account/notes/$noteId'),
-        INotificationsResponse(:final userId?) => () =>
-            context.push('/$account/users/$userId'),
+        INotificationsResponse(:final noteId?) =>
+          () => context.push('/$account/notes/$noteId'),
+        INotificationsResponse(:final userId?) =>
+          () => context.push('/$account/users/$userId'),
         _ => null,
       },
       onLongPress: switch (notification) {
-        INotificationsResponse(:final noteId?) => () => showNoteSheet(
-              context: context,
-              account: account,
-              noteId: noteId,
-            ),
-        INotificationsResponse(:final userId?) => () => showUserSheet(
-              context: context,
-              account: account,
-              userId: userId,
-            ),
+        INotificationsResponse(:final noteId?) =>
+          () =>
+              showNoteSheet(context: context, account: account, noteId: noteId),
+        INotificationsResponse(:final userId?) =>
+          () =>
+              showUserSheet(context: context, account: account, userId: userId),
         _ => null,
       },
     );
@@ -784,18 +817,22 @@ class _NotificationTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final (verticalPadding, horizontalPadding) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+        (settings) => (
+          settings.noteVerticalPadding,
+          settings.noteHorizontalPadding,
+        ),
       ),
     );
     final avatarScale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.avatarScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.avatarScale,
+      ),
     );
     final style = DefaultTextStyle.of(context).style;
     final leadingSize = style.lineHeight * avatarScale;
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return InkWell(
       onTap: onTap,
@@ -847,10 +884,7 @@ class _NotificationTile extends ConsumerWidget {
                                   size: 20.0,
                                   color: Colors.white,
                                 ),
-                                child: SizedBox(
-                                  width: 20.0,
-                                  child: icon,
-                                ),
+                                child: SizedBox(width: 20.0, child: icon),
                               ),
                             ),
                           ),
@@ -872,21 +906,25 @@ class _NotificationTile extends ConsumerWidget {
                     Expanded(
                       child: Align(
                         alignment: AlignmentDirectional.centerStart,
-                        child: title ??
+                        child:
+                            title ??
                             (user != null
                                 ? InkWell(
-                                    onTap: () => context
-                                        .push('/$account/users/${user!.id}'),
-                                    onLongPress: () => showUserSheet(
-                                      context: context,
-                                      account: account,
-                                      userId: user!.id,
-                                    ),
-                                    child: UsernameWidget(
-                                      account: account,
-                                      user: user!,
-                                    ),
-                                  )
+                                  onTap:
+                                      () => context.push(
+                                        '/$account/users/${user!.id}',
+                                      ),
+                                  onLongPress:
+                                      () => showUserSheet(
+                                        context: context,
+                                        account: account,
+                                        userId: user!.id,
+                                      ),
+                                  child: UsernameWidget(
+                                    account: account,
+                                    user: user!,
+                                  ),
+                                )
                                 : null),
                       ),
                     ),
@@ -911,11 +949,7 @@ class _NotificationTile extends ConsumerWidget {
                   ),
                 if (actions case final actions?) ...[
                   const SizedBox(height: 4.0),
-                  Wrap(
-                    spacing: 8.0,
-                    runSpacing: 8.0,
-                    children: actions,
-                  ),
+                  Wrap(spacing: 8.0, runSpacing: 8.0, children: actions),
                 ],
                 SizedBox(height: verticalPadding),
               ],

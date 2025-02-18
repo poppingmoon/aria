@@ -62,14 +62,8 @@ class PlayerEmbed extends HookConsumerWidget {
 
     if (width != null && height != null) {
       final aspectRatio = width / height;
-      return AspectRatio(
-        aspectRatio: aspectRatio,
-        child: webView,
-      );
+      return AspectRatio(aspectRatio: aspectRatio, child: webView);
     }
-    return SizedBox(
-      height: height ?? 200.0,
-      child: webView,
-    );
+    return SizedBox(height: height ?? 200.0, child: webView);
   }
 }

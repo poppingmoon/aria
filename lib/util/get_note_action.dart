@@ -23,24 +23,26 @@ void Function()? getNoteAction(
   }
   return switch (type) {
     NoteActionType.none => null,
-    NoteActionType.expand => () =>
-        ref.context.push('/$account/notes/${appearNote.id}'),
-    NoteActionType.menu => () => showNoteSheet(
-          context: ref.context,
-          account: account,
-          noteId: note.id,
-        ),
-    NoteActionType.reaction => !account.isGuest
-        ? () async {
+    NoteActionType.expand =>
+      () => ref.context.push('/$account/notes/${appearNote.id}'),
+    NoteActionType.menu =>
+      () => showNoteSheet(
+        context: ref.context,
+        account: account,
+        noteId: note.id,
+      ),
+    NoteActionType.reaction =>
+      !account.isGuest
+          ? () async {
             final emoji =
                 appearNote.reactionAcceptance == ReactionAcceptance.likeOnly
                     ? '❤'
                     : await pickEmoji(
-                        ref,
-                        account,
-                        saveHistory: false,
-                        confirmBeforePop: true,
-                      );
+                      ref,
+                      account,
+                      saveHistory: false,
+                      confirmBeforePop: true,
+                    );
             if (!ref.context.mounted) return;
             if (emoji != null) {
               if (appearNote.reactionAcceptance ==
@@ -66,6 +68,6 @@ void Function()? getNoteAction(
               );
             }
           }
-        : null,
+          : null,
   };
 }

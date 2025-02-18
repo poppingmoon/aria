@@ -19,16 +19,19 @@ class GalleryFeatured extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: posts,
-      itemBuilder: (context, post) => GalleryPostPreview(
-        account: account,
-        post: post,
-        onTap: () => context.push('/$account/gallery/${post.id}'),
-      ),
-      onRefresh: () =>
-          ref.refresh(featuredGalleryPostsNotifierProvider(account).future),
-      loadMore: (skipError) => ref
-          .read(featuredGalleryPostsNotifierProvider(account).notifier)
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, post) => GalleryPostPreview(
+            account: account,
+            post: post,
+            onTap: () => context.push('/$account/gallery/${post.id}'),
+          ),
+      onRefresh:
+          () =>
+              ref.refresh(featuredGalleryPostsNotifierProvider(account).future),
+      loadMore:
+          (skipError) => ref
+              .read(featuredGalleryPostsNotifierProvider(account).notifier)
+              .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

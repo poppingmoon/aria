@@ -12,10 +12,7 @@ part 'user_pages_notifier_provider.g.dart';
 @riverpod
 class UserPagesNotifier extends _$UserPagesNotifier {
   @override
-  FutureOr<PaginationState<Page>> build(
-    Account account,
-    String userId,
-  ) async {
+  FutureOr<PaginationState<Page>> build(Account account, String userId) async {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -31,12 +28,11 @@ class UserPagesNotifier extends _$UserPagesNotifier {
     }
   }
 
-  Future<Iterable<Page>> _fetchPages({
-    String? untilId,
-  }) async {
-    return ref.read(misskeyProvider(account)).users.pages(
-          UsersPagesRequest(userId: userId, untilId: untilId),
-        );
+  Future<Iterable<Page>> _fetchPages({String? untilId}) async {
+    return ref
+        .read(misskeyProvider(account))
+        .users
+        .pages(UsersPagesRequest(userId: userId, untilId: untilId));
   }
 
   Future<void> loadMore({bool skipError = false}) async {

@@ -8,11 +8,7 @@ import 'misskey_provider.dart';
 part 'drive_folder_provider.g.dart';
 
 @riverpod
-FutureOr<DriveFolder> driveFolder(
-  Ref ref,
-  Account account,
-  String folderId,
-) {
+FutureOr<DriveFolder> driveFolder(Ref ref, Account account, String folderId) {
   return ref
       .read(misskeyProvider(account))
       .drive

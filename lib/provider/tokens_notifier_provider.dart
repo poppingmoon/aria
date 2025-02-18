@@ -17,10 +17,7 @@ class TokensNotifier extends _$TokensNotifier {
     try {
       final token = await ref.read(tokenRepositoryProvider).readToken(account);
       if (token != null) {
-        state = {
-          ...state,
-          account: token,
-        };
+        state = {...state, account: token};
       } else {
         await ref.read(accountsNotifierProvider.notifier).remove(account);
       }
@@ -28,10 +25,7 @@ class TokensNotifier extends _$TokensNotifier {
   }
 
   Future<void> add(Account account, String token) async {
-    state = {
-      ...state,
-      account: token,
-    };
+    state = {...state, account: token};
     await ref.read(tokenRepositoryProvider).writeToken(account, token);
   }
 

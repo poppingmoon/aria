@@ -110,11 +110,12 @@ class FilePickerSheet extends ConsumerWidget {
             if (allowMultiple) {
               final result = await showDialog<List<DriveFile>>(
                 context: context,
-                builder: (context) => DrivePage(
-                  account: account,
-                  selectFiles: true,
-                  type: type ?? FileType.any,
-                ),
+                builder:
+                    (context) => DrivePage(
+                      account: account,
+                      selectFiles: true,
+                      type: type ?? FileType.any,
+                    ),
               );
               if (!context.mounted) return;
               if (result != null) {
@@ -127,11 +128,12 @@ class FilePickerSheet extends ConsumerWidget {
             } else {
               final result = await showDialog<DriveFile>(
                 context: context,
-                builder: (context) => DrivePage(
-                  account: account,
-                  selectFile: true,
-                  type: type ?? FileType.any,
-                ),
+                builder:
+                    (context) => DrivePage(
+                      account: account,
+                      selectFile: true,
+                      type: type ?? FileType.any,
+                    ),
               );
               if (!context.mounted) return;
               if (result != null) {
@@ -160,15 +162,13 @@ class FilePickerSheet extends ConsumerWidget {
             unawaited(
               ref.read(mainStreamNotifierProvider(account).notifier).connect(),
             );
-            final sub = ref.listenManual(mainStreamNotifierProvider(account),
-                (_, next) async {
-              if (next
-                  case AsyncData(
-                    value: UrlUploadFinished(
-                      marker: final m?,
-                      :final file,
-                    ),
-                  )) {
+            final sub = ref.listenManual(mainStreamNotifierProvider(account), (
+              _,
+              next,
+            ) async {
+              if (next case AsyncData(
+                value: UrlUploadFinished(marker: final m?, :final file),
+              )) {
                 if (m == marker) {
                   completer.complete(file);
                 }
@@ -178,7 +178,11 @@ class FilePickerSheet extends ConsumerWidget {
                 ref.read(accountSettingsNotifierProvider(account)).uploadFolder;
             await futureWithDialog(
               context,
-              ref.read(misskeyProvider(account)).drive.files.uploadFromUrl(
+              ref
+                  .read(misskeyProvider(account))
+                  .drive
+                  .files
+                  .uploadFromUrl(
                     DriveFilesUploadFromUrlRequest(
                       url: url.toString(),
                       folderId: folderId,
@@ -210,7 +214,11 @@ class FilePickerSheet extends ConsumerWidget {
             if (file == null) return;
             final updated = await futureWithDialog(
               context,
-              ref.read(misskeyProvider(account)).drive.files.update(
+              ref
+                  .read(misskeyProvider(account))
+                  .drive
+                  .files
+                  .update(
                     DriveFilesUpdateRequest(fileId: file.id, comment: ''),
                   ),
             );

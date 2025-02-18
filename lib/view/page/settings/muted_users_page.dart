@@ -27,50 +27,57 @@ class MutedUsersPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.mutedUsers)),
       body: PaginatedListView(
         paginationState: mutings,
-        itemBuilder: (context, muting) => ListTile(
-          leading: UserAvatar(account: account, user: muting.mutee, size: 32.0),
-          title: UsernameWidget(account: account, user: muting.mutee),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AcctWidget(account: account, user: muting.mutee),
-              TimeWidget(time: muting.createdAt, detailed: true),
-              if (muting.expiresAt != null)
-                TimeWidget(time: muting.expiresAt, detailed: true)
-              else
-                Text(t.misskey.indefinitely),
-            ],
-          ),
-          trailing: IconButton(
-            onPressed: () async {
-              final confirmed = await confirm(
-                context,
-                message: t.misskey.deleteConfirm,
-              );
-              if (!context.mounted) return;
-              if (confirmed) {
-                await futureWithDialog(
-                  context,
-                  ref
-                      .read(mutingsNotifierProvider(account).notifier)
-                      .delete(muting.muteeId),
-                );
-              }
-            },
-            icon: const Icon(Icons.close),
-            color: Theme.of(context).colorScheme.error,
-          ),
-          onTap: () => context.push('/$account/users/${muting.muteeId}'),
-          onLongPress: () => showUserSheet(
-            context: context,
-            account: account,
-            userId: muting.muteeId,
-          ),
-        ),
+        itemBuilder:
+            (context, muting) => ListTile(
+              leading: UserAvatar(
+                account: account,
+                user: muting.mutee,
+                size: 32.0,
+              ),
+              title: UsernameWidget(account: account, user: muting.mutee),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AcctWidget(account: account, user: muting.mutee),
+                  TimeWidget(time: muting.createdAt, detailed: true),
+                  if (muting.expiresAt != null)
+                    TimeWidget(time: muting.expiresAt, detailed: true)
+                  else
+                    Text(t.misskey.indefinitely),
+                ],
+              ),
+              trailing: IconButton(
+                onPressed: () async {
+                  final confirmed = await confirm(
+                    context,
+                    message: t.misskey.deleteConfirm,
+                  );
+                  if (!context.mounted) return;
+                  if (confirmed) {
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(mutingsNotifierProvider(account).notifier)
+                          .delete(muting.muteeId),
+                    );
+                  }
+                },
+                icon: const Icon(Icons.close),
+                color: Theme.of(context).colorScheme.error,
+              ),
+              onTap: () => context.push('/$account/users/${muting.muteeId}'),
+              onLongPress:
+                  () => showUserSheet(
+                    context: context,
+                    account: account,
+                    userId: muting.muteeId,
+                  ),
+            ),
         onRefresh: () => ref.refresh(mutingsNotifierProvider(account).future),
-        loadMore: (skipError) => ref
-            .read(mutingsNotifierProvider(account).notifier)
-            .loadMore(skipError: skipError),
+        loadMore:
+            (skipError) => ref
+                .read(mutingsNotifierProvider(account).notifier)
+                .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noUsers,
       ),
     );

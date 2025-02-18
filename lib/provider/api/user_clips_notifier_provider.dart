@@ -12,10 +12,7 @@ part 'user_clips_notifier_provider.g.dart';
 @riverpod
 class UserClipsNotifier extends _$UserClipsNotifier {
   @override
-  FutureOr<PaginationState<Clip>> build(
-    Account account,
-    String userId,
-  ) async {
+  FutureOr<PaginationState<Clip>> build(Account account, String userId) async {
     final link = ref.keepAlive();
     Timer? timer;
     ref.onCancel(() => timer = Timer(const Duration(minutes: 5), link.close));
@@ -31,12 +28,11 @@ class UserClipsNotifier extends _$UserClipsNotifier {
     }
   }
 
-  Future<Iterable<Clip>> _fetchClips({
-    String? untilId,
-  }) async {
-    return ref.read(misskeyProvider(account)).users.clips(
-          UsersClipsRequest(userId: userId, untilId: untilId),
-        );
+  Future<Iterable<Clip>> _fetchClips({String? untilId}) async {
+    return ref
+        .read(misskeyProvider(account))
+        .users
+        .clips(UsersClipsRequest(userId: userId, untilId: untilId));
   }
 
   Future<void> loadMore({bool skipError = false}) async {

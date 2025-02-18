@@ -6,12 +6,7 @@ import '../../i18n/strings.g.dart';
 import '../../util/copy_text.dart';
 
 class KeyValueWidget extends ConsumerWidget {
-  const KeyValueWidget({
-    super.key,
-    required this.label,
-    this.text,
-    this.child,
-  });
+  const KeyValueWidget({super.key, required this.label, this.text, this.child});
 
   final String label;
   final String? text;
@@ -38,9 +33,12 @@ class KeyValueWidget extends ConsumerWidget {
                   text != null ? () => copyToClipboard(context, text!) : null,
               child: Text(
                 text ?? '(${t.misskey.none})',
-                style: text == null
-                    ? style.apply(color: style.color?.withValues(alpha: 0.5))
-                    : null,
+                style:
+                    text == null
+                        ? style.apply(
+                          color: style.color?.withValues(alpha: 0.5),
+                        )
+                        : null,
               ),
             ),
       ],

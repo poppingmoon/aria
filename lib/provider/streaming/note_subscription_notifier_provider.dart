@@ -29,9 +29,7 @@ class NoteSubscriptionNotifier extends _$NoteSubscriptionNotifier {
     _webSocketChannel.sink.add(
       jsonEncode({
         'type': 's',
-        'body': {
-          'id': noteId,
-        },
+        'body': {'id': noteId},
       }),
     );
   }
@@ -41,9 +39,7 @@ class NoteSubscriptionNotifier extends _$NoteSubscriptionNotifier {
     _webSocketChannel.sink.add(
       jsonEncode({
         'type': 'un',
-        'body': {
-          'id': noteId,
-        },
+        'body': {'id': noteId},
       }),
     );
   }

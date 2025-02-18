@@ -43,10 +43,7 @@ class AntennasNotifier extends _$AntennasNotifier {
         excludeBots: excludeBots,
       ),
     );
-    state = AsyncValue.data([
-      antenna,
-      ...?state.valueOrNull,
-    ]);
+    state = AsyncValue.data([antenna, ...?state.valueOrNull]);
   }
 
   Future<void> updateAntenna(
@@ -80,20 +77,21 @@ class AntennasNotifier extends _$AntennasNotifier {
     );
     state = AsyncValue.data([
       ...?state.valueOrNull?.map(
-        (e) => e.id == antenna.id
-            ? e.copyWith(
-                name: name ?? antenna.name,
-                src: src ?? antenna.src ?? AntennaSource.all,
-                keywords: keywords ?? antenna.keywords,
-                excludeKeywords: excludeKeywords ?? antenna.excludeKeywords,
-                users: users ?? antenna.users,
-                caseSensitive: caseSensitive ?? antenna.caseSensitive,
-                withReplies: withReplies ?? antenna.withReplies,
-                withFile: withFile ?? antenna.withFile,
-                localOnly: localOnly ?? antenna.localOnly,
-                excludeBots: excludeBots ?? antenna.excludeBots,
-              )
-            : e,
+        (e) =>
+            e.id == antenna.id
+                ? e.copyWith(
+                  name: name ?? antenna.name,
+                  src: src ?? antenna.src ?? AntennaSource.all,
+                  keywords: keywords ?? antenna.keywords,
+                  excludeKeywords: excludeKeywords ?? antenna.excludeKeywords,
+                  users: users ?? antenna.users,
+                  caseSensitive: caseSensitive ?? antenna.caseSensitive,
+                  withReplies: withReplies ?? antenna.withReplies,
+                  withFile: withFile ?? antenna.withFile,
+                  localOnly: localOnly ?? antenna.localOnly,
+                  excludeBots: excludeBots ?? antenna.excludeBots,
+                )
+                : e,
       ),
     ]);
   }

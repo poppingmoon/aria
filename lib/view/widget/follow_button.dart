@@ -14,11 +14,7 @@ import 'user_avatar.dart';
 import 'username_widget.dart';
 
 class FollowButton extends HookConsumerWidget {
-  const FollowButton({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const FollowButton({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -52,8 +48,9 @@ class FollowButton extends HookConsumerWidget {
             content: UsernameWidget(
               account: account,
               user: user,
-              builder: (context, span) =>
-                  Text.rich(t.aria.unfollowConfirm(name: span)),
+              builder:
+                  (context, span) =>
+                      Text.rich(t.aria.unfollowConfirm(name: span)),
             ),
           );
           if (!context.mounted) return;
@@ -107,8 +104,9 @@ class FollowButton extends HookConsumerWidget {
               content: UsernameWidget(
                 account: account,
                 user: user,
-                builder: (context, span) =>
-                    Text.rich(t.aria.followConfirm(name: span)),
+                builder:
+                    (context, span) =>
+                        Text.rich(t.aria.followConfirm(name: span)),
               ),
               okText:
                   user.isLocked ? t.misskey.followRequest : t.misskey.follow,

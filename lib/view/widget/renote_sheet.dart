@@ -22,11 +22,7 @@ import 'note_visibility_sheet.dart';
 import 'note_visibility_widget.dart';
 
 class RenoteSheet extends HookConsumerWidget {
-  const RenoteSheet({
-    super.key,
-    required this.account,
-    required this.note,
-  });
+  const RenoteSheet({super.key, required this.account, required this.note});
 
   final Account account;
   final Note note;
@@ -42,9 +38,10 @@ class RenoteSheet extends HookConsumerWidget {
       NoteVisibility.min(
         ref.read(
           accountSettingsNotifierProvider(account).select(
-            (settings) => settings.rememberRenoteVisibility
-                ? settings.renoteVisibility
-                : settings.defaultRenoteVisibility,
+            (settings) =>
+                settings.rememberRenoteVisibility
+                    ? settings.renoteVisibility
+                    : settings.defaultRenoteVisibility,
           ),
         ),
         isSilenced
@@ -56,9 +53,10 @@ class RenoteSheet extends HookConsumerWidget {
       note.localOnly ||
           ref.read(
             accountSettingsNotifierProvider(account).select(
-              (settings) => settings.rememberRenoteVisibility
-                  ? settings.renoteLocalOnly
-                  : settings.defaultRenoteLocalOnly,
+              (settings) =>
+                  settings.rememberRenoteVisibility
+                      ? settings.renoteLocalOnly
+                      : settings.defaultRenoteLocalOnly,
             ),
           ),
     );
@@ -70,9 +68,10 @@ class RenoteSheet extends HookConsumerWidget {
         SwitchListTile(
           title: Text(t.aria.renoteToChannel),
           value: renoteToChannel.value,
-          onChanged: note.channel?.allowRenoteToExternal ?? true
-              ? (value) => renoteToChannel.value = value
-              : null,
+          onChanged:
+              note.channel?.allowRenoteToExternal ?? true
+                  ? (value) => renoteToChannel.value = value
+                  : null,
         ),
         const Divider(height: 0.0),
         if (renoteToChannel.value)
@@ -84,16 +83,19 @@ class RenoteSheet extends HookConsumerWidget {
             onTap: () async {
               final result = await showDialog<CommunityChannel>(
                 context: context,
-                builder: (context) => ChannelsPage(
-                  account: account,
-                  onChannelTap: (channel) => context.pop(channel),
-                  initialIndex: 2,
-                ),
+                builder:
+                    (context) => ChannelsPage(
+                      account: account,
+                      onChannelTap: (channel) => context.pop(channel),
+                      initialIndex: 2,
+                    ),
               );
               if (!context.mounted) return;
               if (result != null) {
-                channel.value =
-                    NoteChannelInfo(id: result.id, name: result.name);
+                channel.value = NoteChannelInfo(
+                  id: result.id,
+                  name: result.name,
+                );
               }
             },
             enabled: note.channel?.allowRenoteToExternal ?? true,
@@ -115,8 +117,8 @@ class RenoteSheet extends HookConsumerWidget {
               );
               final result = await showModalBottomSheet<NoteVisibility>(
                 context: context,
-                builder: (context) =>
-                    NoteVisibilitySheet(visibilities: candidates),
+                builder:
+                    (context) => NoteVisibilitySheet(visibilities: candidates),
               );
               if (!context.mounted) return;
               if (result != null) {
@@ -149,9 +151,10 @@ class RenoteSheet extends HookConsumerWidget {
                         username: user.username,
                         host: user.host ?? account.host,
                         onDeleted: () {
-                          visibleUsers.value = visibleUsers.value
-                              .where((e) => e.id != user.id)
-                              .toList();
+                          visibleUsers.value =
+                              visibleUsers.value
+                                  .where((e) => e.id != user.id)
+                                  .toList();
                         },
                       ),
                     ),
@@ -173,77 +176,85 @@ class RenoteSheet extends HookConsumerWidget {
             secondary: Icon(localOnly.value ? OffIcons.rocket : Icons.rocket),
             title: Text(t.misskey.localOnly),
             value: localOnly.value,
-            onChanged: !note.localOnly
-                ? (value) {
-                    localOnly.value = value;
-                    if (ref
-                        .read(accountSettingsNotifierProvider(account))
-                        .rememberRenoteVisibility) {
-                      ref
-                          .read(
-                            accountSettingsNotifierProvider(account).notifier,
-                          )
-                          .setRenoteLocalOnly(value);
+            onChanged:
+                !note.localOnly
+                    ? (value) {
+                      localOnly.value = value;
+                      if (ref
+                          .read(accountSettingsNotifierProvider(account))
+                          .rememberRenoteVisibility) {
+                        ref
+                            .read(
+                              accountSettingsNotifierProvider(account).notifier,
+                            )
+                            .setRenoteLocalOnly(value);
+                      }
                     }
-                  }
-                : null,
+                    : null,
           ),
         ],
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton.icon(
-            onPressed: !renoteToChannel.value || channel.value != null
-                ? () async {
-                    final request = NotesCreateRequest(renoteId: note.id);
-                    if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmBeforePost) {
-                      final confirmed = await confirmPost(
-                        ref,
-                        account,
-                        request,
-                      );
-                      if (!confirmed) return;
-                    }
-                    if (!context.mounted) return;
-                    if (renoteToChannel.value) {
-                      if (channel.value case final channel?) {
+            onPressed:
+                !renoteToChannel.value || channel.value != null
+                    ? () async {
+                      final request = NotesCreateRequest(renoteId: note.id);
+                      if (ref
+                          .read(generalSettingsNotifierProvider)
+                          .confirmBeforePost) {
+                        final confirmed = await confirmPost(
+                          ref,
+                          account,
+                          request,
+                        );
+                        if (!confirmed) return;
+                      }
+                      if (!context.mounted) return;
+                      if (renoteToChannel.value) {
+                        if (channel.value case final channel?) {
+                          final result = await futureWithDialog(
+                            context,
+                            ref
+                                .read(misskeyProvider(account))
+                                .notes
+                                .create(
+                                  request.copyWith(channelId: channel.id),
+                                ),
+                            message: t.misskey.renotedToX(name: channel.name),
+                          );
+                          if (result != null) {
+                            ref
+                                .read(notesNotifierProvider(account).notifier)
+                                .add(result);
+                            if (!context.mounted) return;
+                            context.pop(result);
+                          }
+                        }
+                      } else {
                         final result = await futureWithDialog(
                           context,
-                          ref.read(misskeyProvider(account)).notes.create(
-                                request.copyWith(channelId: channel.id),
+                          ref
+                              .read(misskeyProvider(account))
+                              .notes
+                              .create(
+                                request.copyWith(
+                                  visibility: visibility.value,
+                                  localOnly: localOnly.value,
+                                ),
                               ),
-                          message: t.misskey.renotedToX(name: channel.name),
+                          message: t.misskey.renoted,
                         );
+                        if (!context.mounted) return;
                         if (result != null) {
                           ref
                               .read(notesNotifierProvider(account).notifier)
                               .add(result);
-                          if (!context.mounted) return;
                           context.pop(result);
                         }
                       }
-                    } else {
-                      final result = await futureWithDialog(
-                        context,
-                        ref.read(misskeyProvider(account)).notes.create(
-                              request.copyWith(
-                                visibility: visibility.value,
-                                localOnly: localOnly.value,
-                              ),
-                            ),
-                        message: t.misskey.renoted,
-                      );
-                      if (!context.mounted) return;
-                      if (result != null) {
-                        ref
-                            .read(notesNotifierProvider(account).notifier)
-                            .add(result);
-                        context.pop(result);
-                      }
                     }
-                  }
-                : null,
+                    : null,
             icon: const Icon(Icons.repeat_rounded),
             label: Text(t.misskey.renote),
           ),

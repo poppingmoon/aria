@@ -47,13 +47,14 @@ class GalleryPage extends ConsumerWidget {
             ],
           ],
         ),
-        floatingActionButton: !account.isGuest
-            ? FloatingActionButton(
-                tooltip: t.misskey.postToGallery,
-                onPressed: () => context.push('/$account/gallery/new'),
-                child: const Icon(Icons.add),
-              )
-            : null,
+        floatingActionButton:
+            !account.isGuest
+                ? FloatingActionButton(
+                  tooltip: t.misskey.postToGallery,
+                  onPressed: () => context.push('/$account/gallery/new'),
+                  child: const Icon(Icons.add),
+                )
+                : null,
       ),
     );
   }

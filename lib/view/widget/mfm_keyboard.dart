@@ -55,12 +55,14 @@ class MfmKeyboard extends HookConsumerWidget {
       return (null, -1);
     }
     final textBeforeSelection = controller.text.substring(0, start);
-    final tagIndexes = TagType.values
-        .map(
-          (type) => textBeforeSelection
-              .lastIndexOf(RegExp(RegExp.escape(type.tag) + r'\S*$')),
-        )
-        .toList();
+    final tagIndexes =
+        TagType.values
+            .map(
+              (type) => textBeforeSelection.lastIndexOf(
+                RegExp(RegExp.escape(type.tag) + r'\S*$'),
+              ),
+            )
+            .toList();
     final lastIndex = tagIndexes.max;
     if (lastIndex >= 0) {
       return (TagType.values[tagIndexes.indexOf(lastIndex)], lastIndex);
@@ -72,44 +74,45 @@ class MfmKeyboard extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tagType = useState<TagType?>(null);
-    useEffect(
-      () {
-        void callback() {
-          final (type, _) = getLastTag();
-          tagType.value = type;
-        }
+    useEffect(() {
+      void callback() {
+        final (type, _) = getLastTag();
+        tagType.value = type;
+      }
 
-        callback();
-        controller.addListener(callback);
-        return () => controller.removeListener(callback);
-      },
-      [account, controller],
-    );
+      callback();
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [account, controller]);
 
     return switch (tagType.value) {
       TagType.emoji => MfmEmojiKeyboard(
-          account: account,
-          controller: controller,
-          fallbackBuilder: (context) =>
-              MfmBasicKeyboard(account: account, controller: controller),
-        ),
+        account: account,
+        controller: controller,
+        fallbackBuilder:
+            (context) =>
+                MfmBasicKeyboard(account: account, controller: controller),
+      ),
       TagType.mfmFn => MfmFnKeyboard(
-          controller: controller,
-          fallbackBuilder: (context) =>
-              MfmBasicKeyboard(account: account, controller: controller),
-        ),
+        controller: controller,
+        fallbackBuilder:
+            (context) =>
+                MfmBasicKeyboard(account: account, controller: controller),
+      ),
       TagType.mention => MfmMentionKeyboard(
-          account: account,
-          controller: controller,
-          fallbackBuilder: (context) =>
-              MfmBasicKeyboard(account: account, controller: controller),
-        ),
+        account: account,
+        controller: controller,
+        fallbackBuilder:
+            (context) =>
+                MfmBasicKeyboard(account: account, controller: controller),
+      ),
       TagType.hashtag => MfmHashtagKeyboard(
-          account: account,
-          controller: controller,
-          fallbackBuilder: (context) =>
-              MfmBasicKeyboard(account: account, controller: controller),
-        ),
+        account: account,
+        controller: controller,
+        fallbackBuilder:
+            (context) =>
+                MfmBasicKeyboard(account: account, controller: controller),
+      ),
       null => MfmBasicKeyboard(account: account, controller: controller),
     };
   }
@@ -134,10 +137,7 @@ class _MfmKeyboardContainer extends StatelessWidget {
             foregroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
           ),
         ),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: children,
-        ),
+        child: ListView(scrollDirection: Axis.horizontal, children: children),
       ),
     );
   }
@@ -245,32 +245,32 @@ class MfmEmojiKeyboard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
     final isAfterCloseTag = useState(false);
-    useEffect(
-      () {
-        void callback() {
-          final selectionIndex = max(0, controller.selection.start);
-          final textBeforeSelection =
-              controller.text.substring(0, selectionIndex);
-          final match = RegExp(r':([^:\s]*)$').firstMatch(textBeforeSelection);
-          if (match == null) {
-            query.value = '';
-            return;
-          }
-          query.value = match[1] ?? '';
-          final tagIndex = min(
-            selectionIndex - (match[0]?.length ?? 0),
-            controller.text.length,
-          );
-          isAfterCloseTag.value =
-              RegExp(r':\w+$').hasMatch(controller.text.substring(0, tagIndex));
+    useEffect(() {
+      void callback() {
+        final selectionIndex = max(0, controller.selection.start);
+        final textBeforeSelection = controller.text.substring(
+          0,
+          selectionIndex,
+        );
+        final match = RegExp(r':([^:\s]*)$').firstMatch(textBeforeSelection);
+        if (match == null) {
+          query.value = '';
+          return;
         }
+        query.value = match[1] ?? '';
+        final tagIndex = min(
+          selectionIndex - (match[0]?.length ?? 0),
+          controller.text.length,
+        );
+        isAfterCloseTag.value = RegExp(
+          r':\w+$',
+        ).hasMatch(controller.text.substring(0, tagIndex));
+      }
 
-        callback();
-        controller.addListener(callback);
-        return () => controller.removeListener(callback);
-      },
-      [account, controller],
-    );
+      callback();
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [account, controller]);
 
     if (!isAfterCloseTag.value) {
       final emojis = [
@@ -294,8 +294,8 @@ class MfmEmojiKeyboard extends HookConsumerWidget {
                 style: TextButton.styleFrom(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 ),
-                onPressed: () =>
-                    controller.replace(query.value.length + 1, emoji),
+                onPressed:
+                    () => controller.replace(query.value.length + 1, emoji),
                 child: EmojiWidget(account: account, emoji: emoji),
               ),
             ),
@@ -331,22 +331,10 @@ class MfmFnKeyboard extends HookConsumerWidget {
   final Widget Function(BuildContext context)? fallbackBuilder;
 
   static const Map<String, Map<String, String?>> _mfmFn = {
-    'tada': {
-      'delay': '0s',
-      'speed': '1s',
-    },
-    'jelly': {
-      'speed': '1s',
-      'delay': '0s',
-    },
-    'twitch': {
-      'speed': '0.5s',
-      'delay': '0s',
-    },
-    'shake': {
-      'speed': '0.5s',
-      'delay': '0s',
-    },
+    'tada': {'delay': '0s', 'speed': '1s'},
+    'jelly': {'speed': '1s', 'delay': '0s'},
+    'twitch': {'speed': '0.5s', 'delay': '0s'},
+    'shake': {'speed': '0.5s', 'delay': '0s'},
     'spin': {
       'speed': '1.5s',
       'delay': '0s',
@@ -355,35 +343,16 @@ class MfmFnKeyboard extends HookConsumerWidget {
       'left': null,
       'alternate': null,
     },
-    'jump': {
-      'speed': '0.75s',
-      'delay': '0s',
-    },
-    'bounce': {
-      'speed': '0.75s',
-      'delay': '0s',
-    },
-    'flip': {
-      'v': null,
-      'h': null,
-    },
+    'jump': {'speed': '0.75s', 'delay': '0s'},
+    'bounce': {'speed': '0.75s', 'delay': '0s'},
+    'flip': {'v': null, 'h': null},
     'x2': {},
     'x3': {},
     'x4': {},
-    'scale': {
-      'x': '1',
-      'y': '1',
-    },
-    'position': {
-      'x': '0',
-      'y': '0',
-    },
-    'fg': {
-      'color': null,
-    },
-    'bg': {
-      'color': null,
-    },
+    'scale': {'x': '1', 'y': '1'},
+    'position': {'x': '0', 'y': '0'},
+    'fg': {'color': null},
+    'bg': {'color': null},
     'border': {
       'color': null,
       'style': 'solid',
@@ -398,15 +367,9 @@ class MfmFnKeyboard extends HookConsumerWidget {
       'fantasy': null,
     },
     'blur': {},
-    'rainbow': {
-      'speed': '1s',
-    },
-    'sparkle': {
-      'speed': '1.5s',
-    },
-    'rotate': {
-      'deg': '90',
-    },
+    'rainbow': {'speed': '1s'},
+    'sparkle': {'speed': '1.5s'},
+    'rotate': {'deg': '90'},
     'ruby': {},
     'unixtime': {},
   };
@@ -415,80 +378,83 @@ class MfmFnKeyboard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
     final periodIndex = useState(-1);
-    useEffect(
-      () {
-        void callback() {
-          final selectionIndex = max(0, controller.selection.start);
-          final textBeforeSelection =
-              controller.text.substring(0, selectionIndex);
-          final match = RegExp(r'\$\[(\S*)$').firstMatch(textBeforeSelection);
-          query.value = match?[1] ?? '';
-          periodIndex.value = query.value.indexOf('.');
-        }
+    useEffect(() {
+      void callback() {
+        final selectionIndex = max(0, controller.selection.start);
+        final textBeforeSelection = controller.text.substring(
+          0,
+          selectionIndex,
+        );
+        final match = RegExp(r'\$\[(\S*)$').firstMatch(textBeforeSelection);
+        query.value = match?[1] ?? '';
+        periodIndex.value = query.value.indexOf('.');
+      }
 
-        callback();
-        controller.addListener(callback);
-        return () => controller.removeListener(callback);
-      },
-      [controller],
-    );
+      callback();
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [controller]);
 
     if (periodIndex.value < 0 && !_mfmFn.containsKey(query.value)) {
       final fnNames = _mfmFn.keys.where((name) => name.startsWith(query.value));
       if (fnNames.isNotEmpty) {
         return _MfmKeyboardContainer(
-          children: fnNames
-              .map(
-                (name) => TextButton(
-                  onPressed: () async {
-                    controller.insert(name.substring(query.value.length));
-                    switch (name) {
-                      case 'scale' || 'position' || 'font':
-                        controller.insert('.', ' ');
-                      case 'fg' || 'bg':
-                        final color = await showColorPickerDialog(
-                          ref.context,
-                          Colors.red,
-                          pickersEnabled: {
-                            ColorPickerType.primary: false,
-                            ColorPickerType.accent: false,
-                            ColorPickerType.wheel: true,
-                          },
-                        );
-                        if (color != Colors.red) {
-                          controller.insert('.color=${color.hex} ');
-                        }
+          children:
+              fnNames
+                  .map(
+                    (name) => TextButton(
+                      onPressed: () async {
+                        controller.insert(name.substring(query.value.length));
+                        switch (name) {
+                          case 'scale' || 'position' || 'font':
+                            controller.insert('.', ' ');
+                          case 'fg' || 'bg':
+                            final color = await showColorPickerDialog(
+                              ref.context,
+                              Colors.red,
+                              pickersEnabled: {
+                                ColorPickerType.primary: false,
+                                ColorPickerType.accent: false,
+                                ColorPickerType.wheel: true,
+                              },
+                            );
+                            if (color != Colors.red) {
+                              controller.insert('.color=${color.hex} ');
+                            }
 
-                      case 'unixtime':
-                        final date = await pickDateTime(ref.context);
-                        if (date != null) {
-                          final unixtime = date.millisecondsSinceEpoch ~/ 1000;
-                          controller.insert(' $unixtime');
+                          case 'unixtime':
+                            final date = await pickDateTime(ref.context);
+                            if (date != null) {
+                              final unixtime =
+                                  date.millisecondsSinceEpoch ~/ 1000;
+                              controller.insert(' $unixtime');
+                            }
+                          default:
+                            controller.insert(' ');
                         }
-                      default:
-                        controller.insert(' ');
-                    }
-                  },
-                  child: Text(name),
-                ),
-              )
-              .toList(),
+                      },
+                      child: Text(name),
+                    ),
+                  )
+                  .toList(),
         );
       }
     } else {
       final requiresPeriod = periodIndex.value < 0;
-      final fnName = requiresPeriod
-          ? query.value
-          : query.value.substring(0, periodIndex.value);
+      final fnName =
+          requiresPeriod
+              ? query.value
+              : query.value.substring(0, periodIndex.value);
       final fnArgs = Map<String, String?>.of(_mfmFn[fnName] ?? {});
       if (fnArgs.isNotEmpty) {
-        final queryArgNames = requiresPeriod
-            ? ['']
-            : query.value
-                .substring(periodIndex.value + 1)
-                .split(',')
-                .map((s) => s.split('=').first)
-                .toList();
+        final queryArgNames =
+            requiresPeriod
+                ? ['']
+                : query.value
+                    .substring(periodIndex.value + 1)
+                    .split(',')
+                    .map((s) => s.split('=').first)
+                    .toList();
         final requiresComma = fnArgs.containsKey(queryArgNames.last);
         final argQuery = requiresComma ? '' : queryArgNames.removeLast();
         fnArgs.removeWhere(
@@ -497,68 +463,72 @@ class MfmFnKeyboard extends HookConsumerWidget {
         );
         if (fnArgs.isNotEmpty) {
           return _MfmKeyboardContainer(
-            children: fnArgs.entries
-                .map(
-                  (e) => TextButton(
-                    onPressed: () async {
-                      if (requiresPeriod) {
-                        controller.insert('.');
-                      }
-                      if (requiresComma) {
-                        controller.insert(',');
-                      }
-                      controller.insert(e.key.substring(argQuery.length));
-                      switch ((fnName, e.key)) {
-                        case (_, 'color'):
-                          final color = await showColorPickerDialog(
-                            ref.context,
-                            Colors.red,
-                            pickersEnabled: {
-                              ColorPickerType.primary: false,
-                              ColorPickerType.accent: false,
-                              ColorPickerType.wheel: true,
-                            },
-                          );
-                          if (color != Colors.red) {
-                            controller.insert('=${color.hex}');
+            children:
+                fnArgs.entries
+                    .map(
+                      (e) => TextButton(
+                        onPressed: () async {
+                          if (requiresPeriod) {
+                            controller.insert('.');
                           }
-                        case ('border', 'style'):
-                          final style = await showDialog<String>(
-                            context: ref.context,
-                            builder: (context) => SimpleDialog(
-                              children: [
-                                'hidden',
-                                'dotted',
-                                'dashed',
-                                'solid',
-                                'double',
-                                'groove',
-                                'ridge',
-                                'inset',
-                                'outset',
-                              ]
-                                  .map(
-                                    (style) => SimpleDialogOption(
-                                      onPressed: () => context.pop(style),
-                                      child: Text(style),
+                          if (requiresComma) {
+                            controller.insert(',');
+                          }
+                          controller.insert(e.key.substring(argQuery.length));
+                          switch ((fnName, e.key)) {
+                            case (_, 'color'):
+                              final color = await showColorPickerDialog(
+                                ref.context,
+                                Colors.red,
+                                pickersEnabled: {
+                                  ColorPickerType.primary: false,
+                                  ColorPickerType.accent: false,
+                                  ColorPickerType.wheel: true,
+                                },
+                              );
+                              if (color != Colors.red) {
+                                controller.insert('=${color.hex}');
+                              }
+                            case ('border', 'style'):
+                              final style = await showDialog<String>(
+                                context: ref.context,
+                                builder:
+                                    (context) => SimpleDialog(
+                                      children:
+                                          [
+                                                'hidden',
+                                                'dotted',
+                                                'dashed',
+                                                'solid',
+                                                'double',
+                                                'groove',
+                                                'ridge',
+                                                'inset',
+                                                'outset',
+                                              ]
+                                              .map(
+                                                (style) => SimpleDialogOption(
+                                                  onPressed:
+                                                      () => context.pop(style),
+                                                  child: Text(style),
+                                                ),
+                                              )
+                                              .toList(),
                                     ),
-                                  )
-                                  .toList(),
-                            ),
-                          );
-                          if (style != null) {
-                            controller.insert('=$style');
+                              );
+                              if (style != null) {
+                                controller.insert('=$style');
+                              }
+                            default:
+                              if (e.value != null) {
+                                controller.insert('=${e.value}');
+                              }
                           }
-                        default:
-                          if (e.value != null) {
-                            controller.insert('=${e.value}');
-                          }
-                      }
-                    },
-                    child: Text(e.key),
-                  ),
-                )
-                .toList(),
+                        },
+                        child: Text(e.key),
+                      ),
+                    )
+                    .toList(),
           );
         }
       }
@@ -584,60 +554,62 @@ class MfmMentionKeyboard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
     final users = useState(<UserDetailed>[]);
-    useEffect(
-      () {
-        Future<void> callback() async {
-          final selectionIndex = max(0, controller.selection.start);
-          final textBeforeSelection =
-              controller.text.substring(0, selectionIndex);
-          final match = RegExp(r'(@([a-zA-Z0-9_.-]+))?@([^@\s]*)$')
-              .firstMatch(textBeforeSelection);
-          query.value = match?[0]?.substring(1) ?? '';
-          final first = match?[2];
-          final second = match?[3];
-          final username = first ?? second;
-          final host = first != null && second != null ? toAscii(second) : null;
-          if (username != null && username.isNotEmpty) {
-            users.value = await ref.read(
-              searchUsersByUsernameProvider(
-                account,
-                username,
-                host != null && host.isNotEmpty ? host : null,
-              ).future,
-            );
-          } else {
-            users.value = [];
-          }
+    useEffect(() {
+      Future<void> callback() async {
+        final selectionIndex = max(0, controller.selection.start);
+        final textBeforeSelection = controller.text.substring(
+          0,
+          selectionIndex,
+        );
+        final match = RegExp(
+          r'(@([a-zA-Z0-9_.-]+))?@([^@\s]*)$',
+        ).firstMatch(textBeforeSelection);
+        query.value = match?[0]?.substring(1) ?? '';
+        final first = match?[2];
+        final second = match?[3];
+        final username = first ?? second;
+        final host = first != null && second != null ? toAscii(second) : null;
+        if (username != null && username.isNotEmpty) {
+          users.value = await ref.read(
+            searchUsersByUsernameProvider(
+              account,
+              username,
+              host != null && host.isNotEmpty ? host : null,
+            ).future,
+          );
+        } else {
+          users.value = [];
         }
+      }
 
-        callback();
-        controller.addListener(callback);
-        return () => controller.removeListener(callback);
-      },
-      [account, controller],
-    );
+      callback();
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [account, controller]);
     final recentlyUsedUsers =
         ref.watch(recentlyUsedUsersNotifierProvider(account)).valueOrNull;
 
     if (query.value.isEmpty ? recentlyUsedUsers : users.value case final users?
         when users.isNotEmpty) {
       return _MfmKeyboardContainer(
-        children: users
-            .map(
-              (user) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: MentionWidget(
-                  account: account,
-                  username: user.username,
-                  host: user.host ?? account.host,
-                  onTap: () => controller.replace(
-                    query.value.length + 1,
-                    '${user.acct} ',
+        children:
+            users
+                .map(
+                  (user) => Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: MentionWidget(
+                      account: account,
+                      username: user.username,
+                      host: user.host ?? account.host,
+                      onTap:
+                          () => controller.replace(
+                            query.value.length + 1,
+                            '${user.acct} ',
+                          ),
+                    ),
                   ),
-                ),
-              ),
-            )
-            .toList(),
+                )
+                .toList(),
       );
     }
 
@@ -661,46 +633,51 @@ class MfmHashtagKeyboard extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final query = useState('');
     final hashtags = useState(<String>[]);
-    useEffect(
-      () {
-        Future<void> callback() async {
-          final selectionIndex = max(0, controller.selection.start);
-          final textBeforeSelection =
-              controller.text.substring(0, selectionIndex);
-          final match = RegExp(r'#(\S*)$').firstMatch(textBeforeSelection) ??
-              RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
-          query.value = match?[1] ?? '';
-          if (query.value case final query when query.isNotEmpty) {
-            hashtags.value =
-                await ref.read(searchHashtagsProvider(account, query).future);
-          } else {
-            hashtags.value = [];
-          }
+    useEffect(() {
+      Future<void> callback() async {
+        final selectionIndex = max(0, controller.selection.start);
+        final textBeforeSelection = controller.text.substring(
+          0,
+          selectionIndex,
+        );
+        final match =
+            RegExp(r'#(\S*)$').firstMatch(textBeforeSelection) ??
+            RegExp(r'(\S*)$').firstMatch(textBeforeSelection);
+        query.value = match?[1] ?? '';
+        if (query.value case final query when query.isNotEmpty) {
+          hashtags.value = await ref.read(
+            searchHashtagsProvider(account, query).future,
+          );
+        } else {
+          hashtags.value = [];
         }
+      }
 
-        callback();
-        controller.addListener(callback);
-        return () => controller.removeListener(callback);
-      },
-      [account, controller],
-    );
+      callback();
+      controller.addListener(callback);
+      return () => controller.removeListener(callback);
+    }, [account, controller]);
     final history = ref.watch(
-      accountSettingsNotifierProvider(account)
-          .select((settings) => settings.hashtags),
+      accountSettingsNotifierProvider(
+        account,
+      ).select((settings) => settings.hashtags),
     );
 
     if (query.value.isEmpty ? history : hashtags.value case final hashtags
         when hashtags.isNotEmpty) {
       return _MfmKeyboardContainer(
-        children: hashtags
-            .map(
-              (hashtag) => TextButton(
-                onPressed: () => controller
-                    .insert('${hashtag.substring(query.value.length)} '),
-                child: Text(hashtag),
-              ),
-            )
-            .toList(),
+        children:
+            hashtags
+                .map(
+                  (hashtag) => TextButton(
+                    onPressed:
+                        () => controller.insert(
+                          '${hashtag.substring(query.value.length)} ',
+                        ),
+                    child: Text(hashtag),
+                  ),
+                )
+                .toList(),
       );
     }
 

@@ -28,32 +28,33 @@ class FileCaptionEditDialog extends HookWidget {
             clipBehavior: Clip.antiAlias,
             child: InkWell(
               onTap: switch (file.type) {
-                final type? when type.startsWith('image/') => () =>
-                    showImageDialog(
-                      context,
-                      url: switch (file) {
-                        DrivePostFile(:final file) => file.url,
-                        _ => null,
-                      },
-                      file: switch (file) {
-                        LocalPostFile(:final file) => file,
-                        _ => null,
-                      },
-                    ),
-                final type? when type.startsWith('video/') => () =>
-                    showDialog<void>(
-                      context: context,
-                      builder: (context) => VideoDialog(
-                        url: switch (file) {
-                          DrivePostFile(:final file) => file.url,
-                          _ => null,
-                        },
-                        file: switch (file) {
-                          LocalPostFile(:final file) => file,
-                          _ => null,
-                        },
-                      ),
-                    ),
+                final type? when type.startsWith('image/') =>
+                  () => showImageDialog(
+                    context,
+                    url: switch (file) {
+                      DrivePostFile(:final file) => file.url,
+                      _ => null,
+                    },
+                    file: switch (file) {
+                      LocalPostFile(:final file) => file,
+                      _ => null,
+                    },
+                  ),
+                final type? when type.startsWith('video/') =>
+                  () => showDialog<void>(
+                    context: context,
+                    builder:
+                        (context) => VideoDialog(
+                          url: switch (file) {
+                            DrivePostFile(:final file) => file.url,
+                            _ => null,
+                          },
+                          file: switch (file) {
+                            LocalPostFile(:final file) => file,
+                            _ => null,
+                          },
+                        ),
+                  ),
                 _ => null,
               },
               child: PostFileThumbnail(
@@ -68,8 +69,9 @@ class FileCaptionEditDialog extends HookWidget {
           Shortcuts(
             shortcuts: {
               ...disablingTextShortcuts,
-              submitActivator:
-                  VoidCallbackIntent(() => context.pop(controller.text)),
+              submitActivator: VoidCallbackIntent(
+                () => context.pop(controller.text),
+              ),
             },
             child: TextField(
               controller: controller,

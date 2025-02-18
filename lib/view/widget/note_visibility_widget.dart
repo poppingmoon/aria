@@ -10,13 +10,11 @@ class NoteVisibilityWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      switch (visibility) {
-        NoteVisibility.public => t.misskey.visibility_.public,
-        NoteVisibility.home => t.misskey.visibility_.home,
-        NoteVisibility.followers => t.misskey.visibility_.followers,
-        NoteVisibility.specified => t.misskey.visibility_.specified,
-      },
-    );
+    return Text(switch (visibility) {
+      NoteVisibility.public => t.misskey.visibility_.public,
+      NoteVisibility.home => t.misskey.visibility_.home,
+      NoteVisibility.followers => t.misskey.visibility_.followers,
+      NoteVisibility.specified => t.misskey.visibility_.specified,
+    });
   }
 }

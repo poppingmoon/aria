@@ -24,10 +24,7 @@ class MisskeyThemeCodesNotifier extends _$MisskeyThemeCodesNotifier {
   }
 
   Future<void> uninstall(int index) async {
-    state = [
-      ...state.sublist(0, index),
-      ...state.sublist(index + 1),
-    ];
+    state = [...state.sublist(0, index), ...state.sublist(index + 1)];
     await _save();
   }
 

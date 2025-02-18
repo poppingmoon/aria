@@ -11,15 +11,14 @@ FutureOr<AudioHandler> audioHandler(Ref ref) {
   return switch (defaultTargetPlatform) {
     TargetPlatform.android ||
     TargetPlatform.iOS ||
-    TargetPlatform.macOS =>
-      AudioService.init(
-        builder: () => AudioPlayerHandler(),
-        config: const AudioServiceConfig(
-          androidNotificationChannelId: 'com.poppingmoon.aria.channel.audio',
-          androidNotificationChannelName: 'Audio playback',
-          androidNotificationOngoing: true,
-        ),
+    TargetPlatform.macOS => AudioService.init(
+      builder: () => AudioPlayerHandler(),
+      config: const AudioServiceConfig(
+        androidNotificationChannelId: 'com.poppingmoon.aria.channel.audio',
+        androidNotificationChannelName: 'Audio playback',
+        androidNotificationOngoing: true,
       ),
+    ),
     final platform => throw UnsupportedError('unsupported platform: $platform'),
   };
 }
@@ -82,13 +81,14 @@ class AudioPlayerHandler extends BaseAudioHandler with SeekHandler {
         MediaAction.seekForward,
         MediaAction.seekBackward,
       },
-      processingState: const {
-        ProcessingState.idle: AudioProcessingState.idle,
-        ProcessingState.loading: AudioProcessingState.loading,
-        ProcessingState.buffering: AudioProcessingState.buffering,
-        ProcessingState.ready: AudioProcessingState.ready,
-        ProcessingState.completed: AudioProcessingState.completed,
-      }[_player.processingState]!,
+      processingState:
+          const {
+            ProcessingState.idle: AudioProcessingState.idle,
+            ProcessingState.loading: AudioProcessingState.loading,
+            ProcessingState.buffering: AudioProcessingState.buffering,
+            ProcessingState.ready: AudioProcessingState.ready,
+            ProcessingState.completed: AudioProcessingState.completed,
+          }[_player.processingState]!,
       playing: _player.playing,
       updatePosition: _player.position,
       bufferedPosition: _player.bufferedPosition,

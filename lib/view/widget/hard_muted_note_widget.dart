@@ -7,8 +7,10 @@ class HardMutedNoteWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (borderRadius case BorderRadius(:final topLeft, :final bottomLeft)
-        when topLeft != bottomLeft) {
+    if (borderRadius case BorderRadius(
+      :final topLeft,
+      :final bottomLeft,
+    ) when topLeft != bottomLeft) {
       return Material(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: borderRadius,

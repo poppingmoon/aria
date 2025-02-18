@@ -16,10 +16,7 @@ import 'error_message.dart';
 import 'image_widget.dart';
 
 class MisskeyServers extends HookConsumerWidget {
-  const MisskeyServers({
-    super.key,
-    required this.onTapServer,
-  });
+  const MisskeyServers({super.key, required this.onTapServer});
 
   final void Function(JoinMisskeyInstanceInfo) onTapServer;
 
@@ -35,9 +32,7 @@ class MisskeyServers extends HookConsumerWidget {
           child: Shortcuts(
             shortcuts: disablingTextShortcuts,
             child: TextField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.search),
-              ),
+              decoration: const InputDecoration(prefixIcon: Icon(Icons.search)),
               onChanged: (value) => query.value = value,
               textInputAction: TextInputAction.search,
               onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -49,14 +44,17 @@ class MisskeyServers extends HookConsumerWidget {
             onRefresh: () => ref.refresh(misskeyServersProvider.future),
             child: switch (servers) {
               AsyncValue(valueOrNull: final servers?) => ListView.builder(
-                  itemBuilder: (context, index) => _ServerPreview(
-                    server: servers[index],
-                    onTap: () => onTapServer(servers[index]),
-                  ),
-                  itemCount: servers.length,
-                ),
-              AsyncValue(:final error?, :final stackTrace) =>
-                ErrorMessage(error: error, stackTrace: stackTrace),
+                itemBuilder:
+                    (context, index) => _ServerPreview(
+                      server: servers[index],
+                      onTap: () => onTapServer(servers[index]),
+                    ),
+                itemCount: servers.length,
+              ),
+              AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
+                error: error,
+                stackTrace: stackTrace,
+              ),
               _ => const Center(child: CircularProgressIndicator()),
             },
           ),
@@ -74,8 +72,9 @@ class _ServerPreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Card(
       clipBehavior: Clip.hardEdge,
@@ -105,10 +104,7 @@ class _ServerPreview extends ConsumerWidget {
                           gradient: LinearGradient(
                             begin: Alignment.center,
                             end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.transparent,
-                              Colors.black54,
-                            ],
+                            colors: [Colors.transparent, Colors.black54],
                           ),
                         ),
                       ),
@@ -119,8 +115,9 @@ class _ServerPreview extends ConsumerWidget {
                         children: [
                           if (server.icon)
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(end: 8.0),
+                              padding: const EdgeInsetsDirectional.only(
+                                end: 8.0,
+                              ),
                               child: ImageWidget(
                                 url:
                                     'https://instanceapp.misskey.page/instance-icons/${server.url}.webp',
@@ -134,16 +131,15 @@ class _ServerPreview extends ConsumerWidget {
                               children: [
                                 Text(
                                   server.name,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleMedium
-                                      ?.merge(
-                                        const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          shadows: [BoxShadow(blurRadius: 8.0)],
-                                        ),
-                                      ),
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.titleMedium?.merge(
+                                    const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      shadows: [BoxShadow(blurRadius: 8.0)],
+                                    ),
+                                  ),
                                   maxLines: 3,
                                 ),
                                 Text(
@@ -177,8 +173,9 @@ class _ServerPreview extends ConsumerWidget {
                 if (server case JoinMisskeyInstanceInfo(:final description?))
                   Html(
                     data: description,
-                    onLinkTap: (url, _, __) =>
-                        url != null ? launchUrl(ref, Uri.parse(url)) : null,
+                    onLinkTap:
+                        (url, _, __) =>
+                            url != null ? launchUrl(ref, Uri.parse(url)) : null,
                     style: {
                       'a': Style(
                         color: colors.link,
@@ -190,8 +187,9 @@ class _ServerPreview extends ConsumerWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      if (server.nodeInfo?.usage
-                          case JoinMisskeyNodeInfoUsage(:final localPosts?))
+                      if (server.nodeInfo?.usage case JoinMisskeyNodeInfoUsage(
+                        :final localPosts?,
+                      ))
                         Expanded(
                           child: Column(
                             children: [

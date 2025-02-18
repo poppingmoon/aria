@@ -4,11 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../../util/safe_parse_duration.dart';
 
 class Jump extends HookWidget {
-  const Jump({
-    super.key,
-    required this.args,
-    required this.child,
-  });
+  const Jump({super.key, required this.args, required this.child});
 
   final Map<String, dynamic> args;
   final Widget child;
@@ -42,18 +38,13 @@ class Jump extends HookWidget {
     final delay =
         safeParseDuration(args['delay'], allowNegative: true) ?? Duration.zero;
     final controller = useAnimationController(duration: speed);
-    useEffect(
-      () {
-        if (delay.isNegative) {
-          controller.forward(
-            from: -delay.inMilliseconds / speed.inMilliseconds,
-          );
-        }
-        Future.delayed(delay, () => controller.repeat());
-        return;
-      },
-      [speed, delay],
-    );
+    useEffect(() {
+      if (delay.isNegative) {
+        controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
+      }
+      Future.delayed(delay, () => controller.repeat());
+      return;
+    }, [speed, delay]);
     final offset = useAnimation(_offsetTween.animate(controller));
 
     return Transform.translate(offset: offset, child: child);

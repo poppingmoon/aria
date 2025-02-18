@@ -10,8 +10,10 @@ Future<Uint8List> crop(Uint8List image, Rect rect) async {
           TargetPlatform.iOS ||
           TargetPlatform.macOS) {
     final option = ImageEditorOption()..addOption(ClipOption.fromRect(rect));
-    final result =
-        await ImageEditor.editImage(image: image, imageEditorOption: option);
+    final result = await ImageEditor.editImage(
+      image: image,
+      imageEditorOption: option,
+    );
     return result!;
   } else {
     final src = await compute(decodeImage, image);
@@ -32,8 +34,10 @@ Future<Uint8List> flip(Uint8List image) async {
           TargetPlatform.iOS ||
           TargetPlatform.macOS) {
     final option = ImageEditorOption()..addOption(const FlipOption());
-    final result =
-        await ImageEditor.editImage(image: image, imageEditorOption: option);
+    final result = await ImageEditor.editImage(
+      image: image,
+      imageEditorOption: option,
+    );
     return result!;
   } else {
     final src = await compute(decodeImage, image);
@@ -48,8 +52,10 @@ Future<Uint8List> rotate(Uint8List image) async {
           TargetPlatform.iOS ||
           TargetPlatform.macOS) {
     final option = ImageEditorOption()..addOption(const RotateOption(90));
-    final result =
-        await ImageEditor.editImage(image: image, imageEditorOption: option);
+    final result = await ImageEditor.editImage(
+      image: image,
+      imageEditorOption: option,
+    );
     return result!;
   } else {
     final src = await compute(decodeImage, image);

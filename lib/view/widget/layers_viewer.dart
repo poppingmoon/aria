@@ -36,17 +36,20 @@ class LayersViewerState extends State<LayersViewer> {
   Future<Uint8List?> exportImage() async {
     final recorder = PictureRecorder();
     final canvas = Canvas(recorder);
-    final painter =
-        _LayersPainter(layers: widget.layers, images: widget.images);
+    final painter = _LayersPainter(
+      layers: widget.layers,
+      images: widget.images,
+    );
     final backgroundSize = (widget.layers.first as ImageLayer).size;
     final size = Size(
       backgroundSize.width.toDouble(),
       backgroundSize.width.toDouble(),
     );
     painter.paint(canvas, size);
-    final image = await recorder
-        .endRecording()
-        .toImage(backgroundSize.width, backgroundSize.height);
+    final image = await recorder.endRecording().toImage(
+      backgroundSize.width,
+      backgroundSize.height,
+    );
     final byteData = await image.toByteData(format: ImageByteFormat.png);
     return byteData?.buffer.asUint8List();
   }
@@ -84,10 +87,7 @@ class LayersViewerState extends State<LayersViewer> {
 }
 
 class _LayersPainter extends CustomPainter {
-  const _LayersPainter({
-    required this.layers,
-    required this.images,
-  });
+  const _LayersPainter({required this.layers, required this.images});
 
   final List<Layer> layers;
   final Map<Uint8List, Image> images;
@@ -139,8 +139,10 @@ class _LayersPainter extends CustomPainter {
             textDirection: TextDirection.ltr,
           );
           textPainter.layout();
-          final textOffset =
-              Offset(-textPainter.width / 2, -textPainter.height / 2);
+          final textOffset = Offset(
+            -textPainter.width / 2,
+            -textPainter.height / 2,
+          );
           textPainter.paint(canvas, textOffset);
         case DrawLayer():
           final path = Path();

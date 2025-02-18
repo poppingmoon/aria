@@ -15,11 +15,7 @@ import 'clip_settings_dialog.dart';
 import 'confirmation_dialog.dart';
 
 class ClipDialog extends HookConsumerWidget {
-  const ClipDialog({
-    super.key,
-    required this.account,
-    required this.noteId,
-  });
+  const ClipDialog({super.key, required this.account, required this.noteId});
 
   final Account account;
   final String noteId;
@@ -37,28 +33,31 @@ class ClipDialog extends HookConsumerWidget {
         ...?clips?.mapIndexed((index, clip) {
           final isClipped = noteClips.any((noteClip) => noteClip.id == clip.id);
           return ListTile(
-            leading: isClipped
-                ? const Icon(Icons.check)
-                : SizedBox(width: Theme.of(context).iconTheme.size),
+            leading:
+                isClipped
+                    ? const Icon(Icons.check)
+                    : SizedBox(width: Theme.of(context).iconTheme.size),
             title: Text(clip.name ?? ''),
-            subtitle: clip.notesCount != null
-                ? Text(
-                    [
-                      '${t.misskey.notesCount}: ',
-                      NumberFormat().format(clip.notesCount),
-                      if (i?.policies
-                          case UserPolicies(:final noteEachClipsLimit?)) ...[
-                        ' / ',
-                        NumberFormat().format(noteEachClipsLimit),
-                        ' (',
-                        t.misskey.remainingN(
-                          n: noteEachClipsLimit - clip.notesCount!,
-                        ),
-                        ')',
-                      ],
-                    ].join(),
-                  )
-                : null,
+            subtitle:
+                clip.notesCount != null
+                    ? Text(
+                      [
+                        '${t.misskey.notesCount}: ',
+                        NumberFormat().format(clip.notesCount),
+                        if (i?.policies case UserPolicies(
+                          :final noteEachClipsLimit?,
+                        )) ...[
+                          ' / ',
+                          NumberFormat().format(noteEachClipsLimit),
+                          ' (',
+                          t.misskey.remainingN(
+                            n: noteEachClipsLimit - clip.notesCount!,
+                          ),
+                          ')',
+                        ],
+                      ].join(),
+                    )
+                    : null,
             onTap: () async {
               await futureWithDialog(
                 context,
@@ -88,8 +87,10 @@ class ClipDialog extends HookConsumerWidget {
                         if (confirmed) {
                           await ref
                               .read(
-                                noteClipsNotifierProvider(account, noteId)
-                                    .notifier,
+                                noteClipsNotifierProvider(
+                                  account,
+                                  noteId,
+                                ).notifier,
                               )
                               .removeClip(clip.id);
                         }
@@ -115,7 +116,9 @@ class ClipDialog extends HookConsumerWidget {
             if (result != null) {
               await futureWithDialog(
                 ref.context,
-                ref.read(clipsNotifierProvider(account).notifier).create(
+                ref
+                    .read(clipsNotifierProvider(account).notifier)
+                    .create(
                       name: result.name ?? '',
                       description: result.description,
                       isPublic: result.isPublic,

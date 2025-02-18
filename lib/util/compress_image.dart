@@ -68,15 +68,13 @@ Future<Uint8List?> compressImage(Uint8List image, String? type) async {
       final resized = await compute(
         compress,
         ImageFileConfiguration(
-          input: ImageFile(
-            filePath: '',
-            rawBytes: image,
-          ),
+          input: ImageFile(filePath: '', rawBytes: image),
           config: Configuration(
             jpgQuality: imgConfig.quality,
-            outputType: imgConfig.format == CompressFormat.jpeg
-                ? OutputType.jpg
-                : OutputType.png,
+            outputType:
+                imgConfig.format == CompressFormat.jpeg
+                    ? OutputType.jpg
+                    : OutputType.png,
           ),
         ),
       );

@@ -17,11 +17,7 @@ import 'image_widget.dart';
 import 'url_sheet.dart';
 
 class AdWidget extends HookConsumerWidget {
-  const AdWidget({
-    super.key,
-    required this.account,
-    this.specify,
-  });
+  const AdWidget({super.key, required this.account, this.specify});
 
   final Account account;
   final MetaAd? specify;
@@ -51,8 +47,9 @@ class AdWidget extends HookConsumerWidget {
     if (i != null && specify == null) {
       if (i.policies?.canHideAds ?? true) {
         final forceShowAds = ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.forceShowAds),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.forceShowAds,
+          ),
         );
         if (!forceShowAds) {
           return const SizedBox.shrink();
@@ -96,10 +93,11 @@ class AdWidget extends HookConsumerWidget {
           Center(
             child: InkWell(
               onTap: () => navigate(ref, account, ad.url.toString()),
-              onLongPress: () => showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => UrlSheet(url: ad.url.toString()),
-              ),
+              onLongPress:
+                  () => showModalBottomSheet<void>(
+                    context: context,
+                    builder: (context) => UrlSheet(url: ad.url.toString()),
+                  ),
               child: ImageWidget(
                 url: ad.imageUrl.toString(),
                 height: ad.place == 'square' ? 200 : null,
@@ -110,8 +108,9 @@ class AdWidget extends HookConsumerWidget {
             alignment: AlignmentDirectional.topEnd,
             child: IconButton(
               style: IconButton.styleFrom(
-                backgroundColor:
-                    Theme.of(context).canvasColor.withValues(alpha: 0.8),
+                backgroundColor: Theme.of(
+                  context,
+                ).canvasColor.withValues(alpha: 0.8),
               ),
               onPressed: () => showMenu.value = true,
               icon: const Icon(Icons.info_outline),

@@ -8,11 +8,7 @@ import 'custom_emoji_index_provider.dart';
 part 'search_custom_emojis_provider.g.dart';
 
 @Riverpod(keepAlive: true)
-Set<Emoji> searchCustomEmojis(
-  Ref ref,
-  String host,
-  String query,
-) {
+Set<Emoji> searchCustomEmojis(Ref ref, String host, String query) {
   if (query.isEmpty) {
     return {};
   }

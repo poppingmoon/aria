@@ -17,11 +17,7 @@ import '../../widget/file_picker_sheet.dart';
 import '../../widget/post_form_attaches.dart';
 
 class GalleryEditPage extends HookConsumerWidget {
-  const GalleryEditPage({
-    super.key,
-    required this.account,
-    this.postId,
-  });
+  const GalleryEditPage({super.key, required this.account, this.postId});
 
   final Account account;
   final String? postId;
@@ -29,45 +25,44 @@ class GalleryEditPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(attachesNotifierProvider(account, gallery: true));
-    final post = postId != null
-        ? ref.watch(galleryPostNotifierProvider(account, postId!)).valueOrNull
-        : null;
+    final post =
+        postId != null
+            ? ref
+                .watch(galleryPostNotifierProvider(account, postId!))
+                .valueOrNull
+            : null;
     final title = useState('');
     final description = useState<String?>(null);
     final isSensitive = useState(false);
     final titleController = useTextEditingController();
-    final descriptionController =
-        useTextEditingController(text: post?.description);
+    final descriptionController = useTextEditingController(
+      text: post?.description,
+    );
     final canSave = files.isNotEmpty && title.value.isNotEmpty;
-    useEffect(
-      () {
-        if (post != null) {
-          Future(
-            () => ref
-                .read(attachesNotifierProvider(account, gallery: true).notifier)
-                .addAll(
-                  post.files.map((file) => DrivePostFile.fromDriveFile(file)),
-                ),
-          );
-          title.value = post.title;
-          description.value = post.description;
-          isSensitive.value = post.isSensitive;
-          titleController.text = post.title;
-          descriptionController.text = post.description ?? '';
-        }
-        return;
-      },
-      [post],
-    );
-    useEffect(
-      () {
-        titleController.addListener(() => title.value = titleController.text);
-        descriptionController
-            .addListener(() => description.value = descriptionController.text);
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      if (post != null) {
+        Future(
+          () => ref
+              .read(attachesNotifierProvider(account, gallery: true).notifier)
+              .addAll(
+                post.files.map((file) => DrivePostFile.fromDriveFile(file)),
+              ),
+        );
+        title.value = post.title;
+        description.value = post.description;
+        isSensitive.value = post.isSensitive;
+        titleController.text = post.title;
+        descriptionController.text = post.description ?? '';
+      }
+      return;
+    }, [post]);
+    useEffect(() {
+      titleController.addListener(() => title.value = titleController.text);
+      descriptionController.addListener(
+        () => description.value = descriptionController.text,
+      );
+      return;
+    }, []);
 
     return Scaffold(
       appBar: AppBar(
@@ -108,9 +103,10 @@ class GalleryEditPage extends HookConsumerWidget {
             trailing: Text(
               '${files.length}/32',
               style: TextStyle(
-                color: files.isEmpty || files.length > 32
-                    ? Theme.of(context).colorScheme.error
-                    : null,
+                color:
+                    files.isEmpty || files.length > 32
+                        ? Theme.of(context).colorScheme.error
+                        : null,
               ),
             ),
           ),
@@ -124,18 +120,21 @@ class GalleryEditPage extends HookConsumerWidget {
               onPressed: () async {
                 final files = await showModalBottomSheet<List<PostFile>>(
                   context: context,
-                  builder: (context) => FilePickerSheet(
-                    account: account,
-                    type: FileType.image,
-                    allowMultiple: true,
-                  ),
+                  builder:
+                      (context) => FilePickerSheet(
+                        account: account,
+                        type: FileType.image,
+                        allowMultiple: true,
+                      ),
                   clipBehavior: Clip.hardEdge,
                 );
                 if (files != null) {
                   ref
                       .read(
-                        attachesNotifierProvider(account, gallery: true)
-                            .notifier,
+                        attachesNotifierProvider(
+                          account,
+                          gallery: true,
+                        ).notifier,
                       )
                       .addAll(files);
                 }
@@ -153,60 +152,70 @@ class GalleryEditPage extends HookConsumerWidget {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: t.misskey.save,
-        backgroundColor: Theme.of(context)
-            .colorScheme
-            .primary
-            .withValues(alpha: canSave ? 1.0 : 0.5),
+        backgroundColor: Theme.of(
+          context,
+        ).colorScheme.primary.withValues(alpha: canSave ? 1.0 : 0.5),
         disabledElevation: 0.0,
-        onPressed: canSave
-            ? () async {
-                final files = await futureWithDialog(
-                  context,
-                  ref
-                      .read(
-                        attachesNotifierProvider(account, gallery: true)
-                            .notifier,
-                      )
-                      .uploadAll(),
-                );
-                if (files == null) return;
-                if (!context.mounted) return;
-                if (postId == null) {
-                  final result = await futureWithDialog(
+        onPressed:
+            canSave
+                ? () async {
+                  final files = await futureWithDialog(
                     context,
-                    ref.read(misskeyProvider(account)).gallery.posts.create(
-                          GalleryPostsCreateRequest(
-                            title: title.value,
-                            description: description.value,
-                            fileIds: files.map((file) => file.id).toList(),
-                            isSensitive: isSensitive.value,
-                          ),
-                        ),
+                    ref
+                        .read(
+                          attachesNotifierProvider(
+                            account,
+                            gallery: true,
+                          ).notifier,
+                        )
+                        .uploadAll(),
                   );
+                  if (files == null) return;
                   if (!context.mounted) return;
-                  if (result != null) {
-                    context.pop();
-                  }
-                } else {
-                  final result = await futureWithDialog(
-                    context,
-                    ref.read(misskeyProvider(account)).gallery.posts.update(
-                          GalleryPostsUpdateRequest(
-                            postId: postId!,
-                            title: title.value,
-                            description: description.value,
-                            fileIds: files.map((file) => file.id).toList(),
-                            isSensitive: isSensitive.value,
+                  if (postId == null) {
+                    final result = await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .gallery
+                          .posts
+                          .create(
+                            GalleryPostsCreateRequest(
+                              title: title.value,
+                              description: description.value,
+                              fileIds: files.map((file) => file.id).toList(),
+                              isSensitive: isSensitive.value,
+                            ),
                           ),
-                        ),
-                  );
-                  if (!context.mounted) return;
-                  if (result != null) {
-                    context.pop();
+                    );
+                    if (!context.mounted) return;
+                    if (result != null) {
+                      context.pop();
+                    }
+                  } else {
+                    final result = await futureWithDialog(
+                      context,
+                      ref
+                          .read(misskeyProvider(account))
+                          .gallery
+                          .posts
+                          .update(
+                            GalleryPostsUpdateRequest(
+                              postId: postId!,
+                              title: title.value,
+                              description: description.value,
+                              fileIds: files.map((file) => file.id).toList(),
+                              isSensitive: isSensitive.value,
+                            ),
+                          ),
+                    );
+                    if (!context.mounted) return;
+                    if (result != null) {
+                      context.pop();
+                    }
                   }
                 }
-              }
-            : null,
+                : null,
         child: const Icon(Icons.save),
       ),
     );

@@ -10,19 +10,21 @@ Uri? staticImageUrl(Ref ref, String host, String baseUrl) {
   if (host.isEmpty) {
     return Uri.tryParse(baseUrl);
   }
-  final url = baseUrl.startsWith('http')
-      ? Uri.tryParse(baseUrl)
-      : Uri.tryParse(
-          'https://$host${baseUrl.startsWith('/') ? '' : '/'}$baseUrl',
-        );
+  final url =
+      baseUrl.startsWith('http')
+          ? Uri.tryParse(baseUrl)
+          : Uri.tryParse(
+            'https://$host${baseUrl.startsWith('/') ? '' : '/'}$baseUrl',
+          );
   if (url == null) {
     return null;
   }
 
   final urlString = url.toString();
   if (urlString.startsWith('https://$host/emoji/')) {
-    return url
-        .replace(queryParameters: {...url.queryParameters, 'static': '1'});
+    return url.replace(
+      queryParameters: {...url.queryParameters, 'static': '1'},
+    );
   }
 
   return ref.watch(proxiedImageUrlProvider(host, urlString, static: true));

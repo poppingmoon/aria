@@ -32,9 +32,12 @@ class NotesNotifier extends _$NotesNotifier {
     state = {
       ...state,
       note.id: note.copyWith(
-        reactionCount: note.reactionCount ??
-            note.reactions.values
-                .fold<int>(0, (acc, reaction) => acc + reaction),
+        reactionCount:
+            note.reactionCount ??
+            note.reactions.values.fold<int>(
+              0,
+              (acc, reaction) => acc + reaction,
+            ),
         renote: renote ?? state[note.renoteId],
         reply: reply ?? state[note.replyId],
         poll: detail ? note.poll : cachedNote?.poll,
@@ -56,10 +59,7 @@ class NotesNotifier extends _$NotesNotifier {
   }
 
   void remove(String noteId) {
-    state = {
-      ...state,
-      noteId: null,
-    };
+    state = {...state, noteId: null};
   }
 
   void addReaction(String noteId, Reacted reacted) {
@@ -162,14 +162,12 @@ class NotesNotifier extends _$NotesNotifier {
 
   Future<void> react(String noteId, String reaction) async {
     await _misskey.notes.reactions.create(
-      NotesReactionsCreateRequest(
-        noteId: noteId,
-        reaction: reaction,
-      ),
+      NotesReactionsCreateRequest(noteId: noteId, reaction: reaction),
     );
-    final emoji = reaction.startsWith(':') && !reaction.endsWith('@.:')
-        ? '${reaction.substring(0, reaction.length - 1)}@.:'
-        : reaction;
+    final emoji =
+        reaction.startsWith(':') && !reaction.endsWith('@.:')
+            ? '${reaction.substring(0, reaction.length - 1)}@.:'
+            : reaction;
     final cachedNote = state[noteId];
     if (cachedNote != null && cachedNote.myReaction != emoji) {
       add(
@@ -251,10 +249,7 @@ class NotesNotifier extends _$NotesNotifier {
 
   Future<void> vote(String noteId, int choice) async {
     await _misskey.notes.polls.vote(
-      NotesPollsVoteRequest(
-        noteId: noteId,
-        choice: choice,
-      ),
+      NotesPollsVoteRequest(noteId: noteId, choice: choice),
     );
     final note = await _misskey.notes.show(NotesShowRequest(noteId: noteId));
     if (note.poll case NotePoll(:final choices)) {

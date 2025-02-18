@@ -27,10 +27,7 @@ class DriveFilesSheet extends ConsumerWidget {
   Future<void> _move(WidgetRef ref) async {
     final result = await showDialog<(DriveFolder?,)>(
       context: ref.context,
-      builder: (context) => DrivePage(
-        account: account,
-        selectFolder: true,
-      ),
+      builder: (context) => DrivePage(account: account, selectFolder: true),
     );
     if (result == null) return;
     if (!ref.context.mounted) return;
@@ -40,10 +37,7 @@ class DriveFilesSheet extends ConsumerWidget {
         files.map(
           (file) => ref
               .read(driveFilesNotifierProvider(account, file.folderId).notifier)
-              .move(
-                fileId: file.id,
-                folderId: result.$1?.id,
-              ),
+              .move(fileId: file.id, folderId: result.$1?.id),
         ),
       ),
       message: t.aria.moved,
@@ -99,10 +93,12 @@ class DriveFilesSheet extends ConsumerWidget {
           leading: const Icon(Icons.collections),
           title: Text(t.misskey.gallery),
           trailing: const Icon(Icons.navigate_next),
-          onTap: () => showDialog<void>(
-            context: context,
-            builder: (context) => GalleryDialog(account: account, files: files),
-          ),
+          onTap:
+              () => showDialog<void>(
+                context: context,
+                builder:
+                    (context) => GalleryDialog(account: account, files: files),
+              ),
         ),
         ListTile(
           leading: const Icon(Icons.drive_file_move),

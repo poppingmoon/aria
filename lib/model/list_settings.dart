@@ -6,10 +6,7 @@ part 'list_settings.g.dart';
 
 @freezed
 class ListSettings with _$ListSettings {
-  const factory ListSettings({
-    String? name,
-    bool? isPublic,
-  }) = _ListSettings;
+  const factory ListSettings({String? name, bool? isPublic}) = _ListSettings;
 
   factory ListSettings.fromJson(Map<String, dynamic> json) =>
       _$ListSettingsFromJson(json);

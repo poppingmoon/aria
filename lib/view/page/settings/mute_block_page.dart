@@ -67,9 +67,10 @@ class MuteBlockPage extends StatelessWidget {
                 leading: const Icon(OffIcons.repeat_rounded),
                 title: Text('${t.misskey.mutedUsers} (${t.misskey.renote})'),
                 trailing: const Icon(Icons.navigate_next),
-                onTap: () => context.push(
-                  '/settings/accounts/$account/mute-block/renote-muted',
-                ),
+                onTap:
+                    () => context.push(
+                      '/settings/accounts/$account/mute-block/renote-muted',
+                    ),
               ),
             ),
           ),
@@ -81,8 +82,10 @@ class MuteBlockPage extends StatelessWidget {
                 leading: const Icon(Icons.visibility_off),
                 title: Text(t.misskey.mutedUsers),
                 trailing: const Icon(Icons.navigate_next),
-                onTap: () => context
-                    .push('/settings/accounts/$account/mute-block/muted'),
+                onTap:
+                    () => context.push(
+                      '/settings/accounts/$account/mute-block/muted',
+                    ),
               ),
             ),
           ),
@@ -94,8 +97,10 @@ class MuteBlockPage extends StatelessWidget {
                 leading: const Icon(Icons.block),
                 title: Text(t.misskey.blockedUsers),
                 trailing: const Icon(Icons.navigate_next),
-                onTap: () => context
-                    .push('/settings/accounts/$account/mute-block/blocked'),
+                onTap:
+                    () => context.push(
+                      '/settings/accounts/$account/mute-block/blocked',
+                    ),
               ),
             ),
           ),
@@ -118,22 +123,16 @@ class _MutedEmojisEditor extends HookConsumerWidget {
     final controller = useTextEditingController(text: mutedEmojis.join('\n'));
     final isChanged = useState(false);
     final showTextField = useState(false);
-    ref.listen(
-      mutedEmojisNotifierProvider(account),
-      (_, mutedEmojis) {
-        mutedEmojisText.value = mutedEmojis.join('\n');
-        controller.text = mutedEmojisText.value;
-      },
-    );
-    useEffect(
-      () {
-        controller.addListener(() {
-          isChanged.value = controller.text != mutedEmojisText.value;
-        });
-        return;
-      },
-      [],
-    );
+    ref.listen(mutedEmojisNotifierProvider(account), (_, mutedEmojis) {
+      mutedEmojisText.value = mutedEmojis.join('\n');
+      controller.text = mutedEmojisText.value;
+    });
+    useEffect(() {
+      controller.addListener(() {
+        isChanged.value = controller.text != mutedEmojisText.value;
+      });
+      return;
+    }, []);
 
     return ExpansionTile(
       leading: const Icon(Icons.emoji_symbols),
@@ -151,15 +150,17 @@ class _MutedEmojisEditor extends HookConsumerWidget {
               ...mutedEmojis.map(
                 (emoji) => InputChip(
                   label: Text(emoji),
-                  onPressed: emoji.startsWith(':')
-                      ? () {
-                          final (name, host) = decodeCustomEmoji(emoji);
-                          context.push('/${host ?? account}/emojis/$name');
-                        }
-                      : null,
-                  onDeleted: () => ref
-                      .read(mutedEmojisNotifierProvider(account).notifier)
-                      .remove(emoji),
+                  onPressed:
+                      emoji.startsWith(':')
+                          ? () {
+                            final (name, host) = decodeCustomEmoji(emoji);
+                            context.push('/${host ?? account}/emojis/$name');
+                          }
+                          : null,
+                  onDeleted:
+                      () => ref
+                          .read(mutedEmojisNotifierProvider(account).notifier)
+                          .remove(emoji),
                   backgroundColor: Theme.of(context).colorScheme.surface,
                   shape: StadiumBorder(
                     side: BorderSide(
@@ -208,17 +209,18 @@ class _MutedEmojisEditor extends HookConsumerWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
-              onPressed: isChanged.value
-                  ? () async {
-                      final mutes = LineSplitter.split(controller.text.trim())
-                          .map((emoji) => emoji.trim())
-                          .where((emoji) => emoji.isNotEmpty);
-                      await ref
-                          .read(mutedEmojisNotifierProvider(account).notifier)
-                          .updateMutedEmojis(mutes);
-                      showTextField.value = false;
-                    }
-                  : null,
+              onPressed:
+                  isChanged.value
+                      ? () async {
+                        final mutes = LineSplitter.split(controller.text.trim())
+                            .map((emoji) => emoji.trim())
+                            .where((emoji) => emoji.isNotEmpty);
+                        await ref
+                            .read(mutedEmojisNotifierProvider(account).notifier)
+                            .updateMutedEmojis(mutes);
+                        showTextField.value = false;
+                      }
+                      : null,
               icon: const Icon(Icons.save),
               label: Text(t.misskey.save),
             ),
@@ -240,27 +242,22 @@ class _InstanceMuteEditor extends HookConsumerWidget {
     final serverMuteText = useState('');
     final controller = useTextEditingController();
     final isChanged = useState(false);
-    useEffect(
-      () {
-        if (i != null) {
-          serverMuteText.value = i.mutedInstances.join('\n');
-          controller.text = serverMuteText.value;
-        }
-        return;
-      },
-      [i],
+    useEffect(() {
+      if (i != null) {
+        serverMuteText.value = i.mutedInstances.join('\n');
+        controller.text = serverMuteText.value;
+      }
+      return;
+    }, [i]);
+    useEffect(() {
+      controller.addListener(
+        () => isChanged.value = controller.text != serverMuteText.value,
+      );
+      return;
+    }, []);
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
     );
-    useEffect(
-      () {
-        controller.addListener(
-          () => isChanged.value = controller.text != serverMuteText.value,
-        );
-        return;
-      },
-      [],
-    );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
 
     return ExpansionTile(
       leading: const Icon(Icons.public_off),
@@ -302,20 +299,22 @@ class _InstanceMuteEditor extends HookConsumerWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(
-            onPressed: isChanged.value
-                ? () async {
-                    final mutes = LineSplitter.split(controller.text.trim())
-                        .map((server) => server.trim())
-                        .where((server) => server.isNotEmpty)
-                        .toList();
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(iNotifierProvider(account).notifier)
-                          .setMutedServers(mutes),
-                    );
-                  }
-                : null,
+            onPressed:
+                isChanged.value
+                    ? () async {
+                      final mutes =
+                          LineSplitter.split(controller.text.trim())
+                              .map((server) => server.trim())
+                              .where((server) => server.isNotEmpty)
+                              .toList();
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(iNotifierProvider(account).notifier)
+                            .setMutedServers(mutes),
+                      );
+                    }
+                    : null,
             icon: const Icon(Icons.save),
             label: Text(t.misskey.save),
           ),

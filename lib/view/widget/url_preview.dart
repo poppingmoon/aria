@@ -17,11 +17,7 @@ import 'twitter_embed.dart';
 import 'url_sheet.dart';
 
 class UrlPreview extends HookConsumerWidget {
-  const UrlPreview({
-    super.key,
-    required this.account,
-    required this.link,
-  });
+  const UrlPreview({super.key, required this.account, required this.link});
 
   final Account account;
   final String link;
@@ -50,29 +46,33 @@ class UrlPreview extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final summalyResult = ref
-        .watch(
-          summalyProvider(
-            account.host,
-            link,
-            lang: Localizations.localeOf(context).toLanguageTag(),
-          ),
-        )
-        .valueOrNull;
+    final summalyResult =
+        ref
+            .watch(
+              summalyProvider(
+                account.host,
+                link,
+                lang: Localizations.localeOf(context).toLanguageTag(),
+              ),
+            )
+            .valueOrNull;
     final isPlayerOpen = useState(false);
     final thumbnail = summalyResult?.thumbnail;
-    final hideThumbnail = (summalyResult?.sensitive ?? false) ||
+    final hideThumbnail =
+        (summalyResult?.sensitive ?? false) ||
         ref.watch(
           dataSaverProvider.select((dataSaver) => dataSaver.urlPreview),
         );
     final icon = summalyResult?.icon;
     final playerUrl = summalyResult?.player.url;
     final tweetId = _extractTweetId(link);
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style;
-    final titleStyle =
-        style.apply(fontSizeFactor: 0.85).copyWith(fontWeight: FontWeight.bold);
+    final titleStyle = style
+        .apply(fontSizeFactor: 0.85)
+        .copyWith(fontWeight: FontWeight.bold);
     final descriptionStyle = style.apply(fontSizeFactor: 0.8);
     final linkStyle = style.apply(fontSizeFactor: 0.7);
     final imageSize = style.fontSize! * 4.0;
@@ -86,10 +86,11 @@ class UrlPreview extends HookConsumerWidget {
               Expanded(
                 child: InkWell(
                   onTap: () => navigate(ref, account, link),
-                  onLongPress: () => showModalBottomSheet<void>(
-                    context: context,
-                    builder: (context) => UrlSheet(url: link),
-                  ),
+                  onLongPress:
+                      () => showModalBottomSheet<void>(
+                        context: context,
+                        builder: (context) => UrlSheet(url: link),
+                      ),
                   child: DecoratedBox(
                     decoration: BoxDecoration(
                       border: Border.all(
@@ -113,8 +114,9 @@ class UrlPreview extends HookConsumerWidget {
                             ),
                           Expanded(
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -186,8 +188,10 @@ class UrlPreview extends HookConsumerWidget {
                 backgroundColor: colors.buttonBg,
                 iconColor: colors.fg,
                 textStyle: style.apply(fontSizeFactor: 0.9),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 6.0,
+                  horizontal: 12.0,
+                ),
                 minimumSize: Size.zero,
                 side: BorderSide.none,
                 visualDensity: VisualDensity.standard,
@@ -198,8 +202,8 @@ class UrlPreview extends HookConsumerWidget {
                 isPlayerOpen.value
                     ? Icons.close
                     : playerUrl != null
-                        ? Icons.play_arrow
-                        : Icons.open_in_full,
+                    ? Icons.play_arrow
+                    : Icons.open_in_full,
                 size: style.apply(fontSizeFactor: 0.9).lineHeight,
               ),
               label: Text(
@@ -208,8 +212,8 @@ class UrlPreview extends HookConsumerWidget {
                         ? t.misskey.disablePlayer
                         : t.misskey.close
                     : playerUrl != null
-                        ? t.misskey.enablePlayer
-                        : t.misskey.expandTweet,
+                    ? t.misskey.enablePlayer
+                    : t.misskey.expandTweet,
               ),
             ),
           ],

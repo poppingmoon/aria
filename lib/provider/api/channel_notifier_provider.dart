@@ -19,8 +19,9 @@ class ChannelNotifier extends _$ChannelNotifier {
     ref.onResume(() => timer?.cancel());
     ref.onDispose(() => timer?.cancel());
     try {
-      final channel = await _misskey.channels
-          .show(ChannelsShowRequest(channelId: channelId));
+      final channel = await _misskey.channels.show(
+        ChannelsShowRequest(channelId: channelId),
+      );
       ref
           .read(notesNotifierProvider(account).notifier)
           .addAll(channel.pinnedNotes ?? []);
@@ -43,8 +44,9 @@ class ChannelNotifier extends _$ChannelNotifier {
   }
 
   Future<void> unfollow() async {
-    await _misskey.channels
-        .unfollow(ChannelsUnfollowRequest(channelId: channelId));
+    await _misskey.channels.unfollow(
+      ChannelsUnfollowRequest(channelId: channelId),
+    );
     final channel = state.valueOrNull;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFollowing: false));
@@ -52,8 +54,9 @@ class ChannelNotifier extends _$ChannelNotifier {
   }
 
   Future<void> favorite() async {
-    await _misskey.channels
-        .favorite(ChannelsFavoriteRequest(channelId: channelId));
+    await _misskey.channels.favorite(
+      ChannelsFavoriteRequest(channelId: channelId),
+    );
     final channel = state.valueOrNull;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFavorited: true));
@@ -61,8 +64,9 @@ class ChannelNotifier extends _$ChannelNotifier {
   }
 
   Future<void> unfavorite() async {
-    await _misskey.channels
-        .unfavorite(ChannelsUnfavoriteRequest(channelId: channelId));
+    await _misskey.channels.unfavorite(
+      ChannelsUnfavoriteRequest(channelId: channelId),
+    );
     final channel = state.valueOrNull;
     if (channel != null) {
       state = AsyncValue.data(channel.copyWith(isFavorited: false));

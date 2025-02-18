@@ -5,10 +5,7 @@ part 'account.g.dart';
 
 @freezed
 class Account with _$Account {
-  const factory Account({
-    required String host,
-    String? username,
-  }) = _Account;
+  const factory Account({required String host, String? username}) = _Account;
 
   const Account._();
 

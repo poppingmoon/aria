@@ -18,10 +18,7 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<Note>> _fetchNotes({
-    String? untilId,
-    int? offset,
-  }) async {
+  Future<Iterable<Note>> _fetchNotes({String? untilId, int? offset}) async {
     try {
       final endpoints = await ref.read(endpointsProvider(account.host).future);
       if (endpoints.contains('notes/schedule/list')) {
@@ -31,37 +28,35 @@ class ScheduledNotesNotifier extends _$ScheduledNotesNotifier {
             .schedule
             .list(NotesScheduleListRequest(untilId: untilId));
         final notes = await Future.wait(
-          response.map(
-            (schedule) async {
-              List<DriveFile> files = [];
-              if (schedule.note.fileIds.isNotEmpty) {
-                try {
-                  files = await Future.wait(
-                    schedule.note.fileIds.map(
-                      (fileId) => ref
-                          .read(misskeyProvider(account))
-                          .drive
-                          .files
-                          .show(DriveFilesShowRequest(fileId: fileId)),
-                    ),
-                  );
-                } catch (_) {}
-              }
-              return Note(
-                id: schedule.id,
-                createdAt: schedule.scheduledAt,
-                text: schedule.note.text,
-                user: schedule.note.user,
-                userId: schedule.userId,
-                visibility: schedule.note.visibility,
-                files: files,
-                fileIds: schedule.note.fileIds,
-                reactionAcceptance: schedule.note.reactionAcceptance,
-                visibleUserIds:
-                    schedule.note.visibleUsers.map((user) => user.id).toList(),
-              );
-            },
-          ),
+          response.map((schedule) async {
+            List<DriveFile> files = [];
+            if (schedule.note.fileIds.isNotEmpty) {
+              try {
+                files = await Future.wait(
+                  schedule.note.fileIds.map(
+                    (fileId) => ref
+                        .read(misskeyProvider(account))
+                        .drive
+                        .files
+                        .show(DriveFilesShowRequest(fileId: fileId)),
+                  ),
+                );
+              } catch (_) {}
+            }
+            return Note(
+              id: schedule.id,
+              createdAt: schedule.scheduledAt,
+              text: schedule.note.text,
+              user: schedule.note.user,
+              userId: schedule.userId,
+              visibility: schedule.note.visibility,
+              files: files,
+              fileIds: schedule.note.fileIds,
+              reactionAcceptance: schedule.note.reactionAcceptance,
+              visibleUserIds:
+                  schedule.note.visibleUsers.map((user) => user.id).toList(),
+            );
+          }),
         );
         ref.read(notesNotifierProvider(account).notifier).addAll(notes);
         return notes;

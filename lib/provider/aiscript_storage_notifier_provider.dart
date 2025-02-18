@@ -24,10 +24,7 @@ class AiscriptStorageNotifier extends _$AiscriptStorageNotifier {
   String get _key => '$account/aiscript';
 
   Future<void> save(String key, String value) async {
-    state = {
-      ...state,
-      key: value,
-    };
+    state = {...state, key: value};
     await ref
         .read(sharedPreferencesProvider)
         .setString(_key, jsonEncode(state));

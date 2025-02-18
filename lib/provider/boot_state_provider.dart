@@ -14,16 +14,16 @@ class BootState extends _$BootState {
 
   Future<void> boot() async {
     state = const AsyncValue.loading();
-    state = await AsyncValue.guard(
-      () async {
-        await Future.wait(
-          ref.read(accountsNotifierProvider).map(
-                (account) =>
-                    ref.read(tokensNotifierProvider.notifier).load(account),
-              ),
-        );
-        return true;
-      },
-    );
+    state = await AsyncValue.guard(() async {
+      await Future.wait(
+        ref
+            .read(accountsNotifierProvider)
+            .map(
+              (account) =>
+                  ref.read(tokensNotifierProvider.notifier).load(account),
+            ),
+      );
+      return true;
+    });
   }
 }

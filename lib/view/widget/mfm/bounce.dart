@@ -5,11 +5,7 @@ import 'package:vector_math/vector_math.dart';
 import '../../../util/safe_parse_duration.dart';
 
 class Bounce extends HookWidget {
-  const Bounce({
-    super.key,
-    required this.args,
-    required this.child,
-  });
+  const Bounce({super.key, required this.args, required this.child});
 
   final Map<String, dynamic> args;
   final Widget child;
@@ -23,17 +19,11 @@ class Bounce extends HookWidget {
       tween: Tween(begin: const Offset(0, -16.0), end: Offset.zero),
       weight: 25.0,
     ),
-    TweenSequenceItem(
-      tween: ConstantTween(Offset.zero),
-      weight: 50.0,
-    ),
+    TweenSequenceItem(tween: ConstantTween(Offset.zero), weight: 50.0),
   ]);
 
   static final _scaleTween = TweenSequence([
-    TweenSequenceItem(
-      tween: ConstantTween(Vector2(1.0, 1.0)),
-      weight: 50.0,
-    ),
+    TweenSequenceItem(tween: ConstantTween(Vector2(1.0, 1.0)), weight: 50.0),
     TweenSequenceItem(
       tween: Tween(begin: Vector2(1.0, 1.0), end: Vector2(1.5, 0.75)),
       weight: 25.0,
@@ -54,18 +44,13 @@ class Bounce extends HookWidget {
     final delay =
         safeParseDuration(args['delay'], allowNegative: true) ?? Duration.zero;
     final controller = useAnimationController(duration: speed);
-    useEffect(
-      () {
-        if (delay.isNegative) {
-          controller.forward(
-            from: -delay.inMilliseconds / speed.inMilliseconds,
-          );
-        }
-        Future.delayed(delay, () => controller.repeat());
-        return;
-      },
-      [speed, delay],
-    );
+    useEffect(() {
+      if (delay.isNegative) {
+        controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
+      }
+      Future.delayed(delay, () => controller.repeat());
+      return;
+    }, [speed, delay]);
     final offset = useAnimation(_offsetTween.animate(controller));
     final scale = useAnimation(_scaleTween.animate(controller));
 

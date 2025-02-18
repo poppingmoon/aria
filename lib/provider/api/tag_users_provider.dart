@@ -15,7 +15,10 @@ FutureOr<List<UserDetailed>> tagUsers(
   UsersSortType sort = UsersSortType.followerDescendant,
   Origin? userOrigin,
 }) async {
-  final response = await ref.read(misskeyProvider(account)).hashtags.users(
+  final response = await ref
+      .read(misskeyProvider(account))
+      .hashtags
+      .users(
         HashtagsUsersRequest(
           tag: tag,
           sort: sort,

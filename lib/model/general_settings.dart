@@ -146,35 +146,15 @@ class GeneralSettings with _$GeneralSettings {
       _$GeneralSettingsFromJson(json);
 }
 
-enum SensitiveMediaDisplay {
-  respect,
-  ignore,
-  force,
-}
+enum SensitiveMediaDisplay { respect, ignore, force }
 
-enum InstanceTicker {
-  none,
-  remote,
-  always,
-}
+enum InstanceTicker { none, remote, always }
 
-enum MediaListWithOneImageAppearance {
-  r16_9,
-  r1_1,
-  r2_3,
-}
+enum MediaListWithOneImageAppearance { r16_9, r1_1, r2_3 }
 
-enum EmojiStyle {
-  native,
-  twemoji,
-}
+enum EmojiStyle { native, twemoji }
 
-enum NoteActionType {
-  none,
-  expand,
-  menu,
-  reaction,
-}
+enum NoteActionType { none, expand, menu, reaction }
 
 class _ColorConverter extends JsonConverter<Color, int> {
   const _ColorConverter();

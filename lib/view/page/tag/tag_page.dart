@@ -31,10 +31,7 @@ class TagPage extends ConsumerWidget {
         appBar: AppBar(
           title: Text('#$tag'),
           bottom: TabBar(
-            tabs: [
-              Tab(text: t.misskey.notes),
-              Tab(text: t.misskey.users),
-            ],
+            tabs: [Tab(text: t.misskey.notes), Tab(text: t.misskey.users)],
           ),
         ),
         body: TabBarView(
@@ -43,35 +40,42 @@ class TagPage extends ConsumerWidget {
             TagUsers(account: account, tag: tag),
           ],
         ),
-        floatingActionButton: account.isGuest
-            ? null
-            : FloatingActionButton.extended(
-                onPressed: () async {
-                  final hashtags =
-                      ref.read(postFormHashtagsNotifierProvider(account));
-                  ref
-                      .read(postFormHashtagsNotifierProvider(account).notifier)
-                      .updateHashtags([tag]);
-                  final useHashtags = ref
-                      .read(accountSettingsNotifierProvider(account))
-                      .postFormUseHashtags;
-                  await ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setPostFormUseHashtags(true);
-                  if (!context.mounted) return;
-                  await context.push('/$account/post');
-                  if (!context.mounted) return;
-                  ref
-                      .read(postFormHashtagsNotifierProvider(account).notifier)
-                      .updateHashtags(hashtags);
-                  ref.invalidate(tagNotesNotifierProvider(account, tag));
-                  await ref
-                      .read(accountSettingsNotifierProvider(account).notifier)
-                      .setPostFormUseHashtags(useHashtags);
-                },
-                label: Text(t.misskey.postToHashtag),
-                icon: const Icon(Icons.edit),
-              ),
+        floatingActionButton:
+            account.isGuest
+                ? null
+                : FloatingActionButton.extended(
+                  onPressed: () async {
+                    final hashtags = ref.read(
+                      postFormHashtagsNotifierProvider(account),
+                    );
+                    ref
+                        .read(
+                          postFormHashtagsNotifierProvider(account).notifier,
+                        )
+                        .updateHashtags([tag]);
+                    final useHashtags =
+                        ref
+                            .read(accountSettingsNotifierProvider(account))
+                            .postFormUseHashtags;
+                    await ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setPostFormUseHashtags(true);
+                    if (!context.mounted) return;
+                    await context.push('/$account/post');
+                    if (!context.mounted) return;
+                    ref
+                        .read(
+                          postFormHashtagsNotifierProvider(account).notifier,
+                        )
+                        .updateHashtags(hashtags);
+                    ref.invalidate(tagNotesNotifierProvider(account, tag));
+                    await ref
+                        .read(accountSettingsNotifierProvider(account).notifier)
+                        .setPostFormUseHashtags(useHashtags);
+                  },
+                  label: Text(t.misskey.postToHashtag),
+                  icon: const Icon(Icons.edit),
+                ),
       ),
     );
   }

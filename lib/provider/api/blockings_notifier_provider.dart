@@ -31,8 +31,9 @@ class BlockingsNotifier extends _$BlockingsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchBlockings(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchBlockings(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,
@@ -46,9 +47,10 @@ class BlockingsNotifier extends _$BlockingsNotifier {
     if (value != null) {
       state = AsyncValue.data(
         value.copyWith(
-          items: value.items
-              .where((blocking) => blocking.blockeeId != userId)
-              .toList(),
+          items:
+              value.items
+                  .where((blocking) => blocking.blockeeId != userId)
+                  .toList(),
         ),
       );
     }

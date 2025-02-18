@@ -12,11 +12,7 @@ import '../../widget/channel_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
 class ChannelsSearch extends HookConsumerWidget {
-  const ChannelsSearch({
-    super.key,
-    required this.account,
-    this.onChannelTap,
-  });
+  const ChannelsSearch({super.key, required this.account, this.onChannelTap});
 
   final Account account;
   final void Function(CommunityChannel channel)? onChannelTap;
@@ -46,8 +42,9 @@ class ChannelsSearch extends HookConsumerWidget {
                 shortcuts: disablingTextShortcuts,
                 child: TextField(
                   controller: controller,
-                  decoration:
-                      const InputDecoration(prefixIcon: Icon(Icons.search)),
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                  ),
                   onSubmitted: (value) => query.value = value.trim(),
                   textInputAction: TextInputAction.search,
                   onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -72,8 +69,8 @@ class ChannelsSearch extends HookConsumerWidget {
                   ),
                 ],
                 selected: {includeDescription.value},
-                onSelectionChanged: (selection) =>
-                    includeDescription.value = selection.single,
+                onSelectionChanged:
+                    (selection) => includeDescription.value = selection.single,
               ),
             ),
           ),
@@ -92,27 +89,31 @@ class ChannelsSearch extends HookConsumerWidget {
         ],
       ),
       paginationState: channels,
-      itemBuilder: (context, channel) => ChannelPreview(
-        account: account,
-        channel: channel,
-        onTap: onChannelTap != null ? () => onChannelTap?.call(channel) : null,
-      ),
-      onRefresh: () => ref.refresh(
-        searchChannelsNotifierProvider(
-          account,
-          query.value,
-          includeDescription: includeDescription.value,
-        ).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
+      itemBuilder:
+          (context, channel) => ChannelPreview(
+            account: account,
+            channel: channel,
+            onTap:
+                onChannelTap != null ? () => onChannelTap?.call(channel) : null,
+          ),
+      onRefresh:
+          () => ref.refresh(
             searchChannelsNotifierProvider(
               account,
               query.value,
               includeDescription: includeDescription.value,
-            ).notifier,
-          )
-          .loadMore(skipError: skipError),
+            ).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(
+                searchChannelsNotifierProvider(
+                  account,
+                  query.value,
+                  includeDescription: includeDescription.value,
+                ).notifier,
+              )
+              .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

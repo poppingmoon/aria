@@ -10,8 +10,9 @@ class RecentlyUsedEmojisNotifier extends _$RecentlyUsedEmojisNotifier {
   @override
   List<String> build(Account account) {
     return ref.watch(
-      accountSettingsNotifierProvider(account)
-          .select((settings) => settings.recentlyUsedEmojis),
+      accountSettingsNotifierProvider(
+        account,
+      ).select((settings) => settings.recentlyUsedEmojis),
     );
   }
 

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MediaIcon extends StatelessWidget {
-  const MediaIcon({
-    super.key,
-    required this.mimeType,
-    this.size,
-    this.color,
-  });
+  const MediaIcon({super.key, required this.mimeType, this.size, this.color});
 
   final String? mimeType;
   final double? size;
@@ -40,10 +35,6 @@ class MediaIcon extends StatelessWidget {
       icon = Icons.insert_drive_file;
     }
 
-    return Icon(
-      icon,
-      size: size,
-      color: color,
-    );
+    return Icon(icon, size: size, color: color);
   }
 }

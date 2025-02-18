@@ -24,9 +24,11 @@ class AvatarDecorations extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final disableShowingAnimatedImages = ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.disableShowingAnimatedImages),
+    final disableShowingAnimatedImages =
+        ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.disableShowingAnimatedImages,
+          ),
         ) ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
 
@@ -34,42 +36,44 @@ class AvatarDecorations extends ConsumerWidget {
       width: size,
       height: size,
       child: Stack(
-        children: decorations
-            .map(
-              (decoration) => Transform.scale(
-                scaleX: 2,
-                scaleY: 2,
-                child: Transform.translate(
-                  offset: Offset(
-                    size * decoration.offsetX,
-                    size * decoration.offsetY,
-                  ),
-                  child: Transform.rotate(
-                    angle: (decoration.angle ?? 0) * 2 * pi,
-                    child: Transform.flip(
-                      flipX: decoration.flipH,
-                      child: SizedBox(
-                        child: ImageWidget(
-                          url: disableShowingAnimatedImages
-                              ? ref
-                                  .watch(
-                                    staticImageUrlProvider(
-                                      account.host,
-                                      decoration.url,
-                                    ),
-                                  )
-                                  .toString()
-                              : decoration.url,
-                          height: size,
-                          width: size,
+        children:
+            decorations
+                .map(
+                  (decoration) => Transform.scale(
+                    scaleX: 2,
+                    scaleY: 2,
+                    child: Transform.translate(
+                      offset: Offset(
+                        size * decoration.offsetX,
+                        size * decoration.offsetY,
+                      ),
+                      child: Transform.rotate(
+                        angle: (decoration.angle ?? 0) * 2 * pi,
+                        child: Transform.flip(
+                          flipX: decoration.flipH,
+                          child: SizedBox(
+                            child: ImageWidget(
+                              url:
+                                  disableShowingAnimatedImages
+                                      ? ref
+                                          .watch(
+                                            staticImageUrlProvider(
+                                              account.host,
+                                              decoration.url,
+                                            ),
+                                          )
+                                          .toString()
+                                      : decoration.url,
+                              height: size,
+                              width: size,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            )
-            .toList(),
+                )
+                .toList(),
       ),
     );
   }

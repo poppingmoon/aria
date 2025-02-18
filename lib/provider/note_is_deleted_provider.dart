@@ -9,7 +9,8 @@ part 'note_is_deleted_provider.g.dart';
 @riverpod
 bool noteIsDeleted(Ref ref, Account account, String noteId) {
   return ref.watch(
-    notesNotifierProvider(account)
-        .select((notes) => notes.containsKey(noteId) && notes[noteId] == null),
+    notesNotifierProvider(
+      account,
+    ).select((notes) => notes.containsKey(noteId) && notes[noteId] == null),
   );
 }

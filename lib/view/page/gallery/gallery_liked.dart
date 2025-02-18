@@ -19,16 +19,18 @@ class GalleryLiked extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: likes,
-      itemBuilder: (context, like) => GalleryPostPreview(
-        account: account,
-        post: like.post,
-        onTap: () => context.push('/$account/gallery/${like.post.id}'),
-      ),
-      onRefresh: () =>
-          ref.refresh(likedGalleryPostsNotifierProvider(account).future),
-      loadMore: (skipError) => ref
-          .read(likedGalleryPostsNotifierProvider(account).notifier)
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, like) => GalleryPostPreview(
+            account: account,
+            post: like.post,
+            onTap: () => context.push('/$account/gallery/${like.post.id}'),
+          ),
+      onRefresh:
+          () => ref.refresh(likedGalleryPostsNotifierProvider(account).future),
+      loadMore:
+          (skipError) => ref
+              .read(likedGalleryPostsNotifierProvider(account).notifier)
+              .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

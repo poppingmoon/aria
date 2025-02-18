@@ -98,17 +98,19 @@ class ImportExportPage extends ConsumerWidget {
   ) async {
     return showDialog(
       context: context,
-      builder: (context) => SimpleDialog(
-        title: Text(t.misskey.selectAccount),
-        children: accounts
-            .map(
-              (account) => AccountPreview(
-                account: account,
-                onTap: () => context.pop(account),
-              ),
-            )
-            .toList(),
-      ),
+      builder:
+          (context) => SimpleDialog(
+            title: Text(t.misskey.selectAccount),
+            children:
+                accounts
+                    .map(
+                      (account) => AccountPreview(
+                        account: account,
+                        onTap: () => context.pop(account),
+                      ),
+                    )
+                    .toList(),
+          ),
     );
   }
 
@@ -139,22 +141,26 @@ class ImportExportPage extends ConsumerWidget {
                         if (account != null) {
                           final result = await showDialog<(DriveFolder?,)>(
                             context: ref.context,
-                            builder: (context) => DrivePage(
-                              account: account,
-                              selectFolder: true,
-                            ),
+                            builder:
+                                (context) => DrivePage(
+                                  account: account,
+                                  selectFolder: true,
+                                ),
                           );
                           if (!context.mounted) return;
                           if (result == null) return;
                           final folderId = result.$1?.id;
-                          final tempDirectory = await ref
-                              .read(fileSystemProvider)
-                              .systemTempDirectory
-                              .createTemp();
+                          final tempDirectory =
+                              await ref
+                                  .read(fileSystemProvider)
+                                  .systemTempDirectory
+                                  .createTemp();
                           final tempFile = tempDirectory.childFile('aria.json');
                           if (!context.mounted) return;
-                          final data =
-                              await futureWithDialog(context, _export(ref));
+                          final data = await futureWithDialog(
+                            context,
+                            _export(ref),
+                          );
                           if (data == null) return;
                           if (!context.mounted) return;
                           await futureWithDialog(
@@ -166,8 +172,10 @@ class ImportExportPage extends ConsumerWidget {
                             context,
                             ref
                                 .read(
-                                  driveFilesNotifierProvider(account, folderId)
-                                      .notifier,
+                                  driveFilesNotifierProvider(
+                                    account,
+                                    folderId,
+                                  ).notifier,
                                 )
                                 .upload(
                                   tempFile,
@@ -182,8 +190,10 @@ class ImportExportPage extends ConsumerWidget {
                     leading: const Icon(Icons.copy),
                     title: Text(t.misskey.copy),
                     onTap: () async {
-                      final data =
-                          await futureWithDialog(context, _export(ref));
+                      final data = await futureWithDialog(
+                        context,
+                        _export(ref),
+                      );
                       if (!context.mounted) return;
                       copyToClipboard(context, jsonEncode(data));
                     },
@@ -210,10 +220,11 @@ class ImportExportPage extends ConsumerWidget {
                         if (!context.mounted || account == null) return;
                         final result = await showDialog<(DriveFolder?,)>(
                           context: ref.context,
-                          builder: (context) => DrivePage(
-                            account: account,
-                            selectFolder: true,
-                          ),
+                          builder:
+                              (context) => DrivePage(
+                                account: account,
+                                selectFolder: true,
+                              ),
                         );
                         if (!context.mounted) return;
                         if (result == null) return;
@@ -237,9 +248,10 @@ class ImportExportPage extends ConsumerWidget {
                           ),
                         );
                         if (files == null) return;
-                        final latest = files.flattenedToList
-                            .sortedBy((file) => file.createdAt)
-                            .lastOrNull;
+                        final latest =
+                            files.flattenedToList
+                                .sortedBy((file) => file.createdAt)
+                                .lastOrNull;
                         if (!context.mounted) return;
                         if (latest == null) {
                           await showMessageDialog(context, t.aria.fileNotFound);
@@ -252,8 +264,9 @@ class ImportExportPage extends ConsumerWidget {
                               .getSingleFile(latest.url),
                         );
                         try {
-                          final json = json5Decode(await file!.readAsString())
-                              as Map<String, dynamic>;
+                          final json =
+                              json5Decode(await file!.readAsString())
+                                  as Map<String, dynamic>;
                           final backup = AriaBackup.fromJson(json);
                           if (!context.mounted) return;
                           final confirmed = await confirm(
@@ -296,10 +309,11 @@ class ImportExportPage extends ConsumerWidget {
                     onTap: () async {
                       final result = await showDialog<String>(
                         context: context,
-                        builder: (context) => TextFieldDialog(
-                          title: Text(t.aria.paste),
-                          maxLines: 10,
-                        ),
+                        builder:
+                            (context) => TextFieldDialog(
+                              title: Text(t.aria.paste),
+                              maxLines: 10,
+                            ),
                       );
                       if (result != null) {
                         try {

@@ -11,18 +11,10 @@ import '../../../provider/timeline_center_notifier_provider.dart';
 import '../../../util/pick_date_time.dart';
 import '../../widget/timeline_list_view.dart';
 
-enum _NoteType {
-  notes,
-  all,
-  files,
-}
+enum _NoteType { notes, all, files }
 
 class UserNotes extends HookConsumerWidget {
-  const UserNotes({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const UserNotes({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -40,66 +32,66 @@ class UserNotes extends HookConsumerWidget {
     );
 
     return NestedScrollView(
-      headerSliverBuilder: (context, _) => [
-        SliverToBoxAdapter(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: SegmentedButton(
-                    segments: [
-                      ButtonSegment(
-                        value: _NoteType.notes,
-                        label: Text(t.misskey.notes),
+      headerSliverBuilder:
+          (context, _) => [
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: SegmentedButton(
+                        segments: [
+                          ButtonSegment(
+                            value: _NoteType.notes,
+                            label: Text(t.misskey.notes),
+                          ),
+                          ButtonSegment(
+                            value: _NoteType.all,
+                            label: Text(t.misskey.all),
+                          ),
+                          ButtonSegment(
+                            value: _NoteType.files,
+                            label: Text(t.misskey.withFiles),
+                          ),
+                        ],
+                        selected: {type.value},
+                        onSelectionChanged:
+                            (selection) => type.value = selection.single,
+                        showSelectedIcon: false,
                       ),
-                      ButtonSegment(
-                        value: _NoteType.all,
-                        label: Text(t.misskey.all),
-                      ),
-                      ButtonSegment(
-                        value: _NoteType.files,
-                        label: Text(t.misskey.withFiles),
-                      ),
-                    ],
-                    selected: {type.value},
-                    onSelectionChanged: (selection) =>
-                        type.value = selection.single,
-                    showSelectedIcon: false,
-                  ),
+                    ),
+                    IconButton(
+                      tooltip: t.aria.timeMachine,
+                      icon: const Icon(Icons.history),
+                      onPressed: () async {
+                        final centerId = ref.read(
+                          timelineCenterNotifierProvider(tabSettings),
+                        );
+                        final date = await pickDateTime(
+                          context,
+                          initialDate:
+                              centerId != null ? Id.parse(centerId).date : null,
+                          lastDate: DateTime.now(),
+                        );
+                        if (date != null) {
+                          await ref
+                              .read(
+                                timelineCenterNotifierProvider(
+                                  tabSettings,
+                                ).notifier,
+                              )
+                              .setCenterFromDate(date);
+                        }
+                      },
+                    ),
+                  ],
                 ),
-                IconButton(
-                  tooltip: t.aria.timeMachine,
-                  icon: const Icon(Icons.history),
-                  onPressed: () async {
-                    final centerId =
-                        ref.read(timelineCenterNotifierProvider(tabSettings));
-                    final date = await pickDateTime(
-                      context,
-                      initialDate:
-                          centerId != null ? Id.parse(centerId).date : null,
-                      lastDate: DateTime.now(),
-                    );
-                    if (date != null) {
-                      await ref
-                          .read(
-                            timelineCenterNotifierProvider(tabSettings)
-                                .notifier,
-                          )
-                          .setCenterFromDate(date);
-                    }
-                  },
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
-      ],
-      body: TimelineListView(
-        tabSettings: tabSettings,
-        nested: true,
-      ),
+          ],
+      body: TimelineListView(tabSettings: tabSettings, nested: true),
       floatHeaderSlivers: true,
     );
   }

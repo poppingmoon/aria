@@ -21,7 +21,10 @@ class UsersNotifier extends _$UsersNotifier {
   }
 
   Future<Iterable<UserDetailed>> _fetchUsers({int? offset}) {
-    return ref.read(misskeyProvider(account)).users.users(
+    return ref
+        .read(misskeyProvider(account))
+        .users
+        .users(
           UsersUsersRequest(
             origin: userOrigin,
             sort: sort,

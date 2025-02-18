@@ -9,12 +9,10 @@ class ThemeModeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      switch (themeMode) {
-        ThemeMode.system => t.misskey.syncDeviceDarkMode,
-        ThemeMode.light => t.misskey.light,
-        ThemeMode.dark => t.misskey.dark,
-      },
-    );
+    return Text(switch (themeMode) {
+      ThemeMode.system => t.misskey.syncDeviceDarkMode,
+      ThemeMode.light => t.misskey.light,
+      ThemeMode.dark => t.misskey.dark,
+    });
   }
 }

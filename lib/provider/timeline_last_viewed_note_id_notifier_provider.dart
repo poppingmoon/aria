@@ -38,8 +38,9 @@ class TimelineLastViewedNoteIdNotifier
 
   Future<void> saveFromDate(DateTime date) async {
     if (tabSettings.id == null) return;
-    final method =
-        await ref.read(idGenMethodProvider(tabSettings.account).future);
+    final method = await ref.read(
+      idGenMethodProvider(tabSettings.account).future,
+    );
     final id = Id(method: method, date: date).toString();
     save(id);
   }

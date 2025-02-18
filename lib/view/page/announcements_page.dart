@@ -41,10 +41,7 @@ class AnnouncementsPage extends ConsumerWidget {
 }
 
 class _Announcements extends ConsumerWidget {
-  const _Announcements({
-    required this.account,
-    required this.isActive,
-  });
+  const _Announcements({required this.account, required this.isActive});
 
   final Account account;
   final bool isActive;
@@ -55,65 +52,74 @@ class _Announcements extends ConsumerWidget {
       announcementsNotifierProvider(account, isActive: isActive),
     );
     final hasUnreadAnnouncement = ref.watch(
-      iNotifierProvider(account)
-          .select((i) => i.valueOrNull?.hasUnreadAnnouncement),
+      iNotifierProvider(
+        account,
+      ).select((i) => i.valueOrNull?.hasUnreadAnnouncement),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return PaginatedListView(
-      header: isActive && (hasUnreadAnnouncement ?? false)
-          ? SliverToBoxAdapter(
-              child: Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: Card(
-                    margin: const EdgeInsets.only(top: 8.0),
-                    color: colors.infoWarnBg,
-                    elevation: 0.0,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.warning_amber,
-                                  color: colors.infoWarnFg,
-                                ),
-                                Text(
-                                  t.misskey.youHaveUnreadAnnouncements,
-                                  style: TextStyle(color: colors.infoWarnFg),
-                                ),
-                              ],
+      header:
+          isActive && (hasUnreadAnnouncement ?? false)
+              ? SliverToBoxAdapter(
+                child: Center(
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                    width: maxContentWidth,
+                    child: Card(
+                      margin: const EdgeInsets.only(top: 8.0),
+                      color: colors.infoWarnBg,
+                      elevation: 0.0,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.warning_amber,
+                                    color: colors.infoWarnFg,
+                                  ),
+                                  Text(
+                                    t.misskey.youHaveUnreadAnnouncements,
+                                    style: TextStyle(color: colors.infoWarnFg),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            )
-          : null,
+              )
+              : null,
       paginationState: announcements,
-      itemBuilder: (context, announcement) => AnnouncementWidget(
-        account: account,
-        announcement: announcement,
-        showButton: isActive,
-      ),
-      onRefresh: () => ref.refresh(
-        announcementsNotifierProvider(account, isActive: isActive).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            announcementsNotifierProvider(account, isActive: isActive).notifier,
-          )
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, announcement) => AnnouncementWidget(
+            account: account,
+            announcement: announcement,
+            showButton: isActive,
+          ),
+      onRefresh:
+          () => ref.refresh(
+            announcementsNotifierProvider(account, isActive: isActive).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(
+                announcementsNotifierProvider(
+                  account,
+                  isActive: isActive,
+                ).notifier,
+              )
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }

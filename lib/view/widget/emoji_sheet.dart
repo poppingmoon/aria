@@ -38,20 +38,25 @@ class EmojiSheet extends ConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
-    final data = isCustomEmoji
-        ? ref.watch(emojiProvider(account.host, ':$name:'))
-        : null;
-    final canReact = !account.isGuest &&
+    final data =
+        isCustomEmoji
+            ? ref.watch(emojiProvider(account.host, ':$name:'))
+            : null;
+    final canReact =
+        !account.isGuest &&
         targetNote != null &&
         (!isCustomEmoji ||
             data != null && checkReactionPermissions(i, targetNote!, data));
     final isPinnedForReaction = ref.watch(
-      pinnedEmojisNotifierProvider(account, reaction: true)
-          .select((emojis) => emojis.contains(emoji)),
+      pinnedEmojisNotifierProvider(
+        account,
+        reaction: true,
+      ).select((emojis) => emojis.contains(emoji)),
     );
     final isPinned = ref.watch(
-      pinnedEmojisNotifierProvider(account)
-          .select((emojis) => emojis.contains(emoji)),
+      pinnedEmojisNotifierProvider(
+        account,
+      ).select((emojis) => emojis.contains(emoji)),
     );
     final isMuted = ref
         .watch(mutedEmojisNotifierProvider(account))
@@ -68,8 +73,11 @@ class EmojiSheet extends ConsumerWidget {
                 account: account,
                 emoji: emoji,
                 height: 32.0,
-                url: targetNote
-                    ?.reactionEmojis[emoji.substring(1, emoji.length - 1)],
+                url:
+                    targetNote?.reactionEmojis[emoji.substring(
+                      1,
+                      emoji.length - 1,
+                    )],
               ),
             ),
             subtitle: Text(emoji.replaceAll('@.', '')),
@@ -120,9 +128,9 @@ class EmojiSheet extends ConsumerWidget {
                       EmojiWidget(
                         account: account,
                         emoji: localEmoji,
-                        style: DefaultTextStyle.of(context)
-                            .style
-                            .apply(fontSizeFactor: 2.0),
+                        style: DefaultTextStyle.of(
+                          context,
+                        ).style.apply(fontSizeFactor: 2.0),
                       ),
                     ],
                   ),
@@ -145,8 +153,10 @@ class EmojiSheet extends ConsumerWidget {
               onTap: () {
                 ref
                     .read(
-                      pinnedEmojisNotifierProvider(account, reaction: true)
-                          .notifier,
+                      pinnedEmojisNotifierProvider(
+                        account,
+                        reaction: true,
+                      ).notifier,
                     )
                     .add(emoji);
                 context.pop();
@@ -169,25 +179,25 @@ class EmojiSheet extends ConsumerWidget {
             ListTile(
               leading: const Icon(Icons.visibility),
               title: Text(t.misskey.unmute),
-              onTap: () => ref
-                  .read(mutedEmojisNotifierProvider(account).notifier)
-                  .remove(emoji),
+              onTap:
+                  () => ref
+                      .read(mutedEmojisNotifierProvider(account).notifier)
+                      .remove(emoji),
             )
           else
             ListTile(
               leading: const Icon(Icons.visibility_off),
               title: Text(t.misskey.mute),
-              onTap: () => ref
-                  .read(mutedEmojisNotifierProvider(account).notifier)
-                  .add(emoji),
+              onTap:
+                  () => ref
+                      .read(mutedEmojisNotifierProvider(account).notifier)
+                      .add(emoji),
             ),
         if (isCustomEmoji)
           ListTile(
             leading: const Icon(Icons.info_outline),
             title: Text(t.misskey.info),
-            onTap: () => context.push(
-              '/${host ?? account}/emojis/$name',
-            ),
+            onTap: () => context.push('/${host ?? account}/emojis/$name'),
           ),
       ],
     );

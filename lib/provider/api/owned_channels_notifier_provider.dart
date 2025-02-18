@@ -33,8 +33,9 @@ class OwnedChannelsNotifier extends _$OwnedChannelsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchChannels(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchChannels(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,

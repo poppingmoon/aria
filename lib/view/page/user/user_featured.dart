@@ -8,11 +8,7 @@ import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
 
 class UserFeatured extends ConsumerWidget {
-  const UserFeatured({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const UserFeatured({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -23,16 +19,16 @@ class UserFeatured extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: notes,
-      itemBuilder: (context, note) =>
-          NoteWidget(account: account, noteId: note.id),
-      onRefresh: () => ref.refresh(
-        userFeaturedNotesNotifierProvider(account, userId).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            userFeaturedNotesNotifierProvider(account, userId).notifier,
-          )
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, note) => NoteWidget(account: account, noteId: note.id),
+      onRefresh:
+          () => ref.refresh(
+            userFeaturedNotesNotifierProvider(account, userId).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(userFeaturedNotesNotifierProvider(account, userId).notifier)
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

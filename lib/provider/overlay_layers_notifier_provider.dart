@@ -19,10 +19,7 @@ class OverlayLayersNotifier extends _$OverlayLayersNotifier {
 
   Layer remove(int index) {
     final layer = state[index];
-    state = [
-      ...state.sublist(0, index),
-      ...state.sublist(index + 1),
-    ];
+    state = [...state.sublist(0, index), ...state.sublist(index + 1)];
     return layer;
   }
 

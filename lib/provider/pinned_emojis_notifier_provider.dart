@@ -49,10 +49,7 @@ class PinnedEmojisNotifier extends _$PinnedEmojisNotifier {
   }
 
   Future<void> delete(int index) async {
-    await _save([
-      ...state.sublist(0, index),
-      ...state.sublist(index + 1),
-    ]);
+    await _save([...state.sublist(0, index), ...state.sublist(index + 1)]);
   }
 
   Future<void> reset() async {

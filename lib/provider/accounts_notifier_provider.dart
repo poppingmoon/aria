@@ -44,10 +44,12 @@ class AccountsNotifier extends _$AccountsNotifier {
   Future<bool> loginWithToken(String host, String token) async {
     if (kDebugMode) {
       if (host.startsWith('localhost')) {
-        final i = await ref.read(dioProvider).postUri<Map<String, dynamic>>(
-          Uri.http(host, 'api/i'),
-          data: {'i': token},
-        );
+        final i = await ref
+            .read(dioProvider)
+            .postUri<Map<String, dynamic>>(
+              Uri.http(host, 'api/i'),
+              data: {'i': token},
+            );
         await login(
           Account(
             host: host.toLowerCase(),
@@ -59,10 +61,12 @@ class AccountsNotifier extends _$AccountsNotifier {
         return true;
       }
     }
-    final i = await ref.read(dioProvider).postUri<Map<String, dynamic>>(
-      Uri.https(host, 'api/i'),
-      data: {'i': token},
-    );
+    final i = await ref
+        .read(dioProvider)
+        .postUri<Map<String, dynamic>>(
+          Uri.https(host, 'api/i'),
+          data: {'i': token},
+        );
     await login(
       Account(
         host: host.toLowerCase(),

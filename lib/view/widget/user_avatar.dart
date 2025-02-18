@@ -43,20 +43,25 @@ class UserAvatar extends ConsumerWidget {
       );
     }
     final showAvatarDecorations = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarDecorations),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showAvatarDecorations,
+      ),
     );
     final squareAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.squareAvatars),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.squareAvatars,
+      ),
     );
-    final disableShowingAnimatedImages = ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.disableShowingAnimatedImages),
+    final disableShowingAnimatedImages =
+        ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.disableShowingAnimatedImages,
+          ),
         ) ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
-    final borderRadius =
-        BorderRadius.circular(squareAvatars ? size * 0.2 : size);
+    final borderRadius = BorderRadius.circular(
+      squareAvatars ? size * 0.2 : size,
+    );
 
     return InkWell(
       onTap: onTap,
@@ -66,16 +71,17 @@ class UserAvatar extends ConsumerWidget {
           ClipRRect(
             borderRadius: borderRadius,
             child: ImageWidget(
-              url: disableShowingAnimatedImages
-                  ? ref
-                      .watch(
-                        staticImageUrlProvider(
-                          account.host,
-                          user.avatarUrl.toString(),
-                        ),
-                      )
-                      .toString()
-                  : user.avatarUrl.toString(),
+              url:
+                  disableShowingAnimatedImages
+                      ? ref
+                          .watch(
+                            staticImageUrlProvider(
+                              account.host,
+                              user.avatarUrl.toString(),
+                            ),
+                          )
+                          .toString()
+                      : user.avatarUrl.toString(),
               blurHash: user.avatarBlurhash,
               height: size,
               width: size,

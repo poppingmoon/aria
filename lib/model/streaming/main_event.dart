@@ -44,10 +44,8 @@ class AnnouncementCreated implements MainEvent {
 
 @freezed
 class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
-  const factory UrlUploadFinished({
-    String? marker,
-    required DriveFile file,
-  }) = _UrlUploadFinished;
+  const factory UrlUploadFinished({String? marker, required DriveFile file}) =
+      _UrlUploadFinished;
 
   factory UrlUploadFinished.fromJson(Map<String, Object?> json) =>
       _$UrlUploadFinishedFromJson(json);

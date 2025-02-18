@@ -31,8 +31,9 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<Iterable<GalleryPost>> _fetchPosts({String? untilId}) async {
-    final posts = await _misskey.i.gallery
-        .posts(IGalleryPostsRequest(limit: 100, untilId: untilId));
+    final posts = await _misskey.i.gallery.posts(
+      IGalleryPostsRequest(limit: 100, untilId: untilId),
+    );
     return posts;
   }
 
@@ -91,9 +92,10 @@ class MyGalleryPostsNotifier extends _$MyGalleryPostsNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items: value.items
-            .map((post) => post.id == postId ? updated : post)
-            .toList(),
+        items:
+            value.items
+                .map((post) => post.id == postId ? updated : post)
+                .toList(),
       ),
     );
   }

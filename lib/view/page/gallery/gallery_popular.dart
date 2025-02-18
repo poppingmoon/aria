@@ -21,38 +21,42 @@ class GalleryPopular extends ConsumerWidget {
     return RefreshIndicator(
       onRefresh: () => ref.refresh(popularGalleryPostsProvider(account).future),
       child: switch (pages) {
-        AsyncValue(valueOrNull: final posts?) => posts.isEmpty
-            ? Center(child: Text(t.misskey.nothing))
-            : ListView.builder(
-                itemBuilder: (context, index) => Center(
-                  child: Container(
-                    width: maxContentWidth,
-                    margin: EdgeInsets.only(
-                      left: 8.0,
-                      top: index == 0 ? 8.0 : 4.0,
-                      right: 8.0,
-                      bottom: index == posts.length - 1 ? 120.0 : 4.0,
+        AsyncValue(valueOrNull: final posts?) =>
+          posts.isEmpty
+              ? Center(child: Text(t.misskey.nothing))
+              : ListView.builder(
+                itemBuilder:
+                    (context, index) => Center(
+                      child: Container(
+                        width: maxContentWidth,
+                        margin: EdgeInsets.only(
+                          left: 8.0,
+                          top: index == 0 ? 8.0 : 4.0,
+                          right: 8.0,
+                          bottom: index == posts.length - 1 ? 120.0 : 4.0,
+                        ),
+                        child: GalleryPostPreview(
+                          account: account,
+                          post: posts[index],
+                          onTap:
+                              () => context.push(
+                                '/$account/gallery/${posts[index].id}',
+                              ),
+                        ),
+                      ),
                     ),
-                    child: GalleryPostPreview(
-                      account: account,
-                      post: posts[index],
-                      onTap: () =>
-                          context.push('/$account/gallery/${posts[index].id}'),
-                    ),
-                  ),
-                ),
                 itemCount: posts.length,
               ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Center(
-              child: Container(
-                width: maxContentWidth,
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ErrorMessage(error: error, stackTrace: stackTrace),
-              ),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Center(
+            child: Container(
+              width: maxContentWidth,
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: ErrorMessage(error: error, stackTrace: stackTrace),
             ),
           ),
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );

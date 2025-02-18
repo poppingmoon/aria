@@ -9,11 +9,7 @@ import '../../widget/clip_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
 class UserClips extends ConsumerWidget {
-  const UserClips({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const UserClips({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -24,19 +20,18 @@ class UserClips extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: clips,
-      itemBuilder: (context, clip) => ClipPreview(
-        account: account,
-        clip: clip,
-        onTap: () => context.push('/$account/clips/${clip.id}'),
-      ),
-      onRefresh: () => ref.refresh(
-        userClipsNotifierProvider(account, userId).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            userClipsNotifierProvider(account, userId).notifier,
-          )
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, clip) => ClipPreview(
+            account: account,
+            clip: clip,
+            onTap: () => context.push('/$account/clips/${clip.id}'),
+          ),
+      onRefresh:
+          () => ref.refresh(userClipsNotifierProvider(account, userId).future),
+      loadMore:
+          (skipError) => ref
+              .read(userClipsNotifierProvider(account, userId).notifier)
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }

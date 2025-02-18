@@ -22,20 +22,15 @@ class ReactionEffect extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller =
-        useAnimationController(duration: const Duration(seconds: 2));
-    useEffect(
-      () {
-        controller.forward();
-        return;
-      },
-      [],
+    final controller = useAnimationController(
+      duration: const Duration(seconds: 2),
     );
+    useEffect(() {
+      controller.forward();
+      return;
+    }, []);
     final offset = useAnimation(
-      Tween(
-        begin: const Offset(0.0, -30.0),
-        end: const Offset(0.0, -50.0),
-      )
+      Tween(begin: const Offset(0.0, -30.0), end: const Offset(0.0, -50.0))
           .chain(
             CurveTween(
               curve: const Interval(0.0, 0.5, curve: Cubic(0.0, 0.5, 0.0, 1.0)),
@@ -45,9 +40,9 @@ class ReactionEffect extends HookConsumerWidget {
     );
     final angle = useAnimation(
       Tween(
-        begin: 0.0,
-        end: useMemoized(() => (Random().nextDouble() - 0.5) * pi, []),
-      )
+            begin: 0.0,
+            end: useMemoized(() => (Random().nextDouble() - 0.5) * pi, []),
+          )
           .chain(
             CurveTween(
               curve: const Interval(0.0, 0.5, curve: Cubic(0.0, 0.5, 0.0, 1.0)),
@@ -61,11 +56,13 @@ class ReactionEffect extends HookConsumerWidget {
       ).animate(ReverseAnimation(controller)),
     );
     final scale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.reactionsDisplayScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.reactionsDisplayScale,
+      ),
     );
-    final style =
-        DefaultTextStyle.of(context).style.apply(fontSizeFactor: scale);
+    final style = DefaultTextStyle.of(
+      context,
+    ).style.apply(fontSizeFactor: scale);
 
     return Transform.translate(
       offset: offset,

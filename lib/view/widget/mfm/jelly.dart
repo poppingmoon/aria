@@ -5,19 +5,17 @@ import 'package:vector_math/vector_math.dart';
 import '../../../util/safe_parse_duration.dart';
 
 class Jelly extends HookWidget {
-  const Jelly({
-    super.key,
-    required this.args,
-    required this.child,
-  });
+  const Jelly({super.key, required this.args, required this.child});
 
   final Map<String, dynamic> args;
   final Widget child;
 
   static final _scaleTween = TweenSequence([
     TweenSequenceItem(
-      tween: Tween(begin: Vector2(1.0, 1.0), end: Vector2(1.25, 0.75))
-          .chain(CurveTween(curve: Curves.ease)),
+      tween: Tween(
+        begin: Vector2(1.0, 1.0),
+        end: Vector2(1.25, 0.75),
+      ).chain(CurveTween(curve: Curves.ease)),
       weight: 30.0,
     ),
     TweenSequenceItem(
@@ -52,24 +50,15 @@ class Jelly extends HookWidget {
     final delay =
         safeParseDuration(args['delay'], allowNegative: true) ?? Duration.zero;
     final controller = useAnimationController(duration: speed);
-    useEffect(
-      () {
-        if (delay.isNegative) {
-          controller.forward(
-            from: -delay.inMilliseconds / speed.inMilliseconds,
-          );
-        }
-        Future.delayed(delay, () => controller.repeat());
-        return;
-      },
-      [speed, delay],
-    );
+    useEffect(() {
+      if (delay.isNegative) {
+        controller.forward(from: -delay.inMilliseconds / speed.inMilliseconds);
+      }
+      Future.delayed(delay, () => controller.repeat());
+      return;
+    }, [speed, delay]);
     final scale = useAnimation(_scaleTween.animate(controller));
 
-    return Transform.scale(
-      scaleX: scale.x,
-      scaleY: scale.y,
-      child: child,
-    );
+    return Transform.scale(scaleX: scale.x, scaleY: scale.y, child: child);
   }
 }

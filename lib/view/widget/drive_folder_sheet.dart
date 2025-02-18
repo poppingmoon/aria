@@ -47,10 +47,7 @@ class DriveFolderSheet extends ConsumerWidget {
   Future<void> _move(WidgetRef ref) async {
     final result = await showDialog<(DriveFolder?,)>(
       context: ref.context,
-      builder: (context) => DrivePage(
-        account: account,
-        selectFolder: true,
-      ),
+      builder: (context) => DrivePage(account: account, selectFolder: true),
     );
     if (result == null) return;
     if (!ref.context.mounted) return;
@@ -58,10 +55,7 @@ class DriveFolderSheet extends ConsumerWidget {
       ref.context,
       ref
           .read(driveFoldersNotifierProvider(account, folder.parentId).notifier)
-          .move(
-            folderId: folder.id,
-            parentId: result.$1?.id,
-          ),
+          .move(folderId: folder.id, parentId: result.$1?.id),
       message: t.aria.moved,
     );
     if (!ref.context.mounted) return;

@@ -21,12 +21,10 @@ void main() {
     );
     expect(
       container.read(emojiUrlProvider(account, ':emoji@.:')),
-      equals(
-        (
-          'https://proxy.misskey.tld/image.webp?url=https%3A%2F%2Fmedia.misskey.tld%2Femoji%2Femoji.png&emoji=1',
-          'https://media.misskey.tld/emoji/emoji.png',
-        ),
-      ),
+      equals((
+        'https://proxy.misskey.tld/image.webp?url=https%3A%2F%2Fmedia.misskey.tld%2Femoji%2Femoji.png&emoji=1',
+        'https://media.misskey.tld/emoji/emoji.png',
+      )),
     );
   });
 }

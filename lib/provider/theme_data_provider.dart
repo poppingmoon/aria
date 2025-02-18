@@ -21,8 +21,9 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     generalSettingsNotifierProvider.select((settings) => settings.lineHeight),
   );
   final enablePredictiveBack = ref.watch(
-    generalSettingsNotifierProvider
-        .select((settings) => settings.enablePredictiveBack),
+    generalSettingsNotifierProvider.select(
+      (settings) => settings.enablePredictiveBack,
+    ),
   );
 
   return ThemeData(
@@ -42,8 +43,7 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     canvasColor: colors.bg,
     disabledColor: colors.fg.withValues(alpha: 0.5),
     scaffoldBackgroundColor: colors.bg,
-    textTheme: ThemeData(brightness: brightness)
-        .textTheme
+    textTheme: ThemeData(brightness: brightness).textTheme
         .merge(
           TextTheme(
             titleMedium: TextStyle(fontSize: fontSize + 2.0),
@@ -53,15 +53,16 @@ ThemeData themeData(Ref ref, Brightness brightness) {
         )
         .apply(
           fontFamily: fontFamily,
-          fontFamilyFallback: fontFamily != null
-              ? [
-                  FontFamily.bIZUDGothic,
-                  FontFamily.notoSansJP,
-                  FontFamily.notoSansKR,
-                  FontFamily.notoSansSC,
-                  FontFamily.notoSansTC,
-                ]
-              : null,
+          fontFamilyFallback:
+              fontFamily != null
+                  ? [
+                    FontFamily.bIZUDGothic,
+                    FontFamily.notoSansJP,
+                    FontFamily.notoSansKR,
+                    FontFamily.notoSansSC,
+                    FontFamily.notoSansTC,
+                  ]
+                  : null,
           displayColor: colors.fg,
           bodyColor: colors.fg,
           decorationColor: colors.fg,
@@ -104,13 +105,15 @@ ThemeData themeData(Ref ref, Brightness brightness) {
       foregroundColor: colors.fgOnAccent,
       backgroundColor: colors.accent,
     ),
-    sliderTheme:
-        const SliderThemeData(showValueIndicator: ShowValueIndicator.always),
+    sliderTheme: const SliderThemeData(
+      showValueIndicator: ShowValueIndicator.always,
+    ),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
-        TargetPlatform.android: enablePredictiveBack
-            ? const PredictiveBackPageTransitionsBuilder()
-            : const ZoomPageTransitionsBuilder(),
+        TargetPlatform.android:
+            enablePredictiveBack
+                ? const PredictiveBackPageTransitionsBuilder()
+                : const ZoomPageTransitionsBuilder(),
         TargetPlatform.iOS: const CupertinoPageTransitionsBuilder(),
         TargetPlatform.macOS: const CupertinoPageTransitionsBuilder(),
       },

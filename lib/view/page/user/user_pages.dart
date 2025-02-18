@@ -9,11 +9,7 @@ import '../../widget/page_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
 class UserPages extends ConsumerWidget {
-  const UserPages({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const UserPages({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -24,19 +20,18 @@ class UserPages extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: pages,
-      itemBuilder: (context, page) => PagePreview(
-        account: account,
-        page: page,
-        onTap: () => context.push('/$account/pages/${page.id}'),
-      ),
-      onRefresh: () => ref.refresh(
-        userPagesNotifierProvider(account, userId).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            userPagesNotifierProvider(account, userId).notifier,
-          )
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, page) => PagePreview(
+            account: account,
+            page: page,
+            onTap: () => context.push('/$account/pages/${page.id}'),
+          ),
+      onRefresh:
+          () => ref.refresh(userPagesNotifierProvider(account, userId).future),
+      loadMore:
+          (skipError) => ref
+              .read(userPagesNotifierProvider(account, userId).notifier)
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }
