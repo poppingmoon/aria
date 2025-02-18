@@ -4,7 +4,7 @@ publish_to: "none"
 version: 1.0.0-beta.8+52
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  sdk: ">=3.7.0 <4.0.0"
 
 dependencies:
   aho_corasick: ^2.0.0
@@ -154,7 +154,7 @@ dependency_overrides:
   webcrypto:
     git:
       url: https://github.com/poppingmoon/webcrypto.dart
-      ref: 702001aa58a6a21aadf4820e9f2f9c175fe8e962
+      ref: bfb7d96f04f15654e41cf816785d7a99c490f1f0
 
 flutter:
   uses-material-design: true
