@@ -93,29 +93,29 @@ class ProxiedImageUrlProvider extends AutoDisposeProvider<Uri?> {
     bool preview = false,
     bool static = false,
   }) : this._internal(
-          (ref) => proxiedImageUrl(
-            ref as ProxiedImageUrlRef,
-            host,
-            baseUrl,
-            emoji: emoji,
-            preview: preview,
-            static: static,
-          ),
-          from: proxiedImageUrlProvider,
-          name: r'proxiedImageUrlProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$proxiedImageUrlHash,
-          dependencies: ProxiedImageUrlFamily._dependencies,
-          allTransitiveDependencies:
-              ProxiedImageUrlFamily._allTransitiveDependencies,
-          host: host,
-          baseUrl: baseUrl,
-          emoji: emoji,
-          preview: preview,
-          static: static,
-        );
+         (ref) => proxiedImageUrl(
+           ref as ProxiedImageUrlRef,
+           host,
+           baseUrl,
+           emoji: emoji,
+           preview: preview,
+           static: static,
+         ),
+         from: proxiedImageUrlProvider,
+         name: r'proxiedImageUrlProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$proxiedImageUrlHash,
+         dependencies: ProxiedImageUrlFamily._dependencies,
+         allTransitiveDependencies:
+             ProxiedImageUrlFamily._allTransitiveDependencies,
+         host: host,
+         baseUrl: baseUrl,
+         emoji: emoji,
+         preview: preview,
+         static: static,
+       );
 
   ProxiedImageUrlProvider._internal(
     super._createNotifier, {
@@ -138,9 +138,7 @@ class ProxiedImageUrlProvider extends AutoDisposeProvider<Uri?> {
   final bool static;
 
   @override
-  Override overrideWith(
-    Uri? Function(ProxiedImageUrlRef provider) create,
-  ) {
+  Override overrideWith(Uri? Function(ProxiedImageUrlRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: ProxiedImageUrlProvider._internal(
@@ -221,5 +219,6 @@ class _ProxiedImageUrlProviderElement extends AutoDisposeProviderElement<Uri?>
   @override
   bool get static => (origin as ProxiedImageUrlProvider).static;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

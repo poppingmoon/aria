@@ -39,24 +39,15 @@ class AppearNoteFamily extends Family<Note?> {
   const AppearNoteFamily();
 
   /// See also [appearNote].
-  AppearNoteProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return AppearNoteProvider(
-      account,
-      noteId,
-    );
+  AppearNoteProvider call(Account account, String noteId) {
+    return AppearNoteProvider(account, noteId);
   }
 
   @override
   AppearNoteProvider getProviderOverride(
     covariant AppearNoteProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,20 @@ class AppearNoteFamily extends Family<Note?> {
 /// See also [appearNote].
 class AppearNoteProvider extends AutoDisposeProvider<Note?> {
   /// See also [appearNote].
-  AppearNoteProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          (ref) => appearNote(
-            ref as AppearNoteRef,
-            account,
-            noteId,
-          ),
-          from: appearNoteProvider,
-          name: r'appearNoteProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$appearNoteHash,
-          dependencies: AppearNoteFamily._dependencies,
-          allTransitiveDependencies:
-              AppearNoteFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  AppearNoteProvider(Account account, String noteId)
+    : this._internal(
+        (ref) => appearNote(ref as AppearNoteRef, account, noteId),
+        from: appearNoteProvider,
+        name: r'appearNoteProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$appearNoteHash,
+        dependencies: AppearNoteFamily._dependencies,
+        allTransitiveDependencies: AppearNoteFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   AppearNoteProvider._internal(
     super._createNotifier, {
@@ -114,9 +98,7 @@ class AppearNoteProvider extends AutoDisposeProvider<Note?> {
   final String noteId;
 
   @override
-  Override overrideWith(
-    Note? Function(AppearNoteRef provider) create,
-  ) {
+  Override overrideWith(Note? Function(AppearNoteRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: AppearNoteProvider._internal(
@@ -173,5 +155,6 @@ class _AppearNoteProviderElement extends AutoDisposeProviderElement<Note?>
   @override
   String get noteId => (origin as AppearNoteProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

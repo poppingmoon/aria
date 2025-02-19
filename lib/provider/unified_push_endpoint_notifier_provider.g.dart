@@ -34,9 +34,7 @@ abstract class _$UnifiedPushEndpointNotifier
     extends BuildlessNotifier<String?> {
   late final String instance;
 
-  String? build(
-    String instance,
-  );
+  String? build(String instance);
 }
 
 /// See also [UnifiedPushEndpointNotifier].
@@ -49,21 +47,15 @@ class UnifiedPushEndpointNotifierFamily extends Family<String?> {
   const UnifiedPushEndpointNotifierFamily();
 
   /// See also [UnifiedPushEndpointNotifier].
-  UnifiedPushEndpointNotifierProvider call(
-    String instance,
-  ) {
-    return UnifiedPushEndpointNotifierProvider(
-      instance,
-    );
+  UnifiedPushEndpointNotifierProvider call(String instance) {
+    return UnifiedPushEndpointNotifierProvider(instance);
   }
 
   @override
   UnifiedPushEndpointNotifierProvider getProviderOverride(
     covariant UnifiedPushEndpointNotifierProvider provider,
   ) {
-    return call(
-      provider.instance,
-    );
+    return call(provider.instance);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class UnifiedPushEndpointNotifierFamily extends Family<String?> {
 class UnifiedPushEndpointNotifierProvider
     extends NotifierProviderImpl<UnifiedPushEndpointNotifier, String?> {
   /// See also [UnifiedPushEndpointNotifier].
-  UnifiedPushEndpointNotifierProvider(
-    String instance,
-  ) : this._internal(
-          () => UnifiedPushEndpointNotifier()..instance = instance,
-          from: unifiedPushEndpointNotifierProvider,
-          name: r'unifiedPushEndpointNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$unifiedPushEndpointNotifierHash,
-          dependencies: UnifiedPushEndpointNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UnifiedPushEndpointNotifierFamily._allTransitiveDependencies,
-          instance: instance,
-        );
+  UnifiedPushEndpointNotifierProvider(String instance)
+    : this._internal(
+        () => UnifiedPushEndpointNotifier()..instance = instance,
+        from: unifiedPushEndpointNotifierProvider,
+        name: r'unifiedPushEndpointNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$unifiedPushEndpointNotifierHash,
+        dependencies: UnifiedPushEndpointNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UnifiedPushEndpointNotifierFamily._allTransitiveDependencies,
+        instance: instance,
+      );
 
   UnifiedPushEndpointNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +105,8 @@ class UnifiedPushEndpointNotifierProvider
   final String instance;
 
   @override
-  String? runNotifierBuild(
-    covariant UnifiedPushEndpointNotifier notifier,
-  ) {
-    return notifier.build(
-      instance,
-    );
+  String? runNotifierBuild(covariant UnifiedPushEndpointNotifier notifier) {
+    return notifier.build(instance);
   }
 
   @override
@@ -140,7 +127,7 @@ class UnifiedPushEndpointNotifierProvider
 
   @override
   NotifierProviderElement<UnifiedPushEndpointNotifier, String?>
-      createElement() {
+  createElement() {
     return _UnifiedPushEndpointNotifierProviderElement(this);
   }
 
@@ -175,5 +162,6 @@ class _UnifiedPushEndpointNotifierProviderElement
   String get instance =>
       (origin as UnifiedPushEndpointNotifierProvider).instance;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -31,12 +31,11 @@ Map<String, dynamic> _$$SummalyResultImplToJson(_$SummalyResultImpl instance) =>
     };
 
 _$PlayerImpl _$$PlayerImplFromJson(Map<String, dynamic> json) => _$PlayerImpl(
-      url: json['url'] as String?,
-      width: (json['width'] as num?)?.toDouble(),
-      height: (json['height'] as num?)?.toDouble(),
-      allow:
-          (json['allow'] as List<dynamic>?)?.map((e) => e as String).toList(),
-    );
+  url: json['url'] as String?,
+  width: (json['width'] as num?)?.toDouble(),
+  height: (json['height'] as num?)?.toDouble(),
+  allow: (json['allow'] as List<dynamic>?)?.map((e) => e as String).toList(),
+);
 
 Map<String, dynamic> _$$PlayerImplToJson(_$PlayerImpl instance) =>
     <String, dynamic>{

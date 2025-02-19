@@ -34,9 +34,7 @@ abstract class _$RenoteMutingsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<RenoteMuting>> {
   late final Account account;
 
-  FutureOr<PaginationState<RenoteMuting>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<RenoteMuting>> build(Account account);
 }
 
 /// See also [RenoteMutingsNotifier].
@@ -50,21 +48,15 @@ class RenoteMutingsNotifierFamily
   const RenoteMutingsNotifierFamily();
 
   /// See also [RenoteMutingsNotifier].
-  RenoteMutingsNotifierProvider call(
-    Account account,
-  ) {
-    return RenoteMutingsNotifierProvider(
-      account,
-    );
+  RenoteMutingsNotifierProvider call(Account account) {
+    return RenoteMutingsNotifierProvider(account);
   }
 
   @override
   RenoteMutingsNotifierProvider getProviderOverride(
     covariant RenoteMutingsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class RenoteMutingsNotifierFamily
 
 /// See also [RenoteMutingsNotifier].
 class RenoteMutingsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<RenoteMutingsNotifier,
-        PaginationState<RenoteMuting>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          RenoteMutingsNotifier,
+          PaginationState<RenoteMuting>
+        > {
   /// See also [RenoteMutingsNotifier].
-  RenoteMutingsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => RenoteMutingsNotifier()..account = account,
-          from: renoteMutingsNotifierProvider,
-          name: r'renoteMutingsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$renoteMutingsNotifierHash,
-          dependencies: RenoteMutingsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              RenoteMutingsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  RenoteMutingsNotifierProvider(Account account)
+    : this._internal(
+        () => RenoteMutingsNotifier()..account = account,
+        from: renoteMutingsNotifierProvider,
+        name: r'renoteMutingsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$renoteMutingsNotifierHash,
+        dependencies: RenoteMutingsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            RenoteMutingsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   RenoteMutingsNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class RenoteMutingsNotifierProvider
   FutureOr<PaginationState<RenoteMuting>> runNotifierBuild(
     covariant RenoteMutingsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,8 +133,11 @@ class RenoteMutingsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<RenoteMutingsNotifier,
-      PaginationState<RenoteMuting>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    RenoteMutingsNotifier,
+    PaginationState<RenoteMuting>
+  >
+  createElement() {
     return _RenoteMutingsNotifierProviderElement(this);
   }
 
@@ -169,12 +164,17 @@ mixin RenoteMutingsNotifierRef
 }
 
 class _RenoteMutingsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<RenoteMutingsNotifier,
-        PaginationState<RenoteMuting>> with RenoteMutingsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          RenoteMutingsNotifier,
+          PaginationState<RenoteMuting>
+        >
+    with RenoteMutingsNotifierRef {
   _RenoteMutingsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as RenoteMutingsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

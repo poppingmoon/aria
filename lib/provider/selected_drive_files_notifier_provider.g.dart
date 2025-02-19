@@ -12,12 +12,15 @@ String _$selectedDriveFilesNotifierHash() =>
 /// See also [SelectedDriveFilesNotifier].
 @ProviderFor(SelectedDriveFilesNotifier)
 final selectedDriveFilesNotifierProvider = AutoDisposeNotifierProvider<
-    SelectedDriveFilesNotifier, List<DriveFile>>.internal(
+  SelectedDriveFilesNotifier,
+  List<DriveFile>
+>.internal(
   SelectedDriveFilesNotifier.new,
   name: r'selectedDriveFilesNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$selectedDriveFilesNotifierHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$selectedDriveFilesNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

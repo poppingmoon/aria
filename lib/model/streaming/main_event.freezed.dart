@@ -12,7 +12,8 @@ part of 'main_event.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 UrlUploadFinished _$UrlUploadFinishedFromJson(Map<String, dynamic> json) {
   return _UrlUploadFinished.fromJson(json);
@@ -36,8 +37,9 @@ mixin _$UrlUploadFinished {
 /// @nodoc
 abstract class $UrlUploadFinishedCopyWith<$Res> {
   factory $UrlUploadFinishedCopyWith(
-          UrlUploadFinished value, $Res Function(UrlUploadFinished) then) =
-      _$UrlUploadFinishedCopyWithImpl<$Res, UrlUploadFinished>;
+    UrlUploadFinished value,
+    $Res Function(UrlUploadFinished) then,
+  ) = _$UrlUploadFinishedCopyWithImpl<$Res, UrlUploadFinished>;
   @useResult
   $Res call({String? marker, DriveFile file});
 
@@ -58,20 +60,22 @@ class _$UrlUploadFinishedCopyWithImpl<$Res, $Val extends UrlUploadFinished>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? marker = freezed,
-    Object? file = null,
-  }) {
-    return _then(_value.copyWith(
-      marker: freezed == marker
-          ? _value.marker
-          : marker // ignore: cast_nullable_to_non_nullable
-              as String?,
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as DriveFile,
-    ) as $Val);
+  $Res call({Object? marker = freezed, Object? file = null}) {
+    return _then(
+      _value.copyWith(
+            marker:
+                freezed == marker
+                    ? _value.marker
+                    : marker // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            file:
+                null == file
+                    ? _value.file
+                    : file // ignore: cast_nullable_to_non_nullable
+                        as DriveFile,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of UrlUploadFinished
@@ -88,9 +92,10 @@ class _$UrlUploadFinishedCopyWithImpl<$Res, $Val extends UrlUploadFinished>
 /// @nodoc
 abstract class _$$UrlUploadFinishedImplCopyWith<$Res>
     implements $UrlUploadFinishedCopyWith<$Res> {
-  factory _$$UrlUploadFinishedImplCopyWith(_$UrlUploadFinishedImpl value,
-          $Res Function(_$UrlUploadFinishedImpl) then) =
-      __$$UrlUploadFinishedImplCopyWithImpl<$Res>;
+  factory _$$UrlUploadFinishedImplCopyWith(
+    _$UrlUploadFinishedImpl value,
+    $Res Function(_$UrlUploadFinishedImpl) then,
+  ) = __$$UrlUploadFinishedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? marker, DriveFile file});
@@ -103,28 +108,30 @@ abstract class _$$UrlUploadFinishedImplCopyWith<$Res>
 class __$$UrlUploadFinishedImplCopyWithImpl<$Res>
     extends _$UrlUploadFinishedCopyWithImpl<$Res, _$UrlUploadFinishedImpl>
     implements _$$UrlUploadFinishedImplCopyWith<$Res> {
-  __$$UrlUploadFinishedImplCopyWithImpl(_$UrlUploadFinishedImpl _value,
-      $Res Function(_$UrlUploadFinishedImpl) _then)
-      : super(_value, _then);
+  __$$UrlUploadFinishedImplCopyWithImpl(
+    _$UrlUploadFinishedImpl _value,
+    $Res Function(_$UrlUploadFinishedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of UrlUploadFinished
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? marker = freezed,
-    Object? file = null,
-  }) {
-    return _then(_$UrlUploadFinishedImpl(
-      marker: freezed == marker
-          ? _value.marker
-          : marker // ignore: cast_nullable_to_non_nullable
-              as String?,
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as DriveFile,
-    ));
+  $Res call({Object? marker = freezed, Object? file = null}) {
+    return _then(
+      _$UrlUploadFinishedImpl(
+        marker:
+            freezed == marker
+                ? _value.marker
+                : marker // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        file:
+            null == file
+                ? _value.file
+                : file // ignore: cast_nullable_to_non_nullable
+                    as DriveFile,
+      ),
+    );
   }
 }
 
@@ -166,20 +173,21 @@ class _$UrlUploadFinishedImpl implements _UrlUploadFinished {
   @pragma('vm:prefer-inline')
   _$$UrlUploadFinishedImplCopyWith<_$UrlUploadFinishedImpl> get copyWith =>
       __$$UrlUploadFinishedImplCopyWithImpl<_$UrlUploadFinishedImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$UrlUploadFinishedImplToJson(
-      this,
-    );
+    return _$$UrlUploadFinishedImplToJson(this);
   }
 }
 
 abstract class _UrlUploadFinished implements UrlUploadFinished {
-  const factory _UrlUploadFinished(
-      {final String? marker,
-      required final DriveFile file}) = _$UrlUploadFinishedImpl;
+  const factory _UrlUploadFinished({
+    final String? marker,
+    required final DriveFile file,
+  }) = _$UrlUploadFinishedImpl;
 
   factory _UrlUploadFinished.fromJson(Map<String, dynamic> json) =
       _$UrlUploadFinishedImpl.fromJson;

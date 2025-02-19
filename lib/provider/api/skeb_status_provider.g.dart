@@ -39,24 +39,15 @@ class SkebStatusFamily extends Family<AsyncValue<UsersGetSkebStatusResponse>> {
   const SkebStatusFamily();
 
   /// See also [skebStatus].
-  SkebStatusProvider call(
-    Account account,
-    String userId,
-  ) {
-    return SkebStatusProvider(
-      account,
-      userId,
-    );
+  SkebStatusProvider call(Account account, String userId) {
+    return SkebStatusProvider(account, userId);
   }
 
   @override
   SkebStatusProvider getProviderOverride(
     covariant SkebStatusProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -78,27 +69,20 @@ class SkebStatusFamily extends Family<AsyncValue<UsersGetSkebStatusResponse>> {
 class SkebStatusProvider
     extends AutoDisposeFutureProvider<UsersGetSkebStatusResponse> {
   /// See also [skebStatus].
-  SkebStatusProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          (ref) => skebStatus(
-            ref as SkebStatusRef,
-            account,
-            userId,
-          ),
-          from: skebStatusProvider,
-          name: r'skebStatusProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$skebStatusHash,
-          dependencies: SkebStatusFamily._dependencies,
-          allTransitiveDependencies:
-              SkebStatusFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  SkebStatusProvider(Account account, String userId)
+    : this._internal(
+        (ref) => skebStatus(ref as SkebStatusRef, account, userId),
+        from: skebStatusProvider,
+        name: r'skebStatusProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$skebStatusHash,
+        dependencies: SkebStatusFamily._dependencies,
+        allTransitiveDependencies: SkebStatusFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   SkebStatusProvider._internal(
     super._createNotifier, {
@@ -117,7 +101,7 @@ class SkebStatusProvider
   @override
   Override overrideWith(
     FutureOr<UsersGetSkebStatusResponse> Function(SkebStatusRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -177,5 +161,6 @@ class _SkebStatusProviderElement
   @override
   String get userId => (origin as SkebStatusProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -105,25 +105,26 @@ class UserNotifierProvider
     String? username,
     String? host,
   }) : this._internal(
-          () => UserNotifier()
-            ..account = account
-            ..userId = userId
-            ..username = username
-            ..host = host,
-          from: userNotifierProvider,
-          name: r'userNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userNotifierHash,
-          dependencies: UserNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-          username: username,
-          host: host,
-        );
+         () =>
+             UserNotifier()
+               ..account = account
+               ..userId = userId
+               ..username = username
+               ..host = host,
+         from: userNotifierProvider,
+         name: r'userNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$userNotifierHash,
+         dependencies: UserNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             UserNotifierFamily._allTransitiveDependencies,
+         account: account,
+         userId: userId,
+         username: username,
+         host: host,
+       );
 
   UserNotifierProvider._internal(
     super._createNotifier, {
@@ -144,9 +145,7 @@ class UserNotifierProvider
   final String? host;
 
   @override
-  FutureOr<UserDetailed> runNotifierBuild(
-    covariant UserNotifier notifier,
-  ) {
+  FutureOr<UserDetailed> runNotifierBuild(covariant UserNotifier notifier) {
     return notifier.build(
       account,
       userId: userId,
@@ -160,11 +159,12 @@ class UserNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId
-          ..username = username
-          ..host = host,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId
+              ..username = username
+              ..host = host,
         from: from,
         name: null,
         dependencies: null,
@@ -180,7 +180,7 @@ class UserNotifierProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<UserNotifier, UserDetailed>
-      createElement() {
+  createElement() {
     return _UserNotifierProviderElement(this);
   }
 
@@ -235,5 +235,6 @@ class _UserNotifierProviderElement
   @override
   String? get host => (origin as UserNotifierProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

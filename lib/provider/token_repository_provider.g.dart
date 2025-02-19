@@ -13,9 +13,10 @@ String _$tokenRepositoryHash() => r'9a2bc79396194648b96d2abc288c6d6ae29d71ff';
 final tokenRepositoryProvider = AutoDisposeProvider<TokenRepository>.internal(
   tokenRepository,
   name: r'tokenRepositoryProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$tokenRepositoryHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$tokenRepositoryHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

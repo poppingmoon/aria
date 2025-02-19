@@ -34,9 +34,7 @@ abstract class _$FeaturedPlaysNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Flash>> {
   late final Account account;
 
-  FutureOr<PaginationState<Flash>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<Flash>> build(Account account);
 }
 
 /// See also [FeaturedPlaysNotifier].
@@ -50,21 +48,15 @@ class FeaturedPlaysNotifierFamily
   const FeaturedPlaysNotifierFamily();
 
   /// See also [FeaturedPlaysNotifier].
-  FeaturedPlaysNotifierProvider call(
-    Account account,
-  ) {
-    return FeaturedPlaysNotifierProvider(
-      account,
-    );
+  FeaturedPlaysNotifierProvider call(Account account) {
+    return FeaturedPlaysNotifierProvider(account);
   }
 
   @override
   FeaturedPlaysNotifierProvider getProviderOverride(
     covariant FeaturedPlaysNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class FeaturedPlaysNotifierFamily
 
 /// See also [FeaturedPlaysNotifier].
 class FeaturedPlaysNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FeaturedPlaysNotifier,
-        PaginationState<Flash>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FeaturedPlaysNotifier,
+          PaginationState<Flash>
+        > {
   /// See also [FeaturedPlaysNotifier].
-  FeaturedPlaysNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => FeaturedPlaysNotifier()..account = account,
-          from: featuredPlaysNotifierProvider,
-          name: r'featuredPlaysNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$featuredPlaysNotifierHash,
-          dependencies: FeaturedPlaysNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FeaturedPlaysNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FeaturedPlaysNotifierProvider(Account account)
+    : this._internal(
+        () => FeaturedPlaysNotifier()..account = account,
+        from: featuredPlaysNotifierProvider,
+        name: r'featuredPlaysNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$featuredPlaysNotifierHash,
+        dependencies: FeaturedPlaysNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FeaturedPlaysNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FeaturedPlaysNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class FeaturedPlaysNotifierProvider
   FutureOr<PaginationState<Flash>> runNotifierBuild(
     covariant FeaturedPlaysNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,8 +133,11 @@ class FeaturedPlaysNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FeaturedPlaysNotifier,
-      PaginationState<Flash>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FeaturedPlaysNotifier,
+    PaginationState<Flash>
+  >
+  createElement() {
     return _FeaturedPlaysNotifierProviderElement(this);
   }
 
@@ -169,12 +164,17 @@ mixin FeaturedPlaysNotifierRef
 }
 
 class _FeaturedPlaysNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FeaturedPlaysNotifier,
-        PaginationState<Flash>> with FeaturedPlaysNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FeaturedPlaysNotifier,
+          PaginationState<Flash>
+        >
+    with FeaturedPlaysNotifierRef {
   _FeaturedPlaysNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as FeaturedPlaysNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

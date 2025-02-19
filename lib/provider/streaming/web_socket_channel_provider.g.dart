@@ -39,21 +39,15 @@ class WebSocketChannelFamily extends Family<WebSocketChannel> {
   const WebSocketChannelFamily();
 
   /// See also [webSocketChannel].
-  WebSocketChannelProvider call(
-    Account account,
-  ) {
-    return WebSocketChannelProvider(
-      account,
-    );
+  WebSocketChannelProvider call(Account account) {
+    return WebSocketChannelProvider(account);
   }
 
   @override
   WebSocketChannelProvider getProviderOverride(
     covariant WebSocketChannelProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class WebSocketChannelFamily extends Family<WebSocketChannel> {
 /// See also [webSocketChannel].
 class WebSocketChannelProvider extends AutoDisposeProvider<WebSocketChannel> {
   /// See also [webSocketChannel].
-  WebSocketChannelProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => webSocketChannel(
-            ref as WebSocketChannelRef,
-            account,
-          ),
-          from: webSocketChannelProvider,
-          name: r'webSocketChannelProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$webSocketChannelHash,
-          dependencies: WebSocketChannelFamily._dependencies,
-          allTransitiveDependencies:
-              WebSocketChannelFamily._allTransitiveDependencies,
-          account: account,
-        );
+  WebSocketChannelProvider(Account account)
+    : this._internal(
+        (ref) => webSocketChannel(ref as WebSocketChannelRef, account),
+        from: webSocketChannelProvider,
+        name: r'webSocketChannelProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$webSocketChannelHash,
+        dependencies: WebSocketChannelFamily._dependencies,
+        allTransitiveDependencies:
+            WebSocketChannelFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   WebSocketChannelProvider._internal(
     super._createNotifier, {
@@ -157,5 +147,6 @@ class _WebSocketChannelProviderElement
   @override
   Account get account => (origin as WebSocketChannelProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

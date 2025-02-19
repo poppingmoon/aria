@@ -33,9 +33,7 @@ abstract class _$ClipsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<List<Clip>> {
   late final Account account;
 
-  FutureOr<List<Clip>> build(
-    Account account,
-  );
+  FutureOr<List<Clip>> build(Account account);
 }
 
 /// See also [ClipsNotifier].
@@ -48,21 +46,15 @@ class ClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
   const ClipsNotifierFamily();
 
   /// See also [ClipsNotifier].
-  ClipsNotifierProvider call(
-    Account account,
-  ) {
-    return ClipsNotifierProvider(
-      account,
-    );
+  ClipsNotifierProvider call(Account account) {
+    return ClipsNotifierProvider(account);
   }
 
   @override
   ClipsNotifierProvider getProviderOverride(
     covariant ClipsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,21 +76,20 @@ class ClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
 class ClipsNotifierProvider
     extends AutoDisposeAsyncNotifierProviderImpl<ClipsNotifier, List<Clip>> {
   /// See also [ClipsNotifier].
-  ClipsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => ClipsNotifier()..account = account,
-          from: clipsNotifierProvider,
-          name: r'clipsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$clipsNotifierHash,
-          dependencies: ClipsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ClipsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  ClipsNotifierProvider(Account account)
+    : this._internal(
+        () => ClipsNotifier()..account = account,
+        from: clipsNotifierProvider,
+        name: r'clipsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$clipsNotifierHash,
+        dependencies: ClipsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ClipsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   ClipsNotifierProvider._internal(
     super._createNotifier, {
@@ -113,12 +104,8 @@ class ClipsNotifierProvider
   final Account account;
 
   @override
-  FutureOr<List<Clip>> runNotifierBuild(
-    covariant ClipsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  FutureOr<List<Clip>> runNotifierBuild(covariant ClipsNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -139,7 +126,7 @@ class ClipsNotifierProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<ClipsNotifier, List<Clip>>
-      createElement() {
+  createElement() {
     return _ClipsNotifierProviderElement(this);
   }
 
@@ -172,5 +159,6 @@ class _ClipsNotifierProviderElement
   @override
   Account get account => (origin as ClipsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

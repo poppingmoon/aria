@@ -12,7 +12,8 @@ part of 'aria_backup.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 AriaBackup _$AriaBackupFromJson(Map<String, dynamic> json) {
   return _AriaBackup.fromJson(json);
@@ -42,16 +43,18 @@ mixin _$AriaBackup {
 /// @nodoc
 abstract class $AriaBackupCopyWith<$Res> {
   factory $AriaBackupCopyWith(
-          AriaBackup value, $Res Function(AriaBackup) then) =
-      _$AriaBackupCopyWithImpl<$Res, AriaBackup>;
+    AriaBackup value,
+    $Res Function(AriaBackup) then,
+  ) = _$AriaBackupCopyWithImpl<$Res, AriaBackup>;
   @useResult
-  $Res call(
-      {Map<String, dynamic>? metadata,
-      List<TabSettings>? timelineTabs,
-      Map<String, AccountSettings>? accountSettings,
-      GeneralSettings? generalSettings,
-      List<String>? themes,
-      Map<String, Map<String, String>>? aiscriptStorage});
+  $Res call({
+    Map<String, dynamic>? metadata,
+    List<TabSettings>? timelineTabs,
+    Map<String, AccountSettings>? accountSettings,
+    GeneralSettings? generalSettings,
+    List<String>? themes,
+    Map<String, Map<String, String>>? aiscriptStorage,
+  });
 
   $GeneralSettingsCopyWith<$Res>? get generalSettings;
 }
@@ -78,32 +81,41 @@ class _$AriaBackupCopyWithImpl<$Res, $Val extends AriaBackup>
     Object? themes = freezed,
     Object? aiscriptStorage = freezed,
   }) {
-    return _then(_value.copyWith(
-      metadata: freezed == metadata
-          ? _value.metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      timelineTabs: freezed == timelineTabs
-          ? _value.timelineTabs
-          : timelineTabs // ignore: cast_nullable_to_non_nullable
-              as List<TabSettings>?,
-      accountSettings: freezed == accountSettings
-          ? _value.accountSettings
-          : accountSettings // ignore: cast_nullable_to_non_nullable
-              as Map<String, AccountSettings>?,
-      generalSettings: freezed == generalSettings
-          ? _value.generalSettings
-          : generalSettings // ignore: cast_nullable_to_non_nullable
-              as GeneralSettings?,
-      themes: freezed == themes
-          ? _value.themes
-          : themes // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      aiscriptStorage: freezed == aiscriptStorage
-          ? _value.aiscriptStorage
-          : aiscriptStorage // ignore: cast_nullable_to_non_nullable
-              as Map<String, Map<String, String>>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            metadata:
+                freezed == metadata
+                    ? _value.metadata
+                    : metadata // ignore: cast_nullable_to_non_nullable
+                        as Map<String, dynamic>?,
+            timelineTabs:
+                freezed == timelineTabs
+                    ? _value.timelineTabs
+                    : timelineTabs // ignore: cast_nullable_to_non_nullable
+                        as List<TabSettings>?,
+            accountSettings:
+                freezed == accountSettings
+                    ? _value.accountSettings
+                    : accountSettings // ignore: cast_nullable_to_non_nullable
+                        as Map<String, AccountSettings>?,
+            generalSettings:
+                freezed == generalSettings
+                    ? _value.generalSettings
+                    : generalSettings // ignore: cast_nullable_to_non_nullable
+                        as GeneralSettings?,
+            themes:
+                freezed == themes
+                    ? _value.themes
+                    : themes // ignore: cast_nullable_to_non_nullable
+                        as List<String>?,
+            aiscriptStorage:
+                freezed == aiscriptStorage
+                    ? _value.aiscriptStorage
+                    : aiscriptStorage // ignore: cast_nullable_to_non_nullable
+                        as Map<String, Map<String, String>>?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of AriaBackup
@@ -125,17 +137,19 @@ class _$AriaBackupCopyWithImpl<$Res, $Val extends AriaBackup>
 abstract class _$$AriaBackupImplCopyWith<$Res>
     implements $AriaBackupCopyWith<$Res> {
   factory _$$AriaBackupImplCopyWith(
-          _$AriaBackupImpl value, $Res Function(_$AriaBackupImpl) then) =
-      __$$AriaBackupImplCopyWithImpl<$Res>;
+    _$AriaBackupImpl value,
+    $Res Function(_$AriaBackupImpl) then,
+  ) = __$$AriaBackupImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Map<String, dynamic>? metadata,
-      List<TabSettings>? timelineTabs,
-      Map<String, AccountSettings>? accountSettings,
-      GeneralSettings? generalSettings,
-      List<String>? themes,
-      Map<String, Map<String, String>>? aiscriptStorage});
+  $Res call({
+    Map<String, dynamic>? metadata,
+    List<TabSettings>? timelineTabs,
+    Map<String, AccountSettings>? accountSettings,
+    GeneralSettings? generalSettings,
+    List<String>? themes,
+    Map<String, Map<String, String>>? aiscriptStorage,
+  });
 
   @override
   $GeneralSettingsCopyWith<$Res>? get generalSettings;
@@ -146,8 +160,9 @@ class __$$AriaBackupImplCopyWithImpl<$Res>
     extends _$AriaBackupCopyWithImpl<$Res, _$AriaBackupImpl>
     implements _$$AriaBackupImplCopyWith<$Res> {
   __$$AriaBackupImplCopyWithImpl(
-      _$AriaBackupImpl _value, $Res Function(_$AriaBackupImpl) _then)
-      : super(_value, _then);
+    _$AriaBackupImpl _value,
+    $Res Function(_$AriaBackupImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AriaBackup
   /// with the given fields replaced by the non-null parameter values.
@@ -161,50 +176,58 @@ class __$$AriaBackupImplCopyWithImpl<$Res>
     Object? themes = freezed,
     Object? aiscriptStorage = freezed,
   }) {
-    return _then(_$AriaBackupImpl(
-      metadata: freezed == metadata
-          ? _value._metadata
-          : metadata // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-      timelineTabs: freezed == timelineTabs
-          ? _value._timelineTabs
-          : timelineTabs // ignore: cast_nullable_to_non_nullable
-              as List<TabSettings>?,
-      accountSettings: freezed == accountSettings
-          ? _value._accountSettings
-          : accountSettings // ignore: cast_nullable_to_non_nullable
-              as Map<String, AccountSettings>?,
-      generalSettings: freezed == generalSettings
-          ? _value.generalSettings
-          : generalSettings // ignore: cast_nullable_to_non_nullable
-              as GeneralSettings?,
-      themes: freezed == themes
-          ? _value._themes
-          : themes // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      aiscriptStorage: freezed == aiscriptStorage
-          ? _value._aiscriptStorage
-          : aiscriptStorage // ignore: cast_nullable_to_non_nullable
-              as Map<String, Map<String, String>>?,
-    ));
+    return _then(
+      _$AriaBackupImpl(
+        metadata:
+            freezed == metadata
+                ? _value._metadata
+                : metadata // ignore: cast_nullable_to_non_nullable
+                    as Map<String, dynamic>?,
+        timelineTabs:
+            freezed == timelineTabs
+                ? _value._timelineTabs
+                : timelineTabs // ignore: cast_nullable_to_non_nullable
+                    as List<TabSettings>?,
+        accountSettings:
+            freezed == accountSettings
+                ? _value._accountSettings
+                : accountSettings // ignore: cast_nullable_to_non_nullable
+                    as Map<String, AccountSettings>?,
+        generalSettings:
+            freezed == generalSettings
+                ? _value.generalSettings
+                : generalSettings // ignore: cast_nullable_to_non_nullable
+                    as GeneralSettings?,
+        themes:
+            freezed == themes
+                ? _value._themes
+                : themes // ignore: cast_nullable_to_non_nullable
+                    as List<String>?,
+        aiscriptStorage:
+            freezed == aiscriptStorage
+                ? _value._aiscriptStorage
+                : aiscriptStorage // ignore: cast_nullable_to_non_nullable
+                    as Map<String, Map<String, String>>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AriaBackupImpl implements _AriaBackup {
-  const _$AriaBackupImpl(
-      {final Map<String, dynamic>? metadata,
-      final List<TabSettings>? timelineTabs,
-      final Map<String, AccountSettings>? accountSettings,
-      this.generalSettings,
-      final List<String>? themes,
-      final Map<String, Map<String, String>>? aiscriptStorage})
-      : _metadata = metadata,
-        _timelineTabs = timelineTabs,
-        _accountSettings = accountSettings,
-        _themes = themes,
-        _aiscriptStorage = aiscriptStorage;
+  const _$AriaBackupImpl({
+    final Map<String, dynamic>? metadata,
+    final List<TabSettings>? timelineTabs,
+    final Map<String, AccountSettings>? accountSettings,
+    this.generalSettings,
+    final List<String>? themes,
+    final Map<String, Map<String, String>>? aiscriptStorage,
+  }) : _metadata = metadata,
+       _timelineTabs = timelineTabs,
+       _accountSettings = accountSettings,
+       _themes = themes,
+       _aiscriptStorage = aiscriptStorage;
 
   factory _$AriaBackupImpl.fromJson(Map<String, dynamic> json) =>
       _$$AriaBackupImplFromJson(json);
@@ -272,27 +295,34 @@ class _$AriaBackupImpl implements _AriaBackup {
         (other.runtimeType == runtimeType &&
             other is _$AriaBackupImpl &&
             const DeepCollectionEquality().equals(other._metadata, _metadata) &&
-            const DeepCollectionEquality()
-                .equals(other._timelineTabs, _timelineTabs) &&
-            const DeepCollectionEquality()
-                .equals(other._accountSettings, _accountSettings) &&
+            const DeepCollectionEquality().equals(
+              other._timelineTabs,
+              _timelineTabs,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._accountSettings,
+              _accountSettings,
+            ) &&
             (identical(other.generalSettings, generalSettings) ||
                 other.generalSettings == generalSettings) &&
             const DeepCollectionEquality().equals(other._themes, _themes) &&
-            const DeepCollectionEquality()
-                .equals(other._aiscriptStorage, _aiscriptStorage));
+            const DeepCollectionEquality().equals(
+              other._aiscriptStorage,
+              _aiscriptStorage,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_metadata),
-      const DeepCollectionEquality().hash(_timelineTabs),
-      const DeepCollectionEquality().hash(_accountSettings),
-      generalSettings,
-      const DeepCollectionEquality().hash(_themes),
-      const DeepCollectionEquality().hash(_aiscriptStorage));
+    runtimeType,
+    const DeepCollectionEquality().hash(_metadata),
+    const DeepCollectionEquality().hash(_timelineTabs),
+    const DeepCollectionEquality().hash(_accountSettings),
+    generalSettings,
+    const DeepCollectionEquality().hash(_themes),
+    const DeepCollectionEquality().hash(_aiscriptStorage),
+  );
 
   /// Create a copy of AriaBackup
   /// with the given fields replaced by the non-null parameter values.
@@ -304,21 +334,19 @@ class _$AriaBackupImpl implements _AriaBackup {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AriaBackupImplToJson(
-      this,
-    );
+    return _$$AriaBackupImplToJson(this);
   }
 }
 
 abstract class _AriaBackup implements AriaBackup {
-  const factory _AriaBackup(
-          {final Map<String, dynamic>? metadata,
-          final List<TabSettings>? timelineTabs,
-          final Map<String, AccountSettings>? accountSettings,
-          final GeneralSettings? generalSettings,
-          final List<String>? themes,
-          final Map<String, Map<String, String>>? aiscriptStorage}) =
-      _$AriaBackupImpl;
+  const factory _AriaBackup({
+    final Map<String, dynamic>? metadata,
+    final List<TabSettings>? timelineTabs,
+    final Map<String, AccountSettings>? accountSettings,
+    final GeneralSettings? generalSettings,
+    final List<String>? themes,
+    final Map<String, Map<String, String>>? aiscriptStorage,
+  }) = _$AriaBackupImpl;
 
   factory _AriaBackup.fromJson(Map<String, dynamic> json) =
       _$AriaBackupImpl.fromJson;

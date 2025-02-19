@@ -59,11 +59,7 @@ class SearchUsersNotifierFamily
     String query, {
     Origin? userOrigin,
   }) {
-    return SearchUsersNotifierProvider(
-      account,
-      query,
-      userOrigin: userOrigin,
-    );
+    return SearchUsersNotifierProvider(account, query, userOrigin: userOrigin);
   }
 
   @override
@@ -93,31 +89,36 @@ class SearchUsersNotifierFamily
 }
 
 /// See also [SearchUsersNotifier].
-class SearchUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    SearchUsersNotifier, PaginationState<UserDetailed>> {
+class SearchUsersNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          SearchUsersNotifier,
+          PaginationState<UserDetailed>
+        > {
   /// See also [SearchUsersNotifier].
   SearchUsersNotifierProvider(
     Account account,
     String query, {
     Origin? userOrigin,
   }) : this._internal(
-          () => SearchUsersNotifier()
-            ..account = account
-            ..query = query
-            ..userOrigin = userOrigin,
-          from: searchUsersNotifierProvider,
-          name: r'searchUsersNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchUsersNotifierHash,
-          dependencies: SearchUsersNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              SearchUsersNotifierFamily._allTransitiveDependencies,
-          account: account,
-          query: query,
-          userOrigin: userOrigin,
-        );
+         () =>
+             SearchUsersNotifier()
+               ..account = account
+               ..query = query
+               ..userOrigin = userOrigin,
+         from: searchUsersNotifierProvider,
+         name: r'searchUsersNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$searchUsersNotifierHash,
+         dependencies: SearchUsersNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             SearchUsersNotifierFamily._allTransitiveDependencies,
+         account: account,
+         query: query,
+         userOrigin: userOrigin,
+       );
 
   SearchUsersNotifierProvider._internal(
     super._createNotifier, {
@@ -139,11 +140,7 @@ class SearchUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<UserDetailed>> runNotifierBuild(
     covariant SearchUsersNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      query,
-      userOrigin: userOrigin,
-    );
+    return notifier.build(account, query, userOrigin: userOrigin);
   }
 
   @override
@@ -151,10 +148,11 @@ class SearchUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: SearchUsersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..query = query
-          ..userOrigin = userOrigin,
+        () =>
+            create()
+              ..account = account
+              ..query = query
+              ..userOrigin = userOrigin,
         from: from,
         name: null,
         dependencies: null,
@@ -168,8 +166,11 @@ class SearchUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<SearchUsersNotifier,
-      PaginationState<UserDetailed>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    SearchUsersNotifier,
+    PaginationState<UserDetailed>
+  >
+  createElement() {
     return _SearchUsersNotifierProviderElement(this);
   }
 
@@ -207,8 +208,12 @@ mixin SearchUsersNotifierRef
 }
 
 class _SearchUsersNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<SearchUsersNotifier,
-        PaginationState<UserDetailed>> with SearchUsersNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          SearchUsersNotifier,
+          PaginationState<UserDetailed>
+        >
+    with SearchUsersNotifierRef {
   _SearchUsersNotifierProviderElement(super.provider);
 
   @override
@@ -218,5 +223,6 @@ class _SearchUsersNotifierProviderElement
   @override
   Origin? get userOrigin => (origin as SearchUsersNotifierProvider).userOrigin;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -31,13 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$FollowingChannelsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<CommunityChannel>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<PaginationState<CommunityChannel>> {
   late final Account account;
 
-  FutureOr<PaginationState<CommunityChannel>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<CommunityChannel>> build(Account account);
 }
 
 /// See also [FollowingChannelsNotifier].
@@ -51,21 +49,15 @@ class FollowingChannelsNotifierFamily
   const FollowingChannelsNotifierFamily();
 
   /// See also [FollowingChannelsNotifier].
-  FollowingChannelsNotifierProvider call(
-    Account account,
-  ) {
-    return FollowingChannelsNotifierProvider(
-      account,
-    );
+  FollowingChannelsNotifierProvider call(Account account) {
+    return FollowingChannelsNotifierProvider(account);
   }
 
   @override
   FollowingChannelsNotifierProvider getProviderOverride(
     covariant FollowingChannelsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,24 +77,26 @@ class FollowingChannelsNotifierFamily
 
 /// See also [FollowingChannelsNotifier].
 class FollowingChannelsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FollowingChannelsNotifier,
-        PaginationState<CommunityChannel>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FollowingChannelsNotifier,
+          PaginationState<CommunityChannel>
+        > {
   /// See also [FollowingChannelsNotifier].
-  FollowingChannelsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => FollowingChannelsNotifier()..account = account,
-          from: followingChannelsNotifierProvider,
-          name: r'followingChannelsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$followingChannelsNotifierHash,
-          dependencies: FollowingChannelsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FollowingChannelsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FollowingChannelsNotifierProvider(Account account)
+    : this._internal(
+        () => FollowingChannelsNotifier()..account = account,
+        from: followingChannelsNotifierProvider,
+        name: r'followingChannelsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$followingChannelsNotifierHash,
+        dependencies: FollowingChannelsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FollowingChannelsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FollowingChannelsNotifierProvider._internal(
     super._createNotifier, {
@@ -120,9 +114,7 @@ class FollowingChannelsNotifierProvider
   FutureOr<PaginationState<CommunityChannel>> runNotifierBuild(
     covariant FollowingChannelsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -142,8 +134,11 @@ class FollowingChannelsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FollowingChannelsNotifier,
-      PaginationState<CommunityChannel>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FollowingChannelsNotifier,
+    PaginationState<CommunityChannel>
+  >
+  createElement() {
     return _FollowingChannelsNotifierProviderElement(this);
   }
 
@@ -171,12 +166,17 @@ mixin FollowingChannelsNotifierRef
 }
 
 class _FollowingChannelsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FollowingChannelsNotifier,
-        PaginationState<CommunityChannel>> with FollowingChannelsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FollowingChannelsNotifier,
+          PaginationState<CommunityChannel>
+        >
+    with FollowingChannelsNotifierRef {
   _FollowingChannelsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as FollowingChannelsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

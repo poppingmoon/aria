@@ -39,24 +39,13 @@ class EmojiFamily extends Family<Emoji?> {
   const EmojiFamily();
 
   /// See also [emoji].
-  EmojiProvider call(
-    String host,
-    String code,
-  ) {
-    return EmojiProvider(
-      host,
-      code,
-    );
+  EmojiProvider call(String host, String code) {
+    return EmojiProvider(host, code);
   }
 
   @override
-  EmojiProvider getProviderOverride(
-    covariant EmojiProvider provider,
-  ) {
-    return call(
-      provider.host,
-      provider.code,
-    );
+  EmojiProvider getProviderOverride(covariant EmojiProvider provider) {
+    return call(provider.host, provider.code);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,26 +66,18 @@ class EmojiFamily extends Family<Emoji?> {
 /// See also [emoji].
 class EmojiProvider extends Provider<Emoji?> {
   /// See also [emoji].
-  EmojiProvider(
-    String host,
-    String code,
-  ) : this._internal(
-          (ref) => emoji(
-            ref as EmojiRef,
-            host,
-            code,
-          ),
-          from: emojiProvider,
-          name: r'emojiProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$emojiHash,
-          dependencies: EmojiFamily._dependencies,
-          allTransitiveDependencies: EmojiFamily._allTransitiveDependencies,
-          host: host,
-          code: code,
-        );
+  EmojiProvider(String host, String code)
+    : this._internal(
+        (ref) => emoji(ref as EmojiRef, host, code),
+        from: emojiProvider,
+        name: r'emojiProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$emojiHash,
+        dependencies: EmojiFamily._dependencies,
+        allTransitiveDependencies: EmojiFamily._allTransitiveDependencies,
+        host: host,
+        code: code,
+      );
 
   EmojiProvider._internal(
     super._createNotifier, {
@@ -113,9 +94,7 @@ class EmojiProvider extends Provider<Emoji?> {
   final String code;
 
   @override
-  Override overrideWith(
-    Emoji? Function(EmojiRef provider) create,
-  ) {
+  Override overrideWith(Emoji? Function(EmojiRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: EmojiProvider._internal(
@@ -169,5 +148,6 @@ class _EmojiProviderElement extends ProviderElement<Emoji?> with EmojiRef {
   @override
   String get code => (origin as EmojiProvider).code;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

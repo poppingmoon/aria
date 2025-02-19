@@ -34,9 +34,7 @@ abstract class _$FollowRequestsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<FollowRequest>> {
   late final Account account;
 
-  FutureOr<PaginationState<FollowRequest>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<FollowRequest>> build(Account account);
 }
 
 /// See also [FollowRequestsNotifier].
@@ -50,21 +48,15 @@ class FollowRequestsNotifierFamily
   const FollowRequestsNotifierFamily();
 
   /// See also [FollowRequestsNotifier].
-  FollowRequestsNotifierProvider call(
-    Account account,
-  ) {
-    return FollowRequestsNotifierProvider(
-      account,
-    );
+  FollowRequestsNotifierProvider call(Account account) {
+    return FollowRequestsNotifierProvider(account);
   }
 
   @override
   FollowRequestsNotifierProvider getProviderOverride(
     covariant FollowRequestsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class FollowRequestsNotifierFamily
 
 /// See also [FollowRequestsNotifier].
 class FollowRequestsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FollowRequestsNotifier,
-        PaginationState<FollowRequest>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FollowRequestsNotifier,
+          PaginationState<FollowRequest>
+        > {
   /// See also [FollowRequestsNotifier].
-  FollowRequestsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => FollowRequestsNotifier()..account = account,
-          from: followRequestsNotifierProvider,
-          name: r'followRequestsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$followRequestsNotifierHash,
-          dependencies: FollowRequestsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FollowRequestsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FollowRequestsNotifierProvider(Account account)
+    : this._internal(
+        () => FollowRequestsNotifier()..account = account,
+        from: followRequestsNotifierProvider,
+        name: r'followRequestsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$followRequestsNotifierHash,
+        dependencies: FollowRequestsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FollowRequestsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FollowRequestsNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class FollowRequestsNotifierProvider
   FutureOr<PaginationState<FollowRequest>> runNotifierBuild(
     covariant FollowRequestsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,8 +133,11 @@ class FollowRequestsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FollowRequestsNotifier,
-      PaginationState<FollowRequest>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FollowRequestsNotifier,
+    PaginationState<FollowRequest>
+  >
+  createElement() {
     return _FollowRequestsNotifierProviderElement(this);
   }
 
@@ -169,12 +164,17 @@ mixin FollowRequestsNotifierRef
 }
 
 class _FollowRequestsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FollowRequestsNotifier,
-        PaginationState<FollowRequest>> with FollowRequestsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FollowRequestsNotifier,
+          PaginationState<FollowRequest>
+        >
+    with FollowRequestsNotifierRef {
   _FollowRequestsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as FollowRequestsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

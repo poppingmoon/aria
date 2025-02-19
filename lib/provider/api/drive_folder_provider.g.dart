@@ -39,24 +39,15 @@ class DriveFolderFamily extends Family<AsyncValue<DriveFolder>> {
   const DriveFolderFamily();
 
   /// See also [driveFolder].
-  DriveFolderProvider call(
-    Account account,
-    String folderId,
-  ) {
-    return DriveFolderProvider(
-      account,
-      folderId,
-    );
+  DriveFolderProvider call(Account account, String folderId) {
+    return DriveFolderProvider(account, folderId);
   }
 
   @override
   DriveFolderProvider getProviderOverride(
     covariant DriveFolderProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.folderId,
-    );
+    return call(provider.account, provider.folderId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,20 @@ class DriveFolderFamily extends Family<AsyncValue<DriveFolder>> {
 /// See also [driveFolder].
 class DriveFolderProvider extends AutoDisposeFutureProvider<DriveFolder> {
   /// See also [driveFolder].
-  DriveFolderProvider(
-    Account account,
-    String folderId,
-  ) : this._internal(
-          (ref) => driveFolder(
-            ref as DriveFolderRef,
-            account,
-            folderId,
-          ),
-          from: driveFolderProvider,
-          name: r'driveFolderProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$driveFolderHash,
-          dependencies: DriveFolderFamily._dependencies,
-          allTransitiveDependencies:
-              DriveFolderFamily._allTransitiveDependencies,
-          account: account,
-          folderId: folderId,
-        );
+  DriveFolderProvider(Account account, String folderId)
+    : this._internal(
+        (ref) => driveFolder(ref as DriveFolderRef, account, folderId),
+        from: driveFolderProvider,
+        name: r'driveFolderProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$driveFolderHash,
+        dependencies: DriveFolderFamily._dependencies,
+        allTransitiveDependencies: DriveFolderFamily._allTransitiveDependencies,
+        account: account,
+        folderId: folderId,
+      );
 
   DriveFolderProvider._internal(
     super._createNotifier, {
@@ -165,7 +149,8 @@ mixin DriveFolderRef on AutoDisposeFutureProviderRef<DriveFolder> {
 }
 
 class _DriveFolderProviderElement
-    extends AutoDisposeFutureProviderElement<DriveFolder> with DriveFolderRef {
+    extends AutoDisposeFutureProviderElement<DriveFolder>
+    with DriveFolderRef {
   _DriveFolderProviderElement(super.provider);
 
   @override
@@ -173,5 +158,6 @@ class _DriveFolderProviderElement
   @override
   String get folderId => (origin as DriveFolderProvider).folderId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

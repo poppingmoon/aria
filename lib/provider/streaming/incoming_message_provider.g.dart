@@ -39,21 +39,15 @@ class IncomingMessageFamily extends Family<AsyncValue<IncomingMessage>> {
   const IncomingMessageFamily();
 
   /// See also [incomingMessage].
-  IncomingMessageProvider call(
-    Account account,
-  ) {
-    return IncomingMessageProvider(
-      account,
-    );
+  IncomingMessageProvider call(Account account) {
+    return IncomingMessageProvider(account);
   }
 
   @override
   IncomingMessageProvider getProviderOverride(
     covariant IncomingMessageProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,24 +69,20 @@ class IncomingMessageFamily extends Family<AsyncValue<IncomingMessage>> {
 class IncomingMessageProvider
     extends AutoDisposeStreamProvider<IncomingMessage> {
   /// See also [incomingMessage].
-  IncomingMessageProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => incomingMessage(
-            ref as IncomingMessageRef,
-            account,
-          ),
-          from: incomingMessageProvider,
-          name: r'incomingMessageProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$incomingMessageHash,
-          dependencies: IncomingMessageFamily._dependencies,
-          allTransitiveDependencies:
-              IncomingMessageFamily._allTransitiveDependencies,
-          account: account,
-        );
+  IncomingMessageProvider(Account account)
+    : this._internal(
+        (ref) => incomingMessage(ref as IncomingMessageRef, account),
+        from: incomingMessageProvider,
+        name: r'incomingMessageProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$incomingMessageHash,
+        dependencies: IncomingMessageFamily._dependencies,
+        allTransitiveDependencies:
+            IncomingMessageFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   IncomingMessageProvider._internal(
     super._createNotifier, {
@@ -158,5 +148,6 @@ class _IncomingMessageProviderElement
   @override
   Account get account => (origin as IncomingMessageProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

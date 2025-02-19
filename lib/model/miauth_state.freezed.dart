@@ -12,7 +12,8 @@ part of 'miauth_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$MiAuthState {
@@ -30,8 +31,9 @@ mixin _$MiAuthState {
 /// @nodoc
 abstract class $MiAuthStateCopyWith<$Res> {
   factory $MiAuthStateCopyWith(
-          MiAuthState value, $Res Function(MiAuthState) then) =
-      _$MiAuthStateCopyWithImpl<$Res, MiAuthState>;
+    MiAuthState value,
+    $Res Function(MiAuthState) then,
+  ) = _$MiAuthStateCopyWithImpl<$Res, MiAuthState>;
   @useResult
   $Res call({String host, String sessionId, Uri url});
 }
@@ -55,20 +57,26 @@ class _$MiAuthStateCopyWithImpl<$Res, $Val extends MiAuthState>
     Object? sessionId = null,
     Object? url = null,
   }) {
-    return _then(_value.copyWith(
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
-      sessionId: null == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            host:
+                null == host
+                    ? _value.host
+                    : host // ignore: cast_nullable_to_non_nullable
+                        as String,
+            sessionId:
+                null == sessionId
+                    ? _value.sessionId
+                    : sessionId // ignore: cast_nullable_to_non_nullable
+                        as String,
+            url:
+                null == url
+                    ? _value.url
+                    : url // ignore: cast_nullable_to_non_nullable
+                        as Uri,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -76,8 +84,9 @@ class _$MiAuthStateCopyWithImpl<$Res, $Val extends MiAuthState>
 abstract class _$$MiAuthStateImplCopyWith<$Res>
     implements $MiAuthStateCopyWith<$Res> {
   factory _$$MiAuthStateImplCopyWith(
-          _$MiAuthStateImpl value, $Res Function(_$MiAuthStateImpl) then) =
-      __$$MiAuthStateImplCopyWithImpl<$Res>;
+    _$MiAuthStateImpl value,
+    $Res Function(_$MiAuthStateImpl) then,
+  ) = __$$MiAuthStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String host, String sessionId, Uri url});
@@ -88,8 +97,9 @@ class __$$MiAuthStateImplCopyWithImpl<$Res>
     extends _$MiAuthStateCopyWithImpl<$Res, _$MiAuthStateImpl>
     implements _$$MiAuthStateImplCopyWith<$Res> {
   __$$MiAuthStateImplCopyWithImpl(
-      _$MiAuthStateImpl _value, $Res Function(_$MiAuthStateImpl) _then)
-      : super(_value, _then);
+    _$MiAuthStateImpl _value,
+    $Res Function(_$MiAuthStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MiAuthState
   /// with the given fields replaced by the non-null parameter values.
@@ -100,28 +110,36 @@ class __$$MiAuthStateImplCopyWithImpl<$Res>
     Object? sessionId = null,
     Object? url = null,
   }) {
-    return _then(_$MiAuthStateImpl(
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
-      sessionId: null == sessionId
-          ? _value.sessionId
-          : sessionId // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as Uri,
-    ));
+    return _then(
+      _$MiAuthStateImpl(
+        host:
+            null == host
+                ? _value.host
+                : host // ignore: cast_nullable_to_non_nullable
+                    as String,
+        sessionId:
+            null == sessionId
+                ? _value.sessionId
+                : sessionId // ignore: cast_nullable_to_non_nullable
+                    as String,
+        url:
+            null == url
+                ? _value.url
+                : url // ignore: cast_nullable_to_non_nullable
+                    as Uri,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$MiAuthStateImpl implements _MiAuthState {
-  const _$MiAuthStateImpl(
-      {required this.host, required this.sessionId, required this.url});
+  const _$MiAuthStateImpl({
+    required this.host,
+    required this.sessionId,
+    required this.url,
+  });
 
   @override
   final String host;
@@ -159,10 +177,11 @@ class _$MiAuthStateImpl implements _MiAuthState {
 }
 
 abstract class _MiAuthState implements MiAuthState {
-  const factory _MiAuthState(
-      {required final String host,
-      required final String sessionId,
-      required final Uri url}) = _$MiAuthStateImpl;
+  const factory _MiAuthState({
+    required final String host,
+    required final String sessionId,
+    required final Uri url,
+  }) = _$MiAuthStateImpl;
 
   @override
   String get host;

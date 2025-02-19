@@ -39,24 +39,15 @@ class StaticImageUrlFamily extends Family<Uri?> {
   const StaticImageUrlFamily();
 
   /// See also [staticImageUrl].
-  StaticImageUrlProvider call(
-    String host,
-    String baseUrl,
-  ) {
-    return StaticImageUrlProvider(
-      host,
-      baseUrl,
-    );
+  StaticImageUrlProvider call(String host, String baseUrl) {
+    return StaticImageUrlProvider(host, baseUrl);
   }
 
   @override
   StaticImageUrlProvider getProviderOverride(
     covariant StaticImageUrlProvider provider,
   ) {
-    return call(
-      provider.host,
-      provider.baseUrl,
-    );
+    return call(provider.host, provider.baseUrl);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,21 @@ class StaticImageUrlFamily extends Family<Uri?> {
 /// See also [staticImageUrl].
 class StaticImageUrlProvider extends AutoDisposeProvider<Uri?> {
   /// See also [staticImageUrl].
-  StaticImageUrlProvider(
-    String host,
-    String baseUrl,
-  ) : this._internal(
-          (ref) => staticImageUrl(
-            ref as StaticImageUrlRef,
-            host,
-            baseUrl,
-          ),
-          from: staticImageUrlProvider,
-          name: r'staticImageUrlProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$staticImageUrlHash,
-          dependencies: StaticImageUrlFamily._dependencies,
-          allTransitiveDependencies:
-              StaticImageUrlFamily._allTransitiveDependencies,
-          host: host,
-          baseUrl: baseUrl,
-        );
+  StaticImageUrlProvider(String host, String baseUrl)
+    : this._internal(
+        (ref) => staticImageUrl(ref as StaticImageUrlRef, host, baseUrl),
+        from: staticImageUrlProvider,
+        name: r'staticImageUrlProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$staticImageUrlHash,
+        dependencies: StaticImageUrlFamily._dependencies,
+        allTransitiveDependencies:
+            StaticImageUrlFamily._allTransitiveDependencies,
+        host: host,
+        baseUrl: baseUrl,
+      );
 
   StaticImageUrlProvider._internal(
     super._createNotifier, {
@@ -114,9 +99,7 @@ class StaticImageUrlProvider extends AutoDisposeProvider<Uri?> {
   final String baseUrl;
 
   @override
-  Override overrideWith(
-    Uri? Function(StaticImageUrlRef provider) create,
-  ) {
+  Override overrideWith(Uri? Function(StaticImageUrlRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: StaticImageUrlProvider._internal(
@@ -173,5 +156,6 @@ class _StaticImageUrlProviderElement extends AutoDisposeProviderElement<Uri?>
   @override
   String get baseUrl => (origin as StaticImageUrlProvider).baseUrl;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

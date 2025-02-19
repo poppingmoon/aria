@@ -31,8 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$UserReactionsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<UsersReactionsResponse>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<
+          PaginationState<UsersReactionsResponse>
+        > {
   late final Account account;
   late final String userId;
 
@@ -53,24 +55,15 @@ class UserReactionsNotifierFamily
   const UserReactionsNotifierFamily();
 
   /// See also [UserReactionsNotifier].
-  UserReactionsNotifierProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserReactionsNotifierProvider(
-      account,
-      userId,
-    );
+  UserReactionsNotifierProvider call(Account account, String userId) {
+    return UserReactionsNotifierProvider(account, userId);
   }
 
   @override
   UserReactionsNotifierProvider getProviderOverride(
     covariant UserReactionsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -90,28 +83,30 @@ class UserReactionsNotifierFamily
 
 /// See also [UserReactionsNotifier].
 class UserReactionsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<UserReactionsNotifier,
-        PaginationState<UsersReactionsResponse>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UserReactionsNotifier,
+          PaginationState<UsersReactionsResponse>
+        > {
   /// See also [UserReactionsNotifier].
-  UserReactionsNotifierProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          () => UserReactionsNotifier()
-            ..account = account
-            ..userId = userId,
-          from: userReactionsNotifierProvider,
-          name: r'userReactionsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userReactionsNotifierHash,
-          dependencies: UserReactionsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserReactionsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserReactionsNotifierProvider(Account account, String userId)
+    : this._internal(
+        () =>
+            UserReactionsNotifier()
+              ..account = account
+              ..userId = userId,
+        from: userReactionsNotifierProvider,
+        name: r'userReactionsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userReactionsNotifierHash,
+        dependencies: UserReactionsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UserReactionsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserReactionsNotifierProvider._internal(
     super._createNotifier, {
@@ -131,10 +126,7 @@ class UserReactionsNotifierProvider
   FutureOr<PaginationState<UsersReactionsResponse>> runNotifierBuild(
     covariant UserReactionsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      userId,
-    );
+    return notifier.build(account, userId);
   }
 
   @override
@@ -142,9 +134,10 @@ class UserReactionsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserReactionsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
@@ -157,8 +150,11 @@ class UserReactionsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UserReactionsNotifier,
-      PaginationState<UsersReactionsResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UserReactionsNotifier,
+    PaginationState<UsersReactionsResponse>
+  >
+  createElement() {
     return _UserReactionsNotifierProviderElement(this);
   }
 
@@ -181,8 +177,11 @@ class UserReactionsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin UserReactionsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<UsersReactionsResponse>> {
+mixin UserReactionsNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<UsersReactionsResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -191,8 +190,12 @@ mixin UserReactionsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
 }
 
 class _UserReactionsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UserReactionsNotifier,
-        PaginationState<UsersReactionsResponse>> with UserReactionsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UserReactionsNotifier,
+          PaginationState<UsersReactionsResponse>
+        >
+    with UserReactionsNotifierRef {
   _UserReactionsNotifierProviderElement(super.provider);
 
   @override
@@ -200,5 +203,6 @@ class _UserReactionsNotifierProviderElement
   @override
   String get userId => (origin as UserReactionsNotifierProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

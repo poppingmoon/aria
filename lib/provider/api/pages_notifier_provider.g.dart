@@ -33,9 +33,7 @@ abstract class _$PagesNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Page>> {
   late final Account account;
 
-  FutureOr<PaginationState<Page>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<Page>> build(Account account);
 }
 
 /// See also [PagesNotifier].
@@ -48,21 +46,15 @@ class PagesNotifierFamily extends Family<AsyncValue<PaginationState<Page>>> {
   const PagesNotifierFamily();
 
   /// See also [PagesNotifier].
-  PagesNotifierProvider call(
-    Account account,
-  ) {
-    return PagesNotifierProvider(
-      account,
-    );
+  PagesNotifierProvider call(Account account) {
+    return PagesNotifierProvider(account);
   }
 
   @override
   PagesNotifierProvider getProviderOverride(
     covariant PagesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -81,24 +73,27 @@ class PagesNotifierFamily extends Family<AsyncValue<PaginationState<Page>>> {
 }
 
 /// See also [PagesNotifier].
-class PagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    PagesNotifier, PaginationState<Page>> {
+class PagesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          PagesNotifier,
+          PaginationState<Page>
+        > {
   /// See also [PagesNotifier].
-  PagesNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => PagesNotifier()..account = account,
-          from: pagesNotifierProvider,
-          name: r'pagesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$pagesNotifierHash,
-          dependencies: PagesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PagesNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  PagesNotifierProvider(Account account)
+    : this._internal(
+        () => PagesNotifier()..account = account,
+        from: pagesNotifierProvider,
+        name: r'pagesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$pagesNotifierHash,
+        dependencies: PagesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PagesNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   PagesNotifierProvider._internal(
     super._createNotifier, {
@@ -116,9 +111,7 @@ class PagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Page>> runNotifierBuild(
     covariant PagesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,7 +132,7 @@ class PagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<PagesNotifier, PaginationState<Page>>
-      createElement() {
+  createElement() {
     return _PagesNotifierProviderElement(this);
   }
 
@@ -166,12 +159,17 @@ mixin PagesNotifierRef
 }
 
 class _PagesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<PagesNotifier,
-        PaginationState<Page>> with PagesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          PagesNotifier,
+          PaginationState<Page>
+        >
+    with PagesNotifierRef {
   _PagesNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as PagesNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

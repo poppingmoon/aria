@@ -40,21 +40,15 @@ class PopularGalleryPostsFamily extends Family<AsyncValue<List<GalleryPost>>> {
   const PopularGalleryPostsFamily();
 
   /// See also [popularGalleryPosts].
-  PopularGalleryPostsProvider call(
-    Account account,
-  ) {
-    return PopularGalleryPostsProvider(
-      account,
-    );
+  PopularGalleryPostsProvider call(Account account) {
+    return PopularGalleryPostsProvider(account);
   }
 
   @override
   PopularGalleryPostsProvider getProviderOverride(
     covariant PopularGalleryPostsProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,24 +70,20 @@ class PopularGalleryPostsFamily extends Family<AsyncValue<List<GalleryPost>>> {
 class PopularGalleryPostsProvider
     extends AutoDisposeFutureProvider<List<GalleryPost>> {
   /// See also [popularGalleryPosts].
-  PopularGalleryPostsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => popularGalleryPosts(
-            ref as PopularGalleryPostsRef,
-            account,
-          ),
-          from: popularGalleryPostsProvider,
-          name: r'popularGalleryPostsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$popularGalleryPostsHash,
-          dependencies: PopularGalleryPostsFamily._dependencies,
-          allTransitiveDependencies:
-              PopularGalleryPostsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  PopularGalleryPostsProvider(Account account)
+    : this._internal(
+        (ref) => popularGalleryPosts(ref as PopularGalleryPostsRef, account),
+        from: popularGalleryPostsProvider,
+        name: r'popularGalleryPostsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$popularGalleryPostsHash,
+        dependencies: PopularGalleryPostsFamily._dependencies,
+        allTransitiveDependencies:
+            PopularGalleryPostsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   PopularGalleryPostsProvider._internal(
     super._createNotifier, {
@@ -110,7 +100,7 @@ class PopularGalleryPostsProvider
   @override
   Override overrideWith(
     FutureOr<List<GalleryPost>> Function(PopularGalleryPostsRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -161,5 +151,6 @@ class _PopularGalleryPostsProviderElement
   @override
   Account get account => (origin as PopularGalleryPostsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

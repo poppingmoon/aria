@@ -35,10 +35,7 @@ abstract class _$FeaturedPollsNotifier
   late final Account account;
   late final String? channelId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account, {
-    String? channelId,
-  });
+  FutureOr<PaginationState<Note>> build(Account account, {String? channelId});
 }
 
 /// See also [FeaturedPollsNotifier].
@@ -52,24 +49,15 @@ class FeaturedPollsNotifierFamily
   const FeaturedPollsNotifierFamily();
 
   /// See also [FeaturedPollsNotifier].
-  FeaturedPollsNotifierProvider call(
-    Account account, {
-    String? channelId,
-  }) {
-    return FeaturedPollsNotifierProvider(
-      account,
-      channelId: channelId,
-    );
+  FeaturedPollsNotifierProvider call(Account account, {String? channelId}) {
+    return FeaturedPollsNotifierProvider(account, channelId: channelId);
   }
 
   @override
   FeaturedPollsNotifierProvider getProviderOverride(
     covariant FeaturedPollsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      channelId: provider.channelId,
-    );
+    return call(provider.account, channelId: provider.channelId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class FeaturedPollsNotifierFamily
 
 /// See also [FeaturedPollsNotifier].
 class FeaturedPollsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FeaturedPollsNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FeaturedPollsNotifier,
+          PaginationState<Note>
+        > {
   /// See also [FeaturedPollsNotifier].
-  FeaturedPollsNotifierProvider(
-    Account account, {
-    String? channelId,
-  }) : this._internal(
-          () => FeaturedPollsNotifier()
-            ..account = account
-            ..channelId = channelId,
-          from: featuredPollsNotifierProvider,
-          name: r'featuredPollsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$featuredPollsNotifierHash,
-          dependencies: FeaturedPollsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FeaturedPollsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          channelId: channelId,
-        );
+  FeaturedPollsNotifierProvider(Account account, {String? channelId})
+    : this._internal(
+        () =>
+            FeaturedPollsNotifier()
+              ..account = account
+              ..channelId = channelId,
+        from: featuredPollsNotifierProvider,
+        name: r'featuredPollsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$featuredPollsNotifierHash,
+        dependencies: FeaturedPollsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FeaturedPollsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        channelId: channelId,
+      );
 
   FeaturedPollsNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class FeaturedPollsNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant FeaturedPollsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      channelId: channelId,
-    );
+    return notifier.build(account, channelId: channelId);
   }
 
   @override
@@ -141,9 +128,10 @@ class FeaturedPollsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: FeaturedPollsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..channelId = channelId,
+        () =>
+            create()
+              ..account = account
+              ..channelId = channelId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class FeaturedPollsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FeaturedPollsNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FeaturedPollsNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _FeaturedPollsNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin FeaturedPollsNotifierRef
 }
 
 class _FeaturedPollsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FeaturedPollsNotifier,
-        PaginationState<Note>> with FeaturedPollsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FeaturedPollsNotifier,
+          PaginationState<Note>
+        >
+    with FeaturedPollsNotifierRef {
   _FeaturedPollsNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _FeaturedPollsNotifierProviderElement
   @override
   String? get channelId => (origin as FeaturedPollsNotifierProvider).channelId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -33,9 +33,7 @@ abstract class _$BlockingsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Blocking>> {
   late final Account account;
 
-  FutureOr<PaginationState<Blocking>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<Blocking>> build(Account account);
 }
 
 /// See also [BlockingsNotifier].
@@ -49,21 +47,15 @@ class BlockingsNotifierFamily
   const BlockingsNotifierFamily();
 
   /// See also [BlockingsNotifier].
-  BlockingsNotifierProvider call(
-    Account account,
-  ) {
-    return BlockingsNotifierProvider(
-      account,
-    );
+  BlockingsNotifierProvider call(Account account) {
+    return BlockingsNotifierProvider(account);
   }
 
   @override
   BlockingsNotifierProvider getProviderOverride(
     covariant BlockingsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -82,24 +74,27 @@ class BlockingsNotifierFamily
 }
 
 /// See also [BlockingsNotifier].
-class BlockingsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    BlockingsNotifier, PaginationState<Blocking>> {
+class BlockingsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          BlockingsNotifier,
+          PaginationState<Blocking>
+        > {
   /// See also [BlockingsNotifier].
-  BlockingsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => BlockingsNotifier()..account = account,
-          from: blockingsNotifierProvider,
-          name: r'blockingsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$blockingsNotifierHash,
-          dependencies: BlockingsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              BlockingsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  BlockingsNotifierProvider(Account account)
+    : this._internal(
+        () => BlockingsNotifier()..account = account,
+        from: blockingsNotifierProvider,
+        name: r'blockingsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$blockingsNotifierHash,
+        dependencies: BlockingsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            BlockingsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   BlockingsNotifierProvider._internal(
     super._createNotifier, {
@@ -117,9 +112,7 @@ class BlockingsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Blocking>> runNotifierBuild(
     covariant BlockingsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,8 +132,11 @@ class BlockingsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<BlockingsNotifier,
-      PaginationState<Blocking>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    BlockingsNotifier,
+    PaginationState<Blocking>
+  >
+  createElement() {
     return _BlockingsNotifierProviderElement(this);
   }
 
@@ -167,12 +163,17 @@ mixin BlockingsNotifierRef
 }
 
 class _BlockingsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<BlockingsNotifier,
-        PaginationState<Blocking>> with BlockingsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          BlockingsNotifier,
+          PaginationState<Blocking>
+        >
+    with BlockingsNotifierRef {
   _BlockingsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as BlockingsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

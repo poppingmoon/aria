@@ -40,21 +40,15 @@ class TimelineScrollControllerFamily extends Family<Raw<ScrollController>> {
   const TimelineScrollControllerFamily();
 
   /// See also [timelineScrollController].
-  TimelineScrollControllerProvider call(
-    TabSettings tabSettings,
-  ) {
-    return TimelineScrollControllerProvider(
-      tabSettings,
-    );
+  TimelineScrollControllerProvider call(TabSettings tabSettings) {
+    return TimelineScrollControllerProvider(tabSettings);
   }
 
   @override
   TimelineScrollControllerProvider getProviderOverride(
     covariant TimelineScrollControllerProvider provider,
   ) {
-    return call(
-      provider.tabSettings,
-    );
+    return call(provider.tabSettings);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,24 +70,23 @@ class TimelineScrollControllerFamily extends Family<Raw<ScrollController>> {
 class TimelineScrollControllerProvider
     extends AutoDisposeProvider<Raw<ScrollController>> {
   /// See also [timelineScrollController].
-  TimelineScrollControllerProvider(
-    TabSettings tabSettings,
-  ) : this._internal(
-          (ref) => timelineScrollController(
-            ref as TimelineScrollControllerRef,
-            tabSettings,
-          ),
-          from: timelineScrollControllerProvider,
-          name: r'timelineScrollControllerProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$timelineScrollControllerHash,
-          dependencies: TimelineScrollControllerFamily._dependencies,
-          allTransitiveDependencies:
-              TimelineScrollControllerFamily._allTransitiveDependencies,
-          tabSettings: tabSettings,
-        );
+  TimelineScrollControllerProvider(TabSettings tabSettings)
+    : this._internal(
+        (ref) => timelineScrollController(
+          ref as TimelineScrollControllerRef,
+          tabSettings,
+        ),
+        from: timelineScrollControllerProvider,
+        name: r'timelineScrollControllerProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$timelineScrollControllerHash,
+        dependencies: TimelineScrollControllerFamily._dependencies,
+        allTransitiveDependencies:
+            TimelineScrollControllerFamily._allTransitiveDependencies,
+        tabSettings: tabSettings,
+      );
 
   TimelineScrollControllerProvider._internal(
     super._createNotifier, {
@@ -162,5 +155,6 @@ class _TimelineScrollControllerProviderElement
   TabSettings get tabSettings =>
       (origin as TimelineScrollControllerProvider).tabSettings;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

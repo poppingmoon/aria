@@ -34,9 +34,7 @@ abstract class _$PostFormHashtagsNotifier
     extends BuildlessNotifier<List<String>> {
   late final Account account;
 
-  List<String> build(
-    Account account,
-  );
+  List<String> build(Account account);
 }
 
 /// See also [PostFormHashtagsNotifier].
@@ -49,21 +47,15 @@ class PostFormHashtagsNotifierFamily extends Family<List<String>> {
   const PostFormHashtagsNotifierFamily();
 
   /// See also [PostFormHashtagsNotifier].
-  PostFormHashtagsNotifierProvider call(
-    Account account,
-  ) {
-    return PostFormHashtagsNotifierProvider(
-      account,
-    );
+  PostFormHashtagsNotifierProvider call(Account account) {
+    return PostFormHashtagsNotifierProvider(account);
   }
 
   @override
   PostFormHashtagsNotifierProvider getProviderOverride(
     covariant PostFormHashtagsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class PostFormHashtagsNotifierFamily extends Family<List<String>> {
 class PostFormHashtagsNotifierProvider
     extends NotifierProviderImpl<PostFormHashtagsNotifier, List<String>> {
   /// See also [PostFormHashtagsNotifier].
-  PostFormHashtagsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => PostFormHashtagsNotifier()..account = account,
-          from: postFormHashtagsNotifierProvider,
-          name: r'postFormHashtagsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$postFormHashtagsNotifierHash,
-          dependencies: PostFormHashtagsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PostFormHashtagsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  PostFormHashtagsNotifierProvider(Account account)
+    : this._internal(
+        () => PostFormHashtagsNotifier()..account = account,
+        from: postFormHashtagsNotifierProvider,
+        name: r'postFormHashtagsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$postFormHashtagsNotifierHash,
+        dependencies: PostFormHashtagsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PostFormHashtagsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   PostFormHashtagsNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +105,8 @@ class PostFormHashtagsNotifierProvider
   final Account account;
 
   @override
-  List<String> runNotifierBuild(
-    covariant PostFormHashtagsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  List<String> runNotifierBuild(covariant PostFormHashtagsNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -140,7 +127,7 @@ class PostFormHashtagsNotifierProvider
 
   @override
   NotifierProviderElement<PostFormHashtagsNotifier, List<String>>
-      createElement() {
+  createElement() {
     return _PostFormHashtagsNotifierProviderElement(this);
   }
 
@@ -174,5 +161,6 @@ class _PostFormHashtagsNotifierProviderElement
   @override
   Account get account => (origin as PostFormHashtagsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

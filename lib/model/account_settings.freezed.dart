@@ -12,7 +12,8 @@ part of 'account_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 AccountSettings _$AccountSettingsFromJson(Map<String, dynamic> json) {
   return _AccountSettings.fromJson(json);
@@ -20,7 +21,7 @@ AccountSettings _$AccountSettingsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AccountSettings {
-// Privacy
+  // Privacy
   bool get keepCw => throw _privateConstructorUsedError;
   bool get rememberNoteVisibility => throw _privateConstructorUsedError;
   NoteVisibility get defaultNoteVisibility =>
@@ -67,36 +68,38 @@ mixin _$AccountSettings {
 /// @nodoc
 abstract class $AccountSettingsCopyWith<$Res> {
   factory $AccountSettingsCopyWith(
-          AccountSettings value, $Res Function(AccountSettings) then) =
-      _$AccountSettingsCopyWithImpl<$Res, AccountSettings>;
+    AccountSettings value,
+    $Res Function(AccountSettings) then,
+  ) = _$AccountSettingsCopyWithImpl<$Res, AccountSettings>;
   @useResult
-  $Res call(
-      {bool keepCw,
-      bool rememberNoteVisibility,
-      NoteVisibility defaultNoteVisibility,
-      bool defaultNoteLocalOnly,
-      bool rememberRenoteVisibility,
-      NoteVisibility defaultRenoteVisibility,
-      bool defaultRenoteLocalOnly,
-      ReactionAcceptance? reactionAcceptance,
-      NoteVisibility visibility,
-      bool localOnly,
-      NoteVisibility renoteVisibility,
-      bool renoteLocalOnly,
-      List<String> pinnedEmojisForReaction,
-      List<String> pinnedEmojis,
-      List<String> recentlyUsedEmojis,
-      String? defaultReaction,
-      String? uploadFolder,
-      bool keepOriginalUploading,
-      bool keepOriginalFilename,
-      List<MuteWord> mutedWords,
-      List<MuteWord> hardMutedWords,
-      List<String> mutedEmojis,
-      List<String> recentlyUsedUsers,
-      List<String> hashtags,
-      bool postFormUseHashtags,
-      List<String> postFormHashtags});
+  $Res call({
+    bool keepCw,
+    bool rememberNoteVisibility,
+    NoteVisibility defaultNoteVisibility,
+    bool defaultNoteLocalOnly,
+    bool rememberRenoteVisibility,
+    NoteVisibility defaultRenoteVisibility,
+    bool defaultRenoteLocalOnly,
+    ReactionAcceptance? reactionAcceptance,
+    NoteVisibility visibility,
+    bool localOnly,
+    NoteVisibility renoteVisibility,
+    bool renoteLocalOnly,
+    List<String> pinnedEmojisForReaction,
+    List<String> pinnedEmojis,
+    List<String> recentlyUsedEmojis,
+    String? defaultReaction,
+    String? uploadFolder,
+    bool keepOriginalUploading,
+    bool keepOriginalFilename,
+    List<MuteWord> mutedWords,
+    List<MuteWord> hardMutedWords,
+    List<String> mutedEmojis,
+    List<String> recentlyUsedUsers,
+    List<String> hashtags,
+    bool postFormUseHashtags,
+    List<String> postFormHashtags,
+  });
 }
 
 /// @nodoc
@@ -141,150 +144,181 @@ class _$AccountSettingsCopyWithImpl<$Res, $Val extends AccountSettings>
     Object? postFormUseHashtags = null,
     Object? postFormHashtags = null,
   }) {
-    return _then(_value.copyWith(
-      keepCw: null == keepCw
-          ? _value.keepCw
-          : keepCw // ignore: cast_nullable_to_non_nullable
-              as bool,
-      rememberNoteVisibility: null == rememberNoteVisibility
-          ? _value.rememberNoteVisibility
-          : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
-              as bool,
-      defaultNoteVisibility: null == defaultNoteVisibility
-          ? _value.defaultNoteVisibility
-          : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      defaultNoteLocalOnly: null == defaultNoteLocalOnly
-          ? _value.defaultNoteLocalOnly
-          : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      rememberRenoteVisibility: null == rememberRenoteVisibility
-          ? _value.rememberRenoteVisibility
-          : rememberRenoteVisibility // ignore: cast_nullable_to_non_nullable
-              as bool,
-      defaultRenoteVisibility: null == defaultRenoteVisibility
-          ? _value.defaultRenoteVisibility
-          : defaultRenoteVisibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      defaultRenoteLocalOnly: null == defaultRenoteLocalOnly
-          ? _value.defaultRenoteLocalOnly
-          : defaultRenoteLocalOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reactionAcceptance: freezed == reactionAcceptance
-          ? _value.reactionAcceptance
-          : reactionAcceptance // ignore: cast_nullable_to_non_nullable
-              as ReactionAcceptance?,
-      visibility: null == visibility
-          ? _value.visibility
-          : visibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      localOnly: null == localOnly
-          ? _value.localOnly
-          : localOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      renoteVisibility: null == renoteVisibility
-          ? _value.renoteVisibility
-          : renoteVisibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      renoteLocalOnly: null == renoteLocalOnly
-          ? _value.renoteLocalOnly
-          : renoteLocalOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      pinnedEmojisForReaction: null == pinnedEmojisForReaction
-          ? _value.pinnedEmojisForReaction
-          : pinnedEmojisForReaction // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      pinnedEmojis: null == pinnedEmojis
-          ? _value.pinnedEmojis
-          : pinnedEmojis // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      recentlyUsedEmojis: null == recentlyUsedEmojis
-          ? _value.recentlyUsedEmojis
-          : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      defaultReaction: freezed == defaultReaction
-          ? _value.defaultReaction
-          : defaultReaction // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadFolder: freezed == uploadFolder
-          ? _value.uploadFolder
-          : uploadFolder // ignore: cast_nullable_to_non_nullable
-              as String?,
-      keepOriginalUploading: null == keepOriginalUploading
-          ? _value.keepOriginalUploading
-          : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      keepOriginalFilename: null == keepOriginalFilename
-          ? _value.keepOriginalFilename
-          : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
-              as bool,
-      mutedWords: null == mutedWords
-          ? _value.mutedWords
-          : mutedWords // ignore: cast_nullable_to_non_nullable
-              as List<MuteWord>,
-      hardMutedWords: null == hardMutedWords
-          ? _value.hardMutedWords
-          : hardMutedWords // ignore: cast_nullable_to_non_nullable
-              as List<MuteWord>,
-      mutedEmojis: null == mutedEmojis
-          ? _value.mutedEmojis
-          : mutedEmojis // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      recentlyUsedUsers: null == recentlyUsedUsers
-          ? _value.recentlyUsedUsers
-          : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      hashtags: null == hashtags
-          ? _value.hashtags
-          : hashtags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      postFormUseHashtags: null == postFormUseHashtags
-          ? _value.postFormUseHashtags
-          : postFormUseHashtags // ignore: cast_nullable_to_non_nullable
-              as bool,
-      postFormHashtags: null == postFormHashtags
-          ? _value.postFormHashtags
-          : postFormHashtags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            keepCw:
+                null == keepCw
+                    ? _value.keepCw
+                    : keepCw // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            rememberNoteVisibility:
+                null == rememberNoteVisibility
+                    ? _value.rememberNoteVisibility
+                    : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            defaultNoteVisibility:
+                null == defaultNoteVisibility
+                    ? _value.defaultNoteVisibility
+                    : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
+                        as NoteVisibility,
+            defaultNoteLocalOnly:
+                null == defaultNoteLocalOnly
+                    ? _value.defaultNoteLocalOnly
+                    : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            rememberRenoteVisibility:
+                null == rememberRenoteVisibility
+                    ? _value.rememberRenoteVisibility
+                    : rememberRenoteVisibility // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            defaultRenoteVisibility:
+                null == defaultRenoteVisibility
+                    ? _value.defaultRenoteVisibility
+                    : defaultRenoteVisibility // ignore: cast_nullable_to_non_nullable
+                        as NoteVisibility,
+            defaultRenoteLocalOnly:
+                null == defaultRenoteLocalOnly
+                    ? _value.defaultRenoteLocalOnly
+                    : defaultRenoteLocalOnly // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            reactionAcceptance:
+                freezed == reactionAcceptance
+                    ? _value.reactionAcceptance
+                    : reactionAcceptance // ignore: cast_nullable_to_non_nullable
+                        as ReactionAcceptance?,
+            visibility:
+                null == visibility
+                    ? _value.visibility
+                    : visibility // ignore: cast_nullable_to_non_nullable
+                        as NoteVisibility,
+            localOnly:
+                null == localOnly
+                    ? _value.localOnly
+                    : localOnly // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            renoteVisibility:
+                null == renoteVisibility
+                    ? _value.renoteVisibility
+                    : renoteVisibility // ignore: cast_nullable_to_non_nullable
+                        as NoteVisibility,
+            renoteLocalOnly:
+                null == renoteLocalOnly
+                    ? _value.renoteLocalOnly
+                    : renoteLocalOnly // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            pinnedEmojisForReaction:
+                null == pinnedEmojisForReaction
+                    ? _value.pinnedEmojisForReaction
+                    : pinnedEmojisForReaction // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            pinnedEmojis:
+                null == pinnedEmojis
+                    ? _value.pinnedEmojis
+                    : pinnedEmojis // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            recentlyUsedEmojis:
+                null == recentlyUsedEmojis
+                    ? _value.recentlyUsedEmojis
+                    : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            defaultReaction:
+                freezed == defaultReaction
+                    ? _value.defaultReaction
+                    : defaultReaction // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            uploadFolder:
+                freezed == uploadFolder
+                    ? _value.uploadFolder
+                    : uploadFolder // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            keepOriginalUploading:
+                null == keepOriginalUploading
+                    ? _value.keepOriginalUploading
+                    : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            keepOriginalFilename:
+                null == keepOriginalFilename
+                    ? _value.keepOriginalFilename
+                    : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            mutedWords:
+                null == mutedWords
+                    ? _value.mutedWords
+                    : mutedWords // ignore: cast_nullable_to_non_nullable
+                        as List<MuteWord>,
+            hardMutedWords:
+                null == hardMutedWords
+                    ? _value.hardMutedWords
+                    : hardMutedWords // ignore: cast_nullable_to_non_nullable
+                        as List<MuteWord>,
+            mutedEmojis:
+                null == mutedEmojis
+                    ? _value.mutedEmojis
+                    : mutedEmojis // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            recentlyUsedUsers:
+                null == recentlyUsedUsers
+                    ? _value.recentlyUsedUsers
+                    : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            hashtags:
+                null == hashtags
+                    ? _value.hashtags
+                    : hashtags // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+            postFormUseHashtags:
+                null == postFormUseHashtags
+                    ? _value.postFormUseHashtags
+                    : postFormUseHashtags // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            postFormHashtags:
+                null == postFormHashtags
+                    ? _value.postFormHashtags
+                    : postFormHashtags // ignore: cast_nullable_to_non_nullable
+                        as List<String>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$AccountSettingsImplCopyWith<$Res>
     implements $AccountSettingsCopyWith<$Res> {
-  factory _$$AccountSettingsImplCopyWith(_$AccountSettingsImpl value,
-          $Res Function(_$AccountSettingsImpl) then) =
-      __$$AccountSettingsImplCopyWithImpl<$Res>;
+  factory _$$AccountSettingsImplCopyWith(
+    _$AccountSettingsImpl value,
+    $Res Function(_$AccountSettingsImpl) then,
+  ) = __$$AccountSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {bool keepCw,
-      bool rememberNoteVisibility,
-      NoteVisibility defaultNoteVisibility,
-      bool defaultNoteLocalOnly,
-      bool rememberRenoteVisibility,
-      NoteVisibility defaultRenoteVisibility,
-      bool defaultRenoteLocalOnly,
-      ReactionAcceptance? reactionAcceptance,
-      NoteVisibility visibility,
-      bool localOnly,
-      NoteVisibility renoteVisibility,
-      bool renoteLocalOnly,
-      List<String> pinnedEmojisForReaction,
-      List<String> pinnedEmojis,
-      List<String> recentlyUsedEmojis,
-      String? defaultReaction,
-      String? uploadFolder,
-      bool keepOriginalUploading,
-      bool keepOriginalFilename,
-      List<MuteWord> mutedWords,
-      List<MuteWord> hardMutedWords,
-      List<String> mutedEmojis,
-      List<String> recentlyUsedUsers,
-      List<String> hashtags,
-      bool postFormUseHashtags,
-      List<String> postFormHashtags});
+  $Res call({
+    bool keepCw,
+    bool rememberNoteVisibility,
+    NoteVisibility defaultNoteVisibility,
+    bool defaultNoteLocalOnly,
+    bool rememberRenoteVisibility,
+    NoteVisibility defaultRenoteVisibility,
+    bool defaultRenoteLocalOnly,
+    ReactionAcceptance? reactionAcceptance,
+    NoteVisibility visibility,
+    bool localOnly,
+    NoteVisibility renoteVisibility,
+    bool renoteLocalOnly,
+    List<String> pinnedEmojisForReaction,
+    List<String> pinnedEmojis,
+    List<String> recentlyUsedEmojis,
+    String? defaultReaction,
+    String? uploadFolder,
+    bool keepOriginalUploading,
+    bool keepOriginalFilename,
+    List<MuteWord> mutedWords,
+    List<MuteWord> hardMutedWords,
+    List<String> mutedEmojis,
+    List<String> recentlyUsedUsers,
+    List<String> hashtags,
+    bool postFormUseHashtags,
+    List<String> postFormHashtags,
+  });
 }
 
 /// @nodoc
@@ -292,8 +326,9 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     extends _$AccountSettingsCopyWithImpl<$Res, _$AccountSettingsImpl>
     implements _$$AccountSettingsImplCopyWith<$Res> {
   __$$AccountSettingsImplCopyWithImpl(
-      _$AccountSettingsImpl _value, $Res Function(_$AccountSettingsImpl) _then)
-      : super(_value, _then);
+    _$AccountSettingsImpl _value,
+    $Res Function(_$AccountSettingsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AccountSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -327,159 +362,187 @@ class __$$AccountSettingsImplCopyWithImpl<$Res>
     Object? postFormUseHashtags = null,
     Object? postFormHashtags = null,
   }) {
-    return _then(_$AccountSettingsImpl(
-      keepCw: null == keepCw
-          ? _value.keepCw
-          : keepCw // ignore: cast_nullable_to_non_nullable
-              as bool,
-      rememberNoteVisibility: null == rememberNoteVisibility
-          ? _value.rememberNoteVisibility
-          : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
-              as bool,
-      defaultNoteVisibility: null == defaultNoteVisibility
-          ? _value.defaultNoteVisibility
-          : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      defaultNoteLocalOnly: null == defaultNoteLocalOnly
-          ? _value.defaultNoteLocalOnly
-          : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      rememberRenoteVisibility: null == rememberRenoteVisibility
-          ? _value.rememberRenoteVisibility
-          : rememberRenoteVisibility // ignore: cast_nullable_to_non_nullable
-              as bool,
-      defaultRenoteVisibility: null == defaultRenoteVisibility
-          ? _value.defaultRenoteVisibility
-          : defaultRenoteVisibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      defaultRenoteLocalOnly: null == defaultRenoteLocalOnly
-          ? _value.defaultRenoteLocalOnly
-          : defaultRenoteLocalOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      reactionAcceptance: freezed == reactionAcceptance
-          ? _value.reactionAcceptance
-          : reactionAcceptance // ignore: cast_nullable_to_non_nullable
-              as ReactionAcceptance?,
-      visibility: null == visibility
-          ? _value.visibility
-          : visibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      localOnly: null == localOnly
-          ? _value.localOnly
-          : localOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      renoteVisibility: null == renoteVisibility
-          ? _value.renoteVisibility
-          : renoteVisibility // ignore: cast_nullable_to_non_nullable
-              as NoteVisibility,
-      renoteLocalOnly: null == renoteLocalOnly
-          ? _value.renoteLocalOnly
-          : renoteLocalOnly // ignore: cast_nullable_to_non_nullable
-              as bool,
-      pinnedEmojisForReaction: null == pinnedEmojisForReaction
-          ? _value._pinnedEmojisForReaction
-          : pinnedEmojisForReaction // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      pinnedEmojis: null == pinnedEmojis
-          ? _value._pinnedEmojis
-          : pinnedEmojis // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      recentlyUsedEmojis: null == recentlyUsedEmojis
-          ? _value._recentlyUsedEmojis
-          : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      defaultReaction: freezed == defaultReaction
-          ? _value.defaultReaction
-          : defaultReaction // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadFolder: freezed == uploadFolder
-          ? _value.uploadFolder
-          : uploadFolder // ignore: cast_nullable_to_non_nullable
-              as String?,
-      keepOriginalUploading: null == keepOriginalUploading
-          ? _value.keepOriginalUploading
-          : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      keepOriginalFilename: null == keepOriginalFilename
-          ? _value.keepOriginalFilename
-          : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
-              as bool,
-      mutedWords: null == mutedWords
-          ? _value._mutedWords
-          : mutedWords // ignore: cast_nullable_to_non_nullable
-              as List<MuteWord>,
-      hardMutedWords: null == hardMutedWords
-          ? _value._hardMutedWords
-          : hardMutedWords // ignore: cast_nullable_to_non_nullable
-              as List<MuteWord>,
-      mutedEmojis: null == mutedEmojis
-          ? _value._mutedEmojis
-          : mutedEmojis // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      recentlyUsedUsers: null == recentlyUsedUsers
-          ? _value._recentlyUsedUsers
-          : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      hashtags: null == hashtags
-          ? _value._hashtags
-          : hashtags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      postFormUseHashtags: null == postFormUseHashtags
-          ? _value.postFormUseHashtags
-          : postFormUseHashtags // ignore: cast_nullable_to_non_nullable
-              as bool,
-      postFormHashtags: null == postFormHashtags
-          ? _value._postFormHashtags
-          : postFormHashtags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _$AccountSettingsImpl(
+        keepCw:
+            null == keepCw
+                ? _value.keepCw
+                : keepCw // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        rememberNoteVisibility:
+            null == rememberNoteVisibility
+                ? _value.rememberNoteVisibility
+                : rememberNoteVisibility // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        defaultNoteVisibility:
+            null == defaultNoteVisibility
+                ? _value.defaultNoteVisibility
+                : defaultNoteVisibility // ignore: cast_nullable_to_non_nullable
+                    as NoteVisibility,
+        defaultNoteLocalOnly:
+            null == defaultNoteLocalOnly
+                ? _value.defaultNoteLocalOnly
+                : defaultNoteLocalOnly // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        rememberRenoteVisibility:
+            null == rememberRenoteVisibility
+                ? _value.rememberRenoteVisibility
+                : rememberRenoteVisibility // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        defaultRenoteVisibility:
+            null == defaultRenoteVisibility
+                ? _value.defaultRenoteVisibility
+                : defaultRenoteVisibility // ignore: cast_nullable_to_non_nullable
+                    as NoteVisibility,
+        defaultRenoteLocalOnly:
+            null == defaultRenoteLocalOnly
+                ? _value.defaultRenoteLocalOnly
+                : defaultRenoteLocalOnly // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        reactionAcceptance:
+            freezed == reactionAcceptance
+                ? _value.reactionAcceptance
+                : reactionAcceptance // ignore: cast_nullable_to_non_nullable
+                    as ReactionAcceptance?,
+        visibility:
+            null == visibility
+                ? _value.visibility
+                : visibility // ignore: cast_nullable_to_non_nullable
+                    as NoteVisibility,
+        localOnly:
+            null == localOnly
+                ? _value.localOnly
+                : localOnly // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        renoteVisibility:
+            null == renoteVisibility
+                ? _value.renoteVisibility
+                : renoteVisibility // ignore: cast_nullable_to_non_nullable
+                    as NoteVisibility,
+        renoteLocalOnly:
+            null == renoteLocalOnly
+                ? _value.renoteLocalOnly
+                : renoteLocalOnly // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        pinnedEmojisForReaction:
+            null == pinnedEmojisForReaction
+                ? _value._pinnedEmojisForReaction
+                : pinnedEmojisForReaction // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        pinnedEmojis:
+            null == pinnedEmojis
+                ? _value._pinnedEmojis
+                : pinnedEmojis // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        recentlyUsedEmojis:
+            null == recentlyUsedEmojis
+                ? _value._recentlyUsedEmojis
+                : recentlyUsedEmojis // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        defaultReaction:
+            freezed == defaultReaction
+                ? _value.defaultReaction
+                : defaultReaction // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        uploadFolder:
+            freezed == uploadFolder
+                ? _value.uploadFolder
+                : uploadFolder // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        keepOriginalUploading:
+            null == keepOriginalUploading
+                ? _value.keepOriginalUploading
+                : keepOriginalUploading // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        keepOriginalFilename:
+            null == keepOriginalFilename
+                ? _value.keepOriginalFilename
+                : keepOriginalFilename // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        mutedWords:
+            null == mutedWords
+                ? _value._mutedWords
+                : mutedWords // ignore: cast_nullable_to_non_nullable
+                    as List<MuteWord>,
+        hardMutedWords:
+            null == hardMutedWords
+                ? _value._hardMutedWords
+                : hardMutedWords // ignore: cast_nullable_to_non_nullable
+                    as List<MuteWord>,
+        mutedEmojis:
+            null == mutedEmojis
+                ? _value._mutedEmojis
+                : mutedEmojis // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        recentlyUsedUsers:
+            null == recentlyUsedUsers
+                ? _value._recentlyUsedUsers
+                : recentlyUsedUsers // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        hashtags:
+            null == hashtags
+                ? _value._hashtags
+                : hashtags // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+        postFormUseHashtags:
+            null == postFormUseHashtags
+                ? _value.postFormUseHashtags
+                : postFormUseHashtags // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        postFormHashtags:
+            null == postFormHashtags
+                ? _value._postFormHashtags
+                : postFormHashtags // ignore: cast_nullable_to_non_nullable
+                    as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$AccountSettingsImpl implements _AccountSettings {
-  const _$AccountSettingsImpl(
-      {this.keepCw = true,
-      this.rememberNoteVisibility = false,
-      this.defaultNoteVisibility = NoteVisibility.public,
-      this.defaultNoteLocalOnly = false,
-      this.rememberRenoteVisibility = false,
-      this.defaultRenoteVisibility = NoteVisibility.public,
-      this.defaultRenoteLocalOnly = false,
-      this.reactionAcceptance,
-      this.visibility = NoteVisibility.public,
-      this.localOnly = false,
-      this.renoteVisibility = NoteVisibility.public,
-      this.renoteLocalOnly = false,
-      final List<String> pinnedEmojisForReaction = defaultPinnedEmojis,
-      final List<String> pinnedEmojis = defaultPinnedEmojis,
-      final List<String> recentlyUsedEmojis = const [],
-      this.defaultReaction,
-      this.uploadFolder,
-      this.keepOriginalUploading = false,
-      this.keepOriginalFilename = true,
-      final List<MuteWord> mutedWords = const [],
-      final List<MuteWord> hardMutedWords = const [],
-      final List<String> mutedEmojis = const [],
-      final List<String> recentlyUsedUsers = const [],
-      final List<String> hashtags = const [],
-      this.postFormUseHashtags = false,
-      final List<String> postFormHashtags = const []})
-      : _pinnedEmojisForReaction = pinnedEmojisForReaction,
-        _pinnedEmojis = pinnedEmojis,
-        _recentlyUsedEmojis = recentlyUsedEmojis,
-        _mutedWords = mutedWords,
-        _hardMutedWords = hardMutedWords,
-        _mutedEmojis = mutedEmojis,
-        _recentlyUsedUsers = recentlyUsedUsers,
-        _hashtags = hashtags,
-        _postFormHashtags = postFormHashtags;
+  const _$AccountSettingsImpl({
+    this.keepCw = true,
+    this.rememberNoteVisibility = false,
+    this.defaultNoteVisibility = NoteVisibility.public,
+    this.defaultNoteLocalOnly = false,
+    this.rememberRenoteVisibility = false,
+    this.defaultRenoteVisibility = NoteVisibility.public,
+    this.defaultRenoteLocalOnly = false,
+    this.reactionAcceptance,
+    this.visibility = NoteVisibility.public,
+    this.localOnly = false,
+    this.renoteVisibility = NoteVisibility.public,
+    this.renoteLocalOnly = false,
+    final List<String> pinnedEmojisForReaction = defaultPinnedEmojis,
+    final List<String> pinnedEmojis = defaultPinnedEmojis,
+    final List<String> recentlyUsedEmojis = const [],
+    this.defaultReaction,
+    this.uploadFolder,
+    this.keepOriginalUploading = false,
+    this.keepOriginalFilename = true,
+    final List<MuteWord> mutedWords = const [],
+    final List<MuteWord> hardMutedWords = const [],
+    final List<String> mutedEmojis = const [],
+    final List<String> recentlyUsedUsers = const [],
+    final List<String> hashtags = const [],
+    this.postFormUseHashtags = false,
+    final List<String> postFormHashtags = const [],
+  }) : _pinnedEmojisForReaction = pinnedEmojisForReaction,
+       _pinnedEmojis = pinnedEmojis,
+       _recentlyUsedEmojis = recentlyUsedEmojis,
+       _mutedWords = mutedWords,
+       _hardMutedWords = hardMutedWords,
+       _mutedEmojis = mutedEmojis,
+       _recentlyUsedUsers = recentlyUsedUsers,
+       _hashtags = hashtags,
+       _postFormHashtags = postFormHashtags;
 
   factory _$AccountSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$AccountSettingsImplFromJson(json);
 
-// Privacy
+  // Privacy
   @override
   @JsonKey()
   final bool keepCw;
@@ -515,9 +578,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @override
   @JsonKey()
   final bool renoteLocalOnly;
-// EmojiPicker
+  // EmojiPicker
   final List<String> _pinnedEmojisForReaction;
-// EmojiPicker
+  // EmojiPicker
   @override
   @JsonKey()
   List<String> get pinnedEmojisForReaction {
@@ -548,7 +611,7 @@ class _$AccountSettingsImpl implements _AccountSettings {
 
   @override
   final String? defaultReaction;
-// Drive
+  // Drive
   @override
   final String? uploadFolder;
   @override
@@ -557,9 +620,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @override
   @JsonKey()
   final bool keepOriginalFilename;
-// Mute
+  // Mute
   final List<MuteWord> _mutedWords;
-// Mute
+  // Mute
   @override
   @JsonKey()
   List<MuteWord> get mutedWords {
@@ -586,9 +649,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
     return EqualUnmodifiableListView(_mutedEmojis);
   }
 
-// UserSelectDialog
+  // UserSelectDialog
   final List<String> _recentlyUsedUsers;
-// UserSelectDialog
+  // UserSelectDialog
   @override
   @JsonKey()
   List<String> get recentlyUsedUsers {
@@ -598,9 +661,9 @@ class _$AccountSettingsImpl implements _AccountSettings {
     return EqualUnmodifiableListView(_recentlyUsedUsers);
   }
 
-// PostForm
+  // PostForm
   final List<String> _hashtags;
-// PostForm
+  // PostForm
   @override
   @JsonKey()
   List<String> get hashtags {
@@ -639,9 +702,15 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 other.defaultNoteVisibility == defaultNoteVisibility) &&
             (identical(other.defaultNoteLocalOnly, defaultNoteLocalOnly) ||
                 other.defaultNoteLocalOnly == defaultNoteLocalOnly) &&
-            (identical(other.rememberRenoteVisibility, rememberRenoteVisibility) ||
+            (identical(
+                  other.rememberRenoteVisibility,
+                  rememberRenoteVisibility,
+                ) ||
                 other.rememberRenoteVisibility == rememberRenoteVisibility) &&
-            (identical(other.defaultRenoteVisibility, defaultRenoteVisibility) ||
+            (identical(
+                  other.defaultRenoteVisibility,
+                  defaultRenoteVisibility,
+                ) ||
                 other.defaultRenoteVisibility == defaultRenoteVisibility) &&
             (identical(other.defaultRenoteLocalOnly, defaultRenoteLocalOnly) ||
                 other.defaultRenoteLocalOnly == defaultRenoteLocalOnly) &&
@@ -656,11 +725,17 @@ class _$AccountSettingsImpl implements _AccountSettings {
             (identical(other.renoteLocalOnly, renoteLocalOnly) ||
                 other.renoteLocalOnly == renoteLocalOnly) &&
             const DeepCollectionEquality().equals(
-                other._pinnedEmojisForReaction, _pinnedEmojisForReaction) &&
-            const DeepCollectionEquality()
-                .equals(other._pinnedEmojis, _pinnedEmojis) &&
-            const DeepCollectionEquality()
-                .equals(other._recentlyUsedEmojis, _recentlyUsedEmojis) &&
+              other._pinnedEmojisForReaction,
+              _pinnedEmojisForReaction,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._pinnedEmojis,
+              _pinnedEmojis,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._recentlyUsedEmojis,
+              _recentlyUsedEmojis,
+            ) &&
             (identical(other.defaultReaction, defaultReaction) ||
                 other.defaultReaction == defaultReaction) &&
             (identical(other.uploadFolder, uploadFolder) ||
@@ -669,52 +744,62 @@ class _$AccountSettingsImpl implements _AccountSettings {
                 other.keepOriginalUploading == keepOriginalUploading) &&
             (identical(other.keepOriginalFilename, keepOriginalFilename) ||
                 other.keepOriginalFilename == keepOriginalFilename) &&
-            const DeepCollectionEquality()
-                .equals(other._mutedWords, _mutedWords) &&
-            const DeepCollectionEquality()
-                .equals(other._hardMutedWords, _hardMutedWords) &&
-            const DeepCollectionEquality()
-                .equals(other._mutedEmojis, _mutedEmojis) &&
-            const DeepCollectionEquality()
-                .equals(other._recentlyUsedUsers, _recentlyUsedUsers) &&
+            const DeepCollectionEquality().equals(
+              other._mutedWords,
+              _mutedWords,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._hardMutedWords,
+              _hardMutedWords,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._mutedEmojis,
+              _mutedEmojis,
+            ) &&
+            const DeepCollectionEquality().equals(
+              other._recentlyUsedUsers,
+              _recentlyUsedUsers,
+            ) &&
             const DeepCollectionEquality().equals(other._hashtags, _hashtags) &&
             (identical(other.postFormUseHashtags, postFormUseHashtags) ||
                 other.postFormUseHashtags == postFormUseHashtags) &&
-            const DeepCollectionEquality()
-                .equals(other._postFormHashtags, _postFormHashtags));
+            const DeepCollectionEquality().equals(
+              other._postFormHashtags,
+              _postFormHashtags,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        keepCw,
-        rememberNoteVisibility,
-        defaultNoteVisibility,
-        defaultNoteLocalOnly,
-        rememberRenoteVisibility,
-        defaultRenoteVisibility,
-        defaultRenoteLocalOnly,
-        reactionAcceptance,
-        visibility,
-        localOnly,
-        renoteVisibility,
-        renoteLocalOnly,
-        const DeepCollectionEquality().hash(_pinnedEmojisForReaction),
-        const DeepCollectionEquality().hash(_pinnedEmojis),
-        const DeepCollectionEquality().hash(_recentlyUsedEmojis),
-        defaultReaction,
-        uploadFolder,
-        keepOriginalUploading,
-        keepOriginalFilename,
-        const DeepCollectionEquality().hash(_mutedWords),
-        const DeepCollectionEquality().hash(_hardMutedWords),
-        const DeepCollectionEquality().hash(_mutedEmojis),
-        const DeepCollectionEquality().hash(_recentlyUsedUsers),
-        const DeepCollectionEquality().hash(_hashtags),
-        postFormUseHashtags,
-        const DeepCollectionEquality().hash(_postFormHashtags)
-      ]);
+    runtimeType,
+    keepCw,
+    rememberNoteVisibility,
+    defaultNoteVisibility,
+    defaultNoteLocalOnly,
+    rememberRenoteVisibility,
+    defaultRenoteVisibility,
+    defaultRenoteLocalOnly,
+    reactionAcceptance,
+    visibility,
+    localOnly,
+    renoteVisibility,
+    renoteLocalOnly,
+    const DeepCollectionEquality().hash(_pinnedEmojisForReaction),
+    const DeepCollectionEquality().hash(_pinnedEmojis),
+    const DeepCollectionEquality().hash(_recentlyUsedEmojis),
+    defaultReaction,
+    uploadFolder,
+    keepOriginalUploading,
+    keepOriginalFilename,
+    const DeepCollectionEquality().hash(_mutedWords),
+    const DeepCollectionEquality().hash(_hardMutedWords),
+    const DeepCollectionEquality().hash(_mutedEmojis),
+    const DeepCollectionEquality().hash(_recentlyUsedUsers),
+    const DeepCollectionEquality().hash(_hashtags),
+    postFormUseHashtags,
+    const DeepCollectionEquality().hash(_postFormHashtags),
+  ]);
 
   /// Create a copy of AccountSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -723,49 +808,50 @@ class _$AccountSettingsImpl implements _AccountSettings {
   @pragma('vm:prefer-inline')
   _$$AccountSettingsImplCopyWith<_$AccountSettingsImpl> get copyWith =>
       __$$AccountSettingsImplCopyWithImpl<_$AccountSettingsImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AccountSettingsImplToJson(
-      this,
-    );
+    return _$$AccountSettingsImplToJson(this);
   }
 }
 
 abstract class _AccountSettings implements AccountSettings {
-  const factory _AccountSettings(
-      {final bool keepCw,
-      final bool rememberNoteVisibility,
-      final NoteVisibility defaultNoteVisibility,
-      final bool defaultNoteLocalOnly,
-      final bool rememberRenoteVisibility,
-      final NoteVisibility defaultRenoteVisibility,
-      final bool defaultRenoteLocalOnly,
-      final ReactionAcceptance? reactionAcceptance,
-      final NoteVisibility visibility,
-      final bool localOnly,
-      final NoteVisibility renoteVisibility,
-      final bool renoteLocalOnly,
-      final List<String> pinnedEmojisForReaction,
-      final List<String> pinnedEmojis,
-      final List<String> recentlyUsedEmojis,
-      final String? defaultReaction,
-      final String? uploadFolder,
-      final bool keepOriginalUploading,
-      final bool keepOriginalFilename,
-      final List<MuteWord> mutedWords,
-      final List<MuteWord> hardMutedWords,
-      final List<String> mutedEmojis,
-      final List<String> recentlyUsedUsers,
-      final List<String> hashtags,
-      final bool postFormUseHashtags,
-      final List<String> postFormHashtags}) = _$AccountSettingsImpl;
+  const factory _AccountSettings({
+    final bool keepCw,
+    final bool rememberNoteVisibility,
+    final NoteVisibility defaultNoteVisibility,
+    final bool defaultNoteLocalOnly,
+    final bool rememberRenoteVisibility,
+    final NoteVisibility defaultRenoteVisibility,
+    final bool defaultRenoteLocalOnly,
+    final ReactionAcceptance? reactionAcceptance,
+    final NoteVisibility visibility,
+    final bool localOnly,
+    final NoteVisibility renoteVisibility,
+    final bool renoteLocalOnly,
+    final List<String> pinnedEmojisForReaction,
+    final List<String> pinnedEmojis,
+    final List<String> recentlyUsedEmojis,
+    final String? defaultReaction,
+    final String? uploadFolder,
+    final bool keepOriginalUploading,
+    final bool keepOriginalFilename,
+    final List<MuteWord> mutedWords,
+    final List<MuteWord> hardMutedWords,
+    final List<String> mutedEmojis,
+    final List<String> recentlyUsedUsers,
+    final List<String> hashtags,
+    final bool postFormUseHashtags,
+    final List<String> postFormHashtags,
+  }) = _$AccountSettingsImpl;
 
   factory _AccountSettings.fromJson(Map<String, dynamic> json) =
       _$AccountSettingsImpl.fromJson;
 
-// Privacy
+  // Privacy
   @override
   bool get keepCw;
   @override

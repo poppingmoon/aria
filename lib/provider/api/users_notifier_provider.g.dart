@@ -97,8 +97,12 @@ class UsersNotifierFamily
 }
 
 /// See also [UsersNotifier].
-class UsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    UsersNotifier, PaginationState<UserDetailed>> {
+class UsersNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UsersNotifier,
+          PaginationState<UserDetailed>
+        > {
   /// See also [UsersNotifier].
   UsersNotifierProvider(
     Account account, {
@@ -106,25 +110,26 @@ class UsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     Origin? userOrigin,
     String? host,
   }) : this._internal(
-          () => UsersNotifier()
-            ..account = account
-            ..sort = sort
-            ..userOrigin = userOrigin
-            ..host = host,
-          from: usersNotifierProvider,
-          name: r'usersNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$usersNotifierHash,
-          dependencies: UsersNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UsersNotifierFamily._allTransitiveDependencies,
-          account: account,
-          sort: sort,
-          userOrigin: userOrigin,
-          host: host,
-        );
+         () =>
+             UsersNotifier()
+               ..account = account
+               ..sort = sort
+               ..userOrigin = userOrigin
+               ..host = host,
+         from: usersNotifierProvider,
+         name: r'usersNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$usersNotifierHash,
+         dependencies: UsersNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             UsersNotifierFamily._allTransitiveDependencies,
+         account: account,
+         sort: sort,
+         userOrigin: userOrigin,
+         host: host,
+       );
 
   UsersNotifierProvider._internal(
     super._createNotifier, {
@@ -161,11 +166,12 @@ class UsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: UsersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..sort = sort
-          ..userOrigin = userOrigin
-          ..host = host,
+        () =>
+            create()
+              ..account = account
+              ..sort = sort
+              ..userOrigin = userOrigin
+              ..host = host,
         from: from,
         name: null,
         dependencies: null,
@@ -180,8 +186,11 @@ class UsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UsersNotifier,
-      PaginationState<UserDetailed>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UsersNotifier,
+    PaginationState<UserDetailed>
+  >
+  createElement() {
     return _UsersNotifierProviderElement(this);
   }
 
@@ -224,8 +233,12 @@ mixin UsersNotifierRef
 }
 
 class _UsersNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UsersNotifier,
-        PaginationState<UserDetailed>> with UsersNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UsersNotifier,
+          PaginationState<UserDetailed>
+        >
+    with UsersNotifierRef {
   _UsersNotifierProviderElement(super.provider);
 
   @override
@@ -237,5 +250,6 @@ class _UsersNotifierProviderElement
   @override
   String? get host => (origin as UsersNotifierProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -12,7 +12,8 @@ part of 'misskey_colors.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$MisskeyColors {
@@ -56,39 +57,41 @@ mixin _$MisskeyColors {
 /// @nodoc
 abstract class $MisskeyColorsCopyWith<$Res> {
   factory $MisskeyColorsCopyWith(
-          MisskeyColors value, $Res Function(MisskeyColors) then) =
-      _$MisskeyColorsCopyWithImpl<$Res, MisskeyColors>;
+    MisskeyColors value,
+    $Res Function(MisskeyColors) then,
+  ) = _$MisskeyColorsCopyWithImpl<$Res, MisskeyColors>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      bool isDark,
-      Color accent,
-      Color accentDarken,
-      Color accentLighten,
-      Color accentedBg,
-      Color love,
-      Color bg,
-      Color fg,
-      Color fgOnAccent,
-      Color divider,
-      Color panel,
-      Color link,
-      Color hashtag,
-      Color mention,
-      Color mentionMe,
-      Color renote,
-      Color infoBg,
-      Color infoFg,
-      Color infoWarnBg,
-      Color infoWarnFg,
-      Color buttonBg,
-      Color buttonGradateA,
-      Color buttonGradateB,
-      Color driveFolderBg,
-      Color success,
-      Color error,
-      Color warn});
+  $Res call({
+    String id,
+    String name,
+    bool isDark,
+    Color accent,
+    Color accentDarken,
+    Color accentLighten,
+    Color accentedBg,
+    Color love,
+    Color bg,
+    Color fg,
+    Color fgOnAccent,
+    Color divider,
+    Color panel,
+    Color link,
+    Color hashtag,
+    Color mention,
+    Color mentionMe,
+    Color renote,
+    Color infoBg,
+    Color infoFg,
+    Color infoWarnBg,
+    Color infoWarnFg,
+    Color buttonBg,
+    Color buttonGradateA,
+    Color buttonGradateB,
+    Color driveFolderBg,
+    Color success,
+    Color error,
+    Color warn,
+  });
 }
 
 /// @nodoc
@@ -136,124 +139,156 @@ class _$MisskeyColorsCopyWithImpl<$Res, $Val extends MisskeyColors>
     Object? error = null,
     Object? warn = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isDark: null == isDark
-          ? _value.isDark
-          : isDark // ignore: cast_nullable_to_non_nullable
-              as bool,
-      accent: null == accent
-          ? _value.accent
-          : accent // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accentDarken: null == accentDarken
-          ? _value.accentDarken
-          : accentDarken // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accentLighten: null == accentLighten
-          ? _value.accentLighten
-          : accentLighten // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accentedBg: null == accentedBg
-          ? _value.accentedBg
-          : accentedBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      love: null == love
-          ? _value.love
-          : love // ignore: cast_nullable_to_non_nullable
-              as Color,
-      bg: null == bg
-          ? _value.bg
-          : bg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      fg: null == fg
-          ? _value.fg
-          : fg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      fgOnAccent: null == fgOnAccent
-          ? _value.fgOnAccent
-          : fgOnAccent // ignore: cast_nullable_to_non_nullable
-              as Color,
-      divider: null == divider
-          ? _value.divider
-          : divider // ignore: cast_nullable_to_non_nullable
-              as Color,
-      panel: null == panel
-          ? _value.panel
-          : panel // ignore: cast_nullable_to_non_nullable
-              as Color,
-      link: null == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as Color,
-      hashtag: null == hashtag
-          ? _value.hashtag
-          : hashtag // ignore: cast_nullable_to_non_nullable
-              as Color,
-      mention: null == mention
-          ? _value.mention
-          : mention // ignore: cast_nullable_to_non_nullable
-              as Color,
-      mentionMe: null == mentionMe
-          ? _value.mentionMe
-          : mentionMe // ignore: cast_nullable_to_non_nullable
-              as Color,
-      renote: null == renote
-          ? _value.renote
-          : renote // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoBg: null == infoBg
-          ? _value.infoBg
-          : infoBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoFg: null == infoFg
-          ? _value.infoFg
-          : infoFg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoWarnBg: null == infoWarnBg
-          ? _value.infoWarnBg
-          : infoWarnBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoWarnFg: null == infoWarnFg
-          ? _value.infoWarnFg
-          : infoWarnFg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      buttonBg: null == buttonBg
-          ? _value.buttonBg
-          : buttonBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      buttonGradateA: null == buttonGradateA
-          ? _value.buttonGradateA
-          : buttonGradateA // ignore: cast_nullable_to_non_nullable
-              as Color,
-      buttonGradateB: null == buttonGradateB
-          ? _value.buttonGradateB
-          : buttonGradateB // ignore: cast_nullable_to_non_nullable
-              as Color,
-      driveFolderBg: null == driveFolderBg
-          ? _value.driveFolderBg
-          : driveFolderBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as Color,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Color,
-      warn: null == warn
-          ? _value.warn
-          : warn // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isDark:
+                null == isDark
+                    ? _value.isDark
+                    : isDark // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            accent:
+                null == accent
+                    ? _value.accent
+                    : accent // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            accentDarken:
+                null == accentDarken
+                    ? _value.accentDarken
+                    : accentDarken // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            accentLighten:
+                null == accentLighten
+                    ? _value.accentLighten
+                    : accentLighten // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            accentedBg:
+                null == accentedBg
+                    ? _value.accentedBg
+                    : accentedBg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            love:
+                null == love
+                    ? _value.love
+                    : love // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            bg:
+                null == bg
+                    ? _value.bg
+                    : bg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            fg:
+                null == fg
+                    ? _value.fg
+                    : fg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            fgOnAccent:
+                null == fgOnAccent
+                    ? _value.fgOnAccent
+                    : fgOnAccent // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            divider:
+                null == divider
+                    ? _value.divider
+                    : divider // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            panel:
+                null == panel
+                    ? _value.panel
+                    : panel // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            link:
+                null == link
+                    ? _value.link
+                    : link // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            hashtag:
+                null == hashtag
+                    ? _value.hashtag
+                    : hashtag // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            mention:
+                null == mention
+                    ? _value.mention
+                    : mention // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            mentionMe:
+                null == mentionMe
+                    ? _value.mentionMe
+                    : mentionMe // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            renote:
+                null == renote
+                    ? _value.renote
+                    : renote // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            infoBg:
+                null == infoBg
+                    ? _value.infoBg
+                    : infoBg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            infoFg:
+                null == infoFg
+                    ? _value.infoFg
+                    : infoFg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            infoWarnBg:
+                null == infoWarnBg
+                    ? _value.infoWarnBg
+                    : infoWarnBg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            infoWarnFg:
+                null == infoWarnFg
+                    ? _value.infoWarnFg
+                    : infoWarnFg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            buttonBg:
+                null == buttonBg
+                    ? _value.buttonBg
+                    : buttonBg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            buttonGradateA:
+                null == buttonGradateA
+                    ? _value.buttonGradateA
+                    : buttonGradateA // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            buttonGradateB:
+                null == buttonGradateB
+                    ? _value.buttonGradateB
+                    : buttonGradateB // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            driveFolderBg:
+                null == driveFolderBg
+                    ? _value.driveFolderBg
+                    : driveFolderBg // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            success:
+                null == success
+                    ? _value.success
+                    : success // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            error:
+                null == error
+                    ? _value.error
+                    : error // ignore: cast_nullable_to_non_nullable
+                        as Color,
+            warn:
+                null == warn
+                    ? _value.warn
+                    : warn // ignore: cast_nullable_to_non_nullable
+                        as Color,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -261,40 +296,42 @@ class _$MisskeyColorsCopyWithImpl<$Res, $Val extends MisskeyColors>
 abstract class _$$MisskeyColorsImplCopyWith<$Res>
     implements $MisskeyColorsCopyWith<$Res> {
   factory _$$MisskeyColorsImplCopyWith(
-          _$MisskeyColorsImpl value, $Res Function(_$MisskeyColorsImpl) then) =
-      __$$MisskeyColorsImplCopyWithImpl<$Res>;
+    _$MisskeyColorsImpl value,
+    $Res Function(_$MisskeyColorsImpl) then,
+  ) = __$$MisskeyColorsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      bool isDark,
-      Color accent,
-      Color accentDarken,
-      Color accentLighten,
-      Color accentedBg,
-      Color love,
-      Color bg,
-      Color fg,
-      Color fgOnAccent,
-      Color divider,
-      Color panel,
-      Color link,
-      Color hashtag,
-      Color mention,
-      Color mentionMe,
-      Color renote,
-      Color infoBg,
-      Color infoFg,
-      Color infoWarnBg,
-      Color infoWarnFg,
-      Color buttonBg,
-      Color buttonGradateA,
-      Color buttonGradateB,
-      Color driveFolderBg,
-      Color success,
-      Color error,
-      Color warn});
+  $Res call({
+    String id,
+    String name,
+    bool isDark,
+    Color accent,
+    Color accentDarken,
+    Color accentLighten,
+    Color accentedBg,
+    Color love,
+    Color bg,
+    Color fg,
+    Color fgOnAccent,
+    Color divider,
+    Color panel,
+    Color link,
+    Color hashtag,
+    Color mention,
+    Color mentionMe,
+    Color renote,
+    Color infoBg,
+    Color infoFg,
+    Color infoWarnBg,
+    Color infoWarnFg,
+    Color buttonBg,
+    Color buttonGradateA,
+    Color buttonGradateB,
+    Color driveFolderBg,
+    Color success,
+    Color error,
+    Color warn,
+  });
 }
 
 /// @nodoc
@@ -302,8 +339,9 @@ class __$$MisskeyColorsImplCopyWithImpl<$Res>
     extends _$MisskeyColorsCopyWithImpl<$Res, _$MisskeyColorsImpl>
     implements _$$MisskeyColorsImplCopyWith<$Res> {
   __$$MisskeyColorsImplCopyWithImpl(
-      _$MisskeyColorsImpl _value, $Res Function(_$MisskeyColorsImpl) _then)
-      : super(_value, _then);
+    _$MisskeyColorsImpl _value,
+    $Res Function(_$MisskeyColorsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MisskeyColors
   /// with the given fields replaced by the non-null parameter values.
@@ -340,160 +378,192 @@ class __$$MisskeyColorsImplCopyWithImpl<$Res>
     Object? error = null,
     Object? warn = null,
   }) {
-    return _then(_$MisskeyColorsImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isDark: null == isDark
-          ? _value.isDark
-          : isDark // ignore: cast_nullable_to_non_nullable
-              as bool,
-      accent: null == accent
-          ? _value.accent
-          : accent // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accentDarken: null == accentDarken
-          ? _value.accentDarken
-          : accentDarken // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accentLighten: null == accentLighten
-          ? _value.accentLighten
-          : accentLighten // ignore: cast_nullable_to_non_nullable
-              as Color,
-      accentedBg: null == accentedBg
-          ? _value.accentedBg
-          : accentedBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      love: null == love
-          ? _value.love
-          : love // ignore: cast_nullable_to_non_nullable
-              as Color,
-      bg: null == bg
-          ? _value.bg
-          : bg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      fg: null == fg
-          ? _value.fg
-          : fg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      fgOnAccent: null == fgOnAccent
-          ? _value.fgOnAccent
-          : fgOnAccent // ignore: cast_nullable_to_non_nullable
-              as Color,
-      divider: null == divider
-          ? _value.divider
-          : divider // ignore: cast_nullable_to_non_nullable
-              as Color,
-      panel: null == panel
-          ? _value.panel
-          : panel // ignore: cast_nullable_to_non_nullable
-              as Color,
-      link: null == link
-          ? _value.link
-          : link // ignore: cast_nullable_to_non_nullable
-              as Color,
-      hashtag: null == hashtag
-          ? _value.hashtag
-          : hashtag // ignore: cast_nullable_to_non_nullable
-              as Color,
-      mention: null == mention
-          ? _value.mention
-          : mention // ignore: cast_nullable_to_non_nullable
-              as Color,
-      mentionMe: null == mentionMe
-          ? _value.mentionMe
-          : mentionMe // ignore: cast_nullable_to_non_nullable
-              as Color,
-      renote: null == renote
-          ? _value.renote
-          : renote // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoBg: null == infoBg
-          ? _value.infoBg
-          : infoBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoFg: null == infoFg
-          ? _value.infoFg
-          : infoFg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoWarnBg: null == infoWarnBg
-          ? _value.infoWarnBg
-          : infoWarnBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      infoWarnFg: null == infoWarnFg
-          ? _value.infoWarnFg
-          : infoWarnFg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      buttonBg: null == buttonBg
-          ? _value.buttonBg
-          : buttonBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      buttonGradateA: null == buttonGradateA
-          ? _value.buttonGradateA
-          : buttonGradateA // ignore: cast_nullable_to_non_nullable
-              as Color,
-      buttonGradateB: null == buttonGradateB
-          ? _value.buttonGradateB
-          : buttonGradateB // ignore: cast_nullable_to_non_nullable
-              as Color,
-      driveFolderBg: null == driveFolderBg
-          ? _value.driveFolderBg
-          : driveFolderBg // ignore: cast_nullable_to_non_nullable
-              as Color,
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as Color,
-      error: null == error
-          ? _value.error
-          : error // ignore: cast_nullable_to_non_nullable
-              as Color,
-      warn: null == warn
-          ? _value.warn
-          : warn // ignore: cast_nullable_to_non_nullable
-              as Color,
-    ));
+    return _then(
+      _$MisskeyColorsImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isDark:
+            null == isDark
+                ? _value.isDark
+                : isDark // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        accent:
+            null == accent
+                ? _value.accent
+                : accent // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        accentDarken:
+            null == accentDarken
+                ? _value.accentDarken
+                : accentDarken // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        accentLighten:
+            null == accentLighten
+                ? _value.accentLighten
+                : accentLighten // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        accentedBg:
+            null == accentedBg
+                ? _value.accentedBg
+                : accentedBg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        love:
+            null == love
+                ? _value.love
+                : love // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        bg:
+            null == bg
+                ? _value.bg
+                : bg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        fg:
+            null == fg
+                ? _value.fg
+                : fg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        fgOnAccent:
+            null == fgOnAccent
+                ? _value.fgOnAccent
+                : fgOnAccent // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        divider:
+            null == divider
+                ? _value.divider
+                : divider // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        panel:
+            null == panel
+                ? _value.panel
+                : panel // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        link:
+            null == link
+                ? _value.link
+                : link // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        hashtag:
+            null == hashtag
+                ? _value.hashtag
+                : hashtag // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        mention:
+            null == mention
+                ? _value.mention
+                : mention // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        mentionMe:
+            null == mentionMe
+                ? _value.mentionMe
+                : mentionMe // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        renote:
+            null == renote
+                ? _value.renote
+                : renote // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        infoBg:
+            null == infoBg
+                ? _value.infoBg
+                : infoBg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        infoFg:
+            null == infoFg
+                ? _value.infoFg
+                : infoFg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        infoWarnBg:
+            null == infoWarnBg
+                ? _value.infoWarnBg
+                : infoWarnBg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        infoWarnFg:
+            null == infoWarnFg
+                ? _value.infoWarnFg
+                : infoWarnFg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        buttonBg:
+            null == buttonBg
+                ? _value.buttonBg
+                : buttonBg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        buttonGradateA:
+            null == buttonGradateA
+                ? _value.buttonGradateA
+                : buttonGradateA // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        buttonGradateB:
+            null == buttonGradateB
+                ? _value.buttonGradateB
+                : buttonGradateB // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        driveFolderBg:
+            null == driveFolderBg
+                ? _value.driveFolderBg
+                : driveFolderBg // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        success:
+            null == success
+                ? _value.success
+                : success // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        error:
+            null == error
+                ? _value.error
+                : error // ignore: cast_nullable_to_non_nullable
+                    as Color,
+        warn:
+            null == warn
+                ? _value.warn
+                : warn // ignore: cast_nullable_to_non_nullable
+                    as Color,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$MisskeyColorsImpl implements _MisskeyColors {
-  const _$MisskeyColorsImpl(
-      {required this.id,
-      required this.name,
-      required this.isDark,
-      required this.accent,
-      required this.accentDarken,
-      required this.accentLighten,
-      required this.accentedBg,
-      required this.love,
-      required this.bg,
-      required this.fg,
-      required this.fgOnAccent,
-      required this.divider,
-      required this.panel,
-      required this.link,
-      required this.hashtag,
-      required this.mention,
-      required this.mentionMe,
-      required this.renote,
-      required this.infoBg,
-      required this.infoFg,
-      required this.infoWarnBg,
-      required this.infoWarnFg,
-      required this.buttonBg,
-      required this.buttonGradateA,
-      required this.buttonGradateB,
-      required this.driveFolderBg,
-      required this.success,
-      required this.error,
-      required this.warn});
+  const _$MisskeyColorsImpl({
+    required this.id,
+    required this.name,
+    required this.isDark,
+    required this.accent,
+    required this.accentDarken,
+    required this.accentLighten,
+    required this.accentedBg,
+    required this.love,
+    required this.bg,
+    required this.fg,
+    required this.fgOnAccent,
+    required this.divider,
+    required this.panel,
+    required this.link,
+    required this.hashtag,
+    required this.mention,
+    required this.mentionMe,
+    required this.renote,
+    required this.infoBg,
+    required this.infoFg,
+    required this.infoWarnBg,
+    required this.infoWarnFg,
+    required this.buttonBg,
+    required this.buttonGradateA,
+    required this.buttonGradateB,
+    required this.driveFolderBg,
+    required this.success,
+    required this.error,
+    required this.warn,
+  });
 
   @override
   final String id;
@@ -608,37 +678,37 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
 
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        name,
-        isDark,
-        accent,
-        accentDarken,
-        accentLighten,
-        accentedBg,
-        love,
-        bg,
-        fg,
-        fgOnAccent,
-        divider,
-        panel,
-        link,
-        hashtag,
-        mention,
-        mentionMe,
-        renote,
-        infoBg,
-        infoFg,
-        infoWarnBg,
-        infoWarnFg,
-        buttonBg,
-        buttonGradateA,
-        buttonGradateB,
-        driveFolderBg,
-        success,
-        error,
-        warn
-      ]);
+    runtimeType,
+    id,
+    name,
+    isDark,
+    accent,
+    accentDarken,
+    accentLighten,
+    accentedBg,
+    love,
+    bg,
+    fg,
+    fgOnAccent,
+    divider,
+    panel,
+    link,
+    hashtag,
+    mention,
+    mentionMe,
+    renote,
+    infoBg,
+    infoFg,
+    infoWarnBg,
+    infoWarnFg,
+    buttonBg,
+    buttonGradateA,
+    buttonGradateB,
+    driveFolderBg,
+    success,
+    error,
+    warn,
+  ]);
 
   /// Create a copy of MisskeyColors
   /// with the given fields replaced by the non-null parameter values.
@@ -650,36 +720,37 @@ class _$MisskeyColorsImpl implements _MisskeyColors {
 }
 
 abstract class _MisskeyColors implements MisskeyColors {
-  const factory _MisskeyColors(
-      {required final String id,
-      required final String name,
-      required final bool isDark,
-      required final Color accent,
-      required final Color accentDarken,
-      required final Color accentLighten,
-      required final Color accentedBg,
-      required final Color love,
-      required final Color bg,
-      required final Color fg,
-      required final Color fgOnAccent,
-      required final Color divider,
-      required final Color panel,
-      required final Color link,
-      required final Color hashtag,
-      required final Color mention,
-      required final Color mentionMe,
-      required final Color renote,
-      required final Color infoBg,
-      required final Color infoFg,
-      required final Color infoWarnBg,
-      required final Color infoWarnFg,
-      required final Color buttonBg,
-      required final Color buttonGradateA,
-      required final Color buttonGradateB,
-      required final Color driveFolderBg,
-      required final Color success,
-      required final Color error,
-      required final Color warn}) = _$MisskeyColorsImpl;
+  const factory _MisskeyColors({
+    required final String id,
+    required final String name,
+    required final bool isDark,
+    required final Color accent,
+    required final Color accentDarken,
+    required final Color accentLighten,
+    required final Color accentedBg,
+    required final Color love,
+    required final Color bg,
+    required final Color fg,
+    required final Color fgOnAccent,
+    required final Color divider,
+    required final Color panel,
+    required final Color link,
+    required final Color hashtag,
+    required final Color mention,
+    required final Color mentionMe,
+    required final Color renote,
+    required final Color infoBg,
+    required final Color infoFg,
+    required final Color infoWarnBg,
+    required final Color infoWarnFg,
+    required final Color buttonBg,
+    required final Color buttonGradateA,
+    required final Color buttonGradateB,
+    required final Color driveFolderBg,
+    required final Color success,
+    required final Color error,
+    required final Color warn,
+  }) = _$MisskeyColorsImpl;
 
   @override
   String get id;

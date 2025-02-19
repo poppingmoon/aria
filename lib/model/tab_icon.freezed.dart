@@ -12,7 +12,8 @@ part of 'tab_icon.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 MaterialIcon _$MaterialIconFromJson(Map<String, dynamic> json) {
   return _MaterialIcon.fromJson(json);
@@ -35,8 +36,9 @@ mixin _$MaterialIcon {
 /// @nodoc
 abstract class $MaterialIconCopyWith<$Res> {
   factory $MaterialIconCopyWith(
-          MaterialIcon value, $Res Function(MaterialIcon) then) =
-      _$MaterialIconCopyWithImpl<$Res, MaterialIcon>;
+    MaterialIcon value,
+    $Res Function(MaterialIcon) then,
+  ) = _$MaterialIconCopyWithImpl<$Res, MaterialIcon>;
   @useResult
   $Res call({int codePoint});
 }
@@ -55,15 +57,17 @@ class _$MaterialIconCopyWithImpl<$Res, $Val extends MaterialIcon>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? codePoint = null,
-  }) {
-    return _then(_value.copyWith(
-      codePoint: null == codePoint
-          ? _value.codePoint
-          : codePoint // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+  $Res call({Object? codePoint = null}) {
+    return _then(
+      _value.copyWith(
+            codePoint:
+                null == codePoint
+                    ? _value.codePoint
+                    : codePoint // ignore: cast_nullable_to_non_nullable
+                        as int,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -71,8 +75,9 @@ class _$MaterialIconCopyWithImpl<$Res, $Val extends MaterialIcon>
 abstract class _$$MaterialIconImplCopyWith<$Res>
     implements $MaterialIconCopyWith<$Res> {
   factory _$$MaterialIconImplCopyWith(
-          _$MaterialIconImpl value, $Res Function(_$MaterialIconImpl) then) =
-      __$$MaterialIconImplCopyWithImpl<$Res>;
+    _$MaterialIconImpl value,
+    $Res Function(_$MaterialIconImpl) then,
+  ) = __$$MaterialIconImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int codePoint});
@@ -83,22 +88,24 @@ class __$$MaterialIconImplCopyWithImpl<$Res>
     extends _$MaterialIconCopyWithImpl<$Res, _$MaterialIconImpl>
     implements _$$MaterialIconImplCopyWith<$Res> {
   __$$MaterialIconImplCopyWithImpl(
-      _$MaterialIconImpl _value, $Res Function(_$MaterialIconImpl) _then)
-      : super(_value, _then);
+    _$MaterialIconImpl _value,
+    $Res Function(_$MaterialIconImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MaterialIcon
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? codePoint = null,
-  }) {
-    return _then(_$MaterialIconImpl(
-      codePoint: null == codePoint
-          ? _value.codePoint
-          : codePoint // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+  $Res call({Object? codePoint = null}) {
+    return _then(
+      _$MaterialIconImpl(
+        codePoint:
+            null == codePoint
+                ? _value.codePoint
+                : codePoint // ignore: cast_nullable_to_non_nullable
+                    as int,
+      ),
+    );
   }
 }
 
@@ -141,9 +148,7 @@ class _$MaterialIconImpl implements _MaterialIcon {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MaterialIconImplToJson(
-      this,
-    );
+    return _$$MaterialIconImplToJson(this);
   }
 }
 
@@ -205,15 +210,17 @@ class _$ImageIconCopyWithImpl<$Res, $Val extends ImageIcon>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? url = null,
-  }) {
-    return _then(_value.copyWith(
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? url = null}) {
+    return _then(
+      _value.copyWith(
+            url:
+                null == url
+                    ? _value.url
+                    : url // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -221,8 +228,9 @@ class _$ImageIconCopyWithImpl<$Res, $Val extends ImageIcon>
 abstract class _$$ImageIconImplCopyWith<$Res>
     implements $ImageIconCopyWith<$Res> {
   factory _$$ImageIconImplCopyWith(
-          _$ImageIconImpl value, $Res Function(_$ImageIconImpl) then) =
-      __$$ImageIconImplCopyWithImpl<$Res>;
+    _$ImageIconImpl value,
+    $Res Function(_$ImageIconImpl) then,
+  ) = __$$ImageIconImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String url});
@@ -233,22 +241,24 @@ class __$$ImageIconImplCopyWithImpl<$Res>
     extends _$ImageIconCopyWithImpl<$Res, _$ImageIconImpl>
     implements _$$ImageIconImplCopyWith<$Res> {
   __$$ImageIconImplCopyWithImpl(
-      _$ImageIconImpl _value, $Res Function(_$ImageIconImpl) _then)
-      : super(_value, _then);
+    _$ImageIconImpl _value,
+    $Res Function(_$ImageIconImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImageIcon
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? url = null,
-  }) {
-    return _then(_$ImageIconImpl(
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? url = null}) {
+    return _then(
+      _$ImageIconImpl(
+        url:
+            null == url
+                ? _value.url
+                : url // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -290,9 +300,7 @@ class _$ImageIconImpl implements _ImageIcon {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ImageIconImplToJson(
-      this,
-    );
+    return _$$ImageIconImplToJson(this);
   }
 }
 
@@ -353,15 +361,17 @@ class _$EmojiIconCopyWithImpl<$Res, $Val extends EmojiIcon>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emoji = null,
-  }) {
-    return _then(_value.copyWith(
-      emoji: null == emoji
-          ? _value.emoji
-          : emoji // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
+  $Res call({Object? emoji = null}) {
+    return _then(
+      _value.copyWith(
+            emoji:
+                null == emoji
+                    ? _value.emoji
+                    : emoji // ignore: cast_nullable_to_non_nullable
+                        as String,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -369,8 +379,9 @@ class _$EmojiIconCopyWithImpl<$Res, $Val extends EmojiIcon>
 abstract class _$$EmojiIconImplCopyWith<$Res>
     implements $EmojiIconCopyWith<$Res> {
   factory _$$EmojiIconImplCopyWith(
-          _$EmojiIconImpl value, $Res Function(_$EmojiIconImpl) then) =
-      __$$EmojiIconImplCopyWithImpl<$Res>;
+    _$EmojiIconImpl value,
+    $Res Function(_$EmojiIconImpl) then,
+  ) = __$$EmojiIconImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String emoji});
@@ -381,22 +392,24 @@ class __$$EmojiIconImplCopyWithImpl<$Res>
     extends _$EmojiIconCopyWithImpl<$Res, _$EmojiIconImpl>
     implements _$$EmojiIconImplCopyWith<$Res> {
   __$$EmojiIconImplCopyWithImpl(
-      _$EmojiIconImpl _value, $Res Function(_$EmojiIconImpl) _then)
-      : super(_value, _then);
+    _$EmojiIconImpl _value,
+    $Res Function(_$EmojiIconImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EmojiIcon
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emoji = null,
-  }) {
-    return _then(_$EmojiIconImpl(
-      emoji: null == emoji
-          ? _value.emoji
-          : emoji // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? emoji = null}) {
+    return _then(
+      _$EmojiIconImpl(
+        emoji:
+            null == emoji
+                ? _value.emoji
+                : emoji // ignore: cast_nullable_to_non_nullable
+                    as String,
+      ),
+    );
   }
 }
 
@@ -438,9 +451,7 @@ class _$EmojiIconImpl implements _EmojiIcon {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EmojiIconImplToJson(
-      this,
-    );
+    return _$$EmojiIconImplToJson(this);
   }
 }
 

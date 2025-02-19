@@ -12,7 +12,8 @@ part of 'tab_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 TabSettings _$TabSettingsFromJson(Map<String, dynamic> json) {
   return _TabSettings.fromJson(json);
@@ -55,31 +56,33 @@ mixin _$TabSettings {
 /// @nodoc
 abstract class $TabSettingsCopyWith<$Res> {
   factory $TabSettingsCopyWith(
-          TabSettings value, $Res Function(TabSettings) then) =
-      _$TabSettingsCopyWithImpl<$Res, TabSettings>;
+    TabSettings value,
+    $Res Function(TabSettings) then,
+  ) = _$TabSettingsCopyWithImpl<$Res, TabSettings>;
   @useResult
-  $Res call(
-      {String? id,
-      TabType tabType,
-      String? name,
-      Account account,
-      TabIcon? icon,
-      bool disableStreaming,
-      bool disableSubscribing,
-      bool withReplies,
-      bool withRenotes,
-      bool withSelfRenotes,
-      bool withFiles,
-      bool withSensitive,
-      bool keepPosition,
-      String? roleId,
-      String? channelId,
-      String? listId,
-      String? antennaId,
-      String? userId,
-      String? endpoint,
-      String? streamingChannel,
-      Map<String, dynamic>? parameters});
+  $Res call({
+    String? id,
+    TabType tabType,
+    String? name,
+    Account account,
+    TabIcon? icon,
+    bool disableStreaming,
+    bool disableSubscribing,
+    bool withReplies,
+    bool withRenotes,
+    bool withSelfRenotes,
+    bool withFiles,
+    bool withSensitive,
+    bool keepPosition,
+    String? roleId,
+    String? channelId,
+    String? listId,
+    String? antennaId,
+    String? userId,
+    String? endpoint,
+    String? streamingChannel,
+    Map<String, dynamic>? parameters,
+  });
 
   $AccountCopyWith<$Res> get account;
 }
@@ -121,92 +124,116 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
     Object? streamingChannel = freezed,
     Object? parameters = freezed,
   }) {
-    return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tabType: null == tabType
-          ? _value.tabType
-          : tabType // ignore: cast_nullable_to_non_nullable
-              as TabType,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      account: null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as Account,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as TabIcon?,
-      disableStreaming: null == disableStreaming
-          ? _value.disableStreaming
-          : disableStreaming // ignore: cast_nullable_to_non_nullable
-              as bool,
-      disableSubscribing: null == disableSubscribing
-          ? _value.disableSubscribing
-          : disableSubscribing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withReplies: null == withReplies
-          ? _value.withReplies
-          : withReplies // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withRenotes: null == withRenotes
-          ? _value.withRenotes
-          : withRenotes // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withSelfRenotes: null == withSelfRenotes
-          ? _value.withSelfRenotes
-          : withSelfRenotes // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withFiles: null == withFiles
-          ? _value.withFiles
-          : withFiles // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withSensitive: null == withSensitive
-          ? _value.withSensitive
-          : withSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      keepPosition: null == keepPosition
-          ? _value.keepPosition
-          : keepPosition // ignore: cast_nullable_to_non_nullable
-              as bool,
-      roleId: freezed == roleId
-          ? _value.roleId
-          : roleId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      channelId: freezed == channelId
-          ? _value.channelId
-          : channelId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      listId: freezed == listId
-          ? _value.listId
-          : listId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      antennaId: freezed == antennaId
-          ? _value.antennaId
-          : antennaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      endpoint: freezed == endpoint
-          ? _value.endpoint
-          : endpoint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      streamingChannel: freezed == streamingChannel
-          ? _value.streamingChannel
-          : streamingChannel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      parameters: freezed == parameters
-          ? _value.parameters
-          : parameters // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                freezed == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            tabType:
+                null == tabType
+                    ? _value.tabType
+                    : tabType // ignore: cast_nullable_to_non_nullable
+                        as TabType,
+            name:
+                freezed == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            account:
+                null == account
+                    ? _value.account
+                    : account // ignore: cast_nullable_to_non_nullable
+                        as Account,
+            icon:
+                freezed == icon
+                    ? _value.icon
+                    : icon // ignore: cast_nullable_to_non_nullable
+                        as TabIcon?,
+            disableStreaming:
+                null == disableStreaming
+                    ? _value.disableStreaming
+                    : disableStreaming // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            disableSubscribing:
+                null == disableSubscribing
+                    ? _value.disableSubscribing
+                    : disableSubscribing // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            withReplies:
+                null == withReplies
+                    ? _value.withReplies
+                    : withReplies // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            withRenotes:
+                null == withRenotes
+                    ? _value.withRenotes
+                    : withRenotes // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            withSelfRenotes:
+                null == withSelfRenotes
+                    ? _value.withSelfRenotes
+                    : withSelfRenotes // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            withFiles:
+                null == withFiles
+                    ? _value.withFiles
+                    : withFiles // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            withSensitive:
+                null == withSensitive
+                    ? _value.withSensitive
+                    : withSensitive // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            keepPosition:
+                null == keepPosition
+                    ? _value.keepPosition
+                    : keepPosition // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            roleId:
+                freezed == roleId
+                    ? _value.roleId
+                    : roleId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            channelId:
+                freezed == channelId
+                    ? _value.channelId
+                    : channelId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            listId:
+                freezed == listId
+                    ? _value.listId
+                    : listId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            antennaId:
+                freezed == antennaId
+                    ? _value.antennaId
+                    : antennaId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            userId:
+                freezed == userId
+                    ? _value.userId
+                    : userId // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            endpoint:
+                freezed == endpoint
+                    ? _value.endpoint
+                    : endpoint // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            streamingChannel:
+                freezed == streamingChannel
+                    ? _value.streamingChannel
+                    : streamingChannel // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            parameters:
+                freezed == parameters
+                    ? _value.parameters
+                    : parameters // ignore: cast_nullable_to_non_nullable
+                        as Map<String, dynamic>?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of TabSettings
@@ -224,32 +251,34 @@ class _$TabSettingsCopyWithImpl<$Res, $Val extends TabSettings>
 abstract class _$$TabSettingsImplCopyWith<$Res>
     implements $TabSettingsCopyWith<$Res> {
   factory _$$TabSettingsImplCopyWith(
-          _$TabSettingsImpl value, $Res Function(_$TabSettingsImpl) then) =
-      __$$TabSettingsImplCopyWithImpl<$Res>;
+    _$TabSettingsImpl value,
+    $Res Function(_$TabSettingsImpl) then,
+  ) = __$$TabSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? id,
-      TabType tabType,
-      String? name,
-      Account account,
-      TabIcon? icon,
-      bool disableStreaming,
-      bool disableSubscribing,
-      bool withReplies,
-      bool withRenotes,
-      bool withSelfRenotes,
-      bool withFiles,
-      bool withSensitive,
-      bool keepPosition,
-      String? roleId,
-      String? channelId,
-      String? listId,
-      String? antennaId,
-      String? userId,
-      String? endpoint,
-      String? streamingChannel,
-      Map<String, dynamic>? parameters});
+  $Res call({
+    String? id,
+    TabType tabType,
+    String? name,
+    Account account,
+    TabIcon? icon,
+    bool disableStreaming,
+    bool disableSubscribing,
+    bool withReplies,
+    bool withRenotes,
+    bool withSelfRenotes,
+    bool withFiles,
+    bool withSensitive,
+    bool keepPosition,
+    String? roleId,
+    String? channelId,
+    String? listId,
+    String? antennaId,
+    String? userId,
+    String? endpoint,
+    String? streamingChannel,
+    Map<String, dynamic>? parameters,
+  });
 
   @override
   $AccountCopyWith<$Res> get account;
@@ -260,8 +289,9 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
     extends _$TabSettingsCopyWithImpl<$Res, _$TabSettingsImpl>
     implements _$$TabSettingsImplCopyWith<$Res> {
   __$$TabSettingsImplCopyWithImpl(
-      _$TabSettingsImpl _value, $Res Function(_$TabSettingsImpl) _then)
-      : super(_value, _then);
+    _$TabSettingsImpl _value,
+    $Res Function(_$TabSettingsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TabSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -290,122 +320,145 @@ class __$$TabSettingsImplCopyWithImpl<$Res>
     Object? streamingChannel = freezed,
     Object? parameters = freezed,
   }) {
-    return _then(_$TabSettingsImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tabType: null == tabType
-          ? _value.tabType
-          : tabType // ignore: cast_nullable_to_non_nullable
-              as TabType,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      account: null == account
-          ? _value.account
-          : account // ignore: cast_nullable_to_non_nullable
-              as Account,
-      icon: freezed == icon
-          ? _value.icon
-          : icon // ignore: cast_nullable_to_non_nullable
-              as TabIcon?,
-      disableStreaming: null == disableStreaming
-          ? _value.disableStreaming
-          : disableStreaming // ignore: cast_nullable_to_non_nullable
-              as bool,
-      disableSubscribing: null == disableSubscribing
-          ? _value.disableSubscribing
-          : disableSubscribing // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withReplies: null == withReplies
-          ? _value.withReplies
-          : withReplies // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withRenotes: null == withRenotes
-          ? _value.withRenotes
-          : withRenotes // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withSelfRenotes: null == withSelfRenotes
-          ? _value.withSelfRenotes
-          : withSelfRenotes // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withFiles: null == withFiles
-          ? _value.withFiles
-          : withFiles // ignore: cast_nullable_to_non_nullable
-              as bool,
-      withSensitive: null == withSensitive
-          ? _value.withSensitive
-          : withSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      keepPosition: null == keepPosition
-          ? _value.keepPosition
-          : keepPosition // ignore: cast_nullable_to_non_nullable
-              as bool,
-      roleId: freezed == roleId
-          ? _value.roleId
-          : roleId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      channelId: freezed == channelId
-          ? _value.channelId
-          : channelId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      listId: freezed == listId
-          ? _value.listId
-          : listId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      antennaId: freezed == antennaId
-          ? _value.antennaId
-          : antennaId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      endpoint: freezed == endpoint
-          ? _value.endpoint
-          : endpoint // ignore: cast_nullable_to_non_nullable
-              as String?,
-      streamingChannel: freezed == streamingChannel
-          ? _value.streamingChannel
-          : streamingChannel // ignore: cast_nullable_to_non_nullable
-              as String?,
-      parameters: freezed == parameters
-          ? _value._parameters
-          : parameters // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>?,
-    ));
+    return _then(
+      _$TabSettingsImpl(
+        id:
+            freezed == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        tabType:
+            null == tabType
+                ? _value.tabType
+                : tabType // ignore: cast_nullable_to_non_nullable
+                    as TabType,
+        name:
+            freezed == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        account:
+            null == account
+                ? _value.account
+                : account // ignore: cast_nullable_to_non_nullable
+                    as Account,
+        icon:
+            freezed == icon
+                ? _value.icon
+                : icon // ignore: cast_nullable_to_non_nullable
+                    as TabIcon?,
+        disableStreaming:
+            null == disableStreaming
+                ? _value.disableStreaming
+                : disableStreaming // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        disableSubscribing:
+            null == disableSubscribing
+                ? _value.disableSubscribing
+                : disableSubscribing // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        withReplies:
+            null == withReplies
+                ? _value.withReplies
+                : withReplies // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        withRenotes:
+            null == withRenotes
+                ? _value.withRenotes
+                : withRenotes // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        withSelfRenotes:
+            null == withSelfRenotes
+                ? _value.withSelfRenotes
+                : withSelfRenotes // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        withFiles:
+            null == withFiles
+                ? _value.withFiles
+                : withFiles // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        withSensitive:
+            null == withSensitive
+                ? _value.withSensitive
+                : withSensitive // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        keepPosition:
+            null == keepPosition
+                ? _value.keepPosition
+                : keepPosition // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        roleId:
+            freezed == roleId
+                ? _value.roleId
+                : roleId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        channelId:
+            freezed == channelId
+                ? _value.channelId
+                : channelId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        listId:
+            freezed == listId
+                ? _value.listId
+                : listId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        antennaId:
+            freezed == antennaId
+                ? _value.antennaId
+                : antennaId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        userId:
+            freezed == userId
+                ? _value.userId
+                : userId // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        endpoint:
+            freezed == endpoint
+                ? _value.endpoint
+                : endpoint // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        streamingChannel:
+            freezed == streamingChannel
+                ? _value.streamingChannel
+                : streamingChannel // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        parameters:
+            freezed == parameters
+                ? _value._parameters
+                : parameters // ignore: cast_nullable_to_non_nullable
+                    as Map<String, dynamic>?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$TabSettingsImpl extends _TabSettings {
-  const _$TabSettingsImpl(
-      {this.id,
-      required this.tabType,
-      this.name,
-      required this.account,
-      this.icon,
-      this.disableStreaming = false,
-      this.disableSubscribing = false,
-      this.withReplies = false,
-      this.withRenotes = true,
-      this.withSelfRenotes = true,
-      this.withFiles = false,
-      this.withSensitive = true,
-      this.keepPosition = false,
-      this.roleId,
-      this.channelId,
-      this.listId,
-      this.antennaId,
-      this.userId,
-      this.endpoint,
-      this.streamingChannel,
-      final Map<String, dynamic>? parameters})
-      : _parameters = parameters,
-        super._();
+  const _$TabSettingsImpl({
+    this.id,
+    required this.tabType,
+    this.name,
+    required this.account,
+    this.icon,
+    this.disableStreaming = false,
+    this.disableSubscribing = false,
+    this.withReplies = false,
+    this.withRenotes = true,
+    this.withSelfRenotes = true,
+    this.withFiles = false,
+    this.withSensitive = true,
+    this.keepPosition = false,
+    this.roleId,
+    this.channelId,
+    this.listId,
+    this.antennaId,
+    this.userId,
+    this.endpoint,
+    this.streamingChannel,
+    final Map<String, dynamic>? parameters,
+  }) : _parameters = parameters,
+       super._();
 
   factory _$TabSettingsImpl.fromJson(Map<String, dynamic> json) =>
       _$$TabSettingsImplFromJson(json);
@@ -510,36 +563,38 @@ class _$TabSettingsImpl extends _TabSettings {
                 other.endpoint == endpoint) &&
             (identical(other.streamingChannel, streamingChannel) ||
                 other.streamingChannel == streamingChannel) &&
-            const DeepCollectionEquality()
-                .equals(other._parameters, _parameters));
+            const DeepCollectionEquality().equals(
+              other._parameters,
+              _parameters,
+            ));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hashAll([
-        runtimeType,
-        id,
-        tabType,
-        name,
-        account,
-        icon,
-        disableStreaming,
-        disableSubscribing,
-        withReplies,
-        withRenotes,
-        withSelfRenotes,
-        withFiles,
-        withSensitive,
-        keepPosition,
-        roleId,
-        channelId,
-        listId,
-        antennaId,
-        userId,
-        endpoint,
-        streamingChannel,
-        const DeepCollectionEquality().hash(_parameters)
-      ]);
+    runtimeType,
+    id,
+    tabType,
+    name,
+    account,
+    icon,
+    disableStreaming,
+    disableSubscribing,
+    withReplies,
+    withRenotes,
+    withSelfRenotes,
+    withFiles,
+    withSensitive,
+    keepPosition,
+    roleId,
+    channelId,
+    listId,
+    antennaId,
+    userId,
+    endpoint,
+    streamingChannel,
+    const DeepCollectionEquality().hash(_parameters),
+  ]);
 
   /// Create a copy of TabSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -551,35 +606,34 @@ class _$TabSettingsImpl extends _TabSettings {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TabSettingsImplToJson(
-      this,
-    );
+    return _$$TabSettingsImplToJson(this);
   }
 }
 
 abstract class _TabSettings extends TabSettings {
-  const factory _TabSettings(
-      {final String? id,
-      required final TabType tabType,
-      final String? name,
-      required final Account account,
-      final TabIcon? icon,
-      final bool disableStreaming,
-      final bool disableSubscribing,
-      final bool withReplies,
-      final bool withRenotes,
-      final bool withSelfRenotes,
-      final bool withFiles,
-      final bool withSensitive,
-      final bool keepPosition,
-      final String? roleId,
-      final String? channelId,
-      final String? listId,
-      final String? antennaId,
-      final String? userId,
-      final String? endpoint,
-      final String? streamingChannel,
-      final Map<String, dynamic>? parameters}) = _$TabSettingsImpl;
+  const factory _TabSettings({
+    final String? id,
+    required final TabType tabType,
+    final String? name,
+    required final Account account,
+    final TabIcon? icon,
+    final bool disableStreaming,
+    final bool disableSubscribing,
+    final bool withReplies,
+    final bool withRenotes,
+    final bool withSelfRenotes,
+    final bool withFiles,
+    final bool withSensitive,
+    final bool keepPosition,
+    final String? roleId,
+    final String? channelId,
+    final String? listId,
+    final String? antennaId,
+    final String? userId,
+    final String? endpoint,
+    final String? streamingChannel,
+    final Map<String, dynamic>? parameters,
+  }) = _$TabSettingsImpl;
   const _TabSettings._() : super._();
 
   factory _TabSettings.fromJson(Map<String, dynamic> json) =

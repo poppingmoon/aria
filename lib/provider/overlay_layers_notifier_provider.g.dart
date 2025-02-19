@@ -13,14 +13,15 @@ String _$overlayLayersNotifierHash() =>
 @ProviderFor(OverlayLayersNotifier)
 final overlayLayersNotifierProvider =
     AutoDisposeNotifierProvider<OverlayLayersNotifier, List<Layer>>.internal(
-  OverlayLayersNotifier.new,
-  name: r'overlayLayersNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$overlayLayersNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      OverlayLayersNotifier.new,
+      name: r'overlayLayersNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$overlayLayersNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$OverlayLayersNotifier = AutoDisposeNotifier<List<Layer>>;
 // ignore_for_file: type=lint

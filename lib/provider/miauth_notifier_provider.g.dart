@@ -12,14 +12,15 @@ String _$miAuthNotifierHash() => r'ec8dd00f018b943f97eef92aeabe1ee8352b8689';
 @ProviderFor(MiAuthNotifier)
 final miAuthNotifierProvider =
     NotifierProvider<MiAuthNotifier, MiAuthState?>.internal(
-  MiAuthNotifier.new,
-  name: r'miAuthNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$miAuthNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      MiAuthNotifier.new,
+      name: r'miAuthNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$miAuthNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$MiAuthNotifier = Notifier<MiAuthState?>;
 // ignore_for_file: type=lint

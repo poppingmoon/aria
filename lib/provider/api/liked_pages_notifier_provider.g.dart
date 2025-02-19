@@ -30,13 +30,12 @@ class _SystemHash {
   }
 }
 
-abstract class _$LikedPagesNotifier extends BuildlessAutoDisposeAsyncNotifier<
-    PaginationState<IPageLikesResponse>> {
+abstract class _$LikedPagesNotifier
+    extends
+        BuildlessAutoDisposeAsyncNotifier<PaginationState<IPageLikesResponse>> {
   late final Account account;
 
-  FutureOr<PaginationState<IPageLikesResponse>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<IPageLikesResponse>> build(Account account);
 }
 
 /// See also [LikedPagesNotifier].
@@ -50,21 +49,15 @@ class LikedPagesNotifierFamily
   const LikedPagesNotifierFamily();
 
   /// See also [LikedPagesNotifier].
-  LikedPagesNotifierProvider call(
-    Account account,
-  ) {
-    return LikedPagesNotifierProvider(
-      account,
-    );
+  LikedPagesNotifierProvider call(Account account) {
+    return LikedPagesNotifierProvider(account);
   }
 
   @override
   LikedPagesNotifierProvider getProviderOverride(
     covariant LikedPagesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,24 +76,27 @@ class LikedPagesNotifierFamily
 }
 
 /// See also [LikedPagesNotifier].
-class LikedPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    LikedPagesNotifier, PaginationState<IPageLikesResponse>> {
+class LikedPagesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          LikedPagesNotifier,
+          PaginationState<IPageLikesResponse>
+        > {
   /// See also [LikedPagesNotifier].
-  LikedPagesNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => LikedPagesNotifier()..account = account,
-          from: likedPagesNotifierProvider,
-          name: r'likedPagesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$likedPagesNotifierHash,
-          dependencies: LikedPagesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              LikedPagesNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  LikedPagesNotifierProvider(Account account)
+    : this._internal(
+        () => LikedPagesNotifier()..account = account,
+        from: likedPagesNotifierProvider,
+        name: r'likedPagesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$likedPagesNotifierHash,
+        dependencies: LikedPagesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            LikedPagesNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   LikedPagesNotifierProvider._internal(
     super._createNotifier, {
@@ -118,9 +114,7 @@ class LikedPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<IPageLikesResponse>> runNotifierBuild(
     covariant LikedPagesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -140,8 +134,11 @@ class LikedPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<LikedPagesNotifier,
-      PaginationState<IPageLikesResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    LikedPagesNotifier,
+    PaginationState<IPageLikesResponse>
+  >
+  createElement() {
     return _LikedPagesNotifierProviderElement(this);
   }
 
@@ -161,19 +158,27 @@ class LikedPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin LikedPagesNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<IPageLikesResponse>> {
+mixin LikedPagesNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<IPageLikesResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _LikedPagesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<LikedPagesNotifier,
-        PaginationState<IPageLikesResponse>> with LikedPagesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          LikedPagesNotifier,
+          PaginationState<IPageLikesResponse>
+        >
+    with LikedPagesNotifierRef {
   _LikedPagesNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as LikedPagesNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

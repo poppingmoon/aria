@@ -34,10 +34,7 @@ abstract class _$NoteStateNotifier
   late final Account account;
   late final String noteId;
 
-  FutureOr<NotesStateResponse> build(
-    Account account,
-    String noteId,
-  );
+  FutureOr<NotesStateResponse> build(Account account, String noteId);
 }
 
 /// See also [NoteStateNotifier].
@@ -50,24 +47,15 @@ class NoteStateNotifierFamily extends Family<AsyncValue<NotesStateResponse>> {
   const NoteStateNotifierFamily();
 
   /// See also [NoteStateNotifier].
-  NoteStateNotifierProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NoteStateNotifierProvider(
-      account,
-      noteId,
-    );
+  NoteStateNotifierProvider call(Account account, String noteId) {
+    return NoteStateNotifierProvider(account, noteId);
   }
 
   @override
   NoteStateNotifierProvider getProviderOverride(
     covariant NoteStateNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -86,28 +74,31 @@ class NoteStateNotifierFamily extends Family<AsyncValue<NotesStateResponse>> {
 }
 
 /// See also [NoteStateNotifier].
-class NoteStateNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    NoteStateNotifier, NotesStateResponse> {
+class NoteStateNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          NoteStateNotifier,
+          NotesStateResponse
+        > {
   /// See also [NoteStateNotifier].
-  NoteStateNotifierProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          () => NoteStateNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: noteStateNotifierProvider,
-          name: r'noteStateNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$noteStateNotifierHash,
-          dependencies: NoteStateNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              NoteStateNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NoteStateNotifierProvider(Account account, String noteId)
+    : this._internal(
+        () =>
+            NoteStateNotifier()
+              ..account = account
+              ..noteId = noteId,
+        from: noteStateNotifierProvider,
+        name: r'noteStateNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$noteStateNotifierHash,
+        dependencies: NoteStateNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NoteStateNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NoteStateNotifierProvider._internal(
     super._createNotifier, {
@@ -127,10 +118,7 @@ class NoteStateNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<NotesStateResponse> runNotifierBuild(
     covariant NoteStateNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      noteId,
-    );
+    return notifier.build(account, noteId);
   }
 
   @override
@@ -138,9 +126,10 @@ class NoteStateNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: NoteStateNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,7 +143,7 @@ class NoteStateNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<NoteStateNotifier, NotesStateResponse>
-      createElement() {
+  createElement() {
     return _NoteStateNotifierProviderElement(this);
   }
 
@@ -187,8 +176,12 @@ mixin NoteStateNotifierRef
 }
 
 class _NoteStateNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<NoteStateNotifier,
-        NotesStateResponse> with NoteStateNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          NoteStateNotifier,
+          NotesStateResponse
+        >
+    with NoteStateNotifierRef {
   _NoteStateNotifierProviderElement(super.provider);
 
   @override
@@ -196,5 +189,6 @@ class _NoteStateNotifierProviderElement
   @override
   String get noteId => (origin as NoteStateNotifierProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -13,9 +13,10 @@ String _$shareNotifierHash() => r'063a2f1da641a350d0a9ab6d0bfcc21b77c7608f';
 final shareNotifierProvider = NotifierProvider<ShareNotifier, bool>.internal(
   ShareNotifier.new,
   name: r'shareNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$shareNotifierHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$shareNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

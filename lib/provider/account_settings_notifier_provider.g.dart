@@ -34,9 +34,7 @@ abstract class _$AccountSettingsNotifier
     extends BuildlessNotifier<AccountSettings> {
   late final Account account;
 
-  AccountSettings build(
-    Account account,
-  );
+  AccountSettings build(Account account);
 }
 
 /// See also [AccountSettingsNotifier].
@@ -49,21 +47,15 @@ class AccountSettingsNotifierFamily extends Family<AccountSettings> {
   const AccountSettingsNotifierFamily();
 
   /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider call(
-    Account account,
-  ) {
-    return AccountSettingsNotifierProvider(
-      account,
-    );
+  AccountSettingsNotifierProvider call(Account account) {
+    return AccountSettingsNotifierProvider(account);
   }
 
   @override
   AccountSettingsNotifierProvider getProviderOverride(
     covariant AccountSettingsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class AccountSettingsNotifierFamily extends Family<AccountSettings> {
 class AccountSettingsNotifierProvider
     extends NotifierProviderImpl<AccountSettingsNotifier, AccountSettings> {
   /// See also [AccountSettingsNotifier].
-  AccountSettingsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => AccountSettingsNotifier()..account = account,
-          from: accountSettingsNotifierProvider,
-          name: r'accountSettingsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$accountSettingsNotifierHash,
-          dependencies: AccountSettingsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              AccountSettingsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  AccountSettingsNotifierProvider(Account account)
+    : this._internal(
+        () => AccountSettingsNotifier()..account = account,
+        from: accountSettingsNotifierProvider,
+        name: r'accountSettingsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$accountSettingsNotifierHash,
+        dependencies: AccountSettingsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            AccountSettingsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   AccountSettingsNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +105,8 @@ class AccountSettingsNotifierProvider
   final Account account;
 
   @override
-  AccountSettings runNotifierBuild(
-    covariant AccountSettingsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  AccountSettings runNotifierBuild(covariant AccountSettingsNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -140,7 +127,7 @@ class AccountSettingsNotifierProvider
 
   @override
   NotifierProviderElement<AccountSettingsNotifier, AccountSettings>
-      createElement() {
+  createElement() {
     return _AccountSettingsNotifierProviderElement(this);
   }
 
@@ -173,5 +160,6 @@ class _AccountSettingsNotifierProviderElement
   @override
   Account get account => (origin as AccountSettingsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

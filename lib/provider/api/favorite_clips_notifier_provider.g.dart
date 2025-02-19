@@ -34,9 +34,7 @@ abstract class _$FavoriteClipsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<List<Clip>> {
   late final Account account;
 
-  FutureOr<List<Clip>> build(
-    Account account,
-  );
+  FutureOr<List<Clip>> build(Account account);
 }
 
 /// See also [FavoriteClipsNotifier].
@@ -49,21 +47,15 @@ class FavoriteClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
   const FavoriteClipsNotifierFamily();
 
   /// See also [FavoriteClipsNotifier].
-  FavoriteClipsNotifierProvider call(
-    Account account,
-  ) {
-    return FavoriteClipsNotifierProvider(
-      account,
-    );
+  FavoriteClipsNotifierProvider call(Account account) {
+    return FavoriteClipsNotifierProvider(account);
   }
 
   @override
   FavoriteClipsNotifierProvider getProviderOverride(
     covariant FavoriteClipsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,24 +75,26 @@ class FavoriteClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
 
 /// See also [FavoriteClipsNotifier].
 class FavoriteClipsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FavoriteClipsNotifier,
-        List<Clip>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FavoriteClipsNotifier,
+          List<Clip>
+        > {
   /// See also [FavoriteClipsNotifier].
-  FavoriteClipsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => FavoriteClipsNotifier()..account = account,
-          from: favoriteClipsNotifierProvider,
-          name: r'favoriteClipsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$favoriteClipsNotifierHash,
-          dependencies: FavoriteClipsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FavoriteClipsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FavoriteClipsNotifierProvider(Account account)
+    : this._internal(
+        () => FavoriteClipsNotifier()..account = account,
+        from: favoriteClipsNotifierProvider,
+        name: r'favoriteClipsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$favoriteClipsNotifierHash,
+        dependencies: FavoriteClipsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FavoriteClipsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FavoriteClipsNotifierProvider._internal(
     super._createNotifier, {
@@ -118,9 +112,7 @@ class FavoriteClipsNotifierProvider
   FutureOr<List<Clip>> runNotifierBuild(
     covariant FavoriteClipsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,7 +133,7 @@ class FavoriteClipsNotifierProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<FavoriteClipsNotifier, List<Clip>>
-      createElement() {
+  createElement() {
     return _FavoriteClipsNotifierProviderElement(this);
   }
 
@@ -168,12 +160,17 @@ mixin FavoriteClipsNotifierRef
 }
 
 class _FavoriteClipsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FavoriteClipsNotifier,
-        List<Clip>> with FavoriteClipsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FavoriteClipsNotifier,
+          List<Clip>
+        >
+    with FavoriteClipsNotifierRef {
   _FavoriteClipsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as FavoriteClipsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

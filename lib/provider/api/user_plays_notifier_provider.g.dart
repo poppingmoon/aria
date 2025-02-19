@@ -34,10 +34,7 @@ abstract class _$UserPlaysNotifier
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Flash>> build(
-    Account account,
-    String userId,
-  );
+  FutureOr<PaginationState<Flash>> build(Account account, String userId);
 }
 
 /// See also [UserPlaysNotifier].
@@ -51,24 +48,15 @@ class UserPlaysNotifierFamily
   const UserPlaysNotifierFamily();
 
   /// See also [UserPlaysNotifier].
-  UserPlaysNotifierProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserPlaysNotifierProvider(
-      account,
-      userId,
-    );
+  UserPlaysNotifierProvider call(Account account, String userId) {
+    return UserPlaysNotifierProvider(account, userId);
   }
 
   @override
   UserPlaysNotifierProvider getProviderOverride(
     covariant UserPlaysNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +75,31 @@ class UserPlaysNotifierFamily
 }
 
 /// See also [UserPlaysNotifier].
-class UserPlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    UserPlaysNotifier, PaginationState<Flash>> {
+class UserPlaysNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UserPlaysNotifier,
+          PaginationState<Flash>
+        > {
   /// See also [UserPlaysNotifier].
-  UserPlaysNotifierProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          () => UserPlaysNotifier()
-            ..account = account
-            ..userId = userId,
-          from: userPlaysNotifierProvider,
-          name: r'userPlaysNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userPlaysNotifierHash,
-          dependencies: UserPlaysNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserPlaysNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserPlaysNotifierProvider(Account account, String userId)
+    : this._internal(
+        () =>
+            UserPlaysNotifier()
+              ..account = account
+              ..userId = userId,
+        from: userPlaysNotifierProvider,
+        name: r'userPlaysNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userPlaysNotifierHash,
+        dependencies: UserPlaysNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UserPlaysNotifierFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserPlaysNotifierProvider._internal(
     super._createNotifier, {
@@ -128,10 +119,7 @@ class UserPlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Flash>> runNotifierBuild(
     covariant UserPlaysNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      userId,
-    );
+    return notifier.build(account, userId);
   }
 
   @override
@@ -139,9 +127,10 @@ class UserPlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: UserPlaysNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,8 +143,11 @@ class UserPlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UserPlaysNotifier,
-      PaginationState<Flash>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UserPlaysNotifier,
+    PaginationState<Flash>
+  >
+  createElement() {
     return _UserPlaysNotifierProviderElement(this);
   }
 
@@ -188,8 +180,12 @@ mixin UserPlaysNotifierRef
 }
 
 class _UserPlaysNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UserPlaysNotifier,
-        PaginationState<Flash>> with UserPlaysNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UserPlaysNotifier,
+          PaginationState<Flash>
+        >
+    with UserPlaysNotifierRef {
   _UserPlaysNotifierProviderElement(super.provider);
 
   @override
@@ -197,5 +193,6 @@ class _UserPlaysNotifierProviderElement
   @override
   String get userId => (origin as UserPlaysNotifierProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

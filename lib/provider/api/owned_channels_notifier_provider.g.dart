@@ -31,13 +31,11 @@ class _SystemHash {
 }
 
 abstract class _$OwnedChannelsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<CommunityChannel>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<PaginationState<CommunityChannel>> {
   late final Account account;
 
-  FutureOr<PaginationState<CommunityChannel>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<CommunityChannel>> build(Account account);
 }
 
 /// See also [OwnedChannelsNotifier].
@@ -51,21 +49,15 @@ class OwnedChannelsNotifierFamily
   const OwnedChannelsNotifierFamily();
 
   /// See also [OwnedChannelsNotifier].
-  OwnedChannelsNotifierProvider call(
-    Account account,
-  ) {
-    return OwnedChannelsNotifierProvider(
-      account,
-    );
+  OwnedChannelsNotifierProvider call(Account account) {
+    return OwnedChannelsNotifierProvider(account);
   }
 
   @override
   OwnedChannelsNotifierProvider getProviderOverride(
     covariant OwnedChannelsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,24 +77,26 @@ class OwnedChannelsNotifierFamily
 
 /// See also [OwnedChannelsNotifier].
 class OwnedChannelsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<OwnedChannelsNotifier,
-        PaginationState<CommunityChannel>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          OwnedChannelsNotifier,
+          PaginationState<CommunityChannel>
+        > {
   /// See also [OwnedChannelsNotifier].
-  OwnedChannelsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => OwnedChannelsNotifier()..account = account,
-          from: ownedChannelsNotifierProvider,
-          name: r'ownedChannelsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$ownedChannelsNotifierHash,
-          dependencies: OwnedChannelsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              OwnedChannelsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  OwnedChannelsNotifierProvider(Account account)
+    : this._internal(
+        () => OwnedChannelsNotifier()..account = account,
+        from: ownedChannelsNotifierProvider,
+        name: r'ownedChannelsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$ownedChannelsNotifierHash,
+        dependencies: OwnedChannelsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            OwnedChannelsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   OwnedChannelsNotifierProvider._internal(
     super._createNotifier, {
@@ -120,9 +114,7 @@ class OwnedChannelsNotifierProvider
   FutureOr<PaginationState<CommunityChannel>> runNotifierBuild(
     covariant OwnedChannelsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -142,8 +134,11 @@ class OwnedChannelsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<OwnedChannelsNotifier,
-      PaginationState<CommunityChannel>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    OwnedChannelsNotifier,
+    PaginationState<CommunityChannel>
+  >
+  createElement() {
     return _OwnedChannelsNotifierProviderElement(this);
   }
 
@@ -170,12 +165,17 @@ mixin OwnedChannelsNotifierRef
 }
 
 class _OwnedChannelsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<OwnedChannelsNotifier,
-        PaginationState<CommunityChannel>> with OwnedChannelsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          OwnedChannelsNotifier,
+          PaginationState<CommunityChannel>
+        >
+    with OwnedChannelsNotifierRef {
   _OwnedChannelsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as OwnedChannelsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

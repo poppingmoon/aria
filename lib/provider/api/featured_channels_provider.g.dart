@@ -40,21 +40,15 @@ class FeaturedChannelsFamily
   const FeaturedChannelsFamily();
 
   /// See also [featuredChannels].
-  FeaturedChannelsProvider call(
-    Account account,
-  ) {
-    return FeaturedChannelsProvider(
-      account,
-    );
+  FeaturedChannelsProvider call(Account account) {
+    return FeaturedChannelsProvider(account);
   }
 
   @override
   FeaturedChannelsProvider getProviderOverride(
     covariant FeaturedChannelsProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,24 +70,20 @@ class FeaturedChannelsFamily
 class FeaturedChannelsProvider
     extends AutoDisposeFutureProvider<List<CommunityChannel>> {
   /// See also [featuredChannels].
-  FeaturedChannelsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => featuredChannels(
-            ref as FeaturedChannelsRef,
-            account,
-          ),
-          from: featuredChannelsProvider,
-          name: r'featuredChannelsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$featuredChannelsHash,
-          dependencies: FeaturedChannelsFamily._dependencies,
-          allTransitiveDependencies:
-              FeaturedChannelsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FeaturedChannelsProvider(Account account)
+    : this._internal(
+        (ref) => featuredChannels(ref as FeaturedChannelsRef, account),
+        from: featuredChannelsProvider,
+        name: r'featuredChannelsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$featuredChannelsHash,
+        dependencies: FeaturedChannelsFamily._dependencies,
+        allTransitiveDependencies:
+            FeaturedChannelsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FeaturedChannelsProvider._internal(
     super._createNotifier, {
@@ -110,7 +100,7 @@ class FeaturedChannelsProvider
   @override
   Override overrideWith(
     FutureOr<List<CommunityChannel>> Function(FeaturedChannelsRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -161,5 +151,6 @@ class _FeaturedChannelsProviderElement
   @override
   Account get account => (origin as FeaturedChannelsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

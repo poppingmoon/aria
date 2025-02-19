@@ -31,8 +31,10 @@ class _SystemHash {
 }
 
 abstract class _$AnnouncementsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<AnnouncementsResponse>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<
+          PaginationState<AnnouncementsResponse>
+        > {
   late final Account account;
   late final bool isActive;
 
@@ -53,24 +55,15 @@ class AnnouncementsNotifierFamily
   const AnnouncementsNotifierFamily();
 
   /// See also [AnnouncementsNotifier].
-  AnnouncementsNotifierProvider call(
-    Account account, {
-    bool isActive = true,
-  }) {
-    return AnnouncementsNotifierProvider(
-      account,
-      isActive: isActive,
-    );
+  AnnouncementsNotifierProvider call(Account account, {bool isActive = true}) {
+    return AnnouncementsNotifierProvider(account, isActive: isActive);
   }
 
   @override
   AnnouncementsNotifierProvider getProviderOverride(
     covariant AnnouncementsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      isActive: provider.isActive,
-    );
+    return call(provider.account, isActive: provider.isActive);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -90,28 +83,30 @@ class AnnouncementsNotifierFamily
 
 /// See also [AnnouncementsNotifier].
 class AnnouncementsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<AnnouncementsNotifier,
-        PaginationState<AnnouncementsResponse>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          AnnouncementsNotifier,
+          PaginationState<AnnouncementsResponse>
+        > {
   /// See also [AnnouncementsNotifier].
-  AnnouncementsNotifierProvider(
-    Account account, {
-    bool isActive = true,
-  }) : this._internal(
-          () => AnnouncementsNotifier()
-            ..account = account
-            ..isActive = isActive,
-          from: announcementsNotifierProvider,
-          name: r'announcementsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$announcementsNotifierHash,
-          dependencies: AnnouncementsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              AnnouncementsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          isActive: isActive,
-        );
+  AnnouncementsNotifierProvider(Account account, {bool isActive = true})
+    : this._internal(
+        () =>
+            AnnouncementsNotifier()
+              ..account = account
+              ..isActive = isActive,
+        from: announcementsNotifierProvider,
+        name: r'announcementsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$announcementsNotifierHash,
+        dependencies: AnnouncementsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            AnnouncementsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        isActive: isActive,
+      );
 
   AnnouncementsNotifierProvider._internal(
     super._createNotifier, {
@@ -131,10 +126,7 @@ class AnnouncementsNotifierProvider
   FutureOr<PaginationState<AnnouncementsResponse>> runNotifierBuild(
     covariant AnnouncementsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      isActive: isActive,
-    );
+    return notifier.build(account, isActive: isActive);
   }
 
   @override
@@ -142,9 +134,10 @@ class AnnouncementsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AnnouncementsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..isActive = isActive,
+        () =>
+            create()
+              ..account = account
+              ..isActive = isActive,
         from: from,
         name: null,
         dependencies: null,
@@ -157,8 +150,11 @@ class AnnouncementsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<AnnouncementsNotifier,
-      PaginationState<AnnouncementsResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    AnnouncementsNotifier,
+    PaginationState<AnnouncementsResponse>
+  >
+  createElement() {
     return _AnnouncementsNotifierProviderElement(this);
   }
 
@@ -181,8 +177,11 @@ class AnnouncementsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin AnnouncementsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<AnnouncementsResponse>> {
+mixin AnnouncementsNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<AnnouncementsResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -191,8 +190,12 @@ mixin AnnouncementsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
 }
 
 class _AnnouncementsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<AnnouncementsNotifier,
-        PaginationState<AnnouncementsResponse>> with AnnouncementsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          AnnouncementsNotifier,
+          PaginationState<AnnouncementsResponse>
+        >
+    with AnnouncementsNotifierRef {
   _AnnouncementsNotifierProviderElement(super.provider);
 
   @override
@@ -200,5 +203,6 @@ class _AnnouncementsNotifierProviderElement
   @override
   bool get isActive => (origin as AnnouncementsNotifierProvider).isActive;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -13,14 +13,15 @@ String _$timelineTabIndexNotifierHash() =>
 @ProviderFor(TimelineTabIndexNotifier)
 final timelineTabIndexNotifierProvider =
     AutoDisposeNotifierProvider<TimelineTabIndexNotifier, int>.internal(
-  TimelineTabIndexNotifier.new,
-  name: r'timelineTabIndexNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$timelineTabIndexNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      TimelineTabIndexNotifier.new,
+      name: r'timelineTabIndexNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$timelineTabIndexNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$TimelineTabIndexNotifier = AutoDisposeNotifier<int>;
 // ignore_for_file: type=lint

@@ -12,7 +12,8 @@ part of 'post_file.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$LocalPostFile {
@@ -33,16 +34,18 @@ mixin _$LocalPostFile {
 /// @nodoc
 abstract class $LocalPostFileCopyWith<$Res> {
   factory $LocalPostFileCopyWith(
-          LocalPostFile value, $Res Function(LocalPostFile) then) =
-      _$LocalPostFileCopyWithImpl<$Res, LocalPostFile>;
+    LocalPostFile value,
+    $Res Function(LocalPostFile) then,
+  ) = _$LocalPostFileCopyWithImpl<$Res, LocalPostFile>;
   @useResult
-  $Res call(
-      {File file,
-      String name,
-      bool isSensitive,
-      String? comment,
-      String? type,
-      bool uploading});
+  $Res call({
+    File file,
+    String name,
+    bool isSensitive,
+    String? comment,
+    String? type,
+    bool uploading,
+  });
 }
 
 /// @nodoc
@@ -67,32 +70,41 @@ class _$LocalPostFileCopyWithImpl<$Res, $Val extends LocalPostFile>
     Object? type = freezed,
     Object? uploading = null,
   }) {
-    return _then(_value.copyWith(
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as File,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSensitive: null == isSensitive
-          ? _value.isSensitive
-          : isSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      comment: freezed == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploading: null == uploading
-          ? _value.uploading
-          : uploading // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            file:
+                null == file
+                    ? _value.file
+                    : file // ignore: cast_nullable_to_non_nullable
+                        as File,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isSensitive:
+                null == isSensitive
+                    ? _value.isSensitive
+                    : isSensitive // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            comment:
+                freezed == comment
+                    ? _value.comment
+                    : comment // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            type:
+                freezed == type
+                    ? _value.type
+                    : type // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            uploading:
+                null == uploading
+                    ? _value.uploading
+                    : uploading // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -100,17 +112,19 @@ class _$LocalPostFileCopyWithImpl<$Res, $Val extends LocalPostFile>
 abstract class _$$LocalPostFileImplCopyWith<$Res>
     implements $LocalPostFileCopyWith<$Res> {
   factory _$$LocalPostFileImplCopyWith(
-          _$LocalPostFileImpl value, $Res Function(_$LocalPostFileImpl) then) =
-      __$$LocalPostFileImplCopyWithImpl<$Res>;
+    _$LocalPostFileImpl value,
+    $Res Function(_$LocalPostFileImpl) then,
+  ) = __$$LocalPostFileImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {File file,
-      String name,
-      bool isSensitive,
-      String? comment,
-      String? type,
-      bool uploading});
+  $Res call({
+    File file,
+    String name,
+    bool isSensitive,
+    String? comment,
+    String? type,
+    bool uploading,
+  });
 }
 
 /// @nodoc
@@ -118,8 +132,9 @@ class __$$LocalPostFileImplCopyWithImpl<$Res>
     extends _$LocalPostFileCopyWithImpl<$Res, _$LocalPostFileImpl>
     implements _$$LocalPostFileImplCopyWith<$Res> {
   __$$LocalPostFileImplCopyWithImpl(
-      _$LocalPostFileImpl _value, $Res Function(_$LocalPostFileImpl) _then)
-      : super(_value, _then);
+    _$LocalPostFileImpl _value,
+    $Res Function(_$LocalPostFileImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of LocalPostFile
   /// with the given fields replaced by the non-null parameter values.
@@ -133,45 +148,54 @@ class __$$LocalPostFileImplCopyWithImpl<$Res>
     Object? type = freezed,
     Object? uploading = null,
   }) {
-    return _then(_$LocalPostFileImpl(
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as File,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSensitive: null == isSensitive
-          ? _value.isSensitive
-          : isSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      comment: freezed == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploading: null == uploading
-          ? _value.uploading
-          : uploading // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$LocalPostFileImpl(
+        file:
+            null == file
+                ? _value.file
+                : file // ignore: cast_nullable_to_non_nullable
+                    as File,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isSensitive:
+            null == isSensitive
+                ? _value.isSensitive
+                : isSensitive // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        comment:
+            freezed == comment
+                ? _value.comment
+                : comment // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        type:
+            freezed == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        uploading:
+            null == uploading
+                ? _value.uploading
+                : uploading // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$LocalPostFileImpl implements _LocalPostFile {
-  const _$LocalPostFileImpl(
-      {required this.file,
-      required this.name,
-      this.isSensitive = false,
-      this.comment,
-      this.type,
-      this.uploading = false});
+  const _$LocalPostFileImpl({
+    required this.file,
+    required this.name,
+    this.isSensitive = false,
+    this.comment,
+    this.type,
+    this.uploading = false,
+  });
 
   @override
   final File file;
@@ -210,7 +234,14 @@ class _$LocalPostFileImpl implements _LocalPostFile {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, file, name, isSensitive, comment, type, uploading);
+    runtimeType,
+    file,
+    name,
+    isSensitive,
+    comment,
+    type,
+    uploading,
+  );
 
   /// Create a copy of LocalPostFile
   /// with the given fields replaced by the non-null parameter values.
@@ -222,13 +253,14 @@ class _$LocalPostFileImpl implements _LocalPostFile {
 }
 
 abstract class _LocalPostFile implements LocalPostFile {
-  const factory _LocalPostFile(
-      {required final File file,
-      required final String name,
-      final bool isSensitive,
-      final String? comment,
-      final String? type,
-      final bool uploading}) = _$LocalPostFileImpl;
+  const factory _LocalPostFile({
+    required final File file,
+    required final String name,
+    final bool isSensitive,
+    final String? comment,
+    final String? type,
+    final bool uploading,
+  }) = _$LocalPostFileImpl;
 
   @override
   File get file;
@@ -269,15 +301,17 @@ mixin _$DrivePostFile {
 /// @nodoc
 abstract class $DrivePostFileCopyWith<$Res> {
   factory $DrivePostFileCopyWith(
-          DrivePostFile value, $Res Function(DrivePostFile) then) =
-      _$DrivePostFileCopyWithImpl<$Res, DrivePostFile>;
+    DrivePostFile value,
+    $Res Function(DrivePostFile) then,
+  ) = _$DrivePostFileCopyWithImpl<$Res, DrivePostFile>;
   @useResult
-  $Res call(
-      {DriveFile file,
-      String name,
-      bool isSensitive,
-      String? comment,
-      String? type});
+  $Res call({
+    DriveFile file,
+    String name,
+    bool isSensitive,
+    String? comment,
+    String? type,
+  });
 
   $DriveFileCopyWith<$Res> get file;
 }
@@ -303,28 +337,36 @@ class _$DrivePostFileCopyWithImpl<$Res, $Val extends DrivePostFile>
     Object? comment = freezed,
     Object? type = freezed,
   }) {
-    return _then(_value.copyWith(
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as DriveFile,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSensitive: null == isSensitive
-          ? _value.isSensitive
-          : isSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      comment: freezed == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            file:
+                null == file
+                    ? _value.file
+                    : file // ignore: cast_nullable_to_non_nullable
+                        as DriveFile,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            isSensitive:
+                null == isSensitive
+                    ? _value.isSensitive
+                    : isSensitive // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            comment:
+                freezed == comment
+                    ? _value.comment
+                    : comment // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            type:
+                freezed == type
+                    ? _value.type
+                    : type // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of DrivePostFile
@@ -342,16 +384,18 @@ class _$DrivePostFileCopyWithImpl<$Res, $Val extends DrivePostFile>
 abstract class _$$DrivePostFileImplCopyWith<$Res>
     implements $DrivePostFileCopyWith<$Res> {
   factory _$$DrivePostFileImplCopyWith(
-          _$DrivePostFileImpl value, $Res Function(_$DrivePostFileImpl) then) =
-      __$$DrivePostFileImplCopyWithImpl<$Res>;
+    _$DrivePostFileImpl value,
+    $Res Function(_$DrivePostFileImpl) then,
+  ) = __$$DrivePostFileImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {DriveFile file,
-      String name,
-      bool isSensitive,
-      String? comment,
-      String? type});
+  $Res call({
+    DriveFile file,
+    String name,
+    bool isSensitive,
+    String? comment,
+    String? type,
+  });
 
   @override
   $DriveFileCopyWith<$Res> get file;
@@ -362,8 +406,9 @@ class __$$DrivePostFileImplCopyWithImpl<$Res>
     extends _$DrivePostFileCopyWithImpl<$Res, _$DrivePostFileImpl>
     implements _$$DrivePostFileImplCopyWith<$Res> {
   __$$DrivePostFileImplCopyWithImpl(
-      _$DrivePostFileImpl _value, $Res Function(_$DrivePostFileImpl) _then)
-      : super(_value, _then);
+    _$DrivePostFileImpl _value,
+    $Res Function(_$DrivePostFileImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DrivePostFile
   /// with the given fields replaced by the non-null parameter values.
@@ -376,40 +421,48 @@ class __$$DrivePostFileImplCopyWithImpl<$Res>
     Object? comment = freezed,
     Object? type = freezed,
   }) {
-    return _then(_$DrivePostFileImpl(
-      file: null == file
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as DriveFile,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      isSensitive: null == isSensitive
-          ? _value.isSensitive
-          : isSensitive // ignore: cast_nullable_to_non_nullable
-              as bool,
-      comment: freezed == comment
-          ? _value.comment
-          : comment // ignore: cast_nullable_to_non_nullable
-              as String?,
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+    return _then(
+      _$DrivePostFileImpl(
+        file:
+            null == file
+                ? _value.file
+                : file // ignore: cast_nullable_to_non_nullable
+                    as DriveFile,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        isSensitive:
+            null == isSensitive
+                ? _value.isSensitive
+                : isSensitive // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        comment:
+            freezed == comment
+                ? _value.comment
+                : comment // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        type:
+            freezed == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$DrivePostFileImpl implements _DrivePostFile {
-  const _$DrivePostFileImpl(
-      {required this.file,
-      required this.name,
-      this.isSensitive = false,
-      this.comment,
-      this.type});
+  const _$DrivePostFileImpl({
+    required this.file,
+    required this.name,
+    this.isSensitive = false,
+    this.comment,
+    this.type,
+  });
 
   @override
   final DriveFile file;
@@ -455,12 +508,13 @@ class _$DrivePostFileImpl implements _DrivePostFile {
 }
 
 abstract class _DrivePostFile implements DrivePostFile {
-  const factory _DrivePostFile(
-      {required final DriveFile file,
-      required final String name,
-      final bool isSensitive,
-      final String? comment,
-      final String? type}) = _$DrivePostFileImpl;
+  const factory _DrivePostFile({
+    required final DriveFile file,
+    required final String name,
+    final bool isSensitive,
+    final String? comment,
+    final String? type,
+  }) = _$DrivePostFileImpl;
 
   @override
   DriveFile get file;

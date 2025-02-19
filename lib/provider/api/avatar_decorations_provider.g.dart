@@ -40,21 +40,15 @@ class AvatarDecorationsFamily
   const AvatarDecorationsFamily();
 
   /// See also [avatarDecorations].
-  AvatarDecorationsProvider call(
-    Account account,
-  ) {
-    return AvatarDecorationsProvider(
-      account,
-    );
+  AvatarDecorationsProvider call(Account account) {
+    return AvatarDecorationsProvider(account);
   }
 
   @override
   AvatarDecorationsProvider getProviderOverride(
     covariant AvatarDecorationsProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,24 +70,20 @@ class AvatarDecorationsFamily
 class AvatarDecorationsProvider
     extends AutoDisposeFutureProvider<List<GetAvatarDecorationsResponse>> {
   /// See also [avatarDecorations].
-  AvatarDecorationsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => avatarDecorations(
-            ref as AvatarDecorationsRef,
-            account,
-          ),
-          from: avatarDecorationsProvider,
-          name: r'avatarDecorationsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$avatarDecorationsHash,
-          dependencies: AvatarDecorationsFamily._dependencies,
-          allTransitiveDependencies:
-              AvatarDecorationsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  AvatarDecorationsProvider(Account account)
+    : this._internal(
+        (ref) => avatarDecorations(ref as AvatarDecorationsRef, account),
+        from: avatarDecorationsProvider,
+        name: r'avatarDecorationsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$avatarDecorationsHash,
+        dependencies: AvatarDecorationsFamily._dependencies,
+        allTransitiveDependencies:
+            AvatarDecorationsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   AvatarDecorationsProvider._internal(
     super._createNotifier, {
@@ -110,8 +100,9 @@ class AvatarDecorationsProvider
   @override
   Override overrideWith(
     FutureOr<List<GetAvatarDecorationsResponse>> Function(
-            AvatarDecorationsRef provider)
-        create,
+      AvatarDecorationsRef provider,
+    )
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -129,7 +120,7 @@ class AvatarDecorationsProvider
 
   @override
   AutoDisposeFutureProviderElement<List<GetAvatarDecorationsResponse>>
-      createElement() {
+  createElement() {
     return _AvatarDecorationsProviderElement(this);
   }
 
@@ -163,5 +154,6 @@ class _AvatarDecorationsProviderElement
   @override
   Account get account => (origin as AvatarDecorationsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

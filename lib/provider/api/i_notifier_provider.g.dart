@@ -33,9 +33,7 @@ abstract class _$INotifier
     extends BuildlessAutoDisposeStreamNotifier<MeDetailed?> {
   late final Account account;
 
-  Stream<MeDetailed?> build(
-    Account account,
-  );
+  Stream<MeDetailed?> build(Account account);
 }
 
 /// See also [INotifier].
@@ -48,21 +46,13 @@ class INotifierFamily extends Family<AsyncValue<MeDetailed?>> {
   const INotifierFamily();
 
   /// See also [INotifier].
-  INotifierProvider call(
-    Account account,
-  ) {
-    return INotifierProvider(
-      account,
-    );
+  INotifierProvider call(Account account) {
+    return INotifierProvider(account);
   }
 
   @override
-  INotifierProvider getProviderOverride(
-    covariant INotifierProvider provider,
-  ) {
-    return call(
-      provider.account,
-    );
+  INotifierProvider getProviderOverride(covariant INotifierProvider provider) {
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,20 +74,19 @@ class INotifierFamily extends Family<AsyncValue<MeDetailed?>> {
 class INotifierProvider
     extends AutoDisposeStreamNotifierProviderImpl<INotifier, MeDetailed?> {
   /// See also [INotifier].
-  INotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => INotifier()..account = account,
-          from: iNotifierProvider,
-          name: r'iNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$iNotifierHash,
-          dependencies: INotifierFamily._dependencies,
-          allTransitiveDependencies: INotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  INotifierProvider(Account account)
+    : this._internal(
+        () => INotifier()..account = account,
+        from: iNotifierProvider,
+        name: r'iNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$iNotifierHash,
+        dependencies: INotifierFamily._dependencies,
+        allTransitiveDependencies: INotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   INotifierProvider._internal(
     super._createNotifier, {
@@ -112,12 +101,8 @@ class INotifierProvider
   final Account account;
 
   @override
-  Stream<MeDetailed?> runNotifierBuild(
-    covariant INotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  Stream<MeDetailed?> runNotifierBuild(covariant INotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -138,7 +123,7 @@ class INotifierProvider
 
   @override
   AutoDisposeStreamNotifierProviderElement<INotifier, MeDetailed?>
-      createElement() {
+  createElement() {
     return _INotifierProviderElement(this);
   }
 
@@ -171,5 +156,6 @@ class _INotifierProviderElement
   @override
   Account get account => (origin as INotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

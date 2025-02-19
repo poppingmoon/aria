@@ -40,21 +40,13 @@ class MuteFamily
   const MuteFamily();
 
   /// See also [mute].
-  MuteProvider call(
-    List<MuteWord> mutedWords,
-  ) {
-    return MuteProvider(
-      mutedWords,
-    );
+  MuteProvider call(List<MuteWord> mutedWords) {
+    return MuteProvider(mutedWords);
   }
 
   @override
-  MuteProvider getProviderOverride(
-    covariant MuteProvider provider,
-  ) {
-    return call(
-      provider.mutedWords,
-    );
+  MuteProvider getProviderOverride(covariant MuteProvider provider) {
+    return call(provider.mutedWords);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,21 +68,17 @@ class MuteFamily
 class MuteProvider
     extends Provider<(AhoCorasick, List<List<String>>, List<RegExp>)> {
   /// See also [mute].
-  MuteProvider(
-    List<MuteWord> mutedWords,
-  ) : this._internal(
-          (ref) => mute(
-            ref as MuteRef,
-            mutedWords,
-          ),
-          from: muteProvider,
-          name: r'muteProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product') ? null : _$muteHash,
-          dependencies: MuteFamily._dependencies,
-          allTransitiveDependencies: MuteFamily._allTransitiveDependencies,
-          mutedWords: mutedWords,
-        );
+  MuteProvider(List<MuteWord> mutedWords)
+    : this._internal(
+        (ref) => mute(ref as MuteRef, mutedWords),
+        from: muteProvider,
+        name: r'muteProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$muteHash,
+        dependencies: MuteFamily._dependencies,
+        allTransitiveDependencies: MuteFamily._allTransitiveDependencies,
+        mutedWords: mutedWords,
+      );
 
   MuteProvider._internal(
     super._createNotifier, {
@@ -107,7 +95,7 @@ class MuteProvider
   @override
   Override overrideWith(
     (AhoCorasick, List<List<String>>, List<RegExp>) Function(MuteRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -125,7 +113,7 @@ class MuteProvider
 
   @override
   ProviderElement<(AhoCorasick, List<List<String>>, List<RegExp>)>
-      createElement() {
+  createElement() {
     return _MuteProviderElement(this);
   }
 
@@ -158,5 +146,6 @@ class _MuteProviderElement
   @override
   List<MuteWord> get mutedWords => (origin as MuteProvider).mutedWords;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

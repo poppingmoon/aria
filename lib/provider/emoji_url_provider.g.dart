@@ -56,9 +56,7 @@ class EmojiUrlFamily extends Family<(String, String)> {
   }
 
   @override
-  EmojiUrlProvider getProviderOverride(
-    covariant EmojiUrlProvider provider,
-  ) {
+  EmojiUrlProvider getProviderOverride(covariant EmojiUrlProvider provider) {
     return call(
       provider.account,
       provider.emoji,
@@ -93,28 +91,28 @@ class EmojiUrlProvider extends AutoDisposeProvider<(String, String)> {
     String? host,
     bool useOriginalSize = false,
   }) : this._internal(
-          (ref) => emojiUrl(
-            ref as EmojiUrlRef,
-            account,
-            emoji,
-            url: url,
-            host: host,
-            useOriginalSize: useOriginalSize,
-          ),
-          from: emojiUrlProvider,
-          name: r'emojiUrlProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$emojiUrlHash,
-          dependencies: EmojiUrlFamily._dependencies,
-          allTransitiveDependencies: EmojiUrlFamily._allTransitiveDependencies,
-          account: account,
-          emoji: emoji,
-          url: url,
-          host: host,
-          useOriginalSize: useOriginalSize,
-        );
+         (ref) => emojiUrl(
+           ref as EmojiUrlRef,
+           account,
+           emoji,
+           url: url,
+           host: host,
+           useOriginalSize: useOriginalSize,
+         ),
+         from: emojiUrlProvider,
+         name: r'emojiUrlProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$emojiUrlHash,
+         dependencies: EmojiUrlFamily._dependencies,
+         allTransitiveDependencies: EmojiUrlFamily._allTransitiveDependencies,
+         account: account,
+         emoji: emoji,
+         url: url,
+         host: host,
+         useOriginalSize: useOriginalSize,
+       );
 
   EmojiUrlProvider._internal(
     super._createNotifier, {
@@ -206,7 +204,8 @@ mixin EmojiUrlRef on AutoDisposeProviderRef<(String, String)> {
 }
 
 class _EmojiUrlProviderElement
-    extends AutoDisposeProviderElement<(String, String)> with EmojiUrlRef {
+    extends AutoDisposeProviderElement<(String, String)>
+    with EmojiUrlRef {
   _EmojiUrlProviderElement(super.provider);
 
   @override
@@ -220,5 +219,6 @@ class _EmojiUrlProviderElement
   @override
   bool get useOriginalSize => (origin as EmojiUrlProvider).useOriginalSize;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -32,9 +32,7 @@ class _SystemHash {
 abstract class _$NotesNotifier extends BuildlessNotifier<Map<String, Note?>> {
   late final Account account;
 
-  Map<String, Note?> build(
-    Account account,
-  );
+  Map<String, Note?> build(Account account);
 }
 
 /// See also [NotesNotifier].
@@ -47,21 +45,15 @@ class NotesNotifierFamily extends Family<Map<String, Note?>> {
   const NotesNotifierFamily();
 
   /// See also [NotesNotifier].
-  NotesNotifierProvider call(
-    Account account,
-  ) {
-    return NotesNotifierProvider(
-      account,
-    );
+  NotesNotifierProvider call(Account account) {
+    return NotesNotifierProvider(account);
   }
 
   @override
   NotesNotifierProvider getProviderOverride(
     covariant NotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,21 +75,20 @@ class NotesNotifierFamily extends Family<Map<String, Note?>> {
 class NotesNotifierProvider
     extends NotifierProviderImpl<NotesNotifier, Map<String, Note?>> {
   /// See also [NotesNotifier].
-  NotesNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => NotesNotifier()..account = account,
-          from: notesNotifierProvider,
-          name: r'notesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$notesNotifierHash,
-          dependencies: NotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              NotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  NotesNotifierProvider(Account account)
+    : this._internal(
+        () => NotesNotifier()..account = account,
+        from: notesNotifierProvider,
+        name: r'notesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$notesNotifierHash,
+        dependencies: NotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   NotesNotifierProvider._internal(
     super._createNotifier, {
@@ -112,12 +103,8 @@ class NotesNotifierProvider
   final Account account;
 
   @override
-  Map<String, Note?> runNotifierBuild(
-    covariant NotesNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  Map<String, Note?> runNotifierBuild(covariant NotesNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -170,5 +157,6 @@ class _NotesNotifierProviderElement
   @override
   Account get account => (origin as NotesNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

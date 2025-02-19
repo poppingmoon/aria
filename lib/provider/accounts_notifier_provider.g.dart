@@ -12,14 +12,15 @@ String _$accountsNotifierHash() => r'b609dc71527a06d89d614cb802c4cc379d76fa4b';
 @ProviderFor(AccountsNotifier)
 final accountsNotifierProvider =
     NotifierProvider<AccountsNotifier, List<Account>>.internal(
-  AccountsNotifier.new,
-  name: r'accountsNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$accountsNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      AccountsNotifier.new,
+      name: r'accountsNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$accountsNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$AccountsNotifier = Notifier<List<Account>>;
 // ignore_for_file: type=lint

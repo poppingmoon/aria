@@ -39,21 +39,15 @@ class AhoCorasickFamily extends Family<AhoCorasick> {
   const AhoCorasickFamily();
 
   /// See also [ahoCorasick].
-  AhoCorasickProvider call(
-    List<String> words,
-  ) {
-    return AhoCorasickProvider(
-      words,
-    );
+  AhoCorasickProvider call(List<String> words) {
+    return AhoCorasickProvider(words);
   }
 
   @override
   AhoCorasickProvider getProviderOverride(
     covariant AhoCorasickProvider provider,
   ) {
-    return call(
-      provider.words,
-    );
+    return call(provider.words);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,19 @@ class AhoCorasickFamily extends Family<AhoCorasick> {
 /// See also [ahoCorasick].
 class AhoCorasickProvider extends Provider<AhoCorasick> {
   /// See also [ahoCorasick].
-  AhoCorasickProvider(
-    List<String> words,
-  ) : this._internal(
-          (ref) => ahoCorasick(
-            ref as AhoCorasickRef,
-            words,
-          ),
-          from: ahoCorasickProvider,
-          name: r'ahoCorasickProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$ahoCorasickHash,
-          dependencies: AhoCorasickFamily._dependencies,
-          allTransitiveDependencies:
-              AhoCorasickFamily._allTransitiveDependencies,
-          words: words,
-        );
+  AhoCorasickProvider(List<String> words)
+    : this._internal(
+        (ref) => ahoCorasick(ref as AhoCorasickRef, words),
+        from: ahoCorasickProvider,
+        name: r'ahoCorasickProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$ahoCorasickHash,
+        dependencies: AhoCorasickFamily._dependencies,
+        allTransitiveDependencies: AhoCorasickFamily._allTransitiveDependencies,
+        words: words,
+      );
 
   AhoCorasickProvider._internal(
     super._createNotifier, {
@@ -106,9 +95,7 @@ class AhoCorasickProvider extends Provider<AhoCorasick> {
   final List<String> words;
 
   @override
-  Override overrideWith(
-    AhoCorasick Function(AhoCorasickRef provider) create,
-  ) {
+  Override overrideWith(AhoCorasick Function(AhoCorasickRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: AhoCorasickProvider._internal(
@@ -156,5 +143,6 @@ class _AhoCorasickProviderElement extends ProviderElement<AhoCorasick>
   @override
   List<String> get words => (origin as AhoCorasickProvider).words;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -39,21 +39,15 @@ class CategorizedEmojisFamily extends Family<Map<String?, List<Emoji>>> {
   const CategorizedEmojisFamily();
 
   /// See also [categorizedEmojis].
-  CategorizedEmojisProvider call(
-    String host,
-  ) {
-    return CategorizedEmojisProvider(
-      host,
-    );
+  CategorizedEmojisProvider call(String host) {
+    return CategorizedEmojisProvider(host);
   }
 
   @override
   CategorizedEmojisProvider getProviderOverride(
     covariant CategorizedEmojisProvider provider,
   ) {
-    return call(
-      provider.host,
-    );
+    return call(provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class CategorizedEmojisFamily extends Family<Map<String?, List<Emoji>>> {
 /// See also [categorizedEmojis].
 class CategorizedEmojisProvider extends Provider<Map<String?, List<Emoji>>> {
   /// See also [categorizedEmojis].
-  CategorizedEmojisProvider(
-    String host,
-  ) : this._internal(
-          (ref) => categorizedEmojis(
-            ref as CategorizedEmojisRef,
-            host,
-          ),
-          from: categorizedEmojisProvider,
-          name: r'categorizedEmojisProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$categorizedEmojisHash,
-          dependencies: CategorizedEmojisFamily._dependencies,
-          allTransitiveDependencies:
-              CategorizedEmojisFamily._allTransitiveDependencies,
-          host: host,
-        );
+  CategorizedEmojisProvider(String host)
+    : this._internal(
+        (ref) => categorizedEmojis(ref as CategorizedEmojisRef, host),
+        from: categorizedEmojisProvider,
+        name: r'categorizedEmojisProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$categorizedEmojisHash,
+        dependencies: CategorizedEmojisFamily._dependencies,
+        allTransitiveDependencies:
+            CategorizedEmojisFamily._allTransitiveDependencies,
+        host: host,
+      );
 
   CategorizedEmojisProvider._internal(
     super._createNotifier, {
@@ -157,5 +147,6 @@ class _CategorizedEmojisProviderElement
   @override
   String get host => (origin as CategorizedEmojisProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

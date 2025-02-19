@@ -39,27 +39,13 @@ class SummalyFamily extends Family<AsyncValue<SummalyResult?>> {
   const SummalyFamily();
 
   /// See also [summaly].
-  SummalyProvider call(
-    String host,
-    String link, {
-    String? lang,
-  }) {
-    return SummalyProvider(
-      host,
-      link,
-      lang: lang,
-    );
+  SummalyProvider call(String host, String link, {String? lang}) {
+    return SummalyProvider(host, link, lang: lang);
   }
 
   @override
-  SummalyProvider getProviderOverride(
-    covariant SummalyProvider provider,
-  ) {
-    return call(
-      provider.host,
-      provider.link,
-      lang: provider.lang,
-    );
+  SummalyProvider getProviderOverride(covariant SummalyProvider provider) {
+    return call(provider.host, provider.link, lang: provider.lang);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -80,29 +66,21 @@ class SummalyFamily extends Family<AsyncValue<SummalyResult?>> {
 /// See also [summaly].
 class SummalyProvider extends FutureProvider<SummalyResult?> {
   /// See also [summaly].
-  SummalyProvider(
-    String host,
-    String link, {
-    String? lang,
-  }) : this._internal(
-          (ref) => summaly(
-            ref as SummalyRef,
-            host,
-            link,
-            lang: lang,
-          ),
-          from: summalyProvider,
-          name: r'summalyProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$summalyHash,
-          dependencies: SummalyFamily._dependencies,
-          allTransitiveDependencies: SummalyFamily._allTransitiveDependencies,
-          host: host,
-          link: link,
-          lang: lang,
-        );
+  SummalyProvider(String host, String link, {String? lang})
+    : this._internal(
+        (ref) => summaly(ref as SummalyRef, host, link, lang: lang),
+        from: summalyProvider,
+        name: r'summalyProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$summalyHash,
+        dependencies: SummalyFamily._dependencies,
+        allTransitiveDependencies: SummalyFamily._allTransitiveDependencies,
+        host: host,
+        link: link,
+        lang: lang,
+      );
 
   SummalyProvider._internal(
     super._createNotifier, {
@@ -188,5 +166,6 @@ class _SummalyProviderElement extends FutureProviderElement<SummalyResult?>
   @override
   String? get lang => (origin as SummalyProvider).lang;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

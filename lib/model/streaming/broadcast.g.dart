@@ -12,15 +12,14 @@ _$EmojiAddedImpl _$$EmojiAddedImplFromJson(Map<String, dynamic> json) =>
     );
 
 Map<String, dynamic> _$$EmojiAddedImplToJson(_$EmojiAddedImpl instance) =>
-    <String, dynamic>{
-      'emoji': instance.emoji.toJson(),
-    };
+    <String, dynamic>{'emoji': instance.emoji.toJson()};
 
 _$EmojiUpdatedImpl _$$EmojiUpdatedImplFromJson(Map<String, dynamic> json) =>
     _$EmojiUpdatedImpl(
-      emojis: (json['emojis'] as List<dynamic>)
-          .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      emojis:
+          (json['emojis'] as List<dynamic>)
+              .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
+              .toList(),
     );
 
 Map<String, dynamic> _$$EmojiUpdatedImplToJson(_$EmojiUpdatedImpl instance) =>
@@ -30,9 +29,10 @@ Map<String, dynamic> _$$EmojiUpdatedImplToJson(_$EmojiUpdatedImpl instance) =>
 
 _$EmojiDeletedImpl _$$EmojiDeletedImplFromJson(Map<String, dynamic> json) =>
     _$EmojiDeletedImpl(
-      emojis: (json['emojis'] as List<dynamic>)
-          .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      emojis:
+          (json['emojis'] as List<dynamic>)
+              .map((e) => Emoji.fromJson(e as Map<String, dynamic>))
+              .toList(),
     );
 
 Map<String, dynamic> _$$EmojiDeletedImplToJson(_$EmojiDeletedImpl instance) =>
@@ -41,8 +41,9 @@ Map<String, dynamic> _$$EmojiDeletedImplToJson(_$EmojiDeletedImpl instance) =>
     };
 
 _$AnnouncementCreatedImpl _$$AnnouncementCreatedImplFromJson(
-        Map<String, dynamic> json) =>
-    _$AnnouncementCreatedImpl(
-      announcement: AnnouncementsResponse.fromJson(
-          json['announcement'] as Map<String, dynamic>),
-    );
+  Map<String, dynamic> json,
+) => _$AnnouncementCreatedImpl(
+  announcement: AnnouncementsResponse.fromJson(
+    json['announcement'] as Map<String, dynamic>,
+  ),
+);

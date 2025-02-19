@@ -34,10 +34,7 @@ abstract class _$ClipNotesNotifier
   late final Account account;
   late final String clipId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String clipId,
-  );
+  FutureOr<PaginationState<Note>> build(Account account, String clipId);
 }
 
 /// See also [ClipNotesNotifier].
@@ -51,24 +48,15 @@ class ClipNotesNotifierFamily
   const ClipNotesNotifierFamily();
 
   /// See also [ClipNotesNotifier].
-  ClipNotesNotifierProvider call(
-    Account account,
-    String clipId,
-  ) {
-    return ClipNotesNotifierProvider(
-      account,
-      clipId,
-    );
+  ClipNotesNotifierProvider call(Account account, String clipId) {
+    return ClipNotesNotifierProvider(account, clipId);
   }
 
   @override
   ClipNotesNotifierProvider getProviderOverride(
     covariant ClipNotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.clipId,
-    );
+    return call(provider.account, provider.clipId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +75,31 @@ class ClipNotesNotifierFamily
 }
 
 /// See also [ClipNotesNotifier].
-class ClipNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    ClipNotesNotifier, PaginationState<Note>> {
+class ClipNotesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ClipNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [ClipNotesNotifier].
-  ClipNotesNotifierProvider(
-    Account account,
-    String clipId,
-  ) : this._internal(
-          () => ClipNotesNotifier()
-            ..account = account
-            ..clipId = clipId,
-          from: clipNotesNotifierProvider,
-          name: r'clipNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$clipNotesNotifierHash,
-          dependencies: ClipNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ClipNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          clipId: clipId,
-        );
+  ClipNotesNotifierProvider(Account account, String clipId)
+    : this._internal(
+        () =>
+            ClipNotesNotifier()
+              ..account = account
+              ..clipId = clipId,
+        from: clipNotesNotifierProvider,
+        name: r'clipNotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$clipNotesNotifierHash,
+        dependencies: ClipNotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ClipNotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        clipId: clipId,
+      );
 
   ClipNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -128,10 +119,7 @@ class ClipNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant ClipNotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      clipId,
-    );
+    return notifier.build(account, clipId);
   }
 
   @override
@@ -139,9 +127,10 @@ class ClipNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: ClipNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..clipId = clipId,
+        () =>
+            create()
+              ..account = account
+              ..clipId = clipId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,8 +143,11 @@ class ClipNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ClipNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    ClipNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _ClipNotesNotifierProviderElement(this);
   }
 
@@ -188,8 +180,12 @@ mixin ClipNotesNotifierRef
 }
 
 class _ClipNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ClipNotesNotifier,
-        PaginationState<Note>> with ClipNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ClipNotesNotifier,
+          PaginationState<Note>
+        >
+    with ClipNotesNotifierRef {
   _ClipNotesNotifierProviderElement(super.provider);
 
   @override
@@ -197,5 +193,6 @@ class _ClipNotesNotifierProviderElement
   @override
   String get clipId => (origin as ClipNotesNotifierProvider).clipId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

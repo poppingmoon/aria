@@ -33,9 +33,7 @@ abstract class _$MetaNotifier
     extends BuildlessAutoDisposeStreamNotifier<MetaResponse> {
   late final String host;
 
-  Stream<MetaResponse> build(
-    String host,
-  );
+  Stream<MetaResponse> build(String host);
 }
 
 /// See also [MetaNotifier].
@@ -48,21 +46,15 @@ class MetaNotifierFamily extends Family<AsyncValue<MetaResponse>> {
   const MetaNotifierFamily();
 
   /// See also [MetaNotifier].
-  MetaNotifierProvider call(
-    String host,
-  ) {
-    return MetaNotifierProvider(
-      host,
-    );
+  MetaNotifierProvider call(String host) {
+    return MetaNotifierProvider(host);
   }
 
   @override
   MetaNotifierProvider getProviderOverride(
     covariant MetaNotifierProvider provider,
   ) {
-    return call(
-      provider.host,
-    );
+    return call(provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,21 +76,20 @@ class MetaNotifierFamily extends Family<AsyncValue<MetaResponse>> {
 class MetaNotifierProvider
     extends AutoDisposeStreamNotifierProviderImpl<MetaNotifier, MetaResponse> {
   /// See also [MetaNotifier].
-  MetaNotifierProvider(
-    String host,
-  ) : this._internal(
-          () => MetaNotifier()..host = host,
-          from: metaNotifierProvider,
-          name: r'metaNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$metaNotifierHash,
-          dependencies: MetaNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MetaNotifierFamily._allTransitiveDependencies,
-          host: host,
-        );
+  MetaNotifierProvider(String host)
+    : this._internal(
+        () => MetaNotifier()..host = host,
+        from: metaNotifierProvider,
+        name: r'metaNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$metaNotifierHash,
+        dependencies: MetaNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MetaNotifierFamily._allTransitiveDependencies,
+        host: host,
+      );
 
   MetaNotifierProvider._internal(
     super._createNotifier, {
@@ -113,12 +104,8 @@ class MetaNotifierProvider
   final String host;
 
   @override
-  Stream<MetaResponse> runNotifierBuild(
-    covariant MetaNotifier notifier,
-  ) {
-    return notifier.build(
-      host,
-    );
+  Stream<MetaResponse> runNotifierBuild(covariant MetaNotifier notifier) {
+    return notifier.build(host);
   }
 
   @override
@@ -139,7 +126,7 @@ class MetaNotifierProvider
 
   @override
   AutoDisposeStreamNotifierProviderElement<MetaNotifier, MetaResponse>
-      createElement() {
+  createElement() {
     return _MetaNotifierProviderElement(this);
   }
 
@@ -172,5 +159,6 @@ class _MetaNotifierProviderElement
   @override
   String get host => (origin as MetaNotifierProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

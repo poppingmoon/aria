@@ -39,24 +39,13 @@ class AntennaFamily extends Family<AsyncValue<Antenna>> {
   const AntennaFamily();
 
   /// See also [antenna].
-  AntennaProvider call(
-    Account account,
-    String antennaId,
-  ) {
-    return AntennaProvider(
-      account,
-      antennaId,
-    );
+  AntennaProvider call(Account account, String antennaId) {
+    return AntennaProvider(account, antennaId);
   }
 
   @override
-  AntennaProvider getProviderOverride(
-    covariant AntennaProvider provider,
-  ) {
-    return call(
-      provider.account,
-      provider.antennaId,
-    );
+  AntennaProvider getProviderOverride(covariant AntennaProvider provider) {
+    return call(provider.account, provider.antennaId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,26 +66,20 @@ class AntennaFamily extends Family<AsyncValue<Antenna>> {
 /// See also [antenna].
 class AntennaProvider extends AutoDisposeFutureProvider<Antenna> {
   /// See also [antenna].
-  AntennaProvider(
-    Account account,
-    String antennaId,
-  ) : this._internal(
-          (ref) => antenna(
-            ref as AntennaRef,
-            account,
-            antennaId,
-          ),
-          from: antennaProvider,
-          name: r'antennaProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$antennaHash,
-          dependencies: AntennaFamily._dependencies,
-          allTransitiveDependencies: AntennaFamily._allTransitiveDependencies,
-          account: account,
-          antennaId: antennaId,
-        );
+  AntennaProvider(Account account, String antennaId)
+    : this._internal(
+        (ref) => antenna(ref as AntennaRef, account, antennaId),
+        from: antennaProvider,
+        name: r'antennaProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$antennaHash,
+        dependencies: AntennaFamily._dependencies,
+        allTransitiveDependencies: AntennaFamily._allTransitiveDependencies,
+        account: account,
+        antennaId: antennaId,
+      );
 
   AntennaProvider._internal(
     super._createNotifier, {
@@ -172,5 +155,6 @@ class _AntennaProviderElement extends AutoDisposeFutureProviderElement<Antenna>
   @override
   String get antennaId => (origin as AntennaProvider).antennaId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

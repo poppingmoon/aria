@@ -12,9 +12,10 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
       tabType: $enumDecode(_$TabTypeEnumMap, json['tabType']),
       name: json['name'] as String?,
       account: Account.fromJson(json['account'] as Map<String, dynamic>),
-      icon: json['icon'] == null
-          ? null
-          : TabIcon.fromJson(json['icon'] as Map<String, dynamic>),
+      icon:
+          json['icon'] == null
+              ? null
+              : TabIcon.fromJson(json['icon'] as Map<String, dynamic>),
       disableStreaming: json['disableStreaming'] as bool? ?? false,
       disableSubscribing: json['disableSubscribing'] as bool? ?? false,
       withReplies: json['withReplies'] as bool? ?? false,
@@ -33,31 +34,31 @@ _$TabSettingsImpl _$$TabSettingsImplFromJson(Map<String, dynamic> json) =>
       parameters: json['parameters'] as Map<String, dynamic>?,
     );
 
-Map<String, dynamic> _$$TabSettingsImplToJson(_$TabSettingsImpl instance) =>
-    <String, dynamic>{
-      if (instance.id case final value?) 'id': value,
-      'tabType': _$TabTypeEnumMap[instance.tabType]!,
-      if (instance.name case final value?) 'name': value,
-      'account': instance.account.toJson(),
-      if (instance.icon?.toJson() case final value?) 'icon': value,
-      'disableStreaming': instance.disableStreaming,
-      'disableSubscribing': instance.disableSubscribing,
-      'withReplies': instance.withReplies,
-      'withRenotes': instance.withRenotes,
-      'withSelfRenotes': instance.withSelfRenotes,
-      'withFiles': instance.withFiles,
-      'withSensitive': instance.withSensitive,
-      'keepPosition': instance.keepPosition,
-      if (instance.roleId case final value?) 'roleId': value,
-      if (instance.channelId case final value?) 'channelId': value,
-      if (instance.listId case final value?) 'listId': value,
-      if (instance.antennaId case final value?) 'antennaId': value,
-      if (instance.userId case final value?) 'userId': value,
-      if (instance.endpoint case final value?) 'endpoint': value,
-      if (instance.streamingChannel case final value?)
-        'streamingChannel': value,
-      if (instance.parameters case final value?) 'parameters': value,
-    };
+Map<String, dynamic> _$$TabSettingsImplToJson(
+  _$TabSettingsImpl instance,
+) => <String, dynamic>{
+  if (instance.id case final value?) 'id': value,
+  'tabType': _$TabTypeEnumMap[instance.tabType]!,
+  if (instance.name case final value?) 'name': value,
+  'account': instance.account.toJson(),
+  if (instance.icon?.toJson() case final value?) 'icon': value,
+  'disableStreaming': instance.disableStreaming,
+  'disableSubscribing': instance.disableSubscribing,
+  'withReplies': instance.withReplies,
+  'withRenotes': instance.withRenotes,
+  'withSelfRenotes': instance.withSelfRenotes,
+  'withFiles': instance.withFiles,
+  'withSensitive': instance.withSensitive,
+  'keepPosition': instance.keepPosition,
+  if (instance.roleId case final value?) 'roleId': value,
+  if (instance.channelId case final value?) 'channelId': value,
+  if (instance.listId case final value?) 'listId': value,
+  if (instance.antennaId case final value?) 'antennaId': value,
+  if (instance.userId case final value?) 'userId': value,
+  if (instance.endpoint case final value?) 'endpoint': value,
+  if (instance.streamingChannel case final value?) 'streamingChannel': value,
+  if (instance.parameters case final value?) 'parameters': value,
+};
 
 const _$TabTypeEnumMap = {
   TabType.homeTimeline: 'homeTimeline',

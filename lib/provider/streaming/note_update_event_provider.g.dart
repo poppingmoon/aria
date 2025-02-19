@@ -39,24 +39,15 @@ class NoteUpdateEventFamily extends Family<AsyncValue<NoteUpdateEvent>> {
   const NoteUpdateEventFamily();
 
   /// See also [noteUpdateEvent].
-  NoteUpdateEventProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NoteUpdateEventProvider(
-      account,
-      noteId,
-    );
+  NoteUpdateEventProvider call(Account account, String noteId) {
+    return NoteUpdateEventProvider(account, noteId);
   }
 
   @override
   NoteUpdateEventProvider getProviderOverride(
     covariant NoteUpdateEventProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -78,27 +69,21 @@ class NoteUpdateEventFamily extends Family<AsyncValue<NoteUpdateEvent>> {
 class NoteUpdateEventProvider
     extends AutoDisposeStreamProvider<NoteUpdateEvent> {
   /// See also [noteUpdateEvent].
-  NoteUpdateEventProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          (ref) => noteUpdateEvent(
-            ref as NoteUpdateEventRef,
-            account,
-            noteId,
-          ),
-          from: noteUpdateEventProvider,
-          name: r'noteUpdateEventProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$noteUpdateEventHash,
-          dependencies: NoteUpdateEventFamily._dependencies,
-          allTransitiveDependencies:
-              NoteUpdateEventFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NoteUpdateEventProvider(Account account, String noteId)
+    : this._internal(
+        (ref) => noteUpdateEvent(ref as NoteUpdateEventRef, account, noteId),
+        from: noteUpdateEventProvider,
+        name: r'noteUpdateEventProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$noteUpdateEventHash,
+        dependencies: NoteUpdateEventFamily._dependencies,
+        allTransitiveDependencies:
+            NoteUpdateEventFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NoteUpdateEventProvider._internal(
     super._createNotifier, {
@@ -175,5 +160,6 @@ class _NoteUpdateEventProviderElement
   @override
   String get noteId => (origin as NoteUpdateEventProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -201,7 +201,6 @@ class INotifier extends _$INotifier {
 
   Future<void> setFfVisibility(FFVisibility ffVisibility) async {
     final i = await _misskey.i.update(
-      // ignore: deprecated_member_use
       IUpdateRequest(ffVisibility: ffVisibility),
     );
     state = AsyncValue.data(i);

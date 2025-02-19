@@ -33,9 +33,7 @@ abstract class _$PlaysNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Flash>> {
   late final Account account;
 
-  FutureOr<PaginationState<Flash>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<Flash>> build(Account account);
 }
 
 /// See also [PlaysNotifier].
@@ -48,21 +46,15 @@ class PlaysNotifierFamily extends Family<AsyncValue<PaginationState<Flash>>> {
   const PlaysNotifierFamily();
 
   /// See also [PlaysNotifier].
-  PlaysNotifierProvider call(
-    Account account,
-  ) {
-    return PlaysNotifierProvider(
-      account,
-    );
+  PlaysNotifierProvider call(Account account) {
+    return PlaysNotifierProvider(account);
   }
 
   @override
   PlaysNotifierProvider getProviderOverride(
     covariant PlaysNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -81,24 +73,27 @@ class PlaysNotifierFamily extends Family<AsyncValue<PaginationState<Flash>>> {
 }
 
 /// See also [PlaysNotifier].
-class PlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    PlaysNotifier, PaginationState<Flash>> {
+class PlaysNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          PlaysNotifier,
+          PaginationState<Flash>
+        > {
   /// See also [PlaysNotifier].
-  PlaysNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => PlaysNotifier()..account = account,
-          from: playsNotifierProvider,
-          name: r'playsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$playsNotifierHash,
-          dependencies: PlaysNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PlaysNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  PlaysNotifierProvider(Account account)
+    : this._internal(
+        () => PlaysNotifier()..account = account,
+        from: playsNotifierProvider,
+        name: r'playsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$playsNotifierHash,
+        dependencies: PlaysNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PlaysNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   PlaysNotifierProvider._internal(
     super._createNotifier, {
@@ -116,9 +111,7 @@ class PlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Flash>> runNotifierBuild(
     covariant PlaysNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,7 +132,7 @@ class PlaysNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<PlaysNotifier, PaginationState<Flash>>
-      createElement() {
+  createElement() {
     return _PlaysNotifierProviderElement(this);
   }
 
@@ -166,12 +159,17 @@ mixin PlaysNotifierRef
 }
 
 class _PlaysNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<PlaysNotifier,
-        PaginationState<Flash>> with PlaysNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          PlaysNotifier,
+          PaginationState<Flash>
+        >
+    with PlaysNotifierRef {
   _PlaysNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as PlaysNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

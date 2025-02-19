@@ -39,22 +39,12 @@ class ListFamily extends Family<AsyncValue<UsersListsShowResponse>> {
   const ListFamily();
 
   /// See also [list].
-  ListProvider call(
-    Account account,
-    String listId, {
-    bool? forPublic,
-  }) {
-    return ListProvider(
-      account,
-      listId,
-      forPublic: forPublic,
-    );
+  ListProvider call(Account account, String listId, {bool? forPublic}) {
+    return ListProvider(account, listId, forPublic: forPublic);
   }
 
   @override
-  ListProvider getProviderOverride(
-    covariant ListProvider provider,
-  ) {
+  ListProvider getProviderOverride(covariant ListProvider provider) {
     return call(
       provider.account,
       provider.listId,
@@ -80,27 +70,19 @@ class ListFamily extends Family<AsyncValue<UsersListsShowResponse>> {
 /// See also [list].
 class ListProvider extends AutoDisposeFutureProvider<UsersListsShowResponse> {
   /// See also [list].
-  ListProvider(
-    Account account,
-    String listId, {
-    bool? forPublic,
-  }) : this._internal(
-          (ref) => list(
-            ref as ListRef,
-            account,
-            listId,
-            forPublic: forPublic,
-          ),
-          from: listProvider,
-          name: r'listProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product') ? null : _$listHash,
-          dependencies: ListFamily._dependencies,
-          allTransitiveDependencies: ListFamily._allTransitiveDependencies,
-          account: account,
-          listId: listId,
-          forPublic: forPublic,
-        );
+  ListProvider(Account account, String listId, {bool? forPublic})
+    : this._internal(
+        (ref) => list(ref as ListRef, account, listId, forPublic: forPublic),
+        from: listProvider,
+        name: r'listProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$listHash,
+        dependencies: ListFamily._dependencies,
+        allTransitiveDependencies: ListFamily._allTransitiveDependencies,
+        account: account,
+        listId: listId,
+        forPublic: forPublic,
+      );
 
   ListProvider._internal(
     super._createNotifier, {
@@ -187,5 +169,6 @@ class _ListProviderElement
   @override
   bool? get forPublic => (origin as ListProvider).forPublic;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

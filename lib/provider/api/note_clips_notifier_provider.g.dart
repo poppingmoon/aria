@@ -34,10 +34,7 @@ abstract class _$NoteClipsNotifier
   late final Account account;
   late final String noteId;
 
-  FutureOr<List<Clip>> build(
-    Account account,
-    String noteId,
-  );
+  FutureOr<List<Clip>> build(Account account, String noteId);
 }
 
 /// See also [NoteClipsNotifier].
@@ -50,24 +47,15 @@ class NoteClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
   const NoteClipsNotifierFamily();
 
   /// See also [NoteClipsNotifier].
-  NoteClipsNotifierProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NoteClipsNotifierProvider(
-      account,
-      noteId,
-    );
+  NoteClipsNotifierProvider call(Account account, String noteId) {
+    return NoteClipsNotifierProvider(account, noteId);
   }
 
   @override
   NoteClipsNotifierProvider getProviderOverride(
     covariant NoteClipsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -86,28 +74,28 @@ class NoteClipsNotifierFamily extends Family<AsyncValue<List<Clip>>> {
 }
 
 /// See also [NoteClipsNotifier].
-class NoteClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    NoteClipsNotifier, List<Clip>> {
+class NoteClipsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<NoteClipsNotifier, List<Clip>> {
   /// See also [NoteClipsNotifier].
-  NoteClipsNotifierProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          () => NoteClipsNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: noteClipsNotifierProvider,
-          name: r'noteClipsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$noteClipsNotifierHash,
-          dependencies: NoteClipsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              NoteClipsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NoteClipsNotifierProvider(Account account, String noteId)
+    : this._internal(
+        () =>
+            NoteClipsNotifier()
+              ..account = account
+              ..noteId = noteId,
+        from: noteClipsNotifierProvider,
+        name: r'noteClipsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$noteClipsNotifierHash,
+        dependencies: NoteClipsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NoteClipsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NoteClipsNotifierProvider._internal(
     super._createNotifier, {
@@ -124,13 +112,8 @@ class NoteClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   final String noteId;
 
   @override
-  FutureOr<List<Clip>> runNotifierBuild(
-    covariant NoteClipsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      noteId,
-    );
+  FutureOr<List<Clip>> runNotifierBuild(covariant NoteClipsNotifier notifier) {
+    return notifier.build(account, noteId);
   }
 
   @override
@@ -138,9 +121,10 @@ class NoteClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: NoteClipsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,7 +138,7 @@ class NoteClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<NoteClipsNotifier, List<Clip>>
-      createElement() {
+  createElement() {
     return _NoteClipsNotifierProviderElement(this);
   }
 
@@ -186,8 +170,9 @@ mixin NoteClipsNotifierRef on AutoDisposeAsyncNotifierProviderRef<List<Clip>> {
 }
 
 class _NoteClipsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<NoteClipsNotifier,
-        List<Clip>> with NoteClipsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<NoteClipsNotifier, List<Clip>>
+    with NoteClipsNotifierRef {
   _NoteClipsNotifierProviderElement(super.provider);
 
   @override
@@ -195,5 +180,6 @@ class _NoteClipsNotifierProviderElement
   @override
   String get noteId => (origin as NoteClipsNotifierProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

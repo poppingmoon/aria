@@ -34,10 +34,7 @@ abstract class _$RenotesNotifier
   late final Account account;
   late final String noteId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String noteId,
-  );
+  FutureOr<PaginationState<Note>> build(Account account, String noteId);
 }
 
 /// See also [RenotesNotifier].
@@ -50,24 +47,15 @@ class RenotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
   const RenotesNotifierFamily();
 
   /// See also [RenotesNotifier].
-  RenotesNotifierProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return RenotesNotifierProvider(
-      account,
-      noteId,
-    );
+  RenotesNotifierProvider call(Account account, String noteId) {
+    return RenotesNotifierProvider(account, noteId);
   }
 
   @override
   RenotesNotifierProvider getProviderOverride(
     covariant RenotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -86,28 +74,31 @@ class RenotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
 }
 
 /// See also [RenotesNotifier].
-class RenotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    RenotesNotifier, PaginationState<Note>> {
+class RenotesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          RenotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [RenotesNotifier].
-  RenotesNotifierProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          () => RenotesNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: renotesNotifierProvider,
-          name: r'renotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$renotesNotifierHash,
-          dependencies: RenotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              RenotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  RenotesNotifierProvider(Account account, String noteId)
+    : this._internal(
+        () =>
+            RenotesNotifier()
+              ..account = account
+              ..noteId = noteId,
+        from: renotesNotifierProvider,
+        name: r'renotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$renotesNotifierHash,
+        dependencies: RenotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            RenotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   RenotesNotifierProvider._internal(
     super._createNotifier, {
@@ -127,10 +118,7 @@ class RenotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant RenotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      noteId,
-    );
+    return notifier.build(account, noteId);
   }
 
   @override
@@ -138,9 +126,10 @@ class RenotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: RenotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
@@ -153,8 +142,11 @@ class RenotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<RenotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    RenotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _RenotesNotifierProviderElement(this);
   }
 
@@ -187,8 +179,12 @@ mixin RenotesNotifierRef
 }
 
 class _RenotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<RenotesNotifier,
-        PaginationState<Note>> with RenotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          RenotesNotifier,
+          PaginationState<Note>
+        >
+    with RenotesNotifierRef {
   _RenotesNotifierProviderElement(super.provider);
 
   @override
@@ -196,5 +192,6 @@ class _RenotesNotifierProviderElement
   @override
   String get noteId => (origin as RenotesNotifierProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

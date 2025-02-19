@@ -39,24 +39,13 @@ class NoteFamily extends Family<Note?> {
   const NoteFamily();
 
   /// See also [note].
-  NoteProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NoteProvider(
-      account,
-      noteId,
-    );
+  NoteProvider call(Account account, String noteId) {
+    return NoteProvider(account, noteId);
   }
 
   @override
-  NoteProvider getProviderOverride(
-    covariant NoteProvider provider,
-  ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+  NoteProvider getProviderOverride(covariant NoteProvider provider) {
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,24 +66,18 @@ class NoteFamily extends Family<Note?> {
 /// See also [note].
 class NoteProvider extends Provider<Note?> {
   /// See also [note].
-  NoteProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          (ref) => note(
-            ref as NoteRef,
-            account,
-            noteId,
-          ),
-          from: noteProvider,
-          name: r'noteProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product') ? null : _$noteHash,
-          dependencies: NoteFamily._dependencies,
-          allTransitiveDependencies: NoteFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NoteProvider(Account account, String noteId)
+    : this._internal(
+        (ref) => note(ref as NoteRef, account, noteId),
+        from: noteProvider,
+        name: r'noteProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$noteHash,
+        dependencies: NoteFamily._dependencies,
+        allTransitiveDependencies: NoteFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NoteProvider._internal(
     super._createNotifier, {
@@ -111,9 +94,7 @@ class NoteProvider extends Provider<Note?> {
   final String noteId;
 
   @override
-  Override overrideWith(
-    Note? Function(NoteRef provider) create,
-  ) {
+  Override overrideWith(Note? Function(NoteRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: NoteProvider._internal(
@@ -169,5 +150,6 @@ class _NoteProviderElement extends ProviderElement<Note?> with NoteRef {
   @override
   String get noteId => (origin as NoteProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

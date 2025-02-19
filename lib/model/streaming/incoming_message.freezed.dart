@@ -12,7 +12,8 @@ part of 'incoming_message.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 IncomingMessage _$IncomingMessageFromJson(Map<String, dynamic> json) {
   return _IncomingMessage.fromJson(json);
@@ -20,7 +21,8 @@ IncomingMessage _$IncomingMessageFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$IncomingMessage {
-// ignore: invalid_annotation_target
+  // https://github.com/rrousselGit/freezed/issues/488
+  // ignore: invalid_annotation_target
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   IncomingMessageType? get type => throw _privateConstructorUsedError;
   Map<String, dynamic> get body => throw _privateConstructorUsedError;
@@ -38,13 +40,15 @@ mixin _$IncomingMessage {
 /// @nodoc
 abstract class $IncomingMessageCopyWith<$Res> {
   factory $IncomingMessageCopyWith(
-          IncomingMessage value, $Res Function(IncomingMessage) then) =
-      _$IncomingMessageCopyWithImpl<$Res, IncomingMessage>;
+    IncomingMessage value,
+    $Res Function(IncomingMessage) then,
+  ) = _$IncomingMessageCopyWithImpl<$Res, IncomingMessage>;
   @useResult
-  $Res call(
-      {@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      IncomingMessageType? type,
-      Map<String, dynamic> body});
+  $Res call({
+    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+    IncomingMessageType? type,
+    Map<String, dynamic> body,
+  });
 }
 
 /// @nodoc
@@ -61,35 +65,39 @@ class _$IncomingMessageCopyWithImpl<$Res, $Val extends IncomingMessage>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = freezed,
-    Object? body = null,
-  }) {
-    return _then(_value.copyWith(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as IncomingMessageType?,
-      body: null == body
-          ? _value.body
-          : body // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ) as $Val);
+  $Res call({Object? type = freezed, Object? body = null}) {
+    return _then(
+      _value.copyWith(
+            type:
+                freezed == type
+                    ? _value.type
+                    : type // ignore: cast_nullable_to_non_nullable
+                        as IncomingMessageType?,
+            body:
+                null == body
+                    ? _value.body
+                    : body // ignore: cast_nullable_to_non_nullable
+                        as Map<String, dynamic>,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$IncomingMessageImplCopyWith<$Res>
     implements $IncomingMessageCopyWith<$Res> {
-  factory _$$IncomingMessageImplCopyWith(_$IncomingMessageImpl value,
-          $Res Function(_$IncomingMessageImpl) then) =
-      __$$IncomingMessageImplCopyWithImpl<$Res>;
+  factory _$$IncomingMessageImplCopyWith(
+    _$IncomingMessageImpl value,
+    $Res Function(_$IncomingMessageImpl) then,
+  ) = __$$IncomingMessageImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      IncomingMessageType? type,
-      Map<String, dynamic> body});
+  $Res call({
+    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+    IncomingMessageType? type,
+    Map<String, dynamic> body,
+  });
 }
 
 /// @nodoc
@@ -97,42 +105,45 @@ class __$$IncomingMessageImplCopyWithImpl<$Res>
     extends _$IncomingMessageCopyWithImpl<$Res, _$IncomingMessageImpl>
     implements _$$IncomingMessageImplCopyWith<$Res> {
   __$$IncomingMessageImplCopyWithImpl(
-      _$IncomingMessageImpl _value, $Res Function(_$IncomingMessageImpl) _then)
-      : super(_value, _then);
+    _$IncomingMessageImpl _value,
+    $Res Function(_$IncomingMessageImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of IncomingMessage
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? type = freezed,
-    Object? body = null,
-  }) {
-    return _then(_$IncomingMessageImpl(
-      type: freezed == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as IncomingMessageType?,
-      body: null == body
-          ? _value._body
-          : body // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
-    ));
+  $Res call({Object? type = freezed, Object? body = null}) {
+    return _then(
+      _$IncomingMessageImpl(
+        type:
+            freezed == type
+                ? _value.type
+                : type // ignore: cast_nullable_to_non_nullable
+                    as IncomingMessageType?,
+        body:
+            null == body
+                ? _value._body
+                : body // ignore: cast_nullable_to_non_nullable
+                    as Map<String, dynamic>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$IncomingMessageImpl implements _IncomingMessage {
-  const _$IncomingMessageImpl(
-      {@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type,
-      required final Map<String, dynamic> body})
-      : _body = body;
+  const _$IncomingMessageImpl({
+    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type,
+    required final Map<String, dynamic> body,
+  }) : _body = body;
 
   factory _$IncomingMessageImpl.fromJson(Map<String, dynamic> json) =>
       _$$IncomingMessageImplFromJson(json);
 
-// ignore: invalid_annotation_target
+  // https://github.com/rrousselGit/freezed/issues/488
+  // ignore: invalid_annotation_target
   @override
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final IncomingMessageType? type;
@@ -161,7 +172,10 @@ class _$IncomingMessageImpl implements _IncomingMessage {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(
-      runtimeType, type, const DeepCollectionEquality().hash(_body));
+    runtimeType,
+    type,
+    const DeepCollectionEquality().hash(_body),
+  );
 
   /// Create a copy of IncomingMessage
   /// with the given fields replaced by the non-null parameter values.
@@ -170,26 +184,28 @@ class _$IncomingMessageImpl implements _IncomingMessage {
   @pragma('vm:prefer-inline')
   _$$IncomingMessageImplCopyWith<_$IncomingMessageImpl> get copyWith =>
       __$$IncomingMessageImplCopyWithImpl<_$IncomingMessageImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$IncomingMessageImplToJson(
-      this,
-    );
+    return _$$IncomingMessageImplToJson(this);
   }
 }
 
 abstract class _IncomingMessage implements IncomingMessage {
-  const factory _IncomingMessage(
-      {@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-      final IncomingMessageType? type,
-      required final Map<String, dynamic> body}) = _$IncomingMessageImpl;
+  const factory _IncomingMessage({
+    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+    final IncomingMessageType? type,
+    required final Map<String, dynamic> body,
+  }) = _$IncomingMessageImpl;
 
   factory _IncomingMessage.fromJson(Map<String, dynamic> json) =
       _$IncomingMessageImpl.fromJson;
 
-// ignore: invalid_annotation_target
+  // https://github.com/rrousselGit/freezed/issues/488
+  // ignore: invalid_annotation_target
   @override
   @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   IncomingMessageType? get type;

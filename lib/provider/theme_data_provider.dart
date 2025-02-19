@@ -107,10 +107,12 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     ),
     sliderTheme: const SliderThemeData(
       showValueIndicator: ShowValueIndicator.always,
+      // Opting into the new appearance.
       // ignore: deprecated_member_use
       year2023: false,
     ),
     progressIndicatorTheme: const ProgressIndicatorThemeData(
+      // Opting into the new appearance.
       // ignore: deprecated_member_use
       year2023: false,
     ),

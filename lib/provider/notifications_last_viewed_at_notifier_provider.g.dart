@@ -34,9 +34,7 @@ abstract class _$NotificationsLastViewedAtNotifier
     extends BuildlessAutoDisposeNotifier<DateTime?> {
   late final Account account;
 
-  DateTime? build(
-    Account account,
-  );
+  DateTime? build(Account account);
 }
 
 /// See also [NotificationsLastViewedAtNotifier].
@@ -50,21 +48,15 @@ class NotificationsLastViewedAtNotifierFamily extends Family<DateTime?> {
   const NotificationsLastViewedAtNotifierFamily();
 
   /// See also [NotificationsLastViewedAtNotifier].
-  NotificationsLastViewedAtNotifierProvider call(
-    Account account,
-  ) {
-    return NotificationsLastViewedAtNotifierProvider(
-      account,
-    );
+  NotificationsLastViewedAtNotifierProvider call(Account account) {
+    return NotificationsLastViewedAtNotifierProvider(account);
   }
 
   @override
   NotificationsLastViewedAtNotifierProvider getProviderOverride(
     covariant NotificationsLastViewedAtNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class NotificationsLastViewedAtNotifierFamily extends Family<DateTime?> {
 
 /// See also [NotificationsLastViewedAtNotifier].
 class NotificationsLastViewedAtNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<NotificationsLastViewedAtNotifier,
-        DateTime?> {
+    extends
+        AutoDisposeNotifierProviderImpl<
+          NotificationsLastViewedAtNotifier,
+          DateTime?
+        > {
   /// See also [NotificationsLastViewedAtNotifier].
-  NotificationsLastViewedAtNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => NotificationsLastViewedAtNotifier()..account = account,
-          from: notificationsLastViewedAtNotifierProvider,
-          name: r'notificationsLastViewedAtNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$notificationsLastViewedAtNotifierHash,
-          dependencies: NotificationsLastViewedAtNotifierFamily._dependencies,
-          allTransitiveDependencies: NotificationsLastViewedAtNotifierFamily
-              ._allTransitiveDependencies,
-          account: account,
-        );
+  NotificationsLastViewedAtNotifierProvider(Account account)
+    : this._internal(
+        () => NotificationsLastViewedAtNotifier()..account = account,
+        from: notificationsLastViewedAtNotifierProvider,
+        name: r'notificationsLastViewedAtNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$notificationsLastViewedAtNotifierHash,
+        dependencies: NotificationsLastViewedAtNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NotificationsLastViewedAtNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   NotificationsLastViewedAtNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class NotificationsLastViewedAtNotifierProvider
   DateTime? runNotifierBuild(
     covariant NotificationsLastViewedAtNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,8 +133,11 @@ class NotificationsLastViewedAtNotifierProvider
   }
 
   @override
-  AutoDisposeNotifierProviderElement<NotificationsLastViewedAtNotifier,
-      DateTime?> createElement() {
+  AutoDisposeNotifierProviderElement<
+    NotificationsLastViewedAtNotifier,
+    DateTime?
+  >
+  createElement() {
     return _NotificationsLastViewedAtNotifierProviderElement(this);
   }
 
@@ -170,14 +165,18 @@ mixin NotificationsLastViewedAtNotifierRef
 }
 
 class _NotificationsLastViewedAtNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<
-        NotificationsLastViewedAtNotifier,
-        DateTime?> with NotificationsLastViewedAtNotifierRef {
+    extends
+        AutoDisposeNotifierProviderElement<
+          NotificationsLastViewedAtNotifier,
+          DateTime?
+        >
+    with NotificationsLastViewedAtNotifierRef {
   _NotificationsLastViewedAtNotifierProviderElement(super.provider);
 
   @override
   Account get account =>
       (origin as NotificationsLastViewedAtNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

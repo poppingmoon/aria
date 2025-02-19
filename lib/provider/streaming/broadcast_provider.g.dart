@@ -39,21 +39,13 @@ class BroadcastFamily extends Family<AsyncValue<Broadcast>> {
   const BroadcastFamily();
 
   /// See also [broadcast].
-  BroadcastProvider call(
-    Account account,
-  ) {
-    return BroadcastProvider(
-      account,
-    );
+  BroadcastProvider call(Account account) {
+    return BroadcastProvider(account);
   }
 
   @override
-  BroadcastProvider getProviderOverride(
-    covariant BroadcastProvider provider,
-  ) {
-    return call(
-      provider.account,
-    );
+  BroadcastProvider getProviderOverride(covariant BroadcastProvider provider) {
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,19 @@ class BroadcastFamily extends Family<AsyncValue<Broadcast>> {
 /// See also [broadcast].
 class BroadcastProvider extends AutoDisposeStreamProvider<Broadcast> {
   /// See also [broadcast].
-  BroadcastProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => broadcast(
-            ref as BroadcastRef,
-            account,
-          ),
-          from: broadcastProvider,
-          name: r'broadcastProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$broadcastHash,
-          dependencies: BroadcastFamily._dependencies,
-          allTransitiveDependencies: BroadcastFamily._allTransitiveDependencies,
-          account: account,
-        );
+  BroadcastProvider(Account account)
+    : this._internal(
+        (ref) => broadcast(ref as BroadcastRef, account),
+        from: broadcastProvider,
+        name: r'broadcastProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$broadcastHash,
+        dependencies: BroadcastFamily._dependencies,
+        allTransitiveDependencies: BroadcastFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   BroadcastProvider._internal(
     super._createNotifier, {
@@ -149,11 +137,13 @@ mixin BroadcastRef on AutoDisposeStreamProviderRef<Broadcast> {
 }
 
 class _BroadcastProviderElement
-    extends AutoDisposeStreamProviderElement<Broadcast> with BroadcastRef {
+    extends AutoDisposeStreamProviderElement<Broadcast>
+    with BroadcastRef {
   _BroadcastProviderElement(super.provider);
 
   @override
   Account get account => (origin as BroadcastProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

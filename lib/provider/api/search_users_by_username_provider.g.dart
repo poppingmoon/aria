@@ -46,22 +46,14 @@ class SearchUsersByUsernameFamily
     String? username,
     String? host,
   ) {
-    return SearchUsersByUsernameProvider(
-      account,
-      username,
-      host,
-    );
+    return SearchUsersByUsernameProvider(account, username, host);
   }
 
   @override
   SearchUsersByUsernameProvider getProviderOverride(
     covariant SearchUsersByUsernameProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.username,
-      provider.host,
-    );
+    return call(provider.account, provider.username, provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,30 +75,27 @@ class SearchUsersByUsernameFamily
 class SearchUsersByUsernameProvider
     extends AutoDisposeFutureProvider<List<UserDetailed>> {
   /// See also [searchUsersByUsername].
-  SearchUsersByUsernameProvider(
-    Account account,
-    String? username,
-    String? host,
-  ) : this._internal(
-          (ref) => searchUsersByUsername(
-            ref as SearchUsersByUsernameRef,
-            account,
-            username,
-            host,
-          ),
-          from: searchUsersByUsernameProvider,
-          name: r'searchUsersByUsernameProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchUsersByUsernameHash,
-          dependencies: SearchUsersByUsernameFamily._dependencies,
-          allTransitiveDependencies:
-              SearchUsersByUsernameFamily._allTransitiveDependencies,
-          account: account,
-          username: username,
-          host: host,
-        );
+  SearchUsersByUsernameProvider(Account account, String? username, String? host)
+    : this._internal(
+        (ref) => searchUsersByUsername(
+          ref as SearchUsersByUsernameRef,
+          account,
+          username,
+          host,
+        ),
+        from: searchUsersByUsernameProvider,
+        name: r'searchUsersByUsernameProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$searchUsersByUsernameHash,
+        dependencies: SearchUsersByUsernameFamily._dependencies,
+        allTransitiveDependencies:
+            SearchUsersByUsernameFamily._allTransitiveDependencies,
+        account: account,
+        username: username,
+        host: host,
+      );
 
   SearchUsersByUsernameProvider._internal(
     super._createNotifier, {
@@ -127,7 +116,7 @@ class SearchUsersByUsernameProvider
   @override
   Override overrideWith(
     FutureOr<List<UserDetailed>> Function(SearchUsersByUsernameRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -195,5 +184,6 @@ class _SearchUsersByUsernameProviderElement
   @override
   String? get host => (origin as SearchUsersByUsernameProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

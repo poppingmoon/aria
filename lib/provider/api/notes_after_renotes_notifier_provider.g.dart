@@ -35,10 +35,7 @@ abstract class _$NotesAfterRenotesNotifier
   late final Account account;
   late final String noteId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String noteId,
-  );
+  FutureOr<PaginationState<Note>> build(Account account, String noteId);
 }
 
 /// See also [NotesAfterRenotesNotifier].
@@ -52,24 +49,15 @@ class NotesAfterRenotesNotifierFamily
   const NotesAfterRenotesNotifierFamily();
 
   /// See also [NotesAfterRenotesNotifier].
-  NotesAfterRenotesNotifierProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NotesAfterRenotesNotifierProvider(
-      account,
-      noteId,
-    );
+  NotesAfterRenotesNotifierProvider call(Account account, String noteId) {
+    return NotesAfterRenotesNotifierProvider(account, noteId);
   }
 
   @override
   NotesAfterRenotesNotifierProvider getProviderOverride(
     covariant NotesAfterRenotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class NotesAfterRenotesNotifierFamily
 
 /// See also [NotesAfterRenotesNotifier].
 class NotesAfterRenotesNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<NotesAfterRenotesNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          NotesAfterRenotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [NotesAfterRenotesNotifier].
-  NotesAfterRenotesNotifierProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          () => NotesAfterRenotesNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: notesAfterRenotesNotifierProvider,
-          name: r'notesAfterRenotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$notesAfterRenotesNotifierHash,
-          dependencies: NotesAfterRenotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              NotesAfterRenotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NotesAfterRenotesNotifierProvider(Account account, String noteId)
+    : this._internal(
+        () =>
+            NotesAfterRenotesNotifier()
+              ..account = account
+              ..noteId = noteId,
+        from: notesAfterRenotesNotifierProvider,
+        name: r'notesAfterRenotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$notesAfterRenotesNotifierHash,
+        dependencies: NotesAfterRenotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NotesAfterRenotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NotesAfterRenotesNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class NotesAfterRenotesNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant NotesAfterRenotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      noteId,
-    );
+    return notifier.build(account, noteId);
   }
 
   @override
@@ -141,9 +128,10 @@ class NotesAfterRenotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: NotesAfterRenotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class NotesAfterRenotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<NotesAfterRenotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    NotesAfterRenotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _NotesAfterRenotesNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin NotesAfterRenotesNotifierRef
 }
 
 class _NotesAfterRenotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<NotesAfterRenotesNotifier,
-        PaginationState<Note>> with NotesAfterRenotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          NotesAfterRenotesNotifier,
+          PaginationState<Note>
+        >
+    with NotesAfterRenotesNotifierRef {
   _NotesAfterRenotesNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _NotesAfterRenotesNotifierProviderElement
   @override
   String get noteId => (origin as NotesAfterRenotesNotifierProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

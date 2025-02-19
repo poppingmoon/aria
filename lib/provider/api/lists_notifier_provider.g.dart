@@ -33,9 +33,7 @@ abstract class _$ListsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<List<UsersList>> {
   late final Account account;
 
-  FutureOr<List<UsersList>> build(
-    Account account,
-  );
+  FutureOr<List<UsersList>> build(Account account);
 }
 
 /// See also [ListsNotifier].
@@ -48,21 +46,15 @@ class ListsNotifierFamily extends Family<AsyncValue<List<UsersList>>> {
   const ListsNotifierFamily();
 
   /// See also [ListsNotifier].
-  ListsNotifierProvider call(
-    Account account,
-  ) {
-    return ListsNotifierProvider(
-      account,
-    );
+  ListsNotifierProvider call(Account account) {
+    return ListsNotifierProvider(account);
   }
 
   @override
   ListsNotifierProvider getProviderOverride(
     covariant ListsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -81,24 +73,24 @@ class ListsNotifierFamily extends Family<AsyncValue<List<UsersList>>> {
 }
 
 /// See also [ListsNotifier].
-class ListsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    ListsNotifier, List<UsersList>> {
+class ListsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<ListsNotifier, List<UsersList>> {
   /// See also [ListsNotifier].
-  ListsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => ListsNotifier()..account = account,
-          from: listsNotifierProvider,
-          name: r'listsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$listsNotifierHash,
-          dependencies: ListsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ListsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  ListsNotifierProvider(Account account)
+    : this._internal(
+        () => ListsNotifier()..account = account,
+        from: listsNotifierProvider,
+        name: r'listsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$listsNotifierHash,
+        dependencies: ListsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ListsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   ListsNotifierProvider._internal(
     super._createNotifier, {
@@ -113,12 +105,8 @@ class ListsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   final Account account;
 
   @override
-  FutureOr<List<UsersList>> runNotifierBuild(
-    covariant ListsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  FutureOr<List<UsersList>> runNotifierBuild(covariant ListsNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -139,7 +127,7 @@ class ListsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<ListsNotifier, List<UsersList>>
-      createElement() {
+  createElement() {
     return _ListsNotifierProviderElement(this);
   }
 
@@ -165,12 +153,14 @@ mixin ListsNotifierRef on AutoDisposeAsyncNotifierProviderRef<List<UsersList>> {
 }
 
 class _ListsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ListsNotifier,
-        List<UsersList>> with ListsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<ListsNotifier, List<UsersList>>
+    with ListsNotifierRef {
   _ListsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as ListsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

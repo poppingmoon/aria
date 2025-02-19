@@ -34,10 +34,7 @@ abstract class _$PinnedEmojisNotifier extends BuildlessNotifier<List<String>> {
   late final Account account;
   late final bool reaction;
 
-  List<String> build(
-    Account account, {
-    bool reaction = false,
-  });
+  List<String> build(Account account, {bool reaction = false});
 }
 
 /// See also [PinnedEmojisNotifier].
@@ -50,24 +47,15 @@ class PinnedEmojisNotifierFamily extends Family<List<String>> {
   const PinnedEmojisNotifierFamily();
 
   /// See also [PinnedEmojisNotifier].
-  PinnedEmojisNotifierProvider call(
-    Account account, {
-    bool reaction = false,
-  }) {
-    return PinnedEmojisNotifierProvider(
-      account,
-      reaction: reaction,
-    );
+  PinnedEmojisNotifierProvider call(Account account, {bool reaction = false}) {
+    return PinnedEmojisNotifierProvider(account, reaction: reaction);
   }
 
   @override
   PinnedEmojisNotifierProvider getProviderOverride(
     covariant PinnedEmojisNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      reaction: provider.reaction,
-    );
+    return call(provider.account, reaction: provider.reaction);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,25 +77,24 @@ class PinnedEmojisNotifierFamily extends Family<List<String>> {
 class PinnedEmojisNotifierProvider
     extends NotifierProviderImpl<PinnedEmojisNotifier, List<String>> {
   /// See also [PinnedEmojisNotifier].
-  PinnedEmojisNotifierProvider(
-    Account account, {
-    bool reaction = false,
-  }) : this._internal(
-          () => PinnedEmojisNotifier()
-            ..account = account
-            ..reaction = reaction,
-          from: pinnedEmojisNotifierProvider,
-          name: r'pinnedEmojisNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$pinnedEmojisNotifierHash,
-          dependencies: PinnedEmojisNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PinnedEmojisNotifierFamily._allTransitiveDependencies,
-          account: account,
-          reaction: reaction,
-        );
+  PinnedEmojisNotifierProvider(Account account, {bool reaction = false})
+    : this._internal(
+        () =>
+            PinnedEmojisNotifier()
+              ..account = account
+              ..reaction = reaction,
+        from: pinnedEmojisNotifierProvider,
+        name: r'pinnedEmojisNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$pinnedEmojisNotifierHash,
+        dependencies: PinnedEmojisNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PinnedEmojisNotifierFamily._allTransitiveDependencies,
+        account: account,
+        reaction: reaction,
+      );
 
   PinnedEmojisNotifierProvider._internal(
     super._createNotifier, {
@@ -124,13 +111,8 @@ class PinnedEmojisNotifierProvider
   final bool reaction;
 
   @override
-  List<String> runNotifierBuild(
-    covariant PinnedEmojisNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      reaction: reaction,
-    );
+  List<String> runNotifierBuild(covariant PinnedEmojisNotifier notifier) {
+    return notifier.build(account, reaction: reaction);
   }
 
   @override
@@ -138,9 +120,10 @@ class PinnedEmojisNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PinnedEmojisNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..reaction = reaction,
+        () =>
+            create()
+              ..account = account
+              ..reaction = reaction,
         from: from,
         name: null,
         dependencies: null,
@@ -194,5 +177,6 @@ class _PinnedEmojisNotifierProviderElement
   @override
   bool get reaction => (origin as PinnedEmojisNotifierProvider).reaction;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

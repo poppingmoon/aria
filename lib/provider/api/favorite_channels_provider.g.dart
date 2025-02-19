@@ -40,21 +40,15 @@ class FavoriteChannelsFamily
   const FavoriteChannelsFamily();
 
   /// See also [favoriteChannels].
-  FavoriteChannelsProvider call(
-    Account account,
-  ) {
-    return FavoriteChannelsProvider(
-      account,
-    );
+  FavoriteChannelsProvider call(Account account) {
+    return FavoriteChannelsProvider(account);
   }
 
   @override
   FavoriteChannelsProvider getProviderOverride(
     covariant FavoriteChannelsProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -76,24 +70,20 @@ class FavoriteChannelsFamily
 class FavoriteChannelsProvider
     extends AutoDisposeFutureProvider<List<CommunityChannel>> {
   /// See also [favoriteChannels].
-  FavoriteChannelsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => favoriteChannels(
-            ref as FavoriteChannelsRef,
-            account,
-          ),
-          from: favoriteChannelsProvider,
-          name: r'favoriteChannelsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$favoriteChannelsHash,
-          dependencies: FavoriteChannelsFamily._dependencies,
-          allTransitiveDependencies:
-              FavoriteChannelsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FavoriteChannelsProvider(Account account)
+    : this._internal(
+        (ref) => favoriteChannels(ref as FavoriteChannelsRef, account),
+        from: favoriteChannelsProvider,
+        name: r'favoriteChannelsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$favoriteChannelsHash,
+        dependencies: FavoriteChannelsFamily._dependencies,
+        allTransitiveDependencies:
+            FavoriteChannelsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FavoriteChannelsProvider._internal(
     super._createNotifier, {
@@ -110,7 +100,7 @@ class FavoriteChannelsProvider
   @override
   Override overrideWith(
     FutureOr<List<CommunityChannel>> Function(FavoriteChannelsRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -161,5 +151,6 @@ class _FavoriteChannelsProviderElement
   @override
   Account get account => (origin as FavoriteChannelsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

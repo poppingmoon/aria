@@ -40,21 +40,15 @@ class TimelineLastViewedAtFamily extends Family<DateTime?> {
   const TimelineLastViewedAtFamily();
 
   /// See also [timelineLastViewedAt].
-  TimelineLastViewedAtProvider call(
-    TabSettings tabSettings,
-  ) {
-    return TimelineLastViewedAtProvider(
-      tabSettings,
-    );
+  TimelineLastViewedAtProvider call(TabSettings tabSettings) {
+    return TimelineLastViewedAtProvider(tabSettings);
   }
 
   @override
   TimelineLastViewedAtProvider getProviderOverride(
     covariant TimelineLastViewedAtProvider provider,
   ) {
-    return call(
-      provider.tabSettings,
-    );
+    return call(provider.tabSettings);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,24 +69,21 @@ class TimelineLastViewedAtFamily extends Family<DateTime?> {
 /// See also [timelineLastViewedAt].
 class TimelineLastViewedAtProvider extends AutoDisposeProvider<DateTime?> {
   /// See also [timelineLastViewedAt].
-  TimelineLastViewedAtProvider(
-    TabSettings tabSettings,
-  ) : this._internal(
-          (ref) => timelineLastViewedAt(
-            ref as TimelineLastViewedAtRef,
-            tabSettings,
-          ),
-          from: timelineLastViewedAtProvider,
-          name: r'timelineLastViewedAtProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$timelineLastViewedAtHash,
-          dependencies: TimelineLastViewedAtFamily._dependencies,
-          allTransitiveDependencies:
-              TimelineLastViewedAtFamily._allTransitiveDependencies,
-          tabSettings: tabSettings,
-        );
+  TimelineLastViewedAtProvider(TabSettings tabSettings)
+    : this._internal(
+        (ref) =>
+            timelineLastViewedAt(ref as TimelineLastViewedAtRef, tabSettings),
+        from: timelineLastViewedAtProvider,
+        name: r'timelineLastViewedAtProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$timelineLastViewedAtHash,
+        dependencies: TimelineLastViewedAtFamily._dependencies,
+        allTransitiveDependencies:
+            TimelineLastViewedAtFamily._allTransitiveDependencies,
+        tabSettings: tabSettings,
+      );
 
   TimelineLastViewedAtProvider._internal(
     super._createNotifier, {
@@ -152,12 +143,14 @@ mixin TimelineLastViewedAtRef on AutoDisposeProviderRef<DateTime?> {
 }
 
 class _TimelineLastViewedAtProviderElement
-    extends AutoDisposeProviderElement<DateTime?> with TimelineLastViewedAtRef {
+    extends AutoDisposeProviderElement<DateTime?>
+    with TimelineLastViewedAtRef {
   _TimelineLastViewedAtProviderElement(super.provider);
 
   @override
   TabSettings get tabSettings =>
       (origin as TimelineLastViewedAtProvider).tabSettings;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

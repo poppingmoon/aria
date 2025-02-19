@@ -39,24 +39,13 @@ class UserListsFamily extends Family<AsyncValue<List<UsersList>>> {
   const UserListsFamily();
 
   /// See also [userLists].
-  UserListsProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserListsProvider(
-      account,
-      userId,
-    );
+  UserListsProvider call(Account account, String userId) {
+    return UserListsProvider(account, userId);
   }
 
   @override
-  UserListsProvider getProviderOverride(
-    covariant UserListsProvider provider,
-  ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+  UserListsProvider getProviderOverride(covariant UserListsProvider provider) {
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,26 +66,20 @@ class UserListsFamily extends Family<AsyncValue<List<UsersList>>> {
 /// See also [userLists].
 class UserListsProvider extends AutoDisposeFutureProvider<List<UsersList>> {
   /// See also [userLists].
-  UserListsProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          (ref) => userLists(
-            ref as UserListsRef,
-            account,
-            userId,
-          ),
-          from: userListsProvider,
-          name: r'userListsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userListsHash,
-          dependencies: UserListsFamily._dependencies,
-          allTransitiveDependencies: UserListsFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserListsProvider(Account account, String userId)
+    : this._internal(
+        (ref) => userLists(ref as UserListsRef, account, userId),
+        from: userListsProvider,
+        name: r'userListsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userListsHash,
+        dependencies: UserListsFamily._dependencies,
+        allTransitiveDependencies: UserListsFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserListsProvider._internal(
     super._createNotifier, {
@@ -173,5 +156,6 @@ class _UserListsProviderElement
   @override
   String get userId => (origin as UserListsProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

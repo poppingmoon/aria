@@ -12,7 +12,8 @@ part of 'pagination_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$PaginationState<T> {
@@ -29,8 +30,9 @@ mixin _$PaginationState<T> {
 /// @nodoc
 abstract class $PaginationStateCopyWith<T, $Res> {
   factory $PaginationStateCopyWith(
-          PaginationState<T> value, $Res Function(PaginationState<T>) then) =
-      _$PaginationStateCopyWithImpl<T, $Res, PaginationState<T>>;
+    PaginationState<T> value,
+    $Res Function(PaginationState<T>) then,
+  ) = _$PaginationStateCopyWithImpl<T, $Res, PaginationState<T>>;
   @useResult
   $Res call({List<T> items, bool isLastLoaded});
 }
@@ -49,29 +51,32 @@ class _$PaginationStateCopyWithImpl<T, $Res, $Val extends PaginationState<T>>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? items = null,
-    Object? isLastLoaded = null,
-  }) {
-    return _then(_value.copyWith(
-      items: null == items
-          ? _value.items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<T>,
-      isLastLoaded: null == isLastLoaded
-          ? _value.isLastLoaded
-          : isLastLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+  $Res call({Object? items = null, Object? isLastLoaded = null}) {
+    return _then(
+      _value.copyWith(
+            items:
+                null == items
+                    ? _value.items
+                    : items // ignore: cast_nullable_to_non_nullable
+                        as List<T>,
+            isLastLoaded:
+                null == isLastLoaded
+                    ? _value.isLastLoaded
+                    : isLastLoaded // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$PaginationStateImplCopyWith<T, $Res>
     implements $PaginationStateCopyWith<T, $Res> {
-  factory _$$PaginationStateImplCopyWith(_$PaginationStateImpl<T> value,
-          $Res Function(_$PaginationStateImpl<T>) then) =
-      __$$PaginationStateImplCopyWithImpl<T, $Res>;
+  factory _$$PaginationStateImplCopyWith(
+    _$PaginationStateImpl<T> value,
+    $Res Function(_$PaginationStateImpl<T>) then,
+  ) = __$$PaginationStateImplCopyWithImpl<T, $Res>;
   @override
   @useResult
   $Res call({List<T> items, bool isLastLoaded});
@@ -81,38 +86,41 @@ abstract class _$$PaginationStateImplCopyWith<T, $Res>
 class __$$PaginationStateImplCopyWithImpl<T, $Res>
     extends _$PaginationStateCopyWithImpl<T, $Res, _$PaginationStateImpl<T>>
     implements _$$PaginationStateImplCopyWith<T, $Res> {
-  __$$PaginationStateImplCopyWithImpl(_$PaginationStateImpl<T> _value,
-      $Res Function(_$PaginationStateImpl<T>) _then)
-      : super(_value, _then);
+  __$$PaginationStateImplCopyWithImpl(
+    _$PaginationStateImpl<T> _value,
+    $Res Function(_$PaginationStateImpl<T>) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of PaginationState
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? items = null,
-    Object? isLastLoaded = null,
-  }) {
-    return _then(_$PaginationStateImpl<T>(
-      items: null == items
-          ? _value._items
-          : items // ignore: cast_nullable_to_non_nullable
-              as List<T>,
-      isLastLoaded: null == isLastLoaded
-          ? _value.isLastLoaded
-          : isLastLoaded // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+  $Res call({Object? items = null, Object? isLastLoaded = null}) {
+    return _then(
+      _$PaginationStateImpl<T>(
+        items:
+            null == items
+                ? _value._items
+                : items // ignore: cast_nullable_to_non_nullable
+                    as List<T>,
+        isLastLoaded:
+            null == isLastLoaded
+                ? _value.isLastLoaded
+                : isLastLoaded // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$PaginationStateImpl<T> extends _PaginationState<T> {
-  const _$PaginationStateImpl(
-      {final List<T> items = const [], this.isLastLoaded = false})
-      : _items = items,
-        super._();
+  const _$PaginationStateImpl({
+    final List<T> items = const [],
+    this.isLastLoaded = false,
+  }) : _items = items,
+       super._();
 
   final List<T> _items;
   @override
@@ -144,7 +152,10 @@ class _$PaginationStateImpl<T> extends _PaginationState<T> {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_items), isLastLoaded);
+    runtimeType,
+    const DeepCollectionEquality().hash(_items),
+    isLastLoaded,
+  );
 
   /// Create a copy of PaginationState
   /// with the given fields replaced by the non-null parameter values.
@@ -153,13 +164,16 @@ class _$PaginationStateImpl<T> extends _PaginationState<T> {
   @pragma('vm:prefer-inline')
   _$$PaginationStateImplCopyWith<T, _$PaginationStateImpl<T>> get copyWith =>
       __$$PaginationStateImplCopyWithImpl<T, _$PaginationStateImpl<T>>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _PaginationState<T> extends PaginationState<T> {
-  const factory _PaginationState(
-      {final List<T> items,
-      final bool isLastLoaded}) = _$PaginationStateImpl<T>;
+  const factory _PaginationState({
+    final List<T> items,
+    final bool isLastLoaded,
+  }) = _$PaginationStateImpl<T>;
   const _PaginationState._() : super._();
 
   @override
