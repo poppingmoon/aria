@@ -313,11 +313,22 @@ class ImageGalleryDialog extends HookConsumerWidget {
                           child: ConstrainedBox(
                             constraints: const BoxConstraints(maxHeight: 100.0),
                             child: SingleChildScrollView(
-                              child: _ShadowText(
-                                text:
-                                    comment != null && comment.isNotEmpty
-                                        ? comment
-                                        : files[index.value].name,
+                              child: Text(
+                                comment != null && comment.isNotEmpty
+                                    ? comment
+                                    : files[index.value].name,
+                                style: TextStyle(
+                                  shadows: [
+                                    Shadow(
+                                      blurRadius: 2.0,
+                                      color: Theme.of(context).canvasColor,
+                                    ),
+                                    Shadow(
+                                      blurRadius: 2.0,
+                                      color: Theme.of(context).canvasColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -332,46 +343,5 @@ class ImageGalleryDialog extends HookConsumerWidget {
         ),
       ],
     );
-  }
-}
-
-class _ShadowText extends StatelessWidget {
-  const _ShadowText({required this.text});
-
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final shadowColor = theme.canvasColor;
-    final style = theme.textTheme.bodyMedium ?? const TextStyle();
-
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      return Stack(
-        children: [
-          Text(
-            text,
-            style: style.copyWith(
-              foreground:
-                  Paint()
-                    ..color = shadowColor.withValues(alpha: 0.5)
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 2.0,
-            ),
-          ),
-          Text(text, style: style),
-        ],
-      );
-    } else {
-      return Text(
-        text,
-        style: style.copyWith(
-          shadows: [
-            Shadow(blurRadius: 2.0, color: shadowColor),
-            Shadow(blurRadius: 2.0, color: shadowColor),
-          ],
-        ),
-      );
-    }
   }
 }

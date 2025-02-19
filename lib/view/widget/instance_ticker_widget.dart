@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -77,12 +76,22 @@ class InstanceTickerWidget extends ConsumerWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(1.0),
-                    child: _ShadowText(
-                      text:
-                          instance != null
-                              ? instance?.name ?? host ?? ''
-                              : meta?.name ?? account.host,
-                      style: style.copyWith(height: 1.0),
+                    child: Text(
+                      instance != null
+                          ? instance?.name ?? host ?? ''
+                          : meta?.name ?? account.host,
+                      style: style.copyWith(
+                        color: Colors.white,
+                        height: 1.0,
+                        shadows: const [
+                          Shadow(blurRadius: 2.0),
+                          Shadow(blurRadius: 2.0),
+                          Shadow(blurRadius: 2.0),
+                        ],
+                      ),
+                      softWrap: false,
+                      overflow: TextOverflow.fade,
+                      maxLines: 1,
                     ),
                   ),
                 ),
@@ -92,57 +101,5 @@ class InstanceTickerWidget extends ConsumerWidget {
         ),
       ),
     );
-  }
-}
-
-class _ShadowText extends StatelessWidget {
-  const _ShadowText({required this.text, required this.style});
-
-  final String text;
-  final TextStyle style;
-
-  @override
-  Widget build(BuildContext context) {
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      return Stack(
-        children: [
-          Text(
-            text,
-            style: style.copyWith(
-              foreground:
-                  Paint()
-                    ..color = Colors.black38
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 2.0,
-            ),
-            softWrap: false,
-            overflow: TextOverflow.fade,
-            maxLines: 1,
-          ),
-          Text(
-            text,
-            style: style.copyWith(color: Colors.white),
-            softWrap: false,
-            overflow: TextOverflow.fade,
-            maxLines: 1,
-          ),
-        ],
-      );
-    } else {
-      return Text(
-        text,
-        style: style.copyWith(
-          color: Colors.white,
-          shadows: const [
-            Shadow(blurRadius: 2.0),
-            Shadow(blurRadius: 2.0),
-            Shadow(blurRadius: 2.0),
-          ],
-        ),
-        softWrap: false,
-        overflow: TextOverflow.fade,
-        maxLines: 1,
-      );
-    }
   }
 }
