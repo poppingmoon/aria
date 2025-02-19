@@ -437,7 +437,9 @@ class TimelineListView extends HookConsumerWidget {
                             child:
                                 newNoteDividerIndex.value == 0
                                     ? _NewNotesDivider(key: lastViewedAtKey)
-                                    : const Divider(height: 1.0),
+                                    : !showGap
+                                    ? const Divider(height: 1.0)
+                                    : null,
                           ),
                         )
                         : null,
