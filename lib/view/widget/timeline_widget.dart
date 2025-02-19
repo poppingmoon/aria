@@ -31,119 +31,114 @@ import 'timeline_header.dart';
 import 'timeline_list_view.dart';
 
 class TimelineWidget extends HookConsumerWidget {
-  const TimelineWidget({
-    super.key,
-    required this.tabIndex,
-    this.focusPostForm,
-  });
+  const TimelineWidget({super.key, required this.tabIndex, this.focusPostForm});
 
   final int tabIndex;
   final void Function()? focusPostForm;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final tabSettings = ref
-        .watch(timelineTabsNotifierProvider.select((tabs) => tabs[tabIndex]));
+    final tabSettings = ref.watch(
+      timelineTabsNotifierProvider.select((tabs) => tabs[tabIndex]),
+    );
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final vibrateOnNotification = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.vibrateNotification),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.vibrateNotification,
+      ),
     );
-    final lastViewedNoteId = tabSettings.tabType != TabType.notifications
-        ? ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings))
-        : null;
-    final lastViewedAt = lastViewedNoteId != null
-        ? ref.watch(timelineLastViewedAtProvider(tabSettings))
-        : null;
+    final lastViewedNoteId =
+        tabSettings.tabType != TabType.notifications
+            ? ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings))
+            : null;
+    final lastViewedAt =
+        lastViewedNoteId != null
+            ? ref.watch(timelineLastViewedAtProvider(tabSettings))
+            : null;
     final centerId = ref.watch(timelineCenterNotifierProvider(tabSettings));
-    final nextNotes = tabSettings.tabType != TabType.notifications
-        ? ref
-            .watch(
-              timelineNotesAfterNoteNotifierProvider(
-                tabSettings,
-                sinceId: centerId,
-              ),
-            )
-            .valueOrNull
-        : null;
-    final previousNotes = tabSettings.tabType != TabType.notifications
-        ? ref
-            .watch(
-              timelineNotesNotifierProvider(tabSettings, untilId: centerId),
-            )
-            .valueOrNull
-        : null;
+    final nextNotes =
+        tabSettings.tabType != TabType.notifications
+            ? ref
+                .watch(
+                  timelineNotesAfterNoteNotifierProvider(
+                    tabSettings,
+                    sinceId: centerId,
+                  ),
+                )
+                .valueOrNull
+            : null;
+    final previousNotes =
+        tabSettings.tabType != TabType.notifications
+            ? ref
+                .watch(
+                  timelineNotesNotifierProvider(tabSettings, untilId: centerId),
+                )
+                .valueOrNull
+            : null;
     final lastViewedAtKey = useMemoized(() => GlobalKey(), []);
-    final scrollController =
-        ref.watch(timelineScrollControllerProvider(tabSettings));
-    useEffect(
-      () {
-        if (!tabSettings.keepPosition) {
-          ref
-              .read(
-                timelineLastViewedNoteIdNotifierProvider(tabSettings).notifier,
-              )
-              .saveFromDate(DateTime.now());
-        }
-        if (!tabSettings.disableSubscribing) {
-          final notifier =
-              ref.read(noteSubscriptionNotifierProvider(account).notifier);
-          return notifier.unsubscribeAll;
-        }
-        return null;
-      },
-      [],
+    final scrollController = ref.watch(
+      timelineScrollControllerProvider(tabSettings),
     );
+    useEffect(() {
+      if (!tabSettings.keepPosition) {
+        ref
+            .read(
+              timelineLastViewedNoteIdNotifierProvider(tabSettings).notifier,
+            )
+            .saveFromDate(DateTime.now());
+      }
+      if (!tabSettings.disableSubscribing) {
+        final notifier = ref.read(
+          noteSubscriptionNotifierProvider(account).notifier,
+        );
+        return notifier.unsubscribeAll;
+      }
+      return null;
+    }, []);
     if (!account.isGuest) {
       ref.listen(
         mainStreamNotifierProvider(account),
-        (_, next) => next.whenData(
-          (event) async {
-            switch (event) {
-              case UnreadNotification():
-                await ref
-                    .read(iNotifierProvider(account).notifier)
-                    .addUnreadNotification();
-                if (vibrateOnNotification) {
-                  await HapticFeedback.mediumImpact();
-                }
-              case AnnouncementCreated(:final announcement):
-                await ref
-                    .read(iNotifierProvider(account).notifier)
-                    .addUnreadAnnouncement(announcement);
-              default:
-            }
-          },
-        ),
+        (_, next) => next.whenData((event) async {
+          switch (event) {
+            case UnreadNotification():
+              await ref
+                  .read(iNotifierProvider(account).notifier)
+                  .addUnreadNotification();
+              if (vibrateOnNotification) {
+                await HapticFeedback.mediumImpact();
+              }
+            case AnnouncementCreated(:final announcement):
+              await ref
+                  .read(iNotifierProvider(account).notifier)
+                  .addUnreadAnnouncement(announcement);
+            default:
+          }
+        }),
       );
     }
     ref.listen(
       broadcastProvider(account),
-      (_, next) => next.whenData(
-        (event) async {
-          switch (event) {
-            case broadcast.EmojiAdded(:final emoji):
-              ref
-                  .read(emojisNotifierProvider(account.host).notifier)
-                  .add(emoji);
-            case broadcast.EmojiUpdated(:final emojis):
-              ref
-                  .read(emojisNotifierProvider(account.host).notifier)
-                  .addAll(emojis);
-            case broadcast.EmojiDeleted(:final emojis):
-              ref
-                  .read(emojisNotifierProvider(account.host).notifier)
-                  .deleteAll(emojis.map((emoji) => emoji.name));
-            case broadcast.AnnouncementCreated(:final announcement):
-              if (i != null) {
-                await ref
-                    .read(iNotifierProvider(account).notifier)
-                    .addUnreadAnnouncement(announcement);
-              }
-          }
-        },
-      ),
+      (_, next) => next.whenData((event) async {
+        switch (event) {
+          case broadcast.EmojiAdded(:final emoji):
+            ref.read(emojisNotifierProvider(account.host).notifier).add(emoji);
+          case broadcast.EmojiUpdated(:final emojis):
+            ref
+                .read(emojisNotifierProvider(account.host).notifier)
+                .addAll(emojis);
+          case broadcast.EmojiDeleted(:final emojis):
+            ref
+                .read(emojisNotifierProvider(account.host).notifier)
+                .deleteAll(emojis.map((emoji) => emoji.name));
+          case broadcast.AnnouncementCreated(:final announcement):
+            if (i != null) {
+              await ref
+                  .read(iNotifierProvider(account).notifier)
+                  .addUnreadAnnouncement(announcement);
+            }
+        }
+      }),
     );
     final dialogAnnouncements = i?.unreadAnnouncements.where(
       (announcement) => announcement.display == AnnouncementDisplayType.dialog,
@@ -153,8 +148,9 @@ class TimelineWidget extends HookConsumerWidget {
     );
     final showLastViewedAt = useState(
       ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.showTimelineLastViewedAt),
+        generalSettingsNotifierProvider.select(
+          (settings) => settings.showTimelineLastViewedAt,
+        ),
       ),
     );
 
@@ -175,13 +171,15 @@ class TimelineWidget extends HookConsumerWidget {
                     child: Text.rich(
                       TextSpan(
                         children: [
-                          if (announcement
-                              case AnnouncementsResponse(:final icon?))
+                          if (announcement case AnnouncementsResponse(
+                            :final icon?,
+                          ))
                             WidgetSpan(
                               alignment: PlaceholderAlignment.middle,
                               child: Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.only(end: 2.0),
+                                padding: const EdgeInsetsDirectional.only(
+                                  end: 2.0,
+                                ),
                                 child: Icon(
                                   switch (icon) {
                                     AnnouncementIconType.info =>
@@ -192,9 +190,10 @@ class TimelineWidget extends HookConsumerWidget {
                                       Icons.warning_amber,
                                     AnnouncementIconType.success => Icons.check,
                                   },
-                                  size: DefaultTextStyle.of(context)
-                                      .style
-                                      .lineHeight,
+                                  size:
+                                      DefaultTextStyle.of(
+                                        context,
+                                      ).style.lineHeight,
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
@@ -233,13 +232,17 @@ class TimelineWidget extends HookConsumerWidget {
                       if (currentContext != null) {
                         await Scrollable.ensureVisible(currentContext);
                       } else {
-                        final centerId = ref
-                            .read(timelineCenterNotifierProvider(tabSettings));
+                        final centerId = ref.read(
+                          timelineCenterNotifierProvider(tabSettings),
+                        );
                         final maxScrollExtent =
                             scrollController.position.maxScrollExtent;
-                        final notes = ref
-                            .watch(timelineNotesNotifierProvider(tabSettings))
-                            .valueOrNull;
+                        final notes =
+                            ref
+                                .watch(
+                                  timelineNotesNotifierProvider(tabSettings),
+                                )
+                                .valueOrNull;
                         final oldestNote = notes?.items.lastOrNull;
                         if (centerId == null &&
                             oldestNote != null &&
@@ -265,8 +268,9 @@ class TimelineWidget extends HookConsumerWidget {
                         } else {
                           ref
                               .read(
-                                timelineCenterNotifierProvider(tabSettings)
-                                    .notifier,
+                                timelineCenterNotifierProvider(
+                                  tabSettings,
+                                ).notifier,
                               )
                               .setCenter(lastViewedNoteId);
                         }
@@ -281,7 +285,8 @@ class TimelineWidget extends HookConsumerWidget {
                           Expanded(
                             child: Text(
                               t.aria.jumpTo(
-                                x: '${absoluteTime(lastViewedAt)}'
+                                x:
+                                    '${absoluteTime(lastViewedAt)}'
                                     ' (${relativeTime(lastViewedAt)})',
                               ),
                               maxLines: 1,
@@ -319,7 +324,8 @@ class TimelineWidget extends HookConsumerWidget {
                           Expanded(
                             child: Text(
                               t.aria.jumpTo(
-                                x: '${absoluteTime(nextNoteDate)}'
+                                x:
+                                    '${absoluteTime(nextNoteDate)}'
                                     ' (${relativeTime(nextNoteDate)})',
                               ),
                               maxLines: 1,

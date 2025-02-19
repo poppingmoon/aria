@@ -37,10 +37,7 @@ class MutedWordsEditor extends HookConsumerWidget {
             } catch (e) {
               showMessageDialog(
                 context,
-                '${t.misskey.regexpErrorDescription(
-                  tab: hardMute ? t.misskey.hardWordMute : t.misskey.wordMute,
-                  line: index + 1,
-                )}\n$e',
+                '${t.misskey.regexpErrorDescription(tab: hardMute ? t.misskey.hardWordMute : t.misskey.wordMute, line: index + 1)}\n$e',
               );
               rethrow;
             }
@@ -55,31 +52,26 @@ class MutedWordsEditor extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final mutedWords =
-        ref.watch(mutedWordsNotifierProvider(account, hardMute: hardMute));
+    final mutedWords = ref.watch(
+      mutedWordsNotifierProvider(account, hardMute: hardMute),
+    );
     final controller = useTextEditingController();
     final wordMuteText = useState('');
     final isChanged = useState(false);
-    useEffect(
-      () {
-        wordMuteText.value = mutedWords
-            .map((muteWord) => muteWord.content?.join(' ') ?? muteWord.regExp)
-            .nonNulls
-            .join('\n');
-        controller.text = wordMuteText.value;
-        return;
-      },
-      [mutedWords],
-    );
-    useEffect(
-      () {
-        controller.addListener(() {
-          isChanged.value = controller.text != wordMuteText.value;
-        });
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      wordMuteText.value = mutedWords
+          .map((muteWord) => muteWord.content?.join(' ') ?? muteWord.regExp)
+          .nonNulls
+          .join('\n');
+      controller.text = wordMuteText.value;
+      return;
+    }, [mutedWords]);
+    useEffect(() {
+      controller.addListener(() {
+        isChanged.value = controller.text != wordMuteText.value;
+      });
+      return;
+    }, []);
 
     return ExpansionTile(
       leading: Icon(
@@ -127,22 +119,23 @@ class MutedWordsEditor extends HookConsumerWidget {
         SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(
-            onPressed: isChanged.value
-                ? () async {
-                    final mutes = _parseMutes(context, controller.text);
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(
-                            mutedWordsNotifierProvider(
-                              account,
-                              hardMute: hardMute,
-                            ).notifier,
-                          )
-                          .updateMutedWords(mutes),
-                    );
-                  }
-                : null,
+            onPressed:
+                isChanged.value
+                    ? () async {
+                      final mutes = _parseMutes(context, controller.text);
+                      await futureWithDialog(
+                        context,
+                        ref
+                            .read(
+                              mutedWordsNotifierProvider(
+                                account,
+                                hardMute: hardMute,
+                              ).notifier,
+                            )
+                            .updateMutedWords(mutes),
+                      );
+                    }
+                    : null,
             icon: const Icon(Icons.save),
             label: Text(t.misskey.save),
           ),

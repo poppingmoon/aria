@@ -23,15 +23,16 @@ class DriveFileNotes extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: notes,
-      itemBuilder: (context, note) => NoteWidget(
-        account: account,
-        noteId: note.id,
-      ),
-      onRefresh: () =>
-          ref.refresh(attachedNotesNotifierProvider(account, fileId).future),
-      loadMore: (skipError) => ref
-          .read(attachedNotesNotifierProvider(account, fileId).notifier)
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, note) => NoteWidget(account: account, noteId: note.id),
+      onRefresh:
+          () => ref.refresh(
+            attachedNotesNotifierProvider(account, fileId).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(attachedNotesNotifierProvider(account, fileId).notifier)
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

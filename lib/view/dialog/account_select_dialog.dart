@@ -21,23 +21,22 @@ class AccountSelectDialog extends HookConsumerWidget {
     final account = useState(initialAccount);
     final controller = useTextEditingController(text: initialAccount?.host);
     final focusNode = useFocusNode();
-    useEffect(
-      () {
-        controller.addListener(
-          () => account.value = Account(
-            host: toAscii(
-              controller.text
-                  .trim()
-                  .replaceFirst('https://', '')
-                  .split('/')
-                  .first,
-            ).toLowerCase(),
-          ),
-        );
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      controller.addListener(
+        () =>
+            account.value = Account(
+              host:
+                  toAscii(
+                    controller.text
+                        .trim()
+                        .replaceFirst('https://', '')
+                        .split('/')
+                        .first,
+                  ).toLowerCase(),
+            ),
+      );
+      return;
+    }, []);
 
     return AlertDialog(
       title: Text(t.misskey.selectAccount),
@@ -62,8 +61,8 @@ class AccountSelectDialog extends HookConsumerWidget {
             title: Text(t.aria.guest),
             value: true,
             groupValue: account.value?.isGuest ?? false,
-            onChanged: (value) =>
-                account.value = Account(host: controller.text),
+            onChanged:
+                (value) => account.value = Account(host: controller.text),
           ),
           if (account.value?.isGuest ?? false) ...[
             MisskeyServerAutocomplete(

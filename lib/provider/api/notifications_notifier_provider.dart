@@ -27,96 +27,99 @@ class NotificationsNotifier extends _$NotificationsNotifier {
       [],
       (acc, notification) => switch (notification.type) {
         NotificationType.reaction => switch (acc.lastOrNull) {
-            final previousNotification? => switch (previousNotification.type) {
-                NotificationType.reaction => [
-                    ...acc.toList().sublist(0, acc.length - 1),
-                    if (previousNotification.note?.id == notification.note?.id)
-                      previousNotification.copyWith(
-                        id: notification.id,
-                        type: NotificationType.reactionGrouped,
-                        reaction: null,
-                        user: null,
-                        reactions: [
-                          if (previousNotification
-                              case INotificationsResponse(
-                                :final user?,
-                                :final reaction?
-                              ))
-                            INotificationsReaction(
-                              user: user,
-                              reaction: reaction,
-                            ),
-                          if (notification
-                              case INotificationsResponse(
-                                :final user?,
-                                :final reaction?
-                              ))
-                            INotificationsReaction(
-                              user: user,
-                              reaction: reaction,
-                            ),
-                        ],
-                      )
-                    else ...[previousNotification, notification],
+          final previousNotification? => switch (previousNotification.type) {
+            NotificationType.reaction => [
+              ...acc.toList().sublist(0, acc.length - 1),
+              if (previousNotification.note?.id == notification.note?.id)
+                previousNotification.copyWith(
+                  id: notification.id,
+                  type: NotificationType.reactionGrouped,
+                  reaction: null,
+                  user: null,
+                  reactions: [
+                    if (previousNotification case INotificationsResponse(
+                      :final user?,
+                      :final reaction?,
+                    ))
+                      INotificationsReaction(user: user, reaction: reaction),
+                    if (notification case INotificationsResponse(
+                      :final user?,
+                      :final reaction?,
+                    ))
+                      INotificationsReaction(user: user, reaction: reaction),
                   ],
-                NotificationType.reactionGrouped => [
-                    ...acc.toList().sublist(0, acc.length - 1),
-                    if (previousNotification.note?.id == notification.note?.id)
-                      previousNotification.copyWith(
-                        id: notification.id,
-                        reactions: [
-                          ...?previousNotification.reactions,
-                          if (notification
-                              case INotificationsResponse(
-                                :final user?,
-                                :final reaction?
-                              ))
-                            INotificationsReaction(
-                              user: user,
-                              reaction: reaction,
-                            ),
-                        ],
-                      )
-                    else ...[previousNotification, notification],
+                )
+              else ...[
+                previousNotification,
+                notification,
+              ],
+            ],
+            NotificationType.reactionGrouped => [
+              ...acc.toList().sublist(0, acc.length - 1),
+              if (previousNotification.note?.id == notification.note?.id)
+                previousNotification.copyWith(
+                  id: notification.id,
+                  reactions: [
+                    ...?previousNotification.reactions,
+                    if (notification case INotificationsResponse(
+                      :final user?,
+                      :final reaction?,
+                    ))
+                      INotificationsReaction(user: user, reaction: reaction),
                   ],
-                _ => [...acc, notification],
-              },
+                )
+              else ...[
+                previousNotification,
+                notification,
+              ],
+            ],
             _ => [...acc, notification],
           },
+          _ => [...acc, notification],
+        },
         NotificationType.renote => switch (acc.lastOrNull) {
-            final previousNotification? => switch (previousNotification.type) {
-                NotificationType.renote => [
-                    ...acc.toList().sublist(0, acc.length - 1),
-                    if (previousNotification.note?.renoteId ==
-                        notification.note?.renoteId)
-                      previousNotification.copyWith(
-                        id: notification.id,
-                        type: NotificationType.renoteGrouped,
-                        userId: null,
-                        user: null,
-                        users: [previousNotification.user, notification.user]
-                            .nonNulls
-                            .toList(),
-                      )
-                    else ...[previousNotification, notification],
-                  ],
-                NotificationType.renoteGrouped => [
-                    ...acc.toList().sublist(0, acc.length - 1),
-                    if (previousNotification.note?.renoteId ==
-                        notification.note?.renoteId)
-                      previousNotification.copyWith(
-                        id: notification.id,
-                        users: [
-                          ...?previousNotification.users,
-                          notification.user,
-                        ].nonNulls.toList(),
-                      )
-                    else ...[previousNotification, notification],
-                  ],
-                _ => [...acc, notification],
-              },
+          final previousNotification? => switch (previousNotification.type) {
+            NotificationType.renote => [
+              ...acc.toList().sublist(0, acc.length - 1),
+              if (previousNotification.note?.renoteId ==
+                  notification.note?.renoteId)
+                previousNotification.copyWith(
+                  id: notification.id,
+                  type: NotificationType.renoteGrouped,
+                  userId: null,
+                  user: null,
+                  users:
+                      [
+                        previousNotification.user,
+                        notification.user,
+                      ].nonNulls.toList(),
+                )
+              else ...[
+                previousNotification,
+                notification,
+              ],
+            ],
+            NotificationType.renoteGrouped => [
+              ...acc.toList().sublist(0, acc.length - 1),
+              if (previousNotification.note?.renoteId ==
+                  notification.note?.renoteId)
+                previousNotification.copyWith(
+                  id: notification.id,
+                  users:
+                      [
+                        ...?previousNotification.users,
+                        notification.user,
+                      ].nonNulls.toList(),
+                )
+              else ...[
+                previousNotification,
+                notification,
+              ],
+            ],
             _ => [...acc, notification],
           },
+          _ => [...acc, notification],
+        },
         _ => [...acc, notification],
       },
     );
@@ -128,13 +131,16 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     Iterable<INotificationsResponse>? notifications;
     if (ref.read(generalSettingsNotifierProvider).useGroupedNotifications) {
       try {
-        final endpoints =
-            await ref.read(endpointsProvider(account.host).future);
+        final endpoints = await ref.read(
+          endpointsProvider(account.host).future,
+        );
         if (endpoints.contains('i/notifications-grouped')) {
-          notifications =
-              await ref.read(misskeyProvider(account)).i.notificationsGrouped(
-                    INotificationsGroupedRequest(untilId: untilId, limit: 20),
-                  );
+          notifications = await ref
+              .read(misskeyProvider(account))
+              .i
+              .notificationsGrouped(
+                INotificationsGroupedRequest(untilId: untilId, limit: 20),
+              );
         }
       } catch (_) {}
       if (notifications == null) {
@@ -150,7 +156,9 @@ class NotificationsNotifier extends _$NotificationsNotifier {
           .i
           .notifications(INotificationsRequest(untilId: untilId, limit: 20));
     }
-    ref.read(notesNotifierProvider(account).notifier).addAll(
+    ref
+        .read(notesNotifierProvider(account).notifier)
+        .addAll(
           notifications.map((notification) => notification.note).nonNulls,
         );
     return notifications.where((notification) => notification.id != untilId);
@@ -166,8 +174,9 @@ class NotificationsNotifier extends _$NotificationsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchNotifications(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchNotifications(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,

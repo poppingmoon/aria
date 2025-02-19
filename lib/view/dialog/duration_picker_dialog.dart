@@ -11,17 +11,13 @@ Future<Duration?> showDurationPickerDialog(
 }) {
   return showDialog(
     context: context,
-    builder: (context) => DurationPickerDialog(
-      initialDuration: initialDuration,
-    ),
+    builder:
+        (context) => DurationPickerDialog(initialDuration: initialDuration),
   );
 }
 
 class DurationPickerDialog extends HookWidget {
-  const DurationPickerDialog({
-    super.key,
-    this.initialDuration,
-  });
+  const DurationPickerDialog({super.key, this.initialDuration});
 
   final Duration? initialDuration;
 
@@ -89,14 +85,15 @@ class DurationPickerDialog extends HookWidget {
             ),
             keyboardType: TextInputType.number,
             textInputAction: TextInputAction.done,
-            onSubmitted: (_) => context.pop(
-              Duration(
-                days: int.tryParse(daysController.text) ?? 0,
-                hours: int.tryParse(hoursController.text) ?? 0,
-                minutes: int.tryParse(minutesController.text) ?? 0,
-                seconds: int.tryParse(secondsController.text) ?? 0,
-              ),
-            ),
+            onSubmitted:
+                (_) => context.pop(
+                  Duration(
+                    days: int.tryParse(daysController.text) ?? 0,
+                    hours: int.tryParse(hoursController.text) ?? 0,
+                    minutes: int.tryParse(minutesController.text) ?? 0,
+                    seconds: int.tryParse(secondsController.text) ?? 0,
+                  ),
+                ),
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
@@ -104,14 +101,15 @@ class DurationPickerDialog extends HookWidget {
       ),
       actions: [
         ElevatedButton(
-          onPressed: () => context.pop(
-            Duration(
-              days: int.tryParse(daysController.text) ?? 0,
-              hours: int.tryParse(hoursController.text) ?? 0,
-              minutes: int.tryParse(minutesController.text) ?? 0,
-              seconds: int.tryParse(secondsController.text) ?? 0,
-            ),
-          ),
+          onPressed:
+              () => context.pop(
+                Duration(
+                  days: int.tryParse(daysController.text) ?? 0,
+                  hours: int.tryParse(hoursController.text) ?? 0,
+                  minutes: int.tryParse(minutesController.text) ?? 0,
+                  seconds: int.tryParse(secondsController.text) ?? 0,
+                ),
+              ),
           child: Text(t.misskey.ok),
         ),
         OutlinedButton(

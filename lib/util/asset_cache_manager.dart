@@ -33,11 +33,6 @@ class AssetCacheManager extends CacheManager with ImageCacheManager {
     int? maxWidth,
   }) async* {
     final file = await getSingleFile(url);
-    yield FileInfo(
-      file,
-      FileSource.Cache,
-      DateTime(10000),
-      url,
-    );
+    yield FileInfo(file, FileSource.Cache, DateTime(10000), url);
   }
 }

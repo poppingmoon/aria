@@ -25,13 +25,18 @@ class NotesAfterRenotesPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.aria.notesAfterRenotes)),
       body: PaginatedListView(
         paginationState: notes,
-        itemBuilder: (context, note) =>
-            NoteWidget(account: account, noteId: note.id),
-        onRefresh: () => ref
-            .refresh(notesAfterRenotesNotifierProvider(account, noteId).future),
-        loadMore: (skipError) => ref
-            .read(notesAfterRenotesNotifierProvider(account, noteId).notifier)
-            .loadMore(skipError: skipError),
+        itemBuilder:
+            (context, note) => NoteWidget(account: account, noteId: note.id),
+        onRefresh:
+            () => ref.refresh(
+              notesAfterRenotesNotifierProvider(account, noteId).future,
+            ),
+        loadMore:
+            (skipError) => ref
+                .read(
+                  notesAfterRenotesNotifierProvider(account, noteId).notifier,
+                )
+                .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noNotes,
       ),
     );

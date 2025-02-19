@@ -20,13 +20,17 @@ class AuthenticatePage extends ConsumerWidget {
         title: Text(t.misskey.authenticationRequiredToContinue),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                onTap: () =>
-                    copyToClipboard(context, miAuthState!.url.toString()),
-                child: Text(t.misskey.copyLink),
-              ),
-            ],
+            itemBuilder:
+                (context) => [
+                  PopupMenuItem(
+                    onTap:
+                        () => copyToClipboard(
+                          context,
+                          miAuthState!.url.toString(),
+                        ),
+                    child: Text(t.misskey.copyLink),
+                  ),
+                ],
           ),
         ],
       ),

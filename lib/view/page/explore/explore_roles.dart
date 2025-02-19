@@ -22,13 +22,14 @@ class ExploreRoles extends ConsumerWidget {
       onRefresh: () => ref.refresh(rolesProvider(account).future),
       child: switch (roles) {
         AsyncValue(valueOrNull: final roles?) => Builder(
-            builder: (context) {
-              final manualRoles =
-                  roles.where((role) => role.target == 'manual').toList();
-              return manualRoles.isEmpty
-                  ? Center(child: Text(t.misskey.noRole))
-                  : ListView.builder(
-                      itemBuilder: (context, index) => Center(
+          builder: (context) {
+            final manualRoles =
+                roles.where((role) => role.target == 'manual').toList();
+            return manualRoles.isEmpty
+                ? Center(child: Text(t.misskey.noRole))
+                : ListView.builder(
+                  itemBuilder:
+                      (context, index) => Center(
                         child: Container(
                           margin: EdgeInsets.only(
                             left: 8.0,
@@ -40,18 +41,21 @@ class ExploreRoles extends ConsumerWidget {
                           child: RolePreview(
                             account: account,
                             role: manualRoles[index],
-                            onTap: () => context.push(
-                              '/$account/roles/${manualRoles[index].id}',
-                            ),
+                            onTap:
+                                () => context.push(
+                                  '/$account/roles/${manualRoles[index].id}',
+                                ),
                           ),
                         ),
                       ),
-                      itemCount: manualRoles.length,
-                    );
-            },
-          ),
-        AsyncValue(:final error?, :final stackTrace) =>
-          ErrorMessage(error: error, stackTrace: stackTrace),
+                  itemCount: manualRoles.length,
+                );
+          },
+        ),
+        AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
+          error: error,
+          stackTrace: stackTrace,
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );

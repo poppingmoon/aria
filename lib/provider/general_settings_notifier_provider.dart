@@ -147,16 +147,18 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   Future<void> setShowLikeButtonInNoteFooter(
     bool showLikeButtonInNoteFooter,
   ) async {
-    state =
-        state.copyWith(showLikeButtonInNoteFooter: showLikeButtonInNoteFooter);
+    state = state.copyWith(
+      showLikeButtonInNoteFooter: showLikeButtonInNoteFooter,
+    );
     await _save();
   }
 
   Future<void> setShowClipButtonInNoteFooter(
     bool showClipButtonInNoteFooter,
   ) async {
-    state =
-        state.copyWith(showClipButtonInNoteFooter: showClipButtonInNoteFooter);
+    state = state.copyWith(
+      showClipButtonInNoteFooter: showClipButtonInNoteFooter,
+    );
     await _save();
   }
 
@@ -169,9 +171,7 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
-  Future<void> setShowNoteReactionsViewer(
-    bool showNoteReactionsViewer,
-  ) async {
+  Future<void> setShowNoteReactionsViewer(bool showNoteReactionsViewer) async {
     state = state.copyWith(showNoteReactionsViewer: showNoteReactionsViewer);
     await _save();
   }
@@ -179,8 +179,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   Future<void> setShowSubNoteReactionsViewer(
     bool showSubNoteReactionsViewer,
   ) async {
-    state =
-        state.copyWith(showSubNoteReactionsViewer: showSubNoteReactionsViewer);
+    state = state.copyWith(
+      showSubNoteReactionsViewer: showSubNoteReactionsViewer,
+    );
     await _save();
   }
 
@@ -207,8 +208,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   Future<void> setAlwaysExpandMediaInSubNote(
     bool alwaysExpandMediaInSubNote,
   ) async {
-    state =
-        state.copyWith(alwaysExpandMediaInSubNote: alwaysExpandMediaInSubNote);
+    state = state.copyWith(
+      alwaysExpandMediaInSubNote: alwaysExpandMediaInSubNote,
+    );
     await _save();
   }
 
@@ -289,8 +291,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   Future<void> setPublicNoteBackgroundColor(
     Color? publicNoteBackgroundColor,
   ) async {
-    state =
-        state.copyWith(publicNoteBackgroundColor: publicNoteBackgroundColor);
+    state = state.copyWith(
+      publicNoteBackgroundColor: publicNoteBackgroundColor,
+    );
     await _save();
   }
 
@@ -357,8 +360,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   Future<void> setDisableDataSaverWhenOnWifi(
     bool disableDataSaverWhenOnWifi,
   ) async {
-    state =
-        state.copyWith(disableDataSaverWhenOnWifi: disableDataSaverWhenOnWifi);
+    state = state.copyWith(
+      disableDataSaverWhenOnWifi: disableDataSaverWhenOnWifi,
+    );
     await _save();
   }
 
@@ -394,8 +398,9 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
   Future<void> setShowTimelineTabBarAtBottom(
     bool showTimelineTabBarAtBottom,
   ) async {
-    state =
-        state.copyWith(showTimelineTabBarAtBottom: showTimelineTabBarAtBottom);
+    state = state.copyWith(
+      showTimelineTabBarAtBottom: showTimelineTabBarAtBottom,
+    );
     await _save();
   }
 

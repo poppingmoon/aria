@@ -21,11 +21,7 @@ import 'time_widget.dart';
 import 'url_widget.dart';
 
 class DriveFileInfo extends ConsumerWidget {
-  const DriveFileInfo({
-    super.key,
-    required this.account,
-    required this.file,
-  });
+  const DriveFileInfo({super.key, required this.account, required this.file});
 
   final Account account;
   final DriveFile file;
@@ -50,9 +46,9 @@ class DriveFileInfo extends ConsumerWidget {
   Future<void> _setComment(WidgetRef ref, DriveFile file) async {
     final comment = await showDialog<String>(
       context: ref.context,
-      builder: (context) => FileCaptionEditDialog(
-        file: DrivePostFile.fromDriveFile(file),
-      ),
+      builder:
+          (context) =>
+              FileCaptionEditDialog(file: DrivePostFile.fromDriveFile(file)),
     );
     if (!ref.context.mounted) return;
     if (comment != null && comment != file.comment) {
@@ -74,8 +70,9 @@ class DriveFileInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return SingleChildScrollView(
       child: Column(
@@ -134,9 +131,10 @@ class DriveFileInfo extends ConsumerWidget {
                     ),
                     InkWell(
                       onTap: () => _setComment(ref, file),
-                      onLongPress: file.comment != null
-                          ? () => copyToClipboard(context, file.comment!)
-                          : null,
+                      onLongPress:
+                          file.comment != null
+                              ? () => copyToClipboard(context, file.comment!)
+                              : null,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text.rich(
@@ -149,9 +147,10 @@ class DriveFileInfo extends ConsumerWidget {
                               ),
                             ],
                             style: TextStyle(
-                              color: file.comment == null
-                                  ? colors.fg.withValues(alpha: 0.5)
-                                  : null,
+                              color:
+                                  file.comment == null
+                                      ? colors.fg.withValues(alpha: 0.5)
+                                      : null,
                             ),
                           ),
                         ),
@@ -167,10 +166,11 @@ class DriveFileInfo extends ConsumerWidget {
                     ),
                     Checkbox(
                       value: file.isSensitive,
-                      onChanged: (isSensitive) => futureWithDialog(
-                        context,
-                        _setIsSensitive(ref, isSensitive),
-                      ),
+                      onChanged:
+                          (isSensitive) => futureWithDialog(
+                            context,
+                            _setIsSensitive(ref, isSensitive),
+                          ),
                     ),
                   ],
                 ),
@@ -181,10 +181,11 @@ class DriveFileInfo extends ConsumerWidget {
                       child: Text(t.misskey.fileViewer_.uploadedAt),
                     ),
                     InkWell(
-                      onLongPress: () => copyToClipboard(
-                        context,
-                        absoluteTime(file.createdAt),
-                      ),
+                      onLongPress:
+                          () => copyToClipboard(
+                            context,
+                            absoluteTime(file.createdAt),
+                          ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TimeWidget(time: file.createdAt, detailed: true),
@@ -214,8 +215,9 @@ class DriveFileInfo extends ConsumerWidget {
                       child: Text(t.misskey.fileViewer_.size),
                     ),
                     InkWell(
-                      onLongPress: () =>
-                          copyToClipboard(context, prettyBytes(file.size)),
+                      onLongPress:
+                          () =>
+                              copyToClipboard(context, prettyBytes(file.size)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(prettyBytes(file.size.toDouble())),
@@ -231,10 +233,11 @@ class DriveFileInfo extends ConsumerWidget {
                         child: Text(t.misskey.width),
                       ),
                       InkWell(
-                        onLongPress: () => copyToClipboard(
-                          context,
-                          file.properties.width.toString(),
-                        ),
+                        onLongPress:
+                            () => copyToClipboard(
+                              context,
+                              file.properties.width.toString(),
+                            ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(file.properties.width.toString()),
@@ -250,10 +253,11 @@ class DriveFileInfo extends ConsumerWidget {
                         child: Text(t.misskey.height),
                       ),
                       InkWell(
-                        onLongPress: () => copyToClipboard(
-                          context,
-                          file.properties.height.toString(),
-                        ),
+                        onLongPress:
+                            () => copyToClipboard(
+                              context,
+                              file.properties.height.toString(),
+                            ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(file.properties.height.toString()),

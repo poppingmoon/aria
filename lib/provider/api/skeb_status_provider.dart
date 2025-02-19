@@ -16,15 +16,16 @@ FutureOr<UsersGetSkebStatusResponse> skebStatus(
   String userId,
 ) async {
   final userAgent = await ref.watch(userAgentProvider.future);
-  final response = await ref.watch(dioProvider).getUri<Map<String, dynamic>>(
-        Uri.https(
-          account.host,
-          'api/users/get-skeb-status',
-          {'userId': userId},
-        ),
-        options: userAgent != null
-            ? Options(headers: {'User-Agent': userAgent})
-            : null,
+  final response = await ref
+      .watch(dioProvider)
+      .getUri<Map<String, dynamic>>(
+        Uri.https(account.host, 'api/users/get-skeb-status', {
+          'userId': userId,
+        }),
+        options:
+            userAgent != null
+                ? Options(headers: {'User-Agent': userAgent})
+                : null,
       );
 
   return UsersGetSkebStatusResponse.fromJson(response.data!);

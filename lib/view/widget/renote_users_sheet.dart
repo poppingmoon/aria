@@ -10,10 +10,7 @@ import 'user_preview.dart';
 import 'user_sheet.dart';
 
 class RenoteUsersSheet extends ConsumerWidget {
-  const RenoteUsersSheet({
-    required this.account,
-    required this.noteId,
-  });
+  const RenoteUsersSheet({required this.account, required this.noteId});
 
   final Account account;
   final String noteId;
@@ -26,41 +23,49 @@ class RenoteUsersSheet extends ConsumerWidget {
       minChildSize: 0.5,
       maxChildSize: 0.8,
       expand: false,
-      builder: (context, scrollController) => Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-            leading: const Icon(Icons.repeat_rounded),
-            title: Text(
-              t.misskey.renote,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(
-            child: PaginatedListView(
-              controller: scrollController,
-              paginationState: renotes,
-              itemBuilder: (context, note) => UserPreview(
-                account: account,
-                user: note.user,
-                onTap: () => context.push('/$account/users/${note.userId}'),
-                onLongPress: () => showUserSheet(
-                  context: context,
-                  account: account,
-                  userId: note.userId,
+      builder:
+          (context, scrollController) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: const Icon(Icons.repeat_rounded),
+                title: Text(
+                  t.misskey.renote,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               ),
-              onRefresh: () =>
-                  ref.refresh(renotesNotifierProvider(account, noteId).future),
-              loadMore: (skipError) => ref
-                  .read(
-                    renotesNotifierProvider(account, noteId).notifier,
-                  )
-                  .loadMore(skipError: skipError),
-            ),
+              Expanded(
+                child: PaginatedListView(
+                  controller: scrollController,
+                  paginationState: renotes,
+                  itemBuilder:
+                      (context, note) => UserPreview(
+                        account: account,
+                        user: note.user,
+                        onTap:
+                            () =>
+                                context.push('/$account/users/${note.userId}'),
+                        onLongPress:
+                            () => showUserSheet(
+                              context: context,
+                              account: account,
+                              userId: note.userId,
+                            ),
+                      ),
+                  onRefresh:
+                      () => ref.refresh(
+                        renotesNotifierProvider(account, noteId).future,
+                      ),
+                  loadMore:
+                      (skipError) => ref
+                          .read(
+                            renotesNotifierProvider(account, noteId).notifier,
+                          )
+                          .loadMore(skipError: skipError),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 }

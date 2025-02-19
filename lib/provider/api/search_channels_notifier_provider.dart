@@ -20,12 +20,16 @@ class SearchChannelsNotifier extends _$SearchChannelsNotifier {
   }
 
   Future<Iterable<CommunityChannel>> _fetchChannels({String? untilId}) async {
-    final channels = await ref.read(misskeyProvider(account)).channels.search(
+    final channels = await ref
+        .read(misskeyProvider(account))
+        .channels
+        .search(
           ChannelsSearchRequest(
             query: query,
-            type: includeDescription
-                ? ChannelSearchType.nameAndDescription
-                : ChannelSearchType.nameOnly,
+            type:
+                includeDescription
+                    ? ChannelSearchType.nameAndDescription
+                    : ChannelSearchType.nameOnly,
             untilId: untilId,
           ),
         );
@@ -42,8 +46,9 @@ class SearchChannelsNotifier extends _$SearchChannelsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchChannels(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchChannels(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,

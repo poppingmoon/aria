@@ -10,19 +10,17 @@ import '../../util/edit_image.dart';
 import '../../util/future_with_dialog.dart';
 
 class CropImagePage extends HookWidget {
-  const CropImagePage({
-    super.key,
-    required this.image,
-    this.aspectRatio,
-  });
+  const CropImagePage({super.key, required this.image, this.aspectRatio});
 
   final Uint8List image;
   final double? aspectRatio;
 
   @override
   Widget build(BuildContext context) {
-    final editorKey =
-        useMemoized(() => GlobalKey<ExtendedImageEditorState>(), []);
+    final editorKey = useMemoized(
+      () => GlobalKey<ExtendedImageEditorState>(),
+      [],
+    );
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.cropImage)),
@@ -32,9 +30,9 @@ class CropImagePage extends HookWidget {
         mode: ExtendedImageMode.editor,
         extendedImageEditorKey: editorKey,
         cacheRawData: true,
-        initEditorConfigHandler: (ExtendedImageState? state) => EditorConfig(
-          cropAspectRatio: aspectRatio,
-        ),
+        initEditorConfigHandler:
+            (ExtendedImageState? state) =>
+                EditorConfig(cropAspectRatio: aspectRatio),
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: t.misskey.continue_,

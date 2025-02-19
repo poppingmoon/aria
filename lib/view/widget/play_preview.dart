@@ -54,12 +54,13 @@ class PlayPreview extends StatelessWidget {
             ),
         ],
       ),
-      trailing: play.visibility == FlashVisibility.private
-          ? Tooltip(
-              message: t.misskey.private,
-              child: const Icon(Icons.visibility_off),
-            )
-          : null,
+      trailing:
+          play.visibility == FlashVisibility.private
+              ? Tooltip(
+                message: t.misskey.private,
+                child: const Icon(Icons.visibility_off),
+              )
+              : null,
       onTap: onTap,
     );
   }

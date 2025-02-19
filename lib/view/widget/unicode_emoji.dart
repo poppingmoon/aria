@@ -62,10 +62,7 @@ class UnicodeEmoji extends ConsumerWidget {
 
     switch (emojiStyle) {
       case EmojiStyle.native:
-        return InkWell(
-          onTap: onTap,
-          child: Text(emoji, style: style),
-        );
+        return InkWell(onTap: onTap, child: Text(emoji, style: style));
       case EmojiStyle.twemoji:
         final padding = style.fontSize! * ((style.height ?? 1.0) - 1.0) / 2;
         return InkWell(

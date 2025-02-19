@@ -50,9 +50,10 @@ class Code extends StatelessWidget {
                   code,
                   languageId: languageId,
                   theme: theme,
-                  padding: inline
-                      ? const EdgeInsets.symmetric(horizontal: 2.0)
-                      : const EdgeInsets.all(16.0),
+                  padding:
+                      inline
+                          ? const EdgeInsets.symmetric(horizontal: 2.0)
+                          : const EdgeInsets.all(16.0),
                   textStyle: TextStyle(
                     fontSize: fontSize,
                     fontFamilyFallback: monospaceFallback,
@@ -68,10 +69,9 @@ class Code extends StatelessWidget {
             child: IconButton(
               tooltip: t.misskey.copy,
               style: IconButton.styleFrom(
-                foregroundColor: Theme.of(context)
-                    .colorScheme
-                    .onSurface
-                    .withValues(alpha: 0.5),
+                foregroundColor: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.5),
                 minimumSize: Size.zero,
                 iconSize: DefaultTextStyle.of(context).style.lineHeight,
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,

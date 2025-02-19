@@ -46,20 +46,23 @@ class EmojiPickerPage extends HookConsumerWidget {
                   child: ListTileTheme.merge(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.vertical(
-                        top: index == 0
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                        bottom: index == accounts.length - 1
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
+                        top:
+                            index == 0
+                                ? const Radius.circular(8.0)
+                                : Radius.zero,
+                        bottom:
+                            index == accounts.length - 1
+                                ? const Radius.circular(8.0)
+                                : Radius.zero,
                       ),
                     ),
                     child: AccountPreview(
                       account: account,
                       trailing: const Icon(Icons.navigate_next),
-                      onTap: () => context.push(
-                        '/settings/accounts/$account/emoji-picker',
-                      ),
+                      onTap:
+                          () => context.push(
+                            '/settings/accounts/$account/emoji-picker',
+                          ),
                     ),
                   ),
                 ),
@@ -83,9 +86,10 @@ class EmojiPickerPage extends HookConsumerWidget {
                 child: SwitchListTile(
                   title: Text(t.aria.emojiPickerUseDialog),
                   value: settings.emojiPickerUseDialog,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setEmojiPickerUseDialog(value),
+                  onChanged:
+                      (value) => ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setEmojiPickerUseDialog(value),
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.vertical(
                       top: Radius.circular(8.0),
@@ -101,9 +105,10 @@ class EmojiPickerPage extends HookConsumerWidget {
                 child: SwitchListTile(
                   title: Text(t.aria.emojiPickerAutofocus),
                   value: settings.emojiPickerAutofocus,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setEmojiPickerAutofocus(value),
+                  onChanged:
+                      (value) => ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setEmojiPickerAutofocus(value),
                 ),
               ),
             ),
@@ -128,9 +133,10 @@ class EmojiPickerPage extends HookConsumerWidget {
                         max: maxEmojiPickerScale,
                         label: emojiPickerScale.value.toStringAsFixed(3),
                         onChanged: (value) => emojiPickerScale.value = value,
-                        onChangeEnd: (value) => ref
-                            .read(generalSettingsNotifierProvider.notifier)
-                            .setEmojiPickerScale(value),
+                        onChangeEnd:
+                            (value) => ref
+                                .read(generalSettingsNotifierProvider.notifier)
+                                .setEmojiPickerScale(value),
                       ),
                       trailing: IconButton(
                         onPressed: () {
@@ -147,16 +153,18 @@ class EmojiPickerPage extends HookConsumerWidget {
                       child: Wrap(
                         spacing: 4.0,
                         runSpacing: 4.0,
-                        children: defaultPinnedEmojis
-                            .map(
-                              (emoji) => UnicodeEmoji(
-                                emoji: emoji,
-                                style: theme.textTheme.bodyMedium!.apply(
-                                  fontSizeFactor: 2.0 * emojiPickerScale.value,
-                                ),
-                              ),
-                            )
-                            .toList(),
+                        children:
+                            defaultPinnedEmojis
+                                .map(
+                                  (emoji) => UnicodeEmoji(
+                                    emoji: emoji,
+                                    style: theme.textTheme.bodyMedium!.apply(
+                                      fontSizeFactor:
+                                          2.0 * emojiPickerScale.value,
+                                    ),
+                                  ),
+                                )
+                                .toList(),
                       ),
                     ),
                     const SizedBox(height: 8.0),

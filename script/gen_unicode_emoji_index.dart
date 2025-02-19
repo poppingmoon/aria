@@ -1269,10 +1269,11 @@ void main() {
   final textToEmoji = SplayTreeMap<String, Set<String>>();
   final emojis = [
     ...jsonDecode(
-      File(
-        'misskey/packages/frontend-shared/js/emojilist.json',
-      ).readAsStringSync(),
-    ) as List,
+          File(
+            'misskey/packages/frontend-shared/js/emojilist.json',
+          ).readAsStringSync(),
+        )
+        as List,
     ...emojilist,
   ];
   for (final emoji in emojis) {
@@ -1282,8 +1283,9 @@ void main() {
     categorized.putIfAbsent(category, () => []).add(char);
     textToEmoji.putIfAbsent(name, () => {}).add(char);
   }
-  final categorizedEmojisFile =
-      File('lib/constant/categorized_unicode_emojis.g.dart');
+  final categorizedEmojisFile = File(
+    'lib/constant/categorized_unicode_emojis.g.dart',
+  );
   categorizedEmojisFile.writeAsStringSync("""
 /// Generated file. Do not edit.
 ///
@@ -1299,10 +1301,11 @@ const categorizedUnicodeEmojis = ${const JsonEncoder.withIndent('  ').convert(ca
   for (final language in languages) {
     final emojiToText = {
       ...jsonDecode(
-        File(
-          'misskey/packages/frontend/src/unicode-emoji-indexes/$language.json',
-        ).readAsStringSync(),
-      ) as Map<String, dynamic>,
+            File(
+              'misskey/packages/frontend/src/unicode-emoji-indexes/$language.json',
+            ).readAsStringSync(),
+          )
+          as Map<String, dynamic>,
       ...?unicodeEmojiIndexes[language],
     };
     for (final entry in emojiToText.entries) {

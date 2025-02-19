@@ -30,24 +30,21 @@ class AudioDialog extends HookConsumerWidget {
     final playbackState = ref.watch(playbackStateProvider);
     final position = ref.watch(positionProvider);
     final user = this.user ?? file.user;
-    useEffect(
-      () {
-        Future(() async {
-          final audioHandler = await ref.read(audioHandlerProvider.future);
-          await audioHandler.updateMediaItem(
-            MediaItem(
-              id: file.url,
-              title: file.name,
-              artist: user?.nameOrUsername,
-              artUri: user?.avatarUrl,
-            ),
-          );
-          await audioHandler.play();
-        });
-        return audioHandler.valueOrNull?.stop;
-      },
-      [],
-    );
+    useEffect(() {
+      Future(() async {
+        final audioHandler = await ref.read(audioHandlerProvider.future);
+        await audioHandler.updateMediaItem(
+          MediaItem(
+            id: file.url,
+            title: file.name,
+            artist: user?.nameOrUsername,
+            artUri: user?.avatarUrl,
+          ),
+        );
+        await audioHandler.play();
+      });
+      return audioHandler.valueOrNull?.stop;
+    }, []);
 
     return Dialog(
       child: Padding(

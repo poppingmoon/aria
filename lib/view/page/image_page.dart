@@ -26,23 +26,10 @@ import '../widget/file_picker_sheet.dart';
 import '../widget/layers_sheet.dart';
 import '../widget/layers_viewer.dart';
 
-enum _Modes {
-  move,
-  crop,
-  flip,
-  rotate,
-  draw,
-  text,
-  image,
-  emoji,
-}
+enum _Modes { move, crop, flip, rotate, draw, text, image, emoji }
 
 class ImagePage extends HookConsumerWidget {
-  const ImagePage({
-    super.key,
-    required this.account,
-    required this.image,
-  });
+  const ImagePage({super.key, required this.account, required this.image});
 
   final Account account;
   final Uint8List image;
@@ -54,17 +41,14 @@ class ImagePage extends HookConsumerWidget {
     final overlayLayers = ref.watch(overlayLayersNotifierProvider);
     final poppedLayers = useState(<Layer>[]);
     final images = useState(<Uint8List, Image>{});
-    useEffect(
-      () {
-        Future(() async {
-          final data = backgroundLayer.value.data;
-          final image = await decodeImageFromList(data);
-          images.value = {...images.value, data: image};
-        });
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      Future(() async {
+        final data = backgroundLayer.value.data;
+        final image = await decodeImageFromList(data);
+        images.value = {...images.value, data: image};
+      });
+      return;
+    }, []);
     backgroundLayer.addListener(() async {
       final data = backgroundLayer.value.data;
       final image = await decodeImageFromList(data);
@@ -80,8 +64,10 @@ class ImagePage extends HookConsumerWidget {
         }),
       );
     });
-    final layersViewerKey =
-        useMemoized(() => GlobalKey<LayersViewerState>(), []);
+    final layersViewerKey = useMemoized(
+      () => GlobalKey<LayersViewerState>(),
+      [],
+    );
     final transformationController = useTransformationController();
     final selectedIndex = useState(0);
     final mode = _Modes.values[selectedIndex.value];
@@ -165,26 +151,38 @@ class ImagePage extends HookConsumerWidget {
                   ),
                   const Spacer(),
                   IconButton(
-                    onPressed: overlayLayers.firstOrNull is DrawLayer
-                        ? () {
-                            final layer = ref
-                                .read(overlayLayersNotifierProvider.notifier)
-                                .remove(0) as DrawLayer;
-                            poppedLayers.value = [layer, ...poppedLayers.value];
-                          }
-                        : null,
+                    onPressed:
+                        overlayLayers.firstOrNull is DrawLayer
+                            ? () {
+                              final layer =
+                                  ref
+                                          .read(
+                                            overlayLayersNotifierProvider
+                                                .notifier,
+                                          )
+                                          .remove(0)
+                                      as DrawLayer;
+                              poppedLayers.value = [
+                                layer,
+                                ...poppedLayers.value,
+                              ];
+                            }
+                            : null,
                     icon: const Icon(Icons.undo),
                   ),
                   IconButton(
-                    onPressed: poppedLayers.value.isNotEmpty
-                        ? () {
-                            final layer = poppedLayers.value.first;
-                            poppedLayers.value = poppedLayers.value.sublist(1);
-                            ref
-                                .read(overlayLayersNotifierProvider.notifier)
-                                .add(layer);
-                          }
-                        : null,
+                    onPressed:
+                        poppedLayers.value.isNotEmpty
+                            ? () {
+                              final layer = poppedLayers.value.first;
+                              poppedLayers.value = poppedLayers.value.sublist(
+                                1,
+                              );
+                              ref
+                                  .read(overlayLayersNotifierProvider.notifier)
+                                  .add(layer);
+                            }
+                            : null,
                     icon: const Icon(Icons.redo),
                   ),
                 ],
@@ -200,10 +198,13 @@ class ImagePage extends HookConsumerWidget {
                   switch (mode) {
                     case _Modes.draw:
                       poppedLayers.value = [];
-                      ref.read(overlayLayersNotifierProvider.notifier).add(
+                      ref
+                          .read(overlayLayersNotifierProvider.notifier)
+                          .add(
                             DrawLayer(
-                              offset: transformationController
-                                  .toScene(details.localFocalPoint),
+                              offset: transformationController.toScene(
+                                details.localFocalPoint,
+                              ),
                               color: drawColor.value,
                               strokeWidth: strokeWidth,
                             ),
@@ -214,19 +215,22 @@ class ImagePage extends HookConsumerWidget {
                             .read(overlayLayersNotifierProvider.notifier)
                             .setOffset(
                               0,
-                              transformationController
-                                  .toScene(details.localFocalPoint),
+                              transformationController.toScene(
+                                details.localFocalPoint,
+                              ),
                             );
                       }
                     case _Modes.image || _Modes.emoji:
-                      if (overlayLayers.firstOrNull
-                          case ImageLayer(:final size)) {
+                      if (overlayLayers.firstOrNull case ImageLayer(
+                        :final size,
+                      )) {
                         ref
                             .read(overlayLayersNotifierProvider.notifier)
                             .setOffset(
                               0,
-                              transformationController
-                                      .toScene(details.localFocalPoint) -
+                              transformationController.toScene(
+                                    details.localFocalPoint,
+                                  ) -
                                   Offset(size.width / 2, size.height / 2),
                             );
                       }
@@ -236,20 +240,20 @@ class ImagePage extends HookConsumerWidget {
                 onInteractionUpdate: (details) {
                   switch (mode) {
                     case _Modes.draw:
-                      if (overlayLayers.firstOrNull
-                          case DrawLayer(:final offsets, :final offset)) {
+                      if (overlayLayers.firstOrNull case DrawLayer(
+                        :final offsets,
+                        :final offset,
+                      )) {
                         if (offsets.isEmpty || offsets.last != null) {
                           ref
                               .read(overlayLayersNotifierProvider.notifier)
-                              .setOffsets(
-                            0,
-                            [
-                              ...offsets,
-                              transformationController
-                                      .toScene(details.localFocalPoint) -
-                                  offset,
-                            ],
-                          );
+                              .setOffsets(0, [
+                                ...offsets,
+                                transformationController.toScene(
+                                      details.localFocalPoint,
+                                    ) -
+                                    offset,
+                              ]);
                         }
                       }
                     case _Modes.text:
@@ -263,14 +267,16 @@ class ImagePage extends HookConsumerWidget {
                               .read(overlayLayersNotifierProvider.notifier)
                               .setOffset(
                                 0,
-                                transformationController
-                                    .toScene(details.localFocalPoint),
+                                transformationController.toScene(
+                                  details.localFocalPoint,
+                                ),
                               );
                         }
                       }
                     case _Modes.image || _Modes.emoji:
-                      if (overlayLayers.firstOrNull
-                          case ImageLayer(:final size)) {
+                      if (overlayLayers.firstOrNull case ImageLayer(
+                        :final size,
+                      )) {
                         if (details.pointerCount == 2) {
                           ref
                               .read(overlayLayersNotifierProvider.notifier)
@@ -280,8 +286,9 @@ class ImagePage extends HookConsumerWidget {
                               .read(overlayLayersNotifierProvider.notifier)
                               .setOffset(
                                 0,
-                                transformationController
-                                        .toScene(details.localFocalPoint) -
+                                transformationController.toScene(
+                                      details.localFocalPoint,
+                                    ) -
                                     Offset(size.width / 2, size.height / 2),
                               );
                         }
@@ -291,8 +298,9 @@ class ImagePage extends HookConsumerWidget {
                 },
                 onInteractionEnd: (details) {
                   if (mode == _Modes.draw) {
-                    if (overlayLayers.firstOrNull
-                        case DrawLayer(:final offsets)) {
+                    if (overlayLayers.firstOrNull case DrawLayer(
+                      :final offsets,
+                    )) {
                       ref
                           .read(overlayLayersNotifierProvider.notifier)
                           .setOffsets(0, [...offsets, null]);
@@ -346,28 +354,32 @@ class ImagePage extends HookConsumerWidget {
               case _Modes.move:
                 selectedIndex.value = index;
               case _Modes.crop:
-                final data = overlayLayers.isEmpty
-                    ? backgroundLayer.value.data
-                    : await futureWithDialog(
-                          context,
-                          layersViewerKey.currentState?.exportImage(),
-                        ) ??
-                        backgroundLayer.value.data;
+                final data =
+                    overlayLayers.isEmpty
+                        ? backgroundLayer.value.data
+                        : await futureWithDialog(
+                              context,
+                              layersViewerKey.currentState?.exportImage(),
+                            ) ??
+                            backgroundLayer.value.data;
                 if (!context.mounted) return;
-                final cropped = await context
-                    .push<Uint8List>('/$account/image/crop', extra: data);
+                final cropped = await context.push<Uint8List>(
+                  '/$account/image/crop',
+                  extra: data,
+                );
                 if (cropped == null) return;
                 backgroundLayer.value = ImageLayer.fromData(cropped);
                 ref.read(overlayLayersNotifierProvider.notifier).removeAll();
                 selectedIndex.value = 0;
               case _Modes.flip:
-                final data = overlayLayers.isEmpty
-                    ? backgroundLayer.value.data
-                    : await futureWithDialog(
-                          context,
-                          layersViewerKey.currentState?.exportImage(),
-                        ) ??
-                        backgroundLayer.value.data;
+                final data =
+                    overlayLayers.isEmpty
+                        ? backgroundLayer.value.data
+                        : await futureWithDialog(
+                              context,
+                              layersViewerKey.currentState?.exportImage(),
+                            ) ??
+                            backgroundLayer.value.data;
                 if (!context.mounted) return;
                 final flipped = await futureWithDialog(context, flip(data));
                 if (flipped == null) return;
@@ -375,13 +387,14 @@ class ImagePage extends HookConsumerWidget {
                 ref.read(overlayLayersNotifierProvider.notifier).removeAll();
                 selectedIndex.value = 0;
               case _Modes.rotate:
-                final data = overlayLayers.isEmpty
-                    ? backgroundLayer.value.data
-                    : await futureWithDialog(
-                          context,
-                          layersViewerKey.currentState?.exportImage(),
-                        ) ??
-                        backgroundLayer.value.data;
+                final data =
+                    overlayLayers.isEmpty
+                        ? backgroundLayer.value.data
+                        : await futureWithDialog(
+                              context,
+                              layersViewerKey.currentState?.exportImage(),
+                            ) ??
+                            backgroundLayer.value.data;
                 if (!context.mounted) return;
                 final rotated = await futureWithDialog(context, rotate(data));
                 if (rotated == null) return;
@@ -397,7 +410,9 @@ class ImagePage extends HookConsumerWidget {
                   maxLines: null,
                 );
                 if (result == null) return;
-                ref.read(overlayLayersNotifierProvider.notifier).add(
+                ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .add(
                       TextLayer(
                         text: result,
                         offset: Offset(
@@ -410,23 +425,26 @@ class ImagePage extends HookConsumerWidget {
               case _Modes.image:
                 final file = await showModalBottomSheet<PostFile>(
                   context: context,
-                  builder: (context) => FilePickerSheet(
-                    account: account,
-                    type: FileType.image,
-                  ),
+                  builder:
+                      (context) => FilePickerSheet(
+                        account: account,
+                        type: FileType.image,
+                      ),
                   clipBehavior: Clip.hardEdge,
                 );
                 if (file == null) return;
-                final data = await switch (file) {
-                  LocalPostFile(:final file) => file,
-                  DrivePostFile(:final file) => await ref
-                      .read(cacheManagerProvider)
-                      .getSingleFile(file.url),
-                }
-                    .readAsBytes();
+                final data =
+                    await switch (file) {
+                      LocalPostFile(:final file) => file,
+                      DrivePostFile(:final file) => await ref
+                          .read(cacheManagerProvider)
+                          .getSingleFile(file.url),
+                    }.readAsBytes();
                 final imageSize =
                     ImageSizeGetter.getSizeResult(MemoryInput(data)).size;
-                ref.read(overlayLayersNotifierProvider.notifier).add(
+                ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .add(
                       ImageLayer(
                         data: data,
                         size: imageSize,
@@ -447,12 +465,15 @@ class ImagePage extends HookConsumerWidget {
                 if (emoji == null) return;
                 if (emoji.startsWith(':')) {
                   final url = ref.read(emojiUrlProvider(account, emoji)).$2;
-                  final file =
-                      await ref.read(cacheManagerProvider).getSingleFile(url);
+                  final file = await ref
+                      .read(cacheManagerProvider)
+                      .getSingleFile(url);
                   final data = await file.readAsBytes();
                   final imageSize =
                       ImageSizeGetter.getSizeResult(MemoryInput(data)).size;
-                  ref.read(overlayLayersNotifierProvider.notifier).add(
+                  ref
+                      .read(overlayLayersNotifierProvider.notifier)
+                      .add(
                         ImageLayer(
                           data: data,
                           size: imageSize,
@@ -464,16 +485,20 @@ class ImagePage extends HookConsumerWidget {
                       );
                 } else {
                   final unicode = TwemojiUtils.toUnicode(emoji);
-                  final url = Uri.https(
-                    'raw.githubusercontent.com',
-                    'jdecked/twemoji/main/assets/72x72/$unicode.png',
-                  ).toString();
-                  final file =
-                      await ref.read(cacheManagerProvider).getSingleFile(url);
+                  final url =
+                      Uri.https(
+                        'raw.githubusercontent.com',
+                        'jdecked/twemoji/main/assets/72x72/$unicode.png',
+                      ).toString();
+                  final file = await ref
+                      .read(cacheManagerProvider)
+                      .getSingleFile(url);
                   final data = await file.readAsBytes();
                   final imageSize =
                       ImageSizeGetter.getSizeResult(MemoryInput(data)).size;
-                  ref.read(overlayLayersNotifierProvider.notifier).add(
+                  ref
+                      .read(overlayLayersNotifierProvider.notifier)
+                      .add(
                         ImageLayer(
                           data: data,
                           size: imageSize,
@@ -489,14 +514,17 @@ class ImagePage extends HookConsumerWidget {
           },
         ),
         floatingActionButton: FloatingActionButton.small(
-          backgroundColor:
-              Theme.of(context).colorScheme.primary.withValues(alpha: 0.8),
-          onPressed: () => showModalBottomSheet<void>(
-            context: context,
-            builder: (context) =>
-                LayersSheet(backgroundLayer: backgroundLayer.value),
-            clipBehavior: Clip.hardEdge,
-          ),
+          backgroundColor: Theme.of(
+            context,
+          ).colorScheme.primary.withValues(alpha: 0.8),
+          onPressed:
+              () => showModalBottomSheet<void>(
+                context: context,
+                builder:
+                    (context) =>
+                        LayersSheet(backgroundLayer: backgroundLayer.value),
+                clipBehavior: Clip.hardEdge,
+              ),
           child: const Icon(Icons.layers),
         ),
       ),

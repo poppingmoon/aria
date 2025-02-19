@@ -21,9 +21,10 @@ FutureOr<List<String>> searchHashtags(
   ref.onResume(() => timer?.cancel());
   ref.onDispose(() => timer?.cancel());
   try {
-    final response = await ref.watch(misskeyProvider(account)).hashtags.search(
-          HashtagsSearchRequest(query: query),
-        );
+    final response = await ref
+        .watch(misskeyProvider(account))
+        .hashtags
+        .search(HashtagsSearchRequest(query: query));
     return response.toList();
   } catch (_) {
     timer?.cancel();

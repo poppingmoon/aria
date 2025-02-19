@@ -43,8 +43,9 @@ class AccountSettingsNavigation extends ConsumerWidget {
       AccountSettingsDestination.privacy => const Icon(Icons.lock),
       AccountSettingsDestination.emojiPicker => const Icon(Icons.emoji_symbols),
       AccountSettingsDestination.drive => const Icon(Icons.cloud),
-      AccountSettingsDestination.notifications =>
-        const Icon(Icons.notifications),
+      AccountSettingsDestination.notifications => const Icon(
+        Icons.notifications,
+      ),
       AccountSettingsDestination.muteBlock => const Icon(Icons.block),
       AccountSettingsDestination.signOut => const Icon(Icons.logout),
     };
@@ -131,57 +132,69 @@ class AccountSettingsNavigation extends ConsumerWidget {
       shrinkWrap: true,
       physics: physics,
       padding: EdgeInsets.zero,
-      children: AccountSettingsDestination.values
-          .mapIndexed(
-            (index, destination) => rail
-                ? IconButtonTheme(
-                    data: IconButtonThemeData(
-                      style: IconButton.styleFrom(
-                        foregroundColor:
-                            destination == AccountSettingsDestination.signOut
-                                ? Theme.of(context).colorScheme.error
-                                : null,
-                        disabledForegroundColor:
-                            Theme.of(context).colorScheme.primary,
-                        minimumSize: const Size(48.0, 48.0),
-                      ),
-                    ),
-                    child: IconButton(
-                      tooltip: _buildLabel(destination),
-                      onPressed: destination != selectedDestination
-                          ? () => _onTap(ref, destination)
-                          : null,
-                      icon: _buildIcon(destination),
-                    ),
-                  )
-                : ListTile(
-                    leading: _buildIcon(destination),
-                    title: Text(_buildLabel(destination)),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: round && index == 0
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                        bottom: round &&
-                                index ==
-                                    AccountSettingsDestination.values.length - 1
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                      ),
-                    ),
-                    onTap: destination != selectedDestination
-                        ? () => _onTap(ref, destination)
-                        : null,
-                    selected: destination == selectedDestination,
-                    iconColor: destination == AccountSettingsDestination.signOut
-                        ? Theme.of(context).colorScheme.error
-                        : null,
-                    textColor: destination == AccountSettingsDestination.signOut
-                        ? Theme.of(context).colorScheme.error
-                        : null,
-                  ),
-          )
-          .toList(),
+      children:
+          AccountSettingsDestination.values
+              .mapIndexed(
+                (index, destination) =>
+                    rail
+                        ? IconButtonTheme(
+                          data: IconButtonThemeData(
+                            style: IconButton.styleFrom(
+                              foregroundColor:
+                                  destination ==
+                                          AccountSettingsDestination.signOut
+                                      ? Theme.of(context).colorScheme.error
+                                      : null,
+                              disabledForegroundColor:
+                                  Theme.of(context).colorScheme.primary,
+                              minimumSize: const Size(48.0, 48.0),
+                            ),
+                          ),
+                          child: IconButton(
+                            tooltip: _buildLabel(destination),
+                            onPressed:
+                                destination != selectedDestination
+                                    ? () => _onTap(ref, destination)
+                                    : null,
+                            icon: _buildIcon(destination),
+                          ),
+                        )
+                        : ListTile(
+                          leading: _buildIcon(destination),
+                          title: Text(_buildLabel(destination)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top:
+                                  round && index == 0
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                              bottom:
+                                  round &&
+                                          index ==
+                                              AccountSettingsDestination
+                                                      .values
+                                                      .length -
+                                                  1
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                            ),
+                          ),
+                          onTap:
+                              destination != selectedDestination
+                                  ? () => _onTap(ref, destination)
+                                  : null,
+                          selected: destination == selectedDestination,
+                          iconColor:
+                              destination == AccountSettingsDestination.signOut
+                                  ? Theme.of(context).colorScheme.error
+                                  : null,
+                          textColor:
+                              destination == AccountSettingsDestination.signOut
+                                  ? Theme.of(context).colorScheme.error
+                                  : null,
+                        ),
+              )
+              .toList(),
     );
   }
 }

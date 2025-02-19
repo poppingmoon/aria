@@ -23,15 +23,17 @@ class TimelineCenterNotifier extends _$TimelineCenterNotifier {
   }
 
   Future<void> setCenterFromDate(DateTime date) async {
-    final id = state ??
+    final id =
+        state ??
         tabSettings.antennaId ??
         tabSettings.channelId ??
         tabSettings.listId ??
         tabSettings.roleId ??
         tabSettings.userId;
-    final method = id != null
-        ? Id.parse(id).method
-        : await ref.read(idGenMethodProvider(tabSettings.account).future);
+    final method =
+        id != null
+            ? Id.parse(id).method
+            : await ref.read(idGenMethodProvider(tabSettings.account).future);
     setCenter(Id(method: method, date: date).toString());
   }
 

@@ -37,10 +37,12 @@ class GalleryPostPreview extends HookConsumerWidget {
     final sensitive = ref.watch(
       generalSettingsNotifierProvider.select((settings) => settings.sensitive),
     );
-    final hide =
-        useState(post.isSensitive && sensitive != SensitiveMediaDisplay.ignore);
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final hide = useState(
+      post.isSensitive && sensitive != SensitiveMediaDisplay.ignore,
+    );
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Card.filled(
       color: colors.panel,
@@ -83,10 +85,7 @@ class GalleryPostPreview extends HookConsumerWidget {
                         gradient: LinearGradient(
                           begin: Alignment.center,
                           end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.black54,
-                          ],
+                          colors: [Colors.transparent, Colors.black54],
                         ),
                       ),
                     ),
@@ -105,7 +104,7 @@ class GalleryPostPreview extends HookConsumerWidget {
                           style: TextStyle(
                             fontSize:
                                 DefaultTextStyle.of(context).style.fontSize! *
-                                    1.5,
+                                1.5,
                             color: Colors.white,
                           ),
                         ),
@@ -153,22 +152,20 @@ class GalleryPostPreview extends HookConsumerWidget {
                     UserAvatar(
                       account: account,
                       user: post.user,
-                      onTap: () =>
-                          context.push('/$account/users/${post.userId}'),
+                      onTap:
+                          () => context.push('/$account/users/${post.userId}'),
                     ),
                     const SizedBox(width: 2.0),
                     InkWell(
-                      onTap: () =>
-                          context.push('/$account/users/${post.userId}'),
-                      onLongPress: () => showUserSheet(
-                        context: context,
-                        account: account,
-                        userId: post.userId,
-                      ),
-                      child: UsernameWidget(
-                        account: account,
-                        user: post.user,
-                      ),
+                      onTap:
+                          () => context.push('/$account/users/${post.userId}'),
+                      onLongPress:
+                          () => showUserSheet(
+                            context: context,
+                            account: account,
+                            userId: post.userId,
+                          ),
+                      child: UsernameWidget(account: account, user: post.user),
                     ),
                   ],
                 ),

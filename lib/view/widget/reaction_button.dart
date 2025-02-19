@@ -40,128 +40,140 @@ class ReactionButton extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final showReactionsCount = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showReactionsCountInReactionButton),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showReactionsCountInReactionButton,
+      ),
     );
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
-    final data = isCustomEmoji
-        ? ref.watch(emojiProvider(account.host, ':$name:'))
-        : null;
-    final canReact = !account.isGuest &&
+    final data =
+        isCustomEmoji
+            ? ref.watch(emojiProvider(account.host, ':$name:'))
+            : null;
+    final canReact =
+        !account.isGuest &&
         (!isCustomEmoji ||
             data != null && checkReactionPermissions(i, note, data));
     final isMyReaction = emoji == note.myReaction;
     // In v12, `note.emojis` contains emoji urls for both text and reactions.
     final emojis = {...note.emojis, ...note.reactionEmojis};
-    final double scale = this.scale ??
+    final double scale =
+        this.scale ??
         ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.reactionsDisplayScale),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.reactionsDisplayScale,
+          ),
         );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
-    final style =
-        DefaultTextStyle.of(context).style.apply(fontSizeFactor: scale);
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
+    final style = DefaultTextStyle.of(
+      context,
+    ).style.apply(fontSizeFactor: scale);
 
     return ElevatedButton(
-      onPressed: canReact
-          ? () async {
-              if (note.id.isEmpty) return;
-              if (note.myReaction == null) {
-                final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
-                if (ref
-                        .read(generalSettingsNotifierProvider)
-                        .confirmBeforeReact ||
-                    (isCustomEmoji && host != null)) {
-                  final confirmed = await confirmReaction(
+      onPressed:
+          canReact
+              ? () async {
+                if (note.id.isEmpty) return;
+                if (note.myReaction == null) {
+                  final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
+                  if (ref
+                          .read(generalSettingsNotifierProvider)
+                          .confirmBeforeReact ||
+                      (isCustomEmoji && host != null)) {
+                    final confirmed = await confirmReaction(
+                      context,
+                      account: account,
+                      emoji: localEmoji,
+                      note: note,
+                    );
+                    if (!confirmed) return;
+                  }
+                  if (!context.mounted) return;
+                  await futureWithDialog(
                     context,
-                    account: account,
-                    emoji: localEmoji,
-                    note: note,
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .react(note.id, localEmoji),
+                    overlay: false,
+                  );
+                } else if (isMyReaction) {
+                  final confirmed = await confirm(
+                    context,
+                    message: t.misskey.cancelReactionConfirm,
                   );
                   if (!confirmed) return;
+                  if (!context.mounted) return;
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .unreact(note.id),
+                    overlay: false,
+                  );
+                } else {
+                  final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
+                  final confirmed = await confirm(
+                    context,
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(t.misskey.changeReactionConfirm),
+                        EmojiWidget(
+                          account: account,
+                          emoji: localEmoji,
+                          style: DefaultTextStyle.of(
+                            context,
+                          ).style.apply(fontSizeFactor: 2.0),
+                        ),
+                      ],
+                    ),
+                  );
+                  if (!confirmed) return;
+                  if (!context.mounted) return;
+                  await futureWithDialog(
+                    context,
+                    ref
+                        .read(notesNotifierProvider(account).notifier)
+                        .changeReaction(note.id, localEmoji),
+                    overlay: false,
+                  );
                 }
-                if (!context.mounted) return;
-                await futureWithDialog(
-                  context,
-                  ref
-                      .read(notesNotifierProvider(account).notifier)
-                      .react(note.id, localEmoji),
-                  overlay: false,
-                );
-              } else if (isMyReaction) {
-                final confirmed = await confirm(
-                  context,
-                  message: t.misskey.cancelReactionConfirm,
-                );
-                if (!confirmed) return;
-                if (!context.mounted) return;
-                await futureWithDialog(
-                  context,
-                  ref
-                      .read(notesNotifierProvider(account).notifier)
-                      .unreact(note.id),
-                  overlay: false,
-                );
-              } else {
-                final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
-                final confirmed = await confirm(
-                  context,
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(t.misskey.changeReactionConfirm),
-                      EmojiWidget(
-                        account: account,
-                        emoji: localEmoji,
-                        style: DefaultTextStyle.of(context)
-                            .style
-                            .apply(fontSizeFactor: 2.0),
-                      ),
-                    ],
-                  ),
-                );
-                if (!confirmed) return;
-                if (!context.mounted) return;
-                await futureWithDialog(
-                  context,
-                  ref
-                      .read(notesNotifierProvider(account).notifier)
-                      .changeReaction(note.id, localEmoji),
-                  overlay: false,
-                );
               }
-            }
-          : null,
-      onLongPress: note.id.isNotEmpty
-          ? () => showModalBottomSheet<void>(
+              : null,
+      onLongPress:
+          note.id.isNotEmpty
+              ? () => showModalBottomSheet<void>(
                 context: context,
-                builder: (context) => ReactionUsersSheet(
-                  account: account,
-                  noteId: note.id,
-                  initialReaction: emoji,
-                ),
+                builder:
+                    (context) => ReactionUsersSheet(
+                      account: account,
+                      noteId: note.id,
+                      initialReaction: emoji,
+                    ),
                 clipBehavior: Clip.antiAlias,
                 isScrollControlled: true,
               )
-          : null,
+              : null,
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.all(2.0 * scale),
         minimumSize: Size.zero,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
         shape: RoundedRectangleBorder(
-          side: isMyReaction
-              ? BorderSide(color: colors.accent)
-              : canReact && host != null
+          side:
+              isMyReaction
+                  ? BorderSide(color: colors.accent)
+                  : canReact && host != null
                   ? BorderSide(color: colors.divider)
                   : BorderSide.none,
           borderRadius: BorderRadius.circular(4.0 * scale),
         ),
         foregroundColor: isMyReaction ? colors.accent : colors.fg,
-        backgroundColor: isMyReaction
-            ? colors.accentedBg
-            : canReact && host == null
+        backgroundColor:
+            isMyReaction
+                ? colors.accentedBg
+                : canReact && host == null
                 ? colors.buttonBg
                 : Colors.transparent,
         elevation: 0.0,

@@ -31,13 +31,11 @@ class ThemePage extends ConsumerWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
               child: ListTile(
-                leading: Icon(
-                  switch (generalSettings.themeMode) {
-                    ThemeMode.system => Icons.mode_night,
-                    ThemeMode.light => Icons.light_mode,
-                    ThemeMode.dark => Icons.dark_mode,
-                  },
-                ),
+                leading: Icon(switch (generalSettings.themeMode) {
+                  ThemeMode.system => Icons.mode_night,
+                  ThemeMode.light => Icons.light_mode,
+                  ThemeMode.dark => Icons.dark_mode,
+                }),
                 title: Text(t.misskey.theme),
                 subtitle: ThemeModeWidget(themeMode: generalSettings.themeMode),
                 onTap: () async {
@@ -46,8 +44,8 @@ class ThemePage extends ConsumerWidget {
                     title: Text(t.misskey.theme),
                     values: ThemeMode.values,
                     initialValue: generalSettings.themeMode,
-                    itemBuilder: (context, value) =>
-                        ThemeModeWidget(themeMode: value),
+                    itemBuilder:
+                        (context, value) => ThemeModeWidget(themeMode: value),
                   );
                   if (result != null) {
                     await ref
@@ -70,9 +68,11 @@ class ThemePage extends ConsumerWidget {
                   final result = await showRadioDialog(
                     context,
                     title: Text(t.misskey.themeForLightMode),
-                    values: [...builtinMisskeyColors, ...installedColors]
-                        .where((colors) => !colors.isDark)
-                        .toList(),
+                    values:
+                        [
+                          ...builtinMisskeyColors,
+                          ...installedColors,
+                        ].where((colors) => !colors.isDark).toList(),
                     initialValue: lightColors,
                     itemBuilder: (context, value) => Text(value.name),
                   );
@@ -97,9 +97,11 @@ class ThemePage extends ConsumerWidget {
                   final result = await showRadioDialog(
                     context,
                     title: Text(t.misskey.themeForDarkMode),
-                    values: [...builtinMisskeyColors, ...installedColors]
-                        .where((colors) => colors.isDark)
-                        .toList(),
+                    values:
+                        [
+                          ...builtinMisskeyColors,
+                          ...installedColors,
+                        ].where((colors) => colors.isDark).toList(),
                     initialValue: darkColors,
                     itemBuilder: (context, value) => Text(value.name),
                   );

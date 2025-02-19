@@ -8,11 +8,7 @@ import '../../widget/paginated_list_view.dart';
 import '../../widget/user_info.dart';
 
 class FollowersPage extends ConsumerWidget {
-  const FollowersPage({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const FollowersPage({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -25,15 +21,17 @@ class FollowersPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.followers)),
       body: PaginatedListView(
         paginationState: followers,
-        itemBuilder: (context, relation) => UserInfo(
-          account: account,
-          user: relation.follower!,
-        ),
-        onRefresh: () =>
-            ref.refresh(userFollowersNotifierProvider(account, userId).future),
-        loadMore: (skipError) => ref
-            .read(userFollowersNotifierProvider(account, userId).notifier)
-            .loadMore(skipError: skipError),
+        itemBuilder:
+            (context, relation) =>
+                UserInfo(account: account, user: relation.follower!),
+        onRefresh:
+            () => ref.refresh(
+              userFollowersNotifierProvider(account, userId).future,
+            ),
+        loadMore:
+            (skipError) => ref
+                .read(userFollowersNotifierProvider(account, userId).notifier)
+                .loadMore(skipError: skipError),
         panel: false,
         noItemsLabel: t.misskey.noUsers,
       ),

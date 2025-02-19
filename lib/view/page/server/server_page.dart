@@ -13,11 +13,7 @@ import 'server_emojis.dart';
 import 'server_overview.dart';
 
 class ServerPage extends HookConsumerWidget {
-  const ServerPage({
-    super.key,
-    required this.account,
-    required this.host,
-  });
+  const ServerPage({super.key, required this.account, required this.host});
 
   final Account account;
   final String host;
@@ -25,24 +21,26 @@ class ServerPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(host)).valueOrNull;
-    final instance = account.host != host
-        ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
-        : null;
+    final instance =
+        account.host != host
+            ? ref.watch(federationInstanceProvider(account, host)).valueOrNull
+            : null;
 
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: Text(meta?.name ?? instance?.name ?? host),
-          bottom: meta != null
-              ? TabBar(
-                  tabs: [
-                    Tab(text: t.misskey.about),
-                    Tab(text: t.misskey.customEmojis),
-                    Tab(text: t.misskey.ads),
-                  ],
-                )
-              : null,
+          bottom:
+              meta != null
+                  ? TabBar(
+                    tabs: [
+                      Tab(text: t.misskey.about),
+                      Tab(text: t.misskey.customEmojis),
+                      Tab(text: t.misskey.ads),
+                    ],
+                  )
+                  : null,
         ),
         body: TabBarView(
           children: [
@@ -111,8 +109,8 @@ class ServerPage extends HookConsumerWidget {
                 ListTile(
                   leading: const Icon(Icons.person),
                   title: Text(t.misskey.users),
-                  onTap: () =>
-                      context.push('/$account/explore/users?host=$host'),
+                  onTap:
+                      () => context.push('/$account/explore/users?host=$host'),
                 ),
               ListTile(
                 leading: const Icon(Icons.copy),

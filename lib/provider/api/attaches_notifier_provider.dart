@@ -33,18 +33,20 @@ class AttachesNotifier extends _$AttachesNotifier {
   }
 
   void add(PostFile file) {
-    final fileIds = state
-        .map((file) => file is DrivePostFile ? file.file.id : null)
-        .nonNulls;
+    final fileIds =
+        state
+            .map((file) => file is DrivePostFile ? file.file.id : null)
+            .nonNulls;
     if (file is! DrivePostFile || !fileIds.contains(file.file.id)) {
       state = [...state, file];
     }
   }
 
   void addAll(Iterable<PostFile> files) {
-    final fileIds = state
-        .map((file) => file is DrivePostFile ? file.file.id : null)
-        .nonNulls;
+    final fileIds =
+        state
+            .map((file) => file is DrivePostFile ? file.file.id : null)
+            .nonNulls;
     state = [
       ...state,
       ...files.where(
@@ -54,18 +56,11 @@ class AttachesNotifier extends _$AttachesNotifier {
   }
 
   void replace(int index, PostFile file) {
-    state = [
-      ...state.sublist(0, index),
-      file,
-      ...state.sublist(index + 1),
-    ];
+    state = [...state.sublist(0, index), file, ...state.sublist(index + 1)];
   }
 
   void remove(int index) {
-    state = [
-      ...state.sublist(0, index),
-      ...state.sublist(index + 1),
-    ];
+    state = [...state.sublist(0, index), ...state.sublist(index + 1)];
   }
 
   void removeAll() {
@@ -85,16 +80,18 @@ class AttachesNotifier extends _$AttachesNotifier {
       case LocalPostFile():
         replace(index, file.copyWith(uploading: true));
         final data = await file.file.readAsBytes();
-        final resized = ref
-                .read(accountSettingsNotifierProvider(account))
-                .keepOriginalUploading
-            ? null
-            : await compressImage(data, file.type);
-        final filename = ref
-                .read(accountSettingsNotifierProvider(account))
-                .keepOriginalFilename
-            ? file.name
-            : randomizeFilename(file.name);
+        final resized =
+            ref
+                    .read(accountSettingsNotifierProvider(account))
+                    .keepOriginalUploading
+                ? null
+                : await compressImage(data, file.type);
+        final filename =
+            ref
+                    .read(accountSettingsNotifierProvider(account))
+                    .keepOriginalFilename
+                ? file.name
+                : randomizeFilename(file.name);
         try {
           final driveFile = await ref
               .read(misskeyProvider(account))
@@ -102,9 +99,10 @@ class AttachesNotifier extends _$AttachesNotifier {
               .files
               .createAsBinary(
                 DriveFilesCreateRequest(
-                  folderId: ref
-                      .read(accountSettingsNotifierProvider(account))
-                      .uploadFolder,
+                  folderId:
+                      ref
+                          .read(accountSettingsNotifierProvider(account))
+                          .uploadFolder,
                   name: filename,
                   isSensitive: file.isSensitive,
                   comment: file.comment,

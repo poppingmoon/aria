@@ -88,35 +88,35 @@ class Mfm extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final nodes = useMemoized(
-      () {
-        if (this.nodes case final nodes?) {
-          return nodes;
+    final nodes = useMemoized(() {
+      if (this.nodes case final nodes?) {
+        return nodes;
+      }
+      if (text case final text?) {
+        if (simple) {
+          return parseSimple(text);
+        } else {
+          return parse(text);
         }
-        if (text case final text?) {
-          if (simple) {
-            return parseSimple(text);
-          } else {
-            return parse(text);
-          }
-        }
-        return null;
-      },
-      [this.nodes, text],
-    );
+      }
+      return null;
+    }, [this.nodes, text]);
     final theme = Theme.of(context);
     final defaultTextStyle = DefaultTextStyle.of(ref.context).style;
     final style = defaultTextStyle
         .apply(color: theme.colorScheme.onSurface)
         .merge(this.style);
     final enableAdvanced = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.advancedMfm),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.advancedMfm,
+      ),
     );
-    final enableAnimation = enableAdvanced &&
+    final enableAnimation =
+        enableAdvanced &&
         ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.animatedMfm),
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.animatedMfm,
+          ),
         );
     final emojiStyle = ref.watch(
       generalSettingsNotifierProvider.select((settings) => settings.emojiStyle),
@@ -186,22 +186,22 @@ MfmInline _removeNewLines(MfmInline node) {
     MfmText(:final text) => MfmText(text: text.replaceAll('\n', '')),
     MfmPlain(:final text) => MfmPlain(text: text.replaceAll('\n', '')),
     MfmBold(:final children?) => MfmBold(
-        children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
-      ),
+      children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
+    ),
     MfmSmall(:final children?) => MfmSmall(
-        children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
-      ),
+      children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
+    ),
     MfmItalic(:final children?) => MfmItalic(
-        children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
-      ),
+      children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
+    ),
     MfmStrike(:final children?) => MfmStrike(
-        children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
-      ),
+      children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
+    ),
     MfmFn(:final name, :final args, :final children?) => MfmFn(
-        name: name,
-        args: args,
-        children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
-      ),
+      name: name,
+      args: args,
+      children: children.whereType<MfmInline>().map(_removeNewLines).toList(),
+    ),
     _ => node,
   };
 }
@@ -263,344 +263,339 @@ class _Mfm extends StatelessWidget {
   InlineSpan? _buildNode(BuildContext context, MfmConfig config, MfmNode node) {
     return switch (node) {
       MfmText(:final text) => TextSpan(
-          text: simple
-              ? text.replaceAll('\n', ' ')
-              : !config.disableNyaize && shouldNyaize
-                  ? nyaize(text)
-                  : text,
-          style: config.style.apply(
-            fontSizeFactor: config.scale,
-            color: config.style.color?.withValues(alpha: config.opacity),
-          ),
+        text:
+            simple
+                ? text.replaceAll('\n', ' ')
+                : !config.disableNyaize && shouldNyaize
+                ? nyaize(text)
+                : text,
+        style: config.style.apply(
+          fontSizeFactor: config.scale,
+          color: config.style.color?.withValues(alpha: config.opacity),
         ),
+      ),
       MfmBold(:final children?) => TextSpan(
-          children: _buildNodes(
-            context,
-            config.copyWith(
-              style: config.style
-                  .merge(const TextStyle(fontWeight: FontWeight.bold)),
-            ),
-            children,
-          ),
-        ),
-      MfmStrike(:final children?) => TextSpan(
-          children: _buildNodes(
-            context,
-            config.copyWith(
-              style: config.style.apply(
-                decoration: TextDecoration.lineThrough,
-                decorationColor: config.style.color,
-              ),
-            ),
-            children,
-          ),
-        ),
-      MfmItalic(:final children?) => TextSpan(
-          children: _buildNodes(
-            context,
-            config.copyWith(
-              style: config.style.apply(fontStyle: FontStyle.italic),
-            ),
-            children,
-          ),
-        ),
-      MfmFn(:final name, :final args, :final children?) => _buildMfmFn(
+        children: _buildNodes(
           context,
-          config,
-          name: name,
-          args: args,
-          children: children,
-        ),
-      MfmSmall(:final children?) => TextSpan(
-          children: _buildNodes(
-            context,
-            config.copyWith(
-              scale: config.scale * 0.8,
-              opacity: config.opacity * 0.7,
-            ),
-            children,
-          ),
-        ),
-      MfmCenter(:final children?) => WidgetSpan(
-          child: SizedBox(
-            width: double.infinity,
-            child: Text.rich(
-              TextSpan(
-                children: _buildNodes(
-                  context,
-                  config.copyWith(align: TextAlign.center),
-                  children,
-                ),
-              ),
-              textAlign: TextAlign.center,
-              overflow: overflow,
-              maxLines: maxLines,
-              textScaler: TextScaler.noScaling,
+          config.copyWith(
+            style: config.style.merge(
+              const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),
+          children,
         ),
-      MfmUrl(:final url) => WidgetSpan(
-          alignment: PlaceholderAlignment.baseline,
-          baseline: TextBaseline.alphabetic,
-          child: Consumer(
-            builder: (context, ref, _) => UrlWidget(
-              url: url,
-              onTap: () => navigate(ref, account, url),
-              style: config.style.apply(color: colors.link),
-              scale: config.scale,
-              opacity: config.opacity,
-              align: config.align,
-              overflow: overflow,
-              maxLines: maxLines,
-              textScaler: TextScaler.noScaling,
-            ),
-          ),
-        ),
-      MfmLink(:final url, :final children?) => WidgetSpan(
-          alignment: PlaceholderAlignment.baseline,
-          baseline: TextBaseline.alphabetic,
-          child: Consumer(
-            builder: (context, ref, _) => InkWell(
-              onTap: () => navigate(ref, account, url),
-              onLongPress: () => showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => UrlSheet(url: url),
-              ),
-              child: Text.rich(
-                TextSpan(
-                  children: [
-                    ..._buildNodes(
-                      context,
-                      config.copyWith(
-                        style: config.style.apply(color: colors.link),
-                      ),
-                      children,
-                    ),
-                    WidgetSpan(
-                      child: Icon(
-                        Icons.open_in_new,
-                        color: colors.link.withValues(alpha: config.opacity),
-                        size: config.style.fontSize! * config.scale,
-                      ),
-                    ),
-                  ],
-                ),
-                textAlign: config.align,
-                textScaler: TextScaler.noScaling,
-              ),
-            ),
-          ),
-        ),
-      MfmMention(:final username, :final host) => WidgetSpan(
-          alignment: PlaceholderAlignment.middle,
-          child: Builder(
-            builder: (context) {
-              final absoluteHost = host ?? author?.host ?? account.host;
-              return MentionWidget(
-                account: account,
-                username: username,
-                host: absoluteHost,
-                scale: config.scale,
-                opacity: config.opacity,
-                onTap: () =>
-                    account.host.toLowerCase() == absoluteHost.toLowerCase()
-                        ? context.push('/$account/@$username')
-                        : context.push('/$account/@$username@$absoluteHost'),
-                textScaler: TextScaler.noScaling,
-              );
-            },
-          ),
-        ),
-      MfmHashtag(:final hashtag) => WidgetSpan(
-          alignment: PlaceholderAlignment.baseline,
-          baseline: TextBaseline.alphabetic,
-          child: InkWell(
-            onTap: () => context.push(
-              '/$account/tags/$hashtag${isUserDescription ? '#users' : ''}',
-            ),
-            child: Text(
-              '#$hashtag',
-              style: config.style.apply(
-                fontSizeFactor: config.scale,
-                color: colors.hashtag.withValues(alpha: config.opacity),
-              ),
-              overflow: overflow,
-              textScaler: TextScaler.noScaling,
-              maxLines: maxLines,
-            ),
-          ),
-        ),
-      MfmCodeBlock(:final code, :final lang) => WidgetSpan(
-          child: Opacity(
-            opacity: config.opacity,
-            child: SizedBox(
-              width: double.infinity,
-              child: Code(code: code, language: lang),
-            ),
-          ),
-        ),
-      MfmInlineCode(:final code) => WidgetSpan(
-          child: Opacity(
-            opacity: config.opacity,
-            child: Code(
-              code: code,
-              inline: true,
-              fontSize:
-                  config.style.apply(fontSizeFactor: config.scale).fontSize,
-            ),
-          ),
-        ),
-      MfmQuote(:final children?) => WidgetSpan(
-          child: Container(
-            margin: const EdgeInsets.all(8.0),
-            padding: const EdgeInsetsDirectional.only(
-              start: 12.0,
-              top: 6.0,
-              bottom: 6.0,
-            ),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              border: BorderDirectional(
-                start: BorderSide(
-                  color: colors.fg.withValues(alpha: config.opacity * 0.7),
-                  width: 3.0,
-                ),
-              ),
-            ),
-            child: Text.rich(
-              TextSpan(
-                children: _buildNodes(
-                  context,
-                  config.copyWith(
-                    opacity: config.opacity * 0.7,
-                    disableNyaize: true,
-                  ),
-                  children,
-                ),
-              ),
-              textAlign: config.align,
-              overflow: overflow,
-              textScaler: TextScaler.noScaling,
-              maxLines: maxLines,
-            ),
-          ),
-        ),
-      MfmEmojiCode(:final name) => WidgetSpan(
-          alignment: PlaceholderAlignment.middle,
-          child: CustomEmoji(
-            account: account,
-            emoji: ':$name:',
-            url: emojis?[name],
-            host: author?.host,
-            useOriginalSize: config.scale >= 2.5,
-            height:
-                config.style.fontSize! * config.scale * (simple ? 1.0 : 2.0),
-            opacity: config.opacity,
-            onTap: !simple
-                ? () => showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) => EmojiSheet(
-                        account: account,
-                        emoji: ':$name@${author?.host ?? '.'}:',
-                      ),
-                    )
-                : null,
-            fallbackTextStyle: config.style,
-            fallbackToImage: false,
-            enableFadeIn: enableEmojiFadeIn,
-          ),
-        ),
-      MfmUnicodeEmoji(:final emoji) => WidgetSpan(
-          alignment: switch (emojiStyle) {
-            EmojiStyle.native => PlaceholderAlignment.baseline,
-            EmojiStyle.twemoji => PlaceholderAlignment.middle,
-          },
-          baseline: TextBaseline.alphabetic,
-          child: UnicodeEmoji(
-            account: account,
-            emoji: emoji,
+      ),
+      MfmStrike(:final children?) => TextSpan(
+        children: _buildNodes(
+          context,
+          config.copyWith(
             style: config.style.apply(
-              fontSizeFactor: config.scale,
-              color: config.style.color?.withValues(alpha: config.opacity),
-            ),
-            onTap: !simple
-                ? () => showModalBottomSheet<void>(
-                      context: context,
-                      builder: (context) => EmojiSheet(
-                        account: account,
-                        emoji: emoji,
-                      ),
-                    )
-                : null,
-            inline: true,
-          ),
-        ),
-      MfmMathInline(:final formula) => WidgetSpan(
-          alignment: PlaceholderAlignment.baseline,
-          baseline: TextBaseline.alphabetic,
-          child: Math.tex(
-            formula,
-            mathStyle: MathStyle.text,
-            textStyle: config.style.apply(
-              color: config.style.color?.withValues(alpha: config.opacity),
-            ),
-            textScaleFactor: config.scale,
-            onErrorFallback: (_) => Text(
-              formula,
-              style: config.style.apply(
-                fontSizeFactor: config.scale,
-                color: Color.fromRGBO(
-                  178,
-                  34,
-                  34,
-                  config.opacity,
-                ),
-              ),
-              textScaler: TextScaler.noScaling,
+              decoration: TextDecoration.lineThrough,
+              decorationColor: config.style.color,
             ),
           ),
+          children,
         ),
-      MfmMathBlock(:final formula) => WidgetSpan(
-          child: SizedBox(
-            width: double.infinity,
-            child: Center(
-              child: Math.tex(
-                formula,
-                mathStyle: MathStyle.text,
-                textStyle: config.style.apply(
-                  color: config.style.color?.withValues(alpha: config.opacity),
-                ),
-                textScaleFactor: config.scale,
-                onErrorFallback: (_) => Text(
-                  formula,
-                  style: config.style.apply(
-                    color: Color.fromRGBO(
-                      178,
-                      34,
-                      34,
-                      config.opacity,
-                    ),
-                  ),
-                  textScaler: TextScaler.noScaling,
-                ),
+      ),
+      MfmItalic(:final children?) => TextSpan(
+        children: _buildNodes(
+          context,
+          config.copyWith(
+            style: config.style.apply(fontStyle: FontStyle.italic),
+          ),
+          children,
+        ),
+      ),
+      MfmFn(:final name, :final args, :final children?) => _buildMfmFn(
+        context,
+        config,
+        name: name,
+        args: args,
+        children: children,
+      ),
+      MfmSmall(:final children?) => TextSpan(
+        children: _buildNodes(
+          context,
+          config.copyWith(
+            scale: config.scale * 0.8,
+            opacity: config.opacity * 0.7,
+          ),
+          children,
+        ),
+      ),
+      MfmCenter(:final children?) => WidgetSpan(
+        child: SizedBox(
+          width: double.infinity,
+          child: Text.rich(
+            TextSpan(
+              children: _buildNodes(
+                context,
+                config.copyWith(align: TextAlign.center),
+                children,
               ),
             ),
-          ),
-        ),
-      MfmSearch(:final query) => WidgetSpan(
-          child: Search(
-            query: query,
+            textAlign: TextAlign.center,
+            overflow: overflow,
+            maxLines: maxLines,
             textScaler: TextScaler.noScaling,
           ),
         ),
-      MfmPlain(:final text) => TextSpan(
-          text: text,
+      ),
+      MfmUrl(:final url) => WidgetSpan(
+        alignment: PlaceholderAlignment.baseline,
+        baseline: TextBaseline.alphabetic,
+        child: Consumer(
+          builder:
+              (context, ref, _) => UrlWidget(
+                url: url,
+                onTap: () => navigate(ref, account, url),
+                style: config.style.apply(color: colors.link),
+                scale: config.scale,
+                opacity: config.opacity,
+                align: config.align,
+                overflow: overflow,
+                maxLines: maxLines,
+                textScaler: TextScaler.noScaling,
+              ),
+        ),
+      ),
+      MfmLink(:final url, :final children?) => WidgetSpan(
+        alignment: PlaceholderAlignment.baseline,
+        baseline: TextBaseline.alphabetic,
+        child: Consumer(
+          builder:
+              (context, ref, _) => InkWell(
+                onTap: () => navigate(ref, account, url),
+                onLongPress:
+                    () => showModalBottomSheet<void>(
+                      context: context,
+                      builder: (context) => UrlSheet(url: url),
+                    ),
+                child: Text.rich(
+                  TextSpan(
+                    children: [
+                      ..._buildNodes(
+                        context,
+                        config.copyWith(
+                          style: config.style.apply(color: colors.link),
+                        ),
+                        children,
+                      ),
+                      WidgetSpan(
+                        child: Icon(
+                          Icons.open_in_new,
+                          color: colors.link.withValues(alpha: config.opacity),
+                          size: config.style.fontSize! * config.scale,
+                        ),
+                      ),
+                    ],
+                  ),
+                  textAlign: config.align,
+                  textScaler: TextScaler.noScaling,
+                ),
+              ),
+        ),
+      ),
+      MfmMention(:final username, :final host) => WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: Builder(
+          builder: (context) {
+            final absoluteHost = host ?? author?.host ?? account.host;
+            return MentionWidget(
+              account: account,
+              username: username,
+              host: absoluteHost,
+              scale: config.scale,
+              opacity: config.opacity,
+              onTap:
+                  () =>
+                      account.host.toLowerCase() == absoluteHost.toLowerCase()
+                          ? context.push('/$account/@$username')
+                          : context.push('/$account/@$username@$absoluteHost'),
+              textScaler: TextScaler.noScaling,
+            );
+          },
+        ),
+      ),
+      MfmHashtag(:final hashtag) => WidgetSpan(
+        alignment: PlaceholderAlignment.baseline,
+        baseline: TextBaseline.alphabetic,
+        child: InkWell(
+          onTap:
+              () => context.push(
+                '/$account/tags/$hashtag${isUserDescription ? '#users' : ''}',
+              ),
+          child: Text(
+            '#$hashtag',
+            style: config.style.apply(
+              fontSizeFactor: config.scale,
+              color: colors.hashtag.withValues(alpha: config.opacity),
+            ),
+            overflow: overflow,
+            textScaler: TextScaler.noScaling,
+            maxLines: maxLines,
+          ),
+        ),
+      ),
+      MfmCodeBlock(:final code, :final lang) => WidgetSpan(
+        child: Opacity(
+          opacity: config.opacity,
+          child: SizedBox(
+            width: double.infinity,
+            child: Code(code: code, language: lang),
+          ),
+        ),
+      ),
+      MfmInlineCode(:final code) => WidgetSpan(
+        child: Opacity(
+          opacity: config.opacity,
+          child: Code(
+            code: code,
+            inline: true,
+            fontSize: config.style.apply(fontSizeFactor: config.scale).fontSize,
+          ),
+        ),
+      ),
+      MfmQuote(:final children?) => WidgetSpan(
+        child: Container(
+          margin: const EdgeInsets.all(8.0),
+          padding: const EdgeInsetsDirectional.only(
+            start: 12.0,
+            top: 6.0,
+            bottom: 6.0,
+          ),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            border: BorderDirectional(
+              start: BorderSide(
+                color: colors.fg.withValues(alpha: config.opacity * 0.7),
+                width: 3.0,
+              ),
+            ),
+          ),
+          child: Text.rich(
+            TextSpan(
+              children: _buildNodes(
+                context,
+                config.copyWith(
+                  opacity: config.opacity * 0.7,
+                  disableNyaize: true,
+                ),
+                children,
+              ),
+            ),
+            textAlign: config.align,
+            overflow: overflow,
+            textScaler: TextScaler.noScaling,
+            maxLines: maxLines,
+          ),
+        ),
+      ),
+      MfmEmojiCode(:final name) => WidgetSpan(
+        alignment: PlaceholderAlignment.middle,
+        child: CustomEmoji(
+          account: account,
+          emoji: ':$name:',
+          url: emojis?[name],
+          host: author?.host,
+          useOriginalSize: config.scale >= 2.5,
+          height: config.style.fontSize! * config.scale * (simple ? 1.0 : 2.0),
+          opacity: config.opacity,
+          onTap:
+              !simple
+                  ? () => showModalBottomSheet<void>(
+                    context: context,
+                    builder:
+                        (context) => EmojiSheet(
+                          account: account,
+                          emoji: ':$name@${author?.host ?? '.'}:',
+                        ),
+                  )
+                  : null,
+          fallbackTextStyle: config.style,
+          fallbackToImage: false,
+          enableFadeIn: enableEmojiFadeIn,
+        ),
+      ),
+      MfmUnicodeEmoji(:final emoji) => WidgetSpan(
+        alignment: switch (emojiStyle) {
+          EmojiStyle.native => PlaceholderAlignment.baseline,
+          EmojiStyle.twemoji => PlaceholderAlignment.middle,
+        },
+        baseline: TextBaseline.alphabetic,
+        child: UnicodeEmoji(
+          account: account,
+          emoji: emoji,
           style: config.style.apply(
             fontSizeFactor: config.scale,
             color: config.style.color?.withValues(alpha: config.opacity),
           ),
+          onTap:
+              !simple
+                  ? () => showModalBottomSheet<void>(
+                    context: context,
+                    builder:
+                        (context) => EmojiSheet(account: account, emoji: emoji),
+                  )
+                  : null,
+          inline: true,
         ),
-      _ => null
+      ),
+      MfmMathInline(:final formula) => WidgetSpan(
+        alignment: PlaceholderAlignment.baseline,
+        baseline: TextBaseline.alphabetic,
+        child: Math.tex(
+          formula,
+          mathStyle: MathStyle.text,
+          textStyle: config.style.apply(
+            color: config.style.color?.withValues(alpha: config.opacity),
+          ),
+          textScaleFactor: config.scale,
+          onErrorFallback:
+              (_) => Text(
+                formula,
+                style: config.style.apply(
+                  fontSizeFactor: config.scale,
+                  color: Color.fromRGBO(178, 34, 34, config.opacity),
+                ),
+                textScaler: TextScaler.noScaling,
+              ),
+        ),
+      ),
+      MfmMathBlock(:final formula) => WidgetSpan(
+        child: SizedBox(
+          width: double.infinity,
+          child: Center(
+            child: Math.tex(
+              formula,
+              mathStyle: MathStyle.text,
+              textStyle: config.style.apply(
+                color: config.style.color?.withValues(alpha: config.opacity),
+              ),
+              textScaleFactor: config.scale,
+              onErrorFallback:
+                  (_) => Text(
+                    formula,
+                    style: config.style.apply(
+                      color: Color.fromRGBO(178, 34, 34, config.opacity),
+                    ),
+                    textScaler: TextScaler.noScaling,
+                  ),
+            ),
+          ),
+        ),
+      ),
+      MfmSearch(:final query) => WidgetSpan(
+        child: Search(query: query, textScaler: TextScaler.noScaling),
+      ),
+      MfmPlain(:final text) => TextSpan(
+        text: text,
+        style: config.style.apply(
+          fontSizeFactor: config.scale,
+          color: config.style.color?.withValues(alpha: config.opacity),
+        ),
+      ),
+      _ => null,
     };
   }
 
@@ -624,9 +619,10 @@ class _Mfm extends StatelessWidget {
           return span;
         }
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Tada(
             args: args,
@@ -642,9 +638,10 @@ class _Mfm extends StatelessWidget {
       case 'jelly':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Jelly(
             args: args,
@@ -660,9 +657,10 @@ class _Mfm extends StatelessWidget {
       case 'twitch':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Twitch(
             args: args,
@@ -678,9 +676,10 @@ class _Mfm extends StatelessWidget {
       case 'shake':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Shake(
             args: args,
@@ -696,9 +695,10 @@ class _Mfm extends StatelessWidget {
       case 'spin':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Spin(
             args: args,
@@ -714,9 +714,10 @@ class _Mfm extends StatelessWidget {
       case 'jump':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Jump(
             args: args,
@@ -732,9 +733,10 @@ class _Mfm extends StatelessWidget {
       case 'bounce':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Bounce(
             args: args,
@@ -749,9 +751,10 @@ class _Mfm extends StatelessWidget {
         );
       case 'flip':
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Transform.scale(
             scaleX: !args.containsKey('h') && args.containsKey('v') ? 1 : -1,
@@ -805,7 +808,7 @@ class _Mfm extends StatelessWidget {
                   'fantasy' => 'fantasy',
                   'emoji' => 'emoji',
                   'math' => 'math',
-                  _ => null
+                  _ => null,
                 },
                 fontFamilyFallback: switch (args.keys.firstOrNull) {
                   'serif' => [FontFamily.notoSerifJP],
@@ -819,9 +822,10 @@ class _Mfm extends StatelessWidget {
         );
       case 'blur':
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Blur(
             child: Text.rich(
@@ -836,53 +840,49 @@ class _Mfm extends StatelessWidget {
       case 'rainbow':
         final span = TextSpan(children: _buildNodes(context, config, children));
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
-          child: enableAnimation
-              ? Rainbow(
-                  args: args,
-                  child: Text.rich(
-                    span,
-                    textAlign: config.align,
-                    overflow: overflow,
-                    textScaler: TextScaler.noScaling,
-                    maxLines: maxLines,
-                  ),
-                )
-              : ShaderMask(
-                  shaderCallback: (rect) => const LinearGradient(
-                    colors: [
-                      Color(0xffff0000),
-                      Color(0xffffa500),
-                      Color(0xffffff00),
-                      Color(0xff00ff00),
-                      Color(0xff00ffff),
-                      Color(0xff0000ff),
-                      Color(0xffff00ff),
-                    ],
-                  ).createShader(
-                    Rect.fromLTWH(
-                      0.0,
-                      0.0,
-                      rect.width,
-                      rect.height,
+          child:
+              enableAnimation
+                  ? Rainbow(
+                    args: args,
+                    child: Text.rich(
+                      span,
+                      textAlign: config.align,
+                      overflow: overflow,
+                      textScaler: TextScaler.noScaling,
+                      maxLines: maxLines,
                     ),
+                  )
+                  : ShaderMask(
+                    shaderCallback:
+                        (rect) => const LinearGradient(
+                          colors: [
+                            Color(0xffff0000),
+                            Color(0xffffa500),
+                            Color(0xffffff00),
+                            Color(0xff00ff00),
+                            Color(0xff00ffff),
+                            Color(0xff0000ff),
+                            Color(0xffff00ff),
+                          ],
+                        ).createShader(
+                          Rect.fromLTWH(0.0, 0.0, rect.width, rect.height),
+                        ),
+                    blendMode: BlendMode.srcIn,
+                    child: Text.rich(span, textScaler: TextScaler.noScaling),
                   ),
-                  blendMode: BlendMode.srcIn,
-                  child: Text.rich(
-                    span,
-                    textScaler: TextScaler.noScaling,
-                  ),
-                ),
         );
       case 'sparkle':
         if (!enableAnimation) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Sparkle(
             opacity: config.opacity,
@@ -897,9 +897,10 @@ class _Mfm extends StatelessWidget {
         );
       case 'rotate':
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Transform.rotate(
             angle: (safeParseDouble(args['deg']) ?? 90.0) * pi / 180,
@@ -915,9 +916,10 @@ class _Mfm extends StatelessWidget {
       case 'position':
         if (!enableAdvanced) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Transform.translate(
             offset: Offset(
@@ -940,9 +942,10 @@ class _Mfm extends StatelessWidget {
       case 'scale':
         if (!enableAdvanced) break;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Transform.scale(
             scaleX: min(safeParseDouble(args['x']) ?? 1.0, 5.0),
@@ -971,9 +974,10 @@ class _Mfm extends StatelessWidget {
       case 'bg':
         final color = safeParseColor(args['color']) ?? Colors.red;
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: ColoredBox(
             color: color.withValues(alpha: config.opacity * color.a),
@@ -988,9 +992,10 @@ class _Mfm extends StatelessWidget {
         );
       case 'border':
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: Border(
             args: args,
@@ -1012,11 +1017,12 @@ class _Mfm extends StatelessWidget {
             .copyWith(height: 1.0);
         if (children.length <= 1) {
           final node = children.singleOrNull;
-          final text = node is MfmText
-              ? !config.disableNyaize && shouldNyaize
-                  ? nyaize(node.text)
-                  : node.text
-              : '';
+          final text =
+              node is MfmText
+                  ? !config.disableNyaize && shouldNyaize
+                      ? nyaize(node.text)
+                      : node.text
+                  : '';
           final l = text.split(' ');
           final ruby = l.elementAtOrNull(1)?.replaceAll('\n', ' ') ?? '';
           final span = _buildNode(
@@ -1041,13 +1047,14 @@ class _Mfm extends StatelessWidget {
           );
         } else {
           final node = children.last;
-          final ruby = node is MfmText
-              ? (!config.disableNyaize && shouldNyaize
-                      ? nyaize(node.text)
-                      : node.text)
-                  .replaceAll('\n', ' ')
-                  .trim()
-              : '';
+          final ruby =
+              node is MfmText
+                  ? (!config.disableNyaize && shouldNyaize
+                          ? nyaize(node.text)
+                          : node.text)
+                      .replaceAll('\n', ' ')
+                      .trim()
+                  : '';
           return WidgetSpan(
             alignment: PlaceholderAlignment.aboveBaseline,
             baseline: TextBaseline.ideographic,
@@ -1077,17 +1084,19 @@ class _Mfm extends StatelessWidget {
       case 'unixtime':
         final node = children.firstOrNull;
         final unixtime = node is MfmText ? int.tryParse(node.text) : null;
-        final time = unixtime != null && unixtime.abs() < 8640000000000
-            ? DateTime.fromMillisecondsSinceEpoch(unixtime * 1000)
-            : null;
+        final time =
+            unixtime != null && unixtime.abs() < 8640000000000
+                ? DateTime.fromMillisecondsSinceEpoch(unixtime * 1000)
+                : null;
         return WidgetSpan(
           alignment: PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: DecoratedBox(
             decoration: BoxDecoration(
               border: material.Border.all(color: colors.divider),
-              borderRadius:
-                  BorderRadius.circular(config.style.lineHeight * config.scale),
+              borderRadius: BorderRadius.circular(
+                config.style.lineHeight * config.scale,
+              ),
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
@@ -1101,8 +1110,9 @@ class _Mfm extends StatelessWidget {
                       alignment: PlaceholderAlignment.middle,
                       child: Icon(
                         Icons.access_time,
-                        color: config.style.color
-                            ?.withValues(alpha: config.opacity),
+                        color: config.style.color?.withValues(
+                          alpha: config.opacity,
+                        ),
                         size: config.style.lineHeight * config.scale * 0.9,
                       ),
                     ),
@@ -1112,8 +1122,9 @@ class _Mfm extends StatelessWidget {
                         text: '${absoluteTime(time)} (${relativeTime(time)})',
                         style: config.style.apply(
                           fontSizeFactor: config.scale * 0.9,
-                          color: config.style.color
-                              ?.withValues(alpha: config.opacity),
+                          color: config.style.color?.withValues(
+                            alpha: config.opacity,
+                          ),
                         ),
                       )
                     else
@@ -1127,14 +1138,16 @@ class _Mfm extends StatelessWidget {
       case 'clickable':
         final clickEv = args['ev'];
         return WidgetSpan(
-          alignment: children.any(_containsNewLine)
-              ? PlaceholderAlignment.bottom
-              : PlaceholderAlignment.baseline,
+          alignment:
+              children.any(_containsNewLine)
+                  ? PlaceholderAlignment.bottom
+                  : PlaceholderAlignment.baseline,
           baseline: TextBaseline.alphabetic,
           child: InkWell(
-            onTap: clickEv != null && onClickEv != null
-                ? () => onClickEv?.call(clickEv)
-                : null,
+            onTap:
+                clickEv != null && onClickEv != null
+                    ? () => onClickEv?.call(clickEv)
+                    : null,
             child: AbsorbPointer(
               child: Text.rich(
                 TextSpan(children: _buildNodes(context, config, children)),

@@ -37,63 +37,64 @@ class AsUiWidget extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     return component.when(
-      root: (component) => Theme(
-        data: Theme.of(context).copyWith(
-          inputDecorationTheme: InputDecorationTheme(
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.outlineVariant,
+      root:
+          (component) => Theme(
+            data: Theme.of(context).copyWith(
+              inputDecorationTheme: InputDecorationTheme(
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.outlineVariant,
+                  ),
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(6.0),
+                ),
+                filled: true,
+                fillColor: Theme.of(context).colorScheme.surface,
+                helperStyle: TextStyle(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.75),
+                ),
+                helperMaxLines: 100,
+                isDense: true,
               ),
-              borderRadius: BorderRadius.circular(6.0),
             ),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              borderRadius: BorderRadius.circular(6.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                ...component.children
+                    .where((id) {
+                      final child = components[id];
+                      final hidden =
+                          child?.whenOrNull(
+                            container: (container) => container.hidden,
+                          ) ??
+                          false;
+                      return !hidden;
+                    })
+                    .mapIndexed(
+                      (index, id) => [
+                        if (index > 0) const SizedBox(height: 12.0),
+                        AsUiWidget(
+                          account: account,
+                          host: host,
+                          componentId: id,
+                          components: components,
+                        ),
+                      ],
+                    )
+                    .flattenedToList,
+              ],
             ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(6.0),
-            ),
-            filled: true,
-            fillColor: Theme.of(context).colorScheme.surface,
-            helperStyle: TextStyle(
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.75),
-            ),
-            helperMaxLines: 100,
-            isDense: true,
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ...component.children
-                .where((id) {
-                  final child = components[id];
-                  final hidden = child?.whenOrNull(
-                        container: (container) => container.hidden,
-                      ) ??
-                      false;
-                  return !hidden;
-                })
-                .mapIndexed(
-                  (index, id) => [
-                    if (index > 0) const SizedBox(height: 12.0),
-                    AsUiWidget(
-                      account: account,
-                      host: host,
-                      componentId: id,
-                      components: components,
-                    ),
-                  ],
-                )
-                .flattenedToList,
-          ],
-        ),
-      ),
       container: (component) {
         final AsUiContainer(
           :children,
@@ -107,10 +108,7 @@ class AsUiWidget extends HookConsumerWidget {
           :rounded,
         ) = component;
         return DefaultTextStyle.merge(
-          style: TextStyle(
-            color: safeParseColor(fgColor),
-            fontFamily: font,
-          ),
+          style: TextStyle(color: safeParseColor(fgColor), fontFamily: font),
           textAlign: switch (align) {
             'left' => TextAlign.left,
             'center' => TextAlign.center,
@@ -121,13 +119,15 @@ class AsUiWidget extends HookConsumerWidget {
             padding: padding != null ? EdgeInsets.all(padding) : null,
             decoration: BoxDecoration(
               color: safeParseColor(bgColor),
-              border: borderWidth != null && borderWidth > 0.0
-                  ? Border.all(
-                      color: safeParseColor(borderColor) ??
-                          Theme.of(context).colorScheme.outlineVariant,
-                      width: borderWidth,
-                    )
-                  : null,
+              border:
+                  borderWidth != null && borderWidth > 0.0
+                      ? Border.all(
+                        color:
+                            safeParseColor(borderColor) ??
+                            Theme.of(context).colorScheme.outlineVariant,
+                        width: borderWidth,
+                      )
+                      : null,
               borderRadius:
                   rounded ?? false ? BorderRadius.circular(8.0) : null,
             ),
@@ -142,7 +142,8 @@ class AsUiWidget extends HookConsumerWidget {
                 ...?children
                     ?.where((id) {
                       final child = components[id];
-                      final hidden = child?.whenOrNull(
+                      final hidden =
+                          child?.whenOrNull(
                             container: (container) => container.hidden,
                           ) ??
                           false;
@@ -166,17 +167,10 @@ class AsUiWidget extends HookConsumerWidget {
         );
       },
       text: (component) {
-        final AsUiText(
-          :text,
-          :size,
-          :bold,
-          :color,
-          :font,
-        ) = component;
+        final AsUiText(:text, :size, :bold, :color, :font) = component;
         return Text(
           text ?? '',
-          style: DefaultTextStyle.of(context)
-              .style
+          style: DefaultTextStyle.of(context).style
               .apply(fontSizeFactor: size ?? 1.0)
               .merge(
                 TextStyle(
@@ -188,19 +182,12 @@ class AsUiWidget extends HookConsumerWidget {
         );
       },
       mfm: (component) {
-        final AsUiMfm(
-          :text,
-          :size,
-          :bold,
-          :color,
-          :font,
-          :onClickEv,
-        ) = component;
+        final AsUiMfm(:text, :size, :bold, :color, :font, :onClickEv) =
+            component;
         return Mfm(
           account: account.host == host ? account : Account(host: host),
           text: text,
-          style: DefaultTextStyle.of(context)
-              .style
+          style: DefaultTextStyle.of(context).style
               .apply(fontSizeFactor: size ?? 1.0)
               .merge(
                 TextStyle(
@@ -209,26 +196,22 @@ class AsUiWidget extends HookConsumerWidget {
                   fontFamily: font,
                 ),
               ),
-          onClickEv: onClickEv != null
-              ? (clickEv) => onClickEv.call(value: clickEv)
-              : null,
+          onClickEv:
+              onClickEv != null
+                  ? (clickEv) => onClickEv.call(value: clickEv)
+                  : null,
           enableEmojiFadeIn: false,
         );
       },
       button: (component) {
-        final AsUiButton(
-          :text,
-          :onClick,
-          :primary,
-          :rounded,
-          :disabled,
-        ) = component;
+        final AsUiButton(:text, :onClick, :primary, :rounded, :disabled) =
+            component;
         return Align(
           alignment: switch (DefaultTextStyle.of(context).textAlign) {
             TextAlign.left => Alignment.centerLeft,
             TextAlign.center => Alignment.center,
             TextAlign.right => Alignment.centerRight,
-            _ => Alignment.centerLeft
+            _ => Alignment.centerLeft,
           },
           child: _Button(
             text: text,
@@ -239,69 +222,60 @@ class AsUiWidget extends HookConsumerWidget {
           ),
         );
       },
-      buttons: (component) => Wrap(
-        spacing: 8.0,
-        runSpacing: 8.0,
-        children: [
-          ...?component.buttons?.map(
-            (button) => _Button(
-              text: button.text,
-              onTap: button.onClick?.call,
-              primary: button.primary,
-              rounded: button.rounded,
-              disabled: button.disabled,
-            ),
+      buttons:
+          (component) => Wrap(
+            spacing: 8.0,
+            runSpacing: 8.0,
+            children: [
+              ...?component.buttons?.map(
+                (button) => _Button(
+                  text: button.text,
+                  onTap: button.onClick?.call,
+                  primary: button.primary,
+                  rounded: button.rounded,
+                  disabled: button.disabled,
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
       toggleSwitch: (component) {
-        final AsUiSwitch(
-          :onChange,
-          :defaultValue,
-          :label,
-          :caption,
-        ) = component;
+        final AsUiSwitch(:onChange, :defaultValue, :label, :caption) =
+            component;
         final value = useState(defaultValue);
         return SwitchListTile(
           value: value.value ?? false,
           title: label != null ? Text(label) : null,
-          subtitle: caption != null
-              ? Text(
-                  caption,
-                  style: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.75),
-                  ),
-                )
-              : null,
-          onChanged: onChange != null
-              ? (v) {
-                  value.value = v;
-                  onChange.call(value: v);
-                }
-              : null,
+          subtitle:
+              caption != null
+                  ? Text(
+                    caption,
+                    style: TextStyle(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.75),
+                    ),
+                  )
+                  : null,
+          onChanged:
+              onChange != null
+                  ? (v) {
+                    value.value = v;
+                    onChange.call(value: v);
+                  }
+                  : null,
           controlAffinity: ListTileControlAffinity.leading,
           dense: true,
         );
       },
       textarea: (component) {
-        final AsUiTextarea(
-          :onInput,
-          :defaultValue,
-          :label,
-          :caption,
-        ) = component;
+        final AsUiTextarea(:onInput, :defaultValue, :label, :caption) =
+            component;
         final controller = useTextEditingController(text: defaultValue);
         return Shortcuts(
           shortcuts: disablingTextShortcuts,
           child: TextField(
             controller: controller,
-            decoration: InputDecoration(
-              labelText: label,
-              helperText: caption,
-            ),
+            decoration: InputDecoration(labelText: label, helperText: caption),
             onChanged:
                 onInput != null ? (value) => onInput.call(value: value) : null,
             minLines: 6,
@@ -311,21 +285,14 @@ class AsUiWidget extends HookConsumerWidget {
         );
       },
       textInput: (component) {
-        final AsUiTextInput(
-          :onInput,
-          :defaultValue,
-          :label,
-          :caption,
-        ) = component;
+        final AsUiTextInput(:onInput, :defaultValue, :label, :caption) =
+            component;
         final controller = useTextEditingController(text: defaultValue);
         return Shortcuts(
           shortcuts: disablingTextShortcuts,
           child: TextField(
             controller: controller,
-            decoration: InputDecoration(
-              labelText: label,
-              helperText: caption,
-            ),
+            decoration: InputDecoration(labelText: label, helperText: caption),
             onChanged:
                 onInput != null ? (value) => onInput.call(value: value) : null,
             onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -333,18 +300,15 @@ class AsUiWidget extends HookConsumerWidget {
         );
       },
       numberInput: (component) {
-        final AsUiNumberInput(
-          :onInput,
-          :defaultValue,
-          :label,
-          :caption,
-        ) = component;
+        final AsUiNumberInput(:onInput, :defaultValue, :label, :caption) =
+            component;
         final controller = useTextEditingController(
-          text: defaultValue != null
-              ? defaultValue == defaultValue.toInt()
-                  ? defaultValue.toInt().toString()
-                  : defaultValue.toString()
-              : null,
+          text:
+              defaultValue != null
+                  ? defaultValue == defaultValue.toInt()
+                      ? defaultValue.toInt().toString()
+                      : defaultValue.toString()
+                  : null,
         );
         return Shortcuts(
           shortcuts: disablingTextShortcuts,
@@ -422,26 +386,22 @@ class AsUiWidget extends HookConsumerWidget {
                 }
               }),
             ],
-            onChanged: onInput != null
-                ? (value) async {
-                    final v = double.tryParse(value);
-                    if (v != null) {
-                      await onInput.call(value: v);
+            onChanged:
+                onInput != null
+                    ? (value) async {
+                      final v = double.tryParse(value);
+                      if (v != null) {
+                        await onInput.call(value: v);
+                      }
                     }
-                  }
-                : null,
+                    : null,
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
       },
       select: (component) {
-        final AsUiSelect(
-          :items,
-          :onChange,
-          :defaultValue,
-          :label,
-          :caption,
-        ) = component;
+        final AsUiSelect(:items, :onChange, :defaultValue, :label, :caption) =
+            component;
         final value = useState(
           defaultValue != null &&
                   (items?.map((item) => item.$2).contains(defaultValue) ??
@@ -450,18 +410,14 @@ class AsUiWidget extends HookConsumerWidget {
               : null,
         );
         return DropdownButtonFormField(
-          decoration: InputDecoration(
-            labelText: label,
-            helperText: caption,
-          ),
-          items: items
-              ?.map(
-                (item) => DropdownMenuItem(
-                  value: item.$2,
-                  child: Text(item.$1),
-                ),
-              )
-              .toList(),
+          decoration: InputDecoration(labelText: label, helperText: caption),
+          items:
+              items
+                  ?.map(
+                    (item) =>
+                        DropdownMenuItem(value: item.$2, child: Text(item.$1)),
+                  )
+                  .toList(),
           value: value.value,
           onChanged: (v) async {
             value.value = v;
@@ -473,136 +429,126 @@ class AsUiWidget extends HookConsumerWidget {
         );
       },
       folder: (component) {
-        final AsUiFolder(
-          :children,
-          :title,
-          :opened,
-        ) = component;
+        final AsUiFolder(:children, :title, :opened) = component;
         return _Folder(
           title: title,
           opened: opened,
-          children: children
-              ?.where((id) {
-                final child = components[id];
-                final hidden = child?.whenOrNull(
-                      container: (container) => container.hidden,
-                    ) ??
-                    false;
-                return !hidden;
-              })
-              .map(
-                (id) => AsUiWidget(
-                  account: account,
-                  host: host,
-                  componentId: id,
-                  components: components,
-                ),
-              )
-              .toList(),
+          children:
+              children
+                  ?.where((id) {
+                    final child = components[id];
+                    final hidden =
+                        child?.whenOrNull(
+                          container: (container) => container.hidden,
+                        ) ??
+                        false;
+                    return !hidden;
+                  })
+                  .map(
+                    (id) => AsUiWidget(
+                      account: account,
+                      host: host,
+                      componentId: id,
+                      components: components,
+                    ),
+                  )
+                  .toList(),
         );
       },
       postFormButton: (component) {
-        final AsUiPostFormButton(
-          :text,
-          :primary,
-          :rounded,
-          :form,
-        ) = component;
+        final AsUiPostFormButton(:text, :primary, :rounded, :form) = component;
         return Align(
           alignment: switch (DefaultTextStyle.of(context).textAlign) {
             TextAlign.left => Alignment.centerLeft,
             TextAlign.center => Alignment.center,
             TextAlign.right => Alignment.centerRight,
-            _ => Alignment.centerLeft
+            _ => Alignment.centerLeft,
           },
           child: _Button(
             text: text,
             primary: primary,
             rounded: rounded,
-            onTap: !account.isGuest
-                ? () {
-                    if (form?.text case final text?) {
-                      ref
-                          .read(postNotifierProvider(account).notifier)
-                          .setText(text);
-                    }
-                    if (form?.cw case final cw?) {
-                      ref
-                          .read(postNotifierProvider(account).notifier)
-                          .setCw(cw);
-                    }
-                    switch (form?.visibility) {
-                      case 'public':
+            onTap:
+                !account.isGuest
+                    ? () {
+                      if (form?.text case final text?) {
                         ref
                             .read(postNotifierProvider(account).notifier)
-                            .setVisibility(NoteVisibility.public);
-                      case 'home':
+                            .setText(text);
+                      }
+                      if (form?.cw case final cw?) {
                         ref
                             .read(postNotifierProvider(account).notifier)
-                            .setVisibility(NoteVisibility.home);
-                      case 'followers':
+                            .setCw(cw);
+                      }
+                      switch (form?.visibility) {
+                        case 'public':
+                          ref
+                              .read(postNotifierProvider(account).notifier)
+                              .setVisibility(NoteVisibility.public);
+                        case 'home':
+                          ref
+                              .read(postNotifierProvider(account).notifier)
+                              .setVisibility(NoteVisibility.home);
+                        case 'followers':
+                          ref
+                              .read(postNotifierProvider(account).notifier)
+                              .setVisibility(NoteVisibility.followers);
+                        case 'specified':
+                          ref
+                              .read(postNotifierProvider(account).notifier)
+                              .setVisibility(NoteVisibility.specified);
+                      }
+                      if (form?.localOnly case final localOnly?) {
                         ref
                             .read(postNotifierProvider(account).notifier)
-                            .setVisibility(NoteVisibility.followers);
-                      case 'specified':
-                        ref
-                            .read(postNotifierProvider(account).notifier)
-                            .setVisibility(NoteVisibility.specified);
+                            .setLocalOnly(localOnly);
+                      }
+                      context.push('/$account/post');
                     }
-                    if (form?.localOnly case final localOnly?) {
-                      ref
-                          .read(postNotifierProvider(account).notifier)
-                          .setLocalOnly(localOnly);
-                    }
-                    context.push('/$account/post');
-                  }
-                : null,
+                    : null,
           ),
         );
       },
       postForm: (component) {
-        final AsUiPostForm(
-          :form,
-        ) = component;
-        useEffect(
-          () {
-            Future(() {
-              if (form?.text case final text?) {
-                ref.read(postNotifierProvider(account).notifier).setText(text);
-              }
-              if (form?.cw case final cw?) {
-                ref.read(postNotifierProvider(account).notifier).setCw(cw);
-              }
-              switch (form?.visibility) {
-                case 'public':
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setVisibility(NoteVisibility.public);
-                case 'home':
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setVisibility(NoteVisibility.home);
-                case 'followers':
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setVisibility(NoteVisibility.followers);
-                case 'specified':
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setVisibility(NoteVisibility.specified);
-              }
-              if (form?.localOnly case final localOnly?) {
+        final AsUiPostForm(:form) = component;
+        useEffect(() {
+          Future(() {
+            if (form?.text case final text?) {
+              ref.read(postNotifierProvider(account).notifier).setText(text);
+            }
+            if (form?.cw case final cw?) {
+              ref.read(postNotifierProvider(account).notifier).setCw(cw);
+            }
+            switch (form?.visibility) {
+              case 'public':
                 ref
                     .read(postNotifierProvider(account).notifier)
-                    .setLocalOnly(localOnly);
-              }
-            });
-            return;
-          },
-          [form],
+                    .setVisibility(NoteVisibility.public);
+              case 'home':
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setVisibility(NoteVisibility.home);
+              case 'followers':
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setVisibility(NoteVisibility.followers);
+              case 'specified':
+                ref
+                    .read(postNotifierProvider(account).notifier)
+                    .setVisibility(NoteVisibility.specified);
+            }
+            if (form?.localOnly case final localOnly?) {
+              ref
+                  .read(postNotifierProvider(account).notifier)
+                  .setLocalOnly(localOnly);
+            }
+          });
+          return;
+        }, [form]);
+        final colors = ref.watch(
+          misskeyColorsProvider(Theme.of(context).brightness),
         );
-        final colors =
-            ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
         return Card(
           color: colors.bg,
           margin: EdgeInsets.zero,
@@ -636,21 +582,24 @@ class _Button extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: primary ?? false ? colors.accent : colors.buttonBg,
-        foregroundColor: primary ?? false
-            ? colors.fgOnAccent
-            : DefaultTextStyle.of(context).style.color,
+        foregroundColor:
+            primary ?? false
+                ? colors.fgOnAccent
+                : DefaultTextStyle.of(context).style.color,
         elevation: 0.0,
-        shape: rounded ?? false
-            ? const StadiumBorder()
-            : RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5.0),
-              ),
+        shape:
+            rounded ?? false
+                ? const StadiumBorder()
+                : RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0),
+                ),
         padding: const EdgeInsets.symmetric(vertical: 7.0, horizontal: 14.0),
         minimumSize: const Size(100.0, 40.0),
       ),
@@ -661,11 +610,7 @@ class _Button extends ConsumerWidget {
 }
 
 class _Folder extends ConsumerWidget {
-  const _Folder({
-    this.title,
-    this.opened,
-    this.children,
-  });
+  const _Folder({this.title, this.opened, this.children});
 
   final String? title;
   final bool? opened;
@@ -673,8 +618,9 @@ class _Folder extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style;
 
     return ExpansionTile(
@@ -685,9 +631,7 @@ class _Folder extends ConsumerWidget {
       textColor: style.color,
       collapsedTextColor: style.color,
       iconColor: colors.fg,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(6.0),
-      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
       collapsedShape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(6.0),
       ),
@@ -701,8 +645,9 @@ class _Folder extends ConsumerWidget {
             child: DefaultTextStyle.merge(
               style: style,
               child: Column(
-                crossAxisAlignment: switch (
-                    DefaultTextStyle.of(context).textAlign) {
+                crossAxisAlignment: switch (DefaultTextStyle.of(
+                  context,
+                ).textAlign) {
                   TextAlign.left => CrossAxisAlignment.start,
                   TextAlign.center => CrossAxisAlignment.center,
                   TextAlign.right => CrossAxisAlignment.end,

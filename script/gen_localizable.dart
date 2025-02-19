@@ -155,14 +155,16 @@ void main() {
   final strings = Map<String, Map<String, dynamic>>.fromIterable(
     [
       ...notificationKeys.map((key) => '_notification.$key'),
-      ...userExportableEntityKeys
-          .map((key) => '_notification.exportOf${key.capitalize}Completed'),
+      ...userExportableEntityKeys.map(
+        (key) => '_notification.exportOf${key.capitalize}Completed',
+      ),
       ...achievementTypes.map((type) => '_achievements._types._$type.title'),
     ],
-    value: (_) => {
-      'extractionState': 'manual',
-      'localizations': <String, Map<String, Map<String, String>>>{},
-    },
+    value:
+        (_) => {
+          'extractionState': 'manual',
+          'localizations': <String, Map<String, Map<String, String>>>{},
+        },
   );
   for (final language in languages) {
     final locale = switch (language) {
@@ -188,8 +190,8 @@ void main() {
       if (notifications[exportOfXCompleted] case final String value) {
         for (final key in userExportableEntityKeys) {
           if (localizations[key] case final String x) {
-            (strings['_notification.exportOf${key.capitalize}Completed']
-                ?['localizations'] as Map<String, dynamic>)[locale] = {
+            (strings['_notification.exportOf${key.capitalize}Completed']?['localizations']
+                as Map<String, dynamic>)[locale] = {
               'stringUnit': {
                 'state': 'translated',
                 'value': value.replaceAll(RegExp('{.+}'), x),
@@ -206,10 +208,7 @@ void main() {
             if (achievement['title'] case final String title) {
               (strings['_achievements._types._$type.title']?['localizations']
                   as Map<String, dynamic>)[locale] = {
-                'stringUnit': {
-                  'state': 'translated',
-                  'value': title,
-                },
+                'stringUnit': {'state': 'translated', 'value': title},
               };
             }
           }
@@ -219,18 +218,16 @@ void main() {
   }
   final file = File('ios/Localizable.xcstrings');
   file.writeAsStringSync(
-    const JsonEncoder.withIndent('  ').convert(
-      {
-        '_': [
-          'Generated file. Do not edit.',
-          'Source: misskey/locales',
-          'To regenerate, run: `dart run script/gen_localizable.dart`',
-        ],
-        'sourceLanguage': 'en',
-        'strings': strings,
-        'version': '1.0',
-      },
-    ),
+    const JsonEncoder.withIndent('  ').convert({
+      '_': [
+        'Generated file. Do not edit.',
+        'Source: misskey/locales',
+        'To regenerate, run: `dart run script/gen_localizable.dart`',
+      ],
+      'sourceLanguage': 'en',
+      'strings': strings,
+      'version': '1.0',
+    }),
   );
   // ignore: avoid_print
   print('Successfully generated ${file.path}');

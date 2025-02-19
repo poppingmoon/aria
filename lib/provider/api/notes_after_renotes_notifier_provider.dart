@@ -24,16 +24,20 @@ class NotesAfterRenotesNotifier extends _$NotesAfterRenotesNotifier {
   String? _untilId;
 
   Future<Iterable<Note>> _fetchRenotes() async {
-    final notes = await ref.read(misskeyProvider(account)).notes.renotes(
-          NotesRenoteRequest(noteId: noteId, untilId: _untilId),
-        );
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .renotes(NotesRenoteRequest(noteId: noteId, untilId: _untilId));
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     _untilId = notes.lastOrNull?.id;
     return notes;
   }
 
   Future<Note?> _fetchNote(Note renote) async {
-    final notes = await ref.read(misskeyProvider(account)).users.notes(
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .users
+        .notes(
           UsersNotesRequest(
             userId: renote.userId,
             sinceDate: renote.createdAt,

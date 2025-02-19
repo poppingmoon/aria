@@ -27,47 +27,54 @@ class BlockedUsersPage extends ConsumerWidget {
       appBar: AppBar(title: Text(t.misskey.blockedUsers)),
       body: PaginatedListView(
         paginationState: blockings,
-        itemBuilder: (context, blocking) => ListTile(
-          leading:
-              UserAvatar(account: account, user: blocking.blockee, size: 32.0),
-          title: UsernameWidget(account: account, user: blocking.blockee),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AcctWidget(account: account, user: blocking.blockee),
-              TimeWidget(time: blocking.createdAt, detailed: true),
-            ],
-          ),
-          trailing: IconButton(
-            onPressed: () async {
-              final confirmed = await confirm(
-                context,
-                message: t.misskey.deleteConfirm,
-              );
-              if (!context.mounted) return;
-              if (confirmed) {
-                await futureWithDialog(
-                  context,
-                  ref
-                      .read(blockingsNotifierProvider(account).notifier)
-                      .delete(blocking.blockeeId),
-                );
-              }
-            },
-            icon: const Icon(Icons.close),
-            color: Theme.of(context).colorScheme.error,
-          ),
-          onTap: () => context.push('/$account/users/${blocking.blockeeId}'),
-          onLongPress: () => showUserSheet(
-            context: context,
-            account: account,
-            userId: blocking.blockeeId,
-          ),
-        ),
+        itemBuilder:
+            (context, blocking) => ListTile(
+              leading: UserAvatar(
+                account: account,
+                user: blocking.blockee,
+                size: 32.0,
+              ),
+              title: UsernameWidget(account: account, user: blocking.blockee),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AcctWidget(account: account, user: blocking.blockee),
+                  TimeWidget(time: blocking.createdAt, detailed: true),
+                ],
+              ),
+              trailing: IconButton(
+                onPressed: () async {
+                  final confirmed = await confirm(
+                    context,
+                    message: t.misskey.deleteConfirm,
+                  );
+                  if (!context.mounted) return;
+                  if (confirmed) {
+                    await futureWithDialog(
+                      context,
+                      ref
+                          .read(blockingsNotifierProvider(account).notifier)
+                          .delete(blocking.blockeeId),
+                    );
+                  }
+                },
+                icon: const Icon(Icons.close),
+                color: Theme.of(context).colorScheme.error,
+              ),
+              onTap:
+                  () => context.push('/$account/users/${blocking.blockeeId}'),
+              onLongPress:
+                  () => showUserSheet(
+                    context: context,
+                    account: account,
+                    userId: blocking.blockeeId,
+                  ),
+            ),
         onRefresh: () => ref.refresh(blockingsNotifierProvider(account).future),
-        loadMore: (skipError) => ref
-            .read(blockingsNotifierProvider(account).notifier)
-            .loadMore(skipError: skipError),
+        loadMore:
+            (skipError) => ref
+                .read(blockingsNotifierProvider(account).notifier)
+                .loadMore(skipError: skipError),
         noItemsLabel: t.misskey.noUsers,
       ),
     );

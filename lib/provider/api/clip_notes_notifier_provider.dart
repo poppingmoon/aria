@@ -17,9 +17,10 @@ class ClipNotesNotifier extends _$ClipNotesNotifier {
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).clips.notes(
-          ClipsNotesRequest(clipId: clipId, untilId: untilId),
-        );
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .clips
+        .notes(ClipsNotesRequest(clipId: clipId, untilId: untilId));
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;
   }

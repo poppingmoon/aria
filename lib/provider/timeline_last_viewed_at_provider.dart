@@ -9,8 +9,9 @@ part 'timeline_last_viewed_at_provider.g.dart';
 
 @riverpod
 DateTime? timelineLastViewedAt(Ref ref, TabSettings tabSettings) {
-  final noteId =
-      ref.watch(timelineLastViewedNoteIdNotifierProvider(tabSettings));
+  final noteId = ref.watch(
+    timelineLastViewedNoteIdNotifierProvider(tabSettings),
+  );
   if (noteId != null) {
     return Id.tryParse(noteId)?.date;
   }

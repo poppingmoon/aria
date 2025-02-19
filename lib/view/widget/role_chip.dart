@@ -31,25 +31,20 @@ class RoleChip extends ConsumerWidget {
         child: Container(
           decoration: BoxDecoration(
             border: Border.all(
-              color: safeParseColor(role.color) ??
+              color:
+                  safeParseColor(role.color) ??
                   Theme.of(context).colorScheme.outlineVariant,
             ),
             borderRadius: BorderRadius.circular(height),
           ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 4.0,
-            horizontal: 8.0,
-          ),
+          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               if (role case UserRole(:final iconUrl))
                 Padding(
                   padding: const EdgeInsetsDirectional.only(end: 4.0),
-                  child: ImageWidget(
-                    url: iconUrl.toString(),
-                    height: height,
-                  ),
+                  child: ImageWidget(url: iconUrl.toString(), height: height),
                 ),
               Text(role.name),
             ],

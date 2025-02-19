@@ -15,9 +15,9 @@ void main() {
       ProviderScope(
         overrides: [
           sharedPreferencesProvider.overrideWithValue(
-            const FakeSharedPreferences(
-              {'generalSettings': '{"locale": "enUs"}'},
-            ),
+            const FakeSharedPreferences({
+              'generalSettings': '{"locale": "enUs"}',
+            }),
           ),
         ],
         child: TranslationProvider(child: const Aria()),

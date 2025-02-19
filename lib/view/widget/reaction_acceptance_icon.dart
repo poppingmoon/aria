@@ -19,16 +19,14 @@ class ReactionAcceptanceIcon extends StatelessWidget {
           t.misskey.nonSensitiveOnlyForLocalLikeOnlyForRemote,
         ReactionAcceptance.likeOnly => t.misskey.likeOnly,
       },
-      child: Icon(
-        switch (acceptance) {
-          null => Icons.interests,
-          ReactionAcceptance.likeOnlyForRemote => Icons.check_circle,
-          ReactionAcceptance.nonSensitiveOnly => Icons.shield,
-          ReactionAcceptance.nonSensitiveOnlyForLocalLikeOnlyForRemote =>
-            Icons.verified_user,
-          ReactionAcceptance.likeOnly => Icons.favorite,
-        },
-      ),
+      child: Icon(switch (acceptance) {
+        null => Icons.interests,
+        ReactionAcceptance.likeOnlyForRemote => Icons.check_circle,
+        ReactionAcceptance.nonSensitiveOnly => Icons.shield,
+        ReactionAcceptance.nonSensitiveOnlyForLocalLikeOnlyForRemote =>
+          Icons.verified_user,
+        ReactionAcceptance.likeOnly => Icons.favorite,
+      }),
     );
   }
 }

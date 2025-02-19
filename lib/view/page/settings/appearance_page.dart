@@ -29,10 +29,9 @@ class AppearancePage extends HookConsumerWidget {
               child: Text(
                 t.misskey.dataSaver,
                 style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.8),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
               ),
             ),
@@ -45,9 +44,10 @@ class AppearancePage extends HookConsumerWidget {
                 title: Text(t.misskey.dataSaver_.media_.title),
                 subtitle: Text(t.misskey.dataSaver_.media_.description),
                 value: settings.dataSaverMedia,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setDataSaverMedia(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setDataSaverMedia(value),
               ),
             ),
           ),
@@ -59,9 +59,10 @@ class AppearancePage extends HookConsumerWidget {
                 title: Text(t.misskey.dataSaver_.avatar_.title),
                 subtitle: Text(t.misskey.dataSaver_.avatar_.description),
                 value: settings.dataSaverAvatar,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setDataSaverAvatar(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setDataSaverAvatar(value),
               ),
             ),
           ),
@@ -73,9 +74,10 @@ class AppearancePage extends HookConsumerWidget {
                 title: Text(t.misskey.dataSaver_.urlPreview_.title),
                 subtitle: Text(t.misskey.dataSaver_.urlPreview_.description),
                 value: settings.dataSaverUrlPreview,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setDataSaverUrlPreview(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setDataSaverUrlPreview(value),
               ),
             ),
           ),
@@ -86,9 +88,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.disableDataSaverWhenOnWifi),
                 value: settings.disableDataSaverWhenOnWifi,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setDisableDataSaverWhenOnWifi(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setDisableDataSaverWhenOnWifi(value),
               ),
             ),
           ),
@@ -105,9 +108,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.reduceUiAnimation),
                 value: settings.reduceAnimation,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setReduceAnimation(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setReduceAnimation(value),
               ),
             ),
           ),
@@ -118,9 +122,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.disableShowingAnimatedImages),
                 value: settings.disableShowingAnimatedImages,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setDisableShowingAnimatedImages(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setDisableShowingAnimatedImages(value),
               ),
             ),
           ),
@@ -131,9 +136,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.enableEmojiFadeIn),
                 value: settings.enableEmojiFadeIn,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setEnableEmojiFadeIn(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setEnableEmojiFadeIn(value),
               ),
             ),
           ),
@@ -144,9 +150,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.forceShowAds),
                 value: settings.forceShowAds,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setForceShowAds(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setForceShowAds(value),
               ),
             ),
           ),
@@ -157,9 +164,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.useGroupedNotifications),
                 value: settings.useGroupedNotifications,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setUseGroupedNotifications(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setUseGroupedNotifications(value),
               ),
             ),
           ),
@@ -170,9 +178,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showTimelineTabBarAtBottom),
                 value: settings.showTimelineTabBarAtBottom,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowTimelineTabBarAtBottom(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowTimelineTabBarAtBottom(value),
               ),
             ),
           ),
@@ -183,9 +192,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showMenuButtonInTabBar),
                 value: settings.showMenuButtonInTabBar,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowMenuButtonInTabBar(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowMenuButtonInTabBar(value),
               ),
             ),
           ),
@@ -196,9 +206,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showTabHeaderInOneLine),
                 value: settings.showTabHeaderInOneLine,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowTabHeaderInOneLine(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowTabHeaderInOneLine(value),
               ),
             ),
           ),
@@ -209,9 +220,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.alwaysShowTabHeader),
                 value: settings.alwaysShowTabHeader,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setAlwaysShowTabHeader(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setAlwaysShowTabHeader(value),
               ),
             ),
           ),
@@ -222,9 +234,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showTimelineLastViewedAt),
                 value: settings.showTimelineLastViewedAt,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowTimelineLastViewedAt(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowTimelineLastViewedAt(value),
               ),
             ),
           ),
@@ -235,9 +248,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showPopupOnNewNote),
                 value: settings.showPopupOnNewNote,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowPopupOnNewNote(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowPopupOnNewNote(value),
               ),
             ),
           ),
@@ -255,10 +269,9 @@ class AppearancePage extends HookConsumerWidget {
               child: Text(
                 t.aria.timelinesPageButtons,
                 style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.8),
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.onSurface.withValues(alpha: 0.8),
                 ),
               ),
             ),
@@ -273,9 +286,9 @@ class AppearancePage extends HookConsumerWidget {
                 children: [
                   ...settings.timelinesPageButtonTypes.mapIndexed(
                     (index, type) => ListTile(
-                      leading: type != null
-                          ? Icon(
-                              switch (type) {
+                      leading:
+                          type != null
+                              ? Icon(switch (type) {
                                 TimelinesPageButtonType.announcements =>
                                   Icons.campaign,
                                 TimelinesPageButtonType.antennas =>
@@ -310,37 +323,43 @@ class AppearancePage extends HookConsumerWidget {
                                 TimelinesPageButtonType.search => Icons.search,
                                 TimelinesPageButtonType.settings =>
                                   Icons.settings,
-                              },
-                            )
-                          : const SizedBox.shrink(),
-                      title:
-                          _TimelinesPageButtonTypeNameWidget(buttonType: type),
+                              })
+                              : const SizedBox.shrink(),
+                      title: _TimelinesPageButtonTypeNameWidget(
+                        buttonType: type,
+                      ),
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           if (type != null)
                             IconButton(
-                              onPressed: () => ref
-                                  .read(
-                                    generalSettingsNotifierProvider.notifier,
-                                  )
-                                  .setTimelinesPageButtonTypes(
-                                    settings.timelinesPageButtonTypes
-                                        .mapIndexed(
-                                          (i, type) => i != index ? type : null,
-                                        )
-                                        .toList(),
-                                  ),
+                              onPressed:
+                                  () => ref
+                                      .read(
+                                        generalSettingsNotifierProvider
+                                            .notifier,
+                                      )
+                                      .setTimelinesPageButtonTypes(
+                                        settings.timelinesPageButtonTypes
+                                            .mapIndexed(
+                                              (i, type) =>
+                                                  i != index ? type : null,
+                                            )
+                                            .toList(),
+                                      ),
                               icon: const Icon(Icons.close),
                             ),
                           IconButton(
-                            onPressed: () => ref
-                                .read(generalSettingsNotifierProvider.notifier)
-                                .setTimelinesPageButtonTypes(
-                                  settings.timelinesPageButtonTypes
-                                      .whereIndexed((i, _) => i != index)
-                                      .toList(),
-                                ),
+                            onPressed:
+                                () => ref
+                                    .read(
+                                      generalSettingsNotifierProvider.notifier,
+                                    )
+                                    .setTimelinesPageButtonTypes(
+                                      settings.timelinesPageButtonTypes
+                                          .whereIndexed((i, _) => i != index)
+                                          .toList(),
+                                    ),
                             icon: const Icon(Icons.delete),
                           ),
                         ],
@@ -351,10 +370,11 @@ class AppearancePage extends HookConsumerWidget {
                           values: TimelinesPageButtonType.values,
                           initialValue: type,
                           title: Text(t.aria.buttonTypes),
-                          itemBuilder: (context, type) =>
-                              _TimelinesPageButtonTypeNameWidget(
-                            buttonType: type,
-                          ),
+                          itemBuilder:
+                              (context, type) =>
+                                  _TimelinesPageButtonTypeNameWidget(
+                                    buttonType: type,
+                                  ),
                         );
                         if (result != null && result != type) {
                           await ref
@@ -384,20 +404,23 @@ class AppearancePage extends HookConsumerWidget {
                 runSpacing: 8.0,
                 children: [
                   OutlinedButton.icon(
-                    onPressed: () => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setTimelinesPageButtonTypes(
-                      [...settings.timelinesPageButtonTypes, null],
-                    ),
+                    onPressed:
+                        () => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setTimelinesPageButtonTypes([
+                              ...settings.timelinesPageButtonTypes,
+                              null,
+                            ]),
                     icon: const Icon(Icons.add),
                     label: Text(t.misskey.add),
                   ),
                   OutlinedButton.icon(
-                    onPressed: () => ref
-                        .read(generalSettingsNotifierProvider.notifier)
-                        .setTimelinesPageButtonTypes(
-                          defaultTimelinesPageButtonTypes,
-                        ),
+                    onPressed:
+                        () => ref
+                            .read(generalSettingsNotifierProvider.notifier)
+                            .setTimelinesPageButtonTypes(
+                              defaultTimelinesPageButtonTypes,
+                            ),
                     icon: const Icon(Icons.refresh),
                     label: Text(t.misskey.default_),
                   ),
@@ -412,9 +435,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showSmallButtons),
                 value: settings.showSmallTimelinesPageButtons,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowSmallTimelinesPageButtons(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowSmallTimelinesPageButtons(value),
               ),
             ),
           ),
@@ -425,9 +449,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.showSquaredButtons),
                 value: settings.showSquaredTimelinesPageButtons,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setShowSquaredTimelinesPageButtons(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setShowSquaredTimelinesPageButtons(value),
               ),
             ),
           ),
@@ -444,9 +469,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.vibrateNote),
                 value: settings.vibrateNote,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setVibrateNote(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setVibrateNote(value),
               ),
             ),
           ),
@@ -457,9 +483,10 @@ class AppearancePage extends HookConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.vibrateNotification),
                 value: settings.vibrateNotification,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setVibrateNotification(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setVibrateNotification(value),
               ),
             ),
           ),
@@ -477,33 +504,31 @@ class _TimelinesPageButtonTypeNameWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      switch (buttonType) {
-        TimelinesPageButtonType.announcements => t.misskey.announcements,
-        TimelinesPageButtonType.antennas => t.misskey.antennas,
-        TimelinesPageButtonType.channels => t.misskey.channel,
-        TimelinesPageButtonType.clips => t.misskey.clips,
-        TimelinesPageButtonType.drive => t.misskey.drive,
-        TimelinesPageButtonType.explore => t.misskey.explore,
-        TimelinesPageButtonType.favorites => t.misskey.favorites,
-        TimelinesPageButtonType.gallery => t.misskey.gallery,
-        TimelinesPageButtonType.games => 'Misskey Games',
-        TimelinesPageButtonType.home => t.misskey.home,
-        TimelinesPageButtonType.instanceInfo => t.misskey.instanceInfo,
-        TimelinesPageButtonType.lists => t.misskey.lists,
-        TimelinesPageButtonType.lookup => t.misskey.lookup,
-        TimelinesPageButtonType.menu => t.misskey.menu,
-        TimelinesPageButtonType.note => t.misskey.note,
-        TimelinesPageButtonType.notifications => t.misskey.notifications,
-        TimelinesPageButtonType.pages => t.misskey.pages,
-        TimelinesPageButtonType.play => 'Play',
-        TimelinesPageButtonType.postForm => t.misskey.widgets_.postForm,
-        TimelinesPageButtonType.profile => t.misskey.profile,
-        TimelinesPageButtonType.reload => t.misskey.reload,
-        TimelinesPageButtonType.search => t.misskey.search,
-        TimelinesPageButtonType.settings => t.misskey.settings,
-        null => t.misskey.notSet,
-      },
-    );
+    return Text(switch (buttonType) {
+      TimelinesPageButtonType.announcements => t.misskey.announcements,
+      TimelinesPageButtonType.antennas => t.misskey.antennas,
+      TimelinesPageButtonType.channels => t.misskey.channel,
+      TimelinesPageButtonType.clips => t.misskey.clips,
+      TimelinesPageButtonType.drive => t.misskey.drive,
+      TimelinesPageButtonType.explore => t.misskey.explore,
+      TimelinesPageButtonType.favorites => t.misskey.favorites,
+      TimelinesPageButtonType.gallery => t.misskey.gallery,
+      TimelinesPageButtonType.games => 'Misskey Games',
+      TimelinesPageButtonType.home => t.misskey.home,
+      TimelinesPageButtonType.instanceInfo => t.misskey.instanceInfo,
+      TimelinesPageButtonType.lists => t.misskey.lists,
+      TimelinesPageButtonType.lookup => t.misskey.lookup,
+      TimelinesPageButtonType.menu => t.misskey.menu,
+      TimelinesPageButtonType.note => t.misskey.note,
+      TimelinesPageButtonType.notifications => t.misskey.notifications,
+      TimelinesPageButtonType.pages => t.misskey.pages,
+      TimelinesPageButtonType.play => 'Play',
+      TimelinesPageButtonType.postForm => t.misskey.widgets_.postForm,
+      TimelinesPageButtonType.profile => t.misskey.profile,
+      TimelinesPageButtonType.reload => t.misskey.reload,
+      TimelinesPageButtonType.search => t.misskey.search,
+      TimelinesPageButtonType.settings => t.misskey.settings,
+      null => t.misskey.notSet,
+    });
   }
 }

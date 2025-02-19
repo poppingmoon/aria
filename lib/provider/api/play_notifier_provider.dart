@@ -33,11 +33,7 @@ class PlayNotifier extends _$PlayNotifier {
     );
     final play = await future;
     state = AsyncValue.data(
-      play.copyWith(
-        title: title,
-        summary: summary,
-        script: script,
-      ),
+      play.copyWith(title: title, summary: summary, script: script),
     );
   }
 

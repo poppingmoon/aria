@@ -24,8 +24,9 @@ class GalleryPostNotifier extends _$GalleryPostNotifier {
   }
 
   Future<void> unlike() async {
-    await _misskey.gallery.posts
-        .unlike(GalleryPostsUnlikeRequest(postId: postId));
+    await _misskey.gallery.posts.unlike(
+      GalleryPostsUnlikeRequest(postId: postId),
+    );
     final page = await future;
     state = AsyncValue.data(
       page.copyWith(isLiked: false, likedCount: page.likedCount - 1),

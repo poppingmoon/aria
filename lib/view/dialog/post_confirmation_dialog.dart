@@ -52,11 +52,12 @@ Future<bool> confirmPost(
   }
   final result = await showDialog<bool>(
     context: ref.context,
-    builder: (context) => PostConfirmationDialog(
-      account: account,
-      request: request,
-      files: files ?? [],
-    ),
+    builder:
+        (context) => PostConfirmationDialog(
+          account: account,
+          request: request,
+          files: files ?? [],
+        ),
   );
   return result ?? false;
 }
@@ -76,18 +77,21 @@ class PostConfirmationDialog extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final channel = request.channelId != null
-        ? ref
-            .watch(channelNotifierProvider(account, request.channelId!))
-            .valueOrNull
-        : null;
-    final canScheduleNote = i?.policies?.canScheduleNote ??
+    final channel =
+        request.channelId != null
+            ? ref
+                .watch(channelNotifierProvider(account, request.channelId!))
+                .valueOrNull
+            : null;
+    final canScheduleNote =
+        i?.policies?.canScheduleNote ??
         ((i?.policies?.scheduleNoteMax ?? 0) > 0);
     final note = request
         .copyWith(scheduledAt: canScheduleNote ? request.scheduledAt : null)
         .toNote(i: i, channel: channel);
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Dialog(
       child: Container(
@@ -125,8 +129,9 @@ class PostConfirmationDialog extends ConsumerWidget {
                             ),
                             const WidgetSpan(child: SizedBox(width: 8.0)),
                             TextSpan(
-                              text: t.aria
-                                  .willBePostedOn(date: absoluteTime(date)),
+                              text: t.aria.willBePostedOn(
+                                date: absoluteTime(date),
+                              ),
                             ),
                           ],
                         ),

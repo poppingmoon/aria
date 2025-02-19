@@ -11,19 +11,19 @@ part 'attached_notes_notifier_provider.g.dart';
 @riverpod
 class AttachedNotesNotifier extends _$AttachedNotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String fileId,
-  ) async {
+  FutureOr<PaginationState<Note>> build(Account account, String fileId) async {
     final response = await _fetchNotes();
     return PaginationState.fromIterable(response);
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes =
-        await ref.read(misskeyProvider(account)).drive.files.attachedNotes(
-              DriveFilesAttachedNotesRequest(fileId: fileId, untilId: untilId),
-            );
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .drive
+        .files
+        .attachedNotes(
+          DriveFilesAttachedNotesRequest(fileId: fileId, untilId: untilId),
+        );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;
   }

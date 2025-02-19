@@ -35,8 +35,9 @@ class UserFollowingNotifier extends _$UserFollowingNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchFollowing(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchFollowing(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,

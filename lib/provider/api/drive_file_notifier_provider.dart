@@ -23,15 +23,18 @@ class DriveFileNotifier extends _$DriveFileNotifier {
     bool? isSensitive,
     String? comment,
   }) async {
-    final response =
-        await ref.read(misskeyProvider(account)).drive.files.update(
-              DriveFilesUpdateRequest(
-                fileId: fileId,
-                name: name,
-                isSensitive: isSensitive,
-                comment: comment,
-              ),
-            );
+    final response = await ref
+        .read(misskeyProvider(account))
+        .drive
+        .files
+        .update(
+          DriveFilesUpdateRequest(
+            fileId: fileId,
+            name: name,
+            isSensitive: isSensitive,
+            comment: comment,
+          ),
+        );
     state = AsyncValue.data(response);
     ref
         .read(driveFilesNotifierProvider(account, response.folderId).notifier)

@@ -35,9 +35,10 @@ class UserReactionsNotifier extends _$UserReactionsNotifier {
   Future<Iterable<UsersReactionsResponse>> _fetchReactions({
     String? untilId,
   }) async {
-    final reactions = await ref.read(misskeyProvider(account)).users.reactions(
-          UsersReactionsRequest(userId: userId, untilId: untilId),
-        );
+    final reactions = await ref
+        .read(misskeyProvider(account))
+        .users
+        .reactions(UsersReactionsRequest(userId: userId, untilId: untilId));
     final notes = reactions.map((reaction) => reaction.note);
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return reactions;
@@ -53,8 +54,9 @@ class UserReactionsNotifier extends _$UserReactionsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchReactions(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchReactions(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,

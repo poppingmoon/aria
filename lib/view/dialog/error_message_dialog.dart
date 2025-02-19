@@ -11,19 +11,13 @@ Future<void> showErrorMessageDialog(
 }) async {
   await showDialog<void>(
     context: context,
-    builder: (context) => ErrorMessageDialog(
-      error: error,
-      stackTrace: stackTrace,
-    ),
+    builder:
+        (context) => ErrorMessageDialog(error: error, stackTrace: stackTrace),
   );
 }
 
 class ErrorMessageDialog extends StatelessWidget {
-  const ErrorMessageDialog({
-    super.key,
-    this.error,
-    this.stackTrace,
-  });
+  const ErrorMessageDialog({super.key, this.error, this.stackTrace});
 
   final Object? error;
   final StackTrace? stackTrace;
@@ -33,10 +27,7 @@ class ErrorMessageDialog extends StatelessWidget {
     return AlertDialog(
       title: Text(t.misskey.error),
       scrollable: true,
-      content: ErrorMessage(
-        error: error,
-        stackTrace: stackTrace,
-      ),
+      content: ErrorMessage(error: error, stackTrace: stackTrace),
       actions: [
         TextButton(
           autofocus: true,

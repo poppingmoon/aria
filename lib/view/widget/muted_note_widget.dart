@@ -27,8 +27,10 @@ class MutedNoteWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final (verticalPadding, horizontalPadding) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) =>
-            (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+        (settings) => (
+          settings.noteVerticalPadding,
+          settings.noteHorizontalPadding,
+        ),
       ),
     );
 
@@ -48,16 +50,16 @@ class MutedNoteWidget extends ConsumerWidget {
             child: UsernameWidget(
               account: account,
               user: note.user,
-              builder: (context, span) => Text.rich(
-                t.aria.userSaysSomething(name: span),
-                style: TextStyle(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.7),
-                ),
-                textAlign: TextAlign.center,
-              ),
+              builder:
+                  (context, span) => Text.rich(
+                    t.aria.userSaysSomething(name: span),
+                    style: TextStyle(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.7),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
             ),
           ),
         ),

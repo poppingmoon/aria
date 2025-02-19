@@ -39,13 +39,10 @@ class PostFormAttaches extends ConsumerWidget {
   final double maxCrossAxisExtent;
 
   Future<void> _renameFile(WidgetRef ref, int index) async {
-    final file = ref.read(
-      attachesNotifierProvider(
-        account,
-        noteId: noteId,
-        gallery: gallery,
-      ),
-    )[index];
+    final file =
+        ref.read(
+          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+        )[index];
     final result = await showTextFieldDialog(
       ref.context,
       title: Text(t.misskey.renameFile),
@@ -57,11 +54,12 @@ class PostFormAttaches extends ConsumerWidget {
         case DrivePostFile():
           final driveFile = await futureWithDialog(
             ref.context,
-            ref.read(misskeyProvider(account)).drive.files.update(
-                  DriveFilesUpdateRequest(
-                    fileId: file.file.id,
-                    name: result,
-                  ),
+            ref
+                .read(misskeyProvider(account))
+                .drive
+                .files
+                .update(
+                  DriveFilesUpdateRequest(fileId: file.file.id, name: result),
                 ),
           );
           if (driveFile != null) {
@@ -96,18 +94,19 @@ class PostFormAttaches extends ConsumerWidget {
     int index,
     bool isSensitive,
   ) async {
-    final file = ref.read(
-      attachesNotifierProvider(
-        account,
-        noteId: noteId,
-        gallery: gallery,
-      ),
-    )[index];
+    final file =
+        ref.read(
+          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+        )[index];
     switch (file) {
       case DrivePostFile():
         final driveFile = await futureWithDialog(
           ref.context,
-          ref.read(misskeyProvider(account)).drive.files.update(
+          ref
+              .read(misskeyProvider(account))
+              .drive
+              .files
+              .update(
                 DriveFilesUpdateRequest(
                   fileId: file.file.id,
                   isSensitive: isSensitive,
@@ -141,13 +140,10 @@ class PostFormAttaches extends ConsumerWidget {
   }
 
   Future<void> _describeFile(WidgetRef ref, int index) async {
-    final file = ref.read(
-      attachesNotifierProvider(
-        account,
-        noteId: noteId,
-        gallery: gallery,
-      ),
-    )[index];
+    final file =
+        ref.read(
+          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+        )[index];
     final result = await showDialog<String>(
       context: ref.context,
       builder: (context) => FileCaptionEditDialog(file: file),
@@ -158,7 +154,11 @@ class PostFormAttaches extends ConsumerWidget {
         case DrivePostFile():
           final driveFile = await futureWithDialog(
             ref.context,
-            ref.read(misskeyProvider(account)).drive.files.update(
+            ref
+                .read(misskeyProvider(account))
+                .drive
+                .files
+                .update(
                   DriveFilesUpdateRequest(
                     fileId: file.file.id,
                     comment: result,
@@ -193,19 +193,17 @@ class PostFormAttaches extends ConsumerWidget {
   }
 
   Future<void> _editImage(WidgetRef ref, int index) async {
-    final file = ref.read(
-      attachesNotifierProvider(
-        account,
-        noteId: noteId,
-        gallery: gallery,
-      ),
-    )[index];
-    final data = await switch (file) {
-      LocalPostFile(:final file) => file,
-      DrivePostFile(:final file) =>
-        await ref.read(cacheManagerProvider).getSingleFile(file.url),
-    }
-        .readAsBytes();
+    final file =
+        ref.read(
+          attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
+        )[index];
+    final data =
+        await switch (file) {
+          LocalPostFile(:final file) => file,
+          DrivePostFile(:final file) => await ref
+              .read(cacheManagerProvider)
+              .getSingleFile(file.url),
+        }.readAsBytes();
     if (!ref.context.mounted) return;
     final result = await ref.context.push<Uint8List>(
       '/$account/image',
@@ -242,43 +240,42 @@ class PostFormAttaches extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final files = ref.watch(
-      attachesNotifierProvider(
-        account,
-        noteId: noteId,
-        gallery: gallery,
-      ),
+      attachesNotifierProvider(account, noteId: noteId, gallery: gallery),
     );
-    final uploading =
-        files.any((file) => file is LocalPostFile && file.uploading);
+    final uploading = files.any(
+      (file) => file is LocalPostFile && file.uploading,
+    );
 
     return ReorderableGridView.extent(
       shrinkWrap: true,
       maxCrossAxisExtent: maxCrossAxisExtent,
       physics: const NeverScrollableScrollPhysics(),
-      onReorder: (oldIndex, newIndex) => ref
-          .read(
-            attachesNotifierProvider(
-              account,
-              noteId: noteId,
-              gallery: gallery,
-            ).notifier,
-          )
-          .reorder(oldIndex, newIndex),
+      onReorder:
+          (oldIndex, newIndex) => ref
+              .read(
+                attachesNotifierProvider(
+                  account,
+                  noteId: noteId,
+                  gallery: gallery,
+                ).notifier,
+              )
+              .reorder(oldIndex, newIndex),
       itemDragEnable: (_) => !uploading,
-      proxyDecorator: (child, _, animation) => AnimatedBuilder(
-        animation: animation,
-        builder: (context, child) {
-          final animValue = Curves.easeInOut.transform(animation.value);
-          final elevation = lerpDouble(0.0, 6.0, animValue)!;
-          return Material(
-            elevation: elevation,
-            borderRadius: BorderRadius.circular(12.0),
-            color: Colors.transparent,
+      proxyDecorator:
+          (child, _, animation) => AnimatedBuilder(
+            animation: animation,
+            builder: (context, child) {
+              final animValue = Curves.easeInOut.transform(animation.value);
+              final elevation = lerpDouble(0.0, 6.0, animValue)!;
+              return Material(
+                elevation: elevation,
+                borderRadius: BorderRadius.circular(12.0),
+                color: Colors.transparent,
+                child: child,
+              );
+            },
             child: child,
-          );
-        },
-        child: child,
-      ),
+          ),
       children: List.generate(
         files.length,
         (index) => _PostFormAttach(
@@ -287,114 +284,129 @@ class PostFormAttaches extends ConsumerWidget {
           index: index,
           noteId: noteId,
           gallery: gallery,
-          onTap: !uploading
-              ? () => showModalBottomSheet<void>(
+          onTap:
+              !uploading
+                  ? () => showModalBottomSheet<void>(
                     context: context,
-                    builder: (context) => ListView(
-                      shrinkWrap: true,
-                      children: [
-                        ListTile(title: Text(files[index].name)),
-                        const Divider(height: 0.0),
-                        if (files[index].type?.startsWith('image/') ?? false)
-                          ListTile(
-                            leading: const Icon(Icons.visibility),
-                            title: Text(t.aria.showImage),
-                            onTap: () => showImageDialog(
-                              context,
-                              url: switch (files[index]) {
-                                DrivePostFile(:final file) => file.url,
-                                _ => null,
-                              },
-                              file: switch (files[index]) {
-                                LocalPostFile(:final file) => file,
-                                _ => null,
-                              },
-                            ),
-                          ),
-                        if (files[index].type?.startsWith('video/') ?? false)
-                          if (defaultTargetPlatform
-                              case TargetPlatform.android ||
-                                  TargetPlatform.iOS ||
-                                  TargetPlatform.macOS)
-                            ListTile(
-                              leading: const Icon(Icons.play_arrow),
-                              title: Text(t.aria.playVideo),
-                              onTap: () => showDialog<void>(
-                                context: context,
-                                builder: (context) => VideoDialog(
-                                  url: switch (files[index]) {
-                                    DrivePostFile(:final file) => file.url,
-                                    _ => null,
-                                  },
-                                  file: switch (files[index]) {
-                                    LocalPostFile(:final file) => file,
-                                    _ => null,
-                                  },
-                                ),
+                    builder:
+                        (context) => ListView(
+                          shrinkWrap: true,
+                          children: [
+                            ListTile(title: Text(files[index].name)),
+                            const Divider(height: 0.0),
+                            if (files[index].type?.startsWith('image/') ??
+                                false)
+                              ListTile(
+                                leading: const Icon(Icons.visibility),
+                                title: Text(t.aria.showImage),
+                                onTap:
+                                    () => showImageDialog(
+                                      context,
+                                      url: switch (files[index]) {
+                                        DrivePostFile(:final file) => file.url,
+                                        _ => null,
+                                      },
+                                      file: switch (files[index]) {
+                                        LocalPostFile(:final file) => file,
+                                        _ => null,
+                                      },
+                                    ),
                               ),
-                            ),
-                        if (files[index].type?.startsWith('audio/') ?? false)
-                          if (files[index] case DrivePostFile(:final file))
-                            ListTile(
-                              leading: const Icon(Icons.play_arrow),
-                              title: Text(t.aria.playAudio),
-                              onTap: () => showDialog<void>(
-                                context: context,
-                                builder: (context) => AudioDialog(
-                                  account: account,
-                                  file: file,
+                            if (files[index].type?.startsWith('video/') ??
+                                false)
+                              if (defaultTargetPlatform
+                                  case TargetPlatform.android ||
+                                      TargetPlatform.iOS ||
+                                      TargetPlatform.macOS)
+                                ListTile(
+                                  leading: const Icon(Icons.play_arrow),
+                                  title: Text(t.aria.playVideo),
+                                  onTap:
+                                      () => showDialog<void>(
+                                        context: context,
+                                        builder:
+                                            (context) => VideoDialog(
+                                              url: switch (files[index]) {
+                                                DrivePostFile(:final file) =>
+                                                  file.url,
+                                                _ => null,
+                                              },
+                                              file: switch (files[index]) {
+                                                LocalPostFile(:final file) =>
+                                                  file,
+                                                _ => null,
+                                              },
+                                            ),
+                                      ),
                                 ),
-                              ),
+                            if (files[index].type?.startsWith('audio/') ??
+                                false)
+                              if (files[index] case DrivePostFile(:final file))
+                                ListTile(
+                                  leading: const Icon(Icons.play_arrow),
+                                  title: Text(t.aria.playAudio),
+                                  onTap:
+                                      () => showDialog<void>(
+                                        context: context,
+                                        builder:
+                                            (context) => AudioDialog(
+                                              account: account,
+                                              file: file,
+                                            ),
+                                      ),
+                                ),
+                            ListTile(
+                              leading: const Icon(Icons.edit),
+                              title: Text(t.misskey.renameFile),
+                              onTap: () => _renameFile(ref, index),
                             ),
-                        ListTile(
-                          leading: const Icon(Icons.edit),
-                          title: Text(t.misskey.renameFile),
-                          onTap: () => _renameFile(ref, index),
+                            if (files[index].isSensitive)
+                              ListTile(
+                                leading: const Icon(Icons.visibility),
+                                title: Text(t.misskey.unmarkAsSensitive),
+                                onTap:
+                                    () => _updateIsSensitive(ref, index, false),
+                              )
+                            else
+                              ListTile(
+                                leading: const Icon(Icons.visibility_off),
+                                title: Text(t.misskey.markAsSensitive),
+                                onTap:
+                                    () => _updateIsSensitive(ref, index, true),
+                              ),
+                            ListTile(
+                              leading: const Icon(Icons.edit_note),
+                              title: Text(t.misskey.describeFile),
+                              onTap: () => _describeFile(ref, index),
+                            ),
+                            if (files[index].type?.startsWith('image/') ??
+                                false)
+                              ListTile(
+                                leading: const Icon(Icons.crop),
+                                title: Text(t.aria.editImage),
+                                onTap: () => _editImage(ref, index),
+                              ),
+                            ListTile(
+                              leading: const Icon(Icons.close),
+                              title: Text(t.misskey.attachCancel),
+                              onTap: () {
+                                ref
+                                    .read(
+                                      attachesNotifierProvider(
+                                        account,
+                                        noteId: noteId,
+                                        gallery: gallery,
+                                      ).notifier,
+                                    )
+                                    .remove(index);
+                                context.pop();
+                              },
+                            ),
+                          ],
                         ),
-                        if (files[index].isSensitive)
-                          ListTile(
-                            leading: const Icon(Icons.visibility),
-                            title: Text(t.misskey.unmarkAsSensitive),
-                            onTap: () => _updateIsSensitive(ref, index, false),
-                          )
-                        else
-                          ListTile(
-                            leading: const Icon(Icons.visibility_off),
-                            title: Text(t.misskey.markAsSensitive),
-                            onTap: () => _updateIsSensitive(ref, index, true),
-                          ),
-                        ListTile(
-                          leading: const Icon(Icons.edit_note),
-                          title: Text(t.misskey.describeFile),
-                          onTap: () => _describeFile(ref, index),
-                        ),
-                        if (files[index].type?.startsWith('image/') ?? false)
-                          ListTile(
-                            leading: const Icon(Icons.crop),
-                            title: Text(t.aria.editImage),
-                            onTap: () => _editImage(ref, index),
-                          ),
-                        ListTile(
-                          leading: const Icon(Icons.close),
-                          title: Text(t.misskey.attachCancel),
-                          onTap: () {
-                            ref
-                                .read(
-                                  attachesNotifierProvider(
-                                    account,
-                                    noteId: noteId,
-                                    gallery: gallery,
-                                  ).notifier,
-                                )
-                                .remove(index);
-                            context.pop();
-                          },
-                        ),
-                      ],
-                    ),
                     clipBehavior: Clip.hardEdge,
                   )
-              : null,
+                  : null,
         ),
       ),
     );
@@ -426,8 +438,9 @@ class _PostFormAttach extends ConsumerWidget {
         gallery: gallery,
       ).select((files) => files[index]),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style;
 
     return Card(
@@ -445,15 +458,16 @@ class _PostFormAttach extends ConsumerWidget {
             else if (file case LocalPostFile(uploading: false))
               IconButton.filled(
                 color: Theme.of(context).colorScheme.onPrimary,
-                onPressed: () => ref
-                    .read(
-                      attachesNotifierProvider(
-                        account,
-                        noteId: noteId,
-                        gallery: gallery,
-                      ).notifier,
-                    )
-                    .upload(index),
+                onPressed:
+                    () => ref
+                        .read(
+                          attachesNotifierProvider(
+                            account,
+                            noteId: noteId,
+                            gallery: gallery,
+                          ).notifier,
+                        )
+                        .upload(index),
                 icon: const Icon(Icons.upload),
               ),
             PositionedDirectional(
@@ -467,8 +481,9 @@ class _PostFormAttach extends ConsumerWidget {
                 child: Column(
                   children: [
                     if (file.type?.startsWith('video/') ?? false)
-                      if (file
-                          case DrivePostFile(file: DriveFile(thumbnailUrl: _?)))
+                      if (file case DrivePostFile(
+                        file: DriveFile(thumbnailUrl: _?),
+                      ))
                         Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: DecoratedBox(

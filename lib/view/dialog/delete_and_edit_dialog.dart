@@ -31,10 +31,10 @@ class DeleteAndEditDialog extends ConsumerWidget {
           autofocus: true,
           onPressed: () async {
             ref.read(postNotifierProvider(account).notifier).fromNote(note);
-            ref.read(attachesNotifierProvider(account).notifier).addAll(
-                  note.files.map(
-                    (file) => DrivePostFile.fromDriveFile(file),
-                  ),
+            ref
+                .read(attachesNotifierProvider(account).notifier)
+                .addAll(
+                  note.files.map((file) => DrivePostFile.fromDriveFile(file)),
                 );
             final deleted = await futureWithDialog(
               context,

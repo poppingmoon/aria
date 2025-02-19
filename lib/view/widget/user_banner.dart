@@ -26,15 +26,13 @@ class UserBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: expandOnTap && user.bannerUrl != null
-          ? () => showImageDialog(context, url: user.bannerUrl.toString())
-          : null,
+      onTap:
+          expandOnTap && user.bannerUrl != null
+              ? () => showImageDialog(context, url: user.bannerUrl.toString())
+              : null,
       child: Stack(
         children: [
-          Container(
-            height: height,
-            color: bannerBackgroundColor,
-          ),
+          Container(height: height, color: bannerBackgroundColor),
           if (user case UserDetailed(:final bannerUrl?))
             ImageWidget(
               url: bannerUrl.toString(),
@@ -60,18 +58,14 @@ class UserBanner extends StatelessWidget {
             alignment: AlignmentDirectional.topEnd,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: FollowButton(
-                account: account,
-                userId: user.id,
-              ),
+              child: FollowButton(account: account, userId: user.id),
             ),
           ),
-          if (user
-              case UserDetailedNotMeWithRelations(
-                :final isFollowed,
-                :final isMuted,
-                :final isBlocking,
-              ))
+          if (user case UserDetailedNotMeWithRelations(
+            :final isFollowed,
+            :final isMuted,
+            :final isBlocking,
+          ))
             if (isFollowed || isMuted || isBlocking)
               Align(
                 alignment: AlignmentDirectional.topStart,
@@ -80,9 +74,9 @@ class UserBanner extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: DefaultTextStyle(
-                      style: DefaultTextStyle.of(context)
-                          .style
-                          .apply(fontSizeFactor: 0.85),
+                      style: DefaultTextStyle.of(
+                        context,
+                      ).style.apply(fontSizeFactor: 0.85),
                       child: Column(
                         children: [
                           if (isFollowed) Text(t.misskey.followsYou),

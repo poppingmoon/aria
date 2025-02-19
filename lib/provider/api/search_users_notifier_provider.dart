@@ -20,12 +20,11 @@ class SearchUsersNotifier extends _$SearchUsersNotifier {
   }
 
   Future<Iterable<UserDetailed>> _fetchUsers({int? offset}) async {
-    final response = await ref.read(misskeyProvider(account)).users.search(
-          UsersSearchRequest(
-            query: query,
-            origin: userOrigin,
-            offset: offset,
-          ),
+    final response = await ref
+        .read(misskeyProvider(account))
+        .users
+        .search(
+          UsersSearchRequest(query: query, origin: userOrigin, offset: offset),
         );
     return response.whereType<UserDetailed>();
   }

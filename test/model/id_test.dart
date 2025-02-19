@@ -8,9 +8,7 @@ void main() {
     final parsed = Id.parse(aid);
     assert(aid.length == 10);
     assert(parsed.method == IdGenMethod.aid);
-    assert(
-      parsed.date.millisecondsSinceEpoch == date.millisecondsSinceEpoch,
-    );
+    assert(parsed.date.millisecondsSinceEpoch == date.millisecondsSinceEpoch);
     assert(parsed.toString() == aid);
   });
 

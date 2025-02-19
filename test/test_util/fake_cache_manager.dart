@@ -13,13 +13,13 @@ class FakeFileSystem implements FileSystem {
 
 class FakeCacheManager extends CacheManager with ImageCacheManager {
   FakeCacheManager()
-      : super(
-          Config(
-            'fakeCacheManager',
-            repo: JsonCacheInfoRepository(path: 'fake.json'),
-            fileSystem: FakeFileSystem(),
-          ),
-        );
+    : super(
+        Config(
+          'fakeCacheManager',
+          repo: JsonCacheInfoRepository(path: 'fake.json'),
+          fileSystem: FakeFileSystem(),
+        ),
+      );
 
   @override
   Future<FileInfo?> getFileFromCache(

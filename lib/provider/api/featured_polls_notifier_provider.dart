@@ -20,10 +20,11 @@ class FeaturedPollsNotifier extends _$FeaturedPollsNotifier {
   }
 
   Future<Iterable<Note>> _fetchNotes({int? offset}) async {
-    final notes =
-        await ref.read(misskeyProvider(account)).notes.polls.recommendation(
-              NotesPollsRecommendationRequest(offset: offset),
-            );
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .polls
+        .recommendation(NotesPollsRecommendationRequest(offset: offset));
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;
   }

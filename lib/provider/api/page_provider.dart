@@ -20,13 +20,12 @@ class PageNotifier extends _$PageNotifier {
     String? username,
   }) async {
     final page = await _misskey.pages.show(
-      PagesShowRequest(
-        pageId: pageId,
-        name: pageName,
-        username: username,
-      ),
+      PagesShowRequest(pageId: pageId, name: pageName, username: username),
     );
-    final noteIds = page.content.map(_getNoteIds).flattenedToSet.where(
+    final noteIds = page.content
+        .map(_getNoteIds)
+        .flattenedToSet
+        .where(
           (noteId) =>
               !ref.read(notesNotifierProvider(account)).containsKey(noteId),
         );

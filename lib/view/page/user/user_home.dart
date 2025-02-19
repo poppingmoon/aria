@@ -63,21 +63,24 @@ class UserHome extends ConsumerWidget {
     );
 
     return RefreshIndicator(
-      onRefresh: () => ref.refresh(
-        userNotifierProvider(
-          account,
-          userId: userId,
-          username: username,
-          host: host,
-        ).future,
-      ),
-      child: switch (user) {
-        AsyncValue(valueOrNull: final user?) =>
-          _UserHome(account: account, user: user),
-        AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
-            error: error,
-            stackTrace: stackTrace,
+      onRefresh:
+          () => ref.refresh(
+            userNotifierProvider(
+              account,
+              userId: userId,
+              username: username,
+              host: host,
+            ).future,
           ),
+      child: switch (user) {
+        AsyncValue(valueOrNull: final user?) => _UserHome(
+          account: account,
+          user: user,
+        ),
+        AsyncValue(:final error?, :final stackTrace) => ErrorMessage(
+          error: error,
+          stackTrace: stackTrace,
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );
@@ -85,10 +88,7 @@ class UserHome extends ConsumerWidget {
 }
 
 class _UserHome extends ConsumerWidget {
-  const _UserHome({
-    required this.account,
-    required this.user,
-  });
+  const _UserHome({required this.account, required this.user});
 
   final Account account;
   final UserDetailed user;
@@ -107,22 +107,26 @@ class _UserHome extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final meta = ref.watch(metaNotifierProvider(account.host)).valueOrNull;
-    final skebStatus = meta?.enableSkebStatus ?? false
-        ? ref.watch(skebStatusProvider(account, user.id)).valueOrNull
-        : null;
+    final skebStatus =
+        meta?.enableSkebStatus ?? false
+            ? ref.watch(skebStatusProvider(account, user.id)).valueOrNull
+            : null;
     final squareAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.squareAvatars),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.squareAvatars,
+      ),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style;
     final remoteUrl = user.uri ?? user.url;
-    final birthday = user.birthday != null
-        ? DateFormat.yMMMd(
-            Localizations.localeOf(context).toLanguageTag(),
-          ).format(user.birthday!)
-        : null;
+    final birthday =
+        user.birthday != null
+            ? DateFormat.yMMMd(
+              Localizations.localeOf(context).toLanguageTag(),
+            ).format(user.birthday!)
+            : null;
 
     return CustomScrollView(
       slivers: [
@@ -132,11 +136,7 @@ class _UserHome extends ConsumerWidget {
             children: [
               Column(
                 children: [
-                  UserBanner(
-                    account: account,
-                    user: user,
-                    expandOnTap: true,
-                  ),
+                  UserBanner(account: account, user: user, expandOnTap: true),
                   Container(
                     width: maxContentWidth,
                     height: 50.0,
@@ -156,8 +156,9 @@ class _UserHome extends ConsumerWidget {
               ),
               DecoratedBox(
                 decoration: BoxDecoration(
-                  borderRadius:
-                      BorderRadius.circular(squareAvatars ? 20.0 : 100.0),
+                  borderRadius: BorderRadius.circular(
+                    squareAvatars ? 20.0 : 100.0,
+                  ),
                   boxShadow: const [
                     BoxShadow(
                       blurRadius: 4.0,
@@ -170,10 +171,11 @@ class _UserHome extends ConsumerWidget {
                   account: account,
                   user: user,
                   size: 100.0,
-                  onTap: () => showImageDialog(
-                    context,
-                    url: user.avatarUrl.toString(),
-                  ),
+                  onTap:
+                      () => showImageDialog(
+                        context,
+                        url: user.avatarUrl.toString(),
+                      ),
                 ),
               ),
             ],
@@ -205,10 +207,9 @@ class _UserHome extends ConsumerWidget {
                         TextSpan(
                           text: '@${toUnicode(user.host ?? account.host)}',
                           style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withValues(alpha: 0.5),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withValues(alpha: 0.5),
                           ),
                         ),
                         const TextSpan(text: Unicode.PDI),
@@ -267,9 +268,7 @@ class _UserHome extends ConsumerWidget {
                                 ),
                                 TextSpan(
                                   text: t.misskey.remoteUserCaution,
-                                  style: TextStyle(
-                                    color: colors.infoWarnFg,
-                                  ),
+                                  style: TextStyle(color: colors.infoWarnFg),
                                 ),
                               ],
                             ),
@@ -282,10 +281,11 @@ class _UserHome extends ConsumerWidget {
                               child: Text(t.misskey.showOnRemote),
                             ),
                             TextButton(
-                              onPressed: () => futureWithDialog(
-                                context,
-                                openUserAsGuest(ref, user),
-                              ),
+                              onPressed:
+                                  () => futureWithDialog(
+                                    context,
+                                    openUserAsGuest(ref, user),
+                                  ),
                               child: Text(t.aria.openAsGuest),
                             ),
                           ],
@@ -316,7 +316,7 @@ class _UserHome extends ConsumerWidget {
                   ),
                   if (user
                       case UserDetailedNotMeWithRelations(
-                            :final followedMessage?
+                            :final followedMessage?,
                           ) ||
                           MeDetailed(:final followedMessage?))
                     Container(
@@ -327,8 +327,8 @@ class _UserHome extends ConsumerWidget {
                         color: Color.lerp(colors.accent, colors.panel, 0.85),
                         clipBehavior: Clip.hardEdge,
                         child: InkWell(
-                          onLongPress: () =>
-                              copyToClipboard(context, followedMessage),
+                          onLongPress:
+                              () => copyToClipboard(context, followedMessage),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -363,8 +363,10 @@ class _UserHome extends ConsumerWidget {
                             (role) => RoleChip(
                               account: account,
                               role: role,
-                              onTap: () =>
-                                  context.push('/$account/roles/${role.id}'),
+                              onTap:
+                                  () => context.push(
+                                    '/$account/roles/${role.id}',
+                                  ),
                             ),
                           ),
                         ],
@@ -419,35 +421,31 @@ class _UserHome extends ConsumerWidget {
                     child: Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(8.0),
-                      child: user.description != null
-                          ? SelectionArea(
-                              child: Mfm(
-                                account: account,
-                                text: user.description,
-                                emojis: user.emojis,
-                                author: user,
-                                isUserDescription: true,
+                      child:
+                          user.description != null
+                              ? SelectionArea(
+                                child: Mfm(
+                                  account: account,
+                                  text: user.description,
+                                  emojis: user.emojis,
+                                  author: user,
+                                  isUserDescription: true,
+                                  textAlign: TextAlign.center,
+                                ),
+                              )
+                              : Text(
+                                t.misskey.noAccountDescription,
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.onSurface
+                                      .withValues(alpha: 0.8),
+                                ),
                                 textAlign: TextAlign.center,
                               ),
-                            )
-                          : Text(
-                              t.misskey.noAccountDescription,
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onSurface
-                                    .withValues(alpha: 0.8),
-                              ),
-                              textAlign: TextAlign.center,
-                            ),
                     ),
                   ),
                   if (user.mutualLinkSections case final mutualLinkSections?
                       when mutualLinkSections.isNotEmpty) ...[
-                    ColoredBox(
-                      color: colors.panel,
-                      child: const Divider(),
-                    ),
+                    ColoredBox(color: colors.panel, child: const Divider()),
                     for (final section in mutualLinkSections) ...[
                       if (section.name case final name?)
                         Container(
@@ -467,40 +465,45 @@ class _UserHome extends ConsumerWidget {
                             alignment: WrapAlignment.spaceEvenly,
                             spacing: 8.0,
                             runSpacing: 8.0,
-                            children: section.mutualLinks
-                                .map(
-                                  (link) => InkWell(
-                                    onTap: () =>
-                                        navigate(ref, account, link.url),
-                                    onLongPress: () =>
-                                        showModalBottomSheet<void>(
-                                      context: context,
-                                      builder: (context) =>
-                                          UrlSheet(url: link.url),
-                                    ),
-                                    child: link.imgSrc != null
-                                        ? ImageWidget(
-                                            url: link.imgSrc!,
-                                            width: 200.0,
-                                            height: 40.0,
-                                            semanticLabel: link.description,
-                                          )
-                                        : const SizedBox(
-                                            width: 200.0,
-                                            height: 40.0,
-                                          ),
-                                  ),
-                                )
-                                .toList(),
+                            children:
+                                section.mutualLinks
+                                    .map(
+                                      (link) => InkWell(
+                                        onTap:
+                                            () => navigate(
+                                              ref,
+                                              account,
+                                              link.url,
+                                            ),
+                                        onLongPress:
+                                            () => showModalBottomSheet<void>(
+                                              context: context,
+                                              builder:
+                                                  (context) =>
+                                                      UrlSheet(url: link.url),
+                                            ),
+                                        child:
+                                            link.imgSrc != null
+                                                ? ImageWidget(
+                                                  url: link.imgSrc!,
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                  semanticLabel:
+                                                      link.description,
+                                                )
+                                                : const SizedBox(
+                                                  width: 200.0,
+                                                  height: 40.0,
+                                                ),
+                                      ),
+                                    )
+                                    .toList(),
                           ),
                         ),
                       ),
                     ],
                   ],
-                  ColoredBox(
-                    color: colors.panel,
-                    child: const Divider(),
-                  ),
+                  ColoredBox(color: colors.panel, child: const Divider()),
                   Material(
                     color: colors.panel,
                     child: IconTheme.merge(
@@ -613,10 +616,7 @@ class _UserHome extends ConsumerWidget {
                     ),
                   ),
                   if (user.fields?.isNotEmpty ?? skebStatus != null) ...[
-                    ColoredBox(
-                      color: colors.panel,
-                      child: const Divider(),
-                    ),
+                    ColoredBox(color: colors.panel, child: const Divider()),
                     Material(
                       color: colors.panel,
                       child: Table(
@@ -648,24 +648,27 @@ class _UserHome extends ConsumerWidget {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: user.verifiedLinks
-                                          .contains(field.value)
-                                      ? UrlWidget(
-                                          url: field.value,
-                                          verified: true,
-                                          onTap: () => navigate(
-                                            ref,
-                                            account,
-                                            field.value,
+                                  child:
+                                      user.verifiedLinks.contains(field.value)
+                                          ? UrlWidget(
+                                            url: field.value,
+                                            verified: true,
+                                            onTap:
+                                                () => navigate(
+                                                  ref,
+                                                  account,
+                                                  field.value,
+                                                ),
+                                            style: TextStyle(
+                                              color: colors.link,
+                                            ),
+                                          )
+                                          : Mfm(
+                                            account: account,
+                                            text: field.value,
+                                            emojis: user.emojis,
+                                            author: user,
                                           ),
-                                          style: TextStyle(color: colors.link),
-                                        )
-                                      : Mfm(
-                                          account: account,
-                                          text: field.value,
-                                          emojis: user.emojis,
-                                          author: user,
-                                        ),
                                 ),
                               ],
                             ),
@@ -677,8 +680,11 @@ class _UserHome extends ConsumerWidget {
                                   padding: const EdgeInsets.all(4.0),
                                   child: Align(
                                     child: InkWell(
-                                      onTap: () =>
-                                          launchUrl(ref, Uri.https('skeb.jp')),
+                                      onTap:
+                                          () => launchUrl(
+                                            ref,
+                                            Uri.https('skeb.jp'),
+                                          ),
                                       child: DefaultTextStyle.merge(
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
@@ -708,10 +714,7 @@ class _UserHome extends ConsumerWidget {
                       ),
                     ),
                   ],
-                  ColoredBox(
-                    color: colors.panel,
-                    child: const Divider(),
-                  ),
+                  ColoredBox(color: colors.panel, child: const Divider()),
                   Material(
                     color: colors.panel,
                     child: Row(
@@ -736,11 +739,12 @@ class _UserHome extends ConsumerWidget {
                         ),
                         Expanded(
                           child: InkWell(
-                            onTap: user.isFollowingVisibleForMe
-                                ? () => context.push(
+                            onTap:
+                                user.isFollowingVisibleForMe
+                                    ? () => context.push(
                                       '/$account/users/${user.id}/following',
                                     )
-                                : null,
+                                    : null,
                             child: Column(
                               children: [
                                 if (user.isFollowingVisibleForMe)
@@ -764,11 +768,12 @@ class _UserHome extends ConsumerWidget {
                         ),
                         Expanded(
                           child: InkWell(
-                            onTap: user.isFollowersVisibleForMe
-                                ? () => context.push(
+                            onTap:
+                                user.isFollowersVisibleForMe
+                                    ? () => context.push(
                                       '/$account/users/${user.id}/followers',
                                     )
-                                : null,
+                                    : null,
                             child: Column(
                               children: [
                                 if (user.isFollowersVisibleForMe)
@@ -810,54 +815,55 @@ class _UserHome extends ConsumerWidget {
         ),
         if (user case UserDetailed(:final pinnedNoteIds?))
           SliverList.builder(
-            itemBuilder: (context, index) => Center(
-              child: Container(
-                width: maxContentWidth,
-                margin: const EdgeInsets.symmetric(
-                  vertical: 4.0,
-                  horizontal: 8.0,
-                ),
-                child: Column(
-                  children: [
-                    DecoratedBox(
-                      decoration: BoxDecoration(
-                        color: colors.panel,
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(8.0),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(4.0),
-                        child: Row(
-                          children: [
-                            Icon(
-                              Icons.push_pin,
-                              size: style.fontSize,
-                              color: pinColor,
-                            ),
-                            const SizedBox(width: 2.0),
-                            Expanded(
-                              child: Text(
-                                t.misskey.pinnedNote,
-                                style: const TextStyle(color: pinColor),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+            itemBuilder:
+                (context, index) => Center(
+                  child: Container(
+                    width: maxContentWidth,
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 4.0,
+                      horizontal: 8.0,
                     ),
-                    NoteWidget(
-                      account: account,
-                      noteId: pinnedNoteIds[index],
-                      withHardMute: false,
-                      borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(8.0),
-                      ),
+                    child: Column(
+                      children: [
+                        DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: colors.panel,
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(8.0),
+                            ),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.push_pin,
+                                  size: style.fontSize,
+                                  color: pinColor,
+                                ),
+                                const SizedBox(width: 2.0),
+                                Expanded(
+                                  child: Text(
+                                    t.misskey.pinnedNote,
+                                    style: const TextStyle(color: pinColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        NoteWidget(
+                          account: account,
+                          noteId: pinnedNoteIds[index],
+                          withHardMute: false,
+                          borderRadius: const BorderRadius.vertical(
+                            bottom: Radius.circular(8.0),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ),
             itemCount: pinnedNoteIds.length,
           ),
       ],

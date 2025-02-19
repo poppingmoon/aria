@@ -47,9 +47,13 @@ class FieldDialog extends HookWidget {
       ),
       actions: [
         ElevatedButton(
-          onPressed: () => context.pop(
-            UserField(name: nameController.text, value: valueController.text),
-          ),
+          onPressed:
+              () => context.pop(
+                UserField(
+                  name: nameController.text,
+                  value: valueController.text,
+                ),
+              ),
           child: Text(t.misskey.ok),
         ),
         OutlinedButton(

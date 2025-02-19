@@ -32,44 +32,45 @@ class LayersSheet extends ConsumerWidget {
             child: ListTile(
               leading: switch (layer) {
                 ImageLayer() => ExtendedImage.memory(
-                    layer.data,
-                    width: leadingSize,
-                    height: leadingSize,
-                  ),
+                  layer.data,
+                  width: leadingSize,
+                  height: leadingSize,
+                ),
                 TextLayer() => Icon(
-                    Icons.text_fields,
-                    size: leadingSize,
-                    color: layer.color,
-                  ),
+                  Icons.text_fields,
+                  size: leadingSize,
+                  color: layer.color,
+                ),
                 DrawLayer() => Icon(
-                    Icons.gesture,
-                    size: leadingSize,
-                    color: layer.color,
-                  ),
+                  Icons.gesture,
+                  size: leadingSize,
+                  color: layer.color,
+                ),
               },
-              title: Text(
-                switch (layer) {
-                  ImageLayer() => t.misskey.image,
-                  TextLayer() => layer.text,
-                  DrawLayer() => t.aria.draw,
-                },
-              ),
+              title: Text(switch (layer) {
+                ImageLayer() => t.misskey.image,
+                TextLayer() => layer.text,
+                DrawLayer() => t.aria.draw,
+              }),
               trailing: IconButton(
-                onPressed: () => ref
-                    .read(overlayLayersNotifierProvider.notifier)
-                    .remove(index),
+                onPressed:
+                    () => ref
+                        .read(overlayLayersNotifierProvider.notifier)
+                        .remove(index),
                 icon: Icon(
                   Icons.delete,
                   color: Theme.of(context).colorScheme.error,
                 ),
               ),
-              onTap: () => showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => _LayerSheet(
-                  backgroundLayer: backgroundLayer,
-                  index: index,
-                ),
-              ),
+              onTap:
+                  () => showModalBottomSheet<void>(
+                    context: context,
+                    builder:
+                        (context) => _LayerSheet(
+                          backgroundLayer: backgroundLayer,
+                          index: index,
+                        ),
+                  ),
             ),
           );
         } else {
@@ -90,10 +91,9 @@ class LayersSheet extends ConsumerWidget {
       },
       itemCount: overlayLayers.length + 1,
       onReorder: (oldIndex, newIndex) {
-        ref.read(overlayLayersNotifierProvider.notifier).reorder(
-              oldIndex,
-              newIndex,
-            );
+        ref
+            .read(overlayLayersNotifierProvider.notifier)
+            .reorder(oldIndex, newIndex);
       },
       shrinkWrap: true,
       buildDefaultDragHandles: false,
@@ -102,10 +102,7 @@ class LayersSheet extends ConsumerWidget {
 }
 
 class _LayerSheet extends HookConsumerWidget {
-  const _LayerSheet({
-    required this.backgroundLayer,
-    required this.index,
-  });
+  const _LayerSheet({required this.backgroundLayer, required this.index});
 
   final ImageLayer backgroundLayer;
   final int index;
@@ -130,10 +127,10 @@ class _LayerSheet extends HookConsumerWidget {
     final strokeWidthFactor = useState(
       layer is DrawLayer
           ? clampDouble(
-              layer.strokeWidth / baseStrokeWidth,
-              minStrokeWidthFactor,
-              maxStrokeWidthFactor,
-            )
+            layer.strokeWidth / baseStrokeWidth,
+            minStrokeWidthFactor,
+            maxStrokeWidthFactor,
+          )
           : 0.0,
     );
 
@@ -144,16 +141,18 @@ class _LayerSheet extends HookConsumerWidget {
           title: Text(t.misskey.angle),
           subtitle: Slider(
             value: clampDouble(layer.angle, minAngle, maxAngle),
-            onChanged: (value) => ref
-                .read(overlayLayersNotifierProvider.notifier)
-                .setAngle(index, value),
+            onChanged:
+                (value) => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setAngle(index, value),
             min: minAngle,
             max: maxAngle,
           ),
           trailing: IconButton(
-            onPressed: () => ref
-                .read(overlayLayersNotifierProvider.notifier)
-                .setAngle(index, 0.0),
+            onPressed:
+                () => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setAngle(index, 0.0),
             icon: const Icon(Icons.refresh),
           ),
         ),
@@ -161,15 +160,18 @@ class _LayerSheet extends HookConsumerWidget {
           title: Text('X ${t.misskey.position}'),
           subtitle: Slider(
             value: clampDouble(layer.offset.dx, minOffsetX, maxOffsetX),
-            onChanged: (value) => ref
-                .read(overlayLayersNotifierProvider.notifier)
-                .setOffset(index, Offset(value, layer.offset.dy)),
+            onChanged:
+                (value) => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setOffset(index, Offset(value, layer.offset.dy)),
             min: minOffsetX,
             max: maxOffsetX,
           ),
           trailing: IconButton(
-            onPressed: () =>
-                ref.read(overlayLayersNotifierProvider.notifier).setOffset(
+            onPressed:
+                () => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setOffset(
                       index,
                       Offset((minOffsetX + maxOffsetX) / 2, layer.offset.dy),
                     ),
@@ -180,15 +182,18 @@ class _LayerSheet extends HookConsumerWidget {
           title: Text('Y ${t.misskey.position}'),
           subtitle: Slider(
             value: clampDouble(layer.offset.dy, minOffsetY, maxOffsetY),
-            onChanged: (value) => ref
-                .read(overlayLayersNotifierProvider.notifier)
-                .setOffset(index, Offset(layer.offset.dx, value)),
+            onChanged:
+                (value) => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setOffset(index, Offset(layer.offset.dx, value)),
             min: minOffsetY,
             max: maxOffsetY,
           ),
           trailing: IconButton(
-            onPressed: () =>
-                ref.read(overlayLayersNotifierProvider.notifier).setOffset(
+            onPressed:
+                () => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setOffset(
                       index,
                       Offset(layer.offset.dx, (minOffsetY + maxOffsetY) / 2),
                     ),
@@ -198,23 +203,26 @@ class _LayerSheet extends HookConsumerWidget {
         SwitchListTile(
           title: Text(t.misskey.flip),
           value: layer.flipX,
-          onChanged: (value) => ref
-              .read(overlayLayersNotifierProvider.notifier)
-              .setFlipX(index, value),
+          onChanged:
+              (value) => ref
+                  .read(overlayLayersNotifierProvider.notifier)
+                  .setFlipX(index, value),
         ),
         ListTile(
           title: Text(t.misskey.size),
           subtitle: Slider(
             value: clampDouble(layer.scale, minScale, maxScale),
-            onChanged: (value) => ref
-                .read(overlayLayersNotifierProvider.notifier)
-                .setScale(index, value),
+            onChanged:
+                (value) => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setScale(index, value),
             max: maxScale,
           ),
           trailing: IconButton(
-            onPressed: () => ref
-                .read(overlayLayersNotifierProvider.notifier)
-                .setScale(index, 1.0),
+            onPressed:
+                () => ref
+                    .read(overlayLayersNotifierProvider.notifier)
+                    .setScale(index, 1.0),
             icon: const Icon(Icons.refresh),
           ),
         ),
@@ -223,14 +231,16 @@ class _LayerSheet extends HookConsumerWidget {
             title: Text(t.aria.opacity),
             subtitle: Slider(
               value: layer.opacity,
-              onChanged: (value) => ref
-                  .read(overlayLayersNotifierProvider.notifier)
-                  .setOpacity(index, value),
+              onChanged:
+                  (value) => ref
+                      .read(overlayLayersNotifierProvider.notifier)
+                      .setOpacity(index, value),
             ),
             trailing: IconButton(
-              onPressed: () => ref
-                  .read(overlayLayersNotifierProvider.notifier)
-                  .setOpacity(index, 1.0),
+              onPressed:
+                  () => ref
+                      .read(overlayLayersNotifierProvider.notifier)
+                      .setOpacity(index, 1.0),
               icon: const Icon(Icons.refresh),
             ),
           ),
@@ -298,15 +308,17 @@ class _LayerSheet extends HookConsumerWidget {
             subtitle: Slider(
               value: strokeWidthFactor.value,
               onChanged: (value) => strokeWidthFactor.value = value,
-              onChangeEnd: (value) => ref
-                  .read(overlayLayersNotifierProvider.notifier)
-                  .setStrokeWidth(index, value * baseStrokeWidth),
+              onChangeEnd:
+                  (value) => ref
+                      .read(overlayLayersNotifierProvider.notifier)
+                      .setStrokeWidth(index, value * baseStrokeWidth),
               max: maxStrokeWidthFactor,
             ),
             trailing: IconButton(
-              onPressed: () => ref
-                  .read(overlayLayersNotifierProvider.notifier)
-                  .setStrokeWidth(index, baseStrokeWidth),
+              onPressed:
+                  () => ref
+                      .read(overlayLayersNotifierProvider.notifier)
+                      .setStrokeWidth(index, baseStrokeWidth),
               icon: const Icon(Icons.refresh),
             ),
           ),

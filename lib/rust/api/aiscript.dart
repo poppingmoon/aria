@@ -16,12 +16,17 @@ abstract class AiScript implements RustOpaqueInterface {
   Future<void> exec({required String input});
 
   // HINT: Make it `#[frb(sync)]` to let it become the default constructor of Dart class.
-  static Future<AiScript> newInstance(
-          {required FutureOr<String> Function(String) read,
-          required FutureOr<void> Function(String) write,
-          AsApiLib? api,
-          AsUiLib? ui,
-          AsPlayLib? play}) =>
-      RustLib.instance.api.crateApiAiscriptAiScriptNew(
-          read: read, write: write, api: api, ui: ui, play: play);
+  static Future<AiScript> newInstance({
+    required FutureOr<String> Function(String) read,
+    required FutureOr<void> Function(String) write,
+    AsApiLib? api,
+    AsUiLib? ui,
+    AsPlayLib? play,
+  }) => RustLib.instance.api.crateApiAiscriptAiScriptNew(
+    read: read,
+    write: write,
+    api: api,
+    ui: ui,
+    play: play,
+  );
 }

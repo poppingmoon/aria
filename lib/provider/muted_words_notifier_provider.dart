@@ -10,15 +10,13 @@ part 'muted_words_notifier_provider.g.dart';
 @riverpod
 class MutedWordsNotifier extends _$MutedWordsNotifier {
   @override
-  List<MuteWord> build(
-    Account account, {
-    bool hardMute = false,
-  }) {
+  List<MuteWord> build(Account account, {bool hardMute = false}) {
     final mutedWords = ref.watch(
       iNotifierProvider(account).select(
-        (i) => hardMute
-            ? i.valueOrNull?.hardMutedWords
-            : i.valueOrNull?.mutedWords,
+        (i) =>
+            hardMute
+                ? i.valueOrNull?.hardMutedWords
+                : i.valueOrNull?.mutedWords,
       ),
     );
     if (mutedWords != null) {

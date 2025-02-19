@@ -29,51 +29,51 @@ class TimelineHeader extends HookConsumerWidget {
     final hasUnreadAnnouncement = i?.hasUnreadAnnouncement ?? false;
     final onlineUsersCount =
         ref.watch(onlineUsersCountProvider(tabSettings.account)).valueOrNull;
-    final scrollController =
-        ref.watch(timelineScrollControllerProvider(tabSettings));
+    final scrollController = ref.watch(
+      timelineScrollControllerProvider(tabSettings),
+    );
     final alwaysShowHeader = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.alwaysShowTabHeader),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.alwaysShowTabHeader,
+      ),
     );
     final oneLine = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showTabHeaderInOneLine),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showTabHeaderInOneLine,
+      ),
     );
     final isMenuExpanded = useState(false);
     final sizeFactor = useState(1.0);
-    useEffect(
-      () {
-        double? offset;
-        bool isScrollingUp = false;
-        bool scrollDirectionChanged = false;
+    useEffect(() {
+      double? offset;
+      bool isScrollingUp = false;
+      bool scrollDirectionChanged = false;
 
-        void callback() {
-          final nextOffset = scrollController.position.extentBefore;
-          if (offset case final offset?) {
-            final diff = nextOffset - offset;
-            if (diff != 0) {
-              final isNegative = diff.isNegative;
-              final changed = isScrollingUp ^ isNegative;
-              if (!(scrollDirectionChanged || changed)) {
-                if (!isMenuExpanded.value) {
-                  sizeFactor.value = clamp01(sizeFactor.value - diff * 0.01);
-                }
+      void callback() {
+        final nextOffset = scrollController.position.extentBefore;
+        if (offset case final offset?) {
+          final diff = nextOffset - offset;
+          if (diff != 0) {
+            final isNegative = diff.isNegative;
+            final changed = isScrollingUp ^ isNegative;
+            if (!(scrollDirectionChanged || changed)) {
+              if (!isMenuExpanded.value) {
+                sizeFactor.value = clamp01(sizeFactor.value - diff * 0.01);
               }
-              isScrollingUp = isNegative;
-              scrollDirectionChanged = changed;
             }
+            isScrollingUp = isNegative;
+            scrollDirectionChanged = changed;
           }
-          offset = nextOffset;
         }
+        offset = nextOffset;
+      }
 
-        sizeFactor.value = 1.0;
-        if (!alwaysShowHeader) {
-          scrollController.addListener(callback);
-        }
-        return () => scrollController.removeListener(callback);
-      },
-      [alwaysShowHeader],
-    );
+      sizeFactor.value = 1.0;
+      if (!alwaysShowHeader) {
+        scrollController.addListener(callback);
+      }
+      return () => scrollController.removeListener(callback);
+    }, [alwaysShowHeader]);
 
     return SizeTransition(
       sizeFactor: Animation.fromValueListenable(sizeFactor),
@@ -101,7 +101,8 @@ class TimelineHeader extends HookConsumerWidget {
           TextSpan(
             children: [
               TextSpan(
-                text: tabSettings.name ??
+                text:
+                    tabSettings.name ??
                     switch (tabSettings.tabType) {
                       TabType.homeTimeline => t.misskey.timelines_.home,
                       TabType.localTimeline => t.misskey.timelines_.local,
@@ -124,11 +125,10 @@ class TimelineHeader extends HookConsumerWidget {
                 TextSpan(
                   text: tabSettings.account.toString(),
                   style: DefaultTextStyle.of(context).style.apply(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withValues(alpha: 0.85),
-                      ),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.85),
+                  ),
                 ),
                 const TextSpan(text: Unicode.PDI),
               ],
@@ -137,17 +137,18 @@ class TimelineHeader extends HookConsumerWidget {
           overflow: TextOverflow.ellipsis,
           maxLines: oneLine ? 1 : null,
         ),
-        subtitle: !oneLine
-            ? Align(
-                alignment: AlignmentDirectional.centerStart,
-                child: Text(
-                  tabSettings.account.toString(),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  textDirection: TextDirection.ltr,
-                ),
-              )
-            : null,
+        subtitle:
+            !oneLine
+                ? Align(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text(
+                    tabSettings.account.toString(),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    textDirection: TextDirection.ltr,
+                  ),
+                )
+                : null,
         onExpansionChanged: (value) {
           isMenuExpanded.value = value;
           if (value) {

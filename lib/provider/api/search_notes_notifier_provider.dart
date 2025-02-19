@@ -27,7 +27,10 @@ class SearchNotesNotifier extends _$SearchNotesNotifier {
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).notes.search(
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .search(
           NotesSearchRequest(
             query: query,
             userId: userId,

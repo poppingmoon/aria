@@ -15,15 +15,13 @@ class MisskeyServerListDialog extends StatelessWidget {
         width: double.maxFinite,
         child: Theme(
           data: Theme.of(context).copyWith(
-            inputDecorationTheme: Theme.of(context)
-                .inputDecorationTheme
-                .copyWith(
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
-                ),
+            inputDecorationTheme: Theme.of(
+              context,
+            ).inputDecorationTheme.copyWith(
+              enabledBorder: Theme.of(context).inputDecorationTheme.border,
+            ),
           ),
-          child: MisskeyServers(
-            onTapServer: (item) => context.pop(item.url),
-          ),
+          child: MisskeyServers(onTapServer: (item) => context.pop(item.url)),
         ),
       ),
     );

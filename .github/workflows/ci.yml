@@ -41,10 +41,17 @@ jobs:
           flutter-version: ${{ needs.get-flutter-version.outputs.flutter-version }}
           cache: true
 
+      - name: Get dependencies
+        run: flutter pub get
+
       - name: Format
         run: >
           dart format
-          $(find . -name '*.dart' -not -name '*.g.dart' -and -not -name '*.freezed.dart')
+          $(find . -name '*.dart'
+          -not -name '*.freezed.dart'
+          -not -name '*.g.dart'
+          -not -name '*.gen.dart'
+          )
 
       - name: Suggest changes
         if: github.event_name == 'pull_request'

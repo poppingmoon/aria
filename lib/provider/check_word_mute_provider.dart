@@ -31,14 +31,16 @@ bool checkWordMute(
   if (text.isEmpty) {
     return false;
   }
-  final mutedWords =
-      ref.watch(mutedWordsNotifierProvider(account, hardMute: hardMute));
+  final mutedWords = ref.watch(
+    mutedWordsNotifierProvider(account, hardMute: hardMute),
+  );
   final (ac, filters, regExps) = ref.watch(muteProvider(mutedWords));
   if (ac.firstMatch(text) != null) {
     return true;
   }
-  if (filters
-      .any((filter) => filter.every((keyword) => text.contains(keyword)))) {
+  if (filters.any(
+    (filter) => filter.every((keyword) => text.contains(keyword)),
+  )) {
     return true;
   }
   return regExps.any((regExp) => regExp.hasMatch(text));

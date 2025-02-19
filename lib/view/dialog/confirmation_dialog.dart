@@ -13,13 +13,14 @@ Future<bool> confirm(
 }) async {
   final result = await showDialog<bool>(
     context: context,
-    builder: (context) => ConfirmationDialog(
-      title: title,
-      message: message,
-      content: content,
-      okText: okText,
-      cancelText: cancelText,
-    ),
+    builder:
+        (context) => ConfirmationDialog(
+          title: title,
+          message: message,
+          content: content,
+          okText: okText,
+          cancelText: cancelText,
+        ),
   );
   return result ?? false;
 }
@@ -41,9 +42,7 @@ class ConfirmationDialog extends StatelessWidget {
   final String? cancelText;
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  Widget build(BuildContext context) {
     return AlertDialog(
       title: title,
       content: content ?? Text(message ?? ''),

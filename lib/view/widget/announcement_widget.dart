@@ -30,16 +30,17 @@ class AnnouncementWidget extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final icon = announcement.icon;
     final imageUrl = announcement.imageUrl;
-    final titleStyle = DefaultTextStyle.of(context)
-        .style
+    final titleStyle = DefaultTextStyle.of(context).style
         .apply(fontSizeFactor: 1.5)
         .merge(const TextStyle(fontWeight: FontWeight.bold));
-    final showButton = this.showButton &&
+    final showButton =
+        this.showButton &&
         !account.isGuest &&
         !announcement.silence &&
         !(announcement.isRead ?? false);
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
@@ -56,10 +57,7 @@ class AnnouncementWidget extends ConsumerWidget {
                   color: pinColor,
                 ),
                 const SizedBox(width: 2.0),
-                Text(
-                  t.misskey.forYou,
-                  style: const TextStyle(color: pinColor),
-                ),
+                Text(t.misskey.forYou, style: const TextStyle(color: pinColor)),
               ],
             ),
             const SizedBox(height: 8.0),
@@ -108,12 +106,11 @@ class AnnouncementWidget extends ConsumerWidget {
           ],
           DefaultTextStyle(
             style: DefaultTextStyle.of(context).style.apply(
-                  fontSizeFactor: 0.9,
-                  color: Theme.of(context)
-                      .colorScheme
-                      .onSurface
-                      .withValues(alpha: 0.7),
-                ),
+              fontSizeFactor: 0.9,
+              color: Theme.of(
+                context,
+              ).colorScheme.onSurface.withValues(alpha: 0.7),
+            ),
             child: TimeWidget(
               time: announcement.updatedAt ?? announcement.createdAt,
               detailed: true,
@@ -127,8 +124,9 @@ class AnnouncementWidget extends ConsumerWidget {
                   final confirmed = await confirm(
                     context,
                     title: Text(t.misskey.announcement_.readConfirmTitle),
-                    message: t.misskey.announcement_
-                        .readConfirmText(title: announcement.title),
+                    message: t.misskey.announcement_.readConfirmText(
+                      title: announcement.title,
+                    ),
                   );
                   if (!confirmed) return;
                 }

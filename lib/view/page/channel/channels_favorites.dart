@@ -25,39 +25,42 @@ class ChannelsFavorites extends ConsumerWidget {
     return RefreshIndicator(
       onRefresh: () => ref.refresh(favoriteChannelsProvider(account).future),
       child: switch (channels) {
-        AsyncValue(valueOrNull: final channels?) => channels.isEmpty
-            ? Center(child: Text(t.misskey.nothing))
-            : ListView.builder(
-                itemBuilder: (context, index) => Center(
-                  child: Container(
-                    width: maxContentWidth,
-                    margin: EdgeInsets.only(
-                      left: 8.0,
-                      top: index == 0 ? 8.0 : 4.0,
-                      right: 8.0,
-                      bottom: index == channels.length - 1 ? 120.0 : 4.0,
+        AsyncValue(valueOrNull: final channels?) =>
+          channels.isEmpty
+              ? Center(child: Text(t.misskey.nothing))
+              : ListView.builder(
+                itemBuilder:
+                    (context, index) => Center(
+                      child: Container(
+                        width: maxContentWidth,
+                        margin: EdgeInsets.only(
+                          left: 8.0,
+                          top: index == 0 ? 8.0 : 4.0,
+                          right: 8.0,
+                          bottom: index == channels.length - 1 ? 120.0 : 4.0,
+                        ),
+                        child: ChannelPreview(
+                          account: account,
+                          channel: channels[index],
+                          onTap:
+                              onChannelTap != null
+                                  ? () => onChannelTap?.call(channels[index])
+                                  : null,
+                        ),
+                      ),
                     ),
-                    child: ChannelPreview(
-                      account: account,
-                      channel: channels[index],
-                      onTap: onChannelTap != null
-                          ? () => onChannelTap?.call(channels[index])
-                          : null,
-                    ),
-                  ),
-                ),
                 itemCount: channels.length,
               ),
         AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Center(
-              child: Container(
-                width: maxContentWidth,
-                margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: ErrorMessage(error: error, stackTrace: stackTrace),
-              ),
+          physics: const AlwaysScrollableScrollPhysics(),
+          child: Center(
+            child: Container(
+              width: maxContentWidth,
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: ErrorMessage(error: error, stackTrace: stackTrace),
             ),
           ),
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );

@@ -8,16 +8,16 @@ import '../../test_util/dummy_note.dart';
 
 Note createDummyNote(int day, [int hour = 0]) {
   return dummyNote.copyWith(
-    id: Id(method: IdGenMethod.aidx, date: DateTime(2025, 1, day, hour))
-        .toString(),
+    id:
+        Id(
+          method: IdGenMethod.aidx,
+          date: DateTime(2025, 1, day, hour),
+        ).toString(),
   );
 }
 
 List<Note> createDummyNotes(int end, int start) {
-  return List.generate(
-    end - start,
-    (i) => createDummyNote(end - i),
-  );
+  return List.generate(end - start, (i) => createDummyNote(end - i));
 }
 
 void main() {

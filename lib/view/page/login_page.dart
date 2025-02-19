@@ -26,9 +26,14 @@ class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
 
   Future<void> _launchMiAuth(WidgetRef ref, String hostText) async {
-    final trimmed = toAscii(
-      hostText.trim().replaceFirst(RegExp('https?://'), '').split('/').first,
-    ).toLowerCase();
+    final trimmed =
+        toAscii(
+          hostText
+              .trim()
+              .replaceFirst(RegExp('https?://'), '')
+              .split('/')
+              .first,
+        ).toLowerCase();
     try {
       final meta = await ref.read(metaNotifierProvider(trimmed).future);
       if (!ref.context.mounted) return;
@@ -38,15 +43,17 @@ class LoginPage extends HookConsumerWidget {
       }
     } catch (_) {}
     if (!ref.context.mounted) return;
-    final url =
-        ref.read(miAuthNotifierProvider.notifier).buildMiAuthUrl(trimmed);
+    final url = ref
+        .read(miAuthNotifierProvider.notifier)
+        .buildMiAuthUrl(trimmed);
     unawaited(
       launchUrl(
         ref,
         url,
-        mode: defaultTargetPlatform == TargetPlatform.iOS
-            ? LaunchMode.inAppWebView
-            : null,
+        mode:
+            defaultTargetPlatform == TargetPlatform.iOS
+                ? LaunchMode.inAppWebView
+                : null,
       ),
     );
     unawaited(ref.context.push('/login/authenticate'));
@@ -58,19 +65,18 @@ class LoginPage extends HookConsumerWidget {
     final controller = useTextEditingController();
     final focusNode = useFocusNode();
     final host = useState('');
-    final server =
-        servers.firstWhereOrNull((server) => server.url == host.value);
-    final iconUrl = server?.meta?['iconUrl'] as String? ??
+    final server = servers.firstWhereOrNull(
+      (server) => server.url == host.value,
+    );
+    final iconUrl =
+        server?.meta?['iconUrl'] as String? ??
         (server != null && server.icon
             ? 'https://instanceapp.misskey.page/instance-icons/${server.url}.webp'
             : null);
-    useEffect(
-      () {
-        controller.addListener(() => host.value = controller.text);
-        return;
-      },
-      [],
-    );
+    useEffect(() {
+      controller.addListener(() => host.value = controller.text);
+      return;
+    }, []);
 
     return Scaffold(
       body: MisskeyServerBackground(
@@ -84,18 +90,21 @@ class LoginPage extends HookConsumerWidget {
                   title: Text(t.misskey.login),
                   actions: [
                     PopupMenuButton<void>(
-                      itemBuilder: (context) => [
-                        PopupMenuItem(
-                          onTap: () =>
-                              context.push('/login/token?host=${host.value}'),
-                          child: Text(t.aria.loginWithAccessToken),
-                        ),
-                      ],
+                      itemBuilder:
+                          (context) => [
+                            PopupMenuItem(
+                              onTap:
+                                  () => context.push(
+                                    '/login/token?host=${host.value}',
+                                  ),
+                              child: Text(t.aria.loginWithAccessToken),
+                            ),
+                          ],
                     ),
                   ],
-                  backgroundColor: Theme.of(context)
-                      .scaffoldBackgroundColor
-                      .withValues(alpha: 0.5),
+                  backgroundColor: Theme.of(
+                    context,
+                  ).scaffoldBackgroundColor.withValues(alpha: 0.5),
                 ),
               ),
             ),
@@ -115,26 +124,28 @@ class LoginPage extends HookConsumerWidget {
                               color: Color(0xffdddddd),
                               shape: BoxShape.circle,
                             ),
-                            child: iconUrl != null
-                                ? ClipRRect(
-                                    borderRadius: BorderRadius.circular(50.0),
-                                    child: ImageWidget(
-                                      url: iconUrl,
-                                      width: 50.0,
-                                      height: 50.0,
-                                    ),
-                                  )
-                                : const SizedBox(width: 50.0, height: 50.0),
+                            child:
+                                iconUrl != null
+                                    ? ClipRRect(
+                                      borderRadius: BorderRadius.circular(50.0),
+                                      child: ImageWidget(
+                                        url: iconUrl,
+                                        width: 50.0,
+                                        height: 50.0,
+                                      ),
+                                    )
+                                    : const SizedBox(width: 50.0, height: 50.0),
                           ),
                           const SizedBox(height: 16.0),
                           MisskeyServerAutocomplete(
                             controller: controller,
                             focusNode: focusNode,
                             autofocus: true,
-                            onSubmitted: (host) => futureWithDialog(
-                              context,
-                              _launchMiAuth(ref, host),
-                            ),
+                            onSubmitted:
+                                (host) => futureWithDialog(
+                                  context,
+                                  _launchMiAuth(ref, host),
+                                ),
                           ),
                           Align(
                             alignment: AlignmentDirectional.centerStart,
@@ -146,8 +157,9 @@ class LoginPage extends HookConsumerWidget {
                               onPressed: () async {
                                 final server = await showDialog<String>(
                                   context: context,
-                                  builder: (context) =>
-                                      const MisskeyServerListDialog(),
+                                  builder:
+                                      (context) =>
+                                          const MisskeyServerListDialog(),
                                 );
                                 if (server != null) {
                                   controller.text = server;
@@ -158,12 +170,13 @@ class LoginPage extends HookConsumerWidget {
                           ),
                           const SizedBox(height: 16.0),
                           ElevatedButton.icon(
-                            onPressed: host.value.isNotEmpty
-                                ? () => futureWithDialog(
+                            onPressed:
+                                host.value.isNotEmpty
+                                    ? () => futureWithDialog(
                                       context,
                                       _launchMiAuth(ref, host.value),
                                     )
-                                : null,
+                                    : null,
                             icon: const Icon(Icons.open_in_browser),
                             label: Text(t.aria.authenticate),
                           ),

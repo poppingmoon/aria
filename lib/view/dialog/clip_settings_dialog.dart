@@ -15,8 +15,9 @@ class ClipSettingsDialog extends HookWidget {
   Widget build(BuildContext context) {
     final settings = useState(this.settings ?? const ClipSettings());
     final nameController = useTextEditingController(text: this.settings?.name);
-    final descriptionController =
-        useTextEditingController(text: this.settings?.description);
+    final descriptionController = useTextEditingController(
+      text: this.settings?.description,
+    );
 
     return AlertDialog(
       title: Text(this.settings == null ? t.misskey.create : t.misskey.edit),
@@ -32,8 +33,9 @@ class ClipSettingsDialog extends HookWidget {
                   labelText: t.misskey.name,
                   enabledBorder: Theme.of(context).inputDecorationTheme.border,
                 ),
-                onChanged: (value) =>
-                    settings.value = settings.value.copyWith(name: value),
+                onChanged:
+                    (value) =>
+                        settings.value = settings.value.copyWith(name: value),
                 textInputAction: TextInputAction.next,
                 onTapOutside: (_) => primaryFocus?.unfocus(),
               ),
@@ -50,8 +52,11 @@ class ClipSettingsDialog extends HookWidget {
                   enabledBorder: Theme.of(context).inputDecorationTheme.border,
                   alignLabelWithHint: true,
                 ),
-                onChanged: (value) => settings.value = settings.value
-                    .copyWith(description: value.isNotEmpty ? value : null),
+                onChanged:
+                    (value) =>
+                        settings.value = settings.value.copyWith(
+                          description: value.isNotEmpty ? value : null,
+                        ),
                 maxLines: 5,
                 textInputAction: TextInputAction.done,
                 onTapOutside: (_) => primaryFocus?.unfocus(),
@@ -61,8 +66,9 @@ class ClipSettingsDialog extends HookWidget {
           SwitchListTile(
             title: Text(t.misskey.public),
             value: settings.value.isPublic ?? false,
-            onChanged: (value) =>
-                settings.value = settings.value.copyWith(isPublic: value),
+            onChanged:
+                (value) =>
+                    settings.value = settings.value.copyWith(isPublic: value),
           ),
         ],
       ),

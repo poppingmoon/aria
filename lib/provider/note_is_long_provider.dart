@@ -38,8 +38,9 @@ int _countNewLines(List<MfmNode> nodes) {
 
 @riverpod
 bool noteIsLong(Ref ref, Account account, String noteId) {
-  final text =
-      ref.watch(noteProvider(account, noteId).select((note) => note?.text));
+  final text = ref.watch(
+    noteProvider(account, noteId).select((note) => note?.text),
+  );
   if (text != null) {
     final nodes = ref.watch(parsedMfmProvider(text));
     return _countText(nodes) > 500 || _countNewLines(nodes) > 10;

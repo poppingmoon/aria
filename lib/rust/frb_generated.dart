@@ -36,12 +36,8 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   /// Initialize flutter_rust_bridge in mock mode.
   /// No libraries for FFI are loaded.
-  static void initMock({
-    required RustLibApi api,
-  }) {
-    instance.initMockImpl(
-      api: api,
-    );
+  static void initMock({required RustLibApi api}) {
+    instance.initMockImpl(api: api);
   }
 
   /// Dispose flutter_rust_bridge
@@ -73,90 +69,107 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-    stem: 'rust_lib_aria',
-    ioDirectory: 'rust/target/release/',
-    webPrefix: 'pkg/',
-  );
+        stem: 'rust_lib_aria',
+        ioDirectory: 'rust/target/release/',
+        webPrefix: 'pkg/',
+      );
 }
 
 abstract class RustLibApi extends BaseApi {
   Future<void> crateApiAiscriptAiScriptAbort({required AiScript that});
 
-  Future<void> crateApiAiscriptAiScriptExec(
-      {required AiScript that, required String input});
+  Future<void> crateApiAiscriptAiScriptExec({
+    required AiScript that,
+    required String input,
+  });
 
-  Future<AiScript> crateApiAiscriptAiScriptNew(
-      {required FutureOr<String> Function(String) read,
-      required FutureOr<void> Function(String) write,
-      AsApiLib? api,
-      AsUiLib? ui,
-      AsPlayLib? play});
+  Future<AiScript> crateApiAiscriptAiScriptNew({
+    required FutureOr<String> Function(String) read,
+    required FutureOr<void> Function(String) write,
+    AsApiLib? api,
+    AsUiLib? ui,
+    AsPlayLib? play,
+  });
 
-  AsApiLib crateApiAiscriptApiAsApiLibNew(
-      {String? userId,
-      String? userName,
-      String? userUsername,
-      required String customEmojis,
-      required String locale,
-      required String serverUrl,
-      required FutureOr<void> Function(String, String, String) dialog,
-      required FutureOr<bool> Function(String, String, String) confirm,
-      String? token,
-      required FutureOr<(String, String?)> Function(String, String, String?)
-          api,
-      required FutureOr<void> Function(String, String) save,
-      required FutureOr<String> Function(String) load,
-      required String url,
-      required FutureOr<String> Function(String) nyaize});
+  AsApiLib crateApiAiscriptApiAsApiLibNew({
+    String? userId,
+    String? userName,
+    String? userUsername,
+    required String customEmojis,
+    required String locale,
+    required String serverUrl,
+    required FutureOr<void> Function(String, String, String) dialog,
+    required FutureOr<bool> Function(String, String, String) confirm,
+    String? token,
+    required FutureOr<(String, String?)> Function(String, String, String?) api,
+    required FutureOr<void> Function(String, String) save,
+    required FutureOr<String> Function(String) load,
+    required String url,
+    required FutureOr<String> Function(String) nyaize,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiButtonCallbackCall(
-      {required AsUiButtonCallback that});
+  Future<void> crateApiAiscriptUiAsUiButtonCallbackCall({
+    required AsUiButtonCallback that,
+  });
 
-  AsUiLib crateApiAiscriptUiAsUiLibNew(
-      {required FutureOr<void> Function(String, AsUiComponent) onUpdate});
+  AsUiLib crateApiAiscriptUiAsUiLibNew({
+    required FutureOr<void> Function(String, AsUiComponent) onUpdate,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiMfmCallbackCall(
-      {required AsUiMfmCallback that, required String value});
+  Future<void> crateApiAiscriptUiAsUiMfmCallbackCall({
+    required AsUiMfmCallback that,
+    required String value,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiNumberCallbackCall(
-      {required AsUiNumberCallback that, required double value});
+  Future<void> crateApiAiscriptUiAsUiNumberCallbackCall({
+    required AsUiNumberCallback that,
+    required double value,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiSelectCallbackCall(
-      {required AsUiSelectCallback that, required String value});
+  Future<void> crateApiAiscriptUiAsUiSelectCallbackCall({
+    required AsUiSelectCallback that,
+    required String value,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiSwitchCallbackCall(
-      {required AsUiSwitchCallback that, required bool value});
+  Future<void> crateApiAiscriptUiAsUiSwitchCallbackCall({
+    required AsUiSwitchCallback that,
+    required bool value,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiTextInputCallbackCall(
-      {required AsUiTextInputCallback that, required String value});
+  Future<void> crateApiAiscriptUiAsUiTextInputCallbackCall({
+    required AsUiTextInputCallback that,
+    required String value,
+  });
 
-  Future<void> crateApiAiscriptUiAsUiTextareaCallbackCall(
-      {required AsUiTextareaCallback that, required String value});
+  Future<void> crateApiAiscriptUiAsUiTextareaCallbackCall({
+    required AsUiTextareaCallback that,
+    required String value,
+  });
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AiScript;
+  get rust_arc_increment_strong_count_AiScript;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AiScript;
+  get rust_arc_decrement_strong_count_AiScript;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AiScriptPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsApiLib;
+  get rust_arc_increment_strong_count_AsApiLib;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsApiLib;
+  get rust_arc_decrement_strong_count_AsApiLib;
 
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsApiLibPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiButtonCallback;
+  get rust_arc_increment_strong_count_AsUiButtonCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiButtonCallback;
+  get rust_arc_decrement_strong_count_AsUiButtonCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiButtonCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiButtonCallbackPtr;
 
   RustArcIncrementStrongCountFnType get rust_arc_increment_strong_count_AsUiLib;
 
@@ -165,58 +178,58 @@ abstract class RustLibApi extends BaseApi {
   CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsUiLibPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiMfmCallback;
+  get rust_arc_increment_strong_count_AsUiMfmCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiMfmCallback;
+  get rust_arc_decrement_strong_count_AsUiMfmCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiMfmCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiMfmCallbackPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiNumberCallback;
+  get rust_arc_increment_strong_count_AsUiNumberCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiNumberCallback;
+  get rust_arc_decrement_strong_count_AsUiNumberCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiNumberCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiNumberCallbackPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiSelectCallback;
+  get rust_arc_increment_strong_count_AsUiSelectCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiSelectCallback;
+  get rust_arc_decrement_strong_count_AsUiSelectCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiSelectCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiSelectCallbackPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiSwitchCallback;
+  get rust_arc_increment_strong_count_AsUiSwitchCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiSwitchCallback;
+  get rust_arc_decrement_strong_count_AsUiSwitchCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiTextInputCallback;
+  get rust_arc_increment_strong_count_AsUiTextInputCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiTextInputCallback;
+  get rust_arc_decrement_strong_count_AsUiTextInputCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiTextareaCallback;
+  get rust_arc_increment_strong_count_AsUiTextareaCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiTextareaCallback;
+  get rust_arc_decrement_strong_count_AsUiTextareaCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr;
+  get rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr;
 }
 
 class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
@@ -229,50 +242,65 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @override
   Future<void> crateApiAiscriptAiScriptAbort({required AiScript that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 1, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: null,
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+            that,
+            serializer,
+          );
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 1,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiAiscriptAiScriptAbortConstMeta,
+        argValues: [that],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptAiScriptAbortConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptAiScriptAbortConstMeta =>
-      const TaskConstMeta(
-        debugName: "AiScript_abort",
-        argNames: ["that"],
-      );
+      const TaskConstMeta(debugName: "AiScript_abort", argNames: ["that"]);
 
   @override
-  Future<void> crateApiAiscriptAiScriptExec(
-      {required AiScript that, required String input}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-            that, serializer);
-        sse_encode_String(input, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 2, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptAiScriptExec({
+    required AiScript that,
+    required String input,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+            that,
+            serializer,
+          );
+          sse_encode_String(input, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 2,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptAiScriptExecConstMeta,
+        argValues: [that, input],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptAiScriptExecConstMeta,
-      argValues: [that, input],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptAiScriptExecConstMeta =>
@@ -282,36 +310,51 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<AiScript> crateApiAiscriptAiScriptNew(
-      {required FutureOr<String> Function(String) read,
-      required FutureOr<void> Function(String) write,
-      AsApiLib? api,
-      AsUiLib? ui,
-      AsPlayLib? play}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
-            read, serializer);
-        sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
-            write, serializer);
-        sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-            api, serializer);
-        sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-            ui, serializer);
-        sse_encode_opt_box_autoadd_as_play_lib(play, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 3, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript,
-        decodeErrorData: null,
+  Future<AiScript> crateApiAiscriptAiScriptNew({
+    required FutureOr<String> Function(String) read,
+    required FutureOr<void> Function(String) write,
+    AsApiLib? api,
+    AsUiLib? ui,
+    AsPlayLib? play,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+            read,
+            serializer,
+          );
+          sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
+            write,
+            serializer,
+          );
+          sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+            api,
+            serializer,
+          );
+          sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+            ui,
+            serializer,
+          );
+          sse_encode_opt_box_autoadd_as_play_lib(play, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 3,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData:
+              sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiAiscriptAiScriptNewConstMeta,
+        argValues: [read, write, api, ui, play],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptAiScriptNewConstMeta,
-      argValues: [read, write, api, ui, play],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptAiScriptNewConstMeta =>
@@ -321,71 +364,85 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  AsApiLib crateApiAiscriptApiAsApiLibNew(
-      {String? userId,
-      String? userName,
-      String? userUsername,
-      required String customEmojis,
-      required String locale,
-      required String serverUrl,
-      required FutureOr<void> Function(String, String, String) dialog,
-      required FutureOr<bool> Function(String, String, String) confirm,
-      String? token,
-      required FutureOr<(String, String?)> Function(String, String, String?)
+  AsApiLib crateApiAiscriptApiAsApiLibNew({
+    String? userId,
+    String? userName,
+    String? userUsername,
+    required String customEmojis,
+    required String locale,
+    required String serverUrl,
+    required FutureOr<void> Function(String, String, String) dialog,
+    required FutureOr<bool> Function(String, String, String) confirm,
+    String? token,
+    required FutureOr<(String, String?)> Function(String, String, String?) api,
+    required FutureOr<void> Function(String, String) save,
+    required FutureOr<String> Function(String) load,
+    required String url,
+    required FutureOr<String> Function(String) nyaize,
+  }) {
+    return handler.executeSync(
+      SyncTask(
+        callFfi: () {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_opt_String(userId, serializer);
+          sse_encode_opt_String(userName, serializer);
+          sse_encode_opt_String(userUsername, serializer);
+          sse_encode_String(customEmojis, serializer);
+          sse_encode_String(locale, serializer);
+          sse_encode_String(serverUrl, serializer);
+          sse_encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+            dialog,
+            serializer,
+          );
+          sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+            confirm,
+            serializer,
+          );
+          sse_encode_opt_String(token, serializer);
+          sse_encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+            api,
+            serializer,
+          );
+          sse_encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
+            save,
+            serializer,
+          );
+          sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+            load,
+            serializer,
+          );
+          sse_encode_String(url, serializer);
+          sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
+            nyaize,
+            serializer,
+          );
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
+        },
+        codec: SseCodec(
+          decodeSuccessData:
+              sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiAiscriptApiAsApiLibNewConstMeta,
+        argValues: [
+          userId,
+          userName,
+          userUsername,
+          customEmojis,
+          locale,
+          serverUrl,
+          dialog,
+          confirm,
+          token,
           api,
-      required FutureOr<void> Function(String, String) save,
-      required FutureOr<String> Function(String) load,
-      required String url,
-      required FutureOr<String> Function(String) nyaize}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_opt_String(userId, serializer);
-        sse_encode_opt_String(userName, serializer);
-        sse_encode_opt_String(userUsername, serializer);
-        sse_encode_String(customEmojis, serializer);
-        sse_encode_String(locale, serializer);
-        sse_encode_String(serverUrl, serializer);
-        sse_encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-            dialog, serializer);
-        sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-            confirm, serializer);
-        sse_encode_opt_String(token, serializer);
-        sse_encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-            api, serializer);
-        sse_encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
-            save, serializer);
-        sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
-            load, serializer);
-        sse_encode_String(url, serializer);
-        sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
-            nyaize, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 4)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib,
-        decodeErrorData: null,
+          save,
+          load,
+          url,
+          nyaize,
+        ],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptApiAsApiLibNewConstMeta,
-      argValues: [
-        userId,
-        userName,
-        userUsername,
-        customEmojis,
-        locale,
-        serverUrl,
-        dialog,
-        confirm,
-        token,
-        api,
-        save,
-        load,
-        url,
-        nyaize
-      ],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptApiAsApiLibNewConstMeta =>
@@ -405,29 +462,38 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
           "save",
           "load",
           "url",
-          "nyaize"
+          "nyaize",
         ],
       );
 
   @override
-  Future<void> crateApiAiscriptUiAsUiButtonCallbackCall(
-      {required AsUiButtonCallback that}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-            that, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 5, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiButtonCallbackCall({
+    required AsUiButtonCallback that,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+            that,
+            serializer,
+          );
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 5,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiButtonCallbackCallConstMeta,
+        argValues: [that],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiButtonCallbackCallConstMeta,
-      argValues: [that],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiButtonCallbackCallConstMeta =>
@@ -437,52 +503,64 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  AsUiLib crateApiAiscriptUiAsUiLibNew(
-      {required FutureOr<void> Function(String, AsUiComponent) onUpdate}) {
-    return handler.executeSync(SyncTask(
-      callFfi: () {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-            onUpdate, serializer);
-        return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
-      },
-      codec: SseCodec(
-        decodeSuccessData:
-            sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib,
-        decodeErrorData: null,
+  AsUiLib crateApiAiscriptUiAsUiLibNew({
+    required FutureOr<void> Function(String, AsUiComponent) onUpdate,
+  }) {
+    return handler.executeSync(
+      SyncTask(
+        callFfi: () {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+            onUpdate,
+            serializer,
+          );
+          return pdeCallFfi(generalizedFrbRustBinding, serializer, funcId: 6)!;
+        },
+        codec: SseCodec(
+          decodeSuccessData:
+              sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib,
+          decodeErrorData: null,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiLibNewConstMeta,
+        argValues: [onUpdate],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiLibNewConstMeta,
-      argValues: [onUpdate],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiLibNewConstMeta =>
-      const TaskConstMeta(
-        debugName: "AsUiLib_new",
-        argNames: ["onUpdate"],
-      );
+      const TaskConstMeta(debugName: "AsUiLib_new", argNames: ["onUpdate"]);
 
   @override
-  Future<void> crateApiAiscriptUiAsUiMfmCallbackCall(
-      {required AsUiMfmCallback that, required String value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-            that, serializer);
-        sse_encode_String(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 7, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiMfmCallbackCall({
+    required AsUiMfmCallback that,
+    required String value,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+            that,
+            serializer,
+          );
+          sse_encode_String(value, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 7,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiMfmCallbackCallConstMeta,
+        argValues: [that, value],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiMfmCallbackCallConstMeta,
-      argValues: [that, value],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiMfmCallbackCallConstMeta =>
@@ -492,25 +570,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiAiscriptUiAsUiNumberCallbackCall(
-      {required AsUiNumberCallback that, required double value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-            that, serializer);
-        sse_encode_f_64(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 8, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiNumberCallbackCall({
+    required AsUiNumberCallback that,
+    required double value,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+            that,
+            serializer,
+          );
+          sse_encode_f_64(value, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 8,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiNumberCallbackCallConstMeta,
+        argValues: [that, value],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiNumberCallbackCallConstMeta,
-      argValues: [that, value],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiNumberCallbackCallConstMeta =>
@@ -520,25 +608,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiAiscriptUiAsUiSelectCallbackCall(
-      {required AsUiSelectCallback that, required String value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-            that, serializer);
-        sse_encode_String(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 9, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiSelectCallbackCall({
+    required AsUiSelectCallback that,
+    required String value,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+            that,
+            serializer,
+          );
+          sse_encode_String(value, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 9,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiSelectCallbackCallConstMeta,
+        argValues: [that, value],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiSelectCallbackCallConstMeta,
-      argValues: [that, value],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiSelectCallbackCallConstMeta =>
@@ -548,25 +646,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiAiscriptUiAsUiSwitchCallbackCall(
-      {required AsUiSwitchCallback that, required bool value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-            that, serializer);
-        sse_encode_bool(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 10, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiSwitchCallbackCall({
+    required AsUiSwitchCallback that,
+    required bool value,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+            that,
+            serializer,
+          );
+          sse_encode_bool(value, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 10,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiSwitchCallbackCallConstMeta,
+        argValues: [that, value],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiSwitchCallbackCallConstMeta,
-      argValues: [that, value],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiSwitchCallbackCallConstMeta =>
@@ -576,25 +684,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiAiscriptUiAsUiTextInputCallbackCall(
-      {required AsUiTextInputCallback that, required String value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-            that, serializer);
-        sse_encode_String(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 11, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiTextInputCallbackCall({
+    required AsUiTextInputCallback that,
+    required String value,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+            that,
+            serializer,
+          );
+          sse_encode_String(value, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 11,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiTextInputCallbackCallConstMeta,
+        argValues: [that, value],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiTextInputCallbackCallConstMeta,
-      argValues: [that, value],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiTextInputCallbackCallConstMeta =>
@@ -604,25 +722,35 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   @override
-  Future<void> crateApiAiscriptUiAsUiTextareaCallbackCall(
-      {required AsUiTextareaCallback that, required String value}) {
-    return handler.executeNormal(NormalTask(
-      callFfi: (port_) {
-        final serializer = SseSerializer(generalizedFrbRustBinding);
-        sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-            that, serializer);
-        sse_encode_String(value, serializer);
-        pdeCallFfi(generalizedFrbRustBinding, serializer,
-            funcId: 12, port: port_);
-      },
-      codec: SseCodec(
-        decodeSuccessData: sse_decode_unit,
-        decodeErrorData: sse_decode_String,
+  Future<void> crateApiAiscriptUiAsUiTextareaCallbackCall({
+    required AsUiTextareaCallback that,
+    required String value,
+  }) {
+    return handler.executeNormal(
+      NormalTask(
+        callFfi: (port_) {
+          final serializer = SseSerializer(generalizedFrbRustBinding);
+          sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+            that,
+            serializer,
+          );
+          sse_encode_String(value, serializer);
+          pdeCallFfi(
+            generalizedFrbRustBinding,
+            serializer,
+            funcId: 12,
+            port: port_,
+          );
+        },
+        codec: SseCodec(
+          decodeSuccessData: sse_decode_unit,
+          decodeErrorData: sse_decode_String,
+        ),
+        constMeta: kCrateApiAiscriptUiAsUiTextareaCallbackCallConstMeta,
+        argValues: [that, value],
+        apiImpl: this,
       ),
-      constMeta: kCrateApiAiscriptUiAsUiTextareaCallbackCallConstMeta,
-      argValues: [that, value],
-      apiImpl: this,
-    ));
+    );
   }
 
   TaskConstMeta get kCrateApiAiscriptUiAsUiTextareaCallbackCallConstMeta =>
@@ -632,8 +760,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       );
 
   Future<void> Function(int, dynamic)
-      encode_DartFn_Inputs_String_Output_String_AnyhowException(
-          FutureOr<String> Function(String) raw) {
+  encode_DartFn_Inputs_String_Output_String_AnyhowException(
+    FutureOr<String> Function(String) raw,
+  ) {
     return (callId, rawArg0) async {
       final arg0 = dco_decode_String(rawArg0);
 
@@ -657,16 +786,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   Future<void> Function(int, dynamic)
-      encode_DartFn_Inputs_String_Output_unit_AnyhowException(
-          FutureOr<void> Function(String) raw) {
+  encode_DartFn_Inputs_String_Output_unit_AnyhowException(
+    FutureOr<void> Function(String) raw,
+  ) {
     return (callId, rawArg0) async {
       final arg0 = dco_decode_String(rawArg0);
 
@@ -690,16 +821,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   Future<void> Function(int, dynamic, dynamic)
-      encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, String) raw) {
+  encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, String) raw,
+  ) {
     return (callId, rawArg0, rawArg1) async {
       final arg0 = dco_decode_String(rawArg0);
       final arg1 = dco_decode_String(rawArg1);
@@ -724,16 +857,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   Future<void> Function(int, dynamic, dynamic, dynamic)
-      encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-          FutureOr<bool> Function(String, String, String) raw) {
+  encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+    FutureOr<bool> Function(String, String, String) raw,
+  ) {
     return (callId, rawArg0, rawArg1, rawArg2) async {
       final arg0 = dco_decode_String(rawArg0);
       final arg1 = dco_decode_String(rawArg1);
@@ -759,16 +894,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   Future<void> Function(int, dynamic, dynamic, dynamic)
-      encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, String, String) raw) {
+  encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, String, String) raw,
+  ) {
     return (callId, rawArg0, rawArg1, rawArg2) async {
       final arg0 = dco_decode_String(rawArg0);
       final arg1 = dco_decode_String(rawArg1);
@@ -794,16 +931,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   Future<void> Function(int, dynamic, dynamic, dynamic)
-      encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-          FutureOr<(String, String?)> Function(String, String, String?) raw) {
+  encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+    FutureOr<(String, String?)> Function(String, String, String?) raw,
+  ) {
     return (callId, rawArg0, rawArg1, rawArg2) async {
       final arg0 = dco_decode_String(rawArg0);
       final arg1 = dco_decode_String(rawArg1);
@@ -829,16 +968,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   Future<void> Function(int, dynamic, dynamic)
-      encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, AsUiComponent) raw) {
+  encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, AsUiComponent) raw,
+  ) {
     return (callId, rawArg0, rawArg1) async {
       final arg0 = dco_decode_String(rawArg0);
       final arg1 = dco_decode_as_ui_component(rawArg1);
@@ -863,92 +1004,93 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       final output = serializer.intoRaw();
 
       generalizedFrbRustBinding.dartFnDeliverOutput(
-          callId: callId,
-          ptr: output.ptr,
-          rustVecLen: output.rustVecLen,
-          dataLen: output.dataLen);
+        callId: callId,
+        ptr: output.ptr,
+        rustVecLen: output.rustVecLen,
+        dataLen: output.dataLen,
+      );
     };
   }
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AiScript => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
+  get rust_arc_increment_strong_count_AiScript =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AiScript => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
+  get rust_arc_decrement_strong_count_AiScript =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsApiLib => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
+  get rust_arc_increment_strong_count_AsApiLib =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsApiLib => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
+  get rust_arc_decrement_strong_count_AsApiLib =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiButtonCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
+  get rust_arc_increment_strong_count_AsUiButtonCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiButtonCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
+  get rust_arc_decrement_strong_count_AsUiButtonCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiLib => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
+  get rust_arc_increment_strong_count_AsUiLib =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiLib => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
+  get rust_arc_decrement_strong_count_AsUiLib =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiMfmCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
+  get rust_arc_increment_strong_count_AsUiMfmCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiMfmCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
+  get rust_arc_decrement_strong_count_AsUiMfmCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiNumberCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
+  get rust_arc_increment_strong_count_AsUiNumberCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiNumberCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
+  get rust_arc_decrement_strong_count_AsUiNumberCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiSelectCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
+  get rust_arc_increment_strong_count_AsUiSelectCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiSelectCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
+  get rust_arc_decrement_strong_count_AsUiSelectCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiSwitchCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
+  get rust_arc_increment_strong_count_AsUiSwitchCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiSwitchCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
+  get rust_arc_decrement_strong_count_AsUiSwitchCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiTextInputCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
+  get rust_arc_increment_strong_count_AsUiTextInputCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiTextInputCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
+  get rust_arc_decrement_strong_count_AsUiTextInputCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
 
   RustArcIncrementStrongCountFnType
-      get rust_arc_increment_strong_count_AsUiTextareaCallback => wire
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
+  get rust_arc_increment_strong_count_AsUiTextareaCallback =>
+      wire.rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
 
   RustArcDecrementStrongCountFnType
-      get rust_arc_decrement_strong_count_AsUiTextareaCallback => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
+  get rust_arc_decrement_strong_count_AsUiTextareaCallback =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw) {
@@ -958,199 +1100,221 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AiScript
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AiScriptImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsApiLib
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsApiLibImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiButtonCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiButtonCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiLib
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiLibImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiMfmCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiMfmCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiNumberCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiNumberCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiSelectCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiSelectCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiSwitchCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiSwitchCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiTextInputCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiTextInputCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiTextareaCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw) {
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiTextareaCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AiScript
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AiScriptImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiButtonCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiButtonCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiMfmCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiMfmCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiNumberCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiNumberCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiSelectCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiSelectCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiSwitchCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiSwitchCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiTextInputCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiTextInputCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiTextareaCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw) {
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiTextareaCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   FutureOr<String> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(
-          dynamic raw) {
+  dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
 
   @protected
   FutureOr<void> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw) {
+  dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
 
   @protected
   FutureOr<void> Function(String, String)
-      dco_decode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
-          dynamic raw) {
+  dco_decode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
 
   @protected
   FutureOr<bool> Function(String, String, String)
-      dco_decode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-          dynamic raw) {
+  dco_decode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
 
   @protected
   FutureOr<void> Function(String, String, String)
-      dco_decode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-          dynamic raw) {
+  dco_decode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
 
   @protected
   FutureOr<(String, String?)> Function(String, String, String?)
-      dco_decode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-          dynamic raw) {
+  dco_decode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
 
   @protected
   FutureOr<void> Function(String, AsUiComponent)
-      dco_decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-          dynamic raw) {
+  dco_decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     throw UnimplementedError('');
   }
@@ -1163,80 +1327,90 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AiScript
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AiScriptImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsApiLib
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsApiLibImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiButtonCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiButtonCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiLib
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiLibImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiMfmCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiMfmCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiNumberCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiNumberCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiSelectCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiSelectCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiSwitchCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiSwitchCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiTextInputCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiTextInputCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
 
   @protected
   AsUiTextareaCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw) {
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return AsUiTextareaCallbackImpl.frbInternalDcoDecode(raw as List<dynamic>);
   }
@@ -1269,7 +1443,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       text: dco_decode_opt_String(arr[0]),
       onClick:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-              arr[1]),
+            arr[1],
+          ),
       primary: dco_decode_opt_box_autoadd_bool(arr[2]),
       rounded: dco_decode_opt_box_autoadd_bool(arr[3]),
       disabled: dco_decode_opt_box_autoadd_bool(arr[4]),
@@ -1282,9 +1457,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return AsUiButtons(
-      buttons: dco_decode_opt_list_as_ui_button(arr[0]),
-    );
+    return AsUiButtons(buttons: dco_decode_opt_list_as_ui_button(arr[0]));
   }
 
   @protected
@@ -1292,21 +1465,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     switch (raw[0]) {
       case 0:
-        return AsUiComponent_Root(
-          dco_decode_box_autoadd_as_ui_root(raw[1]),
-        );
+        return AsUiComponent_Root(dco_decode_box_autoadd_as_ui_root(raw[1]));
       case 1:
         return AsUiComponent_Container(
           dco_decode_box_autoadd_as_ui_container(raw[1]),
         );
       case 2:
-        return AsUiComponent_Text(
-          dco_decode_box_autoadd_as_ui_text(raw[1]),
-        );
+        return AsUiComponent_Text(dco_decode_box_autoadd_as_ui_text(raw[1]));
       case 3:
-        return AsUiComponent_Mfm(
-          dco_decode_box_autoadd_as_ui_mfm(raw[1]),
-        );
+        return AsUiComponent_Mfm(dco_decode_box_autoadd_as_ui_mfm(raw[1]));
       case 4:
         return AsUiComponent_Button(
           dco_decode_box_autoadd_as_ui_button(raw[1]),
@@ -1399,7 +1566,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       font: dco_decode_opt_String(arr[4]),
       onClickEv:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-              arr[5]),
+            arr[5],
+          ),
     );
   }
 
@@ -1412,7 +1580,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return AsUiNumberInput(
       onInput:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-              arr[0]),
+            arr[0],
+          ),
       defaultValue: dco_decode_opt_box_autoadd_f_64(arr[1]),
       label: dco_decode_opt_String(arr[2]),
       caption: dco_decode_opt_String(arr[3]),
@@ -1450,9 +1619,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     final arr = raw as List<dynamic>;
     if (arr.length != 1)
       throw Exception('unexpected arr length: expect 1 but see ${arr.length}');
-    return AsUiRoot(
-      children: dco_decode_list_String(arr[0]),
-    );
+    return AsUiRoot(children: dco_decode_list_String(arr[0]));
   }
 
   @protected
@@ -1465,7 +1632,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
       items: dco_decode_opt_list_record_string_string(arr[0]),
       onChange:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-              arr[1]),
+            arr[1],
+          ),
       defaultValue: dco_decode_opt_String(arr[2]),
       label: dco_decode_opt_String(arr[3]),
       caption: dco_decode_opt_String(arr[4]),
@@ -1481,7 +1649,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return AsUiSwitch(
       onChange:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-              arr[0]),
+            arr[0],
+          ),
       defaultValue: dco_decode_opt_box_autoadd_bool(arr[1]),
       label: dco_decode_opt_String(arr[2]),
       caption: dco_decode_opt_String(arr[3]),
@@ -1512,7 +1681,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return AsUiTextInput(
       onInput:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-              arr[0]),
+            arr[0],
+          ),
       defaultValue: dco_decode_opt_String(arr[1]),
       label: dco_decode_opt_String(arr[2]),
       caption: dco_decode_opt_String(arr[3]),
@@ -1528,7 +1698,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     return AsUiTextarea(
       onInput:
           dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-              arr[0]),
+            arr[0],
+          ),
       defaultValue: dco_decode_opt_String(arr[1]),
       label: dco_decode_opt_String(arr[2]),
       caption: dco_decode_opt_String(arr[3]),
@@ -1543,83 +1714,101 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsApiLib
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiButtonCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiLib
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiMfmCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiNumberCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiSelectCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiSwitchCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiTextInputCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
   AsUiTextareaCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw) {
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-        raw);
+      raw,
+    );
   }
 
   @protected
@@ -1672,7 +1861,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiPostFormButton dco_decode_box_autoadd_as_ui_post_form_button(
-      dynamic raw) {
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_as_ui_post_form_button(raw);
   }
@@ -1727,7 +1917,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PostFormPropsForAsUi dco_decode_box_autoadd_post_form_props_for_as_ui(
-      dynamic raw) {
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return dco_decode_post_form_props_for_as_ui(raw);
   }
@@ -1776,101 +1967,119 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsApiLib?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiButtonCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiLib?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiMfmCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiNumberCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiSelectCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiSwitchCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiTextInputCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
   AsUiTextareaCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw) {
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
         : dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-            raw);
+          raw,
+        );
   }
 
   @protected
@@ -1893,7 +2102,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PostFormPropsForAsUi? dco_decode_opt_box_autoadd_post_form_props_for_as_ui(
-      dynamic raw) {
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null
         ? null
@@ -1914,7 +2124,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<(String, String)>? dco_decode_opt_list_record_string_string(
-      dynamic raw) {
+    dynamic raw,
+  ) {
     // Codec=Dco (DartCObject based), see doc to use other codecs
     return raw == null ? null : dco_decode_list_record_string_string(raw);
   }
@@ -1940,10 +2151,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
-    return (
-      dco_decode_String(arr[0]),
-      dco_decode_opt_String(arr[1]),
-    );
+    return (dco_decode_String(arr[0]), dco_decode_opt_String(arr[1]));
   }
 
   @protected
@@ -1953,10 +2161,7 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     if (arr.length != 2) {
       throw Exception('Expected 2 elements, got ${arr.length}');
     }
-    return (
-      dco_decode_String(arr[0]),
-      dco_decode_String(arr[1]),
-    );
+    return (dco_decode_String(arr[0]), dco_decode_String(arr[1]));
   }
 
   @protected
@@ -1986,164 +2191,218 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AiScript
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AiScriptImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsApiLib
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsApiLibImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiButtonCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiButtonCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiLib
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiLibImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiMfmCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiMfmCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiNumberCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiNumberCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiSelectCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiSelectCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiSwitchCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiSwitchCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiTextInputCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiTextInputCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiTextareaCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiTextareaCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AiScript
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AiScriptImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiButtonCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiButtonCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiMfmCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiMfmCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiNumberCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiNumberCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiSelectCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiSelectCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiSwitchCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiSwitchCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiTextInputCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiTextInputCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiTextareaCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer) {
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiTextareaCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
@@ -2155,92 +2414,122 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AiScript
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AiScriptImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsApiLib
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsApiLibImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiButtonCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiButtonCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiLib
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiLibImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiMfmCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiMfmCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiNumberCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiNumberCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiSelectCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiSelectCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiSwitchCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiSwitchCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiTextInputCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiTextInputCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
   AsUiTextareaCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer) {
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return AsUiTextareaCallbackImpl.frbInternalSseDecode(
-        sse_decode_usize(deserializer), sse_decode_i_32(deserializer));
+      sse_decode_usize(deserializer),
+      sse_decode_i_32(deserializer),
+    );
   }
 
   @protected
@@ -2264,16 +2553,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_text = sse_decode_opt_String(deserializer);
     var var_onClick =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-            deserializer);
+          deserializer,
+        );
     var var_primary = sse_decode_opt_box_autoadd_bool(deserializer);
     var var_rounded = sse_decode_opt_box_autoadd_bool(deserializer);
     var var_disabled = sse_decode_opt_box_autoadd_bool(deserializer);
     return AsUiButton(
-        text: var_text,
-        onClick: var_onClick,
-        primary: var_primary,
-        rounded: var_rounded,
-        disabled: var_disabled);
+      text: var_text,
+      onClick: var_onClick,
+      primary: var_primary,
+      rounded: var_rounded,
+      disabled: var_disabled,
+    );
   }
 
   @protected
@@ -2317,8 +2608,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_box_autoadd_as_ui_text_input(deserializer);
         return AsUiComponent_TextInput(var_field0);
       case 9:
-        var var_field0 =
-            sse_decode_box_autoadd_as_ui_number_input(deserializer);
+        var var_field0 = sse_decode_box_autoadd_as_ui_number_input(
+          deserializer,
+        );
         return AsUiComponent_NumberInput(var_field0);
       case 10:
         var var_field0 = sse_decode_box_autoadd_as_ui_select(deserializer);
@@ -2327,8 +2619,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
         var var_field0 = sse_decode_box_autoadd_as_ui_folder(deserializer);
         return AsUiComponent_Folder(var_field0);
       case 12:
-        var var_field0 =
-            sse_decode_box_autoadd_as_ui_post_form_button(deserializer);
+        var var_field0 = sse_decode_box_autoadd_as_ui_post_form_button(
+          deserializer,
+        );
         return AsUiComponent_PostFormButton(var_field0);
       case 13:
         var var_field0 = sse_decode_box_autoadd_as_ui_post_form(deserializer);
@@ -2352,16 +2645,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_rounded = sse_decode_opt_box_autoadd_bool(deserializer);
     var var_hidden = sse_decode_opt_box_autoadd_bool(deserializer);
     return AsUiContainer(
-        children: var_children,
-        align: var_align,
-        bgColor: var_bgColor,
-        fgColor: var_fgColor,
-        font: var_font,
-        borderWidth: var_borderWidth,
-        borderColor: var_borderColor,
-        padding: var_padding,
-        rounded: var_rounded,
-        hidden: var_hidden);
+      children: var_children,
+      align: var_align,
+      bgColor: var_bgColor,
+      fgColor: var_fgColor,
+      font: var_font,
+      borderWidth: var_borderWidth,
+      borderColor: var_borderColor,
+      padding: var_padding,
+      rounded: var_rounded,
+      hidden: var_hidden,
+    );
   }
 
   @protected
@@ -2371,7 +2665,10 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_title = sse_decode_opt_String(deserializer);
     var var_opened = sse_decode_opt_box_autoadd_bool(deserializer);
     return AsUiFolder(
-        children: var_children, title: var_title, opened: var_opened);
+      children: var_children,
+      title: var_title,
+      opened: var_opened,
+    );
   }
 
   @protected
@@ -2384,14 +2681,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_font = sse_decode_opt_String(deserializer);
     var var_onClickEv =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-            deserializer);
+          deserializer,
+        );
     return AsUiMfm(
-        text: var_text,
-        size: var_size,
-        bold: var_bold,
-        color: var_color,
-        font: var_font,
-        onClickEv: var_onClickEv);
+      text: var_text,
+      size: var_size,
+      bold: var_bold,
+      color: var_color,
+      font: var_font,
+      onClickEv: var_onClickEv,
+    );
   }
 
   @protected
@@ -2399,39 +2698,45 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_onInput =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-            deserializer);
+          deserializer,
+        );
     var var_defaultValue = sse_decode_opt_box_autoadd_f_64(deserializer);
     var var_label = sse_decode_opt_String(deserializer);
     var var_caption = sse_decode_opt_String(deserializer);
     return AsUiNumberInput(
-        onInput: var_onInput,
-        defaultValue: var_defaultValue,
-        label: var_label,
-        caption: var_caption);
+      onInput: var_onInput,
+      defaultValue: var_defaultValue,
+      label: var_label,
+      caption: var_caption,
+    );
   }
 
   @protected
   AsUiPostForm sse_decode_as_ui_post_form(SseDeserializer deserializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
-    var var_form =
-        sse_decode_opt_box_autoadd_post_form_props_for_as_ui(deserializer);
+    var var_form = sse_decode_opt_box_autoadd_post_form_props_for_as_ui(
+      deserializer,
+    );
     return AsUiPostForm(form: var_form);
   }
 
   @protected
   AsUiPostFormButton sse_decode_as_ui_post_form_button(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_text = sse_decode_opt_String(deserializer);
     var var_primary = sse_decode_opt_box_autoadd_bool(deserializer);
     var var_rounded = sse_decode_opt_box_autoadd_bool(deserializer);
-    var var_form =
-        sse_decode_opt_box_autoadd_post_form_props_for_as_ui(deserializer);
+    var var_form = sse_decode_opt_box_autoadd_post_form_props_for_as_ui(
+      deserializer,
+    );
     return AsUiPostFormButton(
-        text: var_text,
-        primary: var_primary,
-        rounded: var_rounded,
-        form: var_form);
+      text: var_text,
+      primary: var_primary,
+      rounded: var_rounded,
+      form: var_form,
+    );
   }
 
   @protected
@@ -2447,16 +2752,18 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_items = sse_decode_opt_list_record_string_string(deserializer);
     var var_onChange =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-            deserializer);
+          deserializer,
+        );
     var var_defaultValue = sse_decode_opt_String(deserializer);
     var var_label = sse_decode_opt_String(deserializer);
     var var_caption = sse_decode_opt_String(deserializer);
     return AsUiSelect(
-        items: var_items,
-        onChange: var_onChange,
-        defaultValue: var_defaultValue,
-        label: var_label,
-        caption: var_caption);
+      items: var_items,
+      onChange: var_onChange,
+      defaultValue: var_defaultValue,
+      label: var_label,
+      caption: var_caption,
+    );
   }
 
   @protected
@@ -2464,15 +2771,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_onChange =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-            deserializer);
+          deserializer,
+        );
     var var_defaultValue = sse_decode_opt_box_autoadd_bool(deserializer);
     var var_label = sse_decode_opt_String(deserializer);
     var var_caption = sse_decode_opt_String(deserializer);
     return AsUiSwitch(
-        onChange: var_onChange,
-        defaultValue: var_defaultValue,
-        label: var_label,
-        caption: var_caption);
+      onChange: var_onChange,
+      defaultValue: var_defaultValue,
+      label: var_label,
+      caption: var_caption,
+    );
   }
 
   @protected
@@ -2484,11 +2793,12 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     var var_color = sse_decode_opt_String(deserializer);
     var var_font = sse_decode_opt_String(deserializer);
     return AsUiText(
-        text: var_text,
-        size: var_size,
-        bold: var_bold,
-        color: var_color,
-        font: var_font);
+      text: var_text,
+      size: var_size,
+      bold: var_bold,
+      color: var_color,
+      font: var_font,
+    );
   }
 
   @protected
@@ -2496,15 +2806,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_onInput =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-            deserializer);
+          deserializer,
+        );
     var var_defaultValue = sse_decode_opt_String(deserializer);
     var var_label = sse_decode_opt_String(deserializer);
     var var_caption = sse_decode_opt_String(deserializer);
     return AsUiTextInput(
-        onInput: var_onInput,
-        defaultValue: var_defaultValue,
-        label: var_label,
-        caption: var_caption);
+      onInput: var_onInput,
+      defaultValue: var_defaultValue,
+      label: var_label,
+      caption: var_caption,
+    );
   }
 
   @protected
@@ -2512,15 +2824,17 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_onInput =
         sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-            deserializer);
+          deserializer,
+        );
     var var_defaultValue = sse_decode_opt_String(deserializer);
     var var_label = sse_decode_opt_String(deserializer);
     var var_caption = sse_decode_opt_String(deserializer);
     return AsUiTextarea(
-        onInput: var_onInput,
-        defaultValue: var_defaultValue,
-        label: var_label,
-        caption: var_caption);
+      onInput: var_onInput,
+      defaultValue: var_defaultValue,
+      label: var_label,
+      caption: var_caption,
+    );
   }
 
   @protected
@@ -2531,83 +2845,101 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsApiLib
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiButtonCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiLib
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiMfmCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiNumberCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiSelectCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiSwitchCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiTextInputCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
   AsUiTextareaCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer) {
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-        deserializer));
+      deserializer,
+    ));
   }
 
   @protected
@@ -2624,14 +2956,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiButtons sse_decode_box_autoadd_as_ui_buttons(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_buttons(deserializer));
   }
 
   @protected
   AsUiContainer sse_decode_box_autoadd_as_ui_container(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_container(deserializer));
   }
@@ -2650,21 +2984,24 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiNumberInput sse_decode_box_autoadd_as_ui_number_input(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_number_input(deserializer));
   }
 
   @protected
   AsUiPostForm sse_decode_box_autoadd_as_ui_post_form(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_post_form(deserializer));
   }
 
   @protected
   AsUiPostFormButton sse_decode_box_autoadd_as_ui_post_form_button(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_post_form_button(deserializer));
   }
@@ -2695,14 +3032,16 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiTextInput sse_decode_box_autoadd_as_ui_text_input(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_text_input(deserializer));
   }
 
   @protected
   AsUiTextarea sse_decode_box_autoadd_as_ui_textarea(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_as_ui_textarea(deserializer));
   }
@@ -2721,7 +3060,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PostFormPropsForAsUi sse_decode_box_autoadd_post_form_props_for_as_ui(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     return (sse_decode_post_form_props_for_as_ui(deserializer));
   }
@@ -2771,7 +3111,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<(String, String)> sse_decode_list_record_string_string(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     var len_ = sse_decode_i_32(deserializer);
@@ -2795,13 +3136,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsApiLib?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2809,13 +3152,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiButtonCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2823,13 +3168,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiLib?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2837,13 +3184,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiMfmCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2851,13 +3200,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiNumberCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2865,13 +3216,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiSelectCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2879,13 +3232,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiSwitchCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2893,13 +3248,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiTextInputCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2907,13 +3264,15 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsUiTextareaCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer) {
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
       return (sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          deserializer));
+        deserializer,
+      ));
     } else {
       return null;
     }
@@ -2921,7 +3280,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   AsPlayLib? sse_decode_opt_box_autoadd_as_play_lib(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
@@ -2955,7 +3315,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PostFormPropsForAsUi? sse_decode_opt_box_autoadd_post_form_props_for_as_ui(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
@@ -2978,7 +3339,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<AsUiButton>? sse_decode_opt_list_as_ui_button(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
@@ -2990,7 +3352,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   List<(String, String)>? sse_decode_opt_list_record_string_string(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     if (sse_decode_bool(deserializer)) {
@@ -3002,22 +3365,25 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   PostFormPropsForAsUi sse_decode_post_form_props_for_as_ui(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_text = sse_decode_String(deserializer);
     var var_cw = sse_decode_opt_String(deserializer);
     var var_visibility = sse_decode_opt_String(deserializer);
     var var_localOnly = sse_decode_opt_box_autoadd_bool(deserializer);
     return PostFormPropsForAsUi(
-        text: var_text,
-        cw: var_cw,
-        visibility: var_visibility,
-        localOnly: var_localOnly);
+      text: var_text,
+      cw: var_cw,
+      visibility: var_visibility,
+      localOnly: var_localOnly,
+    );
   }
 
   @protected
   (String, String?) sse_decode_record_string_opt_string(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_field0 = sse_decode_String(deserializer);
     var var_field1 = sse_decode_opt_String(deserializer);
@@ -3026,7 +3392,8 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   (String, String) sse_decode_record_string_string(
-      SseDeserializer deserializer) {
+    SseDeserializer deserializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     var var_field0 = sse_decode_String(deserializer);
     var var_field1 = sse_decode_String(deserializer);
@@ -3058,366 +3425,486 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_AnyhowException(
-      AnyhowException self, SseSerializer serializer) {
+    AnyhowException self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.message, serializer);
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          AiScript self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    AiScript self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AiScriptImpl).frbInternalSseEncode(move: true), serializer);
+      (self as AiScriptImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsApiLibImpl).frbInternalSseEncode(move: true), serializer);
+      (self as AsApiLibImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiButtonCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiButtonCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiLibImpl).frbInternalSseEncode(move: true), serializer);
+      (self as AsUiLibImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiMfmCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiMfmCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiNumberCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiNumberCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiSelectCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiSelectCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiSwitchCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiSwitchCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiTextInputCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiTextInputCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiTextareaCallbackImpl).frbInternalSseEncode(move: true),
-        serializer);
+      (self as AsUiTextareaCallbackImpl).frbInternalSseEncode(move: true),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          AiScript self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    AiScript self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AiScriptImpl).frbInternalSseEncode(move: false), serializer);
+      (self as AiScriptImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiButtonCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiButtonCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiMfmCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiMfmCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiNumberCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiNumberCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiSelectCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiSelectCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiSwitchCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiSwitchCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiTextInputCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiTextInputCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer) {
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiTextareaCallbackImpl).frbInternalSseEncode(move: false),
-        serializer);
+      (self as AsUiTextareaCallbackImpl).frbInternalSseEncode(move: false),
+      serializer,
+    );
   }
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
-      FutureOr<String> Function(String) self, SseSerializer serializer) {
+    FutureOr<String> Function(String) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_Output_String_AnyhowException(self),
-        serializer);
+      encode_DartFn_Inputs_String_Output_String_AnyhowException(self),
+      serializer,
+    );
   }
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
-      FutureOr<void> Function(String) self, SseSerializer serializer) {
+    FutureOr<void> Function(String) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_Output_unit_AnyhowException(self),
-        serializer);
+      encode_DartFn_Inputs_String_Output_unit_AnyhowException(self),
+      serializer,
+    );
   }
 
   @protected
   void sse_encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
-      FutureOr<void> Function(String, String) self, SseSerializer serializer) {
+    FutureOr<void> Function(String, String) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(self),
-        serializer);
+      encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(self),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-          FutureOr<bool> Function(String, String, String) self,
-          SseSerializer serializer) {
+  sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+    FutureOr<bool> Function(String, String, String) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-            self),
-        serializer);
+      encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+        self,
+      ),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, String, String) self,
-          SseSerializer serializer) {
+  sse_encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, String, String) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-            self),
-        serializer);
+      encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+        self,
+      ),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-          FutureOr<(String, String?)> Function(String, String, String?) self,
-          SseSerializer serializer) {
+  sse_encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+    FutureOr<(String, String?)> Function(String, String, String?) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-            self),
-        serializer);
+      encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+        self,
+      ),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, AsUiComponent) self,
-          SseSerializer serializer) {
+  sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, AsUiComponent) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_DartOpaque(
-        encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-            self),
-        serializer);
+      encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+        self,
+      ),
+      serializer,
+    );
   }
 
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_isize(
-        PlatformPointerUtil.ptrToPlatformInt64(encodeDartOpaque(
-            self, portManager.dartHandlerPort, generalizedFrbRustBinding)),
-        serializer);
+      PlatformPointerUtil.ptrToPlatformInt64(
+        encodeDartOpaque(
+          self,
+          portManager.dartHandlerPort,
+          generalizedFrbRustBinding,
+        ),
+      ),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          AiScript self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    AiScript self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AiScriptImpl).frbInternalSseEncode(move: null), serializer);
+      (self as AiScriptImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsApiLibImpl).frbInternalSseEncode(move: null), serializer);
+      (self as AsApiLibImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiButtonCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiButtonCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiLibImpl).frbInternalSseEncode(move: null), serializer);
+      (self as AsUiLibImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiMfmCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiMfmCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiNumberCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiNumberCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiSelectCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiSelectCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiSwitchCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiSwitchCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiTextInputCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiTextInputCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer) {
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_usize(
-        (self as AsUiTextareaCallbackImpl).frbInternalSseEncode(move: null),
-        serializer);
+      (self as AsUiTextareaCallbackImpl).frbInternalSseEncode(move: null),
+      serializer,
+    );
   }
 
   @protected
@@ -3438,7 +3925,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_String(self.text, serializer);
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-        self.onClick, serializer);
+      self.onClick,
+      serializer,
+    );
     sse_encode_opt_box_autoadd_bool(self.primary, serializer);
     sse_encode_opt_box_autoadd_bool(self.rounded, serializer);
     sse_encode_opt_box_autoadd_bool(self.disabled, serializer);
@@ -3452,7 +3941,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_as_ui_component(
-      AsUiComponent self, SseSerializer serializer) {
+    AsUiComponent self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     switch (self) {
       case AsUiComponent_Root(field0: final field0):
@@ -3502,7 +3993,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_as_ui_container(
-      AsUiContainer self, SseSerializer serializer) {
+    AsUiContainer self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_list_String(self.children, serializer);
     sse_encode_opt_String(self.align, serializer);
@@ -3533,15 +4026,21 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     sse_encode_opt_String(self.color, serializer);
     sse_encode_opt_String(self.font, serializer);
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-        self.onClickEv, serializer);
+      self.onClickEv,
+      serializer,
+    );
   }
 
   @protected
   void sse_encode_as_ui_number_input(
-      AsUiNumberInput self, SseSerializer serializer) {
+    AsUiNumberInput self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-        self.onInput, serializer);
+      self.onInput,
+      serializer,
+    );
     sse_encode_opt_box_autoadd_f_64(self.defaultValue, serializer);
     sse_encode_opt_String(self.label, serializer);
     sse_encode_opt_String(self.caption, serializer);
@@ -3555,7 +4054,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_as_ui_post_form_button(
-      AsUiPostFormButton self, SseSerializer serializer) {
+    AsUiPostFormButton self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_String(self.text, serializer);
     sse_encode_opt_box_autoadd_bool(self.primary, serializer);
@@ -3574,7 +4075,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_list_record_string_string(self.items, serializer);
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-        self.onChange, serializer);
+      self.onChange,
+      serializer,
+    );
     sse_encode_opt_String(self.defaultValue, serializer);
     sse_encode_opt_String(self.label, serializer);
     sse_encode_opt_String(self.caption, serializer);
@@ -3584,7 +4087,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_as_ui_switch(AsUiSwitch self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-        self.onChange, serializer);
+      self.onChange,
+      serializer,
+    );
     sse_encode_opt_box_autoadd_bool(self.defaultValue, serializer);
     sse_encode_opt_String(self.label, serializer);
     sse_encode_opt_String(self.caption, serializer);
@@ -3602,10 +4107,14 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_as_ui_text_input(
-      AsUiTextInput self, SseSerializer serializer) {
+    AsUiTextInput self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-        self.onInput, serializer);
+      self.onInput,
+      serializer,
+    );
     sse_encode_opt_String(self.defaultValue, serializer);
     sse_encode_opt_String(self.label, serializer);
     sse_encode_opt_String(self.caption, serializer);
@@ -3615,7 +4124,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
   void sse_encode_as_ui_textarea(AsUiTextarea self, SseSerializer serializer) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-        self.onInput, serializer);
+      self.onInput,
+      serializer,
+    );
     sse_encode_opt_String(self.defaultValue, serializer);
     sse_encode_opt_String(self.label, serializer);
     sse_encode_opt_String(self.caption, serializer);
@@ -3629,186 +4140,252 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer) {
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-        self, serializer);
+      self,
+      serializer,
+    );
   }
 
   @protected
   void sse_encode_box_autoadd_as_play_lib(
-      AsPlayLib self, SseSerializer serializer) {
+    AsPlayLib self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_play_lib(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_button(
-      AsUiButton self, SseSerializer serializer) {
+    AsUiButton self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_button(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_buttons(
-      AsUiButtons self, SseSerializer serializer) {
+    AsUiButtons self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_buttons(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_container(
-      AsUiContainer self, SseSerializer serializer) {
+    AsUiContainer self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_container(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_folder(
-      AsUiFolder self, SseSerializer serializer) {
+    AsUiFolder self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_folder(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_mfm(
-      AsUiMfm self, SseSerializer serializer) {
+    AsUiMfm self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_mfm(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_number_input(
-      AsUiNumberInput self, SseSerializer serializer) {
+    AsUiNumberInput self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_number_input(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_post_form(
-      AsUiPostForm self, SseSerializer serializer) {
+    AsUiPostForm self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_post_form(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_post_form_button(
-      AsUiPostFormButton self, SseSerializer serializer) {
+    AsUiPostFormButton self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_post_form_button(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_root(
-      AsUiRoot self, SseSerializer serializer) {
+    AsUiRoot self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_root(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_select(
-      AsUiSelect self, SseSerializer serializer) {
+    AsUiSelect self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_select(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_switch(
-      AsUiSwitch self, SseSerializer serializer) {
+    AsUiSwitch self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_switch(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_text(
-      AsUiText self, SseSerializer serializer) {
+    AsUiText self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_text(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_text_input(
-      AsUiTextInput self, SseSerializer serializer) {
+    AsUiTextInput self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_text_input(self, serializer);
   }
 
   @protected
   void sse_encode_box_autoadd_as_ui_textarea(
-      AsUiTextarea self, SseSerializer serializer) {
+    AsUiTextarea self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_as_ui_textarea(self, serializer);
   }
@@ -3827,7 +4404,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_box_autoadd_post_form_props_for_as_ui(
-      PostFormPropsForAsUi self, SseSerializer serializer) {
+    PostFormPropsForAsUi self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_post_form_props_for_as_ui(self, serializer);
   }
@@ -3855,7 +4434,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_as_ui_button(
-      List<AsUiButton> self, SseSerializer serializer) {
+    List<AsUiButton> self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -3865,7 +4446,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer) {
+    Uint8List self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     serializer.buffer.putUint8List(self);
@@ -3873,7 +4456,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_list_record_string_string(
-      List<(String, String)> self, SseSerializer serializer) {
+    List<(String, String)> self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_i_32(self.length, serializer);
     for (final item in self) {
@@ -3893,124 +4478,162 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback? self, SseSerializer serializer) {
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
     if (self != null) {
       sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          self, serializer);
+        self,
+        serializer,
+      );
     }
   }
 
   @protected
   void sse_encode_opt_box_autoadd_as_play_lib(
-      AsPlayLib? self, SseSerializer serializer) {
+    AsPlayLib? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
@@ -4041,7 +4664,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_opt_box_autoadd_post_form_props_for_as_ui(
-      PostFormPropsForAsUi? self, SseSerializer serializer) {
+    PostFormPropsForAsUi? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
@@ -4052,7 +4677,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_opt_list_String(
-      List<String>? self, SseSerializer serializer) {
+    List<String>? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
@@ -4063,7 +4690,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_opt_list_as_ui_button(
-      List<AsUiButton>? self, SseSerializer serializer) {
+    List<AsUiButton>? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
@@ -4074,7 +4703,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_opt_list_record_string_string(
-      List<(String, String)>? self, SseSerializer serializer) {
+    List<(String, String)>? self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
 
     sse_encode_bool(self != null, serializer);
@@ -4085,7 +4716,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_post_form_props_for_as_ui(
-      PostFormPropsForAsUi self, SseSerializer serializer) {
+    PostFormPropsForAsUi self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.text, serializer);
     sse_encode_opt_String(self.cw, serializer);
@@ -4095,7 +4728,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_record_string_opt_string(
-      (String, String?) self, SseSerializer serializer) {
+    (String, String?) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.$1, serializer);
     sse_encode_opt_String(self.$2, serializer);
@@ -4103,7 +4738,9 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 
   @protected
   void sse_encode_record_string_string(
-      (String, String) self, SseSerializer serializer) {
+    (String, String) self,
+    SseSerializer serializer,
+  ) {
     // Codec=Sse (Serialization based), see doc to use other codecs
     sse_encode_String(self.$1, serializer);
     sse_encode_String(self.$2, serializer);
@@ -4137,11 +4774,11 @@ class RustLibApiImpl extends RustLibApiImplPlatform implements RustLibApi {
 class AiScriptImpl extends RustOpaque implements AiScript {
   // Not to be used by end users
   AiScriptImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AiScriptImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -4152,9 +4789,8 @@ class AiScriptImpl extends RustOpaque implements AiScript {
         RustLib.instance.api.rust_arc_decrement_strong_count_AiScriptPtr,
   );
 
-  Future<void> abort() => RustLib.instance.api.crateApiAiscriptAiScriptAbort(
-        that: this,
-      );
+  Future<void> abort() =>
+      RustLib.instance.api.crateApiAiscriptAiScriptAbort(that: this);
 
   Future<void> exec({required String input}) => RustLib.instance.api
       .crateApiAiscriptAiScriptExec(that: this, input: input);
@@ -4164,11 +4800,11 @@ class AiScriptImpl extends RustOpaque implements AiScript {
 class AsApiLibImpl extends RustOpaque implements AsApiLib {
   // Not to be used by end users
   AsApiLibImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsApiLibImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -4184,37 +4820,39 @@ class AsApiLibImpl extends RustOpaque implements AsApiLib {
 class AsUiButtonCallbackImpl extends RustOpaque implements AsUiButtonCallback {
   // Not to be used by end users
   AsUiButtonCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiButtonCallbackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    BigInt ptr,
+    int externalSizeOnNative,
+  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiButtonCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiButtonCallback,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiButtonCallbackPtr,
+    rustArcDecrementStrongCountPtr:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiButtonCallbackPtr,
   );
 
   Future<void> call() =>
-      RustLib.instance.api.crateApiAiscriptUiAsUiButtonCallbackCall(
-        that: this,
-      );
+      RustLib.instance.api.crateApiAiscriptUiAsUiButtonCallbackCall(that: this);
 }
 
 @sealed
 class AsUiLibImpl extends RustOpaque implements AsUiLib {
   // Not to be used by end users
   AsUiLibImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiLibImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -4230,11 +4868,11 @@ class AsUiLibImpl extends RustOpaque implements AsUiLib {
 class AsUiMfmCallbackImpl extends RustOpaque implements AsUiMfmCallback {
   // Not to be used by end users
   AsUiMfmCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiMfmCallbackImpl.frbInternalSseDecode(BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
@@ -4253,20 +4891,24 @@ class AsUiMfmCallbackImpl extends RustOpaque implements AsUiMfmCallback {
 class AsUiNumberCallbackImpl extends RustOpaque implements AsUiNumberCallback {
   // Not to be used by end users
   AsUiNumberCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiNumberCallbackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    BigInt ptr,
+    int externalSizeOnNative,
+  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiNumberCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiNumberCallback,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiNumberCallbackPtr,
+    rustArcDecrementStrongCountPtr:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiNumberCallbackPtr,
   );
 
   Future<void> call({required double value}) => RustLib.instance.api
@@ -4277,20 +4919,24 @@ class AsUiNumberCallbackImpl extends RustOpaque implements AsUiNumberCallback {
 class AsUiSelectCallbackImpl extends RustOpaque implements AsUiSelectCallback {
   // Not to be used by end users
   AsUiSelectCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiSelectCallbackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    BigInt ptr,
+    int externalSizeOnNative,
+  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiSelectCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiSelectCallback,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiSelectCallbackPtr,
+    rustArcDecrementStrongCountPtr:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiSelectCallbackPtr,
   );
 
   Future<void> call({required String value}) => RustLib.instance.api
@@ -4301,20 +4947,24 @@ class AsUiSelectCallbackImpl extends RustOpaque implements AsUiSelectCallback {
 class AsUiSwitchCallbackImpl extends RustOpaque implements AsUiSwitchCallback {
   // Not to be used by end users
   AsUiSwitchCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiSwitchCallbackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    BigInt ptr,
+    int externalSizeOnNative,
+  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
     rustArcIncrementStrongCount:
         RustLib.instance.api.rust_arc_increment_strong_count_AsUiSwitchCallback,
     rustArcDecrementStrongCount:
         RustLib.instance.api.rust_arc_decrement_strong_count_AsUiSwitchCallback,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr,
+    rustArcDecrementStrongCountPtr:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr,
   );
 
   Future<void> call({required bool value}) => RustLib.instance.api
@@ -4326,20 +4976,30 @@ class AsUiTextInputCallbackImpl extends RustOpaque
     implements AsUiTextInputCallback {
   // Not to be used by end users
   AsUiTextInputCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiTextInputCallbackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    BigInt ptr,
+    int externalSizeOnNative,
+  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AsUiTextInputCallback,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiTextInputCallback,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr,
+    rustArcIncrementStrongCount:
+        RustLib
+            .instance
+            .api
+            .rust_arc_increment_strong_count_AsUiTextInputCallback,
+    rustArcDecrementStrongCount:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiTextInputCallback,
+    rustArcDecrementStrongCountPtr:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr,
   );
 
   Future<void> call({required String value}) => RustLib.instance.api
@@ -4351,20 +5011,30 @@ class AsUiTextareaCallbackImpl extends RustOpaque
     implements AsUiTextareaCallback {
   // Not to be used by end users
   AsUiTextareaCallbackImpl.frbInternalDcoDecode(List<dynamic> wire)
-      : super.frbInternalDcoDecode(wire, _kStaticData);
+    : super.frbInternalDcoDecode(wire, _kStaticData);
 
   // Not to be used by end users
   AsUiTextareaCallbackImpl.frbInternalSseDecode(
-      BigInt ptr, int externalSizeOnNative)
-      : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
+    BigInt ptr,
+    int externalSizeOnNative,
+  ) : super.frbInternalSseDecode(ptr, externalSizeOnNative, _kStaticData);
 
   static final _kStaticData = RustArcStaticData(
-    rustArcIncrementStrongCount: RustLib
-        .instance.api.rust_arc_increment_strong_count_AsUiTextareaCallback,
-    rustArcDecrementStrongCount: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiTextareaCallback,
-    rustArcDecrementStrongCountPtr: RustLib
-        .instance.api.rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr,
+    rustArcIncrementStrongCount:
+        RustLib
+            .instance
+            .api
+            .rust_arc_increment_strong_count_AsUiTextareaCallback,
+    rustArcDecrementStrongCount:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiTextareaCallback,
+    rustArcDecrementStrongCountPtr:
+        RustLib
+            .instance
+            .api
+            .rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr,
   );
 
   Future<void> call({required String value}) => RustLib.instance.api

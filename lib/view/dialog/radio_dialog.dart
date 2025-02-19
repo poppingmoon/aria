@@ -11,12 +11,13 @@ Future<T?> showRadioDialog<T>(
 }) {
   return showDialog<T>(
     context: context,
-    builder: (context) => RadioDialog(
-      title: title,
-      values: values,
-      initialValue: initialValue,
-      itemBuilder: itemBuilder,
-    ),
+    builder:
+        (context) => RadioDialog(
+          title: title,
+          values: values,
+          initialValue: initialValue,
+          itemBuilder: itemBuilder,
+        ),
   );
 }
 
@@ -40,16 +41,17 @@ class RadioDialog<T> extends HookWidget {
       title: title,
       scrollable: true,
       content: Column(
-        children: values
-            .map(
-              (value) => RadioListTile(
-                title: itemBuilder(context, value),
-                value: value,
-                groupValue: initialValue,
-                onChanged: (value) => context.pop(value),
-              ),
-            )
-            .toList(),
+        children:
+            values
+                .map(
+                  (value) => RadioListTile(
+                    title: itemBuilder(context, value),
+                    value: value,
+                    groupValue: initialValue,
+                    onChanged: (value) => context.pop(value),
+                  ),
+                )
+                .toList(),
       ),
     );
   }

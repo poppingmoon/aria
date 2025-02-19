@@ -39,52 +39,60 @@ class ClipsPage extends ConsumerWidget {
         body: TabBarView(
           children: [
             RefreshIndicator(
-              onRefresh: () =>
-                  ref.refresh(clipsNotifierProvider(account).future),
+              onRefresh:
+                  () => ref.refresh(clipsNotifierProvider(account).future),
               child: switch (clips) {
-                AsyncValue(valueOrNull: final clips?) => clips.isEmpty
-                    ? Center(child: Text(t.misskey.nothing))
-                    : ListView.separated(
-                        itemBuilder: (context, index) => Center(
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              left: 8.0,
-                              top: index == 0 ? 8.0 : 0.0,
-                              right: 8.0,
-                              bottom: index == clips.length - 1 ? 120.0 : 0.0,
-                            ),
-                            width: maxContentWidth,
-                            child: ListTileTheme.merge(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: index == 0
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                                  bottom: index == clips.length - 1
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
+                AsyncValue(valueOrNull: final clips?) =>
+                  clips.isEmpty
+                      ? Center(child: Text(t.misskey.nothing))
+                      : ListView.separated(
+                        itemBuilder:
+                            (context, index) => Center(
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  left: 8.0,
+                                  top: index == 0 ? 8.0 : 0.0,
+                                  right: 8.0,
+                                  bottom:
+                                      index == clips.length - 1 ? 120.0 : 0.0,
+                                ),
+                                width: maxContentWidth,
+                                child: ListTileTheme.merge(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top:
+                                          index == 0
+                                              ? const Radius.circular(8.0)
+                                              : Radius.zero,
+                                      bottom:
+                                          index == clips.length - 1
+                                              ? const Radius.circular(8.0)
+                                              : Radius.zero,
+                                    ),
+                                  ),
+                                  tileColor: theme.colorScheme.surface,
+                                  child: ClipPreview(
+                                    account: account,
+                                    clip: clips[index],
+                                    hideUserInfo: true,
+                                    onTap:
+                                        () => context.push(
+                                          '/$account/clips/${clips[index].id}',
+                                        ),
+                                  ),
                                 ),
                               ),
-                              tileColor: theme.colorScheme.surface,
-                              child: ClipPreview(
-                                account: account,
-                                clip: clips[index],
-                                hideUserInfo: true,
-                                onTap: () => context
-                                    .push('/$account/clips/${clips[index].id}'),
+                            ),
+                        separatorBuilder:
+                            (context, index) => const Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: SizedBox(
+                                  width: maxContentWidth,
+                                  child: Divider(height: 0.0),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        separatorBuilder: (context, index) => const Center(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: SizedBox(
-                              width: maxContentWidth,
-                              child: Divider(height: 0.0),
-                            ),
-                          ),
-                        ),
                         itemCount: clips.length,
                       ),
                 AsyncValue(:final error?, :final stackTrace) =>
@@ -94,8 +102,10 @@ class ClipsPage extends ConsumerWidget {
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         width: maxContentWidth,
-                        child:
-                            ErrorMessage(error: error, stackTrace: stackTrace),
+                        child: ErrorMessage(
+                          error: error,
+                          stackTrace: stackTrace,
+                        ),
                       ),
                     ),
                   ),
@@ -103,52 +113,62 @@ class ClipsPage extends ConsumerWidget {
               },
             ),
             RefreshIndicator(
-              onRefresh: () =>
-                  ref.refresh(favoriteClipsNotifierProvider(account).future),
+              onRefresh:
+                  () => ref.refresh(
+                    favoriteClipsNotifierProvider(account).future,
+                  ),
               child: switch (favoriteClips) {
-                AsyncValue(valueOrNull: final clips?) => clips.isEmpty
-                    ? Center(child: Text(t.misskey.nothing))
-                    : ListView.separated(
-                        itemBuilder: (context, index) => Center(
-                          child: Container(
-                            margin: EdgeInsets.only(
-                              left: 8.0,
-                              top: index == 0 ? 8.0 : 0.0,
-                              right: 8.0,
-                              bottom: index == clips.length - 1 ? 120.0 : 0.0,
-                            ),
-                            width: maxContentWidth,
-                            child: ListTileTheme.merge(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.vertical(
-                                  top: index == 0
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
-                                  bottom: index == clips.length - 1
-                                      ? const Radius.circular(8.0)
-                                      : Radius.zero,
+                AsyncValue(valueOrNull: final clips?) =>
+                  clips.isEmpty
+                      ? Center(child: Text(t.misskey.nothing))
+                      : ListView.separated(
+                        itemBuilder:
+                            (context, index) => Center(
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                  left: 8.0,
+                                  top: index == 0 ? 8.0 : 0.0,
+                                  right: 8.0,
+                                  bottom:
+                                      index == clips.length - 1 ? 120.0 : 0.0,
+                                ),
+                                width: maxContentWidth,
+                                child: ListTileTheme.merge(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.vertical(
+                                      top:
+                                          index == 0
+                                              ? const Radius.circular(8.0)
+                                              : Radius.zero,
+                                      bottom:
+                                          index == clips.length - 1
+                                              ? const Radius.circular(8.0)
+                                              : Radius.zero,
+                                    ),
+                                  ),
+                                  tileColor: theme.colorScheme.surface,
+                                  child: ClipPreview(
+                                    account: account,
+                                    clip: clips[index],
+                                    hideUserInfo: true,
+                                    onTap:
+                                        () => context.push(
+                                          '/$account/clips/${clips[index].id}',
+                                        ),
+                                  ),
                                 ),
                               ),
-                              tileColor: theme.colorScheme.surface,
-                              child: ClipPreview(
-                                account: account,
-                                clip: clips[index],
-                                hideUserInfo: true,
-                                onTap: () => context
-                                    .push('/$account/clips/${clips[index].id}'),
+                            ),
+                        separatorBuilder:
+                            (context, index) => const Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                                child: SizedBox(
+                                  width: maxContentWidth,
+                                  child: Divider(height: 0.0),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        separatorBuilder: (context, index) => const Center(
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8.0),
-                            child: SizedBox(
-                              width: maxContentWidth,
-                              child: Divider(height: 0.0),
-                            ),
-                          ),
-                        ),
                         itemCount: clips.length,
                       ),
                 AsyncValue(:final error?, :final stackTrace) =>
@@ -158,8 +178,10 @@ class ClipsPage extends ConsumerWidget {
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 8.0),
                         width: maxContentWidth,
-                        child:
-                            ErrorMessage(error: error, stackTrace: stackTrace),
+                        child: ErrorMessage(
+                          error: error,
+                          stackTrace: stackTrace,
+                        ),
                       ),
                     ),
                   ),
@@ -179,7 +201,9 @@ class ClipsPage extends ConsumerWidget {
             if (result != null) {
               await futureWithDialog(
                 ref.context,
-                ref.read(clipsNotifierProvider(account).notifier).create(
+                ref
+                    .read(clipsNotifierProvider(account).notifier)
+                    .create(
                       name: result.name ?? '',
                       description: result.description,
                       isPublic: result.isPublic,

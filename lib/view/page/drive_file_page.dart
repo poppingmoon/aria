@@ -11,11 +11,7 @@ import '../widget/drive_file_sheet.dart';
 import '../widget/error_message.dart';
 
 class DriveFilePage extends ConsumerWidget {
-  const DriveFilePage({
-    super.key,
-    required this.account,
-    required this.fileId,
-  });
+  const DriveFilePage({super.key, required this.account, required this.fileId});
 
   final Account account;
   final String fileId;
@@ -35,10 +31,9 @@ class DriveFilePage extends ConsumerWidget {
                 onPressed: () async {
                   final result = await showModalBottomSheet<({bool deleted})?>(
                     context: context,
-                    builder: (context) => DriveFileSheet(
-                      account: account,
-                      file: file,
-                    ),
+                    builder:
+                        (context) =>
+                            DriveFileSheet(account: account, file: file),
                     clipBehavior: Clip.antiAlias,
                   );
                   if (!context.mounted) return;
@@ -61,8 +56,10 @@ class DriveFilePage extends ConsumerWidget {
         body: TabBarView(
           children: [
             switch (file) {
-              AsyncValue(valueOrNull: final file?) =>
-                DriveFileInfo(account: account, file: file),
+              AsyncValue(valueOrNull: final file?) => DriveFileInfo(
+                account: account,
+                file: file,
+              ),
               AsyncValue(:final error?, :final stackTrace) =>
                 SingleChildScrollView(
                   child: ErrorMessage(error: error, stackTrace: stackTrace),

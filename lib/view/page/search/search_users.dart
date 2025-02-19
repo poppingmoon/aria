@@ -12,11 +12,7 @@ import '../../widget/paginated_list_view.dart';
 import '../../widget/user_info.dart';
 
 class SearchUsers extends HookConsumerWidget {
-  const SearchUsers({
-    super.key,
-    required this.account,
-    this.focusNode,
-  });
+  const SearchUsers({super.key, required this.account, this.focusNode});
 
   final Account account;
   final FocusNode? focusNode;
@@ -26,15 +22,16 @@ class SearchUsers extends HookConsumerWidget {
     final controller = useTextEditingController();
     final query = useState('');
     final origin = useState(Origin.combined);
-    final users = query.value.isNotEmpty
-        ? ref.watch(
-            searchUsersNotifierProvider(
-              account,
-              query.value,
-              userOrigin: origin.value,
-            ),
-          )
-        : null;
+    final users =
+        query.value.isNotEmpty
+            ? ref.watch(
+              searchUsersNotifierProvider(
+                account,
+                query.value,
+                userOrigin: origin.value,
+              ),
+            )
+            : null;
 
     return PaginatedListView(
       header: SliverList.list(
@@ -48,8 +45,9 @@ class SearchUsers extends HookConsumerWidget {
                 child: TextField(
                   controller: controller,
                   focusNode: focusNode,
-                  decoration:
-                      const InputDecoration(prefixIcon: Icon(Icons.search)),
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.search),
+                  ),
                   autofocus: true,
                   onSubmitted: (value) => query.value = value.trim(),
                   textInputAction: TextInputAction.search,
@@ -78,8 +76,8 @@ class SearchUsers extends HookConsumerWidget {
                   ),
                 ],
                 selected: {origin.value},
-                onSelectionChanged: (selection) =>
-                    origin.value = selection.single,
+                onSelectionChanged:
+                    (selection) => origin.value = selection.single,
               ),
             ),
           ),
@@ -98,22 +96,24 @@ class SearchUsers extends HookConsumerWidget {
       ),
       paginationState: users,
       itemBuilder: (context, user) => UserInfo(account: account, user: user),
-      onRefresh: () => ref.refresh(
-        searchUsersNotifierProvider(
-          account,
-          query.value,
-          userOrigin: origin.value,
-        ).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
+      onRefresh:
+          () => ref.refresh(
             searchUsersNotifierProvider(
               account,
               query.value,
               userOrigin: origin.value,
-            ).notifier,
-          )
-          .loadMore(skipError: skipError),
+            ).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(
+                searchUsersNotifierProvider(
+                  account,
+                  query.value,
+                  userOrigin: origin.value,
+                ).notifier,
+              )
+              .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.noUsers,
     );

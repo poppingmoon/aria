@@ -25,37 +25,37 @@ class RolePreview extends ConsumerWidget {
 
     return DecoratedBox(
       decoration: BoxDecoration(
-        border: color != null
-            ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
-            : null,
+        border:
+            color != null
+                ? BorderDirectional(start: BorderSide(color: color, width: 4.0))
+                : null,
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: ListTile(
         leading: switch (role) {
           RolesListResponse(:final iconUrl?) => ImageWidget(
-              url: iconUrl.toString(),
-              width: 28.0,
-              height: 28.0,
-            ),
+            url: iconUrl.toString(),
+            width: 28.0,
+            height: 28.0,
+          ),
           RolesListResponse(isAdministrator: true) => Icon(
-              Symbols.crown,
-              color: Theme.of(context).colorScheme.primary,
-              size: 28.0,
-              fill: 1.0,
-            ),
+            Symbols.crown,
+            color: Theme.of(context).colorScheme.primary,
+            size: 28.0,
+            fill: 1.0,
+          ),
           RolesListResponse(isModerator: true) => Icon(
-              Icons.shield,
-              color: Theme.of(context).colorScheme.primary,
-              size: 28.0,
-            ),
+            Icons.shield,
+            color: Theme.of(context).colorScheme.primary,
+            size: 28.0,
+          ),
           _ => Icon(
-              Icons.person,
-              color: Theme.of(context)
-                  .colorScheme
-                  .onSurface
-                  .withValues(alpha: 0.7),
-              size: 28.0,
-            )
+            Icons.person,
+            color: Theme.of(
+              context,
+            ).colorScheme.onSurface.withValues(alpha: 0.7),
+            size: 28.0,
+          ),
         },
         title: Text(role.name),
         subtitle: Text(role.description ?? ''),

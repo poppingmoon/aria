@@ -23,222 +23,254 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
     required super.portManager,
   });
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AiScriptPtr => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AiScriptPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript;
 
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsApiLibPtr => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
-
-  CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiButtonCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
-
-  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsUiLibPtr => wire
-      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsApiLibPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiMfmCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
+  get rust_arc_decrement_strong_count_AsUiButtonCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback;
+
+  CrossPlatformFinalizerArg get rust_arc_decrement_strong_count_AsUiLibPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiNumberCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
+  get rust_arc_decrement_strong_count_AsUiMfmCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiSelectCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
+  get rust_arc_decrement_strong_count_AsUiNumberCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
+  get rust_arc_decrement_strong_count_AsUiSelectCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
+  get rust_arc_decrement_strong_count_AsUiSwitchCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback;
 
   CrossPlatformFinalizerArg
-      get rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr => wire
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
+  get rust_arc_decrement_strong_count_AsUiTextInputCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback;
+
+  CrossPlatformFinalizerArg
+  get rust_arc_decrement_strong_count_AsUiTextareaCallbackPtr =>
+      wire.rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback;
 
   @protected
   AnyhowException dco_decode_AnyhowException(dynamic raw);
 
   @protected
   AiScript
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    dynamic raw,
+  );
 
   @protected
   AsApiLib
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiButtonCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiLib
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiMfmCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiNumberCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSelectCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSwitchCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextInputCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextareaCallback
-      dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw);
+  dco_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  );
 
   @protected
   AiScript
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    dynamic raw,
+  );
 
   @protected
   AsUiButtonCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiMfmCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiNumberCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSelectCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSwitchCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextInputCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextareaCallback
-      dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw);
+  dco_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  );
 
   @protected
   FutureOr<String> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(
-          dynamic raw);
+  dco_decode_DartFn_Inputs_String_Output_String_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<void> Function(String)
-      dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw);
+  dco_decode_DartFn_Inputs_String_Output_unit_AnyhowException(dynamic raw);
 
   @protected
   FutureOr<void> Function(String, String)
-      dco_decode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
-          dynamic raw);
+  dco_decode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
+    dynamic raw,
+  );
 
   @protected
   FutureOr<bool> Function(String, String, String)
-      dco_decode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-          dynamic raw);
+  dco_decode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+    dynamic raw,
+  );
 
   @protected
   FutureOr<void> Function(String, String, String)
-      dco_decode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-          dynamic raw);
+  dco_decode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+    dynamic raw,
+  );
 
   @protected
   FutureOr<(String, String?)> Function(String, String, String?)
-      dco_decode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-          dynamic raw);
+  dco_decode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+    dynamic raw,
+  );
 
   @protected
   FutureOr<void> Function(String, AsUiComponent)
-      dco_decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-          dynamic raw);
+  dco_decode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+    dynamic raw,
+  );
 
   @protected
   Object dco_decode_DartOpaque(dynamic raw);
 
   @protected
   AiScript
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    dynamic raw,
+  );
 
   @protected
   AsApiLib
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiButtonCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiLib
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiMfmCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiNumberCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSelectCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSwitchCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextInputCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextareaCallback
-      dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw);
+  dco_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  );
 
   @protected
   String dco_decode_String(dynamic raw);
@@ -296,48 +328,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsApiLib
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiButtonCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiLib
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiMfmCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiNumberCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSelectCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSwitchCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextInputCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextareaCallback
-      dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw);
+  dco_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  );
 
   @protected
   AsPlayLib dco_decode_box_autoadd_as_play_lib(dynamic raw);
@@ -392,7 +433,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PostFormPropsForAsUi dco_decode_box_autoadd_post_form_props_for_as_ui(
-      dynamic raw);
+    dynamic raw,
+  );
 
   @protected
   double dco_decode_f_64(dynamic raw);
@@ -417,48 +459,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsApiLib?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiButtonCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiLib?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    dynamic raw,
+  );
 
   @protected
   AsUiMfmCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiNumberCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSelectCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiSwitchCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextInputCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    dynamic raw,
+  );
 
   @protected
   AsUiTextareaCallback?
-      dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          dynamic raw);
+  dco_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    dynamic raw,
+  );
 
   @protected
   AsPlayLib? dco_decode_opt_box_autoadd_as_play_lib(dynamic raw);
@@ -471,7 +522,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PostFormPropsForAsUi? dco_decode_opt_box_autoadd_post_form_props_for_as_ui(
-      dynamic raw);
+    dynamic raw,
+  );
 
   @protected
   List<String>? dco_decode_opt_list_String(dynamic raw);
@@ -505,146 +557,174 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AiScript
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsApiLib
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiButtonCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiLib
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiMfmCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiNumberCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSelectCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSwitchCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextInputCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextareaCallback
-      sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AiScript
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiButtonCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiMfmCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiNumberCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSelectCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSwitchCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextInputCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextareaCallback
-      sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer);
+  sse_decode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   Object sse_decode_DartOpaque(SseDeserializer deserializer);
 
   @protected
   AiScript
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsApiLib
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiButtonCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiLib
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiMfmCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiNumberCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSelectCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSwitchCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextInputCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextareaCallback
-      sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer);
+  sse_decode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   String sse_decode_String(SseDeserializer deserializer);
@@ -678,7 +758,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsUiPostFormButton sse_decode_as_ui_post_form_button(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiRoot sse_decode_as_ui_root(SseDeserializer deserializer);
@@ -703,48 +784,57 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsApiLib
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiButtonCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiLib
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiMfmCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiNumberCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSelectCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSwitchCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextInputCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextareaCallback
-      sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer);
+  sse_decode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsPlayLib sse_decode_box_autoadd_as_play_lib(SseDeserializer deserializer);
@@ -754,11 +844,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsUiButtons sse_decode_box_autoadd_as_ui_buttons(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiContainer sse_decode_box_autoadd_as_ui_container(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiFolder sse_decode_box_autoadd_as_ui_folder(SseDeserializer deserializer);
@@ -768,15 +860,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsUiNumberInput sse_decode_box_autoadd_as_ui_number_input(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiPostForm sse_decode_box_autoadd_as_ui_post_form(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiPostFormButton sse_decode_box_autoadd_as_ui_post_form_button(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiRoot sse_decode_box_autoadd_as_ui_root(SseDeserializer deserializer);
@@ -792,11 +887,13 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   AsUiTextInput sse_decode_box_autoadd_as_ui_text_input(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextarea sse_decode_box_autoadd_as_ui_textarea(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   bool sse_decode_box_autoadd_bool(SseDeserializer deserializer);
@@ -806,7 +903,8 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PostFormPropsForAsUi sse_decode_box_autoadd_post_form_props_for_as_ui(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   double sse_decode_f_64(SseDeserializer deserializer);
@@ -825,59 +923,70 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   List<(String, String)> sse_decode_list_record_string_string(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   String? sse_decode_opt_String(SseDeserializer deserializer);
 
   @protected
   AsApiLib?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiButtonCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiLib?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiMfmCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiNumberCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSelectCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiSwitchCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextInputCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsUiTextareaCallback?
-      sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          SseDeserializer deserializer);
+  sse_decode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    SseDeserializer deserializer,
+  );
 
   @protected
   AsPlayLib? sse_decode_opt_box_autoadd_as_play_lib(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   bool? sse_decode_opt_box_autoadd_bool(SseDeserializer deserializer);
@@ -887,30 +996,36 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   PostFormPropsForAsUi? sse_decode_opt_box_autoadd_post_form_props_for_as_ui(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   List<String>? sse_decode_opt_list_String(SseDeserializer deserializer);
 
   @protected
   List<AsUiButton>? sse_decode_opt_list_as_ui_button(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   List<(String, String)>? sse_decode_opt_list_record_string_string(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   PostFormPropsForAsUi sse_decode_post_form_props_for_as_ui(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   (String, String?) sse_decode_record_string_opt_string(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   (String, String) sse_decode_record_string_string(
-      SseDeserializer deserializer);
+    SseDeserializer deserializer,
+  );
 
   @protected
   int sse_decode_u_8(SseDeserializer deserializer);
@@ -926,186 +1041,254 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_AnyhowException(
-      AnyhowException self, SseSerializer serializer);
+    AnyhowException self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          AiScript self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    AiScript self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer);
+  sse_encode_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          AiScript self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    AiScript self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer);
+  sse_encode_Auto_Ref_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_String_AnyhowException(
-      FutureOr<String> Function(String) self, SseSerializer serializer);
+    FutureOr<String> Function(String) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_DartFn_Inputs_String_Output_unit_AnyhowException(
-      FutureOr<void> Function(String) self, SseSerializer serializer);
+    FutureOr<void> Function(String) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_DartFn_Inputs_String_String_Output_unit_AnyhowException(
-      FutureOr<void> Function(String, String) self, SseSerializer serializer);
+    FutureOr<void> Function(String, String) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
-          FutureOr<bool> Function(String, String, String) self,
-          SseSerializer serializer);
+  sse_encode_DartFn_Inputs_String_String_String_Output_bool_AnyhowException(
+    FutureOr<bool> Function(String, String, String) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, String, String) self,
-          SseSerializer serializer);
+  sse_encode_DartFn_Inputs_String_String_String_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, String, String) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
-          FutureOr<(String, String?)> Function(String, String, String?) self,
-          SseSerializer serializer);
+  sse_encode_DartFn_Inputs_String_String_opt_String_Output_record_string_opt_string_AnyhowException(
+    FutureOr<(String, String?)> Function(String, String, String?) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
-          FutureOr<void> Function(String, AsUiComponent) self,
-          SseSerializer serializer);
+  sse_encode_DartFn_Inputs_String_as_ui_component_Output_unit_AnyhowException(
+    FutureOr<void> Function(String, AsUiComponent) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_DartOpaque(Object self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          AiScript self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    AiScript self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer);
+  sse_encode_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_String(String self, SseSerializer serializer);
@@ -1133,14 +1316,18 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_as_ui_number_input(
-      AsUiNumberInput self, SseSerializer serializer);
+    AsUiNumberInput self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_as_ui_post_form(AsUiPostForm self, SseSerializer serializer);
 
   @protected
   void sse_encode_as_ui_post_form_button(
-      AsUiPostFormButton self, SseSerializer serializer);
+    AsUiPostFormButton self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_as_ui_root(AsUiRoot self, SseSerializer serializer);
@@ -1156,7 +1343,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_as_ui_text_input(
-      AsUiTextInput self, SseSerializer serializer);
+    AsUiTextInput self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_as_ui_textarea(AsUiTextarea self, SseSerializer serializer);
@@ -1166,107 +1355,153 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback self, SseSerializer serializer);
+  sse_encode_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_play_lib(
-      AsPlayLib self, SseSerializer serializer);
+    AsPlayLib self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_button(
-      AsUiButton self, SseSerializer serializer);
+    AsUiButton self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_buttons(
-      AsUiButtons self, SseSerializer serializer);
+    AsUiButtons self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_container(
-      AsUiContainer self, SseSerializer serializer);
+    AsUiContainer self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_folder(
-      AsUiFolder self, SseSerializer serializer);
+    AsUiFolder self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_mfm(AsUiMfm self, SseSerializer serializer);
 
   @protected
   void sse_encode_box_autoadd_as_ui_number_input(
-      AsUiNumberInput self, SseSerializer serializer);
+    AsUiNumberInput self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_post_form(
-      AsUiPostForm self, SseSerializer serializer);
+    AsUiPostForm self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_post_form_button(
-      AsUiPostFormButton self, SseSerializer serializer);
+    AsUiPostFormButton self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_root(
-      AsUiRoot self, SseSerializer serializer);
+    AsUiRoot self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_select(
-      AsUiSelect self, SseSerializer serializer);
+    AsUiSelect self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_switch(
-      AsUiSwitch self, SseSerializer serializer);
+    AsUiSwitch self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_text(
-      AsUiText self, SseSerializer serializer);
+    AsUiText self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_text_input(
-      AsUiTextInput self, SseSerializer serializer);
+    AsUiTextInput self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_as_ui_textarea(
-      AsUiTextarea self, SseSerializer serializer);
+    AsUiTextarea self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_box_autoadd_bool(bool self, SseSerializer serializer);
@@ -1276,7 +1511,9 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_box_autoadd_post_form_props_for_as_ui(
-      PostFormPropsForAsUi self, SseSerializer serializer);
+    PostFormPropsForAsUi self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_f_64(double self, SseSerializer serializer);
@@ -1289,67 +1526,93 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_list_as_ui_button(
-      List<AsUiButton> self, SseSerializer serializer);
+    List<AsUiButton> self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_list_prim_u_8_strict(
-      Uint8List self, SseSerializer serializer);
+    Uint8List self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_list_record_string_string(
-      List<(String, String)> self, SseSerializer serializer);
+    List<(String, String)> self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_opt_String(String? self, SseSerializer serializer);
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          AsApiLib? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    AsApiLib? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          AsUiButtonCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    AsUiButtonCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          AsUiLib? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    AsUiLib? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          AsUiMfmCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    AsUiMfmCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          AsUiNumberCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    AsUiNumberCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          AsUiSelectCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    AsUiSelectCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          AsUiSwitchCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    AsUiSwitchCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          AsUiTextInputCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    AsUiTextInputCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void
-      sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          AsUiTextareaCallback? self, SseSerializer serializer);
+  sse_encode_opt_box_autoadd_Auto_Owned_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    AsUiTextareaCallback? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_opt_box_autoadd_as_play_lib(
-      AsPlayLib? self, SseSerializer serializer);
+    AsPlayLib? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_opt_box_autoadd_bool(bool? self, SseSerializer serializer);
@@ -1359,30 +1622,42 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 
   @protected
   void sse_encode_opt_box_autoadd_post_form_props_for_as_ui(
-      PostFormPropsForAsUi? self, SseSerializer serializer);
+    PostFormPropsForAsUi? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_opt_list_String(List<String>? self, SseSerializer serializer);
 
   @protected
   void sse_encode_opt_list_as_ui_button(
-      List<AsUiButton>? self, SseSerializer serializer);
+    List<AsUiButton>? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_opt_list_record_string_string(
-      List<(String, String)>? self, SseSerializer serializer);
+    List<(String, String)>? self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_post_form_props_for_as_ui(
-      PostFormPropsForAsUi self, SseSerializer serializer);
+    PostFormPropsForAsUi self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_record_string_opt_string(
-      (String, String?) self, SseSerializer serializer);
+    (String, String?) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_record_string_string(
-      (String, String) self, SseSerializer serializer);
+    (String, String) self,
+    SseSerializer serializer,
+  );
 
   @protected
   void sse_encode_u_8(int self, SseSerializer serializer);
@@ -1402,125 +1677,165 @@ abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
 class RustLibWire implements BaseWire {
   RustLibWire.fromExternalLibrary(ExternalLibrary lib);
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+        ptr,
+      );
 
-  void rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-              ptr);
+  void
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+        ptr,
+      );
 
-  void rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          int ptr) =>
-      wasmModule
-          .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-              ptr);
+  void
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    int ptr,
+  ) => wasmModule
+      .rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+        ptr,
+      );
 }
 
 @JS('wasm_bindgen')
@@ -1530,82 +1845,102 @@ external RustLibWasmModule get wasmModule;
 @anonymous
 extension type RustLibWasmModule._(JSObject _) implements JSObject {
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAiScript(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsApiLib(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiButtonCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiLib(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiMfmCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiNumberCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSelectCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiSwitchCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextInputCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          int ptr);
+  rust_arc_increment_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    int ptr,
+  );
 
   external void
-      rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
-          int ptr);
+  rust_arc_decrement_strong_count_RustOpaque_flutter_rust_bridgefor_generatedRustAutoOpaqueInnerAsUiTextareaCallback(
+    int ptr,
+  );
 }

@@ -49,10 +49,11 @@ class SkebStatusWidget extends ConsumerWidget {
           )
           .join(' | '),
       child: InkWell(
-        onTap: () => launchUrl(
-          ref,
-          Uri.https('skeb.jp', '@${skebStatus.screenName}'),
-        ),
+        onTap:
+            () => launchUrl(
+              ref,
+              Uri.https('skeb.jp', '@${skebStatus.screenName}'),
+            ),
         child: Mfm(
           account: account,
           leadingSpans: [
@@ -61,9 +62,10 @@ class SkebStatusWidget extends ConsumerWidget {
               baseline: TextBaseline.alphabetic,
               child: Container(
                 decoration: BoxDecoration(
-                  color: skebStatus.isAcceptable
-                      ? const Color(0xFFF14668)
-                      : const Color(0xFF363636),
+                  color:
+                      skebStatus.isAcceptable
+                          ? const Color(0xFFF14668)
+                          : const Color(0xFF363636),
                   borderRadius: BorderRadius.circular(6.0),
                 ),
                 padding: const EdgeInsets.symmetric(
@@ -74,12 +76,9 @@ class SkebStatusWidget extends ConsumerWidget {
                   skebStatus.isAcceptable
                       ? t.misskeyIO.skebStatus_.seeking
                       : skebStatus.isCreator
-                          ? t.misskeyIO.skebStatus_.stopped
-                          : t.misskeyIO.skebStatus_.client,
-                  style: style.apply(
-                    color: Colors.white,
-                    fontSizeFactor: 0.85,
-                  ),
+                      ? t.misskeyIO.skebStatus_.stopped
+                      : t.misskeyIO.skebStatus_.client,
+                  style: style.apply(color: Colors.white, fontSizeFactor: 0.85),
                 ),
               ),
             ),
@@ -112,24 +111,15 @@ class SkebStatusWidget extends ConsumerWidget {
             if (skebStatus.creatorRequestCount > 0) ...[
               if (skebStatus.isAcceptable) '|',
               t.misskeyIO.skebStatus_.nWorks(
-                n: NumberFormat().format(
-                  skebStatus.creatorRequestCount,
-                ),
+                n: NumberFormat().format(skebStatus.creatorRequestCount),
               ),
             ] else if (skebStatus.clientRequestCount > 0)
               t.misskeyIO.skebStatus_.nRequests(
-                n: NumberFormat().format(
-                  skebStatus.clientRequestCount,
-                ),
+                n: NumberFormat().format(skebStatus.clientRequestCount),
               ),
           ].join(' '),
           trailingSpans: [
-            WidgetSpan(
-              child: Icon(
-                Icons.open_in_new,
-                size: style.fontSize,
-              ),
-            ),
+            WidgetSpan(child: Icon(Icons.open_in_new, size: style.fontSize)),
           ],
         ),
       ),

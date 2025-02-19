@@ -131,17 +131,18 @@ class INotifier extends _$INotifier {
   ) async {
     final i = await _misskey.i.update(
       IUpdateRequest(
-        avatarDecorations: avatarDecorations
-            .map(
-              (decoration) => IUpdateAvatarDecoration(
-                id: decoration.id,
-                angle: decoration.angle,
-                flipH: decoration.flipH,
-                offsetX: decoration.offsetX,
-                offsetY: decoration.offsetY,
-              ),
-            )
-            .toList(),
+        avatarDecorations:
+            avatarDecorations
+                .map(
+                  (decoration) => IUpdateAvatarDecoration(
+                    id: decoration.id,
+                    angle: decoration.angle,
+                    flipH: decoration.flipH,
+                    offsetX: decoration.offsetX,
+                    offsetY: decoration.offsetY,
+                  ),
+                )
+                .toList(),
       ),
     );
     state = AsyncValue.data(i);
@@ -183,15 +184,17 @@ class INotifier extends _$INotifier {
   }
 
   Future<void> setAutoAcceptFollowed(bool autoAcceptFollowed) async {
-    final i = await _misskey.i
-        .update(IUpdateRequest(autoAcceptFollowed: autoAcceptFollowed));
+    final i = await _misskey.i.update(
+      IUpdateRequest(autoAcceptFollowed: autoAcceptFollowed),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
 
   Future<void> setPublicReactions(bool publicReactions) async {
-    final i = await _misskey.i
-        .update(IUpdateRequest(publicReactions: publicReactions));
+    final i = await _misskey.i.update(
+      IUpdateRequest(publicReactions: publicReactions),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
@@ -207,8 +210,9 @@ class INotifier extends _$INotifier {
 
   Future<void> setFollowingVisibility(FFVisibility followingVisibility) async {
     try {
-      final i = await _misskey.i
-          .update(IUpdateRequest(followingVisibility: followingVisibility));
+      final i = await _misskey.i.update(
+        IUpdateRequest(followingVisibility: followingVisibility),
+      );
       state = AsyncValue.data(i);
       await _save(i);
     } catch (_) {
@@ -218,8 +222,9 @@ class INotifier extends _$INotifier {
 
   Future<void> setFollowersVisibility(FFVisibility followersVisibility) async {
     try {
-      final i = await _misskey.i
-          .update(IUpdateRequest(followersVisibility: followersVisibility));
+      final i = await _misskey.i.update(
+        IUpdateRequest(followersVisibility: followersVisibility),
+      );
       state = AsyncValue.data(i);
       await _save(i);
     } catch (_) {
@@ -228,8 +233,9 @@ class INotifier extends _$INotifier {
   }
 
   Future<void> setHideOnlineStatus(bool hideOnlineStatus) async {
-    final i = await _misskey.i
-        .update(IUpdateRequest(hideOnlineStatus: hideOnlineStatus));
+    final i = await _misskey.i.update(
+      IUpdateRequest(hideOnlineStatus: hideOnlineStatus),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
@@ -241,29 +247,33 @@ class INotifier extends _$INotifier {
   }
 
   Future<void> setPreventAiLearning(bool preventAiLearning) async {
-    final i = await _misskey.i
-        .update(IUpdateRequest(preventAiLearning: preventAiLearning));
+    final i = await _misskey.i.update(
+      IUpdateRequest(preventAiLearning: preventAiLearning),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
 
   Future<void> setIsExplorable(bool isExplorable) async {
-    final i =
-        await _misskey.i.update(IUpdateRequest(isExplorable: isExplorable));
+    final i = await _misskey.i.update(
+      IUpdateRequest(isExplorable: isExplorable),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
 
   Future<void> setAlwaysMarkSensitive(bool alwaysMarkSensitive) async {
-    final i = await _misskey.i
-        .update(IUpdateRequest(alwaysMarkNsfw: alwaysMarkSensitive));
+    final i = await _misskey.i.update(
+      IUpdateRequest(alwaysMarkNsfw: alwaysMarkSensitive),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
 
   Future<void> setAutoSensitive(bool autoSensitive) async {
-    final i =
-        await _misskey.i.update(IUpdateRequest(autoSensitive: autoSensitive));
+    final i = await _misskey.i.update(
+      IUpdateRequest(autoSensitive: autoSensitive),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
@@ -275,15 +285,17 @@ class INotifier extends _$INotifier {
   }
 
   Future<void> setHardMutedWords(List<MuteWord> hardMutedWords) async {
-    final i =
-        await _misskey.i.update(IUpdateRequest(hardMutedWords: hardMutedWords));
+    final i = await _misskey.i.update(
+      IUpdateRequest(hardMutedWords: hardMutedWords),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
 
   Future<void> setMutedServers(List<String> mutedServers) async {
-    final i =
-        await _misskey.i.update(IUpdateRequest(mutedInstances: mutedServers));
+    final i = await _misskey.i.update(
+      IUpdateRequest(mutedInstances: mutedServers),
+    );
     state = AsyncValue.data(i);
     await _save(i);
   }
@@ -334,9 +346,10 @@ class INotifier extends _$INotifier {
   Future<void> readAnnouncement(String announcementId) async {
     final i = await future;
     if (i != null) {
-      final unreadAnnouncements = i.unreadAnnouncements
-          .where((announcement) => announcement.id != announcementId)
-          .toList();
+      final unreadAnnouncements =
+          i.unreadAnnouncements
+              .where((announcement) => announcement.id != announcementId)
+              .toList();
       final updated = i.copyWith(
         unreadAnnouncements: unreadAnnouncements,
         hasUnreadAnnouncement: unreadAnnouncements.isNotEmpty,

@@ -14,10 +14,8 @@ FutureOr<NotesTranslateResponse> translatedNote(
   String noteId,
   String targetLang,
 ) {
-  return ref.watch(misskeyProvider(account)).notes.translate(
-        NotesTranslateRequest(
-          noteId: noteId,
-          targetLang: targetLang,
-        ),
-      );
+  return ref
+      .watch(misskeyProvider(account))
+      .notes
+      .translate(NotesTranslateRequest(noteId: noteId, targetLang: targetLang));
 }

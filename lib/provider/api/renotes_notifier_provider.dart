@@ -16,15 +16,12 @@ class RenotesNotifier extends _$RenotesNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<Note>> _fetchNotes({
-    String? untilId,
-  }) async {
-    final notes = await ref.read(misskeyProvider(account)).notes.renotes(
-          NotesRenoteRequest(
-            noteId: noteId,
-            untilId: untilId,
-            limit: 20,
-          ),
+  Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .renotes(
+          NotesRenoteRequest(noteId: noteId, untilId: untilId, limit: 20),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;

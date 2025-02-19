@@ -14,11 +14,7 @@ import '../../widget/note_widget.dart';
 import '../../widget/paginated_list_view.dart';
 
 class TagNotes extends HookConsumerWidget {
-  const TagNotes({
-    super.key,
-    required this.account,
-    required this.tag,
-  });
+  const TagNotes({super.key, required this.account, required this.tag});
 
   final Account account;
   final String tag;
@@ -28,12 +24,14 @@ class TagNotes extends HookConsumerWidget {
     final sinceDate = useState<DateTime?>(null);
     final untilDate = useState<DateTime?>(null);
     final method = ref.watch(idGenMethodProvider(account)).valueOrNull;
-    final sinceId = method != null && sinceDate.value != null
-        ? Id(method: method, date: sinceDate.value!).toString()
-        : null;
-    final untilId = method != null && untilDate.value != null
-        ? Id(method: method, date: untilDate.value!).toString()
-        : null;
+    final sinceId =
+        method != null && sinceDate.value != null
+            ? Id(method: method, date: sinceDate.value!).toString()
+            : null;
+    final untilId =
+        method != null && untilDate.value != null
+            ? Id(method: method, date: untilDate.value!).toString()
+            : null;
     final notes = ref.watch(
       tagNotesNotifierProvider(
         account,
@@ -59,12 +57,13 @@ class TagNotes extends HookConsumerWidget {
                         ? absoluteTime(sinceDate.value!)
                         : t.misskey.notSet,
                   ),
-                  trailing: sinceDate.value != null
-                      ? IconButton(
-                          onPressed: () => sinceDate.value = null,
-                          icon: const Icon(Icons.close),
-                        )
-                      : const Icon(Icons.navigate_next),
+                  trailing:
+                      sinceDate.value != null
+                          ? IconButton(
+                            onPressed: () => sinceDate.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                          : const Icon(Icons.navigate_next),
                   onTap: () async {
                     final result = await pickDateTime(
                       context,
@@ -82,12 +81,13 @@ class TagNotes extends HookConsumerWidget {
                         ? absoluteTime(untilDate.value!)
                         : t.misskey.notSet,
                   ),
-                  trailing: untilDate.value != null
-                      ? IconButton(
-                          onPressed: () => untilDate.value = null,
-                          icon: const Icon(Icons.close),
-                        )
-                      : const Icon(Icons.navigate_next),
+                  trailing:
+                      untilDate.value != null
+                          ? IconButton(
+                            onPressed: () => untilDate.value = null,
+                            icon: const Icon(Icons.close),
+                          )
+                          : const Icon(Icons.navigate_next),
                   onTap: () async {
                     final result = await pickDateTime(
                       context,
@@ -104,26 +104,28 @@ class TagNotes extends HookConsumerWidget {
         ),
       ),
       paginationState: notes,
-      itemBuilder: (context, note) =>
-          NoteWidget(account: account, noteId: note.id),
-      onRefresh: () => ref.refresh(
-        tagNotesNotifierProvider(
-          account,
-          tag,
-          sinceId: sinceId,
-          untilId: untilId,
-        ).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
+      itemBuilder:
+          (context, note) => NoteWidget(account: account, noteId: note.id),
+      onRefresh:
+          () => ref.refresh(
             tagNotesNotifierProvider(
               account,
               tag,
               sinceId: sinceId,
               untilId: untilId,
-            ).notifier,
-          )
-          .loadMore(skipError: skipError),
+            ).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(
+                tagNotesNotifierProvider(
+                  account,
+                  tag,
+                  sinceId: sinceId,
+                  untilId: untilId,
+                ).notifier,
+              )
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

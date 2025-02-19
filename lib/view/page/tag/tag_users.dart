@@ -13,11 +13,7 @@ import '../../widget/user_info.dart';
 import '../../widget/users_sort_type_widget.dart';
 
 class TagUsers extends HookConsumerWidget {
-  const TagUsers({
-    super.key,
-    required this.account,
-    required this.tag,
-  });
+  const TagUsers({super.key, required this.account, required this.tag});
 
   final Account account;
   final String tag;
@@ -55,8 +51,8 @@ class TagUsers extends HookConsumerWidget {
                         title: Text(t.misskey.sort),
                         values: UsersSortType.values,
                         initialValue: sort.value,
-                        itemBuilder: (context, sort) =>
-                            UsersSortTypeWidget(sort: sort),
+                        itemBuilder:
+                            (context, sort) => UsersSortTypeWidget(sort: sort),
                       );
                       if (!context.mounted) return;
                       if (result != null) {
@@ -74,9 +70,10 @@ class TagUsers extends HookConsumerWidget {
             ),
           ),
           ...switch (users) {
-            AsyncValue(valueOrNull: final users?) => users.isEmpty
-                ? [Center(child: Text(t.misskey.noUsers))]
-                : [
+            AsyncValue(valueOrNull: final users?) =>
+              users.isEmpty
+                  ? [Center(child: Text(t.misskey.noUsers))]
+                  : [
                     const SizedBox(height: 8.0),
                     for (final (index, user) in users.indexed) ...[
                       Center(
@@ -93,8 +90,8 @@ class TagUsers extends HookConsumerWidget {
                     ],
                   ],
             AsyncValue(:final error?, :final stackTrace) => [
-                ErrorMessage(error: error, stackTrace: stackTrace),
-              ],
+              ErrorMessage(error: error, stackTrace: stackTrace),
+            ],
             _ => const [Center(child: CircularProgressIndicator())],
           },
         ],

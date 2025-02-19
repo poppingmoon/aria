@@ -11,11 +11,7 @@ import '../../util/future_with_dialog.dart';
 import 'text_field_dialog.dart';
 
 class ListDialog extends HookConsumerWidget {
-  const ListDialog({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const ListDialog({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -35,17 +31,20 @@ class ListDialog extends HookConsumerWidget {
             subtitle: Text(
               [
                 t.misskey.nUsers(
-                  n: [
-                    NumberFormat().format(list.userIds.length),
-                    if (i?.policies
-                        case UserPolicies(:final userEachUserListsLimit?)) ...[
-                      ' / ',
-                      NumberFormat().format(userEachUserListsLimit),
-                    ],
-                  ].join(),
+                  n:
+                      [
+                        NumberFormat().format(list.userIds.length),
+                        if (i?.policies case UserPolicies(
+                          :final userEachUserListsLimit?,
+                        )) ...[
+                          ' / ',
+                          NumberFormat().format(userEachUserListsLimit),
+                        ],
+                      ].join(),
                 ),
-                if (i?.policies
-                    case UserPolicies(:final userEachUserListsLimit?)) ...[
+                if (i?.policies case UserPolicies(
+                  :final userEachUserListsLimit?,
+                )) ...[
                   ' (',
                   t.misskey.remainingN(
                     n: NumberFormat().format(
@@ -82,8 +81,9 @@ class ListDialog extends HookConsumerWidget {
           onTap: () async {
             final name = await showDialog<String>(
               context: context,
-              builder: (context) =>
-                  TextFieldDialog(title: Text(t.misskey.enterListName)),
+              builder:
+                  (context) =>
+                      TextFieldDialog(title: Text(t.misskey.enterListName)),
             );
             if (!context.mounted) return;
             if (name != null) {

@@ -19,11 +19,7 @@ import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class NoteHeader extends HookConsumerWidget {
-  const NoteHeader({
-    super.key,
-    required this.account,
-    required this.note,
-  });
+  const NoteHeader({super.key, required this.account, required this.note});
 
   final Account account;
   final Note note;
@@ -31,8 +27,9 @@ class NoteHeader extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final showCreatedAt = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showNoteCreatedAt),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showNoteCreatedAt,
+      ),
     );
     final style = DefaultTextStyle.of(context).style;
 
@@ -42,14 +39,16 @@ class NoteHeader extends HookConsumerWidget {
           child: Align(
             alignment: AlignmentDirectional.centerStart,
             child: InkWell(
-              onTap: note.userId.isNotEmpty
-                  ? () => context.push('/$account/users/${note.userId}')
-                  : null,
-              onLongPress: () => showUserSheet(
-                context: context,
-                account: account,
-                userId: note.userId,
-              ),
+              onTap:
+                  note.userId.isNotEmpty
+                      ? () => context.push('/$account/users/${note.userId}')
+                      : null,
+              onLongPress:
+                  () => showUserSheet(
+                    context: context,
+                    account: account,
+                    userId: note.userId,
+                  ),
               child: UsernameWidget(
                 account: account,
                 user: note.user,
@@ -89,17 +88,20 @@ class NoteHeader extends HookConsumerWidget {
                         child: Tooltip(
                           message: role.name,
                           child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 2.0),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 2.0,
+                            ),
                             child: ImageWidget(
-                              url: iconUrl.isAbsolute
-                                  ? iconUrl.toString()
-                                  : iconUrl
-                                      .replace(
-                                        scheme: 'https',
-                                        host: note.user.host ?? account.host,
-                                      )
-                                      .toString(),
+                              url:
+                                  iconUrl.isAbsolute
+                                      ? iconUrl.toString()
+                                      : iconUrl
+                                          .replace(
+                                            scheme: 'https',
+                                            host:
+                                                note.user.host ?? account.host,
+                                          )
+                                          .toString(),
                               height: style.lineHeight,
                               opacity: style.color?.a ?? 1.0,
                             ),
@@ -119,9 +121,10 @@ class NoteHeader extends HookConsumerWidget {
           style: style.apply(fontSizeFactor: 0.9),
           child: TimeWidget(
             time: note.createdAt,
-            onTap: note.id.isNotEmpty
-                ? () => context.push('/$account/notes/${note.id}')
-                : null,
+            onTap:
+                note.id.isNotEmpty
+                    ? () => context.push('/$account/notes/${note.id}')
+                    : null,
             absolute: showCreatedAt,
           ),
         ),
@@ -132,7 +135,8 @@ class NoteHeader extends HookConsumerWidget {
             children: [
               if (note.updatedAt case final updatedAt?)
                 Tooltip(
-                  message: '${t.misskey.edited}: '
+                  message:
+                      '${t.misskey.edited}: '
                       '${absoluteTime(updatedAt)}'
                       '.${updatedAt.millisecond.toString().padLeft(3, '0')} '
                       '(${relativeTime(updatedAt)})',

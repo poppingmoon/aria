@@ -22,12 +22,11 @@ class TagNotesNotifier extends _$TagNotesNotifier {
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).notes.searchByTag(
-          NotesSearchByTagRequest(
-            tag: tag,
-            sinceId: sinceId,
-            untilId: untilId,
-          ),
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .searchByTag(
+          NotesSearchByTagRequest(tag: tag, sinceId: sinceId, untilId: untilId),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;

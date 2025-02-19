@@ -19,21 +19,26 @@ class ChannelFeatured extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final notes =
-        ref.watch(featuredNotesNotifierProvider(account, channelId: channelId));
+    final notes = ref.watch(
+      featuredNotesNotifierProvider(account, channelId: channelId),
+    );
     return PaginatedListView(
       paginationState: notes,
-      itemBuilder: (context, note) =>
-          NoteWidget(account: account, noteId: note.id),
-      onRefresh: () => ref.refresh(
-        featuredNotesNotifierProvider(account, channelId: channelId).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            featuredNotesNotifierProvider(account, channelId: channelId)
-                .notifier,
-          )
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, note) => NoteWidget(account: account, noteId: note.id),
+      onRefresh:
+          () => ref.refresh(
+            featuredNotesNotifierProvider(account, channelId: channelId).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(
+                featuredNotesNotifierProvider(
+                  account,
+                  channelId: channelId,
+                ).notifier,
+              )
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.noNotes,
     );
   }

@@ -25,8 +25,9 @@ class ChannelPreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Card.filled(
       color: colors.panel,
@@ -39,10 +40,7 @@ class ChannelPreview extends ConsumerWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: 200,
-                  color: bannerBackgroundColor,
-                ),
+                Container(height: 200, color: bannerBackgroundColor),
                 if (channel case CommunityChannel(:final bannerUrl?))
                   ImageWidget(
                     url: bannerUrl.toString(),
@@ -56,10 +54,7 @@ class ChannelPreview extends ConsumerWidget {
                       gradient: LinearGradient(
                         begin: Alignment.center,
                         end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black54,
-                        ],
+                        colors: [Colors.transparent, Colors.black54],
                       ),
                     ),
                   ),
@@ -79,7 +74,7 @@ class ChannelPreview extends ConsumerWidget {
                           style: TextStyle(
                             fontSize:
                                 DefaultTextStyle.of(context).style.fontSize! *
-                                    1.5,
+                                1.5,
                             color: Colors.white,
                           ),
                         ),

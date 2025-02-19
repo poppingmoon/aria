@@ -31,149 +31,158 @@ class EmojiPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final emoji = ref.watch(emojiResponseProvider(account, name));
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
 
     return Scaffold(
       appBar: AppBar(title: Text(name)),
       body: RefreshIndicator(
-        onRefresh: () =>
-            ref.refresh(emojiResponseProvider(account, name).future),
+        onRefresh:
+            () => ref.refresh(emojiResponseProvider(account, name).future),
         child: switch (emoji) {
           AsyncValue(valueOrNull: final emoji?) => SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Center(
-                child: Container(
-                  margin: const EdgeInsets.all(8.0),
-                  width: maxContentWidth,
-                  child: Card.filled(
-                    color: colors.panel,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () => showImageDialog(
-                              context,
-                              url: emoji.url.toString(),
-                            ),
-                            child: ImageWidget(url: emoji.url.toString()),
-                          ),
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                margin: const EdgeInsets.all(8.0),
+                width: maxContentWidth,
+                child: Card.filled(
+                  color: colors.panel,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: InkWell(
+                          onTap:
+                              () => showImageDialog(
+                                context,
+                                url: emoji.url.toString(),
+                              ),
+                          child: ImageWidget(url: emoji.url.toString()),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.name,
-                            text: name,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.name,
+                          text: name,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.tags,
-                            child: emoji.aliases.isNotEmpty
-                                ? Wrap(
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.tags,
+                          child:
+                              emoji.aliases.isNotEmpty
+                                  ? Wrap(
                                     spacing: 4.0,
                                     runSpacing: 4.0,
-                                    children: emoji.aliases
-                                        .map(
-                                          (alias) => ActionChip(
-                                            label: Text(alias),
-                                            onPressed: () =>
-                                                copyToClipboard(context, alias),
-                                            shape: StadiumBorder(
-                                              side: BorderSide(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .outlineVariant,
+                                    children:
+                                        emoji.aliases
+                                            .map(
+                                              (alias) => ActionChip(
+                                                label: Text(alias),
+                                                onPressed:
+                                                    () => copyToClipboard(
+                                                      context,
+                                                      alias,
+                                                    ),
+                                                shape: StadiumBorder(
+                                                  side: BorderSide(
+                                                    color:
+                                                        Theme.of(context)
+                                                            .colorScheme
+                                                            .outlineVariant,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
-                                          ),
-                                        )
-                                        .toList(),
+                                            )
+                                            .toList(),
                                   )
-                                : Text(t.misskey.none),
-                          ),
+                                  : Text(t.misskey.none),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.category,
-                            text: emoji.category,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.category,
+                          text: emoji.category,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.sensitive,
-                            text: emoji.isSensitive
-                                ? t.misskey.yes
-                                : t.misskey.no,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.sensitive,
+                          text:
+                              emoji.isSensitive ? t.misskey.yes : t.misskey.no,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.localOnly,
-                            text:
-                                emoji.localOnly ? t.misskey.yes : t.misskey.no,
-                          ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.localOnly,
+                          text: emoji.localOnly ? t.misskey.yes : t.misskey.no,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.license,
-                            child: emoji.license != null
-                                ? InkWell(
-                                    onLongPress: () => copyToClipboard(
-                                      context,
-                                      emoji.license!,
-                                    ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.license,
+                          child:
+                              emoji.license != null
+                                  ? InkWell(
+                                    onLongPress:
+                                        () => copyToClipboard(
+                                          context,
+                                          emoji.license!,
+                                        ),
                                     child: Mfm(
                                       account: account,
                                       text: emoji.license,
                                     ),
                                   )
-                                : null,
+                                  : null,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: KeyValueWidget(
+                          label: t.misskey.emojiUrl,
+                          child: UrlWidget(
+                            url: emoji.url.toString(),
+                            onTap: () => launchUrl(ref, emoji.url!),
+                            style: TextStyle(color: colors.link),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: KeyValueWidget(
-                            label: t.misskey.emojiUrl,
-                            child: UrlWidget(
-                              url: emoji.url.toString(),
-                              onTap: () => launchUrl(ref, emoji.url!),
-                              style: TextStyle(color: colors.link),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ),
+          ),
           AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ErrorMessage(error: error, stackTrace: stackTrace),
-                ),
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ErrorMessage(error: error, stackTrace: stackTrace),
               ),
             ),
+          ),
           _ => const Center(child: CircularProgressIndicator()),
         },
       ),
-      floatingActionButton: confirm
-          ? FloatingActionButton.extended(
-              onPressed: () => context.pop(true),
-              icon: const Icon(Icons.check),
-              label: Text(t.aria.useThisEmoji),
-            )
-          : null,
+      floatingActionButton:
+          confirm
+              ? FloatingActionButton.extended(
+                onPressed: () => context.pop(true),
+                icon: const Icon(Icons.check),
+                label: Text(t.aria.useThisEmoji),
+              )
+              : null,
     );
   }
 }

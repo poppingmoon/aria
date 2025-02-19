@@ -25,8 +25,9 @@ extension TextEditingControllerExtension on TextEditingController {
     final afterSelection = text.substring(startIndex);
     value = value.copyWith(
       text: '$beforeSelection$replace$afterSelection',
-      selection:
-          TextSelection.collapsed(offset: startIndex - length + replace.length),
+      selection: TextSelection.collapsed(
+        offset: startIndex - length + replace.length,
+      ),
       composing: TextRange.empty,
     );
   }

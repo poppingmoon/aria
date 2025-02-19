@@ -17,11 +17,7 @@ import 'user_sheet.dart';
 import 'username_widget.dart';
 
 class UserInfo extends ConsumerWidget {
-  const UserInfo({
-    super.key,
-    required this.account,
-    required this.user,
-  });
+  const UserInfo({super.key, required this.account, required this.user});
 
   final Account account;
   final UserDetailed user;
@@ -29,8 +25,9 @@ class UserInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final squareAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.squareAvatars),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.squareAvatars,
+      ),
     );
     final style = DefaultTextStyle.of(context).style;
 
@@ -40,11 +37,12 @@ class UserInfo extends ConsumerWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: () => context.push('/$account/users/${user.id}'),
-        onLongPress: () => showUserSheet(
-          context: context,
-          account: account,
-          userId: user.id,
-        ),
+        onLongPress:
+            () => showUserSheet(
+              context: context,
+              account: account,
+              userId: user.id,
+            ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -86,14 +84,11 @@ class UserInfo extends ConsumerWidget {
                         color: Theme.of(context).colorScheme.surface,
                         strokeAlign: BorderSide.strokeAlignOutside,
                       ),
-                      borderRadius:
-                          BorderRadius.circular(squareAvatars ? 15.0 : 75.0),
+                      borderRadius: BorderRadius.circular(
+                        squareAvatars ? 15.0 : 75.0,
+                      ),
                     ),
-                    child: UserAvatar(
-                      account: account,
-                      user: user,
-                      size: 75.0,
-                    ),
+                    child: UserAvatar(account: account, user: user, size: 75.0),
                   ),
                 ),
               ],
@@ -118,10 +113,9 @@ class UserInfo extends ConsumerWidget {
                 child: Text(
                   t.misskey.noAccountDescription,
                   style: TextStyle(
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withValues(alpha: 0.8),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.8),
                   ),
                 ),
               ),
@@ -149,17 +143,17 @@ class UserInfo extends ConsumerWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: user.isFollowingVisibleForMe
-                          ? () => context
-                              .push('/$account/users/${user.id}/following')
-                          : null,
+                      onTap:
+                          user.isFollowingVisibleForMe
+                              ? () => context.push(
+                                '/$account/users/${user.id}/following',
+                              )
+                              : null,
                       child: Column(
                         children: [
                           Text(
                             t.misskey.following,
-                            style: TextStyle(
-                              fontSize: style.fontSize! * 0.85,
-                            ),
+                            style: TextStyle(fontSize: style.fontSize! * 0.85),
                           ),
                           if (user.isFollowingVisibleForMe)
                             Text(
@@ -182,17 +176,17 @@ class UserInfo extends ConsumerWidget {
                   ),
                   Expanded(
                     child: InkWell(
-                      onTap: user.isFollowersVisibleForMe
-                          ? () => context
-                              .push('/$account/users/${user.id}/followers')
-                          : null,
+                      onTap:
+                          user.isFollowersVisibleForMe
+                              ? () => context.push(
+                                '/$account/users/${user.id}/followers',
+                              )
+                              : null,
                       child: Column(
                         children: [
                           Text(
                             t.misskey.followers,
-                            style: TextStyle(
-                              fontSize: style.fontSize! * 0.85,
-                            ),
+                            style: TextStyle(fontSize: style.fontSize! * 0.85),
                           ),
                           if (user.isFollowersVisibleForMe)
                             Text(

@@ -12,25 +12,25 @@ class NoteVisibilityIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return switch (visibility) {
       NoteVisibility.public => Tooltip(
-          message: t.misskey.visibility_.public,
-          child: const Icon(Icons.public),
-        ),
+        message: t.misskey.visibility_.public,
+        child: const Icon(Icons.public),
+      ),
       NoteVisibility.home => Tooltip(
-          message: t.misskey.visibility_.home,
-          child: const Icon(Icons.home),
-        ),
+        message: t.misskey.visibility_.home,
+        child: const Icon(Icons.home),
+      ),
       NoteVisibility.followers => Tooltip(
-          message: t.misskey.visibility_.followers,
-          child: const Icon(Icons.lock),
-        ),
+        message: t.misskey.visibility_.followers,
+        child: const Icon(Icons.lock),
+      ),
       NoteVisibility.specified => Tooltip(
-          message: t.misskey.visibility_.specified,
-          child: const Icon(Icons.mail),
-        ),
+        message: t.misskey.visibility_.specified,
+        child: const Icon(Icons.mail),
+      ),
       _ => Tooltip(
-          message: t.misskey.unknown,
-          child: const Icon(Icons.question_mark),
-        ),
+        message: t.misskey.unknown,
+        child: const Icon(Icons.question_mark),
+      ),
     };
   }
 }

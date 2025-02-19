@@ -46,50 +46,44 @@ class MisskeyServerBackground extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final servers = ref.watch(misskeyServersProvider).valueOrNull ?? [];
-    final opacityController =
-        useAnimationController(duration: const Duration(seconds: 1));
+    final opacityController = useAnimationController(
+      duration: const Duration(seconds: 1),
+    );
     final opacity = useAnimation(opacityController);
     final backgroundImageUrl = useState<String?>(null);
-    useEffect(
-      () {
-        Future<void> listener() async {
-          final host = controller.text;
-          final prev = backgroundImageUrl.value;
-          final next = getBackgroundImageUrl(
-            servers.firstWhereOrNull((server) => server.url == host),
-          );
-          if (prev == null) {
-            if (next != null) {
-              backgroundImageUrl.value = next;
-              await opacityController.forward();
-            }
-          } else {
-            if (prev == next) return;
-            await opacityController.reverse();
+    useEffect(() {
+      Future<void> listener() async {
+        final host = controller.text;
+        final prev = backgroundImageUrl.value;
+        final next = getBackgroundImageUrl(
+          servers.firstWhereOrNull((server) => server.url == host),
+        );
+        if (prev == null) {
+          if (next != null) {
             backgroundImageUrl.value = next;
-            if (next != null) {
-              await opacityController.forward();
-            }
+            await opacityController.forward();
+          }
+        } else {
+          if (prev == next) return;
+          await opacityController.reverse();
+          backgroundImageUrl.value = next;
+          if (next != null) {
+            await opacityController.forward();
           }
         }
+      }
 
-        listener();
-        controller.addListener(listener);
-        return () => controller.removeListener(listener);
-      },
-      [servers],
-    );
+      listener();
+      controller.addListener(listener);
+      return () => controller.removeListener(listener);
+    }, [servers]);
 
     return Stack(
       alignment: Alignment.center,
       children: [
         if (backgroundImageUrl case ValueNotifier(:final value?))
           Positioned.fill(
-            child: ImageWidget(
-              url: value,
-              fit: BoxFit.cover,
-              opacity: opacity,
-            ),
+            child: ImageWidget(url: value, fit: BoxFit.cover, opacity: opacity),
           ),
         child,
       ],

@@ -29,7 +29,9 @@ class UserIdsNotifier extends _$UserIdsNotifier {
   Future<void> add(Account account, String userId) async {
     if (state[account] != userId) {
       state = {...state, account: userId};
-      await ref.read(sharedPreferencesProvider).setString(
+      await ref
+          .read(sharedPreferencesProvider)
+          .setString(
             _key,
             jsonEncode(
               state.map(

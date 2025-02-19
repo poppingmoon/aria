@@ -11,8 +11,9 @@ class BotBadge extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 2.0),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          border:
-              Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.outlineVariant,
+          ),
           borderRadius: BorderRadius.circular(4.0),
         ),
         child: Padding(

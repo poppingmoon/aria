@@ -43,18 +43,16 @@ class TimelineNote extends HookConsumerWidget {
     }
     final note = ref.watch(noteProvider(account, noteId));
     final appearNote = ref.watch(appearNoteProvider(account, noteId));
-    final notifier =
-        ref.watch(noteSubscriptionNotifierProvider(account).notifier);
+    final notifier = ref.watch(
+      noteSubscriptionNotifierProvider(account).notifier,
+    );
     if (note == null || appearNote == null) {
       return Padding(
         padding: margin,
         child: Material(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: borderRadius,
-          child: NoteFallbackWidget(
-            account: account,
-            noteId: noteId,
-          ),
+          child: NoteFallbackWidget(account: account, noteId: noteId),
         ),
       );
     }
@@ -72,8 +70,10 @@ class TimelineNote extends HookConsumerWidget {
       if (muted.value) {
         final (verticalPadding, horizontalPadding) = ref.watch(
           generalSettingsNotifierProvider.select(
-            (settings) =>
-                (settings.noteVerticalPadding, settings.noteHorizontalPadding),
+            (settings) => (
+              settings.noteVerticalPadding,
+              settings.noteHorizontalPadding,
+            ),
           ),
         );
         final style = TextStyle(
@@ -89,17 +89,18 @@ class TimelineNote extends HookConsumerWidget {
               child: UsernameWidget(
                 account: account,
                 user: appearNote.user,
-                builder: (context, span) => Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: verticalPadding,
-                    horizontal: horizontalPadding,
-                  ),
-                  child: Text.rich(
-                    t.aria.userSaysSomethingSensitive(name: span),
-                    style: style,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
+                builder:
+                    (context, span) => Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: verticalPadding,
+                        horizontal: horizontalPadding,
+                      ),
+                      child: Text.rich(
+                        t.aria.userSaysSomethingSensitive(name: span),
+                        style: style,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
               ),
             ),
           ),
@@ -107,42 +108,36 @@ class TimelineNote extends HookConsumerWidget {
       }
     }
     if (!tabSettings.disableSubscribing) {
-      useEffect(
-        () {
-          Future(() => notifier.subscribe(appearNote.id));
-          return () => Future(() => notifier.unsubscribe(appearNote.id));
-        },
-        [],
-      );
-      ref.listen(
-        noteUpdateEventProvider(account, appearNote.id),
-        (_, next) {
-          next.whenData((event) {
-            switch (event) {
-              case Reacted():
-                ref
-                    .read(notesNotifierProvider(account).notifier)
-                    .addReaction(appearNote.id, event);
-              case Unreacted():
-                ref
-                    .read(notesNotifierProvider(account).notifier)
-                    .removeReaction(appearNote.id, event);
-              case Deleted():
-                ref
-                    .read(notesNotifierProvider(account).notifier)
-                    .remove(appearNote.id);
-              case PollVoted():
-                ref
-                    .read(notesNotifierProvider(account).notifier)
-                    .addVote(appearNote.id, event);
-              case Updated():
-                ref
-                    .read(notesNotifierProvider(account).notifier)
-                    .updateNote(appearNote.id, event);
-            }
-          });
-        },
-      );
+      useEffect(() {
+        Future(() => notifier.subscribe(appearNote.id));
+        return () => Future(() => notifier.unsubscribe(appearNote.id));
+      }, []);
+      ref.listen(noteUpdateEventProvider(account, appearNote.id), (_, next) {
+        next.whenData((event) {
+          switch (event) {
+            case Reacted():
+              ref
+                  .read(notesNotifierProvider(account).notifier)
+                  .addReaction(appearNote.id, event);
+            case Unreacted():
+              ref
+                  .read(notesNotifierProvider(account).notifier)
+                  .removeReaction(appearNote.id, event);
+            case Deleted():
+              ref
+                  .read(notesNotifierProvider(account).notifier)
+                  .remove(appearNote.id);
+            case PollVoted():
+              ref
+                  .read(notesNotifierProvider(account).notifier)
+                  .addVote(appearNote.id, event);
+            case Updated():
+              ref
+                  .read(notesNotifierProvider(account).notifier)
+                  .updateNote(appearNote.id, event);
+          }
+        });
+      });
     }
 
     return NoteWidget(

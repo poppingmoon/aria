@@ -15,11 +15,7 @@ import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
 import 'message_dialog.dart';
 
-Future<void> showImageDialog(
-  BuildContext context, {
-  String? url,
-  File? file,
-}) {
+Future<void> showImageDialog(BuildContext context, {String? url, File? file}) {
   return showDialog(
     context: context,
     builder: (context) => ImageDialog(url: url, file: file),
@@ -28,11 +24,7 @@ Future<void> showImageDialog(
 }
 
 class ImageDialog extends HookConsumerWidget {
-  const ImageDialog({
-    super.key,
-    this.url,
-    this.file,
-  });
+  const ImageDialog({super.key, this.url, this.file});
 
   final String? url;
   final File? file;
@@ -46,32 +38,40 @@ class ImageDialog extends HookConsumerWidget {
       children: [
         Dismissible(
           key: const ValueKey('ImageDialog'),
-          direction: !isZoomed.value
-              ? DismissDirection.vertical
-              : DismissDirection.none,
-          onUpdate: (details) => overlayOpacity.value =
-              clampDouble(1.0 - details.progress * 1.5, 0.0, 1.0),
+          direction:
+              !isZoomed.value
+                  ? DismissDirection.vertical
+                  : DismissDirection.none,
+          onUpdate:
+              (details) =>
+                  overlayOpacity.value = clampDouble(
+                    1.0 - details.progress * 1.5,
+                    0.0,
+                    1.0,
+                  ),
           onDismissed: (_) => context.pop(),
           child: PhotoView(
-            imageProvider: file != null
-                ? FileImage(file!) as ImageProvider
-                : url != null
+            imageProvider:
+                file != null
+                    ? FileImage(file!) as ImageProvider
+                    : url != null
                     ? CachedNetworkImageProvider(
-                        url!,
-                        cacheManager: ref.watch(cacheManagerProvider),
-                      )
+                      url!,
+                      cacheManager: ref.watch(cacheManagerProvider),
+                    )
                     : null,
-            backgroundDecoration:
-                const BoxDecoration(color: Colors.transparent),
+            backgroundDecoration: const BoxDecoration(
+              color: Colors.transparent,
+            ),
             scaleStateChangedCallback: (state) {
               switch (state) {
                 case PhotoViewScaleState.initial ||
-                      PhotoViewScaleState.zoomedOut:
+                    PhotoViewScaleState.zoomedOut:
                   isZoomed.value = false;
                   overlayOpacity.value = 1.0;
                 case PhotoViewScaleState.covering ||
-                      PhotoViewScaleState.originalSize ||
-                      PhotoViewScaleState.zoomedIn:
+                    PhotoViewScaleState.originalSize ||
+                    PhotoViewScaleState.zoomedIn:
                   isZoomed.value = true;
                   overlayOpacity.value = 0.0;
               }
@@ -99,8 +99,9 @@ class ImageDialog extends HookConsumerWidget {
                     child: IconButton(
                       tooltip:
                           MaterialLocalizations.of(context).closeButtonTooltip,
-                      style:
-                          IconButton.styleFrom(backgroundColor: Colors.white54),
+                      style: IconButton.styleFrom(
+                        backgroundColor: Colors.white54,
+                      ),
                       onPressed: () => context.pop(),
                       icon: const Icon(Icons.close),
                     ),
@@ -115,42 +116,43 @@ class ImageDialog extends HookConsumerWidget {
                         color: Colors.white54,
                         shape: const OvalBorder(),
                         child: PopupMenuButton<void>(
-                          itemBuilder: (context) => [
-                            PopupMenuItem(
-                              onTap: () async {
-                                if (!await Gal.requestAccess()) {
-                                  if (!context.mounted) return;
-                                  await showMessageDialog(
-                                    context,
-                                    t.misskey.permissionDeniedError,
-                                  );
-                                  return;
-                                }
-                                if (!context.mounted) return;
-                                await futureWithDialog(
-                                  context,
-                                  Future(() async {
-                                    final file = await ref
-                                        .read(cacheManagerProvider)
-                                        .getSingleFile(url);
-                                    await Gal.putImage(file.path);
-                                  }),
-                                  message: t.aria.downloaded,
-                                );
-                              },
-                              child: ListTile(
-                                leading: const Icon(Icons.download),
-                                title: Text(t.misskey.download),
-                              ),
-                            ),
-                            PopupMenuItem(
-                              onTap: () => launchUrl(ref, Uri.parse(url)),
-                              child: ListTile(
-                                leading: const Icon(Icons.open_in_browser),
-                                title: Text(t.aria.openInBrowser),
-                              ),
-                            ),
-                          ],
+                          itemBuilder:
+                              (context) => [
+                                PopupMenuItem(
+                                  onTap: () async {
+                                    if (!await Gal.requestAccess()) {
+                                      if (!context.mounted) return;
+                                      await showMessageDialog(
+                                        context,
+                                        t.misskey.permissionDeniedError,
+                                      );
+                                      return;
+                                    }
+                                    if (!context.mounted) return;
+                                    await futureWithDialog(
+                                      context,
+                                      Future(() async {
+                                        final file = await ref
+                                            .read(cacheManagerProvider)
+                                            .getSingleFile(url);
+                                        await Gal.putImage(file.path);
+                                      }),
+                                      message: t.aria.downloaded,
+                                    );
+                                  },
+                                  child: ListTile(
+                                    leading: const Icon(Icons.download),
+                                    title: Text(t.misskey.download),
+                                  ),
+                                ),
+                                PopupMenuItem(
+                                  onTap: () => launchUrl(ref, Uri.parse(url)),
+                                  child: ListTile(
+                                    leading: const Icon(Icons.open_in_browser),
+                                    title: Text(t.aria.openInBrowser),
+                                  ),
+                                ),
+                              ],
                         ),
                       ),
                     ),

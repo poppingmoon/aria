@@ -41,8 +41,9 @@ class GeneralSettingsNavigation extends StatelessWidget {
       GeneralSettingsDestination.appearance => const Icon(Icons.brush),
       GeneralSettingsDestination.behavior => const Icon(Icons.gesture),
       GeneralSettingsDestination.theme => const Icon(Icons.palette),
-      GeneralSettingsDestination.importExport =>
-        const Icon(Icons.import_export),
+      GeneralSettingsDestination.importExport => const Icon(
+        Icons.import_export,
+      ),
       GeneralSettingsDestination.aboutAria => const Icon(Icons.info_outline),
     };
   }
@@ -88,47 +89,56 @@ class GeneralSettingsNavigation extends StatelessWidget {
       shrinkWrap: true,
       physics: physics,
       padding: EdgeInsets.zero,
-      children: GeneralSettingsDestination.values
-          .mapIndexed(
-            (index, destination) => rail
-                ? IconButtonTheme(
-                    data: IconButtonThemeData(
-                      style: IconButton.styleFrom(
-                        disabledForegroundColor:
-                            Theme.of(context).colorScheme.primary,
-                        minimumSize: const Size(48.0, 48.0),
-                      ),
-                    ),
-                    child: IconButton(
-                      tooltip: _buildLabel(destination),
-                      onPressed: destination != selectedDestination
-                          ? () => _onTap(context, destination)
-                          : null,
-                      icon: _buildIcon(destination),
-                    ),
-                  )
-                : ListTile(
-                    leading: _buildIcon(destination),
-                    title: Text(_buildLabel(destination)),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.vertical(
-                        top: round && index == 0
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                        bottom: round &&
-                                index ==
-                                    GeneralSettingsDestination.values.length - 1
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                      ),
-                    ),
-                    onTap: destination != selectedDestination
-                        ? () => _onTap(context, destination)
-                        : null,
-                    selected: destination == selectedDestination,
-                  ),
-          )
-          .toList(),
+      children:
+          GeneralSettingsDestination.values
+              .mapIndexed(
+                (index, destination) =>
+                    rail
+                        ? IconButtonTheme(
+                          data: IconButtonThemeData(
+                            style: IconButton.styleFrom(
+                              disabledForegroundColor:
+                                  Theme.of(context).colorScheme.primary,
+                              minimumSize: const Size(48.0, 48.0),
+                            ),
+                          ),
+                          child: IconButton(
+                            tooltip: _buildLabel(destination),
+                            onPressed:
+                                destination != selectedDestination
+                                    ? () => _onTap(context, destination)
+                                    : null,
+                            icon: _buildIcon(destination),
+                          ),
+                        )
+                        : ListTile(
+                          leading: _buildIcon(destination),
+                          title: Text(_buildLabel(destination)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.vertical(
+                              top:
+                                  round && index == 0
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                              bottom:
+                                  round &&
+                                          index ==
+                                              GeneralSettingsDestination
+                                                      .values
+                                                      .length -
+                                                  1
+                                      ? const Radius.circular(8.0)
+                                      : Radius.zero,
+                            ),
+                          ),
+                          onTap:
+                              destination != selectedDestination
+                                  ? () => _onTap(context, destination)
+                                  : null,
+                          selected: destination == selectedDestination,
+                        ),
+              )
+              .toList(),
     );
     // }
   }

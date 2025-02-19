@@ -34,9 +34,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.enableInfiniteScroll),
                 value: settings.enableInfiniteScroll,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setEnableInfiniteScroll(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setEnableInfiniteScroll(value),
               ),
             ),
           ),
@@ -63,9 +64,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.enableHorizontalSwipe),
                 value: settings.enableHorizontalSwipe,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setEnableHorizontalSwipe(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setEnableHorizontalSwipe(value),
               ),
             ),
           ),
@@ -76,9 +78,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.openSensitiveMediaOnDoubleTap),
                 value: settings.openSensitiveMediaOnDoubleTap,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setOpenSensitiveMediaOnDoubleTap(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setOpenSensitiveMediaOnDoubleTap(value),
               ),
             ),
           ),
@@ -88,14 +91,12 @@ class BehaviorPage extends ConsumerWidget {
               width: maxContentWidth,
               child: ListTile(
                 title: Text(t.aria.noteTapAction),
-                subtitle: Text(
-                  switch (settings.noteTapAction) {
-                    NoteActionType.none => t.misskey.doNothing,
-                    NoteActionType.expand => t.aria.expandNote,
-                    NoteActionType.menu => t.aria.openMenu,
-                    NoteActionType.reaction => t.misskey.doReaction,
-                  },
-                ),
+                subtitle: Text(switch (settings.noteTapAction) {
+                  NoteActionType.none => t.misskey.doNothing,
+                  NoteActionType.expand => t.aria.expandNote,
+                  NoteActionType.menu => t.aria.openMenu,
+                  NoteActionType.reaction => t.misskey.doReaction,
+                }),
                 trailing: const Icon(Icons.navigate_next),
                 onTap: () async {
                   final result = await showRadioDialog(
@@ -103,14 +104,13 @@ class BehaviorPage extends ConsumerWidget {
                     title: Text(t.aria.noteTapAction),
                     values: NoteActionType.values,
                     initialValue: settings.noteTapAction,
-                    itemBuilder: (context, value) => Text(
-                      switch (value) {
-                        NoteActionType.none => t.misskey.doNothing,
-                        NoteActionType.expand => t.aria.expandNote,
-                        NoteActionType.menu => t.aria.openMenu,
-                        NoteActionType.reaction => t.misskey.doReaction,
-                      },
-                    ),
+                    itemBuilder:
+                        (context, value) => Text(switch (value) {
+                          NoteActionType.none => t.misskey.doNothing,
+                          NoteActionType.expand => t.aria.expandNote,
+                          NoteActionType.menu => t.aria.openMenu,
+                          NoteActionType.reaction => t.misskey.doReaction,
+                        }),
                   );
                   if (result != null) {
                     await ref
@@ -127,14 +127,12 @@ class BehaviorPage extends ConsumerWidget {
               width: maxContentWidth,
               child: ListTile(
                 title: Text(t.aria.noteDoubleTapAction),
-                subtitle: Text(
-                  switch (settings.noteDoubleTapAction) {
-                    NoteActionType.none => t.misskey.doNothing,
-                    NoteActionType.expand => t.aria.expandNote,
-                    NoteActionType.menu => t.aria.openMenu,
-                    NoteActionType.reaction => t.misskey.doReaction,
-                  },
-                ),
+                subtitle: Text(switch (settings.noteDoubleTapAction) {
+                  NoteActionType.none => t.misskey.doNothing,
+                  NoteActionType.expand => t.aria.expandNote,
+                  NoteActionType.menu => t.aria.openMenu,
+                  NoteActionType.reaction => t.misskey.doReaction,
+                }),
                 trailing: const Icon(Icons.navigate_next),
                 onTap: () async {
                   final result = await showRadioDialog(
@@ -142,14 +140,13 @@ class BehaviorPage extends ConsumerWidget {
                     title: Text(t.aria.noteDoubleTapAction),
                     values: NoteActionType.values,
                     initialValue: settings.noteDoubleTapAction,
-                    itemBuilder: (context, value) => Text(
-                      switch (value) {
-                        NoteActionType.none => t.misskey.doNothing,
-                        NoteActionType.expand => t.aria.expandNote,
-                        NoteActionType.menu => t.aria.openMenu,
-                        NoteActionType.reaction => t.misskey.doReaction,
-                      },
-                    ),
+                    itemBuilder:
+                        (context, value) => Text(switch (value) {
+                          NoteActionType.none => t.misskey.doNothing,
+                          NoteActionType.expand => t.aria.expandNote,
+                          NoteActionType.menu => t.aria.openMenu,
+                          NoteActionType.reaction => t.misskey.doReaction,
+                        }),
                   );
                   if (result != null) {
                     await ref
@@ -166,14 +163,12 @@ class BehaviorPage extends ConsumerWidget {
               width: maxContentWidth,
               child: ListTile(
                 title: Text(t.aria.noteLongPressAction),
-                subtitle: Text(
-                  switch (settings.noteLongPressAction) {
-                    NoteActionType.none => t.misskey.doNothing,
-                    NoteActionType.expand => t.aria.expandNote,
-                    NoteActionType.menu => t.aria.openMenu,
-                    NoteActionType.reaction => t.misskey.doReaction,
-                  },
-                ),
+                subtitle: Text(switch (settings.noteLongPressAction) {
+                  NoteActionType.none => t.misskey.doNothing,
+                  NoteActionType.expand => t.aria.expandNote,
+                  NoteActionType.menu => t.aria.openMenu,
+                  NoteActionType.reaction => t.misskey.doReaction,
+                }),
                 trailing: const Icon(Icons.navigate_next),
                 onTap: () async {
                   final result = await showRadioDialog(
@@ -181,14 +176,13 @@ class BehaviorPage extends ConsumerWidget {
                     title: Text(t.aria.noteLongPressAction),
                     values: NoteActionType.values,
                     initialValue: settings.noteLongPressAction,
-                    itemBuilder: (context, value) => Text(
-                      switch (value) {
-                        NoteActionType.none => t.misskey.doNothing,
-                        NoteActionType.expand => t.aria.expandNote,
-                        NoteActionType.menu => t.aria.openMenu,
-                        NoteActionType.reaction => t.misskey.doReaction,
-                      },
-                    ),
+                    itemBuilder:
+                        (context, value) => Text(switch (value) {
+                          NoteActionType.none => t.misskey.doNothing,
+                          NoteActionType.expand => t.aria.expandNote,
+                          NoteActionType.menu => t.aria.openMenu,
+                          NoteActionType.reaction => t.misskey.doReaction,
+                        }),
                   );
                   if (result != null) {
                     await ref
@@ -206,9 +200,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.confirmBeforePost),
                 value: settings.confirmBeforePost,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setConfirmBeforePost(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setConfirmBeforePost(value),
               ),
             ),
           ),
@@ -219,9 +214,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.confirmBeforeReact),
                 value: settings.confirmBeforeReact,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setConfirmBeforeReact(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setConfirmBeforeReact(value),
               ),
             ),
           ),
@@ -232,9 +228,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.aria.confirmBeforeFollow),
                 value: settings.confirmBeforeFollow,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setConfirmBeforeFollow(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setConfirmBeforeFollow(value),
               ),
             ),
           ),
@@ -245,9 +242,10 @@ class BehaviorPage extends ConsumerWidget {
               child: SwitchListTile(
                 title: Text(t.misskey.confirmWhenRevealingSensitiveMedia),
                 value: settings.confirmWhenRevealingSensitiveMedia,
-                onChanged: (value) => ref
-                    .read(generalSettingsNotifierProvider.notifier)
-                    .setConfirmWhenRevealingSensitiveMedia(value),
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setConfirmWhenRevealingSensitiveMedia(value),
               ),
             ),
           ),
@@ -257,14 +255,12 @@ class BehaviorPage extends ConsumerWidget {
               width: maxContentWidth,
               child: ListTile(
                 title: Text(t.aria.webBrowser),
-                subtitle: Text(
-                  switch (settings.launchMode) {
-                    LaunchMode.inAppBrowserView => t.aria.openInInternalBrowser,
-                    LaunchMode.externalApplication =>
-                      t.aria.openInExternalBrowser,
-                    _ => '',
-                  },
-                ),
+                subtitle: Text(switch (settings.launchMode) {
+                  LaunchMode.inAppBrowserView => t.aria.openInInternalBrowser,
+                  LaunchMode.externalApplication =>
+                    t.aria.openInExternalBrowser,
+                  _ => '',
+                }),
                 trailing: const Icon(Icons.navigate_next),
                 onTap: () async {
                   final result = await showRadioDialog(
@@ -275,15 +271,14 @@ class BehaviorPage extends ConsumerWidget {
                       LaunchMode.externalApplication,
                     ],
                     initialValue: settings.launchMode,
-                    itemBuilder: (context, value) => Text(
-                      switch (value) {
-                        LaunchMode.inAppBrowserView =>
-                          t.aria.openInInternalBrowser,
-                        LaunchMode.externalApplication =>
-                          t.aria.openInExternalBrowser,
-                        _ => '',
-                      },
-                    ),
+                    itemBuilder:
+                        (context, value) => Text(switch (value) {
+                          LaunchMode.inAppBrowserView =>
+                            t.aria.openInInternalBrowser,
+                          LaunchMode.externalApplication =>
+                            t.aria.openInExternalBrowser,
+                          _ => '',
+                        }),
                   );
                   if (result != null) {
                     await ref
@@ -303,9 +298,10 @@ class BehaviorPage extends ConsumerWidget {
                 child: SwitchListTile(
                   title: Text(t.aria.enableSpellCheck),
                   value: settings.enableSpellCheck,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setEnableSpellCheck(value),
+                  onChanged:
+                      (value) => ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setEnableSpellCheck(value),
                 ),
               ),
             ),
@@ -317,9 +313,10 @@ class BehaviorPage extends ConsumerWidget {
                 child: SwitchListTile(
                   title: Text(t.aria.enablePredictiveBack),
                   value: settings.enablePredictiveBack,
-                  onChanged: (value) => ref
-                      .read(generalSettingsNotifierProvider.notifier)
-                      .setEnablePredictiveBack(value),
+                  onChanged:
+                      (value) => ref
+                          .read(generalSettingsNotifierProvider.notifier)
+                          .setEnablePredictiveBack(value),
                 ),
               ),
             ),
@@ -329,14 +326,13 @@ class BehaviorPage extends ConsumerWidget {
               width: maxContentWidth,
               child: ListTile(
                 title: Text(t.misskey.clearCache),
-                subtitle: Text(
-                  switch (cacheSize) {
-                    AsyncValue(valueOrNull: final cacheSize?) =>
-                      prettyBytes(cacheSize),
-                    AsyncValue(error: final _?) => t.misskey.unknown,
-                    _ => t.aria.calculating,
-                  },
-                ),
+                subtitle: Text(switch (cacheSize) {
+                  AsyncValue(valueOrNull: final cacheSize?) => prettyBytes(
+                    cacheSize,
+                  ),
+                  AsyncValue(error: final _?) => t.misskey.unknown,
+                  _ => t.aria.calculating,
+                }),
                 trailing: const Icon(Icons.navigate_next),
                 enabled: cacheSize.valueOrNull != 0,
                 onTap: () async {
@@ -344,9 +340,9 @@ class BehaviorPage extends ConsumerWidget {
                     context,
                     getApplicationCacheDirectory().then(
                       (cacheDir) => Future.wait(
-                        cacheDir
-                            .listSync()
-                            .map((e) => e.delete(recursive: true)),
+                        cacheDir.listSync().map(
+                          (e) => e.delete(recursive: true),
+                        ),
                       ),
                     ),
                   );

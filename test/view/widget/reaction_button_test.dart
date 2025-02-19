@@ -40,14 +40,15 @@ Future<ProviderContainer> setupWidget(
           routes: [
             GoRoute(
               path: '/',
-              builder: (_, __) => Scaffold(
-                body: ReactionButton(
-                  account: account,
-                  note: note,
-                  emoji: emoji,
-                  count: count,
-                ),
-              ),
+              builder:
+                  (_, __) => Scaffold(
+                    body: ReactionButton(
+                      account: account,
+                      note: note,
+                      emoji: emoji,
+                      count: count,
+                    ),
+                  ),
             ),
           ],
         ),
@@ -56,15 +57,17 @@ Future<ProviderContainer> setupWidget(
     ),
   );
   await tester.pumpAndSettle();
-  final container =
-      ProviderScope.containerOf(tester.element(find.byType(ReactionButton)));
+  final container = ProviderScope.containerOf(
+    tester.element(find.byType(ReactionButton)),
+  );
   return container;
 }
 
 void main() {
   group('basic', () {
-    testWidgets('background and border should be transparent if guest',
-        (tester) async {
+    testWidgets('background and border should be transparent if guest', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       final container = await setupWidget(
         tester,
@@ -81,8 +84,9 @@ void main() {
       expect(buttonStyle?.backgroundColor?.resolve({}), Colors.transparent);
     });
 
-    testWidgets('background should be transparent if remote and can react',
-        (tester) async {
+    testWidgets('background should be transparent if remote and can react', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final container = await setupWidget(
         tester,
@@ -124,8 +128,9 @@ void main() {
       expect(buttonStyle?.backgroundColor?.resolve({}), colors.buttonBg);
     });
 
-    testWidgets('background should be accent if already reacted',
-        (tester) async {
+    testWidgets('background should be accent if already reacted', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final container = await setupWidget(
         tester,
@@ -209,8 +214,9 @@ void main() {
       expect(find.byType(ReactionConfirmationDialog), findsNothing);
     });
 
-    testWidgets('should not react a local only emoji to a remote note',
-        (tester) async {
+    testWidgets('should not react a local only emoji to a remote note', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final container = await setupWidget(
         tester,
@@ -239,23 +245,24 @@ void main() {
     });
 
     testWidgets(
-        'should not react a sensitive emoji to a non-sensitive only note',
-        (tester) async {
-      const account = Account(host: 'misskey.tld', username: 'testuser');
-      final container = await setupWidget(
-        tester,
-        account: account,
-        note: dummyNote.copyWith(id: 'test'),
-        emoji: ':emoji:',
-        count: 1,
-      );
-      container
-          .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji', isSensitive: true));
-      await tester.pumpAndSettle();
-      await tester.tap(find.byType(ElevatedButton));
-      expect(find.byType(ReactionConfirmationDialog), findsNothing);
-    });
+      'should not react a sensitive emoji to a non-sensitive only note',
+      (tester) async {
+        const account = Account(host: 'misskey.tld', username: 'testuser');
+        final container = await setupWidget(
+          tester,
+          account: account,
+          note: dummyNote.copyWith(id: 'test'),
+          emoji: ':emoji:',
+          count: 1,
+        );
+        container
+            .read(emojisNotifierProvider(account.host).notifier)
+            .add(const Emoji(aliases: [], name: 'emoji', isSensitive: true));
+        await tester.pumpAndSettle();
+        await tester.tap(find.byType(ElevatedButton));
+        expect(find.byType(ReactionConfirmationDialog), findsNothing);
+      },
+    );
 
     testWidgets('should react to a note', (tester) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
@@ -274,19 +281,13 @@ void main() {
       dioAdapter.onPost(
         'notes/reactions/create',
         (server) => server.reply(200, null),
-        data: {
-          'noteId': 'test',
-          'reaction': ':emoji@.:',
-        },
+        data: {'noteId': 'test', 'reaction': ':emoji@.:'},
       );
       dioAdapter.onPost(
         'notes/show',
         (server) => server.reply(
           200,
-          note.copyWith(
-            reactions: {':emoji:': 2},
-            myReaction: ':emoji:',
-          ),
+          note.copyWith(reactions: {':emoji:': 2}, myReaction: ':emoji:'),
         ),
         data: {'noteId': 'test'},
       );
@@ -327,13 +328,8 @@ void main() {
       );
       dioAdapter.onPost(
         'notes/show',
-        (server) => server.reply(
-          200,
-          note.copyWith(
-            reactions: {},
-            myReaction: null,
-          ),
-        ),
+        (server) =>
+            server.reply(200, note.copyWith(reactions: {}, myReaction: null)),
         data: {'noteId': 'test'},
       );
       await tester.pumpAndSettle();
@@ -348,8 +344,9 @@ void main() {
       );
     });
 
-    testWidgets('should change reaction if already reacted another reaction',
-        (tester) async {
+    testWidgets('should change reaction if already reacted another reaction', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld', username: 'testuser');
       final note = dummyNote.copyWith(
         id: 'test',
@@ -375,10 +372,7 @@ void main() {
       dioAdapter.onPost(
         'notes/reactions/create',
         (server) => server.reply(200, null),
-        data: {
-          'noteId': 'test',
-          'reaction': ':emoji@.:',
-        },
+        data: {'noteId': 'test', 'reaction': ':emoji@.:'},
       );
       dioAdapter.onPost(
         'notes/show',
@@ -405,8 +399,9 @@ void main() {
   });
 
   group('on long press', () {
-    testWidgets('should not show reaction users sheet for a dummy note',
-        (tester) async {
+    testWidgets('should not show reaction users sheet for a dummy note', (
+      tester,
+    ) async {
       const account = Account(host: 'misskey.tld');
       await setupWidget(
         tester,

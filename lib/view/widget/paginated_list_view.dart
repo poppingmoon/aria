@@ -36,26 +36,23 @@ class PaginatedListView<T> extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = this.controller ?? useScrollController();
     final isAtBottom = useState(false);
-    useEffect(
-      () {
-        void callback() {
-          if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
-            if (!isAtBottom.value) {
-              loadMore?.call(false);
-              isAtBottom.value = true;
-            }
-          } else {
-            isAtBottom.value = false;
+    useEffect(() {
+      void callback() {
+        if (controller.position.extentAfter < infiniteScrollExtentThreshold) {
+          if (!isAtBottom.value) {
+            loadMore?.call(false);
+            isAtBottom.value = true;
           }
+        } else {
+          isAtBottom.value = false;
         }
+      }
 
-        if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
-          controller.addListener(callback);
-        }
-        return () => controller.removeListener(callback);
-      },
-      [loadMore],
-    );
+      if (ref.read(generalSettingsNotifierProvider).enableInfiniteScroll) {
+        controller.addListener(callback);
+      }
+      return () => controller.removeListener(callback);
+    }, [loadMore]);
 
     return RefreshIndicator(
       onRefresh: onRefresh ?? () async {},
@@ -68,40 +65,47 @@ class PaginatedListView<T> extends HookConsumerWidget {
             if (paginationState.valueOrNull?.items case final items?
                 when items.isNotEmpty)
               SliverList.separated(
-                itemBuilder: (context, index) => Center(
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      top: index == 0 ? 8.0 : 0.0,
-                      left: 8.0,
-                      right: 8.0,
-                      bottom: index == items.length - 1 ? 8.0 : 0.0,
-                    ),
-                    width: maxContentWidth,
-                    child: Material(
-                      color:
-                          panel ? Theme.of(context).colorScheme.surface : null,
-                      borderRadius: BorderRadius.vertical(
-                        top: panel && index == 0
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
-                        bottom: panel && index == items.length - 1
-                            ? const Radius.circular(8.0)
-                            : Radius.zero,
+                itemBuilder:
+                    (context, index) => Center(
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          top: index == 0 ? 8.0 : 0.0,
+                          left: 8.0,
+                          right: 8.0,
+                          bottom: index == items.length - 1 ? 8.0 : 0.0,
+                        ),
+                        width: maxContentWidth,
+                        child: Material(
+                          color:
+                              panel
+                                  ? Theme.of(context).colorScheme.surface
+                                  : null,
+                          borderRadius: BorderRadius.vertical(
+                            top:
+                                panel && index == 0
+                                    ? const Radius.circular(8.0)
+                                    : Radius.zero,
+                            bottom:
+                                panel && index == items.length - 1
+                                    ? const Radius.circular(8.0)
+                                    : Radius.zero,
+                          ),
+                          clipBehavior: Clip.hardEdge,
+                          child: itemBuilder(context, items[index]),
+                        ),
                       ),
-                      clipBehavior: Clip.hardEdge,
-                      child: itemBuilder(context, items[index]),
                     ),
-                  ),
-                ),
-                separatorBuilder: (context, index) => Center(
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                    width: maxContentWidth,
-                    child: panel
-                        ? const Divider(height: 0.0)
-                        : const SizedBox(height: 8.0),
-                  ),
-                ),
+                separatorBuilder:
+                    (context, index) => Center(
+                      child: Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                        width: maxContentWidth,
+                        child:
+                            panel
+                                ? const Divider(height: 0.0)
+                                : const SizedBox(height: 8.0),
+                      ),
+                    ),
                 itemCount: items.length,
               ),
             SliverToBoxAdapter(

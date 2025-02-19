@@ -25,67 +25,74 @@ class AntennasPage extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () => ref.refresh(antennasNotifierProvider(account).future),
         child: switch (antennas) {
-          AsyncValue(valueOrNull: final antennas?) => antennas.isEmpty
-              ? Center(child: Text(t.misskey.nothing))
-              : ListTileTheme(
+          AsyncValue(valueOrNull: final antennas?) =>
+            antennas.isEmpty
+                ? Center(child: Text(t.misskey.nothing))
+                : ListTileTheme(
                   tileColor: Theme.of(context).colorScheme.surface,
                   child: ListView.separated(
-                    itemBuilder: (context, index) => Center(
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: 8.0,
-                          top: index == 0 ? 8.0 : 0.0,
-                          right: 8.0,
-                          bottom: index == antennas.length - 1 ? 120.0 : 0.0,
-                        ),
-                        width: maxContentWidth,
-                        child: ListTile(
-                          title: Text(antennas[index].name),
-                          subtitle: Text(
-                            antennas[index]
-                                .keywords
-                                .map((line) => line.join(' '))
-                                .join(' | '),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              top: index == 0
-                                  ? const Radius.circular(8.0)
-                                  : Radius.zero,
-                              bottom: index == antennas.length - 1
-                                  ? const Radius.circular(8.0)
-                                  : Radius.zero,
+                    itemBuilder:
+                        (context, index) => Center(
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: 8.0,
+                              top: index == 0 ? 8.0 : 0.0,
+                              right: 8.0,
+                              bottom:
+                                  index == antennas.length - 1 ? 120.0 : 0.0,
+                            ),
+                            width: maxContentWidth,
+                            child: ListTile(
+                              title: Text(antennas[index].name),
+                              subtitle: Text(
+                                antennas[index].keywords
+                                    .map((line) => line.join(' '))
+                                    .join(' | '),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top:
+                                      index == 0
+                                          ? const Radius.circular(8.0)
+                                          : Radius.zero,
+                                  bottom:
+                                      index == antennas.length - 1
+                                          ? const Radius.circular(8.0)
+                                          : Radius.zero,
+                                ),
+                              ),
+                              onTap:
+                                  () => context.push(
+                                    '/$account/antennas/${antennas[index].id}',
+                                  ),
                             ),
                           ),
-                          onTap: () => context
-                              .push('/$account/antennas/${antennas[index].id}'),
                         ),
-                      ),
-                    ),
-                    separatorBuilder: (context, index) => const Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: SizedBox(
-                          width: maxContentWidth,
-                          child: Divider(height: 0.0),
+                    separatorBuilder:
+                        (context, index) => const Center(
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.0),
+                            child: SizedBox(
+                              width: maxContentWidth,
+                              child: Divider(height: 0.0),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
                     itemCount: antennas.length,
                   ),
                 ),
           AsyncValue(:final error?, :final stackTrace) => SingleChildScrollView(
-              physics: const AlwaysScrollableScrollPhysics(),
-              child: Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                  width: maxContentWidth,
-                  child: ErrorMessage(error: error, stackTrace: stackTrace),
-                ),
+            physics: const AlwaysScrollableScrollPhysics(),
+            child: Center(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                width: maxContentWidth,
+                child: ErrorMessage(error: error, stackTrace: stackTrace),
               ),
             ),
+          ),
           _ => const Center(child: CircularProgressIndicator()),
         },
       ),
@@ -100,7 +107,9 @@ class AntennasPage extends ConsumerWidget {
           if (result != null) {
             await futureWithDialog(
               context,
-              ref.read(antennasNotifierProvider(account).notifier).create(
+              ref
+                  .read(antennasNotifierProvider(account).notifier)
+                  .create(
                     name: result.name ?? '',
                     src: result.src,
                     keywords: result.keywords,

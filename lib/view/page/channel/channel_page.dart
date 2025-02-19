@@ -41,27 +41,32 @@ class ChannelPage extends ConsumerWidget {
           ),
           actions: [
             PopupMenuButton<void>(
-              itemBuilder: (context) => [
-                PopupMenuItem(
-                  onTap: () =>
-                      context.push('/$account/search?channelId=$channelId'),
-                  child: Text(t.misskey.search),
-                ),
-                PopupMenuItem(
-                  onTap: () => launchUrl(
-                    ref,
-                    Uri.https(account.host, 'channels/$channelId'),
-                  ),
-                  child: Text(t.aria.openInBrowser),
-                ),
-                PopupMenuItem(
-                  onTap: () => copyToClipboard(
-                    context,
-                    'https://${account.host}/channels/$channelId',
-                  ),
-                  child: Text(t.misskey.copyLink),
-                ),
-              ],
+              itemBuilder:
+                  (context) => [
+                    PopupMenuItem(
+                      onTap:
+                          () => context.push(
+                            '/$account/search?channelId=$channelId',
+                          ),
+                      child: Text(t.misskey.search),
+                    ),
+                    PopupMenuItem(
+                      onTap:
+                          () => launchUrl(
+                            ref,
+                            Uri.https(account.host, 'channels/$channelId'),
+                          ),
+                      child: Text(t.aria.openInBrowser),
+                    ),
+                    PopupMenuItem(
+                      onTap:
+                          () => copyToClipboard(
+                            context,
+                            'https://${account.host}/channels/$channelId',
+                          ),
+                      child: Text(t.misskey.copyLink),
+                    ),
+                  ],
             ),
           ],
         ),
@@ -74,18 +79,19 @@ class ChannelPage extends ConsumerWidget {
             ChannelFeatured(account: account, channelId: channelId),
           ],
         ),
-        floatingActionButton: account.isGuest
-            ? null
-            : FloatingActionButton.extended(
-                onPressed: () {
-                  ref
-                      .read(postNotifierProvider(account).notifier)
-                      .setChannel(channelId);
-                  context.push('/$account/post');
-                },
-                label: Text(t.misskey.postToTheChannel),
-                icon: const Icon(Icons.edit),
-              ),
+        floatingActionButton:
+            account.isGuest
+                ? null
+                : FloatingActionButton.extended(
+                  onPressed: () {
+                    ref
+                        .read(postNotifierProvider(account).notifier)
+                        .setChannel(channelId);
+                    context.push('/$account/post');
+                  },
+                  label: Text(t.misskey.postToTheChannel),
+                  icon: const Icon(Icons.edit),
+                ),
       ),
     );
   }

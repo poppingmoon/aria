@@ -23,14 +23,16 @@ class StreamingErrorIcon extends HookConsumerWidget {
             ref.invalidate(webSocketChannelProvider);
             delay.value *= 2;
           }),
-          builder: (_, __) => IconButton(
-            onPressed: () => showErrorMessageDialog(
-              context,
-              error: message.error,
-              stackTrace: message.stackTrace,
-            ),
-            icon: const Icon(Icons.error),
-          ),
+          builder:
+              (_, __) => IconButton(
+                onPressed:
+                    () => showErrorMessageDialog(
+                      context,
+                      error: message.error,
+                      stackTrace: message.stackTrace,
+                    ),
+                icon: const Icon(Icons.error),
+              ),
         );
       }
     }

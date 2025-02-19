@@ -12,11 +12,7 @@ import '../../util/future_with_dialog.dart';
 import '../widget/error_message.dart';
 
 class GalleryDialog extends ConsumerWidget {
-  const GalleryDialog({
-    super.key,
-    required this.account,
-    required this.files,
-  });
+  const GalleryDialog({super.key, required this.account, required this.files});
 
   final Account account;
   final List<DriveFile> files;
@@ -30,38 +26,41 @@ class GalleryDialog extends ConsumerWidget {
       children: [
         ...switch (posts) {
           AsyncValue(valueOrNull: final posts?) => posts.items.map(
-              (post) => CheckboxListTile(
-                title: Text(post.title),
-                value: files.every((file) => post.fileIds.contains(file.id)),
-                onChanged: (value) async {
-                  if (value == null) return;
-                  final fileIds = value
-                      ? {...post.fileIds, ...files.map((file) => file.id)}
-                          .toList()
-                      : post.fileIds
-                          .where(
-                            (fileId) =>
-                                files.every((file) => file.id != fileId),
-                          )
-                          .toList();
-                  await futureWithDialog(
-                    context,
-                    ref
-                        .read(myGalleryPostsNotifierProvider(account).notifier)
-                        .updatePost(
-                          postId: post.id,
-                          title: post.title,
-                          description: post.description,
-                          fileIds: fileIds,
-                          isSensitive: post.isSensitive,
-                        ),
-                  );
-                },
-              ),
+            (post) => CheckboxListTile(
+              title: Text(post.title),
+              value: files.every((file) => post.fileIds.contains(file.id)),
+              onChanged: (value) async {
+                if (value == null) return;
+                final fileIds =
+                    value
+                        ? {
+                          ...post.fileIds,
+                          ...files.map((file) => file.id),
+                        }.toList()
+                        : post.fileIds
+                            .where(
+                              (fileId) =>
+                                  files.every((file) => file.id != fileId),
+                            )
+                            .toList();
+                await futureWithDialog(
+                  context,
+                  ref
+                      .read(myGalleryPostsNotifierProvider(account).notifier)
+                      .updatePost(
+                        postId: post.id,
+                        title: post.title,
+                        description: post.description,
+                        fileIds: fileIds,
+                        isSensitive: post.isSensitive,
+                      ),
+                );
+              },
             ),
+          ),
           AsyncValue(:final error?, :final stackTrace) => [
-              ErrorMessage(error: error, stackTrace: stackTrace),
-            ],
+            ErrorMessage(error: error, stackTrace: stackTrace),
+          ],
           _ => [const Center(child: CircularProgressIndicator())],
         },
         ListTile(

@@ -11,21 +11,17 @@ part 'children_notes_notifier_provider.g.dart';
 @riverpod
 class ChildrenNotesNotifier extends _$ChildrenNotesNotifier {
   @override
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String noteId,
-  ) async {
+  FutureOr<PaginationState<Note>> build(Account account, String noteId) async {
     final response = await _fetchNotes();
     return PaginationState.fromIterable(response);
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).notes.children(
-          NotesChildrenRequest(
-            noteId: noteId,
-            depth: 1,
-            untilId: untilId,
-          ),
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .children(
+          NotesChildrenRequest(noteId: noteId, depth: 1, untilId: untilId),
         );
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;

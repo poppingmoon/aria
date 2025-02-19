@@ -29,16 +29,19 @@ class AntennaPage extends ConsumerWidget {
   Future<void> _edit(WidgetRef ref, Antenna antenna) async {
     final result = await showDialog<AntennaSettings>(
       context: ref.context,
-      builder: (context) => AntennaSettingsDialog(
-        account: account,
-        settings: AntennaSettings.fromAntenna(antenna),
-      ),
+      builder:
+          (context) => AntennaSettingsDialog(
+            account: account,
+            settings: AntennaSettings.fromAntenna(antenna),
+          ),
     );
     if (!ref.context.mounted) return;
     if (result != null) {
       await futureWithDialog(
         ref.context,
-        ref.read(antennasNotifierProvider(account).notifier).updateAntenna(
+        ref
+            .read(antennasNotifierProvider(account).notifier)
+            .updateAntenna(
               antenna,
               name: result.name,
               src: result.src,
@@ -67,50 +70,57 @@ class AntennaPage extends ConsumerWidget {
         title: Text(antenna?.name ?? ''),
         actions: [
           PopupMenuButton<void>(
-            itemBuilder: (context) => [
-              PopupMenuItem(
-                onTap: () => launchUrl(
-                  ref,
-                  Uri.https(account.host, 'my/antennas/$antennaId'),
-                ),
-                child: Text(t.aria.openInBrowser),
-              ),
-              PopupMenuItem(
-                onTap: () => copyToClipboard(
-                  context,
-                  'https://${account.host}/my/antennas/$antennaId',
-                ),
-                child: Text(t.misskey.copyLink),
-              ),
-              if (antenna != null)
-                PopupMenuItem(
-                  onTap: () => _edit(ref, antenna),
-                  child: Text(t.misskey.editAntenna),
-                ),
-              PopupMenuItem(
-                onTap: () async {
-                  final confirmed = await confirm(
-                    context,
-                    message: t.misskey.deleteAreYouSure(x: antenna?.name ?? ''),
-                  );
-                  if (!context.mounted) return;
-                  if (confirmed) {
-                    await futureWithDialog(
-                      context,
-                      ref
-                          .read(antennasNotifierProvider(account).notifier)
-                          .delete(antennaId),
-                    );
-                    if (!context.mounted) return;
-                    context.pop();
-                  }
-                },
-                child: Text(
-                  t.misskey.delete,
-                  style: TextStyle(color: Theme.of(context).colorScheme.error),
-                ),
-              ),
-            ],
+            itemBuilder:
+                (context) => [
+                  PopupMenuItem(
+                    onTap:
+                        () => launchUrl(
+                          ref,
+                          Uri.https(account.host, 'my/antennas/$antennaId'),
+                        ),
+                    child: Text(t.aria.openInBrowser),
+                  ),
+                  PopupMenuItem(
+                    onTap:
+                        () => copyToClipboard(
+                          context,
+                          'https://${account.host}/my/antennas/$antennaId',
+                        ),
+                    child: Text(t.misskey.copyLink),
+                  ),
+                  if (antenna != null)
+                    PopupMenuItem(
+                      onTap: () => _edit(ref, antenna),
+                      child: Text(t.misskey.editAntenna),
+                    ),
+                  PopupMenuItem(
+                    onTap: () async {
+                      final confirmed = await confirm(
+                        context,
+                        message: t.misskey.deleteAreYouSure(
+                          x: antenna?.name ?? '',
+                        ),
+                      );
+                      if (!context.mounted) return;
+                      if (confirmed) {
+                        await futureWithDialog(
+                          context,
+                          ref
+                              .read(antennasNotifierProvider(account).notifier)
+                              .delete(antennaId),
+                        );
+                        if (!context.mounted) return;
+                        context.pop();
+                      }
+                    },
+                    child: Text(
+                      t.misskey.delete,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.error,
+                      ),
+                    ),
+                  ),
+                ],
           ),
         ],
       ),

@@ -6,11 +6,7 @@ import '../../../util/launch_url.dart';
 import '../url_sheet.dart';
 
 class Search extends HookConsumerWidget {
-  const Search({
-    super.key,
-    required this.query,
-    this.textScaler,
-  });
+  const Search({super.key, required this.query, this.textScaler});
 
   final String query;
   final TextScaler? textScaler;
@@ -30,10 +26,7 @@ class Search extends HookConsumerWidget {
               padding: const EdgeInsets.all(8.0),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: SelectableText(
-                  query,
-                  textScaler: textScaler,
-                ),
+                child: SelectableText(query, textScaler: textScaler),
               ),
             ),
           ),
@@ -44,26 +37,28 @@ class Search extends HookConsumerWidget {
             ),
             clipBehavior: Clip.hardEdge,
             child: InkWell(
-              onTap: () => launchUrl(
-                ref,
-                Uri.https('google.com', 'search', {'q': query}),
-              ),
-              onLongPress: () => showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => UrlSheet(
-                  url: Uri.https('google.com', 'search', {'q': query})
-                      .toString(),
-                ),
-              ),
+              onTap:
+                  () => launchUrl(
+                    ref,
+                    Uri.https('google.com', 'search', {'q': query}),
+                  ),
+              onLongPress:
+                  () => showModalBottomSheet<void>(
+                    context: context,
+                    builder:
+                        (context) => UrlSheet(
+                          url:
+                              Uri.https('google.com', 'search', {
+                                'q': query,
+                              }).toString(),
+                        ),
+                  ),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
                     const Icon(Icons.search),
-                    Text(
-                      t.misskey.searchByGoogle,
-                      textScaler: textScaler,
-                    ),
+                    Text(t.misskey.searchByGoogle, textScaler: textScaler),
                   ],
                 ),
               ),

@@ -24,7 +24,8 @@ part 'emoji_url_provider.g.dart';
   if (url != null) {
     rawUrl = Uri.tryParse(url);
   } else {
-    final isLocal = host == null &&
+    final isLocal =
+        host == null &&
         (customEmojiName.endsWith('@.') || !customEmojiName.contains('@'));
     if (isLocal) {
       rawUrl = ref.watch(emojiProvider(account.host, emoji))?.url;
@@ -42,10 +43,7 @@ part 'emoji_url_provider.g.dart';
     ],
   );
   if (!rawUrl.isAbsolute) {
-    rawUrl = rawUrl.replace(
-      scheme: 'https',
-      host: account.host,
-    );
+    rawUrl = rawUrl.replace(scheme: 'https', host: account.host);
   }
 
   final proxied = ref.watch(

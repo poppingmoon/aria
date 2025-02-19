@@ -39,29 +39,35 @@ class NoteSimpleWidget extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     final tapAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteTapAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteTapAction,
+      ),
     );
     final doubleTapAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteDoubleTapAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteDoubleTapAction,
+      ),
     );
     final longPressAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteLongPressAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteLongPressAction,
+      ),
     );
     final showAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarsInSubNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showAvatarsInSubNote,
+      ),
     );
     final avatarScale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.avatarScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.avatarScale,
+      ),
     );
     final showContent = useState(
       ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.alwaysExpandCw),
+        generalSettingsNotifierProvider.select(
+          (settings) => settings.alwaysExpandCw,
+        ),
       ),
     );
 
@@ -108,7 +114,8 @@ class NoteSimpleWidget extends HookConsumerWidget {
                 child: UserAvatar(
                   account: account,
                   user: note.user,
-                  size: DefaultTextStyle.of(context).style.lineHeight *
+                  size:
+                      DefaultTextStyle.of(context).style.lineHeight *
                       avatarScale *
                       0.9,
                 ),

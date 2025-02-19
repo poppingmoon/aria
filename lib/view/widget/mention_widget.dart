@@ -34,22 +34,26 @@ class MentionWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final disableShowingAnimatedImages = ref.watch(
-          generalSettingsNotifierProvider
-              .select((settings) => settings.disableShowingAnimatedImages),
+    final disableShowingAnimatedImages =
+        ref.watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => settings.disableShowingAnimatedImages,
+          ),
         ) ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
     final url = 'https://${account.host}/avatar/@$username@$host';
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final isLocal = account.host.toLowerCase() == host.toLowerCase();
     final isMe =
         isLocal && account.username?.toLowerCase() == username.toLowerCase();
-    final color =
-        (isMe ? colors.mentionMe : colors.mention).withValues(alpha: opacity);
-    final style = DefaultTextStyle.of(context)
-        .style
-        .apply(fontSizeFactor: scale, color: color);
+    final color = (isMe ? colors.mentionMe : colors.mention).withValues(
+      alpha: opacity,
+    );
+    final style = DefaultTextStyle.of(
+      context,
+    ).style.apply(fontSizeFactor: scale, color: color);
 
     return ChipTheme(
       data: ChipThemeData.fromDefaults(
@@ -76,8 +80,9 @@ class MentionWidget extends ConsumerWidget {
               if (!isLocal)
                 TextSpan(
                   text: '@${toUnicode(host)}',
-                  style:
-                      TextStyle(color: color.withValues(alpha: color.a * 0.7)),
+                  style: TextStyle(
+                    color: color.withValues(alpha: color.a * 0.7),
+                  ),
                 ),
             ],
           ),

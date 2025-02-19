@@ -37,10 +37,7 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
 
   Future<Iterable<DriveFile>> _fetchFiles({String? untilId}) async {
     return _misskey.drive.files.files(
-      DriveFilesRequest(
-        folderId: folderId,
-        untilId: untilId,
-      ),
+      DriveFilesRequest(folderId: folderId, untilId: untilId),
     );
   }
 
@@ -145,27 +142,22 @@ class DriveFilesNotifier extends _$DriveFilesNotifier {
     final value = state.valueOrNull ?? const PaginationState();
     state = AsyncValue.data(
       value.copyWith(
-        items: value.items
-            .map((file) => file.id == fileId ? response : file)
-            .toList(),
+        items:
+            value.items
+                .map((file) => file.id == fileId ? response : file)
+                .toList(),
       ),
     );
   }
 
-  Future<void> move({
-    required String fileId,
-    required String? folderId,
-  }) async {
+  Future<void> move({required String fileId, required String? folderId}) async {
     if (folderId == this.folderId) {
       return;
     }
     // To preserve `folderId` key even if it is null.
     final response = await _misskey.apiService.post<Map<String, dynamic>>(
       'drive/files/update',
-      {
-        'fileId': fileId,
-        'folderId': folderId,
-      },
+      {'fileId': fileId, 'folderId': folderId},
       excludeRemoveNullPredicate: (key, _) => key == 'folderId',
     );
     final file = DriveFile.fromJson(response);

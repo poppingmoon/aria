@@ -25,11 +25,13 @@ class DriveFolderWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final uploadFolder = ref.watch(
-      accountSettingsNotifierProvider(account)
-          .select((settings) => settings.uploadFolder),
+      accountSettingsNotifierProvider(
+        account,
+      ).select((settings) => settings.uploadFolder),
     );
-    final colors =
-        ref.watch(misskeyColorsProvider(Theme.of(context).brightness));
+    final colors = ref.watch(
+      misskeyColorsProvider(Theme.of(context).brightness),
+    );
     final style = DefaultTextStyle.of(context).style;
 
     return Card(
@@ -68,13 +70,13 @@ class DriveFolderWidget extends ConsumerWidget {
               ),
             ),
             IconButton(
-              onPressed: () => showModalBottomSheet<void>(
-                context: context,
-                builder: (context) => DriveFolderSheet(
-                  account: account,
-                  folder: folder,
-                ),
-              ),
+              onPressed:
+                  () => showModalBottomSheet<void>(
+                    context: context,
+                    builder:
+                        (context) =>
+                            DriveFolderSheet(account: account, folder: folder),
+                  ),
               icon: const Icon(Icons.more_vert),
             ),
           ],

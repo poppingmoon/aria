@@ -11,10 +11,7 @@ Future<void> showMessageDialog(BuildContext context, String message) async {
 }
 
 class MessageDialog extends StatelessWidget {
-  const MessageDialog({
-    super.key,
-    required this.message,
-  });
+  const MessageDialog({super.key, required this.message});
 
   final String message;
 

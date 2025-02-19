@@ -9,11 +9,7 @@ import '../../widget/gallery_post_preview.dart';
 import '../../widget/paginated_list_view.dart';
 
 class UserGallery extends ConsumerWidget {
-  const UserGallery({
-    super.key,
-    required this.account,
-    required this.userId,
-  });
+  const UserGallery({super.key, required this.account, required this.userId});
 
   final Account account;
   final String userId;
@@ -24,19 +20,20 @@ class UserGallery extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: posts,
-      itemBuilder: (context, post) => GalleryPostPreview(
-        account: account,
-        post: post,
-        onTap: () => context.push('/$account/gallery/${post.id}'),
-      ),
-      onRefresh: () => ref.refresh(
-        userGalleryPostsNotifierProvider(account, userId).future,
-      ),
-      loadMore: (skipError) => ref
-          .read(
-            userGalleryPostsNotifierProvider(account, userId).notifier,
-          )
-          .loadMore(skipError: skipError),
+      itemBuilder:
+          (context, post) => GalleryPostPreview(
+            account: account,
+            post: post,
+            onTap: () => context.push('/$account/gallery/${post.id}'),
+          ),
+      onRefresh:
+          () => ref.refresh(
+            userGalleryPostsNotifierProvider(account, userId).future,
+          ),
+      loadMore:
+          (skipError) => ref
+              .read(userGalleryPostsNotifierProvider(account, userId).notifier)
+              .loadMore(skipError: skipError),
       panel: false,
       noItemsLabel: t.misskey.nothing,
     );

@@ -17,11 +17,12 @@ Future<bool> confirmReaction(
 }) async {
   final result = await showDialog<bool>(
     context: context,
-    builder: (context) => ReactionConfirmationDialog(
-      account: account,
-      emoji: emoji,
-      note: note,
-    ),
+    builder:
+        (context) => ReactionConfirmationDialog(
+          account: account,
+          emoji: emoji,
+          note: note,
+        ),
   );
   return result ?? false;
 }
@@ -71,8 +72,9 @@ class ReactionConfirmationDialog extends ConsumerWidget {
           EmojiWidget(
             account: account,
             emoji: emoji,
-            style:
-                DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
+            style: DefaultTextStyle.of(
+              context,
+            ).style.apply(fontSizeFactor: 2.0),
           ),
           Text(t.aria.reactionConfirm),
         ],

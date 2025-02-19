@@ -20,22 +20,20 @@ DataSaver dataSaver(Ref ref) {
     ),
   );
   final disableDataSaverWhenOnWifi = ref.watch(
-    generalSettingsNotifierProvider
-        .select((settings) => settings.disableDataSaverWhenOnWifi),
+    generalSettingsNotifierProvider.select(
+      (settings) => settings.disableDataSaverWhenOnWifi,
+    ),
   );
   if ((dataSaver.media || dataSaver.avatar || dataSaver.urlPreview) &&
       disableDataSaverWhenOnWifi) {
-    final isOnWifi = ref
+    final isOnWifi =
+        ref
             .watch(connectivityProvider)
             .valueOrNull
             ?.contains(ConnectivityResult.wifi) ??
         false;
     if (isOnWifi) {
-      return const DataSaver(
-        media: false,
-        avatar: false,
-        urlPreview: false,
-      );
+      return const DataSaver(media: false, avatar: false, urlPreview: false);
     }
   }
   return dataSaver;

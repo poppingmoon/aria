@@ -18,10 +18,11 @@ String randomizeFilename(String filename) {
   if (parts.length <= 1) {
     return name;
   }
-  final ext = _specialExtensions.contains(parts.last)
-      ? parts.length > 2
-          ? parts.sublist(parts.length - 2).join('.')
-          : parts.last
-      : parts.last;
+  final ext =
+      _specialExtensions.contains(parts.last)
+          ? parts.length > 2
+              ? parts.sublist(parts.length - 2).join('.')
+              : parts.last
+          : parts.last;
   return '$name.$ext';
 }

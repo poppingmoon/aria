@@ -10,15 +10,13 @@ class AntennaSourceWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      switch (antennaSource) {
-        AntennaSource.home => t.misskey.antennaSources_.homeTimeline,
-        AntennaSource.all => t.misskey.antennaSources_.all,
-        AntennaSource.users => t.misskey.antennaSources_.users,
-        AntennaSource.usersBlackList => t.misskey.antennaSources_.userBlacklist,
-        AntennaSource.list => t.misskey.antennaSources_.userList,
-        null => '???',
-      },
-    );
+    return Text(switch (antennaSource) {
+      AntennaSource.home => t.misskey.antennaSources_.homeTimeline,
+      AntennaSource.all => t.misskey.antennaSources_.all,
+      AntennaSource.users => t.misskey.antennaSources_.users,
+      AntennaSource.usersBlackList => t.misskey.antennaSources_.userBlacklist,
+      AntennaSource.list => t.misskey.antennaSources_.userList,
+      null => '???',
+    });
   }
 }

@@ -2,8 +2,10 @@ final enRegex1 = RegExp('(?<=n)a', caseSensitive: false);
 final enRegex2 = RegExp('(?<=morn)ing', caseSensitive: false);
 final enRegex3 = RegExp('(?<=every)one', caseSensitive: false);
 final koRegex1 = RegExp('[나-낳]');
-final koRegex2 =
-    RegExp(r'(다$)|(다(?=\.))|(다(?= ))|(다(?=!))|(다(?=\?))', multiLine: true);
+final koRegex2 = RegExp(
+  r'(다$)|(다(?=\.))|(다(?= ))|(다(?=!))|(다(?=\?))',
+  multiLine: true,
+);
 final koRegex3 = RegExp(r'(야(?=\?))|(야$)|(야(?= ))', multiLine: true);
 
 String nyaize(String text) {

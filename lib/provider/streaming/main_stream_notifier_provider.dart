@@ -17,10 +17,7 @@ part 'main_stream_notifier_provider.g.dart';
 class MainStreamNotifier extends _$MainStreamNotifier {
   @override
   Stream<MainEvent> build(Account account) async* {
-    ref.listen(
-      webSocketChannelProvider(account),
-      (_, __) => connect(),
-    );
+    ref.listen(webSocketChannelProvider(account), (_, __) => connect());
     final message = await ref.watch(incomingMessageProvider(account).future);
     if (message.type == IncomingMessageType.channel &&
         message.body['id'] == _id) {
@@ -71,29 +68,20 @@ class MainStreamNotifier extends _$MainStreamNotifier {
   Future<void> connect() async {
     await _webSocketChannel.ready;
     _webSocketChannel.sink.add(
-      jsonEncode(
-        {
-          'type': 'connect',
-          'body': {
-            'channel': 'main',
-            'id': _id,
-          },
-        },
-      ),
+      jsonEncode({
+        'type': 'connect',
+        'body': {'channel': 'main', 'id': _id},
+      }),
     );
   }
 
   Future<void> disconnect() async {
     await _webSocketChannel.ready;
     _webSocketChannel.sink.add(
-      jsonEncode(
-        {
-          'type': 'disconnect',
-          'body': {
-            'id': _id,
-          },
-        },
-      ),
+      jsonEncode({
+        'type': 'disconnect',
+        'body': {'id': _id},
+      }),
     );
   }
 }

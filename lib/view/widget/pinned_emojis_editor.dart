@@ -25,8 +25,9 @@ class PinnedEmojisEditor extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pinnedEmojis =
-        ref.watch(pinnedEmojisNotifierProvider(account, reaction: reaction));
+    final pinnedEmojis = ref.watch(
+      pinnedEmojisNotifierProvider(account, reaction: reaction),
+    );
 
     return ExpansionTile(
       leading: Icon(reaction ? Icons.push_pin : Icons.push_pin_outlined),
@@ -49,34 +50,37 @@ class PinnedEmojisEditor extends HookConsumerWidget {
               child: ReorderableWrap(
                 spacing: 4.0,
                 runSpacing: 4.0,
-                onReorder: (oldIndex, newIndex) => ref
-                    .read(
-                      pinnedEmojisNotifierProvider(
-                        account,
-                        reaction: reaction,
-                      ).notifier,
-                    )
-                    .reorder(oldIndex, newIndex),
-                children: pinnedEmojis
-                    .mapIndexed(
-                      (index, name) => EmojiWidget(
-                        account: account,
-                        emoji: name,
-                        onTap: () => ref
-                            .read(
-                              pinnedEmojisNotifierProvider(
-                                account,
-                                reaction: reaction,
-                              ).notifier,
-                            )
-                            .delete(index),
-                        style: DefaultTextStyle.of(context)
-                            .style
-                            .apply(fontSizeFactor: 2.0),
-                        disableTooltip: true,
-                      ),
-                    )
-                    .toList(),
+                onReorder:
+                    (oldIndex, newIndex) => ref
+                        .read(
+                          pinnedEmojisNotifierProvider(
+                            account,
+                            reaction: reaction,
+                          ).notifier,
+                        )
+                        .reorder(oldIndex, newIndex),
+                children:
+                    pinnedEmojis
+                        .mapIndexed(
+                          (index, name) => EmojiWidget(
+                            account: account,
+                            emoji: name,
+                            onTap:
+                                () => ref
+                                    .read(
+                                      pinnedEmojisNotifierProvider(
+                                        account,
+                                        reaction: reaction,
+                                      ).notifier,
+                                    )
+                                    .delete(index),
+                            style: DefaultTextStyle.of(
+                              context,
+                            ).style.apply(fontSizeFactor: 2.0),
+                            disableTooltip: true,
+                          ),
+                        )
+                        .toList(),
               ),
             ),
           ),
@@ -88,8 +92,10 @@ class PinnedEmojisEditor extends HookConsumerWidget {
             if (emoji != null) {
               await ref
                   .read(
-                    pinnedEmojisNotifierProvider(account, reaction: reaction)
-                        .notifier,
+                    pinnedEmojisNotifierProvider(
+                      account,
+                      reaction: reaction,
+                    ).notifier,
                   )
                   .add(emoji);
             }
@@ -108,16 +114,17 @@ class PinnedEmojisEditor extends HookConsumerWidget {
           onTap: () async {
             final emojis = await showDialog<List<String>>(
               context: context,
-              builder: (context) => PasteEmojisDialog(
-                account: account,
-                reaction: reaction,
-              ),
+              builder:
+                  (context) =>
+                      PasteEmojisDialog(account: account, reaction: reaction),
             );
             if (emojis != null) {
               await ref
                   .read(
-                    pinnedEmojisNotifierProvider(account, reaction: reaction)
-                        .notifier,
+                    pinnedEmojisNotifierProvider(
+                      account,
+                      reaction: reaction,
+                    ).notifier,
                   )
                   .addAll(emojis);
             }

@@ -56,10 +56,11 @@ class UrlWidget extends StatelessWidget {
     if (url == null) {
       return InkWell(
         onTap: onTap,
-        onLongPress: () => showModalBottomSheet<void>(
-          context: context,
-          builder: (context) => UrlSheet(url: this.url),
-        ),
+        onLongPress:
+            () => showModalBottomSheet<void>(
+              context: context,
+              builder: (context) => UrlSheet(url: this.url),
+            ),
         child: Text(
           this.url,
           style: style.apply(
@@ -84,10 +85,11 @@ class UrlWidget extends StatelessWidget {
 
     return InkWell(
       onTap: onTap,
-      onLongPress: () => showModalBottomSheet<void>(
-        context: context,
-        builder: (context) => UrlSheet(url: this.url),
-      ),
+      onLongPress:
+          () => showModalBottomSheet<void>(
+            context: context,
+            builder: (context) => UrlSheet(url: this.url),
+          ),
       child: Text.rich(
         TextSpan(
           children: [
@@ -158,8 +160,9 @@ class _VerifiedIcon extends ConsumerWidget {
       child: Icon(
         Icons.check_circle_outline,
         color: ref.watch(
-          misskeyColorsProvider(Theme.of(context).brightness)
-              .select((colors) => colors.success),
+          misskeyColorsProvider(
+            Theme.of(context).brightness,
+          ).select((colors) => colors.success),
         ),
         size: DefaultTextStyle.of(context).style.fontSize,
       ),

@@ -34,9 +34,10 @@ class SettingsPage extends HookConsumerWidget {
                     borderRadius: BorderRadius.vertical(
                       top:
                           index == 0 ? const Radius.circular(8.0) : Radius.zero,
-                      bottom: index == accounts.length - 1
-                          ? const Radius.circular(8.0)
-                          : Radius.zero,
+                      bottom:
+                          index == accounts.length - 1
+                              ? const Radius.circular(8.0)
+                              : Radius.zero,
                     ),
                   ),
                 ),
@@ -91,32 +92,25 @@ class _AccountSettingsTile extends ConsumerWidget {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
 
     return ListTile(
-      leading: i != null
-          ? UserAvatar(
-              account: account,
-              user: i,
-              size: 32.0,
-            )
-          : const Icon(Icons.person, size: 32.0),
-      title: i != null
-          ? UsernameWidget(
-              account: account,
-              user: i,
-              builder: (context, span) => Text.rich(
-                t.aria.settingsForUser(user: span),
+      leading:
+          i != null
+              ? UserAvatar(account: account, user: i, size: 32.0)
+              : const Icon(Icons.person, size: 32.0),
+      title:
+          i != null
+              ? UsernameWidget(
+                account: account,
+                user: i,
+                builder:
+                    (context, span) =>
+                        Text.rich(t.aria.settingsForUser(user: span)),
+              )
+              : Text.rich(
+                t.aria.settingsForUser(user: TextSpan(text: account.username)),
               ),
-            )
-          : Text.rich(
-              t.aria.settingsForUser(
-                user: TextSpan(text: account.username),
-              ),
-            ),
       subtitle: Align(
         alignment: AlignmentDirectional.centerStart,
-        child: Text(
-          account.toString(),
-          textDirection: TextDirection.ltr,
-        ),
+        child: Text(account.toString(), textDirection: TextDirection.ltr),
       ),
       onTap: () => context.push('/settings/accounts/$account'),
       tileColor: Theme.of(context).colorScheme.surface,

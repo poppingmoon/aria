@@ -20,14 +20,16 @@ MisskeyColors misskeyColors(Ref ref, Brightness brightness) {
       },
     ),
   );
-  final colors =
-      builtinMisskeyColors.firstWhereOrNull((colors) => colors.id == themeId);
+  final colors = builtinMisskeyColors.firstWhereOrNull(
+    (colors) => colors.id == themeId,
+  );
   if (colors != null) {
     return colors;
   }
   final installedMisskeyColors = ref.watch(installedMisskeyColorsProvider);
-  return installedMisskeyColors
-          .firstWhereOrNull((colors) => colors.id == themeId) ??
+  return installedMisskeyColors.firstWhereOrNull(
+        (colors) => colors.id == themeId,
+      ) ??
       builtinMisskeyColors.firstWhere(
         (colors) => switch (brightness) {
           Brightness.light => !colors.isDark,

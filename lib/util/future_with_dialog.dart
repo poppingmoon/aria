@@ -15,22 +15,23 @@ Future<T?> futureWithDialog<T>(
   OverlayEntry? entry;
   if (overlay) {
     entry = OverlayEntry(
-      builder: (context) => Stack(
-        children: [
-          ModalBarrier(
-            color: Colors.black54,
-            onDismiss: () => entry?.remove(),
-          ),
-          const Center(
-            child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(32.0),
-                child: CircularProgressIndicator(),
+      builder:
+          (context) => Stack(
+            children: [
+              ModalBarrier(
+                color: Colors.black54,
+                onDismiss: () => entry?.remove(),
               ),
-            ),
+              const Center(
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(32.0),
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
     );
     Overlay.of(context).insert(entry);
   }
@@ -45,9 +46,9 @@ Future<T?> futureWithDialog<T>(
         await Fluttertoast.showToast(msg: message);
       } else {
         if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(message)),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(message)));
         }
       }
     }
@@ -57,11 +58,7 @@ Future<T?> futureWithDialog<T>(
       entry?.remove();
     } catch (_) {}
     if (!context.mounted) return null;
-    await showErrorMessageDialog(
-      context,
-      error: e,
-      stackTrace: st,
-    );
+    await showErrorMessageDialog(context, error: e, stackTrace: st);
     return null;
   }
 }

@@ -20,9 +20,10 @@ class FeaturedNotesNotifier extends _$FeaturedNotesNotifier {
   }
 
   Future<Iterable<Note>> _fetchNotes({String? untilId}) async {
-    final notes = await ref.read(misskeyProvider(account)).notes.featured(
-          NotesFeaturedRequest(channelId: channelId, untilId: untilId),
-        );
+    final notes = await ref
+        .read(misskeyProvider(account))
+        .notes
+        .featured(NotesFeaturedRequest(channelId: channelId, untilId: untilId));
     ref.read(notesNotifierProvider(account).notifier).addAll(notes);
     return notes;
   }

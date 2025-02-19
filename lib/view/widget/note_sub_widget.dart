@@ -40,32 +40,39 @@ class NoteSubWidget extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     final tapAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteTapAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteTapAction,
+      ),
     );
     final doubleTapAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteDoubleTapAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteDoubleTapAction,
+      ),
     );
     final longPressAction = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.noteLongPressAction),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.noteLongPressAction,
+      ),
     );
     final showAvatars = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.showAvatarsInSubNote),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.showAvatarsInSubNote,
+      ),
     );
     final avatarScale = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.avatarScale),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.avatarScale,
+      ),
     );
-    final children = showReplies && depth < 5
-        ? ref.watch(childrenNotesNotifierProvider(account, noteId))
-        : null;
+    final children =
+        showReplies && depth < 5
+            ? ref.watch(childrenNotesNotifierProvider(account, noteId))
+            : null;
     final showContent = useState(
       ref.watch(
-        generalSettingsNotifierProvider
-            .select((settings) => settings.alwaysExpandCw),
+        generalSettingsNotifierProvider.select(
+          (settings) => settings.alwaysExpandCw,
+        ),
       ),
     );
     final style = DefaultTextStyle.of(context).style;
@@ -110,16 +117,19 @@ class NoteSubWidget extends HookConsumerWidget {
               children: [
                 if (showAvatars)
                   Padding(
-                    padding:
-                        const EdgeInsetsDirectional.only(top: 4.0, end: 8.0),
+                    padding: const EdgeInsetsDirectional.only(
+                      top: 4.0,
+                      end: 8.0,
+                    ),
                     child: Opacity(
                       opacity: style.color?.a ?? 1.0,
                       child: UserAvatar(
                         account: account,
                         user: note.user,
                         size: style.lineHeight * avatarScale * 0.9,
-                        onTap: () =>
-                            context.push('/$account/users/${note.userId}'),
+                        onTap:
+                            () =>
+                                context.push('/$account/users/${note.userId}'),
                       ),
                     ),
                   ),
@@ -166,23 +176,25 @@ class NoteSubWidget extends HookConsumerWidget {
                   ),
                 ),
                 child: Column(
-                  children: (children.valueOrNull?.items ?? [])
-                      .map(
-                        (reply) => ChannelColorBarBox(
-                          note: reply,
-                          child: Padding(
-                            padding:
-                                const EdgeInsetsDirectional.only(start: 8.0),
-                            child: NoteSubWidget(
-                              account: account,
-                              noteId: reply.id,
-                              showReplies: true,
-                              depth: depth + 1,
+                  children:
+                      (children.valueOrNull?.items ?? [])
+                          .map(
+                            (reply) => ChannelColorBarBox(
+                              note: reply,
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.only(
+                                  start: 8.0,
+                                ),
+                                child: NoteSubWidget(
+                                  account: account,
+                                  noteId: reply.id,
+                                  showReplies: true,
+                                  depth: depth + 1,
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      )
-                      .toList(),
+                          )
+                          .toList(),
                 ),
               ),
             if (depth >= 5 && (note.repliesCount > 0 || note.renoteCount > 0))

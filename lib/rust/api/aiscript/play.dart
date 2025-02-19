@@ -12,10 +12,7 @@ class AsPlayLib {
   final String thisId;
   final String thisUrl;
 
-  const AsPlayLib({
-    required this.thisId,
-    required this.thisUrl,
-  });
+  const AsPlayLib({required this.thisId, required this.thisUrl});
 
   @override
   int get hashCode => thisId.hashCode ^ thisUrl.hashCode;

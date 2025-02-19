@@ -18,9 +18,9 @@ abstract class AsUiButtonCallback implements RustOpaqueInterface {
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner< AsUiLib>>
 abstract class AsUiLib implements RustOpaqueInterface {
-  factory AsUiLib(
-          {required FutureOr<void> Function(String, AsUiComponent) onUpdate}) =>
-      RustLib.instance.api.crateApiAiscriptUiAsUiLibNew(onUpdate: onUpdate);
+  factory AsUiLib({
+    required FutureOr<void> Function(String, AsUiComponent) onUpdate,
+  }) => RustLib.instance.api.crateApiAiscriptUiAsUiLibNew(onUpdate: onUpdate);
 }
 
 // Rust type: RustOpaqueMoi<flutter_rust_bridge::for_generated::RustAutoOpaqueInner<AsUiMfmCallback>>
@@ -91,9 +91,7 @@ class AsUiButton {
 class AsUiButtons {
   final List<AsUiButton>? buttons;
 
-  const AsUiButtons({
-    this.buttons,
-  });
+  const AsUiButtons({this.buttons});
 
   @override
   int get hashCode => buttons.hashCode;
@@ -110,48 +108,28 @@ class AsUiButtons {
 sealed class AsUiComponent with _$AsUiComponent {
   const AsUiComponent._();
 
-  const factory AsUiComponent.root(
-    AsUiRoot field0,
-  ) = AsUiComponent_Root;
-  const factory AsUiComponent.container(
-    AsUiContainer field0,
-  ) = AsUiComponent_Container;
-  const factory AsUiComponent.text(
-    AsUiText field0,
-  ) = AsUiComponent_Text;
-  const factory AsUiComponent.mfm(
-    AsUiMfm field0,
-  ) = AsUiComponent_Mfm;
-  const factory AsUiComponent.button(
-    AsUiButton field0,
-  ) = AsUiComponent_Button;
-  const factory AsUiComponent.buttons(
-    AsUiButtons field0,
-  ) = AsUiComponent_Buttons;
-  const factory AsUiComponent.toggleSwitch(
-    AsUiSwitch field0,
-  ) = AsUiComponent_ToggleSwitch;
-  const factory AsUiComponent.textarea(
-    AsUiTextarea field0,
-  ) = AsUiComponent_Textarea;
-  const factory AsUiComponent.textInput(
-    AsUiTextInput field0,
-  ) = AsUiComponent_TextInput;
-  const factory AsUiComponent.numberInput(
-    AsUiNumberInput field0,
-  ) = AsUiComponent_NumberInput;
-  const factory AsUiComponent.select(
-    AsUiSelect field0,
-  ) = AsUiComponent_Select;
-  const factory AsUiComponent.folder(
-    AsUiFolder field0,
-  ) = AsUiComponent_Folder;
-  const factory AsUiComponent.postFormButton(
-    AsUiPostFormButton field0,
-  ) = AsUiComponent_PostFormButton;
-  const factory AsUiComponent.postForm(
-    AsUiPostForm field0,
-  ) = AsUiComponent_PostForm;
+  const factory AsUiComponent.root(AsUiRoot field0) = AsUiComponent_Root;
+  const factory AsUiComponent.container(AsUiContainer field0) =
+      AsUiComponent_Container;
+  const factory AsUiComponent.text(AsUiText field0) = AsUiComponent_Text;
+  const factory AsUiComponent.mfm(AsUiMfm field0) = AsUiComponent_Mfm;
+  const factory AsUiComponent.button(AsUiButton field0) = AsUiComponent_Button;
+  const factory AsUiComponent.buttons(AsUiButtons field0) =
+      AsUiComponent_Buttons;
+  const factory AsUiComponent.toggleSwitch(AsUiSwitch field0) =
+      AsUiComponent_ToggleSwitch;
+  const factory AsUiComponent.textarea(AsUiTextarea field0) =
+      AsUiComponent_Textarea;
+  const factory AsUiComponent.textInput(AsUiTextInput field0) =
+      AsUiComponent_TextInput;
+  const factory AsUiComponent.numberInput(AsUiNumberInput field0) =
+      AsUiComponent_NumberInput;
+  const factory AsUiComponent.select(AsUiSelect field0) = AsUiComponent_Select;
+  const factory AsUiComponent.folder(AsUiFolder field0) = AsUiComponent_Folder;
+  const factory AsUiComponent.postFormButton(AsUiPostFormButton field0) =
+      AsUiComponent_PostFormButton;
+  const factory AsUiComponent.postForm(AsUiPostForm field0) =
+      AsUiComponent_PostForm;
 }
 
 class AsUiContainer {
@@ -214,11 +192,7 @@ class AsUiFolder {
   final String? title;
   final bool? opened;
 
-  const AsUiFolder({
-    this.children,
-    this.title,
-    this.opened,
-  });
+  const AsUiFolder({this.children, this.title, this.opened});
 
   @override
   int get hashCode => children.hashCode ^ title.hashCode ^ opened.hashCode;
@@ -306,9 +280,7 @@ class AsUiNumberInput {
 class AsUiPostForm {
   final PostFormPropsForAsUi? form;
 
-  const AsUiPostForm({
-    this.form,
-  });
+  const AsUiPostForm({this.form});
 
   @override
   int get hashCode => form.hashCode;
@@ -327,12 +299,7 @@ class AsUiPostFormButton {
   final bool? rounded;
   final PostFormPropsForAsUi? form;
 
-  const AsUiPostFormButton({
-    this.text,
-    this.primary,
-    this.rounded,
-    this.form,
-  });
+  const AsUiPostFormButton({this.text, this.primary, this.rounded, this.form});
 
   @override
   int get hashCode =>
@@ -352,9 +319,7 @@ class AsUiPostFormButton {
 class AsUiRoot {
   final List<String> children;
 
-  const AsUiRoot({
-    required this.children,
-  });
+  const AsUiRoot({required this.children});
 
   @override
   int get hashCode => children.hashCode;
@@ -440,13 +405,7 @@ class AsUiText {
   final String? color;
   final String? font;
 
-  const AsUiText({
-    this.text,
-    this.size,
-    this.bold,
-    this.color,
-    this.font,
-  });
+  const AsUiText({this.text, this.size, this.bold, this.color, this.font});
 
   @override
   int get hashCode =>

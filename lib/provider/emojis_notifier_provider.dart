@@ -68,9 +68,10 @@ class EmojisNotifier extends _$EmojisNotifier {
           for (final emoji in emojis)
             if (emoji is Map<String, dynamic>)
               Emoji(
-                aliases: ((emoji['aliases'] ?? <String>[]) as List)
-                    .whereType<String>()
-                    .toList(),
+                aliases:
+                    ((emoji['aliases'] ?? <String>[]) as List)
+                        .whereType<String>()
+                        .toList(),
                 name: emoji['name'] as String,
                 category: emoji['category'] as String?,
                 url: Uri.parse((emoji['url'] as String).trim()),

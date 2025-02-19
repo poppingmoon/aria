@@ -25,8 +25,9 @@ class MediaList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fit = ref.watch(
-      generalSettingsNotifierProvider
-          .select((settings) => settings.thumbnailBoxFit),
+      generalSettingsNotifierProvider.select(
+        (settings) => settings.thumbnailBoxFit,
+      ),
     );
     switch (files.length) {
       case 1:
@@ -71,20 +72,21 @@ class MediaList extends ConsumerWidget {
           mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
           padding: EdgeInsets.zero,
-          children: files
-              .mapIndexed(
-                (index, file) => AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: MediaCard(
-                    account: account,
-                    files: files,
-                    index: index,
-                    user: user,
-                    fit: fit,
-                  ),
-                ),
-              )
-              .toList(),
+          children:
+              files
+                  .mapIndexed(
+                    (index, file) => AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: MediaCard(
+                        account: account,
+                        files: files,
+                        index: index,
+                        user: user,
+                        fit: fit,
+                      ),
+                    ),
+                  )
+                  .toList(),
         );
     }
   }

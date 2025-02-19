@@ -11,11 +11,7 @@ import '../../util/future_with_dialog.dart';
 import 'antenna_settings_dialog.dart';
 
 class AntennaDialog extends HookConsumerWidget {
-  const AntennaDialog({
-    super.key,
-    required this.account,
-    required this.user,
-  });
+  const AntennaDialog({super.key, required this.account, required this.user});
 
   final Account account;
   final User user;
@@ -23,8 +19,9 @@ class AntennaDialog extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final antennas = ref.watch(antennasNotifierProvider(account)).valueOrNull;
-    final userAntennas =
-        antennas?.where((antenna) => antenna.src == AntennaSource.users);
+    final userAntennas = antennas?.where(
+      (antenna) => antenna.src == AntennaSource.users,
+    );
 
     return SimpleDialog(
       title: Text(t.misskey.addToAntenna),
@@ -61,16 +58,19 @@ class AntennaDialog extends HookConsumerWidget {
           onTap: () async {
             final result = await showDialog<AntennaSettings>(
               context: context,
-              builder: (context) => AntennaSettingsDialog(
-                account: account,
-                settings: const AntennaSettings(src: AntennaSource.users),
-              ),
+              builder:
+                  (context) => AntennaSettingsDialog(
+                    account: account,
+                    settings: const AntennaSettings(src: AntennaSource.users),
+                  ),
             );
             if (!ref.context.mounted) return;
             if (result != null) {
               await futureWithDialog(
                 ref.context,
-                ref.read(antennasNotifierProvider(account).notifier).create(
+                ref
+                    .read(antennasNotifierProvider(account).notifier)
+                    .create(
                       name: result.name ?? '',
                       src: result.src,
                       keywords: result.keywords,

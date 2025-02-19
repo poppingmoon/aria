@@ -19,15 +19,17 @@ class PlaysLiked extends ConsumerWidget {
 
     return PaginatedListView(
       paginationState: likes,
-      itemBuilder: (context, like) => PlayPreview(
-        account: account,
-        play: like.flash,
-        onTap: () => context.push('/$account/play/${like.flash.id}'),
-      ),
+      itemBuilder:
+          (context, like) => PlayPreview(
+            account: account,
+            play: like.flash,
+            onTap: () => context.push('/$account/play/${like.flash.id}'),
+          ),
       onRefresh: () => ref.refresh(likedPlaysNotifierProvider(account).future),
-      loadMore: (skipError) => ref
-          .read(likedPlaysNotifierProvider(account).notifier)
-          .loadMore(skipError: skipError),
+      loadMore:
+          (skipError) => ref
+              .read(likedPlaysNotifierProvider(account).notifier)
+              .loadMore(skipError: skipError),
       noItemsLabel: t.misskey.nothing,
     );
   }

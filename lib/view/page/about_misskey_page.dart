@@ -48,10 +48,11 @@ class AboutMisskeyPage extends ConsumerWidget {
                 children: [
                   Text(t.misskey.aboutMisskey_.about),
                   TextButton(
-                    onPressed: () => launchUrl(
-                      ref,
-                      Uri.https('misskey-hub.net', 'docs/about-misskey'),
-                    ),
+                    onPressed:
+                        () => launchUrl(
+                          ref,
+                          Uri.https('misskey-hub.net', 'docs/about-misskey'),
+                        ),
                     child: Text(t.misskey.learnMore),
                   ),
                 ],
@@ -68,10 +69,11 @@ class AboutMisskeyPage extends ConsumerWidget {
                 title: Text(
                   '${t.misskey.aboutMisskey_.source} (${t.misskey.aboutMisskey_.original})',
                 ),
-                onTap: () => launchUrl(
-                  ref,
-                  Uri.https('github.com', 'misskey-dev/misskey'),
-                ),
+                onTap:
+                    () => launchUrl(
+                      ref,
+                      Uri.https('github.com', 'misskey-dev/misskey'),
+                    ),
               ),
             ),
           ),
@@ -82,10 +84,11 @@ class AboutMisskeyPage extends ConsumerWidget {
               child: ListTile(
                 leading: const Icon(Icons.translate),
                 title: Text(t.misskey.aboutMisskey_.translation),
-                onTap: () => launchUrl(
-                  ref,
-                  Uri.https('crowdin.com', 'project/misskey'),
-                ),
+                onTap:
+                    () => launchUrl(
+                      ref,
+                      Uri.https('crowdin.com', 'project/misskey'),
+                    ),
               ),
             ),
           ),
@@ -96,10 +99,9 @@ class AboutMisskeyPage extends ConsumerWidget {
               child: ListTile(
                 leading: const Icon(Icons.savings),
                 title: Text(t.misskey.aboutMisskey_.donate),
-                onTap: () => launchUrl(
-                  ref,
-                  Uri.https('www.patreon.com', 'syuilo'),
-                ),
+                onTap:
+                    () =>
+                        launchUrl(ref, Uri.https('www.patreon.com', 'syuilo')),
               ),
             ),
           ),

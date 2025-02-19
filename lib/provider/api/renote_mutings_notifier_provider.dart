@@ -18,9 +18,10 @@ class RenoteMutingsNotifier extends _$RenoteMutingsNotifier {
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
   Future<Iterable<RenoteMuting>> _fetchRenoteMutings({String? untilId}) async {
-    return await ref.read(misskeyProvider(account)).renoteMute.list(
-          RenoteMuteListRequest(untilId: untilId),
-        );
+    return await ref
+        .read(misskeyProvider(account))
+        .renoteMute
+        .list(RenoteMuteListRequest(untilId: untilId));
   }
 
   Future<void> loadMore({bool skipError = false}) async {
@@ -33,8 +34,9 @@ class RenoteMutingsNotifier extends _$RenoteMutingsNotifier {
     }
     state = const AsyncValue.loading();
     state = await AsyncValue.guard(() async {
-      final response =
-          await _fetchRenoteMutings(untilId: value.items.lastOrNull?.id);
+      final response = await _fetchRenoteMutings(
+        untilId: value.items.lastOrNull?.id,
+      );
       return PaginationState(
         items: [...value.items, ...response],
         isLastLoaded: response.isEmpty,

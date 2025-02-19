@@ -33,11 +33,12 @@ class MisskeyGamesPage extends ConsumerWidget {
           ),
           ListTile(
             title: Text(t.misskey.reversi_.reversi),
-            subtitle: invitations.isNotEmpty
-                ? Text(
-                    '${t.misskey.invitations}: ${invitations.map((user) => user.acct).join(', ')}',
-                  )
-                : null,
+            subtitle:
+                invitations.isNotEmpty
+                    ? Text(
+                      '${t.misskey.invitations}: ${invitations.map((user) => user.acct).join(', ')}',
+                    )
+                    : null,
             trailing: const Icon(Icons.navigate_next),
             onTap: () => launchUrl(ref, Uri.https(account.host, 'reversi')),
           ),
