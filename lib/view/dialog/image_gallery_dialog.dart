@@ -144,7 +144,7 @@ class ImageGalleryDialog extends HookConsumerWidget {
                             ),
                           ),
                       SizedBox.square(
-                        dimension: 20.0,
+                        dimension: 32.0,
                         child: CircularProgressIndicator(
                           value: switch (event) {
                             ImageChunkEvent(

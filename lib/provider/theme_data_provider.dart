@@ -107,6 +107,12 @@ ThemeData themeData(Ref ref, Brightness brightness) {
     ),
     sliderTheme: const SliderThemeData(
       showValueIndicator: ShowValueIndicator.always,
+      // ignore: deprecated_member_use
+      year2023: false,
+    ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(
+      // ignore: deprecated_member_use
+      year2023: false,
     ),
     pageTransitionsTheme: PageTransitionsTheme(
       builders: {
