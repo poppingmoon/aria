@@ -12,7 +12,8 @@ part of 'account.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 Account _$AccountFromJson(Map<String, dynamic> json) {
   return _Account.fromJson(json);
@@ -54,28 +55,31 @@ class _$AccountCopyWithImpl<$Res, $Val extends Account>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? host = null,
-    Object? username = freezed,
-  }) {
-    return _then(_value.copyWith(
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  $Res call({Object? host = null, Object? username = freezed}) {
+    return _then(
+      _value.copyWith(
+            host:
+                null == host
+                    ? _value.host
+                    : host // ignore: cast_nullable_to_non_nullable
+                        as String,
+            username:
+                freezed == username
+                    ? _value.username
+                    : username // ignore: cast_nullable_to_non_nullable
+                        as String?,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$AccountImplCopyWith<$Res> implements $AccountCopyWith<$Res> {
   factory _$$AccountImplCopyWith(
-          _$AccountImpl value, $Res Function(_$AccountImpl) then) =
-      __$$AccountImplCopyWithImpl<$Res>;
+    _$AccountImpl value,
+    $Res Function(_$AccountImpl) then,
+  ) = __$$AccountImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String host, String? username});
@@ -86,27 +90,29 @@ class __$$AccountImplCopyWithImpl<$Res>
     extends _$AccountCopyWithImpl<$Res, _$AccountImpl>
     implements _$$AccountImplCopyWith<$Res> {
   __$$AccountImplCopyWithImpl(
-      _$AccountImpl _value, $Res Function(_$AccountImpl) _then)
-      : super(_value, _then);
+    _$AccountImpl _value,
+    $Res Function(_$AccountImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of Account
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? host = null,
-    Object? username = freezed,
-  }) {
-    return _then(_$AccountImpl(
-      host: null == host
-          ? _value.host
-          : host // ignore: cast_nullable_to_non_nullable
-              as String,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ));
+  $Res call({Object? host = null, Object? username = freezed}) {
+    return _then(
+      _$AccountImpl(
+        host:
+            null == host
+                ? _value.host
+                : host // ignore: cast_nullable_to_non_nullable
+                    as String,
+        username:
+            freezed == username
+                ? _value.username
+                : username // ignore: cast_nullable_to_non_nullable
+                    as String?,
+      ),
+    );
   }
 }
 
@@ -147,9 +153,7 @@ class _$AccountImpl extends _Account {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$AccountImplToJson(
-      this,
-    );
+    return _$$AccountImplToJson(this);
   }
 }
 

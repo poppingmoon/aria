@@ -104,25 +104,26 @@ class PageNotifierProvider
     String? pageName,
     String? username,
   }) : this._internal(
-          () => PageNotifier()
-            ..account = account
-            ..pageId = pageId
-            ..pageName = pageName
-            ..username = username,
-          from: pageNotifierProvider,
-          name: r'pageNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$pageNotifierHash,
-          dependencies: PageNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PageNotifierFamily._allTransitiveDependencies,
-          account: account,
-          pageId: pageId,
-          pageName: pageName,
-          username: username,
-        );
+         () =>
+             PageNotifier()
+               ..account = account
+               ..pageId = pageId
+               ..pageName = pageName
+               ..username = username,
+         from: pageNotifierProvider,
+         name: r'pageNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$pageNotifierHash,
+         dependencies: PageNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             PageNotifierFamily._allTransitiveDependencies,
+         account: account,
+         pageId: pageId,
+         pageName: pageName,
+         username: username,
+       );
 
   PageNotifierProvider._internal(
     super._createNotifier, {
@@ -143,9 +144,7 @@ class PageNotifierProvider
   final String? username;
 
   @override
-  FutureOr<Page> runNotifierBuild(
-    covariant PageNotifier notifier,
-  ) {
+  FutureOr<Page> runNotifierBuild(covariant PageNotifier notifier) {
     return notifier.build(
       account,
       pageId: pageId,
@@ -159,11 +158,12 @@ class PageNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PageNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..pageId = pageId
-          ..pageName = pageName
-          ..username = username,
+        () =>
+            create()
+              ..account = account
+              ..pageId = pageId
+              ..pageName = pageName
+              ..username = username,
         from: from,
         name: null,
         dependencies: null,
@@ -233,5 +233,6 @@ class _PageNotifierProviderElement
   @override
   String? get username => (origin as PageNotifierProvider).username;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -34,9 +34,7 @@ abstract class _$MyGalleryPostsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<GalleryPost>> {
   late final Account account;
 
-  FutureOr<PaginationState<GalleryPost>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<GalleryPost>> build(Account account);
 }
 
 /// See also [MyGalleryPostsNotifier].
@@ -50,21 +48,15 @@ class MyGalleryPostsNotifierFamily
   const MyGalleryPostsNotifierFamily();
 
   /// See also [MyGalleryPostsNotifier].
-  MyGalleryPostsNotifierProvider call(
-    Account account,
-  ) {
-    return MyGalleryPostsNotifierProvider(
-      account,
-    );
+  MyGalleryPostsNotifierProvider call(Account account) {
+    return MyGalleryPostsNotifierProvider(account);
   }
 
   @override
   MyGalleryPostsNotifierProvider getProviderOverride(
     covariant MyGalleryPostsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class MyGalleryPostsNotifierFamily
 
 /// See also [MyGalleryPostsNotifier].
 class MyGalleryPostsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<MyGalleryPostsNotifier,
-        PaginationState<GalleryPost>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          MyGalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        > {
   /// See also [MyGalleryPostsNotifier].
-  MyGalleryPostsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => MyGalleryPostsNotifier()..account = account,
-          from: myGalleryPostsNotifierProvider,
-          name: r'myGalleryPostsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$myGalleryPostsNotifierHash,
-          dependencies: MyGalleryPostsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MyGalleryPostsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  MyGalleryPostsNotifierProvider(Account account)
+    : this._internal(
+        () => MyGalleryPostsNotifier()..account = account,
+        from: myGalleryPostsNotifierProvider,
+        name: r'myGalleryPostsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$myGalleryPostsNotifierHash,
+        dependencies: MyGalleryPostsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MyGalleryPostsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   MyGalleryPostsNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class MyGalleryPostsNotifierProvider
   FutureOr<PaginationState<GalleryPost>> runNotifierBuild(
     covariant MyGalleryPostsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,8 +133,11 @@ class MyGalleryPostsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<MyGalleryPostsNotifier,
-      PaginationState<GalleryPost>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    MyGalleryPostsNotifier,
+    PaginationState<GalleryPost>
+  >
+  createElement() {
     return _MyGalleryPostsNotifierProviderElement(this);
   }
 
@@ -169,12 +164,17 @@ mixin MyGalleryPostsNotifierRef
 }
 
 class _MyGalleryPostsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<MyGalleryPostsNotifier,
-        PaginationState<GalleryPost>> with MyGalleryPostsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          MyGalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        >
+    with MyGalleryPostsNotifierRef {
   _MyGalleryPostsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as MyGalleryPostsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

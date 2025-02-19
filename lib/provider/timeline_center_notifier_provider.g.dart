@@ -34,9 +34,7 @@ abstract class _$TimelineCenterNotifier
     extends BuildlessAutoDisposeNotifier<String?> {
   late final TabSettings tabSettings;
 
-  String? build(
-    TabSettings tabSettings,
-  );
+  String? build(TabSettings tabSettings);
 }
 
 /// See also [TimelineCenterNotifier].
@@ -49,21 +47,15 @@ class TimelineCenterNotifierFamily extends Family<String?> {
   const TimelineCenterNotifierFamily();
 
   /// See also [TimelineCenterNotifier].
-  TimelineCenterNotifierProvider call(
-    TabSettings tabSettings,
-  ) {
-    return TimelineCenterNotifierProvider(
-      tabSettings,
-    );
+  TimelineCenterNotifierProvider call(TabSettings tabSettings) {
+    return TimelineCenterNotifierProvider(tabSettings);
   }
 
   @override
   TimelineCenterNotifierProvider getProviderOverride(
     covariant TimelineCenterNotifierProvider provider,
   ) {
-    return call(
-      provider.tabSettings,
-    );
+    return call(provider.tabSettings);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class TimelineCenterNotifierFamily extends Family<String?> {
 class TimelineCenterNotifierProvider
     extends AutoDisposeNotifierProviderImpl<TimelineCenterNotifier, String?> {
   /// See also [TimelineCenterNotifier].
-  TimelineCenterNotifierProvider(
-    TabSettings tabSettings,
-  ) : this._internal(
-          () => TimelineCenterNotifier()..tabSettings = tabSettings,
-          from: timelineCenterNotifierProvider,
-          name: r'timelineCenterNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$timelineCenterNotifierHash,
-          dependencies: TimelineCenterNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              TimelineCenterNotifierFamily._allTransitiveDependencies,
-          tabSettings: tabSettings,
-        );
+  TimelineCenterNotifierProvider(TabSettings tabSettings)
+    : this._internal(
+        () => TimelineCenterNotifier()..tabSettings = tabSettings,
+        from: timelineCenterNotifierProvider,
+        name: r'timelineCenterNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$timelineCenterNotifierHash,
+        dependencies: TimelineCenterNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            TimelineCenterNotifierFamily._allTransitiveDependencies,
+        tabSettings: tabSettings,
+      );
 
   TimelineCenterNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +105,8 @@ class TimelineCenterNotifierProvider
   final TabSettings tabSettings;
 
   @override
-  String? runNotifierBuild(
-    covariant TimelineCenterNotifier notifier,
-  ) {
-    return notifier.build(
-      tabSettings,
-    );
+  String? runNotifierBuild(covariant TimelineCenterNotifier notifier) {
+    return notifier.build(tabSettings);
   }
 
   @override
@@ -140,7 +127,7 @@ class TimelineCenterNotifierProvider
 
   @override
   AutoDisposeNotifierProviderElement<TimelineCenterNotifier, String?>
-      createElement() {
+  createElement() {
     return _TimelineCenterNotifierProviderElement(this);
   }
 
@@ -175,5 +162,6 @@ class _TimelineCenterNotifierProviderElement
   TabSettings get tabSettings =>
       (origin as TimelineCenterNotifierProvider).tabSettings;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -6,7 +6,7 @@ part of 'endpoints_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$endpointsHash() => r'2374401fbabe9f83b8e27fc8b5cae40abe46dc06';
+String _$endpointsHash() => r'052eadc161bae2bd86e8229c1e48c6f3e3674afe';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -39,21 +39,13 @@ class EndpointsFamily extends Family<AsyncValue<List<String>>> {
   const EndpointsFamily();
 
   /// See also [endpoints].
-  EndpointsProvider call(
-    String host,
-  ) {
-    return EndpointsProvider(
-      host,
-    );
+  EndpointsProvider call(String host) {
+    return EndpointsProvider(host);
   }
 
   @override
-  EndpointsProvider getProviderOverride(
-    covariant EndpointsProvider provider,
-  ) {
-    return call(
-      provider.host,
-    );
+  EndpointsProvider getProviderOverride(covariant EndpointsProvider provider) {
+    return call(provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,19 @@ class EndpointsFamily extends Family<AsyncValue<List<String>>> {
 /// See also [endpoints].
 class EndpointsProvider extends AutoDisposeStreamProvider<List<String>> {
   /// See also [endpoints].
-  EndpointsProvider(
-    String host,
-  ) : this._internal(
-          (ref) => endpoints(
-            ref as EndpointsRef,
-            host,
-          ),
-          from: endpointsProvider,
-          name: r'endpointsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$endpointsHash,
-          dependencies: EndpointsFamily._dependencies,
-          allTransitiveDependencies: EndpointsFamily._allTransitiveDependencies,
-          host: host,
-        );
+  EndpointsProvider(String host)
+    : this._internal(
+        (ref) => endpoints(ref as EndpointsRef, host),
+        from: endpointsProvider,
+        name: r'endpointsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$endpointsHash,
+        dependencies: EndpointsFamily._dependencies,
+        allTransitiveDependencies: EndpointsFamily._allTransitiveDependencies,
+        host: host,
+      );
 
   EndpointsProvider._internal(
     super._createNotifier, {
@@ -149,11 +137,13 @@ mixin EndpointsRef on AutoDisposeStreamProviderRef<List<String>> {
 }
 
 class _EndpointsProviderElement
-    extends AutoDisposeStreamProviderElement<List<String>> with EndpointsRef {
+    extends AutoDisposeStreamProviderElement<List<String>>
+    with EndpointsRef {
   _EndpointsProviderElement(super.provider);
 
   @override
   String get host => (origin as EndpointsProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

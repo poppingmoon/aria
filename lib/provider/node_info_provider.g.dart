@@ -39,21 +39,13 @@ class NodeInfoFamily extends Family<AsyncValue<Map<String, dynamic>>> {
   const NodeInfoFamily();
 
   /// See also [nodeInfo].
-  NodeInfoProvider call(
-    String host,
-  ) {
-    return NodeInfoProvider(
-      host,
-    );
+  NodeInfoProvider call(String host) {
+    return NodeInfoProvider(host);
   }
 
   @override
-  NodeInfoProvider getProviderOverride(
-    covariant NodeInfoProvider provider,
-  ) {
-    return call(
-      provider.host,
-    );
+  NodeInfoProvider getProviderOverride(covariant NodeInfoProvider provider) {
+    return call(provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,19 @@ class NodeInfoFamily extends Family<AsyncValue<Map<String, dynamic>>> {
 /// See also [nodeInfo].
 class NodeInfoProvider extends AutoDisposeFutureProvider<Map<String, dynamic>> {
   /// See also [nodeInfo].
-  NodeInfoProvider(
-    String host,
-  ) : this._internal(
-          (ref) => nodeInfo(
-            ref as NodeInfoRef,
-            host,
-          ),
-          from: nodeInfoProvider,
-          name: r'nodeInfoProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$nodeInfoHash,
-          dependencies: NodeInfoFamily._dependencies,
-          allTransitiveDependencies: NodeInfoFamily._allTransitiveDependencies,
-          host: host,
-        );
+  NodeInfoProvider(String host)
+    : this._internal(
+        (ref) => nodeInfo(ref as NodeInfoRef, host),
+        from: nodeInfoProvider,
+        name: r'nodeInfoProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$nodeInfoHash,
+        dependencies: NodeInfoFamily._dependencies,
+        allTransitiveDependencies: NodeInfoFamily._allTransitiveDependencies,
+        host: host,
+      );
 
   NodeInfoProvider._internal(
     super._createNotifier, {
@@ -156,5 +144,6 @@ class _NodeInfoProviderElement
   @override
   String get host => (origin as NodeInfoProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

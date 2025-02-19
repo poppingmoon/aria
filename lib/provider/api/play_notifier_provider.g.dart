@@ -33,10 +33,7 @@ abstract class _$PlayNotifier extends BuildlessAutoDisposeAsyncNotifier<Flash> {
   late final Account account;
   late final String playId;
 
-  FutureOr<Flash> build(
-    Account account,
-    String playId,
-  );
+  FutureOr<Flash> build(Account account, String playId);
 }
 
 /// See also [PlayNotifier].
@@ -49,24 +46,15 @@ class PlayNotifierFamily extends Family<AsyncValue<Flash>> {
   const PlayNotifierFamily();
 
   /// See also [PlayNotifier].
-  PlayNotifierProvider call(
-    Account account,
-    String playId,
-  ) {
-    return PlayNotifierProvider(
-      account,
-      playId,
-    );
+  PlayNotifierProvider call(Account account, String playId) {
+    return PlayNotifierProvider(account, playId);
   }
 
   @override
   PlayNotifierProvider getProviderOverride(
     covariant PlayNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.playId,
-    );
+    return call(provider.account, provider.playId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -88,25 +76,24 @@ class PlayNotifierFamily extends Family<AsyncValue<Flash>> {
 class PlayNotifierProvider
     extends AutoDisposeAsyncNotifierProviderImpl<PlayNotifier, Flash> {
   /// See also [PlayNotifier].
-  PlayNotifierProvider(
-    Account account,
-    String playId,
-  ) : this._internal(
-          () => PlayNotifier()
-            ..account = account
-            ..playId = playId,
-          from: playNotifierProvider,
-          name: r'playNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$playNotifierHash,
-          dependencies: PlayNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PlayNotifierFamily._allTransitiveDependencies,
-          account: account,
-          playId: playId,
-        );
+  PlayNotifierProvider(Account account, String playId)
+    : this._internal(
+        () =>
+            PlayNotifier()
+              ..account = account
+              ..playId = playId,
+        from: playNotifierProvider,
+        name: r'playNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$playNotifierHash,
+        dependencies: PlayNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PlayNotifierFamily._allTransitiveDependencies,
+        account: account,
+        playId: playId,
+      );
 
   PlayNotifierProvider._internal(
     super._createNotifier, {
@@ -123,13 +110,8 @@ class PlayNotifierProvider
   final String playId;
 
   @override
-  FutureOr<Flash> runNotifierBuild(
-    covariant PlayNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      playId,
-    );
+  FutureOr<Flash> runNotifierBuild(covariant PlayNotifier notifier) {
+    return notifier.build(account, playId);
   }
 
   @override
@@ -137,9 +119,10 @@ class PlayNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PlayNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..playId = playId,
+        () =>
+            create()
+              ..account = account
+              ..playId = playId,
         from: from,
         name: null,
         dependencies: null,
@@ -193,5 +176,6 @@ class _PlayNotifierProviderElement
   @override
   String get playId => (origin as PlayNotifierProvider).playId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

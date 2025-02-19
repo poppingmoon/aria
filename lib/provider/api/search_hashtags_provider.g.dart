@@ -39,24 +39,15 @@ class SearchHashtagsFamily extends Family<AsyncValue<List<String>>> {
   const SearchHashtagsFamily();
 
   /// See also [searchHashtags].
-  SearchHashtagsProvider call(
-    Account account,
-    String query,
-  ) {
-    return SearchHashtagsProvider(
-      account,
-      query,
-    );
+  SearchHashtagsProvider call(Account account, String query) {
+    return SearchHashtagsProvider(account, query);
   }
 
   @override
   SearchHashtagsProvider getProviderOverride(
     covariant SearchHashtagsProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.query,
-    );
+    return call(provider.account, provider.query);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,21 @@ class SearchHashtagsFamily extends Family<AsyncValue<List<String>>> {
 /// See also [searchHashtags].
 class SearchHashtagsProvider extends AutoDisposeFutureProvider<List<String>> {
   /// See also [searchHashtags].
-  SearchHashtagsProvider(
-    Account account,
-    String query,
-  ) : this._internal(
-          (ref) => searchHashtags(
-            ref as SearchHashtagsRef,
-            account,
-            query,
-          ),
-          from: searchHashtagsProvider,
-          name: r'searchHashtagsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchHashtagsHash,
-          dependencies: SearchHashtagsFamily._dependencies,
-          allTransitiveDependencies:
-              SearchHashtagsFamily._allTransitiveDependencies,
-          account: account,
-          query: query,
-        );
+  SearchHashtagsProvider(Account account, String query)
+    : this._internal(
+        (ref) => searchHashtags(ref as SearchHashtagsRef, account, query),
+        from: searchHashtagsProvider,
+        name: r'searchHashtagsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$searchHashtagsHash,
+        dependencies: SearchHashtagsFamily._dependencies,
+        allTransitiveDependencies:
+            SearchHashtagsFamily._allTransitiveDependencies,
+        account: account,
+        query: query,
+      );
 
   SearchHashtagsProvider._internal(
     super._createNotifier, {
@@ -174,5 +159,6 @@ class _SearchHashtagsProviderElement
   @override
   String get query => (origin as SearchHashtagsProvider).query;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

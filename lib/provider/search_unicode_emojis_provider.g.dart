@@ -40,21 +40,15 @@ class SearchUnicodeEmojisFamily extends Family<Set<String>> {
   const SearchUnicodeEmojisFamily();
 
   /// See also [searchUnicodeEmojis].
-  SearchUnicodeEmojisProvider call(
-    String query,
-  ) {
-    return SearchUnicodeEmojisProvider(
-      query,
-    );
+  SearchUnicodeEmojisProvider call(String query) {
+    return SearchUnicodeEmojisProvider(query);
   }
 
   @override
   SearchUnicodeEmojisProvider getProviderOverride(
     covariant SearchUnicodeEmojisProvider provider,
   ) {
-    return call(
-      provider.query,
-    );
+    return call(provider.query);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,24 +69,20 @@ class SearchUnicodeEmojisFamily extends Family<Set<String>> {
 /// See also [searchUnicodeEmojis].
 class SearchUnicodeEmojisProvider extends AutoDisposeProvider<Set<String>> {
   /// See also [searchUnicodeEmojis].
-  SearchUnicodeEmojisProvider(
-    String query,
-  ) : this._internal(
-          (ref) => searchUnicodeEmojis(
-            ref as SearchUnicodeEmojisRef,
-            query,
-          ),
-          from: searchUnicodeEmojisProvider,
-          name: r'searchUnicodeEmojisProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchUnicodeEmojisHash,
-          dependencies: SearchUnicodeEmojisFamily._dependencies,
-          allTransitiveDependencies:
-              SearchUnicodeEmojisFamily._allTransitiveDependencies,
-          query: query,
-        );
+  SearchUnicodeEmojisProvider(String query)
+    : this._internal(
+        (ref) => searchUnicodeEmojis(ref as SearchUnicodeEmojisRef, query),
+        from: searchUnicodeEmojisProvider,
+        name: r'searchUnicodeEmojisProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$searchUnicodeEmojisHash,
+        dependencies: SearchUnicodeEmojisFamily._dependencies,
+        allTransitiveDependencies:
+            SearchUnicodeEmojisFamily._allTransitiveDependencies,
+        query: query,
+      );
 
   SearchUnicodeEmojisProvider._internal(
     super._createNotifier, {
@@ -158,5 +148,6 @@ class _SearchUnicodeEmojisProviderElement
   @override
   String get query => (origin as SearchUnicodeEmojisProvider).query;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

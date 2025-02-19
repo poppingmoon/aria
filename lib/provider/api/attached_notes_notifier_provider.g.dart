@@ -35,10 +35,7 @@ abstract class _$AttachedNotesNotifier
   late final Account account;
   late final String fileId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String fileId,
-  );
+  FutureOr<PaginationState<Note>> build(Account account, String fileId);
 }
 
 /// See also [AttachedNotesNotifier].
@@ -52,24 +49,15 @@ class AttachedNotesNotifierFamily
   const AttachedNotesNotifierFamily();
 
   /// See also [AttachedNotesNotifier].
-  AttachedNotesNotifierProvider call(
-    Account account,
-    String fileId,
-  ) {
-    return AttachedNotesNotifierProvider(
-      account,
-      fileId,
-    );
+  AttachedNotesNotifierProvider call(Account account, String fileId) {
+    return AttachedNotesNotifierProvider(account, fileId);
   }
 
   @override
   AttachedNotesNotifierProvider getProviderOverride(
     covariant AttachedNotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.fileId,
-    );
+    return call(provider.account, provider.fileId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class AttachedNotesNotifierFamily
 
 /// See also [AttachedNotesNotifier].
 class AttachedNotesNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<AttachedNotesNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          AttachedNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [AttachedNotesNotifier].
-  AttachedNotesNotifierProvider(
-    Account account,
-    String fileId,
-  ) : this._internal(
-          () => AttachedNotesNotifier()
-            ..account = account
-            ..fileId = fileId,
-          from: attachedNotesNotifierProvider,
-          name: r'attachedNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$attachedNotesNotifierHash,
-          dependencies: AttachedNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              AttachedNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          fileId: fileId,
-        );
+  AttachedNotesNotifierProvider(Account account, String fileId)
+    : this._internal(
+        () =>
+            AttachedNotesNotifier()
+              ..account = account
+              ..fileId = fileId,
+        from: attachedNotesNotifierProvider,
+        name: r'attachedNotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$attachedNotesNotifierHash,
+        dependencies: AttachedNotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            AttachedNotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        fileId: fileId,
+      );
 
   AttachedNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class AttachedNotesNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant AttachedNotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      fileId,
-    );
+    return notifier.build(account, fileId);
   }
 
   @override
@@ -141,9 +128,10 @@ class AttachedNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AttachedNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..fileId = fileId,
+        () =>
+            create()
+              ..account = account
+              ..fileId = fileId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class AttachedNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<AttachedNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    AttachedNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _AttachedNotesNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin AttachedNotesNotifierRef
 }
 
 class _AttachedNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<AttachedNotesNotifier,
-        PaginationState<Note>> with AttachedNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          AttachedNotesNotifier,
+          PaginationState<Note>
+        >
+    with AttachedNotesNotifierRef {
   _AttachedNotesNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _AttachedNotesNotifierProviderElement
   @override
   String get fileId => (origin as AttachedNotesNotifierProvider).fileId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

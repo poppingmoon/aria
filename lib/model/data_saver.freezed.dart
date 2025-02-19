@@ -12,7 +12,8 @@ part of 'data_saver.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$DataSaver {
@@ -54,20 +55,26 @@ class _$DataSaverCopyWithImpl<$Res, $Val extends DataSaver>
     Object? avatar = null,
     Object? urlPreview = null,
   }) {
-    return _then(_value.copyWith(
-      media: null == media
-          ? _value.media
-          : media // ignore: cast_nullable_to_non_nullable
-              as bool,
-      avatar: null == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as bool,
-      urlPreview: null == urlPreview
-          ? _value.urlPreview
-          : urlPreview // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            media:
+                null == media
+                    ? _value.media
+                    : media // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            avatar:
+                null == avatar
+                    ? _value.avatar
+                    : avatar // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            urlPreview:
+                null == urlPreview
+                    ? _value.urlPreview
+                    : urlPreview // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -75,8 +82,9 @@ class _$DataSaverCopyWithImpl<$Res, $Val extends DataSaver>
 abstract class _$$DataSaverImplCopyWith<$Res>
     implements $DataSaverCopyWith<$Res> {
   factory _$$DataSaverImplCopyWith(
-          _$DataSaverImpl value, $Res Function(_$DataSaverImpl) then) =
-      __$$DataSaverImplCopyWithImpl<$Res>;
+    _$DataSaverImpl value,
+    $Res Function(_$DataSaverImpl) then,
+  ) = __$$DataSaverImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool media, bool avatar, bool urlPreview});
@@ -87,8 +95,9 @@ class __$$DataSaverImplCopyWithImpl<$Res>
     extends _$DataSaverCopyWithImpl<$Res, _$DataSaverImpl>
     implements _$$DataSaverImplCopyWith<$Res> {
   __$$DataSaverImplCopyWithImpl(
-      _$DataSaverImpl _value, $Res Function(_$DataSaverImpl) _then)
-      : super(_value, _then);
+    _$DataSaverImpl _value,
+    $Res Function(_$DataSaverImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DataSaver
   /// with the given fields replaced by the non-null parameter values.
@@ -99,28 +108,36 @@ class __$$DataSaverImplCopyWithImpl<$Res>
     Object? avatar = null,
     Object? urlPreview = null,
   }) {
-    return _then(_$DataSaverImpl(
-      media: null == media
-          ? _value.media
-          : media // ignore: cast_nullable_to_non_nullable
-              as bool,
-      avatar: null == avatar
-          ? _value.avatar
-          : avatar // ignore: cast_nullable_to_non_nullable
-              as bool,
-      urlPreview: null == urlPreview
-          ? _value.urlPreview
-          : urlPreview // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$DataSaverImpl(
+        media:
+            null == media
+                ? _value.media
+                : media // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        avatar:
+            null == avatar
+                ? _value.avatar
+                : avatar // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        urlPreview:
+            null == urlPreview
+                ? _value.urlPreview
+                : urlPreview // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$DataSaverImpl implements _DataSaver {
-  const _$DataSaverImpl(
-      {required this.media, required this.avatar, required this.urlPreview});
+  const _$DataSaverImpl({
+    required this.media,
+    required this.avatar,
+    required this.urlPreview,
+  });
 
   @override
   final bool media;
@@ -158,10 +175,11 @@ class _$DataSaverImpl implements _DataSaver {
 }
 
 abstract class _DataSaver implements DataSaver {
-  const factory _DataSaver(
-      {required final bool media,
-      required final bool avatar,
-      required final bool urlPreview}) = _$DataSaverImpl;
+  const factory _DataSaver({
+    required final bool media,
+    required final bool avatar,
+    required final bool urlPreview,
+  }) = _$DataSaverImpl;
 
   @override
   bool get media;

@@ -31,13 +31,13 @@ class _SystemHash {
 }
 
 abstract class _$LikedGalleryPostsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<IGalleryLikesResponse>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<
+          PaginationState<IGalleryLikesResponse>
+        > {
   late final Account account;
 
-  FutureOr<PaginationState<IGalleryLikesResponse>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<IGalleryLikesResponse>> build(Account account);
 }
 
 /// See also [LikedGalleryPostsNotifier].
@@ -51,21 +51,15 @@ class LikedGalleryPostsNotifierFamily
   const LikedGalleryPostsNotifierFamily();
 
   /// See also [LikedGalleryPostsNotifier].
-  LikedGalleryPostsNotifierProvider call(
-    Account account,
-  ) {
-    return LikedGalleryPostsNotifierProvider(
-      account,
-    );
+  LikedGalleryPostsNotifierProvider call(Account account) {
+    return LikedGalleryPostsNotifierProvider(account);
   }
 
   @override
   LikedGalleryPostsNotifierProvider getProviderOverride(
     covariant LikedGalleryPostsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,24 +79,26 @@ class LikedGalleryPostsNotifierFamily
 
 /// See also [LikedGalleryPostsNotifier].
 class LikedGalleryPostsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<LikedGalleryPostsNotifier,
-        PaginationState<IGalleryLikesResponse>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          LikedGalleryPostsNotifier,
+          PaginationState<IGalleryLikesResponse>
+        > {
   /// See also [LikedGalleryPostsNotifier].
-  LikedGalleryPostsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => LikedGalleryPostsNotifier()..account = account,
-          from: likedGalleryPostsNotifierProvider,
-          name: r'likedGalleryPostsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$likedGalleryPostsNotifierHash,
-          dependencies: LikedGalleryPostsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              LikedGalleryPostsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  LikedGalleryPostsNotifierProvider(Account account)
+    : this._internal(
+        () => LikedGalleryPostsNotifier()..account = account,
+        from: likedGalleryPostsNotifierProvider,
+        name: r'likedGalleryPostsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$likedGalleryPostsNotifierHash,
+        dependencies: LikedGalleryPostsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            LikedGalleryPostsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   LikedGalleryPostsNotifierProvider._internal(
     super._createNotifier, {
@@ -120,9 +116,7 @@ class LikedGalleryPostsNotifierProvider
   FutureOr<PaginationState<IGalleryLikesResponse>> runNotifierBuild(
     covariant LikedGalleryPostsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -142,8 +136,11 @@ class LikedGalleryPostsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<LikedGalleryPostsNotifier,
-      PaginationState<IGalleryLikesResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    LikedGalleryPostsNotifier,
+    PaginationState<IGalleryLikesResponse>
+  >
+  createElement() {
     return _LikedGalleryPostsNotifierProviderElement(this);
   }
 
@@ -164,20 +161,27 @@ class LikedGalleryPostsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin LikedGalleryPostsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<IGalleryLikesResponse>> {
+mixin LikedGalleryPostsNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<IGalleryLikesResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _LikedGalleryPostsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<LikedGalleryPostsNotifier,
-        PaginationState<IGalleryLikesResponse>>
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          LikedGalleryPostsNotifier,
+          PaginationState<IGalleryLikesResponse>
+        >
     with LikedGalleryPostsNotifierRef {
   _LikedGalleryPostsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as LikedGalleryPostsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

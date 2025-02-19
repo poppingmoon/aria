@@ -1,13 +1,13 @@
-Aria is a client app for Misskey, a federated social media platform.
+Aria adalah aplikasi klien untuk Misskey, platform media sosial yang terfederasi.
 
-Supports most of Misskey's features
-Aria supports most of the functions available in Misskey, including viewing various types of timelines, posting notes, editing clips, lists or antennas, etc.
+Dukungan untuk sebagian besar fitur Misskey
+Aria mendukung sebagian besar dari fitur yang tersedia di Misskey, termasuk menampilkan berbagai macam jenis timeline, mengunggah note, mengedit klip, daftar, atau antena, dll.
 
-Swipe to switch between multiple accounts (of multiple servers)
-Aria makes it easy to view different timelines by saving the timelines you want to view as tabs. Adding any account's timeline to a tab makes it easy to follow topics across servers.
+Geser untuk berpindah ke akun-akun lain (dari server yang berbeda)
+Aria mempermudah melihat timeline-timeline yang berbeda dengan menyimpan timeline yang ingin anda lihat sebagai tab. Menambahkan timeline dari akun-akun yang berbeda membuat mengikuti topik-topik yang ada di tiap server menjadi lebih mudah.
 
-Based on the design of the official Misskey Web client
-The user interface is designed to look familiar, similar to the official Misskey front-end. It also supports note decoration with MFM.
+Berdasarkan desain dari klien Misskey Web official
+UI Aria didesain untuk terlihat familiar dengan front-end official dari Misskey. Aria juga mendukung dekorasi note dengan MFM.
 
-Highly customizable
-Numerous settings, such as reaction display size and display of user icons, can be changed and adjusted to your liking. Also, you can change the theme to decorate the application with your favorite colors.
+Sangat mudah disesuaikan
+Banyak pengaturan, seperti ukuran tampilan reaksi dan tampilan icon pengguna, yang dapat diganti dan diatur sesuai keinginan pengguna. Anda juga dapat mengganti tema aplikasi dengan warna favorit.

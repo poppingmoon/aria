@@ -39,21 +39,15 @@ class MisskeyColorsFamily extends Family<MisskeyColors> {
   const MisskeyColorsFamily();
 
   /// See also [misskeyColors].
-  MisskeyColorsProvider call(
-    Brightness brightness,
-  ) {
-    return MisskeyColorsProvider(
-      brightness,
-    );
+  MisskeyColorsProvider call(Brightness brightness) {
+    return MisskeyColorsProvider(brightness);
   }
 
   @override
   MisskeyColorsProvider getProviderOverride(
     covariant MisskeyColorsProvider provider,
   ) {
-    return call(
-      provider.brightness,
-    );
+    return call(provider.brightness);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class MisskeyColorsFamily extends Family<MisskeyColors> {
 /// See also [misskeyColors].
 class MisskeyColorsProvider extends AutoDisposeProvider<MisskeyColors> {
   /// See also [misskeyColors].
-  MisskeyColorsProvider(
-    Brightness brightness,
-  ) : this._internal(
-          (ref) => misskeyColors(
-            ref as MisskeyColorsRef,
-            brightness,
-          ),
-          from: misskeyColorsProvider,
-          name: r'misskeyColorsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$misskeyColorsHash,
-          dependencies: MisskeyColorsFamily._dependencies,
-          allTransitiveDependencies:
-              MisskeyColorsFamily._allTransitiveDependencies,
-          brightness: brightness,
-        );
+  MisskeyColorsProvider(Brightness brightness)
+    : this._internal(
+        (ref) => misskeyColors(ref as MisskeyColorsRef, brightness),
+        from: misskeyColorsProvider,
+        name: r'misskeyColorsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$misskeyColorsHash,
+        dependencies: MisskeyColorsFamily._dependencies,
+        allTransitiveDependencies:
+            MisskeyColorsFamily._allTransitiveDependencies,
+        brightness: brightness,
+      );
 
   MisskeyColorsProvider._internal(
     super._createNotifier, {
@@ -150,11 +140,13 @@ mixin MisskeyColorsRef on AutoDisposeProviderRef<MisskeyColors> {
 }
 
 class _MisskeyColorsProviderElement
-    extends AutoDisposeProviderElement<MisskeyColors> with MisskeyColorsRef {
+    extends AutoDisposeProviderElement<MisskeyColors>
+    with MisskeyColorsRef {
   _MisskeyColorsProviderElement(super.provider);
 
   @override
   Brightness get brightness => (origin as MisskeyColorsProvider).brightness;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

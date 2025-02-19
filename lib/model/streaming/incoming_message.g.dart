@@ -7,20 +7,23 @@ part of 'incoming_message.dart';
 // **************************************************************************
 
 _$IncomingMessageImpl _$$IncomingMessageImplFromJson(
-        Map<String, dynamic> json) =>
-    _$IncomingMessageImpl(
-      type: $enumDecodeNullable(_$IncomingMessageTypeEnumMap, json['type'],
-          unknownValue: JsonKey.nullForUndefinedEnumValue),
-      body: json['body'] as Map<String, dynamic>,
-    );
+  Map<String, dynamic> json,
+) => _$IncomingMessageImpl(
+  type: $enumDecodeNullable(
+    _$IncomingMessageTypeEnumMap,
+    json['type'],
+    unknownValue: JsonKey.nullForUndefinedEnumValue,
+  ),
+  body: json['body'] as Map<String, dynamic>,
+);
 
 Map<String, dynamic> _$$IncomingMessageImplToJson(
-        _$IncomingMessageImpl instance) =>
-    <String, dynamic>{
-      if (_$IncomingMessageTypeEnumMap[instance.type] case final value?)
-        'type': value,
-      'body': instance.body,
-    };
+  _$IncomingMessageImpl instance,
+) => <String, dynamic>{
+  if (_$IncomingMessageTypeEnumMap[instance.type] case final value?)
+    'type': value,
+  'body': instance.body,
+};
 
 const _$IncomingMessageTypeEnumMap = {
   IncomingMessageType.channel: 'channel',

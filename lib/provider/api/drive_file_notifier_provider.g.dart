@@ -34,10 +34,7 @@ abstract class _$DriveFileNotifier
   late final Account account;
   late final String fileId;
 
-  FutureOr<DriveFile> build(
-    Account account,
-    String fileId,
-  );
+  FutureOr<DriveFile> build(Account account, String fileId);
 }
 
 /// See also [DriveFileNotifier].
@@ -50,24 +47,15 @@ class DriveFileNotifierFamily extends Family<AsyncValue<DriveFile>> {
   const DriveFileNotifierFamily();
 
   /// See also [DriveFileNotifier].
-  DriveFileNotifierProvider call(
-    Account account,
-    String fileId,
-  ) {
-    return DriveFileNotifierProvider(
-      account,
-      fileId,
-    );
+  DriveFileNotifierProvider call(Account account, String fileId) {
+    return DriveFileNotifierProvider(account, fileId);
   }
 
   @override
   DriveFileNotifierProvider getProviderOverride(
     covariant DriveFileNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.fileId,
-    );
+    return call(provider.account, provider.fileId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,25 +77,24 @@ class DriveFileNotifierFamily extends Family<AsyncValue<DriveFile>> {
 class DriveFileNotifierProvider
     extends AutoDisposeAsyncNotifierProviderImpl<DriveFileNotifier, DriveFile> {
   /// See also [DriveFileNotifier].
-  DriveFileNotifierProvider(
-    Account account,
-    String fileId,
-  ) : this._internal(
-          () => DriveFileNotifier()
-            ..account = account
-            ..fileId = fileId,
-          from: driveFileNotifierProvider,
-          name: r'driveFileNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$driveFileNotifierHash,
-          dependencies: DriveFileNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              DriveFileNotifierFamily._allTransitiveDependencies,
-          account: account,
-          fileId: fileId,
-        );
+  DriveFileNotifierProvider(Account account, String fileId)
+    : this._internal(
+        () =>
+            DriveFileNotifier()
+              ..account = account
+              ..fileId = fileId,
+        from: driveFileNotifierProvider,
+        name: r'driveFileNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$driveFileNotifierHash,
+        dependencies: DriveFileNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            DriveFileNotifierFamily._allTransitiveDependencies,
+        account: account,
+        fileId: fileId,
+      );
 
   DriveFileNotifierProvider._internal(
     super._createNotifier, {
@@ -124,13 +111,8 @@ class DriveFileNotifierProvider
   final String fileId;
 
   @override
-  FutureOr<DriveFile> runNotifierBuild(
-    covariant DriveFileNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      fileId,
-    );
+  FutureOr<DriveFile> runNotifierBuild(covariant DriveFileNotifier notifier) {
+    return notifier.build(account, fileId);
   }
 
   @override
@@ -138,9 +120,10 @@ class DriveFileNotifierProvider
     return ProviderOverride(
       origin: this,
       override: DriveFileNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..fileId = fileId,
+        () =>
+            create()
+              ..account = account
+              ..fileId = fileId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,7 +137,7 @@ class DriveFileNotifierProvider
 
   @override
   AutoDisposeAsyncNotifierProviderElement<DriveFileNotifier, DriveFile>
-      createElement() {
+  createElement() {
     return _DriveFileNotifierProviderElement(this);
   }
 
@@ -186,8 +169,9 @@ mixin DriveFileNotifierRef on AutoDisposeAsyncNotifierProviderRef<DriveFile> {
 }
 
 class _DriveFileNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<DriveFileNotifier,
-        DriveFile> with DriveFileNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<DriveFileNotifier, DriveFile>
+    with DriveFileNotifierRef {
   _DriveFileNotifierProviderElement(super.provider);
 
   @override
@@ -195,5 +179,6 @@ class _DriveFileNotifierProviderElement
   @override
   String get fileId => (origin as DriveFileNotifierProvider).fileId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

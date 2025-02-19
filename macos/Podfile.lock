@@ -1,8 +1,4 @@
 PODS:
-  - audio_service (0.14.1):
-    - FlutterMacOS
-  - audio_session (0.0.1):
-    - FlutterMacOS
   - flutter_image_compress_macos (1.0.0):
     - FlutterMacOS
   - flutter_inappwebview_macos (0.0.1):
@@ -15,8 +11,6 @@ PODS:
   - FlutterMacOS (1.0.0)
   - image_editor_common (1.0.0):
     - Flutter
-    - FlutterMacOS
-  - just_audio (0.0.1):
     - FlutterMacOS
   - OrderedSet (6.0.3)
   - rust_lib_aria (0.0.1):
@@ -32,15 +26,12 @@ PODS:
     - FlutterMacOS
 
 DEPENDENCIES:
-  - audio_service (from `Flutter/ephemeral/.symlinks/plugins/audio_service/macos`)
-  - audio_session (from `Flutter/ephemeral/.symlinks/plugins/audio_session/macos`)
   - flutter_image_compress_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_image_compress_macos/macos`)
   - flutter_inappwebview_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_inappwebview_macos/macos`)
   - flutter_local_notifications (from `Flutter/ephemeral/.symlinks/plugins/flutter_local_notifications/macos`)
   - flutter_secure_storage_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - image_editor_common (from `Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos`)
-  - just_audio (from `Flutter/ephemeral/.symlinks/plugins/just_audio/macos`)
   - rust_lib_aria (from `Flutter/ephemeral/.symlinks/plugins/rust_lib_aria/macos`)
   - screen_retriever_macos (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever_macos/macos`)
   - wakelock_plus (from `Flutter/ephemeral/.symlinks/plugins/wakelock_plus/macos`)
@@ -52,10 +43,6 @@ SPEC REPOS:
     - OrderedSet
 
 EXTERNAL SOURCES:
-  audio_service:
-    :path: Flutter/ephemeral/.symlinks/plugins/audio_service/macos
-  audio_session:
-    :path: Flutter/ephemeral/.symlinks/plugins/audio_session/macos
   flutter_image_compress_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/flutter_image_compress_macos/macos
   flutter_inappwebview_macos:
@@ -68,8 +55,6 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral
   image_editor_common:
     :path: Flutter/ephemeral/.symlinks/plugins/image_editor_common/macos
-  just_audio:
-    :path: Flutter/ephemeral/.symlinks/plugins/just_audio/macos
   rust_lib_aria:
     :path: Flutter/ephemeral/.symlinks/plugins/rust_lib_aria/macos
   screen_retriever_macos:
@@ -82,15 +67,12 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/window_manager/macos
 
 SPEC CHECKSUMS:
-  audio_service: b88ff778e0e3915efd4cd1a5ad6f0beef0c950a9
-  audio_session: dea1f41890dbf1718f04a56f1d6150fd50039b72
   flutter_image_compress_macos: c26c3c13ea0f28ae6dea4e139b3292e7729f99f1
   flutter_inappwebview_macos: bdf207b8f4ebd58e86ae06cd96b147de99a67c9b
   flutter_local_notifications: 7062189aabf7f50938a7b8b6614ffa97656eb0bf
   flutter_secure_storage_macos: c2754d3483d20bb207bb9e5a14f1b8e771abcdb9
   FlutterMacOS: 8f6f14fa908a6fb3fba0cd85dbd81ec4b251fb24
   image_editor_common: 1b11f59fad8909bafcdaa0f31cc9373425b58600
-  just_audio: 9b67ca7b97c61cfc9784ea23cd8cc55eb226d489
   OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
   rust_lib_aria: 793a1cb9897092ee3e848adb8d284dee13466e34
   screen_retriever_macos: 776e0fa5d42c6163d2bf772d22478df4b302b161

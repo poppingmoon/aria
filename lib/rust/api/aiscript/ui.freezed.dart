@@ -12,7 +12,8 @@ part of 'ui.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$AsUiComponent {
@@ -33,8 +34,7 @@ mixin _$AsUiComponent {
     required TResult Function(AsUiFolder field0) folder,
     required TResult Function(AsUiPostFormButton field0) postFormButton,
     required TResult Function(AsUiPostForm field0) postForm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(AsUiRoot field0)? root,
@@ -51,8 +51,7 @@ mixin _$AsUiComponent {
     TResult? Function(AsUiFolder field0)? folder,
     TResult? Function(AsUiPostFormButton field0)? postFormButton,
     TResult? Function(AsUiPostForm field0)? postForm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(AsUiRoot field0)? root,
@@ -70,8 +69,7 @@ mixin _$AsUiComponent {
     TResult Function(AsUiPostFormButton field0)? postFormButton,
     TResult Function(AsUiPostForm field0)? postForm,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AsUiComponent_Root value) root,
@@ -87,10 +85,9 @@ mixin _$AsUiComponent {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(AsUiComponent_Root value)? root,
@@ -107,8 +104,7 @@ mixin _$AsUiComponent {
     TResult? Function(AsUiComponent_Folder value)? folder,
     TResult? Function(AsUiComponent_PostFormButton value)? postFormButton,
     TResult? Function(AsUiComponent_PostForm value)? postForm,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AsUiComponent_Root value)? root,
@@ -126,15 +122,15 @@ mixin _$AsUiComponent {
     TResult Function(AsUiComponent_PostFormButton value)? postFormButton,
     TResult Function(AsUiComponent_PostForm value)? postForm,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $AsUiComponentCopyWith<$Res> {
   factory $AsUiComponentCopyWith(
-          AsUiComponent value, $Res Function(AsUiComponent) then) =
-      _$AsUiComponentCopyWithImpl<$Res, AsUiComponent>;
+    AsUiComponent value,
+    $Res Function(AsUiComponent) then,
+  ) = _$AsUiComponentCopyWithImpl<$Res, AsUiComponent>;
 }
 
 /// @nodoc
@@ -153,9 +149,10 @@ class _$AsUiComponentCopyWithImpl<$Res, $Val extends AsUiComponent>
 
 /// @nodoc
 abstract class _$$AsUiComponent_RootImplCopyWith<$Res> {
-  factory _$$AsUiComponent_RootImplCopyWith(_$AsUiComponent_RootImpl value,
-          $Res Function(_$AsUiComponent_RootImpl) then) =
-      __$$AsUiComponent_RootImplCopyWithImpl<$Res>;
+  factory _$$AsUiComponent_RootImplCopyWith(
+    _$AsUiComponent_RootImpl value,
+    $Res Function(_$AsUiComponent_RootImpl) then,
+  ) = __$$AsUiComponent_RootImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiRoot field0});
 }
@@ -164,23 +161,24 @@ abstract class _$$AsUiComponent_RootImplCopyWith<$Res> {
 class __$$AsUiComponent_RootImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_RootImpl>
     implements _$$AsUiComponent_RootImplCopyWith<$Res> {
-  __$$AsUiComponent_RootImplCopyWithImpl(_$AsUiComponent_RootImpl _value,
-      $Res Function(_$AsUiComponent_RootImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_RootImplCopyWithImpl(
+    _$AsUiComponent_RootImpl _value,
+    $Res Function(_$AsUiComponent_RootImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_RootImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiRoot,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_RootImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiRoot,
+      ),
+    );
   }
 }
 
@@ -215,7 +213,9 @@ class _$AsUiComponent_RootImpl extends AsUiComponent_Root {
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_RootImplCopyWith<_$AsUiComponent_RootImpl> get copyWith =>
       __$$AsUiComponent_RootImplCopyWithImpl<_$AsUiComponent_RootImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -300,7 +300,7 @@ class _$AsUiComponent_RootImpl extends AsUiComponent_Root {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return root(this);
@@ -371,9 +371,9 @@ abstract class AsUiComponent_Root extends AsUiComponent {
 /// @nodoc
 abstract class _$$AsUiComponent_ContainerImplCopyWith<$Res> {
   factory _$$AsUiComponent_ContainerImplCopyWith(
-          _$AsUiComponent_ContainerImpl value,
-          $Res Function(_$AsUiComponent_ContainerImpl) then) =
-      __$$AsUiComponent_ContainerImplCopyWithImpl<$Res>;
+    _$AsUiComponent_ContainerImpl value,
+    $Res Function(_$AsUiComponent_ContainerImpl) then,
+  ) = __$$AsUiComponent_ContainerImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiContainer field0});
 }
@@ -383,23 +383,23 @@ class __$$AsUiComponent_ContainerImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_ContainerImpl>
     implements _$$AsUiComponent_ContainerImplCopyWith<$Res> {
   __$$AsUiComponent_ContainerImplCopyWithImpl(
-      _$AsUiComponent_ContainerImpl _value,
-      $Res Function(_$AsUiComponent_ContainerImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_ContainerImpl _value,
+    $Res Function(_$AsUiComponent_ContainerImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_ContainerImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiContainer,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_ContainerImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiContainer,
+      ),
+    );
   }
 }
 
@@ -433,8 +433,9 @@ class _$AsUiComponent_ContainerImpl extends AsUiComponent_Container {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ContainerImplCopyWith<_$AsUiComponent_ContainerImpl>
-      get copyWith => __$$AsUiComponent_ContainerImplCopyWithImpl<
-          _$AsUiComponent_ContainerImpl>(this, _$identity);
+  get copyWith => __$$AsUiComponent_ContainerImplCopyWithImpl<
+    _$AsUiComponent_ContainerImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -519,7 +520,7 @@ class _$AsUiComponent_ContainerImpl extends AsUiComponent_Container {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return container(this);
@@ -584,14 +585,15 @@ abstract class AsUiComponent_Container extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ContainerImplCopyWith<_$AsUiComponent_ContainerImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_TextImplCopyWith<$Res> {
-  factory _$$AsUiComponent_TextImplCopyWith(_$AsUiComponent_TextImpl value,
-          $Res Function(_$AsUiComponent_TextImpl) then) =
-      __$$AsUiComponent_TextImplCopyWithImpl<$Res>;
+  factory _$$AsUiComponent_TextImplCopyWith(
+    _$AsUiComponent_TextImpl value,
+    $Res Function(_$AsUiComponent_TextImpl) then,
+  ) = __$$AsUiComponent_TextImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiText field0});
 }
@@ -600,23 +602,24 @@ abstract class _$$AsUiComponent_TextImplCopyWith<$Res> {
 class __$$AsUiComponent_TextImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_TextImpl>
     implements _$$AsUiComponent_TextImplCopyWith<$Res> {
-  __$$AsUiComponent_TextImplCopyWithImpl(_$AsUiComponent_TextImpl _value,
-      $Res Function(_$AsUiComponent_TextImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_TextImplCopyWithImpl(
+    _$AsUiComponent_TextImpl _value,
+    $Res Function(_$AsUiComponent_TextImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_TextImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiText,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_TextImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiText,
+      ),
+    );
   }
 }
 
@@ -651,7 +654,9 @@ class _$AsUiComponent_TextImpl extends AsUiComponent_Text {
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_TextImplCopyWith<_$AsUiComponent_TextImpl> get copyWith =>
       __$$AsUiComponent_TextImplCopyWithImpl<_$AsUiComponent_TextImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -736,7 +741,7 @@ class _$AsUiComponent_TextImpl extends AsUiComponent_Text {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return text(this);
@@ -806,9 +811,10 @@ abstract class AsUiComponent_Text extends AsUiComponent {
 
 /// @nodoc
 abstract class _$$AsUiComponent_MfmImplCopyWith<$Res> {
-  factory _$$AsUiComponent_MfmImplCopyWith(_$AsUiComponent_MfmImpl value,
-          $Res Function(_$AsUiComponent_MfmImpl) then) =
-      __$$AsUiComponent_MfmImplCopyWithImpl<$Res>;
+  factory _$$AsUiComponent_MfmImplCopyWith(
+    _$AsUiComponent_MfmImpl value,
+    $Res Function(_$AsUiComponent_MfmImpl) then,
+  ) = __$$AsUiComponent_MfmImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiMfm field0});
 }
@@ -817,23 +823,24 @@ abstract class _$$AsUiComponent_MfmImplCopyWith<$Res> {
 class __$$AsUiComponent_MfmImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_MfmImpl>
     implements _$$AsUiComponent_MfmImplCopyWith<$Res> {
-  __$$AsUiComponent_MfmImplCopyWithImpl(_$AsUiComponent_MfmImpl _value,
-      $Res Function(_$AsUiComponent_MfmImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_MfmImplCopyWithImpl(
+    _$AsUiComponent_MfmImpl _value,
+    $Res Function(_$AsUiComponent_MfmImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_MfmImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiMfm,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_MfmImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiMfm,
+      ),
+    );
   }
 }
 
@@ -868,7 +875,9 @@ class _$AsUiComponent_MfmImpl extends AsUiComponent_Mfm {
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_MfmImplCopyWith<_$AsUiComponent_MfmImpl> get copyWith =>
       __$$AsUiComponent_MfmImplCopyWithImpl<_$AsUiComponent_MfmImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -953,7 +962,7 @@ class _$AsUiComponent_MfmImpl extends AsUiComponent_Mfm {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return mfm(this);
@@ -1023,9 +1032,10 @@ abstract class AsUiComponent_Mfm extends AsUiComponent {
 
 /// @nodoc
 abstract class _$$AsUiComponent_ButtonImplCopyWith<$Res> {
-  factory _$$AsUiComponent_ButtonImplCopyWith(_$AsUiComponent_ButtonImpl value,
-          $Res Function(_$AsUiComponent_ButtonImpl) then) =
-      __$$AsUiComponent_ButtonImplCopyWithImpl<$Res>;
+  factory _$$AsUiComponent_ButtonImplCopyWith(
+    _$AsUiComponent_ButtonImpl value,
+    $Res Function(_$AsUiComponent_ButtonImpl) then,
+  ) = __$$AsUiComponent_ButtonImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiButton field0});
 }
@@ -1034,23 +1044,24 @@ abstract class _$$AsUiComponent_ButtonImplCopyWith<$Res> {
 class __$$AsUiComponent_ButtonImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_ButtonImpl>
     implements _$$AsUiComponent_ButtonImplCopyWith<$Res> {
-  __$$AsUiComponent_ButtonImplCopyWithImpl(_$AsUiComponent_ButtonImpl _value,
-      $Res Function(_$AsUiComponent_ButtonImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_ButtonImplCopyWithImpl(
+    _$AsUiComponent_ButtonImpl _value,
+    $Res Function(_$AsUiComponent_ButtonImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_ButtonImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiButton,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_ButtonImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiButton,
+      ),
+    );
   }
 }
 
@@ -1084,9 +1095,11 @@ class _$AsUiComponent_ButtonImpl extends AsUiComponent_Button {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ButtonImplCopyWith<_$AsUiComponent_ButtonImpl>
-      get copyWith =>
-          __$$AsUiComponent_ButtonImplCopyWithImpl<_$AsUiComponent_ButtonImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$AsUiComponent_ButtonImplCopyWithImpl<_$AsUiComponent_ButtonImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1171,7 +1184,7 @@ class _$AsUiComponent_ButtonImpl extends AsUiComponent_Button {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return button(this);
@@ -1236,15 +1249,15 @@ abstract class AsUiComponent_Button extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ButtonImplCopyWith<_$AsUiComponent_ButtonImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_ButtonsImplCopyWith<$Res> {
   factory _$$AsUiComponent_ButtonsImplCopyWith(
-          _$AsUiComponent_ButtonsImpl value,
-          $Res Function(_$AsUiComponent_ButtonsImpl) then) =
-      __$$AsUiComponent_ButtonsImplCopyWithImpl<$Res>;
+    _$AsUiComponent_ButtonsImpl value,
+    $Res Function(_$AsUiComponent_ButtonsImpl) then,
+  ) = __$$AsUiComponent_ButtonsImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiButtons field0});
 }
@@ -1253,23 +1266,24 @@ abstract class _$$AsUiComponent_ButtonsImplCopyWith<$Res> {
 class __$$AsUiComponent_ButtonsImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_ButtonsImpl>
     implements _$$AsUiComponent_ButtonsImplCopyWith<$Res> {
-  __$$AsUiComponent_ButtonsImplCopyWithImpl(_$AsUiComponent_ButtonsImpl _value,
-      $Res Function(_$AsUiComponent_ButtonsImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_ButtonsImplCopyWithImpl(
+    _$AsUiComponent_ButtonsImpl _value,
+    $Res Function(_$AsUiComponent_ButtonsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_ButtonsImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiButtons,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_ButtonsImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiButtons,
+      ),
+    );
   }
 }
 
@@ -1303,8 +1317,11 @@ class _$AsUiComponent_ButtonsImpl extends AsUiComponent_Buttons {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ButtonsImplCopyWith<_$AsUiComponent_ButtonsImpl>
-      get copyWith => __$$AsUiComponent_ButtonsImplCopyWithImpl<
-          _$AsUiComponent_ButtonsImpl>(this, _$identity);
+  get copyWith =>
+      __$$AsUiComponent_ButtonsImplCopyWithImpl<_$AsUiComponent_ButtonsImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1389,7 +1406,7 @@ class _$AsUiComponent_ButtonsImpl extends AsUiComponent_Buttons {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return buttons(this);
@@ -1454,15 +1471,15 @@ abstract class AsUiComponent_Buttons extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ButtonsImplCopyWith<_$AsUiComponent_ButtonsImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_ToggleSwitchImplCopyWith<$Res> {
   factory _$$AsUiComponent_ToggleSwitchImplCopyWith(
-          _$AsUiComponent_ToggleSwitchImpl value,
-          $Res Function(_$AsUiComponent_ToggleSwitchImpl) then) =
-      __$$AsUiComponent_ToggleSwitchImplCopyWithImpl<$Res>;
+    _$AsUiComponent_ToggleSwitchImpl value,
+    $Res Function(_$AsUiComponent_ToggleSwitchImpl) then,
+  ) = __$$AsUiComponent_ToggleSwitchImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiSwitch field0});
 }
@@ -1472,23 +1489,23 @@ class __$$AsUiComponent_ToggleSwitchImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_ToggleSwitchImpl>
     implements _$$AsUiComponent_ToggleSwitchImplCopyWith<$Res> {
   __$$AsUiComponent_ToggleSwitchImplCopyWithImpl(
-      _$AsUiComponent_ToggleSwitchImpl _value,
-      $Res Function(_$AsUiComponent_ToggleSwitchImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_ToggleSwitchImpl _value,
+    $Res Function(_$AsUiComponent_ToggleSwitchImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_ToggleSwitchImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiSwitch,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_ToggleSwitchImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiSwitch,
+      ),
+    );
   }
 }
 
@@ -1522,8 +1539,9 @@ class _$AsUiComponent_ToggleSwitchImpl extends AsUiComponent_ToggleSwitch {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_ToggleSwitchImplCopyWith<_$AsUiComponent_ToggleSwitchImpl>
-      get copyWith => __$$AsUiComponent_ToggleSwitchImplCopyWithImpl<
-          _$AsUiComponent_ToggleSwitchImpl>(this, _$identity);
+  get copyWith => __$$AsUiComponent_ToggleSwitchImplCopyWithImpl<
+    _$AsUiComponent_ToggleSwitchImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1608,7 +1626,7 @@ class _$AsUiComponent_ToggleSwitchImpl extends AsUiComponent_ToggleSwitch {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return toggleSwitch(this);
@@ -1673,15 +1691,15 @@ abstract class AsUiComponent_ToggleSwitch extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_ToggleSwitchImplCopyWith<_$AsUiComponent_ToggleSwitchImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_TextareaImplCopyWith<$Res> {
   factory _$$AsUiComponent_TextareaImplCopyWith(
-          _$AsUiComponent_TextareaImpl value,
-          $Res Function(_$AsUiComponent_TextareaImpl) then) =
-      __$$AsUiComponent_TextareaImplCopyWithImpl<$Res>;
+    _$AsUiComponent_TextareaImpl value,
+    $Res Function(_$AsUiComponent_TextareaImpl) then,
+  ) = __$$AsUiComponent_TextareaImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiTextarea field0});
 }
@@ -1691,23 +1709,23 @@ class __$$AsUiComponent_TextareaImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_TextareaImpl>
     implements _$$AsUiComponent_TextareaImplCopyWith<$Res> {
   __$$AsUiComponent_TextareaImplCopyWithImpl(
-      _$AsUiComponent_TextareaImpl _value,
-      $Res Function(_$AsUiComponent_TextareaImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_TextareaImpl _value,
+    $Res Function(_$AsUiComponent_TextareaImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_TextareaImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiTextarea,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_TextareaImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiTextarea,
+      ),
+    );
   }
 }
 
@@ -1741,8 +1759,11 @@ class _$AsUiComponent_TextareaImpl extends AsUiComponent_Textarea {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_TextareaImplCopyWith<_$AsUiComponent_TextareaImpl>
-      get copyWith => __$$AsUiComponent_TextareaImplCopyWithImpl<
-          _$AsUiComponent_TextareaImpl>(this, _$identity);
+  get copyWith =>
+      __$$AsUiComponent_TextareaImplCopyWithImpl<_$AsUiComponent_TextareaImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -1827,7 +1848,7 @@ class _$AsUiComponent_TextareaImpl extends AsUiComponent_Textarea {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return textarea(this);
@@ -1892,15 +1913,15 @@ abstract class AsUiComponent_Textarea extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_TextareaImplCopyWith<_$AsUiComponent_TextareaImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_TextInputImplCopyWith<$Res> {
   factory _$$AsUiComponent_TextInputImplCopyWith(
-          _$AsUiComponent_TextInputImpl value,
-          $Res Function(_$AsUiComponent_TextInputImpl) then) =
-      __$$AsUiComponent_TextInputImplCopyWithImpl<$Res>;
+    _$AsUiComponent_TextInputImpl value,
+    $Res Function(_$AsUiComponent_TextInputImpl) then,
+  ) = __$$AsUiComponent_TextInputImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiTextInput field0});
 }
@@ -1910,23 +1931,23 @@ class __$$AsUiComponent_TextInputImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_TextInputImpl>
     implements _$$AsUiComponent_TextInputImplCopyWith<$Res> {
   __$$AsUiComponent_TextInputImplCopyWithImpl(
-      _$AsUiComponent_TextInputImpl _value,
-      $Res Function(_$AsUiComponent_TextInputImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_TextInputImpl _value,
+    $Res Function(_$AsUiComponent_TextInputImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_TextInputImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiTextInput,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_TextInputImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiTextInput,
+      ),
+    );
   }
 }
 
@@ -1960,8 +1981,9 @@ class _$AsUiComponent_TextInputImpl extends AsUiComponent_TextInput {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_TextInputImplCopyWith<_$AsUiComponent_TextInputImpl>
-      get copyWith => __$$AsUiComponent_TextInputImplCopyWithImpl<
-          _$AsUiComponent_TextInputImpl>(this, _$identity);
+  get copyWith => __$$AsUiComponent_TextInputImplCopyWithImpl<
+    _$AsUiComponent_TextInputImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2046,7 +2068,7 @@ class _$AsUiComponent_TextInputImpl extends AsUiComponent_TextInput {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return textInput(this);
@@ -2111,15 +2133,15 @@ abstract class AsUiComponent_TextInput extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_TextInputImplCopyWith<_$AsUiComponent_TextInputImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_NumberInputImplCopyWith<$Res> {
   factory _$$AsUiComponent_NumberInputImplCopyWith(
-          _$AsUiComponent_NumberInputImpl value,
-          $Res Function(_$AsUiComponent_NumberInputImpl) then) =
-      __$$AsUiComponent_NumberInputImplCopyWithImpl<$Res>;
+    _$AsUiComponent_NumberInputImpl value,
+    $Res Function(_$AsUiComponent_NumberInputImpl) then,
+  ) = __$$AsUiComponent_NumberInputImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiNumberInput field0});
 }
@@ -2129,23 +2151,23 @@ class __$$AsUiComponent_NumberInputImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_NumberInputImpl>
     implements _$$AsUiComponent_NumberInputImplCopyWith<$Res> {
   __$$AsUiComponent_NumberInputImplCopyWithImpl(
-      _$AsUiComponent_NumberInputImpl _value,
-      $Res Function(_$AsUiComponent_NumberInputImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_NumberInputImpl _value,
+    $Res Function(_$AsUiComponent_NumberInputImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_NumberInputImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiNumberInput,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_NumberInputImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiNumberInput,
+      ),
+    );
   }
 }
 
@@ -2179,8 +2201,9 @@ class _$AsUiComponent_NumberInputImpl extends AsUiComponent_NumberInput {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_NumberInputImplCopyWith<_$AsUiComponent_NumberInputImpl>
-      get copyWith => __$$AsUiComponent_NumberInputImplCopyWithImpl<
-          _$AsUiComponent_NumberInputImpl>(this, _$identity);
+  get copyWith => __$$AsUiComponent_NumberInputImplCopyWithImpl<
+    _$AsUiComponent_NumberInputImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2265,7 +2288,7 @@ class _$AsUiComponent_NumberInputImpl extends AsUiComponent_NumberInput {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return numberInput(this);
@@ -2330,14 +2353,15 @@ abstract class AsUiComponent_NumberInput extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_NumberInputImplCopyWith<_$AsUiComponent_NumberInputImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_SelectImplCopyWith<$Res> {
-  factory _$$AsUiComponent_SelectImplCopyWith(_$AsUiComponent_SelectImpl value,
-          $Res Function(_$AsUiComponent_SelectImpl) then) =
-      __$$AsUiComponent_SelectImplCopyWithImpl<$Res>;
+  factory _$$AsUiComponent_SelectImplCopyWith(
+    _$AsUiComponent_SelectImpl value,
+    $Res Function(_$AsUiComponent_SelectImpl) then,
+  ) = __$$AsUiComponent_SelectImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiSelect field0});
 }
@@ -2346,23 +2370,24 @@ abstract class _$$AsUiComponent_SelectImplCopyWith<$Res> {
 class __$$AsUiComponent_SelectImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_SelectImpl>
     implements _$$AsUiComponent_SelectImplCopyWith<$Res> {
-  __$$AsUiComponent_SelectImplCopyWithImpl(_$AsUiComponent_SelectImpl _value,
-      $Res Function(_$AsUiComponent_SelectImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_SelectImplCopyWithImpl(
+    _$AsUiComponent_SelectImpl _value,
+    $Res Function(_$AsUiComponent_SelectImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_SelectImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiSelect,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_SelectImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiSelect,
+      ),
+    );
   }
 }
 
@@ -2396,9 +2421,11 @@ class _$AsUiComponent_SelectImpl extends AsUiComponent_Select {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_SelectImplCopyWith<_$AsUiComponent_SelectImpl>
-      get copyWith =>
-          __$$AsUiComponent_SelectImplCopyWithImpl<_$AsUiComponent_SelectImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$AsUiComponent_SelectImplCopyWithImpl<_$AsUiComponent_SelectImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -2483,7 +2510,7 @@ class _$AsUiComponent_SelectImpl extends AsUiComponent_Select {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return select(this);
@@ -2548,14 +2575,15 @@ abstract class AsUiComponent_Select extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_SelectImplCopyWith<_$AsUiComponent_SelectImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_FolderImplCopyWith<$Res> {
-  factory _$$AsUiComponent_FolderImplCopyWith(_$AsUiComponent_FolderImpl value,
-          $Res Function(_$AsUiComponent_FolderImpl) then) =
-      __$$AsUiComponent_FolderImplCopyWithImpl<$Res>;
+  factory _$$AsUiComponent_FolderImplCopyWith(
+    _$AsUiComponent_FolderImpl value,
+    $Res Function(_$AsUiComponent_FolderImpl) then,
+  ) = __$$AsUiComponent_FolderImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiFolder field0});
 }
@@ -2564,23 +2592,24 @@ abstract class _$$AsUiComponent_FolderImplCopyWith<$Res> {
 class __$$AsUiComponent_FolderImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_FolderImpl>
     implements _$$AsUiComponent_FolderImplCopyWith<$Res> {
-  __$$AsUiComponent_FolderImplCopyWithImpl(_$AsUiComponent_FolderImpl _value,
-      $Res Function(_$AsUiComponent_FolderImpl) _then)
-      : super(_value, _then);
+  __$$AsUiComponent_FolderImplCopyWithImpl(
+    _$AsUiComponent_FolderImpl _value,
+    $Res Function(_$AsUiComponent_FolderImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_FolderImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiFolder,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_FolderImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiFolder,
+      ),
+    );
   }
 }
 
@@ -2614,9 +2643,11 @@ class _$AsUiComponent_FolderImpl extends AsUiComponent_Folder {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_FolderImplCopyWith<_$AsUiComponent_FolderImpl>
-      get copyWith =>
-          __$$AsUiComponent_FolderImplCopyWithImpl<_$AsUiComponent_FolderImpl>(
-              this, _$identity);
+  get copyWith =>
+      __$$AsUiComponent_FolderImplCopyWithImpl<_$AsUiComponent_FolderImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -2701,7 +2732,7 @@ class _$AsUiComponent_FolderImpl extends AsUiComponent_Folder {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return folder(this);
@@ -2766,42 +2797,42 @@ abstract class AsUiComponent_Folder extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_FolderImplCopyWith<_$AsUiComponent_FolderImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_PostFormButtonImplCopyWith<$Res> {
   factory _$$AsUiComponent_PostFormButtonImplCopyWith(
-          _$AsUiComponent_PostFormButtonImpl value,
-          $Res Function(_$AsUiComponent_PostFormButtonImpl) then) =
-      __$$AsUiComponent_PostFormButtonImplCopyWithImpl<$Res>;
+    _$AsUiComponent_PostFormButtonImpl value,
+    $Res Function(_$AsUiComponent_PostFormButtonImpl) then,
+  ) = __$$AsUiComponent_PostFormButtonImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiPostFormButton field0});
 }
 
 /// @nodoc
 class __$$AsUiComponent_PostFormButtonImplCopyWithImpl<$Res>
-    extends _$AsUiComponentCopyWithImpl<$Res,
-        _$AsUiComponent_PostFormButtonImpl>
+    extends
+        _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_PostFormButtonImpl>
     implements _$$AsUiComponent_PostFormButtonImplCopyWith<$Res> {
   __$$AsUiComponent_PostFormButtonImplCopyWithImpl(
-      _$AsUiComponent_PostFormButtonImpl _value,
-      $Res Function(_$AsUiComponent_PostFormButtonImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_PostFormButtonImpl _value,
+    $Res Function(_$AsUiComponent_PostFormButtonImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_PostFormButtonImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiPostFormButton,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_PostFormButtonImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiPostFormButton,
+      ),
+    );
   }
 }
 
@@ -2835,9 +2866,11 @@ class _$AsUiComponent_PostFormButtonImpl extends AsUiComponent_PostFormButton {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_PostFormButtonImplCopyWith<
-          _$AsUiComponent_PostFormButtonImpl>
-      get copyWith => __$$AsUiComponent_PostFormButtonImplCopyWithImpl<
-          _$AsUiComponent_PostFormButtonImpl>(this, _$identity);
+    _$AsUiComponent_PostFormButtonImpl
+  >
+  get copyWith => __$$AsUiComponent_PostFormButtonImplCopyWithImpl<
+    _$AsUiComponent_PostFormButtonImpl
+  >(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -2922,7 +2955,7 @@ class _$AsUiComponent_PostFormButtonImpl extends AsUiComponent_PostFormButton {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return postFormButton(this);
@@ -2987,16 +3020,17 @@ abstract class AsUiComponent_PostFormButton extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_PostFormButtonImplCopyWith<
-          _$AsUiComponent_PostFormButtonImpl>
-      get copyWith => throw _privateConstructorUsedError;
+    _$AsUiComponent_PostFormButtonImpl
+  >
+  get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class _$$AsUiComponent_PostFormImplCopyWith<$Res> {
   factory _$$AsUiComponent_PostFormImplCopyWith(
-          _$AsUiComponent_PostFormImpl value,
-          $Res Function(_$AsUiComponent_PostFormImpl) then) =
-      __$$AsUiComponent_PostFormImplCopyWithImpl<$Res>;
+    _$AsUiComponent_PostFormImpl value,
+    $Res Function(_$AsUiComponent_PostFormImpl) then,
+  ) = __$$AsUiComponent_PostFormImplCopyWithImpl<$Res>;
   @useResult
   $Res call({AsUiPostForm field0});
 }
@@ -3006,23 +3040,23 @@ class __$$AsUiComponent_PostFormImplCopyWithImpl<$Res>
     extends _$AsUiComponentCopyWithImpl<$Res, _$AsUiComponent_PostFormImpl>
     implements _$$AsUiComponent_PostFormImplCopyWith<$Res> {
   __$$AsUiComponent_PostFormImplCopyWithImpl(
-      _$AsUiComponent_PostFormImpl _value,
-      $Res Function(_$AsUiComponent_PostFormImpl) _then)
-      : super(_value, _then);
+    _$AsUiComponent_PostFormImpl _value,
+    $Res Function(_$AsUiComponent_PostFormImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AsUiComponent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? field0 = null,
-  }) {
-    return _then(_$AsUiComponent_PostFormImpl(
-      null == field0
-          ? _value.field0
-          : field0 // ignore: cast_nullable_to_non_nullable
-              as AsUiPostForm,
-    ));
+  $Res call({Object? field0 = null}) {
+    return _then(
+      _$AsUiComponent_PostFormImpl(
+        null == field0
+            ? _value.field0
+            : field0 // ignore: cast_nullable_to_non_nullable
+                as AsUiPostForm,
+      ),
+    );
   }
 }
 
@@ -3056,8 +3090,11 @@ class _$AsUiComponent_PostFormImpl extends AsUiComponent_PostForm {
   @override
   @pragma('vm:prefer-inline')
   _$$AsUiComponent_PostFormImplCopyWith<_$AsUiComponent_PostFormImpl>
-      get copyWith => __$$AsUiComponent_PostFormImplCopyWithImpl<
-          _$AsUiComponent_PostFormImpl>(this, _$identity);
+  get copyWith =>
+      __$$AsUiComponent_PostFormImplCopyWithImpl<_$AsUiComponent_PostFormImpl>(
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -3142,7 +3179,7 @@ class _$AsUiComponent_PostFormImpl extends AsUiComponent_PostForm {
     required TResult Function(AsUiComponent_Select value) select,
     required TResult Function(AsUiComponent_Folder value) folder,
     required TResult Function(AsUiComponent_PostFormButton value)
-        postFormButton,
+    postFormButton,
     required TResult Function(AsUiComponent_PostForm value) postForm,
   }) {
     return postForm(this);
@@ -3207,5 +3244,5 @@ abstract class AsUiComponent_PostForm extends AsUiComponent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AsUiComponent_PostFormImplCopyWith<_$AsUiComponent_PostFormImpl>
-      get copyWith => throw _privateConstructorUsedError;
+  get copyWith => throw _privateConstructorUsedError;
 }

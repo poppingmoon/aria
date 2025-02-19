@@ -33,9 +33,7 @@ class _SystemHash {
 abstract class _$MutedEmojisNotifier extends BuildlessNotifier<Set<String>> {
   late final Account account;
 
-  Set<String> build(
-    Account account,
-  );
+  Set<String> build(Account account);
 }
 
 /// See also [MutedEmojisNotifier].
@@ -48,21 +46,15 @@ class MutedEmojisNotifierFamily extends Family<Set<String>> {
   const MutedEmojisNotifierFamily();
 
   /// See also [MutedEmojisNotifier].
-  MutedEmojisNotifierProvider call(
-    Account account,
-  ) {
-    return MutedEmojisNotifierProvider(
-      account,
-    );
+  MutedEmojisNotifierProvider call(Account account) {
+    return MutedEmojisNotifierProvider(account);
   }
 
   @override
   MutedEmojisNotifierProvider getProviderOverride(
     covariant MutedEmojisNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,21 +76,20 @@ class MutedEmojisNotifierFamily extends Family<Set<String>> {
 class MutedEmojisNotifierProvider
     extends NotifierProviderImpl<MutedEmojisNotifier, Set<String>> {
   /// See also [MutedEmojisNotifier].
-  MutedEmojisNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => MutedEmojisNotifier()..account = account,
-          from: mutedEmojisNotifierProvider,
-          name: r'mutedEmojisNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$mutedEmojisNotifierHash,
-          dependencies: MutedEmojisNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MutedEmojisNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  MutedEmojisNotifierProvider(Account account)
+    : this._internal(
+        () => MutedEmojisNotifier()..account = account,
+        from: mutedEmojisNotifierProvider,
+        name: r'mutedEmojisNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$mutedEmojisNotifierHash,
+        dependencies: MutedEmojisNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MutedEmojisNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   MutedEmojisNotifierProvider._internal(
     super._createNotifier, {
@@ -113,12 +104,8 @@ class MutedEmojisNotifierProvider
   final Account account;
 
   @override
-  Set<String> runNotifierBuild(
-    covariant MutedEmojisNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  Set<String> runNotifierBuild(covariant MutedEmojisNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -171,5 +158,6 @@ class _MutedEmojisNotifierProviderElement
   @override
   Account get account => (origin as MutedEmojisNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

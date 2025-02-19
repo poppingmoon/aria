@@ -40,21 +40,15 @@ class ReversiInvitationsFamily extends Family<AsyncValue<List<User>>> {
   const ReversiInvitationsFamily();
 
   /// See also [reversiInvitations].
-  ReversiInvitationsProvider call(
-    Account account,
-  ) {
-    return ReversiInvitationsProvider(
-      account,
-    );
+  ReversiInvitationsProvider call(Account account) {
+    return ReversiInvitationsProvider(account);
   }
 
   @override
   ReversiInvitationsProvider getProviderOverride(
     covariant ReversiInvitationsProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,24 +69,20 @@ class ReversiInvitationsFamily extends Family<AsyncValue<List<User>>> {
 /// See also [reversiInvitations].
 class ReversiInvitationsProvider extends AutoDisposeFutureProvider<List<User>> {
   /// See also [reversiInvitations].
-  ReversiInvitationsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => reversiInvitations(
-            ref as ReversiInvitationsRef,
-            account,
-          ),
-          from: reversiInvitationsProvider,
-          name: r'reversiInvitationsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$reversiInvitationsHash,
-          dependencies: ReversiInvitationsFamily._dependencies,
-          allTransitiveDependencies:
-              ReversiInvitationsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  ReversiInvitationsProvider(Account account)
+    : this._internal(
+        (ref) => reversiInvitations(ref as ReversiInvitationsRef, account),
+        from: reversiInvitationsProvider,
+        name: r'reversiInvitationsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$reversiInvitationsHash,
+        dependencies: ReversiInvitationsFamily._dependencies,
+        allTransitiveDependencies:
+            ReversiInvitationsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   ReversiInvitationsProvider._internal(
     super._createNotifier, {
@@ -158,5 +148,6 @@ class _ReversiInvitationsProviderElement
   @override
   Account get account => (origin as ReversiInvitationsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

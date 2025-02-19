@@ -45,18 +45,11 @@ class TagUsersFamily extends Family<AsyncValue<List<UserDetailed>>> {
     UsersSortType sort = UsersSortType.followerDescendant,
     Origin? userOrigin,
   }) {
-    return TagUsersProvider(
-      account,
-      tag,
-      sort: sort,
-      userOrigin: userOrigin,
-    );
+    return TagUsersProvider(account, tag, sort: sort, userOrigin: userOrigin);
   }
 
   @override
-  TagUsersProvider getProviderOverride(
-    covariant TagUsersProvider provider,
-  ) {
+  TagUsersProvider getProviderOverride(covariant TagUsersProvider provider) {
     return call(
       provider.account,
       provider.tag,
@@ -89,26 +82,26 @@ class TagUsersProvider extends AutoDisposeFutureProvider<List<UserDetailed>> {
     UsersSortType sort = UsersSortType.followerDescendant,
     Origin? userOrigin,
   }) : this._internal(
-          (ref) => tagUsers(
-            ref as TagUsersRef,
-            account,
-            tag,
-            sort: sort,
-            userOrigin: userOrigin,
-          ),
-          from: tagUsersProvider,
-          name: r'tagUsersProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$tagUsersHash,
-          dependencies: TagUsersFamily._dependencies,
-          allTransitiveDependencies: TagUsersFamily._allTransitiveDependencies,
-          account: account,
-          tag: tag,
-          sort: sort,
-          userOrigin: userOrigin,
-        );
+         (ref) => tagUsers(
+           ref as TagUsersRef,
+           account,
+           tag,
+           sort: sort,
+           userOrigin: userOrigin,
+         ),
+         from: tagUsersProvider,
+         name: r'tagUsersProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$tagUsersHash,
+         dependencies: TagUsersFamily._dependencies,
+         allTransitiveDependencies: TagUsersFamily._allTransitiveDependencies,
+         account: account,
+         tag: tag,
+         sort: sort,
+         userOrigin: userOrigin,
+       );
 
   TagUsersProvider._internal(
     super._createNotifier, {
@@ -205,5 +198,6 @@ class _TagUsersProviderElement
   @override
   Origin? get userOrigin => (origin as TagUsersProvider).userOrigin;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

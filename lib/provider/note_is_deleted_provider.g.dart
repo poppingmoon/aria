@@ -39,24 +39,15 @@ class NoteIsDeletedFamily extends Family<bool> {
   const NoteIsDeletedFamily();
 
   /// See also [noteIsDeleted].
-  NoteIsDeletedProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NoteIsDeletedProvider(
-      account,
-      noteId,
-    );
+  NoteIsDeletedProvider call(Account account, String noteId) {
+    return NoteIsDeletedProvider(account, noteId);
   }
 
   @override
   NoteIsDeletedProvider getProviderOverride(
     covariant NoteIsDeletedProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,21 @@ class NoteIsDeletedFamily extends Family<bool> {
 /// See also [noteIsDeleted].
 class NoteIsDeletedProvider extends AutoDisposeProvider<bool> {
   /// See also [noteIsDeleted].
-  NoteIsDeletedProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          (ref) => noteIsDeleted(
-            ref as NoteIsDeletedRef,
-            account,
-            noteId,
-          ),
-          from: noteIsDeletedProvider,
-          name: r'noteIsDeletedProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$noteIsDeletedHash,
-          dependencies: NoteIsDeletedFamily._dependencies,
-          allTransitiveDependencies:
-              NoteIsDeletedFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NoteIsDeletedProvider(Account account, String noteId)
+    : this._internal(
+        (ref) => noteIsDeleted(ref as NoteIsDeletedRef, account, noteId),
+        from: noteIsDeletedProvider,
+        name: r'noteIsDeletedProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$noteIsDeletedHash,
+        dependencies: NoteIsDeletedFamily._dependencies,
+        allTransitiveDependencies:
+            NoteIsDeletedFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NoteIsDeletedProvider._internal(
     super._createNotifier, {
@@ -114,9 +99,7 @@ class NoteIsDeletedProvider extends AutoDisposeProvider<bool> {
   final String noteId;
 
   @override
-  Override overrideWith(
-    bool Function(NoteIsDeletedRef provider) create,
-  ) {
+  Override overrideWith(bool Function(NoteIsDeletedRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: NoteIsDeletedProvider._internal(
@@ -173,5 +156,6 @@ class _NoteIsDeletedProviderElement extends AutoDisposeProviderElement<bool>
   @override
   String get noteId => (origin as NoteIsDeletedProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -9,6 +9,7 @@ class UnifiedPushEndpointNotifier extends _$UnifiedPushEndpointNotifier {
     return null;
   }
 
+  // https://pub.dev/packages/riverpod_lint#avoid_public_notifier_properties
   // ignore: use_setters_to_change_properties
   void updateEndpoint(String endpoint) {
     state = endpoint;

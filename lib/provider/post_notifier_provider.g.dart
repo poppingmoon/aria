@@ -33,10 +33,7 @@ abstract class _$PostNotifier extends BuildlessNotifier<NotesCreateRequest> {
   late final Account account;
   late final String? noteId;
 
-  NotesCreateRequest build(
-    Account account, {
-    String? noteId,
-  });
+  NotesCreateRequest build(Account account, {String? noteId});
 }
 
 /// See also [PostNotifier].
@@ -49,24 +46,15 @@ class PostNotifierFamily extends Family<NotesCreateRequest> {
   const PostNotifierFamily();
 
   /// See also [PostNotifier].
-  PostNotifierProvider call(
-    Account account, {
-    String? noteId,
-  }) {
-    return PostNotifierProvider(
-      account,
-      noteId: noteId,
-    );
+  PostNotifierProvider call(Account account, {String? noteId}) {
+    return PostNotifierProvider(account, noteId: noteId);
   }
 
   @override
   PostNotifierProvider getProviderOverride(
     covariant PostNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      noteId: provider.noteId,
-    );
+    return call(provider.account, noteId: provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -88,25 +76,24 @@ class PostNotifierFamily extends Family<NotesCreateRequest> {
 class PostNotifierProvider
     extends NotifierProviderImpl<PostNotifier, NotesCreateRequest> {
   /// See also [PostNotifier].
-  PostNotifierProvider(
-    Account account, {
-    String? noteId,
-  }) : this._internal(
-          () => PostNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: postNotifierProvider,
-          name: r'postNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$postNotifierHash,
-          dependencies: PostNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PostNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  PostNotifierProvider(Account account, {String? noteId})
+    : this._internal(
+        () =>
+            PostNotifier()
+              ..account = account
+              ..noteId = noteId,
+        from: postNotifierProvider,
+        name: r'postNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$postNotifierHash,
+        dependencies: PostNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PostNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   PostNotifierProvider._internal(
     super._createNotifier, {
@@ -123,13 +110,8 @@ class PostNotifierProvider
   final String? noteId;
 
   @override
-  NotesCreateRequest runNotifierBuild(
-    covariant PostNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      noteId: noteId,
-    );
+  NotesCreateRequest runNotifierBuild(covariant PostNotifier notifier) {
+    return notifier.build(account, noteId: noteId);
   }
 
   @override
@@ -137,9 +119,10 @@ class PostNotifierProvider
     return ProviderOverride(
       origin: this,
       override: PostNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
@@ -193,5 +176,6 @@ class _PostNotifierProviderElement
   @override
   String? get noteId => (origin as PostNotifierProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

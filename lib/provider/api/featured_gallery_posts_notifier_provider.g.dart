@@ -34,9 +34,7 @@ abstract class _$FeaturedGalleryPostsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<GalleryPost>> {
   late final Account account;
 
-  FutureOr<PaginationState<GalleryPost>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<GalleryPost>> build(Account account);
 }
 
 /// See also [FeaturedGalleryPostsNotifier].
@@ -51,21 +49,15 @@ class FeaturedGalleryPostsNotifierFamily
   const FeaturedGalleryPostsNotifierFamily();
 
   /// See also [FeaturedGalleryPostsNotifier].
-  FeaturedGalleryPostsNotifierProvider call(
-    Account account,
-  ) {
-    return FeaturedGalleryPostsNotifierProvider(
-      account,
-    );
+  FeaturedGalleryPostsNotifierProvider call(Account account) {
+    return FeaturedGalleryPostsNotifierProvider(account);
   }
 
   @override
   FeaturedGalleryPostsNotifierProvider getProviderOverride(
     covariant FeaturedGalleryPostsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,24 +77,26 @@ class FeaturedGalleryPostsNotifierFamily
 
 /// See also [FeaturedGalleryPostsNotifier].
 class FeaturedGalleryPostsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FeaturedGalleryPostsNotifier,
-        PaginationState<GalleryPost>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FeaturedGalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        > {
   /// See also [FeaturedGalleryPostsNotifier].
-  FeaturedGalleryPostsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => FeaturedGalleryPostsNotifier()..account = account,
-          from: featuredGalleryPostsNotifierProvider,
-          name: r'featuredGalleryPostsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$featuredGalleryPostsNotifierHash,
-          dependencies: FeaturedGalleryPostsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FeaturedGalleryPostsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FeaturedGalleryPostsNotifierProvider(Account account)
+    : this._internal(
+        () => FeaturedGalleryPostsNotifier()..account = account,
+        from: featuredGalleryPostsNotifierProvider,
+        name: r'featuredGalleryPostsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$featuredGalleryPostsNotifierHash,
+        dependencies: FeaturedGalleryPostsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FeaturedGalleryPostsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FeaturedGalleryPostsNotifierProvider._internal(
     super._createNotifier, {
@@ -120,9 +114,7 @@ class FeaturedGalleryPostsNotifierProvider
   FutureOr<PaginationState<GalleryPost>> runNotifierBuild(
     covariant FeaturedGalleryPostsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -142,8 +134,11 @@ class FeaturedGalleryPostsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FeaturedGalleryPostsNotifier,
-      PaginationState<GalleryPost>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FeaturedGalleryPostsNotifier,
+    PaginationState<GalleryPost>
+  >
+  createElement() {
     return _FeaturedGalleryPostsNotifierProviderElement(this);
   }
 
@@ -171,14 +166,18 @@ mixin FeaturedGalleryPostsNotifierRef
 }
 
 class _FeaturedGalleryPostsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<
-        FeaturedGalleryPostsNotifier,
-        PaginationState<GalleryPost>> with FeaturedGalleryPostsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FeaturedGalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        >
+    with FeaturedGalleryPostsNotifierRef {
   _FeaturedGalleryPostsNotifierProviderElement(super.provider);
 
   @override
   Account get account =>
       (origin as FeaturedGalleryPostsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

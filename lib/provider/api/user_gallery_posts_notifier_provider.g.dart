@@ -35,10 +35,7 @@ abstract class _$UserGalleryPostsNotifier
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<GalleryPost>> build(
-    Account account,
-    String userId,
-  );
+  FutureOr<PaginationState<GalleryPost>> build(Account account, String userId);
 }
 
 /// See also [UserGalleryPostsNotifier].
@@ -52,24 +49,15 @@ class UserGalleryPostsNotifierFamily
   const UserGalleryPostsNotifierFamily();
 
   /// See also [UserGalleryPostsNotifier].
-  UserGalleryPostsNotifierProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserGalleryPostsNotifierProvider(
-      account,
-      userId,
-    );
+  UserGalleryPostsNotifierProvider call(Account account, String userId) {
+    return UserGalleryPostsNotifierProvider(account, userId);
   }
 
   @override
   UserGalleryPostsNotifierProvider getProviderOverride(
     covariant UserGalleryPostsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class UserGalleryPostsNotifierFamily
 
 /// See also [UserGalleryPostsNotifier].
 class UserGalleryPostsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<UserGalleryPostsNotifier,
-        PaginationState<GalleryPost>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UserGalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        > {
   /// See also [UserGalleryPostsNotifier].
-  UserGalleryPostsNotifierProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          () => UserGalleryPostsNotifier()
-            ..account = account
-            ..userId = userId,
-          from: userGalleryPostsNotifierProvider,
-          name: r'userGalleryPostsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userGalleryPostsNotifierHash,
-          dependencies: UserGalleryPostsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserGalleryPostsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserGalleryPostsNotifierProvider(Account account, String userId)
+    : this._internal(
+        () =>
+            UserGalleryPostsNotifier()
+              ..account = account
+              ..userId = userId,
+        from: userGalleryPostsNotifierProvider,
+        name: r'userGalleryPostsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userGalleryPostsNotifierHash,
+        dependencies: UserGalleryPostsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UserGalleryPostsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserGalleryPostsNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class UserGalleryPostsNotifierProvider
   FutureOr<PaginationState<GalleryPost>> runNotifierBuild(
     covariant UserGalleryPostsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      userId,
-    );
+    return notifier.build(account, userId);
   }
 
   @override
@@ -141,9 +128,10 @@ class UserGalleryPostsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserGalleryPostsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class UserGalleryPostsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UserGalleryPostsNotifier,
-      PaginationState<GalleryPost>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UserGalleryPostsNotifier,
+    PaginationState<GalleryPost>
+  >
+  createElement() {
     return _UserGalleryPostsNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin UserGalleryPostsNotifierRef
 }
 
 class _UserGalleryPostsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UserGalleryPostsNotifier,
-        PaginationState<GalleryPost>> with UserGalleryPostsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UserGalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        >
+    with UserGalleryPostsNotifierRef {
   _UserGalleryPostsNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _UserGalleryPostsNotifierProviderElement
   @override
   String get userId => (origin as UserGalleryPostsNotifierProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

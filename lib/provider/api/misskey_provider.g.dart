@@ -39,21 +39,13 @@ class MisskeyFamily extends Family<Misskey> {
   const MisskeyFamily();
 
   /// See also [misskey].
-  MisskeyProvider call(
-    Account account,
-  ) {
-    return MisskeyProvider(
-      account,
-    );
+  MisskeyProvider call(Account account) {
+    return MisskeyProvider(account);
   }
 
   @override
-  MisskeyProvider getProviderOverride(
-    covariant MisskeyProvider provider,
-  ) {
-    return call(
-      provider.account,
-    );
+  MisskeyProvider getProviderOverride(covariant MisskeyProvider provider) {
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,19 @@ class MisskeyFamily extends Family<Misskey> {
 /// See also [misskey].
 class MisskeyProvider extends Provider<Misskey> {
   /// See also [misskey].
-  MisskeyProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => misskey(
-            ref as MisskeyRef,
-            account,
-          ),
-          from: misskeyProvider,
-          name: r'misskeyProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$misskeyHash,
-          dependencies: MisskeyFamily._dependencies,
-          allTransitiveDependencies: MisskeyFamily._allTransitiveDependencies,
-          account: account,
-        );
+  MisskeyProvider(Account account)
+    : this._internal(
+        (ref) => misskey(ref as MisskeyRef, account),
+        from: misskeyProvider,
+        name: r'misskeyProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$misskeyHash,
+        dependencies: MisskeyFamily._dependencies,
+        allTransitiveDependencies: MisskeyFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   MisskeyProvider._internal(
     super._createNotifier, {
@@ -105,9 +93,7 @@ class MisskeyProvider extends Provider<Misskey> {
   final Account account;
 
   @override
-  Override overrideWith(
-    Misskey Function(MisskeyRef provider) create,
-  ) {
+  Override overrideWith(Misskey Function(MisskeyRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: MisskeyProvider._internal(
@@ -154,5 +140,6 @@ class _MisskeyProviderElement extends ProviderElement<Misskey> with MisskeyRef {
   @override
   Account get account => (origin as MisskeyProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -13,14 +13,15 @@ String _$misskeyThemeCodesNotifierHash() =>
 @ProviderFor(MisskeyThemeCodesNotifier)
 final misskeyThemeCodesNotifierProvider =
     NotifierProvider<MisskeyThemeCodesNotifier, List<String>>.internal(
-  MisskeyThemeCodesNotifier.new,
-  name: r'misskeyThemeCodesNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$misskeyThemeCodesNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      MisskeyThemeCodesNotifier.new,
+      name: r'misskeyThemeCodesNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$misskeyThemeCodesNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$MisskeyThemeCodesNotifier = Notifier<List<String>>;
 // ignore_for_file: type=lint

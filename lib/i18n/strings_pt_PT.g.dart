@@ -40,29 +40,76 @@ class _TranslationsAriaPtPt extends TranslationsAriaEnUs {
 	final TranslationsPtPt _root; // ignore: unused_field
 
 	// Translations
+	@override String get aboutAria => 'Sobre Aria';
+	@override String get addTab => 'Adicionar aba';
+	@override String get alwaysExpandCw => 'Sempre expandir aviso de conteúdo';
+	@override String get alwaysExpandLongNote => 'Sempre expandir nota longa';
+	@override String get alwaysExpandMediaInSubNote => 'Sempre expandir mídia na subnota';
+	@override String get alwaysShowAllReactions => 'Sempre mostrar todas as reações';
+	@override String get avatarSize => 'Tamanho do avatar';
+	@override String get custom => 'Personalizado';
+	@override String get defaultReaction => 'Reação padrão';
+	@override String get disableDataSaverWhenOnWifi => 'Desabilitar economia de dados quando estiver no Wi-Fi';
+	@override String get disableSubscribingNotes => 'Desabilitar atualizações de reações em tempo real';
+	@override String get displayOfThumbnail => 'Exibição de miniatura';
+	@override String get findServer => 'Encontre um servidor Misskey';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Tem certeza que quer seguir '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get guest => 'Convidado';
 	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
 		const TextSpan(text: 'Aria é traduzido para várias línguas por voluntários. Você pode ajudar com as traduções em '),
 		link,
 		const TextSpan(text: '.'),
 	]);
+	@override String get keepTimelinePosition => 'Manter posição da timeline';
+	@override String get lineHeight => 'Altura da linha';
+	@override String get margin => 'Margem';
+	@override String get mergeReactionsByName => 'Juntar reações com o mesmo nome';
+	@override String get mutedEmojis => 'Emojis silenciados';
+	@override String get noteFooterSize => 'Tamanho dos botões de ação nas notas';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: ' Pessoas Online'),
 	]);
+	@override String get paste => 'Colar';
+	@override String get recentlyUsedEmojis => 'Emojis usados recentemente';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'Repostado por '),
 		user,
 	]);
+	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Configurações para '),
+		user,
+	]);
+	@override String get showAvatarsInNote => 'Exibir avatares nas notas';
+	@override String get showAvatarsInSubNote => 'Exibir avatares nas subnotas';
+	@override String get showEntireImage => 'Mostrar imagem inteira';
+	@override String get showLikeButtonInNoteFooter => 'Adicionar "Curtir" ao menu da nota';
+	@override String get showNoteCreatedAt => 'Exibir data de criação das notas';
+	@override String get showNoteFooter => 'Mostrar botões de ação nas notas';
+	@override String get showNoteReactionsViewer => 'Mostrar visualizadores das reações nas notas';
+	@override String get showQuoteButtonInNoteFooter => 'Adicionar "Citar" ao menu da nota';
+	@override String get showReactionsCountForEachTypes => 'Ver o número de reações para cada tipo de reação';
+	@override String get showRenotesCount => 'Ver o número de repostagens nas notas';
+	@override String get showRepliesCount => 'Ver o número de respostas nas notas';
+	@override String get showSelfRenotes => 'Mostrar repostagens próprias';
+	@override String get showSubNoteFooter => 'Mostrar botões de ação nas subnotas';
+	@override String get showSubNoteReactionsViewer => 'Mostrar visualizadores das reações nas subnotas';
+	@override String get showTranslateButtonInNoteFooter => 'Adicionar "Traduzir" ao menu da nota';
+	@override String get sinceDate => 'Desde';
+	@override String get tabName => 'Nome da aba';
+	@override String get tabType => 'Tipo de aba';
+	@override String get tabs => 'Abas';
+	@override String get timeMachine => 'Máquina do tempo';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Gostaria de deixar de seguir '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get untilDate => 'Até';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
 		name,
 		const TextSpan(text: ' disse algo'),
@@ -2550,9 +2597,6 @@ class _TranslationsMisskeyPagesPtPt extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Criar uma Página';
 	@override String get editPage => 'Editar essa Página';
 	@override String get readPage => 'Ver a fonte dessa Página';
-	@override String get created => 'Página criada com sucesso';
-	@override String get updated => 'Página atualizada com sucesso';
-	@override String get deleted => 'Página excluída com sucesso';
 	@override String get pageSetting => 'Configurações da página';
 	@override String get nameAlreadyExists => 'O URL de Página especificado já existe';
 	@override String get invalidNameTitle => 'O URL de Página especificado é inválido';

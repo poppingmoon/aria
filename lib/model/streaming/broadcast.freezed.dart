@@ -12,7 +12,8 @@ part of 'broadcast.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 EmojiAdded _$EmojiAddedFromJson(Map<String, dynamic> json) {
   return _EmojiAdded.fromJson(json);
@@ -35,8 +36,9 @@ mixin _$EmojiAdded {
 /// @nodoc
 abstract class $EmojiAddedCopyWith<$Res> {
   factory $EmojiAddedCopyWith(
-          EmojiAdded value, $Res Function(EmojiAdded) then) =
-      _$EmojiAddedCopyWithImpl<$Res, EmojiAdded>;
+    EmojiAdded value,
+    $Res Function(EmojiAdded) then,
+  ) = _$EmojiAddedCopyWithImpl<$Res, EmojiAdded>;
   @useResult
   $Res call({Emoji emoji});
 
@@ -57,15 +59,17 @@ class _$EmojiAddedCopyWithImpl<$Res, $Val extends EmojiAdded>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emoji = null,
-  }) {
-    return _then(_value.copyWith(
-      emoji: null == emoji
-          ? _value.emoji
-          : emoji // ignore: cast_nullable_to_non_nullable
-              as Emoji,
-    ) as $Val);
+  $Res call({Object? emoji = null}) {
+    return _then(
+      _value.copyWith(
+            emoji:
+                null == emoji
+                    ? _value.emoji
+                    : emoji // ignore: cast_nullable_to_non_nullable
+                        as Emoji,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of EmojiAdded
@@ -83,8 +87,9 @@ class _$EmojiAddedCopyWithImpl<$Res, $Val extends EmojiAdded>
 abstract class _$$EmojiAddedImplCopyWith<$Res>
     implements $EmojiAddedCopyWith<$Res> {
   factory _$$EmojiAddedImplCopyWith(
-          _$EmojiAddedImpl value, $Res Function(_$EmojiAddedImpl) then) =
-      __$$EmojiAddedImplCopyWithImpl<$Res>;
+    _$EmojiAddedImpl value,
+    $Res Function(_$EmojiAddedImpl) then,
+  ) = __$$EmojiAddedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({Emoji emoji});
@@ -98,22 +103,24 @@ class __$$EmojiAddedImplCopyWithImpl<$Res>
     extends _$EmojiAddedCopyWithImpl<$Res, _$EmojiAddedImpl>
     implements _$$EmojiAddedImplCopyWith<$Res> {
   __$$EmojiAddedImplCopyWithImpl(
-      _$EmojiAddedImpl _value, $Res Function(_$EmojiAddedImpl) _then)
-      : super(_value, _then);
+    _$EmojiAddedImpl _value,
+    $Res Function(_$EmojiAddedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EmojiAdded
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emoji = null,
-  }) {
-    return _then(_$EmojiAddedImpl(
-      emoji: null == emoji
-          ? _value.emoji
-          : emoji // ignore: cast_nullable_to_non_nullable
-              as Emoji,
-    ));
+  $Res call({Object? emoji = null}) {
+    return _then(
+      _$EmojiAddedImpl(
+        emoji:
+            null == emoji
+                ? _value.emoji
+                : emoji // ignore: cast_nullable_to_non_nullable
+                    as Emoji,
+      ),
+    );
   }
 }
 
@@ -155,9 +162,7 @@ class _$EmojiAddedImpl implements _EmojiAdded {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EmojiAddedImplToJson(
-      this,
-    );
+    return _$$EmojiAddedImplToJson(this);
   }
 }
 
@@ -199,8 +204,9 @@ mixin _$EmojiUpdated {
 /// @nodoc
 abstract class $EmojiUpdatedCopyWith<$Res> {
   factory $EmojiUpdatedCopyWith(
-          EmojiUpdated value, $Res Function(EmojiUpdated) then) =
-      _$EmojiUpdatedCopyWithImpl<$Res, EmojiUpdated>;
+    EmojiUpdated value,
+    $Res Function(EmojiUpdated) then,
+  ) = _$EmojiUpdatedCopyWithImpl<$Res, EmojiUpdated>;
   @useResult
   $Res call({List<Emoji> emojis});
 }
@@ -219,15 +225,17 @@ class _$EmojiUpdatedCopyWithImpl<$Res, $Val extends EmojiUpdated>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emojis = null,
-  }) {
-    return _then(_value.copyWith(
-      emojis: null == emojis
-          ? _value.emojis
-          : emojis // ignore: cast_nullable_to_non_nullable
-              as List<Emoji>,
-    ) as $Val);
+  $Res call({Object? emojis = null}) {
+    return _then(
+      _value.copyWith(
+            emojis:
+                null == emojis
+                    ? _value.emojis
+                    : emojis // ignore: cast_nullable_to_non_nullable
+                        as List<Emoji>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -235,8 +243,9 @@ class _$EmojiUpdatedCopyWithImpl<$Res, $Val extends EmojiUpdated>
 abstract class _$$EmojiUpdatedImplCopyWith<$Res>
     implements $EmojiUpdatedCopyWith<$Res> {
   factory _$$EmojiUpdatedImplCopyWith(
-          _$EmojiUpdatedImpl value, $Res Function(_$EmojiUpdatedImpl) then) =
-      __$$EmojiUpdatedImplCopyWithImpl<$Res>;
+    _$EmojiUpdatedImpl value,
+    $Res Function(_$EmojiUpdatedImpl) then,
+  ) = __$$EmojiUpdatedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Emoji> emojis});
@@ -247,22 +256,24 @@ class __$$EmojiUpdatedImplCopyWithImpl<$Res>
     extends _$EmojiUpdatedCopyWithImpl<$Res, _$EmojiUpdatedImpl>
     implements _$$EmojiUpdatedImplCopyWith<$Res> {
   __$$EmojiUpdatedImplCopyWithImpl(
-      _$EmojiUpdatedImpl _value, $Res Function(_$EmojiUpdatedImpl) _then)
-      : super(_value, _then);
+    _$EmojiUpdatedImpl _value,
+    $Res Function(_$EmojiUpdatedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EmojiUpdated
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emojis = null,
-  }) {
-    return _then(_$EmojiUpdatedImpl(
-      emojis: null == emojis
-          ? _value._emojis
-          : emojis // ignore: cast_nullable_to_non_nullable
-              as List<Emoji>,
-    ));
+  $Res call({Object? emojis = null}) {
+    return _then(
+      _$EmojiUpdatedImpl(
+        emojis:
+            null == emojis
+                ? _value._emojis
+                : emojis // ignore: cast_nullable_to_non_nullable
+                    as List<Emoji>,
+      ),
+    );
   }
 }
 
@@ -270,7 +281,7 @@ class __$$EmojiUpdatedImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EmojiUpdatedImpl implements _EmojiUpdated {
   const _$EmojiUpdatedImpl({required final List<Emoji> emojis})
-      : _emojis = emojis;
+    : _emojis = emojis;
 
   factory _$EmojiUpdatedImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmojiUpdatedImplFromJson(json);
@@ -311,9 +322,7 @@ class _$EmojiUpdatedImpl implements _EmojiUpdated {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EmojiUpdatedImplToJson(
-      this,
-    );
+    return _$$EmojiUpdatedImplToJson(this);
   }
 }
 
@@ -356,8 +365,9 @@ mixin _$EmojiDeleted {
 /// @nodoc
 abstract class $EmojiDeletedCopyWith<$Res> {
   factory $EmojiDeletedCopyWith(
-          EmojiDeleted value, $Res Function(EmojiDeleted) then) =
-      _$EmojiDeletedCopyWithImpl<$Res, EmojiDeleted>;
+    EmojiDeleted value,
+    $Res Function(EmojiDeleted) then,
+  ) = _$EmojiDeletedCopyWithImpl<$Res, EmojiDeleted>;
   @useResult
   $Res call({List<Emoji> emojis});
 }
@@ -376,15 +386,17 @@ class _$EmojiDeletedCopyWithImpl<$Res, $Val extends EmojiDeleted>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emojis = null,
-  }) {
-    return _then(_value.copyWith(
-      emojis: null == emojis
-          ? _value.emojis
-          : emojis // ignore: cast_nullable_to_non_nullable
-              as List<Emoji>,
-    ) as $Val);
+  $Res call({Object? emojis = null}) {
+    return _then(
+      _value.copyWith(
+            emojis:
+                null == emojis
+                    ? _value.emojis
+                    : emojis // ignore: cast_nullable_to_non_nullable
+                        as List<Emoji>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -392,8 +404,9 @@ class _$EmojiDeletedCopyWithImpl<$Res, $Val extends EmojiDeleted>
 abstract class _$$EmojiDeletedImplCopyWith<$Res>
     implements $EmojiDeletedCopyWith<$Res> {
   factory _$$EmojiDeletedImplCopyWith(
-          _$EmojiDeletedImpl value, $Res Function(_$EmojiDeletedImpl) then) =
-      __$$EmojiDeletedImplCopyWithImpl<$Res>;
+    _$EmojiDeletedImpl value,
+    $Res Function(_$EmojiDeletedImpl) then,
+  ) = __$$EmojiDeletedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Emoji> emojis});
@@ -404,22 +417,24 @@ class __$$EmojiDeletedImplCopyWithImpl<$Res>
     extends _$EmojiDeletedCopyWithImpl<$Res, _$EmojiDeletedImpl>
     implements _$$EmojiDeletedImplCopyWith<$Res> {
   __$$EmojiDeletedImplCopyWithImpl(
-      _$EmojiDeletedImpl _value, $Res Function(_$EmojiDeletedImpl) _then)
-      : super(_value, _then);
+    _$EmojiDeletedImpl _value,
+    $Res Function(_$EmojiDeletedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of EmojiDeleted
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? emojis = null,
-  }) {
-    return _then(_$EmojiDeletedImpl(
-      emojis: null == emojis
-          ? _value._emojis
-          : emojis // ignore: cast_nullable_to_non_nullable
-              as List<Emoji>,
-    ));
+  $Res call({Object? emojis = null}) {
+    return _then(
+      _$EmojiDeletedImpl(
+        emojis:
+            null == emojis
+                ? _value._emojis
+                : emojis // ignore: cast_nullable_to_non_nullable
+                    as List<Emoji>,
+      ),
+    );
   }
 }
 
@@ -427,7 +442,7 @@ class __$$EmojiDeletedImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$EmojiDeletedImpl implements _EmojiDeleted {
   const _$EmojiDeletedImpl({required final List<Emoji> emojis})
-      : _emojis = emojis;
+    : _emojis = emojis;
 
   factory _$EmojiDeletedImpl.fromJson(Map<String, dynamic> json) =>
       _$$EmojiDeletedImplFromJson(json);
@@ -468,9 +483,7 @@ class _$EmojiDeletedImpl implements _EmojiDeleted {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EmojiDeletedImplToJson(
-      this,
-    );
+    return _$$EmojiDeletedImplToJson(this);
   }
 }
 
@@ -510,8 +523,9 @@ mixin _$AnnouncementCreated {
 /// @nodoc
 abstract class $AnnouncementCreatedCopyWith<$Res> {
   factory $AnnouncementCreatedCopyWith(
-          AnnouncementCreated value, $Res Function(AnnouncementCreated) then) =
-      _$AnnouncementCreatedCopyWithImpl<$Res, AnnouncementCreated>;
+    AnnouncementCreated value,
+    $Res Function(AnnouncementCreated) then,
+  ) = _$AnnouncementCreatedCopyWithImpl<$Res, AnnouncementCreated>;
   @useResult
   $Res call({AnnouncementsResponse announcement});
 
@@ -532,15 +546,17 @@ class _$AnnouncementCreatedCopyWithImpl<$Res, $Val extends AnnouncementCreated>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? announcement = null,
-  }) {
-    return _then(_value.copyWith(
-      announcement: null == announcement
-          ? _value.announcement
-          : announcement // ignore: cast_nullable_to_non_nullable
-              as AnnouncementsResponse,
-    ) as $Val);
+  $Res call({Object? announcement = null}) {
+    return _then(
+      _value.copyWith(
+            announcement:
+                null == announcement
+                    ? _value.announcement
+                    : announcement // ignore: cast_nullable_to_non_nullable
+                        as AnnouncementsResponse,
+          )
+          as $Val,
+    );
   }
 
   /// Create a copy of AnnouncementCreated
@@ -557,9 +573,10 @@ class _$AnnouncementCreatedCopyWithImpl<$Res, $Val extends AnnouncementCreated>
 /// @nodoc
 abstract class _$$AnnouncementCreatedImplCopyWith<$Res>
     implements $AnnouncementCreatedCopyWith<$Res> {
-  factory _$$AnnouncementCreatedImplCopyWith(_$AnnouncementCreatedImpl value,
-          $Res Function(_$AnnouncementCreatedImpl) then) =
-      __$$AnnouncementCreatedImplCopyWithImpl<$Res>;
+  factory _$$AnnouncementCreatedImplCopyWith(
+    _$AnnouncementCreatedImpl value,
+    $Res Function(_$AnnouncementCreatedImpl) then,
+  ) = __$$AnnouncementCreatedImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({AnnouncementsResponse announcement});
@@ -572,23 +589,25 @@ abstract class _$$AnnouncementCreatedImplCopyWith<$Res>
 class __$$AnnouncementCreatedImplCopyWithImpl<$Res>
     extends _$AnnouncementCreatedCopyWithImpl<$Res, _$AnnouncementCreatedImpl>
     implements _$$AnnouncementCreatedImplCopyWith<$Res> {
-  __$$AnnouncementCreatedImplCopyWithImpl(_$AnnouncementCreatedImpl _value,
-      $Res Function(_$AnnouncementCreatedImpl) _then)
-      : super(_value, _then);
+  __$$AnnouncementCreatedImplCopyWithImpl(
+    _$AnnouncementCreatedImpl _value,
+    $Res Function(_$AnnouncementCreatedImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of AnnouncementCreated
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? announcement = null,
-  }) {
-    return _then(_$AnnouncementCreatedImpl(
-      announcement: null == announcement
-          ? _value.announcement
-          : announcement // ignore: cast_nullable_to_non_nullable
-              as AnnouncementsResponse,
-    ));
+  $Res call({Object? announcement = null}) {
+    return _then(
+      _$AnnouncementCreatedImpl(
+        announcement:
+            null == announcement
+                ? _value.announcement
+                : announcement // ignore: cast_nullable_to_non_nullable
+                    as AnnouncementsResponse,
+      ),
+    );
   }
 }
 
@@ -628,13 +647,15 @@ class _$AnnouncementCreatedImpl implements _AnnouncementCreated {
   @pragma('vm:prefer-inline')
   _$$AnnouncementCreatedImplCopyWith<_$AnnouncementCreatedImpl> get copyWith =>
       __$$AnnouncementCreatedImplCopyWithImpl<_$AnnouncementCreatedImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 }
 
 abstract class _AnnouncementCreated implements AnnouncementCreated {
-  const factory _AnnouncementCreated(
-          {required final AnnouncementsResponse announcement}) =
-      _$AnnouncementCreatedImpl;
+  const factory _AnnouncementCreated({
+    required final AnnouncementsResponse announcement,
+  }) = _$AnnouncementCreatedImpl;
 
   factory _AnnouncementCreated.fromJson(Map<String, dynamic> json) =
       _$AnnouncementCreatedImpl.fromJson;

@@ -12,7 +12,8 @@ part of 'misskey_theme.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 MisskeyTheme _$MisskeyThemeFromJson(Map<String, dynamic> json) {
   return _MisskeyTheme.fromJson(json);
@@ -40,16 +41,18 @@ mixin _$MisskeyTheme {
 /// @nodoc
 abstract class $MisskeyThemeCopyWith<$Res> {
   factory $MisskeyThemeCopyWith(
-          MisskeyTheme value, $Res Function(MisskeyTheme) then) =
-      _$MisskeyThemeCopyWithImpl<$Res, MisskeyTheme>;
+    MisskeyTheme value,
+    $Res Function(MisskeyTheme) then,
+  ) = _$MisskeyThemeCopyWithImpl<$Res, MisskeyTheme>;
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String? author,
-      String? desc,
-      String? base,
-      Map<String, String> props});
+  $Res call({
+    String id,
+    String name,
+    String? author,
+    String? desc,
+    String? base,
+    Map<String, String> props,
+  });
 }
 
 /// @nodoc
@@ -74,32 +77,41 @@ class _$MisskeyThemeCopyWithImpl<$Res, $Val extends MisskeyTheme>
     Object? base = freezed,
     Object? props = null,
   }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      author: freezed == author
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
-              as String?,
-      desc: freezed == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
-              as String?,
-      base: freezed == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String?,
-      props: null == props
-          ? _value.props
-          : props // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            id:
+                null == id
+                    ? _value.id
+                    : id // ignore: cast_nullable_to_non_nullable
+                        as String,
+            name:
+                null == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String,
+            author:
+                freezed == author
+                    ? _value.author
+                    : author // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            desc:
+                freezed == desc
+                    ? _value.desc
+                    : desc // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            base:
+                freezed == base
+                    ? _value.base
+                    : base // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            props:
+                null == props
+                    ? _value.props
+                    : props // ignore: cast_nullable_to_non_nullable
+                        as Map<String, String>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -107,17 +119,19 @@ class _$MisskeyThemeCopyWithImpl<$Res, $Val extends MisskeyTheme>
 abstract class _$$MisskeyThemeImplCopyWith<$Res>
     implements $MisskeyThemeCopyWith<$Res> {
   factory _$$MisskeyThemeImplCopyWith(
-          _$MisskeyThemeImpl value, $Res Function(_$MisskeyThemeImpl) then) =
-      __$$MisskeyThemeImplCopyWithImpl<$Res>;
+    _$MisskeyThemeImpl value,
+    $Res Function(_$MisskeyThemeImpl) then,
+  ) = __$$MisskeyThemeImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String id,
-      String name,
-      String? author,
-      String? desc,
-      String? base,
-      Map<String, String> props});
+  $Res call({
+    String id,
+    String name,
+    String? author,
+    String? desc,
+    String? base,
+    Map<String, String> props,
+  });
 }
 
 /// @nodoc
@@ -125,8 +139,9 @@ class __$$MisskeyThemeImplCopyWithImpl<$Res>
     extends _$MisskeyThemeCopyWithImpl<$Res, _$MisskeyThemeImpl>
     implements _$$MisskeyThemeImplCopyWith<$Res> {
   __$$MisskeyThemeImplCopyWithImpl(
-      _$MisskeyThemeImpl _value, $Res Function(_$MisskeyThemeImpl) _then)
-      : super(_value, _then);
+    _$MisskeyThemeImpl _value,
+    $Res Function(_$MisskeyThemeImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MisskeyTheme
   /// with the given fields replaced by the non-null parameter values.
@@ -140,46 +155,54 @@ class __$$MisskeyThemeImplCopyWithImpl<$Res>
     Object? base = freezed,
     Object? props = null,
   }) {
-    return _then(_$MisskeyThemeImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      author: freezed == author
-          ? _value.author
-          : author // ignore: cast_nullable_to_non_nullable
-              as String?,
-      desc: freezed == desc
-          ? _value.desc
-          : desc // ignore: cast_nullable_to_non_nullable
-              as String?,
-      base: freezed == base
-          ? _value.base
-          : base // ignore: cast_nullable_to_non_nullable
-              as String?,
-      props: null == props
-          ? _value._props
-          : props // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-    ));
+    return _then(
+      _$MisskeyThemeImpl(
+        id:
+            null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                    as String,
+        name:
+            null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String,
+        author:
+            freezed == author
+                ? _value.author
+                : author // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        desc:
+            freezed == desc
+                ? _value.desc
+                : desc // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        base:
+            freezed == base
+                ? _value.base
+                : base // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        props:
+            null == props
+                ? _value._props
+                : props // ignore: cast_nullable_to_non_nullable
+                    as Map<String, String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 @JsonSerializable()
 class _$MisskeyThemeImpl implements _MisskeyTheme {
-  const _$MisskeyThemeImpl(
-      {required this.id,
-      required this.name,
-      this.author,
-      this.desc,
-      this.base,
-      required final Map<String, String> props})
-      : _props = props;
+  const _$MisskeyThemeImpl({
+    required this.id,
+    required this.name,
+    this.author,
+    this.desc,
+    this.base,
+    required final Map<String, String> props,
+  }) : _props = props;
 
   factory _$MisskeyThemeImpl.fromJson(Map<String, dynamic> json) =>
       _$$MisskeyThemeImplFromJson(json);
@@ -222,8 +245,15 @@ class _$MisskeyThemeImpl implements _MisskeyTheme {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, author, desc, base,
-      const DeepCollectionEquality().hash(_props));
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    name,
+    author,
+    desc,
+    base,
+    const DeepCollectionEquality().hash(_props),
+  );
 
   /// Create a copy of MisskeyTheme
   /// with the given fields replaced by the non-null parameter values.
@@ -235,20 +265,19 @@ class _$MisskeyThemeImpl implements _MisskeyTheme {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$MisskeyThemeImplToJson(
-      this,
-    );
+    return _$$MisskeyThemeImplToJson(this);
   }
 }
 
 abstract class _MisskeyTheme implements MisskeyTheme {
-  const factory _MisskeyTheme(
-      {required final String id,
-      required final String name,
-      final String? author,
-      final String? desc,
-      final String? base,
-      required final Map<String, String> props}) = _$MisskeyThemeImpl;
+  const factory _MisskeyTheme({
+    required final String id,
+    required final String name,
+    final String? author,
+    final String? desc,
+    final String? base,
+    required final Map<String, String> props,
+  }) = _$MisskeyThemeImpl;
 
   factory _MisskeyTheme.fromJson(Map<String, dynamic> json) =
       _$MisskeyThemeImpl.fromJson;

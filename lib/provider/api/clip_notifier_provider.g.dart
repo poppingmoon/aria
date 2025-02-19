@@ -33,10 +33,7 @@ abstract class _$ClipNotifier extends BuildlessAutoDisposeAsyncNotifier<Clip> {
   late final Account account;
   late final String clipId;
 
-  FutureOr<Clip> build(
-    Account account,
-    String clipId,
-  );
+  FutureOr<Clip> build(Account account, String clipId);
 }
 
 /// See also [ClipNotifier].
@@ -49,24 +46,15 @@ class ClipNotifierFamily extends Family<AsyncValue<Clip>> {
   const ClipNotifierFamily();
 
   /// See also [ClipNotifier].
-  ClipNotifierProvider call(
-    Account account,
-    String clipId,
-  ) {
-    return ClipNotifierProvider(
-      account,
-      clipId,
-    );
+  ClipNotifierProvider call(Account account, String clipId) {
+    return ClipNotifierProvider(account, clipId);
   }
 
   @override
   ClipNotifierProvider getProviderOverride(
     covariant ClipNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.clipId,
-    );
+    return call(provider.account, provider.clipId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -88,25 +76,24 @@ class ClipNotifierFamily extends Family<AsyncValue<Clip>> {
 class ClipNotifierProvider
     extends AutoDisposeAsyncNotifierProviderImpl<ClipNotifier, Clip> {
   /// See also [ClipNotifier].
-  ClipNotifierProvider(
-    Account account,
-    String clipId,
-  ) : this._internal(
-          () => ClipNotifier()
-            ..account = account
-            ..clipId = clipId,
-          from: clipNotifierProvider,
-          name: r'clipNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$clipNotifierHash,
-          dependencies: ClipNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ClipNotifierFamily._allTransitiveDependencies,
-          account: account,
-          clipId: clipId,
-        );
+  ClipNotifierProvider(Account account, String clipId)
+    : this._internal(
+        () =>
+            ClipNotifier()
+              ..account = account
+              ..clipId = clipId,
+        from: clipNotifierProvider,
+        name: r'clipNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$clipNotifierHash,
+        dependencies: ClipNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ClipNotifierFamily._allTransitiveDependencies,
+        account: account,
+        clipId: clipId,
+      );
 
   ClipNotifierProvider._internal(
     super._createNotifier, {
@@ -123,13 +110,8 @@ class ClipNotifierProvider
   final String clipId;
 
   @override
-  FutureOr<Clip> runNotifierBuild(
-    covariant ClipNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      clipId,
-    );
+  FutureOr<Clip> runNotifierBuild(covariant ClipNotifier notifier) {
+    return notifier.build(account, clipId);
   }
 
   @override
@@ -137,9 +119,10 @@ class ClipNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ClipNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..clipId = clipId,
+        () =>
+            create()
+              ..account = account
+              ..clipId = clipId,
         from: from,
         name: null,
         dependencies: null,
@@ -193,5 +176,6 @@ class _ClipNotifierProviderElement
   @override
   String get clipId => (origin as ClipNotifierProvider).clipId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

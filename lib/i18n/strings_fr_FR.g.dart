@@ -2382,9 +2382,6 @@ class _TranslationsMisskeyPagesFrFr extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Créer une page';
 	@override String get editPage => 'Modifier une page';
 	@override String get readPage => 'Affichage de la source en cours';
-	@override String get created => 'La page a été créée !';
-	@override String get updated => 'La page a été mise à jour !';
-	@override String get deleted => 'La page a été supprimée';
 	@override String get pageSetting => 'Paramètres de la Page';
 	@override String get nameAlreadyExists => 'L\'URL de page spécifiée existe déjà';
 	@override String get invalidNameTitle => 'L\'URL de page spécifiée n’est pas valide';

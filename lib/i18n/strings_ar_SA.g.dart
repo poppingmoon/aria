@@ -1848,9 +1848,6 @@ class _TranslationsMisskeyPagesArSa extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'أنشئ صفحة جديدة';
 	@override String get editPage => 'عدّل الصفحة';
 	@override String get readPage => 'نُشّط عرض المصدر';
-	@override String get created => 'نجح إنشاء الصفحة';
-	@override String get updated => 'نجح تعديل الصفحة';
-	@override String get deleted => 'نجح حذف الصفحة';
 	@override String get pageSetting => 'إعدادات الصفحة';
 	@override String get nameAlreadyExists => 'رابط الصفحة موجود مسبقًا';
 	@override String get invalidNameTitle => 'رابط الصفحة ليس صالحًا';

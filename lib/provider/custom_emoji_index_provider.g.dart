@@ -40,21 +40,15 @@ class CustomEmojiIndexFamily
   const CustomEmojiIndexFamily();
 
   /// See also [customEmojiIndex].
-  CustomEmojiIndexProvider call(
-    String host,
-  ) {
-    return CustomEmojiIndexProvider(
-      host,
-    );
+  CustomEmojiIndexProvider call(String host) {
+    return CustomEmojiIndexProvider(host);
   }
 
   @override
   CustomEmojiIndexProvider getProviderOverride(
     covariant CustomEmojiIndexProvider provider,
   ) {
-    return call(
-      provider.host,
-    );
+    return call(provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,24 +69,20 @@ class CustomEmojiIndexFamily
 /// See also [customEmojiIndex].
 class CustomEmojiIndexProvider extends FutureProvider<Map<String, Set<Emoji>>> {
   /// See also [customEmojiIndex].
-  CustomEmojiIndexProvider(
-    String host,
-  ) : this._internal(
-          (ref) => customEmojiIndex(
-            ref as CustomEmojiIndexRef,
-            host,
-          ),
-          from: customEmojiIndexProvider,
-          name: r'customEmojiIndexProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$customEmojiIndexHash,
-          dependencies: CustomEmojiIndexFamily._dependencies,
-          allTransitiveDependencies:
-              CustomEmojiIndexFamily._allTransitiveDependencies,
-          host: host,
-        );
+  CustomEmojiIndexProvider(String host)
+    : this._internal(
+        (ref) => customEmojiIndex(ref as CustomEmojiIndexRef, host),
+        from: customEmojiIndexProvider,
+        name: r'customEmojiIndexProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$customEmojiIndexHash,
+        dependencies: CustomEmojiIndexFamily._dependencies,
+        allTransitiveDependencies:
+            CustomEmojiIndexFamily._allTransitiveDependencies,
+        host: host,
+      );
 
   CustomEmojiIndexProvider._internal(
     super._createNotifier, {
@@ -109,7 +99,7 @@ class CustomEmojiIndexProvider extends FutureProvider<Map<String, Set<Emoji>>> {
   @override
   Override overrideWith(
     FutureOr<Map<String, Set<Emoji>>> Function(CustomEmojiIndexRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -159,5 +149,6 @@ class _CustomEmojiIndexProviderElement
   @override
   String get host => (origin as CustomEmojiIndexProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

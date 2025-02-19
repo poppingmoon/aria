@@ -39,21 +39,13 @@ class TokenFamily extends Family<String?> {
   const TokenFamily();
 
   /// See also [token].
-  TokenProvider call(
-    Account account,
-  ) {
-    return TokenProvider(
-      account,
-    );
+  TokenProvider call(Account account) {
+    return TokenProvider(account);
   }
 
   @override
-  TokenProvider getProviderOverride(
-    covariant TokenProvider provider,
-  ) {
-    return call(
-      provider.account,
-    );
+  TokenProvider getProviderOverride(covariant TokenProvider provider) {
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,17 @@ class TokenFamily extends Family<String?> {
 /// See also [token].
 class TokenProvider extends Provider<String?> {
   /// See also [token].
-  TokenProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => token(
-            ref as TokenRef,
-            account,
-          ),
-          from: tokenProvider,
-          name: r'tokenProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$tokenHash,
-          dependencies: TokenFamily._dependencies,
-          allTransitiveDependencies: TokenFamily._allTransitiveDependencies,
-          account: account,
-        );
+  TokenProvider(Account account)
+    : this._internal(
+        (ref) => token(ref as TokenRef, account),
+        from: tokenProvider,
+        name: r'tokenProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$tokenHash,
+        dependencies: TokenFamily._dependencies,
+        allTransitiveDependencies: TokenFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   TokenProvider._internal(
     super._createNotifier, {
@@ -105,9 +91,7 @@ class TokenProvider extends Provider<String?> {
   final Account account;
 
   @override
-  Override overrideWith(
-    String? Function(TokenRef provider) create,
-  ) {
+  Override overrideWith(String? Function(TokenRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: TokenProvider._internal(
@@ -154,5 +138,6 @@ class _TokenProviderElement extends ProviderElement<String?> with TokenRef {
   @override
   Account get account => (origin as TokenProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

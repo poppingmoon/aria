@@ -39,24 +39,13 @@ class RoleFamily extends Family<AsyncValue<RolesListResponse>> {
   const RoleFamily();
 
   /// See also [role].
-  RoleProvider call(
-    Account account,
-    String roleId,
-  ) {
-    return RoleProvider(
-      account,
-      roleId,
-    );
+  RoleProvider call(Account account, String roleId) {
+    return RoleProvider(account, roleId);
   }
 
   @override
-  RoleProvider getProviderOverride(
-    covariant RoleProvider provider,
-  ) {
-    return call(
-      provider.account,
-      provider.roleId,
-    );
+  RoleProvider getProviderOverride(covariant RoleProvider provider) {
+    return call(provider.account, provider.roleId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,24 +66,18 @@ class RoleFamily extends Family<AsyncValue<RolesListResponse>> {
 /// See also [role].
 class RoleProvider extends AutoDisposeFutureProvider<RolesListResponse> {
   /// See also [role].
-  RoleProvider(
-    Account account,
-    String roleId,
-  ) : this._internal(
-          (ref) => role(
-            ref as RoleRef,
-            account,
-            roleId,
-          ),
-          from: roleProvider,
-          name: r'roleProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product') ? null : _$roleHash,
-          dependencies: RoleFamily._dependencies,
-          allTransitiveDependencies: RoleFamily._allTransitiveDependencies,
-          account: account,
-          roleId: roleId,
-        );
+  RoleProvider(Account account, String roleId)
+    : this._internal(
+        (ref) => role(ref as RoleRef, account, roleId),
+        from: roleProvider,
+        name: r'roleProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$roleHash,
+        dependencies: RoleFamily._dependencies,
+        allTransitiveDependencies: RoleFamily._allTransitiveDependencies,
+        account: account,
+        roleId: roleId,
+      );
 
   RoleProvider._internal(
     super._createNotifier, {
@@ -162,7 +145,8 @@ mixin RoleRef on AutoDisposeFutureProviderRef<RolesListResponse> {
 }
 
 class _RoleProviderElement
-    extends AutoDisposeFutureProviderElement<RolesListResponse> with RoleRef {
+    extends AutoDisposeFutureProviderElement<RolesListResponse>
+    with RoleRef {
   _RoleProviderElement(super.provider);
 
   @override
@@ -170,5 +154,6 @@ class _RoleProviderElement
   @override
   String get roleId => (origin as RoleProvider).roleId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

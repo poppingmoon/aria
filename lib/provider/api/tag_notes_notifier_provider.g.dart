@@ -96,8 +96,12 @@ class TagNotesNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
 }
 
 /// See also [TagNotesNotifier].
-class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    TagNotesNotifier, PaginationState<Note>> {
+class TagNotesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          TagNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [TagNotesNotifier].
   TagNotesNotifierProvider(
     Account account,
@@ -105,25 +109,26 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     String? sinceId,
     String? untilId,
   }) : this._internal(
-          () => TagNotesNotifier()
-            ..account = account
-            ..tag = tag
-            ..sinceId = sinceId
-            ..untilId = untilId,
-          from: tagNotesNotifierProvider,
-          name: r'tagNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$tagNotesNotifierHash,
-          dependencies: TagNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              TagNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          tag: tag,
-          sinceId: sinceId,
-          untilId: untilId,
-        );
+         () =>
+             TagNotesNotifier()
+               ..account = account
+               ..tag = tag
+               ..sinceId = sinceId
+               ..untilId = untilId,
+         from: tagNotesNotifierProvider,
+         name: r'tagNotesNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$tagNotesNotifierHash,
+         dependencies: TagNotesNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             TagNotesNotifierFamily._allTransitiveDependencies,
+         account: account,
+         tag: tag,
+         sinceId: sinceId,
+         untilId: untilId,
+       );
 
   TagNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -147,12 +152,7 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant TagNotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      tag,
-      sinceId: sinceId,
-      untilId: untilId,
-    );
+    return notifier.build(account, tag, sinceId: sinceId, untilId: untilId);
   }
 
   @override
@@ -160,11 +160,12 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: TagNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..tag = tag
-          ..sinceId = sinceId
-          ..untilId = untilId,
+        () =>
+            create()
+              ..account = account
+              ..tag = tag
+              ..sinceId = sinceId
+              ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,
@@ -179,8 +180,11 @@ class TagNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<TagNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    TagNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _TagNotesNotifierProviderElement(this);
   }
 
@@ -223,8 +227,12 @@ mixin TagNotesNotifierRef
 }
 
 class _TagNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<TagNotesNotifier,
-        PaginationState<Note>> with TagNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          TagNotesNotifier,
+          PaginationState<Note>
+        >
+    with TagNotesNotifierRef {
   _TagNotesNotifierProviderElement(super.provider);
 
   @override
@@ -236,5 +244,6 @@ class _TagNotesNotifierProviderElement
   @override
   String? get untilId => (origin as TagNotesNotifierProvider).untilId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

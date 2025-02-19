@@ -91,7 +91,6 @@ class PrivacyPage extends ConsumerWidget {
                 child: ListTile(
                   title: Text(t.misskey.followingVisibility),
                   subtitle: FfVisibilityWidget(
-                    // ignore: deprecated_member_use
                     visibility: i.followingVisibility ?? i.ffVisibility,
                   ),
                   trailing: const Icon(Icons.navigate_next),
@@ -100,7 +99,6 @@ class PrivacyPage extends ConsumerWidget {
                       context,
                       title: Text(t.misskey.followingVisibility),
                       values: FFVisibility.values,
-                      // ignore: deprecated_member_use
                       initialValue: i.followingVisibility ?? i.ffVisibility,
                       itemBuilder:
                           (context, visibility) =>
@@ -126,7 +124,6 @@ class PrivacyPage extends ConsumerWidget {
                 child: ListTile(
                   title: Text(t.misskey.followersVisibility),
                   subtitle: FfVisibilityWidget(
-                    // ignore: deprecated_member_use
                     visibility: i.followersVisibility ?? i.ffVisibility,
                   ),
                   trailing: const Icon(Icons.navigate_next),
@@ -135,7 +132,6 @@ class PrivacyPage extends ConsumerWidget {
                       context,
                       title: Text(t.misskey.followersVisibility),
                       values: FFVisibility.values,
-                      // ignore: deprecated_member_use
                       initialValue: i.followersVisibility ?? i.ffVisibility,
                       itemBuilder:
                           (context, visibility) =>

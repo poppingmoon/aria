@@ -35,10 +35,7 @@ abstract class _$UserFollowersNotifier
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Following>> build(
-    Account account,
-    String userId,
-  );
+  FutureOr<PaginationState<Following>> build(Account account, String userId);
 }
 
 /// See also [UserFollowersNotifier].
@@ -52,24 +49,15 @@ class UserFollowersNotifierFamily
   const UserFollowersNotifierFamily();
 
   /// See also [UserFollowersNotifier].
-  UserFollowersNotifierProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserFollowersNotifierProvider(
-      account,
-      userId,
-    );
+  UserFollowersNotifierProvider call(Account account, String userId) {
+    return UserFollowersNotifierProvider(account, userId);
   }
 
   @override
   UserFollowersNotifierProvider getProviderOverride(
     covariant UserFollowersNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class UserFollowersNotifierFamily
 
 /// See also [UserFollowersNotifier].
 class UserFollowersNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<UserFollowersNotifier,
-        PaginationState<Following>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UserFollowersNotifier,
+          PaginationState<Following>
+        > {
   /// See also [UserFollowersNotifier].
-  UserFollowersNotifierProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          () => UserFollowersNotifier()
-            ..account = account
-            ..userId = userId,
-          from: userFollowersNotifierProvider,
-          name: r'userFollowersNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userFollowersNotifierHash,
-          dependencies: UserFollowersNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserFollowersNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserFollowersNotifierProvider(Account account, String userId)
+    : this._internal(
+        () =>
+            UserFollowersNotifier()
+              ..account = account
+              ..userId = userId,
+        from: userFollowersNotifierProvider,
+        name: r'userFollowersNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userFollowersNotifierHash,
+        dependencies: UserFollowersNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UserFollowersNotifierFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserFollowersNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class UserFollowersNotifierProvider
   FutureOr<PaginationState<Following>> runNotifierBuild(
     covariant UserFollowersNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      userId,
-    );
+    return notifier.build(account, userId);
   }
 
   @override
@@ -141,9 +128,10 @@ class UserFollowersNotifierProvider
     return ProviderOverride(
       origin: this,
       override: UserFollowersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class UserFollowersNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UserFollowersNotifier,
-      PaginationState<Following>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UserFollowersNotifier,
+    PaginationState<Following>
+  >
+  createElement() {
     return _UserFollowersNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin UserFollowersNotifierRef
 }
 
 class _UserFollowersNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UserFollowersNotifier,
-        PaginationState<Following>> with UserFollowersNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UserFollowersNotifier,
+          PaginationState<Following>
+        >
+    with UserFollowersNotifierRef {
   _UserFollowersNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _UserFollowersNotifierProviderElement
   @override
   String get userId => (origin as UserFollowersNotifierProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

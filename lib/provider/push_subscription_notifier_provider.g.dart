@@ -34,9 +34,7 @@ abstract class _$PushSubscriptionNotifier
     extends BuildlessAutoDisposeNotifier<String?> {
   late final Account account;
 
-  String? build(
-    Account account,
-  );
+  String? build(Account account);
 }
 
 /// See also [PushSubscriptionNotifier].
@@ -49,21 +47,15 @@ class PushSubscriptionNotifierFamily extends Family<String?> {
   const PushSubscriptionNotifierFamily();
 
   /// See also [PushSubscriptionNotifier].
-  PushSubscriptionNotifierProvider call(
-    Account account,
-  ) {
-    return PushSubscriptionNotifierProvider(
-      account,
-    );
+  PushSubscriptionNotifierProvider call(Account account) {
+    return PushSubscriptionNotifierProvider(account);
   }
 
   @override
   PushSubscriptionNotifierProvider getProviderOverride(
     covariant PushSubscriptionNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class PushSubscriptionNotifierFamily extends Family<String?> {
 class PushSubscriptionNotifierProvider
     extends AutoDisposeNotifierProviderImpl<PushSubscriptionNotifier, String?> {
   /// See also [PushSubscriptionNotifier].
-  PushSubscriptionNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => PushSubscriptionNotifier()..account = account,
-          from: pushSubscriptionNotifierProvider,
-          name: r'pushSubscriptionNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$pushSubscriptionNotifierHash,
-          dependencies: PushSubscriptionNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              PushSubscriptionNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  PushSubscriptionNotifierProvider(Account account)
+    : this._internal(
+        () => PushSubscriptionNotifier()..account = account,
+        from: pushSubscriptionNotifierProvider,
+        name: r'pushSubscriptionNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$pushSubscriptionNotifierHash,
+        dependencies: PushSubscriptionNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            PushSubscriptionNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   PushSubscriptionNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +105,8 @@ class PushSubscriptionNotifierProvider
   final Account account;
 
   @override
-  String? runNotifierBuild(
-    covariant PushSubscriptionNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  String? runNotifierBuild(covariant PushSubscriptionNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -140,7 +127,7 @@ class PushSubscriptionNotifierProvider
 
   @override
   AutoDisposeNotifierProviderElement<PushSubscriptionNotifier, String?>
-      createElement() {
+  createElement() {
     return _PushSubscriptionNotifierProviderElement(this);
   }
 
@@ -167,12 +154,14 @@ mixin PushSubscriptionNotifierRef on AutoDisposeNotifierProviderRef<String?> {
 }
 
 class _PushSubscriptionNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<PushSubscriptionNotifier,
-        String?> with PushSubscriptionNotifierRef {
+    extends
+        AutoDisposeNotifierProviderElement<PushSubscriptionNotifier, String?>
+    with PushSubscriptionNotifierRef {
   _PushSubscriptionNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as PushSubscriptionNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -33,9 +33,7 @@ abstract class _$AntennasNotifier
     extends BuildlessAutoDisposeAsyncNotifier<List<Antenna>> {
   late final Account account;
 
-  FutureOr<List<Antenna>> build(
-    Account account,
-  );
+  FutureOr<List<Antenna>> build(Account account);
 }
 
 /// See also [AntennasNotifier].
@@ -48,21 +46,15 @@ class AntennasNotifierFamily extends Family<AsyncValue<List<Antenna>>> {
   const AntennasNotifierFamily();
 
   /// See also [AntennasNotifier].
-  AntennasNotifierProvider call(
-    Account account,
-  ) {
-    return AntennasNotifierProvider(
-      account,
-    );
+  AntennasNotifierProvider call(Account account) {
+    return AntennasNotifierProvider(account);
   }
 
   @override
   AntennasNotifierProvider getProviderOverride(
     covariant AntennasNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -81,24 +73,24 @@ class AntennasNotifierFamily extends Family<AsyncValue<List<Antenna>>> {
 }
 
 /// See also [AntennasNotifier].
-class AntennasNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    AntennasNotifier, List<Antenna>> {
+class AntennasNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<AntennasNotifier, List<Antenna>> {
   /// See also [AntennasNotifier].
-  AntennasNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => AntennasNotifier()..account = account,
-          from: antennasNotifierProvider,
-          name: r'antennasNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$antennasNotifierHash,
-          dependencies: AntennasNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              AntennasNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  AntennasNotifierProvider(Account account)
+    : this._internal(
+        () => AntennasNotifier()..account = account,
+        from: antennasNotifierProvider,
+        name: r'antennasNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$antennasNotifierHash,
+        dependencies: AntennasNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            AntennasNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   AntennasNotifierProvider._internal(
     super._createNotifier, {
@@ -116,9 +108,7 @@ class AntennasNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<List<Antenna>> runNotifierBuild(
     covariant AntennasNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,7 +129,7 @@ class AntennasNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<AntennasNotifier, List<Antenna>>
-      createElement() {
+  createElement() {
     return _AntennasNotifierProviderElement(this);
   }
 
@@ -166,12 +156,14 @@ mixin AntennasNotifierRef
 }
 
 class _AntennasNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<AntennasNotifier,
-        List<Antenna>> with AntennasNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<AntennasNotifier, List<Antenna>>
+    with AntennasNotifierRef {
   _AntennasNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as AntennasNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

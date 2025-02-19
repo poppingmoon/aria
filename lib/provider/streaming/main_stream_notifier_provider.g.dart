@@ -34,9 +34,7 @@ abstract class _$MainStreamNotifier
     extends BuildlessAutoDisposeStreamNotifier<MainEvent> {
   late final Account account;
 
-  Stream<MainEvent> build(
-    Account account,
-  );
+  Stream<MainEvent> build(Account account);
 }
 
 /// See also [MainStreamNotifier].
@@ -49,21 +47,15 @@ class MainStreamNotifierFamily extends Family<AsyncValue<MainEvent>> {
   const MainStreamNotifierFamily();
 
   /// See also [MainStreamNotifier].
-  MainStreamNotifierProvider call(
-    Account account,
-  ) {
-    return MainStreamNotifierProvider(
-      account,
-    );
+  MainStreamNotifierProvider call(Account account) {
+    return MainStreamNotifierProvider(account);
   }
 
   @override
   MainStreamNotifierProvider getProviderOverride(
     covariant MainStreamNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -82,24 +74,24 @@ class MainStreamNotifierFamily extends Family<AsyncValue<MainEvent>> {
 }
 
 /// See also [MainStreamNotifier].
-class MainStreamNotifierProvider extends AutoDisposeStreamNotifierProviderImpl<
-    MainStreamNotifier, MainEvent> {
+class MainStreamNotifierProvider
+    extends
+        AutoDisposeStreamNotifierProviderImpl<MainStreamNotifier, MainEvent> {
   /// See also [MainStreamNotifier].
-  MainStreamNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => MainStreamNotifier()..account = account,
-          from: mainStreamNotifierProvider,
-          name: r'mainStreamNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$mainStreamNotifierHash,
-          dependencies: MainStreamNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MainStreamNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  MainStreamNotifierProvider(Account account)
+    : this._internal(
+        () => MainStreamNotifier()..account = account,
+        from: mainStreamNotifierProvider,
+        name: r'mainStreamNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$mainStreamNotifierHash,
+        dependencies: MainStreamNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MainStreamNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   MainStreamNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +106,8 @@ class MainStreamNotifierProvider extends AutoDisposeStreamNotifierProviderImpl<
   final Account account;
 
   @override
-  Stream<MainEvent> runNotifierBuild(
-    covariant MainStreamNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  Stream<MainEvent> runNotifierBuild(covariant MainStreamNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -140,7 +128,7 @@ class MainStreamNotifierProvider extends AutoDisposeStreamNotifierProviderImpl<
 
   @override
   AutoDisposeStreamNotifierProviderElement<MainStreamNotifier, MainEvent>
-      createElement() {
+  createElement() {
     return _MainStreamNotifierProviderElement(this);
   }
 
@@ -166,12 +154,14 @@ mixin MainStreamNotifierRef on AutoDisposeStreamNotifierProviderRef<MainEvent> {
 }
 
 class _MainStreamNotifierProviderElement
-    extends AutoDisposeStreamNotifierProviderElement<MainStreamNotifier,
-        MainEvent> with MainStreamNotifierRef {
+    extends
+        AutoDisposeStreamNotifierProviderElement<MainStreamNotifier, MainEvent>
+    with MainStreamNotifierRef {
   _MainStreamNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as MainStreamNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

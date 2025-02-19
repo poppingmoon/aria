@@ -34,10 +34,7 @@ abstract class _$UserClipsNotifier
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Clip>> build(
-    Account account,
-    String userId,
-  );
+  FutureOr<PaginationState<Clip>> build(Account account, String userId);
 }
 
 /// See also [UserClipsNotifier].
@@ -51,24 +48,15 @@ class UserClipsNotifierFamily
   const UserClipsNotifierFamily();
 
   /// See also [UserClipsNotifier].
-  UserClipsNotifierProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserClipsNotifierProvider(
-      account,
-      userId,
-    );
+  UserClipsNotifierProvider call(Account account, String userId) {
+    return UserClipsNotifierProvider(account, userId);
   }
 
   @override
   UserClipsNotifierProvider getProviderOverride(
     covariant UserClipsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +75,31 @@ class UserClipsNotifierFamily
 }
 
 /// See also [UserClipsNotifier].
-class UserClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    UserClipsNotifier, PaginationState<Clip>> {
+class UserClipsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UserClipsNotifier,
+          PaginationState<Clip>
+        > {
   /// See also [UserClipsNotifier].
-  UserClipsNotifierProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          () => UserClipsNotifier()
-            ..account = account
-            ..userId = userId,
-          from: userClipsNotifierProvider,
-          name: r'userClipsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userClipsNotifierHash,
-          dependencies: UserClipsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserClipsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserClipsNotifierProvider(Account account, String userId)
+    : this._internal(
+        () =>
+            UserClipsNotifier()
+              ..account = account
+              ..userId = userId,
+        from: userClipsNotifierProvider,
+        name: r'userClipsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userClipsNotifierHash,
+        dependencies: UserClipsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UserClipsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserClipsNotifierProvider._internal(
     super._createNotifier, {
@@ -128,10 +119,7 @@ class UserClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Clip>> runNotifierBuild(
     covariant UserClipsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      userId,
-    );
+    return notifier.build(account, userId);
   }
 
   @override
@@ -139,9 +127,10 @@ class UserClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: UserClipsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,8 +143,11 @@ class UserClipsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UserClipsNotifier,
-      PaginationState<Clip>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UserClipsNotifier,
+    PaginationState<Clip>
+  >
+  createElement() {
     return _UserClipsNotifierProviderElement(this);
   }
 
@@ -188,8 +180,12 @@ mixin UserClipsNotifierRef
 }
 
 class _UserClipsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UserClipsNotifier,
-        PaginationState<Clip>> with UserClipsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UserClipsNotifier,
+          PaginationState<Clip>
+        >
+    with UserClipsNotifierRef {
   _UserClipsNotifierProviderElement(super.provider);
 
   @override
@@ -197,5 +193,6 @@ class _UserClipsNotifierProviderElement
   @override
   String get userId => (origin as UserClipsNotifierProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -39,21 +39,15 @@ class AverageColorFamily extends Family<Color> {
   const AverageColorFamily();
 
   /// See also [averageColor].
-  AverageColorProvider call(
-    String blurHash,
-  ) {
-    return AverageColorProvider(
-      blurHash,
-    );
+  AverageColorProvider call(String blurHash) {
+    return AverageColorProvider(blurHash);
   }
 
   @override
   AverageColorProvider getProviderOverride(
     covariant AverageColorProvider provider,
   ) {
-    return call(
-      provider.blurHash,
-    );
+    return call(provider.blurHash);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class AverageColorFamily extends Family<Color> {
 /// See also [averageColor].
 class AverageColorProvider extends AutoDisposeProvider<Color> {
   /// See also [averageColor].
-  AverageColorProvider(
-    String blurHash,
-  ) : this._internal(
-          (ref) => averageColor(
-            ref as AverageColorRef,
-            blurHash,
-          ),
-          from: averageColorProvider,
-          name: r'averageColorProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$averageColorHash,
-          dependencies: AverageColorFamily._dependencies,
-          allTransitiveDependencies:
-              AverageColorFamily._allTransitiveDependencies,
-          blurHash: blurHash,
-        );
+  AverageColorProvider(String blurHash)
+    : this._internal(
+        (ref) => averageColor(ref as AverageColorRef, blurHash),
+        from: averageColorProvider,
+        name: r'averageColorProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$averageColorHash,
+        dependencies: AverageColorFamily._dependencies,
+        allTransitiveDependencies:
+            AverageColorFamily._allTransitiveDependencies,
+        blurHash: blurHash,
+      );
 
   AverageColorProvider._internal(
     super._createNotifier, {
@@ -106,9 +96,7 @@ class AverageColorProvider extends AutoDisposeProvider<Color> {
   final String blurHash;
 
   @override
-  Override overrideWith(
-    Color Function(AverageColorRef provider) create,
-  ) {
+  Override overrideWith(Color Function(AverageColorRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: AverageColorProvider._internal(
@@ -156,5 +144,6 @@ class _AverageColorProviderElement extends AutoDisposeProviderElement<Color>
   @override
   String get blurHash => (origin as AverageColorProvider).blurHash;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

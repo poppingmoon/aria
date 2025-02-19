@@ -1294,7 +1294,6 @@ void main() {
 
 const categorizedUnicodeEmojis = ${const JsonEncoder.withIndent('  ').convert(categorized)};
 """);
-  // ignore: avoid_print
   print('Successfully generated ${categorizedEmojisFile.path}');
 
   const languages = ['en-US', 'ja-JP', 'ja-JP_hira'];
@@ -1326,6 +1325,5 @@ const unicodeEmojiIndex = {
 ${textToEmoji.entries.map((e) => "  '${e.key.replaceAll("'", r"\'")}': ${jsonEncode(e.value.toList())}").join(',\n')}
 };
 """);
-  // ignore: avoid_print
   print('Successfully generated ${emojiIndexFile.path}');
 }

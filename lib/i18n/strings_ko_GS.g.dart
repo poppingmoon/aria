@@ -253,6 +253,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} 서버넌 오픈소스 플랫폼 <b>Misskey</b>으 서버 가운데 하나입니다.';
 	@override String monthAndDay({required Object month, required Object day}) => '${month}월 ${day}일';
 	@override String get search => '찾기';
+	@override String get reset => '초기화';
 	@override String get notifications => '알림';
 	@override String get username => '사용자 이럼';
 	@override String get password => '비밀번호';
@@ -296,6 +297,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get unpin => '프로필서 띠기';
 	@override String get copyContent => '내용 복사하기';
 	@override String get copyLink => '링크 복사하기';
+	@override String get copyRemoteLink => '리모트 서버의 링크로 복사하기';
 	@override String get copyLinkRenote => '리노트 링크 복사';
 	@override String get delete => '내삐리기';
 	@override String get deleteAndEdit => '내삐리고 새로 적기';
@@ -934,11 +936,13 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get wordMute => '단어 뮤트';
 	@override String get wordMuteDescription => '정해진 단어가 포함된 노트를 최소화 한 상태로 표시합니다. 최소화 된 노트는 클릭해서 표시할 수 있습니다.';
 	@override String get hardWordMute => '하드 단어 뮤트';
+	@override String get showMutedWord => '뮤트한 단어를 표시하기';
 	@override String get hardWordMuteDescription => '정한 단어가 들어간 노트를 숨깁니다. 단어 뮤트와 차이점은 노트가 아예 보이지 않습니다.';
 	@override String get regexpError => '정규 표현식 오류';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab}단어 뮤트 ${line}행의 정규 표현식에 오류가 발생했습니다:';
 	@override String get instanceMute => '서버 뮤트';
 	@override String userSaysSomething({required Object name}) => '${name}님이 무언가를 말했습니다';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name}님이 "${word}"를 언급했습니다.';
 	@override String get makeActive => '활성화';
 	@override String get display => '보기';
 	@override String get copy => '복사';
@@ -1527,7 +1531,7 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get sensitiveMediaRevealConfirm => '민감한 미디어입니다. 표시할까요?';
 	@override String get createdLists => '만든 리스트';
 	@override String get createdAntennas => '만든 안테나';
-	@override String fromX({required Object x}) => '${x}부터';
+	@override String fromX({required Object x}) => '${x}에서';
 	@override String get genEmbedCode => '임베디드 코드 만들기';
 	@override String get noteOfThisUser => '이 유저의 노트 목록';
 	@override String get clipNoteLimitExceeded => '더 이상 이 클립에 노트를 추가 할 수 없습니다.';
@@ -1551,6 +1555,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => '계정을 선택해주세요.';
 	@override String get availableRoles => '사용 가능한 역할';
 	@override String get acknowledgeNotesAndEnable => '활성화 하기 전에 주의 사항을 확인했습니다.';
+	@override String get federationSpecified => '이 서버는 화이트 리스트 제도로 운영 중 입니다. 정해진 리모트 서버가 아닌 경우 연합되지 않습니다.';
+	@override String get federationDisabled => '이 서버는 연합을 하지 않고 있습니다. 리모트 서버 유저와 통신을 할 수 없습니다.';
 	@override late final _TranslationsMisskeyAccountSettingsKoGs accountSettings_ = _TranslationsMisskeyAccountSettingsKoGs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportKoGs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportKoGs._(_root);
 	@override late final _TranslationsMisskeyDeliveryKoGs delivery_ = _TranslationsMisskeyDeliveryKoGs._(_root);
@@ -1625,10 +1631,14 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingKoGs urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingKoGs._(_root);
 	@override late final _TranslationsMisskeyMediaControlsKoGs mediaControls_ = _TranslationsMisskeyMediaControlsKoGs._(_root);
 	@override late final _TranslationsMisskeyContextMenuKoGs contextMenu_ = _TranslationsMisskeyContextMenuKoGs._(_root);
+	@override late final _TranslationsMisskeyGridComponentKoGs gridComponent_ = _TranslationsMisskeyGridComponentKoGs._(_root);
+	@override late final _TranslationsMisskeyRoleSelectDialogKoGs roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogKoGs._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerKoGs customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerKoGs._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenKoGs embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenKoGs._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionKoGs selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionKoGs._(_root);
 	@override late final _TranslationsMisskeyFollowRequestKoGs followRequest_ = _TranslationsMisskeyFollowRequestKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsKoGs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsKoGs._(_root);
+	@override late final _TranslationsMisskeyCaptchaKoGs captcha_ = _TranslationsMisskeyCaptchaKoGs._(_root);
 }
 
 // Path: misskeyIO
@@ -2728,9 +2738,6 @@ class _TranslationsMisskeyPagesKoGs extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => '페이지 만들기';
 	@override String get editPage => '페이지 수정';
 	@override String get readPage => '소스 표시 중';
-	@override String get created => '페이지를 만들었습니다';
-	@override String get updated => '페이지를 수정했습니다';
-	@override String get deleted => '페이지가 삭제되었습니다';
 	@override String get pageSetting => '페이지 설정';
 	@override String get nameAlreadyExists => '지정한 페이지 URL이 이미 존재합니다';
 	@override String get invalidNameTitle => '유효하지 않은 페이지 URL입니다';
@@ -3130,6 +3137,39 @@ class _TranslationsMisskeyContextMenuKoGs extends TranslationsMisskeyContextMenu
 	@override String get native => '브라우저의 UI';
 }
 
+// Path: misskey.gridComponent_
+class _TranslationsMisskeyGridComponentKoGs extends TranslationsMisskeyGridComponentEnUs {
+	_TranslationsMisskeyGridComponentKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyGridComponentErrorKoGs error_ = _TranslationsMisskeyGridComponentErrorKoGs._(_root);
+}
+
+// Path: misskey.roleSelectDialog_
+class _TranslationsMisskeyRoleSelectDialogKoGs extends TranslationsMisskeyRoleSelectDialogEnUs {
+	_TranslationsMisskeyRoleSelectDialogKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get notSelected => '선택하지 않았습니다.';
+}
+
+// Path: misskey.customEmojisManager_
+class _TranslationsMisskeyCustomEmojisManagerKoGs extends TranslationsMisskeyCustomEmojisManagerEnUs {
+	_TranslationsMisskeyCustomEmojisManagerKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonKoGs gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonKoGs._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLogsKoGs logs_ = _TranslationsMisskeyCustomEmojisManagerLogsKoGs._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteKoGs remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteKoGs._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalKoGs local_ = _TranslationsMisskeyCustomEmojisManagerLocalKoGs._(_root);
+}
+
 // Path: misskey.embedCodeGen_
 class _TranslationsMisskeyEmbedCodeGenKoGs extends TranslationsMisskeyEmbedCodeGenEnUs {
 	_TranslationsMisskeyEmbedCodeGenKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
@@ -3187,7 +3227,21 @@ class _TranslationsMisskeyRemoteLookupErrorsKoGs extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs federationNotAllowed_ = _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs._(_root);
+	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs._(_root);
+}
+
+// Path: misskey.captcha_
+class _TranslationsMisskeyCaptchaKoGs extends TranslationsMisskeyCaptchaEnUs {
+	_TranslationsMisskeyCaptchaKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get verify => 'CAPTCHA를 먼저 해결하세요.';
+	@override String get testSiteKeyMessage => '사이트 키와 비밀 키에 테스트용 값을 입력하여 미리보기를 확인할 수 있습니다.\n자세한 내용은 아래 페이지를 확인해보세요.';
+	@override late final _TranslationsMisskeyCaptchaErrorKoGs error_ = _TranslationsMisskeyCaptchaErrorKoGs._(_root);
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3833,6 +3887,79 @@ class _TranslationsMisskeyDataSaverCodeKoGs extends TranslationsMisskeyDataSaver
 	@override String get description => 'MFM 등으로 문자열 강조 기법을 사용할 때 누르기 전에는 불러오지 않습니다. 문자열 강조에서는 강조할 언어마다 그 정의 파일을 불러와야 하지만 이를 자동으로 불러오지 않으므로 데이터 사용량을 줄일 수 있습니다.';
 }
 
+// Path: misskey.gridComponent_.error_
+class _TranslationsMisskeyGridComponentErrorKoGs extends TranslationsMisskeyGridComponentErrorEnUs {
+	_TranslationsMisskeyGridComponentErrorKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get requiredValue => '이 값은 필수 항목입니다.';
+	@override String get columnTypeNotSupport => '정규표현 규칙이 type:text인 칼럼만 지원합니다.';
+	@override String patternNotMatch({required Object pattern}) => '이 값은 ${pattern} 패턴과 일치하지 않습니다.';
+	@override String get notUnique => '이 값은 다른 값과 중복되지 않아야 합니다.';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class _TranslationsMisskeyCustomEmojisManagerGridCommonKoGs extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	_TranslationsMisskeyCustomEmojisManagerGridCommonKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => '선택한 행을 복사하기';
+	@override String get copySelectionRanges => '선택범위를 복사하기';
+	@override String get deleteSelectionRows => '선택한 행을 삭제';
+	@override String get deleteSelectionRanges => '선택한 행을 삭제';
+	@override String get searchSettings => '검색 설정';
+	@override String get searchSettingCaption => '고급 검색을 설정합니다.';
+	@override String get searchLimit => '표시 건수';
+	@override String get sortOrder => '정렬 순서';
+	@override String get registrationLogs => '등록 로그';
+	@override String get registrationLogsCaption => '이모지를 갱신하거나 삭제할 때 로그가 표시됩니다. 갱신 또는 삭제하거나, 페이지 이동, 새로 고침하면 삭제됩니다.';
+	@override String get alertEmojisRegisterFailedDescription => '이모지를 갱신 또는 삭제하지 못했습니다. 자세한 내용은 등록 로그를 확인해주세요.';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class _TranslationsMisskeyCustomEmojisManagerLogsKoGs extends TranslationsMisskeyCustomEmojisManagerLogsEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLogsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSuccessLogSwitch => '성공 로그를 표시';
+	@override String get failureLogNothing => '실패 로그가 없습니다.';
+	@override String get logNothing => '로그가 없습니다.';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class _TranslationsMisskeyCustomEmojisManagerRemoteKoGs extends TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
+	_TranslationsMisskeyCustomEmojisManagerRemoteKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectionRowDetail => '선택 행 (상세)';
+	@override String get importSelectionRows => '선택 행을 가져오기';
+	@override String get importSelectionRangesRows => '선택한 범위 안의 행을 가져오기';
+	@override String get importEmojisButton => '선택한 이모지를 가져오기';
+	@override String get confirmImportEmojisTitle => '이모지 가져오기';
+	@override String confirmImportEmojisDescription({required Object count}) => '리모트 서버에서 받아온 이모지 ${count}개를 이 서버로 가져옵니다. 이모지의 저작권, 라이선스를 확실히 확인하셨다면 실행해주세요.';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalKoGs extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => '등록한 이모지 리스트';
+	@override String get tabTitleRegister => '이모지 등록';
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListKoGs list_ = _TranslationsMisskeyCustomEmojisManagerLocalListKoGs._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterKoGs register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterKoGs._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
 class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
@@ -3866,6 +3993,27 @@ class _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs extends Translatio
 	@override String get description => '해당 서버와 통신을 실패했습니다. 상대방 서버에 접속 불가능한 상태일 수도 있습니다. 또는 잘못된 URI 또는 없는 URI를 입력했는지 확인해보세요.';
 }
 
+// Path: misskey.remoteLookupErrors_.responseInvalid_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '유효하지 않은 반응입니다.';
+	@override String get description => '이 서버와 통신할 수 있지만, 데이터가 올바르지 않습니다.';
+}
+
+// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
+class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
+	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get description => '입력된 URI과 실제 URI가 다릅니다. 제 3자 서버를 통한 리모트 컨텐츠를 조회하는 경우, 원래 서버 측에서 받아올 수 있는 URI를 사용하여 조회하시길 바랍니다.';
+}
+
 // Path: misskey.remoteLookupErrors_.noSuchObject_
 class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs extends TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
@@ -3874,6 +4022,19 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs extends Translation
 
 	// Translations
 	@override String get title => '몬 찾앗십니다';
+	@override String get description => '요구된 리소스를 찾을 수 없습니다. URI를 다시 한 번 확인해보세요.';
+}
+
+// Path: misskey.captcha_.error_
+class _TranslationsMisskeyCaptchaErrorKoGs extends TranslationsMisskeyCaptchaErrorEnUs {
+	_TranslationsMisskeyCaptchaErrorKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedKoGs requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedKoGs._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedKoGs verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedKoGs._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorUnknownKoGs unknown_ = _TranslationsMisskeyCaptchaErrorUnknownKoGs._(_root);
 }
 
 // Path: misskeyIO.skebStatus_.genres_
@@ -4916,6 +5077,80 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedKoGs 
 	// Translations
 	@override String get title => '테마를 설치하지 못했습니다';
 	@override String get description => '테마를 설치하는 도중 문제가 발생하였습니다. 다시 한 번 시도하십시오. 자세한 사항은 브라우저에 내장된 개발자 도구의 Javascript 콘솔에서 확인하실 수 있습니다.';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListKoGs extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => '등록한 이모지가 없습니다.';
+	@override String get markAsDeleteTargetRows => '선택한 행을 삭제할 대상으로 하기';
+	@override String get markAsDeleteTargetRanges => '선택한 범위의 행을 삭제 대상으로 하기';
+	@override String get alertUpdateEmojisNothingDescription => '변경할 이모지가 없습니다.';
+	@override String get alertDeleteEmojisNothingDescription => '삭제 대상의 이모지는 없습니다.';
+	@override String get confirmMovePage => '페이지를 이동할까요?';
+	@override String get confirmChangeView => '표시를 바꿀까요?';
+	@override String confirmUpdateEmojisDescription({required Object count}) => '${count}개의 이모지를 갱신합니다. 실행할까요?';
+	@override String confirmDeleteEmojisDescription({required Object count}) => '선택한 이모지 ${count}개를 삭제합니다. 실행할까요?';
+	@override String get confirmResetDescription => '지금까지 했던 변경 내용이 모두 초기화됩니다.';
+	@override String get confirmMovePageDesciption => '이 페이지의 이모지에 변경이 있습니다.\n저장하지 않은 상태로 페이지를 이동하면, 이 페이지에서 바꾼 변경 내용이 모두 지워집니다.';
+	@override String get dialogSelectRoleTitle => '이모지에 설정된 역할을 검색';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class _TranslationsMisskeyCustomEmojisManagerLocalRegisterKoGs extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalRegisterKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get uploadSettingTitle => '업로드 설정';
+	@override String get uploadSettingDescription => '여기서 이모지를 업로드 할 때의 동작을 설정할 수 있습니다.';
+	@override String get directoryToCategoryLabel => '디렉토리 이름을 "category"로 입력하기';
+	@override String get directoryToCategoryCaption => '디렉토리를 드래그 앤 드롭한 경우, 디렉토리 이름을 "category"로 입력합니다.';
+	@override String get emojiInputAreaCaption => '이모지를 등록할 방법을 선택해주세요.';
+	@override String get emojiInputAreaList1 => '이 틀 안에 이미지 파일 또는 디렉토리를 끌어서 가져오기';
+	@override String get emojiInputAreaList2 => '이 링크를 클릭해서 PC에서 선택하기';
+	@override String get emojiInputAreaList3 => '이 링크를 클릭해서 드라이브에서 선택하기';
+	@override String confirmRegisterEmojisDescription({required Object count}) => '리스트에 표시되어진 이모지를 새로운 커스텀 이모지로 등록합니다. 실행할까요? (부하를 피하기 위해, 한 번에 등록할 수 있는 이모지는 ${count}건까지 입니다.)';
+	@override String get confirmClearEmojisDescription => '편집 내용을 지우고, 목록에 표시되어진 이모지를 지웁니다. 실행할까요?';
+	@override String confirmUploadEmojisDescription({required Object count}) => '드래그 앤 드롭한 ${count}개의 파일을 드라이브에 업로드 합니다. 실행할까요?';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class _TranslationsMisskeyCaptchaErrorRequestFailedKoGs extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorRequestFailedKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 요구에 실패했습니다.';
+	@override String get text => '잠시 후에 다시 실행하거나, 설정을 다시 한 번 확인해보세요.';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class _TranslationsMisskeyCaptchaErrorVerificationFailedKoGs extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorVerificationFailedKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 검증을 실패했습니다.';
+	@override String get text => '설정이 올바른지 다시 한 번 확인해보세요.';
+}
+
+// Path: misskey.captcha_.error_.unknown_
+class _TranslationsMisskeyCaptchaErrorUnknownKoGs extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
+	_TranslationsMisskeyCaptchaErrorUnknownKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 에러';
+	@override String get text => '알 수 없는 에러가 발생했습니다.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

@@ -87,6 +87,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name}是開放原始碼平臺 <b>Misskey</b> 的伺服器之一。';
 	@override String monthAndDay({required Object month, required Object day}) => '${month} 月 ${day} 日';
 	@override String get search => '搜尋';
+	@override String get reset => '重設';
 	@override String get notifications => '通知';
 	@override String get username => '使用者名稱';
 	@override String get password => '密碼';
@@ -130,6 +131,7 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get unpin => '取消置頂';
 	@override String get copyContent => '複製內容';
 	@override String get copyLink => '複製連結';
+	@override String get copyRemoteLink => '複製遠端的連結';
 	@override String get copyLinkRenote => '複製轉發的連結';
 	@override String get delete => '刪除';
 	@override String get deleteAndEdit => '刪除並編輯';
@@ -768,11 +770,13 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get wordMute => '被靜音的文字';
 	@override String get wordMuteDescription => '將包含指定語句的貼文最小化。 點擊最小化的貼文即可顯示。';
 	@override String get hardWordMute => '硬文字靜音';
+	@override String get showMutedWord => '顯示靜音字';
 	@override String get hardWordMuteDescription => '隱藏含有指定語句的貼文。 與詞彙靜音不同的是，貼文將完全隱藏不見。';
 	@override String get regexpError => '正規表達式錯誤';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} 靜音文字的第 ${line} 行的正規表達式有錯誤：';
 	@override String get instanceMute => '被靜音的實例';
 	@override String userSaysSomething({required Object name}) => '${name}說了什麼';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} 說了一些關於「${word}」的話';
 	@override String get makeActive => '啟用';
 	@override String get display => '檢視';
 	@override String get copy => '複製';
@@ -1385,6 +1389,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => '請選擇帳戶';
 	@override String get availableRoles => '可用角色';
 	@override String get acknowledgeNotesAndEnable => '了解注意事項後再開啟。';
+	@override String get federationSpecified => '此伺服器以白名單聯邦的方式運作。除了管理員指定的伺服器外，它無法與其他伺服器互動。';
+	@override String get federationDisabled => '此伺服器未開啟站台聯邦。無法與其他伺服器上的使用者互動。';
 	@override late final _TranslationsMisskeyAccountSettingsZhTw accountSettings_ = _TranslationsMisskeyAccountSettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
@@ -1459,10 +1465,14 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingZhTw urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingZhTw._(_root);
 	@override late final _TranslationsMisskeyMediaControlsZhTw mediaControls_ = _TranslationsMisskeyMediaControlsZhTw._(_root);
 	@override late final _TranslationsMisskeyContextMenuZhTw contextMenu_ = _TranslationsMisskeyContextMenuZhTw._(_root);
+	@override late final _TranslationsMisskeyGridComponentZhTw gridComponent_ = _TranslationsMisskeyGridComponentZhTw._(_root);
+	@override late final _TranslationsMisskeyRoleSelectDialogZhTw roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogZhTw._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerZhTw customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerZhTw._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhTw embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhTw._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionZhTw selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionZhTw._(_root);
 	@override late final _TranslationsMisskeyFollowRequestZhTw followRequest_ = _TranslationsMisskeyFollowRequestZhTw._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsZhTw remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsZhTw._(_root);
+	@override late final _TranslationsMisskeyCaptchaZhTw captcha_ = _TranslationsMisskeyCaptchaZhTw._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2552,9 +2562,6 @@ class _TranslationsMisskeyPagesZhTw extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => '建立頁面';
 	@override String get editPage => '編輯頁面';
 	@override String get readPage => '正在檢視原始碼';
-	@override String get created => '頁面已建立';
-	@override String get updated => '頁面已更新';
-	@override String get deleted => '頁面已被刪除';
 	@override String get pageSetting => '頁面設定';
 	@override String get nameAlreadyExists => '該頁面 URL 已存在';
 	@override String get invalidNameTitle => '無效的頁面 URL';
@@ -2954,6 +2961,39 @@ class _TranslationsMisskeyContextMenuZhTw extends TranslationsMisskeyContextMenu
 	@override String get native => '瀏覽器的使用者介面';
 }
 
+// Path: misskey.gridComponent_
+class _TranslationsMisskeyGridComponentZhTw extends TranslationsMisskeyGridComponentEnUs {
+	_TranslationsMisskeyGridComponentZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyGridComponentErrorZhTw error_ = _TranslationsMisskeyGridComponentErrorZhTw._(_root);
+}
+
+// Path: misskey.roleSelectDialog_
+class _TranslationsMisskeyRoleSelectDialogZhTw extends TranslationsMisskeyRoleSelectDialogEnUs {
+	_TranslationsMisskeyRoleSelectDialogZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get notSelected => '未選擇';
+}
+
+// Path: misskey.customEmojisManager_
+class _TranslationsMisskeyCustomEmojisManagerZhTw extends TranslationsMisskeyCustomEmojisManagerEnUs {
+	_TranslationsMisskeyCustomEmojisManagerZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonZhTw gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonZhTw._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLogsZhTw logs_ = _TranslationsMisskeyCustomEmojisManagerLogsZhTw._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteZhTw remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteZhTw._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalZhTw local_ = _TranslationsMisskeyCustomEmojisManagerLocalZhTw._(_root);
+}
+
 // Path: misskey.embedCodeGen_
 class _TranslationsMisskeyEmbedCodeGenZhTw extends TranslationsMisskeyEmbedCodeGenEnUs {
 	_TranslationsMisskeyEmbedCodeGenZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -3014,6 +3054,18 @@ class _TranslationsMisskeyRemoteLookupErrorsZhTw extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhTw responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhTw._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhTw responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhTw._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw._(_root);
+}
+
+// Path: misskey.captcha_
+class _TranslationsMisskeyCaptchaZhTw extends TranslationsMisskeyCaptchaEnUs {
+	_TranslationsMisskeyCaptchaZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get verify => '請通過 CAPTCHA 驗證';
+	@override String get testSiteKeyMessage => '可以輸入網站金鑰和秘密金鑰的測試值來檢查預覽。\n詳細資訊請參閱以下頁面。';
+	@override late final _TranslationsMisskeyCaptchaErrorZhTw error_ = _TranslationsMisskeyCaptchaErrorZhTw._(_root);
 }
 
 // Path: misskey.delivery_.type_
@@ -3643,6 +3695,79 @@ class _TranslationsMisskeyDataSaverCodeZhTw extends TranslationsMisskeyDataSaver
 	@override String get description => '如果使用了程式碼突顯語法（如 MFM），則在點擊之前不會被載入。由於需要為對應的程式語言下載突顯定義檔案，因此關閉自動載入有助於減少資料流量。';
 }
 
+// Path: misskey.gridComponent_.error_
+class _TranslationsMisskeyGridComponentErrorZhTw extends TranslationsMisskeyGridComponentErrorEnUs {
+	_TranslationsMisskeyGridComponentErrorZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get requiredValue => '此值為必填欄位';
+	@override String get columnTypeNotSupport => '正規表達式驗證僅支援 type:text 的欄位。';
+	@override String patternNotMatch({required Object pattern}) => '此值不符合 ${pattern} 中的樣式。';
+	@override String get notUnique => '此值必須是唯一的';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class _TranslationsMisskeyCustomEmojisManagerGridCommonZhTw extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	_TranslationsMisskeyCustomEmojisManagerGridCommonZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => '複製選取的行';
+	@override String get copySelectionRanges => '複製選取的範圍';
+	@override String get deleteSelectionRows => '刪除所選的行';
+	@override String get deleteSelectionRanges => '刪除選取範圍的行';
+	@override String get searchSettings => '搜尋設定';
+	@override String get searchSettingCaption => '詳細設定搜尋條件。';
+	@override String get searchLimit => '顯示的數量';
+	@override String get sortOrder => '排序';
+	@override String get registrationLogs => '登錄日誌';
+	@override String get registrationLogsCaption => '會顯示更新或刪除表情符號時的日誌。進行更新或刪除操作，或切換頁面、重新載入後，日誌將會消失。';
+	@override String get alertEmojisRegisterFailedDescription => '更新或刪除表情符號失敗。詳情請查看登錄日誌。';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class _TranslationsMisskeyCustomEmojisManagerLogsZhTw extends TranslationsMisskeyCustomEmojisManagerLogsEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLogsZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSuccessLogSwitch => '顯示成功日誌';
+	@override String get failureLogNothing => '沒有失敗的日誌。';
+	@override String get logNothing => '沒有日誌。';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class _TranslationsMisskeyCustomEmojisManagerRemoteZhTw extends TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
+	_TranslationsMisskeyCustomEmojisManagerRemoteZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectionRowDetail => '選取行的詳細資訊';
+	@override String get importSelectionRows => '匯入選取的行';
+	@override String get importSelectionRangesRows => '匯入選取範圍的行';
+	@override String get importEmojisButton => '匯入勾選的表情符號';
+	@override String get confirmImportEmojisTitle => '匯入表情符號';
+	@override String confirmImportEmojisDescription({required Object count}) => '將從遠端接收的${count}個表情符號進行匯入。請務必注意表情符號的授權。是否執行此操作？';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalZhTw extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => '已登錄的表情符號列表';
+	@override String get tabTitleRegister => '登錄表情符號';
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListZhTw list_ = _TranslationsMisskeyCustomEmojisManagerLocalListZhTw._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhTw register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhTw._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
 class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhTw extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
@@ -3706,6 +3831,18 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhTw extends Translation
 	// Translations
 	@override String get title => '查無項目';
 	@override String get description => '無法找到所要求的資源，請再次檢查 URI。';
+}
+
+// Path: misskey.captcha_.error_
+class _TranslationsMisskeyCaptchaErrorZhTw extends TranslationsMisskeyCaptchaErrorEnUs {
+	_TranslationsMisskeyCaptchaErrorZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedZhTw requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedZhTw verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedZhTw._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorUnknownZhTw unknown_ = _TranslationsMisskeyCaptchaErrorUnknownZhTw._(_root);
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -4732,6 +4869,80 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhTw 
 	// Translations
 	@override String get title => '無法安裝佈景主題';
 	@override String get description => '安裝佈景主題時出現問題。請再試一次。請參閱 Javascript 控制台以取得錯誤詳細資訊。';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListZhTw extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => '沒有登錄的表情符號。';
+	@override String get markAsDeleteTargetRows => '將選取的行設為刪除對象';
+	@override String get markAsDeleteTargetRanges => '將選取範圍的行設為刪除對象\n';
+	@override String get alertUpdateEmojisNothingDescription => '沒有選取需要變更的表情符號。';
+	@override String get alertDeleteEmojisNothingDescription => '沒有選取需要刪除的表情符號。';
+	@override String get confirmMovePage => '要移動到其他頁面嗎？';
+	@override String get confirmChangeView => '要更改顯示方式嗎？';
+	@override String confirmUpdateEmojisDescription({required Object count}) => '將更新${count}個表情符號。是否執行此操作？';
+	@override String confirmDeleteEmojisDescription({required Object count}) => '將刪除勾選的${count}個表情符號。是否執行此操作？';
+	@override String get confirmResetDescription => '目前所做的所有變更都會重設。';
+	@override String get confirmMovePageDesciption => '此頁面的表情符號已被更改。  \n若未儲存就直接離開此頁面，則在此頁面進行的所有更改將會被捨棄。';
+	@override String get dialogSelectRoleTitle => '根據表情符號設定的角色進行搜尋';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhTw extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalRegisterZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get uploadSettingTitle => '上傳設定';
+	@override String get uploadSettingDescription => '您可以在此畫面設定表情符號上傳時的操作。';
+	@override String get directoryToCategoryLabel => '在「類別」欄位中輸入目錄名稱';
+	@override String get directoryToCategoryCaption => '拖放目錄時，請在「類別」欄位中輸入目錄名稱。';
+	@override String get emojiInputAreaCaption => '以下列其中一種方式選擇您想要註冊的表情符號';
+	@override String get emojiInputAreaList1 => '將圖片檔案或目錄拖放到此框中';
+	@override String get emojiInputAreaList2 => '點擊此連結從電腦中選擇';
+	@override String get emojiInputAreaList3 => '點擊此連結從雲端硬碟中選擇';
+	@override String confirmRegisterEmojisDescription({required Object count}) => '將列表中顯示的表情符號登錄為新的自定表情符號。是否確定？（為避免過高負荷，每次操作最多可登錄${count}個表情符號）';
+	@override String get confirmClearEmojisDescription => '放棄編輯內容並清除列表中顯示的表情符號。是否確定？';
+	@override String confirmUploadEmojisDescription({required Object count}) => '將拖放的${count}個檔案上傳到雲端硬碟。是否執行此操作？';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class _TranslationsMisskeyCaptchaErrorRequestFailedZhTw extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorRequestFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 請求失敗';
+	@override String get text => '請過一段時間後再執行，或再次檢查設定。';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class _TranslationsMisskeyCaptchaErrorVerificationFailedZhTw extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorVerificationFailedZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 驗證失敗';
+	@override String get text => '請再次檢查設定是否正確。';
+}
+
+// Path: misskey.captcha_.error_.unknown_
+class _TranslationsMisskeyCaptchaErrorUnknownZhTw extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
+	_TranslationsMisskeyCaptchaErrorUnknownZhTw._(TranslationsZhTw root) : this._root = root, super.internal(root);
+
+	final TranslationsZhTw _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 錯誤';
+	@override String get text => '發生了意外的錯誤。';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

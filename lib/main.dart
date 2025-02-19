@@ -16,7 +16,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shared_preferences/util/legacy_to_async_migration_util.dart';
-import 'package:shared_preferences_platform_interface/types.dart';
 import 'package:unifiedpush/unifiedpush.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:webpush_encryption/webpush_encryption.dart';

@@ -35,11 +35,7 @@ abstract class _$AttachesNotifier
   late final String? noteId;
   late final bool gallery;
 
-  List<PostFile> build(
-    Account account, {
-    String? noteId,
-    bool gallery = false,
-  });
+  List<PostFile> build(Account account, {String? noteId, bool gallery = false});
 }
 
 /// See also [AttachesNotifier].
@@ -57,11 +53,7 @@ class AttachesNotifierFamily extends Family<List<PostFile>> {
     String? noteId,
     bool gallery = false,
   }) {
-    return AttachesNotifierProvider(
-      account,
-      noteId: noteId,
-      gallery: gallery,
-    );
+    return AttachesNotifierProvider(account, noteId: noteId, gallery: gallery);
   }
 
   @override
@@ -99,23 +91,24 @@ class AttachesNotifierProvider
     String? noteId,
     bool gallery = false,
   }) : this._internal(
-          () => AttachesNotifier()
-            ..account = account
-            ..noteId = noteId
-            ..gallery = gallery,
-          from: attachesNotifierProvider,
-          name: r'attachesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$attachesNotifierHash,
-          dependencies: AttachesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              AttachesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-          gallery: gallery,
-        );
+         () =>
+             AttachesNotifier()
+               ..account = account
+               ..noteId = noteId
+               ..gallery = gallery,
+         from: attachesNotifierProvider,
+         name: r'attachesNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$attachesNotifierHash,
+         dependencies: AttachesNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             AttachesNotifierFamily._allTransitiveDependencies,
+         account: account,
+         noteId: noteId,
+         gallery: gallery,
+       );
 
   AttachesNotifierProvider._internal(
     super._createNotifier, {
@@ -134,14 +127,8 @@ class AttachesNotifierProvider
   final bool gallery;
 
   @override
-  List<PostFile> runNotifierBuild(
-    covariant AttachesNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      noteId: noteId,
-      gallery: gallery,
-    );
+  List<PostFile> runNotifierBuild(covariant AttachesNotifier notifier) {
+    return notifier.build(account, noteId: noteId, gallery: gallery);
   }
 
   @override
@@ -149,10 +136,11 @@ class AttachesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: AttachesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId
-          ..gallery = gallery,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId
+              ..gallery = gallery,
         from: from,
         name: null,
         dependencies: null,
@@ -167,7 +155,7 @@ class AttachesNotifierProvider
 
   @override
   AutoDisposeNotifierProviderElement<AttachesNotifier, List<PostFile>>
-      createElement() {
+  createElement() {
     return _AttachesNotifierProviderElement(this);
   }
 
@@ -215,5 +203,6 @@ class _AttachesNotifierProviderElement
   @override
   bool get gallery => (origin as AttachesNotifierProvider).gallery;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

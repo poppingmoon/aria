@@ -1628,9 +1628,6 @@ class _TranslationsMisskeyPagesBnBd extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'নতুন পৃষ্ঠা বানান';
 	@override String get editPage => 'পৃষ্ঠাটি সম্পাদনা করুন';
 	@override String get readPage => 'উৎস দেখছেন';
-	@override String get created => 'পৃষ্ঠা তৈরি করা হয়েছে';
-	@override String get updated => 'পৃষ্ঠা সম্পাদনা করা হয়েছে';
-	@override String get deleted => 'পৃষ্ঠা মুছে ফেলা হয়েছে';
 	@override String get pageSetting => 'পৃষ্ঠার সেটিংস';
 	@override String get nameAlreadyExists => 'পৃষ্ঠার URLটি ইতিমধ্যেই ব্যাবহার করা হয়েছে';
 	@override String get invalidNameTitle => 'পৃষ্ঠার URL অবৈধ';

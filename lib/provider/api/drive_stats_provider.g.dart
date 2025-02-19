@@ -39,21 +39,15 @@ class DriveStatsFamily extends Family<AsyncValue<DriveResponse>> {
   const DriveStatsFamily();
 
   /// See also [driveStats].
-  DriveStatsProvider call(
-    Account account,
-  ) {
-    return DriveStatsProvider(
-      account,
-    );
+  DriveStatsProvider call(Account account) {
+    return DriveStatsProvider(account);
   }
 
   @override
   DriveStatsProvider getProviderOverride(
     covariant DriveStatsProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,19 @@ class DriveStatsFamily extends Family<AsyncValue<DriveResponse>> {
 /// See also [driveStats].
 class DriveStatsProvider extends AutoDisposeFutureProvider<DriveResponse> {
   /// See also [driveStats].
-  DriveStatsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => driveStats(
-            ref as DriveStatsRef,
-            account,
-          ),
-          from: driveStatsProvider,
-          name: r'driveStatsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$driveStatsHash,
-          dependencies: DriveStatsFamily._dependencies,
-          allTransitiveDependencies:
-              DriveStatsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  DriveStatsProvider(Account account)
+    : this._internal(
+        (ref) => driveStats(ref as DriveStatsRef, account),
+        from: driveStatsProvider,
+        name: r'driveStatsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$driveStatsHash,
+        dependencies: DriveStatsFamily._dependencies,
+        allTransitiveDependencies: DriveStatsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   DriveStatsProvider._internal(
     super._createNotifier, {
@@ -150,11 +139,13 @@ mixin DriveStatsRef on AutoDisposeFutureProviderRef<DriveResponse> {
 }
 
 class _DriveStatsProviderElement
-    extends AutoDisposeFutureProviderElement<DriveResponse> with DriveStatsRef {
+    extends AutoDisposeFutureProviderElement<DriveResponse>
+    with DriveStatsRef {
   _DriveStatsProviderElement(super.provider);
 
   @override
   Account get account => (origin as DriveStatsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

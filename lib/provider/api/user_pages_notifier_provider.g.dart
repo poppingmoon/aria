@@ -34,10 +34,7 @@ abstract class _$UserPagesNotifier
   late final Account account;
   late final String userId;
 
-  FutureOr<PaginationState<Page>> build(
-    Account account,
-    String userId,
-  );
+  FutureOr<PaginationState<Page>> build(Account account, String userId);
 }
 
 /// See also [UserPagesNotifier].
@@ -51,24 +48,15 @@ class UserPagesNotifierFamily
   const UserPagesNotifierFamily();
 
   /// See also [UserPagesNotifier].
-  UserPagesNotifierProvider call(
-    Account account,
-    String userId,
-  ) {
-    return UserPagesNotifierProvider(
-      account,
-      userId,
-    );
+  UserPagesNotifierProvider call(Account account, String userId) {
+    return UserPagesNotifierProvider(account, userId);
   }
 
   @override
   UserPagesNotifierProvider getProviderOverride(
     covariant UserPagesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.userId,
-    );
+    return call(provider.account, provider.userId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +75,31 @@ class UserPagesNotifierFamily
 }
 
 /// See also [UserPagesNotifier].
-class UserPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    UserPagesNotifier, PaginationState<Page>> {
+class UserPagesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          UserPagesNotifier,
+          PaginationState<Page>
+        > {
   /// See also [UserPagesNotifier].
-  UserPagesNotifierProvider(
-    Account account,
-    String userId,
-  ) : this._internal(
-          () => UserPagesNotifier()
-            ..account = account
-            ..userId = userId,
-          from: userPagesNotifierProvider,
-          name: r'userPagesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$userPagesNotifierHash,
-          dependencies: UserPagesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              UserPagesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          userId: userId,
-        );
+  UserPagesNotifierProvider(Account account, String userId)
+    : this._internal(
+        () =>
+            UserPagesNotifier()
+              ..account = account
+              ..userId = userId,
+        from: userPagesNotifierProvider,
+        name: r'userPagesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$userPagesNotifierHash,
+        dependencies: UserPagesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            UserPagesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        userId: userId,
+      );
 
   UserPagesNotifierProvider._internal(
     super._createNotifier, {
@@ -128,10 +119,7 @@ class UserPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Page>> runNotifierBuild(
     covariant UserPagesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      userId,
-    );
+    return notifier.build(account, userId);
   }
 
   @override
@@ -139,9 +127,10 @@ class UserPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: UserPagesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..userId = userId,
+        () =>
+            create()
+              ..account = account
+              ..userId = userId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,8 +143,11 @@ class UserPagesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<UserPagesNotifier,
-      PaginationState<Page>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    UserPagesNotifier,
+    PaginationState<Page>
+  >
+  createElement() {
     return _UserPagesNotifierProviderElement(this);
   }
 
@@ -188,8 +180,12 @@ mixin UserPagesNotifierRef
 }
 
 class _UserPagesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<UserPagesNotifier,
-        PaginationState<Page>> with UserPagesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          UserPagesNotifier,
+          PaginationState<Page>
+        >
+    with UserPagesNotifierRef {
   _UserPagesNotifierProviderElement(super.provider);
 
   @override
@@ -197,5 +193,6 @@ class _UserPagesNotifierProviderElement
   @override
   String get userId => (origin as UserPagesNotifierProvider).userId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

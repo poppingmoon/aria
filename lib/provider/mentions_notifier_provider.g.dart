@@ -50,24 +50,15 @@ class MentionsNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
   const MentionsNotifierFamily();
 
   /// See also [MentionsNotifier].
-  MentionsNotifierProvider call(
-    Account account, [
-    bool specified = false,
-  ]) {
-    return MentionsNotifierProvider(
-      account,
-      specified,
-    );
+  MentionsNotifierProvider call(Account account, [bool specified = false]) {
+    return MentionsNotifierProvider(account, specified);
   }
 
   @override
   MentionsNotifierProvider getProviderOverride(
     covariant MentionsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.specified,
-    );
+    return call(provider.account, provider.specified);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -86,28 +77,31 @@ class MentionsNotifierFamily extends Family<AsyncValue<PaginationState<Note>>> {
 }
 
 /// See also [MentionsNotifier].
-class MentionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    MentionsNotifier, PaginationState<Note>> {
+class MentionsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          MentionsNotifier,
+          PaginationState<Note>
+        > {
   /// See also [MentionsNotifier].
-  MentionsNotifierProvider(
-    Account account, [
-    bool specified = false,
-  ]) : this._internal(
-          () => MentionsNotifier()
-            ..account = account
-            ..specified = specified,
-          from: mentionsNotifierProvider,
-          name: r'mentionsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$mentionsNotifierHash,
-          dependencies: MentionsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MentionsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          specified: specified,
-        );
+  MentionsNotifierProvider(Account account, [bool specified = false])
+    : this._internal(
+        () =>
+            MentionsNotifier()
+              ..account = account
+              ..specified = specified,
+        from: mentionsNotifierProvider,
+        name: r'mentionsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$mentionsNotifierHash,
+        dependencies: MentionsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MentionsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        specified: specified,
+      );
 
   MentionsNotifierProvider._internal(
     super._createNotifier, {
@@ -127,10 +121,7 @@ class MentionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant MentionsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      specified,
-    );
+    return notifier.build(account, specified);
   }
 
   @override
@@ -138,9 +129,10 @@ class MentionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: MentionsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..specified = specified,
+        () =>
+            create()
+              ..account = account
+              ..specified = specified,
         from: from,
         name: null,
         dependencies: null,
@@ -153,8 +145,11 @@ class MentionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<MentionsNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    MentionsNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _MentionsNotifierProviderElement(this);
   }
 
@@ -187,8 +182,12 @@ mixin MentionsNotifierRef
 }
 
 class _MentionsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<MentionsNotifier,
-        PaginationState<Note>> with MentionsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          MentionsNotifier,
+          PaginationState<Note>
+        >
+    with MentionsNotifierRef {
   _MentionsNotifierProviderElement(super.provider);
 
   @override
@@ -196,5 +195,6 @@ class _MentionsNotifierProviderElement
   @override
   bool get specified => (origin as MentionsNotifierProvider).specified;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

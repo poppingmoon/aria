@@ -196,7 +196,8 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
 
   /// File path: assets/misskey/packages/frontend/assets/about-icon.png
   AssetGenImage get aboutIcon => const AssetGenImage(
-      'assets/misskey/packages/frontend/assets/about-icon.png');
+    'assets/misskey/packages/frontend/assets/about-icon.png',
+  );
 
   /// File path: assets/misskey/packages/frontend/assets/dummy.png
   AssetGenImage get dummy =>
@@ -207,13 +208,15 @@ class $AssetsMisskeyPackagesFrontendAssetsGen {
 }
 
 class Assets {
-  Assets._();
+  const Assets._();
 
   static const AssetGenImage aria = AssetGenImage('assets/aria.png');
-  static const AssetGenImage ariaAndroid =
-      AssetGenImage('assets/aria_android.png');
-  static const AssetGenImage ariaAndroidMonochrome =
-      AssetGenImage('assets/aria_android_monochrome.png');
+  static const AssetGenImage ariaAndroid = AssetGenImage(
+    'assets/aria_android.png',
+  );
+  static const AssetGenImage ariaAndroidMonochrome = AssetGenImage(
+    'assets/aria_android_monochrome.png',
+  );
   static const AssetGenImage bird = AssetGenImage('assets/bird.webp');
   static const AssetGenImage cat = AssetGenImage('assets/cat.webp');
   static const String flower = 'assets/flower.svg';
@@ -221,16 +224,18 @@ class Assets {
   static const $AssetsMisskeyGen misskey = $AssetsMisskeyGen();
 
   /// List of all assets
-  static List<dynamic> get values =>
-      [aria, ariaAndroid, ariaAndroidMonochrome, bird, cat, flower];
+  static List<dynamic> get values => [
+    aria,
+    ariaAndroid,
+    ariaAndroidMonochrome,
+    bird,
+    cat,
+    flower,
+  ];
 }
 
 class AssetGenImage {
-  const AssetGenImage(
-    this._assetName, {
-    this.size,
-    this.flavors = const {},
-  });
+  const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
 
@@ -258,7 +263,7 @@ class AssetGenImage {
     bool gaplessPlayback = true,
     bool isAntiAlias = false,
     String? package,
-    FilterQuality filterQuality = FilterQuality.low,
+    FilterQuality filterQuality = FilterQuality.medium,
     int? cacheWidth,
     int? cacheHeight,
   }) {
@@ -290,15 +295,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   String get path => _assetName;

@@ -34,9 +34,7 @@ abstract class _$RecentlyUsedEmojisNotifier
     extends BuildlessNotifier<List<String>> {
   late final Account account;
 
-  List<String> build(
-    Account account,
-  );
+  List<String> build(Account account);
 }
 
 /// See also [RecentlyUsedEmojisNotifier].
@@ -49,21 +47,15 @@ class RecentlyUsedEmojisNotifierFamily extends Family<List<String>> {
   const RecentlyUsedEmojisNotifierFamily();
 
   /// See also [RecentlyUsedEmojisNotifier].
-  RecentlyUsedEmojisNotifierProvider call(
-    Account account,
-  ) {
-    return RecentlyUsedEmojisNotifierProvider(
-      account,
-    );
+  RecentlyUsedEmojisNotifierProvider call(Account account) {
+    return RecentlyUsedEmojisNotifierProvider(account);
   }
 
   @override
   RecentlyUsedEmojisNotifierProvider getProviderOverride(
     covariant RecentlyUsedEmojisNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class RecentlyUsedEmojisNotifierFamily extends Family<List<String>> {
 class RecentlyUsedEmojisNotifierProvider
     extends NotifierProviderImpl<RecentlyUsedEmojisNotifier, List<String>> {
   /// See also [RecentlyUsedEmojisNotifier].
-  RecentlyUsedEmojisNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => RecentlyUsedEmojisNotifier()..account = account,
-          from: recentlyUsedEmojisNotifierProvider,
-          name: r'recentlyUsedEmojisNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$recentlyUsedEmojisNotifierHash,
-          dependencies: RecentlyUsedEmojisNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              RecentlyUsedEmojisNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  RecentlyUsedEmojisNotifierProvider(Account account)
+    : this._internal(
+        () => RecentlyUsedEmojisNotifier()..account = account,
+        from: recentlyUsedEmojisNotifierProvider,
+        name: r'recentlyUsedEmojisNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$recentlyUsedEmojisNotifierHash,
+        dependencies: RecentlyUsedEmojisNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            RecentlyUsedEmojisNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   RecentlyUsedEmojisNotifierProvider._internal(
     super._createNotifier, {
@@ -114,12 +105,8 @@ class RecentlyUsedEmojisNotifierProvider
   final Account account;
 
   @override
-  List<String> runNotifierBuild(
-    covariant RecentlyUsedEmojisNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  List<String> runNotifierBuild(covariant RecentlyUsedEmojisNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -140,7 +127,7 @@ class RecentlyUsedEmojisNotifierProvider
 
   @override
   NotifierProviderElement<RecentlyUsedEmojisNotifier, List<String>>
-      createElement() {
+  createElement() {
     return _RecentlyUsedEmojisNotifierProviderElement(this);
   }
 
@@ -174,5 +161,6 @@ class _RecentlyUsedEmojisNotifierProviderElement
   @override
   Account get account => (origin as RecentlyUsedEmojisNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

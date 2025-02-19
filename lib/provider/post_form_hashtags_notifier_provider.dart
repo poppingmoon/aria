@@ -17,6 +17,7 @@ class PostFormHashtagsNotifier extends _$PostFormHashtagsNotifier {
     );
   }
 
+  // https://pub.dev/packages/riverpod_lint#avoid_public_notifier_properties
   // ignore: use_setters_to_change_properties
   void updateHashtags(List<String> hashtags) {
     state = hashtags;

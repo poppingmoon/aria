@@ -13,14 +13,15 @@ String _$installedMisskeyColorsHash() =>
 @ProviderFor(installedMisskeyColors)
 final installedMisskeyColorsProvider =
     AutoDisposeProvider<List<MisskeyColors>>.internal(
-  installedMisskeyColors,
-  name: r'installedMisskeyColorsProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$installedMisskeyColorsHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      installedMisskeyColors,
+      name: r'installedMisskeyColorsProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$installedMisskeyColorsHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element

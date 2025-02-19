@@ -34,9 +34,7 @@ abstract class _$RecentlyUsedUsersNotifier
     extends BuildlessAsyncNotifier<List<UserDetailed>> {
   late final Account account;
 
-  FutureOr<List<UserDetailed>> build(
-    Account account,
-  );
+  FutureOr<List<UserDetailed>> build(Account account);
 }
 
 /// See also [RecentlyUsedUsersNotifier].
@@ -50,21 +48,15 @@ class RecentlyUsedUsersNotifierFamily
   const RecentlyUsedUsersNotifierFamily();
 
   /// See also [RecentlyUsedUsersNotifier].
-  RecentlyUsedUsersNotifierProvider call(
-    Account account,
-  ) {
-    return RecentlyUsedUsersNotifierProvider(
-      account,
-    );
+  RecentlyUsedUsersNotifierProvider call(Account account) {
+    return RecentlyUsedUsersNotifierProvider(account);
   }
 
   @override
   RecentlyUsedUsersNotifierProvider getProviderOverride(
     covariant RecentlyUsedUsersNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,24 +75,27 @@ class RecentlyUsedUsersNotifierFamily
 }
 
 /// See also [RecentlyUsedUsersNotifier].
-class RecentlyUsedUsersNotifierProvider extends AsyncNotifierProviderImpl<
-    RecentlyUsedUsersNotifier, List<UserDetailed>> {
+class RecentlyUsedUsersNotifierProvider
+    extends
+        AsyncNotifierProviderImpl<
+          RecentlyUsedUsersNotifier,
+          List<UserDetailed>
+        > {
   /// See also [RecentlyUsedUsersNotifier].
-  RecentlyUsedUsersNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => RecentlyUsedUsersNotifier()..account = account,
-          from: recentlyUsedUsersNotifierProvider,
-          name: r'recentlyUsedUsersNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$recentlyUsedUsersNotifierHash,
-          dependencies: RecentlyUsedUsersNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              RecentlyUsedUsersNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  RecentlyUsedUsersNotifierProvider(Account account)
+    : this._internal(
+        () => RecentlyUsedUsersNotifier()..account = account,
+        from: recentlyUsedUsersNotifierProvider,
+        name: r'recentlyUsedUsersNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$recentlyUsedUsersNotifierHash,
+        dependencies: RecentlyUsedUsersNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            RecentlyUsedUsersNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   RecentlyUsedUsersNotifierProvider._internal(
     super._createNotifier, {
@@ -118,9 +113,7 @@ class RecentlyUsedUsersNotifierProvider extends AsyncNotifierProviderImpl<
   FutureOr<List<UserDetailed>> runNotifierBuild(
     covariant RecentlyUsedUsersNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,7 +134,7 @@ class RecentlyUsedUsersNotifierProvider extends AsyncNotifierProviderImpl<
 
   @override
   AsyncNotifierProviderElement<RecentlyUsedUsersNotifier, List<UserDetailed>>
-      createElement() {
+  createElement() {
     return _RecentlyUsedUsersNotifierProviderElement(this);
   }
 
@@ -169,12 +162,17 @@ mixin RecentlyUsedUsersNotifierRef
 }
 
 class _RecentlyUsedUsersNotifierProviderElement
-    extends AsyncNotifierProviderElement<RecentlyUsedUsersNotifier,
-        List<UserDetailed>> with RecentlyUsedUsersNotifierRef {
+    extends
+        AsyncNotifierProviderElement<
+          RecentlyUsedUsersNotifier,
+          List<UserDetailed>
+        >
+    with RecentlyUsedUsersNotifierRef {
   _RecentlyUsedUsersNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as RecentlyUsedUsersNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

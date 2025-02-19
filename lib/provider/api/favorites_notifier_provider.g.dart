@@ -29,13 +29,12 @@ class _SystemHash {
   }
 }
 
-abstract class _$FavoritesNotifier extends BuildlessAutoDisposeAsyncNotifier<
-    PaginationState<IFavoritesResponse>> {
+abstract class _$FavoritesNotifier
+    extends
+        BuildlessAutoDisposeAsyncNotifier<PaginationState<IFavoritesResponse>> {
   late final Account account;
 
-  FutureOr<PaginationState<IFavoritesResponse>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<IFavoritesResponse>> build(Account account);
 }
 
 /// See also [FavoritesNotifier].
@@ -49,21 +48,15 @@ class FavoritesNotifierFamily
   const FavoritesNotifierFamily();
 
   /// See also [FavoritesNotifier].
-  FavoritesNotifierProvider call(
-    Account account,
-  ) {
-    return FavoritesNotifierProvider(
-      account,
-    );
+  FavoritesNotifierProvider call(Account account) {
+    return FavoritesNotifierProvider(account);
   }
 
   @override
   FavoritesNotifierProvider getProviderOverride(
     covariant FavoritesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -82,24 +75,27 @@ class FavoritesNotifierFamily
 }
 
 /// See also [FavoritesNotifier].
-class FavoritesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    FavoritesNotifier, PaginationState<IFavoritesResponse>> {
+class FavoritesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FavoritesNotifier,
+          PaginationState<IFavoritesResponse>
+        > {
   /// See also [FavoritesNotifier].
-  FavoritesNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => FavoritesNotifier()..account = account,
-          from: favoritesNotifierProvider,
-          name: r'favoritesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$favoritesNotifierHash,
-          dependencies: FavoritesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FavoritesNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FavoritesNotifierProvider(Account account)
+    : this._internal(
+        () => FavoritesNotifier()..account = account,
+        from: favoritesNotifierProvider,
+        name: r'favoritesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$favoritesNotifierHash,
+        dependencies: FavoritesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FavoritesNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FavoritesNotifierProvider._internal(
     super._createNotifier, {
@@ -117,9 +113,7 @@ class FavoritesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<IFavoritesResponse>> runNotifierBuild(
     covariant FavoritesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,8 +133,11 @@ class FavoritesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FavoritesNotifier,
-      PaginationState<IFavoritesResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FavoritesNotifier,
+    PaginationState<IFavoritesResponse>
+  >
+  createElement() {
     return _FavoritesNotifierProviderElement(this);
   }
 
@@ -160,19 +157,27 @@ class FavoritesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin FavoritesNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<IFavoritesResponse>> {
+mixin FavoritesNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<IFavoritesResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _FavoritesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FavoritesNotifier,
-        PaginationState<IFavoritesResponse>> with FavoritesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FavoritesNotifier,
+          PaginationState<IFavoritesResponse>
+        >
+    with FavoritesNotifierRef {
   _FavoritesNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as FavoritesNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -57,11 +57,7 @@ class ListUsersNotifierFamily extends Family<AsyncValue<List<UserDetailed>>> {
     String listId, {
     bool? forPublic,
   }) {
-    return ListUsersNotifierProvider(
-      account,
-      listId,
-      forPublic: forPublic,
-    );
+    return ListUsersNotifierProvider(account, listId, forPublic: forPublic);
   }
 
   @override
@@ -91,31 +87,33 @@ class ListUsersNotifierFamily extends Family<AsyncValue<List<UserDetailed>>> {
 }
 
 /// See also [ListUsersNotifier].
-class ListUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    ListUsersNotifier, List<UserDetailed>> {
+class ListUsersNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ListUsersNotifier,
+          List<UserDetailed>
+        > {
   /// See also [ListUsersNotifier].
-  ListUsersNotifierProvider(
-    Account account,
-    String listId, {
-    bool? forPublic,
-  }) : this._internal(
-          () => ListUsersNotifier()
-            ..account = account
-            ..listId = listId
-            ..forPublic = forPublic,
-          from: listUsersNotifierProvider,
-          name: r'listUsersNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$listUsersNotifierHash,
-          dependencies: ListUsersNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ListUsersNotifierFamily._allTransitiveDependencies,
-          account: account,
-          listId: listId,
-          forPublic: forPublic,
-        );
+  ListUsersNotifierProvider(Account account, String listId, {bool? forPublic})
+    : this._internal(
+        () =>
+            ListUsersNotifier()
+              ..account = account
+              ..listId = listId
+              ..forPublic = forPublic,
+        from: listUsersNotifierProvider,
+        name: r'listUsersNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$listUsersNotifierHash,
+        dependencies: ListUsersNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ListUsersNotifierFamily._allTransitiveDependencies,
+        account: account,
+        listId: listId,
+        forPublic: forPublic,
+      );
 
   ListUsersNotifierProvider._internal(
     super._createNotifier, {
@@ -137,11 +135,7 @@ class ListUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<List<UserDetailed>> runNotifierBuild(
     covariant ListUsersNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      listId,
-      forPublic: forPublic,
-    );
+    return notifier.build(account, listId, forPublic: forPublic);
   }
 
   @override
@@ -149,10 +143,11 @@ class ListUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: ListUsersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..listId = listId
-          ..forPublic = forPublic,
+        () =>
+            create()
+              ..account = account
+              ..listId = listId
+              ..forPublic = forPublic,
         from: from,
         name: null,
         dependencies: null,
@@ -167,7 +162,7 @@ class ListUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<ListUsersNotifier, List<UserDetailed>>
-      createElement() {
+  createElement() {
     return _ListUsersNotifierProviderElement(this);
   }
 
@@ -205,8 +200,12 @@ mixin ListUsersNotifierRef
 }
 
 class _ListUsersNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ListUsersNotifier,
-        List<UserDetailed>> with ListUsersNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ListUsersNotifier,
+          List<UserDetailed>
+        >
+    with ListUsersNotifierRef {
   _ListUsersNotifierProviderElement(super.provider);
 
   @override
@@ -216,5 +215,6 @@ class _ListUsersNotifierProviderElement
   @override
   bool? get forPublic => (origin as ListUsersNotifierProvider).forPublic;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -35,10 +35,7 @@ abstract class _$GalleryPostNotifier
   late final Account account;
   late final String postId;
 
-  FutureOr<GalleryPost> build(
-    Account account,
-    String postId,
-  );
+  FutureOr<GalleryPost> build(Account account, String postId);
 }
 
 /// See also [GalleryPostNotifier].
@@ -51,24 +48,15 @@ class GalleryPostNotifierFamily extends Family<AsyncValue<GalleryPost>> {
   const GalleryPostNotifierFamily();
 
   /// See also [GalleryPostNotifier].
-  GalleryPostNotifierProvider call(
-    Account account,
-    String postId,
-  ) {
-    return GalleryPostNotifierProvider(
-      account,
-      postId,
-    );
+  GalleryPostNotifierProvider call(Account account, String postId) {
+    return GalleryPostNotifierProvider(account, postId);
   }
 
   @override
   GalleryPostNotifierProvider getProviderOverride(
     covariant GalleryPostNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.postId,
-    );
+    return call(provider.account, provider.postId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +75,28 @@ class GalleryPostNotifierFamily extends Family<AsyncValue<GalleryPost>> {
 }
 
 /// See also [GalleryPostNotifier].
-class GalleryPostNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    GalleryPostNotifier, GalleryPost> {
+class GalleryPostNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<GalleryPostNotifier, GalleryPost> {
   /// See also [GalleryPostNotifier].
-  GalleryPostNotifierProvider(
-    Account account,
-    String postId,
-  ) : this._internal(
-          () => GalleryPostNotifier()
-            ..account = account
-            ..postId = postId,
-          from: galleryPostNotifierProvider,
-          name: r'galleryPostNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$galleryPostNotifierHash,
-          dependencies: GalleryPostNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              GalleryPostNotifierFamily._allTransitiveDependencies,
-          account: account,
-          postId: postId,
-        );
+  GalleryPostNotifierProvider(Account account, String postId)
+    : this._internal(
+        () =>
+            GalleryPostNotifier()
+              ..account = account
+              ..postId = postId,
+        from: galleryPostNotifierProvider,
+        name: r'galleryPostNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$galleryPostNotifierHash,
+        dependencies: GalleryPostNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            GalleryPostNotifierFamily._allTransitiveDependencies,
+        account: account,
+        postId: postId,
+      );
 
   GalleryPostNotifierProvider._internal(
     super._createNotifier, {
@@ -128,10 +116,7 @@ class GalleryPostNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<GalleryPost> runNotifierBuild(
     covariant GalleryPostNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      postId,
-    );
+    return notifier.build(account, postId);
   }
 
   @override
@@ -139,9 +124,10 @@ class GalleryPostNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: GalleryPostNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..postId = postId,
+        () =>
+            create()
+              ..account = account
+              ..postId = postId,
         from: from,
         name: null,
         dependencies: null,
@@ -155,7 +141,7 @@ class GalleryPostNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<GalleryPostNotifier, GalleryPost>
-      createElement() {
+  createElement() {
     return _GalleryPostNotifierProviderElement(this);
   }
 
@@ -188,8 +174,12 @@ mixin GalleryPostNotifierRef
 }
 
 class _GalleryPostNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<GalleryPostNotifier,
-        GalleryPost> with GalleryPostNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          GalleryPostNotifier,
+          GalleryPost
+        >
+    with GalleryPostNotifierRef {
   _GalleryPostNotifierProviderElement(super.provider);
 
   @override
@@ -197,5 +187,6 @@ class _GalleryPostNotifierProviderElement
   @override
   String get postId => (origin as GalleryPostNotifierProvider).postId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

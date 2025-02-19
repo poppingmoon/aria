@@ -39,21 +39,13 @@ class ThemeDataFamily extends Family<ThemeData> {
   const ThemeDataFamily();
 
   /// See also [themeData].
-  ThemeDataProvider call(
-    Brightness brightness,
-  ) {
-    return ThemeDataProvider(
-      brightness,
-    );
+  ThemeDataProvider call(Brightness brightness) {
+    return ThemeDataProvider(brightness);
   }
 
   @override
-  ThemeDataProvider getProviderOverride(
-    covariant ThemeDataProvider provider,
-  ) {
-    return call(
-      provider.brightness,
-    );
+  ThemeDataProvider getProviderOverride(covariant ThemeDataProvider provider) {
+    return call(provider.brightness);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,19 @@ class ThemeDataFamily extends Family<ThemeData> {
 /// See also [themeData].
 class ThemeDataProvider extends AutoDisposeProvider<ThemeData> {
   /// See also [themeData].
-  ThemeDataProvider(
-    Brightness brightness,
-  ) : this._internal(
-          (ref) => themeData(
-            ref as ThemeDataRef,
-            brightness,
-          ),
-          from: themeDataProvider,
-          name: r'themeDataProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$themeDataHash,
-          dependencies: ThemeDataFamily._dependencies,
-          allTransitiveDependencies: ThemeDataFamily._allTransitiveDependencies,
-          brightness: brightness,
-        );
+  ThemeDataProvider(Brightness brightness)
+    : this._internal(
+        (ref) => themeData(ref as ThemeDataRef, brightness),
+        from: themeDataProvider,
+        name: r'themeDataProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$themeDataHash,
+        dependencies: ThemeDataFamily._dependencies,
+        allTransitiveDependencies: ThemeDataFamily._allTransitiveDependencies,
+        brightness: brightness,
+      );
 
   ThemeDataProvider._internal(
     super._createNotifier, {
@@ -105,9 +93,7 @@ class ThemeDataProvider extends AutoDisposeProvider<ThemeData> {
   final Brightness brightness;
 
   @override
-  Override overrideWith(
-    ThemeData Function(ThemeDataRef provider) create,
-  ) {
+  Override overrideWith(ThemeData Function(ThemeDataRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: ThemeDataProvider._internal(
@@ -155,5 +141,6 @@ class _ThemeDataProviderElement extends AutoDisposeProviderElement<ThemeData>
   @override
   Brightness get brightness => (origin as ThemeDataProvider).brightness;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

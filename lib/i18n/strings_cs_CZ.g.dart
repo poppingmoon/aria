@@ -2080,9 +2080,6 @@ class _TranslationsMisskeyPagesCsCz extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Vytvořit novou stránku';
 	@override String get editPage => 'Upravit stránku';
 	@override String get readPage => 'Prohlížení zdroje této stránky';
-	@override String get created => 'Stránka byla úspěšně vytvořena';
-	@override String get updated => 'Stránka byla úspěšně aktualizována';
-	@override String get deleted => 'Stránka byla úspěšně smazána';
 	@override String get pageSetting => 'Nastavení stránky';
 	@override String get nameAlreadyExists => 'Zadaná adresa URL stránky již existuje';
 	@override String get invalidNameTitle => 'Zadaná adresa URL stránky je neplatná';

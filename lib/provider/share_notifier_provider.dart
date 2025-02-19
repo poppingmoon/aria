@@ -14,7 +14,6 @@ import 'receive_sharing_intent_provider.dart';
 
 part 'share_notifier_provider.g.dart';
 
-// ignore: provider_dependencies
 @Riverpod(keepAlive: true)
 class ShareNotifier extends _$ShareNotifier {
   @override

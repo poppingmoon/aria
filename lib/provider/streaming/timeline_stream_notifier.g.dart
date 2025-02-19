@@ -34,9 +34,7 @@ abstract class _$TimelineStreamNotifier
     extends BuildlessAutoDisposeStreamNotifier<Note> {
   late final TabSettings tabSettings;
 
-  Stream<Note> build(
-    TabSettings tabSettings,
-  );
+  Stream<Note> build(TabSettings tabSettings);
 }
 
 /// See also [TimelineStreamNotifier].
@@ -49,21 +47,15 @@ class TimelineStreamNotifierFamily extends Family<AsyncValue<Note>> {
   const TimelineStreamNotifierFamily();
 
   /// See also [TimelineStreamNotifier].
-  TimelineStreamNotifierProvider call(
-    TabSettings tabSettings,
-  ) {
-    return TimelineStreamNotifierProvider(
-      tabSettings,
-    );
+  TimelineStreamNotifierProvider call(TabSettings tabSettings) {
+    return TimelineStreamNotifierProvider(tabSettings);
   }
 
   @override
   TimelineStreamNotifierProvider getProviderOverride(
     covariant TimelineStreamNotifierProvider provider,
   ) {
-    return call(
-      provider.tabSettings,
-    );
+    return call(provider.tabSettings);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,24 +75,23 @@ class TimelineStreamNotifierFamily extends Family<AsyncValue<Note>> {
 
 /// See also [TimelineStreamNotifier].
 class TimelineStreamNotifierProvider
-    extends AutoDisposeStreamNotifierProviderImpl<TimelineStreamNotifier,
-        Note> {
+    extends
+        AutoDisposeStreamNotifierProviderImpl<TimelineStreamNotifier, Note> {
   /// See also [TimelineStreamNotifier].
-  TimelineStreamNotifierProvider(
-    TabSettings tabSettings,
-  ) : this._internal(
-          () => TimelineStreamNotifier()..tabSettings = tabSettings,
-          from: timelineStreamNotifierProvider,
-          name: r'timelineStreamNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$timelineStreamNotifierHash,
-          dependencies: TimelineStreamNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              TimelineStreamNotifierFamily._allTransitiveDependencies,
-          tabSettings: tabSettings,
-        );
+  TimelineStreamNotifierProvider(TabSettings tabSettings)
+    : this._internal(
+        () => TimelineStreamNotifier()..tabSettings = tabSettings,
+        from: timelineStreamNotifierProvider,
+        name: r'timelineStreamNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$timelineStreamNotifierHash,
+        dependencies: TimelineStreamNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            TimelineStreamNotifierFamily._allTransitiveDependencies,
+        tabSettings: tabSettings,
+      );
 
   TimelineStreamNotifierProvider._internal(
     super._createNotifier, {
@@ -115,12 +106,8 @@ class TimelineStreamNotifierProvider
   final TabSettings tabSettings;
 
   @override
-  Stream<Note> runNotifierBuild(
-    covariant TimelineStreamNotifier notifier,
-  ) {
-    return notifier.build(
-      tabSettings,
-    );
+  Stream<Note> runNotifierBuild(covariant TimelineStreamNotifier notifier) {
+    return notifier.build(tabSettings);
   }
 
   @override
@@ -141,7 +128,7 @@ class TimelineStreamNotifierProvider
 
   @override
   AutoDisposeStreamNotifierProviderElement<TimelineStreamNotifier, Note>
-      createElement() {
+  createElement() {
     return _TimelineStreamNotifierProviderElement(this);
   }
 
@@ -168,13 +155,15 @@ mixin TimelineStreamNotifierRef on AutoDisposeStreamNotifierProviderRef<Note> {
 }
 
 class _TimelineStreamNotifierProviderElement
-    extends AutoDisposeStreamNotifierProviderElement<TimelineStreamNotifier,
-        Note> with TimelineStreamNotifierRef {
+    extends
+        AutoDisposeStreamNotifierProviderElement<TimelineStreamNotifier, Note>
+    with TimelineStreamNotifierRef {
   _TimelineStreamNotifierProviderElement(super.provider);
 
   @override
   TabSettings get tabSettings =>
       (origin as TimelineStreamNotifierProvider).tabSettings;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

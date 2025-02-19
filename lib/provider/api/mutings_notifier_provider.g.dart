@@ -33,9 +33,7 @@ abstract class _$MutingsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Muting>> {
   late final Account account;
 
-  FutureOr<PaginationState<Muting>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<Muting>> build(Account account);
 }
 
 /// See also [MutingsNotifier].
@@ -49,21 +47,15 @@ class MutingsNotifierFamily
   const MutingsNotifierFamily();
 
   /// See also [MutingsNotifier].
-  MutingsNotifierProvider call(
-    Account account,
-  ) {
-    return MutingsNotifierProvider(
-      account,
-    );
+  MutingsNotifierProvider call(Account account) {
+    return MutingsNotifierProvider(account);
   }
 
   @override
   MutingsNotifierProvider getProviderOverride(
     covariant MutingsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -82,24 +74,27 @@ class MutingsNotifierFamily
 }
 
 /// See also [MutingsNotifier].
-class MutingsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    MutingsNotifier, PaginationState<Muting>> {
+class MutingsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          MutingsNotifier,
+          PaginationState<Muting>
+        > {
   /// See also [MutingsNotifier].
-  MutingsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => MutingsNotifier()..account = account,
-          from: mutingsNotifierProvider,
-          name: r'mutingsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$mutingsNotifierHash,
-          dependencies: MutingsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MutingsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  MutingsNotifierProvider(Account account)
+    : this._internal(
+        () => MutingsNotifier()..account = account,
+        from: mutingsNotifierProvider,
+        name: r'mutingsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$mutingsNotifierHash,
+        dependencies: MutingsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MutingsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   MutingsNotifierProvider._internal(
     super._createNotifier, {
@@ -117,9 +112,7 @@ class MutingsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<Muting>> runNotifierBuild(
     covariant MutingsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,8 +132,11 @@ class MutingsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<MutingsNotifier,
-      PaginationState<Muting>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    MutingsNotifier,
+    PaginationState<Muting>
+  >
+  createElement() {
     return _MutingsNotifierProviderElement(this);
   }
 
@@ -167,12 +163,17 @@ mixin MutingsNotifierRef
 }
 
 class _MutingsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<MutingsNotifier,
-        PaginationState<Muting>> with MutingsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          MutingsNotifier,
+          PaginationState<Muting>
+        >
+    with MutingsNotifierRef {
   _MutingsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as MutingsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

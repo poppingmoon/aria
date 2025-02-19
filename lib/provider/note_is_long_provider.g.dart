@@ -39,24 +39,15 @@ class NoteIsLongFamily extends Family<bool> {
   const NoteIsLongFamily();
 
   /// See also [noteIsLong].
-  NoteIsLongProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return NoteIsLongProvider(
-      account,
-      noteId,
-    );
+  NoteIsLongProvider call(Account account, String noteId) {
+    return NoteIsLongProvider(account, noteId);
   }
 
   @override
   NoteIsLongProvider getProviderOverride(
     covariant NoteIsLongProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,20 @@ class NoteIsLongFamily extends Family<bool> {
 /// See also [noteIsLong].
 class NoteIsLongProvider extends AutoDisposeProvider<bool> {
   /// See also [noteIsLong].
-  NoteIsLongProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          (ref) => noteIsLong(
-            ref as NoteIsLongRef,
-            account,
-            noteId,
-          ),
-          from: noteIsLongProvider,
-          name: r'noteIsLongProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$noteIsLongHash,
-          dependencies: NoteIsLongFamily._dependencies,
-          allTransitiveDependencies:
-              NoteIsLongFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  NoteIsLongProvider(Account account, String noteId)
+    : this._internal(
+        (ref) => noteIsLong(ref as NoteIsLongRef, account, noteId),
+        from: noteIsLongProvider,
+        name: r'noteIsLongProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$noteIsLongHash,
+        dependencies: NoteIsLongFamily._dependencies,
+        allTransitiveDependencies: NoteIsLongFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   NoteIsLongProvider._internal(
     super._createNotifier, {
@@ -114,9 +98,7 @@ class NoteIsLongProvider extends AutoDisposeProvider<bool> {
   final String noteId;
 
   @override
-  Override overrideWith(
-    bool Function(NoteIsLongRef provider) create,
-  ) {
+  Override overrideWith(bool Function(NoteIsLongRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: NoteIsLongProvider._internal(
@@ -173,5 +155,6 @@ class _NoteIsLongProviderElement extends AutoDisposeProviderElement<bool>
   @override
   String get noteId => (origin as NoteIsLongProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

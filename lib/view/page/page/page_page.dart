@@ -134,17 +134,17 @@ class PagePage extends ConsumerWidget {
           return NoteWidget(account: account, noteId: noteId);
         }
       case AbstractPageContent(
-        type: PageContentType.button || // ignore: deprecated_member_use
-            PageContentType.condition || // ignore: deprecated_member_use
-            PageContentType.textarea || // ignore: deprecated_member_use
-            PageContentType.post || // ignore: deprecated_member_use
-            PageContentType.canvas || // ignore: deprecated_member_use
-            PageContentType.numberInput || // ignore: deprecated_member_use
-            PageContentType.textInput || // ignore: deprecated_member_use
-            PageContentType.switcher || // ignore: deprecated_member_use
-            PageContentType.radioButton || // ignore: deprecated_member_use
-            PageContentType.counter || // ignore: deprecated_member_use
-            PageContentType.textareaInput, // ignore: deprecated_member_use
+        type: PageContentType.button ||
+            PageContentType.condition ||
+            PageContentType.textarea ||
+            PageContentType.post ||
+            PageContentType.canvas ||
+            PageContentType.numberInput ||
+            PageContentType.textInput ||
+            PageContentType.switcher ||
+            PageContentType.radioButton ||
+            PageContentType.counter ||
+            PageContentType.textareaInput,
       ):
         return DecoratedBox(
           decoration: BoxDecoration(

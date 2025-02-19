@@ -44,22 +44,14 @@ class CheckWordMuteFamily extends Family<bool> {
     String noteId, {
     bool hardMute = false,
   }) {
-    return CheckWordMuteProvider(
-      account,
-      noteId,
-      hardMute: hardMute,
-    );
+    return CheckWordMuteProvider(account, noteId, hardMute: hardMute);
   }
 
   @override
   CheckWordMuteProvider getProviderOverride(
     covariant CheckWordMuteProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-      hardMute: provider.hardMute,
-    );
+    return call(provider.account, provider.noteId, hardMute: provider.hardMute);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -80,30 +72,27 @@ class CheckWordMuteFamily extends Family<bool> {
 /// See also [checkWordMute].
 class CheckWordMuteProvider extends AutoDisposeProvider<bool> {
   /// See also [checkWordMute].
-  CheckWordMuteProvider(
-    Account account,
-    String noteId, {
-    bool hardMute = false,
-  }) : this._internal(
-          (ref) => checkWordMute(
-            ref as CheckWordMuteRef,
-            account,
-            noteId,
-            hardMute: hardMute,
-          ),
-          from: checkWordMuteProvider,
-          name: r'checkWordMuteProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$checkWordMuteHash,
-          dependencies: CheckWordMuteFamily._dependencies,
-          allTransitiveDependencies:
-              CheckWordMuteFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
+  CheckWordMuteProvider(Account account, String noteId, {bool hardMute = false})
+    : this._internal(
+        (ref) => checkWordMute(
+          ref as CheckWordMuteRef,
+          account,
+          noteId,
           hardMute: hardMute,
-        );
+        ),
+        from: checkWordMuteProvider,
+        name: r'checkWordMuteProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$checkWordMuteHash,
+        dependencies: CheckWordMuteFamily._dependencies,
+        allTransitiveDependencies:
+            CheckWordMuteFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+        hardMute: hardMute,
+      );
 
   CheckWordMuteProvider._internal(
     super._createNotifier, {
@@ -122,9 +111,7 @@ class CheckWordMuteProvider extends AutoDisposeProvider<bool> {
   final bool hardMute;
 
   @override
-  Override overrideWith(
-    bool Function(CheckWordMuteRef provider) create,
-  ) {
+  Override overrideWith(bool Function(CheckWordMuteRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: CheckWordMuteProvider._internal(
@@ -189,5 +176,6 @@ class _CheckWordMuteProviderElement extends AutoDisposeProviderElement<bool>
   @override
   bool get hardMute => (origin as CheckWordMuteProvider).hardMute;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

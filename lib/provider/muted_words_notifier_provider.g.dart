@@ -35,10 +35,7 @@ abstract class _$MutedWordsNotifier
   late final Account account;
   late final bool hardMute;
 
-  List<MuteWord> build(
-    Account account, {
-    bool hardMute = false,
-  });
+  List<MuteWord> build(Account account, {bool hardMute = false});
 }
 
 /// See also [MutedWordsNotifier].
@@ -51,24 +48,15 @@ class MutedWordsNotifierFamily extends Family<List<MuteWord>> {
   const MutedWordsNotifierFamily();
 
   /// See also [MutedWordsNotifier].
-  MutedWordsNotifierProvider call(
-    Account account, {
-    bool hardMute = false,
-  }) {
-    return MutedWordsNotifierProvider(
-      account,
-      hardMute: hardMute,
-    );
+  MutedWordsNotifierProvider call(Account account, {bool hardMute = false}) {
+    return MutedWordsNotifierProvider(account, hardMute: hardMute);
   }
 
   @override
   MutedWordsNotifierProvider getProviderOverride(
     covariant MutedWordsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      hardMute: provider.hardMute,
-    );
+    return call(provider.account, hardMute: provider.hardMute);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +75,28 @@ class MutedWordsNotifierFamily extends Family<List<MuteWord>> {
 }
 
 /// See also [MutedWordsNotifier].
-class MutedWordsNotifierProvider extends AutoDisposeNotifierProviderImpl<
-    MutedWordsNotifier, List<MuteWord>> {
+class MutedWordsNotifierProvider
+    extends
+        AutoDisposeNotifierProviderImpl<MutedWordsNotifier, List<MuteWord>> {
   /// See also [MutedWordsNotifier].
-  MutedWordsNotifierProvider(
-    Account account, {
-    bool hardMute = false,
-  }) : this._internal(
-          () => MutedWordsNotifier()
-            ..account = account
-            ..hardMute = hardMute,
-          from: mutedWordsNotifierProvider,
-          name: r'mutedWordsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$mutedWordsNotifierHash,
-          dependencies: MutedWordsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MutedWordsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          hardMute: hardMute,
-        );
+  MutedWordsNotifierProvider(Account account, {bool hardMute = false})
+    : this._internal(
+        () =>
+            MutedWordsNotifier()
+              ..account = account
+              ..hardMute = hardMute,
+        from: mutedWordsNotifierProvider,
+        name: r'mutedWordsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$mutedWordsNotifierHash,
+        dependencies: MutedWordsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MutedWordsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        hardMute: hardMute,
+      );
 
   MutedWordsNotifierProvider._internal(
     super._createNotifier, {
@@ -125,13 +113,8 @@ class MutedWordsNotifierProvider extends AutoDisposeNotifierProviderImpl<
   final bool hardMute;
 
   @override
-  List<MuteWord> runNotifierBuild(
-    covariant MutedWordsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-      hardMute: hardMute,
-    );
+  List<MuteWord> runNotifierBuild(covariant MutedWordsNotifier notifier) {
+    return notifier.build(account, hardMute: hardMute);
   }
 
   @override
@@ -139,9 +122,10 @@ class MutedWordsNotifierProvider extends AutoDisposeNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: MutedWordsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..hardMute = hardMute,
+        () =>
+            create()
+              ..account = account
+              ..hardMute = hardMute,
         from: from,
         name: null,
         dependencies: null,
@@ -155,7 +139,7 @@ class MutedWordsNotifierProvider extends AutoDisposeNotifierProviderImpl<
 
   @override
   AutoDisposeNotifierProviderElement<MutedWordsNotifier, List<MuteWord>>
-      createElement() {
+  createElement() {
     return _MutedWordsNotifierProviderElement(this);
   }
 
@@ -187,8 +171,9 @@ mixin MutedWordsNotifierRef on AutoDisposeNotifierProviderRef<List<MuteWord>> {
 }
 
 class _MutedWordsNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<MutedWordsNotifier,
-        List<MuteWord>> with MutedWordsNotifierRef {
+    extends
+        AutoDisposeNotifierProviderElement<MutedWordsNotifier, List<MuteWord>>
+    with MutedWordsNotifierRef {
   _MutedWordsNotifierProviderElement(super.provider);
 
   @override
@@ -196,5 +181,6 @@ class _MutedWordsNotifierProviderElement
   @override
   bool get hardMute => (origin as MutedWordsNotifierProvider).hardMute;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

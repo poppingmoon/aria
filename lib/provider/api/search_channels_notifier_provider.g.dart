@@ -31,8 +31,8 @@ class _SystemHash {
 }
 
 abstract class _$SearchChannelsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<CommunityChannel>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<PaginationState<CommunityChannel>> {
   late final Account account;
   late final String query;
   late final bool includeDescription;
@@ -95,31 +95,35 @@ class SearchChannelsNotifierFamily
 
 /// See also [SearchChannelsNotifier].
 class SearchChannelsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<SearchChannelsNotifier,
-        PaginationState<CommunityChannel>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          SearchChannelsNotifier,
+          PaginationState<CommunityChannel>
+        > {
   /// See also [SearchChannelsNotifier].
   SearchChannelsNotifierProvider(
     Account account,
     String query, {
     bool includeDescription = true,
   }) : this._internal(
-          () => SearchChannelsNotifier()
-            ..account = account
-            ..query = query
-            ..includeDescription = includeDescription,
-          from: searchChannelsNotifierProvider,
-          name: r'searchChannelsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchChannelsNotifierHash,
-          dependencies: SearchChannelsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              SearchChannelsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          query: query,
-          includeDescription: includeDescription,
-        );
+         () =>
+             SearchChannelsNotifier()
+               ..account = account
+               ..query = query
+               ..includeDescription = includeDescription,
+         from: searchChannelsNotifierProvider,
+         name: r'searchChannelsNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$searchChannelsNotifierHash,
+         dependencies: SearchChannelsNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             SearchChannelsNotifierFamily._allTransitiveDependencies,
+         account: account,
+         query: query,
+         includeDescription: includeDescription,
+       );
 
   SearchChannelsNotifierProvider._internal(
     super._createNotifier, {
@@ -153,10 +157,11 @@ class SearchChannelsNotifierProvider
     return ProviderOverride(
       origin: this,
       override: SearchChannelsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..query = query
-          ..includeDescription = includeDescription,
+        () =>
+            create()
+              ..account = account
+              ..query = query
+              ..includeDescription = includeDescription,
         from: from,
         name: null,
         dependencies: null,
@@ -170,8 +175,11 @@ class SearchChannelsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<SearchChannelsNotifier,
-      PaginationState<CommunityChannel>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    SearchChannelsNotifier,
+    PaginationState<CommunityChannel>
+  >
+  createElement() {
     return _SearchChannelsNotifierProviderElement(this);
   }
 
@@ -209,8 +217,12 @@ mixin SearchChannelsNotifierRef
 }
 
 class _SearchChannelsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<SearchChannelsNotifier,
-        PaginationState<CommunityChannel>> with SearchChannelsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          SearchChannelsNotifier,
+          PaginationState<CommunityChannel>
+        >
+    with SearchChannelsNotifierRef {
   _SearchChannelsNotifierProviderElement(super.provider);
 
   @override
@@ -221,5 +233,6 @@ class _SearchChannelsNotifierProviderElement
   bool get includeDescription =>
       (origin as SearchChannelsNotifierProvider).includeDescription;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

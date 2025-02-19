@@ -35,10 +35,7 @@ abstract class _$ChildrenNotesNotifier
   late final Account account;
   late final String noteId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-    String noteId,
-  );
+  FutureOr<PaginationState<Note>> build(Account account, String noteId);
 }
 
 /// See also [ChildrenNotesNotifier].
@@ -52,24 +49,15 @@ class ChildrenNotesNotifierFamily
   const ChildrenNotesNotifierFamily();
 
   /// See also [ChildrenNotesNotifier].
-  ChildrenNotesNotifierProvider call(
-    Account account,
-    String noteId,
-  ) {
-    return ChildrenNotesNotifierProvider(
-      account,
-      noteId,
-    );
+  ChildrenNotesNotifierProvider call(Account account, String noteId) {
+    return ChildrenNotesNotifierProvider(account, noteId);
   }
 
   @override
   ChildrenNotesNotifierProvider getProviderOverride(
     covariant ChildrenNotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-    );
+    return call(provider.account, provider.noteId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class ChildrenNotesNotifierFamily
 
 /// See also [ChildrenNotesNotifier].
 class ChildrenNotesNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<ChildrenNotesNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ChildrenNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [ChildrenNotesNotifier].
-  ChildrenNotesNotifierProvider(
-    Account account,
-    String noteId,
-  ) : this._internal(
-          () => ChildrenNotesNotifier()
-            ..account = account
-            ..noteId = noteId,
-          from: childrenNotesNotifierProvider,
-          name: r'childrenNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$childrenNotesNotifierHash,
-          dependencies: ChildrenNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ChildrenNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-        );
+  ChildrenNotesNotifierProvider(Account account, String noteId)
+    : this._internal(
+        () =>
+            ChildrenNotesNotifier()
+              ..account = account
+              ..noteId = noteId,
+        from: childrenNotesNotifierProvider,
+        name: r'childrenNotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$childrenNotesNotifierHash,
+        dependencies: ChildrenNotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ChildrenNotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+      );
 
   ChildrenNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class ChildrenNotesNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant ChildrenNotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      noteId,
-    );
+    return notifier.build(account, noteId);
   }
 
   @override
@@ -141,9 +128,10 @@ class ChildrenNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: ChildrenNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class ChildrenNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ChildrenNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    ChildrenNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _ChildrenNotesNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin ChildrenNotesNotifierRef
 }
 
 class _ChildrenNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ChildrenNotesNotifier,
-        PaginationState<Note>> with ChildrenNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ChildrenNotesNotifier,
+          PaginationState<Note>
+        >
+    with ChildrenNotesNotifierRef {
   _ChildrenNotesNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _ChildrenNotesNotifierProviderElement
   @override
   String get noteId => (origin as ChildrenNotesNotifierProvider).noteId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

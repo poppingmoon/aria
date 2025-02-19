@@ -39,21 +39,15 @@ class IdGenMethodFamily extends Family<AsyncValue<IdGenMethod>> {
   const IdGenMethodFamily();
 
   /// See also [idGenMethod].
-  IdGenMethodProvider call(
-    Account account,
-  ) {
-    return IdGenMethodProvider(
-      account,
-    );
+  IdGenMethodProvider call(Account account) {
+    return IdGenMethodProvider(account);
   }
 
   @override
   IdGenMethodProvider getProviderOverride(
     covariant IdGenMethodProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,19 @@ class IdGenMethodFamily extends Family<AsyncValue<IdGenMethod>> {
 /// See also [idGenMethod].
 class IdGenMethodProvider extends AutoDisposeFutureProvider<IdGenMethod> {
   /// See also [idGenMethod].
-  IdGenMethodProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => idGenMethod(
-            ref as IdGenMethodRef,
-            account,
-          ),
-          from: idGenMethodProvider,
-          name: r'idGenMethodProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$idGenMethodHash,
-          dependencies: IdGenMethodFamily._dependencies,
-          allTransitiveDependencies:
-              IdGenMethodFamily._allTransitiveDependencies,
-          account: account,
-        );
+  IdGenMethodProvider(Account account)
+    : this._internal(
+        (ref) => idGenMethod(ref as IdGenMethodRef, account),
+        from: idGenMethodProvider,
+        name: r'idGenMethodProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$idGenMethodHash,
+        dependencies: IdGenMethodFamily._dependencies,
+        allTransitiveDependencies: IdGenMethodFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   IdGenMethodProvider._internal(
     super._createNotifier, {
@@ -150,11 +139,13 @@ mixin IdGenMethodRef on AutoDisposeFutureProviderRef<IdGenMethod> {
 }
 
 class _IdGenMethodProviderElement
-    extends AutoDisposeFutureProviderElement<IdGenMethod> with IdGenMethodRef {
+    extends AutoDisposeFutureProviderElement<IdGenMethod>
+    with IdGenMethodRef {
   _IdGenMethodProviderElement(super.provider);
 
   @override
   Account get account => (origin as IdGenMethodProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

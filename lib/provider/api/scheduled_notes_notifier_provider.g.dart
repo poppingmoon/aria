@@ -34,9 +34,7 @@ abstract class _$ScheduledNotesNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<Note>> {
   late final Account account;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<Note>> build(Account account);
 }
 
 /// See also [ScheduledNotesNotifier].
@@ -50,21 +48,15 @@ class ScheduledNotesNotifierFamily
   const ScheduledNotesNotifierFamily();
 
   /// See also [ScheduledNotesNotifier].
-  ScheduledNotesNotifierProvider call(
-    Account account,
-  ) {
-    return ScheduledNotesNotifierProvider(
-      account,
-    );
+  ScheduledNotesNotifierProvider call(Account account) {
+    return ScheduledNotesNotifierProvider(account);
   }
 
   @override
   ScheduledNotesNotifierProvider getProviderOverride(
     covariant ScheduledNotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class ScheduledNotesNotifierFamily
 
 /// See also [ScheduledNotesNotifier].
 class ScheduledNotesNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<ScheduledNotesNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ScheduledNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [ScheduledNotesNotifier].
-  ScheduledNotesNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => ScheduledNotesNotifier()..account = account,
-          from: scheduledNotesNotifierProvider,
-          name: r'scheduledNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$scheduledNotesNotifierHash,
-          dependencies: ScheduledNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ScheduledNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  ScheduledNotesNotifierProvider(Account account)
+    : this._internal(
+        () => ScheduledNotesNotifier()..account = account,
+        from: scheduledNotesNotifierProvider,
+        name: r'scheduledNotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$scheduledNotesNotifierHash,
+        dependencies: ScheduledNotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ScheduledNotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   ScheduledNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class ScheduledNotesNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant ScheduledNotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -141,8 +133,11 @@ class ScheduledNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ScheduledNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    ScheduledNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _ScheduledNotesNotifierProviderElement(this);
   }
 
@@ -169,12 +164,17 @@ mixin ScheduledNotesNotifierRef
 }
 
 class _ScheduledNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ScheduledNotesNotifier,
-        PaginationState<Note>> with ScheduledNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ScheduledNotesNotifier,
+          PaginationState<Note>
+        >
+    with ScheduledNotesNotifierRef {
   _ScheduledNotesNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as ScheduledNotesNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -34,9 +34,7 @@ abstract class _$NoteSubscriptionNotifier
     extends BuildlessNotifier<Map<String, int>> {
   late final Account account;
 
-  Map<String, int> build(
-    Account account,
-  );
+  Map<String, int> build(Account account);
 }
 
 /// See also [NoteSubscriptionNotifier].
@@ -49,21 +47,15 @@ class NoteSubscriptionNotifierFamily extends Family<Map<String, int>> {
   const NoteSubscriptionNotifierFamily();
 
   /// See also [NoteSubscriptionNotifier].
-  NoteSubscriptionNotifierProvider call(
-    Account account,
-  ) {
-    return NoteSubscriptionNotifierProvider(
-      account,
-    );
+  NoteSubscriptionNotifierProvider call(Account account) {
+    return NoteSubscriptionNotifierProvider(account);
   }
 
   @override
   NoteSubscriptionNotifierProvider getProviderOverride(
     covariant NoteSubscriptionNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,21 +77,20 @@ class NoteSubscriptionNotifierFamily extends Family<Map<String, int>> {
 class NoteSubscriptionNotifierProvider
     extends NotifierProviderImpl<NoteSubscriptionNotifier, Map<String, int>> {
   /// See also [NoteSubscriptionNotifier].
-  NoteSubscriptionNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => NoteSubscriptionNotifier()..account = account,
-          from: noteSubscriptionNotifierProvider,
-          name: r'noteSubscriptionNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$noteSubscriptionNotifierHash,
-          dependencies: NoteSubscriptionNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              NoteSubscriptionNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  NoteSubscriptionNotifierProvider(Account account)
+    : this._internal(
+        () => NoteSubscriptionNotifier()..account = account,
+        from: noteSubscriptionNotifierProvider,
+        name: r'noteSubscriptionNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$noteSubscriptionNotifierHash,
+        dependencies: NoteSubscriptionNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NoteSubscriptionNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   NoteSubscriptionNotifierProvider._internal(
     super._createNotifier, {
@@ -117,9 +108,7 @@ class NoteSubscriptionNotifierProvider
   Map<String, int> runNotifierBuild(
     covariant NoteSubscriptionNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -140,7 +129,7 @@ class NoteSubscriptionNotifierProvider
 
   @override
   NotifierProviderElement<NoteSubscriptionNotifier, Map<String, int>>
-      createElement() {
+  createElement() {
     return _NoteSubscriptionNotifierProviderElement(this);
   }
 
@@ -174,5 +163,6 @@ class _NoteSubscriptionNotifierProviderElement
   @override
   Account get account => (origin as NoteSubscriptionNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

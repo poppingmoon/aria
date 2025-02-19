@@ -56,20 +56,14 @@ class TimelineNotesNotifierFamily
     TabSettings tabSettings, {
     String? untilId,
   }) {
-    return TimelineNotesNotifierProvider(
-      tabSettings,
-      untilId: untilId,
-    );
+    return TimelineNotesNotifierProvider(tabSettings, untilId: untilId);
   }
 
   @override
   TimelineNotesNotifierProvider getProviderOverride(
     covariant TimelineNotesNotifierProvider provider,
   ) {
-    return call(
-      provider.tabSettings,
-      untilId: provider.untilId,
-    );
+    return call(provider.tabSettings, untilId: provider.untilId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +83,30 @@ class TimelineNotesNotifierFamily
 
 /// See also [TimelineNotesNotifier].
 class TimelineNotesNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<TimelineNotesNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          TimelineNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [TimelineNotesNotifier].
-  TimelineNotesNotifierProvider(
-    TabSettings tabSettings, {
-    String? untilId,
-  }) : this._internal(
-          () => TimelineNotesNotifier()
-            ..tabSettings = tabSettings
-            ..untilId = untilId,
-          from: timelineNotesNotifierProvider,
-          name: r'timelineNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$timelineNotesNotifierHash,
-          dependencies: TimelineNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              TimelineNotesNotifierFamily._allTransitiveDependencies,
-          tabSettings: tabSettings,
-          untilId: untilId,
-        );
+  TimelineNotesNotifierProvider(TabSettings tabSettings, {String? untilId})
+    : this._internal(
+        () =>
+            TimelineNotesNotifier()
+              ..tabSettings = tabSettings
+              ..untilId = untilId,
+        from: timelineNotesNotifierProvider,
+        name: r'timelineNotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$timelineNotesNotifierHash,
+        dependencies: TimelineNotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            TimelineNotesNotifierFamily._allTransitiveDependencies,
+        tabSettings: tabSettings,
+        untilId: untilId,
+      );
 
   TimelineNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +126,7 @@ class TimelineNotesNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant TimelineNotesNotifier notifier,
   ) {
-    return notifier.build(
-      tabSettings,
-      untilId: untilId,
-    );
+    return notifier.build(tabSettings, untilId: untilId);
   }
 
   @override
@@ -141,9 +134,10 @@ class TimelineNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: TimelineNotesNotifierProvider._internal(
-        () => create()
-          ..tabSettings = tabSettings
-          ..untilId = untilId,
+        () =>
+            create()
+              ..tabSettings = tabSettings
+              ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +150,11 @@ class TimelineNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<TimelineNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    TimelineNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _TimelineNotesNotifierProviderElement(this);
   }
 
@@ -190,8 +187,12 @@ mixin TimelineNotesNotifierRef
 }
 
 class _TimelineNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<TimelineNotesNotifier,
-        PaginationState<Note>> with TimelineNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          TimelineNotesNotifier,
+          PaginationState<Note>
+        >
+    with TimelineNotesNotifierRef {
   _TimelineNotesNotifierProviderElement(super.provider);
 
   @override
@@ -200,5 +201,6 @@ class _TimelineNotesNotifierProviderElement
   @override
   String? get untilId => (origin as TimelineNotesNotifierProvider).untilId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -12,7 +12,8 @@ part of 'list_settings.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 ListSettings _$ListSettingsFromJson(Map<String, dynamic> json) {
   return _ListSettings.fromJson(json);
@@ -36,8 +37,9 @@ mixin _$ListSettings {
 /// @nodoc
 abstract class $ListSettingsCopyWith<$Res> {
   factory $ListSettingsCopyWith(
-          ListSettings value, $Res Function(ListSettings) then) =
-      _$ListSettingsCopyWithImpl<$Res, ListSettings>;
+    ListSettings value,
+    $Res Function(ListSettings) then,
+  ) = _$ListSettingsCopyWithImpl<$Res, ListSettings>;
   @useResult
   $Res call({String? name, bool? isPublic});
 }
@@ -56,20 +58,22 @@ class _$ListSettingsCopyWithImpl<$Res, $Val extends ListSettings>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = freezed,
-    Object? isPublic = freezed,
-  }) {
-    return _then(_value.copyWith(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isPublic: freezed == isPublic
-          ? _value.isPublic
-          : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
+  $Res call({Object? name = freezed, Object? isPublic = freezed}) {
+    return _then(
+      _value.copyWith(
+            name:
+                freezed == name
+                    ? _value.name
+                    : name // ignore: cast_nullable_to_non_nullable
+                        as String?,
+            isPublic:
+                freezed == isPublic
+                    ? _value.isPublic
+                    : isPublic // ignore: cast_nullable_to_non_nullable
+                        as bool?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -77,8 +81,9 @@ class _$ListSettingsCopyWithImpl<$Res, $Val extends ListSettings>
 abstract class _$$ListSettingsImplCopyWith<$Res>
     implements $ListSettingsCopyWith<$Res> {
   factory _$$ListSettingsImplCopyWith(
-          _$ListSettingsImpl value, $Res Function(_$ListSettingsImpl) then) =
-      __$$ListSettingsImplCopyWithImpl<$Res>;
+    _$ListSettingsImpl value,
+    $Res Function(_$ListSettingsImpl) then,
+  ) = __$$ListSettingsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String? name, bool? isPublic});
@@ -89,27 +94,29 @@ class __$$ListSettingsImplCopyWithImpl<$Res>
     extends _$ListSettingsCopyWithImpl<$Res, _$ListSettingsImpl>
     implements _$$ListSettingsImplCopyWith<$Res> {
   __$$ListSettingsImplCopyWithImpl(
-      _$ListSettingsImpl _value, $Res Function(_$ListSettingsImpl) _then)
-      : super(_value, _then);
+    _$ListSettingsImpl _value,
+    $Res Function(_$ListSettingsImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ListSettings
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? name = freezed,
-    Object? isPublic = freezed,
-  }) {
-    return _then(_$ListSettingsImpl(
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isPublic: freezed == isPublic
-          ? _value.isPublic
-          : isPublic // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
+  $Res call({Object? name = freezed, Object? isPublic = freezed}) {
+    return _then(
+      _$ListSettingsImpl(
+        name:
+            freezed == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                    as String?,
+        isPublic:
+            freezed == isPublic
+                ? _value.isPublic
+                : isPublic // ignore: cast_nullable_to_non_nullable
+                    as bool?,
+      ),
+    );
   }
 }
 
@@ -155,9 +162,7 @@ class _$ListSettingsImpl implements _ListSettings {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ListSettingsImplToJson(
-      this,
-    );
+    return _$$ListSettingsImplToJson(this);
   }
 }
 

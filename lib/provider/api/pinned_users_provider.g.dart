@@ -39,21 +39,15 @@ class PinnedUsersFamily extends Family<AsyncValue<List<UserDetailed>>> {
   const PinnedUsersFamily();
 
   /// See also [pinnedUsers].
-  PinnedUsersProvider call(
-    Account account,
-  ) {
-    return PinnedUsersProvider(
-      account,
-    );
+  PinnedUsersProvider call(Account account) {
+    return PinnedUsersProvider(account);
   }
 
   @override
   PinnedUsersProvider getProviderOverride(
     covariant PinnedUsersProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -75,24 +69,19 @@ class PinnedUsersFamily extends Family<AsyncValue<List<UserDetailed>>> {
 class PinnedUsersProvider
     extends AutoDisposeFutureProvider<List<UserDetailed>> {
   /// See also [pinnedUsers].
-  PinnedUsersProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => pinnedUsers(
-            ref as PinnedUsersRef,
-            account,
-          ),
-          from: pinnedUsersProvider,
-          name: r'pinnedUsersProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$pinnedUsersHash,
-          dependencies: PinnedUsersFamily._dependencies,
-          allTransitiveDependencies:
-              PinnedUsersFamily._allTransitiveDependencies,
-          account: account,
-        );
+  PinnedUsersProvider(Account account)
+    : this._internal(
+        (ref) => pinnedUsers(ref as PinnedUsersRef, account),
+        from: pinnedUsersProvider,
+        name: r'pinnedUsersProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$pinnedUsersHash,
+        dependencies: PinnedUsersFamily._dependencies,
+        allTransitiveDependencies: PinnedUsersFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   PinnedUsersProvider._internal(
     super._createNotifier, {
@@ -158,5 +147,6 @@ class _PinnedUsersProviderElement
   @override
   Account get account => (origin as PinnedUsersProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

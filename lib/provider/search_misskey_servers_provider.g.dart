@@ -41,21 +41,15 @@ class SearchMisskeyServersFamily
   const SearchMisskeyServersFamily();
 
   /// See also [searchMisskeyServers].
-  SearchMisskeyServersProvider call(
-    String query,
-  ) {
-    return SearchMisskeyServersProvider(
-      query,
-    );
+  SearchMisskeyServersProvider call(String query) {
+    return SearchMisskeyServersProvider(query);
   }
 
   @override
   SearchMisskeyServersProvider getProviderOverride(
     covariant SearchMisskeyServersProvider provider,
   ) {
-    return call(
-      provider.query,
-    );
+    return call(provider.query);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,24 +71,20 @@ class SearchMisskeyServersFamily
 class SearchMisskeyServersProvider
     extends AutoDisposeFutureProvider<List<JoinMisskeyInstanceInfo>> {
   /// See also [searchMisskeyServers].
-  SearchMisskeyServersProvider(
-    String query,
-  ) : this._internal(
-          (ref) => searchMisskeyServers(
-            ref as SearchMisskeyServersRef,
-            query,
-          ),
-          from: searchMisskeyServersProvider,
-          name: r'searchMisskeyServersProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchMisskeyServersHash,
-          dependencies: SearchMisskeyServersFamily._dependencies,
-          allTransitiveDependencies:
-              SearchMisskeyServersFamily._allTransitiveDependencies,
-          query: query,
-        );
+  SearchMisskeyServersProvider(String query)
+    : this._internal(
+        (ref) => searchMisskeyServers(ref as SearchMisskeyServersRef, query),
+        from: searchMisskeyServersProvider,
+        name: r'searchMisskeyServersProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$searchMisskeyServersHash,
+        dependencies: SearchMisskeyServersFamily._dependencies,
+        allTransitiveDependencies:
+            SearchMisskeyServersFamily._allTransitiveDependencies,
+        query: query,
+      );
 
   SearchMisskeyServersProvider._internal(
     super._createNotifier, {
@@ -111,8 +101,9 @@ class SearchMisskeyServersProvider
   @override
   Override overrideWith(
     FutureOr<List<JoinMisskeyInstanceInfo>> Function(
-            SearchMisskeyServersRef provider)
-        create,
+      SearchMisskeyServersRef provider,
+    )
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -130,7 +121,7 @@ class SearchMisskeyServersProvider
 
   @override
   AutoDisposeFutureProviderElement<List<JoinMisskeyInstanceInfo>>
-      createElement() {
+  createElement() {
     return _SearchMisskeyServersProviderElement(this);
   }
 
@@ -164,5 +155,6 @@ class _SearchMisskeyServersProviderElement
   @override
   String get query => (origin as SearchMisskeyServersProvider).query;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

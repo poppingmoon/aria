@@ -39,21 +39,13 @@ class StatsFamily extends Family<AsyncValue<StatsResponse>> {
   const StatsFamily();
 
   /// See also [stats].
-  StatsProvider call(
-    Account account,
-  ) {
-    return StatsProvider(
-      account,
-    );
+  StatsProvider call(Account account) {
+    return StatsProvider(account);
   }
 
   @override
-  StatsProvider getProviderOverride(
-    covariant StatsProvider provider,
-  ) {
-    return call(
-      provider.account,
-    );
+  StatsProvider getProviderOverride(covariant StatsProvider provider) {
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,17 @@ class StatsFamily extends Family<AsyncValue<StatsResponse>> {
 /// See also [stats].
 class StatsProvider extends AutoDisposeFutureProvider<StatsResponse> {
   /// See also [stats].
-  StatsProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => stats(
-            ref as StatsRef,
-            account,
-          ),
-          from: statsProvider,
-          name: r'statsProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$statsHash,
-          dependencies: StatsFamily._dependencies,
-          allTransitiveDependencies: StatsFamily._allTransitiveDependencies,
-          account: account,
-        );
+  StatsProvider(Account account)
+    : this._internal(
+        (ref) => stats(ref as StatsRef, account),
+        from: statsProvider,
+        name: r'statsProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$statsHash,
+        dependencies: StatsFamily._dependencies,
+        allTransitiveDependencies: StatsFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   StatsProvider._internal(
     super._createNotifier, {
@@ -149,11 +135,13 @@ mixin StatsRef on AutoDisposeFutureProviderRef<StatsResponse> {
 }
 
 class _StatsProviderElement
-    extends AutoDisposeFutureProviderElement<StatsResponse> with StatsRef {
+    extends AutoDisposeFutureProviderElement<StatsResponse>
+    with StatsRef {
   _StatsProviderElement(super.provider);
 
   @override
   Account get account => (origin as StatsProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -34,9 +34,7 @@ abstract class _$GalleryPostsNotifier
     extends BuildlessAutoDisposeAsyncNotifier<PaginationState<GalleryPost>> {
   late final Account account;
 
-  FutureOr<PaginationState<GalleryPost>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<GalleryPost>> build(Account account);
 }
 
 /// See also [GalleryPostsNotifier].
@@ -50,21 +48,15 @@ class GalleryPostsNotifierFamily
   const GalleryPostsNotifierFamily();
 
   /// See also [GalleryPostsNotifier].
-  GalleryPostsNotifierProvider call(
-    Account account,
-  ) {
-    return GalleryPostsNotifierProvider(
-      account,
-    );
+  GalleryPostsNotifierProvider call(Account account) {
+    return GalleryPostsNotifierProvider(account);
   }
 
   @override
   GalleryPostsNotifierProvider getProviderOverride(
     covariant GalleryPostsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,24 +75,27 @@ class GalleryPostsNotifierFamily
 }
 
 /// See also [GalleryPostsNotifier].
-class GalleryPostsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    GalleryPostsNotifier, PaginationState<GalleryPost>> {
+class GalleryPostsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          GalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        > {
   /// See also [GalleryPostsNotifier].
-  GalleryPostsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => GalleryPostsNotifier()..account = account,
-          from: galleryPostsNotifierProvider,
-          name: r'galleryPostsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$galleryPostsNotifierHash,
-          dependencies: GalleryPostsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              GalleryPostsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  GalleryPostsNotifierProvider(Account account)
+    : this._internal(
+        () => GalleryPostsNotifier()..account = account,
+        from: galleryPostsNotifierProvider,
+        name: r'galleryPostsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$galleryPostsNotifierHash,
+        dependencies: GalleryPostsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            GalleryPostsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   GalleryPostsNotifierProvider._internal(
     super._createNotifier, {
@@ -118,9 +113,7 @@ class GalleryPostsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<GalleryPost>> runNotifierBuild(
     covariant GalleryPostsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -140,8 +133,11 @@ class GalleryPostsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<GalleryPostsNotifier,
-      PaginationState<GalleryPost>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    GalleryPostsNotifier,
+    PaginationState<GalleryPost>
+  >
+  createElement() {
     return _GalleryPostsNotifierProviderElement(this);
   }
 
@@ -168,12 +164,17 @@ mixin GalleryPostsNotifierRef
 }
 
 class _GalleryPostsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<GalleryPostsNotifier,
-        PaginationState<GalleryPost>> with GalleryPostsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          GalleryPostsNotifier,
+          PaginationState<GalleryPost>
+        >
+    with GalleryPostsNotifierRef {
   _GalleryPostsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as GalleryPostsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

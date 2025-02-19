@@ -44,22 +44,14 @@ class TranslatedNoteFamily extends Family<AsyncValue<NotesTranslateResponse>> {
     String noteId,
     String targetLang,
   ) {
-    return TranslatedNoteProvider(
-      account,
-      noteId,
-      targetLang,
-    );
+    return TranslatedNoteProvider(account, noteId, targetLang);
   }
 
   @override
   TranslatedNoteProvider getProviderOverride(
     covariant TranslatedNoteProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-      provider.targetLang,
-    );
+    return call(provider.account, provider.noteId, provider.targetLang);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -81,30 +73,27 @@ class TranslatedNoteFamily extends Family<AsyncValue<NotesTranslateResponse>> {
 class TranslatedNoteProvider
     extends AutoDisposeFutureProvider<NotesTranslateResponse> {
   /// See also [translatedNote].
-  TranslatedNoteProvider(
-    Account account,
-    String noteId,
-    String targetLang,
-  ) : this._internal(
-          (ref) => translatedNote(
-            ref as TranslatedNoteRef,
-            account,
-            noteId,
-            targetLang,
-          ),
-          from: translatedNoteProvider,
-          name: r'translatedNoteProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$translatedNoteHash,
-          dependencies: TranslatedNoteFamily._dependencies,
-          allTransitiveDependencies:
-              TranslatedNoteFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-          targetLang: targetLang,
-        );
+  TranslatedNoteProvider(Account account, String noteId, String targetLang)
+    : this._internal(
+        (ref) => translatedNote(
+          ref as TranslatedNoteRef,
+          account,
+          noteId,
+          targetLang,
+        ),
+        from: translatedNoteProvider,
+        name: r'translatedNoteProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$translatedNoteHash,
+        dependencies: TranslatedNoteFamily._dependencies,
+        allTransitiveDependencies:
+            TranslatedNoteFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+        targetLang: targetLang,
+      );
 
   TranslatedNoteProvider._internal(
     super._createNotifier, {
@@ -125,7 +114,7 @@ class TranslatedNoteProvider
   @override
   Override overrideWith(
     FutureOr<NotesTranslateResponse> Function(TranslatedNoteRef provider)
-        create,
+    create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -193,5 +182,6 @@ class _TranslatedNoteProviderElement
   @override
   String get targetLang => (origin as TranslatedNoteProvider).targetLang;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

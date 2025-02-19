@@ -39,21 +39,15 @@ class FeaturedPagesFamily extends Family<AsyncValue<List<Page>>> {
   const FeaturedPagesFamily();
 
   /// See also [featuredPages].
-  FeaturedPagesProvider call(
-    Account account,
-  ) {
-    return FeaturedPagesProvider(
-      account,
-    );
+  FeaturedPagesProvider call(Account account) {
+    return FeaturedPagesProvider(account);
   }
 
   @override
   FeaturedPagesProvider getProviderOverride(
     covariant FeaturedPagesProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class FeaturedPagesFamily extends Family<AsyncValue<List<Page>>> {
 /// See also [featuredPages].
 class FeaturedPagesProvider extends AutoDisposeFutureProvider<List<Page>> {
   /// See also [featuredPages].
-  FeaturedPagesProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => featuredPages(
-            ref as FeaturedPagesRef,
-            account,
-          ),
-          from: featuredPagesProvider,
-          name: r'featuredPagesProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$featuredPagesHash,
-          dependencies: FeaturedPagesFamily._dependencies,
-          allTransitiveDependencies:
-              FeaturedPagesFamily._allTransitiveDependencies,
-          account: account,
-        );
+  FeaturedPagesProvider(Account account)
+    : this._internal(
+        (ref) => featuredPages(ref as FeaturedPagesRef, account),
+        from: featuredPagesProvider,
+        name: r'featuredPagesProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$featuredPagesHash,
+        dependencies: FeaturedPagesFamily._dependencies,
+        allTransitiveDependencies:
+            FeaturedPagesFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   FeaturedPagesProvider._internal(
     super._createNotifier, {
@@ -150,11 +140,13 @@ mixin FeaturedPagesRef on AutoDisposeFutureProviderRef<List<Page>> {
 }
 
 class _FeaturedPagesProviderElement
-    extends AutoDisposeFutureProviderElement<List<Page>> with FeaturedPagesRef {
+    extends AutoDisposeFutureProviderElement<List<Page>>
+    with FeaturedPagesRef {
   _FeaturedPagesProviderElement(super.provider);
 
   @override
   Account get account => (origin as FeaturedPagesProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

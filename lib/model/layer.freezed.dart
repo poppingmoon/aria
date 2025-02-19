@@ -12,7 +12,8 @@ part of 'layer.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ImageLayer {
@@ -34,17 +35,19 @@ mixin _$ImageLayer {
 /// @nodoc
 abstract class $ImageLayerCopyWith<$Res> {
   factory $ImageLayerCopyWith(
-          ImageLayer value, $Res Function(ImageLayer) then) =
-      _$ImageLayerCopyWithImpl<$Res, ImageLayer>;
+    ImageLayer value,
+    $Res Function(ImageLayer) then,
+  ) = _$ImageLayerCopyWithImpl<$Res, ImageLayer>;
   @useResult
-  $Res call(
-      {Uint8List data,
-      Size size,
-      double opacity,
-      Offset offset,
-      double scale,
-      double angle,
-      bool flipX});
+  $Res call({
+    Uint8List data,
+    Size size,
+    double opacity,
+    Offset offset,
+    double scale,
+    double angle,
+    bool flipX,
+  });
 }
 
 /// @nodoc
@@ -70,36 +73,46 @@ class _$ImageLayerCopyWithImpl<$Res, $Val extends ImageLayer>
     Object? angle = null,
     Object? flipX = null,
   }) {
-    return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as Size,
-      opacity: null == opacity
-          ? _value.opacity
-          : opacity // ignore: cast_nullable_to_non_nullable
-              as double,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      angle: null == angle
-          ? _value.angle
-          : angle // ignore: cast_nullable_to_non_nullable
-              as double,
-      flipX: null == flipX
-          ? _value.flipX
-          : flipX // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            data:
+                null == data
+                    ? _value.data
+                    : data // ignore: cast_nullable_to_non_nullable
+                        as Uint8List,
+            size:
+                null == size
+                    ? _value.size
+                    : size // ignore: cast_nullable_to_non_nullable
+                        as Size,
+            opacity:
+                null == opacity
+                    ? _value.opacity
+                    : opacity // ignore: cast_nullable_to_non_nullable
+                        as double,
+            offset:
+                null == offset
+                    ? _value.offset
+                    : offset // ignore: cast_nullable_to_non_nullable
+                        as Offset,
+            scale:
+                null == scale
+                    ? _value.scale
+                    : scale // ignore: cast_nullable_to_non_nullable
+                        as double,
+            angle:
+                null == angle
+                    ? _value.angle
+                    : angle // ignore: cast_nullable_to_non_nullable
+                        as double,
+            flipX:
+                null == flipX
+                    ? _value.flipX
+                    : flipX // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -107,18 +120,20 @@ class _$ImageLayerCopyWithImpl<$Res, $Val extends ImageLayer>
 abstract class _$$ImageLayerImplCopyWith<$Res>
     implements $ImageLayerCopyWith<$Res> {
   factory _$$ImageLayerImplCopyWith(
-          _$ImageLayerImpl value, $Res Function(_$ImageLayerImpl) then) =
-      __$$ImageLayerImplCopyWithImpl<$Res>;
+    _$ImageLayerImpl value,
+    $Res Function(_$ImageLayerImpl) then,
+  ) = __$$ImageLayerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Uint8List data,
-      Size size,
-      double opacity,
-      Offset offset,
-      double scale,
-      double angle,
-      bool flipX});
+  $Res call({
+    Uint8List data,
+    Size size,
+    double opacity,
+    Offset offset,
+    double scale,
+    double angle,
+    bool flipX,
+  });
 }
 
 /// @nodoc
@@ -126,8 +141,9 @@ class __$$ImageLayerImplCopyWithImpl<$Res>
     extends _$ImageLayerCopyWithImpl<$Res, _$ImageLayerImpl>
     implements _$$ImageLayerImplCopyWith<$Res> {
   __$$ImageLayerImplCopyWithImpl(
-      _$ImageLayerImpl _value, $Res Function(_$ImageLayerImpl) _then)
-      : super(_value, _then);
+    _$ImageLayerImpl _value,
+    $Res Function(_$ImageLayerImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ImageLayer
   /// with the given fields replaced by the non-null parameter values.
@@ -142,50 +158,60 @@ class __$$ImageLayerImplCopyWithImpl<$Res>
     Object? angle = null,
     Object? flipX = null,
   }) {
-    return _then(_$ImageLayerImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as Uint8List,
-      size: null == size
-          ? _value.size
-          : size // ignore: cast_nullable_to_non_nullable
-              as Size,
-      opacity: null == opacity
-          ? _value.opacity
-          : opacity // ignore: cast_nullable_to_non_nullable
-              as double,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      angle: null == angle
-          ? _value.angle
-          : angle // ignore: cast_nullable_to_non_nullable
-              as double,
-      flipX: null == flipX
-          ? _value.flipX
-          : flipX // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$ImageLayerImpl(
+        data:
+            null == data
+                ? _value.data
+                : data // ignore: cast_nullable_to_non_nullable
+                    as Uint8List,
+        size:
+            null == size
+                ? _value.size
+                : size // ignore: cast_nullable_to_non_nullable
+                    as Size,
+        opacity:
+            null == opacity
+                ? _value.opacity
+                : opacity // ignore: cast_nullable_to_non_nullable
+                    as double,
+        offset:
+            null == offset
+                ? _value.offset
+                : offset // ignore: cast_nullable_to_non_nullable
+                    as Offset,
+        scale:
+            null == scale
+                ? _value.scale
+                : scale // ignore: cast_nullable_to_non_nullable
+                    as double,
+        angle:
+            null == angle
+                ? _value.angle
+                : angle // ignore: cast_nullable_to_non_nullable
+                    as double,
+        flipX:
+            null == flipX
+                ? _value.flipX
+                : flipX // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$ImageLayerImpl implements _ImageLayer {
-  const _$ImageLayerImpl(
-      {required this.data,
-      required this.size,
-      this.opacity = 1.0,
-      this.offset = Offset.zero,
-      this.scale = 1.0,
-      this.angle = 0.0,
-      this.flipX = false});
+  const _$ImageLayerImpl({
+    required this.data,
+    required this.size,
+    this.opacity = 1.0,
+    this.offset = Offset.zero,
+    this.scale = 1.0,
+    this.angle = 0.0,
+    this.flipX = false,
+  });
 
   @override
   final Uint8List data;
@@ -228,14 +254,15 @@ class _$ImageLayerImpl implements _ImageLayer {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(data),
-      size,
-      opacity,
-      offset,
-      scale,
-      angle,
-      flipX);
+    runtimeType,
+    const DeepCollectionEquality().hash(data),
+    size,
+    opacity,
+    offset,
+    scale,
+    angle,
+    flipX,
+  );
 
   /// Create a copy of ImageLayer
   /// with the given fields replaced by the non-null parameter values.
@@ -247,14 +274,15 @@ class _$ImageLayerImpl implements _ImageLayer {
 }
 
 abstract class _ImageLayer implements ImageLayer {
-  const factory _ImageLayer(
-      {required final Uint8List data,
-      required final Size size,
-      final double opacity,
-      final Offset offset,
-      final double scale,
-      final double angle,
-      final bool flipX}) = _$ImageLayerImpl;
+  const factory _ImageLayer({
+    required final Uint8List data,
+    required final Size size,
+    final double opacity,
+    final Offset offset,
+    final double scale,
+    final double angle,
+    final bool flipX,
+  }) = _$ImageLayerImpl;
 
   @override
   Uint8List get data;
@@ -301,14 +329,15 @@ abstract class $TextLayerCopyWith<$Res> {
   factory $TextLayerCopyWith(TextLayer value, $Res Function(TextLayer) then) =
       _$TextLayerCopyWithImpl<$Res, TextLayer>;
   @useResult
-  $Res call(
-      {String text,
-      Color? color,
-      Color? backgroundColor,
-      Offset offset,
-      double scale,
-      double angle,
-      bool flipX});
+  $Res call({
+    String text,
+    Color? color,
+    Color? backgroundColor,
+    Offset offset,
+    double scale,
+    double angle,
+    bool flipX,
+  });
 }
 
 /// @nodoc
@@ -334,36 +363,46 @@ class _$TextLayerCopyWithImpl<$Res, $Val extends TextLayer>
     Object? angle = null,
     Object? flipX = null,
   }) {
-    return _then(_value.copyWith(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      backgroundColor: freezed == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      angle: null == angle
-          ? _value.angle
-          : angle // ignore: cast_nullable_to_non_nullable
-              as double,
-      flipX: null == flipX
-          ? _value.flipX
-          : flipX // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            text:
+                null == text
+                    ? _value.text
+                    : text // ignore: cast_nullable_to_non_nullable
+                        as String,
+            color:
+                freezed == color
+                    ? _value.color
+                    : color // ignore: cast_nullable_to_non_nullable
+                        as Color?,
+            backgroundColor:
+                freezed == backgroundColor
+                    ? _value.backgroundColor
+                    : backgroundColor // ignore: cast_nullable_to_non_nullable
+                        as Color?,
+            offset:
+                null == offset
+                    ? _value.offset
+                    : offset // ignore: cast_nullable_to_non_nullable
+                        as Offset,
+            scale:
+                null == scale
+                    ? _value.scale
+                    : scale // ignore: cast_nullable_to_non_nullable
+                        as double,
+            angle:
+                null == angle
+                    ? _value.angle
+                    : angle // ignore: cast_nullable_to_non_nullable
+                        as double,
+            flipX:
+                null == flipX
+                    ? _value.flipX
+                    : flipX // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -371,18 +410,20 @@ class _$TextLayerCopyWithImpl<$Res, $Val extends TextLayer>
 abstract class _$$TextLayerImplCopyWith<$Res>
     implements $TextLayerCopyWith<$Res> {
   factory _$$TextLayerImplCopyWith(
-          _$TextLayerImpl value, $Res Function(_$TextLayerImpl) then) =
-      __$$TextLayerImplCopyWithImpl<$Res>;
+    _$TextLayerImpl value,
+    $Res Function(_$TextLayerImpl) then,
+  ) = __$$TextLayerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String text,
-      Color? color,
-      Color? backgroundColor,
-      Offset offset,
-      double scale,
-      double angle,
-      bool flipX});
+  $Res call({
+    String text,
+    Color? color,
+    Color? backgroundColor,
+    Offset offset,
+    double scale,
+    double angle,
+    bool flipX,
+  });
 }
 
 /// @nodoc
@@ -390,8 +431,9 @@ class __$$TextLayerImplCopyWithImpl<$Res>
     extends _$TextLayerCopyWithImpl<$Res, _$TextLayerImpl>
     implements _$$TextLayerImplCopyWith<$Res> {
   __$$TextLayerImplCopyWithImpl(
-      _$TextLayerImpl _value, $Res Function(_$TextLayerImpl) _then)
-      : super(_value, _then);
+    _$TextLayerImpl _value,
+    $Res Function(_$TextLayerImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of TextLayer
   /// with the given fields replaced by the non-null parameter values.
@@ -406,50 +448,60 @@ class __$$TextLayerImplCopyWithImpl<$Res>
     Object? angle = null,
     Object? flipX = null,
   }) {
-    return _then(_$TextLayerImpl(
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      backgroundColor: freezed == backgroundColor
-          ? _value.backgroundColor
-          : backgroundColor // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      angle: null == angle
-          ? _value.angle
-          : angle // ignore: cast_nullable_to_non_nullable
-              as double,
-      flipX: null == flipX
-          ? _value.flipX
-          : flipX // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$TextLayerImpl(
+        text:
+            null == text
+                ? _value.text
+                : text // ignore: cast_nullable_to_non_nullable
+                    as String,
+        color:
+            freezed == color
+                ? _value.color
+                : color // ignore: cast_nullable_to_non_nullable
+                    as Color?,
+        backgroundColor:
+            freezed == backgroundColor
+                ? _value.backgroundColor
+                : backgroundColor // ignore: cast_nullable_to_non_nullable
+                    as Color?,
+        offset:
+            null == offset
+                ? _value.offset
+                : offset // ignore: cast_nullable_to_non_nullable
+                    as Offset,
+        scale:
+            null == scale
+                ? _value.scale
+                : scale // ignore: cast_nullable_to_non_nullable
+                    as double,
+        angle:
+            null == angle
+                ? _value.angle
+                : angle // ignore: cast_nullable_to_non_nullable
+                    as double,
+        flipX:
+            null == flipX
+                ? _value.flipX
+                : flipX // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$TextLayerImpl implements _TextLayer {
-  const _$TextLayerImpl(
-      {required this.text,
-      this.color,
-      this.backgroundColor,
-      this.offset = Offset.zero,
-      this.scale = 1.0,
-      this.angle = 0.0,
-      this.flipX = false});
+  const _$TextLayerImpl({
+    required this.text,
+    this.color,
+    this.backgroundColor,
+    this.offset = Offset.zero,
+    this.scale = 1.0,
+    this.angle = 0.0,
+    this.flipX = false,
+  });
 
   @override
   final String text;
@@ -492,7 +544,15 @@ class _$TextLayerImpl implements _TextLayer {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, text, color, backgroundColor, offset, scale, angle, flipX);
+    runtimeType,
+    text,
+    color,
+    backgroundColor,
+    offset,
+    scale,
+    angle,
+    flipX,
+  );
 
   /// Create a copy of TextLayer
   /// with the given fields replaced by the non-null parameter values.
@@ -504,14 +564,15 @@ class _$TextLayerImpl implements _TextLayer {
 }
 
 abstract class _TextLayer implements TextLayer {
-  const factory _TextLayer(
-      {required final String text,
-      final Color? color,
-      final Color? backgroundColor,
-      final Offset offset,
-      final double scale,
-      final double angle,
-      final bool flipX}) = _$TextLayerImpl;
+  const factory _TextLayer({
+    required final String text,
+    final Color? color,
+    final Color? backgroundColor,
+    final Offset offset,
+    final double scale,
+    final double angle,
+    final bool flipX,
+  }) = _$TextLayerImpl;
 
   @override
   String get text;
@@ -558,14 +619,15 @@ abstract class $DrawLayerCopyWith<$Res> {
   factory $DrawLayerCopyWith(DrawLayer value, $Res Function(DrawLayer) then) =
       _$DrawLayerCopyWithImpl<$Res, DrawLayer>;
   @useResult
-  $Res call(
-      {List<Offset?> offsets,
-      Color? color,
-      double strokeWidth,
-      Offset offset,
-      double scale,
-      double angle,
-      bool flipX});
+  $Res call({
+    List<Offset?> offsets,
+    Color? color,
+    double strokeWidth,
+    Offset offset,
+    double scale,
+    double angle,
+    bool flipX,
+  });
 }
 
 /// @nodoc
@@ -591,36 +653,46 @@ class _$DrawLayerCopyWithImpl<$Res, $Val extends DrawLayer>
     Object? angle = null,
     Object? flipX = null,
   }) {
-    return _then(_value.copyWith(
-      offsets: null == offsets
-          ? _value.offsets
-          : offsets // ignore: cast_nullable_to_non_nullable
-              as List<Offset?>,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      strokeWidth: null == strokeWidth
-          ? _value.strokeWidth
-          : strokeWidth // ignore: cast_nullable_to_non_nullable
-              as double,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      angle: null == angle
-          ? _value.angle
-          : angle // ignore: cast_nullable_to_non_nullable
-              as double,
-      flipX: null == flipX
-          ? _value.flipX
-          : flipX // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            offsets:
+                null == offsets
+                    ? _value.offsets
+                    : offsets // ignore: cast_nullable_to_non_nullable
+                        as List<Offset?>,
+            color:
+                freezed == color
+                    ? _value.color
+                    : color // ignore: cast_nullable_to_non_nullable
+                        as Color?,
+            strokeWidth:
+                null == strokeWidth
+                    ? _value.strokeWidth
+                    : strokeWidth // ignore: cast_nullable_to_non_nullable
+                        as double,
+            offset:
+                null == offset
+                    ? _value.offset
+                    : offset // ignore: cast_nullable_to_non_nullable
+                        as Offset,
+            scale:
+                null == scale
+                    ? _value.scale
+                    : scale // ignore: cast_nullable_to_non_nullable
+                        as double,
+            angle:
+                null == angle
+                    ? _value.angle
+                    : angle // ignore: cast_nullable_to_non_nullable
+                        as double,
+            flipX:
+                null == flipX
+                    ? _value.flipX
+                    : flipX // ignore: cast_nullable_to_non_nullable
+                        as bool,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -628,18 +700,20 @@ class _$DrawLayerCopyWithImpl<$Res, $Val extends DrawLayer>
 abstract class _$$DrawLayerImplCopyWith<$Res>
     implements $DrawLayerCopyWith<$Res> {
   factory _$$DrawLayerImplCopyWith(
-          _$DrawLayerImpl value, $Res Function(_$DrawLayerImpl) then) =
-      __$$DrawLayerImplCopyWithImpl<$Res>;
+    _$DrawLayerImpl value,
+    $Res Function(_$DrawLayerImpl) then,
+  ) = __$$DrawLayerImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {List<Offset?> offsets,
-      Color? color,
-      double strokeWidth,
-      Offset offset,
-      double scale,
-      double angle,
-      bool flipX});
+  $Res call({
+    List<Offset?> offsets,
+    Color? color,
+    double strokeWidth,
+    Offset offset,
+    double scale,
+    double angle,
+    bool flipX,
+  });
 }
 
 /// @nodoc
@@ -647,8 +721,9 @@ class __$$DrawLayerImplCopyWithImpl<$Res>
     extends _$DrawLayerCopyWithImpl<$Res, _$DrawLayerImpl>
     implements _$$DrawLayerImplCopyWith<$Res> {
   __$$DrawLayerImplCopyWithImpl(
-      _$DrawLayerImpl _value, $Res Function(_$DrawLayerImpl) _then)
-      : super(_value, _then);
+    _$DrawLayerImpl _value,
+    $Res Function(_$DrawLayerImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of DrawLayer
   /// with the given fields replaced by the non-null parameter values.
@@ -663,51 +738,60 @@ class __$$DrawLayerImplCopyWithImpl<$Res>
     Object? angle = null,
     Object? flipX = null,
   }) {
-    return _then(_$DrawLayerImpl(
-      offsets: null == offsets
-          ? _value._offsets
-          : offsets // ignore: cast_nullable_to_non_nullable
-              as List<Offset?>,
-      color: freezed == color
-          ? _value.color
-          : color // ignore: cast_nullable_to_non_nullable
-              as Color?,
-      strokeWidth: null == strokeWidth
-          ? _value.strokeWidth
-          : strokeWidth // ignore: cast_nullable_to_non_nullable
-              as double,
-      offset: null == offset
-          ? _value.offset
-          : offset // ignore: cast_nullable_to_non_nullable
-              as Offset,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      angle: null == angle
-          ? _value.angle
-          : angle // ignore: cast_nullable_to_non_nullable
-              as double,
-      flipX: null == flipX
-          ? _value.flipX
-          : flipX // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
+    return _then(
+      _$DrawLayerImpl(
+        offsets:
+            null == offsets
+                ? _value._offsets
+                : offsets // ignore: cast_nullable_to_non_nullable
+                    as List<Offset?>,
+        color:
+            freezed == color
+                ? _value.color
+                : color // ignore: cast_nullable_to_non_nullable
+                    as Color?,
+        strokeWidth:
+            null == strokeWidth
+                ? _value.strokeWidth
+                : strokeWidth // ignore: cast_nullable_to_non_nullable
+                    as double,
+        offset:
+            null == offset
+                ? _value.offset
+                : offset // ignore: cast_nullable_to_non_nullable
+                    as Offset,
+        scale:
+            null == scale
+                ? _value.scale
+                : scale // ignore: cast_nullable_to_non_nullable
+                    as double,
+        angle:
+            null == angle
+                ? _value.angle
+                : angle // ignore: cast_nullable_to_non_nullable
+                    as double,
+        flipX:
+            null == flipX
+                ? _value.flipX
+                : flipX // ignore: cast_nullable_to_non_nullable
+                    as bool,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$DrawLayerImpl implements _DrawLayer {
-  const _$DrawLayerImpl(
-      {final List<Offset?> offsets = const [],
-      this.color,
-      this.strokeWidth = 1.0,
-      this.offset = Offset.zero,
-      this.scale = 1.0,
-      this.angle = 0.0,
-      this.flipX = false})
-      : _offsets = offsets;
+  const _$DrawLayerImpl({
+    final List<Offset?> offsets = const [],
+    this.color,
+    this.strokeWidth = 1.0,
+    this.offset = Offset.zero,
+    this.scale = 1.0,
+    this.angle = 0.0,
+    this.flipX = false,
+  }) : _offsets = offsets;
 
   final List<Offset?> _offsets;
   @override
@@ -758,14 +842,15 @@ class _$DrawLayerImpl implements _DrawLayer {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_offsets),
-      color,
-      strokeWidth,
-      offset,
-      scale,
-      angle,
-      flipX);
+    runtimeType,
+    const DeepCollectionEquality().hash(_offsets),
+    color,
+    strokeWidth,
+    offset,
+    scale,
+    angle,
+    flipX,
+  );
 
   /// Create a copy of DrawLayer
   /// with the given fields replaced by the non-null parameter values.
@@ -777,14 +862,15 @@ class _$DrawLayerImpl implements _DrawLayer {
 }
 
 abstract class _DrawLayer implements DrawLayer {
-  const factory _DrawLayer(
-      {final List<Offset?> offsets,
-      final Color? color,
-      final double strokeWidth,
-      final Offset offset,
-      final double scale,
-      final double angle,
-      final bool flipX}) = _$DrawLayerImpl;
+  const factory _DrawLayer({
+    final List<Offset?> offsets,
+    final Color? color,
+    final double strokeWidth,
+    final Offset offset,
+    final double scale,
+    final double angle,
+    final bool flipX,
+  }) = _$DrawLayerImpl;
 
   @override
   List<Offset?> get offsets;

@@ -34,9 +34,7 @@ abstract class _$TimelineLastViewedNoteIdNotifier
     extends BuildlessAutoDisposeNotifier<String?> {
   late final TabSettings tabSettings;
 
-  String? build(
-    TabSettings tabSettings,
-  );
+  String? build(TabSettings tabSettings);
 }
 
 /// See also [TimelineLastViewedNoteIdNotifier].
@@ -50,21 +48,15 @@ class TimelineLastViewedNoteIdNotifierFamily extends Family<String?> {
   const TimelineLastViewedNoteIdNotifierFamily();
 
   /// See also [TimelineLastViewedNoteIdNotifier].
-  TimelineLastViewedNoteIdNotifierProvider call(
-    TabSettings tabSettings,
-  ) {
-    return TimelineLastViewedNoteIdNotifierProvider(
-      tabSettings,
-    );
+  TimelineLastViewedNoteIdNotifierProvider call(TabSettings tabSettings) {
+    return TimelineLastViewedNoteIdNotifierProvider(tabSettings);
   }
 
   @override
   TimelineLastViewedNoteIdNotifierProvider getProviderOverride(
     covariant TimelineLastViewedNoteIdNotifierProvider provider,
   ) {
-    return call(
-      provider.tabSettings,
-    );
+    return call(provider.tabSettings);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,24 +76,26 @@ class TimelineLastViewedNoteIdNotifierFamily extends Family<String?> {
 
 /// See also [TimelineLastViewedNoteIdNotifier].
 class TimelineLastViewedNoteIdNotifierProvider
-    extends AutoDisposeNotifierProviderImpl<TimelineLastViewedNoteIdNotifier,
-        String?> {
+    extends
+        AutoDisposeNotifierProviderImpl<
+          TimelineLastViewedNoteIdNotifier,
+          String?
+        > {
   /// See also [TimelineLastViewedNoteIdNotifier].
-  TimelineLastViewedNoteIdNotifierProvider(
-    TabSettings tabSettings,
-  ) : this._internal(
-          () => TimelineLastViewedNoteIdNotifier()..tabSettings = tabSettings,
-          from: timelineLastViewedNoteIdNotifierProvider,
-          name: r'timelineLastViewedNoteIdNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$timelineLastViewedNoteIdNotifierHash,
-          dependencies: TimelineLastViewedNoteIdNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              TimelineLastViewedNoteIdNotifierFamily._allTransitiveDependencies,
-          tabSettings: tabSettings,
-        );
+  TimelineLastViewedNoteIdNotifierProvider(TabSettings tabSettings)
+    : this._internal(
+        () => TimelineLastViewedNoteIdNotifier()..tabSettings = tabSettings,
+        from: timelineLastViewedNoteIdNotifierProvider,
+        name: r'timelineLastViewedNoteIdNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$timelineLastViewedNoteIdNotifierHash,
+        dependencies: TimelineLastViewedNoteIdNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            TimelineLastViewedNoteIdNotifierFamily._allTransitiveDependencies,
+        tabSettings: tabSettings,
+      );
 
   TimelineLastViewedNoteIdNotifierProvider._internal(
     super._createNotifier, {
@@ -119,9 +113,7 @@ class TimelineLastViewedNoteIdNotifierProvider
   String? runNotifierBuild(
     covariant TimelineLastViewedNoteIdNotifier notifier,
   ) {
-    return notifier.build(
-      tabSettings,
-    );
+    return notifier.build(tabSettings);
   }
 
   @override
@@ -142,7 +134,7 @@ class TimelineLastViewedNoteIdNotifierProvider
 
   @override
   AutoDisposeNotifierProviderElement<TimelineLastViewedNoteIdNotifier, String?>
-      createElement() {
+  createElement() {
     return _TimelineLastViewedNoteIdNotifierProviderElement(this);
   }
 
@@ -170,13 +162,18 @@ mixin TimelineLastViewedNoteIdNotifierRef
 }
 
 class _TimelineLastViewedNoteIdNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<TimelineLastViewedNoteIdNotifier,
-        String?> with TimelineLastViewedNoteIdNotifierRef {
+    extends
+        AutoDisposeNotifierProviderElement<
+          TimelineLastViewedNoteIdNotifier,
+          String?
+        >
+    with TimelineLastViewedNoteIdNotifierRef {
   _TimelineLastViewedNoteIdNotifierProviderElement(super.provider);
 
   @override
   TabSettings get tabSettings =>
       (origin as TimelineLastViewedNoteIdNotifierProvider).tabSettings;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

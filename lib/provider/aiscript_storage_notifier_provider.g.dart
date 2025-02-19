@@ -34,9 +34,7 @@ abstract class _$AiscriptStorageNotifier
     extends BuildlessAutoDisposeNotifier<Map<String, String>> {
   late final Account account;
 
-  Map<String, String> build(
-    Account account,
-  );
+  Map<String, String> build(Account account);
 }
 
 /// See also [AiscriptStorageNotifier].
@@ -49,21 +47,15 @@ class AiscriptStorageNotifierFamily extends Family<Map<String, String>> {
   const AiscriptStorageNotifierFamily();
 
   /// See also [AiscriptStorageNotifier].
-  AiscriptStorageNotifierProvider call(
-    Account account,
-  ) {
-    return AiscriptStorageNotifierProvider(
-      account,
-    );
+  AiscriptStorageNotifierProvider call(Account account) {
+    return AiscriptStorageNotifierProvider(account);
   }
 
   @override
   AiscriptStorageNotifierProvider getProviderOverride(
     covariant AiscriptStorageNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -82,24 +74,27 @@ class AiscriptStorageNotifierFamily extends Family<Map<String, String>> {
 }
 
 /// See also [AiscriptStorageNotifier].
-class AiscriptStorageNotifierProvider extends AutoDisposeNotifierProviderImpl<
-    AiscriptStorageNotifier, Map<String, String>> {
+class AiscriptStorageNotifierProvider
+    extends
+        AutoDisposeNotifierProviderImpl<
+          AiscriptStorageNotifier,
+          Map<String, String>
+        > {
   /// See also [AiscriptStorageNotifier].
-  AiscriptStorageNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => AiscriptStorageNotifier()..account = account,
-          from: aiscriptStorageNotifierProvider,
-          name: r'aiscriptStorageNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$aiscriptStorageNotifierHash,
-          dependencies: AiscriptStorageNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              AiscriptStorageNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  AiscriptStorageNotifierProvider(Account account)
+    : this._internal(
+        () => AiscriptStorageNotifier()..account = account,
+        from: aiscriptStorageNotifierProvider,
+        name: r'aiscriptStorageNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$aiscriptStorageNotifierHash,
+        dependencies: AiscriptStorageNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            AiscriptStorageNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   AiscriptStorageNotifierProvider._internal(
     super._createNotifier, {
@@ -117,9 +112,7 @@ class AiscriptStorageNotifierProvider extends AutoDisposeNotifierProviderImpl<
   Map<String, String> runNotifierBuild(
     covariant AiscriptStorageNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -139,8 +132,11 @@ class AiscriptStorageNotifierProvider extends AutoDisposeNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeNotifierProviderElement<AiscriptStorageNotifier,
-      Map<String, String>> createElement() {
+  AutoDisposeNotifierProviderElement<
+    AiscriptStorageNotifier,
+    Map<String, String>
+  >
+  createElement() {
     return _AiscriptStorageNotifierProviderElement(this);
   }
 
@@ -167,12 +163,17 @@ mixin AiscriptStorageNotifierRef
 }
 
 class _AiscriptStorageNotifierProviderElement
-    extends AutoDisposeNotifierProviderElement<AiscriptStorageNotifier,
-        Map<String, String>> with AiscriptStorageNotifierRef {
+    extends
+        AutoDisposeNotifierProviderElement<
+          AiscriptStorageNotifier,
+          Map<String, String>
+        >
+    with AiscriptStorageNotifierRef {
   _AiscriptStorageNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as AiscriptStorageNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

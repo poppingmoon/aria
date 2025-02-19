@@ -147,6 +147,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get noteDoubleTapAction => 'ノートをダブルタップしたときの動作';
 	@override String get noteFooterSize => 'アクションボタンのサイズ';
 	@override String get noteLongPressAction => 'ノートを長押ししたときの動作';
+	@override String get noteScheduled => 'ノートが予約されました';
 	@override String get noteTapAction => 'ノートをタップしたときの動作';
 	@override String get notesAfterRenotes => 'リノート直後のノート';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
@@ -190,6 +191,10 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get reset => 'リセット';
 	@override String get rotate => '回転';
 	@override String get scale => '拡大';
+	@override String get schedule => '予約';
+	@override String get scheduledNoteError => '予約済みのノートの投稿に失敗しました';
+	@override String get scheduledNotePosted => '予約済みのノートが投稿されました';
+	@override String get scheduledNotes => '予約済みのノート';
 	@override String get selectIcon => 'アイコンを選択';
 	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
 		user,
@@ -255,6 +260,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get vibrateNote => 'ノートを受信したときに振動する';
 	@override String get vibrateNotification => '通知を受信したときに振動する';
 	@override String get webBrowser => 'ウェブブラウザ';
+	@override String willBePostedOn({required Object date}) => '${date}に投稿されます';
 }
 
 // Path: misskey
@@ -270,6 +276,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name}は、オープンソースのプラットフォーム<b>Misskey</b>のサーバーのひとつです。';
 	@override String monthAndDay({required Object month, required Object day}) => '${month}月 ${day}日';
 	@override String get search => '検索';
+	@override String get reset => 'リセット';
 	@override String get notifications => '通知';
 	@override String get username => 'ユーザー名';
 	@override String get password => 'パスワード';
@@ -313,6 +320,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'ピン留め解除';
 	@override String get copyContent => '内容をコピー';
 	@override String get copyLink => 'リンクをコピー';
+	@override String get copyRemoteLink => 'リモートのリンクをコピー';
 	@override String get copyLinkRenote => 'リノートのリンクをコピー';
 	@override String get delete => '削除';
 	@override String get deleteAndEdit => '削除して編集';
@@ -951,11 +959,13 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get wordMute => 'ワードミュート';
 	@override String get wordMuteDescription => '指定した語句を含むノートを最小化します。最小化されたノートをクリックすることで表示することができます。';
 	@override String get hardWordMute => 'ハードワードミュート';
+	@override String get showMutedWord => 'ミュートされたワードを表示';
 	@override String get hardWordMuteDescription => '指定した語句を含むノートを隠します。ワードミュートとは異なり、ノートは完全に表示されなくなります。';
 	@override String get regexpError => '正規表現エラー';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab}ワードミュートの${line}行目の正規表現にエラーが発生しました:';
 	@override String get instanceMute => 'サーバーミュート';
 	@override String userSaysSomething({required Object name}) => '${name}が何かを言いました';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name}が「${word}」について何かを言いました';
 	@override String get makeActive => 'アクティブにする';
 	@override String get display => '表示';
 	@override String get copy => 'コピー';
@@ -1305,7 +1315,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get cannotPerformTemporary => '一時的に利用できません';
 	@override String get cannotPerformTemporaryDescription => '操作回数が制限を超過するため一時的に利用できません。しばらく時間を置いてから再度お試しください。';
 	@override String get invalidParamError => 'パラメータエラー';
-	@override String get invalidParamErrorDescription => 'リクエストパラメータに問題があります。通常これはバグですが、入力した文字数が多すぎる等の可能性もあります。';
+	@override String get invalidParamErrorDescription => 'リクエストパラメータに問題があります。通常これはバグですが、入力した文字数が多すぎる・許可されていない文字を入力している等の可能性もあります。';
 	@override String get permissionDeniedError => '操作が拒否されました';
 	@override String get permissionDeniedErrorDescription => 'このアカウントにはこの操作を行うための権限がありません。';
 	@override String get preset => 'プリセット';
@@ -1568,6 +1578,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => 'アカウントを選択してください';
 	@override String get availableRoles => '利用可能なロール';
 	@override String get acknowledgeNotesAndEnable => '注意事項を理解した上でオンにします。';
+	@override String get federationSpecified => 'このサーバーはホワイトリスト連合で運用されています。管理者が指定したサーバー以外とやり取りすることはできません。';
+	@override String get federationDisabled => 'このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。';
 	@override late final _TranslationsMisskeyAccountSettingsJaJp accountSettings_ = _TranslationsMisskeyAccountSettingsJaJp._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
@@ -1642,10 +1654,14 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingJaJp urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingJaJp._(_root);
 	@override late final _TranslationsMisskeyMediaControlsJaJp mediaControls_ = _TranslationsMisskeyMediaControlsJaJp._(_root);
 	@override late final _TranslationsMisskeyContextMenuJaJp contextMenu_ = _TranslationsMisskeyContextMenuJaJp._(_root);
+	@override late final _TranslationsMisskeyGridComponentJaJp gridComponent_ = _TranslationsMisskeyGridComponentJaJp._(_root);
+	@override late final _TranslationsMisskeyRoleSelectDialogJaJp roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogJaJp._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerJaJp customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerJaJp._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenJaJp embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenJaJp._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionJaJp selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionJaJp._(_root);
 	@override late final _TranslationsMisskeyFollowRequestJaJp followRequest_ = _TranslationsMisskeyFollowRequestJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsJaJp remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsJaJp._(_root);
+	@override late final _TranslationsMisskeyCaptchaJaJp captcha_ = _TranslationsMisskeyCaptchaJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -2745,9 +2761,6 @@ class _TranslationsMisskeyPagesJaJp extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'ページの作成';
 	@override String get editPage => 'ページの編集';
 	@override String get readPage => 'ソースを表示中';
-	@override String get created => 'ページを作成しました';
-	@override String get updated => 'ページを更新しました';
-	@override String get deleted => 'ページを削除しました';
 	@override String get pageSetting => 'ページ設定';
 	@override String get nameAlreadyExists => '指定されたページURLは既に存在しています';
 	@override String get invalidNameTitle => '不正なページURLです';
@@ -3147,6 +3160,39 @@ class _TranslationsMisskeyContextMenuJaJp extends TranslationsMisskeyContextMenu
 	@override String get native => 'ブラウザのUI';
 }
 
+// Path: misskey.gridComponent_
+class _TranslationsMisskeyGridComponentJaJp extends TranslationsMisskeyGridComponentEnUs {
+	_TranslationsMisskeyGridComponentJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyGridComponentErrorJaJp error_ = _TranslationsMisskeyGridComponentErrorJaJp._(_root);
+}
+
+// Path: misskey.roleSelectDialog_
+class _TranslationsMisskeyRoleSelectDialogJaJp extends TranslationsMisskeyRoleSelectDialogEnUs {
+	_TranslationsMisskeyRoleSelectDialogJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get notSelected => '選択されていません';
+}
+
+// Path: misskey.customEmojisManager_
+class _TranslationsMisskeyCustomEmojisManagerJaJp extends TranslationsMisskeyCustomEmojisManagerEnUs {
+	_TranslationsMisskeyCustomEmojisManagerJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonJaJp gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonJaJp._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLogsJaJp logs_ = _TranslationsMisskeyCustomEmojisManagerLogsJaJp._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteJaJp remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteJaJp._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalJaJp local_ = _TranslationsMisskeyCustomEmojisManagerLocalJaJp._(_root);
+}
+
 // Path: misskey.embedCodeGen_
 class _TranslationsMisskeyEmbedCodeGenJaJp extends TranslationsMisskeyEmbedCodeGenEnUs {
 	_TranslationsMisskeyEmbedCodeGenJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
@@ -3207,6 +3253,18 @@ class _TranslationsMisskeyRemoteLookupErrorsJaJp extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp._(_root);
+}
+
+// Path: misskey.captcha_
+class _TranslationsMisskeyCaptchaJaJp extends TranslationsMisskeyCaptchaEnUs {
+	_TranslationsMisskeyCaptchaJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get verify => 'CAPTCHAを通過してください';
+	@override String get testSiteKeyMessage => 'サイトキーとシークレットキーにテスト用の値を入力することでプレビューを確認できます。\n詳細は下記ページをご確認ください。';
+	@override late final _TranslationsMisskeyCaptchaErrorJaJp error_ = _TranslationsMisskeyCaptchaErrorJaJp._(_root);
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3852,6 +3910,79 @@ class _TranslationsMisskeyDataSaverCodeJaJp extends TranslationsMisskeyDataSaver
 	@override String get description => 'MFMなどでコードハイライト記法が使われている場合、タップするまで読み込まれなくなります。コードハイライトではハイライトする言語ごとにその定義ファイルを読み込む必要がありますが、それらが自動で読み込まれなくなるため、通信量の削減が見込めます。';
 }
 
+// Path: misskey.gridComponent_.error_
+class _TranslationsMisskeyGridComponentErrorJaJp extends TranslationsMisskeyGridComponentErrorEnUs {
+	_TranslationsMisskeyGridComponentErrorJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get requiredValue => 'この値は必須項目です';
+	@override String get columnTypeNotSupport => '正規表現によるバリデーションはtype:textのカラムのみサポートします。';
+	@override String patternNotMatch({required Object pattern}) => 'この値は${pattern}のパターンに一致しません';
+	@override String get notUnique => 'この値は一意である必要があります';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class _TranslationsMisskeyCustomEmojisManagerGridCommonJaJp extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	_TranslationsMisskeyCustomEmojisManagerGridCommonJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => '選択行をコピー';
+	@override String get copySelectionRanges => '選択範囲をコピー';
+	@override String get deleteSelectionRows => '選択行を削除';
+	@override String get deleteSelectionRanges => '選択範囲の値をクリア';
+	@override String get searchSettings => '検索設定';
+	@override String get searchSettingCaption => '検索条件を詳細に設定します。';
+	@override String get searchLimit => '表示件数';
+	@override String get sortOrder => '並び順';
+	@override String get registrationLogs => '登録ログ';
+	@override String get registrationLogsCaption => '絵文字更新・削除時のログが表示されます。更新・削除操作を行ったり、ページを遷移・リロードすると消えます。';
+	@override String get alertEmojisRegisterFailedDescription => '絵文字の更新・削除に失敗しました。詳細は登録ログをご確認ください。';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class _TranslationsMisskeyCustomEmojisManagerLogsJaJp extends TranslationsMisskeyCustomEmojisManagerLogsEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLogsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSuccessLogSwitch => '成功ログを表示';
+	@override String get failureLogNothing => '失敗ログはありません。';
+	@override String get logNothing => 'ログはありません。';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class _TranslationsMisskeyCustomEmojisManagerRemoteJaJp extends TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
+	_TranslationsMisskeyCustomEmojisManagerRemoteJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectionRowDetail => '選択行の詳細';
+	@override String get importSelectionRows => '選択行をインポート';
+	@override String get importSelectionRangesRows => '選択範囲の行をインポート';
+	@override String get importEmojisButton => 'チェックされた絵文字をインポート';
+	@override String get confirmImportEmojisTitle => '絵文字のインポート';
+	@override String confirmImportEmojisDescription({required Object count}) => 'リモートから受信した${count}個の絵文字のインポートを行います。絵文字のライセンスに十分な注意を払ってください。実行しますか？';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalJaJp extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => '登録済み絵文字一覧';
+	@override String get tabTitleRegister => '絵文字の登録';
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListJaJp list_ = _TranslationsMisskeyCustomEmojisManagerLocalListJaJp._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterJaJp register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterJaJp._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
 class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaJp extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
@@ -3915,6 +4046,18 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp extends Translation
 	// Translations
 	@override String get title => '見つかりません';
 	@override String get description => '要求されたリソースは見つかりませんでした。URIをもう一度お確かめください。';
+}
+
+// Path: misskey.captcha_.error_
+class _TranslationsMisskeyCaptchaErrorJaJp extends TranslationsMisskeyCaptchaErrorEnUs {
+	_TranslationsMisskeyCaptchaErrorJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedJaJp requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedJaJp verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedJaJp._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorUnknownJaJp unknown_ = _TranslationsMisskeyCaptchaErrorUnknownJaJp._(_root);
 }
 
 // Path: misskeyIO.skebStatus_.genres_
@@ -4957,6 +5100,80 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedJaJp 
 	// Translations
 	@override String get title => 'テーマのインストールに失敗しました';
 	@override String get description => 'テーマのインストール中に問題が発生しました。もう一度お試しください。エラーの詳細はJavascriptコンソールをご覧ください。';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListJaJp extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => '登録された絵文字はありません。';
+	@override String get markAsDeleteTargetRows => '選択行を削除対象にする';
+	@override String get markAsDeleteTargetRanges => '選択範囲の行を削除対象にする';
+	@override String get alertUpdateEmojisNothingDescription => '変更された絵文字はありません。';
+	@override String get alertDeleteEmojisNothingDescription => '削除対象の絵文字はありません。';
+	@override String get confirmMovePage => 'ページを移動しますか？';
+	@override String get confirmChangeView => '表示を変更しますか？';
+	@override String confirmUpdateEmojisDescription({required Object count}) => '${count}個の絵文字を更新します。実行しますか？';
+	@override String confirmDeleteEmojisDescription({required Object count}) => 'チェックがつけられた${count}個の絵文字を削除します。実行しますか？';
+	@override String get confirmResetDescription => '今までに加えた変更がすべてリセットされます。';
+	@override String get confirmMovePageDesciption => 'このページの絵文字に変更が加えられています。\n保存せずにこのままページを移動すると、このページで加えた変更はすべて破棄されます。';
+	@override String get dialogSelectRoleTitle => '絵文字に設定されたロールで検索';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class _TranslationsMisskeyCustomEmojisManagerLocalRegisterJaJp extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalRegisterJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get uploadSettingTitle => 'アップロード設定';
+	@override String get uploadSettingDescription => 'この画面で絵文字アップロードを行う際の動作を設定できます。';
+	@override String get directoryToCategoryLabel => 'ディレクトリ名を"category"に入力する';
+	@override String get directoryToCategoryCaption => 'ディレクトリをドラッグ・ドロップした時に、ディレクトリ名を"category"に入力します。';
+	@override String get emojiInputAreaCaption => 'いずれかの方法で登録する絵文字を選択してください。';
+	@override String get emojiInputAreaList1 => 'この枠に画像ファイルまたはディレクトリをドラッグ＆ドロップ';
+	@override String get emojiInputAreaList2 => 'このリンクをクリックしてPCから選択する';
+	@override String get emojiInputAreaList3 => 'このリンクをクリックしてドライブから選択する';
+	@override String confirmRegisterEmojisDescription({required Object count}) => 'リストに表示されている絵文字を新たなカスタム絵文字として登録します。よろしいですか？（負荷を避けるため、一度の操作で登録可能な絵文字は${count}件までです）';
+	@override String get confirmClearEmojisDescription => '編集内容を破棄し、リストに表示されている絵文字をクリアします。よろしいですか？';
+	@override String confirmUploadEmojisDescription({required Object count}) => 'ドラッグ＆ドロップされた${count}個のファイルをドライブにアップロードします。実行しますか？';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class _TranslationsMisskeyCaptchaErrorRequestFailedJaJp extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorRequestFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHAのリクエストに失敗しました';
+	@override String get text => 'しばらく後に実行するか、設定をもう一度ご確認ください。';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class _TranslationsMisskeyCaptchaErrorVerificationFailedJaJp extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorVerificationFailedJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHAの検証に失敗しました';
+	@override String get text => '設定が正しいかどうかもう一度確認ください。';
+}
+
+// Path: misskey.captcha_.error_.unknown_
+class _TranslationsMisskeyCaptchaErrorUnknownJaJp extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
+	_TranslationsMisskeyCaptchaErrorUnknownJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHAエラー';
+	@override String get text => '想定外のエラーが発生しました。';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

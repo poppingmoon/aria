@@ -12,7 +12,8 @@ part of 'mfm_config.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$MfmConfig {
@@ -34,12 +35,13 @@ abstract class $MfmConfigCopyWith<$Res> {
   factory $MfmConfigCopyWith(MfmConfig value, $Res Function(MfmConfig) then) =
       _$MfmConfigCopyWithImpl<$Res, MfmConfig>;
   @useResult
-  $Res call(
-      {TextStyle style,
-      bool disableNyaize,
-      double scale,
-      double opacity,
-      TextAlign? align});
+  $Res call({
+    TextStyle style,
+    bool disableNyaize,
+    double scale,
+    double opacity,
+    TextAlign? align,
+  });
 }
 
 /// @nodoc
@@ -63,28 +65,36 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
     Object? opacity = null,
     Object? align = freezed,
   }) {
-    return _then(_value.copyWith(
-      style: null == style
-          ? _value.style
-          : style // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      disableNyaize: null == disableNyaize
-          ? _value.disableNyaize
-          : disableNyaize // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      opacity: null == opacity
-          ? _value.opacity
-          : opacity // ignore: cast_nullable_to_non_nullable
-              as double,
-      align: freezed == align
-          ? _value.align
-          : align // ignore: cast_nullable_to_non_nullable
-              as TextAlign?,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            style:
+                null == style
+                    ? _value.style
+                    : style // ignore: cast_nullable_to_non_nullable
+                        as TextStyle,
+            disableNyaize:
+                null == disableNyaize
+                    ? _value.disableNyaize
+                    : disableNyaize // ignore: cast_nullable_to_non_nullable
+                        as bool,
+            scale:
+                null == scale
+                    ? _value.scale
+                    : scale // ignore: cast_nullable_to_non_nullable
+                        as double,
+            opacity:
+                null == opacity
+                    ? _value.opacity
+                    : opacity // ignore: cast_nullable_to_non_nullable
+                        as double,
+            align:
+                freezed == align
+                    ? _value.align
+                    : align // ignore: cast_nullable_to_non_nullable
+                        as TextAlign?,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -92,16 +102,18 @@ class _$MfmConfigCopyWithImpl<$Res, $Val extends MfmConfig>
 abstract class _$$MfmConfigImplCopyWith<$Res>
     implements $MfmConfigCopyWith<$Res> {
   factory _$$MfmConfigImplCopyWith(
-          _$MfmConfigImpl value, $Res Function(_$MfmConfigImpl) then) =
-      __$$MfmConfigImplCopyWithImpl<$Res>;
+    _$MfmConfigImpl value,
+    $Res Function(_$MfmConfigImpl) then,
+  ) = __$$MfmConfigImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {TextStyle style,
-      bool disableNyaize,
-      double scale,
-      double opacity,
-      TextAlign? align});
+  $Res call({
+    TextStyle style,
+    bool disableNyaize,
+    double scale,
+    double opacity,
+    TextAlign? align,
+  });
 }
 
 /// @nodoc
@@ -109,8 +121,9 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
     extends _$MfmConfigCopyWithImpl<$Res, _$MfmConfigImpl>
     implements _$$MfmConfigImplCopyWith<$Res> {
   __$$MfmConfigImplCopyWithImpl(
-      _$MfmConfigImpl _value, $Res Function(_$MfmConfigImpl) _then)
-      : super(_value, _then);
+    _$MfmConfigImpl _value,
+    $Res Function(_$MfmConfigImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of MfmConfig
   /// with the given fields replaced by the non-null parameter values.
@@ -123,40 +136,48 @@ class __$$MfmConfigImplCopyWithImpl<$Res>
     Object? opacity = null,
     Object? align = freezed,
   }) {
-    return _then(_$MfmConfigImpl(
-      style: null == style
-          ? _value.style
-          : style // ignore: cast_nullable_to_non_nullable
-              as TextStyle,
-      disableNyaize: null == disableNyaize
-          ? _value.disableNyaize
-          : disableNyaize // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scale: null == scale
-          ? _value.scale
-          : scale // ignore: cast_nullable_to_non_nullable
-              as double,
-      opacity: null == opacity
-          ? _value.opacity
-          : opacity // ignore: cast_nullable_to_non_nullable
-              as double,
-      align: freezed == align
-          ? _value.align
-          : align // ignore: cast_nullable_to_non_nullable
-              as TextAlign?,
-    ));
+    return _then(
+      _$MfmConfigImpl(
+        style:
+            null == style
+                ? _value.style
+                : style // ignore: cast_nullable_to_non_nullable
+                    as TextStyle,
+        disableNyaize:
+            null == disableNyaize
+                ? _value.disableNyaize
+                : disableNyaize // ignore: cast_nullable_to_non_nullable
+                    as bool,
+        scale:
+            null == scale
+                ? _value.scale
+                : scale // ignore: cast_nullable_to_non_nullable
+                    as double,
+        opacity:
+            null == opacity
+                ? _value.opacity
+                : opacity // ignore: cast_nullable_to_non_nullable
+                    as double,
+        align:
+            freezed == align
+                ? _value.align
+                : align // ignore: cast_nullable_to_non_nullable
+                    as TextAlign?,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$MfmConfigImpl implements _MfmConfig {
-  const _$MfmConfigImpl(
-      {required this.style,
-      this.disableNyaize = false,
-      this.scale = 1.0,
-      this.opacity = 1.0,
-      this.align});
+  const _$MfmConfigImpl({
+    required this.style,
+    this.disableNyaize = false,
+    this.scale = 1.0,
+    this.opacity = 1.0,
+    this.align,
+  });
 
   @override
   final TextStyle style;
@@ -204,12 +225,13 @@ class _$MfmConfigImpl implements _MfmConfig {
 }
 
 abstract class _MfmConfig implements MfmConfig {
-  const factory _MfmConfig(
-      {required final TextStyle style,
-      final bool disableNyaize,
-      final double scale,
-      final double opacity,
-      final TextAlign? align}) = _$MfmConfigImpl;
+  const factory _MfmConfig({
+    required final TextStyle style,
+    final bool disableNyaize,
+    final double scale,
+    final double opacity,
+    final TextAlign? align,
+  }) = _$MfmConfigImpl;
 
   @override
   TextStyle get style;

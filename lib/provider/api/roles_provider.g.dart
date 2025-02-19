@@ -39,21 +39,13 @@ class RolesFamily extends Family<AsyncValue<List<RolesListResponse>>> {
   const RolesFamily();
 
   /// See also [roles].
-  RolesProvider call(
-    Account account,
-  ) {
-    return RolesProvider(
-      account,
-    );
+  RolesProvider call(Account account) {
+    return RolesProvider(account);
   }
 
   @override
-  RolesProvider getProviderOverride(
-    covariant RolesProvider provider,
-  ) {
-    return call(
-      provider.account,
-    );
+  RolesProvider getProviderOverride(covariant RolesProvider provider) {
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,17 @@ class RolesFamily extends Family<AsyncValue<List<RolesListResponse>>> {
 /// See also [roles].
 class RolesProvider extends AutoDisposeFutureProvider<List<RolesListResponse>> {
   /// See also [roles].
-  RolesProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => roles(
-            ref as RolesRef,
-            account,
-          ),
-          from: rolesProvider,
-          name: r'rolesProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$rolesHash,
-          dependencies: RolesFamily._dependencies,
-          allTransitiveDependencies: RolesFamily._allTransitiveDependencies,
-          account: account,
-        );
+  RolesProvider(Account account)
+    : this._internal(
+        (ref) => roles(ref as RolesRef, account),
+        from: rolesProvider,
+        name: r'rolesProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product') ? null : _$rolesHash,
+        dependencies: RolesFamily._dependencies,
+        allTransitiveDependencies: RolesFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   RolesProvider._internal(
     super._createNotifier, {
@@ -156,5 +142,6 @@ class _RolesProviderElement
   @override
   Account get account => (origin as RolesProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

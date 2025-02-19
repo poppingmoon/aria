@@ -87,6 +87,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} è uno dei servizi (chiamati istanze) che utilizzano la piattaforma open source <b>Misskey</b>.';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
 	@override String get search => 'Cerca';
+	@override String get reset => 'Ripristinare';
 	@override String get notifications => 'Notifiche';
 	@override String get username => 'Nome utente';
 	@override String get password => 'Password';
@@ -130,6 +131,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Non fissare sul profilo';
 	@override String get copyContent => 'Copia il contenuto';
 	@override String get copyLink => 'Copia il link';
+	@override String get copyRemoteLink => 'Copia link remoto';
 	@override String get copyLinkRenote => 'Copia collegamento alla Rinota';
 	@override String get delete => 'Elimina';
 	@override String get deleteAndEdit => 'Elimina e modifica';
@@ -187,7 +189,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get defaultNoteVisibility => 'Privacy predefinita delle note';
 	@override String get follow => 'Segui';
 	@override String get followRequest => 'Richiesta di follow';
-	@override String get followRequests => 'Richieste di follow';
+	@override String get followRequests => 'Relazioni';
 	@override String get unfollow => 'Togli Following';
 	@override String get followRequestPending => 'Richiesta in approvazione';
 	@override String get enterEmoji => 'Inserisci emoji';
@@ -617,7 +619,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get fontSize => 'Dimensione carattere';
 	@override String get mediaListWithOneImageAppearance => 'Altezza dell\'elenco media con una sola immagine ';
 	@override String limitTo({required Object x}) => 'Limita a ${x}';
-	@override String get noFollowRequests => 'Non hai alcuna richiesta di follow';
+	@override String get noFollowRequests => 'Non ci sono richieste di relazione';
 	@override String get openImageInNewTab => 'Apri le immagini in un nuovo tab';
 	@override String get dashboard => 'Pannello di controllo';
 	@override String get local => 'Locale';
@@ -768,11 +770,13 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get wordMute => 'Filtri parole';
 	@override String get wordMuteDescription => 'Contrae le Note con la parola o la frase specificata. Permette di espandere le Note, cliccandole.';
 	@override String get hardWordMute => 'Filtro parole forte';
+	@override String get showMutedWord => 'Elenca le parole silenziate';
 	@override String get hardWordMuteDescription => 'Nasconde le Note con la parola o la frase specificata. A differenza delle parole silenziate, la Nota non verrà federata.';
 	@override String get regexpError => 'errore regex';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Si è verificato un errore nell\'espressione regolare alla riga ${line} della parola muta ${tab}:';
 	@override String get instanceMute => 'Silenziare l\'istanza';
 	@override String userSaysSomething({required Object name}) => '${name} ha detto qualcosa';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} ha Notato a riguardo di "${word}"';
 	@override String get makeActive => 'Attiva';
 	@override String get display => 'Visualizza';
 	@override String get copy => 'Copia';
@@ -1385,6 +1389,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => 'Per favore, seleziona un profilo';
 	@override String get availableRoles => 'Ruoli disponibili';
 	@override String get acknowledgeNotesAndEnable => 'Attivare dopo averne compreso il comportamento.';
+	@override String get federationSpecified => 'Questo server è federato solo con istanze specifiche del Fediverso. Puoi interagire solo con quelle scelte dall\'amministrazione.';
+	@override String get federationDisabled => 'Questo server ha la federazione disabilitata. Non puoi interagire con profili provenienti da altri server.';
 	@override late final _TranslationsMisskeyAccountSettingsItIt accountSettings_ = _TranslationsMisskeyAccountSettingsItIt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportItIt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportItIt._(_root);
 	@override late final _TranslationsMisskeyDeliveryItIt delivery_ = _TranslationsMisskeyDeliveryItIt._(_root);
@@ -1459,10 +1465,14 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingItIt urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingItIt._(_root);
 	@override late final _TranslationsMisskeyMediaControlsItIt mediaControls_ = _TranslationsMisskeyMediaControlsItIt._(_root);
 	@override late final _TranslationsMisskeyContextMenuItIt contextMenu_ = _TranslationsMisskeyContextMenuItIt._(_root);
+	@override late final _TranslationsMisskeyGridComponentItIt gridComponent_ = _TranslationsMisskeyGridComponentItIt._(_root);
+	@override late final _TranslationsMisskeyRoleSelectDialogItIt roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogItIt._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerItIt customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerItIt._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenItIt embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenItIt._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionItIt selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionItIt._(_root);
 	@override late final _TranslationsMisskeyFollowRequestItIt followRequest_ = _TranslationsMisskeyFollowRequestItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsItIt remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsItIt._(_root);
+	@override late final _TranslationsMisskeyCaptchaItIt captcha_ = _TranslationsMisskeyCaptchaItIt._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -1958,7 +1968,7 @@ class _TranslationsMisskeyChannelItIt extends TranslationsMisskeyChannelEnUs {
 
 	// Translations
 	@override String get create => 'Nuovo canale';
-	@override String get edit => 'Gerisci canale';
+	@override String get edit => 'Modifica il canale';
 	@override String get setBanner => 'Scegli intestazione';
 	@override String get removeBanner => 'Rimuovi intestazione';
 	@override String get featured => 'Popolari nel canale';
@@ -2018,7 +2028,7 @@ class _TranslationsMisskeyThemeItIt extends TranslationsMisskeyThemeEnUs {
 	// Translations
 	@override String get explore => 'Esplora temi';
 	@override String get install => 'Installa un tema';
-	@override String get manage => 'Gestione temi';
+	@override String get manage => 'Gestione dei temi';
 	@override String get code => 'Codice tema';
 	@override String get description => 'Descrizione';
 	@override String installed({required Object name}) => '${name} è installato';
@@ -2182,12 +2192,12 @@ class _TranslationsMisskeyPermissionsItIt extends TranslationsMisskeyPermissions
 	@override String get readMessaging => 'Visualizzare la chat';
 	@override String get writeMessaging => 'Gestire la chat';
 	@override String get readMutes => 'Vedi i profili silenziati';
-	@override String get writeMutes => 'Gestisci i profili silenziati';
+	@override String get writeMutes => 'Gestione dei profili silenziati';
 	@override String get writeNotes => 'Creare / Eliminare note';
 	@override String get readNotifications => 'Visualizzare notifiche';
-	@override String get writeNotifications => 'Gestire notifiche';
+	@override String get writeNotifications => 'Gestione delle notifiche';
 	@override String get readReactions => 'Vedi reazioni';
-	@override String get writeReactions => 'Gerisci reazioni';
+	@override String get writeReactions => 'Gestione delle reazioni';
 	@override String get writeVotes => 'Votare';
 	@override String get readPages => 'Visualizzare pagine';
 	@override String get writePages => 'Gestire pagine';
@@ -2196,7 +2206,7 @@ class _TranslationsMisskeyPermissionsItIt extends TranslationsMisskeyPermissions
 	@override String get readUserGroups => 'Vedere i gruppi di utenti';
 	@override String get writeUserGroups => 'Gestire i gruppi di utenti';
 	@override String get readChannels => 'Visualizza canali';
-	@override String get writeChannels => 'Gerisci canali';
+	@override String get writeChannels => 'Gestione dei canali';
 	@override String get readGallery => 'Visualizza la galleria.';
 	@override String get writeGallery => 'Gestione della galleria';
 	@override String get readGalleryLikes => 'Visualizza i contenuti della galleria.';
@@ -2552,9 +2562,6 @@ class _TranslationsMisskeyPagesItIt extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Crea pagina';
 	@override String get editPage => 'Modifica pagina';
 	@override String get readPage => 'Visualizzando fonte ';
-	@override String get created => 'Pagina creata!';
-	@override String get updated => 'Pagina aggiornata con successo!';
-	@override String get deleted => 'Pagina eliminata';
 	@override String get pageSetting => 'Impostazioni pagina';
 	@override String get nameAlreadyExists => 'Esiste già una pagina con lo stesso URL.';
 	@override String get invalidNameTitle => 'L\'URL di pagina definito non è valido';
@@ -2954,6 +2961,39 @@ class _TranslationsMisskeyContextMenuItIt extends TranslationsMisskeyContextMenu
 	@override String get native => 'Interfaccia utente del browser';
 }
 
+// Path: misskey.gridComponent_
+class _TranslationsMisskeyGridComponentItIt extends TranslationsMisskeyGridComponentEnUs {
+	_TranslationsMisskeyGridComponentItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyGridComponentErrorItIt error_ = _TranslationsMisskeyGridComponentErrorItIt._(_root);
+}
+
+// Path: misskey.roleSelectDialog_
+class _TranslationsMisskeyRoleSelectDialogItIt extends TranslationsMisskeyRoleSelectDialogEnUs {
+	_TranslationsMisskeyRoleSelectDialogItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get notSelected => 'Niente selezioato';
+}
+
+// Path: misskey.customEmojisManager_
+class _TranslationsMisskeyCustomEmojisManagerItIt extends TranslationsMisskeyCustomEmojisManagerEnUs {
+	_TranslationsMisskeyCustomEmojisManagerItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonItIt gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonItIt._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLogsItIt logs_ = _TranslationsMisskeyCustomEmojisManagerLogsItIt._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteItIt remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteItIt._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalItIt local_ = _TranslationsMisskeyCustomEmojisManagerLocalItIt._(_root);
+}
+
 // Path: misskey.embedCodeGen_
 class _TranslationsMisskeyEmbedCodeGenItIt extends TranslationsMisskeyEmbedCodeGenEnUs {
 	_TranslationsMisskeyEmbedCodeGenItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -3014,6 +3054,18 @@ class _TranslationsMisskeyRemoteLookupErrorsItIt extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidItIt responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchItIt responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectItIt noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectItIt._(_root);
+}
+
+// Path: misskey.captcha_
+class _TranslationsMisskeyCaptchaItIt extends TranslationsMisskeyCaptchaEnUs {
+	_TranslationsMisskeyCaptchaItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get verify => 'Per favore, controlla la verifica CAPTCHA';
+	@override String get testSiteKeyMessage => 'Puoi provare l\'anteprima inserendo valori di test, sia per la chiave del sito che per la chiave segreta.\nSi prega di controllare la pagina qui sotto per i dettagli.';
+	@override late final _TranslationsMisskeyCaptchaErrorItIt error_ = _TranslationsMisskeyCaptchaErrorItIt._(_root);
 }
 
 // Path: misskey.delivery_.type_
@@ -3643,6 +3695,79 @@ class _TranslationsMisskeyDataSaverCodeItIt extends TranslationsMisskeyDataSaver
 	@override String get description => 'Impedire che il codice sorgente sia automaticamente evidenziato. Evidenziare il codice richiede il caricamento di un file per ogni linguaggio. Puoi evidenziare soltanto il codice che intendi leggere e ridurre il traffico inutilizzato.';
 }
 
+// Path: misskey.gridComponent_.error_
+class _TranslationsMisskeyGridComponentErrorItIt extends TranslationsMisskeyGridComponentErrorEnUs {
+	_TranslationsMisskeyGridComponentErrorItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get requiredValue => 'Campo obbligatorio';
+	@override String get columnTypeNotSupport => 'Solo le colonne type:text permettono la convalida delle Espresioni Regolari';
+	@override String patternNotMatch({required Object pattern}) => 'Il valore non coincide con ${pattern}';
+	@override String get notUnique => 'Il valore deve essere univoco';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class _TranslationsMisskeyCustomEmojisManagerGridCommonItIt extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	_TranslationsMisskeyCustomEmojisManagerGridCommonItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => 'Copia le righe selezionate';
+	@override String get copySelectionRanges => 'Copia l\'intervallo selezionato';
+	@override String get deleteSelectionRows => 'Elimina le righe selezionate';
+	@override String get deleteSelectionRanges => 'Elimina le righe nell\'intervallo selezionato';
+	@override String get searchSettings => 'Impostazioni di ricerca';
+	@override String get searchSettingCaption => 'Imposta condizioni di ricerca dettagliate.';
+	@override String get searchLimit => 'Risultati visualizzati';
+	@override String get sortOrder => 'Ordine';
+	@override String get registrationLogs => 'Storico della registrazione';
+	@override String get registrationLogsCaption => 'Lo storico verrà visualizzato in base alla attività sulle emoji. Scompare quando si esegue un\'operazione di aggiornamento/eliminazione o si modifica/ricarica la pagina.';
+	@override String get alertEmojisRegisterFailedDescription => 'Attenzione, è impossibile modificare la emoji. Si prega di controllare lo storico per ulteriori dettagli.';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class _TranslationsMisskeyCustomEmojisManagerLogsItIt extends TranslationsMisskeyCustomEmojisManagerLogsEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLogsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSuccessLogSwitch => 'Mostra le azioni a buon fine';
+	@override String get failureLogNothing => 'Non ci sono errori nello storico delle emoji';
+	@override String get logNothing => 'Lo storico è vuoto.';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class _TranslationsMisskeyCustomEmojisManagerRemoteItIt extends TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
+	_TranslationsMisskeyCustomEmojisManagerRemoteItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectionRowDetail => 'Dettagli della riga selezionata';
+	@override String get importSelectionRows => 'Importa le righe selezionate';
+	@override String get importSelectionRangesRows => 'Importa le righe nell\'intervallo selezionato';
+	@override String get importEmojisButton => 'Importa le emoji selezionate';
+	@override String get confirmImportEmojisTitle => 'Importazione emoji';
+	@override String confirmImportEmojisDescription({required Object count}) => 'Importazione di ${count} emoji ricevute da remoto. Si prega di prestare molta attenzione al tipo di licenza delle emoji. Vuoi confermare?';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalItIt extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => 'Elenco delle emoji registrate';
+	@override String get tabTitleRegister => 'Registrazione emoji';
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListItIt list_ = _TranslationsMisskeyCustomEmojisManagerLocalListItIt._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterItIt register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterItIt._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
 class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedItIt extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
@@ -3706,6 +3831,18 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectItIt extends Translation
 	// Translations
 	@override String get title => 'Non trovato';
 	@override String get description => 'La risorsa richiesta non è stata trovata. Verificare nuovamente la URL.';
+}
+
+// Path: misskey.captcha_.error_
+class _TranslationsMisskeyCaptchaErrorItIt extends TranslationsMisskeyCaptchaErrorEnUs {
+	_TranslationsMisskeyCaptchaErrorItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedItIt requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedItIt._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedItIt verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedItIt._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorUnknownItIt unknown_ = _TranslationsMisskeyCaptchaErrorUnknownItIt._(_root);
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -4732,6 +4869,80 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedItIt 
 	// Translations
 	@override String get title => 'Impossibile installare la variazione grafica';
 	@override String get description => 'Si è verificato un impedimento durante l\'installazione della variazione grafica. Per favore riprova e consulta la console di Javascript per ottenere dettagli aggiuntivi.';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListItIt extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => 'Non ci sono emoji registrate.';
+	@override String get markAsDeleteTargetRows => 'Selezionare le righe come eliminabili';
+	@override String get markAsDeleteTargetRanges => 'Selezionare le righe nell\'intervallo come eliminabili';
+	@override String get alertUpdateEmojisNothingDescription => 'Non ci sono emoji aggiornate.';
+	@override String get alertDeleteEmojisNothingDescription => 'Non ci sono emoji da eliminare.';
+	@override String get confirmMovePage => 'Vuoi davvero spostare la pagina?';
+	@override String get confirmChangeView => 'Vuoi davvero cambiare la vista?';
+	@override String confirmUpdateEmojisDescription({required Object count}) => 'Aggiornamento di ${count} emoji. Vuoi davvero continuare?';
+	@override String confirmDeleteEmojisDescription({required Object count}) => 'Eliminazione delle ${count} emoji selezionate. Vuoi davvero continuare?';
+	@override String get confirmResetDescription => 'Verranno ripristinate tutte le modifiche apportate finora.';
+	@override String get confirmMovePageDesciption => 'Sono state modificate le emoji in questa pagina.\nUscendo senza salvare, tutte le modifiche verranno ignorate.';
+	@override String get dialogSelectRoleTitle => 'Cerca emoji per ruolo';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class _TranslationsMisskeyCustomEmojisManagerLocalRegisterItIt extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalRegisterItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get uploadSettingTitle => 'Caricamento impostazioni';
+	@override String get uploadSettingDescription => 'Questa schermata ti permette di scegliere il comportamento durante il caricamento delle emoji.';
+	@override String get directoryToCategoryLabel => 'Inseriscile in una cartella omonima alla categoria';
+	@override String get directoryToCategoryCaption => 'Crea il campo categoria in base alla cartella.';
+	@override String get emojiInputAreaCaption => 'Seleziona l\'emoji da registrare utilizzando uno dei metodi.';
+	@override String get emojiInputAreaList1 => 'Trascina una immagine o una cartella in quest\'area';
+	@override String get emojiInputAreaList2 => 'Clicca per scegliere file dal tuo dispositivo';
+	@override String get emojiInputAreaList3 => 'Clicca per selezionare dal Drive';
+	@override String confirmRegisterEmojisDescription({required Object count}) => 'Registrazione delle emoji elencate come nuove emoji personalizzate. Vuoi davvero procedere? (Per evitare sovraccarichi, puoi registrare al massimo ${count} emoji per volta)';
+	@override String get confirmClearEmojisDescription => 'Annullare le modifiche e cancella le emoji nell\'elenco. Confermi?';
+	@override String confirmUploadEmojisDescription({required Object count}) => 'Caricamento sul Drive di ${count} file locali. Vuoi davvero procedere?';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class _TranslationsMisskeyCaptchaErrorRequestFailedItIt extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorRequestFailedItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Errore durante la richiesta del CAPTCHA';
+	@override String get text => 'Riprova più tardi o controlla nuovamente le impostazioni.';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class _TranslationsMisskeyCaptchaErrorVerificationFailedItIt extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorVerificationFailedItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Convalida CAPTCHA non riuscita';
+	@override String get text => 'Si prega di verificare nuovamente se le impostazioni sono corrette.';
+}
+
+// Path: misskey.captcha_.error_.unknown_
+class _TranslationsMisskeyCaptchaErrorUnknownItIt extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
+	_TranslationsMisskeyCaptchaErrorUnknownItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Errore CAPTCHA';
+	@override String get text => 'Si è verificato un errore imprevisto.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

@@ -45,9 +45,10 @@ String _$playbackStateHash() => r'0aa248311c0295f344cc3b89b8251a73c6a4b23f';
 final playbackStateProvider = AutoDisposeStreamProvider<PlaybackState>.internal(
   playbackState,
   name: r'playbackStateProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$playbackStateHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$playbackStateHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

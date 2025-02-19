@@ -34,10 +34,7 @@ abstract class _$ChannelNotifier
   late final Account account;
   late final String channelId;
 
-  FutureOr<CommunityChannel> build(
-    Account account,
-    String channelId,
-  );
+  FutureOr<CommunityChannel> build(Account account, String channelId);
 }
 
 /// See also [ChannelNotifier].
@@ -50,24 +47,15 @@ class ChannelNotifierFamily extends Family<AsyncValue<CommunityChannel>> {
   const ChannelNotifierFamily();
 
   /// See also [ChannelNotifier].
-  ChannelNotifierProvider call(
-    Account account,
-    String channelId,
-  ) {
-    return ChannelNotifierProvider(
-      account,
-      channelId,
-    );
+  ChannelNotifierProvider call(Account account, String channelId) {
+    return ChannelNotifierProvider(account, channelId);
   }
 
   @override
   ChannelNotifierProvider getProviderOverride(
     covariant ChannelNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.channelId,
-    );
+    return call(provider.account, provider.channelId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -86,28 +74,31 @@ class ChannelNotifierFamily extends Family<AsyncValue<CommunityChannel>> {
 }
 
 /// See also [ChannelNotifier].
-class ChannelNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    ChannelNotifier, CommunityChannel> {
+class ChannelNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ChannelNotifier,
+          CommunityChannel
+        > {
   /// See also [ChannelNotifier].
-  ChannelNotifierProvider(
-    Account account,
-    String channelId,
-  ) : this._internal(
-          () => ChannelNotifier()
-            ..account = account
-            ..channelId = channelId,
-          from: channelNotifierProvider,
-          name: r'channelNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$channelNotifierHash,
-          dependencies: ChannelNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ChannelNotifierFamily._allTransitiveDependencies,
-          account: account,
-          channelId: channelId,
-        );
+  ChannelNotifierProvider(Account account, String channelId)
+    : this._internal(
+        () =>
+            ChannelNotifier()
+              ..account = account
+              ..channelId = channelId,
+        from: channelNotifierProvider,
+        name: r'channelNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$channelNotifierHash,
+        dependencies: ChannelNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ChannelNotifierFamily._allTransitiveDependencies,
+        account: account,
+        channelId: channelId,
+      );
 
   ChannelNotifierProvider._internal(
     super._createNotifier, {
@@ -127,10 +118,7 @@ class ChannelNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<CommunityChannel> runNotifierBuild(
     covariant ChannelNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      channelId,
-    );
+    return notifier.build(account, channelId);
   }
 
   @override
@@ -138,9 +126,10 @@ class ChannelNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: ChannelNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..channelId = channelId,
+        () =>
+            create()
+              ..account = account
+              ..channelId = channelId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,7 +143,7 @@ class ChannelNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
   @override
   AutoDisposeAsyncNotifierProviderElement<ChannelNotifier, CommunityChannel>
-      createElement() {
+  createElement() {
     return _ChannelNotifierProviderElement(this);
   }
 
@@ -187,8 +176,12 @@ mixin ChannelNotifierRef
 }
 
 class _ChannelNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ChannelNotifier,
-        CommunityChannel> with ChannelNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ChannelNotifier,
+          CommunityChannel
+        >
+    with ChannelNotifierRef {
   _ChannelNotifierProviderElement(super.provider);
 
   @override
@@ -196,5 +189,6 @@ class _ChannelNotifierProviderElement
   @override
   String get channelId => (origin as ChannelNotifierProvider).channelId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

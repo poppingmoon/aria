@@ -13,9 +13,10 @@ String _$apnsPushConnectorHash() => r'045174b8a22cf4f125e76bc9707c0b7eaeb53ce3';
 final apnsPushConnectorProvider = Provider<ApnsPushConnectorOnly>.internal(
   apnsPushConnector,
   name: r'apnsPushConnectorProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$apnsPushConnectorHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$apnsPushConnectorHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

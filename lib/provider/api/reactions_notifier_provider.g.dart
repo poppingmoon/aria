@@ -29,8 +29,11 @@ class _SystemHash {
   }
 }
 
-abstract class _$ReactionsNotifier extends BuildlessAutoDisposeAsyncNotifier<
-    PaginationState<NotesReactionsResponse>> {
+abstract class _$ReactionsNotifier
+    extends
+        BuildlessAutoDisposeAsyncNotifier<
+          PaginationState<NotesReactionsResponse>
+        > {
   late final Account account;
   late final String noteId;
   late final String reaction;
@@ -58,22 +61,14 @@ class ReactionsNotifierFamily
     String noteId,
     String reaction,
   ) {
-    return ReactionsNotifierProvider(
-      account,
-      noteId,
-      reaction,
-    );
+    return ReactionsNotifierProvider(account, noteId, reaction);
   }
 
   @override
   ReactionsNotifierProvider getProviderOverride(
     covariant ReactionsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.noteId,
-      provider.reaction,
-    );
+    return call(provider.account, provider.noteId, provider.reaction);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -92,31 +87,33 @@ class ReactionsNotifierFamily
 }
 
 /// See also [ReactionsNotifier].
-class ReactionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    ReactionsNotifier, PaginationState<NotesReactionsResponse>> {
+class ReactionsNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          ReactionsNotifier,
+          PaginationState<NotesReactionsResponse>
+        > {
   /// See also [ReactionsNotifier].
-  ReactionsNotifierProvider(
-    Account account,
-    String noteId,
-    String reaction,
-  ) : this._internal(
-          () => ReactionsNotifier()
-            ..account = account
-            ..noteId = noteId
-            ..reaction = reaction,
-          from: reactionsNotifierProvider,
-          name: r'reactionsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$reactionsNotifierHash,
-          dependencies: ReactionsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              ReactionsNotifierFamily._allTransitiveDependencies,
-          account: account,
-          noteId: noteId,
-          reaction: reaction,
-        );
+  ReactionsNotifierProvider(Account account, String noteId, String reaction)
+    : this._internal(
+        () =>
+            ReactionsNotifier()
+              ..account = account
+              ..noteId = noteId
+              ..reaction = reaction,
+        from: reactionsNotifierProvider,
+        name: r'reactionsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$reactionsNotifierHash,
+        dependencies: ReactionsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            ReactionsNotifierFamily._allTransitiveDependencies,
+        account: account,
+        noteId: noteId,
+        reaction: reaction,
+      );
 
   ReactionsNotifierProvider._internal(
     super._createNotifier, {
@@ -138,11 +135,7 @@ class ReactionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<NotesReactionsResponse>> runNotifierBuild(
     covariant ReactionsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      noteId,
-      reaction,
-    );
+    return notifier.build(account, noteId, reaction);
   }
 
   @override
@@ -150,10 +143,11 @@ class ReactionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: ReactionsNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..noteId = noteId
-          ..reaction = reaction,
+        () =>
+            create()
+              ..account = account
+              ..noteId = noteId
+              ..reaction = reaction,
         from: from,
         name: null,
         dependencies: null,
@@ -167,8 +161,11 @@ class ReactionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<ReactionsNotifier,
-      PaginationState<NotesReactionsResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    ReactionsNotifier,
+    PaginationState<NotesReactionsResponse>
+  >
+  createElement() {
     return _ReactionsNotifierProviderElement(this);
   }
 
@@ -193,8 +190,11 @@ class ReactionsNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin ReactionsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<NotesReactionsResponse>> {
+mixin ReactionsNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<NotesReactionsResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -206,8 +206,12 @@ mixin ReactionsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
 }
 
 class _ReactionsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<ReactionsNotifier,
-        PaginationState<NotesReactionsResponse>> with ReactionsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          ReactionsNotifier,
+          PaginationState<NotesReactionsResponse>
+        >
+    with ReactionsNotifierRef {
   _ReactionsNotifierProviderElement(super.provider);
 
   @override
@@ -217,5 +221,6 @@ class _ReactionsNotifierProviderElement
   @override
   String get reaction => (origin as ReactionsNotifierProvider).reaction;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

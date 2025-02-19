@@ -39,24 +39,15 @@ class EmojiResponseFamily extends Family<AsyncValue<EmojiResponse>> {
   const EmojiResponseFamily();
 
   /// See also [emojiResponse].
-  EmojiResponseProvider call(
-    Account account,
-    String emojiName,
-  ) {
-    return EmojiResponseProvider(
-      account,
-      emojiName,
-    );
+  EmojiResponseProvider call(Account account, String emojiName) {
+    return EmojiResponseProvider(account, emojiName);
   }
 
   @override
   EmojiResponseProvider getProviderOverride(
     covariant EmojiResponseProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.emojiName,
-    );
+    return call(provider.account, provider.emojiName);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -77,27 +68,21 @@ class EmojiResponseFamily extends Family<AsyncValue<EmojiResponse>> {
 /// See also [emojiResponse].
 class EmojiResponseProvider extends AutoDisposeFutureProvider<EmojiResponse> {
   /// See also [emojiResponse].
-  EmojiResponseProvider(
-    Account account,
-    String emojiName,
-  ) : this._internal(
-          (ref) => emojiResponse(
-            ref as EmojiResponseRef,
-            account,
-            emojiName,
-          ),
-          from: emojiResponseProvider,
-          name: r'emojiResponseProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$emojiResponseHash,
-          dependencies: EmojiResponseFamily._dependencies,
-          allTransitiveDependencies:
-              EmojiResponseFamily._allTransitiveDependencies,
-          account: account,
-          emojiName: emojiName,
-        );
+  EmojiResponseProvider(Account account, String emojiName)
+    : this._internal(
+        (ref) => emojiResponse(ref as EmojiResponseRef, account, emojiName),
+        from: emojiResponseProvider,
+        name: r'emojiResponseProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$emojiResponseHash,
+        dependencies: EmojiResponseFamily._dependencies,
+        allTransitiveDependencies:
+            EmojiResponseFamily._allTransitiveDependencies,
+        account: account,
+        emojiName: emojiName,
+      );
 
   EmojiResponseProvider._internal(
     super._createNotifier, {
@@ -174,5 +159,6 @@ class _EmojiResponseProviderElement
   @override
   String get emojiName => (origin as EmojiResponseProvider).emojiName;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

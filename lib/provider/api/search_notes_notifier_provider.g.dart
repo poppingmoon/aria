@@ -113,8 +113,12 @@ class SearchNotesNotifierFamily
 }
 
 /// See also [SearchNotesNotifier].
-class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    SearchNotesNotifier, PaginationState<Note>> {
+class SearchNotesNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          SearchNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [SearchNotesNotifier].
   SearchNotesNotifierProvider(
     Account account,
@@ -125,31 +129,32 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     String? sinceId,
     String? untilId,
   }) : this._internal(
-          () => SearchNotesNotifier()
-            ..account = account
-            ..query = query
-            ..userId = userId
-            ..channelId = channelId
-            ..localOnly = localOnly
-            ..sinceId = sinceId
-            ..untilId = untilId,
-          from: searchNotesNotifierProvider,
-          name: r'searchNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchNotesNotifierHash,
-          dependencies: SearchNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              SearchNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          query: query,
-          userId: userId,
-          channelId: channelId,
-          localOnly: localOnly,
-          sinceId: sinceId,
-          untilId: untilId,
-        );
+         () =>
+             SearchNotesNotifier()
+               ..account = account
+               ..query = query
+               ..userId = userId
+               ..channelId = channelId
+               ..localOnly = localOnly
+               ..sinceId = sinceId
+               ..untilId = untilId,
+         from: searchNotesNotifierProvider,
+         name: r'searchNotesNotifierProvider',
+         debugGetCreateSourceHash:
+             const bool.fromEnvironment('dart.vm.product')
+                 ? null
+                 : _$searchNotesNotifierHash,
+         dependencies: SearchNotesNotifierFamily._dependencies,
+         allTransitiveDependencies:
+             SearchNotesNotifierFamily._allTransitiveDependencies,
+         account: account,
+         query: query,
+         userId: userId,
+         channelId: channelId,
+         localOnly: localOnly,
+         sinceId: sinceId,
+         untilId: untilId,
+       );
 
   SearchNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -195,14 +200,15 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: SearchNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..query = query
-          ..userId = userId
-          ..channelId = channelId
-          ..localOnly = localOnly
-          ..sinceId = sinceId
-          ..untilId = untilId,
+        () =>
+            create()
+              ..account = account
+              ..query = query
+              ..userId = userId
+              ..channelId = channelId
+              ..localOnly = localOnly
+              ..sinceId = sinceId
+              ..untilId = untilId,
         from: from,
         name: null,
         dependencies: null,
@@ -220,8 +226,11 @@ class SearchNotesNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<SearchNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    SearchNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _SearchNotesNotifierProviderElement(this);
   }
 
@@ -279,8 +288,12 @@ mixin SearchNotesNotifierRef
 }
 
 class _SearchNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<SearchNotesNotifier,
-        PaginationState<Note>> with SearchNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          SearchNotesNotifier,
+          PaginationState<Note>
+        >
+    with SearchNotesNotifierRef {
   _SearchNotesNotifierProviderElement(super.provider);
 
   @override
@@ -298,5 +311,6 @@ class _SearchNotesNotifierProviderElement
   @override
   String? get untilId => (origin as SearchNotesNotifierProvider).untilId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

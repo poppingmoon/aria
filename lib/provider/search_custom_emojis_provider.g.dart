@@ -40,24 +40,15 @@ class SearchCustomEmojisFamily extends Family<Set<Emoji>> {
   const SearchCustomEmojisFamily();
 
   /// See also [searchCustomEmojis].
-  SearchCustomEmojisProvider call(
-    String host,
-    String query,
-  ) {
-    return SearchCustomEmojisProvider(
-      host,
-      query,
-    );
+  SearchCustomEmojisProvider call(String host, String query) {
+    return SearchCustomEmojisProvider(host, query);
   }
 
   @override
   SearchCustomEmojisProvider getProviderOverride(
     covariant SearchCustomEmojisProvider provider,
   ) {
-    return call(
-      provider.host,
-      provider.query,
-    );
+    return call(provider.host, provider.query);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -78,27 +69,21 @@ class SearchCustomEmojisFamily extends Family<Set<Emoji>> {
 /// See also [searchCustomEmojis].
 class SearchCustomEmojisProvider extends Provider<Set<Emoji>> {
   /// See also [searchCustomEmojis].
-  SearchCustomEmojisProvider(
-    String host,
-    String query,
-  ) : this._internal(
-          (ref) => searchCustomEmojis(
-            ref as SearchCustomEmojisRef,
-            host,
-            query,
-          ),
-          from: searchCustomEmojisProvider,
-          name: r'searchCustomEmojisProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$searchCustomEmojisHash,
-          dependencies: SearchCustomEmojisFamily._dependencies,
-          allTransitiveDependencies:
-              SearchCustomEmojisFamily._allTransitiveDependencies,
-          host: host,
-          query: query,
-        );
+  SearchCustomEmojisProvider(String host, String query)
+    : this._internal(
+        (ref) => searchCustomEmojis(ref as SearchCustomEmojisRef, host, query),
+        from: searchCustomEmojisProvider,
+        name: r'searchCustomEmojisProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$searchCustomEmojisHash,
+        dependencies: SearchCustomEmojisFamily._dependencies,
+        allTransitiveDependencies:
+            SearchCustomEmojisFamily._allTransitiveDependencies,
+        host: host,
+        query: query,
+      );
 
   SearchCustomEmojisProvider._internal(
     super._createNotifier, {
@@ -174,5 +159,6 @@ class _SearchCustomEmojisProviderElement extends ProviderElement<Set<Emoji>>
   @override
   String get query => (origin as SearchCustomEmojisProvider).query;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -32,9 +32,7 @@ class _SystemHash {
 abstract class _$MutedAdsNotifier extends BuildlessNotifier<List<String>> {
   late final Account account;
 
-  List<String> build(
-    Account account,
-  );
+  List<String> build(Account account);
 }
 
 /// See also [MutedAdsNotifier].
@@ -47,21 +45,15 @@ class MutedAdsNotifierFamily extends Family<List<String>> {
   const MutedAdsNotifierFamily();
 
   /// See also [MutedAdsNotifier].
-  MutedAdsNotifierProvider call(
-    Account account,
-  ) {
-    return MutedAdsNotifierProvider(
-      account,
-    );
+  MutedAdsNotifierProvider call(Account account) {
+    return MutedAdsNotifierProvider(account);
   }
 
   @override
   MutedAdsNotifierProvider getProviderOverride(
     covariant MutedAdsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -83,21 +75,20 @@ class MutedAdsNotifierFamily extends Family<List<String>> {
 class MutedAdsNotifierProvider
     extends NotifierProviderImpl<MutedAdsNotifier, List<String>> {
   /// See also [MutedAdsNotifier].
-  MutedAdsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => MutedAdsNotifier()..account = account,
-          from: mutedAdsNotifierProvider,
-          name: r'mutedAdsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$mutedAdsNotifierHash,
-          dependencies: MutedAdsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              MutedAdsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  MutedAdsNotifierProvider(Account account)
+    : this._internal(
+        () => MutedAdsNotifier()..account = account,
+        from: mutedAdsNotifierProvider,
+        name: r'mutedAdsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$mutedAdsNotifierHash,
+        dependencies: MutedAdsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            MutedAdsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   MutedAdsNotifierProvider._internal(
     super._createNotifier, {
@@ -112,12 +103,8 @@ class MutedAdsNotifierProvider
   final Account account;
 
   @override
-  List<String> runNotifierBuild(
-    covariant MutedAdsNotifier notifier,
-  ) {
-    return notifier.build(
-      account,
-    );
+  List<String> runNotifierBuild(covariant MutedAdsNotifier notifier) {
+    return notifier.build(account);
   }
 
   @override
@@ -170,5 +157,6 @@ class _MutedAdsNotifierProviderElement
   @override
   Account get account => (origin as MutedAdsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

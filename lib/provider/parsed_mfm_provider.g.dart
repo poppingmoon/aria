@@ -39,21 +39,13 @@ class ParsedMfmFamily extends Family<List<MfmNode>> {
   const ParsedMfmFamily();
 
   /// See also [parsedMfm].
-  ParsedMfmProvider call(
-    String text,
-  ) {
-    return ParsedMfmProvider(
-      text,
-    );
+  ParsedMfmProvider call(String text) {
+    return ParsedMfmProvider(text);
   }
 
   @override
-  ParsedMfmProvider getProviderOverride(
-    covariant ParsedMfmProvider provider,
-  ) {
-    return call(
-      provider.text,
-    );
+  ParsedMfmProvider getProviderOverride(covariant ParsedMfmProvider provider) {
+    return call(provider.text);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,23 +66,19 @@ class ParsedMfmFamily extends Family<List<MfmNode>> {
 /// See also [parsedMfm].
 class ParsedMfmProvider extends AutoDisposeProvider<List<MfmNode>> {
   /// See also [parsedMfm].
-  ParsedMfmProvider(
-    String text,
-  ) : this._internal(
-          (ref) => parsedMfm(
-            ref as ParsedMfmRef,
-            text,
-          ),
-          from: parsedMfmProvider,
-          name: r'parsedMfmProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$parsedMfmHash,
-          dependencies: ParsedMfmFamily._dependencies,
-          allTransitiveDependencies: ParsedMfmFamily._allTransitiveDependencies,
-          text: text,
-        );
+  ParsedMfmProvider(String text)
+    : this._internal(
+        (ref) => parsedMfm(ref as ParsedMfmRef, text),
+        from: parsedMfmProvider,
+        name: r'parsedMfmProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$parsedMfmHash,
+        dependencies: ParsedMfmFamily._dependencies,
+        allTransitiveDependencies: ParsedMfmFamily._allTransitiveDependencies,
+        text: text,
+      );
 
   ParsedMfmProvider._internal(
     super._createNotifier, {
@@ -105,9 +93,7 @@ class ParsedMfmProvider extends AutoDisposeProvider<List<MfmNode>> {
   final String text;
 
   @override
-  Override overrideWith(
-    List<MfmNode> Function(ParsedMfmRef provider) create,
-  ) {
+  Override overrideWith(List<MfmNode> Function(ParsedMfmRef provider) create) {
     return ProviderOverride(
       origin: this,
       override: ParsedMfmProvider._internal(
@@ -149,11 +135,13 @@ mixin ParsedMfmRef on AutoDisposeProviderRef<List<MfmNode>> {
 }
 
 class _ParsedMfmProviderElement
-    extends AutoDisposeProviderElement<List<MfmNode>> with ParsedMfmRef {
+    extends AutoDisposeProviderElement<List<MfmNode>>
+    with ParsedMfmRef {
   _ParsedMfmProviderElement(super.provider);
 
   @override
   String get text => (origin as ParsedMfmProvider).text;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -12,13 +12,15 @@ String _$bootStateHash() => r'19d3fd126c79299a3de35ee77f99f1fd7943e5bf';
 @ProviderFor(BootState)
 final bootStateProvider =
     AutoDisposeAsyncNotifierProvider<BootState, bool?>.internal(
-  BootState.new,
-  name: r'bootStateProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$bootStateHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+      BootState.new,
+      name: r'bootStateProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$bootStateHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$BootState = AutoDisposeAsyncNotifier<bool?>;
 // ignore_for_file: type=lint

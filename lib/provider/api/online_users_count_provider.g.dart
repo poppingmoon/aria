@@ -39,21 +39,15 @@ class OnlineUsersCountFamily extends Family<AsyncValue<int>> {
   const OnlineUsersCountFamily();
 
   /// See also [onlineUsersCount].
-  OnlineUsersCountProvider call(
-    Account account,
-  ) {
-    return OnlineUsersCountProvider(
-      account,
-    );
+  OnlineUsersCountProvider call(Account account) {
+    return OnlineUsersCountProvider(account);
   }
 
   @override
   OnlineUsersCountProvider getProviderOverride(
     covariant OnlineUsersCountProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -74,24 +68,20 @@ class OnlineUsersCountFamily extends Family<AsyncValue<int>> {
 /// See also [onlineUsersCount].
 class OnlineUsersCountProvider extends AutoDisposeFutureProvider<int> {
   /// See also [onlineUsersCount].
-  OnlineUsersCountProvider(
-    Account account,
-  ) : this._internal(
-          (ref) => onlineUsersCount(
-            ref as OnlineUsersCountRef,
-            account,
-          ),
-          from: onlineUsersCountProvider,
-          name: r'onlineUsersCountProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$onlineUsersCountHash,
-          dependencies: OnlineUsersCountFamily._dependencies,
-          allTransitiveDependencies:
-              OnlineUsersCountFamily._allTransitiveDependencies,
-          account: account,
-        );
+  OnlineUsersCountProvider(Account account)
+    : this._internal(
+        (ref) => onlineUsersCount(ref as OnlineUsersCountRef, account),
+        from: onlineUsersCountProvider,
+        name: r'onlineUsersCountProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$onlineUsersCountHash,
+        dependencies: OnlineUsersCountFamily._dependencies,
+        allTransitiveDependencies:
+            OnlineUsersCountFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   OnlineUsersCountProvider._internal(
     super._createNotifier, {
@@ -150,11 +140,13 @@ mixin OnlineUsersCountRef on AutoDisposeFutureProviderRef<int> {
 }
 
 class _OnlineUsersCountProviderElement
-    extends AutoDisposeFutureProviderElement<int> with OnlineUsersCountRef {
+    extends AutoDisposeFutureProviderElement<int>
+    with OnlineUsersCountRef {
   _OnlineUsersCountProviderElement(super.provider);
 
   @override
   Account get account => (origin as OnlineUsersCountProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

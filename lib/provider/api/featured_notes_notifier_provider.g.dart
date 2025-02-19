@@ -35,10 +35,7 @@ abstract class _$FeaturedNotesNotifier
   late final Account account;
   late final String? channelId;
 
-  FutureOr<PaginationState<Note>> build(
-    Account account, {
-    String? channelId,
-  });
+  FutureOr<PaginationState<Note>> build(Account account, {String? channelId});
 }
 
 /// See also [FeaturedNotesNotifier].
@@ -52,24 +49,15 @@ class FeaturedNotesNotifierFamily
   const FeaturedNotesNotifierFamily();
 
   /// See also [FeaturedNotesNotifier].
-  FeaturedNotesNotifierProvider call(
-    Account account, {
-    String? channelId,
-  }) {
-    return FeaturedNotesNotifierProvider(
-      account,
-      channelId: channelId,
-    );
+  FeaturedNotesNotifierProvider call(Account account, {String? channelId}) {
+    return FeaturedNotesNotifierProvider(account, channelId: channelId);
   }
 
   @override
   FeaturedNotesNotifierProvider getProviderOverride(
     covariant FeaturedNotesNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      channelId: provider.channelId,
-    );
+    return call(provider.account, channelId: provider.channelId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -89,28 +77,30 @@ class FeaturedNotesNotifierFamily
 
 /// See also [FeaturedNotesNotifier].
 class FeaturedNotesNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<FeaturedNotesNotifier,
-        PaginationState<Note>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          FeaturedNotesNotifier,
+          PaginationState<Note>
+        > {
   /// See also [FeaturedNotesNotifier].
-  FeaturedNotesNotifierProvider(
-    Account account, {
-    String? channelId,
-  }) : this._internal(
-          () => FeaturedNotesNotifier()
-            ..account = account
-            ..channelId = channelId,
-          from: featuredNotesNotifierProvider,
-          name: r'featuredNotesNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$featuredNotesNotifierHash,
-          dependencies: FeaturedNotesNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              FeaturedNotesNotifierFamily._allTransitiveDependencies,
-          account: account,
-          channelId: channelId,
-        );
+  FeaturedNotesNotifierProvider(Account account, {String? channelId})
+    : this._internal(
+        () =>
+            FeaturedNotesNotifier()
+              ..account = account
+              ..channelId = channelId,
+        from: featuredNotesNotifierProvider,
+        name: r'featuredNotesNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$featuredNotesNotifierHash,
+        dependencies: FeaturedNotesNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            FeaturedNotesNotifierFamily._allTransitiveDependencies,
+        account: account,
+        channelId: channelId,
+      );
 
   FeaturedNotesNotifierProvider._internal(
     super._createNotifier, {
@@ -130,10 +120,7 @@ class FeaturedNotesNotifierProvider
   FutureOr<PaginationState<Note>> runNotifierBuild(
     covariant FeaturedNotesNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      channelId: channelId,
-    );
+    return notifier.build(account, channelId: channelId);
   }
 
   @override
@@ -141,9 +128,10 @@ class FeaturedNotesNotifierProvider
     return ProviderOverride(
       origin: this,
       override: FeaturedNotesNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..channelId = channelId,
+        () =>
+            create()
+              ..account = account
+              ..channelId = channelId,
         from: from,
         name: null,
         dependencies: null,
@@ -156,8 +144,11 @@ class FeaturedNotesNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<FeaturedNotesNotifier,
-      PaginationState<Note>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    FeaturedNotesNotifier,
+    PaginationState<Note>
+  >
+  createElement() {
     return _FeaturedNotesNotifierProviderElement(this);
   }
 
@@ -190,8 +181,12 @@ mixin FeaturedNotesNotifierRef
 }
 
 class _FeaturedNotesNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<FeaturedNotesNotifier,
-        PaginationState<Note>> with FeaturedNotesNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          FeaturedNotesNotifier,
+          PaginationState<Note>
+        >
+    with FeaturedNotesNotifierRef {
   _FeaturedNotesNotifierProviderElement(super.provider);
 
   @override
@@ -199,5 +194,6 @@ class _FeaturedNotesNotifierProviderElement
   @override
   String? get channelId => (origin as FeaturedNotesNotifierProvider).channelId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -29,8 +29,9 @@ class _SystemHash {
   }
 }
 
-abstract class _$RoleUsersNotifier extends BuildlessAutoDisposeAsyncNotifier<
-    PaginationState<RolesUsersResponse>> {
+abstract class _$RoleUsersNotifier
+    extends
+        BuildlessAutoDisposeAsyncNotifier<PaginationState<RolesUsersResponse>> {
   late final Account account;
   late final String roleId;
 
@@ -51,24 +52,15 @@ class RoleUsersNotifierFamily
   const RoleUsersNotifierFamily();
 
   /// See also [RoleUsersNotifier].
-  RoleUsersNotifierProvider call(
-    Account account,
-    String roleId,
-  ) {
-    return RoleUsersNotifierProvider(
-      account,
-      roleId,
-    );
+  RoleUsersNotifierProvider call(Account account, String roleId) {
+    return RoleUsersNotifierProvider(account, roleId);
   }
 
   @override
   RoleUsersNotifierProvider getProviderOverride(
     covariant RoleUsersNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-      provider.roleId,
-    );
+    return call(provider.account, provider.roleId);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -87,28 +79,31 @@ class RoleUsersNotifierFamily
 }
 
 /// See also [RoleUsersNotifier].
-class RoleUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
-    RoleUsersNotifier, PaginationState<RolesUsersResponse>> {
+class RoleUsersNotifierProvider
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          RoleUsersNotifier,
+          PaginationState<RolesUsersResponse>
+        > {
   /// See also [RoleUsersNotifier].
-  RoleUsersNotifierProvider(
-    Account account,
-    String roleId,
-  ) : this._internal(
-          () => RoleUsersNotifier()
-            ..account = account
-            ..roleId = roleId,
-          from: roleUsersNotifierProvider,
-          name: r'roleUsersNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$roleUsersNotifierHash,
-          dependencies: RoleUsersNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              RoleUsersNotifierFamily._allTransitiveDependencies,
-          account: account,
-          roleId: roleId,
-        );
+  RoleUsersNotifierProvider(Account account, String roleId)
+    : this._internal(
+        () =>
+            RoleUsersNotifier()
+              ..account = account
+              ..roleId = roleId,
+        from: roleUsersNotifierProvider,
+        name: r'roleUsersNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$roleUsersNotifierHash,
+        dependencies: RoleUsersNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            RoleUsersNotifierFamily._allTransitiveDependencies,
+        account: account,
+        roleId: roleId,
+      );
 
   RoleUsersNotifierProvider._internal(
     super._createNotifier, {
@@ -128,10 +123,7 @@ class RoleUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   FutureOr<PaginationState<RolesUsersResponse>> runNotifierBuild(
     covariant RoleUsersNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-      roleId,
-    );
+    return notifier.build(account, roleId);
   }
 
   @override
@@ -139,9 +131,10 @@ class RoleUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
     return ProviderOverride(
       origin: this,
       override: RoleUsersNotifierProvider._internal(
-        () => create()
-          ..account = account
-          ..roleId = roleId,
+        () =>
+            create()
+              ..account = account
+              ..roleId = roleId,
         from: from,
         name: null,
         dependencies: null,
@@ -154,8 +147,11 @@ class RoleUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<RoleUsersNotifier,
-      PaginationState<RolesUsersResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    RoleUsersNotifier,
+    PaginationState<RolesUsersResponse>
+  >
+  createElement() {
     return _RoleUsersNotifierProviderElement(this);
   }
 
@@ -178,8 +174,11 @@ class RoleUsersNotifierProvider extends AutoDisposeAsyncNotifierProviderImpl<
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin RoleUsersNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<RolesUsersResponse>> {
+mixin RoleUsersNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<RolesUsersResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 
@@ -188,8 +187,12 @@ mixin RoleUsersNotifierRef on AutoDisposeAsyncNotifierProviderRef<
 }
 
 class _RoleUsersNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<RoleUsersNotifier,
-        PaginationState<RolesUsersResponse>> with RoleUsersNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          RoleUsersNotifier,
+          PaginationState<RolesUsersResponse>
+        >
+    with RoleUsersNotifierRef {
   _RoleUsersNotifierProviderElement(super.provider);
 
   @override
@@ -197,5 +200,6 @@ class _RoleUsersNotifierProviderElement
   @override
   String get roleId => (origin as RoleUsersNotifierProvider).roleId;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

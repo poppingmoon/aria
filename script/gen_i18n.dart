@@ -265,7 +265,6 @@ ${lines.join('\n')}
             ? File('lib/i18n/misskey/misskey.i18n.yaml')
             : File('lib/i18n/misskey/misskey_$language.i18n.yaml');
     file.writeAsStringSync(contents);
-    // ignore: avoid_print
     print('Successfully generated ${file.path}');
   }
 }

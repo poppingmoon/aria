@@ -8,7 +8,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'cache_manager_provider.g.dart';
 
-@riverpod
+@Riverpod(dependencies: [])
 ImageCacheManager cacheManager(Ref ref) {
   return _CacheManager();
 }

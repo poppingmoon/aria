@@ -6,7 +6,7 @@ part of 'emojis_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$emojisNotifierHash() => r'1803efa9c0f45393900fb562072f48daa1c5087c';
+String _$emojisNotifierHash() => r'e169a59cd33318a819bfd2993a5a7b642e11ab3a';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -33,9 +33,7 @@ abstract class _$EmojisNotifier
     extends BuildlessStreamNotifier<Map<String, Emoji>> {
   late final String host;
 
-  Stream<Map<String, Emoji>> build(
-    String host,
-  );
+  Stream<Map<String, Emoji>> build(String host);
 }
 
 /// See also [EmojisNotifier].
@@ -48,21 +46,15 @@ class EmojisNotifierFamily extends Family<AsyncValue<Map<String, Emoji>>> {
   const EmojisNotifierFamily();
 
   /// See also [EmojisNotifier].
-  EmojisNotifierProvider call(
-    String host,
-  ) {
-    return EmojisNotifierProvider(
-      host,
-    );
+  EmojisNotifierProvider call(String host) {
+    return EmojisNotifierProvider(host);
   }
 
   @override
   EmojisNotifierProvider getProviderOverride(
     covariant EmojisNotifierProvider provider,
   ) {
-    return call(
-      provider.host,
-    );
+    return call(provider.host);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -84,21 +76,20 @@ class EmojisNotifierFamily extends Family<AsyncValue<Map<String, Emoji>>> {
 class EmojisNotifierProvider
     extends StreamNotifierProviderImpl<EmojisNotifier, Map<String, Emoji>> {
   /// See also [EmojisNotifier].
-  EmojisNotifierProvider(
-    String host,
-  ) : this._internal(
-          () => EmojisNotifier()..host = host,
-          from: emojisNotifierProvider,
-          name: r'emojisNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$emojisNotifierHash,
-          dependencies: EmojisNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              EmojisNotifierFamily._allTransitiveDependencies,
-          host: host,
-        );
+  EmojisNotifierProvider(String host)
+    : this._internal(
+        () => EmojisNotifier()..host = host,
+        from: emojisNotifierProvider,
+        name: r'emojisNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$emojisNotifierHash,
+        dependencies: EmojisNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            EmojisNotifierFamily._allTransitiveDependencies,
+        host: host,
+      );
 
   EmojisNotifierProvider._internal(
     super._createNotifier, {
@@ -116,9 +107,7 @@ class EmojisNotifierProvider
   Stream<Map<String, Emoji>> runNotifierBuild(
     covariant EmojisNotifier notifier,
   ) {
-    return notifier.build(
-      host,
-    );
+    return notifier.build(host);
   }
 
   @override
@@ -139,7 +128,7 @@ class EmojisNotifierProvider
 
   @override
   StreamNotifierProviderElement<EmojisNotifier, Map<String, Emoji>>
-      createElement() {
+  createElement() {
     return _EmojisNotifierProviderElement(this);
   }
 
@@ -172,5 +161,6 @@ class _EmojisNotifierProviderElement
   @override
   String get host => (origin as EmojisNotifierProvider).host;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -31,13 +31,13 @@ class _SystemHash {
 }
 
 abstract class _$NotificationsNotifier
-    extends BuildlessAutoDisposeAsyncNotifier<
-        PaginationState<INotificationsResponse>> {
+    extends
+        BuildlessAutoDisposeAsyncNotifier<
+          PaginationState<INotificationsResponse>
+        > {
   late final Account account;
 
-  FutureOr<PaginationState<INotificationsResponse>> build(
-    Account account,
-  );
+  FutureOr<PaginationState<INotificationsResponse>> build(Account account);
 }
 
 /// See also [NotificationsNotifier].
@@ -51,21 +51,15 @@ class NotificationsNotifierFamily
   const NotificationsNotifierFamily();
 
   /// See also [NotificationsNotifier].
-  NotificationsNotifierProvider call(
-    Account account,
-  ) {
-    return NotificationsNotifierProvider(
-      account,
-    );
+  NotificationsNotifierProvider call(Account account) {
+    return NotificationsNotifierProvider(account);
   }
 
   @override
   NotificationsNotifierProvider getProviderOverride(
     covariant NotificationsNotifierProvider provider,
   ) {
-    return call(
-      provider.account,
-    );
+    return call(provider.account);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -85,24 +79,26 @@ class NotificationsNotifierFamily
 
 /// See also [NotificationsNotifier].
 class NotificationsNotifierProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<NotificationsNotifier,
-        PaginationState<INotificationsResponse>> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          NotificationsNotifier,
+          PaginationState<INotificationsResponse>
+        > {
   /// See also [NotificationsNotifier].
-  NotificationsNotifierProvider(
-    Account account,
-  ) : this._internal(
-          () => NotificationsNotifier()..account = account,
-          from: notificationsNotifierProvider,
-          name: r'notificationsNotifierProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$notificationsNotifierHash,
-          dependencies: NotificationsNotifierFamily._dependencies,
-          allTransitiveDependencies:
-              NotificationsNotifierFamily._allTransitiveDependencies,
-          account: account,
-        );
+  NotificationsNotifierProvider(Account account)
+    : this._internal(
+        () => NotificationsNotifier()..account = account,
+        from: notificationsNotifierProvider,
+        name: r'notificationsNotifierProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$notificationsNotifierHash,
+        dependencies: NotificationsNotifierFamily._dependencies,
+        allTransitiveDependencies:
+            NotificationsNotifierFamily._allTransitiveDependencies,
+        account: account,
+      );
 
   NotificationsNotifierProvider._internal(
     super._createNotifier, {
@@ -120,9 +116,7 @@ class NotificationsNotifierProvider
   FutureOr<PaginationState<INotificationsResponse>> runNotifierBuild(
     covariant NotificationsNotifier notifier,
   ) {
-    return notifier.build(
-      account,
-    );
+    return notifier.build(account);
   }
 
   @override
@@ -142,8 +136,11 @@ class NotificationsNotifierProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<NotificationsNotifier,
-      PaginationState<INotificationsResponse>> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    NotificationsNotifier,
+    PaginationState<INotificationsResponse>
+  >
+  createElement() {
     return _NotificationsNotifierProviderElement(this);
   }
 
@@ -163,19 +160,27 @@ class NotificationsNotifierProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin NotificationsNotifierRef on AutoDisposeAsyncNotifierProviderRef<
-    PaginationState<INotificationsResponse>> {
+mixin NotificationsNotifierRef
+    on
+        AutoDisposeAsyncNotifierProviderRef<
+          PaginationState<INotificationsResponse>
+        > {
   /// The parameter `account` of this provider.
   Account get account;
 }
 
 class _NotificationsNotifierProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<NotificationsNotifier,
-        PaginationState<INotificationsResponse>> with NotificationsNotifierRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          NotificationsNotifier,
+          PaginationState<INotificationsResponse>
+        >
+    with NotificationsNotifierRef {
   _NotificationsNotifierProviderElement(super.provider);
 
   @override
   Account get account => (origin as NotificationsNotifierProvider).account;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package
