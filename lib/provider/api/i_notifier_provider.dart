@@ -10,6 +10,9 @@ import 'misskey_provider.dart';
 
 part 'i_notifier_provider.g.dart';
 
+// This provider depends on the `cacheManagerProvider`, but whether it is scoped
+// does not matter here.
+// ignore: provider_dependencies
 @riverpod
 class INotifier extends _$INotifier {
   @override
@@ -18,17 +21,19 @@ class INotifier extends _$INotifier {
     if (account.isGuest) {
       yield null;
     } else {
-      final file = await ref.watch(cacheManagerProvider).getFileFromCache(_key);
-      if (file != null) {
-        try {
+      try {
+        final file = await ref
+            .read(cacheManagerProvider)
+            .getFileFromCache(_key);
+        if (file != null) {
           final s = await file.file.readAsString();
           final i = MeDetailed.fromJson(jsonDecode(s) as Map<String, dynamic>);
           yield i;
           ref
               .read(notesNotifierProvider(account).notifier)
               .addAll(i.pinnedNotes ?? []);
-        } catch (_) {}
-      }
+        }
+      } catch (_) {}
       try {
         final i = await _misskey.i.i();
         yield i;

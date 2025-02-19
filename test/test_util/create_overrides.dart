@@ -36,7 +36,6 @@ List<Override> createOverrides(
 
   return [
     cacheManagerProvider.overrideWithValue(cacheManager),
-    // ignore: prefer_const_constructors
     sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
     dioProvider.overrideWithValue(dio),
     misskeyProvider(account).overrideWithValue(misskey),

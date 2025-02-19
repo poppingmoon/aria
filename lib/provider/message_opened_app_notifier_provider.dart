@@ -11,7 +11,6 @@ import 'user_ids_notifier_provider.dart';
 
 part 'message_opened_app_notifier_provider.g.dart';
 
-// ignore: provider_dependencies
 @Riverpod(keepAlive: true)
 class MessageOpenedAppNotifier extends _$MessageOpenedAppNotifier {
   @override

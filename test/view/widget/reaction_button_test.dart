@@ -97,7 +97,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       await tester.pumpAndSettle();
       final colors = container.read(misskeyColorsProvider(Brightness.light));
       final buttonStyle =
@@ -118,7 +118,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       await tester.pumpAndSettle();
       final colors = container.read(misskeyColorsProvider(Brightness.light));
       final buttonStyle =
@@ -191,7 +191,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       await tester.pumpAndSettle();
       await tester.tap(find.byType(ElevatedButton));
       expect(find.byType(ReactionConfirmationDialog), findsNothing);
@@ -208,7 +208,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       await tester.pumpAndSettle();
       await tester.tap(find.byType(ElevatedButton));
       expect(find.byType(ReactionConfirmationDialog), findsNothing);
@@ -230,7 +230,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji', localOnly: true));
+          .add(const Emoji(name: 'emoji', localOnly: true));
       await tester.pumpAndSettle();
       expect(
         tester
@@ -257,7 +257,7 @@ void main() {
         );
         container
             .read(emojisNotifierProvider(account.host).notifier)
-            .add(const Emoji(aliases: [], name: 'emoji', isSensitive: true));
+            .add(const Emoji(name: 'emoji', isSensitive: true));
         await tester.pumpAndSettle();
         await tester.tap(find.byType(ElevatedButton));
         expect(find.byType(ReactionConfirmationDialog), findsNothing);
@@ -276,7 +276,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       final dioAdapter = DioAdapter(dio: container.read(dioProvider));
       dioAdapter.onPost(
         'notes/reactions/create',
@@ -319,7 +319,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       final dioAdapter = DioAdapter(dio: container.read(dioProvider));
       dioAdapter.onPost(
         'notes/reactions/delete',
@@ -362,7 +362,7 @@ void main() {
       );
       container
           .read(emojisNotifierProvider(account.host).notifier)
-          .add(const Emoji(aliases: [], name: 'emoji'));
+          .add(const Emoji(name: 'emoji'));
       final dioAdapter = DioAdapter(dio: container.read(dioProvider));
       dioAdapter.onPost(
         'notes/reactions/delete',

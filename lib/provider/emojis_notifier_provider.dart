@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -11,21 +12,25 @@ import 'cache_manager_provider.dart';
 
 part 'emojis_notifier_provider.g.dart';
 
+// This provider depends on the `cacheManagerProvider`, but whether it is scoped
+// does not matter here.
+// ignore: provider_dependencies
 @Riverpod(keepAlive: true)
 class EmojisNotifier extends _$EmojisNotifier {
   @override
   Stream<Map<String, Emoji>> build(String host) async* {
     ref.onDispose(() => _timer?.cancel());
-    final file = await ref.read(cacheManagerProvider).getFileFromCache(_key);
-    if (file != null) {
-      try {
+    FileInfo? file;
+    try {
+      file = await ref.read(cacheManagerProvider).getFileFromCache(_key);
+      if (file != null) {
         final s = await file.file.readAsString();
         final emojis = (jsonDecode(s) as List).map(
           (e) => Emoji.fromJson(e as Map<String, dynamic>),
         );
         yield {for (final emoji in emojis) emoji.name: emoji};
-      } catch (_) {}
-    }
+      }
+    } catch (_) {}
     final lastModified = await file?.file.lastModified();
     final difference =
         lastModified != null ? DateTime.now().difference(lastModified) : null;

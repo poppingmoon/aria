@@ -229,6 +229,5 @@ void main() {
       'version': '1.0',
     }),
   );
-  // ignore: avoid_print
   print('Successfully generated ${file.path}');
 }

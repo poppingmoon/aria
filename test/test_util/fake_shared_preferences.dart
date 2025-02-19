@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class FakeSharedPreferences implements SharedPreferencesWithCache {
-  const FakeSharedPreferences(this.map);
+  FakeSharedPreferences(this.map);
 
   final Map<String, dynamic> map;
 

@@ -1,0 +1,16 @@
+include: package:lint/strict.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    always_use_package_imports: false
+    avoid_print: false
+    prefer_relative_imports: true
+    prefer_single_quotes: true
+    require_trailing_commas: false
+    unawaited_futures: true
