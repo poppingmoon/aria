@@ -50,23 +50,52 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 		const TextSpan(text: '.\nKami ingin menunjukkan apresiasi kami kepada semua kontributor projek ini.'),
 	]);
 	@override String get addTab => 'Tambah tab';
+	@override String get alwaysExpandCw => 'Selalu tampilkan isi Content Warning';
+	@override String get alwaysExpandLongNote => 'Selalu tampilkan isi note panjang';
+	@override String get alwaysExpandMediaInSubNote => 'Selalu tampilkan media di subnote';
+	@override String get alwaysShowAllReactions => 'Selalu tampilkan semua reaksi';
+	@override String get alwaysShowTabHeader => 'Selalu tampilkan informasi tab';
 	@override String get authenticate => 'Autentikasi';
 	@override String get authenticated => 'Terautentikasi';
 	@override String get avatarSize => 'Ukuran avatar';
 	@override String get background => 'Latar belakang';
+	@override String get buttonTypes => 'Jenis tombol';
+	@override String get calculating => 'Mengkalkulasi...';
+	@override String get confirmBeforeFollow => 'Konfirmasi sebelum mengikuti';
+	@override String get confirmBeforePost => 'Konfirmasi sebelum mengunggah note';
+	@override String get confirmBeforeReact => 'Konfirmasi sebelum menambahkan reaksi';
 	@override String get copied => 'Disalin ke papan klip';
 	@override String get copyName => 'Salin nama';
 	@override String get crop => 'Potong';
+	@override String get custom => 'Kustom';
+	@override String get defaultReaction => 'Reaksi standar';
+	@override String deleteAccountTabsConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('id'))(n,
+		one: 'Apakah anda ingin menghapus tab ${n} terkait dengan akun ini?',
+		other: 'Apakah anda ingin menghapus tab ${n} terkait dengan akun ini?',
+	);
 	@override String deleteFilesConfirm({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('id'))(n,
 		one: 'Anda yakin ingin menghapus ${n} berkas?',
 		other: 'Anda yakin ingin menghapus ${n} berkas?',
 	);
 	@override String get deleteTabConfirm => 'Anda yakin ingin menghapus tab ini?';
+	@override String get disableDataSaverWhenOnWifi => 'Matikan penghematan data ketika terhubung via Wi-Fi';
+	@override String get disableSubscribingNotes => 'Matikan pembaruan reaksi secara tepat waktu';
+	@override String get discardChangesConfirm => 'Apa anda yakin untuk membuang pengubahan pengaturan dan kembali?';
+	@override String get displayOfThumbnail => 'Tampilan thumbnail';
 	@override String get doubleTapToShow => 'Tab dua kali untuk menampilkan';
 	@override String get downloaded => 'Terunduh';
+	@override String get draw => 'Gambar';
 	@override String get editImage => 'Sunting gambar';
+	@override String get emojiPickerAutofocus => 'Tampilkan keyboard saat membuka pemilih emoji';
 	@override String get emojiPickerScale => 'Ukuran pemilih emoji';
+	@override String get emojiPickerUseDialog => 'Tampilkan pemilih emoji sebagai dialog';
+	@override String get enableEmojiFadeIn => 'Nyalakan animasi fade-in untuk emoji kustom';
 	@override String get enableFederation => 'Nyalakan federasi';
+	@override String get enablePredictiveBack => 'Nyalakan animasi untuk predictive back';
+	@override String get enableSpellCheck => 'Nyalakan pemeriksaan ejaan';
+	@override String get endpoint => 'Endpoint';
+	@override String get expandNote => 'Tampilkan note';
+	@override String get extraMentionsWarning => 'Note ini memiliki mention yang tidak tercantum di target balasan note';
 	@override String get fileNotFound => 'Berkas tidak ditemukan';
 	@override String get findServer => 'Cari server Misskey';
 	@override TextSpan followConfirm({required InlineSpan name}) => TextSpan(children: [
@@ -74,6 +103,7 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get font => 'Font';
 	@override String get fromDevice => 'Dari perangkat';
 	@override String get guest => 'Pengunjung';
 	@override TextSpan i18nInfo({required InlineSpan link}) => TextSpan(children: [
@@ -81,39 +111,138 @@ class _TranslationsAriaIdId extends TranslationsAriaEnUs {
 		link,
 		const TextSpan(text: '.'),
 	]);
+	@override TextSpan iconAttribution({required InlineSpan sevenc_nanashi, required InlineSpan cc_by}) => TextSpan(children: [
+		const TextSpan(text: 'Icon dari Aria dibuat oleh '),
+		sevenc_nanashi,
+		const TextSpan(text: ' dan memiliki lisensi di bawah '),
+		cc_by,
+		const TextSpan(text: '.'),
+	]);
 	@override String get importCompleted => 'Impor selesai';
+	@override String get importConfirm => 'Apakah anda yakin akan mengimpor pengaturan? Pengaturan yang ada akan tergantikan.';
 	@override String get invalidListFormat => 'Format daftar tidak berlaku';
 	@override String jumpTo({required Object x}) => 'Lompat ke ${x}';
+	@override String get keepOpen => 'Tetap buka';
+	@override String get keepTimelinePosition => 'Jaga posisi timeline';
+	@override String get lineHeight => 'Tinggi baris';
 	@override String get loginWithAccessToken => 'Masuk dengan token akses';
+	@override String get margin => 'Marjin';
 	@override String get media => 'Media';
+	@override String get mentionToRemoteWarning => 'Note ini mengandung mention kepada user dari server lain';
+	@override String get mergeReactionsByName => 'Gabungkan reaksi dengan nama yang sama';
+	@override String get moved => 'Dipindahkan';
+	@override String get muted => 'Dibisukan';
+	@override String get mutedEmojis => 'Emoji yang dibisukan';
 	@override String nFiles({required num n}) => (_root.$meta.cardinalResolver ?? PluralResolvers.cardinal('id'))(n,
 		one: '${n} berkas',
 		other: '${n} berkas',
 	);
+	@override String get newFollowRequestReceived => 'Ada permintaan ikuti baru';
+	@override String get newNotes => 'Note baru';
+	@override String get newNotificationReceived => 'Ada notifikasi baru';
 	@override String get newNotifications => 'Notifikasi baru';
 	@override String get noAccounts => 'Tidak ada akun';
 	@override String get noTabs => 'Tidak ada tab';
 	@override String get noThemes => 'Tidak ada tema';
+	@override String get noteDoubleTapAction => 'Aksi untuk ketukan ganda pada note';
+	@override String get noteFooterSize => 'Ukuran tombol untuk aksi note';
+	@override String get noteLongPressAction => 'Aksi untuk ketukan panjang note';
+	@override String get noteTapAction => 'Aksi untuk ketukan note';
+	@override String get notesAfterRenotes => 'Note setelah renote';
 	@override TextSpan onlineUsersCount({required InlineSpan n}) => TextSpan(children: [
 		n,
 		const TextSpan(text: ' orang sedang daring'),
 	]);
+	@override String get opacity => 'Opacity';
+	@override String get openAsGuest => 'Buka sebagai guest';
+	@override String get openInAnotherAccount => 'Buka dengan akun lainnya';
+	@override String get openInBrowser => 'Buka di browser';
+	@override String get openInExternalBrowser => 'Buka di browser eksternal';
+	@override String get openInInternalBrowser => 'Buka di browser internal';
 	@override String get openMenu => 'Buka menu';
+	@override TextSpan openScratchpadAndRunCode({required InlineSpan scratchpad}) => TextSpan(children: [
+		const TextSpan(text: 'Buka '),
+		scratchpad,
+		const TextSpan(text: ' di browser anda, lalu masukkan kode di bawah ini dan jalankan.'),
+	]);
+	@override String get openSensitiveMediaOnDoubleTap => 'Buka media sensitif dengan ketukan ganda';
+	@override String get parameters => 'Parameter';
 	@override String get paste => 'Tempel';
+	@override TextSpan pastePinnedEmojisDescription({required InlineSpan url}) => TextSpan(children: [
+		const TextSpan(text: 'Tempel daftar emoji dengan format JSON untuk menyematkan emoji. Anda bisa menyalin emoji yang sudah tersematkan dari Misskey Web di '),
+		url,
+		const TextSpan(text: '.'),
+	]);
+	@override String get pasteResponseBelow => 'Tempel respon di bawah.';
+	@override String get pinToEmojiPicker => 'Sematkan ke pemilih emoji';
 	@override String get playAudio => 'Putar audio';
 	@override String get playVideo => 'Putar video';
+	@override String get pleaseCopyResponse => 'Mohon salin respon ini';
+	@override String get postConfirm => 'Apa anda yakin untuk mengunggah note ini?';
+	@override String get reactionConfirm => 'Apa anda yakin untuk menambahkan reaksi?';
+	@override String get recentlyUsedEmojis => 'Emoji yang terakhir dipakai';
+	@override String get renoteConfirm => 'Apa anda yakin untuk me-renote note ini?';
+	@override String get renoteToChannel => 'Renote kepada kanal';
 	@override TextSpan renotedBy({required InlineSpan user}) => TextSpan(children: [
 		const TextSpan(text: 'direnote oleh '),
 		user,
 	]);
+	@override String get reset => 'Atur ulang';
 	@override String get rotate => 'Putar';
+	@override String get scale => 'Skala';
+	@override String get selectIcon => 'Pilih icon';
+	@override TextSpan selfRenotedBy({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Swa-renote oleh '),
+		user,
+	]);
+	@override String get serverUrl => 'URL Server';
+	@override String get settingsFileForAria => 'Berkas pengaturan untuk Aria';
+	@override TextSpan settingsForUser({required InlineSpan user}) => TextSpan(children: [
+		const TextSpan(text: 'Pengaturan untuk '),
+		user,
+	]);
+	@override String get showAvatarsInNote => 'Tampilkan avatar di note';
+	@override String get showAvatarsInSubNote => 'Tampilkan avatar di subnote';
+	@override String get showEntireImage => 'Tampilkan keseluruhan gambar';
+	@override String get showExpandedImage => 'Tampilkan gambar yang diperbesar';
 	@override String get showImage => 'Tampilkan gambar';
+	@override String get showLikeButtonInNoteFooter => 'Tambahkan "Sukai" ke menu aksi note';
+	@override String get showMenuButtonInTabBar => 'Tampilkan tombol menu di kolom tab';
+	@override String get showNoteCreatedAt => 'Tampilkan tanggal pembuatan note';
+	@override String get showNoteFooter => 'Tampilkan tombol aksi di note';
+	@override String get showNoteReactionsViewer => 'Tampilkan penampil reaksi di note';
+	@override String get showPopupOnNewNote => 'Tampilkan popup pada note baru';
+	@override String get showQuoteButtonInNoteFooter => 'Tambahkan "Quote" pada menu aksi note';
+	@override String get showReactionsCountForEachTypes => 'Lihat jumlah reaksi pada tiap jenis reaksi';
+	@override String get showRenotesCount => 'Lihat jumlah renote pada note';
+	@override String get showRepliesCount => 'Lihat jumlah reply pada note';
+	@override String get showSelfRenotes => 'Tampilkan swa-renote';
+	@override String get showSmallButtons => 'Tampilkan tombol berukuran kecil';
+	@override String get showSquaredButtons => 'Tampilkan tombol dengan tampilan kotak';
+	@override String get showStackTrace => 'Tampilkan lacak berkas';
+	@override String get showSubNoteFooter => 'Tampilkan tombol aksi di subnote';
+	@override String get showSubNoteReactionsViewer => 'Tampilkan penampil reaksi di subnote';
+	@override String get showTabHeaderInOneLine => 'Tampilkan informasi tab dalam satu baris';
+	@override String get showTimelineLastViewedAt => 'Tampilkan tanggal terakhir timeline dilihat';
+	@override String get showTimelineTabBarAtBottom => 'Tampilkan kolom tab timeline di bawah layar';
+	@override String get showTranslateButtonInNoteFooter => 'Tambahkan opsi "Terjemah" pada menu aksi note';
 	@override String get sinceDate => 'Sejak';
+	@override String get stackTrace => 'Lacak berkas';
+	@override String get streamingChannel => 'Kanal siaran';
+	@override String get swapCw => 'Tukar komentar dengan isi';
+	@override String get tabName => 'Nama tab';
+	@override String get tabType => 'Jenis tab';
+	@override String get tabs => 'Tab';
+	@override String get tapToShow => 'Ketuk untuk menampilkan';
+	@override String get timeMachine => 'Mesin waktu';
+	@override String get timelinesPageButtons => 'Tombol laman timeline';
+	@override String get unfavorited => 'Dihapus dari daftar favorit';
 	@override TextSpan unfollowConfirm({required InlineSpan name}) => TextSpan(children: [
 		const TextSpan(text: 'Berhenti mengikuti '),
 		name,
 		const TextSpan(text: '?'),
 	]);
+	@override String get untilDate => 'Hingga';
 	@override String get uploaded => 'Terunggah';
 	@override String get useThisEmoji => 'Gunakan emoji ini';
 	@override TextSpan userSaysSomething({required InlineSpan name}) => TextSpan(children: [
@@ -2525,9 +2654,6 @@ class _TranslationsMisskeyPagesIdId extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Buat halaman baru';
 	@override String get editPage => 'Sunting halaman';
 	@override String get readPage => 'Lihat sumber kode aktif';
-	@override String get created => 'Halaman berhasil dibuat';
-	@override String get updated => 'Halaman berhasil diperbaharui!';
-	@override String get deleted => 'Halaman telah dihapus';
 	@override String get pageSetting => 'Pengaturan Halaman';
 	@override String get nameAlreadyExists => 'URL Halaman yang ditentukan sudah ada';
 	@override String get invalidNameTitle => 'URL Halaman yang ditentukan tidak valid';

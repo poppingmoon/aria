@@ -2511,9 +2511,6 @@ class _TranslationsMisskeyPagesThTh extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'สร้างหน้าเพจใหม่';
 	@override String get editPage => 'แก้ไขหน้าเพจ';
 	@override String get readPage => 'กำลังดูแหล่งที่มาของเพจนี้';
-	@override String get created => 'สร้างหน้าเพจสำเร็จเรียบร้อยแล้ว';
-	@override String get updated => 'แก้ไขหน้าเพจสำเร็จเรียบร้อยแล้ว';
-	@override String get deleted => 'ลบหน้าเพจสำเร็จเรียบร้อยแล้ว';
 	@override String get pageSetting => 'การตั้งค่าหน้าเพจ';
 	@override String get nameAlreadyExists => 'URL ของหน้าที่ระบุนั้นมีอยู่แล้ว';
 	@override String get invalidNameTitle => 'URL ของหน้าที่ระบุนั้นไม่ถูกต้อง';

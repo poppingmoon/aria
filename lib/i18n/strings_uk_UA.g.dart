@@ -1706,9 +1706,6 @@ class _TranslationsMisskeyPagesUkUa extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Створити сторінку';
 	@override String get editPage => 'Редагувати сторінку';
 	@override String get readPage => 'Перегляд вихідного коду';
-	@override String get created => 'Сторінка успішно створена.';
-	@override String get updated => 'Сторінка успішно оновлена.';
-	@override String get deleted => 'Сторінку видалено';
 	@override String get pageSetting => 'Налаштування сторінки';
 	@override String get nameAlreadyExists => 'Вказана адреса сторінки вже існує.';
 	@override String get invalidNameTitle => 'Вказана адреса сторінки неприпустима.';

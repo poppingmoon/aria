@@ -1876,9 +1876,6 @@ class _TranslationsMisskeyPagesPlPl extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Utwórz stronę';
 	@override String get editPage => 'Edytuj tę stronę';
 	@override String get readPage => 'Aktywowano widok źródła';
-	@override String get created => 'Pomyślnie utworzono stronę!';
-	@override String get updated => 'Pomyślnie zaktualizowano stronę!';
-	@override String get deleted => 'Strona została usunięta';
 	@override String get pageSetting => 'Ustawienia strony';
 	@override String get nameAlreadyExists => 'Określony adres URL strony już istnieje';
 	@override String get invalidNameTitle => 'Podany adres URL strony jest nieprawidłowy';

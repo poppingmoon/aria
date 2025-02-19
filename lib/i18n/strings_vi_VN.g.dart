@@ -2060,9 +2060,6 @@ class _TranslationsMisskeyPagesViVn extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Tạo Trang mới';
 	@override String get editPage => 'Sửa Trang này';
 	@override String get readPage => 'Xem mã nguồn Trang này';
-	@override String get created => 'Trang đã được tạo thành công';
-	@override String get updated => 'Trang đã được cập nhật thành công';
-	@override String get deleted => 'Trang đã được xóa thành công';
 	@override String get pageSetting => 'Cài đặt trang';
 	@override String get nameAlreadyExists => 'URL Trang đã tồn tại';
 	@override String get invalidNameTitle => 'URL Trang không hợp lệ';

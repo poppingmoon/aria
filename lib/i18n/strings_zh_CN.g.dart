@@ -60,6 +60,7 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get avatarSize => '头像大小';
 	@override String get background => '背景';
 	@override String get buttonTypes => '按钮类型';
+	@override String get calculating => '计算中...';
 	@override String get confirmBeforeFollow => '在关注之前确认';
 	@override String get confirmBeforePost => '在发布帖子前确认';
 	@override String get confirmBeforeReact => '在表情回应前确认';
@@ -212,6 +213,9 @@ class _TranslationsAriaZhCn extends TranslationsAriaEnUs {
 	@override String get showNoteReactionsViewer => '在帖子中显示反应表情';
 	@override String get showPopupOnNewNote => '在新帖子上显示弹出窗口';
 	@override String get showQuoteButtonInNoteFooter => '在帖子菜单中添加转发按钮';
+	@override String get showReactionsCountForEachTypes => '查看每个反应类型的反应数量';
+	@override String get showRenotesCount => '查看帖子中的复注数量';
+	@override String get showRepliesCount => '查看帖子中的回复数量';
 	@override String get showSelfRenotes => '显示自重注释';
 	@override String get showSmallButtons => '显示小按钮';
 	@override String get showSquaredButtons => '显示平方按钮';
@@ -268,6 +272,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} 是开源平台 <b>Misskey</b> 的服务器之一。';
 	@override String monthAndDay({required Object month, required Object day}) => '${month}月 ${day}日';
 	@override String get search => '搜索';
+	@override String get reset => '重置';
 	@override String get notifications => '通知';
 	@override String get username => '用户名';
 	@override String get password => '密码';
@@ -311,6 +316,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get unpin => '取消置顶';
 	@override String get copyContent => '复制内容';
 	@override String get copyLink => '复制链接';
+	@override String get copyRemoteLink => '复制远程链接';
 	@override String get copyLinkRenote => '复制转帖链接';
 	@override String get delete => '删除';
 	@override String get deleteAndEdit => '删除并编辑';
@@ -458,7 +464,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get removeWallpaper => '移除壁纸';
 	@override String searchWith({required Object q}) => '搜索:${q}';
 	@override String get youHaveNoLists => '列表为空';
-	@override String followConfirm({required Object name}) => '你确定要关注 ${name} 吗？';
+	@override String followConfirm({required Object name}) => '确定要关注 ${name} 吗？';
 	@override String get proxyAccount => '代理账户';
 	@override String get proxyAccountDescription => '代理账户是在某些情况下替代用户进行远程关注用的账户。 例如说，当用户将一位远程用户放入一个列表中时，如果本地服务器上没有任何人关注这位远程用户，则这位远程用户的账户活动将不会被送到本地服务器上。作为替代，此时将使用代理账户进行关注。';
 	@override String get host => '主机名';
@@ -492,10 +498,10 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get instanceInfo => '服务器信息';
 	@override String get statistics => '统计';
 	@override String get clearQueue => '清除队列';
-	@override String get clearQueueConfirmTitle => '确定清除队列？';
+	@override String get clearQueueConfirmTitle => '确定要清除队列吗？';
 	@override String get clearQueueConfirmText => '未送达的帖子将不会被投递。 通常无需执行此操作。';
 	@override String get clearCachedFiles => '清除缓存';
-	@override String get clearCachedFilesConfirm => '确定要清除所有缓存的远程文件？';
+	@override String get clearCachedFilesConfirm => '确定要清除所有缓存的远程文件吗？';
 	@override String get blockedInstances => '被屏蔽的服务器';
 	@override String get blockedInstancesDescription => '设定要屏蔽的服务器，以换行分隔。被屏蔽的服务器将无法与本服务器进行交换通讯。子域名也同样会被屏蔽。';
 	@override String get silencedInstances => '被静音的服务器';
@@ -509,7 +515,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get blockedUsers => '已屏蔽的用户';
 	@override String get noUsers => '无用户';
 	@override String get editProfile => '编辑资料';
-	@override String get noteDeleteConfirm => '要删除该帖子吗？';
+	@override String get noteDeleteConfirm => '确定要删除该帖子吗？';
 	@override String get pinLimitExceeded => '无法置顶更多了';
 	@override String get intro => 'Misskey 的部署结束啦！创建管理员账号吧！';
 	@override String get done => '完成';
@@ -829,7 +835,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get objectStorageUseSSL => '使用 SSL';
 	@override String get objectStorageUseSSLDesc => '如果不使用 https 进行 API 连接，请关闭。';
 	@override String get objectStorageUseProxy => '使用代理';
-	@override String get objectStorageUseProxyDesc => '如果您不使用代理进行 API 连接，请将其关闭。';
+	@override String get objectStorageUseProxyDesc => '如果不使用代理进行 API 连接，请关闭。';
 	@override String get objectStorageSetPublicRead => '上传时设置为 public-read';
 	@override String get s3ForcePathStyleDesc => '启用 s3ForcePathStyle 会强制将存储桶名称指定为 URL 中路径的一部分，而不是主机名。使用自托管 Minio 等时可能需要启用。';
 	@override String get serverLogs => '服务器日志';
@@ -949,11 +955,13 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get wordMute => '隐藏关键词';
 	@override String get wordMuteDescription => '折叠包含指定关键词的帖子。被折叠的帖子可单击展开。';
 	@override String get hardWordMute => '隐藏硬关键词';
+	@override String get showMutedWord => '显示已隐藏的关键词';
 	@override String get hardWordMuteDescription => '隐藏包含指定关键词的帖子。与隐藏关键词不同，帖子将完全不会显示。';
 	@override String get regexpError => '正则表达式错误';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab} 隐藏文字的第 ${line} 行的正则表达式有错误：';
 	@override String get instanceMute => '已隐藏的服务器';
 	@override String userSaysSomething({required Object name}) => '${name} 说了什么,但是被屏蔽词过滤了';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} 说了关于「${word}」的什么';
 	@override String get makeActive => '启用';
 	@override String get display => '显示';
 	@override String get copy => '复制';
@@ -1024,7 +1032,7 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get driveUsage => '网盘的空间用量';
 	@override String get noCrawle => '要求搜索引擎不索引该用户';
 	@override String get noCrawleDescription => '要求搜索引擎不要收录（索引）您的用户页面，帖子，页面等。';
-	@override String get lockedAccountInfo => '即使启用该功能，只要您不将帖子可见范围设置为“仅关注者”，任何人都还是可以看到您的帖子。';
+	@override String get lockedAccountInfo => '即使启用该功能，只要帖子可见范围不是「仅关注者」，任何人都可以看到您的帖子。';
 	@override String get alwaysMarkSensitive => '默认将媒体文件标记为敏感内容';
 	@override String get loadRawImages => '添加附件图像的缩略图时使用原始图像质量';
 	@override String get disableShowingAnimatedImages => '不播放动画';
@@ -1566,6 +1574,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => '请选择帐户';
 	@override String get availableRoles => '可用角色';
 	@override String get acknowledgeNotesAndEnable => '理解注意事项后再开启。';
+	@override String get federationSpecified => '此服务器已开启联合白名单。只能与管理员指定的服务器通信。';
+	@override String get federationDisabled => '此服务器已禁用联合。无法与其它服务器上的用户通信。';
 	@override late final _TranslationsMisskeyAccountSettingsZhCn accountSettings_ = _TranslationsMisskeyAccountSettingsZhCn._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhCn abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhCn._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhCn delivery_ = _TranslationsMisskeyDeliveryZhCn._(_root);
@@ -1640,10 +1650,14 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingZhCn urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingZhCn._(_root);
 	@override late final _TranslationsMisskeyMediaControlsZhCn mediaControls_ = _TranslationsMisskeyMediaControlsZhCn._(_root);
 	@override late final _TranslationsMisskeyContextMenuZhCn contextMenu_ = _TranslationsMisskeyContextMenuZhCn._(_root);
+	@override late final _TranslationsMisskeyGridComponentZhCn gridComponent_ = _TranslationsMisskeyGridComponentZhCn._(_root);
+	@override late final _TranslationsMisskeyRoleSelectDialogZhCn roleSelectDialog_ = _TranslationsMisskeyRoleSelectDialogZhCn._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerZhCn customEmojisManager_ = _TranslationsMisskeyCustomEmojisManagerZhCn._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenZhCn embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenZhCn._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionZhCn selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionZhCn._(_root);
 	@override late final _TranslationsMisskeyFollowRequestZhCn followRequest_ = _TranslationsMisskeyFollowRequestZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsZhCn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsZhCn._(_root);
+	@override late final _TranslationsMisskeyCaptchaZhCn captcha_ = _TranslationsMisskeyCaptchaZhCn._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -1678,7 +1692,7 @@ class _TranslationsMisskeyAbuseUserReportZhCn extends TranslationsMisskeyAbuseUs
 	@override String get resolve => '解决';
 	@override String get accept => '确认';
 	@override String get reject => '拒绝';
-	@override String get resolveTutorial => '如果举报内容有理且已解决，选择「确认」将案件以肯定的态度标记为已解决。\n如果举报内容站不住脚，选择「拒绝」将案件以否定的态度标记为已解决。';
+	@override String get resolveTutorial => '如果认可举报并已解决，选择「确认」将案件以肯定的态度标记为已解决。\n如果不认可举报，选择「拒绝」将案件以否定的态度标记为已解决。';
 }
 
 // Path: misskey.delivery_
@@ -2329,7 +2343,7 @@ class _TranslationsMisskeyX2faZhCn extends TranslationsMisskeyX2faEnUs {
 	@override String get securityKeyName => '输入密钥名称';
 	@override String get tapSecurityKey => '请按照浏览器说明操作来注册安全密钥或 Passkey。';
 	@override String get removeKey => '删除安全密钥';
-	@override String removeKeyConfirm({required Object name}) => '您确定要删除 ${name} 吗？';
+	@override String removeKeyConfirm({required Object name}) => '确定要删除 ${name} 吗？';
 	@override String get whyTOTPOnlyRenew => '当注册了安全密钥时，无法取消使用验证器。';
 	@override String get renewTOTP => '重置验证器';
 	@override String get renewTOTPConfirm => '当前验证器的验证码及备用代码已失效';
@@ -2610,7 +2624,7 @@ class _TranslationsMisskeyProfileZhCn extends TranslationsMisskeyProfileEnUs {
 	@override String get name => '昵称';
 	@override String get username => '用户名';
 	@override String get description => '个人简介';
-	@override String get youCanIncludeHashtags => '你可以在个人简介中包含一些#标签。';
+	@override String get youCanIncludeHashtags => '可以在个人简介中包含 #标签。';
 	@override String get metadata => '附加信息';
 	@override String get metadataEdit => '附加信息编辑';
 	@override String get metadataDescription => '最多可以在个人资料中以表格形式显示四条其他信息。';
@@ -2733,9 +2747,6 @@ class _TranslationsMisskeyPagesZhCn extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => '创建页面';
 	@override String get editPage => '编辑页面';
 	@override String get readPage => '查看页面';
-	@override String get created => '页面已创建';
-	@override String get updated => '页面已更新';
-	@override String get deleted => '该页面已被删除';
 	@override String get pageSetting => '页面设置';
 	@override String get nameAlreadyExists => '该页面 URL 已存在';
 	@override String get invalidNameTitle => '无效的页面 URL';
@@ -3135,6 +3146,39 @@ class _TranslationsMisskeyContextMenuZhCn extends TranslationsMisskeyContextMenu
 	@override String get native => '浏览器的用户界面';
 }
 
+// Path: misskey.gridComponent_
+class _TranslationsMisskeyGridComponentZhCn extends TranslationsMisskeyGridComponentEnUs {
+	_TranslationsMisskeyGridComponentZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyGridComponentErrorZhCn error_ = _TranslationsMisskeyGridComponentErrorZhCn._(_root);
+}
+
+// Path: misskey.roleSelectDialog_
+class _TranslationsMisskeyRoleSelectDialogZhCn extends TranslationsMisskeyRoleSelectDialogEnUs {
+	_TranslationsMisskeyRoleSelectDialogZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get notSelected => '未选中';
+}
+
+// Path: misskey.customEmojisManager_
+class _TranslationsMisskeyCustomEmojisManagerZhCn extends TranslationsMisskeyCustomEmojisManagerEnUs {
+	_TranslationsMisskeyCustomEmojisManagerZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCustomEmojisManagerGridCommonZhCn gridCommon_ = _TranslationsMisskeyCustomEmojisManagerGridCommonZhCn._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLogsZhCn logs_ = _TranslationsMisskeyCustomEmojisManagerLogsZhCn._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerRemoteZhCn remote_ = _TranslationsMisskeyCustomEmojisManagerRemoteZhCn._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalZhCn local_ = _TranslationsMisskeyCustomEmojisManagerLocalZhCn._(_root);
+}
+
 // Path: misskey.embedCodeGen_
 class _TranslationsMisskeyEmbedCodeGenZhCn extends TranslationsMisskeyEmbedCodeGenEnUs {
 	_TranslationsMisskeyEmbedCodeGenZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
@@ -3195,6 +3239,18 @@ class _TranslationsMisskeyRemoteLookupErrorsZhCn extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn._(_root);
+}
+
+// Path: misskey.captcha_
+class _TranslationsMisskeyCaptchaZhCn extends TranslationsMisskeyCaptchaEnUs {
+	_TranslationsMisskeyCaptchaZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get verify => '请通过 CAPTCHA 验证';
+	@override String get testSiteKeyMessage => '输入测试用的网站密钥及私密密钥后可以生成预览并检查，\n详情请看以下页面。';
+	@override late final _TranslationsMisskeyCaptchaErrorZhCn error_ = _TranslationsMisskeyCaptchaErrorZhCn._(_root);
 }
 
 // Path: misskey.delivery_.type_
@@ -3824,6 +3880,79 @@ class _TranslationsMisskeyDataSaverCodeZhCn extends TranslationsMisskeyDataSaver
 	@override String get description => '如果使用了代码高亮标记，例如在 MFM 中，则在点击之前不会加载。 代码高亮要求加载每种高亮语言的定义文件，由于这些文件不再自动加载，因此有望减少数据传输量。';
 }
 
+// Path: misskey.gridComponent_.error_
+class _TranslationsMisskeyGridComponentErrorZhCn extends TranslationsMisskeyGridComponentErrorEnUs {
+	_TranslationsMisskeyGridComponentErrorZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get requiredValue => '此值为必填项';
+	@override String get columnTypeNotSupport => '正则表达式验证仅支持 type:text 列。';
+	@override String patternNotMatch({required Object pattern}) => '此值与 ${pattern} 的模式不一致';
+	@override String get notUnique => '此值必须唯一';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class _TranslationsMisskeyCustomEmojisManagerGridCommonZhCn extends TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	_TranslationsMisskeyCustomEmojisManagerGridCommonZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get copySelectionRows => '复制所选行';
+	@override String get copySelectionRanges => '复制所选范围';
+	@override String get deleteSelectionRows => '删除所选行';
+	@override String get deleteSelectionRanges => '删除所选范围的行';
+	@override String get searchSettings => '搜索设置';
+	@override String get searchSettingCaption => '设置详细的搜索条件。';
+	@override String get searchLimit => '显示项目数';
+	@override String get sortOrder => '排序方式';
+	@override String get registrationLogs => '注册日志';
+	@override String get registrationLogsCaption => '将显示更新和删除表情符号的日志。执行更新或删除操作，又或者更改或重新加载页面时会消失。';
+	@override String get alertEmojisRegisterFailedDescription => '更新或删除表情符号失败。详情请确认注册日志。';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class _TranslationsMisskeyCustomEmojisManagerLogsZhCn extends TranslationsMisskeyCustomEmojisManagerLogsEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLogsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get showSuccessLogSwitch => '显示成功日志';
+	@override String get failureLogNothing => '没有失败日志。';
+	@override String get logNothing => '没有日志';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class _TranslationsMisskeyCustomEmojisManagerRemoteZhCn extends TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
+	_TranslationsMisskeyCustomEmojisManagerRemoteZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get selectionRowDetail => '所选行的详细信息';
+	@override String get importSelectionRows => '导入所选行';
+	@override String get importSelectionRangesRows => '导入所选范围的行';
+	@override String get importEmojisButton => '导入已选择的表情符号';
+	@override String get confirmImportEmojisTitle => '导入表情符号';
+	@override String confirmImportEmojisDescription({required Object count}) => '是否导入从远程服务器接收的 ${count} 个表情符号？请密切关注表情符号的许可协议。';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class _TranslationsMisskeyCustomEmojisManagerLocalZhCn extends TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get tabTitleList => '已注册的表情符号列表';
+	@override String get tabTitleRegister => '注册表情符号';
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalListZhCn list_ = _TranslationsMisskeyCustomEmojisManagerLocalListZhCn._(_root);
+	@override late final _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhCn register_ = _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhCn._(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
 class _TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhCn extends TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
@@ -3887,6 +4016,18 @@ class _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn extends Translation
 	// Translations
 	@override String get title => '未找到';
 	@override String get description => '未找到请求的资源。请再次检查 URI。';
+}
+
+// Path: misskey.captcha_.error_
+class _TranslationsMisskeyCaptchaErrorZhCn extends TranslationsMisskeyCaptchaErrorEnUs {
+	_TranslationsMisskeyCaptchaErrorZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override late final _TranslationsMisskeyCaptchaErrorRequestFailedZhCn requestFailed_ = _TranslationsMisskeyCaptchaErrorRequestFailedZhCn._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorVerificationFailedZhCn verificationFailed_ = _TranslationsMisskeyCaptchaErrorVerificationFailedZhCn._(_root);
+	@override late final _TranslationsMisskeyCaptchaErrorUnknownZhCn unknown_ = _TranslationsMisskeyCaptchaErrorUnknownZhCn._(_root);
 }
 
 // Path: misskey.initialTutorial_.postNote_.visibility_
@@ -4913,6 +5054,80 @@ class _TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedZhCn 
 	// Translations
 	@override String get title => '安装主题失败';
 	@override String get description => '安装主题时出错。请再试一次。可在 Javascript 控制台查看错误详情。';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class _TranslationsMisskeyCustomEmojisManagerLocalListZhCn extends TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalListZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get emojisNothing => '没有已注册的表情符号。';
+	@override String get markAsDeleteTargetRows => '将所选行标记为删除对象';
+	@override String get markAsDeleteTargetRanges => '将所选范围的行标记为删除对象';
+	@override String get alertUpdateEmojisNothingDescription => '没有已更改的表情符号。';
+	@override String get alertDeleteEmojisNothingDescription => '没有被标记为删除对象的表情符号。';
+	@override String get confirmMovePage => '要离开此页吗？';
+	@override String get confirmChangeView => '要更改显示吗？';
+	@override String confirmUpdateEmojisDescription({required Object count}) => '要更新 ${count} 个表情符号吗？';
+	@override String confirmDeleteEmojisDescription({required Object count}) => '要删除已选择的 ${count} 个表情符号吗？';
+	@override String get confirmResetDescription => '至今为止所做的所有修改都将被重置。';
+	@override String get confirmMovePageDesciption => '此页面上的表情符号已更改。\n若不保存就离开此页，此页面上所有的更改都将丢失。';
+	@override String get dialogSelectRoleTitle => '按角色搜索表情符号';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhCn extends TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	_TranslationsMisskeyCustomEmojisManagerLocalRegisterZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get uploadSettingTitle => '上传设置';
+	@override String get uploadSettingDescription => '可以在此页面设置上传表情符号时的行为。';
+	@override String get directoryToCategoryLabel => '目录名请输入「category」';
+	@override String get directoryToCategoryCaption => '拖放目录时，目录名请输入「category」';
+	@override String get emojiInputAreaCaption => '请使用其中一种方法选择要注册的表情符号。';
+	@override String get emojiInputAreaList1 => '在此区域内拖放图像文件或者目录';
+	@override String get emojiInputAreaList2 => '单击此链接以从电脑中选择';
+	@override String get emojiInputAreaList3 => '单击此链接以从网盘中选择';
+	@override String confirmRegisterEmojisDescription({required Object count}) => '要将列表内显示的表情符号替换为新的自定义表情符号吗？（为降低服务器负载，一次操作最多只能注册 ${count} 个表情符号）';
+	@override String get confirmClearEmojisDescription => '要放弃编辑并将列表内表示的表情符号清空吗？';
+	@override String confirmUploadEmojisDescription({required Object count}) => '要将拖放的 ${count} 个文件上传到网盘上吗？';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class _TranslationsMisskeyCaptchaErrorRequestFailedZhCn extends TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorRequestFailedZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '请求 CAPTCHA 失败';
+	@override String get text => '请稍后再试，又或者再检查一次设置。';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class _TranslationsMisskeyCaptchaErrorVerificationFailedZhCn extends TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	_TranslationsMisskeyCaptchaErrorVerificationFailedZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '验证 CAPTCHA 失败';
+	@override String get text => '请再次确认设置是否正确。';
+}
+
+// Path: misskey.captcha_.error_.unknown_
+class _TranslationsMisskeyCaptchaErrorUnknownZhCn extends TranslationsMisskeyCaptchaErrorUnknownEnUs {
+	_TranslationsMisskeyCaptchaErrorUnknownZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'CAPTCHA 错误';
+	@override String get text => '发生意外错误。';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

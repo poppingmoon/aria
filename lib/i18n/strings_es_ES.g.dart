@@ -267,6 +267,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} es uno de los servicios (también llamado instancia) que usa la plataforma de código abierto <b>Misskey</b>';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}/${month}';
 	@override String get search => 'Buscar';
+	@override String get reset => 'Reiniciar';
 	@override String get notifications => 'Notificaciones';
 	@override String get username => 'Nombre de usuario';
 	@override String get password => 'Contraseña';
@@ -310,6 +311,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'Desfijar';
 	@override String get copyContent => 'Copiar contenido';
 	@override String get copyLink => 'Copiar enlace';
+	@override String get copyRemoteLink => 'Copiar enlace remoto';
 	@override String get copyLinkRenote => 'Copiar enlace de renota';
 	@override String get delete => 'Borrar';
 	@override String get deleteAndEdit => 'Borrar y editar';
@@ -461,6 +463,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get proxyAccount => 'Cuenta proxy';
 	@override String get proxyAccountDescription => 'Una cuenta proxy es una cuenta que actúa como un seguidor remoto de un usuario bajo ciertas condiciones. Por ejemplo, cuando un usuario añade un usuario remoto a una lista, si ningún usuario local sigue al usuario agregado a la lista, la instancia no puede obtener su actividad. Así que la cuenta proxy sigue al usuario añadido a la lista';
 	@override String get host => 'Host';
+	@override String get selectSelf => 'Elígete a ti mismo';
 	@override String get selectUser => 'Elegir usuario';
 	@override String get recipient => 'Recipiente';
 	@override String get annotation => 'Anotación';
@@ -714,6 +717,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get moderator => 'Moderador';
 	@override String get moderation => 'Moderación';
 	@override String get moderationNote => 'Nota de moderación';
+	@override String get moderationNoteDescription => 'Puedes rellenar notas que solo se comparten entre moderadores.';
 	@override String get addModerationNote => 'Añadir nota de moderación';
 	@override String get moderationLogs => 'Log de moderación';
 	@override String nUsersMentioned({required Object n}) => '${n} usuarios mencionados';
@@ -748,10 +752,12 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String noteOf({required Object user}) => 'Notas de ${user}';
 	@override String get quoteAttached => 'Cita añadida';
 	@override String get quoteQuestion => '¿Quiere añadir una cita?';
+	@override String get attachAsFileQuestion => 'El texto del portapapeles es demasiado grande ¿Desea adjuntarlo como archivo de texto?';
 	@override String get noMessagesYet => 'Aún no hay chat';
 	@override String get newMessageExists => 'Tienes un mensaje nuevo';
 	@override String get onlyOneFileCanBeAttached => 'Solo se puede añadir un archivo al mensaje';
 	@override String get signinRequired => 'Iniciar sesión';
+	@override String get signinOrContinueOnRemote => 'Para continuar, tendrá que ir a su servidor o registrarse e iniciar sesión en este servidor';
 	@override String get invitations => 'Invitar';
 	@override String get invitationCode => 'Código de invitación';
 	@override String get checking => 'Comprobando';
@@ -775,6 +781,8 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get native => 'Nativo';
 	@override String get menuStyle => 'Diseño del menú';
 	@override String get style => 'Diseño';
+	@override String get drawer => 'Cajón de Aplicaciones';
+	@override String get popup => 'Ventana emergente';
 	@override String get showNoteActionsOnlyHover => 'Mostrar acciones de la nota sólo al pasar el cursor';
 	@override String get showReactionsCount => 'Mostrar el número de reacciones en las notas';
 	@override String get noHistory => 'No hay datos en el historial';
@@ -842,6 +850,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get notUseSound => 'Sin sonido';
 	@override String get useSoundOnlyWhenActive => 'Sonar solo cuando Misskey esté activo';
 	@override String get details => 'Detalles';
+	@override String get renoteDetails => 'Detalles(Renota)';
 	@override String get chooseEmoji => 'Elije un emoji';
 	@override String get unableToProcess => 'La operación no se puede llevar a cabo';
 	@override String get recentUsed => 'Usado recientemente';
@@ -857,6 +866,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get descendingOrder => 'Descendente';
 	@override String get scratchpad => 'Scratch pad';
 	@override String get scratchpadDescription => 'Scratchpad proporciona un entorno experimental para AiScript. Puede escribir, ejecutar y verificar los resultados que interactúan con Misskey.';
+	@override String get uiInspector => 'Inspector de UI';
 	@override String get output => 'Salida';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Deshabilitar AiScript en Páginas';
@@ -937,7 +947,10 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'Apagar cuando se use STARTTLS';
 	@override String get testEmail => 'Prueba de envío';
 	@override String get wordMute => 'Silenciar palabras';
+	@override String get wordMuteDescription => 'Minimiza las notas que contienen la palabra o frase especificada. Las notas minimizadas pueden visualizarse haciendo clic sobre ellas.';
 	@override String get hardWordMute => 'Filtro de palabra fuerte';
+	@override String get showMutedWord => 'Mostrar palabras silenciadas.';
+	@override String get hardWordMuteDescription => 'Oculta las notas que contienen la palabra o frase especificada. A diferencia de Silenciar palabra, la nota quedará completamente oculta a la vista.';
 	@override String get regexpError => 'Error de la expresión regular';
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Ocurrió un error en la expresión regular en la linea ${line} de las palabras muteadas ${tab}';
 	@override String get instanceMute => 'Instancias silenciadas';
@@ -1388,6 +1401,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get options => 'Opción';
 	@override String get specifyUser => 'Especificar usuario';
 	@override String get lookupConfirm => '¿Quiere informarse?';
+	@override String get specifyHost => 'Especificar Host';
 	@override String get failedToPreviewUrl => 'No se pudo generar la vista previa';
 	@override String get update => 'Actualizar';
 	@override String get rolesThatCanBeUsedThisEmojiAsReaction => 'Roles que pueden usar este emoji como reacción';
@@ -1522,6 +1536,9 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get performance => 'Rendimiento';
 	@override String get unknownWebAuthnKey => 'Esto no se ha registrado llave maestra.';
 	@override String get messageToFollower => 'Mensaje a seguidores';
+	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
+	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
+	@override late final _TranslationsMisskeyAccountSettingsEsEs accountSettings_ = _TranslationsMisskeyAccountSettingsEsEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportEsEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportEsEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryEsEs delivery_ = _TranslationsMisskeyDeliveryEsEs._(_root);
 	@override late final _TranslationsMisskeyBubbleGameEsEs bubbleGame_ = _TranslationsMisskeyBubbleGameEsEs._(_root);
@@ -1594,6 +1611,17 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingEsEs urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingEsEs._(_root);
 	@override late final _TranslationsMisskeyMediaControlsEsEs mediaControls_ = _TranslationsMisskeyMediaControlsEsEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsEsEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsEsEs._(_root);
+}
+
+// Path: misskey.accountSettings_
+class _TranslationsMisskeyAccountSettingsEsEs extends TranslationsMisskeyAccountSettingsEnUs {
+	_TranslationsMisskeyAccountSettingsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get requireSigninToViewContents => 'Se requiere iniciar sesión para ver el contenido';
+	@override String get requireSigninToViewContentsDescription1 => 'Requiere iniciar sesión para ver todas las notas y otros contenidos que hayas creado. Se espera que esto evite que los rastreadores recopilen información.';
 }
 
 // Path: misskey.abuseUserReport_
@@ -2644,9 +2672,6 @@ class _TranslationsMisskeyPagesEsEs extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Crear página';
 	@override String get editPage => 'Editar página';
 	@override String get readPage => 'Viendo la fuente';
-	@override String get created => 'La página fue creada';
-	@override String get updated => 'La página fue actualizada';
-	@override String get deleted => 'La página borrada';
 	@override String get pageSetting => 'Configurar página';
 	@override String get nameAlreadyExists => 'La URL de la página especificada ya existe';
 	@override String get invalidNameTitle => 'URL inválida';

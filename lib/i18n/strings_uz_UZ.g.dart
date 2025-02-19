@@ -1289,9 +1289,6 @@ class _TranslationsMisskeyPagesUzUz extends TranslationsMisskeyPagesEnUs {
 	// Translations
 	@override String get newPage => 'Yangi Sahifa yaratish';
 	@override String get editPage => 'Ushbu Sahifani tahrirlash';
-	@override String get created => 'Sahifa muvaffaqiyatli yaratildi';
-	@override String get updated => 'Sahifa muvaffaqiyatli tahrirlandi';
-	@override String get deleted => 'Sahifa muvaffaqiyatli o\'chirildi';
 	@override String get pageSetting => 'Sahifa sozlamalari';
 	@override String get nameAlreadyExists => 'Ko\'rsatilgan Sahifa URL\'i allaqachon mavjud';
 	@override String get invalidNameTitle => 'Ko\'rsatilgan Sahifa URL\'i yaroqsiz';

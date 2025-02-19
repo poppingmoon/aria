@@ -282,6 +282,7 @@ class TranslationsMisskeyEnUs {
 	String poweredByMisskeyDescription({required Object name}) => '${name} is one of the services powered by the open source platform <b>Misskey</b> (referred to as a "Misskey instance").';
 	String monthAndDay({required Object month, required Object day}) => '${month}/${day}';
 	String get search => 'Search';
+	String get reset => 'Reset';
 	String get notifications => 'Notifications';
 	String get username => 'Username';
 	String get password => 'Password';
@@ -325,6 +326,7 @@ class TranslationsMisskeyEnUs {
 	String get unpin => 'Unpin from profile';
 	String get copyContent => 'Copy contents';
 	String get copyLink => 'Copy link';
+	String get copyRemoteLink => 'Copy remote link';
 	String get copyLinkRenote => 'Copy renote link';
 	String get delete => 'Delete';
 	String get deleteAndEdit => 'Delete and edit';
@@ -963,11 +965,13 @@ class TranslationsMisskeyEnUs {
 	String get wordMute => 'Word mute';
 	String get wordMuteDescription => 'Minimize notes that contain the specified word or phrase. Minimized notes can be displayed by clicking on them.';
 	String get hardWordMute => 'Hard word mute';
+	String get showMutedWord => 'Show muted words';
 	String get hardWordMuteDescription => 'Hide notes that contain the specified word or phrase. Unlike word mute, the note will be completely hidden from view.';
 	String get regexpError => 'Regular Expression error';
 	String regexpErrorDescription({required Object line, required Object tab}) => 'An error occurred in the regular expression on line ${line} of your ${tab} word mutes:';
 	String get instanceMute => 'Instance Mutes';
 	String userSaysSomething({required Object name}) => '${name} said something';
+	String userSaysSomethingAbout({required Object name, required Object word}) => '${name} said something about "${word}"';
 	String get makeActive => 'Activate';
 	String get display => 'Display';
 	String get copy => 'Copy';
@@ -1580,6 +1584,8 @@ class TranslationsMisskeyEnUs {
 	String get pleaseSelectAccount => 'Select an account';
 	String get availableRoles => 'Available roles';
 	String get acknowledgeNotesAndEnable => 'Turn on after understanding the precautions.';
+	String get federationSpecified => 'This server is operated in a whitelist federation. Interacting with servers other than those designated by the administrator is not allowed.';
+	String get federationDisabled => 'Federation is disabled on this server. You cannot interact with users on other servers.';
 	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
@@ -1654,10 +1660,14 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyUrlPreviewSettingEnUs urlPreviewSetting_ = TranslationsMisskeyUrlPreviewSettingEnUs.internal(_root);
 	late final TranslationsMisskeyMediaControlsEnUs mediaControls_ = TranslationsMisskeyMediaControlsEnUs.internal(_root);
 	late final TranslationsMisskeyContextMenuEnUs contextMenu_ = TranslationsMisskeyContextMenuEnUs.internal(_root);
+	late final TranslationsMisskeyGridComponentEnUs gridComponent_ = TranslationsMisskeyGridComponentEnUs.internal(_root);
+	late final TranslationsMisskeyRoleSelectDialogEnUs roleSelectDialog_ = TranslationsMisskeyRoleSelectDialogEnUs.internal(_root);
+	late final TranslationsMisskeyCustomEmojisManagerEnUs customEmojisManager_ = TranslationsMisskeyCustomEmojisManagerEnUs.internal(_root);
 	late final TranslationsMisskeyEmbedCodeGenEnUs embedCodeGen_ = TranslationsMisskeyEmbedCodeGenEnUs.internal(_root);
 	late final TranslationsMisskeySelfXssPreventionEnUs selfXssPrevention_ = TranslationsMisskeySelfXssPreventionEnUs.internal(_root);
 	late final TranslationsMisskeyFollowRequestEnUs followRequest_ = TranslationsMisskeyFollowRequestEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsEnUs remoteLookupErrors_ = TranslationsMisskeyRemoteLookupErrorsEnUs.internal(_root);
+	late final TranslationsMisskeyCaptchaEnUs captcha_ = TranslationsMisskeyCaptchaEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -2757,9 +2767,6 @@ class TranslationsMisskeyPagesEnUs {
 	String get newPage => 'Create a new Page';
 	String get editPage => 'Edit this Page';
 	String get readPage => 'Viewing this Page\'s source';
-	String get created => 'Page successfully created';
-	String get updated => 'Page successfully edited';
-	String get deleted => 'Page successfully deleted';
 	String get pageSetting => 'Page settings';
 	String get nameAlreadyExists => 'The specified Page URL already exists';
 	String get invalidNameTitle => 'The specified Page URL is invalid';
@@ -3159,6 +3166,39 @@ class TranslationsMisskeyContextMenuEnUs {
 	String get native => 'Native';
 }
 
+// Path: misskey.gridComponent_
+class TranslationsMisskeyGridComponentEnUs {
+	TranslationsMisskeyGridComponentEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsMisskeyGridComponentErrorEnUs error_ = TranslationsMisskeyGridComponentErrorEnUs.internal(_root);
+}
+
+// Path: misskey.roleSelectDialog_
+class TranslationsMisskeyRoleSelectDialogEnUs {
+	TranslationsMisskeyRoleSelectDialogEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get notSelected => 'Not selected';
+}
+
+// Path: misskey.customEmojisManager_
+class TranslationsMisskeyCustomEmojisManagerEnUs {
+	TranslationsMisskeyCustomEmojisManagerEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsMisskeyCustomEmojisManagerGridCommonEnUs gridCommon_ = TranslationsMisskeyCustomEmojisManagerGridCommonEnUs.internal(_root);
+	late final TranslationsMisskeyCustomEmojisManagerLogsEnUs logs_ = TranslationsMisskeyCustomEmojisManagerLogsEnUs.internal(_root);
+	late final TranslationsMisskeyCustomEmojisManagerRemoteEnUs remote_ = TranslationsMisskeyCustomEmojisManagerRemoteEnUs.internal(_root);
+	late final TranslationsMisskeyCustomEmojisManagerLocalEnUs local_ = TranslationsMisskeyCustomEmojisManagerLocalEnUs.internal(_root);
+}
+
 // Path: misskey.embedCodeGen_
 class TranslationsMisskeyEmbedCodeGenEnUs {
 	TranslationsMisskeyEmbedCodeGenEnUs.internal(this._root);
@@ -3219,6 +3259,18 @@ class TranslationsMisskeyRemoteLookupErrorsEnUs {
 	late final TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs responseInvalid_ = TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs responseInvalidIdHostNotMatch_ = TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs noSuchObject_ = TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs.internal(_root);
+}
+
+// Path: misskey.captcha_
+class TranslationsMisskeyCaptchaEnUs {
+	TranslationsMisskeyCaptchaEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get verify => 'Please verify the CAPTCHA';
+	String get testSiteKeyMessage => 'You can check the preview by entering the test values for the site and secret keys.\nPlease see the following page for details.';
+	late final TranslationsMisskeyCaptchaErrorEnUs error_ = TranslationsMisskeyCaptchaErrorEnUs.internal(_root);
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3864,6 +3916,79 @@ class TranslationsMisskeyDataSaverCodeEnUs {
 	String get description => 'If code highlighting notations are used in MFM, etc., they will not load until tapped. Syntax highlighting requires downloading the highlight definition files for each programming language. Therefore, disabling the automatic loading of these files is expected to reduce the amount of communication data.';
 }
 
+// Path: misskey.gridComponent_.error_
+class TranslationsMisskeyGridComponentErrorEnUs {
+	TranslationsMisskeyGridComponentErrorEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get requiredValue => 'This value is required';
+	String get columnTypeNotSupport => 'Validation with regular expression is supported only for type:text columns.';
+	String patternNotMatch({required Object pattern}) => 'This value doesn\'t match the pattern in ${pattern}';
+	String get notUnique => 'This value must be unique';
+}
+
+// Path: misskey.customEmojisManager_.gridCommon_
+class TranslationsMisskeyCustomEmojisManagerGridCommonEnUs {
+	TranslationsMisskeyCustomEmojisManagerGridCommonEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get copySelectionRows => 'Copy selected rows';
+	String get copySelectionRanges => 'Copy selected ranges';
+	String get deleteSelectionRows => 'Delete selected rows';
+	String get deleteSelectionRanges => 'Delete rows in the selection';
+	String get searchSettings => 'Search settings';
+	String get searchSettingCaption => 'Set detailed search criteria.';
+	String get searchLimit => '';
+	String get sortOrder => 'Sort order';
+	String get registrationLogs => 'Registration log';
+	String get registrationLogsCaption => 'Logs will be displayed when updating or deleting Emojis. They will disappear after updating or deleting them, moving to a new page, or reloading.';
+	String get alertEmojisRegisterFailedDescription => 'Failed to update or delete Emojis. Please check the registration log for details.';
+}
+
+// Path: misskey.customEmojisManager_.logs_
+class TranslationsMisskeyCustomEmojisManagerLogsEnUs {
+	TranslationsMisskeyCustomEmojisManagerLogsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get showSuccessLogSwitch => 'Show success log';
+	String get failureLogNothing => 'There is no failure log.';
+	String get logNothing => 'There is no log.';
+}
+
+// Path: misskey.customEmojisManager_.remote_
+class TranslationsMisskeyCustomEmojisManagerRemoteEnUs {
+	TranslationsMisskeyCustomEmojisManagerRemoteEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get selectionRowDetail => 'Selected row\'s detail';
+	String get importSelectionRows => 'Import selected rows';
+	String get importSelectionRangesRows => 'Import rows in the selection';
+	String get importEmojisButton => 'Import checked Emojis';
+	String get confirmImportEmojisTitle => 'Import Emojis';
+	String confirmImportEmojisDescription({required Object count}) => 'Import ${count} Emoji(s) received from the remote server. Please pay close attention to the license of the Emoji. Are you sure to continue?';
+}
+
+// Path: misskey.customEmojisManager_.local_
+class TranslationsMisskeyCustomEmojisManagerLocalEnUs {
+	TranslationsMisskeyCustomEmojisManagerLocalEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get tabTitleList => 'List of registered Emojis';
+	String get tabTitleRegister => 'Emoji registration';
+	late final TranslationsMisskeyCustomEmojisManagerLocalListEnUs list_ = TranslationsMisskeyCustomEmojisManagerLocalListEnUs.internal(_root);
+	late final TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs register_ = TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs.internal(_root);
+}
+
 // Path: misskey.remoteLookupErrors_.federationNotAllowed_
 class TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs {
 	TranslationsMisskeyRemoteLookupErrorsFederationNotAllowedEnUs.internal(this._root);
@@ -3927,6 +4052,18 @@ class TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs {
 	// Translations
 	String get title => 'Not found';
 	String get description => 'The requested resource was not found, please recheck the URI.';
+}
+
+// Path: misskey.captcha_.error_
+class TranslationsMisskeyCaptchaErrorEnUs {
+	TranslationsMisskeyCaptchaErrorEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	late final TranslationsMisskeyCaptchaErrorRequestFailedEnUs requestFailed_ = TranslationsMisskeyCaptchaErrorRequestFailedEnUs.internal(_root);
+	late final TranslationsMisskeyCaptchaErrorVerificationFailedEnUs verificationFailed_ = TranslationsMisskeyCaptchaErrorVerificationFailedEnUs.internal(_root);
+	late final TranslationsMisskeyCaptchaErrorUnknownEnUs unknown_ = TranslationsMisskeyCaptchaErrorUnknownEnUs.internal(_root);
 }
 
 // Path: misskeyIO.skebStatus_.genres_
@@ -4969,6 +5106,80 @@ class TranslationsMisskeyExternalResourceInstallerErrorsThemeInstallFailedEnUs {
 	// Translations
 	String get title => 'Failed to install theme';
 	String get description => 'A problem occurred during theme installation. Please try again. Error details can be viewed in the Javascript console.';
+}
+
+// Path: misskey.customEmojisManager_.local_.list_
+class TranslationsMisskeyCustomEmojisManagerLocalListEnUs {
+	TranslationsMisskeyCustomEmojisManagerLocalListEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get emojisNothing => 'There are no registered Emojis.';
+	String get markAsDeleteTargetRows => 'Mark selected rows as a target to delete';
+	String get markAsDeleteTargetRanges => 'Mark rows in the selection as a target to delete';
+	String get alertUpdateEmojisNothingDescription => 'There are no updated Emojis.';
+	String get alertDeleteEmojisNothingDescription => 'There are no Emojis to be deleted.';
+	String get confirmMovePage => '';
+	String get confirmChangeView => '';
+	String confirmUpdateEmojisDescription({required Object count}) => 'Update ${count} Emoji(s). Are you sure to continue?';
+	String confirmDeleteEmojisDescription({required Object count}) => 'Delete checked ${count} Emoji(s). Are you sure to continue?';
+	String get confirmResetDescription => '';
+	String get confirmMovePageDesciption => 'Changes have been made to the Emojis on this page.\nIf you leave the page without saving, all changes made on this page will be discarded.';
+	String get dialogSelectRoleTitle => 'Search by roll set in Emojis';
+}
+
+// Path: misskey.customEmojisManager_.local_.register_
+class TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs {
+	TranslationsMisskeyCustomEmojisManagerLocalRegisterEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get uploadSettingTitle => 'Upload settings';
+	String get uploadSettingDescription => 'On this screen, you can configure the behavior when uploading Emojis.';
+	String get directoryToCategoryLabel => 'Enter the directory name in the "category" field';
+	String get directoryToCategoryCaption => 'When you drag and drop a directory, enter the directory name in the "category" field.';
+	String get emojiInputAreaCaption => 'Select the Emojis you wish to register using one of the methods.';
+	String get emojiInputAreaList1 => 'Drag and drop image files or a directory into this frame';
+	String get emojiInputAreaList2 => 'Click this link to select from your computer';
+	String get emojiInputAreaList3 => 'Click this link to select from the drive';
+	String confirmRegisterEmojisDescription({required Object count}) => 'Register the Emojis from the list as new custom Emojis. Are you sure to continue? (To avoid overload, only ${count} Emoji(s) can be registered in a single operation)';
+	String get confirmClearEmojisDescription => 'Discard the edits and clear the Emojis from the list. Are you sure to continue?';
+	String confirmUploadEmojisDescription({required Object count}) => 'Upload the dragged and dropped ${count} file(s) to the drive. Are you sure to continue?';
+}
+
+// Path: misskey.captcha_.error_.requestFailed_
+class TranslationsMisskeyCaptchaErrorRequestFailedEnUs {
+	TranslationsMisskeyCaptchaErrorRequestFailedEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Failed to request CAPTCHA';
+	String get text => 'Please run it after a while or check the settings again.';
+}
+
+// Path: misskey.captcha_.error_.verificationFailed_
+class TranslationsMisskeyCaptchaErrorVerificationFailedEnUs {
+	TranslationsMisskeyCaptchaErrorVerificationFailedEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Failed to validate CAPTCHA';
+	String get text => 'Please check again if the settings are correct.';
+}
+
+// Path: misskey.captcha_.error_.unknown_
+class TranslationsMisskeyCaptchaErrorUnknownEnUs {
+	TranslationsMisskeyCaptchaErrorUnknownEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'CAPTCHA error';
+	String get text => 'An unexpected error occurred.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

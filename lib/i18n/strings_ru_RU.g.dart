@@ -1140,7 +1140,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override String get notesSearchNotAvailable => 'Поиск заметок недоступен';
 	@override String get license => 'Лицензия';
 	@override String get unfavoriteConfirm => 'Удалить избранное?';
-	@override String get myClips => 'Мои клипы';
+	@override String get myClips => 'Мои подборки';
 	@override String get drivecleaner => 'Очиститель дисков';
 	@override String get retryAllQueuesNow => 'Повторить все очереди сейчас';
 	@override String get retryAllQueuesConfirmTitle => 'Хотите попробовать ещё раз?';
@@ -2211,9 +2211,6 @@ class _TranslationsMisskeyPagesRuRu extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Создать страницу';
 	@override String get editPage => 'Править страницу';
 	@override String get readPage => 'Читать страницу';
-	@override String get created => 'Страница успешно создана.';
-	@override String get updated => 'Страница успешно обновлена.';
-	@override String get deleted => 'Страница успешно удалена.';
 	@override String get pageSetting => 'Настройки страницы';
 	@override String get nameAlreadyExists => 'Указанный адрес страницы уже существует.';
 	@override String get invalidNameTitle => 'Указанный адрес страницы недопустим.';

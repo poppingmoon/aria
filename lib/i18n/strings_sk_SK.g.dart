@@ -1743,9 +1743,6 @@ class _TranslationsMisskeyPagesSkSk extends TranslationsMisskeyPagesEnUs {
 	@override String get newPage => 'Vytvoriť novú stránku';
 	@override String get editPage => 'Upraviť túto stránku';
 	@override String get readPage => 'Zobrazenie zdroja aktívne';
-	@override String get created => 'Stránka úspešne vytvorená';
-	@override String get updated => 'Stránka úspešne upravená';
-	@override String get deleted => 'Stránka úspešne odstránená';
 	@override String get pageSetting => 'Nastavenia stránky';
 	@override String get nameAlreadyExists => 'Zadaná URL stránku už existuje';
 	@override String get invalidNameTitle => 'Zadaná URL stránku je nesprávna';
