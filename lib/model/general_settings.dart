@@ -129,6 +129,7 @@ class GeneralSettings with _$GeneralSettings {
     @Default(NoteActionType.menu) NoteActionType noteDoubleTapAction,
     @Default(NoteActionType.reaction) NoteActionType noteLongPressAction,
     @Default(true) bool confirmBeforePost,
+    @Default(true) bool confirmBeforeRenote,
     @Default(true) bool confirmBeforeReact,
     @Default(true) bool confirmBeforeFollow,
     @Default(false) bool confirmWhenRevealingSensitiveMedia,

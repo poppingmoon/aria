@@ -212,6 +212,20 @@ class BehaviorPage extends ConsumerWidget {
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               width: maxContentWidth,
               child: SwitchListTile(
+                title: Text(t.aria.confirmBeforeRenote),
+                value: settings.confirmBeforeRenote,
+                onChanged:
+                    (value) => ref
+                        .read(generalSettingsNotifierProvider.notifier)
+                        .setConfirmBeforeRenote(value),
+              ),
+            ),
+          ),
+          Center(
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              width: maxContentWidth,
+              child: SwitchListTile(
                 title: Text(t.aria.confirmBeforeReact),
                 value: settings.confirmBeforeReact,
                 onChanged:

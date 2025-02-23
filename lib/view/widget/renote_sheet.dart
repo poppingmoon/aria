@@ -196,7 +196,7 @@ class RenoteSheet extends HookConsumerWidget {
                       final request = NotesCreateRequest(renoteId: note.id);
                       if (ref
                           .read(generalSettingsNotifierProvider)
-                          .confirmBeforePost) {
+                          .confirmBeforeRenote) {
                         final confirmed = await confirmPost(
                           ref,
                           account,
