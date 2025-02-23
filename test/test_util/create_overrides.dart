@@ -21,6 +21,7 @@ List<Override> createOverrides(
   MetaResponse? meta,
   Note? note,
   List<Emoji>? emojis,
+  Map<String, dynamic>? prefs,
 }) {
   final dio = Dio();
   final dioAdapter = DioAdapter(dio: dio, matcher: const UrlRequestMatcher());
@@ -36,7 +37,9 @@ List<Override> createOverrides(
 
   return [
     cacheManagerProvider.overrideWithValue(cacheManager),
-    sharedPreferencesProvider.overrideWithValue(FakeSharedPreferences({})),
+    sharedPreferencesProvider.overrideWithValue(
+      FakeSharedPreferences(prefs ?? {}),
+    ),
     dioProvider.overrideWithValue(dio),
     misskeyProvider(account).overrideWithValue(misskey),
     misskeyProvider(

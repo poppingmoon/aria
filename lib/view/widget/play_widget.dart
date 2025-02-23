@@ -22,6 +22,7 @@ import '../../rust/api/aiscript.dart';
 import '../../rust/api/aiscript/api.dart';
 import '../../rust/api/aiscript/play.dart';
 import '../../rust/api/aiscript/ui.dart';
+import '../../rust/frb_generated.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/launch_url.dart';
@@ -265,13 +266,23 @@ class PlayWidget extends HookConsumerWidget {
                             ),
                             autofocus: true,
                             onPressed: () async {
+                              if (!RustLib.instance.initialized) {
+                                await RustLib.init();
+                              }
                               await aiscript.value?.abort();
-                              final i = await ref.read(
-                                iNotifierProvider(account).future,
-                              );
-                              final emojis = await ref.read(
-                                emojisNotifierProvider(account.host).future,
-                              );
+                              MeDetailed? i;
+                              try {
+                                i = await ref.read(
+                                  iNotifierProvider(account).future,
+                                );
+                              } catch (_) {}
+                              List<Emoji>? emojis;
+                              try {
+                                final response = await ref.read(
+                                  emojisNotifierProvider(account.host).future,
+                                );
+                                emojis = response.values.toList();
+                              } catch (_) {}
                               components.value = {};
                               try {
                                 aiscript.value = await AiScript.newInstance(
@@ -287,9 +298,7 @@ class PlayWidget extends HookConsumerWidget {
                                     userId: i?.id,
                                     userName: i?.name,
                                     userUsername: i?.username,
-                                    customEmojis: jsonEncode(
-                                      emojis.values.toList(),
-                                    ),
+                                    customEmojis: jsonEncode(emojis ?? []),
                                     locale: locale,
                                     serverUrl: 'https://${account.host}',
                                     dialog:

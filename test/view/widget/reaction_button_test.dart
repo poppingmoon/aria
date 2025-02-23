@@ -30,11 +30,7 @@ Future<ProviderContainer> setupWidget(
 }) async {
   await tester.pumpWidget(
     ProviderScope(
-      overrides: createOverrides(
-        account,
-        // i: dummyMeDetailed.copyWith(id: 'testuser'),
-        // meta: const MetaResponse(),
-      ),
+      overrides: createOverrides(account),
       child: MaterialApp.router(
         routerConfig: GoRouter(
           routes: [
