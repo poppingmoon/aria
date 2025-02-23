@@ -59,6 +59,7 @@ class Mfm extends HookConsumerWidget {
     this.style,
     this.emojis,
     this.author,
+    this.noteId,
     this.nyaize = false,
     this.isUserDescription = false,
     this.onClickEv,
@@ -78,6 +79,7 @@ class Mfm extends HookConsumerWidget {
   final TextStyle? style;
   final Map<String, String>? emojis;
   final User? author;
+  final String? noteId;
   final bool nyaize;
   final bool isUserDescription;
   final void Function(String clickEv)? onClickEv;
@@ -137,6 +139,7 @@ class Mfm extends HookConsumerWidget {
       simple: simple,
       emojis: emojis,
       author: author,
+      noteId: noteId,
       shouldNyaize:
           nyaize && (author?.isCat ?? false) && (author?.speakAsCat ?? true),
       isUserDescription: isUserDescription,
@@ -217,6 +220,7 @@ class _Mfm extends StatelessWidget {
     required this.simple,
     this.emojis,
     this.author,
+    this.noteId,
     required this.shouldNyaize,
     required this.isUserDescription,
     this.onClickEv,
@@ -238,6 +242,7 @@ class _Mfm extends StatelessWidget {
   final bool simple;
   final Map<String, String>? emojis;
   final User? author;
+  final String? noteId;
   final bool shouldNyaize;
   final bool isUserDescription;
   final void Function(String clickEv)? onClickEv;
@@ -509,6 +514,7 @@ class _Mfm extends StatelessWidget {
                         (context) => EmojiSheet(
                           account: account,
                           emoji: ':$name@${author?.host ?? '.'}:',
+                          targetNoteId: noteId,
                         ),
                   )
                   : null,
@@ -535,7 +541,11 @@ class _Mfm extends StatelessWidget {
                   ? () => showModalBottomSheet<void>(
                     context: context,
                     builder:
-                        (context) => EmojiSheet(account: account, emoji: emoji),
+                        (context) => EmojiSheet(
+                          account: account,
+                          emoji: emoji,
+                          targetNoteId: noteId,
+                        ),
                   )
                   : null,
           inline: true,
