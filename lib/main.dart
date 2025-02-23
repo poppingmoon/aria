@@ -47,7 +47,6 @@ import 'provider/window_size_repository_provider.dart';
 import 'repository/window_position_repository.dart';
 import 'repository/window_size_repository.dart';
 import 'router/router.dart';
-import 'rust/frb_generated.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -140,7 +139,6 @@ class Aria extends HookConsumerWidget {
     if (generalSettings.keepScreenOn) {
       WakelockPlus.enable().ignore();
     }
-    RustLib.init().ignore();
 
     if (defaultTargetPlatform == TargetPlatform.android) {
       final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();

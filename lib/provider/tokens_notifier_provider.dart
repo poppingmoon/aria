@@ -1,7 +1,6 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../model/account.dart';
-import 'accounts_notifier_provider.dart';
 import 'token_repository_provider.dart';
 
 part 'tokens_notifier_provider.g.dart';
@@ -18,8 +17,6 @@ class TokensNotifier extends _$TokensNotifier {
       final token = await ref.read(tokenRepositoryProvider).readToken(account);
       if (token != null) {
         state = {...state, account: token};
-      } else {
-        await ref.read(accountsNotifierProvider.notifier).remove(account);
       }
     } catch (_) {}
   }
