@@ -130,9 +130,7 @@ class ReactionUsersSheet extends HookConsumerWidget {
                               (context) => EmojiSheet(
                                 account: account,
                                 emoji: reaction,
-                                targetNote: ref.read(
-                                  noteProvider(account, noteId),
-                                ),
+                                targetNoteId: noteId,
                               ),
                         ),
                   ),

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:material_symbols_icons/symbols.dart';
-import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
@@ -10,6 +9,7 @@ import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/emoji_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/muted_emojis_notifier_provider.dart';
+import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/pinned_emojis_notifier_provider.dart';
 import '../../util/check_reaction_permissions.dart';
@@ -26,16 +26,20 @@ class EmojiSheet extends ConsumerWidget {
     super.key,
     required this.account,
     required this.emoji,
-    this.targetNote,
+    this.targetNoteId,
   });
 
   final Account account;
   final String emoji;
-  final Note? targetNote;
+  final String? targetNoteId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final targetNote =
+        targetNoteId != null
+            ? ref.watch(noteProvider(account, targetNoteId!))
+            : null;
     final isCustomEmoji = emoji.startsWith(':');
     final (name, host) = decodeCustomEmoji(emoji);
     final data =
@@ -46,7 +50,7 @@ class EmojiSheet extends ConsumerWidget {
         !account.isGuest &&
         targetNote != null &&
         (!isCustomEmoji ||
-            data != null && checkReactionPermissions(i, targetNote!, data));
+            data != null && checkReactionPermissions(i, targetNote, data));
     final isPinnedForReaction = ref.watch(
       pinnedEmojisNotifierProvider(
         account,
@@ -95,7 +99,7 @@ class EmojiSheet extends ConsumerWidget {
             leading: const Icon(Icons.add),
             title: Text(t.misskey.doReaction),
             onTap: () async {
-              if (targetNote?.myReaction == null) {
+              if (targetNote.myReaction == null) {
                 final localEmoji = isCustomEmoji ? ':$name@.:' : emoji;
                 if (ref
                         .read(generalSettingsNotifierProvider)
@@ -105,7 +109,7 @@ class EmojiSheet extends ConsumerWidget {
                     context,
                     account: account,
                     emoji: localEmoji,
-                    note: targetNote!,
+                    note: targetNote,
                   );
                   if (!confirmed) return;
                 }
@@ -114,7 +118,7 @@ class EmojiSheet extends ConsumerWidget {
                   context,
                   ref
                       .read(notesNotifierProvider(account).notifier)
-                      .react(targetNote!.id, localEmoji),
+                      .react(targetNote.id, localEmoji),
                   overlay: false,
                 );
               } else {
@@ -139,7 +143,7 @@ class EmojiSheet extends ConsumerWidget {
                 if (!context.mounted) return;
                 await ref
                     .read(notesNotifierProvider(account).notifier)
-                    .changeReaction(targetNote!.id, localEmoji);
+                    .changeReaction(targetNote.id, localEmoji);
               }
               if (!context.mounted) return;
               context.pop();
