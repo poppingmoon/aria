@@ -11,7 +11,7 @@ class TokenRepository {
     await storage.write(key: account.toString(), value: token);
   }
 
-  Future<String?> readToken(Account account) async {
+  Future<String?> readToken(Account account) {
     return storage.read(key: account.toString());
   }
 

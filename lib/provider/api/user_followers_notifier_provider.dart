@@ -18,7 +18,7 @@ class UserFollowersNotifier extends _$UserFollowersNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<Following>> _fetchFollowers({String? untilId}) async {
+  Future<Iterable<Following>> _fetchFollowers({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .users

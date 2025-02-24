@@ -37,7 +37,7 @@ Stream<PlaybackState> playbackState(Ref ref) {
 
 @riverpod
 Stream<Duration> position(Ref ref) {
-  ref.listen(audioHandlerProvider, (_, __) => ref.invalidateSelf());
+  ref.listen(audioHandlerProvider, (_, _) => ref.invalidateSelf());
   return AudioService.position;
 }
 

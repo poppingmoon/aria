@@ -37,7 +37,7 @@ Future<ProviderContainer> setupWidget(
             GoRoute(
               path: '/',
               builder:
-                  (_, __) => Scaffold(
+                  (_, _) => Scaffold(
                     body: ReactionButton(
                       account: account,
                       note: note,

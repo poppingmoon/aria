@@ -114,7 +114,7 @@ class PostPage extends HookConsumerWidget {
 
     return PopScope(
       onPopInvokedWithResult:
-          (_, __) =>
+          (_, _) =>
               ref
                   .read(
                     postNotifierProvider(

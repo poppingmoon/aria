@@ -17,7 +17,7 @@ Future<String?> showTextFieldDialog(
   int? maxLines = 1,
   int? maxLength,
   List<String>? autocompleteOptions,
-}) async {
+}) {
   return showDialog(
     context: context,
     builder:

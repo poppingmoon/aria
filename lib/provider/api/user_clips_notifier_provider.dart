@@ -28,7 +28,7 @@ class UserClipsNotifier extends _$UserClipsNotifier {
     }
   }
 
-  Future<Iterable<Clip>> _fetchClips({String? untilId}) async {
+  Future<Iterable<Clip>> _fetchClips({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .users

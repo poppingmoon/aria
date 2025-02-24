@@ -69,7 +69,7 @@ class GalleryDialog extends ConsumerWidget {
           onTap: () async {
             final sub = ref.listenManual(
               attachesNotifierProvider(account, gallery: true),
-              (_, __) {},
+              (_, _) {},
             );
             ref
                 .read(attachesNotifierProvider(account, gallery: true).notifier)

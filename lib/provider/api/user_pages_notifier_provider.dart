@@ -28,7 +28,7 @@ class UserPagesNotifier extends _$UserPagesNotifier {
     }
   }
 
-  Future<Iterable<Page>> _fetchPages({String? untilId}) async {
+  Future<Iterable<Page>> _fetchPages({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .users

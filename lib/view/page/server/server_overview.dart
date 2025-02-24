@@ -115,7 +115,7 @@ class ServerOverview extends ConsumerWidget {
               child: Html(
                 data: meta?.description ?? instance?.description ?? '',
                 onLinkTap:
-                    (url, _, __) =>
+                    (url, _, _) =>
                         url != null ? launchUrl(ref, Uri.parse(url)) : null,
                 style: {
                   'body': Style(margin: Margins.all(0)),
@@ -226,7 +226,7 @@ class ServerOverview extends ConsumerWidget {
                           title: Html(
                             data: rule,
                             onLinkTap:
-                                (url, _, __) =>
+                                (url, _, _) =>
                                     url != null
                                         ? launchUrl(ref, Uri.parse(url))
                                         : null,

@@ -15,7 +15,7 @@ class FeaturedPlaysNotifier extends _$FeaturedPlaysNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<Flash>> _fetchPlays({int? offset}) async {
+  Future<Iterable<Flash>> _fetchPlays({int? offset}) {
     return ref
         .read(misskeyProvider(account))
         .flash

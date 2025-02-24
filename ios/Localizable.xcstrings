@@ -1562,6 +1562,12 @@
             "value": "Algú ha iniciat sessió "
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Anmeldung erfolgt"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",

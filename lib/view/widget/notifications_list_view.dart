@@ -51,7 +51,7 @@ class NotificationsListView extends HookConsumerWidget {
     final hasUnread = useState(false);
     final keepAnimation = useState(true);
     final isAtBottom = useState(false);
-    ref.listen(incomingMessageProvider(account), (_, __) {});
+    ref.listen(incomingMessageProvider(account), (_, _) {});
     useEffect(() {
       notifier.connect();
       ref
@@ -86,7 +86,7 @@ class NotificationsListView extends HookConsumerWidget {
       }
       return;
     }, []);
-    ref.listen(mainStreamNotifierProvider(account), (_, next) async {
+    ref.listen(mainStreamNotifierProvider(account), (_, next) {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
         if (keepAnimation.value) {
@@ -174,7 +174,7 @@ class NotificationsListView extends HookConsumerWidget {
                         ),
                       ),
                   separatorBuilder:
-                      (_, __) => Center(
+                      (_, _) => Center(
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           width: maxContentWidth,

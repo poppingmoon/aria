@@ -1,7 +1,7 @@
 name: aria
 description: "A client app for Misskey, a federated social media platform."
 publish_to: "none"
-version: 1.0.0-beta.9+53
+version: 1.0.0-beta.10+54
 
 environment:
   sdk: ">=3.7.0 <4.0.0"
@@ -22,7 +22,7 @@ dependencies:
   dotted_border: ^2.1.0
   extended_image: ^9.1.0
   file: ^7.0.1
-  file_picker: ^9.0.0
+  file_picker: ^9.0.1
   flex_color_picker: ^3.7.0
   flutter:
     sdk: flutter
@@ -38,7 +38,7 @@ dependencies:
       url: https://github.com/poppingmoon/dart-highlighting
       ref: f8722192d6a92582299a8a0c3756862d31298388
       path: flutter_highlighting
-  flutter_hooks: ^0.20.5
+  flutter_hooks: ^0.21.2
   flutter_html:
     git:
       url: https://github.com/poppingmoon/flutter_html
@@ -64,7 +64,7 @@ dependencies:
       ref: 76d9f984d53de07b445965f13a5e02c3bd3ed83a
       path: highlighting
   hooks_riverpod: ^2.6.1
-  image: ^4.5.2
+  image: ^4.5.3
   image_compression:
     git:
       url: https://github.com/poppingmoon/image_compression
@@ -124,7 +124,7 @@ dependencies:
   url_launcher: ^6.3.1
   uuid: ^4.5.1
   vector_math: ^2.1.4
-  video_player: ^2.9.2
+  video_player: ^2.9.3
   wakelock_plus: ^1.2.10
   web_socket_channel: ^3.0.2
   webpush_encryption: ^1.0.0-rc1
@@ -142,7 +142,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
   json_serializable: ^6.9.4
-  lint: ^2.6.1
+  lint: ^2.8.0
   plugin_platform_interface: ^2.1.8
   riverpod_generator: ^2.6.4
   riverpod_lint: ^2.6.4

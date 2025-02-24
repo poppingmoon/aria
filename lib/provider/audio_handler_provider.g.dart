@@ -56,7 +56,7 @@ final playbackStateProvider = AutoDisposeStreamProvider<PlaybackState>.internal(
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
 typedef PlaybackStateRef = AutoDisposeStreamProviderRef<PlaybackState>;
-String _$positionHash() => r'f81e7e2f2e292d8540e3e1d0505943289cfe340e';
+String _$positionHash() => r'6b3e5fe93d6200af6cfbeb6f55f99833b788182e';
 
 /// See also [position].
 @ProviderFor(position)

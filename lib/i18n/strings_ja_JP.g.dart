@@ -179,6 +179,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get playAudio => '音声を再生';
 	@override String get playVideo => '動画を再生';
 	@override String get pleaseCopyResponse => '以下のレスポンスをコピーしてください';
+	@override String pleaseLoginAs({required Object user}) => '${user}でログインしてください';
 	@override String get postConfirm => 'このノートを投稿しますか？';
 	@override String get reactionConfirm => 'リアクションしますか？';
 	@override String get recentlyUsedEmojis => '最近使用した絵文字';
@@ -3251,7 +3252,6 @@ class _TranslationsMisskeyRemoteLookupErrorsJaJp extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaJp uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaJp requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectJaJp._(_root);
 }
 
@@ -4024,17 +4024,7 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidJaJp extends Translat
 
 	// Translations
 	@override String get title => 'レスポンスが不正です';
-	@override String get description => 'このサーバーと通信することはできましたが、得られたデータが不正なものでした。';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
-
-	final TranslationsJaJp _root; // ignore: unused_field
-
-	// Translations
-	@override String get description => '入力されたURIのドメインと最終的に得られたURIのドメインとが異なります。第三者のサーバーを介してリモートのコンテンツを照会している場合は、発信元のサーバーで取得できるURIを使用して照会し直してください。';
+	@override String get description => 'このサーバーと通信することはできましたが、得られたデータが不正なものでした。第三者のサーバーを介してリモートのコンテンツを照会している場合は、発信元のサーバーで取得できるURIを使用して照会し直してください。';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_

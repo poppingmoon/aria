@@ -54,7 +54,7 @@ Future<ProviderContainer> setupWidget(
             GoRoute(
               path: '/',
               builder:
-                  (_, __) => Scaffold(
+                  (_, _) => Scaffold(
                     body: NoteFooter(
                       account: account,
                       noteId: noteId,

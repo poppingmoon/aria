@@ -7,7 +7,7 @@ part of 'featured_plays_notifier_provider.dart';
 // **************************************************************************
 
 String _$featuredPlaysNotifierHash() =>
-    r'e417e1f3cc27616906ae33aa35c5729332acbd99';
+    r'91ea7b24b1f15028dabfa1e64625c43f4c86ce3b';
 
 /// Copied from Dart SDK
 class _SystemHash {

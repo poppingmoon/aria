@@ -52,7 +52,7 @@ class UserLists extends ConsumerWidget {
                       ),
                     ),
                 separatorBuilder:
-                    (_, __) => const Center(
+                    (_, _) => const Center(
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: 8.0),
                         child: SizedBox(

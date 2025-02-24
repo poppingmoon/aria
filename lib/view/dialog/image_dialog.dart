@@ -76,7 +76,7 @@ class ImageDialog extends HookConsumerWidget {
                   overlayOpacity.value = 0.0;
               }
             },
-            onTapUp: (_, __, ___) {
+            onTapUp: (_, _, _) {
               if (overlayOpacity.value < 0.5) {
                 overlayOpacity.value = 1.0;
               } else {

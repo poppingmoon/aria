@@ -23,7 +23,7 @@ class AnnouncementsNotifier extends _$AnnouncementsNotifier {
   Future<Iterable<AnnouncementsResponse>> _fetchAnnouncements({
     String? untilId,
     int? offset,
-  }) async {
+  }) {
     return _misskey.announcements(
       AnnouncementsRequest(
         isActive: isActive,

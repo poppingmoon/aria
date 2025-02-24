@@ -101,8 +101,8 @@ GoRouter router(Ref ref) {
     routes: [
       GoRoute(
         path: '/',
-        builder: (_, __) => const SplashPage(),
-        redirect: (_, __) {
+        builder: (_, _) => const SplashPage(),
+        redirect: (_, _) {
           if (!bootState.hasValue || bootState.value == null) {
             return null;
           } else {
@@ -110,18 +110,18 @@ GoRouter router(Ref ref) {
           }
         },
       ),
-      GoRoute(path: '/about-aria', builder: (_, __) => const AboutAriaPage()),
+      GoRoute(path: '/about-aria', builder: (_, _) => const AboutAriaPage()),
       GoRoute(
         path: '/about-misskey',
-        builder: (_, __) => const AboutMisskeyPage(),
+        builder: (_, _) => const AboutMisskeyPage(),
       ),
       GoRoute(
         path: '/login',
-        builder: (_, __) => const LoginPage(),
+        builder: (_, _) => const LoginPage(),
         routes: [
           GoRoute(
             path: 'authenticate',
-            builder: (_, __) => const AuthenticatePage(),
+            builder: (_, _) => const AuthenticatePage(),
           ),
           GoRoute(
             path: 'token',
@@ -133,7 +133,7 @@ GoRouter router(Ref ref) {
       ),
       GoRoute(
         path: '/miauth',
-        redirect: (_, __) async {
+        redirect: (_, _) async {
           final succeeded =
               await ref.read(miAuthNotifierProvider.notifier).check();
           if (succeeded) {
@@ -145,11 +145,11 @@ GoRouter router(Ref ref) {
       ),
       GoRoute(
         path: '/settings',
-        builder: (_, __) => const SettingsPage(),
+        builder: (_, _) => const SettingsPage(),
         routes: [
           GoRoute(
             path: 'accounts',
-            builder: (_, __) => const AccountsPage(),
+            builder: (_, _) => const AccountsPage(),
             routes: [
               GoRoute(
                 path: ':acct',
@@ -249,27 +249,27 @@ GoRouter router(Ref ref) {
           ),
           GoRoute(
             path: 'appearance',
-            builder: (_, __) => const AppearancePage(),
+            builder: (_, _) => const AppearancePage(),
           ),
-          GoRoute(path: 'behavior', builder: (_, __) => const BehaviorPage()),
+          GoRoute(path: 'behavior', builder: (_, _) => const BehaviorPage()),
           GoRoute(
             path: 'emoji-picker',
-            builder: (_, __) => const EmojiPickerPage(),
+            builder: (_, _) => const EmojiPickerPage(),
           ),
           GoRoute(
             path: 'import-export',
-            builder: (_, __) => const ImportExportPage(),
+            builder: (_, _) => const ImportExportPage(),
           ),
-          GoRoute(path: 'language', builder: (_, __) => const LanguagesPage()),
+          GoRoute(path: 'language', builder: (_, _) => const LanguagesPage()),
           GoRoute(
             path: 'note-display',
-            builder: (_, __) => const NoteDisplayPage(),
+            builder: (_, _) => const NoteDisplayPage(),
           ),
           GoRoute(
             path: 'tab',
-            builder: (_, __) => const TabsPage(),
+            builder: (_, _) => const TabsPage(),
             routes: [
-              GoRoute(path: 'new', builder: (_, __) => const TabSettingsPage()),
+              GoRoute(path: 'new', builder: (_, _) => const TabSettingsPage()),
               GoRoute(
                 path: ':tabId',
                 builder:
@@ -280,21 +280,21 @@ GoRouter router(Ref ref) {
           ),
           GoRoute(
             path: 'theme',
-            builder: (_, __) => const ThemePage(),
+            builder: (_, _) => const ThemePage(),
             routes: [
               GoRoute(
                 path: 'manage',
-                builder: (_, __) => const ThemeManagePage(),
+                builder: (_, _) => const ThemeManagePage(),
               ),
             ],
           ),
         ],
       ),
-      GoRoute(path: '/share', builder: (_, __) => const SharePage()),
-      GoRoute(path: '/timelines', builder: (_, __) => const TimelinesPage()),
+      GoRoute(path: '/share', builder: (_, _) => const SharePage()),
+      GoRoute(path: '/timelines', builder: (_, _) => const TimelinesPage()),
       GoRoute(
         path: '/:acct',
-        builder: (_, __) => const TimelinesPage(),
+        builder: (_, _) => const TimelinesPage(),
         routes: [
           GoRoute(
             path: '@:username@:host',

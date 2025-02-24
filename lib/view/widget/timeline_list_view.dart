@@ -169,7 +169,7 @@ class TimelineListView extends HookConsumerWidget {
     final isAtTop = useState(false);
     final isAtBottom = useState(false);
     if (!tabSettings.disableStreaming) {
-      ref.listen(incomingMessageProvider(tabSettings.account), (_, __) {});
+      ref.listen(incomingMessageProvider(tabSettings.account), (_, _) {});
       final notifier = ref.watch(
         timelineStreamNotifierProvider(tabSettings).notifier,
       );

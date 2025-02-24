@@ -174,7 +174,7 @@ class _ServerPreview extends ConsumerWidget {
                   Html(
                     data: description,
                     onLinkTap:
-                        (url, _, __) =>
+                        (url, _, _) =>
                             url != null ? launchUrl(ref, Uri.parse(url)) : null,
                     style: {
                       'a': Style(

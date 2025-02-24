@@ -31,7 +31,7 @@ class TimelineStreamNotifier extends _$TimelineStreamNotifier {
           TabType.custom:
         ref.listen(
           webSocketChannelProvider(tabSettings.account),
-          (_, __) => connect(),
+          (_, _) => connect(),
         );
         final message = await ref.watch(
           incomingMessageProvider(tabSettings.account).future,

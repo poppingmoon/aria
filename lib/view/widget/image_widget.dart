@@ -70,7 +70,7 @@ class ImageWidget extends ConsumerWidget {
           fit: fit,
           alignment: alignment,
           opacity: AlwaysStoppedAnimation(opacity),
-          errorBuilder: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
+          errorBuilder: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
           semanticLabel: semanticLabel,
         );
       }
@@ -108,8 +108,8 @@ class ImageWidget extends ConsumerWidget {
           fit: fit,
           alignment: alignment,
           cacheManager: ref.watch(cacheManagerProvider),
-          placeholder: (_, __) => _buildPlaceholder(),
-          errorWidget: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
+          placeholder: (_, _) => _buildPlaceholder(),
+          errorWidget: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
           color: opacity < 1.0 ? Color.fromRGBO(255, 255, 255, opacity) : null,
           colorBlendMode: BlendMode.modulate,
           fadeOutDuration: Duration.zero,
@@ -131,7 +131,7 @@ class ImageWidget extends ConsumerWidget {
                 wasSynchronouslyLoaded || frame != null
                     ? child
                     : _buildPlaceholder(),
-        errorBuilder: errorBuilder ?? (_, __, ___) => _buildPlaceholder(),
+        errorBuilder: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
         semanticLabel: semanticLabel,
       );
     }
