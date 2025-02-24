@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
 
-FutureOr<void> testExecutable(FutureOr<void> Function() testMain) {
+Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   WidgetController.hitTestWarningShouldBeFatal = true;
 
-  return testMain();
+  await testMain();
 }
