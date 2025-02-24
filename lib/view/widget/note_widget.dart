@@ -230,7 +230,7 @@ class NoteWidget extends HookConsumerWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 4.0),
+                  const SizedBox(height: 8.0),
                 ],
                 if (isRenote) ...[
                   ChannelColorBarBox(

@@ -108,102 +108,91 @@ class NoteSubWidget extends HookConsumerWidget {
         ),
         [account, longPressAction, note.id],
       ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0),
-        child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                if (showAvatars)
-                  Padding(
-                    padding: const EdgeInsetsDirectional.only(
-                      top: 4.0,
-                      end: 8.0,
+      child: Column(
+        children: [
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (showAvatars)
+                Padding(
+                  padding: const EdgeInsetsDirectional.only(top: 4.0, end: 8.0),
+                  child: Opacity(
+                    opacity: style.color?.a ?? 1.0,
+                    child: UserAvatar(
+                      account: account,
+                      user: note.user,
+                      size: style.lineHeight * avatarScale * 0.9,
+                      onTap:
+                          () => context.push('/$account/users/${note.userId}'),
                     ),
-                    child: Opacity(
-                      opacity: style.color?.a ?? 1.0,
-                      child: UserAvatar(
+                  ),
+                ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    NoteHeader(account: account, note: note),
+                    if (note.cw case final cw?) ...[
+                      if (cw.isNotEmpty)
+                        Mfm(
+                          account: account,
+                          text: cw,
+                          emojis: note.emojis,
+                          author: note.user,
+                          nyaize: true,
+                        ),
+                      CwButton(
+                        note: note,
+                        onPressed: (value) => showContent.value = value,
+                        isOpen: showContent.value,
+                      ),
+                    ],
+                    if (note.cw == null || showContent.value)
+                      SubNoteContent(
                         account: account,
-                        user: note.user,
-                        size: style.lineHeight * avatarScale * 0.9,
-                        onTap:
-                            () =>
-                                context.push('/$account/users/${note.userId}'),
+                        noteId: noteId,
+                        focusPostForm: focusPostForm,
+                      ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+          if (children?.valueOrNull?.items case final children?) ...[
+            const SizedBox(height: 8.0),
+            for (final (index, reply) in children.indexed)
+              ChannelColorBarBox(
+                note: reply,
+                child: Container(
+                  margin: const EdgeInsetsDirectional.only(start: 8.0),
+                  decoration: BoxDecoration(
+                    border: BorderDirectional(
+                      start: BorderSide(
+                        color: Theme.of(context).colorScheme.outlineVariant,
+                        width: 2.0,
                       ),
                     ),
                   ),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      NoteHeader(account: account, note: note),
-                      if (note.cw case final cw?) ...[
-                        if (cw.isNotEmpty)
-                          Mfm(
-                            account: account,
-                            text: cw,
-                            emojis: note.emojis,
-                            author: note.user,
-                            nyaize: true,
-                          ),
-                        CwButton(
-                          note: note,
-                          onPressed: (value) => showContent.value = value,
-                          isOpen: showContent.value,
-                        ),
-                      ],
-                      if (note.cw == null || showContent.value)
-                        SubNoteContent(
-                          account: account,
-                          noteId: noteId,
-                          focusPostForm: focusPostForm,
-                        ),
-                    ],
+                  padding: EdgeInsetsDirectional.only(
+                    start: 4.0,
+                    top: index == 0 ? 0.0 : 4.0,
+                    bottom: index == children.length - 1 ? 0.0 : 4.0,
+                  ),
+                  child: NoteSubWidget(
+                    account: account,
+                    noteId: reply.id,
+                    showReplies: true,
+                    depth: depth + 1,
                   ),
                 ),
-              ],
-            ),
-            if (children != null)
-              Container(
-                margin: const EdgeInsetsDirectional.only(top: 8.0, start: 8.0),
-                decoration: BoxDecoration(
-                  border: BorderDirectional(
-                    start: BorderSide(
-                      color: Theme.of(context).colorScheme.outlineVariant,
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                child: Column(
-                  children:
-                      (children.valueOrNull?.items ?? [])
-                          .map(
-                            (reply) => ChannelColorBarBox(
-                              note: reply,
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.only(
-                                  start: 8.0,
-                                ),
-                                child: NoteSubWidget(
-                                  account: account,
-                                  noteId: reply.id,
-                                  showReplies: true,
-                                  depth: depth + 1,
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                ),
-              ),
-            if (depth >= 5 && (note.repliesCount > 0 || note.renoteCount > 0))
-              TextButton(
-                onPressed: () => context.push('/$account/notes/$noteId'),
-                child: Text(t.misskey.continueThread),
               ),
           ],
-        ),
+          if (depth >= 5 && (note.repliesCount > 0 || note.renoteCount > 0))
+            TextButton(
+              onPressed: () => context.push('/$account/notes/$noteId'),
+              child: Text(t.misskey.continueThread),
+            ),
+        ],
       ),
     );
   }
