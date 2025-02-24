@@ -25,7 +25,11 @@ import '../widget/misskey_server_background.dart';
 class LoginPage extends HookConsumerWidget {
   const LoginPage({super.key});
 
-  Future<void> _launchMiAuth(WidgetRef ref, String hostText) async {
+  Future<void> _launchMiAuth(
+    WidgetRef ref,
+    String hostText, {
+    bool skipValidation = false,
+  }) async {
     final trimmed =
         toAscii(
           hostText
@@ -34,29 +38,44 @@ class LoginPage extends HookConsumerWidget {
               .split('/')
               .first,
         ).toLowerCase();
-    try {
-      final meta = await ref.read(metaNotifierProvider(trimmed).future);
-      if (!ref.context.mounted) return;
-      if (meta.features?.miauth case false || null) {
-        unawaited(ref.context.push('/login/token?host=$trimmed'));
-        return;
+
+    bool miauth = skipValidation;
+    if (!skipValidation) {
+      final server = ref
+          .read(misskeyServersProvider)
+          .valueOrNull
+          ?.firstWhereOrNull((server) => server.url == trimmed);
+      if (server?.meta case final meta?) {
+        if (meta['features'] case {'miauth': true}) {
+          miauth = true;
+        }
+      } else {
+        try {
+          final meta = await ref.read(metaNotifierProvider(trimmed).future);
+          miauth = meta.features?.miauth ?? false;
+        } catch (_) {}
       }
-    } catch (_) {}
+    }
+
     if (!ref.context.mounted) return;
-    final url = ref
-        .read(miAuthNotifierProvider.notifier)
-        .buildMiAuthUrl(trimmed);
-    unawaited(
-      launchUrl(
-        ref,
-        url,
-        mode:
-            defaultTargetPlatform == TargetPlatform.iOS
-                ? LaunchMode.inAppWebView
-                : null,
-      ),
-    );
-    unawaited(ref.context.push('/login/authenticate'));
+    if (miauth) {
+      final url = ref
+          .read(miAuthNotifierProvider.notifier)
+          .buildMiAuthUrl(trimmed);
+      unawaited(
+        launchUrl(
+          ref,
+          url,
+          mode: switch (defaultTargetPlatform) {
+            TargetPlatform.iOS => LaunchMode.inAppWebView,
+            _ => null,
+          },
+        ),
+      );
+      unawaited(ref.context.push('/login/authenticate'));
+    } else {
+      unawaited(ref.context.push('/login/token?host=$trimmed'));
+    }
   }
 
   @override
@@ -175,6 +194,17 @@ class LoginPage extends HookConsumerWidget {
                                     ? () => futureWithDialog(
                                       context,
                                       _launchMiAuth(ref, host.value),
+                                    )
+                                    : null,
+                            onLongPress:
+                                host.value.isNotEmpty
+                                    ? () => futureWithDialog(
+                                      context,
+                                      _launchMiAuth(
+                                        ref,
+                                        host.value,
+                                        skipValidation: true,
+                                      ),
                                     )
                                     : null,
                             icon: const Icon(Icons.open_in_browser),
