@@ -183,6 +183,7 @@ class TranslationsAriaEnUs {
 	String get playAudio => 'Play audio';
 	String get playVideo => 'Play video';
 	String get pleaseCopyResponse => 'Please copy this response';
+	String pleaseLoginAs({required Object user}) => 'Please sign in as ${user}';
 	String get postConfirm => 'Are you sure you want to post this note?';
 	String get reactionConfirm => 'Are you sure you want to add a reaction?';
 	String get recentlyUsedEmojis => 'Recently used emojis';
