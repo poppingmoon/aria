@@ -150,37 +150,34 @@ class NoteDetailedWidget extends HookConsumerWidget {
         ),
         child: Column(
           children: [
-            if (conversation case AsyncData(valueOrNull: final conversation?))
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: DefaultTextStyle.merge(
-                  style: style.apply(
+            if (conversation?.valueOrNull case final conversation?)
+              DefaultTextStyle.merge(
+                style: style.apply(
+                  color: style.color?.withValues(alpha: 0.7),
+                  fontSizeFactor: 0.9,
+                ),
+                child: IconTheme.merge(
+                  data: IconThemeData(
                     color: style.color?.withValues(alpha: 0.7),
-                    fontSizeFactor: 0.9,
                   ),
-                  child: IconTheme.merge(
-                    data: IconThemeData(
-                      color: style.color?.withValues(alpha: 0.7),
-                    ),
-                    child: Column(
-                      children: [
-                        for (final note in conversation.reversed) ...[
-                          ChannelColorBarBox(
-                            note: appearNote.reply,
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.only(
-                                start: horizontalPadding - 4.0,
-                              ),
-                              child: NoteSubWidget(
-                                account: account,
-                                noteId: note.id,
-                              ),
+                  child: Column(
+                    children: [
+                      for (final note in conversation.reversed) ...[
+                        ChannelColorBarBox(
+                          note: appearNote.reply,
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.only(
+                              start: horizontalPadding - 4.0,
+                            ),
+                            child: NoteSubWidget(
+                              account: account,
+                              noteId: note.id,
                             ),
                           ),
-                          const Divider(height: 0.0),
-                        ],
+                        ),
+                        const SizedBox(height: 8.0),
                       ],
-                    ),
+                    ],
                   ),
                 ),
               ),
@@ -212,16 +209,14 @@ class NoteDetailedWidget extends HookConsumerWidget {
             if (children case AsyncValue(
               valueOrNull: PaginationState(items: final notes),
             ) when notes.isNotEmpty) ...[
-              ChannelColorBarBox(
-                note: note,
-                child: const SizedBox(height: 8.0, width: double.infinity),
-              ),
+              const SizedBox(height: 8.0),
               ListView.separated(
+                padding: EdgeInsets.zero,
                 itemBuilder:
                     (context, index) =>
                         index < notes.length
                             ? ChannelColorBarBox(
-                              note: note,
+                              note: notes[index],
                               child: Container(
                                 margin: EdgeInsetsDirectional.only(
                                   start: horizontalPadding - 4.0,
@@ -237,18 +232,13 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                     ),
                                   ),
                                 ),
-                                child: ChannelColorBarBox(
-                                  note: notes[index],
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.only(
-                                      start: 8.0,
-                                    ),
-                                    child: NoteSubWidget(
-                                      account: account,
-                                      noteId: notes[index].id,
-                                      showReplies: true,
-                                    ),
-                                  ),
+                                padding: const EdgeInsetsDirectional.only(
+                                  start: 4.0,
+                                ),
+                                child: NoteSubWidget(
+                                  account: account,
+                                  noteId: notes[index].id,
+                                  showReplies: true,
                                 ),
                               ),
                             )
@@ -270,8 +260,8 @@ class NoteDetailedWidget extends HookConsumerWidget {
                             ? ChannelColorBarBox(
                               note: note,
                               child: Container(
-                                margin: const EdgeInsetsDirectional.only(
-                                  start: 8.0,
+                                margin: EdgeInsetsDirectional.only(
+                                  start: horizontalPadding - 4.0,
                                 ),
                                 decoration: BoxDecoration(
                                   border: BorderDirectional(
