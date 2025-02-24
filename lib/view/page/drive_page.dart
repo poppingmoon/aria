@@ -447,9 +447,7 @@ class DrivePage extends HookConsumerWidget {
         ),
         floatingActionButton: FloatingActionButton(
           tooltip:
-              selectFiles || selectFolder
-                  ? t.misskey.continue_
-                  : t.misskey.create,
+              selectFiles || selectFolder ? t.misskey.done : t.misskey.create,
           onPressed:
               selectFiles
                   ? selectedFiles.isNotEmpty
