@@ -95,7 +95,7 @@ class ImportExportPage extends ConsumerWidget {
   Future<Account?> _selectAccount(
     BuildContext context,
     List<Account> accounts,
-  ) async {
+  ) {
     return showDialog(
       context: context,
       builder:

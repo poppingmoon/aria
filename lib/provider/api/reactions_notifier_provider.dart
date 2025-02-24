@@ -19,9 +19,7 @@ class ReactionsNotifier extends _$ReactionsNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<NotesReactionsResponse>> _fetchReactions({
-    String? untilId,
-  }) async {
+  Future<Iterable<NotesReactionsResponse>> _fetchReactions({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .notes

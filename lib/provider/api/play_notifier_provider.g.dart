@@ -6,7 +6,7 @@ part of 'play_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$playNotifierHash() => r'b7585409f53670529182c5b8c15dd9c9c0e7e2fd';
+String _$playNotifierHash() => r'ec7ef621e35d61afc2945004a9105aaf588ae1b9';
 
 /// Copied from Dart SDK
 class _SystemHash {

@@ -20,7 +20,7 @@ Future<UserDetailed?> selectUser(
   Account account, {
   bool includeSelf = false,
   bool localOnly = false,
-}) async {
+}) {
   return showDialog(
     context: context,
     builder:

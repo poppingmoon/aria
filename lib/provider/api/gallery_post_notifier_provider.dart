@@ -9,7 +9,7 @@ part 'gallery_post_notifier_provider.g.dart';
 @riverpod
 class GalleryPostNotifier extends _$GalleryPostNotifier {
   @override
-  FutureOr<GalleryPost> build(Account account, String postId) async {
+  FutureOr<GalleryPost> build(Account account, String postId) {
     return _misskey.gallery.posts.show(GalleryPostsShowRequest(postId: postId));
   }
 

@@ -15,7 +15,7 @@ class LikedPagesNotifier extends _$LikedPagesNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<IPageLikesResponse>> _fetchPages({String? untilId}) async {
+  Future<Iterable<IPageLikesResponse>> _fetchPages({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .i

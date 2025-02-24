@@ -165,7 +165,7 @@ class FilePickerSheet extends ConsumerWidget {
             final sub = ref.listenManual(mainStreamNotifierProvider(account), (
               _,
               next,
-            ) async {
+            ) {
               if (next case AsyncData(
                 value: UrlUploadFinished(marker: final m?, :final file),
               )) {

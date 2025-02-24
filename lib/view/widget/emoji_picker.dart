@@ -33,7 +33,7 @@ Future<String?> pickEmoji(
   Note? targetNote,
   bool post = false,
   void Function(String emoji)? onTapEmoji,
-}) async {
+}) {
   Future<void> onTap(BuildContext context, String emoji, bool keepOpen) async {
     if (confirmBeforePop && emoji.startsWith(':')) {
       final confirmed = await showDialog<bool>(

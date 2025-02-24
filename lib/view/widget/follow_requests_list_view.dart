@@ -58,7 +58,7 @@ class FollowRequestsListView extends HookConsumerWidget {
       });
       return;
     }, []);
-    ref.listen(mainStreamNotifierProvider(account), (_, next) async {
+    ref.listen(mainStreamNotifierProvider(account), (_, next) {
       if (next case AsyncData(value: ReceiveFollowRequest(:final user))) {
         nextRequests.value = [...nextRequests.value, user];
         if (keepAnimation.value) {

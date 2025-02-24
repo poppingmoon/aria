@@ -9,7 +9,7 @@ part 'play_notifier_provider.g.dart';
 @riverpod
 class PlayNotifier extends _$PlayNotifier {
   @override
-  FutureOr<Flash> build(Account account, String playId) async {
+  FutureOr<Flash> build(Account account, String playId) {
     return _misskey.flash.show(FlashShowRequest(flashId: playId));
   }
 

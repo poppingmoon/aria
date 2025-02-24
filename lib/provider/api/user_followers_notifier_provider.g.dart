@@ -7,7 +7,7 @@ part of 'user_followers_notifier_provider.dart';
 // **************************************************************************
 
 String _$userFollowersNotifierHash() =>
-    r'0b6e1d137152bb016422861beb54aacccfa152f3';
+    r'48bed243a6c807c34f94aa30182bc3bfbba352fd';
 
 /// Copied from Dart SDK
 class _SystemHash {

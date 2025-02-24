@@ -86,7 +86,7 @@ class NotificationsListView extends HookConsumerWidget {
       }
       return;
     }, []);
-    ref.listen(mainStreamNotifierProvider(account), (_, next) async {
+    ref.listen(mainStreamNotifierProvider(account), (_, next) {
       if (next case AsyncData(value: Notification(:final notification))) {
         nextNotifications.value = [...nextNotifications.value, notification];
         if (keepAnimation.value) {

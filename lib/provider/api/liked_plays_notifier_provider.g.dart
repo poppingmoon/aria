@@ -7,7 +7,7 @@ part of 'liked_plays_notifier_provider.dart';
 // **************************************************************************
 
 String _$likedPlaysNotifierHash() =>
-    r'f1a683d66b64c64abf3b6b6e52290f21e5cb587a';
+    r'7b18b1e2f068995b38e3b4a9c07c14235092bf33';
 
 /// Copied from Dart SDK
 class _SystemHash {

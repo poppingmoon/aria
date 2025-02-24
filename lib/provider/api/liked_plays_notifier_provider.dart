@@ -15,7 +15,7 @@ class LikedPlaysNotifier extends _$LikedPlaysNotifier {
     return PaginationState.fromIterable(response);
   }
 
-  Future<Iterable<FlashMyLikesResponse>> _fetchPlays({String? untilId}) async {
+  Future<Iterable<FlashMyLikesResponse>> _fetchPlays({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .flash

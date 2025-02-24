@@ -12,7 +12,7 @@ FutureOr<SummalyResult?> summaly(
   String host,
   String link, {
   String? lang,
-}) async {
+}) {
   final summalyRepository = ref.watch(summalyRepositoryProvider);
   return summalyRepository.getSummary(host: host, link: link, lang: lang);
 }

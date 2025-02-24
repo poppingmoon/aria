@@ -42,7 +42,7 @@ class MetaNotifier extends _$MetaNotifier {
 
   String get _key => '$host/meta';
 
-  Future<MetaResponse> _fetchMeta() async {
+  Future<MetaResponse> _fetchMeta() {
     return ref.read(misskeyProvider(Account(host: host))).meta();
   }
 

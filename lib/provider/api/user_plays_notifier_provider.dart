@@ -28,7 +28,7 @@ class UserPlaysNotifier extends _$UserPlaysNotifier {
     }
   }
 
-  Future<Iterable<Flash>> _fetchPlays({String? untilId}) async {
+  Future<Iterable<Flash>> _fetchPlays({String? untilId}) {
     return ref
         .read(misskeyProvider(account))
         .users
