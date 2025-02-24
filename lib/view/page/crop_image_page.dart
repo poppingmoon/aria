@@ -35,7 +35,7 @@ class CropImagePage extends HookWidget {
                 EditorConfig(cropAspectRatio: aspectRatio),
       ),
       floatingActionButton: FloatingActionButton(
-        tooltip: t.misskey.continue_,
+        tooltip: t.misskey.done,
         onPressed: () async {
           final state = editorKey.currentState;
           final cropRect = state?.getCropRect();

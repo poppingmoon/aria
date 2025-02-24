@@ -13,7 +13,6 @@ import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../util/future_with_dialog.dart';
 import '../widget/mfm/code.dart';
 import '../widget/url_sheet.dart';
 import 'message_dialog.dart';
@@ -30,6 +29,7 @@ class SwRegisterDialog extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
     final responseText = useState('');
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
@@ -75,6 +75,9 @@ class SwRegisterDialog extends HookConsumerWidget {
           const SizedBox(height: 8.0),
           Code(
             code: """
+if (USER_USERNAME != '${account.username}') {
+  return Mk:dialog('${t.misskey.permissionDeniedError}', '${t.aria.pleaseLoginAs(user: '@${account.username}')}', 'warning')
+}
 let params = {
   endpoint: '${request.endpoint}',
   auth: '${request.auth}',
@@ -84,11 +87,7 @@ let response = Mk:api('sw/register', params)
 if (Core:type(response) == 'error') {
   Mk:dialog(response.name, Core:to_str(response.info), 'error')
 } else {
-  Mk:dialog(
-    '${t.aria.pleaseCopyResponse}',
-    ["```json", Json:stringify(response), "```"].join(Str:lf),
-    'success'
-  )
+  Mk:dialog('${t.aria.pleaseCopyResponse}', ["```json", Json:stringify(response), "```"].join(Str:lf), 'success')
 }""",
           ),
           const SizedBox(height: 8.0),
@@ -127,10 +126,6 @@ if (Core:type(response) == 'error') {
                       final json = json5Decode(responseText.value);
                       final response = SwRegisterResponse.fromJson(
                         json as Map<String, dynamic>,
-                      );
-                      final i = await futureWithDialog(
-                        context,
-                        ref.read(iNotifierProvider(account).future),
                       );
                       if (!context.mounted) return;
                       if (i?.id == response.userId &&
