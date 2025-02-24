@@ -95,7 +95,7 @@ class DrivePage extends HookConsumerWidget {
 
     return PopScope(
       canPop: currentFolder == null && (selectFolder || selectedFiles.isEmpty),
-      onPopInvokedWithResult: (_, __) {
+      onPopInvokedWithResult: (_, _) {
         if (!selectFolder && selectedFiles.isNotEmpty) {
           ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
         } else if (currentFolder != null) {

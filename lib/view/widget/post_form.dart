@@ -185,7 +185,7 @@ class PostForm extends HookConsumerWidget {
                 onTap: () => context.pop(accounts[index]),
               );
             },
-            separatorBuilder: (_, __) => const Divider(height: 0.0),
+            separatorBuilder: (_, _) => const Divider(height: 0.0),
             itemCount: accounts.length,
           ),
       clipBehavior: Clip.hardEdge,

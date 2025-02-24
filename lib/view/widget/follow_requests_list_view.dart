@@ -44,7 +44,7 @@ class FollowRequestsListView extends HookConsumerWidget {
     final hasUnread = useState(false);
     final keepAnimation = useState(true);
     final isAtBottom = useState(false);
-    ref.listen(incomingMessageProvider(account), (_, __) {});
+    ref.listen(incomingMessageProvider(account), (_, _) {});
     useEffect(() {
       notifier.connect();
       controller.addListener(() {
@@ -167,7 +167,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                         ),
                       ),
                   separatorBuilder:
-                      (_, __) => Center(
+                      (_, _) => Center(
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           width: maxContentWidth,
@@ -215,7 +215,7 @@ class FollowRequestsListView extends HookConsumerWidget {
                         ),
                       ),
                   separatorBuilder:
-                      (_, __) => Center(
+                      (_, _) => Center(
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 8.0),
                           width: maxContentWidth,

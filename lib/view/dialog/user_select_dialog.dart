@@ -137,7 +137,7 @@ class UserSelectDialog extends HookConsumerWidget {
                                     userId: recentlyUsedUsers[index].id,
                                   ),
                             ),
-                        separatorBuilder: (_, __) => const Divider(height: 0.0),
+                        separatorBuilder: (_, _) => const Divider(height: 0.0),
                         itemCount: recentlyUsedUsers.length,
                       )
                       : Center(child: Text(t.misskey.noUsers)),
@@ -169,7 +169,7 @@ class UserSelectDialog extends HookConsumerWidget {
                                           ),
                                     )
                                     : const SizedBox.shrink(),
-                        separatorBuilder: (_, __) => const Divider(height: 0.0),
+                        separatorBuilder: (_, _) => const Divider(height: 0.0),
                         itemCount: users.length,
                       ),
                 AsyncValue(:final error?, :final stackTrace) => ErrorMessage(

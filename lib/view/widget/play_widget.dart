@@ -209,7 +209,7 @@ class PlayWidget extends HookConsumerWidget {
                                           );
                                         },
                                         separatorBuilder:
-                                            (_, __) =>
+                                            (_, _) =>
                                                 const Divider(height: 0.0),
                                         itemCount: accounts.length + 1,
                                       ),
@@ -349,7 +349,7 @@ class PlayWidget extends HookConsumerWidget {
                                                   ? json
                                                   : {},
                                               excludeRemoveNullPredicate:
-                                                  (_, __) => true,
+                                                  (_, _) => true,
                                             );
                                         return (jsonEncode(response), null);
                                       } on MisskeyException catch (e) {
@@ -367,7 +367,7 @@ class PlayWidget extends HookConsumerWidget {
                                                       ? json
                                                       : {},
                                                   excludeRemoveNullPredicate:
-                                                      (_, __) => true,
+                                                      (_, _) => true,
                                                 );
                                             return (jsonEncode(response), null);
                                           } catch (e) {

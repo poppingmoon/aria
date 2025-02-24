@@ -169,7 +169,7 @@ class TabSettingsPage extends HookConsumerWidget {
 
     return PopScope(
       canPop: (initialTabSettings ?? TabSettings.dummy()) == tabSettings.value,
-      onPopInvokedWithResult: (didPop, __) async {
+      onPopInvokedWithResult: (didPop, _) async {
         if (!didPop) {
           final confirmed = await confirm(
             context,

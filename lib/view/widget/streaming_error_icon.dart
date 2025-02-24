@@ -24,7 +24,7 @@ class StreamingErrorIcon extends HookConsumerWidget {
             delay.value *= 2;
           }),
           builder:
-              (_, __) => IconButton(
+              (_, _) => IconButton(
                 onPressed:
                     () => showErrorMessageDialog(
                       context,

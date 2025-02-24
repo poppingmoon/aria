@@ -117,13 +117,13 @@ class CustomEmoji extends ConsumerWidget {
               opacity: opacity,
               fit: BoxFit.contain,
               errorBuilder:
-                  (_, __, ___) => ImageWidget(
+                  (_, _, _) => ImageWidget(
                     url: rawUrl,
                     height: height,
                     opacity: opacity,
                     fit: BoxFit.contain,
                     errorBuilder:
-                        (_, __, ___) =>
+                        (_, _, _) =>
                             fallbackToImage
                                 ? Assets.misskey.packages.frontend.assets.dummy
                                     .image(
