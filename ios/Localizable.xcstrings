@@ -1185,6 +1185,77 @@
         }
       }
     },
+    "_notification.login": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Algú ha iniciat sessió "
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Neue Anmeldung erfolgt"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Someone logged in"
+          }
+        },
+        "fr": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Quelqu'un s'est connecté"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Autenticazione avvenuta"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ログインがありました"
+          }
+        },
+        "ko": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "로그인 알림이 있습니다"
+          }
+        },
+        "pt": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alguém entrou na conta"
+          }
+        },
+        "th": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "มีคนล็อกอิน"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "有新的登录"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已登入"
+          }
+        }
+      }
+    },
     "_notification.pollEnded": {
       "extractionState": "manual",
       "localizations": {
@@ -1393,6 +1464,47 @@
         }
       }
     },
+    "_notification.createToken": {
+      "extractionState": "manual",
+      "localizations": {
+        "ca": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Token d'accés generat"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An access token has been created"
+          }
+        },
+        "it": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "È stato creato un token di accesso"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アクセストークンが作成されました"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "访问令牌已创建"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "已產生存取權杖"
+          }
+        }
+      }
+    },
     "_notification.testNotification": {
       "extractionState": "manual",
       "localizations": {
@@ -1553,73 +1665,111 @@
         }
       }
     },
-    "_notification.login": {
+    "_notification.createTokenDescription": {
       "extractionState": "manual",
       "localizations": {
         "ca": {
           "stringUnit": {
             "state": "translated",
-            "value": "Algú ha iniciat sessió "
-          }
-        },
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Neue Anmeldung erfolgt"
+            "value": "Si no saps què és, esborra el token des de Administrar claus de seguretat d'accés ."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Someone logged in"
-          }
-        },
-        "fr": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quelqu'un s'est connecté"
+            "value": "If you have no idea, delete the access token through \"Manage access tokens\"."
           }
         },
         "it": {
           "stringUnit": {
             "state": "translated",
-            "value": "Autenticazione avvenuta"
+            "value": "In caso contrario, eliminare il token di accesso tramite (Gestisci token di accesso)."
           }
         },
         "ja": {
           "stringUnit": {
             "state": "translated",
-            "value": "ログインがありました"
-          }
-        },
-        "ko": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "로그인 알림이 있습니다"
-          }
-        },
-        "pt": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alguém entrou na conta"
-          }
-        },
-        "th": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "มีคนล็อกอิน"
+            "value": "心当たりがない場合は「アクセストークンの管理」を通じてアクセストークンを削除してください。"
           }
         },
         "zh-Hans": {
           "stringUnit": {
             "state": "translated",
-            "value": "有新的登录"
+            "value": "如果不明白其用途，请遵循「管理 Access Tokens」的指示删除访问令牌。"
           }
         },
         "zh-Hant": {
           "stringUnit": {
             "state": "translated",
-            "value": "已登入"
+            "value": "如果您不知道，請透過「管理存取權杖」刪除存取權杖。"
+          }
+        }
+      }
+    },
+    "_notification._types.scheduleNote": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scheduled note posting has failed"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予約済みのノートの投稿に失敗しました"
+          }
+        }
+      }
+    },
+    "_notification.noteScheduled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note has been scheduled"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ノートが予約されました"
+          }
+        }
+      }
+    },
+    "_notification.scheduledNotePosted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scheduled note has been posted"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予約済みのノートが投稿されました"
+          }
+        }
+      }
+    },
+    "_notification.scheduledNoteError": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scheduled note posting has failed"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "予約済みのノートの投稿に失敗しました"
           }
         }
       }
@@ -1631,6 +1781,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Completada l'exportació de Antena"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Antennen ist abgeschlossen"
           }
         },
         "en": {
@@ -1692,6 +1848,12 @@
             "value": "Completada l'exportació de Usuaris bloquejats"
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Blockierte Benutzer ist abgeschlossen"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1749,6 +1911,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Completada l'exportació de Retalls"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Clips ist abgeschlossen"
           }
         },
         "en": {
@@ -1810,6 +1978,12 @@
             "value": "Completada l'exportació de Emojis personalitzats"
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Benutzerdefinierte Emojis ist abgeschlossen"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1867,6 +2041,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Completada l'exportació de Favorits"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Favoriten ist abgeschlossen"
           }
         },
         "en": {
@@ -1928,6 +2108,12 @@
             "value": "Completada l'exportació de Segueixes "
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Folgt ist abgeschlossen"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -1985,6 +2171,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Completada l'exportació de Usuaris silenciats"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Stummgeschaltete Benutzer ist abgeschlossen"
           }
         },
         "en": {
@@ -2046,6 +2238,12 @@
             "value": "Completada l'exportació de Notes"
           }
         },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Notizen ist abgeschlossen"
+          }
+        },
         "en": {
           "stringUnit": {
             "state": "translated",
@@ -2103,6 +2301,12 @@
           "stringUnit": {
             "state": "translated",
             "value": "Completada l'exportació de Llistes"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Der Export von Listen ist abgeschlossen"
           }
         },
         "en": {

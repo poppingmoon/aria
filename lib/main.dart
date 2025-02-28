@@ -247,6 +247,7 @@ class Aria extends HookConsumerWidget {
             NotificationType.pollEnded => t.misskey.notification_.pollEnded,
             NotificationType.roleAssigned =>
               t.misskey.notification_.roleAssigned,
+            NotificationType.createToken => t.misskey.notification_.createToken,
             NotificationType.scheduleNote ||
             NotificationType.scheduledNoteError => t.aria.scheduledNoteError,
             NotificationType.noteScheduled => t.aria.noteScheduled,
@@ -254,7 +255,13 @@ class Aria extends HookConsumerWidget {
             NotificationType.app =>
               notification.body?.header ?? notification.body?.body,
             NotificationType.test => t.misskey.notification_.testNotification,
-            _ => null,
+            NotificationType.edited ||
+            NotificationType.reactionGrouped ||
+            NotificationType.renoteGrouped ||
+            NotificationType.noteGrouped ||
+            NotificationType.pollVote ||
+            NotificationType.groupInvited ||
+            null => null,
           };
           final body = switch (notification.body?.type) {
             NotificationType.follow ||
@@ -430,6 +437,8 @@ class Aria extends HookConsumerWidget {
               _ => null,
             },
             NotificationType.roleAssigned => notification.body?.role?.name,
+            NotificationType.createToken => t.misskey.notification_
+                .createTokenDescription(text: t.misskey.manageAccessTokens),
             NotificationType.scheduleNote => notification.body?.errorType,
             NotificationType.noteScheduled =>
               notification.body?.draft?.data.text,
@@ -443,7 +452,15 @@ class Aria extends HookConsumerWidget {
                   : null,
             NotificationType.test =>
               t.misskey.notification_.notificationWillBeDisplayedLikeThis,
-            _ => null,
+            NotificationType.edited ||
+            NotificationType.exportCompleted ||
+            NotificationType.login ||
+            NotificationType.reactionGrouped ||
+            NotificationType.renoteGrouped ||
+            NotificationType.noteGrouped ||
+            NotificationType.pollVote ||
+            NotificationType.groupInvited ||
+            null => null,
           };
 
           File? file;

@@ -45,14 +45,21 @@ const notificationKeys = [
   'youReceivedFollowRequest',
   'yourFollowRequestAccepted',
   'achievementEarned',
+  'login',
   'pollEnded',
   'roleAssigned',
+  'createToken',
   'testNotification',
   'notificationWillBeDisplayedLikeThis',
-  'login',
 ];
 
 const exportOfXCompleted = 'exportOfXCompleted';
+const createTokenDescription = 'createTokenDescription';
+const manageAccessTokens = 'manageAccessTokens';
+const scheduleNote = '_types.scheduleNote';
+const noteScheduled = 'noteScheduled';
+const scheduledNotePosted = 'scheduledNotePosted';
+const scheduledNoteError = 'scheduledNoteError';
 
 const achievementTypes = [
   'notes1',
@@ -152,20 +159,20 @@ extension on String {
 }
 
 void main() {
-  final strings = Map<String, Map<String, dynamic>>.fromIterable(
-    [
-      ...notificationKeys.map((key) => '_notification.$key'),
-      ...userExportableEntityKeys.map(
-        (key) => '_notification.exportOf${key.capitalize}Completed',
-      ),
-      ...achievementTypes.map((type) => '_achievements._types._$type.title'),
-    ],
-    value:
-        (_) => {
-          'extractionState': 'manual',
-          'localizations': <String, Map<String, Map<String, String>>>{},
-        },
-  );
+  final strings = Map<String, Map<String, String>>.fromIterable([
+    ...[
+      ...notificationKeys,
+      createTokenDescription,
+      scheduleNote,
+      noteScheduled,
+      scheduledNotePosted,
+      scheduledNoteError,
+    ].map((key) => '_notification.$key'),
+    ...userExportableEntityKeys.map(
+      (key) => '_notification.exportOf${key.capitalize}Completed',
+    ),
+    ...achievementTypes.map((type) => '_achievements._types._$type.title'),
+  ], value: (_) => {});
   for (final language in languages) {
     final locale = switch (language) {
       'zh-CN' => 'zh-Hans',
@@ -178,42 +185,51 @@ void main() {
     if (localizations['_notification'] case final YamlMap notifications) {
       for (final key in notificationKeys) {
         if (notifications[key] case final String value) {
-          (strings['_notification.$key']?['localizations']
-              as Map<String, dynamic>)[locale] = {
-            'stringUnit': {
-              'state': 'translated',
-              'value': value.replaceAll(RegExp('{.+}'), '%@'),
-            },
-          };
+          strings['_notification.$key']?[locale] = value.replaceAll(
+            RegExp('{.+}'),
+            '%@',
+          );
         }
       }
       if (notifications[exportOfXCompleted] case final String value) {
         for (final key in userExportableEntityKeys) {
           if (localizations[key] case final String x) {
-            (strings['_notification.exportOf${key.capitalize}Completed']?['localizations']
-                as Map<String, dynamic>)[locale] = {
-              'stringUnit': {
-                'state': 'translated',
-                'value': value.replaceAll(RegExp('{.+}'), x),
-              },
-            };
+            strings['_notification.exportOf${key.capitalize}Completed']?[locale] =
+                value.replaceAll(RegExp('{.+}'), x);
+          }
+        }
+      }
+      if (notifications[createTokenDescription] case final String value) {
+        if (localizations[manageAccessTokens] case final String text) {
+          strings['_notification.$createTokenDescription']?[locale] = value
+              .replaceAll(RegExp('{.+}'), text);
+        }
+      }
+    }
+    if (localizations['_achievements'] case {'_types': final YamlMap types}) {
+      for (final type in achievementTypes) {
+        if (types['_$type'] case final YamlMap achievement) {
+          if (achievement['title'] case final String title) {
+            strings['_achievements._types._$type.title']?[locale] = title;
           }
         }
       }
     }
-    if (localizations['_achievements'] case final YamlMap achievements) {
-      if (achievements['_types'] case final YamlMap types) {
-        for (final type in achievementTypes) {
-          if (types['_$type'] case final YamlMap achievement) {
-            if (achievement['title'] case final String title) {
-              (strings['_achievements._types._$type.title']?['localizations']
-                  as Map<String, dynamic>)[locale] = {
-                'stringUnit': {'state': 'translated', 'value': title},
-              };
-            }
-          }
-        }
-      }
+    final ariaFile = File(
+      language == 'en-US'
+          ? 'lib/i18n/aria/aria.i18n.yaml'
+          : 'lib/i18n/aria/aria_$language.i18n.yaml',
+    );
+    final ariaI18n = loadYaml(ariaFile.readAsStringSync()) as YamlMap;
+    if (ariaI18n[noteScheduled] case final String value) {
+      strings['_notification.$noteScheduled']?[locale] = value;
+    }
+    if (ariaI18n[scheduledNotePosted] case final String value) {
+      strings['_notification.$scheduledNotePosted']?[locale] = value;
+    }
+    if (ariaI18n[scheduledNoteError] case final String value) {
+      strings['_notification.$scheduleNote']?[locale] = value;
+      strings['_notification.$scheduledNoteError']?[locale] = value;
     }
   }
   final file = File('ios/Localizable.xcstrings');
@@ -225,7 +241,16 @@ void main() {
         'To regenerate, run: `dart run script/gen_localizable.dart`',
       ],
       'sourceLanguage': 'en',
-      'strings': strings,
+      'strings': strings.map(
+        (key, value) => MapEntry(key, {
+          'extractionState': 'manual',
+          'localizations': value.map(
+            (key, value) => MapEntry(key, {
+              'stringUnit': {'state': 'translated', 'value': value},
+            }),
+          ),
+        }),
+      ),
       'version': '1.0',
     }),
   );

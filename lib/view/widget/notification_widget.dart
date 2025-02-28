@@ -14,6 +14,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import 'achievement_widget.dart';
 import 'emoji_widget.dart';
 import 'follow_button.dart';
@@ -362,6 +363,24 @@ class NotificationWidget extends ConsumerWidget {
           icon: const Icon(Icons.login),
           iconBackgroundColor: eventLogin,
           title: Text(t.misskey.notification_.login),
+          createdAt: notification.createdAt,
+        );
+      case NotificationType.createToken:
+        return _NotificationTile(
+          account: account,
+          user: i,
+          icon: const Icon(Icons.key),
+          iconBackgroundColor: eventOther,
+          title: Text(t.misskey.notification_.createToken),
+          subtitle: InkWell(
+            onTap:
+                () => launchUrl(ref, Uri.https(account.host, 'settings/apps')),
+            child: Text(
+              t.misskey.notification_.createTokenDescription(
+                text: t.misskey.manageAccessTokens,
+              ),
+            ),
+          ),
           createdAt: notification.createdAt,
         );
       case NotificationType.noteScheduled:
