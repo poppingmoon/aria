@@ -2713,3 +2713,7 @@ embedCodeGen_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "ไม่พบหน้าที่ต้องการ"
+search_:
+  searchScopeAll: "ทั้งหมด"
+  searchScopeLocal: "ท้องถิ่น"
+  searchScopeUser: "ผู้ใช้เฉพาะ"

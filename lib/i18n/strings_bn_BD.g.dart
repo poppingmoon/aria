@@ -975,6 +975,7 @@ class _TranslationsMisskeyBnBd extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesBnBd moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesBnBd._(_root);
 	@override late final _TranslationsMisskeyReversiBnBd reversi_ = _TranslationsMisskeyReversiBnBd._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsBnBd remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsBnBd._(_root);
+	@override late final _TranslationsMisskeySearchBnBd search_ = _TranslationsMisskeySearchBnBd._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1766,6 +1767,17 @@ class _TranslationsMisskeyRemoteLookupErrorsBnBd extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectBnBd._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchBnBd extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchBnBd._(TranslationsBnBd root) : this._root = root, super.internal(root);
+
+	final TranslationsBnBd _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'সবগুলো';
+	@override String get searchScopeLocal => 'স্থানীয়';
 }
 
 // Path: misskey.delivery_.type_

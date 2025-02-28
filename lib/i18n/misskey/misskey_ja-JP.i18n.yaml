@@ -1313,6 +1313,8 @@ availableRoles: "利用可能なロール"
 acknowledgeNotesAndEnable: "注意事項を理解した上でオンにします。"
 federationSpecified: "このサーバーはホワイトリスト連合で運用されています。管理者が指定したサーバー以外とやり取りすることはできません。"
 federationDisabled: "このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。"
+confirmOnReact: "リアクションする際に確認する"
+reactAreYouSure: "\" {emoji} \" をリアクションしますか？"
 accountSettings_:
   requireSigninToViewContents: "コンテンツの表示にログインを必須にする"
   requireSigninToViewContentsDescription1: "あなたが作成した全てのノートなどのコンテンツを表示するのにログインを必須にします。クローラーに情報が収集されるのを防ぐ効果が期待できます。"
@@ -2444,6 +2446,8 @@ notification_:
   flushNotification: "通知の履歴をリセットする"
   exportOfXCompleted: "{x}のエクスポートが完了しました"
   login: "ログインがありました"
+  createToken: "アクセストークンが作成されました"
+  createTokenDescription: "心当たりがない場合は「{text}」を通じてアクセストークンを削除してください。"
   types_:
     all: "すべて"
     note: "ユーザーの新規投稿"
@@ -2842,3 +2846,19 @@ captcha_:
     unknown_:
       title: "CAPTCHAエラー"
       text: "想定外のエラーが発生しました。"
+bootErrors_:
+  title: "読み込みに失敗しました"
+  serverError: "少し待ってからリロードしてもまだ問題が解決されない場合、以下のError IDを添えてサーバー管理者に連絡してください。"
+  solution: "以下を行うと解決する可能性があります。"
+  solution1: "ブラウザおよびOSを最新バージョンに更新する"
+  solution2: "アドブロッカーを無効にする"
+  solution3: "ブラウザのキャッシュをクリアする"
+  solution4: "(Tor Browser) dom.webaudio.enabledをtrueに設定する"
+  otherOption: "その他のオプション"
+  otherOption1: "クライアント設定とキャッシュを削除"
+  otherOption2: "簡易クライアントを起動"
+  otherOption3: "修復ツールを起動"
+search_:
+  searchScopeAll: "全て"
+  searchScopeLocal: "ローカル"
+  searchScopeUser: "ユーザー指定"

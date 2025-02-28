@@ -1230,6 +1230,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesCsCz moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesCsCz._(_root);
 	@override late final _TranslationsMisskeyReversiCsCz reversi_ = _TranslationsMisskeyReversiCsCz._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsCsCz remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsCsCz._(_root);
+	@override late final _TranslationsMisskeySearchCsCz search_ = _TranslationsMisskeySearchCsCz._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2263,6 +2264,18 @@ class _TranslationsMisskeyRemoteLookupErrorsCsCz extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCsCz._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchCsCz extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchCsCz._(TranslationsCsCz root) : this._root = root, super.internal(root);
+
+	final TranslationsCsCz _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Vše';
+	@override String get searchScopeLocal => 'Místní';
+	@override String get searchScopeUser => 'Upřesnit uživatele';
 }
 
 // Path: misskey.delivery_.type_

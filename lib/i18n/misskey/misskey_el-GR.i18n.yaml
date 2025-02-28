@@ -401,3 +401,5 @@ moderationLogTypes_:
   suspend: "Αποβολή"
 reversi_:
   total: "Σύνολο"
+search_:
+  searchScopeLocal: "Τοπικό"

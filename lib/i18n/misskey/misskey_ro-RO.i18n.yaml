@@ -740,3 +740,5 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Nu a fost găsit"
+search_:
+  searchScopeAll: "Tot"

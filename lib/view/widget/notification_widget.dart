@@ -14,6 +14,7 @@ import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
 import '../../util/format_datetime.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/launch_url.dart';
 import 'achievement_widget.dart';
 import 'emoji_widget.dart';
 import 'follow_button.dart';
@@ -364,6 +365,24 @@ class NotificationWidget extends ConsumerWidget {
           title: Text(t.misskey.notification_.login),
           createdAt: notification.createdAt,
         );
+      case NotificationType.createToken:
+        return _NotificationTile(
+          account: account,
+          user: i,
+          icon: const Icon(Icons.key),
+          iconBackgroundColor: eventOther,
+          title: Text(t.misskey.notification_.createToken),
+          subtitle: InkWell(
+            onTap:
+                () => launchUrl(ref, Uri.https(account.host, 'settings/apps')),
+            child: Text(
+              t.misskey.notification_.createTokenDescription(
+                text: t.misskey.manageAccessTokens,
+              ),
+            ),
+          ),
+          createdAt: notification.createdAt,
+        );
       case NotificationType.noteScheduled:
         if (notification.draft case final draft?) {
           return _NotificationTile(
@@ -547,28 +566,30 @@ class NotificationWidget extends ConsumerWidget {
                           if (note.reactionAcceptance !=
                               ReactionAcceptance.likeOnly)
                             PositionedDirectional(
-                              end: 2.0,
-                              bottom: 2.0,
-                              child: DecoratedBox(
-                                decoration: BoxDecoration(
-                                  color: colors.bg,
-                                  shape: BoxShape.circle,
-                                ),
-                                child: ClipOval(
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(2.0),
-                                    child: SizedBox(
-                                      width: 20.0,
-                                      child: EmojiWidget(
-                                        account: account,
-                                        emoji: reaction.reaction,
-                                        emojis: {
-                                          ...note.emojis,
-                                          ...note.reactionEmojis,
-                                        },
-                                        style: const TextStyle(
-                                          fontSize: 18.0,
-                                          height: 1.0,
+                              end: 0.0,
+                              bottom: 0.0,
+                              child: IgnorePointer(
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: colors.bg,
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: ClipOval(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: SizedBox(
+                                        width: 20.0,
+                                        child: EmojiWidget(
+                                          account: account,
+                                          emoji: reaction.reaction,
+                                          emojis: {
+                                            ...note.emojis,
+                                            ...note.reactionEmojis,
+                                          },
+                                          style: const TextStyle(
+                                            fontSize: 18.0,
+                                            height: 1.0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -866,25 +887,27 @@ class _NotificationTile extends ConsumerWidget {
                     PositionedDirectional(
                       end: 0.0,
                       bottom: 0.0,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: colors.bg,
-                          shape: BoxShape.circle,
-                        ),
-                        child: ClipOval(
-                          child: Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: iconBackgroundColor ?? colors.bg,
-                                shape: BoxShape.circle,
-                              ),
-                              child: IconTheme.merge(
-                                data: const IconThemeData(
-                                  size: 20.0,
-                                  color: Colors.white,
+                      child: IgnorePointer(
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: colors.bg,
+                            shape: BoxShape.circle,
+                          ),
+                          child: ClipOval(
+                            child: Padding(
+                              padding: const EdgeInsets.all(2.0),
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: iconBackgroundColor ?? colors.bg,
+                                  shape: BoxShape.circle,
                                 ),
-                                child: SizedBox(width: 20.0, child: icon),
+                                child: IconTheme.merge(
+                                  data: const IconThemeData(
+                                    size: 20.0,
+                                    color: Colors.white,
+                                  ),
+                                  child: SizedBox(width: 20.0, child: icon),
+                                ),
                               ),
                             ),
                           ),

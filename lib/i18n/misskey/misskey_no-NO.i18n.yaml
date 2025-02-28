@@ -734,3 +734,5 @@ moderationLogTypes_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Ikke funnet"
+search_:
+  searchScopeAll: "Alle"

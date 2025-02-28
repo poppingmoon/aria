@@ -1252,6 +1252,7 @@ class _TranslationsMisskeyViVn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesViVn moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesViVn._(_root);
 	@override late final _TranslationsMisskeyReversiViVn reversi_ = _TranslationsMisskeyReversiViVn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsViVn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsViVn._(_root);
+	@override late final _TranslationsMisskeySearchViVn search_ = _TranslationsMisskeySearchViVn._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2220,6 +2221,18 @@ class _TranslationsMisskeyRemoteLookupErrorsViVn extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectViVn._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchViVn extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchViVn._(TranslationsViVn root) : this._root = root, super.internal(root);
+
+	final TranslationsViVn _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Tất cả';
+	@override String get searchScopeLocal => 'Máy chủ này';
+	@override String get searchScopeUser => 'Người dùng chỉ định';
 }
 
 // Path: misskey.delivery_.type_

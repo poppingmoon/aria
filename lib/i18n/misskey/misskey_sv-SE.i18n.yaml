@@ -711,3 +711,5 @@ reversi_:
   white: "Vit"
 selfXssPrevention_:
   warning: "VARNING"
+search_:
+  searchScopeAll: "Allt"

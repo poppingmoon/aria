@@ -1098,3 +1098,6 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Topilmadi"
+search_:
+  searchScopeAll: "Barcha"
+  searchScopeLocal: "Mahalliy"

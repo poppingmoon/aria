@@ -410,7 +410,7 @@ class TranslationsMisskeyEnUs {
 	String get reactions => 'Reactions';
 	String get emojiPicker => 'Emoji picker';
 	String get pinnedEmojisForReactionSettingDescription => 'Set the emojis to be pinned and displayed when reacting.';
-	String get pinnedEmojisSettingDescription => 'Set the emojis to be pinned and displayed when viewing emoji picker.';
+	String get pinnedEmojisSettingDescription => 'Set the emojis to be pinned and displayed when viewing emoji picker';
 	String get emojiPickerDisplay => 'Emoji picker display';
 	String get overwriteFromPinnedEmojisForReaction => 'Override from reaction settings';
 	String get overwriteFromPinnedEmojis => 'Override from general settings';
@@ -864,7 +864,7 @@ class TranslationsMisskeyEnUs {
 	String get volume => 'Volume';
 	String get masterVolume => 'Master volume';
 	String get notUseSound => 'Disable sound';
-	String get useSoundOnlyWhenActive => 'Output sounds only if Misskey is active.';
+	String get useSoundOnlyWhenActive => 'Output sounds only if Misskey is active';
 	String get details => 'Details';
 	String get renoteDetails => 'Renote details';
 	String get chooseEmoji => 'Select an emoji';
@@ -1539,7 +1539,7 @@ class TranslationsMisskeyEnUs {
 	String get ranking => 'Ranking';
 	String lastNDays({required Object n}) => 'Last ${n} days';
 	String get backToTitle => 'Go back to title';
-	String get hemisphere => 'Where are you located';
+	String get hemisphere => 'Where you live';
 	String get withSensitive => 'Include notes with sensitive files';
 	String userSaysSomethingSensitive({required Object name}) => 'Post by ${name} contains sensitive content';
 	String get enableHorizontalSwipe => 'Swipe to switch tabs';
@@ -1587,6 +1587,8 @@ class TranslationsMisskeyEnUs {
 	String get acknowledgeNotesAndEnable => 'Turn on after understanding the precautions.';
 	String get federationSpecified => 'This server is operated in a whitelist federation. Interacting with servers other than those designated by the administrator is not allowed.';
 	String get federationDisabled => 'Federation is disabled on this server. You cannot interact with users on other servers.';
+	String get confirmOnReact => 'Confirm when reacting';
+	String reactAreYouSure({required Object emoji}) => 'Would you like to add a "${emoji}" reaction?';
 	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
@@ -1669,6 +1671,8 @@ class TranslationsMisskeyEnUs {
 	late final TranslationsMisskeyFollowRequestEnUs followRequest_ = TranslationsMisskeyFollowRequestEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsEnUs remoteLookupErrors_ = TranslationsMisskeyRemoteLookupErrorsEnUs.internal(_root);
 	late final TranslationsMisskeyCaptchaEnUs captcha_ = TranslationsMisskeyCaptchaEnUs.internal(_root);
+	late final TranslationsMisskeyBootErrorsEnUs bootErrors_ = TranslationsMisskeyBootErrorsEnUs.internal(_root);
+	late final TranslationsMisskeySearchEnUs search_ = TranslationsMisskeySearchEnUs.internal(_root);
 }
 
 // Path: misskeyIO
@@ -2847,6 +2851,8 @@ class TranslationsMisskeyNotificationEnUs {
 	String get flushNotification => 'Clear notifications';
 	String exportOfXCompleted({required Object x}) => 'Export of ${x} has been completed';
 	String get login => 'Someone logged in';
+	String get createToken => 'An access token has been created';
+	String createTokenDescription({required Object text}) => 'If you have no idea, delete the access token through "${text}".';
 	late final TranslationsMisskeyNotificationTypesEnUs types_ = TranslationsMisskeyNotificationTypesEnUs.internal(_root);
 	late final TranslationsMisskeyNotificationActionsEnUs actions_ = TranslationsMisskeyNotificationActionsEnUs.internal(_root);
 }
@@ -3258,7 +3264,6 @@ class TranslationsMisskeyRemoteLookupErrorsEnUs {
 	late final TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs uriInvalid_ = TranslationsMisskeyRemoteLookupErrorsUriInvalidEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs requestFailed_ = TranslationsMisskeyRemoteLookupErrorsRequestFailedEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs responseInvalid_ = TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs.internal(_root);
-	late final TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs responseInvalidIdHostNotMatch_ = TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs.internal(_root);
 	late final TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs noSuchObject_ = TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEnUs.internal(_root);
 }
 
@@ -3272,6 +3277,38 @@ class TranslationsMisskeyCaptchaEnUs {
 	String get verify => 'Please verify the CAPTCHA';
 	String get testSiteKeyMessage => 'You can check the preview by entering the test values for the site and secret keys.\nPlease see the following page for details.';
 	late final TranslationsMisskeyCaptchaErrorEnUs error_ = TranslationsMisskeyCaptchaErrorEnUs.internal(_root);
+}
+
+// Path: misskey.bootErrors_
+class TranslationsMisskeyBootErrorsEnUs {
+	TranslationsMisskeyBootErrorsEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get title => 'Failed to load';
+	String get serverError => 'If the problem persists after waiting a moment and reloading, please contact the server administrator with the following Error ID.';
+	String get solution => 'The following may solve the problem.';
+	String get solution1 => 'Update your browser and OS to the latest version';
+	String get solution2 => 'Disable ad blocker';
+	String get solution3 => 'Clear the browser cache';
+	String get solution4 => 'Set the dom.webaudio.enabled to true for Tor Browser';
+	String get otherOption => 'Other options';
+	String get otherOption1 => 'Delete client settings and cache';
+	String get otherOption2 => 'Start the simple client';
+	String get otherOption3 => 'Launch the repair tool';
+}
+
+// Path: misskey.search_
+class TranslationsMisskeySearchEnUs {
+	TranslationsMisskeySearchEnUs.internal(this._root);
+
+	final Translations _root; // ignore: unused_field
+
+	// Translations
+	String get searchScopeAll => 'All';
+	String get searchScopeLocal => 'Local';
+	String get searchScopeUser => 'Specific user';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -4032,16 +4069,6 @@ class TranslationsMisskeyRemoteLookupErrorsResponseInvalidEnUs {
 	// Translations
 	String get title => 'Response is invalid';
 	String get description => 'It could communicate with this server, but the data obtained was incorrect.';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs.internal(this._root);
-
-	final Translations _root; // ignore: unused_field
-
-	// Translations
-	String get description => 'The domain of the entered URI differs from the domain of the final obtained URI. If you are looking up remote content through a third-party server, please look up again using a URI that can be obtained from the origin server.';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_

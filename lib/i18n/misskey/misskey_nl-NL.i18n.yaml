@@ -544,3 +544,5 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Niet gevonden"
+search_:
+  searchScopeAll: "Alle"

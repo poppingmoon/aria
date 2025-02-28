@@ -481,3 +481,5 @@ moderationLogTypes_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "ບໍ່ພົບ"
+search_:
+  searchScopeAll: "ທັງໝົດ"

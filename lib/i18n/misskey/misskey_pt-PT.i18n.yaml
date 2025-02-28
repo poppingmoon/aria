@@ -2758,8 +2758,10 @@ remoteLookupErrors_:
   responseInvalid_:
     title: "Resposta inválida"
     description: "Foi possível comunicar com o servidor, porém os dados obtidos foram incorretos."
-  responseInvalidIdHostNotMatch_:
-    description: "O domínio do endereço inserido difere do domínio do endereço final. Se você estiver pesquisando por um servidor de terceiros, tente buscar novamente com um endereço que pode ser obtido através do servidor original."
   noSuchObject_:
     title: "Não encontrado"
     description: "O recurso solicitado não foi encontrado, confira o endereço."
+search_:
+  searchScopeAll: "Todos"
+  searchScopeLocal: "Local"
+  searchScopeUser: "Usuário específico"
