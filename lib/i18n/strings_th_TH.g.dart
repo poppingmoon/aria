@@ -1447,6 +1447,7 @@ class _TranslationsMisskeyThTh extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyContextMenuThTh contextMenu_ = _TranslationsMisskeyContextMenuThTh._(_root);
 	@override late final _TranslationsMisskeyEmbedCodeGenThTh embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenThTh._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsThTh remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsThTh._(_root);
+	@override late final _TranslationsMisskeySearchThTh search_ = _TranslationsMisskeySearchThTh._(_root);
 }
 
 // Path: misskey.abuseUserReport_
@@ -2940,6 +2941,18 @@ class _TranslationsMisskeyRemoteLookupErrorsThTh extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectThTh noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectThTh._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchThTh extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchThTh._(TranslationsThTh root) : this._root = root, super.internal(root);
+
+	final TranslationsThTh _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'ทั้งหมด';
+	@override String get searchScopeLocal => 'ท้องถิ่น';
+	@override String get searchScopeUser => 'ผู้ใช้เฉพาะ';
 }
 
 // Path: misskey.delivery_.type_

@@ -321,7 +321,7 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get unpin => 'ピン留めやめる';
 	@override String get copyContent => '内容をコピー';
 	@override String get copyLink => 'リンクをコピー';
-	@override String get copyRemoteLink => 'リモートのリンクをコピー';
+	@override String get copyRemoteLink => 'リモートのリンクをコピーするで？';
 	@override String get copyLinkRenote => 'リノートのリンクをコピーするで？';
 	@override String get delete => 'ほかす';
 	@override String get deleteAndEdit => 'ほかして直す';
@@ -958,15 +958,15 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get smtpSecureInfo => 'STARTTLS使っとる時はオフにしてや。';
 	@override String get testEmail => '配信テスト';
 	@override String get wordMute => 'ワードミュート';
-	@override String get wordMuteDescription => '指定した語句を含むノートを最小化します。最小化されたノートをクリックすることで表示することができます。';
+	@override String get wordMuteDescription => '指定した語句が入ってるノートを最小化するで。最小化されたノートをクリックしたら、表示できるようになるで。';
 	@override String get hardWordMute => 'ハードワードミュート';
-	@override String get showMutedWord => 'ミュートされたワードを表示';
-	@override String get hardWordMuteDescription => '指定した語句を含むノートを隠します。ワードミュートとは異なり、ノートは完全に表示されなくなります。';
+	@override String get showMutedWord => 'ミュートされたワードを表示するで';
+	@override String get hardWordMuteDescription => '指定した語句が入ってるノートを隠すで。ワードミュートとちゃうて、ノートは完全に表示されんようになるで。';
 	@override String get regexpError => '正規表現エラー';
 	@override String regexpErrorDescription({required Object tab, required Object line}) => '${tab}ワードミュートの${line}行目の正規表現にエラーが出てきたで:';
 	@override String get instanceMute => 'サーバーミュート';
 	@override String userSaysSomething({required Object name}) => '${name}が何か言うとるわ';
-	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name}が「${word}」について何かを言いました';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name}が「${word}」についてなんか言うてたで';
 	@override String get makeActive => '使うで';
 	@override String get display => '表示';
 	@override String get copy => 'コピー';
@@ -1579,8 +1579,10 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get pleaseSelectAccount => 'アカウント選んでや';
 	@override String get availableRoles => '使えるロール';
 	@override String get acknowledgeNotesAndEnable => '注意事項をわかった上でオンにする。';
-	@override String get federationSpecified => 'このサーバーはホワイトリスト連合で運用されています。管理者が指定したサーバー以外とやり取りすることはできません。';
-	@override String get federationDisabled => 'このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。';
+	@override String get federationSpecified => 'このサーバーはホワイトリスト連合で運用されてるで。管理者が指定したサーバー以外とはやり取りできひんで。';
+	@override String get federationDisabled => 'このサーバーは連合が無効化されてるで。他のサーバーのユーザーとやり取りすることはできひんで。';
+	@override String get confirmOnReact => 'ツッコむときに確認とる';
+	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " でツッコむ？';
 	@override late final _TranslationsMisskeyAccountSettingsJaKs accountSettings_ = _TranslationsMisskeyAccountSettingsJaKs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaKs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaKs._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaKs delivery_ = _TranslationsMisskeyDeliveryJaKs._(_root);
@@ -1663,6 +1665,8 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestJaKs followRequest_ = _TranslationsMisskeyFollowRequestJaKs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsJaKs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsJaKs._(_root);
 	@override late final _TranslationsMisskeyCaptchaJaKs captcha_ = _TranslationsMisskeyCaptchaJaKs._(_root);
+	@override late final _TranslationsMisskeyBootErrorsJaKs bootErrors_ = _TranslationsMisskeyBootErrorsJaKs._(_root);
+	@override late final _TranslationsMisskeySearchJaKs search_ = _TranslationsMisskeySearchJaKs._(_root);
 }
 
 // Path: misskeyIO
@@ -2841,6 +2845,8 @@ class _TranslationsMisskeyNotificationJaKs extends TranslationsMisskeyNotificati
 	@override String get flushNotification => '通知の履歴をリセットする';
 	@override String exportOfXCompleted({required Object x}) => '${x}のエクスポートが終わったわ';
 	@override String get login => 'ログインしとったで';
+	@override String get createToken => 'アクセストークンが作成されたで';
+	@override String createTokenDescription({required Object text}) => '心当たりないんやったら「${text}」でアクセストークンを削除してやって。';
 	@override late final _TranslationsMisskeyNotificationTypesJaKs types_ = _TranslationsMisskeyNotificationTypesJaKs._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsJaKs actions_ = _TranslationsMisskeyNotificationActionsJaKs._(_root);
 }
@@ -3178,7 +3184,7 @@ class _TranslationsMisskeyRoleSelectDialogJaKs extends TranslationsMisskeyRoleSe
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get notSelected => '選択されていません';
+	@override String get notSelected => '選択されとらんで';
 }
 
 // Path: misskey.customEmojisManager_
@@ -3262,9 +3268,41 @@ class _TranslationsMisskeyCaptchaJaKs extends TranslationsMisskeyCaptchaEnUs {
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get verify => 'CAPTCHAを通過してください';
-	@override String get testSiteKeyMessage => 'サイトキーとシークレットキーにテスト用の値を入力することでプレビューを確認できます。\n詳細は下記ページをご確認ください。';
+	@override String get verify => 'CAPTCHAしばいたって';
+	@override String get testSiteKeyMessage => 'サイトキーとシークレットキーにテスト用の値を入力することでプレビューを確認できるで。\n詳細は下記ページを確認してな。';
 	@override late final _TranslationsMisskeyCaptchaErrorJaKs error_ = _TranslationsMisskeyCaptchaErrorJaKs._(_root);
+}
+
+// Path: misskey.bootErrors_
+class _TranslationsMisskeyBootErrorsJaKs extends TranslationsMisskeyBootErrorsEnUs {
+	_TranslationsMisskeyBootErrorsJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '読み込みに失敗したで';
+	@override String get serverError => '少し待ってからリロードしてもまだ問題が解決されんのやったら、以下のError IDを添えてサーバー管理者に連絡して。';
+	@override String get solution => '以下のことやったら解決するかもやで。';
+	@override String get solution1 => 'ブラウザとかOSを最新バージョンに更新する';
+	@override String get solution2 => 'アドブロッカーを無効にする';
+	@override String get solution3 => 'ブラウザのキャッシュをクリアする';
+	@override String get solution4 => '(Tor Browser) dom.webaudio.enabledをtrueに設定する';
+	@override String get otherOption => 'ほかのオプション';
+	@override String get otherOption1 => 'クライアント設定とキャッシュをほかす';
+	@override String get otherOption2 => '簡易クライアントを起動';
+	@override String get otherOption3 => '修復ツールを起動';
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchJaKs extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchJaKs._(TranslationsJaKs root) : this._root = root, super.internal(root);
+
+	final TranslationsJaKs _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'みんな';
+	@override String get searchScopeLocal => 'ローカル';
+	@override String get searchScopeUser => 'ユーザー指定';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3917,10 +3955,10 @@ class _TranslationsMisskeyGridComponentErrorJaKs extends TranslationsMisskeyGrid
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get requiredValue => 'この値は必須項目です';
-	@override String get columnTypeNotSupport => '正規表現によるバリデーションはtype:textのカラムのみサポートします。';
-	@override String patternNotMatch({required Object pattern}) => 'この値は${pattern}のパターンに一致しません';
-	@override String get notUnique => 'この値は一意である必要があります';
+	@override String get requiredValue => 'この値は必須項目やで';
+	@override String get columnTypeNotSupport => '正規表現によるバリデーションはtype:textのカラムだけサポートしてるで';
+	@override String patternNotMatch({required Object pattern}) => 'この値は${pattern}のパターンに一致しいひんで';
+	@override String get notUnique => 'この値は一意でなあかんで';
 }
 
 // Path: misskey.customEmojisManager_.gridCommon_
@@ -3930,17 +3968,17 @@ class _TranslationsMisskeyCustomEmojisManagerGridCommonJaKs extends Translations
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get copySelectionRows => '選択行をコピー';
-	@override String get copySelectionRanges => '選択範囲をコピー';
-	@override String get deleteSelectionRows => '選択行を削除';
-	@override String get deleteSelectionRanges => '選択範囲の値をクリア';
+	@override String get copySelectionRows => '選択行をコピーするで';
+	@override String get copySelectionRanges => '選択範囲をコピーするで';
+	@override String get deleteSelectionRows => '選択行を削除するで';
+	@override String get deleteSelectionRanges => '選択範囲の値をクリアするで';
 	@override String get searchSettings => '検索設定';
-	@override String get searchSettingCaption => '検索条件を詳細に設定します。';
+	@override String get searchSettingCaption => '検索条件を詳しく設定するで。';
 	@override String get searchLimit => '表示件数';
 	@override String get sortOrder => '並び順';
 	@override String get registrationLogs => '登録ログ';
-	@override String get registrationLogsCaption => '絵文字更新・削除時のログが表示されます。更新・削除操作を行ったり、ページを遷移・リロードすると消えます。';
-	@override String get alertEmojisRegisterFailedDescription => '絵文字の更新・削除に失敗しました。詳細は登録ログをご確認ください。';
+	@override String get registrationLogsCaption => '絵文字更新・削除時のログが表示されるで。更新・削除操作をしたり、ページを遷移・リロードしたら消えるから気ぃつけてな。';
+	@override String get alertEmojisRegisterFailedDescription => '絵文字の更新・削除に失敗したで。詳細は登録ログを確認してな。';
 }
 
 // Path: misskey.customEmojisManager_.logs_
@@ -3950,9 +3988,9 @@ class _TranslationsMisskeyCustomEmojisManagerLogsJaKs extends TranslationsMisske
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get showSuccessLogSwitch => '成功ログを表示';
-	@override String get failureLogNothing => '失敗ログはありません。';
-	@override String get logNothing => 'ログはありません。';
+	@override String get showSuccessLogSwitch => '成功ログを表示するで';
+	@override String get failureLogNothing => '失敗ログはあらへん。';
+	@override String get logNothing => '失敗ログはあらへん。';
 }
 
 // Path: misskey.customEmojisManager_.remote_
@@ -3962,12 +4000,12 @@ class _TranslationsMisskeyCustomEmojisManagerRemoteJaKs extends TranslationsMiss
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get selectionRowDetail => '選択行の詳細';
-	@override String get importSelectionRows => '選択行をインポート';
-	@override String get importSelectionRangesRows => '選択範囲の行をインポート';
-	@override String get importEmojisButton => 'チェックされた絵文字をインポート';
-	@override String get confirmImportEmojisTitle => '絵文字のインポート';
-	@override String confirmImportEmojisDescription({required Object count}) => 'リモートから受信した${count}個の絵文字のインポートを行います。絵文字のライセンスに十分な注意を払ってください。実行しますか？';
+	@override String get selectionRowDetail => '選択行の詳細やで';
+	@override String get importSelectionRows => '選択行をインポートするで';
+	@override String get importSelectionRangesRows => '選択範囲の行をインポートするで';
+	@override String get importEmojisButton => 'チェックされた絵文字をインポートするで';
+	@override String get confirmImportEmojisTitle => '絵文字のインポートするで';
+	@override String confirmImportEmojisDescription({required Object count}) => 'リモートから受信した${count}個の絵文字をインポートするで。絵文字のライセンスには十分気ぃつけてな。実行してもええか？';
 }
 
 // Path: misskey.customEmojisManager_.local_
@@ -5099,17 +5137,17 @@ class _TranslationsMisskeyCustomEmojisManagerLocalListJaKs extends TranslationsM
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get emojisNothing => '登録された絵文字はありません。';
-	@override String get markAsDeleteTargetRows => '選択行を削除対象にする';
-	@override String get markAsDeleteTargetRanges => '選択範囲の行を削除対象にする';
-	@override String get alertUpdateEmojisNothingDescription => '変更された絵文字はありません。';
-	@override String get alertDeleteEmojisNothingDescription => '削除対象の絵文字はありません。';
-	@override String get confirmMovePage => 'ページを移動しますか？';
-	@override String get confirmChangeView => '表示を変更しますか？';
-	@override String confirmUpdateEmojisDescription({required Object count}) => '${count}個の絵文字を更新します。実行しますか？';
-	@override String confirmDeleteEmojisDescription({required Object count}) => 'チェックがつけられた${count}個の絵文字を削除します。実行しますか？';
-	@override String get confirmResetDescription => '今までに加えた変更がすべてリセットされます。';
-	@override String get confirmMovePageDesciption => 'このページの絵文字に変更が加えられています。\n保存せずにこのままページを移動すると、このページで加えた変更はすべて破棄されます。';
+	@override String get emojisNothing => '登録された絵文字はないで。';
+	@override String get markAsDeleteTargetRows => '選択行を削除対象にするで';
+	@override String get markAsDeleteTargetRanges => '選択範囲の行を削除対象にするで';
+	@override String get alertUpdateEmojisNothingDescription => '変更された絵文字はないで。';
+	@override String get alertDeleteEmojisNothingDescription => '削除対象の絵文字はないで。';
+	@override String get confirmMovePage => 'ページを移動してもええんか？';
+	@override String get confirmChangeView => '表示を変更してもええんか？';
+	@override String confirmUpdateEmojisDescription({required Object count}) => '${count}個の絵文字を更新するで。実行してもええか？';
+	@override String confirmDeleteEmojisDescription({required Object count}) => 'チェックがつけられた${count}個の絵文字を削除するで。ほんまにええか？';
+	@override String get confirmResetDescription => '今までやった変更が全部リセットされるで。';
+	@override String get confirmMovePageDesciption => 'このページの絵文字に変更が加えられてるで。\n保存せずページを移動してまうと、このページで加えた変更が全てパーになるで。';
 	@override String get dialogSelectRoleTitle => '絵文字に設定されたロールで検索';
 }
 
@@ -5121,16 +5159,16 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterJaKs extends Translati
 
 	// Translations
 	@override String get uploadSettingTitle => 'アップロード設定';
-	@override String get uploadSettingDescription => 'この画面で絵文字アップロードを行う際の動作を設定できます。';
+	@override String get uploadSettingDescription => 'この画面で絵文字アップロードするときの動きを設定できるで。';
 	@override String get directoryToCategoryLabel => 'ディレクトリ名を"category"に入力する';
 	@override String get directoryToCategoryCaption => 'ディレクトリをドラッグ・ドロップした時に、ディレクトリ名を"category"に入力します。';
-	@override String get emojiInputAreaCaption => 'いずれかの方法で登録する絵文字を選択してください。';
-	@override String get emojiInputAreaList1 => 'この枠に画像ファイルまたはディレクトリをドラッグ＆ドロップ';
+	@override String get emojiInputAreaCaption => 'どれかの方法で登録する絵文字を選択して。';
+	@override String get emojiInputAreaList1 => 'この枠に画像ファイルかディレクトリをドラッグ&ドロップ';
 	@override String get emojiInputAreaList2 => 'このリンクをクリックしてPCから選択する';
 	@override String get emojiInputAreaList3 => 'このリンクをクリックしてドライブから選択する';
-	@override String confirmRegisterEmojisDescription({required Object count}) => 'リストに表示されている絵文字を新たなカスタム絵文字として登録します。よろしいですか？（負荷を避けるため、一度の操作で登録可能な絵文字は${count}件までです）';
-	@override String get confirmClearEmojisDescription => '編集内容を破棄し、リストに表示されている絵文字をクリアします。よろしいですか？';
-	@override String confirmUploadEmojisDescription({required Object count}) => 'ドラッグ＆ドロップされた${count}個のファイルをドライブにアップロードします。実行しますか？';
+	@override String confirmRegisterEmojisDescription({required Object count}) => 'リストに表示されてる絵文字を新たなカスタム絵文字として登録するで。ほんまにええか？ (サーバーがしんどくなるから、一回で登録できる絵文字は${count}件までやで)';
+	@override String get confirmClearEmojisDescription => '編集内容をほかして、リストに表示されている絵文字をクリアするで。ほんまにええか？';
+	@override String confirmUploadEmojisDescription({required Object count}) => 'ドラッグ&ドロップされた${count}個のファイルをドライブにアップロードするで。ほんまにええか？';
 }
 
 // Path: misskey.captcha_.error_.requestFailed_
@@ -5140,8 +5178,8 @@ class _TranslationsMisskeyCaptchaErrorRequestFailedJaKs extends TranslationsMiss
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'CAPTCHAのリクエストに失敗しました';
-	@override String get text => 'しばらく後に実行するか、設定をもう一度ご確認ください。';
+	@override String get title => 'CAPTCHAのリクエストに失敗してもうた';
+	@override String get text => 'しばらく後で実行するか、設定をもっかい確認してや。';
 }
 
 // Path: misskey.captcha_.error_.verificationFailed_
@@ -5151,8 +5189,8 @@ class _TranslationsMisskeyCaptchaErrorVerificationFailedJaKs extends Translation
 	final TranslationsJaKs _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'CAPTCHAの検証に失敗しました';
-	@override String get text => '設定が正しいかどうかもう一度確認ください。';
+	@override String get title => 'CAPTCHAのリクエストに失敗してもうた';
+	@override String get text => '設定がほんまに合ってるかもっかい確認してや。';
 }
 
 // Path: misskey.captcha_.error_.unknown_
@@ -5163,7 +5201,7 @@ class _TranslationsMisskeyCaptchaErrorUnknownJaKs extends TranslationsMisskeyCap
 
 	// Translations
 	@override String get title => 'CAPTCHAエラー';
-	@override String get text => '想定外のエラーが発生しました。';
+	@override String get text => '思いもせんかったエラーが起きたわ。';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_.exampleNote_

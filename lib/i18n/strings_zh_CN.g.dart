@@ -1576,6 +1576,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '理解注意事项后再开启。';
 	@override String get federationSpecified => '此服务器已开启联合白名单。只能与管理员指定的服务器通信。';
 	@override String get federationDisabled => '此服务器已禁用联合。无法与其它服务器上的用户通信。';
+	@override String get confirmOnReact => '发送回应前需要确认';
+	@override String reactAreYouSure({required Object emoji}) => '要用「${emoji}」进行回应吗？';
 	@override late final _TranslationsMisskeyAccountSettingsZhCn accountSettings_ = _TranslationsMisskeyAccountSettingsZhCn._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhCn abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhCn._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhCn delivery_ = _TranslationsMisskeyDeliveryZhCn._(_root);
@@ -1658,6 +1660,8 @@ class _TranslationsMisskeyZhCn extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestZhCn followRequest_ = _TranslationsMisskeyFollowRequestZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsZhCn remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsZhCn._(_root);
 	@override late final _TranslationsMisskeyCaptchaZhCn captcha_ = _TranslationsMisskeyCaptchaZhCn._(_root);
+	@override late final _TranslationsMisskeyBootErrorsZhCn bootErrors_ = _TranslationsMisskeyBootErrorsZhCn._(_root);
+	@override late final _TranslationsMisskeySearchZhCn search_ = _TranslationsMisskeySearchZhCn._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2826,6 +2830,8 @@ class _TranslationsMisskeyNotificationZhCn extends TranslationsMisskeyNotificati
 	@override String get flushNotification => '重置通知历史';
 	@override String exportOfXCompleted({required Object x}) => '已完成 ${x} 的导出';
 	@override String get login => '有新的登录';
+	@override String get createToken => '访问令牌已创建';
+	@override String createTokenDescription({required Object text}) => '如果不明白其用途，请遵循「${text}」的指示删除访问令牌。';
 	@override late final _TranslationsMisskeyNotificationTypesZhCn types_ = _TranslationsMisskeyNotificationTypesZhCn._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsZhCn actions_ = _TranslationsMisskeyNotificationActionsZhCn._(_root);
 }
@@ -3237,7 +3243,6 @@ class _TranslationsMisskeyRemoteLookupErrorsZhCn extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhCn uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhCn requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectZhCn._(_root);
 }
 
@@ -3251,6 +3256,38 @@ class _TranslationsMisskeyCaptchaZhCn extends TranslationsMisskeyCaptchaEnUs {
 	@override String get verify => '请通过 CAPTCHA 验证';
 	@override String get testSiteKeyMessage => '输入测试用的网站密钥及私密密钥后可以生成预览并检查，\n详情请看以下页面。';
 	@override late final _TranslationsMisskeyCaptchaErrorZhCn error_ = _TranslationsMisskeyCaptchaErrorZhCn._(_root);
+}
+
+// Path: misskey.bootErrors_
+class _TranslationsMisskeyBootErrorsZhCn extends TranslationsMisskeyBootErrorsEnUs {
+	_TranslationsMisskeyBootErrorsZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '加载失败';
+	@override String get serverError => '请稍等片刻再重试。若问题仍无法解决，请将以下 Error ID 一起发送给管理员。';
+	@override String get solution => '以下方法或许可以解决问题：';
+	@override String get solution1 => '将浏览器及操作系统更新到最新版本';
+	@override String get solution2 => '禁用广告屏蔽插件';
+	@override String get solution3 => '清除浏览器缓存';
+	@override String get solution4 => '（Tor Browser）将 dom.webaudio.enabled 设定为 true';
+	@override String get otherOption => '其它选项';
+	@override String get otherOption1 => '清除客户端设定与缓存';
+	@override String get otherOption2 => '使用简易客户端';
+	@override String get otherOption3 => '启动修复工具';
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchZhCn extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
+
+	final TranslationsZhCn _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => '全部';
+	@override String get searchScopeLocal => '本地';
+	@override String get searchScopeUser => '用户指定';
 }
 
 // Path: misskey.delivery_.type_
@@ -3995,16 +4032,6 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidZhCn extends Translat
 	// Translations
 	@override String get title => '响应无效';
 	@override String get description => '成功与此服务器通信，但返回的数据无效。';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchZhCn._(TranslationsZhCn root) : this._root = root, super.internal(root);
-
-	final TranslationsZhCn _root; // ignore: unused_field
-
-	// Translations
-	@override String get description => '输入 URI 的域名和最终取得的 URI 的域名不同。如果是通过第三方服务器获取远程内容，请使用可以从原始服务器获取内容的 URI 再试一次。';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
@@ -5086,8 +5113,8 @@ class _TranslationsMisskeyCustomEmojisManagerLocalRegisterZhCn extends Translati
 	// Translations
 	@override String get uploadSettingTitle => '上传设置';
 	@override String get uploadSettingDescription => '可以在此页面设置上传表情符号时的行为。';
-	@override String get directoryToCategoryLabel => '目录名请输入「category」';
-	@override String get directoryToCategoryCaption => '拖放目录时，目录名请输入「category」';
+	@override String get directoryToCategoryLabel => '将目录名设为「category」';
+	@override String get directoryToCategoryCaption => '拖放目录时，将目录名设置为「category」';
 	@override String get emojiInputAreaCaption => '请使用其中一种方法选择要注册的表情符号。';
 	@override String get emojiInputAreaList1 => '在此区域内拖放图像文件或者目录';
 	@override String get emojiInputAreaList2 => '单击此链接以从电脑中选择';

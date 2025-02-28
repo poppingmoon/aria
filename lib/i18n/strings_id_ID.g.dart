@@ -1601,6 +1601,7 @@ class _TranslationsMisskeyIdId extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyUrlPreviewSettingIdId urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingIdId._(_root);
 	@override late final _TranslationsMisskeyMediaControlsIdId mediaControls_ = _TranslationsMisskeyMediaControlsIdId._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsIdId remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsIdId._(_root);
+	@override late final _TranslationsMisskeySearchIdId search_ = _TranslationsMisskeySearchIdId._(_root);
 }
 
 // Path: misskey.abuseUserReport_
@@ -3030,6 +3031,18 @@ class _TranslationsMisskeyRemoteLookupErrorsIdId extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectIdId._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchIdId extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchIdId._(TranslationsIdId root) : this._root = root, super.internal(root);
+
+	final TranslationsIdId _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Semua';
+	@override String get searchScopeLocal => 'Lokal';
+	@override String get searchScopeUser => 'Pengguna spesifik';
 }
 
 // Path: misskey.delivery_.type_

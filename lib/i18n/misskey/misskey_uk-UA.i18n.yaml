@@ -1628,3 +1628,6 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Не знайдено"
+search_:
+  searchScopeAll: "Всі"
+  searchScopeLocal: "Локальна"

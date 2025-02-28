@@ -737,6 +737,7 @@ class _TranslationsMisskeyRoRo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyModerationLogTypesRoRo moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesRoRo._(_root);
 	@override late final _TranslationsMisskeyReversiRoRo reversi_ = _TranslationsMisskeyReversiRoRo._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRoRo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRoRo._(_root);
+	@override late final _TranslationsMisskeySearchRoRo search_ = _TranslationsMisskeySearchRoRo._(_root);
 }
 
 // Path: misskey.delivery_
@@ -986,6 +987,16 @@ class _TranslationsMisskeyRemoteLookupErrorsRoRo extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRoRo._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchRoRo extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchRoRo._(TranslationsRoRo root) : this._root = root, super.internal(root);
+
+	final TranslationsRoRo _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Tot';
 }
 
 // Path: misskey.delivery_.type_

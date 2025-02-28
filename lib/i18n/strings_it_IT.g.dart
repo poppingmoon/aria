@@ -1391,6 +1391,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => 'Attivare dopo averne compreso il comportamento.';
 	@override String get federationSpecified => 'Questo server è federato solo con istanze specifiche del Fediverso. Puoi interagire solo con quelle scelte dall\'amministrazione.';
 	@override String get federationDisabled => 'Questo server ha la federazione disabilitata. Non puoi interagire con profili provenienti da altri server.';
+	@override String get confirmOnReact => 'Confermare le reazioni';
+	@override String reactAreYouSure({required Object emoji}) => 'Vuoi davvero reagire con ${emoji} ?';
 	@override late final _TranslationsMisskeyAccountSettingsItIt accountSettings_ = _TranslationsMisskeyAccountSettingsItIt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportItIt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportItIt._(_root);
 	@override late final _TranslationsMisskeyDeliveryItIt delivery_ = _TranslationsMisskeyDeliveryItIt._(_root);
@@ -1473,6 +1475,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestItIt followRequest_ = _TranslationsMisskeyFollowRequestItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsItIt remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsItIt._(_root);
 	@override late final _TranslationsMisskeyCaptchaItIt captcha_ = _TranslationsMisskeyCaptchaItIt._(_root);
+	@override late final _TranslationsMisskeyBootErrorsItIt bootErrors_ = _TranslationsMisskeyBootErrorsItIt._(_root);
+	@override late final _TranslationsMisskeySearchItIt search_ = _TranslationsMisskeySearchItIt._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2641,6 +2645,8 @@ class _TranslationsMisskeyNotificationItIt extends TranslationsMisskeyNotificati
 	@override String get flushNotification => 'Azzera le notifiche';
 	@override String exportOfXCompleted({required Object x}) => 'Abbiamo completato l\'esportazione di ${x}';
 	@override String get login => 'Autenticazione avvenuta';
+	@override String get createToken => 'È stato creato un token di accesso';
+	@override String createTokenDescription({required Object text}) => 'In caso contrario, eliminare il token di accesso tramite (${text}).';
 	@override late final _TranslationsMisskeyNotificationTypesItIt types_ = _TranslationsMisskeyNotificationTypesItIt._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsItIt actions_ = _TranslationsMisskeyNotificationActionsItIt._(_root);
 }
@@ -3052,7 +3058,6 @@ class _TranslationsMisskeyRemoteLookupErrorsItIt extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidItIt uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedItIt requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidItIt responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidItIt._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchItIt responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchItIt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectItIt noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectItIt._(_root);
 }
 
@@ -3066,6 +3071,38 @@ class _TranslationsMisskeyCaptchaItIt extends TranslationsMisskeyCaptchaEnUs {
 	@override String get verify => 'Per favore, controlla la verifica CAPTCHA';
 	@override String get testSiteKeyMessage => 'Puoi provare l\'anteprima inserendo valori di test, sia per la chiave del sito che per la chiave segreta.\nSi prega di controllare la pagina qui sotto per i dettagli.';
 	@override late final _TranslationsMisskeyCaptchaErrorItIt error_ = _TranslationsMisskeyCaptchaErrorItIt._(_root);
+}
+
+// Path: misskey.bootErrors_
+class _TranslationsMisskeyBootErrorsItIt extends TranslationsMisskeyBootErrorsEnUs {
+	_TranslationsMisskeyBootErrorsItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Caricamento non riuscito';
+	@override String get serverError => 'Dopo una breve attesa, e dopo aver ricaricato la pagina, se il problema persiste, contatta l\'amministrazione comunicando il seguente ID di errore.';
+	@override String get solution => 'Di seguito, alcune probabili soluzioni al problema.';
+	@override String get solution1 => 'Aggiornare browser e il sistema operativo all\'ultima versione';
+	@override String get solution2 => 'Disattivare gli adblocker';
+	@override String get solution3 => 'Cancellare la cache del browser';
+	@override String get solution4 => '(Per chi utilizza il Browser Tor) Impostare dom.webaudio.enabled = vero';
+	@override String get otherOption => 'Altre opzioni';
+	@override String get otherOption1 => 'Nelle impostazioni, cancellare le impostazioni del client e svuotare la cache';
+	@override String get otherOption2 => 'Avviare il client predefinito';
+	@override String get otherOption3 => 'Avviare lo strumento di riparazione';
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchItIt extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
+
+	final TranslationsItIt _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Tutte';
+	@override String get searchScopeLocal => 'Locale';
+	@override String get searchScopeUser => 'Profilo specifico';
 }
 
 // Path: misskey.delivery_.type_
@@ -3810,16 +3847,6 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidItIt extends Translat
 	// Translations
 	@override String get title => 'Risposta non valida';
 	@override String get description => 'La comunicazione col server è andata a buon fine, ma abbiamo ricevuto dati non validi.';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchItIt extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchItIt._(TranslationsItIt root) : this._root = root, super.internal(root);
-
-	final TranslationsItIt _root; // ignore: unused_field
-
-	// Translations
-	@override String get description => 'L\'indirizzo immesso non coincide con la URL finale. Interrogando i server per un contenuto remoto, assicurarsi di utilizzare la URL finale e non quella di un server intermedio.';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_

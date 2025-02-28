@@ -575,6 +575,7 @@ class _TranslationsMisskeyNoNo extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyAbuseReportNoNo abuseReport_ = _TranslationsMisskeyAbuseReportNoNo._(_root);
 	@override late final _TranslationsMisskeyModerationLogTypesNoNo moderationLogTypes_ = _TranslationsMisskeyModerationLogTypesNoNo._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoNo remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsNoNo._(_root);
+	@override late final _TranslationsMisskeySearchNoNo search_ = _TranslationsMisskeySearchNoNo._(_root);
 }
 
 // Path: misskey.delivery_
@@ -1056,6 +1057,16 @@ class _TranslationsMisskeyRemoteLookupErrorsNoNo extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectNoNo._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchNoNo extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchNoNo._(TranslationsNoNo root) : this._root = root, super.internal(root);
+
+	final TranslationsNoNo _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Alle';
 }
 
 // Path: misskey.achievements_.types_

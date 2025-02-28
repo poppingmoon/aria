@@ -1508,6 +1508,7 @@ class _TranslationsMisskeyPtPt extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySelfXssPreventionPtPt selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionPtPt._(_root);
 	@override late final _TranslationsMisskeyFollowRequestPtPt followRequest_ = _TranslationsMisskeyFollowRequestPtPt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsPtPt remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsPtPt._(_root);
+	@override late final _TranslationsMisskeySearchPtPt search_ = _TranslationsMisskeySearchPtPt._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -3054,8 +3055,19 @@ class _TranslationsMisskeyRemoteLookupErrorsPtPt extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidPtPt uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidPtPt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedPtPt requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedPtPt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidPtPt responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidPtPt._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchPtPt responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchPtPt._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPtPt noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectPtPt._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchPtPt extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
+
+	final TranslationsPtPt _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Todos';
+	@override String get searchScopeLocal => 'Local';
+	@override String get searchScopeUser => 'Usuário específico';
 }
 
 // Path: misskey.delivery_.type_
@@ -3727,16 +3739,6 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidPtPt extends Translat
 	// Translations
 	@override String get title => 'Resposta inválida';
 	@override String get description => 'Foi possível comunicar com o servidor, porém os dados obtidos foram incorretos.';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchPtPt extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchPtPt._(TranslationsPtPt root) : this._root = root, super.internal(root);
-
-	final TranslationsPtPt _root; // ignore: unused_field
-
-	// Translations
-	@override String get description => 'O domínio do endereço inserido difere do domínio do endereço final. Se você estiver pesquisando por um servidor de terceiros, tente buscar novamente com um endereço que pode ser obtido através do servidor original.';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_

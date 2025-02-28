@@ -1352,3 +1352,6 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "পাওয়া যায়নি"
+search_:
+  searchScopeAll: "সবগুলো"
+  searchScopeLocal: "স্থানীয়"

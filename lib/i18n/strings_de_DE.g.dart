@@ -1426,6 +1426,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeySfxDeDe sfx_ = _TranslationsMisskeySfxDeDe._(_root);
 	@override late final _TranslationsMisskeySoundSettingsDeDe soundSettings_ = _TranslationsMisskeySoundSettingsDeDe._(_root);
 	@override late final _TranslationsMisskeyAgoDeDe ago_ = _TranslationsMisskeyAgoDeDe._(_root);
+	@override late final _TranslationsMisskeyTimeInDeDe timeIn_ = _TranslationsMisskeyTimeInDeDe._(_root);
 	@override late final _TranslationsMisskeyTimeDeDe time_ = _TranslationsMisskeyTimeDeDe._(_root);
 	@override late final _TranslationsMisskeyX2faDeDe x2fa_ = _TranslationsMisskeyX2faDeDe._(_root);
 	@override late final _TranslationsMisskeyPermissionsDeDe permissions_ = _TranslationsMisskeyPermissionsDeDe._(_root);
@@ -1465,6 +1466,7 @@ class _TranslationsMisskeyDeDe extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyEmbedCodeGenDeDe embedCodeGen_ = _TranslationsMisskeyEmbedCodeGenDeDe._(_root);
 	@override late final _TranslationsMisskeySelfXssPreventionDeDe selfXssPrevention_ = _TranslationsMisskeySelfXssPreventionDeDe._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsDeDe remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsDeDe._(_root);
+	@override late final _TranslationsMisskeySearchDeDe search_ = _TranslationsMisskeySearchDeDe._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -1627,6 +1629,7 @@ class _TranslationsMisskeyServerSettingsDeDe extends TranslationsMisskeyServerSe
 	@override String get fanoutTimelineDescription => 'Ist diese Option aktiviert, kann eine erhebliche Verbesserung im Abrufen von Chroniken und eine Reduzierung der Datenbankbelastung erzielt werden, im Gegenzug zu einer Steigerung in der Speichernutzung von Redis. Bei geringem Serverspeicher oder Serverinstabilität kann diese Option deaktiviert werden.';
 	@override String get fanoutTimelineDbFallback => 'Auf die Datenbank zurückfallen';
 	@override String get fanoutTimelineDbFallbackDescription => 'Ist diese Option aktiviert, wird die Chronik auf zusätzliche Abfragen in der Datenbank zurückgreifen, wenn sich die Chronik nicht im Cache befindet. Eine Deaktivierung führt zu geringerer Serverlast, aber schränkt den Zeitraum der abrufbaren Chronik ein. ';
+	@override String get reactionsBufferingDescription => 'Wenn diese Option aktiviert ist, kann sie die Leistung beim Erstellen von Reaktionen erheblich verbessern und die Belastung der Datenbank verringern. Allerdings steigt die Speichernutzung von Redis.';
 	@override String get openRegistrationWarning => 'Das Aktivieren von Registrierungen ist riskant. Es wird empfohlen, sie nur dann zu aktivieren, wenn der Server ständig überwacht wird und im Falle eines Problems sofort reagiert werden kann.';
 	@override String get thisSettingWillAutomaticallyOffWhenModeratorsInactive => 'Wenn über einen bestimmten Zeitraum keine Moderatorenaktivität festgestellt wird, wird diese Einstellung automatisch deaktiviert, um Spam zu verhindern.';
 }
@@ -1842,6 +1845,7 @@ class _TranslationsMisskeyPluginDeDe extends TranslationsMisskeyPluginEnUs {
 	@override String get installWarn => 'Installiere bitte nur vertrauenswürdige Plugins.';
 	@override String get manage => 'Plugins verwalten';
 	@override String get viewSource => 'Quelltext anzeigen';
+	@override String get viewLog => 'Protokoll anzeigen';
 }
 
 // Path: misskey.preferencesBackups_
@@ -1895,6 +1899,8 @@ class _TranslationsMisskeyAboutMisskeyDeDe extends TranslationsMisskeyAboutMissk
 	@override String get contributors => 'Hauptmitwirkende';
 	@override String get allContributors => 'Alle Mitwirkenden';
 	@override String get source => 'Quellcode';
+	@override String get original => 'Original';
+	@override String thisIsModifiedVersion({required Object name}) => '${name} verwendet eine modifizierte Version des ursprünglichen Misskey.';
 	@override String get translation => 'Misskey übersetzen';
 	@override String get donate => 'An Misskey spenden';
 	@override String get morePatrons => 'Wir schätzen ebenso die Unterstützung vieler anderer hier nicht gelisteter Personen sehr. Danke! 🥰';
@@ -2061,6 +2067,8 @@ class _TranslationsMisskeySoundSettingsDeDe extends TranslationsMisskeySoundSett
 	@override String get driveFileTypeWarn => 'Diese Datei wird nicht unterstützt';
 	@override String get driveFileTypeWarnDescription => 'Bitte wähle eine Audiodatei';
 	@override String get driveFileDurationWarn => 'Audio zu lang.';
+	@override String get driveFileDurationWarnDescription => 'Lange Töne kann die Verwendung von Misskey stören. Trotzdem fortfahren?';
+	@override String get driveFileError => 'Audio konnte nicht geladen werden. Bitte ändere die Einstellung.';
 }
 
 // Path: misskey.ago_
@@ -2080,6 +2088,18 @@ class _TranslationsMisskeyAgoDeDe extends TranslationsMisskeyAgoEnUs {
 	@override String monthsAgo({required Object n}) => 'vor ${n} Monat(en)';
 	@override String yearsAgo({required Object n}) => 'vor ${n} Jahr(en)';
 	@override String get invalid => 'Ungültig';
+}
+
+// Path: misskey.timeIn_
+class _TranslationsMisskeyTimeInDeDe extends TranslationsMisskeyTimeInEnUs {
+	_TranslationsMisskeyTimeInDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String seconds({required Object n}) => 'In ${n}s';
+	@override String minutes({required Object n}) => 'In ${n} Min.';
+	@override String hours({required Object n}) => 'In ${n} Std.';
 }
 
 // Path: misskey.time_
@@ -2217,6 +2237,7 @@ class _TranslationsMisskeyAuthDeDe extends TranslationsMisskeyAuthEnUs {
 	@override String get permissionAsk => 'Diese Anwendung fordert folgende Berechtigungen';
 	@override String get pleaseGoBack => 'Bitte kehre zur Anwendung zurück';
 	@override String get callback => 'Es wird zur Anwendung zurückgekehrt';
+	@override String get accepted => 'Zugriff gewährt';
 	@override String get denied => 'Zugriff verweigert';
 	@override String get pleaseLogin => 'Bitte logge dich ein, um Apps zu authorisieren.';
 }
@@ -2384,6 +2405,7 @@ class _TranslationsMisskeyProfileDeDe extends TranslationsMisskeyProfileEnUs {
 	@override String get changeBanner => 'Banner ändern';
 	@override String get verifiedLinkDescription => 'Gibst du hier eine URL ein, die einen Link zu deinem Profile enthält, wird neben diesem Feld ein Icon zur Besitzbestätigung angezeigt.';
 	@override String avatarDecorationMax({required Object max}) => 'Du kannst bis zu ${max} Dekorationen hinzufügen.';
+	@override String get followedMessage => 'Nachricht, wenn dir jemand folgt';
 	@override String get followedMessageDescription => 'Du kannst eine kurze Nachricht festlegen, die dem Empfänger angezeigt wird, wenn er dir folgt.';
 }
 
@@ -2566,8 +2588,11 @@ class _TranslationsMisskeyNotificationDeDe extends TranslationsMisskeyNotificati
 	@override String get sendTestNotification => 'Testbenachrichtigung senden';
 	@override String get notificationWillBeDisplayedLikeThis => 'Benachrichtigungen sehen so aus';
 	@override String reactedBySomeUsers({required Object n}) => '${n} Benutzer haben eine Reaktion geschickt';
+	@override String likedBySomeUsers({required Object n}) => '${n} Benutzer mochten deine Notiz';
 	@override String renotedBySomeUsers({required Object n}) => 'Renote von ${n} Benutzern';
 	@override String followedBySomeUsers({required Object n}) => 'Von ${n} Benutzern gefolgt';
+	@override String get flushNotification => 'Benachrichtigungen löschen';
+	@override String exportOfXCompleted({required Object x}) => 'Der Export von ${x} ist abgeschlossen';
 	@override String get login => 'Neue Anmeldung erfolgt';
 	@override late final _TranslationsMisskeyNotificationTypesDeDe types_ = _TranslationsMisskeyNotificationTypesDeDe._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsDeDe actions_ = _TranslationsMisskeyNotificationActionsDeDe._(_root);
@@ -2583,6 +2608,7 @@ class _TranslationsMisskeyDeckDeDe extends TranslationsMisskeyDeckEnUs {
 	@override String get alwaysShowMainColumn => 'Hauptspalte immer zeigen';
 	@override String get columnAlign => 'Spaltenausrichtung';
 	@override String get addColumn => 'Spalte hinzufügen';
+	@override String get newNoteNotificationSettings => 'Benachrichtigungseinstellungen für neue Notizen';
 	@override String get configureColumn => 'Spalteneinstellungen';
 	@override String get swapLeft => 'Mit linker Spalte tauschen';
 	@override String get swapRight => 'Mit rechter Spalte tauschen';
@@ -2643,11 +2669,13 @@ class _TranslationsMisskeyWebhookSettingsDeDe extends TranslationsMisskeyWebhook
 
 	// Translations
 	@override String get createWebhook => 'Webhook erstellen';
+	@override String get modifyWebhook => 'Webhook bearbeiten';
 	@override String get name => 'Name';
 	@override String get secret => 'Secret';
 	@override String get trigger => 'Auslöser';
 	@override String get active => 'Aktiviert';
 	@override late final _TranslationsMisskeyWebhookSettingsEventsDeDe events_ = _TranslationsMisskeyWebhookSettingsEventsDeDe._(_root);
+	@override String get deleteConfirm => 'Bist du sicher, dass du den Webhook löschen willst?';
 }
 
 // Path: misskey.abuseReport_
@@ -2705,6 +2733,7 @@ class _TranslationsMisskeyModerationLogTypesDeDe extends TranslationsMisskeyMode
 	@override String get createSystemWebhook => 'System-Webhook erstellt';
 	@override String get updateSystemWebhook => 'System-Webhook aktualisiert';
 	@override String get deleteSystemWebhook => 'System-Webhook gelöscht';
+	@override String get deleteAccount => 'Benutzerkonto gelöscht';
 	@override String get deletePage => 'Seite gelöscht';
 	@override String get deleteGalleryPost => 'Galeriebeitrag gelöscht';
 }
@@ -2871,6 +2900,18 @@ class _TranslationsMisskeyRemoteLookupErrorsDeDe extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectDeDe._(_root);
 }
 
+// Path: misskey.search_
+class _TranslationsMisskeySearchDeDe extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Alle';
+	@override String get searchScopeLocal => 'Lokal';
+	@override String get searchScopeUser => 'Spezifischer Benutzer';
+}
+
 // Path: misskey.delivery_.type_
 class _TranslationsMisskeyDeliveryTypeDeDe extends TranslationsMisskeyDeliveryTypeEnUs {
 	_TranslationsMisskeyDeliveryTypeDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
@@ -2929,6 +2970,9 @@ class _TranslationsMisskeyInitialTutorialNoteDeDe extends TranslationsMisskeyIni
 	@override String get title => 'Was sind Notizen?';
 	@override String get description => 'Beiträge auf Misskey heißen "Notizen". Notizen werden chronologisch in der Chronik angeordnet und in Echtzeit aktualisiert.';
 	@override String get reply => 'Klicke auf diesen Button, um auf eine Nachricht zu antworten. Es ist auch möglich, auf Antworten zu antworten und die Unterhaltung wie einen Thread fortzusetzen.';
+	@override String get renote => 'Du kannst diese Notiz in deiner eigenen Chronik teilen. Du kannst sie auch mit deinen Kommentaren zitieren.';
+	@override String get reaction => 'Du kannst der Notiz Reaktionen hinzufügen. Weitere Einzelheiten werden auf der nächsten Seite erläutert.';
+	@override String get menu => 'Du kannst Details zu Notizen anzeigen, Links kopieren und verschiedene andere Aktionen durchführen.';
 }
 
 // Path: misskey.initialTutorial_.reaction_
@@ -2979,7 +3023,9 @@ class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveDeDe exten
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get title => 'Wie markiert man Anhänge als sensibel?';
 	@override String get tryThisFile => 'Versuche, das angehängte Bild als sensibel zu markieren!';
+	@override late final _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe exampleNote_ = _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe._(_root);
 	@override String get method => 'Um einen Anhang als sensibel zu kennzeichnen, klicke auf das Vorschaubild der Datei, um das Menü zu öffnen, und klicke auf „Als sensibel markieren“.';
 	@override String get sensitiveSucceeded => 'Wenn du Dateien anhängst, stelle bitte die Sensibilität entsprechend der Serverrichtlinien ein.';
 	@override String get doItToContinue => 'Markiere die angehängte Datei als sensibel, um fortzufahren.';
@@ -3284,7 +3330,9 @@ class _TranslationsMisskeyNotificationTypesDeDe extends TranslationsMisskeyNotif
 	@override String get followRequestAccepted => 'Akzeptierte Follow-Anfragen';
 	@override String get roleAssigned => 'Rolle zugewiesen';
 	@override String get achievementEarned => 'Errungenschaft freigeschaltet';
-	@override String get login => 'Anmelden';
+	@override String get exportCompleted => 'Der Export ist abgeschlossen';
+	@override String get login => 'Anmeldung';
+	@override String get test => 'Test-Benachrichtigungen';
 	@override String get app => 'Benachrichtigungen von Apps';
 }
 
@@ -3343,8 +3391,13 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientDeDe extends Translati
 
 	// Translations
 	@override String get createRecipient => 'Meldungsempfänger hinzufügen';
+	@override String get modifyRecipient => 'Bearbeite einen Empfänger für Meldungen';
+	@override String get recipientType => 'Art der Benachrichtigung';
 	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe recipientType_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe._(_root);
 	@override String get keywords => 'Schlüsselwort';
+	@override String get notifiedUser => 'Zu benachrichtigender Benutzer';
+	@override String get notifiedWebhook => 'Zu verwendender Webhook';
+	@override String get deleteConfirm => 'Bist du sicher, dass du den Empfänger der Benachrichtigung entfernen möchtest?';
 }
 
 // Path: misskey.externalResourceInstaller_.plugin_
@@ -3460,7 +3513,10 @@ class _TranslationsMisskeyInitialTutorialPostNoteVisibilityDeDe extends Translat
 	// Translations
 	@override String get description => 'Du kannst einschränken, wer deine Notiz sehen kann.';
 	@override String get public => 'Deine Notiz wird für alle Nutzer sichtbar sein.';
+	@override String get direct => 'Die Notiz wird nur für den angegebenen Benutzer veröffentlicht und der Empfänger wird benachrichtigt. Kann anstelle von Direktnachrichten verwendet werden.';
 	@override String get doNotSendConfidencialOnDirect1 => 'Sei vorsichtig, wenn du sensible Informationen verschickst!';
+	@override String get doNotSendConfidencialOnDirect2 => 'Die Administratoren des Servers können den Inhalt der Notiz sehen. Sei vorsichtig mit sensiblen Informationen, wenn du Direktnachrichten an Benutzer auf nicht vertrauenswürdigen Servern sendest.';
+	@override String get localOnly => 'Wenn du eine Notiz mit dieser Einstellung veröffentlichst, wird sie nicht an andere Server weitergeleitet. Benutzer auf anderen Servern können diese Notizen nicht direkt sehen, unabhängig von den obigen Anzeigeeinstellungen.';
 }
 
 // Path: misskey.initialTutorial_.postNote_.cw_
@@ -3471,7 +3527,18 @@ class _TranslationsMisskeyInitialTutorialPostNoteCwDeDe extends TranslationsMiss
 
 	// Translations
 	@override String get title => 'Inhaltswarnung';
+	@override String get description => 'Anstelle des Textes wird das angezeigt, was du im Abschnitt „Anmerkungen“ angibst. Drücke auf „Inhalt anzeigen“, um den vollständigen Text zu sehen.';
 	@override late final _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe exampleNote_ = _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe._(_root);
+}
+
+// Path: misskey.initialTutorial_.howToMakeAttachmentsSensitive_.exampleNote_
+class _TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe extends TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteEnUs {
+	_TranslationsMisskeyInitialTutorialHowToMakeAttachmentsSensitiveExampleNoteDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get note => 'Ups, ich habe es vergeigt, den Natto-Deckel zu öffnen...';
 }
 
 // Path: misskey.achievements_.types_.notes1_
@@ -4364,6 +4431,8 @@ class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeDeDe exte
 
 	// Translations
 	@override String get mail => 'Email';
+	@override String get webhook => 'Webhook';
+	@override late final _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe captions_ = _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe._(_root);
 }
 
 // Path: misskey.externalResourceInstaller_.errors_.invalidParams_
@@ -4462,5 +4531,17 @@ class _TranslationsMisskeyInitialTutorialPostNoteCwExampleNoteDeDe extends Trans
 	final TranslationsDeDe _root; // ignore: unused_field
 
 	// Translations
+	@override String get cw => 'Das wird dich bestimmt hungrig machen!';
 	@override String get note => 'Ich hatte gerade einen Donut mit Schokoladenüberzug 🍩😋';
+}
+
+// Path: misskey.abuseReport_.notificationRecipient_.recipientType_.captions_
+class _TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe extends TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsEnUs {
+	_TranslationsMisskeyAbuseReportNotificationRecipientRecipientTypeCaptionsDeDe._(TranslationsDeDe root) : this._root = root, super.internal(root);
+
+	final TranslationsDeDe _root; // ignore: unused_field
+
+	// Translations
+	@override String get mail => 'Die Benachrichtigung wird bei Eingang einer Meldung an die E-Mail-Adressen der Moderatoren gesendet';
+	@override String get webhook => 'Sendet eine Benachrichtigung an den System Webhook, wenn eine Meldung eingegangen ist oder gelöst wurde';
 }

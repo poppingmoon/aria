@@ -1587,3 +1587,6 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Nie znaleziono"
+search_:
+  searchScopeAll: "Wszystkie"
+  searchScopeLocal: "Lokalne"

@@ -1139,6 +1139,7 @@ class _TranslationsMisskeyArSa extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiArSa reversi_ = _TranslationsMisskeyReversiArSa._(_root);
 	@override late final _TranslationsMisskeyOfflineScreenArSa offlineScreen_ = _TranslationsMisskeyOfflineScreenArSa._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsArSa remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsArSa._(_root);
+	@override late final _TranslationsMisskeySearchArSa search_ = _TranslationsMisskeySearchArSa._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2007,6 +2008,18 @@ class _TranslationsMisskeyRemoteLookupErrorsArSa extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectArSa._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchArSa extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchArSa._(TranslationsArSa root) : this._root = root, super.internal(root);
+
+	final TranslationsArSa _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'الكل';
+	@override String get searchScopeLocal => 'المحلي';
+	@override String get searchScopeUser => 'مستخدم محدد';
 }
 
 // Path: misskey.achievements_.types_

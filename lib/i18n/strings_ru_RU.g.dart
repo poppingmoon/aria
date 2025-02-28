@@ -1324,6 +1324,7 @@ class _TranslationsMisskeyRuRu extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyHemisphereRuRu hemisphere_ = _TranslationsMisskeyHemisphereRuRu._(_root);
 	@override late final _TranslationsMisskeyReversiRuRu reversi_ = _TranslationsMisskeyReversiRuRu._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRuRu remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsRuRu._(_root);
+	@override late final _TranslationsMisskeySearchRuRu search_ = _TranslationsMisskeySearchRuRu._(_root);
 }
 
 // Path: misskey.delivery_
@@ -2440,6 +2441,18 @@ class _TranslationsMisskeyRemoteLookupErrorsRuRu extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRuRu noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectRuRu._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchRuRu extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchRuRu._(TranslationsRuRu root) : this._root = root, super.internal(root);
+
+	final TranslationsRuRu _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Все';
+	@override String get searchScopeLocal => 'Местная';
+	@override String get searchScopeUser => 'Указанный пользователь';
 }
 
 // Path: misskey.delivery_.type_

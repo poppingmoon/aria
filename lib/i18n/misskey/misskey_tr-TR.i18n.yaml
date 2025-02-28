@@ -464,3 +464,5 @@ deck_:
 moderationLogTypes_:
   suspend: "askıya al"
   resetPassword: "Şifre sıfırlama"
+search_:
+  searchScopeAll: "Tümü"

@@ -867,6 +867,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get scratchpad => 'Scratch pad';
 	@override String get scratchpadDescription => 'Scratchpad proporciona un entorno experimental para AiScript. Puede escribir, ejecutar y verificar los resultados que interactúan con Misskey.';
 	@override String get uiInspector => 'Inspector de UI';
+	@override String get uiInspectorDescription => 'Puedes visualizar una lista de elementos UI presentes en la memoria. Los componentes de la interfaz de usuario son generados por las funciones UI:C:';
 	@override String get output => 'Salida';
 	@override String get script => 'Script';
 	@override String get disablePagesScript => 'Deshabilitar AiScript en Páginas';
@@ -955,6 +956,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String regexpErrorDescription({required Object line, required Object tab}) => 'Ocurrió un error en la expresión regular en la linea ${line} de las palabras muteadas ${tab}';
 	@override String get instanceMute => 'Instancias silenciadas';
 	@override String userSaysSomething({required Object name}) => '${name} dijo algo';
+	@override String userSaysSomethingAbout({required Object name, required Object word}) => '${name} dijo algo sobre ${word}';
 	@override String get makeActive => 'Activar';
 	@override String get display => 'Apariencia';
 	@override String get copy => 'Copiar';
@@ -1123,6 +1125,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get accounts => 'Cuentas';
 	@override String get switch_ => 'Cambiar';
 	@override String get noMaintainerInformationWarning => 'No se ha establecido la información del administrador';
+	@override String get noInquiryUrlWarning => 'No se ha guardado la URL de consulta.';
 	@override String get noBotProtectionWarning => 'La protección contra los bots no está configurada';
 	@override String get configure => 'Configurar';
 	@override String get postToGallery => 'Crear una nueva publicación en la galería';
@@ -1187,6 +1190,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get continueThread => 'Ver la continuación del hilo';
 	@override String get deleteAccountConfirm => 'La cuenta será borrada. ¿Está seguro?';
 	@override String get incorrectPassword => 'La contraseña es incorrecta';
+	@override String get incorrectTotp => 'La contraseña de un solo uso es incorrecta o ha caducado.';
 	@override String voteConfirm({required Object choice}) => '¿Confirma su voto a ${choice}?';
 	@override String get hide => 'Ocultar';
 	@override String get useDrawerReactionPickerForMobile => 'Mostrar panel de reacciones en móviles';
@@ -1315,6 +1319,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get thisPostMayBeAnnoyingCancel => 'detener';
 	@override String get thisPostMayBeAnnoyingIgnore => 'Publicar de todos modos';
 	@override String get collapseRenotes => 'Colapsar renotas que ya hayas visto';
+	@override String get collapseRenotesDescription => 'Contrae notas a las que  ya has reaccionado o renotado ';
 	@override String get internalServerError => 'Error interno del servidor';
 	@override String get internalServerErrorDescription => 'El servidor tuvo un error inesperado.';
 	@override String get copyErrorInfo => 'Copiar detalles del error';
@@ -1353,6 +1358,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get retryAllQueuesConfirmText => 'La carga del servidor está incrementándose temporalmente ';
 	@override String get enableChartsForRemoteUser => 'Generar gráficas de usuarios remotos.';
 	@override String get enableChartsForFederatedInstances => 'Generar gráficos de servidores remotos';
+	@override String get enableStatsForFederatedInstances => 'Activar las estadísticas de las instancias remotas federadas';
 	@override String get showClipButtonInNoteFooter => 'Añadir "Clip" al menú de notas';
 	@override String get reactionsDisplaySize => 'Tamaño de las reacciones';
 	@override String get limitWidthOfReaction => 'Limitar ancho de las reacciones';
@@ -1401,6 +1407,7 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get options => 'Opción';
 	@override String get specifyUser => 'Especificar usuario';
 	@override String get lookupConfirm => '¿Quiere informarse?';
+	@override String get openTagPageConfirm => '¿Quieres abrir la página de etiquetas?';
 	@override String get specifyHost => 'Especificar Host';
 	@override String get failedToPreviewUrl => 'No se pudo generar la vista previa';
 	@override String get update => 'Actualizar';
@@ -1529,13 +1536,29 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override String get launchApp => 'Ejecutar la app';
 	@override String get useNativeUIForVideoAudioPlayer => 'Usar la interfaz del navegador cuando se reproduce audio y vídeo';
 	@override String get keepOriginalFilename => 'Mantener el nombre original del archivo';
+	@override String get keepOriginalFilenameDescription => 'Si desactivas esta opción, los nombres de los archivos serán remplazados por una cadena de caracteres aleatoria cuando subas los archivos.';
 	@override String get noDescription => 'No hay descripción';
 	@override String get alwaysConfirmFollow => 'Confirmar siempre cuando se sigue a alguien';
 	@override String get inquiry => 'Contacto';
 	@override String get tryAgain => 'Por favor , inténtalo de nuevo';
+	@override String get confirmWhenRevealingSensitiveMedia => 'Confirmación cuando se revele contenido sensible';
+	@override String get sensitiveMediaRevealConfirm => 'Esto puede contener contenido sensible. ¿Estás seguro/a de querer mostrarlo?';
+	@override String get createdLists => 'Listas creadas';
+	@override String get createdAntennas => 'Antenas creadas';
+	@override String fromX({required Object x}) => 'De ${x}';
+	@override String get genEmbedCode => 'Obtener el código para incrustar';
+	@override String get noteOfThisUser => 'Notas de este usuario';
+	@override String get clipNoteLimitExceeded => 'No se pueden añadir más notas a este clip.';
 	@override String get performance => 'Rendimiento';
+	@override String get modified => 'Modificado';
+	@override String get discard => 'Descartar';
+	@override String thereAreNChanges({required Object n}) => 'Hay ${n} cambio(s)';
+	@override String get signinWithPasskey => 'Iniciar sesión con  clave de acceso';
 	@override String get unknownWebAuthnKey => 'Esto no se ha registrado llave maestra.';
+	@override String get passkeyVerificationFailed => 'La verificación de la clave de acceso ha fallado.';
+	@override String get passkeyVerificationSucceededButPasswordlessLoginDisabled => 'La verificación de la clave de acceso ha sido satisfactoria pero se ha deshabilitado el inicio de sesión sin contraseña.';
 	@override String get messageToFollower => 'Mensaje a seguidores';
+	@override String get target => 'Para';
 	@override String get federationSpecified => 'Este servidor opera en una federación de listas blancas. No puede interactuar con otros servidores que no sean los especificados por el administrador.';
 	@override String get federationDisabled => 'La federación está desactivada en este servidor. No puede interactuar con usuarios de otros servidores';
 	@override late final _TranslationsMisskeyAccountSettingsEsEs accountSettings_ = _TranslationsMisskeyAccountSettingsEsEs._(_root);
@@ -1610,7 +1633,9 @@ class _TranslationsMisskeyEsEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyReversiEsEs reversi_ = _TranslationsMisskeyReversiEsEs._(_root);
 	@override late final _TranslationsMisskeyUrlPreviewSettingEsEs urlPreviewSetting_ = _TranslationsMisskeyUrlPreviewSettingEsEs._(_root);
 	@override late final _TranslationsMisskeyMediaControlsEsEs mediaControls_ = _TranslationsMisskeyMediaControlsEsEs._(_root);
+	@override late final _TranslationsMisskeyFollowRequestEsEs followRequest_ = _TranslationsMisskeyFollowRequestEsEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsEsEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsEsEs._(_root);
+	@override late final _TranslationsMisskeySearchEsEs search_ = _TranslationsMisskeySearchEsEs._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2974,6 +2999,17 @@ class _TranslationsMisskeyMediaControlsEsEs extends TranslationsMisskeyMediaCont
 	@override String get loop => 'Reproducción en bucle';
 }
 
+// Path: misskey.followRequest_
+class _TranslationsMisskeyFollowRequestEsEs extends TranslationsMisskeyFollowRequestEnUs {
+	_TranslationsMisskeyFollowRequestEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get recieved => 'Petición de seguimiento recibida';
+	@override String get sent => 'Petición de seguimiento enviada';
+}
+
 // Path: misskey.remoteLookupErrors_
 class _TranslationsMisskeyRemoteLookupErrorsEsEs extends TranslationsMisskeyRemoteLookupErrorsEnUs {
 	_TranslationsMisskeyRemoteLookupErrorsEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
@@ -2982,6 +3018,18 @@ class _TranslationsMisskeyRemoteLookupErrorsEsEs extends TranslationsMisskeyRemo
 
 	// Translations
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEsEs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectEsEs._(_root);
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchEsEs extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchEsEs._(TranslationsEsEs root) : this._root = root, super.internal(root);
+
+	final TranslationsEsEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Todo';
+	@override String get searchScopeLocal => 'Local';
+	@override String get searchScopeUser => 'Especificar usuario';
 }
 
 // Path: misskey.delivery_.type_

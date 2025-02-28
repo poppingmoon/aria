@@ -1581,6 +1581,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => '注意事項を理解した上でオンにします。';
 	@override String get federationSpecified => 'このサーバーはホワイトリスト連合で運用されています。管理者が指定したサーバー以外とやり取りすることはできません。';
 	@override String get federationDisabled => 'このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。';
+	@override String get confirmOnReact => 'リアクションする際に確認する';
+	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " をリアクションしますか？';
 	@override late final _TranslationsMisskeyAccountSettingsJaJp accountSettings_ = _TranslationsMisskeyAccountSettingsJaJp._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
@@ -1663,6 +1665,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestJaJp followRequest_ = _TranslationsMisskeyFollowRequestJaJp._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsJaJp remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsJaJp._(_root);
 	@override late final _TranslationsMisskeyCaptchaJaJp captcha_ = _TranslationsMisskeyCaptchaJaJp._(_root);
+	@override late final _TranslationsMisskeyBootErrorsJaJp bootErrors_ = _TranslationsMisskeyBootErrorsJaJp._(_root);
+	@override late final _TranslationsMisskeySearchJaJp search_ = _TranslationsMisskeySearchJaJp._(_root);
 }
 
 // Path: misskeyIO
@@ -2841,6 +2845,8 @@ class _TranslationsMisskeyNotificationJaJp extends TranslationsMisskeyNotificati
 	@override String get flushNotification => '通知の履歴をリセットする';
 	@override String exportOfXCompleted({required Object x}) => '${x}のエクスポートが完了しました';
 	@override String get login => 'ログインがありました';
+	@override String get createToken => 'アクセストークンが作成されました';
+	@override String createTokenDescription({required Object text}) => '心当たりがない場合は「${text}」を通じてアクセストークンを削除してください。';
 	@override late final _TranslationsMisskeyNotificationTypesJaJp types_ = _TranslationsMisskeyNotificationTypesJaJp._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsJaJp actions_ = _TranslationsMisskeyNotificationActionsJaJp._(_root);
 }
@@ -3265,6 +3271,38 @@ class _TranslationsMisskeyCaptchaJaJp extends TranslationsMisskeyCaptchaEnUs {
 	@override String get verify => 'CAPTCHAを通過してください';
 	@override String get testSiteKeyMessage => 'サイトキーとシークレットキーにテスト用の値を入力することでプレビューを確認できます。\n詳細は下記ページをご確認ください。';
 	@override late final _TranslationsMisskeyCaptchaErrorJaJp error_ = _TranslationsMisskeyCaptchaErrorJaJp._(_root);
+}
+
+// Path: misskey.bootErrors_
+class _TranslationsMisskeyBootErrorsJaJp extends TranslationsMisskeyBootErrorsEnUs {
+	_TranslationsMisskeyBootErrorsJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '読み込みに失敗しました';
+	@override String get serverError => '少し待ってからリロードしてもまだ問題が解決されない場合、以下のError IDを添えてサーバー管理者に連絡してください。';
+	@override String get solution => '以下を行うと解決する可能性があります。';
+	@override String get solution1 => 'ブラウザおよびOSを最新バージョンに更新する';
+	@override String get solution2 => 'アドブロッカーを無効にする';
+	@override String get solution3 => 'ブラウザのキャッシュをクリアする';
+	@override String get solution4 => '(Tor Browser) dom.webaudio.enabledをtrueに設定する';
+	@override String get otherOption => 'その他のオプション';
+	@override String get otherOption1 => 'クライアント設定とキャッシュを削除';
+	@override String get otherOption2 => '簡易クライアントを起動';
+	@override String get otherOption3 => '修復ツールを起動';
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchJaJp extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchJaJp._(TranslationsJaJp root) : this._root = root, super.internal(root);
+
+	final TranslationsJaJp _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => '全て';
+	@override String get searchScopeLocal => 'ローカル';
+	@override String get searchScopeUser => 'ユーザー指定';
 }
 
 // Path: misskeyIO.skebStatus_

@@ -2614,3 +2614,7 @@ mediaControls_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Tidak dapat ditemukan"
+search_:
+  searchScopeAll: "Semua"
+  searchScopeLocal: "Lokal"
+  searchScopeUser: "Pengguna spesifik"

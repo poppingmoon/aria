@@ -2028,3 +2028,7 @@ reversi_:
 remoteLookupErrors_:
   noSuchObject_:
     title: "Nenalezeno"
+search_:
+  searchScopeAll: "Vše"
+  searchScopeLocal: "Místní"
+  searchScopeUser: "Upřesnit uživatele"

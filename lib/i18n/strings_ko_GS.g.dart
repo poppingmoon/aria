@@ -1639,6 +1639,8 @@ class _TranslationsMisskeyKoGs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestKoGs followRequest_ = _TranslationsMisskeyFollowRequestKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsKoGs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsKoGs._(_root);
 	@override late final _TranslationsMisskeyCaptchaKoGs captcha_ = _TranslationsMisskeyCaptchaKoGs._(_root);
+	@override late final _TranslationsMisskeyBootErrorsKoGs bootErrors_ = _TranslationsMisskeyBootErrorsKoGs._(_root);
+	@override late final _TranslationsMisskeySearchKoGs search_ = _TranslationsMisskeySearchKoGs._(_root);
 }
 
 // Path: misskeyIO
@@ -3228,7 +3230,6 @@ class _TranslationsMisskeyRemoteLookupErrorsKoGs extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectKoGs._(_root);
 }
 
@@ -3242,6 +3243,29 @@ class _TranslationsMisskeyCaptchaKoGs extends TranslationsMisskeyCaptchaEnUs {
 	@override String get verify => 'CAPTCHA를 먼저 해결하세요.';
 	@override String get testSiteKeyMessage => '사이트 키와 비밀 키에 테스트용 값을 입력하여 미리보기를 확인할 수 있습니다.\n자세한 내용은 아래 페이지를 확인해보세요.';
 	@override late final _TranslationsMisskeyCaptchaErrorKoGs error_ = _TranslationsMisskeyCaptchaErrorKoGs._(_root);
+}
+
+// Path: misskey.bootErrors_
+class _TranslationsMisskeyBootErrorsKoGs extends TranslationsMisskeyBootErrorsEnUs {
+	_TranslationsMisskeyBootErrorsKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => '로딩이 실패함';
+	@override String get solution4 => '(Tor Browser) dom.webaudio.enabled를 true로 설정하세요';
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchKoGs extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
+
+	final TranslationsKoGs _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => '말캉';
+	@override String get searchScopeLocal => '로컬';
+	@override String get searchScopeUser => '사용자 지정';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -4002,16 +4026,6 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidKoGs extends Translat
 	// Translations
 	@override String get title => '유효하지 않은 반응입니다.';
 	@override String get description => '이 서버와 통신할 수 있지만, 데이터가 올바르지 않습니다.';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchKoGs._(TranslationsKoGs root) : this._root = root, super.internal(root);
-
-	final TranslationsKoGs _root; // ignore: unused_field
-
-	// Translations
-	@override String get description => '입력된 URI과 실제 URI가 다릅니다. 제 3자 서버를 통한 리모트 컨텐츠를 조회하는 경우, 원래 서버 측에서 받아올 수 있는 URI를 사용하여 조회하시길 바랍니다.';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_

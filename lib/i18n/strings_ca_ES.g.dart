@@ -148,7 +148,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get copyProfileUrl => 'Copiar adreça URL del perfil';
 	@override String get searchUser => 'Cercar un usuari';
 	@override String get searchThisUsersNotes => 'Cercar les publicacions de l\'usuari';
-	@override String get reply => 'Respon';
+	@override String get reply => 'Respostes';
 	@override String get loadMore => 'Carregar més';
 	@override String get showMore => 'Veure més';
 	@override String get showLess => 'Mostrar menys';
@@ -193,7 +193,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get unfollow => 'Deixar de seguir';
 	@override String get followRequestPending => 'Sol·licituds de seguiment pendents';
 	@override String get enterEmoji => 'Introduir un emoji';
-	@override String get renote => 'Impulsar ';
+	@override String get renote => 'Impulsos';
 	@override String get unrenote => 'Anul·la l\'impuls';
 	@override String get renoted => 'S\'ha impulsat';
 	@override String renotedToX({required Object name}) => 'Impulsat per ${name}.';
@@ -728,7 +728,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get expandTweet => 'Expandir post';
 	@override String get themeEditor => 'Editor de temes';
 	@override String get description => 'Descripció';
-	@override String get describeFile => 'Afegir subtitulació';
+	@override String get describeFile => 'Afegeix una descripció ';
 	@override String get enterFileDescription => 'Escriu un peu de foto';
 	@override String get author => 'Autor';
 	@override String get leaveConfirm => 'Hi ha canvis sense guardar. Els vols descartar?';
@@ -1271,8 +1271,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get pastAnnouncements => 'Informes passats';
 	@override String get youHaveUnreadAnnouncements => 'Tens informes per llegir.';
 	@override String get useSecurityKey => 'Segueix les instruccions del teu navegador O dispositiu per fer servir el teu passkey.';
-	@override String get replies => 'Respon';
-	@override String get renotes => 'Impulsar ';
+	@override String get replies => 'Respostes';
+	@override String get renotes => 'Impulsos';
 	@override String get loadReplies => 'Mostrar les respostes';
 	@override String get loadConversation => 'Mostrar la conversació ';
 	@override String get pinnedList => 'Llista fixada';
@@ -1391,6 +1391,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get acknowledgeNotesAndEnable => 'Activa\'l després de comprendre els possibles perills.';
 	@override String get federationSpecified => 'Aquest servidor treballa amb una federació de llistes blanques. No pot interactuar amb altres servidors que no siguin els especificats per l\'administrador.';
 	@override String get federationDisabled => 'La unió es troba deshabilitada en aquest servidor. No es pot interactuar amb usuaris d\'altres servidors.';
+	@override String get confirmOnReact => 'Confirmar en reaccionar';
+	@override String reactAreYouSure({required Object emoji}) => 'Vols reaccionar amb "${emoji}"?';
 	@override late final _TranslationsMisskeyAccountSettingsCaEs accountSettings_ = _TranslationsMisskeyAccountSettingsCaEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportCaEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportCaEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryCaEs delivery_ = _TranslationsMisskeyDeliveryCaEs._(_root);
@@ -1473,6 +1475,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override late final _TranslationsMisskeyFollowRequestCaEs followRequest_ = _TranslationsMisskeyFollowRequestCaEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsCaEs remoteLookupErrors_ = _TranslationsMisskeyRemoteLookupErrorsCaEs._(_root);
 	@override late final _TranslationsMisskeyCaptchaCaEs captcha_ = _TranslationsMisskeyCaptchaCaEs._(_root);
+	@override late final _TranslationsMisskeyBootErrorsCaEs bootErrors_ = _TranslationsMisskeyBootErrorsCaEs._(_root);
+	@override late final _TranslationsMisskeySearchCaEs search_ = _TranslationsMisskeySearchCaEs._(_root);
 }
 
 // Path: misskey.accountSettings_
@@ -2641,6 +2645,8 @@ class _TranslationsMisskeyNotificationCaEs extends TranslationsMisskeyNotificati
 	@override String get flushNotification => 'Netejar notificacions';
 	@override String exportOfXCompleted({required Object x}) => 'Completada l\'exportació de ${x}';
 	@override String get login => 'Algú ha iniciat sessió ';
+	@override String get createToken => 'Token d\'accés generat';
+	@override String createTokenDescription({required Object text}) => 'Si no saps què és, esborra el token des de ${text}.';
 	@override late final _TranslationsMisskeyNotificationTypesCaEs types_ = _TranslationsMisskeyNotificationTypesCaEs._(_root);
 	@override late final _TranslationsMisskeyNotificationActionsCaEs actions_ = _TranslationsMisskeyNotificationActionsCaEs._(_root);
 }
@@ -3052,7 +3058,6 @@ class _TranslationsMisskeyRemoteLookupErrorsCaEs extends TranslationsMisskeyRemo
 	@override late final _TranslationsMisskeyRemoteLookupErrorsUriInvalidCaEs uriInvalid_ = _TranslationsMisskeyRemoteLookupErrorsUriInvalidCaEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsRequestFailedCaEs requestFailed_ = _TranslationsMisskeyRemoteLookupErrorsRequestFailedCaEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs responseInvalid_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs._(_root);
-	@override late final _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs responseInvalidIdHostNotMatch_ = _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs._(_root);
 	@override late final _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCaEs noSuchObject_ = _TranslationsMisskeyRemoteLookupErrorsNoSuchObjectCaEs._(_root);
 }
 
@@ -3066,6 +3071,38 @@ class _TranslationsMisskeyCaptchaCaEs extends TranslationsMisskeyCaptchaEnUs {
 	@override String get verify => 'Passar pel CAPTCHA';
 	@override String get testSiteKeyMessage => 'Pots comprovar una vista prèvia introduïnt valors de prova per la clau del lloc i la clau secreta. Si vols més informació consulteu la següent pàgina.';
 	@override late final _TranslationsMisskeyCaptchaErrorCaEs error_ = _TranslationsMisskeyCaptchaErrorCaEs._(_root);
+}
+
+// Path: misskey.bootErrors_
+class _TranslationsMisskeyBootErrorsCaEs extends TranslationsMisskeyBootErrorsEnUs {
+	_TranslationsMisskeyBootErrorsCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get title => 'Hi ha hagut en error en carregar';
+	@override String get serverError => 'Si el problema persisteix després d\'esperar una mica i recarregar, posa\'t en contacte amb l\'administrador del servidor amb el següent codi d\'error.';
+	@override String get solution => 'Per intentar resoldre el problema pots fer el següent.';
+	@override String get solution1 => 'Actualitza el navegador i el sistema operatiu a l\'última versió ';
+	@override String get solution2 => 'Desactiva els adblockers';
+	@override String get solution3 => 'Esborra la memòria cau del navegador';
+	@override String get solution4 => '(Navegador Tor) configura dom.webaudio.enabled a true';
+	@override String get otherOption => 'Altres opcions';
+	@override String get otherOption1 => 'Esborrar la configuració i la memòria cau del client';
+	@override String get otherOption2 => 'Iniciar client senzill';
+	@override String get otherOption3 => 'Iniciar l\'eina de reparació ';
+}
+
+// Path: misskey.search_
+class _TranslationsMisskeySearchCaEs extends TranslationsMisskeySearchEnUs {
+	_TranslationsMisskeySearchCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
+
+	final TranslationsCaEs _root; // ignore: unused_field
+
+	// Translations
+	@override String get searchScopeAll => 'Tot';
+	@override String get searchScopeLocal => 'Local';
+	@override String get searchScopeUser => 'Especificar usuari';
 }
 
 // Path: misskey.delivery_.type_
@@ -3810,16 +3847,6 @@ class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidCaEs extends Translat
 	// Translations
 	@override String get title => 'La resposta no és correcta ';
 	@override String get description => 'Hem pogut comunicar-nos amb aquest servidor, però les dades rebudes no són correctes.';
-}
-
-// Path: misskey.remoteLookupErrors_.responseInvalidIdHostNotMatch_
-class _TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs extends TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchEnUs {
-	_TranslationsMisskeyRemoteLookupErrorsResponseInvalidIdHostNotMatchCaEs._(TranslationsCaEs root) : this._root = root, super.internal(root);
-
-	final TranslationsCaEs _root; // ignore: unused_field
-
-	// Translations
-	@override String get description => 'El domini de l\'adreça introduïda no és el mateix que el domini de l\'adreça final obtinguda. Si estàs consultant continguts remots mitjançant servidors tercers, torna a fer la consulta fent servir l\'adreça que es pot obtenir en el servidor origen.';
 }
 
 // Path: misskey.remoteLookupErrors_.noSuchObject_
