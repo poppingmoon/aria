@@ -38,6 +38,7 @@ class NoteFooter extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.noteId,
+    this.clipId,
     this.disableHeader = false,
     this.focusPostForm,
     this.note,
@@ -45,6 +46,7 @@ class NoteFooter extends HookConsumerWidget {
 
   final Account account;
   final String noteId;
+  final String? clipId;
   final bool disableHeader;
   final void Function()? focusPostForm;
   final Note? note;
@@ -167,12 +169,17 @@ class NoteFooter extends HookConsumerWidget {
                       style: style,
                     ),
                   if (showClipButton)
-                    _ClipButton(account: account, note: appearNote),
+                    _ClipButton(
+                      account: account,
+                      note: appearNote,
+                      clipId: clipId,
+                    ),
                   if (showTranslateButton)
                     _TranslateButton(account: account, note: appearNote),
                   _MenuButton(
                     account: account,
                     note: note,
+                    clipId: clipId,
                     disableHeader: disableHeader,
                     focusPostForm: focusPostForm,
                   ),
@@ -652,10 +659,11 @@ class _RemoveReactionButton extends ConsumerWidget {
 }
 
 class _ClipButton extends ConsumerWidget {
-  const _ClipButton({required this.account, required this.note});
+  const _ClipButton({required this.account, required this.note, this.clipId});
 
   final Account account;
   final Note note;
+  final String? clipId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -668,8 +676,11 @@ class _ClipButton extends ConsumerWidget {
                 showDialog<void>(
                   context: context,
                   builder:
-                      (context) =>
-                          ClipDialog(account: account, noteId: note.id),
+                      (context) => ClipDialog(
+                        account: account,
+                        noteId: note.id,
+                        clipId: clipId,
+                      ),
                 );
               }
               : null,
@@ -722,10 +733,12 @@ class _MenuButton extends ConsumerWidget {
     required this.note,
     this.disableHeader = false,
     this.focusPostForm,
+    this.clipId,
   });
 
   final Account account;
   final Note note;
+  final String? clipId;
   final bool disableHeader;
   final void Function()? focusPostForm;
 
@@ -739,8 +752,8 @@ class _MenuButton extends ConsumerWidget {
           context: context,
           account: account,
           noteId: note.id,
+          clipId: clipId,
           disableHeader: disableHeader,
-          focusPostForm: focusPostForm,
         );
       },
       icon: const Icon(Icons.more_horiz),

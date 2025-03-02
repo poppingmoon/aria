@@ -17,6 +17,8 @@ void Function()? getNoteAction(
   required NoteActionType type,
   required Note note,
   required Note appearNote,
+  String? clipId,
+  bool disableHeader = false,
 }) {
   if (note.id.isEmpty) {
     return null;
@@ -30,6 +32,8 @@ void Function()? getNoteAction(
         context: ref.context,
         account: account,
         noteId: note.id,
+        clipId: clipId,
+        disableHeader: disableHeader,
       ),
     NoteActionType.reaction =>
       !account.isGuest

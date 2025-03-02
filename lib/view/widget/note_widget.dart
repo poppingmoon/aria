@@ -42,6 +42,7 @@ class NoteWidget extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.noteId,
+    this.clipId,
     this.withHardMute = true,
     this.focusPostForm,
     this.note,
@@ -53,6 +54,7 @@ class NoteWidget extends HookConsumerWidget {
 
   final Account account;
   final String noteId;
+  final String? clipId;
   final bool withHardMute;
   final void Function()? focusPostForm;
   final Note? note;
@@ -171,8 +173,9 @@ class NoteWidget extends HookConsumerWidget {
               type: tapAction,
               note: note,
               appearNote: appearNote,
+              clipId: clipId,
             ),
-            [account, tapAction, note.id, appearNote.id],
+            [account, tapAction, noteId, clipId],
           ),
           onDoubleTap: useMemoized(
             () => getNoteAction(
@@ -181,8 +184,9 @@ class NoteWidget extends HookConsumerWidget {
               type: doubleTapAction,
               note: note,
               appearNote: appearNote,
+              clipId: clipId,
             ),
-            [account, doubleTapAction, note.id, appearNote.id],
+            [account, doubleTapAction, noteId, clipId],
           ),
           onLongPress: useMemoized(
             () => getNoteAction(
@@ -191,8 +195,9 @@ class NoteWidget extends HookConsumerWidget {
               type: longPressAction,
               note: note,
               appearNote: appearNote,
+              clipId: clipId,
             ),
-            [account, longPressAction, note.id, appearNote.id],
+            [account, longPressAction, noteId, clipId],
           ),
           child: Padding(
             padding: EdgeInsetsDirectional.only(
@@ -315,6 +320,7 @@ class NoteWidget extends HookConsumerWidget {
                             noteId: noteId,
                             note: note,
                             appearNote: appearNote,
+                            clipId: clipId,
                             style: style,
                             showFooter: showFooter,
                             focusPostForm: focusPostForm,
@@ -338,6 +344,7 @@ class _NoteContent extends HookConsumerWidget {
     required this.noteId,
     required this.note,
     required this.appearNote,
+    required this.clipId,
     required this.style,
     required this.showFooter,
     required this.focusPostForm,
@@ -347,6 +354,7 @@ class _NoteContent extends HookConsumerWidget {
   final String noteId;
   final Note note;
   final Note appearNote;
+  final String? clipId;
   final TextStyle style;
   final bool? showFooter;
   final void Function()? focusPostForm;
@@ -577,6 +585,7 @@ class _NoteContent extends HookConsumerWidget {
           NoteFooter(
             account: account,
             noteId: noteId,
+            clipId: clipId,
             focusPostForm: focusPostForm,
             note: note,
           ),

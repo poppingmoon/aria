@@ -42,4 +42,17 @@ class ClipNotesNotifier extends _$ClipNotesNotifier {
       );
     });
   }
+
+  Future<void> removeNote(String noteId) async {
+    await ref
+        .read(misskeyProvider(account))
+        .clips
+        .removeNote(ClipsRemoveNoteRequest(clipId: clipId, noteId: noteId));
+    final value = state.valueOrNull ?? const PaginationState();
+    state = AsyncValue.data(
+      value.copyWith(
+        items: value.items.where((note) => note.id != noteId).toList(),
+      ),
+    );
+  }
 }

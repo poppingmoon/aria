@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:misskey_dart/misskey_dart.dart';
@@ -7,6 +8,7 @@ import 'package:misskey_dart/misskey_dart.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../model/clip_settings.dart';
+import '../../provider/api/clip_notes_notifier_provider.dart';
 import '../../provider/api/clips_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/note_clips_notifier_provider.dart';
@@ -15,10 +17,16 @@ import 'clip_settings_dialog.dart';
 import 'confirmation_dialog.dart';
 
 class ClipDialog extends HookConsumerWidget {
-  const ClipDialog({super.key, required this.account, required this.noteId});
+  const ClipDialog({
+    super.key,
+    required this.account,
+    required this.noteId,
+    this.clipId,
+  });
 
   final Account account;
   final String noteId;
+  final String? clipId;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,6 +34,7 @@ class ClipDialog extends HookConsumerWidget {
     final noteClips =
         ref.watch(noteClipsNotifierProvider(account, noteId)).valueOrNull ?? [];
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
+    final clipId = useState(this.clipId);
 
     return SimpleDialog(
       title: Text(t.misskey.clip),
@@ -34,7 +43,7 @@ class ClipDialog extends HookConsumerWidget {
           final isClipped = noteClips.any((noteClip) => noteClip.id == clip.id);
           return ListTile(
             leading:
-                isClipped
+                clip.id == clipId.value || isClipped
                     ? const Icon(Icons.check)
                     : SizedBox(width: Theme.of(context).iconTheme.size),
             title: Text(clip.name ?? ''),
@@ -44,9 +53,8 @@ class ClipDialog extends HookConsumerWidget {
                       [
                         '${t.misskey.notesCount}: ',
                         NumberFormat().format(clip.notesCount),
-                        if (i?.policies case UserPolicies(
-                          :final noteEachClipsLimit?,
-                        )) ...[
+                        if (i?.policies?.noteEachClipsLimit
+                            case final noteEachClipsLimit?) ...[
                           ' / ',
                           NumberFormat().format(noteEachClipsLimit),
                           ' (',
@@ -62,8 +70,21 @@ class ClipDialog extends HookConsumerWidget {
               await futureWithDialog(
                 context,
                 Future(() async {
-                  if (isClipped) {
+                  if (clip.id == clipId.value) {
                     await ref
+                        .read(
+                          clipNotesNotifierProvider(account, clip.id).notifier,
+                        )
+                        .removeNote(noteId);
+                    ref
+                        .read(clipsNotifierProvider(account).notifier)
+                        .decrementNotesCount(clip.id);
+                    clipId.value = null;
+                  } else if (isClipped) {
+                    await ref
+                        .read(clipsNotifierProvider(account).notifier)
+                        .removeNote(clip.id, noteId);
+                    ref
                         .read(
                           noteClipsNotifierProvider(account, noteId).notifier,
                         )
@@ -71,6 +92,9 @@ class ClipDialog extends HookConsumerWidget {
                   } else {
                     try {
                       await ref
+                          .read(clipsNotifierProvider(account).notifier)
+                          .addNote(clip.id, noteId);
+                      ref
                           .read(
                             noteClipsNotifierProvider(account, noteId).notifier,
                           )
@@ -86,6 +110,9 @@ class ClipDialog extends HookConsumerWidget {
                         );
                         if (confirmed) {
                           await ref
+                              .read(clipsNotifierProvider(account).notifier)
+                              .removeNote(clip.id, noteId);
+                          ref
                               .read(
                                 noteClipsNotifierProvider(
                                   account,

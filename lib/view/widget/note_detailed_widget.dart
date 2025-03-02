@@ -119,6 +119,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 type: tapAction,
                 note: note,
                 appearNote: appearNote,
+                disableHeader: true,
               )
               : null,
       onDoubleTap:
@@ -129,6 +130,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 type: doubleTapAction,
                 note: note,
                 appearNote: appearNote,
+                disableHeader: true,
               )
               : null,
       onLongPress:
@@ -139,6 +141,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 type: longPressAction,
                 note: note,
                 appearNote: appearNote,
+                disableHeader: true,
               )
               : null,
       child: Padding(
