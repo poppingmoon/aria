@@ -6,7 +6,7 @@ part of 'note_clips_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$noteClipsNotifierHash() => r'249c0fb33eadcd7aee3353afd9b07507596bf6f2';
+String _$noteClipsNotifierHash() => r'e20fe4047af9dcad769653bd266d381feda9c935';
 
 /// Copied from Dart SDK
 class _SystemHash {

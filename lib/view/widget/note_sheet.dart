@@ -10,6 +10,7 @@ import '../../extension/user_extension.dart';
 import '../../i18n/strings.g.dart';
 import '../../model/account.dart';
 import '../../provider/accounts_notifier_provider.dart';
+import '../../provider/api/clip_notes_notifier_provider.dart';
 import '../../provider/api/endpoints_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
@@ -37,8 +38,8 @@ Future<void> showNoteSheet({
   required BuildContext context,
   required Account account,
   required String noteId,
+  String? clipId,
   bool disableHeader = false,
-  void Function()? focusPostForm,
 }) {
   return showModalBottomSheet(
     context: context,
@@ -46,8 +47,8 @@ Future<void> showNoteSheet({
         (context) => NoteSheet(
           account: account,
           noteId: noteId,
+          clipId: clipId,
           disableHeader: disableHeader,
-          focusPostForm: focusPostForm,
         ),
     clipBehavior: Clip.antiAlias,
     isScrollControlled: true,
@@ -59,14 +60,14 @@ class NoteSheet extends ConsumerWidget {
     super.key,
     required this.account,
     required this.noteId,
+    this.clipId,
     this.disableHeader = false,
-    this.focusPostForm,
   });
 
   final Account account;
   final String noteId;
+  final String? clipId;
   final bool disableHeader;
-  final void Function()? focusPostForm;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -138,6 +139,28 @@ class NoteSheet extends ConsumerWidget {
                         : null,
               ),
               const Divider(height: 0.0),
+              if (clipId case final clipId?)
+                ListTile(
+                  leading: const Icon(Icons.close),
+                  title: Text(t.misskey.unclip),
+                  onTap: () async {
+                    final removed = await futureWithDialog(
+                      context,
+                      ref
+                          .read(
+                            clipNotesNotifierProvider(account, clipId).notifier,
+                          )
+                          .removeNote(appearNote.id)
+                          .then((_) => true),
+                    );
+                    if (!context.mounted) return;
+                    if (removed ?? false) {
+                      context.pop();
+                    }
+                  },
+                  iconColor: Theme.of(context).colorScheme.error,
+                  textColor: Theme.of(context).colorScheme.error,
+                ),
               ListTile(
                 leading: const Icon(Icons.copy),
                 title: Text(t.misskey.copyContent),
@@ -434,6 +457,7 @@ class NoteSheet extends ConsumerWidget {
                             (context) => ClipDialog(
                               account: account,
                               noteId: appearNote.id,
+                              clipId: clipId,
                             ),
                       ),
                 ),

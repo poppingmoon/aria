@@ -160,6 +160,7 @@ class ClipPage extends HookConsumerWidget {
             (context, note) => NoteWidget(
               account: account,
               noteId: note.id,
+              clipId: clipId,
               withHardMute: false,
             ),
         onRefresh:

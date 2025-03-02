@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:misskey_dart/misskey_dart.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -54,6 +56,38 @@ class ClipsNotifier extends _$ClipsNotifier {
     await _misskey.clips.delete(ClipsDeleteRequest(clipId: clipId));
     state = AsyncValue.data([
       ...?state.valueOrNull?.where((clip) => clip.id != clipId),
+    ]);
+  }
+
+  Future<void> addNote(String clipId, String noteId) async {
+    await _misskey.clips.addNote(
+      ClipsAddNoteRequest(clipId: clipId, noteId: noteId),
+    );
+    state = AsyncValue.data([
+      ...?state.valueOrNull?.map(
+        (clip) =>
+            clip.id == clipId
+                ? clip.copyWith(notesCount: (clip.notesCount ?? 0) + 1)
+                : clip,
+      ),
+    ]);
+  }
+
+  Future<void> removeNote(String clipId, String noteId) async {
+    await _misskey.clips.removeNote(
+      ClipsRemoveNoteRequest(clipId: clipId, noteId: noteId),
+    );
+    decrementNotesCount(clipId);
+  }
+
+  void decrementNotesCount(String clipId) {
+    state = AsyncValue.data([
+      ...?state.valueOrNull?.map(
+        (clip) =>
+            clip.id == clipId
+                ? clip.copyWith(notesCount: max(0, (clip.notesCount ?? 1) - 1))
+                : clip,
+      ),
     ]);
   }
 

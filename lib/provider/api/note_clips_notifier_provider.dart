@@ -18,17 +18,11 @@ class NoteClipsNotifier extends _$NoteClipsNotifier {
 
   Misskey get _misskey => ref.read(misskeyProvider(account));
 
-  Future<void> addClip(Clip clip) async {
-    await _misskey.clips.addNote(
-      ClipsAddNoteRequest(clipId: clip.id, noteId: noteId),
-    );
+  void addClip(Clip clip) {
     state = AsyncValue.data([...?state.valueOrNull, clip]);
   }
 
-  Future<void> removeClip(String clipId) async {
-    await _misskey.clips.removeNote(
-      ClipsRemoveNoteRequest(clipId: clipId, noteId: noteId),
-    );
+  void removeClip(String clipId) {
     state = AsyncValue.data([
       ...?state.valueOrNull?.where((clip) => clip.id != clipId),
     ]);
