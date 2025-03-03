@@ -112,19 +112,13 @@ class ReactionsViewer extends HookConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final scale = ref.watch(
+    final (scale, reduceAnimation, shouldMergeReactions) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.reactionsDisplayScale,
-      ),
-    );
-    final reduceAnimation = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.reduceAnimation,
-      ),
-    );
-    final shouldMergeReactions = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.mergeReactionsByName,
+        (settings) => (
+          settings.reactionsDisplayScale,
+          settings.reduceAnimation,
+          settings.mergeReactionsByName,
+        ),
       ),
     );
     final initialReactions = useMemoized(() {

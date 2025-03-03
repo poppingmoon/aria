@@ -135,19 +135,13 @@ class TimelineListView extends HookConsumerWidget {
     );
     final hasPreviousNote =
         previousNotes.valueOrNull?.items.isNotEmpty ?? false;
-    final showGap = ref.watch(
+    final (showGap, showPopup, vibrateOnNote) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showGapBetweenNotesInTimeline,
-      ),
-    );
-    final showPopup = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showPopupOnNewNote,
-      ),
-    );
-    final vibrateOnNote = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.vibrateNote,
+        (settings) => (
+          settings.showGapBetweenNotesInTimeline,
+          settings.showPopupOnNewNote,
+          settings.vibrateNote,
+        ),
       ),
     );
     final newNoteDividerIndex = useState<int?>(null);

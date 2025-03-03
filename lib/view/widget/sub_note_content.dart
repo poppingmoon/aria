@@ -39,38 +39,30 @@ class SubNoteContent extends HookConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final showReactionsViewer = ref.watch(
+    final (
+      showReactionsViewer,
+      showSubNoteFooter,
+      alwaysExpandLongNote,
+      expandMedia,
+      showAllReactions,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showSubNoteReactionsViewer,
+        (settings) => (
+          settings.showSubNoteReactionsViewer,
+          settings.showSubNoteFooter,
+          settings.alwaysExpandLongNote,
+          settings.alwaysExpandMediaInSubNote,
+          settings.alwaysShowAllReactions,
+        ),
       ),
     );
-    final bool showFooter =
-        this.showFooter ??
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.showSubNoteFooter,
-          ),
-        );
+    final showFooter = this.showFooter ?? showSubNoteFooter;
     final parsed =
         note.text != null ? ref.watch(parsedMfmProvider(note.text!)) : null;
     final isLong =
         note.cw == null &&
-        !ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.alwaysExpandLongNote,
-          ),
-        ) &&
+        !alwaysExpandLongNote &&
         ref.watch(noteIsLongProvider(account, noteId));
-    final expandMedia = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.alwaysExpandMediaInSubNote,
-      ),
-    );
-    final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.alwaysShowAllReactions,
-      ),
-    );
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );

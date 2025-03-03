@@ -39,42 +39,30 @@ class NoteSubWidget extends HookConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final tapAction = ref.watch(
+    final (
+      tapAction,
+      doubleTapAction,
+      longPressAction,
+      showAvatars,
+      avatarScale,
+      alwaysExpandCw,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.noteTapAction,
-      ),
-    );
-    final doubleTapAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteDoubleTapAction,
-      ),
-    );
-    final longPressAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteLongPressAction,
-      ),
-    );
-    final showAvatars = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showAvatarsInSubNote,
-      ),
-    );
-    final avatarScale = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.avatarScale,
+        (settings) => (
+          settings.noteTapAction,
+          settings.noteDoubleTapAction,
+          settings.noteLongPressAction,
+          settings.showAvatarsInSubNote,
+          settings.avatarScale,
+          settings.alwaysExpandCw,
+        ),
       ),
     );
     final children =
         showReplies && depth < 5
             ? ref.watch(childrenNotesNotifierProvider(account, noteId))
             : null;
-    final showContent = useState(
-      ref.watch(
-        generalSettingsNotifierProvider.select(
-          (settings) => settings.alwaysExpandCw,
-        ),
-      ),
-    );
+    final showContent = useState(alwaysExpandCw);
     final style = DefaultTextStyle.of(context).style;
 
     return InkWell(

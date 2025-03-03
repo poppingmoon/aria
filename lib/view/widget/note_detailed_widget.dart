@@ -65,14 +65,6 @@ class NoteDetailedWidget extends HookConsumerWidget {
     if (appearNote == null) {
       return const SizedBox.shrink();
     }
-    final (verticalPadding, horizontalPadding) = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.noteVerticalPadding,
-          settings.noteHorizontalPadding,
-        ),
-      ),
-    );
     final muted = useState(
       ref.watch(checkWordMuteProvider(account, appearNote.id)) ||
           ref.watch(
@@ -88,19 +80,21 @@ class NoteDetailedWidget extends HookConsumerWidget {
     }
 
     final children = ref.watch(childrenNotesNotifierProvider(account, noteId));
-    final tapAction = ref.watch(
+    final (
+      verticalPadding,
+      horizontalPadding,
+      tapAction,
+      doubleTapAction,
+      longPressAction,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.noteTapAction,
-      ),
-    );
-    final doubleTapAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteDoubleTapAction,
-      ),
-    );
-    final longPressAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteLongPressAction,
+        (settings) => (
+          settings.noteVerticalPadding,
+          settings.noteHorizontalPadding,
+          settings.noteTapAction,
+          settings.noteDoubleTapAction,
+          settings.noteLongPressAction,
+        ),
       ),
     );
     final conversation =
@@ -329,24 +323,18 @@ class _NoteDetailedContent extends HookConsumerWidget {
               : null,
       [parsed],
     );
-    final avatarScale = ref.watch(
+    final (avatarScale, showTicker, showAllReactions) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.avatarScale,
-      ),
-    );
-    final showTicker = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => switch (settings.instanceTicker) {
-          InstanceTicker.none => false,
-          InstanceTicker.remote =>
-            appearNote.user.instance != null && appearNote.user.host != null,
-          InstanceTicker.always => true,
-        },
-      ),
-    );
-    final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.alwaysShowAllReactions,
+        (settings) => (
+          settings.avatarScale,
+          switch (settings.instanceTicker) {
+            InstanceTicker.none => false,
+            InstanceTicker.remote =>
+              appearNote.user.instance != null && appearNote.user.host != null,
+            InstanceTicker.always => true,
+          },
+          settings.alwaysShowAllReactions,
+        ),
       ),
     );
     final colors = ref.watch(

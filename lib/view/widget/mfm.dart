@@ -108,20 +108,14 @@ class Mfm extends HookConsumerWidget {
     final style = defaultTextStyle
         .apply(color: theme.colorScheme.onSurface)
         .merge(this.style);
-    final enableAdvanced = ref.watch(
+    final (enableAdvanced, enableAnimation, emojiStyle) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.advancedMfm,
+        (settings) => (
+          settings.advancedMfm,
+          settings.advancedMfm && settings.animatedMfm,
+          settings.emojiStyle,
+        ),
       ),
-    );
-    final enableAnimation =
-        enableAdvanced &&
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.animatedMfm,
-          ),
-        );
-    final emojiStyle = ref.watch(
-      generalSettingsNotifierProvider.select((settings) => settings.emojiStyle),
     );
     final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 

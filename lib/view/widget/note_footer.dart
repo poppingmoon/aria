@@ -63,29 +63,21 @@ class NoteFooter extends HookConsumerWidget {
       return const SizedBox.shrink();
     }
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final showQuoteButton = ref.watch(
+    final (
+      showQuoteButton,
+      showLikeButton,
+      showClipButton,
+      showTranslateButton,
+      scale,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showQuoteButtonInNoteFooter,
-      ),
-    );
-    final showLikeButton = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showLikeButtonInNoteFooter,
-      ),
-    );
-    final showClipButton = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showClipButtonInNoteFooter,
-      ),
-    );
-    final showTranslateButton = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showTranslateButtonInNoteFooter,
-      ),
-    );
-    final scale = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteFooterScale,
+        (settings) => (
+          settings.showQuoteButtonInNoteFooter,
+          settings.showLikeButtonInNoteFooter,
+          settings.showClipButtonInNoteFooter,
+          settings.showTranslateButtonInNoteFooter,
+          settings.noteFooterScale,
+        ),
       ),
     );
     final isMyNote = i != null && appearNote.userId == i.id;

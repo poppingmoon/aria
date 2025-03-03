@@ -34,14 +34,9 @@ class RenoteHeader extends HookConsumerWidget {
     if (note == null) {
       return const SizedBox.shrink();
     }
-    final showAvatars = ref.watch(
+    final (showAvatars, showCreatedAt) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showAvatarsInNote,
-      ),
-    );
-    final showCreatedAt = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showNoteCreatedAt,
+        (settings) => (settings.showAvatarsInNote, settings.showNoteCreatedAt),
       ),
     );
     final colors = ref.watch(

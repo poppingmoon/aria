@@ -11,18 +11,14 @@ part 'theme_data_provider.g.dart';
 @riverpod
 ThemeData themeData(Ref ref, Brightness brightness) {
   final colors = ref.watch(misskeyColorsProvider(brightness));
-  final fontSize = ref.watch(
-    generalSettingsNotifierProvider.select((settings) => settings.fontSize),
-  );
-  final fontFamily = ref.watch(
-    generalSettingsNotifierProvider.select((settings) => settings.fontFamily),
-  );
-  final height = ref.watch(
-    generalSettingsNotifierProvider.select((settings) => settings.lineHeight),
-  );
-  final enablePredictiveBack = ref.watch(
+  final (fontSize, fontFamily, height, enablePredictiveBack) = ref.watch(
     generalSettingsNotifierProvider.select(
-      (settings) => settings.enablePredictiveBack,
+      (settings) => (
+        settings.fontSize,
+        settings.fontFamily,
+        settings.lineHeight,
+        settings.enablePredictiveBack,
+      ),
     ),
   );
 

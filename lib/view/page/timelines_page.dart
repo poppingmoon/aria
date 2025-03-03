@@ -40,38 +40,27 @@ class TimelinesPage extends HookConsumerWidget {
     final numTabs = tabs.length;
     final tabIndex = ref.watch(timelineTabIndexNotifierProvider);
     final tabSettings = ref.watch(timelineTabSettingsProvider);
-    final showTimelineTabBarAtBottom = ref.watch(
+    final (
+      showTimelineTabBarAtBottom,
+      showMenuButtonInTabBar,
+      buttonTypes,
+      mini,
+      square,
+      enableHorizontalSwipe,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showTimelineTabBarAtBottom,
-      ),
-    );
-    final showMenuButtonInTabBar = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) =>
-            settings.showMenuButtonInTabBar ||
-            !settings.timelinesPageButtonTypes
-                .take(5)
-                .contains(TimelinesPageButtonType.menu),
-      ),
-    );
-    final buttonTypes = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.timelinesPageButtonTypes,
-      ),
-    );
-    final mini = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showSmallTimelinesPageButtons,
-      ),
-    );
-    final square = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showSquaredTimelinesPageButtons,
-      ),
-    );
-    final enableHorizontalSwipe = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.enableHorizontalSwipe,
+        (settings) => (
+          settings.showTimelineTabBarAtBottom,
+          settings.showMenuButtonInTabBar ||
+              !settings.timelinesPageButtonTypes
+                  .take(5)
+                  .contains(TimelinesPageButtonType.menu),
+          settings.timelinesPageButtonTypes,
+          settings.showSmallTimelinesPageButtons,
+
+          settings.showSquaredTimelinesPageButtons,
+          settings.enableHorizontalSwipe,
+        ),
       ),
     );
     final controller = useTabController(

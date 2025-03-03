@@ -34,32 +34,26 @@ class RenoteSheet extends HookConsumerWidget {
     final channel = useState(note.channel);
     final isSilenced =
         ref.watch(iNotifierProvider(account)).valueOrNull?.isSilenced ?? false;
+    final (renoteVisibility, renoteLocalOnly) = ref.watch(
+      accountSettingsNotifierProvider(account).select(
+        (settings) =>
+            settings.rememberRenoteVisibility
+                ? (settings.renoteVisibility, settings.renoteLocalOnly)
+                : (
+                  settings.defaultRenoteVisibility,
+                  settings.defaultRenoteLocalOnly,
+                ),
+      ),
+    );
     final visibility = useState(
       NoteVisibility.min(
-        ref.read(
-          accountSettingsNotifierProvider(account).select(
-            (settings) =>
-                settings.rememberRenoteVisibility
-                    ? settings.renoteVisibility
-                    : settings.defaultRenoteVisibility,
-          ),
-        ),
+        renoteVisibility,
         isSilenced
             ? NoteVisibility.home
             : note.visibility ?? NoteVisibility.public,
       ),
     );
-    final localOnly = useState(
-      note.localOnly ||
-          ref.read(
-            accountSettingsNotifierProvider(account).select(
-              (settings) =>
-                  settings.rememberRenoteVisibility
-                      ? settings.renoteLocalOnly
-                      : settings.defaultRenoteLocalOnly,
-            ),
-          ),
-    );
+    final localOnly = useState(note.localOnly || renoteLocalOnly);
     final visibleUsers = useState<List<User>>([]);
 
     return ListView(

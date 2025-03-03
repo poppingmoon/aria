@@ -32,14 +32,12 @@ class TimelineHeader extends HookConsumerWidget {
     final scrollController = ref.watch(
       timelineScrollControllerProvider(tabSettings),
     );
-    final alwaysShowHeader = ref.watch(
+    final (alwaysShowHeader, oneLine) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.alwaysShowTabHeader,
-      ),
-    );
-    final oneLine = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showTabHeaderInOneLine,
+        (settings) => (
+          settings.alwaysShowTabHeader,
+          settings.showTabHeaderInOneLine,
+        ),
       ),
     );
     final isMenuExpanded = useState(false);

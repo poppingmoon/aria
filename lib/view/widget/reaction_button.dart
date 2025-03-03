@@ -39,9 +39,12 @@ class ReactionButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final showReactionsCount = ref.watch(
+    final (showReactionsCount, reactionsDisplayScale) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showReactionsCountInReactionButton,
+        (settings) => (
+          settings.showReactionsCountInReactionButton,
+          settings.reactionsDisplayScale,
+        ),
       ),
     );
     final isCustomEmoji = emoji.startsWith(':');
@@ -57,13 +60,7 @@ class ReactionButton extends ConsumerWidget {
     final isMyReaction = emoji == note.myReaction;
     // In v12, `note.emojis` contains emoji urls for both text and reactions.
     final emojis = {...note.emojis, ...note.reactionEmojis};
-    final double scale =
-        this.scale ??
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.reactionsDisplayScale,
-          ),
-        );
+    final scale = this.scale ?? reactionsDisplayScale;
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );

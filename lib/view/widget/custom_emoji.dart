@@ -84,18 +84,15 @@ class CustomEmoji extends ConsumerWidget {
         useOriginalSize: useOriginalSize,
       ),
     );
-    final disableShowingAnimatedImages = ref.watch(
+    final (disableShowingAnimatedImages, enableEmojiFadeIn) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.disableShowingAnimatedImages,
+        (settings) => (
+          settings.disableShowingAnimatedImages,
+          settings.enableEmojiFadeIn,
+        ),
       ),
     );
-    final bool enableFadeIn =
-        this.enableFadeIn ??
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.enableEmojiFadeIn,
-          ),
-        );
+    final enableFadeIn = this.enableFadeIn ?? enableEmojiFadeIn;
 
     return InkWell(
       onTap: onTap,

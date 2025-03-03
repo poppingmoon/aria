@@ -48,22 +48,21 @@ class CatAvatar extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final showAvatarDecorations = ref.watch(
+    final (
+      showAvatarDecorations,
+      squareAvatars,
+      disableShowingAnimatedImages,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showAvatarDecorations,
+        (settings) => (
+          settings.showAvatarDecorations,
+          settings.squareAvatars,
+          settings.disableShowingAnimatedImages,
+        ),
       ),
     );
-    final squareAvatars = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.squareAvatars,
-      ),
-    );
-    final disableShowingAnimatedImages =
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.disableShowingAnimatedImages,
-          ),
-        ) ||
+    final useStaticImage =
+        disableShowingAnimatedImages ||
         ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
     final borderRadius = BorderRadius.circular(
       squareAvatars ? size * 0.2 : size,
@@ -140,7 +139,7 @@ class CatAvatar extends HookConsumerWidget {
               borderRadius: borderRadius,
               child: ImageWidget(
                 url:
-                    disableShowingAnimatedImages
+                    useStaticImage
                         ? ref
                             .watch(
                               staticImageUrlProvider(
