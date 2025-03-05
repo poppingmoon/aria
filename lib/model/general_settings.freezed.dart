@@ -114,6 +114,7 @@ mixin _$GeneralSettings {
   NoteActionType get noteDoubleTapAction => throw _privateConstructorUsedError;
   NoteActionType get noteLongPressAction => throw _privateConstructorUsedError;
   bool get confirmBeforePost => throw _privateConstructorUsedError;
+  bool get confirmBeforeRenote => throw _privateConstructorUsedError;
   bool get confirmBeforeReact => throw _privateConstructorUsedError;
   bool get confirmBeforeFollow => throw _privateConstructorUsedError;
   bool get confirmWhenRevealingSensitiveMedia =>
@@ -223,6 +224,7 @@ abstract class $GeneralSettingsCopyWith<$Res> {
     NoteActionType noteDoubleTapAction,
     NoteActionType noteLongPressAction,
     bool confirmBeforePost,
+    bool confirmBeforeRenote,
     bool confirmBeforeReact,
     bool confirmBeforeFollow,
     bool confirmWhenRevealingSensitiveMedia,
@@ -329,6 +331,7 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
     Object? noteDoubleTapAction = null,
     Object? noteLongPressAction = null,
     Object? confirmBeforePost = null,
+    Object? confirmBeforeRenote = null,
     Object? confirmBeforeReact = null,
     Object? confirmBeforeFollow = null,
     Object? confirmWhenRevealingSensitiveMedia = null,
@@ -736,6 +739,11 @@ class _$GeneralSettingsCopyWithImpl<$Res, $Val extends GeneralSettings>
                     ? _value.confirmBeforePost
                     : confirmBeforePost // ignore: cast_nullable_to_non_nullable
                         as bool,
+            confirmBeforeRenote:
+                null == confirmBeforeRenote
+                    ? _value.confirmBeforeRenote
+                    : confirmBeforeRenote // ignore: cast_nullable_to_non_nullable
+                        as bool,
             confirmBeforeReact:
                 null == confirmBeforeReact
                     ? _value.confirmBeforeReact
@@ -877,6 +885,7 @@ abstract class _$$GeneralSettingsImplCopyWith<$Res>
     NoteActionType noteDoubleTapAction,
     NoteActionType noteLongPressAction,
     bool confirmBeforePost,
+    bool confirmBeforeRenote,
     bool confirmBeforeReact,
     bool confirmBeforeFollow,
     bool confirmWhenRevealingSensitiveMedia,
@@ -982,6 +991,7 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
     Object? noteDoubleTapAction = null,
     Object? noteLongPressAction = null,
     Object? confirmBeforePost = null,
+    Object? confirmBeforeRenote = null,
     Object? confirmBeforeReact = null,
     Object? confirmBeforeFollow = null,
     Object? confirmWhenRevealingSensitiveMedia = null,
@@ -1389,6 +1399,11 @@ class __$$GeneralSettingsImplCopyWithImpl<$Res>
                 ? _value.confirmBeforePost
                 : confirmBeforePost // ignore: cast_nullable_to_non_nullable
                     as bool,
+        confirmBeforeRenote:
+            null == confirmBeforeRenote
+                ? _value.confirmBeforeRenote
+                : confirmBeforeRenote // ignore: cast_nullable_to_non_nullable
+                    as bool,
         confirmBeforeReact:
             null == confirmBeforeReact
                 ? _value.confirmBeforeReact
@@ -1523,6 +1538,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
     this.noteDoubleTapAction = NoteActionType.menu,
     this.noteLongPressAction = NoteActionType.reaction,
     this.confirmBeforePost = true,
+    this.confirmBeforeRenote = true,
     this.confirmBeforeReact = true,
     this.confirmBeforeFollow = true,
     this.confirmWhenRevealingSensitiveMedia = false,
@@ -1787,6 +1803,9 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
   final bool confirmBeforePost;
   @override
   @JsonKey()
+  final bool confirmBeforeRenote;
+  @override
+  @JsonKey()
   final bool confirmBeforeReact;
   @override
   @JsonKey()
@@ -1816,7 +1835,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
 
   @override
   String toString() {
-    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showRepliesCount: $showRepliesCount, showRenotesCount: $showRenotesCount, showReactionsCount: $showReactionsCount, showReactionsCountInReactionButton: $showReactionsCountInReactionButton, showGapBetweenNotesInTimeline: $showGapBetweenNotesInTimeline, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mergeReactionsByName: $mergeReactionsByName, alwaysShowAllReactions: $alwaysShowAllReactions, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, timelinesPageButtonTypes: $timelinesPageButtonTypes, showSmallTimelinesPageButtons: $showSmallTimelinesPageButtons, showSquaredTimelinesPageButtons: $showSquaredTimelinesPageButtons, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enableSpellCheck: $enableSpellCheck, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
+    return 'GeneralSettings(locale: $locale, collapseRenotes: $collapseRenotes, sensitive: $sensitive, highlightSensitiveMedia: $highlightSensitiveMedia, animatedMfm: $animatedMfm, advancedMfm: $advancedMfm, showRepliesCount: $showRepliesCount, showRenotesCount: $showRenotesCount, showReactionsCount: $showReactionsCount, showReactionsCountInReactionButton: $showReactionsCountInReactionButton, showGapBetweenNotesInTimeline: $showGapBetweenNotesInTimeline, loadRawImages: $loadRawImages, instanceTicker: $instanceTicker, showNoteCreatedAt: $showNoteCreatedAt, showAvatarsInNote: $showAvatarsInNote, showAvatarsInSubNote: $showAvatarsInSubNote, squareAvatars: $squareAvatars, showAvatarDecorations: $showAvatarDecorations, showQuoteButtonInNoteFooter: $showQuoteButtonInNoteFooter, showLikeButtonInNoteFooter: $showLikeButtonInNoteFooter, showClipButtonInNoteFooter: $showClipButtonInNoteFooter, showTranslateButtonInNoteFooter: $showTranslateButtonInNoteFooter, showNoteReactionsViewer: $showNoteReactionsViewer, showSubNoteReactionsViewer: $showSubNoteReactionsViewer, showNoteFooter: $showNoteFooter, showSubNoteFooter: $showSubNoteFooter, alwaysExpandCw: $alwaysExpandCw, alwaysExpandLongNote: $alwaysExpandLongNote, alwaysExpandMediaInSubNote: $alwaysExpandMediaInSubNote, mergeReactionsByName: $mergeReactionsByName, alwaysShowAllReactions: $alwaysShowAllReactions, mediaListWithOneImageAppearance: $mediaListWithOneImageAppearance, thumbnailBoxFit: $thumbnailBoxFit, emojiStyle: $emojiStyle, fontFamily: $fontFamily, fontSize: $fontSize, lineHeight: $lineHeight, avatarScale: $avatarScale, reactionsDisplayScale: $reactionsDisplayScale, limitWidthOfReaction: $limitWidthOfReaction, noteFooterScale: $noteFooterScale, noteVerticalPadding: $noteVerticalPadding, noteHorizontalPadding: $noteHorizontalPadding, publicNoteBackgroundColor: $publicNoteBackgroundColor, homeNoteBackgroundColor: $homeNoteBackgroundColor, followersNoteBackgroundColor: $followersNoteBackgroundColor, specifiedNoteBackgroundColor: $specifiedNoteBackgroundColor, emojiPickerUseDialog: $emojiPickerUseDialog, emojiPickerScale: $emojiPickerScale, emojiPickerAutofocus: $emojiPickerAutofocus, emojiPickerKeepOpen: $emojiPickerKeepOpen, dataSaverMedia: $dataSaverMedia, dataSaverAvatar: $dataSaverAvatar, dataSaverUrlPreview: $dataSaverUrlPreview, disableDataSaverWhenOnWifi: $disableDataSaverWhenOnWifi, reduceAnimation: $reduceAnimation, disableShowingAnimatedImages: $disableShowingAnimatedImages, enableEmojiFadeIn: $enableEmojiFadeIn, forceShowAds: $forceShowAds, useGroupedNotifications: $useGroupedNotifications, showTimelineTabBarAtBottom: $showTimelineTabBarAtBottom, showMenuButtonInTabBar: $showMenuButtonInTabBar, timelinesPageButtonTypes: $timelinesPageButtonTypes, showSmallTimelinesPageButtons: $showSmallTimelinesPageButtons, showSquaredTimelinesPageButtons: $showSquaredTimelinesPageButtons, showTabHeaderInOneLine: $showTabHeaderInOneLine, alwaysShowTabHeader: $alwaysShowTabHeader, showTimelineLastViewedAt: $showTimelineLastViewedAt, showPopupOnNewNote: $showPopupOnNewNote, vibrateNote: $vibrateNote, vibrateNotification: $vibrateNotification, enableInfiniteScroll: $enableInfiniteScroll, keepScreenOn: $keepScreenOn, enableHorizontalSwipe: $enableHorizontalSwipe, openSensitiveMediaOnDoubleTap: $openSensitiveMediaOnDoubleTap, noteTapAction: $noteTapAction, noteDoubleTapAction: $noteDoubleTapAction, noteLongPressAction: $noteLongPressAction, confirmBeforePost: $confirmBeforePost, confirmBeforeRenote: $confirmBeforeRenote, confirmBeforeReact: $confirmBeforeReact, confirmBeforeFollow: $confirmBeforeFollow, confirmWhenRevealingSensitiveMedia: $confirmWhenRevealingSensitiveMedia, launchMode: $launchMode, enableSpellCheck: $enableSpellCheck, enablePredictiveBack: $enablePredictiveBack, themeMode: $themeMode, lightThemeId: $lightThemeId, darkThemeId: $darkThemeId)';
   }
 
   @override
@@ -2069,6 +2088,8 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
                 other.noteLongPressAction == noteLongPressAction) &&
             (identical(other.confirmBeforePost, confirmBeforePost) ||
                 other.confirmBeforePost == confirmBeforePost) &&
+            (identical(other.confirmBeforeRenote, confirmBeforeRenote) ||
+                other.confirmBeforeRenote == confirmBeforeRenote) &&
             (identical(other.confirmBeforeReact, confirmBeforeReact) ||
                 other.confirmBeforeReact == confirmBeforeReact) &&
             (identical(other.confirmBeforeFollow, confirmBeforeFollow) ||
@@ -2176,6 +2197,7 @@ class _$GeneralSettingsImpl implements _GeneralSettings {
     noteDoubleTapAction,
     noteLongPressAction,
     confirmBeforePost,
+    confirmBeforeRenote,
     confirmBeforeReact,
     confirmBeforeFollow,
     confirmWhenRevealingSensitiveMedia,
@@ -2286,6 +2308,7 @@ abstract class _GeneralSettings implements GeneralSettings {
     final NoteActionType noteDoubleTapAction,
     final NoteActionType noteLongPressAction,
     final bool confirmBeforePost,
+    final bool confirmBeforeRenote,
     final bool confirmBeforeReact,
     final bool confirmBeforeFollow,
     final bool confirmWhenRevealingSensitiveMedia,
@@ -2465,6 +2488,8 @@ abstract class _GeneralSettings implements GeneralSettings {
   NoteActionType get noteLongPressAction;
   @override
   bool get confirmBeforePost;
+  @override
+  bool get confirmBeforeRenote;
   @override
   bool get confirmBeforeReact;
   @override

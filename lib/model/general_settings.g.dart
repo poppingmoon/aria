@@ -150,6 +150,7 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       ) ??
       NoteActionType.reaction,
   confirmBeforePost: json['confirmBeforePost'] as bool? ?? true,
+  confirmBeforeRenote: json['confirmBeforeRenote'] as bool? ?? true,
   confirmBeforeReact: json['confirmBeforeReact'] as bool? ?? true,
   confirmBeforeFollow: json['confirmBeforeFollow'] as bool? ?? true,
   confirmWhenRevealingSensitiveMedia:
@@ -277,6 +278,7 @@ Map<String, dynamic> _$$GeneralSettingsImplToJson(
   'noteDoubleTapAction': _$NoteActionTypeEnumMap[instance.noteDoubleTapAction]!,
   'noteLongPressAction': _$NoteActionTypeEnumMap[instance.noteLongPressAction]!,
   'confirmBeforePost': instance.confirmBeforePost,
+  'confirmBeforeRenote': instance.confirmBeforeRenote,
   'confirmBeforeReact': instance.confirmBeforeReact,
   'confirmBeforeFollow': instance.confirmBeforeFollow,
   'confirmWhenRevealingSensitiveMedia':

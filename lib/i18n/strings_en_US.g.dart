@@ -68,6 +68,7 @@ class TranslationsAriaEnUs {
 	String get confirmBeforeFollow => 'Confirm before follow';
 	String get confirmBeforePost => 'Confirm before post';
 	String get confirmBeforeReact => 'Confirm before react';
+	String get confirmBeforeRenote => 'Confirm before renote';
 	String get copied => 'Copied to clipboard';
 	String get copyName => 'Copy name';
 	String get crop => 'Crop';

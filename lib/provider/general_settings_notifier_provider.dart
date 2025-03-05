@@ -514,6 +514,11 @@ class GeneralSettingsNotifier extends _$GeneralSettingsNotifier {
     await _save();
   }
 
+  Future<void> setConfirmBeforeRenote(bool confirmBeforeRenote) async {
+    state = state.copyWith(confirmBeforeRenote: confirmBeforeRenote);
+    await _save();
+  }
+
   Future<void> setConfirmBeforeReact(bool confirmBeforeReact) async {
     state = state.copyWith(confirmBeforeReact: confirmBeforeReact);
     await _save();
