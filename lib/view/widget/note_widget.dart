@@ -554,10 +554,10 @@ class _NoteContent extends HookConsumerWidget {
         if (showFooter)
           NoteFooter(
             account: account,
-            noteId: noteId,
+            note: note,
+            appearNote: appearNote,
             clipId: clipId,
             focusPostForm: focusPostForm,
-            note: note,
           ),
       ],
     );

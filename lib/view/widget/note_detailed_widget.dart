@@ -589,7 +589,12 @@ class _NoteDetailedContent extends HookConsumerWidget {
             noteId: appearNote.id,
             showAllReactions: showAllReactions,
           ),
-        NoteFooter(account: account, noteId: noteId, disableHeader: true),
+        NoteFooter(
+          account: account,
+          note: note,
+          appearNote: appearNote,
+          disableHeader: true,
+        ),
       ],
     );
   }

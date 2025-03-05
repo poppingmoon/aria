@@ -217,9 +217,9 @@ class SubNoteContent extends HookConsumerWidget {
         if (showFooter)
           NoteFooter(
             account: account,
-            noteId: noteId,
+            note: note,
+            appearNote: note,
             focusPostForm: focusPostForm,
-            note: this.note,
           ),
       ],
     );
