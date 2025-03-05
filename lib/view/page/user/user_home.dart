@@ -866,6 +866,7 @@ class _UserHome extends ConsumerWidget {
                 ),
             itemCount: pinnedNoteIds.length,
           ),
+        const SliverToBoxAdapter(child: SizedBox(height: 120.0)),
       ],
     );
   }
