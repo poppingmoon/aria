@@ -313,10 +313,10 @@ class PostForm extends HookConsumerWidget {
     final useCw = useState(
       useMemoized(() => request.cw?.isNotEmpty ?? false, []),
     );
-    final useHashtags = ref.watch(
-      accountSettingsNotifierProvider(
-        account.value,
-      ).select((settings) => settings.postFormUseHashtags),
+    final (useHashtags, postFormHashtags) = ref.watch(
+      accountSettingsNotifierProvider(account.value).select(
+        (settings) => (settings.postFormUseHashtags, settings.postFormHashtags),
+      ),
     );
     final cwController =
         this.cwController ?? useTextEditingController(text: request.cw);
@@ -324,15 +324,7 @@ class PostForm extends HookConsumerWidget {
         this.controller ?? useTextEditingController(text: request.text);
     final hashtagsController =
         this.hashtagsController ??
-        useTextEditingController(
-          text: ref
-              .watch(
-                accountSettingsNotifierProvider(
-                  account.value,
-                ).select((settings) => settings.postFormHashtags),
-              )
-              .join(' '),
-        );
+        useTextEditingController(text: postFormHashtags.join(' '));
     final cwFocusNode = this.cwFocusNode ?? useFocusNode();
     final focusNode = this.focusNode ?? useFocusNode();
     final hashtagsFocusNode = this.hashtagsFocusNode ?? useFocusNode();

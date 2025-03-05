@@ -47,32 +47,20 @@ class PostNotifier extends _$PostNotifier {
   bool _saveScheduled = false;
 
   NotesCreateRequest get _defaultRequest {
-    final localOnly = ref.read(
-      accountSettingsNotifierProvider(account).select(
-        (settings) =>
-            settings.rememberNoteVisibility
-                ? settings.localOnly
-                : settings.defaultNoteLocalOnly,
-      ),
-    );
+    final settings = ref.read(accountSettingsNotifierProvider(account));
+    final localOnly =
+        settings.rememberNoteVisibility
+            ? settings.localOnly
+            : settings.defaultNoteLocalOnly;
     final isSilenced =
         ref.read(iNotifierProvider(account)).valueOrNull?.isSilenced ?? false;
     final visibility = NoteVisibility.min(
-      ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.visibility
-                  : settings.defaultNoteVisibility,
-        ),
-      ),
+      settings.rememberNoteVisibility
+          ? settings.visibility
+          : settings.defaultNoteVisibility,
       isSilenced ? NoteVisibility.home : NoteVisibility.public,
     );
-    final reactionAcceptance = ref.read(
-      accountSettingsNotifierProvider(
-        account,
-      ).select((settings) => settings.reactionAcceptance),
-    );
+    final reactionAcceptance = settings.reactionAcceptance;
     return NotesCreateRequest(
       localOnly: localOnly,
       visibility: visibility,
@@ -446,23 +434,10 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearReply() {
+    final defaultRequest = _defaultRequest;
     state = state.copyWith(
-      visibility: ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.visibility
-                  : settings.defaultNoteVisibility,
-        ),
-      ),
-      localOnly: ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.localOnly
-                  : settings.defaultNoteLocalOnly,
-        ),
-      ),
+      visibility: defaultRequest.visibility,
+      localOnly: defaultRequest.localOnly,
       replyId: null,
     );
     _scheduleSave();
@@ -487,23 +462,10 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearRenote() {
+    final defaultRequest = _defaultRequest;
     state = state.copyWith(
-      visibility: ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.visibility
-                  : settings.defaultNoteVisibility,
-        ),
-      ),
-      localOnly: ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.localOnly
-                  : settings.defaultNoteLocalOnly,
-        ),
-      ),
+      visibility: defaultRequest.visibility,
+      localOnly: defaultRequest.localOnly,
       renoteId: null,
     );
     _scheduleSave();
@@ -519,24 +481,11 @@ class PostNotifier extends _$PostNotifier {
   }
 
   void clearChannel() {
+    final defaultRequest = _defaultRequest;
     state = state.copyWith(
       channelId: null,
-      localOnly: ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.localOnly
-                  : settings.defaultNoteLocalOnly,
-        ),
-      ),
-      visibility: ref.read(
-        accountSettingsNotifierProvider(account).select(
-          (settings) =>
-              settings.rememberNoteVisibility
-                  ? settings.visibility
-                  : settings.defaultNoteVisibility,
-        ),
-      ),
+      visibility: defaultRequest.visibility,
+      localOnly: defaultRequest.localOnly,
     );
     _scheduleSave();
   }

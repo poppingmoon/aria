@@ -48,21 +48,18 @@ class MediaCard extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final file = files[index];
-    final highlightSensitiveMedia = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.highlightSensitiveMedia,
-      ),
-    );
-    final sensitive = ref.watch(
-      generalSettingsNotifierProvider.select((settings) => settings.sensitive),
-    );
+    final (highlightSensitiveMedia, sensitive, openMediaOnDoubleTap) = ref
+        .watch(
+          generalSettingsNotifierProvider.select(
+            (settings) => (
+              settings.highlightSensitiveMedia,
+              settings.sensitive,
+              settings.openSensitiveMediaOnDoubleTap,
+            ),
+          ),
+        );
     final dataSaver = ref.watch(
       dataSaverProvider.select((dataSaver) => dataSaver.media),
-    );
-    final openMediaOnDoubleTap = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.openSensitiveMediaOnDoubleTap,
-      ),
     );
     final hide = useState(
       sensitive == SensitiveMediaDisplay.force ||
@@ -480,20 +477,21 @@ class _ImagePreview extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final loadRawImage = ref.watch(
+    final (loadRawImage, disableShowingAnimatedImages) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.loadRawImages,
-      ),
-    );
-    final disableShowingAnimatedImages = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.disableShowingAnimatedImages,
+        (settings) => (
+          settings.loadRawImages,
+          settings.disableShowingAnimatedImages,
+        ),
       ),
     );
     final url =
         loadRawImage
             ? file.url
-            : disableShowingAnimatedImages
+            : disableShowingAnimatedImages ||
+                ref.watch(
+                  dataSaverProvider.select((dataSaver) => dataSaver.media),
+                )
             ? ref
                 .watch(staticImageUrlProvider(account.host, file.url))
                 ?.toString()

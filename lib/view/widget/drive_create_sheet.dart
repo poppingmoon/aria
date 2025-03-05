@@ -113,20 +113,17 @@ class DriveCreateSheet extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final keepOriginalUploading = useState(
-      ref.watch(
-        accountSettingsNotifierProvider(
-          account,
-        ).select((settings) => settings.keepOriginalUploading),
-      ),
-    );
-    final keepOriginalFilename = useState(
-      ref.watch(
-        accountSettingsNotifierProvider(
-          account,
-        ).select((settings) => settings.keepOriginalFilename),
-      ),
-    );
+    final (initialKeepOriginalUploading, initialKeepOriginalFilename) = ref
+        .watch(
+          accountSettingsNotifierProvider(account).select(
+            (settings) => (
+              settings.keepOriginalUploading,
+              settings.keepOriginalFilename,
+            ),
+          ),
+        );
+    final keepOriginalUploading = useState(initialKeepOriginalUploading);
+    final keepOriginalFilename = useState(initialKeepOriginalFilename);
 
     return ListView(
       shrinkWrap: true,

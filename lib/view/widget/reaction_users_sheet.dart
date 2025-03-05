@@ -30,22 +30,15 @@ class ReactionUsersSheet extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final likeOnly = ref.watch(
+    final (likeOnly, emojis, reactions) = ref.watch(
       noteProvider(account, noteId).select(
-        (note) => note?.reactionAcceptance == ReactionAcceptance.likeOnly,
-      ),
-    );
-    final emojis = ref.watch(
-      noteProvider(
-        account,
-        noteId,
-      ).select((note) => {...?note?.emojis, ...?note?.reactionEmojis}),
-    );
-    final reactions = ref.watch(
-      noteProvider(account, noteId).select(
-        (note) => note?.reactions.entries
-            .sortedBy<num>((e) => -e.value)
-            .map((e) => e.key),
+        (note) => (
+          note?.reactionAcceptance == ReactionAcceptance.likeOnly,
+          {...?note?.emojis, ...?note?.reactionEmojis},
+          note?.reactions.entries
+              .sortedBy<num>((e) => -e.value)
+              .map((e) => e.key),
+        ),
       ),
     );
     final reaction = useState(initialReaction);

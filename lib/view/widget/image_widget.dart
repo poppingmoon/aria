@@ -46,6 +46,9 @@ class ImageWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    if (url.isEmpty) {
+      return _buildPlaceholder();
+    }
     if (url.startsWith('data')) {
       final data = UriData.fromString(url);
       if (data.isMimeType('image/svg+xml')) {
@@ -98,7 +101,9 @@ class ImageWidget extends ConsumerWidget {
           }
         },
       );
-    } else if (enableFadeIn) {
+    }
+    final cacheManager = ref.watch(cacheManagerProvider);
+    if (enableFadeIn) {
       return Semantics(
         label: semanticLabel,
         child: CachedNetworkImage(
@@ -107,7 +112,7 @@ class ImageWidget extends ConsumerWidget {
           height: height,
           fit: fit,
           alignment: alignment,
-          cacheManager: ref.watch(cacheManagerProvider),
+          cacheManager: cacheManager,
           placeholder: (_, _) => _buildPlaceholder(),
           errorWidget: errorBuilder ?? (_, _, _) => _buildPlaceholder(),
           color: opacity < 1.0 ? Color.fromRGBO(255, 255, 255, opacity) : null,
@@ -117,10 +122,7 @@ class ImageWidget extends ConsumerWidget {
       );
     } else {
       return Image(
-        image: CachedNetworkImageProvider(
-          url,
-          cacheManager: ref.watch(cacheManagerProvider),
-        ),
+        image: CachedNetworkImageProvider(url, cacheManager: cacheManager),
         width: width,
         height: height,
         fit: fit,

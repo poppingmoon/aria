@@ -10,18 +10,16 @@ part 'data_saver_provider.g.dart';
 
 @riverpod
 DataSaver dataSaver(Ref ref) {
-  final dataSaver = ref.watch(
+  final (dataSaver, disableDataSaverWhenOnWifi) = ref.watch(
     generalSettingsNotifierProvider.select(
-      (settings) => DataSaver(
-        media: settings.dataSaverMedia,
-        avatar: settings.dataSaverAvatar,
-        urlPreview: settings.dataSaverUrlPreview,
+      (settings) => (
+        DataSaver(
+          media: settings.dataSaverMedia,
+          avatar: settings.dataSaverAvatar,
+          urlPreview: settings.dataSaverUrlPreview,
+        ),
+        settings.disableDataSaverWhenOnWifi,
       ),
-    ),
-  );
-  final disableDataSaverWhenOnWifi = ref.watch(
-    generalSettingsNotifierProvider.select(
-      (settings) => settings.disableDataSaverWhenOnWifi,
     ),
   );
   if ((dataSaver.media || dataSaver.avatar || dataSaver.urlPreview) &&

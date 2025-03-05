@@ -15,10 +15,8 @@ import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/meta_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
-import '../../provider/appear_note_provider.dart';
 import '../../provider/general_settings_notifier_provider.dart';
 import '../../provider/misskey_colors_provider.dart';
-import '../../provider/note_provider.dart';
 import '../../provider/notes_notifier_provider.dart';
 import '../../provider/post_notifier_provider.dart';
 import '../../util/future_with_dialog.dart';
@@ -33,62 +31,46 @@ import 'renote_sheet.dart';
 import 'renote_users_sheet.dart';
 import 'translated_note_sheet.dart';
 
-class NoteFooter extends HookConsumerWidget {
+class NoteFooter extends ConsumerWidget {
   const NoteFooter({
     super.key,
     required this.account,
-    required this.noteId,
+    required this.note,
+    required this.appearNote,
     this.clipId,
     this.disableHeader = false,
     this.focusPostForm,
-    this.note,
   });
 
   final Account account;
-  final String noteId;
+  final Note note;
+  final Note appearNote;
   final String? clipId;
   final bool disableHeader;
   final void Function()? focusPostForm;
-  final Note? note;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final note = this.note ?? ref.watch(noteProvider(account, noteId));
-    if (note == null) {
-      return const SizedBox.shrink();
-    }
-    final appearNote =
-        this.note ?? ref.watch(appearNoteProvider(account, noteId));
-    if (appearNote == null) {
-      return const SizedBox.shrink();
-    }
-    final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final showQuoteButton = ref.watch(
+    final (
+      showQuoteButton,
+      showLikeButton,
+      showClipButton,
+      showTranslateButton,
+      scale,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showQuoteButtonInNoteFooter,
+        (settings) => (
+          settings.showQuoteButtonInNoteFooter,
+          settings.showLikeButtonInNoteFooter,
+          settings.showClipButtonInNoteFooter,
+          settings.showTranslateButtonInNoteFooter,
+          settings.noteFooterScale,
+        ),
       ),
     );
-    final showLikeButton = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showLikeButtonInNoteFooter,
-      ),
-    );
-    final showClipButton = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showClipButtonInNoteFooter,
-      ),
-    );
-    final showTranslateButton = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showTranslateButtonInNoteFooter,
-      ),
-    );
-    final scale = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteFooterScale,
-      ),
-    );
-    final isMyNote = i != null && appearNote.userId == i.id;
+    final isMyNote =
+        appearNote.user.username == account.username &&
+        appearNote.user.host == null;
     final canRenote = switch (appearNote.visibility) {
       NoteVisibility.public || NoteVisibility.home => true,
       NoteVisibility.followers => isMyNote,
@@ -132,7 +114,9 @@ class NoteFooter extends HookConsumerWidget {
                       account: account,
                       note: appearNote,
                       myRenotingNoteId:
-                          note.isRenote && note.userId == i?.id
+                          note.isRenote &&
+                                  note.user.username == account.username &&
+                                  note.user.host == null
                               ? note.id
                               : null,
                       showQuoteButton: showQuoteButton,

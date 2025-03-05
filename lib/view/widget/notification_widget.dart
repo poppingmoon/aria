@@ -836,17 +836,13 @@ class _NotificationTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final (verticalPadding, horizontalPadding) = ref.watch(
+    final (verticalPadding, horizontalPadding, avatarScale) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
           settings.noteVerticalPadding,
           settings.noteHorizontalPadding,
+          settings.avatarScale,
         ),
-      ),
-    );
-    final avatarScale = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.avatarScale,
       ),
     );
     final style = DefaultTextStyle.of(context).style;

@@ -43,9 +43,12 @@ class TimelineWidget extends HookConsumerWidget {
     );
     final account = tabSettings.account;
     final i = ref.watch(iNotifierProvider(account)).valueOrNull;
-    final vibrateOnNotification = ref.watch(
+    final (vibrateOnNotification, showTimelineLastViewedAt) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.vibrateNotification,
+        (settings) => (
+          settings.vibrateNotification,
+          settings.showTimelineLastViewedAt,
+        ),
       ),
     );
     final lastViewedNoteId =
@@ -146,13 +149,7 @@ class TimelineWidget extends HookConsumerWidget {
     final bannerAnnouncements = i?.unreadAnnouncements.where(
       (announcement) => announcement.display == AnnouncementDisplayType.banner,
     );
-    final showLastViewedAt = useState(
-      ref.watch(
-        generalSettingsNotifierProvider.select(
-          (settings) => settings.showTimelineLastViewedAt,
-        ),
-      ),
-    );
+    final showLastViewedAt = useState(showTimelineLastViewedAt);
 
     return Stack(
       alignment: Alignment.center,

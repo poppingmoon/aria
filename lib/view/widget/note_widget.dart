@@ -96,32 +96,35 @@ class NoteWidget extends HookConsumerWidget {
       );
     }
 
-    final (verticalPadding, horizontalPadding) = ref.watch(
+    final (
+      verticalPadding,
+      horizontalPadding,
+      showAvatars,
+      tapAction,
+      doubleTapAction,
+      longPressAction,
+      avatarScale,
+      collapseRenotes,
+      noteBackgroundColor,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
         (settings) => (
           settings.noteVerticalPadding,
           settings.noteHorizontalPadding,
+          settings.showAvatarsInNote,
+          settings.noteTapAction,
+          settings.noteDoubleTapAction,
+          settings.noteLongPressAction,
+          settings.avatarScale,
+          settings.collapseRenotes,
+          switch (note.visibility) {
+            NoteVisibility.public => settings.publicNoteBackgroundColor,
+            NoteVisibility.home => settings.homeNoteBackgroundColor,
+            NoteVisibility.followers => settings.followersNoteBackgroundColor,
+            NoteVisibility.specified => settings.specifiedNoteBackgroundColor,
+            null => null,
+          },
         ),
-      ),
-    );
-    final showAvatars = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.showAvatarsInNote,
-      ),
-    );
-    final tapAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteTapAction,
-      ),
-    );
-    final doubleTapAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteDoubleTapAction,
-      ),
-    );
-    final longPressAction = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.noteLongPressAction,
       ),
     );
     final isRenote = note.isRenote;
@@ -130,33 +133,12 @@ class NoteWidget extends HookConsumerWidget {
     final isMyNote =
         account.username == appearNote.user.username &&
         appearNote.user.host == null;
-    final avatarScale = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.avatarScale,
-      ),
-    );
     final renoteCollapsed = useState(
-      ref.watch(
-            generalSettingsNotifierProvider.select(
-              (settings) => settings.collapseRenotes,
-            ),
-          ) &&
+      collapseRenotes &&
           isRenote &&
           (isMyRenote || isMyNote || appearNote.myReaction != null),
     );
-    final backgroundColor =
-        this.backgroundColor ??
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => switch (note.visibility) {
-              NoteVisibility.public => settings.publicNoteBackgroundColor,
-              NoteVisibility.home => settings.homeNoteBackgroundColor,
-              NoteVisibility.followers => settings.followersNoteBackgroundColor,
-              NoteVisibility.specified => settings.specifiedNoteBackgroundColor,
-              null => null,
-            },
-          ),
-        );
+    final backgroundColor = this.backgroundColor ?? noteBackgroundColor;
     final style = DefaultTextStyle.of(context).style;
 
     return Padding(
@@ -361,24 +343,31 @@ class _NoteContent extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final showReactionsViewer = ref.watch(
+    final (
+      showReactionsViewer,
+      showNoteFooter,
+      alwaysExpandCw,
+      alwaysExpandLongNote,
+      showTicker,
+      showAllReactions,
+    ) = ref.watch(
       generalSettingsNotifierProvider.select(
-        (settings) => settings.showNoteReactionsViewer,
+        (settings) => (
+          settings.showNoteReactionsViewer,
+          settings.showNoteFooter,
+          settings.alwaysExpandCw,
+          settings.alwaysExpandLongNote,
+          switch (settings.instanceTicker) {
+            InstanceTicker.none => false,
+            InstanceTicker.remote =>
+              appearNote.user.instance != null && appearNote.user.host != null,
+            InstanceTicker.always => true,
+          },
+          settings.alwaysShowAllReactions,
+        ),
       ),
     );
-    final showFooter =
-        this.showFooter ??
-        ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.showNoteFooter,
-          ),
-        ) ??
-        false;
-    final alwaysExpandCw = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.alwaysExpandCw,
-      ),
-    );
+    final showFooter = this.showFooter ?? showNoteFooter;
     final showContent = useState(alwaysExpandCw);
     final parsed =
         appearNote.text != null
@@ -394,28 +383,9 @@ class _NoteContent extends HookConsumerWidget {
     );
     final isLong =
         appearNote.cw == null &&
-        !ref.watch(
-          generalSettingsNotifierProvider.select(
-            (settings) => settings.alwaysExpandLongNote,
-          ),
-        ) &&
+        !alwaysExpandLongNote &&
         ref.watch(noteIsLongProvider(account, appearNote.id));
     final isCollapsed = useState(appearNote.cw == null && isLong);
-    final showTicker = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => switch (settings.instanceTicker) {
-          InstanceTicker.none => false,
-          InstanceTicker.remote =>
-            appearNote.user.instance != null && appearNote.user.host != null,
-          InstanceTicker.always => true,
-        },
-      ),
-    );
-    final showAllReactions = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => settings.alwaysShowAllReactions,
-      ),
-    );
     final colors = ref.watch(
       misskeyColorsProvider(Theme.of(context).brightness),
     );
@@ -584,10 +554,10 @@ class _NoteContent extends HookConsumerWidget {
         if (showFooter)
           NoteFooter(
             account: account,
-            noteId: noteId,
+            note: note,
+            appearNote: appearNote,
             clipId: clipId,
             focusPostForm: focusPostForm,
-            note: note,
           ),
       ],
     );

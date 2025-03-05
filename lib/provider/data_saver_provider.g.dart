@@ -6,7 +6,7 @@ part of 'data_saver_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dataSaverHash() => r'729c751262c5266c08794ba8f2fd40f399d922dc';
+String _$dataSaverHash() => r'fb67bb65abe02b99a7f49730a41d344c23819ebd';
 
 /// See also [dataSaver].
 @ProviderFor(dataSaver)

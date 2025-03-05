@@ -134,7 +134,7 @@ class NoteSheet extends ConsumerWidget {
                   detailed: true,
                 ),
                 onTap:
-                    !disableHeader
+                    !disableHeader || noteId != appearNote.id
                         ? () => context.push('/$account/notes/${appearNote.id}')
                         : null,
               ),

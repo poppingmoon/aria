@@ -624,11 +624,7 @@ class Aria extends HookConsumerWidget {
       shortcuts: {
         ...WidgetsApp.defaultShortcuts,
         darkModeActivator: VoidCallbackIntent(() {
-          final themeMode = ref.read(
-            generalSettingsNotifierProvider.select(
-              (settings) => settings.themeMode,
-            ),
-          );
+          final themeMode = ref.read(generalSettingsNotifierProvider).themeMode;
           ref.read(generalSettingsNotifierProvider.notifier).setThemeMode(
             switch (themeMode) {
               ThemeMode.system || ThemeMode.light => ThemeMode.dark,
