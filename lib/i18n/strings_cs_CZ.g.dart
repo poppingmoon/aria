@@ -82,6 +82,7 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String poweredByMisskeyDescription({required Object name}) => '${name} je jeden ze serverů využívající open source platformu <b>Misskey<b> (nazývaná "Misskey instance").';
 	@override String monthAndDay({required Object day, required Object month}) => '${day}. ${month}.';
 	@override String get search => 'Vyhledávání';
+	@override String get reset => 'Obnovit';
 	@override String get notifications => 'Oznámení';
 	@override String get username => 'Uživatelské jméno';
 	@override String get password => 'Heslo';
@@ -442,8 +443,11 @@ class _TranslationsMisskeyCsCz extends TranslationsMisskeyEnUs {
 	@override String get enableHcaptcha => 'Aktivovat hCaptchu';
 	@override String get hcaptchaSiteKey => 'Klíč stránky';
 	@override String get hcaptchaSecretKey => 'Tajný Klíč (Secret Key)';
+	@override String get mcaptcha => 'mCaptcha';
+	@override String get enableMcaptcha => 'Aktivovat mCaptchu';
 	@override String get mcaptchaSiteKey => 'Klíč stránky';
 	@override String get mcaptchaSecretKey => 'Tajný Klíč (Secret Key)';
+	@override String get mcaptchaInstanceUrl => 'URL mCaptcha serveru';
 	@override String get recaptcha => 'reCAPTCHA';
 	@override String get enableRecaptcha => 'Zapnout ReCAPTCHu';
 	@override String get recaptchaSiteKey => 'Klíč stránky';

@@ -65,6 +65,7 @@ class _TranslationsAriaJaKs extends TranslationsAriaEnUs {
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
 	@override String get confirmBeforeReact => 'ツッコミする前に確認する';
+	@override String get confirmBeforeRenote => 'リノートする前に確認する';
 	@override String get copied => 'クリップボードにコピーしたで';
 	@override String get copyName => '名前をコピー';
 	@override String get crop => 'クロップ';
@@ -1583,6 +1584,8 @@ class _TranslationsMisskeyJaKs extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => 'このサーバーは連合が無効化されてるで。他のサーバーのユーザーとやり取りすることはできひんで。';
 	@override String get confirmOnReact => 'ツッコむときに確認とる';
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " でツッコむ？';
+	@override String get markAsSensitiveConfirm => 'このメディアをセンシティブとして設定しますか？';
+	@override String get unmarkAsSensitiveConfirm => 'このメディアのセンシティブ指定を解除しますか？';
 	@override late final _TranslationsMisskeyAccountSettingsJaKs accountSettings_ = _TranslationsMisskeyAccountSettingsJaKs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaKs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaKs._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaKs delivery_ = _TranslationsMisskeyDeliveryJaKs._(_root);
@@ -2998,6 +3001,7 @@ class _TranslationsMisskeyModerationLogTypesJaKs extends TranslationsMisskeyMode
 	@override String get deletePage => 'ページ消す';
 	@override String get deleteFlash => 'Playをほかす';
 	@override String get deleteGalleryPost => 'ギャラリーの投稿をほかす';
+	@override String get updateProxyAccountDescription => 'プロキシアカウントの説明を更新';
 }
 
 // Path: misskey.fileViewer_
@@ -3302,7 +3306,11 @@ class _TranslationsMisskeySearchJaKs extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'みんな';
 	@override String get searchScopeLocal => 'ローカル';
+	@override String get searchScopeServer => 'サーバー指定';
 	@override String get searchScopeUser => 'ユーザー指定';
+	@override String get pleaseEnterServerHost => 'サーバーのホストを入力してください';
+	@override String get pleaseSelectUser => 'ユーザーを選択してください';
+	@override String get serverHostPlaceholder => '例: misskey.example.com';
 }
 
 // Path: misskeyIO.skebStatus_

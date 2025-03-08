@@ -208,7 +208,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get pinned => 'Fissa sul profilo';
 	@override String get you => 'Tu';
 	@override String get clickToShow => 'Contenuto occultato, cliccare solo se si intende vedere';
-	@override String get sensitive => 'Allegato esplicito';
+	@override String get sensitive => 'Esplicito';
 	@override String get add => 'Aggiungi';
 	@override String get reaction => 'Reazioni';
 	@override String get reactions => 'Reazioni';
@@ -310,7 +310,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get cpuAndMemory => 'CPU e Memoria';
 	@override String get network => 'Rete';
 	@override String get disk => 'Disco';
-	@override String get instanceInfo => 'Informazioni sull\'istanza';
+	@override String get instanceInfo => 'Informazioni sul server';
 	@override String get statistics => 'Statistiche';
 	@override String get clearQueue => 'Svuota coda';
 	@override String get clearQueueConfirmTitle => 'Vuoi davvero svuotare la coda?';
@@ -527,7 +527,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get popularTags => 'Hashtag popolari';
 	@override String get userList => 'Liste';
 	@override String get about => 'Informazioni';
-	@override String get aboutMisskey => 'Informazioni di Misskey';
+	@override String get aboutMisskey => 'A proposito di Misskey';
 	@override String get administrator => 'Amministratore';
 	@override String get token => 'Token';
 	@override String get x2fa => 'Autenticazione a due fattori';
@@ -975,7 +975,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get hashtags => 'Hashtag';
 	@override String get troubleshooting => 'Risoluzione problemi';
 	@override String get useBlurEffect => 'Utilizza effetto sfocatura';
-	@override String get learnMore => 'Più dettagli';
+	@override String get learnMore => 'Per saperne di più';
 	@override String get misskeyUpdated => 'Misskey è stato aggiornato!';
 	@override String get whatIsNew => 'Informazioni sull\'aggiornamento';
 	@override String get translate => 'Traduci';
@@ -983,7 +983,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get accountDeletionInProgress => 'È in corso l\'eliminazione del profilo';
 	@override String get usernameInfo => 'Un nome per identificare univocamente il tuo profilo sull\'istanza. Puoi utilizzare caratteri alfanumerici maiuscoli, minuscoli e il trattino basso (_). Non potrai cambiare nome utente in seguito.';
 	@override String get aiChanMode => 'Modalità Ai';
-	@override String get devMode => 'Modalità sviluppatori';
+	@override String get devMode => 'Modalità sviluppo';
 	@override String get keepCw => 'Mostra i contenuti espliciti';
 	@override String get pubSub => 'Publish/Subscribe del profilo';
 	@override String get lastCommunication => 'La comunicazione più recente';
@@ -1131,7 +1131,7 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get permissionDeniedErrorDescription => 'Non si dispone dell\'autorizzazione per eseguire questa operazione.';
 	@override String get preset => 'Preimpostato';
 	@override String get selectFromPresets => 'Seleziona preimpostato';
-	@override String get achievements => 'Obiettivi raggiunti';
+	@override String get achievements => 'Conquiste';
 	@override String get gotInvalidResponseError => 'Risposta del server non valida';
 	@override String get gotInvalidResponseErrorDescription => 'Il server potrebbe essere irraggiungibile o in manutenzione. Riprova più tardi.';
 	@override String get thisPostMayBeAnnoying => 'Questa nota potrebbe essere offensiva';
@@ -1393,6 +1393,8 @@ class _TranslationsMisskeyItIt extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => 'Questo server ha la federazione disabilitata. Non puoi interagire con profili provenienti da altri server.';
 	@override String get confirmOnReact => 'Confermare le reazioni';
 	@override String reactAreYouSure({required Object emoji}) => 'Vuoi davvero reagire con ${emoji} ?';
+	@override String get markAsSensitiveConfirm => 'Vuoi davvero indicare questo contenuto multimediale come esplicito?';
+	@override String get unmarkAsSensitiveConfirm => 'Vuoi davvero indicare come non esplicito il contenuto multimediale?';
 	@override late final _TranslationsMisskeyAccountSettingsItIt accountSettings_ = _TranslationsMisskeyAccountSettingsItIt._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportItIt abuseUserReport_ = _TranslationsMisskeyAbuseUserReportItIt._(_root);
 	@override late final _TranslationsMisskeyDeliveryItIt delivery_ = _TranslationsMisskeyDeliveryItIt._(_root);
@@ -1613,9 +1615,9 @@ class _TranslationsMisskeyTimelineDescriptionItIt extends TranslationsMisskeyTim
 
 	// Translations
 	@override String get home => 'Nella Timeline Home, la tua cronologia principale, puoi vedere le Note provenienti dai profili che segui (Following).';
-	@override String get local => 'La Timeline Locale, è una cronologia di Note pubblicate da tutti i profili iscritti su questo server.';
-	@override String get social => 'La Timeline Sociale, unisce in ordine cronologico l\'elenco di Note presenti nella Timeline Home e quella Locale.';
-	@override String get global => 'La Timeline Federata ti consente di vedere le Note pubblicate dai profili di tutti gli altri server federati a questo.';
+	@override String get local => 'La Timeline Locale è un flusso di Note pubblicate dai profili iscritti a questo server.';
+	@override String get social => 'La Timeline Sociale elenca, in ordine cronologico, il flusso di Note nella Timeline Home e Locale.';
+	@override String get global => 'Nella Timeline Federata trovi il flusso di Note provenienti da profili iscritti ad altri server, federati a questo.';
 }
 
 // Path: misskey.serverRules_
@@ -1663,8 +1665,8 @@ class _TranslationsMisskeyAccountMigrationItIt extends TranslationsMisskeyAccoun
 	// Translations
 	@override String get moveFrom => 'Migra un altro profilo dentro a questo';
 	@override String get moveFromSub => 'Crea un alias verso un altro profilo remoto';
-	@override String moveFromLabel({required Object n}) => 'Profilo da cui migrare #${n}';
-	@override String get moveFromDescription => 'Se desideri spostare i Follower da un altro profilo a questo, devi prima creare un alias qui. Assicurati averlo creato PRIMA di eseguire l\'attività! Inserisci l\'indirizzo del profilo mittente in questo modo: @persona@istanza.it';
+	@override String moveFromLabel({required Object n}) => 'Profilo da cui migrare n. ${n}';
+	@override String get moveFromDescription => 'Se desideri spostare i Follower da un altro profilo a questo, devi prima creare un alias qui. Assicurati averlo creato PRIMA di eseguire l\'attività! Inserisci l\'indirizzo del profilo mittente in questo modo: @persona@vecchia.istanza.it';
 	@override String get moveTo => 'Migrare questo profilo verso un un altro';
 	@override String get moveToLabel => 'Profilo verso cui migrare';
 	@override String get moveCannotBeUndone => 'La migrazione è irreversibile, non può essere interrotta o annullata.';
@@ -1915,7 +1917,7 @@ class _TranslationsMisskeyAboutMisskeyItIt extends TranslationsMisskeyAboutMissk
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get about => 'Misskey è un software libero e open source, sviluppato da syuilo dal 2014.';
+	@override String get about => 'Misskey è software libero, open source, sviluppato da Syuilo fin dal lontano 2014.';
 	@override String get contributors => 'Principali sostenitori';
 	@override String get allContributors => 'Tutti i sostenitori';
 	@override String get source => 'Codice sorgente';
@@ -2354,7 +2356,7 @@ class _TranslationsMisskeyWidgetsItIt extends TranslationsMisskeyWidgetsEnUs {
 	@override String get aichan => 'Mascotte Ai';
 	@override String get userList => 'Elenco utenti';
 	@override late final _TranslationsMisskeyWidgetsUserListItIt userList_ = _TranslationsMisskeyWidgetsUserListItIt._(_root);
-	@override String get clicker => 'Cliccaggio';
+	@override String get clicker => 'Cliccheria';
 	@override String get birthdayFollowings => 'Compleanni del giorno';
 }
 
@@ -2451,7 +2453,7 @@ class _TranslationsMisskeyProfileItIt extends TranslationsMisskeyProfileEnUs {
 	@override String get metadataContent => 'Contenuto';
 	@override String get changeAvatar => 'Modifica immagine profilo';
 	@override String get changeBanner => 'Cambia intestazione';
-	@override String get verifiedLinkDescription => 'Puoi verificare il tuo profilo mostrando una icona. Devi inserire la URL alla pagina che contiene un link al tuo profilo.';
+	@override String get verifiedLinkDescription => 'Puoi verificare il tuo profilo mostrando una icona. Devi inserire la URL alla pagina che contiene un link al tuo profilo.\nPer verificare il profilo tramite la spunta di conferma, devi inserire la url alla pagina che contiene un link al tuo profilo Misskey. Deve avere attributo rel=\'me\'.';
 	@override String avatarDecorationMax({required Object max}) => 'Puoi aggiungere fino a ${max} decorazioni.';
 	@override String get followedMessage => 'Messaggio, quando qualcuno ti segue';
 	@override String get followedMessageDescription => 'Puoi impostare un breve messaggio da mostrare agli altri profili quando ti seguono.';
@@ -2798,6 +2800,7 @@ class _TranslationsMisskeyModerationLogTypesItIt extends TranslationsMisskeyMode
 	@override String get deletePage => 'Pagina eliminata';
 	@override String get deleteFlash => 'Play eliminato';
 	@override String get deleteGalleryPost => 'Eliminazione pubblicazione nella Galleria';
+	@override String get updateProxyAccountDescription => 'Aggiornata la descrizione del profilo proxy';
 }
 
 // Path: misskey.fileViewer_
@@ -3043,8 +3046,8 @@ class _TranslationsMisskeyFollowRequestItIt extends TranslationsMisskeyFollowReq
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get recieved => 'Ricezione richiesta di Follow';
-	@override String get sent => 'Richiesta di Follow, inviata';
+	@override String get recieved => 'Richieste in ingresso';
+	@override String get sent => 'Richieste in uscita';
 }
 
 // Path: misskey.remoteLookupErrors_
@@ -3102,7 +3105,11 @@ class _TranslationsMisskeySearchItIt extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'Tutte';
 	@override String get searchScopeLocal => 'Locale';
+	@override String get searchScopeServer => 'Specifiche del server';
 	@override String get searchScopeUser => 'Profilo specifico';
+	@override String get pleaseEnterServerHost => 'Inserire il nome host';
+	@override String get pleaseSelectUser => 'Per favore, seleziona un profilo';
+	@override String get serverHostPlaceholder => 'Es: misskey.example.com';
 }
 
 // Path: misskey.delivery_.type_
@@ -4132,7 +4139,7 @@ class _TranslationsMisskeyAchievementsTypesLogin30ItIt extends TranslationsMissk
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Misskist I';
+	@override String get title => 'Missalcolista I';
 	@override String get description => 'Hai totalizzato 30 accessi!';
 }
 
@@ -4143,7 +4150,7 @@ class _TranslationsMisskeyAchievementsTypesLogin60ItIt extends TranslationsMissk
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Misskeist II';
+	@override String get title => 'Missalcolista II';
 	@override String get description => 'Hai totalizzato 60 accessi!';
 }
 
@@ -4154,7 +4161,7 @@ class _TranslationsMisskeyAchievementsTypesLogin100ItIt extends TranslationsMiss
 	final TranslationsItIt _root; // ignore: unused_field
 
 	// Translations
-	@override String get title => 'Misskeist III';
+	@override String get title => 'Missalcolista III';
 	@override String get description => 'Hai totalizzato 100 accessi!';
 	@override String get flavor => 'Violent Misskeist';
 }
@@ -4456,7 +4463,7 @@ class _TranslationsMisskeyAchievementsTypesCollectAchievements30ItIt extends Tra
 
 	// Translations
 	@override String get title => 'Collezionista di successi';
-	@override String get description => 'Hai raggiunto 30 obiettivi';
+	@override String get description => 'Hai raggiunto 30 conquiste';
 }
 
 // Path: misskey.achievements_.types_.viewAchievements3min_
@@ -4467,7 +4474,7 @@ class _TranslationsMisskeyAchievementsTypesViewAchievements3minItIt extends Tran
 
 	// Translations
 	@override String get title => 'Mi piacciono i risultati';
-	@override String get description => 'Guarda la tua collezione di obiettivi per almeno 3 minuti';
+	@override String get description => 'Ammira la tua collezione di conquiste per almeno 3 minuti';
 }
 
 // Path: misskey.achievements_.types_.iLoveMisskey_

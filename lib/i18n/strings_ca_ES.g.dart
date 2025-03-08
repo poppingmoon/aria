@@ -193,7 +193,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get unfollow => 'Deixar de seguir';
 	@override String get followRequestPending => 'Sol·licituds de seguiment pendents';
 	@override String get enterEmoji => 'Introduir un emoji';
-	@override String get renote => 'Impulsos';
+	@override String get renote => 'Impulsar';
 	@override String get unrenote => 'Anul·la l\'impuls';
 	@override String get renoted => 'S\'ha impulsat';
 	@override String renotedToX({required Object name}) => 'Impulsat per ${name}.';
@@ -342,7 +342,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get noJobs => 'No hi ha feines';
 	@override String get federating => 'Federant';
 	@override String get blocked => 'Bloquejat';
-	@override String get suspended => 'Suspés';
+	@override String get suspended => 'Anul·lar subscripció ';
 	@override String get all => 'tot';
 	@override String get subscribing => 'Subscrit a';
 	@override String get publishing => 'S\'està publicant';
@@ -1196,7 +1196,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get addMemo => 'Afegir recordatori';
 	@override String get editMemo => 'Editar recordatori';
 	@override String get reactionsList => 'Reaccions';
-	@override String get renotesList => 'Impulsos';
+	@override String get renotesList => 'Llistat d\'impulsos ';
 	@override String get notificationDisplay => 'Notificacions';
 	@override String get leftTop => 'Dalt a l\'esquerra ';
 	@override String get rightTop => 'Dalt a la dreta ';
@@ -1272,7 +1272,7 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get youHaveUnreadAnnouncements => 'Tens informes per llegir.';
 	@override String get useSecurityKey => 'Segueix les instruccions del teu navegador O dispositiu per fer servir el teu passkey.';
 	@override String get replies => 'Respostes';
-	@override String get renotes => 'Impulsos';
+	@override String get renotes => 'Impulsar';
 	@override String get loadReplies => 'Mostrar les respostes';
 	@override String get loadConversation => 'Mostrar la conversació ';
 	@override String get pinnedList => 'Llista fixada';
@@ -1393,6 +1393,8 @@ class _TranslationsMisskeyCaEs extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => 'La unió es troba deshabilitada en aquest servidor. No es pot interactuar amb usuaris d\'altres servidors.';
 	@override String get confirmOnReact => 'Confirmar en reaccionar';
 	@override String reactAreYouSure({required Object emoji}) => 'Vols reaccionar amb "${emoji}"?';
+	@override String get markAsSensitiveConfirm => 'Vols marcar aquest contingut com a sensible?';
+	@override String get unmarkAsSensitiveConfirm => 'Vols deixar de marcar com a sensible aquest contingut?';
 	@override late final _TranslationsMisskeyAccountSettingsCaEs accountSettings_ = _TranslationsMisskeyAccountSettingsCaEs._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportCaEs abuseUserReport_ = _TranslationsMisskeyAbuseUserReportCaEs._(_root);
 	@override late final _TranslationsMisskeyDeliveryCaEs delivery_ = _TranslationsMisskeyDeliveryCaEs._(_root);
@@ -1522,7 +1524,7 @@ class _TranslationsMisskeyDeliveryCaEs extends TranslationsMisskeyDeliveryEnUs {
 
 	// Translations
 	@override String get status => 'Estat d\'entrega ';
-	@override String get stop => 'Suspés';
+	@override String get stop => 'Anul·lar subscripció ';
 	@override String get resume => 'Torna a enviar';
 	@override late final _TranslationsMisskeyDeliveryTypeCaEs type_ = _TranslationsMisskeyDeliveryTypeCaEs._(_root);
 }
@@ -2798,6 +2800,7 @@ class _TranslationsMisskeyModerationLogTypesCaEs extends TranslationsMisskeyMode
 	@override String get deletePage => 'Esborrar la pàgina';
 	@override String get deleteFlash => 'Esborrar el guió';
 	@override String get deleteGalleryPost => 'Esborrar la publicació de la galeria';
+	@override String get updateProxyAccountDescription => 'Actualitzar descripció del compte proxy';
 }
 
 // Path: misskey.fileViewer_
@@ -3102,7 +3105,11 @@ class _TranslationsMisskeySearchCaEs extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => 'Tot';
 	@override String get searchScopeLocal => 'Local';
+	@override String get searchScopeServer => 'Instància ';
 	@override String get searchScopeUser => 'Especificar usuari';
+	@override String get pleaseEnterServerHost => 'Introdueix l\'adreça de la instància ';
+	@override String get pleaseSelectUser => 'Selecciona un usuari';
+	@override String get serverHostPlaceholder => 'Ex: misskey.example.com';
 }
 
 // Path: misskey.delivery_.type_
@@ -3535,7 +3542,7 @@ class _TranslationsMisskeyNotificationTypesCaEs extends TranslationsMisskeyNotif
 	@override String get follow => 'Segueix-me';
 	@override String get mention => 'Menció';
 	@override String get reply => 'Respostes';
-	@override String get renote => 'Renotar';
+	@override String get renote => 'Impulsar';
 	@override String get quote => 'Citar';
 	@override String get reaction => 'Reaccions';
 	@override String get pollEnded => 'Enquesta terminada';
@@ -3558,7 +3565,7 @@ class _TranslationsMisskeyNotificationActionsCaEs extends TranslationsMisskeyNot
 	// Translations
 	@override String get followBack => 'També et segueix';
 	@override String get reply => 'Respondre';
-	@override String get renote => 'Renotar';
+	@override String get renote => 'Impulsos';
 }
 
 // Path: misskey.deck_.columns_
