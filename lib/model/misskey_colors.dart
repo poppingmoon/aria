@@ -4,8 +4,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'misskey_colors.freezed.dart';
 
-@Freezed(toJson: false)
-class MisskeyColors with _$MisskeyColors {
+@freezed
+abstract class MisskeyColors with _$MisskeyColors {
   const factory MisskeyColors({
     required String id,
     required String name,

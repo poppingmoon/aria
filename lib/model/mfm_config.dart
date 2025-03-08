@@ -4,7 +4,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'mfm_config.freezed.dart';
 
 @freezed
-class MfmConfig with _$MfmConfig {
+abstract class MfmConfig with _$MfmConfig {
   const factory MfmConfig({
     required TextStyle style,
     @Default(false) bool disableNyaize,

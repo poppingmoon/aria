@@ -42,8 +42,8 @@ class AnnouncementCreated implements MainEvent {
   final AnnouncementsResponse announcement;
 }
 
-@freezed
-class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
+@Freezed(toJson: false)
+abstract class UrlUploadFinished with _$UrlUploadFinished implements MainEvent {
   const factory UrlUploadFinished({String? marker, required DriveFile file}) =
       _UrlUploadFinished;
 

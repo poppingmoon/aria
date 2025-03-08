@@ -6,9 +6,9 @@ part of 'account_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AccountSettingsImpl _$$AccountSettingsImplFromJson(
+_AccountSettings _$AccountSettingsFromJson(
   Map<String, dynamic> json,
-) => _$AccountSettingsImpl(
+) => _AccountSettings(
   keepCw: json['keepCw'] as bool? ?? true,
   rememberNoteVisibility: json['rememberNoteVisibility'] as bool? ?? false,
   defaultNoteVisibility:
@@ -88,40 +88,39 @@ _$AccountSettingsImpl _$$AccountSettingsImplFromJson(
       const [],
 );
 
-Map<String, dynamic> _$$AccountSettingsImplToJson(
-  _$AccountSettingsImpl instance,
-) => <String, dynamic>{
-  'keepCw': instance.keepCw,
-  'rememberNoteVisibility': instance.rememberNoteVisibility,
-  'defaultNoteVisibility':
-      _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
-  'defaultNoteLocalOnly': instance.defaultNoteLocalOnly,
-  'rememberRenoteVisibility': instance.rememberRenoteVisibility,
-  'defaultRenoteVisibility':
-      _$NoteVisibilityEnumMap[instance.defaultRenoteVisibility]!,
-  'defaultRenoteLocalOnly': instance.defaultRenoteLocalOnly,
-  if (_$ReactionAcceptanceEnumMap[instance.reactionAcceptance]
-      case final value?)
-    'reactionAcceptance': value,
-  'visibility': _$NoteVisibilityEnumMap[instance.visibility]!,
-  'localOnly': instance.localOnly,
-  'renoteVisibility': _$NoteVisibilityEnumMap[instance.renoteVisibility]!,
-  'renoteLocalOnly': instance.renoteLocalOnly,
-  'pinnedEmojisForReaction': instance.pinnedEmojisForReaction,
-  'pinnedEmojis': instance.pinnedEmojis,
-  'recentlyUsedEmojis': instance.recentlyUsedEmojis,
-  if (instance.defaultReaction case final value?) 'defaultReaction': value,
-  if (instance.uploadFolder case final value?) 'uploadFolder': value,
-  'keepOriginalUploading': instance.keepOriginalUploading,
-  'keepOriginalFilename': instance.keepOriginalFilename,
-  'mutedWords': instance.mutedWords.map((e) => e.toJson()).toList(),
-  'hardMutedWords': instance.hardMutedWords.map((e) => e.toJson()).toList(),
-  'mutedEmojis': instance.mutedEmojis,
-  'recentlyUsedUsers': instance.recentlyUsedUsers,
-  'hashtags': instance.hashtags,
-  'postFormUseHashtags': instance.postFormUseHashtags,
-  'postFormHashtags': instance.postFormHashtags,
-};
+Map<String, dynamic> _$AccountSettingsToJson(_AccountSettings instance) =>
+    <String, dynamic>{
+      'keepCw': instance.keepCw,
+      'rememberNoteVisibility': instance.rememberNoteVisibility,
+      'defaultNoteVisibility':
+          _$NoteVisibilityEnumMap[instance.defaultNoteVisibility]!,
+      'defaultNoteLocalOnly': instance.defaultNoteLocalOnly,
+      'rememberRenoteVisibility': instance.rememberRenoteVisibility,
+      'defaultRenoteVisibility':
+          _$NoteVisibilityEnumMap[instance.defaultRenoteVisibility]!,
+      'defaultRenoteLocalOnly': instance.defaultRenoteLocalOnly,
+      if (_$ReactionAcceptanceEnumMap[instance.reactionAcceptance]
+          case final value?)
+        'reactionAcceptance': value,
+      'visibility': _$NoteVisibilityEnumMap[instance.visibility]!,
+      'localOnly': instance.localOnly,
+      'renoteVisibility': _$NoteVisibilityEnumMap[instance.renoteVisibility]!,
+      'renoteLocalOnly': instance.renoteLocalOnly,
+      'pinnedEmojisForReaction': instance.pinnedEmojisForReaction,
+      'pinnedEmojis': instance.pinnedEmojis,
+      'recentlyUsedEmojis': instance.recentlyUsedEmojis,
+      if (instance.defaultReaction case final value?) 'defaultReaction': value,
+      if (instance.uploadFolder case final value?) 'uploadFolder': value,
+      'keepOriginalUploading': instance.keepOriginalUploading,
+      'keepOriginalFilename': instance.keepOriginalFilename,
+      'mutedWords': instance.mutedWords.map((e) => e.toJson()).toList(),
+      'hardMutedWords': instance.hardMutedWords.map((e) => e.toJson()).toList(),
+      'mutedEmojis': instance.mutedEmojis,
+      'recentlyUsedUsers': instance.recentlyUsedUsers,
+      'hashtags': instance.hashtags,
+      'postFormUseHashtags': instance.postFormUseHashtags,
+      'postFormHashtags': instance.postFormHashtags,
+    };
 
 const _$NoteVisibilityEnumMap = {
   NoteVisibility.public: 'public',

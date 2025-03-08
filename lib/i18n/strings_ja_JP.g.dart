@@ -65,6 +65,7 @@ class _TranslationsAriaJaJp extends TranslationsAriaEnUs {
 	@override String get confirmBeforeFollow => 'フォローする前に確認する';
 	@override String get confirmBeforePost => '投稿する前に確認する';
 	@override String get confirmBeforeReact => 'リアクションする前に確認する';
+	@override String get confirmBeforeRenote => 'リノートする前に確認する';
 	@override String get copied => 'クリップボードにコピーしました';
 	@override String get copyName => '名前をコピー';
 	@override String get crop => 'クロップ';
@@ -1510,7 +1511,7 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get refreshing => 'リロード中';
 	@override String get pullDownToRefresh => '引っ張ってリロード';
 	@override String get disableStreamingTimeline => 'タイムラインのリアルタイム更新を無効にする';
-	@override String get useGroupedNotifications => '通知をグルーピングして表示する';
+	@override String get useGroupedNotifications => '通知をグルーピング';
 	@override String get signupPendingError => 'メールアドレスの確認中に問題が発生しました。リンクの有効期限が切れている可能性があります。';
 	@override String get cwNotationRequired => '「内容を隠す」がオンの場合は注釈の記述が必要です。';
 	@override String get doReaction => 'リアクションする';
@@ -1583,6 +1584,8 @@ class _TranslationsMisskeyJaJp extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => 'このサーバーは連合が無効化されています。他のサーバーのユーザーとやり取りすることはできません。';
 	@override String get confirmOnReact => 'リアクションする際に確認する';
 	@override String reactAreYouSure({required Object emoji}) => '" ${emoji} " をリアクションしますか？';
+	@override String get markAsSensitiveConfirm => 'このメディアをセンシティブとして設定しますか？';
+	@override String get unmarkAsSensitiveConfirm => 'このメディアのセンシティブ指定を解除しますか？';
 	@override late final _TranslationsMisskeyAccountSettingsJaJp accountSettings_ = _TranslationsMisskeyAccountSettingsJaJp._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportJaJp abuseUserReport_ = _TranslationsMisskeyAbuseUserReportJaJp._(_root);
 	@override late final _TranslationsMisskeyDeliveryJaJp delivery_ = _TranslationsMisskeyDeliveryJaJp._(_root);
@@ -2998,6 +3001,7 @@ class _TranslationsMisskeyModerationLogTypesJaJp extends TranslationsMisskeyMode
 	@override String get deletePage => 'ページを削除';
 	@override String get deleteFlash => 'Playを削除';
 	@override String get deleteGalleryPost => 'ギャラリーの投稿を削除';
+	@override String get updateProxyAccountDescription => 'プロキシアカウントの説明を更新';
 }
 
 // Path: misskey.fileViewer_
@@ -3302,7 +3306,11 @@ class _TranslationsMisskeySearchJaJp extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => '全て';
 	@override String get searchScopeLocal => 'ローカル';
+	@override String get searchScopeServer => 'サーバー指定';
 	@override String get searchScopeUser => 'ユーザー指定';
+	@override String get pleaseEnterServerHost => 'サーバーのホストを入力してください';
+	@override String get pleaseSelectUser => 'ユーザーを選択してください';
+	@override String get serverHostPlaceholder => '例: misskey.example.com';
 }
 
 // Path: misskeyIO.skebStatus_

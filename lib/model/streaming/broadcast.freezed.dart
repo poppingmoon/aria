@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,664 +10,566 @@ part of 'broadcast.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-EmojiAdded _$EmojiAddedFromJson(Map<String, dynamic> json) {
-  return _EmojiAdded.fromJson(json);
-}
 
 /// @nodoc
 mixin _$EmojiAdded {
-  Emoji get emoji => throw _privateConstructorUsedError;
 
-  /// Serializes this EmojiAdded to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+ Emoji get emoji;
+/// Create a copy of EmojiAdded
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EmojiAddedCopyWith<EmojiAdded> get copyWith => _$EmojiAddedCopyWithImpl<EmojiAdded>(this as EmojiAdded, _$identity);
 
-  /// Create a copy of EmojiAdded
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EmojiAddedCopyWith<EmojiAdded> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmojiAdded&&(identical(other.emoji, emoji) || other.emoji == emoji));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,emoji);
+
+@override
+String toString() {
+  return 'EmojiAdded(emoji: $emoji)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $EmojiAddedCopyWith<$Res> {
-  factory $EmojiAddedCopyWith(
-    EmojiAdded value,
-    $Res Function(EmojiAdded) then,
-  ) = _$EmojiAddedCopyWithImpl<$Res, EmojiAdded>;
-  @useResult
-  $Res call({Emoji emoji});
+abstract mixin class $EmojiAddedCopyWith<$Res>  {
+  factory $EmojiAddedCopyWith(EmojiAdded value, $Res Function(EmojiAdded) _then) = _$EmojiAddedCopyWithImpl;
+@useResult
+$Res call({
+ Emoji emoji
+});
 
-  $EmojiCopyWith<$Res> get emoji;
+
+$EmojiCopyWith<$Res> get emoji;
+
 }
-
 /// @nodoc
-class _$EmojiAddedCopyWithImpl<$Res, $Val extends EmojiAdded>
+class _$EmojiAddedCopyWithImpl<$Res>
     implements $EmojiAddedCopyWith<$Res> {
-  _$EmojiAddedCopyWithImpl(this._value, this._then);
+  _$EmojiAddedCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final EmojiAdded _self;
+  final $Res Function(EmojiAdded) _then;
 
-  /// Create a copy of EmojiAdded
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? emoji = null}) {
-    return _then(
-      _value.copyWith(
-            emoji:
-                null == emoji
-                    ? _value.emoji
-                    : emoji // ignore: cast_nullable_to_non_nullable
-                        as Emoji,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of EmojiAdded
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $EmojiCopyWith<$Res> get emoji {
-    return $EmojiCopyWith<$Res>(_value.emoji, (value) {
-      return _then(_value.copyWith(emoji: value) as $Val);
-    });
-  }
+/// Create a copy of EmojiAdded
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? emoji = null,}) {
+  return _then(_self.copyWith(
+emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
+as Emoji,
+  ));
+}
+/// Create a copy of EmojiAdded
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EmojiCopyWith<$Res> get emoji {
+  
+  return $EmojiCopyWith<$Res>(_self.emoji, (value) {
+    return _then(_self.copyWith(emoji: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$EmojiAddedImplCopyWith<$Res>
-    implements $EmojiAddedCopyWith<$Res> {
-  factory _$$EmojiAddedImplCopyWith(
-    _$EmojiAddedImpl value,
-    $Res Function(_$EmojiAddedImpl) then,
-  ) = __$$EmojiAddedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Emoji emoji});
-
-  @override
-  $EmojiCopyWith<$Res> get emoji;
-}
-
-/// @nodoc
-class __$$EmojiAddedImplCopyWithImpl<$Res>
-    extends _$EmojiAddedCopyWithImpl<$Res, _$EmojiAddedImpl>
-    implements _$$EmojiAddedImplCopyWith<$Res> {
-  __$$EmojiAddedImplCopyWithImpl(
-    _$EmojiAddedImpl _value,
-    $Res Function(_$EmojiAddedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EmojiAdded
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? emoji = null}) {
-    return _then(
-      _$EmojiAddedImpl(
-        emoji:
-            null == emoji
-                ? _value.emoji
-                : emoji // ignore: cast_nullable_to_non_nullable
-                    as Emoji,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$EmojiAddedImpl implements _EmojiAdded {
-  const _$EmojiAddedImpl({required this.emoji});
-
-  factory _$EmojiAddedImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EmojiAddedImplFromJson(json);
-
-  @override
-  final Emoji emoji;
-
-  @override
-  String toString() {
-    return 'EmojiAdded(emoji: $emoji)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EmojiAddedImpl &&
-            (identical(other.emoji, emoji) || other.emoji == emoji));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, emoji);
-
-  /// Create a copy of EmojiAdded
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EmojiAddedImplCopyWith<_$EmojiAddedImpl> get copyWith =>
-      __$$EmojiAddedImplCopyWithImpl<_$EmojiAddedImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EmojiAddedImplToJson(this);
-  }
-}
-
-abstract class _EmojiAdded implements EmojiAdded {
-  const factory _EmojiAdded({required final Emoji emoji}) = _$EmojiAddedImpl;
-
-  factory _EmojiAdded.fromJson(Map<String, dynamic> json) =
-      _$EmojiAddedImpl.fromJson;
-
-  @override
-  Emoji get emoji;
-
-  /// Create a copy of EmojiAdded
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EmojiAddedImplCopyWith<_$EmojiAddedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-EmojiUpdated _$EmojiUpdatedFromJson(Map<String, dynamic> json) {
-  return _EmojiUpdated.fromJson(json);
-}
-
-/// @nodoc
-mixin _$EmojiUpdated {
-  List<Emoji> get emojis => throw _privateConstructorUsedError;
-
-  /// Serializes this EmojiUpdated to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of EmojiUpdated
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EmojiUpdatedCopyWith<EmojiUpdated> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $EmojiUpdatedCopyWith<$Res> {
-  factory $EmojiUpdatedCopyWith(
-    EmojiUpdated value,
-    $Res Function(EmojiUpdated) then,
-  ) = _$EmojiUpdatedCopyWithImpl<$Res, EmojiUpdated>;
-  @useResult
-  $Res call({List<Emoji> emojis});
-}
-
-/// @nodoc
-class _$EmojiUpdatedCopyWithImpl<$Res, $Val extends EmojiUpdated>
-    implements $EmojiUpdatedCopyWith<$Res> {
-  _$EmojiUpdatedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of EmojiUpdated
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? emojis = null}) {
-    return _then(
-      _value.copyWith(
-            emojis:
-                null == emojis
-                    ? _value.emojis
-                    : emojis // ignore: cast_nullable_to_non_nullable
-                        as List<Emoji>,
-          )
-          as $Val,
-    );
-  }
-}
-
-/// @nodoc
-abstract class _$$EmojiUpdatedImplCopyWith<$Res>
-    implements $EmojiUpdatedCopyWith<$Res> {
-  factory _$$EmojiUpdatedImplCopyWith(
-    _$EmojiUpdatedImpl value,
-    $Res Function(_$EmojiUpdatedImpl) then,
-  ) = __$$EmojiUpdatedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Emoji> emojis});
-}
-
-/// @nodoc
-class __$$EmojiUpdatedImplCopyWithImpl<$Res>
-    extends _$EmojiUpdatedCopyWithImpl<$Res, _$EmojiUpdatedImpl>
-    implements _$$EmojiUpdatedImplCopyWith<$Res> {
-  __$$EmojiUpdatedImplCopyWithImpl(
-    _$EmojiUpdatedImpl _value,
-    $Res Function(_$EmojiUpdatedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EmojiUpdated
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? emojis = null}) {
-    return _then(
-      _$EmojiUpdatedImpl(
-        emojis:
-            null == emojis
-                ? _value._emojis
-                : emojis // ignore: cast_nullable_to_non_nullable
-                    as List<Emoji>,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$EmojiUpdatedImpl implements _EmojiUpdated {
-  const _$EmojiUpdatedImpl({required final List<Emoji> emojis})
-    : _emojis = emojis;
-
-  factory _$EmojiUpdatedImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EmojiUpdatedImplFromJson(json);
-
-  final List<Emoji> _emojis;
-  @override
-  List<Emoji> get emojis {
-    if (_emojis is EqualUnmodifiableListView) return _emojis;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_emojis);
-  }
-
-  @override
-  String toString() {
-    return 'EmojiUpdated(emojis: $emojis)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EmojiUpdatedImpl &&
-            const DeepCollectionEquality().equals(other._emojis, _emojis));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_emojis));
-
-  /// Create a copy of EmojiUpdated
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EmojiUpdatedImplCopyWith<_$EmojiUpdatedImpl> get copyWith =>
-      __$$EmojiUpdatedImplCopyWithImpl<_$EmojiUpdatedImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EmojiUpdatedImplToJson(this);
-  }
-}
-
-abstract class _EmojiUpdated implements EmojiUpdated {
-  const factory _EmojiUpdated({required final List<Emoji> emojis}) =
-      _$EmojiUpdatedImpl;
-
-  factory _EmojiUpdated.fromJson(Map<String, dynamic> json) =
-      _$EmojiUpdatedImpl.fromJson;
-
-  @override
-  List<Emoji> get emojis;
-
-  /// Create a copy of EmojiUpdated
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EmojiUpdatedImplCopyWith<_$EmojiUpdatedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-EmojiDeleted _$EmojiDeletedFromJson(Map<String, dynamic> json) {
-  return _EmojiDeleted.fromJson(json);
-}
-
-/// @nodoc
-mixin _$EmojiDeleted {
-  List<Emoji> get emojis => throw _privateConstructorUsedError;
-
-  /// Serializes this EmojiDeleted to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
-  /// Create a copy of EmojiDeleted
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $EmojiDeletedCopyWith<EmojiDeleted> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $EmojiDeletedCopyWith<$Res> {
-  factory $EmojiDeletedCopyWith(
-    EmojiDeleted value,
-    $Res Function(EmojiDeleted) then,
-  ) = _$EmojiDeletedCopyWithImpl<$Res, EmojiDeleted>;
-  @useResult
-  $Res call({List<Emoji> emojis});
-}
-
-/// @nodoc
-class _$EmojiDeletedCopyWithImpl<$Res, $Val extends EmojiDeleted>
-    implements $EmojiDeletedCopyWith<$Res> {
-  _$EmojiDeletedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of EmojiDeleted
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? emojis = null}) {
-    return _then(
-      _value.copyWith(
-            emojis:
-                null == emojis
-                    ? _value.emojis
-                    : emojis // ignore: cast_nullable_to_non_nullable
-                        as List<Emoji>,
-          )
-          as $Val,
-    );
-  }
-}
-
-/// @nodoc
-abstract class _$$EmojiDeletedImplCopyWith<$Res>
-    implements $EmojiDeletedCopyWith<$Res> {
-  factory _$$EmojiDeletedImplCopyWith(
-    _$EmojiDeletedImpl value,
-    $Res Function(_$EmojiDeletedImpl) then,
-  ) = __$$EmojiDeletedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Emoji> emojis});
-}
-
-/// @nodoc
-class __$$EmojiDeletedImplCopyWithImpl<$Res>
-    extends _$EmojiDeletedCopyWithImpl<$Res, _$EmojiDeletedImpl>
-    implements _$$EmojiDeletedImplCopyWith<$Res> {
-  __$$EmojiDeletedImplCopyWithImpl(
-    _$EmojiDeletedImpl _value,
-    $Res Function(_$EmojiDeletedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of EmojiDeleted
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? emojis = null}) {
-    return _then(
-      _$EmojiDeletedImpl(
-        emojis:
-            null == emojis
-                ? _value._emojis
-                : emojis // ignore: cast_nullable_to_non_nullable
-                    as List<Emoji>,
-      ),
-    );
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$EmojiDeletedImpl implements _EmojiDeleted {
-  const _$EmojiDeletedImpl({required final List<Emoji> emojis})
-    : _emojis = emojis;
-
-  factory _$EmojiDeletedImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EmojiDeletedImplFromJson(json);
-
-  final List<Emoji> _emojis;
-  @override
-  List<Emoji> get emojis {
-    if (_emojis is EqualUnmodifiableListView) return _emojis;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_emojis);
-  }
-
-  @override
-  String toString() {
-    return 'EmojiDeleted(emojis: $emojis)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$EmojiDeletedImpl &&
-            const DeepCollectionEquality().equals(other._emojis, _emojis));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_emojis));
-
-  /// Create a copy of EmojiDeleted
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$EmojiDeletedImplCopyWith<_$EmojiDeletedImpl> get copyWith =>
-      __$$EmojiDeletedImplCopyWithImpl<_$EmojiDeletedImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$EmojiDeletedImplToJson(this);
-  }
-}
-
-abstract class _EmojiDeleted implements EmojiDeleted {
-  const factory _EmojiDeleted({required final List<Emoji> emojis}) =
-      _$EmojiDeletedImpl;
-
-  factory _EmojiDeleted.fromJson(Map<String, dynamic> json) =
-      _$EmojiDeletedImpl.fromJson;
-
-  @override
-  List<Emoji> get emojis;
-
-  /// Create a copy of EmojiDeleted
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$EmojiDeletedImplCopyWith<_$EmojiDeletedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-AnnouncementCreated _$AnnouncementCreatedFromJson(Map<String, dynamic> json) {
-  return _AnnouncementCreated.fromJson(json);
-}
-
-/// @nodoc
-mixin _$AnnouncementCreated {
-  AnnouncementsResponse get announcement => throw _privateConstructorUsedError;
-
-  /// Create a copy of AnnouncementCreated
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $AnnouncementCreatedCopyWith<AnnouncementCreated> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $AnnouncementCreatedCopyWith<$Res> {
-  factory $AnnouncementCreatedCopyWith(
-    AnnouncementCreated value,
-    $Res Function(AnnouncementCreated) then,
-  ) = _$AnnouncementCreatedCopyWithImpl<$Res, AnnouncementCreated>;
-  @useResult
-  $Res call({AnnouncementsResponse announcement});
-
-  $AnnouncementsResponseCopyWith<$Res> get announcement;
-}
-
-/// @nodoc
-class _$AnnouncementCreatedCopyWithImpl<$Res, $Val extends AnnouncementCreated>
-    implements $AnnouncementCreatedCopyWith<$Res> {
-  _$AnnouncementCreatedCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of AnnouncementCreated
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? announcement = null}) {
-    return _then(
-      _value.copyWith(
-            announcement:
-                null == announcement
-                    ? _value.announcement
-                    : announcement // ignore: cast_nullable_to_non_nullable
-                        as AnnouncementsResponse,
-          )
-          as $Val,
-    );
-  }
-
-  /// Create a copy of AnnouncementCreated
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $AnnouncementsResponseCopyWith<$Res> get announcement {
-    return $AnnouncementsResponseCopyWith<$Res>(_value.announcement, (value) {
-      return _then(_value.copyWith(announcement: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$AnnouncementCreatedImplCopyWith<$Res>
-    implements $AnnouncementCreatedCopyWith<$Res> {
-  factory _$$AnnouncementCreatedImplCopyWith(
-    _$AnnouncementCreatedImpl value,
-    $Res Function(_$AnnouncementCreatedImpl) then,
-  ) = __$$AnnouncementCreatedImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({AnnouncementsResponse announcement});
-
-  @override
-  $AnnouncementsResponseCopyWith<$Res> get announcement;
-}
-
-/// @nodoc
-class __$$AnnouncementCreatedImplCopyWithImpl<$Res>
-    extends _$AnnouncementCreatedCopyWithImpl<$Res, _$AnnouncementCreatedImpl>
-    implements _$$AnnouncementCreatedImplCopyWith<$Res> {
-  __$$AnnouncementCreatedImplCopyWithImpl(
-    _$AnnouncementCreatedImpl _value,
-    $Res Function(_$AnnouncementCreatedImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of AnnouncementCreated
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? announcement = null}) {
-    return _then(
-      _$AnnouncementCreatedImpl(
-        announcement:
-            null == announcement
-                ? _value.announcement
-                : announcement // ignore: cast_nullable_to_non_nullable
-                    as AnnouncementsResponse,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$AnnouncementCreatedImpl implements _AnnouncementCreated {
-  const _$AnnouncementCreatedImpl({required this.announcement});
 
-  factory _$AnnouncementCreatedImpl.fromJson(Map<String, dynamic> json) =>
-      _$$AnnouncementCreatedImplFromJson(json);
+class _EmojiAdded implements EmojiAdded {
+  const _EmojiAdded({required this.emoji});
+  factory _EmojiAdded.fromJson(Map<String, dynamic> json) => _$EmojiAddedFromJson(json);
 
-  @override
-  final AnnouncementsResponse announcement;
+@override final  Emoji emoji;
 
-  @override
-  String toString() {
-    return 'AnnouncementCreated(announcement: $announcement)';
-  }
+/// Create a copy of EmojiAdded
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EmojiAddedCopyWith<_EmojiAdded> get copyWith => __$EmojiAddedCopyWithImpl<_EmojiAdded>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$AnnouncementCreatedImpl &&
-            (identical(other.announcement, announcement) ||
-                other.announcement == announcement));
-  }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(runtimeType, announcement);
 
-  /// Create a copy of AnnouncementCreated
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$AnnouncementCreatedImplCopyWith<_$AnnouncementCreatedImpl> get copyWith =>
-      __$$AnnouncementCreatedImplCopyWithImpl<_$AnnouncementCreatedImpl>(
-        this,
-        _$identity,
-      );
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmojiAdded&&(identical(other.emoji, emoji) || other.emoji == emoji));
 }
 
-abstract class _AnnouncementCreated implements AnnouncementCreated {
-  const factory _AnnouncementCreated({
-    required final AnnouncementsResponse announcement,
-  }) = _$AnnouncementCreatedImpl;
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,emoji);
 
-  factory _AnnouncementCreated.fromJson(Map<String, dynamic> json) =
-      _$AnnouncementCreatedImpl.fromJson;
-
-  @override
-  AnnouncementsResponse get announcement;
-
-  /// Create a copy of AnnouncementCreated
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$AnnouncementCreatedImplCopyWith<_$AnnouncementCreatedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'EmojiAdded(emoji: $emoji)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EmojiAddedCopyWith<$Res> implements $EmojiAddedCopyWith<$Res> {
+  factory _$EmojiAddedCopyWith(_EmojiAdded value, $Res Function(_EmojiAdded) _then) = __$EmojiAddedCopyWithImpl;
+@override @useResult
+$Res call({
+ Emoji emoji
+});
+
+
+@override $EmojiCopyWith<$Res> get emoji;
+
+}
+/// @nodoc
+class __$EmojiAddedCopyWithImpl<$Res>
+    implements _$EmojiAddedCopyWith<$Res> {
+  __$EmojiAddedCopyWithImpl(this._self, this._then);
+
+  final _EmojiAdded _self;
+  final $Res Function(_EmojiAdded) _then;
+
+/// Create a copy of EmojiAdded
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? emoji = null,}) {
+  return _then(_EmojiAdded(
+emoji: null == emoji ? _self.emoji : emoji // ignore: cast_nullable_to_non_nullable
+as Emoji,
+  ));
+}
+
+/// Create a copy of EmojiAdded
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$EmojiCopyWith<$Res> get emoji {
+  
+  return $EmojiCopyWith<$Res>(_self.emoji, (value) {
+    return _then(_self.copyWith(emoji: value));
+  });
+}
+}
+
+
+/// @nodoc
+mixin _$EmojiUpdated {
+
+ List<Emoji> get emojis;
+/// Create a copy of EmojiUpdated
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EmojiUpdatedCopyWith<EmojiUpdated> get copyWith => _$EmojiUpdatedCopyWithImpl<EmojiUpdated>(this as EmojiUpdated, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmojiUpdated&&const DeepCollectionEquality().equals(other.emojis, emojis));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(emojis));
+
+@override
+String toString() {
+  return 'EmojiUpdated(emojis: $emojis)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $EmojiUpdatedCopyWith<$Res>  {
+  factory $EmojiUpdatedCopyWith(EmojiUpdated value, $Res Function(EmojiUpdated) _then) = _$EmojiUpdatedCopyWithImpl;
+@useResult
+$Res call({
+ List<Emoji> emojis
+});
+
+
+
+
+}
+/// @nodoc
+class _$EmojiUpdatedCopyWithImpl<$Res>
+    implements $EmojiUpdatedCopyWith<$Res> {
+  _$EmojiUpdatedCopyWithImpl(this._self, this._then);
+
+  final EmojiUpdated _self;
+  final $Res Function(EmojiUpdated) _then;
+
+/// Create a copy of EmojiUpdated
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? emojis = null,}) {
+  return _then(_self.copyWith(
+emojis: null == emojis ? _self.emojis : emojis // ignore: cast_nullable_to_non_nullable
+as List<Emoji>,
+  ));
+}
+
+}
+
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+
+class _EmojiUpdated implements EmojiUpdated {
+  const _EmojiUpdated({required final  List<Emoji> emojis}): _emojis = emojis;
+  factory _EmojiUpdated.fromJson(Map<String, dynamic> json) => _$EmojiUpdatedFromJson(json);
+
+ final  List<Emoji> _emojis;
+@override List<Emoji> get emojis {
+  if (_emojis is EqualUnmodifiableListView) return _emojis;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_emojis);
+}
+
+
+/// Create a copy of EmojiUpdated
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EmojiUpdatedCopyWith<_EmojiUpdated> get copyWith => __$EmojiUpdatedCopyWithImpl<_EmojiUpdated>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmojiUpdated&&const DeepCollectionEquality().equals(other._emojis, _emojis));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_emojis));
+
+@override
+String toString() {
+  return 'EmojiUpdated(emojis: $emojis)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EmojiUpdatedCopyWith<$Res> implements $EmojiUpdatedCopyWith<$Res> {
+  factory _$EmojiUpdatedCopyWith(_EmojiUpdated value, $Res Function(_EmojiUpdated) _then) = __$EmojiUpdatedCopyWithImpl;
+@override @useResult
+$Res call({
+ List<Emoji> emojis
+});
+
+
+
+
+}
+/// @nodoc
+class __$EmojiUpdatedCopyWithImpl<$Res>
+    implements _$EmojiUpdatedCopyWith<$Res> {
+  __$EmojiUpdatedCopyWithImpl(this._self, this._then);
+
+  final _EmojiUpdated _self;
+  final $Res Function(_EmojiUpdated) _then;
+
+/// Create a copy of EmojiUpdated
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? emojis = null,}) {
+  return _then(_EmojiUpdated(
+emojis: null == emojis ? _self._emojis : emojis // ignore: cast_nullable_to_non_nullable
+as List<Emoji>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$EmojiDeleted {
+
+ List<Emoji> get emojis;
+/// Create a copy of EmojiDeleted
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$EmojiDeletedCopyWith<EmojiDeleted> get copyWith => _$EmojiDeletedCopyWithImpl<EmojiDeleted>(this as EmojiDeleted, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is EmojiDeleted&&const DeepCollectionEquality().equals(other.emojis, emojis));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(emojis));
+
+@override
+String toString() {
+  return 'EmojiDeleted(emojis: $emojis)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $EmojiDeletedCopyWith<$Res>  {
+  factory $EmojiDeletedCopyWith(EmojiDeleted value, $Res Function(EmojiDeleted) _then) = _$EmojiDeletedCopyWithImpl;
+@useResult
+$Res call({
+ List<Emoji> emojis
+});
+
+
+
+
+}
+/// @nodoc
+class _$EmojiDeletedCopyWithImpl<$Res>
+    implements $EmojiDeletedCopyWith<$Res> {
+  _$EmojiDeletedCopyWithImpl(this._self, this._then);
+
+  final EmojiDeleted _self;
+  final $Res Function(EmojiDeleted) _then;
+
+/// Create a copy of EmojiDeleted
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? emojis = null,}) {
+  return _then(_self.copyWith(
+emojis: null == emojis ? _self.emojis : emojis // ignore: cast_nullable_to_non_nullable
+as List<Emoji>,
+  ));
+}
+
+}
+
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+
+class _EmojiDeleted implements EmojiDeleted {
+  const _EmojiDeleted({required final  List<Emoji> emojis}): _emojis = emojis;
+  factory _EmojiDeleted.fromJson(Map<String, dynamic> json) => _$EmojiDeletedFromJson(json);
+
+ final  List<Emoji> _emojis;
+@override List<Emoji> get emojis {
+  if (_emojis is EqualUnmodifiableListView) return _emojis;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_emojis);
+}
+
+
+/// Create a copy of EmojiDeleted
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$EmojiDeletedCopyWith<_EmojiDeleted> get copyWith => __$EmojiDeletedCopyWithImpl<_EmojiDeleted>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _EmojiDeleted&&const DeepCollectionEquality().equals(other._emojis, _emojis));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_emojis));
+
+@override
+String toString() {
+  return 'EmojiDeleted(emojis: $emojis)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$EmojiDeletedCopyWith<$Res> implements $EmojiDeletedCopyWith<$Res> {
+  factory _$EmojiDeletedCopyWith(_EmojiDeleted value, $Res Function(_EmojiDeleted) _then) = __$EmojiDeletedCopyWithImpl;
+@override @useResult
+$Res call({
+ List<Emoji> emojis
+});
+
+
+
+
+}
+/// @nodoc
+class __$EmojiDeletedCopyWithImpl<$Res>
+    implements _$EmojiDeletedCopyWith<$Res> {
+  __$EmojiDeletedCopyWithImpl(this._self, this._then);
+
+  final _EmojiDeleted _self;
+  final $Res Function(_EmojiDeleted) _then;
+
+/// Create a copy of EmojiDeleted
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? emojis = null,}) {
+  return _then(_EmojiDeleted(
+emojis: null == emojis ? _self._emojis : emojis // ignore: cast_nullable_to_non_nullable
+as List<Emoji>,
+  ));
+}
+
+
+}
+
+
+/// @nodoc
+mixin _$AnnouncementCreated {
+
+ AnnouncementsResponse get announcement;
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AnnouncementCreatedCopyWith<AnnouncementCreated> get copyWith => _$AnnouncementCreatedCopyWithImpl<AnnouncementCreated>(this as AnnouncementCreated, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AnnouncementCreated&&(identical(other.announcement, announcement) || other.announcement == announcement));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,announcement);
+
+@override
+String toString() {
+  return 'AnnouncementCreated(announcement: $announcement)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $AnnouncementCreatedCopyWith<$Res>  {
+  factory $AnnouncementCreatedCopyWith(AnnouncementCreated value, $Res Function(AnnouncementCreated) _then) = _$AnnouncementCreatedCopyWithImpl;
+@useResult
+$Res call({
+ AnnouncementsResponse announcement
+});
+
+
+$AnnouncementsResponseCopyWith<$Res> get announcement;
+
+}
+/// @nodoc
+class _$AnnouncementCreatedCopyWithImpl<$Res>
+    implements $AnnouncementCreatedCopyWith<$Res> {
+  _$AnnouncementCreatedCopyWithImpl(this._self, this._then);
+
+  final AnnouncementCreated _self;
+  final $Res Function(AnnouncementCreated) _then;
+
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? announcement = null,}) {
+  return _then(_self.copyWith(
+announcement: null == announcement ? _self.announcement : announcement // ignore: cast_nullable_to_non_nullable
+as AnnouncementsResponse,
+  ));
+}
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnnouncementsResponseCopyWith<$Res> get announcement {
+  
+  return $AnnouncementsResponseCopyWith<$Res>(_self.announcement, (value) {
+    return _then(_self.copyWith(announcement: value));
+  });
+}
+}
+
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+
+class _AnnouncementCreated implements AnnouncementCreated {
+  const _AnnouncementCreated({required this.announcement});
+  factory _AnnouncementCreated.fromJson(Map<String, dynamic> json) => _$AnnouncementCreatedFromJson(json);
+
+@override final  AnnouncementsResponse announcement;
+
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AnnouncementCreatedCopyWith<_AnnouncementCreated> get copyWith => __$AnnouncementCreatedCopyWithImpl<_AnnouncementCreated>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _AnnouncementCreated&&(identical(other.announcement, announcement) || other.announcement == announcement));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,announcement);
+
+@override
+String toString() {
+  return 'AnnouncementCreated(announcement: $announcement)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AnnouncementCreatedCopyWith<$Res> implements $AnnouncementCreatedCopyWith<$Res> {
+  factory _$AnnouncementCreatedCopyWith(_AnnouncementCreated value, $Res Function(_AnnouncementCreated) _then) = __$AnnouncementCreatedCopyWithImpl;
+@override @useResult
+$Res call({
+ AnnouncementsResponse announcement
+});
+
+
+@override $AnnouncementsResponseCopyWith<$Res> get announcement;
+
+}
+/// @nodoc
+class __$AnnouncementCreatedCopyWithImpl<$Res>
+    implements _$AnnouncementCreatedCopyWith<$Res> {
+  __$AnnouncementCreatedCopyWithImpl(this._self, this._then);
+
+  final _AnnouncementCreated _self;
+  final $Res Function(_AnnouncementCreated) _then;
+
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? announcement = null,}) {
+  return _then(_AnnouncementCreated(
+announcement: null == announcement ? _self.announcement : announcement // ignore: cast_nullable_to_non_nullable
+as AnnouncementsResponse,
+  ));
+}
+
+/// Create a copy of AnnouncementCreated
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$AnnouncementsResponseCopyWith<$Res> get announcement {
+  
+  return $AnnouncementsResponseCopyWith<$Res>(_self.announcement, (value) {
+    return _then(_self.copyWith(announcement: value));
+  });
+}
+}
+
+// dart format on

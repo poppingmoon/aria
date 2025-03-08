@@ -1590,6 +1590,8 @@ class TranslationsMisskeyEnUs {
 	String get federationDisabled => 'Federation is disabled on this server. You cannot interact with users on other servers.';
 	String get confirmOnReact => 'Confirm when reacting';
 	String reactAreYouSure({required Object emoji}) => 'Would you like to add a "${emoji}" reaction?';
+	String get markAsSensitiveConfirm => 'Do you want to set this media as sensitive?';
+	String get unmarkAsSensitiveConfirm => 'Do you want to remove the sensitive designation for this media?';
 	late final TranslationsMisskeyAccountSettingsEnUs accountSettings_ = TranslationsMisskeyAccountSettingsEnUs.internal(_root);
 	late final TranslationsMisskeyAbuseUserReportEnUs abuseUserReport_ = TranslationsMisskeyAbuseUserReportEnUs.internal(_root);
 	late final TranslationsMisskeyDeliveryEnUs delivery_ = TranslationsMisskeyDeliveryEnUs.internal(_root);
@@ -3005,6 +3007,7 @@ class TranslationsMisskeyModerationLogTypesEnUs {
 	String get deletePage => 'Page deleted';
 	String get deleteFlash => 'Play deleted';
 	String get deleteGalleryPost => 'Gallery post deleted';
+	String get updateProxyAccountDescription => 'Update the description of the proxy account';
 }
 
 // Path: misskey.fileViewer_
@@ -3309,7 +3312,11 @@ class TranslationsMisskeySearchEnUs {
 	// Translations
 	String get searchScopeAll => 'All';
 	String get searchScopeLocal => 'Local';
+	String get searchScopeServer => 'Specific server';
 	String get searchScopeUser => 'Specific user';
+	String get pleaseEnterServerHost => 'Enter the server host';
+	String get pleaseSelectUser => 'Select user';
+	String get serverHostPlaceholder => 'Example: misskey.example.com';
 }
 
 // Path: misskeyIO.skebStatus_
@@ -3930,7 +3937,7 @@ class TranslationsMisskeyDataSaverAvatarEnUs {
 
 	// Translations
 	String get title => 'Avatar image';
-	String get description => 'Stop avatar image animation. Animated images can be larger in file size than normal  images, potentially leading to further reductions in data traffic.';
+	String get description => 'Stop avatar image animation. Animated images can be larger in file size than normal images, potentially leading to further reductions in data traffic.';
 }
 
 // Path: misskey.dataSaver_.urlPreview_

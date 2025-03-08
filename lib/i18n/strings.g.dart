@@ -4,7 +4,7 @@
 /// To regenerate, run: `dart run slang`
 ///
 /// Locales: 31
-/// Strings: 57286 (1847 per locale)
+/// Strings: 57341 (1849 per locale)
 
 // coverage:ignore-file
 // ignore_for_file: type=lint, unused_import
@@ -88,8 +88,8 @@ enum AppLocale with BaseAppLocale<AppLocale, Translations> {
 
 	const AppLocale({
 		required this.languageCode,
-		this.scriptCode, // ignore: unused_element
-		this.countryCode, // ignore: unused_element
+		this.scriptCode, // ignore: unused_element, unused_element_parameter
+		this.countryCode, // ignore: unused_element, unused_element_parameter
 	});
 
 	@override final String languageCode;

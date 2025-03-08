@@ -8,6 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
+  contents: read
   pull-requests: write
 
 jobs:
@@ -109,7 +110,7 @@ jobs:
         run: flutter test
 
   integration-test-ios:
-    runs-on: macos-14
+    runs-on: macos-latest
 
     needs: get-flutter-version
 
@@ -125,6 +126,9 @@ jobs:
 
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Update Rust
+        run: rustup update
 
       - name: Start simulator
         uses: futureware-tech/simulator-action@v3
@@ -157,7 +161,7 @@ jobs:
 
       - name: Get changed i18n files
         id: changed-i18n-files
-        uses: tj-actions/changed-files@v44
+        uses: tj-actions/changed-files@v45
         with:
           files: lib/i18n/aria/*.i18n.yaml
 

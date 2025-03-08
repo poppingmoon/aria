@@ -1393,6 +1393,8 @@ class _TranslationsMisskeyZhTw extends TranslationsMisskeyEnUs {
 	@override String get federationDisabled => '此伺服器未開啟站台聯邦。無法與其他伺服器上的使用者互動。';
 	@override String get confirmOnReact => '反應時確認';
 	@override String reactAreYouSure({required Object emoji}) => '用「 ${emoji} 」反應嗎？';
+	@override String get markAsSensitiveConfirm => '要將這個媒體設定為敏感嗎？';
+	@override String get unmarkAsSensitiveConfirm => '要解除這個媒體的敏感設定嗎？';
 	@override late final _TranslationsMisskeyAccountSettingsZhTw accountSettings_ = _TranslationsMisskeyAccountSettingsZhTw._(_root);
 	@override late final _TranslationsMisskeyAbuseUserReportZhTw abuseUserReport_ = _TranslationsMisskeyAbuseUserReportZhTw._(_root);
 	@override late final _TranslationsMisskeyDeliveryZhTw delivery_ = _TranslationsMisskeyDeliveryZhTw._(_root);
@@ -2798,6 +2800,7 @@ class _TranslationsMisskeyModerationLogTypesZhTw extends TranslationsMisskeyMode
 	@override String get deletePage => '刪除頁面';
 	@override String get deleteFlash => '刪除 Play';
 	@override String get deleteGalleryPost => '刪除相簿的貼文';
+	@override String get updateProxyAccountDescription => '更新代理帳戶的說明';
 }
 
 // Path: misskey.fileViewer_
@@ -3102,7 +3105,11 @@ class _TranslationsMisskeySearchZhTw extends TranslationsMisskeySearchEnUs {
 	// Translations
 	@override String get searchScopeAll => '全部';
 	@override String get searchScopeLocal => '本地';
+	@override String get searchScopeServer => '指定伺服器';
 	@override String get searchScopeUser => '指定使用者';
+	@override String get pleaseEnterServerHost => '請輸入伺服器的主機名稱';
+	@override String get pleaseSelectUser => '請選擇使用者';
+	@override String get serverHostPlaceholder => '例：misskey.example.com';
 }
 
 // Path: misskey.delivery_.type_

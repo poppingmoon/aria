@@ -2,10 +2,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 part 'antenna_settings.freezed.dart';
-part 'antenna_settings.g.dart';
 
 @freezed
-class AntennaSettings with _$AntennaSettings {
+abstract class AntennaSettings with _$AntennaSettings {
   const factory AntennaSettings({
     String? name,
     AntennaSource? src,
@@ -19,9 +18,6 @@ class AntennaSettings with _$AntennaSettings {
     bool? withFile,
     bool? excludeBots,
   }) = _AntennaSettings;
-
-  factory AntennaSettings.fromJson(Map<String, dynamic> json) =>
-      _$AntennaSettingsFromJson(json);
 
   factory AntennaSettings.fromAntenna(Antenna antenna) {
     return AntennaSettings(

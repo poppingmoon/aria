@@ -6,9 +6,9 @@ part of 'general_settings.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
+_GeneralSettings _$GeneralSettingsFromJson(
   Map<String, dynamic> json,
-) => _$GeneralSettingsImpl(
+) => _GeneralSettings(
   locale: $enumDecodeNullable(
     _$AppLocaleEnumMap,
     json['locale'],
@@ -169,8 +169,8 @@ _$GeneralSettingsImpl _$$GeneralSettingsImplFromJson(
       json['darkThemeId'] as String? ?? '66e7e5a9-cd43-42cd-837d-12f47841fa34',
 );
 
-Map<String, dynamic> _$$GeneralSettingsImplToJson(
-  _$GeneralSettingsImpl instance,
+Map<String, dynamic> _$GeneralSettingsToJson(
+  _GeneralSettings instance,
 ) => <String, dynamic>{
   if (_$AppLocaleEnumMap[instance.locale] case final value?) 'locale': value,
   'collapseRenotes': instance.collapseRenotes,

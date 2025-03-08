@@ -13,7 +13,7 @@ sealed class PostFile {
 }
 
 @freezed
-class LocalPostFile with _$LocalPostFile implements PostFile {
+abstract class LocalPostFile with _$LocalPostFile implements PostFile {
   const factory LocalPostFile({
     required File file,
     required String name,
@@ -41,7 +41,7 @@ class LocalPostFile with _$LocalPostFile implements PostFile {
 }
 
 @freezed
-class DrivePostFile with _$DrivePostFile implements PostFile {
+abstract class DrivePostFile with _$DrivePostFile implements PostFile {
   const factory DrivePostFile({
     required DriveFile file,
     required String name,

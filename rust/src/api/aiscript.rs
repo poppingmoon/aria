@@ -1,8 +1,8 @@
 use std::{collections::HashMap, sync::Arc};
 
 use aiscript::v0::{
-    values::{Value, V},
     Interpreter, Parser,
+    values::{V, Value},
 };
 use flutter_rust_bridge::DartFnFuture;
 use futures::FutureExt;

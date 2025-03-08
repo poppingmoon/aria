@@ -1315,6 +1315,8 @@ federationSpecified: "このサーバーはホワイトリスト連合で運用�
 federationDisabled: "このサーバーは連合が無効化されてるで。他のサーバーのユーザーとやり取りすることはできひんで。"
 confirmOnReact: "ツッコむときに確認とる"
 reactAreYouSure: "\" {emoji} \" でツッコむ？"
+markAsSensitiveConfirm: "このメディアをセンシティブとして設定しますか？"
+unmarkAsSensitiveConfirm: "このメディアのセンシティブ指定を解除しますか？"
 accountSettings_:
   requireSigninToViewContents: "ログインしてもらってからコンテンツ見てもらう"
   requireSigninToViewContentsDescription1: "あなたが作成した全部のノートとかのコンテンツを見れるようにするのにログインがいるようにするで。クローラーにいろいろ収集されるんを防げるかもしれん。"
@@ -2598,6 +2600,7 @@ moderationLogTypes_:
   deletePage: "ページ消す"
   deleteFlash: "Playをほかす"
   deleteGalleryPost: "ギャラリーの投稿をほかす"
+  updateProxyAccountDescription: "プロキシアカウントの説明を更新"
 fileViewer_:
   title: "ファイルの詳しい情報"
   type: "ファイルの種類"
@@ -2861,4 +2864,8 @@ bootErrors_:
 search_:
   searchScopeAll: "みんな"
   searchScopeLocal: "ローカル"
+  searchScopeServer: "サーバー指定"
   searchScopeUser: "ユーザー指定"
+  pleaseEnterServerHost: "サーバーのホストを入力してください"
+  pleaseSelectUser: "ユーザーを選択してください"
+  serverHostPlaceholder: "例: misskey.example.com"

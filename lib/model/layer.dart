@@ -14,7 +14,7 @@ sealed class Layer {
 }
 
 @freezed
-class ImageLayer with _$ImageLayer implements Layer {
+abstract class ImageLayer with _$ImageLayer implements Layer {
   const factory ImageLayer({
     required Uint8List data,
     required Size size,
@@ -46,7 +46,7 @@ class ImageLayer with _$ImageLayer implements Layer {
 }
 
 @freezed
-class TextLayer with _$TextLayer implements Layer {
+abstract class TextLayer with _$TextLayer implements Layer {
   const factory TextLayer({
     required String text,
     Color? color,
@@ -59,7 +59,7 @@ class TextLayer with _$TextLayer implements Layer {
 }
 
 @freezed
-class DrawLayer with _$DrawLayer implements Layer {
+abstract class DrawLayer with _$DrawLayer implements Layer {
   const factory DrawLayer({
     @Default([]) List<Offset?> offsets,
     Color? color,

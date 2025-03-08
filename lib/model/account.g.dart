@@ -6,14 +6,12 @@ part of 'account.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AccountImpl _$$AccountImplFromJson(Map<String, dynamic> json) =>
-    _$AccountImpl(
-      host: json['host'] as String,
-      username: json['username'] as String?,
-    );
+_Account _$AccountFromJson(Map<String, dynamic> json) => _Account(
+  host: json['host'] as String,
+  username: json['username'] as String?,
+);
 
-Map<String, dynamic> _$$AccountImplToJson(_$AccountImpl instance) =>
-    <String, dynamic>{
-      'host': instance.host,
-      if (instance.username case final value?) 'username': value,
-    };
+Map<String, dynamic> _$AccountToJson(_Account instance) => <String, dynamic>{
+  'host': instance.host,
+  if (instance.username case final value?) 'username': value,
+};

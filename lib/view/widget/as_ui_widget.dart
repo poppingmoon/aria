@@ -31,82 +31,75 @@ class AsUiWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final component = components[componentId];
-
-    if (component == null) {
-      return const SizedBox.shrink();
-    }
-    return component.when(
-      root:
-          (component) => Theme(
-            data: Theme.of(context).copyWith(
-              inputDecorationTheme: InputDecorationTheme(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.outlineVariant,
-                  ),
-                  borderRadius: BorderRadius.circular(6.0),
+    switch (components[componentId]) {
+      case AsUiComponent_Root(field0: AsUiRoot(:final children)):
+        return Theme(
+          data: Theme.of(context).copyWith(
+            inputDecorationTheme: InputDecorationTheme(
+              enabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.outlineVariant,
                 ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6.0),
-                ),
-                filled: true,
-                fillColor: Theme.of(context).colorScheme.surface,
-                helperStyle: TextStyle(
-                  color: Theme.of(
-                    context,
-                  ).colorScheme.onSurface.withValues(alpha: 0.75),
-                ),
-                helperMaxLines: 100,
-                isDense: true,
+                borderRadius: BorderRadius.circular(6.0),
               ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ...component.children
-                    .where((id) {
-                      final child = components[id];
-                      final hidden =
-                          child?.whenOrNull(
-                            container: (container) => container.hidden,
-                          ) ??
-                          false;
-                      return !hidden;
-                    })
-                    .mapIndexed(
-                      (index, id) => [
-                        if (index > 0) const SizedBox(height: 12.0),
-                        AsUiWidget(
-                          account: account,
-                          host: host,
-                          componentId: id,
-                          components: components,
-                        ),
-                      ],
-                    )
-                    .flattenedToList,
-              ],
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(6.0),
+              ),
+              filled: true,
+              fillColor: Theme.of(context).colorScheme.surface,
+              helperStyle: TextStyle(
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.75),
+              ),
+              helperMaxLines: 100,
+              isDense: true,
             ),
           ),
-      container: (component) {
-        final AsUiContainer(
-          :children,
-          :align,
-          :bgColor,
-          :fgColor,
-          :font,
-          :borderWidth,
-          :borderColor,
-          :padding,
-          :rounded,
-        ) = component;
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ...children
+                  .where(
+                    (id) => switch (components[id]) {
+                      AsUiContainer(hidden: true) => false,
+                      _ => true,
+                    },
+                  )
+                  .mapIndexed(
+                    (index, id) => [
+                      if (index > 0) const SizedBox(height: 12.0),
+                      AsUiWidget(
+                        account: account,
+                        host: host,
+                        componentId: id,
+                        components: components,
+                      ),
+                    ],
+                  )
+                  .flattenedToList,
+            ],
+          ),
+        );
+      case AsUiComponent_Container(
+        field0: AsUiContainer(
+          :final children,
+          :final align,
+          :final bgColor,
+          :final fgColor,
+          :final font,
+          :final borderWidth,
+          :final borderColor,
+          :final padding,
+          :final rounded,
+        ),
+      ):
         return DefaultTextStyle.merge(
           style: TextStyle(color: safeParseColor(fgColor), fontFamily: font),
           textAlign: switch (align) {
@@ -140,15 +133,12 @@ class AsUiWidget extends HookConsumerWidget {
               },
               children: [
                 ...?children
-                    ?.where((id) {
-                      final child = components[id];
-                      final hidden =
-                          child?.whenOrNull(
-                            container: (container) => container.hidden,
-                          ) ??
-                          false;
-                      return !hidden;
-                    })
+                    ?.where(
+                      (id) => switch (components[id]) {
+                        AsUiContainer(hidden: true) => false,
+                        _ => true,
+                      },
+                    )
                     .mapIndexed(
                       (index, id) => [
                         if (index > 0) const SizedBox(height: 12.0),
@@ -165,9 +155,15 @@ class AsUiWidget extends HookConsumerWidget {
             ),
           ),
         );
-      },
-      text: (component) {
-        final AsUiText(:text, :size, :bold, :color, :font) = component;
+      case AsUiComponent_Text(
+        field0: AsUiText(
+          :final text,
+          :final size,
+          :final bold,
+          :final color,
+          :final font,
+        ),
+      ):
         return Text(
           text ?? '',
           style: DefaultTextStyle.of(context).style
@@ -180,10 +176,16 @@ class AsUiWidget extends HookConsumerWidget {
                 ),
               ),
         );
-      },
-      mfm: (component) {
-        final AsUiMfm(:text, :size, :bold, :color, :font, :onClickEv) =
-            component;
+      case AsUiComponent_Mfm(
+        field0: AsUiMfm(
+          :final text,
+          :final size,
+          :final bold,
+          :final color,
+          :final font,
+          :final onClickEv,
+        ),
+      ):
         return Mfm(
           account: account.host == host ? account : Account(host: host),
           text: text,
@@ -202,10 +204,15 @@ class AsUiWidget extends HookConsumerWidget {
                   : null,
           enableEmojiFadeIn: false,
         );
-      },
-      button: (component) {
-        final AsUiButton(:text, :onClick, :primary, :rounded, :disabled) =
-            component;
+      case AsUiComponent_Button(
+        field0: AsUiButton(
+          :final text,
+          :final onClick,
+          :final primary,
+          :final rounded,
+          :final disabled,
+        ),
+      ):
         return Align(
           alignment: switch (DefaultTextStyle.of(context).textAlign) {
             TextAlign.left => Alignment.centerLeft,
@@ -221,26 +228,30 @@ class AsUiWidget extends HookConsumerWidget {
             disabled: disabled,
           ),
         );
-      },
-      buttons:
-          (component) => Wrap(
-            spacing: 8.0,
-            runSpacing: 8.0,
-            children: [
-              ...?component.buttons?.map(
-                (button) => _Button(
-                  text: button.text,
-                  onTap: button.onClick?.call,
-                  primary: button.primary,
-                  rounded: button.rounded,
-                  disabled: button.disabled,
-                ),
+      case AsUiComponent_Buttons(field0: AsUiButtons(:final buttons)):
+        return Wrap(
+          spacing: 8.0,
+          runSpacing: 8.0,
+          children: [
+            ...?buttons?.map(
+              (button) => _Button(
+                text: button.text,
+                onTap: button.onClick?.call,
+                primary: button.primary,
+                rounded: button.rounded,
+                disabled: button.disabled,
               ),
-            ],
-          ),
-      toggleSwitch: (component) {
-        final AsUiSwitch(:onChange, :defaultValue, :label, :caption) =
-            component;
+            ),
+          ],
+        );
+      case AsUiComponent_ToggleSwitch(
+        field0: AsUiSwitch(
+          :final onChange,
+          :final defaultValue,
+          :final label,
+          :final caption,
+        ),
+      ):
         final value = useState(defaultValue);
         return SwitchListTile(
           value: value.value ?? false,
@@ -266,10 +277,14 @@ class AsUiWidget extends HookConsumerWidget {
           controlAffinity: ListTileControlAffinity.leading,
           dense: true,
         );
-      },
-      textarea: (component) {
-        final AsUiTextarea(:onInput, :defaultValue, :label, :caption) =
-            component;
+      case AsUiComponent_Textarea(
+        field0: AsUiTextarea(
+          :final onInput,
+          :final defaultValue,
+          :final label,
+          :final caption,
+        ),
+      ):
         final controller = useTextEditingController(text: defaultValue);
         return Shortcuts(
           shortcuts: disablingTextShortcuts,
@@ -283,10 +298,14 @@ class AsUiWidget extends HookConsumerWidget {
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
-      },
-      textInput: (component) {
-        final AsUiTextInput(:onInput, :defaultValue, :label, :caption) =
-            component;
+      case AsUiComponent_TextInput(
+        field0: AsUiTextInput(
+          :final onInput,
+          :final defaultValue,
+          :final label,
+          :final caption,
+        ),
+      ):
         final controller = useTextEditingController(text: defaultValue);
         return Shortcuts(
           shortcuts: disablingTextShortcuts,
@@ -298,10 +317,14 @@ class AsUiWidget extends HookConsumerWidget {
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
-      },
-      numberInput: (component) {
-        final AsUiNumberInput(:onInput, :defaultValue, :label, :caption) =
-            component;
+      case AsUiComponent_NumberInput(
+        field0: AsUiNumberInput(
+          :final onInput,
+          :final defaultValue,
+          :final label,
+          :final caption,
+        ),
+      ):
         final controller = useTextEditingController(
           text:
               defaultValue != null
@@ -398,10 +421,15 @@ class AsUiWidget extends HookConsumerWidget {
             onTapOutside: (_) => primaryFocus?.unfocus(),
           ),
         );
-      },
-      select: (component) {
-        final AsUiSelect(:items, :onChange, :defaultValue, :label, :caption) =
-            component;
+      case AsUiComponent_Select(
+        field0: AsUiSelect(
+          :final items,
+          :final onChange,
+          :final defaultValue,
+          :final label,
+          :final caption,
+        ),
+      ):
         final value = useState(
           defaultValue != null &&
                   (items?.map((item) => item.$2).contains(defaultValue) ??
@@ -427,23 +455,20 @@ class AsUiWidget extends HookConsumerWidget {
           },
           isExpanded: true,
         );
-      },
-      folder: (component) {
-        final AsUiFolder(:children, :title, :opened) = component;
+      case AsUiComponent_Folder(
+        field0: AsUiFolder(:final children, :final title, :final opened),
+      ):
         return _Folder(
           title: title,
           opened: opened,
           children:
               children
-                  ?.where((id) {
-                    final child = components[id];
-                    final hidden =
-                        child?.whenOrNull(
-                          container: (container) => container.hidden,
-                        ) ??
-                        false;
-                    return !hidden;
-                  })
+                  ?.where(
+                    (id) => switch (components[id]) {
+                      AsUiContainer(hidden: true) => false,
+                      _ => true,
+                    },
+                  )
                   .map(
                     (id) => AsUiWidget(
                       account: account,
@@ -454,9 +479,14 @@ class AsUiWidget extends HookConsumerWidget {
                   )
                   .toList(),
         );
-      },
-      postFormButton: (component) {
-        final AsUiPostFormButton(:text, :primary, :rounded, :form) = component;
+      case AsUiComponent_PostFormButton(
+        field0: AsUiPostFormButton(
+          :final text,
+          :final primary,
+          :final rounded,
+          :final form,
+        ),
+      ):
         return Align(
           alignment: switch (DefaultTextStyle.of(context).textAlign) {
             TextAlign.left => Alignment.centerLeft,
@@ -509,9 +539,7 @@ class AsUiWidget extends HookConsumerWidget {
                     : null,
           ),
         );
-      },
-      postForm: (component) {
-        final AsUiPostForm(:form) = component;
+      case AsUiComponent_PostForm(field0: AsUiPostForm(:final form)):
         useEffect(() {
           Future(() {
             if (form?.text case final text?) {
@@ -560,8 +588,9 @@ class AsUiWidget extends HookConsumerWidget {
             maxLines: 6,
           ),
         );
-      },
-    );
+      case null:
+        return const SizedBox.shrink();
+    }
   }
 }
 

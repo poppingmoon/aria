@@ -5,7 +5,7 @@ part 'list_settings.freezed.dart';
 part 'list_settings.g.dart';
 
 @freezed
-class ListSettings with _$ListSettings {
+abstract class ListSettings with _$ListSettings {
   const factory ListSettings({String? name, bool? isPublic}) = _ListSettings;
 
   factory ListSettings.fromJson(Map<String, dynamic> json) =>

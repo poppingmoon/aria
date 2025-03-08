@@ -4,8 +4,8 @@ part 'summaly_result.freezed.dart';
 part 'summaly_result.g.dart';
 
 // https://github.com/misskey-dev/summaly
-@freezed
-class SummalyResult with _$SummalyResult {
+@Freezed(toJson: false)
+abstract class SummalyResult with _$SummalyResult {
   const factory SummalyResult({
     String? title,
     String? icon,
@@ -21,8 +21,8 @@ class SummalyResult with _$SummalyResult {
       _$SummalyResultFromJson(json);
 }
 
-@freezed
-class Player with _$Player {
+@Freezed(toJson: false)
+abstract class Player with _$Player {
   const factory Player({
     String? url,
     double? width,
