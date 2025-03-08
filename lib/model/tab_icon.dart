@@ -21,7 +21,7 @@ sealed class TabIcon {
 }
 
 @freezed
-class MaterialIcon with _$MaterialIcon implements TabIcon {
+abstract class MaterialIcon with _$MaterialIcon implements TabIcon {
   const factory MaterialIcon({required int codePoint}) = _MaterialIcon;
 
   factory MaterialIcon.fromJson(Map<String, Object?> json) =>
@@ -29,7 +29,7 @@ class MaterialIcon with _$MaterialIcon implements TabIcon {
 }
 
 @freezed
-class ImageIcon with _$ImageIcon implements TabIcon {
+abstract class ImageIcon with _$ImageIcon implements TabIcon {
   const factory ImageIcon({required String url}) = _ImageIcon;
 
   factory ImageIcon.fromJson(Map<String, Object?> json) =>
@@ -37,7 +37,7 @@ class ImageIcon with _$ImageIcon implements TabIcon {
 }
 
 @freezed
-class EmojiIcon with _$EmojiIcon implements TabIcon {
+abstract class EmojiIcon with _$EmojiIcon implements TabIcon {
   const factory EmojiIcon({required String emoji}) = _EmojiIcon;
 
   factory EmojiIcon.fromJson(Map<String, Object?> json) =>

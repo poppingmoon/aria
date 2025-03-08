@@ -1,13 +1,16 @@
 [package]
 name = "rust_lib_aria"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]
 
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(frb_expand)'] }
+
 [dependencies]
-aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "6e8ce4330eb2b4a2878cf799ca702ce9f76b0875" }
+aiscript = { git = "https://github.com/poppingmoon/aiscript-rs", rev = "94bb11ec22e4b0988e2f698458df242e237c63f2" }
 flutter_rust_bridge = "=2.8.0"
 futures = "0.3"
 indexmap = "2.3"

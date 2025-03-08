@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,213 +10,147 @@ part of 'incoming_message.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
-IncomingMessage _$IncomingMessageFromJson(Map<String, dynamic> json) {
-  return _IncomingMessage.fromJson(json);
-}
 
 /// @nodoc
 mixin _$IncomingMessage {
-  // https://github.com/rrousselGit/freezed/issues/488
-  // ignore: invalid_annotation_target
-  @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  IncomingMessageType? get type => throw _privateConstructorUsedError;
-  Map<String, dynamic> get body => throw _privateConstructorUsedError;
 
-  /// Serializes this IncomingMessage to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+// https://github.com/rrousselGit/freezed/issues/488
+// ignore: invalid_annotation_target
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) IncomingMessageType? get type; Map<String, dynamic> get body;
+/// Create a copy of IncomingMessage
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$IncomingMessageCopyWith<IncomingMessage> get copyWith => _$IncomingMessageCopyWithImpl<IncomingMessage>(this as IncomingMessage, _$identity);
 
-  /// Create a copy of IncomingMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $IncomingMessageCopyWith<IncomingMessage> get copyWith =>
-      throw _privateConstructorUsedError;
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is IncomingMessage&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other.body, body));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(body));
+
+@override
+String toString() {
+  return 'IncomingMessage(type: $type, body: $body)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $IncomingMessageCopyWith<$Res> {
-  factory $IncomingMessageCopyWith(
-    IncomingMessage value,
-    $Res Function(IncomingMessage) then,
-  ) = _$IncomingMessageCopyWithImpl<$Res, IncomingMessage>;
-  @useResult
-  $Res call({
-    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-    IncomingMessageType? type,
-    Map<String, dynamic> body,
-  });
-}
+abstract mixin class $IncomingMessageCopyWith<$Res>  {
+  factory $IncomingMessageCopyWith(IncomingMessage value, $Res Function(IncomingMessage) _then) = _$IncomingMessageCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) IncomingMessageType? type, Map<String, dynamic> body
+});
 
+
+
+
+}
 /// @nodoc
-class _$IncomingMessageCopyWithImpl<$Res, $Val extends IncomingMessage>
+class _$IncomingMessageCopyWithImpl<$Res>
     implements $IncomingMessageCopyWith<$Res> {
-  _$IncomingMessageCopyWithImpl(this._value, this._then);
+  _$IncomingMessageCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final IncomingMessage _self;
+  final $Res Function(IncomingMessage) _then;
 
-  /// Create a copy of IncomingMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? type = freezed, Object? body = null}) {
-    return _then(
-      _value.copyWith(
-            type:
-                freezed == type
-                    ? _value.type
-                    : type // ignore: cast_nullable_to_non_nullable
-                        as IncomingMessageType?,
-            body:
-                null == body
-                    ? _value.body
-                    : body // ignore: cast_nullable_to_non_nullable
-                        as Map<String, dynamic>,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of IncomingMessage
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? type = freezed,Object? body = null,}) {
+  return _then(_self.copyWith(
+type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as IncomingMessageType?,body: null == body ? _self.body : body // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,
+  ));
+}
+
+}
+
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+
+class _IncomingMessage implements IncomingMessage {
+  const _IncomingMessage({@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type, required final  Map<String, dynamic> body}): _body = body;
+  factory _IncomingMessage.fromJson(Map<String, dynamic> json) => _$IncomingMessageFromJson(json);
+
+// https://github.com/rrousselGit/freezed/issues/488
+// ignore: invalid_annotation_target
+@override@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) final  IncomingMessageType? type;
+ final  Map<String, dynamic> _body;
+@override Map<String, dynamic> get body {
+  if (_body is EqualUnmodifiableMapView) return _body;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_body);
+}
+
+
+/// Create a copy of IncomingMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$IncomingMessageCopyWith<_IncomingMessage> get copyWith => __$IncomingMessageCopyWithImpl<_IncomingMessage>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _IncomingMessage&&(identical(other.type, type) || other.type == type)&&const DeepCollectionEquality().equals(other._body, _body));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,type,const DeepCollectionEquality().hash(_body));
+
+@override
+String toString() {
+  return 'IncomingMessage(type: $type, body: $body)';
+}
+
+
 }
 
 /// @nodoc
-abstract class _$$IncomingMessageImplCopyWith<$Res>
-    implements $IncomingMessageCopyWith<$Res> {
-  factory _$$IncomingMessageImplCopyWith(
-    _$IncomingMessageImpl value,
-    $Res Function(_$IncomingMessageImpl) then,
-  ) = __$$IncomingMessageImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({
-    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-    IncomingMessageType? type,
-    Map<String, dynamic> body,
-  });
-}
+abstract mixin class _$IncomingMessageCopyWith<$Res> implements $IncomingMessageCopyWith<$Res> {
+  factory _$IncomingMessageCopyWith(_IncomingMessage value, $Res Function(_IncomingMessage) _then) = __$IncomingMessageCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) IncomingMessageType? type, Map<String, dynamic> body
+});
 
+
+
+
+}
 /// @nodoc
-class __$$IncomingMessageImplCopyWithImpl<$Res>
-    extends _$IncomingMessageCopyWithImpl<$Res, _$IncomingMessageImpl>
-    implements _$$IncomingMessageImplCopyWith<$Res> {
-  __$$IncomingMessageImplCopyWithImpl(
-    _$IncomingMessageImpl _value,
-    $Res Function(_$IncomingMessageImpl) _then,
-  ) : super(_value, _then);
+class __$IncomingMessageCopyWithImpl<$Res>
+    implements _$IncomingMessageCopyWith<$Res> {
+  __$IncomingMessageCopyWithImpl(this._self, this._then);
 
-  /// Create a copy of IncomingMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({Object? type = freezed, Object? body = null}) {
-    return _then(
-      _$IncomingMessageImpl(
-        type:
-            freezed == type
-                ? _value.type
-                : type // ignore: cast_nullable_to_non_nullable
-                    as IncomingMessageType?,
-        body:
-            null == body
-                ? _value._body
-                : body // ignore: cast_nullable_to_non_nullable
-                    as Map<String, dynamic>,
-      ),
-    );
-  }
+  final _IncomingMessage _self;
+  final $Res Function(_IncomingMessage) _then;
+
+/// Create a copy of IncomingMessage
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? type = freezed,Object? body = null,}) {
+  return _then(_IncomingMessage(
+type: freezed == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as IncomingMessageType?,body: null == body ? _self._body : body // ignore: cast_nullable_to_non_nullable
+as Map<String, dynamic>,
+  ));
 }
 
-/// @nodoc
-@JsonSerializable()
-class _$IncomingMessageImpl implements _IncomingMessage {
-  const _$IncomingMessageImpl({
-    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue) this.type,
-    required final Map<String, dynamic> body,
-  }) : _body = body;
 
-  factory _$IncomingMessageImpl.fromJson(Map<String, dynamic> json) =>
-      _$$IncomingMessageImplFromJson(json);
-
-  // https://github.com/rrousselGit/freezed/issues/488
-  // ignore: invalid_annotation_target
-  @override
-  @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  final IncomingMessageType? type;
-  final Map<String, dynamic> _body;
-  @override
-  Map<String, dynamic> get body {
-    if (_body is EqualUnmodifiableMapView) return _body;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_body);
-  }
-
-  @override
-  String toString() {
-    return 'IncomingMessage(type: $type, body: $body)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$IncomingMessageImpl &&
-            (identical(other.type, type) || other.type == type) &&
-            const DeepCollectionEquality().equals(other._body, _body));
-  }
-
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  int get hashCode => Object.hash(
-    runtimeType,
-    type,
-    const DeepCollectionEquality().hash(_body),
-  );
-
-  /// Create a copy of IncomingMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$IncomingMessageImplCopyWith<_$IncomingMessageImpl> get copyWith =>
-      __$$IncomingMessageImplCopyWithImpl<_$IncomingMessageImpl>(
-        this,
-        _$identity,
-      );
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$IncomingMessageImplToJson(this);
-  }
 }
 
-abstract class _IncomingMessage implements IncomingMessage {
-  const factory _IncomingMessage({
-    @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-    final IncomingMessageType? type,
-    required final Map<String, dynamic> body,
-  }) = _$IncomingMessageImpl;
-
-  factory _IncomingMessage.fromJson(Map<String, dynamic> json) =
-      _$IncomingMessageImpl.fromJson;
-
-  // https://github.com/rrousselGit/freezed/issues/488
-  // ignore: invalid_annotation_target
-  @override
-  @JsonKey(unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  IncomingMessageType? get type;
-  @override
-  Map<String, dynamic> get body;
-
-  /// Create a copy of IncomingMessage
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$IncomingMessageImplCopyWith<_$IncomingMessageImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+// dart format on

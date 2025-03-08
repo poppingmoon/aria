@@ -6,9 +6,7 @@ part of 'aria_backup.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$AriaBackupImpl _$$AriaBackupImplFromJson(
-  Map<String, dynamic> json,
-) => _$AriaBackupImpl(
+_AriaBackup _$AriaBackupFromJson(Map<String, dynamic> json) => _AriaBackup(
   metadata: json['metadata'] as Map<String, dynamic>?,
   timelineTabs:
       (json['timelineTabs'] as List<dynamic>?)
@@ -29,8 +27,8 @@ _$AriaBackupImpl _$$AriaBackupImplFromJson(
   ),
 );
 
-Map<String, dynamic> _$$AriaBackupImplToJson(
-  _$AriaBackupImpl instance,
+Map<String, dynamic> _$AriaBackupToJson(
+  _AriaBackup instance,
 ) => <String, dynamic>{
   if (instance.metadata case final value?) 'metadata': value,
   if (instance.timelineTabs?.map((e) => e.toJson()).toList() case final value?)

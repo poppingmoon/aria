@@ -1,13 +1,13 @@
 use std::{collections::HashMap, ops::Deref, sync::Arc};
 
 use aiscript::v0::{
-    errors::AiScriptError,
-    values::{VArr, VFn, VObj, Value, V},
     Interpreter,
+    errors::AiScriptError,
+    values::{V, VArr, VFn, VObj, Value},
 };
-use flutter_rust_bridge::{frb, DartFnFuture};
+use flutter_rust_bridge::{DartFnFuture, frb};
 pub use futures::future::BoxFuture;
-use futures::{lock::Mutex, FutureExt};
+use futures::{FutureExt, lock::Mutex};
 use indexmap::IndexMap;
 use uuid::Uuid;
 
@@ -1345,10 +1345,10 @@ impl AsUiLib {
         def: Value,
         id: Option<Value>,
         get_options: impl Fn(Value) -> Result<AsUiComponent, AiScriptError>
-            + Sync
-            + Send
-            + Clone
-            + 'static,
+        + Sync
+        + Send
+        + Clone
+        + 'static,
     ) -> Result<Value, AiScriptError> {
         let id = id
             .map(String::try_from)

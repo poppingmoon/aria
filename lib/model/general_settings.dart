@@ -36,7 +36,7 @@ const defaultTimelinesPageButtonTypes = [
 ];
 
 @freezed
-class GeneralSettings with _$GeneralSettings {
+abstract class GeneralSettings with _$GeneralSettings {
   const factory GeneralSettings({
     // Locale
     // ignore: invalid_annotation_target

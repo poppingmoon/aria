@@ -8,7 +8,7 @@ part 'aria_backup.freezed.dart';
 part 'aria_backup.g.dart';
 
 @freezed
-class AriaBackup with _$AriaBackup {
+abstract class AriaBackup with _$AriaBackup {
   const factory AriaBackup({
     Map<String, dynamic>? metadata,
     List<TabSettings>? timelineTabs,

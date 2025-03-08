@@ -7,7 +7,7 @@ part 'account_settings.freezed.dart';
 part 'account_settings.g.dart';
 
 @freezed
-class AccountSettings with _$AccountSettings {
+abstract class AccountSettings with _$AccountSettings {
   const factory AccountSettings({
     // Privacy
     @Default(true) bool keepCw,

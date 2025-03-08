@@ -12,8 +12,8 @@ enum IncomingMessageType {
   announcementCreated,
 }
 
-@freezed
-class IncomingMessage with _$IncomingMessage {
+@Freezed(toJson: false)
+abstract class IncomingMessage with _$IncomingMessage {
   const factory IncomingMessage({
     // https://github.com/rrousselGit/freezed/issues/488
     // ignore: invalid_annotation_target

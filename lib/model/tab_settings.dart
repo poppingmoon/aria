@@ -8,7 +8,7 @@ part 'tab_settings.freezed.dart';
 part 'tab_settings.g.dart';
 
 @freezed
-class TabSettings with _$TabSettings {
+abstract class TabSettings with _$TabSettings {
   const factory TabSettings({
     String? id,
     required TabType tabType,
@@ -32,8 +32,6 @@ class TabSettings with _$TabSettings {
     String? streamingChannel,
     Map<String, dynamic>? parameters,
   }) = _TabSettings;
-
-  const TabSettings._();
 
   factory TabSettings.fromJson(Map<String, Object?> json) =>
       _$TabSettingsFromJson(json);

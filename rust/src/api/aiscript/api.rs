@@ -3,9 +3,9 @@ use std::{collections::HashMap, sync::Arc};
 use aiscript::v0::{
     errors::AiScriptError,
     utils,
-    values::{Value, V},
+    values::{V, Value},
 };
-use flutter_rust_bridge::{frb, DartFnFuture};
+use flutter_rust_bridge::{DartFnFuture, frb};
 use futures::FutureExt;
 
 pub type DialogCallback =
@@ -50,9 +50,9 @@ impl AsApiLib {
         confirm: impl Fn(String, String, String) -> DartFnFuture<bool> + Sync + Send + 'static,
         token: Option<String>,
         api: impl Fn(String, String, Option<String>) -> DartFnFuture<(String, Option<String>)>
-            + Sync
-            + Send
-            + 'static,
+        + Sync
+        + Send
+        + 'static,
         save: impl Fn(String, String) -> DartFnFuture<()> + Sync + Send + 'static,
         load: impl Fn(String) -> DartFnFuture<String> + Sync + Send + 'static,
         url: String,

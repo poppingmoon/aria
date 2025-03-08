@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,189 +10,139 @@ part of 'data_saver.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
-);
-
 /// @nodoc
 mixin _$DataSaver {
-  bool get media => throw _privateConstructorUsedError;
-  bool get avatar => throw _privateConstructorUsedError;
-  bool get urlPreview => throw _privateConstructorUsedError;
 
-  /// Create a copy of DataSaver
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  $DataSaverCopyWith<DataSaver> get copyWith =>
-      throw _privateConstructorUsedError;
+ bool get media; bool get avatar; bool get urlPreview;
+/// Create a copy of DataSaver
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$DataSaverCopyWith<DataSaver> get copyWith => _$DataSaverCopyWithImpl<DataSaver>(this as DataSaver, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is DataSaver&&(identical(other.media, media) || other.media == media)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.urlPreview, urlPreview) || other.urlPreview == urlPreview));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,media,avatar,urlPreview);
+
+@override
+String toString() {
+  return 'DataSaver(media: $media, avatar: $avatar, urlPreview: $urlPreview)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $DataSaverCopyWith<$Res> {
-  factory $DataSaverCopyWith(DataSaver value, $Res Function(DataSaver) then) =
-      _$DataSaverCopyWithImpl<$Res, DataSaver>;
-  @useResult
-  $Res call({bool media, bool avatar, bool urlPreview});
-}
+abstract mixin class $DataSaverCopyWith<$Res>  {
+  factory $DataSaverCopyWith(DataSaver value, $Res Function(DataSaver) _then) = _$DataSaverCopyWithImpl;
+@useResult
+$Res call({
+ bool media, bool avatar, bool urlPreview
+});
 
+
+
+
+}
 /// @nodoc
-class _$DataSaverCopyWithImpl<$Res, $Val extends DataSaver>
+class _$DataSaverCopyWithImpl<$Res>
     implements $DataSaverCopyWith<$Res> {
-  _$DataSaverCopyWithImpl(this._value, this._then);
+  _$DataSaverCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final DataSaver _self;
+  final $Res Function(DataSaver) _then;
 
-  /// Create a copy of DataSaver
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? media = null,
-    Object? avatar = null,
-    Object? urlPreview = null,
-  }) {
-    return _then(
-      _value.copyWith(
-            media:
-                null == media
-                    ? _value.media
-                    : media // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            avatar:
-                null == avatar
-                    ? _value.avatar
-                    : avatar // ignore: cast_nullable_to_non_nullable
-                        as bool,
-            urlPreview:
-                null == urlPreview
-                    ? _value.urlPreview
-                    : urlPreview // ignore: cast_nullable_to_non_nullable
-                        as bool,
-          )
-          as $Val,
-    );
-  }
+/// Create a copy of DataSaver
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? media = null,Object? avatar = null,Object? urlPreview = null,}) {
+  return _then(_self.copyWith(
+media: null == media ? _self.media : media // ignore: cast_nullable_to_non_nullable
+as bool,avatar: null == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
+as bool,urlPreview: null == urlPreview ? _self.urlPreview : urlPreview // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
 }
 
-/// @nodoc
-abstract class _$$DataSaverImplCopyWith<$Res>
-    implements $DataSaverCopyWith<$Res> {
-  factory _$$DataSaverImplCopyWith(
-    _$DataSaverImpl value,
-    $Res Function(_$DataSaverImpl) then,
-  ) = __$$DataSaverImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool media, bool avatar, bool urlPreview});
 }
 
-/// @nodoc
-class __$$DataSaverImplCopyWithImpl<$Res>
-    extends _$DataSaverCopyWithImpl<$Res, _$DataSaverImpl>
-    implements _$$DataSaverImplCopyWith<$Res> {
-  __$$DataSaverImplCopyWithImpl(
-    _$DataSaverImpl _value,
-    $Res Function(_$DataSaverImpl) _then,
-  ) : super(_value, _then);
-
-  /// Create a copy of DataSaver
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? media = null,
-    Object? avatar = null,
-    Object? urlPreview = null,
-  }) {
-    return _then(
-      _$DataSaverImpl(
-        media:
-            null == media
-                ? _value.media
-                : media // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        avatar:
-            null == avatar
-                ? _value.avatar
-                : avatar // ignore: cast_nullable_to_non_nullable
-                    as bool,
-        urlPreview:
-            null == urlPreview
-                ? _value.urlPreview
-                : urlPreview // ignore: cast_nullable_to_non_nullable
-                    as bool,
-      ),
-    );
-  }
-}
 
 /// @nodoc
 
-class _$DataSaverImpl implements _DataSaver {
-  const _$DataSaverImpl({
-    required this.media,
-    required this.avatar,
-    required this.urlPreview,
-  });
 
-  @override
-  final bool media;
-  @override
-  final bool avatar;
-  @override
-  final bool urlPreview;
+class _DataSaver implements DataSaver {
+  const _DataSaver({required this.media, required this.avatar, required this.urlPreview});
+  
 
-  @override
-  String toString() {
-    return 'DataSaver(media: $media, avatar: $avatar, urlPreview: $urlPreview)';
-  }
+@override final  bool media;
+@override final  bool avatar;
+@override final  bool urlPreview;
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$DataSaverImpl &&
-            (identical(other.media, media) || other.media == media) &&
-            (identical(other.avatar, avatar) || other.avatar == avatar) &&
-            (identical(other.urlPreview, urlPreview) ||
-                other.urlPreview == urlPreview));
-  }
+/// Create a copy of DataSaver
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$DataSaverCopyWith<_DataSaver> get copyWith => __$DataSaverCopyWithImpl<_DataSaver>(this, _$identity);
 
-  @override
-  int get hashCode => Object.hash(runtimeType, media, avatar, urlPreview);
 
-  /// Create a copy of DataSaver
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$DataSaverImplCopyWith<_$DataSaverImpl> get copyWith =>
-      __$$DataSaverImplCopyWithImpl<_$DataSaverImpl>(this, _$identity);
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _DataSaver&&(identical(other.media, media) || other.media == media)&&(identical(other.avatar, avatar) || other.avatar == avatar)&&(identical(other.urlPreview, urlPreview) || other.urlPreview == urlPreview));
 }
 
-abstract class _DataSaver implements DataSaver {
-  const factory _DataSaver({
-    required final bool media,
-    required final bool avatar,
-    required final bool urlPreview,
-  }) = _$DataSaverImpl;
 
-  @override
-  bool get media;
-  @override
-  bool get avatar;
-  @override
-  bool get urlPreview;
+@override
+int get hashCode => Object.hash(runtimeType,media,avatar,urlPreview);
 
-  /// Create a copy of DataSaver
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DataSaverImplCopyWith<_$DataSaverImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+String toString() {
+  return 'DataSaver(media: $media, avatar: $avatar, urlPreview: $urlPreview)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$DataSaverCopyWith<$Res> implements $DataSaverCopyWith<$Res> {
+  factory _$DataSaverCopyWith(_DataSaver value, $Res Function(_DataSaver) _then) = __$DataSaverCopyWithImpl;
+@override @useResult
+$Res call({
+ bool media, bool avatar, bool urlPreview
+});
+
+
+
+
+}
+/// @nodoc
+class __$DataSaverCopyWithImpl<$Res>
+    implements _$DataSaverCopyWith<$Res> {
+  __$DataSaverCopyWithImpl(this._self, this._then);
+
+  final _DataSaver _self;
+  final $Res Function(_DataSaver) _then;
+
+/// Create a copy of DataSaver
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? media = null,Object? avatar = null,Object? urlPreview = null,}) {
+  return _then(_DataSaver(
+media: null == media ? _self.media : media // ignore: cast_nullable_to_non_nullable
+as bool,avatar: null == avatar ? _self.avatar : avatar // ignore: cast_nullable_to_non_nullable
+as bool,urlPreview: null == urlPreview ? _self.urlPreview : urlPreview // ignore: cast_nullable_to_non_nullable
+as bool,
+  ));
+}
+
+
+}
+
+// dart format on

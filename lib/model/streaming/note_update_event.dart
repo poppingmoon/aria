@@ -6,8 +6,8 @@ part 'note_update_event.g.dart';
 
 sealed class NoteUpdateEvent {}
 
-@freezed
-class Reacted with _$Reacted implements NoteUpdateEvent {
+@Freezed(toJson: false)
+abstract class Reacted with _$Reacted implements NoteUpdateEvent {
   const factory Reacted({
     required String reaction,
     ReactedEmoji? emoji,
@@ -18,8 +18,8 @@ class Reacted with _$Reacted implements NoteUpdateEvent {
       _$ReactedFromJson(json);
 }
 
-@freezed
-class Unreacted with _$Unreacted implements NoteUpdateEvent {
+@Freezed(toJson: false)
+abstract class Unreacted with _$Unreacted implements NoteUpdateEvent {
   const factory Unreacted({required String reaction, required String userId}) =
       _Unreacted;
 
@@ -27,16 +27,16 @@ class Unreacted with _$Unreacted implements NoteUpdateEvent {
       _$UnreactedFromJson(json);
 }
 
-@freezed
-class Deleted with _$Deleted implements NoteUpdateEvent {
+@Freezed(toJson: false)
+abstract class Deleted with _$Deleted implements NoteUpdateEvent {
   const factory Deleted({required DateTime deletedAt}) = _Deleted;
 
   factory Deleted.fromJson(Map<String, Object?> json) =>
       _$DeletedFromJson(json);
 }
 
-@freezed
-class PollVoted with _$PollVoted implements NoteUpdateEvent {
+@Freezed(toJson: false)
+abstract class PollVoted with _$PollVoted implements NoteUpdateEvent {
   const factory PollVoted({required int choice, required String userId}) =
       _PollVoted;
 
@@ -44,16 +44,16 @@ class PollVoted with _$PollVoted implements NoteUpdateEvent {
       _$PollVotedFromJson(json);
 }
 
-@freezed
-class Updated with _$Updated implements NoteUpdateEvent {
+@Freezed(toJson: false)
+abstract class Updated with _$Updated implements NoteUpdateEvent {
   const factory Updated({String? cw, String? text, Note? note}) = _Updated;
 
   factory Updated.fromJson(Map<String, Object?> json) =>
       _$UpdatedFromJson(json);
 }
 
-@freezed
-class ReactedEmoji with _$ReactedEmoji {
+@Freezed(toJson: false)
+abstract class ReactedEmoji with _$ReactedEmoji {
   const factory ReactedEmoji({required String name, required String url}) =
       _ReactedEmoji;
 
