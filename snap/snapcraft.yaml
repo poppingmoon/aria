@@ -67,14 +67,12 @@ parts:
       - unzip
     stage-packages:
       - libsecret-1-0
+      - zenity
     override-build: |
-      curl -fsSL https://fvm.app/install.sh | bash
-      fvm install
+      VERSION=$(grep flutter .fvmrc | cut -d ":" -f2|cut -d "\"" -f2)
+      git clone https://github.com/flutter/flutter.git --branch $VERSION
+      export PATH="$(pwd)/flutter/bin:$PATH"
       curl https://sh.rustup.rs -sSf | sh -s -- -y
-      fvm flutter build linux
+      flutter pub get
+      flutter build linux
       mv build/linux/*/release/bundle/* $CRAFT_PART_INSTALL
-
-  zenity-integration:
-    plugin: nil
-    stage-snaps:
-      - zenity-integration
