@@ -20,6 +20,7 @@ import '../../util/open_as_guest.dart';
 import '../dialog/antenna_dialog.dart';
 import '../dialog/confirmation_dialog.dart';
 import '../dialog/list_dialog.dart';
+import '../dialog/mute_dialog.dart';
 import '../dialog/text_field_dialog.dart';
 import 'account_preview.dart';
 import 'user_preview.dart';
@@ -357,16 +358,13 @@ class UserSheet extends ConsumerWidget {
                               leading: const Icon(Icons.visibility_off),
                               title: Text(t.misskey.mute),
                               onTap:
-                                  () => futureWithDialog(
-                                    context,
-                                    ref
-                                        .read(
-                                          userNotifierProvider(
-                                            account,
-                                            userId: userId,
-                                          ).notifier,
-                                        )
-                                        .mute(),
+                                  () => showDialog<void>(
+                                    context: context,
+                                    builder:
+                                        (context) => MuteDialog(
+                                          account: account,
+                                          userId: userId,
+                                        ),
                                   ),
                             ),
                           if (user.isRenoteMuted)

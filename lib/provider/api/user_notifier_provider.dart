@@ -71,8 +71,10 @@ class UserNotifier extends _$UserNotifier {
     }
   }
 
-  Future<void> mute() async {
-    await _misskey.mute.create(MuteCreateRequest(userId: _userId));
+  Future<void> mute(DateTime? expiresAt) async {
+    await _misskey.mute.create(
+      MuteCreateRequest(userId: _userId, expiresAt: expiresAt),
+    );
     final user = state.valueOrNull;
     if (user is UserDetailedNotMeWithRelations) {
       state = AsyncValue.data(user.copyWith(isMuted: true));
