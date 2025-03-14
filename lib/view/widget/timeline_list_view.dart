@@ -145,20 +145,27 @@ class TimelineListView extends HookConsumerWidget {
       ),
     );
     final newNoteDividerIndex = useState<int?>(null);
-    useEffect(() {
-      if (lastViewedNoteId != null) {
-        final index = getNewNoteDividerIndex(
-          lastViewedNoteId: lastViewedNoteId,
-          nextNotes: nextNotes.valueOrNull?.items,
-          previousNotes: previousNotes.valueOrNull?.items,
-          newNoteDividerIndex: newNoteDividerIndex.value,
-        );
-        if (index != null) {
-          newNoteDividerIndex.value = index;
+    useEffect(
+      () {
+        if (lastViewedNoteId != null) {
+          final index = getNewNoteDividerIndex(
+            lastViewedNoteId: lastViewedNoteId,
+            nextNotes: nextNotes.valueOrNull?.items,
+            previousNotes: previousNotes.valueOrNull?.items,
+            newNoteDividerIndex: newNoteDividerIndex.value,
+          );
+          if (index != null) {
+            newNoteDividerIndex.value = index;
+          }
         }
-      }
-      return;
-    }, [nextNotes.valueOrNull?.items, previousNotes.valueOrNull?.items]);
+        return;
+      },
+      [
+        tabSettings,
+        nextNotes.valueOrNull?.items,
+        previousNotes.valueOrNull?.items,
+      ],
+    );
     final keepAnimation = useState(true);
     final isAtTop = useState(false);
     final isAtBottom = useState(false);
@@ -186,7 +193,7 @@ class TimelineListView extends HookConsumerWidget {
           notifier.disconnect();
           controller.removeListener(callback);
         };
-      }, [centerId, isLatestLoaded]);
+      }, [tabSettings, centerId, isLatestLoaded]);
       ref.listen(timelineStreamNotifierProvider(tabSettings), (_, next) {
         next.whenData((note) {
           if (centerId == null || isLatestLoaded) {
@@ -272,7 +279,7 @@ class TimelineListView extends HookConsumerWidget {
         controller.addListener(callback);
       }
       return () => controller.removeListener(callback);
-    }, [centerId]);
+    }, [tabSettings, centerId]);
     useEffect(() {
       void callback() {
         if (controller.position.extentBefore < infiniteScrollExtentThreshold) {
@@ -305,7 +312,7 @@ class TimelineListView extends HookConsumerWidget {
         controller.addListener(callback);
       }
       return () => controller.removeListener(callback);
-    }, [centerId]);
+    }, [tabSettings, centerId]);
 
     return RefreshIndicator(
       onRefresh: () => reloadTimeline(ref, tabSettings),
