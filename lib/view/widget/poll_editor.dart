@@ -9,6 +9,7 @@ import '../../provider/post_notifier_provider.dart';
 import '../../util/pick_date_time.dart';
 import '../dialog/duration_picker_dialog.dart';
 import '../dialog/text_field_dialog.dart';
+import 'duration_widget.dart';
 import 'time_widget.dart';
 
 class PollEditor extends ConsumerWidget {
@@ -205,19 +206,7 @@ class PollEditor extends ConsumerWidget {
           if (expiredAfter != null)
             ListTile(
               title: Text(t.misskey.poll_.duration),
-              subtitle: Text(
-                [
-                  if (expiredAfter.inDays > 0)
-                    '${expiredAfter.inDays}${t.misskey.time_.day}',
-                  if (expiredAfter.inHours > 0 && expiredAfter.inHours % 24 > 0)
-                    '${expiredAfter.inHours % 24}${t.misskey.time_.hour}',
-                  if (expiredAfter.inMinutes > 0 &&
-                      expiredAfter.inMinutes % 60 > 0)
-                    '${expiredAfter.inMinutes % 60}${t.misskey.time_.minute}',
-                  if (expiredAfter.inSeconds % 60 > 0)
-                    '${expiredAfter.inSeconds % 60}${t.misskey.time_.second}',
-                ].join(' '),
-              ),
+              subtitle: DurationWidget(duration: expiredAfter),
               onTap: () async {
                 final result = await showDurationPickerDialog(
                   context,
