@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../../../extension/text_style_extension.dart';
 import '../../../i18n/strings.g.dart';
 import '../../../model/account.dart';
 import '../../../provider/api/blockings_notifier_provider.dart';
+import '../../../util/format_datetime.dart';
 import '../../../util/future_with_dialog.dart';
 import '../../dialog/confirmation_dialog.dart';
 import '../../widget/acct_widget.dart';
 import '../../widget/paginated_list_view.dart';
-import '../../widget/time_widget.dart';
 import '../../widget/user_avatar.dart';
 import '../../widget/user_sheet.dart';
 import '../../widget/username_widget.dart';
@@ -22,6 +23,11 @@ class BlockedUsersPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final blockings = ref.watch(blockingsNotifierProvider(account));
+    final theme = Theme.of(context);
+    final style = theme.textTheme.bodyMedium?.apply(
+      color: theme.colorScheme.onSurface.withValues(alpha: 0.85),
+      fontSizeFactor: 0.9,
+    );
 
     return Scaffold(
       appBar: AppBar(title: Text(t.misskey.blockedUsers)),
@@ -39,14 +45,35 @@ class BlockedUsersPage extends ConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AcctWidget(account: account, user: blocking.blockee),
-                  TimeWidget(time: blocking.createdAt, detailed: true),
+                  const SizedBox(height: 4.0),
+                  Text.rich(
+                    TextSpan(
+                      children: [
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: Icon(
+                            Icons.schedule,
+                            size: style?.lineHeight,
+                            color: style?.color,
+                          ),
+                        ),
+                        const WidgetSpan(child: SizedBox(width: 2.0)),
+                        TextSpan(text: absoluteTime(blocking.createdAt)),
+                        const TextSpan(text: ' ('),
+                        TextSpan(text: relativeTime(blocking.createdAt)),
+                        const TextSpan(text: ')'),
+                      ],
+                    ),
+                    style: style,
+                  ),
                 ],
               ),
               trailing: IconButton(
+                tooltip: t.misskey.unblock,
                 onPressed: () async {
                   final confirmed = await confirm(
                     context,
-                    message: t.misskey.deleteConfirm,
+                    message: t.misskey.unblockConfirm,
                   );
                   if (!context.mounted) return;
                   if (confirmed) {
