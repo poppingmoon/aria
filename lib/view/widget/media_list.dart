@@ -59,9 +59,82 @@ class MediaList extends ConsumerWidget {
             child: MediaCard(
               account: account,
               files: files,
+              index: 0,
               user: user,
               fit: fit,
             ),
+          ),
+        );
+      case 2:
+        return AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Row(
+            children: [
+              Expanded(
+                child: MediaCard(
+                  account: account,
+                  files: files,
+                  index: 0,
+                  user: user,
+                  fit: fit,
+                ),
+              ),
+              const SizedBox(width: 4.0),
+              Expanded(
+                child: MediaCard(
+                  account: account,
+                  files: files,
+                  index: 1,
+                  user: user,
+                  fit: fit,
+                ),
+              ),
+            ],
+          ),
+        );
+      case 3:
+        return AspectRatio(
+          aspectRatio: 16 / 9,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 3,
+                child: MediaCard(
+                  account: account,
+                  files: files,
+                  index: 0,
+                  user: user,
+                  fit: fit,
+                ),
+              ),
+              const SizedBox(width: 4.0),
+              Expanded(
+                flex: 2,
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: MediaCard(
+                        account: account,
+                        files: files,
+                        index: 1,
+                        user: user,
+                        fit: fit,
+                      ),
+                    ),
+                    const SizedBox(height: 4.0),
+                    Expanded(
+                      child: MediaCard(
+                        account: account,
+                        files: files,
+                        index: 2,
+                        user: user,
+                        fit: fit,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         );
       default:
