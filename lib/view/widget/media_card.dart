@@ -34,7 +34,7 @@ class MediaCard extends HookConsumerWidget {
     super.key,
     required this.account,
     required this.files,
-    this.index = 0,
+    required this.index,
     this.user,
     this.fit = BoxFit.contain,
   });
@@ -47,7 +47,10 @@ class MediaCard extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final file = files[index];
+    final file = files.elementAtOrNull(index);
+    if (file == null) {
+      return const SizedBox.shrink();
+    }
     final (highlightSensitiveMedia, sensitive, openMediaOnDoubleTap) = ref
         .watch(
           generalSettingsNotifierProvider.select(
