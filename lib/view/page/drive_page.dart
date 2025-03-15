@@ -137,10 +137,16 @@ class DrivePage extends HookConsumerWidget {
                 onPressed:
                     () => context.push('/settings/accounts/$account/drive'),
                 child: Text(
-                  '${t.misskey.inUse}: '
-                  '${Unicode.LRI}'
-                  '${prettyBytes(stats.usage)} / ${prettyBytes(stats.capacity)}'
-                  '${Unicode.PDI}',
+                  [
+                    '${t.misskey.inUse}: ',
+                    if (defaultTargetPlatform != TargetPlatform.linux)
+                      Unicode.LRI,
+                    prettyBytes(stats.usage),
+                    ' / ',
+                    prettyBytes(stats.capacity),
+                    if (defaultTargetPlatform != TargetPlatform.linux)
+                      Unicode.PDI,
+                  ].join(),
                 ),
               ),
             if (!selectFiles && !selectFolder)

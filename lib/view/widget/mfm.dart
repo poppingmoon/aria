@@ -1178,7 +1178,8 @@ class _Mfm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final needsIsolate =
-        builder != null || (trailingSpans?.isNotEmpty ?? false);
+        (builder != null || (trailingSpans?.isNotEmpty ?? false)) &&
+        defaultTargetPlatform != TargetPlatform.linux;
     final span = TextSpan(
       children: [
         ...?leadingSpans,

@@ -70,7 +70,8 @@ class NoteHeader extends HookConsumerWidget {
                       ),
                     ),
                   const WidgetSpan(child: SizedBox(width: 4.0)),
-                  const TextSpan(text: Unicode.LRI),
+                  if (defaultTargetPlatform != TargetPlatform.linux)
+                    const TextSpan(text: Unicode.LRI),
                   TextSpan(text: '@${note.user.username}'),
                   if (note.user case User(:final host?))
                     TextSpan(
@@ -79,7 +80,8 @@ class NoteHeader extends HookConsumerWidget {
                         color: style.color?.withValues(alpha: 0.5),
                       ),
                     ),
-                  const TextSpan(text: Unicode.PDI),
+                  if (defaultTargetPlatform != TargetPlatform.linux)
+                    const TextSpan(text: Unicode.PDI),
                   const WidgetSpan(child: SizedBox(width: 2.0)),
                   for (final role in note.user.badgeRoles)
                     if (role case UserBadgeRole(:final iconUrl?))

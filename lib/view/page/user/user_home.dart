@@ -202,7 +202,8 @@ class _UserHome extends ConsumerWidget {
                   Text.rich(
                     TextSpan(
                       children: [
-                        const TextSpan(text: Unicode.LRI),
+                        if (defaultTargetPlatform != TargetPlatform.linux)
+                          const TextSpan(text: Unicode.LRI),
                         TextSpan(text: '@${user.username}'),
                         TextSpan(
                           text: '@${toUnicode(user.host ?? account.host)}',
@@ -212,7 +213,8 @@ class _UserHome extends ConsumerWidget {
                             ).colorScheme.onSurface.withValues(alpha: 0.5),
                           ),
                         ),
-                        const TextSpan(text: Unicode.PDI),
+                        if (defaultTargetPlatform != TargetPlatform.linux)
+                          const TextSpan(text: Unicode.PDI),
                         if (user.isLocked)
                           const WidgetSpan(
                             alignment: PlaceholderAlignment.middle,

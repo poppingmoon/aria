@@ -119,7 +119,8 @@ class TimelineHeader extends HookConsumerWidget {
               ),
               if (oneLine) ...[
                 const WidgetSpan(child: SizedBox(width: 8.0)),
-                const TextSpan(text: Unicode.LRI),
+                if (defaultTargetPlatform != TargetPlatform.linux)
+                  const TextSpan(text: Unicode.LRI),
                 TextSpan(
                   text: tabSettings.account.toString(),
                   style: DefaultTextStyle.of(context).style.apply(
@@ -128,7 +129,8 @@ class TimelineHeader extends HookConsumerWidget {
                     ).colorScheme.onSurface.withValues(alpha: 0.85),
                   ),
                 ),
-                const TextSpan(text: Unicode.PDI),
+                if (defaultTargetPlatform != TargetPlatform.linux)
+                  const TextSpan(text: Unicode.PDI),
               ],
             ],
           ),
