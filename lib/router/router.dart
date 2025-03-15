@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../i18n/strings.g.dart';
 import '../model/account.dart';
 import '../model/tab_settings.dart';
 import '../provider/boot_state_provider.dart';
@@ -12,6 +15,7 @@ import '../provider/push_notification_notifier_provider.dart';
 import '../provider/receive_sharing_intent_provider.dart';
 import '../provider/share_notifier_provider.dart';
 import '../util/safe_parse_double.dart';
+import '../util/show_toast.dart';
 import '../view/page/about_aria_page.dart';
 import '../view/page/about_misskey_page.dart';
 import '../view/page/announcements_page.dart';
@@ -133,10 +137,16 @@ GoRouter router(Ref ref) {
       ),
       GoRoute(
         path: '/miauth',
-        redirect: (_, _) async {
-          final succeeded =
+        redirect: (context, _) async {
+          final result =
               await ref.read(miAuthNotifierProvider.notifier).check();
-          if (succeeded) {
+          if (result.added case final added?) {
+            showToast(
+              context: context.mounted ? context : null,
+              message: added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
+            );
+          }
+          if (result.success) {
             return '/timelines';
           } else {
             return '/login/authenticate';

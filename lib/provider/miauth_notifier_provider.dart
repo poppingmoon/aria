@@ -22,25 +22,25 @@ class MiAuthNotifier extends _$MiAuthNotifier {
     return url;
   }
 
-  Future<bool> check() async {
+  Future<({bool success, bool? added})> check() async {
     if (state == null) {
-      return true;
+      return (success: true, added: null);
     }
     final result = await ref
         .read(miAuthRepositoryProvider)
         .check(state!.host, state!.sessionId);
-    if (result == null) {
-      return false;
+    if (result case (final token, final user)) {
+      final result = await ref
+          .read(accountsNotifierProvider.notifier)
+          .login(
+            Account(host: state!.host.toLowerCase(), username: user.username),
+            token,
+            user.id,
+          );
+      state = null;
+      return (success: true, added: result.added);
+    } else {
+      return (success: false, added: null);
     }
-    final (token, user) = result;
-    await ref
-        .read(accountsNotifierProvider.notifier)
-        .login(
-          Account(host: state!.host.toLowerCase(), username: user.username),
-          token,
-          user.id,
-        );
-    state = null;
-    return true;
   }
 }

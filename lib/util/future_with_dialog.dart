@@ -1,10 +1,9 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import '../view/dialog/error_message_dialog.dart';
+import 'show_toast.dart';
 
 Future<T?> futureWithDialog<T>(
   BuildContext context,
@@ -41,16 +40,7 @@ Future<T?> futureWithDialog<T>(
       entry?.remove();
     } catch (_) {}
     if (message != null) {
-      if (defaultTargetPlatform
-          case TargetPlatform.android || TargetPlatform.iOS) {
-        await Fluttertoast.showToast(msg: message);
-      } else {
-        if (context.mounted) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(message)));
-        }
-      }
+      showToast(context: context.mounted ? context : null, message: message);
     }
     return result;
   } catch (e, st) {

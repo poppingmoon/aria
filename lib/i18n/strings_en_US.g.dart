@@ -46,6 +46,8 @@ class TranslationsAriaEnUs {
 	// Translations
 	String get aboutAria => 'About Aria';
 	String get accessToken => 'Access token';
+	String get accessTokenUpdated => 'Successfully updated an access token';
+	String get accountAdded => 'Successfully added an account';
 	TextSpan acknowledgements({required InlineSpan miria, required InlineSpan misskey}) => TextSpan(children: [
 		const TextSpan(text: 'Aria is a fork of '),
 		miria,
