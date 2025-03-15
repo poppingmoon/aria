@@ -159,14 +159,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get changed i18n files
-        id: changed-i18n-files
-        uses: tj-actions/changed-files@v45
-        with:
-          files: lib/i18n/aria/*.i18n.yaml
-
       - name: Install Flutter
-        if: steps.changed-i18n-files.outputs.any_changed == 'true'
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
@@ -174,15 +167,11 @@ jobs:
           cache: true
 
       - name: Get dependencies
-        if: steps.changed-i18n-files.outputs.any_changed == 'true'
         run: flutter pub get
 
       - name: Sort i18n files
-        if: steps.changed-i18n-files.outputs.any_changed == 'true'
-        env:
-          ALL_CHANGED_FILES: ${{ steps.changed-i18n-files.outputs.all_changed_files }}
         run: |
-          for file in $ALL_CHANGED_FILES; do
+          for file in $(ls lib/i18n/aria/*.i18n.yaml); do
             dart run script/sort_yaml.dart $file
           done
 
