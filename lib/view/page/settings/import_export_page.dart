@@ -195,7 +195,7 @@ class ImportExportPage extends ConsumerWidget {
                         _export(ref),
                       );
                       if (!context.mounted) return;
-                      copyToClipboard(context, jsonEncode(data));
+                      await copyToClipboard(context, jsonEncode(data));
                     },
                   ),
                 ],
