@@ -33,15 +33,22 @@ class AccountsNotifier extends _$AccountsNotifier {
         .setStringList(_key, state.map((e) => jsonEncode(e)).toList());
   }
 
-  Future<void> login(Account account, String token, String userId) async {
+  Future<({bool added})> login(
+    Account account,
+    String token,
+    String userId,
+  ) async {
     await ref.read(tokensNotifierProvider.notifier).add(account, token);
     await ref.read(userIdsNotifierProvider.notifier).add(account, userId);
-    if (state.contains(account)) return;
+    if (state.contains(account)) {
+      return (added: false);
+    }
     state = {...state, account}.toList();
     await _save();
+    return (added: true);
   }
 
-  Future<bool> loginWithToken(String host, String token) async {
+  Future<({bool added})> loginWithToken(String host, String token) async {
     if (kDebugMode) {
       if (host.startsWith('localhost')) {
         final i = await ref
@@ -50,7 +57,7 @@ class AccountsNotifier extends _$AccountsNotifier {
               Uri.http(host, 'api/i'),
               data: {'i': token},
             );
-        await login(
+        return login(
           Account(
             host: host.toLowerCase(),
             username: i.data!['username'] as String,
@@ -58,7 +65,6 @@ class AccountsNotifier extends _$AccountsNotifier {
           token,
           i.data!['id'] as String,
         );
-        return true;
       }
     }
     final i = await ref
@@ -67,7 +73,7 @@ class AccountsNotifier extends _$AccountsNotifier {
           Uri.https(host, 'api/i'),
           data: {'i': token},
         );
-    await login(
+    return login(
       Account(
         host: host.toLowerCase(),
         username: i.data!['username'] as String,
@@ -75,7 +81,6 @@ class AccountsNotifier extends _$AccountsNotifier {
       token,
       i.data!['id'] as String,
     );
-    return true;
   }
 
   Future<void> remove(Account account) async {

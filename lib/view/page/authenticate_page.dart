@@ -6,6 +6,7 @@ import '../../i18n/strings.g.dart';
 import '../../provider/miauth_notifier_provider.dart';
 import '../../util/copy_text.dart';
 import '../../util/future_with_dialog.dart';
+import '../../util/show_toast.dart';
 import '../dialog/message_dialog.dart';
 
 class AuthenticatePage extends ConsumerWidget {
@@ -37,12 +38,19 @@ class AuthenticatePage extends ConsumerWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            final succeeded = await futureWithDialog(
+            final result = await futureWithDialog(
               context,
               ref.read(miAuthNotifierProvider.notifier).check(),
             );
             if (!context.mounted) return;
-            if (succeeded ?? false) {
+            if (result?.added case final added?) {
+              showToast(
+                context: context.mounted ? context : null,
+                message:
+                    added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
+              );
+            }
+            if (result?.success ?? false) {
               context.go('/timelines');
             } else {
               await showMessageDialog(context, t.misskey.loginFailed);

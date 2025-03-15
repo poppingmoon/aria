@@ -6,7 +6,7 @@ part of 'miauth_notifier_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$miAuthNotifierHash() => r'ec8dd00f018b943f97eef92aeabe1ee8352b8689';
+String _$miAuthNotifierHash() => r'8baf244f63ff1902f03ed4e4c70a311cc7e90b33';
 
 /// See also [MiAuthNotifier].
 @ProviderFor(MiAuthNotifier)

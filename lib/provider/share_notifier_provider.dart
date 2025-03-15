@@ -2,8 +2,10 @@ import 'package:collection/collection.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
+import '../i18n/strings.g.dart';
 import '../model/account.dart';
 import '../model/post_file.dart';
+import '../util/show_toast.dart';
 import 'accounts_notifier_provider.dart';
 import 'api/attaches_notifier_provider.dart';
 import 'file_system_provider.dart';
@@ -37,9 +39,16 @@ class ShareNotifier extends _$ShareNotifier {
         final url = Uri.parse(sharedFiles.single.path);
         if (url.scheme == 'aria') {
           if (url.path == '/miauth') {
-            final succeeded =
+            final result =
                 await ref.read(miAuthNotifierProvider.notifier).check();
-            if (succeeded) {
+            if (result.added case final added?) {
+              showToast(
+                context: null,
+                message:
+                    added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
+              );
+            }
+            if (result.success) {
               return '/timelines';
             } else {
               return '/login/authenticate';

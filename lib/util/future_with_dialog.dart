@@ -40,10 +40,7 @@ Future<T?> futureWithDialog<T>(
       entry?.remove();
     } catch (_) {}
     if (message != null) {
-      await showToast(
-        context: context.mounted ? context : null,
-        message: message,
-      );
+      showToast(context: context.mounted ? context : null, message: message);
     }
     return result;
   } catch (e, st) {

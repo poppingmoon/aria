@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:ui';
 
 import 'package:collection/collection.dart';
@@ -13,6 +14,7 @@ import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/misskey_servers_provider.dart';
 import '../../util/future_with_dialog.dart';
 import '../../util/punycode.dart';
+import '../../util/show_toast.dart';
 import '../dialog/misskey_server_list_dialog.dart';
 import '../widget/image_widget.dart';
 import '../widget/misskey_server_autocomplete.dart';
@@ -33,9 +35,13 @@ class TokenLoginPage extends HookConsumerWidget {
               .first,
         ).toLowerCase();
     if (!ref.context.mounted) return;
-    await ref
+    final result = await ref
         .read(accountsNotifierProvider.notifier)
         .loginWithToken(trimmed, token);
+    showToast(
+      context: ref.context.mounted ? ref.context : null,
+      message: result.added ? t.aria.accountAdded : t.aria.accessTokenUpdated,
+    );
     if (!ref.context.mounted) return;
     ref.context.go('/timelines');
   }
