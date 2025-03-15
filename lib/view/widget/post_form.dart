@@ -24,6 +24,7 @@ import '../../provider/account_settings_notifier_provider.dart';
 import '../../provider/accounts_notifier_provider.dart';
 import '../../provider/api/attaches_notifier_provider.dart';
 import '../../provider/api/channel_notifier_provider.dart';
+import '../../provider/api/children_notes_notifier_provider.dart';
 import '../../provider/api/i_notifier_provider.dart';
 import '../../provider/api/misskey_provider.dart';
 import '../../provider/api/user_notifier_provider.dart';
@@ -165,6 +166,12 @@ class PostForm extends HookConsumerWidget {
       unawaited(
         ref.read(postFormHashtagsNotifierProvider(account).notifier).save(),
       );
+      if (note.replyId case final replyId?) {
+        ref.invalidate(childrenNotesNotifierProvider(account, replyId));
+      }
+      if (note.renoteId case final renoteId?) {
+        ref.invalidate(childrenNotesNotifierProvider(account, renoteId));
+      }
       ref.invalidate(attachesNotifierProvider(account, noteId: noteId));
       ref.context.pop();
     }
