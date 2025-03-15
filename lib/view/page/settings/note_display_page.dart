@@ -735,9 +735,7 @@ class NoteDisplayPage extends HookConsumerWidget {
                           onTap: () async {
                             final result = await showRadioDialog(
                               context,
-                              title: Text(
-                                t.misskey.mediaListWithOneImageAppearance,
-                              ),
+                              title: Text(t.aria.displayOfThumbnail),
                               values: [BoxFit.contain, BoxFit.cover],
                               initialValue: settings.thumbnailBoxFit,
                               itemBuilder:
