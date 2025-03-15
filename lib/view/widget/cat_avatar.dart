@@ -3,14 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:misskey_dart/misskey_dart.dart';
 
 import '../../model/account.dart';
-import '../../provider/average_color_provider.dart';
-import '../../provider/data_saver_provider.dart';
-import '../../provider/general_settings_notifier_provider.dart';
-import '../../provider/static_image_url_provider.dart';
 import 'avatar_decorations.dart';
 import 'cat_ear.dart';
 import 'image_widget.dart';
@@ -28,50 +23,32 @@ final _catEarWiggleTween = TweenSequence([
   TweenSequenceItem(tween: Tween(begin: 0.0, end: 0.65624379), weight: 25),
 ]);
 
-class CatAvatar extends HookConsumerWidget {
+class CatAvatar extends HookWidget {
   const CatAvatar({
     super.key,
     required this.account,
-    required this.user,
+    required this.url,
+    required this.blurHash,
+    required this.catEarColor,
+    required this.showAvatarDecorations,
+    required this.decorations,
     required this.size,
-    this.decorations,
-    this.forceShowDecoration = false,
-    this.onTap,
+    required this.borderRadius,
+    required this.onTap,
   });
 
   final Account account;
-  final User user;
+  final Uri? url;
+  final String? blurHash;
+  final Color catEarColor;
+  final bool showAvatarDecorations;
+  final List<UserAvatarDecoration> decorations;
   final double size;
-  final List<UserAvatarDecoration>? decorations;
-  final bool forceShowDecoration;
+  final BorderRadius borderRadius;
   final void Function()? onTap;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final (
-      showAvatarDecorations,
-      squareAvatars,
-      disableShowingAnimatedImages,
-    ) = ref.watch(
-      generalSettingsNotifierProvider.select(
-        (settings) => (
-          settings.showAvatarDecorations,
-          settings.squareAvatars,
-          settings.disableShowingAnimatedImages,
-        ),
-      ),
-    );
-    final useStaticImage =
-        disableShowingAnimatedImages ||
-        ref.watch(dataSaverProvider.select((dataSaver) => dataSaver.avatar));
-    final borderRadius = BorderRadius.circular(
-      squareAvatars ? size * 0.2 : size,
-    );
-    final blurHash = user.avatarBlurhash;
-    final catEarColor =
-        blurHash != null
-            ? ref.watch(averageColorProvider(blurHash))
-            : Theme.of(context).colorScheme.primary;
+  Widget build(BuildContext context) {
     final controller = useAnimationController(
       duration: const Duration(seconds: 1),
     );
@@ -138,27 +115,17 @@ class CatAvatar extends HookConsumerWidget {
             ClipRRect(
               borderRadius: borderRadius,
               child: ImageWidget(
-                url:
-                    useStaticImage
-                        ? ref
-                            .watch(
-                              staticImageUrlProvider(
-                                account.host,
-                                user.avatarUrl.toString(),
-                              ),
-                            )
-                            .toString()
-                        : user.avatarUrl.toString(),
-                blurHash: user.avatarBlurhash,
+                url: url?.toString(),
+                blurHash: blurHash,
                 height: size,
                 width: size,
                 fit: BoxFit.cover,
               ),
             ),
-            if (forceShowDecoration || showAvatarDecorations)
+            if (showAvatarDecorations)
               AvatarDecorations(
                 account: account,
-                decorations: decorations ?? user.avatarDecorations,
+                decorations: decorations,
                 size: size,
               ),
           ],
