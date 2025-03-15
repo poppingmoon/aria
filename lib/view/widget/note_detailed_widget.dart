@@ -102,6 +102,7 @@ class NoteDetailedWidget extends HookConsumerWidget {
             ? ref.watch(conversationNotesProvider(account, noteId))
             : null;
     final isRenote = note.isRenote;
+    final theme = Theme.of(context);
     final style = DefaultTextStyle.of(context).style;
 
     return InkWell(
@@ -221,16 +222,15 @@ class NoteDetailedWidget extends HookConsumerWidget {
                                 decoration: BoxDecoration(
                                   border: BorderDirectional(
                                     start: BorderSide(
-                                      color:
-                                          Theme.of(
-                                            context,
-                                          ).colorScheme.outlineVariant,
+                                      color: theme.colorScheme.outlineVariant,
                                       width: 2.0,
                                     ),
                                   ),
                                 ),
                                 padding: const EdgeInsetsDirectional.only(
                                   start: 4.0,
+                                  top: 4.0,
+                                  bottom: 4.0,
                                 ),
                                 child: NoteSubWidget(
                                   account: account,
@@ -254,25 +254,19 @@ class NoteDetailedWidget extends HookConsumerWidget {
                 separatorBuilder:
                     (context, index) =>
                         index < notes.length - 1
-                            ? ChannelColorBarBox(
-                              note: note,
-                              child: Container(
-                                margin: EdgeInsetsDirectional.only(
-                                  start: horizontalPadding - 4.0,
-                                ),
-                                decoration: BoxDecoration(
-                                  border: BorderDirectional(
-                                    start: BorderSide(
-                                      color:
-                                          Theme.of(
-                                            context,
-                                          ).colorScheme.outlineVariant,
-                                      width: 2.0,
-                                    ),
+                            ? Container(
+                              margin: EdgeInsetsDirectional.only(
+                                start: horizontalPadding - 4.0,
+                              ),
+                              decoration: BoxDecoration(
+                                border: BorderDirectional(
+                                  start: BorderSide(
+                                    color: theme.colorScheme.outlineVariant,
+                                    width: 2.0,
                                   ),
                                 ),
-                                child: const Divider(),
                               ),
+                              child: const Divider(height: 0.0),
                             )
                             : const SizedBox.shrink(),
                 itemCount: notes.length + 1,
@@ -337,9 +331,8 @@ class _NoteDetailedContent extends HookConsumerWidget {
         ),
       ),
     );
-    final colors = ref.watch(
-      misskeyColorsProvider(Theme.of(context).brightness),
-    );
+    final theme = Theme.of(context);
+    final colors = ref.watch(misskeyColorsProvider(theme.brightness));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -470,7 +463,7 @@ class _NoteDetailedContent extends HookConsumerWidget {
                           padding: const EdgeInsetsDirectional.only(end: 4.0),
                           child: Icon(
                             Icons.reply,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: theme.colorScheme.primary,
                           ),
                         ),
                       ),
