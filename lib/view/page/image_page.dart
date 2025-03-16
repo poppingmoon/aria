@@ -79,14 +79,16 @@ class ImagePage extends HookConsumerWidget {
 
     return PopScope(
       canPop: image == backgroundLayer.value.data && overlayLayers.isEmpty,
-      onPopInvokedWithResult: (_, _) async {
-        final confirmed = await confirm(
-          context,
-          message: t.aria.discardChangesConfirm,
-        );
-        if (!context.mounted) return;
-        if (confirmed) {
-          context.pop();
+      onPopInvokedWithResult: (didPop, _) async {
+        if (!didPop) {
+          final confirmed = await confirm(
+            context,
+            message: t.aria.discardChangesConfirm,
+          );
+          if (!context.mounted) return;
+          if (confirmed) {
+            context.pop();
+          }
         }
       },
       child: Scaffold(

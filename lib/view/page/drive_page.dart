@@ -95,14 +95,16 @@ class DrivePage extends HookConsumerWidget {
 
     return PopScope(
       canPop: currentFolder == null && (selectFolder || selectedFiles.isEmpty),
-      onPopInvokedWithResult: (_, _) {
-        if (!selectFolder && selectedFiles.isNotEmpty) {
-          ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
-        } else if (currentFolder != null) {
-          hierarchyFolders.value = hierarchyFolders.value.sublist(
-            0,
-            hierarchyFolders.value.length - 1,
-          );
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) {
+          if (!selectFolder && selectedFiles.isNotEmpty) {
+            ref.read(selectedDriveFilesNotifierProvider.notifier).removeAll();
+          } else if (currentFolder != null) {
+            hierarchyFolders.value = hierarchyFolders.value.sublist(
+              0,
+              hierarchyFolders.value.length - 1,
+            );
+          }
         }
       },
       child: Scaffold(
